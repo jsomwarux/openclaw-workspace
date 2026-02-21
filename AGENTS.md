@@ -2,6 +2,26 @@
 
 This folder is home. Treat it that way.
 
+## 🚨 CRITICAL RULE — Gateway Management (DO NOT TOUCH)
+
+**NEVER run any gateway commands.** These are operator-only:
+- `openclaw gateway restart` ❌
+- `openclaw gateway stop` ❌
+- `openclaw gateway start` ❌
+- `openclaw gateway install` ❌
+
+This is a v2026.2.19-2 bug — CLI gateway commands trigger a pairing deadlock that crashes the gateway. If you think a restart is needed, **tell JT and let them do it manually from Terminal.** Do not attempt it yourself under any circumstances. JT will notify you when the bug is fixed.
+
+## ⚠️ CRITICAL RULE — openclaw.json
+
+**NEVER write arbitrary keys to `~/.openclaw/openclaw.json`.** Only use documented OpenClaw config keys.
+Invalid keys cause the gateway to crash and refuse to start.
+
+**For external service API keys** (Firecrawl, etc.) that are not native OpenClaw integrations:
+- Store them in **TOOLS.md** as reference notes
+- Do NOT put them in `openclaw.json`
+- Native integrations (Brave Search, Groq, etc.) use documented `openclaw config set` paths only
+
 ## First Run
 
 If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it. You won't need it again.
