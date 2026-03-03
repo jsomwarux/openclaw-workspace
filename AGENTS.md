@@ -276,6 +276,7 @@ When JT corrects tone, voice, or content style: update FEEDBACK-LOG.md, not here
 ## Mistakes Log
 | Date | Mistake | Fix |
 | 2026-03-03 | Overnight agent flagged compaction.mode=safeguard as a regression, claimed it should be "aggressive" — mode doesn't exist in schema | Valid modes are only "default" and "safeguard". Safeguard is correct — preserves cache hits. Never change based on this flag again. |
+| 2026-03-03 | Promoted job application tasks (Squarespace SA, Writer SA) to HIGH during board review — directly violates locked priority order | Priority order is locked: (1) demos + site → (2) LinkedIn update → (3) job apps + outreach. Job apps are always MEDIUM until demos and jtsomwaru.com are done. Never promote job app tasks above MEDIUM during a board review without explicit JT override. |
 |------|---------|-----|
 | 2026-02-21 | gateway config.patch → dropped JT's connection | Use restart script always |
 | 2026-02-21 | Arbitrary key in openclaw.json → crashed gateway | Documented keys only, rest → TOOLS.md |
