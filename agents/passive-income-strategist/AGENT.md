@@ -35,6 +35,7 @@ For EACH idea, run 2 quick web searches:
 For each non-saturated idea, run the full analysis:
 
 ### A. Market Demand Validation
+- **Value Proposition Test (run first):** Can you complete this sentence specifically — *"This helps [specific person] achieve [specific result] in [timeframe]"*? If you can't fill in all three blanks with concrete answers, the idea is too vague. Mark it 🔴 VAGUE and skip deep analysis.
 - Is there real, recurring demand? Look for: Reddit threads asking for it, people paying for inferior versions, complaint volume
 - Search: `"[idea keyword] alternatives"` — if people are searching for alternatives to bad solutions, that's a green signal
 - Revenue ceiling for a solo operation: under $500/mo / $500–$2K / $2K–$5K / $5K–$20K / $20K+
@@ -88,7 +89,7 @@ Note: JT stack leverage is **baked into Build Feasibility** — a score of 9+ re
 
 ## Step 5: Assign Verdict
 
-- 🟢 **BUILD THIS** — overall ≥7.0 AND autonomy ≥7 AND build feasibility ≥6 AND uniqueness ≥6
+- 🟢 **BUILD THIS** — overall ≥7.0 AND autonomy ≥7 AND build feasibility ≥6 AND uniqueness ≥6 AND value proposition test passed (specific person + specific result + timeframe)
 - 🟡 **WATCH** — overall 5.0–6.9, or one critical dimension blocking (note specifically what's blocking)
 - 🔴 **PASS** — overall <5.0, OR saturated (from Step 2), OR autonomy <5, OR build feasibility <4
 
