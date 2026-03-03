@@ -18,6 +18,14 @@
 - Direct, efficient. Expects Eve to figure things out. Corrects clearly.
 - NOT a developer — auto-disqualify roles requiring Apex/SFDX/ML engineering/hands-on coding
 
+## Opticfy Niche-Skill Matrix (locked 2026-03-03)
+| Skill | Primary Niche | Secondary Niche | Why |
+|-------|--------------|-----------------|-----|
+| **Agentforce** | Insurance (COVU anchor) | Mid-large PM/RE (Salesforce shops) | Requires Salesforce — only targets companies already on it |
+| **n8n** | Construction + Skilled Trades $5-20M (Aya reference) | Wholesale Distribution (NYC garment/food/hardware) | Stack-agnostic — targets ServiceTitan, Jobber, QuickBooks, NetSuite users |
+- Small PM companies (AppFolio/Buildium, not Salesforce) → n8n, not Agentforce
+- Upsell path: land construction/wholesale on n8n → as they grow onto Salesforce → sell Agentforce
+
 ## Opticfy (AI Consulting)
 - Target niches: wholesale distribution, property mgmt, construction, insurance ops, skilled trades (NYC)
 - New service (Feb 2026): Cowork Plugin Implementation — custom Claude Cowork plugins + marketplace
