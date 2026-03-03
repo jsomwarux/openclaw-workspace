@@ -268,6 +268,11 @@ Full spec: agents/skills-researcher/AGENT.md
 Daily film review (10AM heartbeat) | Weekly skills audit (Sunday synthesis) | Monthly goal-skills gap (1st of month cron) | Prompt library: skills/prompt-library/SKILL.md | Training log: memory/training/training-log.md
 Rule: every mistake entry = specific failure + root cause + concrete prevention rule. No exceptions.
 
+## Voice & Style Reference
+Content voice, tone preferences, and style corrections → `memory/FEEDBACK-LOG.md`
+Operational/process mistakes only → Mistakes Log below.
+When JT corrects tone, voice, or content style: update FEEDBACK-LOG.md, not here.
+
 ## Mistakes Log
 | Date | Mistake | Fix |
 | 2026-03-03 | Overnight agent flagged compaction.mode=safeguard as a regression, claimed it should be "aggressive" — mode doesn't exist in schema | Valid modes are only "default" and "safeguard". Safeguard is correct — preserves cache hits. Never change based on this flag again. |
