@@ -1,0 +1,48 @@
+# Databases
+health/health.sqlite
+knowledge/kb.sqlite
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# Logs
+*.log
+logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Node
+node_modules/
+.next/
+
+# Secrets / env (covered by global.env elsewhere)
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups (stored separately via backup.sh)
+backups/
+
+# Interventions log (ephemeral runtime state)
+interventions.jsonl
+
+# Spanish lesson audio (too large)
+spanish/audio/
+
+# Temp
+*.tmp
+*.swp

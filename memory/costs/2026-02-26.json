@@ -1,0 +1,123 @@
+{
+  "date": "2026-02-26",
+  "captured_at": "2026-02-26T07:00:02.744353+00:00",
+  "total_usd": 0.0,
+  "sessions": {
+    "agent:main:main": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 26,
+      "output_tokens": 536,
+      "cache_read": 256228,
+      "cache_write": 128496,
+      "total_tokens": 128504,
+      "cost_usd": 0.0,
+      "updated_at": 1772086196428
+    },
+    "agent:main:cron:undefined": {
+      "label": "Cron: Crypto Evening Pulse (9 PM)",
+      "model": "unknown",
+      "provider": "unknown",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772082596615
+    },
+    "agent:main:cron:undefined:run:fb6e2677-3bee-4e62-bee0-f0bb4af4d581": {
+      "label": "Cron: Crypto Evening Pulse (9 PM)",
+      "model": "unknown",
+      "provider": "unknown",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772082596585
+    },
+    "agent:main:cron:undefined:run:f03a7127-629c-41ba-8b86-43b4dbbf38f6": {
+      "label": "Cron: Crypto Evening Pulse (9 PM)",
+      "model": "unknown",
+      "provider": "unknown",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772082596591
+    },
+    "agent:main:cron:undefined:run:3731ece3-fa81-4aa2-bf63-242936b8c4c2": {
+      "label": "Cron: Crypto Evening Pulse (9 PM)",
+      "model": "unknown",
+      "provider": "unknown",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772082596598
+    },
+    "agent:main:cron:undefined:run:728ada72-254f-4599-825b-dfe16d67cffb": {
+      "label": "Cron: Crypto Evening Pulse (9 PM)",
+      "model": "unknown",
+      "provider": "unknown",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772082596603
+    },
+    "agent:main:cron:undefined:run:582e04e2-6977-430e-bebf-d98c0cfdb8fe": {
+      "label": "Cron: Crypto Evening Pulse (9 PM)",
+      "model": "unknown",
+      "provider": "unknown",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772082596609
+    },
+    "agent:main:cron:undefined:run:4a155ab3-43f4-409c-a43d-ed7da99fb85a": {
+      "label": "Cron: Crypto Evening Pulse (9 PM)",
+      "model": "unknown",
+      "provider": "unknown",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772082596615
+    }
+  },
+  "by_model": {
+    "claude-sonnet-4-6": {
+      "sessions": 1,
+      "input_tokens": 26,
+      "output_tokens": 536,
+      "cache_read": 256228,
+      "cache_write": 128496,
+      "cost_usd": 0.566846
+    },
+    "unknown": {
+      "sessions": 7,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "cost_usd": 0.0
+    }
+  },
+  "alerts_fired": [],
+  "_note": "Zeroed 2026-02-28: was calculated with wrong Anthropic API pricing. All Anthropic sessions use OAuth subscription ($0 real cost)."
+}

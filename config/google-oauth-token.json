@@ -1,0 +1,10 @@
+{
+  "token": "ya29.a0ATkoCc6dHRiu1P43DTAc1J2G-3sWKEpsisVvSFyqmOY_Krc8St7-D-s8gtw-ALCv-u-INEtvttqtcEOxn5HuzAMutpto6l12Wc3G_9KoxSQDB-0jaoK4WbaMkjGsCp_JnBEyCV56pL7FPcP_kDxNrl_xvqs5WTTMPWVteX-2lFmDs7MfXXy7XKkXdQZE1pc8iySU-2oaCgYKAcgSARESFQHGX2MitUYdu_PsyreSd-SppI1p3w0206",
+  "refresh_token": "1//05ONcFHtfgXw5CgYIARAAGAUSNwF-L9Ir-dTTaJEOSMAwf0sbA8ILanIZiweWpKC3luZ0psIH2ajqjOpKSBkFycFj_h0eioAHp60",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "client_id": "198129031851-jqcjtk6c2a8le986jjt1cmh7lmgn6uok.apps.googleusercontent.com",
+  "client_secret": "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",
+  "scopes": [
+    "https://www.googleapis.com/auth/drive"
+  ]
+}

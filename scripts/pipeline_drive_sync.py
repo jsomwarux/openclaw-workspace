@@ -1,0 +1,236 @@
+#!/usr/bin/env python3
+"""
+pipeline_drive_sync.py — Sync Opticfy client pipeline artifacts to Google Drive.
+
+Automatically uploads outreach drafts and presentation deck references for any
+pipeline client into the structured "Opticfy — Client Pipeline" Drive folder.
+
+Usage:
+  # Sync both artifacts for a client
+  python3 pipeline_drive_sync.py --slug hc-oswald --client "HC Oswald Supply Co"
+
+  # Sync only outreach draft
+  python3 pipeline_drive_sync.py --slug hc-oswald --client "HC Oswald Supply Co" --stage outreach
+
+  # Sync only presentation deck link
+  python3 pipeline_drive_sync.py --slug hc-oswald --client "HC Oswald Supply Co" --stage deck
+
+  # List all client folders in Drive
+  python3 pipeline_drive_sync.py --list
+
+Drive structure created:
+  Eve — Drafts/
+  └── Opticfy — Client Pipeline/
+      └── [Client Name]/
+          ├── [Client Name] — Outreach Draft     ← Google Doc (from outreach-draft.md)
+          └── [Client Name] — Presentation Deck  ← Google Doc (with Slides link + notes)
+
+Pipeline folder (local): ~/projects/opticfy-pipeline/clients/[slug]/
+Required files:
+  - outreach: clients/[slug]/outreach-draft.md
+  - deck:     clients/[slug]/deck-url.txt (URL to Google Slides)
+
+Auth: ~/.openclaw/workspace/config/google-oauth-token.json
+"""
+
+import argparse
+import json
+import os
+import sys
+import warnings
+from pathlib import Path
+
+warnings.filterwarnings("ignore")
+
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaInMemoryUpload
+from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
+
+TOKEN_PATH     = os.path.expanduser("~/.openclaw/workspace/config/google-oauth-token.json")
+ROOT_FOLDER    = "Eve — Drafts"
+PIPELINE_ROOT  = "Opticfy — Client Pipeline"
+CLIENTS_BASE   = os.path.expanduser("~/projects/opticfy-pipeline/clients")
+
+
+def get_drive():
+    if not os.path.exists(TOKEN_PATH):
+        print(f"ERROR: OAuth token not found at {TOKEN_PATH}")
+        print("Run: python3 ~/.openclaw/workspace/scripts/drive_auth.py")
+        sys.exit(1)
+
+    with open(TOKEN_PATH) as f:
+        td = json.load(f)
+
+    creds = Credentials(
+        token=td.get("token"),
+        refresh_token=td.get("refresh_token"),
+        token_uri=td.get("token_uri"),
+        client_id=td.get("client_id"),
+        client_secret=td.get("client_secret"),
+        scopes=td.get("scopes"),
+    )
+    if creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+        td["token"] = creds.token
+        with open(TOKEN_PATH, "w") as f:
+            json.dump(td, f, indent=2)
+
+    return build("drive", "v3", credentials=creds, cache_discovery=False)
+
+
+def find_folder(drive, name, parent_id=None):
+    q = f"name='{name}' and mimeType='application/vnd.google-apps.folder' and trashed=false"
+    if parent_id:
+        q += f" and '{parent_id}' in parents"
+    res = drive.files().list(q=q, fields="files(id,name)", spaces="drive").execute()
+    files = res.get("files", [])
+    return files[0]["id"] if files else None
+
+
+def get_or_create_folder(drive, name, parent_id):
+    fid = find_folder(drive, name, parent_id)
+    if fid:
+        return fid
+    meta = {
+        "name": name,
+        "mimeType": "application/vnd.google-apps.folder",
+        "parents": [parent_id],
+    }
+    f = drive.files().create(body=meta, fields="id").execute()
+    print(f"  📁 Created folder: {name}")
+    return f["id"]
+
+
+def create_doc(drive, title, content, folder_id):
+    media = MediaInMemoryUpload(content.encode("utf-8"), mimetype="text/plain", resumable=False)
+    meta = {
+        "name": title,
+        "mimeType": "application/vnd.google-apps.document",
+        "parents": [folder_id],
+    }
+    f = drive.files().create(body=meta, media_body=media, fields="id").execute()
+    return f"https://docs.google.com/document/d/{f['id']}/edit"
+
+
+def get_client_folder(drive, client_name):
+    """Get or create the Drive folder for this client."""
+    root_id     = find_folder(drive, ROOT_FOLDER)
+    if not root_id:
+        print(f"ERROR: '{ROOT_FOLDER}' not found in Drive.")
+        sys.exit(1)
+    pipeline_id = get_or_create_folder(drive, PIPELINE_ROOT, root_id)
+    client_id   = get_or_create_folder(drive, client_name, pipeline_id)
+    return client_id
+
+
+def sync_outreach(drive, slug, client_name, client_folder_id):
+    outreach_path = Path(CLIENTS_BASE) / slug / "outreach-draft.md"
+    if not outreach_path.exists():
+        print(f"  ⚠️  outreach-draft.md not found at {outreach_path} — skipping")
+        return None
+
+    content = outreach_path.read_text()
+    title   = f"{client_name} — Outreach Draft"
+    url     = create_doc(drive, title, content, client_folder_id)
+    print(f"  ✅ Outreach Draft → {url}")
+    return url
+
+
+def sync_deck(drive, slug, client_name, client_folder_id):
+    deck_url_path = Path(CLIENTS_BASE) / slug / "deck-url.txt"
+    deck_url = None
+    if deck_url_path.exists():
+        deck_url = deck_url_path.read_text().strip()
+
+    # Build a reference doc with the Slides link + client context
+    if deck_url:
+        content = f"""{client_name} — Presentation Deck
+
+Google Slides: {deck_url}
+
+---
+This is a reference document. Open the link above to access the full presentation deck.
+
+Client: {client_name}
+Pipeline Slug: {slug}
+Local path: ~/projects/opticfy-pipeline/clients/{slug}/
+"""
+    else:
+        content = f"""{client_name} — Presentation Deck
+
+Deck not yet built for this client.
+
+When the presentation agent completes, update deck-url.txt at:
+  ~/projects/opticfy-pipeline/clients/{slug}/deck-url.txt
+
+Then re-run:
+  python3 pipeline_drive_sync.py --slug {slug} --client "{client_name}" --stage deck
+"""
+
+    title = f"{client_name} — Presentation Deck"
+    url   = create_doc(drive, title, content, client_folder_id)
+    if deck_url:
+        print(f"  ✅ Presentation Deck reference → {url}")
+    else:
+        print(f"  ⚠️  Deck not built yet — placeholder created → {url}")
+    return url
+
+
+def list_clients(drive):
+    root_id = find_folder(drive, ROOT_FOLDER)
+    if not root_id:
+        print(f"'{ROOT_FOLDER}' not found.")
+        return
+    pipeline_id = find_folder(drive, PIPELINE_ROOT, root_id)
+    if not pipeline_id:
+        print(f"No '{PIPELINE_ROOT}' folder yet.")
+        return
+    print(f"\n{ROOT_FOLDER} / {PIPELINE_ROOT}/")
+    q = f"'{pipeline_id}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false"
+    clients = drive.files().list(q=q, fields="files(id,name)", orderBy="name").execute().get("files", [])
+    if not clients:
+        print("  (empty — no clients synced yet)")
+        return
+    for c in clients:
+        print(f"  📁 {c['name']}")
+        q2 = f"'{c['id']}' in parents and trashed=false"
+        docs = drive.files().list(q=q2, fields="files(id,name,mimeType)", orderBy="name").execute().get("files", [])
+        for d in docs:
+            icon = "📄" if "document" in d["mimeType"] else "📊"
+            print(f"      {icon} {d['name']}")
+    print()
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Sync Opticfy pipeline artifacts to Google Drive")
+    parser.add_argument("--slug",   help="Client slug (e.g. hc-oswald)")
+    parser.add_argument("--client", help='Client display name (e.g. "HC Oswald Supply Co")')
+    parser.add_argument("--stage",  choices=["outreach", "deck", "all"], default="all",
+                        help="Which artifact to sync (default: all)")
+    parser.add_argument("--list",   action="store_true", help="List all synced clients in Drive")
+    args = parser.parse_args()
+
+    drive = get_drive()
+
+    if args.list:
+        list_clients(drive)
+        return
+
+    if not args.slug or not args.client:
+        parser.error("--slug and --client are both required")
+
+    print(f"\n🔄 Syncing: {args.client} (stage={args.stage})")
+    client_folder_id = get_client_folder(drive, args.client)
+
+    if args.stage in ("outreach", "all"):
+        sync_outreach(drive, args.slug, args.client, client_folder_id)
+
+    if args.stage in ("deck", "all"):
+        sync_deck(drive, args.slug, args.client, client_folder_id)
+
+    print(f"\n📂 Drive: Eve — Drafts / {PIPELINE_ROOT} / {args.client}\n")
+
+
+if __name__ == "__main__":
+    main()

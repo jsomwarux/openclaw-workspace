@@ -1,0 +1,22 @@
+{
+  "total_runs": 0,
+  "last_run": null,
+  "run_dates": [],
+  "ideas_pushed_to_mc": [],
+  "active_properties": [
+    {
+      "name": "Nash Satoshi",
+      "status": "built_stalled",
+      "url": null,
+      "monetization": "tbd",
+      "notes": "4-LLM ensemble crypto rankings — needs monetization model + marketing activation"
+    },
+    {
+      "name": "Glow Index",
+      "status": "built_stalled",
+      "url": "replit",
+      "monetization": "tbd",
+      "notes": "Skincare rankings — blocked on n8n workflow + ngrok URL"
+    }
+  ]
+}

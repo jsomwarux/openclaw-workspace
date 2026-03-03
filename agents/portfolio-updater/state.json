@@ -1,0 +1,21 @@
+{
+  "addedSlugs": [
+    "construction-tracker",
+    "streeteasy-scraper",
+    "nash-satoshi",
+    "vista",
+    "glow-index",
+    "opticfy-pipeline"
+  ],
+  "lastReorderDate": "2026-03-02",
+  "lastRun": "2026-03-02",
+  "demandScoreCache": {
+    "opticfy-pipeline": 46,
+    "construction-tracker": 22,
+    "streeteasy-scraper": 18,
+    "nash-satoshi": 26,
+    "vista": 9,
+    "glow-index": 13
+  },
+  "flaggedPending": []
+}
