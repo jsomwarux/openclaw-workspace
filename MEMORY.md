@@ -42,7 +42,7 @@
 - Strategy: Aya is becoming an anchor client. Each project extends runway and builds referral credibility within their network. Keep relationship warm.
 
 ## Active Apps
-- Vista: movie rating app — pending App Store review
+- Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
 - Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private)
 - Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL
 - jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Updated 2026-02-27: custom Framer Motion graphics on all 5 portfolio cards, hero subtitle updated, Zapier removed from About
