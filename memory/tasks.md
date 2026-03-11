@@ -17,7 +17,7 @@ _Managed by Eve. Updated during heartbeats and on request._
   7. Apply at: https://jobs.technyc.org/companies/squarespace/jobs/68335131-people-ai-solutions-architect
   | Added: 2026-02-24
 
-- [x] ~~**Apply to Salesforce Lead Agentforce SE**~~ — **REMOVED** (2026-02-24). Score 24/25 but determined too technical for JT's background. Not pursuing.
+- [x] **Apply to Salesforce Lead Agentforce SE** — ✅ SUBMITTED. Score 24/25, $148K–$198K NYC. JT reconsidered after initial removal (2026-02-24) — application confirmed done in Mission Control. Deadline 03/27/2026 — watch for interview/follow-up. Link: https://careers.salesforce.com/en/jobs/jr329627/
 
 - [x] **jtsomwaru.com — Personal Website** — ✅ LIVE as of 2026-02-24 ~5:30 PM EST
   - URL: https://jtsomwaru.com (also www.jtsomwaru.com)
@@ -32,7 +32,7 @@ _Managed by Eve. Updated during heartbeats and on request._
   1. Draft 5 first — "Amodei 50% jobs" single tweet → @jts_14: https://docs.google.com/document/d/1w6C5ioIJXclXl7kqRmRUzGCvQvyY2B7YhzSWcWl7fHU/edit
   2. Wait 30 min, then Draft 4 — "Chatbot era is over" 6-tweet thread → @jts_14: https://docs.google.com/document/d/1rmJrZycQbRv0W4-Xh5WGTqofxGZED9UvMLcBW9P4vo8/edit
   3. Tonight: Draft 6 — "DeepSeek V4 + x402" thread → @jt__crypto: https://docs.google.com/document/d/1KfizUNZXNjnoI92dB1EldTjLE1_6wr3DJrn1U2oAGGc/edit
-  4. This week: Draft 1 (x402+Stripe) → @jt__crypto | Draft 2 (Opticfy founding story) → @jts_14
+  4. This week: Draft 1 (x402+Stripe) → @jt__crypto | Draft 2 (JT Somwaru Consulting founding story) → @jts_14
   5. Hold Draft 3 (Nash Satoshi teaser) until landing page is live
   | Updated: 2026-02-24
 
@@ -52,7 +52,7 @@ _Managed by Eve. Updated during heartbeats and on request._
   **Steps:**
   1. Tell Eve: "Build AgentGuard — spawn coding agent in ~/projects/agentguard"
   2. Eve scaffolds: n8n workflow + confidence scoring logic + SQLite audit log + weekly report
-  3. Test with an existing Opticfy workflow (e.g. Aya dashboard)
+  3. Test with an existing JT Somwaru Consulting workflow (e.g. Aya dashboard)
   4. Get a public demo URL (Ngrok or Vercel deployment)
   5. Add to jtsomwaru.com /work page with live demo link
   6. Add to resume/LinkedIn: "Implemented human oversight checkpoints, decision logging, responsible deployment practices"
@@ -70,11 +70,11 @@ _Managed by Eve. Updated during heartbeats and on request._
   **Estimated build time:** 1–2 days
   | Added: 2026-02-24
 
-- [ ] **AI Research Demo — Public-Facing Niche Monitor** — Build a live demo: enter a company name → get a structured AI automation opportunity brief. Makes Opticfy service tangible.
+- [ ] **AI Research Demo — Public-Facing Niche Monitor** — Build a live demo: enter a company name → get a structured AI automation opportunity brief. Makes consulting service tangible.
   **Steps:**
   1. Tell Eve: "Build a public research demo UI — Next.js form → research agent → structured brief output"
   2. Eve builds lightweight Next.js app with the demo interface
-  3. Deploy to Vercel (subdomain: demo.jtsomwaru.com or research.opticfy.ai)
+  3. Deploy to Vercel (subdomain: demo.jtsomwaru.com or research.jt-consulting.ai)
   4. Embed on jtsomwaru.com /work page
   **Estimated build time:** 1 day
   | Added: 2026-02-24
@@ -112,7 +112,7 @@ _Managed by Eve. Updated during heartbeats and on request._
 
 ---
 
-## 🟡 Opticfy — Business Development
+## 🟡 JT Somwaru Consulting — Business Development
 
 - [ ] **Pitch distressed property platform to NYC brokers** — Aya said the acquisitions dashboard wasn't a fit because they source deals through broker relationships — which means brokers are the right ICP. Brokers need deal intelligence to surface properties for buyers like Aya. Product is already built (or nearly so). Pivot the pitch, not the product.
   **Steps:**
@@ -122,12 +122,12 @@ _Managed by Eve. Updated during heartbeats and on request._
   4. Goal: 2–3 broker conversations → refine product fit → potentially resell the platform or offer as SaaS
   | Added: 2026-02-27
 
-- [ ] **Research enterprise platforms beyond Agentforce for Opticfy** — Agentforce is one vertical (Salesforce users). Research other platforms already embedded in businesses where JT can build Claude Code agents: ServiceNow, HubSpot, Monday.com, Zendesk, SAP, Oracle, Notion, Airtable. Goal: expand Opticfy's service menu beyond Salesforce shops.
+- [ ] **Research enterprise platforms beyond Agentforce for consulting** — Agentforce is one vertical (Salesforce users). Research other platforms already embedded in businesses where JT can build Claude Code agents: ServiceNow, HubSpot, Monday.com, Zendesk, SAP, Oracle, Notion, Airtable. Goal: expand JT Somwaru Consulting's service menu beyond Salesforce shops.
   **Steps:**
   1. Tell Eve: "Research enterprise platforms with AI/automation extension points — which have APIs, agent frameworks, or plugin systems JT could build on"
   2. Evaluate each: market size, difficulty to build on, how many SMBs use it, overlap with current niches
   3. Pick top 2–3 → document in memory/research/enterprise-platforms.md
-  4. Update Opticfy services page + outreach templates for the best new platform
+  4. Update consulting services page + outreach templates for the best new platform
   | Added: 2026-02-27
 
 - [ ] **Research web app types similar to Aya construction tracker** — The construction dashboard is a proven format: real-time data → AI summaries → stakeholder views. Research what other industries need the same pattern. Find 5–10 other "personalized ops dashboard" opportunities for NYC SMBs.
@@ -135,7 +135,7 @@ _Managed by Eve. Updated during heartbeats and on request._
   1. Tell Eve: "Research industries where the Aya construction tracker pattern applies — what data do they track, who are the stakeholders, what's the pain"
   2. Examples to explore: property management (leasing pipeline), insurance (claims tracker), wholesale (inventory + order status), skilled trades (job site progress)
   3. Output: ranked list of 5 app types with ICP, pain point, and rough build complexity
-  4. Use output to inform next 3 Opticfy prospect pitches + add to jtsomwaru.com /work pipeline
+  4. Use output to inform next 3 prospect pitches + add to jtsomwaru.com /work pipeline
   | Added: 2026-02-27
 
 - [ ] **Spectrum outreach — Claude Cowork pitch** — JT has inside workflow knowledge from 6 years there. Pitch governed Enterprise Cowork vs previous shadow IT concern.
@@ -144,11 +144,11 @@ _Managed by Eve. Updated during heartbeats and on request._
   2. Send LinkedIn DM or email: "Hey [name] — I've been building AI automation systems since I left. Anthropic just launched something that directly addresses the data security concerns Spectrum had. Would love to show you for 20 min."
   3. In the demo: lead with governance (admin controls, no training, ZDR, audit logs)
   4. Show a concrete workflow you know they need (product catalog documentation, onboarding runbooks, vendor eval)
-  5. Propose: Opticfy scopes the right workflows + builds the plugins + trains the team
+  5. Propose: JT Somwaru Consulting scopes the right workflows + builds the plugins + trains the team
   6. Target workflows to pitch: process docs, standup summaries, offer letters, internal KB — NOT subscriber data or CPNI
   | Added: 2026-02-24
 
-- [ ] **Opticfy: Add Cowork Plugin Implementation as a Service** — New offering: assess workflows, build custom plugins, launch private marketplace, train teams.
+- [ ] **JT Somwaru Consulting: Add Cowork Plugin Implementation as a Service** — New offering: assess workflows, build custom plugins, launch private marketplace, train teams.
   **Steps:**
   1. Define the service scope (Eve can draft): discovery session → plugin design → build → deploy → training
   2. Add to jtsomwaru.com /services page
@@ -157,7 +157,7 @@ _Managed by Eve. Updated during heartbeats and on request._
   5. Use Cowork construction demo as proof point in outreach
   | Added: 2026-02-24
 
-- [ ] **Opticfy: first 50 leads researched** — Use research agent to find NYC prospects in target niches.
+- [ ] **JT Somwaru Consulting: first 50 leads researched** — Use research agent to find NYC prospects in target niches.
   **Steps:**
   1. `cd ~/projects/research-agent`
   2. Tell Eve or spawn coding agent: "Research 10 wholesale distribution prospects in NYC — run the research pipeline and output to clients/"
@@ -167,7 +167,7 @@ _Managed by Eve. Updated during heartbeats and on request._
   6. Draft outreach email (Eve can write) — lead with specific automation opportunity for their niche
   | Updated: 2026-02-22
 
-- [ ] **Opticfy: design pipeline agent handoff schema** — Standardize client brief JSON so all 4 agents share consistent handoff format.
+- [ ] **JT Somwaru Consulting: design pipeline agent handoff schema** — Standardize client brief JSON so all 4 agents share consistent handoff format.
   **Steps:**
   1. Read current research agent output: `~/projects/research-agent/clients/`
   2. Tell Eve: "Design a standard client brief schema — JSON with fields for company, niche, pain points, recommended automation, demo type, expected ROI"
@@ -176,10 +176,10 @@ _Managed by Eve. Updated during heartbeats and on request._
   5. Commit and push both repos
   | Added: 2026-02-22
 
-- [ ] **Opticfy: build first demo deck (construction niche)** — Aya dashboard is the proof point; 10-slide deck for NYC contractor pitch.
+- [ ] **JT Somwaru Consulting: build first demo deck (construction niche)** — Aya dashboard is the proof point; 10-slide deck for NYC contractor pitch.
   **Steps:**
-  1. Tell Eve: "Build a 10-slide Opticfy construction pitch deck — Google Slides via Drive API, save to Eve — Drafts/Opticfy/Case Studies"
-  2. Slides: Problem → Opticfy solution → Aya case study → ROI → how it works → next steps
+  1. Tell Eve: "Build a 10-slide JT Somwaru Consulting construction pitch deck — Google Slides via Drive API, save to Eve — Drafts/JT Somwaru Consulting/Case Studies"
+  2. Slides: Problem → JT Somwaru Consulting solution → Aya case study → ROI → how it works → next steps
   3. Review and edit in Google Slides
   4. Use as leave-behind in all construction niche outreach
   | Added: 2026-02-21
@@ -292,7 +292,7 @@ _Managed by Eve. Updated during heartbeats and on request._
 - [x] **n8n agent imported** — cloned to `~/projects/n8n-agent/` | Done: 2026-02-22
 - [x] **Agentforce agent imported** — cloned to `~/projects/agentforce-agent/`, sf CLI installed, `jt-dev` org authenticated | Done: 2026-02-22
 - [x] **Research agent built** — `~/projects/research-agent/` with 5 niche files | Done: 2026-02-22
-- [x] **Opticfy competitive landscape research** — full report at `memory/research/opticfy-competitive-landscape-2026-02-22.md` | Done: 2026-02-22
+- [x] **JT Somwaru Consulting competitive landscape research** — full report at `memory/research/jt-consulting-competitive-landscape-2026-02-22.md` | Done: 2026-02-22
 - [x] **Launch Mission Control dashboard** — LaunchAgents live, always-on at http://localhost:3000 | Done: 2026-02-21
 - [x] **Nash Satoshi: niche expansion research** — scored all 5; baby products #1, skincare #2 | Done: 2026-02-21
 - [x] **Crypto agent allocation history system** — saves daily JSON, tomorrow's brief compares vs today | Done: 2026-02-24

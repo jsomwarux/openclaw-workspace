@@ -1,21 +1,40 @@
 {
   "addedSlugs": [
-    "construction-tracker",
-    "streeteasy-scraper",
-    "nash-satoshi",
+    "insurance-service-agent",
     "vista",
     "glow-index",
-    "opticfy-pipeline"
+    "opticfy-pipeline",
+    "pm-tenant-service-agent",
+    "construction-tracker",
+    "lending-application-agent",
+    "nash-satoshi",
+    "streeteasy-scraper",
+    "pm-operations-agent",
+    "ai-insurance-claims-triage",
+    "ai-lead-qualification",
+    "wholesale-inventory-reorder",
+    "construction-trades-workflow",
+    "adversight-ai",
+    "b2b-account-service-agent",
+    "n8n-support-triage"
   ],
-  "lastReorderDate": "2026-03-02",
-  "lastRun": "2026-03-02",
+  "lastReorderDate": "2026-03-10",
+  "lastRun": "2026-03-10",
   "demandScoreCache": {
     "opticfy-pipeline": 46,
     "construction-tracker": 22,
     "streeteasy-scraper": 18,
-    "nash-satoshi": 26,
+    "nash-satoshi": 20,
     "vista": 9,
-    "glow-index": 13
+    "glow-index": 13,
+    "b2b-account-service-agent": 27,
+    "pm-tenant-service-agent": 34,
+    "insurance-service-agent": 34,
+    "ai-insurance-claims-triage": 16,
+    "n8n-support-triage": 16,
+    "adversight-ai": 16,
+    "wholesale-inventory-reorder": 16,
+    "construction-trades-workflow": 8
   },
   "flaggedPending": []
 }

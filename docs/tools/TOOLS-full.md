@@ -407,7 +407,7 @@ OpenRouter models are tracked by the cost-tracker. Since OpenRouter's pricing va
 **CLI:** `bun kb.ts <command>` (run from the knowledge/ dir)
 
 ### Categories
-- `business` — Opticfy, clients, market research, competitors
+- `business` — JT Somwaru Consulting, clients, market research, competitors
 - `tech` — AI tools, models, APIs, dev discoveries
 - `crypto` — Market analysis, token research, trends
 - `personal` — Health, goals, habits, reflections
@@ -450,15 +450,15 @@ bun kb.ts stats
 
 ---
 
-## Opticfy Agent Projects
+## JT Somwaru Consulting Agent Projects
 
 All agents live at `~/projects/` and are Claude Code workspaces. Invoke them via the coding-agent skill.
 
-### Opticfy Client Pipeline (5-stage)
+### Consulting Client Pipeline (5-stage)
 
-Shared data: `~/projects/opticfy-pipeline/clients/[slug]/`
-Pipeline tracker: `~/projects/opticfy-pipeline/pipeline.md`
-Orchestration skill: `~/.openclaw/workspace/skills/opticfy-pipeline/SKILL.md`
+Shared data: `~/projects/jt-consulting-pipeline/clients/[slug]/`
+Pipeline tracker: `~/projects/jt-consulting-pipeline/pipeline.md`
+Orchestration skill: `~/.openclaw/workspace/skills/jt-consulting-pipeline/SKILL.md`
 
 Flow: `Research → Analysis → [JT Review] → n8n Build → Presentation → Outreach → [JT Send]`
 
@@ -470,7 +470,7 @@ Read the skill BEFORE running any pipeline stage.
 - **GitHub:** `git@github.com:jsomwarux/research-agent.git`
 - **Purpose:** Finds and profiles prospects. Initial research, pain signals, receptiveness, platform fit. Outputs research.md only (not brief.json — that's Analysis Agent's job).
 - **Niches:** Wholesale Distribution, Insurance Operations, Construction/Trades, Real Estate Operations, Logistics/Freight
-- **Output:** `~/projects/opticfy-pipeline/clients/[slug]/research.md`
+- **Output:** `~/projects/jt-consulting-pipeline/clients/[slug]/research.md`
 - **Lessons:** `tasks/lessons.md` | Niche files: `niches/`
 - **Invoke:** `spawn coding-agent in ~/projects/research-agent — task: [research request]`
 - **Discovery mode:** "Find me 5 prospects in [niche]" → shortlist → JT selects → full research → PIPELINE_HANDOFF
@@ -480,7 +480,7 @@ Read the skill BEFORE running any pipeline stage.
 - **GitHub:** (not yet pushed — run: `gh repo create jsomwarux/analysis-agent --private --source=. --push`)
 - **Purpose:** Deep process analysis. Maps target workflow step-by-step, inventories integrations, writes precise automation spec. Outputs full brief.json + brief.md for JT review.
 - **Input:** PIPELINE_INPUT task prompt with research.md path
-- **Output:** `analysis.md`, `brief.json`, `brief.md` → all in `~/projects/opticfy-pipeline/clients/[slug]/`
+- **Output:** `analysis.md`, `brief.json`, `brief.md` → all in `~/projects/jt-consulting-pipeline/clients/[slug]/`
 - **Brief schema:** `~/projects/research-agent/templates/brief-schema.json`
 - **Invoke:** `spawn coding-agent in ~/projects/analysis-agent — task: [PIPELINE_INPUT block]`
 

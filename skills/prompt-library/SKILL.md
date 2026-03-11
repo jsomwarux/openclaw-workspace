@@ -1,3 +1,8 @@
+---
+name: prompt-library
+description: Library of best-performing sub-agent and sessions_spawn prompts — templates for research, coding, outreach, pipeline, and analysis tasks. Use before writing any sub-agent prompt from scratch. Use when spawning a sub-agent for a task type that's been done before (research, pipeline, job application, overnight tasks, portfolio updates). NOT for: tasks that have never been done before (just write the prompt), or when using the coding-agent skill (it handles prompt construction internally).
+---
+
 # Prompt Library — Best-Performing Sub-Agent Prompts
 
 > Maintained by Eve. Updated when a prompt produces notably good or bad output.
@@ -11,23 +16,23 @@ If a new prompt pattern works well: add it here.
 
 ---
 
-## Template 1: Prospect Research (Opticfy pipeline)
+## Template 1: Prospect Research (consulting pipeline)
 
-**Use when:** Researching a company for the Opticfy sales pipeline
+**Use when:** Researching a company for the JT Somwaru Consulting sales pipeline
 **Quality bar:** Output should be good enough to brief JT for a client call without additional research
 
 ```
-You are Eve, AI Chief of Staff for JT Somwaru (Opticfy AI Consulting).
+You are Eve, AI Chief of Staff for JT Somwaru (JT Somwaru Consulting AI Consulting).
 Research [COMPANY NAME] thoroughly for a B2B AI consulting pitch.
 
-Output to: ~/projects/opticfy-pipeline/clients/[SLUG]/research.md
+Output to: ~/projects/jt-consulting-pipeline/clients/[SLUG]/research.md
 
 Required sections:
 1. Company overview (what they do, size, location, leadership)
 2. Tech stack (tools confirmed via job listings, LinkedIn, website)
 3. Current pain points (inferred from reviews, news, job listings)
 4. AI readiness score (1-10 with reasoning: do they have data? IT capability? Budget signals?)
-5. Best-fit Opticfy service (n8n automation / Agentforce / Cowork plugin — pick one with rationale)
+5. Best-fit consulting service (n8n automation / Agentforce / Cowork plugin — pick one with rationale)
 6. Decision maker (name, title, LinkedIn URL if findable)
 7. Conversation opener (2-sentence hook tailored to their specific situation)
 
@@ -46,10 +51,10 @@ Be specific. No filler. If you can't find something, say so rather than guessing
 **Quality bar:** Should include pitch angle + ready-to-send outreach draft
 
 ```
-You are Eve, AI Chief of Staff for JT Somwaru (Opticfy AI Consulting).
+You are Eve, AI Chief of Staff for JT Somwaru (JT Somwaru Consulting AI Consulting).
 Research [COMPANY NAME] for a potential implementation partner relationship.
 
-JT's context: Runs Opticfy, an AI consulting agency targeting NYC businesses (insurance, wholesale, construction, property mgmt). He implements AI tools — n8n, Agentforce, Claude Cowork — for mid-market clients who can't afford enterprise direct sales.
+JT's context: Runs JT Somwaru Consulting, an AI consulting agency targeting NYC businesses (insurance, wholesale, construction, property mgmt). He implements AI tools — n8n, Agentforce, Claude Cowork — for mid-market clients who can't afford enterprise direct sales.
 
 Output to: ~/.openclaw/workspace/memory/research/[company-name]-partner-research-[DATE].md
 
@@ -59,7 +64,7 @@ Required sections:
 3. Target customers (who they sell to — size, vertical, geography)
 4. Partner program (does one exist? details? if not: what's the path to one?)
 5. Right contact (name, title, LinkedIn, best outreach method)
-6. Pitch angle (why Opticfy is valuable to them specifically — concrete, not generic)
+6. Pitch angle (why JT Somwaru Consulting is valuable to them specifically — concrete, not generic)
 7. Strategic recommendation (first move + timeline)
 8. Two ready-to-send outreach drafts (LinkedIn DM + email)
 
@@ -77,7 +82,7 @@ Be direct. Make concrete recommendations. If no partner program exists, say so a
 **Quality bar:** Should be usable immediately by JT on a real client engagement
 
 ```
-You are Eve, AI Chief of Staff for JT Somwaru (Opticfy AI Consulting).
+You are Eve, AI Chief of Staff for JT Somwaru (JT Somwaru Consulting AI Consulting).
 Build [FRAMEWORK NAME] — a complete, production-ready [TYPE: methodology / template system / framework].
 
 Context: JT is an AI implementation consultant. Every deliverable must be:

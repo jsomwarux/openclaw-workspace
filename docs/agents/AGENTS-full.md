@@ -256,7 +256,7 @@ Examples:
 ```
 [DECISION] Chose OpenRouter for non-Anthropic models over direct API keys because setup overhead isn't worth it until a model costs >$5/mo.
 [DECISION] Chose Sonnet as default over Opus because caching makes it effectively as capable for 80% of tasks at 20% the cost.
-[DECISION] Chose n8n over Make.com for Opticfy client automation because self-hosted = no per-task pricing at scale.
+[DECISION] Chose n8n over Make.com for consulting client automation because self-hosted = no per-task pricing at scale.
 ```
 
 These compound into a decision history that prevents re-litigating settled questions.
@@ -649,7 +649,7 @@ Match the level of detail in instructions to how fragile the task is.
 **The mental model: narrow bridge = exact steps, open field = general direction.**
 
 - Narrow bridge (dangerous/fragile): "Run `launchctl unload ~/Library/LaunchAgents/ai.openclaw.gateway.plist && sleep 3 && launchctl load ~/Library/LaunchAgents/ai.openclaw.gateway.plist`" — not "restart the gateway somehow"
-- Open field (creative): "Draft a LinkedIn post about Opticfy's Cowork offering — punchy, specific, not corporate" — not a 12-step content spec
+- Open field (creative): "Draft a LinkedIn post about JT Somwaru Consulting's Cowork offering — punchy, specific, not corporate" — not a 12-step content spec
 
 When writing prompts for sub-agents, cron jobs, or coding agents: **ask yourself how bad a misinterpretation would be**. Calibrate detail accordingly.
 

@@ -52,7 +52,7 @@ The Phoenix transformer predicts probabilities for each action. Weighted score =
 
 | Niche | Best Format | Reply Hook Strategy |
 |-------|------------|-------------------|
-| AI Consulting (Opticfy) | Hot Take, Data Drop | Challenge a common vendor claim |
+| AI Consulting | Hot Take, Data Drop | Challenge a common vendor claim |
 | AI Agents | Bold Prediction, Contrarian | Predict something specific about where agents are going |
 | Crypto / x402 | Data Drop, Contrarian | State a position on a coin/narrative most people haven't heard |
 | Job Market | Personal Story, Data Surprise | Share something from your own job search experience |

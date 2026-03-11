@@ -8,6 +8,6 @@
 | skill-creator | /opt/homebrew/lib/node_modules/openclaw/skills/skill-creator/ | Create new skills |
 | qmd | ~/.openclaw/workspace/skills/qmd/ | Local BM25 + vector search |
 | x-research | ~/.openclaw/workspace/skills/x-research/ | X/Twitter research, real-time discourse |
-| opticfy-pipeline | ~/.openclaw/workspace/skills/opticfy-pipeline/ | 5-stage client pipeline orchestration |
+| jt-consulting-pipeline | ~/.openclaw/workspace/skills/jt-consulting-pipeline/ | 5-stage client pipeline orchestration |
 
 Custom skills → workspace/skills/. Add row here when installed.

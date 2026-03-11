@@ -1,8 +1,26 @@
 {
-  "total_runs": 0,
-  "last_run": null,
-  "run_dates": [],
-  "ideas_pushed_to_mc": [],
+  "total_runs": 1,
+  "last_run": "2026-03-08",
+  "run_dates": ["2026-03-08"],
+  "ideas_pushed_to_mc": [
+    {
+      "title": "SupplementScore",
+      "date": "2026-03-08",
+      "task_id": "j57ac70fxy8zn3h8gp8nwezx5x82gcwt",
+      "methodology": "Data/Rankings Flywheel",
+      "scout_report": "memory/passive-income/2026-03-08-scout.md"
+    },
+    {
+      "title": "CryptoTaxNomad",
+      "date": "2026-03-08",
+      "task_id": "j576kxhat4m1qrjarxbw1te0sn82gx4f",
+      "methodology": "Temporal Mismatch Mining + Lateral Combination",
+      "scout_report": "memory/passive-income/2026-03-08-scout.md",
+      "strategist_report": "memory/passive-income/2026-03-08-strategist.md",
+      "score": 7.8,
+      "verdict": "BUILD THIS"
+    }
+  ],
   "active_properties": [
     {
       "name": "Nash Satoshi",
@@ -17,6 +35,16 @@
       "url": "replit",
       "monetization": "tbd",
       "notes": "Skincare rankings — blocked on n8n workflow + ngrok URL"
+    }
+  ],
+  "strategist_runs": [
+    {
+      "date": "2026-03-08",
+      "ideas_evaluated": 6,
+      "green": ["SupplementScore", "CryptoTaxNomad"],
+      "yellow": ["AncestryCanvas", "QuotePilot", "CapTableSplit"],
+      "red": ["SiteAudit.AI"],
+      "report": "memory/passive-income/2026-03-08-strategist.md"
     }
   ]
 }

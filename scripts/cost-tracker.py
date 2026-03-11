@@ -421,6 +421,40 @@ def brief() -> str:
     lines.append(f"Month real API spend: *${month_total:.2f}* / ${MONTHLY_TARGET:.0f} target {status}")
     lines.append(f"  [{bar}] {budget_pct:.0f}%")
 
+    # X API costs
+    import json as _json
+    from datetime import timedelta as _td
+    x_log = os.path.join(COSTS_DIR, "x-api.jsonl")
+    x_today = 0.0
+    x_week = 0.0
+    x_month = 0.0
+    X_WEEKLY_TARGET = 10.0
+    if os.path.exists(x_log):
+        try:
+            week_ago = (datetime.now(tz=TZ_EST) - _td(days=7)).strftime("%Y-%m-%d")
+            x_month_str = today_dt.strftime("%Y-%m")
+            with open(x_log) as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        entry = _json.loads(line)
+                        d = entry.get("date", "")
+                        c = entry.get("cost_usd", 0)
+                        if d == today:
+                            x_today += c
+                        if d >= week_ago:
+                            x_week += c
+                        if d.startswith(x_month_str):
+                            x_month += c
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+    x_status = "✅" if x_week < X_WEEKLY_TARGET * 0.8 else ("⚠️" if x_week < X_WEEKLY_TARGET else "🚨")
+    lines.append(f"𝕏 API (this week): *${x_week:.2f}* / ${X_WEEKLY_TARGET:.0f} target {x_status}  (today: ${x_today:.3f} | month: ${x_month:.2f})")
+
     return "\n".join(lines)
 
 

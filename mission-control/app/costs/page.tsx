@@ -15,6 +15,11 @@ type CostData = {
   daily_trend: { date: string; total_usd: number }[];
   alerts: { type: string; message: string; level: "warning" | "critical" }[];
   thresholds: { session: number; daily: number; monthly: number; goal: number };
+  x_api?: {
+    today_usd: number; week_usd: number; month_usd: number;
+    weekly_pace_usd: number; weekly_target_usd: number;
+    daily_breakdown: Record<string, number>;
+  };
 };
 
 function fmt(n: number) { return `$${n.toFixed(3)}`; }
@@ -236,6 +241,49 @@ export default function CostsPage() {
           <span className="text-[9px] text-emerald-500">today ▲</span>
         </div>
       </div>
+
+      {/* X API costs */}
+      {data.x_api && (
+        <div className="bg-[#111] border border-[#2a2a2a] rounded-lg p-4 mb-4">
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-[10px] text-zinc-500 uppercase tracking-wider">𝕏 API Spend</p>
+            <span className="text-[9px] text-zinc-600">target: {fmtShort(data.x_api.weekly_target_usd)}/wk</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
+            <div>
+              <p className="text-[9px] text-zinc-600">Today</p>
+              <p className="text-sm font-bold font-mono text-zinc-100">{fmt(data.x_api.today_usd)}</p>
+            </div>
+            <div>
+              <p className="text-[9px] text-zinc-600">This Week</p>
+              <p className={cn("text-sm font-bold font-mono", data.x_api.week_usd >= data.x_api.weekly_target_usd ? "text-red-400" : data.x_api.week_usd >= data.x_api.weekly_target_usd * 0.8 ? "text-yellow-400" : "text-zinc-100")}>
+                {fmt(data.x_api.week_usd)}
+              </p>
+            </div>
+            <div>
+              <p className="text-[9px] text-zinc-600">Weekly Pace</p>
+              <p className={cn("text-sm font-bold font-mono", data.x_api.weekly_pace_usd >= data.x_api.weekly_target_usd ? "text-red-400" : data.x_api.weekly_pace_usd >= data.x_api.weekly_target_usd * 0.8 ? "text-yellow-400" : "text-emerald-400")}>
+                {fmt(data.x_api.weekly_pace_usd)}
+              </p>
+            </div>
+            <div>
+              <p className="text-[9px] text-zinc-600">This Month</p>
+              <p className="text-sm font-bold font-mono text-zinc-100">{fmt(data.x_api.month_usd)}</p>
+            </div>
+          </div>
+          {/* Weekly budget bar */}
+          <div className="h-1.5 bg-[#2a2a2a] rounded-full overflow-hidden">
+            <div
+              className={cn("h-full rounded-full transition-all",
+                data.x_api.week_usd >= data.x_api.weekly_target_usd ? "bg-red-500" :
+                data.x_api.week_usd >= data.x_api.weekly_target_usd * 0.8 ? "bg-yellow-500" : "bg-sky-500/70"
+              )}
+              style={{ width: `${Math.min((data.x_api.week_usd / data.x_api.weekly_target_usd) * 100, 100)}%` }}
+            />
+          </div>
+          <p className="text-[9px] text-zinc-600 mt-1">{((data.x_api.week_usd / data.x_api.weekly_target_usd) * 100).toFixed(0)}% of weekly {fmtShort(data.x_api.weekly_target_usd)} target</p>
+        </div>
+      )}
 
       {/* By model — month */}
       {modelEntries.length > 0 && (

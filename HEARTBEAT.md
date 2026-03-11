@@ -10,14 +10,22 @@ Deliver to JT via Telegram:
 3. Read memory/niche-monitor-latest.md — severity-filtered intel
 4. Read ~/projects/job-market-agent/data/daily-brief.md — roles (18+/25) + skill gaps + build ideas
 5. Run `python3 scripts/cost-tracker.py --brief` — include as 💰 API Costs section
+
+5. Run `python3 health/todays-workout.py` — include as 🏋️ Today's Workout section
 6. Send: punchy bullets, one concrete action. Title: "🌅 Morning Brief — [date]"
 
-Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Niche Intel (🔴🟠 only) | 💼 Job Market | 💰 API Costs | 💡 One concrete action
+Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Niche Intel (🔴🟠 only) | 💼 Job Market | 💰 API Costs | 🏋️ Today's Workout | 💡 One concrete action
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK
 2. Read memory/tasks.md — urgent/overdue items?
 3. Run `python3 scripts/cost-tracker.py --check-alerts` — if non-empty array, send each alert to JT via Telegram immediately
+3a. **Cron health check (every heartbeat — non-negotiable):**
+   - Call `cron list` and scan ALL jobs for `consecutiveErrors >= 2` OR `lastRunStatus: "error"`
+   - For each failing job: diagnose the cause (timeout? bad path? missing file?) and fix it autonomously — adjust timeout, fix the payload, update the schedule as needed
+   - If fix is non-obvious or requires JT input: alert JT via Telegram with job name + error + what you tried
+   - Log what was fixed in today's daily note under ## Heartbeat HH:MM
+   - Never leave a cron with consecutiveErrors >= 2 unaddressed
 4. **10AM only — Daily Film Review (non-negotiable):**
    - Read yesterday's `memory/YYYY-MM-DD.md`
    - Find: one mistake, one friction point, or one thing that took longer than it should have
@@ -31,6 +39,11 @@ Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Nic
    Skip if lesson wasn't delivered today (cron handles that) or already complete.
 6. If nothing urgent → pick one proactive work item (see below)
 7. Log what you did in memory/YYYY-MM-DD.md under ## Heartbeat HH:MM
+
+## Proactive Work Deduplication Rule
+Before picking a proactive work item: read today's daily note (`memory/YYYY-MM-DD.md`).
+If an item in the priority list was already logged as done today → skip it and move to the next.
+Never run the same proactive item twice in one day. Check the note first, every time.
 
 ## Proactive Work (priority order when idle)
 1. Client/market research → memory/research/
@@ -55,6 +68,7 @@ Files to audit in order:
 5. All `skills/*/SKILL.md` files — are the instructions still accurate? Any new commands?
 6. All `agents/*/AGENT.md` files — are the agents configured correctly? Any drift?
 7. `memory/training/training-log.md` — review the week's film review entries. Are patterns emerging? Write a weekly summary line.
+8. `memory/future-signals.md` — **Future Signals Review (mandatory):** Read every active signal. For each one, check whether its trigger conditions are now met based on JT's current situation (active clients, project status, outreach volume, hardware). If a signal's trigger is met: (a) push a HIGH task to Mission Control recommending the tool/technique, (b) move it to the Graduated table with date + trigger, (c) notify JT in the weekly synthesis Telegram message. If not triggered: leave as-is. This is how "not now" becomes "now" — it must be reviewed every single week.
 
 Audit output: append `## Skills Audit — [date]` to `memory/training/training-log.md` with one line per file: `[FILENAME]: [status: current / updated X / flagged Y]`
 

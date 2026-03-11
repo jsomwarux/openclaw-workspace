@@ -173,7 +173,7 @@ export async function search(
     since?: string; // ISO 8601 timestamp or shorthand like "1h", "3h", "1d"
   } = {}
 ): Promise<Tweet[]> {
-  const maxResults = Math.max(Math.min(opts.maxResults || 100, 100), 10);
+  const maxResults = Math.max(Math.min(opts.maxResults || 10, 100), 10);
   const pages = opts.pages || 1;
   const sort = opts.sortOrder || "relevancy";
   const encoded = encodeURIComponent(query);

@@ -1,4 +1,4 @@
-# Opticfy AI Consulting: Complete Client Engagement Playbook
+# JT Somwaru Consulting AI Consulting: Complete Client Engagement Playbook
 *Last updated: 2026-03-03 | Two tracks: Agentforce + n8n*
 
 ---
@@ -621,7 +621,7 @@ Client UAT is complete and approved. Prepare the production deployment package.
    - How to add a topic
    - How to add an action
    - Common issues + troubleshooting
-   - When to call Opticfy vs. handle internally
+   - When to call JT Somwaru Consulting vs. handle internally
 
 4. Project summary at client-projects/[client-name]/deliverables/project-summary.md
    - What was built, key metrics to track, next steps
@@ -654,7 +654,7 @@ Cover:
 2. How to read conversation/execution logs
 3. Metrics to watch (resolution rate, escalation rate, execution success rate)
 4. How to make simple changes
-5. When to call Opticfy vs. handle internally
+5. When to call JT Somwaru Consulting vs. handle internally
 
 ### Upsell Signals
 

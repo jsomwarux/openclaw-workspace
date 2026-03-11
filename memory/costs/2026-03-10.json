@@ -1,0 +1,30 @@
+{
+  "date": "2026-03-10",
+  "captured_at": "2026-03-10T06:00:02.640545+00:00",
+  "total_usd": 0.0,
+  "sessions": {
+    "agent:main:main": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 3,
+      "output_tokens": 13,
+      "cache_read": 0,
+      "cache_write": 41640,
+      "total_tokens": 41643,
+      "cost_usd": 0.0,
+      "updated_at": 1773121759745
+    }
+  },
+  "by_model": {
+    "claude-sonnet-4-6": {
+      "sessions": 1,
+      "input_tokens": 3,
+      "output_tokens": 13,
+      "cache_read": 0,
+      "cache_write": 41640,
+      "cost_usd": 0.0
+    }
+  },
+  "alerts_fired": []
+}

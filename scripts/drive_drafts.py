@@ -102,11 +102,29 @@ def list_folders(drive):
             print(f"    {s['name']}/")
 
 
+def get_folder_by_path(drive, path_str):
+    """
+    Traverse or create folders along a slash-separated path under Eve — Drafts.
+    e.g. "Consulting/Clients/H.C. Oswald/Outreach/LinkedIn"
+    """
+    root_id = find_folder(drive, ROOT_FOLDER)
+    if not root_id:
+        print(f"ERROR: '{ROOT_FOLDER}' folder not found in your Drive.")
+        sys.exit(1)
+    parts = [p.strip() for p in path_str.split("/") if p.strip()]
+    parent = root_id
+    for part in parts:
+        parent = get_or_create_folder(drive, part, parent)
+    return parent, path_str
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--title",        help="Document title")
-    parser.add_argument("--project",      help="Project folder (e.g. Vista, Nash Satoshi, Opticfy)")
-    parser.add_argument("--type",         help="Content type subfolder (e.g. 'X Threads', Reddit, 'Product Hunt')")
+    parser.add_argument("--path",         help="Full folder path under Eve — Drafts (slash-separated). "
+                                               "e.g. 'Consulting/Clients/H.C. Oswald/Outreach/LinkedIn'")
+    parser.add_argument("--project",      help="Legacy: top-level project folder")
+    parser.add_argument("--type",         help="Legacy: subfolder under project")
     parser.add_argument("--content",      help="Document text (use \\n for newlines)")
     parser.add_argument("--file",         help="Path to a text/markdown file to use as content")
     parser.add_argument("--list-folders", action="store_true")
@@ -118,8 +136,22 @@ def main():
         list_folders(drive)
         return
 
-    if not all([args.title, args.project, args.type]):
-        parser.error("--title, --project, and --type are all required")
+    if not args.title:
+        parser.error("--title is required")
+
+    # Resolve folder
+    if args.path:
+        folder_id, display_path = get_folder_by_path(drive, args.path)
+    elif args.project and args.type:
+        root_id = find_folder(drive, ROOT_FOLDER)
+        if not root_id:
+            print(f"ERROR: '{ROOT_FOLDER}' folder not found in your Drive.")
+            sys.exit(1)
+        project_id = get_or_create_folder(drive, args.project, root_id)
+        folder_id  = get_or_create_folder(drive, args.type, project_id)
+        display_path = f"{args.project}/{args.type}"
+    else:
+        parser.error("Provide --path OR both --project and --type")
 
     if args.file:
         with open(os.path.expanduser(args.file)) as f:
@@ -129,17 +161,10 @@ def main():
     else:
         parser.error("Provide --content or --file")
 
-    root_id    = find_folder(drive, ROOT_FOLDER)
-    if not root_id:
-        print(f"ERROR: '{ROOT_FOLDER}' folder not found in your Drive.")
-        sys.exit(1)
-
-    project_id = get_or_create_folder(drive, args.project, root_id)
-    type_id    = get_or_create_folder(drive, args.type, project_id)
-    url        = create_doc(drive, args.title, content, type_id)
+    url = create_doc(drive, args.title, content, folder_id)
 
     print(f"✅ {args.title}")
-    print(f"   {ROOT_FOLDER} / {args.project} / {args.type}")
+    print(f"   {ROOT_FOLDER} / {display_path}")
     print(f"   {url}")
 
 

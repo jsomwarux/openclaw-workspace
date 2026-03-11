@@ -1,19 +1,50 @@
-# opticfy-pipeline
+---
+name: jt-consulting-pipeline
+description: Orchestrates the full consulting client acquisition pipeline — research, analysis, n8n demo build, presentation deck, and outreach draft. Use when JT says "run the pipeline on", "research this prospect", "build a demo for", "run a full pipeline", "start the pipeline for", or names a new company to pursue as a consulting client. NOT for: existing active clients (Aya), Opticfy admin tasks, portfolio updates, or job applications.
+---
 
-## Description
+# jt-consulting-pipeline
 
-Orchestrates the Opticfy client acquisition pipeline end-to-end.
+Orchestrates the consulting client acquisition pipeline end-to-end.
 Spawns each pipeline agent in sequence, handles the JT review gate,
 and delivers the completed outreach draft for final send.
 
-## Pipeline Stages
+## Step 0: Preflight Check (Run This First)
+
+Before spawning any pipeline agents, run the preflight script. It validates n8n is running, all agent directories exist, and checks the client artifact state.
+
+```bash
+bash ~/.openclaw/workspace/skills/opticfy-pipeline/scripts/preflight.sh [client-slug]
+# Example: bash ~/.openclaw/workspace/skills/opticfy-pipeline/scripts/preflight.sh brothers-supply
+```
+
+If it exits non-zero: fix reported errors before proceeding. A failed preflight (especially n8n down) will cause agent spawns to fail silently mid-pipeline.
+
+## Tier Routing — Classify Before Starting
+
+Before spawning any agents, assign a tier. This determines the pipeline path.
+
+| Signal | Tier |
+|--------|------|
+| Referral / warm intro | T1 |
+| Research surfaces a highly specific, verifiable hook (e.g. a named article, a quote, a job posting) | T1 |
+| Qualified niche fit, no exceptional hook | T2 |
+| Cold list prospect with minimal research | T3 |
+
+**T1 path:** Research → Analysis → [JT Review] → n8n Custom Build → Presentation → Outreach → [JT sends]
+**T2 path:** Research (light brief) → Template Config → Deck (from template) → Outreach → [optional JT review] → [overnight can send]
+**T3 path:** Quick surface research → Outreach Agent (cold hook batch) → [no review needed] → Reply → promotes to T2
+
+Write `tier: 1 | 2 | 3` and `jt_review_required: true` into the client's `brief.json` before handoff to the next agent. `jt_review_required` defaults to true for ALL tiers — never send without JT approval unless he explicitly sets it to false for a given tier.
+
+## Pipeline Stages (T1 Full)
 
 ```
 Research Agent → Analysis Agent → [JT Review] → n8n Agent → Presentation Agent → Outreach Agent → [JT Send]
 ```
 
-All shared client data lives at: `~/projects/opticfy-pipeline/clients/[slug]/`
-Pipeline tracker: `~/projects/opticfy-pipeline/pipeline.md`
+All shared client data lives at: `~/projects/jt-consulting-pipeline/clients/[slug]/`
+Pipeline tracker: `~/projects/jt-consulting-pipeline/pipeline.md`
 
 ## Agent Paths
 
@@ -48,7 +79,7 @@ task: |
   company: [Company Name]
   niche: [niche]
   platform: [n8n | agentforce | both]
-  research_path: ~/projects/opticfy-pipeline/clients/[slug]/research.md
+  research_path: ~/projects/jt-consulting-pipeline/clients/[slug]/research.md
 ```
 
 **Always spawn with `thinking: medium`** — this is the most consequential step in the pipeline.
@@ -57,8 +88,8 @@ Wait for `PIPELINE_HANDOFF: analysis-complete`.
 
 ### 3. JT Review Gate
 When analysis is complete:
-1. Read `~/projects/opticfy-pipeline/clients/[slug]/brief.md`
-2. Read `~/projects/opticfy-pipeline/clients/[slug]/brief.json` → generate **Execution Plan**:
+1. Read `~/projects/jt-consulting-pipeline/clients/[slug]/brief.md`
+2. Read `~/projects/jt-consulting-pipeline/clients/[slug]/brief.json` → generate **Execution Plan**:
    - What the n8n agent will build (trigger, main steps, output)
    - Which agents run next and in what order
    - Estimated build complexity (Low / Medium / High)
@@ -76,7 +107,7 @@ task: |
   PIPELINE_INPUT
   slug: [slug]
   company: [Company Name]
-  brief_json: ~/projects/opticfy-pipeline/clients/[slug]/brief.json
+  brief_json: ~/projects/jt-consulting-pipeline/clients/[slug]/brief.json
 ```
 
 Wait for `PIPELINE_HANDOFF: workflow-built`.
@@ -89,8 +120,8 @@ task: |
   PIPELINE_INPUT
   slug: [slug]
   company: [Company Name]
-  brief_json: ~/projects/opticfy-pipeline/clients/[slug]/brief.json
-  workflow_docs: ~/projects/opticfy-pipeline/clients/[slug]/workflow-docs.md
+  brief_json: ~/projects/jt-consulting-pipeline/clients/[slug]/brief.json
+  workflow_docs: ~/projects/jt-consulting-pipeline/clients/[slug]/workflow-docs.md
 ```
 
 Wait for `PIPELINE_HANDOFF: deck-built`.
@@ -103,8 +134,8 @@ task: |
   PIPELINE_INPUT
   slug: [slug]
   company: [Company Name]
-  brief_json: ~/projects/opticfy-pipeline/clients/[slug]/brief.json
-  deck_instructions: ~/projects/opticfy-pipeline/clients/[slug]/deck-instructions.md
+  brief_json: ~/projects/jt-consulting-pipeline/clients/[slug]/brief.json
+  deck_instructions: ~/projects/jt-consulting-pipeline/clients/[slug]/deck-instructions.md
 ```
 
 Wait for `PIPELINE_HANDOFF: outreach-drafted`.
@@ -132,7 +163,7 @@ cd ~/.openclaw/workspace && python3 scripts/pipeline_drive_sync.py \
 **Drive structure created:**
 ```
 Eve — Drafts/
-└── Opticfy — Client Pipeline/
+└── JT Somwaru — Client Pipeline/
     └── [Company Name]/
         ├── [Company Name] — Outreach Draft     ← Google Doc
         └── [Company Name] — Presentation Deck  ← Google Doc (with Slides link)
@@ -143,7 +174,7 @@ Include Drive links in the JT review message (Step 8).
 ### 8. Final JT Review
 When outreach draft and Drive sync are complete:
 1. Run `pipeline_drive_sync.py --stage all` (if not already done per step)
-2. Read `~/projects/opticfy-pipeline/clients/[slug]/outreach-draft.md`
+2. Read `~/projects/jt-consulting-pipeline/clients/[slug]/outreach-draft.md`
 3. Send to JT via Telegram with the full draft + Drive links
 4. JT reviews, edits, and sends the email themselves
 5. Update pipeline.md status to "✉️ Pitched"
@@ -194,13 +225,13 @@ Edit anything, then let me know when Day 0 is sent so I can update the pipeline.
 ```
 
 ## Delivery Framework (mandatory — every engagement)
-See full spec: `~/projects/opticfy-pipeline/DELIVERY-FRAMEWORK.md`
+See full spec: `~/projects/jt-consulting-pipeline/DELIVERY-FRAMEWORK.md`
 
 1. **Workflow decomposition** — split every automated step into Mechanical vs Judgment Call → `clients/[slug]/workflow-decomposition.md`
 2. **Client KB** — persistent context that compounds across projects → `clients/[slug]/kb/`
 3. **Skill templating** — after delivery, evaluate if workflow is 80%+ reusable → template to `~/.openclaw/workspace/skills/`
 4. **Adjacent workflow map** — after first delivery, proactively map 3–5 next workflows → `clients/[slug]/adjacent-workflows.md`
-5. **Workflow collapse log** — log before/after story (anonymized) → `~/projects/opticfy-pipeline/workflow-collapse-log.md`
+5. **Workflow collapse log** — log before/after story (anonymized) → `~/projects/jt-consulting-pipeline/workflow-collapse-log.md`
 
 ## File Checklist Per Slug
 

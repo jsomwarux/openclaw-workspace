@@ -18,7 +18,7 @@
 - Prefers: `trash` over `rm` | proactive insight over task completion
 
 ## Current Focus
-- **Opticfy**: AI consulting agency — research + n8n + Agentforce pipelines for NYC businesses
+- **JT Somwaru Consulting**: AI consulting agency — research + n8n + Agentforce pipelines for NYC businesses
 - **Aya**: anchor client — $1,500 dashboard (done), $1,000 StreetEasy scraper (active), $2,500 co-living dashboard (pending), acquisitions dashboard (stalled)
 - **Apps**: Vista (App Store pending) | Nash Satoshi (crypto rankings) | Glow Index (skincare)
 - **Job market**: open to AI Solutions Architect / AI Implementation Lead ($150K+ NYC/remote)

@@ -17,6 +17,10 @@ To retire a rule (if superseded or no longer applies), change `Status: active` �
 
 ## Active Rules
 
+[2026-03-06] Observed: 2026-03-05 daily note contains 5 duplicate "Heartbeat 22:00" entries — all firing between 9:36PM–10:36PM EST, each independently writing a new log block with identical content (Spanish nudge + no urgent items).
+Rule: Before writing any heartbeat log entry, check if the current hour (rounded down) already has a log entry in today's daily note. If an entry for the same hour exists AND it covered the same checks (cost alerts, board review, Spanish), respond with HEARTBEAT_OK without writing a duplicate block. Each hour should have at most one substantive log entry.
+Status: active
+
 *(No rules yet — rules accumulate from JT's feedback after each overnight run)*
 
 ---

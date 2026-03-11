@@ -2,6 +2,11 @@
 
 Keeps jtsomwaru.com automatically optimized for hirability. Runs as the final step of the overnight agent (3 AM) and whenever any agent appends to the queue. Goal: JT's site always reflects his current ceiling.
 
+## 🚨 PERMANENT EXCLUSIONS — DO NOT ADD UNDER ANY CIRCUMSTANCES
+- **`b2b-account-service-agent`** — permanently excluded. JT decided against this card on 2026-03-06. Do NOT add it regardless of what's in queue.jsonl, state.json, or any build log. If it appears in the queue, skip it silently.
+  - ⚠️ A graphic component (`B2BAccountAgentGraphic`) exists in `src/components/project-graphics/index.tsx`. This is an **intentional orphan** — it was built before JT decided against the card. Its existence is NOT evidence that the card should be added. Do NOT import it, map it, or reference it in Work.tsx or projects.ts. Ever.
+  - This rule has been violated 3 times (2026-03-07, 2026-03-09, 2026-03-10). The graphic existing ≠ the card should exist. Hard stop.
+
 ## Repo
 `~/projects/jtsomwaru-com/` — main branch auto-deploys to Vercel.
 
@@ -20,14 +25,14 @@ The queue is populated from ANY of these sources — not just Eve's builds:
 | Eve in-session build | New script, tool, agent | Eve immediately (AGENTS.md rule) |
 | JT says "done/finished/shipped" | Vista approved, client paid | Eve immediately in-session |
 | JT adds new skill/tool | "I just learned LangGraph" | Eve immediately in-session |
-| Opticfy project completes | Aya co-living dashboard done | Eve immediately when JT confirms |
+| consulting project completes | Aya co-living dashboard done | Eve immediately when JT confirms |
 | MC task flips to `done` | Any task JT or Eve completes | Overnight agent checks MC for new `done` tasks |
 
 ## Queue File
 `~/.openclaw/workspace/agents/portfolio-updater/queue.jsonl`
 Each line is a JSON object:
 ```json
-{"type": "new_project|new_skill|metric_update|status_update", "source": "overnight|job-market|opticfy|jt|manual", "title": "...", "description": "...", "tags": [], "metric": "...", "slug": "...", "notes": "...", "scored": false, "timestamp": "..."}
+{"type": "new_project|new_skill|metric_update|status_update", "source": "overnight|job-market|jt-consulting|jt|manual", "title": "...", "description": "...", "tags": [], "metric": "...", "slug": "...", "notes": "...", "scored": false, "timestamp": "..."}
 ```
 
 ## State File
@@ -98,10 +103,13 @@ Check `state.json` → `lastReorderDate`. If > 7 days ago, or a new item was jus
 **Demand scoring guide** (update as tracker changes):
 - Salesforce / Agentforce: 10
 - Multi-LLM / AI ensemble: 9
+- AgentScript (Salesforce): 9 (Spring 26 differentiator — high-demand across Agentforce JDs)
 - n8n / workflow automation: 8
 - Claude API / Anthropic: 8
+- Apex (Salesforce): 8
 - Python / FastAPI: 7
 - LangGraph / LangChain: 7
+- Flow (Salesforce): 7
 - Next.js / TypeScript: 6
 - RAG / vector search: 6
 - MCP servers: 6

@@ -1,0 +1,54 @@
+{
+  "date": "2026-03-08",
+  "captured_at": "2026-03-08T07:00:05.641158+00:00",
+  "total_usd": 0.0,
+  "sessions": {
+    "agent:main:main": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 3,
+      "output_tokens": 8,
+      "cache_read": 0,
+      "cache_write": 56878,
+      "total_tokens": 56881,
+      "cost_usd": 0.0,
+      "updated_at": 1772949639338
+    },
+    "agent:main:cron:be59a068-eccd-4a7c-964e-946ab40ace7e": {
+      "label": "Cron: Overnight Autonomy Agent",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 20,
+      "output_tokens": 9562,
+      "cache_read": 629844,
+      "cache_write": 46222,
+      "total_tokens": 46223,
+      "cost_usd": 0.0,
+      "updated_at": 1772953200026
+    },
+    "agent:main:cron:be59a068-eccd-4a7c-964e-946ab40ace7e:run:e105812b-b194-403f-88c8-c3bc34d3765b": {
+      "label": "Cron: Overnight Autonomy Agent",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 20,
+      "output_tokens": 9562,
+      "cache_read": 629844,
+      "cache_write": 46222,
+      "total_tokens": 46223,
+      "cost_usd": 0.0,
+      "updated_at": 1772953200026
+    }
+  },
+  "by_model": {
+    "claude-sonnet-4-6": {
+      "sessions": 3,
+      "input_tokens": 43,
+      "output_tokens": 19132,
+      "cache_read": 1259688,
+      "cache_write": 149322,
+      "cost_usd": 0.0
+    }
+  },
+  "alerts_fired": []
+}

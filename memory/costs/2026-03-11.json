@@ -1,0 +1,242 @@
+{
+  "date": "2026-03-11",
+  "captured_at": "2026-03-11T14:00:45.653845+00:00",
+  "total_usd": 2e-06,
+  "sessions": {
+    "agent:main:main": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 3,
+      "output_tokens": 65,
+      "cache_read": 0,
+      "cache_write": 59858,
+      "total_tokens": 59861,
+      "cost_usd": 0.0,
+      "updated_at": 1773237600045
+    },
+    "agent:main:telegram:direct:6608544825": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 3,
+      "output_tokens": 8,
+      "cache_read": 0,
+      "cache_write": 65270,
+      "total_tokens": 65273,
+      "cost_usd": 0.0,
+      "updated_at": 1773237633727
+    },
+    "agent:main:cron:be59a068-eccd-4a7c-964e-946ab40ace7e": {
+      "label": "Cron: Overnight Autonomy Agent",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 38,
+      "output_tokens": 40183,
+      "cache_read": 3679981,
+      "cache_write": 229465,
+      "total_tokens": 125229,
+      "cost_usd": 0.0,
+      "updated_at": 1773212400027
+    },
+    "agent:main:cron:11835cf6-83d3-4fdf-826a-202f3ec3fa46": {
+      "label": "Cron: Build Ideas \u2192 Mission Control Sync",
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "input_tokens": 8,
+      "output_tokens": 1747,
+      "cache_read": 331621,
+      "cache_write": 77784,
+      "total_tokens": 77785,
+      "cost_usd": 1e-06,
+      "updated_at": 1773227700023
+    },
+    "agent:main:cron:eve-crypto-morning-008": {
+      "label": "Cron: Crypto Full Analysis (6 AM)",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 24,
+      "output_tokens": 30721,
+      "cache_read": 1165713,
+      "cache_write": 496502,
+      "total_tokens": 96741,
+      "cost_usd": 0.0,
+      "updated_at": 1773223200022
+    },
+    "agent:main:cron:eve-job-market-daily-005": {
+      "label": "Cron: Job Market Daily Research",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 8,
+      "output_tokens": 4349,
+      "cache_read": 203934,
+      "cache_write": 50040,
+      "total_tokens": 50041,
+      "cost_usd": 0.0,
+      "updated_at": 1773220500032
+    },
+    "agent:main:cron:eve-niche-monitor-006": {
+      "label": "Cron: Niche Intelligence Monitor",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 7,
+      "output_tokens": 5029,
+      "cache_read": 147706,
+      "cache_write": 43718,
+      "total_tokens": 43719,
+      "cost_usd": 0.0,
+      "updated_at": 1773234000024
+    },
+    "agent:main:cron:4a70dda4-da77-4437-9e1d-9c3001e9e1f9": {
+      "label": "Cron: Daily News Hook",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 6,
+      "output_tokens": 1878,
+      "cache_read": 80326,
+      "cache_write": 31133,
+      "total_tokens": 31134,
+      "cost_usd": 0.0,
+      "updated_at": 1773234900027
+    },
+    "agent:main:cron:be59a068-eccd-4a7c-964e-946ab40ace7e:run:e2bf1ead-9185-47b7-8f3b-8b3653f23a68": {
+      "label": "Cron: Overnight Autonomy Agent",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 38,
+      "output_tokens": 40183,
+      "cache_read": 3679981,
+      "cache_write": 229465,
+      "total_tokens": 125229,
+      "cost_usd": 0.0,
+      "updated_at": 1773212400027
+    },
+    "agent:main:cron:eve-job-market-daily-005:run:00e2bef6-b026-4891-a445-1bf59033d2e6": {
+      "label": "Cron: Job Market Daily Research",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 8,
+      "output_tokens": 4349,
+      "cache_read": 203934,
+      "cache_write": 50040,
+      "total_tokens": 50041,
+      "cost_usd": 0.0,
+      "updated_at": 1773220500032
+    },
+    "agent:main:cron:33b8b0a2-e86c-4f51-aa4f-b8537def3107": {
+      "label": "Cron: Viral Post Swipe File \u2014 X Research",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1773221400104
+    },
+    "agent:main:cron:33b8b0a2-e86c-4f51-aa4f-b8537def3107:run:25f334dd-16f6-46dc-901f-de6cff7dd528": {
+      "label": "Cron: Viral Post Swipe File \u2014 X Research",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1773221400094
+    },
+    "agent:main:cron:eve-crypto-morning-008:run:b7d7ee1d-5456-4bcd-9d33-7d4a12929386": {
+      "label": "Cron: Crypto Full Analysis (6 AM)",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 24,
+      "output_tokens": 30721,
+      "cache_read": 1165713,
+      "cache_write": 496502,
+      "total_tokens": 96741,
+      "cost_usd": 0.0,
+      "updated_at": 1773223200022
+    },
+    "agent:main:cron:11835cf6-83d3-4fdf-826a-202f3ec3fa46:run:fdea97af-838d-48ce-a1d4-3631954faf12": {
+      "label": "Cron: Build Ideas \u2192 Mission Control Sync",
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "input_tokens": 8,
+      "output_tokens": 1747,
+      "cache_read": 331621,
+      "cache_write": 77784,
+      "total_tokens": 77785,
+      "cost_usd": 1e-06,
+      "updated_at": 1773227700023
+    },
+    "agent:main:cron:5e66b4ee-aee3-497d-90ba-7aad670970a3": {
+      "label": "Cron: content-reminder",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1773230400185
+    },
+    "agent:main:cron:5e66b4ee-aee3-497d-90ba-7aad670970a3:run:bd9148df-54aa-4675-a38c-18887ba0f796": {
+      "label": "Cron: content-reminder",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1773230400173
+    },
+    "agent:main:cron:eve-niche-monitor-006:run:d1e44236-d492-4ebd-a579-bb6018929b2e": {
+      "label": "Cron: Niche Intelligence Monitor",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 7,
+      "output_tokens": 5029,
+      "cache_read": 147706,
+      "cache_write": 43718,
+      "total_tokens": 43719,
+      "cost_usd": 0.0,
+      "updated_at": 1773234000024
+    },
+    "agent:main:cron:4a70dda4-da77-4437-9e1d-9c3001e9e1f9:run:68d20eeb-4bfb-4ce0-82fc-ba164e4db08d": {
+      "label": "Cron: Daily News Hook",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 6,
+      "output_tokens": 1878,
+      "cache_read": 80326,
+      "cache_write": 31133,
+      "total_tokens": 31134,
+      "cost_usd": 0.0,
+      "updated_at": 1773234900027
+    }
+  },
+  "by_model": {
+    "claude-sonnet-4-6": {
+      "sessions": 16,
+      "input_tokens": 172,
+      "output_tokens": 164393,
+      "cache_read": 10555320,
+      "cache_write": 1826844,
+      "cost_usd": 0.0
+    },
+    "llama-3.3-70b-versatile": {
+      "sessions": 2,
+      "input_tokens": 16,
+      "output_tokens": 3494,
+      "cache_read": 663242,
+      "cache_write": 155568,
+      "cost_usd": 2e-06
+    }
+  },
+  "alerts_fired": []
+}

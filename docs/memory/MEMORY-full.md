@@ -22,21 +22,21 @@
 - **Gateway restarts** — ALWAYS use `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "reason"`. NEVER use raw `launchctl`, `openclaw gateway restart`, OR `gateway config.patch`/`gateway config.apply` — all drop JT's connection silently. For config changes: edit `~/.openclaw/openclaw.json` directly, then use restart script. If `pairing required` loop: `openclaw devices list` → `openclaw devices approve <id>`.
 - **NEVER write arbitrary keys to `~/.openclaw/openclaw.json`** — invalid keys crash the gateway. External API keys go in TOOLS.md only.
 
-## Opticfy (AI Consulting Agency)
+## JT Somwaru Consulting (AI Consulting Agency)
 - Target niches: wholesale distribution, property management, construction, insurance operations, skilled trades — all underserved NYC businesses
 - Only client so far: Aya (construction progress dashboard, $1,500)
 - Bottleneck: client research/outreach + specialized agent configuration
 - Outreach plan: email + LinkedIn | Demo strategy: build agents first, then demo to prospects
 - Specialized agents — all at `~/projects/` (paths/repos/commands in TOOLS.md):
   - **Research Agent** — researches prospects, identifies automation use case/pain points, determines n8n vs Agentforce fit. Entry point to 5-stage pipeline.
-  - **n8n Agent** — builds production-ready n8n workflows for clients. Core Opticfy delivery mechanism. 4-LLM ensemble support.
+  - **n8n Agent** — builds production-ready n8n workflows for clients. Core JT Somwaru Consulting delivery mechanism. 4-LLM ensemble support.
   - **Agentforce Agent** — builds Salesforce Agentforce agents for clients on SF. Narrower niche, high-value when it fits.
   - **Crypto Agent** — game-theoretic portfolio analysis 3x daily. Serves JT personally, not clients.
   - **Vibe marketing agent** — content + marketing strategies (location TBC, not yet on this machine)
   - **Data visualization agent** — converts spreadsheets to interactive dashboards (location TBC, not yet on this machine)
 - **New service (Feb 24):** Cowork Plugin Implementation — build custom Claude Cowork plugins, launch private marketplace, train teams. Industry-specific plugin suites = potential productized offering. Spectrum is a high-value target (JT knows their workflows; pitch as governed AI).
 
-## Opticfy Client Research & Outreach Pipeline
+## Consulting Client Research & Outreach Pipeline
 5-stage fully automated: Research → Analysis → n8n Build → Presentation → Outreach → **Drive Sync** → JT presses send.
 1. **Research Agent** (`~/projects/research-agent/`) — deep-dives prospect, identifies automation opportunity
 2. **Analysis Agent** — maps current processes step-by-step, inventories integrations, outputs brief.json
@@ -44,7 +44,7 @@
 4. **Presentation Agent** — client-facing deck (Google Slides API or PDF first version)
 5. **Outreach Agent** — drafts email with presentation attached
 - **Key:** Standardize brief.json schema for all agent handoffs — on task board as HIGH priority
-- **Google Drive sync:** After deck-built + outreach-drafted, run `python3 scripts/pipeline_drive_sync.py --slug [slug] --client "[name]" --stage all` → creates `Eve — Drafts / Opticfy — Client Pipeline / [Client] / Outreach Draft + Presentation Deck`
+- **Google Drive sync:** After deck-built + outreach-drafted, run `python3 scripts/pipeline_drive_sync.py --slug [slug] --client "[name]" --stage all` → creates `Eve — Drafts / JT Somwaru — Client Pipeline / [Client] / Outreach Draft + Presentation Deck`
 - **Status:** Building
 
 ## Apps Built
@@ -79,11 +79,11 @@
 ## Content / Audience Building
 - Main X: @jts_14 — all projects, learning, progress | Crypto X: @jt__crypto — crypto-specific
 - Goals: build audience, make connections with similar builders, establish reputation
-- Topics: what he's building, lessons, Opticfy thesis, Nash Satoshi methodology, AI tools
+- Topics: what he's building, lessons, JT Somwaru Consulting thesis, Nash Satoshi methodology, AI tools
 
 ## Google Drive Drafts System
 - Google account: openclawagenteve14@gmail.com | Root: "Eve — Drafts" in Drive
-- Structure: Eve — Drafts / [Project] / [Content Type] (Vista, Nash Satoshi, Opticfy, _Templates)
+- Structure: Eve — Drafts / [Project] / [Content Type] (Vista, Nash Satoshi, JT Somwaru Consulting, _Templates)
 - Scripts: `~/.openclaw/workspace/scripts/drive_drafts.py` (main) | Auth token: `~/.openclaw/workspace/config/google-oauth-token.json`
 - Apps Script: ONE reusable project "Eve — Drive Scripts" — Cmd+A, paste, select function, run. Never create a new project.
 - Local drafts: `~/.openclaw/workspace/memory/drafts/`
@@ -96,7 +96,7 @@
 
 ## Income / Situation
 - Primary income: crypto investments | Consulting: $1,500 (Aya dashboard)
-- Goal: expand Opticfy, grow app revenue, stay hireable
+- Goal: expand JT Somwaru Consulting, grow app revenue, stay hireable
 
 ## Job Market
 - Both staying current AND open to opportunities
@@ -104,7 +104,7 @@
 - Hire pitch: BSA background + AI builder = rare combo employers need
 - **NOT a developer** — roles requiring Apex, SFDX, ML engineering, or hands-on coding are auto-disqualified
 - Salary: $150K min, $180-220K target | Location: NYC metro or remote only — no relocation
-- **Squarespace People AI SA** (scored 19/25, Feb 21, hybrid NYC, $126-180K): JD literally says "vibe-code" — apply this week. Resume + cover letter in Google Drive (Eve — Drafts / Opticfy). Cover letter hook: "You used 'vibe-code solutions' in a JD — that's my methodology."
+- **Squarespace People AI SA** (scored 19/25, Feb 21, hybrid NYC, $126-180K): JD literally says "vibe-code" — apply this week. Resume + cover letter in Google Drive (Eve — Drafts / JT Somwaru Consulting). Cover letter hook: "You used 'vibe-code solutions' in a JD — that's my methodology."
   - Resume: https://docs.google.com/document/d/12Uow8QM6w15DxaTGuekoQOIdehO66Th4USrhqwYdEyI/edit
   - Cover letter: https://docs.google.com/document/d/1NZeeO2P4AuySixcKA1b-ACTENNb99rUTuUnMt6I3tAk/edit
 
@@ -206,7 +206,7 @@
 
 ### n8n Workflow Builder Agent
 - **Location:** `~/projects/n8n-agent/` | **GitHub:** `jsomwarux/n8n-agent` ✅
-- **Purpose:** Builds n8n workflows for Opticfy clients. 4-LLM ensemble support.
+- **Purpose:** Builds n8n workflows for consulting clients. 4-LLM ensemble support.
 - **n8n:** running at `http://localhost:5678` ✅ | All 4 LLM credentials connected (Anthropic, OpenAI, Gemini, xAI) ✅
 - **LaunchAgent:** `com.openclaw.n8n` (KeepAlive, auto-starts) | API key in `~/.config/env/global.env` + `~/.zshrc`
 - **MCP:** `.mcp.json` wired (n8n-mcp + context7) ✅

@@ -52,7 +52,7 @@ bun run dev             # Terminal 2: Next.js on localhost:3000
 # Create a task
 curl -X POST http://localhost:3000/api/tasks \
   -H "Content-Type: application/json" \
-  -d '{"title":"Task title","assignee":"eve","priority":"high","project":"Opticfy"}'
+  -d '{"title":"Task title","assignee":"eve","priority":"high","project":"Consulting"}'
 
 # Update task status
 curl -X PATCH http://localhost:3000/api/tasks \

@@ -1,5 +1,61 @@
 # AI Tools & Model Tracker
+
+---
+
+## Mar 10, 2026 — 6PM Heartbeat
+
+### Notable AI News
+- **GPT-5.4 Thinking** (OpenAI) — Major upgrade fusing advanced reasoning, coding, and agentic workflows into single frontier model. Builds on GPT-5.4 from last week. No immediate action — Claude Sonnet still primary. Monitor if API pricing changes.
+- **AWS Bedrock expanding** — Elastic Beanstalk now uses Amazon Bedrock for AI-powered environment health analysis + step-by-step troubleshooting. AWS integrating AI into core operational tools. Signals: Bedrock skill gap still worth closing for JT's job targets (AWS SA roles cite it frequently).
+- **Arango Contextual Data Platform 4.0** — Dropping at NVIDIA GTC March 17, 2026. Contextual data layer for production AI agents. Watch GTC announcements week of Mar 17 — could shift RAG/context infrastructure story for enterprise agent demos.
+- **NVIDIA GTC 2026** — Week of March 17. Expect major agentic AI announcements. Good content week for JT's X presence.
+
+
 *Tracked by Eve | Updated during heartbeats*
+
+---
+
+## Mar 8, 2026 — 6PM Heartbeat
+
+### Notable AI Tools
+
+**n8n + Claude Code via MCP (czlonkowski/n8n-mcp)** — Open-source repo that turns Claude Code into an n8n architect via MCP. Someone ran it on a 55-node production pipeline successfully. Relevant for Eve: could accelerate Opticfy pipeline builds by letting Claude Code generate/push n8n workflows directly. Flag for evaluation when next n8n demo build is queued. (Medium, 1 week ago)
+
+**n8n March 2026 updates** — MCP module made exclusive (significant architectural change), bug fixes across AI Agent nodes and editor nodes, new custom scopes for Excel + Teams credentials. Relevant for Aya pipeline and any Microsoft-stack prospects. (releasebot.io)
+
+**n8n-as-code major makeover** — Rewritten sync engine, cleaner CLI, smarter AI agents. Enables GitOps-style version control for n8n workflows — push/pull workflows like code. Relevant for managing Opticfy demo environments cleanly. (r/n8n)
+
+**Agentic AI trend 2026** — Anthropic added automated security reviews to Claude Code workflows via GitHub Actions. Claude Code is becoming infrastructure, not just a dev tool. eWeek: "Two enabling layers matured this year to make agents possible." (eWeek)
+
+---
+
+## Mar 7, 2026 — 2PM Heartbeat
+
+### Notable AI News
+- **OpenAI released GPT-5.4** — rolling out to ChatGPT, API, and Codex. Landscape shift mid-week. Monitor for capability deltas vs. Claude Sonnet (current stack). No immediate action needed unless API pricing changes.
+- **Nvidia CEO Jensen Huang: "Agentic AI inflection point has arrived"** — bullish on agentic infrastructure stocks, called the market "wrong" on SaaS pullback. Enterprise AI agents predicted to be #1 adopted solution in 2026. Direct tailwind for Opticfy positioning + JT's job market targets.
+- **Anthropic published job displacement research** — 14% drop in hiring rate in AI-exposed fields post-ChatGPT era. Not mass layoffs — a freeze in new hires. Roles that deploy AI (JT's target) are beneficiaries. Good content hook for X posting.
+- **Guardian op-ed: AI agents pose existential risk** — Anthropic used Claude "extensively" to write its own safety testing code "under time pressure." Mainstream safety discourse heating up — AgentGuard demo framing becomes more timely.
+
+---
+
+## Mar 4, 2026 — Afternoon Update
+
+### Notable AI News
+- **Angi + ChatGPT app launched** — skilled trades marketplace now AI-first; homeowners hire contractors via AI chat. Opticfy signal: skilled trades contractors need to automate back-office ops or face disintermediation from AI-native marketplaces. Urgency for Opticfy niche outreach goes up.
+- **CollectivIQ** launched "world's first AI consensus platform" — unifies ChatGPT, Claude, Gemini, Grok outputs for enterprise. Validates Nash Satoshi's 4-LLM ensemble methodology as enterprise-credible pattern.
+- **OKX OnchainOS** — agentic economy toolkit for real-time data analysis + autonomous blockchain execution. x402 narrative reinforced; on-chain agents maturing fast.
+
+---
+
+## Week of Mar 3, 2026
+
+### Notable AI News
+- **Anthropic acquires Vercept** — computer-use AI startup. Doubles down on agents that operate UIs autonomously. Follows December acquisition of coding engine Bun.
+- **Salesforce Agentforce for Communications launched** — 5 prebuilt telco agents. Key customers: One NZ (4x engagement lift), Lumen (300h/week saved). JT's Spectrum background = direct domain signal for implementations at telco SIs (NeuraFlash, Faye/CRM Science, Accenture telco practice).
+- **Salesforce Agentforce 360 opens to ISV partners** — described as "most significant platform expansion since Force.com 18 years ago." Creates major surface area for Opticfy builds.
+- **Faye acquires CRM Science** — Salesforce SI consolidation accelerating. Faye expanding Agentforce mid-market practice. Check careers page.
+- **AI doom loop narrative** — Citrini Research viral post + CNN coverage re: agents replacing white-collar workers. Feb jobs report (Mar 6) expected +60K only. Market on edge. Consulting and implementation roles (JT's target) are beneficiaries, not losers.
 
 ---
 
@@ -206,3 +262,25 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 - Also patched: log poisoning via TCP port 18789
 - JT alerted via Telegram (msg 2259, 12:04 PM). Awaiting update confirmation.
 - JT's current version: 2026.2.24 — UNPATCHED
+
+## 2026-03-06 Update
+- **GPT-5.4** (OpenAI, March 6 2026): stronger reasoning + coding + computer-use agents (AI that can operate computers to complete tasks). Major release. Competitive signal for Opticfy pitches — "agentic AI is now mainstream across all providers."
+- **OpenAI agent framework**: now supports thread forking into sub-agents, real-time voice devices, multimodal tool outputs, memory reset. Closing the gap with OpenClaw's multi-agent orchestration model.
+- **Mobile AI agents**: Google + Samsung launched multistep mobile AI agents on Galaxy S26. Agentic AI moving from enterprise → consumer devices.
+
+## 2026-03-09 Update
+
+### GPT-5.4 Tool Calling Improvements
+- GPT-5.4 improves tool calling accuracy and efficiency, specifically in multi-step API/tool agent workflows (higher accuracy on Toolathlon benchmark in fewer turns). Competitive signal: OpenAI's agent reliability is closing the gap on Anthropic. JT pitch angle: vendor-agnostic Opticfy positioning more relevant — clients shouldn't be locked in.
+
+### Amazon Connect Health (AWS, March 5)
+- AWS launched AI agent platform specifically for healthcare — patient scheduling, documentation, verification. Validates agentic AI for regulated/compliance-heavy verticals. JT insurance niche parallel: AWS is proving the blueprint, Agentforce-on-Salesforce is the enterprise path for insurers who won't touch AWS directly.
+
+### Luma Uni-1 — Creative AI Agents (March 5)
+- Luma launched creative AI agents with "intelligence in pixels" — multimodal model thinking in language + rendering in images. Not directly relevant to Opticfy niches. Monitor for content/marketing automation angle.
+
+### NVIDIA Feynman Architecture (rumored)
+- Jensen Huang expected to tease Feynman chip (TSMC 1.6nm) — inference-focused, designed specifically for agentic AI workloads. Unlike Rubin (training), Feynman targets runtime agentic inference. If real: signals hardware infrastructure for "always-on" autonomous agents is coming. 12–18 month horizon.
+
+### Relevance to JT
+- Tool calling reliability (GPT-5.4) + inference chips (Feynman) + Amazon Connect Health = "agentic AI is real infrastructure now, not a prototype" — strong pitch framing for any prospect still skeptical.

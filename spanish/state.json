@@ -1,24 +1,33 @@
 {
   "level": "A1+",
-  "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
+  "level_description": "High Beginner \u2014 dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
-  "current_week": 1,
-  "current_day": 1,
-  "lesson_streak": 1,
-  "longest_streak": 1,
-  "last_lesson_date": "2026-03-02",
-  "last_lesson_complete": false,
-  "total_lessons_completed": 0,
+  "current_week": 2,
+  "current_day": 8,
+  "lesson_streak": 6,
+  "longest_streak": 6,
+  "last_lesson_date": "2026-03-09",
+  "last_lesson_complete": true,
+  "total_lessons_completed": 2,
   "weekly_scores": [],
   "real_world_challenges_unlocked": 1,
   "real_world_challenges_completed": [],
   "context": {
     "goal": "Light casual conversation with girlfriend and her family",
-    "use_cases": ["restaurants", "directions", "small talk", "survival Spanish"],
-    "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
+    "use_cases": [
+      "restaurants",
+      "directions",
+      "small talk",
+      "survival Spanish"
+    ],
+    "girlfriend_family_background": "unknown \u2014 default to neutral Latin American Spanish",
     "focus": "speaking and listening, not writing"
   },
   "weak_areas": [],
-  "strong_areas": ["basic greetings", "verb intuition (me llamo, estoy)"],
-  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread."
+  "strong_areas": [
+    "basic greetings",
+    "verb intuition (me llamo, estoy)"
+  ],
+  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread.",
+  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases. Single words transcribe correctly. Workaround: credit all Spanish audio answers based on context."
 }

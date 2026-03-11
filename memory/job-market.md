@@ -33,6 +33,21 @@
 
 ---
 
+## 2026-03-03 — Agentforce for Communications Launch (Major Signal)
+
+### 🔴 Salesforce Agentforce for Communications — Launched Today
+- 5 prebuilt AI agents for telecom: billing disputes, churn prevention, service upgrade recommendation, field technician upsell, customer retention
+- Early customers: One NZ (4x engagement lift), Lumen (300+ hrs/week reclaimed), Personal (Telecom Argentina)
+- Built on "nearly 3 decades of telecom industry expertise" per Salesforce
+- SI partners now building telco Agentforce practices: NeuraFlash, Faye/CRM Science, Accenture telco practice
+- **JT's edge:** 6 years at Charter/Spectrum Enterprise = the ONLY Agentforce consultant with firsthand telco domain knowledge in this niche. Direct hiring signal for Lumen, T-Mobile, Altice, and SI partners above.
+- **Build-to-learn:** TelcoAgent demo — configure Agentforce using JT's telco operational knowledge (billing, churn, field tech workflows). Estimated 1-2 day build.
+- **Action within 48h:** Reframe Spectrum experience on resume + LinkedIn specifically for telco Agentforce implementations
+
+### 🟠 Faye Acquires CRM Science (March 2, 2026)
+- Salesforce SI consolidation accelerating — Faye expanding Agentforce practice for mid-market + enterprise
+- Check Faye careers for Agentforce consulting roles: https://www.faye.com/careers
+
 ## 2026-02-28 — Morning Brief + Heartbeat Update
 
 ### New Role: NeuraFlash (Accenture) — Experience Architect, AI & Agentforce
@@ -125,3 +140,55 @@
 - Score: 16/25 | Salary: $150K–$160K NYC base (employer-provided, Pay Transparency Law confirmed)
 - Verdict: **DEPRIORITIZE** — at JT's $150K floor but far below $180–220K target; score below 18+ threshold
 - Focus on higher-score pipeline roles (Salesforce, Writer, Squarespace) first
+
+## March 3, 2026 — Agentforce for Communications Signal
+**🔴 Act within 48h:** Salesforce launched Agentforce for Communications today — 5 prebuilt telco AI agents. JT's 6 years at Charter/Spectrum Enterprise is now a DIRECT hiring signal for any SI or employer building a telco Agentforce practice.
+
+**Key stats to use:** One NZ (4x engagement), Lumen (300+ hrs/week saved). Early customers = implementation wave incoming.
+
+**Target employers NOW:** NeuraFlash, Faye/CRM Science (just acquired CRM Science), Accenture telco practice — all will be staffing up for Communications vertical builds.
+
+**Build priority:** TelcoAgent demo — billing dispute resolution, churn prevention, field tech upsell using Agentforce Developer Edition. Makes Spectrum background tangible on jtsomwaru.com.
+
+**Resume reframe:** "6 years at Charter/Spectrum Enterprise: billing systems, service delivery workflows, customer escalation patterns" → this is the exact domain context Agentforce for Communications implementations require.
+
+---
+
+## 2026-03-03 — Agentforce for Communications Launch Signal
+
+### 🔴 Agentforce for Communications (Salesforce — launched today)
+- 5 prebuilt AI agents for telco: churn prevention, service upsell, billing dispute, field tech upsell, customer retention
+- Early results: 4x engagement lift (One NZ), 300+ hrs/week saved (Lumen Technologies)
+- Industry partners: One NZ, Lumen, Telecom Argentina — major SI demand incoming
+- **JT signal:** 6 years at Charter/Spectrum Enterprise = only Agentforce consultant with firsthand telco ops domain knowledge
+- Immediate targeting: NeuraFlash, Faye/CRM Science (just acquired CRM Science Mar 2), Accenture telco practice
+- Build idea flagged: **TelcoAgent** — Agentforce demo using telco topics (billing, churn, field tech) built on JT's Spectrum knowledge
+
+### 🟠 Faye Acquires CRM Science (Mar 2, 2026)
+- Faye expanding Agentforce practice for mid-market + enterprise
+- SI consolidation accelerating — partners are growing headcount aggressively
+- Action: check Faye careers for Agentforce consulting / SA roles
+
+### Market Context
+- Reuters confirmed "Forward Deployed Engineer" = hottest AI role right now ($117K–$313K at Salesforce)
+- Non-coding analog = Deployment Strategist / Solutions Architect — JT's exact target, demand surging
+- Feb jobs report (due Mar 6) expected +60K jobs only — AI displacement narrative accelerating, drives consulting demand
+
+## 2026-03-04 — Salesforce Partner Ecosystem Signal
+- Salesforce announced SI partners lead 70% of all Agentforce implementations — ecosystem doubling down on rewards for "secure, compliant, verifiable outcomes" implementations
+- New Partner Program: rewarding outcome-based delivery, not just certifications
+- Implication for JT: Opticfy as a boutique SI partner (even uncertified) is in the right lane. Faye/CRM Science acquisition accelerating mid-market partner coverage. NeuraFlash, Accenture telco practice all growing headcount.
+- Content angle: "Why 70% of Agentforce implementations are partner-led" — LinkedIn post opportunity
+
+## 2026-03-06 — 10PM Update
+- **Salesforce CEO on Block layoffs:** Dismissed as "unique issues" — not a signal for broad AI/Agentforce hiring cuts. Salesforce headcount for Agentforce roles intact.
+- **Full AI stack demand:** Enterprises deploying Agentforce + ServiceNow need specialists who understand LLMs, agentic frameworks, RAG, cloud AI platforms, and AI safety. JT's gap: RAG + cloud AI platforms — aligns with existing skill gap tracking.
+- **"Talent-as-a-Service" framing (Peterson Tech Partners, March 5):** Specialist human talent + AI agents working in tandem. This is literally how JT frames Opticfy — strong messaging alignment.
+- **Top 18 Salesforce consulting firms 2026:** Agentforce implementation services now a top-line offering at every major SF SI. Opticfy competing at SMB layer, not enterprise — correct positioning.
+- ⚠️ job-market daily-brief.md stale since March 3 — cron may have drifted. Check Monday AM.
+
+## 2026-03-09 PM Update
+- **Anthropic Labor Market Report (March 2026)**: Computer Programmers — 75% of tasks covered by AI. Customer service + data entry are the most automated categories NOW. White-collar displacement narrative hitting mainstream (NYT opinion piece, March 5). Block 40% layoffs fueling fear. Counter-narrative for JT: roles that require human judgment + AI implementation expertise are the safe harbor — exactly what SA/Implementation Lead roles represent.
+- **"AI Solutions Architect Roadmap" article** (published today, zenvanriel.com): SA role getting defined as a career path. Signal: more people chasing this role → competition increases → JT needs to move fast on open pipeline roles.
+- **Deadline reminder**: Salesforce Lead Agentforce SE (24/25) — DEADLINE 03/27/2026. 18 days. Apply this week.
+- No new roles scoring 18+/25 surfaced today.

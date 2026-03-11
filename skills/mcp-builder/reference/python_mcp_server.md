@@ -108,9 +108,9 @@ async def _make_api_request(endpoint: str, method: str = "GET", **kwargs) -> dic
         return response.json()
 ```
 
-## FastMCP + Opticfy Note
+## FastMCP + Consulting Note
 
-For Opticfy Cowork plugins using FastMCP 3.0:
+For consulting Cowork plugins using FastMCP 3.0:
 - Use `LocalProvider` for function-decorated tools
 - Use `OpenAPIProvider` to wrap existing client REST APIs instantly
 - Auth middleware goes in the FastMCP middleware chain, not in individual tools

@@ -3,6 +3,17 @@
 
 ---
 
+## 2026-03-10 — 10PM Heartbeat
+
+**BTC:** ~$70,828 at 11AM ET today — reclaimed $70K for first time since recent Iran war selloff. Touched $71K intraday.
+**Driver:** Trump said Iran war would end "pretty quickly" → geopolitical fear easing + oil prices dropping
+**Structure:** Significant. Previous last update had bearish continuation bias with $68K as resistance — that level has been broken and held. $71,850 is next horizontal resistance.
+**Scenarios:** Longs above $69,379 target $70,594 / $71,193 / $71,911. Shorts below $69,379.
+**JT portfolio:** $70K reclaim is bullish for micro-caps. x402 narrative + $FELIX revenue thesis both benefit from risk-on return. Watch $71,850 — clean break opens path toward $75K+.
+**Verdict:** Structure flip tentatively confirmed. Bias shifts cautiously bullish if BTC holds above $69.5K EOD. Don't chase — wait for confirmed daily close above $71K.
+
+---
+
 ## 2026-03-02 — 6PM Update (revised from 2PM)
 
 **BTC:** ~$66,100 — 2PM spike to $69,538 was a fakeout. Failed to close above $68K. Back in the $65K–$67K chop range.
@@ -147,3 +158,87 @@
 **Portfolio:** $MLTL/$KELLYCLAUDE/$FELIX/$NOX/$SELFCLAW/$JUNO/$PRXVT — BTC sideways likely means altcoins treading water. No action signal.
 **x402:** Narrative intact. No new developments today beyond morning Frontier/ChatGPT agent launches (agentic payment thesis = untouched).
 
+
+## 2026-03-04 3PM Heartbeat
+- BTC: broke above $71K this morning (+~5% in 5h from ~$67K) — structure shift. **$68K resistance finally cleared and held.** This is the first confirmed close above $68K since the Feb decline began.
+- ETH: ~$2,050–$2,100 (+5.6%) | XRP: up alongside BTC
+- Fear & Greed: recovering from 10 (extreme fear) — rally consistent with whale accumulation pattern noted March 3
+- **Signal shift:** Previous bearish bias (below $68K) now invalidated if BTC holds above $70K EOD. Watch $70K as new support floor.
+- JT portfolio: altcoin relief likely ongoing. Conviction plays ($FELIX, x402-narrative coins) may outperform on this leg.
+- Macro: Middle East tensions (oil spike) partially offset by BTC risk-on appetite. BlockFills (lender) halted deposits/withdrawals — credit stress signal; monitor for contagion.
+- **Key level to watch:** $70K support hold = bullish continuation. Rejection back below $68K = fakeout (prior pattern).
+
+## 2026-03-03 4PM Pulse
+- BTC: ~$62K–$69K range (volatile; Iran/Middle East tensions + whale accumulation of 270K BTC in 30 days)
+- Fear & Greed: 10 (extreme fear) — historically a buy signal; whales are treating it that way
+- ETH: ~$2,053 | XRP: up alongside BTC
+- No portfolio-level alert (no single-coin Δ >±15% confirmed) — detailed analysis via crypto crons
+- Macro: oil spiked 6% on Iran/Strait of Hormuz closure; crypto trading as risk-on hedge
+
+---
+
+## 2026-03-04 — 6PM Heartbeat
+
+**BTC:** ~$71,680–$72,000 range — broke above $71K this morning (+$4,561 vs. yesterday), hitting 1-month high. $69K resistance fully cleared. Rally driven by crypto-specific bid even as traditional markets face Middle East uncertainty.
+**Structure:** Bullish flip confirmed. $68K resistance (watched for weeks) is now support. Next levels: $72K resistance zone (CoinDesk target area), then $75K+.
+**Verdict:** This is the structure flip that was waiting to confirm. Cautious optimism — watch for close above $72K to confirm continuation. Don't chase if you're not already in.
+**ETH:** Tracking BTC higher.
+**JT portfolio:** Should be seeing relief on all 7 positions. $FELIX revenue thesis intact + price tailwind. x402 narrative strengthens with BTC momentum.
+**Watch:** Whether BTC holds $70K on any retest — that level was resistance for weeks, now key support.
+
+---
+
+## 2026-03-05 — 6:36 PM Heartbeat
+
+**BTC:** ~$72,344 (+2.31% today) — taking aim at $74K per CoinDesk. Relief rally holding. Unusual pattern: BTC rallying alongside USD (Trump-era correlation observed since Nov 2024 election).
+**ETH:** ~$2,116 (+2.55%) — leading recovery, outpacing BTC on percentage gains today.
+**SOL:** ~$90.60 (+1.96%) — holding critical $90 support zone.
+**Market sentiment:** "Extreme Fear" despite price recovery — divergence is typically bullish mid-term.
+**Key levels:** BTC $74K is next resistance. $72K is now support. 
+**JT portfolio:** No coin-level data from crypto-agent this pass. No ±15% threshold breach detected at market level. Evening cron at 8PM will do full portfolio sweep.
+**x402 narrative:** Intact. BTC strength + agentic payment thesis unchallenged.
+**No alerts triggered.**
+
+
+---
+
+## 2026-03-08 — 3PM Heartbeat
+
+**BTC:** ~$65.5K–$68.7K range, down ~2% on the day. Continues to trade below $70K. Rainbow Chart signals sustained pressure into end of March. CoinDesk earlier flagged "deep bear market, potential 30% further drop" thesis — still in play structurally.
+**Key level:** $65.5K is new support floor to watch. Morning's $68K level now acting as resistance.
+**24h change:** -1.97% — below ±15% alert threshold. No action required.
+**Macro:** Weak jobs data (-92K payrolls Feb) + macro-crypto correlation keeping risk-off sentiment. Institutional ETF bid (BlackRock IBIT) is the only structural floor holding.
+**x402 thesis:** Intact — stablecoin + AI agent payment narrative continuing to build despite BTC pressure. Narrative tailwind independent of BTC price action.
+**Verdict:** Range-bound. Watch $65.5K as support. No portfolio action signals.
+
+---
+
+## 2026-03-07 — 3PM Heartbeat
+
+**BTC:** ~$68K — down ~5% from yesterday's ~$70.5K close. Approaching the $68K support level that was prior resistance (cleared March 4). $302M in liquidations this week. BlackRock IBIT posted 5-month high inflow (11K BTC / $767M) — institutional bid still active.
+**Key level:** $68K is the line. This was resistance for weeks → flipped to support March 4. Losing it reopens $64K.
+**AI token market:** $14.2B market cap as of this week. AI/agentic narrative intact per multiple sources. x402 thesis unchallenged.
+**Signal:** Watch $68K close today. Hold = bullish structure intact. Break = back to $65K–67K chop zone. No ±15% alert breach on any single coin detected.
+**No action required** — let evening cron (8PM) do the full portfolio sweep.
+
+---
+
+## 2026-03-06 — 6PM Heartbeat
+
+**BTC:** ~$70,500–71K — pulling back from $74,500 weekly high. $70K is key support. ETF inflows $1.7B this week despite Fear & Greed at 22 (Extreme Fear). Divergence: institutional buying while retail panics.
+**Daily change:** ~-2% from yesterday's ~$72K — no ±15% alert threshold breach.
+**Macro context:** Iran-US conflict tightening macro-crypto correlation. Energy market pressure = risk-off sentiment.
+**Liquidations:** $470M wiped this week during the flush from $74.5K → $70K.
+**Key levels:** $70K support (ETF bid zone) | $74.5K resistance | Break below $68K = bearish continuation.
+**JT portfolio:** x402 forward bet intact. Hold conviction plays. No chase below $70K — ETF buyers are accumulating here.
+**ETH:** ~$2,030-2,050 range (tracking BTC).
+**Verdict:** Healthy retest of breakout level. $70K holds = bullish structure intact for push toward $80K. Lose $70K = back to $67K chop.
+
+## March 9, 2026 — 10AM Update
+- BTC: ~$66,300–$66,600 | -1.3% 24h | Early recovery: +0.59% in last few hours
+- ETH: below $2K | +2.07% recent recovery
+- Dominance: BTC 56.3% | Market cap: $2.36T
+- Sentiment: Fear (macro headwinds — oil $110+, US-Iran tensions, equity volatility, ETF outflows)
+- Consolidation range: $66.5K–$70.5K | Analyst $150K target still in play longer-term
+- x402 / agentic payments narrative intact
+- No ±15% breach. No alert triggered.

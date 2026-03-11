@@ -29,8 +29,9 @@
  *   --markdown                 Output as markdown (for research docs)
  */
 
-import { readFileSync, writeFileSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, appendFileSync, mkdirSync } from "fs";
 import { join } from "path";
+import { homedir } from "os";
 import * as api from "./lib/api";
 import * as cache from "./lib/cache";
 import * as fmt from "./lib/format";
@@ -202,12 +203,28 @@ async function cmdSearch() {
   }
 
   // Cost display (based on raw API reads, not post-filter count)
-  const cost = (rawTweetCount * 0.005).toFixed(2);
+  const cost = (rawTweetCount * 0.005).toFixed(4);
   if (quick) {
     console.error(`\n⚡ quick mode · ${rawTweetCount} tweets read (~$${cost})`);
   } else {
     console.error(`\n📊 ${rawTweetCount} tweets read · est. cost ~$${cost}`);
   }
+
+  // Cost logging to ~/.openclaw/workspace/memory/costs/x-api.jsonl
+  try {
+    const costsDir = join(homedir(), ".openclaw/workspace/memory/costs");
+    mkdirSync(costsDir, { recursive: true });
+    const logPath = join(costsDir, "x-api.jsonl");
+    const now = new Date();
+    const entry = JSON.stringify({
+      date: now.toISOString().slice(0, 10),
+      timestamp: now.toISOString(),
+      source: process.env.CRON_NAME || "manual",
+      tweets_read: rawTweetCount,
+      cost_usd: parseFloat(cost),
+    });
+    appendFileSync(logPath, entry + "\n");
+  } catch { /* non-fatal */ }
 
   // Stats to stderr
   const filtered = rawTweetCount !== tweets.length ? ` → ${tweets.length} after filters` : "";

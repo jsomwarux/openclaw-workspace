@@ -15,6 +15,11 @@ Runs nightly at 3:00 AM EST. Reads Mission Control, selects up to 2 eligible hig
 If any of these words appear, skip the task — it requires JT approval:
 `send`, `submit`, `post`, `publish`, `email to client`, `deploy to prod`, `approve`, `merge`, `charge`, `pay`, `invoice`, `schedule a call`
 
+## Banned Actions (hard rules — no exceptions)
+- **NEVER add a "B2B Account Service Agent" project card to jtsomwaru.com** — JT explicitly decided against this (2026-03-06). Do not create it, do not re-add it, do not scaffold any Agentforce metadata for it.
+- **Agentforce builds allowed** — sync is live via jsomwarux/agentforce-agent. ALWAYS run `cd ~/projects/agentforce-agent && git pull origin main` before starting any Agentforce work. Push after completing work (`git add . && git commit -m "..." && git push origin main`).
+- **NEVER add any project to jtsomwaru.com without it being in the portfolio queue** (`agents/portfolio-updater/queue.jsonl`) with a score ≥ 7 and JT approval.
+
 ## Run Procedure
 
 ### Step 0: Film Review (non-negotiable, even if it costs 2 minutes)
@@ -50,9 +55,16 @@ b. **Determine approach**:
    - Analysis task → handle inline if under 10 min estimated
    - Code build → spawn coding sub-agent only if clearly scoped (<2h estimated)
 c. **Inject feedback rules** into every sub-agent prompt: "Apply these learned rules from JT's feedback: [rules]"
+c2. **Code build gate (jtsomwaru-com only):** If the task involves code changes to `~/projects/jtsomwaru-com/`, run a build check before committing:
+   ```
+   cd ~/projects/jtsomwaru-com && npm run build
+   ```
+   - If build **passes** → commit and push as normal
+   - If build **fails** → do NOT commit. Log the error, mark the task as failed in the overnight log, push a 🌙 Review MC task with the error output. Move to the next task.
+   - This gate applies to any sub-agent that touches jtsomwaru-com code — inject it into the sub-agent prompt: "After all changes, run `npm run build` from the project root. Only commit if the build exits 0. If it fails, write the error to the log and stop."
 d. **Write output** to the appropriate path:
    - Drafts → `~/.openclaw/workspace/memory/drafts/[task-slug]-[date].md`
-   - Research → relevant project folder (e.g., `~/projects/opticfy-pipeline/clients/[slug]/research.md`)
+   - Research → relevant project folder (e.g., `~/projects/jt-consulting-pipeline/clients/[slug]/research.md`)
    - Analysis → `~/.openclaw/workspace/memory/analysis/[task-slug]-[date].md`
 e. **Mark task in progress** via Mission Control:
    ```
@@ -60,7 +72,18 @@ e. **Mark task in progress** via Mission Control:
      -H 'Content-Type: application/json' \
      -d '{"status": "in-progress"}'
    ```
-f. **On completion**, mark done:
+f. **Verify success before marking done** — check the appropriate metric for the task type:
+   | Task type | Success metric |
+   |---|---|
+   | Code build (jtsomwaru-com) | `npm run build` exits 0, no TypeScript errors |
+   | Research / analysis | Output file exists, >300 words, no placeholder text (no "TBD", "TODO", "[insert]") |
+   | Draft (resume, cover letter, outreach) | File written to correct path, `jt_review_required: true` in brief.json if applicable |
+   | T2 pipeline run | `outreach-draft.md` written, `demo-results.json` present, `brief.json` has `tier: 2` + `jt_review_required: true` |
+   | Knowledge base / script / config | File exists, no syntax errors (run `python3 -m py_compile` for Python, `node --check` for JS) |
+
+   If the success metric is NOT met → do NOT mark done. Log the failure, push a 🌙 Review MC task with what failed and why, and move to the next task.
+
+   If success metric is met → mark done:
    ```
    curl -s -X PATCH http://localhost:3000/api/tasks/[id] \
      -H 'Content-Type: application/json' \
@@ -210,9 +233,37 @@ Estimated cost: $0.00
 
 Do NOT message JT directly. The morning brief reads this log and delivers the summary.
 
+## Consulting Pipeline — Overnight Eligible Tiers
+
+The overnight agent can run Tier 2 pipeline tasks autonomously. Tier 1 and Tier 3 batch sends are JT-only.
+
+**T2 overnight run (eligible):**
+1. Pick next prospect from shortlists with Tier: T2 assigned
+2. Run pipeline preflight: `bash ~/.openclaw/workspace/skills/opticfy-pipeline/scripts/preflight.sh [slug]` — if it fails, skip this prospect and log the failure
+3. Spawn research-agent (light brief only — company name, 8–12 product SKUs, supplier names, one hook signal, contact name/LinkedIn)
+4. Spawn n8n-agent with T2_TEMPLATE_INPUT prompt (see n8n-agent/CLAUDE.md for format) — configures the existing template with prospect data, runs 3 tests, writes demo-results.json
+5. Spawn outreach-agent (T2 mode, tier: 2) — drafts personalized outreach using template + hook signal
+6. Write outreach draft to `~/projects/jt-consulting-pipeline/clients/[slug]/outreach-draft.md`
+7. Push MC review task: "🟡 T2 Outreach Ready — [Company Name] — review and approve to send" with path to outreach-draft.md in description
+8. Do NOT send. JT approves before any send happens.
+9. Write brief.json fields: `"tier": 2, "template_used": "wholesale-inventory-reorder", "jt_review_required": true`
+
+**T2 niche templates (use these — do NOT build custom n8n workflows):**
+- Wholesale Distribution → "Inventory Reorder Intelligence" template (n8n workflow: `[TEMPLATE] Wholesale Inventory Reorder`)
+- Construction → "Job Cost Monitor" template (n8n workflow: `[TEMPLATE] Construction Job Cost Monitor`) ← BUILD PENDING
+- Property Management → "Tenant Communication Bot" template ← BUILD PENDING
+
+**Template config task for n8n-agent (T2):**
+Instead of building a workflow, instruct n8n-agent to:
+1. Load the `[TEMPLATE]` workflow
+2. Update these fields only: company name, 8–12 product/job names, contact email if known
+3. Export updated workflow JSON to `clients/[slug]/workflow.json`
+4. Mark as "template-configured" in brief.json
+
 ## What Counts as "Completable"
 ✅ Draft a resume/cover letter for a job opening
-✅ Research a prospect or company for Opticfy pipeline
+✅ Research a prospect or company for consulting pipeline (T1 or T2)
+✅ Run full T2 pipeline on a shortlisted prospect (research → template config → outreach draft)
 ✅ Run analysis-agent on a client's data
 ✅ Build out a skill, script, or agent configuration
 ✅ Populate knowledge base entries

@@ -11,6 +11,16 @@
 ## 🚨 Hard Rules
 - Gateway restart: ALWAYS use restart script. NEVER raw launchctl/gateway config.patch/apply.
 - openclaw.json: NEVER write arbitrary keys — crashes gateway. External keys → TOOLS.md only.
+- **NO Agentforce agent builds overnight** — JT builds Agentforce agents on his personal device. Overnight agent must NOT create Agentforce agents until GitHub sync repo is set up and Eve has pulled latest. Violating this creates merge conflicts and lost work.
+
+## Agentforce Sync (✅ ACTIVE — 2026-03-11)
+- JT builds Agentforce agents on personal device using Claude Code/Cursor
+- Eve (Mac mini) syncs via GitHub: jsomwarux/agentforce-agent
+- Repo path: ~/projects/agentforce-agent (remote: git@github.com:jsomwarux/agentforce-agent.git)
+- **Sync rule**: `cd ~/projects/agentforce-agent && git pull origin main` before any Agentforce work. Push after changes.
+- Current state: fully synced as of 2026-03-11. Agents in repo: EcommerceServiceAgent (v1–v24), EmployeeAssistant, InsuranceServiceAgent, LendingApplicationAgent, PMOperationsAgent, TenantServiceAgent + all Apex actions and Flows.
+- **Overnight builds allowed** (lifted 2026-03-11): overnight agent CAN build Agentforce agents. Must `git pull origin main` first, push after. B2B Account Service Agent is still banned — do not recreate.
+- B2B Account Service Agent: decided against building/adding to site (2026-03-06). Do not recreate. Artifact deleted from Mac mini.
 
 ## JT
 - Jon Trevor Somwaru | NYC metro | Telegram primary | @jts_14 | @jt__crypto | GitHub: jsomwarux
@@ -18,18 +28,21 @@
 - Direct, efficient. Expects Eve to figure things out. Corrects clearly.
 - NOT a developer — auto-disqualify roles requiring Apex/SFDX/ML engineering/hands-on coding
 
-## Opticfy Niche-Skill Matrix (locked 2026-03-03)
+## Consulting Niche-Skill Matrix (live — reviewed monthly, not locked)
 | Skill | Primary Niche | Secondary Niche | Why |
 |-------|--------------|-----------------|-----|
 | **Agentforce** | Insurance (COVU anchor) | Mid-large PM/RE (Salesforce shops) | Requires Salesforce — only targets companies already on it |
 | **n8n** | Construction + Skilled Trades $5-20M (Aya reference) | Wholesale Distribution (NYC garment/food/hardware) | Stack-agnostic — targets ServiceTitan, Jobber, QuickBooks, NetSuite users |
 - Small PM companies (AppFolio/Buildium, not Salesforce) → n8n, not Agentforce
 - Upsell path: land construction/wholesale on n8n → as they grow onto Salesforce → sell Agentforce
+- **Last fitness review:** not yet run (system launched 2026-03-06) | Next: April 1
+- **Signals accumulator:** memory/niche-fitness-signals.md (reset monthly)
+- Niches are evaluated monthly against alternatives. If a better fit emerges, Eve advises a pivot.
 
-## Opticfy (AI Consulting)
+## JT Somwaru Consulting
 - Target niches: wholesale distribution, property mgmt, construction, insurance ops, skilled trades (NYC)
 - New service (Feb 2026): Cowork Plugin Implementation — custom Claude Cowork plugins + marketplace
-- New skill: opticfy-ops — 5 commands (/client-intake, /process-doc, /runbook, /vendor-eval, /anomaly-audit) at skills/opticfy-ops/
+- New skill: jt-consulting-ops — 5 commands (/client-intake, /process-doc, /runbook, /vendor-eval, /anomaly-audit) at skills/jt-consulting-ops/
 - Expansion target: HubSpot (top pick from enterprise platforms research) — SMB CRM, huge NYC presence, lower Salesforce partner competition. Full research: memory/research/enterprise-platforms.md
 - Partner pipeline: Avallon (NYC seed startup, no formal program yet) — DM to CEO Cornelius Schramm ready (memory/research/avallon-furtherAI-partner-research-2026-02-28.md). FurtherAI = 6-12 month play.
 - ConversationFirst framework built (2026-02-28) — Agentforce UX methodology: persona cards, flow diagrams, 25-pt checklist, 1-page write-up. Ready to share with prospects. Path: memory/drafts/conversationfirst-framework-2026-02-28.md. JT pending: full portfolio card vs. services section callout?
@@ -41,11 +54,27 @@
 - Project 4 (in talks): Dashboard + automations for Head of Acquisitions. Sent NDA to review his spreadsheet — no response after 2 follow-ups. Cold for now.
 - Strategy: Aya is becoming an anchor client. Each project extends runway and builds referral credibility within their network. Keep relationship warm.
 
+## Content System (built 2026-03-07)
+- Content voice rules: `memory/content-voice.md` — Jack Butcher framework distilled for JT. **Load before drafting any X post, thread, or LinkedIn content.**
+- Key rules: compression is confidence, 5:1 you:I ratio, 6-15 words for standalone posts, two-part parallel is the primary structure
+- Swipe cron updated to use content-voice.md as primary evaluation lens (2026-03-07)
+- AGENTS.md rule added: load content-voice.md before every content draft
+
+## Critic Agent (built 2026-03-07)
+- Agent: `agents/critic/AGENT.md` — 4-step strategic critique framework
+- Triggers: on-demand `/critic`, soft-signal flag (single line), Sunday 6PM weekly gut-check cron (UUID: d5290646)
+- Registered in agents.json ✅
+- SOUL.md updated: critic mode activated on /critic or soft-signal detection
+
 ## Active Apps
 - Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
 - Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private)
 - Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL
-- jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Updated 2026-02-27: custom Framer Motion graphics on all 5 portfolio cards, hero subtitle updated, Zapier removed from About
+- jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Updated 2026-03-07:
+  - Demo videos added: `n8n-support-triage` + `wholesale-inventory-reorder` (Google Drive hosted)
+  - Featured projects cap = 2 per section (overflow → "view more")
+  - B2B Account Service Agent card: added by overnight agent (mistake), **reverted** — do not re-add
+  - AI Multi-Channel Support Triage card: live at /work/n8n-support-triage ✅
 - Dynasty fantasy football: planned
 
 ## Job Market
@@ -77,7 +106,7 @@
 - **Scout reports**: `memory/passive-income/YYYY-MM-DD-scout.md` | **Strategist reports**: `memory/passive-income/YYYY-MM-DD-strategist.md`
 - **MC project tag**: `passive-income` | Nash Satoshi + Glow Index tasks tagged
 
-## Active Cron Jobs (19) — post-incident schedule (2026-02-26)
+## Active Cron Jobs (20) — post-incident schedule (2026-02-26)
 - crypto-morning: 6AM daily | main | full portfolio analysis
 - job-market: 6:30AM daily | isolated sonnet | → data/daily-brief.md
 - morning-brief: 7:30AM daily | main | brief + costs + niche + jobs
@@ -97,6 +126,10 @@
 - passive-income-scout: Sunday 6AM ET | isolated sonnet | trends → 5 raw ideas → saves report (no MC push, no Telegram) | UUID: dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0
 - passive-income-strategist: Sunday 7:30AM ET | isolated sonnet | reads Scout report → deep 8-dimension analysis → pushes 🟢 winners to MC → sends Sunday digest to Telegram | UUID: 4e19c300-d387-4019-b658-9664f0d665d5
 - monthly-goals-gap: 1st of month 8AM | isolated sonnet | job market vs. Eve capabilities audit → MC/Skills queue | UUID: fdc2cf75 (ran 2026-03-01 ✅)
+- monthly-niche-fitness: 1st of month 9:30AM | isolated sonnet | scores current niches vs. alternatives, advises pivot/shift/stay | UUID: 1e2cf966
+- content-calendar: Monday 7AM ET | isolated sonnet | pulls Notion swipe file → generates 4 LinkedIn + 7 X posts → saves weekly-YYYY-MM-DD.md → uploads to Drive (Content/LinkedIn + Content/X) → sends Mon posts to JT | UUID: 98fda582
+- content-reminder: Tue–Sat 8AM ET | isolated sonnet | sends that day's X post (+ LinkedIn on Wed/Fri) | UUID: 5e66b4ee
+- content-sunday: Sunday 9AM ET | isolated sonnet | sends Sun LinkedIn + X posts + weekly engagement check | UUID: d918122d
 - Daily cap: 20 invocations/weekday ✅
 
 ## Cost Tracking
@@ -114,7 +147,7 @@
 - Auto-approves score ≥7/10 | Flags 4–6 to JT | Skips <4
 - Demand reorder: weekly — featured projects ranked by skills-demand-tracker scores
 - Site files: src/data/projects.ts | src/components/project-graphics/index.tsx | src/components/About.tsx
-- Triggers: overnight builds, JT says "done/shipped", Opticfy completions, MC tasks flipping to done, in-session builds (via AGENTS.md rule)
+- Triggers: overnight builds, JT says "done/shipped", consulting completions, MC tasks flipping to done, in-session builds (via AGENTS.md rule)
 - Morning brief: shows 🌐 Site Updated if anything was added overnight
 
 ## Spanish Learning System
@@ -139,11 +172,12 @@
 - $JUNO note: previously EXIT-rated — JT re-entered, agent will re-analyze fresh each morning
 
 ## Key Decisions
-- **Priority order locked (2026-03-03)**: (1) Polish jtsomwaru.com + build demo agents → (2) Post LinkedIn career update linking to site → (3) Resume job applications + outreach. Nothing in steps 2–3 starts until step 1 is complete.
-- **All outreach on hold (2026-03-03)**: No direct outreach until jtsomwaru.com + demo agents are polished. Unlock order: demos built → site updated → outreach resumes. Affected: Avallon DM, Opticfy prospect pipeline, distressed property pitch, Spectrum Cowork pitch, H.C. Oswald outreach, Cowork pitch draft review. All demoted to medium/blocked on MC.
+- **Priority order (updated 2026-03-09)**: Step 1 complete ✅ (jtsomwaru.com + demos live). Now parallel: (2) LinkedIn career update + (3) Consulting outreach (H.C. Oswald Day 0 + new prospects through pipeline). Job applications active in parallel.
+- **Outreach active as of 2026-03-09**: freeze lifted. Tier system governs effort. T1: H.C. Oswald (ready to send). T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
+- **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates needed: wholesale (convert existing demo), construction job cost (build), Tier 3 send scheduler (build).
 - Aggressive compaction over safeguard — prevents context resets on long builds
 - OpenRouter for non-Anthropic models — direct key only if model >$5/mo
 - Sonnet default over Opus — caching = 80% as capable at 20% cost
 - n8n over Make.com — self-hosted, no per-task pricing at scale
 - Training system (Kobe Protocol, 2026-02-28): self-improvement via better SYSTEM (memory, rules, prompts) not model weights. Monthly gap analysis cron is the anchor.
-- HubSpot = best Opticfy expansion platform (2026-02-28): SMB CRM, NYC penetration, lower partner competition than Salesforce
+- HubSpot = best JT Somwaru Consulting expansion platform (2026-02-28): SMB CRM, NYC penetration, lower partner competition than Salesforce

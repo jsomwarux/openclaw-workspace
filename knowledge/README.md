@@ -46,7 +46,7 @@ bun kb.ts stats
 
 | Category    | Use for                                              |
 |-------------|------------------------------------------------------|
-| `business`  | Opticfy clients, market research, competitor intel   |
+| `business`  | Consulting clients, market research, competitor intel   |
 | `tech`      | AI tools, models, APIs, dev discoveries              |
 | `crypto`    | Market analysis, trends, token research              |
 | `personal`  | Health, goals, habits, reflections                   |

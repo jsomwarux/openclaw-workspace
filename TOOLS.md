@@ -59,17 +59,35 @@ Replace `<TOKEN>` with the bot token from `~/.config/env/global.env`.
 - `cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env && bun run x-search.ts search "query" --quick --limit 5`
 - Cost: ~$0.50/100 tweets. Use --quick --limit 5 for cheap lookups.
 
-## Firecrawl
+## Cloudflare Browser Rendering — /crawl (preferred for full-site crawls)
+- Replaces Firecrawl for full-site ingestion. One API call crawls an entire site.
+- Async: POST to start → receive job_id → GET to poll results
+- Free during beta for `render: false` (static sites). Headless/JS rendering billed under Workers pricing.
+- Supports: HTML, Markdown, JSON output | incremental re-crawls via `modifiedSince` | depth/limit/pattern controls
+- **Primary use cases:** H.C. Oswald RAG ingestion (Shopify catalog), prospect full-site crawls in research-agent
+- Endpoint: `POST https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl`
+- Auth: `Authorization: Bearer <CF_API_TOKEN>` | Credentials in `~/.config/env/global.env` (CF_ACCOUNT_ID, CF_API_TOKEN)
+- Quick example (static site, markdown):
+  ```
+  curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+    -H 'Authorization: Bearer <token>' -H 'Content-Type: application/json' \
+    -d '{"url":"https://example.com","formats":["markdown"],"render":false,"options":{"includePatterns":["https://example.com/products/**"]}}'
+  ```
+- Structured extraction (JSON + prompt): add `"formats":["json"],"jsonOptions":{"prompt":"Extract services, tech stack, key contacts"}`
+- Docs: https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/
+
+## Firecrawl (fallback — use /crawl above for full-site work)
 - Key: fc-0d0961fa920a466a869fdd4068b9fe7e
 - `POST https://api.firecrawl.dev/v1/scrape` `{"url":"...","formats":["markdown"]}`
 - Auth header: `Authorization: Bearer fc-0d0961fa920a466a869fdd4068b9fe7e`
+- Use for: single-page scrapes where Cloudflare /crawl is overkill
 
 ## Scrapling
 - Library: `pip install "scrapling[ai]"` — adaptive Python web scraping framework
 - NOT a native OpenClaw feature — used inside Python scripts exec'd by OpenClaw
 - Key classes: `Fetcher` (fast HTTP + TLS fingerprint spoofing), `StealthyFetcher` (Cloudflare bypass), `DynamicFetcher` (Playwright browser automation)
 - Adaptive selectors: `page.css('.selector', auto_save=True)` — auto-relocates elements when site structure changes
-- MCP server: `scrapling.readthedocs.io/en/latest/ai/mcp-server/` — wire as tool in research-agent for Opticfy pipeline
+- MCP server: `scrapling.readthedocs.io/en/latest/ai/mcp-server/` — wire as tool in research-agent for consulting pipeline
 - Docs: scrapling.readthedocs.io | GitHub: github.com/D4Vinci/Scrapling
 - Use case: StreetEasy scraper resilience (upgrade plan: memory/analysis/scrapling-evaluation-2026-03-02.md)
 
@@ -93,17 +111,68 @@ Replace `<TOKEN>` with the bot token from `~/.config/env/global.env`.
 - Task API: `POST http://localhost:3000/api/tasks`
 - **Recovery** (if board unreachable): `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-convex && launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next` — do NOT just log "may be down"; attempt kickstart immediately
 
-## Opticfy Pipeline Agents (~/projects/)
+## Consulting Pipeline Agents (~/projects/)
 - research-agent/ | analysis-agent/ | n8n-agent/ (n8n: localhost:5678) | agentforce-agent/ (sf CLI needed)
 - crypto-agent/ | job-market-agent/ | ranking-app-agent/
-- Pipeline: ~/projects/opticfy-pipeline/ | Skill: skills/opticfy-pipeline/SKILL.md
+- Pipeline: ~/projects/jt-consulting-pipeline/ | Skill: skills/jt-consulting-pipeline/SKILL.md
 
 ## Drive Drafts
 - Script: scripts/drive_drafts.py | Account: openclawagenteve14@gmail.com | Root: "Eve — Drafts"
+- **Preferred: use `--path` for full control** (supports deep folder structure)
+- **Folder structure (post-2026-03-09 restructure):**
+  ```
+  Eve — Drafts/
+  ├── Consulting/
+  │   ├── Clients/[Client Name]/Outreach/LinkedIn/
+  │   ├── Clients/[Client Name]/Outreach/Email/
+  │   ├── Clients/[Client Name]/Decks/
+  │   ├── Clients/[Client Name]/Research/
+  │   ├── Templates/
+  │   └── Case Studies/
+  ├── Content/
+  │   ├── X/
+  │   └── LinkedIn/
+  ├── Job Applications/
+  │   ├── Resumes/
+  │   └── Cover Letters/
+  ├── Research/
+  ├── Frameworks/
+  └── Analysis/
+  ```
+- **Routing table:**
+  | Content type | `--path` value |
+  |---|---|
+  | Client LinkedIn outreach DMs | `Consulting/Clients/[Client]/Outreach/LinkedIn` |
+  | Client cold emails | `Consulting/Clients/[Client]/Outreach/Email` |
+  | Proposal decks | `Consulting/Clients/[Client]/Decks` |
+  | Resumes | `Job Applications/Resumes` |
+  | Cover letters | `Job Applications/Cover Letters` |
+  | X posts (personal brand) | `Content/X` |
+  | LinkedIn posts (personal brand) | `Content/LinkedIn` |
+  | Research files | `Research` |
+  | Framework/methodology docs | `Frameworks` |
+  | Analysis reports | `Analysis` |
+  | T2/template decks | `Consulting/Templates` |
+- **Command:**
+  ```
+  cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
+    --title "[Descriptive Title]" --path "[path from table above]" --file [path]
+  ```
+- **Legacy `--project`/`--type`** still works for non-consulting projects (e.g. Vista, Nash Satoshi)
 
-## Opticfy Pipeline Drive Sync
+## Mission Control — Task Push Template
+- **Quick push (copy-paste and fill in):**
+  ```
+  curl -s -X POST http://localhost:3000/api/tasks \
+    -H 'Content-Type: application/json' \
+    -d '{"title":"[TITLE]","description":"[DESCRIPTION]","status":"todo","priority":"[high|medium|low]","assignee":"[eve|JT]","project":"[Job Market|Skills|Consulting|passive-income]","sortOrder":[N]}'
+  ```
+- **Check for duplicates first:** `curl -s http://localhost:3000/api/tasks | python3 -c "import sys,json; [print(t['title']) for t in json.load(sys.stdin)]" | grep -i "[keyword]"`
+- **sortOrder bands:** HIGH: 10-40 quick wins | 50-90 alerts | 100+ strategic | MEDIUM: 10,20,30… | speculative: 500+
+
+## Consulting Pipeline Drive Sync
 - Script: `python3 ~/.openclaw/workspace/scripts/pipeline_drive_sync.py --slug [slug] --client "[Name]" --stage [deck|outreach|all]`
-- Syncs deck + outreach draft to Google Drive: Eve — Drafts / Opticfy — Client Pipeline / [Company Name]/
+- Syncs deck + outreach draft to Google Drive: Eve — Drafts / Consulting / Clients / [Company Name] / Outreach|Decks/
 - Run after deck-built and outreach-drafted stages. Include Drive links in JT's review message.
 - List synced clients: `python3 scripts/pipeline_drive_sync.py --list`
 

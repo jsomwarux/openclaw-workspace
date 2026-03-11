@@ -1,8 +1,13 @@
-# opticfy-ops — Opticfy Client Operations Skill
+---
+name: jt-consulting-ops
+description: Five-command consulting operations skill for active client work — /client-intake, /process-doc, /runbook, /vendor-eval, /anomaly-audit. Use when JT says "client intake", "document this workflow", "write a runbook", "vendor eval", "process doc", "evaluate their stack", or is doing scoping/onboarding work with an existing or signed client. NOT for: pipeline outreach or new prospect research (use jt-consulting-pipeline skill), portfolio updates, or job applications.
+---
+
+# jt-consulting-ops — Consulting Client Operations Skill
 
 ## When to Use
 Load this skill when:
-- Starting a new Opticfy client engagement (intake, scoping)
+- Starting a new consulting client engagement (intake, scoping)
 - Documenting a client's current workflow before automating it
 - Creating a runbook for an n8n workflow or automation we've built
 - Evaluating a client's existing tech stack
@@ -12,7 +17,7 @@ Load this skill when:
 ## Architecture Note
 This skill is modeled on Anthropic's Cowork Operations plugin (`anthropics/knowledge-work-plugins/operations`).
 Key pattern: **skills = domain knowledge that fires automatically; commands = explicit workflows you invoke.**
-Commands live in `skills/opticfy-ops/commands/`. Each is a standalone template with output format + tips.
+Commands live in `skills/jt-consulting-ops/commands/`. Each is a standalone template with output format + tips.
 
 ---
 
@@ -54,14 +59,14 @@ Commands live in `skills/opticfy-ops/commands/`. Each is a standalone template w
 ## Usage
 
 When JT invokes a command (e.g., "run /process-doc for Aya's rent roll process"), read the corresponding
-command file in `skills/opticfy-ops/commands/` and follow it as the structured template for that task.
+command file in `skills/jt-consulting-ops/commands/` and follow it as the structured template for that task.
 
 All commands work standalone (JT provides context) or with client data files (upload/paste data).
 
 ---
 
 ## Client Context Files
-Client data lives at: `~/projects/opticfy-pipeline/clients/[slug]/`
+Client data lives at: `~/projects/jt-consulting-pipeline/clients/[slug]/`
 Research output: `research.md` | Analysis: `analysis.md` | Outreach: `outreach/`
 
 Always check if a client folder exists before starting a new engagement.

@@ -4,7 +4,7 @@ create_slides_deck.py — Create a Google Slides deck via API and save to Drive.
 
 Usage:
   python3 create_slides_deck.py --client hc-oswald
-  python3 create_slides_deck.py --client hc-oswald --folder "Eve — Drafts/Opticfy/Case Studies"
+  python3 create_slides_deck.py --client hc-oswald --folder "Eve — Drafts/JT Somwaru/Case Studies"
 
 Outputs: Google Slides URL (also writes to deck-url.txt in client folder)
 """
@@ -23,7 +23,7 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 
 TOKEN_PATH = os.path.expanduser("~/.openclaw/workspace/config/google-oauth-token.json")
-PIPELINE_ROOT = os.path.expanduser("~/projects/opticfy-pipeline/clients")
+PIPELINE_ROOT = os.path.expanduser("~/projects/jt-consulting-pipeline/clients")
 
 # Points → EMU conversion (1 pt = 12700 EMU)
 def pt(n): return int(n * 12700)
@@ -75,7 +75,7 @@ def find_or_create_folder(drive, name, parent_id=None):
     return drive.files().create(body=body, fields="id").execute()["id"]
 
 
-def get_target_folder(drive, path="Eve — Drafts/Opticfy/Case Studies"):
+def get_target_folder(drive, path="Eve — Drafts/JT Somwaru/Case Studies"):
     parts = path.split("/")
     parent = None
     for part in parts:
@@ -205,7 +205,7 @@ def slide1_title(sid):
          "text": "Automation Proposal", "x": 60, "y": 162, "w": 600, "h": 45,
          "color": ACCENT, "size": 28},
         {"id": make_element_id(n, "builder"), "kind": "text",
-         "text": "Built by Opticfy", "x": 60, "y": 220, "w": 300, "h": 28,
+         "text": "Built by JT Somwaru Consulting", "x": 60, "y": 220, "w": 300, "h": 28,
          "color": MUTED, "size": 16},
         {"id": make_element_id(n, "desc"), "kind": "text",
          "text": "Product Knowledge Copilot — AI-Powered Boiler Parts Lookup",
@@ -296,7 +296,7 @@ def slide4_solution(sid):
     )
     return build_slide_requests(sid, BG_DARK, [
         {"id": make_element_id(n, "title"), "kind": "text",
-         "text": "What Opticfy Built",
+         "text": "What We Built",
          "x": 60, "y": 25, "w": 600, "h": 45,
          "color": WHITE, "size": 26, "bold": True},
         {"id": make_element_id(n, "bar"), "kind": "rect",
@@ -468,7 +468,7 @@ def slide9_next(sid):
         "Investment: $3,500–$5,000 one-time build + optional $500/mo maintenance"
     )
     contact_text = (
-        "JT Somwaru — Opticfy\n"
+        "JT Somwaru — Consulting\n"
         "jtsomwaru.com\n"
         "linkedin.com/in/jon-trevor-somwaru"
     )
@@ -493,8 +493,8 @@ def slide9_next(sid):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--client", default="hc-oswald")
-    parser.add_argument("--folder", default="Eve — Drafts/Opticfy/Case Studies")
-    parser.add_argument("--title", default="H.C. Oswald Supply Co. — Opticfy Proposal")
+    parser.add_argument("--folder", default="Eve — Drafts/JT Somwaru/Case Studies")
+    parser.add_argument("--title", default="H.C. Oswald Supply Co. — JT Somwaru Consulting Proposal")
     args = parser.parse_args()
 
     print(f"Building deck: {args.title}")

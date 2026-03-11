@@ -1,5 +1,5 @@
 /**
- * Pipeline stage tracker — called by Opticfy pipeline agents on every PIPELINE_HANDOFF.
+ * Pipeline stage tracker — called by consulting pipeline agents on every PIPELINE_HANDOFF.
  *
  * POST /api/pipeline  { slug, stage, company? }
  *   → finds task by slug, updates pipelineStage + description + status
@@ -73,7 +73,7 @@ export async function POST(req: Request) {
   }
 
   // Auto-create if no task with this slug exists
-  const title = company ? `Opticfy Pipeline — ${company}` : `Opticfy Pipeline — ${slug}`;
+  const title = company ? `JT Somwaru Consulting Pipeline — ${company}` : `JT Somwaru Consulting Pipeline — ${slug}`;
   const createRes = await fetch(`${BASE_URL}/api/tasks`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
       status: stageInfo.status,
       assignee: "eve",
       priority: "high",
-      project: "Opticfy",
+      project: "Consulting",
       slug,
       pipelineStage: stage,
     }),

@@ -134,7 +134,7 @@
     "name": "n8n Builder",
     "emoji": "\ud83d\udd27",
     "role": "Workflow Automation",
-    "domain": "Stage 3 of 5 \u2014 builds production-ready n8n automated workflows for Opticfy clients across all 5 target niches. Supports 4-LLM ensemble patterns.",
+    "domain": "Stage 3 of 5 \u2014 builds production-ready n8n automated workflows for consulting clients across all 5 target niches. Supports 4-LLM ensemble patterns.",
     "workspaceRel": "projects/n8n-agent",
     "github": "jsomwarux/n8n-agent",
     "skills": [
@@ -268,7 +268,7 @@
     "name": "jtsomwaru.com",
     "emoji": "\ud83c\udf10",
     "role": "Personal Website",
-    "domain": "JT's personal portfolio site \u2014 Next.js + Tailwind deployed on Vercel. Showcases Opticfy, Vista, Nash Satoshi, and other projects.",
+    "domain": "JT's personal portfolio site \u2014 Next.js + Tailwind deployed on Vercel. Showcases JT Somwaru Consulting, Vista, Nash Satoshi, and other projects.",
     "workspaceRel": "projects/jtsomwaru-com",
     "github": "jsomwarux/jtsomwaru-com",
     "skills": [
@@ -285,7 +285,7 @@
     "name": "UI/UX Designer",
     "emoji": "\ud83c\udfa8",
     "role": "Design Systems",
-    "domain": "Designs and implements UI/UX systems for Opticfy apps and client deliverables. Maintains design tokens, components, and interaction patterns.",
+    "domain": "Designs and implements UI/UX systems for JT's apps and client deliverables. Maintains design tokens, components, and interaction patterns.",
     "workspaceRel": "projects/ui-ux-agent",
     "github": null,
     "skills": [
@@ -298,16 +298,16 @@
     "created": "2026-02-22"
   },
   {
-    "id": "opticfy-pipeline",
+    "id": "jt-consulting-pipeline",
     "name": "Pipeline Coordinator",
     "emoji": "\ud83d\udd17",
     "role": "Orchestration",
-    "domain": "Shared data and pipeline state for the 5-stage Opticfy client outreach pipeline. Tracks clients from research through to outreach.",
-    "workspaceRel": "projects/opticfy-pipeline",
+    "domain": "Shared data and pipeline state for the 5-stage consulting client outreach pipeline. Tracks clients from research through to outreach.",
+    "workspaceRel": "projects/jt-consulting-pipeline",
     "github": null,
     "skills": [],
     "crons": [],
-    "currentTask": "Pipeline tracker at ~/projects/opticfy-pipeline/pipeline.md",
+    "currentTask": "Pipeline tracker at ~/projects/jt-consulting-pipeline/pipeline.md",
     "created": "2026-02-24"
   },
   {
@@ -355,11 +355,80 @@
     "created": "2026-03-01"
   },
   {
+    "id": "job-tracker",
+    "name": "Job Tracker",
+    "emoji": "📋",
+    "role": "Job Application Accountability Agent",
+    "domain": "Monitors open job applications on Mission Control. Fires Tue/Thu 10:15 AM. Classifies by days elapsed: NEW (<4d, silent), STALE (4-7d, flag), OVERDUE (7d+, escalate). Sends one Telegram alert with deadline, doc status, and next action. Silent if nothing urgent. Also drafts follow-up emails for submitted applications with no response after 10 days.",
+    "workspaceRel": ".openclaw/workspace/agents/job-tracker",
+    "github": null,
+    "skills": ["job-application"],
+    "crons": [
+      {
+        "id": "b0b04601-7518-4681-9761-4bbe5054ce9b",
+        "name": "Job Application Tracker",
+        "schedule": "Tue/Thu 10:15 AM EST"
+      }
+    ],
+    "currentTask": "Active — monitoring open Job Market tasks on Mission Control. Next run: Tuesday 10:15 AM.",
+    "created": "2026-03-07"
+  },
+  {
+    "id": "content-calendar",
+    "name": "Content Calendar",
+    "emoji": "📅",
+    "role": "Content Generation Agent",
+    "domain": "Two-mode content system: (1) Weekly Batch — Sunday 10 PM, generates 5-7 evergreen posts for the week ahead, uploads to Drive, previews to Telegram. (2) Daily News Hook — weekdays 9:15 AM, reads niche monitor output and drafts 1-2 timely posts only if a 🟠/🔴 signal exists. Silence if no signal. All content audited against content-voice.md before delivery.",
+    "workspaceRel": ".openclaw/workspace/agents/content-calendar",
+    "github": null,
+    "skills": [
+      "content-voice",
+      "jack-butcher-framework"
+    ],
+    "crons": [
+      {
+        "id": "ca536298-53d2-41bb-8f83-21ee2626eba8",
+        "name": "Weekly Content Batch",
+        "schedule": "Sunday 10 PM EST"
+      },
+      {
+        "id": "4a70dda4-da77-4437-9e1d-9c3001e9e1f9",
+        "name": "Daily News Hook",
+        "schedule": "Weekdays 9:15 AM EST"
+      }
+    ],
+    "currentTask": "Active — weekly batch fires Sunday 10 PM, daily hook fires weekdays 9:15 AM (only sends if 🟠/🔴 signal exists).",
+    "created": "2026-03-07"
+  },
+  {
+    "id": "critic",
+    "name": "Critic",
+    "emoji": "⚖️",
+    "role": "Strategic Critic",
+    "domain": "On-demand brutal honesty partner. Surfaces blind spots, broken reasoning, true constraints, avoidance costs, leverage gaps, and accountability challenges. Three modes: on-demand (/critic [topic]), soft-signal flag in main session, and weekly Sunday gut-check cron.",
+    "workspaceRel": ".openclaw/workspace/agents/critic",
+    "github": null,
+    "skills": [
+      "logic-dissection",
+      "strategic-analysis",
+      "leverage-mapping"
+    ],
+    "crons": [
+      {
+        "id": "d5290646",
+        "name": "Weekly Gut-Check",
+        "schedule": "Sunday 6 PM EST"
+      }
+    ],
+    "currentTask": "Active — invoke with /critic [topic]. Sunday gut-check reads week's decisions and sends strategic analysis to Telegram.",
+    "created": "2026-03-07"
+  },
+  {
     "id": "vibe-marketing",
     "name": "Vibe Marketer",
     "emoji": "\ud83d\udce3",
     "role": "Content & Marketing",
-    "domain": "Optimal content and marketing strategies for Opticfy projects \u2014 X threads, LinkedIn posts, Product Hunt launches, launch copy.",
+    "domain": "Optimal content and marketing strategies for consulting projects \u2014 X threads, LinkedIn posts, Product Hunt launches, launch copy.",
     "workspaceRel": null,
     "github": null,
     "skills": [],

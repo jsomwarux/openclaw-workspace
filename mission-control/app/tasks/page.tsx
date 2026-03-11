@@ -112,11 +112,16 @@ export default function TasksPage() {
   }
 
   function byStatus(status: Status) {
-    return tasks.filter(t => t.status === status).sort((a, b) => {
+    const filtered = tasks.filter(t => t.status === status);
+    // Done column: most recently completed first
+    if (status === "done") {
+      return filtered.sort((a, b) => b.updatedAt - a.updatedAt);
+    }
+    // Todo / In Progress: priority first, then explicit sortOrder
+    return filtered.sort((a, b) => {
       const order = { high: 0, medium: 1, low: 2 };
       const priorityDiff = order[a.priority] - order[b.priority];
       if (priorityDiff !== 0) return priorityDiff;
-      // Within same priority: use explicit sortOrder, then createdAt ascending
       const aSort = a.sortOrder ?? 999;
       const bSort = b.sortOrder ?? 999;
       return aSort - bSort;

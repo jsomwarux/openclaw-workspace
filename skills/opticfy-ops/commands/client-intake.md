@@ -5,7 +5,7 @@ argument-hint: "<company name or prospect description>"
 
 # /client-intake
 
-Initial discovery workflow for a new Opticfy prospect or client. Produces a structured brief,
+Initial discovery workflow for a new prospect or client. Produces a structured brief,
 identifies the highest-value automation opportunity, and outputs an engagement proposal outline.
 
 ## Usage
@@ -58,7 +58,7 @@ if context is missing.
 
 ## If Client Folder Exists
 
-Check `~/projects/opticfy-pipeline/clients/[slug]/research.md` first.
+Check `~/projects/jt-consulting-pipeline/clients/[slug]/research.md` first.
 Use existing research as the basis — don't repeat work already done.
 
 ## Tips

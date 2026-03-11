@@ -1,0 +1,170 @@
+{
+  "date": "2026-03-07",
+  "captured_at": "2026-03-07T13:43:32.330149+00:00",
+  "total_usd": 2e-06,
+  "sessions": {
+    "agent:main:main": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 3,
+      "output_tokens": 8,
+      "cache_read": 0,
+      "cache_write": 46228,
+      "total_tokens": 46231,
+      "cost_usd": 0.0,
+      "updated_at": 1772888861903
+    },
+    "agent:main:telegram:direct:6608544825": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 5,
+      "output_tokens": 495,
+      "cache_read": 95569,
+      "cache_write": 241,
+      "total_tokens": 95811,
+      "cost_usd": 0.0,
+      "updated_at": 1772859646525
+    },
+    "agent:main:cron:be59a068-eccd-4a7c-964e-946ab40ace7e": {
+      "label": "Cron: Overnight Autonomy Agent",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 20,
+      "output_tokens": 9562,
+      "cache_read": 629844,
+      "cache_write": 46222,
+      "total_tokens": 46223,
+      "cost_usd": 0.0,
+      "updated_at": 1772870400027
+    },
+    "agent:main:cron:11835cf6-83d3-4fdf-826a-202f3ec3fa46": {
+      "label": "Cron: Build Ideas \u2192 Mission Control Sync",
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "input_tokens": 7,
+      "output_tokens": 1284,
+      "cache_read": 218793,
+      "cache_write": 67500,
+      "total_tokens": 67501,
+      "cost_usd": 1e-06,
+      "updated_at": 1772885700026
+    },
+    "agent:main:cron:eve-crypto-morning-008": {
+      "label": "Cron: Crypto Full Analysis (6 AM)",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 21,
+      "output_tokens": 23705,
+      "cache_read": 1205772,
+      "cache_write": 336426,
+      "total_tokens": 107946,
+      "cost_usd": 0.0,
+      "updated_at": 1772881200029
+    },
+    "agent:main:cron:eve-job-market-daily-005": {
+      "label": "Cron: Job Market Daily Research",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772883000027
+    },
+    "agent:main:cron:be59a068-eccd-4a7c-964e-946ab40ace7e:run:3cdecc06-2491-4942-9787-0d17df6253ad": {
+      "label": "Cron: Overnight Autonomy Agent",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 20,
+      "output_tokens": 9562,
+      "cache_read": 629844,
+      "cache_write": 46222,
+      "total_tokens": 46223,
+      "cost_usd": 0.0,
+      "updated_at": 1772870400027
+    },
+    "agent:main:cron:eve-crypto-morning-008:run:d6c55010-0cd0-4099-9405-b9c21473ce80": {
+      "label": "Cron: Crypto Full Analysis (6 AM)",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 21,
+      "output_tokens": 23705,
+      "cache_read": 1205772,
+      "cache_write": 336426,
+      "total_tokens": 107946,
+      "cost_usd": 0.0,
+      "updated_at": 1772881200029
+    },
+    "agent:main:cron:eve-job-market-daily-005:run:3068629b-27b7-4bd1-870a-bfc9b8d98c0f": {
+      "label": "Cron: Job Market Daily Research",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_read": 0,
+      "cache_write": 0,
+      "total_tokens": 0,
+      "cost_usd": 0.0,
+      "updated_at": 1772883000027
+    },
+    "agent:main:cron:05024e45-57fc-4e7c-a236-660e6eb5393f": {
+      "label": "Cron: Skills & API Researcher \u2014 Weekly Synthesis",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 20,
+      "output_tokens": 10185,
+      "cache_read": 1102884,
+      "cache_write": 284664,
+      "total_tokens": 93101,
+      "cost_usd": 0.0,
+      "updated_at": 1772884800102
+    },
+    "agent:main:cron:05024e45-57fc-4e7c-a236-660e6eb5393f:run:e75bbb22-2aef-4350-bf45-ee88a23b0e65": {
+      "label": "Cron: Skills & API Researcher \u2014 Weekly Synthesis",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 20,
+      "output_tokens": 10185,
+      "cache_read": 1102884,
+      "cache_write": 284664,
+      "total_tokens": 93101,
+      "cost_usd": 0.0,
+      "updated_at": 1772884800102
+    },
+    "agent:main:cron:11835cf6-83d3-4fdf-826a-202f3ec3fa46:run:5e24c686-2cf8-4cd1-9b1b-501fb0264e75": {
+      "label": "Cron: Build Ideas \u2192 Mission Control Sync",
+      "model": "llama-3.3-70b-versatile",
+      "provider": "groq",
+      "input_tokens": 7,
+      "output_tokens": 1284,
+      "cache_read": 218793,
+      "cache_write": 67500,
+      "total_tokens": 67501,
+      "cost_usd": 1e-06,
+      "updated_at": 1772885700026
+    }
+  },
+  "by_model": {
+    "claude-sonnet-4-6": {
+      "sessions": 10,
+      "input_tokens": 130,
+      "output_tokens": 87407,
+      "cache_read": 5972569,
+      "cache_write": 1381093,
+      "cost_usd": 0.0
+    },
+    "llama-3.3-70b-versatile": {
+      "sessions": 2,
+      "input_tokens": 14,
+      "output_tokens": 2568,
+      "cache_read": 437586,
+      "cache_write": 135000,
+      "cost_usd": 2e-06
+    }
+  },
+  "alerts_fired": []
+}

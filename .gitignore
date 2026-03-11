@@ -30,6 +30,11 @@ node_modules/
 .env.*
 !.env.example
 
+# OAuth tokens / credentials
+config/google-oauth-token.json
+config/*.token.json
+config/*.key.json
+
 # OS
 .DS_Store
 Thumbs.db

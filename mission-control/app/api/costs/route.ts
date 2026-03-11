@@ -6,7 +6,37 @@ import { execSync } from "child_process";
 
 const HOME = homedir();
 const COSTS_DIR = join(HOME, ".openclaw/workspace/memory/costs");
+const X_API_LOG = join(COSTS_DIR, "x-api.jsonl");
 const ALERTS = { session: 2.0, daily: 10.0, monthly: 75.0, goal: 50.0 };
+// X API budget targets (weekly)
+const X_BUDGET = { weekly_target: 10.0, weekly_warn: 8.0 };
+
+function loadXApiCosts(): { today: number; week: number; month: number; daily: Record<string, number>; weekly_pace: number } {
+  const result = { today: 0, week: 0, month: 0, daily: {} as Record<string, number>, weekly_pace: 0 };
+  if (!existsSync(X_API_LOG)) return result;
+  try {
+    const lines = readFileSync(X_API_LOG, "utf-8").trim().split("\n").filter(Boolean);
+    const now = new Date();
+    const todayStr = now.toISOString().slice(0, 10);
+    const weekAgo = new Date(now); weekAgo.setDate(now.getDate() - 7);
+    const monthStr = now.toISOString().slice(0, 7);
+    for (const line of lines) {
+      try {
+        const e = JSON.parse(line);
+        const cost = e.cost_usd || 0;
+        const date = e.date || "";
+        if (date === todayStr) result.today += cost;
+        if (new Date(date) >= weekAgo) result.week += cost;
+        if (date.startsWith(monthStr)) result.month += cost;
+        result.daily[date] = (result.daily[date] || 0) + cost;
+      } catch { /* skip malformed */ }
+    }
+    // Weekly pace: extrapolate from days seen this week
+    const daysWithData = Object.keys(result.daily).filter(d => new Date(d) >= weekAgo).length;
+    result.weekly_pace = daysWithData > 0 ? (result.week / daysWithData) * 7 : 0;
+  } catch { /* non-fatal */ }
+  return result;
+}
 
 function loadSnapshot(date: string): any | null {
   const fp = join(COSTS_DIR, `${date}.json`);
@@ -74,6 +104,9 @@ export async function GET() {
     total_usd: s.data.total_usd ?? 0,
   })).reverse();
 
+  // X API costs
+  const xCosts = loadXApiCosts();
+
   // Alerts
   const alerts: { type: string; message: string; level: "warning" | "critical" }[] = [];
   if (today.data.total_usd >= ALERTS.daily)
@@ -82,6 +115,10 @@ export async function GET() {
     alerts.push({ type: "monthly_pace", message: `Monthly pace $${monthlyPace.toFixed(2)} exceeds $${ALERTS.monthly} cap`, level: "critical" });
   else if (monthlyPace >= ALERTS.goal)
     alerts.push({ type: "monthly_pace", message: `Monthly pace $${monthlyPace.toFixed(2)} is above $${ALERTS.goal} goal`, level: "warning" });
+  if (xCosts.weekly_pace >= X_BUDGET.weekly_target)
+    alerts.push({ type: "x_weekly", message: `X API weekly pace $${xCosts.weekly_pace.toFixed(2)} exceeds $${X_BUDGET.weekly_target} target`, level: "critical" });
+  else if (xCosts.weekly_pace >= X_BUDGET.weekly_warn)
+    alerts.push({ type: "x_weekly", message: `X API weekly pace $${xCosts.weekly_pace.toFixed(2)} approaching $${X_BUDGET.weekly_target} target`, level: "warning" });
 
   return NextResponse.json({
     today: {
@@ -108,5 +145,13 @@ export async function GET() {
     daily_trend: dailyTrend,
     alerts,
     thresholds: ALERTS,
+    x_api: {
+      today_usd: parseFloat(xCosts.today.toFixed(4)),
+      week_usd: parseFloat(xCosts.week.toFixed(4)),
+      month_usd: parseFloat(xCosts.month.toFixed(4)),
+      weekly_pace_usd: parseFloat(xCosts.weekly_pace.toFixed(4)),
+      weekly_target_usd: X_BUDGET.weekly_target,
+      daily_breakdown: xCosts.daily,
+    },
   });
 }

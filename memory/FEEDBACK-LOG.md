@@ -11,8 +11,8 @@
 
 **Who JT is (as a creator):**
 - AI consultant and builder. Not a developer. Speaks both business AND technology — that's the edge.
-- Ithaca College → 6 years at Spectrum Enterprise (product catalog, cross-team coordination, system implementations) → Opticfy (AI consulting)
-- Building: Opticfy, Vista, Nash Satoshi, Glow Index, jtsomwaru.com
+- Ithaca College → 6 years at Spectrum Enterprise (product catalog, cross-team coordination, system implementations) → JT Somwaru Consulting (AI consulting)
+- Building: JT Somwaru Consulting, Vista, Nash Satoshi, Glow Index, jtsomwaru.com
 - Crypto-native. x402 protocol forward bet.
 - NYC-based. Direct. No fluff.
 

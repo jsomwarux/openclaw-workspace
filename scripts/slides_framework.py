@@ -1,8 +1,59 @@
 #!/usr/bin/env python3
 """
-slides_framework.py — Reusable Google Slides creation engine for Opticfy pipeline.
+slides_framework.py — Reusable Google Slides creation engine for consulting pipeline.
 
 Used by client-specific build-deck.py files.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LAYOUT SAFE ZONE — MANDATORY FOR ALL DECKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Slide dimensions: 720pt wide × 405pt tall (16:9)
+Usable safe zone: x=40–680, y=38–375 (30pt bottom margin)
+NOTHING should have y + height > 375.
+
+Font size limits (enforce these — larger sizes cause overflow):
+  Headlines (1–2 short lines):   36pt max
+  Headlines (2–3 longer lines):  30–32pt max
+  Body text:                     18–20pt
+  Labels/eyebrows:               11–13pt
+  Stats (large accent numbers):  48–52pt max (NOT 64–72pt)
+  CTA/footnote lines:            13–14pt
+
+LINE HEIGHT FORMULA — use before setting any text box height:
+  required_height = font_size * 1.4 * num_lines + 8
+  Examples:
+    36pt, 2 lines → 36*1.4*2+8 = 109pt → use h=112
+    30pt, 2 lines → 30*1.4*2+8 = 92pt  → use h=94
+    30pt, 3 lines → 30*1.4*3+8 = 134pt → use h=136
+    34pt, 1 line  → 34*1.4*1+8 = 56pt  → use h=58
+    34pt, 2 lines → 34*1.4*2+8 = 103pt → use h=106
+  ALWAYS estimate how many lines the text will wrap to at the given width.
+  Rule of thumb for wrapping: chars_per_line ≈ box_width / (font_size * 0.55)
+  Example: 600pt wide, 30pt bold → 600/(30*0.55) ≈ 36 chars per line
+  If text > chars_per_line, it wraps — add another line to your calc.
+  NEVER set h based on visual guess — always use the formula.
+
+  REWRITE RULE: If a headline wraps to an awkward line count (e.g., one word
+  stranded on the last line), DO NOT just increase the box height. Rewrite the
+  headline so it breaks cleanly into the intended number of lines. Punchy 2-line
+  headlines are preferred. Fix the copy first, then calculate the box height.
+
+  BODY COPY CONSTRAINT: When body text sits above a stat or card row, keep it
+  to 2 lines max. If the copy wraps to 3+ lines, shorten it — do not push the
+  stat/card row down. Brevity is the fix, not repositioning.
+
+Vertical rhythm guide (from top):
+  y=40  → accent bar (3pt tall, ends y=43)
+  y=52  → eyebrow label (DO NOT use y=58 with accent_bar — bar at old default y=72 intersects label)
+  y=86  → headline start
+  y=86 + ~80 = 166 → body text start (after 2-line 30pt headline)
+  y=86 + ~60 = 146 → body text start (after 1-line 34pt headline)
+  Stats/cards: start no lower than y=255, keep h≤110 so bottom≤365
+  CTA/name line: y=355, h=22
+
+Common mistake: placing subtitle/name at y=475–500 — SLIDE IS ONLY 405pt TALL.
+Always verify: y + height ≤ 375 for every element.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Usage from a build-deck.py:
     import sys
@@ -11,13 +62,13 @@ Usage from a build-deck.py:
 
 API:
     url = create_deck(
-        title="Company — Opticfy Proposal",
+        title="Company — JT Somwaru Consulting Proposal",
         client_slug="company-slug",
         slides=[
             ("slide_1", [slide_text("s1_title", "Headline", x, y, w, h, color, size, bold), ...]),
             ...
         ],
-        drive_folder="Eve — Drafts/Opticfy/Case Studies"
+        drive_folder="Eve — Drafts/JT Somwaru/Case Studies"
     )
 """
 
@@ -33,7 +84,7 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 
 TOKEN_PATH    = os.path.expanduser("~/.openclaw/workspace/config/google-oauth-token.json")
-PIPELINE_ROOT = os.path.expanduser("~/projects/opticfy-pipeline/clients")
+PIPELINE_ROOT = os.path.expanduser("~/projects/jt-consulting-pipeline/clients")
 
 # ── Unit helpers ─────────────────────────────────────────────────────────────
 def pt(n):
@@ -71,8 +122,10 @@ def slide_rect(eid, x, y, w, h, fill="accent"):
         "fill": COLORS.get(fill, COLORS["accent"]),
     }
 
-def accent_bar(slide_num, x=60, y=72, w=80):
-    """Standard accent bar divider."""
+def accent_bar(slide_num, x=60, y=40, w=80):
+    """Standard accent bar — sits at y=40, above the eyebrow label.
+    Bar ends at y=43. Place labels at y=52+ to keep clear gap.
+    DO NOT place at y=72 — that intersects label text boxes (y=58, h=20)."""
     return slide_rect(f"s{slide_num}_bar", x, y, w, 3)
 
 # ── Request builders ──────────────────────────────────────────────────────────
@@ -226,12 +279,12 @@ def get_target_folder(drive, path):
 
 # ── Main entry point ──────────────────────────────────────────────────────────
 
-def create_deck(title, client_slug, slides, drive_folder="Eve — Drafts/Opticfy/Case Studies"):
+def create_deck(title, client_slug, slides, drive_folder="Eve — Drafts/JT Somwaru/Case Studies"):
     """
     Create a Google Slides deck and publish to Drive.
 
     Args:
-        title:        Presentation title (e.g. "Acme Corp — Opticfy Proposal")
+        title:        Presentation title (e.g. "Acme Corp — JT Somwaru Consulting Proposal")
         client_slug:  Pipeline slug (e.g. "acme-corp") for deck-url.txt
         slides:       List of (slide_id, bg_color, elements) tuples.
                       bg_color: a COLORS dict value.

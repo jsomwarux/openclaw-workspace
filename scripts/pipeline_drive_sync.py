@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-pipeline_drive_sync.py — Sync Opticfy client pipeline artifacts to Google Drive.
+pipeline_drive_sync.py — Sync consulting client pipeline artifacts to Google Drive.
 
 Automatically uploads outreach drafts and presentation deck references for any
-pipeline client into the structured "Opticfy — Client Pipeline" Drive folder.
+pipeline client into the structured Consulting/Clients Drive folder.
 
 Usage:
   # Sync both artifacts for a client
@@ -20,12 +20,13 @@ Usage:
 
 Drive structure created:
   Eve — Drafts/
-  └── Opticfy — Client Pipeline/
-      └── [Client Name]/
-          ├── [Client Name] — Outreach Draft     ← Google Doc (from outreach-draft.md)
-          └── [Client Name] — Presentation Deck  ← Google Doc (with Slides link + notes)
+  └── Consulting/
+      └── Clients/
+          └── [Client Name]/
+              ├── Outreach/LinkedIn/  ← outreach drafts (Google Docs)
+              └── Decks/              ← deck links (Google Docs)
 
-Pipeline folder (local): ~/projects/opticfy-pipeline/clients/[slug]/
+Pipeline folder (local): ~/projects/jt-consulting-pipeline/clients/[slug]/
 Required files:
   - outreach: clients/[slug]/outreach-draft.md
   - deck:     clients/[slug]/deck-url.txt (URL to Google Slides)
@@ -49,8 +50,9 @@ from google.auth.transport.requests import Request
 
 TOKEN_PATH     = os.path.expanduser("~/.openclaw/workspace/config/google-oauth-token.json")
 ROOT_FOLDER    = "Eve — Drafts"
-PIPELINE_ROOT  = "Opticfy — Client Pipeline"
-CLIENTS_BASE   = os.path.expanduser("~/projects/opticfy-pipeline/clients")
+PIPELINE_ROOT  = "Consulting"
+CLIENTS_FOLDER = "Clients"
+CLIENTS_BASE   = os.path.expanduser("~/projects/jt-consulting-pipeline/clients")
 
 
 def get_drive():
@@ -114,13 +116,14 @@ def create_doc(drive, title, content, folder_id):
 
 
 def get_client_folder(drive, client_name):
-    """Get or create the Drive folder for this client."""
-    root_id     = find_folder(drive, ROOT_FOLDER)
+    """Get or create the Drive folder for this client under Consulting/Clients/."""
+    root_id        = find_folder(drive, ROOT_FOLDER)
     if not root_id:
         print(f"ERROR: '{ROOT_FOLDER}' not found in Drive.")
         sys.exit(1)
-    pipeline_id = get_or_create_folder(drive, PIPELINE_ROOT, root_id)
-    client_id   = get_or_create_folder(drive, client_name, pipeline_id)
+    consulting_id  = get_or_create_folder(drive, PIPELINE_ROOT, root_id)
+    clients_id     = get_or_create_folder(drive, CLIENTS_FOLDER, consulting_id)
+    client_id      = get_or_create_folder(drive, client_name, clients_id)
     return client_id
 
 
@@ -130,9 +133,13 @@ def sync_outreach(drive, slug, client_name, client_folder_id):
         print(f"  ⚠️  outreach-draft.md not found at {outreach_path} — skipping")
         return None
 
+    # Route to Outreach/LinkedIn subfolder
+    outreach_id = get_or_create_folder(drive, "Outreach", client_folder_id)
+    linkedin_id = get_or_create_folder(drive, "LinkedIn", outreach_id)
+
     content = outreach_path.read_text()
     title   = f"{client_name} — Outreach Draft"
-    url     = create_doc(drive, title, content, client_folder_id)
+    url     = create_doc(drive, title, content, linkedin_id)
     print(f"  ✅ Outreach Draft → {url}")
     return url
 
@@ -154,7 +161,7 @@ This is a reference document. Open the link above to access the full presentatio
 
 Client: {client_name}
 Pipeline Slug: {slug}
-Local path: ~/projects/opticfy-pipeline/clients/{slug}/
+Local path: ~/projects/jt-consulting-pipeline/clients/{slug}/
 """
     else:
         content = f"""{client_name} — Presentation Deck
@@ -162,14 +169,16 @@ Local path: ~/projects/opticfy-pipeline/clients/{slug}/
 Deck not yet built for this client.
 
 When the presentation agent completes, update deck-url.txt at:
-  ~/projects/opticfy-pipeline/clients/{slug}/deck-url.txt
+  ~/projects/jt-consulting-pipeline/clients/{slug}/deck-url.txt
 
 Then re-run:
   python3 pipeline_drive_sync.py --slug {slug} --client "{client_name}" --stage deck
 """
 
+    # Route to Decks subfolder
+    decks_id = get_or_create_folder(drive, "Decks", client_folder_id)
     title = f"{client_name} — Presentation Deck"
-    url   = create_doc(drive, title, content, client_folder_id)
+    url   = create_doc(drive, title, content, decks_id)
     if deck_url:
         print(f"  ✅ Presentation Deck reference → {url}")
     else:
@@ -203,7 +212,7 @@ def list_clients(drive):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Sync Opticfy pipeline artifacts to Google Drive")
+    parser = argparse.ArgumentParser(description="Sync consulting pipeline artifacts to Google Drive")
     parser.add_argument("--slug",   help="Client slug (e.g. hc-oswald)")
     parser.add_argument("--client", help='Client display name (e.g. "HC Oswald Supply Co")')
     parser.add_argument("--stage",  choices=["outreach", "deck", "all"], default="all",
