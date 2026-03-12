@@ -100,10 +100,35 @@ Run this BEFORE writing the log. It ensures the site stays current automatically
 
 a. **Check MC for JT-completed tasks**: Fetch `http://localhost:3000/api/tasks` and find any tasks with `status: done` whose slug is NOT already in `agents/portfolio-updater/state.json → addedSlugs`. For each new `done` task, score it against the rubric. If ≥7, append to queue. This catches work JT did himself that hasn't been queued yet.
 
-b. **Self-evaluate tonight's work**: For each task Eve completed tonight, ask: "Did this build something a hiring manager or enterprise client would pay for?" If yes, append to the portfolio queue:
-```
-echo '{"type":"new_project","source":"overnight","title":"TITLE","description":"OUTCOME-LED DESCRIPTION","tags":["tag1","tag2"],"metric":"QUANTIFIED RESULT","slug":"url-slug","notes":"why this is portfolio-worthy","scored":false,"timestamp":"DATE"}' >> ~/.openclaw/workspace/agents/portfolio-updater/queue.jsonl
-```
+b. **Self-evaluate tonight's work**: For each task Eve completed tonight, ask: "Did this build something a hiring manager or enterprise client would pay for?" If yes:
+
+   **Append to portfolio queue:**
+   ```
+   echo '{"type":"new_project","source":"overnight","title":"TITLE","description":"OUTCOME-LED DESCRIPTION","tags":["tag1","tag2"],"metric":"QUANTIFIED RESULT","slug":"url-slug","notes":"why this is portfolio-worthy","scored":false,"timestamp":"DATE"}' >> ~/.openclaw/workspace/agents/portfolio-updater/queue.jsonl
+   ```
+
+   **ALSO append to recent-builds.md** (content system source of truth for Wednesday case studies):
+   ```
+   # append to top of entries section in ~/.openclaw/workspace/memory/content/recent-builds.md
+   ```
+   Format:
+   ```
+   ## [Build Name] — [YYYY-MM-DD]
+   **What:** [1-sentence description]
+   **For:** [client name or "internal"]
+   **Outcome:** [specific metric or result — never vague]
+   **Demonstrates:** [skill/capability]
+   **Content angle:** [suggested Wednesday LinkedIn or Saturday X angle]
+   **Status:** complete
+   ```
+
+   **ALSO update Proof Points in content-voice.md** — append one line to the `## JT's Proof Points` section:
+   ```
+   - [Build name]: [1-sentence outcome]. [Key metric if exists.]
+   ```
+   File: `~/.openclaw/workspace/memory/content-voice.md`
+   Find the line `## JT's Proof Points` and append after the last existing bullet in that section.
+   Skip if the build is internal/infrastructure (not client-facing or portfolio-worthy).
 
 c. **Run the portfolio updater**: Read `~/.openclaw/workspace/agents/portfolio-updater/AGENT.md` and follow it — score queue items, auto-approve ≥7, flag 4–6 to JT via Telegram, skip <4. If a coding agent is needed, spawn one (counts toward the 2-sub-agent limit for the night).
 

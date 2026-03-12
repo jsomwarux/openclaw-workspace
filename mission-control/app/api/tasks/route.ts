@@ -14,8 +14,15 @@ import { Id } from "@/convex/_generated/dataModel";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
-export async function GET() {
-  const tasks = await convex.query(api.tasks.list, {});
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const include = searchParams.get("include");
+  if (include === "archived") {
+    const tasks = await convex.query(api.tasks.listArchived, {});
+    return NextResponse.json({ tasks });
+  }
+  // Default: return only active (non-archived) tasks
+  const tasks = await convex.query(api.tasks.listActive, {});
   return NextResponse.json({ tasks });
 }
 

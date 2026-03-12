@@ -3,18 +3,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, CheckSquare, Calendar, Brain,
-  Users, Server, DollarSign, FileText, Moon, Wrench,
+  Users, Server, DollarSign, FileText, Moon, Wrench, Archive, Building2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const nav = [
   { href: "/",         icon: LayoutDashboard, label: "Overview"   },
   { href: "/tasks",    icon: CheckSquare,      label: "Tasks"      },
+  { href: "/consulting", icon: Building2,      label: "Pipeline"   },
   { href: "/calendar", icon: Calendar,         label: "Schedule"   },
   { href: "/memory",   icon: Brain,            label: "Memory"     },
   { href: "/agents",   icon: Users,            label: "Agents"     },
   { href: "/monitor",  icon: Server,           label: "Monitor"    },
   { href: "/costs",    icon: DollarSign,       label: "Costs"      },
+  { href: "/history",  icon: Archive,          label: "History"    },
   { href: "/audit",    icon: FileText,         label: "Audit"      },
   { href: "/overnight", icon: Moon,            label: "Overnight"  },
   { href: "/skills",    icon: Wrench,          label: "Skills"     },

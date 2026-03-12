@@ -58,6 +58,14 @@ Never run the same proactive item twice in one day. Check the note first, every 
 
 Morning brief + immediate alerts: 🔴🟠 only. 🔴 triggers immediate Telegram.
 
+## Proactive Content Strategy Rule (standing — applies always, not just Sunday)
+When ANY intelligence system surfaces a content format performing well in JT's community:
+- Swipe cron detects trending formats (3+ appearances) or topics (1000+ combined engagement) → writes to content-signals.md
+- Weekly synthesis reads format-signals.md → cross-references against what JT is posting → flags gap in Telegram + MC task if gap found
+- Main session observes a format clearly getting traction during any research task → proactively recommend adding it to the content system
+
+**The rule:** never sit on a content strategy signal. Intel → gap analysis → recommendation to JT. Don't wait to be asked.
+
 ## Weekly Skills Audit (Sunday only — runs inside weekly-synthesis cron)
 Go through every operational file, one by one. For each: is it accurate? Is anything stale, missing, or wrong?
 Files to audit in order:

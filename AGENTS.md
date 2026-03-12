@@ -18,6 +18,20 @@ Bootstrap files share 24k char budget. Files over budget are silently truncated.
 JT corrects anything / task fails / JT says "I told you this before" → update Mistakes Log immediately.
 Every Mistakes Log entry MUST include all three: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete rule that prevents recurrence. A mistake entry without a rule is incomplete — finish it before moving on.
 
+## MEMORY.md Live-Update Rule (mandatory)
+Update MEMORY.md **in the same turn** — not later, not next session — whenever any of these happen:
+- Strategic decision made (pursue/close/defer a partner, service, or opportunity)
+- Hard rule lifted or added → Hard Rules section
+- Client project status changes (signed, delivered, stalled, cold) → client section
+- Job application filed, expired, or status changed → Job Market section
+- Cron added, removed, or renamed → cron count + list
+- Service added, removed, or repriced → Consulting section
+- Outreach sent to a prospect → Key Decisions outreach status
+- Pricing changes → Consulting section
+- New tool, skill, or capability adopted → Setup State or new section
+
+Rule: if the decision happened and MEMORY.md doesn't reflect it yet, MEMORY.md is wrong. Fix it before moving on. "I'll update it later" = Rule 1 violation.
+
 ## Core Rules
 1. No mental notes. Write to files immediately. Never say "I'll remember that."
 2. "Figure it out" = research, test, build. Don't ask JT to describe the workaround.
@@ -59,6 +73,40 @@ Scoring + routing:
 
 Never add to the site mid-session without a coding agent build + `npm run build` + git push.
 Never say "I'll add that later" — queue it now or flag it now.
+
+## Content Proof Points Auto-Update Rule
+The Proof Points inventory in `memory/content-voice.md` must stay current. Update it immediately whenever:
+- A new build ships (overnight, in-session, or via sub-agent) — add to the Builds table
+- A consulting project completes or reaches a deliverable milestone — add outcome + price
+- JT says something is done, finished, live, or shipped — add it
+- A new capability or tool is deployed in production (not just built, but live and working)
+
+**How to update:**
+Edit the `## JT's Proof Points — The Raw Material` section in `memory/content-voice.md`.
+Add a new row to the Builds table: `| [Name] | [The specific detail that makes it real] |`
+Also add a line to `Content-Ready Angles` if there's an obvious post hook.
+
+**Same trigger as Portfolio Auto-Update Rule** — runs in parallel. Portfolio scoring decides whether to add to jtsomwaru.com. Proof Points update always happens for anything shipped, regardless of portfolio score.
+
+## Proof Points Auto-Update Rule
+Whenever a build is completed AND portfolio-queued (score ≥4), also update the Proof Points inventory in `memory/content-voice.md`:
+1. Open `memory/content-voice.md` and find `## JT's Proof Points`
+2. Append one line: `- [Build name]: [1-sentence outcome]. [Key metric if exists.]`
+3. If the build is internal/infrastructure (no client, no demo value), skip the Proof Points update
+
+This is triggered by: overnight agent completing a build, JT saying "done/shipped/complete", a consulting project completing a stage. Never let a completed build exist in the portfolio queue without also being in the Proof Points inventory.
+
+## Technical Angles Auto-Update Rule
+`memory/content/technical-angles.md` is the source bank for technical X posts. Append new entries when:
+- A non-obvious architectural or operational problem is solved (e.g., timeout fix, cost discovery, session isolation insight)
+- A new agent, cron pattern, or AGENTS.md rule is established that reflects real operational learning
+- A "learned this the hard way" moment happens — failed cron, unexpected behavior, discovered constraint
+- A new capability or system design decision is made that others building similar systems would find useful
+
+**How to update:** Append one entry under the relevant category header in `technical-angles.md`.
+Format: `- **[Pattern name]:** [What was learned, in 2-3 sentences. Specific enough that a practitioner can apply it immediately.]`
+
+**Do not add:** speculation, generic AI tips, anything from documentation (must be from operational experience).
 
 ## Google Drive Auto-Upload Rule (ALL substantive files)
 Every substantive file created by Eve or any agent must be uploaded to Google Drive immediately after creation. JT never wants to access files via terminal commands.
@@ -415,6 +463,7 @@ Adding unbuilt/untested work to the portfolio site misrepresents JT's capabiliti
 | 2026-03-09 | Same silence pattern continued all morning across deck rebuilds — JT had to check in repeatedly ("fixed?", "are you there?") after every task. Rule already existed, not enforced. | Root cause: treating "send interim reply" as optional overhead. When focused on tool work, the reply gets skipped. Rule is written but not firing as the first step. | Hard sequence is mandatory: (1) send reply FIRST, (2) do tool work, (3) send result. Step 1 cannot be skipped even if the reply is just "On it, rebuilding now." Silence while JT is watching = failure. |
 | 2026-03-11 | Overnight agent re-added B2B Account Service Agent card to jtsomwaru.com — THIRD offense (prior: 2026-03-07, 2026-03-09). Rule exists in both overnight/AGENT.md AND portfolio-updater/AGENT.md. | Root cause: the coding sub-agent reasoned "graphic B2BAccountAgentGraphic exists in project-graphics/index.tsx → must be a missing card → add it." The sub-agent treated graphic existence as a signal to add the card, bypassing the written exclusion. | Rule added to portfolio-updater/AGENT.md: "A graphic component exists — it is an INTENTIONAL ORPHAN. Its existence ≠ the card should be added. Do not import it, map it, or reference it. Hard stop." The prohibition must now explicitly name the false-positive trigger (graphic existence) to be machine-actionable. |
 | 2026-03-11 | Gateway froze twice — JT had to manually restart both times. Cause: ran `claude --print` and `claude [args]` subprocesses from exec inside the main session to try to install a Claude Code plugin. These block synchronously and freeze the gateway. | Root cause: conflated "exec can run any shell command" with "exec is safe for long-running blocking subprocesses." Running claude CLI from the gateway session is synchronous and blocks the event loop. Cron timeout fixes earlier in the session addressed a different problem — these freezes were caused by exec behavior, not cron behavior. | Rule 9a added to AGENTS.md: NEVER run claude CLI from exec in main session. Plugin slash commands require JT to run them in a terminal. Use sessions_spawn runtime=acp for any Claude Code delegation. |
+| 2026-03-11 | JT had to tell Eve to add Claude Code/OpenClaw technical content to the content system. The viral swipe cron had been collecting high-performing Claude Code and AI builder posts for weeks. The skills researcher was flagging Claude Code discussion. The data was there — but no system closed the loop to "JT should be posting this type of content and currently isn't." | Root cause: intelligence systems (swipe cron, skills researcher) are designed to collect and filter, but there's no synthesis step that compares what's performing well externally against what JT is currently producing and identifies the gap. Systems generated insight → insight sat in files → no recommendation was made. | Rule: weekly-synthesis cron must include a Content Strategy Gap Analysis step (see HEARTBEAT.md weekly skills audit). Viral swipe cron must flag both FORMAT patterns (3+ appearances) AND TOPIC patterns (1000+ combined engagement) that JT isn't currently covering → writes to content-signals.md. Weekly synthesis reads content-signals.md, cross-references against posted-log.jsonl, and surfaces actionable format AND topic gaps to JT in Telegram + MC task. Don't wait for JT to ask. |
 | 2026-03-10 | Overnight agent re-added B2B Account Service Agent card to jtsomwaru.com — MEMORY.md has explicit hard rule: "do not re-add." Second offense (first was 2026-03-07). | Root cause: overnight agent reads portfolio-updater/AGENT.md and queue.jsonl for build instructions but does NOT read MEMORY.md hard rules section. The "do not re-add" rule only lives in MEMORY.md, which isolated cron sessions don't load. | Rule: Add explicit block comment to portfolio-updater/AGENT.md: "B2B Account Service Agent is PERMANENTLY EXCLUDED — do not add slug b2b-account-service-agent under any circumstances." Hard rules that must survive isolated sessions must be written into the agent's own AGENT.md, not just MEMORY.md. |
 | 2026-03-09 | Overnight agent re-added B2B Account Service Agent card to jtsomwaru.com after JT explicitly decided against it (2026-03-06). Eve logged the revert in MEMORY.md but didn't add the ban to AGENT.md — isolated sessions never read MEMORY.md, so the constraint had no teeth. | Root cause: treating MEMORY.md as a sufficient safeguard for isolated agents. It isn't — isolated sessions only see their own AGENT.md. Rule: whenever a "never do X again" decision is made, immediately add it to the relevant AGENT.md as a hard constraint, not just MEMORY.md. Don't wait for JT to ask. |
 | 2026-02-21 | gateway config.patch → dropped JT's connection | Use restart script always |
@@ -427,3 +476,4 @@ Adding unbuilt/untested work to the portfolio site misrepresents JT's capabiliti
 | 2026-03-02 | 16:12 heartbeat logged "Mission Control: unreachable (board may be down)" without attempting kickstart — board stayed down for 6 more hours until 10PM. Rule in TOOLS.md explicitly says "do NOT just log 'may be down'; attempt kickstart immediately." Root cause: rule was read as optional, treated as a note rather than a mandatory action. | TOOLS.md rule is mandatory. Unreachable Mission Control = run kickstart immediately in the same heartbeat, not in a future one. No exceptions. |
 | 2026-02-28 | "Build idea:" tasks defaulted to `high` in push template → backlog cluttered the top of the board, displaced actionable work | Changed template default to `medium`. Added Task Priority Rules section with dependency-aware logic. |
 | 2026-02-28 | Cost tracker used API pricing for Anthropic models → phantom $9–10/day alerts that weren't real charges. Root cause: assumed API key auth without checking. Anthropic profile uses OAuth subscription token (sk-ant-oat01-*) configured during initial setup — all Claude usage covered by flat subscription. | Zeroed Anthropic pricing in cost-tracker.py. Recalibrated alert thresholds. Always check auth-profiles.json token prefix before making billing assumptions. |
+| 2026-03-11 | MEMORY.md was stale across multiple sections (Agentforce overnight ban still listed as active after being lifted, Cowork service listed as active after being closed, Avallon listed as active after being closed, H.C. Oswald listed as "ready to send" after outreach was sent, jtsomwaru.com entry 2 weeks out of date). JT had to manually identify and request fixes. | Root cause: no mandatory rule tied MEMORY.md updates to the moment decisions were made. Rule #1 ("no mental notes") exists but wasn't specific enough to trigger MEMORY.md edits at decision time. Rule: MEMORY.md Live-Update Rule added above — any decision, status change, or strategic shift must update MEMORY.md in the same turn before replying. "I'll update it later" = Rule 1 violation. |

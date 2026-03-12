@@ -7,13 +7,33 @@ Content must be modeled on proven viral hooks from the Notion swipe file, not ge
 
 ---
 
-## Step 0: Load Context (always do this first)
+## Step 0: Load Context (always do this first — do not skip any step)
 
-1. Run: `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --limit 8`
-   → Study the hook structures. Extract patterns (not the text). Apply those patterns to JT's content.
+1. Read `/Users/jtsomwaru/.openclaw/workspace/memory/content/recent-builds.md`
+   **This is your primary source for Wednesday case studies and build-in-public posts.**
+   Check for any entries from the last 14 days. If a recent client build exists → use it as the Wednesday LinkedIn case study. This takes priority over older Aya examples.
+   Note the `Content angle` field — use it as the Wednesday post hook.
+
+2. Read `/Users/jtsomwaru/.openclaw/workspace/memory/content/technical-angles.md`
+   This is the source bank for technical X posts (Tuesday, Thursday, Saturday slots).
+   For each angle you plan to use, note its `angle_id` — you'll need it for the posted-log.jsonl entry.
+   Cross-reference with posted-log.jsonl `angle_id` fields to avoid repeating angles from the last 30 days.
+
+3. Run: `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --limit 8`
+
+   **Do not just "study" these.** For each post returned, extract and write out:
+   - Hook structure (e.g., "historical failure → present adoption", "reframe weakness as strength", "specific result first → lesson second")
+   - The mechanism that made it shareable (e.g., "changes how you think in one sentence", "names a pain point the audience recognizes instantly")
+   - The JT-equivalent: what proof point from content-voice.md (JT's Proof Points section) would let JT use the same structure?
+
+   **Example extraction:**
+   - Swipe: "CLIs are exciting precisely because they're legacy tech — AI agents can use them natively." Hook: reframe weakness (old tech) as unexpected strength. JT equivalent: "n8n isn't new. That's exactly why every system you need to automate already has a connector for it."
+   - Swipe: "HTTP had 402 for decades. Nobody used it. We are now." Hook: historical dead-end → sudden relevance. JT equivalent: "Salesforce has had workflow automation since 2015. Nobody used it well. Agentforce changes that."
+
+   Generate 3–5 extracted hook mappings before writing any post.
 
 2. Read: `/Users/jtsomwaru/.openclaw/workspace/memory/content-voice.md`
-   → Apply every rule. Pay special attention to the Platform Distinction and Format by Day sections.
+   → Apply every rule. Pay special attention to: Platform Distinction, Format by Day, JT's Proof Points, and The Uniqueness Test.
 
 3. Read: `/Users/jtsomwaru/.openclaw/workspace/memory/content/posted-log.jsonl`
    → Avoid repeating topics from the last 2 weeks.
@@ -181,8 +201,12 @@ _Optimized for X/Twitter. Compressed. Punchy. No LinkedIn formatting._
 File: `/Users/jtsomwaru/.openclaw/workspace/memory/content/posted-log.jsonl`
 
 ```json
-{"date": "YYYY-MM-DD", "day": "Monday", "platform": "linkedin", "pillar": "Short Take", "hook_type": "Contrarian claim", "summary": "one-line topic summary", "posted": false}
+{"date": "YYYY-MM-DD", "day": "Monday", "platform": "linkedin", "pillar": "Short Take", "hook_type": "Contrarian claim", "summary": "one-line topic summary", "posted": false, "angle_id": null, "engagement_winner": false}
 ```
+
+Field notes:
+- `angle_id` — for technical X posts (Tue/Thu/Sat), set to the angle identifier from `technical-angles.md` (e.g., `"arch-isolated-defaults"`, `"claude-md-3level"`). Set `null` for all other posts.
+- `engagement_winner` — set `false` on creation. Updated to `true` by the Friday content-reminder when JT reports which post won the week.
 
 Append 11 entries total (4 LinkedIn + 7 X) when generating the weekly calendar.
 
@@ -190,25 +214,26 @@ Append 11 entries total (4 LinkedIn + 7 X) when generating the weekly calendar.
 
 ## Drive Upload
 
-Upload two separate documents to Google Drive after saving locally:
+Upload to two separate Drive folders after saving locally (same file, different paths):
 
 ```bash
-# LinkedIn posts only
-cd /Users/jtsomwaru/.openclaw/workspace && python3 scripts/drive_drafts.py \
+cd /Users/jtsomwaru/.openclaw/workspace
+
+# LinkedIn folder
+python3 scripts/drive_drafts.py \
   --title "LinkedIn Content — Week of [YYYY-MM-DD]" \
   --path "Content/LinkedIn" \
   --file "memory/content/weekly-[YYYY-MM-DD].md"
 
-# X posts only
-cd /Users/jtsomwaru/.openclaw/workspace && python3 scripts/drive_drafts.py \
+# X folder
+python3 scripts/drive_drafts.py \
   --title "X Content — Week of [YYYY-MM-DD]" \
   --path "Content/X" \
   --file "memory/content/weekly-[YYYY-MM-DD].md"
 ```
 
-Note: Both uploads use the same local file (which contains both LinkedIn and X sections). The Drive folder separation keeps them organized by platform in JT's Drive.
-
-If Drive upload fails, log the error and continue — local file is the source of truth.
+Both uploads use the same local file. Drive folder separation organizes by platform.
+If either upload fails, log the error and continue — local file is the source of truth.
 
 ---
 
@@ -236,10 +261,19 @@ Edit anything by replying — I'll update the file.
 
 ## Quality Checklist (before saving)
 
+### Credibility Gate (run on EVERY post before saving — non-negotiable)
+Every post must pass one of two tests (see content-voice.md for full examples):
+- **Type A (proof-backed):** references a specific build, client, or outcome from the Proof Points inventory → PASS
+- **Type B (experience-earned):** expresses a perspective that only someone who has actually built and deployed AI systems would have — specific enough that a content marketer couldn't fake it → PASS
+- **FAIL:** anything a content marketer with no implementation experience could write ("AI is changing business", "most companies underuse AI", vague claims with no concrete grounding)
+
+**Distribution target:** Wednesday LinkedIn = always Type A. ~2-3 other posts per week = Type A. Rest = Type B.
+
 ### LinkedIn
-- [ ] Wednesday post has specific client, outcome, and at least one concrete number
-- [ ] Friday post has 2–3 sentences of reasoning (not just a one-liner)
-- [ ] Monday is short (1–3 sentences max)
+- [ ] Every post passes the Uniqueness Gate
+- [ ] Wednesday post has specific client, outcome, and at least one concrete number (from Proof Points)
+- [ ] Friday post has 2–3 sentences of reasoning and is grounded in JT's real experience — not general advice
+- [ ] Monday is short (1–3 sentences max) but still passes Uniqueness Gate
 - [ ] No hashtags
 - [ ] No "we" or "our team" anywhere
 

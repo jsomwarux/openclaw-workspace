@@ -11,7 +11,7 @@
 ## 🚨 Hard Rules
 - Gateway restart: ALWAYS use restart script. NEVER raw launchctl/gateway config.patch/apply.
 - openclaw.json: NEVER write arbitrary keys — crashes gateway. External keys → TOOLS.md only.
-- **NO Agentforce agent builds overnight** — JT builds Agentforce agents on his personal device. Overnight agent must NOT create Agentforce agents until GitHub sync repo is set up and Eve has pulled latest. Violating this creates merge conflicts and lost work.
+- Agentforce overnight builds: ✅ ALLOWED (lifted 2026-03-11). Must `git pull origin main` first. B2B Account Service Agent is PERMANENTLY BANNED — do not recreate under any circumstances.
 
 ## Agentforce Sync (✅ ACTIVE — 2026-03-11)
 - JT builds Agentforce agents on personal device using Claude Code/Cursor
@@ -41,11 +41,12 @@
 
 ## JT Somwaru Consulting
 - Target niches: wholesale distribution, property mgmt, construction, insurance ops, skilled trades (NYC)
-- New service (Feb 2026): Cowork Plugin Implementation — custom Claude Cowork plugins + marketplace
+- Active services: n8n Workflow Automation ($3,500), Agentforce Implementation ($6,500), AI App Development ($4,500)
 - New skill: jt-consulting-ops — 5 commands (/client-intake, /process-doc, /runbook, /vendor-eval, /anomaly-audit) at skills/jt-consulting-ops/
-- Expansion target: HubSpot (top pick from enterprise platforms research) — SMB CRM, huge NYC presence, lower Salesforce partner competition. Full research: memory/research/enterprise-platforms.md
-- Partner pipeline: Avallon (NYC seed startup, no formal program yet) — DM to CEO Cornelius Schramm ready (memory/research/avallon-furtherAI-partner-research-2026-02-28.md). FurtherAI = 6-12 month play.
-- ConversationFirst framework built (2026-02-28) — Agentforce UX methodology: persona cards, flow diagrams, 25-pt checklist, 1-page write-up. Ready to share with prospects. Path: memory/drafts/conversationfirst-framework-2026-02-28.md. JT pending: full portfolio card vs. services section callout?
+- Expansion target: HubSpot — SMB CRM, huge NYC presence, lower Salesforce partner competition. Research: memory/research/enterprise-platforms.md
+- Cowork Plugin Implementation: CLOSED 2026-03-11 — requires Claude Team ($125-150/mo) before billing. Wrong market for current SMB ICP. Revisit if a client already on Claude Team asks.
+- Avallon/FurtherAI partner pipeline: CLOSED 2026-03-11 — no partner infrastructure at seed stage, JT has no insurance relationships yet. Revisit after landing insurance clients organically.
+- ConversationFirst framework built (2026-02-28) — Agentforce UX methodology: persona cards, flow diagrams, 25-pt checklist. Path: memory/drafts/conversationfirst-framework-2026-02-28.md.
 
 ## Aya (Client — Construction/Co-living, NYC)
 - Project 1: Construction progress dashboard — $1,500 ✅ complete
@@ -54,11 +55,11 @@
 - Project 4 (in talks): Dashboard + automations for Head of Acquisitions. Sent NDA to review his spreadsheet — no response after 2 follow-ups. Cold for now.
 - Strategy: Aya is becoming an anchor client. Each project extends runway and builds referral credibility within their network. Keep relationship warm.
 
-## Content System (built 2026-03-07)
-- Content voice rules: `memory/content-voice.md` — Jack Butcher framework distilled for JT. **Load before drafting any X post, thread, or LinkedIn content.**
-- Key rules: compression is confidence, 5:1 you:I ratio, 6-15 words for standalone posts, two-part parallel is the primary structure
-- Swipe cron updated to use content-voice.md as primary evaluation lens (2026-03-07)
-- AGENTS.md rule added: load content-voice.md before every content draft
+## Content System (updated 2026-03-11)
+- Voice rules: `memory/content-voice.md` — **load before every draft.** Platform-specific: LinkedIn = case studies + expertise, X = compression + hot takes. Wednesday LinkedIn is most important post of the week.
+- Proof Points inventory + Credibility Test in content-voice.md — every post must pass before publishing
+- Crons: content-generate (Mon 7AM, generates 4 LinkedIn + 7 X posts) | content-reminder (Tue–Sat 8AM, sends day's post) | content-sunday (Sun 9AM, Sun posts + engagement check)
+- Swipe file: Notion DB (viral X posts) | Format signals: memory/content/format-signals.md | Technical angles: memory/content/technical-angles.md
 
 ## Critic Agent (built 2026-03-07)
 - Agent: `agents/critic/AGENT.md` — 4-step strategic critique framework
@@ -70,17 +71,14 @@
 - Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
 - Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private)
 - Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL
-- jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Updated 2026-03-07:
-  - Demo videos added: `n8n-support-triage` + `wholesale-inventory-reorder` (Google Drive hosted)
-  - Featured projects cap = 2 per section (overflow → "view more")
-  - B2B Account Service Agent card: added by overnight agent (mistake), **reverted** — do not re-add
-  - AI Multi-Channel Support Triage card: live at /work/n8n-support-triage ✅
+- jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Last updated 2026-03-11 (pricing raised, GEO/llms.txt/JSON-LD implemented, nav fixed)
+  - B2B Account Service Agent card: PERMANENTLY BANNED — do not re-add under any circumstances
 - Dynasty fantasy football: planned
 
 ## Job Market
 - Target: AI Solutions Architect, AI Implementation Lead, AI Systems Analyst
 - $150K min, $180–220K target | NYC metro or remote only
-- 🔴 Squarespace People AI SA (19/25, $126–180K hybrid NYC) — apply this week (posted Feb 21, time-sensitive). Docs in Google Drive.
+- ⚠️ Squarespace People AI SA (19/25, $126–180K hybrid NYC) — posted Feb 21, likely expired. Verify before applying.
 - 🔴 Salesforce Lead Agentforce SE (24/25, $148K–$198K NYC) — DEADLINE 03/27/2026. Perfect fit: leads sandbox-to-production engagements, zero code requirement. → salesforce.com/jobs/jr329627
 - 🟠 Salesforce Agentforce/AI Deployment Strategist (20/25, $140K–$185K) — confirmed active at jr305206
 - 🟠 Salesforce Sr. Supply Chain Strategist (21/25, $180K–$298K) — vet domain requirement first
@@ -106,7 +104,7 @@
 - **Scout reports**: `memory/passive-income/YYYY-MM-DD-scout.md` | **Strategist reports**: `memory/passive-income/YYYY-MM-DD-strategist.md`
 - **MC project tag**: `passive-income` | Nash Satoshi + Glow Index tasks tagged
 
-## Active Cron Jobs (20) — post-incident schedule (2026-02-26)
+## Active Cron Jobs (23) — post-incident schedule (2026-02-26)
 - crypto-morning: 6AM daily | main | full portfolio analysis
 - job-market: 6:30AM daily | isolated sonnet | → data/daily-brief.md
 - morning-brief: 7:30AM daily | main | brief + costs + niche + jobs
@@ -123,13 +121,16 @@
 - health-report: Sunday 9AM | isolated groq | runs health.py --report
 - skills-researcher-weekly: Sat 7AM | isolated sonnet | deep X + Tier 3 web + full report
 - overnight-autonomy: 3AM daily | isolated sonnet | selects 2 eligible tasks from MC → executes → writes log | UUID: be59a068-eccd-4a7c-964e-946ab40ace7e
+- outreach-pipeline: 2AM daily | isolated sonnet | processes T2 shortlist (2/night research→brief→DM→Drive) + T3 cold hook batch (10/night → Drive staging) → Telegram summary to JT for approval | UUID: 651fa1da-84d7-44b3-8e10-6a46e1c05cf6
+- prospect-discovery: Sunday 1AM | isolated sonnet | finds 20-30 new NYC metro prospects across wholesale/construction/PM niches, classifies T1/T2/T3, appends to shortlists → Telegram summary | UUID: ebb843af-e752-4c65-923d-540d5ff5ad3f
 - passive-income-scout: Sunday 6AM ET | isolated sonnet | trends → 5 raw ideas → saves report (no MC push, no Telegram) | UUID: dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0
 - passive-income-strategist: Sunday 7:30AM ET | isolated sonnet | reads Scout report → deep 8-dimension analysis → pushes 🟢 winners to MC → sends Sunday digest to Telegram | UUID: 4e19c300-d387-4019-b658-9664f0d665d5
 - monthly-goals-gap: 1st of month 8AM | isolated sonnet | job market vs. Eve capabilities audit → MC/Skills queue | UUID: fdc2cf75 (ran 2026-03-01 ✅)
 - monthly-niche-fitness: 1st of month 9:30AM | isolated sonnet | scores current niches vs. alternatives, advises pivot/shift/stay | UUID: 1e2cf966
-- content-calendar: Monday 7AM ET | isolated sonnet | pulls Notion swipe file → generates 4 LinkedIn + 7 X posts → saves weekly-YYYY-MM-DD.md → uploads to Drive (Content/LinkedIn + Content/X) → sends Mon posts to JT | UUID: 98fda582
-- content-reminder: Tue–Sat 8AM ET | isolated sonnet | sends that day's X post (+ LinkedIn on Wed/Fri) | UUID: 5e66b4ee
-- content-sunday: Sunday 9AM ET | isolated sonnet | sends Sun LinkedIn + X posts + weekly engagement check | UUID: d918122d
+- content-generate: Monday 7AM ET | isolated sonnet | generates 4 LinkedIn + 7 X posts → saves weekly file → uploads to Drive | UUID: 98fda582
+- content-monday-send: Monday 7:45AM ET | isolated sonnet | sends Monday LinkedIn + X to JT | UUID: (see cron list)
+- content-reminder: Tue–Sat 8AM ET | isolated sonnet | sends that day's post (LinkedIn on Wed/Fri) | UUID: 5e66b4ee
+- content-sunday: Sunday 9AM ET | isolated sonnet | sends Sun LinkedIn + X + engagement check | UUID: d918122d
 - Daily cap: 20 invocations/weekday ✅
 
 ## Cost Tracking
@@ -173,7 +174,7 @@
 
 ## Key Decisions
 - **Priority order (updated 2026-03-09)**: Step 1 complete ✅ (jtsomwaru.com + demos live). Now parallel: (2) LinkedIn career update + (3) Consulting outreach (H.C. Oswald Day 0 + new prospects through pipeline). Job applications active in parallel.
-- **Outreach active as of 2026-03-09**: freeze lifted. Tier system governs effort. T1: H.C. Oswald (ready to send). T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
+- **Outreach active as of 2026-03-09**: freeze lifted. T1: H.C. Oswald — outreach sent 2026-03-11 (LinkedIn DM + subject "After-hours coverage for your catalog"). Awaiting response. T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
 - **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates needed: wholesale (convert existing demo), construction job cost (build), Tier 3 send scheduler (build).
 - Aggressive compaction over safeguard — prevents context resets on long builds
 - OpenRouter for non-Anthropic models — direct key only if model >$5/mo

@@ -216,10 +216,35 @@ WEEKLY X QUERY 4 — Model + platform ecosystem shifts (anything that changes th
 
 ## Severity Assignment
 
-🔴 **Critical** — Act today: major new capability directly serving an active project, security advisory on installed skill, new model dramatically improving cost/quality, announcement from @AnthropicAI of new API feature
-🟠 **High** — Important this week: strong new skill/API that's high-relevance, notable tool update, new MCP server directly applicable to JT Somwaru Consulting or an active agent
-🟡 **Medium** — Worth knowing: relevant but not urgent → KB only, no message
-🟢 **Low** — Background: tangentially relevant, early-stage, or niche → KB only, silently
+**Priority gate — ask these before assigning 🔴 or 🟠:**
+1. Does this unblock an active client deliverable or job application deadline?
+2. Does this save real money (OpenRouter/Groq cost — NOT Eve's $0 Anthropic OAuth usage)?
+3. Is this installable/usable today with our current stack, or is it future-capability?
+4. Does it apply at JT's current scale, or only at scale we haven't reached?
+
+If the answer to ALL FOUR is no → cap at 🟡 regardless of how impressive the announcement is.
+
+🔴 **Critical** — Act today:
+- Security advisory on an INSTALLED skill or dependency
+- New model that's materially cheaper/faster than current routing (real cost impact)
+- Breaking change to an API we actively call in production (n8n, Anthropic, Brave, Notion)
+- New OpenClaw feature that changes how Eve or crons behave (requires config update)
+
+🟠 **High** — Important this week:
+- New tool/MCP server that directly slots into an active consulting build (e.g., H.C. Oswald copilot, current client agent)
+- Skill/plugin that closes a flagged job market gap (MCP, Agentforce, AWS Bedrock)
+- Tool that would replace a workaround we currently use (e.g., replaces a clunky manual step)
+
+🟡 **Medium** — Worth knowing, no urgency:
+- API announcements and new features that are relevant but not immediately actionable
+- Tools/skills that apply at larger scale than current operations
+- Interesting patterns from @AnthropicAI blog posts, engineering posts, or partner announcements
+- Anything that requires a build or integration before it's useful
+
+🟢 **Low** — Background signal only:
+- Tangentially relevant, early-stage, unvetted community tools
+- Features for team/enterprise use cases (JT is solo)
+- Duplicate coverage of something already in KB
 
 ---
 
@@ -258,9 +283,14 @@ STEPS:
    Note: relevance goal, source (X/web/both), security flags, cost estimate, agent fit.
 
 7. ROUTE findings:
-   🔴/🟠 → THREE actions required:
+   🔴/🟠 → FOUR actions required:
      a. Append to weekly-log.md
-     b. Push to Mission Control Task Board (check duplicates first — substring match on name):
+     b. **Content pipeline update:** For each 🔴/🟠 finding, check: is this a capability or tool that JT hasn't yet demonstrated but could build a post or project around?
+        - If YES → append to `~/.openclaw/workspace/memory/content/technical-angles.md` under `## Potential Angles (unbuilt)`:
+          `[DATE] [topic name] — [1 sentence on why it's relevant to JT's audience] (source: [URL])`
+        - This ensures the content system knows what conversations are emerging even before the build exists
+        - Only append if JT plausibly has the background to post about it (check content-voice.md Proof Points)
+     c. Push to Mission Control Task Board (check duplicates first — substring match on name):
         curl -s http://localhost:3000/api/tasks | python3 -c "import json,sys; print([t['title'] for t in json.load(sys.stdin)['tasks']])"
         If not already present:
         curl -s -X POST http://localhost:3000/api/tasks \

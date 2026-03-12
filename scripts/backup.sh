@@ -77,6 +77,22 @@ else
   log "  ⚠ Cost snapshot failed (non-fatal)"
 fi
 
+# ── GitHub push ───────────────────────────────────────────────────────────────
+log "Pushing workspace to GitHub..."
+cd "$WORKSPACE"
+if git diff --quiet && git diff --cached --quiet; then
+  log "  ✓ No changes to commit"
+else
+  git add -A
+  git commit -m "Nightly backup — $(date +%Y-%m-%d)" >> "$LOG" 2>&1
+  log "  ✓ Committed workspace changes"
+fi
+if git push origin master >> "$LOG" 2>&1; then
+  log "  ✓ Pushed to jsomwarux/openclaw-workspace"
+else
+  log "  ⚠ GitHub push failed (local backup still complete)"
+fi
+
 # ── Summary ───────────────────────────────────────────────────────────────────
 size=$(du -sh "$DEST" 2>/dev/null | cut -f1)
 remaining=$(ls -d "$BACKUP_ROOT"/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] 2>/dev/null | wc -l | tr -d ' ')

@@ -1,31 +1,31 @@
 {
   "date": "2026-03-11",
-  "captured_at": "2026-03-11T14:00:45.653845+00:00",
+  "captured_at": "2026-03-11T17:32:28.821008+00:00",
   "total_usd": 2e-06,
   "sessions": {
     "agent:main:main": {
       "label": "Main Session",
       "model": "claude-sonnet-4-6",
       "provider": "anthropic",
-      "input_tokens": 3,
-      "output_tokens": 65,
-      "cache_read": 0,
-      "cache_write": 59858,
-      "total_tokens": 59861,
+      "input_tokens": 6,
+      "output_tokens": 1044,
+      "cache_read": 49442,
+      "cache_write": 499,
+      "total_tokens": 49942,
       "cost_usd": 0.0,
-      "updated_at": 1773237600045
+      "updated_at": 1773247285310
     },
     "agent:main:telegram:direct:6608544825": {
       "label": "Main Session",
       "model": "claude-sonnet-4-6",
       "provider": "anthropic",
-      "input_tokens": 3,
-      "output_tokens": 8,
-      "cache_read": 0,
-      "cache_write": 65270,
-      "total_tokens": 65273,
+      "input_tokens": 7,
+      "output_tokens": 3458,
+      "cache_read": 106951,
+      "cache_write": 1229,
+      "total_tokens": 108181,
       "cost_usd": 0.0,
-      "updated_at": 1773237633727
+      "updated_at": 1773250338891
     },
     "agent:main:cron:be59a068-eccd-4a7c-964e-946ab40ace7e": {
       "label": "Cron: Overnight Autonomy Agent",
@@ -218,15 +218,75 @@
       "total_tokens": 31134,
       "cost_usd": 0.0,
       "updated_at": 1773234900027
+    },
+    "agent:main:cron:eve-crypto-midday-009": {
+      "label": "Cron: Crypto Midday Pulse (12 PM)",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 9,
+      "output_tokens": 5021,
+      "cache_read": 280829,
+      "cache_write": 48145,
+      "total_tokens": 58943,
+      "cost_usd": 0.0,
+      "updated_at": 1773244800024
+    },
+    "agent:main:cron:4c437ff5-02cd-4288-8e6e-6e6fc07203ce": {
+      "label": "Cron: Skills & API Researcher \u2014 Daily Scan",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 24,
+      "output_tokens": 9106,
+      "cache_read": 1325111,
+      "cache_write": 89721,
+      "total_tokens": 89722,
+      "cost_usd": 0.0,
+      "updated_at": 1773243000027
+    },
+    "agent:main:cron:4c437ff5-02cd-4288-8e6e-6e6fc07203ce:run:df55cf0e-ea5b-4ba0-b206-9b687eec3b1a": {
+      "label": "Cron: Skills & API Researcher \u2014 Daily Scan",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 24,
+      "output_tokens": 9106,
+      "cache_read": 1325111,
+      "cache_write": 89721,
+      "total_tokens": 89722,
+      "cost_usd": 0.0,
+      "updated_at": 1773243000027
+    },
+    "agent:main:cron:eve-crypto-midday-009:run:9c00843c-c623-43c7-be7f-abf550aa555e": {
+      "label": "Cron: Crypto Midday Pulse (12 PM)",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 9,
+      "output_tokens": 5021,
+      "cache_read": 280829,
+      "cache_write": 48145,
+      "total_tokens": 58943,
+      "cost_usd": 0.0,
+      "updated_at": 1773244800024
+    },
+    "agent:main:subagent:3252c784-b122-4ff7-9327-1d4e8c49582f": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 28,
+      "output_tokens": 4735,
+      "cache_read": 699305,
+      "cache_write": 32789,
+      "total_tokens": 32790,
+      "cost_usd": 0.0,
+      "updated_at": 1773249326614
     }
   },
   "by_model": {
     "claude-sonnet-4-6": {
-      "sessions": 16,
-      "input_tokens": 172,
-      "output_tokens": 164393,
-      "cache_read": 10555320,
-      "cache_write": 1826844,
+      "sessions": 21,
+      "input_tokens": 273,
+      "output_tokens": 201811,
+      "cache_read": 14622898,
+      "cache_write": 2011965,
       "cost_usd": 0.0
     },
     "llama-3.3-70b-versatile": {
