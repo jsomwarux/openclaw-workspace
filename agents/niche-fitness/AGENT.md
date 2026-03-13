@@ -31,9 +31,15 @@ Monthly evaluation of JT's consulting niche strategy. Scores current niches AND 
 **Alert trigger:** Any alternative niche scores 4+ points higher than a current niche → immediate flag to JT.
 
 ## Current Niches (as of March 2026)
-1. Construction & Skilled Trades ($5–20M NYC, Aya reference) — n8n primary
-2. Wholesale Distribution (NYC garment/food/hardware, NetSuite/QuickBooks) — n8n primary
-3. P&C Insurance (COVU anchor, Salesforce shops) — Agentforce primary
+
+**n8n Track** (stack-agnostic — targets companies on any stack, skips Salesforce shops):
+1. Construction & Skilled Trades ($5–20M NYC, Aya reference)
+2. Wholesale Distribution (NYC garment/food/hardware, NetSuite/QuickBooks)
+
+**Agentforce Track** (Salesforce-only — Salesforce stack is the qualifying criteria):
+3. P&C Insurance (mid-size agencies/MGAs, 20–200 employees, Salesforce ops)
+
+**Key distinction for scoring:** Agentforce niches require an additional sub-check — does this industry have enough Salesforce penetration to make it worth targeting? High-demand niche with 5% Salesforce adoption = low addressable market. When scoring Agentforce niche candidates on "Stack Fit," factor in industry Salesforce adoption rate as a multiplier.
 
 ## Emerging Niche Signal File
 - Accumulator: `~/.openclaw/workspace/memory/niche-fitness-signals.md`
@@ -56,35 +62,56 @@ For each of the 3 current niches, run 2–3 web searches:
 
 Score each dimension 1–5 based on findings. Document the reasoning per score.
 
-### Step 3: Scan for emerging alternatives
-Run 3 web searches to identify emerging opportunities:
-- `best niches for AI automation consulting 2026`
-- `SMB industries adopting AI fastest 2026`
-- `n8n OR "AI agents" demand verticals`
+### Step 3: Scan for emerging alternatives — two separate tracks
 
-Identify 3–5 candidate niches NOT currently targeted. Score each on the same rubric.
+**Track A — n8n emerging niches** (2 searches):
+- `best niches AI workflow automation consulting SMB 2026`
+- `n8n "AI agents" demand fastest growing verticals SMB`
 
-Also check signals accumulator (`niche-fitness-signals.md`) for any emerging niches flagged by the niche monitor this month.
+Identify 2–3 candidate n8n niches NOT currently targeted. These are stack-agnostic — any SMB with manual processes qualifies.
 
-### Step 4: Comparative analysis
-Build a score table:
+**Track B — Agentforce emerging niches** (2 searches):
+- `Salesforce Agentforce implementation demand industries 2026`
+- `which industries use Salesforce most SMB mid-market NYC`
 
+Identify 2–3 candidate Agentforce niches: industries where (a) Salesforce penetration is meaningful (>20% of mid-size companies) AND (b) AI agent use cases are obvious (intake, routing, status, renewals). Score each on the rubric PLUS note Salesforce penetration estimate.
+
+Good Agentforce niche candidates beyond insurance: financial services brokerages, commercial real estate, staffing agencies, legal (mid-size firms on Salesforce), healthcare admin. These all have Salesforce presence and repetitive intake/routing workflows.
+
+Also check signals accumulator (`niche-fitness-signals.md`) for any EMERGING signals flagged by the niche monitor this month — split by n8n vs Agentforce relevance.
+
+### Step 4: Comparative analysis — two score tables
+
+**n8n Track:**
 | Niche | Demand | Commodity Risk | Competition | Credibility | Deal $ | Stack Fit | TOTAL | Status |
 |-------|--------|----------------|-------------|-------------|--------|-----------|-------|--------|
 | Construction | X | X | X | X | X | X | XX | Current |
 | Wholesale | X | X | X | X | X | X | XX | Current |
+| [n8n Alt 1] | X | X | X | X | X | X | XX | Emerging |
+| [n8n Alt 2] | X | X | X | X | X | X | XX | Emerging |
+
+**Agentforce Track:**
+| Niche | Demand | Commodity Risk | Competition | Credibility | Deal $ | Stack Fit (incl. SF penetration) | TOTAL | Status |
+|-------|--------|----------------|-------------|-------------|--------|----------------------------------|-------|--------|
 | Insurance | X | X | X | X | X | X | XX | Current |
-| [Alt 1] | X | X | X | X | X | X | XX | Emerging |
-| [Alt 2] | X | X | X | X | X | X | XX | Emerging |
+| [AF Alt 1] | X | X | X | X | X | X | XX | Emerging |
+| [AF Alt 2] | X | X | X | X | X | X | XX | Emerging |
 
-### Step 5: Generate recommendation
-Based on scores:
-- **Stay the course**: all 3 current niches 18+, no alternative scores 4+ higher
+### Step 5: Generate recommendation — one per track
+
+**n8n recommendation**: based on n8n track scores:
+- **Stay the course**: both current niches 18+, no alternative scores 4+ higher
 - **Weight shift**: a current niche is 12–17 OR an alternative scores 4+ higher → recommend adjusting focus
-- **Pivot**: a current niche drops below 12 → recommend winding down, reallocating effort
-- **Add niche**: an alternative scores 22+ AND JT has or can build credibility quickly → recommend adding
+- **Pivot**: a current niche drops below 12 → recommend winding down
+- **Add niche**: an alternative scores 22+ AND JT has credibility path → recommend adding
 
-Be direct. Give ONE recommendation, not five options.
+**Agentforce recommendation**: based on Agentforce track scores:
+- **Stay the course**: Insurance 18+, no alternative scores 4+ higher
+- **Add niche**: an alternative scores 22+ AND has sufficient Salesforce penetration → recommend adding alongside Insurance (don't replace until Insurance drops)
+- **Pivot**: Insurance drops below 12 → recommend replacing with highest-scoring alternative
+- **Double down**: Insurance 24+ AND an emerging niche also 22+ → recommend adding the second Agentforce niche
+
+Give TWO direct recommendations — one per track. Be specific: name the niche, state the action.
 
 ### Step 6: Write report
 Save to `~/.openclaw/workspace/memory/research/niche-fitness-[YYYY-MM].md`:
@@ -120,15 +147,16 @@ Send to JT (channel=telegram, target=6608544825):
 ```
 🎯 *Monthly Niche Fitness Review — [Month]*
 
-**Current Niche Scores:**
+**n8n Track:**
 - Construction: XX/30 ([status emoji])
-- Wholesale: XX/30 ([status emoji])  
+- Wholesale: XX/30 ([status emoji])
+- Top alternative: [Niche]: XX/30 — [1-line rationale]
+→ Recommendation: [direct statement]
+
+**Agentforce Track:**
 - Insurance: XX/30 ([status emoji])
-
-**Top Emerging Alternative:**
-- [Niche name]: XX/30 — [1-line rationale]
-
-**Recommendation:** [direct statement]
+- Top alternative: [Niche]: XX/30 (SF penetration: ~X%) — [1-line rationale]
+→ Recommendation: [direct statement]
 
 _Full report: memory/research/niche-fitness-[YYYY-MM].md_
 ```

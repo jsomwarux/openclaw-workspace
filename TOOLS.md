@@ -76,6 +76,18 @@ Replace `<TOKEN>` with the bot token from `~/.config/env/global.env`.
 - Structured extraction (JSON + prompt): add `"formats":["json"],"jsonOptions":{"prompt":"Extract services, tech stack, key contacts"}`
 - Docs: https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/
 
+## Page CRO Reference (on-demand — coreyhaines31/marketingskills)
+- Full CRO framework at: https://github.com/coreyhaines31/marketingskills/tree/main/skills/page-cro
+- Use when: optimizing jtsomwaru.com conversions, or auditing a client's landing page
+- Framework covers: value prop clarity, headline effectiveness, CTA friction, social proof placement, mobile experience
+- Not installed as a skill (low frequency) — fetch the SKILL.md directly when needed
+
+## Deepgram Nova-2 (not yet configured — future use)
+- Speech-to-text API | $0.002/min | Multi-speaker detection, fast turnaround
+- Use case: Phase 2 UGC pipeline (script timing verification), any future transcription at scale
+- Current alternative: Groq whisper-large-v3 (free, already configured) — prefer Groq for single-speaker tasks
+- Docs: https://developers.deepgram.com | Sign up + add API key to global.env when needed
+
 ## Firecrawl (fallback — use /crawl above for full-site work)
 - Key: fc-0d0961fa920a466a869fdd4068b9fe7e
 - `POST https://api.firecrawl.dev/v1/scrape` `{"url":"...","formats":["markdown"]}`
@@ -94,8 +106,9 @@ Replace `<TOKEN>` with the bot token from `~/.config/env/global.env`.
 ## OpenRouter
 - Status: ✅ Active | Profile: openrouter:default
 - Routing: Anthropic → direct (prompt caching = 90% savings). Everything else → openrouter/provider/model
-- Key models: openrouter/openai/gpt-4o | openrouter/x-ai/grok-3 | openrouter/google/gemini-2.5-pro | openrouter/google/gemini-2.5-flash-preview | openrouter/google/gemini-3-pro-preview | openrouter/moonshot/kimi-k2 | openrouter/deepseek/deepseek-r1
+- Key models: openrouter/openai/gpt-4o | openrouter/x-ai/grok-3 | openrouter/google/gemini-2.5-pro | openrouter/google/gemini-2.5-flash-preview | openrouter/google/gemini-3.1-flash-lite-preview | openrouter/google/gemini-3-pro-preview | openrouter/moonshot/kimi-k2 | openrouter/deepseek/deepseek-r1
 - Gemini 2.5 Pro: $1.25/$10 per M tokens, 1M context, flat pricing — use for large doc analysis (>100K tokens), RAG ingestion. Gemini 3-pro-preview: $2/$12 (≤200K) or $4/$18 (>200K) — better reasoning but expensive at large context, not worth it for doc ingestion.
+- Gemini 3.1 Flash-Lite: $0.25/$1.50 per M tokens, 1M context, 2.5x faster than 2.5 Flash, 45% faster output — use for cheap high-volume tasks: KB reads, content batch gen, summarization, quick lookups. Replaces gemini-2.5-flash-preview for non-reasoning tasks. Verified routing: google/gemini-3.1-flash-lite-preview-20260303.
 - Full list: https://openrouter.ai/models | Experiments log: memory/costs/model-experiments.jsonl
 
 ## Knowledge Base
@@ -110,6 +123,32 @@ Replace `<TOKEN>` with the bot token from `~/.config/env/global.env`.
 - LaunchAgents: com.openclaw.mission-control-convex + com.openclaw.mission-control-next
 - Task API: `POST http://localhost:3000/api/tasks`
 - **Recovery** (if board unreachable): `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-convex && launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next` — do NOT just log "may be down"; attempt kickstart immediately
+
+## Claude Code Agent Personas (~/.claude/agents/)
+Installed on Mac mini from github.com/msitarzewski/agency-agents. Available to all ACP sessions spawned via sessions_spawn.
+
+**When to activate a persona:**
+- ✅ Open-ended tasks with no detailed spec (e.g., "refactor this however you see fit," "build a frontend component from scratch")
+- ✅ JT using Claude Code interactively on his personal device — primary use case
+- ❌ ACP spawns that already have a detailed task prompt — the task IS the instruction, persona adds noise
+- ❌ Sessions with existing specialized AGENT.md files (overnight, outreach, portfolio updater) — don't override
+- ❌ Tasks with strict output format requirements
+
+**How to activate (only when criteria above are met):**
+Include in the task prompt: *"Activate [Agent Name] mode for this session."*
+
+| Task type | Agent | File |
+|---|---|---|
+| Frontend/UI work (open-ended) | Frontend Developer | engineering/engineering-frontend-developer.md |
+| Agentforce/ML/AI (open-ended exploration) | AI Engineer | engineering/engineering-ai-engineer.md |
+| iOS/mobile (open-ended) | Mobile App Builder | engineering/engineering-mobile-app-builder.md |
+| Backend/API/DB (open-ended) | Backend Architect | engineering/engineering-backend-architect.md |
+| Infrastructure, scripts, CI/CD (open-ended) | DevOps Automator | engineering/engineering-devops-automator.md |
+| Quick POC/prototype | Rapid Prototyper | engineering/engineering-rapid-prototyper.md |
+| Code review/refactor (open-ended) | Senior Developer | engineering/engineering-senior-developer.md |
+| App Store optimization | App Store Optimizer | marketing/marketing-app-store-optimizer.md |
+| SEO content | SEO Specialist | marketing/marketing-seo-specialist.md |
+| Reddit content (open-ended) | Reddit Community Builder | marketing/marketing-reddit-community-builder.md |
 
 ## Consulting Pipeline Agents (~/projects/)
 - research-agent/ | analysis-agent/ | n8n-agent/ (n8n: localhost:5678) | agentforce-agent/ (sf CLI needed)
@@ -149,6 +188,9 @@ Replace `<TOKEN>` with the bot token from `~/.config/env/global.env`.
   | Cover letters | `Job Applications/Cover Letters` |
   | X posts (personal brand) | `Content/X` |
   | LinkedIn posts (personal brand) | `Content/LinkedIn` |
+  | Vibe marketing review (Nash Satoshi) | `Content/Vibe Marketing/Nash Satoshi` |
+  | Vibe marketing review (Vista) | `Content/Vibe Marketing/Vista` |
+  | Vibe marketing review (future products) | `Content/Vibe Marketing/[Product Name]` |
   | Research files | `Research` |
   | Framework/methodology docs | `Frameworks` |
   | Analysis reports | `Analysis` |

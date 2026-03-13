@@ -78,7 +78,8 @@ f. **Verify success before marking done** — check the appropriate metric for t
    | Code build (jtsomwaru-com) | `npm run build` exits 0, no TypeScript errors |
    | Research / analysis | Output file exists, >300 words, no placeholder text (no "TBD", "TODO", "[insert]") |
    | Draft (resume, cover letter, outreach) | File written to correct path, `jt_review_required: true` in brief.json if applicable |
-   | T2 pipeline run | `outreach-draft.md` written, `demo-results.json` present, `brief.json` has `tier: 2` + `jt_review_required: true` |
+   | T2 pipeline run (n8n) | `outreach-draft.md` written, `demo-results.json` present, `brief.json` has `tier: 2` + `jt_review_required: true` |
+   | T2 pipeline run (Agentforce) | `outreach-draft.md` written, `demo-transcript.md` present, `agent-config.md` present, `brief.json` has `tier: 2` + `jt_review_required: true` |
    | Knowledge base / script / config | File exists, no syntax errors (run `python3 -m py_compile` for Python, `node --check` for JS) |
 
    If the success metric is NOT met → do NOT mark done. Log the failure, push a 🌙 Review MC task with what failed and why, and move to the next task.

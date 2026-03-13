@@ -79,7 +79,7 @@
 - Target: AI Solutions Architect, AI Implementation Lead, AI Systems Analyst
 - $150K min, $180–220K target | NYC metro or remote only
 - ⚠️ Squarespace People AI SA (19/25, $126–180K hybrid NYC) — posted Feb 21, likely expired. Verify before applying.
-- 🔴 Salesforce Lead Agentforce SE (24/25, $148K–$198K NYC) — DEADLINE 03/27/2026. Perfect fit: leads sandbox-to-production engagements, zero code requirement. → salesforce.com/jobs/jr329627
+- 🔴 Salesforce Lead Agentforce SE (24/25, $148K–$198K NYC) — DEADLINE 03/27/2026. Perfect fit: leads sandbox-to-production engagements, zero code requirement. → careers.salesforce.com/en/jobs/jr329627/lead-agentforce-se/ | Resume + cover letter written 2026-03-12, uploaded to Drive. Apply before 03/27.
 - 🟠 Salesforce Agentforce/AI Deployment Strategist (20/25, $140K–$185K) — confirmed active at jr305206
 - 🟠 Salesforce Sr. Supply Chain Strategist (21/25, $180K–$298K) — vet domain requirement first
 - 🟠 Writer SA East (20/25, $207K–$250K hybrid NYC) — Python gap, still worth applying. Docs: memory/drafts/writer-sa-resume.md + writer-sa-cover-letter.md
@@ -96,6 +96,18 @@
 ## Passive Income System
 - **Bucket**: separate from consulting + career — builds that run autonomously, zero upkeep
 - **Active properties**: Nash Satoshi (built, stalled, needs monetization), Glow Index (built, stalled, needs n8n + ngrok)
+- **Vibe Marketing System**: ✅ BUILT 2026-03-12 — weekly content generation for passive income products
+  - Agent: `agents/vibe-marketing/AGENT.md` | Registry: `agents/vibe-marketing/product-registry.json`
+  - Queue: `agents/vibe-marketing/queue.jsonl` | State: `agents/vibe-marketing/state.json`
+  - Cron: Monday 4:45AM ET (UUID: 870bf3ff-55c9-49c0-9970-361c81a0920b) | isolated sonnet | 720s
+  - Active products: Nash Satoshi + Vista (Glow Index pending n8n/ngrok)
+  - Nash Satoshi: nashsatoshi.com | X: @NashSatoshi | TikTok: @NashSatoshi (dedicated — create + 3-day warmup before first post) | Reddit: community account (needs karma build)
+  - Vista: App Store | X: @jts_14 | TikTok: @jts_14 | Reddit: JT's personal account (needs karma build)
+  - Glow Index: TikTok dedicated account required when activated (skincare niche ≠ JT's audience)
+  - TikTok routing rule: niche-specific products (crypto, skincare, etc.) → dedicated account. Builder/dev/AI products → @jts_14
+  - Platforms: X (weekly) + TikTok (weekly) + Reddit (weekly, alternating subreddits) + LinkedIn (monthly, 1st Monday)
+  - JT always approves before posting — manual for first 1–2 weeks, then PostBridge auto-scheduling
+  - Add new product: one entry in product-registry.json with status:active → picked up next Monday
 - **Vibe Marketing Agent**: NOT yet built — JT will provide detailed instructions separately
 - **Scout agent**: `agents/passive-income-scout/AGENT.md` | state: `agents/passive-income-scout/state.json`
 - **2-stage pipeline**: Scout (Sun 6AM) → Strategist (Sun 7:30AM)
@@ -131,6 +143,7 @@
 - content-monday-send: Monday 7:45AM ET | isolated sonnet | sends Monday LinkedIn + X to JT | UUID: (see cron list)
 - content-reminder: Tue–Sat 8AM ET | isolated sonnet | sends that day's post (LinkedIn on Wed/Fri) | UUID: 5e66b4ee
 - content-sunday: Sunday 9AM ET | isolated sonnet | sends Sun LinkedIn + X + engagement check | UUID: d918122d
+- t3-cold-hook: Tue/Thu 6AM ET | isolated sonnet | reads T3 shortlists → drafts 8-10 cold hook DMs → uploads batch to Drive (Consulting/Clients/T3 Batches/Outreach/LinkedIn) → Telegrams JT with Drive link for review | UUID: 3ed01a8a-c3fb-4673-9ae0-993611e94c5a | **JT always sends — agent drafts only**
 - Daily cap: 20 invocations/weekday ✅
 
 ## Cost Tracking
@@ -173,7 +186,7 @@
 - $JUNO note: previously EXIT-rated — JT re-entered, agent will re-analyze fresh each morning
 
 ## Key Decisions
-- **Priority order (updated 2026-03-09)**: Step 1 complete ✅ (jtsomwaru.com + demos live). Now parallel: (2) LinkedIn career update + (3) Consulting outreach (H.C. Oswald Day 0 + new prospects through pipeline). Job applications active in parallel.
+- **Priority order (updated 2026-03-12)**: Consulting first. Job applications only if 100% perfect fit (score 24+/25, zero skill gaps, exact title match). Squarespace and Writer SA deprioritized. Salesforce Lead Agentforce SE (24/25, deadline 03/27) is the only active application — borderline perfect fit, keep it. All other job apps pause until consulting is generating consistent revenue.
 - **Outreach active as of 2026-03-09**: freeze lifted. T1: H.C. Oswald — outreach sent 2026-03-11 (LinkedIn DM + subject "After-hours coverage for your catalog"). Awaiting response. T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
 - **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates needed: wholesale (convert existing demo), construction job cost (build), Tier 3 send scheduler (build).
 - Aggressive compaction over safeguard — prevents context resets on long builds

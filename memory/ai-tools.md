@@ -295,3 +295,12 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 
 *Tracked by Eve | Updated during heartbeats*
 
+
+## Mar 12, 2026 — 2PM Heartbeat
+- **OpenAI GPT-5.4 Thinking** — Released ~Mar 10. Fuses reasoning + coding + agentic workflows with GPT-5.3 Codex capabilities. Upfront thinking plan visible to users. Tool support for Docs/Sheets/Slides. Relevant signal: reasoning-first agents becoming baseline expectation for enterprise buyers.
+- **Razorpay AI Agent Studio** — Launched today using **Claude Agent SDK** (Anthropic). First payments-native agent builder. Relevant: Claude SDK gaining enterprise traction outside tech companies. Potential content angle for JT on Anthropic enterprise momentum.
+- **Google Gemini in Workspace** — Docs/Sheets/Slides/Drive now show source citations inline. Relevant for SMB clients evaluating Google vs Microsoft AI stack — normalizes AI-assisted document work.
+- **Anthropic Claude Outage (Mar 11)** — Significant outage yesterday. Several crons errored due to "overloaded" / rate limit cascade. Now resolved. Context: viral-swipe timed out partly due to this.
+- **AI Agents = Software Valuation Crisis narrative** — Markets repricing SaaS multiples as AI agents threaten traditional software categories. Good framing for JT's consulting pitch: "SMBs that implement now get the transition advantage."
+
+*Tracked by Eve | Updated during heartbeats*

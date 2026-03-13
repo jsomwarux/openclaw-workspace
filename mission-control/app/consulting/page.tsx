@@ -75,25 +75,41 @@ const niches = [
     name: "Wholesale Distribution",
     target: "NYC metro wholesale distributors (plumbing, HVAC parts, electrical, building materials, industrial)",
     size: "10–75 employees, $3M–$30M revenue, family-owned preferred",
+    platform: "n8n",
     template: "Inventory Reorder Intelligence",
     proof: "H.C. Oswald (outreach sent), Brothers Supply (DM drafted)",
+    skip: "Skip if on Salesforce/SAP/Oracle",
     color: "emerald",
   },
   {
     name: "Construction + Skilled Trades",
     target: "NYC GCs, HVAC/plumbing/electrical contractors, commercial renovation",
     size: "10–50 employees, $5M–$20M revenue",
+    platform: "n8n",
     template: "Construction Job Cost Monitor (building)",
     proof: "Aya ($1,500 dashboard + $1,000 scraper — active client)",
+    skip: "Skip if on Salesforce/SAP/Oracle",
     color: "amber",
   },
   {
     name: "Property Management",
-    target: "NYC residential property managers, co-op/condo management",
+    target: "NYC residential property managers, co-op/condo management (AppFolio/Buildium shops)",
     size: "10–50 employees, 500–5,000 units managed",
-    template: "PM Operations (Agentforce — existing demo)",
+    platform: "n8n",
+    template: "PM Operations (building)",
     proof: "PMOperationsAgent + TenantServiceAgent built",
+    skip: "Skip if on Salesforce → route to Insurance niche instead",
     color: "sky",
+  },
+  {
+    name: "Insurance Operations",
+    target: "NYC insurance agencies, MGAs (Managing General Agents), Salesforce-native brokerages",
+    size: "20–200 employees, Salesforce CRM confirmed",
+    platform: "Agentforce",
+    template: "InsuranceServiceAgent (built — claims intake, routing, FAQ)",
+    proof: "InsuranceServiceAgent built and ready to demo",
+    skip: "Skip if NOT on Salesforce — Salesforce is the qualifying criteria",
+    color: "violet",
   },
 ];
 
@@ -102,7 +118,7 @@ const icpRows = [
   { signal: "Location", t1: "NYC metro", t2: "NYC metro", t3: "NYC metro", skip: "Outside metro" },
   { signal: "Size", t1: "10–75 employees", t2: "10–75 employees", t3: "10–150 employees", skip: ">150" },
   { signal: "Hook", t1: "Exceptional specific hook", t2: "Template fit + hook", t3: "NYC ICP match", skip: "No hook, no fit" },
-  { signal: "Stack", t1: "Any", t2: "n8n-compatible", t3: "Any", skip: "SAP/Oracle enterprise" },
+  { signal: "Stack", t1: "Any", t2: "n8n-compatible OR Salesforce (insurance)", t3: "Any", skip: "SAP/Oracle enterprise. Note: Salesforce = skip for n8n targets, but = qualifying for Agentforce/insurance." },
   { signal: "Action", t1: "JT decides, custom build", t2: "Auto nightly pipeline", t3: "Auto cold hook batch", skip: "Archive" },
 ];
 
@@ -111,6 +127,7 @@ const nicheColors: Record<string, { border: string; bg: string; text: string }> 
   emerald: { border: "border-emerald-500/30", bg: "bg-emerald-500/10", text: "text-emerald-400" },
   amber:   { border: "border-amber-500/30",   bg: "bg-amber-500/10",   text: "text-amber-400"   },
   sky:     { border: "border-sky-500/30",      bg: "bg-sky-500/10",     text: "text-sky-400"     },
+  violet:  { border: "border-violet-500/30",   bg: "bg-violet-500/10",  text: "text-violet-400"  },
 };
 
 function SectionHeader({ children }: { children: React.ReactNode }) {
@@ -253,12 +270,20 @@ export default function ConsultingPage() {
                     <p className="text-zinc-400">{n.size}</p>
                   </div>
                   <div>
+                    <p className="text-[9px] text-zinc-600 uppercase tracking-wider mb-0.5">Platform</p>
+                    <span className={`text-[9px] px-1.5 py-0.5 rounded border ${c.bg} ${c.border} ${c.text}`}>{n.platform}</span>
+                  </div>
+                  <div>
                     <p className="text-[9px] text-zinc-600 uppercase tracking-wider mb-0.5">Template</p>
                     <p className={c.text}>{n.template}</p>
                   </div>
                   <div className="pt-2 border-t border-[#2a2a2a]">
                     <p className="text-[9px] text-zinc-600 uppercase tracking-wider mb-0.5">Proof</p>
                     <p className="text-zinc-400">{n.proof}</p>
+                  </div>
+                  <div>
+                    <p className="text-[9px] text-zinc-600 uppercase tracking-wider mb-0.5">Skip if</p>
+                    <p className="text-zinc-600 text-[10px]">{n.skip}</p>
                   </div>
                 </div>
               </div>

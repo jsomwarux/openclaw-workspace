@@ -1,0 +1,137 @@
+{
+  "products": [
+    {
+      "slug": "nash-satoshi",
+      "name": "Nash Satoshi",
+      "status": "active",
+      "description": "Crypto game theory rankings powered by a 4-LLM ensemble. Ranks coins by game-theoretic strength, not just price action.",
+      "url": "https://nashsatoshi.com",
+      "target_audience": "crypto traders, algo-minded investors, AI/crypto crossover audience",
+      "platforms": ["x", "tiktok", "reddit", "linkedin"],
+      "accounts": {
+        "x": "@NashSatoshi",
+        "tiktok": "@NashSatoshi (dedicated — see TikTok Account Setup in AGENT.md; create and warm up before first post)",
+        "reddit": "crypto-community account — NOT product-branded. See Reddit Account Setup in AGENT.md.",
+        "linkedin": "JT's personal LinkedIn — linkedin.com/in/jon-trevor-somwaru"
+      },
+      "voice": "Technical, contrarian, game-theory-forward. Confident about the methodology. No shilling. Never promise returns.",
+      "proof_points": [
+        "4-LLM ensemble ranking system — built by JT",
+        "Game theory applied to crypto positioning — rare intersection",
+        "Not price prediction — narrative and positioning analysis",
+        "Real system, live at nashsatoshi.com"
+      ],
+      "content_themes": [
+        "Game theory in crypto — why most people evaluate coins wrong",
+        "What the ensemble model sees vs. what CT (crypto Twitter) is saying",
+        "AI consensus vs. crowd consensus — when they diverge and why it matters",
+        "The methodology: why 4 models, why game theory over TA",
+        "Specific ranking shifts or notable calls when something changes"
+      ],
+      "cta": "nashsatoshi.com (link in bio)",
+      "platform_config": {
+        "x": {
+          "posts_per_week": 3,
+          "formats": ["hot take", "contrarian angle", "methodology explainer"]
+        },
+        "tiktok": {
+          "posts_per_week": 2,
+          "formats": ["model vs crowd", "game theory explainer", "what most traders miss", "faceless slideshow"],
+          "hashtags": ["#crypto", "#gametheory", "#AIcrypto", "#cryptoanalysis"],
+          "style": "hook then reveal — start with a contrarian claim, explain the model's take, end with 'link in bio for the full rankings'",
+          "slideshow_style": "dark background, data aesthetic, consistent font. Hook: contrarian crypto claim. Body: game theory logic. CTA: 'full rankings at nashsatoshi.com'. One slideshow per week, one script per week.",
+          "branded_palette": "dark/navy background, white text, minimal data-forward visuals — consistent every week"
+        },
+        "reddit": {
+          "posts_per_week": 1,
+          "subreddits": ["r/CryptoCurrency", "r/CryptoMoonShots"],
+          "formats": ["methodology post", "analysis post"],
+          "rules": "Lead with genuine value — methodology, analysis, insight. Mention Nash Satoshi naturally if at all. No direct shilling. r/CryptoCurrency is strict on promotion; lead with the game theory angle, not the product. Check account karma before posting — minimum 50 comment karma required."
+        },
+        "linkedin": {
+          "posts_per_month": 1,
+          "formats": ["architecture reveal"],
+          "angle": "I built a crypto ranking system that uses 4 AI models instead of 1. Here's what I learned.",
+          "named_framework": "Game Theory Consensus Framework",
+          "rules": "Architecture Reveal format. Lead with broken state (price-only analysis), turning point (game theory applied to positioning), layer-by-layer build (4-model ensemble), how to read rankings, paradox closer. See platform-rules.md LinkedIn section."
+        }
+      },
+      "notes": "Monetization not figured out yet. Content goal: build a following that wants the rankings. Don't overpromise on accuracy or returns."
+    },
+    {
+      "slug": "vista",
+      "name": "Vista",
+      "status": "active",
+      "description": "Movie rating and tracking app. Live on the Apple App Store as of March 2026.",
+      "url": "App Store — search Vista",
+      "target_audience": "Movie fans, iOS users who want to track what they've watched",
+      "platforms": ["x", "tiktok", "reddit", "linkedin"],
+      "accounts": {
+        "x": "@jts_14",
+        "tiktok": "@jts_14 (JT's personal account — build-in-public energy fits personal brand)",
+        "reddit": "JT's personal Reddit account or movie discussion account — see Reddit Account Setup in AGENT.md.",
+        "linkedin": "JT's personal LinkedIn — linkedin.com/in/jon-trevor-somwaru"
+      },
+      "voice": "Casual, build-in-public, solo developer energy. Proud of shipping. Not overhyped. Low-key confidence.",
+      "proof_points": [
+        "Live on Apple App Store — March 2026",
+        "Built and shipped solo by JT",
+        "Real app, real users, real product in the store"
+      ],
+      "content_themes": [
+        "Solo developer shipping a real product (build-in-public angle)",
+        "What it actually takes to get an app live on the App Store",
+        "Movie recommendations or quick ratings",
+        "App updates and feature decisions as they ship",
+        "The gap Vista fills vs. existing rating apps (Letterboxd, IMDb)"
+      ],
+      "cta": "Available on the App Store — search Vista",
+      "platform_config": {
+        "x": {
+          "posts_per_week": 3,
+          "formats": ["build-in-public", "movie take", "solo dev insight"]
+        },
+        "tiktok": {
+          "posts_per_week": 2,
+          "formats": ["movie review in 30 seconds", "I built this app", "rate this film"],
+          "hashtags": ["#movies", "#moviereview", "#indiedev", "#AppStore", "#buildinpublic"],
+          "style": "Casual, quick. Either a genuine movie take that ends with 'I track all my ratings in Vista' or a solo dev build-in-public moment. Authentic over polished."
+        },
+        "reddit": {
+          "posts_per_week": 1,
+          "subreddits": ["r/movies", "r/MovieSuggestions", "r/MovieRecommendations"],
+          "formats": ["genuine movie recommendation", "discussion post"],
+          "rules": "Participate genuinely. Post actual movie recommendations or discussion. Mention Vista only when it's natural and non-promotional (e.g., 'I track everything in my app Vista'). Never make a post whose primary purpose is to promote the app. Check account karma before posting."
+        },
+        "linkedin": {
+          "posts_per_month": 1,
+          "formats": ["architecture reveal", "build-in-public"],
+          "angle": "I shipped an iOS app solo. Here's what actually took the most time.",
+          "rules": "Architecture Reveal format. Lead with the decision to build, what surprised me (App Store process more than code), what the app does and why I needed it, solo dev lessons, paradox closer. See platform-rules.md LinkedIn section."
+        }
+      },
+      "notes": "Keep it authentic and low-key. Build-in-public is the primary content angle. Don't oversell."
+    },
+    {
+      "slug": "glow-index",
+      "name": "Glow Index",
+      "status": "pending",
+      "description": "Skincare product rankings on Replit — waiting on n8n workflow + ngrok URL before launch.",
+      "url": null,
+      "target_audience": "Skincare enthusiasts, beauty community",
+      "platforms": [],
+      "accounts": {
+        "tiktok": "Dedicated account required (e.g., @GlowIndex) — skincare niche audience doesn't overlap with JT's personal brand. Create and warm up before activating.",
+        "x": "TBD",
+        "reddit": "TBD",
+        "linkedin": "JT's personal LinkedIn"
+      },
+      "voice": "Informative, community-focused",
+      "proof_points": ["AI-powered skincare product rankings"],
+      "content_themes": ["Skincare product comparisons", "AI-powered rankings"],
+      "cta": "Coming soon",
+      "platform_config": {},
+      "notes": "BLOCKED — do not generate content. Change status to 'active' once n8n + ngrok are live."
+    }
+  ]
+}

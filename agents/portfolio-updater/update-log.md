@@ -45,3 +45,13 @@
 - Skills grid updated: no
 - Vercel deploy triggered: YES — commit bf41a2d pushed to main (Vercel auto-deploys)
 - Scoring guide fix: Added AgentScript(9), Apex(8), Flow(7) to AGENT.md — prior guide undervalued Agentforce projects since companion skills weren't scored
+
+## 2026-03-12 (Overnight Run)
+- Items in queue: 8 | Unscored: 3 → all resolved (ConversationFirst: already decided; PM Ops Agent + n8n Support Triage: already in addedSlugs)
+- Auto-approved tonight: none (no new builds)
+- Flagged to JT: none
+- Skipped: none
+- Demand reorder: no (lastReorderDate 2026-03-10, within 7-day window)
+- Skills grid updated: no
+- Vercel deploy triggered: no
+- Queue housekeeping: marked 3 stale unscored entries as scored/processed

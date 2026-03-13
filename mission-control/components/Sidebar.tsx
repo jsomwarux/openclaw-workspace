@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, CheckSquare, Calendar, Brain,
-  Users, Server, DollarSign, FileText, Moon, Wrench, Archive, Building2,
+  Users, Server, DollarSign, FileText, Moon, Wrench, Archive, Building2, Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -11,6 +11,7 @@ const nav = [
   { href: "/",         icon: LayoutDashboard, label: "Overview"   },
   { href: "/tasks",    icon: CheckSquare,      label: "Tasks"      },
   { href: "/consulting", icon: Building2,      label: "Pipeline"   },
+  { href: "/vibe",       icon: Sparkles,       label: "Vibe Mktg"  },
   { href: "/calendar", icon: Calendar,         label: "Schedule"   },
   { href: "/memory",   icon: Brain,            label: "Memory"     },
   { href: "/agents",   icon: Users,            label: "Agents"     },

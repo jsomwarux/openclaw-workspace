@@ -211,13 +211,42 @@ def list_clients(drive):
     print()
 
 
+def sync_agentforce_artifacts(drive, slug, client_name, client_folder_id):
+    """Sync Agentforce-specific pipeline artifacts: agent-config.md + demo-transcript.md"""
+    base = Path(CLIENTS_BASE) / slug
+
+    # Agent config
+    config_path = base / "agent-config.md"
+    if config_path.exists():
+        research_id = get_or_create_folder(drive, "Research", client_folder_id)
+        content = config_path.read_text()
+        title = f"{client_name} — Agentforce Agent Config"
+        url = create_doc(drive, title, content, research_id)
+        print(f"  ✅ Agent Config → {url}")
+    else:
+        print(f"  ⚠️  agent-config.md not found — skipping")
+
+    # Demo transcript
+    transcript_path = base / "demo-transcript.md"
+    if transcript_path.exists():
+        research_id = get_or_create_folder(drive, "Research", client_folder_id)
+        content = transcript_path.read_text()
+        title = f"{client_name} — Agentforce Demo Transcript"
+        url = create_doc(drive, title, content, research_id)
+        print(f"  ✅ Demo Transcript → {url}")
+    else:
+        print(f"  ⚠️  demo-transcript.md not found — skipping")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Sync consulting pipeline artifacts to Google Drive")
-    parser.add_argument("--slug",   help="Client slug (e.g. hc-oswald)")
-    parser.add_argument("--client", help='Client display name (e.g. "HC Oswald Supply Co")')
-    parser.add_argument("--stage",  choices=["outreach", "deck", "all"], default="all",
-                        help="Which artifact to sync (default: all)")
-    parser.add_argument("--list",   action="store_true", help="List all synced clients in Drive")
+    parser.add_argument("--slug",     help="Client slug (e.g. hc-oswald)")
+    parser.add_argument("--client",   help='Client display name (e.g. "HC Oswald Supply Co")')
+    parser.add_argument("--stage",    choices=["outreach", "deck", "agentforce", "all"], default="all",
+                        help="Which artifact to sync (default: all). Use 'agentforce' for agent-config + demo-transcript.")
+    parser.add_argument("--platform", choices=["n8n", "agentforce", "auto"], default="auto",
+                        help="Platform context: auto-detects based on files present (default: auto)")
+    parser.add_argument("--list",     action="store_true", help="List all synced clients in Drive")
     args = parser.parse_args()
 
     drive = get_drive()
@@ -229,7 +258,17 @@ def main():
     if not args.slug or not args.client:
         parser.error("--slug and --client are both required")
 
-    print(f"\n🔄 Syncing: {args.client} (stage={args.stage})")
+    # Auto-detect platform if not specified
+    base = Path(CLIENTS_BASE) / args.slug
+    if args.platform == "auto":
+        if (base / "demo-transcript.md").exists() or (base / "agent-config.md").exists():
+            platform = "agentforce"
+        else:
+            platform = "n8n"
+    else:
+        platform = args.platform
+
+    print(f"\n🔄 Syncing: {args.client} (platform={platform}, stage={args.stage})")
     client_folder_id = get_client_folder(drive, args.client)
 
     if args.stage in ("outreach", "all"):
@@ -237,6 +276,9 @@ def main():
 
     if args.stage in ("deck", "all"):
         sync_deck(drive, args.slug, args.client, client_folder_id)
+
+    if args.stage in ("agentforce", "all") and platform == "agentforce":
+        sync_agentforce_artifacts(drive, args.slug, args.client, client_folder_id)
 
     print(f"\n📂 Drive: Eve — Drafts / {PIPELINE_ROOT} / {args.client}\n")
 

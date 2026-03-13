@@ -192,3 +192,9 @@
 - **"AI Solutions Architect Roadmap" article** (published today, zenvanriel.com): SA role getting defined as a career path. Signal: more people chasing this role → competition increases → JT needs to move fast on open pipeline roles.
 - **Deadline reminder**: Salesforce Lead Agentforce SE (24/25) — DEADLINE 03/27/2026. 18 days. Apply this week.
 - No new roles scoring 18+/25 surfaced today.
+
+## 2026-03-12 PM Update
+- **Salesforce Agentforce Contact Center** (launched Mar 10): New platform combining AI agents, voice, and CRM data for customer service ops. Direct expansion of Agentforce ecosystem. This WIDENS JT's positioning — not just AI flows but now contact center implementation. New vertical angle to surface in Salesforce SE application cover letter if interviews materialize.
+- **Salesforce Ben SA Salary Report (Mar 9)**: "Architecture must be at the heart of AI solutions. Solution Architects will play a critical role — building deep understanding of how AI models suit specific business problems." Direct validation of JT's positioning. Quote usable in future cover letters/outreach.
+- **Salesforce CEO on Block layoffs (Mar 5)**: Benioff says Block is an isolated case, NOT a broader signal. Salesforce headcount holding — hiring for Agentforce roles continues. Bullish signal for the Lead Agentforce SE application (deadline 03/27).
+- **No new high-scoring roles** surfaced this week. Salesforce Lead Agentforce SE (24/25, deadline 03/27) remains the only active application. Priority: watch for interview outreach.

@@ -12,9 +12,10 @@ Deliver to JT via Telegram:
 5. Run `python3 scripts/cost-tracker.py --brief` — include as 💰 API Costs section
 
 5. Run `python3 health/todays-workout.py` — include as 🏋️ Today's Workout section
+5a. Check `~/.openclaw/workspace/agents/vibe-marketing/queue.jsonl` — if any entries with `"posted": false` and `"status": "approved"` exist, include a 📱 Vibe Queue section: "[N] pieces ready to post — [product names]. Check Drive for content."
 6. Send: punchy bullets, one concrete action. Title: "🌅 Morning Brief — [date]"
 
-Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Niche Intel (🔴🟠 only) | 💼 Job Market | 💰 API Costs | 🏋️ Today's Workout | 💡 One concrete action
+Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Niche Intel (🔴🟠 only) | 💼 Job Market | 💰 API Costs | 🏋️ Today's Workout | 📱 Vibe Queue (if items waiting) | 💡 One concrete action
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK
@@ -23,6 +24,7 @@ Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Nic
 3a. **Cron health check (every heartbeat — non-negotiable):**
    - Call `cron list` and scan ALL jobs for `consecutiveErrors >= 2` OR `lastRunStatus: "error"`
    - For each failing job: diagnose the cause (timeout? bad path? missing file?) and fix it autonomously — adjust timeout, fix the payload, update the schedule as needed
+   - **Timeout fix rule (mandatory):** ALWAYS run `openclaw cron edit <id> --timeout-seconds X` regardless of what prior session notes say. Never trust "already applied" from a previous session — prior sessions lose context and fixes may not have saved. Verify by checking the returned JSON shows the new value. If last run `durationMs` matches the old timeout, the fix was NOT applied.
    - If fix is non-obvious or requires JT input: alert JT via Telegram with job name + error + what you tried
    - Log what was fixed in today's daily note under ## Heartbeat HH:MM
    - Never leave a cron with consecutiveErrors >= 2 unaddressed
