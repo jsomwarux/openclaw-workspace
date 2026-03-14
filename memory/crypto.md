@@ -3,6 +3,18 @@
 
 ---
 
+## 2026-03-13 — 6PM Heartbeat
+
+**BTC:** ~$72,700 (+4.1% from yesterday's ~$69,848) — clean break above $71,850 resistance. New recent high.
+**ETH:** ~$2,188 (+6.7%) — holding above $2,100 despite options expiry pressure (max pain $2,000; 71% probability above $2,100 strike)
+**SOL:** ~$92 (+6.4%) — broad risk-on day
+**Driver:** Broad market recovery, options expiry dynamics. ETH max pain at $2,000 but market rejecting it.
+**Structure:** BTC broke $71,850 resistance cleanly — next target $75K+. The $69.5K level that flipped from resistance to support is holding. Bullish continuation bias confirmed.
+**JT portfolio:** Strong day across the board. x402 forward bet benefiting from risk-on. Watch BTC daily close — hold above $72K = continuation signal.
+**Alert threshold:** Neither BTC (+4.1%) nor ETH (+6.7%) hit ±15% — no alert sent.
+
+---
+
 ## 2026-03-10 — 10PM Heartbeat
 
 **BTC:** ~$70,828 at 11AM ET today — reclaimed $70K for first time since recent Iran war selloff. Touched $71K intraday.

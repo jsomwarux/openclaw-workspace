@@ -58,7 +58,7 @@
 ## Content System (updated 2026-03-11)
 - Voice rules: `memory/content-voice.md` — **load before every draft.** Platform-specific: LinkedIn = case studies + expertise, X = compression + hot takes. Wednesday LinkedIn is most important post of the week.
 - Proof Points inventory + Credibility Test in content-voice.md — every post must pass before publishing
-- Crons: content-generate (Mon 7AM, generates 4 LinkedIn + 7 X posts) | content-reminder (Tue–Sat 8AM, sends day's post) | content-sunday (Sun 9AM, Sun posts + engagement check)
+- Crons: content-generate-linkedin (Mon 7AM, 4 LinkedIn posts) | content-generate-x (Mon 7:25AM, 7 X posts) | content-reminder (Tue–Sat 8AM, sends day's post) | content-sunday (Sun 9AM, Sun posts + engagement check)
 - Swipe file: Notion DB (viral X posts) | Format signals: memory/content/format-signals.md | Technical angles: memory/content/technical-angles.md
 
 ## Critic Agent (built 2026-03-07)
@@ -139,8 +139,10 @@
 - passive-income-strategist: Sunday 7:30AM ET | isolated sonnet | reads Scout report → deep 8-dimension analysis → pushes 🟢 winners to MC → sends Sunday digest to Telegram | UUID: 4e19c300-d387-4019-b658-9664f0d665d5
 - monthly-goals-gap: 1st of month 8AM | isolated sonnet | job market vs. Eve capabilities audit → MC/Skills queue | UUID: fdc2cf75 (ran 2026-03-01 ✅)
 - monthly-niche-fitness: 1st of month 9:30AM | isolated sonnet | scores current niches vs. alternatives, advises pivot/shift/stay | UUID: 1e2cf966
-- content-generate: Monday 7AM ET | isolated sonnet | generates 4 LinkedIn + 7 X posts → saves weekly file → uploads to Drive | UUID: 98fda582
-- content-monday-send: Monday 7:45AM ET | isolated sonnet | sends Monday LinkedIn + X to JT | UUID: (see cron list)
+- content-generate-linkedin: Monday 7:00AM ET | isolated sonnet | generates 4 LinkedIn posts → saves weekly file → uploads to Content/LinkedIn | UUID: fe984519
+- content-generate-x: Monday 7:25AM ET | isolated sonnet | generates 7 X posts → appends to weekly file → uploads to Content/X | UUID: cb8f29dd
+- content-generate (DISABLED): UUID 98fda582 — was timing out at 40+ min, replaced by above split crons
+- content-monday-send: Monday 7:55AM ET | isolated sonnet | sends Monday LinkedIn + X to JT | UUID: d4dedeb1 (bumped from 7:45AM)
 - content-reminder: Tue–Sat 8AM ET | isolated sonnet | sends that day's post (LinkedIn on Wed/Fri) | UUID: 5e66b4ee
 - content-sunday: Sunday 9AM ET | isolated sonnet | sends Sun LinkedIn + X + engagement check | UUID: d918122d
 - t3-cold-hook: Tue/Thu 6AM ET | isolated sonnet | reads T3 shortlists → drafts 8-10 cold hook DMs → uploads batch to Drive (Consulting/Clients/T3 Batches/Outreach/LinkedIn) → Telegrams JT with Drive link for review | UUID: 3ed01a8a-c3fb-4673-9ae0-993611e94c5a | **JT always sends — agent drafts only**
@@ -170,7 +172,7 @@
 - State: `~/.openclaw/workspace/spanish/state.json`
 - Curriculum: `~/.openclaw/workspace/spanish/curriculum.md` (4 weeks mapped)
 - Lessons: `spanish/lessons/YYYY-MM-DD.md` | Evaluations: `spanish/evaluations/`
-- Crons: spanish-lesson (Mon–Sat 8PM ET, UUID: babd905a) | spanish-eval (Sun 8PM ET, UUID: 012216b9)
+- Crons: spanish-lesson (Mon–Sat **8:05PM ET**, UUID: babd905a — staggered from 8PM 2026-03-12 to avoid crypto-evening rate-limit collision) | spanish-eval (Sun 8PM ET, UUID: 012216b9)
 - Accountability: 10PM heartbeat checks state.json → nudges if lesson not complete
 - Voice: JT sends voice message → Groq whisper-large-v3 transcription → Claude evaluates (max 2 corrections per response)
 - Real-world challenges unlock weekly (Week 1: say buenos días to someone)

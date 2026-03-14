@@ -1,0 +1,54 @@
+{
+  "date": "2026-03-14",
+  "captured_at": "2026-03-14T06:00:03.194521+00:00",
+  "total_usd": 0.0,
+  "sessions": {
+    "agent:main:main": {
+      "label": "Main Session",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 3,
+      "output_tokens": 13,
+      "cache_read": 0,
+      "cache_write": 48383,
+      "total_tokens": 48386,
+      "cost_usd": 0.0,
+      "updated_at": 1773464516118
+    },
+    "agent:main:cron:651fa1da-84d7-44b3-8e10-6a46e1c05cf6": {
+      "label": "Cron: outreach-pipeline",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 10,
+      "output_tokens": 3719,
+      "cache_read": 234201,
+      "cache_write": 36978,
+      "total_tokens": 36979,
+      "cost_usd": 0.0,
+      "updated_at": 1773468000033
+    },
+    "agent:main:cron:651fa1da-84d7-44b3-8e10-6a46e1c05cf6:run:78f17b02-d6e2-482d-92a8-c209079035ba": {
+      "label": "Cron: outreach-pipeline",
+      "model": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "input_tokens": 10,
+      "output_tokens": 3719,
+      "cache_read": 234201,
+      "cache_write": 36978,
+      "total_tokens": 36979,
+      "cost_usd": 0.0,
+      "updated_at": 1773468000033
+    }
+  },
+  "by_model": {
+    "claude-sonnet-4-6": {
+      "sessions": 3,
+      "input_tokens": 23,
+      "output_tokens": 7451,
+      "cache_read": 468402,
+      "cache_write": 122339,
+      "cost_usd": 0.0
+    }
+  },
+  "alerts_fired": []
+}

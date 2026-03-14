@@ -85,6 +85,8 @@ Each angle has an `angle_id` in brackets — use this in `posted-log.jsonl` when
 *Format: `[date] [topic] — [why it's relevant] [source: URL]`*
 
 <!-- Appended by skills-researcher when new capability gaps are surfaced -->
+- [2026-03-13] **n8n CVSS 10.0 RCE (CVE-2025-68613)** — My entire consulting business runs on self-hosted n8n. A CVSS 10.0 RCE means a successful exploit = full server takeover, meaning client workflow data, API keys, and automation triggers are all exposed. Post angle: "The security update every self-hosted n8n user needs today — and why it matters more when client data is on the line." JT proof point: Aya's StreetEasy scraper + co-living dashboard both run through n8n. (source: https://securityonline.info/cisa-mandates-urgent-patch-for-maximum-10-0-cvss-n8n-rce-flaw/)
+- [2026-03-13] **OpenClaw v2026.3.12 — 15 security patches in one release** — Invisible Unicode characters in exec approval prompts, workspace plugin auto-load bypasses, agent scope elevation via subagents. Post angle: "Running a self-hosted AI gateway means you're also running security operations. Here's what just got patched in OpenClaw and why it matters." JT proof point: Eve runs 23+ crons, the cron delivery breaking change could silently kill them all without a `openclaw doctor --fix`. (source: https://github.com/openclaw/openclaw/releases/tag/v2026.3.12)
 
 ---
 
@@ -103,3 +105,11 @@ When generating technical X posts:
 4. Rotate through categories over time — don't cluster too many architecture posts in a row
 
 New angles to add: any time a new architectural decision is made, a non-obvious problem is solved, or JT says "I learned this the hard way."
+
+---
+
+## Consulting Positioning Angles (added 2026-03-13)
+
+- **AMS disruption → Salesforce advantage:** Traditional agency management systems built their moat on aggregating carrier data. AI agents do that now, free. Insurance agencies on Salesforce aren't being disrupted — they're positioned to win, because Salesforce is where the actual work runs (renewals, commissions, service tickets). The pitch: "Your competitor's AMS is getting replaced by AI. Your Salesforce isn't. Here's how to move fast." Angle: platforms-as-moats only hold if they own the workflow, not just the data layer. *(angle_id: consulting-ams-disruption-001)*
+
+- **n8n logistics routing for distribution:** n8n now has a documented pattern for AI-powered multi-stop route optimization (GPT + routing API). Wholesalers running own-fleet delivery — garment district, food/beverage, hardware — have this problem and don't know a $3,500 n8n implementation can solve it. No custom dev. Just integration. *(angle_id: consulting-n8n-logistics-001)*

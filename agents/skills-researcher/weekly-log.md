@@ -109,3 +109,51 @@ _Week starting 2026-03-07 — reset after 2026-W10 synthesis_
 - Email + SMS + phone number access for OpenClaw agents
 - Potential use for consulting outreach automation (T3 cold hook sends)
 - Via: npm search
+
+---
+
+## 2026-03-13 — Daily Scan (Fri 11:30 AM ET)
+
+### 🔴 Critical — Pushed to Mission Control
+
+**🔴 OpenClaw v2026.3.12** — Major security release (released TODAY 2026-03-13) with 15+ GHSA patches + breaking cron change
+- Source: https://github.com/openclaw/openclaw/releases/tag/v2026.3.12
+- Key security patches (active exploits patched):
+  - GHSA-99qw-6mr3-36qr: Implicit workspace plugin auto-load disabled — cloned repos can no longer auto-execute plugin code without explicit trust
+  - GHSA-pcqg-f7rg-xfvv: Exec approval prompt injection via invisible Unicode characters — zero-width spoofing fixed
+  - GHSA-9r3v-37xh-2cf6 + GHSA-f8r2-vg7x-gh8m: Exec allowlist Unicode trick bypass + overmatch fix
+  - GHSA-57jw-9722-6rf2 + GHSA-jvqh-rfmh-jh27: Exec approval binding gaps for inline loaders and shell payloads
+  - GHSA-vmhq-cqm9-6p7q: browser.request admin profile persistence bypass
+  - GHSA-2rqg-gjgv-84jm: Agent workspace boundary bypass via spawned-run lineage fields
+  - GHSA-wcxr-59v9-rxr8: session_status sandbox subagent inspection/write bypass
+  - GHSA-r7vr-gr74-94p8: /config and /debug accessible by non-owner authorized senders
+  - GHSA-rqpp-rjj8-7wv8: Shared-token WebSocket scope self-elevation
+  - GHSA-2pwv-x786-56f8 + GHSA-jv4g-m82p-2j93 + GHSA-xwx2-ppv2-wx98: Device pairing scope cap + WebSocket preauth
+  - GHSA-6rph-mmhp-h7h9: Proxy attachment 5MB size cap bypass
+  - GHSA-jf5v-pqgw-gm5m: GIT_EXEC_PATH steering via inherited env
+  - (v2026.3.11) GHSA-5wcw-8jjv-m286: WebSocket cross-site hijacking → operator.admin in trusted-proxy mode
+- **BREAKING CHANGE**: Cron delivery tightened — cron jobs can no longer notify through ad hoc agent sends or fallback main-session summaries. Run `openclaw doctor --fix` to migrate legacy cron storage.
+- New tools: `sessions_yield` (orchestrators can end turn + carry follow-up payload), `/fast` toggle (Anthropic service_tier + GPT-5.4)
+- Also: Control UI dashboard v2 (modular views, slash commands, search, pinned messages), Apple Reminders NSRemindersUsageDescription fix
+- MC Task pushed ✅ | Content angle → technical-angles.md ✅
+
+**🔴 n8n CVE-2025-68613 — CVSS 10.0 RCE** — CISA emergency patch mandate for self-hosted n8n
+- Source: https://securityonline.info/cisa-mandates-urgent-patch-for-maximum-10-0-cvss-n8n-rce-flaw/ | Via: X/@the_yellow_fall (9❤️ 984👁 1d)
+- CVE-2025-68613: Remote code execution flaw in n8n workflow automation, CVSS 10.0 (maximum severity)
+- CISA mandate: Update to n8n v1.122.0 immediately to prevent server takeover
+- Directly affects: Aya client workflows running on self-hosted n8n, all consulting builds
+- Action: Update n8n to v1.122.0 immediately
+- MC Task pushed ✅ | Content angle → technical-angles.md ✅
+
+### 🟡/🟢 — KB Only
+
+- **OpenClaw sessions_yield** — New orchestrator tool: end current turn, skip queued tools, carry follow-up payload to next turn → KB
+- **OpenClaw /fast toggle** — Maps to Anthropic service_tier (direct API key required), not OAuth — FYI only (OAuth auth means this won't apply unless JT adds a direct API key) → KB
+- **Perplexity Computer for Enterprise** — $200/mo, 19-model orchestration for enterprise workflow automation (competitor signal for consulting positioning) → KB
+- **Figma MCP expansion** — 5 new coding tool partners (Cursor, Warp, Factory, Augment Code, Firebender) → KB
+- **OKX Agent Trade Kit** — Official Kraken-competitor MCP server for trading agents, CLI for crypto → KB
+- **Synta + OpenClaw integration** — Claimed to simplify n8n workflow building via openclaw; low-engagement post (@WorkflowWhisper 24❤️) — unverified, X-only → KB flagged unvetted
+- **Claude Code "Swarms"** — Hidden multi-agent feature (HN Feb 2026, @AnthropicAI); already known signal
+
+### Cowork Plugins — No Change
+- Commit SHA: 1316b6508366108158cf08503363d4b4cbc699e5 (unchanged — last committed 2026-03-10)

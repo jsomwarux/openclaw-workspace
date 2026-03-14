@@ -27,14 +27,8 @@ _Managed by Eve. Updated during heartbeats and on request._
   - Repo: ~/projects/jtsomwaru-com (deployed via CLI, GitHub repo not yet created)
   | Added: 2026-02-24 | Completed: 2026-02-24
 
-- [ ] **Post today's content drafts — @jts_14 + @jt__crypto** — 6 total drafts ready across Google Drive. Post in order today/tonight.
-  **Steps:**
-  1. Draft 5 first — "Amodei 50% jobs" single tweet → @jts_14: https://docs.google.com/document/d/1w6C5ioIJXclXl7kqRmRUzGCvQvyY2B7YhzSWcWl7fHU/edit
-  2. Wait 30 min, then Draft 4 — "Chatbot era is over" 6-tweet thread → @jts_14: https://docs.google.com/document/d/1rmJrZycQbRv0W4-Xh5WGTqofxGZED9UvMLcBW9P4vo8/edit
-  3. Tonight: Draft 6 — "DeepSeek V4 + x402" thread → @jt__crypto: https://docs.google.com/document/d/1KfizUNZXNjnoI92dB1EldTjLE1_6wr3DJrn1U2oAGGc/edit
-  4. This week: Draft 1 (x402+Stripe) → @jt__crypto | Draft 2 (JT Somwaru Consulting founding story) → @jts_14
-  5. Hold Draft 3 (Nash Satoshi teaser) until landing page is live
-  | Updated: 2026-02-24
+- [x] **Feb 24 content drafts** — STALE, cleared 2026-03-13. Amodei/chatbot era/DeepSeek drafts are 3 weeks old and no longer timely. Content system now generates fresh weekly posts every Monday.
+  | Updated: 2026-03-13
 
 - [ ] **Vista pre-launch marketing** — 5 drafts live in Google Drive (Eve — Drafts/Vista/). Review + post when App Store approves.
   **Steps:**

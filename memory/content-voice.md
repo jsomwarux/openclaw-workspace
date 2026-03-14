@@ -49,6 +49,18 @@ Use compression to cut waste. Use depth when the goal is credibility, not virali
 
 **Friday must have an actual opinion.** Not a hot take for its own sake — a real perspective on implementation, AI in unglamorous verticals, or consulting reality. 3+ sentences of reasoning minimum.
 
+---
+
+## Hard Rules — What Never Appears in JT's Content
+
+**No unverifiable specifics.** Never invent dollar figures, contract sizes, timelines, or outcomes JT hasn't confirmed. "Deployments that cost $500K+" is a made-up claim — if JT hasn't stated the number, don't use it. Stick to specifics JT has provided (Aya: $1,500 dashboard, $1,000 scraper).
+
+**No criticism of former employers.** Never frame Spectrum Enterprise or any past employer as having done something wrong, poorly, or inefficiently — even indirectly ("I watched this happen for six years at Spectrum"). JT's background at Spectrum is a credibility asset, not a cautionary tale. Reference it positively (6 years as a BSA, cross-team coordination, enterprise operations experience) or not at all.
+
+**No fabricated personal anecdotes.** If JT hasn't told you something happened, don't write it as though it did. "I watched this happen" is only acceptable if JT confirmed the story. General industry observations ("this pattern is common in enterprise deployments") are always safe — first-person-specific invented stories are not.
+
+**No self-promotional endings.** Ending a post with "this is the gap AI implementation consultants like myself close" turns insight into a pitch. Let the content do the work. If readers want to know who wrote it, the profile is right there.
+
 ### X Schedule
 
 | Day | Format | Technical slot? |

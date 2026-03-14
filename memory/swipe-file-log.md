@@ -3,3 +3,4 @@
 2026-03-02 | Searches: 6 | Posts found: 11 | Posts pushed: 10 | Top performer: @karpathy (11,600 engagement) | Niches: AI Agents (5), x402 (2), AI Consulting (1), Job Market (2), Personal Brand (2)
 2026-03-04 | Searches: 6 | Posts found: 6 | Posts pushed: 6 | Top performer: @dtelecom (5,100 engagement) | Niches: x402, AI Agents, AI Consulting, Job Market, Personal Brand | Formats: Contrarian (3), List (1), Personal story (1), Behind-the-scenes (1)
 2026-03-06 | Searches: 6 | Posts found: 30 (top 5 per query) | Posts pushed: 7 | Top performer: @dtelecom (8,300 engagement) — x402 historical context flip
+2026-03-13 | Searches: 6 | Posts found: 12+ qualifying | Posts pushed: 6 | Format signals: 3 (Hot Take ×2, Warning/News ×2, Compressed Truth ×2) | Topic signals: 2 (Claude Code ~99K, x402 ~506) | Hot lane fired: yes — Claude Code drama (99K engagement, JT has direct angle via Eve/OpenClaw)
