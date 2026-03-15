@@ -113,3 +113,10 @@ New angles to add: any time a new architectural decision is made, a non-obvious 
 - **AMS disruption → Salesforce advantage:** Traditional agency management systems built their moat on aggregating carrier data. AI agents do that now, free. Insurance agencies on Salesforce aren't being disrupted — they're positioned to win, because Salesforce is where the actual work runs (renewals, commissions, service tickets). The pitch: "Your competitor's AMS is getting replaced by AI. Your Salesforce isn't. Here's how to move fast." Angle: platforms-as-moats only hold if they own the workflow, not just the data layer. *(angle_id: consulting-ams-disruption-001)*
 
 - **n8n logistics routing for distribution:** n8n now has a documented pattern for AI-powered multi-stop route optimization (GPT + routing API). Wholesalers running own-fleet delivery — garment district, food/beverage, hardware — have this problem and don't know a $3,500 n8n implementation can solve it. No custom dev. Just integration. *(angle_id: consulting-n8n-logistics-001)*
+
+---
+
+## Potential Angles (unbuilt)
+_Emerging conversations JT hasn't posted about yet but has the credibility to. Source: skills-researcher daily scan._
+
+- [2026-03-14] **n8n CVE-2025-68613 RCE (CVSS 9.9) — security-aware consulting angle:** CISA just flagged an actively exploited RCE in n8n. As an n8n consultant, JT can post: "I build n8n automation for businesses. This week CISA added CVE-2025-68613 to its known-exploited list — CVSS 9.9, server takeover via expression injection. Affects everything before v1.120.4. If you're running self-hosted n8n, check your version now." Builds credibility as a security-conscious consultant vs. builders who just ship and forget. *(source: bleepingcomputer.com / CISA KEV)*

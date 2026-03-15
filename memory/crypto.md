@@ -3,6 +3,15 @@
 
 ---
 
+## Mar 14, 2026 — 2PM Heartbeat
+- **BTC:** ~$70,684 | -0.8% 24h | Holding while equities sell off (stocks worst week since Nov)
+- **Options expiry today:** $3.2B in BTC options settling March 14 — near-term volatility possible
+- **Bullish signal:** US spot BTC ETFs hit first 5-day inflow streak of 2026
+- **Macro:** Oil >$100, Dow -700pts, Fed rate cut bets falling — crypto/stock decoupling continuing
+- No alert (move <±15%)
+
+---
+
 ## 2026-03-13 — 6PM Heartbeat
 
 **BTC:** ~$72,700 (+4.1% from yesterday's ~$69,848) — clean break above $71,850 resistance. New recent high.

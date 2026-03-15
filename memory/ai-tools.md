@@ -2,6 +2,20 @@
 
 ---
 
+## Mar 14, 2026 — 10AM Heartbeat
+
+### Notable AI Tools & MCP Releases (week of Mar 10-14)
+
+**Cloudflare Code Mode MCP** — Two tools (search + execute) give agents coverage of Cloudflare's entire API in ~1,000 tokens. New endpoints auto-discovered without new tool definitions or MCP server updates. Relevant for consulting builds using Cloudflare Browser Rendering — could wire dynamic API access directly into research-agent. Evaluate when next Cloudflare-adjacent build is queued. (blog.cloudflare.com, this week)
+
+**Datadog MCP Server (launched)** — Purpose-built MCP for AI agents; real-time access to observability data (metrics, logs, traces) for debugging and agentic workflows without context switching. Relevant for enterprise demo layer — could show AI agents doing infrastructure observability in JT Somwaru Consulting demos. Monitor. (businessinsider.com, 5 days ago)
+
+**Code Kit v5.0** — Released for Claude Code's "Agent Teams" feature. Multi-agent coordination inside Claude Code. Watch for agent-team patterns that could inform Eve's overnight agent orchestration.
+
+**260+ AI agent tools curated (Claude ecosystem)** — Reddit r/ClaudeAI thread compiling MCP servers, Claude Code tools, Computer Use integrations. MCP server with 300+ local tools (Playwright, DB, notifications, docs) confirmed. Good reference for next skills-researcher-weekly review.
+
+---
+
 ## Mar 10, 2026 — 6PM Heartbeat
 
 ### Notable AI News
