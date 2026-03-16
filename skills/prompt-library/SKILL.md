@@ -14,6 +14,25 @@ When spawning a sub-agent, check here first. Find the closest template, adapt th
 After the sub-agent completes: did the output match expectations? If not, note what the prompt missed.
 If a new prompt pattern works well: add it here.
 
+## Anthropic Prompt Structure Checklist
+Run every new prompt through this before committing it to a cron or agent.
+Minimum required: ✅ 1, 4, 7, 9. Strongly recommended: also 2, 5.
+
+| # | Element | What it means | Required? |
+|---|---|---|---|
+| 1 | **Task Context** | Define the role and overall task ("You are Eve, AI Chief of Staff for JT Somwaru...") | ✅ Always |
+| 2 | **Tone Context** | Set communication style ("Be direct. No filler. Senior consultant level.") | ✅ Recommended |
+| 3 | **Background Data** | Attach relevant files or supporting context (ICP dossier, pipeline.md, shortlist) | When available |
+| 4 | **Detailed Rules** | Constraints, hard limits, what NOT to do | ✅ Always |
+| 5 | **Examples** | Desired output samples using `<example>` tags — highest-leverage consistency lever | ✅ For new template types |
+| 6 | **Conversation History** | Reference prior runs or state files for continuity | When running multi-session |
+| 7 | **Immediate Task** | Specific action with clear verbs ("Research X. Write to Y. Alert JT if Z.") | ✅ Always |
+| 8 | **Deep Thinking** | Trigger reasoning on complex decisions ("Think carefully before deciding...") | High-stakes only |
+| 9 | **Output Formatting** | Specify structure: bullets, tables, prose, exact sections, file path | ✅ Always |
+| 10 | **Prefilled Response** | Seed the opening line to lock format (less useful for file-writing agents) | Optional |
+
+**Quick audit:** Does the prompt have 1, 4, 7, 9? If any are missing, add before deploying.
+
 ---
 
 ## Template 1: Prospect Research (consulting pipeline)
@@ -176,6 +195,51 @@ Read [KEY_FILE] carefully for styling/patterns to match.
 
 ---
 
+## Template 6: App / Build Brief (Discovery → Scoped Spec)
+
+**Use when:** Starting any new app, tool, or demo build — before writing any code
+**Quality bar:** Output should be a scoped spec JT can hand to a coding agent without ambiguity
+
+```
+You are JT Somwaru's Technical Co-Founder. Your job is to help define a real, buildable product — not a demo, not a mockup.
+
+## The Idea
+[Describe the product in plain language — what it does, who it's for, what problem it solves]
+
+## Seriousness Level
+[Choose one: "exploring an idea" / "building for myself to use" / "sharing with others" / "launching publicly"]
+This determines how much polish, documentation, and v2 planning is required.
+
+## Phase 1: Discovery (run this before writing any spec)
+1. Ask: what does this actually need to do vs. what was asked for? (don't just execute the literal request)
+2. Separate "must have in v1" from "nice to have later" — create two lists
+3. If the scope is too large, suggest a smarter starting point
+4. Challenge any assumptions that don't make sense
+5. Identify accounts, services, or decisions JT needs to make before building
+
+## Phase 2: Spec Output
+After discovery, produce:
+1. **v1 scope** — what we're building (no more than 3 core features)
+2. **Technical approach** — plain language, not jargon
+3. **Complexity estimate** — simple / medium / ambitious
+4. **Dependencies** — what JT needs to set up or decide first
+5. **Rough outline** — what the finished product looks like
+
+## Rules
+- This is real. Not a mockup. Not a placeholder. A working product.
+- If you hit a decision point, present 2-3 options with trade-offs — don't pick for JT
+- Be honest about limitations and timeline — adjust expectations > disappoint
+- "Must have" and "add later" are hard categories, not suggestions
+- Output must be concrete enough for a coding agent to build from without asking questions
+
+Output to: ~/.openclaw/workspace/plans/[project-slug]-spec-[DATE].md
+```
+
+**Last used:** never (new template 2026-03-15)
+**Output quality note:** Discovery phase is the highest-leverage step. Do NOT skip it and jump to spec — that's how scope creep starts.
+
+---
+
 ## Anti-Patterns (what makes prompts fail)
 
 | Anti-pattern | Why it fails | Fix |
@@ -186,6 +250,9 @@ Read [KEY_FILE] carefully for styling/patterns to match.
 | No constraints on what NOT to do | Agent makes unexpected changes | Always include explicit "do NOT touch" list |
 | Vague persona | Generic output | Be specific: "JT is an AI consultant, not a tech blogger" |
 | Missing context on audience | Wrong tone/depth | Say exactly who will read this and what they need to conclude |
+| No tone context | Output sounds generic/corporate | Element 2: set style explicitly ("direct, no filler, senior consultant") |
+| No `<example>` tags | Inconsistent format across runs | Element 5: show one ideal output sample — highest-leverage fix for format variance |
+| No output format specified | Agent invents structure | Element 9: always specify exact sections, file path, and format type |
 
 ---
 

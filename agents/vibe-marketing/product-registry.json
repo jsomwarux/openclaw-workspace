@@ -68,7 +68,7 @@
       "platforms": ["x", "tiktok", "reddit", "linkedin"],
       "accounts": {
         "x": "@jts_14",
-        "tiktok": "@jts_14 (JT's personal account — build-in-public energy fits personal brand)",
+        "tiktok": "@jts_14 (JT's personal account — faceless slideshows and UGC reactions, no on-camera content)",
         "reddit": "JT's personal Reddit account or movie discussion account — see Reddit Account Setup in AGENT.md.",
         "linkedin": "JT's personal LinkedIn — linkedin.com/in/jon-trevor-somwaru"
       },
@@ -93,9 +93,9 @@
         },
         "tiktok": {
           "posts_per_week": 2,
-          "formats": ["movie review in 30 seconds", "I built this app", "rate this film"],
-          "hashtags": ["#movies", "#moviereview", "#indiedev", "#AppStore", "#buildinpublic"],
-          "style": "Casual, quick. Either a genuine movie take that ends with 'I track all my ratings in Vista' or a solo dev build-in-public moment. Authentic over polished."
+          "formats": ["faceless slideshow — app screenshots + text overlays", "ugc reaction — IMDb/RT score gap reveal"],
+          "hashtags": ["#movies", "#moviereview", "#filmtok", "#AppStore", "#letterboxd"],
+          "style": "Faceless. Cinematic dark aesthetic, film-grain texture, muted warm tones. Text overlays and app screenshots only — no on-camera content ever."
         },
         "reddit": {
           "posts_per_week": 1,

@@ -115,6 +115,41 @@
 - **To install when ready:** `openclaw skill install jackfriks/post-bridge-social-manager` then connect PostBridge account. Eve handles posting from queue.jsonl automatically.
 - **Potential value:** Eliminates manual posting entirely. Enables daily cadence without JT's time.
 
+### Nano Banana 2 (NB2) — AI Image Generation for Vibe Marketing + Guyana Demos
+- **What:** `google/gemini-3.1-flash-image-preview` on OpenRouter ($0.50/$3 per M tokens). Key capability: **visual grounding** — searches the web for real images of specific locations/species before generating, meaning it can accurately depict Georgetown landmarks, real construction sites, actual building types. Also: extreme aspect ratios (9:16 for TikTok), 512px batch-to-upscale workflow to keep cost ≈ NB1. 95% of Pro quality at fraction of the cost.
+- **Why deferred (vibe marketing):** Currently vibe marketing outputs slide *text copy* only — JT assembles visuals manually. NB2 could generate the actual TikTok slide images directly from the content spec (Nash Satoshi: dark/navy data-forward, Vista: cinematic dark + film grain). Not worth automating until TikTok accounts are warmed and posting is consistent.
+- **Why deferred (Guyana):** Guyana contact hasn't confirmed intro yet. If/when demo builds start, NB2 is the right tool for visual assets — Georgetown church, drainage infrastructure, government building imagery — without stock photo licensing.
+- **Trigger A (vibe):** Nash Satoshi TikTok warmed + 4 weeks consistent manual posting + JT wants to remove manual image assembly. Add NB2 image generation step to vibe-marketing-generate cron.
+- **Trigger B (Guyana):** Contact confirms intro to local firm → demo build phase → use NB2 for visual assets in demos.
+- **Model route when ready:** `openrouter/google/gemini-3.1-flash-image-preview` (already in TOOLS.md)
+- **Logged:** 2026-03-15
+
+### Virlo API — TikTok Trend Intelligence for Vibe Marketing
+- **What:** Virlo API (api.virlo.ai/v1) provides real TikTok trend data before posting: trending topics by niche (Orbit endpoint), outlier creator analysis (small accounts with outsized views = proven format signals), hashtag performance (avg views, avg comments), top videos by category. Replaces guessing with actual this-week signal.
+- **Why deferred:** Nash Satoshi TikTok account doesn't exist yet. Not posting consistently. Wiring trend intelligence into an automation that isn't running is complexity with no return.
+- **Trigger:** Nash Satoshi TikTok account is warmed up AND JT has posted consistently for 4+ weeks. At that point: add a Virlo pre-analysis step to the vibe-marketing-generate cron — run Orbit for niche keywords, pull top videos, update a TRENDING-NOW.md file, then generate content based on that data instead of Claude's general knowledge.
+- **Logged:** 2026-03-15
+- **Integration note:** Use PostBridge (already chosen) for posting — NOT Postiz. Postiz has no OpenClaw integration. PostBridge has a native OpenClaw skill (`jackfriks/post-bridge-social-manager`). Virlo handles the *what to post* signal; PostBridge handles the *posting*.
+- **Potential value:** Vibe marketing cron posts what's trending in crypto/movie niche *this week* instead of evergreen guesses. Higher save/share rate = algorithm push = organic reach without paid spend.
+
+### Remotion — React-Based Video Generation for TikTok/Demos
+- **What:** Remotion turns React components into exported MP4 video files. Claude Code scaffolds the scene components (SVG visuals, data tables, animated slides); you tweak timing and copy; export runs locally. First reel ~1 hour; by the third reuse of scene architecture it's under 10 minutes. $0 production cost beyond Claude subscription.
+- **Why deferred:** Nash Satoshi TikTok account isn't warmed up yet. Building the Remotion pipeline before the posting infrastructure exists is backwards.
+- **Trigger:** Nash Satoshi TikTok is warmed up AND JT has posted manually for 2+ weeks. At that point, replace the "JT records himself" script mode for Nash Satoshi TikTok with Remotion-generated animated slideshows that don't require camera time.
+- **Logged:** 2026-03-15
+- **Two use cases (activate separately):**
+  - **Nash Satoshi TikTok:** Faceless animated slides — dark background, ranking table movements, game theory visualizations. Maps directly to the branded palette already defined in the product registry. No camera, 10 min/reel at steady state.
+  - **jtsomwaru.com consulting demos:** Animated workflow demos for construction job tracker and PM maintenance triage — more compelling than static screenshots in outreach and on the site. Build after Nash Satoshi Remotion pipeline is working.
+- **First action when trigger is met:** `npx create-video@latest` in a new project dir. Ask Claude Code to scaffold a 6-slide Nash Satoshi ranking reveal component — Hook slide → problem → model approach → ranking table → movement highlight → CTA. Reuse the component architecture for every subsequent week; only the data changes.
+- **Potential value:** Removes camera requirement from Nash Satoshi TikTok entirely. Consulting demo videos that would cost $2–5K/month from a design agency, built in hours.
+
+### AppKittie — App Rebuild Opportunity Scanner
+- **What:** appkittie.com filters App Store apps by revenue (e.g. $50K+/mo) and rating. Sort low-to-high on rating to find high-revenue, poorly-rated apps worth rebuilding. Strategy: "find demand, then build a better version."
+- **Why deferred:** Nash Satoshi and Glow Index are already built and stalled. Bottleneck is monetization, not idea generation. Adding another app idea stream creates distraction, not progress. Passive income strategist cron already covers this angle (and more) every Sunday.
+- **Trigger:** Nash Satoshi OR Glow Index is actively generating revenue (any amount, consistently for 4+ weeks). At that point, use AppKittie for one manual research session to identify the next passive income build — don't automate it, just check it once.
+- **Logged:** 2026-03-15
+- **Potential value:** Validated demand before building. Reduces passive income app failure rate. Worth a 30-minute manual review at the right time.
+
 ---
 
 ## Graduated (moved from "not now" to active)

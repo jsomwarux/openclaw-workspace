@@ -68,10 +68,12 @@ Use compression to cut waste. Use depth when the goal is credibility, not virali
 | Monday | Short punchy take (1–2 tweets) | No — keep as consulting/niche |
 | Tuesday | Observation or pattern (1–3 tweets) | ✅ ~50% technical |
 | Wednesday | Mini case study or specific result (2–4 tweets) | No — keep as consulting proof |
-| Thursday | Hot take or contrarian opinion (1–2 tweets) | ✅ ~50% technical |
+| Thursday | Hot take or contrarian opinion — **must include a debate hook** (1–2 tweets) | ✅ ~50% technical |
 | Friday | Tactical insight — shorter than LinkedIn version (2–3 tweets) | No — keep as consulting |
 | Saturday | Build-in-public or tool/stack note (1–3 tweets) | ✅ ~75% technical |
 | Sunday | Behind the build — compressed version (2–3 tweets) | Occasionally |
+
+**Debate hook rule (Thursday X post — non-negotiable):** Thursday's post must contain a statement that is defensible but designed to attract disagreement from someone in the AI/consulting/automation space. Not inflammatory. Specifically controversial within the niche — a claim a PM owner, an Agentforce dev, or an AI skeptic would instinctively push back on. Wrong: "AI is transforming business." Right: "Most n8n workflows I've seen in the wild are just duct tape with a webhook — they break the first time the source API changes." The debate is what drives comments. Comments drive distribution. This is the post that should get someone to reply.
 
 **Target: ~2 technical X posts per week** (1 on Tuesday or Thursday, 1 on Saturday). Not every week needs to hit this — if there's a stronger consulting angle, use that instead. Technical content shouldn't crowd out consulting-signal posts.
 
@@ -183,6 +185,8 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 | Vista (iOS, App Store) | AI-powered movie rating app. Builds multi-dimensional taste profiles, generates personalized performer rankings. Live on App Store. Built entirely through AI-directed development. |
 | Nash Satoshi | 4-LLM ensemble for game theory crypto rankings. Unusual architecture — not one model, four simultaneous scores synthesized. |
 | H.C. Oswald copilot (in progress) | Product Knowledge Copilot for a 103-year-old Bronx HVAC supplier. RAG over Shopify catalog. English + Spanish. Surfaces 100 years of parts knowledge via Intercom. Outreach sent. |
+| PM maintenance triage template (n8n) | Reusable T2 outreach template for NYC property managers (AppFolio/Buildium). Tenant submits request → Claude classifies urgency + category → routes to vendor → auto-notifies tenant → logs to Sheets → escalates no-shows. Configurable per prospect in ~2 hours. |
+| Construction job progress tracker (n8n) | Reusable T2 template for NYC GCs/contractors (ServiceTitan/Jobber users). Foreman sends one WhatsApp message → Claude classifies on-track/at-risk/blocked → client gets auto-update → job logged to Sheets → owner alerted only on blockers. Kills 30–60 min/day of status calls. Configurable per prospect in ~2 hours. |
 
 ### Background Proof (6 years of real enterprise implementation)
 - BSA at Spectrum Enterprise 2019–2025: watched Salesforce implementations at the $500K–$2M scale get adopted wrong
@@ -197,6 +201,8 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 - "Vista is live on the App Store. It was built entirely through AI-directed development without me writing a line of code."
 - "I built 5 Agentforce agents in 3 months. The thing that breaks every one is the same."
 - "StreetEasy manual search: 4–6 hours every 2 weeks. After automation: zero. $1,000 project."
+- "NYC property managers spend 40% of their day routing maintenance requests. I built the template that automates the whole thing — intake to vendor dispatch to tenant update to no-show escalation."
+- "NYC contractors spend 30–60 min/day calling foremen for status updates. Foreman sends one WhatsApp message. Client gets a professional update. Owner gets an alert only when something's actually blocked."
 
 ---
 

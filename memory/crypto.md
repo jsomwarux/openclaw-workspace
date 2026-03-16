@@ -3,6 +3,15 @@
 
 ---
 
+## Mar 15, 2026 — 2PM Heartbeat
+- **BTC:** ~$70,982–$71K | Holding above $70K support, range-bound $65K–$73.3K
+- **Whale signal:** BTC whale activity hit a 6-year peak — large holders accumulating near $71K while fear gauge sits at 15 (Extreme Fear). Historically a bullish contrarian signal.
+- **ETF tailwind:** ETF inflows returning; next technical target $74K on a decisive break above $73.3K resistance
+- **JT portfolio:** Range-bound is neutral. Whale accumulation at current levels = bullish medium-term. x402 forward bet: no change.
+- No alert (no ±15% move)
+
+---
+
 ## Mar 14, 2026 — 2PM Heartbeat
 - **BTC:** ~$70,684 | -0.8% 24h | Holding while equities sell off (stocks worst week since Nov)
 - **Options expiry today:** $3.2B in BTC options settling March 14 — near-term volatility possible

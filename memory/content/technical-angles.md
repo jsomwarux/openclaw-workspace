@@ -90,9 +90,22 @@ Each angle has an `angle_id` in brackets — use this in `posted-log.jsonl` when
 
 ---
 
+- **[prompt-structure-10-elements]:** **Why your AI agents give inconsistent output:** Most agent prompts have Task Context and an immediate task — and skip everything in between. Anthropic's documented structure has 10 elements: Task Context, Tone Context, Background Data, Detailed Rules, Examples (highest leverage — `<example>` tags force format consistency across runs), Conversation History, Immediate Task, Deep Thinking trigger, Output Formatting, Prefilled Response seed. The two most skipped are Tone Context (so agents write generically) and `<example>` tags (so output format drifts run to run). JT proof point: every cron Eve runs uses this checklist before deploying. The ones that didn't before had the highest rewrite rate.
+
+- **[model-routing-nb2-flash-image]:** **The model routing decision most devs are sleeping on right now:** Google's Nano Banana 2 (`gemini-3.1-flash-image-preview`) delivers ~95% of Pro image quality at a fraction of the cost. It adds visual grounding — the model searches the web for real images of a specific location or species before generating, so it depicts a real Georgetown church or a real machaon butterfly accurately instead of making something up. Available on OpenRouter today at $0.50/$3 per M tokens. Cost tip: generate at 512px, upscale after — keeps cost close to the original Flash model. Only step up to Pro when you've actually hit the wall on a complex multi-layered prompt, not as a default.
+
+- **[build-brief-discovery-first]:** **The phase you always skip is the one that matters most.** Every bad build starts with jumping straight to code. The right sequence: (1) ask what's actually needed vs. what was literally asked for, (2) separate must-have-in-v1 from nice-to-have-later into hard lists, (3) if scope is too big, suggest a smarter starting point before writing a single line. JT proof point: Eve's overnight agent now generates a mandatory handoff doc on every code build — what was built, how to maintain it, and 3 concrete v2 ideas. The handoff doc that nobody writes is why every tool eventually becomes a black box that only one person understands.
+
+- **[prompt-engineering-10-elements]:** **The 10-element prompt structure Anthropic uses internally:** Task Context → Tone Context → Background Data → Detailed Rules → Examples (`<example>` tags) → Conversation History → Immediate Task → Deep Thinking trigger → Output Formatting → Prefilled Response. Most prompts only hit 3-4 of these. The biggest leverage points are #5 (examples eliminate format variance better than any instruction) and #9 (explicit output format — if you don't specify it, the model invents it). JT proof point: applied this audit to Eve's entire cron/agent prompt library — found every template was missing tone context and example tags. Fixed forward with a deploy checklist. Applied, not theoretical.
+
+- **[tool-design-and-refine]:** **UI design decisions without a designer:** The design-and-refine Claude Code plugin generates 5 real working variations of any component — not mockups, actual code in your framework. It reads your Tailwind config and design tokens first, so every variation is already in your palette. You give Figma-style feedback on each (click any element, leave a comment), it synthesizes a refined version. Ends with a `DESIGN_PLAN.md` and cleans up all temp files. JT proof point: jtsomwaru.com was built solo with zero designer involvement. This is the workflow that makes that viable at quality. Cost: $0 — it's a free Claude Code plugin from the marketplace.
+
+- **[build-remotion-react-video]:** **React components as video production:** Remotion turns React components into exported video files. Each scene is a component — Claude Code scaffolds it, you adjust timing and copy, export as MP4. First reel takes ~1 hour; by the third you're under 10 minutes because you're reusing the scene architecture. JT proof point: Nash Satoshi's data-forward TikTok aesthetic (dark background, ranking tables, game theory visualizations) is exactly what Remotion generates — no camera required. The production cost: $0 besides the Claude subscription. What a design agency charges for this: $2–5K/month.
+
 ## Update Log
 - 2026-03-11: Initial bank created from 6 months of Eve operations + JT's consulting work
 - 2026-03-11: angle_id markers added to all entries for rotation tracking
+- 2026-03-15: Added build-remotion-react-video angle (Nash Satoshi TikTok + consulting demos)
 
 ---
 

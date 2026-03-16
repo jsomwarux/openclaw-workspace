@@ -23,6 +23,10 @@ Status: active
 
 *(No rules yet — rules accumulate from JT's feedback after each overnight run)*
 
+[2026-03-15] Observed: Overnight cron (be59a068) fired twice on the same calendar day (11:13 AM and 11:45 AM) after gateway recovery from 13h outage. Both runs are valid recovery invocations triggered by the scheduler catching up missed 3 AM slot. Second run found no new work (everything already processed 32 min prior).
+Rule: At the start of each overnight run, check if a log already exists for today's date (`agents/overnight/logs/YYYY-MM-DD-log.md`). If yes: skip Steps 2–5 (task execution + portfolio update already done), write a 1-line addendum to the existing log noting the duplicate invocation + timestamp, add training log entry, then stop. This prevents double-spend on sub-agents and duplicate MC task pushes from recovery-triggered duplicate runs.
+Status: active
+
 ---
 
 ## Operational Rules (Eve-derived from film reviews)

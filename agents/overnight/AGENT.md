@@ -62,6 +62,9 @@ c2. **Code build gate (jtsomwaru-com only):** If the task involves code changes 
    - If build **passes** → commit and push as normal
    - If build **fails** → do NOT commit. Log the error, mark the task as failed in the overnight log, push a 🌙 Review MC task with the error output. Move to the next task.
    - This gate applies to any sub-agent that touches jtsomwaru-com code — inject it into the sub-agent prompt: "After all changes, run `npm run build` from the project root. Only commit if the build exits 0. If it fails, write the error to the log and stop."
+c3. **Code build handoff (all code builds):** For any code build that completes successfully, the sub-agent must also produce:
+   - `[project-slug]-handoff.md` in the project root with: (1) what was built, (2) how to use/maintain it, (3) what to build in v2. This file is for JT — plain language, no jargon.
+   - Inject into every code build sub-agent prompt: "When the build passes, write [project-slug]-handoff.md in the project root. Sections: ## What Was Built (1 paragraph), ## How to Use It (step-by-step), ## How to Maintain It (what breaks and how to fix it), ## v2 Ideas (3 concrete next features, prioritized)."
 d. **Write output** to the appropriate path:
    - Drafts → `~/.openclaw/workspace/memory/drafts/[task-slug]-[date].md`
    - Research → relevant project folder (e.g., `~/projects/jt-consulting-pipeline/clients/[slug]/research.md`)

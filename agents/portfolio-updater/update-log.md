@@ -55,3 +55,13 @@
 - Skills grid updated: no
 - Vercel deploy triggered: no
 - Queue housekeeping: marked 3 stale unscored entries as scored/processed
+
+## 2026-03-15 (Overnight Recovery Run — fired 11:13 AM, gateway down overnight)
+- Items in queue: 8 | Orphaned pending_build: 2 (n8n-insurance-claims, n8n-lead-qualification) — resolved (both live on site under ai-insurance-claims-triage / ai-lead-qualification, added 2026-03-06)
+- Auto-approved: none
+- Flagged to JT: none
+- Skipped: none
+- Demand reorder: no (lastReorderDate 2026-03-10, 5 days ago — under 7-day threshold)
+- Skills grid updated: no
+- Vercel deploy triggered: no
+- Queue housekeeping: 2 stale pending_build entries marked resolved

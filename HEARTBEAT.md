@@ -40,6 +40,10 @@ Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Nic
    - Write one concrete fix → appropriate file (AGENTS.md mistake rule, TOOLS.md path update, feedback.md rule, skill SKILL.md update)
    - Append one line to `memory/training/training-log.md`: `[DATE 10AM] Film: [what was reviewed] → Fix: [what was updated]`
    - If nothing to fix: note "Clear" and move on — don't skip the step
+4a. **10AM only — Spanish lesson delivery check:**
+   Run: `openclaw cron runs --id babd905a-1098-49dd-8700-772fef14f817 --limit 1`
+   If last run entry has `deliveryError` or `deliveryStatus` != "delivered" → resend lesson from `spanish/lessons/YYYY-MM-DD.md` (use yesterday's date) to JT via Telegram immediately.
+   State.json only tracks execution completion, not delivery. This is the only reliable delivery check.
 5. **10PM only — Spanish accountability check:**
    Read `~/.openclaw/workspace/spanish/state.json`.
    If `last_lesson_date` == today AND `last_lesson_complete` == false:

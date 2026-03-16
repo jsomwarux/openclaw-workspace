@@ -24,6 +24,37 @@ Also note: `last_linkedin_month` — if it matches the current YYYY-MM, skip Lin
 
 ---
 
+## Step 0b: Monthly Angles Pass (1st Monday of each month only)
+
+Check `state.json` → `last_angles_month`. If it matches the current YYYY-MM, **skip this step** — angles are already set for the month.
+
+If NOT set this month:
+1. For each active product, define **5 angles** — distinct attack angles for the product's content this month.
+   Each angle must be:
+   - Unique: does not overlap with the others
+   - Specific: tied to the product's proof points, not generic
+   - One of: counterintuitive, "you're doing it wrong," myth vs. reality, hidden cost, contrarian claim, or methodology reveal
+   
+   Angle output format (write to `agents/vibe-marketing/monthly-angles-[YYYY-MM].md`):
+   ```
+   # Monthly Angles — [Product Name] — [YYYY-MM]
+   
+   ## Angle 1: [title]
+   Core insight (≤ 80 words): [what makes this angle non-obvious]
+   Debate hook (1 sentence, designed to spark comments): [controversial but defensible claim]
+   Platforms this angle fits best: [x/tiktok/reddit]
+   
+   [Repeat for angles 2–5]
+   ```
+
+2. Update `state.json` → `last_angles_month` to current YYYY-MM.
+
+**On all subsequent Mondays this month:** Step 1 reads the current `monthly-angles-[YYYY-MM].md` and assigns one unused angle to this week's batch before generating. Mark the assigned angle as `used: true` in the file after generation.
+
+This ensures 4+ weeks of posts cover 4+ different angles rather than converging on the same themes.
+
+---
+
 ## Step 1: Load context
 
 1. Read `~/.openclaw/workspace/agents/vibe-marketing/product-registry.json`
@@ -39,9 +70,14 @@ Also note: `last_linkedin_month` — if it matches the current YYYY-MM, skip Lin
 
 4. Read `~/.openclaw/workspace/agents/vibe-marketing/performance-log.jsonl`
    - Load last 4 weeks of entries
-   - Identify: which themes/formats scored "good" or "great" per product
-   - Use this to bias generation toward what's worked — more of those formats, fewer of what flopped
+   - Identify: which format_type + hook_style combinations scored "good" or "great" per product
+   - Use this to bias generation toward what's worked — more of those format combos, fewer of what flopped
    - If file is empty or fewer than 4 entries: generate based on themes in registry, no bias applied yet
+
+4a. Read `~/.openclaw/workspace/agents/vibe-marketing/trending-now.md`
+   - Check last updated date — if from a prior week, content is stale (step 5 will overwrite it)
+   - If from this week: use the angles listed to inform content direction before running searches
+   - This file is the persistent memory of what was trending — supplements the live search in step 5
 
 5. **Niche trend research (web_search only — 2 searches max, one per active product)**
    - Before generating content, run a quick search for what's currently trending in each product's niche
@@ -50,6 +86,18 @@ Also note: `last_linkedin_month` — if it matches the current YYYY-MM, skip Lin
    - Goal: calibrate hooks to what's getting traction NOW, not generic templates
    - Rule: **research what's working, then generate** — not the other way around
    - This is cheap (web_search, no X API). Skip if budget is critically tight.
+   - **After research, overwrite `agents/vibe-marketing/trending-now.md`** with findings per product: trending topics, formats getting traction, angle to hit this week. This persists for reference — do not skip this write.
+
+6a. **Read `agents/vibe-marketing/monthly-angles-[YYYY-MM].md`** (if it exists)
+   - Find the first angle with `used: false` — this is the angle for this week's batch
+   - All three X posts this week must be rooted in this angle (different formats, same angle)
+   - TikTok and Reddit can use this angle OR the previous week's angle for continuity
+   - If the file doesn't exist yet (first run before Step 0b ran): generate freely, angles pass will run next 1st Monday
+
+6. **Read `agents/vibe-marketing/hashtag-bank.md`**
+   - Use ✅ PROVEN hashtags as the default stack per product
+   - Include 1 🔵 UNTESTED hashtag per TikTok post to build data over time
+   - After JT reports performance, update the bank (status, notes). Retire 3x-underperforming hashtags.
 
 ---
 
@@ -115,49 +163,134 @@ This is the single biggest quality lever. Hook quality determines reach. Earn th
   - Post 1: build-in-public or behind-the-scenes angle
   - Post 2: hot take or contrarian opinion in the product's niche
   - Post 3: specific result, proof point, or methodology insight
+- **Debate hook requirement (mandatory — at least 1 of 3 posts per product):** One post must contain a statement that is defensible but likely to get pushback. Not inflammatory — specifically controversial within the product's community. Examples for Nash Satoshi: "Game theory says [COIN] is positioned better than CT thinks — and the crowd will figure it out in 30 days." For Vista: "Letterboxd is a social network pretending to be a movie tracker. Vista is the opposite." The debate hook is what drives comments. Comments drive distribution.
 
 ---
 
 ### TikTok Content
 
-**Current mode (until Postiz + TikTok connected):** Generate scripts JT records himself.
-**Slideshow mode (once Postiz connected):** Generate 6 OpenAI images per post + caption + hashtags. Agent uploads drafts to Postiz automatically. JT adds music and publishes.
+**JT is never on camera for any vibe marketing content. All formats are faceless.**
 
-#### Image Generation Quality Rules (apply when in slideshow mode)
+**Per-product mode assignment:**
+
+| Product | Primary mode | Secondary mode | Never |
+|---|---|---|---|
+| Nash Satoshi | Slideshow (faceless) | UGC Reaction (faceless) | Any on-camera format |
+| Vista | Slideshow (faceless, app screenshots + text) | UGC Reaction (faceless) | Any on-camera format |
+| Glow Index | Slideshow (faceless) | UGC Reaction (faceless) | Any on-camera format |
+
+**Posting infrastructure modes:**
+- **Manual mode (now):** Generate slide copy as text → JT uploads to TikTok manually, adds sound before publishing
+- **PostBridge mode (when connected):** Agent outputs content in PostBridge-compatible format. JT adds music and publishes via PostBridge. No Postiz — PostBridge only.
+
+Slide *copy* (text content per slide) is generated in both modes — PostBridge mode adds automated scheduling on top.
+
+---
+
+#### Slideshow Format (Nash Satoshi primary — faceless, no camera required)
+
+Generate slide copy as numbered blocks. See platform-rules.md → TikTok Slideshow section for full visual rules.
+**When NB2 image generation is active (trigger met — see future-signals.md):** Use pre-written prompt templates in `agents/vibe-marketing/nb2-image-prompts.md`. Inject variable fields (hook text, ticker, score, title) from this week's content spec. Generate at 512px, 9:16 aspect ratio. One API call per slide.
+
+Output format:
+```
+SLIDE 1: [Hook — one line, big bold text, contrarian claim]
+SLIDE 2: [Body point 1 — max 2-3 short sentences]
+SLIDE 3: [Body point 2 — max 2-3 short sentences]
+SLIDE 4: [Body point 3 / insight or data reveal]
+SLIDE 5: [Payoff — what this means for the reader]
+SLIDE 6: [CTA — "Full rankings at nashsatoshi.com" + describe product screenshot placement]
+CAPTION: [pov: framing or conflict formula — no product name in body]
+HASHTAGS: [4–5 tags — 1 large 10M+, 2 mid 1-5M, 1 niche <500K]
+```
+
+**Nash Satoshi slideshow palette:** Dark/navy background, white text, minimal data-forward visuals. Same font every week. Recognizability compounds.
+
+**Image generation quality rules (Postiz mode only — skip in manual mode):**
 - Use JSON-structured prompts, NOT text prompts. Text prompts produce AI-looking output.
-- Lock the scene architecture across all 6 slides (dimensions, position, camera angle, environment). Only the style/progression changes between slides — this is what makes transformation feel real.
-- Always include an `"avoid"` array: `["CGI", "AI-generated look", "smooth plastic skin", "studio lighting", "beauty filters", "perfect symmetry"]`. This array does most of the heavy lifting.
-- Specify camera imperfections explicitly: `"device": "iPhone", "lens": "front-facing", "photo_characteristics": ["minor digital noise", "realistic smartphone dynamic range", "slight motion softness"]`
-- **Color grading trick:** Find a Pinterest reference image with the right vibe for the product. Use Gemini to extract a detailed JSON of that image's color grading, lighting, and composition. Use that JSON as the generation reference. Eliminates the grey/washed-out default look.
-- Slide 1 text overlay: 6.5% of image height font, positioned 30% from top, manual line breaks every 4–6 words. Full hook must fit on slide 1 — never split across slides.
-- 6-slide structure: Hook → Problem → Discovery → Transformation 1 → Transformation 2 → CTA
+- Lock scene architecture across all slides (dimensions, position, camera angle). Only style/data changes between slides.
+- Always include `"avoid": ["CGI", "AI-generated look", "smooth plastic skin", "studio lighting", "beauty filters", "perfect symmetry"]`
+- Specify camera imperfections: `"device": "iPhone", "photo_characteristics": ["minor digital noise", "realistic smartphone dynamic range"]`
+- Color grading: find a Pinterest reference with the right vibe → Gemini extracts JSON color profile → use as generation reference. Eliminates grey/washed-out defaults.
+- Slide 1 text: 6.5% image height font, 30% from top, line breaks every 4–6 words.
 
-#### Script Structure (current mode — JT records)
-Generate a **script** JT can follow when recording — not a finished post.
-Structure every TikTok script as:
+---
 
+#### Slideshow Format (Vista — faceless, app screenshots + text overlays)
+
+Same slide copy structure as Nash Satoshi. Vista's aesthetic: cinematic/film feel — dark background, film-grain texture, muted palette. App screenshots are the visual proof; text is the hook and insight.
+
+Output format:
 ```
-[HOOK — 0-3 seconds]
-One line. "You"-focused, not "I"-focused. Contrarian claim, surprising stat, or provocative question.
-✅ Nash Satoshi: "You're evaluating crypto completely wrong — and it's costing you."
-✅ Vista: "You've been tracking your movie ratings the wrong way."
-❌ Never: "I built a movie app..." or "I discovered something about crypto..."
-
-[BODY — 20-45 seconds]
-3-4 punchy points. Short sentences. Write how JT TALKS, not how he writes.
-Include visual directions in [brackets]: [show screen recording], [cut to results], [zoom on data point]
-Deliver real value — don't tease without paying off.
-
-[CTA — 5-10 seconds]
-Reason to follow OR clear next action. Not just "follow me."
-Tease next video, ask a question, or create a cliffhanger.
+SLIDE 1: [Hook — "You"-focused, contrarian, about movie ratings or taste — not about Vista]
+SLIDE 2: [Body point 1 — the problem with crowdsourced ratings / how most people track movies]
+SLIDE 3: [Body point 2 — what personal taste profiling reveals that crowd averages miss]
+SLIDE 4: [Payoff — the insight or specific example, e.g. "73% of films I rated above 8 share this one trait"]
+SLIDE 5: [App screenshot with one-line label — "what tracking 200+ films actually looks like"]
+SLIDE 6: [CTA — "Available on the App Store — search Vista" + screenshot of App Store listing]
+CAPTION: [pov: framing or conflict formula — no product name in body]
+HASHTAGS: [4–5 tags — mix of #movies, #filmtok, #letterboxd, niche film tags]
 ```
 
-- Scripts must be 30–60 seconds when read aloud at conversational pace
-- Include visual directions in [brackets] throughout — JT uses these when recording
-- Generate a **caption separately from the script** — never name the product in the caption body. Use pov: framing or the conflict formula (`[Another person] + [conflict/doubt] → showed them [result] → they changed their mind`). Mystery drives comments; comments drive reach.
-- List `tiktok.hashtags` from the registry as a separate field in the queue output, not in the script itself
-- Queue output for TikTok must include three separate fields: `script` (what JT says on camera), `caption` (what goes in the TikTok caption — no product name), `hashtags` (separate, 4–5 tags)
+**Vista slideshow palette:** Cinematic dark background, film-grain texture, muted warm tones. Same aesthetic every week — recognizability compounds.
+
+---
+
+#### UGC Reaction Format (both products — secondary mode, 1 of 2 weekly TikToks)
+
+UGC reaction = surface a real or representative viral take in the product's niche → put it on screen → react to it with the product's framework. No camera required for Nash Satoshi. Vista uses JT on camera reacting.
+
+**Why it works:** reaction content is inherently tribal — viewers share to defend their position. Comments explode. The algorithm treats high comment velocity as a reach signal.
+
+**Nash Satoshi UGC Reaction:**
+- Source: a real crypto take from Twitter/Reddit (or a representative "common take" labeled as such)
+- Format: show the take as text on screen → overlay commentary from game theory perspective → end with Nash Satoshi ranking as the alternative framework
+- Structure:
+  ```
+  SLIDE 1 / SCREEN OVERLAY: [the take — exact quote or "a common take: '...'"]
+  REACTION BODY (slides 2–4 or voiceover):
+    - Why this take is incomplete or wrong from a game theory lens
+    - What the model actually sees in this coin/situation
+    - The Nash Satoshi ranking as the counter-evidence
+  CTA: "Full game theory rankings at link in bio"
+  ```
+- **Hard rule:** Never mock or name the source person. Attack the idea, never the person. "This is a common take" framing is always safe.
+- Source material: generate a plausible representative take (e.g., "BTC dominance going down means altseason" or "high staking APY = good investment"). Do NOT fabricate a specific tweet with a real person's name.
+
+**Vista UGC Reaction:**
+- Source: a controversial or split IMDb/Rotten Tomatoes rating on a well-known film
+- Format: faceless slideshow — show the rating on screen as a text/screenshot overlay, react with text slides
+- Structure:
+  ```
+  SLIDE 1: [Hook — "IMDb gave [Film] a [X]/10. That's the wrong number."]
+  SLIDE 2: [The rating on screen — label clearly as IMDb/RT score]
+  SLIDE 3: [Why crowdsourced averages mislead — the specific problem with this film's score]
+  SLIDE 4: [What personal taste profiling sees that the crowd average hides]
+  SLIDE 5: [App screenshot — "track what actually matches your taste"]
+  SLIDE 6: [CTA — "Available on the App Store — search Vista"]
+  ```
+- Good films to use: films with notable critic/audience gaps, cult films with "low" IMDb scores (6.5–7.2), heavily polarizing films.
+- **Hard rule:** Never trash the film or its creators — attack the *rating system*, not the movie.
+
+**Output format for UGC reaction pieces:**
+```json
+{
+  "format": "ugc_reaction",
+  "source_take": "[the take or rating being reacted to]",
+  "source_type": "representative_take | imdb_rating | rotten_tomatoes | reddit_post",
+  "content": "[full slide copy or script]",
+  "caption": "[pov: framing]",
+  "hashtags": "[4-5 tags]"
+}
+```
+
+---
+
+**Volume per week (updated):**
+| Product | TikTok output |
+|---|---|
+| Nash Satoshi | 1 slideshow + 1 UGC reaction |
+| Vista | 1 script (JT on camera) + 1 UGC reaction |
 
 ---
 
@@ -219,7 +352,7 @@ Each product has its specific angle in the registry under `platform_config.linke
 **Two-tier account strategy:**
 
 **Tier 1 — @jts_14 (JT's personal TikTok)**
-For products where JT IS the story — build-in-public, solo dev, personal brand energy. The audience follows JT as a creator, not just the product.
+For products that are JT's personal builds and fit his AI/builder audience. Faceless slideshows and UGC reactions only — no on-camera content.
 - Vista → @jts_14
 
 **Tier 2 — Dedicated product account**
@@ -268,9 +401,25 @@ Steps:
 
 ---
 
+## Step 2b: Brand Foundation Check (mandatory — runs before scoring)
+
+This is a binary pass/fail gate. Any violation = **automatic discard, do not score, do not queue.** Not a rubric dimension — these are hard disqualifiers that a 7/10 authenticity score cannot override.
+
+**Hard disqualifiers (any one = discard):**
+1. **Fabricated claim** — any specific number (revenue, percentage, time saved, user count) not found in the product's `proof_points` in the registry. If the data isn't in proof_points, it doesn't appear in the content.
+2. **Fabricated anecdote** — any first-person story written as if JT experienced it that isn't confirmed in proof_points or content_themes. "I spoke to a crypto trader who..." = invented unless it's in the registry.
+3. **Self-promotional closer** — any ending that pitches JT's consulting, invites people to hire him, or frames the post as a lead generation vehicle. The products are marketed on their own merits.
+4. **Return/performance promise** — for Nash Satoshi specifically: any language implying the rankings predict price or that following them generates returns. Zero tolerance. "Game theory positioning" ≠ "this coin will moon."
+5. **Banned word present** — check against Universal banned words in platform-rules.md. Any hit = discard.
+6. **Banned emoji present** — 🚀🔥💯 or excessive exclamation points = discard.
+
+**Log discards:** When a piece is discarded at this gate, note the reason in the Telegram summary under a `⛔ Discarded (brand check)` section so JT knows the volume of attempts vs. passes.
+
+---
+
 ## Step 3: Score each piece of content
 
-Score every generated piece on three dimensions, each 1–10.
+Score every piece that passes Step 2b on three dimensions, each 1–10.
 **ALL THREE must score 7+ to be approved.** One weak dimension fails the whole piece.
 
 | Dimension | What it means |
@@ -283,10 +432,6 @@ Score every generated piece on three dimensions, each 1–10.
 - All three ≥7 → `status: "approved"`
 - Any dimension 4–6 → `status: "review_needed"` (flag which dimension fell short)
 - Any dimension <4 → discard silently, do not queue
-
-**Also apply before scoring:**
-- Check against Universal banned words (platform-rules.md). Any banned word = automatic discard.
-- Check for banned emojis (🚀🔥💯) or excessive exclamation points. Present = automatic discard.
 
 ---
 
@@ -432,6 +577,7 @@ If ALL products have 0 qualifying pieces: exit silently. No Telegram.
   "last_successful_run": "[ISO timestamp]",
   "last_week_of": "[YYYY-MM-DD Monday]",
   "last_linkedin_month": "[YYYY-MM or null]",
+  "last_angles_month": "[YYYY-MM or null]",
   "products_processed": ["slug1", "slug2"],
   "queue_count": [total pieces queued],
   "drive_link": "[Drive link or null]",
@@ -454,13 +600,20 @@ Append to `~/.openclaw/workspace/agents/vibe-marketing/performance-log.jsonl`:
   "date": "[YYYY-MM-DD]",
   "product_slug": "[slug]",
   "platform": "[x|tiktok|reddit]",
-  "theme": "[content theme or format that performed — e.g. 'game theory explainer', 'solo dev build-in-public']",
+  "theme": "[content theme — e.g. 'game theory explainer', 'solo dev build-in-public']",
+  "format_type": "[list|story|comparison|hot_take|proof_point|behind_scenes|tutorial]",
+  "hook_style": "[contrarian|stat|question|pattern_interrupt|social_proof]",
+  "slide_count": "[number if TikTok carousel, null otherwise]",
+  "cta_type": "[follow|download|comment|link_in_bio|cliffhanger]",
+  "hashtags_used": ["#tag1", "#tag2"],
   "performance": "[great|good|ok|poor]",
-  "notes": "[what JT said or what made it work]"
+  "metrics": "[views/saves/comments if JT reports them — otherwise null]",
+  "notes": "[what JT said or what made it work — or why it flopped]"
 }
 ```
 
-The generation agent reads the last 4 weeks of this log (Step 1) and biases toward formats marked "great" or "good."
+The generation agent reads the last 4 weeks of this log (Step 1) and biases toward format_type + hook_style combinations marked "great" or "good."
+Granular fields enable pattern detection: e.g. "comparison format + contrarian hook = consistently great on Nash Satoshi TikTok."
 This is how the system improves without needing analytics API access.
 
 ---

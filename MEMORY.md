@@ -12,6 +12,13 @@
 - Gateway restart: ALWAYS use restart script. NEVER raw launchctl/gateway config.patch/apply.
 - openclaw.json: NEVER write arbitrary keys — crashes gateway. External keys → TOOLS.md only.
 - Agentforce overnight builds: ✅ ALLOWED (lifted 2026-03-11). Must `git pull origin main` first. B2B Account Service Agent is PERMANENTLY BANNED — do not recreate under any circumstances.
+- `launchctl unload/load` mid-session = gateway goes offline. Warn JT first. Defer to JT-initiated restart if possible.
+
+## Infrastructure (updated 2026-03-15)
+- OpenClaw version: 2026.3.13 (updated 2026-03-15)
+- Gateway watchdog: `com.openclaw.gateway-watchdog` (10-min interval) — kills context-mode if RSS >1.5GB, kicks gateway if dead. Script: `scripts/gateway-watchdog.sh`
+- context-mode Claude plugin: DISABLED (was causing OOM kills — disabled in `~/.claude/settings.json`)
+- LaunchAgent ThrottleInterval: 10s (raised from 1s to prevent rapid crash loop)
 
 ## Agentforce Sync (✅ ACTIVE — 2026-03-11)
 - JT builds Agentforce agents on personal device using Claude Code/Cursor
@@ -133,10 +140,10 @@
 - health-report: Sunday 9AM | isolated groq | runs health.py --report
 - skills-researcher-weekly: Sat 7AM | isolated sonnet | deep X + Tier 3 web + full report
 - overnight-autonomy: 3AM daily | isolated sonnet | selects 2 eligible tasks from MC → executes → writes log | UUID: be59a068-eccd-4a7c-964e-946ab40ace7e
-- outreach-pipeline: 2AM daily | isolated sonnet | processes T2 shortlist (2/night research→brief→DM→Drive) + T3 cold hook batch (10/night → Drive staging) → Telegram summary to JT for approval | UUID: 651fa1da-84d7-44b3-8e10-6a46e1c05cf6
-- prospect-discovery: Sunday 1AM | isolated sonnet | finds 20-30 new NYC metro prospects across wholesale/construction/PM niches, classifies T1/T2/T3, appends to shortlists → Telegram summary | UUID: ebb843af-e752-4c65-923d-540d5ff5ad3f
-- passive-income-scout: Sunday 6AM ET | isolated sonnet | trends → 5 raw ideas → saves report (no MC push, no Telegram) | UUID: dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0
-- passive-income-strategist: Sunday 7:30AM ET | isolated sonnet | reads Scout report → deep 8-dimension analysis → pushes 🟢 winners to MC → sends Sunday digest to Telegram | UUID: 4e19c300-d387-4019-b658-9664f0d665d5
+- outreach-pipeline: 2AM daily | isolated sonnet | T2: 3/night (was 2) research→brief→DM→Drive; **Salesforce verification pass** (3 insurance T3s/night checked, auto-upgrades to T2 when confirmed); T3 cold hook batch (10/night); **template gate**: construction + PM T2s blocked until templates built | UUID: 651fa1da-84d7-44b3-8e10-6a46e1c05cf6
+- prospect-discovery: **Sun + Wed 1AM** | isolated sonnet | Sunday = all 4 niches (20-30 prospects); Wednesday = Agentforce/insurance focused (15-20 prospects, Salesforce confirmation attempts) → Telegram summary | UUID: ebb843af-e752-4c65-923d-540d5ff5ad3f
+- passive-income-scout: Sunday **6:30AM** ET | isolated sonnet | trends → 5 raw ideas → saves report (no MC push, no Telegram) | UUID: dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0 (rescheduled 2026-03-15 from 6AM)
+- passive-income-strategist: Sunday **8:30AM** ET | isolated sonnet | reads Scout report → deep 8-dimension analysis → pushes 🟢 winners to MC → sends Sunday digest to Telegram | UUID: 4e19c300-d387-4019-b658-9664f0d665d5 (rescheduled 2026-03-15 from 7:30AM)
 - monthly-goals-gap: 1st of month 8AM | isolated sonnet | job market vs. Eve capabilities audit → MC/Skills queue | UUID: fdc2cf75 (ran 2026-03-01 ✅)
 - monthly-niche-fitness: 1st of month 9:30AM | isolated sonnet | scores current niches vs. alternatives, advises pivot/shift/stay | UUID: 1e2cf966
 - content-generate-linkedin: Monday 7:00AM ET | isolated sonnet | generates 4 LinkedIn posts → saves weekly file → uploads to Content/LinkedIn | UUID: fe984519
@@ -146,6 +153,9 @@
 - content-reminder: Tue–Sat 8AM ET | isolated sonnet | sends that day's post (LinkedIn on Wed/Fri) | UUID: 5e66b4ee
 - content-sunday: Sunday 9AM ET | isolated sonnet | sends Sun LinkedIn + X + engagement check | UUID: d918122d
 - t3-cold-hook: Tue/Thu 6AM ET | isolated sonnet | reads T3 shortlists → drafts 8-10 cold hook DMs → uploads batch to Drive (Consulting/Clients/T3 Batches/Outreach/LinkedIn) → Telegrams JT with Drive link for review | UUID: 3ed01a8a-c3fb-4673-9ae0-993611e94c5a | **JT always sends — agent drafts only**
+- weekly-systems-review: Sunday 10AM ET | isolated sonnet | cron health + file budgets + process health + config drift + version check → Telegram report | UUID: b2ca53ab-0c07-4a22-8424-9d39bf988405
+- **NOTE (2026-03-15):** weekly-synthesis payload updated to include Future Signals Review + content signal → MC push (was logging signals but not converting them to tasks)
+- **NOTE (2026-03-15):** construction-trades.md + property-management.md shortlists created (prospect-discovery was writing to non-existent files)
 - Daily cap: 20 invocations/weekday ✅
 
 ## Cost Tracking
@@ -190,7 +200,7 @@
 ## Key Decisions
 - **Priority order (updated 2026-03-12)**: Consulting first. Job applications only if 100% perfect fit (score 24+/25, zero skill gaps, exact title match). Squarespace and Writer SA deprioritized. Salesforce Lead Agentforce SE (24/25, deadline 03/27) is the only active application — borderline perfect fit, keep it. All other job apps pause until consulting is generating consistent revenue.
 - **Outreach active as of 2026-03-09**: freeze lifted. T1: H.C. Oswald — outreach sent 2026-03-11 (LinkedIn DM + subject "After-hours coverage for your catalog"). Awaiting response. T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
-- **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates needed: wholesale (convert existing demo), construction job cost (build), Tier 3 send scheduler (build).
+- **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates: wholesale (convert existing demo — still needed), **construction job-tracker ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/construction-template/`), **PM maintenance triage ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/pm-maintenance-template/`). Tier 3 send scheduler: still needed.
 - Aggressive compaction over safeguard — prevents context resets on long builds
 - OpenRouter for non-Anthropic models — direct key only if model >$5/mo
 - Sonnet default over Opus — caching = 80% as capable at 20% cost

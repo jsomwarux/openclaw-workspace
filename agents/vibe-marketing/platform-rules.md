@@ -123,17 +123,18 @@ NOT just "follow me." Give them a reason.
 - Max 4–5 hashtags. Mix one large (10M+), two mid (1–5M), one niche (<500K).
 - Captions should make the video feel like a secret being shared, not a product being sold.
 
-### Production notes (for JT when recording)
-- Set video cover to the **3-second mark** — this is what shows in your profile grid and in search results. Frame something compelling at second 3.
+### Production notes
+- All vibe marketing TikTok content is faceless — slideshows and text-overlay formats only. No on-camera recording.
 - Upload to TikTok as a **draft** (not scheduled) so you can manually add a trending sound before publishing. Sound choice is the biggest organic reach lever after the hook.
+- Set the video cover to a visually strong slide — the hook slide (Slide 1) is usually the right choice.
 - New account warmup (one-time, before first post): scroll 15 min/day for 2–3 days in your target niche. Follow, comment, and like relevant posts to train the algorithm before the first video goes up.
+- PostBridge (not Postiz) handles scheduling when auto-posting is active.
 
 ### Style rules
-- Scripts must read conversationally — write how JT talks, not formal written language
-- Pick one style per product (direct-to-camera OR faceless/voiceover) and stay consistent
-- Include visual directions in [brackets] throughout the script — these are for JT when recording
-- Hashtags go in the caption, not the script. List them separately in the output.
-- Under 30 seconds feels rushed. Over 90 loses people.
+- All content is faceless — text overlays, data visuals, app screenshots, reaction slides. No scripts for camera.
+- Consistent branded aesthetic per product, every week — recognizability compounds.
+- Hashtags go in the caption field, listed separately in output. Never in slide copy.
+- Slide pacing: each slide should be readable in 2–3 seconds. Cut anything that takes longer.
 
 ---
 
@@ -268,6 +269,62 @@ Reddit is allergic to promotion. The community will downvote and report anything
 
 ### Quality gate
 If you cannot write a Reddit post that leads with genuine value (not promotion), **skip Reddit for that product this week** and log the skip reason in the queue entry. Do not force it.
+
+---
+
+## UGC Reaction Format
+
+Reaction content is the highest comment-velocity format on TikTok. Comments = reach signal. Use as the second TikTok per week for both products.
+
+### What it is
+Surface a real or representative take from the product's niche — a viral tweet, a controversial rating, a common misconception. Put it on screen. React to it using the product's framework as the counter-evidence.
+
+### Why it works
+- Inherently tribal: viewers share to defend their position
+- No original claim required — the source take provides the conflict
+- High comment velocity because the premise invites disagreement
+- Faceless-compatible for Nash Satoshi; on-camera for Vista
+
+### Hard rules (no exceptions)
+- **Attack the idea, never the person.** Never identify or mock the source. "A common take:" framing is always safe. Never put a real person's username on screen.
+- **No fabricated quotes with real names.** Use real takes only when they're clearly public and generic. Otherwise: "a common take: '...'" is accurate and safe.
+- **Product is the counter-evidence, not the hero.** The reaction ends with the product's framework as the alternative — not "my app is better." The insight is the closer; the app is the proof.
+- Nash Satoshi: attack the *analysis method*, not the coin or its holders. "This is how most people evaluate crypto" → show what game theory sees instead.
+- Vista: attack the *rating system* (crowdsourced averages), not the film or its fans.
+
+### Nash Satoshi reaction sources
+Good material: "altcoin X has the best staking APY so it's a good long," "BTC dominance dropping = altseason," "this coin has 200 validator nodes so it's decentralized." These are representative common takes — always label them as such.
+Bad material: any real person's name, any actual tweet that could cause community backlash, any claim that sounds like price prediction.
+
+### Vista reaction sources
+Good material: films with notable critic vs. audience score gaps, cult films with "low" IMDb scores (6.5-7.2), heavily polarizing films with tribal fandoms.
+Bad material: anything that requires trashing the film, its director, or its audience.
+
+### Output format
+```
+FORMAT: ugc_reaction
+SOURCE TAKE: [the take or rating — labeled "representative take" if not a direct real quote]
+SOURCE TYPE: [representative_take | imdb_rating | rt_score | reddit_sentiment]
+
+[Nash Satoshi — Slideshow reaction]
+SLIDE 1: [The take on screen — "A common take: '...'"]
+SLIDE 2: [Why this misses the game theory picture — 1-2 sentences]
+SLIDE 3: [What the model actually sees — specific]
+SLIDE 4: [The Nash Satoshi ranking as counter-evidence]
+SLIDE 5: [The insight — what game theory sees that price-based analysis misses]
+SLIDE 6: [CTA — "Full rankings at nashsatoshi.com"]
+
+[Vista — Slideshow reaction, faceless]
+SLIDE 1: [Hook — "IMDb gave [Film] a [X]/10. That's the wrong number."]
+SLIDE 2: [The rating on screen — labeled as IMDb/RT score]
+SLIDE 3: [Why crowdsourced averages mislead — the specific problem with this score]
+SLIDE 4: [What personal taste profiling sees instead]
+SLIDE 5: [App screenshot — "track what actually matches your taste"]
+SLIDE 6: [CTA — "Available on the App Store — search Vista"]
+
+CAPTION: [pov: framing or conflict formula — no product name in body]
+HASHTAGS: [4-5 tags]
+```
 
 ---
 
