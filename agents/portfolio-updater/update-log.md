@@ -65,3 +65,7 @@
 - Skills grid updated: no
 - Vercel deploy triggered: no
 - Queue housekeeping: 2 stale pending_build entries marked resolved
+
+## 2026-03-16 (3AM Overnight Run)
+- **Construction Job Tracker** — score 7/10, auto-approved. Added to queue.jsonl (status: approved_pending_build). MC task pushed: "🌙 Build: Add Construction Job Tracker portfolio card to jtsomwaru.com (7/10 auto-approved)". Slug added to state.json addedSlugs.
+- **PM Maintenance Triage** — score 6/10, flagged to JT. Added to queue.jsonl (status: flagged_jt_decision). MC task pushed: "🌙 Portfolio decision: PM Maintenance Triage n8n Template scored 6/10 — add to site?"

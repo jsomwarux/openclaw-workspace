@@ -1,13 +1,14 @@
 {
-  "last_run": null,
-  "last_successful_run": null,
-  "last_week_of": null,
+  "last_run": "2026-03-16T13:05:00Z",
+  "last_successful_run": "2026-03-16T13:05:00Z",
+  "last_week_of": "2026-03-16",
   "last_linkedin_month": null,
-  "products_processed": [],
-  "queue_count": 0,
-  "drive_link": null,
+  "last_angles_month": null,
+  "products_processed": ["nash-satoshi", "vista"],
+  "queue_count": 12,
+  "drive_link": "https://docs.google.com/document/d/1q0E_wRirRtAQ0ksiEWRtmNoP1xP3mlgrtcGq5XUurFE/edit",
   "last_reddit_subreddit": {
-    "nash-satoshi": null,
-    "vista": null
+    "nash-satoshi": "r/CryptoCurrency",
+    "vista": "r/movies"
   }
 }

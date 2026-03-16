@@ -59,6 +59,10 @@ Use compression to cut waste. Use depth when the goal is credibility, not virali
 
 **No fabricated personal anecdotes.** If JT hasn't told you something happened, don't write it as though it did. "I watched this happen" is only acceptable if JT confirmed the story. General industry observations ("this pattern is common in enterprise deployments") are always safe — first-person-specific invented stories are not.
 
+**No implied client experience from demo/test builds.** JT's Agentforce agents (InsuranceServiceAgent, TenantServiceAgent, etc.) were built on test data — not from working with real firms. Never write copy that implies JT encountered specific client friction, tribal knowledge, or firm-specific problems during the build. Safe framing: "I built an agent that does X" or "built against realistic scenarios." Unsafe: "I kept running into X at every firm" or "every client had Y problem" — this implies real engagements that don't exist yet.
+
+**News hook LinkedIn posts: anchor to the build capability, not the build process.** When a news signal validates something JT has already built, the post should show that the capability exists and connects to the signal — not narrate the development experience. Structure: [signal] → [what's at stake for the reader] → [here's proof the solution exists] → [one concrete next step]. Do NOT lead with implementation challenges, documentation friction, or anything that shifts focus from "this can be done" to "here's what building it was like."
+
 **No self-promotional endings.** Ending a post with "this is the gap AI implementation consultants like myself close" turns insight into a pitch. Let the content do the work. If readers want to know who wrote it, the profile is right there.
 
 ### X Schedule
@@ -356,6 +360,23 @@ implementation excellence, transformative, leverage (as buzzword), solution, opt
 - Long explanations of things the reader can infer
 - "We" or "our team" — JT is a solo operator
 - @jts_14 or Twitter references in LinkedIn content
+- Closes a post with advice/recommendations when the goal is to showcase a build — end on capability proof instead
+- Includes external links in post body on either platform — links go in first comment (LinkedIn) or reply (X)
+- Attaches media AND includes a link in the same post — pick one; if there's a demo video, the video wins
+
+---
+
+## Distribution Rules (apply to every post — both platforms)
+
+**No links in post body.** External URLs suppress reach on both LinkedIn and X. Always move to first comment (LinkedIn) or reply under the post (X). No exceptions — not for McKinsey, not for your own site, not for anything.
+
+**Video beats link every time.** If a demo video exists for the build being referenced, attach the video. Do not include the article/source link in the post body alongside it — that turns a video post into a link post and kills reach. Put the link in a comment.
+
+**Posts showcasing a build must end on capability, not advice.** The closing line of any build-showcase post should describe what the agent/workflow *does*, not tell the reader what they *should do*. Wrong: "If you're evaluating X, start here." Right: "Claims come in unstructured. The agent classifies, routes, and creates the record — before a person touches it."
+
+**First comment template (LinkedIn — whenever a source article is relevant):**
+> "Full report: [URL]"
+Draft this alongside the post so JT can paste it immediately after publishing.
 
 ---
 
@@ -392,6 +413,12 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] Does it make a claim the reader has to think about?
 - [ ] For LinkedIn Wed/Fri: is there a specific number or proper noun?
 - [ ] Platform check: does the content belong on THIS platform?
+- [ ] Does any line imply real client experience from a demo/test build? If yes, rewrite or cut.
+- [ ] Does any first-person anecdote reference something JT hasn't confirmed happened? If yes, cut it.
+- [ ] Does the post contain an external link in the body? If yes, move it to a comment note.
+- [ ] If this is a build-showcase post, does it end on capability proof (what it does) — not advice (what the reader should do)?
+- [ ] If a demo video exists for the build, is it flagged for attachment? If yes, no link in post body.
+- [ ] If a source article is relevant (news hook), is a first-comment URL included alongside the draft?
 
 ### X only (algorithm compliance):
 - [ ] First line invites a reply?

@@ -62,10 +62,14 @@
 - Project 4 (in talks): Dashboard + automations for Head of Acquisitions. Sent NDA to review his spreadsheet — no response after 2 follow-ups. Cold for now.
 - Strategy: Aya is becoming an anchor client. Each project extends runway and builds referral credibility within their network. Keep relationship warm.
 
-## Content System (updated 2026-03-11)
+## Content System (updated 2026-03-16)
 - Voice rules: `memory/content-voice.md` — **load before every draft.** Platform-specific: LinkedIn = case studies + expertise, X = compression + hot takes. Wednesday LinkedIn is most important post of the week.
 - Proof Points inventory + Credibility Test in content-voice.md — every post must pass before publishing
-- Crons: content-generate-linkedin (Mon 7AM, 4 LinkedIn posts) | content-generate-x (Mon 7:25AM, 7 X posts) | content-reminder (Tue–Sat 8AM, sends day's post) | content-sunday (Sun 9AM, Sun posts + engagement check)
+- **LinkedIn: 6 posts/week** (Mon/Tue/Wed/Thu/Fri/Sun) | **X: 7 posts/week + 5-6 banked** (3 technical angles + 2-3 build showcases)
+- Pillars: Mon Short Take | Tue Industry Observation | Wed Case Study | Thu Agentforce Proof Point | Fri Tactical Insight | Sat Eve Ops (X only) | Sun Behind the Build
+- Content crons: content-generate-linkedin (Mon 7AM, 6 posts) | content-generate-x (Mon 7:25AM, 3 passes: 7 calendar + 3 technical + 2-3 build showcase) | content-reminder (Tue-Sat 8AM, LinkedIn on Tue/Wed/Thu/Fri + X daily) | content-sunday (Sun 9AM, Sun LinkedIn + X + engagement check) | content-monday-send (Mon 7:55AM, surfaces bank posts to JT)
+- Content sources: recent-builds.md | technical-angles.md (30+ angles) | consulting-observations.md (nightly from outreach-pipeline) | job-market-observations.md (daily from job-market cron) | content-voice.md Proof Points | Notion swipe file
+- Bank: memory/content/bank/[MONDAY-DATE]/ — technical + build showcase posts generated weekly, surfaced to JT Monday morning via content-monday-send
 - Swipe file: Notion DB (viral X posts) | Format signals: memory/content/format-signals.md | Technical angles: memory/content/technical-angles.md
 
 ## Critic Agent (built 2026-03-07)

@@ -13,3 +13,14 @@
 {"date":"2026-03-15","day":"Friday","platform":"x","pillar":"Tactical Insight","hook_type":"Experience-earned — adoption failure compressed","summary":"Workflow fails when nobody changed the routine around it","posted":false,"angle_id":null,"engagement_winner":false}
 {"date":"2026-03-16","day":"Saturday","platform":"x","pillar":"Build-in-public / Stack Note","hook_type":"Stack breakdown — 3-tool architecture","summary":"StreetEasy scraper: n8n + Python + Google Sheets, runs every 14 days untouched","posted":false,"angle_id":"n8n-streeteasy-arch","engagement_winner":false}
 {"date":"2026-03-17","day":"Sunday","platform":"x","pillar":"Behind the Build","hook_type":"Compressed personal insight — logistics vs. thinking","summary":"6 months Eve 24/7 — real insight: automation returns time from logistics","posted":false,"angle_id":"eve-mac-mini","engagement_winner":false}
+{"date": "2026-03-16", "platform": "linkedin", "day": "monday", "pillar": "short-take", "topic": "foreman-not-bottleneck-workflow-is", "posted": false}
+{"date": "2026-03-19", "platform": "linkedin", "day": "wednesday", "pillar": "case-study", "topic": "construction-job-tracker-whatsapp-claude-classification", "posted": false}
+{"date": "2026-03-20", "platform": "linkedin", "day": "friday", "pillar": "tactical-insight", "topic": "which-process-to-automate-first-boring-repeatable", "posted": false}
+{"date": "2026-03-22", "platform": "linkedin", "day": "sunday", "pillar": "behind-the-build", "topic": "pm-maintenance-triage-escalation-logic", "posted": false}
+{"date": "2026-03-16", "platform": "x", "day": "monday", "pillar": "short-take", "topic": "contractors-need-fewer-status-calls-not-more-workers", "angle_id": null, "posted": false}
+{"date": "2026-03-17", "platform": "x", "day": "tuesday", "pillar": "observation", "topic": "autonomous-agent-stop-conditions-failures-in-undefined-space", "angle_id": "arch-stop-conditions", "posted": false}
+{"date": "2026-03-18", "platform": "x", "day": "wednesday", "pillar": "case-study", "topic": "construction-whatsapp-classification-owner-hears-only-blockers", "angle_id": null, "posted": false}
+{"date": "2026-03-19", "platform": "x", "day": "thursday", "pillar": "hot-take", "topic": "optimize-for-constraints-not-capability-unconstrained-agent-is-liability", "angle_id": "arch-overnight-constraints", "posted": false}
+{"date": "2026-03-20", "platform": "x", "day": "friday", "pillar": "tactical-insight", "topic": "best-first-automation-runs-on-schedule-already-half-built", "angle_id": null, "posted": false}
+{"date": "2026-03-21", "platform": "x", "day": "saturday", "pillar": "build-in-public", "topic": "content-gen-and-delivery-separate-crons-separation-is-reliability", "angle_id": "arch-isolated-split", "posted": false}
+{"date": "2026-03-22", "platform": "x", "day": "sunday", "pillar": "behind-the-build", "topic": "pm-triage-escalation-logic-vendor-goes-quiet-only-then-pm-pulled-in", "angle_id": null, "posted": false}

@@ -221,6 +221,31 @@ curl -s -X POST http://localhost:3000/api/tasks \
 
 **Rule:** If nothing to review, nothing to push. Never push empty/placeholder tasks.
 
+### Step 5.75: Autonomous Post Detection (run after all tasks complete, before log)
+
+Read `~/.openclaw/workspace/memory/content/post-detection-rubric.md`.
+
+Review everything done tonight — tasks completed, research findings, builds, problems solved — against the rubric. For each work event, ask: does this meet at least ONE of the five PASS criteria?
+
+If yes:
+1. Generate one X post (2-4 tweets, X format, lowercase for hot takes)
+2. Determine this week's Monday date (look at current date, find Monday)
+3. Create bank directory if it doesn't exist: `mkdir -p ~/.openclaw/workspace/memory/content/bank/[MONDAY-DATE]`
+4. Write to bank: `~/.openclaw/workspace/memory/content/bank/[MONDAY-DATE]/auto-[slug].md` (use format from rubric)
+5. Upload to Drive:
+   ```bash
+   cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
+     --title "Auto-detected post — [slug] ([DATE])" \
+     --path "Content/X" \
+     --file memory/content/bank/[MONDAY-DATE]/auto-[slug].md
+   ```
+6. Append to posted-log.jsonl (use format from rubric, `"banked": true, "posted": false`)
+7. Note in the overnight log under "## Auto-Detected Posts"
+
+If nothing passes the rubric: skip. Do not force it. Write "Auto-detected posts: none (rubric not met)" in the log.
+
+Volume check: if more than 3 posts pass tonight, keep only the 3 strongest by rubric criteria. Quality over volume.
+
 ### Step 6: Write Overnight Log
 Write to `~/.openclaw/workspace/agents/overnight/logs/YYYY-MM-DD-log.md`:
 

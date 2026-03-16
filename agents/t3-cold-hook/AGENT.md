@@ -31,7 +31,8 @@ Read all shortlist files:
 For each prospect tagged **Tier: T3**:
 - Check `state.json → drafted[]` — skip if already drafted
 - Skip if: missing company name, missing contact name, or explicitly marked "skip"
-- Collect: company name, contact name, LinkedIn profile (if available), hook signal, niche
+- Collect: company name, contact name, hook signal, niche
+- **Find LinkedIn profile URL:** search `site:linkedin.com/in "[First Last]" [Company]` for each contact. Note the URL or 'not found — search manually' if no clear match.
 
 Target: 8–10 unprocessed T3 prospects. If fewer exist, draft all available.
 
@@ -77,11 +78,12 @@ Save to `~/.openclaw/workspace/memory/drafts/t3-batch-[DATE].md`:
 ---
 
 ## [COMPANY NAME]
-**Contact:** [Name] ([LinkedIn URL if available])
+**Contact:** [Name]
+**LinkedIn:** [profile URL — search `site:linkedin.com/in "[First Last]" [Company]` | if not found: 'not found — search manually']
 **Niche:** [Wholesale / Construction / Property Management]
 **Hook used:** [the specific signal that drove the opener]
 
-**Subject:** [subject line]
+**Subject:** [subject line — 5-8 words, specific to their situation]
 
 **DM:**
 [full DM text]

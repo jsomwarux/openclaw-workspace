@@ -465,6 +465,55 @@ One JSON object per line:
 
 ---
 
+## Step 4b: Generate Slide Images via NB2
+
+After scoring and queuing, generate image assets for every TikTok slideshow piece.
+Read `agents/vibe-marketing/nb2-image-prompts.md` for all prompt templates and screenshot instructions.
+
+Source the API key: `source ~/.config/env/global.env` (key is `OPENROUTER_API_KEY`)
+
+Output directory: `agents/vibe-marketing/generated-images/[product_slug]/[YYYY-MM-DD]/`
+
+**Per product — what to generate vs. what to flag for JT:**
+
+### Nash Satoshi
+| Slide | Source |
+|---|---|
+| Slide 1 — Hook card | NB2 (inject this week's hook text) |
+| Slide 2 — Rankings/data card | NB2 generates background frame only — JT overlays tickers + scores in CapCut |
+| Slide 3 — CTA card | NB2 preferred; OR flag for JT to substitute nashsatoshi.com screenshot for higher authenticity |
+| UGC Reaction background | NB2 (inject the coin ticker + claim being reacted to) |
+
+### Vista
+| Slide | Source |
+|---|---|
+| Slide 1 — Hook card | NB2 (inject this week's hook text) |
+| Slide 2 — Score comparison card | NB2 (inject IMDb score + Vista score for this week's film) |
+| Slide 3 — CTA card | NB2 (inject CTA text) |
+| Slide 5 — App UI | ⬛ FLAG FOR JT — instructions in nb2-image-prompts.md → Screenshot Instructions section |
+| Slide 6 — App Store listing | ⬛ FLAG FOR JT — instructions in nb2-image-prompts.md → Screenshot Instructions section |
+| UGC Reaction — source rating (Slide 2) | ⬛ FLAG FOR JT — IMDb screenshot (more credible than generated) |
+| UGC Reaction background cards | NB2 |
+
+**Generation workflow (cost-efficient):**
+1. For each NB2 slide, inject the weekly variable fields into the prompt template
+2. Call NB2 via the generation script:
+   ```bash
+   source ~/.config/env/global.env
+   python3 ~/.openclaw/workspace/scripts/nb2-generate.py \
+     --prompt "[full prompt with injected variables]" \
+     --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-[N].png"
+   ```
+3. Log each generation call cost to `agents/vibe-marketing/nb2-cost-log.md`
+
+**For flagged screenshots:** add a `## 📸 Screenshots Needed — [Product]` section to the Drive review doc (see Step 5), listing exactly what JT needs to capture and where to place each screenshot in the slide sequence. Use the exact instruction text from nb2-image-prompts.md → Screenshot Instructions.
+
+**If NB2 API call fails:** log the error, skip image generation for that slide, continue. Missing images do not block content delivery — copy is the primary output.
+
+**Cost estimate:** ~6–8 NB2 calls per week (fewer with screenshot substitutions) × ~$0.005 = ~$0.04–$0.05/week. Negligible.
+
+---
+
 ## Step 5: Upload to Drive
 
 Generate a formatted markdown review file for each product — **do NOT upload queue.jsonl** (that's local-only operational data, not human-readable).
@@ -472,6 +521,8 @@ Generate a formatted markdown review file for each product — **do NOT upload q
 For each active product, write a review file to a temp path, then upload per product:
 
 **Review file format** (`/tmp/vibe-review-[product_slug]-[YYYY-MM-DD].md`):
+
+Include a `## 🖼️ Images` section per TikTok piece — list each generated slide's local path AND any screenshot instructions for JT-captured slides.
 ```markdown
 # Vibe Marketing Review — [Product Name] — Week of [YYYY-MM-DD]
 
@@ -624,7 +675,7 @@ This is how the system improves without needing analytics API access.
 2. **NEVER cross-contaminate products.** Nash Satoshi posts never mention Vista. Vista never mentions Nash Satoshi.
 3. **Skip `status: "pending"` products.** No exceptions.
 4. **Reddit = value first, always.** If you can't write a post that leads with genuine value, skip it. Don't force a promotion into a community space.
-5. **TikTok = scripts, not posts.** JT records himself — write what he says, not a caption.
+5. **TikTok = faceless content only.** No on-camera formats for any product. Slideshows and AI UGC avatars only.
 6. **Keep total runtime under 12 minutes.** Max ~10 pieces per week at current scale.
 
 ---
@@ -641,47 +692,108 @@ When TikTok automated posting is ready: add `"tiktok_post_api": true` to a produ
 
 ---
 
-## Phase 2: AI UGC Talking Head Videos (build after carousels are live and getting views)
+## Phase 2: AI UGC Talking Head Videos (activate after carousels have traction)
 
-Instead of JT recording on camera, an AI-generated character acts as a user persona for each product. Works for Nash Satoshi ("I track my crypto portfolio with this") and Vista ("I've logged 200+ movies with this app"). No authenticity risk — it's a user persona, not JT.
+An AI-generated avatar persona acts as a user of each product. Eve handles the full pipeline autonomously — script → voice → video → Drive. JT reviews and posts.
 
-### Pipeline per product
-Each product gets ONE consistent character image (generated once, reused across all videos):
+### Activation trigger (specific — not vague "traction")
+All three conditions must be met before activating Phase 2 for a product:
+1. Carousels posting consistently for ≥4 weeks
+2. At least one carousel has hit 500+ views OR the account has 50+ followers
+3. JT says go
 
-**Step 1 — Character (Nano Banana Pro JSON)**
-- Generate a realistic user persona that matches the product's target audience
-  - Nash Satoshi: 28–35 male, casual/tech vibe, phone or laptop in frame
-  - Vista: 22–30 either gender, couch/cozy setting, movie poster background optional
-- Use full JSON prompting — NOT text prompts. Include `"avoid"` array, camera imperfections, skin texture details
-- Color grading: find Pinterest reference → upload to Gemini → extract color JSON → paste as reference
-- Save as `agents/vibe-marketing/characters/[product_slug]-character.png` — reuse this image for every video
+This is logged in `future-signals.md`. Eve checks it during weekly synthesis.
+
+---
+
+### Preferred tool: HeyGen API (primary)
+HeyGen handles avatar + lipsync in one step. No separate lipsync tool needed. Has a REST API Eve can call programmatically. ~$29/mo covers weekly volume at current scale.
+
+Alternative if HeyGen is unavailable or cost-prohibitive: Hedra (also has API, good lipsync quality). RunPod/LatentSync is the self-hosted fallback — more setup, but $0 SaaS cost, ~$0.20–$0.40/video GPU cost.
+
+**Do NOT use:** WAN (it's a video generation model, not a lipsync tool), InfiniteTalk (deprecated), any tool that requires manual browser interaction.
+
+---
+
+### Pipeline (Eve runs all steps autonomously)
+
+**Step 1 — Avatar character image (one-time per product, reused every week)**
+
+Generate via NB2 (`google/gemini-3.1-flash-image-preview`). One character per product — same image reused across all videos. Consistency builds recognizability.
+
+Prompt approach: full descriptive visual language (NOT hex codes or pixel specs). Include `avoid` guidance. Describe like a casting brief.
+
+Character briefs per product:
+- **Nash Satoshi:** 28–35 male, casual tech aesthetic — think someone who actually reads crypto research at 11PM. Phone or laptop subtly in frame. Neutral background, slightly out of focus. Natural lighting, not studio. Smartphone snapshot quality, not a photoshoot.
+  Avoid: suits, trading desk setups, anything that looks like a crypto influencer, excessive jewelry, sunglasses.
+- **Vista:** 22–32, any gender, film-person energy — the kind of person who has opinions about cinematography. Cozy indoor setting, warm dim light, movie posters or bookshelves softly blurred in background. Candid feel, not posed.
+  Avoid: glamorous styling, bright lighting, anything that looks like an Instagram influencer.
+
+Save to: `agents/vibe-marketing/characters/[product_slug]-character.png`
+Reuse this file every week — do NOT regenerate unless JT requests a new persona.
 
 **Step 2 — Script**
-- 30–60 seconds read aloud at conversational pace
-- Hook (0–3s): "You"-focused, pattern interrupt
-- Body (20–45s): specific use case, one real result, natural speech patterns
-- CTA (5–10s): follow/download/try — give a reason
-- Read aloud and time it with a stopwatch. That exact duration = video length in Step 4. Off by even 3 seconds = broken lipsync.
+- Target: 30–45 seconds read aloud at natural conversational pace (not 60s — attention drops fast)
+- Structure:
+  - Hook (0–3s): "You"-focused, pattern interrupt. The viewer decides to keep watching here.
+  - Problem (3–12s): the specific frustration or gap this product solves. One sentence.
+  - Solution (12–35s): what the product does, shown through a specific use case. One real result. Natural speech — NOT a product description.
+  - CTA (35–45s): one action, one reason. "Follow for weekly rankings" or "Download on the App Store — link in bio."
+- Write script with exact word count noted. 125 words ≈ 45 seconds at natural pace.
+- Mark emphasis words (these help voice model hit the right rhythm).
 
-**Step 3 — Voice (ElevenLabs + CapCut two-step)**
-- Generate audio from script in ElevenLabs
-- Run through CapCut voice change first (any base voice — normalizes artifacts)
-- Then apply final ElevenLabs voice on top of normalized audio
-- Skipping the CapCut step = audio that sounds "off" even if quality is technically high
+**Step 3 — Voice via ElevenLabs API**
+- ElevenLabs generates TTS audio directly from the script text. Call the API programmatically.
+- Voice selection: choose a voice that matches the character's demographic and energy. ElevenLabs voices list: `GET https://api.elevenlabs.io/v1/voices`
+- Model: `eleven_turbo_v2_5` (fastest, good quality, lower cost) for drafts. `eleven_multilingual_v2` for final if quality needs to be higher.
+- Output: `.mp3` file, save to `agents/vibe-marketing/audio/[product_slug]-[YYYY-MM-DD].mp3`
+- Cost: ~$0.002/word at Starter tier. A 125-word script ≈ $0.25.
+- Do NOT use CapCut for voice processing — ElevenLabs output goes directly to lipsync. The "CapCut normalization" step described previously was incorrect and would degrade audio quality.
 
-**Step 4 — Lipsync (WAN lipsync or InfiniteTalk on RunPod)**
-- Input: character image (Step 1) + normalized voice audio (Step 3)
-- Output: talking head video with lip movement synced to audio
-- Use for 30–60 second single-speaker videos. Use Kling multi-shot for shorter multi-scene ads.
+**Step 4 — Lipsync + video via HeyGen API**
+- Input: character image (Step 1) + ElevenLabs audio (Step 3)
+- HeyGen endpoint: `POST https://api.heygen.com/v2/video/generate` with `talking_photo` mode
+- Output: MP4, 9:16, 1080×1920
+- Expected render time: 2–5 minutes per video. Poll for completion before proceeding.
+- Save to: `agents/vibe-marketing/generated-videos/[product_slug]-[YYYY-MM-DD].mp4`
+- Cost: covered under HeyGen plan (~$29/mo, 25 videos/mo limit — more than enough for 2 products × 1 video/week = 8/mo)
 
-**Step 5 — Edit (CapCut)**
-- Captions, CTA overlay, music, trim
-- Export 9:16 for TikTok/Reels
+**Step 5 — Captions file (auto-generated)**
+- Generate `.srt` captions from the script (timestamp each line using word count ÷ speaking pace)
+- TikTok auto-captions on upload are an acceptable alternative — flag this in Drive doc
+- Save to: `agents/vibe-marketing/generated-videos/[product_slug]-[YYYY-MM-DD].srt`
+
+**Step 6 — Upload to Drive and notify JT**
+- Upload video + captions to `Content/Vibe Marketing/[Product Name]/UGC Videos/`
+- Drive doc includes: script, voice notes, caption file path, posting instructions (add trending sound in TikTok before publishing — this is the single biggest organic reach lever)
+- Telegram summary includes video Drive link and one-line posting note
+
+**JT's only manual step:** add a trending sound in TikTok before hitting publish. TikTok's native audio library is the fastest way — pick a trending sound in the right niche.
+
+---
 
 ### Queue format addition (when Phase 2 active)
-Add `"content_type": "ugc_video"` to queue entries. Fields: `script`, `caption`, `hashtags`, `character_image_path`, `voice_notes` (which ElevenLabs voice, any tone direction).
+Add to queue entries:
+```json
+{
+  "content_type": "ugc_video",
+  "script": "[full script text]",
+  "script_word_count": 125,
+  "emphasis_words": ["specific", "actually", "ranked"],
+  "voice_id": "[ElevenLabs voice ID used]",
+  "character_image_path": "agents/vibe-marketing/characters/[product_slug]-character.png",
+  "audio_path": "agents/vibe-marketing/audio/[product_slug]-[YYYY-MM-DD].mp3",
+  "video_path": "agents/vibe-marketing/generated-videos/[product_slug]-[YYYY-MM-DD].mp4",
+  "caption_path": "agents/vibe-marketing/generated-videos/[product_slug]-[YYYY-MM-DD].srt",
+  "caption": "[TikTok caption text]",
+  "hashtags": "[hashtag list]",
+  "posting_note": "Add trending sound before publishing"
+}
+```
 
-### When to build Phase 2
-- Carousels are live and posting consistently
-- At least one product has TikTok traction (views, follows, comments)
-- JT says go
+---
+
+### Runtime impact when Phase 2 is active
+- Add ~5–8 minutes to total cron runtime per product (API calls + polling for video render)
+- Cron timeout should be bumped to 2400s when Phase 2 activates
+- ElevenLabs and HeyGen API keys must be added to `~/.config/env/global.env` before first run

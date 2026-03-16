@@ -39,7 +39,7 @@ export default function Sidebar() {
         {/* Logo */}
         <div className="px-5 py-5 border-b border-[#2a2a2a]">
           <div className="flex items-center gap-2">
-            <span className="text-accent text-lg font-semibold tracking-tight">🌿 Eve</span>
+            <span className="text-accent text-lg font-semibold tracking-tight">🤖 Eve</span>
           </div>
           <p className="text-[10px] text-zinc-500 mt-0.5 tracking-widest uppercase">Mission Control</p>
         </div>

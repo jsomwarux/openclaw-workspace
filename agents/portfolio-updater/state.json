@@ -16,10 +16,11 @@
     "construction-trades-workflow",
     "adversight-ai",
     "b2b-account-service-agent",
-    "n8n-support-triage"
+    "n8n-support-triage",
+    "construction-job-tracker"
   ],
   "lastReorderDate": "2026-03-10",
-  "lastRun": "2026-03-15",
+  "lastRun": "2026-03-16",
   "demandScoreCache": {
     "opticfy-pipeline": 46,
     "construction-tracker": 22,

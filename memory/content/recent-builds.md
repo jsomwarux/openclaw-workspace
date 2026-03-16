@@ -22,6 +22,22 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Construction Job Tracker — n8n T2 Template — 2026-03-15
+**What:** n8n workflow for contractors — foreman sends one WhatsApp/SMS update, Claude classifies job status, client gets auto-notification, owner gets alerted only on blockers
+**For:** internal (T2 reusable template for construction/trades prospects)
+**Outcome:** Reusable template configurable per prospect in ~2 hours — targets NYC GCs, HVAC, plumbing, electrical. Unlocks T2 pipeline for 5 waiting construction prospects.
+**Demonstrates:** n8n workflow automation, Claude AI classification, construction/trades vertical expertise
+**Content angle:** "Contractors waste 30-60 min/day calling foremen for status updates. Built a workflow where one WhatsApp message does it all — classification, client update, blocker alert."
+**Status:** complete
+
+## PM Maintenance Request Triage — n8n T2 Template — 2026-03-15
+**What:** n8n automation for property managers — tenant submits maintenance request, Claude classifies urgency + category, routes to right vendor, sends tenant confirmation, logs everything, escalates no-shows
+**For:** internal (T2 reusable template for NYC property management prospects)
+**Outcome:** Reusable template for AppFolio/Buildium-using PMs — automates the maintenance triage loop (intake → classify → dispatch → confirm → log → escalate)
+**Demonstrates:** n8n workflow automation, Claude AI classification, property management vertical expertise
+**Content angle:** "Property managers spend 40% of their day routing maintenance requests. Built a workflow where the tenant submits once and the vendor is dispatched automatically."
+**Status:** complete
+
 ## StreetEasy Property Scraper — 2026-03-01
 **What:** n8n workflow that automatically pulls StreetEasy listings matching custom criteria into a Google Sheet every 14 days
 **For:** Aya (NYC real estate firm)

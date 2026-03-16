@@ -36,7 +36,17 @@
 | 2026-02-21 | gateway config.patch → dropped JT's connection. | Use restart script always. |
 | 2026-02-21 | Arbitrary key in openclaw.json → crashed gateway. | Documented keys only, rest → TOOLS.md only. |
 
+## 2026-03-16 — Silent multi-step tool chains during active conversation
+**Failure:** Repeatedly ran multi-step exec chains (NB2 image generation, Drive uploads) without sending interim status replies. JT had to ask "update?" 8+ times in a single conversation.
+**Root cause:** Treated Rule 9 (send status reply before chaining tools) as optional when the task felt "nearly done." Skipped the reply step under the assumption the next result would arrive quickly.
+**Rule:** Any chain of >2 tool calls OR expected duration >15s = send a brief reply to JT BEFORE starting. Then work. Then send completion. No exceptions, even if the task feels close to done.
+
 ## 2026-03-15 (2) — Used raw launchctl to reload LaunchAgent, killing gateway twice
 **Failure:** Ran `launchctl unload ~/Library/LaunchAgents/ai.openclaw.gateway.plist` twice during an active session to apply ThrottleInterval change. Gateway went offline both times. JT had to manually restart the second time.
 **Root cause:** AGENTS.md rule says "NEVER raw launchctl" but I applied it to a config change I needed to reload — didn't recognize that "never restart via launchctl" includes unload/load cycles. Treated the rule as applying only to restarts, not reloads.
 **Rule:** LaunchAgent plist changes that require a reload = warn JT the gateway will briefly go offline before proceeding, then use restart script. Never run `launchctl unload` or `launchctl load` silently mid-session. If the change can be deferred until JT-initiated restart, defer it.
+
+## 2026-03-16 — Repeatedly stopped mid-task without sending status updates
+**Failure:** Chained 4+ sequential tool calls in a single session without sending interim replies to JT. JT had to ask "update?" 6+ times to get status.
+**Root cause:** Rule 9 exists but I treated it as optional when I was "close to done." Every tool chain felt like it was "almost finished" so I skipped the status reply each time.
+**Rule:** No exceptions to Rule 9. Any operation with >2 tool calls OR >15s expected duration = send a brief status reply BEFORE starting. "Almost done" is not an exception. If I'm already mid-chain and realize I forgot — send the update immediately, don't wait until the end.

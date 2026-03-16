@@ -10,13 +10,30 @@ Every Sunday at 7:30 AM ET — after Scout (which runs at 6 AM).
 
 ---
 
-## Step 1: Load Scout Report
+## Step 1: Load Scout Report + Prior Recommendations
 
 Read: `~/.openclaw/workspace/memory/passive-income/YYYY-MM-DD-scout.md` (today's date)
 
 If file missing or empty: message JT via Telegram — "⚠️ Passive Income Scout report missing — check logs." Stop.
 
 Also read: `~/.openclaw/workspace/agents/passive-income-scout/state.json`
+
+**Cross-reference Mission Control (mandatory before analysis):**
+Pull all existing passive income tasks from the board:
+```bash
+curl -s http://localhost:3000/api/tasks | python3 -c "
+import sys, json
+tasks = json.load(sys.stdin)
+tasks = tasks if isinstance(tasks, list) else tasks.get('tasks', [])
+pi = [t['title'] for t in tasks if isinstance(t, dict) and '[PI]' in t.get('title', '')]
+for t in pi: print(t)
+"
+```
+
+Extract the idea names already on the board. For each Scout idea:
+- If an identical or near-identical idea is already on the MC board AND its status is still `todo` or `in-progress` → mark it **🔁 ALREADY QUEUED**, skip deep analysis, note it in the report.
+- If it was previously recommended but is `done` (JT built it or decided against it) → treat it as a fresh idea (it was evaluated before, but outcome is resolved).
+- Near-identical = same core mechanism AND same target audience. Adjacent angle = fine to re-evaluate.
 
 ---
 
@@ -163,7 +180,7 @@ Check for duplicates first. Skip if exists.
 
 Save to: `~/.openclaw/workspace/memory/passive-income/YYYY-MM-DD-strategist.md`
 
-Include: saturation filter results for all 6 ideas, full blueprint for each 🟢, scoring tables for all, and a 2-sentence portfolio commentary (how this week's winner fits into JT's long-term passive income portfolio alongside Nash Satoshi + Glow Index).
+Include: saturation filter results for all 6 ideas, full blueprint for each 🟢, scoring tables for all, a list of any 🔁 ALREADY QUEUED ideas (with MC task title), and a 2-sentence portfolio commentary (how this week's winner fits into JT's long-term passive income portfolio alongside Nash Satoshi + Glow Index).
 
 ---
 
@@ -196,6 +213,9 @@ Added to Mission Control ✅
 
 [For each 🟡 idea:]
 🟡 [NAME] — [X]/10 — [what's blocking a green]
+
+[If any 🔁 ALREADY QUEUED:]
+🔁 Already on your board (skipped): [idea names] — still unbuilt, check MC.
 
 [If all 🔴:]
 Nothing cleared the bar this week. [1 sentence on why.] Full report saved.

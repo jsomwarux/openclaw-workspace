@@ -6,6 +6,16 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 
 ---
 
+## 2026-03-16
+
+[2026-03-16] TOPIC Claude Code (cost debate, tooling, productivity) — 4 posts / ~170K total engagement | JT has angle: yes (Eve runs on Claude Code/OpenClaw 24/7 for 8+ months, real operational experience vs. "is it worth it" debate) | JT posted recently: no (Mar 12 was cron model defaults — adjacent but not Claude Code itself) | action: HOT LANE FIRED
+
+[2026-03-16] FORMAT Contrarian Hot Take — 3 appearances (~160.8K total engagement) | JT has angle: yes (many consulting + implementation takes) | JT posted recently: Monday/Thursday slots this week already used | action: recommend for next Thursday X hot take slot
+
+[2026-03-16] FORMAT Build announcement / Demo — 3 appearances (~9.2K total engagement) | JT has angle: yes (StreetEasy scraper, Eve, construction dashboard all demo-able) | JT posted recently: Saturday March 16 is StreetEasy stack post | action: strong format — lean into next Saturday or Tuesday with a demo-style post
+
+[2026-03-16] TOPIC Personal AI OS / persistent agents — 3 posts / ~1.6K total engagement | JT has angle: yes (Eve: 8 months, 24/7, 20+ crons, Mac mini) | JT posted recently: no (Sunday March 17 behind-the-build about Eve scheduled but not yet posted) | action: recommend — let Sunday post run, watch response
+
 ## 2026-03-13
 
 [2026-03-13] TOPIC Claude Code drama (production risk / autonomous coding tools) — 4 posts / ~99K total engagement | JT has angle: yes (Eve runs on Claude Code/OpenClaw 24/7 for 6 months, has direct experience with autonomous tooling risks and safeguards) | JT posted recently: no (March 12 was cron/model defaults — adjacent but not Claude Code itself) | action: recommend — HOT LANE FIRED

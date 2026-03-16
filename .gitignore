@@ -1,15 +1,49 @@
-# Databases
+# ── Databases ─────────────────────────────────────────────
 health/health.sqlite
 knowledge/kb.sqlite
+lcm.db
 *.sqlite
 *.sqlite-wal
 *.sqlite-shm
 
-# Logs
+# ── Secrets / credentials (NEVER commit) ──────────────────
+.env
+.env.*
+!.env.example
+config/google-oauth-token.json
+config/*.token.json
+config/*.key.json
+*.pem
+*.p12
+
+# ── Logs & ephemeral runtime state ────────────────────────
 *.log
 logs/
+interventions.jsonl
+memory/costs/*.json
+memory/niche-monitor-cost.log
 
-# Python
+# ── Daily notes (personal health/financial/prospect data) ─
+# Pattern: memory/YYYY-MM-DD.md and memory/YYYY-MM-DD-*.md
+memory/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].md
+memory/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*.md
+
+# ── Agent state & queue files (runtime, high churn) ───────
+agents/*/state.json
+agents/*/queue.jsonl
+agents/portfolio-updater/update-log.md
+agents/overnight/logs/
+
+# ── Generated binary assets ───────────────────────────────
+agents/vibe-marketing/generated-images/
+spanish/audio/
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mov
+
+# ── Python ────────────────────────────────────────────────
 __pycache__/
 *.pyc
 *.pyo
@@ -21,33 +55,15 @@ build/
 .venv/
 venv/
 
-# Node
+# ── Node ──────────────────────────────────────────────────
 node_modules/
 .next/
 
-# Secrets / env (covered by global.env elsewhere)
-.env
-.env.*
-!.env.example
-
-# OAuth tokens / credentials
-config/google-oauth-token.json
-config/*.token.json
-config/*.key.json
-
-# OS
+# ── OS ────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
-
-# Backups (stored separately via backup.sh)
-backups/
-
-# Interventions log (ephemeral runtime state)
-interventions.jsonl
-
-# Spanish lesson audio (too large)
-spanish/audio/
-
-# Temp
 *.tmp
 *.swp
+
+# ── Backups (stored separately via backup.sh) ─────────────
+backups/

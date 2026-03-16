@@ -63,6 +63,9 @@ Trigger: build completed, JT says done/shipped/live, MC task marked done, consul
 Score against rubric in `agents/portfolio-updater/AGENT.md`. ≥7 → append to queue.jsonl (overnight processes). 4-6 → flag to JT: "🌐 Portfolio-worthy? [title] scored [X]/10". <4 → skip.
 Never add to site mid-session without coding agent build + `npm run build` + git push. Queue it now or flag it now.
 
+## Autonomous Post Detection Rule
+When notable work completes (non-obvious problem solved, real outcome with number, pattern across instances, architectural decision), evaluate against `memory/content/post-detection-rubric.md`. Pass → generate X post, write to `memory/content/bank/[MONDAY-DATE]/auto-[slug].md`, upload to Drive `Content/X`, append to `posted-log.jsonl` with `"banked":true`. Main session: check at task completion points only, not after routine replies. Target: 1-3/week across all detection points. Never force it.
+
 ## Proof Points Auto-Update Rule
 Anything shipped, done, or live → update `memory/content-voice.md` Proof Points immediately (same turn). Add to Builds table: `| [Name] | [specific detail that makes it real] |`. Also add to Content-Ready Angles if there's a post hook. Runs in parallel with Portfolio Auto-Update. Internal/infrastructure builds with no demo value: skip.
 
@@ -307,7 +310,6 @@ Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete rule.
 **Recent entries (last 3):**
 | Date | Mistake | Fix |
 |------|---------|-----|
-| 2026-03-15 (2) | Ran `launchctl unload` twice mid-session to apply ThrottleInterval change — killed gateway both times. JT had to manually restart. | Rule: LaunchAgent plist changes requiring reload = warn JT gateway goes offline first, then restart. Never run `launchctl unload/load` silently mid-session. If deferrable, defer to JT-initiated restart. |
-| 2026-03-15 | Gateway dead 13h (10PM Sat–10:55AM Sun). Root cause: `context-mode` Claude plugin (PID 3682) ran since Wed 1PM — 100% CPU, 2.6GB RAM — OOM-killed gateway. Spanish lesson cron also tried to deliver to `@jtsomwaru` (username) instead of `6608544825`, causing startup crashes. | Watchdog installed (`com.openclaw.gateway-watchdog`, 10min interval) — kills runaway context-mode, kicks gateway if dead. Spanish lesson delivery fixed: `announce, to: 6608544825`. Rule: isolated crons delivering to JT MUST use numeric ID `6608544825`, never a username. Diagnose gateway crashes with `ps aux \| sort -k4 -rn \| head -10` first. |
-| 2026-03-12 | Said "fixing that now" then went silent — JT had to ask "complete?" multiple times. | Rule: every task that starts with status reply MUST end with explicit completion confirmation. Sequence: (1) brief status reply, (2) do work, (3) send "Done" summary. Step 3 is not optional. |
-| 2026-03-11 | MEMORY.md stale across 5+ sections — Agentforce ban listed as active after being lifted, Cowork/Avallon listed as active after being closed, H.C. Oswald listed "ready to send" after outreach was sent. JT had to manually find and request fixes. | Root cause: no mandatory rule tied MEMORY.md updates to the moment decisions were made. MEMORY.md Live-Update Rule added: update in same turn as decision, no exceptions. "I'll update it later" = Rule 1 violation. |
+| 2026-03-15 (2) | Ran `launchctl unload` twice mid-session — killed gateway both times. | Rule: LaunchAgent plist changes = warn JT gateway goes offline first. Never run `launchctl unload/load` silently mid-session. |
+| 2026-03-15 | Gateway dead 13h. Root cause: context-mode plugin OOM-killed it. Spanish lesson cron delivered to `@jtsomwaru` (username) instead of `6608544825`. | Watchdog installed. Rule: isolated crons delivering to JT MUST use numeric ID `6608544825`, never a username. |
+| 2026-03-12 | Said "fixing that now" then went silent — JT had to ask "complete?" multiple times. | Rule: every task that starts with status reply MUST end with explicit completion confirmation. Step 3 is not optional. |

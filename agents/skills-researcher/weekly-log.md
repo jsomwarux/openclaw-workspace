@@ -45,4 +45,43 @@ _Week starting 2026-03-14 — reset after 2026-W11 synthesis_
 - Better semantic search across text + image. Relevant for future RAG pipelines.
 - Source: @googledevs (1.9K likes, 255K views)
 
+---
+
+## 2026-03-16 — Daily Scan
+
+### 🟡 Agentforce Contact Center — Salesforce Native CCaaS, Enterprise Connect 2026
+- Salesforce launched native telephony + unified routing baked into the CRM. CRM-native, not bolted-on.
+- Agentforce ARR surged +169% in Q4 earnings — demand is real and accelerating.
+- CCaaS market is dissolving INTO Salesforce (major competitors disrupted).
+- JT's Agentforce niche: Salesforce shops are now being pitched a full native contact center stack — creates implementation demand.
+- Priority gate: no active Agentforce client → 🟡, but strong forward consulting signal.
+- Source: Enterprise Connect 2026 / @Littl3Lobst3r + investor.salesforce.com
+
+### 🟡 CoinMarketCap MCP Server — Real-Time Crypto Data for AI Agents
+- Official CMC MCP server launched: live prices, market cap, volume, sentiment for AI agents via MCP.
+- Direct fit: crypto-agent could integrate for richer market intelligence without custom scraping.
+- Cost: likely free tier (CMC offers free API tier). Unvetted — GitHub check needed.
+- Source: @CoinMarketCap (202 likes, 278K views) — official account, high credibility.
+
+### 🟡 OpenClaw v2026.3.13-1 — Recovery Patch (no new features)
+- Recovery release: fixes broken v2026.3.13 tag/release path. GitHub tag only — npm still at 2026.3.13.
+- Bugfixes: compaction token count sanity check, Telegram thread media SSRF policy, Discord metadata fetch.
+- No config changes needed. State updated.
+
+### 🟢 n8n Roofing Construction Automation — $5K Workflow Pattern
+- @hamza_automates: n8n workflow for roofers — reads job requests, pulls project details, auto-processes.
+- Signals: construction/skilled trades niche (our primary!) is actively being automated with n8n.
+- Our construction job-tracker template is already built (2026-03-15). Community validation.
+- Source: @hamza_automates (215 likes, 26K views)
+
+### 🟢 OpenClaw Browser Plugin — Real Chrome Profile + CRM Automation
+- @aisearchmastery: OpenClaw new update enables live Chrome profile use — Gmail, LinkedIn, CRM actions.
+- Relevance: consulting demo potential (show clients AI controlling their real browser).
+- Source: X (0 likes but video demo visible)
+
+### Previously noted (no change needed):
+- n8n CVE-2025-68613: our instance at 1.122.0 ✅, already in MC + log.
+- OpenRouter stealth models: already logged 2026-03-14, still 🟡.
+- Anthropic Academy Claude Code courses: already in MC as 🟠 task.
+
 

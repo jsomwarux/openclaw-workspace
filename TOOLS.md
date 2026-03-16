@@ -219,9 +219,11 @@ Include in the task prompt: *"Activate [Agent Name] mode for this session."*
 - Run after deck-built and outreach-drafted stages. Include Drive links in JT's review message.
 - List synced clients: `python3 scripts/pipeline_drive_sync.py --list`
 
-## Notion — Viral Post Swipe File
+## Notion
 - Integration token: ntn_I6090101509856iOb9JOeecrHaqzwG24r7PCjud0PE49iU
-- Database ID: 31316aff930580f6a195ca179793eb0e
+- **Viral Post Swipe File** DB ID: 31316aff930580f6a195ca179793eb0e
+- **Content Calendar** DB ID: 32516aff930581a78659eac869c71ba8 | Page: https://www.notion.so/32516aff930581a78659eac869c71ba8
+  - Properties: Post (title), Date, Platform (select), Type (Planned/News Hook/Vibe), Status (To Post/Posted/Skipped), Drive Link, Week
 - Push script: `python3 ~/.openclaw/workspace/scripts/notion-swipe-push.py --text "..." --author "@handle" --url "..." --niche "AI Agents" --format "Hot Take" --why "..." --engagement 1200 --hook "Contrarian claim"`
 - Seed script: `python3 ~/.openclaw/workspace/scripts/notion-swipe-seed.py` (one-time bulk population)
 - Cron: 3x/week Mon/Wed/Fri 5:30AM EST isolated sonnet — searches X for viral posts, pushes to Notion
