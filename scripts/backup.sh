@@ -93,6 +93,38 @@ else
   log "  ⚠ GitHub push failed (local backup still complete)"
 fi
 
+# ── GitHub push — jt-consulting-pipeline ─────────────────────────────────────
+log "Pushing jt-consulting-pipeline to GitHub..."
+cd "$HOME/projects/jt-consulting-pipeline"
+if git diff --quiet && git diff --cached --quiet; then
+  log "  ✓ No changes to commit"
+else
+  git add -A
+  git commit -m "Nightly backup — $(date +%Y-%m-%d)" >> "$LOG" 2>&1
+  log "  ✓ Committed pipeline changes"
+fi
+if git push origin master >> "$LOG" 2>&1; then
+  log "  ✓ Pushed to jsomwarux/jt-consulting-pipeline"
+else
+  log "  ⚠ Pipeline push failed (non-fatal)"
+fi
+
+# ── GitHub push — n8n-agent ───────────────────────────────────────────────────
+log "Pushing n8n-agent to GitHub..."
+cd "$HOME/projects/n8n-agent"
+if git diff --quiet && git diff --cached --quiet; then
+  log "  ✓ No changes to commit"
+else
+  git add -A
+  git commit -m "Nightly backup — $(date +%Y-%m-%d)" >> "$LOG" 2>&1
+  log "  ✓ Committed n8n-agent changes"
+fi
+if git push origin main >> "$LOG" 2>&1; then
+  log "  ✓ Pushed to jsomwarux/n8n-agent"
+else
+  log "  ⚠ n8n-agent push failed (non-fatal)"
+fi
+
 # ── Summary ───────────────────────────────────────────────────────────────────
 size=$(du -sh "$DEST" 2>/dev/null | cut -f1)
 remaining=$(ls -d "$BACKUP_ROOT"/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] 2>/dev/null | wc -l | tr -d ' ')
