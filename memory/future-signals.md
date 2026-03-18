@@ -150,9 +150,23 @@
 - **Logged:** 2026-03-15
 - **Potential value:** Validated demand before building. Reduces passive income app failure rate. Worth a 30-minute manual review at the right time.
 
+### n8n lessons.md — Category Index
+- **What:** Add a Quick Index table at the top of `~/projects/n8n-agent/tasks/lessons.md` grouping lesson numbers by category (Webhook/HTTP, Code nodes, Sheets, Auth, Data flow/$json, etc.). Agent reads index first, jumps to relevant cluster instead of scanning all lessons linearly.
+- **Why deferred:** File is 21KB / 52 lessons — still fast to read in full. Index adds noise before it adds value.
+- **Trigger:** lessons.md hits ~80 lessons OR ~40KB. At that point add the index and log a lesson in lessons.md itself about using it.
+- **First action when triggered:** Eve adds the index block at line 3 of lessons.md, commits, updates this signal as Graduated.
+- **Logged:** 2026-03-17
+- **Potential value:** Prevents agent from missing applicable lessons as the file grows past 100 entries.
+
 ---
 
 ## Graduated (moved from "not now" to active)
 | Signal | Graduated | What triggered it |
 |--------|-----------|-------------------|
 | Superpowers (Claude Code skills framework) | 2026-03-11 | Clear immediate value for overnight builds and client deliverables. Installed same day. |
+
+## Job Posting Sniper — consulting lead signal agent
+**What:** Monitor LinkedIn/Indeed for NYC SMBs posting Ops/Marketing/Sales Manager roles. Job posting = public admission of budget + pain. Pitch: "before you hire for $120K/yr, try n8n at $3,500." Agent scans daily → extracts company + decision-maker → generates T2-style outreach → drops into pipeline queue.
+**Why deferred:** Existing T2/T3 pipeline (prospect-discovery + outreach-pipeline + t3-cold-hook) hasn't converted first client yet. LinkedIn job API requires partner program; Indeed gated. Build complexity is higher than task description implies. Adding lead volume before funnel converts is premature.
+**Trigger:** 2+ closed consulting clients from existing pipeline AND existing pipeline is consistently saturated (20+ T2 prospects queued). Re-evaluate at that point.
+**Note:** The "hire vs. automate" pitch angle is immediately usable in T3 cold hooks without building the sniper — wire it in as a copy variant for Ops/Marketing-adjacent prospects.

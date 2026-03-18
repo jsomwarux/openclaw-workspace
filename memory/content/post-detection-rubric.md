@@ -53,7 +53,15 @@ Target: 1-3 autonomous posts per week across all detection points. If a week pro
 
 ## Output Format (when a post qualifies)
 
-Generate ONE post per event. Write to bank immediately.
+Generate TWO posts per event — one X post and one LinkedIn post. Write both to bank immediately.
+
+**LinkedIn format for auto-detected builds:**
+- Format: "Behind the Build" or "Proof of Work" — 3–5 short paragraphs
+- Lead with the problem the build solves, not the build itself
+- Include one specific architectural decision or tradeoff
+- End on capability proof, never advice or self-promotion
+- Must pass content-voice.md audit checklist before writing to bank
+- File: `memory/content/bank/[MONDAY-DATE]/auto-[slug]-linkedin.md`
 
 **File path:** `~/.openclaw/workspace/memory/content/bank/[THIS-MONDAY-DATE]/auto-[slug].md`
 
@@ -70,7 +78,7 @@ angle_id: null
 [post text — 2-4 tweets, X format, lowercase where appropriate, no banned words]
 ```
 
-**Drive upload:**
+**Drive upload (X):**
 ```bash
 cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
   --title "Auto-detected post — [slug] ([DATE])" \
@@ -78,9 +86,18 @@ cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
   --file memory/content/bank/[THIS-MONDAY-DATE]/auto-[slug].md
 ```
 
-**posted-log entry:**
+**Drive upload (LinkedIn):**
+```bash
+cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
+  --title "Auto-detected LinkedIn — [slug] ([DATE])" \
+  --path "Content/LinkedIn" \
+  --file memory/content/bank/[THIS-MONDAY-DATE]/auto-[slug]-linkedin.md
+```
+
+**posted-log entries:**
 ```json
 {"date": "[YYYY-MM-DD]", "platform": "x", "pillar": "autonomous-detection", "topic": "[topic]", "banked": true, "posted": false, "source": "[source]", "rubric": "[which criterion]"}
+{"date": "[YYYY-MM-DD]", "platform": "linkedin", "pillar": "autonomous-detection", "topic": "[topic]", "banked": true, "posted": false, "source": "[source]", "rubric": "[which criterion]"}
 ```
 
 ---

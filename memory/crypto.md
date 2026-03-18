@@ -3,6 +3,14 @@
 
 ---
 
+## Mar 17, 2026 — 6PM Heartbeat
+- **BTC:** ~$73,700–$74,600 | Hit intraday high of $75,912 (6-week high) before pulling back below $75K
+- **Derivatives-driven rally:** early Asian session surge above $75K described as derivatives-led; gave up gains, highlighting fragility near $75K resistance
+- **Move from last check:** ~$71K → ~$73.7K = +3.8%, no ±15% alert
+- **Trend:** 10+ consecutive sessions of ETF buying; $75K is key resistance zone capping multiple rallies in 2026
+- **JT portfolio:** Constructive. Holding above $73K after testing $75K is neutral-to-bullish. Next break above $75K could accelerate toward $80K target.
+- No alert triggered
+
 ## Mar 15, 2026 — 2PM Heartbeat
 - **BTC:** ~$70,982–$71K | Holding above $70K support, range-bound $65K–$73.3K
 - **Whale signal:** BTC whale activity hit a 6-year peak — large holders accumulating near $71K while fear gauge sits at 15 (Extreme Fear). Historically a bullish contrarian signal.

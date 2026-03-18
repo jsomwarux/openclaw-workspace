@@ -69,3 +69,12 @@
 ## 2026-03-16 (3AM Overnight Run)
 - **Construction Job Tracker** — score 7/10, auto-approved. Added to queue.jsonl (status: approved_pending_build). MC task pushed: "🌙 Build: Add Construction Job Tracker portfolio card to jtsomwaru.com (7/10 auto-approved)". Slug added to state.json addedSlugs.
 - **PM Maintenance Triage** — score 6/10, flagged to JT. Added to queue.jsonl (status: flagged_jt_decision). MC task pushed: "🌙 Portfolio decision: PM Maintenance Triage n8n Template scored 6/10 — add to site?"
+
+## 2026-03-17
+- Items in queue: 1 pending (construction-job-tracker, score 7/10, auto-approved)
+- Auto-approved: construction-job-tracker
+- Flagged to JT: none
+- Skipped: none
+- Demand reorder: no (lastReorderDate: 2026-03-10, 7 days ago — exactly at threshold, skipping reorder to avoid churn)
+- Skills grid updated: no
+- Vercel deploy triggered: yes (commit c735b48)

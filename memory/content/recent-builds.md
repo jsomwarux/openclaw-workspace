@@ -22,6 +22,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## AgentGuard — AI Governance Layer — 2026-03-17
+**What:** Production governance middleware for AI agents — confidence scoring routes decisions automatically (≥70%) or to human review (<70%), with full audit trail, override logging, and governance reports. Live demo: HR candidate screening.
+**For:** internal (portfolio build — demonstrates enterprise AI governance patterns)
+**Outcome:** Live at agentguard-delta.vercel.app, portfolio card on jtsomwaru.com. Demonstrates the trust layer missing from most AI agent deployments.
+**Demonstrates:** enterprise AI governance, human-in-the-loop design, confidence-based routing, audit trail architecture, responsible AI deployment patterns
+**Content angle:** "Every AI demo shows what it does when it's right. AgentGuard shows what happens when the agent isn't sure — and why that's the thing that decides whether AI goes to production."
+**Status:** complete
+
 ## Construction Job Tracker — n8n T2 Template — 2026-03-15
 **What:** n8n workflow for contractors — foreman sends one WhatsApp/SMS update, Claude classifies job status, client gets auto-notification, owner gets alerted only on blockers
 **For:** internal (T2 reusable template for construction/trades prospects)

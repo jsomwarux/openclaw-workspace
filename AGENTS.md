@@ -42,6 +42,7 @@ Rule: if the decision happened and MEMORY.md doesn't reflect it yet, MEMORY.md i
 7. Thinking depth matches complexity: casual → snappy; research/code/analysis → reason thoroughly.
 8. Acknowledge long tasks (>60s): send "Got it, working on this" immediately, full result after.
 9. **Reply before chaining tools (mandatory):** Any operation involving >2 sequential tool calls OR expected duration >15s → send a brief status reply to JT FIRST ("On it — [what I'm doing]"), then chain the tools. Never run a multi-step exec chain silently while JT is in an active conversation. Silence = apparent freeze = forced gateway restart.
+9b. **Phase break rule (mandatory):** Multi-phase tasks (research → write, search → build, gather → analyze) MUST send an interim reply between phases: "Research done, writing now" or equivalent. Never chain research + writing without a mid-task message. Hard cap: ≤4 tool calls between replies in any active conversation.
 9a. **NEVER run `claude` CLI subprocesses from exec in the main session.** Running `claude --print`, piping to `claude`, or any `claude [args]` command from exec blocks the gateway synchronously and WILL freeze it. If Claude Code work is needed: use `sessions_spawn` with runtime="acp" (background, push-based) or the coding-agent skill. Plugin slash commands (`/plugin install`) require JT to run them directly in a terminal — acknowledge this limitation, do not attempt workarounds.
 10. **Heartbeat during active conversation = HEARTBEAT_OK immediately.** If JT has sent a message in the current session context, reply HEARTBEAT_OK and stop. Do NOT run cron audits, cost checks, or any multi-tool protocol during an active conversation. Heartbeat full protocol is for idle sessions only. Active conversation + full heartbeat protocol = guaranteed freeze.
 
@@ -64,7 +65,7 @@ Score against rubric in `agents/portfolio-updater/AGENT.md`. ≥7 → append to 
 Never add to site mid-session without coding agent build + `npm run build` + git push. Queue it now or flag it now.
 
 ## Autonomous Post Detection Rule
-When notable work completes (non-obvious problem solved, real outcome with number, pattern across instances, architectural decision), evaluate against `memory/content/post-detection-rubric.md`. Pass → generate X post, write to `memory/content/bank/[MONDAY-DATE]/auto-[slug].md`, upload to Drive `Content/X`, append to `posted-log.jsonl` with `"banked":true`. Main session: check at task completion points only, not after routine replies. Target: 1-3/week across all detection points. Never force it.
+When notable work completes (non-obvious problem solved, real outcome with number, pattern across instances, architectural decision), evaluate against `memory/content/post-detection-rubric.md`. Pass → generate **both** an X post AND a LinkedIn post, write to `memory/content/bank/[MONDAY-DATE]/auto-[slug].md` (X) and `auto-[slug]-linkedin.md` (LinkedIn), upload both to Drive (`Content/X` and `Content/LinkedIn`), append both to `posted-log.jsonl` with `"banked":true`. Also add to `recent-builds.md` so Monday content crons pick up the build. Main session: check at task completion points only, not after routine replies. Target: 1-3/week across all detection points. Never force it.
 
 ## Proof Points Auto-Update Rule
 Anything shipped, done, or live → update `memory/content-voice.md` Proof Points immediately (same turn). Add to Builds table: `| [Name] | [specific detail that makes it real] |`. Also add to Content-Ready Angles if there's a post hook. Runs in parallel with Portfolio Auto-Update. Internal/infrastructure builds with no demo value: skip.
@@ -282,7 +283,13 @@ Key rules (enforced always — no exceptions):
 - Threads: max 5 tweets; most should be 3
 
 ## n8n Build Rule
-After EVERY n8n workflow build (standalone or pipeline), update `~/projects/n8n-agent/tasks/lessons.md` with lessons learned before the session ends. Format: `[client-name/workflow-name]: lesson`. Then `git add tasks/lessons.md && git commit -m "Update lessons.md — [workflow-name]"`. No exceptions — a build without a lessons update is incomplete.
+**Before** ANY n8n workflow build: read `~/projects/n8n-agent/tasks/lessons.md` in full. No exceptions. Building without reading lessons first = guaranteed repeat failures on already-solved problems.
+
+**How to build:** Always spawn the Claude Code ACP agent (`sessions_spawn` runtime="acp", workdir=`~/projects/n8n-agent`). Do NOT build n8n workflows via exec/Python scripts directly — the ACP agent reads CLAUDE.md (which enforces lessons.md read at session start). If Eve must build directly for any reason, she must read lessons.md herself before writing a single node.
+
+**Task prompt when spawning:** must include `"Read tasks/lessons.md in full before starting. Apply all relevant lessons."`
+
+After EVERY n8n workflow build, update `~/projects/n8n-agent/tasks/lessons.md` with lessons learned before the session ends. Format: `[client-name/workflow-name]: lesson`. Then `git add tasks/lessons.md && git commit -m "Update lessons.md — [workflow-name]"`. No exceptions — a build without a lessons update is incomplete.
 
 ## Agentforce Build Rules
 - Sync is live: `jsomwarux/agentforce-agent` → `~/projects/agentforce-agent`
@@ -291,7 +298,7 @@ After EVERY n8n workflow build (standalone or pipeline), update `~/projects/n8n-
 - Overnight builds are allowed — pull first, push after, every time
 
 ## n8n Demo Close-Out Checklist
-Not done until: (1) workflow JSON saved to `~/projects/n8n-agent/workflows/[name].json` (2) git commit + push (3) lessons.md updated (4) MC task done (5) daily note updated (6) portfolio queue entry added (7) any JT manual steps → 🌙 HIGH MC task.
+Not done until: (1) workflow JSON saved (2) git commit + push (3) lessons.md updated (4) MC task done (5) daily note updated (6) portfolio queue entry added (7) JT manual steps → 🌙 HIGH MC task.
 
 ## Agentforce Site Rules (still enforced)
 - B2B Account Service Agent: permanently banned from jtsomwaru.com (JT decided 2026-03-06). Do not add it.
@@ -310,6 +317,6 @@ Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete rule.
 **Recent entries (last 3):**
 | Date | Mistake | Fix |
 |------|---------|-----|
+| 2026-03-17 | Called `cron list` (all 35 jobs + full payloads) in active conversation to check ONE cron. Filled context window, caused overflow on every subsequent message including "are you there?" — forced gateway restart. | Rule: **NEVER call `cron list` in an active conversation.** To check one cron: use `cron runs --jobId [id]`. Full list loads 35 payloads and will overflow context. |
 | 2026-03-15 (2) | Ran `launchctl unload` twice mid-session — killed gateway both times. | Rule: LaunchAgent plist changes = warn JT gateway goes offline first. Never run `launchctl unload/load` silently mid-session. |
 | 2026-03-15 | Gateway dead 13h. Root cause: context-mode plugin OOM-killed it. Spanish lesson cron delivered to `@jtsomwaru` (username) instead of `6608544825`. | Watchdog installed. Rule: isolated crons delivering to JT MUST use numeric ID `6608544825`, never a username. |
-| 2026-03-12 | Said "fixing that now" then went silent — JT had to ask "complete?" multiple times. | Rule: every task that starts with status reply MUST end with explicit completion confirmation. Step 3 is not optional. |

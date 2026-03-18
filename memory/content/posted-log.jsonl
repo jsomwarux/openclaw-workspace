@@ -24,3 +24,6 @@
 {"date": "2026-03-20", "platform": "x", "day": "friday", "pillar": "tactical-insight", "topic": "best-first-automation-runs-on-schedule-already-half-built", "angle_id": null, "posted": false}
 {"date": "2026-03-21", "platform": "x", "day": "saturday", "pillar": "build-in-public", "topic": "content-gen-and-delivery-separate-crons-separation-is-reliability", "angle_id": "arch-isolated-split", "posted": false}
 {"date": "2026-03-22", "platform": "x", "day": "sunday", "pillar": "behind-the-build", "topic": "pm-triage-escalation-logic-vendor-goes-quiet-only-then-pm-pulled-in", "angle_id": null, "posted": false}
+{"date": "2026-03-17", "platform": "x", "pillar": "autonomous-detection", "topic": "agentguard-governance", "banked": true, "posted": false, "source": "build", "rubric": "architectural decision with real tradeoffs"}
+{"date": "2026-03-17", "platform": "x", "pillar": "autonomous-detection", "topic": "agentguard-confidence-threshold", "banked": true, "posted": false, "source": "build", "rubric": "non-obvious problem solved"}
+{"date": "2026-03-17", "platform": "linkedin", "pillar": "autonomous-detection", "topic": "agentguard-governance", "banked": true, "posted": false, "source": "build", "rubric": "architectural decision with real tradeoffs"}

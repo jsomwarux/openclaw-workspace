@@ -16,6 +16,7 @@
 
 ## Infrastructure (updated 2026-03-15)
 - OpenClaw version: 2026.3.13 (updated 2026-03-15)
+- bootstrapMaxChars: 32000 (raised from default 20k on 2026-03-17 — gives AGENTS.md ~7k headroom at current 25,197 chars)
 - Gateway watchdog: `com.openclaw.gateway-watchdog` (10-min interval) — kills context-mode if RSS >1.5GB, kicks gateway if dead. Script: `scripts/gateway-watchdog.sh`
 - context-mode Claude plugin: DISABLED (was causing OOM kills — disabled in `~/.claude/settings.json`)
 - LaunchAgent ThrottleInterval: 10s (raised from 1s to prevent rapid crash loop)
@@ -79,6 +80,7 @@
 - SOUL.md updated: critic mode activated on /critic or soft-signal detection
 
 ## Active Apps
+- AgentGuard: AI governance layer — **LIVE at https://agentguard-delta.vercel.app** (March 2026). Confidence scoring + human-in-the-loop + audit log + explainability report. Insurance claims triage demo. Portfolio card on jtsomwaru.com.
 - Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
 - Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private)
 - Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL

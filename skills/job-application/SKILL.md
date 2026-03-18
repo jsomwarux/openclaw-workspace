@@ -12,6 +12,7 @@ description: Creates tailored job application packages for JT Somwaru — resume
 Read these files before writing a single word:
 - `~/.openclaw/workspace/USER.md` — JT's background, education, communication style
 - `~/.openclaw/workspace/MEMORY.md` → Job Market section — current pipeline, skill gaps, salary floor
+- `~/.openclaw/workspace/skills/job-application/application-intelligence.md` — **MANDATORY** — full resume/cover letter strategy, ATS rules, bullet frameworks, keyword banks, quantification tactics, anti-patterns. Supersedes any general guidance you have. Read this fully before writing.
 
 JT's non-negotiables (never compromise):
 - NOT a developer — never position as Apex coder, ML engineer, or software dev
@@ -75,17 +76,51 @@ Save to: `~/.openclaw/workspace/memory/drafts/[company-slug]-cover-letter.md`
 
 ---
 
-## Step 4: Upload both to Google Drive (mandatory)
-Run for EACH document:
-```
-cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
-  --title "JT Somwaru — [Company] — [Resume|Cover Letter]" \
-  --path "Job Applications/Resumes" \
-  # For cover letters: --path "Job Applications/Cover Letters"
-  --file memory/drafts/[filename].md
+## Step 4: Generate .docx and upload to Drive (mandatory)
+
+**NEVER write resume/cover letter as markdown.** Always generate proper .docx using build_resume_docx.py.
+
+1. Update `scripts/build_resume_docx.py` with tailored content for the role
+2. Generate: `python3 ~/.openclaw/workspace/scripts/build_resume_docx.py --type both --output-dir /tmp`
+3. Upload using the Drive API directly (binary → convert to Google Doc on upload):
+
+```python
+import json, os, warnings; warnings.filterwarnings("ignore")
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload
+from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
+TOKEN_PATH = os.path.expanduser("~/.openclaw/workspace/config/google-oauth-token.json")
+with open(TOKEN_PATH) as f: td = json.load(f)
+creds = Credentials(token=td["token"], refresh_token=td["refresh_token"],
+    token_uri=td["token_uri"], client_id=td["client_id"],
+    client_secret=td["client_secret"], scopes=td["scopes"])
+if creds.expired: creds.refresh(Request())
+drive = build("drive", "v3", credentials=creds, cache_discovery=False)
+def find_folder(name, pid=None):
+    q = f"name='{name}' and mimeType='application/vnd.google-apps.folder' and trashed=false"
+    if pid: q += f" and '{pid}' in parents"
+    r = drive.files().list(q=q, fields="files(id)").execute()
+    return r["files"][0]["id"] if r["files"] else None
+root = find_folder("Eve — Drafts"); ja = find_folder("Job Applications", root)
+for path, folder, title in [
+    ("/tmp/jt-somwaru-resume.docx", find_folder("Resumes", ja), "JT Somwaru — [COMPANY] — Resume"),
+    ("/tmp/jt-somwaru-cover-letter.docx", find_folder("Cover Letters", ja), "JT Somwaru — [COMPANY] — Cover Letter"),
+]:
+    meta = {"name": title, "parents": [folder], "mimeType": "application/vnd.google-apps.document"}
+    media = MediaFileUpload(path, mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+    r = drive.files().create(body=meta, media_body=media, fields="id").execute()
+    print(f"{title}: https://docs.google.com/document/d/{r['id']}/edit")
 ```
 
-Both must be uploaded. Local-only delivery is not acceptable.
+Design is embedded natively — Google Docs renders correctly, exports to ATS-readable PDF.
+- Name: 22pt bold navy | Section headings: 12pt bold navy ALL CAPS + rule
+- Job title: 11pt bold black; Company/dates: 10.5pt gray right-aligned  
+- Bullets: 10.5pt black, 0.25" indent, real bullet character (•)
+- Builds: inline text only — **NO TABLES** (ATS drops all table content) | Margins: 0.75"
+**To submit:** File → Download → PDF in Google Docs.
+
+Both must be uploaded. Local-only is not acceptable.
 
 ---
 

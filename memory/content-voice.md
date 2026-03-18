@@ -65,6 +65,21 @@ Use compression to cut waste. Use depth when the goal is credibility, not virali
 
 **No self-promotional endings.** Ending a post with "this is the gap AI implementation consultants like myself close" turns insight into a pitch. Let the content do the work. If readers want to know who wrote it, the profile is right there.
 
+**Never close the door on prospects.** Do not end a post with language that implies the opportunity has already passed and nothing can be done — e.g. "The window to be early closed faster than anyone expected." That creates resignation, not urgency. Prospects who feel they've already lost don't hire a consultant. Instead: frame the gap as closeable and time-sensitive. The correct structure is: [early movers have an advantage] → [the catch-up window is still open but closing] → [acting in the next N months still puts you in the top quartile]. Urgency = there's still time, but not unlimited time. Resignation = it's already over. Always use urgency, never resignation.
+
+**Never open with the solution before the reader has the problem.** For any post about a build (AgentGuard, InsuranceServiceAgent, n8n workflows, etc.): the first sentence must name the problem the reader already feels — not the product, tool, or feature you built. The reader doesn't know what "AgentGuard" is. They do know the feeling of a deployment stalling in legal review. Lead with the problem, earn the right to introduce the solution.
+- ❌ WRONG: "Every AI decision in AgentGuard gets a confidence score." (reader has no context)
+- ❌ WRONG: "Most AI agent demos show what happens when the model is confident." (meta-commentary about demos, not about the reader's problem)
+- ✅ RIGHT: "The reason most enterprise AI deployments stall before they ship isn't the model. It's the question nobody can answer: what happens when the agent is wrong?" (reader recognizes this problem immediately)
+This applies to both LinkedIn and X. On X it can be compressed — but the first line still names the pain, not the product.
+
+**News hook posts must include a verified source.** Every news hook post must cite the source URL both in the draft file header (`Source: [URL]`) and in a `[First comment: Source — URL]` note at the bottom of the post. Never use a statistic or finding that hasn't been confirmed by fetching the actual source page. If a stat can't be verified, don't use it.
+
+**Never close the door on the prospect.** Posts about adoption trends or market shifts must NEVER end with a message that implies the reader has already lost or missed their window. "The window to be early is closed" creates resignation — a PM owner who feels like they already lost doesn't DM a consultant, they scroll past. Instead, frame the urgency as: the early movers have a head start, but the catch-up window is still open and closing. This positions JT as the person who helps them close the gap — which is the actual consulting pitch.
+- ❌ WRONG: "The window to be early on this closed faster than anyone expected."
+- ✅ RIGHT: "The window to be first is closed. The window to catch up is still open — and closing."
+Audit check: read the last 2 sentences of any trend/adoption post. Does the reader feel like they've already lost? If yes, rewrite.
+
 ### X Schedule
 
 | Day | Format | Technical slot? |
@@ -191,6 +206,7 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 | H.C. Oswald copilot (in progress) | Product Knowledge Copilot for a 103-year-old Bronx HVAC supplier. RAG over Shopify catalog. English + Spanish. Surfaces 100 years of parts knowledge via Intercom. Outreach sent. |
 | PM maintenance triage template (n8n) | Reusable T2 outreach template for NYC property managers (AppFolio/Buildium). Tenant submits request → Claude classifies urgency + category → routes to vendor → auto-notifies tenant → logs to Sheets → escalates no-shows. Configurable per prospect in ~2 hours. |
 | Construction job progress tracker (n8n) | Reusable T2 template for NYC GCs/contractors (ServiceTitan/Jobber users). Foreman sends one WhatsApp message → Claude classifies on-track/at-risk/blocked → client gets auto-update → job logged to Sheets → owner alerted only on blockers. Kills 30–60 min/day of status calls. Configurable per prospect in ~2 hours. |
+| AgentGuard (governance layer) | Confidence-gated routing for AI agents — ≥70% executes automatically, <70% goes to human review queue. Full audit trail on every decision. Live at agentguard-delta.vercel.app. Demo: HR candidate screening. The thing that gets AI deployments approved by legal/compliance. |
 
 ### Background Proof (6 years of real enterprise implementation)
 - BSA at Spectrum Enterprise 2019–2025: watched Salesforce implementations at the $500K–$2M scale get adopted wrong
@@ -207,6 +223,7 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 - "StreetEasy manual search: 4–6 hours every 2 weeks. After automation: zero. $1,000 project."
 - "NYC property managers spend 40% of their day routing maintenance requests. I built the template that automates the whole thing — intake to vendor dispatch to tenant update to no-show escalation."
 - "NYC contractors spend 30–60 min/day calling foremen for status updates. Foreman sends one WhatsApp message. Client gets a professional update. Owner gets an alert only when something's actually blocked."
+- "Built a governance layer for AI agents: confidence scoring decides what runs automatically and what goes to a human. ≥70% auto-executes. Below that, it queues for review. Every decision logged. That's what gets AI approved in enterprise."
 
 ---
 
@@ -419,6 +436,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] If this is a build-showcase post, does it end on capability proof (what it does) — not advice (what the reader should do)?
 - [ ] If a demo video exists for the build, is it flagged for attachment? If yes, no link in post body.
 - [ ] If a source article is relevant (news hook), is a first-comment URL included alongside the draft?
+- [ ] For any build-showcase post: does the first sentence name a problem the reader already feels — NOT the product name, feature, or tool? If the post opens with "AgentGuard", "InsuranceServiceAgent", "n8n", or any build name → rewrite the opener.
 
 ### X only (algorithm compliance):
 - [ ] First line invites a reply?

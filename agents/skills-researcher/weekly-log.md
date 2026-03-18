@@ -84,4 +84,45 @@ _Week starting 2026-03-14 — reset after 2026-W11 synthesis_
 - OpenRouter stealth models: already logged 2026-03-14, still 🟡.
 - Anthropic Academy Claude Code courses: already in MC as 🟠 task.
 
+---
+
+## 2026-03-17 — Daily Scan
+
+### 🟠 CoinMarketCap MCP Server — Promoted from 🟡 (2026-03-16)
+- Official CoinMarketCap MCP server: real-time prices, market cap, volume, listings via natural language.
+- Re-assessed today: directly fits crypto-agent + Nash Satoshi live data ingestion. Installable now with free CMC API key.
+- MC task pushed: "🟠 CoinMarketCap MCP Server — live crypto data for crypto-agent"
+- Source: @CoinMarketCap (201 likes, 282K views) + coinmarketcap.com/api/mcp/
+- Technical angle added.
+
+### 🟡 Anthropic Advanced Tool Use — Tool Search + Programmatic Calling + Tool Use Examples
+- Already on board as 🔴 task. No new action needed. Confirming still active/relevant.
+- Context: reduces 50K+ token bloat in heavy-tool agent builds. Relevant to n8n-agent and research-agent.
+- Source: anthropic.com/engineering/advanced-tool-use
+
+### 🟡 OpenRouter Hunter Alpha + Healer Alpha Stealth Models (re-confirmed)
+- Hunter Alpha: 1T params, 1M context, agentic use, currently free. Community: likely Gemini 3.1 thinking or Kimi K2.5.
+- Healer Alpha: omni-modal, free, 128K context.
+- ⚠️ Both log all prompts/completions — not safe for client data. Monitor for official reveal.
+- Already logged 2026-03-14.
+
+### 🟡 n8n CVE-2025-68613 CVSS 10.0 RCE — CONFIRMED PATCHED
+- CISA-mandated patch (CVE-2025-68613). n8n instance on Mac mini: ✅ 1.122.0 (patched). No action needed.
+- Source: @the_yellow_fall / CISA KEV / securityonline.info
+
+### 🟡 Agentforce CCaaS Disruption — Enterprise Connect 2026 Signal (re-confirmed)
+- Salesforce Agentforce Contact Center = native telephony + CRM routing. Major CCaaS players disrupted.
+- Validates JT's Agentforce consulting niche and Lead SE job application (deadline 03/27).
+- Already in weekly log 2026-03-16.
+
+### 🟢 deAPI n8n Integration — 8 operations, 4 workflow templates
+- Official deAPI + n8n integration. 8 operations. Data API with 1,000+ app connections.
+- Low relevance to current consulting niches. Background signal only.
+- Source: @deAPI_ (11 likes)
+
+### 🟢 OKX Agent Trade Kit — MCP for Trading Agents
+- OKX launched open-source MCP server + CLI for trading AI agents on their exchange. Natural language execution.
+- Not relevant — JT doesn't do autonomous trading. Crypto monitoring only.
+- Source: @okx (799 likes, 5.5M views)
+
 

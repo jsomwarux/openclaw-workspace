@@ -187,8 +187,12 @@ Include in the task prompt: *"Activate [Agent Name] mode for this session."*
   | Proposal decks | `Consulting/Clients/[Client]/Decks` |
   | Resumes | `Job Applications/Resumes` |
   | Cover letters | `Job Applications/Cover Letters` |
-  | X posts (personal brand) | `Content/X` |
-  | LinkedIn posts (personal brand) | `Content/LinkedIn` |
+  | X posts — weekly calendar | `Content/X/Weekly` |
+  | X posts — news hook reactive | `Content/X/News Hooks` |
+  | X posts — banked (technical angles, build showcases, auto-detected) | `Content/X/Bank` |
+  | LinkedIn posts — weekly calendar | `Content/LinkedIn/Weekly` |
+  | LinkedIn posts — news hook reactive | `Content/LinkedIn/News Hooks` |
+  | LinkedIn posts — banked (backup swaps, auto-detected, proof points) | `Content/LinkedIn/Bank` |
   | Vibe marketing review (Nash Satoshi) | `Content/Vibe Marketing/Nash Satoshi` |
   | Vibe marketing review (Vista) | `Content/Vibe Marketing/Vista` |
   | Vibe marketing review (future products) | `Content/Vibe Marketing/[Product Name]` |
