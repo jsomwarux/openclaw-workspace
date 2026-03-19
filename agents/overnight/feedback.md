@@ -44,3 +44,7 @@ Status: active
 ## Retired Rules
 
 *(None)*
+
+[2026-03-18] Observed: content-reminder (5e66b4ee) and skills-researcher-weekly (05024e45) crons failed on 2026-03-17 with timeout errors. content-reminder had 150s (too low for Notion sync), skills-weekly had 300s (too low for X research + web). Both caught at 2PM heartbeat — 7h after failure.
+Rule: Any cron that does web scraping, X research, Notion sync, or LLM-heavy generation must have a minimum timeout of 600s (10 min). Never set below 300s for any isolated agentTurn cron. When creating a new cron with complex tasks, default to 600s and only reduce after confirmed fast runs.
+Status: active

@@ -3,6 +3,7 @@
 > Every entry MUST have: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete rule that prevents recurrence.
 
 | Date | Mistake | Fix |
+| 2026-03-18 | Resume update delivered as an uploaded markdown file (.md) instead of a formatted .docx. Job application skill explicitly says "NEVER write resume as markdown — always generate .docx using build_resume_docx.py." JT had to flag it. | Root cause: updated the .md draft file first out of habit, then uploaded that instead of running the build script. Rule: **Job application skill = read it and follow Step 4 immediately. The output is always .docx via build_resume_docx.py. Updating the .md is optional reference only — never the deliverable. If I'm uploading a .md to Drive, I'm doing it wrong.** |
 | 2026-03-17 (3) | Ran 9 sequential exec calls debugging the task board (assignee casing, project name, schema checks) without a single interim reply. Gateway froze, JT had to manually restart. | Root cause: treated "debugging a tool call failure" as a single atomic operation, not a multi-step chain. Rule: any exec loop >2 calls without resolution = send status update first ("Board is returning 500, investigating..."). Hard cap of 4 tool calls between replies applies even during debugging. |
 | 2026-03-17 (3) | Resume research + writing chain (6 web searches/fetches + 3 large file writes = ~10 sequential tool calls, ~3 min silent) caused gateway to freeze and JT had to manually restart. No interim reply was sent during the chain despite Rule 9 requiring one for >2 tool calls / >15s. | Root cause: treated a multi-step research+writing task as one atomic operation instead of breaking it into stages. Rule: **Any task with research phase + writing phase MUST send a "Research complete, writing now" interim reply between phases. Never chain research → writing without a mid-task status message. Target: ≤4 tool calls between replies in active conversation.** |
 | 2026-03-17 (2) | Outreach draft for Henick-Lane contained a fabricated contact: "Gregg Rothman, Owner/COO" with an invalid LinkedIn URL. Real contact is Thomas (Tom) Cahill, President (linkedin.com/in/thomas-cahill-07b00b86). JT caught it when the LinkedIn URL didn't resolve. | Root cause: outreach pipeline agent invented a plausible-sounding name and LinkedIn URL instead of only using confirmed contacts. Rule: **LinkedIn profile URL must resolve to a real person at that company before it goes in any draft. If no confirmed profile is found via search, the draft must be flagged as "no confirmed LinkedIn contact — manual search needed" and NOT sent with a fabricated URL.** |
@@ -54,3 +55,15 @@
 **Failure:** Chained 4+ sequential tool calls in a single session without sending interim replies to JT. JT had to ask "update?" 6+ times to get status.
 **Root cause:** Rule 9 exists but I treated it as optional when I was "close to done." Every tool chain felt like it was "almost finished" so I skipped the status reply each time.
 **Rule:** No exceptions to Rule 9. Any operation with >2 tool calls OR >15s expected duration = send a brief status reply BEFORE starting. "Almost done" is not an exception. If I'm already mid-chain and realize I forgot — send the update immediately, don't wait until the end.
+
+---
+
+### 2026-03-18 — build_agentforce_t2_deck.py layout collisions
+
+**Slide 5:** `s_s3` ("0") and `s_s3l` (label) shared the same `x` and `y` coordinates — red "0" overlapped "agent escalations" text.
+- **Root cause:** Label width was set too wide and started at the same x as the number, treating them as a single element instead of side-by-side.
+- **Rule:** Stat + label pairs must use separate x positions. Number gets narrow width (w≤70), label starts at `x + number_width + 6px` gutter.
+
+**Slide 4:** Body text at `size=22` overflowed its `h=165` container, causing "LIVE DEMO ↓" badge at `y=290` to render on top of spilled text.
+- **Root cause:** Font size not validated against container height. 22pt × 3 paragraphs ≈ 198px needed, container only 165px.
+- **Rule:** Body text in a 165h container → max size=18. Always check: `lines × (size * 1.4) ≤ container_h`. "LIVE DEMO" CTA must sit at `y ≥ 305` to clear body overflow.

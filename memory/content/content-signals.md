@@ -6,6 +6,16 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 
 ---
 
+## 2026-03-18
+
+[2026-03-18] TOPIC Claude Code as AI operating system / "runs my ops" — 3 posts / ~167K total engagement | JT has angle: yes (Eve 8 months live, 20+ crons, 60-70% of ops automated — stronger than anyone else posting this because it's actually running) | JT posted recently: no (Sunday behind-the-build about Eve scheduled but not posted yet) | action: HOT LANE FIRED — Wednesday X mini case study slot
+
+[2026-03-18] TOPIC x402 / AI agent payments infrastructure (Coinbase vs. Visa competition) — 2 posts / ~143 total engagement | JT has angle: yes (early x402 holder, forward bet thesis) | JT posted recently: no | action: below 1000+ threshold for fast lane; recommend for next Tuesday/Saturday technical slot
+
+[2026-03-18] FORMAT Build-in-public — 5 appearances / ~174K total engagement | JT has angle: yes (StreetEasy scraper, Eve, construction dashboard, Agentforce agents, AgentGuard all demo-able) | JT posted recently: Saturday Mar 16 StreetEasy stack post | action: dominant format this cycle — lean into Wednesday and Saturday posts
+
+[2026-03-18] TOPIC Job market / AI job replacement scoring (Karpathy BLS project) — 1 post / 6.9K engagement | JT has angle: yes (AI Solutions Architect / Implementation Lead job hunt, knows which roles AI augments vs. replaces) | JT posted recently: no | action: strong angle for a Thursday hot take — "Karpathy scored the jobs. Nobody scored the consultants."
+
 ## 2026-03-16
 
 [2026-03-16] TOPIC Claude Code (cost debate, tooling, productivity) — 4 posts / ~170K total engagement | JT has angle: yes (Eve runs on Claude Code/OpenClaw 24/7 for 8+ months, real operational experience vs. "is it worth it" debate) | JT posted recently: no (Mar 12 was cron model defaults — adjacent but not Claude Code itself) | action: HOT LANE FIRED

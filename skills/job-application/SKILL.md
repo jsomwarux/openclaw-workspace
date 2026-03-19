@@ -52,6 +52,7 @@ Base: JT's experience is fixed. What changes is emphasis and framing.
 - Bullets start with strong verbs: Built, Automated, Reduced, Delivered, Designed, Managed
 - Quantify everything possible: dollar amounts, time saved, completion rates
 - No: "responsible for," "helped with," "assisted in," "various," "etc."
+- **Never use em dashes (—) anywhere in the resume or cover letter.** Em dashes are a clear AI writing tell. Use commas, colons, periods, or parentheses instead.
 
 Save to: `~/.openclaw/workspace/memory/drafts/[company-slug]-resume.md`
 

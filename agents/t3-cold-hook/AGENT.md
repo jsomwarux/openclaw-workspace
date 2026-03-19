@@ -55,32 +55,58 @@ Target: 8–10 unprocessed T3 prospects with confirmed contact channels. If fewe
 
 ## Step 2: Generate Cold Hook DMs
 
-For each prospect, generate a LinkedIn DM using this structure:
+**The fundamental shift:** Message 1 opens a conversation. It does not pitch. The sale happens in message 3 or 4. Any message that leads with what JT built, what JT offers, or what JT wants reads as an ad. Message 1 earns the right to send message 2.
 
-**Subject line:** 5–8 words. Must signal the solution, not just restate the pain. The reader should understand *what you built* or *what it does*, not just that a problem exists. NOT "quick question," "saw your profile," "opportunity for X," "checking in," or any subject that could appear in a McKinsey report written by someone who has never built anything. Good pattern: "[Specific automation] for [specific operation type]" (e.g., "Automated 90/60/30-day compliance alerts for rent-stabilized portfolios"). Bad pattern: "[Pain] is still [adjective]" (e.g., "Specialty P&C intake is still mostly manual").
+**3-touch sequence (generate all three for each prospect):**
 
-**Body (3–4 sentences max):**
-1. **Opener (1 sentence):** A specific structural observation about *how this company operates* — not a recitation of what they do. The test: could this sentence appear on their own About page or LinkedIn summary? If yes, rewrite it. The contact already knows what their company does. What they may not have consciously articulated is the operational implication: "Co-op boards across six markets means maintenance scheduling depends on variables outside your team's control" not "Citadel manages co-ops and condos across five boroughs, Westchester, and Connecticut."
-2. **Problem reframe (1 sentence):** Name the workflow problem, not the symptom. No solution language yet.
-3. **Proof/credibility (1 sentence):** Reference JT's real work — Aya scraper, Oswald copilot, or Agentforce agents. Match to niche.
-4. **CTA (1 sentence):** Soft ask. "Worth 15 minutes?" or "Open to a quick look?"
+---
 
-**Voice rules (non-negotiable):**
-- No "I hope this message finds you well" or any filler opener
+### Message 1 — Opener (Day 0)
+Goal: get a reply. Not a meeting, not a demo — a reply.
+
+**Subject line:** Conversational, under 8 words. Must feel like something a real person typed, not a webinar title or a solutions-architect slide. Good: "quick question about your renewal workflow" / "curious about your dispatch setup." Bad: "Agentforce renewal automation built on Lawley's Epic + Salesforce stack" (that is a slide title).
+
+**Body (3–5 sentences):**
+1. **Opener (1 sentence):** Start with a specific observation about their situation — their geography, scale, or a recent signal. NOT what their company does (they know that). NOT "I noticed you use X" (that is segmentation, not personalization). Best: reference a recent post, a job change, a company hire, or a structural reality of how they operate. "You recently moved into a new market" or "running 24/7 across 5 boroughs on a single dispatcher" or "saw your post about [X]."
+2. **Curiosity bridge (1-2 sentences):** Ask a genuine question that demonstrates you understand their world without making it a pitch. Peer-to-peer tone — not vendor-to-prospect. Drop a hint of relevant experience without making it a portfolio showcase. "Been working on exactly this problem with a similar shop and learned a few things the hard way." NOT "I built a system that solves this."
+3. **Micro-CTA (1 sentence):** The smallest possible ask. "Curious if this is on your radar?" / "Is this something you're dealing with?" / "Want me to send over a quick example?" — answerable in 5 words or less.
+
+**No signature block.** First name only, no "— JT Somwaru | jtsomwaru.com." If they're interested they'll click the profile. A signature signals template.
+
+---
+
+### Message 2 — Value-Add (Day 3–4, no reply to Message 1)
+Goal: give them something, not ask for something.
+
+1–2 sentences. Share a specific insight or result relevant to their setup. "One thing that came up working with a similar operation: [specific observation]. Figured it might be relevant given your setup." No CTA. No ask. Just value.
+
+---
+
+### Message 3 — Graceful Exit (Day 8–11, no reply to Messages 1–2)
+Goal: leave the door open, not slam it shut.
+
+1–2 sentences. "Totally understand if the timing's off. If it ever becomes relevant, happy to swap notes." No ask. No pitch. This message gets replies from people who were interested but genuinely busy — and those are often the most qualified.
+
+---
+
+**Voice rules (non-negotiable for all 3 messages):**
+- No "I built X" in message 1 — earn that right in message 2 or 3
+- No "I hope this message finds you well" or filler opener
 - No em dashes
 - No "I wanted to reach out"
 - No hashtags
-- No self-promotional closers ("I'd love to help" / "looking forward to connecting")
-- CTA must be a question, not a statement ("Worth 15 minutes?" not "I'd love to show you")
-- Specific over vague — every sentence should reference something real about THIS company
-- Under 150 words total
-- **Never reference employee reviews directly** (e.g., "I saw your Indeed reviews") — use the pain signal as an observation without citing the source ("running 24/7 dispatch across 5 boroughs" not "your employees mentioned dispatch issues")
-- **No urgency-closing language** ("window is closing," "before your competitors do") — let the CTA close it
+- No self-promotional closers
+- No signature block (name + URL) — screams template
+- CTA in message 1 must be answerable in 5 words or fewer
+- Under 100 words per message
+- **Never reference employee reviews directly** — use the signal, not the source
+- Write like you're texting a professional acquaintance, not drafting a sales email
 
-**Proof points to reference by niche:**
-- Wholesale: "built an automated parts lookup for H.C. Oswald Supply (Bronx) — surfaces 100 years of catalog knowledge in under 10 seconds"
-- Construction: "built a construction progress tracker and automated StreetEasy scraper for a NYC real estate firm"
-- Property management: "built a tenant service agent that handles maintenance routing, lease renewal outreach, and vendor assignment without a rep"
+**Proof points to weave into message 2 by niche (not message 1):**
+- Wholesale: "one thing that came up with H.C. Oswald Supply (Bronx) — their catalog had 100 years of inventory that nobody could search quickly. automated lookup cut that to under 10 seconds."
+- Construction: "working with a NYC construction firm on exactly this — job tracker that flags stalled work automatically and routes status to the client without a call."
+- Property management: "built a maintenance triage system for a NYC property manager — tenant submits, AI classifies urgency, routes to vendor, sends status update. no manual follow-up until a real decision is needed."
+- Insurance (Agentforce): "been working with a Salesforce-native insurance ops team on this — intake classification that routes to the right handler before a rep touches it."
 
 ---
 
@@ -120,7 +146,8 @@ Save to `~/.openclaw/workspace/memory/drafts/t3-batch-[DATE].md`:
 
 ```
 # T3 Cold Hook Batch — [DATE]
-*[N] drafts — review and send individually. Never send in bulk.*
+*[N] prospects — 3-touch sequence per prospect. Send Message 1 first. Messages 2 and 3 are pre-drafted for follow-up.*
+*Send individually. Never bulk send.*
 
 ---
 
@@ -129,16 +156,22 @@ Save to `~/.openclaw/workspace/memory/drafts/t3-batch-[DATE].md`:
 **LinkedIn:** [confirmed personal profile URL | OR: ⚠️ not confirmed — using email instead | OR: ⚠️ skipped — no confirmed channel]
 **Email:** [confirmed direct email | OR: N/A — using LinkedIn DM]
 **Verified:** YES (LinkedIn personal) / YES (Email) / ⚠️ UNVERIFIED — DO NOT SEND
-**Niche:** [Wholesale / Construction / Property Management]
+**Niche:** [Wholesale / Construction / Property Management / Insurance]
 **Hook used:** [the specific signal that drove the opener]
 
-**Subject:** [subject line — 5-8 words, specific to their situation]
+**--- MESSAGE 1 (Send now) ---**
+Subject: [conversational, under 8 words]
 
-**DM:**
-[full DM text]
+[message 1 text — opener + curiosity bridge + micro-CTA. No signature.]
+
+**--- MESSAGE 2 (Send Day 3–4 if no reply) ---**
+[message 2 text — value-add, no ask]
+
+**--- MESSAGE 3 (Send Day 8–11 if no reply) ---**
+[message 3 text — graceful exit]
 
 **Platform:** LinkedIn
-**Status:** ⬜ Not sent
+**Status:** ⬜ M1 not sent | ⬜ M2 not sent | ⬜ M3 not sent
 
 ---
 ```

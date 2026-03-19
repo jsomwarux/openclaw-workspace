@@ -125,4 +125,45 @@ _Week starting 2026-03-14 — reset after 2026-W11 synthesis_
 - Not relevant — JT doesn't do autonomous trading. Crypto monitoring only.
 - Source: @okx (799 likes, 5.5M views)
 
+---
+
+## 2026-03-18 Daily Scan
+
+### 🟡 Google Colab MCP Server
+- **Source:** X/@googledevs (421 likes, 91K views) + @GoogleColab (579 likes) — 2026-03-18
+- **URL:** https://x.com/googledevs/status/2033955386211151896
+- **What:** Open-source MCP server giving AI agents programmatic notebook write+execute access inside Google Colab's secure cloud environment
+- **Severity:** 🟡 — interesting capability, not an active build need, no client work blocked by absence
+- **Goal:** App dev / consulting demos (data analysis workflows)
+- **Action:** KB'd (#307)
+
+### 🟡 Figma MCP — 5 new partners (Cursor, Warp, Factory, Augment Code, Firebender)
+- **Source:** X/@figma — 2026-03-13
+- **URL:** https://x.com/figma/status/2032124661278892484
+- **What:** Figma expanded MCP server to 5 new development tool partners
+- **Severity:** 🟡 — no Figma in current consulting stack, low relevance
+- **Action:** KB'd (#305)
+
+### 🟡 Hunter Alpha — mystery model on OpenRouter (possible DeepSeek V4)
+- **Source:** web search / news9live.com — 2026-03-18
+- **URL:** https://www.news9live.com/technology/artificial-intelligence/hunter-alpha-ai-model-deepseek-v4-rumours-openrouter-2944584
+- **What:** Unidentified model appeared on OpenRouter, specs suggest possible DeepSeek V4
+- **Severity:** 🟡 — unverified speculation, watch for official announcement
+- **Action:** KB'd (#306)
+
+### 🟡 Anthropic knowledge-work-plugins: commands → skills migration (2026-03-13)
+- **Source:** GitHub/anthropics — SHA 89f6599ddf (same as state.json — already tracking)
+- **What:** All 14 Cowork plugins migrated from commands/ to skills/ format. bio-research removed.
+- **Severity:** 🟡 — structural change, relevant if JT builds Cowork plugins (currently CLOSED decision)
+- **Action:** KB'd (#309)
+
+### 🟡 n8n + Claude API: 34% improvement in scam detection filtering
+- **Source:** X/@AutomationBrief — 2026-03-14
+- **URL:** https://x.com/AutomationBrief/status/2032592904611397766
+- **What:** Real-world case of Claude API + n8n automating scam detection with Gemini 2.5 Flash integration. 34% improvement in false-positive filtering.
+- **Severity:** 🟡 — validates n8n+Claude stack for classification/filtering workflows. Pattern applicable to consulting builds.
+- **Action:** KB'd (pattern logged)
+
+_X API note: Queries 1, 2, 5, 6 returned 503 (X API service unavailable). Queries 3 (n8n) and 4 (MCP) succeeded._
+
 

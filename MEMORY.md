@@ -92,10 +92,11 @@
 - Target: AI Solutions Architect, AI Implementation Lead, AI Systems Analyst
 - $150K min, $180–220K target | NYC metro or remote only
 - ⚠️ Squarespace People AI SA (19/25, $126–180K hybrid NYC) — posted Feb 21, likely expired. Verify before applying.
-- 🔴 Salesforce Lead Agentforce SE (24/25, $148K–$198K NYC) — DEADLINE 03/27/2026. Perfect fit: leads sandbox-to-production engagements, zero code requirement. → careers.salesforce.com/en/jobs/jr329627/lead-agentforce-se/ | Resume + cover letter written 2026-03-12, uploaded to Drive. Apply before 03/27.
+- ~~Salesforce Lead Agentforce SE~~ — PASSED 2026-03-18. Role required deep technical Agentforce conversations JT isn't comfortable with yet. His Agentforce capability is agent-configured, not hands-on. **Hard rule going forward: do not recommend roles where core responsibility is explaining or defending Agentforce internals to technical audiences.**
 - 🟠 Salesforce Agentforce/AI Deployment Strategist (20/25, $140K–$185K) — confirmed active at jr305206
 - 🟠 Salesforce Sr. Supply Chain Strategist (21/25, $180K–$298K) — vet domain requirement first
 - 🟠 Writer SA East (20/25, $207K–$250K hybrid NYC) — Python gap, still worth applying. Docs: memory/drafts/writer-sa-resume.md + writer-sa-cover-letter.md
+- ⛔ OpenAI AI Deployment Engineer (18/25, NYC hybrid) — evaluated 2026-03-18, skipped. Python/JS proficiency + infra ownership required explicitly. Below 24+ threshold.
 - Skill gaps (active): AWS Bedrock, LangChain, Copilot Studio, Conversation Design (partially closed — ConversationFirst framework built)
 
 ## Setup State
@@ -204,7 +205,8 @@
 - $JUNO note: previously EXIT-rated — JT re-entered, agent will re-analyze fresh each morning
 
 ## Key Decisions
-- **Priority order (updated 2026-03-12)**: Consulting first. Job applications only if 100% perfect fit (score 24+/25, zero skill gaps, exact title match). Squarespace and Writer SA deprioritized. Salesforce Lead Agentforce SE (24/25, deadline 03/27) is the only active application — borderline perfect fit, keep it. All other job apps pause until consulting is generating consistent revenue.
+- **Priority order (updated 2026-03-18)**: Consulting first. Job applications only if 100% perfect fit (score 24+/25, zero skill gaps, exact title match). Only active application: OpenAI AI Deployment Manager (applied 2026-03-18). All other job apps pause until consulting is generating consistent revenue.
+- **Agentforce job filter (added 2026-03-18)**: Do not recommend roles where a core responsibility is explaining, defending, or technically advising on Agentforce internals. JT's Agentforce capability is agent-configured. He can build and deploy agents but is not comfortable in deep technical Agentforce conversations with clients or SE/sales engineering contexts.
 - **Outreach active as of 2026-03-09**: freeze lifted. T1: H.C. Oswald — outreach sent 2026-03-11 (LinkedIn DM + subject "After-hours coverage for your catalog"). Awaiting response. T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
 - **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates: wholesale (convert existing demo — still needed), **construction job-tracker ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/construction-template/`), **PM maintenance triage ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/pm-maintenance-template/`). Tier 3 send scheduler: still needed.
 - Aggressive compaction over safeguard — prevents context resets on long builds

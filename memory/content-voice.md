@@ -1,6 +1,7 @@
 # Content Voice — JT Somwaru
 *Jack Butcher framework applied to language and compression — but content format varies by platform and day.*
 *Load this file before drafting any X post, thread, or LinkedIn content.*
+*Also load `memory/FEEDBACK-LOG.md` — Style Corrections Log section — before every draft. Those are live corrections from JT that override defaults here.*
 
 ---
 
@@ -193,6 +194,7 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 ### Builds (use as evidence in content)
 | Build | The Specific Detail That Makes It Real |
 |-------|----------------------------------------|
+| Georgetown City Services Agent (n8n) | 12-node webhook workflow. Resident request → Claude classifies department + urgency → routed, acknowledged, logged. 3/3 tests pass. Municipal sector demo. |
 | StreetEasy scraper (n8n + Python) | Runs every 14 days. Drops NYC listings matching buy criteria into Google Sheets, formatted and ready. $1,000. Client hasn't manually searched once since. |
 | Construction progress tracker (Next.js) | $1,500. Live. NYC real estate client tracks hotel construction progress in real time. First project, referral-sourced. |
 | InsuranceServiceAgent (Agentforce) | Routes claims, runs multi-topic intake, creates Salesforce records. Built from scratch. Live. |

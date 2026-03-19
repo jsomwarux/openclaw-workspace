@@ -8,3 +8,4 @@
 2026-03-14T11:00:00Z | weekly-synthesis | x_queries: 4 | web_queries: 6 | findings: 1_new_critical_1_new_orange | 🔴: 1 (v2026.3.13) | 🟠: 0_new | kb_only: 0 | est_cost: ~/bin/zsh.20 | note: MC POST returning 500 (Convex mutation issue) - task push failed, included in Telegram report
 2026-03-14T15:35:00Z | daily-scan | x_queries: 6 | web_queries: 8 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-03-17T15:32:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 8 | 🔴: 0 | 🟠: 1 (CoinMarketCap MCP — promoted from 🟡) | messaged_jt: yes
+2026-03-18T15:30:00-05:00 | daily-scan | x_queries: 6 (2 success, 4 x503) | web_queries: 6 | findings: 5 | 🔴: 0 | 🟠: 0 | 🟡: 5 | messaged_jt: no

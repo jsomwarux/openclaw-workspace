@@ -1,20 +1,21 @@
-# auto-agentguard-linkedin — 2026-03-17
+# auto-agentguard-linkedin — 2026-03-17 (revised 2026-03-18)
 Pillar: autonomous-detection
 Source: build
 Rubric: architectural decision with real tradeoffs
 Platform: linkedin
 angle_id: null
+Drive: https://docs.google.com/document/d/1V3Ark5vihXAq4ByLPN4HyVSCbem70-dcZ3ov7pd1obY/edit
 
 ---
 
-The reason most enterprise AI deployments stall before they ship isn't the model. It's the question nobody can answer: what happens when the agent is wrong?
+Any AI agent can make a decision. The harder question is what happens when it shouldn't do it alone.
 
-Most AI agents make a decision and move on. They don't expose how confident they were. They don't route differently when they're uncertain. They don't log their reasoning in a way compliance can audit. So legal says no, and the project dies in review.
+That's the layer most AI strategies skip — a confidence system that knows when to execute automatically, when to queue for human review, and when to escalate to the right person. Without it, every deployment either creates liability risk or puts so much in the human queue that you've lost the efficiency gain entirely.
 
-I built AgentGuard to solve this directly: a governance layer that sits in front of any AI decision pipeline. Every decision gets a confidence score. ≥70% executes automatically. Below that, it routes to a human review queue. Every outcome — automated or overridden — gets logged with full reasoning.
+I built AgentGuard as a working prototype of what that layer looks like. HR candidate screening as the use case: decisions above 80% confidence route automatically. Below that, they go to a reviewer. Genuinely ambiguous cases — unclear intent, significant mismatch — escalate directly to the hiring manager, flagged at high priority. Every decision logged with full reasoning.
 
-The architectural decision that matters most here isn't the AI model. It's the threshold itself, and the audit trail around it. That's what transforms "we have an AI agent" into "we have a defensible deployment our legal and compliance teams can actually approve."
+The same pattern applies to claims processing, lead qualification, contract review — any decision pipeline where "let the AI decide" isn't a complete answer.
 
-Live demo running HR candidate screening at agentguard-delta.vercel.app — three scenarios: strong fit (auto-routed at 93%), career pivot (human review at 61%), unclear intent (escalated at 41%).
+It's not a product. It's a demonstration of architecture that should be standard in any serious AI implementation.
 
-The confidence-gated routing is the build. The audit log is the product.
+Live demo: agentguard-delta.vercel.app

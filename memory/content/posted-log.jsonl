@@ -27,3 +27,5 @@
 {"date": "2026-03-17", "platform": "x", "pillar": "autonomous-detection", "topic": "agentguard-governance", "banked": true, "posted": false, "source": "build", "rubric": "architectural decision with real tradeoffs"}
 {"date": "2026-03-17", "platform": "x", "pillar": "autonomous-detection", "topic": "agentguard-confidence-threshold", "banked": true, "posted": false, "source": "build", "rubric": "non-obvious problem solved"}
 {"date": "2026-03-17", "platform": "linkedin", "pillar": "autonomous-detection", "topic": "agentguard-governance", "banked": true, "posted": false, "source": "build", "rubric": "architectural decision with real tradeoffs"}
+{"date": "2026-03-18", "platform": "x", "pillar": "autonomous-detection", "topic": "dual-pm-platform-gap", "banked": true, "posted": false, "source": "outreach-pipeline", "rubric": "pattern across multiple instances + non-obvious problem"}
+{"date": "2026-03-18", "platform": "linkedin", "pillar": "autonomous-detection", "topic": "dual-pm-platform-gap", "banked": true, "posted": false, "source": "outreach-pipeline", "rubric": "pattern across multiple instances + non-obvious problem"}

@@ -232,15 +232,22 @@ If yes:
 2. Determine this week's Monday date (look at current date, find Monday)
 3. Create bank directory if it doesn't exist: `mkdir -p ~/.openclaw/workspace/memory/content/bank/[MONDAY-DATE]`
 4. Write to bank: `~/.openclaw/workspace/memory/content/bank/[MONDAY-DATE]/auto-[slug].md` (use format from rubric)
-5. Upload to Drive:
+5. Upload to Drive and capture the returned URL:
    ```bash
    cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
      --title "Auto-detected post — [slug] ([DATE])" \
-     --path "Content/X" \
+     --path "Content/X/Bank" \
      --file memory/content/bank/[MONDAY-DATE]/auto-[slug].md
    ```
-6. Append to posted-log.jsonl (use format from rubric, `"banked": true, "posted": false`)
-7. Note in the overnight log under "## Auto-Detected Posts"
+6. Push to Notion Content Calendar (DB: 32516aff-9305-81a7-8659-eac869c71ba8) using the Drive URL from step 5:
+   ```bash
+   python3 scripts/notion-calendar-push.py \
+     --platform "X — Personal" --date [DATE] \
+     --post "[post text]" --type Planned --week [MONDAY-DATE] \
+     --drive-link "[DRIVE-URL-FROM-STEP-5]"
+   ```
+7. Append to posted-log.jsonl (use format from rubric, `"banked": true, "posted": false`)
+8. Note in the overnight log under "## Auto-Detected Posts"
 
 If nothing passes the rubric: skip. Do not force it. Write "Auto-detected posts: none (rubric not met)" in the log.
 

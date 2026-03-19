@@ -318,3 +318,19 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 - **AI Agents = Software Valuation Crisis narrative** — Markets repricing SaaS multiples as AI agents threaten traditional software categories. Good framing for JT's consulting pitch: "SMBs that implement now get the transition advantage."
 
 *Tracked by Eve | Updated during heartbeats*
+
+---
+
+## Mar 18, 2026 — 6PM Heartbeat
+
+### Notable AI Tools & Releases (week of Mar 17-18)
+
+**n8n + Claude Code via MCP (Medium guide, Mar 17)** — Open-source MCP server turns Claude Code into an n8n workflow architect. Real production guide covers debugging, agent economics, and when to use each tool. Directly relevant to JT's n8n consulting stack — could wire Claude Code as an n8n build assistant. Flag for next skills-researcher-weekly review. 🟡
+
+**airSlate SignNow MCP Server (launched Mar 18)** — Exposes e-signature actions to AI agents via natural language. No custom wrappers needed. Relevant for construction/PM consulting demos — contracts + work orders signed via n8n agent workflow without leaving the pipeline. Low priority until a client asks, but worth knowing. 🟢
+
+**Cresta Knowledge Agent (Mar 17)** — Contact center AI that works alongside human agents with real-time knowledge delivery. Validates the contact center AI niche Agentforce is targeting. Competitive awareness. 🟡
+
+**Dropzone AI — Autonomous Threat Hunting (Mar 18)** — Agentic SOC platform with continuous threat detection. Not JT's stack. 🟢 skip.
+
+**Nvidia Vera Rubin platform (GTC 2026)** — AI agent infrastructure push with Adobe/SAP/Salesforce integrations. Reinforces Agentforce ecosystem growth signal already logged. No new action. 🟡

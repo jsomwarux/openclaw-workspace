@@ -101,13 +101,42 @@ If no reply after 2 touches: move to cold, don't follow up again for 90 days.
 
 ---
 
+## Opener Format Rules (mandatory — enforced on every draft)
+
+**Rotate between at least 3-4 structurally distinct opener formats. Never default to the same pattern twice in a row.**
+
+Approved opener formats:
+- **Observation + question**: "Noticed X about [company]. Curious — [open question]?"
+- **Recent signal reference**: "Saw your post about [topic] / [company] just [hired/expanded/announced] — [one-sentence implication]."
+- **Peer-level drop**: "Working with a [niche] company on [problem] right now — kept thinking about [their situation]."
+- **Milestone/event hook**: "[Company] just [opened location / hit milestone / made hire]. That usually means [relevant ops challenge] shows up around now."
+- **Contrarian observation**: "Most [niche] operators I talk to assume [X] is the hard part. Usually it's [Y]."
+
+**What's banned:**
+- The "[assertive pain statement] + curious: [binary choice question]" pattern used more than once per batch
+- Opening with a statement that asserts their pain without asking first ("X is a real coordination challenge for companies like yours")
+- Closing every message with a "still manual or have you built something?" binary choice
+- Any opener that works for any company in the niche — if you remove the name and it still fits 50 other prospects, rewrite it
+
+**Individuation requirement (mandatory):**
+Every Message 1 must contain at least one reference specific to the INDIVIDUAL — not just the company or niche. Acceptable signals:
+- A post or article they wrote on LinkedIn
+- A comment they made publicly
+- A role change, promotion, or tenure milestone
+- A company event that implies a personal workload shift (acquisition, new office, leadership hire they made)
+- A job posting they put up that signals a gap
+
+If no individual-specific signal is found during research: note it explicitly in the draft ("No individual signal found — used company event instead") so JT knows the personalization level.
+
 ## What NOT to Do
 - Never open with "I hope this message finds you well"
 - Never describe JT's company in the first paragraph
 - Never use phrases like "cutting-edge," "game-changing," "leverage," "synergy"
+- **Never use em dashes (—) in any output.** Em dashes are a clear AI writing tell. Use commas, colons, periods, or parentheses instead.
 - Never ask for 30+ minutes in the first message
 - Never send without a specific reason why THIS person, THIS week
 - Never send on JT's behalf without explicit approval — all drafts to Drive first
+- Never use assertive pain statements as openers ("X is a real challenge for companies like yours") — use observational or question-based framing instead
 
 ---
 
