@@ -52,9 +52,9 @@
 
 > Format: `[DATE] | [What was wrong] | [What JT prefers instead]`
 
-**[2026-03-18] | Em dashes ("—") in any written content | Never use em dashes — they are a clear AI writing tell. Use commas, colons, periods, or parentheses instead depending on the intent.**
+**[2026-03-18] | Em dashes ("—") in any written content | NEVER use em dashes in any output: posts, cover letters, resume bullets, cold emails, DMs, news hooks, LinkedIn, X — anything. Use commas, colons, periods, or parentheses instead. This rule applies at generation time, not just review. No exceptions.**
 
-**[2026-03-18] | Overused contrarian reframe pattern "X isn't Y, it's Z" / "X wasn't Y, it was Z" | Use this structure at most once per document. Never in back-to-back paragraphs or consecutive posts.**
+**[2026-03-18] | Overused contrarian reframe pattern "X isn't Y, it's Z" / "X wasn't Y, it was Z" | Use this structure at most once per document. Never in back-to-back paragraphs or consecutive posts. This applies at generation time — not just when reviewing drafts. Check before writing, not after.**
 The flip pattern is effective exactly once. When it appears twice in the same piece, the second instance cancels the first. Alternatives: lead with what something actually required ("Getting eight teams to use the system correctly was the core of the work"), state the outcome directly, or open with a concrete scenario. The flip is a tool, not a default sentence structure.
 
 **[2026-03-18] | Build showcase posts compared to other demos as value prop | Never position JT's work against what others do or don't show**

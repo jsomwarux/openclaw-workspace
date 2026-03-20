@@ -3,6 +3,16 @@
 
 ---
 
+## Mar 19, 2026 — 2PM Heartbeat
+- **BTC:** ~$69,370–$70,841 (range across sources this morning) | Down from $72.5K yesterday (-3.5% to -4.5%)
+- **Driver:** FOMC held rates unchanged (98% probability priced in) — but hawkish tone dented rate cut hopes for 2026. Bitcoin OGs dumped $100M+ post-decision. Classic "sell the news."
+- **Context:** BTC had 8 consecutive daily gains heading into FOMC, peaked near $74,500 on Mar 18 — now giving back. CoinDesk 20 Index down 3%.
+- **Pattern:** BTC consistently sells off after FOMC meetings regardless of outcome. "Sell the news" reaction with hawkish dot plot.
+- **JT portfolio:** Neutral-to-cautious. $69-71K range is a retest of recent support. Hold zone unless break below $68K signals deeper correction.
+- No alert triggered (move ~-4% from yesterday, within normal range)
+
+---
+
 ## Mar 17, 2026 — 6PM Heartbeat
 - **BTC:** ~$73,700–$74,600 | Hit intraday high of $75,912 (6-week high) before pulling back below $75K
 - **Derivatives-driven rally:** early Asian session surge above $75K described as derivatives-led; gave up gains, highlighting fragility near $75K resistance

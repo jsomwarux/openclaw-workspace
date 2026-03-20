@@ -36,6 +36,20 @@ Read `~/.openclaw/workspace/agents/overnight/feedback.md`.
 Extract all active rules (any line starting with `Rule:`).
 These rules override defaults in every task you run tonight.
 
+### Step 1.5: Launch Kit Check (runs before MC task selection)
+
+Check for new passive income products needing a launch kit:
+```bash
+python3 -c "
+import json
+data = json.load(open('/Users/jtsomwaru/.openclaw/workspace/agents/vibe-marketing/product-registry.json'))
+for p in data['products']:
+    if p.get('status') == 'active' and not p.get('launch_kit_generated'):
+        print(p['slug'], p['name'])
+"
+```
+If any product is returned: run `agents/launch-kit/AGENT.md` for that product BEFORE selecting MC tasks. This counts as one of the 2 nightly tasks. Skip MC task 2 if cost is already > $1.00.
+
 ### Step 2: Fetch Task Board
 ```
 curl -s http://localhost:3000/api/tasks
@@ -284,11 +298,24 @@ Write to `~/.openclaw/workspace/agents/overnight/logs/YYYY-MM-DD-log.md`:
 [List any decisions made during task execution that JT should confirm or correct]
 ```
 
-### Step 6: Nothing to Do?
-If no eligible tasks exist, write a minimal log:
+### Step 6: Autoresearch (run when no eligible MC tasks exist OR on 1st of month)
+If no eligible high-priority tasks are found on the board, OR if today is the 1st of the month:
+
+1. Read `~/.openclaw/workspace/agents/autoresearch/targets.md`
+2. Find rows with status `pending` or `active` (run `pending` first)
+3. Pick ONE target per night (not all — cost control)
+4. Follow `~/.openclaw/workspace/agents/autoresearch/AGENT.md` exactly
+5. Append autoresearch results to tonight's overnight log under `## Autoresearch`
+6. Update targets.md row with new status + score
+
+On the 1st of the month: run autoresearch even if other tasks exist (run it after MC tasks, as a final step).
+
+### Step 7: Nothing to Do?
+If no eligible tasks exist AND no autoresearch targets are pending:
 ```
 # Overnight Run — YYYY-MM-DD
 No eligible high-priority tasks found. Board clear or all tasks require JT action.
+Autoresearch: all targets stable or no targets enrolled.
 Estimated cost: $0.00
 ```
 
@@ -300,7 +327,7 @@ The overnight agent can run Tier 2 pipeline tasks autonomously. Tier 1 and Tier 
 
 **T2 overnight run (eligible):**
 1. Pick next prospect from shortlists with Tier: T2 assigned
-2. Run pipeline preflight: `bash ~/.openclaw/workspace/skills/opticfy-pipeline/scripts/preflight.sh [slug]` — if it fails, skip this prospect and log the failure
+2. Run pipeline preflight: `bash ~/.openclaw/workspace/skills/jt-consulting-pipeline/scripts/preflight.sh [slug]` — if it fails, skip this prospect and log the failure
 3. Spawn research-agent (light brief only — company name, 8–12 product SKUs, supplier names, one hook signal, contact name/LinkedIn)
 4. Spawn n8n-agent with T2_TEMPLATE_INPUT prompt (see n8n-agent/CLAUDE.md for format) — configures the existing template with prospect data, runs 3 tests, writes demo-results.json
 5. Spawn outreach-agent (T2 mode, tier: 2) — drafts personalized outreach using template + hook signal

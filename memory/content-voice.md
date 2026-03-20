@@ -440,6 +440,26 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] If a source article is relevant (news hook), is a first-comment URL included alongside the draft?
 - [ ] For any build-showcase post: does the first sentence name a problem the reader already feels — NOT the product name, feature, or tool? If the post opens with "AgentGuard", "InsuranceServiceAgent", "n8n", or any build name → rewrite the opener.
 
+### Anti-slop checks (run after draft is otherwise ready):
+- [ ] Any adverbs? Cut them. ("quickly", "easily", "simply", "really", "just" — all gone)
+- [ ] Any passive voice? Find the actor and make them the subject. ("the agent routes claims" not "claims are routed")
+- [ ] Any inanimate thing doing a human action? Name the person/system doing it. ("the decision emerges" → who decided?)
+- [ ] Any vague declarative? Name the specific thing. ("The implications are significant" → which implication, and how significant?)
+- [ ] Three consecutive sentences the same length? Break one.
+- [ ] Does the paragraph end with a punchy one-liner every time? Vary it.
+- [ ] Any "not X, it's Y" contrast? State Y directly and cut the contrast frame.
+- [ ] Em dashes? Remove every one.
+
+### Slop score (run before finalizing any LinkedIn post):
+Rate 1–10 on each dimension. If total < 35/50, revise before sending.
+| Dimension | Question |
+|-----------|----------|
+| Directness | Statements or announcements? |
+| Rhythm | Varied or metronomic? |
+| Trust | Respects reader intelligence? |
+| Authenticity | Sounds human? |
+| Density | Anything cuttable? |
+
 ### X only (algorithm compliance):
 - [ ] First line invites a reply?
 - [ ] No links in post body?

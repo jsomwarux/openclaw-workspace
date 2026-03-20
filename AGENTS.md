@@ -92,6 +92,18 @@ Every task pushed to Mission Control must include a description with:
 
 No task description should just restate the title. If you can't write a concrete first action, the task isn't ready to be created yet — flag it to JT instead.
 
+## Task Board Continuous Priority Rule (standing — always enforced)
+The task board must reflect JT's actual priority order at all times. Apply these checks whenever adding OR reviewing tasks:
+
+**Consulting first.** Any unblocked consulting task (pitch decks, T2 templates, outreach steps, client deliverables) → HIGH priority, sortOrder 10-60.
+**Job apps run in parallel** at 2-3/week as financial hedge. Threshold: **20+/25** with hard filters: no hands-on coding as primary function, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement. All job-related tasks (Anthropic Academy, skill gaps, resume work) → medium, sortOrder 300+.
+**Time-sensitive live products** (app is live, outreach is warm, deadline within 7 days) → HIGH, sortOrder 10-20.
+**Speculative / "Build idea:" tasks** → always medium, sortOrder 500+. Never HIGH unless client request makes it immediately actionable.
+**Passive habits** (Reddit karma, daily study) → medium, sortOrder 200+. Not urgent actions.
+**Tasks with no sortOrder** → assign one on creation. Invisible tasks don't get done.
+
+Trigger: whenever Eve adds a new task OR JT asks "are my tasks prioritized?" → run a quick board audit against these rules and fix any misalignments in the same turn.
+
 ## Task Board Is the Single Source of Truth
 Everything JT needs to do must be on the board. Overnight items, decision questions, portfolio approvals, JT manual steps → all pushed as 🌙 HIGH tasks before logging. No action item lives only in Telegram/MEMORY.md/a log. 🌙 tasks use sortOrder 3–9. De-dupe before pushing.
 
@@ -169,6 +181,13 @@ When a new tool, plugin, or integration surfaces (from any source — changelog,
 - Before any task: scan available_skills descriptions. If one clearly matches, read its SKILL.md and follow it.
 - If multiple match: pick most specific. Never read more than one skill up front.
 - If no skill matches: proceed without reading any SKILL.md.
+- **Hard rule: reading the skill file and following the skill file are not the same thing. After reading, run the skill's pre-output checklist explicitly before generating output. Memory of a skill's rules does not substitute for reading and applying the file. Outreach drafts that bypass the cold-email skill checklist are incomplete work.**
+
+## Skill Quality Rule (Flow vs. Friction)
+Every skill must produce output directly — not an intermediate document JT or Eve has to incorporate into something else.
+**Flow skill:** user asks → skill delivers → user can act immediately. ✅
+**Friction skill:** skill produces a research report / framework / analysis that then has to be fed into the real task. ❌
+Before shipping any new skill, ask: "Does this produce the final output, or does it produce something that enables the output?" If the latter — cut the intermediate step or fold it into the draft phase. More information does not mean better output. Comprehensive research creates pressure to use it all, which dilutes the work.
 
 ## Cross-File Consistency
 - Any fact that changes in one file must be updated in ALL files that reference it before the task is done.
@@ -248,6 +267,21 @@ Every new agent created (AGENT.md, cron, or sub-agent infrastructure) MUST be ad
 before the task is considered done. Include: id, name, emoji, role, domain, workspaceRel, crons, currentTask, created.
 An agent that isn't in agents.json doesn't exist in Mission Control. No exceptions.
 
+## Autoresearch Candidacy Rule (mandatory at skill/agent creation)
+When any new skill (SKILL.md) or agent (AGENT.md) is created, evaluate it for autoresearch enrollment in the same session. Three candidacy questions:
+1. Does it run repeatedly (not a one-off build)?
+2. Is the output scoreable with yes/no questions (not purely subjective)?
+3. Is there a clear failure mode worth fixing automatically?
+
+All three yes → ENROLL:
+- Draft a 6-question yes/no checklist (≤6 — overfitting risk above this) based on the skill's stated rules and known failure modes
+- Save to `~/.openclaw/workspace/agents/autoresearch/checklists/[skill-slug].md`
+- Append entry to `~/.openclaw/workspace/agents/autoresearch/targets.md`:
+  `| [skill-slug] | [skill path] | [checklist path] | pending | — | [DATE added] |`
+- Note the enrollment in the reply to JT: "Enrolled in autoresearch — checklist at [path]. Review before first loop runs."
+
+Any no → skip silently. Do not force enrollment on subjective or one-off skills.
+
 ## Telegram Message Length Rule
 Before sending ANY Telegram message: estimate character count.
 If >3,500 chars: switch to bullet-only summary format. Never paste full tables, multi-section reports, or raw file contents into Telegram untruncated.
@@ -281,6 +315,35 @@ Key rules (enforced always — no exceptions):
 - No forbidden words (full list in content-voice.md)
 - No em dashes, no exclamation points, no "Here's the thing:" openers
 - Threads: max 5 tweets; most should be 3
+
+## Project Lessons Rule
+Before starting work on ANY project that has a `lessons.md` or `CLAUDE.md` file: read it in full before writing a single line of code or making any changes. This applies to all projects, not just n8n.
+- `~/projects/n8n-agent/tasks/lessons.md` — n8n workflows
+- `~/projects/agentforce-agent/CLAUDE.md` — Agentforce builds
+- `~/projects/jtsomwaru-com/CLAUDE.md` — portfolio site
+- Any project with a lessons file in its root or tasks/ folder
+Rule: if a lessons file exists for the project, it must be read. Building without reading = guaranteed repeat of already-solved problems.
+
+## Staff Engineer Bar (code quality gate)
+Before presenting any code output, implementation, or architecture decision: ask "Would a staff engineer approve this?"
+Checklist:
+- Is there a simpler way to accomplish the same outcome?
+- Are error states handled (not just the happy path)?
+- Will this break when inputs are unexpected or empty?
+- Is this hardcoded where it should be dynamic?
+- Is this duplicating something that already exists in the codebase?
+If any answer is unfavorable: fix before delivering. Do not present first drafts as final unless they pass this bar.
+
+## Pre-Execution Plan File Rule
+For any coding task or multi-step build: before writing a single line of code, create a `tasks/todo.md` in the project root with a checklist of steps. Format:
+```
+## Plan — [task name] — [date]
+- [ ] Step 1: [specific action]
+- [ ] Step 2: [specific action]
+...
+```
+Check off steps as they complete (`- [x]`). If something breaks mid-task: update the plan, STOP, re-plan. The plan file is the source of truth for what's done and what's next.
+Exception: one-liner fixes or single-file edits don't need a plan file.
 
 ## n8n Build Rule
 **Before** ANY n8n workflow build: read `~/projects/n8n-agent/tasks/lessons.md` in full. No exceptions. Building without reading lessons first = guaranteed repeat failures on already-solved problems.
@@ -317,6 +380,8 @@ Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete rule.
 **Recent entries (last 3):**
 | Date | Mistake | Fix |
 |------|---------|-----|
+| 2026-03-19 | Em dash in outreach DM draft despite explicit ban. | Rule: **Load cold-email/SKILL.md before drafting ANY outreach message. Skill file must be read, not assumed from memory.** |
+| 2026-03-19 | LinkedIn DMs drafted with 20-min call CTA and "I built X" in M1 — both explicitly banned in cold-email/SKILL.md. Root cause: drafted from session memory instead of loading the skill file. | Rule: **cold-email/SKILL.md must be loaded and rules checklist run against every draft before output. Memory of skill rules does not substitute for reading the file.** |
 | 2026-03-18 | Resume update delivered as uploaded markdown (.md) instead of formatted .docx. Job application skill explicitly says "NEVER write resume as markdown — always generate .docx using build_resume_docx.py." | Rule: **Job application output is always .docx via build_resume_docx.py. Uploading a .md to Drive = wrong. Read the skill and follow Step 4 immediately.** |
 | 2026-03-17 | Called `cron list` (all 35 jobs + full payloads) in active conversation to check ONE cron. Filled context window, caused overflow on every subsequent message including "are you there?" — forced gateway restart. | Rule: **NEVER call `cron list` in an active conversation.** To check one cron: use `cron runs --jobId [id]`. Full list loads 35 payloads and will overflow context. |
 | 2026-03-15 (2) | Ran `launchctl unload` twice mid-session — killed gateway both times. | Rule: LaunchAgent plist changes = warn JT gateway goes offline first. Never run `launchctl unload/load` silently mid-session. |

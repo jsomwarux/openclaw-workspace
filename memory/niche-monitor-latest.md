@@ -1,3 +1,5 @@
-**Last updated:** 2026-03-18 09:00 AM EST
+**Last updated:** 2026-03-19 09:00 AM EST
 
-🟠 **Agentforce Sales: 24/7 Digital Workforce Launch** — Salesforce published a major product announcement (March 17) for "Agentforce Sales," positioning it as a 24/7 digital sales workforce; includes stat that 30% of sales leaders saw revenue increases deploying a digital workforce — directly usable in JT's Agentforce proposals. (https://www.salesforce.com/uk/news/stories/agentforce-sales-announcement/)
+🟠 **Agentforce Free for SMBs — No Consumption Pricing** — Salesforce announced Agentforce is now embedded directly into SMB-tier Suites (Free, Starter, Pro) with no additional SKUs, no setup, and no consumption pricing, significantly lowering the barrier for SMB prospects but also increasing implementation consulting demand. (https://salesforcedevops.net/index.php/2026/03/18/agentforce-smb-suites-ai-paywall-breaking/)
+
+🟠 **Insurance AI Demand Gap — 82% Belief, 14% Integration** — AutoRek's 2026 Insurance Report (250 US/UK managers) found 82% of insurers believe AI will dominate their industry's future but only 14% have fully integrated it; 44% face settlement cycles >60 days and 14% of operational budgets go toward correcting manual-process errors — a concrete, stat-backed opening for JT's insurance niche pitch. (https://www.insurancebusinessmag.com/us/news/technology/ai-ambition-and-manual-reality-insurers-face-operational-divide-in-2026-569115.aspx)

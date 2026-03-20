@@ -1,6 +1,6 @@
 ---
 name: jt-consulting-pipeline
-description: Orchestrates the full consulting client acquisition pipeline — research, analysis, n8n demo build, presentation deck, and outreach draft. Use when JT says "run the pipeline on", "research this prospect", "build a demo for", "run a full pipeline", "start the pipeline for", or names a new company to pursue as a consulting client. NOT for: existing active clients (Aya), Opticfy admin tasks, portfolio updates, or job applications.
+description: Orchestrates the full consulting client acquisition pipeline — research, analysis, n8n demo build, presentation deck, and outreach draft. Use when JT says "run the pipeline on", "research this prospect", "build a demo for", "run a full pipeline", "start the pipeline for", or names a new company to pursue as a consulting client. NOT for: existing active clients (Aya), portfolio updates, or job applications.
 ---
 
 # jt-consulting-pipeline

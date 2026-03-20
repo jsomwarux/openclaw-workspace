@@ -61,18 +61,24 @@ This ensures 4+ weeks of posts cover 4+ different angles rather than converging 
    - Find all products with `status: "active"`
    - If none: update state.json with `last_run` and exit
 
-2. Read `~/.openclaw/workspace/memory/content-voice.md`
+2. **Load brand files for each active product (mandatory — read all three before generating a single word):**
+   - `agents/vibe-marketing/brands/[product_slug]/voice.md` — how the product writes, tone, anti-patterns
+   - `agents/vibe-marketing/brands/[product_slug]/product.md` — what the product does, confirmed proof points only
+   - `agents/vibe-marketing/brands/[product_slug]/icp.md` — three audience profiles for ICP multiplier step
+   These replace generic "write in JT's voice" instructions. Every post must sound like it came from the specific product's brand, not JT's personal brand.
+
+3. Read `~/.openclaw/workspace/memory/content-voice.md`
    - Apply JT's voice principles — direct, specific, no filler, no marketing speak
 
-3. Read `~/.openclaw/workspace/agents/vibe-marketing/platform-rules.md`
+4. Read `~/.openclaw/workspace/agents/vibe-marketing/platform-rules.md`
    - Apply ALL platform-specific rules during generation
    - Pay special attention to: Universal banned words, TikTok "you"-focused rule, Reddit cardinal rule, scoring gate
 
-4. Read `~/.openclaw/workspace/agents/vibe-marketing/performance-log.jsonl`
+5. Read `~/.openclaw/workspace/agents/vibe-marketing/performance-log.jsonl`
    - Load last 4 weeks of entries
    - Identify: which format_type + hook_style combinations scored "good" or "great" per product
-   - Use this to bias generation toward what's worked — more of those format combos, fewer of what flopped
-   - If file is empty or fewer than 4 entries: generate based on themes in registry, no bias applied yet
+   - **Winner doubling protocol:** If any entry is marked "great": generate ONE systematic variation of that exact structure this week (same hook type, same format, same CTA pattern — new specific angle/data point). This is in addition to the normal 3 X posts. Label it `"variation_of": "[original_id]"` in the queue entry.
+   - If no "great" entries yet: generate based on themes in registry, no bias applied yet
 
 4a. Read `~/.openclaw/workspace/agents/vibe-marketing/trending-now.md`
    - Check last updated date — if from a prior week, content is stale (step 5 will overwrite it)
@@ -401,6 +407,24 @@ Steps:
 
 ---
 
+## Step 2a: ICP Multiplier (runs after X posts are drafted, before scoring)
+
+Take the strongest X post hook from this week's batch (the one most likely to score 9+ on hook strength).
+Rewrite it three times — once per ICP in the product's `icp.md` — adjusting:
+- Opening hook (same structure, ICP-specific angle)
+- The specific problem framing (what the ICP cares about)
+- The closing line (what action makes sense for this ICP)
+
+**Do NOT change:** format, length, platform rules, banned words, proof points used.
+
+Output: 3 ICP variants, clearly labeled. Add all three to the queue as separate entries alongside the original.
+ICP variants are scored separately — they can pass or fail independently.
+In the queue entry, add `"icp_variant": "[ICP 1|ICP 2|ICP 3]"` to distinguish them from the base post.
+
+**Why this matters:** same proven hook structure, three different audience frames. The algorithm shows content to different people based on early engagement — an ICP 2 variant may reach a completely different pocket of viewers than the ICP 1 version. This is the multiplier.
+
+**Volume impact:** ICP multiplier adds up to 3 X posts per product. If all 3 pass scoring: queue them all. Don't artificially limit — more approved content = more posting optionality for JT.
+
 ## Step 2b: Brand Foundation Check (mandatory — runs before scoring)
 
 This is a binary pass/fail gate. Any violation = **automatic discard, do not score, do not queue.** Not a rubric dimension — these are hard disqualifiers that a 7/10 authenticity score cannot override.
@@ -659,7 +683,9 @@ Append to `~/.openclaw/workspace/agents/vibe-marketing/performance-log.jsonl`:
   "hashtags_used": ["#tag1", "#tag2"],
   "performance": "[great|good|ok|poor]",
   "metrics": "[views/saves/comments if JT reports them — otherwise null]",
-  "notes": "[what JT said or what made it work — or why it flopped]"
+  "notes": "[what JT said or what made it work — or why it flopped]",
+  "icp_variant": "[ICP 1|ICP 2|ICP 3|null — which ICP this was written for]",
+  "variation_of": "[original queue entry id, if this was a winner variation — otherwise null]"
 }
 ```
 

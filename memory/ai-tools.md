@@ -2,6 +2,18 @@
 
 ---
 
+## Mar 19, 2026 — 6PM Heartbeat
+
+**SurePath AI — MCP Policy Controls (Mar 12)** — Security layer giving enterprise teams real-time control over which MCP servers and tools AI clients can access. Governance + compliance angle directly relevant to AgentGuard positioning — validates the governance market JT is already in.
+
+**Google ADK + MCP + Cloud Run multi-agent demo (Mar 18)** — Google Cloud blog posted Part 1 of building a multi-agent system using their Agent Development Kit with MCP and Cloud Run. Developer Knowledge MCP server featured. Watch for Part 2 — could inform JT's Agentforce + n8n hybrid demo architecture.
+
+**n8n v2.12+ (March 2026 releases)** — Workflow history compaction, Stop All Executions, patch credentials API, instance ID caching. Stability + editor UX focus. No major new AI node features — existing stack unaffected.
+
+**MCP now universal standard** — All major providers (Anthropic, OpenAI, Google, Microsoft, Amazon) now support MCP as of early 2026. a16z deep dive confirms Postgres MCP + Upstash MCP as production-ready tools for developer workflows. MCP ecosystem is mainstream — strong signal for JT to reference in consulting pitches.
+
+---
+
 ## Mar 14, 2026 — 10AM Heartbeat
 
 ### Notable AI Tools & MCP Releases (week of Mar 10-14)

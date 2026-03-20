@@ -20,7 +20,25 @@ Deliver to JT via Telegram:
 5a. Check `~/.openclaw/workspace/agents/vibe-marketing/queue.jsonl` — if any entries with `"posted": false` and `"status": "approved"` exist, include a 📱 Vibe Queue section: "[N] pieces ready to post — [product names]. Check Drive for content."
 6. Send: punchy bullets, one concrete action. Title: "🌅 Morning Brief — [date]"
 
-Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Niche Intel (🔴🟠 only) | 💼 Job Market | 💰 API Costs | 🏋️ Today's Workout | 📱 Vibe Queue (if items waiting) | 💡 One concrete action
+5b. **Weekly outreach count check (every Monday morning brief only):**
+   - Read all shortlist files in ~/projects/jt-consulting-pipeline/shortlists/ and count entries with M1 sent in the past 7 days
+   - If count < 10: include ⚠️ Outreach Volume alert: "Only [N] DMs sent this week — target is 15. Pipeline needs fuel."
+   - If count ≥ 15: include ✅ Outreach on track: "[N] DMs sent this week."
+
+5c. **Relationship check (every Monday morning brief only):**
+   - Read memory/networking/contacts.md
+   - Apply warmth decay: any Hot contact not touched in 7+ days → flag
+   - Any overdue next actions → flag
+   - Include 🤝 Relationship section if anything needs attention
+
+5d. **Event scout (first Monday of each month only):**
+   - Search Eventbrite NYC for: "construction technology", "property management", "AI business NYC", "real estate tech NYC"
+   - Check brooklynchamber.com/events and nycchamber.com/events for that month
+   - If any relevant event found: push to MC as HIGH task with date, venue, ICP relevance
+   - Append to memory/networking/events.md
+   - Include 📅 Events section in morning brief if anything found
+
+Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Niche Intel (🔴🟠 only) | 💼 Job Market | 💰 API Costs | 🏋️ Today's Workout | 📱 Vibe Queue (if items waiting) | 🤝 Relationships (Monday only, if needed) | 💡 One concrete action
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK
@@ -34,12 +52,18 @@ Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Nic
    - If fix is non-obvious or requires JT input: alert JT via Telegram with job name + error + what you tried
    - Log what was fixed in today's daily note under ## Heartbeat HH:MM
    - Never leave a cron with consecutiveErrors >= 2 unaddressed
-4. **10AM only — Daily Film Review (non-negotiable):**
+4. **10AM only — Daily Film Review (non-negotiable, Kobe Protocol):**
    - Read yesterday's `memory/YYYY-MM-DD.md`
-   - Find: one mistake, one friction point, or one thing that took longer than it should have
-   - Write one concrete fix → appropriate file (AGENTS.md mistake rule, TOOLS.md path update, feedback.md rule, skill SKILL.md update)
-   - Append one line to `memory/training/training-log.md`: `[DATE 10AM] Film: [what was reviewed] → Fix: [what was updated]`
-   - If nothing to fix: note "Clear" and move on — don't skip the step
+   - **Step A — Failure scan:** Find one mistake, one friction point, or one thing that took longer than it should have. Write one concrete fix → appropriate file (AGENTS.md mistake rule, TOOLS.md path update, feedback.md rule, skill SKILL.md update).
+   - **Step B — Proactive improvement (even when nothing broke):** Ask "what could be sharper?" Pick ONE thing from this priority list and make one targeted improvement:
+     1. The most-run skill or cron that hasn't been autoresearched yet → draft or update its checklist in `agents/autoresearch/checklists/`
+     2. A rule in AGENTS.md or HEARTBEAT.md that's vague or hard to follow → tighten the language
+     3. A prompt in any cron payload that produced mediocre output this week → improve one instruction
+     4. A TOOLS.md entry that's stale or missing a key command → update it
+     5. A pattern from this week's sessions that should be a rule but isn't yet → write the rule
+   - Step B is mandatory even if Step A is "Clear." Kobe watched film after 40-point games too.
+   - Append one line to `memory/training/training-log.md`: `[DATE 10AM] Film: [what was reviewed] → Fix: [Step A result] | Improve: [Step B result]`
+   - If genuinely nothing to improve after honest review: note "Clear" — but this should be rare.
 4a. **10AM only — Spanish lesson delivery check:**
    Run: `openclaw cron runs --id babd905a-1098-49dd-8700-772fef14f817 --limit 1`
    If last run entry has `deliveryError` or `deliveryStatus` != "delivered" → resend lesson from `spanish/lessons/YYYY-MM-DD.md` (use yesterday's date) to JT via Telegram immediately.

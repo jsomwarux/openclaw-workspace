@@ -8,6 +8,8 @@ Not a task log — a training log. The difference: tasks are for JT. This is for
 
 ---
 
+[2026-03-19 10AM] Film: 2026-03-18 — recurring pattern: isolated crons (skills-researcher, prospect-discovery) complete work successfully but error on file-write step (Edit tool fails in isolated sessions). Happens repeatedly — 4 occurrences yesterday. → Fix: Added rule to cron agent guidance: isolated crons should use Read+Write (full file overwrite) for appending to logs, not Edit (requires exact match on partial content). Edit in isolated sessions = fragile. Logged in daily note.
+
 ## Format
 
 **Daily film entries (10AM heartbeat):**
@@ -119,3 +121,5 @@ Not a task log — a training log. The difference: tasks are for JT. This is for
 [2026-03-18 3AM] Film: reviewed 2026-03-17 daily note → content-reminder (5e66b4ee) and skills-weekly (05024e45) crons had insufficient timeouts (150s and 300s) and failed silently until 2PM heartbeat check. Root cause: no validation step when crons are created — timeout is set optimistically and not tested. Fix: added to active rules in feedback.md — when creating any cron with complex tasks (web scraping, Notion sync, X research), default minimum timeout is 600s, not 300s. Document in AGENTS.md cron creation checklist.
 
 [2026-03-18 10AM] Film: reviewed 2026-03-17 daily note → cron timeout issue (content-reminder 150s→360s, skills-weekly 300s→600s) already addressed by 3AM overnight run with new default 600s rule. Secondary observation: Monday morning has 4 jobs in 30 min (7:00 content-linkedin, 7:15 build-ideas-sync, 7:25 content-x, 7:30 morning-brief) — providers are mixed (groq + anthropic) so no rate collision risk, but density is notable. build-ideas-sync rate-limit yesterday was groq-specific, confirmed transient. → Fix: Clear. No new rule needed.
+
+[2026-03-19 3AM] Film: reviewed 2026-03-18 daily note → Georgetown City Services Agent built at 6:58PM (score 7/10, queued). Todo task not auto-closed after build completed — required manual closure tonight. → Fix: Proactive Task Closure Rule (AGENTS.md) covers this — when overnight finds a build task marked todo that matches a done build, close it immediately. Applied tonight.

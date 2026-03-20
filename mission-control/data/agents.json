@@ -313,7 +313,7 @@
   {
     "id": "passive-income-scout",
     "name": "Passive Income Scout",
-    "emoji": "💰",
+    "emoji": "\ud83d\udcb0",
     "role": "Passive Income Opportunity Research",
     "domain": "Weekly trend research across X, Product Hunt, Etsy, TikTok, and niche markets. Generates 3 scored passive income ideas tailored to JT's profile (AI-buildable, autonomous marketing, zero upkeep). Pushes top idea to Mission Control. Sends Sunday digest to Telegram.",
     "workspaceRel": ".openclaw/workspace/agents/passive-income-scout",
@@ -329,13 +329,13 @@
         "schedule": "Sunday 6 AM ET"
       }
     ],
-    "currentTask": "Live — first run this Sunday. Generating weekly passive income idea reports.",
+    "currentTask": "Live \u2014 first run this Sunday. Generating weekly passive income idea reports.",
     "created": "2026-03-01"
   },
   {
     "id": "passive-income-strategist",
     "name": "Passive Income Strategist",
-    "emoji": "🧠",
+    "emoji": "\ud83e\udde0",
     "role": "Passive Income Deep Analysis",
     "domain": "Stage 2 of the passive income pipeline. Takes 5 raw ideas from the Scout, runs deep market validation, competition assessment, build plan reality checks, and autonomous marketing analysis. Scores on 8 dimensions, assigns Build/Watch/Pass verdicts, pushes winners to Mission Control, sends Sunday digest to JT.",
     "workspaceRel": ".openclaw/workspace/agents/passive-income-strategist",
@@ -351,18 +351,20 @@
         "schedule": "Sunday 7:30 AM ET"
       }
     ],
-    "currentTask": "Live — runs every Sunday after Scout. Deep-evaluates raw ideas, pushes vetted winners to Mission Control.",
+    "currentTask": "Live \u2014 runs every Sunday after Scout. Deep-evaluates raw ideas, pushes vetted winners to Mission Control.",
     "created": "2026-03-01"
   },
   {
     "id": "job-tracker",
     "name": "Job Tracker",
-    "emoji": "📋",
+    "emoji": "\ud83d\udccb",
     "role": "Job Application Accountability Agent",
     "domain": "Monitors open job applications on Mission Control. Fires Tue/Thu 10:15 AM. Classifies by days elapsed: NEW (<4d, silent), STALE (4-7d, flag), OVERDUE (7d+, escalate). Sends one Telegram alert with deadline, doc status, and next action. Silent if nothing urgent. Also drafts follow-up emails for submitted applications with no response after 10 days.",
     "workspaceRel": ".openclaw/workspace/agents/job-tracker",
     "github": null,
-    "skills": ["job-application"],
+    "skills": [
+      "job-application"
+    ],
     "crons": [
       {
         "id": "b0b04601-7518-4681-9761-4bbe5054ce9b",
@@ -370,15 +372,15 @@
         "schedule": "Tue/Thu 10:15 AM EST"
       }
     ],
-    "currentTask": "Active — monitoring open Job Market tasks on Mission Control. Next run: Tuesday 10:15 AM.",
+    "currentTask": "Active \u2014 monitoring open Job Market tasks on Mission Control. Next run: Tuesday 10:15 AM.",
     "created": "2026-03-07"
   },
   {
     "id": "content-calendar",
     "name": "Content Calendar",
-    "emoji": "📅",
+    "emoji": "\ud83d\udcc5",
     "role": "Content Generation Agent",
-    "domain": "Two-mode content system: (1) Weekly Batch — Sunday 10 PM, generates 5-7 evergreen posts for the week ahead, uploads to Drive, previews to Telegram. (2) Daily News Hook — weekdays 9:15 AM, reads niche monitor output and drafts 1-2 timely posts only if a 🟠/🔴 signal exists. Silence if no signal. All content audited against content-voice.md before delivery.",
+    "domain": "Two-mode content system: (1) Weekly Batch \u2014 Sunday 10 PM, generates 5-7 evergreen posts for the week ahead, uploads to Drive, previews to Telegram. (2) Daily News Hook \u2014 weekdays 9:15 AM, reads niche monitor output and drafts 1-2 timely posts only if a \ud83d\udfe0/\ud83d\udd34 signal exists. Silence if no signal. All content audited against content-voice.md before delivery.",
     "workspaceRel": ".openclaw/workspace/agents/content-calendar",
     "github": null,
     "skills": [
@@ -397,13 +399,13 @@
         "schedule": "Weekdays 9:15 AM EST"
       }
     ],
-    "currentTask": "Active — weekly batch fires Sunday 10 PM, daily hook fires weekdays 9:15 AM (only sends if 🟠/🔴 signal exists).",
+    "currentTask": "Active \u2014 weekly batch fires Sunday 10 PM, daily hook fires weekdays 9:15 AM (only sends if \ud83d\udfe0/\ud83d\udd34 signal exists).",
     "created": "2026-03-07"
   },
   {
     "id": "critic",
     "name": "Critic",
-    "emoji": "⚖️",
+    "emoji": "\u2696\ufe0f",
     "role": "Strategic Critic",
     "domain": "On-demand brutal honesty partner. Surfaces blind spots, broken reasoning, true constraints, avoidance costs, leverage gaps, and accountability challenges. Three modes: on-demand (/critic [topic]), soft-signal flag in main session, and weekly Sunday gut-check cron.",
     "workspaceRel": ".openclaw/workspace/agents/critic",
@@ -420,7 +422,7 @@
         "schedule": "Sunday 6 PM EST"
       }
     ],
-    "currentTask": "Active — invoke with /critic [topic]. Sunday gut-check reads week's decisions and sends strategic analysis to Telegram.",
+    "currentTask": "Active \u2014 invoke with /critic [topic]. Sunday gut-check reads week's decisions and sends strategic analysis to Telegram.",
     "created": "2026-03-07"
   },
   {
@@ -521,5 +523,51 @@
     ],
     "currentTask": "Processing portfolio queue nightly \u2014 auto-adding qualifying projects, demand-reordering weekly",
     "created": "2026-02-27"
+  },
+  {
+    "id": "autoresearch",
+    "name": "Autoresearch Agent",
+    "emoji": "\ud83d\udd2c",
+    "role": "Autonomous skill self-improvement loop",
+    "domain": "Skills",
+    "workspaceRel": "agents/autoresearch",
+    "crons": [
+      "monthly sweep (1st of month, on-demand otherwise)"
+    ],
+    "currentTask": "pending first run on cold-email",
+    "created": "2026-03-19"
+  },
+  {
+    "id": "launch-kit",
+    "name": "Launch Kit Agent",
+    "emoji": "\ud83d\ude80",
+    "role": "Generates full distribution launch kits for new passive income products",
+    "domain": "passive-income",
+    "workspaceRel": "agents/launch-kit/AGENT.md",
+    "crons": [],
+    "currentTask": null,
+    "created": "2026-03-19"
+  },
+  {
+    "id": "networking",
+    "name": "Networking Agent",
+    "emoji": "\ud83e\udd1d",
+    "role": "Warm Relationship Tracker",
+    "domain": "Warm contacts, relationship warmth decay, event tracking, referral pipeline management",
+    "workspaceRel": ".openclaw/workspace/agents/networking",
+    "github": null,
+    "skills": [
+      "web_search",
+      "memory"
+    ],
+    "crons": [
+      {
+        "id": "networking-monday-check",
+        "name": "Relationship Check",
+        "schedule": "Monday morning brief"
+      }
+    ],
+    "currentTask": "Tracking warm contacts and relationship warmth. Data: memory/networking/",
+    "created": "2026-03-19"
   }
 ]
