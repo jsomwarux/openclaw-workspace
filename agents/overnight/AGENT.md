@@ -50,6 +50,14 @@ for p in data['products']:
 ```
 If any product is returned: run `agents/launch-kit/AGENT.md` for that product BEFORE selecting MC tasks. This counts as one of the 2 nightly tasks. Skip MC task 2 if cost is already > $1.00.
 
+### Step 1.6: Autoresearch Volume Trigger Check
+Before fetching tasks, check if the cold-email autoresearch loop should run tonight:
+
+1. List files in `~/.openclaw/workspace/agents/autoresearch/logs/` matching `*cold-email*`. Find the most recent one.
+2. If no file exists, or the most recent file's date (in its filename, YYYY-MM-DD format) is more than 14 days before today → **trigger autoresearch on cold-email as tonight's first task** (counts as 1 of 2). Follow `agents/autoresearch/AGENT.md` for the loop.
+3. If the most recent run was within 14 days → skip, proceed to Step 2.
+4. Skip this step entirely if estimated cost so far tonight is already > $0.50.
+
 ### Step 2: Fetch Task Board
 ```
 curl -s http://localhost:3000/api/tasks

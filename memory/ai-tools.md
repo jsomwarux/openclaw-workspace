@@ -346,3 +346,9 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 **Dropzone AI — Autonomous Threat Hunting (Mar 18)** — Agentic SOC platform with continuous threat detection. Not JT's stack. 🟢 skip.
 
 **Nvidia Vera Rubin platform (GTC 2026)** — AI agent infrastructure push with Adobe/SAP/Salesforce integrations. Reinforces Agentforce ecosystem growth signal already logged. No new action. 🟡
+
+## 2026-03-20 6PM Scan
+- **ServiceNow AI Gateway** (March 2026 release): sits between AI agents and MCP servers — centralized control over connections, auth, data flow, real-time monitoring. Part of AI Control Tower. 🟡 Validates AgentGuard governance direction; enterprise-scale equivalent of what AgentGuard does for SMB. Not a JT tool but strong positioning signal.
+- **Anthropic Cowork**: Claude Desktop agent that works in your files, no coding required (via VentureBeat). 🟡 Watch — could affect JT's SMB consulting pitch (some clients may use this before hiring a consultant).
+- **MCP as Shadow IT (Qualys TotalAI, 2026-03-19)**: framing MCP servers as new enterprise shadow IT risk — supply chain exposure, protocol churn, unmanaged connections. 🟡 Content angle: "the same governance problem that plagued SaaS sprawl is happening again with AI agents. The answer isn't less MCP — it's a control layer." Validates AgentGuard.
+- **MCP production roadmap (The New Stack)**: maintainers prioritizing production reliability fixes — auth, rate limiting, observability. Protocol maturing fast. 🟡 Monitor.

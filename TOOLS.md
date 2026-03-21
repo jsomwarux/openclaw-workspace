@@ -237,8 +237,11 @@ Include in the task prompt: *"Activate [Agent Name] mode for this session."*
 - **Viral Post Swipe File** DB ID: 31316aff930580f6a195ca179793eb0e
 - **Content Calendar** DB ID: 32516aff930581a78659eac869c71ba8 | Page: https://www.notion.so/32516aff930581a78659eac869c71ba8
   - Properties: Post (title), Date, Platform (select), Type (Planned/News Hook/Vibe), Status (To Post/Posted/Skipped), Drive Link, Week
-- Push script: `python3 ~/.openclaw/workspace/scripts/notion-swipe-push.py --text "..." --author "@handle" --url "..." --niche "AI Agents" --format "Hot Take" --why "..." --engagement 1200 --hook "Contrarian claim"`
+- Swipe push: `python3 ~/.openclaw/workspace/scripts/notion-swipe-push.py --text "..." --author "@handle" --url "..." --niche "AI Agents" --format "Hot Take" --why "..." --engagement 1200 --hook "Contrarian claim"`
 - Seed script: `python3 ~/.openclaw/workspace/scripts/notion-swipe-seed.py` (one-time bulk population)
+- **Calendar push:** `python3 ~/.openclaw/workspace/scripts/notion-calendar-push.py --platform "X" --date "YYYY-MM-DD" --post "post text" --type "Planned" --drive-link "URL"`
+  - Args: `--platform`, `--date`, `--post` (title text), `--type` (Planned/News Hook/Vibe), `--drive-link`, `--week` (YYYY-MM-DD), `--batch` (JSON array)
+  - ⚠️ No `--title` arg — use `--post` for the post title/text
 - Cron: 3x/week Mon/Wed/Fri 5:30AM EST isolated sonnet — searches X for viral posts, pushes to Notion
 - X Algorithm reference: ~/.openclaw/workspace/docs/x-algorithm.md
 

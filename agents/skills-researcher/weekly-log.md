@@ -166,4 +166,35 @@ _Week starting 2026-03-14 — reset after 2026-W11 synthesis_
 
 _X API note: Queries 1, 2, 5, 6 returned 503 (X API service unavailable). Queries 3 (n8n) and 4 (MCP) succeeded._
 
+---
+
+## 2026-03-20 — Daily Scan
+
+### 🟡 Anthropic 1M Context Window — GA at Standard Pricing (confirmed, March 13)
+- Full 1M context window now GA for Opus 4.6 + Sonnet 4.6 at standard pricing. No long-context surcharge.
+- JT uses OAuth ($0 Anthropic cost), but relevant for client-side API pricing in proposals.
+- No active build blocked. Priority gate: 3/4 no → 🟡.
+- KB'd (#318). Source: https://byteiota.com/anthropic-drops-long-context-premium-1m-tokens-at-standard-pricing/
+
+### 🟡 HubSpot Connector for Claude — CRM Write Access (March 2026)
+- HubSpot released Claude Cowork connector with CRM write access: create/update records, log activities, access orders/invoices/engagement history.
+- Community also building Claude+HubSpot via MCP (setup takes an afternoon).
+- Validates JT's HubSpot expansion target. No active HubSpot client yet → 🟡.
+- KB'd (#317). Source: releasebot.io/updates/hubspot + @ReedDailey
+
+### 🟡 Claude Cowork Dispatch — Persistent Cross-Device Agent (March 17)
+- Anthropic ships Dispatch (research preview): persistent desktop agent, phone-controlled. Async task handoffs.
+- Cowork Implementation CLOSED per MEMORY.md. Background signal.
+- KB'd (#319). Source: https://www.ndtv.com/offbeat/anthropic-launches-claude-dispatch...
+
+### 🟡 General Input — Agent-Native Workflow Tool
+- @jackjoliet launched General Input: describe what you want, AI agent "Geni" builds the workflow. Positioned for AI agents, not human authors.
+- Early stage, unverified traction. Not a near-term n8n replacement. Watch.
+- KB'd (#320). Source: https://x.com/jackjoliet/status/2033908673475391893
+
+### 🟡 Salesforce Agentforce Contact Center GA (March 10)
+- Already noted 2026-03-16 and 2026-03-17. No new information. Confirming still 🟡 — no active Agentforce client.
+
+### No 🔴 or 🟠 findings. No Telegram message sent.
+
 

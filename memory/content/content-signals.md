@@ -6,6 +6,14 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 
 ---
 
+## 2026-03-20
+
+[2026-03-20] FORMAT Compressed list / resource compilation — 3 appearances / 1,232 total engagement | JT has angle: yes (Eve 20+ crons, 5 Agentforce agents, 2 n8n templates, Vista, AgentGuard — strong personal list) | JT posted recently: no list-format posts in log | action: recommend for Saturday build-in-public slot — "6 things I built in the last 6 months that I actually use daily" arrow-list format
+
+[2026-03-20] TOPIC Personal AI agent / persistent agent OS — 2 posts (@Fetch_ai 573 + @huang_chao4969 891) / 1,464 total engagement | JT has angle: yes (Eve: 8 months, 24/7, Mac mini, 20+ crons — direct proof) | JT posted recently: Sunday March 17 behind-the-build about Eve (scheduled, not confirmed posted) | action: below 2K hot lane threshold; wait for Sunday Eve post engagement before repeating the topic
+
+[2026-03-20] TOPIC AI implementation = data engineering (reframe) — 1 post (@asmah2107) / 168 likes / 10.6K impressions | JT has angle: yes ("90% of AI consulting is actually just workflow redesign" — same compression frame, owned territory) | JT posted recently: no | action: Thursday hot take slot — adapt the frame to JT's consulting domain
+
 ## 2026-03-18
 
 [2026-03-18] TOPIC Claude Code as AI operating system / "runs my ops" — 3 posts / ~167K total engagement | JT has angle: yes (Eve 8 months live, 20+ crons, 60-70% of ops automated — stronger than anyone else posting this because it's actually running) | JT posted recently: no (Sunday behind-the-build about Eve scheduled but not posted yet) | action: HOT LANE FIRED — Wednesday X mini case study slot

@@ -8,6 +8,8 @@ Not a task log — a training log. The difference: tasks are for JT. This is for
 
 ---
 
+[2026-03-20 3AM] Film: 2026-03-19 — cron health check found 4 transient errors (Edit-fail pattern in isolated agents). Pattern already logged yesterday (10AM). No new overnight-specific pattern found. → Autoresearch baseline run on cold-email skill: 0.875 → 0.958 after one mutation (added explicit CTA note banning binary closers, cross-referenced Anti-Pattern #2). Checklist item #5 was failing ~50% of drafts because the Message Structure section didn't enforce the rule at point of construction. Fixed in SKILL.md.
+
 [2026-03-19 10AM] Film: 2026-03-18 — recurring pattern: isolated crons (skills-researcher, prospect-discovery) complete work successfully but error on file-write step (Edit tool fails in isolated sessions). Happens repeatedly — 4 occurrences yesterday. → Fix: Added rule to cron agent guidance: isolated crons should use Read+Write (full file overwrite) for appending to logs, not Edit (requires exact match on partial content). Edit in isolated sessions = fragile. Logged in daily note.
 
 ## Format
@@ -123,3 +125,6 @@ Not a task log — a training log. The difference: tasks are for JT. This is for
 [2026-03-18 10AM] Film: reviewed 2026-03-17 daily note → cron timeout issue (content-reminder 150s→360s, skills-weekly 300s→600s) already addressed by 3AM overnight run with new default 600s rule. Secondary observation: Monday morning has 4 jobs in 30 min (7:00 content-linkedin, 7:15 build-ideas-sync, 7:25 content-x, 7:30 morning-brief) — providers are mixed (groq + anthropic) so no rate collision risk, but density is notable. build-ideas-sync rate-limit yesterday was groq-specific, confirmed transient. → Fix: Clear. No new rule needed.
 
 [2026-03-19 3AM] Film: reviewed 2026-03-18 daily note → Georgetown City Services Agent built at 6:58PM (score 7/10, queued). Todo task not auto-closed after build completed — required manual closure tonight. → Fix: Proactive Task Closure Rule (AGENTS.md) covers this — when overnight finds a build task marked todo that matches a done build, close it immediately. Applied tonight.
+
+[2026-03-20 3AM] Film: reviewed 2026-03-19 daily note — skills gap tasks completed cleanly, no new friction. Launch kit sub-agent timed out mid-Nash Satoshi (8m timeout insufficient for 2 full kits). Fix: Next launch kit run — spawn one sub-agent per product, not both together. Single product = ~3-4 min. Two products = exceeds 8m timeout. Applied tonight by completing Nash Satoshi inline.
+[2026-03-20 10AM] Film: today's session — notion-calendar-push `--title` arg failure in completion protocol → used `--help` to fix. Root cause: TOOLS.md Notion section was missing calendar push syntax. Fix: added full arg block to TOOLS.md. | Improve: ran first autoresearch loop on content-x cron (pending→active). Score: 0.900/1.0 — em-dash failures in auto-detected post drafts (not cron output). Checklist confirms cron itself is clean. Auto-detected protocol has em-dash gap; content-voice.md audit rule already covers it. No prompt change needed for cron.

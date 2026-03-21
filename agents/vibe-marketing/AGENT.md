@@ -193,52 +193,60 @@ Slide *copy* (text content per slide) is generated in both modes — PostBridge 
 
 ---
 
-#### Slideshow Format (Nash Satoshi primary — faceless, no camera required)
+#### Slideshow Format — Both Products (realistic scene photos + app screenshots)
 
-Generate slide copy as numbered blocks. See platform-rules.md → TikTok Slideshow section for full visual rules.
-**When NB2 image generation is active (trigger met — see future-signals.md):** Use pre-written prompt templates in `agents/vibe-marketing/nb2-image-prompts.md`. Inject variable fields (hook text, ticker, score, title) from this week's content spec. Generate at 512px, 9:16 aspect ratio. One API call per slide.
+**How this works:**
+- **Eve generates:** Slide 1 (hook scene photo via NB2) + Last slide (CTA scene photo via NB2)
+- **JT provides:** middle slides = real app screenshots from his phone
+- **JT adds:** all text overlays in TikTok's native text editor before posting
+- **JT adds:** trending sound in TikTok before publishing
 
-Output format:
-```
-SLIDE 1: [Hook — one line, big bold text, contrarian claim]
-SLIDE 2: [Body point 1 — max 2-3 short sentences]
-SLIDE 3: [Body point 2 — max 2-3 short sentences]
-SLIDE 4: [Body point 3 / insight or data reveal]
-SLIDE 5: [Payoff — what this means for the reader]
-SLIDE 6: [CTA — "Full rankings at nashsatoshi.com" + describe product screenshot placement]
-CAPTION: [pov: framing or conflict formula — no product name in body]
-HASHTAGS: [4–5 tags — 1 large 10M+, 2 mid 1-5M, 1 niche <500K]
-```
+No text is baked into NB2-generated images. Text goes in TikTok. This is non-negotiable — baked text looks AI-generated and kills the native feel.
 
-**Nash Satoshi slideshow palette:** Dark/navy background, white text, minimal data-forward visuals. Same font every week. Recognizability compounds.
-
-**Image generation quality rules (Postiz mode only — skip in manual mode):**
-- Use JSON-structured prompts, NOT text prompts. Text prompts produce AI-looking output.
-- Lock scene architecture across all slides (dimensions, position, camera angle). Only style/data changes between slides.
-- Always include `"avoid": ["CGI", "AI-generated look", "smooth plastic skin", "studio lighting", "beauty filters", "perfect symmetry"]`
-- Specify camera imperfections: `"device": "iPhone", "photo_characteristics": ["minor digital noise", "realistic smartphone dynamic range"]`
-- Color grading: find a Pinterest reference with the right vibe → Gemini extracts JSON color profile → use as generation reference. Eliminates grey/washed-out defaults.
-- Slide 1 text: 6.5% image height font, 30% from top, line breaks every 4–6 words.
+**NB2 scene selection:** Read `agents/vibe-marketing/nb2-image-prompts.md` → pick the correct scene template based on content theme. No variable injection needed — scenes are complete as-is.
 
 ---
 
-#### Slideshow Format (Vista — faceless, app screenshots + text overlays)
+**Output format (slide copy — the text JT will type into TikTok):**
 
-Same slide copy structure as Nash Satoshi. Vista's aesthetic: cinematic/film feel — dark background, film-grain texture, muted palette. App screenshots are the visual proof; text is the hook and insight.
-
-Output format:
 ```
-SLIDE 1: [Hook — "You"-focused, contrarian, about movie ratings or taste — not about Vista]
-SLIDE 2: [Body point 1 — the problem with crowdsourced ratings / how most people track movies]
-SLIDE 3: [Body point 2 — what personal taste profiling reveals that crowd averages miss]
-SLIDE 4: [Payoff — the insight or specific example, e.g. "73% of films I rated above 8 share this one trait"]
-SLIDE 5: [App screenshot with one-line label — "what tracking 200+ films actually looks like"]
-SLIDE 6: [CTA — "Available on the App Store — search Vista" + screenshot of App Store listing]
-CAPTION: [pov: framing or conflict formula — no product name in body]
-HASHTAGS: [4–5 tags — mix of #movies, #filmtok, #letterboxd, niche film tags]
+SLIDE 1 TEXT OVERLAY: [Hook — one line, what JT types over the scene photo]
+  Scene to generate: [scene name from nb2-image-prompts.md — e.g. V-SCENE-A or NS-SCENE-A]
+
+SLIDE 2: [App screenshot — JT captures this]
+  Label to overlay: [one line JT adds in TikTok, or "no label needed"]
+
+SLIDE 3: [App screenshot — JT captures this]
+  Label to overlay: [one line or "no label needed"]
+
+SLIDE 4 (optional): [App screenshot if needed]
+  Label to overlay: [one line or "no label needed"]
+
+LAST SLIDE TEXT OVERLAY: [CTA — what JT types over the CTA scene photo]
+  Scene to generate: [scene name — e.g. V-SCENE-B or NS-SCENE-B]
+
+CAPTION: [pov: framing — no product name in body]
+HASHTAGS: [4–5 tags — 1 large 10M+, 2 mid 1-5M, 1 niche <500K]
+
+SCREENSHOT INSTRUCTIONS FOR JT:
+[Exact instructions for what screenshots to capture — copied from nb2-image-prompts.md screenshot section]
 ```
 
-**Vista slideshow palette:** Cinematic dark background, film-grain texture, muted warm tones. Same aesthetic every week — recognizability compounds.
+---
+
+**Hook text guidelines per product:**
+
+Nash Satoshi hook examples (Slide 1 overlay — what goes over the dark office scene):
+- "i spent 3 years picking coins based on vibes when game theory scores existed the whole time"
+- "this tool permanently changed how i invest in crypto"
+- "game theory ranks every crypto asset. most people have never heard of it."
+
+Vista hook examples (Slide 1 overlay — what goes over the film night scene):
+- "i can't believe i've been using letterboxd this whole time when this exists"
+- "my favorite films of the year so far (1-100 ratings)"
+- "why i stopped trusting rotten tomatoes"
+
+**Hook rule:** Write in lowercase, casual, first person. Reads like a thought someone had, not a marketing line. No exclamation points.
 
 ---
 
@@ -491,50 +499,36 @@ One JSON object per line:
 
 ## Step 4b: Generate Slide Images via NB2
 
-After scoring and queuing, generate image assets for every TikTok slideshow piece.
-Read `agents/vibe-marketing/nb2-image-prompts.md` for all prompt templates and screenshot instructions.
+After scoring and queuing, generate the two scene photos (Slide 1 + Last slide) for every TikTok slideshow piece.
+
+Read `agents/vibe-marketing/nb2-image-prompts.md` for the complete scene library. No variable injection needed — prompts are complete as-is. Select the correct scene based on content theme (see the scene selection table in that file).
 
 Source the API key: `source ~/.config/env/global.env` (key is `OPENROUTER_API_KEY`)
 
 Output directory: `agents/vibe-marketing/generated-images/[product_slug]/[YYYY-MM-DD]/`
 
-**Per product — what to generate vs. what to flag for JT:**
+**What Eve generates (2 images per slideshow):**
 
-### Nash Satoshi
-| Slide | Source |
-|---|---|
-| Slide 1 — Hook card | NB2 (inject this week's hook text) |
-| Slide 2 — Rankings/data card | NB2 generates background frame only — JT overlays tickers + scores in CapCut |
-| Slide 3 — CTA card | NB2 preferred; OR flag for JT to substitute nashsatoshi.com screenshot for higher authenticity |
-| UGC Reaction background | NB2 (inject the coin ticker + claim being reacted to) |
+| Slide | Source | Notes |
+|---|---|---|
+| Slide 1 — Hook scene | NB2 (select scene from nb2-image-prompts.md) | Realistic photo, NO text baked in |
+| Middle slides (2–4) | JT captures from phone | App screenshots — see instructions below |
+| Last slide — CTA scene | NB2 (select scene from nb2-image-prompts.md) | Realistic photo, NO text baked in |
 
-### Vista
-| Slide | Source |
-|---|---|
-| Slide 1 — Hook card | NB2 (inject this week's hook text) |
-| Slide 2 — Score comparison card | NB2 (inject IMDb score + Vista score for this week's film) |
-| Slide 3 — CTA card | NB2 (inject CTA text) |
-| Slide 5 — App UI | ⬛ FLAG FOR JT — instructions in nb2-image-prompts.md → Screenshot Instructions section |
-| Slide 6 — App Store listing | ⬛ FLAG FOR JT — instructions in nb2-image-prompts.md → Screenshot Instructions section |
-| UGC Reaction — source rating (Slide 2) | ⬛ FLAG FOR JT — IMDb screenshot (more credible than generated) |
-| UGC Reaction background cards | NB2 |
+**Generation command (run once per slide):**
+```bash
+source ~/.config/env/global.env
+python3 ~/.openclaw/workspace/scripts/nb2-generate.py \
+  --prompt "[full scene prompt from nb2-image-prompts.md — copy exactly, no modifications]" \
+  --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-01-hook.png"
+# Repeat for last slide → slide-last-cta.png
+```
 
-**Generation workflow (cost-efficient):**
-1. For each NB2 slide, inject the weekly variable fields into the prompt template
-2. Call NB2 via the generation script:
-   ```bash
-   source ~/.config/env/global.env
-   python3 ~/.openclaw/workspace/scripts/nb2-generate.py \
-     --prompt "[full prompt with injected variables]" \
-     --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-[N].png"
-   ```
-3. Log each generation call cost to `agents/vibe-marketing/nb2-cost-log.md`
+**For screenshot slides:** add a `## 📸 Screenshots Needed — [Product]` section to the Drive review doc (Step 5), listing exactly what JT needs to capture. Copy the exact instructions from nb2-image-prompts.md → Screenshot Instructions section.
 
-**For flagged screenshots:** add a `## 📸 Screenshots Needed — [Product]` section to the Drive review doc (see Step 5), listing exactly what JT needs to capture and where to place each screenshot in the slide sequence. Use the exact instruction text from nb2-image-prompts.md → Screenshot Instructions.
+**If NB2 call fails:** log the error, skip image generation for that slide, continue. Missing images do not block content delivery — slide copy is the primary output.
 
-**If NB2 API call fails:** log the error, skip image generation for that slide, continue. Missing images do not block content delivery — copy is the primary output.
-
-**Cost estimate:** ~6–8 NB2 calls per week (fewer with screenshot substitutions) × ~$0.005 = ~$0.04–$0.05/week. Negligible.
+**Cost estimate:** ~2 NB2 calls per product per week × 2 products = ~4 calls/week × ~$0.005 = ~$0.02/week. Negligible.
 
 ---
 
@@ -546,7 +540,7 @@ For each active product, write a review file to a temp path, then upload per pro
 
 **Review file format** (`/tmp/vibe-review-[product_slug]-[YYYY-MM-DD].md`):
 
-Include a `## 🖼️ Images` section per TikTok piece — list each generated slide's local path AND any screenshot instructions for JT-captured slides.
+Include a `## 🖼️ Slides` section per TikTok piece — list each generated image's local path, screenshot instructions for JT-captured slides, and exact text overlay copy JT types in TikTok.
 ```markdown
 # Vibe Marketing Review — [Product Name] — Week of [YYYY-MM-DD]
 
@@ -590,24 +584,37 @@ Include a `## 🖼️ Images` section per TikTok piece — list each generated s
 [Include if generated this month — same format as X posts]
 ```
 
-**Upload per product to its own Drive folder:**
+**TikTok section of each review file must include this assembly block:**
+```markdown
+## 🎬 How to Assemble This TikTok — [Product Name]
+
+1. Open TikTok → + → select photos from your camera roll
+2. Add slides IN ORDER: Slide 1 (hook scene — saved to Drive) → your app screenshots → Last slide (CTA scene — saved to Drive)
+3. Slide 1 text overlay: [exact hook text from slide copy above]
+4. Middle slide labels: [exact labels from slide copy above, or "no label needed"]
+5. Last slide text overlay: [exact CTA text from slide copy above]
+6. Pick a trending sound from TikTok's audio library (lo-fi/ambient works best — don't compete with the text)
+7. Paste caption below into TikTok caption field → post
+
+Caption: [caption text]
+Hashtags: [hashtag list]
+
+📸 Screenshots you need to capture from your phone:
+[copy from nb2-image-prompts.md → Screenshot Instructions for this product]
+```
+
+**Upload — dynamic per product (loop over all active products):**
 ```bash
 cd ~/.openclaw/workspace
 
-# Nash Satoshi
+# For EACH active product in registry (slug, name):
 python3 scripts/drive_drafts.py \
-  --title "Nash Satoshi — Vibe Review Week of [YYYY-MM-DD]" \
-  --path "Content/Vibe Marketing/Nash Satoshi" \
-  --file /tmp/vibe-review-nash-satoshi-[YYYY-MM-DD].md
-
-# Vista
-python3 scripts/drive_drafts.py \
-  --title "Vista — Vibe Review Week of [YYYY-MM-DD]" \
-  --path "Content/Vibe Marketing/Vista" \
-  --file /tmp/vibe-review-vista-[YYYY-MM-DD].md
-
-# Future products: --path "Content/Vibe Marketing/[Product Name]"
+  --title "[Product Name] — Vibe Review Week of [YYYY-MM-DD]" \
+  --path "Content/Vibe Marketing/[Product Name]" \
+  --file /tmp/vibe-review-[product_slug]-[YYYY-MM-DD].md
 ```
+
+This pattern works for any product — current (Nash Satoshi, Vista) and future (Glow Index, etc.). Drive path is derived from `product.name` in the registry. No hardcoded product names.
 
 If Drive upload fails: log the error, continue. queue.jsonl is the local source of truth.
 
@@ -640,7 +647,26 @@ All content in Drive: [link]
 Reply with feedback after you post ("Nash Satoshi game theory post did well") — I'll log it to bias next week's generation.
 ```
 
-If ALL products have 0 qualifying pieces: exit silently. No Telegram.
+If ALL products have 0 qualifying pieces: exit silently. No Telegram, no MC task.
+
+**After sending Telegram: push one Mission Control task per product that has approved content:**
+```bash
+curl -s -X POST http://localhost:3000/api/tasks \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "title": "Post [Product Name] content — week of [YYYY-MM-DD]",
+    "description": "Review in Drive: [Drive link]. Post X posts to [X account], TikTok slides to [TikTok account], Reddit post to [subreddit]. Check karma before Reddit.",
+    "status": "todo",
+    "priority": "high",
+    "assignee": "JT",
+    "project": "passive-income",
+    "sortOrder": 18
+  }'
+```
+
+- One task per product (not one task for all products combined — keeps them individually trackable)
+- sortOrder 18 keeps it near the top of HIGH but below Gil meeting (8) and LinkedIn (25)
+- If a product has 0 approved pieces this week: no task for that product
 
 ---
 
@@ -659,9 +685,15 @@ If ALL products have 0 qualifying pieces: exit silently. No Telegram.
   "last_reddit_subreddit": {
     "nash-satoshi": "[r/subreddit or null]",
     "vista": "[r/subreddit or null]"
+  },
+  "last_scene_concept": {
+    "nash-satoshi": "[concept number used this week — e.g. 2]",
+    "vista": "[concept number used this week — e.g. 3]"
   }
 }
 ```
+
+Update `last_scene_concept.[product_slug]` to the concept number used this week after image generation. Next run reads this and picks the next number in sequence (wrapping from 8 back to 1).
 
 ---
 

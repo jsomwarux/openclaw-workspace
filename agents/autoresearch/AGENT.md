@@ -9,6 +9,7 @@ Run a skill or agent prompt against test inputs, score each output against a yes
 - **Overnight agent on-demand:** "run autoresearch on [slug]"
 - **Monthly sweep (1st of month):** run all `active` or `pending` targets in targets.md one at a time
 - **Manual:** JT says "run autoresearch on [skill name]"
+- **Volume trigger (outreach):** After the outreach pipeline has generated 10+ cold email drafts since the last autoresearch run on `cold-email` (check `logs/` for last run date vs. pipeline shortlist counts), the overnight agent should run autoresearch on cold-email before the next batch. Check: count entries in `~/projects/jt-consulting-pipeline/shortlists/` with M1/M2/M3 dates newer than the last cold-email autoresearch log date.
 
 ## Step 0: Load targets
 Read `~/.openclaw/workspace/agents/autoresearch/targets.md`.

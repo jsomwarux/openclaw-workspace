@@ -9,3 +9,4 @@
 2026-03-14T15:35:00Z | daily-scan | x_queries: 6 | web_queries: 8 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-03-17T15:32:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 8 | 🔴: 0 | 🟠: 1 (CoinMarketCap MCP — promoted from 🟡) | messaged_jt: yes
 2026-03-18T15:30:00-05:00 | daily-scan | x_queries: 6 (2 success, 4 x503) | web_queries: 6 | findings: 5 | 🔴: 0 | 🟠: 0 | 🟡: 5 | messaged_jt: no
+2026-03-20T15:30:00-05:00 | daily-scan | x_queries: 6 | web_queries: 9 | findings: 7 | 🔴: 0 | 🟠: 0 | 🟡: 7 | messaged_jt: no

@@ -19,7 +19,16 @@ Content must be modeled on proven viral hooks from the Notion swipe file, not ge
    For each angle you plan to use, note its `angle_id` — you'll need it for the posted-log.jsonl entry.
    Cross-reference with posted-log.jsonl `angle_id` fields to avoid repeating angles from the last 30 days.
 
-3. Run: `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --limit 8`
+3. Read `/Users/jtsomwaru/.openclaw/workspace/memory/content/content-signals.md`
+   **This is the swipe cron's real-time intelligence — read it before pulling from the swipe file.**
+   For any entry marked `action: recommend` or `action: HOT LANE FIRED`:
+   - Note the FORMAT or TOPIC and the suggested slot
+   - Check if JT posted it recently (field says yes/no) — if yes, skip it
+   - If a HOT LANE entry exists and JT hasn't posted it: **prioritize that slot** over the default pillar
+   - If a FORMAT is trending (3+ appearances), **use that format** for at least one post this week
+   This is what separates JT's content from generic AI content — he rides real signals, not templates.
+
+4. Run: `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --limit 8`
 
    **Do not just "study" these.** For each post returned, extract and write out:
    - Hook structure (e.g., "historical failure → present adoption", "reframe weakness as strength", "specific result first → lesson second")
@@ -30,12 +39,12 @@ Content must be modeled on proven viral hooks from the Notion swipe file, not ge
    - Swipe: "CLIs are exciting precisely because they're legacy tech — AI agents can use them natively." Hook: reframe weakness (old tech) as unexpected strength. JT equivalent: "n8n isn't new. That's exactly why every system you need to automate already has a connector for it."
    - Swipe: "HTTP had 402 for decades. Nobody used it. We are now." Hook: historical dead-end → sudden relevance. JT equivalent: "Salesforce has had workflow automation since 2015. Nobody used it well. Agentforce changes that."
 
-   Generate 3–5 extracted hook mappings before writing any post.
+   Generate 3–5 extracted hook mappings before writing any post. For each, note which content-signals entry (if any) it reinforces.
 
-2. Read: `/Users/jtsomwaru/.openclaw/workspace/memory/content-voice.md`
+5. Read: `/Users/jtsomwaru/.openclaw/workspace/memory/content-voice.md`
    → Apply every rule. Pay special attention to: Platform Distinction, Format by Day, JT's Proof Points, and The Uniqueness Test.
 
-3. Read: `/Users/jtsomwaru/.openclaw/workspace/memory/content/posted-log.jsonl`
+6. Read: `/Users/jtsomwaru/.openclaw/workspace/memory/content/posted-log.jsonl`
    → Avoid repeating topics from the last 2 weeks.
 
 ---

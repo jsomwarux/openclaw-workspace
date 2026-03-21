@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 """
-notion-swipe-fetch.py — Fetch recent viral posts from JT's Notion swipe file.
-Outputs JSON array of posts for content generation agents.
+notion-swipe-fetch.py — Fetch viral posts from JT's Notion swipe file.
+Outputs a format-stratified JSON array for content generation agents.
+
+Stratification ensures format diversity:
+- At least 1 post per format present in DB (up to limit)
+- Remaining slots filled by highest engagement not yet included
+- Result: generation agents see diverse hook structures, not just top Hot Takes
 
 Usage:
-  python3 notion-swipe-fetch.py [--limit 5] [--min-engagement 500]
+  python3 notion-swipe-fetch.py [--limit 8] [--min-engagement 500] [--raw]
+
+  --raw: skip stratification, return top N by engagement (legacy behavior)
 """
 
 import argparse
@@ -21,6 +28,22 @@ HEADERS = {
     "Notion-Version": "2022-06-28",
     "Content-Type": "application/json"
 }
+
+# Priority format order for stratification
+# Ensures case studies, threads, stories make it in even if lower engagement
+FORMAT_PRIORITY = [
+    "Case study / proof of work",
+    "Thread Opener",
+    "Behind-the-scenes",
+    "Story",
+    "Build-in-public",
+    "Data Drop",
+    "Contrarian",
+    "Hot Take",
+    "List",
+    "Question",
+    "Analogy",
+]
 
 
 def get_rich_text(prop):
@@ -48,9 +71,10 @@ def get_url(prop):
     return prop.get("url") or ""
 
 
-def fetch_swipe_posts(limit=8, min_engagement=0):
+def fetch_all_posts(min_engagement=0, fetch_limit=100):
+    """Fetch up to fetch_limit posts from Notion, sorted by engagement desc."""
     payload = {
-        "page_size": limit * 2,  # fetch extra since we'll filter
+        "page_size": fetch_limit,
         "sorts": [{"property": "Engagement", "direction": "descending"}]
     }
 
@@ -84,20 +108,75 @@ def fetch_swipe_posts(limit=8, min_engagement=0):
             "engagement_tier": get_select(props.get("Engagement Tier", {}))
         })
 
-        if len(posts) >= limit:
-            break
-
     return posts
+
+
+def stratify_posts(all_posts: list, limit: int) -> list:
+    """
+    Return up to `limit` posts with format diversity.
+
+    Strategy:
+    1. For each format in FORMAT_PRIORITY, include the highest-engagement post
+       of that format not yet selected (up to limit).
+    2. Fill remaining slots with highest-engagement posts not yet selected.
+    3. Sort final selection by engagement descending so agents see best first.
+    """
+    selected = []
+    selected_texts = set()
+
+    def add(post):
+        key = post["text"][:80].lower().strip()
+        if key not in selected_texts:
+            selected.append(post)
+            selected_texts.add(key)
+
+    # Group by format
+    by_format = {}
+    for post in all_posts:
+        fmt = post["format"]
+        # Normalize variant format names to canonical
+        canonical = fmt
+        for pf in FORMAT_PRIORITY:
+            if pf.lower() in fmt.lower() or fmt.lower() in pf.lower():
+                canonical = pf
+                break
+        by_format.setdefault(canonical, []).append(post)
+
+    # Phase 1: one best post per priority format
+    for fmt in FORMAT_PRIORITY:
+        if len(selected) >= limit:
+            break
+        candidates = by_format.get(fmt, [])
+        if candidates:
+            # Already sorted by engagement desc from Notion
+            add(candidates[0])
+
+    # Phase 2: fill remaining slots with highest engagement overall
+    for post in all_posts:
+        if len(selected) >= limit:
+            break
+        add(post)
+
+    # Sort final result by engagement desc
+    selected.sort(key=lambda p: p["engagement"], reverse=True)
+    return selected[:limit]
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=8)
     parser.add_argument("--min-engagement", type=int, default=0)
+    parser.add_argument("--raw", action="store_true", help="Skip stratification, return top N by engagement")
     args = parser.parse_args()
 
-    posts = fetch_swipe_posts(limit=args.limit, min_engagement=args.min_engagement)
-    print(json.dumps(posts, indent=2))
+    all_posts = fetch_all_posts(min_engagement=args.min_engagement, fetch_limit=100)
+
+    if args.raw or len(all_posts) <= args.limit:
+        result = all_posts[:args.limit]
+    else:
+        result = stratify_posts(all_posts, args.limit)
+
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":

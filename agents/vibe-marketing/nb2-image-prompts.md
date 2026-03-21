@@ -1,315 +1,297 @@
-# Nano Banana 2 — Image Generation Prompt Templates
+# NB2 Image Prompt Templates — Realistic Scene Photography
 *Model: `google/gemini-3.1-flash-image-preview` via OpenRouter*
 *Generation script: `~/.openclaw/workspace/scripts/nb2-generate.py`*
-*Last updated: 2026-03-16*
+*Last updated: 2026-03-20*
 
 ---
 
 ## Core Principles
 
-**NB2 is an image generator, not a typesetter.** Write prompts in visual/cinematic language — mood, composition, lighting, texture, aesthetic reference points. Hex codes and pixel percentages don't translate.
+**NB2 generates photorealistic scene backgrounds. Nothing else.**
 
-**All slides are background-only.** NB2 never renders text — it hallucinates words and numbers even on short strings. NB2's job is atmosphere, color, composition, and mood. ALL text goes in CapCut as overlays. This is non-negotiable.
+- No text baked into any image — NB2 hallucinates words even on short strings. All text goes in TikTok's native editor.
+- No logos, UI elements, or product references in the generated image.
+- Every image should look like a photo a real person took of their real environment — not a stock photo, not a staged shoot.
+- Leave breathing room at top and center of the frame for text overlays JT will add.
+- 9:16 aspect ratio for all slides.
+- Thinking mode: OFF on every call.
 
-**Aesthetic consistency = brand recognition.** Same palette, same visual language, same feel every week. Viewers should recognize Nash Satoshi and Vista content in 0.3 seconds before reading a word.
+**The goal:** when someone sees Slide 1, they think "this looks like someone's actual home" — then they read the text JT overlaid and stop scrolling.
 
-**Prompt language that works:** cinematic references, material descriptions, lighting conditions, mood, compositional rules, aesthetic inspirations (e.g. "Bloomberg terminal dark mode," "35mm film grain," "noir movie poster").
-
-**Thinking mode: OFF for all slides.** Only enable for maps or complex spatial grounding.
-
-**Output:** 9:16 aspect ratio, 512px → upscale winner to 1080×1920.
-
----
-
-## Nash Satoshi — Visual Identity
-
-**Aesthetic anchor:** Bloomberg terminal meets crypto dark mode. Institutional, data-forward, analytical. Not flashy, not crypto-bro. The visual language says "this is serious analysis" before any text is read.
-
-**Palette (describe this way in prompts):** Deep navy almost-black background. Pure white for primary text. Electric blue — the kind you see on a trading terminal or a CoinGecko dark mode chart — for data points and accents. No warm tones. No gradients. No decorative shapes.
-
-**Mood:** Late night, focused, like someone doing real market research at 2AM. Cool, precise, institutional.
-
----
-
-### NS Slide 1 — Hook Card
-**Purpose:** Stop the scroll. One bold claim that makes the viewer need to see the next slide.
-**Render mode:** Full render — NB2 renders the hook text.
-
+**Universal avoid list (include in every prompt):**
 ```
-A vertical TikTok slide (9:16). Dark navy background, nearly black, completely flat — no gradients, no texture, no glow. The slide feels like a high-contrast terminal screen.
-
-Center of the frame: bold, large, all-caps sans-serif text in pure white reading:
-"[HOOK TEXT]"
-Text is the dominant element. Nothing competes with it. No decorative shapes, no icons.
-
-Below the text: a single thin horizontal line in bright electric blue — the kind of blue you see on a Bloomberg terminal or a dark-mode crypto chart. The line is 60% of the slide width, centered.
-
-Bottom-left corner: the URL "NashSatoshi.com" in small electric blue text, minimal, unobtrusive.
-
-The overall feel: clean, institutional, like a data terminal. This is analytical, not hype.
-Avoid: gradients, glows, decorative elements, any warm colors, anything that looks like crypto marketing.
+Avoid: studio lighting, perfect symmetry, stock photo aesthetic, CGI look, artificial sharpness, smooth plastic surfaces, oversaturated colors, beauty filters, dramatic HDR, visible watermarks, text, logos, UI elements, any product branding.
 ```
 
 ---
 
-### NS Slide 2 — Data / Rankings Card
-**Purpose:** Show the actual consensus scores. This is the evidence slide — the data that backs the hook.
-**Render mode:** Background-only. NB2 generates the frame; rankings data overlaid in CapCut by JT.
+## How Scene Generation Works (weekly rotation)
 
-```
-A vertical TikTok slide (9:16) designed as a data visualization frame — no readable text needed, JT will add the data as a text overlay.
+**These are variation seeds, not fixed prompts.** The Monday cron generates 2 brand new scene photos per product every week — hook scene + CTA scene. It picks from the concept list below, injects variation parameters, and generates fresh. Zero repeats.
 
-Background: deep navy, nearly black, flat and clean like a terminal.
+**Rotation rule:** check `state.json` → `last_scene_concept.[product_slug]` before generating. Never pick the same concept two weeks in a row. Cycle through the concept list in order, wrapping around after the last one.
 
-Left side of the frame: a subtle vertical electric blue line running from 15% from top to 85% from top, 2-3px thick — like a data table left border.
+**Variation parameters (inject into every generation — change these weekly):**
+- Time cue: "night" / "late evening" / "early morning before sunrise"
+- Specific objects on surface: swap what's on the table/desk week to week (coffee → tea → water glass → whiskey → energy drink can)
+- Angle: "from slightly above" / "from the side" / "from across the room" / "close-up"
+- Season/texture hint: "winter — blanket heavier, thicker" / "summer — lighter fabrics, fan visible" / "rainy night — sound of rain implied by mood"
 
-Top section: a thin horizontal electric blue line spanning 85% of the width, 20% from the top — this is where the category header text will be overlaid.
-
-Below that: evenly spaced horizontal guides — 4-5 of them, each subtle (very low opacity, almost invisible), spanning 85% width — these mark where each ranking row will go.
-
-Bottom right: a faint attribution block placeholder — just a subtle rectangular region of slightly lighter navy.
-
-The structure should feel like a financial data table or a terminal readout. Grid-like. Precise. Ready for data.
-Avoid: any text, icons, decorative elements. This is a frame for overlaying data, not a finished slide.
-```
-
-**Post-processing (CapCut):** JT overlays: category label at top, 3-5 ranking rows (RANK. TICKER — SCORE) in white/electric blue, attribution line at bottom right.
+**Result:** 3x/week posting for 6+ months = 72+ posts, every scene photo unique.
 
 ---
 
-### NS Slide 3 — Insight / CTA Card
-**Purpose:** Land the takeaway and drive to the website. The payoff.
-**Render mode:** Full render — NB2 renders insight text and CTA.
+## Slide Structure (both products)
 
-```
-A vertical TikTok slide (9:16). Same deep navy background as the other slides — flat, dark, terminal aesthetic.
-
-Upper-center of the frame (starting around 35% from top): bold white sans-serif text reading:
-"[INSIGHT — 1 sentence, under 14 words]"
-
-A thin electric blue horizontal rule below the insight text, centered, 50% slide width.
-
-Below the rule: smaller electric blue text reading:
-"[CTA — e.g. 'Full rankings at NashSatoshi.com']"
-
-The slide feels like the conclusion screen of a data presentation. Sparse. Authoritative. Everything has been earned by slides 1 and 2.
-Avoid: decorative elements, warm colors, anything that looks like a call-to-action button or marketing material.
-```
-
----
-
-### NS UGC Reaction — Background Card
-**Purpose:** Visual backdrop for a text-overlay reaction to a crypto take. The background signals "this is game theory analysis responding to something."
-**Render mode:** Background-only — NB2 generates frame; the claim being reacted to is overlaid in CapCut.
-
-```
-A vertical TikTok slide (9:16) designed as a reaction video background.
-
-Background: deep navy, nearly black. A subtle dark radial vignette — edges slightly darker than center, like a spotlight on the content area.
-
-Top 40% of the frame: a large, centered placeholder region with a subtle electric blue border (thin, 2-3px). Inside: a faint grid texture, like graph paper at very low opacity — this is where the "claim being reacted to" text will be overlaid.
-
-Lower section: the electric blue accent line from the Nash Satoshi identity, thin, spanning 70% width, separating top and bottom halves.
-
-Bottom 35%: clean dark navy, ready for the reaction commentary text overlay.
-
-Bottom left: "NashSatoshi.com" very small in electric blue.
-
-The visual language: this is a split-take format. Top = the claim. Bottom = the counter. The frame communicates this structure before any text is added.
-Avoid: heavy decorative elements, anything that competes with text overlays.
-```
-
----
-
-## Vista — Visual Identity
-
-**Aesthetic anchor:** Film poster meets personal journal. Cinematic, moody, intimate. This is for someone who takes movies seriously — not entertainment, not hype. The visual language says "a real film person made this."
-
-**Palette (describe this way in prompts):** Very dark charcoal, almost black — richer and warmer than Nash Satoshi's cold navy. Off-white cream text, not stark white. Gold accents — not bright yellow, but the warm muted gold of old film titles. 35mm grain throughout. Film-strip details at low opacity.
-
-**Mood:** Late night in a dark room with a film playing. The aesthetic of a Criterion Collection blu-ray menu — beautiful, restrained, reverent toward cinema.
-
----
-
-### Vista Slide 1 — Hook Card
-**Purpose:** Stop the scroll with a provocative take on movie ratings or taste. The hook is the whole slide.
-**Render mode:** Full render — NB2 renders the hook text.
-
-```
-A vertical TikTok slide (9:16) with a cinematic, film-poster aesthetic.
-
-Background: very dark charcoal, almost black but with a subtle warm undertone — richer than pure black, like the darkness of a movie theater. Overlaid with a fine 35mm film grain texture — visible but not heavy, the kind that makes digital look like film.
-
-Center of the frame: large, bold, all-caps serif or high-contrast sans-serif text in off-white (warm cream, not pure white) reading:
-"[HOOK TEXT]"
-
-Below the text: a film-poster style divider — two thin horizontal lines with a small diamond shape at center, in warm muted gold. Like a title card from a classic film.
-
-Below the divider: smaller gold text reading:
-"[MOVIE TITLE + YEAR]"
-
-Along the left and right edges: very faint, low-opacity vertical film-strip sprocket holes — subtle, not distracting. Just enough to reinforce the cinematic identity.
-
-Bottom right corner: "Vista" in small cream text.
-
-The overall feel: a film festival title card. Elegant, moody, serious about cinema.
-Avoid: bright colors, digital gradients, anything that looks like a streaming app. This is analog cinema energy.
-```
-
----
-
-### Vista Slide 2 — Score Comparison Card
-**Purpose:** Show the gap between the crowd score (IMDb) and Vista's personal taste score. The contrast IS the argument.
-**Render mode:** Background-only for the frame structure. The actual scores are overlaid in CapCut.
-
-```
-A vertical TikTok slide (9:16) designed as a comparison frame — no readable numbers needed, JT will overlay the actual scores.
-
-Background: very dark charcoal with 35mm film grain texture throughout.
-
-Center of the frame: a two-column layout structure.
-Left column: a subtle placeholder region for "IMDB" — topped by small all-caps label space in cream, with a muted red-tinted area below for the score number. No actual numbers — just the visual region.
-Right column: a matching placeholder region for "VISTA" — topped by small all-caps label space, with a warm gold-tinted area below for the score. No actual numbers.
-
-Between the columns: a thin vertical gold line as a divider, running about 60% of the frame height, centered vertically.
-
-Below both columns: a thin horizontal gold line spanning 70% width, with a small blank region below it for a one-line verdict text overlay.
-
-Film grain throughout. The frame should feel like a film critic's scorecard.
-Avoid: any text or numbers. This is a structural frame — the data comes from JT's overlay.
-```
-
-**Post-processing (CapCut):** JT overlays: "IMDB" label + score (in muted red), "VISTA" label + score (in gold), one-line verdict below.
-
----
-
-### Vista Slide 3 — CTA Card
-**Purpose:** Convert interest to action. Download the app. Tone stays cinematic — never becomes an ad.
-**Render mode:** Full render — NB2 renders CTA text.
-
-```
-A vertical TikTok slide (9:16). Same dark charcoal background with 35mm film grain.
-
-Center of the frame (starting 38% from top): bold off-white text reading:
-"[CTA — e.g. 'Rate it yourself on Vista']"
-
-Below: the film-poster style gold divider (two thin lines + diamond).
-
-Below the divider: smaller gold text reading:
-"Vista — Honest Movie Ratings"
-
-Near the bottom of the frame: small cream text reading:
-"Download on the App Store"
-
-The slide should feel like the final card of a film trailer — understated, not salesy. The CTA earns attention rather than demanding it.
-Film grain throughout.
-Avoid: bright colors, App Store badge graphics, anything that looks like a display ad.
-```
-
----
-
-### Vista Slides 4–6 — See Screenshot Instructions
-
-Slides 4 (payoff/insight) can use the same visual treatment as Slide 3 with different text injected.
-Slides 5–6 require JT-captured screenshots — see Screenshot Instructions section below.
-
----
-
-### Vista UGC Reaction — Counter-Argument Background Card
-**Purpose:** Visual backdrop for the "reaction" slides that respond to a specific IMDb/RT rating. Communicates "this is a counter-take" before any text is read.
-**Render mode:** Background-only — the source rating (real IMDb screenshot) and counter text are overlaid by JT.
-
-```
-A vertical TikTok slide (9:16) designed as a reaction video background.
-
-Background: very dark charcoal with heavy 35mm film grain texture — heavier grain than the standard slides, adding tension.
-
-Top 40% of the frame: a framed placeholder region — thin gold border (2px), inside it a subtle darker background. A faint "reaction frame" energy. This is where the IMDb rating screenshot will be placed as an overlay.
-
-Below the framed region: a thin gold horizontal line spanning 65% width — the visual separator between "the claim" and "the counter."
-
-Bottom 45%: clean dark charcoal with film grain — ready for the counter-argument text overlay in CapCut.
-
-Bottom right: "Vista" in very small cream text.
-
-The visual language: this is a film critic's annotation of someone else's take. The gold frame on top signals "this is what we're reacting to." The open space below signals "here's why they're wrong."
-Avoid: busy backgrounds, anything that competes with text overlays.
-```
-
-**Post-processing (CapCut):** JT places real IMDb screenshot in the top framed region + adds counter-argument text in the bottom section.
-
----
-
-## Screenshot Instructions (JT captures — no NB2 needed)
-
-These slides are more authentic with real screenshots than generated images. The agent includes these exact instructions in the Drive review doc each week.
-
-### Vista — Slide 5: App UI
-```
-📸 SCREENSHOT NEEDED — Vista App (iOS)
-Open Vista. Go to your personal ratings list or a film detail page.
-Best shot: your profile showing 50+ logged films, OR a film detail showing your score vs. crowd score.
-Capture full screen, portrait. Clean UI, no notifications showing.
-This slide = social proof that the app is real and actively used.
-Caption to add in CapCut: "what tracking [your film count]+ films actually looks like"
-```
-
-### Vista — Slide 6: App Store Listing
-```
-📸 SCREENSHOT NEEDED — App Store (iOS)
-Open App Store → search "Vista" → open the listing.
-Capture the app icon, name, rating, and download button in frame.
-This is the conversion slide. Real App Store screenshot is 10x more credible than any generated image.
-No caption needed — the App Store UI is the CTA.
-```
-
-### Nash Satoshi — Slide 3 (Optional Upgrade): Rankings Page
-```
-📸 SCREENSHOT OPTIONAL — NashSatoshi.com
-Open nashsatoshi.com. Capture the live rankings table, top 10 visible.
-Use instead of the NB2 CTA card when the rankings data is fresh.
-A real screenshot of real data is stronger social proof than a generated card.
-Add a CapCut text overlay: "Full rankings at NashSatoshi.com"
-```
-
-### Vista UGC Reaction — Slide 2: IMDb Source Rating
-```
-📸 SCREENSHOT NEEDED — IMDb app or imdb.com
-Navigate to this week's film. Capture the rating (e.g. 7.1/10) with the film title visible.
-Use a real screenshot — not a generated mock. Real source = reaction format feels legitimate.
-Place in the top framed region of the NB2-generated UGC background card.
-```
-
----
-
-## Integration Notes
-
-**Variable injection per call:** `[HOOK TEXT]`, `[MOVIE TITLE + YEAR]`, `[INSIGHT]`, `[CTA]`, `[COIN TICKER]`, `[CLAIM BEING REACTED TO]`
-
-**What NB2 renders vs. what gets overlaid:**
-| Slide | NB2 renders | CapCut overlay |
+| Slide | Who creates it | What it is |
 |---|---|---|
-| NS Slide 1 — Hook | Full card + hook text | Nothing |
-| NS Slide 2 — Data | Background frame only | Rankings, tickers, scores |
-| NS Slide 3 — CTA | Full card + insight + CTA | Nothing (or swap for screenshot) |
-| NS UGC Background | Frame only | Claim text + reaction text |
-| Vista Slide 1 — Hook | Full card + hook text + movie title | Nothing |
-| Vista Slide 2 — Scores | Background frame only | IMDB score, Vista score, verdict |
-| Vista Slide 3 — CTA | Full card + CTA text | Nothing |
-| Vista UGC Background | Frame only | IMDb screenshot + counter text |
+| Slide 1 | NB2 (Eve generates fresh weekly) | Realistic scene photo — hook |
+| Slides 2–4 | JT (app screenshots from phone) | App UI, rankings, real data |
+| Last slide | NB2 (Eve generates fresh weekly) | Realistic scene photo — CTA close |
 
-**Generation command:**
+JT adds ALL text in TikTok's native text editor before posting. Sound is added in TikTok too.
+
+---
+
+## Vista — Scene Concepts (rotation seeds)
+
+Cycle through these in order. Each Monday: pick next concept, inject variation parameters from above, generate fresh image. Never repeat same concept back-to-back.
+
+| # | Concept name | Core elements |
+|---|---|---|
+| V-1 | Cozy living room | Couch, blanket, dim ambient light from offscreen source |
+| V-2 | Hands holding phone | Overhead shot, hands on lap, blanket underneath |
+| V-3 | Film ratings notebook | Open notebook with handwritten lists, coffee, wooden surface |
+| V-4 | Movie ticket stubs | Stubs + popcorn on coffee table, warm lamp background |
+| V-5 | Cozy armchair | Single lamp, book left open, lived-in chair, no person |
+| V-6 | Dim bedroom | Bedside lamp on, phone on nightstand, sheets rumpled |
+| V-7 | Kitchen table night | Cup of something warm, dim overhead light, quiet late-night feel |
+| V-8 | Window at night | Rain or city lights outside, cozy interior foreground, condensation on glass |
+
+`state.json` tracks: `last_scene_concept.vista` = last concept number used. Always pick next one in sequence.
+
+---
+
+### V-1: Cozy Living Room (primary — hook slide)
+**Use for:** hook slides with text like "my favorite films of the year so far," "I've been rating every movie I watch," "why I stopped trusting Rotten Tomatoes"
+
+```
+A candid photograph of a warm, lived-in living room at night. A large TV on the far wall glows softly — the screen is the primary light source in the room. On the couch: a knit blanket draped casually, a bowl of popcorn resting on a cushion. A half-drunk glass of something on the side table. The room is dim and cozy, the kind of dark that makes watching movies feel like a ritual.
+
+Shot from slightly behind and above the couch, as if someone set their phone on the armrest and took a photo. The TV screen has a soft blue-warm glow but no readable image — just ambient light. The frame feels candid, not staged.
+
+Photorealistic photography. Shot on iPhone. Natural, imperfect lighting. Slight digital noise in the shadow areas. The warmth and texture of a real home, not a model home. Shallow depth of field — the couch and foreground in focus, the TV softly blurred.
+
+Vertical 9:16 frame. Leave the top third of the image with relatively clean visual space (lower contrast, minimal detail) — this is where text will be overlaid.
+
+Avoid: studio lighting, perfect symmetry, stock photo aesthetic, CGI look, artificial sharpness, visible TV program content, any text or logos, overly glamorous interior design. This should look like a photo from someone's actual apartment, not an interior design shoot.
+```
+
+---
+
+### V-2 (CTA/close): Late Night Film Session (variation — CTA/close slide)
+**Use for:** last slide where JT overlays CTA like "Download Vista — App Store" or "Available now"
+
+```
+A close-up photograph of a couch corner at night. A phone face-down on the cushion next to a remote control. A nearly finished bowl of popcorn. The ambient light from the TV creates a warm, amber-blue glow across the scene. A throw pillow slightly crushed from someone sitting. The texture of the fabric is visible.
+
+Shot from directly above, slightly angled — like someone held their phone over the couch and took a candid photo. The TV is partially in frame on the right edge, out of focus, just providing warm ambient light.
+
+Photorealistic photography. Shot on iPhone. Warm ambient light only — no flash, no overhead lights. Slight motion blur or natural imperfection. The kind of photo someone takes and sends to a friend saying "movie night setup."
+
+Vertical 9:16 frame. Leave the center of the frame visually uncluttered — moderate contrast area where text overlay will read clearly.
+
+Avoid: studio lighting, visible phone screen content, any text, stock photo aesthetic, CGI look, overly clean or staged surfaces.
+```
+
+---
+
+### V-3 (controversy/reaction): Cinema Seat / Theater (variation — for controversy/reaction posts)
+**Use for:** slides reacting to IMDb ratings, crowd consensus posts, "hot take about movie ratings" content
+
+```
+A candid photograph taken from inside a movie theater, from a seat in the middle rows. The screen at the front of the theater is bright, casting light across the rows of seats ahead. The theater is dark except for the screen glow. A few silhouetted heads of other audience members visible in the lower portion of the frame. Armrests on either side.
+
+Shot as if someone held their phone up casually during a film — slightly imperfect angle, natural. The screen shows bright light but no readable content. The mood is intimate and cinematic.
+
+Photorealistic photography. Shot on iPhone in a dark environment — higher ISO, natural grain, slightly imperfect focus on the darker areas. The screen glow is the dominant light. Real theater atmosphere.
+
+Vertical 9:16 frame. The upper third of the frame (above the audience heads) is primarily screen glow — clean bright area for text overlay.
+
+Avoid: flash photography, studio lighting, perfect focus, any visible film content on screen, text, stock photo aesthetic.
+```
+
+---
+
+## Nash Satoshi — Scene Concepts (rotation seeds)
+
+Same rotation logic. `state.json` tracks: `last_scene_concept.nash-satoshi` = last concept number used.
+
+| # | Concept name | Core elements |
+|---|---|---|
+| NS-1 | Dark home office — multiple screens | 2-3 monitors, no person, late night research feel |
+| NS-2 | Single laptop — coffee shop or home | Open laptop glow, coffee nearby, dim warm background |
+| NS-3 | Dark living room — TV + laptop | Multi-screen setup from across room, no person |
+| NS-4 | Phone on desk at night | Phone face-up (dark screen), notebook, pen, dark ambient |
+| NS-5 | Close-up keyboard + screens | Tight shot of keyboard, monitor glow behind, coffee to the side |
+| NS-6 | Balcony or window at night | City lights background, laptop or phone in foreground, outdoor/indoor edge |
+| NS-7 | Couch + laptop at night | Person-less couch, laptop open, dim room, late night feel |
+| NS-8 | Trading/research desk from above | Overhead flat lay — notebook, phone, laptop, coffee, dark surface |
+
+---
+
+### NS-1: Dark Home Office — Multiple Screens (primary — hook slide)
+**Use for:** hook slides with text like "this tool permanently changed my crypto strategy," "spent 3 years picking coins based on vibes," "game theory scores every crypto asset"
+
+```
+A candid photograph of a home office setup at night, lit only by the glow of multiple computer monitors. Two or three monitors on a desk — the screens are bright with abstract data/chart-like visuals (no readable tickers or specific data — just the visual texture of screens showing information). The room behind the desk is completely dark. A coffee mug on the desk. A notebook. The atmosphere of someone doing serious late-night research.
+
+Shot from slightly to the side, as if someone walked into the room and took a photo from the doorway. The glow from the monitors illuminates the desk and keyboard from the front. The chair is empty — just the workspace.
+
+Photorealistic photography. Shot on iPhone. Only light source is the monitors — natural screen glow, slight halation around the brightest areas. The darkness around the edges is real, not artificially vigneted. The desk has the slight disorder of an actively used workspace — not a showroom.
+
+Vertical 9:16 frame. Leave the upper third of the image as the darker ceiling/wall area — this is the primary text overlay zone.
+
+Avoid: studio lighting, neon RGB gaming aesthetic, stock photo tech setup, perfect desk symmetry, any visible screen content that's readable, text or logos, CGI look. This should look like a real person's research setup, not a tech influencer's desk tour.
+```
+
+---
+
+### NS-2 (hook/CTA): Single Laptop, Coffee Shop or Home (variation — hook/CTA)
+**Use for:** "I've been using this for 6 months" hook slides, or closing CTA slides
+
+```
+A candid photograph of a person's laptop on a surface — either a dark wood coffee table in a living room or a café table at night. The laptop screen is open and bright, casting a soft glow on the immediate surface. A coffee cup or glass nearby. The background is warm and dim — blurred café lights or a dark apartment.
+
+Shot from slightly above and to the side, like someone set their phone down and took a photo. The laptop screen is bright but no readable content — just the glow. The person using it is not in frame.
+
+Photorealistic photography. Shot on iPhone. Natural ambient lighting supplemented by laptop screen glow. Grain in the darker areas. The warm imperfection of a real candid photo, not a styled flat lay.
+
+Vertical 9:16 frame. The upper portion of the frame (above the laptop) should be the softest, least detailed area — ideal for text overlay.
+
+Avoid: studio lighting, stock tech photography, visible screen content, any brand logos on laptop, perfect surface alignment, text, CGI look, any neon or gaming aesthetics.
+```
+
+---
+
+### NS-3 (aspirational): Dark Living Room, Multiple Screens (variation — aspirational)
+**Use for:** high-aspirational hook slides, "the setup" energy, posts targeting serious traders
+
+```
+A candid photograph of a dark, modern living room at night. A large TV on the wall. A laptop open on the coffee table. The room is lit only by the screens — cool blue-white light from the TV, warmer tones from the laptop. A glass of water or whiskey on the table. The couch visible, lived in. No lamps on, no overhead lighting.
+
+Shot from across the room, slightly elevated — like someone is standing near the entrance and captures the whole scene. The vibe is: serious, late-night, focused. The kind of setup where real decisions get made.
+
+Photorealistic photography. Shot on iPhone. Low-light, natural screen glow only. Significant grain in the dark areas. The image feels slightly moody but not cinematic — this is an apartment, not a movie set.
+
+Vertical 9:16 frame. The upper portion — wall above the TV — is the darkest and cleanest area. Ideal for text overlay.
+
+Avoid: visible screen content, neon lighting, RGB gaming setup, overly luxurious apartment aesthetics (no penthouse vibes — this is a regular apartment where someone works hard), studio lighting, text, logos, CGI look.
+```
+
+---
+
+## Variable Fields Per Call
+
+Before calling NB2, inject the correct scene template. No variable text fields — these prompts are complete as-is. Scene selection is based on content theme:
+
+| Content theme | Vista scene | Nash Satoshi scene |
+|---|---|---|
+| Hook — personal discovery | V-SCENE-A | NS-SCENE-A |
+| Hook — controversy / reaction | V-SCENE-C | NS-SCENE-A |
+| CTA / close | V-SCENE-B | NS-SCENE-B |
+| Aspirational / "the setup" | V-SCENE-A | NS-SCENE-C |
+
+---
+
+## Generation Command
+
 ```bash
 source ~/.config/env/global.env
 python3 ~/.openclaw/workspace/scripts/nb2-generate.py \
-  --prompt "[full prompt with variables injected]" \
-  --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-[N].png"
+  --prompt "[full scene prompt — copy from above, no modifications]" \
+  --output "agents/vibe-marketing/generated-images/[product_slug]/[YYYY-MM-DD]/slide-[1 or last].png"
 ```
 
-**Cost:** ~6-8 NB2 calls/week (reduced vs. earlier estimate — background-only slides cut total calls). ~$0.03-$0.05/week.
+Naming convention:
+- Hook slide: `slide-01-hook.png`
+- CTA slide: `slide-last-cta.png`
 
-**Thinking mode:** `false` on every call — never enable for TikTok slides.
+---
 
-**Upscaling:** 512px output upscales cleanly to 1080×1920 with any standard 2x upscaler.
+## Drive Delivery
 
-**If NB2 call fails:** log error, skip that slide, continue. Missing images don't block content delivery — copy is the primary output.
+After generating, upload both slides to Drive:
+
+```bash
+cd ~/.openclaw/workspace
+python3 scripts/drive_drafts.py \
+  --title "[Product] TikTok Slides — Week of [YYYY-MM-DD]" \
+  --path "Content/Vibe Marketing/[Product Name]/TikTok Slides" \
+  --file /tmp/vibe-slides-[product]-[date]-manifest.md
+```
+
+The manifest file lists the local image paths and includes JT's text overlay instructions for each slide.
+
+---
+
+## JT's TikTok Assembly Instructions (included in Drive manifest each week)
+
+```
+## How to assemble this TikTok
+
+1. Open TikTok → + → select photos from your gallery
+2. Upload in order: Slide 1 (hook scene) → your app screenshots → Last slide (CTA scene)
+3. On Slide 1: add text overlay with the hook line (see slide copy below)
+4. On middle slides: add text labels if needed (see slide copy below)
+5. On Last slide: add text overlay with CTA (see slide copy below)
+6. Pick a trending sound from TikTok's library in your niche before posting
+7. Copy caption from review doc → paste into TikTok caption field → post
+
+Slide 1 hook text: [from this week's slide copy]
+Middle slide labels: [from this week's slide copy]
+Last slide CTA text: [from this week's slide copy]
+```
+
+---
+
+## Cost
+
+~2 NB2 calls per product per week (hook + CTA slide) = 4 calls/week for both products.
+~$0.01–$0.02/week total. Negligible.
+
+**Thinking mode OFF:** never enable for scene photography — it adds cost and latency with no quality benefit for this use case.
+
+---
+
+## Screenshot Instructions (unchanged — JT provides these)
+
+### Vista — App UI Slides (Slides 2–4)
+```
+📸 SCREENSHOTS NEEDED — Vista App (iOS)
+Open Vista on your phone.
+Capture 2-3 screenshots:
+  1. Your ratings list — ideally 20+ films visible, showing variety of scores
+  2. A film detail page — showing your personal score + the film info
+  3. Your taste profile screen (optional — strong proof point)
+These are Slides 2-4. The app UI IS the product demo.
+```
+
+### Vista — App Store Slide (optional last slide alternative)
+```
+📸 OPTIONAL — App Store listing screenshot
+Open App Store → search Vista → capture the listing page with app icon visible.
+More credible as a CTA than any generated image.
+Use as the very last slide instead of the NB2 CTA scene if you want.
+```
+
+### Nash Satoshi — Rankings Slides (Slides 2–4)
+```
+📸 SCREENSHOTS NEEDED — NashSatoshi.com
+Open nashsatoshi.com on your phone.
+Capture 2-3 screenshots:
+  1. Full rankings table — top 10 visible
+  2. A specific asset's detail/score breakdown if available
+  3. The scoring methodology page if available
+Fresh data screenshots = more credible than any generated graphic.
+```

@@ -97,10 +97,19 @@ Morning brief + immediate alerts: 🔴🟠 only. 🔴 triggers immediate Telegra
 ## Proactive Content Strategy Rule (standing — applies always, not just Sunday)
 When ANY intelligence system surfaces a content format performing well in JT's community:
 - Swipe cron detects trending formats (3+ appearances) or topics (1000+ combined engagement) → writes to content-signals.md
-- Weekly synthesis reads format-signals.md → cross-references against what JT is posting → flags gap in Telegram + MC task if gap found
+- Weekly synthesis reads content-signals.md → cross-references against what JT is posting → flags gap in Telegram + MC task if gap found
 - Main session observes a format clearly getting traction during any research task → proactively recommend adding it to the content system
 
 **The rule:** never sit on a content strategy signal. Intel → gap analysis → recommendation to JT. Don't wait to be asked.
+
+## Content → Consulting Niche Feedback Rule (Sunday synthesis only)
+During weekly synthesis, after reading content-signals.md:
+- Identify any topic (not just format) that appeared in 3+ high-engagement swipe file entries this week
+- Cross-reference: does this topic overlap with JT's consulting niches (construction, wholesale, PM, insurance)?
+- If yes AND it's a topic JT hasn't posted about yet → flag as content gap + consulting credibility gap in Telegram
+- If yes AND JT has posted about it → note engagement pattern; if it outperformed other posts, recommend adding a related case study to the Wednesday LinkedIn queue
+- If the high-engagement topic is a NEW niche not in JT's current matrix → log to memory/niche-fitness-signals.md for monthly niche fitness review
+The goal: let content performance data tell you which consulting angles are resonating before you invest more outreach time in them.
 
 ## Weekly Skills Audit (Sunday only — runs inside weekly-synthesis cron)
 Go through every operational file, one by one. For each: is it accurate? Is anything stale, missing, or wrong?
@@ -113,6 +122,8 @@ Files to audit in order:
 6. All `agents/*/AGENT.md` files — are the agents configured correctly? Any drift?
 7. `memory/training/training-log.md` — review the week's film review entries. Are patterns emerging? Write a weekly summary line.
 8. `memory/future-signals.md` — **Future Signals Review (mandatory):** Read every active signal. For each one, check whether its trigger conditions are now met based on JT's current situation (active clients, project status, outreach volume, hardware). If a signal's trigger is met: (a) push a HIGH task to Mission Control recommending the tool/technique, (b) move it to the Graduated table with date + trigger, (c) notify JT in the weekly synthesis Telegram message. If not triggered: leave as-is. This is how "not now" becomes "now" — it must be reviewed every single week.
+9. **Autoresearch enrollment check (mandatory):** Read `agents/autoresearch/targets.md`. Cross-reference against all skills in `skills/` and agents in `agents/` installed or updated this week (check file modification dates via `ls -lt`). For any skill/agent NOT already in targets.md, run the 3-question candidacy check: (1) runs repeatedly? (2) output scoreable with yes/no? (3) clear failure mode? All 3 yes → draft checklist, save to `agents/autoresearch/checklists/[slug].md`, append to targets.md with status `pending`. Log enrollments in the audit output.
+10. **Passive income idea queue pruning (mandatory):** Check Mission Control for tasks with title containing "Build idea:" or "[PI]" and sortOrder ≥ 500, status = todo, age > 60 days. For each: (a) does JT's current situation (active clients, skill gaps, hardware, runway) make this more or less viable than when it was created? (b) If clearly less viable or superseded by a better idea: mark as done with note "pruned in weekly synthesis — [reason]." (c) If now viable: bump to sortOrder 400 and flag in Telegram. Goal: never let the idea queue exceed 15 active entries — prune to make room for new ones.
 
 Audit output: append `## Skills Audit — [date]` to `memory/training/training-log.md` with one line per file: `[FILENAME]: [status: current / updated X / flagged Y]`
 

@@ -200,27 +200,54 @@ Output → `aso-brief.md`:
 
 Write a prioritized 30-day launch sequence for JT to follow.
 
+**Sequencing rules to enforce in the output:**
+- X: launch kit build-in-public posts go days 1-3. Vibe marketing weekly X starts day 8 (week 2). Never overlap.
+- Reddit: launch kit post goes in week 1. Vibe marketing Reddit cron starts week 3 minimum (enforces 2-week gap). Label this explicitly.
+- TikTok: launch kit demo video (if commissioned) goes day 1-7. Vibe marketing weekly slides start week 2.
+- UGC creators: outreach week 1, videos live week 2-4. These run alongside vibe marketing — not a replacement.
+- After day 30: vibe marketing cron handles everything automatically. No more manual weekly content required.
+
 Output → `launch-sequence.md`:
 ```markdown
 # 30-Day Launch Sequence — [Product Name]
 
-## Week 1 — Foundation
-- Day 1: [specific action]
-- Day 2: [specific action]
-...
+## Handoff Note
+This kit covers days 1-30. After day 30, the Monday vibe marketing cron (4:45 AM ET) handles all ongoing content automatically — X posts, TikTok slides, Reddit posts. No manual weekly content needed after launch month.
 
-## Week 2 — Amplify
-...
+## Week 1 — Foundation (Days 1-7)
+- Day 1: Post launch announcement X post (from build-in-public-posts.md)
+- Day 2: Send UGC creator DMs (from ugc-creators.md) — JT reviews and sends
+- Day 3: Post "why I built this" X post (from build-in-public-posts.md)
+- Day 4: Submit Reddit launch post to top subreddit (from subreddits.md — check karma first)
+- Day 5: Post "what surprised me" X post (from build-in-public-posts.md)
+- Day 6-7: [product-specific action — e.g. App Store review prompts, Product Hunt prep]
 
-## Week 3-4 — Compound
-...
+## Week 2 — Amplify (Days 8-14)
+- Day 8: Vibe marketing X posts begin (Monday cron auto-generates)
+- Day 8: First TikTok slideshow from vibe marketing cron — post it
+- [UGC creator videos should start arriving — review and post as they come in]
+- [specific action]...
+
+## Week 3 — Compound (Days 15-21)
+- Day 15: Vibe marketing Reddit post (first one after 2-week gap from launch post)
+- [continue posting vibe marketing content on schedule]
+- [specific action]...
+
+## Week 4 — Review (Days 22-30)
+- Check which content formats are getting traction — report back to Eve ("X post did well") to bias future generation
+- [specific action]...
+- Day 30: Vibe marketing fully in control. Launch phase complete.
 
 ## Metrics to watch (weekly)
 - [metric]: target [N]
 - [metric]: target [N]
 
 ## When to declare traction
-[Specific threshold that means the distribution is working]
+[Specific threshold that means the distribution is working — e.g. "first TikTok hits 500 views" or "first Reddit post gets 10 upvotes without being removed"]
+
+## UGC vs. AI Avatar
+Real UGC creators (this kit): use for the launch burst — weeks 1-4. Higher cost, higher credibility, good for seeding early traction.
+AI avatar (vibe marketing Phase 2): activates after carousels have 4+ weeks of consistent posting and one piece hits 500+ views. Ongoing, autonomous, zero per-video cost. These are complementary, not competing — human creators launch, AI sustains.
 ```
 
 ### Step 8: Package and Push
@@ -256,14 +283,18 @@ for f in subreddits.md ugc-creators.md demo-video-brief.md build-in-public-posts
   if [ -f "~/.openclaw/workspace/agents/launch-kit/kits/[slug]/$f" ]; then
     cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
       --title "[Product Name] Launch Kit — $f" \
-      --path "Consulting/[Product Name]/Launch Kit" \
+      --path "Content/Vibe Marketing/[Product Name]/Launch Kit" \
       --file "agents/launch-kit/kits/[slug]/$f"
   fi
 done
 ```
 
-3. Push Mission Control task:
+Note: passive income products belong under `Content/Vibe Marketing/` not `Consulting/`. Never use `Consulting/` for passive income products.
+
+3. Push Mission Control tasks — one review task + individual posting tasks:
+
 ```bash
+# Review task (read this first)
 curl -s -X POST http://localhost:3000/api/tasks \
   -H 'Content-Type: application/json' \
   -d '{
@@ -272,7 +303,87 @@ curl -s -X POST http://localhost:3000/api/tasks \
     "status": "todo",
     "priority": "high",
     "sortOrder": 5,
-    "assignee": "jt",
+    "assignee": "JT",
+    "project": "passive-income"
+  }'
+
+# Day 1 — Post launch announcement X post
+curl -s -X POST http://localhost:3000/api/tasks \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "title": "[Product Name] — Post launch X post (Day 1)",
+    "description": "Post the launch announcement X post from build-in-public-posts.md.\n\nDrive: [Drive link to build-in-public-posts.md]\n\nPost in 8-10AM or 6-9PM EST window.",
+    "status": "todo",
+    "priority": "high",
+    "sortOrder": 16,
+    "assignee": "JT",
+    "project": "passive-income"
+  }'
+
+# Day 2 — Send UGC creator DMs
+curl -s -X POST http://localhost:3000/api/tasks \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "title": "[Product Name] — Send UGC creator DMs (Day 2)",
+    "description": "Review and send the 10 UGC creator DMs from ugc-creators.md. Eve drafted them — JT sends.\n\nDrive: [Drive link to ugc-creators.md]\n\nRate: $20/video flat + $1k/1M views performance.",
+    "status": "todo",
+    "priority": "high",
+    "sortOrder": 17,
+    "assignee": "JT",
+    "project": "passive-income"
+  }'
+
+# Day 3 — Post "why I built this" X post
+curl -s -X POST http://localhost:3000/api/tasks \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "title": "[Product Name] — Post 2nd X post: why I built this (Day 3)",
+    "description": "Post the second build-in-public X post from build-in-public-posts.md.\n\nDrive: [Drive link to build-in-public-posts.md]",
+    "status": "todo",
+    "priority": "high",
+    "sortOrder": 19,
+    "assignee": "JT",
+    "project": "passive-income"
+  }'
+
+# Day 4 — Post Reddit launch post
+curl -s -X POST http://localhost:3000/api/tasks \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "title": "[Product Name] — Post Reddit launch post (Day 4)",
+    "description": "Post the Reddit launch post to the top subreddit from subreddits.md. Check karma threshold first.\n\nDrive: [Drive link to subreddits.md]\n\nNote: after this post, vibe marketing Reddit waits 2 weeks before posting to same sub.",
+    "status": "todo",
+    "priority": "high",
+    "sortOrder": 21,
+    "assignee": "JT",
+    "project": "passive-income"
+  }'
+
+# Day 5 — Post 3rd X post
+curl -s -X POST http://localhost:3000/api/tasks \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "title": "[Product Name] — Post 3rd X post: what surprised me (Day 5)",
+    "description": "Post the third build-in-public X post from build-in-public-posts.md.\n\nDrive: [Drive link to build-in-public-posts.md]",
+    "status": "todo",
+    "priority": "high",
+    "sortOrder": 22,
+    "assignee": "JT",
+    "project": "passive-income"
+  }'
+```
+
+**If App Store product — also push:**
+```bash
+curl -s -X POST http://localhost:3000/api/tasks \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "title": "[Product Name] — Implement ASO recommendations in App Store Connect",
+    "description": "Update title, subtitle, keywords, and screenshots per aso-brief.md.\n\nDrive: [Drive link to aso-brief.md]\n\nRequires App Store Connect login.",
+    "status": "todo",
+    "priority": "high",
+    "sortOrder": 20,
+    "assignee": "JT",
     "project": "passive-income"
   }'
 ```
@@ -282,6 +393,23 @@ curl -s -X POST http://localhost:3000/api/tasks \
 "launch_kit_generated": true,
 "launch_kit_date": "YYYY-MM-DD",
 "launch_kit_path": "agents/launch-kit/kits/[slug]/"
+```
+
+5. Pre-populate vibe marketing state.json for the new product — so the Monday cron doesn't post to the same Reddit subreddit in week 1 before the launch post gap clears:
+```python
+import json
+state_path = "agents/vibe-marketing/state.json"
+with open(state_path) as f:
+    state = json.load(f)
+# Mark the launch subreddit as used so vibe marketing waits 2 weeks
+if "last_reddit_subreddit" not in state:
+    state["last_reddit_subreddit"] = {}
+state["last_reddit_subreddit"]["[product_slug]"] = "[launch subreddit from subreddits.md]"
+if "last_scene_concept" not in state:
+    state["last_scene_concept"] = {}
+state["last_scene_concept"]["[product_slug]"] = 0  # cron picks concept 1 on first run
+with open(state_path, "w") as f:
+    json.dump(state, f, indent=2)
 ```
 
 ---

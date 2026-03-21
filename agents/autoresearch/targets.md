@@ -19,10 +19,10 @@
 
 | Slug | Skill/Agent Path | Checklist | Status | Last Score | Last Run | Added |
 |------|-----------------|-----------|--------|------------|----------|-------|
-| cold-email | skills/cold-email/SKILL.md | checklists/cold-email.md | pending | — | — | 2026-03-19 |
+| cold-email | skills/cold-email/SKILL.md | checklists/cold-email.md | stable | 0.958 | 2026-03-20 | 2026-03-19 |
 | t3-cold-hook | agents/t3-cold-hook/AGENT.md | checklists/t3-cold-hook.md | pending | — | — | 2026-03-19 |
 | content-linkedin | (content-generate-linkedin cron payload) | checklists/content-linkedin.md | pending | — | — | 2026-03-19 |
-| content-x | (content-generate-x cron payload) | checklists/content-x.md | pending | — | — | 2026-03-19 |
+| content-x | (content-generate-x cron payload) | checklists/content-x.md | active | 0.900 | 2026-03-20 | 2026-03-19 |
 
 ## Status values
 - `pending` — checklist written, not yet run

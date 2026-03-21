@@ -16,6 +16,13 @@
 
 ## Active Signals
 
+### ViewTrack ($24-79/month social analytics + OpenClaw plugin)
+- **What:** Cross-platform video performance tracker (TikTok/IG/YT/X) with native OpenClaw integration. Pulls views, engagement, hook patterns from competitor accounts. Feeds performance data back into AI content agent for self-improvement loop.
+- **Why deferred:** Half the product is unbuilt (Dec 2025 features still "coming"). Nash Satoshi and Vista have $0 revenue — paying for optimization infrastructure before content is running is wrong order of operations. Performance feedback loop already exists in vibe marketing AGENT.md.
+- **Trigger:** Nash Satoshi OR Vista hits $300/month in revenue AND at least 4 weeks of content posted. At that point, trial Basic plan ($24/month), wire OpenClaw plugin into vibe-marketing agent as live performance source.
+- **Logged:** 2026-03-20
+- **Potential value:** Closes the self-improvement loop gap. Competitor hook analysis feeds directly into weekly content generation.
+
 ### DGX Spark — Personal Model Fine-Tuning
 - **What:** NVIDIA DGX Spark (~$3-5K) enables local model training/fine-tuning on personal content. Technique: fine-tune on business data, synthetic data generation via distillation (e.g. Qwen 3.5), autonomous self-improvement loops (Karpathy autoresearch repo).
 - **Why deferred:** No compatible hardware (Mac mini). JT isn't a developer — executing this correctly requires ML depth. Current stack generating revenue, no need to pivot.

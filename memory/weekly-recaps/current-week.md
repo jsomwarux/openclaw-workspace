@@ -16,3 +16,4 @@ Archive every Monday, start fresh.
 - [2026-03-03 06AM] Crypto full analysis: TRIM FELIX 4% (Day 8 sell), ACCUMULATE PERKOS +2% (token utility live), ACCUMULATE PHONECLAW +1% (Powers marketplace live), CONFIRM NOOK 3% entry (agent registry live). New: PERKOS 40% | ODAI 13% | FELIX 8% | PRXVT 8% | PHONECLAW 7% | NOOK 3% | ZAUTH/A0T/FDRY/CLIZA 2-3% each | CASH 11%.
 - [2026-03-04] Built AI Support Triage n8n demo (21 nodes, Claude routing, 3-path IF, Slack+email+Sheets) — 4th n8n demo complete
 2026-03-06 3AM | Overnight: board clear of HIGH tasks; added 2 portfolio cards to jtsomwaru.com (b2b-account-service-agent + n8n-support-triage, commit b3e553c); state.json corrected (+7 missing slugs); film review fix → duplicate heartbeat log rule added to feedback.md.
+- 2026-03-20: Nash Satoshi n8n workflow — 32-node 4-LLM ensemble pipeline, Gumloop replaced, webhook live

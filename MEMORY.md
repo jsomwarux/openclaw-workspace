@@ -71,7 +71,7 @@
 - Content crons: content-generate-linkedin (Mon 7AM, 6 posts) | content-generate-x (Mon 7:25AM, 3 passes: 7 calendar + 3 technical + 2-3 build showcase) | content-reminder (Tue-Sat 8AM, LinkedIn on Tue/Wed/Thu/Fri + X daily) | content-sunday (Sun 9AM, Sun LinkedIn + X + engagement check) | content-monday-send (Mon 7:55AM, surfaces bank posts to JT)
 - Content sources: recent-builds.md | technical-angles.md (30+ angles) | consulting-observations.md (nightly from outreach-pipeline) | job-market-observations.md (daily from job-market cron) | content-voice.md Proof Points | Notion swipe file
 - Bank: memory/content/bank/[MONDAY-DATE]/ — technical + build showcase posts generated weekly, surfaced to JT Monday morning via content-monday-send
-- Swipe file: Notion DB (viral X posts) | Format signals: memory/content/format-signals.md | Technical angles: memory/content/technical-angles.md
+- Swipe file: Notion DB (viral X posts) | Format signals: memory/content/content-signals.md | Technical angles: memory/content/technical-angles.md
 
 ## Critic Agent (built 2026-03-07)
 - Agent: `agents/critic/AGENT.md` — 4-step strategic critique framework
@@ -82,7 +82,7 @@
 ## Active Apps
 - AgentGuard: AI governance layer — **LIVE at https://agentguard-delta.vercel.app** (March 2026). Confidence scoring + human-in-the-loop + audit log + explainability report. Insurance claims triage demo. Portfolio card on jtsomwaru.com.
 - Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
-- Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private)
+- Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private). **n8n pipeline LIVE 2026-03-20**: 32 nodes, 4 parallel models (GPT/Gemini/Claude/Grok), 3-stage analysis. Gumloop replaced. Webhook: POST /nash-satoshi-analysis. ID: w0yOfDL4RTLldwSJ.
 - Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL
 - jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Last updated 2026-03-11 (pricing raised, GEO/llms.txt/JSON-LD implemented, nav fixed)
   - B2B Account Service Agent card: PERMANENTLY BANNED — do not re-add under any circumstances
@@ -115,7 +115,7 @@
   - Queue: `agents/vibe-marketing/queue.jsonl` | State: `agents/vibe-marketing/state.json`
   - Cron: Monday 4:45AM ET (UUID: 870bf3ff-55c9-49c0-9970-361c81a0920b) | isolated sonnet | 720s
   - Active products: Nash Satoshi + Vista (Glow Index pending n8n/ngrok)
-  - Nash Satoshi: nashsatoshi.com | X: @NashSatoshi | TikTok: @NashSatoshi (dedicated — create + 3-day warmup before first post) | Reddit: community account (needs karma build)
+  - Nash Satoshi: nashsatoshi.com | X: @NashSatoshi | TikTok: @NashSatoshi (dedicated — create + 3-day warmup before first post) | Reddit: community account (needs karma build) | **Analysis pipeline: staying on Gumloop (decided 2026-03-20 — n8n rebuild paused indefinitely)**
   - Vista: App Store | X: @jts_14 | TikTok: @jts_14 | Reddit: JT's personal account (needs karma build)
   - Glow Index: TikTok dedicated account required when activated (skincare niche ≠ JT's audience)
   - TikTok routing rule: niche-specific products (crypto, skincare, etc.) → dedicated account. Builder/dev/AI products → @jts_14
@@ -130,7 +130,7 @@
 - **Scout reports**: `memory/passive-income/YYYY-MM-DD-scout.md` | **Strategist reports**: `memory/passive-income/YYYY-MM-DD-strategist.md`
 - **MC project tag**: `passive-income` | Nash Satoshi + Glow Index tasks tagged
 
-## Active Cron Jobs (23) — post-incident schedule (2026-02-26)
+## Active Cron Jobs (24) — post-incident schedule (2026-02-26)
 - crypto-morning: 6AM daily | main | full portfolio analysis
 - job-market: 6:30AM daily | isolated sonnet | → data/daily-brief.md
 - morning-brief: 7:30AM daily | main | brief + costs + niche + jobs
@@ -163,6 +163,8 @@
 - weekly-systems-review: Sunday 10AM ET | isolated sonnet | cron health + file budgets + process health + config drift + version check → Telegram report | UUID: b2ca53ab-0c07-4a22-8424-9d39bf988405
 - **NOTE (2026-03-15):** weekly-synthesis payload updated to include Future Signals Review + content signal → MC push (was logging signals but not converting them to tasks)
 - **NOTE (2026-03-15):** construction-trades.md + property-management.md shortlists created (prospect-discovery was writing to non-existent files)
+- **NOTE (2026-03-20 — self-improvement audit):** Full audit of all self-improvement systems. Fixes applied: (1) PostBridge → HIGH sortOrder 45 — unblocks entire content feedback flywheel; (2) weekly-synthesis timeout 300s→720s; (3) daily-news-hook staggered to 9:30AM (was 9:15AM, rate-limit collision with niche monitor); (4) prospect-discovery switched from Edit tool to shell append — fixes file-size write failures; (5) HEARTBEAT.md: added autoresearch enrollment check (step 9) + idea queue pruning (step 10) + content→consulting niche feedback rule to weekly synthesis; (6) overnight agent: explicit autoresearch volume trigger check added (Step 1.6) — runs cold-email loop if >14 days since last run; (7) autoresearch AGENT.md: volume trigger documented. Key finding: vibe marketing performance-log.jsonl has 0 entries — entire feedback flywheel blocked on PostBridge activation.
+- reddit-karma-daily-reminder: 8PM daily | isolated groq | sends daily Reddit karma habit reminder to JT | UUID: fe575759-c8b1-4715-ae5a-0dbe034b3c9b
 - Daily cap: 20 invocations/weekday ✅
 
 ## Cost Tracking

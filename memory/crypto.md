@@ -307,3 +307,10 @@
 - FOMC decision day — macro uncertainty keeping fear elevated despite price strength
 - $ODAI earlier alert: +36% 6h move caught by midday cron (before rate-limit error)
 - Portfolio coins: no individual alerts triggered overnight, monitoring active
+
+## 2026-03-20 2PM Update
+- BTC: ~$70,400 (+1.5% from $69,370 yesterday morning) — recovering modestly post-FOMC
+- ETH: ~$2,164 (+0.16%)
+- Sentiment: Extreme Fear (Fear & Greed ~11 from morning brief)
+- No ±15% alert triggered. Market stabilizing after Wednesday FOMC sell-off (~4% drop).
+- JT portfolio: $MLTL, $KELLYCLAUDE, $FELIX, $NOX, $SELFCLAW, $JUNO, $PRXVT — no individual coin alerts this check
