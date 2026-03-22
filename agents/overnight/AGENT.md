@@ -31,10 +31,17 @@ Before selecting tasks, do one training rep:
 - If nothing to fix: note "Clear" and proceed
 This step is mandatory. The goal is to never make the same mistake twice.
 
-### Step 1: Load Feedback Rules
+### Step 1: Load Feedback Rules + Niche Intel Propagation Check
 Read `~/.openclaw/workspace/agents/overnight/feedback.md`.
 Extract all active rules (any line starting with `Rule:`).
 These rules override defaults in every task you run tonight.
+
+**Niche Intel Propagation (run every night before outreach):**
+Read `~/.openclaw/workspace/memory/niche-monitor-latest.md`. For any 🟠+ signal that references a pitch angle, pricing framing, or ICP qualification:
+1. Check if `documents/ICPs.md` already reflects it — if not, update it
+2. Check if `skills/cold-email/SKILL.md` already reflects it — if not, update it
+3. Log what was updated (or "current — no changes needed") in tonight's overnight log under `## Niche Intel Sync`
+This step is non-negotiable and does NOT count toward the 2-task limit. It takes 3 minutes and ensures outreach drafted tonight uses current pitch angles.
 
 ### Step 1.5: Launch Kit Check (runs before MC task selection)
 

@@ -177,3 +177,9 @@
 **Why deferred:** Existing T2/T3 pipeline (prospect-discovery + outreach-pipeline + t3-cold-hook) hasn't converted first client yet. LinkedIn job API requires partner program; Indeed gated. Build complexity is higher than task description implies. Adding lead volume before funnel converts is premature.
 **Trigger:** 2+ closed consulting clients from existing pipeline AND existing pipeline is consistently saturated (20+ T2 prospects queued). Re-evaluate at that point.
 **Note:** The "hire vs. automate" pitch angle is immediately usable in T3 cold hooks without building the sniper — wire it in as a copy variant for Ops/Marketing-adjacent prospects.
+
+## Bright Data MCP Server
+- **What:** Web scraping/unlocker MCP with 60+ tools including LinkedIn dataset APIs, Web Unlocker (bypasses aggressive bot protection), structured extraction
+- **Why deferred:** No active scraping gap. Current stack (Cloudflare /crawl + Firecrawl + Scrapling) covers all current use cases. Research-agent has zero Firecrawl code. Nash Satoshi staying on Gumloop.
+- **Trigger:** Activate when EITHER: (1) research-agent or Nash Satoshi pipeline is actively getting blocked by bot protection on sites Firecrawl misses, OR (2) outreach volume hits 50+ prospects/week and LinkedIn manual contact search is a bottleneck
+- **Date deferred:** 2026-03-21

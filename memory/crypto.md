@@ -314,3 +314,9 @@
 - Sentiment: Extreme Fear (Fear & Greed ~11 from morning brief)
 - No ±15% alert triggered. Market stabilizing after Wednesday FOMC sell-off (~4% drop).
 - JT portfolio: $MLTL, $KELLYCLAUDE, $FELIX, $NOX, $SELFCLAW, $JUNO, $PRXVT — no individual coin alerts this check
+
+## 2026-03-21 6PM Update
+- BTC: ~$70,325 (CoinDesk 2:02PM EDT) — holding above $70K, moderate gains from yesterday. Institutional ETF inflows cited. Key support $69,500, resistance at $71K–$72K (50-day EMA).
+- Market sentiment: positive, steady consolidation
+- No ±15% alert on any portfolio coin. x402 thesis intact.
+- Verdict: Range-bound between $69.5K–$72K. Watch for breakout direction.

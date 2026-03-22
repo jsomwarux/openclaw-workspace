@@ -61,3 +61,11 @@
 **Demonstrates:** AI-powered web app development, client-facing dashboards, real estate tech
 **Content angle:** "Construction firm was sending weekly status update emails with attached spreadsheets. Replaced that with a live dashboard stakeholders check themselves."
 **Status:** complete
+
+## Glow Index Ensemble Engine Rebuild — 2026-03-21
+**What:** Rebuilt Glow Index (skincare product rankings app) backend with Python FastAPI + real Brave Search data collection replacing placeholder data. Built 4-LLM ensemble analysis pipeline with verdict banner, key findings panel, model name normalization, and analysis status page. Frontend polished and pushed.
+**For:** Glow Index (JT's passive income app — Replit)
+**Outcome:** Engine ready for n8n workflow import + ngrok activation — last step before fully live
+**Demonstrates:** FastAPI backend, multi-LLM ensemble architecture, real-time data collection pipeline, full-stack web app
+**Content angle:** "Rebuilt a skincare rankings app to pull real product data and run it through 4 different AI models simultaneously. Each model scores independently — the verdict is the consensus."
+**Status:** complete (n8n import + ngrok pending)

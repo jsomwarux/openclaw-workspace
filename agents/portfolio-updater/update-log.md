@@ -78,3 +78,13 @@
 - Demand reorder: no (lastReorderDate: 2026-03-10, 7 days ago — exactly at threshold, skipping reorder to avoid churn)
 - Skills grid updated: no
 - Vercel deploy triggered: yes (commit c735b48)
+
+## 2026-03-21
+- Items in queue processed: 2
+- Auto-approved: georgetown-city-services-agent (score 7/10)
+- Metric update: nash-satoshi (n8n pipeline info added to metric, approach, techStack, resultStats)
+- Skipped: pm-maintenance-triage (flagged, awaiting JT decision)
+- Demand reorder: YES — n8n-support-triage moved up to position 3 (score 24), agentguard moved down to position 8
+- Skills grid updated: no
+- Vercel deploy triggered: YES (commit ce160a5)
+- Georgetown Graphic: GeorgetownCityServicesGraphic added to index.tsx + Work.tsx mapping

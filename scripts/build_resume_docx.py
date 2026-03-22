@@ -296,11 +296,13 @@ def build_resume(output_path):
     summary_para = doc.add_paragraph()
     set_para_spacing(summary_para, before_pt=4, after_pt=6, line_spacing=1.15)
     summary_run = summary_para.add_run(
-        'AI enablement and adoption specialist with 6 years of enterprise cross-functional delivery '
-        '(Charter/Spectrum Enterprise) and an active NYC consulting practice. Specializes in designing '
-        'repeatable adoption frameworks, leading technical trainings and executive briefings for audiences '
-        'from hands-on builders to C-suite, and translating AI capabilities into measurable business outcomes '
-        'for enterprise customers. Local to New York City and available for hybrid engagement.'
+        'AI Strategist and automation consultant with 6+ years of enterprise cross-functional delivery '
+        'and an active NYC consulting practice. Specializes in designing, deploying, and scaling AI workflows '
+        'that drive measurable business outcomes: scoping high-value use cases with senior executives, '
+        'leading end-to-end customer engagements from ideation through production adoption, and building '
+        'repeatable frameworks for AI change management. Comfortable running an executive briefing in the '
+        'morning and building production automation infrastructure in the afternoon. Local to New York City, '
+        'available for hybrid engagement.'
     )
     summary_run.font.name = 'Calibri'
     summary_run.font.size = Pt(10.5)
@@ -317,13 +319,12 @@ def build_resume(output_path):
         content_width=content_width
     )
     bullets_consulting = [
-        'Designed and deployed a multi-agent AI operations infrastructure running 35 autonomous jobs (prospect research, outreach pipelines, content generation, market intelligence, and cost monitoring) entirely without manual input, enabling clients to scale operations without additional headcount.',
-        'Built AgentGuard, an enterprise evaluation layer with confidence-gated routing (\u226570% auto-routes, <70% triggers human review) and full audit trail; operational controls for AI governance in HR/compliance decisions. Live at agentguard-delta.vercel.app.',
-        'Developed ConversationFirst, a 25-point enterprise AI adoption framework covering persona cards, conversation flows, and enablement architecture; adopted as a repeatable implementation standard across insurance and property management deployments.',
-        'Designed and facilitated hands-on AI workshops for property management and insurance operations teams; delivered PM Maintenance Triage n8n workflow with multi-tier complaint classification (routine / urgent / emergency), automated vendor dispatch, tenant confirmation, and audit log, reducing unrouted emergencies and manual dispatch time for NYC property management clients.',
-        'Built and deployed Agentforce agents for insurance claims intake routing, PM tenant service, and employee self-service; led customer enablement from sandbox through production deployment across Salesforce orgs.',
-        'Delivered a construction field reporting system for NYC-based Aya ($1,500), replacing manual update chains with real-time job tracking; led client onboarding that drove immediate adoption and two follow-on project commissions ($3,500+ in additional scope).',
-        'Shipped Vista (Apple App Store) and Nash Satoshi (4-LLM ensemble crypto rankings); proof of ability to take a product from prototype to production deployment.',
+        'Led end-to-end customer engagements from scoping through adoption: designed, deployed, and scaled AI workflows for NYC clients in construction, property management, and insurance; measured outcomes include reduced dispatch time, eliminated manual update chains, and $3,500+ in follow-on scope from a single client engagement.',
+        'Developed ConversationFirst, a 25-point AI adoption framework covering persona cards, conversation flow design, and change management architecture; adopted as a repeatable standard across insurance and property management deployments.',
+        'Built AgentGuard, an enterprise AI governance layer with confidence-gated routing (>=70% auto-routes, <70% triggers human review), operational controls, and full audit trail; addresses change management and compliance requirements for AI in enterprise operations. Live at agentguard-delta.vercel.app.',
+        'Designed, deployed, and scaled a 35-job autonomous AI operations infrastructure (prospect research, outreach pipelines, content generation, market intelligence, cost monitoring); acted as outcome manager over AI agents to ensure systems produced measurable business results without manual intervention.',
+        'Designed Salesforce Agentforce agents for insurance intake routing, PM tenant service, and employee self-service across three verticals; demo-ready with full enablement documentation for client adoption.',
+        'Identified, scoped, and delivered a no-code construction field reporting system for NYC-based Aya ($1,500); client adoption drove immediate follow-on scope ($3,500+) demonstrating measurable business outcomes and long-term customer relationship.',
     ]
     for b in bullets_consulting:
         add_bullet(doc, b)
@@ -336,11 +337,11 @@ def build_resume(output_path):
         content_width=content_width
     )
     bullets_charter = [
-        'Served as primary point of contact between senior business stakeholders and technical teams on multi-quarter implementation projects; presented recommendations to regional directors and VP-level leadership, managing scope, timelines, and executive expectations through delivery.',
-        'Designed and delivered structured learning programs for audiences ranging from frontline reps to regional directors; training reduced product catalog error rates and accelerated onboarding time across the BSA team.',
-        'Managed configuration and cross-team adoption of enterprise product catalog systems across a $1B+ service portfolio, coordinating between Sales, Product, Engineering, and Operations to ensure consistent implementation and activation.',
-        'Led system implementation projects requiring alignment across 8+ internal teams, translating technical constraints into operational workflows non-technical stakeholders could execute.',
-        'Developed internal documentation and playbooks for complex product configurations, adopted as standard reference material across the BSA team.',
+        'Acted as the cross-functional bridge between senior business stakeholders and technical teams on multi-quarter implementation projects; engaged VP-level and regional director audiences to define success metrics, manage scope, and align on adoption milestones through delivery.',
+        'Designed and delivered structured enablement programs for audiences ranging from frontline reps to regional directors; training reduced product catalog error rates and accelerated onboarding time, producing measurable adoption outcomes across the BSA team.',
+        'Led end-to-end ownership of product catalog system implementations across a $1B+ service portfolio; coordinated between Sales, Product, Engineering, and Operations to translate technical constraints into operational workflows non-technical stakeholders could execute.',
+        'Identified high-value configuration improvements and scoped them into actionable implementation projects; built internal playbooks adopted as standard reference material, enabling teams to iterate on systems independently after initial deployment.',
+        'Managed change management and adoption for 8+ internal team implementations; guided organizations through onboarding so that solutions became an integral part of day-to-day operations.',
     ]
     for b in bullets_charter:
         add_bullet(doc, b)
@@ -350,8 +351,8 @@ def build_resume(output_path):
     builds_inline = [
         ('AgentGuard',               'Enterprise evaluation layer: confidence-gated routing, operational controls for AI governance, EEOC audit trail. Live at agentguard-delta.vercel.app',  'Live'),
         ('Construction Job Tracker', 'Real-time field reporting for Aya; led client onboarding that drove immediate adoption and $3,500+ in follow-on scope',                                  'Deployed, client'),
-        ('Agentforce Agents',        'Insurance, PM, and employee service agents; led customer enablement from sandbox through production deployment (Salesforce orgs)',                       'Deployed'),
-        ('PM Maintenance Triage',    'Multi-tier classification + automated vendor dispatch; reduced unrouted emergencies and manual routing time for NYC property management clients',         'Deployed'),
+        ('Agentforce Agents',        'Insurance intake routing, PM tenant service, and employee self-service agents built on Salesforce orgs; demo-ready across three verticals',             'Demo'),
+        ('PM Maintenance Triage',    'Multi-tier classification + automated vendor dispatch for property management; tenant submits, AI classifies urgency, routes vendor automatically',       'Demo'),
     ]
     for name, desc, status in builds_inline:
         para = doc.add_paragraph()
@@ -378,10 +379,10 @@ def build_resume(output_path):
     add_section_heading(doc, 'Skills')
 
     skills = [
-        ('AI Enablement & Deployment', 'Agentforce, OpenAI API, Anthropic Claude, n8n workflow automation, multi-agent orchestration, RAG, evaluation frameworks, prompt engineering, adoption frameworks, agent governance'),
-        ('Training & Instructional Design', 'Workshop facilitation, technical training design, customer onboarding, live technical training, learning journey design, executive briefings, playbook development'),
-        ('Technical',    'Webhook architecture, API integration, AI system monitoring, cost controls, Google Sheets/Drive automation, Supabase, Vercel, OpenClaw'),
-        ('Business',     'Enterprise cross-functional coordination, implementation project management, stakeholder communication, system documentation'),
+        ('AI Strategy & Workflows', 'AI use case scoping, AI workflow design and deployment, n8n no-code automation, Agentforce, OpenAI API, Anthropic Claude, multi-agent orchestration, prompt engineering, agent governance, RAG, evaluation frameworks'),
+        ('Customer Enablement', 'Workshop facilitation, executive engagement, technical training design, customer onboarding, adoption frameworks, change management, playbook development, AI literacy programs'),
+        ('Technical', 'Webhook architecture, API integration, AI system monitoring, cost controls, Google Sheets/Drive automation, Supabase, Vercel, Salesforce, no-code platforms'),
+        ('Business', 'End-to-end customer engagement, implementation project management, stakeholder communication, product feedback loop, cross-functional coordination, system documentation'),
     ]
     for cat, text in skills:
         add_skills_line(doc, cat, text)
@@ -400,6 +401,19 @@ def build_resume(output_path):
     edu_r2.font.size = Pt(10.5)
     edu_r2.font.bold = False
     edu_r2.font.color.rgb = GRAY
+
+    edu_para2 = doc.add_paragraph()
+    set_para_spacing(edu_para2, before_pt=2, after_pt=2)
+    edu_r3 = edu_para2.add_run('Level at Northeastern University')
+    edu_r3.font.name = 'Calibri'
+    edu_r3.font.size = Pt(10.5)
+    edu_r3.font.bold = True
+    edu_r3.font.color.rgb = BLACK
+    edu_r4 = edu_para2.add_run(', Data Analytics Certificate · 2019')
+    edu_r4.font.name = 'Calibri'
+    edu_r4.font.size = Pt(10.5)
+    edu_r4.font.bold = False
+    edu_r4.font.color.rgb = GRAY
 
     doc.save(output_path)
     print(f'✅ Resume saved: {output_path}')
@@ -451,52 +465,42 @@ def build_cover_letter(output_path):
 
     recip_para = doc.add_paragraph()
     set_para_spacing(recip_para, before_pt=0, after_pt=12)
-    recip_run = recip_para.add_run('Hiring Manager, OpenAI')
+    recip_run = recip_para.add_run('Hiring Manager, Stack AI')
     recip_run.font.name = 'Calibri'
     recip_run.font.size = Pt(11)
     recip_run.font.color.rgb = GRAY
 
     # ── BODY PARAGRAPHS ──────────────────────────────────────────────────────
     body_paras = [
-        # P1 — Opening hook
-        ('The gap between an enterprise buying into OpenAI\'s platform (ChatGPT Enterprise, Codex, Agents, '
-         'the API) and actually using it at scale isn\'t a product problem. It\'s an adoption problem, '
-         'and most organizations don\'t have anyone who can build the bridge between what the platform '
-         'does and what their teams actually do every day.'),
+        # P1 — Their problem
+        ('Most organizations buying AI workflow tools have the same problem: they can identify the use '
+         'case and configure the platform, but the adoption never lands. The gap isn\'t technical. '
+         'It\'s that nobody owns the end-to-end process from executive alignment through day-to-day '
+         'change management, and Stack AI\'s customer success depends on someone who can do both.'),
 
-        # P2 — Charter foundation (enablement/training DNA)
-        ('That\'s the problem I\'ve spent six years learning how to solve. At Charter/Spectrum Enterprise, '
-         'I was a Business Systems Analyst responsible for cross-functional adoption of enterprise product '
-         'systems across a $1B+ service portfolio. Getting eight different internal teams to actually use '
-         'those systems correctly was the core of the work: training audiences from frontline reps to '
-         'regional directors, reducing error rates and cutting onboarding time through structured learning '
-         'programs, and building the playbooks that made complex configurations repeatable. That enablement '
-         'work is the foundation everything else is built on.'),
+        # P2 — Charter foundation
+        ('At Charter/Spectrum Enterprise, I spent six years as the cross-functional bridge between '
+         'technical systems and the business teams that had to actually use them. My job was to take '
+         'complex product catalog implementations across a $1B+ service portfolio and make them stick '
+         'across eight internal teams: engaging VP-level leadership on success metrics, designing '
+         'structured enablement programs for frontline reps and regional directors, and building the '
+         'playbooks that let teams iterate on systems independently after I stepped back. '
+         'That is exactly what customer engagement at Stack AI requires.'),
 
-        # P3 — Consulting proof points (deployments + ConversationFirst + AgentGuard)
-        ('When I moved into AI consulting, I applied that same model to AI deployment. I\'ve built and '
-         'delivered automation systems for real clients, including a construction job tracking system that '
-         'replaced manual update chains with real-time field reporting and generated two follow-on projects '
-         'for the same client. I developed ConversationFirst, a 25-point adoption framework for enterprise '
-         'AI covering persona cards, enablement architecture, and conversation flows, now used as a '
-         'repeatable standard across my insurance and property management deployments. I also built '
-         'AgentGuard: a confidence-gated evaluation layer with escalation paths, audit trails, and '
-         'human-in-the-loop controls. The operational controls enterprises need before they trust AI in '
-         'production. I built it because I believe reliable AI deployment requires defined accountability, '
-         'not just capable models.'),
+        # P3 — Consulting proof points
+        ('In my consulting practice, I\'ve led end-to-end customer engagements in construction, '
+         'property management, and insurance. I developed ConversationFirst, a 25-point AI adoption '
+         'framework covering persona design, conversation flows, and enablement architecture. '
+         'A construction workflow I delivered for a NYC client replaced manual status chains with '
+         'automated field reporting; the onboarding I ran drove immediate adoption and a follow-on '
+         'engagement commission from the same client. I also built AgentGuard, '
+         'a confidence-gated AI governance layer with human-in-the-loop escalation and full audit trail, '
+         'addressing the change management barrier that blocks enterprise AI adoption most often: '
+         'accountability for what the system decides.'),
 
-        # P4 — Closing pitch
-        ('What I\'d bring to this role is that I\'ve personally lived the problem your customers are '
-         'trying to solve. I run 35 autonomous AI agents in production with model routing logic, '
-         'adoption frameworks, cost controls, and watchdog processes, and I\'ve had to figure out what '
-         '"reliable" actually means when AI systems operate without daily supervision. That operational '
-         'experience is what lets me run a workshop for a technical team in the morning and an executive '
-         'briefing in the afternoon: I understand what the system can and can\'t do, and I know how to '
-         'explain what matters to each audience.'),
-
-        # P5 — Clean close with NYC signal
-        ('I\'d be glad to walk through the production infrastructure or any of the client deployments on '
-         'a call, or in person at the NYC office, whichever would be most useful.'),
+        # P4 — Clean close with concrete CTA
+        ('Happy to walk through the ConversationFirst framework, the production AI infrastructure, '
+         'or any of the client deployments on a call. NYC-based and available for in-person engagement.'),
     ]
 
     for body_text in body_paras:

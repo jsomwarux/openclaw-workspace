@@ -98,9 +98,12 @@ Goal: leave the door open, not slam it shut.
 - No self-promotional closers
 - No signature block (name + URL) — screams template
 - CTA in message 1 must be answerable in 5 words or fewer
+- **CTA must be an open-ended observation question, NOT a binary ask.** Good: "Is this kind of triage gap something you're actively dealing with?" Bad: "Worth a look?" or "Worth 15 minutes?" — answerable with yes/no = binary = wrong.
 - Under 100 words per message
 - **Never reference employee reviews directly** — use the signal, not the source
 - Write like you're texting a professional acquaintance, not drafting a sales email
+- **NEVER mention "I built X" or name a specific JT build (H.C. Oswald, PM triage, construction tracker, etc.) in Message 1.** Build mentions belong in Message 2 only. M1 earns the right to send M2. A build mention in M1 reads as a pitch.
+- **For PM niche — use concrete n8n language:** "intake workflow," "n8n automation," "triage → vendor routing," "classification to dispatch." Neutral "workflow automation" is too vague. Naming the mechanism (n8n, automation layer, routing logic) signals you've actually built it.
 
 **Proof points to weave into message 2 by niche (not message 1):**
 - Wholesale: "one thing that came up with H.C. Oswald Supply (Bronx) — their catalog had 100 years of inventory that nobody could search quickly. automated lookup cut that to under 10 seconds."

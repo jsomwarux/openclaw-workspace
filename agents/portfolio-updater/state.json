@@ -17,10 +17,11 @@
     "adversight-ai",
     "b2b-account-service-agent",
     "n8n-support-triage",
-    "construction-job-tracker"
+    "construction-job-tracker",
+    "georgetown-city-services-agent"
   ],
-  "lastReorderDate": "2026-03-10",
-  "lastRun": "2026-03-17",
+  "lastReorderDate": "2026-03-21",
+  "lastRun": "2026-03-21",
   "demandScoreCache": {
     "opticfy-pipeline": 46,
     "construction-tracker": 22,

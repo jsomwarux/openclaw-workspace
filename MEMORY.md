@@ -82,7 +82,7 @@
 ## Active Apps
 - AgentGuard: AI governance layer — **LIVE at https://agentguard-delta.vercel.app** (March 2026). Confidence scoring + human-in-the-loop + audit log + explainability report. Insurance claims triage demo. Portfolio card on jtsomwaru.com.
 - Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
-- Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private). **n8n pipeline LIVE 2026-03-20**: 32 nodes, 4 parallel models (GPT/Gemini/Claude/Grok), 3-stage analysis. Gumloop replaced. Webhook: POST /nash-satoshi-analysis. ID: w0yOfDL4RTLldwSJ.
+- Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private). **Analysis pipeline: PERMANENTLY on Gumloop. Do NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly says so.**
 - Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL
 - jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Last updated 2026-03-11 (pricing raised, GEO/llms.txt/JSON-LD implemented, nav fixed)
   - B2B Account Service Agent card: PERMANENTLY BANNED — do not re-add under any circumstances
@@ -115,7 +115,7 @@
   - Queue: `agents/vibe-marketing/queue.jsonl` | State: `agents/vibe-marketing/state.json`
   - Cron: Monday 4:45AM ET (UUID: 870bf3ff-55c9-49c0-9970-361c81a0920b) | isolated sonnet | 720s
   - Active products: Nash Satoshi + Vista (Glow Index pending n8n/ngrok)
-  - Nash Satoshi: nashsatoshi.com | X: @NashSatoshi | TikTok: @NashSatoshi (dedicated — create + 3-day warmup before first post) | Reddit: community account (needs karma build) | **Analysis pipeline: staying on Gumloop (decided 2026-03-20 — n8n rebuild paused indefinitely)**
+  - Nash Satoshi: nashsatoshi.com | X: @NashSatoshi | TikTok: @NashSatoshi (dedicated — create + 3-day warmup before first post) | Reddit: community account (needs karma build) | **Analysis pipeline: PERMANENTLY on Gumloop (hard rule — no n8n changes unless JT explicitly requests)**
   - Vista: App Store | X: @jts_14 | TikTok: @jts_14 | Reddit: JT's personal account (needs karma build)
   - Glow Index: TikTok dedicated account required when activated (skincare niche ≠ JT's audience)
   - TikTok routing rule: niche-specific products (crypto, skincare, etc.) → dedicated account. Builder/dev/AI products → @jts_14

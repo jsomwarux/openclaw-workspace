@@ -88,6 +88,22 @@ def create_doc(drive, title, content, folder_id):
     return f"https://docs.google.com/document/d/{f['id']}/edit"
 
 
+def create_doc_from_docx(drive, title, content_bytes, folder_id):
+    """Upload a .docx binary, auto-convert to Google Doc, place in folder."""
+    media = MediaInMemoryUpload(
+        content_bytes,
+        mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        resumable=False
+    )
+    meta = {
+        "name": title,
+        "mimeType": "application/vnd.google-apps.document",
+        "parents": [folder_id],
+    }
+    f = drive.files().create(body=meta, media_body=media, fields="id").execute()
+    return f"https://docs.google.com/document/d/{f['id']}/edit"
+
+
 def list_folders(drive):
     root_id = find_folder(drive, ROOT_FOLDER)
     if not root_id:
@@ -154,14 +170,20 @@ def main():
         parser.error("Provide --path OR both --project and --type")
 
     if args.file:
-        with open(os.path.expanduser(args.file)) as f:
-            content = f.read()
+        filepath = os.path.expanduser(args.file)
+        if filepath.endswith(".docx"):
+            with open(filepath, "rb") as f:
+                content_bytes = f.read()
+            url = create_doc_from_docx(drive, args.title, content_bytes, folder_id)
+        else:
+            with open(filepath) as f:
+                content = f.read()
+            url = create_doc(drive, args.title, content, folder_id)
     elif args.content:
         content = args.content.replace("\\n", "\n")
+        url = create_doc(drive, args.title, content, folder_id)
     else:
         parser.error("Provide --content or --file")
-
-    url = create_doc(drive, args.title, content, folder_id)
 
     print(f"✅ {args.title}")
     print(f"   {ROOT_FOLDER} / {display_path}")

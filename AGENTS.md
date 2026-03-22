@@ -96,7 +96,7 @@ No task description should just restate the title. If you can't write a concrete
 The task board must reflect JT's actual priority order at all times. Apply these checks whenever adding OR reviewing tasks:
 
 **Consulting first.** Any unblocked consulting task (pitch decks, T2 templates, outreach steps, client deliverables) → HIGH priority, sortOrder 10-60.
-**Job apps run in parallel** at 2-3/week as financial hedge. Threshold: **20+/25** with hard filters: no hands-on coding as primary function, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement. All job-related tasks (Anthropic Academy, skill gaps, resume work) → medium, sortOrder 300+.
+**Job apps run in parallel** at 2-3/week as financial hedge. Threshold: **20+/25** with hard filters: no hands-on coding as primary function, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement. Job-related tasks → medium, sortOrder 300+. **Exception: if resume + cover letter are already built and the only remaining step is submitting → HIGH, sortOrder 10-40.** Ready-to-submit is a quick win, not a background task.
 **Time-sensitive live products** (app is live, outreach is warm, deadline within 7 days) → HIGH, sortOrder 10-20.
 **Speculative / "Build idea:" tasks** → always medium, sortOrder 500+. Never HIGH unless client request makes it immediately actionable.
 **Passive habits** (Reddit karma, daily study) → medium, sortOrder 200+. Not urgent actions.
@@ -166,6 +166,13 @@ Files: `~/.claude/CLAUDE.md` (global) | `~/projects/jtsomwaru-com/CLAUDE.md` | `
 
 ## Proactive Task Closure Rule
 When any tool call, check, or verification confirms that something is already done (version installed, feature live, task complete, URL fixed, etc.) — mark the corresponding Mission Control task as done immediately in the same turn. Do not wait for JT to point it out. "I confirmed X is done" without closing the task is incomplete work.
+
+## Validated Fix = Apply Immediately Rule
+Autoresearch, film review, cron health audit — if the run validates a fix, apply it in the same run. Cron payloads → `cron update`. Skill files → edit directly. Creating an MC task for a fix the agent already knows how to make = deferral, not completion.
+Exception: architectural changes (restructuring a skill's purpose, removing JT-authored sections) → save separately and flag.
+
+## Niche Intel Propagation Rule
+🟠+ signals in `niche-monitor-latest.md` that change pitch angle or ICP criteria MUST update `documents/ICPs.md` and `skills/cold-email/SKILL.md` before next outreach batch. Surfacing in morning brief ≠ handled. Overnight agent runs this check every night (Step 1).
 
 ## Future Signals Rule
 Anything evaluated and deferred ("not right now") → add to `memory/future-signals.md` immediately with: what it is, why deferred, and a SPECIFIC trigger condition. Weekly synthesis reviews all signals and promotes any whose trigger is met. Never let "not now" disappear with no resurfacing mechanism.
@@ -316,6 +323,14 @@ Key rules (enforced always — no exceptions):
 - No em dashes, no exclamation points, no "Here's the thing:" openers
 - Threads: max 5 tweets; most should be 3
 
+## Lessons Auto-Write Rule (mandatory)
+Whenever a non-obvious problem is solved, a silent failure mode is discovered, or a pattern is confirmed through operational experience: write the lesson immediately in the same turn. Do not wait for JT to ask.
+- n8n/workflow bugs → `~/projects/n8n-agent/tasks/lessons.md`
+- Python engine / OpenRouter / ensemble pipeline → `docs/agents/ensemble-build-lessons.md`
+- General agent/cron/prompt patterns → `AGENTS.md` Mistakes Log or the relevant skill SKILL.md
+- "Would a practitioner be grateful to know this before building?" → yes = write it now.
+Never surface "any lessons to add?" as a question. Just add them.
+
 ## Project Lessons Rule
 Before starting work on ANY project that has a `lessons.md` or `CLAUDE.md` file: read it in full before writing a single line of code or making any changes. This applies to all projects, not just n8n.
 - `~/projects/n8n-agent/tasks/lessons.md` — n8n workflows
@@ -380,8 +395,7 @@ Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete rule.
 **Recent entries (last 3):**
 | Date | Mistake | Fix |
 |------|---------|-----|
+| 2026-03-21 | Autoresearch validated 3 cron fixes but created MC task instead of applying them. | Rule: **Validated fix = apply immediately. `cron update` exists. Use it.** |
 | 2026-03-19 | Em dash in outreach DM draft despite explicit ban. | Rule: **Load cold-email/SKILL.md before drafting ANY outreach message. Skill file must be read, not assumed from memory.** |
 | 2026-03-19 | LinkedIn DMs drafted with 20-min call CTA and "I built X" in M1 — both explicitly banned in cold-email/SKILL.md. Root cause: drafted from session memory instead of loading the skill file. | Rule: **cold-email/SKILL.md must be loaded and rules checklist run against every draft before output. Memory of skill rules does not substitute for reading the file.** |
 | 2026-03-18 | Resume update delivered as uploaded markdown (.md) instead of formatted .docx. Job application skill explicitly says "NEVER write resume as markdown — always generate .docx using build_resume_docx.py." | Rule: **Job application output is always .docx via build_resume_docx.py. Uploading a .md to Drive = wrong. Read the skill and follow Step 4 immediately.** |
-| 2026-03-17 | Called `cron list` (all 35 jobs + full payloads) in active conversation to check ONE cron. Filled context window, caused overflow on every subsequent message including "are you there?" — forced gateway restart. | Rule: **NEVER call `cron list` in an active conversation.** To check one cron: use `cron runs --jobId [id]`. Full list loads 35 payloads and will overflow context. |
-| 2026-03-15 (2) | Ran `launchctl unload` twice mid-session — killed gateway both times. | Rule: LaunchAgent plist changes = warn JT gateway goes offline first. Never run `launchctl unload/load` silently mid-session. |

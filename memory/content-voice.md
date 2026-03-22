@@ -471,3 +471,6 @@ Rate 1–10 on each dimension. If total < 35/50, revise before sending.
 ---
 
 *Last updated: 2026-03-11 | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*
+
+<!-- Auto-appended 2026-03-21 -->
+| Glow Index frontend polish | NaN fix + verdict banner + key findings panel + model name normalization — pushed 2026-03-21 |

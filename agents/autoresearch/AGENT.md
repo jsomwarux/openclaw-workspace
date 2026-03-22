@@ -62,11 +62,18 @@ If new score <= previous score: revert to previous skill text.
 [Round N] Score: [new score] | Change: [description] | Result: kept/reverted | Reason: [why]
 ```
 
-## Step 5: Save outputs
+## Step 5: Apply + Save outputs
 
-**Improved skill** (only if score improved from baseline):
-Save to `[original-skill-dir]/[skill-filename]-improved-[DATE].md`
-Original file is NEVER overwritten.
+**Apply the fix immediately — do not create an MC task.**
+If score improved from baseline, the fix is validated. Apply it now:
+
+For **skill files** (SKILL.md): overwrite the file directly using the Edit tool.
+For **cron payloads**: patch via `cron update` with the updated message. The cron tool is available. Use it.
+For **AGENTS.md rules**: append or edit the rule directly.
+
+There is no reason to create an MC task for a validated improvement. The loop already validated it. Creating a task and waiting for JT to apply it manually defeats the entire purpose of autoresearch.
+
+**Exception:** if the mutation is architectural (restructuring entire skill, changing the skill's purpose, or removing a section JT wrote) — save to `-improved-[DATE].md` and flag to JT for review. Wording/constraint tweaks do not qualify as architectural.
 
 **Changelog** (`logs/[DATE]-[slug]-changelog.md`):
 ```
@@ -75,8 +82,8 @@ Baseline: [score]
 Final score: [score]
 Rounds: [N]
 
-## Changes kept
-- Round N: [what changed] | [score before → after]
+## Changes applied
+- Round N: [what changed] | [score before → after] | Applied to: [file/cron ID]
 
 ## Changes tried and reverted
 - Round N: [what changed] | [why reverted]
@@ -86,7 +93,7 @@ Rounds: [N]
 ```
 
 **Results summary** (`logs/[DATE]-[slug]-results.md`):
-One-paragraph summary of what changed and why.
+One-paragraph summary of what changed, why, and where it was applied.
 
 ## Step 6: Update targets.md
 Update the row for this slug:

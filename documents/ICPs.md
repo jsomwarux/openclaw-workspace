@@ -136,7 +136,9 @@ Mid-size insurance agencies or MGAs (Managing General Agents) with 20–200 empl
 - Compliance documentation is inconsistent
 
 **Why Agentforce fits:**
-Already on Salesforce = Agentforce is a natural extension, not a new tool. JT can build directly into their existing platform. No integration lift for the client.
+As of March 2026, Agentforce is bundled into Salesforce Suites for SMBs — meaning most targets in this ICP already have Agentforce access and don't know it. The pitch is NOT "should you use Agentforce" or "here's a new tool." The pitch is: "You're already paying for this. Let me activate it and configure it for your specific workflow." This is a fundamentally lower-friction sale — no new budget line, no new vendor approval. The client just needs someone to turn it on correctly.
+
+**Pricing angle (post-March 2026):** Salesforce's CFO has flagged that Agentforce token pricing will commoditize. Never compete on per-token cost. Position value on outcomes and time saved: "You don't pay me per API call. You pay me once for a system that handles X without a human rep touching it."
 
 **Budget:** $6,500–$15,000 for an Agentforce deployment. Larger than n8n engagements because of Salesforce complexity and enterprise context.
 

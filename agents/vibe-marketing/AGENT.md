@@ -670,6 +670,59 @@ curl -s -X POST http://localhost:3000/api/tasks \
 
 ---
 
+## Step 6b: SEO Candidacy Evaluation (runs once per product, when conditions are met)
+
+For each active product, check whether an SEO strategy is optimal. Run this check after content is queued but before state is updated.
+
+**Skip this step entirely for a product if** `state.json` already has `seo_evaluated: true` for that product slug — evaluation has already run, no need to repeat every week.
+
+**SEO candidacy criteria (score 1 point per Yes):**
+1. Does the product have a web app with indexable URLs? (not just App Store / mobile-only)
+2. Is there high search intent for the product's core content? (people actively Google "[topic] review", "[ingredient] worth it", "[product] score", "[category] comparison")
+3. Does each piece of the product's output naturally map to a standalone page? (a product score page, an ingredient page, a category ranking page)
+4. Is the product content evergreen? (rankings/reviews stay useful for months, not just 24 hours)
+5. Does the product serve a niche with high-value commercial intent? (consumers researching before spending money, not just casual browsing)
+
+**Decision rules:**
+- 5/5 → SEO is optimal. Push an MC task immediately and flag to JT.
+- 4/5 → SEO is worth designing. Push MC task, note the missing criterion.
+- 3/5 or below → SEO is not worth building yet. Log reason in state.json, skip.
+
+**When SEO is optimal (score ≥ 4), push this MC task:**
+```bash
+curl -s -X POST http://localhost:3000/api/tasks \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "title": "Design SEO pipeline for [Product Name] — auto-generate indexed pages",
+    "description": "SEO candidacy score: [X]/5. Criteria met: [list]. Missing: [list or none]. First step: audit the live web app structure and map which URLs exist. Strategy: auto-generate product pages, ingredient/topic pages, weekly best-of-category posts, JSON-LD schema markup, llms.txt. Target keywords: [2-3 specific examples based on product niche]. Activate after web app has indexable product URLs live.",
+    "status": "todo",
+    "priority": "medium",
+    "assignee": "eve",
+    "project": "passive-income",
+    "sortOrder": 525
+  }'
+```
+
+**Then include a one-line note in the Telegram summary:**
+`🔍 SEO: [Product Name] scored [X]/5 — [pushed task / not yet ready because X]`
+
+**After evaluation (pass or fail), update state.json:**
+```json
+"seo_evaluated": {
+  "[product_slug]": {
+    "score": 4,
+    "date": "YYYY-MM-DD",
+    "criteria_met": ["web app exists", "high search intent", "evergreen content", "commercial intent"],
+    "criteria_missing": ["standalone page mapping"],
+    "decision": "task_pushed"
+  }
+}
+```
+
+**Re-evaluation trigger:** If a product's `seo_evaluated` entry exists but `decision` is `"not_ready"`, re-run the check on the 1st Monday of each month (not every week). A product may become SEO-ready as the web app matures.
+
+---
+
 ## Step 7: Update state
 
 ```json
@@ -689,6 +742,15 @@ curl -s -X POST http://localhost:3000/api/tasks \
   "last_scene_concept": {
     "nash-satoshi": "[concept number used this week — e.g. 2]",
     "vista": "[concept number used this week — e.g. 3]"
+  },
+  "seo_evaluated": {
+    "[product_slug]": {
+      "score": 0,
+      "date": "YYYY-MM-DD",
+      "criteria_met": [],
+      "criteria_missing": [],
+      "decision": "not_ready|task_pushed"
+    }
   }
 }
 ```
