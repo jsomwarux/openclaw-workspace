@@ -1,91 +1,88 @@
 # Jon Trevor Somwaru
-New York City Metro Area | jtsomwaru@gmail.com | linkedin.com/in/jon-trevor-somwaru | github.com/jsomwarux
+New York City Metro Area
+jtsomwaru@gmail.com | linkedin.com/in/jon-trevor-somwaru | github.com/jsomwarux
 
 ---
 
-## AI Implementation Consultant / Solutions Architect
+## PROFESSIONAL SUMMARY
 
-Enterprise-focused AI consultant who bridges the gap between business operations and technology implementation. Specializes in architecting generative AI solutions, orchestrating multi-agent pipelines, and translating complex enterprise requirements into production-ready workflows. Background in large-scale technical operations at a Fortune 500 telecom (Spectrum Enterprise) now applied to leading clients through end-to-end AI transformation.
-
----
-
-## Core Competencies
-
-- **Enterprise Discovery & Solutioning** — multi-stakeholder requirements gathering, technical roadmap design, executive-level communication
-- **Generative AI Architecture** — LLM pipeline design, multi-agent orchestration, prompt engineering, RAG system design
-- **Workflow Automation** — n8n, Zapier-equivalent pipelines, API integration, automated data pipelines
-- **AI Tools & Platforms** — OpenAI, Anthropic Claude, LangChain, LlamaIndex, Cursor, Replit
-- **Data & Scripting** — Python (automation scripts, data pipelines, health/cost tracking systems), SQL, Google Sheets API
-- **Cross-Functional Collaboration** — product catalog systems, CRM operations, cross-team technical coordination
+Solutions Architect with 6 years of enterprise systems experience in generative AI architecture, multi-LLM orchestration, and technical discovery with enterprise stakeholders. Currently operating 35 autonomous AI agents in production, including AgentGuard, a confidence-gated governance layer with automated routing at a 70% confidence threshold and a full EEOC-compliant audit trail. Specialist in Agentforce full lifecycle deployment, RAG pipeline design, and translating Fortune 500-scale requirements into production-ready generative AI architectures. Applying to Writer to bridge the gap between Palmyra and Knowledge Graph adoption and enterprise-scale generative AI deployment.
 
 ---
 
-## Experience
+## SKILLS
 
-### Founder & AI Implementation Consultant
-**Opticfy** — New York, NY | 2025–Present
+**AI and Agents:** Multi-LLM orchestration, RAG pipeline design, prompt engineering, autonomous agents, agent governance, confidence scoring, human-in-the-loop, Claude API, GPT-4o, Gemini, LLM evaluation
 
-NYC-based AI consulting agency delivering generative AI implementations for enterprise-adjacent clients. Work spans full-cycle solutioning: discovery, architecture design, build, and delivery.
+**Salesforce/Agentforce:** Agentforce, Agent Builder, Topics and Actions, ConversationFirst methodology, channel deployment, full lifecycle deployment, Flow Builder, Service Cloud
 
-- **Architected and delivered a $1,500 operational intelligence dashboard** for Aya (NYC construction firm), integrating real-time data pipelines and automated reporting to replace manual workflows across project management and finance teams
-- **Delivered a $1,000 automated property intelligence system** (StreetEasy scraper + analysis pipeline) enabling Aya to surface acquisition targets from live market data — replaced a fully manual research process
-- **Designed and built multi-LLM orchestration systems** leveraging OpenAI, Anthropic, and open-source models in parallel; architected consensus-scoring layers to improve output reliability across agent pipelines
-- **Led end-to-end technical discovery** with client stakeholders: scoped requirements, translated operational pain points into AI solution architectures, and presented technical roadmaps to non-technical decision-makers
-- **Built n8n-based automation pipelines** for research, outreach, and data enrichment — reducing client operational overhead through multi-step workflow automation
-- **Developed Python-based tooling** including automated cost tracking systems, health data pipelines, and API integration scripts used in production across client deliverables
+**Workflow Automation:** n8n, webhook architecture, API integration, autonomous agent pipelines, model routing, cost controls
+
+**Enterprise Delivery:** Technical discovery, requirements gathering, executive communication, cross-functional coordination, stakeholder alignment, implementation project management
+
+**Enablement:** Technical training design, adoption frameworks, workshop facilitation, playbook development, AI change management
+
+---
+
+## EXPERIENCE
+
+### Founder and AI Implementation Consultant
+**Opticfy**, New York, NY, 2025–Present
+
+NYC-based AI consulting delivering full-cycle generative AI implementations: discovery, architecture, build, and deployment for enterprise-adjacent clients.
+
+- Architected and deployed AgentGuard, a confidence-gated AI governance layer with automated routing at a 70% confidence threshold, a human review queue for below-threshold decisions, and a full EEOC-compliant audit trail. Live at agentguard-delta.vercel.app
+- Built and operate 35 autonomous cron jobs in production covering prospect research, content generation, outreach pipelines, market intelligence, and cost monitoring, with watchdog processes, multi-model routing, and automated cost controls
+- Delivered a $1,500 operational intelligence dashboard for Aya (NYC construction firm), integrating real-time data pipelines across project management and finance teams to replace manual workflows. Client commissioned $3,500 in follow-on projects immediately after delivery
+- Delivered a $1,000 automated property intelligence system for Aya, scraping live StreetEasy market data and surfacing acquisition targets, replacing a fully manual research process
+- Managed Agentforce full lifecycle across client implementations: Agent Builder configuration, topic and action design, channel deployment, and runtime governance using the ConversationFirst methodology
+- Architected multi-LLM orchestration systems combining Claude, GPT-4o, and Gemini in parallel with a consensus-scoring layer to improve output reliability for high-stakes business decisions
+- Led end-to-end technical discovery with enterprise-adjacent stakeholders: scoped requirements, translated operational pain points into generative AI architectures, and presented technical roadmaps to non-technical decision-makers
+- Built n8n-based automation pipelines for research, outreach, and data enrichment, reducing client operational overhead through multi-step workflow automation integrating webhooks, APIs, and Google Sheets
 
 ---
 
 ### Business Systems Analyst
-**Spectrum Enterprise / Charter Communications** — New York, NY | 2019–2025
+**Spectrum Enterprise / Charter Communications**, New York, NY, 2019–2025
 
-Enterprise division of one of the largest US telecoms ($52B revenue). Served as technical and operational bridge between product, engineering, sales, and operations teams across large-scale system implementations.
+Enterprise division of one of the largest US telecoms ($52B revenue). Served as the technical and operational bridge between product, engineering, sales, and operations teams across large-scale system implementations.
 
-- **Led product catalog configuration** for Spectrum Enterprise's commercial service portfolio — managed complex SKU structures, pricing logic, and system data integrity across CRM and billing platforms
-- **Drove cross-functional implementations** coordinating 5+ internal teams (product, engineering, sales ops, finance, customer ops) through system rollouts affecting thousands of enterprise accounts
-- **Translated complex technical requirements** from engineering teams into actionable processes for non-technical stakeholders — a core capability now applied directly to AI solutioning
-- **Managed system data quality** across enterprise CRM and billing platforms, designing QA processes that reduced configuration errors by significant margins on high-volume product launches
-- **Supported enterprise sales cycles** by providing technical product expertise to sales teams during Fortune 500 client engagements — developed fluency in discovery, scoping, and stakeholder management at enterprise scale
-- **Documented and maintained operational SOPs** for product systems used by 200+ internal users, reducing onboarding time and support escalations
-
----
-
-### Founder
-**Nash Satoshi** — 2023–Present *(Side Project)*
-
-Crypto intelligence platform featuring multi-agent orchestration architecture.
-
-- Designed and built a **multi-agent system with consensus scoring** — multiple independent LLM agents evaluate the same market signal, with a scoring layer that weights and reconciles divergent outputs before surfacing a final recommendation
-- Architected the full technical stack: data ingestion, agent pipeline, consensus engine, and user-facing interface
-- Demonstrates applied expertise in agent orchestration patterns directly applicable to enterprise AI solutioning
+- Led product catalog configuration for Spectrum Enterprise's commercial service portfolio, managing complex SKU structures, pricing logic, and system data integrity across CRM and billing platforms serving Fortune 500 accounts
+- Coordinated 5-plus internal teams (product, engineering, sales ops, finance, customer ops) through system rollouts affecting thousands of enterprise accounts
+- Translated complex technical requirements from engineering teams into actionable processes for non-technical stakeholders, a core capability now applied directly to generative AI solutioning at enterprise scale
+- Designed QA processes for enterprise CRM and billing platforms, reducing configuration errors on high-volume product launches
+- Delivered technical product expertise to sales teams during Fortune 500 client engagements, developing direct fluency in discovery, scoping, and stakeholder management at enterprise scale
+- Documented and maintained operational SOPs for product systems used by 200-plus internal users, reducing onboarding time and support escalations
 
 ---
 
-### Founder
-**Glow Index** — 2024–Present *(Side Project)*
+## KEY PROJECTS
 
-AI-assisted skincare product ranking platform demonstrating applied LLM + structured data work.
+**AgentGuard** (Live: agentguard-delta.vercel.app): Confidence-gated AI governance layer with automated routing at a 70% threshold, human review queue for below-threshold decisions, and a full EEOC-compliant audit trail. Designed for enterprise-grade oversight of autonomous AI decisions.
 
----
+**Nash Satoshi** (Production): Crypto intelligence platform built on a 4-LLM ensemble architecture (Claude, GPT-4o, Gemini, Grok). Independent agents evaluate the same market signal; a consensus-scoring layer reconciles divergent outputs before surfacing a final recommendation. Applied expertise in multi-agent orchestration and AI outcome management.
 
-## Education
+**PM Maintenance Triage** (Live: jtsomwaru.com): Agentforce agent for property management tenant service, handling intake, triage, and routing for maintenance requests with full fallback and escalation logic built on the ConversationFirst framework.
 
-**Ithaca College** — Ithaca, NY
-Bachelor of Science, Sport Management | Minor, Legal Studies | 2018
+**Construction Intelligence Dashboard** (Delivered, $1,500): React/TypeScript operational dashboard for Aya (NYC construction firm), integrating real-time project and finance data across 8 operational views. Client commissioned $3,500 in follow-on projects immediately after launch.
 
 ---
 
-## Technical Stack
+## EDUCATION
 
-| Category | Tools |
-|---|---|
-| AI/LLM | OpenAI GPT-4o, Anthropic Claude, LlamaIndex, LangChain |
-| Orchestration | Multi-agent pipelines, n8n, custom LLM routing layers |
-| Scripting/Automation | Python (automation, data pipelines, API integrations), Bash |
-| Data | SQL, Google Sheets API, SQLite, Convex |
-| Dev Tools | Cursor, Replit, GitHub, Vercel |
-| Platforms | Salesforce (CRM operations), Google Workspace, Notion |
+**Ithaca College**, Ithaca, NY
+Bachelor of Science, Sport Management. Minor, Legal Studies. 2018
 
 ---
 
-*Python note: Actively deepening Python proficiency — current production use includes automation scripts, data pipelines, cost tracking systems, and API integrations. Architect and scope solutions; partner with engineers for production-scale deployment.*
+## TECHNICAL STACK
+
+**AI/LLM:** Claude, GPT-4o, Gemini, Multi-LLM orchestration, RAG pipeline design, prompt engineering, LLM evaluation
+
+**Agentforce:** Agent Builder, Topics and Actions, ConversationFirst methodology, channel deployment, full lifecycle deployment
+
+**Orchestration and Automation:** n8n, webhook architecture, API integration, autonomous agent pipelines, model routing, cost controls
+
+**Data and Development:** Python (automation, data pipelines, API integrations), SQL, SQLite, Google Sheets API, GitHub, Vercel, Convex
+
+**Platforms:** Salesforce (CRM operations, Agentforce), Cursor, Replit, Google Workspace

@@ -69,3 +69,19 @@
 **Demonstrates:** FastAPI backend, multi-LLM ensemble architecture, real-time data collection pipeline, full-stack web app
 **Content angle:** "Rebuilt a skincare rankings app to pull real product data and run it through 4 different AI models simultaneously. Each model scores independently — the verdict is the consensus."
 **Status:** complete (n8n import + ngrok pending)
+
+## PM Maintenance Request Triage (n8n)
+- **Date added to site:** 2026-03-22
+- **What it is:** n8n workflow — tenant submits maintenance request, Claude classifies urgency + category, routes to right vendor, auto-notifies tenant, escalates if vendor goes quiet
+- **Demo value:** "The property manager only gets involved when a vendor goes quiet. Everything else runs without them."
+- **Stack:** n8n, Claude API, Google Sheets, Webhook
+- **Status:** Configurable template, live on jtsomwaru.com
+- **URL:** jtsomwaru.com/work/pm-maintenance-triage
+- **Content hook:** Exit condition design — when does automation hand off to a human?
+
+## Mission Control Systems Tab — 2026-03-22
+**What:** New Systems tab in Mission Control dashboard (localhost:3000/systems) with 8 flow diagrams and dark/light mode toggle
+**For:** Internal ops tooling (Mission Control dashboard)
+**Outcome:** Visual architecture overview of Eve's 8 core operational systems — accessible at /systems
+**Demonstrates:** Next.js dashboard development, flow diagram rendering, dark/light theming
+**Status:** complete (internal build — no demo value, skip portfolio)

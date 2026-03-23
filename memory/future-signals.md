@@ -23,6 +23,13 @@
 - **Logged:** 2026-03-20
 - **Potential value:** Closes the self-improvement loop gap. Competitor hook analysis feeds directly into weekly content generation.
 
+### Creator Briefing System — Daily Angles for Hired Creators
+- **What:** When JT hires UGC creators for Nash Satoshi or Vista, the vibe marketing system shifts from weekly batch generation to daily micro-ideas. Each creator gets a short daily brief: trending hook, suggested angle for the day, ICP framing. ViewTrack API feeds hook performance data back into the brief generator so it learns what converts.
+- **Why deferred:** No creators hired yet. No point building a daily briefing pipeline with no recipients.
+- **Trigger:** JT hires first UGC creator for Nash Satoshi or Vista. At that point: (1) shift vibe-marketing agent from weekly to daily, (2) wire ViewTrack API (see ViewTrack signal), (3) create a daily creator-brief cron that generates 3 hook angles per product per day and sends to creator.
+- **Logged:** 2026-03-22
+- **Potential value:** Closes the feedback loop between what's posted and what's generated next. Enables compound improvement — each week's content is better than the last because it's built on real performance data, not assumptions.
+
 ### DGX Spark — Personal Model Fine-Tuning
 - **What:** NVIDIA DGX Spark (~$3-5K) enables local model training/fine-tuning on personal content. Technique: fine-tune on business data, synthetic data generation via distillation (e.g. Qwen 3.5), autonomous self-improvement loops (Karpathy autoresearch repo).
 - **Why deferred:** No compatible hardware (Mac mini). JT isn't a developer — executing this correctly requires ML depth. Current stack generating revenue, no need to pivot.
@@ -183,3 +190,15 @@
 - **Why deferred:** No active scraping gap. Current stack (Cloudflare /crawl + Firecrawl + Scrapling) covers all current use cases. Research-agent has zero Firecrawl code. Nash Satoshi staying on Gumloop.
 - **Trigger:** Activate when EITHER: (1) research-agent or Nash Satoshi pipeline is actively getting blocked by bot protection on sites Firecrawl misses, OR (2) outreach volume hits 50+ prospects/week and LinkedIn manual contact search is a bottleneck
 - **Date deferred:** 2026-03-21
+
+## UI UX Pro Max skill (Claude Code)
+- **What:** Design skill for Claude Code — generates polished UI components, not "AI slop" aesthetics. Real design systems, bold typography.
+- **Why deferred:** Current UI work on jtsomwaru.com is maintenance-level. Not doing intensive component design right now.
+- **Trigger:** Starting a new client dashboard build OR jtsomwaru.com v2 redesign. Install at: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+- Added: 2026-03-22
+
+## LightRAG (graph + vector hybrid RAG)
+- **What:** Hybrid retrieval combining knowledge graphs with vector search. Significantly better than naive chunking for large, interconnected knowledge bases (catalogs, policy docs, multi-entity data).
+- **Why deferred:** No RAG deployment currently at scale. H.C. Oswald Cloudflare /crawl ingestion is the candidate but hasn't started.
+- **Trigger:** Any client RAG ingestion project with >5k documents OR H.C. Oswald catalog ingestion begins. Repo: https://github.com/hkuds/lightrag
+- Added: 2026-03-22

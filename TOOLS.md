@@ -123,7 +123,10 @@ Replace `<TOKEN>` with the bot token from `~/.config/env/global.env`.
 - Next.js at http://localhost:3000 | Convex at port 3210
 - LaunchAgents: com.openclaw.mission-control-convex + com.openclaw.mission-control-next
 - Task API: `POST http://localhost:3000/api/tasks`
+- **Remote access (laptop/phone):** `https://jts-mac-mini.tailaf2fd2.ts.net` — tailnet only, requires Tailscale connected
+- **n8n remote:** `https://jts-mac-mini.tailaf2fd2.ts.net/n8n`
 - **Recovery** (if board unreachable): `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-convex && launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next` — do NOT just log "may be down"; attempt kickstart immediately
+- **Tailscale serve config** (if lost after reboot): `tailscale serve --bg http://localhost:3000 && tailscale serve --bg --set-path /n8n http://localhost:5678`
 
 ## Claude Code Agent Personas (~/.claude/agents/)
 Installed on Mac mini from github.com/msitarzewski/agency-agents. Available to all ACP sessions spawned via sessions_spawn.

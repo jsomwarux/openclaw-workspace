@@ -55,9 +55,18 @@ Rule: if the decision happened and MEMORY.md doesn't reflect it yet, MEMORY.md i
 
 ## Resume & Cover Letter Drive Upload Rule
 Whenever a resume or cover letter is generated (for any job application):
-1. Upload immediately to Google Drive: `cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py --title "[Company] — [Doc Type]" --path "Job Applications/Resumes" --file "[path]"` (use --path "Job Applications/Cover Letters" for cover letters)
-2. Include the Drive link in the reply to JT alongside the document summary
-3. Both resume AND cover letter must be uploaded if both are generated
+1. **Write the resume to `memory/drafts/[company-slug]-resume.md` and cover letter to `memory/drafts/[company-slug]-cover-letter.md`** — these are the source of truth.
+2. **Build .docx by passing the markdown files directly to the script** (NEVER rely on hardcoded content):
+   ```
+   mkdir -p /tmp/resume-out && cd ~/.openclaw/workspace && python3 scripts/build_resume_docx.py \
+     --type both --output-dir /tmp/resume-out \
+     --resume-md memory/drafts/[company-slug]-resume.md \
+     --cover-letter-md memory/drafts/[company-slug]-cover-letter.md
+   ```
+3. Upload the .docx to Google Drive: `python3 scripts/drive_drafts.py --title "[Company] — Resume" --path "Job Applications/Resumes" --file /tmp/resume-out/jt-somwaru-resume.docx`
+4. Include the Drive link in the reply to JT.
+5. Both resume AND cover letter must be uploaded if both are generated.
+6. **Never skip `--resume-md` and `--cover-letter-md`.** Calling the script without these flags = hardcoded fallback content = wrong version goes to Drive. Always pass the md files.
 
 ## Portfolio Auto-Update Rule
 Trigger: build completed, JT says done/shipped/live, MC task marked done, consulting project stage complete, new skill/capability added.
@@ -92,41 +101,20 @@ Every task pushed to Mission Control must include a description with:
 
 No task description should just restate the title. If you can't write a concrete first action, the task isn't ready to be created yet — flag it to JT instead.
 
-## Task Board Continuous Priority Rule (standing — always enforced)
-The task board must reflect JT's actual priority order at all times. Apply these checks whenever adding OR reviewing tasks:
+## Task Board Rules (single source of truth)
+Everything JT needs to do must be on the board. Overnight items, decisions, portfolio approvals, JT manual steps → all pushed as 🌙 HIGH tasks (sortOrder 3–9) before logging. No action item lives only in Telegram/MEMORY.md/a log. De-dupe before pushing.
 
-**Consulting first.** Any unblocked consulting task (pitch decks, T2 templates, outreach steps, client deliverables) → HIGH priority, sortOrder 10-60.
-**Job apps run in parallel** at 2-3/week as financial hedge. Threshold: **20+/25** with hard filters: no hands-on coding as primary function, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement. Job-related tasks → medium, sortOrder 300+. **Exception: if resume + cover letter are already built and the only remaining step is submitting → HIGH, sortOrder 10-40.** Ready-to-submit is a quick win, not a background task.
-**Time-sensitive live products** (app is live, outreach is warm, deadline within 7 days) → HIGH, sortOrder 10-20.
-**Speculative / "Build idea:" tasks** → always medium, sortOrder 500+. Never HIGH unless client request makes it immediately actionable.
-**Passive habits** (Reddit karma, daily study) → medium, sortOrder 200+. Not urgent actions.
-**Tasks with no sortOrder** → assign one on creation. Invisible tasks don't get done.
+Any build/skill/project recommendation MUST be pushed to MC immediately — never surface without pushing. Check duplicates first (substring match on title).
 
-Trigger: whenever Eve adds a new task OR JT asks "are my tasks prioritized?" → run a quick board audit against these rules and fix any misalignments in the same turn.
+**Priority:**
+- **HIGH** — actionable now: consulting deliverables, job apps with open deadlines, demo builds, 🔴/🟠 alerts (act within 48h), ready-to-submit applications → sortOrder 10-40 quick wins | 50-90 alerts | 100+ strategic
+- **MEDIUM** — blocked/speculative: "Build idea:" tasks (always medium default), blocked/waiting tasks, internal refactors → sortOrder 300+; speculative → 500+
+- **LOW** — nice-to-have, stalled, far-future
 
-## Task Board Is the Single Source of Truth
-Everything JT needs to do must be on the board. Overnight items, decision questions, portfolio approvals, JT manual steps → all pushed as 🌙 HIGH tasks before logging. No action item lives only in Telegram/MEMORY.md/a log. 🌙 tasks use sortOrder 3–9. De-dupe before pushing.
-
-## Mission Control Task Board Rule
-Any recommendation for a new build, skill demo, or project \u2014 whether from job market analysis, skills researcher, niche monitor, morning brief, or ad hoc analysis \u2014 MUST be pushed to Mission Control immediately:
-```
-curl -s -X POST http://localhost:3000/api/tasks \
-  -H 'Content-Type: application/json' \
-  -d '{"title":"Build idea: [NAME] \u2014 [what it demonstrates]","description":"[detail]","status":"todo","priority":"medium","sortOrder":500,"assignee":"eve","project":"Job Market"}'
-```
-Check for duplicates first (substring match on title). Never surface a build recommendation in a message without also pushing it to the task board.
-
-## Task Priority Rules (dependency-aware)
-When adding OR updating any task, apply these rules before setting priority:
-
-**HIGH** — actionable now, no blockers: active client deliverables, job apps with open deadlines, Agentforce/demo builds, 🔴/🟠 alerts (act within 48h), content ready to post.
-**MEDIUM** — blocked, speculative, or not immediately actionable: "blocked/waiting/after X" tasks, "Build idea:" tasks (default medium), outreach where demo/site dep isn't done, internal refactors.
-**LOW** — nice-to-have, far-future: apps with no active marketing, experimental crons, stalled client work.
-
-**Dependency rule:** If B is "blocked by" or "after" A, and A is not done → B's priority ≤ A's priority.
-**"Build idea:" rule:** Always default `medium`. Promote to `high` only if client request or job market signal makes it immediately actionable.
-**Unblocking rule:** When marking a task `done`, bump tasks it unblocks to `high`.
-**sortOrder:** Full bands in TOOLS.md. Quick ref: HIGH 10-40 quick wins | 50-90 alerts | 100+ strategic/builds | 500+ speculative. Always include `"sortOrder": N` in POST body.
+**Standing priority order:** Consulting first → job apps (2-3/week, 20+/25 threshold, no coding/SE/Python-hard-req roles) → time-sensitive live products → speculative builds → passive habits.
+**Dependency rule:** If B is after A and A is not done → B's priority ≤ A's priority.
+**Unblocking rule:** When marking done, bump unblocked tasks to high.
+**Audit trigger:** Eve adds a task OR JT asks "are my tasks prioritized?" → quick board audit + fix misalignments same turn.
 
 ## Workflow Rules
 - Done: 1–2 line confirmation + what's next
@@ -164,12 +152,28 @@ Projects that qualify: client deliverables, jtsomwaru-com, agentforce-agent, any
 Update CLAUDE.md files immediately (same session) when: new tool/skill/plugin installed, project status changes, strategy/pricing decision made, new agent/cron built, any hard constraint decided. Don't wait for JT to notice drift.
 Files: `~/.claude/CLAUDE.md` (global) | `~/projects/jtsomwaru-com/CLAUDE.md` | `~/projects/agentforce-agent/CLAUDE.md` | any active project-level CLAUDE.md.
 
+## "Posted" Reply Handler (mandatory)
+When JT replies "posted", "posted both", or any variant confirming he posted content to X or LinkedIn:
+1. Identify which post(s) from the most recent content-reminder or content-sunday send were posted
+2. Update `~/.openclaw/workspace/memory/content/posted-log.jsonl` immediately — find the matching entries and set `"posted": true` and add `"posted_date": "YYYY-MM-DD"`
+3. If JT specifies which platform ("posted LinkedIn" / "posted X"), mark only that entry; if "posted both", mark both
+4. Confirm back: "Logged ✅ — [Monday X / Tuesday LinkedIn / etc.] marked posted."
+This is how the log stays accurate. Without it, everything shows posted=false forever.
+
+## Outreach Status Tracking Rule (mandatory)
+When JT says he sent an outreach message, connection request, or follow-up to ANY prospect — update the corresponding `outreach-draft.md` and shortlist file in the same turn, immediately. Do NOT defer.
+- Mark the status line with what was sent, the date, and the next window
+- Update the shortlist's contact line with current M-status and next action
+- The MC task board is NOT a substitute — those are to-dos, not outreach history. The pipeline files are the source of truth.
+- If JT marks a task Done on Mission Control without telling Eve, Eve will NOT automatically know to update the pipeline files. JT should still notify directly ("sent M2 to X") for accurate tracking.
+
 ## Proactive Task Closure Rule
 When any tool call, check, or verification confirms that something is already done (version installed, feature live, task complete, URL fixed, etc.) — mark the corresponding Mission Control task as done immediately in the same turn. Do not wait for JT to point it out. "I confirmed X is done" without closing the task is incomplete work.
 
 ## Validated Fix = Apply Immediately Rule
-Autoresearch, film review, cron health audit — if the run validates a fix, apply it in the same run. Cron payloads → `cron update`. Skill files → edit directly. Creating an MC task for a fix the agent already knows how to make = deferral, not completion.
+Autoresearch, film review, cron health audit — if the run validates a fix, apply it in the same run. Cron payloads → `cron update` (use the cron tool's update action with the jobId and patch). Skill files → edit directly. Creating an MC task for a fix the agent already knows how to make = deferral, not completion.
 Exception: architectural changes (restructuring a skill's purpose, removing JT-authored sections) → save separately and flag.
+**Autoresearch specific:** When autoresearch identifies rule violations in a cron payload and recommends fixes, those fixes must be patched into the cron immediately via `cron update` in the same session. "Logged as recommendations" is not the same as applied. A result file with improvement recommendations that were not applied = incomplete autoresearch run.
 
 ## Niche Intel Propagation Rule
 🟠+ signals in `niche-monitor-latest.md` that change pitch angle or ICP criteria MUST update `documents/ICPs.md` and `skills/cold-email/SKILL.md` before next outreach batch. Surfacing in morning brief ≠ handled. Overnight agent runs this check every night (Step 1).
@@ -339,54 +343,14 @@ Before starting work on ANY project that has a `lessons.md` or `CLAUDE.md` file:
 - Any project with a lessons file in its root or tasks/ folder
 Rule: if a lessons file exists for the project, it must be read. Building without reading = guaranteed repeat of already-solved problems.
 
-## Staff Engineer Bar (code quality gate)
-Before presenting any code output, implementation, or architecture decision: ask "Would a staff engineer approve this?"
-Checklist:
-- Is there a simpler way to accomplish the same outcome?
-- Are error states handled (not just the happy path)?
-- Will this break when inputs are unexpected or empty?
-- Is this hardcoded where it should be dynamic?
-- Is this duplicating something that already exists in the codebase?
-If any answer is unfavorable: fix before delivering. Do not present first drafts as final unless they pass this bar.
-
-## Pre-Execution Plan File Rule
-For any coding task or multi-step build: before writing a single line of code, create a `tasks/todo.md` in the project root with a checklist of steps. Format:
-```
-## Plan — [task name] — [date]
-- [ ] Step 1: [specific action]
-- [ ] Step 2: [specific action]
-...
-```
-Check off steps as they complete (`- [x]`). If something breaks mid-task: update the plan, STOP, re-plan. The plan file is the source of truth for what's done and what's next.
-Exception: one-liner fixes or single-file edits don't need a plan file.
-
-## n8n Build Rule
-**Before** ANY n8n workflow build: read `~/projects/n8n-agent/tasks/lessons.md` in full. No exceptions. Building without reading lessons first = guaranteed repeat failures on already-solved problems.
-
-**How to build:** Always spawn the Claude Code ACP agent (`sessions_spawn` runtime="acp", workdir=`~/projects/n8n-agent`). Do NOT build n8n workflows via exec/Python scripts directly — the ACP agent reads CLAUDE.md (which enforces lessons.md read at session start). If Eve must build directly for any reason, she must read lessons.md herself before writing a single node.
-
-**Task prompt when spawning:** must include `"Read tasks/lessons.md in full before starting. Apply all relevant lessons."`
-
-After EVERY n8n workflow build, update `~/projects/n8n-agent/tasks/lessons.md` with lessons learned before the session ends. Format: `[client-name/workflow-name]: lesson`. Then `git add tasks/lessons.md && git commit -m "Update lessons.md — [workflow-name]"`. No exceptions — a build without a lessons update is incomplete.
-
-## Agentforce Build Rules
-- Sync is live: `jsomwarux/agentforce-agent` → `~/projects/agentforce-agent`
-- Before ANY Agentforce work: `cd ~/projects/agentforce-agent && git pull origin main`
-- After ANY Agentforce work: `git add . && git commit -m "..." && git push origin main`
-- Overnight builds are allowed — pull first, push after, every time
-
-## n8n Demo Close-Out Checklist
-Not done until: (1) workflow JSON saved (2) git commit + push (3) lessons.md updated (4) MC task done (5) daily note updated (6) portfolio queue entry added (7) JT manual steps → 🌙 HIGH MC task.
-
-## Agentforce Site Rules (still enforced)
-- B2B Account Service Agent: permanently banned from jtsomwaru.com (JT decided 2026-03-06). Do not add it.
-
-Separately: NEVER add anything to jtsomwaru.com that is not:
-- Fully built (deployed and functional, not scaffolded)
-- Fully tested (passing test suite or manually verified)
-- Explicitly approved by JT for the site
-
-Adding unbuilt/untested work to the portfolio site misrepresents JT's capabilities. This is a trust violation.
+## Build & Code Protocols
+Full detail: `docs/agents/workflow-protocols.md` — read before any coding task, n8n build, or Agentforce work.
+- **Staff Engineer Bar:** before delivering any code/architecture: simpler way? error states? hardcoded? duplicated? Fix before presenting.
+- **Plan file:** coding tasks → create `tasks/todo.md` checklist before first line of code. Exception: one-liner fixes.
+- **n8n:** read `lessons.md` first. Always spawn Claude Code ACP agent. Update lessons.md after every build.
+- **n8n close-out:** workflow JSON + git push + lessons updated + MC done + daily note + portfolio queue + 🌙 task for JT steps.
+- **Agentforce:** `git pull origin main` before. `git push` after. Overnight builds allowed.
+- **Site rule:** B2B Account Service Agent permanently banned. Never add unbuilt/untested work to jtsomwaru.com.
 
 ## Mistakes Log
 Full archive: docs/agents/mistakes-log.md — read it before claiming "this is new."

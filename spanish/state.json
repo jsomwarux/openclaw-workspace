@@ -2,18 +2,23 @@
   "level": "A1+",
   "level_description": "High Beginner \u2014 dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
-  "current_week": 3,
-  "current_day": 18,
+  "current_week": 4,
+  "current_day": 19,
   "lesson_streak": 13,
   "longest_streak": 13,
-  "last_lesson_date": "2026-03-21",
+  "last_lesson_date": "2026-03-22",
   "last_lesson_complete": true,
-  "total_lessons_completed": 3,
+  "total_lessons_completed": 4,
   "weekly_scores": [
     {
       "week": 2,
       "grade": "B+",
       "date": "2026-03-16"
+    },
+    {
+      "week": 3,
+      "grade": "B+",
+      "date": "2026-03-22"
     }
   ],
   "real_world_challenges_unlocked": 2,
@@ -30,7 +35,9 @@
     "focus": "speaking and listening, not writing"
   },
   "weak_areas": [
-    "ver vs vivir (confusing to see vs to live)"
+    "conocer vs saber (mixing up)",
+    "no problemo habit",
+    "e/y confusion (Italian vs Spanish)"
   ],
   "strong_areas": [
     "basic greetings",

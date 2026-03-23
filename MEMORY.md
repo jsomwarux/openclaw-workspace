@@ -80,7 +80,7 @@
 - SOUL.md updated: critic mode activated on /critic or soft-signal detection
 
 ## Active Apps
-- AgentGuard: AI governance layer — **LIVE at https://agentguard-delta.vercel.app** (March 2026). Confidence scoring + human-in-the-loop + audit log + explainability report. Insurance claims triage demo. Portfolio card on jtsomwaru.com.
+- AgentGuard: AI governance layer — **LIVE at https://agentguard-delta.vercel.app** (March 2026). Confidence scoring + human-in-the-loop + audit log + explainability report. Insurance claims triage demo. **Portfolio card on jtsomwaru.com ✅ (confirmed live 2026-03-22).**
 - Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
 - Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private). **Analysis pipeline: PERMANENTLY on Gumloop. Do NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly says so.**
 - Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL
@@ -94,7 +94,7 @@
 - ⚠️ Squarespace People AI SA (19/25, $126–180K hybrid NYC) — posted Feb 21, likely expired. Verify before applying.
 - ~~Salesforce Lead Agentforce SE~~ — PASSED 2026-03-18. Role required deep technical Agentforce conversations JT isn't comfortable with yet. His Agentforce capability is agent-configured, not hands-on. **Hard rule going forward: do not recommend roles where core responsibility is explaining or defending Agentforce internals to technical audiences.**
 - ~~🟠 Salesforce Agentforce/AI Deployment Strategist (20/25, $140K–$185K)~~ — EXPIRED/REMOVED 2026-03-19. JR305206 returns 404 on both Salesforce Careers and Workday. Do not resurface.
-- 🟠 Salesforce Sr. Supply Chain Strategist (21/25, $180K–$298K) — vet domain requirement first
+- ~~Salesforce Sr. Supply Chain Strategist~~ — REMOVED 2026-03-22. Domain requirement is a hard disqualifier (requires actual supply chain ops expertise, not just Agentforce). Score corrected to 11/25.
 - 🟠 Writer SA East (20/25, $207K–$250K hybrid NYC) — Python gap, still worth applying. Docs: memory/drafts/writer-sa-resume.md + writer-sa-cover-letter.md
 - ⛔ OpenAI AI Deployment Engineer (18/25, NYC hybrid) — evaluated 2026-03-18, skipped. Python/JS proficiency + infra ownership required explicitly. Below 24+ threshold.
 - Skill gaps (active): AWS Bedrock, LangChain, Copilot Studio, Conversation Design (partially closed — ConversationFirst framework built)
@@ -115,7 +115,7 @@
   - Queue: `agents/vibe-marketing/queue.jsonl` | State: `agents/vibe-marketing/state.json`
   - Cron: Monday 4:45AM ET (UUID: 870bf3ff-55c9-49c0-9970-361c81a0920b) | isolated sonnet | 720s
   - Active products: Nash Satoshi + Vista (Glow Index pending n8n/ngrok)
-  - Nash Satoshi: nashsatoshi.com | X: @NashSatoshi | TikTok: @NashSatoshi (dedicated — create + 3-day warmup before first post) | Reddit: community account (needs karma build) | **Analysis pipeline: PERMANENTLY on Gumloop (hard rule — no n8n changes unless JT explicitly requests)**
+  - Nash Satoshi: nashsatoshi.com | X: @NashSatoshi | TikTok: @NashSatoshi (created 2026-03-20, warmup in progress — first post eligible after Monday 4:45AM vibe marketing cron) | Reddit: community account (needs karma build) | **Analysis pipeline: PERMANENTLY on Gumloop (hard rule — no n8n changes unless JT explicitly requests)**
   - Vista: App Store | X: @jts_14 | TikTok: @jts_14 | Reddit: JT's personal account (needs karma build)
   - Glow Index: TikTok dedicated account required when activated (skincare niche ≠ JT's audience)
   - TikTok routing rule: niche-specific products (crypto, skincare, etc.) → dedicated account. Builder/dev/AI products → @jts_14

@@ -247,7 +247,206 @@ def add_builds_table(doc, builds):
             run.font.color.rgb = BLACK
 
 
-def build_resume(output_path):
+def parse_resume_md(md_path):
+    """
+    Parse a structured resume .md file into sections.
+    Expected headings: PROFESSIONAL SUMMARY, SKILLS, EXPERIENCE, KEY PROJECTS, EDUCATION, TECHNICAL STACK
+    Returns a dict with parsed content.
+    """
+    import re
+
+    with open(md_path) as f:
+        raw = f.read()
+
+    lines = raw.splitlines()
+    data = {
+        'name': '',
+        'contact': '',
+        'summary': '',
+        'skills': [],       # list of (category, text)
+        'experience': [],   # list of {title, company, location, dates, blurb, bullets}
+        'projects': [],     # list of (name, description)
+        'education': [],    # list of lines
+        'tech_stack': [],   # list of (category, text)
+    }
+
+    # Name = first H1
+    for line in lines:
+        if line.startswith('# '):
+            data['name'] = line[2:].strip()
+            break
+
+    # Contact = second non-empty line after name
+    found_name = False
+    for line in lines:
+        if line.startswith('# '):
+            found_name = True
+            continue
+        if found_name and line.strip():
+            data['contact'] = line.strip()
+            break
+
+    # Parse sections by H2 headings
+    current_section = None
+    current_job = None
+    buffer = []
+
+    def flush_job():
+        if current_job:
+            current_job['bullets'] = [b for b in buffer]
+            data['experience'].append(current_job)
+
+    for i, line in enumerate(lines):
+        # Section headings
+        if line.startswith('## '):
+            if current_job:
+                flush_job()
+                current_job = None
+                buffer = []
+            current_section = line[3:].strip().upper()
+            buffer = []
+            continue
+
+        # Job headings (H3)
+        if line.startswith('### ') and current_section == 'EXPERIENCE':
+            if current_job:
+                flush_job()
+                buffer = []
+            title = line[4:].strip()
+            # Next non-empty lines: **Company**, location, dates
+            current_job = {'title': title, 'company': '', 'location': '', 'dates': '', 'blurb': '', 'bullets': []}
+            buffer = []
+            continue
+
+        if current_section == 'PROFESSIONAL SUMMARY':
+            if line.strip() and not line.startswith('---'):
+                data['summary'] += (' ' if data['summary'] else '') + line.strip()
+
+        elif current_section == 'SKILLS':
+            if line.strip() and not line.startswith('---'):
+                # Format: **Category:** text
+                m = re.match(r'\*\*(.+?):\*\*\s*(.*)', line.strip())
+                if m:
+                    data['skills'].append((m.group(1), m.group(2)))
+
+        elif current_section == 'EXPERIENCE' and current_job is not None:
+            stripped = line.strip()
+            if not stripped or stripped == '---':
+                continue
+            # Company line: **Company**, Location, Dates
+            if stripped.startswith('**') and not current_job['company']:
+                m = re.match(r'\*\*(.+?)\*\*,?\s*(.*)', stripped)
+                if m:
+                    rest = m.group(2)
+                    parts = [p.strip() for p in rest.split(',')]
+                    current_job['company'] = m.group(1)
+                    if len(parts) >= 2:
+                        current_job['location'] = parts[0]
+                        current_job['dates'] = parts[-1]
+                    elif len(parts) == 1:
+                        current_job['dates'] = parts[0]
+            # Blurb (italic or plain paragraph before bullets)
+            elif not stripped.startswith('-') and not current_job.get('blurb') and current_job['company']:
+                current_job['blurb'] = stripped
+            # Bullets
+            elif stripped.startswith('- '):
+                buffer.append(stripped[2:])
+
+        elif current_section == 'KEY PROJECTS':
+            if line.strip() and not line.startswith('---'):
+                # Format: **Name** (status): description
+                m = re.match(r'\*\*(.+?)\*\*\s*(\([^)]*\))?:?\s*(.*)', line.strip())
+                if m:
+                    name = m.group(1)
+                    desc = m.group(3)
+                    data['projects'].append((name, desc))
+
+        elif current_section == 'EDUCATION':
+            if line.strip() and not line.startswith('---'):
+                data['education'].append(line.strip())
+
+        elif current_section == 'TECHNICAL STACK':
+            if line.strip() and not line.startswith('---'):
+                m = re.match(r'\*\*(.+?):\*\*\s*(.*)', line.strip())
+                if m:
+                    data['tech_stack'].append((m.group(1), m.group(2)))
+
+    # Flush last job
+    if current_job:
+        flush_job()
+
+    return data
+
+
+def parse_cover_letter_md(md_path):
+    """
+    Parse a structured cover letter .md file.
+    Extracts: recipient company name, body paragraphs.
+    """
+    with open(md_path) as f:
+        raw = f.read()
+
+    lines = raw.splitlines()
+    data = {'company': 'Writer', 'recipient_line': 'Hiring Team', 'paragraphs': []}
+
+    # Try to extract company from H1 or first metadata line
+    for line in lines:
+        if 'Applying for:' in line or 'applying for:' in line.lower():
+            import re
+            m = re.search(r'\|\s*(.+)$', line)
+            if m:
+                data['company'] = m.group(1).strip()
+            break
+
+    # Extract recipient block (lines after --- that have "Hiring" or company)
+    for line in lines:
+        if line.strip().startswith('Hiring'):
+            data['recipient_line'] = line.strip()
+            break
+
+    # Extract body paragraphs: non-empty lines after second --- that are actual prose
+    # (not headers, not metadata, not closing)
+    separators = [i for i, l in enumerate(lines) if l.strip() == '---']
+    body_start = separators[1] + 1 if len(separators) >= 2 else 0
+
+    body_lines = lines[body_start:]
+    paragraphs = []
+    current = []
+
+    for line in body_lines:
+        stripped = line.strip()
+        if not stripped:
+            if current:
+                paragraphs.append(' '.join(current))
+                current = []
+        elif stripped == '---':
+            if current:
+                paragraphs.append(' '.join(current))
+                current = []
+            break
+        elif stripped.startswith('Jon Trevor') or stripped.startswith('jtsomwaru'):
+            # Closing block — stop
+            if current:
+                paragraphs.append(' '.join(current))
+            break
+        else:
+            current.append(stripped)
+
+    if current:
+        paragraphs.append(' '.join(current))
+
+    # Filter out blank or very short lines (metadata artifacts)
+    data['paragraphs'] = [p for p in paragraphs if len(p) > 20]
+
+    return data
+
+
+def build_resume(output_path, resume_md=None):
+    # ── Load data from markdown if provided (preferred) ───────────────────────
+    md = None
+    if resume_md:
+        md = parse_resume_md(resume_md)
+
     doc = Document()
 
     # ── Page setup ────────────────────────────────────────────────────────────
@@ -268,17 +467,16 @@ def build_resume(output_path):
     style.font.color.rgb = BLACK
 
     # ── HEADER ───────────────────────────────────────────────────────────────
-    # Name
     name_para = doc.add_paragraph()
     name_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
     set_para_spacing(name_para, before_pt=0, after_pt=4)
-    name_run = name_para.add_run('Jon Trevor Somwaru')
+    name_run = name_para.add_run(md['name'] if md else 'Jon Trevor Somwaru')
     name_run.font.name = 'Calibri'
     name_run.font.size = Pt(22)
     name_run.font.bold = True
     name_run.font.color.rgb = NAVY
 
-    # Contact line
+    # Contact line — standardized regardless of md (always includes jtsomwaru.com)
     contact_para = doc.add_paragraph()
     contact_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
     set_para_spacing(contact_para, before_pt=0, after_pt=6)
@@ -292,134 +490,114 @@ def build_resume(output_path):
     add_horizontal_rule(contact_para)
 
     # ── SUMMARY ──────────────────────────────────────────────────────────────
-    add_section_heading(doc, 'Summary')
+    add_section_heading(doc, 'Professional Summary')
     summary_para = doc.add_paragraph()
     set_para_spacing(summary_para, before_pt=4, after_pt=6, line_spacing=1.15)
-    summary_run = summary_para.add_run(
-        'AI Strategist and automation consultant with 6+ years of enterprise cross-functional delivery '
-        'and an active NYC consulting practice. Specializes in designing, deploying, and scaling AI workflows '
-        'that drive measurable business outcomes: scoping high-value use cases with senior executives, '
-        'leading end-to-end customer engagements from ideation through production adoption, and building '
-        'repeatable frameworks for AI change management. Comfortable running an executive briefing in the '
-        'morning and building production automation infrastructure in the afternoon. Local to New York City, '
-        'available for hybrid engagement.'
+    summary_text = md['summary'] if md else (
+        'AI Implementation Consultant and Solutions Architect with 6 years of enterprise delivery experience. '
+        'Specializes in generative AI architecture, multi-agent orchestration, and production AI deployment.'
     )
+    summary_run = summary_para.add_run(summary_text)
     summary_run.font.name = 'Calibri'
     summary_run.font.size = Pt(10.5)
     summary_run.font.color.rgb = BLACK
 
+    # ── SKILLS (from md) ──────────────────────────────────────────────────────
+    if md and md['skills']:
+        add_section_heading(doc, 'Skills')
+        for cat, text in md['skills']:
+            add_skills_line(doc, cat, text)
+
     # ── EXPERIENCE ────────────────────────────────────────────────────────────
     add_section_heading(doc, 'Experience')
 
-    add_job_header(doc,
-        title='AI Automation Consultant',
-        location='New York City',
-        company='JT Somwaru Consulting',
-        dates='2025–Present',
-        content_width=content_width
-    )
-    bullets_consulting = [
-        'Led end-to-end customer engagements from scoping through adoption: designed, deployed, and scaled AI workflows for NYC clients in construction, property management, and insurance; measured outcomes include reduced dispatch time, eliminated manual update chains, and $3,500+ in follow-on scope from a single client engagement.',
-        'Developed ConversationFirst, a 25-point AI adoption framework covering persona cards, conversation flow design, and change management architecture; adopted as a repeatable standard across insurance and property management deployments.',
-        'Built AgentGuard, an enterprise AI governance layer with confidence-gated routing (>=70% auto-routes, <70% triggers human review), operational controls, and full audit trail; addresses change management and compliance requirements for AI in enterprise operations. Live at agentguard-delta.vercel.app.',
-        'Designed, deployed, and scaled a 35-job autonomous AI operations infrastructure (prospect research, outreach pipelines, content generation, market intelligence, cost monitoring); acted as outcome manager over AI agents to ensure systems produced measurable business results without manual intervention.',
-        'Designed Salesforce Agentforce agents for insurance intake routing, PM tenant service, and employee self-service across three verticals; demo-ready with full enablement documentation for client adoption.',
-        'Identified, scoped, and delivered a no-code construction field reporting system for NYC-based Aya ($1,500); client adoption drove immediate follow-on scope ($3,500+) demonstrating measurable business outcomes and long-term customer relationship.',
-    ]
-    for b in bullets_consulting:
-        add_bullet(doc, b)
+    if md and md['experience']:
+        for job in md['experience']:
+            add_job_header(doc,
+                title=job['title'],
+                location=job.get('location', 'New York City'),
+                company=job['company'],
+                dates=job['dates'],
+                content_width=content_width
+            )
+            for b in job['bullets']:
+                add_bullet(doc, b)
+    else:
+        # Fallback hardcoded experience (kept as safety net)
+        add_job_header(doc,
+            title='Founder and AI Implementation Consultant',
+            location='New York City',
+            company='Opticfy',
+            dates='2025–Present',
+            content_width=content_width
+        )
+        for b in [
+            'Architected and deployed AgentGuard, a confidence-gated AI governance layer with automated routing at a 70% confidence threshold and a full EEOC-compliant audit trail. Live at agentguard-delta.vercel.app.',
+            'Built and operate 35 autonomous cron jobs in production covering prospect research, outreach pipelines, content generation, market intelligence, and cost monitoring.',
+            'Delivered a $1,500 operational intelligence dashboard for Aya (NYC construction firm); client commissioned $3,500 in follow-on projects immediately after delivery.',
+        ]:
+            add_bullet(doc, b)
 
-    add_job_header(doc,
-        title='Business Systems Analyst',
-        location='New York City',
-        company='Charter Communications / Spectrum Enterprise',
-        dates='2019–2025',
-        content_width=content_width
-    )
-    bullets_charter = [
-        'Acted as the cross-functional bridge between senior business stakeholders and technical teams on multi-quarter implementation projects; engaged VP-level and regional director audiences to define success metrics, manage scope, and align on adoption milestones through delivery.',
-        'Designed and delivered structured enablement programs for audiences ranging from frontline reps to regional directors; training reduced product catalog error rates and accelerated onboarding time, producing measurable adoption outcomes across the BSA team.',
-        'Led end-to-end ownership of product catalog system implementations across a $1B+ service portfolio; coordinated between Sales, Product, Engineering, and Operations to translate technical constraints into operational workflows non-technical stakeholders could execute.',
-        'Identified high-value configuration improvements and scoped them into actionable implementation projects; built internal playbooks adopted as standard reference material, enabling teams to iterate on systems independently after initial deployment.',
-        'Managed change management and adoption for 8+ internal team implementations; guided organizations through onboarding so that solutions became an integral part of day-to-day operations.',
+    # ── KEY PROJECTS ──────────────────────────────────────────────────────────
+    projects_to_render = md['projects'] if md and md['projects'] else [
+        ('AgentGuard', 'Confidence-gated AI governance layer. Live at agentguard-delta.vercel.app.'),
+        ('Nash Satoshi', 'Crypto intelligence platform built on a 4-LLM ensemble architecture.'),
     ]
-    for b in bullets_charter:
-        add_bullet(doc, b)
+    if projects_to_render:
+        add_section_heading(doc, 'Key Projects')
+        for name, desc in projects_to_render:
+            para = doc.add_paragraph()
+            set_para_spacing(para, before_pt=3, after_pt=3, line_spacing=1.1)
+            name_run = para.add_run(name + ': ')
+            name_run.font.name = 'Calibri'
+            name_run.font.size = Pt(10.5)
+            name_run.font.bold = True
+            name_run.font.color.rgb = BLACK
+            desc_run = para.add_run(desc)
+            desc_run.font.name = 'Calibri'
+            desc_run.font.size = Pt(10.5)
+            desc_run.font.bold = False
+            desc_run.font.color.rgb = BLACK
 
-    # ── SELECTED BUILDS ───────────────────────────────────────────────────────
-    add_section_heading(doc, 'Selected Deployments & Enablement')
-    builds_inline = [
-        ('AgentGuard',               'Enterprise evaluation layer: confidence-gated routing, operational controls for AI governance, EEOC audit trail. Live at agentguard-delta.vercel.app',  'Live'),
-        ('Construction Job Tracker', 'Real-time field reporting for Aya; led client onboarding that drove immediate adoption and $3,500+ in follow-on scope',                                  'Deployed, client'),
-        ('Agentforce Agents',        'Insurance intake routing, PM tenant service, and employee self-service agents built on Salesforce orgs; demo-ready across three verticals',             'Demo'),
-        ('PM Maintenance Triage',    'Multi-tier classification + automated vendor dispatch for property management; tenant submits, AI classifies urgency, routes vendor automatically',       'Demo'),
-    ]
-    for name, desc, status in builds_inline:
-        para = doc.add_paragraph()
-        set_para_spacing(para, before_pt=2, after_pt=2)
-        name_run = para.add_run(name + ': ')
-        name_run.font.name = 'Calibri'
-        name_run.font.size = Pt(10.5)
-        name_run.font.bold = True
-        name_run.font.color.rgb = BLACK
-        desc_run = para.add_run(desc + '  ')
-        desc_run.font.name = 'Calibri'
-        desc_run.font.size = Pt(10.5)
-        desc_run.font.bold = False
-        desc_run.font.color.rgb = BLACK
-        status_run = para.add_run(f'[{status}]')
-        status_run.font.name = 'Calibri'
-        status_run.font.size = Pt(10.5)
-        status_run.font.bold = False
-        status_run.font.color.rgb = GRAY
-
-    # ── SKILLS ────────────────────────────────────────────────────────────────
-    p = doc.add_paragraph()  # spacer
-    set_para_spacing(p, before_pt=4, after_pt=0)
-    add_section_heading(doc, 'Skills')
-
-    skills = [
-        ('AI Strategy & Workflows', 'AI use case scoping, AI workflow design and deployment, n8n no-code automation, Agentforce, OpenAI API, Anthropic Claude, multi-agent orchestration, prompt engineering, agent governance, RAG, evaluation frameworks'),
-        ('Customer Enablement', 'Workshop facilitation, executive engagement, technical training design, customer onboarding, adoption frameworks, change management, playbook development, AI literacy programs'),
-        ('Technical', 'Webhook architecture, API integration, AI system monitoring, cost controls, Google Sheets/Drive automation, Supabase, Vercel, Salesforce, no-code platforms'),
-        ('Business', 'End-to-end customer engagement, implementation project management, stakeholder communication, product feedback loop, cross-functional coordination, system documentation'),
-    ]
-    for cat, text in skills:
-        add_skills_line(doc, cat, text)
+    # ── TECHNICAL STACK ───────────────────────────────────────────────────────
+    if md and md['tech_stack']:
+        add_section_heading(doc, 'Technical Stack')
+        for cat, text in md['tech_stack']:
+            add_skills_line(doc, cat, text)
 
     # ── EDUCATION ─────────────────────────────────────────────────────────────
     add_section_heading(doc, 'Education')
-    edu_para = doc.add_paragraph()
-    set_para_spacing(edu_para, before_pt=4, after_pt=2)
-    edu_r1 = edu_para.add_run('Ithaca College')
-    edu_r1.font.name = 'Calibri'
-    edu_r1.font.size = Pt(10.5)
-    edu_r1.font.bold = True
-    edu_r1.font.color.rgb = BLACK
-    edu_r2 = edu_para.add_run(', BS Sport Management, Legal Studies Minor · 2014–2018')
-    edu_r2.font.name = 'Calibri'
-    edu_r2.font.size = Pt(10.5)
-    edu_r2.font.bold = False
-    edu_r2.font.color.rgb = GRAY
-
-    edu_para2 = doc.add_paragraph()
-    set_para_spacing(edu_para2, before_pt=2, after_pt=2)
-    edu_r3 = edu_para2.add_run('Level at Northeastern University')
-    edu_r3.font.name = 'Calibri'
-    edu_r3.font.size = Pt(10.5)
-    edu_r3.font.bold = True
-    edu_r3.font.color.rgb = BLACK
-    edu_r4 = edu_para2.add_run(', Data Analytics Certificate · 2019')
-    edu_r4.font.name = 'Calibri'
-    edu_r4.font.size = Pt(10.5)
-    edu_r4.font.bold = False
-    edu_r4.font.color.rgb = GRAY
+    edu_lines = md['education'] if md and md['education'] else [
+        '**Ithaca College**, Bachelor of Science, Sport Management. Minor, Legal Studies. 2018'
+    ]
+    import re as _re
+    for edu_line in edu_lines:
+        edu_para = doc.add_paragraph()
+        set_para_spacing(edu_para, before_pt=4, after_pt=2)
+        # Bold the institution name (text before first comma or after **)
+        bold_m = _re.match(r'\*\*(.+?)\*\*,?\s*(.*)', edu_line.strip())
+        if bold_m:
+            r1 = edu_para.add_run(bold_m.group(1))
+            r1.font.name = 'Calibri'; r1.font.size = Pt(10.5)
+            r1.font.bold = True; r1.font.color.rgb = BLACK
+            r2 = edu_para.add_run(', ' + bold_m.group(2) if bold_m.group(2) else '')
+            r2.font.name = 'Calibri'; r2.font.size = Pt(10.5)
+            r2.font.bold = False; r2.font.color.rgb = GRAY
+        else:
+            r = edu_para.add_run(edu_line.strip())
+            r.font.name = 'Calibri'; r.font.size = Pt(10.5)
+            r.font.color.rgb = BLACK
 
     doc.save(output_path)
     print(f'✅ Resume saved: {output_path}')
 
 
-def build_cover_letter(output_path):
+def build_cover_letter(output_path, cover_letter_md=None):
+    # ── Load data from markdown if provided ───────────────────────────────────
+    cl = None
+    if cover_letter_md:
+        cl = parse_cover_letter_md(cover_letter_md)
+
     doc = Document()
 
     section = doc.sections[0]
@@ -465,42 +643,16 @@ def build_cover_letter(output_path):
 
     recip_para = doc.add_paragraph()
     set_para_spacing(recip_para, before_pt=0, after_pt=12)
-    recip_run = recip_para.add_run('Hiring Manager, Stack AI')
+    recip_line = (cl['recipient_line'] if cl else 'Hiring Team')
+    recip_run = recip_para.add_run(recip_line)
     recip_run.font.name = 'Calibri'
     recip_run.font.size = Pt(11)
     recip_run.font.color.rgb = GRAY
 
     # ── BODY PARAGRAPHS ──────────────────────────────────────────────────────
-    body_paras = [
-        # P1 — Their problem
-        ('Most organizations buying AI workflow tools have the same problem: they can identify the use '
-         'case and configure the platform, but the adoption never lands. The gap isn\'t technical. '
-         'It\'s that nobody owns the end-to-end process from executive alignment through day-to-day '
-         'change management, and Stack AI\'s customer success depends on someone who can do both.'),
-
-        # P2 — Charter foundation
-        ('At Charter/Spectrum Enterprise, I spent six years as the cross-functional bridge between '
-         'technical systems and the business teams that had to actually use them. My job was to take '
-         'complex product catalog implementations across a $1B+ service portfolio and make them stick '
-         'across eight internal teams: engaging VP-level leadership on success metrics, designing '
-         'structured enablement programs for frontline reps and regional directors, and building the '
-         'playbooks that let teams iterate on systems independently after I stepped back. '
-         'That is exactly what customer engagement at Stack AI requires.'),
-
-        # P3 — Consulting proof points
-        ('In my consulting practice, I\'ve led end-to-end customer engagements in construction, '
-         'property management, and insurance. I developed ConversationFirst, a 25-point AI adoption '
-         'framework covering persona design, conversation flows, and enablement architecture. '
-         'A construction workflow I delivered for a NYC client replaced manual status chains with '
-         'automated field reporting; the onboarding I ran drove immediate adoption and a follow-on '
-         'engagement commission from the same client. I also built AgentGuard, '
-         'a confidence-gated AI governance layer with human-in-the-loop escalation and full audit trail, '
-         'addressing the change management barrier that blocks enterprise AI adoption most often: '
-         'accountability for what the system decides.'),
-
-        # P4 — Clean close with concrete CTA
-        ('Happy to walk through the ConversationFirst framework, the production AI infrastructure, '
-         'or any of the client deployments on a call. NYC-based and available for in-person engagement.'),
+    # Use parsed paragraphs from markdown when available — this is the source of truth
+    body_paras = cl['paragraphs'] if cl and cl['paragraphs'] else [
+        'Cover letter content not found. Please provide a --cover-letter-md file.'
     ]
 
     for body_text in body_paras:
@@ -540,12 +692,18 @@ def build_cover_letter(output_path):
 
 if __name__ == '__main__':
     import argparse
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Build formatted .docx resume and cover letter from markdown source files.')
     parser.add_argument('--type', choices=['resume', 'cover_letter', 'both'], default='both')
     parser.add_argument('--output-dir', default='/tmp')
+    parser.add_argument('--resume-md', default=None,
+                        help='Path to resume markdown file (source of truth for content). '
+                             'If omitted, falls back to hardcoded content.')
+    parser.add_argument('--cover-letter-md', default=None,
+                        help='Path to cover letter markdown file (source of truth for content). '
+                             'If omitted, falls back to placeholder text.')
     args = parser.parse_args()
 
     if args.type in ('resume', 'both'):
-        build_resume(f'{args.output_dir}/jt-somwaru-resume.docx')
+        build_resume(f'{args.output_dir}/jt-somwaru-resume.docx', resume_md=args.resume_md)
     if args.type in ('cover_letter', 'both'):
-        build_cover_letter(f'{args.output_dir}/jt-somwaru-cover-letter.docx')
+        build_cover_letter(f'{args.output_dir}/jt-somwaru-cover-letter.docx', cover_letter_md=args.cover_letter_md)

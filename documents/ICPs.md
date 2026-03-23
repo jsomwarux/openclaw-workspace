@@ -144,6 +144,8 @@ As of March 2026, Agentforce is bundled into Salesforce Suites for SMBs — mean
 
 **Demo:** Insurance Service Agent (already built) — claims intake, routing, FAQ handling. Directly applicable.
 
+**New hook signal (March 2026):** Agentforce Contact Center launched at Enterprise Connect 2026 as a CRM-native execution layer for contact center automation. Directly applicable to insurance and PM prospects running inbound claims/maintenance request queues. Use this as a conversation anchor: "Salesforce just launched a contact center agent designed for exactly this — and if you're on Salesforce, you probably already have access to it."
+
 ---
 
 ## Notes for All ICPs

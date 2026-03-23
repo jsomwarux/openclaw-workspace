@@ -83,7 +83,7 @@ b. **Determine approach**:
    - Draft task (resume, cover letter, outreach) → spawn isolated sub-agent
    - Analysis task → handle inline if under 10 min estimated
    - Code build → spawn coding sub-agent only if clearly scoped (<2h estimated)
-c. **Inject feedback rules** into every sub-agent prompt: "Apply these learned rules from JT's feedback: [rules]"
+c. **Inject feedback rules** into every sub-agent prompt: "Apply these learned rules from JT's feedback: [rules]. Use context7 when working with any library (n8n, Next.js, Supabase, Salesforce SDK, OpenAI SDK) — add 'use context7' to any library-related lookup to get live docs and prevent deprecated API usage. Debugging rule: never change more than one variable at a time. If a build or test fails, form a hypothesis, isolate the cause, confirm it, then apply the minimal fix. Do not make multiple simultaneous changes to resolve a failure — you won't know what worked."
 c2. **Code build gate (jtsomwaru-com only):** If the task involves code changes to `~/projects/jtsomwaru-com/`, run a build check before committing:
    ```
    cd ~/projects/jtsomwaru-com && npm run build
@@ -91,6 +91,15 @@ c2. **Code build gate (jtsomwaru-com only):** If the task involves code changes 
    - If build **passes** → commit and push as normal
    - If build **fails** → do NOT commit. Log the error, mark the task as failed in the overnight log, push a 🌙 Review MC task with the error output. Move to the next task.
    - This gate applies to any sub-agent that touches jtsomwaru-com code — inject it into the sub-agent prompt: "After all changes, run `npm run build` from the project root. Only commit if the build exits 0. If it fails, write the error to the log and stop."
+c2b. **Demo video prompt (all code builds that ship a user-facing feature):** After a code build completes successfully and the handoff file is written, check if the build has a user-facing interface (dashboard, workflow, agent, app screen, or n8n workflow). If yes:
+   Push ONE MC task for JT:
+   ```
+   curl -s -X POST http://localhost:3000/api/tasks \
+     -H 'Content-Type: application/json' \
+     -d '{"title":"Record demo video — [project-slug]","description":"Build shipped overnight. A 60-90 second screen recording is the highest-performing content format on X.\n\nWhat to record: open [project URL or workflow], show the key outcome in real time. No editing needed.\n\nTool: Screen Studio (screen + face cam). Post to X and tag the relevant tool account (n8n, Anthropic, Salesforce) for DevRel repost potential.\n\nBuild details: see [project-slug]-handoff.md","status":"todo","priority":"medium","assignee":"JT","project":"Consulting","sortOrder":200}'
+   ```
+   Only push this task if the build actually shipped a user-facing feature. Skip for: config changes, script fixes, file edits, research tasks.
+
 c3. **Code build handoff (all code builds):** For any code build that completes successfully, the sub-agent must also produce:
    - `[project-slug]-handoff.md` in the project root with: (1) what was built, (2) how to use/maintain it, (3) what to build in v2. This file is for JT — plain language, no jargon.
    - Inject into every code build sub-agent prompt: "When the build passes, write [project-slug]-handoff.md in the project root. Sections: ## What Was Built (1 paragraph), ## How to Use It (step-by-step), ## How to Maintain It (what breaks and how to fix it), ## v2 Ideas (3 concrete next features, prioritized)."

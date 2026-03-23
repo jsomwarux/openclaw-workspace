@@ -60,18 +60,19 @@
 
 ---
 
-## Week 4 — Real-World Integration (Mar 23–29)
-**Theme:** Use it with real people — your girlfriend, her family, NYC
+## Week 4 — Consolidation (Mar 23–29)
+**Theme:** Master Week 3 material — drill the gaps, build confidence in real conversation
+**Note:** JT requested consolidation week — B+ twice at same level means right edge of ability. Repeat social fluency range before advancing.
 
 | Day | Date | Topic | Key Phrases |
 |-----|------|-------|-------------|
-| Mon | Mar 23 | Describing people & personality | es simpático/a, es trabajador/a, parece, creo que es |
-| Tue | Mar 24 | Talking about NYC & where you live | vivo en, queda en, es un barrio, cerca del metro |
-| Wed | Mar 25 | Food preferences & restaurant deep-dive | soy alérgico a, sin, ¿tiene...?, está delicioso, muy picante |
-| Thu | Mar 26 | Expressing opinions | creo que, pienso que, en mi opinión, me parece que |
-| Fri | Mar 27 | Talking about your girlfriend | mi novia se llama, ella es, estamos juntos desde hace |
-| Sat | Mar 28 | Free conversation practice | Open-ended: any topic from Weeks 1–4 |
-| Sun | Mar 29 | **WEEK 4 EVALUATION** | Full conversation with role-play scenarios |
+| Mon | Mar 23 | conocer vs saber (drill) | conozco, sé, ¿conoces...?, ¿sabes...?, no sé, no conozco |
+| Tue | Mar 24 | Past tense drill + natural transitions | comí, fui, vi, estuve, después, luego, y entonces |
+| Wed | Mar 25 | Compliments & reactions (deeper) | ¡qué buena onda!, ¡qué interesante!, te lo juro, en serio |
+| Thu | Mar 26 | Filler words in context | pues, oye, mira, claro, o sea — practiced IN sentences, not isolated |
+| Fri | Mar 27 | Mixed tense conversation flow | Combining present + past naturally in one conversation |
+| Sat | Mar 28 | Family dinner simulation (full run) | Full role-play: arrival, introductions, food, small talk |
+| Sun | Mar 29 | **WEEK 4 EVALUATION** | Same scenario as Week 3 — new family member, measure improvement |
 
 ---
 

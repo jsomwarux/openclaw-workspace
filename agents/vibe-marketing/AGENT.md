@@ -78,7 +78,8 @@ This ensures 4+ weeks of posts cover 4+ different angles rather than converging 
    - Load last 4 weeks of entries
    - Identify: which format_type + hook_style combinations scored "good" or "great" per product
    - **Winner doubling protocol:** If any entry is marked "great": generate ONE systematic variation of that exact structure this week (same hook type, same format, same CTA pattern — new specific angle/data point). This is in addition to the normal 3 X posts. Label it `"variation_of": "[original_id]"` in the queue entry.
-   - If no "great" entries yet: generate based on themes in registry, no bias applied yet
+   - **Loser retirement protocol:** Any entry with views < 500 after 7+ days (check `posted_date` vs today) is a confirmed loser. Extract its `hook_style` and `format_type`. Do NOT generate any post this week using that same hook_style + format_type combination for the same product. Log retired combinations to `agents/vibe-marketing/retired-hooks-[product_slug].md` with the date and view count. This file accumulates over time — check it before generating to avoid repeating dead approaches.
+   - If no entries at all yet: generate based on themes in registry, no bias applied yet
 
 4a. Read `~/.openclaw/workspace/agents/vibe-marketing/trending-now.md`
    - Check last updated date — if from a prior week, content is stale (step 5 will overwrite it)

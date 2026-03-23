@@ -128,51 +128,100 @@ Use this exact structure (adapted from Miles Deutscher's Income Builder framewor
 - **Defensibility**: [How JT's version gets harder to copy over time — data flywheel, SEO, specific AI tuning]
 - **What beginners get wrong**: [The mistake most people make when trying to build this — and how JT avoids it]
 
-### 3. Launch Plan
-- **Fastest path to live in 7 days**: [Exactly what the coding agent builds first — MVP only]
-- **Minimum viable version**: [What gets cut from the vision to ship fast]
-- **Key tools**: [Specific stack: Next.js + Replit? n8n + Printful API? Claude API + what?]
+### 3. Step-by-Step Build Instructions
+**Phase 1 — MVP (Days 1–7):**
+1. [Exact first action — e.g., "Clone Glow Index repo, rename project, update env vars"]
+2. [Second action — e.g., "Seed database with top 40 compounds using Claude scoring script"]
+3. [Third action — specific file/component to build first]
+4. [Fourth action — payment integration step]
+5. [Launch step — where to deploy and what URL to verify works]
+
+**Phase 2 — Traction (Days 8–30):**
+1. [First traction action]
+2. [Second traction action]
+3. [etc.]
+
+**Phase 3 — Scale (Days 31–90):**
+1. [First scale action]
+2. [etc.]
+
+- **Minimum viable version**: [Exactly what gets cut for launch — features deferred to Phase 2]
+- **Full tech stack**: [Specific: Next.js + Replit + Claude API + Printful + n8n cron + Stripe — every component named]
+- **Operating cost at scale**: [$/mo for hosting + APIs + domain + tools]
+- **Realistic build timeline**: [Days for coding agent — be honest]
 
 ### 4. Monetization
-- **How first dollar comes in**: [Exact mechanism — first sale, first subscription, first affiliate click]
-- **Pricing model**: [Specific: $X/month subscription? $Y per generation? Affiliate % of sale?]
-- **Path to $3K–$10K/month**: [Specific volume/conversion assumptions — be concrete, not vague]
+- **How first dollar comes in**: [Exact mechanism and exact moment — first affiliate click / first Stripe charge / first subscription]
+- **Pricing model**: [Specific tiers: $X/mo base, $Y/mo pro, $Z one-time — with rationale for each price point]
+- **Affiliate programs / revenue splits**: [Specific programs, commission rates, payout thresholds]
+- **Path to $3K/month**: [Volume × conversion × price — show the math]
+- **Path to $10K/month**: [What changes — more SKUs, subscription layer, partnerships]
 
-### 5. Automation Stack
+### 5. Marketing Strategy (Autonomous — runs without JT)
+**Primary channel**: [The single best channel for this specific product — be specific, not generic]
+
+**Week 1 launch post**:
+- Platform: [Reddit / X / LinkedIn / TikTok]
+- Community/subreddit: [exact name, e.g., r/Nootropics]
+- Post format: [e.g., "I built X, here's what it outputs — roast it"]
+- Hook: [First line of the post]
+
+**Ongoing autonomous marketing stack**:
+- [Channel 1]: [What the agent posts, how often, what format — be specific]
+- [Channel 2]: [etc.]
+- [Channel 3]: [etc.]
+
+**SEO strategy**:
+- Primary search terms: [list 3-5 specific keywords with intent]
+- Content pages to create: [specific page titles that will rank]
+- Timeline to first organic traffic: [realistic estimate]
+
+**Viral / referral mechanism**:
+- [Does the product output generate its own marketing? How? Be specific.]
+- [Is there a natural share moment? What triggers it?]
+
+**Paid acquisition (if applicable)**:
+- [Only if unit economics support it — CPA target vs. LTV]
+
+**What to do in Month 1 manually (before automation)**:
+- [The 3-5 things JT does once to seed the marketing flywheel]
+
+### 6. Automation Stack
 - **What to automate first**: [The highest-leverage automation — the one that makes this passive]
-- **AI's role**: [Specifically what Claude does in this system]
-- **How ongoing time approaches zero**: [What the steady state looks like after Month 3]
+- **Full automation sequence**: [Step-by-step what happens without any human input — from content generation to posting to fulfillment]
+- **AI's role in the product**: [Specifically what Claude does in each user interaction]
+- **AI's role in marketing**: [Specifically what the agent does for content generation/posting]
+- **How ongoing time approaches zero**: [What the steady state looks like after Month 3 — be specific about what's automated]
+- **OpenClaw integration**: [Can Eve's crons support this? Which ones? What new cron is needed?]
 
-### 6. 90-Day Execution Plan
-- **Days 1–30 (Foundation)**: [Build MVP, get first user, first revenue event]
-- **Days 31–60 (Traction)**: [Refine, automate marketing, reach $500/mo]
-- **Days 61–90 (Scale)**: [Compound SEO/marketing, reach $1K–$3K/mo, identify what to double down on]
-
-### Scores
+### 7. Scores
 | Longevity | Autonomy | Build | Marketing | Revenue | Uniqueness | Competition |
 |---|---|---|---|---|---|---|
 | [X] | [X] | [X] | [X] | [X] | [X] | [X] |
+**Weighted total: [X]/10**
 ```
 
 ---
 
 ## Step 7: Push 🟢 Ideas to Mission Control
 
+The MC task must be self-contained — JT should be able to read it and know exactly what to build and how to market it without opening any other file. Do NOT just point to the report file.
+
 ```bash
 curl -s -X POST http://localhost:3000/api/tasks \
   -H 'Content-Type: application/json' \
   -d '{
     "title": "[PI] Build: [IDEA NAME] — [one-line hook]",
-    "description": "[Opportunity in 2 sentences.]\n\n**Score:** [X]/10\n**Revenue target:** [range]\n**Build:** [timeline] — coding agent\n**First $1:** [exact mechanism]\n**Auto-marketing:** [approach]\n\nFull blueprint: memory/passive-income/[date]-strategist.md",
+    "description": "**Score:** [X]/10 | **Revenue target:** $[X]K–$[Y]K/mo | **Build time:** [N] weeks via coding agent\n\n**The Opportunity:**\n[2-3 sentences — what it is, why now, why it works autonomously]\n\n**Stack:**\n[Every component: e.g., Next.js + Claude API + Stripe + Printful + n8n cron]\n\n**Build Steps (Phase 1 MVP):**\n1. [Exact first action]\n2. [Second action]\n3. [Third action]\n4. [Fourth action]\n5. [Deploy + verify step]\n\n**Monetization:**\n- First $1: [exact mechanism]\n- Pricing: [specific tiers]\n- Path to $3K/mo: [volume × conversion × price]\n\n**Marketing Strategy:**\n- Primary channel: [specific platform + community]\n- Week 1 launch: [exact post format + hook + where]\n- Ongoing: [what the agent posts, how often]\n- SEO: [primary keywords + pages to create]\n- Viral mechanism: [how output generates its own marketing]\n\n**Automation:**\n- [What runs without JT after Month 1]\n- [OpenClaw cron needed: yes/no — what it does]\n\n**Full blueprint:** memory/passive-income/[YYYY-MM-DD]-strategist.md",
     "status": "todo",
     "priority": "medium",
     "assignee": "eve",
     "project": "passive-income",
-    "sortOrder": 500
+    "sortOrder": 510
   }'
 ```
 
-Check for duplicates first. Skip if exists.
+Check for duplicates first (substring match on idea name). Skip if exists.
 
 ---
 

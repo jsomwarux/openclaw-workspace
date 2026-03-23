@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, CheckSquare, Calendar, Brain,
-  Users, Server, DollarSign, FileText, Moon, Wrench, Archive, Building2, Sparkles,
+  Users, Server, DollarSign, FileText, Moon, Wrench, Archive, Building2, Sparkles, Network,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +21,7 @@ const nav = [
   { href: "/audit",    icon: FileText,         label: "Audit"      },
   { href: "/overnight", icon: Moon,            label: "Overnight"  },
   { href: "/skills",    icon: Wrench,          label: "Skills"     },
+  { href: "/systems",   icon: Network,         label: "Systems"    },
 ];
 
 // Primary nav items shown in bottom bar (mobile)

@@ -11,8 +11,11 @@ Wednesday is JT's most important LinkedIn post. It should make a practitioner no
 
 ## Before Drafting
 
-1. Read `memory/content-voice.md` — mandatory, every time.
+1. Read `memory/content-voice.md` — mandatory, every time. Pay specific attention to the **Emotional Architecture** section.
 2. Read `skills/wednesday-linkedin/examples/good/contractor-job-status.md` — match this structure and specificity level.
+3. **Select emotional triggers before writing word 1:**
+   - Primary: **Aspiration+Believability** — the outcome must feel achievable (impressive but not impossible). Aya $1,500 / $1,000 scale is the right ceiling. A $40M result triggers skepticism; a $1,000 project that eliminated 4 hrs/week triggers aspiration.
+   - Secondary: **Identity Validation** — the problem in paragraph 1 should make the reader think "that's exactly what happens at my company." Name the specific psychological reality, not just the surface symptom.
 
 **Critical rules:**
 - Open with the reader's problem, not JT's solution or product name
@@ -48,7 +51,8 @@ Four moves, in order:
 
 **The Lurker** *(passive LinkedIn scroller, Wednesday morning)*
 - Does the opening line stop a scroll?
-- Is there a moment where the reader thinks "I've felt that"?
+- Is there a moment where the reader thinks "I've felt that"? (Identity Validation check — if no, the opener needs to go one level deeper into the psychological reality)
+- Does the outcome make the reader think "I could do that" — not "that's impressive but not me"? (Aspiration+Believability check)
 - Is this post for them, or about JT?
 
 Each reviewer: **PASS / REVISE** + one specific note if REVISE. Address any REVISE before publishing.

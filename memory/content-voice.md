@@ -115,6 +115,83 @@ For X: neither wants a pitch — both want an insight or observation they haven'
 
 ---
 
+## Emotional Architecture (apply before writing any post)
+
+The current system tells you *how* to write. This tells you *what to make people feel.*
+
+**The core distinction:** Information makes people think "that's useful." Provocation makes people think "holy shit, that's me." LinkedIn's algorithm rewards emotional intensity, not information density. Comments, saves, and shares only happen when someone feels something strongly enough to act.
+
+**Before drafting any post, pick ONE primary trigger + ONE secondary trigger:**
+
+### The 6 Triggers (ranked by use for JT's ICP)
+
+**1. Identity Validation** ← Most powerful for consulting pipeline
+Articulate the uncomfortable truth JT's ICP already knows but has never said out loud. When a PM owner or contractor reads something that names their hidden frustration, they feel called out (if it's still true) or vindicated (if they've already moved past it). Either way, they respond.
+
+JT application:
+- "Your maintenance coordinator isn't the bottleneck. You are — because every exception routes to your phone."
+- "You hired someone to manage the spreadsheet, not to fix the problem the spreadsheet represents."
+- "You've looked at Salesforce pricing three times. The cost isn't the objection. You don't know what you'd actually do with it."
+
+Rule: go one level deeper than the surface observation. Not "construction companies are inefficient" — instead name the specific psychological reality underneath it.
+
+**2. Productive Discomfort** ← Best for Wednesday case studies
+Create awareness of a gap between where they are and where they could be — but imply the gap is closeable. The reader experiences tension and resolves it by engaging, saving, or DMing.
+
+JT application: "Your PM firm is using two property management platforms simultaneously. Not because you chose to. Because you outgrew AppFolio but couldn't migrate everything to Buildium. So now your team is manually reconciling between them every week. I've seen this three times in NYC PMs this month alone."
+
+**3. Tribal Belonging** ← Good for Monday takes
+Clear delineation of "us vs them." Readers want to be in the sophisticated group, not the naive group. Creates in-group identity your ICP wants to claim.
+
+JT application:
+- "There are two types of NYC operators right now: ones retrofitting AI into broken processes, and ones redesigning the process before deploying the AI. The second type has a 6-month head start."
+- "Most 'automation consultants' sell you a Zapier template. The ones who've actually deployed in production know Zapier breaks the first time the source API changes."
+
+**4. Curiosity Gap** ← Best for hooks
+The reader is aware information exists but doesn't have it. Specificity is what makes it work — not "how to get more leads" but "the n8n workflow that replaced 18 hrs/week of manual StreetEasy searches."
+
+JT formula: **[specific outcome] + [specific number] + [specific method or tool]**
+- "The 12-node n8n workflow that routes NYC maintenance requests before a coordinator touches them"
+- "How an Aya co-living property cut StreetEasy search time from 4 hours to zero"
+
+**5. Aspiration + Believability** ← Good for Friday tactical posts
+Show a result the ICP wants and make them believe they could have it. Key: the outcome must feel achievable (impressive but not impossible). A $40M MRR story triggers skepticism. A $1,000 project that eliminated 4 hours/week triggers aspiration.
+
+JT has this built in: the Aya case study is the perfect aspiration trigger. $1,500, real client, tangible outcome, NYC context.
+
+**6. Status Signaling** ← Layer into any post
+People don't just share content they like — they share content that makes *them* look good for sharing it. Before finalizing any post, ask: "Would a NYC PM owner share this because it signals they're ahead of the curve?"
+
+Content that signals status for JT's ICP: insider knowledge about AI implementation others don't have, contrarian takes before they're mainstream, specific tactical breakdowns that make them look competent and informed.
+
+---
+
+### Information vs. Provocation Test (mandatory)
+
+Before posting, ask: "Is this informing the reader or making them feel something?"
+
+If the answer is "informing only" — add a provocation layer. This doesn't mean making it inflammatory. It means finding the uncomfortable truth embedded in the information and naming it explicitly.
+
+❌ Information: "n8n can automate maintenance request routing for property managers."
+✅ Provocation: "NYC property managers are paying a coordinator $55K/year to forward emails between tenants and vendors. The workflow that replaces 80% of that costs $3,500 to build."
+
+---
+
+### TOF Belief Disruption (use for Monday posts — targets problem-unaware prospects)
+
+Most of JT's content targets people who already know they want automation. TOF belief disruption targets SMB owners who *don't know they have a problem yet* — which is 90% of JT's LinkedIn audience.
+
+**5-step structure:**
+1. State the common belief clearly: "Most property managers think the way to scale is to hire better coordinators."
+2. Create doubt: "But the PMs I'm talking to with 500+ units have the same coordination problems as the ones with 50 units. Headcount isn't solving it."
+3. Introduce the alternative frame: "The bottleneck isn't people. It's the process — and the process hasn't changed since they started."
+4. Show the implication: "Which means every coordinator you hire inherits a broken workflow and makes it faster to break."
+5. Optional path forward: "The fix isn't a hire. It's one workflow that handles the 80% of requests that follow a predictable pattern."
+
+Use this structure on Mondays — it's the right format for short punchy takes that create awareness before the case study (Wednesday) delivers proof.
+
+---
+
 ## The 6 Language Techniques (apply to all posts regardless of length)
 
 ### 1. Alliterative Contrast — Signature Move
@@ -208,7 +285,7 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 | H.C. Oswald copilot (in progress) | Product Knowledge Copilot for a 103-year-old Bronx HVAC supplier. RAG over Shopify catalog. English + Spanish. Surfaces 100 years of parts knowledge via Intercom. Outreach sent. |
 | PM maintenance triage template (n8n) | Reusable T2 outreach template for NYC property managers (AppFolio/Buildium). Tenant submits request → Claude classifies urgency + category → routes to vendor → auto-notifies tenant → logs to Sheets → escalates no-shows. Configurable per prospect in ~2 hours. |
 | Construction job progress tracker (n8n) | Reusable T2 template for NYC GCs/contractors (ServiceTitan/Jobber users). Foreman sends one WhatsApp message → Claude classifies on-track/at-risk/blocked → client gets auto-update → job logged to Sheets → owner alerted only on blockers. Kills 30–60 min/day of status calls. Configurable per prospect in ~2 hours. |
-| AgentGuard (governance layer) | Confidence-gated routing for AI agents — ≥70% executes automatically, <70% goes to human review queue. Full audit trail on every decision. Live at agentguard-delta.vercel.app. Demo: HR candidate screening. The thing that gets AI deployments approved by legal/compliance. |
+| AgentGuard (governance layer) | Confidence-gated routing for AI agents — ≥70% executes automatically, <70% goes to human review queue. Full audit trail on every decision. Live at agentguard-delta.vercel.app. Demo: HR candidate screening. The thing that gets AI deployments approved by legal/compliance. **On jtsomwaru.com as of March 2026.** |
 
 ### Background Proof (6 years of real enterprise implementation)
 - BSA at Spectrum Enterprise 2019–2025: watched Salesforce implementations at the $500K–$2M scale get adopted wrong
@@ -439,6 +516,14 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] If a demo video exists for the build, is it flagged for attachment? If yes, no link in post body.
 - [ ] If a source article is relevant (news hook), is a first-comment URL included alongside the draft?
 - [ ] For any build-showcase post: does the first sentence name a problem the reader already feels — NOT the product name, feature, or tool? If the post opens with "AgentGuard", "InsuranceServiceAgent", "n8n", or any build name → rewrite the opener.
+
+### Emotional architecture check (run before writing, not after):
+- [ ] Which primary trigger was chosen? (Identity Validation / Productive Discomfort / Tribal / Curiosity Gap / Aspiration / Status Signal)
+- [ ] Which secondary trigger? (pick one)
+- [ ] Does the post make the reader feel something — or just inform them? If inform-only, find the uncomfortable truth in the information and name it.
+- [ ] Information vs. Provocation test: replace "this is useful" with "holy shit, that's me" if possible.
+- [ ] Status signal check: would a NYC PM owner or contractor share this because it makes *them* look informed/ahead of the curve? If no, consider whether a shareable line can be added.
+- [ ] For Monday posts: is this targeting problem-aware readers (they already want automation) or problem-unaware readers (they don't know they have a problem)? If unaware → use TOF belief disruption structure.
 
 ### Anti-slop checks (run after draft is otherwise ready):
 - [ ] Any adverbs? Cut them. ("quickly", "easily", "simply", "really", "just" — all gone)

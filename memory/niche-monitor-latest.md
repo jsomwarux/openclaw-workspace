@@ -1,7 +1,7 @@
 **Last updated:** 2026-03-20 9:00 AM EST
 
-🟠 **Agentforce for Small Business Now Bundled into Salesforce Suites** — Salesforce embedded Agentforce directly into its Suites CRM for SMBs and startups, meaning JT's target clients (insurance, PM, wholesale) may already have Agentforce access without knowing it — shifts the consulting pitch from "should you use Agentforce" to "let me activate and implement what you're already paying for." (https://techfinancials.co.za/2026/03/19/agentforce-for-small-business-is-now-built-into-salesforce-suites/)
+~~🟠 **Agentforce for Small Business Now Bundled into Salesforce Suites**~~ — [ALREADY SURFACED + CONTENT DRAFTED — do not re-surface. See cold-email/SKILL.md and outreach-pipeline for activation framing. Remove from next run.]
 
-🟠 **Salesforce CFO Warns Agentforce Token Prices Will Commoditize** — In Q4 FY2026 earnings commentary, Salesforce's CFO explicitly flagged that Agentforce token pricing will face commoditization pressure that threatens margins; Agentforce ARR hit $800M (+169% YoY). Relevant to JT because value-based pricing on Agentforce implementations must be positioned on outcomes/time-saved, not per-token cost comparisons. (https://247wallst.com/investing/2026/03/19/a-50-billion-buyback-is-raising-questions-about-salesforces-growth-story/)
+~~🟠 **Salesforce CFO Warns Agentforce Token Prices Will Commoditize**~~ — [ALREADY SURFACED 2026-03-20 — in surfaced log. Do not re-surface.]
 
-🟠 **Agentforce Contact Center Launched as CRM-Native Execution Layer** — Salesforce launched Agentforce Contact Center at Enterprise Connect 2026, positioning it as a native CRM execution layer for contact center automation — directly applicable to JT's insurance and property management prospects who run inbound claims/maintenance request queues. (https://www.cxtoday.com/contact-center/enterprise-connect-2026-cx-announcements-you-missed/)
+~~🟠 **Agentforce Contact Center Launched as CRM-Native Execution Layer**~~ — [ALREADY SURFACED 2026-03-20 — in surfaced log. Do not re-surface.]

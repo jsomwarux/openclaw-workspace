@@ -9,6 +9,8 @@ Format: [DATE] — [observation]. (Source: daily-brief.md)
 
 <!-- Entries appended below by job-market-daily cron — most recent first -->
 
+[2026-03-22] — Compensation data shows TOGAF enterprise architecture certification delivering a ~$10-15K salary premium for AI Architects, while Agentforce-specific search results remain 100% supply chain for the 7th consecutive day — the market is simultaneously credentializing the AI architect function upward (via EA frameworks) and specializing it downward (via domain verticals), leaving a narrow but real opening for generalists who can claim outcome-management framing before the slot closes. (Source: daily-brief.md)
+
 [2026-03-21] — GISUser's fresh market analysis explicitly reframes the top-tier human role in AI as "managing outcomes over AI agents, not building them" — employers are now writing JDs around orchestration and outcome ownership rather than implementation depth, which means the consulting/advisory layer is being formally recognized as a distinct, premium skill tier for the first time. (Source: daily-brief.md)
 
 [2026-03-19] — "AI Solutions Architect + Agentforce" search results are now 80%+ supply chain domain roles — the general-market Agentforce SA tier is effectively closed to new entrants without vertical domain expertise, meaning the real hiring market for non-domain consultants has shifted from open search to network/referral channels at SI partners like NeuraFlash and Accenture. (Source: daily-brief.md)

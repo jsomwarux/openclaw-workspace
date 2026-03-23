@@ -82,3 +82,23 @@ Posts to deprioritize (even if high engagement):
 - Generic "AI will replace X" without specificity
 - Content that only works because the poster has 500K followers
 - Over-formatted carousel reposts (formatting did the work, not the idea)
+
+## 2026-03-22 — Em dash + contrarian pattern violations in weekly content
+
+**Corrections:**
+1. Sunday LinkedIn paragraph 3: "wasn't the classification — Claude handles that" → period, no em dash
+2. Sunday X post: "wasn't the classification / it was the escalation logic" → contrarian flip pattern, banned outside Thursday CONTRARIAN WEIGHT mode
+3. Additional em dashes found and removed in Tuesday, Wednesday, Thursday, Friday posts (5 total in the week's content)
+
+**Root cause analysis:**
+
+The em dash violation is a *generation-time failure*, not a checklist failure. The Q2 check in the PRE-GENERATION COMMITMENTS correctly says "Scan for '—'. If found → rewrite." But this is positioned as a *post-generation scan*, which means the model generates naturally (and naturally reaches for em dashes as a stylistic separator), then is expected to catch and fix them in a checklist pass. The failure mode: the checklist runs but the model's self-review misses dashes that feel "correct" in context — particularly mid-sentence parenthetical uses like "X — which does Y — is Z", which the model often doesn't flag because they're grammatically correct.
+
+The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: the pattern is only supposed to be Thursday's format during CONTRARIAN WEIGHT mode, but it bleeds into other days because it's a natural writing pattern for "behind the build" retrospectives. The generation phase defaulted to a familiar structure without checking day-of-week constraints.
+
+**The deeper issue:** Both rules exist in the cron payload but are positioned as *post-generation corrections* rather than *pre-generation constraints*. The PRE-GENERATION COMMITMENTS block exists for exactly this reason, but only Commitment 1 (opener), Commitment 2 (em dash), and Commitment 3 (adverbs) are listed — and Commitment 2 is not strong enough. It says "scan for '—'" as a checklist step, not "do not generate em dashes under any circumstances."
+
+**Rule changes applied:**
+
+1. Em dashes are now a generation-time hard ban, not a checklist item. The distinction matters: "scan and fix" assumes fallible self-review. "Never write one" is a constraint applied before the first word.
+2. Contrarian flip pattern ("wasn't X / it was Y" or "X isn't Y / it's Z") is restricted to Thursday only during CONTRARIAN WEIGHT mode. Any other day: rewrite to lead with the positive claim directly.
