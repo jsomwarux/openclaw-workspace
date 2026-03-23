@@ -30,3 +30,6 @@ body {
 
 .glow { box-shadow: 0 0 12px rgba(16, 185, 129, 0.25); }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }

@@ -8,6 +8,8 @@ Not a task log — a training log. The difference: tasks are for JT. This is for
 
 ---
 
+[2026-03-23 3AM] Film: 2026-03-22 — em-dash and contrarian flip pattern violations in weekly content posts. Root cause was pre-generation vs. scan-and-fix positioning. Fix applied: PRE-GENERATION CONSTRAINTS block added to both X and LinkedIn cron payloads with hard "NEVER WRITE" rule for em dashes, and contrarian flip restricted to Thursday only. Pattern confirmed working. No new overnight-specific pattern found — run was clean. → Fix: none needed (already applied same turn as discovery).
+
 [2026-03-20 3AM] Film: 2026-03-19 — cron health check found 4 transient errors (Edit-fail pattern in isolated agents). Pattern already logged yesterday (10AM). No new overnight-specific pattern found. → Autoresearch baseline run on cold-email skill: 0.875 → 0.958 after one mutation (added explicit CTA note banning binary closers, cross-referenced Anti-Pattern #2). Checklist item #5 was failing ~50% of drafts because the Message Structure section didn't enforce the rule at point of construction. Fixed in SKILL.md.
 
 [2026-03-19 10AM] Film: 2026-03-18 — recurring pattern: isolated crons (skills-researcher, prospect-discovery) complete work successfully but error on file-write step (Edit tool fails in isolated sessions). Happens repeatedly — 4 occurrences yesterday. → Fix: Added rule to cron agent guidance: isolated crons should use Read+Write (full file overwrite) for appending to logs, not Edit (requires exact match on partial content). Edit in isolated sessions = fragile. Logged in daily note.

@@ -1,18 +1,35 @@
 {
-  "last_run": "2026-03-16T13:05:00Z",
-  "last_successful_run": "2026-03-16T13:05:00Z",
-  "last_week_of": "2026-03-16",
+  "last_run": "2026-03-23T08:45:00Z",
+  "last_successful_run": "2026-03-23T08:45:00Z",
+  "last_week_of": "2026-03-23",
   "last_linkedin_month": null,
   "last_angles_month": null,
   "products_processed": ["nash-satoshi", "vista"],
-  "queue_count": 12,
-  "drive_link": "https://docs.google.com/document/d/1q0E_wRirRtAQ0ksiEWRtmNoP1xP3mlgrtcGq5XUurFE/edit",
+  "queue_count": 30,
+  "drive_link": "https://docs.google.com/document/d/1iUbcHu0rE0_7Ke05z3t6dZga5CSCQm-9jE0sl2ktoRI/edit",
+  "vista_drive_link": "https://docs.google.com/document/d/1SZBxykgYY62mRN0-vNz5CSMCEwZeO2QtdOYU-gZOfbI/edit",
   "last_reddit_subreddit": {
-    "nash-satoshi": "r/CryptoCurrency",
-    "vista": "r/movies"
+    "nash-satoshi": "r/CryptoMoonShots",
+    "vista": "r/MovieSuggestions"
   },
   "last_scene_concept": {
-    "vista": 1,
-    "nash-satoshi": 1
+    "vista": 2,
+    "nash-satoshi": 2
+  },
+  "seo_evaluated": {
+    "nash-satoshi": {
+      "score": 4,
+      "date": "2026-03-23",
+      "criteria_met": ["web app exists", "high search intent", "standalone page mapping", "evergreen content"],
+      "criteria_missing": ["direct commercial intent"],
+      "decision": "task_pushed"
+    },
+    "vista": {
+      "score": 1,
+      "date": "2026-03-23",
+      "criteria_met": [],
+      "criteria_missing": ["web app with indexable URLs", "search intent", "standalone page mapping", "evergreen web content", "commercial intent"],
+      "decision": "not_ready"
+    }
   }
 }

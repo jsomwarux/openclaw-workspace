@@ -39,3 +39,25 @@
 {"date": "2026-03-22", "platform": "linkedin", "pillar": "autonomous-detection", "topic": "claude-code-channels-vs-openclaw", "banked": true, "posted": false, "source": "overnight", "rubric": "architectural decision with real tradeoffs"}
 {"date": "2026-03-22", "platform": "x", "pillar": "autonomous-detection", "topic": "hubspot-mcp-consulting-opportunity", "banked": true, "posted": false, "source": "overnight", "rubric": "pattern — new protocol unlocks excluded ICP segment"}
 {"date": "2026-03-22", "platform": "linkedin", "pillar": "autonomous-detection", "topic": "hubspot-mcp-consulting-opportunity", "banked": true, "posted": false, "source": "overnight", "rubric": "pattern — new protocol unlocks excluded ICP segment"}
+{"date":"2026-03-23","platform":"linkedin","day":"monday","pillar":"short-take","topic":"headcount-scaling-doesnt-fix-coordination-each-hire-inherits-broken-process","posted":false,"banked":false}
+{"date":"2026-03-24","platform":"linkedin","day":"tuesday","pillar":"industry-observation","topic":"wholesale-distributor-catalog-access-gap-ai-product-knowledge-agent","posted":false,"banked":false}
+{"date":"2026-03-25","platform":"linkedin","day":"wednesday","pillar":"case-study","topic":"agentguard-confidence-gated-routing-audit-trail-enterprise-ai-governance","posted":false,"banked":false}
+{"date":"2026-03-26","platform":"linkedin","day":"thursday","pillar":"agentforce-proof-point","topic":"agentforce-org-chart-alignment-before-build-insure-serviceagent-escalation","posted":false,"banked":false}
+{"date":"2026-03-27","platform":"linkedin","day":"friday","pillar":"tactical-insight","topic":"decisions-removed-per-day-better-frame-than-hours-saved-classification-logic","posted":false,"banked":false}
+{"date":"2026-03-29","platform":"linkedin","day":"sunday","pillar":"behind-the-build","topic":"glow-index-ensemble-rebuild-4llm-parallel-model-normalization-disagreement-as-signal","posted":false,"banked":false}
+{"date":"2026-03-23","platform":"linkedin","day":"backup","pillar":"tactical-insight","topic":"ai-adjacent-vs-ai-designed-process-sas-ai-button-vs-redesign","banked":true,"posted":false}
+{"date":"2026-03-23","platform":"linkedin","day":"backup","pillar":"industry-observation","topic":"agentforce-vertical-squeeze-generalist-compressed-domain-depth-is-differentiation","banked":true,"posted":false}
+{"date":"2026-03-23","platform":"x","day":"monday","pillar":"short-take","topic":"agent-jockey-job-title-nobody-has-yet","angle_id":"pos-agent-jockey","posted":false,"banked":false}
+{"date":"2026-03-24","platform":"x","day":"tuesday","pillar":"news-hook","topic":"hubspot-mcp-server-crm-ai-agents-native","angle_id":null,"posted":false,"banked":false,"bank_swap":true,"source":"auto-hubspot-mcp-opportunity"}
+{"date":"2026-03-25","platform":"x","day":"wednesday","pillar":"mini-case-study","topic":"pm-maintenance-triage-intake-dispatch-coordinator-sees-exceptions-only","angle_id":null,"posted":false,"banked":false}
+{"date":"2026-03-26","platform":"x","day":"thursday","pillar":"contrarian-hot-take","topic":"ai-implementations-fail-workflow-not-model","angle_id":null,"posted":false,"banked":false,"thursday_mode":"contrarian-weight"}
+{"date":"2026-03-27","platform":"x","day":"friday","pillar":"tactical-insight","topic":"claude-md-3level-hierarchy-global-project-agent","angle_id":"claude-md-3level","posted":false,"banked":false}
+{"date":"2026-03-28","platform":"x","day":"saturday","pillar":"eve-ops","topic":"cron-audit-agentguard-georgetown-three-portfolio-cards-march-17","angle_id":null,"posted":false,"banked":false,"source":"2026-03-17-daily-note"}
+{"date":"2026-03-29","platform":"x","day":"sunday","pillar":"learn-in-public","topic":"placeholder-jt-fills-in-source","angle_id":null,"posted":false,"banked":false,"needs_jt_fill":true}
+{"date":"2026-03-23","platform":"x","pillar":"technical","topic":"state-machines-vs-conversational-agents-reliability","angle_id":"arch-state-machines","banked":true,"posted":false}
+{"date":"2026-03-23","platform":"x","pillar":"technical","topic":"cron-invocation-cap-design-for-cap-not-feature","angle_id":"cron-invocation-cap","banked":true,"posted":false}
+{"date":"2026-03-23","platform":"x","pillar":"technical","topic":"film-review-loop-10am-engineering-not-journaling","angle_id":"mem-film-review","banked":true,"posted":false}
+{"date":"2026-03-23","platform":"x","pillar":"build-showcase","topic":"agentguard-confidence-gating-70-percent-threshold-audit-trail","angle_id":null,"banked":true,"posted":false}
+{"date":"2026-03-23","platform":"x","pillar":"build-showcase","topic":"nash-satoshi-4llm-ensemble-divergence-as-signal-32-node-n8n","angle_id":null,"banked":true,"posted":false}
+{"date":"2026-03-23","platform":"x","pillar":"build-showcase","topic":"pm-triage-template-intake-classify-dispatch-escalate-configurable-2hours","angle_id":null,"banked":true,"posted":false}
+{"date":"2026-03-23","platform":"x","pillar":"displaced","topic":"pm-software-public-stack-manual-bridge-gap","angle_id":null,"banked":true,"posted":false}

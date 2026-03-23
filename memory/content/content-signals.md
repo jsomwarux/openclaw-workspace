@@ -43,3 +43,11 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 [2026-03-13] FORMAT Warning / Cautionary story — 2 appearances (23.6K + 637 likes) | JT has angle: yes (implementation failure stories from 6 yrs at Spectrum + autonomous agent risks) | JT posted recently: no | action: recommend — Friday tactical insight could take this angle (workflow fails when nobody changes the routine around it)
 
 [2026-03-13] TOPIC x402 protocol (agent payments, 50M+ transactions) — 5 posts / ~506 total likes | JT has angle: yes (early holder, forward bet on agentic payments infrastructure) | JT posted recently: no | action: below 1000+ engagement threshold for fast lane, but active niche — worth a Saturday or Tuesday post this cycle
+
+## 2026-03-23
+
+[2026-03-23] TOPIC YC entering AI consulting space ("rebuilding consulting for AI") — 2 posts (@RaphaelDabadie 24 likes + @ai_for_success 25 likes) / ~49 total engagement | JT has angle: yes (solo operator at $1,500 fixed price doing what YC-backed firms charge $50K+ for — the bottom of the market is his) | JT posted recently: no | action: Thursday hot take X — "YC is rebuilding the $50K consulting deck. The $1,500 workflow that actually works already exists."
+
+[2026-03-23] TOPIC Claude Code momentum / Claude Code > Codex — 3 posts (@e_opore 71 likes + @justalexoki 66 likes + @vikrambuilds 2 likes) / ~139 total engagement | JT has angle: yes (Eve runs on Claude Code 24/7 for 8+ months — real operational data, not hype) | JT posted recently: no (last Claude Code post was Mar 12 cron model defaults — adjacent) | action: Saturday build-in-public slot — Claude Code angle through Eve operational lens, not another "Claude Code is great" take
+
+[2026-03-23] TOPIC 80% of enterprises struggling with AI implementation (stat: 40% embed agents by EOY 2026, 62% expect 171% ROI, 80% struggling) — 1 post (@AgentsAssemble) / low raw likes | JT has angle: yes (the 80% IS the consulting gap — this is the positioning stat for his LinkedIn and outreach) | JT posted recently: no | action: LinkedIn Monday — stat as hook, "the gap between the 62% expecting ROI and the 80% struggling to implement is where consulting lives"

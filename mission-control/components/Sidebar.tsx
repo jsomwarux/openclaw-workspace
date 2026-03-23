@@ -78,27 +78,29 @@ export default function Sidebar() {
 
       {/* ── Mobile top bar ── */}
       <header className="md:hidden fixed top-0 left-0 right-0 h-12 flex items-center px-4 border-b border-[#2a2a2a] bg-[#0d0d0d] z-40">
-        <span className="text-sm font-semibold text-emerald-400 tracking-tight">🌿 Mission Control</span>
+        <span className="text-sm font-semibold text-emerald-400 tracking-tight">🤖 Mission Control</span>
       </header>
 
       {/* ── Mobile bottom nav ── */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0d0d0d] border-t border-[#2a2a2a] z-40 flex items-center">
-        {mobileNav.map(({ href, icon: Icon, label }) => {
-          const active = isActive(href);
-          return (
-            <Link
-              key={href}
-              href={href}
-              className={cn(
-                "flex-1 flex flex-col items-center justify-center gap-1 py-2 transition-colors",
-                active ? "text-emerald-400" : "text-zinc-500 hover:text-zinc-300"
-              )}
-            >
-              <Icon size={18} />
-              <span className="text-[9px] font-medium">{label}</span>
-            </Link>
-          );
-        })}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0d0d0d] border-t border-[#2a2a2a] z-40">
+        <div className="flex items-center h-full overflow-x-auto scrollbar-none px-1">
+          {nav.map(({ href, icon: Icon, label }) => {
+            const active = isActive(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={cn(
+                  "flex-shrink-0 flex flex-col items-center justify-center gap-1 py-2 px-3 transition-colors min-w-[60px]",
+                  active ? "text-emerald-400" : "text-zinc-500 hover:text-zinc-300"
+                )}
+              >
+                <Icon size={18} />
+                <span className="text-[9px] font-medium whitespace-nowrap">{label}</span>
+              </Link>
+            );
+          })}
+        </div>
       </nav>
     </>
   );

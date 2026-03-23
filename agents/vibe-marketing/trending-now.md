@@ -3,40 +3,41 @@
 > Replaced weekly — do not treat prior week's findings as current.
 
 ## Last Updated
-2026-03-16 (Week of March 16)
+2026-03-23 (Week of March 23)
 
 ---
 
 ## Nash Satoshi (Crypto / Game Theory)
 
 **Trending topics this week:**
-- Meme coins trending hard on TikTok (#SHIB, #WIF, community-driven tokens)
-- Bull run cycle talk — "what coins are positioned for 2026"
-- AI-powered crypto analysis is emerging as a distinct content niche
-- CT is debating fundamentals vs. momentum; "AI engagement metrics" vs. price action
+- TikTok influencer rewards through PumFun / memecoin creator programs — emotional/viral money movement
+- "What crypto to invest March 2026" is a top TikTok discover topic — broad retail curiosity
+- Key insight from research: "a single viral clip can nudge retail flows and create sudden price volatility as viewers act on emotion" — TikTok algorithm rewards emotional velocity, not analysis
+- This is the exact contrast Nash Satoshi is positioned to exploit: TikTok/CT = emotion-driven. Game theory = structural positioning.
 
 **Formats getting traction:**
-- Slideshow: "you're wrong about X" contrarian framing performs well
-- Reaction format: react to a common CT take with a game theory counter
-- Short hot takes (2-3 line X posts) getting strong engagement on methodology
+- Contrarian takes that explain WHY popular behavior is structurally flawed (not just wrong)
+- Reaction-style content exposing the gap between common takes and what the model sees
+- Short X hot takes about methodology continuing to perform
 
 **Content angle to hit this week:**
-Crowd tracks momentum — game theory tracks positioning. Use this as the throughline. Attack the structural flaw in how most people analyze crypto (backward-looking signals) and contrast with positioning analysis. Tie into the meme coin debate — game theory actually explains why they sustain (Nash equilibria), which is non-obvious and debate-worthy.
+Emotional velocity and game theory positioning operate on different timescales. TikTok/CT measures how fast the crowd *feels* something. Game theory measures what rational actors are *positioned* to do regardless of feeling. Use this contrast as the throughline. Also: meme coin game theory angle — they're actually the purest Nash equilibrium expression in crypto, which is a non-obvious claim that generates debate.
 
 ---
 
 ## Vista (Movie Ratings / Film)
 
 **Trending topics this week:**
-- "How I rate Letterboxd movies" is actively viral on TikTok — clear opening for Vista's taste angle
-- Oscars season content getting strong engagement (nominees, snubs, predictions)
-- Letterboxd rating system discussion/debate is a recurring TikTok format
-- "What to watch" recommendation content consistently high-engagement
+- Letterboxd community extremely active on TikTok and Reddit — #letterboxd on TikTok has active engagement
+- "One Battle After Another" trending on Letterboxd (featured in their March 2026 report)
+- Filmtok is using #movies #filmtok #letterboxd as the standard tag stack
+- TikTok/Letterboxd crossover audience is large — people finding movies through TikTok then logging on Letterboxd
+- This creates a Vista angle: TikTok sends people to Letterboxd. But Letterboxd's half-star scale doesn't capture taste precisely. Vista fills the precision gap.
 
 **Formats getting traction:**
-- Slideshow: "your [platform] is more valuable than [platform] lets you know" framing
-- UGC reaction: react to a controversial IMDb/RT score with a personal taste framework
-- Build-in-public posts from solo devs getting strong engagement from builder community
+- "Letterboxd vs. [alternative]" comparison content getting strong engagement
+- Slideshows reacting to IMDb/RT score gaps for polarizing films
+- "my personal rating vs. crowd rating" posts are a recurring viral format
 
 **Content angle to hit this week:**
-Letterboxd = social network, Vista = taste engine. Ride the Letterboxd conversation that's already happening. Position Vista as the answer to a question Letterboxd isn't designed to answer: "why do I like what I like?" Use the crowd-score-vs-personal-taste tension as the debate hook. Tie into Oscars season for Reddit relevance.
+Crowd averages (IMDb, RT) tell you what millions of people felt. Your own rating history tells you what *you* like. These are different data sources. Position Vista as the answer to the question Letterboxd isn't designed to answer: why do I like what I like? Use Midsommar (or similar polarizing film) as the UGC reaction anchor — high critic score, polarizing audience score, illustrates crowd averages masking personal taste signal.
