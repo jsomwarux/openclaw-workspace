@@ -352,3 +352,15 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 - **Anthropic Cowork**: Claude Desktop agent that works in your files, no coding required (via VentureBeat). 🟡 Watch — could affect JT's SMB consulting pitch (some clients may use this before hiring a consultant).
 - **MCP as Shadow IT (Qualys TotalAI, 2026-03-19)**: framing MCP servers as new enterprise shadow IT risk — supply chain exposure, protocol churn, unmanaged connections. 🟡 Content angle: "the same governance problem that plagued SaaS sprawl is happening again with AI agents. The answer isn't less MCP — it's a control layer." Validates AgentGuard.
 - **MCP production roadmap (The New Stack)**: maintainers prioritizing production reliability fixes — auth, rate limiting, observability. Protocol maturing fast. 🟡 Monitor.
+
+## 2026-03-23 2PM Scan
+
+**Enterprise AI Agent adoption: +466.7% YoY (BeyondTrust/Phantom Labs, Mar 23)** — Identity security data confirms agents are now standard enterprise infrastructure, not experimental. BeyondTrust launched unified privileged identity for AI agent "coworkers." Strong validation signal for JT's consulting pitch on governance/oversight. 🟠 Content angle: "AI agents went from pilot to payroll in 12 months. The security teams knew first."
+
+**Salesforce Agentforce now included in Starter/Pro SMB suites (SalesforceDevops, Mar 18)** — All existing Starter and Pro customers get it free. AI paywall breaking. Relevant: SMB clients who already pay for Salesforce CRM now have Agentforce access without new licensing. Removes the "we can't afford it" objection for Agentforce implementations at small Salesforce shops. Updates JT's pitch: "you already have the seats — you just need implementation." 🟠 Update cold-email pitch angle for Agentforce + insurance targets.
+
+**Cisco Zero Trust for AI Agents (Mar 23)** — AI Defense product extended to agent workloads. Governance/control layer theme continuing to dominate enterprise AI. Validates AgentGuard positioning. 🟡
+
+**Cloudflare "Bonk" — automated GitHub code review agent built on Kimi K2.5 (Mar 22)** — "Model-as-component" pattern: specialized model, one job, integrated into existing workflow. Example of what purpose-built agents look like in practice. 🟡 Useful framing for JT's consulting demos.
+
+**NVIDIA Nemotron Nano 3 on Amazon Bedrock for Agentforce (GTC 2026)** — High-throughput/B2C batch processing via Agentforce. Signals Agentforce ecosystem expanding beyond Salesforce infrastructure. 🟡

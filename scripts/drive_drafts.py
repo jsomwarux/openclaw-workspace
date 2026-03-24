@@ -27,6 +27,23 @@ from google.auth.transport.requests import Request
 TOKEN_PATH  = os.path.expanduser("~/.openclaw/workspace/config/google-oauth-token.json")
 ROOT_FOLDER = "Eve — Drafts"
 
+# BANNED title patterns for outreach docs — these create confusion and duplicates
+# Always use "[Company] — LinkedIn DM (3-touch)" or "[Company] — Research Brief" etc.
+# BANNED title patterns for outreach docs — use standard naming instead
+# '[Company] — LinkedIn DM (3-touch)' is the correct outreach doc title
+BANNED_TITLE_PATTERNS = [
+    "Outreach Draft",
+    "outreach draft",
+]
+
+def check_title(title):
+    """Warn on non-standard titles but don't block uploads (docs may be solo docs for a client)."""
+    for banned in BANNED_TITLE_PATTERNS:
+        if banned in title:
+            print(f"WARNING: Title '{title}' uses non-standard pattern '{banned}'.", file=sys.stderr)
+            print("Preferred: '[Company] — LinkedIn DM (3-touch)' or '[Company] — Research Brief'", file=sys.stderr)
+            print("Continuing upload — rename manually or re-upload with correct title.", file=sys.stderr)
+
 
 def get_drive():
     if not os.path.exists(TOKEN_PATH):
@@ -154,6 +171,9 @@ def main():
 
     if not args.title:
         parser.error("--title is required")
+
+    # Enforce title naming standards
+    check_title(args.title)
 
     # Resolve folder
     if args.path:

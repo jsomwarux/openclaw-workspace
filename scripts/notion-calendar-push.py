@@ -14,6 +14,18 @@ NOTION_TOKEN = os.environ.get("NOTION_TOKEN", "ntn_I6090101509856iOb9JOeecrHaqzw
 DB_ID = "32516aff-9305-81a7-8659-eac869c71ba8"
 
 def push_post(platform, date, post_text, post_type="Planned", week=None, drive_link=None):
+    from datetime import datetime, timedelta
+    # Normalize platform name
+    if platform == "X — Personal":
+        platform = "X"
+    # Auto-compute week label if not provided
+    if not week and date:
+        try:
+            d = datetime.strptime(date, "%Y-%m-%d")
+            monday = d - timedelta(days=d.weekday())
+            week = f"Week of {monday.strftime('%b %-d')}"
+        except Exception:
+            pass
     payload = {
         "parent": {"database_id": DB_ID},
         "properties": {

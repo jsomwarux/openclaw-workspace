@@ -65,6 +65,54 @@ Before fetching tasks, check if the cold-email autoresearch loop should run toni
 3. If the most recent run was within 14 days → skip, proceed to Step 2.
 4. Skip this step entirely if estimated cost so far tonight is already > $0.50.
 
+### Step 1.7: Job Application Auto-Build (runs every night — do not skip)
+
+Check for new qualifying roles that need a resume + cover letter built.
+
+1. Read `~/projects/job-market-agent/data/job-opportunities.md`
+   Find all entries with `status: new`.
+
+2. For each `status: new` role:
+   a. Check the score against hard filters (from profile/jt-profile.md):
+      - Score must be **20+/25**
+      - Must pass ALL hard filters: no hands-on coding primary, no pre-sales SE, no Agentforce internals defense, no Apex/SFDX/ML engineering, NYC metro or remote only
+      - Must NOT already have a resume/cover letter in Drive (check `~/projects/job-market-agent/data/job-opportunities.md` for a `drive_resume_url` field on that entry)
+   b. If qualifies AND no docs built yet: spawn a sub-agent to build both documents.
+
+3. Sub-agent prompt (use for each qualifying role):
+   ```
+   Read ~/projects/job-market-agent/profile/jt-profile.md for JT's background.
+   Read ~/.openclaw/workspace/MEMORY.md for current context.
+   Read the job opportunity details from ~/projects/job-market-agent/data/job-opportunities.md for role: [ROLE TITLE] at [COMPANY].
+   
+   Follow the job-application skill at ~/.openclaw/workspace/skills/job-application/SKILL.md exactly.
+   Build: (1) tailored resume as .docx using build_resume_docx.py, (2) cover letter as .docx.
+   Upload both to Drive:
+     - Resume: python3 scripts/drive_drafts.py --title "[Company] — Resume" --path "Job Applications/Resumes" --file [path]
+     - Cover letter: python3 scripts/drive_drafts.py --title "[Company] — Cover Letter" --path "Job Applications/Cover Letters" --file [path]
+   Capture both Drive URLs.
+   Write them to a handoff file: ~/projects/job-market-agent/data/[company-slug]-app-handoff.md
+   ```
+
+4. After sub-agent completes: push ONE HIGH task to Mission Control per role:
+   ```
+   curl -s -X POST http://localhost:3000/api/tasks \
+     -H 'Content-Type: application/json' \
+     -d '{
+       "title": "Review + Submit: [ROLE TITLE] at [COMPANY]",
+       "description": "Resume and cover letter built overnight. Review both in Drive, then upload to [application URL from job-opportunities.md] and submit.\n\nResume: [DRIVE_RESUME_URL]\nCover Letter: [DRIVE_COVER_LETTER_URL]\n\nScore: [X]/25 | Salary: [range] | Location: [NYC/remote]\n\nApplication URL: [url from job-opportunities.md]",
+       "status": "todo",
+       "priority": "high",
+       "sortOrder": 10,
+       "assignee": "jt",
+       "project": "Job Market"
+     }'
+   ```
+
+5. Update `job-opportunities.md`: change the role's `status` from `new` to `docs-built`. Add `drive_resume_url` and `drive_cover_letter_url` fields so it's never built twice.
+
+6. This step is a BONUS — it does NOT count toward the 2-task limit. It runs before MC task selection and is skipped only if: no `status: new` roles exist, OR estimated cost so far tonight is already > $1.00.
+
 ### Step 2: Fetch Task Board
 ```
 curl -s http://localhost:3000/api/tasks

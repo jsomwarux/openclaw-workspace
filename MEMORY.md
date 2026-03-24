@@ -95,7 +95,7 @@
 - ~~Salesforce Lead Agentforce SE~~ — PASSED 2026-03-18. Role required deep technical Agentforce conversations JT isn't comfortable with yet. His Agentforce capability is agent-configured, not hands-on. **Hard rule going forward: do not recommend roles where core responsibility is explaining or defending Agentforce internals to technical audiences.**
 - ~~🟠 Salesforce Agentforce/AI Deployment Strategist (20/25, $140K–$185K)~~ — EXPIRED/REMOVED 2026-03-19. JR305206 returns 404 on both Salesforce Careers and Workday. Do not resurface.
 - ~~Salesforce Sr. Supply Chain Strategist~~ — REMOVED 2026-03-22. Domain requirement is a hard disqualifier (requires actual supply chain ops expertise, not just Agentforce). Score corrected to 11/25.
-- 🟠 Writer SA East (20/25, $207K–$250K hybrid NYC) — Python gap, still worth applying. Docs: memory/drafts/writer-sa-resume.md + writer-sa-cover-letter.md
+- ~~Writer SA East (20/25, $207K–$250K hybrid NYC)~~ — TAKEN DOWN 2026-03-22. Do not resurface.
 - ⛔ OpenAI AI Deployment Engineer (18/25, NYC hybrid) — evaluated 2026-03-18, skipped. Python/JS proficiency + infra ownership required explicitly. Below 24+ threshold.
 - Skill gaps (active): AWS Bedrock, LangChain, Copilot Studio, Conversation Design (partially closed — ConversationFirst framework built)
 
@@ -165,6 +165,7 @@
 - **NOTE (2026-03-15):** construction-trades.md + property-management.md shortlists created (prospect-discovery was writing to non-existent files)
 - **NOTE (2026-03-20 — self-improvement audit):** Full audit of all self-improvement systems. Fixes applied: (1) PostBridge → HIGH sortOrder 45 — unblocks entire content feedback flywheel; (2) weekly-synthesis timeout 300s→720s; (3) daily-news-hook staggered to 9:30AM (was 9:15AM, rate-limit collision with niche monitor); (4) prospect-discovery switched from Edit tool to shell append — fixes file-size write failures; (5) HEARTBEAT.md: added autoresearch enrollment check (step 9) + idea queue pruning (step 10) + content→consulting niche feedback rule to weekly synthesis; (6) overnight agent: explicit autoresearch volume trigger check added (Step 1.6) — runs cold-email loop if >14 days since last run; (7) autoresearch AGENT.md: volume trigger documented. Key finding: vibe marketing performance-log.jsonl has 0 entries — entire feedback flywheel blocked on PostBridge activation.
 - reddit-karma-daily-reminder: 8PM daily | isolated groq | sends daily Reddit karma habit reminder to JT | UUID: fe575759-c8b1-4715-ae5a-0dbe034b3c9b
+- job-app-auto-builder: 6AM daily | isolated sonnet | checks job-opportunities.md for status:new 20+/25 roles → builds resume + cover letter .docx → uploads to Drive → pushes "Review + Submit" HIGH MC task to JT | UUID: b2357bd5-651d-4151-80df-49e4a928826f | silent if no qualifying roles
 - Daily cap: 20 invocations/weekday ✅
 
 ## Cost Tracking
@@ -206,8 +207,22 @@
 - Coin intelligence: crypto-agent/data/coin-intelligence/TICKER.md per coin
 - $JUNO note: previously EXIT-rated — JT re-entered, agent will re-analyze fresh each morning
 
+## Financial Situation (updated 2026-03-23)
+- Monthly burn: $2,174/month (rent $1,050 + expenses $550 + subscriptions $574 after SuperGrok cancellation)
+- Subscriptions breakdown: Claude $200 | Gumloop $194 (105k credits, Nash Satoshi 680/run) | LinkedIn $65 | X $40 | Replit $25 | Supabase $25 (DB for Nash Satoshi/Vista/Glow Index) | Gsuite $14 | Higgsfield $9 (locked yearly until Jan 2027 — do not renew)
+- SuperGrok cancelled 2026-03-23 (was $30/mo — Grok now via OpenRouter if needed)
+- Crypto: ~$10K, DECLINING. Market down, withdrawing to cover burn.
+- Income: $30/mo net (Aya scraper $75/mo, ~$45 costs). 
+- No savings buffer. Zero.
+- Aya $1,000 scraper: paid out.
+- **Unemployment (filed, backpay to December):** NY max is $869/wk (raised Oct 2025). JT estimate ~$500/wk. Backpay ~17 weeks = ~$8,500 lump sum incoming within weeks. BUT those weeks count against 26-week max, so only ~9 weeks of ongoing weekly payments (~$4,500) remain after lump sum hits.
+- **Total UI benefit: ~$13,000**
+- **Updated runway: ~$23K total ($10K crypto + $8.5K lump sum + $4.5K ongoing UI) = ~11 months at $2,040/mo burn.** After UI exhausts (~9 weeks), back to burning crypto unless income lands.
+- North Star: financial independence, multiple passive income streams, controlled work hours, luxury travel, nice house near major city, take care of parents.
+- **Implication: runway is real but has a cliff. UI weekly payments end in ~9 weeks post-lump sum. Job landing in 60-90 days is still the priority — it solves burn permanently.**
+
 ## Key Decisions
-- **Priority order (updated 2026-03-19)**: Consulting first. Job applications run in parallel at low volume (2-3/week) as financial hedge — consulting timeline is uncertain, runway matters. Threshold: score **20+/25** with hard filters still in place (no hands-on coding primary, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement). Only active application: OpenAI AI Deployment Manager (applied 2026-03-18).
+- **Priority order (updated 2026-03-23 — RUNWAY CRITICAL)**: Job applications are now PRIMARY, not a hedge. With ~4-5 months runway and declining crypto, a $150K+ role closing in 60-90 days is the most reliable lifeline. Volume must go up — not 2-3/week, but every qualified role (20+/25, passes hard filters) gets an application. Consulting runs in parallel but cannot be treated as the primary income plan on this timeline. Threshold: score **20+/25** with hard filters still in place (no hands-on coding primary, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement). Only active application: OpenAI AI Deployment Manager (applied 2026-03-18).
 - **Agentforce job filter (added 2026-03-18)**: Do not recommend roles where a core responsibility is explaining, defending, or technically advising on Agentforce internals. JT's Agentforce capability is agent-configured. He can build and deploy agents but is not comfortable in deep technical Agentforce conversations with clients or SE/sales engineering contexts.
 - **Outreach active as of 2026-03-09**: freeze lifted. T1: H.C. Oswald — outreach sent 2026-03-11 (LinkedIn DM + subject "After-hours coverage for your catalog"). Awaiting response. T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
 - **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates: wholesale (convert existing demo — still needed), **construction job-tracker ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/construction-template/`), **PM maintenance triage ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/pm-maintenance-template/`). Tier 3 send scheduler: still needed.

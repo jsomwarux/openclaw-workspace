@@ -19,7 +19,21 @@ if [ -n "$CONTEXT_PID" ]; then
     fi
 fi
 
-# 2. Check if openclaw-gateway is running
+# 2. Check if Mission Control (Next.js) is responding
+MC_HTTP=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 http://localhost:3000/api/tasks 2>/dev/null)
+if [ "$MC_HTTP" != "200" ]; then
+    echo "$(timestamp) [watchdog] Mission Control API returned $MC_HTTP — kicking next LaunchAgent" >> "$LOG"
+    launchctl kickstart -k "gui/$(id -u)/com.openclaw.mission-control-next" >> "$LOG" 2>&1
+    sleep 8
+    MC_HTTP2=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 http://localhost:3000/api/tasks 2>/dev/null)
+    if [ "$MC_HTTP2" = "200" ]; then
+        echo "$(timestamp) [watchdog] Mission Control recovered (HTTP $MC_HTTP2)" >> "$LOG"
+    else
+        echo "$(timestamp) [watchdog] Mission Control still unhealthy after kickstart (HTTP $MC_HTTP2)" >> "$LOG"
+    fi
+fi
+
+# 3. Check if openclaw-gateway is running
 if ! pgrep -f "openclaw-gateway" > /dev/null 2>&1; then
     echo "$(timestamp) [watchdog] gateway not running — kicking LaunchAgent" >> "$LOG"
     launchctl kickstart -k "gui/$(id -u)/ai.openclaw.gateway" >> "$LOG" 2>&1

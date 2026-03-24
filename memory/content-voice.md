@@ -286,6 +286,7 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 | PM maintenance triage template (n8n) | Reusable T2 outreach template for NYC property managers (AppFolio/Buildium). Tenant submits request → Claude classifies urgency + category → routes to vendor → auto-notifies tenant → logs to Sheets → escalates no-shows. Configurable per prospect in ~2 hours. |
 | Construction job progress tracker (n8n) | Reusable T2 template for NYC GCs/contractors (ServiceTitan/Jobber users). Foreman sends one WhatsApp message → Claude classifies on-track/at-risk/blocked → client gets auto-update → job logged to Sheets → owner alerted only on blockers. Kills 30–60 min/day of status calls. Configurable per prospect in ~2 hours. |
 | AgentGuard (governance layer) | Confidence-gated routing for AI agents — ≥70% executes automatically, <70% goes to human review queue. Full audit trail on every decision. Live at agentguard-delta.vercel.app. Demo: HR candidate screening. The thing that gets AI deployments approved by legal/compliance. **On jtsomwaru.com as of March 2026.** |
+| Glow Index engine + ensemble template | FastAPI backend running 4 LLMs simultaneously (OpenAI o3, Gemini 2.5 Pro, Claude Sonnet 4.6, Grok 4) to score skincare products. Reusable ensemble template extracted from Nash Satoshi build — second pipeline took 20% of the time. Engine complete March 2026. |
 
 ### Background Proof (6 years of real enterprise implementation)
 - BSA at Spectrum Enterprise 2019–2025: watched Salesforce implementations at the $500K–$2M scale get adopted wrong
@@ -559,3 +560,4 @@ Rate 1–10 on each dimension. If total < 35/50, revise before sending.
 
 <!-- Auto-appended 2026-03-21 -->
 | Glow Index frontend polish | NaN fix + verdict banner + key findings panel + model name normalization — pushed 2026-03-21 |
+| Ensemble Ranking App Factory | Niche config schema + parameterized Next.js template + prompt generator + new-niche.sh. New ranking app in any niche from one config file. Tested: colleges. Powering Nash Satoshi + Glow Index + future niches. The third app is almost free. |

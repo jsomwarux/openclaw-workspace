@@ -85,3 +85,24 @@
 **Outcome:** Visual architecture overview of Eve's 8 core operational systems — accessible at /systems
 **Demonstrates:** Next.js dashboard development, flow diagram rendering, dark/light theming
 **Status:** complete (internal build — no demo value, skip portfolio)
+
+## Glow Index Engine + Reusable Ensemble Template (2026-03-23)
+**What:** FastAPI backend running 4-LLM ensemble (OpenAI o3, Gemini 2.5 Pro, Claude Sonnet 4.6, Grok 4) scoring skincare products simultaneously. Reusable ensemble template extracted from Nash Satoshi architecture — second build took 20% of the time.
+**For:** Glow Index (passive income app — skincare rankings)
+**Outcome:** Engine complete. Template extracted and reusable across any rankings domain. Pending: n8n import + ngrok activation for live demo.
+**Stack:** FastAPI, Python, OpenRouter (4 models), asyncio, structured output schema, n8n HTTP callback
+**Content angle:** "Built the same 4-LLM ensemble twice. Second one took 20% of the time — because I extracted the template after the first."
+**Status:** engine complete, activation pending (n8n + ngrok step remaining)
+
+## Ensemble Ranking App Factory (2026-03-23)
+**What:** Niche config schema, parameterized Next.js template, prompt generator, and new-niche.sh orchestration script. Full factory for spinning up multi-LLM ranking apps in any niche from a single config.
+**Tested with:** Colleges config (working frontend in minutes)
+**Powers:** Nash Satoshi, Glow Index, and any future ranking product
+**Stack:** Next.js (parameterized template), JSON config schema, prompt generator, bash orchestration, OpenRouter (4 models)
+**Content angle:** "Stopped building ranking apps. Built the machine that builds them. Third one is almost free."
+**Status:** complete
+
+## UI/UX Pipeline Added to Ranking App Factory (2026-03-23)
+**What:** uiux-review.sh integrated into new-niche.sh — every new niche now gets an automated UI/UX review pass as part of the generation pipeline. Glow Index improvements backported to template-app.
+**Impact:** All future ranking apps inherit the polished Glow Index design system out of the box. Review is mandatory, not optional.
+**Status:** complete — factory pipeline now: config → generate → build → uiux-review → verify
