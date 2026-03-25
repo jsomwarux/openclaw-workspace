@@ -11,11 +11,12 @@
 **Structure (in order):**
 1. Header (Name, Target Title, Contact, LinkedIn, Portfolio URL)
 2. Professional Summary (3-5 sentences, keyword-loaded)
-3. Technical Skills (categorized, NOT a wall of text)
-4. Professional Experience (reverse chronological, last 10-15 years)
+3. Professional Experience (reverse chronological, last 10-15 years)
+4. Skills (categorized, NOT a wall of text — after experience so bullets validate the skills)
 5. Key Projects / Case Studies (optional but powerful for consulting roles)
-6. Certifications
-7. Education
+6. Education
+
+Note: build_resume_docx.py renders in this exact order. Do not reorder Skills before Experience — JT's 6-year BSA experience is the credibility anchor; skills read better after the context is established.
 
 **Length:** Two pages acceptable for 6+ years of relevant experience with substantial project work. Every word must earn its place.
 

@@ -8,3 +8,4 @@
 2026-03-19 agentforce-smb-bundled — Agentforce for Small Business bundled into Salesforce Suites for SMBs; pitch shift to "activate what you're already paying for." Content drafted + added to cold-email SKILL.md.
 2026-03-20 agentforce-contact-center — Salesforce launched Agentforce Contact Center at Enterprise Connect 2026 as CRM-native execution layer for contact center automation.
 2026-03-20 salesforce-token-commoditization — Salesforce CFO flagged Agentforce token pricing will face commoditization pressure; $800M ARR +169% YoY. Positioning note: lead with outcomes, not per-token cost.
+2026-03-24 n8n-march-2026-mcp-update — n8n March 2026 release: MCP Tools expansion (McpClientTool schema sanitization), multi-agent chat integration, 1Password External Secrets, SSRF hardening — directly affects JT's n8n deployment stack.

@@ -81,6 +81,44 @@ Save to: `~/.openclaw/workspace/memory/drafts/[company-slug]-cover-letter.md`
 
 **NEVER write resume/cover letter as markdown.** Always generate proper .docx using build_resume_docx.py.
 
+**MANDATORY parse verification before uploading** — run this after generating, before uploading:
+```python
+# Quick verify the markdown parsed correctly (not falling back to hardcoded content)
+exec(open('/Users/jtsomwaru/.openclaw/workspace/scripts/build_resume_docx.py').read())
+data = parse_resume_md('/path/to/resume.md')
+print("Name:", data['name'])
+print("Skills:", [s[0] for s in data['skills']])
+print("Experience:", [(j['title'], j['company']) for j in data['experience']])
+print("Education:", data['education'])
+```
+If any field is empty or shows fallback content ("Opticfy", missing Spectrum, etc.) — STOP. Fix the markdown format before uploading. The parser requires: `### Job Title` headings for experience, `**Company**, Location, Dates` on the line after, bullets as `- text`.
+
+**Resume markdown format (exact structure required):**
+```
+# JT SOMWARU
+contact line
+
+## PROFESSIONAL SUMMARY
+text
+
+## SKILLS
+**Category:** skill1, skill2
+
+## EXPERIENCE
+
+### Job Title
+**Company Name**, Location, YYYY-Present
+
+- Bullet one
+- Bullet two
+
+## KEY PROJECTS
+**Project Name:** description
+
+## EDUCATION
+Degree | School | Year
+```
+
 1. Update `scripts/build_resume_docx.py` with tailored content for the role
 2. Generate: `python3 ~/.openclaw/workspace/scripts/build_resume_docx.py --type both --output-dir /tmp`
 3. Upload using the Drive API directly (binary → convert to Google Doc on upload):

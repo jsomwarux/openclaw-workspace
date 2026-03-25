@@ -621,6 +621,45 @@ If Drive upload fails: log the error, continue. queue.jsonl is the local source 
 
 ---
 
+## Step 5b: Push X posts to Notion Content Calendar (mandatory — runs after Drive upload)
+
+For every approved X post in queue.jsonl this week, push an entry to the Notion Content Calendar.
+
+**Script:** `python3 ~/.openclaw/workspace/scripts/notion-calendar-push.py --batch '[...]'`
+
+**Batch entry format per X post:**
+```json
+{
+  "platform": "X — @[account]",
+  "date": "[YYYY-MM-DD]",
+  "post": "[first 100 chars of content, newlines replaced with space]",
+  "type": "Vibe",
+  "week": "[week_of date]",
+  "drive_link": "[product Drive link from Step 5]"
+}
+```
+
+**Date assignment — staggered by product to prevent same-account collisions:**
+- Products sharing the same X account (e.g. multiple products on @jts_14): assign different days
+- Default stagger pattern for 2 active products on @jts_14 + 1 dedicated account:
+  - Dedicated account (e.g. @NashSatoshi): **Mon / Wed / Fri** (days 0, 2, 4 from week_of)
+  - @jts_14 product (e.g. Vista): **Tue / Thu / Sat** (days 1, 3, 5 from week_of)
+  - If a 3rd product shares @jts_14: use Sun (day 6) as overflow, or push to the following Mon
+- Never assign two posts to the same account on the same date
+- For a single active product: spread Mon / Wed / Fri
+
+**ICP variants (posts with `variation_of` set): DO NOT push to Notion Calendar.** These are A/B alternates stored in Drive. Only core posts (no `variation_of` field) go on the calendar. The calendar shows what to post, not every available option.
+
+**Platform label:** `"X — [accounts.x from product-registry.json]"` — always read from the registry, never hardcode. For products sharing @jts_14, append the product name: `"X — @jts_14 (Vista)"`, `"X — @jts_14 (Glow Index)"`. If the product has no `accounts.x` value, skip and log a warning.
+
+**What to push:** X posts only (core posts, no variants). TikTok scripts and Reddit posts are in Drive but not on the Notion Calendar.
+
+**If batch push fails:** Log the error and continue. Calendar push is non-blocking — never abort the run for a Notion failure.
+
+**For new products (first time generating):** The same logic applies. When a new product is added to product-registry.json and first content is generated, its X posts get pushed to the calendar automatically. No special case needed.
+
+---
+
 ## Step 6: Send Telegram summary to JT
 
 Send to channel=telegram, target=6608544825:

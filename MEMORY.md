@@ -109,7 +109,18 @@
 
 ## Passive Income System
 - **Bucket**: separate from consulting + career — builds that run autonomously, zero upkeep
-- **Active properties**: Nash Satoshi (built, stalled, needs monetization), Glow Index (built, stalled, needs n8n + ngrok)
+- **Active properties**: Nash Satoshi (built, stalled, needs monetization), Glow Index (built, active — analyses running, 4-LLM ensemble live, Tailscale Funnel + n8n wired)
+
+## Ensemble Rankings Strategy (decided 2026-03-24)
+- **Model**: individual niche domains, shared platform identity underneath — NOT one URL with tabs
+- **Why individual domains**: SEO authority is niche-specific (glowindex.com outranks platform.com/skincare for every ranking query), community seeding works better (Reddit/TikTok shares a product, not a tab), assets are independently sellable
+- **Shared platform identity**: all niche apps share consistent design language (tier system, scoring rings, warm-white/dark primary palette), footer cross-links between properties, eventual directory site when 3+ niches have real traction
+- **Platform directory trigger**: build `[brandname].com` landing page listing all niches ONLY after 3+ niche sites have 1k+ monthly visitors each — not before
+- **Platform brand candidates**: RankStack, ConsensusRank (not decided — pick when 3+ niches are live)
+- **Analog**: Dotdash Meredith model — Investopedia + Verywell + etc. as separate properties, shared infrastructure and brand signal
+- **Hard rule**: every new niche gets its own domain deployed via `new-niche.sh` → Vercel. Never add a niche as a tab or sub-path of an existing domain.
+- **Glow Index exception**: lives on Replit (legacy). All future niche apps → Vercel.
+- **Build system**: `~/projects/ranking-app-agent/` | new-niche.sh scaffolds standalone deployable per niche | uiux-review.sh reviews for target audience | generate-prompts.ts generates scoring prompts calibrated to targetUser
 - **Vibe Marketing System**: ✅ BUILT 2026-03-12 — weekly content generation for passive income products
   - Agent: `agents/vibe-marketing/AGENT.md` | Registry: `agents/vibe-marketing/product-registry.json`
   - Queue: `agents/vibe-marketing/queue.jsonl` | State: `agents/vibe-marketing/state.json`
@@ -203,7 +214,7 @@
 
 ## Crypto
 - Primary income: crypto | Forward bet: x402 protocol
-- Portfolio (7 coins as of 2026-02-26): $MLTL, $KELLYCLAUDE, $FELIX, $NOX, $SELFCLAW, $JUNO, $PRXVT
+- Portfolio (21 coins as of 2026-03-24 — pulled live from Google Sheet each run): $KELLYCLAUDE, $FELIX, $A0T, $PRXVT, $NOX, $JUNO, $ODAI, $PERKOS, $MOLTEN, $FDRY, $NOOK, $CLAWNCH, $CLAWD, $DREAMS, $ZAUTH, $DEXTER, $TAKEOVER, $ROBOTMONEY, $SERV, $WORK, $BOTCOIN
 - Coin intelligence: crypto-agent/data/coin-intelligence/TICKER.md per coin
 - $JUNO note: previously EXIT-rated — JT re-entered, agent will re-analyze fresh each morning
 

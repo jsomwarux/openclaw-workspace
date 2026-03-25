@@ -502,12 +502,6 @@ def build_resume(output_path, resume_md=None):
     summary_run.font.size = Pt(10.5)
     summary_run.font.color.rgb = BLACK
 
-    # ── SKILLS (from md) ──────────────────────────────────────────────────────
-    if md and md['skills']:
-        add_section_heading(doc, 'Skills')
-        for cat, text in md['skills']:
-            add_skills_line(doc, cat, text)
-
     # ── EXPERIENCE ────────────────────────────────────────────────────────────
     add_section_heading(doc, 'Experience')
 
@@ -525,9 +519,9 @@ def build_resume(output_path, resume_md=None):
     else:
         # Fallback hardcoded experience (kept as safety net)
         add_job_header(doc,
-            title='Founder and AI Implementation Consultant',
+            title='AI Implementation Consultant',
             location='New York City',
-            company='Opticfy',
+            company='Independent Consulting',
             dates='2025–Present',
             content_width=content_width
         )
@@ -537,6 +531,12 @@ def build_resume(output_path, resume_md=None):
             'Delivered a $1,500 operational intelligence dashboard for Aya (NYC construction firm); client commissioned $3,500 in follow-on projects immediately after delivery.',
         ]:
             add_bullet(doc, b)
+
+    # ── SKILLS (from md) — rendered AFTER experience ─────────────────────────
+    if md and md['skills']:
+        add_section_heading(doc, 'Skills')
+        for cat, text in md['skills']:
+            add_skills_line(doc, cat, text)
 
     # ── KEY PROJECTS ──────────────────────────────────────────────────────────
     projects_to_render = md['projects'] if md and md['projects'] else [
@@ -548,7 +548,9 @@ def build_resume(output_path, resume_md=None):
         for name, desc in projects_to_render:
             para = doc.add_paragraph()
             set_para_spacing(para, before_pt=3, after_pt=3, line_spacing=1.1)
-            name_run = para.add_run(name + ': ')
+            # Strip trailing colon from name if markdown already has it
+            clean_name = name.rstrip(':').rstrip()
+            name_run = para.add_run(clean_name + ': ')
             name_run.font.name = 'Calibri'
             name_run.font.size = Pt(10.5)
             name_run.font.bold = True
@@ -568,14 +570,18 @@ def build_resume(output_path, resume_md=None):
     # ── EDUCATION ─────────────────────────────────────────────────────────────
     add_section_heading(doc, 'Education')
     edu_lines = md['education'] if md and md['education'] else [
-        '**Ithaca College**, Bachelor of Science, Sport Management. Minor, Legal Studies. 2018'
+        'Bachelor of Science, Sport Management | Ithaca College | 2018',
+        'Data Analytics Certificate | Northeastern University | 2019'
     ]
     import re as _re
     for edu_line in edu_lines:
         edu_para = doc.add_paragraph()
         set_para_spacing(edu_para, before_pt=4, after_pt=2)
-        # Bold the institution name (text before first comma or after **)
-        bold_m = _re.match(r'\*\*(.+?)\*\*,?\s*(.*)', edu_line.strip())
+        line = edu_line.strip()
+        # Format 1: **School**, degree, year
+        bold_m = _re.match(r'\*\*(.+?)\*\*,?\s*(.*)', line)
+        # Format 2: Degree | School | Year  (pipe-separated, no markdown bold)
+        pipe_m = _re.match(r'(.+?)\s*\|\s*(.+?)\s*\|\s*(.*)', line) if not bold_m else None
         if bold_m:
             r1 = edu_para.add_run(bold_m.group(1))
             r1.font.name = 'Calibri'; r1.font.size = Pt(10.5)
@@ -583,8 +589,18 @@ def build_resume(output_path, resume_md=None):
             r2 = edu_para.add_run(', ' + bold_m.group(2) if bold_m.group(2) else '')
             r2.font.name = 'Calibri'; r2.font.size = Pt(10.5)
             r2.font.bold = False; r2.font.color.rgb = GRAY
+        elif pipe_m:
+            # "Degree | School | Year" → bold school, normal rest
+            degree, school, year = pipe_m.group(1).strip(), pipe_m.group(2).strip(), pipe_m.group(3).strip()
+            r1 = edu_para.add_run(school)
+            r1.font.name = 'Calibri'; r1.font.size = Pt(10.5)
+            r1.font.bold = True; r1.font.color.rgb = BLACK
+            rest = f', {degree}' + (f', {year}' if year else '')
+            r2 = edu_para.add_run(rest)
+            r2.font.name = 'Calibri'; r2.font.size = Pt(10.5)
+            r2.font.bold = False; r2.font.color.rgb = GRAY
         else:
-            r = edu_para.add_run(edu_line.strip())
+            r = edu_para.add_run(line)
             r.font.name = 'Calibri'; r.font.size = Pt(10.5)
             r.font.color.rgb = BLACK
 

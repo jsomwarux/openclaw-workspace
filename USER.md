@@ -7,6 +7,7 @@
 
 ## Background
 - Ithaca College, BS Sport Management + Legal Studies minor, 2014–2018
+- Northeastern University, Data Analytics Certificate, 2019
 - Spectrum Enterprise / Charter Communications, BSA, 2019–2025
 - Specialty: product catalog config, cross-team coordination, system implementations
 - Credibility edge: speaks both business operations AND technology — rare for consulting

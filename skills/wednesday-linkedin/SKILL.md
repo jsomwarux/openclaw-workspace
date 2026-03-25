@@ -22,8 +22,9 @@ Wednesday is JT's most important LinkedIn post. It should make a practitioner no
 - No em dashes
 - Contrarian flip ("X isn't Y") max once per post, never in the first two paragraphs
 - Demo builds: say "while building the [demo name]" — never imply a client engagement that didn't happen
-- Every number or outcome must be real or clearly estimated
+- Every number or outcome must be real or clearly estimated — banned vague outcomes: "saved time," "more efficient," "fraction of the time," "almost nothing," "improved significantly"
 - No self-promotional closing line
+- "you/your" must outnumber "I/my" — target 5:1 ratio. Reframe from reader's perspective wherever possible.
 
 ---
 

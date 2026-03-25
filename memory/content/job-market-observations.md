@@ -24,3 +24,5 @@ Format: [DATE] — [observation]. (Source: daily-brief.md)
 [2026-03-20] — Peergenics confirms that "packaged AI agents with ongoing support and governance baked in" is now the standard 2026 SI partner delivery model — the market has moved from custom implementations to composable, AppExchange-distributable agents, meaning consultants who can only build one-off deployments are already one product cycle behind. (Source: daily-brief.md)
 
 [2026-03-23] — "Solutions Architect" is now a bifurcated title: Work AI platform SAs (Glean, Cohere, Anthropic Applied AI) require full engineering stacks (Python/Java/Go primary), while Salesforce ecosystem SAs do not. Applying to both categories as if they're the same role wastes pipeline effort — they serve different candidate profiles entirely. (Source: daily-brief.md)
+
+[2026-03-24] — Organizations are creating a two-tier AI services market: 90% have deployed AI tools but only 9% have reached AI maturity, meaning the bottleneck is implementation + adoption specialists — not builders. This gap, not AI capability itself, is where demand for practitioners like JT concentrates in 2026. (Source: daily-brief.md)
