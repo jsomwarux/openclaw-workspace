@@ -17,3 +17,4 @@ Archive every Monday, start fresh.
 - [2026-03-04] Built AI Support Triage n8n demo (21 nodes, Claude routing, 3-path IF, Slack+email+Sheets) — 4th n8n demo complete
 2026-03-06 3AM | Overnight: board clear of HIGH tasks; added 2 portfolio cards to jtsomwaru.com (b2b-account-service-agent + n8n-support-triage, commit b3e553c); state.json corrected (+7 missing slugs); film review fix → duplicate heartbeat log rule added to feedback.md.
 - 2026-03-20: Nash Satoshi n8n workflow — 32-node 4-LLM ensemble pipeline, Gumloop replaced, webhook live
+- 2026-03-25 03:00 — Overnight run: added Ensemble Ranking App Factory portfolio card to jtsomwaru.com (7/10 auto-approved, commit 11b8ceb). Reassigned Trailhead task to JT.

@@ -18,10 +18,11 @@
     "b2b-account-service-agent",
     "n8n-support-triage",
     "construction-job-tracker",
-    "georgetown-city-services-agent"
+    "georgetown-city-services-agent",
+    "ranking-app-factory"
   ],
   "lastReorderDate": "2026-03-21",
-  "lastRun": "2026-03-21",
+  "lastRun": "2026-03-25",
   "demandScoreCache": {
     "opticfy-pipeline": 46,
     "construction-tracker": 22,

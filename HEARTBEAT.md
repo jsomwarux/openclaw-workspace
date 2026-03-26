@@ -52,6 +52,15 @@ Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Nic
    - If fix is non-obvious or requires JT input: alert JT via Telegram with job name + error + what you tried
    - Log what was fixed in today's daily note under ## Heartbeat HH:MM
    - Never leave a cron with consecutiveErrors >= 2 unaddressed
+
+3b. **Missed cron check (10AM heartbeat only — after 7AM so crypto window has passed):**
+   - From `cron list`, check `lastRunAtMs` for these two critical daily jobs:
+     - `eve-crypto-morning-008` (should fire at 6AM daily)
+     - `651fa1da` outreach-pipeline (should fire at 2AM daily)
+   - For crypto: if `lastRunAtMs` is not from today (compare date portion to current date) → fire it immediately via `cron run` with jobId `eve-crypto-morning-008` + alert JT: "⚠️ Crypto cron missed its 6AM slot — fired now."
+   - For outreach: if `lastRunAtMs` is not from today AND `lastRunStatus` is not `error` (errors are caught by 3a) → fire it immediately + alert JT.
+   - "Not from today" = `lastRunAtMs` date portion ≠ today's date in America/New_York timezone.
+   - Log any fires in today's daily note under ## Heartbeat HH:MM.
 4. **10AM only — Daily Film Review (non-negotiable, Kobe Protocol):**
    - Read yesterday's `memory/YYYY-MM-DD.md`
    - **Step A — Failure scan:** Find one mistake, one friction point, or one thing that took longer than it should have. Write one concrete fix → appropriate file (AGENTS.md mistake rule, TOOLS.md path update, feedback.md rule, skill SKILL.md update).

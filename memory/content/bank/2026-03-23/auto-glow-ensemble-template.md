@@ -12,6 +12,6 @@ second for Glow Index (skincare product analysis).
 
 the second build took 20% of the time because i extracted the pattern into a reusable template after the first one.
 
-the lesson: ensemble pipelines look custom. they're not. the architecture is always the same — model pool, independent scoring, aggregation layer, callback. what changes is the domain prompt.
+the lesson: ensemble pipelines look custom. they're not. the architecture is always the same: model pool, independent scoring, aggregation layer, callback. what changes is the domain prompt.
 
 build the template first. the second product is almost free.

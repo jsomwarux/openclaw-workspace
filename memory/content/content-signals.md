@@ -51,3 +51,13 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 [2026-03-23] TOPIC Claude Code momentum / Claude Code > Codex — 3 posts (@e_opore 71 likes + @justalexoki 66 likes + @vikrambuilds 2 likes) / ~139 total engagement | JT has angle: yes (Eve runs on Claude Code 24/7 for 8+ months — real operational data, not hype) | JT posted recently: no (last Claude Code post was Mar 12 cron model defaults — adjacent) | action: Saturday build-in-public slot — Claude Code angle through Eve operational lens, not another "Claude Code is great" take
 
 [2026-03-23] TOPIC 80% of enterprises struggling with AI implementation (stat: 40% embed agents by EOY 2026, 62% expect 171% ROI, 80% struggling) — 1 post (@AgentsAssemble) / low raw likes | JT has angle: yes (the 80% IS the consulting gap — this is the positioning stat for his LinkedIn and outreach) | JT posted recently: no | action: LinkedIn Monday — stat as hook, "the gap between the 62% expecting ROI and the 80% struggling to implement is where consulting lives"
+
+## 2026-03-25
+
+[2026-03-25] TOPIC AI consulting liability/blame framing — @GestaltU post: "value of consulting is outsourcing of blame/liability — until we can sue AI agents" / 2 days old | JT has angle: yes (fixed-price scoped deliverables removes ambiguity — client owns outcome because they approved every step) | JT posted recently: no | action: Thursday hot take X or LinkedIn Friday — lean into the inverse: "liability isn't the reason to hire a consultant. It's the reason not to hire a bad one."
+
+[2026-03-25] TOPIC Enterprise AI agent autonomous resolution stats — ServiceNow resolves 90% of tickets via LangChain+NVIDIA / 85 likes 4.7K views | JT has angle: yes (same escalation pattern in Agentforce agents — design the 10% first) | JT posted recently: no | action: reinforces AgentGuard post direction — the 90% autonomous is easy; the 10% escalation is the real architecture work
+
+[2026-03-25] TOPIC Agentforce Contact Center unified platform announcement — Salesforce expanding Agentforce into voice+digital+CRM | JT has angle: yes (Data Cloud is the piece most orgs miss — without unified profiles, the agent is just a better menu) | JT posted recently: no | action: LinkedIn observation post — timely Agentforce news hook, JT can anchor to Data Cloud gap as the implementation differentiator
+
+[2026-03-25] FORMAT Non-coder AI builder explainer — @e_opore 75 likes 4K views. Claude Code for non-coders performing well | JT angle: Vista App Store proof point. Built entirely through AI-directed dev without writing code. | action: Saturday build-in-public — "I built an iOS app on the App Store without writing a line of code. Here's exactly what that looked like."

@@ -9,7 +9,7 @@ four models score the same coin independently.
 
 the consensus score is useful. the divergence is more useful.
 
-where the models disagree is where the real uncertainty lives — and where you should size your position accordingly.
+where the models disagree is where the real uncertainty lives. size your position accordingly.
 
 Nash Satoshi runs this every week across the full watchlist.
 

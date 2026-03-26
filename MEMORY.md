@@ -15,7 +15,7 @@
 - `launchctl unload/load` mid-session = gateway goes offline. Warn JT first. Defer to JT-initiated restart if possible.
 
 ## Infrastructure (updated 2026-03-15)
-- OpenClaw version: 2026.3.13 (updated 2026-03-15)
+- OpenClaw version: 2026.3.23-2 (updated 2026-03-25)
 - bootstrapMaxChars: 32000 (raised from default 20k on 2026-03-17 — gives AGENTS.md ~7k headroom at current 25,197 chars)
 - Gateway watchdog: `com.openclaw.gateway-watchdog` (10-min interval) — kills context-mode if RSS >1.5GB, kicks gateway if dead. Script: `scripts/gateway-watchdog.sh`
 - context-mode Claude plugin: DISABLED (was causing OOM kills — disabled in `~/.claude/settings.json`)

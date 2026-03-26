@@ -11,10 +11,10 @@ It's that they use two of them, pointed at different people.
 
 Tenant portal in AppFolio. Owner reporting in Buildium. Both live, both active, neither talking to the other.
 
-Maintenance request comes in through AppFolio. Owner wants a status update in Buildium. Someone on the team has to touch both systems, manually, on every open work order.
+Maintenance request comes in through AppFolio. Owner wants a status update in Buildium. Someone on the team has to touch both systems on every open work order.
 
 That's not a software problem. That's a workflow problem that software created.
 
-The automation play here isn't replacing either tool. It's building the bridge that was never there — intake classification, vendor routing, and owner status updates running automatically between the two platforms.
+The automation play here isn't replacing either tool. It's building the bridge that was never there: intake classification, vendor routing, and owner status updates running between the two platforms.
 
 When the gap is that clear, the pitch writes itself.

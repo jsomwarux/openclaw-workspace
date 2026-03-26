@@ -9,6 +9,6 @@ Glow Index runs 4 simultaneously.
 
 GPT, Gemini, Claude, and Grok each score independently.
 
-The verdict is the consensus — not any single model's take.
+The verdict is the consensus. Not any single model's take.
 
 That's the architecture difference between "AI-powered" and actually using AI.

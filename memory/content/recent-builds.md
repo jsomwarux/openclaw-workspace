@@ -6,6 +6,13 @@
 
 ---
 
+## Ensemble Ranking App Factory — 2026-03-23
+**What:** Config-driven factory that generates a full multi-LLM ranking app for any niche from a single JSON schema file
+**For:** internal / passive income products
+**Outcome:** 3 niches (crypto, skincare, colleges) deployed from 1 config schema; new niche scaffolded in minutes
+**Demonstrates:** architectural systems thinking, multi-LLM orchestration, passive income product building
+**Content angle:** Wednesday LinkedIn — "How I built a product factory so the second niche takes minutes, not weeks"
+**Status:** complete
 ## Format
 
 ```

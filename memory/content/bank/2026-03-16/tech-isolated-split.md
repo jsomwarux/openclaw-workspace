@@ -8,7 +8,7 @@ suggested_slot: Tuesday or Saturday
 
 Content generation and content delivery are two different crons.
 
-The generator runs isolated — no conversational context needed, just file reads and writes.
+The generator runs isolated: no conversational context needed, just file reads and writes.
 The delivery cron runs in 60 seconds, pulls the file, sends it.
 
 If they're the same job, one failure kills both.

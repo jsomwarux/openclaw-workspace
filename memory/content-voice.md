@@ -304,6 +304,7 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 - "NYC property managers spend 40% of their day routing maintenance requests. I built the template that automates the whole thing — intake to vendor dispatch to tenant update to no-show escalation."
 - "NYC contractors spend 30–60 min/day calling foremen for status updates. Foreman sends one WhatsApp message. Client gets a professional update. Owner gets an alert only when something's actually blocked."
 - "Built a governance layer for AI agents: confidence scoring decides what runs automatically and what goes to a human. ≥70% auto-executes. Below that, it queues for review. Every decision logged. That's what gets AI approved in enterprise."
+- Ensemble Ranking App Factory: config-driven factory generates a full multi-LLM ranking app for any niche from one JSON schema. 3 niches (crypto, skincare, colleges) from 1 template.
 
 ---
 
@@ -449,6 +450,31 @@ implementation excellence, transformative, leverage (as buzzword), solution, opt
 
 ---
 
+## AI-Generated Pattern Ban (hard rule — zero exceptions)
+
+The following patterns are the clearest tells that content was AI-generated. They are banned in all content, all platforms, no exceptions.
+
+**"X is Y, not Z" / "X aren't Y, they are Z"** — Stating something as a contrast pair sounds like a chatbot explaining a concept. Examples of banned constructions:
+- "agents are coworkers, not experiments"
+- "this is a distribution shift, not a feature"
+- "it's an adoption problem, not a technology problem"
+- "they're not waiting on a strategy deck"
+- "this isn't a tech problem, it's an organizational one"
+
+**The fix:** State the positive claim directly. Drop the contrast entirely.
+- Wrong: "agents are coworkers, not experiments" → Right: "Agents are already embedded in the workflows your vendors are designing for."
+- Wrong: "they're not waiting on a strategy deck" → Right: "They started with one workflow, saw it work, and built the next one."
+
+**"Here's what that means for [audience]"** — Explaining a statistic or observation and then pivoting with this phrase is AI boilerplate. If the implication is worth stating, state it directly without the transition.
+
+**"That's not [X]. That's [Y]."** — Two short declarative sentences used to reframe a point. Sounds like a GPT summary of a Seth Godin post.
+
+**"[Observation]. [Conclusion that restates the observation differently.]"** — Padding a single idea into two sentences by saying the same thing twice at slightly different zoom levels.
+
+These patterns appear when the model runs out of real content and starts generating structure. The fix in every case is: say the true thing once, directly, and stop.
+
+---
+
 ## What JT Never Does
 - Preamble before the point ("Here's what I've been thinking about lately...")
 - Summary at the end restating the post
@@ -526,15 +552,15 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] Status signal check: would a NYC PM owner or contractor share this because it makes *them* look informed/ahead of the curve? If no, consider whether a shareable line can be added.
 - [ ] For Monday posts: is this targeting problem-aware readers (they already want automation) or problem-unaware readers (they don't know they have a problem)? If unaware → use TOF belief disruption structure.
 
-### Anti-slop checks (run after draft is otherwise ready):
-- [ ] Any adverbs? Cut them. ("quickly", "easily", "simply", "really", "just" — all gone)
-- [ ] Any passive voice? Find the actor and make them the subject. ("the agent routes claims" not "claims are routed")
-- [ ] Any inanimate thing doing a human action? Name the person/system doing it. ("the decision emerges" → who decided?)
-- [ ] Any vague declarative? Name the specific thing. ("The implications are significant" → which implication, and how significant?)
-- [ ] Three consecutive sentences the same length? Break one.
-- [ ] Does the paragraph end with a punchy one-liner every time? Vary it.
-- [ ] Any "not X, it's Y" contrast? State Y directly and cut the contrast frame.
-- [ ] Em dashes? Remove every one.
+### Anti-slop checks (run after draft is otherwise ready — in priority order):
+- [ ] **Em dashes (—):** Scan for the character. If ANY found → rewrite using comma, colon, or period. Zero exceptions.
+- [ ] **Contrast pair ban:** Scan for "X is Y, not Z" / "X aren't Y, they are Z" / "This isn't X. It's Y." / "That's not X. That's Y." / "Here's what that means for [audience]:" → state only the positive claim, cut the contrast entirely. This is the #1 AI-generated pattern tell.
+- [ ] **Adverbs:** Scan for -ly modifiers. Cut every one. ("quickly", "easily", "simply", "really", "just", "very", "actually", "basically", "significantly", "seamlessly" — all gone. Use a stronger verb instead.)
+- [ ] **Passive voice:** Find the actor. Make them the subject. "Claims are routed" → "the agent routes claims." "The decision was made" → who decided?
+- [ ] **Inanimate actors:** No inanimate thing doing a human action. "The system understands" → "the agent classifies." "The dashboard surfaced" → who surfaced it?
+- [ ] **Vague declarative:** Name the specific thing. "The implications are significant" → which implication, how significant? If you can't name it, cut the sentence.
+- [ ] **Sentence restatement:** Does any sentence say the same thing as the previous sentence at a different zoom level? Cut the weaker one.
+- [ ] **Rhythm:** Three consecutive sentences the same length? Break one or merge two. Vary the cadence.
 
 ### Slop score (run before finalizing any LinkedIn post):
 Rate 1–10 on each dimension. If total < 35/50, revise before sending.

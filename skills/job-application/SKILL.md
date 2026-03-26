@@ -59,19 +59,58 @@ Save to: `~/.openclaw/workspace/memory/drafts/[company-slug]-resume.md`
 ---
 
 ## Step 3: Write the cover letter
-Structure (4 paragraphs, under 350 words total):
+
+**Before writing a single word — run this JD mapping check:**
+1. List every hard requirement from the JD (years of experience, specific platform/tool, domain, must-have skill)
+2. For each: identify exactly which line of JT's experience addresses it
+3. If a requirement is not explicitly addressed by at least one sentence in P2 or P3, the cover letter is incomplete
+
+This check is mandatory. A cover letter that ignores a hard requirement fails the screen, even if the prose is clean.
+
+Structure (4 paragraphs, under 350 words total — **each paragraph max 100 words**):
 
 **P1 — Open with their problem, not your credentials**
-One sentence that shows you read the JD and understand what they're trying to solve. "You're looking for someone who can [X]" not "I'm excited to apply for."
+One or two sentences that show you read the JD and understand what they're trying to solve. "You're looking for someone who can [X]" not "I'm excited to apply for."
 
-**P2 — The bridge (most important paragraph)**
-Connect JT's BSA background to this specific role. The BSA-to-AI-implementation path is the differentiating story. One concrete deliverable minimum (named, with outcome).
+**P2 — The bridge (most important paragraph — MAX 100 WORDS)**
+Connect JT's BSA background to this specific role. Use the language from the JD requirement directly (if they say "CRM implementation," say "CRM implementation" not "system rollouts"). One concrete deliverable minimum (named, with outcome). If the JD has a years-of-experience requirement, name the relevant background explicitly in terms that match their phrasing.
 
-**P3 — What you'll do there**
-One paragraph, specific to their context. Shows you thought about the role, not just the application.
+**P3 — What you'll do there (MAX 100 WORDS)**
+One paragraph, specific to their context. Shows you thought about the role, not just the application. Reference a named client project or deliverable.
 
 **P4 — Close clean**
-No "I look forward to hearing from you." Say something like: "Happy to walk through [specific project] on a call." Short, direct, confident.
+No "I look forward to hearing from you." Say something like: "Happy to walk through [specific project] on a call." Short, direct, confident. One or two sentences max.
+
+**Before finalizing — run this cover letter audit:**
+- [ ] Every hard JD requirement appears in P2 or P3 using the JD's own language
+- [ ] P2 is under 100 words
+- [ ] P3 is under 100 words
+- [ ] No em dashes anywhere
+- [ ] No "I am excited to apply" or "I look forward to hearing from you"
+- [ ] At least one named project/deliverable with an outcome
+
+**Cover letter markdown format (exact structure required — parser needs exactly two `---` separators):**
+```
+# Cover Letter — [Company], [Role Title]
+
+---
+
+Applying for: | [Company] [Role Title]
+
+---
+
+[P1 — opening paragraph]
+
+[P2 — bridge paragraph]
+
+[P3 — what you'll do there]
+
+[P4 — close]
+
+Jon Trevor Somwaru
+jtsomwaru@gmail.com | jtsomwaru.com
+```
+The `Applying for:` line is how the parser extracts the company name. The body starts after the second `---`. Missing either separator = blank cover letter.
 
 Save to: `~/.openclaw/workspace/memory/drafts/[company-slug]-cover-letter.md`
 
@@ -81,17 +120,34 @@ Save to: `~/.openclaw/workspace/memory/drafts/[company-slug]-cover-letter.md`
 
 **NEVER write resume/cover letter as markdown.** Always generate proper .docx using build_resume_docx.py.
 
-**MANDATORY parse verification before uploading** — run this after generating, before uploading:
+**MANDATORY parse verification before uploading** — NEVER use `exec(full_src)` on build_resume_docx.py (it triggers main() with no args and overwrites /tmp with fallback content). Use isolated function extraction only:
+
 ```python
-# Quick verify the markdown parsed correctly (not falling back to hardcoded content)
-exec(open('/Users/jtsomwaru/.openclaw/workspace/scripts/build_resume_docx.py').read())
-data = parse_resume_md('/path/to/resume.md')
+# Resume verification — extract only the parse function, do not run main()
+src = open('/Users/jtsomwaru/.openclaw/workspace/scripts/build_resume_docx.py').read()
+local_ns = {}
+exec(src.split('if __name__')[0], local_ns)
+data = local_ns['parse_resume_md']('/path/to/[company-slug]-resume.md')
 print("Name:", data['name'])
 print("Skills:", [s[0] for s in data['skills']])
 print("Experience:", [(j['title'], j['company']) for j in data['experience']])
 print("Education:", data['education'])
+# STOP if: name wrong, Spectrum missing, Opticfy present, any field empty
 ```
-If any field is empty or shows fallback content ("Opticfy", missing Spectrum, etc.) — STOP. Fix the markdown format before uploading. The parser requires: `### Job Title` headings for experience, `**Company**, Location, Dates` on the line after, bullets as `- text`.
+
+```python
+# Cover letter verification — same pattern
+src = open('/Users/jtsomwaru/.openclaw/workspace/scripts/build_resume_docx.py').read()
+local_ns = {}
+exec(src.split('if __name__')[0], local_ns)
+cl = local_ns['parse_cover_letter_md']('/path/to/[company-slug]-cover-letter.md')
+print("Company:", cl['company'])
+print("Paragraphs:", len(cl['paragraphs']))
+print("P1:", cl['paragraphs'][0][:80] if cl['paragraphs'] else 'EMPTY')
+# STOP if: paragraphs == 0 or P1 is a markdown header/metadata line
+```
+
+If either check fails — fix the markdown, do not upload.
 
 **Resume markdown format (exact structure required):**
 ```

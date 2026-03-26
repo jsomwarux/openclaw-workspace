@@ -170,11 +170,19 @@ Source: https://www.anthropic.com/engineering/advanced-tool-use
 **Always** open with their problem:
 > "The gap between an enterprise buying ChatGPT Enterprise and actually using it at scale isn't a product problem. It's an adoption problem — and most organizations don't have anyone who can build the bridge."
 
-### The 4-paragraph structure (under 350 words)
+### The 4-paragraph structure (under 350 words, each paragraph max 100 words)
 1. **Their problem** — show you understand what they're actually trying to solve (read the JD between the lines)
-2. **The bridge** — JT's specific story. One concrete deliverable minimum. Numbers if possible.
-3. **What he'll do there** — one paragraph specific to their context. Not generic "I would bring value."
+2. **The bridge** — JT's specific story. One concrete deliverable minimum. Numbers if possible. **Use the JD's exact language for any hard requirement** (e.g. if JD says "CRM implementation," the word "CRM implementation" must appear — not a synonym).
+3. **What he'll do there** — one paragraph specific to their context. Reference a named project. Not generic "I would bring value."
 4. **Clean close** — not "I look forward to hearing from you." Example: "Happy to walk through the OpenClaw infrastructure or any of the client deployments on a call."
+
+**Cover letter pre-output check (mandatory before generating .docx):**
+- [ ] List all hard JD requirements — confirm each is addressed by name in P2 or P3
+- [ ] P2 word count under 100
+- [ ] P3 word count under 100
+- [ ] Zero em dashes
+- [ ] No excitement opener
+- [ ] Named deliverable with outcome in P2
 
 ### Cover letter formats that win for AI roles
 **Format A — Problem-Solution:**
@@ -296,10 +304,11 @@ Workflow automation, n8n, autonomous agents, production monitoring, error handli
 4. Add/remove Key Projects section based on role type
 
 **Cover letter:**
+0. **JD mapping check first (mandatory):** List every hard requirement (years exp, specific platform, domain). Confirm each has a sentence in P2/P3 using the JD's exact language. If any gap: find the bridge before writing.
 1. Open with their specific problem (not generic AI adoption — the specific gap in their industry/team)
-2. Bridge paragraph: pick the ONE JT story that maps most directly to this role
-3. Third paragraph: one specific thing you'd do in this role (shows you actually thought about it)
-4. Close: direct CTA with a specific offer (demo, call, portfolio review)
+2. Bridge paragraph (max 100 words): pick the ONE JT story that maps most directly to this role. Use the JD's exact language for any hard requirement.
+3. Third paragraph (max 100 words): one named project/deliverable specific to their context.
+4. Close: direct CTA with a specific offer (demo, call, portfolio review). Max 2 sentences.
 
 **Before delivering:**
 - [ ] Cover letter opens with their problem, not JT's credentials

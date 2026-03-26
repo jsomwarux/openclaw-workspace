@@ -15,7 +15,7 @@ Built a triage workflow for this: request comes in via webhook, Claude classifie
 
 The property manager handles exceptions. The routine work handles itself.
 
-Tested against three scenarios today — routine plumbing, urgent HVAC, emergency flooding. All three routed correctly, dispatched the right vendor, set the right SLA window.
+Tested against three scenarios today: routine plumbing, urgent HVAC, emergency flooding. All three routed correctly, dispatched the right vendor, set the right SLA window.
 
 The operational logic was already there. The workflow just runs it without someone having to remember the steps.
 

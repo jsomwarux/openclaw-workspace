@@ -12,6 +12,6 @@ they don't tell you how confident they were. they don't do anything different wh
 
 AgentGuard does. every decision scored. high confidence executes. low confidence queues for human review.
 
-70% isn't magic — it's a starting point you can tune. the value is that the line exists, it's enforced, and every crossing is logged.
+70% isn't magic. It's a starting point you can tune. the value is that the line exists, it's enforced, and every crossing is logged.
 
 that's the difference between an AI prototype and an AI deployment.

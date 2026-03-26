@@ -7,7 +7,7 @@ Rubric: real outcome with specific number (100 products with images after backfi
 
 When you add a new system to an existing product, the migration is usually the hardest part.
 
-I built an image system for Glow Index today — automated product image fetching and display. The live system was straightforward. What took real work was the backfill: 100 existing products with no images, each needing to be processed through the new pipeline without breaking anything already in production.
+I built an image system for Glow Index today: automated product image fetching and display. The live system worked on first run. What took real work was the backfill: 100 existing products with no images, each needing to be processed through the new pipeline without breaking anything already in production.
 
 One backfill run. 100 products covered. Verified locally, then a single curl command moves it to Replit production.
 

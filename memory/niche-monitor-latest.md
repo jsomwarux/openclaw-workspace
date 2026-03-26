@@ -1,3 +1,7 @@
-**Last updated:** 2026-03-24 9:00 AM EST
+**Last updated:** 2026-03-25 9:00 AM EST
 
-🟠 **n8n March 2026 Update — MCP Tools Expansion + Multi-Agent Chat** — n8n's March 2026 release includes MCP Tools expansion (McpClientTool node improvements, sanitized schema-based MCP tool arguments), multi-agent chat integration, 1Password External Secrets connectors, and SSRF protection hardening — directly impacts JT's n8n deployment stack. (https://releasebot.io/updates/n8n)
+🟠 **Entrata Launches Agentic PMS with 100+ AI Agents** — Entrata, one of the largest multifamily property management platforms (millions of units), announced the industry's first Agentic PMS with 100+ embedded AI agents handling leasing, maintenance, accounting, payments, and resident ops from a single system — meaning property management operators already on Entrata are getting this free, but SMBs on legacy tools or no platform are the open window. (https://www.globenewswire.com/news-release/2026/03/24/3261761/0/en/Entrata-Introduces-the-Multifamily-Industry-s-First-Agentic-Property-Management-System-with-100-Embedded-AI-Agents.html)
+
+🟠 **UNFI Rolling Out AI Inventory Planning Across 12 Distribution Sites** — UNFI (top 5 wholesale food distributor) is deploying AI-powered inventory planning across its entire distribution network by end of fiscal year; rollout started at 12 sites, confirming wholesale distribution is actively adopting AI ops tools. (https://www.supplychaindive.com/news/unfi-ai-supply-chain-planning-rollout/814872/)
+
+🟠 **WTW Survey: Insurance Claims Automation Set to Nearly Triple** — WTW's March 2026 survey (published today via Insurance Journal) shows 36% of insurers plan to introduce straight-through processing in claims workflow automation, up from 14% currently — a concrete near-term demand spike in the insurance automation niche. (https://www.insurancejournal.com/news/national/2026/03/25/863287.htm)

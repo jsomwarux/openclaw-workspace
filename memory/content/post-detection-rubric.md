@@ -55,6 +55,12 @@ Target: 1-3 autonomous posts per week across all detection points. If a week pro
 
 Generate TWO posts per event — one X post and one LinkedIn post. Write both to bank immediately.
 
+**Hard writing constraints (apply before writing word 1 — not a post-generation scan):**
+- **NO EM DASHES (—).** Completely banned. Use a period, colon, or comma instead. No exceptions.
+- **NO -LY ADVERBS.** No automatically, manually, directly, simply, easily, seamlessly, etc. Use a stronger verb.
+- **First line = reader's felt problem.** Never open with the build name, a company announcement, or JT's story.
+- **No self-promotional endings.** Close on capability proof or insight, never a pitch.
+
 **LinkedIn format for auto-detected builds:**
 - Format: "Behind the Build" or "Proof of Work" — 3–5 short paragraphs
 - Lead with the problem the build solves, not the build itself

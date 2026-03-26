@@ -8,10 +8,10 @@ Source URL: https://www.beyondtrust.com
 
 AI agent adoption in enterprise grew 466% year over year.
 
-That number didn't come from an AI company's marketing deck. It came from BeyondTrust — a privileged identity security firm tracking which systems need credentials, network access, and audit trails. Security teams are often the first to quantify what's actually running in production.
+That number came from BeyondTrust, a privileged identity security firm. They track which systems need credentials, network access, and audit trails. Security teams are the first to quantify what's running in production because they're the ones issuing the access.
 
-What that number means for small and mid-size businesses: the infrastructure your vendors, software platforms, and enterprise clients are building around assumes AI agents are already part of the workflow. The integrations, the APIs, the security protocols — they're being designed for a world where agents are coworkers, not experiments.
+The infrastructure your vendors, platforms, and enterprise clients are building right now assumes AI agents are already in the workflow. The integrations, the APIs, the security protocols are being designed with agents in the loop.
 
-The catch-up window is real but closing. Businesses that start building now still have a meaningful head start. Those that treat this as a 2027 problem will spend 2027 trying to close a gap that compounds every quarter.
+The businesses with agents in production started with one workflow, saw it work, and built the next one. No grand strategy. Iteration.
 
 [First comment: Source — BeyondTrust/Phantom Labs, March 2026]

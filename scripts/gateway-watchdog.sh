@@ -44,3 +44,5 @@ if ! pgrep -f "openclaw-gateway" > /dev/null 2>&1; then
         echo "$(timestamp) [watchdog] gateway still dead after kickstart" >> "$LOG"
     fi
 fi
+
+

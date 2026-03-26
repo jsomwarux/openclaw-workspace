@@ -9,7 +9,7 @@ angle_id: null
 
 Nash Satoshi was running on Gumloop. It worked until it didn't.
 
-The problem: a 4-model ensemble needs GPT, Gemini, Claude, and Grok scoring the same crypto asset independently — in parallel. Gumloop handles sequential flows well. Parallel branches at that scale hit limits fast.
+The problem: a 4-model ensemble needs GPT, Gemini, Claude, and Grok scoring the same crypto asset independently, in parallel. Gumloop handles sequential flows well. Parallel branches at that scale hit limits fast.
 
 So I rebuilt the entire pipeline in n8n.
 

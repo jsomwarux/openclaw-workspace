@@ -13,7 +13,7 @@ So I stopped and built the factory instead.
 
 It's a niche config schema, a parameterized Next.js template, a prompt generator, and a shell script that wires it all together. To stand up a new ranking app in any niche: edit the config, run the script. Today's colleges test took minutes from zero to working frontend.
 
-The architecture is the same every time — 4 LLMs scoring items in parallel, consensus aggregation, verdict display. What changes is the scoring criteria, the item schema, and the prompts. All of that is now parameterized.
+The architecture is the same every time: 4 LLMs scoring items in parallel, consensus aggregation, verdict display. What changes is the scoring criteria, the item schema, and the prompts. All of that is now parameterized.
 
 The business model is obvious once you see it: own the infrastructure, the apps are just configs. The third one is almost free. The tenth one is free.
 

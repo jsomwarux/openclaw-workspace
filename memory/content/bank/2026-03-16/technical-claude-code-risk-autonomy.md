@@ -12,7 +12,7 @@ the 99K engagement on Claude Code is all about what it can do.
 
 nobody's talking about what happens when it runs unsupervised and it's wrong.
 
-i run an AI system 24/7 in production. the risk isn't hallucination — it's confident completion of the wrong task with no one watching.
+i run an AI system 24/7 in production. the risk isn't hallucination: it's confident completion of the wrong task with no one watching.
 
 if you're deploying Claude Code beyond toy demos: build the review layer before you need it. not after.
 

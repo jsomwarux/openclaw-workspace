@@ -5,7 +5,7 @@
 
 The problem with single-model rankings: you're one model's bias away from a wrong answer.
 
-Glow Index runs 4 LLMs simultaneously — GPT, Gemini, Claude, Grok. Each scores independently. The verdict is the consensus across all four, not any one model's output.
+Glow Index runs 4 LLMs simultaneously: GPT, Gemini, Claude, Grok. Each scores independently. The verdict is the consensus across all four, not any one model's output.
 
 The architecture difference between "AI-powered" and actually using AI: when the models disagree, you know something's ambiguous. When they agree, the ranking holds.
 

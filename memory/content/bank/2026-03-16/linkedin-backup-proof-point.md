@@ -9,7 +9,7 @@ Most Agentforce demos show the agent answering questions.
 
 The ones that close deals show the agent doing work.
 
-Answering a question is impressive. Creating a Salesforce record, routing it to the right queue, and confirming the handoff — before a person is involved — is a different category of useful.
+Answering a question is impressive. Creating a Salesforce record, routing it to the right queue, and confirming the handoff before a person is involved is a different category of useful.
 
 The InsuranceServiceAgent doesn't answer questions about claims. It processes them. Intake comes in unstructured. The agent classifies the type, creates the record, assigns the handler, and sends the confirmation. The person only gets involved at the point where a person actually needs to be involved.
 
