@@ -13,3 +13,4 @@
 2026-03-21T11:00:00Z | weekly-synthesis | x_queries: 4 | web_queries: 6 | findings: 8 | 🔴: 0 | 🟠: 1 (Bright Data MCP) | 🟡/🟢 (KB'd): 3 (GPT-5.4, Mistral Small 4, Cowork batch) | est_cost: ~$0.20
 2026-03-21T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 6 | findings: 11 | 🔴: 0 | 🟠: 2 | messaged_jt: yes
 2026-03-24T15:33:00Z | daily-scan | x_queries: 6 | web_queries: 5 | findings: 7 | 🔴: 1 | 🟠: 1 | 🟡/🟢: 5 | messaged_jt: yes
+2026-03-27T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 5 | findings: 6 | 🔴: 1 | 🟠: 1 | messaged_jt: yes

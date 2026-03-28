@@ -364,3 +364,13 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 **Cloudflare "Bonk" — automated GitHub code review agent built on Kimi K2.5 (Mar 22)** — "Model-as-component" pattern: specialized model, one job, integrated into existing workflow. Example of what purpose-built agents look like in practice. 🟡 Useful framing for JT's consulting demos.
 
 **NVIDIA Nemotron Nano 3 on Amazon Bedrock for Agentforce (GTC 2026)** — High-throughput/B2C batch processing via Agentforce. Signals Agentforce ecosystem expanding beyond Salesforce infrastructure. 🟡
+
+## 2026-03-27 6PM Scan
+
+**Klaviyo Composer — AI agent for full campaign builds (Mar 27)** — Plain-language prompt → audience selection, messaging, timing, channel choice. Trained on 193K+ brands. Ecommerce/retail focused. 🟡 Not JT's stack but signals marketing automation is going fully agentic. Watch for SMB equivalents.
+
+**ARC-AGI-3 benchmark released (Mar 27)** — New interactive benchmark for agentic intelligence via novel turn-based environments. Academic but signals where agent evaluation is heading. 🟢 Background awareness.
+
+**UK AI Security Institute + Bank of England: 177K AI agent tools study (Mar 26)** — Largest empirical study of AI agent usage to date. Covers what agents are actually doing at scale. 🟠 Content angle: "177,000 AI agent tools analyzed. The ones actually deployed are doing 3 things: data retrieval, form filling, and decision routing. The hype is about AGI. The money is in operations." Relevant to JT's consulting positioning — reinforces that n8n workflow agents (not sci-fi) are what SMBs actually buy.
+
+**Agentic GRC (BleepingComputer, Mar 27)** — Agentic governance/risk/compliance tools emerging; teams need mindset shift beyond ops. 🟡 Validates AgentGuard direction. No action needed.

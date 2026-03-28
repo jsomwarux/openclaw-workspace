@@ -1,13 +1,13 @@
 {
   "level": "A1+",
-  "level_description": "High Beginner \u2014 dormant high school foundation, passive comprehension, disconnected basics",
+  "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
   "current_week": 4,
-  "current_day": 21,
+  "current_day": 22,
   "lesson_streak": 15,
   "longest_streak": 15,
-  "last_lesson_date": "2026-03-24",
-  "last_lesson_complete": true,
+  "last_lesson_date": "2026-03-27",
+  "last_lesson_complete": false,
   "total_lessons_completed": 5,
   "weekly_scores": [
     {
@@ -31,7 +31,7 @@
       "small talk",
       "survival Spanish"
     ],
-    "girlfriend_family_background": "unknown \u2014 default to neutral Latin American Spanish",
+    "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
     "focus": "speaking and listening, not writing"
   },
   "weak_areas": [

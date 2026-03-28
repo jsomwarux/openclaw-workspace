@@ -62,3 +62,33 @@ _Week starting 2026-03-21 — reset after 2026-W12 synthesis_
 - Kimi K2.5 — open-weights model advancing toward frontier. No routing impact at current scale.
 - Synapse SDK — built-in MCP server exposing agent toolkit to Claude Desktop/Cursor/VS Code. Solanum-related.
 
+
+---
+
+## 2026-03-27 — Daily Scan
+
+### 🔴 OpenClaw v2026.3.24 — Production update required (running v2026.3.23)
+- **Source:** GitHub openclaw/openclaw releases API
+- **URL:** https://github.com/openclaw/openclaw/releases/tag/v2026.3.24
+- **Summary:** New stable release shipped 2026-03-25. Key changes affecting Eve's production stack: (1) Cron heartbeat suppression fix — "suppress the default heartbeat system prompt for cron-triggered embedded runs even when they target non-cron session keys, so cron tasks stop reading HEARTBEAT.md and polluting unrelated threads" — directly fixes a known Eve cron behavior; (2) Gateway restart sentinel improved — wake interrupted agent sessions via heartbeat after restart + retry outbound delivery on transient failure + preserve thread/topic routing through wake path; (3) Security: closed mediaUrl/fileUrl alias bypass for outbound sandbox; (4) Outbound media policy fix — host-local files now send correctly when workspaceOnly is off; (5) New: Gateway/OpenAI compat endpoints /v1/models and /v1/embeddings + forward explicit model overrides through /v1/chat/completions for broader RAG client support; (6) Skills install UX overhaul — one-click install recipes, status-filter tabs, click-to-detail dialog, API key entry; (7) `before_dispatch` plugin hook added; (8) Agents/tools — /tools now shows what the current agent can actually use right now.
+- **Relevance:** Eve infrastructure — production system running on OpenClaw. Cron fix is directly relevant.
+- **Fits:** main / infrastructure
+- **Cost:** Free (standard update)
+- **Active tool:** YES → Shoutout flag triggered
+- **Severity:** 🔴 — Cron heartbeat fix + gateway sentinel improvement = confirmed production-relevant fixes
+
+### 🟠 n8n MCP Integration — n8n now consumes and exposes MCP tools
+- **Source:** X @ChainShieldAI (1 like, 67 views) + web (infralovers.com, n8n GitHub commit f020caa)
+- **URL:** https://www.infralovers.com/blog/2026-03-09-n8n-agentic-mcp-hub/
+- **Summary:** n8n's March 2026 update shipped bidirectional MCP integration: n8n can now (1) consume MCP servers as nodes in workflows, and (2) expose n8n workflows as MCP tools that AI agents (Claude, Codex, etc.) can call. This turns n8n from a workflow engine into an agentic hub — any AI agent can now trigger n8n automations via MCP. Visual workflow diffs also shipped in same update. $2.3B valuation reported.
+- **Relevance:** JT Somwaru Consulting — n8n is primary build tool. Bidirectional MCP means client workflows can be exposed as AI agent tools. Directly applicable to upcoming Agentforce + n8n integration patterns for consulting clients.
+- **Fits:** n8n-agent / jt-consulting-pipeline
+- **Cost:** Free (open-source n8n feature)
+- **Active tool:** YES → Shoutout flag triggered
+- **Severity:** 🟠 — High value this week. Doesn't unblock active client deliverable but changes the n8n architecture pattern for any new consulting build.
+
+### 🟡/🟢 findings (KB only)
+- Mistral Voxtral TTS — open-source TTS model, claimed ElevenLabs competitor. Not immediately actionable, no TTS use case in current stack.
+- LinkedIn MCP Server (stickerdaniel/linkedin-mcp-server) — MCP-capable assistants can read/write LinkedIn. Low stars, unvetted community tool.
+- mcp-health-monitor (katta_mukunda) — Python toolkit to monitor MCP server health/latency. Useful if MCP surface expands.
+- Agentforce Intent-Aware Search for Commerce — Salesforce released new Commerce AI feature. No active Salesforce client.

@@ -146,6 +146,7 @@ These are validated operational patterns, sourced from real prospect research an
 - **Epic + Salesforce dual-stack = handoff gap.** Agencies running Applied Epic (AMS) alongside Salesforce (CRM) have a manual data handoff between them. Agentforce lives natively in Salesforce and automates the CRM side — renewal triggers, status routing, FAQ handling — without touching Epic at all. This is a zero-disruption pitch.
   - Hook angle: "Running Epic and Salesforce side by side usually means the renewal trigger and client status loop still runs manually between the two. That's exactly what Agentforce handles natively inside your Salesforce."
 - **"You're already paying for this"** is the activation frame, not the implementation frame. Agentforce is bundled in Salesforce SMB suites. The pitch is never "here's a new tool" — it's always "let me activate what you're already licensed for."
+- **Urgency angle (March 2026, active now):** WTW survey shows STP (straight-through processing) in claims workflow automation set to nearly triple industrywide. Insurance ops leaders are actively building the business case for claims automation NOW. When timing hook is relevant: "The WTW survey this week shows your peers are actively automating claims intake. Firms that activate this first have a 12-18 month window before it's table stakes." Use in M2 or when a prospect has shown prior interest — never in M1.
 
 ---
 

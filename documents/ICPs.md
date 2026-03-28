@@ -146,6 +146,8 @@ As of March 2026, Agentforce is bundled into Salesforce Suites for SMBs — mean
 
 **New hook signal (March 2026):** Agentforce Contact Center launched at Enterprise Connect 2026 as a CRM-native execution layer for contact center automation. Directly applicable to insurance and PM prospects running inbound claims/maintenance request queues. Use this as a conversation anchor: "Salesforce just launched a contact center agent designed for exactly this — and if you're on Salesforce, you probably already have access to it."
 
+**Urgency signal (March 2026 — active now):** WTW survey (Insurance Journal, March 25 2026) shows straight-through processing (STP) in claims workflow automation set to nearly triple: 36% of insurers plan to introduce it, up from 14% currently. This is a concrete near-term demand spike. Translation: insurance ops leaders are actively building the budget case for claims automation NOW. Timing hook for any insurance outreach: the industry is moving fast on this, and firms that activate Agentforce ahead of competitors will have a workflow advantage before it commoditizes. Source: insurancejournal.com/news/national/2026/03/25/863287.htm
+
 ---
 
 ## Notes for All ICPs
