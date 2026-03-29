@@ -374,3 +374,9 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 **UK AI Security Institute + Bank of England: 177K AI agent tools study (Mar 26)** — Largest empirical study of AI agent usage to date. Covers what agents are actually doing at scale. 🟠 Content angle: "177,000 AI agent tools analyzed. The ones actually deployed are doing 3 things: data retrieval, form filling, and decision routing. The hype is about AGI. The money is in operations." Relevant to JT's consulting positioning — reinforces that n8n workflow agents (not sci-fi) are what SMBs actually buy.
 
 **Agentic GRC (BleepingComputer, Mar 27)** — Agentic governance/risk/compliance tools emerging; teams need mindset shift beyond ops. 🟡 Validates AgentGuard direction. No action needed.
+
+## 2026-03-28 Scan
+- **GPT-5.4** (OpenAI, released March 5, 2026): 1M token context, 128K output, native computer use. Current frontier ChatGPT model. Combines GPT-5 reasoning/agentic with GPT-5.3 Codex coding. Relevant: this is the model to route to via OpenRouter for large-context work. Check openrouter pricing.
+- **Claude computer use** (Anthropic, March 24, 2026): Agentic push — Claude can now use computer to complete tasks. CNBC coverage + OpenClaw mentioned in article. Relevant: validates Eve's architecture.
+- **ChatGPT Agentic Commerce Protocol (ACP)**: OpenAI updating product data for agentic commerce — may compete with n8n workflows for e-commerce clients. Watch.
+- **Contentsquare AI agent**: tracks customer journeys across web/mobile/LLM interfaces. Niche but relevant for consulting clients wanting analytics.

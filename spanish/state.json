@@ -3,10 +3,10 @@
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
   "current_week": 4,
-  "current_day": 22,
-  "lesson_streak": 15,
-  "longest_streak": 15,
-  "last_lesson_date": "2026-03-27",
+  "current_day": 23,
+  "lesson_streak": 16,
+  "longest_streak": 16,
+  "last_lesson_date": "2026-03-28",
   "last_lesson_complete": false,
   "total_lessons_completed": 5,
   "weekly_scores": [
@@ -45,5 +45,5 @@
   ],
   "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread.",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases. Single words transcribe correctly. Workaround: credit all Spanish audio answers based on context.",
-  "streak": 15
+  "streak": 16
 }
