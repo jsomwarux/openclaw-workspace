@@ -26,6 +26,7 @@
 | wednesday-linkedin | skills/wednesday-linkedin/SKILL.md | checklists/wednesday-linkedin.md | active | 0.920 | 2026-03-24 | 2026-03-22 |
 | vibe-marketing | agents/vibe-marketing/AGENT.md | checklists/vibe-marketing.md | pending | — | — | 2026-03-22 |
 | job-application | skills/job-application/SKILL.md | checklists/job-application.md | pending | — | — | 2026-03-22 |
+| overnight | agents/overnight/ (overnight cron payload) | checklists/overnight.md | pending | — | — | 2026-03-29 |
 
 ## Status values
 - `pending` — checklist written, not yet run
