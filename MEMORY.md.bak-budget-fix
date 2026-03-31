@@ -16,7 +16,7 @@
 
 ## Infrastructure (updated 2026-03-15)
 - OpenClaw version: 2026.3.28 (updated 2026-03-30)
-- bootstrapMaxChars: 40000 (raised from 32000 on 2026-03-30 — all bootstrap files load fully; AGENTS.md 28k, MEMORY.md 20k, TOOLS.md 16k, HEARTBEAT.md 13k, all under per-file limit)
+- bootstrapMaxChars: 32000 (raised from default 20k on 2026-03-17 — gives AGENTS.md ~7k headroom at current 25,197 chars)
 - Gateway watchdog: `com.openclaw.gateway-watchdog` (10-min interval) — kills context-mode if RSS >1.5GB, kicks gateway if dead. Script: `scripts/gateway-watchdog.sh`
 - context-mode Claude plugin: DISABLED (was causing OOM kills — disabled in `~/.claude/settings.json`)
 - LaunchAgent ThrottleInterval: 10s (raised from 1s to prevent rapid crash loop)
@@ -62,12 +62,6 @@
 - Project 3 (pending): Co-living dashboard app similar to construction dashboard — quoted $2,500, waiting on final feedback. Contact is a member of Aya's co-living business. Said he's busy with a big project.
 - Project 4 (in talks): Dashboard + automations for Head of Acquisitions. Sent NDA to review his spreadsheet — no response after 2 follow-ups. Cold for now.
 - Strategy: Aya is becoming an anchor client. Each project extends runway and builds referral credibility within their network. Keep relationship warm.
-
-## Strategic Recommendations Log
-- File: `memory/strategic-recommendations.md` — written by Weekly Intelligence Synthesis every Sunday
-- Format: one entry per week with recommendation, trigger, status (open/actioned/deferred)
-- Feeds: morning brief "One concrete action" section + MC task board (sortOrder 6, HIGH priority)
-- 🔴 skills demand signals also auto-push MC tasks titled `Positioning: [signal]`
 
 ## Content System (updated 2026-03-16)
 - Voice rules: `memory/content-voice.md` — **load before every draft.** Platform-specific: LinkedIn = case studies + expertise, X = compression + hot takes. Wednesday LinkedIn is most important post of the week.
@@ -118,32 +112,73 @@
 - **Active properties**: Nash Satoshi (built, stalled, needs monetization), Glow Index (built, active — analyses running, 4-LLM ensemble live, Tailscale Funnel + n8n wired)
 
 ## Ensemble Rankings Strategy (decided 2026-03-24)
-- **Model**: individual niche domains (glowindex.com, etc.) — NOT one URL with tabs
-- **Platform directory trigger**: build only after 3+ niches have 1k+ monthly visitors each
-- **Hard rule**: every new niche gets its own domain deployed via `new-niche.sh` → Vercel. Never add as a tab/sub-path.
+- **Model**: individual niche domains, shared platform identity underneath — NOT one URL with tabs
+- **Why individual domains**: SEO authority is niche-specific (glowindex.com outranks platform.com/skincare for every ranking query), community seeding works better (Reddit/TikTok shares a product, not a tab), assets are independently sellable
+- **Shared platform identity**: all niche apps share consistent design language (tier system, scoring rings, warm-white/dark primary palette), footer cross-links between properties, eventual directory site when 3+ niches have real traction
+- **Platform directory trigger**: build `[brandname].com` landing page listing all niches ONLY after 3+ niche sites have 1k+ monthly visitors each — not before
+- **Platform brand candidates**: RankStack, ConsensusRank (not decided — pick when 3+ niches are live)
+- **Analog**: Dotdash Meredith model — Investopedia + Verywell + etc. as separate properties, shared infrastructure and brand signal
+- **Hard rule**: every new niche gets its own domain deployed via `new-niche.sh` → Vercel. Never add a niche as a tab or sub-path of an existing domain.
 - **Glow Index exception**: lives on Replit (legacy). All future niche apps → Vercel.
-- **Build system**: `~/projects/ranking-app-agent/` | new-niche.sh scaffolds standalone per niche
-- **Vibe Marketing**: ✅ BUILT — agent: `agents/vibe-marketing/AGENT.md` | cron: Mon 4:45AM ET (UUID: 870bf3ff) | active products: Nash Satoshi + Vista
-- **Nash Satoshi**: permanently on Gumloop. DO NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly requests.
-- **TikTok routing rule**: niche-specific products → dedicated account. Builder/dev/AI products → @jts_14
-- **Passive income scout/strategist**: `dcdbbef5` (Sun 6:30AM) → `4e19c300` (Sun 8:30AM) | reports: `memory/passive-income/`
-## Active Cron Jobs (39 total)
-> Full list: run `cron list` in any session. Do NOT maintain a manual copy here — cron scheduler is the source of truth.
+- **Build system**: `~/projects/ranking-app-agent/` | new-niche.sh scaffolds standalone deployable per niche | uiux-review.sh reviews for target audience | generate-prompts.ts generates scoring prompts calibrated to targetUser
+- **Vibe Marketing System**: ✅ BUILT 2026-03-12 — weekly content generation for passive income products
+  - Agent: `agents/vibe-marketing/AGENT.md` | Registry: `agents/vibe-marketing/product-registry.json`
+  - Queue: `agents/vibe-marketing/queue.jsonl` | State: `agents/vibe-marketing/state.json`
+  - Cron: Monday 4:45AM ET (UUID: 870bf3ff-55c9-49c0-9970-361c81a0920b) | isolated sonnet | 720s
+  - Active products: Nash Satoshi + Vista (Glow Index pending n8n/ngrok)
+  - Nash Satoshi: nashsatoshi.com | X: @NashSatoshi | TikTok: @NashSatoshi (created 2026-03-20, warmup in progress — first post eligible after Monday 4:45AM vibe marketing cron) | Reddit: community account (needs karma build) | **Analysis pipeline: PERMANENTLY on Gumloop (hard rule — no n8n changes unless JT explicitly requests)**
+  - Vista: App Store | X: @jts_14 | TikTok: @jts_14 | Reddit: JT's personal account (needs karma build)
+  - Glow Index: TikTok dedicated account required when activated (skincare niche ≠ JT's audience)
+  - TikTok routing rule: niche-specific products (crypto, skincare, etc.) → dedicated account. Builder/dev/AI products → @jts_14
+  - Platforms: X (weekly) + TikTok (weekly) + Reddit (weekly, alternating subreddits) + LinkedIn (monthly, 1st Monday)
+  - JT always approves before posting — manual for first 1–2 weeks, then PostBridge auto-scheduling
+  - Add new product: one entry in product-registry.json with status:active → picked up next Monday
+- **Vibe Marketing Agent**: NOT yet built — JT will provide detailed instructions separately
+- **Scout agent**: `agents/passive-income-scout/AGENT.md` | state: `agents/passive-income-scout/state.json`
+- **2-stage pipeline**: Scout (Sun 6AM) → Strategist (Sun 7:30AM)
+- **Scout cron UUID**: `dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0` | Sun 6AM ET | generates 5 raw ideas → saves report
+- **Strategist cron UUID**: `4e19c300-d387-4019-b658-9664f0d665d5` | Sun 7:30AM ET | deep analysis, 8-dimension scoring, pushes 🟢 winners to MC, sends Sunday Telegram digest
+- **Scout reports**: `memory/passive-income/YYYY-MM-DD-scout.md` | **Strategist reports**: `memory/passive-income/YYYY-MM-DD-strategist.md`
+- **MC project tag**: `passive-income` | Nash Satoshi + Glow Index tasks tagged
 
-**Key job IDs (for heartbeat/watchdog reference):**
-- `eve-crypto-morning-008` — Crypto Full Analysis, 6AM daily
-- `651fa1da` — outreach-pipeline, 2AM daily (timeout: 2700s)
-- `ebb843af` — prospect-discovery, Sun+Wed 1AM
-- `be59a068` — overnight-autonomy, 3AM daily
-- `eve-morning-brief-001` — morning brief, 7:30AM daily
-- `eve-heartbeat-2h-002` — heartbeat, 4x/day 10/14/18/22 ET
-- `fe984519` — content-generate-linkedin, Mon 6:45AM
-- `cb8f29dd` — content-generate-x, Mon 7:25AM
-- `babd905a` — spanish-lesson, Mon-Sat 8:05PM
-- `870bf3ff` — vibe-marketing-generate, Mon 4:45AM
-- `b2357bd5` — job-app-auto-builder, 6:15AM daily
+## Active Cron Jobs (24) — post-incident schedule (2026-02-26)
+- crypto-morning: 6AM daily | main | full portfolio analysis
+- job-market: 6:30AM daily | isolated sonnet | → data/daily-brief.md
+- morning-brief: 7:30AM daily | main | brief + costs + niche + jobs
+- build-ideas-sync: 7:15AM daily | isolated groq | reads agent-ideas.md → pushes new ideas to Mission Control
+- niche-monitor: 9AM Mon–Fri only | isolated sonnet | ⚠️ Brave API key not accessible in isolated sessions. Main session runs niche monitor as fallback during heartbeats.
+- heartbeat: 10AM,2PM,6PM,10PM EST | main | tasks + cost alerts
+- skills-researcher-daily: Mon–Sat 11:30AM | isolated sonnet (fixed 2026-03-01, was gemini-flash — invalid model ID) | X (8 queries) + web scan, alert 🔴/🟠 only
+- crypto-midday: 12PM daily | isolated sonnet | pulse (alerts if Δ>±15%)
+- pending-tasks: 10:30AM,2:30PM,6:30PM,10:30PM | main | tasks/pending.jsonl
+- viral-swipe: Mon/Wed/Fri 5:30AM | isolated sonnet | X research → Notion swipe file
+- crypto-evening: 8PM daily | isolated sonnet | EOD pulse (alerts if move >20%)
+- health-checkin: 9PM daily | main | ✅ firing correctly (scheduler drift resolved). Eve-health-checkin-003 confirmed `0 21 * * *` America/New_York.
+- weekly-synthesis: Sunday 8AM | isolated sonnet | weekly KB + cost review
+- health-report: Sunday 9AM | isolated groq | runs health.py --report
+- skills-researcher-weekly: Sat 7AM | isolated sonnet | deep X + Tier 3 web + full report
+- overnight-autonomy: 3AM daily | isolated sonnet | selects 2 eligible tasks from MC → executes → writes log | UUID: be59a068-eccd-4a7c-964e-946ab40ace7e
+- outreach-pipeline: 2AM daily | isolated sonnet | T2: 3/night (was 2) research→brief→DM→Drive; **Salesforce verification pass** (3 insurance T3s/night checked, auto-upgrades to T2 when confirmed); T3 cold hook batch (10/night); **template gate**: construction + PM T2s blocked until templates built | UUID: 651fa1da-84d7-44b3-8e10-6a46e1c05cf6
+- prospect-discovery: **Sun + Wed 1AM** | isolated sonnet | Sunday = all 4 niches (20-30 prospects); Wednesday = Agentforce/insurance focused (15-20 prospects, Salesforce confirmation attempts) → Telegram summary | UUID: ebb843af-e752-4c65-923d-540d5ff5ad3f
+- passive-income-scout: Sunday **6:30AM** ET | isolated sonnet | trends → 5 raw ideas → saves report (no MC push, no Telegram) | UUID: dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0 (rescheduled 2026-03-15 from 6AM)
+- passive-income-strategist: Sunday **8:30AM** ET | isolated sonnet | reads Scout report → deep 8-dimension analysis → pushes 🟢 winners to MC → sends Sunday digest to Telegram | UUID: 4e19c300-d387-4019-b658-9664f0d665d5 (rescheduled 2026-03-15 from 7:30AM)
+- monthly-goals-gap: 1st of month 8AM | isolated sonnet | job market vs. Eve capabilities audit → MC/Skills queue | UUID: fdc2cf75 (ran 2026-03-01 ✅)
+- monthly-niche-fitness: 1st of month 9:30AM | isolated sonnet | scores current niches vs. alternatives, advises pivot/shift/stay | UUID: 1e2cf966
+- content-generate-linkedin: Monday 7:00AM ET | isolated sonnet | generates 4 LinkedIn posts → saves weekly file → uploads to Content/LinkedIn | UUID: fe984519
+- content-generate-x: Monday 7:25AM ET | isolated sonnet | generates 7 X posts → appends to weekly file → uploads to Content/X | UUID: cb8f29dd
+- content-generate (DISABLED): UUID 98fda582 — was timing out at 40+ min, replaced by above split crons
+- content-monday-send: Monday 7:55AM ET | isolated sonnet | sends Monday LinkedIn + X to JT | UUID: d4dedeb1 (bumped from 7:45AM)
+- content-reminder: Tue–Sat 8AM ET | isolated sonnet | sends that day's post (LinkedIn on Wed/Fri) | UUID: 5e66b4ee
+- content-sunday: Sunday 9AM ET | isolated sonnet | sends Sun LinkedIn + X + engagement check | UUID: d918122d
+- t3-cold-hook: Tue/Thu 6AM ET | isolated sonnet | reads T3 shortlists → drafts 8-10 cold hook DMs → uploads batch to Drive (Consulting/Clients/T3 Batches/Outreach/LinkedIn) → Telegrams JT with Drive link for review | UUID: 3ed01a8a-c3fb-4673-9ae0-993611e94c5a | **JT always sends — agent drafts only**
+- weekly-systems-review: Sunday 10AM ET | isolated sonnet | cron health + file budgets + process health + config drift + version check → Telegram report | UUID: b2ca53ab-0c07-4a22-8424-9d39bf988405
+- **NOTE (2026-03-15):** weekly-synthesis payload updated to include Future Signals Review + content signal → MC push (was logging signals but not converting them to tasks)
+- **NOTE (2026-03-15):** construction-trades.md + property-management.md shortlists created (prospect-discovery was writing to non-existent files)
+- **NOTE (2026-03-20 — self-improvement audit):** Full audit of all self-improvement systems. Fixes applied: (1) PostBridge → HIGH sortOrder 45 — unblocks entire content feedback flywheel; (2) weekly-synthesis timeout 300s→720s; (3) daily-news-hook staggered to 9:30AM (was 9:15AM, rate-limit collision with niche monitor); (4) prospect-discovery switched from Edit tool to shell append — fixes file-size write failures; (5) HEARTBEAT.md: added autoresearch enrollment check (step 9) + idea queue pruning (step 10) + content→consulting niche feedback rule to weekly synthesis; (6) overnight agent: explicit autoresearch volume trigger check added (Step 1.6) — runs cold-email loop if >14 days since last run; (7) autoresearch AGENT.md: volume trigger documented. Key finding: vibe marketing performance-log.jsonl has 0 entries — entire feedback flywheel blocked on PostBridge activation.
+- reddit-karma-daily-reminder: 8PM daily | isolated groq | sends daily Reddit karma habit reminder to JT | UUID: fe575759-c8b1-4715-ae5a-0dbe034b3c9b
+- job-app-auto-builder: 6AM daily | isolated sonnet | checks job-opportunities.md for status:new 20+/25 roles → builds resume + cover letter .docx → uploads to Drive → pushes "Review + Submit" HIGH MC task to JT | UUID: b2357bd5-651d-4151-80df-49e4a928826f | silent if no qualifying roles
+- Daily cap: 20 invocations/weekday ✅
 
-**Schedule notes:** Daily cap 20 invocations/weekday. Cost optimization applied 2026-03-27: Groq used for Crypto Midday/Evening Pulse, Daily News Hook, Job Application Tracker. Monday 5-8AM staggered every 15-30 min to prevent rate-limit collisions.
 ## Cost Tracking
 - Script: scripts/cost-tracker.py | Snapshots: memory/costs/YYYY-MM-DD.json (captured 2AM via backup)
 - Auth: Anthropic profile uses OAuth subscription token (sk-ant-oat01-*) — NOT an API key. All Claude/Sonnet/Opus usage is $0 in real API charges, covered by flat Claude subscription. No usage appears in Anthropic Console.

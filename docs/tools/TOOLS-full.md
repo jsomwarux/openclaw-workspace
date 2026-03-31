@@ -548,3 +548,13 @@ Don't mention it for trivial edits, but do surface it for anything that will run
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
+
+
+## Salesforce Data Cloud (paired with Agentforce)
+- **What it is**: Salesforce's real-time CDP — unifies customer data from any source into a single profile used as live agent context
+- **Agentforce integration**: Data Cloud feeds live customer data into Agentforce agents via Grounding — agents personalize responses based on purchase history, segment membership, recent interactions
+- **Key concepts**: Unified Profile, Data Streams (connectors), Segments, Data Spaces (multi-org isolation), Data Cloud for Agentforce (the bridge layer)
+- **Licensing**: Consumption-based (Flex Credits $500/100k or Profiles $240-$420/1k profiles/year) — separate SKU, not bundled with standard Agentforce. Often part of "Einstein 1" packages.
+- **Interview signal**: Understanding that Data Cloud is HOW Agentforce gets real-time personalization separates architecture-level candidates from surface-level ones
+- **Trailhead**: trailhead.salesforce.com/content/learn/modules/salesforce-data-cloud-quick-look
+- **Deep research**: memory/analysis/salesforce-data-cloud-2026-03-19.md

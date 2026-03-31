@@ -109,6 +109,30 @@
 **Content angle:** "Stopped building ranking apps. Built the machine that builds them. Third one is almost free."
 **Status:** complete
 
+## Glow Index: Stage 4 Claude Opus Synthesis Layer (2026-03-24)
+**What:** Added a 5th stage to the 4-LLM ensemble — after 4 models independently score and deliberate, Claude Opus synthesizes all 4 outputs into a single consumer verdict, deduplicated key findings, and one best-dupe recommendation. Pure math was the prior aggregation method.
+**For:** Glow Index (passive income — skincare rankings)
+**Outcome:** Final verdict now has reasoning behind it, not just an average. Synthesis uses locked math scores but Claude adjusts ±3 if warranted. First test: The Ordinary Niacinamide scored 86.13/S+, verdict "A proven, affordable workhorse for oily skin — buy it."
+**Demonstrates:** multi-LLM ensemble architecture, synthesis-over-aggregation pattern, 5-stage pipeline design
+**Content angle:** "4 models scoring independently wasn't enough. The final verdict still needed a reasoning layer. Added Claude Opus as the synthesis stage — it sees all 4 outputs, can't change the math, but writes the verdict."
+**Status:** complete
+
+## Glow Index: Product Image System (2026-03-24)
+**What:** Built Brave Image Search backfill endpoint (/api/fetch-images) — auto-populates imageUrl for all products in the DB. New products auto-fetch images after first analysis via callback. imageStrategy field added to NicheConfig so each niche defines its own query template.
+**For:** Glow Index (passive income — skincare rankings)
+**Outcome:** 100/100 products now have images. Future niches configure image strategy at the config level — zero hardcoding.
+**Demonstrates:** automated data enrichment, config-driven architecture, production Replit deployment patterns
+**Content angle:** "The product images were NULL in the DB. Every product had a category-initial fallback. Wrote an endpoint that Brave-searches each product name, backfills all 100 in one POST."
+**Status:** complete
+
+## Ranking App Factory: Logo Generator + Vercel Standard (2026-03-24)
+**What:** Added generate-favicon.ts to new-niche.sh — reads logoSvg + branding.primary from NicheConfig, generates icon.svg and apple-icon.svg automatically. Vercel locked as deploy standard (Replit retired for all future builds). CLAUDE.md updated with Replit as legacy-exception-only.
+**For:** Ensemble Ranking App Factory (passive income infrastructure)
+**Outcome:** Every new niche gets a custom favicon at scaffold time — no manual design step. Deploy path is vercel --prod from day one.
+**Demonstrates:** config-driven design system, factory automation depth, deployment standardization
+**Content angle:** "The factory now outputs a logo. Reads the brand colors from the config, generates the SVG, writes the favicon. New niche scaffold takes the same path to Vercel every time."
+**Status:** complete
+
 ## UI/UX Pipeline Added to Ranking App Factory (2026-03-23)
 **What:** uiux-review.sh integrated into new-niche.sh — every new niche now gets an automated UI/UX review pass as part of the generation pipeline. Glow Index improvements backported to template-app.
 **Impact:** All future ranking apps inherit the polished Glow Index design system out of the box. Review is mandatory, not optional.

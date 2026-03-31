@@ -155,3 +155,24 @@ As of March 2026, Agentforce is bundled into Salesforce Suites for SMBs — mean
 - Proof points: Aya dashboard ($1,500), StreetEasy scraper ($1,000), Agentforce demo suite (live on jtsomwaru.com)
 - First meeting goal: NOT to sell a project. Goal is to understand their biggest manual process and identify if automation fits. The pitch comes after.
 - NYC-specific signal: Spanish-speaking staff/customers is common in Bronx/Queens wholesale and construction — bilingual agent capability is a genuine differentiator.
+
+---
+
+## Recent Competitive Intelligence
+> Auto-updated by Weekly Intelligence Synthesis. Last updated: 2026-03-30.
+> Use these signals in outreach hooks, pitch framing, and ICP targeting decisions.
+
+### ICP 1 — Wholesale Distribution
+- **UNFI AI inventory (Mar 2026):** Enterprise wholesale (UNFI, ~12 sites) rolling out AI inventory planning. Mid-market distributors (JT's ICP, 5-75 employees) won't see this for 12-18 months — the window is real. Pitch angle: "the Amazons have it. The family-run distributors don't. Yet."
+- **Warehouse robotics AMR/AGV:** Physical automation (robots) growing at 9.6% CAGR into mid-market. Important: this is PHYSICAL, not digital workflow. JT's lane (order intake, catalog access, dispatch) is unaffected — these buyers are spending on the warehouse floor, not the back-office ops workflow. Do NOT conflate.
+
+### ICP 2 — Construction & Skilled Trades
+- **Acumatica construction ERP AI (Mar 2026):** Acumatica added AI risk detection, forecasting, anomaly detection, and progress billing automation. Key implication: ERP buyers are getting AI features bundled. JT's angle is NOT the ERP — it's the workflow ABOVE the ERP (dispatch coordination, job status visibility, crew communication). These are gaps Acumatica doesn't touch. Reframe from "we build automations" to "we connect the ERP to the field."
+
+### ICP 3 — Property Management
+- **Entrata Agentic PMS (Mar 2026):** Entrata launched 100+ embedded AI agents for leasing, maintenance, accounting, payments, resident ops — explicitly marketed as industry's first "Agentic PMS." This is enterprise multifamily (200+ units, institutional). JT's ICP (AppFolio/Buildium shops, 500-5000 units, small teams) won't switch to Entrata. But it validates the AI agent pattern in PM. Pitch angle: "Entrata built this for enterprise. We build the equivalent for AppFolio shops."
+- **DoorLoop AI (Mar 2026):** DoorLoop (smaller PM platform) added AI-powered rent analysis and predictive maintenance alerts. Signal: even the smaller PM SaaS players are adding AI features. The gap JT fills is NOT features — it's workflow orchestration between platforms and the human team. Focus outreach on the coordination problems, not the feature gap.
+
+### ICP 4 — Insurance Operations
+- **WTW Survey (Mar 2026):** 36% of insurers plan straight-through claims processing automation (up from 14% current). Stat is citable in outreach: "WTW's March 2026 survey shows your peers are actively building the business case for claims automation right now." Use in M2 follow-up when a prospect has shown prior interest — not in cold M1.
+- **Salesforce Ambient Intelligence (Mar 2026):** Salesforce showcased real-time sales call AI + Agentforce governance upgrades. Insurance orgs already on Salesforce are getting direct product demos of this. Pitch angle: "Salesforce is showing your exec team what's possible at Dreamforce. We implement the specific piece that your claims workflow needs."

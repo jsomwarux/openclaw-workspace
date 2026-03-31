@@ -12,6 +12,105 @@ Use compression to cut waste. Use depth when the goal is credibility, not virali
 
 ---
 
+## JT's Actual Voice (study this before writing anything)
+
+This section captures how JT actually communicates — not rules about what to write, but what it sounds like when he writes. Extracted from his natural communication across hundreds of sessions.
+
+### The core pattern: fragment-first, point-last
+
+JT starts with the short statement. Then the context. Then stops.
+
+```
+Short sentence. Short sentence. Then the one that carries weight — usually longer, specific, no hedging.
+```
+
+NOT this:
+> "Most businesses are discovering that when coordination becomes a bottleneck, the typical response — adding headcount — often makes things worse."
+
+THIS:
+> "Adding headcount doesn't fix coordination problems. The process just moves faster toward breaking."
+
+The difference: one sentence does the setup, one does the work. No connective tissue. No "what this means is." No "which is why."
+
+### He stops when he's done
+
+JT does not wrap up. He does not summarize. He does not end with a quotable conclusion that packages the post neatly. He ends when the last true thing has been said.
+
+**Every post should be able to end one sentence earlier than it currently does. Try it. If cutting the last sentence loses nothing — cut it.**
+
+Examples of endings to never write:
+- "That's what operational infrastructure looks like when it's watching itself." (explains the point instead of making it)
+- "The workflows that compound over time are the ones built around what AI can do at every step." (restates what was already shown)
+- "Platform knowledge is table stakes now. Vertical depth is the thing that holds." (summarizes the post you just read)
+
+The test: if the last sentence could be removed and the post's point is unchanged, remove it.
+
+### He doesn't overuse signature structures
+
+The six language techniques (alliterative contrast, two-part parallels, etc.) are real tools — but NOT a template to run on every post. One post might have a clean parallel. The next should have none. The technique only works if it's not expected.
+
+**Hard rule: No more than one parallel or contrast structure per post. Most posts should have zero.**
+
+If every post ends with a two-sentence parallel, it becomes an AI tell — the structure itself signals generation, not thought.
+
+### He drops specifics without setup
+
+JT does not say "I'd like to share something I learned while building X." He says the thing.
+
+NOT:
+> "In building an Agentforce insurance agent, I noticed that the most common challenge teams face is..."
+
+THIS:
+> "The InsuranceServiceAgent routes claims, creates Salesforce records, and escalates edge cases. No claim handler makes the same routing decision 40 times a day."
+
+Specific detail appears mid-sentence, not announced. The reader infers the context.
+
+### Cadence: short-short-long or short-long-stop
+
+Most JT posts run on one of two rhythms:
+
+**Short-short-long:**
+> "Your catalog is worth nothing if a customer has to call to access it."
+> "A contractor who can't reach anyone before 8AM goes to the distributor with an online system."
+> "Speed of access beats depth of knowledge when the job is waiting."
+
+**Short-long-stop:**
+> "The part that took longer than expected: model name normalization."
+> [One long explanatory sentence with the specific technical detail]
+> [Done. No restatement.]
+
+When three consecutive sentences are the same length: break one or merge two.
+
+### He doesn't explain what's inferable
+
+If the point is clear, JT doesn't say it. He trusts the reader.
+
+NOT:
+> "This is important because it means the rep's expertise scales without the rep needing to be on every call."
+
+THIS:
+> "The contractor finds the part. The order gets captured."
+
+The reader can connect those two facts to the implication. The post that explains the implication is longer and weaker.
+
+### Lowercase on X is natural, not performed
+
+JT's casual X posts are lowercase because that's how he actually writes in messages — not because of a rule. When a post is clearly a technical observation or a sharp take, lowercase signals "I'm just saying this, not announcing it." Use it that way. Not as a formatting trick applied to all short posts.
+
+### Dry. Not funny. Not inspirational.
+
+JT's content has no punchlines. It has no calls to action. It has no motivational framing. It's dry in the sense that it expects the reader to keep up. It doesn't perform enthusiasm.
+
+NOT:
+> "This is the kind of thinking that separates operators who scale from those who stay stuck."
+
+THIS:
+> "The property managers, contractors, and distributors who figure this out stop scaling headcount to solve coordination problems."
+
+The first version tells the reader how to feel. The second just tells them what happens.
+
+---
+
 ## Platform Distinction (non-negotiable)
 
 ### LinkedIn — Consulting + Career Surface
@@ -192,7 +291,11 @@ Use this structure on Mondays — it's the right format for short punchy takes t
 
 ---
 
-## The 6 Language Techniques (apply to all posts regardless of length)
+## The 6 Language Techniques (use sparingly — NOT a template to run on every post)
+
+**Hard rule on usage:** Most posts should use at most ONE of these techniques. A post where multiple techniques are deployed looks constructed, not written. The techniques below are strongest when they appear occasionally and feel inevitable — not when they recur predictably.
+
+The test: if you can identify which technique a post is "using," it's been over-applied.
 
 ### 1. Alliterative Contrast — Signature Move
 Two sides of a contrast start with the same letter. The sound link makes the insight feel inevitable.
@@ -471,6 +574,8 @@ The following patterns are the clearest tells that content was AI-generated. The
 
 **"[Observation]. [Conclusion that restates the observation differently.]"** — Padding a single idea into two sentences by saying the same thing twice at slightly different zoom levels.
 
+**"[Statement]: [item], [item], [item]."** — The colon-list construction. "The gap is after intake: classify urgency, dispatch vendor, confirm to tenant." Sounds like a consultant writing a deck bullet point, not a person talking. If the list matters, give each item its own sentence or cut to the one that matters most. Never use a colon to introduce a comma-separated list in post body copy.
+
 These patterns appear when the model runs out of real content and starts generating structure. The fix in every case is: say the true thing once, directly, and stop.
 
 ---
@@ -478,6 +583,12 @@ These patterns appear when the model runs out of real content and starts generat
 ## What JT Never Does
 - Preamble before the point ("Here's what I've been thinking about lately...")
 - Summary at the end restating the post
+- Closing with a packaged insight that explains what the reader just read ("That's what X looks like when Y")
+- Telling the reader how to feel about what they just read ("This is the gap that separates...")
+- Using a signature structure (parallel, contrast, alliteration) more than once in the same post
+- Explaining the implication when the reader can infer it themselves
+- Connecting sentences with "which means," "this is why," "what that means is," "which is why"
+- Three sentences of the same length in a row
 - Hedging ("I think maybe," "from my perspective")
 - Humblebragging ("Grateful to share that we...")
 - Long explanations of things the reader can infer
@@ -561,16 +672,23 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] **Vague declarative:** Name the specific thing. "The implications are significant" → which implication, how significant? If you can't name it, cut the sentence.
 - [ ] **Sentence restatement:** Does any sentence say the same thing as the previous sentence at a different zoom level? Cut the weaker one.
 - [ ] **Rhythm:** Three consecutive sentences the same length? Break one or merge two. Vary the cadence.
+- [ ] **Signature structure overuse:** Count parallel structures and contrast structures in the post. More than one? Remove the weaker one. A post with two parallels sounds generated. A post with one — or zero — sounds written.
+- [ ] **Explanatory closing:** Does the last sentence explain what the post just showed? Cut it and re-read. If the post stands, it was padding. This is the #2 AI-generated tell after contrast pairs.
+- [ ] **Connective tissue:** Scan for "which means," "this is why," "what that means is," "which is why," "this matters because." Each of these explains a connection the reader should make themselves. Cut them and let the sentences sit next to each other.
+- [ ] **Cut test on last sentence:** Read the post without the last sentence. Is the point intact? If yes — cut the last sentence.
+- [ ] **"That's what X looks like" closer:** Never end a post by naming what the post just demonstrated. "That's what operational infrastructure looks like when it's watching itself" = the model labeling its own metaphor. Cut it.
 
 ### Slop score (run before finalizing any LinkedIn post):
-Rate 1–10 on each dimension. If total < 35/50, revise before sending.
-| Dimension | Question |
-|-----------|----------|
-| Directness | Statements or announcements? |
-| Rhythm | Varied or metronomic? |
-| Trust | Respects reader intelligence? |
-| Authenticity | Sounds human? |
-| Density | Anything cuttable? |
+Rate 1–10 on each dimension. If total < 42/70, revise before sending.
+| Dimension | Question | Bad (1-4) | Good (7-10) |
+|-----------|----------|-----------|-------------|
+| Directness | Statements or announcements? | "Here is why X matters" | "X. Done." |
+| Rhythm | Varied or metronomic? | Every sentence same length | Short-short-long or short-long-stop |
+| Trust | Respects reader intelligence? | Explains the implication | Lets the reader connect the dots |
+| Authenticity | Sounds human? | Reads like a framework | Reads like one person talking |
+| Density | Anything cuttable? | Ends with a summary sentence | Ends when the last true thing was said |
+| Structure | Parallels feel inevitable or performed? | Post has 2+ parallels | Post has 0-1, and it lands |
+| Specificity | Details earned or decorated? | "Significant results" | "18 hrs/week of manual StreetEasy searches" |
 
 ### X only (algorithm compliance):
 - [ ] First line invites a reply?

@@ -170,6 +170,7 @@ This is the single biggest quality lever. Hook quality determines reach. Earn th
   - Post 1: build-in-public or behind-the-scenes angle
   - Post 2: hot take or contrarian opinion in the product's niche
   - Post 3: specific result, proof point, or methodology insight
+- **Trend hook requirement (mandatory):** At least 1 of the 3 X posts must reference or directly respond to something from the Step 5 trend research (trending topic, viral format, or current community discourse). This post should feel timely, not evergreen. Label it `"trend_hook": true` in the queue entry. If no trend research was run this week (skipped for cost), generate one evergreen post but note the skip in the Telegram summary.
 - **Debate hook requirement (mandatory — at least 1 of 3 posts per product):** One post must contain a statement that is defensible but likely to get pushback. Not inflammatory — specifically controversial within the product's community. Examples for Nash Satoshi: "Game theory says [COIN] is positioned better than CT thinks — and the crowd will figure it out in 30 days." For Vista: "Letterboxd is a social network pretending to be a movie tracker. Vista is the opposite." The debate hook is what drives comments. Comments drive distribution.
 
 ---

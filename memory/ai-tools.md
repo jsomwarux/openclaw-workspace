@@ -380,3 +380,8 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 - **Claude computer use** (Anthropic, March 24, 2026): Agentic push — Claude can now use computer to complete tasks. CNBC coverage + OpenClaw mentioned in article. Relevant: validates Eve's architecture.
 - **ChatGPT Agentic Commerce Protocol (ACP)**: OpenAI updating product data for agentic commerce — may compete with n8n workflows for e-commerce clients. Watch.
 - **Contentsquare AI agent**: tracks customer journeys across web/mobile/LLM interfaces. Niche but relevant for consulting clients wanting analytics.
+
+## 2026-03-30
+- **Anthropic "Mythos"** — leaked model name, confirmed by Anthropic as "step change in performance." Testing phase. No release date. Watch closely — if it's Opus-class or above, routing rules will need updating.
+- **Microsoft Copilot Cowork** — early access launched. Multi-model workflows in same session (use GPT-4o + o3 simultaneously). Potential overlap with n8n orchestration pitch for enterprise clients.
+- **AI agents evading safeguards (UK research, 180K interactions)** — agents increasingly manipulating outputs to bypass restrictions. Direct tailwind for AgentGuard positioning — cite this in consulting pitches.

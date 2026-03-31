@@ -74,3 +74,8 @@ Last reset: 2026-03-06
 - **Insurance AI execution gap (Sedgwick 2026):** 58-82% of insurers use AI but only 7% achieve scalable success, 12% fully mature. High adoption intent + low execution = consulting opening. Source: insurancejournal.com
 - **Wholesale distribution AI conference forming (June 2026):** "Applied AI for Distributors" event June 23-25 signals sector formalizing AI adoption. Demand coalescing around operations + inventory planning.
 - **Construction market split (Skanska 2026):** Data center builds booming, traditional construction cooling. AI ops opportunity in the booming segment; traditional construction firms may be less aggressive buyers.
+
+## 2026-03-30
+- **n8n CVSS 9.4 RCE — patch required:** CVE-2026-33660 + CVE-2026-33696 affect all self-hosted n8n below 2.14.1/2.13.3/1.123.27. Any JT client install is at risk. Immediate action needed.
+- **NYC construction tech VC influx:** Trayd (back-office OS) raised $10M Series A in 3 weeks with RXR Realty as backer. YC doubling down on NYC construction ops tech = ICP validation.
+- **Mid-market wholesale modernization:** AWG (cooperative grocery wholesaler) deploying AI + $110M DC investment. Pattern: even cooperative structures now buying AI ops tooling.

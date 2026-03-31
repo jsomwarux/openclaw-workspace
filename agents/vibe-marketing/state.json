@@ -1,20 +1,20 @@
 {
-  "last_run": "2026-03-23T08:45:00Z",
-  "last_successful_run": "2026-03-23T08:45:00Z",
-  "last_week_of": "2026-03-23",
+  "last_run": "2026-03-30T08:45:00Z",
+  "last_successful_run": "2026-03-30T08:45:00Z",
+  "last_week_of": "2026-03-30",
   "last_linkedin_month": null,
   "last_angles_month": null,
   "products_processed": ["nash-satoshi", "vista"],
-  "queue_count": 30,
-  "drive_link": "https://docs.google.com/document/d/1iUbcHu0rE0_7Ke05z3t6dZga5CSCQm-9jE0sl2ktoRI/edit",
-  "vista_drive_link": "https://docs.google.com/document/d/1SZBxykgYY62mRN0-vNz5CSMCEwZeO2QtdOYU-gZOfbI/edit",
+  "queue_count": 48,
+  "drive_link": "https://docs.google.com/document/d/1KItWC3qxRcSMNkzAfw1QbkxvQQKN8Uj7F5LzBD5B4Is/edit",
+  "vista_drive_link": "https://docs.google.com/document/d/1ncTTV_Ur8V-VV0DOp5lINW9W9GGuZM-WP5fLPEhIeoI/edit",
   "last_reddit_subreddit": {
-    "nash-satoshi": "r/CryptoMoonShots",
-    "vista": "r/MovieSuggestions"
+    "nash-satoshi": "r/CryptoCurrency",
+    "vista": "r/movies"
   },
   "last_scene_concept": {
-    "vista": 2,
-    "nash-satoshi": 2
+    "vista": 3,
+    "nash-satoshi": 3
   },
   "seo_evaluated": {
     "nash-satoshi": {

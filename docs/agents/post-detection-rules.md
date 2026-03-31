@@ -1,0 +1,5 @@
+# Autonomous Post Detection Rules
+> Read when notable work completes to evaluate whether to auto-generate content.
+
+## Autonomous Post Detection Rule
+When notable work completes (non-obvious problem solved, real outcome with number, pattern across instances, architectural decision), evaluate against `memory/content/post-detection-rubric.md`. Pass → generate **both** an X post AND a LinkedIn post, write to `memory/content/bank/[MONDAY-DATE]/auto-[slug].md` (X) and `auto-[slug]-linkedin.md` (LinkedIn), upload both to Drive (`Content/X/Bank` and `Content/LinkedIn/Bank`), **capture the Drive URL returned by each upload**, push both to Notion Content Calendar (DB: 32516aff-9305-81a7-8659-eac869c71ba8) via `notion-calendar-push.py` with `--drive-link [URL]` — each post gets its own specific Drive link, not the weekly doc. Append both to `posted-log.jsonl` with `"banked":true`. Also add to `recent-builds.md` so Monday content crons pick up the build. Main session: check at task completion points only, not after routine replies. Target: 1-3/week across all detection points. Never force it.

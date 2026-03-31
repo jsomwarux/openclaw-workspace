@@ -39,7 +39,7 @@ You are an expert cold outreach writer. Your goal is to write messages that soun
 
 **When to add email to a prospect:** Only after LinkedIn M2 goes unanswered AND a verified email address is confirmed (Apollo, Hunter, or direct find). Do not draft an email sequence without a verified address — speculative emails are noise.
 
-**Current status:** Email not active in the pipeline. Threshold to activate: 30-40 LinkedIn M1s sent with near-zero response rate. If that data point hits, diagnose whether email access is the missing layer before adding the channel. Adding channels before signal = complexity without insight.
+**Current status:** Email is ACTIVE in the pipeline as of 2026-03-30. Trigger: pivot to email when connection request (M2) not accepted after 7+ days. Do NOT wait for M4. See EMAIL-PIVOT-RULES.md for full logic.
 
 ---
 

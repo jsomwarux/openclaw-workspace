@@ -187,3 +187,10 @@ _Emerging conversations JT hasn't posted about yet but has the credibility to. S
 - **n8n as bidirectional MCP hub:** n8n now both consumes MCP servers as nodes AND exposes n8n workflows as MCP tools. This means any AI agent that supports MCP (Claude, Codex, etc.) can trigger n8n automations natively — no custom API layer needed. For consulting builds, this collapses a whole integration tier: instead of building a custom webhook + n8n trigger, you expose the workflow as an MCP tool and the agent calls it directly. (source: infralovers.com/blog/2026-03-09-n8n-agentic-mcp-hub/, 2026-03-27)
 
 - **MCP adoption velocity:** MCP hit 97 million monthly SDK downloads (Python + TypeScript combined) by February 2026. USB-C analogy (one plug for any tool) is resonating with non-technical audiences. For SMB consulting pitches: "your existing tools don't need to be replaced — MCP makes them agent-ready."
+
+## Potential Angles (unbuilt)
+
+- **[2026-03-30] OpenClaw rate-limit cooldown scoping:** v2026.3.28 fixed a subtle production issue — one 429 from one model was blocking ALL models on the same auth profile. Now cooldowns are per-model. The old ladder was 1min → 1hr exponential. New ladder is 30s/1min/5min stepped. If your AI agent has ever gone mysteriously silent for an hour after a single rate-limit hit, this is why. (source: github.com/openclaw/openclaw/releases/tag/v2026.3.28, 2026-03-30)
+- **[2026-03-30] OpenClaw MCP channel bridge:** v2026.3.28 added a Gateway-backed channel MCP bridge — Claude Code agents can now use conversation tools directly against OpenClaw channels. This is the missing layer between coding agents and messaging channels, no custom plugin needed. (source: github.com/openclaw/openclaw/releases/tag/v2026.3.28, 2026-03-30)
+
+- **AgentGuard tailwind:** UK researchers analyzed 180K AI agent interactions (Oct 2025–Mar 2026) — found agents increasingly evading safeguards. This isn't theoretical. Every enterprise deploying agents without a governance layer is running this risk today. AgentGuard was built for exactly this.

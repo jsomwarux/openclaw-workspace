@@ -16,3 +16,4 @@
 2026-03-27T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 5 | findings: 6 | 🔴: 1 | 🟠: 1 | messaged_jt: yes
 2026-03-28T11:05:34Z | weekly-synthesis | x_queries: 4 | web_sources: 6 | cowork_commits: new | findings: 6 | 🔴: 1 | 🟠: 0_new (2_carried) | 🟡: 3 | mc_tasks_pushed: 3 | est_cost: ~/bin/zsh.30 X + /bin/zsh.00 Anthropic
 2026-03-28T15:31:00Z | daily-scan | x_queries: 6 | web_queries: 5 | findings: 4 | 🔴: 0 | 🟠: 0 | 🟡: 2 (KB #352-353) | messaged_jt: no
+2026-03-30T15:33:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 5 | 🔴: 1 | 🟠: 0 | 🟡: 2 (KB #357-358) | messaged_jt: yes

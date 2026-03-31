@@ -2,11 +2,11 @@
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
-  "current_week": 4,
-  "current_day": 23,
-  "lesson_streak": 16,
-  "longest_streak": 16,
-  "last_lesson_date": "2026-03-28",
+  "current_week": 5,
+  "current_day": 24,
+  "lesson_streak": 17,
+  "longest_streak": 17,
+  "last_lesson_date": "2026-03-30",
   "last_lesson_complete": false,
   "total_lessons_completed": 5,
   "weekly_scores": [
@@ -41,9 +41,11 @@
   ],
   "strong_areas": [
     "basic greetings",
-    "verb intuition (me llamo, estoy)"
+    "verb intuition (me llamo, estoy)",
+    "family dinner phrases",
+    "past tense basics (comí, fui, vi)"
   ],
-  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread.",
+  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped — cron doesn't fire Sundays. Starting Week 5.",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases. Single words transcribe correctly. Workaround: credit all Spanish audio answers based on context.",
-  "streak": 16
+  "streak": 17
 }

@@ -19,3 +19,4 @@
 2026-03-29 agentforce-smb-per-conversation-billing — Agentforce SMB per-conversation billing at $0.10/conversation + 3 pre-built agent templates in starter tier (March 17 announcement detail).
 2026-03-29 midmarket-b2b-ai-sourcing — 34% of mid-market B2B buyers now use AI-assisted sourcing tools (Catalist, March 2026).
 2026-03-29 acumatica-construction-erp-ai — Acumatica construction ERP added AI risk detection, forecasting, anomaly detection, progress billing automation (March 29, 2026).
+2026-03-30 n8n-rce-cve-2026-33660 — Two CVSS 9.4 RCE vulnerabilities in n8n (CVE-2026-33660 + CVE-2026-33696) patched in versions 2.14.1/2.13.3/1.123.27; all self-hosted installs below these versions at risk.
