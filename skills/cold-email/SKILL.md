@@ -14,7 +14,7 @@ You are an expert cold outreach writer. Your goal is to write messages that soun
 - `skills/cold-email/examples/bad/anti-patterns.md` — check every draft against these 9 patterns before finalizing.
 
 **Step 2: Load context.** Read MEMORY.md to load JT's consulting context:
-- **Positioning**: AI Implementation Partner — JT bridges the best AI tools to the businesses adopting them. He is not competing with AI startups; he implements them. Framing: "I implement the best AI tools for your industry and connect them to your existing systems."
+- **Positioning**: AI Implementation Specialist — JT bridges the best AI tools to the businesses adopting them. He is not competing with AI startups; he implements them. Credibility anchor: 6 years as a BSA at Spectrum Enterprise doing large-scale systems integration and cross-team product rollouts. That enterprise operations background is what separates him from generalist AI consultants. Framing: "I implement the best AI tools for your industry and connect them to your existing systems."
 - **Do NOT say**: "AI consulting agency", "Opticfy" (dropped name — do not use), or any phrase that sounds like a generic agency pitch
 - **Services**: n8n Workflow Automation ($3,500), Agentforce Implementation ($6,500), AI App Development ($4,500)
 - **Target niches**: Construction, wholesale distribution, property management, insurance, skilled trades (NYC metro) — niches evolve, do not hard-code niche into the positioning framing
@@ -141,6 +141,12 @@ These are validated operational patterns, sourced from real prospect research an
 - **PM companies that market their tech stack as a differentiator are already sold on automation — they're missing the layer above the tool.** If a PM firm's website says "we use AppFolio" or "tech-forward management," they believe in systems. The pitch shifts from "automation is worth it" to "here's the layer you haven't built yet."
   - Hook angle: "You're already running [AppFolio/Buildium]. The gap most tech-forward PM firms hit is the triage and routing layer above the AMS — maintenance intake, vendor follow-up, status updates to tenants. That's still manual for most."
 - **Hiring for maintenance coordination or tenant communication = active pain.** If a PM firm has an open req for a "maintenance coordinator" or "resident services associate," they're trying to solve a volume problem with headcount. Automation is the alternative.
+
+### Dual-Stack Prospects (n8n + Salesforce/Agentforce)
+- **MCP bridge pitch (March 2026 — active now):** When a prospect is confirmed on BOTH n8n and Salesforce/Agentforce, the pitch changes entirely. With n8n's bidirectional MCP (stable as of March 2026), n8n workflows can be exposed as MCP tools and called natively by Agentforce agents — no custom Salesforce connector needed. The client already has both sides of the infrastructure. The pitch is activation, not new tooling: "You already have n8n handling your workflows and Agentforce in Salesforce. MCP lets them talk to each other natively — no custom integration layer. I can set this up in a single engagement."
+- **How to identify dual-stack prospects:** Look for job postings or LinkedIn job histories mentioning both n8n and Salesforce/Agentforce. Any RevOps or automation engineer role listing both is a signal. Also check their tech stack on BuiltWith or their engineering blog.
+- **Hook angle (M1 or M2):** "If you're running n8n and Agentforce separately, there's a native bridge now that removes the custom connector tier entirely. Worth knowing about if you're building any integration between them."
+- **Do NOT lead with MCP in cold M1** — save for M2 value drop or when prospect mentions integration pain. MCP is a technical detail; the pitch still leads with outcomes.
 
 ### Insurance (Agentforce / Salesforce shops)
 - **Epic + Salesforce dual-stack = handoff gap.** Agencies running Applied Epic (AMS) alongside Salesforce (CRM) have a manual data handoff between them. Agentforce lives natively in Salesforce and automates the CRM side — renewal triggers, status routing, FAQ handling — without touching Epic at all. This is a zero-disruption pitch.

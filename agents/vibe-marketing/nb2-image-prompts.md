@@ -46,7 +46,7 @@ Avoid: studio lighting, perfect symmetry, stock photo aesthetic, CGI look, artif
 | Slide | Who creates it | What it is |
 |---|---|---|
 | Slide 1 | NB2 (Eve generates fresh weekly) | Realistic scene photo — hook |
-| Slides 2–4 | JT (app screenshots from phone) | App UI, rankings, real data |
+| Slides 2–4 | Eve (screenshots pulled from Drive library) | App UI, rankings, real data |
 | Last slide | NB2 (Eve generates fresh weekly) | Realistic scene photo — CTA close |
 
 JT adds ALL text in TikTok's native text editor before posting. Sound is added in TikTok too.
@@ -240,17 +240,14 @@ The manifest file lists the local image paths and includes JT's text overlay ins
 ```
 ## How to assemble this TikTok
 
-1. Open TikTok → + → select photos from your gallery
-2. Upload in order: Slide 1 (hook scene) → your app screenshots → Last slide (CTA scene)
-3. On Slide 1: add text overlay with the hook line (see slide copy below)
-4. On middle slides: add text labels if needed (see slide copy below)
-5. On Last slide: add text overlay with CTA (see slide copy below)
-6. Pick a trending sound from TikTok's library in your niche before posting
-7. Copy caption from review doc → paste into TikTok caption field → post
+All slides are generated and text is baked in. Eve handles everything — you just post.
 
-Slide 1 hook text: [from this week's slide copy]
-Middle slide labels: [from this week's slide copy]
-Last slide CTA text: [from this week's slide copy]
+1. Save ALL final slides from the Drive review doc to your camera roll (slide-01 through slide-last)
+2. Open TikTok → + → select photos from camera roll in order (hook → middle → CTA)
+3. Tap the sound icon → search the recommended sound from the Drive review doc → select
+4. Paste caption from review doc → post
+
+That's it. No manual text entry, no screenshot capture needed.
 ```
 
 ---
@@ -264,34 +261,23 @@ Last slide CTA text: [from this week's slide copy]
 
 ---
 
-## Screenshot Instructions (unchanged — JT provides these)
+## Screenshot Library (one-time upload by JT — Eve pulls these automatically)
 
-### Vista — App UI Slides (Slides 2–4)
-```
-📸 SCREENSHOTS NEEDED — Vista App (iOS)
-Open Vista on your phone.
-Capture 2-3 screenshots:
-  1. Your ratings list — ideally 20+ films visible, showing variety of scores
-  2. A film detail page — showing your personal score + the film info
-  3. Your taste profile screen (optional — strong proof point)
-These are Slides 2-4. The app UI IS the product demo.
-```
+Screenshots are stored in Drive and downloaded by the pipeline each Monday. JT uploads new screenshots whenever the app updates or rankings change significantly.
 
-### Vista — App Store Slide (optional last slide alternative)
-```
-📸 OPTIONAL — App Store listing screenshot
-Open App Store → search Vista → capture the listing page with app icon visible.
-More credible as a CTA than any generated image.
-Use as the very last slide instead of the NB2 CTA scene if you want.
-```
+**Drive paths:**
+- Vista: `Eve — Drafts / Vibe Marketing / App Screenshots / vista/`
+- Nash Satoshi: `Eve — Drafts / Vibe Marketing / App Screenshots / nash-satoshi/`
 
-### Nash Satoshi — Rankings Slides (Slides 2–4)
-```
-📸 SCREENSHOTS NEEDED — NashSatoshi.com
-Open nashsatoshi.com on your phone.
-Capture 2-3 screenshots:
-  1. Full rankings table — top 10 visible
-  2. A specific asset's detail/score breakdown if available
-  3. The scoring methodology page if available
-Fresh data screenshots = more credible than any generated graphic.
-```
+**Recommended filenames (descriptive — agent selects based on content angle):**
+
+Vista:
+- `ratings-list.png` — ratings list with 20+ films visible
+- `film-detail.png` — a film detail page showing personal score
+- `taste-profile.png` — taste profile screen (strongest proof point)
+- `app-store-listing.png` — App Store listing (optional CTA slide alternative)
+
+Nash Satoshi:
+- `rankings-table.png` — full rankings table, top 10 visible
+- `coin-detail.png` — specific asset score breakdown
+- `methodology.png` — scoring methodology page

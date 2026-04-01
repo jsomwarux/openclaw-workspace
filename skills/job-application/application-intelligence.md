@@ -63,7 +63,13 @@ Note: build_resume_docx.py renders in this exact order. Do not reorder Skills be
 `[Target Role Title] with [X] years of experience in [2-3 core competencies]. [Most impressive quantified achievement]. Specialist in [specific technologies/methodologies], with a track record of [key differentiator]. [Relevant certification or unique qualifier].`
 
 **Strong example for JT:**
-> "AI Implementation Specialist and Automation Consultant with 6+ years of enterprise systems experience. Architected autonomous AI agent systems and Agentforce implementations that reduced operational overhead by 40% for property management clients. Expert in n8n workflow automation, multi-LLM ensemble architectures, and Salesforce Agentforce. Currently operating 35 autonomous AI agents in production with full monitoring, cost controls, and governance infrastructure."
+> "AI Implementation Specialist with 6+ years of enterprise operations experience, including large-scale systems integration and cross-functional product rollouts at Spectrum Enterprise. Builds n8n workflow automations and Salesforce Agentforce agents for operations-heavy businesses — construction, property management, insurance. Delivered systems that recovered 10–20 hours/week of manual work for NYC clients. Runs 39 autonomous AI agents in production with full monitoring, cost controls, and governance infrastructure."
+
+**Positioning rule (permanent — applies to every resume/cover letter):**
+- Title: always "AI Implementation Specialist" — never "AI consultant," "AI automation consultant," or "AI engineer"
+- Differentiator: 6 years enterprise operations at Spectrum Enterprise — large-scale systems, cross-team coordination, national rollouts. This is what separates JT from generalist AI consultants who have never implemented anything at scale.
+- Frame the BSA background as implementation experience, not just "background." It IS the qualification for AI implementation roles.
+- Never position as a developer. Never lead with coding. Lead with outcomes and operations.
 
 **Weak (avoid):**
 > "Experienced professional seeking challenging opportunities in AI and Salesforce consulting where I can utilize my diverse skill set."
@@ -159,6 +165,19 @@ Source: https://www.anthropic.com/engineering/advanced-tool-use
 ---
 
 ## Cover Letter Strategy
+
+### Cover Letter Hard Rules (applied to every application — no exceptions)
+
+**1. Never refer to "JT Somwaru Consulting" as a business name.**
+JT operates as an independent consultant with no formal business name. Say "independent consulting work," "consulting clients," "as an independent consultant," or describe the work directly. Never name the business.
+
+**2. Never include specific dollar figures in cover letters.**
+No "$1,500 project," "$3,500 in follow-on work," "$180K target," etc. Dollar amounts in cover letters read as either bragging or negotiating. Use outcomes without the number: "client immediately commissioned follow-on work," "project delivered in under 3 weeks," "engagement expanded into two additional projects."
+
+**3. Never close with a consulting-style CTA.**
+"Happy to walk through my client deployments" reads like pitching a prospect, not applying for a job. Close with something that fits the job application context: "Looking forward to the conversation," "Would love to discuss how this maps to what you're building," or a simple named reference offer: "Happy to share more on [specific project] if helpful."
+
+---
 
 ### The opening that gets read vs. deleted
 **Never** open with:

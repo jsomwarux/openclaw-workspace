@@ -9,7 +9,8 @@
 - Wake-up behaviors → HEARTBEAT.md | Security boundaries (operator-only) → SECURITY.md
 
 ## Budget Rule
-`bootstrapMaxChars=40000` (per-file limit). All bootstrap files load fully when under 40k each. Current sizes: AGENTS.md ~28k | MEMORY.md ~20k | TOOLS.md ~16k | HEARTBEAT.md ~13k.
+`bootstrapMaxChars=32000` (**HARD CAP — NEVER raise above 32,000**. Setting to 40,000 caused a 2-hour outage on 2026-03-31: triggered "Extra usage required for long context" errors blocking ALL responses. 32,000 is the permanent ceiling.)
+Per-file limits: AGENTS.md <32k | MEMORY.md <24k | TOOLS.md <20k | HEARTBEAT.md <16k.
 **Hard limits (stay under these to maintain full load):** AGENTS.md <32k | MEMORY.md <24k | TOOLS.md <20k.
 **Rule:** If any file hits its limit: move the largest section to `docs/agents/`, `docs/memory/`, or `docs/tools/` subfile and replace with a one-line pointer. Never let a file grow without checking size first. Subfiles to use: `docs/agents/outreach-rules.md` | `docs/agents/resume-upload-rules.md` | `docs/agents/post-detection-rules.md` | `docs/agents/autoresearch-rules.md` | `docs/agents/mistakes-log.md` | `docs/tools/claude-personas.md` | `docs/tools/TOOLS-full.md`.
 

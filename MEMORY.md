@@ -10,13 +10,14 @@
 
 ## 🚨 Hard Rules
 - Gateway restart: ALWAYS use restart script. NEVER raw launchctl/gateway config.patch/apply.
+- bootstrapMaxChars: HARD CAP 32,000. NEVER raise above 32,000. 40,000 caused 2-hour outage 2026-03-31 (long-context billing error blocked all responses).
 - openclaw.json: NEVER write arbitrary keys — crashes gateway. External keys → TOOLS.md only.
 - Agentforce overnight builds: ✅ ALLOWED (lifted 2026-03-11). Must `git pull origin main` first. B2B Account Service Agent is PERMANENTLY BANNED — do not recreate under any circumstances.
 - `launchctl unload/load` mid-session = gateway goes offline. Warn JT first. Defer to JT-initiated restart if possible.
 
-## Infrastructure (updated 2026-03-15)
+## Infrastructure (updated 2026-03-31)
 - OpenClaw version: 2026.3.28 (updated 2026-03-30)
-- bootstrapMaxChars: 40000 (raised from 32000 on 2026-03-30 — all bootstrap files load fully; AGENTS.md 28k, MEMORY.md 20k, TOOLS.md 16k, HEARTBEAT.md 13k, all under per-file limit)
+- bootstrapMaxChars: 32000 (HARD CAP — reverted from 40000 on 2026-03-31. Setting to 40000 triggered "Extra usage required for long context" errors blocking ALL responses for ~2h. Never raise above 32000.)
 - Gateway watchdog: `com.openclaw.gateway-watchdog` (10-min interval) — kills context-mode if RSS >1.5GB, kicks gateway if dead. Script: `scripts/gateway-watchdog.sh`
 - context-mode Claude plugin: DISABLED (was causing OOM kills — disabled in `~/.claude/settings.json`)
 - LaunchAgent ThrottleInterval: 10s (raised from 1s to prevent rapid crash loop)
@@ -46,6 +47,12 @@
 - **Last fitness review:** not yet run (system launched 2026-03-06) | Next: April 1
 - **Signals accumulator:** memory/niche-fitness-signals.md (reset monthly)
 - Niches are evaluated monthly against alternatives. If a better fit emerges, Eve advises a pivot.
+
+## Positioning (decided 2026-03-31 — permanent)
+- **Title across all channels: AI Implementation Specialist** (not "AI consultant," not "AI automation consultant")
+- **Differentiator: 6 years enterprise operations at Spectrum Enterprise** — large-scale systems integration, cross-functional product rollouts for a national telecom. This is what separates JT from generalist AI consultants.
+- Frame: "enterprise operations background" not "telco background" — the ops experience transfers to all niches (construction, PM, insurance, wholesale)
+- Applied to: LinkedIn headline, About section, jtsomwaru.com, resume template, cold-email skill, content-voice.md
 
 ## JT Somwaru Consulting
 - Target niches: wholesale distribution, property mgmt, construction, insurance ops, skilled trades (NYC)
@@ -90,7 +97,7 @@
 - Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
 - Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private). **Analysis pipeline: PERMANENTLY on Gumloop. Do NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly says so.**
 - Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL
-- jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Last updated 2026-03-11 (pricing raised, GEO/llms.txt/JSON-LD implemented, nav fixed)
+- jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Last updated 2026-03-31 (AI Implementation Specialist positioning live; prior: pricing raised, GEO/llms.txt/JSON-LD implemented, nav fixed 2026-03-11)
   - B2B Account Service Agent card: PERMANENTLY BANNED — do not re-add under any circumstances
 - Dynasty fantasy football: planned
 

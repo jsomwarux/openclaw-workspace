@@ -120,6 +120,7 @@ The first version tells the reader how to feel. The second just tells them what 
 - **What works:** Case studies with real outcomes, tactical insights, proof of work, substantive opinions
 - **What doesn't:** One-line aphorisms (weak signal), vague claims, anything that sounds like a tweet
 - **Never reference @jts_14, X, or Twitter** in LinkedIn content
+- **Passive income / consumer apps (Nash Satoshi, Glow Index, Vista):** Post the **capability and architecture, not the product**. "Built a config-driven factory that deploys a multi-LLM ranking app for any niche from one JSON schema" → strong. "Nash Satoshi ranks crypto coins" → dilutes consulting positioning. The ICP never needs to know what the niche is. Sunday Behind the Build is the right slot for this.
 
 ### X / Twitter — Brand + Community Surface
 - **Audience:** Tech builders, founders, AI community, crypto crowd
@@ -128,6 +129,14 @@ The first version tells the reader how to feel. The second just tells them what 
 - **What works:** Hot takes, short observations, compressed truths, build-in-public moments
 - **What doesn't:** Long explanations, LinkedIn-style case study posts
 - **Can reference LinkedIn posts, builds, or consulting work** with a link when relevant
+- **Passive income / consumer apps:** Post both the product AND the architecture. "I built a passive income product factory" is a strong X thread. Builders want to see the process and the product.
+
+### Reddit — Product-Specific Communities Only
+- **Nash Satoshi:** crypto/finance subreddits
+- **Glow Index:** r/skincareaddiction, r/SkincareFlatlays
+- **Vista:** r/iphoneapps, r/AppStore after karma threshold (50+) is reached
+- **Rule:** product-specific subreddits only. Never cross-post consumer apps to general AI or tech subreddits.
+- **Routing rule:** LinkedIn = the skill. X = the build. Reddit = the product.
 
 ---
 
@@ -138,9 +147,19 @@ The first version tells the reader how to feel. The second just tells them what 
 | Day | Format | Depth | Goal |
 |-----|--------|-------|------|
 | **Monday** | Short punchy take or compressed truth | 1–3 sentences | Reach, establish voice |
+| **Tuesday** | Industry observation — problem seen in the wild | 3–4 paragraphs | ICP resonance, top-of-funnel |
 | **Wednesday** | Case study or proof of work | 3–5 paragraphs | Consulting credibility, prospect attention |
+| **Thursday** | Tactical insight or hot take | 2–4 paragraphs | Expertise signal |
 | **Friday** | Tactical insight or "how I approach X" | 2–4 paragraphs | Expertise signal for recruiter/prospect |
 | **Sunday** | Behind the build | 2–4 paragraphs | Trust-building, process transparency |
+
+**Tuesday LinkedIn — Industry Observation format (mandatory structure):**
+Problem → Evidence → Prescription. Three parts, always in this order.
+1. **Problem** — state the gap between what the ICP says and what they actually do. One sentence.
+2. **Evidence** — specific, grounded observation. "I found three NYC property managers this week with X in their copy." Numbers, patterns, specifics. No company names.
+3. **Prescription** — what they need. JT is the observer who can solve it, not someone who already did. "Every one of them needs X" framing — not "it already works" (that implies a closed deal). Optionally: preempt the obvious alternative with "not a new hire" / "not another vendor" when it adds weight.
+
+**Never end a Tuesday observation post at the problem.** Ending at "the work is still manual" leaves the reader nodding but gives them nothing to act on. Ending with a prescription gives them the next thought — and positions JT as the one who knows the answer.
 
 **Wednesday is the most important post of the week.** This is the post that makes a property manager or wholesale distributor DM you. It must have:
 - A specific client, problem, and outcome (Aya preferred, or a real build)
@@ -152,6 +171,8 @@ The first version tells the reader how to feel. The second just tells them what 
 ---
 
 ## Hard Rules — What Never Appears in JT's Content
+
+**Never name specific companies in posts.** Do not name real companies, prospects, clients, or businesses in any LinkedIn or X post — ever. No "Superior Plumbing, Bronx," no "Aya Construction," no named prospects. Use the company type instead: "a Bronx violation removal contractor," "a NYC construction firm," "a property manager with 30+ units." The insight is in the pattern, not the company. Naming real companies creates legal exposure, embarrasses the subject, and reads as name-dropping. Hard rule, zero exceptions.
 
 **No unverifiable specifics.** Never invent dollar figures, contract sizes, timelines, or outcomes JT hasn't confirmed. "Deployments that cost $500K+" is a made-up claim — if JT hasn't stated the number, don't use it. Stick to specifics JT has provided (Aya: $1,500 dashboard, $1,000 scraper).
 
@@ -392,10 +413,12 @@ These are the SPECIFIC things JT has built, done, or experienced that no other A
 | Glow Index engine + ensemble template | FastAPI backend running 4 LLMs simultaneously (OpenAI o3, Gemini 2.5 Pro, Claude Sonnet 4.6, Grok 4) to score skincare products. Reusable ensemble template extracted from Nash Satoshi build — second pipeline took 20% of the time. Engine complete March 2026. |
 
 ### Background Proof (6 years of real enterprise implementation)
-- BSA at Spectrum Enterprise 2019–2025: watched Salesforce implementations at the $500K–$2M scale get adopted wrong
+- **Title: AI Implementation Specialist** — not consultant, not engineer, not developer. This is the positioning across all channels.
+- BSA at Spectrum Enterprise 2019–2025: large-scale systems integration and cross-team product rollouts for a national telecom. This is enterprise operations at scale — not a side project.
 - The gap he saw firsthand: "System configuration was perfect. Change management was zero. Nobody used it right."
 - Knows what it looks like when technology gets deployed vs. when technology gets adopted
 - Crossed from BSA to builder — the rare person who understands both the system design AND why it fails inside real businesses
+- **Key differentiator from generalist AI consultants**: 6 years enterprise operations background. Most AI consultants have never implemented anything at enterprise scale. JT has. That's the angle.
 
 ### Content-Ready Angles (use these before defaulting to generic)
 - "I built an Agentforce insurance agent that routes claims. Here's what nobody tells you about Salesforce implementations."

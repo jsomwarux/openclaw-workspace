@@ -1,13 +1,13 @@
 {
   "level": "A1+",
-  "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
+  "level_description": "High Beginner \u2014 dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
   "current_week": 5,
-  "current_day": 24,
+  "current_day": 25,
   "lesson_streak": 17,
   "longest_streak": 17,
-  "last_lesson_date": "2026-03-30",
-  "last_lesson_complete": false,
+  "last_lesson_date": "2026-03-31",
+  "last_lesson_complete": true,
   "total_lessons_completed": 5,
   "weekly_scores": [
     {
@@ -31,7 +31,7 @@
       "small talk",
       "survival Spanish"
     ],
-    "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
+    "girlfriend_family_background": "unknown \u2014 default to neutral Latin American Spanish",
     "focus": "speaking and listening, not writing"
   },
   "weak_areas": [
@@ -43,9 +43,9 @@
     "basic greetings",
     "verb intuition (me llamo, estoy)",
     "family dinner phrases",
-    "past tense basics (comí, fui, vi)"
+    "past tense basics (com\u00ed, fui, vi)"
   ],
-  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped — cron doesn't fire Sundays. Starting Week 5.",
+  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped \u2014 cron doesn't fire Sundays. Starting Week 5.",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases. Single words transcribe correctly. Workaround: credit all Spanish audio answers based on context.",
   "streak": 17
 }

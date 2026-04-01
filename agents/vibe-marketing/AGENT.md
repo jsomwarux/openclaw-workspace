@@ -198,33 +198,46 @@ Slide *copy* (text content per slide) is generated in both modes — PostBridge 
 #### Slideshow Format — Both Products (realistic scene photos + app screenshots)
 
 **How this works:**
-- **Eve generates:** Slide 1 (hook scene photo via NB2) + Last slide (CTA scene photo via NB2)
-- **JT provides:** middle slides = real app screenshots from his phone
-- **JT adds:** all text overlays in TikTok's native text editor before posting
-- **JT adds:** trending sound in TikTok before publishing
+- **Eve generates:** All slides — Slide 1 (hook scene via NB2) + middle slides (app screenshots pulled from Drive + label overlay) + Last slide (CTA scene via NB2)
+- **Eve recommends:** Trending sound for this week (included in Drive review doc)
+- **JT does:** Tap once in TikTok to add the recommended sound before publishing. That's it.
 
-No text is baked into NB2-generated images. Text goes in TikTok. This is non-negotiable — baked text looks AI-generated and kills the native feel.
+All slide text is baked in by `tiktok-text-overlay.py` (TikTok Sans SemiBold, white + drop shadow — exact TikTok Classic style). Zero manual text entry or screenshot capture needed.
 
 **NB2 scene selection:** Read `agents/vibe-marketing/nb2-image-prompts.md` → pick the correct scene template based on content theme. No variable injection needed — scenes are complete as-is.
 
 ---
 
-**Output format (slide copy — the text JT will type into TikTok):**
+**Output format (slide copy — used by Step 4b to bake text into images):**
 
 ```
-SLIDE 1 TEXT OVERLAY: [Hook — one line, what JT types over the scene photo]
+SLIDE 1 TEXT OVERLAY: [Hook — one line, baked into hook scene image by overlay script]
   Scene to generate: [scene name from nb2-image-prompts.md — e.g. V-SCENE-A or NS-SCENE-A]
 
-SLIDE 2: [App screenshot — JT captures this]
-  Label to overlay: [one line JT adds in TikTok, or "no label needed"]
+SLIDE 2: [App screenshot — pulled from Drive by Step 4b]
+  Label to overlay: [one line baked in by overlay script — or "no label needed"]
 
-SLIDE 3: [App screenshot — JT captures this]
+SLIDE 3: [App screenshot — pulled from Drive by Step 4b]
   Label to overlay: [one line or "no label needed"]
 
-SLIDE 4 (optional): [App screenshot if needed]
+SLIDE 4 (optional): [App screenshot if needed — pulled from Drive]
   Label to overlay: [one line or "no label needed"]
 
-LAST SLIDE TEXT OVERLAY: [CTA — what JT types over the CTA scene photo]
+LAST SLIDE TEXT OVERLAY: [CTA — baked into CTA scene image by overlay script]
+  **CTA COPY RULES — mandatory before writing this line:**
+  - Must connect back to the hook's open loop. The viewer swiped to here because of slide 1 — reward that.
+  - Must create pull or desire, not just point somewhere.
+  - NEVER write: "full rankings at nashsatoshi.com" / "[Product] — App Store" / "link in bio" as standalone lines.
+  **Nash Satoshi CTA templates (rotate weekly):**
+    "see where your coins actually rank"
+    "check the game theory score before your next move"
+    "what do 4 models say about your portfolio"
+    "the positioning your research is missing — nashsatoshi.com"
+  **Vista CTA templates (rotate weekly):**
+    "your taste profile is already in your history"
+    "every film you've watched is a data point you haven't seen yet"
+    "start tracking — Vista, free on App Store"
+    "what 100 ratings actually reveal"
   Scene to generate: [scene name — e.g. V-SCENE-B or NS-SCENE-B]
 
 CAPTION: [pov: framing — no product name in body]
@@ -509,28 +522,104 @@ Source the API key: `source ~/.config/env/global.env` (key is `OPENROUTER_API_KE
 
 Output directory: `agents/vibe-marketing/generated-images/[product_slug]/[YYYY-MM-DD]/`
 
-**What Eve generates (2 images per slideshow):**
+**What Eve generates (all slides, fully baked):**
 
 | Slide | Source | Notes |
 |---|---|---|
-| Slide 1 — Hook scene | NB2 (select scene from nb2-image-prompts.md) | Realistic photo, NO text baked in |
-| Middle slides (2–4) | JT captures from phone | App screenshots — see instructions below |
-| Last slide — CTA scene | NB2 (select scene from nb2-image-prompts.md) | Realistic photo, NO text baked in |
+| Slide 1 — Hook scene | NB2 → text overlay script | Realistic photo + hook text baked in |
+| Middle slides (2–4) | Drive screenshot library → text overlay script | App screenshots pulled from Drive + label baked in |
+| Last slide — CTA scene | NB2 → text overlay script | Realistic photo + CTA text baked in |
 
-**Generation command (run once per slide):**
+**Drive screenshot library (JT uploads once, agent pulls weekly):**
+- Nash Satoshi: `Vibe Marketing/App Screenshots/nash-satoshi/` — filenames describe content: `rankings-table.png`, `coin-detail.png`, `methodology.png`, etc.
+- Vista: `Vibe Marketing/App Screenshots/vista/` — `ratings-list.png`, `film-detail.png`, `taste-profile.png`, etc.
+- Agent picks 2–3 screenshots per slideshow based on which ones best support that week's content angle.
+- If Drive folder is empty or download fails: skip middle slides, flag in review doc: "⚠️ No screenshots in Drive — upload to Vibe Marketing/App Screenshots/[product]/ to automate middle slides."
+
+**Generation steps (run in sequence per slide):**
+
+**Step 1 — Generate raw scene images via NB2 (hook + CTA):**
 ```bash
 source ~/.config/env/global.env
 python3 ~/.openclaw/workspace/scripts/nb2-generate.py \
   --prompt "[full scene prompt from nb2-image-prompts.md — copy exactly, no modifications]" \
-  --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-01-hook.png"
-# Repeat for last slide → slide-last-cta.png
+  --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-01-hook-raw.png"
+# Repeat for last slide → slide-last-cta-raw.png
 ```
 
-**For screenshot slides:** add a `## 📸 Screenshots Needed — [Product]` section to the Drive review doc (Step 5), listing exactly what JT needs to capture. Copy the exact instructions from nb2-image-prompts.md → Screenshot Instructions section.
+**Step 2 — Download app screenshots from Drive (middle slides):**
+```bash
+python3 ~/.openclaw/workspace/scripts/drive_download_screenshots.py \
+  --product [product-slug] \
+  --output-dir "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/screenshots/"
+```
+After download: list the files and select 2–3 based on relevance to this week's content angle.
+- Nash Satoshi: prefer `rankings-table.png` for angle-relevant weeks; `coin-detail.png` for specific coin angles; `methodology.png` for credibility/proof slides
+- Vista: prefer `taste-profile.png` for taste-tracking angles; `ratings-list.png` for volume/tracking angles; `film-detail.png` for specific film comparisons
 
-**If NB2 call fails:** log the error, skip image generation for that slide, continue. Missing images do not block content delivery — slide copy is the primary output.
+**Step 3 — Bake text overlay onto all slides:**
+```bash
+# Hook slide (upper position)
+python3 ~/.openclaw/workspace/scripts/tiktok-text-overlay.py \
+  --input "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-01-hook-raw.png" \
+  --text "[hook text from queue entry — SLIDE 1 TEXT OVERLAY value]" \
+  --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-01-hook-final.png" \
+  --position upper
 
-**Cost estimate:** ~2 NB2 calls per product per week × 2 products = ~4 calls/week × ~$0.005 = ~$0.02/week. Negligible.
+# Middle slides — one command per screenshot selected
+python3 ~/.openclaw/workspace/scripts/tiktok-text-overlay.py \
+  --input "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/screenshots/[selected-screenshot].png" \
+  --text "[label text from queue entry slide copy — e.g. 'emotional velocity: what's moving right now']" \
+  --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-02-final.png" \
+  --position lower
+# Repeat for slide-03, slide-04 as needed
+
+# CTA slide (center position)
+python3 ~/.openclaw/workspace/scripts/tiktok-text-overlay.py \
+  --input "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-last-cta-raw.png" \
+  --text "[CTA text from queue entry — LAST SLIDE TEXT OVERLAY value]" \
+  --output "agents/vibe-marketing/generated-images/[product]/[YYYY-MM-DD]/slide-last-cta-final.png" \
+  --position center
+```
+
+All `-final.png` files are uploaded to Drive and sent to JT. Raw files kept as backup.
+
+**If NB2 call fails:** log the error, skip image generation for that slide, continue. Missing images do not block content delivery.
+**If Drive screenshot download fails:** skip middle slides, flag in review doc with upload instructions.
+**If text overlay fails:** log error, upload raw image, flag: "⚠️ Text overlay failed — add text in TikTok natively: [text]"
+
+**Cost estimate:** ~2 NB2 calls per product per week × 2 products = ~4 calls/week × ~$0.005 = ~$0.02/week. Overlay script = free (local Python).
+
+---
+
+## Step 4c: Trending Sound Research
+
+Run one web search per product to find a trending TikTok sound this week that fits the content aesthetic. Include the recommendation in the Drive review doc.
+
+**Search query pattern:**
+```
+trending TikTok sounds [current month YYYY] [niche: crypto / movies]
+```
+Also check: https://www.tokboard.com (trending sounds by category) if accessible.
+
+**Sound selection criteria (in order):**
+1. Currently trending (within last 7 days)
+2. Fits the product aesthetic — Nash Satoshi: understated, analytical (lo-fi, ambient, minimal beats — NOT hype trap). Vista: cinematic, contemplative (film scores, indie folk, lo-fi — NOT pop vocals).
+3. Not over-saturated (avoid sounds with 10M+ uses unless niche-relevant)
+
+**Output format for Drive review doc:**
+```
+## 🎵 Recommended Sound This Week
+
+Nash Satoshi: "[Sound name]" by [artist or @creator] — [why it fits / trend context]
+Vista: "[Sound name]" by [artist or @creator] — [why it fits / trend context]
+
+To add: open TikTok draft → tap the sound icon → search the name → select it → publish.
+```
+
+**If no strong trend found:** recommend a standing evergreen option:
+- Nash Satoshi fallback: "Lofi Study" ambience or any lo-fi hip hop track with low use count
+- Vista fallback: any Hans Zimmer or Ennio Morricone clip trending on TikTok
 
 ---
 
@@ -590,19 +679,15 @@ Include a `## 🖼️ Slides` section per TikTok piece — list each generated i
 ```markdown
 ## 🎬 How to Assemble This TikTok — [Product Name]
 
-1. Open TikTok → + → select photos from your camera roll
-2. Add slides IN ORDER: Slide 1 (hook scene — saved to Drive) → your app screenshots → Last slide (CTA scene — saved to Drive)
-3. Slide 1 text overlay: [exact hook text from slide copy above]
-4. Middle slide labels: [exact labels from slide copy above, or "no label needed"]
-5. Last slide text overlay: [exact CTA text from slide copy above]
-6. Pick a trending sound from TikTok's audio library (lo-fi/ambient works best — don't compete with the text)
-7. Paste caption below into TikTok caption field → post
+All slides have text baked in — no manual text entry or screenshot capture needed.
 
+1. Save ALL final slides from Drive to your camera roll (slide-01 through slide-last)
+2. Open TikTok → + → select photos from your camera roll
+3. Add slides IN ORDER: Slide 1 (hook) → middle slides → Last slide (CTA)
+4. Tap the sound icon → search "[recommended sound from 🎵 section]" → select → publish
+5. That's it.
 Caption: [caption text]
 Hashtags: [hashtag list]
-
-📸 Screenshots you need to capture from your phone:
-[copy from nb2-image-prompts.md → Screenshot Instructions for this product]
 ```
 
 **Upload — dynamic per product (loop over all active products):**

@@ -88,6 +88,9 @@ No "I look forward to hearing from you." Say something like: "Happy to walk thro
 - [ ] No em dashes anywhere
 - [ ] No "I am excited to apply" or "I look forward to hearing from you"
 - [ ] At least one named project/deliverable with an outcome
+- [ ] No mention of "JT Somwaru Consulting" as a business name — say "independent consulting work" or describe work directly
+- [ ] No specific dollar figures anywhere in the letter
+- [ ] Closing does NOT sound like a consulting pitch — fits a job application context
 
 **Cover letter markdown format (exact structure required — parser needs exactly two `---` separators):**
 ```

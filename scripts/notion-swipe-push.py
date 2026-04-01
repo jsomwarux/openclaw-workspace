@@ -30,17 +30,60 @@ QUERY_URL = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
 
 VALID_NICHES = ["AI Consulting", "Crypto", "AI Agents", "Job Market", "Personal Brand", "x402"]
 VALID_FORMATS = ["Hot Take", "Thread Opener", "Story", "List", "Question", "Contrarian", "Behind-the-scenes", "Data Drop", "Analogy"]
-VALID_HOOKS = ["Curiosity gap", "Contrarian claim", "Personal story", "Provocative question", "Bold prediction", "Data surprise"]
+VALID_HOOKS = [
+    "Curiosity gap",
+    "Contrarian claim",
+    "Personal story",
+    "Provocative question",
+    "Bold prediction",
+    "Data surprise",
+    "Identity disruption",
+    "Fragment list",
+    "Direct accusation",
+    "Tribal filter",
+    "Numbered list",
+    "Compression closer",
+    "Permission reframe",
+    "Low-cost opener",
+    "Tactical breakdown",
+    "Earned qualifier",
+]
 
 # Map freeform hook descriptions to nearest valid category
 HOOK_ALIAS_MAP = {
+    # Contrarian variants
     "contrarian opener": "Contrarian claim",
     "contrarian cost claim": "Contrarian claim",
     "contrarian hot take": "Contrarian claim",
+    "contrarian reframe": "Contrarian claim",
+    "contrarian reframe + meme disarm + quotable closer": "Contrarian claim",
     "counter-narrative": "Contrarian claim",
     "counter-narrative / cost subversion": "Contrarian claim",
     "cost contrast": "Contrarian claim",
     "cost contrast / r.i.p. opener": "Contrarian claim",
+    "contrarian claim + earned qualifier": "Contrarian claim",
+    # Identity / accusation
+    "identity disruption + direct accusation + four-word closer": "Identity disruption",
+    "identity disruption": "Identity disruption",
+    "direct accusation": "Direct accusation",
+    "tribal filter (99/1 split)": "Tribal filter",
+    "tribal filter": "Tribal filter",
+    "permission reframe": "Permission reframe",
+    # Fragment / list patterns
+    "abstract opener + fragment list + clean contrast closer": "Fragment list",
+    "fragment list": "Fragment list",
+    "numbered list + product anchor": "Numbered list",
+    "numbered list": "Numbered list",
+    # Tactical / breakdown
+    "low-cost opener + step-by-step compression": "Low-cost opener",
+    "low-cost opener": "Low-cost opener",
+    "tactical breakdown": "Tactical breakdown",
+    "step-by-step compression": "Tactical breakdown",
+    # Compression
+    "compression closer": "Compression closer",
+    "diagnostic compression": "Compression closer",
+    "earned qualifier": "Earned qualifier",
+    # Existing aliases
     "bold prediction": "Bold prediction",
     "data surprise": "Data surprise",
     "curiosity gap": "Curiosity gap",

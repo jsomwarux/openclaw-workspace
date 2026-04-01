@@ -23,6 +23,37 @@
 - `openclaw doctor` — health check on gateway, channels, providers, cron scheduler
 - `openclaw doctor --fix` — auto-fix common issues (use when something's broken and root cause isn't obvious)
 
+## 🚨 Gateway Freeze Recovery (LCM + Telegram flood)
+
+### Symptoms
+Gateway goes unresponsive after a large session or restart. Messages pile up with no reply.
+
+### Root cause
+LCM compaction (triggered at context threshold) was using Sonnet — slow, blocks the main session thread. On restart, Telegram re-delivers unacked messages → flood → compaction triggered immediately → freeze loop.
+
+### Prevention (applied 2026-03-31)
+- LCM `summaryModel` = `groq/llama-3.3-70b-versatile` (fast, non-blocking)
+- `contextThreshold` = 0.65 (compacts earlier, smaller batches)
+- `incrementalMaxDepth` = 0 (leaf-only, faster compaction)
+- Isolated/subagent sessions excluded from LCM writes
+
+### Recovery steps (if it happens again)
+1. Flush Telegram queue to prevent re-delivery loop:
+   ```
+   source ~/.config/env/global.env
+   curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=-1"
+   ```
+2. Clear cooldown state:
+   ```
+   python3 -c "import json,os; path=os.path.expanduser('~/.openclaw/agents/main/agent/auth-profiles.json'); d=json.load(open(path)); d['usageStats']={}; json.dump(d,open(path,'w'),indent=2)"
+   ```
+3. If LCM DB is huge (>100MB), back it up and delete:
+   ```
+   cp ~/.openclaw/lcm.db ~/.openclaw/lcm.db.backup-$(date +%Y%m%d)
+   rm ~/.openclaw/lcm.db
+   ```
+4. Restart gateway: `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "recovery"`
+
 ## 🚨 Rate Limit Recovery (known workarounds)
 
 ### Cooldown Persistence Bug

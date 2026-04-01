@@ -166,7 +166,26 @@ The insight or reveal. What does this mean for the reader?
 
 [SLIDE 7 — CTA]
 Include an App Store screenshot alongside the CTA text. Visual proof > text alone.
-"Full rankings at link in bio." + screenshot of the app/product
+**CTA slide text must create pull, not just point.** "full rankings at nashsatoshi.com" is a footer. Bad.
+
+**CTA slide copy rules:**
+- Must reference the payoff from the hook — connect back to the open loop
+- Must create desire or urgency, not just a URL
+- Keep it short: 1 line max on the overlay
+- NEVER use: "link in bio" / "full rankings at [url]" / "[Product] — App Store" as standalone lines — these are dead-end CTAs
+
+**Nash Satoshi CTA templates (rotate):**
+- "see where your coins actually rank"
+- "check the game theory score before your next move"
+- "what do 4 models say about your portfolio"
+- "the positioning your research is missing — nashsatoshi.com"
+
+**Vista CTA templates (rotate):**
+- "your taste profile is already in your history"
+- "every film you've watched is a data point you haven't seen yet"
+- "start tracking — Vista, free on App Store"
+- "what 100 ratings actually reveal"
+
 OR reference the app by name in one of the body slides naturally — not just the final CTA.
 **Best practice:** one slide in the body that shows what the product actually does, then a CTA slide with the screenshot. Two touchpoints, not one.
 ```
