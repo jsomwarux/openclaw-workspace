@@ -47,6 +47,51 @@ Not a task log — a training log. The difference: tasks are for JT. This is for
 
 [Entries append below this line]
 
+## Goal-Skills Gap — 2026-04-01
+- JT's targets: AI Solutions Architect / AI Implementation Lead / AI Systems Analyst ($150–220K, NYC/remote) | JT Somwaru Consulting (n8n + Agentforce, construction/PM/wholesale/insurance niches, NYC) | Active apps: AgentGuard (live), Vista (live), Nash Satoshi, Glow Index | Title: AI Implementation Specialist | Anchor client: Aya
+- Top skills in target JDs (by frequency):
+  1. Agentforce agent design + Data Cloud grounding (5+ hits — paired increasingly)
+  2. Agentic AI deployment strategy + stakeholder enablement (5+ hits)
+  3. AI governance / responsible AI / risk frameworks (4+ hits — explicit in 2026 JDs)
+  4. RAG / LLM integration + API orchestration (4+ hits)
+  5. LangChain / multi-agent framework orchestration (3+ hits)
+  6. Microsoft Copilot Studio / Power Platform (3+ hits — cross-stack signal, growing)
+  7. AWS Bedrock / cloud AI deployment (3+ hits)
+  8. Business requirements analysis + solution design (universal)
+  9. Python scripting proficiency (2+ hits — still an explicit gap for JT)
+  10. CRM/ERP integration (HubSpot, Salesforce, NetSuite) — universal across consulting + job JDs
+- What Eve deploys well: agent orchestration (overnight/portfolio/skills-researcher), n8n consulting demos (construction + PM templates), Agentforce agent design (7 agent types in repo), web/X research, Mission Control task tracking, multi-model routing, cold outreach pipeline (T1/T2/T3), content calendar + autoresearch loop, Drive/Notion/Telegram integrations, API integrations, cost monitoring, portfolio auto-update, Spanish learning system, vibe marketing
+- Gap — missing coverage:
+  1. Salesforce Data Cloud — flagged March 1, still zero operational coverage (no skill, no script, no TOOLS.md entry)
+  2. AI governance framing — AgentGuard is built and live, but no governance talking points in TOOLS.md / skills/ for JT interview or client prep
+  3. LangChain / multi-agent orchestration — in job-market tracking but never built or documented
+  4. Microsoft Copilot Studio — AgentBridge M365 concept surfaced March 1, still unbuilt
+  5. AWS Bedrock — zero coverage; appearing in job JDs as alternative AI deployment path
+  6. HubSpot skill — identified as consulting expansion target March 1, no operational skill or outreach template built
+  7. Python AI patterns cheat sheet — JT interview prep gap, queued March 1, never executed
+- Gap — underdeployed:
+  1. jt-consulting-ops /anomaly-audit command — no client has ever been offered it
+  2. knowledge base (kb.ts) — functional, still not integrated into research flow
+  3. qmd skill — installed, never wired into consulting pipeline
+  4. AgentGuard governance framing — live product, never extracted as a consulting credential/talking point
+  5. prompt-library skill — initialized, underutilized for job application prep
+  6. HubSpot outreach templates — consulting target since March 1, no T2 template built
+- Categorized queue:
+  - Salesforce Data Cloud basics → SKILL: recurs in every Agentforce JD; should be a 1-page TOOLS.md reference Eve can load for JT interview prep
+  - AI governance talking points (AgentGuard framing) → SKILL: reusable across job apps and consulting pitches; skills/agentguard-positioning/SKILL.md
+  - HubSpot T2 outreach template → PLUGIN: n8n demo template for HubSpot-using SMBs; add to consulting template library
+  - LangChain/multi-agent overview → SKILL: research-to-reference doc for JD gap closure; JT doesn't need to code it, just describe architecturally
+  - Python AI patterns cheat sheet → SKILL: interview prep material, reusable across every application; lives in skills/prompt-library/
+  - AgentGuard as consulting credential → RULE: after any notable build ships, extract 1–2 consulting talking points into content-voice.md Proof Points AND a skills/ reference — not just portfolio. Rule: live app = credential, credential = deployable in next outreach batch.
+  - Underdeployed: qmd + kb.ts integration check → AGENT: these tools exist but have never been wired into the consulting research pipeline; worth a one-time audit session
+- Queued improvements:
+  1. Build Salesforce Data Cloud reference doc → add to TOOLS.md
+  2. Extract AI governance framing from AgentGuard → skills/agentguard-positioning/SKILL.md
+  3. Build HubSpot n8n T2 outreach template (matching construction/PM template pattern)
+  4. Write Python AI patterns cheat sheet → skills/prompt-library/python-ai-patterns.md
+  5. Wire qmd + kb.ts into consulting research pipeline (one session audit)
+  6. Add rule: live apps with governance/AI credentials = talking point extraction mandatory same session they ship
+
 [2026-03-03 10AM] Film: reviewed 2026-03-02 daily note → morning brief split into 2 Telegram messages (hit 4096-char limit). Root cause: job market section listed all 9 pipeline roles as a full table + niche intel bullets combined = too long. Rule: cap morning brief job market to top 4 roles (18+/25 only) as bullets — no table, no full pipeline listing. Skip roles already covered in prior day's brief if no status change. Full table lives in daily-brief.md.
 
 [2026-03-03 3AM] Film: reviewed 2026-03-02 daily note → Convex backend crashed (exit -15) around 4PM; not caught until 10PM heartbeat; 6h of board downtime logged only as "Mission Control: unreachable (board may be down)" → Fix: added operational rule to overnight/feedback.md — heartbeat must immediately attempt kickstart when board unreachable, not just log it. Also added Convex restart command to TOOLS.md.
@@ -156,3 +201,6 @@ Not a task log — a training log. The difference: tasks are for JT. This is for
 
 [2026-03-30 10AM] Film: Reviewed 2026-03-29 daily note — clean day, no new failures. Fix: content-monday-send had 60s timeout, timed out at exactly 60012ms this morning. Bumped to 180s. Root cause: cron payload was set aggressively tight when written; content file reads + Telegram send needs more headroom. | Improve: overnight autoresearch checklist status=pending (written 2026-03-24, never run). Next overnight slot should include autoresearch run on the overnight agent itself.
 [2026-03-31 3AM] Film: 2026-03-30 daily note — n8n Critical RCE (CVE-2026-33660 + 33696, CVSS 9.4) in niche-monitor-latest.md had NO MC task and NO interim mitigation applied. n8n v2.12.3 running (vulnerable). Actions taken tonight: (1) updated ~/.n8n/config to exclude n8n-nodes-base.merge and n8n-nodes-base.xml (interim mitigation — takes effect after JT restarts n8n), (2) pushed HIGH MC task sortOrder:1 for JT to restart + upgrade to 2.14.1+. Rule: when niche-monitor-latest.md contains a 🔴 finding about a tool JT actively uses/runs (confirmed by checking ~/.n8n/config or ps for n8n process), the overnight agent MUST apply available autonomous mitigation and push an MC alert — not just log it.
+
+[2026-04-01 3AM] Film: 2026-03-31 daily note — two content system bugs fixed same session (content-reminder file selection + company name in post). Both were applied in-session with no residual gap. bootstrapMaxChars reverted to 32000 (outage lesson). Clear run — no new mistakes to address. → Autoresearch: t3-cold-hook (0.800 → 1.000 in 1 round). Failing pattern: PM M1 drafts using "routing manually" (problem description) without an explicit n8n term. HARD RULE added: at least one explicit n8n term required in PM M1. Applied to AGENT.md. Target now stable.
+[2026-04-01 10AM] Film: 2026-03-31 daily note — bootstrapMaxChars outage + content-reminder bug both fixed in-session with no residual gap. Clear run. | Improve: `eve-job-market-daily-005` errored today (5:15AM) with LiveSessionModelSwitchError — possibly overnight agent still running at 5:15AM (3AM start + 90min runtime = 4:30AM, cutting it close). Single error so no action yet. Monitor: if this errors tomorrow, reschedule to 5:45AM to clear overnight agent window. Niche matrix updated by monthly fitness cron — PM + Financial Services added as emerging niches. Skills audit added 4 gaps to MC board. Cold-email skill already has PM niche coverage — no update needed.

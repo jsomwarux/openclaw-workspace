@@ -31,11 +31,14 @@ Gateway goes unresponsive after a large session or restart. Messages pile up wit
 ### Root cause
 LCM compaction (triggered at context threshold) was using Sonnet — slow, blocks the main session thread. On restart, Telegram re-delivers unacked messages → flood → compaction triggered immediately → freeze loop.
 
-### Prevention (applied 2026-03-31)
-- LCM `summaryModel` = `groq/llama-3.3-70b-versatile` (fast, non-blocking)
+### Prevention (updated 2026-04-01)
+- LCM `summaryModel` = `openrouter/google/gemini-3.1-flash-lite-preview` (**NOT Groq** — Groq free tier has 12k TPM; compaction requests are 20k+ tokens → silent failure. Gemini Flash-Lite handles 1M context, ~$0 at our frequency.)
 - `contextThreshold` = 0.65 (compacts earlier, smaller batches)
 - `incrementalMaxDepth` = 0 (leaf-only, faster compaction)
+- `largeFileThresholdTokens` = 1000 (image base64 and large blobs handled separately, not stuffed into summaries)
+- `freshTailCount` = 6 (protects last 6 messages from compaction)
 - Isolated/subagent sessions excluded from LCM writes
+- **Image rule:** Never send 5+ images in one Telegram message to the bot — each image is base64-encoded into context. If you need to share image batches for Drive uploads, send 1-2 at a time or use a different workflow (Google Drive direct upload from your phone, or share a folder link).
 
 ### Recovery steps (if it happens again)
 1. Flush Telegram queue to prevent re-delivery loop:

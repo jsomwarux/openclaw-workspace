@@ -103,7 +103,7 @@ Goal: leave the door open, not slam it shut.
 - **Never reference employee reviews directly** — use the signal, not the source
 - Write like you're texting a professional acquaintance, not drafting a sales email
 - **NEVER mention "I built X" or name a specific JT build (H.C. Oswald, PM triage, construction tracker, etc.) in Message 1.** Build mentions belong in Message 2 only. M1 earns the right to send M2. A build mention in M1 reads as a pitch.
-- **For PM niche — use concrete n8n language:** "intake workflow," "n8n automation," "triage → vendor routing," "classification to dispatch." Neutral "workflow automation" is too vague. Naming the mechanism (n8n, automation layer, routing logic) signals you've actually built it.
+- **For PM niche — use concrete n8n language (HARD RULE):** M1 must contain at least one of: "n8n," "intake workflow," "triage-to-dispatch," "classification layer," "n8n automation," "n8n triage," "n8n intake." The word "routing" alone does NOT satisfy this rule — it must be paired with an explicit n8n reference. Neutral "workflow automation" is too vague and fails the check.
 
 **Proof points to weave into message 2 by niche (not message 1):**
 - Wholesale: "one thing that came up with H.C. Oswald Supply (Bronx) — their catalog had 100 years of inventory that nobody could search quickly. automated lookup cut that to under 10 seconds."

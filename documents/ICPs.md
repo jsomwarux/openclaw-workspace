@@ -150,11 +150,61 @@ As of March 2026, Agentforce is bundled into Salesforce Suites for SMBs — mean
 
 ---
 
+---
+
+## ICP 5 — Financial Services / RIAs (Emerging Agentforce Target — added 2026-04-01)
+
+**Status: Emerging (21/30 niche fitness score). Not yet actively outreaching — build one demo first.**
+
+**Who they are:**
+Independent Registered Investment Advisors (RIAs), boutique wealth managers, and independent broker-dealers. Typically 5–50 advisors, $50M–$500M AUM. NYC metro. Using Salesforce Financial Services Cloud as CRM — this is the qualifying criteria. Often on Salesforce because compliance and client management require it.
+
+**Their tech stack:**
+- Salesforce Financial Services Cloud (qualifying criteria — if not on SFSC, disqualify)
+- Document management: SharePoint, DocuSign
+- Portfolio management: Orion, Schwab, Fidelity integrations
+- Compliance: branch-level manual reviews, periodic audits
+
+**Their actual pain:**
+- New client onboarding is 12-step manual process — advisors doing admin instead of advising
+- Compliance documentation is inconsistent across advisors — error risk
+- Client review scheduling is handled by phone/email, no automated cadence
+- Advisors can't answer "what happened with this client's last 3 touches" without digging through notes
+- Quarterly review preparation takes 2-3 hours per client manually
+
+**How they make buying decisions:**
+- Managing partner or COO. More process-oriented than construction/wholesale buyers.
+- Compliance is the #1 concern — any automation must have audit trail and be explainable
+- Salesforce-native solutions are easier to approve (already in the stack, no new vendor)
+- Deal sizes $8-15K — they will pay if the ROI is clear
+- Referrals from other RIAs or Salesforce partners carry significant weight
+
+**Hook signals:**
+- LinkedIn posts from advisors complaining about admin overhead or compliance burden
+- Job posts for "Client Service Associate" or "Operations Coordinator" — they're trying to solve with headcount
+- Firm is growing (new advisors hired) — scaling without adding ops staff is the pressure point
+
+**Demo that closes them:**
+Agentforce agent on Financial Services Cloud: new client onboarding workflow (intake → KYC document checklist → account setup tasks → onboarding communication to client). Or: client review prep agent that aggregates portfolio data and drafts meeting agenda automatically. **This demo does not exist yet — build it before outreaching.**
+
+**Why Agentforce fits:**
+Salesforce Financial Services Cloud penetration in mid-size RIAs is 40%+. Agentforce is already in the stack. Same pitch as insurance: "You're already paying for this. Let me activate it for your onboarding workflow." Salesforce is actively pushing Financial Services Cloud + Agentforce to this segment in 2026.
+
+**Budget:** $8,000–$15,000 for an Agentforce deployment. Larger than n8n engagements.
+
+---
+
 ## Notes for All ICPs
 - JT is NOT a developer — do not pitch coding/custom dev work. Pitch implementation.
 - Proof points: Aya dashboard ($1,500), StreetEasy scraper ($1,000), Agentforce demo suite (live on jtsomwaru.com)
 - First meeting goal: NOT to sell a project. Goal is to understand their biggest manual process and identify if automation fits. The pitch comes after.
 - NYC-specific signal: Spanish-speaking staff/customers is common in Bronx/Queens wholesale and construction — bilingual agent capability is a genuine differentiator.
+
+## Deferred Niches (April 2026 — do not outreach until conditions change)
+| Niche | Score | Why Deferred | Condition to Revisit |
+|-------|-------|--------------|----------------------|
+| Legal / Professional Services | 20/30 | Cold credibility (no client, no demo), commodity SaaS risk (Harvey, Clio eating workflow layer) | Land one legal client organically OR Harvey/Clio pull back from SMB consultants |
+| Staffing Agencies | 19/30 | Lowest score in matrix, Bullhorn/ATS already automating most workflows, no SF penetration signal strong enough | Bullhorn or Crelate clients actively asking for custom Agentforce; 3 confirmed SF staffing JDs |
 
 ---
 

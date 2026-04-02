@@ -1,0 +1,233 @@
+{
+  "product": "vista",
+  "last_updated": "2026-04-01",
+  "rotation_window_weeks": 6,
+  "photos": [
+    {
+      "id": "photo-01",
+      "file": "photo-01-projector-cinematic.jpg",
+      "vibe": "aspirational",
+      "energy": "cinematic",
+      "setting": "home theater",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-02",
+      "file": "photo-02-netflix-bed-cozy.jpg",
+      "vibe": "cozy",
+      "energy": "relaxed",
+      "setting": "bedroom",
+      "last_used_week": "2026-03-30",
+      "use_count": 1
+    },
+    {
+      "id": "photo-03",
+      "file": "photo-03-popcorn-snacks.jpg",
+      "vibe": "snack-spread",
+      "energy": "casual",
+      "setting": "close-up",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-04",
+      "file": "photo-04-living-room-lighting.jpg",
+      "vibe": "cozy",
+      "energy": "ambient",
+      "setting": "living room",
+      "last_used_week": "2026-03-30",
+      "use_count": 1
+    },
+    {
+      "id": "photo-05",
+      "file": "photo-05-dark-bedroom-tv-glow.jpg",
+      "vibe": "moody",
+      "energy": "intimate",
+      "setting": "bedroom",
+      "last_used_week": "2026-03-30",
+      "use_count": 1
+    },
+    {
+      "id": "photo-06",
+      "file": "photo-06-living-room-animated-film.jpg",
+      "vibe": "cozy",
+      "energy": "social",
+      "setting": "living room",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-07",
+      "file": "photo-07-dark-loft-staircase.jpg",
+      "vibe": "cinematic",
+      "energy": "atmospheric",
+      "setting": "loft",
+      "last_used_week": "2026-03-30",
+      "use_count": 1
+    },
+    {
+      "id": "photo-08",
+      "file": "photo-08-fireplace-fantasy-film.jpg",
+      "vibe": "cozy",
+      "energy": "nostalgic",
+      "setting": "fireplace",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-09",
+      "file": "photo-09-mcdonalds-netflix-browse.jpg",
+      "vibe": "relatable",
+      "energy": "casual",
+      "setting": "browse screen",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-10",
+      "file": "photo-10-venom-chips-bowl.jpg",
+      "vibe": "action-night",
+      "energy": "moody",
+      "setting": "living room",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-11",
+      "file": "photo-11-netflix-rgb-panda.jpg",
+      "vibe": "gaming-cozy",
+      "energy": "aesthetic",
+      "setting": "bedroom",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-12",
+      "file": "photo-12-girl-floor-candles-cinematic.jpg",
+      "vibe": "cinematic",
+      "energy": "intimate",
+      "setting": "floor",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-13",
+      "file": "photo-13-laptop-blanket-thriller.jpg",
+      "vibe": "relatable",
+      "energy": "casual",
+      "setting": "bedroom-floor",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-14",
+      "file": "photo-14-macbook-white-sheets-european.jpg",
+      "vibe": "bright-cozy",
+      "energy": "relaxed",
+      "setting": "bedroom",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-15",
+      "file": "photo-15-laptop-couch-romance-bokeh.jpg",
+      "vibe": "romance",
+      "energy": "warm",
+      "setting": "couch",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-16",
+      "file": "photo-16-macbook-blanket-restaurant-scene.jpg",
+      "vibe": "romance",
+      "energy": "cozy",
+      "setting": "bed",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-17",
+      "file": "photo-17-prime-video-browse-dark.jpg",
+      "vibe": "browse-aesthetic",
+      "energy": "moody",
+      "setting": "bedroom",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-18",
+      "file": "photo-18-hotel-room-led-upscale.jpg",
+      "vibe": "aspirational",
+      "energy": "upscale",
+      "setting": "hotel",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-19",
+      "file": "photo-19-home-theater-batman.jpg",
+      "vibe": "aspirational",
+      "energy": "cinematic",
+      "setting": "home theater",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-20",
+      "file": "photo-20-blue-led-spider-verse-snacks.jpg",
+      "vibe": "snack-spread",
+      "energy": "vibrant",
+      "setting": "bedroom",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-21",
+      "file": "photo-21-coraline-cookies-mug.jpg",
+      "vibe": "nostalgic",
+      "energy": "cozy",
+      "setting": "living room",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-22",
+      "file": "photo-22-home-theater-matching-socks.jpg",
+      "vibe": "aspirational",
+      "energy": "couples",
+      "setting": "home theater",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-23",
+      "file": "photo-23-shrek-projector-fireplace-cabin.jpg",
+      "vibe": "nostalgic",
+      "energy": "peak-cozy",
+      "setting": "cabin",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-24",
+      "file": "photo-24-pizza-city-skyline-apple-music.jpg",
+      "vibe": "city-night",
+      "energy": "unique",
+      "setting": "apartment-skyline",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-25",
+      "file": "photo-25-two-people-blankets-couch.jpg",
+      "vibe": "cozy",
+      "energy": "comfort",
+      "setting": "living room",
+      "last_used_week": null,
+      "use_count": 0
+    }
+  ],
+  "notes": "Real photos shot by JT. Uploaded 2026-04-01. Used as hook/CTA slides in Vista TikTok slideshows. Rotation window = 6 weeks \u2014 a photo can't repeat within 6 weeks of last use. After all 25 used once, cycle resets. Fallback to NB2 only if all available photos have been used within the rotation window."
+}

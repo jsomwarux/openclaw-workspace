@@ -125,6 +125,39 @@ else
   log "  ⚠ n8n-agent push failed (non-fatal)"
 fi
 
+# ── Google Drive OAuth token proactive refresh ────────────────────────────────
+# Runs on the 1st of each month. Refreshes the token before Google expires it.
+# (Published-app tokens are long-lived but proactive refresh prevents silent failures)
+DAY_OF_MONTH=$(date +%-d)
+if [ "$DAY_OF_MONTH" = "1" ]; then
+  log "Monthly Drive token refresh..."
+  TOKEN_PATH="$HOME/.openclaw/workspace/config/google-oauth-token.json"
+  if [ -f "$TOKEN_PATH" ]; then
+    python3 -c "
+import json, os
+from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
+TOKEN_PATH = os.path.expanduser('~/.openclaw/workspace/config/google-oauth-token.json')
+with open(TOKEN_PATH) as f:
+    td = json.load(f)
+creds = Credentials(
+    token=td.get('token'),
+    refresh_token=td.get('refresh_token'),
+    token_uri=td.get('token_uri'),
+    client_id=td.get('client_id'),
+    client_secret=td.get('client_secret'),
+)
+creds.refresh(Request())
+td['token'] = creds.token
+with open(TOKEN_PATH, 'w') as f:
+    json.dump(td, f)
+print('Token refreshed OK')
+" >> "$LOG" 2>&1 && log "  ✓ Drive token refreshed" || log "  ⚠ Drive token refresh failed — re-auth may be needed"
+  else
+    log "  ⚠ Drive token file not found at $TOKEN_PATH"
+  fi
+fi
+
 # ── Summary ───────────────────────────────────────────────────────────────────
 size=$(du -sh "$DEST" 2>/dev/null | cut -f1)
 remaining=$(ls -d "$BACKUP_ROOT"/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] 2>/dev/null | wc -l | tr -d ' ')

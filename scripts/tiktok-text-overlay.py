@@ -41,13 +41,15 @@ SYSTEM_FALLBACKS = [
 
 # ── Style constants (exact per spec) ─────────────────────────────────────────
 TEXT_COLOR      = (255, 255, 255, 255)  # Pure white
-SHADOW_COLOR    = (0, 0, 0, 102)        # Black 40% opacity (102/255)
+STROKE_COLOR    = (0, 0, 0, 220)        # Near-black stroke, slight transparency
+STROKE_WIDTH    = 2                     # 2px outline at 1080px — scales with image
+SHADOW_COLOR    = (0, 0, 0, 80)         # Black 31% opacity — lighter than before (stroke does the heavy lifting)
 SHADOW_OFFSET_X = 1                     # 1px right
-SHADOW_OFFSET_Y = 1                     # 1px down
-SHADOW_BLUR     = 3                     # 3px blur
-LETTER_SPACING  = 0.75                  # +0.75px extra tracking
-LINE_HEIGHT_EM  = 1.15                  # Tight but not cramped
-MAX_WIDTH_RATIO = 0.85                  # 85% of canvas width
+SHADOW_OFFSET_Y = 2                     # 2px down
+SHADOW_BLUR     = 4                     # 4px blur
+LETTER_SPACING  = 0.5                   # +0.5px extra tracking
+LINE_HEIGHT_EM  = 1.2                   # Slightly more open
+MAX_WIDTH_RATIO = 0.82                  # 82% of canvas width
 # Vertical anchor per position mode:
 #   upper  = upper third center = 0.27 (hook slides)
 #   center = true center = 0.50 (CTA slides)
@@ -170,11 +172,11 @@ def pick_font_size(text: str, scale: float) -> int:
     """
     words = len(text.split())
     if words <= 5:
-        base = 78
+        base = 48   # Short hook — feels natural, not a title card
     elif words <= 14:
-        base = 70   # Reference image: 14 words at ~72px — matches
+        base = 44   # Mid-length — matches real TikTok Classic at ~44px on 1080
     else:
-        base = 62
+        base = 40   # Long text — stays readable without overwhelming
     return int(base * scale)
 
 
@@ -256,7 +258,6 @@ def overlay_text(
     # ── Shadow layer ──────────────────────────────────────────────────────────
     shadow_img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     shadow_draw = ImageDraw.Draw(shadow_img)
-    # Offset the shadow draw position
     draw_text_with_spacing(
         shadow_draw, font, lines,
         center_x + SHADOW_OFFSET_X,
@@ -265,6 +266,22 @@ def overlay_text(
     )
     shadow_img = shadow_img.filter(ImageFilter.GaussianBlur(radius=SHADOW_BLUR))
     img = Image.alpha_composite(img, shadow_img)
+
+    # ── Stroke layer (draw text in stroke color at every offset around center) ──
+    stroke_w = max(1, int(STROKE_WIDTH * scale))
+    stroke_img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    stroke_draw = ImageDraw.Draw(stroke_img)
+    for dx in range(-stroke_w, stroke_w + 1):
+        for dy in range(-stroke_w, stroke_w + 1):
+            if dx == 0 and dy == 0:
+                continue  # Skip center — that's the white text pass
+            if abs(dx) + abs(dy) <= stroke_w + 1:  # Circular-ish stroke, skip far corners
+                draw_text_with_spacing(
+                    stroke_draw, font, lines,
+                    center_x + dx, top_y + dy,
+                    line_h, spacing, STROKE_COLOR
+                )
+    img = Image.alpha_composite(img, stroke_img)
 
     # ── White text layer ──────────────────────────────────────────────────────
     text_draw = ImageDraw.Draw(img)

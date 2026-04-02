@@ -15,9 +15,13 @@
 - Agentforce overnight builds: ✅ ALLOWED (lifted 2026-03-11). Must `git pull origin main` first. B2B Account Service Agent is PERMANENTLY BANNED — do not recreate under any circumstances.
 - `launchctl unload/load` mid-session = gateway goes offline. Warn JT first. Defer to JT-initiated restart if possible.
 
-## Infrastructure (updated 2026-03-31)
+## Infrastructure (updated 2026-04-01)
 - OpenClaw version: 2026.3.28 (updated 2026-03-30)
 - bootstrapMaxChars: 32000 (HARD CAP — reverted from 40000 on 2026-03-31. Setting to 40000 triggered "Extra usage required for long context" errors blocking ALL responses for ~2h. Never raise above 32000.)
+- **Fallback model:** `openrouter/openai/gpt-4o-mini` (NOT Groq — Groq has session profile conflict + 12k TPM. gpt-4o-mini is same OpenRouter provider = fallback actually fires. Primary is anthropic/claude-sonnet-4-6 via OAuth — $0 cost on Claude Max subscription. OpenRouter is fallback only.)
+- **imageMaxDimensionPx:** 512 — cuts image token cost ~85% before context entry
+- **auth.cooldowns.failureWindowHours:** 1 — faster cooldown recovery after rate limit clears
+- **Root cause of 4 outages (2026-04-01):** Groq fallback never worked (session pinned to openrouter:default, Groq required provider switch). LCM silently failing (Groq 12k TPM < 20k needed). Image floods over context threshold. All three fixed.
 - Gateway watchdog: `com.openclaw.gateway-watchdog` (10-min interval) — kills context-mode if RSS >1.5GB, kicks gateway if dead. Script: `scripts/gateway-watchdog.sh`
 - context-mode Claude plugin: DISABLED (was causing OOM kills — disabled in `~/.claude/settings.json`)
 - LaunchAgent ThrottleInterval: 10s (raised from 1s to prevent rapid crash loop)
@@ -38,14 +42,15 @@
 - NOT a developer — auto-disqualify roles requiring Apex/SFDX/ML engineering/hands-on coding
 
 ## Consulting Niche-Skill Matrix (live — reviewed monthly, not locked)
-| Skill | Primary Niche | Secondary Niche | Why |
-|-------|--------------|-----------------|-----|
-| **Agentforce** | Insurance (COVU anchor) | Mid-large PM/RE (Salesforce shops) | Requires Salesforce — only targets companies already on it |
-| **n8n** | Construction + Skilled Trades $5-20M (Aya reference) | Wholesale Distribution (NYC garment/food/hardware) | Stack-agnostic — targets ServiceTitan, Jobber, QuickBooks, NetSuite users |
+| Skill | Primary Niche | Secondary Niche | Tertiary/Emerging | Last Score | Why |
+|-------|--------------|-----------------|-------------------|------------|-----|
+| **Agentforce** | Insurance (COVU anchor) — 24/30 ✅ | Financial Services / RIAs — 21/30 🟡 (emerging) | Mid-large PM/RE (Salesforce shops) | 2026-04-01 | Requires Salesforce — only targets companies already on it |
+| **n8n** | Construction + Skilled Trades $5-20M (Aya ref) — 23/30 🟡 | Wholesale Distribution (NYC garment/food/hardware) — 22/30 🟡 | Property Management (AppFolio/Buildium) — 22/30 🟡 rising | 2026-04-01 | Stack-agnostic — targets ServiceTitan, Jobber, QuickBooks, NetSuite users |
 - Small PM companies (AppFolio/Buildium, not Salesforce) → n8n, not Agentforce
 - Upsell path: land construction/wholesale on n8n → as they grow onto Salesforce → sell Agentforce
-- **Last fitness review:** not yet run (system launched 2026-03-06) | Next: April 1
-- **Signals accumulator:** memory/niche-fitness-signals.md (reset monthly)
+- **Last fitness review:** 2026-04-01 | Next: May 1
+- **Key findings (April 2026):** Insurance = double down (24/30, extraordinary signal density). PM rising fast (adoption tripled YoY). Construction holds but competition increasing (Zero RFI, Trayd). Financial Services RIA emerging for Agentforce (high SF penetration, large deal sizes). Recommended: add PM as co-equal n8n target; begin Financial Services positioning for Agentforce.
+- **Signals accumulator:** memory/niche-fitness-signals.md (reset 2026-04-01)
 - Niches are evaluated monthly against alternatives. If a better fit emerges, Eve advises a pivot.
 
 ## Positioning (decided 2026-03-31 — permanent)
@@ -205,7 +210,7 @@
 - **Implication: runway is real but has a cliff. UI weekly payments end in ~9 weeks post-lump sum. Job landing in 60-90 days is still the priority — it solves burn permanently.**
 
 ## Key Decisions
-- **Priority order (updated 2026-03-23 — RUNWAY CRITICAL)**: Job applications are now PRIMARY, not a hedge. With ~4-5 months runway and declining crypto, a $150K+ role closing in 60-90 days is the most reliable lifeline. Volume must go up — not 2-3/week, but every qualified role (20+/25, passes hard filters) gets an application. Consulting runs in parallel but cannot be treated as the primary income plan on this timeline. Threshold: score **20+/25** with hard filters still in place (no hands-on coding primary, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement). Only active application: OpenAI AI Deployment Manager (applied 2026-03-18).
+- **Priority order (updated 2026-03-23 — RUNWAY CRITICAL)**: Job applications are now PRIMARY, not a hedge. With ~4-5 months runway and declining crypto, a $150K+ role closing in 60-90 days is the most reliable lifeline. Volume must go up — not 2-3/week, but every qualified role (20+/25, passes hard filters) gets an application. Consulting runs in parallel but cannot be treated as the primary income plan on this timeline. Threshold: score **20+/25** with hard filters still in place (no hands-on coding primary, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement). Active applications: Impulse Latam AI Strategist (applied 2026-03-31), Arya Health Customer AI Strategy Lead (applied 2026-04-01). ~~OpenAI AI Deployment Manager~~ — REJECTED ~2026-03-29. Do not resurface.
 - **Agentforce job filter (added 2026-03-18)**: Do not recommend roles where a core responsibility is explaining, defending, or technically advising on Agentforce internals. JT's Agentforce capability is agent-configured. He can build and deploy agents but is not comfortable in deep technical Agentforce conversations with clients or SE/sales engineering contexts.
 - **Outreach active as of 2026-03-09**: freeze lifted. T1: H.C. Oswald — outreach sent 2026-03-11 (LinkedIn DM + subject "After-hours coverage for your catalog"). Awaiting response. T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
 - **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates: wholesale (convert existing demo — still needed), **construction job-tracker ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/construction-template/`), **PM maintenance triage ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/pm-maintenance-template/`). Tier 3 send scheduler: still needed.

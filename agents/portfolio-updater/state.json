@@ -21,23 +21,24 @@
     "georgetown-city-services-agent",
     "ranking-app-factory"
   ],
-  "lastReorderDate": "2026-03-21",
-  "lastRun": "2026-03-25",
+  "lastReorderDate": "2026-04-01",
+  "lastRun": "2026-04-01",
   "demandScoreCache": {
     "opticfy-pipeline": 46,
     "construction-tracker": 22,
     "streeteasy-scraper": 18,
-    "nash-satoshi": 20,
+    "nash-satoshi": 32,
     "vista": 9,
     "glow-index": 13,
     "b2b-account-service-agent": 27,
     "pm-tenant-service-agent": 34,
     "insurance-service-agent": 34,
-    "ai-insurance-claims-triage": 16,
-    "n8n-support-triage": 16,
-    "adversight-ai": 16,
-    "wholesale-inventory-reorder": 16,
-    "construction-trades-workflow": 8
+    "ai-insurance-claims-triage": 31,
+    "n8n-support-triage": 28,
+    "adversight-ai": 28,
+    "wholesale-inventory-reorder": 34,
+    "construction-trades-workflow": 8,
+    "agentguard": 34
   },
   "flaggedPending": []
 }

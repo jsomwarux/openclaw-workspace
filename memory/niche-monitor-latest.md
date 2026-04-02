@@ -1,3 +1,13 @@
-**Last updated:** Monday, March 30, 2026 — 9:00 AM EST
+**Last updated:** Wednesday, April 1, 2026 — 9:00 AM EST
 
-🔴 **n8n Critical RCE — CVE-2026-33660 + CVE-2026-33696 (CVSS 9.4)** — Two remote code execution vulnerabilities published March 25 affect all self-hosted n8n installations below versions 2.14.1, 2.13.3, or 1.123.27; exploitable by any authenticated user with workflow editing permissions, exposing all stored credentials (AWS, Slack, DB connection strings). Patch immediately or disable Merge + XML nodes via NODES_EXCLUDE env vars as interim mitigation. (https://anonhaven.com/en/news/n8n-rce-alasql-prototype-pollution/)
+No new critical findings as of 9:00 AM EST.
+
+---
+
+**Scan summary:**
+- Agentforce: No new product launches. Agentforce 360 ISV expansion (Dec 2025) is old news. DOL Agentforce deploy (Mar 26) is backgrounded.
+- Property management: RentRedi 2026 tax prep AI survey (78% headache reduction) published March 31 — useful PM pitch stat, 🟡 KB only. Entrata Agentic PMS already surfaced 2026-03-25.
+- Wholesale distribution: Plato ($14.5M seed, Berlin, Feb 2026) building AI sales/ERP tools for European wholesale distributors — 🟡 KB only (EU-focused, month+ old).
+- Construction: Trend pieces only (Autodesk, Virginia Tech research). No new product launches or demand signals.
+- Insurance: Ping An (China) rolling out AI agents for underwriting/claims in April — international, not JT's NYC market. 🟡 KB only.
+- RAG: Open-source framework updates (chunking, embedding, evaluation tooling) noted but no specific tool JT uses updated materially.

@@ -137,3 +137,11 @@
 **What:** uiux-review.sh integrated into new-niche.sh — every new niche now gets an automated UI/UX review pass as part of the generation pipeline. Glow Index improvements backported to template-app.
 **Impact:** All future ranking apps inherit the polished Glow Index design system out of the box. Review is mandatory, not optional.
 **Status:** complete — factory pipeline now: config → generate → build → uiux-review → verify
+
+## Client Outcomes Section — jtsomwaru.com — 2026-04-01
+**What:** Added an anonymized client case study section above the portfolio grid on jtsomwaru.com
+**For:** internal (jtsomwaru.com)
+**Outcome:** Aya outcomes now visible above fold — construction tracker (15-20 hrs/week saved) + StreetEasy scraper (10+ hrs/week saved). Client name kept anonymous.
+**Demonstrates:** portfolio storytelling, converting client work into social proof
+**Content angle:** Not a strong standalone post angle — no non-obvious problem. Skip for content.
+**Status:** complete

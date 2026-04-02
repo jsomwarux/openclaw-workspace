@@ -70,6 +70,7 @@ Note: build_resume_docx.py renders in this exact order. Do not reorder Skills be
 - Differentiator: 6 years enterprise operations at Spectrum Enterprise — large-scale systems, cross-team coordination, national rollouts. This is what separates JT from generalist AI consultants who have never implemented anything at scale.
 - Frame the BSA background as implementation experience, not just "background." It IS the qualification for AI implementation roles.
 - Never position as a developer. Never lead with coding. Lead with outcomes and operations.
+- **Specialist framing (mandatory, 2026-04-01):** Market is splitting — specialist hiring up 35%, generalist contracting. Every resume and cover letter reinforces the specialist angle: enterprise ops background + Agentforce + n8n automation. Not a generalist. An AI Implementation Specialist with domain-specific deployment experience.
 
 **Weak (avoid):**
 > "Experienced professional seeking challenging opportunities in AI and Salesforce consulting where I can utilize my diverse skill set."
@@ -79,11 +80,11 @@ Organize into clear categories. Aim for 15-25 skills total — too few misses ke
 
 **JT's optimal skills categories:**
 ```
-AI & Agents: Claude API, GPT-4, Gemini, Multi-LLM Orchestration, Prompt Engineering, Autonomous Agents, n8n, Workflow Automation, Agentforce, Agent Governance
-Salesforce: Agentforce, Service Cloud, Sales Cloud, Flow Builder, Agent Script, Data Loader
+AI & Agents: Claude API, GPT-4, Gemini, Multi-LLM Orchestration, Prompt Engineering, Autonomous Agents, n8n, Workflow Automation, Agentforce, AI Governance, RAG / LLM API Orchestration
+Salesforce: Agentforce, Service Cloud, Sales Cloud, Flow Builder, Agent Script, Data Loader, CRM Integration
 Development: React, TypeScript, Node.js, Python, REST APIs, Google Sheets API, GitHub, Vercel, Supabase
-Enablement: Technical Training Design, Workshop Facilitation, Executive Briefings, Adoption Frameworks, Playbook Development
-Business: Enterprise Cross-functional Coordination, Implementation Project Management, Stakeholder Communication, System Documentation
+Enablement: Agentic AI Deployment Strategy, Stakeholder Enablement, Change Management, Workshop Facilitation, Executive Briefings, Adoption Frameworks, Playbook Development
+Business: Enterprise Cross-functional Coordination, Implementation Project Management, Stakeholder Communication, System Documentation, HubSpot CRM Integration
 ```
 
 ### Work Experience Bullets
@@ -101,7 +102,7 @@ Business: Enterprise Cross-functional Coordination, Implementation Project Manag
 **Strong bullet examples:**
 - "Designed and deployed a 4-LLM ensemble system (Claude, GPT-4, Gemini, Grok) for cross-validated AI analysis, improving output accuracy by 35% over single-model approaches"
 - "Built co-living operations dashboard (React/TypeScript/Node.js) integrating Google Sheets API across 32 buildings and 313 rooms, consolidating 8 operational views into a single platform"
-- "Deployed confidence-gated AI governance layer (AgentGuard) with automated routing at ≥70% confidence threshold and human-in-the-loop review queue — EEOC-compliant audit trail for every decision"
+- "Deployed production AI governance layer (AgentGuard): confidence scoring routes decisions automatically at ≥70% accuracy or escalates to human review queue — EEOC-compliant audit trail, explainability reports, and override logging. Demonstrates AI governance implementation: confidence-based routing, human-in-the-loop design, and responsible AI deployment patterns."
 
 **Weak bullet examples (avoid):**
 - "Worked on AI projects" (no specificity)
@@ -113,11 +114,13 @@ Business: Enterprise Cross-functional Coordination, Implementation Project Manag
 ## AI/Automation Role-Specific Tactics
 
 ### What separates top candidates
-- **Autonomous agent experience** — not just using AI tools, but building systems that operate independently. Emphasize the 35-cron production infrastructure.
-- **Multi-model architecture** — knowing when to use Claude vs. GPT vs. Gemini and why. The 4-LLM ensemble in Glow Index demonstrates this.
+- **Autonomous agent experience** — not just using AI tools, but building systems that operate independently. Emphasize the 39-cron production infrastructure.
+- **Multi-model architecture** — knowing when to use Claude vs. GPT vs. Gemini and why. The 4-LLM ensemble in Nash Satoshi/Glow Index demonstrates this.
 - **Cost-conscious deployment** — mentioning cost controls, model routing by task type, and budget monitoring shows enterprise maturity
-- **Governance and reliability** — AgentGuard, confidence scoring, human-in-the-loop. This is what enterprise buyers actually need.
+- **AI governance implementation** — AgentGuard is the differentiator here. Confidence scoring, human-in-the-loop, audit trail. Enterprise buyers need this before they go to production. Frame it as a production governance system, not a demo.
+- **Agentic AI deployment + stakeholder enablement** — term now appearing in 5+ JDs. JT has done this at every client engagement. Use this exact phrase in resumes targeting deployment/implementation roles.
 - **Integration depth** — n8n + Google Sheets + Salesforce + webhook architecture shows you build systems, not demos
+- **RAG / LLM API orchestration** — multi-LLM coordination at scale (Nash Satoshi 4-LLM ensemble, OpenClaw 39-agent production system). Cite these when JDs mention RAG, LLM integration, or API orchestration.
 
 ### Quantification framework (use these for AI work)
 - Time savings: "Reduced X process from Y hours to Z minutes"

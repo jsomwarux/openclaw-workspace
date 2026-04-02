@@ -1,0 +1,241 @@
+{
+  "product": "nash-satoshi",
+  "total": 20,
+  "rotation_weeks": 10,
+  "last_updated": "2026-04-01",
+  "photos": [
+    {
+      "id": "photo-01",
+      "file": "photo-01-home-desk-monitor-setup.jpg",
+      "category": "aspirational",
+      "vibe": "serious-trader",
+      "energy": "focused",
+      "setting": "home-desk",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-02",
+      "file": "photo-02-cafe-tradingview-iced-coffee.jpg",
+      "category": "lifestyle",
+      "vibe": "relatable",
+      "energy": "casual",
+      "setting": "cafe",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-03",
+      "file": "photo-03-restaurant-dual-laptops-charts.jpg",
+      "category": "lifestyle",
+      "vibe": "social-trading",
+      "energy": "social",
+      "setting": "restaurant",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-04",
+      "file": "photo-04-hooded-figure-ultrawide-binance.jpg",
+      "category": "dark-anonymous",
+      "vibe": "cinematic",
+      "energy": "mysterious",
+      "setting": "desk-dark",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-05",
+      "file": "photo-05-hooded-figure-green-candles-rgb.jpg",
+      "category": "dark-anonymous",
+      "vibe": "cinematic",
+      "energy": "watching-it-run",
+      "setting": "desk-dark",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-06",
+      "file": "photo-06-dual-monitor-silhouette-darkness.jpg",
+      "category": "dark-anonymous",
+      "vibe": "cinematic",
+      "energy": "intense",
+      "setting": "desk-dark",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-07",
+      "file": "photo-07-three-screen-glasses-focused.jpg",
+      "category": "dark-anonymous",
+      "vibe": "focused",
+      "energy": "absorbed",
+      "setting": "desk-dark",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-08",
+      "file": "photo-08-city-skyline-dual-laptops.jpg",
+      "category": "aspirational",
+      "vibe": "cinematic",
+      "energy": "elevated",
+      "setting": "high-rise",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-09",
+      "file": "photo-09-cafe-tradingview-daylight-latte.jpg",
+      "category": "lifestyle",
+      "vibe": "clean",
+      "energy": "bright",
+      "setting": "cafe",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-10",
+      "file": "photo-10-cafe-dual-device-smoothie-btc.jpg",
+      "category": "lifestyle",
+      "vibe": "relatable",
+      "energy": "social",
+      "setting": "cafe",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-11",
+      "file": "photo-11-topdown-ipad-btc-handwritten-notes.jpg",
+      "category": "grind",
+      "vibe": "raw",
+      "energy": "analytical",
+      "setting": "home-desk",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-12",
+      "file": "photo-12-home-desk-notebook-motivational-wall.jpg",
+      "category": "grind",
+      "vibe": "self-improvement",
+      "energy": "studying",
+      "setting": "home-desk",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-13",
+      "file": "photo-13-ultrawide-clean-desk-no-person.jpg",
+      "category": "aspirational",
+      "vibe": "minimal",
+      "energy": "composed",
+      "setting": "home-desk",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-14",
+      "file": "photo-14-three-device-red-rgb-dxy-chart.jpg",
+      "category": "dark-anonymous",
+      "vibe": "intense",
+      "energy": "multi-screen",
+      "setting": "desk-dark",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-15",
+      "file": "photo-15-dual-screen-spotify-crypto-pump.jpg",
+      "category": "dark-anonymous",
+      "vibe": "relatable",
+      "energy": "music-and-charts",
+      "setting": "desk-dark",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-16",
+      "file": "photo-16-feet-up-purple-led-binance-futures.jpg",
+      "category": "personality",
+      "vibe": "relaxed",
+      "energy": "comfortable",
+      "setting": "desk-dark",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-17",
+      "file": "photo-17-noir-profile-dual-screen-lamp-blinds.jpg",
+      "category": "dark-anonymous",
+      "vibe": "noir",
+      "energy": "focused",
+      "setting": "home-desk",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-18",
+      "file": "photo-18-purple-aesthetic-ultrawide-binance.jpg",
+      "category": "personality",
+      "vibe": "distinctive",
+      "energy": "aesthetic",
+      "setting": "desk-dark",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-19",
+      "file": "photo-19-grind-tutorial-video-live-chart-notes.jpg",
+      "category": "grind",
+      "vibe": "authentic",
+      "energy": "studying-live",
+      "setting": "home-desk",
+      "last_used_week": null,
+      "use_count": 0
+    },
+    {
+      "id": "photo-20",
+      "file": "photo-20-airport-macbook-air-forces-layover.jpg",
+      "category": "lifestyle",
+      "vibe": "travel",
+      "energy": "mobile",
+      "setting": "airport",
+      "last_used_week": null,
+      "use_count": 0
+    }
+  ],
+  "categories": {
+    "dark-anonymous": [
+      "photo-04",
+      "photo-05",
+      "photo-06",
+      "photo-07",
+      "photo-14",
+      "photo-15",
+      "photo-17"
+    ],
+    "aspirational": [
+      "photo-01",
+      "photo-08",
+      "photo-13"
+    ],
+    "lifestyle": [
+      "photo-02",
+      "photo-03",
+      "photo-09",
+      "photo-10",
+      "photo-20"
+    ],
+    "grind": [
+      "photo-11",
+      "photo-12",
+      "photo-19"
+    ],
+    "personality": [
+      "photo-16",
+      "photo-18"
+    ]
+  },
+  "rotation_window_weeks": 6
+}

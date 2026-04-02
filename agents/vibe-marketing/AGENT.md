@@ -512,9 +512,37 @@ One JSON object per line:
 
 ---
 
-## Step 4b: Generate Slide Images via NB2
+## Step 4b: Generate Slide Images (Real Photos First, NB2 Fallback)
 
 After scoring and queuing, generate the two scene photos (Slide 1 + Last slide) for every TikTok slideshow piece.
+
+**Vista AND Nash Satoshi use real photos — NB2 is the fallback, not the default.**
+
+### Step 4b-1: Try Real Photo Library First (Vista only)
+
+```bash
+cd ~/.openclaw/workspace
+python3 scripts/vista-photo-selector.py --count 2 --vibe [content-vibe] \
+  --mark-used --week [YYYY-MM-DD-Monday]
+```
+
+- `--count 2` selects hook slide + CTA slide
+- `--vibe` optional: pass the content's primary vibe (cozy, cinematic, relatable, aspirational, romance, nostalgic, moody, etc.) to weight toward matching photos
+- `--mark-used --week [Monday]` marks them used so they don't repeat within 6 weeks
+- Returns JSON with `selected[]` (absolute paths) and `fallback_nb2` flag
+
+If `fallback_nb2: false` → use the two returned photos as-is (no generation needed). Skip to text overlay step.
+If `fallback_nb2: true` → real photo pool exhausted for this window. Fall through to NB2 generation below.
+
+**Photo library locations:**
+- Vista: `agents/vibe-marketing/real-photos/vista/` (25 photos, 6-week rotation window) — selector: `scripts/vista-photo-selector.py`
+- Nash Satoshi: `agents/vibe-marketing/real-photos/nash-satoshi/` (20 photos, 6-week rotation window) — selector: `scripts/nash-photo-selector.py`
+
+For both products: run the selector first. Only fall through to NB2 if `fallback_nb2: true`.
+
+### Step 4b-2: NB2 Generation (fallback only — for both Vista and Nash Satoshi)
+
+Only run if: real photo selector returned `fallback_nb2: true` for that product.
 
 Read `agents/vibe-marketing/nb2-image-prompts.md` for the complete scene library. No variable injection needed — prompts are complete as-is. Select the correct scene based on content theme (see the scene selection table in that file).
 
@@ -526,9 +554,9 @@ Output directory: `agents/vibe-marketing/generated-images/[product_slug]/[YYYY-M
 
 | Slide | Source | Notes |
 |---|---|---|
-| Slide 1 — Hook scene | NB2 → text overlay script | Realistic photo + hook text baked in |
+| Slide 1 — Hook scene | Real photo (Vista) or NB2 (Nash/fallback) | Photo used as-is or generated scene |
 | Middle slides (2–4) | Drive screenshot library → text overlay script | App screenshots pulled from Drive + label baked in |
-| Last slide — CTA scene | NB2 → text overlay script | Realistic photo + CTA text baked in |
+| Last slide — CTA scene | Real photo (Vista) or NB2 (Nash/fallback) | Photo used as-is or generated scene |
 
 **Drive screenshot library (JT uploads once, agent pulls weekly):**
 - Nash Satoshi: `Vibe Marketing/App Screenshots/nash-satoshi/` — filenames describe content: `rankings-table.png`, `coin-detail.png`, `methodology.png`, etc.
@@ -538,7 +566,16 @@ Output directory: `agents/vibe-marketing/generated-images/[product_slug]/[YYYY-M
 
 **Generation steps (run in sequence per slide):**
 
-**Step 1 — Generate raw scene images via NB2 (hook + CTA):**
+**Step 1a — Use real photos (Vista, when available):**
+Real photos are returned as absolute paths by the selector script. Copy them to the output directory:
+```bash
+mkdir -p "agents/vibe-marketing/generated-images/vista/[YYYY-MM-DD]/"
+cp "[absolute-path-from-selector]" "agents/vibe-marketing/generated-images/vista/[YYYY-MM-DD]/slide-01-hook-raw.jpg"
+cp "[absolute-path-from-selector-2]" "agents/vibe-marketing/generated-images/vista/[YYYY-MM-DD]/slide-last-cta-raw.jpg"
+```
+Skip Step 1b for those slides.
+
+**Step 1b — Generate raw scene images via NB2 (Nash Satoshi, or Vista fallback):**
 ```bash
 source ~/.config/env/global.env
 python3 ~/.openclaw/workspace/scripts/nb2-generate.py \

@@ -20,7 +20,7 @@
 | Slug | Skill/Agent Path | Checklist | Status | Last Score | Last Run | Added |
 |------|-----------------|-----------|--------|------------|----------|-------|
 | cold-email | skills/cold-email/SKILL.md | checklists/cold-email.md | stable | 0.958 | 2026-03-20 | 2026-03-19 |
-| t3-cold-hook | agents/t3-cold-hook/AGENT.md | checklists/t3-cold-hook.md | active | 0.800 | 2026-03-21 | 2026-03-19 |
+| t3-cold-hook | agents/t3-cold-hook/AGENT.md | checklists/t3-cold-hook.md | stable | 1.000 | 2026-04-01 | 2026-03-19 |
 | content-linkedin | (content-generate-linkedin cron payload) | checklists/content-linkedin.md | active | 0.833 | 2026-03-31 | 2026-03-19 |
 | content-x | (content-generate-x cron payload) | checklists/content-x.md | active | 0.900 | 2026-03-20 | 2026-03-19 |
 | wednesday-linkedin | skills/wednesday-linkedin/SKILL.md | checklists/wednesday-linkedin.md | active | 0.920 | 2026-03-24 | 2026-03-22 |
