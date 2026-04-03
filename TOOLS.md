@@ -171,7 +171,11 @@ When activating a persona for open-ended coding tasks: read `docs/tools/claude-p
 - Pipeline: ~/projects/jt-consulting-pipeline/ | Skill: skills/jt-consulting-pipeline/SKILL.md
 
 ## Salesforce Data Cloud (paired with Agentforce)
-Real-time CDP that feeds live customer data into Agentforce agents via Grounding. Key for personalization in enterprise Agentforce builds. Consumption-based licensing (Flex Credits or Profiles). Full reference: `docs/tools/TOOLS-full.md` → Salesforce Data Cloud section.
+Real-time CDP that feeds live customer data into Agentforce agents via Grounding. Key for personalization in enterprise Agentforce builds. Rebranding to "Data 360" as of late 2025 — both names appear in JDs.
+**Key concepts:** Data Streams (ingestion pipelines) → Data Lake Objects → Data Model Objects → Unified Profiles → Data Graphs (pre-materialized relationship structures for low-latency agent retrieval).
+**Agentforce grounding paths:** (1) Agentforce Data Libraries (simplified, auto-configured, unstructured content) vs. (2) Manual RAG (full DStream→DLO→DMO→SearchIndex→Retriever→PromptTemplate pipeline).
+**Pricing (Sep 2025 update):** Unified to "Data Service Credits." Salesforce-to-Salesforce ingestion now free. 2.5M credits bundled into Agentforce Editions. Zero Copy with Snowflake/Databricks/BigQuery = no data movement needed.
+**Full reference:** `docs/tools/salesforce-data-cloud.md` (2026-04-02, 2,000 words — includes interview talking points + Trailhead modules).
 ## Drive Drafts
 - Script: scripts/drive_drafts.py | Account: openclawagenteve14@gmail.com | Root: "Eve — Drafts"
 - **Preferred: use `--path` for full control** (supports deep folder structure)

@@ -16,6 +16,7 @@ Design spec:
 """
 
 import sys
+from datetime import datetime
 from docx import Document
 from docx.shared import Pt, Inches, RGBColor, Cm
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -652,7 +653,7 @@ def build_cover_letter(output_path, cover_letter_md=None):
     # Date + recipient block
     date_para = doc.add_paragraph()
     set_para_spacing(date_para, before_pt=8, after_pt=2)
-    date_run = date_para.add_run('March 2026')
+    date_run = date_para.add_run(datetime.now().strftime('%B %Y'))
     date_run.font.name = 'Calibri'
     date_run.font.size = Pt(11)
     date_run.font.color.rgb = GRAY

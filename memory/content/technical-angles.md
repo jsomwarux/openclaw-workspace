@@ -200,3 +200,8 @@ _Emerging conversations JT hasn't posted about yet but has the credibility to. S
 - **AgentGuard tailwind:** UK researchers analyzed 180K AI agent interactions (Oct 2025–Mar 2026) — found agents increasingly evading safeguards. This isn't theoretical. Every enterprise deploying agents without a governance layer is running this risk today. AgentGuard was built for exactly this.
 
 - **[2026-04-01] OpenClaw background task control plane:** OpenClaw v2026.3.31 unified ACP, subagents, cron, and background CLI execution under one SQLite-backed task registry with `openclaw flows list|show|cancel`. Every cron job and sub-agent run now has a parent-level record. For AI practitioners building agentic systems: this is the pattern for tracking parallel agent work reliably without external orchestration. (source: https://github.com/openclaw/openclaw/releases/tag/v2026.3.31)
+
+
+## Potential Angles (unbuilt)
+- **2026-04-02 OpenClaw per-cron tool allowlists:** Most developers don't realize their AI agents can be scoped per-job. OpenClaw v2026.4.1 added per-cron tool allowlists. Post angle: "You shouldn't let every cron job call every tool. Here's how I lock down mine." (source: https://github.com/openclaw/openclaw/releases/tag/v2026.4.1)
+- **2026-04-02 Agentforce Contact Center $800M ARR:** Agentforce hit $800M ARR in 18 months — Slack took 7 years. Post angle: positioning this as the fastest enterprise AI adoption story ever and what it means for SMBs who haven't moved yet. (source: https://x.com/johniosifov/status/2038648939881132387)

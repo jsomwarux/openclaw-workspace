@@ -18,3 +18,4 @@
 2026-03-28T15:31:00Z | daily-scan | x_queries: 6 | web_queries: 5 | findings: 4 | 🔴: 0 | 🟠: 0 | 🟡: 2 (KB #352-353) | messaged_jt: no
 2026-03-30T15:33:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 5 | 🔴: 1 | 🟠: 0 | 🟡: 2 (KB #357-358) | messaged_jt: yes
 2026-04-01T15:36:45Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 6 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
+2026-04-02T15:35:00-04:00 | daily-scan | x_queries: 6 | web_queries: 8 | findings: 6 | 🔴: 1 | 🟠: 1 | messaged_jt: yes
