@@ -4,6 +4,14 @@
 *Read by content-generate as the primary source for Wednesday case studies and build-in-public posts.*
 *Entries expire after 30 days — remove stale entries during weekly synthesis.*
 
+## Google Trends Pipeline (fetch-trends.py) — 2026-04-03
+**What:** Built fetch-trends.py script + added Methodology 6 (Google Trends) to passive income scout pipeline
+**For:** internal
+**Outcome:** Google Trends data now feeds passive income opportunity discovery — scout can surface trending niches with search demand validation before building
+**Demonstrates:** data pipeline automation, passive income system buildout
+**Content angle:** How I built a niche-finder that cross-references trend velocity before committing to a build
+**Status:** complete
+
 ---
 
 ## Ensemble Ranking App Factory — 2026-03-23

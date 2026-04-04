@@ -16,6 +16,7 @@ Design spec:
 """
 
 import sys
+import os
 from datetime import datetime
 from docx import Document
 from docx.shared import Pt, Inches, RGBColor, Cm
@@ -249,6 +250,7 @@ def add_builds_table(doc, builds):
 
 
 def parse_resume_md(md_path):
+    assert os.path.exists(md_path), 'Resume markdown file not found!'
     """
     Parse a structured resume .md file into sections.
     Expected headings: PROFESSIONAL SUMMARY, SKILLS, EXPERIENCE, KEY PROJECTS, EDUCATION, TECHNICAL STACK
@@ -380,6 +382,7 @@ def parse_resume_md(md_path):
 
 
 def parse_cover_letter_md(md_path):
+    assert os.path.exists(md_path), 'Cover letter markdown file not found!'
     """
     Parse a structured cover letter .md file.
     Extracts: recipient company name, body paragraphs.
@@ -443,6 +446,7 @@ def parse_cover_letter_md(md_path):
 
 
 def build_resume(output_path, resume_md=None):
+    print('Building resume from:', resume_md)
     # ── Load data from markdown if provided (preferred) ───────────────────────
     md = None
     if resume_md:
@@ -610,6 +614,9 @@ def build_resume(output_path, resume_md=None):
 
 
 def build_cover_letter(output_path, cover_letter_md=None):
+    print('Building cover letter from:', cover_letter_md)
+    if not cover_letter_md:
+        raise ValueError('Cover letter markdown path must be provided!')
     # ── Load data from markdown if provided ───────────────────────────────────
     cl = None
     if cover_letter_md:

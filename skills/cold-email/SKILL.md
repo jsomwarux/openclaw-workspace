@@ -160,7 +160,7 @@ These are validated operational patterns, sourced from real prospect research an
 
 ### T1 Follow-up (3-touch)
 - Day 0: M1 — observation + curiosity question, no pitch, no proof point
-- Day 4: M2 — drop the proof point. Share a specific insight from working on a similar problem. No CTA.
+- Day 4: M2 — drop the proof point. Share a specific insight from working on a similar problem. No CTA. **Explicitly frame as "already built for multiple NYC trade contractors" — not a new build.** The prospect's fear is paying for your learning curve. Name it directly: "I've already built this for two NYC contractors — it's adapted to your operation, not built from scratch for you."
 - Day 10: M3 — "Totally understand if the timing's off. If [pain area] ever becomes a priority, happy to show you what it looks like in 30 minutes. calendly.com/jtsomwaru/discovery-call"
 
 **Calendly rule:** The Calendly link (calendly.com/jtsomwaru/discovery-call) goes in M3 ONLY on cold outreach. If someone replies positively to M1 or M2, include it in your reply immediately. Never include it in M1 — it signals template.

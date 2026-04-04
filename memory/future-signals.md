@@ -1,4 +1,10 @@
-# Future Signals — "Not Now But Track"
+# Future Signals
+
+## Fantasy Sports Agent + Dynasty App
+**What:** Build a gap-monitoring agent that watches dynasty fantasy football Twitter/Reddit for unmet needs, then auto-develops app ideas based on signals. First concrete app likely a dynasty-specific analytics tool (age curves by archetype, college-to-NFL translation layer). JT has a fantasy X account to build audience around it.
+**Why deferred:** Financial runway pressure — job apps and consulting are priority. Also need to validate the specific gap before building.
+**Trigger:** Job offer accepted OR consulting generating $3K+/mo consistently. At that point, dynasty tool is a weekend build worth testing.
+**Notes from conversation:** Dynasty > redraft (less competition, more passionate audience, KeepTradeCut is weak on analytics). PlayerProfiler covers general advanced stats — the gap is dynasty-specific decision tools. X content flywheel first, build second. — "Not Now But Track"
 > Reviewed weekly during weekly-synthesis (Sunday 8AM). Eve flags any signal whose trigger conditions are met.
 > Add entry any time a tool/technique/strategy is evaluated and deferred. Never let "not now" disappear.
 

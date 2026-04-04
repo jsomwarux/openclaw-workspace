@@ -102,3 +102,17 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 
 1. Em dashes are now a generation-time hard ban, not a checklist item. The distinction matters: "scan and fix" assumes fallible self-review. "Never write one" is a constraint applied before the first word.
 2. Contrarian flip pattern ("wasn't X / it was Y" or "X isn't Y / it's Z") is restricted to Thursday only during CONTRARIAN WEIGHT mode. Any other day: rewrite to lead with the positive claim directly.
+
+---
+
+## 2026-04-03 — Tricolon negation pattern ban
+
+**JT flagged:** "No X. No Y. Just Z." as a common AI slop tell — showing up in generated content across the industry.
+
+**Rule added to content-voice.md AI-Generated Pattern Ban:**
+"No [X]. No [Y]. Just [Z]." and all variants (tricolon negation resolving to a simple positive) are banned. State what it is directly. Drop the negations.
+
+**Examples of banned constructions:**
+- "No strategy decks. No jargon. Just results."
+- "No meetings. No overhead. Just automation."
+- "Not complicated. Not expensive. Just done."

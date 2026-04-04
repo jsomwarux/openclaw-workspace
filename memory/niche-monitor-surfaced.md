@@ -20,3 +20,4 @@
 2026-03-29 midmarket-b2b-ai-sourcing — 34% of mid-market B2B buyers now use AI-assisted sourcing tools (Catalist, March 2026).
 2026-03-29 acumatica-construction-erp-ai — Acumatica construction ERP added AI risk detection, forecasting, anomaly detection, progress billing automation (March 29, 2026).
 2026-03-30 n8n-rce-cve-2026-33660 — Two CVSS 9.4 RCE vulnerabilities in n8n (CVE-2026-33660 + CVE-2026-33696) patched in versions 2.14.1/2.13.3/1.123.27; all self-hosted installs below these versions at risk.
+2026-04-03 nyc-construction-ai-data-bottleneck — NYC Build 2026: Turner Construction + Mancini Duffy confirm AI adoption in NYC construction is blocked by data integration gaps, not tool availability; concrete demand signal for JT's consulting pitch angle.

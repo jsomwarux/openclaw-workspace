@@ -202,8 +202,8 @@ def find_folder(name, pid=None):
     return r["files"][0]["id"] if r["files"] else None
 root = find_folder("Eve — Drafts"); ja = find_folder("Job Applications", root)
 for path, folder, title in [
-    ("/tmp/jt-somwaru-resume.docx", find_folder("Resumes", ja), "JT Somwaru — [COMPANY] — Resume"),
-    ("/tmp/jt-somwaru-cover-letter.docx", find_folder("Cover Letters", ja), "JT Somwaru — [COMPANY] — Cover Letter"),
+    ("/tmp/jt-somwaru-resume.docx", find_folder("Resumes", ja), "[Job Title] - [Company] - Resume"),
+    ("/tmp/jt-somwaru-cover-letter.docx", find_folder("Cover Letters", ja), "[Job Title] - [Company] - Cover Letter"),
 ]:
     meta = {"name": title, "parents": [folder], "mimeType": "application/vnd.google-apps.document"}
     media = MediaFileUpload(path, mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document")

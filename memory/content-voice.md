@@ -595,6 +595,12 @@ The following patterns are the clearest tells that content was AI-generated. The
 
 **"That's not [X]. That's [Y]."** — Two short declarative sentences used to reframe a point. Sounds like a GPT summary of a Seth Godin post.
 
+**"No [X]. No [Y]. Just [Z]."** — Tricolon negation pattern. Extremely common AI slop tell. Any variation of negating two things and resolving to a simple third is banned. Examples:
+- "No strategy decks. No jargon. Just results."
+- "No meetings. No overhead. Just automation."
+- "Not complicated. Not expensive. Just done."
+The fix: State what it is directly. One sentence. Drop the negations entirely.
+
 **"[Observation]. [Conclusion that restates the observation differently.]"** — Padding a single idea into two sentences by saying the same thing twice at slightly different zoom levels.
 
 **"[Statement]: [item], [item], [item]."** — The colon-list construction. "The gap is after intake: classify urgency, dispatch vendor, confirm to tenant." Sounds like a consultant writing a deck bullet point, not a person talking. If the list matters, give each item its own sentence or cut to the one that matters most. Never use a colon to introduce a comma-separated list in post body copy.
