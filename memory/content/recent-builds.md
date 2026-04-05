@@ -146,10 +146,34 @@
 **Impact:** All future ranking apps inherit the polished Glow Index design system out of the box. Review is mandatory, not optional.
 **Status:** complete — factory pipeline now: config → generate → build → uiux-review → verify
 
+## Glow Index SEO Patch — 2026-04-04
+**What:** Full SEO + GEO infrastructure added to Glow Index on Replit — meta tags, JSON-LD structured data, sitemap.ts, robots.ts, llms.txt, per-product OG tags on rankings pages
+**For:** internal (Glow Index)
+**Outcome:** Glow Index now indexable by Google + AI search engines (Perplexity, ChatGPT, Claude). llms.txt signals LLM crawlers on how to cite the site.
+**Demonstrates:** GEO/AI SEO implementation, Next.js metadata API, structured data
+**Content angle:** "Most indie apps get zero AI search traffic because they skip llms.txt. Added it to Glow Index in an afternoon — here's what it does and why it matters."
+**Status:** complete
+
+## Reel.farm TikTok Integration — 2026-04-04
+**What:** Built Reel.farm API integration for vibe-marketing agent — scripts/reelfarm-create-slideshow.py and scripts/reelfarm-upload-photos.py, AGENT.md updated with full flow
+**For:** internal (passive income / vibe marketing system)
+**Outcome:** Vibe marketing agent can now auto-generate TikTok slideshows via Reel.farm API. Requires JT to add REELFARM_API_KEY to global.env, add TikTok account IDs to product-registry.json, create R2 bucket
+**Demonstrates:** API integration, automated content pipeline, TikTok distribution
+**Content angle:** "Built a TikTok auto-poster for my app marketing. 3 scripts + 1 API key away from posting slideshows automatically."
+**Status:** complete (pending JT config: REELFARM_API_KEY, TikTok account IDs, R2 bucket)
+
 ## Client Outcomes Section — jtsomwaru.com — 2026-04-01
 **What:** Added an anonymized client case study section above the portfolio grid on jtsomwaru.com
 **For:** internal (jtsomwaru.com)
 **Outcome:** Aya outcomes now visible above fold — construction tracker (15-20 hrs/week saved) + StreetEasy scraper (10+ hrs/week saved). Client name kept anonymous.
 **Demonstrates:** portfolio storytelling, converting client work into social proof
 **Content angle:** Not a strong standalone post angle — no non-obvious problem. Skip for content.
+**Status:** complete
+
+## jtsomwaru.com Blog Infrastructure — 2026-04-04
+**What:** Full /blog route built and deployed — MDX support, 3 seed posts, sitemap wired, pushed to main on Vercel
+**For:** internal (jtsomwaru.com)
+**Outcome:** Site now has a content publishing layer; blog live at jtsomwaru.com/blog
+**Demonstrates:** Next.js MDX pipeline, content-driven architecture, sitemap integration
+**Content angle:** "Finally built my blog — here's why I'm not worried about SEO and went straight to AI search signals instead."
 **Status:** complete

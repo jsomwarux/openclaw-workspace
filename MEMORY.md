@@ -139,7 +139,7 @@
 - **Nash Satoshi**: permanently on Gumloop. DO NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly requests.
 - **TikTok routing rule**: niche-specific products → dedicated account. Builder/dev/AI products → @jts_14
 - **Passive income scout/strategist**: `dcdbbef5` (Sun 6:30AM) → `4e19c300` (Sun 8:30AM) | reports: `memory/passive-income/`
-## Active Cron Jobs (39 total)
+## Active Cron Jobs (43 total)
 > Full list: run `cron list` in any session. Do NOT maintain a manual copy here — cron scheduler is the source of truth.
 
 **Key job IDs (for heartbeat/watchdog reference):**
@@ -152,7 +152,11 @@
 - `fe984519` — content-generate-linkedin, Mon 6:45AM
 - `cb8f29dd` — content-generate-x, Mon 7:25AM
 - `babd905a` — spanish-lesson, Mon-Sat 8:05PM
-- `870bf3ff` — vibe-marketing-generate, Mon 4:45AM
+- `870bf3ff` — vibe-marketing-generate, Mon 4:45AM (generates + queues content only)
+- `a81aa240` — vibe-post-vista-friday, Fri 7PM ET
+- `06050403` — vibe-post-vista-sunday, Sun 11AM ET
+- `365e8277` — vibe-post-nash-tuesday, Tue 7AM ET
+- `faf41f37` — vibe-post-nash-thursday, Thu 7AM ET
 - `b2357bd5` — job-app-auto-builder, 6:15AM daily
 - `f368e18b` — passive-income-fetch-signals, Sat 5:30AM (runs before scout at 6AM)
 

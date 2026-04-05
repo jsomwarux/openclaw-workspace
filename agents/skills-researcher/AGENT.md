@@ -357,16 +357,30 @@ STEPS:
 
 5. COMPOSE + SEND REPORT (Telegram, channel=telegram, target=6608544825)
 
+   ## MC TASK QUALITY GATE (mandatory — run before pushing ANY task)
+   Before pushing anything to Mission Control, every item MUST pass ALL of these:
+   1. Is it concretely useful to JT's CURRENT stack or active projects RIGHT NOW? (not eventually, not theoretically)
+   2. Is there a specific first action JT or Eve can take TODAY? (not "review" or "consider" — a real step: URL to open, command to run, skill to install)
+   3. Does it pass the "so what" test? If the answer is "interesting, but JT can't do anything with it now" → KB only, no MC task
+   4. Generic AI news, Wikipedia pages, blog posts, and homepages of tools JT already knows about → NEVER qualify for MC tasks
+
+   Priority mapping (no exceptions):
+   - 🔴 Critical → HIGH
+   - 🟠 High → MEDIUM (not HIGH — HIGH is for things that need action within 48h)
+   - 🟡/🟢 → KB only, no MC task
+
+   If fewer than 2 items pass the quality gate → push 0 or 1 task. Do NOT manufacture tasks to look productive.
+
    Title: '🔬 Weekly Skills & API Report — [Mon DD – Sat DD MMM]'
 
    **🆕 Top Discoveries This Week** (ranked by value to JT's goals)
    [Name] — [description] — via [X/@handle / GitHub / HN / etc]
    Recommendation: [install on X agent | evaluate | monitor]
 
-   **📥 Recommended Installations**
+   **📥 Recommended Installations** (only items that passed quality gate)
    [Skill/tool] → [which agent] | [why in one line] | [install command if known] | [free/paid]
 
-   **🤖 Proposed New Agents** (only if justified by a concrete discovery)
+   **🤖 Proposed New Agents** (only if justified by a concrete discovery that passed the gate)
    Name: [X]
    Goal served: [JT Somwaru Consulting / crypto / etc]
    Trigger: [what discovery makes this possible now]
@@ -381,7 +395,7 @@ STEPS:
    [Any flags — unusual permissions, CVEs, abandoned repos for installed skills]
 
    **📊 Week Summary**
-   X discoveries: N | Web discoveries: N | 🔴: N | 🟠: N | 🟡/🟢 (KB'd): N
+   X discoveries: N | Web discoveries: N | 🔴: N | 🟠: N | 🟡/🟢 (KB'd): N | MC tasks pushed: N
 
 6. ARCHIVE & RESET
    Copy weekly-log.md → ~/.openclaw/workspace/agents/skills-researcher/archive/[YYYY-WXX].md

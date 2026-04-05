@@ -44,7 +44,32 @@ Base: JT's experience is fixed. What changes is emphasis and framing.
 - JT Somwaru Consulting: AI automation consulting, n8n workflows, Agentforce implementations, real client deliverables (Aya — $1,500 dashboard, $1,000 StreetEasy scraper)
 - Built: Vista (App Store), Nash Satoshi, Glow Index — proof of shipping, not just planning
 - ConversationFirst framework — Agentforce UX methodology (differentiator for Salesforce roles)
-- OpenClaw AI infrastructure — running 20+ autonomous agents, cron system, health tracking, cost optimization
+- OpenClaw AI infrastructure — running 44 autonomous agents, cron system, health tracking, cost optimization
+
+**5 mandatory quality rules (apply to every resume — no exceptions):**
+
+**Rule 1 — Consulting bullets: outcomes, not activity.**
+Every bullet under JT Somwaru Consulting must follow: [specific thing built/done] → [specific result/outcome]. Never describe what JT 'does' generically. The Aya bullet is the gold standard — mirror it.
+Bad: 'Develop and execute AI transformation roadmaps... identifying use cases, evaluating vendors...'
+Good: 'Mapped and automated 3 client workflows (construction, PM, insurance) — eliminated daily manual coordination loops; 2 follow-on projects from the same anchor client.'
+
+**Rule 2 — Spectrum bullets need numbers.**
+At least 2-3 Spectrum bullets must include a real metric: teams coordinated, processes affected, timeline compressed, error rate, dollar scope. '$1B+ portfolio' is a scope descriptor, not an outcome. Add at least: (1) team count or stakeholder scope, (2) a process/delivery outcome. Rough estimates with ranges are fine.
+
+**Rule 3 — Title is role-adaptive.**
+The resume header title is not fixed. Match it to the role type:
+- Transformation/change management/AI adoption roles: 'AI Transformation Consultant'
+- Implementation/operations/embedded roles: 'AI Implementation Specialist'
+- Strategy/roadmap/enablement roles: 'AI Strategy & Implementation Consultant'
+Never use 'AI Automation Consultant' on a resume — it signals pipeline builder, not program leader.
+
+**Rule 4 — Nash Satoshi elevated framing.**
+Nash Satoshi must be described as multi-model orchestration, not a crypto app. Required framing:
+'Built production 4-LLM ensemble (Claude, GPT-4, Gemini, Grok) that generates consensus rankings via cross-model validation — demonstrating agent orchestration, model bias mitigation, and AI ops at scale.'
+This is the single strongest technical proof point for multi-model/AI ops roles. Never bury it in one line.
+
+**Rule 5 — AgentGuard leads Key Projects.**
+AgentGuard (confidence-gated routing, human-in-the-loop, audit trail, explainability) speaks directly to enterprise AI governance — the #1 concern at companies over 500 employees. It must be listed FIRST in Key Projects with 3 bullets minimum. It outranks Vista and Nash Satoshi for any enterprise role.
 
 **Resume format rules:**
 - One page preferred, two max

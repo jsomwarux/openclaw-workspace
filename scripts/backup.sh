@@ -52,6 +52,13 @@ if [ -f "$WORKSPACE/interventions.jsonl" ]; then
   log "  ✓ interventions.jsonl"
 fi
 
+# ── Sacred files: global.env (never overwrite — back up for recovery only) ────
+GLOBAL_ENV="$HOME/.config/env/global.env"
+if [ -f "$GLOBAL_ENV" ]; then
+  cp "$GLOBAL_ENV" "$DEST/global.env.bak"
+  log "  ✓ global.env.bak"
+fi
+
 # ── Cleanup: keep last 7 backups ──────────────────────────────────────────────
 log "Pruning old backups (keeping last 7)..."
 cd "$BACKUP_ROOT"

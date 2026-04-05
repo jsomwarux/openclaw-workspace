@@ -8,12 +8,18 @@ This agent markets the PRODUCTS — Nash Satoshi, Vista, and future apps.
 Platforms: **X, TikTok, Reddit, LinkedIn (monthly)**
 JT reviews all content and posts manually. Never post on his behalf.
 
-**Posting phase:** Manual review and posting until JT confirms content quality (first 1–2 weeks). PostBridge auto-scheduling is the target state — flag this in every Telegram summary until PostBridge is active.
+**Posting phase:** TikTok slideshows auto-publish via Reel.farm. X and Reddit remain manual review and posting. PostBridge is retired.
 
 ---
 
 ## When This Runs
-Monday 4:45 AM ET — weekly batch generation.
+**Monday 4:45 AM ET — generate + queue content only. Do NOT publish to TikTok in this step.**
+
+Posting is handled by 4 dedicated posting crons:
+- Vista: Friday 7PM ET + Sunday 11AM ET (lifestyle content — peak movie night audience)
+- Nash Satoshi: Tuesday 7AM ET + Thursday 7AM ET (crypto pre-market audience)
+
+Generate always runs first. Posting crons read from the queue.jsonl file.
 
 ---
 
@@ -188,10 +194,10 @@ This is the single biggest quality lever. Hook quality determines reach. Earn th
 | Glow Index | Slideshow (faceless) | UGC Reaction (faceless) | Any on-camera format |
 
 **Posting infrastructure modes:**
-- **Manual mode (now):** Generate slide copy as text → JT uploads to TikTok manually, adds sound before publishing
-- **PostBridge mode (when connected):** Agent outputs content in PostBridge-compatible format. JT adds music and publishes via PostBridge. No Postiz — PostBridge only.
+- **Reel.farm mode (active):** Eve calls `scripts/reelfarm-create-slideshow.py` which renders the slideshow server-side and publishes directly to TikTok via Reel.farm API. Auto-music enabled. JT reviews analytics weekly.
+- **Manual fallback:** If Reel.farm is down or REELFARM_API_KEY is missing, generate slide copy as text in Drive. JT uploads to TikTok manually.
 
-Slide *copy* (text content per slide) is generated in both modes — PostBridge mode adds automated scheduling on top.
+Slide *copy* (text content per slide) is still generated in all modes. Reel.farm mode adds automated rendering + publishing on top.
 
 ---
 
@@ -804,8 +810,7 @@ X ([N] posts) | TikTok ([N] scripts) | Reddit ([N] post) | LinkedIn ([N] — if 
 
 All content in Drive: [link]
 
-📌 Posting mode: MANUAL — review in Drive, post from your devices.
-[Remove this line once PostBridge auto-scheduling is active]
+📌 TikTok: auto-published via Reel.farm. X + Reddit: review in Drive, post manually.
 
 Reply with feedback after you post ("Nash Satoshi game theory post did well") — I'll log it to bias next week's generation.
 ```
@@ -970,8 +975,37 @@ When JT says "Eve, add [product] to vibe marketing":
 2. Fill in all fields including `platform_config` for each intended platform
 3. Next Monday 4:45AM picks it up automatically — no other changes needed
 
-## TikTok Future Note
-When TikTok automated posting is ready: add `"tiktok_post_api": true` to a product's `platform_config.tiktok` entry. The queue format is already structured for it — no architecture change needed.
+## TikTok Publishing (Reel.farm)
+
+**The Monday generate cron queues content only — it does NOT call Reel.farm.**
+
+Posting is handled by `scripts/vibe-post.py` called by the 4 dedicated posting crons:
+- `vibe-post-vista-friday` (Fri 7PM ET) — `python3 vibe-post.py --product vista`
+- `vibe-post-vista-sunday` (Sun 11AM ET) — `python3 vibe-post.py --product vista`
+- `vibe-post-nash-tuesday` (Tue 7AM ET) — `python3 vibe-post.py --product nash-satoshi`
+- `vibe-post-nash-thursday` (Thu 7AM ET) — `python3 vibe-post.py --product nash-satoshi`
+
+`vibe-post.py` handles the full publish loop:
+1. Reads oldest approved+unposted TikTok entry from queue.jsonl
+2. Parses slide text and hook from the entry
+3. Calls reelfarm-create-slideshow.py (which picks photos from library, renders, publishes)
+4. Marks entry as posted in queue.jsonl
+5. Logs to performance-log.jsonl
+6. Sends Telegram notification to JT with result
+
+TikTok account IDs are loaded automatically from product-registry.json — no manual arg needed.
+Sound is handled by Reel.farm `auto_music: true` — TikTok algorithm picks optimal sound.
+
+TikTok analytics check (every Monday generate cron):
+- Call GET /api/v1/tiktok/posts to fetch last 7 days of performance
+- Include top performing post (by views) in weekly Telegram summary
+
+**Adding a new product to TikTok:**
+1. Add entry to product-registry.json with correct `tiktok_account_id`
+2. Upload 20-25 photos to `agents/vibe-marketing/real-photos/[slug]/` with library.json
+3. Upload all photos to R2 (public URLs must be set in library.json)
+4. Add two posting crons at the right day/time for that product's audience
+5. Monday generate cron picks it up automatically
 
 ---
 

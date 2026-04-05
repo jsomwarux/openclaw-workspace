@@ -1,6 +1,6 @@
 {
   "product": "vista",
-  "last_updated": "2026-04-01",
+  "last_updated": "2026-04-04",
   "rotation_window_weeks": 6,
   "photos": [
     {
@@ -10,7 +10,9 @@
       "energy": "cinematic",
       "setting": "home theater",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-01-projector-cinematic.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-02",
@@ -18,8 +20,10 @@
       "vibe": "cozy",
       "energy": "relaxed",
       "setting": "bedroom",
-      "last_used_week": "2026-03-30",
-      "use_count": 1
+      "last_used_week": null,
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-02-netflix-bed-cozy.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-03",
@@ -28,7 +32,9 @@
       "energy": "casual",
       "setting": "close-up",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-03-popcorn-snacks.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-04",
@@ -36,8 +42,10 @@
       "vibe": "cozy",
       "energy": "ambient",
       "setting": "living room",
-      "last_used_week": "2026-03-30",
-      "use_count": 1
+      "last_used_week": null,
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-04-living-room-lighting.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-05",
@@ -45,8 +53,10 @@
       "vibe": "moody",
       "energy": "intimate",
       "setting": "bedroom",
-      "last_used_week": "2026-03-30",
-      "use_count": 1
+      "last_used_week": null,
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-05-dark-bedroom-tv-glow.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-06",
@@ -55,7 +65,9 @@
       "energy": "social",
       "setting": "living room",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-06-living-room-animated-film.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-07",
@@ -63,8 +75,10 @@
       "vibe": "cinematic",
       "energy": "atmospheric",
       "setting": "loft",
-      "last_used_week": "2026-03-30",
-      "use_count": 1
+      "last_used_week": null,
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-07-dark-loft-staircase.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-08",
@@ -73,7 +87,9 @@
       "energy": "nostalgic",
       "setting": "fireplace",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-08-fireplace-fantasy-film.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-09",
@@ -82,7 +98,9 @@
       "energy": "casual",
       "setting": "browse screen",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-09-mcdonalds-netflix-browse.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-10",
@@ -91,7 +109,9 @@
       "energy": "moody",
       "setting": "living room",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-10-venom-chips-bowl.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-11",
@@ -100,7 +120,9 @@
       "energy": "aesthetic",
       "setting": "bedroom",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 1,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-11-netflix-rgb-panda.jpg",
+      "times_used": 0
     },
     {
       "id": "photo-12",
@@ -109,7 +131,8 @@
       "energy": "intimate",
       "setting": "floor",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-12-girl-floor-candles-cinematic.jpg"
     },
     {
       "id": "photo-13",
@@ -118,7 +141,8 @@
       "energy": "casual",
       "setting": "bedroom-floor",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-13-laptop-blanket-thriller.jpg"
     },
     {
       "id": "photo-14",
@@ -127,7 +151,8 @@
       "energy": "relaxed",
       "setting": "bedroom",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-14-macbook-white-sheets-european.jpg"
     },
     {
       "id": "photo-15",
@@ -136,7 +161,8 @@
       "energy": "warm",
       "setting": "couch",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-15-laptop-couch-romance-bokeh.jpg"
     },
     {
       "id": "photo-16",
@@ -145,7 +171,8 @@
       "energy": "cozy",
       "setting": "bed",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-16-macbook-blanket-restaurant-scene.jpg"
     },
     {
       "id": "photo-17",
@@ -154,7 +181,8 @@
       "energy": "moody",
       "setting": "bedroom",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-17-prime-video-browse-dark.jpg"
     },
     {
       "id": "photo-18",
@@ -163,7 +191,8 @@
       "energy": "upscale",
       "setting": "hotel",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-18-hotel-room-led-upscale.jpg"
     },
     {
       "id": "photo-19",
@@ -172,7 +201,8 @@
       "energy": "cinematic",
       "setting": "home theater",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-19-home-theater-batman.jpg"
     },
     {
       "id": "photo-20",
@@ -181,7 +211,8 @@
       "energy": "vibrant",
       "setting": "bedroom",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-20-blue-led-spider-verse-snacks.jpg"
     },
     {
       "id": "photo-21",
@@ -190,7 +221,8 @@
       "energy": "cozy",
       "setting": "living room",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-21-coraline-cookies-mug.jpg"
     },
     {
       "id": "photo-22",
@@ -199,7 +231,8 @@
       "energy": "couples",
       "setting": "home theater",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-22-home-theater-matching-socks.jpg"
     },
     {
       "id": "photo-23",
@@ -208,7 +241,8 @@
       "energy": "peak-cozy",
       "setting": "cabin",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-23-shrek-projector-fireplace-cabin.jpg"
     },
     {
       "id": "photo-24",
@@ -217,7 +251,8 @@
       "energy": "unique",
       "setting": "apartment-skyline",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-24-pizza-city-skyline-apple-music.jpg"
     },
     {
       "id": "photo-25",
@@ -226,8 +261,52 @@
       "energy": "comfort",
       "setting": "living room",
       "last_used_week": null,
-      "use_count": 0
+      "use_count": 0,
+      "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-25-two-people-blankets-couch.jpg"
     }
   ],
-  "notes": "Real photos shot by JT. Uploaded 2026-04-01. Used as hook/CTA slides in Vista TikTok slideshows. Rotation window = 6 weeks \u2014 a photo can't repeat within 6 weeks of last use. After all 25 used once, cycle resets. Fallback to NB2 only if all available photos have been used within the rotation window."
+  "notes": "Real photos shot by JT. Uploaded 2026-04-01. Used as hook/CTA slides in Vista TikTok slideshows. Rotation window = 6 weeks \u2014 a photo can't repeat within 6 weeks of last use. After all 25 used once, cycle resets. Fallback to NB2 only if all available photos have been used within the rotation window.",
+  "screenshots": {
+    "total": 6,
+    "last_updated": "2026-04-04",
+    "base_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/screenshots/",
+    "files": [
+      {
+        "id": "ss-01",
+        "file": "ss-01-profile.jpg",
+        "label": "Profile page \u2014 ratings, favorites, stats",
+        "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/screenshots/ss-01-profile.jpg"
+      },
+      {
+        "id": "ss-02",
+        "file": "ss-02-favorites.jpg",
+        "label": "All-time favorites + recent favorites",
+        "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/screenshots/ss-02-favorites.jpg"
+      },
+      {
+        "id": "ss-03",
+        "file": "ss-03-stats.jpg",
+        "label": "Top genres, favorite actors/directors, rating distribution",
+        "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/screenshots/ss-03-stats.jpg"
+      },
+      {
+        "id": "ss-04",
+        "file": "ss-04-rate-movie.jpg",
+        "label": "Rate Movie screen \u2014 The Social Network, 89/100 score, date + review",
+        "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/screenshots/ss-04-rate-movie.jpg"
+      },
+      {
+        "id": "ss-05",
+        "file": "ss-05-movie-detail.jpg",
+        "label": "Movie detail page \u2014 Avatar: Fire and Ash, director, cast, overview",
+        "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/screenshots/ss-05-movie-detail.jpg"
+      },
+      {
+        "id": "ss-06",
+        "file": "ss-06-home-trending.jpg",
+        "label": "Home screen \u2014 Trending This Week, Now Playing, featured film",
+        "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/screenshots/ss-06-home-trending.jpg"
+      }
+    ]
+  }
 }
