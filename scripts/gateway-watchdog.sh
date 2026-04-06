@@ -7,11 +7,21 @@ mkdir -p "$(dirname "$LOG")"
 
 timestamp() { date '+%Y-%m-%d %H:%M:%S'; }
 
-# 1. Check for runaway context-mode plugin (>2GB RSS or >300s CPU time accumulated in one run)
+send_telegram() {
+    local msg="$1"
+    if [ -f "$HOME/.config/env/global.env" ]; then
+        source "$HOME/.config/env/global.env"
+    fi
+    curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+        -d "chat_id=6608544825" \
+        -d "text=${msg}" \
+        > /dev/null 2>&1 || true
+}
+
+# 1. Check for runaway context-mode plugin (>1.5GB RSS)
 CONTEXT_PID=$(pgrep -f "context-mode.*start.mjs" 2>/dev/null | head -1)
 if [ -n "$CONTEXT_PID" ]; then
     RSS_KB=$(ps -o rss= -p "$CONTEXT_PID" 2>/dev/null | tr -d ' ')
-    CPU_TIME=$(ps -o time= -p "$CONTEXT_PID" 2>/dev/null | tr -d ' ')
     RSS_MB=$((RSS_KB / 1024))
     if [ "$RSS_MB" -gt 1500 ]; then
         kill -9 "$CONTEXT_PID" 2>/dev/null
@@ -34,15 +44,31 @@ if [ "$MC_HTTP" != "200" ]; then
 fi
 
 # 3. Check if openclaw-gateway is running
-if ! pgrep -f "openclaw-gateway" > /dev/null 2>&1; then
-    echo "$(timestamp) [watchdog] gateway not running — kicking LaunchAgent" >> "$LOG"
+# Note: openclaw-gateway is a compiled binary — pgrep -f misses it. Use ps-based check.
+if ! ps aux | grep -q "[o]penclaw-gateway"; then
+    echo "$(timestamp) [watchdog] gateway not running — attempting recovery" >> "$LOG"
+
+    # Step 1: Try kickstart (works if launchd still has the job registered)
     launchctl kickstart -k "gui/$(id -u)/ai.openclaw.gateway" >> "$LOG" 2>&1
-    sleep 5
-    if pgrep -f "openclaw-gateway" > /dev/null 2>&1; then
-        echo "$(timestamp) [watchdog] gateway recovered successfully" >> "$LOG"
+    sleep 6
+
+    if ps aux | grep -q "[o]penclaw-gateway"; then
+        echo "$(timestamp) [watchdog] gateway recovered via kickstart" >> "$LOG"
     else
-        echo "$(timestamp) [watchdog] gateway still dead after kickstart" >> "$LOG"
+        # Step 2: kickstart failed — job may be deregistered after crash loop.
+        # Fall back to unload+load (re-registers the job from scratch — always works).
+        echo "$(timestamp) [watchdog] kickstart failed — trying unload+load" >> "$LOG"
+        launchctl unload "$HOME/Library/LaunchAgents/ai.openclaw.gateway.plist" >> "$LOG" 2>&1 || true
+        sleep 3
+        launchctl load "$HOME/Library/LaunchAgents/ai.openclaw.gateway.plist" >> "$LOG" 2>&1
+        sleep 10
+
+        if ps aux | grep -q "[o]penclaw-gateway"; then
+            echo "$(timestamp) [watchdog] gateway recovered via unload+load" >> "$LOG"
+            send_telegram "⚠️ Gateway watchdog: kickstart failed, recovered via hard unload+load. You may have missed messages. $(date '+%Y-%m-%d %H:%M')"
+        else
+            echo "$(timestamp) [watchdog] CRITICAL: gateway still dead after unload+load — manual intervention required" >> "$LOG"
+            send_telegram "🚨 Gateway is DOWN and watchdog cannot recover it. Manual fix: launchctl load ~/Library/LaunchAgents/ai.openclaw.gateway.plist"
+        fi
     fi
 fi
-
-

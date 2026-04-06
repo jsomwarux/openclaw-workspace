@@ -23,60 +23,15 @@
 - `openclaw doctor` — health check on gateway, channels, providers, cron scheduler
 - `openclaw doctor --fix` — auto-fix common issues (use when something's broken and root cause isn't obvious)
 
-## 🚨 Gateway Freeze Recovery (LCM + Telegram flood)
-
-### Symptoms
-Gateway goes unresponsive after a large session or restart. Messages pile up with no reply.
-
-### Root cause
-LCM compaction (triggered at context threshold) was using Sonnet — slow, blocks the main session thread. On restart, Telegram re-delivers unacked messages → flood → compaction triggered immediately → freeze loop.
-
-### Prevention (updated 2026-04-01)
-- LCM `summaryModel` = `openrouter/google/gemini-3.1-flash-lite-preview` (**NOT Groq** — Groq free tier has 12k TPM; compaction requests are 20k+ tokens → silent failure. Gemini Flash-Lite handles 1M context, ~$0 at our frequency.)
-- `contextThreshold` = 0.65 (compacts earlier, smaller batches)
-- `incrementalMaxDepth` = 0 (leaf-only, faster compaction)
-- `largeFileThresholdTokens` = 1000 (image base64 and large blobs handled separately, not stuffed into summaries)
-- `freshTailCount` = 6 (protects last 6 messages from compaction)
-- Isolated/subagent sessions excluded from LCM writes
-- **Image rule:** Never send 5+ images in one Telegram message to the bot — each image is base64-encoded into context. If you need to share image batches for Drive uploads, send 1-2 at a time or use a different workflow (Google Drive direct upload from your phone, or share a folder link).
-
-### Recovery steps (if it happens again)
-1. Flush Telegram queue to prevent re-delivery loop:
-   ```
-   source ~/.config/env/global.env
-   curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=-1"
-   ```
-2. Clear cooldown state:
-   ```
-   python3 -c "import json,os; path=os.path.expanduser('~/.openclaw/agents/main/agent/auth-profiles.json'); d=json.load(open(path)); d['usageStats']={}; json.dump(d,open(path,'w'),indent=2)"
-   ```
-3. If LCM DB is huge (>100MB), back it up and delete:
-   ```
-   cp ~/.openclaw/lcm.db ~/.openclaw/lcm.db.backup-$(date +%Y%m%d)
-   rm ~/.openclaw/lcm.db
-   ```
-4. Restart gateway: `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "recovery"`
-
-## 🚨 Rate Limit Recovery (known workarounds)
-
-### Cooldown Persistence Bug
-Cooldown state is saved to `~/.openclaw/agents/main/agent/auth-profiles.json` and survives restarts.
-Even after the actual rate limit clears, the gateway stays blocked until the file is wiped.
-**Symptom:** Persistent "provider in cooldown" errors that don't resolve after waiting.
-**Fix (run from terminal):**
-```
-python3 -c "import json,os; path=os.path.expanduser('~/.openclaw/agents/main/agent/auth-profiles.json'); d=json.load(open(path)); d['usageStats']={}; json.dump(d,open(path,'w'),indent=2)"
-```
-Then restart the gateway.
-
-### Telegram Queue Re-Delivery Loop
-On gateway restart, Telegram re-delivers any unprocessed messages. If those trigger an API call that fails (rate_limit), the cooldown gets re-written → restart → same message re-delivered → fail again → infinite loop.
-**Fix:** Flush the Telegram update queue before restarting when in a rate-limit state:
-```
-curl -s "https://api.telegram.org/bot<TOKEN>/getUpdates?offset=-1"
-```
-Replace `<TOKEN>` with the bot token from `~/.config/env/global.env`.
-
+## 🚨 Gateway Freeze & Rate Limit Recovery
+**Cause:** LCM compaction + Telegram re-delivery flood on restart.
+**Prevention:** LCM `summaryModel`=`openrouter/google/gemini-3.1-flash-lite-preview` (NOT Groq — 12k TPM too low for 20k+ token compaction). `contextThreshold`=0.65 | `incrementalMaxDepth`=0 | `largeFileThresholdTokens`=1000 | `freshTailCount`=6. Never send 5+ images in one Telegram message.
+**Recovery (in order):**
+1. Flush Telegram: `source ~/.config/env/global.env && curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=-1"`
+2. Clear cooldown: `python3 -c "import json,os; path=os.path.expanduser('~/.openclaw/agents/main/agent/auth-profiles.json'); d=json.load(open(path)); d['usageStats']={};  json.dump(d,open(path,'w'),indent=2)"`
+3. If LCM DB >100MB: `cp ~/.openclaw/lcm.db ~/.openclaw/lcm.db.backup-$(date +%Y%m%d) && rm ~/.openclaw/lcm.db`
+4. `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "recovery"`
+**Cooldown persistence bug:** Survives restarts. Symptom: "provider in cooldown" never clears. Fix: step 2 above then restart.
 ## Backups
 - `~/.openclaw/workspace/scripts/backup.sh` | LaunchAgent: com.openclaw.backup | 2AM daily | 7-day retention
 - Log: ~/.openclaw/backups/backup.log
@@ -171,62 +126,12 @@ When activating a persona for open-ended coding tasks: read `docs/tools/claude-p
 - Pipeline: ~/projects/jt-consulting-pipeline/ | Skill: skills/jt-consulting-pipeline/SKILL.md
 
 ## Salesforce Data Cloud (paired with Agentforce)
-Real-time CDP that feeds live customer data into Agentforce agents via Grounding. Key for personalization in enterprise Agentforce builds. Rebranding to "Data 360" as of late 2025 — both names appear in JDs.
-**Key concepts:** Data Streams (ingestion pipelines) → Data Lake Objects → Data Model Objects → Unified Profiles → Data Graphs (pre-materialized relationship structures for low-latency agent retrieval).
-**Agentforce grounding paths:** (1) Agentforce Data Libraries (simplified, auto-configured, unstructured content) vs. (2) Manual RAG (full DStream→DLO→DMO→SearchIndex→Retriever→PromptTemplate pipeline).
-**Pricing (Sep 2025 update):** Unified to "Data Service Credits." Salesforce-to-Salesforce ingestion now free. 2.5M credits bundled into Agentforce Editions. Zero Copy with Snowflake/Databricks/BigQuery = no data movement needed.
-**Full reference:** `docs/tools/salesforce-data-cloud.md` (2026-04-02, 2,000 words — includes interview talking points + Trailhead modules).
+Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data Streams → DLOs → DMOs → Unified Profiles → Data Graphs. Two paths: (1) Data Libraries (simple) or (2) Manual RAG pipeline. SF-to-SF ingestion free; 2.5M credits bundled in Agentforce Editions. **Full ref:** `docs/tools/salesforce-data-cloud.md`
 ## Drive Drafts
 - Script: scripts/drive_drafts.py | Account: openclawagenteve14@gmail.com | Root: "Eve — Drafts"
-- **Preferred: use `--path` for full control** (supports deep folder structure)
-- **Folder structure (post-2026-03-09 restructure):**
-  ```
-  Eve — Drafts/
-  ├── Consulting/
-  │   ├── Clients/[Client Name]/Outreach/LinkedIn/
-  │   ├── Clients/[Client Name]/Outreach/Email/
-  │   ├── Clients/[Client Name]/Decks/
-  │   ├── Clients/[Client Name]/Research/
-  │   ├── Templates/
-  │   └── Case Studies/
-  ├── Content/
-  │   ├── X/
-  │   └── LinkedIn/
-  ├── Job Applications/
-  │   ├── Resumes/
-  │   └── Cover Letters/
-  ├── Research/
-  ├── Frameworks/
-  └── Analysis/
-  ```
-- **Routing table:**
-  | Content type | `--path` value |
-  |---|---|
-  | Client LinkedIn outreach DMs | `Consulting/Clients/[Client]/Outreach/LinkedIn` |
-  | Client cold emails | `Consulting/Clients/[Client]/Outreach/Email` |
-  | Proposal decks | `Consulting/Clients/[Client]/Decks` |
-  | Resumes | `Job Applications/Resumes` |
-  | Cover letters | `Job Applications/Cover Letters` |
-  | X posts — weekly calendar | `Content/X/Weekly` |
-  | X posts — news hook reactive | `Content/X/News Hooks` |
-  | X posts — banked (technical angles, build showcases, auto-detected) | `Content/X/Bank` |
-  | LinkedIn posts — weekly calendar | `Content/LinkedIn/Weekly` |
-  | LinkedIn posts — news hook reactive | `Content/LinkedIn/News Hooks` |
-  | LinkedIn posts — banked (backup swaps, auto-detected, proof points) | `Content/LinkedIn/Bank` |
-  | Vibe marketing review (Nash Satoshi) | `Content/Vibe Marketing/Nash Satoshi` |
-  | Vibe marketing review (Vista) | `Content/Vibe Marketing/Vista` |
-  | Vibe marketing review (future products) | `Content/Vibe Marketing/[Product Name]` |
-  | Research files | `Research` |
-  | Framework/methodology docs | `Frameworks` |
-  | Analysis reports | `Analysis` |
-  | T2/template decks | `Consulting/Templates` |
-- **Command:**
-  ```
-  cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
-    --title "[Descriptive Title]" --path "[path from table above]" --file [path]
-  ```
-- **Legacy `--project`/`--type`** still works for non-consulting projects (e.g. Vista, Nash Satoshi)
-
+- **Command:** `cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py --title "[Title]" --path "[path]" --file [path]`
+- **Key paths:** Client LinkedIn → `Consulting/Clients/[Client]/Outreach/LinkedIn` | Client Email → `Consulting/Clients/[Client]/Outreach/Email` | Decks → `Consulting/Clients/[Client]/Decks` | Resumes → `Job Applications/Resumes` | Cover letters → `Job Applications/Cover Letters` | X posts → `Content/X/[Weekly|News Hooks|Bank]` | LinkedIn → `Content/LinkedIn/[Weekly|News Hooks|Bank]` | Vibe → `Content/Vibe Marketing/[Product]` | Research → `Research` | Frameworks → `Frameworks` | Analysis → `Analysis` | T2 decks → `Consulting/Templates`
+- **Legacy `--project`/`--type`** still works for non-consulting projects (Vista, Nash Satoshi)
 ## Mission Control — Task Push Template
 - **Quick push (copy-paste and fill in):**
   ```

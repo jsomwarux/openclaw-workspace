@@ -109,20 +109,16 @@
 ## Job Market
 - Target: AI Solutions Architect, AI Implementation Lead, AI Systems Analyst
 - $150K min, $180–220K target | NYC metro or remote only
-- ⚠️ Squarespace People AI SA (19/25, $126–180K hybrid NYC) — posted Feb 21, likely expired. Verify before applying.
-- ~~Salesforce Lead Agentforce SE~~ — PASSED 2026-03-18. Role required deep technical Agentforce conversations JT isn't comfortable with yet. His Agentforce capability is agent-configured, not hands-on. **Hard rule going forward: do not recommend roles where core responsibility is explaining or defending Agentforce internals to technical audiences.**
-- ~~🟠 Salesforce Agentforce/AI Deployment Strategist (20/25, $140K–$185K)~~ — EXPIRED/REMOVED 2026-03-19. JR305206 returns 404 on both Salesforce Careers and Workday. Do not resurface.
-- ~~Salesforce Sr. Supply Chain Strategist~~ — REMOVED 2026-03-22. Domain requirement is a hard disqualifier (requires actual supply chain ops expertise, not just Agentforce). Score corrected to 11/25.
-- ~~Writer SA East (20/25, $207K–$250K hybrid NYC)~~ — TAKEN DOWN 2026-03-22. Do not resurface.
-- ⛔ OpenAI AI Deployment Engineer (18/25, NYC hybrid) — evaluated 2026-03-18, skipped. Python/JS proficiency + infra ownership required explicitly. Below 24+ threshold.
-- Skill gaps (active): AWS Bedrock, LangChain, Copilot Studio, Conversation Design (partially closed — ConversationFirst framework built)
+- ⚠️ Squarespace People AI SA (19/25) — verify still posted before applying.
+- Hard rule: do not recommend roles requiring explaining/defending Agentforce internals to technical audiences.
+- Skill gaps: AWS Bedrock, LangChain, Copilot Studio.
 
 ## Setup State
-- Model: anthropic/claude-sonnet-4-6 primary | groq/llama-3.3-70b-versatile fallback
-- Auth: anthropic:default uses OAuth subscription token (sk-ant-oat01-*) — NOT an API key. All Anthropic usage = $0 real cost, covered by Claude subscription. No usage in Anthropic Console — this is correct and expected. Confirmed working 2026-02-28.
-- Compaction: mode=safeguard, reserveTokens=40k, keepRecentTokens=10k, floor=12k (safeguard is correct — preserves cache hits)
-- Providers: anthropic:default ✅ (OAuth) | groq:manual ✅ (API key, ~$0) | openrouter:default ✅ (API key, pay-per-use for non-Anthropic models)
-- OpenRouter routing: Anthropic models → direct (OAuth, $0). All others → openrouter/ prefix (real cost).
+- Model: anthropic/claude-sonnet-4-6 primary | openrouter/openai/gpt-4o-mini fallback (functional — same OpenRouter provider)
+- Auth: anthropic:default uses OAuth subscription token — all Anthropic usage = $0, covered by Claude subscription.
+- Compaction: mode=safeguard, reserveTokens=40k, keepRecentTokens=10k, floor=12k
+- Providers: anthropic:default ✅ (OAuth) | openrouter:default ✅ (API key, pay-per-use)
+- OpenRouter routing: Anthropic → direct (OAuth, $0). All others → openrouter/ prefix.
 - Brave Search ✅ | Log redaction: tools ✅
 
 ## Passive Income System
@@ -140,27 +136,11 @@
 - **TikTok routing rule**: niche-specific products → dedicated account. Builder/dev/AI products → @jts_14
 - **Passive income scout/strategist**: `dcdbbef5` (Sun 6:30AM) → `4e19c300` (Sun 8:30AM) | reports: `memory/passive-income/`
 ## Active Cron Jobs (43 total)
-> Full list: run `cron list` in any session. Do NOT maintain a manual copy here — cron scheduler is the source of truth.
+> Full list: run `cron list`. Do NOT maintain a manual copy here.
 
-**Key job IDs (for heartbeat/watchdog reference):**
-- `eve-crypto-morning-008` — Crypto Full Analysis, 6AM daily
-- `651fa1da` — outreach-pipeline, 2AM daily (timeout: 2700s)
-- `ebb843af` — prospect-discovery, Sun+Wed 1AM
-- `be59a068` — overnight-autonomy, 3AM daily
-- `eve-morning-brief-001` — morning brief, 7:30AM daily
-- `eve-heartbeat-2h-002` — heartbeat, 4x/day 10/14/18/22 ET
-- `fe984519` — content-generate-linkedin, Mon 6:45AM
-- `cb8f29dd` — content-generate-x, Mon 7:25AM
-- `babd905a` — spanish-lesson, Mon-Sat 8:05PM
-- `870bf3ff` — vibe-marketing-generate, Mon 4:45AM (generates + queues content only)
-- `a81aa240` — vibe-post-vista-friday, Fri 7PM ET
-- `06050403` — vibe-post-vista-sunday, Sun 11AM ET
-- `365e8277` — vibe-post-nash-tuesday, Tue 7AM ET
-- `faf41f37` — vibe-post-nash-thursday, Thu 7AM ET
-- `b2357bd5` — job-app-auto-builder, 6:15AM daily
-- `f368e18b` — passive-income-fetch-signals, Sat 5:30AM (runs before scout at 6AM)
+**Key job IDs:** `eve-crypto-morning-008` (6AM daily) | `651fa1da` outreach-pipeline (2AM) | `ebb843af` prospect-discovery (Sun+Wed 1AM) | `be59a068` overnight-autonomy (3AM) | `eve-morning-brief-001` (7:30AM) | `eve-heartbeat-2h-002` (10/14/18/22 ET) | `fe984519` content-linkedin (Mon 6:45AM) | `cb8f29dd` content-x (Mon 7:25AM) | `babd905a` spanish-lesson (Mon-Sat 8:05PM) | `870bf3ff` vibe-generate (Mon 4:45AM) | `b2357bd5` job-app-auto (6:15AM) | `f368e18b` passive-signals (Sat 5:30AM)
 
-**Schedule notes:** Daily cap 20 invocations/weekday. Cost optimization applied 2026-03-27: Groq used for Crypto Midday/Evening Pulse, Daily News Hook, Job Application Tracker. Monday 5-8AM staggered every 15-30 min to prevent rate-limit collisions.
+**Cap:** 20 invocations/weekday. Groq for midday/evening. Staggered 5-8AM Mondays.
 ## Cost Tracking
 - Script: scripts/cost-tracker.py | Snapshots: memory/costs/YYYY-MM-DD.json (captured 2AM via backup)
 - Auth: Anthropic profile uses OAuth subscription token (sk-ant-oat01-*) — NOT an API key. All Claude/Sonnet/Opus usage is $0 in real API charges, covered by flat Claude subscription. No usage appears in Anthropic Console.
@@ -201,27 +181,15 @@
 - $JUNO note: previously EXIT-rated — JT re-entered, agent will re-analyze fresh each morning
 
 ## Financial Situation (updated 2026-03-23)
-- Monthly burn: $2,174/month (rent $1,050 + expenses $550 + subscriptions $574 after SuperGrok cancellation)
-- Subscriptions breakdown: Claude $200 | Gumloop $194 (105k credits, Nash Satoshi 680/run) | LinkedIn $65 | X $40 | Replit $25 | Supabase $25 (DB for Nash Satoshi/Vista/Glow Index) | Gsuite $14 | Higgsfield $9 (locked yearly until Jan 2027 — do not renew)
-- SuperGrok cancelled 2026-03-23 (was $30/mo — Grok now via OpenRouter if needed)
-- Crypto: ~$10K, DECLINING. Market down, withdrawing to cover burn.
-- Income: $30/mo net (Aya scraper $75/mo, ~$45 costs). 
-- No savings buffer. Zero.
-- Aya $1,000 scraper: paid out.
-- **Unemployment (filed, backpay to December):** NY max is $869/wk (raised Oct 2025). JT estimate ~$500/wk. Backpay ~17 weeks = ~$8,500 lump sum incoming within weeks. BUT those weeks count against 26-week max, so only ~9 weeks of ongoing weekly payments (~$4,500) remain after lump sum hits.
-- **Total UI benefit: ~$13,000**
-- **Updated runway: ~$23K total ($10K crypto + $8.5K lump sum + $4.5K ongoing UI) = ~11 months at $2,040/mo burn.** After UI exhausts (~9 weeks), back to burning crypto unless income lands.
-- North Star: financial independence, multiple passive income streams, controlled work hours, luxury travel, nice house near major city, take care of parents.
-- **Implication: runway is real but has a cliff. UI weekly payments end in ~9 weeks post-lump sum. Job landing in 60-90 days is still the priority — it solves burn permanently.**
+- Monthly burn: $2,174 (rent $1,050 + expenses $550 + subs $574). Subscriptions: Claude $200 | Gumloop $194 | LinkedIn $65 | X $40 | Replit $25 | Supabase $25 | Gsuite $14 | Higgsfield $9 (locked until Jan 2027).
+- Crypto: ~$10K, declining. Income: $30/mo net (Aya scraper). No savings buffer.
+- UI: ~$500/wk est. Backpay ~17 weeks = ~$8,500 lump sum incoming. ~9 weeks ongoing after (~$4,500). Total ~$13,000.
+- Runway: ~$23K total, ~11 months at current burn. UI cliff in ~9 weeks post-lump sum — job in 60-90 days solves burn permanently.
+- North Star: financial independence, passive income streams, luxury travel.
 
 ## Key Decisions
-- **Priority order (updated 2026-03-23 — RUNWAY CRITICAL)**: Job applications are now PRIMARY, not a hedge. With ~4-5 months runway and declining crypto, a $150K+ role closing in 60-90 days is the most reliable lifeline. Volume must go up — not 2-3/week, but every qualified role (20+/25, passes hard filters) gets an application. Consulting runs in parallel but cannot be treated as the primary income plan on this timeline. Threshold: score **20+/25** with hard filters still in place (no hands-on coding primary, no technical pre-sales SE, no explicit Python/JS proficiency as hard requirement). Active applications: Impulse Latam AI Strategist (applied 2026-03-31), Arya Health Customer AI Strategy Lead (applied 2026-04-01), Lightstone Group AI Strategy & Solutions Director (applied 2026-04-02, $175K-$300K, hybrid NYC, 21/25), Ramp Forward Deployed Operations (applied 2026-04-02, 24/25), Qvest US Senior Consultant Applied AI (applied 2026-04-02, 21/25, $140K-$170K), Gong Staff AI Enablement & Innovation (applied 2026-04-02, $148K-$225K, hybrid NYC), Tenex (applied 2026-04-02, 23/25), Zoom AI Transformation Lead (applied 2026-04-03, 20/25, deadline 2026-04-10), Axios AI Enablement Lead (applied 2026-04-03, 20/25, $130K-$165K remote — NYC rate target $160K+). ~~OpenAI AI Deployment Manager~~ — REJECTED ~2026-03-29. Do not resurface.
-- **Agentforce job filter (added 2026-03-18)**: Do not recommend roles where a core responsibility is explaining, defending, or technically advising on Agentforce internals. JT's Agentforce capability is agent-configured. He can build and deploy agents but is not comfortable in deep technical Agentforce conversations with clients or SE/sales engineering contexts.
-- **Outreach active as of 2026-03-09**: freeze lifted. T1: H.C. Oswald — outreach sent 2026-03-11 (LinkedIn DM + subject "After-hours coverage for your catalog"). Awaiting response. T2: Brothers Supply + Independent Pipe (overnight eligible). T3: cold batch (sender build pending).
-- **Outreach tier system**: T1 Custom (2–4/mo, full pipeline, JT reviews), T2 Template (8–12/mo, niche demo configured per prospect, overnight can run), T3 Cold Hook (50–100/mo, no demo upfront, replies promote to T2). Niche templates: wholesale (convert existing demo — still needed), **construction job-tracker ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/construction-template/`), **PM maintenance triage ✅ BUILT 2026-03-15** (`~/projects/n8n-agent/clients/pm-maintenance-template/`). Tier 3 send scheduler: still needed.
-- Aggressive compaction over safeguard — prevents context resets on long builds
-- OpenRouter for non-Anthropic models — direct key only if model >$5/mo
-- Sonnet default over Opus — caching = 80% as capable at 20% cost
-- n8n over Make.com — self-hosted, no per-task pricing at scale
-- Training system (Kobe Protocol, 2026-02-28): self-improvement via better SYSTEM (memory, rules, prompts) not model weights. Monthly gap analysis cron is the anchor.
-- HubSpot = best JT Somwaru Consulting expansion platform (2026-02-28): SMB CRM, NYC penetration, lower partner competition than Salesforce
+- **Priority order (updated 2026-03-23 — RUNWAY CRITICAL)**: Job applications PRIMARY. Every qualified role (20+/25, hard filters) gets an application. Threshold: 20+/25, no hands-on coding primary, no SE/technical pre-sales. Active: Impulse Latam (3-31), Arya Health (4-01), Lightstone $175-300K (4-02), Ramp 24/25 (4-02), Qvest $140-170K (4-02), Gong $148-225K (4-02), Tenex 23/25 (4-02), Zoom deadline 4-10 (4-03), Axios $130-165K (4-03). ~~OpenAI AI Deployment Manager~~ REJECTED.
+- **Agentforce job filter**: Do not recommend roles requiring explaining/defending Agentforce internals. JT builds/deploys agents but not comfortable in SE/technical pre-sales Agentforce contexts.
+- **Outreach**: T1: H.C. Oswald (sent 2026-03-11, awaiting). T2: Brothers Supply + Independent Pipe. T3: cold batch (sender build pending). Templates: construction ✅ + PM maintenance ✅. Tier 3 scheduler: still needed.
+- Outreach tiers: T1 Custom (2-4/mo) | T2 Template (8-12/mo) | T3 Cold Hook (50-100/mo, replies promote to T2).
+- n8n over Make.com. Sonnet default over Opus. HubSpot = best consulting expansion platform (lower SF competition). Training system: Kobe Protocol — self-improvement via SYSTEM not model weights.

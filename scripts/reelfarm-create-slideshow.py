@@ -466,11 +466,14 @@ def main():
             )
         print(f"TikTok publish result: {tiktok_result}", file=sys.stderr)
 
-    # Mark photos as used
+    # Mark photos as used (only when library was loaded via fallback path)
     week_monday = get_current_week_monday()
-    mark_photos_used(library, photo_ids, week_monday)
-    save_library(args.product, library)
-    print(f"Marked {len(photo_ids)} photos as used for week {week_monday}", file=sys.stderr)
+    if 'library' in dir() and library is not None and photo_ids:
+        mark_photos_used(library, photo_ids, week_monday)
+        save_library(args.product, library)
+        print(f"Marked {len(photo_ids)} photos as used for week {week_monday}", file=sys.stderr)
+    else:
+        print("Skipping mark_photos_used — hybrid mode (vibe-post.py tracks usage)", file=sys.stderr)
 
     # Output final result to stdout
     result = {

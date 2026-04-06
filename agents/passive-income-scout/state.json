@@ -1,11 +1,12 @@
 {
-  "total_runs": 4,
-  "last_run": "2026-03-29",
+  "total_runs": 5,
+  "last_run": "2026-04-05",
   "run_dates": [
     "2026-03-08",
     "2026-03-15",
     "2026-03-22",
-    "2026-03-29"
+    "2026-03-29",
+    "2026-04-05"
   ],
   "ideas_pushed_to_mc": [
     {
@@ -231,6 +232,17 @@
       "red": [],
       "top_pick": "PadelRank",
       "report": "memory/passive-income/2026-03-29-strategist.md"
+    },
+    {
+      "date": "2026-04-05",
+      "ideas_evaluated": 6,
+      "already_queued": ["WatchScore", "PermitPilot", "ProgramScore"],
+      "green": [],
+      "yellow": ["TariffSwitch", "DiscRank", "VinylIQ"],
+      "red": [],
+      "top_pick": null,
+      "note": "No 🟢 this week — all 3 new ideas blocked on autonomy, uniqueness, or competition. TariffSwitch closest to green (add quality confidence score). DiscRank pivots to community-vote ranking angle.",
+      "report": "memory/passive-income/2026-04-05-strategist.md"
     }
   ]
 }

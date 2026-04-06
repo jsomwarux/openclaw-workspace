@@ -209,7 +209,7 @@ Salesforce Financial Services Cloud penetration in mid-size RIAs is 40%+. Agentf
 ---
 
 ## Recent Competitive Intelligence
-> Auto-updated by Weekly Intelligence Synthesis. Last updated: 2026-03-30.
+> Auto-updated by Weekly Intelligence Synthesis. Last updated: 2026-04-05.
 > Use these signals in outreach hooks, pitch framing, and ICP targeting decisions.
 
 ### ICP 1 — Wholesale Distribution
@@ -218,10 +218,12 @@ Salesforce Financial Services Cloud penetration in mid-size RIAs is 40%+. Agentf
 
 ### ICP 2 — Construction & Skilled Trades
 - **Acumatica construction ERP AI (Mar 2026):** Acumatica added AI risk detection, forecasting, anomaly detection, and progress billing automation. Key implication: ERP buyers are getting AI features bundled. JT's angle is NOT the ERP — it's the workflow ABOVE the ERP (dispatch coordination, job status visibility, crew communication). These are gaps Acumatica doesn't touch. Reframe from "we build automations" to "we connect the ERP to the field."
+- **38% contractor AI adoption (Apr 2026):** Adoption more than doubled YoY per marketingcode.com. Firms using AI are winning bids and cutting costs. Early-mover window for NYC SMBs is this year. Urgency angle is now credible in outreach: "Your peers are building this now."
 
 ### ICP 3 — Property Management
 - **Entrata Agentic PMS (Mar 2026):** Entrata launched 100+ embedded AI agents for leasing, maintenance, accounting, payments, resident ops — explicitly marketed as industry's first "Agentic PMS." This is enterprise multifamily (200+ units, institutional). JT's ICP (AppFolio/Buildium shops, 500-5000 units, small teams) won't switch to Entrata. But it validates the AI agent pattern in PM. Pitch angle: "Entrata built this for enterprise. We build the equivalent for AppFolio shops."
 - **DoorLoop AI (Mar 2026):** DoorLoop (smaller PM platform) added AI-powered rent analysis and predictive maintenance alerts. Signal: even the smaller PM SaaS players are adding AI features. The gap JT fills is NOT features — it's workflow orchestration between platforms and the human team. Focus outreach on the coordination problems, not the feature gap.
+- **McKinsey PM ROI numbers (Apr 2026):** Rental orgs seeing 3-7% renewal rate improvement with AI workflows; lead response times improved 90%+ with 24/7 agents (Forbes/McKinsey March 2026). These are now citable, published numbers. Use in M2 follow-ups and proposals: "McKinsey's March report showed rental operations improving renewal rates by 3-7% with agent workflows. I'm building the same layer for AppFolio shops."
 
 ### ICP 4 — Insurance Operations
 - **WTW Survey (Mar 2026):** 36% of insurers plan straight-through claims processing automation (up from 14% current). Stat is citable in outreach: "WTW's March 2026 survey shows your peers are actively building the business case for claims automation right now." Use in M2 follow-up when a prospect has shown prior interest — not in cold M1.

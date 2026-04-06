@@ -71,3 +71,107 @@ Truncating bullet points at 120 chars with "..." is worse than showing the full 
 
 **UX copy must be accurate to what's actually on the page.**
 "Read the breakdown to make sure it fits your skin" promises a breakdown section. If no breakdown section exists, the copy is misleading. Never write subtext that references content that isn't rendered. Audit every piece of helper text against the actual page layout before shipping.
+
+## 2026-04-05 — Glow Index callback URL bug
+
+**Problem:** All 66+ analyses ran to completion but zero scores landed in the DB. Engine showed `callback_url: NOT SET` for every job.
+
+**Root cause:** `request.nextUrl.origin` on Replit returns an internal URL unreachable from external services. The engine received an empty callbackUrl and skipped all callbacks.
+
+**Fix:** Use `process.env.NEXT_PUBLIC_APP_URL || process.env.SITE_URL || request.nextUrl.origin` in any endpoint that builds a callback URL for an external service to call back into.
+
+**Required Replit Secret:** `NEXT_PUBLIC_APP_URL=https://[app-name].replit.app`
+
+**Pre-flight checklist for any new ensemble niche:**
+1. Trigger 1 product via `/api/trigger-analysis`
+2. Check engine `/status` — confirm `callback_url` shows the real public URL
+3. Wait for score to land in DB
+4. Only then trigger full batch
+
+**Never test callback endpoints with real product IDs** — will corrupt the product record in Supabase (fake score with no real analysis data). Use `productId: "test-product-00"` for verification.
+echo "✅ ensemble-build-lessons.md updated"
+## 2026-04-05 — Glow Index callback URL bug
+
+**Problem:** All 66+ analyses ran to completion but zero scores landed in the DB. Engine showed `callback_url: NOT SET` for every job.
+
+**Root cause:** `request.nextUrl.origin` on Replit returns an internal URL unreachable from external services. The engine received an empty callbackUrl and skipped all callbacks.
+
+**Fix:** Use `process.env.NEXT_PUBLIC_APP_URL || process.env.SITE_URL || request.nextUrl.origin` in any endpoint that builds a callback URL for an external service to call back into.
+
+**Required Replit Secret:** `NEXT_PUBLIC_APP_URL=https://[app-name].replit.app`
+
+**Pre-flight checklist for any new ensemble niche:**
+1. Trigger 1 product via `/api/trigger-analysis`
+2. Check engine `/status` — confirm `callback_url` shows the real public URL
+3. Wait for score to land in DB
+4. Only then trigger full batch
+
+**Never test callback endpoints with real product IDs** — will corrupt the product record in Supabase (fake score with no real analysis data). Use `productId: "test-product-00"` for verification.
+
+## 2026-04-05 — Frontend data quality bugs (Glow Index)
+
+### Stage 3 deliberation text leaking into consumer UI
+**Problem:** Quick Take and Pros/Cons showed internal deliberation text ("My original score of 22 was conservative relative to Gemini and Grok").
+**Root cause:** `getSourceAnalyses()` fell back to all analyses when stage 2 filter returned nothing. Stage 3 records contain model self-comparison language.
+**Fix:** Filter strictly to `stage === 2`. Return null if no stage 2 — never fall back. Add deliberation patterns to META_PATTERNS.
+**Rule:** Any component reading LLM reasoning for consumer display MUST have an explicit stage filter AND a deliberation-language blocklist.
+
+### Per-model score blank in AI Panel
+**Problem:** GPT showed blank score in the LLM panel.
+**Root cause:** `parseTotal()` summed component fields — returns 0/null if any field missing or differently named.
+**Fix:** Read `analysis.consensusScore` (stored directly by callback) first. Component sum is fallback only.
+**Rule:** Always store the total score as a direct field on the record. Never rely solely on component sum for display.
+
+### Pre-batch verification protocol (mandatory for all future niches)
+Before running batch-analyze on ANY new niche:
+1. Trigger 1 product → confirm callback_url is real URL in engine /status
+2. Confirm score lands in DB
+3. **Load the product detail page and verify:** all 4 models show scores, Quick Take is consumer language, no meta-text, Pros/Cons are product-specific
+4. Only then batch
+
+Step 3 is the one we skipped. It costs 5 min and saves hours.
+
+## Model routing rule (2026-04-05)
+Use Claude Opus for any build session — app development, ensemble ranking builds, debugging, architecture decisions. Sonnet is fine for content, crons, and research. Both are $0 on Claude Max subscription, so there's no cost penalty for defaulting to Opus on complex work.
+
+## 2026-04-05 — Full session post-mortem
+
+### Brave Search exact-match bug
+**Problem:** 5/6 Brave queries returned 0 snippets → Stage 1 gate failed → analysis aborted.
+**Root cause:** Exact-match quotes on long product names (`"Anthelios Melt-In Sunscreen SPF 60"`) return 0 results. Works for short names ("Squalane") but fails for multi-word names.
+**Fix:** Remove quotes from all Brave queries. Use `product_name brand site:reddit.com` — brand name provides enough specificity.
+**Rule:** Never use exact-match quotes on product names in search queries. Test with the longest product name in the catalog before batch.
+
+### Structured data loss at callback
+**Problem:** Engine produces key_findings, red_flags, verdict, best_dupe — callback throws them all away, stores only `scores` and `reasoning`. Frontend regex-extracts from reasoning → wrong results.
+**Fix:** Store structured fields inside `scores` JSON with underscore prefix. Frontend reads structured first, regex fallback for legacy products only.
+**Rule:** Every structured field the engine produces must survive through the callback into the DB. Check by querying one product's analysis record and verifying all fields are present.
+
+### Verdict enum displayed raw
+**Problem:** Quick Take showed "WORTH_IT_WITH_CAVEATS" instead of prose.
+**Fix:** Frontend mapping table: enum → human sentence. Unknown enums title-cased as fallback.
+**Rule:** Never display raw enums in consumer UI. Every enum field needs a display mapping.
+
+### Pro/Con misclassification
+**Problem:** LLMs put negative statements ("undermines consumer trust") in key_findings (Pros).
+**Fix:** (1) Prompt validation instruction, (2) Frontend negative-language regex filter that auto-moves matches to Cons.
+**Rule:** Never trust LLMs to classify sentiment correctly. Always add a frontend safety filter.
+
+### Prisma client not generated on Replit
+**Problem:** `generated/` is gitignored. Replit build fails with "Cannot find module" for Subscription model.
+**Fix:** Build script: `prisma generate --schema=prisma/schema.prisma && next build`.
+**Rule:** Any gitignored generated code needs a build-time generation step.
+
+### Complete pre-batch checklist (updated — mandatory for all future niches)
+1. Verify all API keys work (Brave, OpenRouter, Supabase)
+2. Test Brave queries with the LONGEST product name in catalog — confirm 4+ queries return snippets
+3. Trigger 1 product via `/api/trigger-analysis`
+4. Check n8n execution — confirm callbackUrl is the public Replit URL
+5. Wait for score to land in Supabase (< 10 min)
+6. **Load the product detail page and verify:**
+   - Quick Take shows human-readable verdict (not an enum)
+   - Pros are genuinely positive, Cons genuinely negative
+   - Budget Alternative shows a specific product name + price
+   - All 4 models show scores in AI Panel
+   - Best For / Skip If / How To Use appear (if new prompt)
+7. Only then trigger batch-analyze
