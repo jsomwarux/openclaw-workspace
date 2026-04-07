@@ -1,20 +1,18 @@
-Jon Trevor Somwaru
-New York, NY | jtsomwaru@gmail.com | linkedin.com/in/jon-trevor-somwaru
-
-March 24, 2026
-
-Hiring Manager
-Wealth Management Platforms
-Morgan Stanley
+# Cover Letter — Morgan Stanley, GenAI Strategy and Transformation Change Management Officer
 
 ---
 
-Rolling out AI tools to Financial Advisors is not a technology problem. It is an adoption problem, and most organizations discover that after the purchase.
+Applying for: | Morgan Stanley, GenAI Strategy and Transformation Change Management Officer
 
-I spent six years at Charter Communications as a Business Systems Analyst, coordinating enterprise platform rollouts and translating complex system capabilities into operational guides and training materials for non-technical field teams. When Charter launched new service products across 1,200+ enterprise accounts, my job was to make sure the people doing the work could actually use the system, not just that the system was deployed. That meant workflow documentation, requirements gathering from the field, synthesizing feedback to surface adoption gaps, and managing the cross-functional alignment between Sales, Operations, Product, and Engineering. I did not write the software. I made it work in practice.
+---
 
-That experience maps directly to what Morgan Stanley's GenAI team needs. Today I run an AI consulting practice where I build workflow automation and agent deployments for NYC SMB clients in construction, property management, and insurance. Every engagement requires the same thing: translating what the technology can do into something a business owner who is not technical can actually act on. I document use cases, build training materials, run workflow walkthroughs, and collect feedback to close adoption gaps. I also operate 35 autonomous AI workflows in production, which means I understand the reliability, governance, and monitoring requirements that matter in a regulated environment, not from a whitepaper but from running infrastructure daily.
+The challenge with enterprise GenAI adoption at a firm like Morgan Stanley is not a technology problem. The models work. The challenge is building the structured enablement layer that makes GenAI tools stick across trading, wealth management, investment banking, and technology functions: curriculum, communication, stakeholder alignment, governance, and adoption measurement that operates at the speed of a fast-moving financial services firm. That is the specific gap I have spent two years learning to close.
 
-The combination of enterprise rollout experience, hands-on AI deployment, and non-technical communication skills is what makes the difference between an AI tool that gets purchased and one that gets used. Happy to walk through any of the client deployments or the AgentGuard governance architecture on a call.
+My background maps directly to this role. In six years at Spectrum Enterprise, I managed product catalog configuration and cross-functional system implementations for a national organization serving over 1,200 enterprise accounts, delivering training and documentation that reduced adoption friction on new system rollouts. As an independent AI consultant, I have built the change management and stakeholder enablement layer for every client engagement. In one engagement, I designed and deployed a construction progress tracking system for a NYC construction firm that consolidated 8 data sources into a single real-time platform across 32 buildings; the client immediately commissioned a second engagement and referred a new client within 60 days of delivery.
+
+What makes me particularly suited for Morgan Stanley is my production AI governance work. I designed and operate AgentGuard: a production AI governance layer featuring confidence-based routing with automatic escalation, EEOC-compliant audit trail, and explainability reports. This demonstrates that I understand how to embed AI literacy within risk-aware deployment frameworks in environments where compliance and governance are not optional.
+
+At Morgan Stanley, I would approach the GenAI literacy program with that same practitioner lens: curriculum tailored to how different business units actually work, communications aligned with Risk and HR, governance that satisfies regulatory requirements, and performance measurement that moves from adoption data to actionable recommendations.
 
 Jon Trevor Somwaru
+jtsomwaru@gmail.com | jtsomwaru.com

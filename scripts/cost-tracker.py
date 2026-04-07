@@ -64,10 +64,10 @@ PRICING = {
 DEFAULT_PRICING = {"input": 3.00, "output": 15.00, "cache_read": 0.30, "cache_write": 3.75}  # fallback
 
 # ── Alert Thresholds ─────────────────────────────────────────────────────────
-ALERT_SESSION_USD   = 0.50   # single session cost (OpenRouter/Groq only — Anthropic is $0 via OAuth)
-ALERT_DAILY_USD     = 2.00   # daily total real API spend
-ALERT_MONTHLY_PACE  = 15.00  # projected monthly real API spend
-MONTHLY_TARGET      = 10.00  # goal: keep real API costs under $10/mo (Anthropic = subscription, not counted)
+ALERT_SESSION_USD   = 1.50   # single session cost (was $0.50 — too tight, causing alert spam. Normal cron runs $0.65-$1.41)
+ALERT_DAILY_USD     = 15.00  # daily total real API spend (was $2.00 — too tight. Realistic daily is $5-$15 with current crons)
+ALERT_MONTHLY_PACE  = 50.00  # projected monthly real API spend (raised from $15 to match MEMORY.md $50/mo goal)
+MONTHLY_TARGET      = 50.00  # goal: keep real API costs under $50/mo (Anthropic = subscription, not counted)
 RUNAWAY_CALLS       = 10     # API calls in 5 min = runaway
 RUNAWAY_WINDOW_SEC  = 300    # 5 minutes
 

@@ -372,6 +372,9 @@ def main():
     print(f"[vibe-post] Hook: {hook[:60]}...")
     print(f"[vibe-post] Slides: {len(slides)}")
     print(f"[vibe-post] Caption: {caption}")
+    sound_rec = entry.get('sound_rec', '')
+    if sound_rec:
+        print(f"[vibe-post] 🎵 SOUND: {sound_rec}")
 
     # Resolve photo URLs (lifestyle + screenshots in correct slot order)
     photo_urls = resolve_photo_urls(product, slides)

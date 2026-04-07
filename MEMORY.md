@@ -18,7 +18,7 @@
 ## Infrastructure (updated 2026-04-01)
 - OpenClaw version: 2026.3.28 (updated 2026-03-30)
 - bootstrapMaxChars: 32000 (HARD CAP — reverted from 40000 on 2026-03-31. Setting to 40000 triggered "Extra usage required for long context" errors blocking ALL responses for ~2h. Never raise above 32000.)
-- **Fallback model:** `openrouter/openai/gpt-4o-mini` (NOT Groq — Groq has session profile conflict + 12k TPM. gpt-4o-mini is same OpenRouter provider = fallback actually fires. Primary is anthropic/claude-sonnet-4-6 via OAuth — $0 cost on Claude Max subscription. OpenRouter is fallback only.)
+- **Fallback model:** `openrouter/deepseek/deepseek-chat-v3-0324` (deepseek is same OpenRouter provider = fallback actually fires. Groq is NOT used — session profile conflict + 12k TPM too low.)
 - **imageMaxDimensionPx:** 512 — cuts image token cost ~85% before context entry
 - **auth.cooldowns.failureWindowHours:** 1 — faster cooldown recovery after rate limit clears
 - **Root cause of 4 outages (2026-04-01):** Groq fallback never worked (session pinned to openrouter:default, Groq required provider switch). LCM silently failing (Groq 12k TPM < 20k needed). Image floods over context threshold. All three fixed.
@@ -133,6 +133,14 @@
 - **Build system**: `~/projects/ranking-app-agent/` | new-niche.sh scaffolds standalone per niche
 - **Vibe Marketing**: ✅ BUILT — agent: `agents/vibe-marketing/AGENT.md` | cron: Mon 4:45AM ET (UUID: 870bf3ff) | active products: Nash Satoshi + Vista
 - **Nash Satoshi**: permanently on Gumloop. DO NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly requests.
+
+## Lesson Files (operational, per-system)
+Lessons are stored WITH the system they document — not in one central file. This is the canonical reference:
+- `docs/agents/ensemble-build-lessons.md` — Python/FastAPI ensemble ranking engine builds only (Nash Satoshi, Glow Index, future niches). NOT for vibe marketing.
+- `agents/vibe-marketing/lessons.md` — TikTok slideshow pipeline, Reelfarm API, content generation, Replit deployment. (Created 2026-04-06)
+- `projects/n8n-agent/tasks/lessons.md` — n8n workflow patterns and mistakes.
+- `spanish/lessons/YYYY-MM-DD.md` — Spanish lesson content.
+- Any project with a `lessons.md` or `CLAUDE.md` must be read before touching that project.
 - **TikTok routing rule**: niche-specific products → dedicated account. Builder/dev/AI products → @jts_14
 - **Passive income scout/strategist**: `dcdbbef5` (Sun 6:30AM) → `4e19c300` (Sun 8:30AM) | reports: `memory/passive-income/`
 ## Active Cron Jobs (43 total)
@@ -145,7 +153,7 @@
 - Script: scripts/cost-tracker.py | Snapshots: memory/costs/YYYY-MM-DD.json (captured 2AM via backup)
 - Auth: Anthropic profile uses OAuth subscription token (sk-ant-oat01-*) — NOT an API key. All Claude/Sonnet/Opus usage is $0 in real API charges, covered by flat Claude subscription. No usage appears in Anthropic Console.
 - Real costs: OpenRouter and Groq only (used when explicitly routing to non-Anthropic models)
-- Alerts: session >$0.50, daily >$2.00, monthly pace >$15 | Goal: <$10/mo real API spend
+- Alerts: session >$1.50, daily >$15.00, monthly pace >$50 | Goal: <$50/mo real API spend
 - Pre-2026-02-28 snapshots zeroed out — were calculated with wrong Anthropic API pricing (phantom costs)
 - 2026-02-27: daily hit $10.79 (over $10 limit) — driven by Writer SA sub-agent (27k tokens) + morning brief + niche monitor. Consider raising daily threshold to $15 or reducing sub-agent token usage.
 
@@ -188,8 +196,8 @@
 - North Star: financial independence, passive income streams, luxury travel.
 
 ## Key Decisions
-- **Priority order (updated 2026-03-23 — RUNWAY CRITICAL)**: Job applications PRIMARY. Every qualified role (20+/25, hard filters) gets an application. Threshold: 20+/25, no hands-on coding primary, no SE/technical pre-sales. Active: Impulse Latam (3-31), Arya Health (4-01), Lightstone $175-300K (4-02), Ramp 24/25 (4-02), Qvest $140-170K (4-02), Gong $148-225K (4-02), Tenex 23/25 (4-02), Zoom deadline 4-10 (4-03), Axios $130-165K (4-03). ~~OpenAI AI Deployment Manager~~ REJECTED.
+- **Priority order (updated 2026-03-23 — RUNWAY CRITICAL)**: Job applications PRIMARY. Every qualified role (20+/25, hard filters) gets an application. Threshold: 20+/25, no hands-on coding primary, no SE/technical pre-sales. Active: Impulse Latam (3-31), Arya Health (4-01), Lightstone $175-300K (4-02), Ramp (18/25 — vibe coder/Gumloop fit), Qvest $140-170K (4-02), Gong $148-225K (4-02), Tenex 23/25 (4-02), ~~Zoom AI Transformation~~ ✅ APPLIED 4-06, ~~Morgan Stanley GenAI Change Management~~ ✅ APPLIED 4-06, Axios $130-165K (4-03). ~~OpenAI AI Deployment Manager~~ REJECTED.
 - **Agentforce job filter**: Do not recommend roles requiring explaining/defending Agentforce internals. JT builds/deploys agents but not comfortable in SE/technical pre-sales Agentforce contexts.
 - **Outreach**: T1: H.C. Oswald (sent 2026-03-11, awaiting). T2: Brothers Supply + Independent Pipe. T3: cold batch (sender build pending). Templates: construction ✅ + PM maintenance ✅. Tier 3 scheduler: still needed.
 - Outreach tiers: T1 Custom (2-4/mo) | T2 Template (8-12/mo) | T3 Cold Hook (50-100/mo, replies promote to T2).
-- n8n over Make.com. Sonnet default over Opus. HubSpot = best consulting expansion platform (lower SF competition). Training system: Kobe Protocol — self-improvement via SYSTEM not model weights.
+- n8n over Make.com. Model tiering: MiniMax m2.7 as default (cheapest, handles most work), Sonnet 4 upgrade when needed, Opus 4 for n8n workflow generation and complex multi-file Python (quality × no-rework ROI). HubSpot = best consulting expansion platform (lower SF competition). Training system: Kobe Protocol — self-improvement via SYSTEM not model weights.

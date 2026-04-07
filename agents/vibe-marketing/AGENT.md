@@ -3,6 +3,8 @@
 ## Role
 Generate weekly promotional content for JT's passive income apps and products.
 This is SEPARATE from JT's personal brand content (content-scheduler handles that).
+
+**Lessons:** Read `lessons.md` before doing anything significant. This is an operational system — many mistakes have already been made and documented there.
 This agent markets the PRODUCTS — Nash Satoshi, Vista, and future apps.
 
 Platforms: **X, TikTok, Reddit, LinkedIn (monthly)**
@@ -641,28 +643,42 @@ Run one web search per product to find a trending TikTok sound this week that fi
 
 **Search query pattern:**
 ```
-trending TikTok sounds [current month YYYY] [niche: crypto / movies]
+TikTok trending sounds viral audio [current month YYYY] [niche: crypto / movies / film]
 ```
 Also check: https://www.tokboard.com (trending sounds by category) if accessible.
+Also check Dash Social (https://www.dashsocial.com/blog/tiktok-sounds) for the monthly top 10 list.
 
-**Sound selection criteria (in order):**
-1. Currently trending (within last 7 days)
-2. Fits the product aesthetic — Nash Satoshi: understated, analytical (lo-fi, ambient, minimal beats — NOT hype trap). Vista: cinematic, contemplative (film scores, indie folk, lo-fi — NOT pop vocals).
-3. Not over-saturated (avoid sounds with 10M+ uses unless niche-relevant)
+**Sound selection criteria — TRENDING FIRST, aesthetic as filter:**
+1. Currently trending (within last 7 days) — check TikTok sound library for play count and recent video count
+2. Fits the product aesthetic — but do NOT sacrifice trending for aesthetic fit. A slightly off-trend sound with 100K+ recent videos outperforms a perfectly on-brand sound with 5K uses.
+3. NOT over-saturated (avoid sounds with 10M+ video uses — too saturated to break through)
+4. Business-safe (no copyrighted pop music unless already widely used in branded content)
+
+**✅ APPROVED STANDING SOUNDS FOR EACH PRODUCT:**
+
+Nash Satoshi — use ONLY these when no specific crypto/market trend found:
+- **"Bounce (i just wanna dance)" by фрози & joyful** — 8M videos, approved for business, upbeat/energetic. TikTok sound search: "bounce i just wanna dance"
+- **"Where I'm Going" by Thundercat** — 46K videos, approved for business, funky/analytical feel. TikTok sound search: "where i'm going thundercat"
+- AVOID: generic lo-fi (saturated, doesn't trend), hype trap (wrong audience fit)
+- PREFER: search TikTok sound library for "crypto" or "bitcoin" trending sounds — if a niche sound has 10K+ videos, use it
+
+Vista — use ONLY these when no specific movie/entertainment trend found:
+- **Charli xcx & John Cale — "House"** — 55K videos, cinematic, contemplative. TikTok sound search: "house charli xcx john cale"
+- **Azealia Banks — "212" instrumental** — viral wordplay trend, iconic bassline. TikTok sound search: "212 azealia banks"
+- **Coachella 2026 audio** (Sabrina Carpenter, Karol G, Justin Bieber — April 10-26) — massive GRWM/outfit trend. Search: "coachella 2026"
+- **Euphoria Season 3 audio** (April 12 HBO premiere) — reaction clips, outfit recreations, soundtrack. Massive 2-week trend window. Search: "euphoria season 3"
+- AVOID: Hans Zimmer/Morricone generic clips (no trend signal, TikTok doesn't push them)
+- PREFER: when a movie trailer drops, clip the trailer audio and post within 24h — fastest growing movie audio
 
 **Output format for Drive review doc:**
 ```
 ## 🎵 Recommended Sound This Week
 
-Nash Satoshi: "[Sound name]" by [artist or @creator] — [why it fits / trend context]
-Vista: "[Sound name]" by [artist or @creator] — [why it fits / trend context]
+Nash Satoshi: "[Sound name]" by [artist] — [trend context, video count, why it fits]
+Vista: "[Sound name]" by [artist] — [trend context, video count, why it fits]
 
-To add: open TikTok draft → tap the sound icon → search the name → select it → publish.
+To add: TikTok → tap + → upload → select video → tap the audio name → search the sound → select → publish.
 ```
-
-**If no strong trend found:** recommend a standing evergreen option:
-- Nash Satoshi fallback: "Lofi Study" ambience or any lo-fi hip hop track with low use count
-- Vista fallback: any Hans Zimmer or Ennio Morricone clip trending on TikTok
 
 ---
 

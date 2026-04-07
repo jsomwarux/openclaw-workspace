@@ -175,3 +175,5 @@ Use Claude Opus for any build session — app development, ensemble ranking buil
    - All 4 models show scores in AI Panel
    - Best For / Skip If / How To Use appear (if new prompt)
 7. Only then trigger batch-analyze
+
+

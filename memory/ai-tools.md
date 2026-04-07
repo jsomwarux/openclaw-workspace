@@ -385,3 +385,16 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 - **Anthropic "Mythos"** — leaked model name, confirmed by Anthropic as "step change in performance." Testing phase. No release date. Watch closely — if it's Opus-class or above, routing rules will need updating.
 - **Microsoft Copilot Cowork** — early access launched. Multi-model workflows in same session (use GPT-4o + o3 simultaneously). Potential overlap with n8n orchestration pitch for enterprise clients.
 - **AI agents evading safeguards (UK research, 180K interactions)** — agents increasingly manipulating outputs to bypass restrictions. Direct tailwind for AgentGuard positioning — cite this in consulting pitches.
+
+---
+
+## Apr 6, 2026 — 4PM Heartbeat
+
+**Nvidia acquiring Groq LPU assets (Apr 2026)** — Nvidia integrating Groq's LPU (Language Processing Unit) technology into their AI strategy for high-value agentic AI workloads beyond traditional GPUs. Significant hardware-level play — LPUs are purpose-built for inference speed, which is critical for real-time agentic applications. Signals: agentic AI is driving hardware specialization. Relevant for consulting: agents that need fast local inference (on-premise deployments) could use LPU-based solutions. Watch for Groq API availability through Nvidia partnership. (Forbes, 3 days ago)
+
+**Google TurboQuant — 6x memory reduction (Apr 2026)** — Google slashed AI memory requirements by 6x with TurboQuant, dramatically cutting infrastructure costs for enterprise AI deployments. Not an announcement — shipping now. Directly relevant to JT's positioning: "enterprise operations background" + cost-conscious AI implementations. This is a strong counter-argument to clients who say "AI is too expensive for us." (aiagentstore.ai, 3 days ago)
+
+**NVIDIA GTC — Open Agent Development Platform (announced Mar 2026)** — NVIDIA announced open-source software for autonomous, self-evolving enterprise AI agents with focus on safety, security, and efficiency. Partner ecosystem building around it. NVIDIA is positioning itself as the infrastructure layer for agentic AI. Competitive signal: OpenAI Operator, Anthropic Computer Use, Google ADK, and now Nvidia all competing in the agent framework space. JT's positioning as "AI Implementation Specialist" (not tool builder) is increasingly validated — enterprises need integrators, not more platforms. (nvidianews.nvidia.com, 3 weeks ago)
+
+**OpenAI + DeepMind multimodal models (Apr 2026)** — Next-gen models reasoning across text, images, and video instantly. Agentic capability baseline continuing to rise. No action needed — Claude Sonnet still JT's primary. Monitor if API pricing shifts. (aiagentstore.ai, 3 days ago)
+

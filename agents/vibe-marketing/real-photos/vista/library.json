@@ -1,6 +1,6 @@
 {
   "product": "vista",
-  "last_updated": "2026-04-04",
+  "last_updated": "2026-04-06",
   "rotation_window_weeks": 6,
   "photos": [
     {
@@ -130,8 +130,8 @@
       "vibe": "cinematic",
       "energy": "intimate",
       "setting": "floor",
-      "last_used_week": null,
-      "use_count": 0,
+      "last_used_week": "2026-04-06",
+      "use_count": 1,
       "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-12-girl-floor-candles-cinematic.jpg"
     },
     {
@@ -140,8 +140,8 @@
       "vibe": "relatable",
       "energy": "casual",
       "setting": "bedroom-floor",
-      "last_used_week": null,
-      "use_count": 0,
+      "last_used_week": "2026-04-06",
+      "use_count": 1,
       "public_url": "https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/vista/photo-13-laptop-blanket-thriller.jpg"
     },
     {

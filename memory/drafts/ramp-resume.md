@@ -1,57 +1,42 @@
 # JT SOMWARU
-New York City · jtsomwaru@gmail.com · linkedin.com/in/jon-trevor-somwaru · jtsomwaru.com
+AI Implementation Specialist | AI Automation & Operations | jtsomwaru@gmail.com | jtsomwaru.com | linkedin.com/in/jon-trevor-somwaru
 
 ## PROFESSIONAL SUMMARY
-
-AI Implementation Specialist and enterprise operator with 7+ years of experience designing agent-powered workflows, building operational systems from scratch, and driving cross-functional adoption across complex organizations. Built and deployed production AI infrastructure managing 39 autonomous agents with full monitoring, cost controls, and governance. Proven track record taking ambiguous operational problems and turning them into structured, repeatable systems that scale without adding headcount. The common thread across every role: strategy through implementation, with the systems thinking and stakeholder fluency to make both stick.
+AI Implementation Specialist and vibe coder with 6+ years of enterprise operations experience and a production track record building, deploying, and operating AI systems that teams actually use. Deep expertise in low-code/no-code AI automation using n8n, Gumloop, Cursor, and Claude Code. Operates 39 autonomous AI agents in production with full monitoring, governance, and cost controls. Built AI systems for consulting clients in construction and property management that generated immediate follow-on engagements, demonstrating the ability to ship AI solutions that create measurable business impact.
 
 ## EXPERIENCE
 
-### AI Automation Consultant
-**Independent Consulting**, New York City, 2025-Present
-
-- Designed and deployed agent-powered workflow systems for NYC clients in construction, property management, and insurance; each engagement started with scoping ambiguous operational bottlenecks and ended with automated, repeatable processes running without manual intervention
-- Built AgentGuard, an AI governance layer with confidence-gated routing (70% threshold triggers human review), structured audit trail, and explainability reporting; live in production at agentguard-delta.vercel.app as a reusable governance infrastructure pattern
-- Delivered construction field operations platform for Aya (NYC): replaced ad-hoc manual update chains with real-time job tracking dashboard; client immediately commissioned two follow-on projects, each scoped as a standalone system
-- Designed PM Maintenance Triage system: multi-tier complaint classification (routine/urgent/emergency), automated vendor dispatch, tenant confirmation flow, and audit log; reduced unrouted emergencies and eliminated manual dispatch decision-making
-- Built and deployed Agentforce agents for insurance claims intake, PM tenant service, and employee self-service; led full implementation lifecycle from scoping through production deployment and stakeholder enablement
-- Operates 39 autonomous cron-based agents in production: prospect research, outreach pipelines, content generation, market intelligence, cost monitoring, and health tracking; all with model routing, watchdog recovery, and per-job cost controls
+### Independent AI Consultant
+**Self-Employed**, New York NY, September 2025-Present
+- Designed and deployed a construction progress tracking system for a NYC construction management firm: built a React dashboard integrating Google Sheets API across 32 buildings and 313 rooms, consolidating 8 operational data sources into a single real-time platform; client immediately commissioned a second engagement and referred a new client within 60 days of delivery
+- Automated real estate listing research and qualification pipeline using n8n and StreetEasy for a property management firm: eliminated 3 hours of manual weekly research per team member, replacing a fragmented WhatsApp-based coordination system with a structured automated workflow
+- Designed and deployed AgentGuard: production AI governance layer featuring confidence-based routing at 70%+ accuracy with automatic escalation, EEOC-compliant audit trail, and explainability reports
+- Architected and operates a production AI infrastructure of 39 autonomous agents handling research, content generation, outreach, job market analysis, crypto intelligence, health tracking, and automated backups using Gumloop, n8n, and Claude Code; demonstrates the operational empathy and iteration cycle required to deploy AI systems that teams adopt and use consistently
 
 ### Business Systems Analyst
-**Charter Communications / Spectrum Enterprise**, New York City, 2019-2025
-
-- Served as cross-functional implementation lead on multi-quarter enterprise technology projects; coordinated alignment across 8+ internal teams (Sales, Product, Engineering, Operations, Finance, Legal) and presented milestone updates directly to VP and regional director level
-- Managed configuration and enterprise-wide adoption of product catalog systems across a $1B+ service portfolio; designed the operational workflows that translated technical system constraints into processes non-technical teams could execute reliably at scale
-- Drove change management for system rollouts affecting hundreds of frontline users; designed training programs and onboarding materials that reduced product configuration error rates and accelerated ramp time across regions
-- Built internal documentation, SOW templates, and process playbooks for complex product and system configurations; adopted as standard reference material across the BSA function nationally
-- Owned stakeholder communication across full implementation lifecycle: requirements scoping, milestone reviews, escalation management, executive briefings, and post-launch optimization
+**Spectrum Enterprise**, New York NY, 2019-August 2025
+- Led cross-functional systems implementations for a national telecommunications enterprise, coordinating across product, sales, operations, and technology teams to deliver system changes on timeline; managed vendor relationships and operational handoffs across 1,200+ enterprise account transitions
+- Managed product catalog configuration across Salesforce and supporting systems for enterprise accounts generating over $1B annually; translated complex product and pricing structures into structured system configurations that supported a national sales organization
+- Delivered training and documentation to operational teams on new system capabilities; introduced structured enablement approaches that reduced adoption friction on new system rollouts
 
 ## KEY PROJECTS
 
-**AgentGuard:** AI governance middleware with confidence-scored routing, human-in-the-loop escalation triggers, audit trail, and explainability reports. Built for compliance-sensitive deployment scenarios. | Live
+**AgentGuard:** Production AI governance layer featuring confidence-based routing at 70%+ accuracy with automatic escalation, EEOC-compliant audit trail, explainability reports, and override logging. Demonstrates enterprise AI governance implementation and operational empathy for regulated environments. Live at https://agentguard-delta.vercel.app.
 
-**39-Agent Production Infrastructure:** Autonomous cron-based agent system covering prospect research, outreach pipelines, market intelligence, cost monitoring, and content generation. Full watchdog recovery, model routing by task type, and per-job cost controls. | Live
+**Nash Satoshi (Gumloop):** Built and operates a multi-model crypto rankings platform using Gumloop for pipeline orchestration. Runs a 4-LLM ensemble (Claude, GPT-4, Gemini, Grok) for cross-validated consensus scoring with automated data ingestion, model routing, and scoring output. Gumloop-native workflow demonstrating live production use of the exact platform this role requires.
 
-**Construction Operations Platform:** Real-time field reporting dashboard for Aya (NYC construction/co-living operator). Replaced manual update chains; immediate adoption and two follow-on project commissions. | Deployed
-
-**PM Maintenance Triage:** Multi-tier workflow automation for NYC property management clients. Classification, vendor dispatch, tenant notification, and audit log in one system. | Deployed
-
-**Agentforce Agents:** Insurance claims routing, PM tenant service, and employee self-service agents on Salesforce. Strategy through production deployment. | Deployed
-
-**Vista:** Movie rating and tracking app | Live on Apple App Store
+**n8n Workflow Automation:** Designed and deployed end-to-end automation pipelines for research, outreach, content, and data aggregation using n8n, Claude API, and webhook architecture. Each pipeline includes error handling, retry logic, and stakeholder notification outputs.
 
 ## SKILLS
 
-**Agent-Powered Operations:** Autonomous agent design, multi-agent orchestration, workflow automation, n8n, cron-based scheduling, agent triage, SOW generation automation, information architecture, unified customer hub design, task intake systems
+**AI Automation & No-Code:** n8n Workflow Automation, Gumloop Pipeline Orchestration, Claude Code, Cursor, Notion, ChatGPT Plugins, AI Copilot Tools, Workflow Design, Autonomous Agent Operation
 
-**AI Governance and Systems:** AI governance frameworks, confidence-based routing, human-in-the-loop design, audit trail systems, responsible AI controls, cost monitoring, model routing, watchdog recovery, production monitoring
+**AI & Agents:** Claude API, GPT-4, Gemini, Multi-LLM Orchestration, Prompt Engineering, Autonomous Agents, AI Governance, RAG / LLM API Orchestration
 
-**Process and Operational Design:** Process design from scratch, SOW standardization, playbook development, handoff frameworks, post-launch ownership systems, cross-functional project trackers, intake systems, roadmap unification
+**Data & Integration:** SQL (working proficiency), REST APIs, Google Sheets API, Webhook Architecture, Python Scripting, Data Modeling
 
-**Change Management and Enablement:** Change management, workshop facilitation, stakeholder alignment, adoption frameworks, executive briefings, technical training design, cross-functional coordination, documentation and playbook development
-
-**Technical Fluency:** API integration, webhook architecture, REST APIs, data flow design, Supabase, Google Sheets API, Salesforce/Agentforce, RAG, Vercel, GitHub, real-time dashboards, multi-LLM orchestration
+**Business Operations:** Cross-functional Coordination, Process Mapping, Operational Empathy, Stakeholder Communication, Training & Enablement, Dashboard Design, Adoption Measurement
 
 ## EDUCATION
-
-Ithaca College, BS Sport Management, Legal Studies Minor | 2014-2018
+Bachelor of Science, Sport Management and Legal Studies | Ithaca College | 2018
+Data Analytics Certificate | Northeastern University | 2019

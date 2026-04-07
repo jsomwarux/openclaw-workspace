@@ -57,6 +57,8 @@ Rule: if the decision happened and MEMORY.md doesn't reflect it yet, MEMORY.md i
 
 ## Resume & Cover Letter Drive Upload Rule
 Whenever resume or cover letter is generated: (1) write to `memory/drafts/[slug]-resume.md` and `memory/drafts/[slug]-cover-letter.md`, (2) generate .docx via `build_resume_docx.py --resume-md [path] --cover-letter-md [path]`, (3) upload to Drive with correct paths, (4) include Drive link in reply. Full procedure + verification steps: `docs/agents/resume-upload-rules.md`
+
+**Model rule for job applications:** ALWAYS use `openrouter/anthropic/claude-sonnet-4-6` for job application packages (resume + cover letter). The markdown formatting requirements (bullet structure, paragraph parsing, ATS compliance) require Sonnet-level precision. MiniMax consistently makes formatting errors on these tasks. Sonnet only — not Opus, not MiniMax.
 ## Portfolio Auto-Update Rule
 Trigger: build completed, JT says done/shipped/live, MC task marked done, consulting project stage complete, new skill/capability added.
 Score against rubric in `agents/portfolio-updater/AGENT.md`. ≥7 → append to queue.jsonl (overnight processes). 4-6 → flag to JT: "🌐 Portfolio-worthy? [title] scored [X]/10". <4 → skip.
