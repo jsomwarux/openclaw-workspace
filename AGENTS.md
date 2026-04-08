@@ -238,6 +238,7 @@ Rule: if you think you need to "reconstruct" or "recreate" one of these files, S
 - Rate limit: never schedule >2 jobs in same 15-min window. On rate_limit error: no retry for ≥10 min.
 - Daily cap: ≤20 cron invocations/day.
 - Post-restart drift: crons may fire early — skip if >2h before scheduled window, log, run `cron list`. Don't recreate.
+- **Timeout sizing (10AM heartbeat check):** When cron complexity increases (more coins, new steps, new agents, more data sources), proactively bump timeout BEFORE task fails. Check `lastDurationMs` from `cron runs --id <jobId> --limit 1` — if last run hit the timeout ceiling (durationMs ≈ timeoutSeconds × 1000), increase timeout by 50% minimum. Default 120s only covers trivial tasks.
 
 ## LaunchAgent Category Rules
 ✅ Approved (zero LLM calls): ai.openclaw.gateway, com.openclaw.backup, com.openclaw.cleanup-sessions, com.openclaw.mission-control-next, com.openclaw.mission-control-convex.

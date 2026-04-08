@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-07T16:01:19.290Z",
+  "entries": {
+    "memory:memory/2026-04-05.md:1:26": {
+      "key": "memory:memory/2026-04-05.md:1:26",
+      "path": "memory/2026-04-05.md",
+      "startLine": 1,
+      "endLine": 26,
+      "source": "memory",
+      "snippet": "## Heartbeat 23:00 - Checked alerts and notified JT of cost warnings. - Unable to check cron status due to execution failures. ## Memory Log - April 5, 2026 ### Key Decisions & Tasks Discussed: - **AI Video Agent Development Plan:** Confirmed creation of the task with ID `j570de55gnb3rpqdjg78hpsad184bk02`. Needs to be prioritized along with construction dashboard tasks. - **Construction Dashboard Agent/Prototype:** Discussed adding this high-priority task to the board but confirmed it was not visible due to previous technical issues during task creation. - **Prioritization Strategy:** - High Priority Tasks: 1. Create Construction Dashboard Agent/Prototype 2. Construction Dashboa",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "totalScore": 3.4240973233162406,
+      "maxScore": 0.8673452538384728,
+      "firstRecalledAt": "2026-04-07T09:02:30.595Z",
+      "lastRecalledAt": "2026-04-07T09:27:59.039Z",
+      "queryHashes": [
+        "f72223048998",
+        "951bbad55037",
+        "a21d1275019e",
+        "1764efc842c4"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "agent/prototype",
+        "high-priority",
+        "heartbeat",
+        "checked",
+        "alerts",
+        "notified",
+        "cost",
+        "warnings"
+      ]
+    },
+    "memory:memory/2026-04-06.md:26:45": {
+      "key": "memory:memory/2026-04-06.md:26:45",
+      "path": "memory/2026-04-06.md",
+      "startLine": 26,
+      "endLine": 45,
+      "source": "memory",
+      "snippet": "- **Status:** Fired manually at 11:25 AM ET. Real brief should arrive ~60-90s later. ### Cron Audit — All 54 Jobs Fixed - 8 cron jobs had invalid `openrouter/google/gemini-3.1` model string (missing variant). Fixed all to `openrouter/google/gemini-3.1-pro`: - AI Video Agent Development Plan (384efc62) - Create Construction Dashboard Agent/Prototype (760d4a4b) - Construction Dashboard Development (task IDs: 32694c96, 4928b99c, 26f12033, 658af126, 8961bda6, 523c40b5 — all scheduled April 7 one-shots) - Weekly Systems Review (b2ca53ab): updated from `gemini-2.5-flash-preview` → `gemini-3.1-flash-lite-preview-20260303` ### Gateway Config — Confirmed Written - `plugins.entries.lossless-cl",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "totalScore": 3.4135942307866083,
+      "maxScore": 0.8645610121279665,
+      "firstRecalledAt": "2026-04-07T09:02:30.595Z",
+      "lastRecalledAt": "2026-04-07T09:27:59.039Z",
+      "queryHashes": [
+        "f72223048998",
+        "951bbad55037",
+        "a21d1275019e",
+        "1764efc842c4"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "gateway",
+        "router",
+        "60-90s",
+        "openrouter/google/gemini-3.1",
+        "openrouter/google/gemini-3.1-pro",
+        "agent/prototype",
+        "one-shots",
+        "gemini-2.5-flash-preview"
+      ]
+    },
+    "memory:memory/2026-03-07.md:61:90": {
+      "key": "memory:memory/2026-03-07.md:61:90",
+      "path": "memory/2026-03-07.md",
+      "startLine": 61,
+      "endLine": 90,
+      "source": "memory",
+      "snippet": "- Crypto pulse: BTC ~$68K, down from $70.5K yesterday — approaching key support. No ±15% breach. Updated crypto.md. - Proactive: crypto monitoring + notes updated ## Afternoon Session — 1:00–3:53 PM ### n8n Support Triage — Demo Video Added - JT uploaded demo video to Google Drive: file ID `1CeCOvKV2Hk6PtoK51YUcN3TY77BO0cfr` - Added `demoVideo: \"https://drive.google.com/file/d/1CeCOvKV2Hk6PtoK51YUcN3TY77BO0cfr/preview\"` to `n8n-support-triage` in projects.ts - Flipped `featured: true` (score 8/10 qualifies) - Build clean, pushed, Vercel deployed ### AI Inventory Reorder — Demo Video Added - JT uploaded demo video: file ID `1Bm_iNfxMkvW-c_qJ4ynybb9GTIkQZa78` - Added `demoVideo` + `featured",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.867751657673847,
+      "maxScore": 0.867751657673847,
+      "firstRecalledAt": "2026-04-07T09:05:04.096Z",
+      "lastRecalledAt": "2026-04-07T09:05:04.096Z",
+      "queryHashes": [
+        "2ed03ec2feee"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "70.5k",
+        "crypto.md",
+        "n8n-support-triage",
+        "projects.ts",
+        "8/10",
+        "crypto",
+        "pulse",
+        "btc"
+      ]
+    },
+    "memory:memory/2026-03-06.md:91:117": {
+      "key": "memory:memory/2026-03-06.md:91:117",
+      "path": "memory/2026-03-06.md",
+      "startLine": 91,
+      "endLine": 117,
+      "source": "memory",
+      "snippet": "- \"Talent-as-a-Service\" emerging framing — specialist human expertise + AI agents working together (JT's lane) - Daily brief file stale (March 3) — job-market cron may have drifted. Flag for Monday check. - memory/job-market.md updated ## Eve Session — Late Evening (11:24 PM) ### n8n Demo Video Debugging - JT recording AI Insurance Claims Triage demo video - Issue: curl → production webhook = nodes don't light up (runs in background, no visual) - Fix: use test URL (`/webhook-test/`) + \"Listen for test event\" → then click ▶️ Execute Workflow after webhook captures data - Second issue: \"workflow must be active\" = was curling production URL while inactive - Third issue: manual execution",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8663033137996311,
+      "maxScore": 0.8663033137996311,
+      "firstRecalledAt": "2026-04-07T09:05:04.096Z",
+      "lastRecalledAt": "2026-04-07T09:05:04.096Z",
+      "queryHashes": [
+        "2ed03ec2feee"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "talent-as-a-service",
+        "job-market",
+        "memory/job-market.md",
+        "webhook-test",
+        "talent",
+        "service",
+        "emerging",
+        "framing"
+      ]
+    },
+    "memory:memory/2026-02-21.md:26:52": {
+      "key": "memory:memory/2026-02-21.md:26:52",
+      "path": "memory/2026-02-21.md",
+      "startLine": 26,
+      "endLine": 52,
+      "source": "memory",
+      "snippet": "- Session wrap: built browser automation rules (AGENTS.md), SQLite knowledge base (knowledge/), backup system (scripts/backup.sh + launchd), documented in TOOLS.md + MEMORY.md - Exec failures from SIGTERM'd crontab hang sessions — not a concern - All systems nominal ## Session Cleanup 16:01 - Sessions before: 1, after: 1, removed: 0 - sessions.json size: 13.1 KB - Nothing to clean up — all sessions recent or protected. ## Heartbeat 16:01 **Status:** Active hours, no pending tasks, cron CLI unavailable (gateway pairing — expected). JT active in session doing system setup. **Proactive Work: AI Tool Scan** Notable AI releases this week (Feb 2026): - **Claude Sonnet 4.6** — Anthropic releas",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8649558814570436,
+      "maxScore": 0.8649558814570436,
+      "firstRecalledAt": "2026-04-07T09:05:04.096Z",
+      "lastRecalledAt": "2026-04-07T09:05:04.096Z",
+      "queryHashes": [
+        "2ed03ec2feee"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "backup",
+        "gateway",
+        "agents.md",
+        "scripts/backup.sh",
+        "tools.md",
+        "memory.md",
+        "sessions.json",
+        "13.1"
+      ]
+    },
+    "memory:memory/2026-03-21.md:32:46": {
+      "key": "memory:memory/2026-03-21.md:32:46",
+      "path": "memory/2026-03-21.md",
+      "startLine": 32,
+      "endLine": 46,
+      "source": "memory",
+      "snippet": "- Notion Content Calendar: both pushed ✅ - technical-angles.md: multi-model consensus angle added ## Heartbeat 6:00 PM - Cost alerts: none ✅ - Cron health: ebb843af + niche-monitor — same transient errors, no new issues - Proactive: crypto.md updated — BTC ~$70,325, holding above $70K, consolidation range intact. No portfolio alerts. ## Heartbeat 10:00 PM - Cost alerts: none ✅ - Cron health: ebb843af + niche-monitor — same transient errors, no new issues - Spanish: last_lesson_complete = false → nudge already sent at 9:55PM, no double-send - Job roles: no new roles above 24+/25. Daily brief still shows passed/expired roles — refreshes at 6:30AM - No new proactive work needed — day full",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8431299515540215,
+      "maxScore": 0.8431299515540215,
+      "firstRecalledAt": "2026-04-07T14:15:13.498Z",
+      "lastRecalledAt": "2026-04-07T14:15:13.498Z",
+      "queryHashes": [
+        "e34a0fa78946"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "technical-angles.md",
+        "multi-model",
+        "niche-monitor",
+        "crypto.md",
+        "last-lesson-complete",
+        "double-send",
+        "passed/expired",
+        "notion"
+      ]
+    },
+    "memory:memory/2026-03-09.md:96:105": {
+      "key": "memory:memory/2026-03-09.md:96:105",
+      "path": "memory/2026-03-09.md",
+      "startLine": 96,
+      "endLine": 105,
+      "source": "memory",
+      "snippet": "## Heartbeat 22:00 - Cost alerts: none ✅ - Spanish: lesson complete ✅ — no nudge needed - Proactive: job market pulse - Anthropic Labor Market Report (March 2026): 75% of programmer tasks covered by AI — displacement narrative going mainstream - \"AI SA Roadmap\" article trending today — more competition entering JT's target roles - **Deadline flag**: Salesforce Lead Agentforce SE (24/25) deadline 03/27 — 18 days, apply this week - No new roles 18+/25 today - job-market.md updated ✅",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.837591169479253,
+      "maxScore": 0.837591169479253,
+      "firstRecalledAt": "2026-04-07T14:15:13.498Z",
+      "lastRecalledAt": "2026-04-07T14:15:13.498Z",
+      "queryHashes": [
+        "e34a0fa78946"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "24/25",
+        "03/27",
+        "job-market.md",
+        "heartbeat",
+        "cost",
+        "alerts",
+        "none",
+        "spanish"
+      ]
+    },
+    "memory:memory/2026-02-21.md:65:92": {
+      "key": "memory:memory/2026-02-21.md:65:92",
+      "path": "memory/2026-02-21.md",
+      "startLine": 65,
+      "endLine": 92,
+      "source": "memory",
+      "snippet": "- No urgent emails, calendar events, or alerts detected - JT active in session until ~18:00; no proactive outreach warranted KB state: 44 items (business: 8, crypto: 11, tech: 25) — 0.25 MB ## Heartbeat 20:00 - Checked tasks.md — no urgent/overdue items - Cron status: all 4 jobs healthy; morning brief ran successfully today (lastStatus: ok, 65s duration) - Health check-in cron fires at 9 PM (1h away) — no action needed - Proactive work: drafted 2 X threads + 1 standalone tweet for @jts_14 - Thread 1: \"Building an AI assistant that actually works while you sleep\" — builder/infra angle - Thread 2: \"I scored 5 Nash Satoshi expansion niches\" — baby products #1 finding - Quick post: Missi",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8827451615002277,
+      "maxScore": 0.8827451615002277,
+      "firstRecalledAt": "2026-04-07T15:36:05.408Z",
+      "lastRecalledAt": "2026-04-07T15:36:05.408Z",
+      "queryHashes": [
+        "a17d92e8ef7b"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "0.25",
+        "tasks.md",
+        "urgent/overdue",
+        "check-in",
+        "jts-14",
+        "builder/infra",
+        "urgent",
+        "emails"
+      ]
+    },
+    "memory:memory/2026-03-12.md:30:51": {
+      "key": "memory:memory/2026-03-12.md:30:51",
+      "path": "memory/2026-03-12.md",
+      "startLine": 30,
+      "endLine": 51,
+      "source": "memory",
+      "snippet": "- Crypto Midday Pulse (`eve-crypto-midday-009`): NEW error — timed out at 180s (180005ms), consecutiveErrors=1. Prior run was 132s. Applied 360s fix ✅ (confirmed in returned JSON). Likely hit a slow provider during yesterday's Anthropic outage cascade. - Viral swipe / content-generate / Spanish lesson: same status as 10AM — fixes already applied this morning - All other crons: healthy ✅ - **Proactive work:** AI tool monitoring → memory/ai-tools.md updated - GPT-5.4 Thinking released (reasoning+agents baseline for enterprise) - Razorpay launched payment agent studio on Claude SDK (Anthropic enterprise momentum) - Google Workspace Gemini citations live - Mar 11 Anthropic outage c",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8646256402553872,
+      "maxScore": 0.8646256402553872,
+      "firstRecalledAt": "2026-04-07T16:01:19.290Z",
+      "lastRecalledAt": "2026-04-07T16:01:19.290Z",
+      "queryHashes": [
+        "298e0cd2b912"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "gpt",
+        "eve-crypto-midday-009",
+        "content-generate",
+        "memory/ai-tools.md",
+        "gpt-5.4",
+        "crypto",
+        "midday",
+        "pulse"
+      ]
+    },
+    "memory:memory/2026-03-27.md:1:29": {
+      "key": "memory:memory/2026-03-27.md:1:29",
+      "path": "memory/2026-03-27.md",
+      "startLine": 1,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "## Session Cleanup 03:00 - Sessions before: 38, after: 37, removed: 1 - sessions.json size: 1020.2 KB - Removed sessions: - agent:main:cron:33b8b0a2-e86c-4f51-aa4f-b8537def3107 (last active: 1.9d ago) ## Heartbeat 07:30 AM — Morning Brief - Delivered morning brief to JT via Telegram - Top priorities: AFGO M1 + Lawley M3 + PostBridge activation - BTC: ~$68.5K, -3.3%, extreme fear - Niche: 3x 🟠 signals (insurance STP window, Entrata Agentic PMS, UNFI AI) - Costs: $0.00 real API spend ✅ - Vibe queue: 30 posts pending PostBridge activation - Overnight log: 2026-03-27 confirmed — 2 outreach tasks + ICPs/cold-email updates ## Heartbeat 10:00 AM — Film Review + Cron Health - **Cost alerts**: n",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8483308893649424,
+      "maxScore": 0.8483308893649424,
+      "firstRecalledAt": "2026-04-07T16:01:19.290Z",
+      "lastRecalledAt": "2026-04-07T16:01:19.290Z",
+      "queryHashes": [
+        "298e0cd2b912"
+      ],
+      "recallDays": [
+        "2026-04-07"
+      ],
+      "conceptTags": [
+        "sessions.json",
+        "1020.2",
+        "1.9d",
+        "68.5k",
+        "3.3",
+        "0.00",
+        "icps/cold-email",
+        "cleanup"
+      ]
+    }
+  }
+}

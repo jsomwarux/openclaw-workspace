@@ -177,3 +177,12 @@
 **Demonstrates:** Next.js MDX pipeline, content-driven architecture, sitemap integration
 **Content angle:** "Finally built my blog — here's why I'm not worried about SEO and went straight to AI search signals instead."
 **Status:** complete
+
+## G-Net Construction Dashboard Agent + Prototype — 2026-04-07
+
+**What:** Built construction dashboard agent (n8n workflow + Next.js prototype) for G-Net Construction Corp.
+**For:** G-Net Construction — JT consulting prospect (Vincent Nativo, RA — multi-type NYC GC)
+**Outcome:** 11-file deliverable: n8n workflow (multi-type classification + compliance tagging + stalled work detection + permit alerts + Vincent owner alerts), T2 reusable template, Next.js dashboard frontend, 10 realistic G-Net mock jobs, workflow docs
+**Demonstrates:** n8n AI workflows, multi-ICP automation, construction industry vertical
+**Content angle:** NYC construction AI adoption signal (Turner building Claude tools) = market timing
+**Status:** complete

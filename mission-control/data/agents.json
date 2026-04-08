@@ -569,5 +569,42 @@
     ],
     "currentTask": "Tracking warm contacts and relationship warmth. Data: memory/networking/",
     "created": "2026-03-19"
+  },
+  {
+    "id": "ai-video-agent",
+    "name": "AI Video Agent",
+    "emoji": "\ud83c\udfa5",
+    "role": "Brand Video Production",
+    "domain": "Autonomous brand video pipeline \u2014 brand brief to finished MP4. Stages: script generation, scene breakdown, video clip generation (Kling 3.0 / Runway), voiceover (ElevenLabs), avatar (HeyGen), assembly (FFmpeg/Descript), Drive upload.",
+    "workspaceRel": "projects/ai-video-agent",
+    "github": null,
+    "skills": [
+      "kling-api",
+      "elevenlabs-api",
+      "heygen-api",
+      "ffmpeg",
+      "claude-api"
+    ],
+    "crons": [],
+    "currentTask": "Plan complete \u2014 awaiting API keys. Next: get Kling 3.0 + ElevenLabs API keys, then spawn coding agent to build Python POC.",
+    "created": "2026-04-07"
+  },
+  {
+    "id": "construction-dashboard-agent",
+    "name": "Construction Dashboard Agent",
+    "emoji": "\ud83c\udfd7\ufe0f",
+    "role": "Multi-type Construction Job Tracker",
+    "domain": "n8n workflow + Next.js dashboard for multi-sector NYC GCs \u2014 job type classification, compliance tagging, stalled work detection, permit tracking, client reporting",
+    "workspaceRel": "projects/construction-dashboard-agent",
+    "github": "jsomwarux/gnet-construction-dashboard",
+    "skills": [
+      "n8n-mcp",
+      "google-sheets",
+      "gmail",
+      "anthropic-claude"
+    ],
+    "crons": [],
+    "currentTask": "Built 2026-04-07 \u2014 demo-ready prototype for G-Net Construction. Pending: Vincent demo, sheet credentials, deploy.",
+    "created": "2026-04-07"
   }
 ]
