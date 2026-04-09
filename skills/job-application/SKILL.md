@@ -71,6 +71,9 @@ This is the single strongest technical proof point for multi-model/AI ops roles.
 **Rule 5 — AgentGuard leads Key Projects.**
 AgentGuard (confidence-gated routing, human-in-the-loop, audit trail, explainability) speaks directly to enterprise AI governance — the #1 concern at companies over 500 employees. It must be listed FIRST in Key Projects with 3 bullets minimum. It outranks Vista and Nash Satoshi for any enterprise role.
 
+**Rule 6 — Zero em dashes in resume AND cover letter.**
+Em dashes are a clear AI writing tell. Apply to both documents without exception. Replace with commas, colons, periods, or semicolons depending on context.
+
 **Resume format rules:**
 - One page preferred, two max
 - Lead with a 2-3 sentence summary that names the specific role and the specific value

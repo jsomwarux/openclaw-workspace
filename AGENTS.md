@@ -239,6 +239,7 @@ Rule: if you think you need to "reconstruct" or "recreate" one of these files, S
 - Daily cap: ≤20 cron invocations/day.
 - Post-restart drift: crons may fire early — skip if >2h before scheduled window, log, run `cron list`. Don't recreate.
 - **Timeout sizing (10AM heartbeat check):** When cron complexity increases (more coins, new steps, new agents, more data sources), proactively bump timeout BEFORE task fails. Check `lastDurationMs` from `cron runs --id <jobId> --limit 1` — if last run hit the timeout ceiling (durationMs ≈ timeoutSeconds × 1000), increase timeout by 50% minimum. Default 120s only covers trivial tasks.
+- **Telegram delivery guard (all crons):** Crons that save content locally AND send Telegram must skip the Telegram send if content is empty or "All clear." Empty messages fail Telegram delivery. Fix: add `If no new [findings]: SKIP THE TELEGRAM SEND` to every cron payload that has a Telegram send step. Already applied to: niche-monitor, Spanish Weekly Eval, crypto morning.
 
 ## LaunchAgent Category Rules
 ✅ Approved (zero LLM calls): ai.openclaw.gateway, com.openclaw.backup, com.openclaw.cleanup-sessions, com.openclaw.mission-control-next, com.openclaw.mission-control-convex.
@@ -323,6 +324,7 @@ Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete rule.
 **Recent entries (last 3):**
 | Date | Mistake | Fix |
 |------|---------|-----|
+| 2026-04-08 | Telegram delivery failures across multiple crons (niche-monitor, Spanish Weekly Eval, crypto morning) — content generated correctly but empty/minimal messages rejected by Telegram. Root cause: crons send "All clear" or zero-content Telegram messages when no findings exist. Each cron fixed individually. | Rule: **All crons that save content + send Telegram: must skip Telegram send if content is empty or "All clear." Add `If no new [findings]: SKIP THE TELEGRAM SEND` to every Telegram-capable cron payload. Already applied: niche-monitor, Spanish Weekly Eval, crypto morning.** |
 | 2026-04-05 | Bootstrap files exceeded safe limits (AGENTS.md 32,311 / MEMORY.md 24,116 / TOOLS.md 19,030). Groq fallback never worked. LCM compaction failing silently. Retry loops burning rate limit. Root cause: no pre-append size check enforced, Groq free tier TPM too low for compaction, fallback model same provider as primary. | Rule: **Check `wc -c` before every append. Use openrouter/gpt-4o-mini as fallback (same provider as primary). LCM summaryModel must be Gemini Flash-Lite via openrouter. Max 3 retries with exponential backoff then stop + alert.** |
 | 2026-04-02 | Resume and cover letter generated with em dashes throughout. Root cause: wrote files directly without loading job-application/SKILL.md first. | Rule: **Load job-application/SKILL.md before writing a single word of any application package.** |
 | 2026-03-25 | Cover letter uploaded blank — body missing. Root cause: `parse_cover_letter_md()` requires exactly two `---` separators; had only one. | Rule: **Cover letter markdown must have two `---` separators. Always run `parse_cover_letter_md()` verification before uploading.** |

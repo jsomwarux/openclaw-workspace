@@ -111,6 +111,7 @@
 - $150K min, $180–220K target | NYC metro or remote only
 - ⚠️ Squarespace People AI SA (19/25) — verify still posted before applying.
 - Hard rule: do not recommend roles requiring explaining/defending Agentforce internals to technical audiences.
+- **Hard rule — application tracking:** IMMEDIATELY after every job application, update `~/projects/job-market-agent/data/job-opportunities.md` — change `Status: new` to `Status: applied | Applied: YYYY-MM-DD`. The morning brief reads from this file and will re-surface applied roles if status isn't updated. No exceptions.
 - Skill gaps: AWS Bedrock, LangChain, Copilot Studio.
 
 ## Setup State

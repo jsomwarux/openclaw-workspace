@@ -6,7 +6,7 @@ _Managed by Eve. Updated during heartbeats and on request._
 
 ## 🔴 High Priority
 
-- [ ] **Apply to Squarespace People AI SA** — Score 19/25, posted Feb 21, salary $126K–$180K hybrid NYC. JD literally says "vibe-code." Time-sensitive — apply this week.
+- [x] ~~Apply to Squarespace People AI SA~~ DEPRIORITIZED: $126K-$180K below $150K min + "hands-on building" may = coding gap — Score 19/25, posted Feb 21, salary $126K–$180K hybrid NYC. JD literally says "vibe-code." Time-sensitive — apply this week.
   **Steps:**
   1. Open resume: https://docs.google.com/document/d/12Uow8QM6w15DxaTGuekoQOIdehO66Th4USrhqwYdEyI/edit
   2. Fill in LinkedIn URL and correct Spectrum dates (I used 2019–2025)
