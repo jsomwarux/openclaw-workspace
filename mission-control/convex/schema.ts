@@ -19,4 +19,22 @@ export default defineSchema({
     .index("by_assignee", ["assignee"])
     .index("by_project", ["project"])
     .index("by_slug", ["slug"]),
+
+  pideas: defineTable({
+    title: v.string(),
+    score: v.number(),
+    status: v.union(v.literal("exploring"), v.literal("building"), v.literal("launched"), v.literal("shelved")),
+    source: v.string(),
+    reportDate: v.string(),
+    concept: v.string(),
+    revenueModel: v.string(),
+    jtStackFit: v.string(),
+    longevitySignal: v.string(),
+    researchSignal: v.string(),
+    creativityCheck: v.string(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_score", ["score"])
+    .index("by_status", ["status"]),
 });
