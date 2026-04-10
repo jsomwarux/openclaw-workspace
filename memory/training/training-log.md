@@ -13,3 +13,8 @@
 - **Film:** Apr 7 daily operations — 9 heartbeats, 2 LCM cascade residual fixes, 1 outreach pipeline run, 3 cron patches
 - **Step A (Failure):** Telegram delivery failures across niche-monitor (Apr 6+7), Spanish Weekly Eval (Apr 5), crypto morning (Apr 8). All generated content correctly but Telegram sent empty/"All clear" messages → delivery rejected. Fix: systemic rule added to AGENTS.md + niche-monitor payload patched.
 - **Step B (Improve):** Pattern recognition — three Telegram delivery failures in 4 days = systemic issue. Added general cron Telegram delivery guard rule to AGENTS.md. Next: apply same skip-when-empty pattern to Spanish Weekly Eval and crypto morning crons.
+
+## 10AM Film Review — 2026-04-09
+- Film: April 8 system failures
+- Step A Fix: t3-cold-hook + Build Ideas crons had deepseek-chat-v3 as expensive fallback → fired twice yesterday ($5.34). Patched all 3 crons to gemini-3.1-flash-lite-preview (~90% cost reduction on fallback). Also removed google/gemini-3.1-pro invalid model ID from fallback chain.
+- Step B Improve: Add rule — when adding model fallbacks, prefer cheaper models (gemini-flash-lite) over expensive ones (deepseek-chat-v3). Budget impact: without this fix, monthly pace would be ~$180 instead of $126.

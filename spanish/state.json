@@ -3,12 +3,12 @@
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
   "current_week": 6,
-  "current_day": 31,
-  "lesson_streak": 22,
-  "longest_streak": 22,
-  "last_lesson_date": "2026-04-08",
+  "current_day": 32,
+  "lesson_streak": 23,
+  "longest_streak": 23,
+  "last_lesson_date": "2026-04-09",
   "last_lesson_complete": false,
-  "total_lessons_completed": 8,
+  "total_lessons_completed": 9,
   "weekly_scores": [
     {
       "week": 2,
@@ -46,7 +46,7 @@
     "past tense basics (comí, fui, vi)",
     "quisiera vs quiero (polite ordering)"
   ],
-  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped — cron doesn't fire Sundays. Starting Week 5. Week 6 curriculum: Day 1 Emotions, Day 2 Agreeing/Disagreeing, Day 3 Describing Feelings.",
+  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped — cron doesn't fire Sundays. Starting Week 5. Week 6 curriculum: Day 1 Emotions, Day 2 Agreeing/Disagreeing, Day 3 Describing Feelings, Day 4 Celebrating Good News.",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases. Single words transcribe correctly. Workaround: credit all Spanish audio answers based on context.",
-  "streak": 22
+  "streak": 23
 }

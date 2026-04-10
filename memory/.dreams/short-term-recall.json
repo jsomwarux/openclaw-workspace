@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-07T16:01:19.290Z",
+  "updatedAt": "2026-04-09T14:15:13.492Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -306,6 +306,66 @@
         "0.00",
         "icps/cold-email",
         "cleanup"
+      ]
+    },
+    "memory:memory/2026-03-12.md:45:58": {
+      "key": "memory:memory/2026-03-12.md:45:58",
+      "path": "memory/2026-03-12.md",
+      "startLine": 45,
+      "endLine": 58,
+      "source": "memory",
+      "snippet": "- Salesforce Ben: SA salary report confirms \"architecture at heart of AI\" — quotable for future applications - Benioff confirmed SF hiring continues despite Block news — bullish for Lead Agentforce SE app - No new high-scoring roles. 03/27 deadline unchanged. ## Heartbeat 22:00 - Cost alerts: none ✅ - **Cron health fixes:** - Spanish lesson (`babd905a`): staggered to 8:05 PM (`5 20 * * 1-6`) — was colliding with crypto evening at 8:00 PM exactly, causing both to rate-limit fail simultaneously. Fixed ✅ - Crypto evening (`eve-crypto-evening-010`): same 8PM collision — resolved by staggering Spanish. Timeout OK, was 24s before hitting rate limit. No timeout edit needed. - content-g",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8240912026658568,
+      "maxScore": 0.8240912026658568,
+      "firstRecalledAt": "2026-04-09T14:15:13.492Z",
+      "lastRecalledAt": "2026-04-09T14:15:13.492Z",
+      "queryHashes": [
+        "b4ee766b5c5e"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "high-scoring",
+        "03/27",
+        "1-6",
+        "rate-limit",
+        "eve-crypto-evening-010",
+        "content-g",
+        "salesforce",
+        "ben"
+      ]
+    },
+    "memory:memory/2026-02-24.md:216:239": {
+      "key": "memory:memory/2026-02-24.md:216:239",
+      "path": "memory/2026-02-24.md",
+      "startLine": 216,
+      "endLine": 239,
+      "source": "memory",
+      "snippet": "## Lesson Learned 21:16 — gateway config.patch triggers silent disconnect - Used `gateway config.patch` to apply compensating controls (elevated.enabled, exec.ask) - This tool triggers an internal SIGUSR1 restart — same problem as raw launchctl/openclaw gateway restart - JT got disconnected and had to manually restart the gateway - **Fix applied:** AGENTS.md, SECURITY.md, MEMORY.md all updated to explicitly ban `gateway config.patch` and `gateway config.apply` alongside the other banned restart methods - **Correct workflow for config changes:** Edit `~/.openclaw/openclaw.json` directly → then run restart script ## Heartbeat 22:00 EST ### Status Check - All crons: ✅ healthy - Gateway: ✅ bac",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.8193208561194107,
+      "maxScore": 0.8193208561194107,
+      "firstRecalledAt": "2026-04-09T14:15:13.492Z",
+      "lastRecalledAt": "2026-04-09T14:15:13.492Z",
+      "queryHashes": [
+        "b4ee766b5c5e"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "gateway",
+        "config.patch",
+        "elevated.enabled",
+        "exec.ask",
+        "launchctl/openclaw",
+        "agents.md",
+        "security.md",
+        "memory.md"
       ]
     }
   }
