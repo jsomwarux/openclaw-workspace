@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import {
@@ -36,6 +36,14 @@ export default function PassiveIncomePage() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [syncing, setSyncing] = useState(false);
   const [syncResult, setSyncResult] = useState<string | null>(null);
+
+  // Auto-sync on first load if table is empty
+  useEffect(() => {
+    if (ideas !== undefined && ideas.length === 0 && !syncing) {
+      handleSync();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ideas]);
 
   const handleSync = async () => {
     setSyncing(true);
