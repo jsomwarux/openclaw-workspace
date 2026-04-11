@@ -82,14 +82,10 @@
 - 🔴 skills demand signals also auto-push MC tasks titled `Positioning: [signal]`
 
 ## Content System (updated 2026-03-16)
-- Voice rules: `memory/content-voice.md` — **load before every draft.** Platform-specific: LinkedIn = case studies + expertise, X = compression + hot takes. Wednesday LinkedIn is most important post of the week.
-- Proof Points inventory + Credibility Test in content-voice.md — every post must pass before publishing
-- **LinkedIn: 6 posts/week** (Mon/Tue/Wed/Thu/Fri/Sun) | **X: 7 posts/week + 5-6 banked** (3 technical angles + 2-3 build showcases)
-- Pillars: Mon Short Take | Tue Industry Observation | Wed Case Study | Thu Agentforce Proof Point | Fri Tactical Insight | Sat Eve Ops (X only) | Sun Behind the Build
-- Content crons: content-generate-linkedin (Mon 7AM, 6 posts) | content-generate-x (Mon 7:25AM, 3 passes: 7 calendar + 3 technical + 2-3 build showcase) | content-reminder (Tue-Sat 8AM, LinkedIn on Tue/Wed/Thu/Fri + X daily) | content-sunday (Sun 9AM, Sun LinkedIn + X + engagement check) | content-monday-send (Mon 7:55AM, surfaces bank posts to JT)
-- Content sources: recent-builds.md | technical-angles.md (30+ angles) | consulting-observations.md (nightly from outreach-pipeline) | job-market-observations.md (daily from job-market cron) | content-voice.md Proof Points | Notion swipe file
-- Bank: memory/content/bank/[MONDAY-DATE]/ — technical + build showcase posts generated weekly, surfaced to JT Monday morning via content-monday-send
-- Swipe file: Notion DB (viral X posts) | Format signals: memory/content/content-signals.md | Technical angles: memory/content/technical-angles.md
+- **Load `memory/content-voice.md` before every draft.** Wednesday LinkedIn = most important post.
+- LinkedIn: 6 posts/week (Mon/Tue/Wed/Thu/Fri/Sun) | X: 7 posts/week + 5-6 banked | Pillars: Mon Short Take | Tue Industry Obs | Wed Case Study | Thu Agentforce Proof | Fri Tactical | Sun Behind Build
+- Crons: linkedin (Mon 7AM) | x (Mon 7:25AM) | reminder (Tue-Sat 8AM) | sunday (Sun 9AM) | monday-send (Mon 7:55AM)
+- Sources: recent-builds.md | technical-angles.md (30+) | consulting-observations.md | job-market-observations.md | Notion swipe file
 
 ## Critic Agent (built 2026-03-07)
 - Agent: `agents/critic/AGENT.md` — 4-step strategic critique framework
@@ -101,7 +97,7 @@
 - AgentGuard: AI governance layer — **LIVE at https://agentguard-delta.vercel.app** (March 2026). Confidence scoring + human-in-the-loop + audit log + explainability report. Insurance claims triage demo. **Portfolio card on jtsomwaru.com ✅ (confirmed live 2026-03-22).**
 - Vista: movie rating app — **LIVE on Apple App Store** (March 2026)
 - Nash Satoshi: crypto game theory rankings (4-LLM ensemble) — GitHub jsomwarux/Nash-Satoshi (private). **Analysis pipeline: PERMANENTLY on Gumloop. Do NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly says so.**
-- Glow Index: skincare rankings on Replit — waiting on n8n workflow + ngrok URL
+- Glow Index: skincare rankings on Replit — ✅ n8n workflow active, Python engine running on Mac mini (port 8001), Tailscale Funnel wired. Engine OpenRouter key lives in LaunchAgent plist (`~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist` — NOT global.env). See ensemble-build-lessons.md for full pipeline failure modes.
 - jtsomwaru.com: live at https://jtsomwaru.com — Next.js on Vercel | Last updated 2026-03-31 (AI Implementation Specialist positioning live; prior: pricing raised, GEO/llms.txt/JSON-LD implemented, nav fixed 2026-03-11)
   - B2B Account Service Agent card: PERMANENTLY BANNED — do not re-add under any circumstances
 - Dynasty fantasy football: planned
@@ -135,15 +131,14 @@
 - **Vibe Marketing**: ✅ BUILT — agent: `agents/vibe-marketing/AGENT.md` | cron: Mon 4:45AM ET (UUID: 870bf3ff) | active products: Nash Satoshi + Vista
 - **Nash Satoshi**: permanently on Gumloop. DO NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly requests.
 
-## Lesson Files (operational, per-system)
-Lessons are stored WITH the system they document — not in one central file. This is the canonical reference:
-- `docs/agents/ensemble-build-lessons.md` — Python/FastAPI ensemble ranking engine builds only (Nash Satoshi, Glow Index, future niches). NOT for vibe marketing.
-- `agents/vibe-marketing/lessons.md` — TikTok slideshow pipeline, Reelfarm API, content generation, Replit deployment. (Created 2026-04-06)
-- `projects/n8n-agent/tasks/lessons.md` — n8n workflow patterns and mistakes.
-- `spanish/lessons/YYYY-MM-DD.md` — Spanish lesson content.
-- Any project with a `lessons.md` or `CLAUDE.md` must be read before touching that project.
-- **TikTok routing rule**: niche-specific products → dedicated account. Builder/dev/AI products → @jts_14
-- **Passive income scout/strategist**: `dcdbbef5` (Sun 6:30AM) → `4e19c300` (Sun 8:30AM) | reports: `memory/passive-income/`
+## Lesson Files
+Lessons stored WITH the system they document — canonical reference for each project:
+- `docs/agents/ensemble-build-lessons.md` — Python/FastAPI ensemble ranking engines (Nash Satoshi, Glow Index, future niches)
+- `agents/vibe-marketing/lessons.md` — TikTok pipeline, Reelfarm, content gen, Replit deploy
+- `projects/n8n-agent/tasks/lessons.md` — n8n workflow patterns
+- `spanish/lessons/YYYY-MM-DD.md` — Spanish lesson content
+- Any project with `lessons.md` or `CLAUDE.md` must be read before touching it.
+- TikTok: niche products → dedicated account; builder/dev/AI → @jts_14
 ## Active Cron Jobs (43 total)
 > Full list: run `cron list`. Do NOT maintain a manual copy here.
 
@@ -155,8 +150,7 @@ Lessons are stored WITH the system they document — not in one central file. Th
 - Auth: Anthropic profile uses OAuth subscription token (sk-ant-oat01-*) — NOT an API key. All Claude/Sonnet/Opus usage is $0 in real API charges, covered by flat Claude subscription. No usage appears in Anthropic Console.
 - Real costs: OpenRouter and Groq only (used when explicitly routing to non-Anthropic models)
 - Alerts: session >$1.50, daily >$15.00, monthly pace >$50 | Goal: <$50/mo real API spend
-- Pre-2026-02-28 snapshots zeroed out — were calculated with wrong Anthropic API pricing (phantom costs)
-- 2026-02-27: daily hit $10.79 (over $10 limit) — driven by Writer SA sub-agent (27k tokens) + morning brief + niche monitor. Consider raising daily threshold to $15 or reducing sub-agent token usage.
+
 
 ## Portfolio Auto-Updater
 - Repo: ~/projects/jtsomwaru-com/ → Vercel (auto-deploy on main push)
@@ -185,9 +179,8 @@ Lessons are stored WITH the system they document — not in one central file. Th
 
 ## Crypto
 - Primary income: crypto | Forward bet: x402 protocol
-- Portfolio (21 coins as of 2026-03-24 — pulled live from Google Sheet each run): $KELLYCLAUDE, $FELIX, $A0T, $PRXVT, $NOX, $JUNO, $ODAI, $PERKOS, $MOLTEN, $FDRY, $NOOK, $CLAWNCH, $CLAWD, $DREAMS, $ZAUTH, $DEXTER, $TAKEOVER, $ROBOTMONEY, $SERV, $WORK, $BOTCOIN
-- Coin intelligence: crypto-agent/data/coin-intelligence/TICKER.md per coin
-- $JUNO note: previously EXIT-rated — JT re-entered, agent will re-analyze fresh each morning
+- Portfolio (21 coins — live pull from Google Sheet each run; full list in crypto-agent/data/) | Coin intel: crypto-agent/data/coin-intelligence/TICKER.md per coin
+- $JUNO: previously EXIT-rated — JT re-entered, agent re-analyzes fresh each morning
 
 ## Financial Situation (updated 2026-03-23)
 - Monthly burn: $2,174 (rent $1,050 + expenses $550 + subs $574). Subscriptions: Claude $200 | Gumloop $194 | LinkedIn $65 | X $40 | Replit $25 | Supabase $25 | Gsuite $14 | Higgsfield $9 (locked until Jan 2027).

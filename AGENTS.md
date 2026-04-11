@@ -225,6 +225,13 @@ These files are APPEND-ONLY or EDIT-ONLY. Using `Write` (full overwrite) on any 
 - Any file in `~/.openclaw/credentials/` — never touch.
 Rule: if you think you need to "reconstruct" or "recreate" one of these files, STOP and alert JT instead. Keys lost to an overwrite cannot be recovered.
 
+## 🔑 API Key Exposure Prevention (HARD RULES — 2026-04-10)
+**Root cause of OpenRouter key revocation:** API key embedded in workspace files (memory/2026-02-21-model-routing.md, docs/tools/TOOLS-full.md) — scanned and auto-revoked by OpenRouter.
+1. **NEVER embed API keys in any code, project files, daily notes, docs, or uploaded content.** Keys live ONLY in: `~/.config/env/global.env`, `auth-profiles.json`, `models.json`, and `openclaw.json` auth sections.
+2. **NEVER modify auth-profiles.json, models.json, openclaw.json auth section, summaryModel, or summaryProvider without JT's explicit approval.** These have been changed multiple times and broken the system. Get approval first.
+3. **Before writing any file that will be uploaded to Google Drive, pushed to GitHub, or shared externally:** scan for API key patterns (sk-or-v1, sk-ant-, Bearer, 32+ char hex/base64). Redact before saving.
+4. **If an API key must be referenced in notes/docs:** use `[REDACTED]` or `YOUR_KEY_HERE` — never the actual key.
+
 ## Model Routing
 - groq/llama-3.3-70b-versatile: heartbeats, simple crons, notification sends
 - anthropic/claude-sonnet-4-6: default — all JT convo, analysis, complex crons

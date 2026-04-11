@@ -177,3 +177,40 @@ Use Claude Opus for any build session — app development, ensemble ranking buil
 7. Only then trigger batch-analyze
 
 
+
+---
+
+## OpenRouter API Key Management (added 2026-04-10)
+
+**Engine reads `OPENROUTER_API_KEY` from LaunchAgent plist environment, NOT from workspace files.**
+The plist at `~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist` stores `OPENROUTER_API_KEY` as an environment variable. The engine gets this via `os.environ["OPENROUTER_API_KEY"]`. Workspace files (TOOLS.md, global.env) are NOT read by the engine at runtime.
+
+**When updating the plist: must `launchctl unload` + `load` to pick up changes.**
+Just restarting the process (`kill` + start) is insufficient — launchd caches the plist env vars on load. Update sequence:
+```bash
+plutil -replace EnvironmentVariables.OPENROUTER_API_KEY -string "sk-or-v1-..." ~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist
+launchctl unload ~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist
+launchctl load ~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist
+```
+
+**Engine must have startup API key validation (defensive).**
+Engine can start "successfully" (uvicorn binds port, /health returns 200) even with a revoked/invalid OpenRouter key. First real analysis then fails silently with all-401 errors. Fix: on startup, make a minimal test call to OpenRouter (any cheap model, 5 tokens). If 401 → log FATAL error + exit 1 so launchd restarts it. Without this, the engine appears healthy but produces zero results.
+
+**Test the specific key the engine uses, not just global.env.**
+`curl` from your shell uses the key in global.env. The engine may use a different key (e.g., stored in plist). Always test: `curl -H "Authorization: Bearer <engine-key>" https://openrouter.ai/api/v1/models`. If 401 → engine key is revoked/wrong.
+
+---
+
+## Glow Index Pipeline Failures — Failure Modes and Fixes (added 2026-04-10)
+
+**Failure mode: Products added via votes flow have `website: null`.**
+The `/api/votes/add-product` endpoint hardcodes `website: ""` (empty string, treated as null by engine). Engine's Stage 1 can't scrape ingredients without a website URL. Gate fails with "No valid ingredient data found — ingredients are required." Fix: always provide a real website URL when adding products. For products without websites, use IncideDecoder/CosDNA URL as the website field.
+
+**Failure mode: Engine goes down silently.**
+n8n webhook returns 202 immediately (async), so n8n never knows the engine failed. Analysis silently produces no results. Fix: engine `/health` endpoint should do a live API key check. Monitor via watchdog cron: `curl -s http://127.0.0.1:8001/health` → if non-200 or slow (>500ms), restart engine + alert JT.
+
+**Failure mode: Tailscale Funnel port mismatch.**
+n8n webhook must be reachable from Replit/Vercel. Correct URL: `https://jts-mac-mini.tailaf2fd2.ts.net:8443/webhook/[path]`. Port 8443 = n8n. Port 443 = Mission Control (Next.js). Test with: `curl -s -o /dev/null -w "%{http_code}" https://jts-mac-mini.tailaf2fd2.ts.net:8443/webhook/[path]` → should return 202.
+
+**Failure mode: Callback 404 means wrong secret, not missing endpoint.**
+The Glow Index `/api/analysis-callback` returns 404 for wrong `callbackSecret` (security measure). If engine log shows "Callback attempt N/3 failed: 404" → wrong secret in engine's N8N_CALLBACK_SECRET env var, OR wrong URL. Verify: engine's N8N_CALLBACK_SECRET must match Replit's `N8N_CALLBACK_SECRET` secret.

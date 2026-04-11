@@ -153,3 +153,26 @@ Insurance (24) is in the "double down" zone. No change needed — continue build
 - Property management AI automation n8n workflow consulting demand 2026
 - Staffing agencies Salesforce Agentforce AI implementation 2026 NYC SMB
 - Construction AI automation competitor risk n8n consultant 2026
+
+## 2026-04-10 — 10 New Ideas Added (JT Submissions)
+
+Scored via syncPideas mutation, ranked by score:
+
+| Rank | Idea | Score | Notes |
+|------|------|-------|-------|
+| 1 | AI Model Usage Bars (OpenClaw) | 8.8 | Plugin ecosystem — Eve can track usage, upsell |
+| 2 | Dynasty League Analyzer AI | 8.2 | Sports data API + LLM — Nash Satoshi pattern |
+| 3 | Closet Try-On AI Avatar | 7.8 | Fashion + AI — mobile-first |
+| 4 | NYC Scavenger Hunt QR | 7.5 | Local + viral loop — simple build |
+| 5 | Parents Life Story App | 7.2 | Memoir/legacy — emotional buy-in |
+| 6 | Group Trip Planning | 6.8 | Collaboration + AI |
+| 7 | Music Artist Profile App | 6.5 | Audio features API + social |
+| 8 | Golfbreaks for Hiking | 6.2 | Niche outdoor — weather API |
+| 9 | TSA Wait Times | 5.0 | API dependency, low creativity |
+| 10 | Pizza Shop Dashboard | 4.8 | Too niche, low margin |
+
+**Top 3 to build next:** Dynasty League Analyzer (8.2), Closet Try-On AI (7.8), NYC Scavenger Hunt QR (7.5)
+
+## 2026-04-10 — Glow Index Engine Fix (Key Technical Detail)
+
+LaunchAgent plist `com.openclaw.glow-index-engine.plist` stores `OPENROUTER_API_KEY` as an env var. The plist was updated with the current key (replacing a revoked one). When updating the plist, must `launchctl unload` then `launchctl load` to pick up new env vars — just restarting the process is insufficient. The engine binds to `127.0.0.1:8001`.

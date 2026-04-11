@@ -38,7 +38,7 @@ user: Conversation info (untrusted metadata):
 }
 ```
 
-Here's my OpenRouter API key: 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 OpenRouter is our unified gateway for non-Anthropic models. Use it to route to: • OpenAI models (GPT-5.2-Codex for coding) • Google models (Gemini as fallback) • Any other model we need access to Add to TOOLS.md: OpenRouter base URL is [https://openrouter.ai/api/v1](https://openrouter.ai/api/v1). Always route through OpenRouter for non-Anthropic models unless there's a specific reason to use the provider directly.
+Here's my OpenRouter API key: [REDACTED - revoked API key] OpenRouter is our unified gateway for non-Anthropic models. Use it to route to: • OpenAI models (GPT-5.2-Codex for coding) • Google models (Gemini as fallback) • Any other model we need access to Add to TOOLS.md: OpenRouter base URL is [https://openrouter.ai/api/v1](https://openrouter.ai/api/v1). Always route through OpenRouter for non-Anthropic models unless there's a specific reason to use the provider directly.
 assistant: Not a native OpenClaw integration — goes in TOOLS.md.
 assistant: Also worth checking if OpenClaw can route through OpenRouter natively for sub-agents.
 assistant: [[reply_to_current]] Stored in TOOLS.md with full usage notes — base URL, auth header, which models to route where, and an example API call format.

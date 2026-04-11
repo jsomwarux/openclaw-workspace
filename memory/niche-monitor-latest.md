@@ -1,3 +1,3 @@
-**Last updated:** 2026-04-08 13:00 UTC
+**Last updated:** 2026-04-10 09:00 AM EST
 
-No new critical findings as of 2026-04-08 13:00 UTC.
+No new critical findings as of 09:00 AM.

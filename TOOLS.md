@@ -174,4 +174,5 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
   - ⚠️ **Required Replit Secrets:** BRAVE_API_KEY (for image fetch), ADMIN_SECRET (default: glowindex-admin-2024-secret), N8N_WEBHOOK_URL, N8N_CALLBACK_SECRET
   - **Image backfill (run once after fresh deploy):** `curl -X POST https://skincare-rankings.replit.app/api/fetch-images -H "x-admin-key: glowindex-admin-2024-secret"`
   - **Replit deploy checklist:** (1) git pull in Replit, (2) `npm run build` in Shell, (3) Redeploy, (4) run image backfill curl if products have no images
+  - **⚠️ Engine OpenRouter key lives in LaunchAgent plist — not global.env.** `~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist` has `OPENROUTER_API_KEY`. If analyses fail with all-401 errors: update the plist key, then `launchctl unload` + `load` to force launchd to pick up the change. Engine binds `127.0.0.1:8001`.
 - Nash Satoshi: jsomwarux/Nash-Satoshi (private)
