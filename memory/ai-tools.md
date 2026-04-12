@@ -398,3 +398,5 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 
 **OpenAI + DeepMind multimodal models (Apr 2026)** — Next-gen models reasoning across text, images, and video instantly. Agentic capability baseline continuing to rise. No action needed — Claude Sonnet still JT's primary. Monitor if API pricing shifts. (aiagentstore.ai, 3 days ago)
 
+
+**OpenClaw v2026.4.1 — Infer Hub (Apr 2026)** — OpenClaw introduced Infer Hub, a unified plugin SDK for model inference, media inference, web scraping, and embedding generation. Consolidates what was previously separate plugin integrations into one coherent system. Potential to simplify Eve's orchestration setup (reduce separate API integrations). Worth monitoring — if Infer Hub matures, could replace current n8n/OpenAI/Custom GPT plugin stack for Eve. Also: /tasks chat-native task board launched (Eve uses Convex/MC so no impact), macOS gateway version parsing fixed. (openclaw.ai, 3 days ago)

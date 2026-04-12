@@ -18,3 +18,13 @@
 - Film: April 8 system failures
 - Step A Fix: t3-cold-hook + Build Ideas crons had deepseek-chat-v3 as expensive fallback → fired twice yesterday ($5.34). Patched all 3 crons to gemini-3.1-flash-lite-preview (~90% cost reduction on fallback). Also removed google/gemini-3.1-pro invalid model ID from fallback chain.
 - Step B Improve: Add rule — when adding model fallbacks, prefer cheaper models (gemini-flash-lite) over expensive ones (deepseek-chat-v3). Budget impact: without this fix, monthly pace would be ~$180 instead of $126.
+
+## 2026-04-11 3AM Film Review
+- Film: Glow Index frontend template extraction task (Apr 10 21:42) was interrupted by pre-compaction mid-file-listing. Task incomplete — JT didn't get the full output.
+- Step A Fix: Add rule — large file-reading/compilation tasks in overnight runs: spawn as isolated sub-agent with checkpoint file. If session compacts mid-task, next run checks checkpoint and resumes.
+- Step B: Cost alert fired 5x in one day ($138.28/mo vs $75 cap). Multiple identical alerts. Alert fatigue.
+
+## 2026-04-11 10AM — Film Review (Friday April 10)
+**Film reviewed:** Friday April 10 (Passive Income tab build, Glow Index frontend extraction, outreach pipeline night run, multiple heartbeats + cost alerts)
+**Fix:** outreach pipeline M1→M2 gap → added rule to AGENTS.md Mistakes Log: whenever M1 logged with M2 due date, immediately create MC task for M2
+**Improve:** cost alerts fire every heartbeat with same message — needs deduplication in cost-tracker.py or alert suppression

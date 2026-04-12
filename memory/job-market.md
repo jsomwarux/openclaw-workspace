@@ -198,3 +198,10 @@
 - **Salesforce Ben SA Salary Report (Mar 9)**: "Architecture must be at the heart of AI solutions. Solution Architects will play a critical role — building deep understanding of how AI models suit specific business problems." Direct validation of JT's positioning. Quote usable in future cover letters/outreach.
 - **Salesforce CEO on Block layoffs (Mar 5)**: Benioff says Block is an isolated case, NOT a broader signal. Salesforce headcount holding — hiring for Agentforce roles continues. Bullish signal for the Lead Agentforce SE application (deadline 03/27).
 - **No new high-scoring roles** surfaced this week. Salesforce Lead Agentforce SE (24/25, deadline 03/27) remains the only active application. Priority: watch for interview outreach.
+
+## 2026-04-11 PM Update
+- 🟠 AI Enablement Lead category: 672 open remote roles on Glassdoor — category is real and growing, not a one-off pattern (confirmed Apr 11)
+- 🟠 Enterprise AI hiring shift: "internal-only" Salesforce roles appeared for first time in multiple days — enterprise prioritizing internal mobility over external candidates for AI strategy roles
+- Two-tier market holds: specialist surge vs. generalist contraction. No new skill clusters this week.
+- Build ideas pipeline (TelcoAgent, AgentPack, ProcessBlueprint, ROIFlow, AdoptAI) covers all active gaps. No new ideas needed.
+- job-market-agent daily-brief.md running normally at 5:15AM — brief is current, this memory file just wasn't being synced

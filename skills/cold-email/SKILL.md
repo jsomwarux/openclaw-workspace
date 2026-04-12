@@ -94,6 +94,14 @@ Target length: 4–6 sentences. Never more than 8.
 
 **CTA note:** Closing question must be open-ended, not binary yes/no. "Curious what you're running into there?" passes. "Still manual or have you guys built something around that?" fails — that is Anti-Pattern #2 (Binary Close). The curiosity question in M1 should invite them to describe their situation, not confirm or deny it.
 
+**Safe CTA patterns (copy these, do not improvise binary variants):**
+- "Curious how your team is handling that right now?"
+- "Curious what the current process looks like for that?"
+- "Worth a quick conversation?"
+- "Curious if that's something you're actively looking at?"
+
+**Trap to avoid:** "Curious if that's where you're feeling it, or somewhere else?" — the "or somewhere else" escape still has binary structure. Replace with: "Curious where the biggest time drain is for your team right now?"
+
 **Example structure:**
 "Saw you're scaling the [specific project type] operation — that usually means [ops pain point] hits harder. I built a workflow automation system for a NYC contractor that [specific outcome from Aya]. Worth a quick conversation?"
 

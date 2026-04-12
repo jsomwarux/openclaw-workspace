@@ -20,3 +20,5 @@
 2026-04-01T15:36:45Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 6 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-04-02T15:35:00-04:00 | daily-scan | x_queries: 6 | web_queries: 8 | findings: 6 | 🔴: 1 | 🟠: 1 | messaged_jt: yes
 2026-04-07T15:38:00Z | daily-scan | x_queries: 0 (API 401 — unconfigured) | web_queries: 12 | findings: 9 | 🔴: 1 | 🟠: 1 | 🟡: 2 | 🟢: 6 | messaged_jt: yes | note: X search unavailable (token not configured), used web search fallback. Key finding: OpenClaw v2026.4.5 breaking changes + video/music generation.
+[2026-04-11T11:01:00Z] | weekly-synthesis | x_queries: 6 | web_queries: 7 | findings: ~23 | 🔴: 1 | 🟠: 0 | 🟡/🟢 (KB'd): ~21 | messaged_jt: yes | mc_tasks_pushed: 1 (OpenClaw update scope expanded)
+2026-04-11T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 12 | 🔴: 0 | 🟠: 0 | messaged_jt: no
