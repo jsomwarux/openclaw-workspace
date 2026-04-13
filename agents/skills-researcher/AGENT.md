@@ -29,7 +29,7 @@ Read `~/.openclaw/workspace/MEMORY.md` at the start of each run to get the curre
 - **analysis-agent** — proposal analysis
 - **ranking-app-agent** — Nash Satoshi / Glow Index rankings
 
-Installed skills: `jt-consulting-pipeline`, `qmd`, `x-research`
+Installed skills: `jt-consulting-pipeline`, `qmd`, `x-research`, `runbook`
 
 ---
 

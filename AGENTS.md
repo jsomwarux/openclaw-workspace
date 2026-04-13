@@ -11,7 +11,7 @@
 ## Budget Rule
 `bootstrapMaxChars=32000` — HARD CAP. Never raise above 32,000 (40,000 caused 2h outage 2026-03-31).
 **Safe limits:** AGENTS.md <28k | MEMORY.md <20k | TOOLS.md <16k | HEARTBEAT.md <16k.
-**Enforcement (mandatory before appending):** Run `wc -c [file]` first. If adding content would push file over its safe limit, move the largest existing section to its subfile to make room first. Never append without checking. Subfiles: `docs/agents/outreach-rules.md` | `docs/agents/resume-upload-rules.md` | `docs/agents/post-detection-rules.md` | `docs/agents/autoresearch-rules.md` | `docs/agents/mistakes-log.md` | `docs/tools/claude-personas.md` | `docs/tools/TOOLS-full.md`.
+**Enforcement (mandatory before appending):** Run `wc -c [file]` first. If adding content would push file over its safe limit, move the largest existing section to its subfile to make room first. Never append without checking. Subfiles: `docs/agents/outreach-rules.md` | `docs/agents/resume-upload-rules.md` | `docs/agents/post-detection-rules.md` | `docs/agents/autoresearch-rules.md` | `docs/agents/mistakes-log.md` | `docs/agents/mistakes-log-recent.md` | `docs/agents/workflow-protocols.md` | `docs/agents/operational-rules.md` | `docs/agents/content-rules.md` | `docs/agents/task-board-rules.md` | `docs/tools/claude-personas.md` | `docs/tools/TOOLS-full.md`.
 
 ## Plan Mode
 3+ steps or architectural decisions: write plan first, show JT, wait for approval. If something breaks mid-task: STOP, re-plan. Multi-session projects: write to plans/[name].md, re-read each session, update as steps complete.
@@ -90,29 +90,13 @@ New cron/agent prompts must have all 4 before deploying: (1) Task Context — ro
 ## Task Descriptions Must Be Actionable
 Every MC task must include: (1) specific first action (URL, command, file path), (2) why it matters, (3) what done looks like. No task that just restates the title. Can't write a concrete first action → flag to JT, don't create it yet.
 
-## Task Board Rules (single source of truth)
-Everything JT needs to do must be on the board. Overnight items, decisions, JT manual steps → pushed as HIGH tasks before logging. De-dupe before pushing. Any build/skill/project recommendation MUST be pushed to MC immediately.
-
-**Priority:**
-- **HIGH** — actionable now: consulting deliverables, job apps with open deadlines, demo builds, alerts → act within 48h
-- **MEDIUM** — blocked/speculative: "Build idea:" tasks, blocked/waiting, internal refactors; speculative → sortOrder 500+
-- **LOW** — nice-to-have, stalled, far-future
-
-**Standing priority order:** Consulting first → job apps (2-3/week, 20+/25 threshold, no coding/SE/Python roles) → time-sensitive products → speculative builds → passive habits.
-**Dependency rule:** B after A and A not done → B's priority ≤ A's priority.
-**Unblocking rule:** When marking done, bump unblocked tasks to HIGH.
-**Audit trigger:** Eve adds a task OR JT asks "are my tasks prioritized?" → quick audit + fix same turn.
+## Task Board Rules
+> Full spec: `docs/agents/task-board-rules.md`
 ## Workflow Rules
-- Done: 1–2 line confirmation + what's next
-- Long builds: spawn autonomous sub-agent (sessions_spawn mode=run), not step-by-step in main session
-- External actions (emails, public posts): state intent, wait for confirmation unless pre-approved
-- [DECISION] log: in memory/YYYY-MM-DD.md under ## Decisions: `[DECISION] chose X over Y because Z.`
-- Cron: always set model explicitly in isolated agentTurn payloads
+> Full spec: `docs/agents/workflow-protocols.md`
 
 ## Verification (before marking done)
-- Run it, test it, check logs, demonstrate correctness
-- LARP check: no stubs, no fake data, no hardcoded-pretending-dynamic, no silent error swallowing
-- Can't prove it works = not done
+> Full spec: `docs/agents/operational-rules.md`
 
 ## Quality Rules
 - Non-trivial changes: ask "is there a more elegant way?" Fix hacky. Skip for obvious fixes.
@@ -121,9 +105,7 @@ Everything JT needs to do must be on the board. Overnight items, decisions, JT m
 - Append one-line task summary to memory/weekly-recaps/current-week.md. Archive every Monday.
 
 ## Clarify Before Executing
-- Ambiguous task (2+ valid interpretations, different outcomes) → state assumption, ask to confirm before acting
-- Multi-file destructive operations → state scope, wait for go-ahead
-- Exception: if intent is obvious from context, proceed and note assumption in reply
+> Full spec: `docs/agents/operational-rules.md`
 
 ## Instruction Specificity
 - Vague request + high-stakes action → ask one clarifying question before proceeding
@@ -131,40 +113,29 @@ Everything JT needs to do must be on the board. Overnight items, decisions, JT m
 - Never ask more than one clarifying question per message
 
 ## Claude-Warden Setup Rule
-New project dir created → remind JT to run `/warden-setup` inside it if client-facing, has governance files, or overnight agent will touch it. Qualifies: client deliverables, jtsomwaru-com, agentforce-agent, consulting demos. Skip: throwaway dirs, one-off scripts.
+> Full spec: `docs/agents/operational-rules.md`
 
 ## CLAUDE.md Maintenance Rule (mandatory)
 Update CLAUDE.md files immediately (same session) when: new tool/skill/plugin installed, project status changes, strategy/pricing decision made, new agent/cron built, any hard constraint decided. Don't wait for JT to notice drift.
 Files: `~/.claude/CLAUDE.md` (global) | `~/projects/jtsomwaru-com/CLAUDE.md` | `~/projects/agentforce-agent/CLAUDE.md` | any active project-level CLAUDE.md.
 
 ## Notion Calendar Drive Link Rule (mandatory)
-When updating Notion calendar Drive Link fields: **never bulk-overwrite all entries with one URL.**
-- Bank posts (from `memory/content/bank/`) → each has its own Drive doc → use the link from `posted-log.jsonl`
-- Weekly calendar posts (generated by content-generate crons) → point to the weekly Drive doc
-- Rule: always map per-post. A bulk update that sets every entry to the same link = wrong.
+> Full spec: `docs/agents/content-rules.md`
 
 ## Weekly Seeds Handler (mandatory)
-When JT sends a message starting with "seeds:" OR 2+ short bullet observations (especially Sunday evening): write raw content to `memory/content/weekly-seeds.md` between `## Seeds` and next `---` using regex replacement. Confirm: "✅ Seeds saved — [N] observations logged." Append if JT adds more same session.
-**Trigger:** "seeds:" prefix, Sunday bullet observations, 🌱 prompt reply. **NOT:** morning brief replies, casual chat.
+> Full spec: `docs/agents/content-rules.md`
 
 ## "Posted" Reply Handler (mandatory)
-When JT replies "posted", "posted both", or any variant confirming he posted content to X or LinkedIn:
-1. Identify which post(s) from the most recent content-reminder or content-sunday send were posted
-2. Update `~/.openclaw/workspace/memory/content/posted-log.jsonl` immediately — find the matching entries and set `"posted": true` and add `"posted_date": "YYYY-MM-DD"`
-3. If JT specifies which platform ("posted LinkedIn" / "posted X"), mark only that entry; if "posted both", mark both
-4. Confirm back: "Logged ✅ — [Monday X / Tuesday LinkedIn / etc.] marked posted."
-This is how the log stays accurate. Without it, everything shows posted=false forever.
+> Full spec: `docs/agents/content-rules.md`
 
 ## Outreach Status Tracking Rule (mandatory)
-When JT confirms outreach sent to any prospect: update shortlist file + outreach-draft.md status + create next M-sequence MC task. Full rules + timing: `docs/agents/outreach-rules.md` — read before any outreach status changes.
+> Full spec: `docs/agents/outreach-rules.md`
 
 ## Proactive Task Closure Rule
-When any tool call, check, or verification confirms that something is already done (version installed, feature live, task complete, URL fixed, etc.) — mark the corresponding Mission Control task as done immediately in the same turn. Do not wait for JT to point it out. "I confirmed X is done" without closing the task is incomplete work.
+When any tool call, check, or verification confirms that something is already done (version installed, feature live, task complete, URL fixed, etc.) -- mark the corresponding Mission Control task as done immediately in the same turn. Do not wait for JT to point it out. "I confirmed X is done" without closing the task is incomplete work.
 
 ## Validated Fix = Apply Immediately Rule
-Autoresearch, film review, cron health audit — if the run validates a fix, apply it in the same run. Cron payloads → `cron update` (use the cron tool's update action with the jobId and patch). Skill files → edit directly. Creating an MC task for a fix the agent already knows how to make = deferral, not completion.
-Exception: architectural changes (restructuring a skill's purpose, removing JT-authored sections) → save separately and flag.
-**Autoresearch specific:** When autoresearch identifies rule violations in a cron payload and recommends fixes, those fixes must be patched into the cron immediately via `cron update` in the same session. "Logged as recommendations" is not the same as applied. A result file with improvement recommendations that were not applied = incomplete autoresearch run.
+> Full spec: `docs/agents/operational-rules.md`
 
 ## Niche Intel Propagation Rule
 🟠+ signals in `niche-monitor-latest.md` that change pitch angle or ICP criteria MUST update `documents/ICPs.md` and `skills/cold-email/SKILL.md` before next outreach batch. Surfacing in morning brief ≠ handled. Overnight agent runs this check every night (Step 1).
@@ -173,16 +144,15 @@ Exception: architectural changes (restructuring a skill's purpose, removing JT-a
 Anything evaluated and deferred ("not right now") → add to `memory/future-signals.md` immediately with: what it is, why deferred, and a SPECIFIC trigger condition. Weekly synthesis reviews all signals and promotes any whose trigger is met. Never let "not now" disappear with no resurfacing mechanism.
 
 ## Tool/Plugin/Integration Evaluation Rule
-New tool/plugin surfaces: Eve evaluates it independently. NOT useful → skip silently. Worth adding → create MC task with recommendation, mention once. Never ask JT "should I add this?" — Eve decides first.
+New tool/plugin surfaces: Eve evaluates it independently. NOT useful → skip silently. Worth adding → create MC task with recommendation, mention once. Never ask JT "should I add this?" -- Eve decides first.
 
 ## Automatic Skill Detection
-- Before any task: scan available_skills descriptions. If one clearly matches, read its SKILL.md and follow it.
-- If multiple match: pick most specific. Never read more than one skill up front.
-- If no skill matches: proceed without reading any SKILL.md.
-- **Hard rule: reading the skill file and following the skill file are not the same thing. After reading, run the skill's pre-output checklist explicitly before generating output. Memory of a skill's rules does not substitute for reading and applying the file. Outreach drafts that bypass the cold-email skill checklist are incomplete work.**
+> Full spec: `docs/agents/operational-rules.md`
 
 ## Skill Quality Rule
 Every skill delivers final output directly. Before shipping: "Does this produce the final output, or something that enables it?" If the latter — cut the intermediate step.
+
+
 
 ## Cross-File Consistency
 - Any fact that changes in one file must be updated in ALL files that reference it before the task is done.
@@ -291,15 +261,10 @@ Cron output feeding another cron: schedule producer ≥90 min before consumer. C
 Check `skills/` for existing SKILL.md before any recurring task. Key skills: job-application | portfolio-card | coding-agent | gh-issues | weather | qmd | x-research | jt-consulting-ops. If a skill exists: read it and follow it.
 
 ## Content Generation Rule (X posts, threads, LinkedIn)
-Before drafting ANY post or content for JT: read `memory/content-voice.md`.
-Run the audit checklist at the bottom of that file on every draft before delivering.
-Key rules (enforced always — no exceptions):
-- Start with the point, never with setup or preamble
-- "you/your" must outnumber "I/my" 5:1 or better
-- Standalone posts: target 6-15 words
-- No forbidden words (full list in content-voice.md)
-- No em dashes, no exclamation points, no "Here's the thing:" openers
-- Threads: max 5 tweets; most should be 3
+> Full spec: `docs/agents/content-rules.md` · Voice ref: `memory/content-voice.md` · Wednesday LinkedIn: `skills/wednesday-linkedin/SKILL.md`
+
+Before drafting ANY post or content for JT: read `memory/content-voice.md` + run the audit checklist at the bottom of that file.
+Key rules (enforced always — no exceptions): start with the point, never preamble | "you/your" >= 5x "I/my" | standalone posts 6-15 words | no em dashes, no exclamation points, no "Here's the thing:" | threads max 5 tweets.
 
 ## Lessons Auto-Write Rule (mandatory)
 Whenever a non-obvious problem is solved, a silent failure mode is discovered, or a pattern is confirmed through operational experience: write the lesson immediately in the same turn. Do not wait for JT to ask.
@@ -325,14 +290,8 @@ Full detail: `docs/agents/workflow-protocols.md` — read before any coding task
 - **Agentforce:** `git pull origin main` before. `git push` after.
 - **Site rule:** B2B Account Service Agent permanently banned. Never add unbuilt/untested work to jtsomwaru.com.
 ## Mistakes Log
-Full archive: docs/agents/mistakes-log.md — read it before claiming "this is new."
-Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete rule.
+> Recent: `docs/agents/mistakes-log-recent.md` · Full archive: `docs/agents/mistakes-log.md`
 
-**Recent entries (last 4):**
-| Date | Mistake | Fix |
-|------|---------|-----|
-| 2026-04-11 | outreach-pipeline: April 1 batch (7 prospects) all had M1 sent correctly but M2 MC tasks were never created. Pipeline logged M2 due dates but no MC task was created → 6 days of silence on 7 warm prospects. Root cause: process logged the due date but skipped the step of creating the actual Mission Control task for M2. | Rule: **Whenever M1 is sent and logged with an M2 due date, immediately create the M2 MC task on that date. Do not defer. Do not batch. The pipeline must never log a follow-up date without also creating the task to send it.** |
-| 2026-04-08 | Telegram delivery failures across multiple crons (niche-monitor, Spanish Weekly Eval, crypto morning) — content generated correctly but empty/minimal messages rejected by Telegram. Root cause: crons send "All clear" or zero-content Telegram messages when no findings exist. Each cron fixed individually. | Rule: **All crons that save content + send Telegram: must skip Telegram send if content is empty or "All clear." Add `If no new [findings]: SKIP THE TELEGRAM SEND` to every Telegram-capable cron payload. Already applied: niche-monitor, Spanish Weekly Eval, crypto morning.** |
-| 2026-04-05 | Bootstrap files exceeded safe limits (AGENTS.md 32,311 / MEMORY.md 24,116 / TOOLS.md 19,030). Groq fallback never worked. LCM compaction failing silently. Retry loops burning rate limit. Root cause: no pre-append size check enforced, Groq free tier TPM too low for compaction, fallback model same provider as primary. | Rule: **Check `wc -c` before every append. Use openrouter/gpt-4o-mini as fallback (same provider as primary). LCM summaryModel must be Gemini Flash-Lite via openrouter. Max 3 retries with exponential backoff then stop + alert.** |
-| 2026-04-02 | Resume and cover letter generated with em dashes throughout. Root cause: wrote files directly without loading job-application/SKILL.md first. | Rule: **Load job-application/SKILL.md before writing a single word of any application package.** |
-| 2026-03-25 | Cover letter uploaded blank — body missing. Root cause: `parse_cover_letter_md()` requires exactly two `---` separators; had only one. | Rule: **Cover letter markdown must have two `---` separators. Always run `parse_cover_letter_md()` verification before uploading.** |
+Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete prevention rule.
+
+

@@ -25,3 +25,5 @@
 2026-04-05 pm-ai-renewal-improvement-mckinsey — McKinsey confirms rental orgs seeing 3–7% renewal rate improvement with AI workflows; 90%+ lead response time improvement from 24/7 agents. First citable ROI numbers for PM pitch. (Forbes March 2026)
 2026-04-05 agentforce-adoption-gap-operationally-hard — Market consensus now explicit: gap between Agentforce license purchase and production deployment is "not conceptually hard, operationally hard." Opens consulting angle as activation specialist, not implementation consultant. (getclientell.com Apr 2026)
 2026-04-05 n8n-named-required-enterprise-tool-senior-sa — NICE Sr. SA JD names n8n as required tool alongside Copilot Studio, LLMs, RAG, MCP servers. First time n8n appears as explicit named requirement at Senior SA level — crosses from power-user to credentialed enterprise standard.
+
+2026-04-12 n8n-ai-agent-framework-2026 — n8n March 2026 AI Agent Framework represents fundamental architecture shift in workflow automation. Published Apr 8, 2026 by kollox.com analysis. Confirms n8n moving from workflow builder to orchestration layer.

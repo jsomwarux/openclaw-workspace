@@ -20,3 +20,8 @@
 **Recommendation:** Build a TelcoAgent prototype (Agentforce for Communications vertical, anchored to 6 years of Spectrum Enterprise telco ops experience) this week. One working demo — even a sandbox — is the single artifact that closes the generalist vs. specialist divide now at 🔴 Critical in the skills tracker, AND aligns with the Agentforce for Communications vertical launch (Feb 2026, still uncrowded).
 **Why now:** Skills demand tracker shows AI Specialist vs. Generalist Divergence at 🔴 Critical (Mar 30). Business Insider confirms specialist consultant hiring up 20–35% while generalists contract. "Vertical hyper-specialization" explicitly named as the dividing line for AI consultant value in 2026. Without a vertically-specific demo, JT competes in the contracting generalist pool. TelcoAgent is the only differentiated specialist claim JT can make with real operational backing.
 **Status:** open
+
+### 2026-04-12 — H.C. Oswald M2 (No Demo) Before Pipeline Goes Cold
+**Recommendation:** Send H.C. Oswald M2 this week via LinkedIn connection note, referencing their Mar 26 Product Hunt launch as the hook. No demo attachment in M2. One value drop: mention the Intercom-based catalog search agent approach for their specific use case. Calendly in M2 only if they reply.
+**Why now:** H.C. Oswald is the only active T1 prospect. M1 sent. No response yet. Window is open but outreach goes cold without M2 follow-up within 7-10 days. "DenchClaw launch March 26" is a natural, non-pushy conversation opener that shows JT did his research on them specifically.
+**Status:** open

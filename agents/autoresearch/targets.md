@@ -27,6 +27,7 @@
 | vibe-marketing | agents/vibe-marketing/AGENT.md | checklists/vibe-marketing.md | stable | 0.900 | 2026-03-30 | 2026-03-22 |
 | job-application | skills/job-application/SKILL.md | checklists/job-application.md | stable | 1.000 | 2026-03-30 | 2026-03-22 |
 | overnight | agents/overnight/ (overnight cron payload) | checklists/overnight.md | stable | 1.000 | 2026-03-31 | 2026-03-29 |
+| runbook | skills/runbook/SKILL.md | checklists/runbook.md | pending | — | — | 2026-04-12 |
 
 ## Status values
 - `pending` — checklist written, not yet run

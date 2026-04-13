@@ -229,34 +229,91 @@ def build_caption(entry: dict) -> tuple[str, str]:
     return caption, description
 
 
-def find_next_entry(product: str):
-    """Find oldest approved+unposted TikTok queue entry for this product."""
-    if not os.path.exists(QUEUE_PATH):
-        return None
-    
-    entries = []
-    with open(QUEUE_PATH) as f:
-        for line in f:
+def _hook_key(entry: dict) -> str:
+    """Normalize hook text to a comparable key for duplicate detection.
+
+
+    Extracts TEXT OVERLAY / TEXT: content, lowercases, strips punctuation
+    and apostrophe variations so two queue entries with the same core hook
+    normalize to the same key regardless of formatting differences.
+    """
+    import re
+    content_text = entry.get("content", "")
+    hook = ""
+
+    for line in content_text.split("\n"):
+        line = line.strip()
+        for prefix in ["TEXT OVERLAY:", "TEXT:"]:
+            if prefix in line:
+                idx = line.index(prefix)
+                candidate = line[idx + len(prefix):].strip()
+                if candidate:
+                    hook = candidate
+                    break
+        if hook:
+            break
+
+    if not hook:
+        skip_prefixes = ("SLIDE", "CAPTION", "HASHTAG", "FORMAT", "SOURCE",
+                         "SCREENSHOT", "LABEL", "NOTE", "TITLE")
+        for line in content_text.split("\n"):
             line = line.strip()
-            if not line:
-                continue
-            try:
-                entry = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-            
-            if (entry.get("product_slug") == product
-                    and entry.get("platform") == "tiktok"
-                    and entry.get("status") == "approved"
-                    and not entry.get("posted", False)):
-                entries.append(entry)
-    
-    if not entries:
-        return None
-    
-    # Sort by generated_at ascending (oldest first)
-    entries.sort(key=lambda e: e.get("generated_at", ""))
-    return entries[0]
+            if line and not line.startswith(skip_prefixes):
+                hook = line
+                break
+
+    key = hook.lower()
+    key = key.replace("\u2019", "'").replace("\u2018", "'").replace("\u0027", "'")
+    key = key.replace("\u2014", " ").replace("\u2013", " ")
+    key = re.sub(r"[^a-z0-9 ' \s]", "", key)
+    key = re.sub(r"\s+", " ", key).strip()
+    return key
+
+
+def _last_hook_key(product: str) -> str:
+    """Get the hook key of the most recent TikTok post for this product.
+
+    Reads the LAST line in performance-log.jsonl for this product+platform
+    and returns its normalized hook key. Returns '' if nothing posted yet.
+    """
+    import re
+    if not os.path.exists(PERF_LOG):
+        return ""
+    last_entry = None
+    try:
+        with open(PERF_LOG) as f:
+            for line in f:
+                stripped = line.strip()
+                if not stripped:
+                    continue
+                try:
+                    e = json.loads(stripped)
+                    if e.get("product_slug") == product and e.get("platform") == "tiktok":
+                        last_entry = e
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        return ""
+    if not last_entry:
+        return ""
+    queue_id = last_entry.get("id", "")
+    if not queue_id:
+        return ""
+    try:
+        with open(QUEUE_PATH) as f:
+            for line in f:
+                stripped = line.strip()
+                if not stripped:
+                    continue
+                try:
+                    e = json.loads(stripped)
+                    if e.get("id") == queue_id:
+                        return _hook_key(e)
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        pass
+    return ""
 
 
 def mark_posted(entry_id: str, slideshow_id: int, video_id: str):

@@ -336,3 +336,14 @@
 **ETH:** $2,245 (+2.28%) | Above $2.2K
 **SOL:** $85 (+1.74%) | Quiet day
 **Context:** No major moves today. Crypto evening pulse cron ran without alerts. Small gains within normal range — no ±15% alert triggered.
+
+---
+
+## Apr 12, 2026 — Midday Pulse
+- **Market regime:** Broad red — most alts down 5-20%. Risk-off rotation. BTC holding structure. AI agent/x402 Phase 2 intact.
+- **x402 commerce:** ~$28K/day vs $7B ecosystem mcap — still early phase
+- **Portfolio coins (21 coins, no BTC/ETH):** 
+  - Notable: $ODAI -10.24% (6h), $SERV -9.45% (6h), $NOOK -12.19% (24h), $JUNO -19.7% (24h), $ODAI -23.69% (24h), $BOTCOIN -25.11% (24h)
+  - Only mover: $MOLTEN +17.69% (6h) — strongest single-coin move, below ±15% alert threshold
+- **Pattern:** Consistent sell pressure across alts. No single-coin catalyst. Macro risk-off.
+- **No alert triggered** (no ±15% individual coin move in 4h window; no BTC/ETH in portfolio)

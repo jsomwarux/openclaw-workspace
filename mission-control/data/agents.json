@@ -477,7 +477,10 @@
       }
     ],
     "currentTask": "Monitoring OpenClaw ecosystem, MCP servers, Claude APIs, and X for new skills and tools",
-    "created": "2026-02-27"
+    "created": "2026-02-27",
+    "capabilities": [
+      "runbook-skill"
+    ]
   },
   {
     "id": "overnight",
@@ -606,5 +609,16 @@
     "crons": [],
     "currentTask": "Built 2026-04-07 \u2014 demo-ready prototype for G-Net Construction. Pending: Vincent demo, sheet credentials, deploy.",
     "created": "2026-04-07"
+  },
+  {
+    "id": "runbook",
+    "name": "Runbook Skill",
+    "emoji": "\ud83d\udd27",
+    "role": "Operational diagnosis \u2014 symptom \u2192 root cause \u2192 minimal fix",
+    "domain": "ops",
+    "workspaceRel": "skills/runbook",
+    "crons": [],
+    "currentTask": null,
+    "created": "2026-04-12"
   }
 ]

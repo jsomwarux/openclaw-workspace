@@ -28,3 +28,4 @@
 **Film reviewed:** Friday April 10 (Passive Income tab build, Glow Index frontend extraction, outreach pipeline night run, multiple heartbeats + cost alerts)
 **Fix:** outreach pipeline M1→M2 gap → added rule to AGENTS.md Mistakes Log: whenever M1 logged with M2 due date, immediately create MC task for M2
 **Improve:** cost alerts fire every heartbeat with same message — needs deduplication in cost-tracker.py or alert suppression
+[2026-04-12 3AM] Film: sub-agents producing partial output (2026-04-11 research agent exited without files) → Fix: building Runbook skill for operational diagnostics. Skills researcher also failed to produce files overnight — needs root cause investigation.
