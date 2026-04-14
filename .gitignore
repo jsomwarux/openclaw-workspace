@@ -67,3 +67,4 @@ Thumbs.db
 
 # ── Backups (stored separately via backup.sh) ─────────────
 backups/
+memory/passive-income/.trends-cache/
