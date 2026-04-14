@@ -326,7 +326,35 @@ def check_alerts() -> list:
                 "data":    {"month_total": round(month_total, 4), "pace": round(monthly_pace, 4), "target": MONTHLY_TARGET}
             })
 
-    return alerts
+    # ── Deduplicate against already-alerted today ────────────────────────────
+    dedup_file = COSTS_DIR / "alerts-sent.json"
+    today_str = today_est()
+    try:
+        with open(dedup_file) as f:
+            dedup_state = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        dedup_state = {"_last_date": ""}
+
+    # Reset if new day
+    if dedup_state.get("_last_date") != today_str:
+        dedup_state = {"_last_date": today_str}
+
+    sent_keys = set(v for k, v in dedup_state.items() if k != "_last_date")
+
+    new_alerts = []
+    for alert in alerts:
+        key = f"{alert['type']}:{alert['message']}"
+        if key not in sent_keys:
+            new_alerts.append(alert)
+            dedup_state[key] = key  # mark as sent
+        # else: skip duplicate
+
+    # Persist updated dedup state
+    dedup_state["_last_date"] = today_str
+    with open(dedup_file, "w") as f:
+        json.dump(dedup_state, f)
+
+    return new_alerts
 
 
 def check_runaway() -> list:

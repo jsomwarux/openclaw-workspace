@@ -16,7 +16,7 @@
 - `launchctl unload/load` mid-session = gateway goes offline. Warn JT first. Defer to JT-initiated restart if possible.
 
 ## Infrastructure (updated 2026-04-01)
-- OpenClaw version: 2026.3.28 (updated 2026-03-30)
+- OpenClaw version: 2026.4.12 (updated 2026-04-13 — 7-version jump from 2026.3.28. Fixes: plugin loading reliability, memory/dreaming stability, session stability — directly addresses past Mac mini freeze patterns)
 - bootstrapMaxChars: 32000 (HARD CAP — reverted from 40000 on 2026-03-31. Setting to 40000 triggered "Extra usage required for long context" errors blocking ALL responses for ~2h. Never raise above 32000.)
 - **Fallback model:** `openrouter/deepseek/deepseek-chat-v3-0324` (deepseek is same OpenRouter provider = fallback actually fires. Groq is NOT used — session profile conflict + 12k TPM too low.)
 - **imageMaxDimensionPx:** 512 — cuts image token cost ~85% before context entry

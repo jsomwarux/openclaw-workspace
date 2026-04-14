@@ -24,3 +24,30 @@ Full archive: archive/2026-W15.md
 **MC:** 0 new tasks pushed (all findings 🟡/🟢, existing tasks cover)
 
 **Telegram:** No 🔴/🟠 — no message sent
+
+## Apr 13 2026 (Mon 11:30 AM)
+
+**🔴 Critical: OpenClaw v2026.4.12 — NEW STABLE (published today)**
+- Published Apr 13, 2026 at 12:35 UTC (3 hours before scan)
+- 7-version jump from current v2026.3.28
+- Key fixes: plugin loading reliability, memory/dreaming stability, session stability, smoother Feishu setup, new local-model options
+- Existing MC task updated to reflect v2026.4.12 target
+- Telegram sent to JT
+
+**X Scan (6 queries):**
+- Localith Claude MCP + n8n node (Google Business Profile → Claude) — 🟡 not actionable, no current need
+- OpenClaw QSR workflow skills — @analysisjitsu 20h ago — unverified, can't find details — 🟢
+- English orchestration language (write workflows in plain English) — emerging pattern — 🟢
+- Zapier SDK for AI coding agents (8,000+ apps) — market signal, not Eve-relevant — 🟢
+- Qdrant MCP server (official, semantic memory) — 🟢
+- Agentforce Contact Center GA March 2026 — already on MC board done — 🟢
+- SiteMCP archival notice — original tool deprecated — 🟢
+- Claude Managed Agents beta — still 🟡, no install path
+
+**Web:**
+- OpenClaw v2026.4.12 — see above 🔴
+- Anthropic Cowork: Zoom plugin reverted (commit reverted) — 🟢
+
+**MC tasks pushed:** 0 new (updated existing OpenClaw task)
+
+**Telegram:** Sent — 🔴 OpenClaw v2026.4.12

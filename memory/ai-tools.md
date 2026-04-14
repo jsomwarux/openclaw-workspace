@@ -400,3 +400,20 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 
 
 **OpenClaw v2026.4.1 — Infer Hub (Apr 2026)** — OpenClaw introduced Infer Hub, a unified plugin SDK for model inference, media inference, web scraping, and embedding generation. Consolidates what was previously separate plugin integrations into one coherent system. Potential to simplify Eve's orchestration setup (reduce separate API integrations). Worth monitoring — if Infer Hub matures, could replace current n8n/OpenAI/Custom GPT plugin stack for Eve. Also: /tasks chat-native task board launched (Eve uses Convex/MC so no impact), macOS gateway version parsing fixed. (openclaw.ai, 3 days ago)
+
+---
+
+## Apr 13, 2026 — 12PM Heartbeat
+
+**Azure MCP Server 2.0 Stable (April 10)** — Microsoft released stable 2.0 for self-hosted agentic cloud automation. Significant milestone: Azure as a first-class MCP host for enterprise agentic workflows. Strong signal for Azure + AI consulting angle. JT's pipeline uses n8n, not Azure-specific, but relevant for enterprise positioning. (devblogs.microsoft.com/azure-sdk, 3 days ago)
+
+**Agent Framework 1.0 — MCP + A2A (week of Apr 3-9)** — Cross-runtime interoperability standard: full MCP tool discovery + A2A 1.0 for cross-framework agent collaboration. MCP ecosystem consolidating around a standard that covers both tool invocation AND agent-to-agent communication. Two-layer standard (MCP + A2A) is now the architecture pattern. Implications: agents built today on pure MCP will need A2A layer for multi-agent orchestration. (dev.to/alexmercedcoder, 4 days ago)
+
+**Claude Mythos NOT releasing (Anthropic)** — Leaked model deemed cybersecurity risk, won't be publicly released. Shows Anthropic is actively gatekeeping frontier models for enterprise safety reasons. Doesn't affect current stack but worth watching: if Anthropic is pulling back on releases, Claude Code + MCP story becomes more differentiated vs OpenAI's more open release cadence. (renovateqr.com, 5 days ago)
+
+**Gemini 3.1 Pro — leading benchmarks** — Now at 750M users; 94.3% on GPQA Diamond (vs GPT-5.2 at 92.4%, Claude Opus 4.6 at 91.3%). Gemini is the benchmark leader as of early April 2026. OpenRouter likely has Gemini flash models available as fallbacks. (tech-insider.org, 1 week ago)
+
+**Domo AI Agent Builder + MCP (April 2)** — Enterprise BI platform launches MCP server connecting enterprise data to AI agent ecosystem. Pattern: legacy enterprise SaaS (Domo, Swoogo, Domo) racing to add MCP layer. Good consulting angle: "legacy SaaS → AI-native via MCP" is a services opportunity for JT's consulting. (demandgenreport.com, 2 weeks ago)
+
+**Article Galaxy MCP (April 7)** — Scientific literature MCP for AI agents. Scientific research use case. Not directly relevant to JT's niches but validates broad MCP adoption across verticals. (newswise.com, 1 week ago)
+
