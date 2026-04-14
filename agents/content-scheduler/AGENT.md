@@ -124,8 +124,8 @@ X is punchier and more casual than LinkedIn. Jack Butcher compression applies fu
 ### Tuesday — Observation or pattern
 - 1–3 tweets. Something noticed across clients, builds, or the market. Grounded, not generic.
 
-### Wednesday — Mini case study (compressed version of LinkedIn)
-- 2–4 tweets. Lead with the result, not the setup. Shorter and punchier than the LinkedIn version.
+### Wednesday — Case study (X version)
+- 2–4 tweets. Lead with the result, not the setup. Draws from the SAME case study as the LinkedIn Wednesday post but opens from a DIFFERENT angle. **Do not reuse the LinkedIn hook or contrast pair.** The LinkedIn post establishes the pattern; the X post proves it with a different entry point — a different observation, a different client detail, a different outcome framing. Both are about the same work, neither should feel like a summary of the other.
 
 ### Thursday — Hot take or contrarian opinion
 - 1–2 tweets. Edgier than LinkedIn. Can reference AI hype, bad implementations, or common misconceptions.
@@ -142,11 +142,12 @@ X is punchier and more casual than LinkedIn. Jack Butcher compression applies fu
 ---
 
 ## Platform Separation Rules (critical)
-
 - **LinkedIn content** is written FOR LinkedIn. No Twitter/X handles, no "see my tweet," no "I posted on X."
 - **X content** is written FOR X. No LinkedIn formatting, no paragraph structure.
 - The two platforms share *themes* for the week but never share *copy*. Different voice, different length, different hook.
 - Wednesday LinkedIn and Wednesday X cover the same case study but are written as completely separate posts — the LinkedIn version is substantive, the X version is compressed.
+- **Contrast-pair dedup (MANDATORY before saving X posts):** Before saving any X post, grep the weekly file for phrases or contrast pairs that appear in BOTH the LinkedIn and X sections. If the same contrast pair ("the ones moving fast... / the ones who haven't moved yet," "not X but Y" frames, "who owns the deployment," or any sharp two-part structure) appears in both platforms, rewrite the X version to lead with a different observation. The X version must never recycle LinkedIn's sharpest lines verbatim.
+
 
 ---
 
@@ -298,6 +299,7 @@ Every X post must pass ALL of these before saving:
 - [ ] **Specificity > generality** — "AI saved a contractor 15 hrs/week" beats "AI saves businesses time."
 - [ ] **No @jts_14, no platform cross-references in post text**
 - [ ] **Lowercase for hot takes and observations** (Thursday, Tuesday) — matches native X voice
+- [ ] **Contrast-pair dedup** — before saving the X version, grep the weekly file for shared contrast pairs or key phrases that appeared in the LinkedIn version. If the X post opens with or builds around the same contrast pair, rewrite to lead with a different observation. The X version must earn its own framing.
 
 ### Both platforms
 - [ ] Posted log entries written (11 total: 4 LinkedIn + 7 X)

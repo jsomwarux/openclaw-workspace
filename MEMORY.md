@@ -15,7 +15,7 @@
 - Agentforce overnight builds: ✅ ALLOWED (lifted 2026-03-11). Must `git pull origin main` first. B2B Account Service Agent is PERMANENTLY BANNED — do not recreate under any circumstances.
 - `launchctl unload/load` mid-session = gateway goes offline. Warn JT first. Defer to JT-initiated restart if possible.
 
-## Infrastructure (updated 2026-04-01)
+## Infrastructure (updated 2026-04-14)
 - OpenClaw version: 2026.4.12 (updated 2026-04-13 — 7-version jump from 2026.3.28. Fixes: plugin loading reliability, memory/dreaming stability, session stability — directly addresses past Mac mini freeze patterns)
 - bootstrapMaxChars: 32000 (HARD CAP — reverted from 40000 on 2026-03-31. Setting to 40000 triggered "Extra usage required for long context" errors blocking ALL responses for ~2h. Never raise above 32000.)
 - **Fallback model:** `openrouter/deepseek/deepseek-chat-v3-0324` (deepseek is same OpenRouter provider = fallback actually fires. Groq is NOT used — session profile conflict + 12k TPM too low.)
@@ -25,6 +25,8 @@
 - Gateway watchdog: `com.openclaw.gateway-watchdog` (10-min interval) — kills context-mode if RSS >1.5GB, kicks gateway if dead. Script: `scripts/gateway-watchdog.sh`
 - context-mode Claude plugin: DISABLED (was causing OOM kills — disabled in `~/.claude/settings.json`)
 - LaunchAgent ThrottleInterval: 10s (raised from 1s to prevent rapid crash loop)
+- **LCM freshTailCount: 50** (raised from 6 on 2026-04-14 — ~1500-2000 tokens of each file preserved in fresh context; prevents critical files from being summarized from partial context. Risk: content-voice.md wiped to 1 line between 2026-03-11 and 2026-03-16. Restored from git commit b89cabd. Integrity cron (e7f6e65a, Sun 6AM) monitors 9 critical files and auto-restores from git if >50% lost.)
+- **backup.sh is NOT a recovery path** — backs up from working directory, not git. Wiped files are captured in backups. Git is the only reliable recovery source.
 
 ## Agentforce Sync (✅ ACTIVE — 2026-03-11)
 - JT builds Agentforce agents on personal device using Claude Code/Cursor
@@ -139,10 +141,10 @@ Lessons stored WITH the system they document — canonical reference for each pr
 - `spanish/lessons/YYYY-MM-DD.md` — Spanish lesson content
 - Any project with `lessons.md` or `CLAUDE.md` must be read before touching it.
 - TikTok: niche products → dedicated account; builder/dev/AI → @jts_14
-## Active Cron Jobs (43 total)
+## Active Cron Jobs (44 total — new: critical-files-integrity)
 > Full list: run `cron list`. Do NOT maintain a manual copy here.
 
-**Key job IDs:** `eve-crypto-morning-008` (6AM daily) | `651fa1da` outreach-pipeline (2AM) | `ebb843af` prospect-discovery (Sun+Wed 1AM) | `be59a068` overnight-autonomy (3AM) | `eve-morning-brief-001` (7:30AM) | `eve-heartbeat-2h-002` (10/14/18/22 ET) | `fe984519` content-linkedin (Mon 6:45AM) | `cb8f29dd` content-x (Mon 7:25AM) | `babd905a` spanish-lesson (Mon-Sat 8:05PM) | `870bf3ff` vibe-generate (Mon 4:45AM) | `b2357bd5` job-app-auto (6:15AM) | `f368e18b` passive-signals (Sat 5:30AM)
+**Key job IDs:** `eve-crypto-morning-008` (6AM daily) | `651fa1da` outreach-pipeline (2AM) | `ebb843af` prospect-discovery (Sun+Wed 1AM) | `be59a068` overnight-autonomy (3AM) | `eve-morning-brief-001` (7:30AM) | `eve-heartbeat-2h-002` (10/14/18/22 ET) | `fe984519` content-linkedin (Mon 6:45AM) | `cb8f29dd` content-x (Mon 7:25AM) | `babd905a` spanish-lesson (Mon-Sat 8:05PM) | `870bf3ff` vibe-generate (Mon 4:45AM) | `b2357bd5` job-app-auto (6:15AM) | `f368e18b` passive-signals (Sat 5:30AM) | `e7f6e65a` critical-files-integrity (Sun 6AM — auto-restores wiped memory files from git)
 
 **Cap:** 20 invocations/weekday. Groq for midday/evening. Staggered 5-8AM Mondays.
 ## Cost Tracking

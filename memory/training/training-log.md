@@ -29,3 +29,4 @@
 **Fix:** outreach pipeline M1→M2 gap → added rule to AGENTS.md Mistakes Log: whenever M1 logged with M2 due date, immediately create MC task for M2
 **Improve:** cost alerts fire every heartbeat with same message — needs deduplication in cost-tracker.py or alert suppression
 [2026-04-12 3AM] Film: sub-agents producing partial output (2026-04-11 research agent exited without files) → Fix: building Runbook skill for operational diagnostics. Skills researcher also failed to produce files overnight — needs root cause investigation.
+[2026-04-14 3AM] Design: Nash Satoshi monetization model defined — recommendation: Freemium subscription at $9/mo Pro + $19/mo Premium, activate by flipping BETA_MODE=false + Stripe reprice.
