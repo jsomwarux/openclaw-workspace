@@ -48,7 +48,7 @@ KEYWORD_SETS = {
         "calorie counter app", "meditation app comparison", "personal training app",
         "sleep tracking app", "fitness challenge creator",
     ],
-    "Beauty & Personal Care":  # Matches ExplodingTopics beauty-topics
+    "Beauty & Personal Care": [  # Matches ExplodingTopics beauty-topics
         "skincare routine builder", "beauty product comparison", "cosmetic ingredients guide",
         "hair care app", "makeup lookup", "beauty subscription box",
         "nail care tutorial", "perfume finder",
