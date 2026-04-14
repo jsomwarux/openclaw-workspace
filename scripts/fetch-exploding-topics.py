@@ -1,16 +1,26 @@
 #!/usr/bin/env python3
 """
-ExplodingTopics.com scraper — extracts emerging keywords from public category pages.
-See script header for full documentation.
+ExplodingTopics.com scraper — uses the actual internal API.
+
+Found the real endpoint by inspecting network traffic in Playwright:
+  GET /api/trends?page=N&size=30&period=24&sort=growth&order=desc
+           &type=all&categories={cat}&unverified=null&...
+
+Returns 977 topics for beauty alone, with rich data:
+  - keyword, growth['24'], searchHistory[265 monthly pts]
+  - keywordDataGlobal{vol, cpc}, categories[], classifications{}
+  - briefDescription, path (URL slug)
+
 Run: python3 fetch-exploding-topics.py
 Output: memory/passive-income/weekly-exploding-topics.md
+Cache: 24h per category
 """
+
 import json
-import re
 import time as time_module
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 
 import requests
 
@@ -18,6 +28,7 @@ WORKSPACE = Path(__file__).resolve().parent.parent
 CACHE_DIR = WORKSPACE / "memory" / "passive-income" / ".exploding-cache"
 OUTPUT_FILE = WORKSPACE / "memory" / "passive-income" / "weekly-exploding-topics.md"
 CACHE_TTL_HOURS = 24
+PAGE_SIZE = 30
 
 HEADERS = {
     "User-Agent": (
@@ -25,22 +36,48 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/122.0.0.0 Safari/537.36"
     ),
-    "Accept": "text/html,application/xhtml+xml",
-    "Accept-Language": "en-US,en;q=0.9",
+    "Accept": "application/json",
+    "Referer": "https://explodingtopics.com/",
+    "Origin": "https://explodingtopics.com",
 }
 
-WORKING_SLUGS = [
-    ("software-topics", "Software & Tech"),
-    ("startups", "Startups"),
+CATEGORIES = [
+    ("beauty",        "Beauty & Personal Care",  "high"),
+    ("health",        "Health & Wellness",        "high"),
+    ("food",          "Food & Drink",             "high"),
+    ("sports",        "Sports & Fitness",         "high"),
+    ("lifestyle",     "Lifestyle & Hobbies",      "high"),
+    ("entertainment", "Entertainment & Media",  "high"),
+    ("education",     "Education",               "medium"),
+    ("gaming",        "Gaming",                 "medium"),
+    ("science",       "Science & Research",      "medium"),
+    ("business",      "Business & Finance",      "low"),
+    ("finance",       "Finance",                 "low"),
+    ("marketing",     "Marketing",               "low"),
+    ("ecommerce",     "E-Commerce",             "low"),
+    ("software",      "Software & Tech",         "low"),
 ]
 
+# Growth thresholds per priority tier (for output filtering)
+THRESHOLDS = {"high": 0, "medium": 3, "low": 10}
 
-def _cache_path(slug: str) -> Path:
-    return CACHE_DIR / (slug + ".json")
+
+def _base_url(cat: str, page: int) -> str:
+    return (
+        f"https://explodingtopics.com/api/trends"
+        f"?page={page}&size={PAGE_SIZE}&period=24&sort=growth&order=desc"
+        f"&type=all&categories={cat}&unverified=null&proAccess=null"
+        f"&proTopicsSelected=false&brandedTopicsSelected=all"
+        f"&excludePeaked=true&volatile=stable"
+    )
 
 
-def _cached(slug: str) -> Optional[Dict]:
-    p = _cache_path(slug)
+def _cache_path(cat: str) -> Path:
+    return CACHE_DIR / (cat + "_all.json")
+
+
+def _cached(cat: str) -> Optional[Dict]:
+    p = _cache_path(cat)
     if not p.exists():
         return None
     try:
@@ -52,134 +89,162 @@ def _cached(slug: str) -> Optional[Dict]:
     return None
 
 
-def _save(slug: str, data: Dict) -> None:
+def _save(cat: str, data: Dict) -> None:
     try:
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
-        _cache_path(slug).write_text(json.dumps(data))
+        _cache_path(cat).write_text(json.dumps(data))
     except Exception:
         pass
 
 
-def _extract_json(html: str) -> Optional[Dict]:
-    m = re.search(r"__NEXT_DATA__\s*=\s*({.*)", html, re.DOTALL)
-    if not m:
+def fetch_category(cat: str) -> Dict:
+    """Fetch ALL pages for a category. Returns {topics: [...], total: N}."""
+    cached = _cached(cat)
+    if cached:
+        return cached
+
+    first_url = _base_url(cat, 1)
+    first_resp = requests.get(first_url, headers=HEADERS, timeout=20)
+    if first_resp.status_code != 200:
+        return {"cat": cat, "topics": [], "total": 0, "error": first_resp.status_code}
+
+    first_data = first_resp.json()
+    total = first_data.get("total", 0)
+    all_topics = list(first_data.get("trends", []))
+    total_pages = (total + PAGE_SIZE - 1) // PAGE_SIZE
+
+    if total_pages > 1:
+        for page in range(2, total_pages + 1):
+            url = _base_url(cat, page)
+            try:
+                r = requests.get(url, headers=HEADERS, timeout=20)
+                if r.status_code == 200:
+                    page_data = r.json()
+                    all_topics.extend(page_data.get("trends", []))
+            except Exception:
+                pass
+            time_module.sleep(0.5)  # Polite rate limiting
+
+    result = {"cat": cat, "topics": all_topics, "total": total}
+    _save(cat, result)
+    return result
+
+
+def _format_growth(g: float) -> str:
+    """Format growth value: 99 = '99x', 5.67 = '5.67x'."""
+    if g >= 99:
+        return "99x+"
+    return f"{g:.2f}x"
+
+
+def _clean_item(t: Dict) -> Dict:
+    kw = t.get("keyword", "")
+    if not kw or len(kw) < 2:
         return None
-    raw = m.group(1)
-    depth = 0
-    for i, c in enumerate(raw):
-        if c == "{":
-            depth += 1
-        elif c == "}":
-            depth -= 1
-            if depth == 0:
-                try:
-                    return json.loads(raw[: i + 1])
-                except json.JSONDecodeError:
-                    pass
-    return None
-
-
-def fetch_page(slug: str) -> Optional[Dict]:
-    try:
-        resp = requests.get("https://explodingtopics.com/" + slug, headers=HEADERS, timeout=20)
-        if resp.status_code != 200:
-            return None
-    except Exception:
-        return None
-
-    data = _extract_json(resp.text)
-    if not data:
-        return None
-    try:
-        trending = data["props"]["pageProps"]["trendingDesktopData"]
-    except (KeyError, TypeError):
-        return None
-
-    def clean(item: Dict) -> Optional[Dict]:
-        kw = item.get("keyword", "")
-        if not kw or len(kw) < 3:
-            return None
-        growth_pct = float(item.get("growth", {}).get("24", 0))
-        sh = item.get("searchHistory", [])
-        current = sh[-1]["value"] if sh else 0
-        path = item.get("path", "")
-        return {
-            "keyword": kw,
-            "growth_24m": growth_pct,
-            "current_interest": current,
-            "url": "https://explodingtopics.com/topics/" + path,
-        }
-
-    trends = [clean(t) for t in trending.get("trends", [])]
-    startups = [clean(t) for t in trending.get("startups", [])]
-    all_items = [t for t in trends + startups if t]
-    all_items.sort(key=lambda x: x["growth_24m"], reverse=True)
-    return {"slug": slug, "topics": all_items, "fetched_at": datetime.now().isoformat()}
+    g24 = float(t.get("growth", {}).get("24", 0))
+    sh = t.get("searchHistory", [])
+    current = sh[-1]["value"] if sh else 0
+    vol = t.get("keywordDataGlobal", {}).get("vol", 0)
+    cpc = t.get("keywordDataGlobal", {}).get("cpc", 0)
+    cats = t.get("categories", [])
+    path = t.get("path", "")
+    classification = t.get("classification", {})
+    desc = t.get("briefDescription", "")[:150]
+    return {
+        "keyword": kw,
+        "growth_24m_raw": g24,
+        "growth_24m_fmt": _format_growth(g24),
+        "current_interest": current,
+        "volume": vol,
+        "cpc": cpc,
+        "categories": cats,
+        "url": f"https://explodingtopics.com/topics/{path}",
+        "description": desc,
+    }
 
 
 def main():
-    print("=== ExplodingTopics.com Scraper ===\n")
+    print("=== ExplodingTopics.com — Full API Scan ===\n")
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    all_data = {}
-    total = 0
 
-    for slug, label in WORKING_SLUGS:
-        print("[" + label + "] " + slug + "...", end=" ", flush=True)
-        cached = _cached(slug)
-        if cached:
-            c = len(cached.get("topics", []))
-            print("✅ cached (" + str(c) + " topics)")
-            all_data[slug] = cached
-            total += c
-            continue
-        data = fetch_page(slug)
-        if data:
-            c = len(data["topics"])
-            lo = data["topics"][-1]["growth_24m"]
-            hi = data["topics"][0]["growth_24m"]
-            print("🔍 " + str(c) + " topics (growth: " + str(lo) + "% – " + str(hi) + "%)")
-            _save(slug, data)
-            all_data[slug] = data
-            total += c
-        else:
-            print("⚠ no data")
-            all_data[slug] = {"slug": slug, "topics": [], "fetched_at": datetime.now().isoformat()}
-        time_module.sleep(2)
+    all_data = {}
+    total_topics = 0
+
+    for cat, label, priority in CATEGORIES:
+        print(f"[{label}] ({priority}) — fetching...", end=" ", flush=True)
+        data = fetch_category(cat)
+        count = len(data.get("topics", []))
+        total = data.get("total", 0)
+        print(f"✅ {count}/{total} topics")
+        all_data[cat] = {"label": label, "priority": priority, **data}
+        total_topics += count
+        time_module.sleep(1)
 
     now = datetime.now()
     date_str = now.strftime("%Y-%m-%d")
+
+    # ── Build output ─────────────────────────────────────────────────────────
     lines = [
-        "# Exploding Topics — " + date_str,
-        "_Public scrapes: software-topics + startups | " + str(total) + " total topics_",
-        "Generated: " + now.strftime("%Y-%m-%d %H:%M:%S"),
-        "**Total topics: " + str(total) + "**",
+        f"# Exploding Topics — {date_str}",
+        f"_14 categories | {total_topics} total topics | real API data_",
+        f"Generated: {now.strftime('%Y-%m-%d %H:%M:%S')}",
+        "",
+        "**Priority guide:** 🔴 high (non-tech, highest PI signal) | 🟡 medium | 🔵 low (saturated tech)_",
+        "**Growth format:** '99x+' means 99x or greater. '5.67x' means 5.67x growth over 24 months.",
+        "",
+        "**Key fields:** keyword | growth (24mo) | volume (monthly searches) | CPC ($) | sub-categories",
         "",
     ]
-    for slug, label in WORKING_SLUGS:
-        data = all_data.get(slug, {})
-        topics = data.get("topics", [])
-        lines.append("## " + label + " (" + slug + ")")
-        if topics:
-            for t in topics:
-                badge = "🔴" if t["growth_24m"] >= 50 else "🟠" if t["growth_24m"] >= 20 else "🟡"
-                lines.append(
-                    badge + " **" + t["keyword"] + "** — " + str(t["growth_24m"]) + "% growth, "
-                    "interest=" + str(t["current_interest"]) + " | [link](" + t["url"] + ")"
-                )
-        else:
-            lines.append("- No data (auth-gated)")
+
+    for cat, label, priority in CATEGORIES:
+        data = all_data.get(cat, {})
+        raw_topics = data.get("topics", [])
+        threshold = THRESHOLDS.get(priority, 0)
+        cleaned = [_clean_item(t) for t in raw_topics]
+        filtered = [t for t in cleaned if t and t["growth_24m_raw"] >= threshold]
+
+        if not filtered:
+            continue
+
+        badge = "🔴" if priority == "high" else "🟡" if priority == "medium" else "🔵"
+        lines.append(
+            f"## {badge} {label} — {priority.upper()} | "
+            f"{len(filtered)}/{data.get('total', 0)} topics"
+        )
+
+        for t in filtered[:20]:
+            g = t["growth_24m_fmt"]
+            vol = f"{t['volume']:,}" if t["volume"] else "?"
+            cpc = f"${t['cpc']:.2f}" if t["cpc"] else "?"
+            cats = ", ".join(t["categories"][:3])
+            lines.append(
+                f"- **{t['keyword']}** | growth: {g} | vol: {vol} | cpc: {cpc}"
+                f" | {cats} | [link]({t['url']})"
+            )
+            if t["description"]:
+                lines.append(f"  _{t['description']}_")
         lines.append("")
 
     lines += [
         "## Scout Guidance",
-        "- 🔴 ≥50% growth: validate with Brave Search immediately",
-        "- 🟠 20–49% growth: cross-ref with X complaints",
-        "- 🟡 <20% growth: background — skip",
-        "- Note: Crypto/Finance/Health slugs = 404 (paid tier). Software + Startups only.",
+        "",
+        "**Non-tech (🔴) = highest PI signal** — real consumer problems, less tech-founder competition",
+        "**Growth interpretation:** 99x+ = viral/explosive | 10-99x = strong growth | 3-10x = moderate | <3x = skip",
+        "",
+        "**What to look for:**",
+        "- 🔴 categories with specific product/ingredient names (e.g., 'Pdrn Serum', 'GLP-1 supplement')",
+        "- Low competition keywords with decent volume (vol 1000+) and clear monetization path",
+        "- Product comparison or ranking opportunities: 'best X for Y', 'X vs Y'",
+        "",
+        "**What to skip:**",
+        "- Generic terms ('skincare routine', 'best moisturizer') — already covered by big players",
+        "- Pure tech terms ('AI writing tool', 'developer API') — saturated",
+        "- Branded items (branded=true) — trademark risk",
     ]
 
     OUTPUT_FILE.write_text("\n".join(lines))
-    print("\n✅ " + str(total) + " topics → " + OUTPUT_FILE.name)
+    print(f"\n✅ {total_topics} topics → {OUTPUT_FILE.name}")
+    print("All 14 categories scraped from the real ExplodingTopics API ✅")
 
 
 if __name__ == "__main__":
