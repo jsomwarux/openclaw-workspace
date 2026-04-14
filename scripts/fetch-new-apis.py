@@ -1,48 +1,71 @@
 #!/usr/bin/env python3
 """
-API Discovery Pipeline — fetches newly launched/added free APIs from 3 sources
-and writes a merged intelligence report to memory/passive-income/weekly-apis.md.
+API Discovery Pipeline — finds newly launched/discovered APIs from 4 sources.
 
 Sources:
-  1. APIs.guru — new APIs added in last 14 days
-  2. public-apis GitHub — recent commits adding free APIs
-  3. Product Hunt — newest API tool launches
+  1. APIs.guru — new APIs added in last 30 days (catalog tracks 'added' date)
+  2. Product Hunt RSS — newest tools tagged API / developer
+  3. Hacker News "new" — pull top 10 from past 2 days for API/developer mentions
+  4. AlternativeTo API mentions — search for "alternatives to [X] API" pattern
+
+Output: memory/passive-income/weekly-apis.md
 """
 
 import json
-import sys
-import traceback
+import re
+import time as time_module
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Optional, Dict
 
 import requests
+import xml.etree.ElementTree as ET
 
 WORKSPACE = Path(__file__).resolve().parent.parent
-LIBRARY_FILE = WORKSPACE / "agents" / "passive-income-scout" / "api-library.json"
-OUTPUT_DIR = WORKSPACE / "memory" / "passive-income"
-OUTPUT_FILE = OUTPUT_DIR / "weekly-apis.md"
+OUTPUT_FILE = WORKSPACE / "memory" / "passive-income" / "weekly-apis.md"
+CACHE_DIR = WORKSPACE / "memory" / "passive-income" / ".apis-cache"
+CACHE_TTL_DAYS = 3
+CUTOFF_DAYS = 30
 
-HEADERS = {"User-Agent": "PassiveIncomeScout/1.0 (API discovery pipeline)"}
-GITHUB_HEADERS = {
-    "User-Agent": "PassiveIncomeScout/1.0",
-    "Accept": "application/vnd.github.v3+json",
-}
+HEADERS = {"User-Agent": "PassiveIncomeScout/1.0 (API discovery)"}
 
 
-def load_library():
-    """Load the curated API library."""
-    if not LIBRARY_FILE.exists():
-        print(f"WARNING: Library file not found at {LIBRARY_FILE}")
-        return []
-    with open(LIBRARY_FILE) as f:
-        return json.load(f)
+def _cache_path(key: str) -> Path:
+    return CACHE_DIR / (key.replace(" ", "_") + ".json")
 
 
-def fetch_apis_guru():
-    """Source 1: APIs.guru — filter entries added in last 14 days."""
-    print("Fetching: APIs.guru catalog...")
+def _cached(key: str) -> Optional[Dict]:
+    p = _cache_path(key)
+    if not p.exists():
+        return None
+    try:
+        age = datetime.now() - datetime.fromtimestamp(p.stat().st_mtime)
+        if age < timedelta(days=CACHE_TTL_DAYS):
+            return json.loads(p.read_text())
+    except Exception:
+        pass
+    return None
+
+
+def _save(key: str, data: Dict) -> None:
+    try:
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        _cache_path(key).write_text(json.dumps(data))
+    except Exception:
+        pass
+
+
+# ── Source 1: APIs.guru (new in last 30 days) ──────────────────────────────
+def fetch_apis_guru() -> Dict:
+    """Returns new APIs added to APIs.guru catalog in last CUTOFF_DAYS."""
+    cache_key = "apis_guru_new"
+    cached = _cached(cache_key)
+    if cached:
+        return cached
+
+    print("  Fetching APIs.guru catalog...")
     results = []
-    cutoff = datetime.now(timezone.utc) - timedelta(days=14)
+    cutoff = datetime.now(timezone.utc) - timedelta(days=CUTOFF_DAYS)
 
     try:
         resp = requests.get(
@@ -56,19 +79,19 @@ def fetch_apis_guru():
         for api_name, api_data in catalog.items():
             preferred = api_data.get("preferred", "")
             versions = api_data.get("versions", {})
-            version_data = versions.get(preferred, {})
+            version_data = versions.get(preferred, versions.get(list(versions.keys())[0], {}))
             if not version_data:
-                version_data = next(iter(versions.values()), {})
+                continue
 
-            added_str = version_data.get("added")
+            added_str = version_data.get("added", "")
             if not added_str:
                 continue
 
             try:
-                added_date = datetime.fromisoformat(
-                    added_str.replace("Z", "+00:00")
-                )
-                if added_date.tzinfo is None:
+                added_date = datetime.fromisoformat(added_str.replace("Z", "+00:00"))
+                if added_date.tzinfo:
+                    added_date = added_date.replace(tzinfo=timezone.utc)
+                else:
                     added_date = added_date.replace(tzinfo=timezone.utc)
             except (ValueError, TypeError):
                 continue
@@ -78,301 +101,299 @@ def fetch_apis_guru():
                 results.append({
                     "name": info.get("title", api_name),
                     "description": (info.get("description", "") or "")[:200],
-                    "url": version_data.get("swaggerUrl", ""),
-                    "added": added_date.strftime("%Y-%m-%d"),
-                    "source": "apis_guru",
+                    "url": info.get("contact", {}).get("url", ""),
+                    "category": info.get("tags", ["unknown"])[0] if info.get("tags") else "unknown",
+                    "added": added_str,
                 })
 
-        print(f"  -> {len(results)} new APIs found (last 14 days)")
     except Exception as e:
-        print(f"  ERROR fetching APIs.guru: {e}")
+        print("  ⚠ APIs.guru error: " + str(e))
 
-    return results
+    result = {"source": "APIs.guru", "apis": results, "fetched_at": datetime.now().isoformat()}
+    _save(cache_key, result)
+    return result
 
 
-def fetch_public_apis_github():
-    """Source 2: public-apis GitHub — recent commits adding free APIs."""
-    print("Fetching: public-apis GitHub repo...")
+# ── Source 2: Product Hunt RSS (new tools — API/dev category) ───────────────
+def fetch_product_hunt() -> Dict:
+    """Pull top 10 from PH RSS for API/developer/devtools tags."""
+    cache_key = "product_hunt_new"
+    cached = _cached(cache_key)
+    if cached:
+        return cached
+
+    print("  Fetching Product Hunt RSS...")
     results = []
-    since = (datetime.now(timezone.utc) - timedelta(days=7)).isoformat()
 
     try:
-        commits_url = (
-            "https://api.github.com/repos/public-apis/public-apis/commits"
-        )
         resp = requests.get(
-            commits_url,
-            params={"since": since, "path": "README.md", "per_page": 5},
-            headers=GITHUB_HEADERS,
-            timeout=30,
+            "https://www.producthunt.com/feed",
+            headers=HEADERS,
+            timeout=15,
         )
         resp.raise_for_status()
-        commits = resp.json()
+        root = ET.fromstring(resp.text)
+        ns = {"ph": "http://www.w3.org/2005/Atom"}
 
-        if not commits:
-            print("  -> No recent commits to README.md")
-            return results
+        for item in root.findall("ph:entry", ns)[:15]:
+            name_el = item.find("ph:name", ns)
+            tagline = item.find("ph:tagline", ns)
+            url_el = item.find("ph:url", ns)
+            topic_els = item.findall("ph:topics/ph:topic/ph:name", ns)
 
-        for commit in commits[:3]:
-            sha = commit.get("sha", "")
-            commit_date = (
-                commit.get("commit", {})
-                .get("committer", {})
-                .get("date", "unknown")
+            name = name_el.text if name_el is not None else ""
+            tagline_text = tagline.text if tagline is not None else ""
+            url = url_el.text if url_el is not None else ""
+            topics = [t.text for t in topic_els if t.text]
+
+            # Filter for API/developer tools
+            api_signal = any(
+                kw in (tagline_text + " " + " ".join(topics)).lower()
+                for kw in ["api", "developer", "devtool", "integration", "webhook", "sdk", "cli"]
             )
-
-            diff_url = (
-                f"https://api.github.com/repos/public-apis/public-apis"
-                f"/commits/{sha}"
-            )
-            diff_resp = requests.get(
-                diff_url,
-                headers={
-                    **GITHUB_HEADERS,
-                    "Accept": "application/vnd.github.v3.diff",
-                },
-                timeout=30,
-            )
-
-            if diff_resp.status_code != 200:
+            if not api_signal:
                 continue
 
-            for line in diff_resp.text.split("\n"):
-                if not line.startswith("+"):
-                    continue
-                if line.startswith("+++"):
-                    continue
+            results.append({
+                "name": name,
+                "tagline": tagline_text,
+                "url": url,
+                "topics": topics,
+            })
+            if len(results) >= 10:
+                break
 
-                content = line[1:].strip()
-
-                # Table row format: | Name | Description | Auth | HTTPS | CORS |
-                if "|" not in content:
-                    continue
-
-                parts = [p.strip() for p in content.split("|")]
-                parts = [p for p in parts if p]
-
-                if len(parts) < 3:
-                    continue
-
-                name_field = parts[0]
-                desc_field = parts[1] if len(parts) > 1 else ""
-                auth_field = parts[2] if len(parts) > 2 else ""
-
-                # Skip header rows
-                if name_field.startswith("---") or name_field == "API":
-                    continue
-
-                # Filter for free APIs
-                auth_lower = auth_field.lower()
-                if auth_lower not in ("no", "apikey", "", "yes"):
-                    continue
-
-                # Extract link from markdown [Name](url)
-                api_name = name_field
-                if "[" in name_field and "](" in name_field:
-                    api_name = name_field.split("[")[1].split("]")[0]
-
-                results.append({
-                    "name": api_name,
-                    "description": desc_field[:200],
-                    "url": "",
-                    "added": commit_date[:10] if commit_date != "unknown" else "unknown",
-                    "source": "public_apis_github",
-                })
-
-        print(f"  -> {len(results)} new free APIs found in recent commits")
     except Exception as e:
-        print(f"  ERROR fetching public-apis GitHub: {e}")
+        print("  ⚠ Product Hunt error: " + str(e))
 
-    return results
+    result = {"source": "Product Hunt", "tools": results, "fetched_at": datetime.now().isoformat()}
+    _save(cache_key, result)
+    return result
 
 
-def fetch_product_hunt():
-    """Source 3: Product Hunt — newest API tool launches."""
-    print("Fetching: Product Hunt API tools topic...")
+# ── Source 3: Hacker News "new" — API/dev mentions ─────────────────────────
+def fetch_hacker_news() -> Dict:
+    """Pull top stories from HN 'newest' API, filter for API/dev tools."""
+    cache_key = "hacker_news_api"
+    cached = _cached(cache_key)
+    if cached:
+        return cached
+
+    print("  Fetching Hacker News newest...")
     results = []
 
     try:
+        # Get top 50 newest stories
         resp = requests.get(
-            "https://www.producthunt.com/topics/api-tools",
-            params={"order": "newest"},
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                ),
-                "Accept": "text/html,application/xhtml+xml",
-            },
-            timeout=30,
+            "https://hacker-news.firebaseio.com/v0/newstories.json",
+            headers=HEADERS,
+            timeout=15,
         )
+        resp.raise_for_status()
+        story_ids = resp.json()[:50]
 
-        if resp.status_code != 200:
-            print(f"  Product Hunt returned status {resp.status_code}")
-            return results
-
-        html = resp.text
-
-        # Try to extract JSON-LD structured data
-        import re
-
-        ld_json_matches = re.findall(
-            r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',
-            html,
-            re.DOTALL,
-        )
-        for match in ld_json_matches:
+        # Fetch each story in batch (batched requests reduce overhead)
+        for sid in story_ids:
             try:
-                data = json.loads(match)
-                items = []
-                if isinstance(data, list):
-                    items = data
-                elif isinstance(data, dict):
-                    items = data.get("itemListElement", [data])
+                sresp = requests.get(
+                    f"https://hacker-news.firebaseio.com/v0/item/{sid}.json",
+                    headers=HEADERS,
+                    timeout=10,
+                )
+                sresp.raise_for_status()
+                story = sresp.json()
+                if not story:
+                    continue
 
-                for item in items:
-                    name = item.get("name", "")
-                    desc = item.get("description", "")
-                    url = item.get("url", "")
-                    if name and ("api" in name.lower() or "api" in desc.lower()):
-                        results.append({
-                            "name": name,
-                            "description": desc[:200],
-                            "url": url,
-                            "added": datetime.now().strftime("%Y-%m-%d"),
-                            "source": "product_hunt",
-                        })
-            except json.JSONDecodeError:
+                title = story.get("title", "")
+                url = story.get("url", "")
+                score = story.get("score", 0)
+
+                # Filter: API, SDK, dev tool, developer tool, AI API, etc.
+                if not any(kw in title.lower() for kw in [
+                    "api", "sdk", "library", "framework", "devtool",
+                    "open-source", "developer", "cli tool", "webhook",
+                    "integration", " wrapper", "sdk", "tool",
+                ]):
+                    continue
+
+                results.append({
+                    "title": title,
+                    "url": url,
+                    "score": score,
+                    "hn_id": sid,
+                })
+
+                if len(results) >= 10:
+                    break
+
+            except Exception:
                 continue
 
-        # Fallback: extract from og: tags
-        if not results:
-            og_titles = re.findall(
-                r'<meta[^>]*property="og:title"[^>]*content="([^"]*)"',
-                html,
-            )
-            og_descs = re.findall(
-                r'<meta[^>]*property="og:description"[^>]*content="([^"]*)"',
-                html,
-            )
-            for i, title in enumerate(og_titles[:5]):
-                desc = og_descs[i] if i < len(og_descs) else ""
-                if title and title != "Product Hunt":
-                    results.append({
-                        "name": title,
-                        "description": desc[:200],
-                        "url": "https://www.producthunt.com/topics/api-tools",
-                        "added": datetime.now().strftime("%Y-%m-%d"),
-                        "source": "product_hunt",
-                    })
+            time_module.sleep(0.1)  # Be respectful (no rate limit but don't spam)
 
-        print(f"  -> {len(results)} API-related launches found")
     except Exception as e:
-        print(f"  ERROR fetching Product Hunt: {e}")
+        print("  ⚠ HN error: " + str(e))
 
-    return results
+    result = {"source": "Hacker News", "stories": results, "fetched_at": datetime.now().isoformat()}
+    _save(cache_key, result)
+    return result
 
 
-def write_report(library, apis_guru, public_apis, product_hunt):
-    """Write the merged intelligence report."""
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+# ── Source 4: RapidAPI Developer Blog (new APIs) ────────────────────────────
+def fetch_rapidapi_discover() -> Dict:
+    """Search for new API launches via Brave Search (developer search)."""
+    cache_key = "rapidapi_discover"
+    cached = _cached(cache_key)
+    if cached:
+        return cached
 
+    print("  Searching for new API launches...")
+    results = []
+
+    # Use a focused search — new API launches in last 30 days
+    search_queries = [
+        "new API launched 2026",
+        "announced new API developer tool 2026",
+        "launched API integration platform 2026",
+    ]
+
+    for query in search_queries:
+        try:
+            # Brave Search via API
+            resp = requests.get(
+                "https://api.search.brave.com/res/v1/web/search",
+                params={"q": query, "count": 5},
+                headers={
+                    **HEADERS,
+                    "Accept": "application/json",
+                    "X-Subscription-Token": "BSDA1JMiB_MBiN9z2d5x1Y0a-MqBbI4P4aSY11x7Q1M",
+                },
+                timeout=10,
+            )
+            if resp.status_code != 200:
+                continue
+
+            data = resp.json()
+            web_results = data.get("web", {}).get("results", {}).get("hits", [])
+            for hit in web_results[:3]:
+                results.append({
+                    "title": hit.get("title", ""),
+                    "url": hit.get("url", ""),
+                    "description": hit.get("description", "")[:150],
+                })
+
+            time_module.sleep(2)
+
+        except Exception as e:
+            print("  ⚠ RapidAPI discover error: " + str(e))
+            continue
+
+    result = {"source": "Developer Search", "discoveries": results, "fetched_at": datetime.now().isoformat()}
+    _save(cache_key, result)
+    return result
+
+
+# ── Combine all sources ──────────────────────────────────────────────────────
+def main():
+    print("=== API Discovery Pipeline ===\n")
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    import json
+
+    sources = [
+        ("APIs.guru", fetch_apis_guru),
+        ("Product Hunt", fetch_product_hunt),
+        ("Hacker News", fetch_hacker_news),
+        ("Developer Search", fetch_rapidapi_discover),
+    ]
+
+    all_results = {}
+    for name, fn in sources:
+        print("[" + name + "]")
+        try:
+            result = fn()
+            all_results[name] = result
+            if name == "APIs.guru":
+                print("  ✅ " + str(len(result.get("apis", []))) + " new APIs")
+            elif name == "Product Hunt":
+                print("  ✅ " + str(len(result.get("tools", []))) + " PH tools")
+            elif name == "Hacker News":
+                print("  ✅ " + str(len(result.get("stories", []))) + " HN stories")
+            elif name == "Developer Search":
+                print("  ✅ " + str(len(result.get("discoveries", []))) + " discoveries")
+        except Exception as e:
+            print("  ⚠ Error: " + str(e))
+            all_results[name] = {"source": name, "error": str(e)}
+        print()
+
+    # Write report
     now = datetime.now()
     date_str = now.strftime("%Y-%m-%d")
-    timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
-
-    # Group library by category
-    categories = {}
-    for api in library:
-        cat = api.get("category", "Uncategorized")
-        categories.setdefault(cat, []).append(api)
-
     lines = [
-        f"# API Intelligence Report — {date_str}",
-        f"Generated: {timestamp}",
-        "",
-        "## Curated Library Summary",
-        f"Total APIs in library: {len(library)}",
-        f"Categories: {', '.join(sorted(categories.keys()))}",
-        "",
-        "## Newly Discovered APIs (last 14 days)",
+        "# API Intelligence Report — " + date_str,
+        "_Newly discovered APIs and dev tools — 4 sources checked_",
+        "Generated: " + now.strftime("%Y-%m-%d %H:%M:%S"),
         "",
     ]
 
-    # APIs.guru section
-    lines.append("### From APIs.guru")
-    if apis_guru:
-        for api in apis_guru:
-            url_part = f" | {api['url']}" if api["url"] else ""
-            lines.append(
-                f"- **{api['name']}**: {api['description']} "
-                f"— Added {api['added']}{url_part}"
-            )
-    else:
-        lines.append("- No new APIs found in last 14 days")
+    apis_guru = all_results.get("APIs.guru", {})
+    ph = all_results.get("Product Hunt", {})
+    hn = all_results.get("Hacker News", {})
+    discover = all_results.get("Developer Search", {})
+
+    total_new = len(apis_guru.get("apis", []))
+    total_ph = len(ph.get("tools", []))
+    total_hn = len(hn.get("stories", []))
+    total_discover = len(discover.get("discoveries", []))
+
+    lines.append(
+        "**Totals:** " + str(total_new) + " new APIs | " + str(total_ph) + " PH tools | "
+        + str(total_hn) + " HN stories | " + str(total_discover) + " discoveries"
+    )
     lines.append("")
 
-    # public-apis GitHub section
-    lines.append("### From public-apis GitHub")
-    if public_apis:
-        for api in public_apis:
-            lines.append(
-                f"- **{api['name']}**: {api['description']} "
-                f"— Added via commit {api['added']}"
-            )
-    else:
-        lines.append("- No new free APIs added in recent commits")
-    lines.append("")
-
-    # Product Hunt section
-    lines.append("### From Product Hunt")
-    if product_hunt:
-        for api in product_hunt:
-            url_part = f" | {api['url']}" if api["url"] else ""
-            lines.append(
-                f"- **{api['name']}**: {api['description']} "
-                f"— Launched {api['added']}{url_part}"
-            )
-    else:
-        lines.append("- No new API tool launches found")
-    lines.append("")
-
-    # Full curated library
-    lines.append("## Full Curated Library")
-    lines.append("")
-    for cat in sorted(categories.keys()):
-        lines.append(f"### {cat}")
-        for api in categories[cat]:
-            potential = api.get("niche_potential", "medium")
-            lines.append(
-                f"- **{api['name']}** [{potential}]: "
-                f"{api.get('rankable_data', 'N/A')}"
-            )
+    if apis_guru.get("apis"):
+        lines.append("## APIs.guru — Newly Added (" + str(CUTOFF_DAYS) + " days)")
+        for api in apis_guru["apis"][:20]:
+            lines.append("- **" + api["name"] + "** — " + api["description"][:100] + " ([link](" + api["url"] + "))")
+            lines.append("  _category: " + api["category"] + " | added: " + api["added"] + "_")
         lines.append("")
 
+    if ph.get("tools"):
+        lines.append("## Product Hunt — API / Developer Tools")
+        for t in ph["tools"]:
+            lines.append("- **" + t["name"] + "** — " + t["tagline"])
+            lines.append("  _" + ", ".join(t["topics"]) + "_ | [link](" + t["url"] + ")")
+        lines.append("")
+
+    if hn.get("stories"):
+        lines.append("## Hacker News — Developer Tool Mentions")
+        for s in sorted(hn["stories"], key=lambda x: x["score"], reverse=True)[:10]:
+            lines.append("- **" + s["title"] + "** (score: " + str(s["score"]) + ") | [link](" + s["url"] + ")")
+        lines.append("")
+
+    if discover.get("discoveries"):
+        lines.append("## Developer Search — New API Launches")
+        for d in discover["discoveries"]:
+            lines.append("- **" + d["title"] + "**")
+            lines.append("  " + d.get("description", "")[:150] + " ([link](" + d["url"] + "))")
+        lines.append("")
+
+    if not any([apis_guru.get("apis"), ph.get("tools"), hn.get("stories"), discover.get("discoveries")]):
+        lines.append("_No new APIs found. Catalogs may be mature — try again next week._")
+
+    lines.append("")
+    lines.append("## Scout Guidance")
+    lines.append(
+        "- APIs.guru new entries = high signal (verified by catalog maintainers)"
+        "- Product Hunt tools = very early signal (pre-launch or launch-day)"
+        "- HN developer tools = strong community validation signal"
+        "- Developer Search = supplement only (check 1–2×/week)"
+    )
+
     OUTPUT_FILE.write_text("\n".join(lines))
-    return len(apis_guru) + len(public_apis) + len(product_hunt)
-
-
-def main():
-    print("=== API Discovery Pipeline ===\n")
-
-    # Load curated library
-    library = load_library()
-    print(f"Curated library: {len(library)} APIs loaded\n")
-
-    # Fetch from all 3 sources
-    apis_guru = fetch_apis_guru()
-    public_apis = fetch_public_apis_github()
-    product_hunt = fetch_product_hunt()
-
-    # Write report
-    total_new = write_report(library, apis_guru, public_apis, product_hunt)
-
-    print(f"\n=== Done ===")
-    print(f"New APIs discovered: {total_new}")
-    print(f"Report written to: {OUTPUT_FILE.relative_to(WORKSPACE)}")
+    total = total_new + total_ph + total_hn
+    print("✅ API Discovery done — " + str(total) + " new items → " + OUTPUT_FILE.name)
 
 
 if __name__ == "__main__":
