@@ -160,14 +160,33 @@ cd ~/.openclaw/workspace && python3 scripts/pipeline_drive_sync.py \
   --slug [slug] --client "[Company Name]" --stage all
 ```
 
-**Drive structure created:**
+**Drive structure created (T1/T2 — individual client folders):**
 ```
 Eve — Drafts/
-└── JT Somwaru — Client Pipeline/
-    └── [Company Name]/
-        ├── [Company Name] — Outreach Draft     ← Google Doc
-        └── [Company Name] — Presentation Deck  ← Google Doc (with Slides link)
+└── Consulting/
+    └── Clients/
+        └── [Client Name]/
+            ├── Outreach/
+            │   └── LinkedIn/  ← outreach-draft.md (Google Doc)
+            └── Decks/         ← deck-url.txt (Google Doc with Slides link)
 ```
+
+**Email drafts are NOT auto-synced by pipeline_drive_sync.py.** After writing `email-draft.md`:
+```bash
+python3 ~/.openclaw/workspace/scripts/drive_drafts.py \
+  --title "[Client Name] — Email Draft" \
+  --path "Consulting/Clients/[Client Name]/Outreach/Email" \
+  --file ~/projects/jt-consulting-pipeline/clients/[slug]/email-draft.md
+```
+
+**T3 prospects (cold batch):** T3s do NOT get individual client folders. M1 is sent from the shortlist. After batch is drafted:
+1. Compile all T3 DM drafts into one document
+2. Upload to `Eve — Drafts/Consulting/Clients/T3 Batches/[Batch Name]/`
+3. Create MC task per prospect with M2 follow-up
+4. If T3 replies → promote to T2 → run `pipeline_drive_sync.py --slug [slug] --client "[Name]" --stage all`
+
+**Existing client folders in Drive (verify before creating):**
+AFGO Mechanical, BJD Property Management, Citadel Property Management, G-Net Construction, Maxwell Plumb Mechanical, Park Avenue Building & Roofing, RSI International, Wynne Plumbing & Heating. Benfield Electric Supply and Edmer Supply are T3 — T3 Batches folder only, no individual folder.
 
 Include Drive links in the JT review message (Step 8).
 
