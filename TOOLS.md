@@ -154,6 +154,7 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 - Run after deck-built and outreach-drafted stages. Include Drive links in JT's review message.
 - List synced clients: `python3 scripts/pipeline_drive_sync.py --list`
 - **Outreach send confirmation:** `python3 scripts/outreach_update.py --slug [slug] --company "[Name]" --message [M1|M2|M3] --channel [LinkedIn|Email] --date [YYYY-MM-DD]` — updates outreach-draft.md status, pipeline.md, closes "Review + Send" MC task, creates M2/M3 follow-up task. Triggered automatically when JT confirms a send (AGENTS.md rule).
+- **Email pivot automation:** `python3 scripts/outreach_email_pivot.py [--draft|--execute] [--prospect slug] [--min-days N]` — scans outreach-draft.md files for M2-stuck prospects (M2 sent, M3 not sent, 7+ days), generates email pivot draft (different angle from LinkedIn), uploads to Drive, creates Email Pivot MC task. Daily cron at 6:45 AM (UUID: 9d9b165b).
 
 ## Notion
 - Integration token: ntn_I6090101509856iOb9JOeecrHaqzwG24r7PCjud0PE49iU
