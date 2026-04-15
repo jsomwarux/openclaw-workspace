@@ -402,6 +402,46 @@ def notify_jt(product: str, result: dict, entry_id: str, skipped: bool, reason: 
         print(f"WARNING: Telegram notify failed: {e}")
 
 
+def find_next_entry(product: str):
+    """
+    Find the oldest approved+unposted TikTok entry for the given product.
+    Reads queue.jsonl in order and returns the first match.
+    Skips entries that match the last posted hook (duplicate guard).
+    """
+    last_hook = _last_hook_key(product)
+    with open(QUEUE_PATH) as f:
+        for line in f:
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            try:
+                entry = json.loads(stripped)
+            except json.JSONDecodeError:
+                continue  # skip corrupted lines
+
+            # Must match product and TikTok platform
+            if entry.get("product_slug") != product:
+                continue
+            if entry.get("platform") != "tiktok":
+                continue
+
+            # Must be approved and not yet posted
+            if entry.get("status") != "approved":
+                continue
+            if entry.get("posted"):
+                continue
+
+            # Duplicate guard: skip if same hook as last post
+            hook_key = _hook_key(entry)
+            if last_hook and hook_key == last_hook:
+                print(f"[find_next_entry] Skipping duplicate hook: {hook_key[:40]}...")
+                continue
+
+            return entry
+
+    return None
+
+
 def main():
     parser = argparse.ArgumentParser(description="Post next queued TikTok slideshow for a product")
     parser.add_argument("--product", required=True, choices=["vista", "nash-satoshi"],
