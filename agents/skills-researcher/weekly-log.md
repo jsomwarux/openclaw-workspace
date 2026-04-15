@@ -51,3 +51,28 @@ Full archive: archive/2026-W15.md
 **MC tasks pushed:** 0 new (updated existing OpenClaw task)
 
 **Telegram:** Sent — 🔴 OpenClaw v2026.4.12
+
+## Apr 14 2026 (Tue 11:30 AM)
+
+**🔴 Critical: OpenClaw v2026.4.14 — Security patch (published today)**
+- Published Apr 14, 2026 at 13:03 UTC (~2.5h before scan)
+- 8-version jump from current v2026.3.28
+- SECURITY FIXES: gateway config patch/apply blocks dangerous flags, Slack interactive trigger bypass fixed, attachment path fail-closed
+- Also includes v2026.4.12 fixes: plugin loading, memory reliability, session stability
+- GPT-5.4-pro forward-compat support (Codex)
+- Telegram forum topic names now persist after restart
+- MC task updated: target now v2026.4.14
+- Telegram sent to JT
+
+**X Scan:**
+- LangGraph prediction: 40%+ of new project starts to native agent SDKs (OpenAI/Anthropic/Google) by Q4 2026 — 🟡 market signal
+- SegmentStream MCP: works in Claude+Cursor+ChatGPT+Windsurf simultaneously — 🟡 cross-tool MCP signal
+- tokenmix: unified API gateway 100+ models — 🟢 not relevant
+- Claude Managed Agents beta still circulating — 🟡 no install path yet
+
+**npm:**
+- @tencent-weixin/openclaw-weixin v2.1.8 — Tencent WeChat channel plugin — 🟢
+- @larksuite/openclaw-lark v2026.4.7 — ByteDance Lark/Feishu channel plugin — 🟢
+
+**MC tasks: 0 new (updated existing OpenClaw task)**
+**Telegram: Sent — 🔴 OpenClaw v2026.4.14 security patch**

@@ -23,3 +23,4 @@
 [2026-04-11T11:01:00Z] | weekly-synthesis | x_queries: 6 | web_queries: 7 | findings: ~23 | 🔴: 1 | 🟠: 0 | 🟡/🟢 (KB'd): ~21 | messaged_jt: yes | mc_tasks_pushed: 1 (OpenClaw update scope expanded)
 2026-04-11T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 12 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-04-13T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 12 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
+2026-04-14T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 5 | findings: 14 | 🔴: 1 | 🟠: 0 | messaged_jt: yes

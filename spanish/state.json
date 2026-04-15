@@ -2,13 +2,13 @@
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
-  "current_week": 6,
-  "current_day": 34,
-  "lesson_streak": 25,
-  "longest_streak": 25,
-  "last_lesson_date": "2026-04-11",
+  "current_week": 7,
+  "current_day": 35,
+  "lesson_streak": 26,
+  "longest_streak": 26,
+  "last_lesson_date": "2026-04-14",
   "last_lesson_complete": false,
-  "total_lessons_completed": 11,
+  "total_lessons_completed": 12,
   "weekly_scores": [
     {
       "week": 2,
@@ -46,7 +46,7 @@
     "past tense basics (comí, fui, vi)",
     "quisiera vs quiero (polite ordering)"
   ],
-  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped — cron doesn't fire Sundays. Starting Week 5. Week 6 complete (Mon-Sat Apr 6-11): Emotions, Agreeing/Disagreeing, Describing Feelings, Celebrating Good News. Ready for Week 7.",
+  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped — cron doesn't fire Sundays. Week 6 complete: Emotions, Agreeing/Disagreeing, Describing Feelings, Celebrating Good News. Week 7 (Apr 13-18): Social Conversations — Day 1 Starting Conversations, Day 2 Wishes & Desires.",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases. Single words transcribe correctly. Workaround: credit all Spanish audio answers based on context.",
-  "streak": 25
+  "streak": 26
 }
