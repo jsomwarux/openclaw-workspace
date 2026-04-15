@@ -492,10 +492,40 @@ Score every piece that passes Step 2b on three dimensions, each 1–10.
 
 ## Step 4: Save to queue
 
-Append each scored piece (score ≥4) to:
-`~/.openclaw/workspace/agents/vibe-marketing/queue.jsonl`
+⚠️ **CRITICAL — ALWAYS APPEND, NEVER OVERWRITE:**
+The queue file contains ALL prior entries. Overwriting destroys weeks of content.
+The `write` tool OVERWRITES files. Use Python to read + combine + write.
 
-One JSON object per line:
+**Correct method — Python script:**
+```python
+import json, os
+
+QUEUE = os.path.expanduser('~/.openclaw/workspace/agents/vibe-marketing/queue.jsonl')
+
+# 1. Read existing entries
+existing = []
+if os.path.exists(QUEUE):
+    with open(QUEUE) as f:
+        for line in f:
+            s = line.strip()
+            if s and not s.startswith('#'):
+                try: existing.append(json.loads(s))
+                except: pass
+
+# 2. Build your new entries list
+new_entries = [ /* your entry dicts here */ ]
+
+# 3. Combine and write back — ALL AT ONCE, not one at a time
+combined = existing + new_entries
+with open(QUEUE, 'w') as f:
+    f.write('# vibe-marketing queue — one JSON object per line\n')
+    for entry in combined:
+        f.write(json.dumps(entry) + '\n')
+
+print(f'Queue: {len(existing)} existing + {len(new_entries)} new = {len(combined)} total')
+```
+
+**Output format — one JSON object per line:**
 ```json
 {
   "id": "[product_slug]-[platform]-[YYYY-MM-DD]-[N]",
@@ -506,9 +536,7 @@ One JSON object per line:
   "hashtags": "[for tiktok only — comma-separated]",
   "subreddit": "[for reddit only — e.g. r/CryptoCurrency]",
   "scores": {
-    "hook": [1-10],
-    "platform_fit": [1-10],
-    "authenticity": [1-10]
+    "hook": [1-10], "platform_fit": [1-10], "authenticity": [1-10]
   },
   "score_notes": "[which dimension fell short, if review_needed]",
   "status": "[approved|review_needed]",
@@ -517,6 +545,8 @@ One JSON object per line:
   "posted": false
 }
 ```
+
+**Verify:** confirm `len(combined) == len(existing) + len(new_entries)` before declaring success.
 
 ---
 
