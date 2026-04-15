@@ -153,6 +153,7 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 - Syncs deck + outreach draft to Google Drive: Eve — Drafts / Consulting / Clients / [Company Name] / Outreach|Decks/
 - Run after deck-built and outreach-drafted stages. Include Drive links in JT's review message.
 - List synced clients: `python3 scripts/pipeline_drive_sync.py --list`
+- **Outreach send confirmation:** `python3 scripts/outreach_update.py --slug [slug] --company "[Name]" --message [M1|M2|M3] --channel [LinkedIn|Email] --date [YYYY-MM-DD]` — updates outreach-draft.md status, pipeline.md, closes "Review + Send" MC task, creates M2/M3 follow-up task. Triggered automatically when JT confirms a send (AGENTS.md rule).
 
 ## Notion
 - Integration token: ntn_I6090101509856iOb9JOeecrHaqzwG24r7PCjud0PE49iU

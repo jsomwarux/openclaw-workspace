@@ -190,13 +190,17 @@ AFGO Mechanical, BJD Property Management, Citadel Property Management, G-Net Con
 
 Include Drive links in the JT review message (Step 8).
 
-### 8. Final JT Review
+### 8. Final JT Review + Send Confirmation
 When outreach draft and Drive sync are complete:
 1. Run `pipeline_drive_sync.py --stage all` (if not already done per step)
 2. Read `~/projects/jt-consulting-pipeline/clients/[slug]/outreach-draft.md`
 3. Send to JT via Telegram with the full draft + Drive links
-4. JT reviews, edits, and sends the email themselves
-5. Update pipeline.md status to "✉️ Pitched"
+4. Include this confirmation line in the Telegram message:
+   ```
+   ---
+   After you send, reply with: "sent M1 via [LinkedIn/Email]" and I'll update the pipeline and close this task.
+   ```
+5. When JT confirms the send (same turn or later): run `outreach_update.py` to update outreach-draft.md, pipeline.md, close the MC task, and create the M2 follow-up task.
 
 ## PIPELINE_HANDOFF Detection
 

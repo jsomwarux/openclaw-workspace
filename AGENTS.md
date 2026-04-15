@@ -128,6 +128,31 @@ Files: `~/.claude/CLAUDE.md` (global) | `~/projects/jtsomwaru-com/CLAUDE.md` | `
 ## "Posted" Reply Handler (mandatory)
 > Full spec: `docs/agents/content-rules.md`
 
+## Outreach Send Confirmation Handler (mandatory — SAME TURN)
+When JT confirms sending outreach (any variant of "sent", "done", "sent it", "just sent"), this is an outreach send confirmation — update status in the SAME TURN, not later.
+
+**Detection patterns (match any):**
+- "sent M1/M2/M3 to [Company]" or "sent to [Company]"
+- "sent it to [Company]"
+- "[Company] sent" (prospect name in outreach context)
+- "sent via LinkedIn/Email"
+- Any message within 30 minutes of an outreach review that contains "sent"
+
+**What to do (same turn — never defer):**
+1. Parse from context: prospect name/slug, message number (M1/M2/M3), channel (LinkedIn/Email), date (today if not specified)
+2. Run the update immediately:
+   ```
+   python3 scripts/outreach_update.py --slug [slug] --company "[Company]" --message [M1|M2|M3] --channel [LinkedIn|Email] --date [YYYY-MM-DD]
+   ```
+3. Confirm to JT: what was updated (outreach-draft.md, pipeline.md, MC task closed, M2/M3 task created)
+4. Log to today's daily note under ## Outreach Sends
+
+**Slug lookup:** company name → `~/projects/jt-consulting-pipeline/clients/[slug]/outreach-draft.md`. If slug unknown, search clients/ directory for the company name in outreach-draft.md header.
+
+**Channel default:** LinkedIn if not specified and contact has LinkedIn, else Email.
+
+**This rule overrides normal priority.** Outreach send confirmations are same-turn actions. Never say "I'll update that now" — update and confirm in the same reply.
+
 ## Outreach Status Tracking Rule (mandatory)
 > Full spec: `docs/agents/outreach-rules.md`
 
@@ -193,6 +218,7 @@ These files are APPEND-ONLY or EDIT-ONLY. Using `Write` (full overwrite) on any 
 - `~/.config/env/global.env` — all API keys. ONLY add new lines via `echo "KEY=val" >> ~/.config/env/global.env` or `Edit` tool. NEVER reconstruct from memory.
 - `~/.openclaw/openclaw.json` — gateway config. Use `gateway config.patch` or `Edit` tool only.
 - Any file in `~/.openclaw/credentials/` — never touch.
+- `memory/content/content-signals.md` — historical signal log. ALWAYS use `Edit` tool to append new entries at the end. NEVER use `Write`. Verify file size with `wc -c` after editing — target <20K.
 Rule: if you think you need to "reconstruct" or "recreate" one of these files, STOP and alert JT instead. Keys lost to an overwrite cannot be recovered.
 
 ## 🔑 API Key Exposure Prevention (HARD RULES — 2026-04-10)
