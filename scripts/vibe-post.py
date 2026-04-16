@@ -45,16 +45,18 @@ SCRIPT = os.path.join(WORKSPACE, "scripts/reelfarm-create-slideshow.py")
 def parse_slides_from_content(content: str) -> tuple:
     """
     Parse queue entry content into (hook_text, slides_list).
-    Handles both formats:
-      New: 'SLIDE 1 (hook — photo-xx.jpg):\nTEXT OVERLAY: [text]'
-      Old: 'SLIDE 1 TEXT OVERLAY: [text]'
-    Returns: (hook_text, [{"text": "...", "is_screenshot": bool}, ...])
-    is_screenshot=True when the slide header contains 'app screenshot' or 'screenshot'
+    Handles all three formats:
+      Format A (TEXT OVERLAY):  'SLIDE 1 (hook — photo.jpg):\nTEXT OVERLAY: [text]'
+      Format B (direct colon):  'SLIDE 1: [text]\nSLIDE 2: [text]'  (no TEXT OVERLAY prefix)
+      Format C (LAST SLIDE):    'LAST SLIDE TEXT OVERLAY: [text]'
+
+    Returns: (hook_text, [{"text": "...", "is_screenshot": bool, "is_last": bool}, ...])
+    Raises ValueError if no text can be extracted — NO silent fallbacks.
     """
     import re
     slides = []
 
-    # Split on slide headers (SLIDE N, LAST SLIDE)
+    # Split on slide headers (SLIDE N or LAST SLIDE)
     slide_blocks = re.split(r'(?:^|\n)(?=(?:SLIDE \d+|LAST SLIDE))', content)
 
     for block in slide_blocks:
@@ -62,45 +64,49 @@ def parse_slides_from_content(content: str) -> tuple:
         if not block:
             continue
 
-        # Detect if this is a screenshot slide from the header line
         header_line = block.split("\n")[0].lower()
         is_screenshot = "app screenshot" in header_line or (
             "screenshot" in header_line and "app" in header_line
         )
-        # Also detect "is_last" for the CTA slide
         is_last = block.upper().startswith("LAST SLIDE")
 
-        # Extract text from this block
+        # Try each extraction strategy in order
         text = ""
-        for line in block.split("\n"):
-            line = line.strip()
-            for prefix in ["TEXT OVERLAY:", "TEXT:", "LABEL:"]:
-                if line.startswith(prefix):
-                    extracted = line[len(prefix):].strip()
-                    if extracted:
-                        text = extracted
-                        break
-            if text:
-                break
+        block_lines = block.split("\n")
 
-        if text:
-            slides.append({"text": text, "is_screenshot": is_screenshot, "is_last": is_last})
+        # Strategy 1: TEXT OVERLAY:, TEXT:, LABEL: anywhere in block (including same line as SLIDE N)
+        combined = " ".join(block_lines)
+        for prefix in ["TEXT OVERLAY:", "TEXT:", "LABEL:"]:
+            idx = combined.find(prefix)
+            if idx != -1:
+                extracted = combined[idx + len(prefix):].strip()
+                # Clean up any残留 text before the prefix (e.g. "SLIDE 1 TEXT OVERLAY:" part)
+                if extracted and not extracted[0].isupper():
+                    extracted = extracted[0].upper() + extracted[1:]
+                if extracted:
+                    text = extracted
+                    break
 
-    if slides:
-        hook = slides[0]["text"]
-        slide_list = slides[1:]
-    else:
-        # Fallback
-        for line in content.split("\n"):
-            line = line.strip()
-            if line and not line.startswith("SLIDE") and not line.startswith("FORMAT") and len(line) > 10:
-                hook = line
-                break
-        else:
-            hook = "rate what you watch"
-        slide_list = [{"text": "Vista — track every film you rate", "is_screenshot": False, "is_last": False},
-                      {"text": "download free on the App Store", "is_screenshot": False, "is_last": True}]
+        # Strategy 2: direct colon format 'SLIDE N: text' (no TEXT OVERLAY)
+        if not text:
+            first = block_lines[0]
+            m = re.match(r'^(?:SLIDE \d+|LAST SLIDE)\s*:\s*(.+)', first.strip())
+            if m:
+                text = m.group(1).strip()
 
+        if not text:
+            print(f"[parse_slides_from_content] WARNING: could not extract text from block: {block[:80]}")
+            continue
+
+        slides.append({"text": text, "is_screenshot": is_screenshot, "is_last": is_last})
+
+    if not slides:
+        print("[parse_slides_from_content] ERROR: no slides could be extracted!")
+        print(f"  Content preview: {content[:300]}")
+        raise ValueError("parse_slides_from_content: failed to extract any slides — content format not recognized")
+
+    hook = slides[0]["text"]
+    slide_list = slides[1:]
     return hook, slide_list
 
 
@@ -590,9 +596,11 @@ def main():
         video_id = result_json.get("video_id", "")
         
         post_status = str(result_json.get("tiktok_post_status") or "")
-        if post_status in ("processing", "published", "skipped") or args.dry_run:
-            mark_posted(entry["id"], slideshow_id, video_id)
-            log_performance(entry, slideshow_id, video_id)
+        # NOTE: never call mark_posted() in dry-run mode — dry run is preview only
+        if post_status in ("processing", "published", "skipped"):
+            if not args.dry_run:
+                mark_posted(entry["id"], slideshow_id, video_id)
+                log_performance(entry, slideshow_id, video_id)
             label = "dry-run" if args.dry_run else "live"
             print(f"[vibe-post] ✅ Done ({label}). slideshow_id={slideshow_id}, video_id={video_id}")
         else:
