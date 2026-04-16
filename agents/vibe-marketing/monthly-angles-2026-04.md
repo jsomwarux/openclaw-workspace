@@ -10,7 +10,7 @@ used: true
 Core insight (≤ 80 words): Single-model AI analysis is just a faster way to get a biased take. The architecture that matters is multi-model consensus — running Claude, GPT, Gemini, and a fourth model independently and synthesizing their agreement. When four different training distributions and priors land on the same positioning score, you have something worth paying attention to. This is the architectural argument, not a features list.
 Debate hook: "Using one AI for investment analysis is like polling one person for election results."
 Platforms this angle fits best: x, linkedin, tiktok
-used: false
+used: true
 
 ## Angle 3: High APY is the most expensive distraction in crypto.
 Core insight (≤ 80 words): Staking yield feels like getting paid to be right. Game theory says otherwise — high APY is a prisoner's dilemma. Every rational actor holds for yield, but the first to exit captures the gain. The rest hold the bag. Projects advertising yield are advertising a coordination trap. Nash Satoshi's model penalizes yield-driven positioning because the incentive structure is inherently unstable.

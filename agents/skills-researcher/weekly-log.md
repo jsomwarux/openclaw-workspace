@@ -76,3 +76,23 @@ Full archive: archive/2026-W15.md
 
 **MC tasks: 0 new (updated existing OpenClaw task)**
 **Telegram: Sent — 🔴 OpenClaw v2026.4.14 security patch**
+
+## Apr 15 2026 (Wed 11:30 AM)
+
+**OpenClaw:** v2026.4.15-beta.1 — new beta today. Model Auth status card (OAuth token health + rate-limit pressure at a glance), LanceDB cloud storage support, GitHub Copilot embedding provider for memory search, local-model lean mode (drops browser/cron/message for weaker setups), bundled plugin runtime deps localization. STABLE still at v2026.4.14. No action needed.
+
+**X Scan:**
+- MCPSafe: tests 13 real MCP servers (Stripe, Cloudflare etc.) for runtime security bugs — 🟡 KB (interesting but no install path known)
+- Bank of AI MCP: on-chain AI agent execution layer — 🟡 x402 adjacent, not actionable today
+- AI agent lead scoring in n8n (webhook → HTTP enrich → OpenAI score) — 🟢 pattern noted
+- HubSpot Answer Engine Optimization (AEO) tool — 🟡 new tool but not in JT's stack
+- MCP crossed 97M installs (confirmed) — 🟢
+- Claude Managed Agents beta — still circulating, no install path — 🟢
+- n8n vs Make: n8n winning on scaling + AI — 🟢
+
+**Web:**
+- Anthropic: GlassWing still the only news page item — 🟢
+- Cowork plugins: unchanged — 🟢
+
+**MC tasks: 0 new**
+**Telegram: No 🔴/🟠 — no message sent**

@@ -24,3 +24,4 @@
 2026-04-11T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 12 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-04-13T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 4 | findings: 12 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
 2026-04-14T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 5 | findings: 14 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
+2026-04-15T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 3 | findings: 10 | 🔴: 0 | 🟠: 0 | messaged_jt: no

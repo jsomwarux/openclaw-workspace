@@ -98,7 +98,13 @@ def get_contact_title(slug: str) -> str:
 
 
 def parse_outreach_status(slug: str) -> dict:
-    """Parse outreach-draft.md for M1/M2/M3 send dates."""
+    """Parse outreach-draft.md for M1/M2/M3 send dates.
+    Handles multiple formats:
+    - | M1 | SENT | 2026-03-14 | (markdown table rows)
+    - **Status:** M1 SENT 2026-03-22. M2 SENT 2026-03-24. (bold block)
+    - *Status: M2 SENT 2026-03-22.* (italic block)
+    - Status: M1 SENT 2026-03-22. (no decorators)
+    """
     draft_path = CLIENTS_DIR / slug / "outreach-draft.md"
     if not draft_path.exists():
         return {}
@@ -106,11 +112,43 @@ def parse_outreach_status(slug: str) -> dict:
     content = draft_path.read_text()
     status = {}
 
-    # Parse: M1 SENT YYYY-MM-DD | M2 SENT YYYY-MM-DD | M3 READY ...
-    for line in content.split('\n')[:30]:
-        m = re.search(r'(M\d)\s+SENT\s+(\d{4}-\d{2}-\d{2})', line)
-        if m:
-            status[m.group(1)] = datetime.strptime(m.group(2), '%Y-%m-%d').date()
+    # Format 1: Markdown table rows: | M1 | SENT | 2026-03-14 |
+    for line in content.split('\n')[:40]:
+        for letter in ['M1', 'M2', 'M3']:
+            pattern = rf'\|\s*{letter}\s*\|[^|]*\|\s*(\d{{4}}-\d{{2}}-\d{{2}})'
+            m = re.search(pattern, line, re.IGNORECASE)
+            if m and letter not in status:
+                status[letter] = datetime.strptime(m.group(1), '%Y-%m-%d').date()
+
+    # Format 2: **Status:** M1 SENT 2026-03-22. M2 SENT 2026-03-24.
+    if not status:
+        s_match = re.search(r'\*\*Status:\*\* (.+)', content)
+        if s_match:
+            s_text = s_match.group(1)
+            for letter in ['M1', 'M2', 'M3']:
+                m = re.search(rf'{letter}[^0-9]*?(\d{{4}}-\d{{2}}-\d{{2}})', s_text, re.IGNORECASE)
+                if m and letter not in status:
+                    status[letter] = datetime.strptime(m.group(1), '%Y-%m-%d').date()
+
+    # Format 3: *Status: M2 SENT 2026-03-22.* (single-asterisk bold)
+    if not status:
+        s_match = re.search(r'\*Status: (.+?)(?<!\*)\*(?=\n|$)', content)
+        if s_match:
+            s_text = s_match.group(1)
+            for letter in ['M1', 'M2', 'M3']:
+                m = re.search(rf'{letter}[^0-9]*?(\d{{4}}-\d{{2}}-\d{{2}})', s_text, re.IGNORECASE)
+                if m and letter not in status:
+                    status[letter] = datetime.strptime(m.group(1), '%Y-%m-%d').date()
+
+    # Format 4: inline in message text like "M2 SENT 2026-03-22"
+    if not status:
+        for letter in ['M1', 'M2', 'M3']:
+            m = re.search(rf'{letter}[^0-9]*?SENT[^0-9]*?(\d{{4}}-\d{{2}}-\d{{2}})', content, re.IGNORECASE)
+            if m and letter not in status:
+                try:
+                    status[letter] = datetime.strptime(m.group(1), '%Y-%m-%d').date()
+                except:
+                    pass
 
     return status
 
@@ -160,8 +198,8 @@ def scan_prospects() -> list:
         slug = slug_dir.name
 
         status = parse_outreach_status(slug)
-        if 'M2' not in status or 'M2' in status.get('M3', {}):
-            continue  # M2 not sent, or M3 already sent
+        if 'M2' not in status or 'M3' in status:
+            continue  # M2 not sent yet, or M3 already sent (no pivot needed)
 
         m2_date = status['M2']
         days_since_m2 = (today - m2_date).days

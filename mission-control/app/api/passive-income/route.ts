@@ -18,8 +18,8 @@ interface ParsedIdea {
 }
 
 function extractField(section: string, field: string): string {
-  const regex = new RegExp(`\\*\\*${field}:\\*\\*\\s*(.+?)(?=\\n\\*\\*|\\n---|\n###|$)`, "s");
-  const match = section.match(regex);
+  const regex = new RegExp(`\\*\\*${field}:\\*\\*\\s*(.+?)(?=\\n\\*\\*|\\n---|\\n###|$)`, "s");
+  const match = regex.exec(section);
   return match ? match[1].trim() : "";
 }
 
@@ -28,7 +28,7 @@ function parseScoutReport(content: string, fileName: string): ParsedIdea[] {
   const reportDate = dateMatch ? dateMatch[1] : "";
   const ideas: ParsedIdea[] = [];
 
-  // Scout ideas are under ### N. IDEANAME
+  // Scout titles: "### 1. FITBRIEF AI" or "### 1. FITBRIEF AI — Score: 8.1/10"
   const ideaRegex = /### \d+\.\s+(.+?)(?=\n)/g;
   let match;
   const positions: { title: string; index: number }[] = [];
@@ -42,9 +42,16 @@ function parseScoutReport(content: string, fileName: string): ParsedIdea[] {
     const end = i + 1 < positions.length ? positions[i + 1].index : content.length;
     const section = content.slice(start, end);
 
+    // Parse score from title if embedded (e.g. "FITBRIEF AI — Score: 8.1/10")
+    // Skip unscored scout entries — strategist re-analyzes everything with better context
+    const titleMatch = positions[i].title.match(/^(.+?)\s*[—–-]\s*Score:\s*(\d+\.?\d*)\/10/);
+    const cleanTitle = titleMatch ? titleMatch[1].trim() : positions[i].title;
+    const score = titleMatch ? parseFloat(titleMatch[2]) : 0;
+    if (score === 0) continue; // skip unscored scout ideas
+
     ideas.push({
-      title: positions[i].title,
-      score: 0,
+      title: cleanTitle,
+      score,
       status: "exploring",
       source: `scout (${reportDate})`,
       reportDate,
@@ -65,14 +72,10 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
   const reportDate = dateMatch ? dateMatch[1] : "";
   const ideas: ParsedIdea[] = [];
 
-  // Strategist ideas are under ## IDEANAME (skip meta sections)
   const skipSections = [
-    "Already Queued",
-    "Saturation Filter",
-    "Deep Analysis",
-    "Portfolio Commentary",
-    "Verdict Summary",
-    "Research Summary",
+    "Already Queued", "Saturation Filter", "Deep Analysis",
+    "Portfolio Commentary", "Verdict Summary", "Research Summary",
+    "Full Scoring Summary", "SATURATION FILTER RESULTS", "WATCH IDEAS",
   ];
 
   const sectionRegex = /^## (.+)$/gm;
@@ -90,16 +93,55 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
     const end = i + 1 < positions.length ? positions[i + 1].index : content.length;
     const section = content.slice(start, end);
 
-    // Extract score from verdict line
-    const scoreMatch = section.match(/Score:\s*(\d+\.?\d*)\/10/);
-    const score = scoreMatch ? parseFloat(scoreMatch[1]) : 0;
+    // Extract score — try multiple formats:
+    // 1. **Score: 5.8/10** (fully bold-wrapped, March 8 e.g. SITEAUDIT)
+    // 2. Score: **7.5/10** (Score: plain, number bold — March 8/15)
+    // 3. **Weighted total: 8.6/10** (markdown tables, March 22+)
+    // 4. Score: 7.6/10 (plain, March 29+)
+    let score = 0;
+    const fullyBoldMatch = section.match(/\*\*Score:\s*(\d+\.?\d*)\/10\*\*/);
+    if (fullyBoldMatch) {
+      score = parseFloat(fullyBoldMatch[1]);
+    } else {
+      const scoreBoldMatch = section.match(/Score:\s*\*\*(\d+\.?\d*)\/10/);
+      if (scoreBoldMatch) {
+        score = parseFloat(scoreBoldMatch[1]);
+      } else {
+        const weightedMatch = section.match(/\*\*Weighted total:\s*(\d+\.?\d*)\/10/);
+        if (weightedMatch) {
+          score = parseFloat(weightedMatch[1]);
+        } else {
+          const plainMatch = section.match(/Score:\s*(\d+\.?\d*)\/10(?!\*)/);
+          if (plainMatch) {
+            score = parseFloat(plainMatch[1]);
+          }
+        }
+      }
+    }
 
     // Extract verdict for status hint
     let status: ParsedIdea["status"] = "exploring";
     if (/BUILD/.test(section)) status = "building";
 
+    // Normalize title — remove verdict emoji + verdict word + embedded scores + TOP PICK markers
+    // e.g. "PADELRANK ⭐ TOP PICK" → "PADELRANK"
+    // e.g. "🔴 PASS — SITEAUDIT.AI" → "SITEAUDIT.AI"
+    // e.g. "🟡 WATCH — QUOTE PILOT" → "QUOTE PILOT"
+    // e.g. "FITBRIEF AI — Score: 8.1/10" → "FITBRIEF AI"
+    const rawTitle = positions[i].title;
+    const cleanTitle = rawTitle
+      .replace(/^\s*[🟢🟡🔴]\s*(?:PASS|BUILD|WATCH|IDEAS?\s*\d*)\s*[—–-]?\s*/i, "")
+      .replace(/^\s*[🟢🟡🔴]\s*/, "")
+      .replace(/\s*[-—]\s*Score:\s*\d+\.?\d*\/10.*$/i, "")
+      .replace(/\s*[-—]\s*\d+\.?\d*\/10.*$/i, "")
+      .replace(/\s*⭐\s*TOP PICK.*$/i, "")
+      .replace(/\s+TOP PICK.*$/i, "")
+      .replace(/\s+←\s+Top Pick.*$/i, "")
+      .replace(/\s*⚠️.*$/, "")
+      .trim();
+
     ideas.push({
-      title: positions[i].title,
+      title: cleanTitle,
       score,
       status,
       source: `strategist (${reportDate})`,
@@ -123,7 +165,7 @@ function extractOpportunity(section: string): string {
 
 function extractNumberedSection(section: string, heading: string): string {
   const regex = new RegExp(`### ${heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?\\n([\\s\\S]+?)(?=\\n###|$)`);
-  const match = section.match(regex);
+  const match = regex.exec(section);
   return match ? match[1].trim() : "";
 }
 
@@ -138,7 +180,7 @@ export async function GET() {
   const allIdeas: ParsedIdea[] = [];
   const seenTitles = new Set<string>();
 
-  // Parse strategist reports first (they have scores)
+  // Parse strategist reports first (they have scores, most authoritative)
   const strategistFiles = files.filter((f) => f.includes("strategist")).sort().reverse();
   const scoutFiles = files.filter((f) => f.includes("scout")).sort().reverse();
 
@@ -146,8 +188,10 @@ export async function GET() {
     const content = readFileSync(join(dir, file), "utf-8");
     const ideas = parseStrategistReport(content, file);
     for (const idea of ideas) {
-      if (!seenTitles.has(idea.title)) {
-        seenTitles.add(idea.title);
+      // Dedupe: normalize for comparison (strip emoji/decorations, uppercase + alphanumeric only)
+      const normalized = idea.title.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      if (!seenTitles.has(normalized)) {
+        seenTitles.add(normalized);
         allIdeas.push(idea);
       }
     }
@@ -157,8 +201,9 @@ export async function GET() {
     const content = readFileSync(join(dir, file), "utf-8");
     const ideas = parseScoutReport(content, file);
     for (const idea of ideas) {
-      if (!seenTitles.has(idea.title)) {
-        seenTitles.add(idea.title);
+      const normalized = idea.title.toUpperCase().replace(/[^A-Z0-9]/g, "");
+      if (!seenTitles.has(normalized)) {
+        seenTitles.add(normalized);
         allIdeas.push(idea);
       }
     }
