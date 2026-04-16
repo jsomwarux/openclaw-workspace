@@ -402,13 +402,37 @@ def notify_jt(product: str, result: dict, entry_id: str, skipped: bool, reason: 
         print(f"WARNING: Telegram notify failed: {e}")
 
 
+def _posted_ids_from_perf_log() -> set:
+    """Get all entry IDs that have already been posted (from performance log)."""
+    posted = set()
+    if not os.path.exists(PERF_LOG):
+        return posted
+    try:
+        with open(PERF_LOG) as f:
+            for line in f:
+                stripped = line.strip()
+                if not stripped:
+                    continue
+                try:
+                    e = json.loads(stripped)
+                    if e.get('id'):
+                        posted.add(e['id'])
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        pass
+    return posted
+
+
 def find_next_entry(product: str):
     """
     Find the oldest approved+unposted TikTok entry for the given product.
     Reads queue.jsonl in order and returns the first match.
-    Skips entries that match the last posted hook (duplicate guard).
+    Skips entries already in the performance log (already posted — across ALL products).
     """
-    last_hook = _last_hook_key(product)
+    posted_ids = _posted_ids_from_perf_log()
+    last_hook  = _last_hook_key(product)
+
     with open(QUEUE_PATH) as f:
         for line in f:
             stripped = line.strip()
@@ -431,7 +455,12 @@ def find_next_entry(product: str):
             if entry.get("posted"):
                 continue
 
-            # Duplicate guard: skip if same hook as last post
+            # Duplicate guard: skip if already in performance log (already posted)
+            if entry['id'] in posted_ids:
+                print(f"[find_next_entry] Skipping {entry['id']} — already in performance log (already posted)")
+                continue
+
+            # Hook-diversity guard: skip if same hook as last post for this product
             hook_key = _hook_key(entry)
             if last_hook and hook_key == last_hook:
                 print(f"[find_next_entry] Skipping duplicate hook: {hook_key[:40]}...")
@@ -461,6 +490,44 @@ def main():
         sys.exit(0)
 
     print(f"[vibe-post] Found entry: {entry['id']}")
+    
+    # ── PRODUCT CONTENT VERIFICATION ──────────────────────────────────────
+    # CRITICAL: verify content actually matches the product before any API call
+    content_lower = entry.get('content', '').lower()
+    entry_product = entry.get('product_slug', '')
+    
+    if entry_product != product:
+        print(f"[vibe-post] 🚨 FATAL: entry product_slug='{entry_product}' != requested product='{product}'")
+        print(f"[vibe-post] 🚨 Stopping — cross-product contamination detected!")
+        print(f"[vibe-post] 🚨 Entry: {entry['id']}")
+        sys.exit(1)
+    
+    # Keyword-based content validation
+    crypto_keywords = ['crypto', 'coin', 'token', 'staking', 'defi', 'blockchain', 
+                      'bitcoin', 'eth ', 'solana', 'nft', 'trading', 'traders',
+                      'game theory', 'nash', 'satoshi', 'market cap', 'liquidity',
+                      'bullish', 'bearish', 'hodl', 'whale', 'altcoin', 'meme coin']
+    movie_keywords  = ['movie', 'film', 'imdb', 'letterboxd', 'rotten tomatoes',
+                      'rating', 'watched', 'genre', 'director', 'scene', 'cinema',
+                      'screenplay', 'score', 'trailer', 'streaming', 'netflix', 'hulu']
+    
+    crypto_hits = sum(1 for kw in crypto_keywords if kw in content_lower)
+    movie_hits  = sum(1 for kw in movie_keywords  if kw in content_lower)
+    
+    if product == 'nash-satoshi' and movie_hits > 2 and crypto_hits == 0:
+        print(f"[vibe-post] 🚨 FATAL: Nash content has movie keywords ({movie_hits}) but no crypto keywords!")
+        print(f"[vibe-post] 🚨 Stopping — content mismatch (Vista copy in Nash post?)")
+        print(f"[vibe-post] 🚨 Entry: {entry['id']}")
+        sys.exit(1)
+    
+    if product == 'vista' and crypto_hits > 2 and movie_hits == 0:
+        print(f"[vibe-post] 🚨 FATAL: Vista content has crypto keywords ({crypto_hits}) but no movie keywords!")
+        print(f"[vibe-post] 🚨 Stopping — content mismatch (Nash copy in Vista post?)")
+        print(f"[vibe-post] 🚨 Entry: {entry['id']}")
+        sys.exit(1)
+    
+    print(f"[vibe-post] ✅ Content verified: {crypto_hits} crypto hints, {movie_hits} movie hints")
+    # ── END PRODUCT VERIFICATION ─────────────────────────────────────────
     
     # Parse content into hook + slides
     hook, slides = parse_slides_from_content(entry.get("content", ""))
