@@ -41,3 +41,40 @@
 - **Root cause:** Isolated agent sessions (agentTurn) don't have access to the message tool for Telegram delivery. Only crons using OpenClaw's built-in `announce` delivery mode work.
 - **Fix:** Switched all content and outreach crons from `delivery.mode: "none"` to `announce` with `channel: telegram`.
 - **Prevention:** Any cron that needs to deliver a message to Telegram MUST use OpenClaw's `announce` delivery mode. Never use `message` tool inside an isolated agent session for channel delivery.
+
+---
+
+## 2026-04-16 — Cross-product contamination + silent post failures
+
+### What happened
+A Nash Satoshi TikTok was posted with Vista-related copy. Separately, `vista-tiktok-2026-03-30-1` was posted TWICE (duplicate, not caught).
+
+### Root causes
+
+**1. Generate agent overwrites queue.jsonl (CRITICAL — fixed 2026-04-15)**
+The generate phase used `write` tool instead of append. It replaced the full queue (69 entries) with only 12 new entries. During the window when the queue only had Apr13 entries, the posting crons ran and found the wrong content (or nothing). The Apr 13 entries had Vista TikTok content alongside Nash entries, causing cross-product selection.
+
+**Fix:** AGENT.md Step 4 now forces Python script append (read existing + combine + write). Committed `5a2c8aa`.
+
+**2. mark_posted() silent failure**
+The `find_next_entry()` function was NEVER defined before the fix on Apr 15. Crons ran vibe-post.py without it — the script errored out silently. Posts appeared to succeed (Reel.farm returned `processing`) but `mark_posted()` was never called, so queue entries stayed `posted=False`.
+
+After `find_next_entry` was added, entries were found and API calls made, but `mark_posted` only fires when `post_status in ("processing","published","skipped")`. If the status was something else, it silently skipped.
+
+**3. Duplicate guard used queue.jsonl, not performance log**
+`_last_hook_key` read the LAST posted entry per product from queue.jsonl. But queue.jsonl was restored multiple times (resetting `posted=False`). The duplicate guard never saw the first `vista-tiktok-2026-03-30-1` post because after the restore, the guard looked at queue state (unposted) not performance log (posted).
+
+**Fix:** Duplicate guard now checks performance-log.jsonl for ANY entry with the same ID (regardless of product). Committed `79bcf8c`.
+
+**4. No cross-product content verification**
+There was no runtime check that the selected entry's content actually matched the requested product. A Vista entry could be selected for Nash (or vice versa) if the product_slug somehow got mismatched.
+
+**Fix:** Added keyword-based content verification in vibe-post.py. Script exits with FATAL if Nash content has movie keywords (>2 hits, 0 crypto) or Vista content has crypto keywords (>2 hits, 0 movie). Committed `79bcf8c`.
+
+### What actually got posted (verified)
+- ✅ `vista-tiktok-2026-03-30-1` — posted Apr 6 (performance log confirmed)
+- ❌ `vista-tiktok-2026-03-30-1` — DUPLICATE posted Apr 12 (not caught — fixed)
+- ❌ `nash-satoshi-tiktok-2026-04-06-1` — posted Apr 16 with potential Vista copy (queue was in wrong state during cron window)
+
+### Lesson
+Queue file is operational state. Generate + restore operations can corrupt it. Always use performance log as source of truth for "was it posted?" and add runtime content verification before any API call.

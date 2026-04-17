@@ -96,3 +96,22 @@ Full archive: archive/2026-W15.md
 
 **MC tasks: 0 new**
 **Telegram: No 🔴/🟠 — no message sent**
+
+## Apr 16 2026 (Thu 11:30 AM)
+
+**OpenClaw:** v2026.4.15-beta.1 unchanged. Stable still v2026.4.14.
+
+**X Scan:**
+- Salesforce @TDX26: repositioning as "runtime layer for the agentic era" — Salesforce ≠ CRM but AI agent orchestration platform — market signal, validates JT's Agentforce angle. KB only.
+- Merge API Agent Handler: native n8n node now — Ramp, HiBob, Greenhouse connectors for n8n agents. HR-heavy, not in JT's ICP. KB only.
+- Apideck CLI: query 200+ SaaS APIs from terminal — AI agent tool, not in JT's stack. KB only.
+- HubSpot AI suite expansion: AEO + agents, continuing CRM→agentic shift. KB only.
+- Streetai: "feels like OpenClaw but way easier" — competitive intel. KB only.
+- Cold email reply parser in n8n for Smartlead — useful pattern. KB only.
+- MCP: still same signals (MCPSafe, SegmentStream, SiteMCP archival). KB only.
+
+**Web:**
+- Anthropic news: GlassWing only, no new posts — 🟢
+
+**MC tasks: 0 new**
+**Telegram: No 🔴/🟠 — no message sent**

@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-04-14",
+  "last_run": "2026-04-16",
   "drafted": [
     "new-age-global-builders",
     "essential-property-management",
@@ -25,6 +25,15 @@
     "bell-electrical-supply-2",
     "carlyle-property-management",
     "lady-liberty-contracting",
-    "jasco-plumbing-heating-supply"
+    "jasco-plumbing-heating-supply",
+    "a-good-plumber",
+    "shamrock-mechanical-company",
+    "mason-construction-services-inc"
+  ],
+  "skipped_no_channel": [
+    "fargo-hvac-supply",
+    "alliance-general-construction",
+    "jjk-contracting",
+    "industrial-electric-supply"
   ]
 }

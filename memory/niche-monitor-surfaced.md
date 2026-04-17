@@ -27,3 +27,6 @@
 2026-04-05 n8n-named-required-enterprise-tool-senior-sa — NICE Sr. SA JD names n8n as required tool alongside Copilot Studio, LLMs, RAG, MCP servers. First time n8n appears as explicit named requirement at Senior SA level — crosses from power-user to credentialed enterprise standard.
 
 2026-04-12 n8n-ai-agent-framework-2026 — n8n March 2026 AI Agent Framework represents fundamental architecture shift in workflow automation. Published Apr 8, 2026 by kollox.com analysis. Confirms n8n moving from workflow builder to orchestration layer.
+
+2026-04-16 agentforce-agentexchange — Salesforce launched AgentExchange, unifying AppExchange + Slack Marketplace + Agentforce ecosystem into one agentic marketplace.
+2026-04-16 salesforce-headless-360 — Salesforce Headless 360: all Salesforce objects now exposed as APIs, MCP tools, or CLI commands — platform fully agent-readable.

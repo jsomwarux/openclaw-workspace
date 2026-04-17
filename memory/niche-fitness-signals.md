@@ -18,3 +18,4 @@ Last reset: 2026-04-01
 
 2026-04-13 [CONFIRMS] niche=construction — 38% contractor AI adoption (38% seeing measurable results, up from 17% YoY) confirmed by ServiceTitan 2026 report. Early-mover window closing but still open. (forconstructionpros.com)
 2026-04-14 [EMERGING] niche=wholesale-distribution — Associated Wholesale Grocers (nation's largest grocery co-op wholesaler) Board-approved major warehouse automation investment at Gulf Coast facility. Concrete demand signal for wholesale automation beyond UNFI. (perishablenews.com, published Apr 13)
+2026-04-16 [CONFIRMS] niche=construction — Nemetschek acquiring HCSS (Heavy Construction Systems Specialists) from Thoma Bravo. Creates next global construction tech leader with AI-enabled operations. $2.8B deal signals continued consolidation + AI integration in construction software. (nemetschek.com, Apr 13)
