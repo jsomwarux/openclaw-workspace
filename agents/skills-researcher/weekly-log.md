@@ -115,3 +115,28 @@ Full archive: archive/2026-W15.md
 
 **MC tasks: 0 new**
 **Telegram: No 🔴/🟠 — no message sent**
+
+## 2026-04-17 — Daily Scan
+
+### 🔴/🟠 Findings
+1. **[🟠 Claude Opus 4.7 — Self-verification + coding improvements, now on OpenRouter]** (2026-04-16)
+   - Source: X @Aivp_ai + Axios/CNBC/AWS blog (2026-04-16)
+   - Key capabilities: (1) proactive self-verification — writes tests, runs them, fixes failures before surfacing results; (2) substantially better vision; (3) stronger over 1M token context
+   - OpenRouter: available now at same $5/$25 as Opus 4.6 (same tier as Sonnet 4.6 on OpenRouter)
+   - 7.5x promotional multiplier through April 30, then standard Opus pricing
+   - Impact: Eve's n8n-agent uses Opus for complex multi-file Python/n8n workflow generation. Self-verification = fewer failed coding agent runs = less rework = better consulting client outcomes
+   - Quality gate: PASS — specific first action (swap in Opus 4.7 for n8n-agent, test coding quality improvement)
+   - Fits: n8n-agent | Cost: same as current Opus 4.6 routing | Via: X @Aivp_ai + web
+   - Shoutout opportunity: NO (Anthropic is JT's stack but this is an API model update, not a visual tool/demo)
+
+### 🟡 Findings (KB)
+2. Merge Agent Handler — native n8n node, 20+ new connectors (Ramp, HiBob, GreenHouse). HR/finance integrations directly relevant to SMB clients.
+3. Salesforce TDX26 repositioning as "agentic runtime layer" — AgentExchange ecosystem. Reinforces Agentforce positioning for consulting.
+4. OpenClaw v2026.4.15 (2026-04-16) — minor release, changelog unknown.
+5. Apideck CLI — queries 200+ SaaS APIs from terminal. Terminal access needed, not applicable to Eve's architecture.
+6. LangGraph market share prediction — native agent SDKs from OpenAI/Anthropic/Google absorbing orchestration market. Market commentary.
+
+### Quality Gate Results
+- Pushed to MC: 1 (Claude Opus 4.7)
+- KB only: 5
+- Telegram JT: YES (1 🟠 finding)
