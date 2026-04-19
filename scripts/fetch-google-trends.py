@@ -177,9 +177,9 @@ def run_category_scan() -> None:
     ]
 
     for channel, results in all_results.items():
-        breakout = [r for r in results if r.get("change_pct", 0) >= 10]
-        rising = [r for r in results if 0 <= r.get("change_pct", 0) < 10]
-        declining = [r for r in results if r.get("change_pct", 0) < 0]
+        breakout = [r for r in results if "error" not in r and r.get("change_pct", 0) >= 10]
+        rising = [r for r in results if "error" not in r and 0 <= r.get("change_pct", 0) < 10]
+        declining = [r for r in results if "error" not in r and r.get("change_pct", 0) < 0]
         breakout_total += len(breakout)
 
         lines.append("## " + channel)
