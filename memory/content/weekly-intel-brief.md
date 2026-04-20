@@ -1,22 +1,18 @@
 # Weekly Intel Brief — for Content Generation
 > Written by Weekly Intelligence Synthesis. Read by content-generate-linkedin and content-generate-x Monday morning.
 
-**Week of:** 2026-04-06
+**Week of:** 2026-04-13
 
 ## Top Niche Signals This Week
-[Wholesale/distribution] Most distributors aren't ready for AI — and it's costing them (Vistex, Apr 2026). 9-18 months to true AI readiness for mid-market distributors. The gap between enterprise AI deployment and mid-market readiness is the window JT fills. Hook: "The $10M family distributor isn't 18 months behind Amazon. They're 6 months behind where they need to be this quarter."
-
-[Construction] 38% of contractors using AI in 2026, adoption doubled YoY (confirmed Mar/Apr 2026). Early-mover window closing this year. NYC-specific signal: Turner Construction building Claude-powered tools. Hook: "NYC contractors using AI are winning bids. The ones who aren't are about to start asking why."
-
-[Property management] McKinsey data confirmed: 3-7% renewal rate improvement with AI workflows. 90%+ lead response time improvement with 24/7 agents. First citable ROI numbers for PM pitch (Forbes/McKinsey March 2026). Hook: "McKinsey just confirmed what property managers suspected: the agents that never sleep are the ones that save the renewal."
+- **PM:** Entrata launched agentic features for enterprise PM — JT's angle is "we build the AppFolio equivalent" for mid-market firms not ready for enterprise (construction niche tag)
+- **Wholesale:** n8n 2026 roadmap confirms agent orchestration direction — mid-market distributors watching enterprise AI deployments as timing signal for 2026 (wholesale niche tag)
+- **Agentforce:** Salesforce AgentExchange + Headless 360 (April 15-16 TDX) unify AppExchange/Slack/Agentforce into one agentic marketplace — platform now fully agent-readable, changing how SMBs evaluate AI tools
 
 ## Strategic Theme This Week
-The gap between AI tool access and AI operational reality is widening across all four niches — not because tools are missing, but because implementation is harder than purchase. This is the consulting positioning moment across construction, wholesale, PM, and insurance.
+Mid-market businesses (construction, wholesale, PM) are watching enterprise AI deployments closely — the timing for showing them "what's possible in your size league" is real this week. The n8n roadmap + AgentExchange reinforce that AI tooling is consolidating around agentic paradigms, and the window for positioning as the implementation consultant who bridges enterprise tools to mid-market reality is open.
 
 ## Competitive Developments
-[Wholesale] AI-native wholesale platforms (Catalist) are the first generation built from the ground up for AI — not bolt-ons. 34% of mid-market B2B buyers now use AI-assisted sourcing. Implication for JT: the buyers he's targeting are increasingly AI-aware, which means the pitch needs to go deeper than "do you need automation?"
-
-[n8n] March 2026 AI Agent Framework signals n8n architecturally crossing from workflow tool to enterprise orchestration layer. NICE naming n8n at Senior SA level is the credential signal. JT's n8n proficiency is now a named enterprise credential, not just a background capability.
+Entrata launched enterprise agentic features (April 2026) — AppFolio competitors are moving fast on AI. JT's positioning as "we build equivalent automation for mid-market PM firms on AppFolio/Buildium" is stronger this week. AgentExchange unifying Salesforce ecosystem means more SMBs will get pitched Agentforce — JT's angle to differentiate: implementation specialist vs. platform resale.
 
 ---
-_Last updated: 2026-04-12 Sunday_
+_Last updated: 2026-04-19 Sunday_

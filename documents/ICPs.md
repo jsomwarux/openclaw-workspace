@@ -138,6 +138,10 @@ Mid-size insurance agencies or MGAs (Managing General Agents) with 20–200 empl
 **Why Agentforce fits:**
 As of March 2026, Agentforce is bundled into Salesforce Suites for SMBs — meaning most targets in this ICP already have Agentforce access and don't know it. The pitch is NOT "should you use Agentforce" or "here's a new tool." The pitch is: "You're already paying for this. Let me activate it and configure it for your specific workflow." This is a fundamentally lower-friction sale — no new budget line, no new vendor approval. The client just needs someone to turn it on correctly.
 
+**Distribution path (April 2026 — AgentExchange):** AgentExchange (launched TDX 2026, April 15) is now the unified catalog for Agentforce solutions. JT can publish completed engagements there — giving consulting work a referral pipeline and a credential that survives any single client relationship. Use AgentExchange as a trust anchor in cold outreach: "Solutions are published to Salesforce's official AgentExchange catalog — this isn't a side project, it's a production deployment."
+
+**Technical credibility signal (April 2026 — Headless 360):** All Salesforce objects now exposed as native MCP tools per Headless 360 architecture. Consulting engagements no longer need custom API integration scoping — the surface is standardized. Scope conversations are shorter, and prospects can verify the architecture themselves on Salesforce's developer documentation.
+
 **Pricing angle (post-March 2026):** Salesforce's CFO has flagged that Agentforce token pricing will commoditize. Never compete on per-token cost. Position value on outcomes and time saved: "You don't pay me per API call. You pay me once for a system that handles X without a human rep touching it."
 
 **Budget:** $6,500–$15,000 for an Agentforce deployment. Larger than n8n engagements because of Salesforce complexity and enterprise context.
@@ -208,8 +212,13 @@ Salesforce Financial Services Cloud penetration in mid-size RIAs is 40%+. Agentf
 
 ---
 
+### AgentExchange & Headless 360 (TDX 2026 — April 15, 2026)
+- **AgentExchange:** Salesforce launched AgentExchange at TDX 2026 — unified marketplace combining AppExchange, Slack Marketplace, and Agentforce ecosystem into one destination for agentic apps and agents. Partners can now publish directly to a unified catalog. Changes distribution path for Agentforce solutions: certified partners (like JT) can publish to the catalog, giving consulting engagements a referral pipeline and credibility anchor. When prospect asks "is this a real solution?" — AgentExchange is the answer.
+- **Headless 360:** Salesforce introduced unified API-driven architecture stacking data, workflows, and AI agents behind a single API layer. All Salesforce objects now exposed as MCP tools, APIs, or CLI commands — the entire SF platform is "agent-readable" by default. Implication: prospects don't need to manually expose their SF data for agents to read it. The consulting engagement is now easier to scope because the API surface is standardized.
+- **Pitch impact:** "You're already licensed for Agentforce. AgentExchange shows it's a real product category, not a bet. And Headless 360 means connecting it to your data is now standardized work — not a custom integration." This closes the "is this production-ready" objection.
+
 ## Recent Competitive Intelligence
-> Auto-updated by Weekly Intelligence Synthesis. Last updated: 2026-04-05.
+> Auto-updated by Weekly Intelligence Synthesis. Last updated: 2026-04-19.
 > Use these signals in outreach hooks, pitch framing, and ICP targeting decisions.
 
 ### ICP 1 — Wholesale Distribution
