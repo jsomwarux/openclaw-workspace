@@ -37,22 +37,14 @@ WORKSPACE = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 PHOTOS_BASE = os.path.join(WORKSPACE, "agents", "vibe-marketing", "real-photos")
 REELFARM_BASE = "https://reel.farm/api/v1"
 
-PRODUCT_CONFIG = {
-    "vista": {
-        "library_path": os.path.join(PHOTOS_BASE, "vista", "library.json"),
-        "photos_dir": os.path.join(PHOTOS_BASE, "vista"),
+def get_product_config(product):
+    return {
+        "library_path": os.path.join(PHOTOS_BASE, product, "library.json"),
+        "photos_dir": os.path.join(PHOTOS_BASE, product),
         "font": "TikTokDisplay-Bold",
         "text_style": "outline",
         "aspect_ratio": "4:5",
-    },
-    "nash-satoshi": {
-        "library_path": os.path.join(PHOTOS_BASE, "nash-satoshi", "library.json"),
-        "photos_dir": os.path.join(PHOTOS_BASE, "nash-satoshi"),
-        "font": "TikTokDisplay-Bold",
-        "text_style": "outline",
-        "aspect_ratio": "4:5",
-    },
-}
+    }
 
 POLL_INTERVAL = 5  # seconds
 POLL_TIMEOUT = 120  # seconds
@@ -88,14 +80,18 @@ def get_headers(api_key):
 
 def load_library(product):
     """Load the photo library for a product."""
-    config = PRODUCT_CONFIG[product]
+    config = get_product_config(product)
+    if not os.path.exists(config["library_path"]):
+        os.makedirs(config["photos_dir"], exist_ok=True)
+        return {"photos": []}
     with open(config["library_path"], "r") as f:
         return json.load(f)
 
 
 def save_library(product, library):
     """Save the photo library for a product."""
-    config = PRODUCT_CONFIG[product]
+    config = get_product_config(product)
+    os.makedirs(config["photos_dir"], exist_ok=True)
     with open(config["library_path"], "w") as f:
         json.dump(library, f, indent=2)
 
@@ -153,7 +149,7 @@ def mark_photos_used(library, photo_ids, week_date):
 
 def build_slides(hook_text, slide_texts, photo_urls, product):
     """Build the slides array for the Reel.farm API."""
-    config = PRODUCT_CONFIG[product]
+    config = get_product_config(product)
     slides = []
 
     # Slide 1: hook photo + hook text
@@ -205,7 +201,7 @@ def build_slides(hook_text, slide_texts, photo_urls, product):
 
 def create_slideshow(api_key, slides, product, slideshow_type):
     """Call POST /slideshows/create and return the response."""
-    config = PRODUCT_CONFIG[product]
+    config = get_product_config(product)
     payload = {
         "slides": slides,
         "aspect_ratio": config["aspect_ratio"],
@@ -485,7 +481,7 @@ def main():
         "slide_count": len(slides),
         "week": week_monday,
     }
-    print(json.dumps(result, indent=2))
+    print(json.dumps(result))
 
 
 if __name__ == "__main__":

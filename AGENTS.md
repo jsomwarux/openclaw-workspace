@@ -11,7 +11,15 @@
 ## Budget Rule
 `bootstrapMaxChars=32000` — HARD CAP. Never raise above 32,000 (40,000 caused 2h outage 2026-03-31).
 **Safe limits:** AGENTS.md <28k | MEMORY.md <20k | TOOLS.md <16k | HEARTBEAT.md <16k.
-**Enforcement (mandatory before appending):** Run `wc -c [file]` first. If adding content would push file over its safe limit, move the largest existing section to its subfile to make room first. Never append without checking. Subfiles: `docs/agents/outreach-rules.md` | `docs/agents/resume-upload-rules.md` | `docs/agents/post-detection-rules.md` | `docs/agents/autoresearch-rules.md` | `docs/agents/mistakes-log.md` | `docs/agents/mistakes-log-recent.md` | `docs/agents/workflow-protocols.md` | `docs/agents/operational-rules.md` | `docs/agents/content-rules.md` | `docs/agents/task-board-rules.md` | `docs/tools/claude-personas.md` | `docs/tools/TOOLS-full.md`.
+**Enforcement (mandatory — session start + before any append):** At the start of every session, run `wc -c` on all bootstrap files. If any file is at or above its budget, trim it proactively before doing any other work. Before appending, always check `wc -c` first. If over limit, move the largest/oldest section to its subfile first. Never append without checking. Subfiles: `docs/agents/outreach-rules.md` | `docs/agents/resume-upload-rules.md` | `docs/agents/post-detection-rules.md` | `docs/agents/autoresearch-rules.md` | `docs/agents/mistakes-log.md` | `docs/agents/mistakes-log-recent.md` | `docs/agents/workflow-protocols.md` | `docs/agents/operational-rules.md` | `docs/agents/content-rules.md` | `docs/agents/task-board-rules.md` | `docs/tools/claude-personas.md` | `docs/tools/TOOLS-full.md` | `docs/memory/MEMORY-full.md`.
+
+## Hard Rules (permanent — never override without JT approval)
+1. **Auth/model config:** NEVER modify openclaw.json auth section, summaryModel, summaryProvider, or primary model without JT's explicit approval.
+2. **API keys:** NEVER embed API keys in code, project files, Drive uploads, or anywhere outside auth-profiles.json and models.json.
+3. **bootstrapMaxChars:** NEVER raise above 32,000.
+4. **Bootstrap file budgets:** Before appending to AGENTS.md (>28k), MEMORY.md (>20k), or TOOLS.md (>16k): check `wc -c` first. If over limit, move existing content to subfiles before adding.
+5. **Session length:** If a session exceeds 200 messages, proactively suggest starting a fresh session.
+6. **Cron exec paths:** All cron exec commands must use `python3 /full/path/script.py` format. No `cd` chaining.
 
 ## Plan Mode
 3+ steps or architectural decisions: write plan first, show JT, wait for approval. If something breaks mid-task: STOP, re-plan. Multi-session projects: write to plans/[name].md, re-read each session, update as steps complete.
@@ -321,3 +329,8 @@ Full detail: `docs/agents/workflow-protocols.md` — read before any coding task
 Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete prevention rule.
 
 
+
+## The Mamba Mentality Rule (Global Directive)
+- **Relentless Validation:** Never trust "success" outputs. Verify data freshness and state changes autonomously. If you run a script, check the system logs. If you pull data, check the timestamp. 
+- **Identify Friction First:** Do not wait for JT to point out bugs. Idle time must be spent scanning system states (`cron list`, queue counts, API quotas) and proactively diagnosing silent errors.
+- **Root Cause Extermination:** "I fixed the bug" is insufficient. Every fix must be accompanied by a systemic rule or script edit that makes that specific failure vector impossible going forward.

@@ -23,3 +23,23 @@ Every entry MUST have all three: (1) specific failure, (2) root cause one level 
 **Specific failure:** Multiple "Review + Send" MC tasks showed "(outreach drafted but M1 never sent)" even after M1 was sent. Examples: FCMRE, ProRealty USA, Atlas NYC, Citadel, BJD, Wynne — all had M1 sent in March, MC tasks still showing stale "never sent" descriptions in April.
 **Root cause:** Eve creates the "Review + Send" MC task after the Outreach Agent finishes, then JT sends the message — but Eve had no mechanism to learn about the send. The outreach-draft.md correctly tracked "M1 SENT [date]" in its header, but this status never propagated to MC. The pipeline was a one-way street: draft → task → send → no feedback.
 **Prevention rule:** `scripts/outreach_update.py` automates the full post-send update (outreach-draft.md status, pipeline.md, MC task close, M2/M3 task creation). AGENTS.md "Outreach Send Confirmation Handler" triggers it automatically when JT confirms a send. SKILL.md Step 8 now tells JT exactly what to reply ("sent M1 via LinkedIn"). Never create an outreach task without a send-confirmation mechanism.
+
+## Missing Autonomous Validation (2026-04-20)
+| Failure: | JT had to discover three critical bugs today: (1) 6 cron jobs were failing silently, (2) the crypto agent hallucinated an $87K BTC price because it didn't have live data, and (3) the TikTok pipeline posted duplicate slideshows due to a JSON parsing failure. |
+| Root Cause: | I am operating reactively on "happy paths." I run scripts assuming they work perfectly and output correctly. I am not aggressively validating the integrity of the data *before* using it, nor am I verifying the output state (e.g., checking if the queue was actually updated). |
+| Prevention Rule: | **Trust Nothing, Verify Everything.** 1) All data ingestion scripts must include a timestamp freshness check. If data is stale > 6 hours, throw an error, do not hallucinate. 2) Output must be verified. If a script updates a queue, read the queue immediately after execution to confirm the state change. 3) Proactive Heartbeat checks must include a scan of system log errors, not just successful completions.
+
+## Cron Payload API Field Validation (2026-04-20)
+| Failure: | The synthesis agent passed a "notes" field via POST to the Mission Control Tasks API, leading to a 500 error instead of a graceful skip. |
+| Root Cause: | Subagents assume generic API payloads instead of reading the TS schema. |
+| Prevention Rule: | Never pass undocumented fields to custom APIs. Subagents MUST verify the schema in  before attempting bulk mutation operations. |
+
+## Cron Payload API Field Validation (2026-04-20)
+| Failure: | The synthesis agent passed a "notes" field via POST to the Mission Control Tasks API, leading to a 500 error instead of a graceful skip. |
+| Root Cause: | Subagents assume generic API payloads instead of reading the TS schema. |
+| Prevention Rule: | Never pass undocumented fields to custom APIs. Subagents MUST verify the schema in `convex/tasks.ts` before attempting bulk mutation operations. |
+
+## Nested Git Repository Corruption (2026-04-20)
+| Failure: | The agent ran `git init` inside of `skills/` while inside the existing `openclaw-workspace` repository, corrupting the commit tree and preventing GitHub syncs. |
+| Root Cause: | Blind assumption of directory state. Did not execute `git status` before initializing version control. |
+| Prevention Rule: | Always run `git status` to verify if a working directory is already under version control before running `git init` or proposing repository creation. |

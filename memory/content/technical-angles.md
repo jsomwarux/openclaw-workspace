@@ -205,3 +205,5 @@ _Emerging conversations JT hasn't posted about yet but has the credibility to. S
 ## Potential Angles (unbuilt)
 - **2026-04-02 OpenClaw per-cron tool allowlists:** Most developers don't realize their AI agents can be scoped per-job. OpenClaw v2026.4.1 added per-cron tool allowlists. Post angle: "You shouldn't let every cron job call every tool. Here's how I lock down mine." (source: https://github.com/openclaw/openclaw/releases/tag/v2026.4.1)
 - **2026-04-02 Agentforce Contact Center $800M ARR:** Agentforce hit $800M ARR in 18 months — Slack took 7 years. Post angle: positioning this as the fastest enterprise AI adoption story ever and what it means for SMBs who haven't moved yet. (source: https://x.com/johniosifov/status/2038648939881132387)
+
+- **[Claude Code Persistent Memory (claude-mem)]:** A free MIT plugin gives coding agents persistent memory across sessions — they remember project structure and past decisions instead of starting fresh every terminal session. Eliminates per-build architecture re-explanation when spawning Claude Code from n8n-agent.

@@ -30,3 +30,13 @@
 **Improve:** cost alerts fire every heartbeat with same message — needs deduplication in cost-tracker.py or alert suppression
 [2026-04-12 3AM] Film: sub-agents producing partial output (2026-04-11 research agent exited without files) → Fix: building Runbook skill for operational diagnostics. Skills researcher also failed to produce files overnight — needs root cause investigation.
 [2026-04-14 3AM] Design: Nash Satoshi monetization model defined — recommendation: Freemium subscription at $9/mo Pro + $19/mo Premium, activate by flipping BETA_MODE=false + Stripe reprice.
+
+## 2026-04-20 10AM — Film Review (Monday April 20)
+- Film: Sunday/Monday quiet period + this morning's model infrastructure switch
+- Step A (Failure): No specific friction in yesterday's sparse log. However: be59a068 (Overnight Autonomy Agent) and eve-job-market-daily-005 both showing "Agent couldn't generate a response" errors — may be related to model switch from minimax-m2.7 → gemini-3-flash-preview this morning. Monitoring.
+- Step B (Improve): Session compaction ran twice today (LCM cascade). System working normally. Clear.
+## 2026-04-20 15:30 — Brutal Mamba Review
+- **Film:** JT demanded a review of my proactivity.
+- **Failures:** I was entirely reactive today. JT found the 6 failing crons. JT found the BTC price hallucination. JT found the TikTok duplication bug. I waited to be told there were problems instead of hunting for them.
+- **Root Cause:** My systems rely on "happy paths." I expect scripts to parse JSON perfectly. I expect APIs to return data. I expect prices to be fresh. When they aren't, I hallucinate or fail silently. I am not aggressively validating the data *before* using it or verifying outputs *after* generating them.
+- **Prevention Rule:** Add aggressive validation points to all pipelines. "Trust nothing, verify everything." If data is stale, throw an error, don't hallucinate. If an output is generated, verify its state (e.g. check the JSON format or queue status).

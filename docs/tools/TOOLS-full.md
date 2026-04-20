@@ -558,3 +558,23 @@ Add whatever helps you do your job. This is your cheat sheet.
 - **Interview signal**: Understanding that Data Cloud is HOW Agentforce gets real-time personalization separates architecture-level candidates from surface-level ones
 - **Trailhead**: trailhead.salesforce.com/content/learn/modules/salesforce-data-cloud-quick-look
 - **Deep research**: memory/analysis/salesforce-data-cloud-2026-03-19.md
+
+---
+
+## Page CRO Reference (moved from TOOLS.md — 2026-04-20)
+- Full CRO framework at: https://github.com/coreyhaines31/marketingskills/tree/main/skills/page-cro
+- Use when: optimizing jtsomwaru.com conversions, or auditing a client's landing page
+- Framework covers: value prop clarity, headline effectiveness, CTA friction, social proof placement, mobile experience
+- Not installed as a skill (low frequency) — fetch the SKILL.md directly when needed
+
+## Deepgram Nova-2 (moved from TOOLS.md — 2026-04-20)
+- Speech-to-text API | $0.002/min | Multi-speaker detection, fast turnaround
+- Use case: Phase 2 UGC pipeline (script timing verification), any future transcription at scale
+- Current alternative: Groq whisper-large-v3 (free, already configured) — prefer Groq for single-speaker tasks
+- Docs: https://developers.deepgram.com | Sign up + add API key to global.env when needed
+
+## Firecrawl (moved from TOOLS.md — 2026-04-20)
+- Key: fc-0d0961fa920a466a869fdd4068b9fe7e
+- `POST https://api.firecrawl.dev/v1/scrape` `{"url":"...","formats":["markdown"]}`
+- Auth header: `Authorization: Bearer fc-0d0961fa920a466a869fdd4068b9fe7e`
+- Use for: single-page scrapes where Cloudflare /crawl is overkill

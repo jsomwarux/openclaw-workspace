@@ -65,23 +65,7 @@
 - Structured extraction (JSON + prompt): add `"formats":["json"],"jsonOptions":{"prompt":"Extract services, tech stack, key contacts"}`
 - Docs: https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/
 
-## Page CRO Reference (on-demand — coreyhaines31/marketingskills)
-- Full CRO framework at: https://github.com/coreyhaines31/marketingskills/tree/main/skills/page-cro
-- Use when: optimizing jtsomwaru.com conversions, or auditing a client's landing page
-- Framework covers: value prop clarity, headline effectiveness, CTA friction, social proof placement, mobile experience
-- Not installed as a skill (low frequency) — fetch the SKILL.md directly when needed
-
-## Deepgram Nova-2 (not yet configured — future use)
-- Speech-to-text API | $0.002/min | Multi-speaker detection, fast turnaround
-- Use case: Phase 2 UGC pipeline (script timing verification), any future transcription at scale
-- Current alternative: Groq whisper-large-v3 (free, already configured) — prefer Groq for single-speaker tasks
-- Docs: https://developers.deepgram.com | Sign up + add API key to global.env when needed
-
-## Firecrawl (fallback — use /crawl above for full-site work)
-- Key: fc-0d0961fa920a466a869fdd4068b9fe7e
-- `POST https://api.firecrawl.dev/v1/scrape` `{"url":"...","formats":["markdown"]}`
-- Auth header: `Authorization: Bearer fc-0d0961fa920a466a869fdd4068b9fe7e`
-- Use for: single-page scrapes where Cloudflare /crawl is overkill
+## [Page CRO Reference, Deepgram Nova-2, Firecrawl — moved to `docs/tools/TOOLS-full.md`]
 
 ## Scrapling
 - Library: `pip install "scrapling[ai]"` — adaptive Python web scraping framework

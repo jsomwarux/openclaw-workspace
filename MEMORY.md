@@ -15,18 +15,11 @@
 - Agentforce overnight builds: ✅ ALLOWED (lifted 2026-03-11). Must `git pull origin main` first. B2B Account Service Agent is PERMANENTLY BANNED — do not recreate under any circumstances.
 - `launchctl unload/load` mid-session = gateway goes offline. Warn JT first. Defer to JT-initiated restart if possible.
 
-## Infrastructure (updated 2026-04-14)
-- OpenClaw version: 2026.4.12 (updated 2026-04-13 — 7-version jump from 2026.3.28. Fixes: plugin loading reliability, memory/dreaming stability, session stability — directly addresses past Mac mini freeze patterns)
-- bootstrapMaxChars: 32000 (HARD CAP — reverted from 40000 on 2026-03-31. Setting to 40000 triggered "Extra usage required for long context" errors blocking ALL responses for ~2h. Never raise above 32000.)
-- **Fallback model:** `openrouter/deepseek/deepseek-chat-v3-0324` (deepseek is same OpenRouter provider = fallback actually fires. Groq is NOT used — session profile conflict + 12k TPM too low.)
-- **imageMaxDimensionPx:** 512 — cuts image token cost ~85% before context entry
-- **auth.cooldowns.failureWindowHours:** 1 — faster cooldown recovery after rate limit clears
-- **Root cause of 4 outages (2026-04-01):** Groq fallback never worked (session pinned to openrouter:default, Groq required provider switch). LCM silently failing (Groq 12k TPM < 20k needed). Image floods over context threshold. All three fixed.
-- Gateway watchdog: `com.openclaw.gateway-watchdog` (10-min interval) — kills context-mode if RSS >1.5GB, kicks gateway if dead. Script: `scripts/gateway-watchdog.sh`
-- context-mode Claude plugin: DISABLED (was causing OOM kills — disabled in `~/.claude/settings.json`)
-- LaunchAgent ThrottleInterval: 10s (raised from 1s to prevent rapid crash loop)
-- **LCM freshTailCount: 50** (raised from 6 on 2026-04-14 — ~1500-2000 tokens of each file preserved in fresh context; prevents critical files from being summarized from partial context. Risk: content-voice.md wiped to 1 line between 2026-03-11 and 2026-03-16. Restored from git commit b89cabd. Integrity cron (e7f6e65a, Sun 6AM) monitors 9 critical files and auto-restores from git if >50% lost.)
-- **backup.sh is NOT a recovery path** — backs up from working directory, not git. Wiped files are captured in backups. Git is the only reliable recovery source.
+## Infrastructure (condensed 2026-04-20)
+- OpenClaw: 2026.4.12+ | bootstrapMaxChars: 32,000 HARD CAP | LCM freshTailCount: 50 | imageMaxDimensionPx: 512
+- **Gateway watchdog:** `com.openclaw.gateway-watchdog` (10-min, kills context-mode if RSS >1.5GB) | LaunchAgent ThrottleInterval: 10s
+- **backup.sh is NOT a recovery path** — backs up from working directory, not git. Git is the only reliable recovery source.
+- Integrity cron (e7f6e65a, Sun 6AM) monitors 9 critical files and auto-restores from git if >50% lost.
 
 ## Agentforce Sync (✅ ACTIVE — 2026-03-11)
 - JT builds Agentforce agents on personal device using Claude Code/Cursor
@@ -133,14 +126,6 @@
 - **Vibe Marketing**: ✅ BUILT — agent: `agents/vibe-marketing/AGENT.md` | cron: Mon 4:45AM ET (UUID: 870bf3ff) | active products: Nash Satoshi + Vista
 - **Nash Satoshi**: permanently on Gumloop. DO NOT touch Nash Satoshi n8n workflow or routes.ts unless JT explicitly requests.
 
-## Lesson Files
-Lessons stored WITH the system they document — canonical reference for each project:
-- `docs/agents/ensemble-build-lessons.md` — Python/FastAPI ensemble ranking engines (Nash Satoshi, Glow Index, future niches)
-- `agents/vibe-marketing/lessons.md` — TikTok pipeline, Reelfarm, content gen, Replit deploy
-- `projects/n8n-agent/tasks/lessons.md` — n8n workflow patterns
-- `spanish/lessons/YYYY-MM-DD.md` — Spanish lesson content
-- Any project with `lessons.md` or `CLAUDE.md` must be read before touching it.
-- TikTok: niche products → dedicated account; builder/dev/AI → @jts_14
 ## Active Cron Jobs (44 total — new: critical-files-integrity)
 > Full list: run `cron list`. Do NOT maintain a manual copy here.
 
@@ -181,8 +166,13 @@ Lessons stored WITH the system they document — canonical reference for each pr
 
 ## Crypto
 - Primary income: crypto | Forward bet: x402 protocol
-- Portfolio (21 coins — live pull from Google Sheet each run; full list in crypto-agent/data/) | Coin intel: crypto-agent/data/coin-intelligence/TICKER.md per coin
+- **crypto-agent:** ~/projects/crypto-agent/ | Git: jsomwarux/crypto-agent (6fc2641 → 44347e7)
+- **Google Sheet** (watchlist source): 1i4wJQ-bpxo25Y9bT04QhKSw3L8xCF7e9ppsyIgDNMio | 19 coins | Column D = ALLOCATION (current holdings baseline)
+- **Cron:** 6AM full analysis + 12PM pulse + 8:30PM pulse | Cost: ~$0.80-0.93/run | Budget: $2/day
+- **Coin intel:** crypto-agent/data/coin-intelligence/TICKER.md per coin
+- **Whale tracking:** DONE — fetch-whale-data.py (Dexscreener public API, volume-based heuristic), compare-whale-data.py (delta vs baseline) | whale-data.json, whale-data-prev.json, whale-changes.json | Cron: run both before morning analysis (whale-data-prev.json = yesterday's baseline)
 - $JUNO: previously EXIT-rated — JT re-entered, agent re-analyzes fresh each morning
+- Column D baseline: $NOOK 20%, $ODAI 20%, $NOX 20%, $ROBOTMONEY 15%, $DEXTER 12.5%, $PRXVT 12.5%, rest 0%
 
 ## Financial Situation (updated 2026-03-23)
 - Monthly burn: $2,174 (rent $1,050 + expenses $550 + subs $574). Subscriptions: Claude $200 | Gumloop $194 | LinkedIn $65 | X $40 | Replit $25 | Supabase $25 | Gsuite $14 | Higgsfield $9 (locked until Jan 2027).

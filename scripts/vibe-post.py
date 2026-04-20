@@ -582,10 +582,11 @@ def main():
         if proc.stderr:
             print(f"STDERR: {proc.stderr}", file=sys.stderr)
         
-        # Parse JSON result from last line of stdout
-        for line in reversed(proc.stdout.strip().split("\n")):
+        # Parse JSON result from stdout
+        result_json = {}
+        for line in proc.stdout.strip().split("\n"):
             line = line.strip()
-            if line.startswith("{"):
+            if line.startswith("{") and line.endswith("}"):
                 try:
                     result_json = json.loads(line)
                     break
