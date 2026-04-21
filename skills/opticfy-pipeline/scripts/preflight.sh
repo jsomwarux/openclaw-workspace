@@ -63,6 +63,11 @@ if [ -n "$CLIENT_SLUG" ]; then
       [ -f "$CLIENT_DIR/$artifact" ] && echo "   ✅ $artifact" || echo "   ⬜ $artifact (not yet created)"
     done
     
+    # Pipeline Integrity Guard: Prevent outreach bypass
+    if [ ! -f "$CLIENT_DIR/research.md" ]; then
+        check "Research complete" "fail" "research.md is MISSING. Never generate outreach on stale/unverified data. Run research stage first."
+    fi
+    
     # Warn if outreach already drafted — confirm intent
     [ -f "$CLIENT_DIR/outreach-draft.md" ] && echo "   ⚠️  outreach-draft.md exists — already ran pipeline? Confirm intent before re-running."
   else

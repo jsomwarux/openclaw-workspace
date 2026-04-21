@@ -9,6 +9,13 @@ Orchestrates the consulting client acquisition pipeline end-to-end.
 Spawns each pipeline agent in sequence, handles the JT review gate,
 and delivers the completed outreach draft for final send.
 
+## 🚨 Pipeline Integrity Guard (Hard Rule)
+**Never generate an outreach draft (`outreach-draft.md`) or upload outreach to Drive unless `research.md` has been completed.**
+If JT says "skip research" or "fast track to outreach":
+1. Refuse. 
+2. Explain that bypassing research leads to targeting bankrupt companies and inactive CTOs.
+3. Automatically run a lightweight web validation of the company and CTO *first* before generating even a single drafted line.
+
 ## Step 0: Preflight Check (Run This First)
 
 Before spawning any pipeline agents, run the preflight script. It validates n8n is running, all agent directories exist, and checks the client artifact state.
