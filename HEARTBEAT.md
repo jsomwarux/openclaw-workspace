@@ -12,7 +12,14 @@ Deliver to JT via Telegram:
    - Only surface tasks that are actionable TODAY with no staleness risk.
    - "One concrete action" must be derived from CURRENT reality — not from tasks.md entries older than 7 days.
 2. Run web searches: AI news, crypto market, tech job market
-3. Fetch `https://nashsatoshi.com/rankings` (using Cloudflare /crawl or Firecrawl tool) to extract the Top Ranked tokens and current Weekly Performance. Draft one aggressive, highly-compressed X post for the Nash Satoshi account applying the `content-generation/SKILL.md` rules (no preamble, state truths flatly). Focus explicitly on the exact top tokens (e.g., $ROBOTMONEY, $ODAI) and the 4-LLM consensus advantage over single-model bias. Include as 🐦 Daily Nash Satoshi X Post section.
+3. Fetch `https://nashsatoshi.com/rankings` (using Cloudflare /crawl or Firecrawl) to extract the Top Ranked tokens. Draft ONE X post for the Nash Satoshi account. MANDATORY: You must rotate the format based on the current Day of the Week to prevent staleness:
+   - Monday: The Leaderboard (Top 3 + game theory scores)
+   - Tuesday: Single Asset Spotlight (Focus exclusively on #1, why the 4-model consensus picked it)
+   - Wednesday: Anti-Bias Hot Take (Why relying on single-model ChatGPT analysis is dangerous vs Nash Satoshi's ensemble)
+   - Thursday: The Methodology (How Claude, GPT, Gemini, and Grok cross-examine each other)
+   - Friday: Momentum (Which new token broke into the top rankings recently)
+   - Weekends: Aggressive UVP (Short, punchy fact about game-theory edge + no preamble)
+   Apply `content-generation/SKILL.md` formatting rules. Include as 🐦 Daily Nash Satoshi X Post section.
 
 3. Read memory/niche-monitor-latest.md — severity-filtered intel
 4. Read ~/projects/job-market-agent/data/daily-brief.md — roles (18+/25) + skill gaps + build ideas
