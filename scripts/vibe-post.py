@@ -72,9 +72,17 @@ def parse_slides_from_content(content: str) -> tuple:
 
         # Try each extraction strategy in order
         text = ""
-        block_lines = block.split("\n")
-
-        # Strategy 1: TEXT OVERLAY:, TEXT:, LABEL: anywhere in block (including same line as SLIDE N)
+        # Filter out trailing metadata if it leaked into the block
+        cleaned_block_lines = []
+        for line in block.split("\n"):
+            if re.match(r'^(?:CAPTION:|HASHTAGS:|SOUND:|FORMAT:|SOURCE TAKE:|SOURCE TYPE:)', line.strip(), re.IGNORECASE):
+                break
+            cleaned_block_lines.append(line)
+            
+        block_lines = cleaned_block_lines
+        if not block_lines:
+            continue
+            
         combined = " ".join(block_lines)
         for prefix in ["TEXT OVERLAY:", "TEXT:", "LABEL:"]:
             idx = combined.find(prefix)
@@ -92,11 +100,43 @@ def parse_slides_from_content(content: str) -> tuple:
             first = block_lines[0]
             m = re.match(r'^(?:SLIDE \d+|LAST SLIDE)\s*:\s*(.+)', first.strip())
             if m:
+                rest_of_block = "\n".join(block_lines[1:]).strip()
                 text = m.group(1).strip()
+                if rest_of_block:
+                    text += "\n" + rest_of_block
 
         if not text:
             print(f"[parse_slides_from_content] WARNING: could not extract text from block: {block[:80]}")
             continue
+
+        # --- Sanitize AI brackets & multiline artifacts ---
+        text = text.strip()
+        
+        # 1. If the whole text starts with a bracket-instruction but has real bullet points after, remove the instruction block
+        if text.startswith("[") and "]" in text and ("\n" in text or "— " in text):
+            # Extract everything after the first ] if it has a newline or a long dash
+            parts = text.split("]", 1)
+            if len(parts) > 1 and parts[1].strip():
+                text = parts[1].strip()
+            else:
+                # If there was no text outside the bracket, try to clean the inside
+                inner = parts[0][1:].strip()
+                inner = re.sub(r'^(?:Hook(?:.*?)—|The insight(?:.*?)—|CTA(?:.*?)—|.*? —.*? —|.*? — labeled as |What the .*? sees — |Why high APY.*? —.*? |.*?ranking as counter-evidence.*? —.*? )\s*', '', inner, flags=re.IGNORECASE)
+                text = inner.strip()
+                
+        # Remove literal quotes if they wrap the entire text
+        if text.startswith('"') and text.endswith('"'):
+            text = text[1:-1]
+            
+        # Clean up bullet points and hyphens
+        text = re.sub(r'^\s*-\s+', '', text, flags=re.MULTILINE)
+        
+        # Finally, truncate extremely long texts (TikTok caps overlay text, and JSON fails if too big)
+        if len(text) > 250:
+            text = text[:247] + "..."
+            
+        text = text.strip()
+        # ---------------------------------------------------
 
         slides.append({"text": text, "is_screenshot": is_screenshot, "is_last": is_last})
 
