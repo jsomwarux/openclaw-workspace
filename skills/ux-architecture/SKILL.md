@@ -33,8 +33,10 @@ The guiding design philosophy is cold logic, minimal friction, and premium execu
 *   Inputs should be borderless with subtle bottom strokes, or use ultra-faint borders until focused.
 *   Feedback must be immediate but silent (subtle flash or icon change, no popups saying "Successfully saved!").
 
-### Execution Checks
-Before submitting a design or triggering a coding agent:
+### Execution Checks & Code Requirements
+When executing a build (via sub-agent or code block), apply these strict architectural methods:
+*   **Establish a Variable Foundation:** Before writing structural markup, explicitly define your design tokens (colors, spacing, typography scales) in `:root` CSS variables or a unified Tailwind config. Never use random hex codes mid-file.
+*   **Component Vocabulary:** Abstract repeating UI structures (e.g., buttons, cards, data rows) into clear, reusable HTML/CSS patterns immediately. Don't drift in styling from page to page.
 *   [ ] Does this look like a tool built for a professional, or a consumer app built for a teenager?
 *   [ ] Can I remove one more divider or label and still have it make sense?
 *   [ ] Is the data the focal point of the screen?
