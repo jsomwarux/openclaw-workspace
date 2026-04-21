@@ -204,13 +204,22 @@ def resolve_photo_urls(product: str, slide_list: list) -> list:
             if last_used <= cutoff:
                 available.append(photo)
 
+    import random
+    # First, shuffle the available list so ties in sort keys resolve randomly
+    random.shuffle(available)
+    
     available.sort(key=lambda p: (
         0 if p["last_used_week"] is None else 1,
         p.get("last_used_week", ""),
         p["use_count"]
     ))
 
-    lifestyle_urls = [p["public_url"] for p in available[:lifestyle_slots_needed]]
+    # Take the top N candidates (which are the least recently used)
+    candidates = available[:lifestyle_slots_needed]
+    # Shuffle the chosen candidates so their order in the slideshow is random
+    random.shuffle(candidates)
+    
+    lifestyle_urls = [p["public_url"] for p in candidates]
     lifestyle_idx = 0
 
     def next_lifestyle():
