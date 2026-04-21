@@ -12,6 +12,8 @@ Deliver to JT via Telegram:
    - Only surface tasks that are actionable TODAY with no staleness risk.
    - "One concrete action" must be derived from CURRENT reality — not from tasks.md entries older than 7 days.
 2. Run web searches: AI news, crypto market, tech job market
+3. Fetch `https://nashsatoshi.com/rankings` (using Cloudflare /crawl or Firecrawl tool) to extract the Top Ranked tokens and current Weekly Performance. Draft one aggressive, highly-compressed X post for the Nash Satoshi account applying the `content-generation/SKILL.md` rules (no preamble, state truths flatly). Focus explicitly on the exact top tokens (e.g., $ROBOTMONEY, $ODAI) and the 4-LLM consensus advantage over single-model bias. Include as 🐦 Daily Nash Satoshi X Post section.
+
 3. Read memory/niche-monitor-latest.md — severity-filtered intel
 4. Read ~/projects/job-market-agent/data/daily-brief.md — roles (18+/25) + skill gaps + build ideas
 5. Run `python3 scripts/cost-tracker.py --brief` — include as 💰 API Costs section
@@ -38,7 +40,7 @@ Deliver to JT via Telegram:
    - Append to memory/networking/events.md
    - Include 📅 Events section in morning brief if anything found
 
-Sections: 📋 Top 3 Priorities | 📰 Overnight News (🔴🟠 only) | 🔍 Niche Intel (🔴🟠 only) | 💼 Job Market | 💰 API Costs | 🏋️ Today's Workout | 📱 Vibe Queue (if items waiting) | 🤝 Relationships (Monday only, if needed) | 💡 One concrete action
+Sections: 📋 Top 3 Priorities | 📰 Overnight News | 🔍 Niche Intel | 💼 Job Market | 💰 API Costs | 🏋️ Today.s Workout | 📱 Vibe Queue | 🐦 Daily Nash Satoshi X Post | 💡 One concrete action
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK
