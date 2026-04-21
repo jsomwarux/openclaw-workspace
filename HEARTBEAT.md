@@ -21,6 +21,8 @@ Deliver to JT via Telegram:
    - Weekends: Aggressive UVP (Short, punchy fact about game-theory edge + no preamble)
    Apply `content-generation/SKILL.md` formatting rules. Include as 🐦 Daily Nash Satoshi X Post section.
 
+4. Read `memory/content/dynasty-strategy.md` — generate ONE elite-tier X post for the @dynastyjig account targeting the "Systems over Symptoms" narrative (Algorithmic Exploits, Roster Construction Economics, or Draft Capital Arbitrage). Apply `skills/content-generation/SKILL.md` formatting. Include as 🏈 Daily Dynasty Strategy X Post section.
+
 3. Read memory/niche-monitor-latest.md — severity-filtered intel
 4. Read ~/projects/job-market-agent/data/daily-brief.md — roles (18+/25) + skill gaps + build ideas
 5. Run `python3 scripts/cost-tracker.py --brief` — include as 💰 API Costs section
@@ -47,7 +49,7 @@ Deliver to JT via Telegram:
    - Append to memory/networking/events.md
    - Include 📅 Events section in morning brief if anything found
 
-Sections: 📋 Top 3 Priorities | 📰 Overnight News | 🔍 Niche Intel | 💼 Job Market | 💰 API Costs | 🏋️ Today.s Workout | 📱 Vibe Queue | 🐦 Daily Nash Satoshi X Post | 💡 One concrete action
+Sections: 📋 Top 3 Priorities | 📰 Overnight News | 🔍 Niche Intel | 💼 Job Market | 💰 API Costs | 🏋️ Today.s Workout | 📱 Vibe Queue | 🐦 Daily Nash Satoshi X Post | 🏈 Daily Dynasty Strategy X Post | 💡 One concrete action
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK
