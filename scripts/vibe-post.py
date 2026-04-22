@@ -177,7 +177,7 @@ def resolve_photo_urls(product: str, slide_list: list) -> list:
 
     # --- Screenshot URLs ---
     screenshots = library.get("screenshots", {}).get("files", [])
-    screenshot_urls = [s["public_url"] for s in screenshots if s.get("public_url")]
+    screenshot_urls = [os.path.join(WORKSPACE, "agents", "vibe-marketing", "real-photos", product, s["file"]) for s in screenshots if s.get("file")]
     screenshot_idx = 0  # cycling index through available screenshots
 
     # --- Lifestyle photo selection ---
@@ -194,7 +194,7 @@ def resolve_photo_urls(product: str, slide_list: list) -> list:
 
     available = []
     for photo in library["photos"]:
-        if not photo.get("public_url"):
+        if not photo.get("file"):
             continue
         if photo["last_used_week"] is None:
             available.append(photo)
@@ -219,7 +219,7 @@ def resolve_photo_urls(product: str, slide_list: list) -> list:
     # Shuffle the chosen candidates so their order in the slideshow is random
     random.shuffle(candidates)
     
-    lifestyle_urls = [p["public_url"] for p in candidates]
+    lifestyle_urls = [os.path.join(WORKSPACE, "agents", "vibe-marketing", "real-photos", product, p["file"]) for p in candidates]
     lifestyle_idx = 0
 
     def next_lifestyle():
@@ -259,29 +259,27 @@ def resolve_photo_urls(product: str, slide_list: list) -> list:
 
 
 def build_caption(entry: dict) -> tuple[str, str]:
-    """Build caption (≤89 chars, no hashtags) and description (hashtags) from queue entry."""
+    """Build caption (max 89 chars, no hashtags) from the first slide's text."""
     hashtags = entry.get("hashtags", "")
-    
-    # Try to extract a short caption from the hook text
-    hook = ""
     content = entry.get("content", "")
-    lines = [l.strip() for l in content.split("\n") if l.strip()]
-    for line in lines:
-        for prefix in ["TEXT OVERLAY:", "TEXT:", "LABEL:"]:
-            if line.startswith(prefix):
-                hook = line[len(prefix):].strip()
-                break
-        if hook:
-            break
-
-    # Truncate to 89 chars
+    
+    # Extract slides using the already defined parse_slides_from_content function
+    slides = parse_slides_from_content(content)
+    
+    hook = ""
+    if slides and len(slides) > 0:
+        hook = slides[0].get("text", "")
+        # Remove any newlines or weird spacing
+        hook = " ".join(hook.split())
+        
+    # Truncate to 89 chars if necessary
     if len(hook) > 89:
         hook = hook[:86] + "..."
-    
-    caption = hook if hook else "watch this"
+        
+    caption = hook if hook else "Movie Taste Profiles" # Fallback better than "watch this"
     description = hashtags if hashtags else ""
-    
     return caption, description
+
 
 
 def _hook_key(entry: dict) -> str:
@@ -602,6 +600,92 @@ def main():
         slot = "hook" if i == 0 else ("cta" if i == len(photo_urls) - 1 else f"slide-{i+1}")
         url_label = "[SCREENSHOT]" if "/screenshots/" in url else "[lifestyle]"
         print(f"  Slot {slot}: {url_label} {url.split('/')[-1]}")
+
+
+    # --- BURN TEXT LOCALLY TO PREVENT TIKTOK SHADOWBAN ---
+    import subprocess
+    import time
+    import boto3
+    import uuid
+    from botocore.exceptions import NoCredentialsError
+
+    def _load_global_env():
+        env_path = os.path.expanduser("~/.config/env/global.env")
+        if os.path.exists(env_path):
+            with open(env_path) as ff:
+                for line in ff:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        k, _, v = line.partition("=")
+                        os.environ.setdefault(k.strip(), v.strip())
+    _load_global_env()
+    
+    s3_client = boto3.client(
+        's3',
+        region_name='auto',
+        endpoint_url=os.environ.get('R2_ENDPOINT', 'https://7148196b25e764e7753e4c7fbcdaaa5b.r2.cloudflarestorage.com'),
+        aws_access_key_id=os.environ.get('R2_ACCESS_KEY', '368494f1f6cf5b6749e3f7e5bf35c106'),
+        aws_secret_access_key=os.environ.get('R2_SECRET_KEY', 'd8b719aa5c0c36dff1af4c384e636164f64062b067d8c08c41cccb57864aa579')
+    )
+    bucket = os.environ.get('R2_BUCKET', 'vibe-marketing-photos')
+
+    overlay_script = os.path.join(WORKSPACE, "scripts/tiktok-text-overlay.py")
+    
+    uploaded_public_urls = []
+    
+    for i, file_path in enumerate(photo_urls):
+        slot = "hook" if i == 0 else ("cta" if i == len(photo_urls) - 1 else f"slide-{i+1}")
+        
+        # Decide text to burn and position
+        text_to_burn = ""
+        position = "center"
+        if i == 0:
+            text_to_burn = hook
+            position = "upper"
+        else:
+            if slide_list and i - 1 < len(slide_list):
+                text_to_burn = slide_list[i-1].get("text", "")
+            
+            # Position logic
+            if file_path and "screenshots" in file_path:
+                position = "lower"
+            elif i == len(photo_urls) - 1:
+                position = "center"
+            else:
+                position = "center"
+                
+        out_path = f"/tmp/burned_{uuid.uuid4().hex}.jpg"
+        
+        # Run overlay
+        # If no text, just copy the file
+        if not text_to_burn.strip():
+            cmd = ["cp", file_path, out_path]
+            subprocess.run(cmd, check=True)
+        else:
+            cmd = ["python3", overlay_script, "--input", file_path, "--output", out_path, "--text", text_to_burn, "--position", position]
+            print(f"[vibe-post] Burning text onto {slot}: {text_to_burn}")
+            r = subprocess.run(cmd, capture_output=True, text=True)
+            if r.returncode != 0:
+                print(f"[vibe-post] overlay error: {r.stderr}")
+                # fallback, just copy
+                subprocess.run(["cp", file_path, out_path], check=True)
+                
+        # Upload to R2
+        r2_filename = f"outreach/{product}/burned_{uuid.uuid4().hex[:8]}.jpg"
+        try:
+            s3_client.upload_file(out_path, bucket, r2_filename)
+            pub_url = f"https://pub-0dda05c9c8f948d29b1332c82e6cc04c.r2.dev/{r2_filename}"
+            uploaded_public_urls.append(pub_url)
+        except Exception as e:
+            print(f"[vibe-post] Upload error: {e}")
+            uploaded_public_urls.append("")
+
+    photo_urls = uploaded_public_urls
+
+    # Blank out the text so reelfarm doesn't double-overlay via API
+    hook = ""
+    for s in slides:
+        s["text"] = ""
 
     # Strip is_screenshot/is_last keys before passing to slideshow script
     clean_slides = [{"text": s["text"]} for s in slides]

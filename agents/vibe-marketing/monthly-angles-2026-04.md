@@ -40,9 +40,9 @@ Debate hook: "A 5-star rating system doesn't tell you why you liked something. I
 Platforms this angle fits best: x, tiktok
 used: false
 
-## Angle 2: IMDb scores are averages of incompatible preferences.
-Core insight (≤ 80 words): A film that gets 10s from art-house fans and 2s from mainstream audiences ends up at a 6. That 6 is algorithmically accurate and meaningfully useless. It tells you the crowd is split, not whether you'll like it. Your ratings history is a better predictor of your reaction to that film than any crowd average. Personalized taste profiling solves a problem that aggregate scoring structurally cannot.
-Debate hook: "IMDb's score on a polarizing film is both accurate and completely useless for deciding whether to watch it."
+## Angle 2: Letterboxd is crowded; Vista is the aesthetic upgrade.
+Core insight (≤ 80 words): Letterboxd has become a cluttered social network built around reviews and hot takes. You don't need another feed of opinions just to log a movie you watched. Vista strips away the social noise and delivers a premium, minimalist iOS experience. The focus is entirely on your personal taste profile, clean typography, and a vastly superior, modern UI designed for personal tracking, not public performance.
+Debate hook: "I didn't want another social feed of hot takes. I just wanted a beautiful app to track what I watch."
 Platforms this angle fits best: x, tiktok, reddit
 used: false
 

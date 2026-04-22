@@ -30,3 +30,5 @@
 
 2026-04-16 agentforce-agentexchange — Salesforce launched AgentExchange, unifying AppExchange + Slack Marketplace + Agentforce ecosystem into one agentic marketplace.
 2026-04-16 salesforce-headless-360 — Salesforce Headless 360: all Salesforce objects now exposed as APIs, MCP tools, or CLI commands — platform fully agent-readable.
+2026-04-21 ms-nabtu-construction-ai-training — Microsoft + NABTU partnership offers free AI literacy + credentials to millions of skilled construction trades workers; signals accelerating AI workforce readiness in construction niche.
+2026-04-21 salesforce-100m-agentforce-roi — Salesforce reported $100M support cost savings and 3M conversations via Agentforce internally; first citable enterprise-scale ROI proof point for Agentforce pitch.

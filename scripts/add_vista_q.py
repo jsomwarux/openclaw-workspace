@@ -1,0 +1,27 @@
+import json
+import os
+
+path = os.path.expanduser('~/.openclaw/workspace/agents/vibe-marketing/queue.jsonl')
+entry = {
+    'id': 'vista-tiktok-2026-04-20-new',
+    'product_slug': 'vista',
+    'product_name': 'Vista',
+    'platform': 'tiktok',
+    'account': '@jts_14',
+    'format': 'ugc_reaction',
+    'source_take': 'Letterboxd UI feels like a cluttered social network.',
+    'source_type': 'app_complaint',
+    'content': 'SLIDE 1: [Hook — "Letterboxd was great before it turned into a cluttered social feed of hot takes."]\nSLIDE 2: [Context — "I didn\'t want another feed to scroll. I just wanted a clean, fast way to track what I watch."]\nSLIDE 3: [App screenshot — minimal movie tracking UI]\nSLIDE 4: [App screenshot — customized taste profile]\nSLIDE 5: [The insight — "Vista strips away the social noise. It\'s a premium, minimalist iOS experience designed for personal tracking, not public performance."]\nSLIDE 6: [CTA — "Vista is live. Link in bio."]\nCAPTION: pov: you just want to track movies without the noise\nHASHTAGS: #iosapp #movielog #letterboxd #minimalistui #filmtok',
+    'score_notes': 'Hits the core UI/UX differentiation against Letterboxd directly.',
+    'status': 'approved',
+    'week_of': '2026-04-20',
+    "generated_at": "2026-04-21T12:00:00Z",
+    "posted": False
+}
+
+with open(path, 'r') as f:
+    if 'vista-tiktok-2026-04-20-new' in f.read():
+        exit(0)
+
+with open(path, 'a') as f:
+    f.write(json.dumps(entry) + '\n')

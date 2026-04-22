@@ -55,6 +55,12 @@ FILE_REFS = {
     "skills/wednesday-linkedin/SKILL.md": "47f3721",
     "skills/opticfy-pipeline/SKILL.md": "e76cf9f",
     "skills/mcp-builder/SKILL.md": "3aeb22d",
+    "skills/content-generation/SKILL.md": "691d1f48",
+    "skills/system-auditor/SKILL.md": "8042966f",
+    "skills/notion-integration/SKILL.md": "8042966f",
+    "skills/google-drive/SKILL.md": "8042966f",
+    "skills/video-generation/SKILL.md": "8042966f",
+    "skills/google-slides/SKILL.md": "b62aeb89",
 }
 
 def get_git_lines(file_path, ref):

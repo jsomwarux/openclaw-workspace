@@ -1,10 +1,5 @@
-**Last updated:** 2026-04-20 09:02:13 EST
+**Last updated:** 2026-04-21 09:01:15 EST
 
-No new critical findings as of 2026-04-20 09:02:13 EST.
+🟠 **Microsoft + NABTU construction unions AI training partnership** — Microsoft and North America's Building Trades Unions (NABTU) announced TODAY (April 21) a partnership to deliver free AI literacy courses and industry-recognized credentials to millions of skilled craft professionals across North America; signals accelerating AI readiness in the construction workforce and lowers the "my workers aren't ready" objection JT hears from construction prospects. (https://www.axios.com/2026/04/21/microsoft-construction-unions-partner-ai-boom)
 
---- Today's Assessment ---
-🟡 FieldBuilder.ai trademark filing (Apr 15) — new insurance AI entrant, broad platform spanning insurance + financial advisory + AI tools. Pre-launch (trademark only), not yet a competitor.
-🟡 Oracle 26ai — post-quantum cryptography + AI agent data security tiers for mission-critical workloads. Infrastructure-level, not niche-specific.
-🟡 PeekWire Top 5 AI platforms for real estate — general curated list, no specific demand signal or company adoption stats.
-🟢 Quantum computing + AI for complex predictions (ScienceDaily) — early-stage research, not actionable.
-🟢 Salesforce efficiency-to-revenue strategy article — general investor-focused content, no new Agentforce product features.
+🟠 **Salesforce $100M cost savings + 3M conversations via AI agents** — Fortune (Apr 18) reports Salesforce deployed its own Agentforce internally and cut $100M in support costs while handling 3 million customer conversations with AI agents; this is a citable, specific ROI proof point JT can use directly in any Agentforce pitch or deck. (https://fortune.com/2026/04/18/salesforce-agentforce-ai-efficiency-revenue-growth/)

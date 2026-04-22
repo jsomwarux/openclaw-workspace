@@ -1,5 +1,5 @@
 {
-  "last_openclaw_release": "v2026.4.15-beta.1",
+  "last_openclaw_release": "v2026.4.20-beta.1",
   "last_npm_check": 1775828387,
   "last_anthropic_post": "2026-03-30",
   "last_openrouter_check": 1775828387,
@@ -8,5 +8,5 @@
   "last_cowork_plugin_commit": "8fd1c52243c81d523b7fa7988cc1ac8d92669892",
   "last_nordeim_commit": "8864d11d4adf872d5f3ab4debe3a9971020962ce",
   "last_gemini_flash_lite_noted": "2026-03-07",
-  "last_updated": 1775828387
+  "last_updated": 1776785535
 }
