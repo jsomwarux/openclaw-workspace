@@ -32,3 +32,5 @@
 2026-04-16 salesforce-headless-360 — Salesforce Headless 360: all Salesforce objects now exposed as APIs, MCP tools, or CLI commands — platform fully agent-readable.
 2026-04-21 ms-nabtu-construction-ai-training — Microsoft + NABTU partnership offers free AI literacy + credentials to millions of skilled construction trades workers; signals accelerating AI workforce readiness in construction niche.
 2026-04-21 salesforce-100m-agentforce-roi — Salesforce reported $100M support cost savings and 3M conversations via Agentforce internally; first citable enterprise-scale ROI proof point for Agentforce pitch.
+2026-04-22 agentforce-vibes — Salesforce released Agentforce Vibes: auto-generates React components, GraphQL queries, and Salesforce metadata from natural language; reduces Agentforce build time.
+2026-04-22 vertafore-velocity-ai — Vertafore launched Velocity AI Platform for insurance agency workflow automation; established AMS vendor now competing in the AI automation space JT pitches.

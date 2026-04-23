@@ -24,3 +24,10 @@ Last reset: 2026-04-01
 ### 2026-04-21 — Insurance niche
 - **Further AI launched**: First AI orchestration layer built specifically for insurance. Announced today. Unifying underwriting, claims, policy management on one AI layer. Source: @furtheraicom (56 likes, 24.7K impressions). Signal: competitor entering the space validates niche; JT needs insurance-specific positioning before this gains market momentum.
 - **InsurTechNY pain point**: Most AI pilots stall before production due to integration complexity — not AI capability. This is JT pitch angle (he has the integration ops background). Quote worth using in outreach.
+
+2026-04-22 [CONFIRMS] niche=insurance — Vertafore Velocity AI Platform launch signals insurance agencies are actively adopting AI automation; established vendor entering the space validates the market JT is pitching into.
+2026-04-22 [CONFIRMS] niche=insurance — Securian Financial deploys AI instant claims decisioning for supplemental health; carrier-level adoption confirms insurance AI is moving from pilot to production.
+2026-04-22 [CONFIRMS] niche=wholesale-distribution — Industry analysis on where distributors are seeing real AI value confirms distributors are in active evaluation phase, not just awareness.
+### 2026-04-22 — General / Tools
+- **Google Deep Research Max (Apr 21)**: MCP support added — Deep Research can now query private data sources via MCP. Potential future upgrade for research-agent (insurance prospect research pulling from private client data). Not actionable today but watch for API pricing on Gemini API tier.
+- **Further AI (growing)**: Now at 75 likes / 30.6K impressions (was 56/24.7K on Apr 21). Competitor validation accelerating. JT needs insurance-specific Agentforce positioning before this reaches mainstream awareness.

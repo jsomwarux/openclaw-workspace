@@ -70,3 +70,28 @@
 - Pushed to MC: 3 (MyClaw per-agent models, Shopify MCP, Claude Code Routines)
 - KB only: 6
 - Telegram JT: YES (3 🟠 findings, 2 shoutout opportunities)
+
+## 2026-04-22 — Daily Scan
+
+### 🔴 Findings — 1 item, passed quality gate
+
+1. [🔴 n8n webhook exploit — Cisco Talos advisory, active malware campaigns]
+   - Source: Cisco Talos blog https://blog.talosintelligence.com/the-n8n-n8mare/ + X @dailytechonx; The Hacker News confirmed
+   - Key finding: n8n webhook URLs actively abused in phishing/malware campaigns since Oct 2025. Volume 686% higher in March 2026 vs Jan 2025. Attack vector: embed n8n webhook URL in phishing email, webhook triggers workflow that fingerprints device + delivers payload.
+   - Impact: JT self-hosts n8n (localhost:5678 via Tailscale). Any workflow with a publicly accessible webhook trigger is a potential attack surface. Aya client workflows run on this instance.
+   - Quality gate: PASS — first action: read Talos advisory + audit all active webhook workflows
+   - Shoutout: NO (security advisory, not a release)
+   - MC: pushed ✅ (priority: high)
+
+### 🟡 Findings (KB only)
+2. Google Deep Research Max — MCP support + Gemini 3.1 Pro, launched Apr 21. Can connect to private data via MCP. Interesting for future research-agent upgrade but not actionable vs current stack.
+3. OpenAI gpt-image-2 — production image model via API, available now. Not in JT stack.
+4. freshkeeper (npx) — one-command updater for Claude Code/Codex/OpenClaw. 0 GitHub stars, created Apr 21. Unverified — skip per <50 stars rule.
+5. Claude Code v2.1.110 — /tui command, push notifications, plugin favorites. Minor UX, no new capability.
+6. Further AI insurance orchestration (already logged Apr 21) — growing engagement (75 likes, 30.6K impressions). Confirmed competitor signal.
+7. gpt-image-2 in OpenAI / Codex — not in JT stack.
+
+### Quality Gate Results
+- Pushed to MC: 1 (n8n webhook exploit — HIGH priority)
+- KB only: 6
+- Telegram JT: YES (1 🔴 security finding)
