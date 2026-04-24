@@ -34,3 +34,5 @@
 2026-04-21 salesforce-100m-agentforce-roi — Salesforce reported $100M support cost savings and 3M conversations via Agentforce internally; first citable enterprise-scale ROI proof point for Agentforce pitch.
 2026-04-22 agentforce-vibes — Salesforce released Agentforce Vibes: auto-generates React components, GraphQL queries, and Salesforce metadata from natural language; reduces Agentforce build time.
 2026-04-22 vertafore-velocity-ai — Vertafore launched Velocity AI Platform for insurance agency workflow automation; established AMS vendor now competing in the AI automation space JT pitches.
+2026-04-23 salesforce-google-cloud-agentforce — Salesforce + Google Cloud deep partnership enables Agentforce to orchestrate end-to-end workflows across both platforms with shared context.
+2026-04-23 constructconnect-takeoff-boost — ConstructConnect launched AI-powered Takeoff Boost on Google Cloud for blueprint-to-quantity construction estimating.

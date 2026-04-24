@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-09T14:15:13.492Z",
+  "updatedAt": "2026-04-23T14:15:12.126Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -11,6 +11,7 @@
       "snippet": "## Heartbeat 23:00 - Checked alerts and notified JT of cost warnings. - Unable to check cron status due to execution failures. ## Memory Log - April 5, 2026 ### Key Decisions & Tasks Discussed: - **AI Video Agent Development Plan:** Confirmed creation of the task with ID `j570de55gnb3rpqdjg78hpsad184bk02`. Needs to be prioritized along with construction dashboard tasks. - **Construction Dashboard Agent/Prototype:** Discussed adding this high-priority task to the board but confirmed it was not visible due to previous technical issues during task creation. - **Prioritization Strategy:** - High Priority Tasks: 1. Create Construction Dashboard Agent/Prototype 2. Construction Dashboa",
       "recallCount": 4,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 3.4240973233162406,
       "maxScore": 0.8673452538384728,
       "firstRecalledAt": "2026-04-07T09:02:30.595Z",
@@ -44,6 +45,7 @@
       "snippet": "- **Status:** Fired manually at 11:25 AM ET. Real brief should arrive ~60-90s later. ### Cron Audit — All 54 Jobs Fixed - 8 cron jobs had invalid `openrouter/google/gemini-3.1` model string (missing variant). Fixed all to `openrouter/google/gemini-3.1-pro`: - AI Video Agent Development Plan (384efc62) - Create Construction Dashboard Agent/Prototype (760d4a4b) - Construction Dashboard Development (task IDs: 32694c96, 4928b99c, 26f12033, 658af126, 8961bda6, 523c40b5 — all scheduled April 7 one-shots) - Weekly Systems Review (b2ca53ab): updated from `gemini-2.5-flash-preview` → `gemini-3.1-flash-lite-preview-20260303` ### Gateway Config — Confirmed Written - `plugins.entries.lossless-cl",
       "recallCount": 4,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 3.4135942307866083,
       "maxScore": 0.8645610121279665,
       "firstRecalledAt": "2026-04-07T09:02:30.595Z",
@@ -77,6 +79,7 @@
       "snippet": "- Crypto pulse: BTC ~$68K, down from $70.5K yesterday — approaching key support. No ±15% breach. Updated crypto.md. - Proactive: crypto monitoring + notes updated ## Afternoon Session — 1:00–3:53 PM ### n8n Support Triage — Demo Video Added - JT uploaded demo video to Google Drive: file ID `1CeCOvKV2Hk6PtoK51YUcN3TY77BO0cfr` - Added `demoVideo: \"https://drive.google.com/file/d/1CeCOvKV2Hk6PtoK51YUcN3TY77BO0cfr/preview\"` to `n8n-support-triage` in projects.ts - Flipped `featured: true` (score 8/10 qualifies) - Build clean, pushed, Vercel deployed ### AI Inventory Reorder — Demo Video Added - JT uploaded demo video: file ID `1Bm_iNfxMkvW-c_qJ4ynybb9GTIkQZa78` - Added `demoVideo` + `featured",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.867751657673847,
       "maxScore": 0.867751657673847,
       "firstRecalledAt": "2026-04-07T09:05:04.096Z",
@@ -107,6 +110,7 @@
       "snippet": "- \"Talent-as-a-Service\" emerging framing — specialist human expertise + AI agents working together (JT's lane) - Daily brief file stale (March 3) — job-market cron may have drifted. Flag for Monday check. - memory/job-market.md updated ## Eve Session — Late Evening (11:24 PM) ### n8n Demo Video Debugging - JT recording AI Insurance Claims Triage demo video - Issue: curl → production webhook = nodes don't light up (runs in background, no visual) - Fix: use test URL (`/webhook-test/`) + \"Listen for test event\" → then click ▶️ Execute Workflow after webhook captures data - Second issue: \"workflow must be active\" = was curling production URL while inactive - Third issue: manual execution",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.8663033137996311,
       "maxScore": 0.8663033137996311,
       "firstRecalledAt": "2026-04-07T09:05:04.096Z",
@@ -137,6 +141,7 @@
       "snippet": "- Session wrap: built browser automation rules (AGENTS.md), SQLite knowledge base (knowledge/), backup system (scripts/backup.sh + launchd), documented in TOOLS.md + MEMORY.md - Exec failures from SIGTERM'd crontab hang sessions — not a concern - All systems nominal ## Session Cleanup 16:01 - Sessions before: 1, after: 1, removed: 0 - sessions.json size: 13.1 KB - Nothing to clean up — all sessions recent or protected. ## Heartbeat 16:01 **Status:** Active hours, no pending tasks, cron CLI unavailable (gateway pairing — expected). JT active in session doing system setup. **Proactive Work: AI Tool Scan** Notable AI releases this week (Feb 2026): - **Claude Sonnet 4.6** — Anthropic releas",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.8649558814570436,
       "maxScore": 0.8649558814570436,
       "firstRecalledAt": "2026-04-07T09:05:04.096Z",
@@ -167,6 +172,7 @@
       "snippet": "- Notion Content Calendar: both pushed ✅ - technical-angles.md: multi-model consensus angle added ## Heartbeat 6:00 PM - Cost alerts: none ✅ - Cron health: ebb843af + niche-monitor — same transient errors, no new issues - Proactive: crypto.md updated — BTC ~$70,325, holding above $70K, consolidation range intact. No portfolio alerts. ## Heartbeat 10:00 PM - Cost alerts: none ✅ - Cron health: ebb843af + niche-monitor — same transient errors, no new issues - Spanish: last_lesson_complete = false → nudge already sent at 9:55PM, no double-send - Job roles: no new roles above 24+/25. Daily brief still shows passed/expired roles — refreshes at 6:30AM - No new proactive work needed — day full",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.8431299515540215,
       "maxScore": 0.8431299515540215,
       "firstRecalledAt": "2026-04-07T14:15:13.498Z",
@@ -197,6 +203,7 @@
       "snippet": "## Heartbeat 22:00 - Cost alerts: none ✅ - Spanish: lesson complete ✅ — no nudge needed - Proactive: job market pulse - Anthropic Labor Market Report (March 2026): 75% of programmer tasks covered by AI — displacement narrative going mainstream - \"AI SA Roadmap\" article trending today — more competition entering JT's target roles - **Deadline flag**: Salesforce Lead Agentforce SE (24/25) deadline 03/27 — 18 days, apply this week - No new roles 18+/25 today - job-market.md updated ✅",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.837591169479253,
       "maxScore": 0.837591169479253,
       "firstRecalledAt": "2026-04-07T14:15:13.498Z",
@@ -227,6 +234,7 @@
       "snippet": "- No urgent emails, calendar events, or alerts detected - JT active in session until ~18:00; no proactive outreach warranted KB state: 44 items (business: 8, crypto: 11, tech: 25) — 0.25 MB ## Heartbeat 20:00 - Checked tasks.md — no urgent/overdue items - Cron status: all 4 jobs healthy; morning brief ran successfully today (lastStatus: ok, 65s duration) - Health check-in cron fires at 9 PM (1h away) — no action needed - Proactive work: drafted 2 X threads + 1 standalone tweet for @jts_14 - Thread 1: \"Building an AI assistant that actually works while you sleep\" — builder/infra angle - Thread 2: \"I scored 5 Nash Satoshi expansion niches\" — baby products #1 finding - Quick post: Missi",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.8827451615002277,
       "maxScore": 0.8827451615002277,
       "firstRecalledAt": "2026-04-07T15:36:05.408Z",
@@ -257,6 +265,7 @@
       "snippet": "- Crypto Midday Pulse (`eve-crypto-midday-009`): NEW error — timed out at 180s (180005ms), consecutiveErrors=1. Prior run was 132s. Applied 360s fix ✅ (confirmed in returned JSON). Likely hit a slow provider during yesterday's Anthropic outage cascade. - Viral swipe / content-generate / Spanish lesson: same status as 10AM — fixes already applied this morning - All other crons: healthy ✅ - **Proactive work:** AI tool monitoring → memory/ai-tools.md updated - GPT-5.4 Thinking released (reasoning+agents baseline for enterprise) - Razorpay launched payment agent studio on Claude SDK (Anthropic enterprise momentum) - Google Workspace Gemini citations live - Mar 11 Anthropic outage c",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.8646256402553872,
       "maxScore": 0.8646256402553872,
       "firstRecalledAt": "2026-04-07T16:01:19.290Z",
@@ -287,6 +296,7 @@
       "snippet": "## Session Cleanup 03:00 - Sessions before: 38, after: 37, removed: 1 - sessions.json size: 1020.2 KB - Removed sessions: - agent:main:cron:33b8b0a2-e86c-4f51-aa4f-b8537def3107 (last active: 1.9d ago) ## Heartbeat 07:30 AM — Morning Brief - Delivered morning brief to JT via Telegram - Top priorities: AFGO M1 + Lawley M3 + PostBridge activation - BTC: ~$68.5K, -3.3%, extreme fear - Niche: 3x 🟠 signals (insurance STP window, Entrata Agentic PMS, UNFI AI) - Costs: $0.00 real API spend ✅ - Vibe queue: 30 posts pending PostBridge activation - Overnight log: 2026-03-27 confirmed — 2 outreach tasks + ICPs/cold-email updates ## Heartbeat 10:00 AM — Film Review + Cron Health - **Cost alerts**: n",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.8483308893649424,
       "maxScore": 0.8483308893649424,
       "firstRecalledAt": "2026-04-07T16:01:19.290Z",
@@ -317,6 +327,7 @@
       "snippet": "- Salesforce Ben: SA salary report confirms \"architecture at heart of AI\" — quotable for future applications - Benioff confirmed SF hiring continues despite Block news — bullish for Lead Agentforce SE app - No new high-scoring roles. 03/27 deadline unchanged. ## Heartbeat 22:00 - Cost alerts: none ✅ - **Cron health fixes:** - Spanish lesson (`babd905a`): staggered to 8:05 PM (`5 20 * * 1-6`) — was colliding with crypto evening at 8:00 PM exactly, causing both to rate-limit fail simultaneously. Fixed ✅ - Crypto evening (`eve-crypto-evening-010`): same 8PM collision — resolved by staggering Spanish. Timeout OK, was 24s before hitting rate limit. No timeout edit needed. - content-g",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.8240912026658568,
       "maxScore": 0.8240912026658568,
       "firstRecalledAt": "2026-04-09T14:15:13.492Z",
@@ -347,6 +358,7 @@
       "snippet": "## Lesson Learned 21:16 — gateway config.patch triggers silent disconnect - Used `gateway config.patch` to apply compensating controls (elevated.enabled, exec.ask) - This tool triggers an internal SIGUSR1 restart — same problem as raw launchctl/openclaw gateway restart - JT got disconnected and had to manually restart the gateway - **Fix applied:** AGENTS.md, SECURITY.md, MEMORY.md all updated to explicitly ban `gateway config.patch` and `gateway config.apply` alongside the other banned restart methods - **Correct workflow for config changes:** Edit `~/.openclaw/openclaw.json` directly → then run restart script ## Heartbeat 22:00 EST ### Status Check - All crons: ✅ healthy - Gateway: ✅ bac",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.8193208561194107,
       "maxScore": 0.8193208561194107,
       "firstRecalledAt": "2026-04-09T14:15:13.492Z",
@@ -366,6 +378,161 @@
         "agents.md",
         "security.md",
         "memory.md"
+      ]
+    },
+    "memory:memory/2026-04-21.md:1:23": {
+      "key": "memory:memory/2026-04-21.md:1:23",
+      "path": "memory/2026-04-21.md",
+      "startLine": 1,
+      "endLine": 23,
+      "source": "memory",
+      "snippet": "## Session Cleanup 03:00 - Sessions before: 68, after: 51, removed: 17 - sessions.json size: 2638.8 KB - Removed sessions: - agent:main:subagent:66af067f-8a14-4ed3-afbc-150ccc8dde7c (last active: 2.0d ago) - agent:main:cron:39435f7a-1102-49f0-8eec-4f7e0c38e7d5 (last active: 1.9d ago) - agent:main:subagent:ea05cdef-3ac8-4146-b122-4dd95d8ea250 (last active: 1.9d ago) - agent:main:cron:dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0 (last active: 1.8d ago) - agent:main:cron:ac53b979-44c6-481b-b2aa-7cb9203e6476 (last active: 1.8d ago) - agent:main:cron:922082ee-da62-4b6e-b9e3-909c3446e381 (last active: 1.8d ago) - agent:main:cron:eve-weekly-synthesis-007 (last active: 1.8d ago) - agent:mai",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-23T14:15:12.126Z",
+      "lastRecalledAt": "2026-04-23T14:15:12.126Z",
+      "queryHashes": [
+        "1b74a1d8e76b"
+      ],
+      "recallDays": [
+        "2026-04-23"
+      ],
+      "conceptTags": [
+        "sessions.json",
+        "2638.8",
+        "2.0d",
+        "1.9d",
+        "1.8d",
+        "eve-weekly-synthesis-007",
+        "cleanup",
+        "removed"
+      ]
+    },
+    "memory:memory/2026-04-07.md:1:27": {
+      "key": "memory:memory/2026-04-07.md:1:27",
+      "path": "memory/2026-04-07.md",
+      "startLine": 1,
+      "endLine": 27,
+      "source": "memory",
+      "snippet": "## Session Cleanup 03:00 - Sessions before: 62, after: 46, removed: 16 - sessions.json size: 2152.9 KB - Removed sessions: - agent:main:cron:d918122d-d58c-4985-a181-126cfd7e6be7 (last active: 1.6d ago) - agent:main:cron:eve-health-report-004 (last active: 1.5d ago) - agent:main:cron:eve-weekly-synthesis-007 (last active: 1.5d ago) - agent:main:cron:dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0 (last active: 1.6d ago) - agent:main:cron:4e19c300-d387-4019-b658-9664f0d665d5 (last active: 1.5d ago) - agent:main:cron:ebb843af-e752-4c65-923d-540d5ff5ad3f (last active: 1.6d ago) - agent:main:cron:b2ca53ab-0c07-4a22-8424-9d39bf988405 (last active: 1.5d ago) - agent:main:cron:ac53b979-44c6-48",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-23T14:15:12.126Z",
+      "lastRecalledAt": "2026-04-23T14:15:12.126Z",
+      "queryHashes": [
+        "1b74a1d8e76b"
+      ],
+      "recallDays": [
+        "2026-04-23"
+      ],
+      "conceptTags": [
+        "sessions.json",
+        "2152.9",
+        "1.6d",
+        "eve-health-report-004",
+        "1.5d",
+        "eve-weekly-synthesis-007",
+        "ac53b979-44c6-48",
+        "cleanup"
+      ]
+    },
+    "memory:memory/2026-04-14.md:1:26": {
+      "key": "memory:memory/2026-04-14.md:1:26",
+      "path": "memory/2026-04-14.md",
+      "startLine": 1,
+      "endLine": 26,
+      "source": "memory",
+      "snippet": "## Session Cleanup 03:00 - Sessions before: 55, after: 42, removed: 13 - sessions.json size: 2071.7 KB - Removed sessions: - agent:main:subagent:422c21c9-68d5-4f3a-a838-3158aa9d2bfc (last active: 2.0d ago) - agent:main:subagent:b8b7304e-a051-4c22-9c0e-27d98c6ba7ee (last active: 2.0d ago) - agent:main:cron:dcdbbef5-2f16-4f3d-81ab-78e1b34f6fd0 (last active: 1.8d ago) - agent:main:cron:ac53b979-44c6-481b-b2aa-7cb9203e6476 (last active: 1.8d ago) - agent:main:cron:eve-weekly-synthesis-007 (last active: 1.8d ago) - agent:main:cron:4e19c300-d387-4019-b658-9664f0d665d5 (last active: 1.8d ago) - agent:main:cron:d918122d-d58c-4985-a181-126cfd7e6be7 (last active: 1.8d ago) - agent:mai",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-23T14:15:12.126Z",
+      "lastRecalledAt": "2026-04-23T14:15:12.126Z",
+      "queryHashes": [
+        "1b74a1d8e76b"
+      ],
+      "recallDays": [
+        "2026-04-23"
+      ],
+      "conceptTags": [
+        "sessions.json",
+        "2071.7",
+        "2.0d",
+        "1.8d",
+        "eve-weekly-synthesis-007",
+        "cleanup",
+        "removed",
+        "size"
+      ]
+    },
+    "memory:memory/2026-04-13.md:1:23": {
+      "key": "memory:memory/2026-04-13.md:1:23",
+      "path": "memory/2026-04-13.md",
+      "startLine": 1,
+      "endLine": 23,
+      "source": "memory",
+      "snippet": "## Session Cleanup 03:00 - Sessions before: 59, after: 47, removed: 12 - sessions.json size: 2310.9 KB - Removed sessions: - agent:main:cron:babd905a-1098-49dd-8700-772fef14f817 (last active: 1.3d ago) - agent:main:cron:012216b9-9926-4d70-a976-f1ce72b74f46 (last active: 1.8d ago) - agent:main:subagent:16a30154-81ec-4155-9530-7b86d7a83873 (last active: 2.0d ago) - agent:main:subagent:0476362d-f6b6-49b9-9a0e-576d6261b238 (last active: 2.0d ago) - agent:main:subagent:a08657bd-3bdb-4d14-a85b-2d50beeceedb (last active: 2.0d ago) - agent:main:cron:f368e18b-1723-47ad-9164-94e95c106902 (last active: 1.9d ago) - agent:main:cron:05024e45-57fc-4e7c-a236-660e6eb5393f (last active: 1.8d ag",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-23T14:15:12.126Z",
+      "lastRecalledAt": "2026-04-23T14:15:12.126Z",
+      "queryHashes": [
+        "1b74a1d8e76b"
+      ],
+      "recallDays": [
+        "2026-04-23"
+      ],
+      "conceptTags": [
+        "sessions.json",
+        "2310.9",
+        "1.3d",
+        "1.8d",
+        "2.0d",
+        "1.9d",
+        "cleanup",
+        "removed"
+      ]
+    },
+    "memory:memory/2026-04-16.md:1:16": {
+      "key": "memory:memory/2026-04-16.md:1:16",
+      "path": "memory/2026-04-16.md",
+      "startLine": 1,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "## Session Cleanup 03:00 - Sessions before: 48, after: 41, removed: 7 - sessions.json size: 2059.7 KB - Removed sessions: - agent:main:subagent:1aec62f6-3167-47bf-b75c-e7aee2c7115b (last active: 2.0d ago) - agent:main:subagent:cb160a1c-7696-4e02-a350-c727bbf21fd6 (last active: 2.0d ago) - agent:main:cron:3ed01a8a-c3fb-4673-9ae0-993611e94c5a (last active: 1.9d ago) - agent:main:cron:365e8277-f552-4192-9fce-e99dce68f77b (last active: 1.8d ago) - agent:main:cron:b0b04601-7518-4681-9761-4bbe5054ce9b (last active: 1.7d ago) - agent:main:cron:ebb843af-e752-4c65-923d-540d5ff5ad3f (last active: 1.1d ago) - agent:main:cron:be59a068-eccd-4a7c-964e-946ab40ace7e:run:df442286-598d-4070-ba8",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-23T14:15:12.126Z",
+      "lastRecalledAt": "2026-04-23T14:15:12.126Z",
+      "queryHashes": [
+        "1b74a1d8e76b"
+      ],
+      "recallDays": [
+        "2026-04-23"
+      ],
+      "conceptTags": [
+        "sessions.json",
+        "2059.7",
+        "2.0d",
+        "1.9d",
+        "1.8d",
+        "1.7d",
+        "1.1d",
+        "df442286-598d-4070-ba8"
       ]
     }
   }

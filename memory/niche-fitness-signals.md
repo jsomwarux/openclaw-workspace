@@ -31,3 +31,6 @@ Last reset: 2026-04-01
 ### 2026-04-22 — General / Tools
 - **Google Deep Research Max (Apr 21)**: MCP support added — Deep Research can now query private data sources via MCP. Potential future upgrade for research-agent (insurance prospect research pulling from private client data). Not actionable today but watch for API pricing on Gemini API tier.
 - **Further AI (growing)**: Now at 75 likes / 30.6K impressions (was 56/24.7K on Apr 21). Competitor validation accelerating. JT needs insurance-specific Agentforce positioning before this reaches mainstream awareness.
+
+2026-04-23 [CONFIRMS] niche=construction — ConstructConnect Takeoff Boost launch shows construction software vendors actively shipping AI for core estimating workflows; contractors are now comparing AI tools for blueprint-to-quantity extraction.
+2026-04-23 [CONFIRMS] niche=insurance — 93% of insurers using/exploring AI (roots.com stat) confirms insurance niche is past early adoption — prospect objection shifts from 'should we?' to 'which vendor and how?'

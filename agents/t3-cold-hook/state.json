@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-04-21",
+  "last_run": "2026-04-23",
   "drafted": [
     "new-age-global-builders",
     "essential-property-management",
@@ -32,7 +32,10 @@
     "gnp-brokerage-us-inc",
     "acm-electrical-contracting-corp",
     "enforce-coverage-group-llc",
-    "new-york-plumbing-supply"
+    "new-york-plumbing-supply",
+    "nyc-skyline-construction",
+    "tri-state-supply-company",
+    "igm-brokerage-corp"
   ],
   "skipped_no_channel": [
     "fargo-hvac-supply",

@@ -95,3 +95,71 @@
 - Pushed to MC: 1 (n8n webhook exploit — HIGH priority)
 - KB only: 6
 - Telegram JT: YES (1 🔴 security finding)
+
+## 2026-04-23 — Daily Scan
+
+### X API STATUS
+All 6 X queries failed — 402 CreditsDepleted. Full fallback to Tier 1/2 web sources.
+
+### 🟠 Findings — 1 item, passed quality gate
+
+1. [🟠 OpenClaw v2026.4.22 — xAI TTS/image gen + /models add from chat + TUI embedded mode]
+   - Source: https://github.com/openclaw/openclaw/releases/tag/v2026.4.22 (released 2026-04-23)
+   - Key changes:
+     * Providers/xAI: grok-imagine-image, grok-imagine-image-pro, reference-image edits, 6 live voices, MP3/WAV/PCM/G.711 TTS, grok-stt transcription, xAI realtime STT for Voice Call streaming
+     * /models add <provider> <modelId> command — register any model from chat without gateway restart
+     * TUI local embedded mode — terminal chats without Gateway, plugin approval gates still enforced
+     * Auto-install missing provider/channel plugins during setup
+     * OpenAI Responses: native web_search tool auto-used when web search enabled
+     * WhatsApp per-group systemPrompt config
+   - Impact: /models add directly speeds up model testing. xAI TTS adds a provider JT can use for Telegram voice replies. TUI mode enables offline prompt testing.
+   - Quality gate: PASS — first action: openclaw update then /models add xai grok-imagine-image-pro
+   - Shoutout: YES — OpenClaw is JT's active stack. See shoutout-opportunities.md.
+   - MC: pushed ✅ (priority: medium, id: j57bxs2feqfkr7zd9p4jcx6b4585cvj6)
+
+### 🟡 Findings (KB only)
+2. Claude Mythos Preview (Apr 7, 2026) — confirmed on Bedrock + Vertex AI. "New class of intelligence for cybersecurity, autonomous coding, long-running agents." Gated to 11 organizations. Not publicly accessible.
+3. Claude Design — Anthropic Labs product launched with Opus 4.7. Visual outputs: designs, prototypes, slides, one-pagers. claude.ai only, no API yet. Watch for API availability.
+4. n8n 2.17.6 (Apr 23) — minor bug fix: user search in ProjectSettings. No capability changes.
+5. n8n workflow limits removal — Aug 2025 announcement, not new. Already in effect.
+6. Insurance AI signals — InsuranceJournal "AI makes claims professionals better" coverage. Generic market validation, no actionable signal.
+
+### Quality Gate Results
+- Pushed to MC: 1 (OpenClaw v2026.4.22 — MEDIUM priority)
+- KB only: 5
+- Telegram JT: YES (1 🟠 finding, 1 shoutout opportunity)
+- X API: depleted — full web fallback used
+
+## 2026-04-23 — Daily Scan (re-run detected)
+
+### X API STATUS
+All 6 X queries failed — 402 CreditsDepleted. Full fallback to Tier 1/2 web sources.
+
+### 🟠 Findings — 1 item, already in MC
+
+1. [🟠 OpenClaw v2026.4.22 — xAI TTS/image gen + /models add from chat + TUI embedded mode]
+   - Source: https://github.com/openclaw/openclaw/releases/tag/v2026.4.22 (released 2026-04-23)
+   - Key changes:
+     * Providers/xAI: grok-imagine-image, grok-imagine-image-pro, reference-image edits, 6 live voices, MP3/WAV/PCM/G.711 TTS, grok-stt transcription, xAI realtime STT for Voice Call streaming
+     * /models add <provider> <modelId> command — register any model from chat without gateway restart
+     * TUI local embedded mode — terminal chats without Gateway, plugin approval gates still enforced
+     * Auto-install missing provider/channel plugins during setup
+     * OpenAI Responses: native web_search tool auto-used when web search enabled
+     * WhatsApp per-group systemPrompt config
+   - Impact: /models add directly speeds up model testing. xAI TTS adds a provider JT can use for Telegram voice replies. TUI mode enables offline prompt testing.
+   - Quality gate: PASS — first action: openclaw update then /models add xai grok-imagine-image-pro
+   - Shoutout: YES — OpenClaw is JT's active stack.
+   - MC: DUPLICATE — already pushed yesterday (id: j57bxs2feqfkr7zd9p4jcx6b4585cvj6)
+
+### 🟡 Findings (KB only)
+2. Claude Mythos Preview (Apr 7, 2026) — confirmed on Bedrock + Vertex AI. "New class of intelligence for cybersecurity, autonomous coding, long-running agents." Gated to 11 organizations. Not publicly accessible.
+3. Claude Design — Anthropic Labs product launched with Opus 4.7. Visual outputs: designs, prototypes, slides, one-pagers. claude.ai only, no API yet. Watch for API availability.
+4. n8n 2.17.6 (Apr 23) — minor bug fix: user search in ProjectSettings. No capability changes.
+5. n8n workflow limits removal — Aug 2025 announcement, not new. Already in effect.
+6. Insurance AI signals — InsuranceJournal "AI makes claims professionals better" coverage. Generic market validation, no actionable signal.
+
+### Quality Gate Results
+- Pushed to MC: 0 (duplicate skipped)
+- KB only: 5
+- Telegram JT: NO (duplicate finding, no new actionable items)
+- X API: depleted — full web fallback used
