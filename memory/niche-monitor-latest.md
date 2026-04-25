@@ -1,5 +1,3 @@
-**Last updated:** 2026-04-23 09:00:51 EST
+**Last updated:** 2026-04-24 09:01:28 EST
 
-🟠 **Salesforce + Google Cloud — Agentforce now orchestrates end-to-end workflows across both platforms** — Salesforce and Google Cloud announced a deepened partnership enabling AI agents to act across Salesforce AND Google Workspace/BigQuery/Vertex AI with shared context and full workflow continuity; JT can now pitch Agentforce to Google-first companies without a migration conversation. (https://siliconangle.com/2026/04/22/salesforce-and-google-cloud-enable-ai-agents-to-act-across-both-platforms/)
-
-🟠 **ConstructConnect Takeoff Boost — AI-powered quantity takeoff for construction estimating launches on Google Cloud** — ConstructConnect (major construction estimating platform) launched Takeoff Boost, an AI tool that reads blueprints and automatically extracts material quantities; concrete AI product adoption in JT's construction niche, signals contractors are now actively comparing AI estimating tools. (https://news.constructconnect.com/constructconnect-takeoff-boost-google-cloud)
+🟠 **Agentforce ARR hits $800M (+169% YoY) — external customer adoption accelerating** — Salesforce reported Agentforce ARR reached $800M growing 169% YoY; combined Agentforce/Data 360 ARR at $2.9B (+200% YoY). This is external customer revenue, not internal cost savings — confirms enterprise demand for AI agents is accelerating rapidly. JT can cite this as proof the market is moving and delay = falling behind. (https://www.tradingnews.com/...)

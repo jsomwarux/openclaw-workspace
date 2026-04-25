@@ -36,3 +36,4 @@
 2026-04-22 vertafore-velocity-ai — Vertafore launched Velocity AI Platform for insurance agency workflow automation; established AMS vendor now competing in the AI automation space JT pitches.
 2026-04-23 salesforce-google-cloud-agentforce — Salesforce + Google Cloud deep partnership enables Agentforce to orchestrate end-to-end workflows across both platforms with shared context.
 2026-04-23 constructconnect-takeoff-boost — ConstructConnect launched AI-powered Takeoff Boost on Google Cloud for blueprint-to-quantity construction estimating.
+2026-04-24 agentforce-arr-800m — Agentforce ARR reached $800M growing 169% YoY; combined Agentforce/Data 360 ARR at $2.9B (+200% YoY); confirms external customer adoption accelerating.

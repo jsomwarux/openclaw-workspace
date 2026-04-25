@@ -163,3 +163,32 @@ All 6 X queries failed — 402 CreditsDepleted. Full fallback to Tier 1/2 web so
 - KB only: 5
 - Telegram JT: NO (duplicate finding, no new actionable items)
 - X API: depleted — full web fallback used
+
+## 2026-04-24 — Daily Scan
+
+### X API STATUS
+✅ All 6 queries successful (~$0.30 total)
+
+### 🔴 Findings — 1 item, passed quality gate
+
+1. [🔴 MCP RCE vulnerability — CVE-2026-30615, 200k+ servers at risk]
+   - Source: X @isectech_ + The Hacker News https://thehackernews.com/2026/04/anthropic-mcp-design-vulnerability.html + The Register https://www.theregister.com/2026/04/16/anthropic_mcp_design_flaw/
+   - Key finding: OX Security researchers disclosed MCP design flaw enabling Arbitrary Command Execution (RCE). CVE-2026-30615 on Windsurf is zero-click — no user interaction needed, just loading a project with malicious MCP config. 200,000+ AI servers exposed.
+   - Impact: JT uses MCP servers (Shopify MCP, research-agent MCP tools). Supply chain attack vector — any untrusted MCP server or cloned repo with malicious MCP config = potential RCE.
+   - Quality gate: PASS — first action: read advisories + audit all installed MCP servers
+   - Shoutout: NO (security advisory)
+   - MC: pushed ✅ (priority: high, id: j576c6j3gac3v7ttwgm53kzmh585eghm)
+
+### 🟡 Findings (KB only)
+2. GitHub CLI v2.90 `gh skill` command — package manager for agent skills across Copilot/Claude Code/Cursor/Codex. Confirmed on GitHub Changelog. Not in JT's workflow (OpenClaw-centric stack).
+3. Weaviate 1.37 MCP server — built-in MCP at /v1/mcp. Not in JT's stack (uses Convex + Qdrant).
+4. Further AI insurance — 78❤️/31.8K impressions (continued growth). Already logged Apr 21-22.
+5. Claude Code removed from new Pro signups — doesn't affect JT (already has access).
+6. freshkeeper — 0 stars, unverified per <50 stars rule.
+7. Agentrig — plugin layer for multi-agent install. Not in JT's stack.
+8. AInsure alpha — insurance AI platform with 10+ agents. Competitor signal, no actionable intel.
+
+### Quality Gate Results
+- Pushed to MC: 1 (MCP RCE vulnerability — HIGH priority)
+- KB only: 7
+- Telegram JT: YES (1 🔴 security finding)
