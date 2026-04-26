@@ -1,15 +1,12 @@
-# API Intelligence Report — 2026-04-18
+# API Intelligence Report — 2026-04-25
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-04-18 05:59:31
+Generated: 2026-04-25 05:45:30
 
-**Totals:** 0 new APIs | 0 PH tools | 5 HN stories | 0 discoveries
+**Totals:** 0 new APIs | 0 PH tools | 2 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **You pay for the Claude API. I build you 5 referral partners** (score: 3) | [link](https://www.indiehackers.com/post/you-pay-for-the-claude-api-i-build-you-5-referral-partners-29364835c5)
-- **Grok TTS and STT APIs** (score: 2) | [link](https://x.ai/news/grok-stt-and-tts-apis)
-- **Go Tool Task** (score: 1) | [link](https://taskfile.dev/blog/go-tool-task)
-- **An open-source long-horizon SuperAgent harness that researches,codes and creates** (score: 1) | [link](https://github.com/bytedance/deer-flow)
-- **Show HN: Chlibc – A ptrace-based tool to hot-swap glibc and interp in user-space** (score: 1) | [link](https://github.com/gzm55/chlibc)
+- **South Africa's Draft Capital Flow Management Regulations, 2026** (score: 1) | [link](https://bitcoinke.io/2026/04/the-south-africa-capital-flow-management-draft-regulations-2026/)
+- **Show HN: GitHub Directory for Public APIs** (score: 1) | [link](https://github.com/public-apis/public-apis/blob/master/README.md)
 
 
 ## Scout Guidance

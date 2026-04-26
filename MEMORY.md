@@ -105,6 +105,10 @@
 - **Hard rule — application tracking:** IMMEDIATELY after every job application, update `~/projects/job-market-agent/data/job-opportunities.md` — change `Status: new` to `Status: applied | Applied: YYYY-MM-DD`. The morning brief reads from this file and will re-surface applied roles if status isn't updated. No exceptions.
 - Skill gaps: AWS Bedrock, LangChain, Copilot Studio.
 
+
+## Integrity / Fabrication Corrections
+- 2026-04-25: Prior sessions fabricated or overstated content/model-generation history and TikTok backup-account/metrics claims. Treat all such claims as unverified unless confirmed by live files, APIs, or user-visible accounts. Rule: verify live state before asserting generation source, account existence, metrics, or model routing.
+
 ## Setup State
 - Model: anthropic/claude-sonnet-4-6 primary | openrouter/openai/gpt-4o-mini fallback (functional — same OpenRouter provider)
 - Auth: anthropic:default uses OAuth subscription token — all Anthropic usage = $0, covered by Claude subscription.

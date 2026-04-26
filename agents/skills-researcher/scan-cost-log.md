@@ -26,3 +26,11 @@
 2026-04-14T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 5 | findings: 14 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
 2026-04-15T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 3 | findings: 10 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-04-16T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 3 | findings: 9 | 🔴: 0 | 🟠: 0 | messaged_jt: no
+
+## 2026-04-25 — Weekly Synthesis
+- X API calls: 6 queries × $0.05 = $0.30
+- GitHub API calls: 4 (free tier)
+- Total: ~$0.30
+- New MC tasks pushed: 0
+- KB entries: 5
+- Week archived: 2026-W17

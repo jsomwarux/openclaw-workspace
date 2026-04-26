@@ -85,13 +85,8 @@ Append to `memory/content/recent-builds.md` in the same turn. Required fields: B
 ## Technical Angles Auto-Update Rule
 `memory/content/technical-angles.md` = source bank for technical X posts. Append when: non-obvious problem solved, new agent/cron pattern established, "learned this the hard way" moment, or system design decision made that practitioners would find useful. Format: `- **[Pattern name]:** [2-3 sentences, specific enough to apply immediately.]` Do not add: speculation, generic tips, or anything from docs (must be from operational experience).
 
-## Google Drive Auto-Upload Rule
-Every substantive file → upload to Drive immediately after creation. "Saved locally" ≠ done. Drive link must be in the reply to JT. Proactive heartbeat work: Drive upload confirmed before moving on.
-Full routing table + upload command: TOOLS.md (Drive Drafts section).
-Skip: state.json, logs, .jsonl, code/scripts, health DB, lesson files.
-
-## Resume & Cover Letter Auto-Upload Rule
-Resume or cover letter generated → save locally AND upload to Drive immediately (paths in TOOLS.md). Include Drive link in reply. Local-only is not acceptable.
+## Drive Upload Rule
+Substantive deliverables → upload to Drive immediately. Drive link in reply. Skip: state/log/jsonl/code/scripts/health/lesson files. Resume/cover letter: local + Drive, paths in TOOLS.md.
 
 ## New Prompt Quality Rule
 New cron/agent prompts must have all 4 before deploying: (1) Task Context — role defined, (2) Detailed Rules — constraints + what NOT to do, (3) Immediate Task — clear action verbs, (4) Output Formatting — exact sections + file path. Missing any = not ready. Full checklist: `skills/prompt-library/SKILL.md`.
