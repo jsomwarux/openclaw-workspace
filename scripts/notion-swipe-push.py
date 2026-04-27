@@ -18,18 +18,24 @@ Usage:
 
 import argparse
 import json
+import os
+import sys
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 
-NOTION_TOKEN = "ntn_I6090101509856iOb9JOeecrHaqzwG24r7PCjud0PE49iU"
-DATABASE_ID = "31316aff930580f6a195ca179793eb0e"
+NOTION_TOKEN = os.environ.get("NOTION_TOKEN") or os.environ.get("NOTION_API_KEY")
+DATABASE_ID = os.environ.get("NOTION_VIRAL_SWIPE_DB_ID", "31316aff930580f6a195ca179793eb0e")
+if not NOTION_TOKEN:
+    print("❌ Missing NOTION_TOKEN or NOTION_API_KEY environment variable", file=sys.stderr)
+    sys.exit(1)
+
 NOTION_VERSION = "2022-06-28"
 API_URL = "https://api.notion.com/v1/pages"
 QUERY_URL = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
 
-VALID_NICHES = ["AI Consulting", "Crypto", "AI Agents", "Job Market", "Personal Brand", "x402"]
-VALID_FORMATS = ["Hot Take", "Thread Opener", "Story", "List", "Question", "Contrarian", "Behind-the-scenes", "Data Drop", "Analogy"]
+VALID_NICHES = ["AI Consulting", "NYC SMB", "Construction", "Property Management", "Wholesale Distribution", "Skilled Trades", "Crypto", "AI Agents", "Job Market", "Personal Brand", "x402", "Nash Satoshi", "Dynasty Fantasy"]
+VALID_FORMATS = ["Hot Take", "Thread Opener", "Story", "List", "Question", "Contrarian", "Behind-the-scenes", "Data Drop", "Analogy", "Tactical Breakdown", "Case Study", "Build-in-public"]
 VALID_HOOKS = [
     "Curiosity gap",
     "Contrarian claim",

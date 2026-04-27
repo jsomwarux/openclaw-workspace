@@ -37,3 +37,4 @@
 2026-04-23 salesforce-google-cloud-agentforce — Salesforce + Google Cloud deep partnership enables Agentforce to orchestrate end-to-end workflows across both platforms with shared context.
 2026-04-23 constructconnect-takeoff-boost — ConstructConnect launched AI-powered Takeoff Boost on Google Cloud for blueprint-to-quantity construction estimating.
 2026-04-24 agentforce-arr-800m — Agentforce ARR reached $800M growing 169% YoY; combined Agentforce/Data 360 ARR at $2.9B (+200% YoY); confirms external customer adoption accelerating.
+2026-04-27 salesforce-tdx-100-tools — Salesforce TDX developer conference shipped 100+ new tools and skills for Agentforce developers; major platform expansion beyond Vibes.

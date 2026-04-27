@@ -3,50 +3,48 @@
 > Replaced weekly — do not treat prior week's findings as current.
 
 ## Last Updated
-2026-04-21 (Week of April 20)
+2026-04-27 (Week of April 27)
 
 ---
 
 ## Nash Satoshi (Crypto / Game Theory)
 
 **Trending topics this week:**
-- Staking APY content continues to dominate crypto TikTok — "best APY 2026" articles publishing daily
-- DeFi TVL at $95B despite extreme fear — Aave crossed $1T in loans — structural DeFi narrative emerging
-- Cross-margin capabilities and synthetic assets (LSTs as collateral) — April 2026 CoinGecko narrative report
-- Crypto fear/greed in extreme fear zone — contrarian and analytical content performs well in this environment
-- "60% APY" platforms with licensing/regulatory risk actively being discussed
+- Staking/APY content remains active, but last week's content already used the APY trap heavily — avoid repeating as the main angle.
+- DeFi/yield articles continue to rank around staking guides, validator yield, and APY comparisons.
+- Better weekly angle: meme coins and coordination games — use Nash equilibrium framing instead of yield-trap framing.
+- Crypto Twitter continues to optimize for belief/narrative; Nash Satoshi should contrast narrative heat with incentive structure.
 
 **Formats getting traction:**
-- Contrarian takes on APY/yield content — "this number means nothing"
-- "This, not that" comparison format (Ramdam confirmed trending April 14–21)
-- Short X posts with contradiction hook + methodology distinction
+- "Top 5 horrors" trend — text-driven list format, ironic and relatable.
+- Contrarian one-liners with methodology contrast.
+- Short slideshow lists that map common user fears to product insight.
 
 **Content angle this week:**
-Angle 3 (APY = prisoner's dilemma / yield trap) is the most timely. "This, not that" TikTok trend is live and maps perfectly to game theory vs CT analysis. Use both this week.
+Angle 4 (meme coins as Nash equilibria) + Angle 5 (Crypto Twitter optimizes for engagement; game theory optimizes for structural edge). Use "Top 5 crypto horrors" as the TikTok trend adaptation.
 
 **Trending TikTok sounds for Nash Satoshi:**
-- "Self Aware" (original sound) — cinematic, reflective, confirmed trending Ramdam April 7–21
-- "I Just Might" — Bruno Mars (Top 5 April 2026 per TikTok discover)
+- "Champion" — Mondays and Lilla My (Epidemic Sound April 2026 trend coverage; fits ironic Top 5 horrors style)
+- "Self Aware" — still fits reflective analytical slides, but was last week's pick
 
 ---
 
 ## Vista (Movie Ratings / Film)
 
 **Trending topics this week:**
-- "Top 5 horrors" trend — text-driven list format, relatable, minimal (Ramdam April 20 2026)
-- Euphoria Season 3 discourse continuing (HBO April 12 premiere) — score controversy, half obsessed/half checked out
-- "Loving life again" sound — Ramdam explicitly mentions for finance/app content showing "before/after" clarity
-- Letterboxd "social performance" discourse active in r/Letterboxd community
-- FilmTok: taste profile content + POV framing continues to resonate
+- "Top 5 horrors" trend remains the best live TikTok format for FilmTok adaptation.
+- Letterboxd/social performance discourse remains relevant, but last week used r/Letterboxd — rotate toward recommendation/personal signal framing.
+- Personal taste profile remains Vista's strongest differentiator.
+- Avoid stale Euphoria S3 hook this week; the April 26 window has effectively closed.
 
 **Formats getting traction:**
-- Controversy reaction: IMDb/RT gap on polarizing shows/films
-- POV framing on personal taste discovery
-- Text-driven minimal slideshows with clear hooks
+- Top 5 list formats with ironic "horrors" framing.
+- Personal tracking vs crowd-average recommendation contrast.
+- Private-rating / taste-profile positioning.
 
 **Content angle this week:**
-Angle 1 (tracking movies wrong) + Angle 2 (IMDb averages for polarizing films) both timely. Euphoria S3 is the live hook for the reaction post — time window closes ~April 26. "Top 5 horrors" trend could also be adapted for a Vista post next week.
+Angle 3 (best movie you haven't seen isn't on a trending list) + Angle 5 (your film taste isn't random). Use "Top 5 horrors for movie people" as the TikTok hook and rotate Reddit to r/MovieSuggestions.
 
 **Trending TikTok sounds for Vista:**
-- "Loving Life Again" (original TikTok sound) — Ramdam confirmed April 2026, explicitly recommended for app/clarity content
-- "Swim" — BTS (Top 1 April 2026 per TikTok discover — massive reach, emotional hooks)
+- "Champion" — Mondays and Lilla My (best match for Top 5 horrors trend)
+- "Loving Life Again" — still good for app clarity/relief, but was last week's pick

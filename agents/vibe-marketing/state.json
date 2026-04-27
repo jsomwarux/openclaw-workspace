@@ -1,26 +1,43 @@
 {
-  "last_run": "2026-04-21T12:23:00Z",
+  "last_run": "2026-04-27T08:45:00Z",
   "last_successful_run": "2026-04-21T12:23:00Z",
-  "last_week_of": "2026-04-20",
+  "last_week_of": "2026-04-27",
+  "last_status": "partial_delivery_blocked",
+  "last_error": "Generated and queued 12 pieces, generated NB2 slides, but Drive screenshot download and Drive review upload failed because config/google-oauth-token.json is missing. Run python3 ~/.openclaw/workspace/scripts/drive_auth.py, then upload/sync review docs from /tmp and rerun delivery steps only.",
   "last_linkedin_month": null,
   "last_angles_month": "2026-04",
   "products_processed": ["nash-satoshi", "vista"],
-  "queue_count": 93,
-  "drive_link": "https://docs.google.com/document/d/1q_rOITgLiuUMrqmkWKaLvk3O6aDhBdRgW7kVe1NcpDs/edit",
-  "vista_drive_link": "https://docs.google.com/document/d/1oznhYGDfOgFVxGJkBZiM57or8iX5-9B9dflFdtRLEM4/edit",
+  "queue_count": 105,
+  "drive_link": null,
+  "vista_drive_link": null,
+  "local_review_docs": {
+    "nash-satoshi": "/tmp/vibe-review-nash-satoshi-2026-04-27.md",
+    "vista": "/tmp/vibe-review-vista-2026-04-27.md"
+  },
   "last_reddit_subreddit": {
-    "nash-satoshi": "r/CryptoMarkets",
-    "vista": "r/Letterboxd"
+    "nash-satoshi": "r/defi",
+    "vista": "r/MovieSuggestions"
   },
   "last_scene_concept": {
-    "vista": 3,
-    "nash-satoshi": 3
+    "vista": 4,
+    "nash-satoshi": 4
   },
   "screenshots_missing": {
-    "nash-satoshi": true,
-    "vista": true,
+    "nash-satoshi": null,
+    "vista": null,
+    "blocked_by": "missing_google_oauth_token",
     "drive_path": "Eve — Drafts / Vibe Marketing / App Screenshots / [product-slug]",
-    "flagged_at": "2026-04-21T12:23:00Z"
+    "flagged_at": "2026-04-27T08:45:00Z"
+  },
+  "generated_images": {
+    "nash-satoshi": [
+      "agents/vibe-marketing/generated-images/nash-satoshi-2026-04-27/slide-01-hook.png",
+      "agents/vibe-marketing/generated-images/nash-satoshi-2026-04-27/slide-last-cta.png"
+    ],
+    "vista": [
+      "agents/vibe-marketing/generated-images/vista-2026-04-27/slide-01-hook.png",
+      "agents/vibe-marketing/generated-images/vista-2026-04-27/slide-last-cta.png"
+    ]
   },
   "seo_evaluated": {
     "nash-satoshi": {

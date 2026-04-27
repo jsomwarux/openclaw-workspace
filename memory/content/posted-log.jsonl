@@ -128,3 +128,16 @@
 {"date": "2026-04-25", "platform": "x", "day": "friday", "pillar": "tactical-insight", "topic": "ai-consulting-value-proposition-numbers", "angle_id": null, "posted": false, "banked": true, "from_seed": false, "bank_source": "2026-04-19/auto-specific-numbers-x.md"}
 {"date": "2026-04-26", "platform": "x", "day": "saturday", "pillar": "technical", "topic": "silent-failure-green-checkmarks-published-nothing", "angle_id": "n8n-webhook-first", "posted": false, "banked": true, "from_seed": false, "bank_source": "2026-04-10/auto-silent-failure-x.md"}
 {"date": "2026-04-27", "platform": "x", "day": "sunday", "pillar": "learn-in-public", "topic": "n8n-agentforce-mcp-bridge-activation-not-implementation", "angle_id": "n8n-mcp-bridge", "posted": false, "banked": false, "from_seed": false, "source": "technical-angles-n8n-mcp-bridge"}
+{"date": "2026-04-27", "platform": "linkedin", "day": "monday", "pillar": "belief-disruption", "topic": "handoff-failure-implementation", "banked": false, "posted": false, "from_seed": false}
+{"date": "2026-04-28", "platform": "linkedin", "day": "tuesday", "pillar": "industry-observation", "topic": "insurance-ai-workflow-adoption", "banked": false, "posted": false, "from_seed": false}
+{"date": "2026-04-29", "platform": "linkedin", "day": "wednesday", "pillar": "case-study", "topic": "construction-job-status-workflow", "banked": false, "posted": false, "from_seed": false}
+{"date": "2026-04-30", "platform": "linkedin", "day": "thursday", "pillar": "agentforce-proof-point", "topic": "agentforce-handoff-design", "banked": false, "posted": false, "from_seed": false}
+{"date": "2026-05-01", "platform": "linkedin", "day": "friday", "pillar": "tactical-insight", "topic": "external-upload-circuit-breakers", "banked": false, "posted": false, "from_seed": false}
+{"date": "2026-05-03", "platform": "linkedin", "day": "sunday", "pillar": "behind-the-build", "topic": "governance-advisory-first", "banked": false, "posted": false, "from_seed": false}
+{"date":"2026-04-27","platform":"x","day":"monday","pillar":"tribal-belonging","topic":"implementation-not-tool-selection","angle_id":null,"posted":false,"banked":false,"from_seed":false,"compression":true}
+{"date":"2026-04-28","platform":"x","day":"tuesday","pillar":"industry-observation","topic":"construction-ai-estimating-workflow","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-04-29","platform":"x","day":"wednesday","pillar":"mini-case-study","topic":"maintenance-triage-intake-to-dispatch","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-04-30","platform":"x","day":"thursday","pillar":"contrarian-hot-take","topic":"ai-pilots-urgency-dies","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-01","platform":"x","day":"friday","pillar":"tactical-insight","topic":"external-upload-circuit-breaker","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-02","platform":"x","day":"saturday","pillar":"technical","topic":"dependency-gates-stop-downstream-work","angle_id":"cron-architecture","posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-03","platform":"x","day":"sunday","pillar":"learn-in-public","topic":"governance-advisory-first","angle_id":null,"posted":false,"banked":false,"from_seed":false}

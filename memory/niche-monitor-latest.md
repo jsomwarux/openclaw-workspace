@@ -1,3 +1,3 @@
-**Last updated:** 2026-04-24 09:01:28 EST
+**Last updated:** 2026-04-27 09:01:00 EST
 
-🟠 **Agentforce ARR hits $800M (+169% YoY) — external customer adoption accelerating** — Salesforce reported Agentforce ARR reached $800M growing 169% YoY; combined Agentforce/Data 360 ARR at $2.9B (+200% YoY). This is external customer revenue, not internal cost savings — confirms enterprise demand for AI agents is accelerating rapidly. JT can cite this as proof the market is moving and delay = falling behind. (https://www.tradingnews.com/...)
+🟠 **Salesforce TDX — 100+ new Agentforce tools and skills shipped for developers** — At the TDX developer conference (Apr 2026), Salesforce announced more than 100 new tools and skills immediately available to Agentforce developers. This is a major platform expansion beyond the Vibes dev tool — significantly expands what JT can build and sell on Agentforce. (https://venturebeat.com/...)

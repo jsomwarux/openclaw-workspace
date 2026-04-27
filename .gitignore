@@ -11,6 +11,8 @@ lcm.db
 .env.*
 !.env.example
 config/google-oauth-token.json
+config/google-oauth-client.json
+config/*oauth*.json
 config/*.token.json
 config/*.key.json
 *.pem

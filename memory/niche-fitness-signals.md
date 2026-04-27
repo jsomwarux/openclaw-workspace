@@ -35,3 +35,4 @@ Last reset: 2026-04-01
 2026-04-23 [CONFIRMS] niche=construction — ConstructConnect Takeoff Boost launch shows construction software vendors actively shipping AI for core estimating workflows; contractors are now comparing AI tools for blueprint-to-quantity extraction.
 2026-04-23 [CONFIRMS] niche=insurance — 93% of insurers using/exploring AI (roots.com stat) confirms insurance niche is past early adoption — prospect objection shifts from 'should we?' to 'which vendor and how?'
 2026-04-24 [CONFIRMS] niche=enterprise-ai — Agentforce ARR $800M (+169% YoY) confirms external customer demand for AI agents is accelerating; market is moving from pilot to production at scale.
+2026-04-27 [CONFIRMS] niche=agentforce-dev — Salesforce TDX shipped 100+ new tools and skills for Agentforce developers; platform is expanding rapidly, creating more build opportunities for JT.

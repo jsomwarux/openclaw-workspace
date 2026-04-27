@@ -5,7 +5,16 @@
 ## Pre-Draft Checklist (mandatory)
 Before drafting ANY post or content for JT:
 1. Read `memory/content-voice.md` in full
-2. Run the audit checklist at the bottom of that file on every draft before delivering
+2. Fetch current swipe-file references with `python3 scripts/notion-swipe-fetch.py --limit 12 --min-engagement 500` unless Notion/API is unavailable; if unavailable, explicitly say swipe references were unavailable and use the latest local weekly content's hook mappings instead.
+3. Select 2-4 reference patterns that match the platform + niche + format, then write a `Hook mappings from swipe file` section in the draft file before the posts.
+4. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering
+
+## Swipe File Requirement
+The Notion Viral Posts Swipe database is not just an archive. It must influence output.
+- Weekly content packs: include a `Hook mappings from swipe file` section with the actual patterns used.
+- One-off X/LinkedIn drafts: mention the pattern internally in the saved draft when a file is created.
+- Priority niches to keep represented: AI Consulting, NYC SMB, Construction, Property Management, Wholesale Distribution, Skilled Trades, AI Agents/OpenClaw, Job Market, Nash Satoshi/x402, Personal Brand.
+- If a niche has fewer than 3 usable recent examples, create a Mission Control task to collect more examples instead of pretending the swipe file is sufficient.
 
 ## Core Voice Rules
 - Start with the point, never with setup or preamble

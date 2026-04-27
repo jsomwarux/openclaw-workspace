@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-27T04:09:09.823Z",
+  "updatedAt": "2026-04-27T14:39:25.210Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -263,18 +263,20 @@
       "endLine": 51,
       "source": "memory",
       "snippet": "- Crypto Midday Pulse (`eve-crypto-midday-009`): NEW error — timed out at 180s (180005ms), consecutiveErrors=1. Prior run was 132s. Applied 360s fix ✅ (confirmed in returned JSON). Likely hit a slow provider during yesterday's Anthropic outage cascade. - Viral swipe / content-generate / Spanish lesson: same status as 10AM — fixes already applied this morning - All other crons: healthy ✅ - **Proactive work:** AI tool monitoring → memory/ai-tools.md updated - GPT-5.4 Thinking released (reasoning+agents baseline for enterprise) - Razorpay launched payment agent studio on Claude SDK (Anthropic enterprise momentum) - Google Workspace Gemini citations live - Mar 11 Anthropic outage c",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8646256402553872,
-      "maxScore": 0.8646256402553872,
+      "totalScore": 1.8646256402553871,
+      "maxScore": 1,
       "firstRecalledAt": "2026-04-07T16:01:19.290Z",
-      "lastRecalledAt": "2026-04-07T16:01:19.290Z",
+      "lastRecalledAt": "2026-04-27T14:39:25.210Z",
       "queryHashes": [
-        "298e0cd2b912"
+        "298e0cd2b912",
+        "6fdf6ba512c6"
       ],
       "recallDays": [
-        "2026-04-07"
+        "2026-04-07",
+        "2026-04-27"
       ],
       "conceptTags": [
         "gpt",
@@ -688,6 +690,192 @@
         "crypto",
         "monitoring",
         "check"
+      ]
+    },
+    "memory:memory/2026-03-06.md:46:66": {
+      "key": "memory:memory/2026-03-06.md:46:66",
+      "path": "memory/2026-03-06.md",
+      "startLine": 46,
+      "endLine": 66,
+      "source": "memory",
+      "snippet": "- Mission Control: initially unreachable → kickstarted immediately → came up after ~20s - 🔴 Security audit: ClawHavoc supply chain attack + CVE-2026-25253 - OpenClaw v2026.3.2 ✅ (already patched) - SOUL.md unmodified since Feb 21 ✅ - MEMORY.md only routine updates ✅ - All workspace skills clean (qmd, x-research, opticfy-ops, opticfy-pipeline, webapp-testing) ✅ - mcp-builder + prompt-library: false positive regex matches, legitimate content ✅ - No skills installed via DM or unknown source ✅ - Both MC tasks marked done. JT notified via Telegram. - Proactive: next category in priority list = ai-tools.md update (skipping niche monitor — already ran this AM) ### Proactive: AI Tool",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T14:34:46.872Z",
+      "lastRecalledAt": "2026-04-27T14:34:46.872Z",
+      "queryHashes": [
+        "495c8a397646"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "qmd",
+        "cve-2026-25253",
+        "v2026.3.2",
+        "soul.md",
+        "memory.md",
+        "x-research",
+        "opticfy-ops",
+        "opticfy-pipeline"
+      ]
+    },
+    "memory:memory/2026-03-06.md:29:51": {
+      "key": "memory:memory/2026-03-06.md:29:51",
+      "path": "memory/2026-03-06.md",
+      "startLine": 29,
+      "endLine": 51,
+      "source": "memory",
+      "snippet": "- Created: memory/niche-fitness-signals.md (monthly accumulator, reset after each review) - Updated: MEMORY.md niche-skill matrix — removed \"locked\" framing, added last reviewed + next review date - Updated: Active cron count to 20 ## X API Cost Fix — 11:31 AM - JT flagged $30/week X API spend, not visible in Mission Control costs tab - Root cause: api.ts fetched 100 tweets/search by default at $0.005/tweet = $0.50/search - Primary sources: crypto agent (8-16 X searches × 7 days = biggest driver), viral swipe (18/week), skills researcher (9/day when running) - Fix 1: Changed api.ts default max_results from 100 → 10 (90% cost reduction: $0.50 → $0.05 per search) - Fix 2: x-search.ts now logs",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T14:34:46.872Z",
+      "lastRecalledAt": "2026-04-27T14:34:46.872Z",
+      "queryHashes": [
+        "495c8a397646"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "memory/niche-fitness-signals.md",
+        "memory.md",
+        "niche-skill",
+        "30/week",
+        "api.ts",
+        "tweets/search",
+        "0.005/tweet",
+        "0.50/search"
+      ]
+    },
+    "memory:memory/2026-03-30.md:18:39": {
+      "key": "memory:memory/2026-03-30.md:18:39",
+      "path": "memory/2026-03-30.md",
+      "startLine": 18,
+      "endLine": 39,
+      "source": "memory",
+      "snippet": "- `Viral Post Swipe File`: CONSEC=2, but both errors = \"Message failed\" (Telegram outage). Execution fine (220s, well under 720s). Will self-recover when Telegram is back. - All other errors = delivery failures from Telegram outage. Not execution issues. - 0 new consecutive errors beyond those inherited from Telegram outage. - Film review (Step A): Yesterday clean. One lingering item — content-monday-send was at 60s timeout (too tight, fixed tonight 180s). No new failure patterns. - Film review (Step B): `overnight` autoresearch checklist is written but status=pending (never run). Will queue for next available overnight slot. - Telegram status: still showing \"Channel is unavailable: te",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T14:39:25.210Z",
+      "lastRecalledAt": "2026-04-27T14:39:25.210Z",
+      "queryHashes": [
+        "6fdf6ba512c6"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "self-recover",
+        "content-monday-send",
+        "viral",
+        "post",
+        "swipe",
+        "consec",
+        "but",
+        "both"
+      ]
+    },
+    "memory:memory/2026-03-30.md:53:76": {
+      "key": "memory:memory/2026-03-30.md:53:76",
+      "path": "memory/2026-03-30.md",
+      "startLine": 53,
+      "endLine": 76,
+      "source": "memory",
+      "snippet": "- `content-monday-send`: timed out at 60s — bumped to 180s ✅ - `Viral Post Swipe File`: CONSEC=2, but both errors = \"Message failed\" (Telegram outage). Execution fine (220s, well under 720s). Will self-recover when Telegram is back. - All other errors = delivery failures from Telegram outage. Not execution issues. - 0 new consecutive errors beyond those inherited from Telegram outage. - Film review (Step A): Yesterday clean. One lingering item — content-monday-send was at 60s timeout (too tight, fixed tonight 180s). No new failure patterns. - Film review (Step B): `overnight` autoresearch checklist is written but status=pending (never run). Will queue for next available overnight slo",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T14:39:25.210Z",
+      "lastRecalledAt": "2026-04-27T14:39:25.210Z",
+      "queryHashes": [
+        "6fdf6ba512c6"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "content-monday-send",
+        "self-recover",
+        "content",
+        "monday",
+        "send",
+        "timed",
+        "out",
+        "60s"
+      ]
+    },
+    "memory:memory/2026-03-11.md:95:113": {
+      "key": "memory:memory/2026-03-11.md:95:113",
+      "path": "memory/2026-03-11.md",
+      "startLine": 95,
+      "endLine": 113,
+      "source": "memory",
+      "snippet": "- Other failing jobs (crypto-evening, viral-swipe, spanish-lesson): previous timeout changes already applied; last runs used old values, should self-heal on next execution ✅ - Proactive: Consulting pipeline review - H.C. Oswald: DM already sent (confirmed on MC board), follow-up Day 5 = Sat Mar 16 - Brothers Supply: DM draft ready, HIGH task on board for JT review - Independent Pipe: staged T3, outside NYC metro flag, MEDIUM task on board - No new outreach prep needed — pipeline current ## Heartbeat 22:00 - Cost alerts: none ✅ - Cron issues: - Spanish lesson (3x): ran tonight at 8PM in 107s (timeout fix worked ✅) but \"Message failed\" — transient Telegram delivery issue. Manually r",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T14:39:25.210Z",
+      "lastRecalledAt": "2026-04-27T14:39:25.210Z",
+      "queryHashes": [
+        "6fdf6ba512c6"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "crypto-evening",
+        "viral-swipe",
+        "spanish-lesson",
+        "self-heal",
+        "h.c",
+        "follow-up",
+        "other",
+        "failing"
+      ]
+    },
+    "memory:memory/2026-03-22.md:80:90": {
+      "key": "memory:memory/2026-03-22.md:80:90",
+      "path": "memory/2026-03-22.md",
+      "startLine": 80,
+      "endLine": 90,
+      "source": "memory",
+      "snippet": "JT: \"Positive feedback on ideas. Make sure information is optimally stored with step-by-step build instructions and optimal marketing strategies.\" Changes to agents/passive-income-strategist/AGENT.md: - **New §3 \"Step-by-Step Build Instructions\"** added to report blueprint: Phase 1 MVP (numbered actions), Phase 2 Traction steps, full tech stack (every component named), operating cost at scale, build timeline - **New §5 \"Marketing Strategy (Autonomous)\"** as dedicated standalone section: primary channel (specific), Week 1 launch post (exact format + hook + community), ongoing autonomous marketing stack, SEO strategy (keywords + pages), viral/referral mechanism, Month 1 manual seeding actions",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T14:39:25.210Z",
+      "lastRecalledAt": "2026-04-27T14:39:25.210Z",
+      "queryHashes": [
+        "6fdf6ba512c6"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "step-by-step",
+        "viral/referral",
+        "positive",
+        "feedback",
+        "ideas",
+        "sure",
+        "information",
+        "optimally"
       ]
     }
   }

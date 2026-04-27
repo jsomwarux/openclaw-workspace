@@ -16,13 +16,18 @@ Usage:
 
 import argparse
 import json
+import os
 import sys
 import warnings
 warnings.filterwarnings("ignore")
 import requests
 
-NOTION_TOKEN = "ntn_I6090101509856iOb9JOeecrHaqzwG24r7PCjud0PE49iU"
-DB_ID = "31316aff930580f6a195ca179793eb0e"
+NOTION_TOKEN = os.environ.get("NOTION_TOKEN") or os.environ.get("NOTION_API_KEY")
+DB_ID = os.environ.get("NOTION_VIRAL_SWIPE_DB_ID", "31316aff930580f6a195ca179793eb0e")
+if not NOTION_TOKEN:
+    print("❌ Missing NOTION_TOKEN or NOTION_API_KEY environment variable", file=sys.stderr)
+    sys.exit(1)
+
 HEADERS = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
     "Notion-Version": "2022-06-28",

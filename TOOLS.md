@@ -145,7 +145,7 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 - **Email pivot automation:** `python3 scripts/outreach_email_pivot.py [--draft|--execute] [--prospect slug] [--min-days N]` — scans outreach-draft.md files for M2-stuck prospects (M2 sent, M3 not sent, 7+ days), generates email pivot draft (different angle from LinkedIn), uploads to Drive, creates Email Pivot MC task. Daily cron at 6:45 AM (UUID: 9d9b165b).
 
 ## Notion
-- Integration token: ntn_I6090101509856iOb9JOeecrHaqzwG24r7PCjud0PE49iU
+- Integration token: [REDACTED - use NOTION_TOKEN in ~/.config/env/global.env]
 - **Viral Post Swipe File** DB ID: 31316aff930580f6a195ca179793eb0e
 - **Content Calendar** DB ID: 32516aff930581a78659eac869c71ba8 | Page: https://www.notion.so/32516aff930581a78659eac869c71ba8
   - Properties: Post (title), Date, Platform (select), Type (Planned/News Hook/Vibe), Status (To Post/Posted/Skipped), Drive Link, Week

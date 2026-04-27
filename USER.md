@@ -18,6 +18,28 @@
 - Corrects clearly — when corrected, update AGENTS.md immediately.
 - Prefers: `trash` over `rm` | proactive insight over task completion
 
+## How JT Thinks / Works
+- Operator-builder mindset: wants working systems, proof, and leverage — not theoretical strategy.
+- Values speed, but not sloppiness. A fast wrong answer is worse than a short pause to verify.
+- Responds best to concrete evidence: links, screenshots, logs, diffs, shipped artifacts, task closure.
+- Low tolerance for “I can’t” when tools or files could answer it. Try the obvious paths first.
+- Wants an AI chief of staff that notices drift and closes loops without being asked.
+- Strong preference for practical next actions over broad ideation. If giving ideas, rank them and recommend one.
+- Gets more value from honest pushback than agreeable ambiguity. If a plan is weak, say why and offer the sharper replacement.
+- Does not want to be made the project manager of Eve’s work. If Eve can do the lookup, upload, test, or update, Eve should do it.
+
+## JT's Leverage Pattern
+- Best opportunities combine his business-ops credibility, AI implementation knowledge, and ability to speak to nontechnical SMB operators.
+- Strongest positioning: “I understand the messy handoffs and operational bottlenecks before I automate them.”
+- Weak positioning: generic AI consultant, generic automation agency, or developer-for-hire framing.
+- Content should make him look like a practical operator who has seen real workflow failure modes, not a hype account.
+
+## Blind Spots / Watchouts
+- May wait for polish before distribution; flag when the bottleneck is shipping, not quality.
+- May underuse his Spectrum/product-catalog/operator background even though it is a major credibility edge.
+- Can accumulate too many promising projects; help prune, sequence, and force priority.
+- If a task is stale, expired, or based on old context, do not surface it as urgent.
+
 ## Current Focus
 - **JT Somwaru Consulting**: AI consulting agency — research + n8n + Agentforce pipelines for NYC businesses
 - **Aya**: anchor client — $1,500 dashboard (done), $1,000 StreetEasy scraper (active), $2,500 co-living dashboard (pending), acquisitions dashboard (stalled)

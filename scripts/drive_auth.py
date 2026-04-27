@@ -27,23 +27,18 @@ def main():
         print(f"  Save it to: {CLIENT_SECRETS}")
         return
 
-    flow = InstalledAppFlow.from_client_secrets_file(
-        CLIENT_SECRETS, SCOPES,
-        redirect_uri="urn:ietf:wg:oauth:2.0:oob"
-    )
-    auth_url, _ = flow.authorization_url(prompt="consent")
-
+    flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS, SCOPES)
     print("\n" + "="*60)
-    print("Open this URL in Chrome (signed into openclawagenteve14@gmail.com):")
+    print("This will open Chrome. Sign into openclawagenteve14@gmail.com and click Allow.")
     print("="*60)
-    print(f"\n{auth_url}\n")
-    print("="*60)
-    print("After clicking Allow, Google shows you a code.")
-    print("Paste it here:")
-    code = input("Code: ").strip()
-
-    flow.fetch_token(code=code)
-    creds = flow.credentials
+    creds = flow.run_local_server(
+        host="localhost",
+        port=0,
+        authorization_prompt_message="Open this URL if your browser does not open automatically:\n{url}",
+        success_message="Authorization complete. You can close this tab and return to Terminal.",
+        open_browser=True,
+        prompt="consent",
+    )
 
     # Save token
     token_data = {
