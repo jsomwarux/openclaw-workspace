@@ -3,7 +3,7 @@
 > Full archive: docs/agents/mistakes-log.md
 
 ## Logging Rule
-Every entry MUST have all three: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete rule that prevents recurrence. A mistake entry without a rule is incomplete — finish it before moving on.
+Every entry MUST have six fields: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete guardrail/rule, (4) regression check that would catch recurrence, (5) owner surface updated, (6) verification/date. A mistake entry without a regression check + owner surface is incomplete — finish it before moving on. Reference: `docs/agents/regression-checks.md`.
 
 ## Recent Entries (2026-04)
 

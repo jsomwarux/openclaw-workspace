@@ -237,3 +237,10 @@ Salesforce Financial Services Cloud penetration in mid-size RIAs is 40%+. Agentf
 ### ICP 4 — Insurance Operations
 - **WTW Survey (Mar 2026):** 36% of insurers plan straight-through claims processing automation (up from 14% current). Stat is citable in outreach: "WTW's March 2026 survey shows your peers are actively building the business case for claims automation right now." Use in M2 follow-up when a prospect has shown prior interest — not in cold M1.
 - **Salesforce Ambient Intelligence (Mar 2026):** Salesforce showcased real-time sales call AI + Agentforce governance upgrades. Insurance orgs already on Salesforce are getting direct product demos of this. Pitch angle: "Salesforce is showing your exec team what's possible at Dreamforce. We implement the specific piece that your claims workflow needs."
+
+### Weekly Intelligence Additions — 2026-04-26
+- **Agentforce ARR acceleration ($800M ARR, +169% YoY):** Enterprise AI-agent adoption is no longer hypothetical. Use as urgency proof across Salesforce-adjacent prospects: "the market has moved from pilots to budgeted external adoption." Best fit: insurance, PM firms on Salesforce, and any prospect evaluating platform-led AI.
+- **Salesforce + Google Cloud Agentforce partnership:** Cross-platform agent workflows across Salesforce and Google Cloud reinforce the orchestration pitch. For SMB/mid-market buyers, the useful angle is not platform complexity — it is that agent workflows are becoming the default enterprise operating model, and smaller firms need a practical version.
+- **ConstructConnect Takeoff Boost:** AI-powered construction estimating is moving into mainstream construction software. For construction/skilled trades ICPs, pitch around estimating, document extraction, bidding speed, and back-office throughput before generic "AI agents."
+- **Vertafore Velocity AI:** Insurance vendors are packaging AI around friction reduction across the distribution chain. For Salesforce insurance shops, pitch specific workflow relief — claims intake, broker servicing, renewal prep, documentation — not abstract transformation.
+

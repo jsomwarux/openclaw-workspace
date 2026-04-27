@@ -209,6 +209,38 @@ export async function search(
 }
 
 /**
+ * Fetch recent posts from an X List timeline.
+ * Endpoint: GET /2/lists/:id/tweets
+ */
+export async function listPosts(
+  listId: string,
+  opts: { maxResults?: number; pages?: number } = {}
+): Promise<Tweet[]> {
+  const maxResults = Math.max(Math.min(opts.maxResults || 25, 100), 10);
+  const pages = opts.pages || 1;
+
+  let allTweets: Tweet[] = [];
+  let nextToken: string | undefined;
+
+  for (let page = 0; page < pages; page++) {
+    const pagination = nextToken
+      ? `&pagination_token=${nextToken}`
+      : "";
+    const url = `${BASE}/lists/${encodeURIComponent(listId)}/tweets?max_results=${maxResults}&${FIELDS}${pagination}`;
+
+    const raw = await apiGet(url);
+    const tweets = parseTweets(raw);
+    allTweets.push(...tweets);
+
+    nextToken = raw.meta?.next_token;
+    if (!nextToken) break;
+    if (page < pages - 1) await sleep(RATE_DELAY_MS);
+  }
+
+  return allTweets;
+}
+
+/**
  * Fetch a full conversation thread by root tweet ID.
  */
 export async function thread(

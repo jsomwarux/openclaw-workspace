@@ -50,6 +50,23 @@ bun run x-search.ts search "<query>" [options]
 
 Auto-adds `-is:retweet` unless query already includes it. All searches display estimated API cost.
 
+### List Posts
+
+Use curated X Lists as low-noise feeds for recurring research apps. This is the strongest fit for JT's goals because Lists turn X from broad search into stable niche data sources.
+
+```bash
+bun run x-search.ts list <list_id> --limit 25
+```
+
+Recommended list themes for JT:
+- `ai-agents-builders` — Agentforce, OpenClaw, n8n, MCP, agent tooling
+- `nyc-ops-buyers` — NYC SMB, construction, property management, wholesale/operators
+- `crypto-ai-x402` — crypto x AI infra, x402, agent payments, Nash Satoshi inputs
+- `dynasty-market` — dynasty fantasy football analysts/traders for Dynastyjig content
+- `vista-social-proof` — indie app builders, photo apps, iOS launch feedback
+
+Do not invent list IDs or claim Lists were created unless verified via X/API output. Store verified list IDs in `skills/x-research/data/lists.json` once created.
+
 **Examples:**
 ```bash
 bun run x-search.ts search "BNKR" --sort likes --limit 10

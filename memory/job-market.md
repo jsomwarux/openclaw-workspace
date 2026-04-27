@@ -205,3 +205,11 @@
 - Two-tier market holds: specialist surge vs. generalist contraction. No new skill clusters this week.
 - Build ideas pipeline (TelcoAgent, AgentPack, ProcessBlueprint, ROIFlow, AdoptAI) covers all active gaps. No new ideas needed.
 - job-market-agent daily-brief.md running normally at 5:15AM — brief is current, this memory file just wasn't being synced
+
+## 2026-04-26 — 3PM Heartbeat
+
+**Live search pulse:** Searches for "agentic AI architect" and "Salesforce Agentforce" in NYC/remote still look thin and noisy. Relevant signal appears more in platform announcements/certification content than clean local job postings. One broad result surfaced Citi AI Security Architect/Director, but the direct Agentforce/agentic architect feed remains weak for NYC.
+
+**Read:** This supports the current thesis from the morning brief: NYC/remote agentic AI roles lag the West Coast by ~60–90 days. JT should not wait passively for perfect postings. Better strategy: keep building proof artifacts and use consulting pipeline/outreach to create market pull.
+
+**Actionable positioning:** Keep emphasizing process architecture + Agentforce/Gemini/Google Workspace familiarity, not pure ML engineering. Watch for titles containing: AI Solutions Architect, Agentforce Architect, AI Business Solutions Architect, AI Security Architect, Workflow Automation Architect, Enterprise AI Consultant.

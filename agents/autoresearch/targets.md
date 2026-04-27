@@ -32,6 +32,13 @@
 | passive-income-scout | agents/passive-income-scout/AGENT.md | checklists/passive-income-scout.md | pending | — | — | 2026-04-20 |
 | content-scheduler | agents/content-scheduler/AGENT.md | checklists/content-scheduler.md | pending | — | — | 2026-04-20 |
 | vibe-post | scripts/vibe-post.py | checklists/vibe-post.md | pending | — | — | 2026-04-20 |
+| content-generation | skills/content-generation/SKILL.md | checklists/content-generation.md | pending | — | — | 2026-04-26 |
+| google-drive | skills/google-drive/SKILL.md | checklists/google-drive.md | pending | — | — | 2026-04-26 |
+| google-slides | skills/google-slides/SKILL.md | checklists/google-slides.md | pending | — | — | 2026-04-26 |
+| notion-integration | skills/notion-integration/SKILL.md | checklists/notion-integration.md | pending | — | — | 2026-04-26 |
+| system-auditor | skills/system-auditor/SKILL.md | checklists/system-auditor.md | pending | — | — | 2026-04-26 |
+| ux-architecture | skills/ux-architecture/SKILL.md | checklists/ux-architecture.md | pending | — | — | 2026-04-26 |
+| video-generation | skills/video-generation/SKILL.md | checklists/video-generation.md | pending | — | — | 2026-04-26 |
 
 ## Status values
 - `pending` — checklist written, not yet run

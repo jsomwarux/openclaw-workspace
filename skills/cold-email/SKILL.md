@@ -344,3 +344,10 @@ Always produce:
 3. **Personalization note** (what signal was used, what to verify before sending)
 4. **Follow-up sequence** (dates + what to say at each touch)
 5. **What would make it stronger** (any missing context that would improve conversion)
+
+## Recent Pitch Intelligence — 2026-04-26
+- **Agentforce ARR urgency proof:** Salesforce Agentforce reaching ~$800M ARR (+169% YoY) is a proof point for M2/M3 and warm replies, not a cold M1 opener. Use it to frame timing: "the budget has moved from AI pilots to operational agent deployments." Keep the ask grounded in the prospect's workflow.
+- **Salesforce + Google Cloud Agentforce angle:** For Salesforce/Google-stack prospects, position JT as the implementation bridge: enterprise platforms are enabling cross-system agents, but SMBs need one specific workflow mapped, governed, and shipped.
+- **Construction AI angle:** ConstructConnect Takeoff Boost validates estimating/document automation demand. For construction prospects, lead with estimating accuracy, bid speed, and document routing before broad AI transformation language.
+- **Insurance AI angle:** Vertafore Velocity AI validates insurance-specific AI packaging. For insurance prospects, use workflow-specific friction language: intake, broker servicing, renewal prep, claims documentation, auditability.
+

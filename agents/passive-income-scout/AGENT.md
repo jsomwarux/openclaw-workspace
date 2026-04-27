@@ -15,6 +15,7 @@ Every Sunday at 6 AM ET. Save output to file only. Strategist reads it at 7:30 A
 ## JT's Stack (ideas that use these are significantly faster/cheaper to build)
 - **OpenClaw**: full AI orchestration infrastructure already running — agents, crons, automations
 - **Claude API at $0**: LLM reasoning, content generation, classification, image analysis — no API cost
+- **Low-cost AI vision models**: image/screenshot/photo understanding, object detection, OCR, spatial reasoning, visual quality scoring, before/after comparison, product/shelf/equipment recognition. Treat Grok/Gemini/GPT-4o-style vision as capability primitives when they unlock a real user job. Example class: verifying real gyms from photos by detecting barbells, plates, power racks, cable stacks, platform space, crowding, cleanliness, and equipment quality. Do NOT overweight vision; use it only when the visual layer creates defensibility or removes manual review.
 - **Coding agents** (Claude Code, Codex): builds any web app, API, scraper, automation in 2–4 weeks, no manual coding by JT
 - **n8n (self-hosted)**: workflow automation, webhooks, API integrations
 - **Next.js + Tailwind**: polished web frontend in days
@@ -168,6 +169,34 @@ Include qualifying ideas in Step 3 output. At the end of the scout report, add a
 
 ---
 
+### Methodology 9: AI Vision Capability Scan
+
+Run this as a capability lens, not a mandatory quota. Generate at least 1 candidate only if demand signals support it.
+
+**Capability primitives to consider:**
+- Object/equipment recognition: gyms, tools, ingredients, plants, pets, collectibles, construction defects, product shelves, pantry/fridge items.
+- OCR/document + image extraction: receipts, labels, menus, medical/lab paperwork, permits, spec sheets, warranties, invoices.
+- Spatial/layout reasoning: room fit, gym equipment layout, storage organization, garden/yard planning, accessibility, parking/route hazards.
+- Quality/safety scoring: form checks, food/pet product label risk, skincare shelf audit, property photo red flags, marketplace listing authenticity.
+- Before/after comparison: cleaning, renovation, fitness progress, skincare progress, collectibles grading, listing photo improvement.
+- Screenshot/app UI understanding: audit onboarding flows, pricing pages, app store screenshots, product dashboards, marketplace listings.
+
+**Search prompts:**
+- `"photo" "is this" [niche] app`
+- `"AI" "photo" [niche] "reddit"`
+- `[niche] "identify" "from photo"`
+- `[niche] "rate my" "photo"`
+- `[niche] "checklist" "photo"`
+
+**Viability rules:**
+- Good vision idea = user already takes photos/screenshots and currently relies on manual judgment.
+- Strong output = ranked list, pass/fail, checklist, score, warning label, or affiliate/product recommendation.
+- Avoid medical/legal/high-liability diagnosis unless positioned as informational and low-risk.
+- Avoid ideas where a generic model prompt fully solves the job with no niche data, workflow, marketplace, or recurring habit.
+- Do not make vision the default. It is one lens among nine.
+
+Include qualifying ideas in Step 3 output labeled `[M9-Vision]`. At the end of the scout report, add a short `Vision Model Opportunity Notes` section: what visual jobs appeared promising, what was rejected, and whether any vision idea deserved strategist review.
+
 ### IMPORTANT: Required Input Files
 
 Read ALL of these before generating ideas:
@@ -181,7 +210,7 @@ Read ALL of these before generating ideas:
 
 ## Step 3: Generate 6 Raw Ideas
 
-Surface 6 ideas — at least one from each methodology. Aim for variety: different revenue models, different niches, different build approaches. At least 2 should surprise you when you write them down.
+Surface 6 ideas — cover the strongest methodologies from the research. Aim for variety: different revenue models, different niches, different build approaches. At least 2 should surprise you when you write them down. Include an AI vision idea only if it clears the same evidence bar as non-vision ideas; do not force one just to satisfy the methodology.
 
 For each idea, write:
 ```

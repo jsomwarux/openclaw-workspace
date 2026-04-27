@@ -1,0 +1,12 @@
+{
+  "schema": "x-research.lists.v1",
+  "notes": "Verified X List IDs for JT's X API/list-based research apps. Do not add unverified IDs.",
+  "lists": [],
+  "integrations": {
+    "birdclaw": {
+      "status": "installed_local_mode",
+      "use": "pair X List feeds with JT archive/bookmark mining for content and research workflows",
+      "db": "~/.birdclaw/birdclaw.sqlite"
+    }
+  }
+}

@@ -66,10 +66,20 @@ For each non-saturated idea, run the full analysis:
 
 ### C. Build Reality Check (JT's stack specifically)
 - What exactly does the coding agent build? List components: frontend, backend, data pipeline, AI integration, payment processing
-- Which of JT's existing tools does this use? (OpenClaw crons, n8n workflows, Claude API, Next.js, Replit, Printful API)
-- Operating cost per month at scale: hosting, APIs, domain, tools
+- Which of JT's existing tools does this use? (OpenClaw crons, n8n workflows, Claude API, low-cost AI vision models, Next.js, Replit, Printful API)
+- Operating cost per month at scale: hosting, APIs, domain, tools, per-analysis AI/vision cost if applicable
 - Realistic timeline: 1 week (simple) / 2 weeks (standard) / 4 weeks (complex) / 2+ months (too long)
 - What is the **exact first revenue event** — the literal moment the first dollar comes in
+
+### C2. AI Vision Fit Check (only for visual ideas)
+If the idea uses image, screenshot, or document understanding, explicitly validate:
+- **User behavior:** Does the target user already take/upload photos, screenshots, receipts, labels, listings, or documents?
+- **Model task:** Is the visual job object recognition, OCR, spatial reasoning, quality scoring, before/after comparison, or screenshot understanding?
+- **Output value:** Does the app return a useful constrained output: score, pass/fail, checklist, warning, ranking, product recommendation, or marketplace match?
+- **Defensibility:** What makes this more than a generic “upload to Grok/ChatGPT” prompt? Look for niche data, workflow, history, benchmark corpus, affiliate marketplace, local database, recurring tracking, or community comparison.
+- **Risk:** Reject or downgrade medical/legal/high-liability diagnosis, unsafe advice, privacy-heavy photo storage, and anything that needs perfect visual accuracy to avoid harm.
+- **Cost:** Estimate per-analysis cost and whether the price point supports usage.
+Do not reward vision for novelty alone. A non-vision idea with better distribution/economics should beat a vision idea.
 
 ### D. Autonomous Marketing Assessment
 The marketing must run without JT. Assess each vector:
@@ -87,6 +97,8 @@ The marketing must run without JT. Assess each vector:
 ---
 
 ## Step 4: Score Each Idea (1–10 per dimension)
+
+For visual ideas, include a short `Vision Fit` note before the scorecard: model task, defensibility beyond generic prompting, risk, and estimated per-analysis economics.
 
 | Dimension | What it measures | Weight |
 |---|---|---|

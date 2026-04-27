@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-23T14:15:12.126Z",
+  "updatedAt": "2026-04-27T04:09:09.823Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -533,6 +533,161 @@
         "1.7d",
         "1.1d",
         "df442286-598d-4070-ba8"
+      ]
+    },
+    "memory:memory/2026-04-10.md:38:58": {
+      "key": "memory:memory/2026-04-10.md:38:58",
+      "path": "memory/2026-04-10.md",
+      "startLine": 38,
+      "endLine": 58,
+      "source": "memory",
+      "snippet": "4. **passive-income-fetch-signals** (f368e18b): confirmed clean — scripts ran successfully. Telegram error was stale pre-fix. ## Passive Income Tab Build — 18:20 ET - JT reported Passive Income tab missing from Mission Control - Previous \"25% done\" status was incorrect — app/passive-income directory doesn't exist, no pideas table in schema - Root cause: work was never committed/saved before prior session ended - Spawned Claude Code agent (PID 30317) to build full feature: - Convex schema: pideas table - convex/pideas.ts: list + sync mutations - app/passive-income/page.tsx: table + filters + detail view - Sidebar nav link - Build + git push → Vercel deploy - Reports source: memory/",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T04:02:02.110Z",
+      "lastRecalledAt": "2026-04-27T04:02:02.110Z",
+      "queryHashes": [
+        "6d131cce578a"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "passive-income-fetch-signals",
+        "pre-fix",
+        "app/passive-income",
+        "committed/saved",
+        "convex/pideas.ts",
+        "app/passive-income/page.tsx",
+        "passive",
+        "income"
+      ]
+    },
+    "memory:memory/2026-04-10.md:80:106": {
+      "key": "memory:memory/2026-04-10.md:80:106",
+      "path": "memory/2026-04-10.md",
+      "startLine": 80,
+      "endLine": 106,
+      "source": "memory",
+      "snippet": "- Other errored crons (Spanish Weekly Eval, content-generate-x/link/monday-send): none have consecutiveErrors >= 2. Spanish Weekly Eval is weekly Sunday (low urgency). Content crons are one-time failed builds from last week — low urgency, not user-facing. **Crypto evening pulse:** No morning baseline (cron timed out). Quiet evening, no alert sent. ## Heartbeat 9:31 PM - Cost alert sent (3rd time today): $138.28/mo pace vs $75 cap - Cron errors: all pre-existing (5-7d ago), no new action - Spanish accountability: last_lesson_date=today, last_lesson_complete=false → sent nudge to JT ## Heartbeat 10:00 PM - Cost alert sent (4th time today): $138.28/mo pace vs $75 cap - Cron errors: pre-exist",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T04:02:02.110Z",
+      "lastRecalledAt": "2026-04-27T04:02:02.110Z",
+      "queryHashes": [
+        "6d131cce578a"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "one-time",
+        "user-facing",
+        "138.28/mo",
+        "pre-existing",
+        "5-7d",
+        "last-lesson-date",
+        "last-lesson-complete",
+        "pre-exist"
+      ]
+    },
+    "memory:memory/2026-03-11.md:79:98": {
+      "key": "memory:memory/2026-03-11.md:79:98",
+      "path": "memory/2026-03-11.md",
+      "startLine": 79,
+      "endLine": 98,
+      "source": "memory",
+      "snippet": "| niche-monitor | 120s→300s | already updated | self-heals tomorrow | | content-reminder | 90s→150s | already updated | self-heals tomorrow | | viral-swipe | 300s→720s | already updated | self-heals Friday | | spanish-lesson | 300s→600s | already updated | self-heals tonight | | content-generate | 300s→900s | already updated | self-heals next Monday | - overnight timed out tonight because coding sub-agent for B2B card took >30 min. Fix: timeout bumped to 45 min + B2B card permanently blocked. ## Heartbeat 14:00 — Proactive: AI Tool Monitoring - 🟠 Agentforce Contact Center launched (Mar 11) — telephony + digital + CRM + agents. New product = new service JT can offer. Updated nic",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T04:09:09.823Z",
+      "lastRecalledAt": "2026-04-27T04:09:09.823Z",
+      "queryHashes": [
+        "a75e35830763"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "niche-monitor",
+        "self-heals",
+        "content-reminder",
+        "viral-swipe",
+        "spanish-lesson",
+        "content-generate",
+        "sub-agent",
+        "niche"
+      ]
+    },
+    "memory:memory/2026-03-11.md:59:83": {
+      "key": "memory:memory/2026-03-11.md:59:83",
+      "path": "memory/2026-03-11.md",
+      "startLine": 59,
+      "endLine": 83,
+      "source": "memory",
+      "snippet": "- Updated CLAUDE.md: context-mode marked as installed, warden marked as manual install needed. - Session work completed: - `memory/future-signals.md` created — \"not now but track\" system with 7 active signals + weekly-synthesis review hook - `documents/ICPs.md` created — full dossiers for 4 consulting niches - `~/projects/jtsomwaru-com/documents/styleguide.md` created — complete visual system - CLAUDE.md (global + site) updated: planning mode rule, reference document pointers - pipeline.md updated with ICP reference note - HEARTBEAT.md updated: future-signals.md review added to weekly synthesis ## Heartbeat 14:00 - Cost alerts: none ✅ - Cron health check — 9 jobs showing error",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T04:09:09.823Z",
+      "lastRecalledAt": "2026-04-27T04:09:09.823Z",
+      "queryHashes": [
+        "a75e35830763"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "claude.md",
+        "context-mode",
+        "memory/future-signals.md",
+        "weekly-synthesis",
+        "documents/icps.md",
+        "pipeline.md",
+        "heartbeat.md",
+        "future-signals.md"
+      ]
+    },
+    "memory:memory/2026-04-04.md:38:52": {
+      "key": "memory:memory/2026-04-04.md:38:52",
+      "path": "memory/2026-04-04.md",
+      "startLine": 38,
+      "endLine": 52,
+      "source": "memory",
+      "snippet": "- Proactive: crypto monitoring check (see below) ## Heartbeat 10:00 AM - Cost alerts sent to JT (see 10AM entry above) - Cron health check: - ce=3: Job Application Tracker (b0b04601) — timeout at 120s, but fix (900s) was applied Apr 2 AFTER last run Apr 2. ce:3 is stale. Next run Tue Apr 8 should self-clear. No action needed. - ce=2: Crypto Midday (eve-crypto-midday-009) — Groq rate limit errors. Fixed: model switched to openrouter/google/gemini-3.1-flash-lite-preview ✅ - ce=2: Daily News Hook (4a70dda4) — Groq rate limit cascade from $9.33 day Apr 3. Transient. Will self-clear next run. Model already on Gemini Flash Lite — root cause was LCM fallback attempting Groq. No action needed",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-27T04:09:09.823Z",
+      "lastRecalledAt": "2026-04-27T04:09:09.823Z",
+      "queryHashes": [
+        "a75e35830763"
+      ],
+      "recallDays": [
+        "2026-04-27"
+      ],
+      "conceptTags": [
+        "router",
+        "self-clear",
+        "eve-crypto-midday-009",
+        "9.33",
+        "proactive",
+        "crypto",
+        "monitoring",
+        "check"
       ]
     }
   }

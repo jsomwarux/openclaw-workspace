@@ -8,7 +8,11 @@
 - Schedule: 9PM daily check-in prompt | Sunday 9AM weekly report
 
 ## Cost Tracker
-- `python3 ~/.openclaw/workspace/scripts/cost-tracker.py --snapshot | --brief | --check-alerts | --weekly-review`
+- `python3 ~/.openclaw/workspace/scripts/cost-tracker.py --snapshot | --brief | --check-alerts | --diagnose`
+- During cost spikes, run `--diagnose` before repeating generic spend alerts; use it to identify the culprit model/job/session, then reduce or pause that source.
+- `--check-alerts` returns a JSON array; send each alert to JT only when non-empty, and avoid duplicate sends when the same alert was already logged in today's daily note.
+
+ts | --weekly-review`
 - Snapshot runs at 2AM via backup.sh → memory/costs/YYYY-MM-DD.json
 - Alerts: session >$2, daily >$10, monthly pace >$75 | Goal: $50/mo
 

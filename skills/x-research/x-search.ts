@@ -4,6 +4,7 @@
  *
  * Commands:
  *   search <query> [options]    Search recent tweets
+ *   list <list_id>              Fetch recent posts from an X List
  *   thread <tweet_id>           Fetch full conversation thread
  *   profile <username>          Recent tweets from a user
  *   tweet <tweet_id>            Fetch a single tweet
@@ -256,6 +257,41 @@ async function cmdThread() {
   }
 }
 
+
+async function cmdList() {
+  const listId = args[1];
+  if (!listId) {
+    console.error("Usage: x-search.ts list <list_id> [--limit N] [--pages N] [--json|--markdown]");
+    process.exit(1);
+  }
+
+  const limit = parseInt(getOpt("limit") || "25");
+  const pages = Math.min(parseInt(getOpt("pages") || "1"), 5);
+  const asJson = getFlag("json");
+  const asMarkdown = getFlag("markdown");
+
+  let tweets = await api.listPosts(listId, {
+    maxResults: Math.min(Math.max(limit, 10), 100),
+    pages,
+  });
+
+  tweets = api.dedupe(tweets);
+
+  if (asJson) {
+    console.log(JSON.stringify(tweets.slice(0, limit), null, 2));
+  } else if (asMarkdown) {
+    console.log(fmt.formatResearchMarkdown(`list:${listId}`, tweets, {
+      queries: [`list:${listId}`],
+    }));
+  } else {
+    console.log(fmt.formatResultsTelegram(tweets, { query: `list:${listId}`, limit }));
+  }
+
+  const rawTweetCount = tweets.length;
+  const cost = (rawTweetCount * 0.005).toFixed(4);
+  console.error(`\n📋 list ${listId} · ${rawTweetCount} tweets read · est. cost ~$${cost}`);
+}
+
 async function cmdProfile() {
   const username = args[1]?.replace(/^@/, "");
   if (!username) {
@@ -398,6 +434,7 @@ function usage() {
 
 Commands:
   search <query> [options]    Search recent tweets (last 7 days)
+  list <list_id>              Fetch recent posts from an X List
   thread <tweet_id>           Fetch full conversation thread
   profile <username>          Recent tweets from a user
   tweet <tweet_id>            Fetch a single tweet
@@ -435,6 +472,10 @@ async function main() {
     case "thread":
     case "t":
       await cmdThread();
+      break;
+    case "list":
+    case "l":
+      await cmdList();
       break;
     case "profile":
     case "p":

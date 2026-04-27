@@ -2,9 +2,9 @@
   {
     "id": "eve",
     "name": "Eve",
-    "emoji": "\ud83c\udf3f",
+    "emoji": "🌿",
     "role": "AI Chief of Staff",
-    "domain": "Full-stack orchestration \u2014 research, automation, health, knowledge, ops, scheduling, client pipeline",
+    "domain": "Full-stack orchestration — research, automation, health, knowledge, ops, scheduling, client pipeline",
     "workspaceRel": ".openclaw/workspace",
     "github": null,
     "skills": [
@@ -34,7 +34,7 @@
       {
         "id": "eve-niche-monitor-006",
         "name": "Niche Intelligence",
-        "schedule": "9 AM Mon\u2013Fri"
+        "schedule": "9 AM Mon–Fri"
       },
       {
         "id": "eve-crypto-midday-009",
@@ -69,7 +69,7 @@
       {
         "id": "f18cace3",
         "name": "Pending Task Processor",
-        "schedule": "Every 2h (8AM\u201310PM)"
+        "schedule": "Every 2h (8AM–10PM)"
       },
       {
         "id": "33b8b0a2",
@@ -78,13 +78,13 @@
       },
       {
         "id": "11835cf6",
-        "name": "Build Ideas \u2192 MC Sync",
+        "name": "Build Ideas → MC Sync",
         "schedule": "7:15 AM daily"
       },
       {
         "id": "4c437ff5",
         "name": "Skills Scan",
-        "schedule": "Mon\u2013Sat 11:30 AM"
+        "schedule": "Mon–Sat 11:30 AM"
       },
       {
         "id": "05024e45",
@@ -99,9 +99,9 @@
   {
     "id": "research-agent",
     "name": "Research Agent",
-    "emoji": "\ud83d\udd0d",
+    "emoji": "🔍",
     "role": "Client Prospecting",
-    "domain": "Stage 1 of 5 \u2014 deep-dives prospects, identifies best automation use case and pain points, determines n8n vs Agentforce fit, outputs structured client briefs",
+    "domain": "Stage 1 of 5 — deep-dives prospects, identifies best automation use case and pain points, determines n8n vs Agentforce fit, outputs structured client briefs",
     "workspaceRel": "projects/research-agent",
     "github": "jsomwarux/research-agent",
     "skills": [
@@ -110,15 +110,15 @@
       "x-research"
     ],
     "crons": [],
-    "currentTask": "Pipeline built \u2705 \u2014 H.C. Oswald at outreach stage. Next: run 1 new property/construction prospect per week.",
+    "currentTask": "Pipeline built ✅ — H.C. Oswald at outreach stage. Next: run 1 new property/construction prospect per week.",
     "created": "2026-02-21"
   },
   {
     "id": "analysis-agent",
     "name": "Analysis Agent",
-    "emoji": "\ud83e\udde0",
+    "emoji": "🧠",
     "role": "Process Analysis",
-    "domain": "Stage 2 of 5 \u2014 deep analysis of target company's current processes, maps workflows step-by-step, inventories integrations, writes precise automation spec in brief.json",
+    "domain": "Stage 2 of 5 — deep analysis of target company's current processes, maps workflows step-by-step, inventories integrations, writes precise automation spec in brief.json",
     "workspaceRel": "projects/analysis-agent",
     "github": null,
     "skills": [
@@ -126,15 +126,15 @@
       "firecrawl"
     ],
     "crons": [],
-    "currentTask": "Pipeline built \u2705 \u2014 H.C. Oswald analysis complete. Standby for next prospect.",
+    "currentTask": "Pipeline built ✅ — H.C. Oswald analysis complete. Standby for next prospect.",
     "created": "2026-02-24"
   },
   {
     "id": "n8n-agent",
     "name": "n8n Builder",
-    "emoji": "\ud83d\udd27",
+    "emoji": "🔧",
     "role": "Workflow Automation",
-    "domain": "Stage 3 of 5 \u2014 builds production-ready n8n automated workflows for consulting clients across all 5 target niches. Supports 4-LLM ensemble patterns.",
+    "domain": "Stage 3 of 5 — builds production-ready n8n automated workflows for consulting clients across all 5 target niches. Supports 4-LLM ensemble patterns.",
     "workspaceRel": "projects/n8n-agent",
     "github": "jsomwarux/n8n-agent",
     "skills": [
@@ -143,15 +143,15 @@
       "llm-ensemble"
     ],
     "crons": [],
-    "currentTask": "H.C. Oswald RAG workflow built \u2705 (10/10 tests passed). Active: StreetEasy scraper for Aya ($1,000).",
+    "currentTask": "H.C. Oswald RAG workflow built ✅ (10/10 tests passed). Active: StreetEasy scraper for Aya ($1,000).",
     "created": "2026-02-21"
   },
   {
     "id": "presentation-agent",
     "name": "Presentation Agent",
-    "emoji": "\ud83c\udfaf",
+    "emoji": "🎯",
     "role": "Client Decks",
-    "domain": "Stage 4 of 5 \u2014 builds client-facing presentation decks (Google Slides or PDF) showing how the workflow works and the projected ROI",
+    "domain": "Stage 4 of 5 — builds client-facing presentation decks (Google Slides or PDF) showing how the workflow works and the projected ROI",
     "workspaceRel": "projects/presentation-agent",
     "github": null,
     "skills": [
@@ -159,15 +159,15 @@
       "pdf"
     ],
     "crons": [],
-    "currentTask": "H.C. Oswald deck built \u2705 \u2014 in Drive. Model: groq/llama-3.3-70b-versatile.",
+    "currentTask": "H.C. Oswald deck built ✅ — in Drive. Model: groq/llama-3.3-70b-versatile.",
     "created": "2026-02-24"
   },
   {
     "id": "outreach-agent",
     "name": "Outreach Agent",
-    "emoji": "\ud83d\udce7",
+    "emoji": "📧",
     "role": "Sales Outreach",
-    "domain": "Stage 5 of 5 \u2014 drafts the optimal outreach email with presentation attached. JT reviews and presses send. Nothing else.",
+    "domain": "Stage 5 of 5 — drafts the optimal outreach email with presentation attached. JT reviews and presses send. Nothing else.",
     "workspaceRel": "projects/outreach-agent",
     "github": null,
     "skills": [
@@ -175,13 +175,13 @@
       "linkedin"
     ],
     "crons": [],
-    "currentTask": "H.C. Oswald outreach drafted \u2705 \u2014 holding for JT until website + demo are ready. Model: groq/llama-3.3-70b-versatile.",
+    "currentTask": "H.C. Oswald outreach drafted ✅ — holding for JT until website + demo are ready. Model: groq/llama-3.3-70b-versatile.",
     "created": "2026-02-24"
   },
   {
     "id": "agentforce-agent",
     "name": "Agentforce Builder",
-    "emoji": "\u26a1",
+    "emoji": "⚡",
     "role": "Salesforce Automation",
     "domain": "Builds, deploys, and tests Salesforce Agentforce agents for clients. Expert in GenAiPlanner, topics, actions, Apex. High-value for Salesforce clients.",
     "workspaceRel": "projects/agentforce-agent",
@@ -193,15 +193,15 @@
       "salesforce-flows"
     ],
     "crons": [],
-    "currentTask": "Ready for Salesforce client deployments \u2014 Employee Assistant + Ecommerce agents built",
+    "currentTask": "Ready for Salesforce client deployments — Employee Assistant + Ecommerce agents built",
     "created": "2026-02-21"
   },
   {
     "id": "crypto-agent",
     "name": "Crypto Analyst",
-    "emoji": "\ud83d\udcc8",
+    "emoji": "📈",
     "role": "Portfolio Intelligence",
-    "domain": "Game-theoretic analysis of 10-coin portfolio using Dexscreener + X research. Runs 3\u00d7 daily \u2014 sends buy/hold/sell recommendations to Telegram.",
+    "domain": "Game-theoretic analysis of 10-coin portfolio using Dexscreener + X research. Runs 3× daily — sends buy/hold/sell recommendations to Telegram.",
     "workspaceRel": "projects/crypto-agent",
     "github": "jsomwarux/crypto-agent",
     "skills": [
@@ -226,13 +226,13 @@
         "schedule": "9 PM daily"
       }
     ],
-    "currentTask": "Monitoring portfolio \u2014 latest analysis at ~/projects/crypto-agent/data/latest-analysis.md",
+    "currentTask": "Monitoring portfolio — latest analysis at ~/projects/crypto-agent/data/latest-analysis.md",
     "created": "2026-02-22"
   },
   {
     "id": "job-market-agent",
     "name": "Job Market Agent",
-    "emoji": "\ud83d\udcbc",
+    "emoji": "💼",
     "role": "Career Intelligence",
     "domain": "Monitors tech/AI job market, surfaces relevant roles for JT, tracks skill gaps, and enriches morning brief with role analysis and salary benchmarks.",
     "workspaceRel": "projects/job-market-agent",
@@ -243,15 +243,15 @@
       "ats-scraping"
     ],
     "crons": [],
-    "currentTask": "Live \u2705 \u2014 daily brief feeds morning report. Hot leads: Squarespace (19/25), Writer SA (20/25, $207-250K).",
+    "currentTask": "Live ✅ — daily brief feeds morning report. Hot leads: Squarespace (19/25), Writer SA (20/25, $207-250K).",
     "created": "2026-02-22"
   },
   {
     "id": "ranking-app-agent",
     "name": "Ranking App Builder",
-    "emoji": "\ud83c\udfc6",
+    "emoji": "🏆",
     "role": "Rankings Platform",
-    "domain": "Builds Nash Satoshi-style ranking platforms \u2014 4-LLM ensemble analysis for crypto, skincare, alcohol, baby products, neighborhoods, and college rankings.",
+    "domain": "Builds Nash Satoshi-style ranking platforms — 4-LLM ensemble analysis for crypto, skincare, alcohol, baby products, neighborhoods, and college rankings.",
     "workspaceRel": "projects/ranking-app-agent",
     "github": "jsomwarux/ranking-app-agent",
     "skills": [
@@ -260,15 +260,15 @@
       "next.js"
     ],
     "crons": [],
-    "currentTask": "Glow Index deployed on Replit \u2705 \u2014 blocked on ngrok/n8n connection. Nash Satoshi live. Next: unblock Glow Index analyses.",
+    "currentTask": "Glow Index deployed on Replit ✅ — blocked on ngrok/n8n connection. Nash Satoshi live. Next: unblock Glow Index analyses.",
     "created": "2026-02-22"
   },
   {
     "id": "jtsomwaru-com",
     "name": "jtsomwaru.com",
-    "emoji": "\ud83c\udf10",
+    "emoji": "🌐",
     "role": "Personal Website",
-    "domain": "JT's personal portfolio site \u2014 Next.js + Tailwind deployed on Vercel. Showcases JT Somwaru Consulting, Vista, Nash Satoshi, and other projects.",
+    "domain": "JT's personal portfolio site — Next.js + Tailwind deployed on Vercel. Showcases JT Somwaru Consulting, Vista, Nash Satoshi, and other projects.",
     "workspaceRel": "projects/jtsomwaru-com",
     "github": "jsomwarux/jtsomwaru-com",
     "skills": [
@@ -277,13 +277,13 @@
       "tailwind"
     ],
     "crons": [],
-    "currentTask": "Live at jtsomwaru.com \u2705 \u2014 needs content polish + GitHub repo \u2192 Vercel auto-deploy.",
+    "currentTask": "Live at jtsomwaru.com ✅ — needs content polish + GitHub repo → Vercel auto-deploy.",
     "created": "2026-02-24"
   },
   {
     "id": "ui-ux-agent",
     "name": "UI/UX Designer",
-    "emoji": "\ud83c\udfa8",
+    "emoji": "🎨",
     "role": "Design Systems",
     "domain": "Designs and implements UI/UX systems for JT's apps and client deliverables. Maintains design tokens, components, and interaction patterns.",
     "workspaceRel": "projects/ui-ux-agent",
@@ -300,7 +300,7 @@
   {
     "id": "jt-consulting-pipeline",
     "name": "Pipeline Coordinator",
-    "emoji": "\ud83d\udd17",
+    "emoji": "🔗",
     "role": "Orchestration",
     "domain": "Shared data and pipeline state for the 5-stage consulting client outreach pipeline. Tracks clients from research through to outreach.",
     "workspaceRel": "projects/jt-consulting-pipeline",
@@ -313,7 +313,7 @@
   {
     "id": "passive-income-scout",
     "name": "Passive Income Scout",
-    "emoji": "\ud83d\udcb0",
+    "emoji": "💰",
     "role": "Passive Income Opportunity Research",
     "domain": "Weekly trend research across X, Product Hunt, Etsy, TikTok, and niche markets. Generates 3 scored passive income ideas tailored to JT's profile (AI-buildable, autonomous marketing, zero upkeep). Pushes top idea to Mission Control. Sends Sunday digest to Telegram.",
     "workspaceRel": ".openclaw/workspace/agents/passive-income-scout",
@@ -329,13 +329,13 @@
         "schedule": "Sunday 6 AM ET"
       }
     ],
-    "currentTask": "Live \u2014 first run this Sunday. Generating weekly passive income idea reports.",
+    "currentTask": "Live — first run this Sunday. Generating weekly passive income idea reports. Incorporates trend/API inputs and AI vision capability lens without overweighting it.",
     "created": "2026-03-01"
   },
   {
     "id": "passive-income-strategist",
     "name": "Passive Income Strategist",
-    "emoji": "\ud83e\udde0",
+    "emoji": "🧠",
     "role": "Passive Income Deep Analysis",
     "domain": "Stage 2 of the passive income pipeline. Takes 5 raw ideas from the Scout, runs deep market validation, competition assessment, build plan reality checks, and autonomous marketing analysis. Scores on 8 dimensions, assigns Build/Watch/Pass verdicts, pushes winners to Mission Control, sends Sunday digest to JT.",
     "workspaceRel": ".openclaw/workspace/agents/passive-income-strategist",
@@ -351,13 +351,13 @@
         "schedule": "Sunday 7:30 AM ET"
       }
     ],
-    "currentTask": "Live \u2014 runs every Sunday after Scout. Deep-evaluates raw ideas, pushes vetted winners to Mission Control.",
+    "currentTask": "Live — runs every Sunday after Scout. Deep-evaluates raw ideas, pushes vetted winners to Mission Control. Incorporates trend/API inputs and AI vision capability lens without overweighting it.",
     "created": "2026-03-01"
   },
   {
     "id": "job-tracker",
     "name": "Job Tracker",
-    "emoji": "\ud83d\udccb",
+    "emoji": "📋",
     "role": "Job Application Accountability Agent",
     "domain": "Monitors open job applications on Mission Control. Fires Tue/Thu 10:15 AM. Classifies by days elapsed: NEW (<4d, silent), STALE (4-7d, flag), OVERDUE (7d+, escalate). Sends one Telegram alert with deadline, doc status, and next action. Silent if nothing urgent. Also drafts follow-up emails for submitted applications with no response after 10 days.",
     "workspaceRel": ".openclaw/workspace/agents/job-tracker",
@@ -372,15 +372,15 @@
         "schedule": "Tue/Thu 10:15 AM EST"
       }
     ],
-    "currentTask": "Active \u2014 monitoring open Job Market tasks on Mission Control. Next run: Tuesday 10:15 AM.",
+    "currentTask": "Active — monitoring open Job Market tasks on Mission Control. Next run: Tuesday 10:15 AM.",
     "created": "2026-03-07"
   },
   {
     "id": "content-calendar",
     "name": "Content Calendar",
-    "emoji": "\ud83d\udcc5",
+    "emoji": "📅",
     "role": "Content Generation Agent",
-    "domain": "Two-mode content system: (1) Weekly Batch \u2014 Sunday 10 PM, generates 5-7 evergreen posts for the week ahead, uploads to Drive, previews to Telegram. (2) Daily News Hook \u2014 weekdays 9:15 AM, reads niche monitor output and drafts 1-2 timely posts only if a \ud83d\udfe0/\ud83d\udd34 signal exists. Silence if no signal. All content audited against content-voice.md before delivery.",
+    "domain": "Two-mode content system: (1) Weekly Batch — Sunday 10 PM, generates 5-7 evergreen posts for the week ahead, uploads to Drive, previews to Telegram. (2) Daily News Hook — weekdays 9:15 AM, reads niche monitor output and drafts 1-2 timely posts only if a 🟠/🔴 signal exists. Silence if no signal. All content audited against content-voice.md before delivery.",
     "workspaceRel": ".openclaw/workspace/agents/content-calendar",
     "github": null,
     "skills": [
@@ -399,13 +399,13 @@
         "schedule": "Weekdays 9:15 AM EST"
       }
     ],
-    "currentTask": "Active \u2014 weekly batch fires Sunday 10 PM, daily hook fires weekdays 9:15 AM (only sends if \ud83d\udfe0/\ud83d\udd34 signal exists).",
+    "currentTask": "Active — weekly batch fires Sunday 10 PM, daily hook fires weekdays 9:15 AM (only sends if 🟠/🔴 signal exists).",
     "created": "2026-03-07"
   },
   {
     "id": "critic",
     "name": "Critic",
-    "emoji": "\u2696\ufe0f",
+    "emoji": "⚖️",
     "role": "Strategic Critic",
     "domain": "On-demand brutal honesty partner. Surfaces blind spots, broken reasoning, true constraints, avoidance costs, leverage gaps, and accountability challenges. Three modes: on-demand (/critic [topic]), soft-signal flag in main session, and weekly Sunday gut-check cron.",
     "workspaceRel": ".openclaw/workspace/agents/critic",
@@ -422,15 +422,15 @@
         "schedule": "Sunday 6 PM EST"
       }
     ],
-    "currentTask": "Active \u2014 invoke with /critic [topic]. Sunday gut-check reads week's decisions and sends strategic analysis to Telegram.",
+    "currentTask": "Active — invoke with /critic [topic]. Sunday gut-check reads week's decisions and sends strategic analysis to Telegram.",
     "created": "2026-03-07"
   },
   {
     "id": "vibe-marketing",
     "name": "Vibe Marketer",
-    "emoji": "\ud83d\udce3",
+    "emoji": "📣",
     "role": "Content & Marketing",
-    "domain": "Optimal content and marketing strategies for consulting projects \u2014 X threads, LinkedIn posts, Product Hunt launches, launch copy.",
+    "domain": "Optimal content and marketing strategies for consulting projects — X threads, LinkedIn posts, Product Hunt launches, launch copy.",
     "workspaceRel": null,
     "github": null,
     "skills": [],
@@ -441,7 +441,7 @@
   {
     "id": "dataviz-agent",
     "name": "DataViz Builder",
-    "emoji": "\ud83d\udcca",
+    "emoji": "📊",
     "role": "Data Visualization",
     "domain": "Converts messy spreadsheet data into interactive dashboard web apps for clients.",
     "workspaceRel": null,
@@ -454,9 +454,9 @@
   {
     "id": "skills-researcher",
     "name": "Skills & API Researcher",
-    "emoji": "\ud83d\udd2c",
+    "emoji": "🔬",
     "role": "Ecosystem Intelligence",
-    "domain": "Continuously discovers and evaluates Claude Code skills, APIs, MCP servers, and tools. X-first sourcing (8 daily queries). Recommends installations, flags new agents, surfaces skill gaps. Pushes \ud83d\udd34/\ud83d\udfe0 findings to Telegram and all discoveries to Mission Control.",
+    "domain": "Continuously discovers and evaluates Claude Code skills, APIs, MCP servers, and tools. X-first sourcing (8 daily queries). Recommends installations, flags new agents, surfaces skill gaps. Pushes 🔴/🟠 findings to Telegram and all discoveries to Mission Control.",
     "workspaceRel": ".openclaw/workspace/agents/skills-researcher",
     "github": null,
     "skills": [
@@ -468,7 +468,7 @@
       {
         "id": "4c437ff5",
         "name": "Daily Scan",
-        "schedule": "Mon\u2013Sat 11:30 AM"
+        "schedule": "Mon–Sat 11:30 AM"
       },
       {
         "id": "05024e45",
@@ -485,7 +485,7 @@
   {
     "id": "overnight",
     "name": "Overnight Autonomy Agent",
-    "emoji": "\ud83c\udf19",
+    "emoji": "🌙",
     "role": "Autonomous Task Completion",
     "domain": "Runs nightly at 3 AM. Reads Mission Control, selects up to 2 high-priority completable tasks, executes them via sub-agents (research, drafts, builds), and writes a review log for the morning brief. Hard cap: $1.50/night, 2 tasks max, no external sends.",
     "workspaceRel": ".openclaw/workspace/agents/overnight",
@@ -508,9 +508,9 @@
   {
     "id": "portfolio-updater",
     "name": "Portfolio Auto-Updater",
-    "emoji": "\ud83c\udf10",
+    "emoji": "🌐",
     "role": "Site Optimization",
-    "domain": "Monitors the portfolio queue, scores new projects via eligibility rubric (auto-approves \u22657/10), spawns coding agents to add cards + SVG graphics, reorders featured projects by job market demand weekly. Keeps jtsomwaru.com always optimally hireable.",
+    "domain": "Monitors the portfolio queue, scores new projects via eligibility rubric (auto-approves ≥7/10), spawns coding agents to add cards + SVG graphics, reorders featured projects by job market demand weekly. Keeps jtsomwaru.com always optimally hireable.",
     "workspaceRel": ".openclaw/workspace/agents/portfolio-updater",
     "github": "jsomwarux/jtsomwaru-com",
     "skills": [
@@ -524,13 +524,13 @@
         "schedule": "Daily 3 AM EST (final step of overnight run)"
       }
     ],
-    "currentTask": "Processing portfolio queue nightly \u2014 auto-adding qualifying projects, demand-reordering weekly",
+    "currentTask": "Processing portfolio queue nightly — auto-adding qualifying projects, demand-reordering weekly",
     "created": "2026-02-27"
   },
   {
     "id": "autoresearch",
     "name": "Autoresearch Agent",
-    "emoji": "\ud83d\udd2c",
+    "emoji": "🔬",
     "role": "Autonomous skill self-improvement loop",
     "domain": "Skills",
     "workspaceRel": "agents/autoresearch",
@@ -543,7 +543,7 @@
   {
     "id": "launch-kit",
     "name": "Launch Kit Agent",
-    "emoji": "\ud83d\ude80",
+    "emoji": "🚀",
     "role": "Generates full distribution launch kits for new passive income products",
     "domain": "passive-income",
     "workspaceRel": "agents/launch-kit/AGENT.md",
@@ -554,7 +554,7 @@
   {
     "id": "networking",
     "name": "Networking Agent",
-    "emoji": "\ud83e\udd1d",
+    "emoji": "🤝",
     "role": "Warm Relationship Tracker",
     "domain": "Warm contacts, relationship warmth decay, event tracking, referral pipeline management",
     "workspaceRel": ".openclaw/workspace/agents/networking",
@@ -576,9 +576,9 @@
   {
     "id": "ai-video-agent",
     "name": "AI Video Agent",
-    "emoji": "\ud83c\udfa5",
+    "emoji": "🎥",
     "role": "Brand Video Production",
-    "domain": "Autonomous brand video pipeline \u2014 brand brief to finished MP4. Stages: script generation, scene breakdown, video clip generation (Kling 3.0 / Runway), voiceover (ElevenLabs), avatar (HeyGen), assembly (FFmpeg/Descript), Drive upload.",
+    "domain": "Autonomous brand video pipeline — brand brief to finished MP4. Stages: script generation, scene breakdown, video clip generation (Kling 3.0 / Runway), voiceover (ElevenLabs), avatar (HeyGen), assembly (FFmpeg/Descript), Drive upload.",
     "workspaceRel": "projects/ai-video-agent",
     "github": null,
     "skills": [
@@ -589,15 +589,15 @@
       "claude-api"
     ],
     "crons": [],
-    "currentTask": "Plan complete \u2014 awaiting API keys. Next: get Kling 3.0 + ElevenLabs API keys, then spawn coding agent to build Python POC.",
+    "currentTask": "Plan complete — awaiting API keys. Next: get Kling 3.0 + ElevenLabs API keys, then spawn coding agent to build Python POC.",
     "created": "2026-04-07"
   },
   {
     "id": "construction-dashboard-agent",
     "name": "Construction Dashboard Agent",
-    "emoji": "\ud83c\udfd7\ufe0f",
+    "emoji": "🏗️",
     "role": "Multi-type Construction Job Tracker",
-    "domain": "n8n workflow + Next.js dashboard for multi-sector NYC GCs \u2014 job type classification, compliance tagging, stalled work detection, permit tracking, client reporting",
+    "domain": "n8n workflow + Next.js dashboard for multi-sector NYC GCs — job type classification, compliance tagging, stalled work detection, permit tracking, client reporting",
     "workspaceRel": "projects/construction-dashboard-agent",
     "github": "jsomwarux/gnet-construction-dashboard",
     "skills": [
@@ -607,18 +607,31 @@
       "anthropic-claude"
     ],
     "crons": [],
-    "currentTask": "Built 2026-04-07 \u2014 demo-ready prototype for G-Net Construction. Pending: Vincent demo, sheet credentials, deploy.",
+    "currentTask": "Built 2026-04-07 — demo-ready prototype for G-Net Construction. Pending: Vincent demo, sheet credentials, deploy.",
     "created": "2026-04-07"
   },
   {
     "id": "runbook",
     "name": "Runbook Skill",
-    "emoji": "\ud83d\udd27",
-    "role": "Operational diagnosis \u2014 symptom \u2192 root cause \u2192 minimal fix",
+    "emoji": "🔧",
+    "role": "Operational diagnosis — symptom → root cause → minimal fix",
     "domain": "ops",
     "workspaceRel": "skills/runbook",
     "crons": [],
     "currentTask": null,
     "created": "2026-04-12"
+  },
+  {
+    "id": "guyana-opportunity-monitor",
+    "name": "Guyana Opportunity Monitor",
+    "emoji": "🇬🇾",
+    "role": "Weekly Guyana economy and AI enablement opportunity scout for JT",
+    "domain": "Consulting",
+    "workspaceRel": "memory/research/guyana",
+    "crons": [
+      "guyana-economic-opportunity-monitor"
+    ],
+    "currentTask": "Monitor verified Guyana economic/digital transformation signals and create actionable Mission Control tasks when warranted",
+    "created": "2026-04-26"
   }
 ]

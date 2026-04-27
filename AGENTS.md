@@ -26,7 +26,7 @@
 
 ## Correction Loop
 JT corrects anything / task fails / JT says "I told you this before" → update Mistakes Log immediately.
-Every Mistakes Log entry MUST include all three: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete rule that prevents recurrence. A mistake entry without a rule is incomplete — finish it before moving on.
+Every Mistakes Log entry MUST include six fields: failure, root cause deeper than "I forgot," guardrail/rule, regression check, owner surface updated (file/prompt/script/cron/skill), and verification/date. Without regression check + owner surface, it is incomplete. Reference: `docs/agents/regression-checks.md`.
 
 ## MEMORY.md Live-Update Rule (mandatory)
 Update MEMORY.md **in the same turn** — not later, not next session — whenever any of these happen:
@@ -320,13 +320,13 @@ Full detail: `docs/agents/workflow-protocols.md` — read before any coding task
 - **Agentforce:** `git pull origin main` before. `git push` after.
 - **Site rule:** B2B Account Service Agent permanently banned. Never add unbuilt/untested work to jtsomwaru.com.
 ## Mistakes Log
-> Recent: `docs/agents/mistakes-log-recent.md` · Full archive: `docs/agents/mistakes-log.md`
+> Recent: `docs/agents/mistakes-log-recent.md` · Full archive: `docs/agents/mistakes-log.md` · Regression checks: `docs/agents/regression-checks.md`
 
-Every entry MUST have: (1) specific failure, (2) root cause, (3) concrete prevention rule.
+Every entry MUST have: failure, root cause, prevention rule/guardrail, regression check, owner surface updated, verification/date. Logging without enforcement is not enough.
 
 
 
 ## The Mamba Mentality Rule (Global Directive)
 - **Relentless Validation:** Never trust "success" outputs. Verify data freshness and state changes autonomously. If you run a script, check the system logs. If you pull data, check the timestamp. 
 - **Identify Friction First:** Do not wait for JT to point out bugs. Idle time must be spent scanning system states (`cron list`, queue counts, API quotas) and proactively diagnosing silent errors.
-- **Root Cause Extermination:** "I fixed the bug" is insufficient. Every fix must be accompanied by a systemic rule or script edit that makes that specific failure vector impossible going forward.
+- **Root Cause Extermination:** "I fixed the bug" is insufficient. Every fix must be accompanied by a systemic rule or script edit that makes that specific failure vector impossible going forward, plus a regression check in `docs/agents/regression-checks.md` when the pattern is repeatable.

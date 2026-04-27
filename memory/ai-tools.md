@@ -417,3 +417,11 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 
 **Article Galaxy MCP (April 7)** — Scientific literature MCP for AI agents. Scientific research use case. Not directly relevant to JT's niches but validates broad MCP adoption across verticals. (newswise.com, 1 week ago)
 
+
+## Apr 26, 2026 — 1PM Heartbeat
+
+**Google enterprise agent-building push (TechCrunch/ZDNET/Google Cloud Next, Apr 22–24)** — Google is pushing a new enterprise agent-building layer inside the Gemini Enterprise / Workspace ecosystem. Notable strategic choice: the platform can route not only to Gemini, but also Anthropic Claude and other models, plus image generation through Nano Banana 2 / Gemini Flash Image. This validates a multi-model orchestration pattern rather than one-model lock-in.
+
+**JT relevance:** strong proof point for the consulting pitch: SMBs do not need to bet on one model or one chatbot. The durable architecture is workflow-first + model-flexible. For Opticfy/client demos, emphasize "we wire the process so the best model/tool can handle each step" instead of "we add ChatGPT."
+
+**Offer angle:** "Agent workflows that fit your existing Google/Slack/Airtable/Sheets stack — with the model hidden behind the process."
