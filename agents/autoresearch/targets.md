@@ -40,6 +40,7 @@
 | system-auditor | skills/system-auditor/SKILL.md | checklists/system-auditor.md | pending | — | — | 2026-04-26 |
 | ux-architecture | skills/ux-architecture/SKILL.md | checklists/ux-architecture.md | pending | — | — | 2026-04-26 |
 | video-generation | skills/video-generation/SKILL.md | checklists/video-generation.md | pending | — | — | 2026-04-26 |
+| sports-gm | skills/sports-gm/SKILL.md | checklists/sports-gm.md | pending | — | — | 2026-04-27 |
 
 ## Status values
 - `pending` — checklist written, not yet run

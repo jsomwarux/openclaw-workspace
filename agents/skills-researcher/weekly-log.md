@@ -49,3 +49,35 @@
 - Duplicate skipped: 1 (MCP RCE — already in MC)
 - KB only: 7
 - Telegram JT: YES (2 🟠 findings, 1 shoutout opportunity)
+
+## 2026-04-27 — Daily Scan
+
+### X API STATUS
+✅ All 6 queries successful (~$0.30 total)
+
+### 🟠 Findings — 1 item, passed quality gate
+
+1. [🟠 Salesforce Headless 360 — every workflow now API/MCP/CLI]
+   - Source: X @MercFromNibel + Salesforce official https://www.salesforce.com/news/stories/salesforce-headless-360-announcement/ (TDX 2026)
+   - Key finding: Salesforce exposes every workflow, object, and automation as an API, MCP tool, and CLI command. Not an integration layer — the platform itself is now headless. AI agents can operate Salesforce without a browser or human login.
+   - Impact: Fundamental platform shift for JT's Agentforce consulting. Demo architecture must account for native MCP/API access instead of UI automation.
+   - Quality gate: PASS — first action: read official announcement + evaluate demo architecture changes
+   - Shoutout: YES — Salesforce/Agentforce ecosystem
+   - MC: pushed ✅ (priority: medium, id: j5784wxtqcexdnmz6qfg11f16h85m2ex)
+
+### 🟡 Findings (KB only)
+2. FreeLLMAPI — OpenAI-compatible proxy aggregating 14 free providers. "Personal experimentation only" per GitHub. Not suitable for JT's production consulting work.
+3. Claude Code Setup plugin — scans code to recommend MCP servers. Unverified (0❤️, 21👁 tweet), no official Anthropic announcement found.
+
+### DUPLICATE Findings (skipped)
+4. MCP RCE vulnerability (CVE-2026-30615) — already in MC from 2026-04-24
+5. Clawdi v2.0 — already in MC from 2026-04-25
+6. GPT-5.5 Spud — already in MC from 2026-04-25
+7. Further AI insurance — already logged Apr 21-25
+8. AInsure alpha — already logged Apr 25
+
+### Quality Gate Results
+- Pushed to MC: 1 (Salesforce Headless 360 — MEDIUM priority)
+- KB only: 2
+- Duplicate skipped: 5
+- Telegram JT: YES (1 🟠 finding, 1 shoutout opportunity)

@@ -3,3 +3,4 @@
 2026-04-21 ANTHROPIC/CLAUDE — Claude Code Routines shipped — Post angle: show a routine file for n8n-agent build flow, before/after setup time, tag @AnthropicAI — official account: @AnthropicAI
 2026-04-23 OPENCLAW — v2026.4.22 shipped xAI image gen + TTS + /models add from chat + TUI embedded mode — Post angle: demo registering a new xAI model mid-conversation with /models add, no restart needed; or show grok-imagine-image generating an image inline in Telegram — tag @openclaw — official account: @openclaw
 2026-04-25 CLAWDI — v2.0 shipped cross-agent sync (iCloud for AI agents) — Post angle: demo OpenClaw on Mac mini, open laptop, same skills/memory instantly synced — tag @openclaw @PhalaNetwork — official: @openclaw
+2026-04-27 SALESFORCE — Headless 360 launched at TDX 2026 — every workflow now API/MCP/CLI — Post angle: demo Agentforce operating Salesforce without a browser, pure MCP tool calls — tag @salesforce @agentforce — official: @salesforce

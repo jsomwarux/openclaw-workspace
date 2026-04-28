@@ -2,9 +2,9 @@
 
 ## Fantasy Sports Agent + Dynasty App
 **What:** Build a gap-monitoring agent that watches dynasty fantasy football Twitter/Reddit for unmet needs, then auto-develops app ideas based on signals. First concrete app likely a dynasty-specific analytics tool (age curves by archetype, college-to-NFL translation layer). JT has a fantasy X account to build audience around it.
-**Why deferred:** Financial runway pressure — job apps and consulting are priority. Also need to validate the specific gap before building.
-**Trigger:** Job offer accepted OR consulting generating $3K+/mo consistently. At that point, dynasty tool is a weekend build worth testing.
-**Notes from conversation:** Dynasty > redraft (less competition, more passionate audience, KeepTradeCut is weak on analytics). PlayerProfiler covers general advanced stats — the gap is dynasty-specific decision tools. X content flywheel first, build second. — "Not Now But Track"
+**Why deferred:** Full app/agent build is still deferred because financial runway pressure makes job apps and consulting priority. However, Phase 1 content + receipts validation was approved and launched on 2026-04-27.
+**Trigger:** Job offer accepted OR consulting generating $3K+/mo consistently OR Sports GM Phase 1 produces clear demand signals (10+ engaged replies/DMs, 3+ roster audit requests, or consistent post traction). At that point, dynasty tool is a weekend build worth testing.
+**Notes from conversation:** Dynasty > redraft (less competition, more passionate audience, KeepTradeCut is weak on analytics). PlayerProfiler covers general advanced stats — the gap is dynasty-specific decision tools. X content flywheel first, build second. Phase 1 files live in `memory/sports-gm/`; plan lives at `plans/sports-gm-analytics-agent.md`. — "Phase 1 Active; App Still Gated"
 > Reviewed weekly during weekly-synthesis (Sunday 8AM). Eve flags any signal whose trigger conditions are met.
 > Add entry any time a tool/technique/strategy is evaluated and deferred. Never let "not now" disappear.
 
