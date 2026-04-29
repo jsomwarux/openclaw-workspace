@@ -81,3 +81,37 @@
 - KB only: 2
 - Duplicate skipped: 5
 - Telegram JT: YES (1 🟠 finding, 1 shoutout opportunity)
+
+## 2026-04-28 — Daily Scan
+
+### X API STATUS
+✅ All 6 queries successful (~$0.30 total)
+
+### 🟠 Findings — 1 item, passed quality gate
+
+1. [🟠 Claude Code v2.1.121 — alwaysLoad MCP + plugin prune]
+   - Source: X @jqueryscript + GitHub releases https://github.com/anthropics/claude-code/releases/tag/v2.1.121 (6h ago)
+   - Key finding: `alwaysLoad` option skips tool-search deferral for specified MCP servers — eliminates latency. `claude plugin prune` removes orphaned auto-installed plugins.
+   - Impact: Direct workflow improvement for JT's daily Claude Code usage. Latency reduction on frequently-used MCP tools.
+   - Quality gate: PASS — first action: update Claude Code, configure alwaysLoad for top MCP servers, run plugin prune
+   - Shoutout: YES — Claude Code ecosystem
+   - MC: pushed ✅ (priority: medium, id: j5708jtyz8653hw8nneegdn9m185pkax)
+
+### 🟡 Findings (KB only)
+2. OpenRouter latest endpoints — `claude-sonnet-latest`, `gpt-latest`, etc. Non-determinism risk for production consulting work.
+3. OpenAI Codex plugin inside Claude Code — unverified claim (2❤️, 54👁), no official confirmation.
+4. Swiper Studio MCP server — build sliders by chatting. Not in JT's stack.
+5. Freshkeeper — already evaluated Apr 25 (0 stars, unverified).
+
+### DUPLICATE Findings (skipped)
+6. Salesforce Headless 360 — already in MC from 2026-04-27
+7. Clawdi v2.0 — already in MC from 2026-04-25
+8. GPT-5.5 Spud — already in MC from 2026-04-25
+9. MCP RCE vulnerability — already in MC from 2026-04-24
+10. Further AI / AInsure insurance — already logged Apr 21-28
+
+### Quality Gate Results
+- Pushed to MC: 1 (Claude Code v2.1.121 — MEDIUM priority)
+- KB only: 4
+- Duplicate skipped: 5
+- Telegram JT: YES (1 🟠 finding, 1 shoutout opportunity)

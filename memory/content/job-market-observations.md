@@ -50,6 +50,8 @@ Format: [DATE] — [observation]. (Source: daily-brief.md)
 
 [2026-04-18] — n8n is now appearing as a named required skill at the Senior Solutions Architect level at 2 distinct enterprise companies — the tool has crossed from power-user niche to credentialed enterprise standard in under 3 weeks, confirming that the no-code workflow automation layer is being formally credentialed as a career-tier skill alongside platform-specific certs rather than just implied background experience. (Source: daily-brief.md)
 
+[2026-04-28] — AI enablement demand is being routed through existing leadership functions and specialized partner ecosystems rather than clean standalone “AI Enablement” job postings, which explains why public boards look thinner than market demand signals. (Source: daily-brief.md)
+
 [2026-04-27] — Public-board “AI Solutions Architect” supply is bifurcating into deep infrastructure architecture (NVIDIA AI Factory/data-center track) and vertical process-agentic transformation (Coupa S2P), leaving JT’s best-fit implementation/advisory middle lane scarce. (Source: daily-brief.md)
 
 [2026-04-26] — Coupa’s Principal Agentic Architect pattern shows agentic AI roles are moving toward vertical process transformation: employers want domain-specific process architects who can translate legacy workflows like Source-to-Pay into agentic systems, not generic AI tool operators. (Source: daily-brief.md)

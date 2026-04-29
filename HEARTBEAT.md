@@ -57,7 +57,8 @@ Sections: 📋 Top 3 Priorities | 📰 Overnight News | 🔍 Niche Intel | 💼 
 3. Run `python3 scripts/cost-tracker.py --check-alerts` — if non-empty array, send each alert to JT via Telegram immediately
 3a. **Cron health check (every heartbeat — non-negotiable):**
    - Call `cron list` and scan ALL jobs for `consecutiveErrors >= 2` OR `lastRunStatus: "error"`
-   - For each failing job: diagnose the cause (timeout? bad path? missing file?) and fix it autonomously — adjust timeout, fix the payload, update the schedule as needed
+   - For any user-facing critical job (morning brief, Spanish lesson, outreach pipeline, cost/security alert), verify latest `openclaw cron runs --id <id> --limit 1` delivery fields when status looks suspicious; `lastRunStatus: ok` is not enough if `deliveryStatus` failed or `deliveryError` exists.
+   - For each failing job: diagnose the cause (timeout? bad path? missing file? delivery timeout?) and fix it autonomously — adjust timeout, fix the payload, update the schedule as needed; if delivery failed but content was generated, resend the output manually via Telegram and log it.
    - **Timeout fix rule (mandatory):** ALWAYS run `openclaw cron edit <id> --timeout-seconds X` regardless of what prior session notes say. Never trust "already applied" from a previous session — prior sessions lose context and fixes may not have saved. Verify by checking the returned JSON shows the new value. If last run `durationMs` matches the old timeout, the fix was NOT applied.
    - **Timeout sizing rule:** When a cron consistently times out (2+ runs), do NOT just bump by 50% and wait. Read the job's AGENT.md or payload to estimate full expected runtime (count steps + file reads + API calls + uploads), then set timeout to cover the full runtime + 20% buffer. One correct value, not iterative guesses.
    - If fix is non-obvious or requires JT input: alert JT via Telegram with job name + error + what you tried

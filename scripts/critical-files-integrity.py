@@ -61,7 +61,8 @@ FILE_REFS = {
     "skills/google-drive/SKILL.md": "8042966f",
     "skills/video-generation/SKILL.md": "8042966f",
     "skills/google-slides/SKILL.md": "b62aeb89",
-    "skills/ux-architecture/SKILL.md": "933c2ef8"
+    "skills/ux-architecture/SKILL.md": "933c2ef8",
+    "skills/sports-gm/SKILL.md": "357ca121"
 }
 
 def get_git_lines(file_path, ref):

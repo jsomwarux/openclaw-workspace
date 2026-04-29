@@ -23,3 +23,4 @@ Archive every Monday, start fresh.
 - Synced `jsomwarux/openclaw-workspace` to GitHub at commit `7cb8c5c`, with OAuth client/token files ignored and local/remote verified clean.
 - Launched Sports GM / dynasty fantasy football Phase 1: receipts tracker, GM decision model, roster audit template, weekly report, first @dynastyjig post pack, and MC sprint tasks.
 - Expanded Sports GM into an autonomous weekly desk: price fetcher, market candidate report generator, Sports GM skill, autoresearch checklist, and Tuesday 9AM cron.
+- 2026-04-28 overnight ops: refreshed Guyana 2026 opportunity research with verified sources and narrowed recommendation to oil/gas supplier ops + local-content compliance; refined RouteSafe from full build to safer landing-page validation plan; checked cron health and found outreach delivery error likely due Telegram send failure from long summary, plus Guyana cron timeout at 600s.

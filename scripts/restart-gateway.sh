@@ -29,6 +29,15 @@ echo "🔄 Restarting gateway..."
 launchctl unload ~/Library/LaunchAgents/ai.openclaw.gateway.plist
 sleep 3
 launchctl load ~/Library/LaunchAgents/ai.openclaw.gateway.plist
+sleep 2
+
+# Local hardening hook: OpenClaw may regenerate the LaunchAgent on restart.
+# Re-apply the preflight wrapper so dependency failures fail clearly before launchd thrashes.
+python3 "$HOME/.openclaw/workspace/scripts/ensure-gateway-preflight-plist.py" || true
+launchctl unload ~/Library/LaunchAgents/ai.openclaw.gateway.plist >/dev/null 2>&1 || true
+sleep 1
+launchctl load ~/Library/LaunchAgents/ai.openclaw.gateway.plist
+
 echo "✅ Gateway restarted."
 
 # NOTE: Do NOT create any cron jobs here — not one-shot, not deleteAfterRun, nothing.
