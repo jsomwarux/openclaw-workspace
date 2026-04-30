@@ -425,3 +425,10 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 **JT relevance:** strong proof point for the consulting pitch: SMBs do not need to bet on one model or one chatbot. The durable architecture is workflow-first + model-flexible. For Opticfy/client demos, emphasize "we wire the process so the best model/tool can handle each step" instead of "we add ChatGPT."
 
 **Offer angle:** "Agent workflows that fit your existing Google/Slack/Airtable/Sheets stack — with the model hidden behind the process."
+
+## Apr 29, 2026 — 10AM Heartbeat
+**Enterprise agent orchestration is clustering around governance, not raw model capability.** Fresh search signals point to MCP/A2A-style orchestration, policy controls, compliance, and exception routing as the enterprise buying frame. Relevance for JT: keep positioning AgentGuard / 7-day pilots as “safe automation with a manual exception queue,” not generic AI transformation.
+
+**AI agent store / marketplace narrative keeps strengthening.** Search results continue surfacing agent-store style directories and orchestration vendors. Relevance: useful validation for Nash Satoshi/x402 thesis and for consulting demos that show agents coordinating across tools rather than a single chatbot.
+
+**Automation pattern worth reusing:** document/photo capture → authenticity/consistency checks → third-party screening → approve/decline → manual review queue. This is directly portable to property management maintenance triage, wholesale order status exceptions, and contractor compliance intake.

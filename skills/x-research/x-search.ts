@@ -167,6 +167,33 @@ async function cmdSearch() {
     tweets = api.filterEngagement(tweets, { minLikes: 10 });
   }
 
+  // Anti-shill / low-context filter: recurring intel should not promote giveaway,
+  // airdrop, referral, pure price-pump, or engagement-bait posts just because they
+  // have high likes. Keep this conservative so normal product/news discussion survives.
+  const shillPatterns = [
+    /\bairdrop\b/i,
+    /\bgiveaway\b/i,
+    /\bwhitelist\b/i,
+    /\bpresale\b/i,
+    /\breferral\b/i,
+    /\bref(?:er)?\s*code\b/i,
+    /\b100x\b/i,
+    /\bmoon(?:ing)?\b/i,
+    /\bclaim\s+(?:your|now|free)\b/i,
+    /\bfree\s+(?:tokens?|mint|nft)\b/i,
+    /\blike\s*(?:and|&)\s*retweet\b/i,
+    /\bfollow\s*(?:and|&)\s*(?:rt|retweet)\b/i,
+    /\btag\s+\d+\s+friends?\b/i,
+    /\bdm\s+(?:me|for)\b/i,
+  ];
+  tweets = tweets.filter((tweet: any) => {
+    const text = String(tweet.text || tweet.full_text || tweet.content || "");
+    if (shillPatterns.some((pattern) => pattern.test(text))) return false;
+    const words = text.trim().split(/\s+/).filter(Boolean).length;
+    const hasUrlOnlyContext = /https?:\/\//i.test(text) && words < 8;
+    return !hasUrlOnlyContext;
+  });
+
   // Sort
   if (sortOpt !== "recent") {
     const metric = sortOpt as "likes" | "impressions" | "retweets";

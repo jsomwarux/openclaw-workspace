@@ -73,3 +73,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Before assigning `project='passive-income'`, ask: “Is this an idea/mechanism to evaluate, or an execution step for an existing project?” Execution step → Tasks tab.
 - **Owner surface updated:** Mission Control project fields corrected; mistakes log updated.
 - **Verification/date:** 2026-04-27 — moved Glow TikTok and Glow deploy tasks out of Passive $, kept Glow programmatic SEO pipeline as actual Passive $ idea.
+
+## 2026-04-29 — Dynasty X reply target over-repetition
+- **Failure:** Daily Dynasty X reply suggestions repeatedly targeted the same two accounts (`@DynastyDwarf` and `@DFF_Dynasty`), making @dynastyjig engagement look narrow and repetitive.
+- **Root cause:** Cron prompt used a narrow `from:` search seeded with a few known high-signal accounts and only required two unique accounts, so the ranking step optimized for familiar handles instead of audience/network diversity.
+- **Guardrail/rule:** Reply-target generation must build a candidate pool from varied topical searches, require at least 10 candidates from 7 unique accounts, select 3 different accounts, and cap repeat-heavy accounts to at most one target total.
+- **Regression check:** Before delivering any reply pack, verify `Account diversity: 3/3 unique accounts` and list skipped repeat-heavy accounts; if fewer than 3 unique accounts are found, return fewer targets rather than repeating.
+- **Owner surface updated:** Cron `dynasty-replies-gen` (`8b968751-6e59-42e5-b2ce-09f57d36176c`) prompt updated with anti-repeat requirements, topical search expansion, and output diversity check.
+- **Verification/date:** 2026-04-29 — cron payload patched and returned updated prompt; next run scheduled for 2026-04-30 11:00 ET.

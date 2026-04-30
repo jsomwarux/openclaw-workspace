@@ -115,3 +115,38 @@
 - KB only: 4
 - Duplicate skipped: 5
 - Telegram JT: YES (1 🟠 finding, 1 shoutout opportunity)
+
+## 2026-04-29 — Daily Scan
+
+### X API STATUS
+✅ All 6 queries successful (~$0.30 total)
+
+### 🟠 Findings — 0 items passed quality gate
+
+No new 🔴/🟠 findings today. All signals were either duplicates from previous scans or failed the quality gate.
+
+### 🟡 Findings (KB only)
+1. Ungate — Cursor subscription proxy for Claude/ChatGPT. Not in JT's stack.
+2. mongodb-mcp-server — official MongoDB MCP for Atlas. JT uses Convex/Qdrant.
+3. Agentstead pricing update — lowered Claude costs. JT doesn't use Agentstead.
+4. GPT Proto — multi-model API adding Gemini 3.1 Pro. JT uses OpenRouter directly.
+5. Anthropic scaling MCP for production — blog post about MCP direction. Generic news.
+6. macOS background execution without cursor control — unverified claim, no tool name.
+7. n8n community templates (FB Messenger, AI news digest) — community content, not official release.
+
+### DUPLICATE Findings (skipped)
+8. Claude Code v2.1.121 — already in MC from 2026-04-28
+9. OpenRouter latest endpoints — already evaluated Apr 28 (KB only)
+10. GPT-5.5 Spud — already in MC from 2026-04-25
+11. Clawdi v2.0 — already in MC from 2026-04-25
+12. MCP RCE vulnerability — already in MC from 2026-04-24
+13. Salesforce Headless 360 — already in MC from 2026-04-27
+14. Weaviate v1.37 — already evaluated Apr 24 (KB only)
+15. GitHub CLI gh skill — already evaluated Apr 24 (KB only)
+16. Insurance signals — already logged Apr 21-28
+
+### Quality Gate Results
+- Pushed to MC: 0
+- KB only: 7
+- Duplicate skipped: 9
+- Telegram JT: NO (no 🔴/🟠 findings — per AGENTS.md, 🟡 only = no message)

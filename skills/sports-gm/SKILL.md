@@ -57,6 +57,18 @@ Critical methodology: never compare raw trade values across sources. KTC, Fantas
 6. Add any public call to `receipts.csv`.
 7. Draft @dynastyjig posts in JT's content voice.
 
+## Workflow: Dynasty X Replies
+1. Read `memory/sports-gm/dynasty-x-targets.md` before generating reply targets.
+2. Use JT-approved accounts as the main universe, but sample recent content before replying. Do not rely on handle reputation alone.
+3. Build a candidate pool from multiple topical searches plus the target list. Do not use only one narrow `from:` query.
+4. Final reply pack must use 3 different accounts. At least 2 of 3 should be from JT's approved list.
+5. Cap repeat-heavy accounts (`@DynastyDwarf`, `@DFF_Dynasty`, or any account used yesterday) to at most one combined target per day.
+6. Reply only when @dynastyjig can add a sharp fantasy point: dynasty value gaps, rookie uncertainty, draft capital vs. landing spot, roster window, role, upside, risk, manager behavior, or trade process.
+7. Sound like a sharp dynasty manager, not a finance model. Avoid over-scientific words like latency, liquidity, probability fragments, arbitrage, or mathematical counterpoint unless the original post uses that frame.
+8. Use community-native language: price, value, rookie pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender, manager.
+9. Avoid pure memes, giveaways, app promos, betting slips, and generic news unless the reply adds a plain dynasty/fantasy angle.
+10. Include an `Account diversity: 3/3 unique accounts` line in the final output.
+
 ## Workflow: Roster Audit
 1. Ask for league format only if unavailable: 1QB/SF, scoring, teams, starters, bench, TE premium, roster, picks, manager goal.
 2. Classify lifecycle: True Contender, Fragile Contender, Productive Struggle, Rebuild, Trapped Middle.
@@ -65,11 +77,13 @@ Critical methodology: never compare raw trade values across sources. KTC, Fantas
 5. State risk case.
 
 ## Voice
-Analytical, compressed, clinical.
+Sharp, plain, community-native.
+Smart but not academic.
 No fake certainty.
 No fanboying.
 No em dashes.
 No generic rankings.
+Avoid finance/quant jargon in replies unless the original post already uses that language.
 
 ## Monetization Ladder
 1. Content + receipts.

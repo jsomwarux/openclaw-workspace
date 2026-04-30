@@ -116,3 +116,8 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - "No strategy decks. No jargon. Just results."
 - "No meetings. No overhead. Just automation."
 - "Not complicated. Not expensive. Just done."
+
+## 2026-04-29 — Dynasty X reply tone correction
+- JT disliked @dynastyjig replies that sounded too statistical/scientific: words like “latency,” “liquidity,” and “probability fragments” do not fit the fantasy/dynasty community vibe.
+- Rule: Dynasty replies should be sharp, plain, and community-native. Use familiar language: price, value, rookie pick, roster spot, window, bet, role, points, upside, risk, rebuild/contender, manager. Avoid quant jargon unless the target audience already used it.
+- Better shape: one clean football/fantasy point, lightly contrarian, easy to reply to. Sound like a sharp dynasty manager, not a finance model.
