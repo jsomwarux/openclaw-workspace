@@ -103,6 +103,12 @@ Before picking a proactive work item: read today's daily note (`memory/YYYY-MM-D
 If an item in the priority list was already logged as done today → skip it and move to the next.
 Never run the same proactive item twice in one day. Check the note first, every time.
 
+## Heartbeat Log Idempotency Rule
+Before appending a heartbeat section to `memory/YYYY-MM-DD.md`, check whether the exact `## Heartbeat HH:MM` section already exists.
+- If it exists and the new check adds no materially new facts, do not append a duplicate section; update the existing line only if needed.
+- If the reminder fires twice within 5 minutes, treat it as a duplicate unless cost/cron/Spanish state changed.
+- Regression check: daily film review scans yesterday's note for duplicate `## Heartbeat HH:MM` headings and tightens this rule if duplicates recur.
+
 ## Proactive Work (priority order when idle)
 1. Client/market research → memory/research/
 2. AI tool monitoring → memory/ai-tools.md

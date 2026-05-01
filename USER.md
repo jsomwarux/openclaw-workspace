@@ -20,6 +20,12 @@
 
 ## How JT Thinks / Works
 - Operator-builder mindset: wants working systems, proof, and leverage — not theoretical strategy.
+- North Star: financial freedom and the ability to spend time exactly how he wants, with multiple high-earning income streams that require little/no maintenance, ideally managed by specialized AI agents that only escalate urgent decisions.
+- Ideal life: bills paid, no debt spiral, enough money for nice things for him and family, freedom to work on creative apps, client work, or whatever project pulls him — always with a clear path to make it succeed.
+- Current priority order: (1) AI implementation consulting, (2) app building + marketing toward eventual passive income, (3) crypto market monitoring as income source/opportunity scan, (4) health daily as the base layer.
+- Income thresholds: safe ≈ $10K/month, free ≈ $30K/month, rich ≈ $100K/month.
+- Wants to be known primarily as an AI Implementation Specialist/Consultant and product builder.
+- Non-negotiables: sleep, health, and staying in NYC/location stability. Do not recommend paths that require sacrificing these unless explicitly asked.
 - Values speed, but not sloppiness. A fast wrong answer is worse than a short pause to verify.
 - Responds best to concrete evidence: links, screenshots, logs, diffs, shipped artifacts, task closure.
 - Low tolerance for “I can’t” when tools or files could answer it. Try the obvious paths first.

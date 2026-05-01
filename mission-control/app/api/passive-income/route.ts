@@ -17,6 +17,80 @@ interface ParsedIdea {
   creativityCheck: string;
 }
 
+const NON_IDEA_SECTION_PATTERNS = [
+  /summary/i,
+  /deduplication/i,
+  /saturation/i,
+  /scorecard/i,
+  /deep analysis/i,
+  /blueprints?/i,
+  /recommendation/i,
+  /commentary/i,
+  /verdict summary/i,
+  /queued/i,
+  /push to mission control/i,
+  /report saved/i,
+  /sunday digest/i,
+  /prior recommendations/i,
+  /^step\s+\d+:/i,
+];
+
+function normalizeTitle(title: string): string {
+  return title
+    .replace(/[\uD800-\uDFFF]/g, "")
+    .replace(/^\s*[^A-Za-z0-9]*(?:PASS|BUILD|WATCH|IDEAS?\s*\d*)?\s*[—–:-]?\s*/i, "")
+    .replace(/^\s*(?:IDEAS?\s*\d+|WATCH)\s*[—–:-]\s*/i, "")
+    .replace(/\s*[—–-]\s*Score:\s*\d+\.?\d*\/10.*$/i, "")
+    .replace(/\s*[—–-]\s*\d+\.?\d*\/10.*$/i, "")
+    .replace(/\s*\([^)]*\d+\.?\d*\/10[^)]*\).*$/i, "")
+    .replace(/\s*⭐\s*TOP PICK.*$/i, "")
+    .replace(/\s+TOP PICK.*$/i, "")
+    .replace(/\s+←\s+Top Pick.*$/i, "")
+    .replace(/\s*⚠️.*$/, "")
+    .trim();
+}
+
+function isNonIdeaTitle(title: string): boolean {
+  return NON_IDEA_SECTION_PATTERNS.some((pattern) => pattern.test(title));
+}
+
+const NORTH_STAR_SCORE_OVERRIDES: Record<string, number> = {
+  PADELRANK: 8.2,
+  ROUTESAFE: 8.0,
+  PETBOWLPROOF: 7.9,
+  PICKLERANK: 7.8,
+  ProfessionBox: 7.6,
+  ROASTERRANK: 7.4,
+  NootropIQ: 7.4,
+  "SUPPLEMENT SCORE": 7.2,
+  GYMLORE: 7.1,
+  GLAMBOXMATCH: 7.1,
+  "ProductionBible AI": 7.0,
+  "FITBRIEF AI": 7.0,
+  DISCRANK: 7.0,
+  VINYLIQ: 6.9,
+  "CRYPTO TAX NOMAD": 6.8,
+  "CULTUREFIT NUTRITION": 6.7,
+  TRADIECOMMS: 6.6,
+  IMMIGRANTIQ: 6.5,
+  ANCESTRYCANVAS: 6.4,
+  TARIFFSWITCH: 6.4,
+  VisaPathAI: 6.3,
+  FANDOMDROP: 6.2,
+  "QUOTE PILOT": 5.8,
+  "CAP TABLE SPLIT": 5.4,
+  "RECIPE RANKINGS": 5.2,
+  HOAFlow: 5.1,
+  "SITEAUDIT.AI": 4.8,
+  LeagueBot: 4.2,
+};
+
+function applyNorthStarScore(idea: ParsedIdea): ParsedIdea {
+  const score = NORTH_STAR_SCORE_OVERRIDES[idea.title];
+  if (score === undefined) return idea;
+  return { ...idea, score };
+}
+
 function extractField(section: string, field: string): string {
   const regex = new RegExp(`\\*\\*${field}:\\*\\*\\s*(.+?)(?=\\n\\*\\*|\\n---|\\n###|$)`, "s");
   const match = regex.exec(section);
@@ -92,6 +166,8 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
     const start = positions[i].index;
     const end = i + 1 < positions.length ? positions[i + 1].index : content.length;
     const section = content.slice(start, end);
+    const rawTitle = positions[i].title;
+    if (isNonIdeaTitle(rawTitle)) continue;
 
     // Extract score — try multiple formats:
     // 1. **Score: 5.8/10** (fully bold-wrapped, March 8 e.g. SITEAUDIT)
@@ -107,13 +183,16 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
       if (scoreBoldMatch) {
         score = parseFloat(scoreBoldMatch[1]);
       } else {
-        const weightedMatch = section.match(/\*\*Weighted total:\s*(\d+\.?\d*)\/10/);
+        const weightedMatch = section.match(/\*\*Weighted (?:total|overall):\s*(\d+\.?\d*)\/10/);
         if (weightedMatch) {
           score = parseFloat(weightedMatch[1]);
         } else {
-          const plainMatch = section.match(/Score:\s*(\d+\.?\d*)\/10(?!\*)/);
+          const plainMatch = section.match(/Score:\s*(?:\*\*)?(\d+\.?\d*)\/10/);
           if (plainMatch) {
             score = parseFloat(plainMatch[1]);
+          } else {
+            const headingScoreMatch = rawTitle.match(/\((\d+\.?\d*)\/10\)/);
+            if (headingScoreMatch) score = parseFloat(headingScoreMatch[1]);
           }
         }
       }
@@ -123,24 +202,12 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
     let status: ParsedIdea["status"] = "exploring";
     if (/BUILD/.test(section)) status = "building";
 
-    // Normalize title — remove verdict emoji + verdict word + embedded scores + TOP PICK markers
-    // e.g. "PADELRANK ⭐ TOP PICK" → "PADELRANK"
-    // e.g. "🔴 PASS — SITEAUDIT.AI" → "SITEAUDIT.AI"
-    // e.g. "🟡 WATCH — QUOTE PILOT" → "QUOTE PILOT"
-    // e.g. "FITBRIEF AI — Score: 8.1/10" → "FITBRIEF AI"
-    const rawTitle = positions[i].title;
-    const cleanTitle = rawTitle
-      .replace(/^\s*[🟢🟡🔴]\s*(?:PASS|BUILD|WATCH|IDEAS?\s*\d*)\s*[—–-]?\s*/i, "")
-      .replace(/^\s*[🟢🟡🔴]\s*/, "")
-      .replace(/\s*[-—]\s*Score:\s*\d+\.?\d*\/10.*$/i, "")
-      .replace(/\s*[-—]\s*\d+\.?\d*\/10.*$/i, "")
-      .replace(/\s*⭐\s*TOP PICK.*$/i, "")
-      .replace(/\s+TOP PICK.*$/i, "")
-      .replace(/\s+←\s+Top Pick.*$/i, "")
-      .replace(/\s*⚠️.*$/, "")
-      .trim();
+    if (score === 0) continue;
 
-    ideas.push({
+    const cleanTitle = normalizeTitle(rawTitle);
+    if (!cleanTitle || isNonIdeaTitle(cleanTitle)) continue;
+
+    ideas.push(applyNorthStarScore({
       title: cleanTitle,
       score,
       status,
@@ -152,7 +219,7 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
       longevitySignal: extractField(section, "Longevity signal") || "",
       researchSignal: extractField(section, "Research signal") || "",
       creativityCheck: extractField(section, "Creativity check") || extractNumberedSection(section, "6. What") || "",
-    });
+    }));
   }
 
   return ideas;
@@ -208,6 +275,11 @@ export async function GET() {
       }
     }
   }
+
+  allIdeas.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return b.reportDate.localeCompare(a.reportDate) || a.title.localeCompare(b.title);
+  });
 
   return NextResponse.json({ ideas: allIdeas });
 }

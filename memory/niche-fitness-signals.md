@@ -37,3 +37,6 @@ Last reset: 2026-04-01
 2026-04-24 [CONFIRMS] niche=enterprise-ai — Agentforce ARR $800M (+169% YoY) confirms external customer demand for AI agents is accelerating; market is moving from pilot to production at scale.
 2026-04-27 [CONFIRMS] niche=agentforce-dev — Salesforce TDX shipped 100+ new tools and skills for Agentforce developers; platform is expanding rapidly, creating more build opportunities for JT.
 2026-04-29 [CONFIRMS] niche=construction — PlanRadar survey: 50%+ of construction professionals would stay with employer if it increased AI tool investment; AI becoming retention factor in construction workforce
+2026-04-30 [CONFIRMS] niche=Agentforce — Salesforce launches Agentforce Operations for back-office process automation via AI agents; major product expansion
+2026-04-30 [CONFIRMS] niche=insurance — Duck Creek launches insurance-native agentic AI platform for underwriting and claims; competitor signal
+2026-04-30 [CONFIRMS] niche=construction — Dewalt national study: construction workforce eager for AI but lacks hands-on training; demand + skills gap

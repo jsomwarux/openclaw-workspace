@@ -10,8 +10,12 @@
 ## JT Snapshot
 - Jon Trevor Somwaru, “JT”; timezone America/New_York; Telegram primary; direct, low-ceremony, expects Eve to figure things out before asking.
 - Background: Business Systems Analyst at Spectrum Enterprise/Charter; strong business-ops + tech translation edge.
+- North Star: financial freedom and control over time. Ideal state = multiple high-earning, low-maintenance income streams, ideally managed by specialized AI agents that only escalate urgent decisions; bills paid, no debt spiral, money for nice things for him and family, and freedom to build creative apps/client work with a clear path to success.
+- Current priority order: (1) AI implementation consulting, (2) app building + marketing toward eventual passive income, (3) crypto market monitoring/opportunity scanning, (4) health daily as the foundation.
+- Income thresholds: safe ≈ $10K/mo, free ≈ $30K/mo, rich ≈ $100K/mo.
+- Wants to be known primarily as an AI Implementation Specialist/Consultant and product builder.
 - Current focus: AI consulting agency, Aya client work, portfolio credibility, content engine, selective AI implementation/job-market opportunities, crypto as primary income stream.
-- Constraints: not positioning as hands-on developer; avoid Apex/SFDX/ML-engineering roles. Job target: AI Solutions Architect / AI Implementation Lead, $150K min, $180–220K ideal, NYC/remote only.
+- Constraints: not positioning as hands-on developer; avoid Apex/SFDX/ML-engineering roles. Job target: AI Solutions Architect / AI Implementation Lead, $150K min, $180–220K ideal, NYC/remote only. Non-negotiables: sleep, health, and staying in NYC/location stability.
 
 ## Hard Rules / Security Essentials
 - Never modify `openclaw.json` auth, `summaryModel`, `summaryProvider`, primary model, `auth-profiles.json`, or `models.json` without JT approval.
@@ -50,7 +54,7 @@
 - X is primary growth channel; LinkedIn for case studies/proof; Reddit for project promotion when appropriate.
 - Before drafting posts: read `memory/content-voice.md`; no preamble, no em dashes, no “Here’s the thing,” standalone posts 6–15 words when requested.
 - Swipe-file rule: content generation must fetch Notion Viral Posts Swipe references first (`python3 scripts/notion-swipe-fetch.py --limit 12 --min-engagement 500`) and include hook mappings in saved weekly/one-off draft files. Priority swipe niches: AI Consulting, NYC SMB, Construction, Property Management, Wholesale Distribution, Skilled Trades, AI Agents/OpenClaw, Job Market, Nash Satoshi/x402, Personal Brand.
-- Sports GM / dynasty fantasy football Phase 1 is active: source stack + receipts system live in `memory/sports-gm/`, reusable skill at `skills/sports-gm/SKILL.md`, price fetcher `scripts/sports_gm_fetch_prices.py`, report generator `scripts/sports_gm_generate_report.py`, weekly cron Tuesday 9AM (`008a349c-af59-4e6b-88bb-97f65dba61c6`) and Sports GM source model corrected 2026-04-27: primary sources are KTC, FantasyCalc, FantasyPros; DynastyProcess is secondary sanity-check only; never compare raw cross-source values, compare ranks/position ranks/rank deltas. Daily @dynastyjig player-evaluation post-pack cron at 8:30AM (`1e614c8a-adb8-4a02-b35f-3031db55b337`); Drive folders are `Eve — Drafts / Content/Sports GM/DynastyJig/X/Daily Posts/YYYY-MM` for generic packs and `Eve — Drafts / Content/Sports GM/DynastyJig/X/Player Evaluations/YYYY-MM` for the primary daily player-specific evaluations; and existing daily Reddit growth cron `reddit-daily-gen` (`bbe49024-458a-4496-9c7c-7a278615810f`) now uses Sports GM rules for dynasty/fantasy Reddit content. Full app remains gated until demand signals.
+- Sports GM / @dynastyjig Phase 1 is active: source stack + receipts system live in `memory/sports-gm/`, reusable skill at `skills/sports-gm/SKILL.md`, price fetcher `scripts/sports_gm_fetch_prices.py`, report generator `scripts/sports_gm_generate_report.py`, weekly cron Tuesday 9AM (`008a349c-af59-4e6b-88bb-97f65dba61c6`) and Sports GM source model corrected 2026-04-27: primary sources are KTC, FantasyCalc, FantasyPros; DynastyProcess is secondary sanity-check only; never compare raw cross-source values, compare ranks/position ranks/rank deltas. Daily @dynastyjig post-pack cron at 8:30AM (`1e614c8a-adb8-4a02-b35f-3031db55b337`) now generates niche-native traction content, not app-centric promo: 2 dynasty fantasy posts, 2 sports betting posts, and 1 bridge post using Action Arena and Dynasty Simulator only as invisible backdrops. Drafts should earn trust from dynasty managers/bettors through relatable strategy, league psychology, public accountability, timing, regret, risk, and group-chat pressure. Product names are banned by default in daily drafts; mention lane only in internal angle notes. Avoid generic player-eval packs unless the player take supports a sharper niche-native strategy thesis. Drive folder for new packs: `Eve — Drafts / Content/Sports GM/DynastyJig/X/Niche-Growth/YYYY-MM`; existing daily Reddit growth cron `reddit-daily-gen` (`bbe49024-458a-4496-9c7c-7a278615810f`) uses Sports GM rules for dynasty/fantasy Reddit content.
 - Notable completed work triggers: update proof points, recent builds, technical angles if useful, generate content when rubric passes, upload substantive deliverables to Drive.
 - Wednesday LinkedIn case studies use `skills/wednesday-linkedin/SKILL.md`.
 
@@ -76,7 +80,7 @@
 ## Active Automation / Crons
 - Keep daily cron invocations ≤20. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM EST.
-- Morning brief, heartbeat, job-market, niche monitor, crypto morning, content/weekly synthesis, cost tracking, and health check-ins are active responsibilities.
+- Morning brief, heartbeat, job-market, niche monitor, crypto morning, content/weekly synthesis, Weekly North Star Review, cost tracking, and health check-ins are active responsibilities.
 - Cron count/status changes must update this file same turn. Diagnose any cron with consecutive errors ≥2; timeout fixes should be sized from actual expected runtime.
 
 ## Health / Training / Quality Loops
@@ -107,3 +111,36 @@
 - Nightly friction audit cron active: `nightly-friction-audit` at 9:45PM ET. Purpose: choose tomorrow’s top priority, prep one blocker, and ask “Imagine tomorrow succeeds. What friction did we remove tonight?”
 - Guyana opportunity monitor active: weekly Monday 12PM ET cron `guyana-economic-opportunity-monitor`; reads existing Guyana research, checks verified live sources, sends concise brief, and creates up to 3 Mission Control tasks only for sourced actionable findings.
 - Passive-income pipeline audited 2026-04-27: canonical weekly flow is signal fetch Sat 5:30AM ET → Scout Sun 6AM ET → Strategist Sun 7:30AM ET. Duplicate legacy Scout/Strategist crons disabled. Scout now includes AI vision capability scan as one non-overweighted lens; Strategist validates vision defensibility/cost/risk. Sources include Exploding Topics, Google Trends/pytrends, Brave trend signals, APIs.guru, Product Hunt, HN, and RapidAPI/developer search.
+
+- Weekly North Star Command Center cron active: Sunday 6PM ET (`29772d9b-e007-4f62-9df9-e80b73d0cd21`) scores lanes, revenue path, product portfolio calls, and overinvestment risks against JT’s financial freedom/control-over-time North Star.
+
+- Consulting Sales Engine state file: `memory/north-star/consulting-sales-engine.md`; integrated into Weekly North Star Command Center to track pipeline health, follow-ups, stale prospects, and fastest next consulting dollar.
+
+- North Star OS layers implemented under `memory/north-star/`: revenue command center, consulting sales engine, proof/distribution, product growth, opportunity intake gate, health constraint layer, and weekly rubric; all integrated into Weekly North Star Command Center cron.
+## Active Client — Altmark Group
+- Status: Active AI implementation client as of 2026-04-30. Yair, CFO, reached out to JT on Twitter; JT met him at Altmark's Bronx office, scoped automation systems, created revised proposal, and has started delivery.
+- Proposal: AI Operations Build for Altmark Group, revised April 2026. Total proposed buildout: $34,750 + $1,500/month support, 3-month minimum after buildout. Foundation setup listed at $4,000; six use cases over ~8–10 weeks, with foundation + first use case live within ~2 weeks of Navid infrastructure session.
+- Current progress: insurance expiration workflow finished; dedicated PC set up and planned for delivery to Altmark office next week; rent delinquency workflow pending 50% deposit before work begins.
+- Positioning proof: local-first/self-hosted operations automation for property/ops team; QuickBooks Desktop/server environment; audit trails; human-in-the-loop financial actions; no SaaS/vendor lock-in.
+- Client status file: `memory/clients/altmark-group/status.md`; proposal extraction: `reports/clients/altmark-group/proposal-extracted.txt`.
+## Altmark / Family Office Expansion Strategy
+- Yair, Altmark Group CFO, mentioned he may be able to connect JT to ~15 other NYC-area family offices likely interested in similar automation systems.
+- Strategic goal: finish Altmark systems, convert Altmark into monthly support/maintenance retainer, continue building additional Altmark automations, then use Yair as referral channel/case-study wedge into other NYC family offices.
+- This makes Altmark the top consulting revenue/proof lane and a potential repeatable offer for local family offices/property/financial operations teams.
+## Live Opportunity — Marketsmith
+- Status as of 2026-04-30: live consulting/freelance opportunity. Marketsmith chief of strategy is a family friend and reached out about new product initiatives. JT met with head of talent acquisition on 2026-04-29; she said they are very open to consulting/freelance work and mentioned MSIGenerate + `msitheagency.com`.
+- JT quoted $175/hr or $15k/month, 15 available hours/week, deliverables-focused rather than fixed hours.
+- Next step: head of talent acquisition will talk with product team about fit and follow up. No response yet as of 2026-04-30 8:04 PM.
+- Strategic fit: high-value consulting/product opportunity aligned with AI Implementation Specialist + product builder positioning; avoid being converted into generic employment-style role unless explicitly desired.
+- Status file: `memory/opportunities/marketsmith/status.md`.
+## Product Portfolio Update — 2026-04-30
+- Apps/products: Action Arena and Dynasty Fantasy Football Simulator remain important sports/product lanes. Vista has launched and has ~10 active users. Automated TikTok slideshow organic growth loops are currently running for both Nash Satoshi and Vista.
+- JT wants to build many stored passive-income ideas and run automated organic marketing strategies for them to maximize probability of passive/semi-passive income streams. Guardrail: many bets are acceptable only when maintenance is low, distribution loop exists, metric is tracked, and kill/pause threshold is explicit.
+
+## Consulting Acquisition Update — 2026-04-30
+- JT reported no responses to cold outreach sent so far. Treat as data: acquisition strategy needs review, not just more cold volume. Prioritize warm/referral lanes (Altmark/Yair family-office intros, Marketsmith family-friend/product lane), proof-led LinkedIn, local NYC relationship channels, and trigger-based outreach backed by proof.
+## North Star Strategy Synthesis — 2026-04-30
+- Altmark + Marketsmith now dominate near-term North Star strategy. Altmark is active $34,750 buildout + $1,500/mo support potential + Yair referral channel into ~15 family offices. Marketsmith is live consulting/freelance opportunity already anchored at $175/hr or $15k/mo.
+- Consulting acquisition priority should shift from generic cold outreach to warm/referral/proof-led channels: Altmark delivery → Yair referrals, Marketsmith product-team fit, proof-led LinkedIn, local NYC partner/referral sources, then redesigned trigger-based cold outreach.
+- Apps remain important for passive-income upside, but should run as constrained experiments: low-maintenance MVP, automated distribution from day one, weekly metric, kill/pause threshold, no interference with consulting delivery. Vista has ~10 active users; Nash Satoshi + Vista automated TikTok slideshow loops are running.
+

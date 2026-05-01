@@ -121,3 +121,40 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - JT disliked @dynastyjig replies that sounded too statistical/scientific: words like “latency,” “liquidity,” and “probability fragments” do not fit the fantasy/dynasty community vibe.
 - Rule: Dynasty replies should be sharp, plain, and community-native. Use familiar language: price, value, rookie pick, roster spot, window, bet, role, points, upside, risk, rebuild/contender, manager. Avoid quant jargon unless the target audience already used it.
 - Better shape: one clean football/fantasy point, lightly contrarian, easy to reply to. Sound like a sharp dynasty manager, not a finance model.
+
+## 2026-04-30 — @dynastyjig content must ladder to Action Arena
+- Trigger: JT rejected the Daily Player Evals pack because it was generic dynasty analysis: no hook, no unique angle, no organic growth mechanism, and no connection to the products being built.
+- Correction: @dynastyjig content should not default to player evals. It must reference the tone/context of JT-approved niche accounts and connect to Action Arena's world: fantasy league structure + sports betting strategy + public weekly profit competition.
+- Rule: Every @dynastyjig post needs a hook, social tension, or strategic edge that makes fantasy/betting people want to respond. If it could be posted by any dynasty account, it is not good enough.
+- Product positioning: build demand for Action Arena indirectly through bankroll construction, public picks, rivalry, weekly budget constraints, parlays/teasers discipline, profit standings, and playoff pressure. Do not write generic “download my app” promo copy.
+- Second product lane: Dynasty Fantasy Football Simulator. Build demand for a persistent dynasty sandbox where managers test rebuilds, replay alternate histories, face AI managers with personalities, fast-forward seasons, and get a dynasty fix faster than the NFL calendar allows.
+- Rule: DynastyJig content should rotate between Action Arena and Dynasty Simulator angles. Action Arena = betting strategy as social fantasy competition. Dynasty Simulator = dynasty strategy as a replayable sandbox.
+- Bad shape: “Player X is a hold. KTC RB35. Risk: role ceiling.”
+- Better Action Arena shape: “Your weekly betting card is a lineup. If every leg needs ceiling, you built a best ball team with no floor.”
+- Better Simulator shape: “Every dynasty manager has a rebuild theory they’ll never get enough seasons to prove.”
+
+## 2026-04-30 — @dynastyjig content should be niche-native, not app-centric
+- Trigger: JT clarified that dynasty X content should not be about the apps themselves. The goal is to gain traction in the niches the apps live in: dynasty fantasy football and sports betting.
+- Correction: Action Arena and Dynasty Simulator are strategy backdrops, not copy subjects. Daily content should earn trust from dynasty managers and bettors through relatable, unique takes about roster construction, betting-card construction, league psychology, public accountability, boredom, regret, timing, risk, and group-chat pressure.
+- Rule: Product references are banned by default in @dynastyjig daily niche-growth drafts. Mention product lane only in internal angle notes. If the post reads like app promo, rewrite it.
+- Voice target: JT-style compression + practical contrarian angle + community-native language. Avoid AI-ish generic hooks, quant jargon, and player-value blurbs.
+- Better dynasty shape: “Most rebuilds fail because managers want credit for patience without paying the boredom tax.”
+- Better betting shape: “The worst parlay leg is usually the one you added so the slip felt exciting.”
+
+## 2026-04-30 — Content engine must be self-improving from proven niche X patterns
+- Trigger: JT clarified that @dynastyjig content should constantly learn from what is working on X in dynasty fantasy football and sports betting, while still sounding uniquely like him.
+- Rule: Daily niche-growth drafts must pull from the Notion Viral Post Swipe File for `Dynasty Fantasy` and `Sports Betting` before drafting. Use examples as evidence of hook shape, context, tone, tension, and rhythm — not as copy templates.
+- Guardrail: Never copy wording, claims, account persona, or post structure wholesale. Extract the mechanic, then translate into JT's compressed, practical, lightly contrarian voice.
+- Output expectation: generated packs should include the pattern inputs used and explain which proven mechanic each draft adapts.
+
+## 2026-04-30 — Global content must use platform/niche feedback loops
+- Trigger: JT clarified the self-improving content loop should apply to all content on all platforms, not just @dynastyjig X content.
+- Rule: Every content draft should identify platform + niche + format, pull proven references when available, extract mechanics (hook, tone, context, tension, proof, pacing, reply trigger), then translate through JT's unique voice.
+- Guardrail: Proven content is evidence, not a template. Never copy wording, claims, structure, or persona wholesale. JT's content must remain specific to his operator POV, proof, products, and communication style.
+- Applied to: X, LinkedIn, Reddit, newsletters, launch posts, consulting content, crypto/Nash content, sports content, job-market/career content, and product content.
+
+## 2026-04-30 — Platform/niche isolation for content references
+- Trigger: JT asked whether LinkedIn content would avoid referencing dynasty X hooks/context.
+- Rule: Reference selection must be platform-first, then niche, then format. Same-platform/same-niche examples are the default. Cross-platform or cross-niche examples are forbidden by default and may only be used as explicitly labeled adjacent inspiration when the correct pool is too thin.
+- Guardrail: If same platform+niche has fewer than 3 usable examples, create a collection task instead of silently borrowing from a mismatched niche/platform.
+- Verification: Added `--platform` and `--format` filters to `scripts/notion-swipe-fetch.py`; smoke-tested Dynasty X returning examples and LinkedIn AI Consulting returning none; created MC task to collect LinkedIn consulting examples.

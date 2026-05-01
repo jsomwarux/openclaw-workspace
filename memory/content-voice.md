@@ -231,6 +231,10 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 ### All content:
 - [ ] Is this the right format for this day/platform?
+- [ ] Did you check recent/proven references for this exact platform + niche + format before drafting?
+- [ ] Did you avoid cross-platform/niche leakage unless explicitly labeled as adjacent inspiration?
+- [ ] Did you extract the mechanic instead of copying the wording/persona?
+- [ ] Does this sound like JT, not the source account or a generic creator?
 - [ ] Does it start with the point, not the setup?
 - [ ] Is the "I" to "you" ratio ≤ 1:5? (exception: Wednesday case study setup)
 - [ ] Does it use any forbidden words?
@@ -249,4 +253,4 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 ---
 
-*Last updated: 2026-04-14 (restored from git b89cabdc + FEEDBACK-LOG merges) | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*
+*Last updated: 2026-04-30 (global self-improving content loop added) | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*

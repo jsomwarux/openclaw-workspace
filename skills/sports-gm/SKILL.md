@@ -6,11 +6,15 @@ description: Build and run JT's dynasty fantasy football GM-style analytics desk
 # Sports GM Skill
 
 ## Mission
-Turn JT's sports instincts into a credible, monetizable dynasty fantasy football analytics system.
+Turn JT's sports instincts into a credible, monetizable fantasy/sports strategy media surface.
 
-Primary lane: **dynasty fantasy football through a GM/front-office lens**.
+Primary lane: **fantasy football, dynasty roster construction, and sports-betting strategy through a GM/front-office lens**.
 
-Do not produce generic rankings, waiver slop, betting picks, or unsupported player takes.
+Product-growth lanes:
+- **Action Arena** — an app combining fantasy football league structure with sports-betting strategy. Content should create demand for that world: leagues, public picks, bankroll discipline, rivalry, profit standings, weekly budgets, and playoff pressure.
+- **Dynasty Fantasy Football Simulator** — a persistent dynasty fantasy football world where the player runs a team across simulated seasons against AI managers with distinct personalities. Content should create demand for a strategy sandbox: testing rebuilds, replaying alternate histories, pressure-testing roster builds, fast-forwarding seasons, and getting the dynasty fix without waiting for the NFL calendar.
+
+Do not produce generic rankings, waiver slop, betting picks, or unsupported player takes. A technically correct player eval with no hook or product-adjacent strategy angle is a miss.
 
 ## Core Rule
 No public player recommendation without:
@@ -23,6 +27,118 @@ No public player recommendation without:
 7. receipt row.
 
 If exact market prices are missing, fetch them yourself. Do not ask JT to manually pull KTC/FantasyCalc/DynastyProcess unless a source is blocked.
+
+For @dynastyjig growth content, every post needs at least one of:
+- a market price gap
+- a roster construction insight
+- a timing / window argument
+- a receipt-worthy prediction
+- a trade/action recommendation with risk
+- a game-theory betting/contest insight that ladders back to Action Arena
+
+Before drafting @dynastyjig posts, ALWAYS read:
+1. `memory/sports-gm/dynasty-x-targets.md` — JT-approved account universe, tone, and niche context.
+2. `memory/content-voice.md` — JT's compression/style rules.
+3. This skill's Product Positioning sections.
+
+Content must sound native to the accounts/niche JT provided, not like a neutral fantasy analyst recap.
+
+## Product Positioning: Action Arena
+
+Action Arena = fantasy football league structure + sports betting strategy.
+
+Core product frame:
+- Players join leagues.
+- Each player gets a weekly fake budget, default `$100`.
+- Win by weekly profit, not by setting a fantasy lineup.
+- Bets can be straight bets, parlays, or teasers.
+- Minimum 5 bets/week.
+- Maximum single bet: `$35`.
+- Maximum parlay payout: `$500`.
+- Entire weekly budget must be allocated exactly.
+- All league bets are public, so strategy becomes social, visible, and punishable.
+- One selection per game per league across all bet types.
+- H2H winner = higher weekly profit.
+- Season mirrors fantasy football: regular season + playoffs.
+
+Organic content should create demand for this world before naming the product too often. The angle is not “download my app.” The angle is:
+- fantasy football is social, but the decision-making is stale
+- sportsbooks are fun, but solo betting has no league memory
+- the real edge is bankroll construction, pick discipline, game selection, and public accountability
+- bad managers chase sweat; good managers build weekly portfolios
+- parlays are not “fun lotto tickets” when a league-mate can see exactly how you torched the budget
+
+Use Action Arena as the invisible thesis behind the content: fantasy managers already understand leagues, rivalry, standings, playoffs, waiver tilt, and receipts. Translate betting strategy into that language.
+
+## Product Positioning: Dynasty Fantasy Football Simulator
+
+Dynasty Fantasy Football Simulator = Football Manager / Out of the Park Baseball, scoped to fantasy dynasty.
+
+Core product frame:
+- Persistent dynasty world across many simulated seasons.
+- User runs one team against AI managers with distinct personalities.
+- Configurable league: size, scoring, roster, playoff format, draft type.
+- Startup draft against AI opponents.
+- Play week by week or fast-forward in seconds.
+- Set lineups, propose/receive trades, work waivers, react to injuries.
+- Make playoff runs, win championships, watch AI league mates rebuild or go all-in.
+- Offseasons include player aging, coaching changes, and rookie drafts.
+- Full persistence: league history, awards, retired players, head-to-head records.
+- Future lane: invite real humans into the same simulated universe asynchronously.
+
+Organic content should create demand for this world by hitting the emotional itch dynasty managers already have:
+- everyone has a rebuild theory they never get to test
+- everyone wonders what would happen if they sold one year too early or one year too late
+- dynasty moves take years to judge, which makes feedback painfully slow
+- most managers argue strategy without ever pressure-testing it across 20 versions of a league
+- a simulated universe lets managers replay roster forks, startup builds, rookie draft decisions, injury chaos, and AI trade markets fast
+
+Use the simulator as the invisible thesis behind content: dynasty is really a strategy game trapped inside a once-per-week NFL calendar.
+
+## @dynastyjig Content Standard
+
+@dynastyjig content should build trust and traction inside two niches: **dynasty fantasy football** and **sports betting**. The apps are context, not the copy. Do not make posts about Action Arena or the Dynasty Simulator unless JT explicitly asks for launch or product copy.
+
+Primary content job:
+- Make dynasty managers and bettors think: “this account gets the game I actually play.”
+- Be unique through perspective, not through product mentions.
+- Sound like JT: compressed, practical, slightly contrarian, not content-farm fantasy advice.
+- Use the products as invisible strategy backdrops:
+  1. **Action Arena backdrop:** weekly budget constraints, card construction, public picks, rivalry, leaderboards, bankroll discipline, parlay/teaser risk, group-chat accountability.
+  2. **Dynasty Simulator backdrop:** rebuild theories, roster construction, alternate histories, fast-forwarded seasons, manager psychology, regret, time horizons, strategy testing.
+
+The best posts should work even if the reader never knows an app exists. If a post earns replies from dynasty managers or bettors, it is doing the job.
+
+Good traction themes:
+- Dynasty managers overrate being right and underrate being early.
+- Your bet slip is a lineup: too much ceiling, not enough floor, and no plan for correlation.
+- Most rebuilds fail because managers want credit for patience without paying the boredom tax.
+- The worst parlay leg is usually the one you added so the slip felt exciting.
+- A dynasty trade is not just value; it is timing, league psychology, and whether anyone else has liquidity.
+- Betting with friends changes behavior because bad process becomes public.
+- Everyone has a roster-building theory until it costs them two seasons.
+
+Bad content:
+- Direct app promo or “download/use this” language.
+- Generic buy/sell/hold posts.
+- Player blurbs that could come from any dynasty account.
+- Raw KTC/FantasyCalc value dumps.
+- “This player is undervalued” with no relatable tension.
+- Overly technical finance/quant language. Use community-native words: price, value, pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender.
+
+Every @dynastyjig post pack should include at least:
+- 2 dynasty fantasy posts
+- 2 sports betting posts
+- 1 bridge post connecting the shared psychology of dynasty and betting
+
+Product references are banned by default in daily niche-growth content. Mention Action Arena or Dynasty Simulator only in the internal angle note, not the draft itself.
+
+Minimum bar before a post is acceptable:
+1. Hook in the first line.
+2. Native fantasy/betting language.
+3. Clear strategic edge or social tension.
+4. Relatable to dynasty managers or bettors without needing product context.
+5. Sounds like a human with taste, not AI-generated advice.
 
 ## Source Stack
 ### Market / rankings
@@ -56,6 +172,25 @@ Critical methodology: never compare raw trade values across sources. KTC, Fantas
 5. For any player-specific take, complete `player-thesis-template.md` first.
 6. Add any public call to `receipts.csv`.
 7. Draft @dynastyjig posts in JT's content voice.
+
+## Workflow: Dynasty Swipe File Mining
+
+Use this when JT asks whether content is referencing the provided accounts optimally, or during weekly Sports GM maintenance.
+
+1. Read `memory/sports-gm/dynasty-x-targets.md`.
+2. Pull a small fresh sample from core and occasional accounts with `skills/x-research/x-search.ts` (quick mode unless JT asks for deeper research).
+3. Also fetch existing proven examples before drafting:
+   `set -a; source ~/.config/env/global.env; set +a; python3 scripts/notion-swipe-fetch.py --niche "Dynasty Fantasy" --niche "Sports Betting" --limit 12 --min-engagement 0`
+4. Select only posts with reusable content mechanics:
+   - rookie tier comparison questions
+   - landing-spot price debates
+   - league timing/process debates
+   - roster construction tension
+   - betting-card discipline
+   - public accountability / group-chat psychology
+5. Push winners to Notion Viral Post Swipe File using `scripts/notion-swipe-push.py`.
+6. In the `why` field, store the mechanic JT should adapt, not a summary of the post.
+7. Daily generation must use swipe mechanics as pattern evidence only: hook shape, tension, rhythm, and why it worked. Never copy wording, claims, or another account's persona. Translate into JT's compressed, practical, lightly contrarian voice.
 
 ## Workflow: Dynasty X Replies
 1. Read `memory/sports-gm/dynasty-x-targets.md` before generating reply targets.

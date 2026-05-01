@@ -5,3 +5,4 @@
 2026-04-25 CLAWDI — v2.0 shipped cross-agent sync (iCloud for AI agents) — Post angle: demo OpenClaw on Mac mini, open laptop, same skills/memory instantly synced — tag @openclaw @PhalaNetwork — official: @openclaw
 2026-04-27 SALESFORCE — Headless 360 launched at TDX 2026 — every workflow now API/MCP/CLI — Post angle: demo Agentforce operating Salesforce without a browser, pure MCP tool calls — tag @salesforce @agentforce — official: @salesforce
 2026-04-28 CLAUDE CODE — v2.1.121 shipped alwaysLoad MCP + plugin prune — Post angle: "Just cut my Claude Code MCP latency in half with alwaysLoad — here is the one-line config change" — tag @anthropic @claudecode — official: @anthropic
+2026-04-30 OPENCLAW — v2026.4.26 shipped Google Live browser Talk + realtime voice plugins + Gemini TTS — Post angle: "Just upgraded OpenClaw and realtime voice plugins work out of the box — here is the 30-second setup" — tag @openclaw @openclawdiai — official: @openclawdiai

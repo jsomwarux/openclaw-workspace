@@ -39,3 +39,6 @@
 2026-04-24 agentforce-arr-800m — Agentforce ARR reached $800M growing 169% YoY; combined Agentforce/Data 360 ARR at $2.9B (+200% YoY); confirms external customer adoption accelerating.
 2026-04-27 salesforce-tdx-100-tools — Salesforce TDX developer conference shipped 100+ new tools and skills for Agentforce developers; major platform expansion beyond Vibes.
 2026-04-29 planradar-construction-ai-retention — PlanRadar survey: 50%+ of construction professionals would stay with employer if it increased AI tool investment; AI adoption becoming workforce retention factor
+2026-04-30 agentforce-operations-launch — Salesforce launched Agentforce Operations platform for back-office process automation via AI agents; now in general availability
+2026-04-30 duck-creek-agentic-ai — Duck Creek launched insurance-native agentic AI platform for underwriting and claims transformation
+2026-04-30 dewalt-construction-ai-training — Dewalt national study: construction workforce eager for AI but lacks hands-on training; demand signal + implementation gap

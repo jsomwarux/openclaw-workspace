@@ -2,6 +2,16 @@
 
 ---
 
+## Apr 30, 2026 — 10:32AM Heartbeat
+
+**Anthropic Claude creative connectors (Apr 29)** — Anthropic announced Claude for Creative Work with connectors for creative tools including Blender, Autodesk, Adobe, Ableton, and Splice. Signal: model vendors are moving from chat into embedded tool workflows. JT relevance: consulting demos should increasingly show the agent operating inside the client's existing system of record, not just producing standalone summaries.
+
+**Claude Opus 4.7 multimodal/diagram gains (mid-April)** — Anthropic highlighted stronger high-resolution multimodal understanding for complex technical diagrams and life-sciences patent workflows. Signal: document/image-heavy professional workflows are getting more automatable. JT relevance: construction/property-management demos can lean harder into plans, invoices, inspection photos, COIs, scopes, and diagram-heavy back-office review.
+
+**MCP/A2A governance theme still rising** — Recent agent-infrastructure coverage keeps emphasizing API gateways, registries, permissions, and context-sharing security layers for multi-agent systems. Signal: "agent governance" is becoming buyer language, not just developer plumbing. JT relevance: keep AgentGuard / consulting positioning around safe human-approved automation, audit trails, permission boundaries, and exception queues.
+
+**SMB vertical tooling signal** — Spring 2026 construction/CRE AI tooling lists continue to center affordable, scalable takeoffs, cost databases, risk analysis, and project-management integrations. JT relevance: strongest Opticfy wedge remains practical workflow automation around quoting, estimating, vendor docs, project updates, and exception handling rather than abstract AI transformation.
+
 ## Mar 19, 2026 — 6PM Heartbeat
 
 **SurePath AI — MCP Policy Controls (Mar 12)** — Security layer giving enterprise teams real-time control over which MCP servers and tools AI clients can access. Governance + compliance angle directly relevant to AgentGuard positioning — validates the governance market JT is already in.

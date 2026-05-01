@@ -81,3 +81,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Before delivering any reply pack, verify `Account diversity: 3/3 unique accounts` and list skipped repeat-heavy accounts; if fewer than 3 unique accounts are found, return fewer targets rather than repeating.
 - **Owner surface updated:** Cron `dynasty-replies-gen` (`8b968751-6e59-42e5-b2ce-09f57d36176c`) prompt updated with anti-repeat requirements, topical search expansion, and output diversity check.
 - **Verification/date:** 2026-04-29 — cron payload patched and returned updated prompt; next run scheduled for 2026-04-30 11:00 ET.
+
+## 2026-04-30 — Duplicate heartbeat daily-note entries
+- **Failure:** April 29/30 heartbeat reminders fired close together and produced duplicate `## Heartbeat HH:MM` sections with substantially identical cost/cron/task status.
+- **Root cause:** HEARTBEAT.md had proactive-work deduping, but no explicit idempotency rule for heartbeat daily-note logging.
+- **Guardrail:** Added a Heartbeat Log Idempotency Rule requiring a check for the exact `## Heartbeat HH:MM` section before appending and suppression of duplicate reminders within 5 minutes unless state changed.
+- **Regression check:** 10AM film review scans yesterday's daily note for duplicate heartbeat headings; every heartbeat must check the daily note before appending.
+- **Owner surface updated:** `HEARTBEAT.md` and `docs/agents/regression-checks.md`.
+- **Verification/date:** 2026-04-30 — owner files patched and active regression row added.

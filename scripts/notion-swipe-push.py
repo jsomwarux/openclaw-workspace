@@ -34,7 +34,7 @@ NOTION_VERSION = "2022-06-28"
 API_URL = "https://api.notion.com/v1/pages"
 QUERY_URL = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
 
-VALID_NICHES = ["AI Consulting", "NYC SMB", "Construction", "Property Management", "Wholesale Distribution", "Skilled Trades", "Crypto", "AI Agents", "Job Market", "Personal Brand", "x402", "Nash Satoshi", "Dynasty Fantasy"]
+VALID_NICHES = ["AI Consulting", "NYC SMB", "Construction", "Property Management", "Wholesale Distribution", "Skilled Trades", "Crypto", "AI Agents", "Job Market", "Personal Brand", "x402", "Nash Satoshi", "Dynasty Fantasy", "Sports Betting"]
 VALID_FORMATS = ["Hot Take", "Thread Opener", "Story", "List", "Question", "Contrarian", "Behind-the-scenes", "Data Drop", "Analogy", "Tactical Breakdown", "Case Study", "Build-in-public"]
 VALID_HOOKS = [
     "Curiosity gap",

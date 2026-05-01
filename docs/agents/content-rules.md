@@ -4,17 +4,34 @@
 
 ## Pre-Draft Checklist (mandatory)
 Before drafting ANY post or content for JT:
-1. Read `memory/content-voice.md` in full
-2. Fetch current swipe-file references with `python3 scripts/notion-swipe-fetch.py --limit 12 --min-engagement 500` unless Notion/API is unavailable; if unavailable, explicitly say swipe references were unavailable and use the latest local weekly content's hook mappings instead.
-3. Select 2-4 reference patterns that match the platform + niche + format, then write a `Hook mappings from swipe file` section in the draft file before the posts.
-4. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering
+1. Read `memory/content-voice.md` in full.
+2. Identify the exact platform, niche, and format before fetching references. Platform/niche fit matters more than raw engagement.
+3. Fetch current swipe-file references using the narrowest relevant filters available: platform first, then niche, then format. Example: `python3 scripts/notion-swipe-fetch.py --platform X --niche "Dynasty Fantasy" --niche "Sports Betting" --limit 12 --min-engagement 0` or `python3 scripts/notion-swipe-fetch.py --platform LinkedIn --niche "AI Consulting" --format "Case Study" --limit 8`.
+4. Never use cross-platform or cross-niche references by default. LinkedIn consulting content must not use dynasty X hooks/context. Dynasty X content must not use LinkedIn consulting patterns. Adjacent references are allowed only when same platform+niche examples are insufficient, and the draft must explicitly label them as adjacent inspiration.
+5. Select 2-4 reference patterns that match the platform + niche + format. Extract the mechanic: hook shape, emotional tension, context, rhythm, reply trigger, proof style, and why it worked.
+6. Write a `Pattern inputs / Hook mappings from swipe file` section in the draft file before the posts.
+7. Translate the mechanics through JT's voice. Do not copy wording, claims, account persona, or structure wholesale.
+8. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering.
+
+## Self-Improving Content Loop
+All content Eve generates for JT must use a feedback loop calibrated to the niche and platform.
+
+Loop:
+1. **Observe:** Pull proven examples from Notion swipe file and, when needed, fresh X research or platform-native examples.
+2. **Extract:** Identify what is working: hook type, context, tone, tension, specificity, proof, pacing, CTA/reply trigger, and platform behavior.
+3. **Translate:** Adapt the mechanic into JT's compressed, practical, lightly contrarian voice.
+4. **Differentiate:** Add JT's specific proof, operator POV, product context, or decision framework so the content is not imitation.
+5. **Log:** Save usable winners or new patterns back into the swipe file/content bank when they reveal a repeatable mechanic.
+
+This applies to X, LinkedIn, Reddit, newsletters, scripts, launch posts, consulting content, sports content, crypto content, job-market/career content, and product content.
 
 ## Swipe File Requirement
 The Notion Viral Posts Swipe database is not just an archive. It must influence output.
-- Weekly content packs: include a `Hook mappings from swipe file` section with the actual patterns used.
-- One-off X/LinkedIn drafts: mention the pattern internally in the saved draft when a file is created.
-- Priority niches to keep represented: AI Consulting, NYC SMB, Construction, Property Management, Wholesale Distribution, Skilled Trades, AI Agents/OpenClaw, Job Market, Nash Satoshi/x402, Personal Brand.
-- If a niche has fewer than 3 usable recent examples, create a Mission Control task to collect more examples instead of pretending the swipe file is sufficient.
+- Weekly content packs: include a `Pattern inputs / Hook mappings from swipe file` section with the actual mechanics used.
+- One-off X/LinkedIn/Reddit drafts: mention the pattern internally in the saved draft when a file is created.
+- Priority niches to keep represented: AI Consulting, NYC SMB, Construction, Property Management, Wholesale Distribution, Skilled Trades, AI Agents/OpenClaw, Job Market, Nash Satoshi/x402, Crypto, Personal Brand, Dynasty Fantasy, Sports Betting.
+- If a niche/platform has fewer than 3 usable recent examples, create a Mission Control task to collect more examples instead of pretending the swipe file is sufficient. Until then, use adjacent references only as labeled inspiration, not as the primary pattern source.
+- Never let the swipe file flatten JT's voice. It supplies evidence of what works; JT's taste supplies the final shape.
 
 ## Core Voice Rules
 - Start with the point, never with setup or preamble

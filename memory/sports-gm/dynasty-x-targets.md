@@ -110,3 +110,20 @@ Monitor for trend context, but rarely reply unless the post has an obvious dynas
 ## Recent content observations from 2026-04-29 sample
 
 The sample had a lot of draft reaction, landing-spot takes, roster needs comments, and broad fantasy content. Best @dynastyjig reply lane is not “agree with the take”; it is to add a compressed market/process frame: base rates, liquidity, volatility packaging, draft capital penalties, and consensus overreaction.
+
+## Swipe File Integration Rule — 2026-04-30
+
+The approved account universe should feed the Notion Viral Post Swipe File, not just daily reply targeting.
+
+Weekly minimum:
+- Pull 5-10 fresh posts from core/occasional accounts using the X research skill.
+- Save only posts with reusable structures: rookie tier questions, landing-spot price debates, league timing/process debates, roster construction tension, betting-card discipline, public accountability, or group-chat psychology.
+- Push selected examples to Notion Viral Post Swipe File with niche `Dynasty Fantasy` and, when available/added, `Sports Betting`.
+- In `why`, capture the reusable content mechanic, not just the topic. Example: “comparison prompt creates tier debate” or “landing spot + price threshold invites argument.”
+
+Do not copy posts. Extract formats, tensions, and community-native phrasing patterns for JT-style rewrites.
+
+Seeded to Notion on 2026-04-30:
+- @FantasyPros — rookie RB comparison prompt
+- @rotounderworld — landing spot + rookie draft round threshold
+- @FantasyPros — rookie draft timing/process debate

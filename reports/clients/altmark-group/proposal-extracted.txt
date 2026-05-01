@@ -1,0 +1,174 @@
+Source PDF: /Users/jtsomwaru/.openclaw/media/inbound/Altmark_AI_Operations_Proposal_Revised---a9585deb-f21d-4f3a-8c90-958df0550e3d.pdf
+Extracted with PyPDF2 on 2026-04-30.
+
+--- PAGE 1 ---
+AI Operations Build
+ Prepared for
+Altmark Group
+ Revised Proposal
+ JT Somwaru | April 2026
+ 
+FOUNDATION
+Infrastructure Setup
+ $4,000
+ Foundation is billed separately but delivered alongside your first use case — you'll have live infrastructure and a working
+workflow within the same 2-week window.
+Working session with Navid to assess server infrastructure, network, and QuickBooks Desktop environment
+Deploy and configure the self-hosted automation server on your network
+Establish secure connections to AppFolio, QuickBooks Enterprise Desktop, Gmail, and bank data sources
+QuickBooks Desktop integration via Conductor (~$1,000–1,500/month for ~30 company file connections, paid
+by Altmark — volume discount quote pending from Conductor). This is the recommended approach, confirmed
+during the Navid session. Five of the six use cases depend on this connection.
+Security hardening and access controls
+Nothing is built until the Navid session is complete — it confirms the integration approach and locks in all timelines.
+1. Insurance Expiration Tracking
+ $2,250
+ Recommended first — no QuickBooks dependency, fastest to deploy
+Automated daily scan of your insurance spreadsheet
+Email alerts using your template at configurable intervals (60, 30, 14, and 7 days before expiration)
+Personalized with policy holder name, property, dates, and required action
+Overdue policies flagged separately with urgent notification
+Daily summary of all alerts sent to your team
+2. Loan Management
+ $5,750
+ Recommended second — identified as a top priority; depends on QuickBooks connection from Foundation
+Automated pull and analysis of all active loan positions from QuickBooks
+AI-powered monitoring of payment schedules, interest rate adjustments, maturity dates, and covenant
+thresholds
+Weekly summary digest covering balances, upcoming payments, rate status, and covenant compliance across
+all loans
+Real-time alerts for: payments due within 7 days, overdue payments, rate change notices, and covenant
+thresholds approaching limits
+Cash flow impact analysis — how upcoming loan obligations affect your available operating cash
+Human approval required before any recommended actions
+
+
+--- PAGE 2 ---
+3. WhatsApp AI Bot (Internal Team Tool)
+ $9,000
+ Recommended third — addresses your team's highest-frequency pain point
+AI-powered bot with its own WhatsApp Business number in a dedicated team group
+Employees ask questions about tenants, properties, leases, balances — bot answers from live data
+Intelligent agent core — the bot reasons about each question, determines which data source to query (AppFolio,
+QuickBooks, insurance records, documents on your server), retrieves the data, and formulates an answer
+Built on WhatsApp Business API, fully compliant with Meta's platform policies
+If the bot can't find an answer, it flags you directly instead of guessing
+Full activity logging for visibility into what's being asked and answered
+Gets more powerful over time as additional use cases feed more data into the system
+4. Flagstar Deposit Report to QuickBooks Automation
+ $4,500
+ Recommended fourth — saves ~2 hours of manual data entry daily
+Automated ingestion of daily Flagstar bank deposit reports
+AI-powered transaction categorization and matching against your chart of accounts
+Rule-based categorization for recurring types, AI-assisted categorization for exceptions
+Auto-input into QuickBooks or ready-to-import file, depending on integration method
+Includes AppFolio to QuickBooks transaction sync
+Daily summary showing what was processed and any items flagged for manual review
+Confirm how Flagstar reports are delivered (email or portal download) so we can fully automate ingestion.
+5. Cash Management & Overdraft Prevention
+ $4,750
+ Recommended alongside #4 — shares QuickBooks and bank data connections
+Reconciliation engine comparing actual bank balances against QuickBooks ledger
+Factors in all outstanding uncleared checks and pending payments
+Calculates true available cash per account (bank balance minus outstanding obligations)
+Daily morning digest of cash position across all accounts
+Urgent real-time alerts when any account's available balance drops below your defined threshold
+6. Rent Delinquency Outreach
+ $4,500
+ Automated reading of AppFolio-generated reports from your inbox
+Identifies tenants with accrued balance exceeding 3 months of rent (threshold configurable)
+Sends personalized outreach using your template via email or SMS
+Built-in safeguards: 30-day contact cooldown per tenant, 2-week dry-run mode before going live
+Summary report of all outreach sent, including tenant details and balances
+Confirm how AppFolio reports are delivered (email or portal download) so we can fully automate ingestion.
+PRICING SUMMARY
+Use Case
+ Price
+ 
+
+--- PAGE 3 ---
+Foundation — Infrastructure Setup
+ $4,000
+ 
+Insurance Expiration Tracking
+ $2,250
+ 
+Loan Management
+ $5,750
+ 
+WhatsApp AI Bot
+ $9,000
+ 
+Flagstar to QuickBooks Automation
+ $4,500
+ 
+Cash Management & Overdraft Prevention
+ $4,750
+ 
+Rent Delinquency Outreach
+ $4,500
+ 
+Total
+ $34,750
+ 
+Payment Structure
+Foundation ($4,000) paid in full at kickoff
+Each use case: 50% to start, 50% upon delivery and approval
+MONTHLY SUPPORT & MAINTENANCE
+Ongoing Operations Support
+ $1,500 / month
+ 3-month minimum commitment. Begins after buildout is complete.
+Daily monitoring of all workflows — issues fixed before your team notices
+API and integration maintenance when AppFolio, QuickBooks, or bank platforms update
+Knowledge base updates for the WhatsApp bot as properties, tenants, and policies change
+Threshold and template adjustments as your needs evolve
+Monthly performance report: alerts fired, invoices processed, bot usage, issues resolved
+Same-day priority support during business hours
+THIRD-PARTY COSTS
+Paid by Altmark Group — not included in the fees above
+Conductor (QuickBooks Desktop API): ~$1,000–1,500/month for ~30 company file connections (volume
+discount quote pending from Conductor sales team). Exact cost confirmed before buildout begins.
+Twilio (WhatsApp Business API): ~$15/month base + ~$0.005 per message — required for the WhatsApp bot
+LLM API usage (Claude / OpenAI): ~$50–150/month depending on volume — AI processing for document
+parsing, categorization, and the WhatsApp bot
+Plaid (bank balance access): ~$5–10/month — optional, for real-time bank balance checks in the cash
+management workflow
+Server hardware (if needed): One-time $1,500–2,500 — only if your current infrastructure doesn't have a
+suitable machine. Determined during the Navid session.
+Estimated total ongoing third-party costs: ~$1,075–1,675/month
+
+
+--- PAGE 4 ---
+WHAT I NEED FROM YOUR TEAM TO KICK OFF
+System access
+AppFolio admin credentials or API access
+QuickBooks Enterprise Desktop admin access (for Conductor setup)
+Sample data and templates
+Your insurance tracking spreadsheet
+A sample Flagstar bank deposit report
+A sample AppFolio rent/delinquency report (forward me one)
+Confirm how Flagstar and AppFolio reports are delivered (email, portal download, or other)
+Your QuickBooks chart of accounts
+List of all active bank accounts and loan accounts
+Templates and context
+Your email template for insurance alerts
+Your outreach template for delinquent tenants
+10–15 example questions your team typically asks you (for the WhatsApp bot)
+SECURITY
+All data stays on your hardware. The automation server runs on your network, on your machines.
+Tenant data, financial records, and documents do not leave your building.
+You own everything. No vendor lock-in, no SaaS dependency. If we part ways, every workflow and
+configuration remains yours and keeps running.
+AI calls are controlled and sanitized. When AI processing is needed, only the minimum necessary data
+is sent. Tenant PII is stripped where possible. Enterprise zero-data-retention API agreements are
+available.
+Human-in-the-loop on sensitive actions. No workflow takes financial action without human approval.
+The system flags and recommends — your team decides.
+Full audit trail. Every action by every workflow is logged. Complete visibility into what ran, when, and
+what it did.
+TIMELINE
+Everything starts with the Navid infrastructure session — that's where we confirm the integration approach and lock
+in all timelines. Foundation + first use case can be live within 2 weeks of that session. Full buildout across all six
+use cases: 8–10 weeks.
+JT Somwaru
+jtsomwaru.com

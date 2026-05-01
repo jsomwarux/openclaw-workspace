@@ -1,8 +1,6 @@
 "use client";
 
 import { Fragment, useState, useEffect } from "react";
-import { useQuery, useMutation } from "convex/react";
-import { api } from "../../convex/_generated/api";
 import {
   RefreshCw, ChevronDown, ChevronUp, TrendingUp, Lightbulb,
   Trophy, BarChart2,
@@ -11,6 +9,22 @@ import { cn } from "@/lib/utils";
 
 type Status = "exploring" | "building" | "launched" | "shelved";
 type SortKey = "score" | "title" | "reportDate";
+
+type Idea = {
+  _id?: string;
+  title: string;
+  score: number;
+  status: Status;
+  source: string;
+  reportDate: string;
+  concept: string;
+  revenueModel: string;
+  jtStackFit: string;
+  longevitySignal: string;
+  researchSignal: string;
+  creativityCheck: string;
+};
+
 
 const STATUS_COLORS: Record<Status, { bg: string; text: string; border: string }> = {
   exploring: { bg: "bg-amber-500/10", text: "text-amber-400", border: "border-amber-500/30" },
@@ -27,8 +41,8 @@ function scoreBadge(score: number) {
 }
 
 export default function PassiveIncomePage() {
-  const ideas = useQuery(api.pideas.listPideas, {});
-  const syncMutation = useMutation(api.pideas.syncPideas);
+  const [ideas, setIdeas] = useState<Idea[] | undefined>(undefined);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const [statusFilter, setStatusFilter] = useState<Status | "all">("all");
   const [sortKey, setSortKey] = useState<SortKey>("score");
@@ -37,33 +51,31 @@ export default function PassiveIncomePage() {
   const [syncing, setSyncing] = useState(false);
   const [syncResult, setSyncResult] = useState<string | null>(null);
 
-  // Auto-sync on first load if table is empty
   useEffect(() => {
-    if (ideas !== undefined && ideas.length === 0 && !syncing) {
-      handleSync();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ideas]);
+    loadIdeas();
+  }, []);
 
-  const handleSync = async () => {
+  async function loadIdeas() {
     setSyncing(true);
+    setLoadError(null);
     setSyncResult(null);
     try {
-      const res = await fetch("/api/passive-income");
+      const res = await fetch("/api/passive-income", { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      if (data.ideas?.length) {
-        const result = await syncMutation({ ideas: data.ideas });
-        setSyncResult(`Synced: ${result.created} new, ${result.updated} updated`);
-      } else {
-        setSyncResult("No ideas found in reports");
-      }
-    } catch {
-      setSyncResult("Sync failed");
+      const loadedIdeas = Array.isArray(data.ideas) ? data.ideas : [];
+      setIdeas(loadedIdeas);
+      setSyncResult(`Loaded ${loadedIdeas.length} ideas`);
+      setTimeout(() => setSyncResult(null), 3000);
+    } catch (error) {
+      console.error("Failed to load passive income ideas", error);
+      setLoadError(error instanceof Error ? error.message : "Unknown error");
+      setIdeas([]);
+      setSyncResult("Load failed");
     } finally {
       setSyncing(false);
-      setTimeout(() => setSyncResult(null), 4000);
     }
-  };
+  }
 
   const filtered = ideas
     ? ideas.filter((i) => statusFilter === "all" || i.status === statusFilter)
@@ -109,7 +121,7 @@ export default function PassiveIncomePage() {
             </span>
           )}
           <button
-            onClick={handleSync}
+            onClick={loadIdeas}
             disabled={syncing}
             className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-200 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-3 py-1.5 hover:border-emerald-500/40 hover:text-emerald-400 transition-colors disabled:opacity-50"
           >
@@ -182,6 +194,15 @@ export default function PassiveIncomePage() {
       {/* Table */}
       {ideas === undefined ? (
         <div className="text-center py-16 text-zinc-600 text-sm">Loading...</div>
+      ) : loadError ? (
+        <div className="text-center py-16">
+          <Lightbulb size={32} className="mx-auto text-red-500/60 mb-3" />
+          <p className="text-sm text-red-400">Passive income ideas failed to load</p>
+          <p className="text-xs text-zinc-600 mt-1">{loadError}</p>
+          <button onClick={loadIdeas} className="mt-4 px-3 py-1.5 text-xs bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-md text-zinc-400 transition-colors">
+            Retry
+          </button>
+        </div>
       ) : sorted.length === 0 ? (
         <div className="text-center py-16">
           <Lightbulb size={32} className="mx-auto text-zinc-700 mb-3" />
@@ -203,7 +224,7 @@ export default function PassiveIncomePage() {
               </thead>
               <tbody>
                 {sorted.map((idea) => {
-                  const id = idea._id;
+                  const id = idea._id ?? idea.title;
                   const expanded = expandedId === id;
                   const sc = scoreBadge(idea.score);
                   const stc = STATUS_COLORS[idea.status];

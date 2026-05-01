@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-28T14:15:32.078Z",
+  "updatedAt": "2026-04-30T20:59:17.677Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -885,18 +885,19 @@
       "endLine": 22,
       "source": "memory",
       "snippet": "# Daily Note — March 8, 2026 ## Morning Brief — 7:30 AM - Sent to JT via Telegram ✅ - Top priorities: Squarespace SA app (time-sensitive), post content drafts (6 ready), fix job-market cron (stale since March 3) - 🔴🟠 News: Alibaba rogue AI agent mining crypto during training, US payrolls -92K shock, Anthropic labor market study (white-collar most at risk), stablecoin firms betting on AI agent payments (x402 signal) - Niche: Salesforce FY26 strong + SI partner hiring, insurance $15B at risk, 2/3 independent agencies plan AI increase - Job market: no new 18+/25 roles; \"AI Process Design\" now named in Salesforce JDs; ProcessBlueprint build idea flagged - Costs: $0.00 real API spend, X API $0",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-28T14:15:32.078Z",
-      "lastRecalledAt": "2026-04-28T14:15:32.078Z",
+      "lastRecalledAt": "2026-04-30T14:15:32.876Z",
       "queryHashes": [
         "866198893eae"
       ],
       "recallDays": [
-        "2026-04-28"
+        "2026-04-28",
+        "2026-04-30"
       ],
       "conceptTags": [
         "time-sensitive",
@@ -916,18 +917,19 @@
       "endLine": 50,
       "source": "memory",
       "snippet": "## Heartbeat 15:12 (2PM cron, late trigger) - Cost alerts: none - No urgent/overdue items - Proactive: updated crypto.md — BTC cleared $68K resistance, broke above $71K this morning. Structure shift documented. BlockFills credit stress flagged for monitoring. ## Heartbeat 15:43 - Cost alerts: none - No urgent/overdue items - Proactive: logged Salesforce partner program finding — 70% of Agentforce implementations led by SI partners, Salesforce doubling down on ecosystem rewards. Strong Opticfy signal. Saved to job-market.md. ## Session Work Log — 3:47 PM flush ### n8n Construction Demo — COMPLETED ✅ - Workflow: \"Job Completion Automation — Construction Demo\" (ID: Hd0eJo1uRKb1JJHy) - Root f",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-28T14:15:32.078Z",
-      "lastRecalledAt": "2026-04-28T14:15:32.078Z",
+      "lastRecalledAt": "2026-04-30T14:15:32.876Z",
       "queryHashes": [
         "866198893eae"
       ],
       "recallDays": [
-        "2026-04-28"
+        "2026-04-28",
+        "2026-04-30"
       ],
       "conceptTags": [
         "urgent/overdue",
@@ -938,6 +940,130 @@
         "cron",
         "late",
         "trigger"
+      ]
+    },
+    "memory:memory/2026-04-27.md:169:196": {
+      "key": "memory:memory/2026-04-27.md:169:196",
+      "path": "memory/2026-04-27.md",
+      "startLine": 169,
+      "endLine": 196,
+      "source": "memory",
+      "snippet": "- `bbe49024-458a-4496-9c7c-7a278615810f` / `reddit-daily-gen` - 11:30AM ET daily Updated it rather than creating a duplicate. New prompt requires: - Read `memory/content/reddit-strategy.md`. - Read `skills/sports-gm/SKILL.md`. - Use generated Sports GM report if present, otherwise run `sports_gm_fetch_prices.py` + `sports_gm_generate_report.py`. - Target fantasy subs according to current access constraints: `r/Fantasy_Football`, `r/fantasyfootballadvice`, `r/fantasyfootball`; avoid `r/DynastyFF` until reputation unlocks. - No @dynastyjig mention, links, CTA, or brand promo. - No player-specific recommendations without full Sports GM thesis standard. - Prefer practical roster-construction ad",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-30T14:26:03.132Z",
+      "lastRecalledAt": "2026-04-30T14:26:03.132Z",
+      "queryHashes": [
+        "77a41b9bacdb"
+      ],
+      "recallDays": [
+        "2026-04-30"
+      ],
+      "conceptTags": [
+        "reddit-daily-gen",
+        "skills/sports-gm/skill.md",
+        "sports-gm-fetch-prices.py",
+        "sports-gm-generate-report.py",
+        "r/fantasy-football",
+        "r/fantasyfootballadvice",
+        "r/fantasyfootball",
+        "r/dynastyff"
+      ]
+    },
+    "memory:memory/2026-04-27.md:192:210": {
+      "key": "memory:memory/2026-04-27.md:192:210",
+      "path": "memory/2026-04-27.md",
+      "startLine": 192,
+      "endLine": 210,
+      "source": "memory",
+      "snippet": "- Future: reports under `Content/Sports GM/Reports`; audits under `Content/Sports GM/Roster Audits`. ## 11:27 — DynastyJig daily X cron upgraded to player-specific evaluations JT correctly flagged that the first @dynastyjig daily content was generic framework content, not specific player evaluation/advice. Fixed the pipeline: - Created `memory/content/bank/2026-04-27/dynasty-gm-player-evals.md` with four player-specific evaluation drafts: Kendre Miller, Rashod Bateman, Jaylen Wright, Ja'Tavion Sanders. - Uploaded to Drive: `Eve — Drafts / Content/Sports GM/DynastyJig/X/Player Evaluations/2026-04` - Drive link: https://docs.google.com/document/d/1RIYmdi_j4-FAxrFDOaTqvlEWN6O13HRTTIVTOqBbOOA/",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-30T14:26:03.132Z",
+      "lastRecalledAt": "2026-04-30T14:26:03.132Z",
+      "queryHashes": [
+        "77a41b9bacdb"
+      ],
+      "recallDays": [
+        "2026-04-30"
+      ],
+      "conceptTags": [
+        "content/sports",
+        "gm/reports",
+        "gm/roster",
+        "player-specific",
+        "evaluation/advice",
+        "gm/dynastyjig/x/player",
+        "evaluations/2026-04",
+        "future"
+      ]
+    },
+    "memory:memory/2026-04-27.md:148:175": {
+      "key": "memory:memory/2026-04-27.md:148:175",
+      "path": "memory/2026-04-27.md",
+      "startLine": 148,
+      "endLine": 175,
+      "source": "memory",
+      "snippet": "Verification: - `sports_gm_fetch_prices.py` fetched 3,404 rows across KTC/FantasyCalc/DynastyProcess. - `sports_gm_generate_report.py` generated: - `memory/sports-gm/reports/weekly-gm-report-2026-04-27.md` - `memory/sports-gm/candidates/2026-04-27.csv` - `memory/content/bank/2026-04-27/dynasty-gm-automated-market-posts.md` Guardrail added: candidate generation filters out deep-tail noise and treats source disagreement as a research alarm, not an automatic recommendation. ## 11:21 — Daily @dynastyjig delivery added JT asked whether daily content is being delivered for @dynastyjig. It was not; only weekly Sports GM report cron existed. Added daily cron: - `1e614c8a-adb8-4a02-b35f-3031",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-30T14:26:03.132Z",
+      "lastRecalledAt": "2026-04-30T14:26:03.132Z",
+      "queryHashes": [
+        "77a41b9bacdb"
+      ],
+      "recallDays": [
+        "2026-04-30"
+      ],
+      "conceptTags": [
+        "sports-gm-fetch-prices.py",
+        "ktc/fantasycalc/dynastyprocess",
+        "sports-gm-generate-report.py",
+        "deep-tail",
+        "1e614c8a-adb8-4a02-b35f-3031",
+        "verification",
+        "fetched",
+        "3,404"
+      ]
+    },
+    "memory:memory/2026-03-31.md:52:65": {
+      "key": "memory:memory/2026-03-31.md:52:65",
+      "path": "memory/2026-03-31.md",
+      "startLine": 52,
+      "endLine": 65,
+      "source": "memory",
+      "snippet": "**Compound failure:** Next week's Tuesday post (April 8) contained \"Superior Plumbing, Bronx\" — specific company name in content, which JT flagged as unacceptable. Company name came from consulting-observations.md source entry that named the company literally; cron used it without anonymizing. **Fixes applied (same session):** 1. content-reminder file selection logic updated — now calculates current Monday date explicitly, targets `weekly-YYYY-MM-DD.md` for current week only 2. C10 (no company names, ever) added as hard numbered constraint to `content-generate-x` and `content-reminder` quality gate 3. `consulting-observations.md` source entry scrubbed of \"Superior Plumbing\" company name 4.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-04-30T20:59:17.677Z",
+      "lastRecalledAt": "2026-04-30T20:59:17.677Z",
+      "queryHashes": [
+        "d8bdd5be2ef1"
+      ],
+      "recallDays": [
+        "2026-04-30"
+      ],
+      "conceptTags": [
+        "consulting-observations.md",
+        "content-reminder",
+        "weekly-yyyy-mm-dd.md",
+        "content-generate-x",
+        "compound",
+        "failure",
+        "week's",
+        "tuesday"
       ]
     }
   }

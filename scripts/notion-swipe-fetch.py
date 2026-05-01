@@ -10,6 +10,8 @@ Stratification ensures format diversity:
 
 Usage:
   python3 notion-swipe-fetch.py [--limit 8] [--min-engagement 500] [--raw]
+  python3 notion-swipe-fetch.py --platform X --niche "Dynasty Fantasy" --niche "Sports Betting" --limit 12
+  python3 notion-swipe-fetch.py --platform LinkedIn --niche "AI Consulting" --format "Case Study" --limit 8
 
   --raw: skip stratification, return top N by engagement (legacy behavior)
 """
@@ -76,8 +78,27 @@ def get_url(prop):
     return prop.get("url") or ""
 
 
-def fetch_all_posts(min_engagement=0, fetch_limit=100):
-    """Fetch up to fetch_limit posts from Notion, sorted by engagement desc."""
+def infer_platform(url: str, explicit_platform: str = "") -> str:
+    if explicit_platform:
+        return explicit_platform
+    url = (url or "").lower()
+    if "linkedin.com" in url:
+        return "LinkedIn"
+    if "reddit.com" in url:
+        return "Reddit"
+    if "x.com" in url or "twitter.com" in url:
+        return "X"
+    return "Unknown"
+
+
+def fetch_all_posts(min_engagement=0, fetch_limit=100, niches=None, platforms=None, formats=None):
+    """Fetch up to fetch_limit posts from Notion, sorted by engagement desc.
+
+    Optional filters:
+    - niches: posts whose Niche multi_select includes any requested niche
+    - platforms: inferred from URL unless a Platform property exists later
+    - formats: posts whose Format select matches any requested format
+    """
     payload = {
         "page_size": fetch_limit,
         "sorts": [{"property": "Engagement", "direction": "descending"}]
@@ -101,12 +122,25 @@ def fetch_all_posts(min_engagement=0, fetch_limit=100):
         if engagement < min_engagement:
             continue
 
+        post_niches = get_multi_select(props.get("Niche", {}))
+        post_format = get_select(props.get("Format", {}))
+        post_url = get_url(props.get("URL", {}))
+        post_platform = infer_platform(post_url, get_select(props.get("Platform", {})))
+
+        if niches and not any(n in post_niches for n in niches):
+            continue
+        if platforms and post_platform not in platforms:
+            continue
+        if formats and post_format not in formats:
+            continue
+
         posts.append({
             "text": get_title(props.get("Post Text", {}))[:600],
             "author": get_rich_text(props.get("Author Handle", {})),
-            "url": get_url(props.get("URL", {})),
-            "niche": get_multi_select(props.get("Niche", {})),
-            "format": get_select(props.get("Format", {})),
+            "url": post_url,
+            "platform": post_platform,
+            "niche": post_niches,
+            "format": post_format,
             "hook_type": get_select(props.get("Hook Type", {})),
             "why_it_works": get_rich_text(props.get("Why It Works", {})),
             "engagement": engagement,
@@ -171,10 +205,19 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=8)
     parser.add_argument("--min-engagement", type=int, default=0)
+    parser.add_argument("--niche", action="append", default=[], help="Filter to one or more Notion Niche values. Repeatable.")
+    parser.add_argument("--platform", action="append", default=[], help="Filter to inferred platform: X, LinkedIn, Reddit, Unknown. Repeatable.")
+    parser.add_argument("--format", action="append", default=[], help="Filter to one or more Notion Format values. Repeatable.")
     parser.add_argument("--raw", action="store_true", help="Skip stratification, return top N by engagement")
     args = parser.parse_args()
 
-    all_posts = fetch_all_posts(min_engagement=args.min_engagement, fetch_limit=100)
+    all_posts = fetch_all_posts(
+        min_engagement=args.min_engagement,
+        fetch_limit=100,
+        niches=args.niche,
+        platforms=args.platform,
+        formats=args.format,
+    )
 
     if args.raw or len(all_posts) <= args.limit:
         result = all_posts[:args.limit]
