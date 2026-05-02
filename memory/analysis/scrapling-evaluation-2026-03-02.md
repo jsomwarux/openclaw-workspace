@@ -1,6 +1,6 @@
 # Scrapling Evaluation — 2026-03-02
 
-**Task:** Evaluate Scrapling for use in StreetEasy scraper + Opticfy research pipeline.
+**Task:** Evaluate Scrapling for use in StreetEasy scraper + JT Somwaru Consulting research pipeline.
 **Source:** MC task `j575zxctr2xts3h9cj052qfyan82000a` (🔴 HIGH, overnight agent 3AM)
 
 ---
@@ -55,7 +55,7 @@ listings = page.css('.listing-info', auto_save=True)
 
 ⚠️ **Do NOT deploy this change without JT's explicit approval** — the StreetEasy scraper is a live client deliverable.
 
-### 2. Opticfy Research Pipeline
+### 2. JT Somwaru Consulting Research Pipeline
 **Current stack:** research-agent does prospect research via web fetch  
 **With Scrapling (via MCP server):** Eve could use Scrapling's MCP server as a tool to scrape target company pages without Cloudflare blocks, improving brief quality.  
 **Recommendation:** Install Scrapling MCP server as a research-agent tool. Low risk (research pipeline is internal).
@@ -78,7 +78,7 @@ listings = page.css('.listing-info', auto_save=True)
 
 | Action | Priority | Notes |
 |--------|----------|-------|
-| Install Scrapling MCP server for Opticfy research pipeline | ✅ Low risk — do now | `pip install "scrapling[ai]"` + wire MCP server |
+| Install Scrapling MCP server for JT Somwaru Consulting research pipeline | ✅ Low risk — do now | `pip install "scrapling[ai]"` + wire MCP server |
 | Plan StreetEasy scraper upgrade to Scrapling | 🟡 Medium — JT approval needed | Create n8n workflow update; don't deploy without Aya sign-off |
 | Evaluate Scrapling for Glow Index | 🟢 Nice to have | After Scrapling MCP is working |
 

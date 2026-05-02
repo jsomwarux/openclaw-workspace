@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-30T20:59:17.677Z",
+  "updatedAt": "2026-05-01T14:13:06.847Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -698,7 +698,7 @@
       "startLine": 46,
       "endLine": 66,
       "source": "memory",
-      "snippet": "- Mission Control: initially unreachable → kickstarted immediately → came up after ~20s - 🔴 Security audit: ClawHavoc supply chain attack + CVE-2026-25253 - OpenClaw v2026.3.2 ✅ (already patched) - SOUL.md unmodified since Feb 21 ✅ - MEMORY.md only routine updates ✅ - All workspace skills clean (qmd, x-research, opticfy-ops, opticfy-pipeline, webapp-testing) ✅ - mcp-builder + prompt-library: false positive regex matches, legitimate content ✅ - No skills installed via DM or unknown source ✅ - Both MC tasks marked done. JT notified via Telegram. - Proactive: next category in priority list = ai-tools.md update (skipping niche monitor — already ran this AM) ### Proactive: AI Tool",
+      "snippet": "- Mission Control: initially unreachable → kickstarted immediately → came up after ~20s - 🔴 Security audit: ClawHavoc supply chain attack + CVE-2026-25253 - OpenClaw v2026.3.2 ✅ (already patched) - SOUL.md unmodified since Feb 21 ✅ - MEMORY.md only routine updates ✅ - All workspace skills clean (qmd, x-research, jt-consulting-ops, jt-consulting-pipeline, webapp-testing) ✅ - mcp-builder + prompt-library: false positive regex matches, legitimate content ✅ - No skills installed via DM or unknown source ✅ - Both MC tasks marked done. JT notified via Telegram. - Proactive: next category in priority list = ai-tools.md update (skipping niche monitor — already ran this AM) ### Proactive: AI Tool",
       "recallCount": 1,
       "dailyCount": 0,
       "groundedCount": 0,
@@ -719,8 +719,8 @@
         "soul.md",
         "memory.md",
         "x-research",
-        "opticfy-ops",
-        "opticfy-pipeline"
+        "jt-consulting-ops",
+        "jt-consulting-pipeline"
       ]
     },
     "memory:memory/2026-03-06.md:29:51": {
@@ -916,7 +916,7 @@
       "startLine": 24,
       "endLine": 50,
       "source": "memory",
-      "snippet": "## Heartbeat 15:12 (2PM cron, late trigger) - Cost alerts: none - No urgent/overdue items - Proactive: updated crypto.md — BTC cleared $68K resistance, broke above $71K this morning. Structure shift documented. BlockFills credit stress flagged for monitoring. ## Heartbeat 15:43 - Cost alerts: none - No urgent/overdue items - Proactive: logged Salesforce partner program finding — 70% of Agentforce implementations led by SI partners, Salesforce doubling down on ecosystem rewards. Strong Opticfy signal. Saved to job-market.md. ## Session Work Log — 3:47 PM flush ### n8n Construction Demo — COMPLETED ✅ - Workflow: \"Job Completion Automation — Construction Demo\" (ID: Hd0eJo1uRKb1JJHy) - Root f",
+      "snippet": "## Heartbeat 15:12 (2PM cron, late trigger) - Cost alerts: none - No urgent/overdue items - Proactive: updated crypto.md — BTC cleared $68K resistance, broke above $71K this morning. Structure shift documented. BlockFills credit stress flagged for monitoring. ## Heartbeat 15:43 - Cost alerts: none - No urgent/overdue items - Proactive: logged Salesforce partner program finding — 70% of Agentforce implementations led by SI partners, Salesforce doubling down on ecosystem rewards. Strong JT Somwaru Consulting signal. Saved to job-market.md. ## Session Work Log — 3:47 PM flush ### n8n Construction Demo — COMPLETED ✅ - Workflow: \"Job Completion Automation — Construction Demo\" (ID: Hd0eJo1uRKb1JJHy) - Root f",
       "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
@@ -1064,6 +1064,68 @@
         "failure",
         "week's",
         "tuesday"
+      ]
+    },
+    "memory:memory/2026-03-06.md:15:34": {
+      "key": "memory:memory/2026-03-06.md:15:34",
+      "path": "memory/2026-03-06.md",
+      "startLine": 15,
+      "endLine": 34,
+      "source": "memory",
+      "snippet": "- 🟡 n8n cited in Offsite Builder (modular construction) — validates niche + language - 🟡 CoverGo launched insurance AI agents (enterprise play, not SMB — Opticfy lane stays clear) - Updated: memory/niche-monitor-latest.md ## Correction — 10:37 AM - JT flagged: overnight agent added B2B Account Service Agent to jtsomwaru.com - This was wrong on 3 counts: (1) JT previously decided not to build this agent, (2) Agentforce overnight builds are banned until Agentforce sync repo is set up, (3) nothing unbuilt/untested should be added to the portfolio site - Actions taken: removed entry from projects.ts, committed + pushed to Vercel, updated AGENTS.md with hard Agentforce overnight ban rule, upda",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-01T14:13:06.847Z",
+      "lastRecalledAt": "2026-05-01T14:13:06.847Z",
+      "queryHashes": [
+        "0b75a71d8c97"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "memory/niche-monitor-latest.md",
+        "jtsomwaru.com",
+        "unbuilt/untested",
+        "projects.ts",
+        "agents.md",
+        "n8n",
+        "cited",
+        "offsite"
+      ]
+    },
+    "memory:memory/2026-04-30.md:101:111": {
+      "key": "memory:memory/2026-04-30.md:101:111",
+      "path": "memory/2026-04-30.md",
+      "startLine": 101,
+      "endLine": 111,
+      "source": "memory",
+      "snippet": "- Updated `memory/sports-gm/dynasty-x-targets.md` with a Swipe File Integration Rule and updated `skills/sports-gm/SKILL.md` with a Dynasty Swipe File Mining workflow. - Notion script currently supports `Dynasty Fantasy` niche; `Sports Betting` is not yet in `VALID_NICHES`, so sports-betting swipe additions need script/schema expansion before clean use. ## DynastyJig Self-Improving Content Loop — 4:55 PM - JT clarified the target system: content should constantly learn from what is working on X in dynasty fantasy football and sports betting, including tone, context, hooks, and proven mechanics, while staying unique to JT's voice. - Patched `scripts/notion-swipe-fetch.py` to support repeatab",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-01T14:13:06.847Z",
+      "lastRecalledAt": "2026-05-01T14:13:06.847Z",
+      "queryHashes": [
+        "0b75a71d8c97"
+      ],
+      "recallDays": [
+        "2026-05-01"
+      ],
+      "conceptTags": [
+        "skills/sports-gm/skill.md",
+        "valid-niches",
+        "sports-betting",
+        "script/schema",
+        "self-improving",
+        "scripts/notion-swipe-fetch.py",
+        "updated",
+        "sports"
       ]
     }
   }

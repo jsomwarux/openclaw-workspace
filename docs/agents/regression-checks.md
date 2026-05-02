@@ -40,3 +40,11 @@ If any answer is no, write one targeted fix before ending the review.
 During weekly systems review, scan recent daily notes + mistakes log for repeated terms: `mistake`, `missed`, `stale`, `timeout`, `hallucinated`, `duplicate`, `failed`, `incorrect`.
 
 If a pattern appears twice in 14 days, promote it to an Active Check above and update the owner surface.
+
+## Niche Fitness Review Check
+Before any monthly niche fitness review is sent, verify the report includes:
+- `Recent Context Applied` with last-48-hour strategic updates and their scoring impact.
+- `Proof Proximity` and `GTM Traction` columns in both score tables.
+- A `Reality Adjustment` section explaining where recommendations differ from raw score.
+- An operational decision summary: Primary / Adjacent expansion / Hold-test / Strategic proof lane.
+If any element is missing, do not send the review; update `agents/niche-fitness/AGENT.md` output and regenerate.

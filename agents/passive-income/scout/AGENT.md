@@ -99,3 +99,8 @@ Rank ideas by priority score (highest first):
 2. **High niche_potential + no incumbent** — strong data + clear audience + no existing tool
 3. **API mashup** — two APIs combined create a comparison product neither supports alone
 4. **Newly discovered API** — fresh data source with ranking potential before others notice
+
+
+## Methodology 8: Agent-Purchasable Microservices
+
+Consider Stripe Link / agent-wallet opportunities as a secondary lens, not the primary source of ideas. Look for narrow $5–$50 outputs an agent would rationally buy mid-task: audits, scores, lookups, enrichments, checklists, reports, verification, or comparisons. Favor API-first / agent-readable outputs and low-support fulfillment. Reject broad marketplaces and “for agents” wrappers without an urgent job-to-be-done.

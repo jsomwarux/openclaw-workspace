@@ -21,9 +21,9 @@
 - "Classic" software engineering (non-AI) — contracting
 - Data science without AI fluency — declining
 
-### Opticfy / JT Relevance
-- Displaced workers from layoffs = potential Opticfy customers (businesses forced to do more with less → automation buy-in is high)
-- Salesforce Agentforce cuts = opportunity: companies invested in Salesforce need external AI implementation help (Opticfy's Agentforce agent targets exactly this)
+### JT Somwaru Consulting / JT Relevance
+- Displaced workers from layoffs = potential JT Somwaru Consulting customers (businesses forced to do more with less → automation buy-in is high)
+- Salesforce Agentforce cuts = opportunity: companies invested in Salesforce need external AI implementation help (JT Somwaru Consulting's Agentforce agent targets exactly this)
 - JT's profile (BSA background + AI builder) = exactly what "in-demand" looks like per Robert Half — rare combo, strong positioning if he goes back to market
 - AI fear among workers is peaking → content on "how AI helps workers, not just replaces them" would resonate well on @jts_14
 
@@ -104,7 +104,7 @@
 
 ### 🔴 DEADLINE ALERT: Salesforce Lead Agentforce SE — 03/27/2026 (26 days)
 - **Score:** 24/25 🔥 | **Salary:** $148K–$198K (NYC) | **Format:** Remote w/ 25–50% travel
-- Leads "multi-week Guided Consumption engagements sandbox to production" — identical to Opticfy delivery model
+- Leads "multi-week Guided Consumption engagements sandbox to production" — identical to JT Somwaru Consulting delivery model
 - No hands-on coding requirement. BSA + agent orchestration experience maps perfectly.
 - **Link:** https://careers.salesforce.com/en/jobs/jr329627/lead-agentforce-se/
 - **Status:** Not yet applied — highest priority in pipeline after Squarespace
@@ -177,14 +177,14 @@
 ## 2026-03-04 — Salesforce Partner Ecosystem Signal
 - Salesforce announced SI partners lead 70% of all Agentforce implementations — ecosystem doubling down on rewards for "secure, compliant, verifiable outcomes" implementations
 - New Partner Program: rewarding outcome-based delivery, not just certifications
-- Implication for JT: Opticfy as a boutique SI partner (even uncertified) is in the right lane. Faye/CRM Science acquisition accelerating mid-market partner coverage. NeuraFlash, Accenture telco practice all growing headcount.
+- Implication for JT: JT Somwaru Consulting as a boutique SI partner (even uncertified) is in the right lane. Faye/CRM Science acquisition accelerating mid-market partner coverage. NeuraFlash, Accenture telco practice all growing headcount.
 - Content angle: "Why 70% of Agentforce implementations are partner-led" — LinkedIn post opportunity
 
 ## 2026-03-06 — 10PM Update
 - **Salesforce CEO on Block layoffs:** Dismissed as "unique issues" — not a signal for broad AI/Agentforce hiring cuts. Salesforce headcount for Agentforce roles intact.
 - **Full AI stack demand:** Enterprises deploying Agentforce + ServiceNow need specialists who understand LLMs, agentic frameworks, RAG, cloud AI platforms, and AI safety. JT's gap: RAG + cloud AI platforms — aligns with existing skill gap tracking.
-- **"Talent-as-a-Service" framing (Peterson Tech Partners, March 5):** Specialist human talent + AI agents working in tandem. This is literally how JT frames Opticfy — strong messaging alignment.
-- **Top 18 Salesforce consulting firms 2026:** Agentforce implementation services now a top-line offering at every major SF SI. Opticfy competing at SMB layer, not enterprise — correct positioning.
+- **"Talent-as-a-Service" framing (Peterson Tech Partners, March 5):** Specialist human talent + AI agents working in tandem. This is literally how JT frames JT Somwaru Consulting — strong messaging alignment.
+- **Top 18 Salesforce consulting firms 2026:** Agentforce implementation services now a top-line offering at every major SF SI. JT Somwaru Consulting competing at SMB layer, not enterprise — correct positioning.
 - ⚠️ job-market daily-brief.md stale since March 3 — cron may have drifted. Check Monday AM.
 
 ## 2026-03-09 PM Update
@@ -213,3 +213,8 @@
 **Read:** This supports the current thesis from the morning brief: NYC/remote agentic AI roles lag the West Coast by ~60–90 days. JT should not wait passively for perfect postings. Better strategy: keep building proof artifacts and use consulting pipeline/outreach to create market pull.
 
 **Actionable positioning:** Keep emphasizing process architecture + Agentforce/Gemini/Google Workspace familiarity, not pure ML engineering. Watch for titles containing: AI Solutions Architect, Agentforce Architect, AI Business Solutions Architect, AI Security Architect, Workflow Automation Architect, Enterprise AI Consultant.
+
+## May 1, 2026 — 4:12 PM Heartbeat
+- Live scan signal: AI labor-market coverage continues to emphasize hyper-growth in companies training/deploying large-scale AI models, with emerging demand around AI Engineers, Forward-Deployed Engineers, AI project/program managers, AI forensic/risk roles, and Heads of AI.
+- Relevance to JT: strongest job-market overlap remains AI product/program + forward-deployed automation + governance/risk proof. AgentGuard and Agentforce demos are more aligned than generic app builds for this lane.
+- Positioning note: language should emphasize “forward-deployed AI systems / operational automation / human approval + audit trail,” not just product strategy.

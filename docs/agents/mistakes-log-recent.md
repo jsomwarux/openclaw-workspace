@@ -89,3 +89,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** 10AM film review scans yesterday's daily note for duplicate heartbeat headings; every heartbeat must check the daily note before appending.
 - **Owner surface updated:** `HEARTBEAT.md` and `docs/agents/regression-checks.md`.
 - **Verification/date:** 2026-04-30 — owner files patched and active regression row added.
+
+## 2026-05-01 — Resurfaced abandoned legacy consulting brand name
+- **Failure:** Used the abandoned legacy consulting brand name in the monthly skills audit even though JT had previously instructed it be eliminated.
+- **Root cause:** Stale historical memory/docs still contained the old brand name, so synthesis pulled from archived wording instead of canonical current naming.
+- **Guardrail/rule:** Treat the old consulting brand string as a banned legacy name; use “JT Somwaru Consulting” or “consulting pipeline” instead. Before sending consulting/business-audit summaries, grep drafted text for the banned term.
+- **Regression check:** Run the banned-term grep across bootstrap/docs/memory/skills/agents; it should return no user-facing references except unavoidable filesystem compatibility paths if any remain.
+- **Owner surface updated:** Replaced legacy references across workspace text files; logged this correction in `docs/agents/mistakes-log-recent.md`.
+- **Verification/date:** 2026-05-01; follow-up grep run after replacement.

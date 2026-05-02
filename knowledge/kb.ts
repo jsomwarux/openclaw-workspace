@@ -48,7 +48,7 @@ Commands:
 Categories: ${VALID_CATEGORIES.join(", ")}
 
 Examples:
-  bun kb.ts add --title "Competitor found" --content "..." --category business --tags "opticfy,competitors"
+  bun kb.ts add --title "Competitor found" --content "..." --category business --tags "jt-consulting,competitors"
   bun kb.ts search "AI tools for document processing" --category tech
   bun kb.ts search "bitcoin price analysis" --mode semantic --limit 5
   bun kb.ts list --category crypto --limit 20

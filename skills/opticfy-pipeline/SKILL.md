@@ -21,8 +21,8 @@ If JT says "skip research" or "fast track to outreach":
 Before spawning any pipeline agents, run the preflight script. It validates n8n is running, all agent directories exist, and checks the client artifact state.
 
 ```bash
-bash ~/.openclaw/workspace/skills/opticfy-pipeline/scripts/preflight.sh [client-slug]
-# Example: bash ~/.openclaw/workspace/skills/opticfy-pipeline/scripts/preflight.sh brothers-supply
+bash ~/.openclaw/workspace/skills/jt-consulting-pipeline/scripts/preflight.sh [client-slug]
+# Example: bash ~/.openclaw/workspace/skills/jt-consulting-pipeline/scripts/preflight.sh brothers-supply
 ```
 
 If it exits non-zero: fix reported errors before proceeding. A failed preflight (especially n8n down) will cause agent spawns to fail silently mid-pipeline.

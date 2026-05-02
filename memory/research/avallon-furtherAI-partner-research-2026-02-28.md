@@ -1,6 +1,6 @@
 # Avallon + FurtherAI — Implementation Partner Research
 *Date: 2026-02-28*
-*Researched by: Eve (AI Chief of Staff) for Opticfy*
+*Researched by: Eve (AI Chief of Staff) for JT Somwaru Consulting*
 
 ---
 
@@ -62,7 +62,7 @@ The angle that works: **"I'm a distribution arm for your NYC mid-market pipeline
 
 Specifics:
 - Avallon's primary buyers are TPAs and carriers — but there are hundreds of mid-market insurance agencies, MGAs, and boutique TPAs in NYC that are too small for Avallon to hand-hold through implementation themselves
-- Opticfy sits between Avallon and those clients: JT has the relationships, the local credibility, and the implementation expertise to close and deploy Avallon for accounts Avallon would otherwise pass on
+- JT Somwaru Consulting sits between Avallon and those clients: JT has the relationships, the local credibility, and the implementation expertise to close and deploy Avallon for accounts Avallon would otherwise pass on
 - The pitch isn't "hire me" — it's "let me bring you clients you can't reach, and I handle the implementation so your engineering team stays focused on product"
 - Concrete value prop: JT takes the implementation off Avallon's plate for NYC mid-market, Avallon gets revenue from accounts they'd otherwise ignore
 
@@ -127,7 +127,7 @@ The angle that works: **"I'm a broker-side implementation consultant who can bri
 
 Specifics:
 - FurtherAI is targeting large carriers and MGAs (enterprise deals). NYC mid-market insurance agencies are too small for their current GTM motion — but there are dozens of them, and collectively they represent material ARR
-- Opticfy can act as a market development partner: JT builds the relationships with NYC mid-market insurance agencies, introduces FurtherAI's platform, and handles the implementation so FurtherAI can book the revenue without burning engineering bandwidth
+- JT Somwaru Consulting can act as a market development partner: JT builds the relationships with NYC mid-market insurance agencies, introduces FurtherAI's platform, and handles the implementation so FurtherAI can book the revenue without burning engineering bandwidth
 - Their "forward-deployed engineering" model is expensive at scale — JT can absorb that cost for smaller accounts, making deals economically viable that wouldn't be otherwise
 - Their investor Xceedance is in the insurance operations services space — this signals FurtherAI is philosophically comfortable with services/implementation partners
 - The pitch: "You're building for enterprise. I'll open the mid-market for you in NYC and handle the deployment. Let's figure out what a referral or co-sell arrangement looks like."
@@ -136,7 +136,7 @@ Specifics:
 
 ## Strategic Recommendation
 
-**Avallon is the clear first move.** Three reasons: (1) They're NYC-based and seed-stage — founders are accessible and the company has zero sales infrastructure overhead. Cornelius Schramm will respond to a well-crafted LinkedIn DM or email personally. (2) Their target buyers (TPAs, mid-market MGAs) are exactly the profile of insurance operations clients in JT's NYC niche. The match between Avallon's product and Opticfy's target client base is tighter than FurtherAI's. (3) At seed stage with 10x revenue growth, they need distribution they can't build fast enough themselves — Opticfy is exactly the kind of partner they should want. There's no formal program to navigate; just a founder conversation.
+**Avallon is the clear first move.** Three reasons: (1) They're NYC-based and seed-stage — founders are accessible and the company has zero sales infrastructure overhead. Cornelius Schramm will respond to a well-crafted LinkedIn DM or email personally. (2) Their target buyers (TPAs, mid-market MGAs) are exactly the profile of insurance operations clients in JT's NYC niche. The match between Avallon's product and JT Somwaru Consulting's target client base is tighter than FurtherAI's. (3) At seed stage with 10x revenue growth, they need distribution they can't build fast enough themselves — JT Somwaru Consulting is exactly the kind of partner they should want. There's no formal program to navigate; just a founder conversation.
 
 **FurtherAI is a 6-12 month play.** They're moving fast ($30M raised, a16z-backed), but their current motion is enterprise direct. JT should plant a flag now — book a demo, get on their radar, ask openly about implementation partnerships — but don't expect a formal program to engage with until they've professionalized their GTM. Monitor their jobs page for partnerships hires; that's the trigger signal. If Avallon leads to any NYC insurance agency wins, use those as proof-of-concept when pitching FurtherAI: "I've already deployed insurance AI for [X] and [Y] in NYC — let's talk about formalizing this."
 
@@ -146,11 +146,11 @@ Specifics:
 
 ### Avallon Outreach (LinkedIn DM to Cornelius Schramm)
 
-> Hey Cornelius — I run Opticfy, an AI implementation consultancy focused on NYC's mid-market insurance space (agencies, MGAs, boutique TPAs). I've been following Avallon since the YC announcement and the Athens Administrators case study is exactly the kind of outcome I'm helping clients get excited about. I'm not looking to compete — I'm curious whether Avallon works with implementation consultants who can bring the platform to accounts your team doesn't have bandwidth to pursue directly. I'm in NYC and know the insurance operations community here well. Worth a 20-minute call to see if there's a fit?
+> Hey Cornelius — I run JT Somwaru Consulting, an AI implementation consultancy focused on NYC's mid-market insurance space (agencies, MGAs, boutique TPAs). I've been following Avallon since the YC announcement and the Athens Administrators case study is exactly the kind of outcome I'm helping clients get excited about. I'm not looking to compete — I'm curious whether Avallon works with implementation consultants who can bring the platform to accounts your team doesn't have bandwidth to pursue directly. I'm in NYC and know the insurance operations community here well. Worth a 20-minute call to see if there's a fit?
 
 ### FurtherAI Outreach (Demo Request / Introductory Email)
 
-> Hi — I run Opticfy, an AI implementation consultancy focused on commercial insurance operations in NYC. I'm interested in FurtherAI both as a potential solution for clients and as a potential implementation partnership. I work with mid-market insurance agencies and MGAs who need workflow automation but don't have the internal technical resources to deploy it — I bridge that gap. I'd love to learn more about the platform and explore whether there's a structure (referral, co-sell, or implementation partner) that could work for us to bring FurtherAI into the NYC mid-market. Happy to start with a demo if that's the right first step.
+> Hi — I run JT Somwaru Consulting, an AI implementation consultancy focused on commercial insurance operations in NYC. I'm interested in FurtherAI both as a potential solution for clients and as a potential implementation partnership. I work with mid-market insurance agencies and MGAs who need workflow automation but don't have the internal technical resources to deploy it — I bridge that gap. I'd love to learn more about the platform and explore whether there's a structure (referral, co-sell, or implementation partner) that could work for us to bring FurtherAI into the NYC mid-market. Happy to start with a demo if that's the right first step.
 
 ---
 

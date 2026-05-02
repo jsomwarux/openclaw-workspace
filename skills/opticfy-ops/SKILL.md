@@ -33,6 +33,22 @@ Commands live in `skills/jt-consulting-ops/commands/`. Each is a standalone temp
 
 ---
 
+## Client Operating System — mandatory for active clients
+
+Every active client engagement should create a Client OS folder using `templates/client-os/`.
+
+This is the services-as-software layer:
+- **Live dashboard from day one** — clients should see status like a SaaS product, not wait for vague updates
+- **Weekly account-owner update** — wins, misses, blockers, and next week's plan
+- **Quarterly decision-maker review** — talk to the buyer, not only the day-to-day operator
+- **Decision log + failure log** — every judgement call and miss becomes reusable IP
+- **Raw + cleaned inputs + tagged outputs** — preserve the data moat before building software
+- **Automation candidates** — automate patterns observed in manual delivery, not assumptions
+
+Rule: manual delivery is not a failure state. Manual delivery is the data-collection phase. Do the work by hand until the edge cases are visible, document them, then encode the repeatable pattern into automations/agents.
+
+---
+
 ## Domain Skills (background knowledge — fires automatically)
 
 **Process Documentation**
@@ -48,6 +64,9 @@ Commands live in `skills/jt-consulting-ops/commands/`. Each is a standalone temp
 **Client Engagement**
 - Quick-win framing: every engagement should deliver something measurable within 2 weeks
 - Anchor to ROI: time saved, revenue recovered, errors eliminated — not features built
+- Treat every client like a SaaS account: live dashboard, weekly update, quarterly decision-maker review
+- Capture every repeatable task, edge case, failure, judgement call, client objection, raw input, cleaned input, delivered output, and outcome produced
+- Turn the first 10 sales-call objections into landing-page/proposal copy before scaling outreach
 - Data Anomaly Audit is the lowest-risk entry point for new clients; always offer it if they're hesitant
 
 **Vendor/Tech Evaluation**
@@ -55,6 +74,39 @@ Commands live in `skills/jt-consulting-ops/commands/`. Each is a standalone temp
 - Highest-value automation targets: any tool with CSV export but no webhook = manual process we can automate
 
 ---
+
+---
+
+## Services-as-Software Operating Doctrine
+
+Use consulting as the manual data-collection layer that becomes productized services, agents, and eventually software-like income.
+
+**Niche / offer filter**
+Before prioritizing a new consulting offer or vertical, answer:
+1. Is this already an outsourced line item inside one industry?
+2. Is the work mostly pattern recognition / rule application, not deep human-only strategy?
+3. Is services spend meaningfully larger than software/tool spend?
+4. Can JT credibly document and manually run the workflow before automating it?
+
+**First-client rule**
+Land early clients directly. Sales calls are research. Record/transcribe when possible, then capture:
+- objections heard
+- what they hated about the last vendor/tool/process
+- exact words used to describe pain
+- why they bought or ghosted
+
+**Ghosting signal**
+If a prospect ghosts twice, treat it as targeting/offer/data feedback, not a follow-up problem. Log it and adjust ICP, trigger, offer, or proof.
+
+**Pricing rule**
+Price the outcome like a service, report on it like a product. Prefer: setup fee + monthly retainer tied to an outcome metric + optional upside/performance component when credible. Do not anchor below a floor that makes high-quality delivery impossible.
+
+**Scale order**
+Do not scale marketing/sales/COO before delivery can run without JT. Hiring/order of delegation when needed:
+1. Delivery operator
+2. Technical automator
+3. Head of delivery
+Then scale demand.
 
 ## Usage
 
@@ -70,3 +122,5 @@ Client data lives at: `~/projects/jt-consulting-pipeline/clients/[slug]/`
 Research output: `research.md` | Analysis: `analysis.md` | Outreach: `outreach/`
 
 Always check if a client folder exists before starting a new engagement.
+
+When an engagement becomes active, copy `skills/opticfy-ops/templates/client-os/` into the client folder and maintain it as the source of truth for delivery, retention, and future automation.

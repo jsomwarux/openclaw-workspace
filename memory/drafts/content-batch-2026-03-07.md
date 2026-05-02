@@ -52,7 +52,7 @@ Consultants charge for advice.
 I charge for the thing that works.
 ```
 ✅ Technique: Alliterative contrast (Consult/Charge), you > I framing
-💡 Best for: Prospect-facing, Opticfy positioning
+💡 Best for: Prospect-facing, JT Somwaru Consulting positioning
 
 ---
 
@@ -84,10 +84,10 @@ Six years watching $500K systems sit unused.
 The software worked.
 The workflow didn't.
 
-That's the only problem Opticfy solves.
+That's the only problem JT Somwaru Consulting solves.
 ```
 ✅ Technique: Compressed wisdom, you > I reframe, monosyllabic close
-💡 Best for: Cold audience, Opticfy founding story
+💡 Best for: Cold audience, JT Somwaru Consulting founding story
 
 ---
 
@@ -141,7 +141,7 @@ That's not a tech problem. That's an implementation problem.
 
 Tweet 3:
 ```
-That's what Opticfy does.
+That's what JT Somwaru Consulting does.
 
 Map the manual process.
 Strip what doesn't need a human.

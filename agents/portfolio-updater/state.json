@@ -3,7 +3,7 @@
     "insurance-service-agent",
     "vista",
     "glow-index",
-    "opticfy-pipeline",
+    "jt-consulting-pipeline",
     "pm-tenant-service-agent",
     "construction-tracker",
     "lending-application-agent",
@@ -24,7 +24,7 @@
   "lastReorderDate": "2026-04-01",
   "lastRun": "2026-04-01",
   "demandScoreCache": {
-    "opticfy-pipeline": 46,
+    "jt-consulting-pipeline": 46,
     "construction-tracker": 22,
     "streeteasy-scraper": 18,
     "nash-satoshi": 32,

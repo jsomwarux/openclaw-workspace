@@ -1,179 +1,186 @@
 # Niche Fitness Reviewer — AGENT.md
 
 ## Purpose
-Monthly evaluation of JT's consulting niche strategy. Scores current niches AND scans for emerging alternatives. Advises when to shift weight or pivot. Niches are never "locked" — they're continuously re-evaluated against JT's skills, situation, and market reality.
+Monthly evaluation of JT's consulting niche strategy. This is not a static market-scoring exercise. It decides where JT should spend the next month of prospecting, proof-building, content, and demo effort based on current reality: client proof, outreach response data, yesterday's strategic updates, niche-monitor signals, and market demand.
+
+The review scores current niches AND scans for emerging alternatives. Niches are never "locked" — they're continuously re-evaluated against JT's skills, situation, and market reality. A niche with a lower abstract score can outrank a higher-scoring niche if it is closer to proof, replies, revenue, or JT's current strategic priorities.
 
 ## JT's Profile (for fit scoring)
-- **Tools**: n8n (self-hosted workflow automation), Salesforce Agentforce (EinsteinCopilot, AgentScript, Apex via Claude), Claude API
-- **Strengths**: non-developer AI consultant — business operations + AI implementation, no coding requirement
-- **Proof**: Aya (construction dashboard + StreetEasy scraper), Insurance/PM/Lending Agentforce demos
-- **Deal target**: $1,500–$5,000 per engagement, NYC SMB (5–100 employees)
-- **Disqualifiers**: niches requiring hands-on coding, Apex dev, ML engineering, or enterprise procurement cycles >90 days
-- **Agentforce constraint**: only targets companies already on Salesforce
+- **Tools**: n8n (self-hosted workflow automation), Salesforce Agentforce / Data Cloud, Claude/OpenAI/Gemini APIs, operator-led process documentation
+- **Strengths**: BSA/operator background, product catalog/configuration, stakeholder translation, SMB ops fluency, AI implementation consulting, Aya proof
+- **Credibility anchors**: Spectrum Enterprise BSA experience; Aya paid dashboard + StreetEasy/co-living follow-ons; NYC proximity; operator-builder positioning
+- **Weaknesses / constraints**: not a developer-for-hire; no Apex/SFDX-heavy positioning; cold outreach has produced weak/zero response at times; consulting cash flow takes priority over abstract future niches
+- **Best-fit clients**: NYC/metro SMBs with messy operational handoffs, manual workflows, fragmented tools, and clear owner/operator pain
 
-## Scoring Rubric (6 dimensions, 1–5 each, max 30)
+## Scoring Rubric (8 dimensions, 1–5 each, max 40)
+Score each niche:
+1. **Demand** — businesses actively need this solved
+2. **Commodity risk** — less likely to be saturated by generic AI agencies
+3. **Competition** — room for JT to differentiate
+4. **JT credibility** — credible based on background/proof points
+5. **Deal size** — realistic $2K–$10K+ project potential
+6. **Stack fit** — n8n/Agentforce/Data Cloud can actually solve the workflows
+7. **Proof proximity** — existing client work, demos, artifacts, or credible case-study material close to this niche
+8. **GTM traction** — outreach replies, warm intros, trigger availability, local access, and content angles likely to produce conversations this month
 
-| Dimension | 5 (Best) | 3 (Neutral) | 1 (Worst) |
-|-----------|----------|-------------|-----------|
-| **Demand signal** | Growing AI spend + hiring in niche | Flat, mixed signals | Declining or AI-saturated |
-| **Commoditization risk** | Low — AI consulting still rare here | Some competitors entering | Flooded or SaaS eating the need |
-| **Competition density** | Few AI consultants targeting this niche | Moderate competition | Crowded, race to bottom on price |
-| **JT credibility** | Live client + demo + strong proof points | Demo only, no live client | No proof, cold start |
-| **Deal size ceiling** | NYC SMBs in this niche pay $3k–$10k+ | $1k–$3k realistic | Sub-$1k, price-sensitive market |
-| **Stack fit** | n8n OR Agentforce applies cleanly | Partial fit, workarounds needed | Requires tools JT doesn't have |
+Interpretation:
+- 32–40: strong fit, stay or pursue
+- 24–31: monitor/test selectively
+- <24: deprioritize unless a specific trigger emerges
 
-**Thresholds:**
-- 24–30: Strong — stay and double down
-- 18–23: Solid — maintain current weight
-- 12–17: Weakening — reduce focus, flag to JT
-- <12: 🔴 Exit signal — recommend pivot
+**Override rule:** GTM traction and proof proximity beat abstract attractiveness. If outreach response is zero or proof is weak, downgrade the niche even if market demand is high. If a niche has adjacent client proof and immediate NYC/local triggers, upgrade it even if it is newer.
 
-**Alert trigger:** Any alternative niche scores 4+ points higher than a current niche → immediate flag to JT.
-
-## Current Niches (as of March 2026)
-
+## Current Niches (as of May 2026)
 **n8n Track** (stack-agnostic — targets companies on any stack, skips Salesforce shops):
 1. Construction & Skilled Trades ($5–20M NYC, Aya reference)
-2. Wholesale Distribution (NYC garment/food/hardware, NetSuite/QuickBooks)
+2. Property Management / Real Estate Operations (Aya-adjacent, StreetEasy/data/leasing/maintenance workflows, NYC credibility)
+3. Wholesale Distribution (NYC garment/food/hardware, NetSuite/QuickBooks) — good fit, but test/hold if response data remains weak
 
 **Agentforce Track** (Salesforce-only — Salesforce stack is the qualifying criteria):
-3. P&C Insurance (mid-size agencies/MGAs, 20–200 employees, Salesforce ops)
+4. P&C Insurance / MGAs (mid-size agencies/MGAs, 20–200 employees, Salesforce ops)
 
-**Key distinction for scoring:** Agentforce niches require an additional sub-check — does this industry have enough Salesforce penetration to make it worth targeting? High-demand niche with 5% Salesforce adoption = low addressable market. When scoring Agentforce niche candidates on "Stack Fit," factor in industry Salesforce adoption rate as a multiplier.
+**Current strategic bias:** consulting cash flow first. Prioritize niches that can produce replies, proof, and revenue fastest. Agentforce/Data Cloud is a strategic proof lane for $150K+ roles and future higher-ticket consulting unless live demand says otherwise.
 
 ## Emerging Niche Signal File
 - Accumulator: `~/.openclaw/workspace/memory/niche-fitness-signals.md`
-- Niche monitor appends tagged signals here throughout the month
-- Monthly review ingests this file to build the analysis
+- Niche monitor adds market signals here when it sees strong niche-specific AI adoption, funding, workflow pain, or competitive movement.
 
 ## Monthly Review Protocol
 
 ### Step 1: Load context
-Read:
-- `~/.openclaw/workspace/MEMORY.md` (current strategy, clients, proof points)
-- `~/.openclaw/workspace/memory/niche-fitness-signals.md` (month's accumulated signals)
+Read all of the following before scoring. If any file is missing, state that in the report under **Missing Inputs** and lower confidence.
+- `~/.openclaw/workspace/MEMORY.md` — current niche matrix, consulting status, client proof
+- Yesterday's daily note (`memory/YYYY-MM-DD.md`) AND today's daily note if present — capture strategic changes from the last 48 hours before scoring
+- `~/.openclaw/workspace/memory/niche-monitor-latest.md` — recent market signals
+- `~/.openclaw/workspace/memory/niche-fitness-signals.md` — month's accumulated signals
+- Outreach/prospecting status from consulting pipeline files and relevant daily notes — especially reply rate, sent volume, zero-response warnings, warm-intro notes, and follow-up status
+- Active client proof/status for Aya and adjacent projects — completed work, active paid work, stalled work, and usable proof assets
 - Previous month's report: `~/.openclaw/workspace/memory/research/niche-fitness-[last month].md`
 
-### Step 2: Score current niches
-For each of the 3 current niches, run 2–3 web searches:
-- `[niche] AI automation demand NYC 2026`
-- `[niche] AI consulting competitors market`
-- `[niche] SMB software spending trends`
+**Mandatory last-48-hours gate:** Before recommendations, write a short **Recent Context Applied** section listing the 3–7 most important changes from the last 48 hours and exactly how each changed scoring. If there are zero changes, say so explicitly.
 
-Score each dimension 1–5 based on findings. Document the reasoning per score.
+### Step 2: Score current niches
+Use the 8-dimension rubric above. Do NOT rely only on old scores — recalculate.
+
+Important: score n8n and Agentforce tracks separately. An SMB on QuickBooks + email may be a great n8n prospect but a terrible Agentforce prospect. A Salesforce-heavy MGA may be a great Agentforce prospect but irrelevant for n8n.
+
+Add a separate **Action Rank** for each niche after scoring:
+- **Primary** — focus prospecting/content/demo work this month
+- **Adjacent expansion** — pursue when it leverages existing proof or a warm/local trigger
+- **Hold/test** — keep monitoring; send limited tests only
+- **Strategic proof lane** — build capability/proof for jobs or future high-ticket offers, not current cold outreach focus
+- **Deprioritize** — no active effort this month
 
 ### Step 3: Scan for emerging alternatives — two separate tracks
+Run web searches for current month signals. Keep cheap: 5–8 searches max.
 
-**Track A — n8n emerging niches** (2 searches):
-- `best niches AI workflow automation consulting SMB 2026`
-- `n8n "AI agents" demand fastest growing verticals SMB`
+**n8n/SMB automation alternatives:**
+- NYC property management AI automation leasing maintenance
+- construction AI automation field operations subcontractor invoice
+- wholesale distribution AI automation order entry inventory RFQ
+- SMB operations AI workflow automation vertical market
 
-Identify 2–3 candidate n8n niches NOT currently targeted. These are stack-agnostic — any SMB with manual processes qualifies.
+**Agentforce/Salesforce alternatives:**
+- Salesforce Agentforce insurance MGA claims underwriting
+- Salesforce Agentforce manufacturing service operations
+- Salesforce Agentforce financial services wealth management
+- Salesforce Data Cloud industry use cases AI agents
 
-**Track B — Agentforce emerging niches** (2 searches):
-- `Salesforce Agentforce implementation demand industries 2026`
-- `which industries use Salesforce most SMB mid-market NYC`
-
-Identify 2–3 candidate Agentforce niches: industries where (a) Salesforce penetration is meaningful (>20% of mid-size companies) AND (b) AI agent use cases are obvious (intake, routing, status, renewals). Score each on the rubric PLUS note Salesforce penetration estimate.
-
-Good Agentforce niche candidates beyond insurance: financial services brokerages, commercial real estate, staffing agencies, legal (mid-size firms on Salesforce), healthcare admin. These all have Salesforce presence and repetitive intake/routing workflows.
-
-Also check signals accumulator (`niche-fitness-signals.md`) for any EMERGING signals flagged by the niche monitor this month — split by n8n vs Agentforce relevance.
+Also check the signals accumulator for any EMERGING signals flagged by the niche monitor this month — split by n8n vs Agentforce relevance.
 
 ### Step 4: Comparative analysis — two score tables
+Output two tables:
 
 **n8n Track:**
-| Niche | Demand | Commodity Risk | Competition | Credibility | Deal $ | Stack Fit | TOTAL | Status |
-|-------|--------|----------------|-------------|-------------|--------|-----------|-------|--------|
-| Construction | X | X | X | X | X | X | XX | Current |
-| Wholesale | X | X | X | X | X | X | XX | Current |
-| [n8n Alt 1] | X | X | X | X | X | X | XX | Emerging |
-| [n8n Alt 2] | X | X | X | X | X | X | XX | Emerging |
+| Niche | Demand | Commodity Risk | Competition | Credibility | Deal $ | Stack Fit | Proof Proximity | GTM Traction | Total | Action Rank | Recommendation |
 
 **Agentforce Track:**
-| Niche | Demand | Commodity Risk | Competition | Credibility | Deal $ | Stack Fit (incl. SF penetration) | TOTAL | Status |
-|-------|--------|----------------|-------------|-------------|--------|----------------------------------|-------|--------|
-| Insurance | X | X | X | X | X | X | XX | Current |
-| [AF Alt 1] | X | X | X | X | X | X | XX | Emerging |
-| [AF Alt 2] | X | X | X | X | X | X | XX | Emerging |
+| Niche | Demand | Commodity Risk | Competition | Credibility | Deal $ | Stack Fit | Proof Proximity | GTM Traction | Total | Action Rank | Recommendation |
+
+Then output a **Reality Adjustment** section explaining where the final recommendation differs from raw score because of outreach response, proof proximity, client status, strategic priority, or new context from the last 48 hours.
 
 ### Step 5: Generate recommendation — one per track
+For each track:
+- **Stay the course** if current niche is still top 1–2 AND has proof/traction support
+- **Shift weight** if a new niche ties/beats current OR has materially better proof proximity / GTM traction
+- **Pivot** only if current niche scores <24 OR another niche beats it by 6+ points AND JT has credible entry path
+- **Hold/test** if demand is strong but proof or response data is weak
 
-**n8n recommendation**: based on n8n track scores:
-- **Stay the course**: both current niches 18+, no alternative scores 4+ higher
-- **Weight shift**: a current niche is 12–17 OR an alternative scores 4+ higher → recommend adjusting focus
-- **Pivot**: a current niche drops below 12 → recommend winding down
-- **Add niche**: an alternative scores 22+ AND JT has credibility path → recommend adding
+Recommendation must include:
+- Keep / add / hold / drop decisions
+- Why now, tied to last-48-hours context and current proof/reply reality
+- One action for next month (e.g., "build mini-demo for X", "test 10 prospects", "write 2 posts")
+- Confidence level: High / Medium / Low, based on completeness of inputs and freshness of data
 
-**Agentforce recommendation**: based on Agentforce track scores:
-- **Stay the course**: Insurance 18+, no alternative scores 4+ higher
-- **Add niche**: an alternative scores 22+ AND has sufficient Salesforce penetration → recommend adding alongside Insurance (don't replace until Insurance drops)
-- **Pivot**: Insurance drops below 12 → recommend replacing with highest-scoring alternative
-- **Double down**: Insurance 24+ AND an emerging niche also 22+ → recommend adding the second Agentforce niche
-
-Give TWO direct recommendations — one per track. Be specific: name the niche, state the action.
+**Anti-static-table rule:** The Telegram summary must not merely repeat scores. It must state the operational decision: where JT should put prospecting, proof-building, content, and demo effort this month.
 
 ### Step 6: Write report
 Save to `~/.openclaw/workspace/memory/research/niche-fitness-[YYYY-MM].md`:
 
-```
+```markdown
 # Niche Fitness Report — [Month Year]
 Generated: [timestamp]
 
-## Score Table
-[full table]
+## Recent Context Applied
+- [Last-48-hour change] → [scoring/recommendation impact]
+
+## Score Tables
+### n8n Track
+| Niche | Demand | Commodity Risk | Competition | Credibility | Deal $ | Stack Fit | Proof Proximity | GTM Traction | Total | Action Rank | Recommendation |
+
+### Agentforce Track
+| Niche | Demand | Commodity Risk | Competition | Credibility | Deal $ | Stack Fit | Proof Proximity | GTM Traction | Total | Action Rank | Recommendation |
+
+## Reality Adjustment
+- Where raw score changed because of proof proximity, reply data, client status, or strategic priority.
 
 ## Key Findings
-[3–5 bullet points — what changed vs. last month, biggest signals]
+- ...
 
 ## Recommendation
-[Direct recommendation — one paragraph, specific action]
+- **Primary:** ...
+- **Adjacent expansion:** ...
+- **Hold/test:** ...
+- **Strategic proof lane:** ...
+
+## Next Month Actions
+- ...
+
+## Missing Inputs / Confidence
+- Confidence: High / Medium / Low
+- Missing inputs: ...
 
 ## Signals Used
-[list of signal file entries that informed this analysis]
+- ...
 ```
 
-### Step 7: Push to Mission Control if action needed
-If recommendation is "weight shift" or "pivot" or "add niche":
-```
-curl -s -X POST http://localhost:3000/api/tasks \
-  -H 'Content-Type: application/json' \
-  -d '{"title":"🎯 Niche Review: [recommendation summary]","description":"[detail from report]","status":"todo","priority":"high","sortOrder":20,"assignee":"jt","project":"Consulting"}'
-```
+Then update `MEMORY.md` Consulting Niche-Skill Matrix if the recommendation changes.
 
-### Step 8: Send Telegram summary
-Send to JT (channel=telegram, target=6608544825):
+Telegram summary format:
 
-```
+```markdown
 🎯 *Monthly Niche Fitness Review — [Month]*
 
-**n8n Track:**
-- Construction: XX/30 ([status emoji])
-- Wholesale: XX/30 ([status emoji])
-- Top alternative: [Niche]: XX/30 — [1-line rationale]
-→ Recommendation: [direct statement]
+**Recent context applied:** [1 sentence: what changed in the last 48 hours]
 
-**Agentforce Track:**
-- Insurance: XX/30 ([status emoji])
-- Top alternative: [Niche]: XX/30 (SF penetration: ~X%) — [1-line rationale]
-→ Recommendation: [direct statement]
+**n8n GTM decision:**
+- Primary: [niche] — [why]
+- Adjacent expansion: [niche] — [why]
+- Hold/test: [niche] — [why]
+
+**Agentforce decision:**
+- [Primary/strategic proof lane/hold]: [niche] — [why]
+
+**Next action:** [one concrete action for this month]
 
 _Full report: memory/research/niche-fitness-[YYYY-MM].md_
 ```
 
-Status emojis: ✅ 24+ | 🟡 18–23 | 🟠 12–17 | 🔴 <12
-
-### Step 9: Update MEMORY.md + Skills Researcher Query 6
-Update the Consulting Niche-Skill Matrix section in MEMORY.md:
-- Add `Last reviewed: [date]` and current scores to each niche entry
-- If recommendation changes the matrix, update it
-
-**If the niche matrix changed (weight shift, pivot, or add niche):**
-Also update Query 6 (the rotating niche slot) in the skills researcher AGENT.md:
+## Skills Researcher Update Rule
+**If the recommendation changes the active niche matrix (shift, pivot, or add niche):** Also update Query 6 (the rotating niche slot) in the skills researcher AGENT.md:
 `~/.openclaw/workspace/agents/skills-researcher/AGENT.md`
-Find the `QUERY 6 — ROTATING NICHE SLOT` block and rewrite the query to match the new primary niche stack.
-Example: if pivoting from Agentforce/insurance → HubSpot/retail, change the query accordingly.
-This keeps the skills researcher scanning for tools relevant to wherever JT Somwaru Consulting is actually heading.
+
+Find the `QUERY 6 — ROTATING NICHE SLOT` block and rewrite the query to match the new primary niche stack. Example: if pivoting from Agentforce/insurance → HubSpot/retail, change the query accordingly. This keeps the skills researcher scanning for tools relevant to wherever JT Somwaru Consulting is actually heading.
 
 ## Cost Target
-< $0.30 per monthly run (web searches only, no X API)
+< $0.30 per monthly run (web searches only, no X API).

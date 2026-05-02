@@ -134,6 +134,7 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 - **Check for duplicates first:** `curl -s http://localhost:3000/api/tasks | python3 -c "import sys,json; [print(t['title']) for t in json.load(sys.stdin)]" | grep -i "[keyword]"`
 - **sortOrder bands:** HIGH: 10-40 quick wins | 50-90 alerts | 100+ strategic | MEDIUM: 10,20,30… | speculative: 500+
 
+- Client OS template: `skills/opticfy-ops/templates/client-os/` — copy into active client folders.
 ## Consulting Pipeline Drive Sync
 - Script: `python3 ~/.openclaw/workspace/scripts/pipeline_drive_sync.py --slug [slug] --client "[Name]" --stage [deck|outreach|all]`
 - Syncs deck + outreach draft to Google Drive: Eve — Drafts / Consulting / Clients / [Company Name] / Outreach|Decks/

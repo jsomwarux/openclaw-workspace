@@ -27,7 +27,7 @@ Solutions Architect with 6 years of enterprise systems experience in generative 
 ## EXPERIENCE
 
 ### Founder and AI Implementation Consultant
-**Opticfy**, New York, NY, 2025–Present
+**JT Somwaru Consulting**, New York, NY, 2025–Present
 
 NYC-based AI consulting delivering full-cycle generative AI implementations: discovery, architecture, build, and deployment for enterprise-adjacent clients.
 

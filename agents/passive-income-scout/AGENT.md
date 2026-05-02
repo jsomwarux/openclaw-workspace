@@ -197,6 +197,28 @@ Run this as a capability lens, not a mandatory quota. Generate at least 1 candid
 
 Include qualifying ideas in Step 3 output labeled `[M9-Vision]`. At the end of the scout report, add a short `Vision Model Opportunity Notes` section: what visual jobs appeared promising, what was rejected, and whether any vision idea deserved strategist review.
 
+### Methodology 10: Agent-Purchasable Microservice Lens
+
+Stripe Link for agents / agent wallets make it possible for agents to request user-approved purchases while completing tasks. Do NOT overweight this. Treat it as one additional opportunity lens after Exploding Topics, Google Trends, complaint mining, API mining, and vision scan.
+
+Look for narrow products/services that an agent would rationally buy mid-task because the output saves time, reduces risk, or unlocks a next step.
+
+Good candidates:
+- $5–$50 one-shot outputs: audit, score, lookup, checklist, enrichment, verification, comparison, report
+- Agent-readable/API-first result format: JSON, markdown, PDF, CSV, webhook callback
+- Clear task context: the agent is already doing research, buying, compliance, property analysis, vendor vetting, job/applicant screening, travel planning, procurement, or SMB workflow setup
+- Low support burden and instant/near-instant fulfillment
+- Can be built from JT's advantages: consulting workflow docs, anomaly audits, property/construction ops, ranking engines, niche data, APIs, OpenClaw/n8n automation
+
+Bad candidates:
+- Broad marketplaces
+- “For agents” wrappers with no urgent job-to-be-done
+- Anything requiring humans to manually fulfill each request
+- Anything that only works if agentic commerce becomes mainstream immediately
+
+For each raw idea, add:
+**Agent-purchasable angle:** [Would an agent buy this mid-task? Who is the agent working for? What exact task? Price? Output format?]
+
 ### IMPORTANT: Required Input Files
 
 Read ALL of these before generating ideas:
@@ -204,6 +226,7 @@ Read ALL of these before generating ideas:
 2. `memory/passive-income/weekly-apis.md` (API discovery — Methodology 8)
 3. `memory/passive-income/weekly-exploding-topics.md` (Exploding Topics — Methodology 6)
 4. `memory/passive-income/weekly-google-trends.md` (pytrends momentum — Methodology 7)
+5. `memory/future-signals.md` (agentic commerce / Stripe Link signals — Methodology 10)
 5. All prior scout reports in `memory/passive-income/` (to avoid duplicating ideas)
 
 ---

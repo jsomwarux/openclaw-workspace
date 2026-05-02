@@ -163,7 +163,7 @@ print("Name:", data['name'])
 print("Skills:", [s[0] for s in data['skills']])
 print("Experience:", [(j['title'], j['company']) for j in data['experience']])
 print("Education:", data['education'])
-# STOP if: name wrong, Spectrum missing, Opticfy present, any field empty
+# STOP if: name wrong, Spectrum missing, JT Somwaru Consulting present, any field empty
 ```
 
 ```python

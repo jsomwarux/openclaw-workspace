@@ -1,5 +1,5 @@
 # ConversationFirst — Agentforce UX Design Framework
-*Version 1.0 | Opticfy by JT Somwaru*
+*Version 1.0 | JT Somwaru Consulting by JT Somwaru*
 
 ---
 
@@ -18,7 +18,7 @@
 **Project:** `[Client Name — Project Name]`
 **Date:** `[YYYY-MM-DD]`
 **Version:** `[1.0]`
-**Prepared by:** JT Somwaru, Opticfy
+**Prepared by:** JT Somwaru, JT Somwaru Consulting
 
 ---
 
@@ -178,7 +178,7 @@
 
 | Role | Name | Date |
 |---|---|---|
-| Conversation Designer | JT Somwaru, Opticfy | |
+| Conversation Designer | JT Somwaru, JT Somwaru Consulting | |
 | Client Stakeholder | | |
 | Technical Owner | | |
 
@@ -391,7 +391,7 @@ flowchart TD
 
 **Agent Name:** `__________________________`
 **Client:** `__________________________`
-**Reviewer:** JT Somwaru, Opticfy
+**Reviewer:** JT Somwaru, JT Somwaru Consulting
 **Review Date:** `__________________________`
 **Target Go-Live:** `__________________________`
 
@@ -466,7 +466,7 @@ flowchart TD
 # ConversationFirst™
 ### A Methodology for Agentforce Agents That Are Actually Usable
 
-*By JT Somwaru | Opticfy AI Consulting*
+*By JT Somwaru | JT Somwaru Consulting AI Consulting*
 
 ---
 
@@ -532,15 +532,15 @@ ConversationFirst is designed for mid-market organizations deploying Agentforce 
 
 #### The Bottom Line
 
-Agentforce is a powerful platform. The gap between a functional agent and an effective one isn't technical — it's conversational. ConversationFirst is how Opticfy closes that gap.
+Agentforce is a powerful platform. The gap between a functional agent and an effective one isn't technical — it's conversational. ConversationFirst is how JT Somwaru Consulting closes that gap.
 
 ---
 
 *To apply ConversationFirst to your next Agentforce deployment, contact:*
-**JT Somwaru | Opticfy AI Consulting**
-*jt@opticfy.co | linkedin.com/in/jon-trevor-somwaru*
+**JT Somwaru | JT Somwaru Consulting AI Consulting**
+*jt@jt-consulting.co | linkedin.com/in/jon-trevor-somwaru*
 
 ---
 
 *ConversationFirst — Agentforce UX Design Framework | Version 1.0*
-*© 2026 Opticfy by JT Somwaru. For client and portfolio use.*
+*© 2026 JT Somwaru Consulting by JT Somwaru. For client and portfolio use.*

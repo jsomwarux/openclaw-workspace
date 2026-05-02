@@ -40,7 +40,7 @@ user: Conversation info (untrusted metadata):
 }
 ```
 
-Set up the heartbeat and morning brief system. Create HEARTBEAT.md with these settings: Morning Brief (7:30 AM EST daily): Top 3 priority tasks for today Any overnight news relevant to our goals (Opticfy, AI, crypto, job market) Status of any running automations or pending tasks One proactive suggestion (something you think we should do based on your mission statement) Heartbeat (every 2 hours during active hours 8AM-11PM EST): Check pending tasks queue Monitor any running cron jobs If idle, pick the highest-priority item from your mission and work on it Active Hours: 8:00 AM to 11:00 PM EST. Outside these hours, no heartbeats (save tokens). Proactive Work Slot: During heartbeats, if there's nothing urgent, work on mission-aligned tasks: client research, market monitoring, app improvements, content drafting. Log what you did in daily notes.
+Set up the heartbeat and morning brief system. Create HEARTBEAT.md with these settings: Morning Brief (7:30 AM EST daily): Top 3 priority tasks for today Any overnight news relevant to our goals (JT Somwaru Consulting, AI, crypto, job market) Status of any running automations or pending tasks One proactive suggestion (something you think we should do based on your mission statement) Heartbeat (every 2 hours during active hours 8AM-11PM EST): Check pending tasks queue Monitor any running cron jobs If idle, pick the highest-priority item from your mission and work on it Active Hours: 8:00 AM to 11:00 PM EST. Outside these hours, no heartbeats (save tokens). Proactive Work Slot: During heartbeats, if there's nothing urgent, work on mission-aligned tasks: client research, market monitoring, app improvements, content drafting. Log what you did in daily notes.
 assistant: On it. Let me check the OpenClaw cron setup first, then write the files.
 assistant: Gateway needs pairing for cron commands. Let me write HEARTBEAT.md first, then work around the cron issue.
 assistant: Now let me tackle the cron issue — need to find the gateway token to authenticate cron commands:
@@ -62,7 +62,7 @@ assistant: No REST API — it's WebSocket only, needs pairing. Everything's set 
 - Morning Brief spec (7:30 AM daily)
 - 2h heartbeat behavior + proactive work priority queue
 - Active hours enforcement (8AM–11PM EST)
-- Goals context: Opticfy, AI, crypto, job market
+- Goals context: JT Somwaru Consulting, AI, crypto, job market
 
 **Cron jobs written** to `~/.openclaw/cron/jobs.json`:
 1. `eve-morning-brief-001` — 7:30 AM EST daily, isolated session → delivers to your Telegram

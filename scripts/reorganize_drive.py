@@ -4,7 +4,7 @@ reorganize_drive.py — One-time Drive restructure for JT Somwaru
 - Renames "JT Somwaru" → "Consulting" under Eve — Drafts
 - Creates new folder hierarchy (Clients, Content, etc.)
 - Moves existing files to correct locations
-- Deletes Opticfy folders
+- Deletes JT Somwaru Consulting folders
 """
 import json, os, sys, warnings
 warnings.filterwarnings("ignore")
@@ -167,14 +167,14 @@ def main():
         else:
             print(f"  Already in Decks: {f['name']}")
 
-    # ── 8. Delete Opticfy folders ─────────────────────────────────────────────
-    print("\nRemoving Opticfy folders...")
-    opticfy_folders = find_folder_any(drive, "Opticfy")
-    if opticfy_folders:
-        for f in opticfy_folders:
+    # ── 8. Delete JT Somwaru Consulting folders ─────────────────────────────────────────────
+    print("\nRemoving JT Somwaru Consulting folders...")
+    jt-consulting_folders = find_folder_any(drive, "JT Somwaru Consulting")
+    if jt-consulting_folders:
+        for f in jt-consulting_folders:
             trash_folder(drive, f["id"], f["name"])
     else:
-        print("  No Opticfy folders found (already gone or never existed)")
+        print("  No JT Somwaru Consulting folders found (already gone or never existed)")
 
     # Also check for "JT Somwaru — Client Pipeline" old folder
     pipeline_folders = find_folder_any(drive, "JT Somwaru — Client Pipeline")

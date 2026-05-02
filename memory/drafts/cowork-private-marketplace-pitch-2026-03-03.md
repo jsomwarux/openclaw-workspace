@@ -1,4 +1,4 @@
-# Opticfy — Claude Cowork Private Plugin Marketplace Service Pitch
+# JT Somwaru Consulting — Claude Cowork Private Plugin Marketplace Service Pitch
 **Drafted:** 2026-03-03 (overnight agent)
 **Status:** Draft — JT review required
 **Related tasks:** j571xe2z3wghbngbsk3a9tsa5x824dhf (Cowork private marketplace), j5741adzrnk8mgekqrexce5erd8206qx (Cowork Plugins v1.1.0)
@@ -7,7 +7,7 @@
 
 ## 1. Service Positioning
 
-Anthropic just launched private plugin marketplaces for Claude — meaning your business can now run its own internal app store of AI tools, built specifically for your workflows, controlled by your admins, and deployed only to your team. Opticfy builds and deploys those marketplaces for NYC small and mid-size businesses. We handle the entire stack — discovery, design, build, deployment, and training — so you go from "we're curious about AI" to "our team is using it daily" in 4–6 weeks.
+Anthropic just launched private plugin marketplaces for Claude — meaning your business can now run its own internal app store of AI tools, built specifically for your workflows, controlled by your admins, and deployed only to your team. JT Somwaru Consulting builds and deploys those marketplaces for NYC small and mid-size businesses. We handle the entire stack — discovery, design, build, deployment, and training — so you go from "we're curious about AI" to "our team is using it daily" in 4–6 weeks.
 
 ---
 
@@ -46,13 +46,13 @@ Live training session for your team — role-specific, not a generic demo. We do
 
 ## 4. Key Differentiators
 
-**Opticfy vs. DIY**
+**JT Somwaru Consulting vs. DIY**
 Anthropic's tooling is more approachable than it was, but "easier" doesn't mean easy. Getting a private marketplace configured correctly — with the right permissions, the right connectors, and plugins that actually match your workflows — takes someone who's done it before. Most businesses that try DIY spend 3 months on a half-working setup and give up. We get you live in 6 weeks with tools your team will actually use.
 
-**Opticfy vs. a Big SI (Deloitte, Accenture, etc.)**
+**JT Somwaru Consulting vs. a Big SI (Deloitte, Accenture, etc.)**
 They'll put a junior consultant on your account, bill you $50K for a discovery phase, and deliver a deck. We build the thing. JT runs your project personally — not a team of people who've never spoken to an NYC property manager or a Brooklyn construction firm. We're priced for SMBs and structured for fast delivery. You're not funding someone else's learning curve.
 
-**The Opticfy Edge**
+**The JT Somwaru Consulting Edge**
 - Niche focus: we work specifically with NYC property management, construction, wholesale, and insurance — not 40 industries
 - Speed: 4–6 week implementation vs. 3–6 month enterprise timelines
 - Practicality: plugins are designed around your actual workflows, not generic AI demos
@@ -151,7 +151,7 @@ They'll put a junior consultant on your account, bill you $50K for a discovery p
 
 **Opening paragraph (email body):**
 
-> Last week, Anthropic launched private plugin marketplaces for Claude — think of it as an internal app store of AI tools, built specifically for your business, deployed only to your team, controlled by your admins. For [property management firms / contractors / insurance agencies] in NYC, this is the first time enterprise-grade AI infrastructure has been accessible at a price point and complexity level that actually fits how you operate. I'm JT Somwaru, founder of Opticfy — we implement these private marketplaces for NYC SMBs end-to-end, and we just launched a pilot package specifically for [niche] that gets you live in 4 weeks. Worth a 20-minute call to see if it's a fit?
+> Last week, Anthropic launched private plugin marketplaces for Claude — think of it as an internal app store of AI tools, built specifically for your business, deployed only to your team, controlled by your admins. For [property management firms / contractors / insurance agencies] in NYC, this is the first time enterprise-grade AI infrastructure has been accessible at a price point and complexity level that actually fits how you operate. I'm JT Somwaru, founder of JT Somwaru Consulting — we implement these private marketplaces for NYC SMBs end-to-end, and we just launched a pilot package specifically for [niche] that gets you live in 4 weeks. Worth a 20-minute call to see if it's a fit?
 
 *(JT: swap [niche] for the specific vertical. Personalize the first sentence if you have a specific pain point for the prospect.)*
 

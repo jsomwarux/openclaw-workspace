@@ -116,18 +116,18 @@ def upload_to_drive(doc_obj, filename, folder_name):
     root_folders = root_res.get('files', [])
     root_id = root_folders[0]['id'] if root_folders else None
 
-    # Find Opticfy subfolder
-    opticfy_res = drive.files().list(
-        q=f"name='Opticfy' and mimeType='application/vnd.google-apps.folder' and '{root_id}' in parents and trashed=false",
+    # Find JT Somwaru Consulting subfolder
+    jt-consulting_res = drive.files().list(
+        q=f"name='JT Somwaru Consulting' and mimeType='application/vnd.google-apps.folder' and '{root_id}' in parents and trashed=false",
         fields='files(id)'
     ).execute()
-    opticfy_folders = opticfy_res.get('files', [])
-    opticfy_id = opticfy_folders[0]['id'] if opticfy_folders else root_id
+    jt-consulting_folders = jt-consulting_res.get('files', [])
+    jt-consulting_id = jt-consulting_folders[0]['id'] if jt-consulting_folders else root_id
 
     meta = {
         'name': filename,
         'mimeType': 'application/vnd.google-apps.document',
-        'parents': [opticfy_id] if opticfy_id else []
+        'parents': [jt-consulting_id] if jt-consulting_id else []
     }
     media = MediaIoBaseUpload(buf,
         mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -171,7 +171,7 @@ p.paragraph_format.space_after = Pt(4)
 r = p.add_run(
     'Business Systems Analyst with 6 years at Spectrum Enterprise building enterprise system implementations '
     'through stakeholder observation, workflow analysis, and cross-functional coordination — the exact '
-    'foundation this role requires. Now designing and deploying AI automation systems through Opticfy, '
+    'foundation this role requires. Now designing and deploying AI automation systems through JT Somwaru Consulting, '
     'with a track record of moving from POC to production across multiple AI-enabled tools and workflows. '
     'Deep hands-on experience with LLMs, AI agents, responsible AI practices, and vibe-coding functional '
     'prototypes. The person everyone asks about the latest AI — and who has shipped things that prove it.'
@@ -193,7 +193,7 @@ set_font(r, 9.3, color=GRAY)
 # ── Experience ────────────────────────────────────────────────────────────────
 heading(doc, 'Professional Experience')
 
-job_title(doc, 'Founder & AI Automation Consultant', 'Opticfy  ·  New York, NY  ·  2025 – Present')
+job_title(doc, 'Founder & AI Automation Consultant', 'JT Somwaru Consulting  ·  New York, NY  ·  2025 – Present')
 bullet(doc, 'Defined the full AI consulting playbook — scripts, templates, evaluation frameworks, and implementation processes — '
        'from scratch; designed a 4-stage multi-agent delivery pipeline (Research → Workflow Builder → Presentation → Production).',
        bold_prefix='Playbook Creation:')
@@ -265,7 +265,7 @@ skill_row(doc, 'Methodologies', 'AI-directed development (vibe coding), responsi
 skill_row(doc, 'Tools', 'Claude Code, Firecrawl, Brave Search API, Google Drive/Docs API, Convex, LaunchAgents')
 
 # ── Upload Resume ─────────────────────────────────────────────────────────────
-resume_url = upload_to_drive(doc, 'Resume — Squarespace People AI SA (Tailored)', 'Opticfy')
+resume_url = upload_to_drive(doc, 'Resume — Squarespace People AI SA (Tailored)', 'JT Somwaru Consulting')
 print(f'✅ Resume: {resume_url}')
 
 
@@ -328,7 +328,7 @@ body(cl,
 
 # Para 3 — AI work
 body(cl,
-    'Through Opticfy, I\'ve applied that foundation to AI. I\'ve built a 4-stage multi-agent delivery pipeline, '
+    'Through JT Somwaru Consulting, I\'ve applied that foundation to AI. I\'ve built a 4-stage multi-agent delivery pipeline, '
     'shipped production AI tools using a POC-first approach, and deployed Salesforce Agentforce agents from '
     'Agent Builder configuration through full production. I built responsible AI infrastructure from scratch — '
     'human oversight checkpoints, automated confidence scoring, decision audit logs, and explainability reports '
@@ -362,5 +362,5 @@ r_sign = p_sign.add_run('JT Somwaru')
 set_font(r_sign, 10.5, bold=True, color=DARK)
 
 # ── Upload Cover Letter ────────────────────────────────────────────────────────
-cl_url = upload_to_drive(cl, 'Cover Letter — Squarespace People AI SA', 'Opticfy')
+cl_url = upload_to_drive(cl, 'Cover Letter — Squarespace People AI SA', 'JT Somwaru Consulting')
 print(f'✅ Cover Letter: {cl_url}')

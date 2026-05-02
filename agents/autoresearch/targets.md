@@ -29,7 +29,7 @@
 | overnight | agents/overnight/ (overnight cron payload) | checklists/overnight.md | stable | 1.000 | 2026-03-31 | 2026-03-29 |
 | outreach-email-pivot | scripts/outreach_email_pivot.py + cron payload | checklists/outreach-email-pivot.md | pending | — | — | 2026-04-27 |
 | runbook | skills/runbook/SKILL.md | checklists/runbook.md | pending | — | — | 2026-04-12 |
-| opticfy-pipeline | skills/opticfy-pipeline/SKILL.md | checklists/opticfy-pipeline.md | pending | — | — | 2026-04-20 |
+| jt-consulting-pipeline | skills/jt-consulting-pipeline/SKILL.md | checklists/jt-consulting-pipeline.md | pending | — | — | 2026-04-20 |
 | passive-income-scout | agents/passive-income-scout/AGENT.md | checklists/passive-income-scout.md | pending | — | — | 2026-04-20 |
 | content-scheduler | agents/content-scheduler/AGENT.md | checklists/content-scheduler.md | pending | — | — | 2026-04-20 |
 | vibe-post | scripts/vibe-post.py | checklists/vibe-post.md | pending | — | — | 2026-04-20 |

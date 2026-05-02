@@ -22,7 +22,7 @@ Strategic SA working with Fortune 500 prospects to architect generative AI solut
 ## JT Fit Analysis
 ✅ **Strong alignment:**
 - BSA background maps directly to "technical discovery" + "translating business challenges → AI solutions"
-- Opticfy work = live proof of enterprise AI consulting
+- JT Somwaru Consulting work = live proof of enterprise AI consulting
 - jtsomwaru.com portfolio ready to show
 - Articulates both business ops AND technology — rare, exactly what enterprise SA needs
 

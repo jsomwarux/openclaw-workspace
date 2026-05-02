@@ -97,7 +97,7 @@ If you're a business that wants autonomous AI agents without the security risk:
 
 That's what a production deployment looks like.
 
-That's what Opticfy builds.
+That's what JT Somwaru Consulting builds.
 
 DMs open.
 
@@ -148,11 +148,11 @@ That's not a warning. That's a market gap.
 
 Businesses aren't going to stop wanting autonomous AI agents because of a WIRED headline. They're going to want someone who knows how to deploy them safely.
 
-That's what Opticfy does.
+That's what JT Somwaru Consulting does.
 
 If your business is exploring AI agents and the security question is holding you back — let's talk.
 
-#AIAgents #EnterpriseAI #OpenClaw #AISecurity #Agentforce #Opticfy
+#AIAgents #EnterpriseAI #OpenClaw #AISecurity #Agentforce #JT Somwaru Consulting
 
 ---
 

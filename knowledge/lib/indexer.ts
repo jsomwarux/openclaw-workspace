@@ -16,7 +16,7 @@ type IndexSource = "daily-notes" | "research" | "general";
 function detectCategory(filePath: string, content: string): Category {
   const lower = `${filePath} ${content.slice(0, 500)}`.toLowerCase();
   if (lower.includes("crypto") || lower.includes("bitcoin") || lower.includes("eth")) return "crypto";
-  if (lower.includes("opticfy") || lower.includes("client") || lower.includes("market")) return "business";
+  if (lower.includes("jt-consulting") || lower.includes("client") || lower.includes("market")) return "business";
   if (lower.includes("ai") || lower.includes("llm") || lower.includes("model") || lower.includes("tool")) return "tech";
   if (lower.includes("health") || lower.includes("habit") || lower.includes("goal")) return "personal";
   if (lower.includes("project") || lower.includes("build") || lower.includes("feature")) return "projects";
@@ -38,7 +38,7 @@ function extractTags(content: string, filePath: string): string[] {
   if (dateMatch) tags.add("daily-note");
 
   // Keywords
-  if (content.toLowerCase().includes("opticfy")) tags.add("opticfy");
+  if (content.toLowerCase().includes("jt-consulting")) tags.add("jt-consulting");
   if (content.toLowerCase().includes("bitcoin") || content.toLowerCase().includes("btc")) tags.add("bitcoin");
   if (content.toLowerCase().includes("ethereum") || content.toLowerCase().includes("eth")) tags.add("ethereum");
 

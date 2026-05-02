@@ -1,4 +1,4 @@
-# Opticfy Competitive Landscape Research
+# JT Somwaru Consulting Competitive Landscape Research
 *Research by Eve | February 22, 2026*
 
 ---
@@ -13,17 +13,17 @@
 - Claim: 2.5 hours saved daily per employee
 - Niches served: finance, healthcare, real estate, construction, e-commerce, professional services
 - **Weakness:** Broad/generic. No niche depth. Same pitch to a contractor and a fintech startup. No proprietary agent stack.
-- **Opticfy edge:** Niche ownership. Go deep in one vertical first (construction) and dominate it. JT speaks the industry's language — that's not something a generic agency can fake.
+- **JT Somwaru Consulting edge:** Niche ownership. Go deep in one vertical first (construction) and dominate it. JT speaks the industry's language — that's not something a generic agency can fake.
 
 **Longi Engineering** — `longieng.com`
 - Positioning: AI consulting + machine learning for NYC businesses
 - Feels more like an engineering/ML firm than a practical automation agency
-- **Opticfy edge:** More implementation-focused, demo-first approach vs. consulting-heavy pitches
+- **JT Somwaru Consulting edge:** More implementation-focused, demo-first approach vs. consulting-heavy pitches
 
 **TechWize (via GoodFirms)**
 - ERP/CRM consulting (Salesforce, MS Dynamics, Oracle) + AI/ML
 - Enterprise-focused, expensive, not accessible to small NYC trades businesses
-- **Opticfy edge:** Price point and accessibility. Opticfy can own the SMB layer they ignore.
+- **JT Somwaru Consulting edge:** Price point and accessibility. JT Somwaru Consulting can own the SMB layer they ignore.
 
 ---
 
@@ -35,23 +35,23 @@ These are tools targeting the same niches. They're subscription SaaS, not implem
 - AI assistant for construction project managers
 - Automates: invoice approvals, RFI tracking, change order tracking
 - Integrates with: Procore, email
-- **Opticfy relationship:** This is a *tool* — Opticfy can become the *implementation partner* for Karmen (or a workflow layer on top of it). Businesses using Karmen still need custom workflows.
+- **JT Somwaru Consulting relationship:** This is a *tool* — JT Somwaru Consulting can become the *implementation partner* for Karmen (or a workflow layer on top of it). Businesses using Karmen still need custom workflows.
 
 **AppFolio Realm-X** — Property management
 - Enterprise-grade AI for property managers
 - Handles: routine tasks, content generation, intelligent recommendations
 - Trusted by thousands of operators across residential, commercial, HOA, student, affordable
-- **Opticfy relationship:** AppFolio is dominant here. But smaller property managers (≤50 units) can't afford AppFolio + implementation. Opticfy builds the workflows they need at a price they can afford.
+- **JT Somwaru Consulting relationship:** AppFolio is dominant here. But smaller property managers (≤50 units) can't afford AppFolio + implementation. JT Somwaru Consulting builds the workflows they need at a price they can afford.
 
 **OpenSpace** — Construction
 - 360° cameras + computer vision for construction site documentation
 - Auto-documents progress
-- **Opticfy relationship:** Aya dashboard (JT's first client) is doing something adjacent. OpenSpace is VC-funded with hardware. Opticfy's edge: software-only, custom dashboards, no hardware dependency.
+- **JT Somwaru Consulting relationship:** Aya dashboard (JT's first client) is doing something adjacent. OpenSpace is VC-funded with hardware. JT Somwaru Consulting's edge: software-only, custom dashboards, no hardware dependency.
 
 **CREAgents.com** — Commercial real estate
 - Vertical AI agentic platform for CRE teams
 - Founded by CRE operators, not generalist technologists
-- **Signal:** Vertical-specific AI agents built by domain experts is THE winning strategy right now. This validates Opticfy's approach.
+- **Signal:** Vertical-specific AI agents built by domain experts is THE winning strategy right now. This validates JT Somwaru Consulting's approach.
 
 ---
 
@@ -61,16 +61,16 @@ These are tools targeting the same niches. They're subscription SaaS, not implem
 No generic NYC AI agency has a credible niche claim. They all say "we serve construction AND healthcare AND fintech AND..." — which means they serve none of them deeply. The CREAgents model (vertical-first, domain-expert-led) is winning.
 
 ### 2. Vertical SaaS creates implementation opportunity, not competition
-The Karmens and AppFolios of the world need humans to implement them well. Small businesses in JT's target niches are underserved by implementation help. Opticfy fills that gap.
+The Karmens and AppFolios of the world need humans to implement them well. Small businesses in JT's target niches are underserved by implementation help. JT Somwaru Consulting fills that gap.
 
-### 3. Opticfy's actual moat
+### 3. JT Somwaru Consulting's actual moat
 - **Domain credibility:** JT's BSA background = rare. Most AI consultants can't speak construction PM or property management workflows fluently. JT can.
 - **Agent stack:** Specialized agents (n8n, Agentforce, data visualization) = proprietary delivery capability, not just advisory.
 - **NYC proximity:** Local relationships matter in construction, property management, trades. NYC presence is an advantage most offshore/remote agencies can't replicate.
-- **Price point:** EY, TechWize, and enterprise-grade vendors ignore SMBs. Opticfy owns that layer.
+- **Price point:** EY, TechWize, and enterprise-grade vendors ignore SMBs. JT Somwaru Consulting owns that layer.
 
 ### 4. Biggest gap in the market
-**No one is doing agent-based implementation specifically for NYC trades businesses** (HVAC, plumbing, electrical, general contracting, property management ≤50 units, wholesale distributors). This is Opticfy's unclaimed territory.
+**No one is doing agent-based implementation specifically for NYC trades businesses** (HVAC, plumbing, electrical, general contracting, property management ≤50 units, wholesale distributors). This is JT Somwaru Consulting's unclaimed territory.
 
 ---
 
@@ -92,15 +92,15 @@ The Karmens and AppFolios of the world need humans to implement them well. Small
 
 **Jampack AI** — raised $3.2M seed (Feb 24, 2026). Agentic platform automating wholesale operations for **CPG brands** (purchase orders, truckload scheduling, supply chain end-to-end). Processing $500M+ annualized wholesale volume after 5 months. Customers: Fishwife, Immi, Path Water.
 
-**Overlap with Opticfy:** Both target wholesale automation. But the niches are distinct:
+**Overlap with JT Somwaru Consulting:** Both target wholesale automation. But the niches are distinct:
 - Jampack = CPG *brands* distributing into wholesale channels (sell-side, brand-first)
-- Opticfy's wholesale target = NYC *distributors/wholesalers* who buy from brands (buy-side, ops-first)
+- JT Somwaru Consulting's wholesale target = NYC *distributors/wholesalers* who buy from brands (buy-side, ops-first)
 
 **Competitive signal:** Jampack's $500M in processing volume in 5 months confirms wholesale automation is a validated, high-urgency market. Investor appetite exists. The category is real.
 
-**Opticfy positioning vs. Jampack:**
-- Opticfy is NOT a product company — no competition on the platform layer
-- Opticfy is the *implementation partner* for distributors who need custom automation (n8n + Agentforce + Claude) — not a SaaS
+**JT Somwaru Consulting positioning vs. Jampack:**
+- JT Somwaru Consulting is NOT a product company — no competition on the platform layer
+- JT Somwaru Consulting is the *implementation partner* for distributors who need custom automation (n8n + Agentforce + Claude) — not a SaaS
 - JT's angle: "A funded startup just validated wholesale automation as a category. Your competitors are already automating. What's your plan?"
 
 **Action for JT:** Use Jampack funding news as a cold outreach hook to NYC wholesale distributors: "This company just raised $3.2M to automate businesses like yours. Here's what that means for you."

@@ -50,6 +50,8 @@ Format: [DATE] — [observation]. (Source: daily-brief.md)
 
 [2026-04-18] — n8n is now appearing as a named required skill at the Senior Solutions Architect level at 2 distinct enterprise companies — the tool has crossed from power-user niche to credentialed enterprise standard in under 3 weeks, confirming that the no-code workflow automation layer is being formally credentialed as a career-tier skill alongside platform-specific certs rather than just implied background experience. (Source: daily-brief.md)
 
+[2026-05-01] — ServiceNow demand is now being framed around consolidating fragmented tools while adding AI, observability, and audit trails for compliance, which makes “AI governance with operational visibility” a sharper enterprise consulting angle than generic agent-building. This maps to JT’s workflow/BSA background better than infrastructure-heavy SA roles. (Source: daily-brief.md)
+
 [2026-04-30] — Mayo Clinic’s IA Enablement role shows the non-developer AI lane is becoming an internal operating-system job: citizen-developer governance, AI literacy, community enablement, office hours, and adoption/value measurement inside Finance and Revenue Cycle. The catch is seniority inflation — the work maps to JT’s skillset, but enterprise healthcare screens for 10–13+ years of formal program-management experience. (Source: daily-brief.md)
 
 [2026-04-29] — Microsoft’s AB-100/Agentic AI Business Solutions Architect prep ecosystem is appearing before the credential is common in JDs, suggesting certification vendors are front-running employer demand for advisory-track AI architect roles. (Source: daily-brief.md)

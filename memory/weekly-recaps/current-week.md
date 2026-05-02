@@ -33,3 +33,7 @@ Archive every Monday, start fresh.
 - Product portfolio updated: Vista launched with ~10 active users; automated TikTok slideshow growth loops running for Nash Satoshi and Vista; passive-income app portfolio should use low-maintenance MVP + automated distribution + kill/pause thresholds.
 - Consulting acquisition reset queued: zero cold outreach replies means strategy/channel/proof/trigger need review; warm/referral lanes and proof-led acquisition should be prioritized.
 - Fixed Mission Control Passive $ tab infinite loading by switching page data source from unresolved Convex client query to working `/api/passive-income` route; API returns 38 ideas and TypeScript passes.
+- 2026-05-01 overnight ops: fixed `scripts/notion-swipe-fetch.py` so content crons can read Notion credentials from `~/.config/env/global.env` without manual shell sourcing; verified swipe fetch works; marked swipe-reference wiring task done. Build Ideas Sync/Guyana remain single historical errors, not >=2 consecutive failures.
+- 2026-05-01: Ran monthly niche fitness review; added Property Management as active n8n vertical, kept P&C Insurance as Agentforce focus, reset signals accumulator.
+
+- 2026-05-01: Integrated services-as-software playbook into consulting ops: Client OS templates, delivery/data-moat rules, and MEMORY strategy update.

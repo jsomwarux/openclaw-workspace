@@ -42,6 +42,10 @@ Update MEMORY.md **in the same turn** — not later, not next session — whenev
 
 Rule: if the decision happened and MEMORY.md doesn't reflect it yet, MEMORY.md is wrong. Fix it before moving on. "I'll update it later" = Rule 1 violation.
 
+
+## New Client Documentation Rule (mandatory)
+New/active/signed client, paid project, or real discovery call → say: "Document this rigorously — every client becomes reusable IP." Create/check client folder, initialize `skills/opticfy-ops/templates/client-os/`, capture edge cases/failures/judgement/objections/inputs/outputs before automating.
+
 ## Core Rules
 1. No mental notes. Write to files immediately. Never say "I'll remember that."
 2. "Figure it out" = research, test, build. Don't ask JT to describe the workaround.
@@ -263,8 +267,7 @@ Daily film review (10AM heartbeat) | Weekly skills audit (Sunday synthesis) | Mo
 Rule: every mistake entry = specific failure + root cause + concrete prevention rule. No exceptions.
 
 ## Voice & Style Reference
-Content voice, tone preferences, and style corrections → `memory/FEEDBACK-LOG.md`
-Operational/process mistakes only → Mistakes Log below.
+Voice/style corrections → `memory/FEEDBACK-LOG.md`; ops mistakes → Mistakes Log below.
 When JT corrects tone, voice, or content style: update FEEDBACK-LOG.md, not here.
 
 ## Critic Mode

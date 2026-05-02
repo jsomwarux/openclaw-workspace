@@ -1,4 +1,4 @@
-# OpenClaw Security Talking Points — Opticfy Enterprise Pitch
+# OpenClaw Security Talking Points — JT Somwaru Consulting Enterprise Pitch
 *Date: 2026-03-01 | Source: WIRED (Feb 17, 2026) + Microsoft Security Blog (Feb 19, 2026) + Giskard.ai*
 *Purpose: Position JT as the consultant who knows how to deploy OpenClaw safely for businesses*
 
@@ -44,7 +44,7 @@ This creates **two audiences JT will encounter:**
 
 ---
 
-## 3 Talking Points for Opticfy Pitches
+## 3 Talking Points for JT Somwaru Consulting Pitches
 
 ### Talking Point 1 — "We control what the agent can and can't touch"
 

@@ -42,3 +42,5 @@
 2026-04-30 agentforce-operations-launch — Salesforce launched Agentforce Operations platform for back-office process automation via AI agents; now in general availability
 2026-04-30 duck-creek-agentic-ai — Duck Creek launched insurance-native agentic AI platform for underwriting and claims transformation
 2026-04-30 dewalt-construction-ai-training — Dewalt national study: construction workforce eager for AI but lacks hands-on training; demand signal + implementation gap
+2026-05-01 property-management-ai-gap — Globest/Building Engines: over 60% of property management teams have not implemented AI technologies yet; massive implementation gap
+2026-05-01 augment-merlin-wholesale — Augment acquires Merlin AI to expand into wholesale distribution; competitor signal in AI automation for wholesale

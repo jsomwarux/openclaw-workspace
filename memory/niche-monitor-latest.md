@@ -1,7 +1,5 @@
-**Last updated:** 2026-04-30 09:01:04 EST
+**Last updated:** 2026-05-01 09:01:21 EST
 
-🟠 **Salesforce launches Agentforce Operations** — New platform streamlining back-office processes via AI agents, now in general availability. Directly expands JT's implementation surface area for back-office automation pitches. Source: constellationr.com, Apr 2026.
+🟠 **Globest: 60%+ of property management teams yet to implement AI** — Over 60% of property teams have not implemented AI technologies yet, per Building Engines data. Massive implementation gap in property management — underserved niche with concrete demand signal. Source: globest.com, Apr 2026.
 
-🟠 **Duck Creek launches insurance-native agentic AI platform** — Major insurance software vendor (Duck Creek) launched dedicated agentic AI platform for underwriting and claims transformation. Direct competitor to custom n8n/Agentforce implementations in insurance. Source: Duck Creek press release, Apr 2026.
-
-🟠 **Dewalt study: Construction workforce eager for AI but lacks hands-on training** — National study reveals construction workers want AI tools but need training. Follows PlanRadar retention signal — construction AI demand is real but implementation gap exists. Source: windowanddoor.com, Apr 2026.
+🟠 **Augment acquires Merlin AI for wholesale distribution expansion** — AI platform Augment acquired Merlin AI specifically to expand into wholesale distribution. Competitor signal in JT's exact niche (wholesale distribution + AI automation). Source: prnewswire.com, Apr 2026.

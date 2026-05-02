@@ -208,3 +208,8 @@
 - **Why deferred:** No RAG deployment currently at scale. H.C. Oswald Cloudflare /crawl ingestion is the candidate but hasn't started.
 - **Trigger:** Any client RAG ingestion project with >5k documents OR H.C. Oswald catalog ingestion begins. Repo: https://github.com/hkuds/lightrag
 - Added: 2026-03-22
+
+## 2026-05-01 — Stripe Link wallet for agents / agentic commerce
+- What it is: Stripe Link now lets agents create user-approved spend requests with non-exposed credentials; early support includes one-time-use cards and shared payment tokens / machine payment protocol paths.
+- Why deferred: real platform shift, but marketplace demand is not proven yet and building too early risks chasing X hype instead of current consulting cash flow.
+- Trigger condition: promote if (1) Stripe/Google/OpenAI/Claude agent checkout adoption becomes common, (2) SMBs begin asking agents to buy services/tools autonomously, or (3) JT has an agent-payable microservice that can be prototyped in <1 week and distributed to agent builders.

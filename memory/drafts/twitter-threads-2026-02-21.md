@@ -77,7 +77,7 @@ This is one setup — but the pattern scales.
 
 Same infrastructure can run specialized business agents: one for client research, one for content, one for code.
 
-Building towards Opticfy on top of this foundation.
+Building towards JT Somwaru Consulting on top of this foundation.
 
 The infrastructure IS the moat.
 

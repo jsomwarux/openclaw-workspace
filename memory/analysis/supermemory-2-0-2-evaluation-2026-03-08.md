@@ -15,7 +15,7 @@ Think of it as MEMORY.md but: semantic search instead of flat text, cloud-backed
 |---------|--------|
 | Auto-Recall | Queries Supermemory before every AI turn, injects relevant memories |
 | Auto-Capture | Stores conversation after every turn — cloud extraction + deduplication |
-| Custom Containers | Route memories to named buckets (e.g., `work`, `personal`, `opticfy`) |
+| Custom Containers | Route memories to named buckets (e.g., `work`, `personal`, `jt-consulting`) |
 | AI Tools | `supermemory_store`, `supermemory_search`, `supermemory_forget`, `supermemory_profile` |
 | CLI Commands | `search`, `profile`, `wipe`, `status` |
 | Config Control | `autoRecall`, `autoCapture`, `maxRecallResults` (default: 10), `captureMode` |
@@ -33,7 +33,7 @@ No public changelog found on npm or GitHub. However, based on the 6-version hist
 - Eve's current memory architecture (MEMORY.md + daily notes) is **manual and lossy** — facts discussed in a session are lost unless Eve explicitly writes them down
 - Supermemory would catch things Eve misses — client details, preferences, context from quick exchanges
 - Semantic search > keyword search over accumulated context
-- Custom containers could route: `opticfy` (client work), `jt-profile` (JT's preferences), `job-search` (application history)
+- Custom containers could route: `jt-consulting` (client work), `jt-profile` (JT's preferences), `job-search` (application history)
 
 ### The honest case against:
 - **Privacy concern**: All conversations go to Supermemory cloud (third-party). JT's client details, financial context, personal preferences → external server. **This is a non-trivial data sharing decision.**
@@ -65,7 +65,7 @@ No public changelog found on npm or GitHub. However, based on the 6-version hist
 **Do not install without JT approval.** Key decisions needed:
 1. **Data privacy**: Are you comfortable with conversation data going to Supermemory cloud?
 2. **Cost**: Check supermemory.ai pricing — Pro tier. If ≤ $20/mo, arguably worth it. If > $20, not justified vs. existing stack.
-3. **Scope**: If approved, configure with `captureMode: "all"` (filters short texts), `maxRecallResults: 5` (reduced from default 10 to protect bootstrap budget), custom containers for `opticfy` / `jt-profile` / `job-search`
+3. **Scope**: If approved, configure with `captureMode: "all"` (filters short texts), `maxRecallResults: 5` (reduced from default 10 to protect bootstrap budget), custom containers for `jt-consulting` / `jt-profile` / `job-search`
 
 **If JT approves:**
 ```bash
@@ -86,7 +86,7 @@ openclaw supermemory setup-advanced  # configure containers + captureMode
   "captureMode": "all",
   "enableCustomContainerTags": true,
   "customContainers": [
-    { "tag": "opticfy", "description": "Client work, pipeline, deliverables" },
+    { "tag": "jt-consulting", "description": "Client work, pipeline, deliverables" },
     { "tag": "jt-profile", "description": "JT's preferences, goals, context" },
     { "tag": "job-search", "description": "Job applications, companies, roles" }
   ]

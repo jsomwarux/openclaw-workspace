@@ -130,7 +130,7 @@ story.append(rule())
 story += section("Professional Summary")
 story.append(Paragraph(
     "Business Systems Analyst with 6 years at Spectrum Enterprise / Charter Communications, "
-    "now designing and deploying AI automation systems through Opticfy. "
+    "now designing and deploying AI automation systems through JT Somwaru Consulting. "
     "Bridges the gap between business operations and agentic AI — configuring Salesforce Agentforce, "
     "building multi-agent orchestration pipelines, and shipping production AI tools via AI-directed development. "
     "Rare profile: deep enterprise BSA experience combined with hands-on AI agent orchestration, "
@@ -156,7 +156,7 @@ story += section("Professional Experience")
 
 story += job(
     "Founder &amp; AI Automation Consultant",
-    "Opticfy  ·  New York, NY  ·  2025 – Present",
+    "JT Somwaru Consulting  ·  New York, NY  ·  2025 – Present",
     [
         "<b>Designed a 4-stage multi-agent delivery pipeline</b> — Research Agent → n8n Workflow Builder → "
         "Presentation Agent → Production Builder — standardizing AI consulting handoffs from prospect "
@@ -188,7 +188,7 @@ story += job(
         "Managed ongoing system configuration and quality assurance for enterprise-grade production "
         "systems with direct impact on revenue-generating product catalog.",
         "Established credibility across both business operations (stakeholder language) and technical "
-        "implementation (specification depth) — the foundation of the Opticfy consulting model.",
+        "implementation (specification depth) — the foundation of the JT Somwaru Consulting consulting model.",
     ]
 )
 

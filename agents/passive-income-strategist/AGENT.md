@@ -107,6 +107,7 @@ For visual ideas, include a short `Vision Fit` note before the scorecard: model 
 | **Build feasibility** | Realistic with JT's actual stack in ≤4 weeks? | 15% |
 | **Marketing leverage** | Does the product generate its own marketing? SEO + agent automation possible? | 15% |
 | **Revenue ceiling** | Realistic solo revenue at maturity ($0=1, $1K=4, $3K=6, $10K=8, $50K+=10) | 15% |
+| **Agent-purchasable fit** | Could an autonomous agent rationally buy this mid-task via Stripe Link/agent wallet? Is the output instant, narrow, and agent-readable? | 5% bonus lens, not a core override |
 | **Uniqueness** | Would this appear in a "top 10 passive income" list? (Yes=1, No=10) | 10% |
 | **Competition weakness** | How beatable are existing players? | 5% |
 
@@ -207,9 +208,9 @@ Use this exact structure (adapted from Miles Deutscher's Income Builder framewor
 - **OpenClaw integration**: [Can Eve's crons support this? Which ones? What new cron is needed?]
 
 ### 7. Scores
-| Longevity | Autonomy | Build | Marketing | Revenue | Uniqueness | Competition |
-|---|---|---|---|---|---|---|
-| [X] | [X] | [X] | [X] | [X] | [X] | [X] |
+| Longevity | Autonomy | Build | Marketing | Revenue | Uniqueness | Competition | Agent-Purchasable Fit |
+|---|---|---|---|---|---|---|---|
+| [X] | [X] | [X] | [X] | [X] | [X] | [X] | [X/10, bonus lens] |
 **Weighted total: [X]/10**
 ```
 
@@ -286,6 +287,22 @@ Blueprint: memory/passive-income/[date]-strategist.md
 ```
 
 ---
+
+## Agent-Purchasable Fit Lens
+
+Consider whether an idea could be sold as a narrow service/product that agents buy while completing a task. This should improve prioritization only when the idea is already strong on trend, demand, autonomy, and buildability. Do not promote weak ideas just because they mention agents.
+
+Score high when:
+- The agent has an obvious task context and buyer/user
+- The product returns an instant constrained output: JSON, markdown, PDF, CSV, webhook callback
+- Price can be $5–$50 one-shot or usage-based
+- It avoids human fulfillment and support queues
+- It fits JT's consulting/data/ranking/anomaly-audit advantages
+
+Score low when:
+- It depends on broad agentic-commerce adoption before any demand exists
+- It is a marketplace, generic API wrapper, or vague “agent tool”
+- The human buyer would not approve the spend mid-task
 
 ## Scoring Philosophy
 

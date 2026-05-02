@@ -35,13 +35,13 @@ The agent progressively discovers capabilities by writing code — it only loads
 
 OpenClaw is explicitly mentioned in the blog as a CLI-mode approach (using MCPorter) — we're in the competitive landscape.
 
-## Relevance to JT / Opticfy
+## Relevance to JT / JT Somwaru Consulting
 ### High relevance — 3 use cases:
 
 **1. n8n-agent builds**
-If any Opticfy client workflow involves Cloudflare (Workers, DNS, WAF, R2), the Cloudflare MCP server can be added to the n8n-agent's tool set to manage those resources with near-zero context overhead.
+If any JT Somwaru Consulting client workflow involves Cloudflare (Workers, DNS, WAF, R2), the Cloudflare MCP server can be added to the n8n-agent's tool set to manage those resources with near-zero context overhead.
 
-**2. Opticfy client agent architecture**
+**2. JT Somwaru Consulting client agent architecture**
 For client agent builds that include Cloudflare infrastructure (e.g., StreetEasy scraper running on Workers, any client with existing Cloudflare), this server pattern is the right way to give agents API access without blowing context budgets.
 
 **3. Architecture credibility signal for JT**
@@ -51,7 +51,7 @@ Code Mode = server-side sandboxed code execution for progressive API discovery. 
 Cloudflare open-sourced the Code Mode SDK in their Agents SDK repo:
 `github.com/cloudflare/agents/tree/main/packages/codemode`
 
-This means we could build our own Code Mode MCP server for any large API (Salesforce, HubSpot, etc.) — directly relevant to Opticfy client builds.
+This means we could build our own Code Mode MCP server for any large API (Salesforce, HubSpot, etc.) — directly relevant to JT Somwaru Consulting client builds.
 
 ## Installation (when approved)
 ```bash
@@ -77,7 +77,7 @@ This means we could build our own Code Mode MCP server for any large API (Salesf
 
 ## Action Items for JT
 - [ ] Decide: add Cloudflare MCP server to n8n-agent tool set? (Free, no risk)
-- [ ] Consider: Code Mode SDK for building a Salesforce/HubSpot MCP server (Opticfy angle)
+- [ ] Consider: Code Mode SDK for building a Salesforce/HubSpot MCP server (JT Somwaru Consulting angle)
 - [ ] Interview prep: Code Mode = "progressive API discovery via sandboxed code execution" — clean talking point
 
 ---
