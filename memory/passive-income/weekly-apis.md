@@ -1,12 +1,13 @@
-# API Intelligence Report — 2026-04-25
+# API Intelligence Report — 2026-05-02
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-04-25 05:45:30
+Generated: 2026-05-02 05:55:32
 
-**Totals:** 0 new APIs | 0 PH tools | 2 HN stories | 0 discoveries
+**Totals:** 0 new APIs | 0 PH tools | 3 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **South Africa's Draft Capital Flow Management Regulations, 2026** (score: 1) | [link](https://bitcoinke.io/2026/04/the-south-africa-capital-flow-management-draft-regulations-2026/)
-- **Show HN: GitHub Directory for Public APIs** (score: 1) | [link](https://github.com/public-apis/public-apis/blob/master/README.md)
+- **Show HN: Filling PDF forms with AI using client-side tool calling** (score: 5) | [link](https://copilot.simplepdf.com/?share=a7d00ad073c75a75d493228e6ff7b11eb3f2d945b6175913e87898ec96ca8076&form=w9&lang=en)
+- **AI coding tools are silently disagreeing with each other** (score: 3) | [link](https://github.com/sampleXbro/agentsmesh)
+- **Lucide: Open-source icon library with 1600 vector (SVG) files for icons** (score: 2) | [link](https://github.com/lucide-icons/lucide)
 
 
 ## Scout Guidance

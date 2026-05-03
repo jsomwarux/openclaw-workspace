@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-01T14:13:06.847Z",
+  "updatedAt": "2026-05-02T11:42:40.126Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -1126,6 +1126,37 @@
         "scripts/notion-swipe-fetch.py",
         "updated",
         "sports"
+      ]
+    },
+    "memory:memory/2026-04-30.md:195:210": {
+      "key": "memory:memory/2026-04-30.md:195:210",
+      "path": "memory/2026-04-30.md",
+      "startLine": 195,
+      "endLine": 210,
+      "source": "memory",
+      "snippet": "- `health-constraint-layer.md` now includes max deep-work load and protected task categories. - Weekly cron prompt now enforces Eve-autonomous/JT-only/blocked labels and avoids cron bloat. ## Altmark Group Client Update — 7:56 PM - JT reported active AI implementation work for Altmark Group (`https://www.altmarkgroup.com/`). - Yair, CFO, reached out on Twitter asking whether JT could build automation systems; JT said yes, met at Altmark's Bronx office, scoped workflows, wrote proposal, and began delivery. - Current status: insurance expiration workflow finished; dedicated PC set up and planned for delivery to office next week; rent delinquency workflow waiting on 50% deposit before work",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-02T11:42:40.126Z",
+      "lastRecalledAt": "2026-05-02T11:42:40.126Z",
+      "queryHashes": [
+        "507f676613aa"
+      ],
+      "recallDays": [
+        "2026-05-02"
+      ],
+      "conceptTags": [
+        "health-constraint-layer.md",
+        "deep-work",
+        "eve-autonomous/jt-only/blocked",
+        "www.altmarkgroup.com",
+        "health",
+        "constraint",
+        "layer.md",
+        "now"
       ]
     }
   }

@@ -218,3 +218,10 @@
 - Live scan signal: AI labor-market coverage continues to emphasize hyper-growth in companies training/deploying large-scale AI models, with emerging demand around AI Engineers, Forward-Deployed Engineers, AI project/program managers, AI forensic/risk roles, and Heads of AI.
 - Relevance to JT: strongest job-market overlap remains AI product/program + forward-deployed automation + governance/risk proof. AgentGuard and Agentforce demos are more aligned than generic app builds for this lane.
 - Positioning note: language should emphasize “forward-deployed AI systems / operational automation / human approval + audit trail,” not just product strategy.
+
+## 2026-05-02 — 1:12PM Heartbeat
+### Market pulse: AI workflow architect / operations consultant
+- Current search results show continued demand around AI solutions architecture, systems assessment, back-office bottleneck removal, and Agentforce-style operational automation.
+- The clearest job-market language overlap with JT’s consulting wedge: **architecture and systems assessment**, **end-to-end AI-enhanced workflows**, and **high-impact operations/finance/sales enablement bottlenecks**.
+- Positioning implication: JT should describe himself less as “AI automation builder” and more as an **AI Workflow Architect for SMB operations** — audit-first, ROI-first, implementation second.
+- Skill gap to keep closing: packaging before building — tighter discovery docs, before/after workflow maps, and measurable success criteria for every demo.

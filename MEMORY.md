@@ -91,6 +91,8 @@
 ## Active Automation / Crons
 - Keep daily cron invocations ≤20. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM EST.
+- One-shot reminder active: 2026-05-09 9:00AM ET (`e39f312a-d99f-4944-93c2-a0e6a1046fc7`) to re-check OpenClaw Codex harness docs/schema/status and reevaluate whether to enable the codex plugin + `agents.defaults.embeddedHarness.runtime="codex"`; do not touch auth, summaryModel, summaryProvider, or primary model without JT approval.
+- `critical-files-integrity` cron (`ee357abb-2b58-44b8-8f03-4c152611117d`) runs daily 9AM ET; timeout increased 60s → 180s on 2026-05-02 after wrapper timed out at 60.018s even though the underlying script completes in ~0.37s. Prompt simplified: run script first, inspect/edit only on non-zero exit.
 - Morning brief, heartbeat, job-market, niche monitor, crypto morning, content/weekly synthesis, Weekly North Star Review, cost tracking, and health check-ins are active responsibilities.
 - Cron count/status changes must update this file same turn. Diagnose any cron with consecutive errors ≥2; timeout fixes should be sized from actual expected runtime.
 
@@ -144,14 +146,13 @@
 - Next step: head of talent acquisition will talk with product team about fit and follow up. No response yet as of 2026-04-30 8:04 PM.
 - Strategic fit: high-value consulting/product opportunity aligned with AI Implementation Specialist + product builder positioning; avoid being converted into generic employment-style role unless explicitly desired.
 - Status file: `memory/opportunities/marketsmith/status.md`.
-## Product Portfolio Update — 2026-04-30
-- Apps/products: Action Arena and Dynasty Fantasy Football Simulator remain important sports/product lanes. Vista has launched and has ~10 active users. Automated TikTok slideshow organic growth loops are currently running for both Nash Satoshi and Vista.
-- JT wants to build many stored passive-income ideas and run automated organic marketing strategies for them to maximize probability of passive/semi-passive income streams. Guardrail: many bets are acceptable only when maintenance is low, distribution loop exists, metric is tracked, and kill/pause threshold is explicit.
-
-## Consulting Acquisition Update — 2026-04-30
-- JT reported no responses to cold outreach sent so far. Treat as data: acquisition strategy needs review, not just more cold volume. Prioritize warm/referral lanes (Altmark/Yair family-office intros, Marketsmith family-friend/product lane), proof-led LinkedIn, local NYC relationship channels, and trigger-based outreach backed by proof.
 ## North Star Strategy Synthesis — 2026-04-30
-- Altmark + Marketsmith now dominate near-term North Star strategy. Altmark is active $34,750 buildout + $1,500/mo support potential + Yair referral channel into ~15 family offices. Marketsmith is live consulting/freelance opportunity already anchored at $175/hr or $15k/mo.
-- Consulting acquisition priority should shift from generic cold outreach to warm/referral/proof-led channels: Altmark delivery → Yair referrals, Marketsmith product-team fit, proof-led LinkedIn, local NYC partner/referral sources, then redesigned trigger-based cold outreach.
-- Apps remain important for passive-income upside, but should run as constrained experiments: low-maintenance MVP, automated distribution from day one, weekly metric, kill/pause threshold, no interference with consulting delivery. Vista has ~10 active users; Nash Satoshi + Vista automated TikTok slideshow loops are running.
+- Altmark + Marketsmith dominate near-term strategy: deliver Altmark, pursue Yair family-office referrals, and keep Marketsmith as a $175/hr or $15k/mo product/AI consulting lane.
+- Cold outreach has produced no responses so far; prioritize warm/referral/proof-led channels before redesigned trigger-based outreach.
+- Apps remain constrained passive-income experiments: low-maintenance MVP, automated distribution, weekly metric, kill/pause threshold. Vista has ~10 active users; Nash Satoshi + Vista TikTok slideshow loops are running. Action Arena and Dynasty Fantasy Football Simulator remain sports/product lanes.
 
+
+## 2026-05-02 — Heartbeat distillation
+- Today’s proactive intelligence reinforced one positioning thread: JT’s strongest near-term consulting language is **AI Workflow Architect for SMB operations** — audit-first, one bottleneck, one controlled worker, one measurable outcome.
+- Supporting signals logged today: enterprise agents are moving toward governed operations/orchestration (`memory/ai-tools.md`), crypto/Nash content should emphasize ensemble risk scoring over price prediction (`memory/crypto.md`), and job-market language favors systems assessment / end-to-end AI-enhanced workflows (`memory/job-market.md`).
+- Content artifact created: `memory/drafts/ai-workflow-architect-post-2026-05-02.md` with LinkedIn + X versions.

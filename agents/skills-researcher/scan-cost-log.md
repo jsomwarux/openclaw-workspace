@@ -34,3 +34,4 @@
 - New MC tasks pushed: 0
 - KB entries: 5
 - Week archived: 2026-W17
+2026-05-02T11:00:00Z | weekly-synthesis | x_queries: 6 | est_cost: $0.30 | mc_tasks: 0 | archive: 2026-W18.md

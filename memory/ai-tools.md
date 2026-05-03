@@ -447,3 +447,8 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 **SMB automation signal:** fresh market results continue to cluster around workflow agents that chain existing tools rather than standalone chatbots — lead-to-quote, email-to-invoice, follow-up, and local SEO/GBP workflows. JT relevance: keep consulting PoCs framed as “one expensive handoff automated with human exceptions,” not broad AI transformation.
 
 **Salesforce/Agentforce signal:** recent Agentforce Operations and implementation coverage reinforces the back-office automation lane: Flow-triggered agents, action execution, and measurable ops cleanup. JT relevance: Agentforce demo should show a system-of-record workflow with before/after cycle time and audit trail, especially for client-adjacent ops like intake, dispatch, invoice follow-up, or property/vendor workflows.
+
+## May 2, 2026 — 11:12AM Heartbeat
+**Enterprise agent workflow signal** — Fresh search results keep pointing to “operations” and orchestration rather than chatbots: enterprise AI value is moving toward governed workflow repair, specialized agents, and system-of-record execution. Signal for JT: package consulting demos as controlled operational workers with explicit success metrics, not broad AI assistants.
+
+**Consulting translation** — Good language for SMB clients: “one workflow, one worker, one measurable bottleneck.” Examples: maintenance triage worker, inventory/reorder worker, estimate intake worker. This supports the 7-Day Operational Audit wedge and keeps implementation scoped enough to avoid agent sprawl/cost blowups.

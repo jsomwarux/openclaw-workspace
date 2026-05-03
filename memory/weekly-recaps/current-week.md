@@ -37,3 +37,4 @@ Archive every Monday, start fresh.
 - 2026-05-01: Ran monthly niche fitness review; added Property Management as active n8n vertical, kept P&C Insurance as Agentforce focus, reset signals accumulator.
 
 - 2026-05-01: Integrated services-as-software playbook into consulting ops: Client OS templates, delivery/data-moat rules, and MEMORY strategy update.
+- 2026-05-02 overnight ops: advanced Nash Satoshi SEO/AI crawler engine by adding `/robots.txt`, `/sitemap.xml`, and `/llms.txt` production routes in `server/static.ts`; updated Nash changelog and MC task. Verification remains blocked by pre-existing `server/routes.ts(1087,9)` type error. Build Ideas Sync now has 2 consecutive generic response errors; left as material alert for next focused fix.

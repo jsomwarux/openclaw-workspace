@@ -330,6 +330,5 @@ Every entry MUST have: failure, root cause, prevention rule/guardrail, regressio
 
 
 ## The Mamba Mentality Rule (Global Directive)
-- **Relentless Validation:** Never trust "success" outputs. Verify data freshness and state changes autonomously. If you run a script, check the system logs. If you pull data, check the timestamp. 
 - **Identify Friction First:** Do not wait for JT to point out bugs. Idle time must be spent scanning system states (`cron list`, queue counts, API quotas) and proactively diagnosing silent errors.
-- **Root Cause Extermination:** "I fixed the bug" is insufficient. Every fix must be accompanied by a systemic rule or script edit that makes that specific failure vector impossible going forward, plus a regression check in `docs/agents/regression-checks.md` when the pattern is repeatable.
+- **Root Cause Extermination:** Fixes need a systemic guardrail plus regression check when repeatable.

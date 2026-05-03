@@ -41,6 +41,7 @@
 | ux-architecture | skills/ux-architecture/SKILL.md | checklists/ux-architecture.md | pending | — | — | 2026-04-26 |
 | video-generation | skills/video-generation/SKILL.md | checklists/video-generation.md | pending | — | — | 2026-04-26 |
 | sports-gm | skills/sports-gm/SKILL.md | checklists/sports-gm.md | pending | — | — | 2026-04-27 |
+| portfolio-card | skills/portfolio-card/SKILL.md | checklists/portfolio-card.md | pending | — | — | 2026-05-02 |
 
 ## Status values
 - `pending` — checklist written, not yet run
