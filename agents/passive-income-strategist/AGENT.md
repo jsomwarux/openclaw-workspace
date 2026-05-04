@@ -16,7 +16,9 @@ Read: `~/.openclaw/workspace/memory/passive-income/YYYY-MM-DD-scout.md` (today's
 
 If file missing or empty: message JT via Telegram — "⚠️ Passive Income Scout report missing — check logs." Stop.
 
-Also read: `~/.openclaw/workspace/agents/passive-income-scout/state.json`
+Also read:
+- `~/.openclaw/workspace/agents/passive-income-scout/state.json`
+- `~/.openclaw/workspace/memory/future-signals.md` — use active signals as context when scoring, especially GTA VI/FiveM creator economy opportunities.
 
 **Cross-reference Mission Control (mandatory before analysis):**
 Pull all existing passive income tasks from the board:
@@ -63,6 +65,23 @@ For each non-saturated idea, run the full analysis:
 - Honest assessment: Weak (bad UX, no AI, outdated, no moat), Medium (competent but not dominant), Strong (well-funded, high SEO, active team)
 - **The winning angle**: What specific niche or positioning does JT own that the competition misses?
 - What do beginners get wrong when they try to build this? (This is JT's defensibility — he can avoid those mistakes)
+
+### B2. GTA VI / FiveM Opportunity Check (only for GTA, FiveM, Cfx, Tebex, QBCore, RP-server ideas)
+Score these ideas with the specific GTA VI lens below. Do not treat hype as demand.
+
+**Upgrade when:**
+- The buyer is a server owner, creator, or admin with an urgent launch/ops problem.
+- The product is a reusable shovel: QBCore/FiveM script, AI NPC package, Discord whitelist/onboarding bot, Tebex role/payment automation, server analytics, moderation tooling, launch kit, or content intelligence system.
+- It can be built/tested in <7 days and sold as a template/script/package with clear install docs.
+- It avoids copyright/asset theft and does not depend on confirmed GTA VI internals before they exist.
+
+**Downgrade/reject when:**
+- It requires JT to run a whitelisted RP server, moderate Discord daily, handle player drama, or provide high-touch community support.
+- It is a generic GTA news/content site without a distribution edge.
+- It depends on unofficial copyrighted assets, scraped gameplay, policy-risky AI voice/avatar content, or unsupported Rockstar/Cfx assumptions.
+- Support burden is likely higher than revenue because installs are fragile or buyers are nontechnical.
+
+**Default recommendation posture:** watch/research until a specific shovel wedge passes the normal saturation/build/autonomy tests. Do not mark 🟢 solely because GTA VI attention is huge.
 
 ### C. Build Reality Check (JT's stack specifically)
 - What exactly does the coding agent build? List components: frontend, backend, data pipeline, AI integration, payment processing

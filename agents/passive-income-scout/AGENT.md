@@ -219,6 +219,24 @@ Bad candidates:
 For each raw idea, add:
 **Agent-purchasable angle:** [Would an agent buy this mid-task? Who is the agent working for? What exact task? Price? Output format?]
 
+### Methodology 11: Event-Led Creator Economy / GTA VI Watchlist
+Use this methodology for massive upcoming launches where third-party builders/creators will need tools before demand peaks. Current standing watchlist: GTA VI / FiveM / Cfx / Tebex / QBCore / roleplay server economy.
+
+**Run when:** the weekly research window includes a major launch signal, or `memory/future-signals.md` contains an active opportunity cluster.
+
+**Search prompts:**
+- `GTA VI FiveM server owners Tebex QBCore`
+- `FiveM QBCore script Tebex marketplace pain`
+- `GTA roleplay Discord whitelist application Tebex`
+- `FiveM AI NPC script QBCore`
+- `GTA VI creator economy Cfx marketplace`
+
+**Prioritize shovel products, not operator-heavy businesses:**
+- Strong candidates: installable QBCore/FiveM scripts, AI NPC scripts, Discord whitelist/onboarding bots, Tebex payment/role automation, server-owner analytics, moderation/ticket tooling, launch kits/templates, content intelligence systems.
+- Weak candidates: running an RP server directly, generic GTA news sites, manual clipping agencies, one-off logo/branding gigs, asset packs that require deep 3D/game-asset support.
+
+**Promotion filter:** Only generate a GTA/FiveM idea when it can be prototyped in <7 days, sold before or during the GTA VI attention window, and does not require JT to run a daily community/support operation.
+
 ### IMPORTANT: Required Input Files
 
 Read ALL of these before generating ideas:
@@ -226,8 +244,8 @@ Read ALL of these before generating ideas:
 2. `memory/passive-income/weekly-apis.md` (API discovery — Methodology 8)
 3. `memory/passive-income/weekly-exploding-topics.md` (Exploding Topics — Methodology 6)
 4. `memory/passive-income/weekly-google-trends.md` (pytrends momentum — Methodology 7)
-5. `memory/future-signals.md` (agentic commerce / Stripe Link signals — Methodology 10)
-5. All prior scout reports in `memory/passive-income/` (to avoid duplicating ideas)
+5. `memory/future-signals.md` (agentic commerce / Stripe Link signals — Methodology 10; GTA VI/FiveM creator economy signals — Methodology 11)
+6. All prior scout reports in `memory/passive-income/` (to avoid duplicating ideas)
 
 ---
 

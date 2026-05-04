@@ -244,3 +244,8 @@ Salesforce Financial Services Cloud penetration in mid-size RIAs is 40%+. Agentf
 - **ConstructConnect Takeoff Boost:** AI-powered construction estimating is moving into mainstream construction software. For construction/skilled trades ICPs, pitch around estimating, document extraction, bidding speed, and back-office throughput before generic "AI agents."
 - **Vertafore Velocity AI:** Insurance vendors are packaging AI around friction reduction across the distribution chain. For Salesforce insurance shops, pitch specific workflow relief — claims intake, broker servicing, renewal prep, documentation — not abstract transformation.
 
+### Weekly Intelligence Additions — 2026-05-03
+- **Property management AI adoption gap:** GlobeSt / Building Engines report that 60%+ of property management teams have not implemented AI yet. This keeps PM firmly in the "implementation gap" lane: buyers know AI is coming but need practical workflow pilots, not enterprise platform pitches.
+- **Wholesale competitor movement:** Augment acquired Merlin AI to expand into wholesale distribution, validating wholesale/distribution as an active AI automation category. Pitch angle: competitors are building AI teammates for distributors; mid-market firms need an operator-grade first workflow before platform vendors define the market for them.
+- **Construction AI training gap:** DEWALT's AI training study shows construction workers are interested in AI but lack hands-on, jobsite-relevant training. This strengthens JT's construction angle: implementation has to include field workflow mapping and adoption support, not just software setup.
+

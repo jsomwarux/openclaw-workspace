@@ -1,3 +1,5 @@
+[2026-05-03] — Human Agency’s Contech AI Implementation Specialist role shows a rare non-developer implementation lane reopening at the vertical edge: field workflow discovery, operational translation, AI tool scouting, and adoption enablement. The catch is domain proof — employers increasingly want AI fluency plus lived industry context, not generic automation credibility. (Source: daily-brief.md)
+
 # Job Market Observations
 *Auto-extracted from daily-brief.md by job-market daily cron.*
 *Read by content-generate-x and content-generate-linkedin for job market content.*

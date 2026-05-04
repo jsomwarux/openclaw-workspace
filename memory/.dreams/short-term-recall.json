@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-02T11:42:40.126Z",
+  "updatedAt": "2026-05-03T16:02:56.880Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -1157,6 +1157,37 @@
         "constraint",
         "layer.md",
         "now"
+      ]
+    },
+    "memory:memory/2026-04-30.md:207:219": {
+      "key": "memory:memory/2026-04-30.md:207:219",
+      "path": "memory/2026-04-30.md",
+      "startLine": 207,
+      "endLine": 219,
+      "source": "memory",
+      "snippet": "- JT clarified the end goal for Altmark: finish systems, stay on monthly retainer, continue building additional systems, and work with Yair to reach ~15 other NYC-area family offices interested in similar automation. - Updated Altmark status, MEMORY.md, Consulting Sales Engine, Revenue Command Center, Proof + Distribution Engine, and Opportunity Intake Gate. - Strategic label: Altmark is now a beachhead client for repeatable family-office automation, not just project work. ## Marketsmith Opportunity Update — 8:05 PM - JT reported a live Marketsmith opportunity: chief of strategy is a family friend and reached out about new product initiatives. - JT met with head of talent acquisition on 202",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-03T16:02:56.880Z",
+      "lastRecalledAt": "2026-05-03T16:02:56.880Z",
+      "queryHashes": [
+        "b9bac72770ed"
+      ],
+      "recallDays": [
+        "2026-05-03"
+      ],
+      "conceptTags": [
+        "nyc-area",
+        "memory.md",
+        "family-office",
+        "clarified",
+        "end",
+        "goal",
+        "altmark",
+        "finish"
       ]
     }
   }

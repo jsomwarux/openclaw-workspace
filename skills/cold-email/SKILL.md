@@ -351,3 +351,9 @@ Always produce:
 - **Construction AI angle:** ConstructConnect Takeoff Boost validates estimating/document automation demand. For construction prospects, lead with estimating accuracy, bid speed, and document routing before broad AI transformation language.
 - **Insurance AI angle:** Vertafore Velocity AI validates insurance-specific AI packaging. For insurance prospects, use workflow-specific friction language: intake, broker servicing, renewal prep, claims documentation, auditability.
 
+## Recent Pitch Intelligence — 2026-05-03
+- **Property management gap:** 60%+ of PM teams still have not implemented AI. Use as timing proof in PM M1/M2: "the gap is not interest — it is getting one workflow live without disrupting ops." Avoid sounding like a vendor selling generic AI features.
+- **Wholesale distribution competitor signal:** Augment acquiring Merlin AI validates AI automation for wholesale distribution. Use in warm/value-drop follow-up: "AI teammates are moving into distribution now; the practical wedge is one search/intake/order-support workflow, not a giant platform migration."
+- **Construction adoption/training angle:** DEWALT's AI training gap supports a field-first framing. For construction prospects, lead with mapping the jobsite/admin handoff and training users into the workflow; do not pitch AI as a back-office-only tool.
+- **Specialist positioning urgency:** The Human Agency contech role plus the skills tracker reinforce that AI generalist framing is weakening. Outreach should make JT sound like an implementation specialist with vertical workflow judgment, not a generic AI consultant.
+

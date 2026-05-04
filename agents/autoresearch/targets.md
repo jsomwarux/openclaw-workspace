@@ -43,6 +43,13 @@
 | sports-gm | skills/sports-gm/SKILL.md | checklists/sports-gm.md | pending | — | — | 2026-04-27 |
 | portfolio-card | skills/portfolio-card/SKILL.md | checklists/portfolio-card.md | pending | — | — | 2026-05-02 |
 
+| opticfy-ops | skills/opticfy-ops/SKILL.md | checklists/opticfy-ops.md | pending | — | — | 2026-05-03 |
+| opticfy-pipeline | skills/opticfy-pipeline/SKILL.md | checklists/opticfy-pipeline.md | pending | — | — | 2026-05-03 |
+| x-research | skills/x-research/SKILL.md | checklists/x-research.md | pending | — | — | 2026-05-03 |
+| niche-fitness | agents/niche-fitness/AGENT.md | checklists/niche-fitness.md | pending | — | — | 2026-05-03 |
+| passive-income-strategist | agents/passive-income-strategist/AGENT.md | checklists/passive-income-strategist.md | pending | — | — | 2026-05-03 |
+| skills-researcher | agents/skills-researcher/AGENT.md | checklists/skills-researcher.md | pending | — | — | 2026-05-03 |
+
 ## Status values
 - `pending` — checklist written, not yet run
 - `active` — has run at least once, loop in progress or complete

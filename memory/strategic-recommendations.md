@@ -16,6 +16,11 @@
 
 <!-- Entries appended by Weekly Intelligence Synthesis (eve-weekly-synthesis-007) -->
 
+### 2026-05-03 — Reframe Around Specialist Implementation Proof
+**Recommendation:** This week, update JT's public/job-market positioning around "AI Implementation Specialist — Agentforce + Telco Operations" and create one visible specialist proof artifact. Use the Human Agency contech role as validation that the market wants AI + field workflow judgment, not generic AI fluency.
+**Why now:** The skills tracker still shows AI Specialist vs. Generalist Divergence as 🔴 Critical, and the new Human Agency AI Implementation Specialist (Contech) role validates the same pattern in construction. JT's current edge is specialist workflow judgment; it needs to show up in LinkedIn, resume, site copy, and one demo artifact.
+**Status:** open
+
 ### 2026-04-26 — Audit Outreach + Content Execution Before More Prospecting
 **Recommendation:** Spend the first work block this week fixing execution drag: audit duplicate outreach tasks/Drive OAuth blockers, then post the two banked high-fit content pieces (Agentforce ARR and AI consulting assessment-first). Do not add more prospecting volume until the follow-up + content loops are reliably closing.
 **Why now:** This week's intelligence shows market urgency is strong (Agentforce ARR +169% YoY, construction/insurance AI platforms shipping), but JT's internal execution loop is leaking: planned posts are still mostly unposted, MC pruning is blocked, and consulting-observation logs flag duplicate task buildup as the outreach bottleneck.
