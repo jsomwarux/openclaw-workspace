@@ -81,6 +81,8 @@ Each week, check:
 - Do not surface stale outreach/content as urgent.
 - If a prospect is too weak or generic, recommend pruning rather than nurturing forever.
 - Every outreach send confirmation must update tracking same turn using `scripts/outreach_update.py`.
+- First 100 principle: early consulting growth requires founder-level service and manual distribution. Weekly reviews should ask: what is the most unsexy but high-leverage sales/service action JT can do this week — 10 targeted DMs, 3 referral asks, 2 discovery calls, or one client success artifact?
+- Distribution bottleneck check: when pipeline stalls, assume the bottleneck is usually distribution/proof, not another capability build, unless delivery quality is actively failing.
 
 
 

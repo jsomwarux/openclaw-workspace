@@ -44,3 +44,4 @@
 2026-04-30 dewalt-construction-ai-training — Dewalt national study: construction workforce eager for AI but lacks hands-on training; demand signal + implementation gap
 2026-05-01 property-management-ai-gap — Globest/Building Engines: over 60% of property management teams have not implemented AI technologies yet; massive implementation gap
 2026-05-01 augment-merlin-wholesale — Augment acquires Merlin AI to expand into wholesale distribution; competitor signal in AI automation for wholesale
+2026-05-04 insurance-ai-risk-coverage-gap — Major insurers backing away from AI risk coverage, removing AI from standard corporate policies; coverage gap signal

@@ -104,6 +104,7 @@
 
 ## Strategic Decisions Log
 - 2026-04-26: consulting acquisition wedge: sell contained 7-day ops bottleneck audits/prototypes, not broad “AI transformation.” First workflows: property maintenance triage, construction field-note→punch-item/customer-update, wholesale stock/ETA/order-status reply drafts with human approval.
+- 2026-05-04: synthesized Exception Dashboard positioning for SMB consulting: show AI as an exception layer, not a chatbot — stuck work, owner, changed state, approval need, and audit trail across property management, wholesale, construction, and client intake. Draft saved at `memory/drafts/exception-dashboard-consulting-post-2026-05-04.md`.
 - 2026-03-31: consulting positioning is permanent until explicitly changed: practical AI implementation for ops-heavy SMBs.
 - 2026-03-23: no anime/NBA apps right now; prioritize B2B consultable products and client-work proof.
 - AgentSync concept deferred unless a direct need appears; Mission Control already provides enough orchestration.
@@ -152,7 +153,9 @@
 - Apps remain constrained passive-income experiments: low-maintenance MVP, automated distribution, weekly metric, kill/pause threshold. Vista has ~10 active users; Nash Satoshi + Vista TikTok slideshow loops are running. Action Arena and Dynasty Fantasy Football Simulator remain sports/product lanes.
 
 
-## 2026-05-02 — Heartbeat distillation
-- Today’s proactive intelligence reinforced one positioning thread: JT’s strongest near-term consulting language is **AI Workflow Architect for SMB operations** — audit-first, one bottleneck, one controlled worker, one measurable outcome.
-- Supporting signals logged today: enterprise agents are moving toward governed operations/orchestration (`memory/ai-tools.md`), crypto/Nash content should emphasize ensemble risk scoring over price prediction (`memory/crypto.md`), and job-market language favors systems assessment / end-to-end AI-enhanced workflows (`memory/job-market.md`).
-- Content artifact created: `memory/drafts/ai-workflow-architect-post-2026-05-02.md` with LinkedIn + X versions.
+## Recent Strategy Distillations
+- 2026-05-02: Strongest near-term consulting language: **AI Workflow Architect for SMB operations** — audit-first, one bottleneck, one controlled worker, one measurable outcome. Draft: `memory/drafts/ai-workflow-architect-post-2026-05-02.md`.
+- 2026-05-04: Integrated Stan $40M ARR lesson into North Star OS: weekly reviews now check the top bottleneck and prioritize manual distribution, first-100 service, proof assets, and success-story flywheels before more building. Details archived in `docs/memory/MEMORY-full.md`.
+- 2026-05-04: Dead SaaS acquisition thesis saved validation-only; gates in `memory/opportunities/dead-saas-agent-acquisition.md`.
+- 2026-05-04: @dynastyjig reply target rule fixed: daily reply packs require posts ≤24h old, prefer 6-12h, fail closed if fresh X unavailable. Cached pools banned.
+- 2026-05-04: Nash daily brief now requires X + Reddit-native drafts.

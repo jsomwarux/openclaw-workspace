@@ -35,3 +35,5 @@
 - KB entries: 5
 - Week archived: 2026-W17
 2026-05-02T11:00:00Z | weekly-synthesis | x_queries: 6 | est_cost: $0.30 | mc_tasks: 0 | archive: 2026-W18.md
+2026-05-04T12:35:00Z | daily-scan | x_queries: 1 (failed) | web_queries: 12 | findings: 5 | 🔴: 0 | 🟠: 2 | messaged_jt: yes
+EOF'

@@ -70,6 +70,8 @@ Before recommending feature work, ask:
 3. What action should they take?
 4. How will we know it worked?
 
+Stan lesson for products: $0→$100K is usually built-in-public + direct DM + customer calls, not polish. For JT's apps, every weekly product review should identify either (a) the direct-distribution action, (b) the public proof/story to post, or (c) the customer/user success story to create. If none exists, pause feature work until the distribution path is real.
+
 ## Channel Mapping
 - LinkedIn: consulting credibility and builder authority
 - X: fast idea testing, app narratives, niche audience growth
@@ -83,6 +85,9 @@ Before recommending feature work, ask:
 - No monetization path
 - Requires heavy upkeep without evidence
 - Distracts from consulting cash flow without strong upside
+
+## Agent-Native Rewrite Lens
+When evaluating new products or acquisition candidates, ask whether the legacy SaaS is only a dashboard for a workflow users wanted completed. Strong candidates have: repeated support-ticket pain, clear input/output workflow, obvious agent execution path, known buyer/user profile, and a distribution source. Weak candidates are generic CRUD apps, thin AI wrappers, or products whose old users churned because the problem was not painful enough.
 
 ## Integration With North Star
 The Weekly North Star Command Center should force every app/product into a clear continue/pause/kill/validation-only call and should name the next distribution or monetization step before any feature work.

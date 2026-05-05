@@ -69,3 +69,16 @@ Kill/defer condition: they only want generic employment, scope is unclear with l
 
 ## Current Capacity Rule — 2026-04-30
 Because Altmark and Marketsmith are active/high-value, new passive-income app ideas should be validation-only unless they are extremely low-maintenance and can launch with automated distribution. Do not promote new app builds that compete with Altmark delivery or Marketsmith conversion work.
+
+## Acquisition Opportunity Gate — Dead SaaS → Agent Company
+Dead/stalled SaaS acquisitions are validation-only unless they pass strict gates. Do not recommend buying an asset just because the thesis is compelling.
+
+Required before promotion:
+- First experiment acquisition cost ≤ $5K unless JT explicitly approves higher.
+- Legal transfer of code, domain/brand, customer list, analytics, support history, and relevant IP is clear.
+- Privacy/data rights permit analysis and compliant outreach/ads. Never assume old customer data can be uploaded to ad platforms.
+- Support tickets or customer conversations show repeated workflow pain that an agent can execute, not just a dashboard feature request list.
+- Distribution path exists before rebuild.
+- Maintenance burden is low enough not to compete with consulting cash flow.
+
+Default smallest step: create a 20-candidate scanner/research list and score candidates before founder outreach. Reference: `memory/opportunities/dead-saas-agent-acquisition.md`.

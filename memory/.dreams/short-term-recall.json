@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-03T16:02:56.880Z",
+  "updatedAt": "2026-05-04T16:26:30.597Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -296,18 +296,20 @@
       "endLine": 29,
       "source": "memory",
       "snippet": "## Session Cleanup 03:00 - Sessions before: 38, after: 37, removed: 1 - sessions.json size: 1020.2 KB - Removed sessions: - agent:main:cron:33b8b0a2-e86c-4f51-aa4f-b8537def3107 (last active: 1.9d ago) ## Heartbeat 07:30 AM — Morning Brief - Delivered morning brief to JT via Telegram - Top priorities: AFGO M1 + Lawley M3 + PostBridge activation - BTC: ~$68.5K, -3.3%, extreme fear - Niche: 3x 🟠 signals (insurance STP window, Entrata Agentic PMS, UNFI AI) - Costs: $0.00 real API spend ✅ - Vibe queue: 30 posts pending PostBridge activation - Overnight log: 2026-03-27 confirmed — 2 outreach tasks + ICPs/cold-email updates ## Heartbeat 10:00 AM — Film Review + Cron Health - **Cost alerts**: n",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8483308893649424,
-      "maxScore": 0.8483308893649424,
+      "totalScore": 1.8483308893649424,
+      "maxScore": 1,
       "firstRecalledAt": "2026-04-07T16:01:19.290Z",
-      "lastRecalledAt": "2026-04-07T16:01:19.290Z",
+      "lastRecalledAt": "2026-05-04T15:25:23.276Z",
       "queryHashes": [
-        "298e0cd2b912"
+        "298e0cd2b912",
+        "4cf671f016f4"
       ],
       "recallDays": [
-        "2026-04-07"
+        "2026-04-07",
+        "2026-05-04"
       ],
       "conceptTags": [
         "sessions.json",
@@ -1166,18 +1168,20 @@
       "endLine": 219,
       "source": "memory",
       "snippet": "- JT clarified the end goal for Altmark: finish systems, stay on monthly retainer, continue building additional systems, and work with Yair to reach ~15 other NYC-area family offices interested in similar automation. - Updated Altmark status, MEMORY.md, Consulting Sales Engine, Revenue Command Center, Proof + Distribution Engine, and Opportunity Intake Gate. - Strategic label: Altmark is now a beachhead client for repeatable family-office automation, not just project work. ## Marketsmith Opportunity Update — 8:05 PM - JT reported a live Marketsmith opportunity: chief of strategy is a family friend and reached out about new product initiatives. - JT met with head of talent acquisition on 202",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-03T16:02:56.880Z",
-      "lastRecalledAt": "2026-05-03T16:02:56.880Z",
+      "lastRecalledAt": "2026-05-04T16:26:30.597Z",
       "queryHashes": [
-        "b9bac72770ed"
+        "b9bac72770ed",
+        "46aa3fb7d155"
       ],
       "recallDays": [
-        "2026-05-03"
+        "2026-05-03",
+        "2026-05-04"
       ],
       "conceptTags": [
         "nyc-area",
@@ -1188,6 +1192,130 @@
         "goal",
         "altmark",
         "finish"
+      ]
+    },
+    "memory:memory/2026-04-30.md:138:155": {
+      "key": "memory:memory/2026-04-30.md:138:155",
+      "path": "memory/2026-04-30.md",
+      "startLine": 138,
+      "endLine": 155,
+      "source": "memory",
+      "snippet": "- No new proactive work selected because DynastyJig/content strategy work already advanced materially in this hour. ## Weekly North Star Review Configured — 5:20 PM - Created `memory/north-star/rubric.md` to score lanes against JT's North Star: financial freedom + control over time through high-earning, low-maintenance income streams. - Added weekly cron `29772d9b-e007-4f62-9df9-e80b73d0cd21` — Weekly North Star Review — Sundays 6PM ET, isolated Sonnet. - Review scores consulting, apps/products, crypto monitoring, job market, content/distribution, health, and infrastructure against cash flow, leverage, distribution, credibility, energy burden, and strategic fit. - Output saves to `reports/n",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-04T14:29:03.495Z",
+      "lastRecalledAt": "2026-05-04T14:29:03.495Z",
+      "queryHashes": [
+        "84aac9f0a182"
+      ],
+      "recallDays": [
+        "2026-05-04"
+      ],
+      "conceptTags": [
+        "dynastyjig/content",
+        "memory/north-star/rubric.md",
+        "high-earning",
+        "low-maintenance",
+        "apps/products",
+        "content/distribution",
+        "reports/n",
+        "new"
+      ]
+    },
+    "memory:memory/2026-04-30.md:165:184": {
+      "key": "memory:memory/2026-04-30.md:165:184",
+      "path": "memory/2026-04-30.md",
+      "startLine": 165,
+      "endLine": 184,
+      "source": "memory",
+      "snippet": "- Updated Weekly North Star Command Center cron `29772d9b-e007-4f62-9df9-e80b73d0cd21` to include Consulting Sales Engine checks. - Created Mission Control task: “Run first Consulting Sales Engine audit” to inspect pipeline files before Sunday and identify the highest-probability next dollar. ## North Star OS Remaining Layers Implemented — 6:55 PM - JT explicitly said he does not want to keep saying “proceed”; continue until all layers are implemented and optimal. - Implemented remaining North Star OS state files: - `memory/north-star/proof-distribution-engine.md` - `memory/north-star/health-constraint-layer.md` - `memory/north-star/opportunity-intake-gate.md` - `memory/north-star/p",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-04T14:29:03.495Z",
+      "lastRecalledAt": "2026-05-04T14:29:03.495Z",
+      "queryHashes": [
+        "84aac9f0a182"
+      ],
+      "recallDays": [
+        "2026-05-04"
+      ],
+      "conceptTags": [
+        "highest-probability",
+        "memory/north-star/p",
+        "updated",
+        "weekly",
+        "north",
+        "star",
+        "command",
+        "center"
+      ]
+    },
+    "memory:memory/2026-04-30.md:151:168": {
+      "key": "memory:memory/2026-04-30.md:151:168",
+      "path": "memory/2026-04-30.md",
+      "startLine": 151,
+      "endLine": 168,
+      "source": "memory",
+      "snippet": "## North Star Command Center Upgraded — 6:15 PM - JT said “Proceed optimally” after asking how Eve can best help achieve his North Star goals. - Instead of adding separate cron bloat, upgraded the existing Weekly North Star Review into a Weekly North Star Command Center. - Expanded `memory/north-star/rubric.md` with: - Revenue Command Center: run-rate, gaps to $10K/$30K/$100K, highest-probability next dollar, fastest paths to +$1K/mo and +$10K/mo. - Project Overinvestment Guard: every active project must serve cash flow, distribution, reusable IP, consulting proof, or health. - Product Portfolio Review: app/product continue/pause/kill/validation-only calls and distribution/monetizatio",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-04T14:29:03.495Z",
+      "lastRecalledAt": "2026-05-04T14:29:03.495Z",
+      "queryHashes": [
+        "84aac9f0a182"
+      ],
+      "recallDays": [
+        "2026-05-04"
+      ],
+      "conceptTags": [
+        "memory/north-star/rubric.md",
+        "run-rate",
+        "highest-probability",
+        "1k/mo",
+        "10k/mo",
+        "app/product",
+        "distribution/monetizatio",
+        "north"
+      ]
+    },
+    "memory:memory/2026-03-27.md:25:44": {
+      "key": "memory:memory/2026-03-27.md:25:44",
+      "path": "memory/2026-03-27.md",
+      "startLine": 25,
+      "endLine": 44,
+      "source": "memory",
+      "snippet": "- job-market (eve-job-market-daily-005): overload - crypto-morning (eve-crypto-morning-008): overload (ran at 6AM ET, failed) - job-app-auto-builder (b2357bd5): overload - content-reminder (5e66b4ee): delivery failure (\"Message failed\") — content was generated ✅ - **Action taken**: Resent Friday's LinkedIn + X posts to JT directly (content was ready) - **Film review**: Fix — content-reminder delivery failure caught and resent. Improve — Friday morning overload pattern logged for monitoring. - Spanish lesson check: last run errored (rate_limit) — lesson won't be delivered tonight if not re-fired ## Heartbeat 02:00 PM - Cost alerts: none ✅ - Cron health: skills-researcher (4c437ff5) t",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-04T15:25:23.276Z",
+      "lastRecalledAt": "2026-05-04T15:25:23.276Z",
+      "queryHashes": [
+        "4cf671f016f4"
+      ],
+      "recallDays": [
+        "2026-05-04"
+      ],
+      "conceptTags": [
+        "job-market",
+        "eve-job-market-daily-005",
+        "crypto-morning",
+        "eve-crypto-morning-008",
+        "job-app-auto-builder",
+        "content-reminder",
+        "rate-limit",
+        "re-fired"
       ]
     }
   }

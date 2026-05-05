@@ -370,3 +370,12 @@ Fresh search results continue to validate the x402/agent-payments thesis: Coinba
 - **Market backdrop:** Search results show BTC around the high-$70K area after April closed as a strong ETF-flow month; crypto remains macro-sensitive to oil/geopolitical risk.
 - **Signal:** This is not a clean risk-on/risk-off read. ETF demand supports the majors, but macro headlines can still hit alts hard.
 - **JT relevance:** For Nash Satoshi/content, keep framing around ensemble/risk-adjusted scoring instead of price prediction. For portfolio monitoring, avoid chasing intraday strength unless whale/social/fundamental signals agree.
+
+## May 4, 2026 — Heartbeat Crypto Monitoring
+
+Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments updates, but the configured search provider returned a SearXNG configuration error during this heartbeat. No price or portfolio action should be inferred from stale February/March notes.
+
+**Standing thesis check:** x402/agentic payment infrastructure remains the strategic watch item; next useful update should come from a working live source before making any market claim.
+
+**Operational note:** If provider errors persist on the next crypto-monitoring pass, diagnose web_search provider routing/config rather than relying on old market notes.
+

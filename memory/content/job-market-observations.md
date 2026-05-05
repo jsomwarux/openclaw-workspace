@@ -1,3 +1,5 @@
+[2026-05-04] — A remote healthcare data Solution Architecture Manager role cleared the threshold even without an AI title, showing that JT-fit implementation leadership may be hiding in regulated vertical platform roles rather than explicit “AI Enablement” postings. The recurring catch is domain fluency: FHIR/HL7-style healthcare context substitutes for generic AI credentials. (Source: daily-brief.md)
+
 [2026-05-03] — Human Agency’s Contech AI Implementation Specialist role shows a rare non-developer implementation lane reopening at the vertical edge: field workflow discovery, operational translation, AI tool scouting, and adoption enablement. The catch is domain proof — employers increasingly want AI fluency plus lived industry context, not generic automation credibility. (Source: daily-brief.md)
 
 # Job Market Observations

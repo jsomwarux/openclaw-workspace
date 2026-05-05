@@ -67,3 +67,8 @@ Required fields:
 
 ## Notes
 Do not invent revenue. If unknown, say unknown and identify the next measurement action.
+
+## Distribution Bottleneck Principle — 2026-05-04
+Stan's $40M ARR post is a useful operating reminder: growth stages are bottleneck shifts, not motivation slogans. Early stage = visibility and manual customer acquisition. Mid stage = customer success stories and referral flywheels. Later stage = distribution leverage, hiring, culture, strategy, and operating efficiency.
+
+For JT's North Star, weekly revenue review should explicitly name the current top bottleneck across consulting/apps: distribution, proof, delivery, offer clarity, follow-up, product activation, or operating capacity. Then recommend the highest-leverage action that attacks that bottleneck this week.

@@ -1,12 +1,12 @@
 {
   "level": "A1+",
-  "level_description": "High Beginner \u2014 dormant high school foundation, passive comprehension, disconnected basics",
+  "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "started": "2026-03-02",
   "current_week": 9,
-  "current_day": 50,
+  "current_day": 51,
   "lesson_streak": 27,
   "longest_streak": 27,
-  "last_lesson_date": "2026-05-02",
+  "last_lesson_date": "2026-05-04",
   "last_lesson_complete": false,
   "total_lessons_completed": 13,
   "weekly_scores": [
@@ -31,7 +31,7 @@
       "small talk",
       "survival Spanish"
     ],
-    "girlfriend_family_background": "unknown \u2014 default to neutral Latin American Spanish",
+    "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
     "focus": "speaking and listening, not writing"
   },
   "weak_areas": [
@@ -43,10 +43,10 @@
     "basic greetings",
     "verb intuition (me llamo, estoy)",
     "family dinner phrases",
-    "past tense basics (com\u00ed, fui, vi)",
+    "past tense basics (comí, fui, vi)",
     "quisiera vs quiero (polite ordering)"
   ],
-  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped \u2014 cron doesn't fire Sundays. Week 6 complete. Week 7 (Apr 13-18): Social Conversations \u2014 Day 1 Starting Conversations, Day 2 Wishes & Desires, Day 3 Asking for Help & Opinions.",
+  "notes": "Interviewed 2026-03-01. High school Spanish 10+ years ago. Knows 1-10, struggles 11-20. Picks up words in fast speech but loses thread. Week 4 evaluation (Sun Mar 29) skipped — cron doesn't fire Sundays. Week 6 complete. Week 7 (Apr 13-18): Social Conversations — Day 1 Starting Conversations, Day 2 Wishes & Desires, Day 3 Asking for Help & Opinions.",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases. Single words transcribe correctly. Workaround: credit all Spanish audio answers based on context.",
   "streak": 27
 }

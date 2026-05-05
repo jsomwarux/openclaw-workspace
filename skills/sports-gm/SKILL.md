@@ -196,13 +196,15 @@ Use this when JT asks whether content is referencing the provided accounts optim
 1. Read `memory/sports-gm/dynasty-x-targets.md` before generating reply targets.
 2. Use JT-approved accounts as the main universe, but sample recent content before replying. Do not rely on handle reputation alone.
 3. Build a candidate pool from multiple topical searches plus the target list. Do not use only one narrow `from:` query.
-4. Final reply pack must use 3 different accounts. At least 2 of 3 should be from JT's approved list.
-5. Cap repeat-heavy accounts (`@DynastyDwarf`, `@DFF_Dynasty`, or any account used yesterday) to at most one combined target per day.
-6. Reply only when @dynastyjig can add a sharp fantasy point: dynasty value gaps, rookie uncertainty, draft capital vs. landing spot, roster window, role, upside, risk, manager behavior, or trade process.
-7. Sound like a sharp dynasty manager, not a finance model. Avoid over-scientific words like latency, liquidity, probability fragments, arbitrage, or mathematical counterpoint unless the original post uses that frame.
-8. Use community-native language: price, value, rookie pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender, manager.
-9. Avoid pure memes, giveaways, app promos, betting slips, and generic news unless the reply adds a plain dynasty/fantasy angle.
-10. Include an `Account diversity: 3/3 unique accounts` line in the final output.
+4. **Freshness gate is mandatory:** every recommended reply target must be from the last 24 hours; prefer last 6-12 hours. If exact timestamp is unavailable, do not use the post unless search/source evidence clearly indicates it is today. Posts older than 24 hours are disqualified, even if high quality.
+5. **Fail closed on X/search blockage:** if fresh X search is blocked, API credits are depleted, or only cached/old posts are available, output `BLOCKED: fresh X reply targets unavailable` and explain the blocker. Never use a cached viable pool as a fallback for daily engagement replies.
+6. Final reply pack must use 3 different accounts. At least 2 of 3 should be from JT's approved list.
+7. Cap repeat-heavy accounts (`@DynastyDwarf`, `@DFF_Dynasty`, or any account used yesterday) to at most one combined target per day.
+8. Reply only when @dynastyjig can add a sharp fantasy point: dynasty value gaps, rookie uncertainty, draft capital vs. landing spot, roster window, role, upside, risk, manager behavior, or trade process.
+9. Sound like a sharp dynasty manager, not a finance model. Avoid over-scientific words like latency, liquidity, probability fragments, arbitrage, or mathematical counterpoint unless the original post uses that frame.
+10. Use community-native language: price, value, rookie pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender, manager.
+11. Avoid pure memes, giveaways, app promos, betting slips, and generic news unless the reply adds a plain dynasty/fantasy angle.
+12. Include an `Account diversity: 3/3 unique accounts` line and a `Freshness: all targets ≤24h old` line in the final output.
 
 ## Workflow: Roster Audit
 1. Ask for league format only if unavailable: 1QB/SF, scoring, teams, starters, bench, TE premium, roster, picks, manager goal.

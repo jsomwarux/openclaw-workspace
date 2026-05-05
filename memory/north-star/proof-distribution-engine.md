@@ -5,6 +5,8 @@ Purpose: convert shipped work, client results, and product progress into trust a
 ## Operating Thesis
 Proof reduces sales friction. Every meaningful build should become some combination of: portfolio card, case study, LinkedIn post, X post, Reddit post, deck snippet, outreach proof point, or website credibility asset.
 
+Distribution is not a postscript. The Stan $40M ARR case reinforces that early growth comes from doing the embarrassing/manual distribution loop before it compounds: build in public, send targeted DMs, serve the first 100 customers deeply, convert their wins into success stories, then amplify those stories. JT's system should reward this loop, not just new builds.
+
 ## Inputs
 - Shipped client work and outcomes
 - `memory/content/recent-builds.md`
@@ -47,6 +49,8 @@ Do not over-distribute before client acceptance. Capture proof carefully and avo
 - One case study/post to draft next
 - One portfolio/update recommendation
 - One stale or weak proof claim to avoid
+- First-100-customer/manual-slog opportunity: one unsexy sales/service action that could create a future proof asset
+- Flywheel status: New customer/client → success story → amplification channel → next customer/client
 - Asset owner/channel: LinkedIn, X, Reddit, portfolio, deck, outreach, or Drive
 - Next action label: Eve-autonomous vs JT-review/send
 

@@ -1,43 +1,50 @@
 {
-  "last_run": "2026-04-27T08:45:00Z",
-  "last_successful_run": "2026-04-21T12:23:00Z",
-  "last_week_of": "2026-04-27",
-  "last_status": "partial_delivery_blocked",
-  "last_error": "Generated and queued 12 pieces, generated NB2 slides, but Drive screenshot download and Drive review upload failed because config/google-oauth-token.json is missing. Run python3 ~/.openclaw/workspace/scripts/drive_auth.py, then upload/sync review docs from /tmp and rerun delivery steps only.",
-  "last_linkedin_month": null,
-  "last_angles_month": "2026-04",
+  "last_run": "2026-05-04T08:48:00Z",
+  "last_successful_run": "2026-05-04T08:48:00Z",
+  "last_week_of": "2026-05-04",
+  "last_status": "success_with_missing_screenshot_folders",
+  "last_error": null,
+  "last_linkedin_month": "2026-05",
+  "last_angles_month": "2026-05",
   "products_processed": ["nash-satoshi", "vista"],
-  "queue_count": 105,
-  "drive_link": null,
-  "vista_drive_link": null,
+  "queue_count": 119,
+  "drive_link": "https://docs.google.com/document/d/1Eyu-1oTO1CqnwfPleMoFEPJohciYPXZc1MemUzCT5v4/edit",
+  "nash_satoshi_drive_link": "https://docs.google.com/document/d/1Eyu-1oTO1CqnwfPleMoFEPJohciYPXZc1MemUzCT5v4/edit",
+  "vista_drive_link": "https://docs.google.com/document/d/1cgs_h9mgsgVYXkknydJd44ZaSlym7iMBADXI1RMuhg0/edit",
   "local_review_docs": {
-    "nash-satoshi": "/tmp/vibe-review-nash-satoshi-2026-04-27.md",
-    "vista": "/tmp/vibe-review-vista-2026-04-27.md"
+    "nash-satoshi": "/tmp/vibe-review-nash-satoshi-2026-05-04.md",
+    "vista": "/tmp/vibe-review-vista-2026-05-04.md"
   },
   "last_reddit_subreddit": {
-    "nash-satoshi": "r/defi",
-    "vista": "r/MovieSuggestions"
+    "nash-satoshi": "r/CryptoTechnology",
+    "vista": "r/iosapps"
   },
   "last_scene_concept": {
-    "vista": 4,
-    "nash-satoshi": 4
+    "vista": 5,
+    "nash-satoshi": 5
   },
   "screenshots_missing": {
-    "nash-satoshi": null,
-    "vista": null,
-    "blocked_by": "missing_google_oauth_token",
+    "nash-satoshi": "folder_missing",
+    "vista": "folder_missing",
+    "blocked_by": null,
     "drive_path": "Eve — Drafts / Vibe Marketing / App Screenshots / [product-slug]",
-    "flagged_at": "2026-04-27T08:45:00Z"
+    "flagged_at": "2026-05-04T08:48:00Z"
   },
   "generated_images": {
     "nash-satoshi": [
-      "agents/vibe-marketing/generated-images/nash-satoshi-2026-04-27/slide-01-hook.png",
-      "agents/vibe-marketing/generated-images/nash-satoshi-2026-04-27/slide-last-cta.png"
+      "agents/vibe-marketing/generated-images/nash-satoshi-2026-05-04/slide-01-hook.png",
+      "agents/vibe-marketing/generated-images/nash-satoshi-2026-05-04/slide-last-cta.png"
     ],
     "vista": [
-      "agents/vibe-marketing/generated-images/vista-2026-04-27/slide-01-hook.png",
-      "agents/vibe-marketing/generated-images/vista-2026-04-27/slide-last-cta.png"
+      "agents/vibe-marketing/generated-images/vista-2026-05-04/slide-01-hook.png",
+      "agents/vibe-marketing/generated-images/vista-2026-05-04/slide-last-cta.png"
     ]
+  },
+  "notion_pushed": {
+    "status": "success",
+    "count": 8,
+    "platforms": ["X", "LinkedIn"],
+    "week": "2026-05-04"
   },
   "seo_evaluated": {
     "nash-satoshi": {

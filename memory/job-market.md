@@ -225,3 +225,12 @@
 - The clearest job-market language overlap with JT’s consulting wedge: **architecture and systems assessment**, **end-to-end AI-enhanced workflows**, and **high-impact operations/finance/sales enablement bottlenecks**.
 - Positioning implication: JT should describe himself less as “AI automation builder” and more as an **AI Workflow Architect for SMB operations** — audit-first, ROI-first, implementation second.
 - Skill gap to keep closing: packaging before building — tighter discovery docs, before/after workflow maps, and measurable success criteria for every demo.
+
+## May 4, 2026 — Heartbeat Job Market Pulse
+
+Attempted live searches for NYC AI Solutions Architect and AI Workflow Architect/SMB automation roles, but the configured search provider returned a SearXNG configuration error. No new role recommendations or market claims were added from live web data.
+
+**Current safe read from existing notes:** JT's strongest lane remains forward-deployed AI systems, operational automation, and governed human-approval/audit-trail workflows. AgentGuard + the cross-niche Exception Dashboard demo still align better than generic app builds.
+
+**Operational note:** If web_search provider errors persist, diagnose provider routing/config before the next job-market pulse; do not rely on stale March role deadlines or old postings.
+

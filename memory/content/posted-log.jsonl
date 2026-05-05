@@ -141,3 +141,16 @@
 {"date":"2026-05-01","platform":"x","day":"friday","pillar":"tactical-insight","topic":"external-upload-circuit-breaker","angle_id":null,"posted":false,"banked":false,"from_seed":false}
 {"date":"2026-05-02","platform":"x","day":"saturday","pillar":"technical","topic":"dependency-gates-stop-downstream-work","angle_id":"cron-architecture","posted":false,"banked":false,"from_seed":false}
 {"date":"2026-05-03","platform":"x","day":"sunday","pillar":"learn-in-public","topic":"governance-advisory-first","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-04","platform":"linkedin","day":"monday","pillar":"belief-disruption","topic":"workflow-was-the-project","banked":false,"posted":false,"from_seed":false}
+{"date":"2026-05-05","platform":"linkedin","day":"tuesday","pillar":"industry-observation","topic":"property-management-ai-adoption-gap","banked":false,"posted":false,"from_seed":false}
+{"date":"2026-05-06","platform":"linkedin","day":"wednesday","pillar":"case-study","topic":"maintenance-request-triage","banked":false,"posted":false,"from_seed":false}
+{"date":"2026-05-07","platform":"linkedin","day":"thursday","pillar":"agentforce-proof-point","topic":"agentforce-boundary-design","banked":false,"posted":false,"from_seed":false}
+{"date":"2026-05-08","platform":"linkedin","day":"friday","pillar":"tactical-insight","topic":"buyer-channel-enrichment","banked":false,"posted":false,"from_seed":false}
+{"date":"2026-05-10","platform":"linkedin","day":"sunday","pillar":"behind-the-build","topic":"backend-voice-agents","banked":false,"posted":false,"from_seed":false}
+{"date":"2026-05-04","platform":"x","day":"monday","pillar":"tribal-belonging","topic":"narrower-workflows-better-agents","angle_id":null,"posted":false,"banked":false,"from_seed":false,"compression":true}
+{"date":"2026-05-05","platform":"x","day":"tuesday","pillar":"industry-observation","topic":"wholesale-ai-distribution-workflows","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-06","platform":"x","day":"wednesday","pillar":"mini-case-study","topic":"maintenance-triage-escalation-not-status","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-07","platform":"x","day":"thursday","pillar":"contrarian-hot-take","topic":"agents-need-less-autonomy","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-08","platform":"x","day":"friday","pillar":"tactical-insight","topic":"sendable-buyer-channel-enrichment","angle_id":null,"posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-09","platform":"x","day":"saturday","pillar":"technical","topic":"template-contamination-domain-validation","angle_id":"prompt-contamination","posted":false,"banked":false,"from_seed":false}
+{"date":"2026-05-10","platform":"x","day":"sunday","pillar":"learn-in-public","topic":"site-publishing-layer-ai-search-signals","angle_id":null,"posted":false,"banked":false,"from_seed":false}

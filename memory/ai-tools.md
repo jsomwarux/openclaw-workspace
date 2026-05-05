@@ -2,6 +2,15 @@
 
 ---
 
+## May 4, 2026 — Heartbeat AI Tool Monitoring
+
+**Enterprise agents are now being framed as infrastructure, not experiments.** Recent search results surfaced Claude enterprise-agent research, Google Cloud agent trends, Microsoft Copilot/Cowork coverage, and multiple orchestration/governance guides. The repeated theme: ROI comes from agents embedded in workflows with orchestration, accountability, MCP/A2A-style integration, and governance.
+
+**JT relevance:** keep the consulting pitch away from “we build chatbots.” Stronger language: exception dashboards, governed workflow agents, audit logs, human approvals, and operations-specific ROI. AgentGuard remains strategically aligned.
+
+**Actionable demo angle:** one cross-niche “Exception Dashboard for SMB Operators” can connect property management, wholesale, and construction: aging maintenance requests, quote/SKU blockers, and intake items missing next action. Pair it with AgentGuard-style confidence + approval rails.
+
+
 ## Apr 30, 2026 — 10:32AM Heartbeat
 
 **Anthropic Claude creative connectors (Apr 29)** — Anthropic announced Claude for Creative Work with connectors for creative tools including Blender, Autodesk, Adobe, Ableton, and Splice. Signal: model vendors are moving from chat into embedded tool workflows. JT relevance: consulting demos should increasingly show the agent operating inside the client's existing system of record, not just producing standalone summaries.

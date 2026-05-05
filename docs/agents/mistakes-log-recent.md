@@ -97,3 +97,19 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Run the banned-term grep across bootstrap/docs/memory/skills/agents; it should return no user-facing references except unavoidable filesystem compatibility paths if any remain.
 - **Owner surface updated:** Replaced legacy references across workspace text files; logged this correction in `docs/agents/mistakes-log-recent.md`.
 - **Verification/date:** 2026-05-01; follow-up grep run after replacement.
+
+## 2026-05-04 — Stale Dynasty X Reply Targets Suggested
+- **Failure:** Suggested @dynastyjig reply targets from week-old X posts, which are unlikely to be seen or engaged with.
+- **Root cause:** The sports-gm reply workflow allowed a "cached viable pool" fallback when fresh X API search was blocked, optimizing for producing an output instead of preserving engagement quality.
+- **Guardrail/rule:** Daily reply target generation must fail closed when fresh X/search is unavailable. Every target must be ≤24h old, preferably 6-12h. Cached/old pools are banned for daily engagement replies.
+- **Regression check:** `skills/sports-gm/SKILL.md` now requires `Freshness: all targets ≤24h old` in the final output and `BLOCKED: fresh X reply targets unavailable` when fresh search is blocked.
+- **Owner surface updated:** `skills/sports-gm/SKILL.md` → Workflow: Dynasty X Replies.
+- **Verification/date:** 2026-05-04 verified by editing the sports-gm skill and checking the replacement succeeded.
+
+## 2026-05-04 — Nash Satoshi Daily Reddit Draft Missing
+- **Failure:** Daily Nash Satoshi content generation covered an X post in the morning brief but did not require a Reddit-native draft, despite JT wanting daily content for both X and Reddit.
+- **Root cause:** The Morning Brief spec only named `Daily Nash Satoshi X Post`; Reddit strategy existed elsewhere but was not wired into the daily delivery path. The cron payload also did not explicitly require rereading the latest HEARTBEAT.md section.
+- **Guardrail/rule:** Daily Nash Satoshi content must include two separate platform-native outputs: one X post and one Reddit discussion draft. Reddit must not be a cross-post; it needs subreddit, title, body, fit rationale, and promo-risk note.
+- **Regression check:** `HEARTBEAT.md` now requires 🐦 Daily Nash Satoshi X Post and 👽 Daily Nash Satoshi Reddit Draft. Cron `eve-morning-brief-001` payload now explicitly tells the agent to read HEARTBEAT.md fresh and generate both.
+- **Owner surface updated:** `HEARTBEAT.md`; cron `eve-morning-brief-001`; `docs/agents/mistakes-log-recent.md`.
+- **Verification/date:** 2026-05-04 verified via cron update output showing new payload and 240s timeout.

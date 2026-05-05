@@ -225,3 +225,15 @@
 - Firecrawl API key stored in TOOLS.md (not openclaw.json)
 - Glow Index full architecture in `~/projects/ranking-app-agent/CLAUDE.md`
 - Prompting guides at `~/.openclaw/workspace/docs/prompting/` — reference before writing any system prompts, cron payloads, or sub-agent task strings
+
+## 2026-05-04 — Stan $40M ARR Distribution Lesson Integrated
+JT asked whether the Stan $40M ARR founder post had takeaways worth integrating into his North Star system. Eve integrated the useful operating principle: growth is a sequence of bottleneck shifts, not just motivation. Early stage requires public visibility, manual customer acquisition, founder-level customer service, and success-story flywheels before compounding distribution can work. Updated `memory/north-star/proof-distribution-engine.md`, `memory/north-star/consulting-sales-engine.md`, `memory/north-star/product-growth-manager.md`, and `memory/north-star/revenue-command-center.md` to force weekly reviews to identify the current bottleneck and recommend unsexy/manual distribution or proof actions before more building.
+
+## 2026-05-04 — Dead SaaS → Agent Company Acquisition Thesis Logged
+JT shared an X post arguing that dead SaaS products can be acquired and rebuilt as agent-native workflow companies using old customer data, support tickets, churn reasons, and lookalike distribution. Eve treated it as a useful future signal but not an active priority. Created `memory/opportunities/dead-saas-agent-acquisition.md`, added a future signal, and updated North Star product/opportunity gates. The operating rule: validate and score candidates before buying; require legal/data-transfer clarity, support-ticket workflow evidence, distribution path, low maintenance burden, and ≤$5K first experiment unless JT explicitly approves more. Do not let this distract from Altmark, Marketsmith, and consulting cash flow.
+
+## 2026-05-04 — Dynasty Reply Target Freshness Rule
+JT corrected that @dynastyjig reply targets were week-old posts and therefore low-engagement. Eve updated `skills/sports-gm/SKILL.md`: daily Dynasty X Replies now require targets ≤24h old, prefer 6-12h, include a freshness line, and fail closed with `BLOCKED: fresh X reply targets unavailable` if fresh X search/API credits are blocked. Cached viable pools are banned for daily engagement replies.
+
+## 2026-05-04 — Nash Satoshi Daily X + Reddit Content Delivery Fixed
+JT asked whether daily Nash Satoshi content was optimally generated for both X and Reddit. Audit found X was included in Morning Brief, but Reddit was not part of the daily generation/delivery path. Eve updated `HEARTBEAT.md` Morning Brief to require both 🐦 Daily Nash Satoshi X Post and 👽 Daily Nash Satoshi Reddit Draft, with Reddit as community-native discussion content rather than an X cross-post. Eve also updated cron `eve-morning-brief-001` to read HEARTBEAT.md fresh and explicitly generate both outputs. Timeout set to 240s.

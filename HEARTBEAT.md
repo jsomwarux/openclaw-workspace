@@ -12,14 +12,16 @@ Deliver to JT via Telegram:
    - Only surface tasks that are actionable TODAY with no staleness risk.
    - "One concrete action" must be derived from CURRENT reality — not from tasks.md entries older than 7 days.
 2. Run web searches: AI news, crypto market, tech job market
-3. Fetch `https://nashsatoshi.com/rankings` (using Cloudflare /crawl or Firecrawl) to extract the Top Ranked tokens. Draft ONE X post for the Nash Satoshi account. MANDATORY: You must rotate the format based on the current Day of the Week to prevent staleness:
-   - Monday: The Leaderboard (Top 3 + game theory scores)
-   - Tuesday: Single Asset Spotlight (Focus exclusively on #1, why the 4-model consensus picked it)
-   - Wednesday: Anti-Bias Hot Take (Why relying on single-model ChatGPT analysis is dangerous vs Nash Satoshi's ensemble)
-   - Thursday: The Methodology (How Claude, GPT, Gemini, and Grok cross-examine each other)
-   - Friday: Momentum (Which new token broke into the top rankings recently)
-   - Weekends: Aggressive UVP (Short, punchy fact about game-theory edge + no preamble)
-   Apply `content-generation/SKILL.md` formatting rules. Include as 🐦 Daily Nash Satoshi X Post section.
+3. Fetch `https://nashsatoshi.com/rankings` (using Cloudflare /crawl or Firecrawl) to extract the Top Ranked tokens. Generate daily Nash Satoshi content for BOTH X and Reddit; Reddit is not a cross-post.
+   - **X post:** one short, punchy post for the Nash Satoshi account. MANDATORY: rotate the format based on the current Day of the Week to prevent staleness:
+     - Monday: The Leaderboard (Top 3 + game theory scores)
+     - Tuesday: Single Asset Spotlight (Focus exclusively on #1, why the 4-model consensus picked it)
+     - Wednesday: Anti-Bias Hot Take (Why relying on single-model ChatGPT analysis is dangerous vs Nash Satoshi's ensemble)
+     - Thursday: The Methodology (How Claude, GPT, Gemini, and Grok cross-examine each other)
+     - Friday: Momentum (Which new token broke into the top rankings recently)
+     - Weekends: Aggressive UVP (Short, punchy fact about game-theory edge + no preamble)
+   - **Reddit post/comment draft:** one community-native crypto/DeFi Reddit draft: discussion-first, non-promotional, useful without a click. Include subreddit, title, body, fit rationale, promo-risk note.
+   Include 🐦 Daily Nash Satoshi X Post and 👽 Daily Nash Satoshi Reddit Draft sections.
 
 4. Read `memory/content/dynasty-strategy.md` — generate ONE elite-tier X post for the @dynastyjig account targeting the "Systems over Symptoms" narrative (Algorithmic Exploits, Roster Construction Economics, or Draft Capital Arbitrage). Apply `skills/content-generation/SKILL.md` formatting. Include as 🏈 Daily Dynasty Strategy X Post section.
 
@@ -49,7 +51,7 @@ Deliver to JT via Telegram:
    - Append to memory/networking/events.md
    - Include 📅 Events section in morning brief if anything found
 
-Sections: 📋 Top 3 Priorities | 📰 Overnight News | 🔍 Niche Intel | 💼 Job Market | 💰 API Costs | 🏋️ Today.s Workout | 📱 Vibe Queue | 🐦 Daily Nash Satoshi X Post | 🏈 Daily Dynasty Strategy X Post | 💡 One concrete action
+Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash X+Reddit, Dynasty X, one action
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK
@@ -150,7 +152,7 @@ Files to audit in order:
 6. All `agents/*/AGENT.md` files — are the agents configured correctly? Any drift?
 7. `memory/training/training-log.md` — review the week's film review entries. Are patterns emerging? Write a weekly summary line.
 7a. `docs/agents/regression-checks.md` — **Regression Check Audit (mandatory):** verify each repeatable mistake has a guardrail, owner surface, and check cadence. Scan recent daily notes + mistakes log for repeated failure terms. Any repeated pattern without an Active Check must be promoted before the audit is complete.
-8. `memory/future-signals.md` — **Future Signals Review (mandatory):** Read every active signal. For each one, check whether its trigger conditions are now met based on JT's current situation (active clients, project status, outreach volume, hardware). If a signal's trigger is met: (a) push a HIGH task to Mission Control recommending the tool/technique, (b) move it to the Graduated table with date + trigger, (c) notify JT in the weekly synthesis Telegram message. If not triggered: leave as-is. This is how "not now" becomes "now" — it must be reviewed every single week.
+8. `memory/future-signals.md` — **Future Signals Review (mandatory):** Read every active signal. For each one, check whether its trigger conditions are now met based on JT's current situation (active clients, project status, outreach volume, hardware). If a signal's trigger is met: push HIGH MC task, move it to Graduated with date+trigger, and notify JT in weekly synthesis. Otherwise leave as-is.
 9. **Autoresearch enrollment check (mandatory):** Read `agents/autoresearch/targets.md`. Cross-reference against all skills in `skills/` and agents in `agents/` installed or updated this week (check file modification dates via `ls -lt`). For any skill/agent NOT already in targets.md, run the 3-question candidacy check: (1) runs repeatedly? (2) output scoreable with yes/no? (3) clear failure mode? All 3 yes → draft checklist, save to `agents/autoresearch/checklists/[slug].md`, append to targets.md with status `pending`. Log enrollments in the audit output.
 10. **Passive income idea queue pruning (mandatory):** Check Mission Control for tasks with title containing "Build idea:" or "[PI]" and sortOrder ≥ 500, status = todo, age > 60 days. For each: (a) does JT's current situation (active clients, skill gaps, hardware, runway) make this more or less viable than when it was created? (b) If clearly less viable or superseded by a better idea: mark as done with note "pruned in weekly synthesis — [reason]." (c) If now viable: bump to sortOrder 400 and flag in Telegram. Audit output: append `## Skills Audit — [date]` to `memory/training/training-log.md` with one line per file: `[FILENAME]: [status: current / updated X / flagged Y]`
 

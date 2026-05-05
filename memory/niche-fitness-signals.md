@@ -8,3 +8,5 @@ Last reset: 2026-05-01
 ---
 
 <!-- Entries appended below by niche monitor -->
+
+2026-05-04 [CONFIRMS] niche=insurance — Major insurers carving AI out of standard corporate coverage; policy shift could slow AI adoption in regulated industries
