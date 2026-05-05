@@ -186,3 +186,11 @@
 **Demonstrates:** n8n AI workflows, multi-ICP automation, construction industry vertical
 **Content angle:** NYC construction AI adoption signal (Turner building Claude tools) = market timing
 **Status:** complete
+## jtsomwaru.com AI Operations Diagnostic Reposition — 2026-05-05
+**What:** Repositioned personal site around AI Operations Diagnostic, ops-heavy business workflows, who-I-help segments, outcome-led services, and updated AI-search metadata.
+**For:** JT consulting / warm lead conversion
+**Outcome:** Production site now shows updated hero and diagnostic offer; build + lint passed; commit `2d0bb2a` pushed to GitHub.
+**Demonstrates:** Positioning, Next.js site updates, AI-search metadata hygiene
+**Content angle:** Stop selling AI tools. Sell the workflow diagnostic that tells the buyer what to build first.
+**Status:** complete
+

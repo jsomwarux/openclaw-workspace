@@ -254,3 +254,4 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 ---
 
 *Last updated: 2026-04-30 (global self-improving content loop added) | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*
+- **jtsomwaru.com AI Operations Diagnostic Reposition (2026-05-05):** Updated JT's personal site from generic AI Implementation Specialist framing to AI Operations Diagnostic / ops-heavy business workflow implementation. Added who-I-help, diagnostic front door, outcome-led services, and AI-search metadata. Build + lint passed; commit `2d0bb2a` pushed; production verified with updated hero/metadata.
