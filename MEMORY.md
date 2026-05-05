@@ -122,7 +122,7 @@
 - 2026-04-26: Installed `birdclaw` (local X archive workspace) and `gog` (Google Workspace CLI). Workflow rules live in `docs/tools/local-archives-workflows.md`; JT auth/import tasks created before recurring use.
 
 ## Automation
-- Nightly friction audit cron active: `nightly-friction-audit` at 9:45PM ET. Purpose: choose tomorrow’s top priority, prep one blocker, and ask “Imagine tomorrow succeeds. What friction did we remove tonight?”
+- Nightly autonomous leverage agent active: `nightly-autonomous-leverage-agent` (`003191af-45a7-4e3b-a824-f7a6cd52f8c7`) at 9:45PM ET. Purpose: ask what Eve can safely complete tonight to best help JT achieve his North Star, complete 1–3 self-serve tasks when possible, create/update MC tasks for JT-only blockers, and self-improve one operating surface when no direct task is available.
 - Guyana opportunity monitor active: weekly Monday 12PM ET cron `guyana-economic-opportunity-monitor`; reads existing Guyana research, checks verified live sources, sends concise brief, and creates up to 3 Mission Control tasks only for sourced actionable findings.
 - Passive-income pipeline audited 2026-04-27: canonical weekly flow is signal fetch Sat 5:30AM ET → Scout Sun 6AM ET → Strategist Sun 7:30AM ET. Duplicate legacy Scout/Strategist crons disabled. Scout now includes AI vision capability scan as one non-overweighted lens; Strategist validates vision defensibility/cost/risk. Sources include Exploding Topics, Google Trends/pytrends, Brave trend signals, APIs.guru, Product Hunt, HN, and RapidAPI/developer search.
 
@@ -147,15 +147,13 @@
 - Next step: head of talent acquisition will talk with product team about fit and follow up. No response yet as of 2026-04-30 8:04 PM.
 - Strategic fit: high-value consulting/product opportunity aligned with AI Implementation Specialist + product builder positioning; avoid being converted into generic employment-style role unless explicitly desired.
 - Status file: `memory/opportunities/marketsmith/status.md`.
+## Live Opportunity — CFS / NYC Luxury Construction AI Role
+- Status as of 2026-05-05: recruiter screen completed. Client wants strictly full-time, in-office/close-culture AI Implementation Specialist; Dan floated likely $150K–$175K + benefits, no firm company salary yet.
+- JT prefers consulting/fractional because it better fits flexibility, multi-client upside, and current warm pipeline, but kept door open if role has strong comp, authority, and strategic network value.
+- Status file: `memory/opportunities/cfs-construction-ai/status.md`.
+
 ## North Star Strategy Synthesis — 2026-04-30
 - Altmark + Marketsmith dominate near-term strategy: deliver Altmark, pursue Yair family-office referrals, and keep Marketsmith as a $175/hr or $15k/mo product/AI consulting lane.
 - Cold outreach has produced no responses so far; prioritize warm/referral/proof-led channels before redesigned trigger-based outreach.
 - Apps remain constrained passive-income experiments: low-maintenance MVP, automated distribution, weekly metric, kill/pause threshold. Vista has ~10 active users; Nash Satoshi + Vista TikTok slideshow loops are running. Action Arena and Dynasty Fantasy Football Simulator remain sports/product lanes.
-
-
-## Recent Strategy Distillations
-- 2026-05-02: Strongest near-term consulting language: **AI Workflow Architect for SMB operations** — audit-first, one bottleneck, one controlled worker, one measurable outcome. Draft: `memory/drafts/ai-workflow-architect-post-2026-05-02.md`.
-- 2026-05-04: Integrated Stan $40M ARR lesson into North Star OS: weekly reviews now check the top bottleneck and prioritize manual distribution, first-100 service, proof assets, and success-story flywheels before more building. Details archived in `docs/memory/MEMORY-full.md`.
-- 2026-05-04: Dead SaaS acquisition thesis saved validation-only; gates in `memory/opportunities/dead-saas-agent-acquisition.md`.
-- 2026-05-04: @dynastyjig reply target rule fixed: daily reply packs require posts ≤24h old, prefer 6-12h, fail closed if fresh X unavailable. Cached pools banned.
-- 2026-05-04: Nash daily brief now requires X + Reddit-native drafts.
+## Recent Strategy Distillations moved to `docs/memory/MEMORY-full.md` on 2026-05-05.
