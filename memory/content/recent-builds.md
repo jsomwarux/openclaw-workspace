@@ -193,4 +193,11 @@
 **Demonstrates:** Positioning, Next.js site updates, AI-search metadata hygiene
 **Content angle:** Stop selling AI tools. Sell the workflow diagnostic that tells the buyer what to build first.
 **Status:** complete
+## jtsomwaru.com AI Operations Blog Library — 2026-05-05
+**What:** Added six buyer-intent / AI-search blog assets: AI Operations Diagnostic, family-office automation, local-first AI automation, exception dashboards, AI Implementation Lead vs Consultant, and Diagnostic vs Automation Audit.
+**For:** JT consulting / inbound SEO / AI-search citation surface
+**Outcome:** 6 new production blog routes live; build + lint passed; commit `143d839` pushed to GitHub.
+**Demonstrates:** GEO strategy, buyer-intent content architecture, consulting positioning
+**Content angle:** The best AI consulting content teaches the buyer what to build first, not which tool to buy.
+**Status:** complete
 
