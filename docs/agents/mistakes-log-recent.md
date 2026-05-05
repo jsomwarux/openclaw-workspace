@@ -113,3 +113,19 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** `HEARTBEAT.md` now requires 🐦 Daily Nash Satoshi X Post and 👽 Daily Nash Satoshi Reddit Draft. Cron `eve-morning-brief-001` payload now explicitly tells the agent to read HEARTBEAT.md fresh and generate both.
 - **Owner surface updated:** `HEARTBEAT.md`; cron `eve-morning-brief-001`; `docs/agents/mistakes-log-recent.md`.
 - **Verification/date:** 2026-05-04 verified via cron update output showing new payload and 240s timeout.
+## 2026-05-05 — Stale source framed as this-week content intel
+- **Failure:** Tuesday LinkedIn content claimed "one property management report this week" showed a 60%+ AI adoption gap. The cited Building Engines/JLL/BOMA report was from January, not this week, so the content laundered an old source as fresh market intel.
+- **Root cause:** Weekly intel synthesis stored a dated source without preserving/validating the publication date, then the content generator converted it into freshness language. There was no source-date gate for phrases like "this week" or for market-stat claims.
+- **Guardrail/rule:** Any content draft that says "this week," "today," "new," "fresh," or uses a market stat must verify source date within 14 days, or explicitly label older context with date. Unknown source date means cut the stat and use an operator-observation angle instead.
+- **Regression check:** Before content delivery, scan drafts for freshness words and numeric/stat claims; each must have a dated source within 14 days or an explicit older-context label. Check `memory/content/weekly-intel-brief.md` entries include source name + source date.
+- **Owner surface updated:** `docs/agents/content-rules.md`, `docs/agents/regression-checks.md`, `memory/content/weekly-intel-brief.md`, `memory/content/weekly-2026-05-04.md`.
+- **Verification/date:** 2026-05-05 — removed stale PM stat from weekly intel, rewrote Tuesday LinkedIn draft without the January-source claim, added Source Freshness Gate and regression check.
+
+
+## 2026-05-05 — Incorrect site contact email changed to Yahoo
+- **Failure:** Updated jtsomwaru.com contact metadata to `jsomwarux@yahoo.com` even though JT's site contact should always be `jtsomwaru@gmail.com`.
+- **Root cause:** Treated stale project docs/llms metadata as authoritative instead of preserving the existing live contact convention and confirming against current site usage.
+- **Guardrail/rule:** For personal website contact info, `jtsomwaru@gmail.com` is canonical. Do not change site contact email unless JT explicitly says the new address.
+- **Regression check:** Before any future site contact/metadata deploy, grep `src public CLAUDE.md README.md documents` for email addresses and verify only the canonical site contact appears.
+- **Owner surface updated:** Site repo `CLAUDE.md`, `public/llms.txt`, and `src/components/Contact.tsx` corrected; this mistakes log now records the canonical rule.
+- **Verification/date:** 2026-05-05 — grep confirmed `jtsomwaru@gmail.com` in Contact/Guyana/llms/CLAUDE and no `jsomwarux@yahoo.com` in checked site paths; build + lint passed.
