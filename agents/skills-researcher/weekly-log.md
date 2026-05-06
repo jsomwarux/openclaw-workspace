@@ -115,3 +115,19 @@ No new 🔴/🟠 findings today. All signals were either:
 - **Anthropic** — No new posts since Apr 17 (Claude Design). Severity: 🟢
 - **Cowork plugins** — sp-global added Apr 30, no new commits since. Severity: 🟢
 - **X API** — Credits depleted, daily scan ran web-only. Need to fund or check subscription.
+
+### Daily Scan — May 5, 2026
+- Discoveries: 4 | 🟠: 3 | 🟡: 1 | KB: 4
+- [🟠] HouseCanary MCP Server — Property valuations and data tools for AI agents.
+- [🟠] ATTOM MCP Server — Standardized property data access for LLMs.
+- [🟠] Claude Design — Collaborative visual creation tool from Anthropic Labs.
+- [🟡] sp-global plugin — New knowledge-work plugin added by Anthropic.
+
+
+### 2026-05-05 — Daily Scan continuation
+- X API: all 6 daily queries attempted; blocked by CreditsDepleted 402. Web fallback completed.
+- [🟠] OpenClaw v2026.5.4 — current local version is 2026.5.3-1; release includes plugin/secrets/channel contract fixes, active-memory recall crash guard, Gateway/startup performance work, and UI/cron improvements. Quality gate PASS because JT actively runs OpenClaw and first action is version check + normal upgrade path. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.4
+- [🟡] OpenRouter new models — Grok 4.3, IBM Granite 4.1 8B, Mistral Medium 3.5, Owl Alpha/free, NVIDIA Nemotron/free, Poolside/free coding models. KB only until benchmarked against JT routing needs.
+- [🟢] Anthropic news — no newer post than Claude Design Apr 17.
+- [🟢] Cowork plugins — latest commit unchanged from tracked SHA 9789ea78ad66e395a9c709146cacecdc14ce2abf.
+- [🟢] Clawhub/npm scan — no gate-passing new skill/plugin for current stack.

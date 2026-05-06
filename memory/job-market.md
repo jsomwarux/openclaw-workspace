@@ -234,3 +234,18 @@ Attempted live searches for NYC AI Solutions Architect and AI Workflow Architect
 
 **Operational note:** If web_search provider errors persist, diagnose provider routing/config before the next job-market pulse; do not rely on stale March role deadlines or old postings.
 
+## May 5, 2026 — Heartbeat Job Market Pulse
+
+**Market Signals:**
+- **Category Volume:** Indeed shows 2,000+ AI Solutions Architect roles in NYC; ZipRecruiter shows 1,000+ AI Automation roles (range $91k-$174k). High category volume suggests "AI Architect" is now a mainstream hiring tier, not just a niche title.
+- **SMB Wedge:** Emerging data/discussion around German companies reaching 80% sales/marketing automation with AI agents confirms the "Workflow Co-pilot" and "Exception Dashboard" model JT is pitching is timely and global.
+- **Pricing/Salary:** 2026 salary bands for automation specialists in NYC center around $110k-$180k. JT's $150k floor + $180k target is aligned with the top 25% of these listings.
+
+**Positioning Check:**
+JT's "Exception Dashboard" and "Services-as-Software" model directly counters the "80% automated" hype by adding the critical governance/audit-trail layer that risk-averse SMBs (Construction, Wholesale) require.
+
+**Actionable roles for monitoring:**
+- Senior AI Solutions Architect (NYC/Hybrid)
+- AI Workflow Architect (SMB focused)
+- Fractional AI Implementation Lead
+

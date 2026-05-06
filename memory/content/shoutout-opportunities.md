@@ -8,3 +8,4 @@
 2026-04-30 OPENCLAW — v2026.4.26 shipped Google Live browser Talk + realtime voice plugins + Gemini TTS — Post angle: "Just upgraded OpenClaw and realtime voice plugins work out of the box — here is the 30-second setup" — tag @openclaw @openclawdiai — official: @openclawdiai
 2026-05-04 OPENCLAW — v2026.5.1 shipped Codex binary resolution fix + 20+ plugins prepped for beta — Post angle: "OpenClaw just fixed the Codex missing-binary bug and prepped 20+ plugins for beta — here is what that means for your agent stack" — tag @openclaw @openclawdiai — official: @openclawdiai
 [2026-05-04] OpenClaw — Bundled file-transfer plugin in v2026.5.3 — Demoing node-to-node file fetch for remote office PCs — @openclaw
+[2026-05-05] OpenClaw — v2026.5.4 shipped plugin/secrets fixes + Gateway/startup performance work — Suggested post: show upgrading from 2026.5.3-1 to 2026.5.4 and verifying Gateway/channel health — official account to tag: @openclaw

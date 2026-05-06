@@ -4,7 +4,7 @@
 **Week of:** 2026-04-27
 
 ## Top Niche Signals This Week
-- **PM:** GlobeSt / Building Engines reports 60%+ of property management teams have not implemented AI yet — the PM market is still in the practical implementation gap, not the saturation phase.
+- **PM:** [REMOVED 2026-05-05] GlobeSt / Building Engines AI adoption stat was from January, not this week. Do not use as fresh weekly intel. Use only if framed as older background context with date.
 - **Wholesale:** Augment acquired Merlin AI to expand into wholesale distribution — AI automation is moving into JT's wholesale ICP, so mid-market firms need a practical first workflow before platforms define the category.
 - **Construction:** DEWALT's AI training study shows construction workers want hands-on, jobsite-relevant AI training — implementation must include field workflow adoption, not just backend automation.
 
@@ -12,7 +12,7 @@
 The winning wedge is specialist implementation: AI plus vertical workflow judgment beats generic AI consulting.
 
 ## Competitive Developments
-Wholesale distribution and property management both showed fresh AI adoption gaps this week. JT's positioning should emphasize one visible workflow shipped inside the niche, not broad transformation language.
+Wholesale distribution showed fresh AI workflow movement this week. Property management remains a viable ICP, but this week's PM draft cannot cite the stale January Building Engines/JLL report as fresh intel. JT's positioning should emphasize one visible workflow shipped inside the niche, not broad transformation language.
 
 ---
 _Last updated: 2026-05-03 Sunday_

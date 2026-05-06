@@ -237,3 +237,9 @@ JT corrected that @dynastyjig reply targets were week-old posts and therefore lo
 
 ## 2026-05-04 — Nash Satoshi Daily X + Reddit Content Delivery Fixed
 JT asked whether daily Nash Satoshi content was optimally generated for both X and Reddit. Audit found X was included in Morning Brief, but Reddit was not part of the daily generation/delivery path. Eve updated `HEARTBEAT.md` Morning Brief to require both 🐦 Daily Nash Satoshi X Post and 👽 Daily Nash Satoshi Reddit Draft, with Reddit as community-native discussion content rather than an X cross-post. Eve also updated cron `eve-morning-brief-001` to read HEARTBEAT.md fresh and explicitly generate both outputs. Timeout set to 240s.
+## Recent Strategy Distillations
+- 2026-05-02: Strongest near-term consulting language: **AI Workflow Architect for SMB operations** — audit-first, one bottleneck, one controlled worker, one measurable outcome. Draft: `memory/drafts/ai-workflow-architect-post-2026-05-02.md`.
+- 2026-05-04: Integrated Stan $40M ARR lesson into North Star OS: weekly reviews now check the top bottleneck and prioritize manual distribution, first-100 service, proof assets, and success-story flywheels before more building. Details archived in `docs/memory/MEMORY-full.md`.
+- 2026-05-04: Dead SaaS acquisition thesis saved validation-only; gates in `memory/opportunities/dead-saas-agent-acquisition.md`.
+- 2026-05-04: @dynastyjig reply target rule fixed: daily reply packs require posts ≤24h old, prefer 6-12h, fail closed if fresh X unavailable. Cached pools banned.
+- 2026-05-04: Nash daily brief now requires X + Reddit-native drafts.

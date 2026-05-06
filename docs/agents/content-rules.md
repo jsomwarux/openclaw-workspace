@@ -33,6 +33,13 @@ The Notion Viral Posts Swipe database is not just an archive. It must influence 
 - If a niche/platform has fewer than 3 usable recent examples, create a Mission Control task to collect more examples instead of pretending the swipe file is sufficient. Until then, use adjacent references only as labeled inspiration, not as the primary pattern source.
 - Never let the swipe file flatten JT's voice. It supplies evidence of what works; JT's taste supplies the final shape.
 
+
+## Source Freshness Gate for News/Intel Claims
+- Any draft that says "this week," "today," "new," "fresh," or implies current market intel must have a source published within the last 14 days, unless the draft explicitly labels it as older background context with the date.
+- Before using any stat from `memory/content/weekly-intel-brief.md`, verify the source date via live web or saved citation. If the source date is older than 14 days, remove the freshness framing or cut the stat.
+- Weekly intel briefs must include source name + source date for every factual market/stat claim. No anonymous phrases like "one report this week" without a dated source.
+- If a source cannot be verified quickly, the draft must use a non-stat, operator-observation angle instead of inventing or laundering the claim.
+
 ## Core Voice Rules
 - Start with the point, never with setup or preamble
 - "you/your" must outnumber "I/my" 5:1 or better

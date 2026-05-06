@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-04T16:26:30.597Z",
+  "updatedAt": "2026-05-05T22:39:51.196Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -887,19 +887,21 @@
       "endLine": 22,
       "source": "memory",
       "snippet": "# Daily Note — March 8, 2026 ## Morning Brief — 7:30 AM - Sent to JT via Telegram ✅ - Top priorities: Squarespace SA app (time-sensitive), post content drafts (6 ready), fix job-market cron (stale since March 3) - 🔴🟠 News: Alibaba rogue AI agent mining crypto during training, US payrolls -92K shock, Anthropic labor market study (white-collar most at risk), stablecoin firms betting on AI agent payments (x402 signal) - Niche: Salesforce FY26 strong + SI partner hiring, insurance $15B at risk, 2/3 independent agencies plan AI increase - Job market: no new 18+/25 roles; \"AI Process Design\" now named in Salesforce JDs; ProcessBlueprint build idea flagged - Costs: $0.00 real API spend, X API $0",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-28T14:15:32.078Z",
-      "lastRecalledAt": "2026-04-30T14:15:32.876Z",
+      "lastRecalledAt": "2026-05-05T13:11:18.115Z",
       "queryHashes": [
-        "866198893eae"
+        "866198893eae",
+        "1630ced39fd5"
       ],
       "recallDays": [
         "2026-04-28",
-        "2026-04-30"
+        "2026-04-30",
+        "2026-05-05"
       ],
       "conceptTags": [
         "time-sensitive",
@@ -1201,18 +1203,20 @@
       "endLine": 155,
       "source": "memory",
       "snippet": "- No new proactive work selected because DynastyJig/content strategy work already advanced materially in this hour. ## Weekly North Star Review Configured — 5:20 PM - Created `memory/north-star/rubric.md` to score lanes against JT's North Star: financial freedom + control over time through high-earning, low-maintenance income streams. - Added weekly cron `29772d9b-e007-4f62-9df9-e80b73d0cd21` — Weekly North Star Review — Sundays 6PM ET, isolated Sonnet. - Review scores consulting, apps/products, crypto monitoring, job market, content/distribution, health, and infrastructure against cash flow, leverage, distribution, credibility, energy burden, and strategic fit. - Output saves to `reports/n",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-04T14:29:03.495Z",
-      "lastRecalledAt": "2026-05-04T14:29:03.495Z",
+      "lastRecalledAt": "2026-05-05T17:58:53.654Z",
       "queryHashes": [
-        "84aac9f0a182"
+        "84aac9f0a182",
+        "5e20cf089b92"
       ],
       "recallDays": [
-        "2026-05-04"
+        "2026-05-04",
+        "2026-05-05"
       ],
       "conceptTags": [
         "dynastyjig/content",
@@ -1232,18 +1236,20 @@
       "endLine": 184,
       "source": "memory",
       "snippet": "- Updated Weekly North Star Command Center cron `29772d9b-e007-4f62-9df9-e80b73d0cd21` to include Consulting Sales Engine checks. - Created Mission Control task: “Run first Consulting Sales Engine audit” to inspect pipeline files before Sunday and identify the highest-probability next dollar. ## North Star OS Remaining Layers Implemented — 6:55 PM - JT explicitly said he does not want to keep saying “proceed”; continue until all layers are implemented and optimal. - Implemented remaining North Star OS state files: - `memory/north-star/proof-distribution-engine.md` - `memory/north-star/health-constraint-layer.md` - `memory/north-star/opportunity-intake-gate.md` - `memory/north-star/p",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-04T14:29:03.495Z",
-      "lastRecalledAt": "2026-05-04T14:29:03.495Z",
+      "lastRecalledAt": "2026-05-05T17:58:53.654Z",
       "queryHashes": [
-        "84aac9f0a182"
+        "84aac9f0a182",
+        "5e20cf089b92"
       ],
       "recallDays": [
-        "2026-05-04"
+        "2026-05-04",
+        "2026-05-05"
       ],
       "conceptTags": [
         "highest-probability",
@@ -1263,18 +1269,20 @@
       "endLine": 168,
       "source": "memory",
       "snippet": "## North Star Command Center Upgraded — 6:15 PM - JT said “Proceed optimally” after asking how Eve can best help achieve his North Star goals. - Instead of adding separate cron bloat, upgraded the existing Weekly North Star Review into a Weekly North Star Command Center. - Expanded `memory/north-star/rubric.md` with: - Revenue Command Center: run-rate, gaps to $10K/$30K/$100K, highest-probability next dollar, fastest paths to +$1K/mo and +$10K/mo. - Project Overinvestment Guard: every active project must serve cash flow, distribution, reusable IP, consulting proof, or health. - Product Portfolio Review: app/product continue/pause/kill/validation-only calls and distribution/monetizatio",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-04T14:29:03.495Z",
-      "lastRecalledAt": "2026-05-04T14:29:03.495Z",
+      "lastRecalledAt": "2026-05-05T17:58:53.654Z",
       "queryHashes": [
-        "84aac9f0a182"
+        "84aac9f0a182",
+        "5e20cf089b92"
       ],
       "recallDays": [
-        "2026-05-04"
+        "2026-05-04",
+        "2026-05-05"
       ],
       "conceptTags": [
         "memory/north-star/rubric.md",
@@ -1316,6 +1324,254 @@
         "content-reminder",
         "rate-limit",
         "re-fired"
+      ]
+    },
+    "memory:memory/2026-04-25.md:72:93": {
+      "key": "memory:memory/2026-04-25.md:72:93",
+      "path": "memory/2026-04-25.md",
+      "startLine": 72,
+      "endLine": 93,
+      "source": "memory",
+      "snippet": "- Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27). - No user alert sent. ## Heartbeat 9:12 PM - Cost alerts: none (`[]`). - Cron health: no failing jobs visible in `openclaw cron list`. - Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27). - No user alert sent. ## Heartbeat 10:00 PM - Cost alerts: none (`[]`). - Cron health: no failing jobs visible in `openclaw cron list`; heartbeat job running as expected at check time. - Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27). - Spanish accountability: `spanish/state.json` shows today's lesson delivered (`last_lesson_date: 2",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-05T07:00:13.970Z",
+      "lastRecalledAt": "2026-05-05T07:00:13.970Z",
+      "queryHashes": [
+        "f206b2894bfe"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "tasks.md",
+        "spanish/state.json",
+        "last-lesson-date",
+        "reviewed",
+        "but",
+        "skipped",
+        "surfacing",
+        "stale"
+      ]
+    },
+    "memory:memory/2026-05-01.md:48:70": {
+      "key": "memory:memory/2026-05-01.md:48:70",
+      "path": "memory/2026-05-01.md",
+      "startLine": 48,
+      "endLine": 70,
+      "source": "memory",
+      "snippet": "- Cost alerts: clear (`[]`). - Cron health: no jobs currently report `lastRunStatus=error` or `consecutiveErrors>=2` in jobs.json. - Tasks.md reviewed but skipped for surfacing due to stale Feb 2026 date and completed/deprioritized top items. - No user-facing alert needed. ## Heartbeat 1:12 PM - Cost alerts: clear (`[]`). - Cron health: no jobs currently report `lastRunStatus=error` or `consecutiveErrors>=2` in jobs.json. - Tasks.md reviewed; skipped for active surfacing due to stale Feb 2026 date and no fresh urgent item. - Proactive work already completed recently today; no duplicate proactive item run. - No user-facing alert needed. ## Heartbeat 2:00 PM - Cost alerts: clear (`[]`). - Cr",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-05T07:00:13.970Z",
+      "lastRecalledAt": "2026-05-05T07:00:13.970Z",
+      "queryHashes": [
+        "f206b2894bfe"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "jobs.json",
+        "tasks.md",
+        "completed/deprioritized",
+        "user-facing",
+        "cost",
+        "alerts",
+        "clear",
+        "cron"
+      ]
+    },
+    "memory:memory/2026-04-26.md:22:46": {
+      "key": "memory:memory/2026-04-26.md:22:46",
+      "path": "memory/2026-04-26.md",
+      "startLine": 22,
+      "endLine": 46,
+      "source": "memory",
+      "snippet": "- Cost alerts: none (`[]`); monthly pace alert was already sent at 9:04 AM and did not repeat. - Cron health: no failing jobs visible in `openclaw cron list`. - Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27); morning brief already surfaced current priorities. - No user alert sent. ## Heartbeat 10:00 AM - Cost alerts: none (`[]`). - Cron health: no failing jobs visible in `openclaw cron list`; Weekly Systems Review was running at check time as expected. - Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27). - Daily Film Review completed: reviewed 2026-04-25 cost recovery/heartbeat logs, updated `TOOLS.md` Cost T",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-05T07:00:13.970Z",
+      "lastRecalledAt": "2026-05-05T07:00:13.970Z",
+      "queryHashes": [
+        "f206b2894bfe"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "tasks.md",
+        "recovery/heartbeat",
+        "tools.md",
+        "cost",
+        "alerts",
+        "none",
+        "monthly",
+        "pace"
+      ]
+    },
+    "memory:memory/2026-04-26.md:162:184": {
+      "key": "memory:memory/2026-04-26.md:162:184",
+      "path": "memory/2026-04-26.md",
+      "startLine": 162,
+      "endLine": 184,
+      "source": "memory",
+      "snippet": "- Cron health: no failing jobs visible in `openclaw cron list`; Weekly Seeds Prompt completed ok. - Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27). - Proactive work: drafted consulting offer post in `memory/drafts/consulting-offer-post-2026-04-26.md` based on the 7-day ops bottleneck audit angle. - No user alert sent. ## Heartbeat 8:12 PM - Cost alerts: none (`[]`). - Cron health: no failing jobs visible in `openclaw cron list`; crypto evening pulse due soon and currently ok. - Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27). - Spanish state checked early: last delivered lesson was 2026-04-25 and incomplete",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-05T07:00:13.970Z",
+      "lastRecalledAt": "2026-05-05T07:00:13.970Z",
+      "queryHashes": [
+        "f206b2894bfe"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "tasks.md",
+        "7-day",
+        "cron",
+        "health",
+        "failing",
+        "jobs",
+        "visible",
+        "openclaw"
+      ]
+    },
+    "memory:memory/2026-04-26.md:61:85": {
+      "key": "memory:memory/2026-04-26.md:61:85",
+      "path": "memory/2026-04-26.md",
+      "startLine": 61,
+      "endLine": 85,
+      "source": "memory",
+      "snippet": "- Cost alert: monthly pace critical — $155.53 pace vs $75 cap ($144.42 real spend, $11.79 balance). Sent Telegram alert (messageId 15091). - Cron health: no failing jobs visible in `openclaw cron list`; Sunday content/passive-income jobs report ok. - Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27); morning brief already surfaced current priorities. ## Heartbeat 9:12 AM - Cost alerts: none (`[]`); monthly pace alert was already sent at 9:04 AM and did not repeat. - Cron health: no failing jobs visible in `openclaw cron list`. - Tasks.md reviewed but skipped for surfacing because it is stale (last updated 2026-02-27); morning brief already surfaced cu",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-05T07:00:13.970Z",
+      "lastRecalledAt": "2026-05-05T07:00:13.970Z",
+      "queryHashes": [
+        "f206b2894bfe"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "155.53",
+        "144.42",
+        "11.79",
+        "content/passive-income",
+        "tasks.md",
+        "cost",
+        "alert",
+        "monthly"
+      ]
+    },
+    "memory:memory/2026-04-26.md:193:215": {
+      "key": "memory:memory/2026-04-26.md:193:215",
+      "path": "memory/2026-04-26.md",
+      "startLine": 193,
+      "endLine": 215,
+      "source": "memory",
+      "snippet": "- Added Mission Control follow-up tasks for birdclaw import, gog OAuth, and notcrawl source-install evaluation. ## Heartbeat 22:57 - Checked HEARTBEAT.md active-hours flow. - Cost alerts: none. - Cron health: no jobs with consecutiveErrors >= 2 or lastRunStatus error. - Spanish 10PM accountability: skipped because last lesson date is not today. - No urgent task surfaced; no user alert needed. ## Task Board — local archive tooling unlocks - Added optimal unlock tasks for birdclaw, gog, X Lists, and notcrawl: JT-owned auth/data steps first, Eve-owned wiring steps after prerequisites. ## X API transcript analysis - Reviewed external OpenClaw/X API transcript. Useful pattern: niche-specific X",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-05T22:39:51.196Z",
+      "lastRecalledAt": "2026-05-05T22:39:51.196Z",
+      "queryHashes": [
+        "eb3f93bb1620"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "follow-up",
+        "source-install",
+        "heartbeat.md",
+        "active-hours",
+        "jt-owned",
+        "auth/data",
+        "eve-owned",
+        "openclaw/x"
+      ]
+    },
+    "memory:memory/2026-05-04.md:67:74": {
+      "key": "memory:memory/2026-05-04.md:67:74",
+      "path": "memory/2026-05-04.md",
+      "startLine": 67,
+      "endLine": 74,
+      "source": "memory",
+      "snippet": "- Heartbeat poll: checked pending tasks, Spanish state, cost alerts (`[]`), and cron list. - Found `nightly-friction-audit` error: rejected stale model `openrouter/anthropic/claude-sonnet-4-6` after model allowlist cleanup. - Fixed job with `openclaw cron edit 003191af-45a7-4e3b-a824-f7a6cd52f8c7 --model openai-codex/gpt-5.5 --timeout-seconds 300` and manually reran it. - Rerun completed ok and delivered Tomorrow Lock-In for CFS AI Implementation Specialist call; prep note saved at `memory/drafts/cfs-ai-implementation-specialist-call-prep-2026-05-05.md`. ## Heartbeat 23:30 - Heartbeat poll arrived after active hours (23:30), but checks had already run. Cost alerts `[]`; cron health `[]` fai",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-05T22:39:51.196Z",
+      "lastRecalledAt": "2026-05-05T22:39:51.196Z",
+      "queryHashes": [
+        "eb3f93bb1620"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "gpt",
+        "openai",
+        "router",
+        "nightly-friction-audit",
+        "openai-codex/gpt-5.5",
+        "timeout-seconds",
+        "lock-in",
+        "heartbeat"
+      ]
+    },
+    "memory:memory/2026-04-26.md:210:220": {
+      "key": "memory:memory/2026-04-26.md:210:220",
+      "path": "memory/2026-04-26.md",
+      "startLine": 210,
+      "endLine": 220,
+      "source": "memory",
+      "snippet": "- Added `nightly-friction-audit` cron at 9:45PM ET (isolated Sonnet, 240s timeout). It reads current task/memory state, preps one safe blocker-removal action, and sends a concise Tomorrow Lock-In only when actionable. ## Common Crawl backlink tasks - Added Mission Control tasks to build a Common Crawl backlink lookup utility, backlink opportunity wrapper, jtsomwaru.com competitor citation map, and optional consulting pipeline deliverable. ## HyperFrames research - Researched HeyGen HyperFrames for app launch videos. Key fit: HTML/GSAP/code-driven MP4 rendering, agent-friendly CLI, built-in examples/blocks, local/Docker render modes, good for repeatable launch/demo assets. Added Mission Con",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-05T22:39:51.196Z",
+      "lastRecalledAt": "2026-05-05T22:39:51.196Z",
+      "queryHashes": [
+        "eb3f93bb1620"
+      ],
+      "recallDays": [
+        "2026-05-05"
+      ],
+      "conceptTags": [
+        "nightly-friction-audit",
+        "task/memory",
+        "blocker-removal",
+        "lock-in",
+        "jtsomwaru.com",
+        "html/gsap/code-driven",
+        "agent-friendly",
+        "built-in"
       ]
     }
   }
