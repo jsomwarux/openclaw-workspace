@@ -131,3 +131,4 @@ No new 🔴/🟠 findings today. All signals were either:
 - [🟢] Anthropic news — no newer post than Claude Design Apr 17.
 - [🟢] Cowork plugins — latest commit unchanged from tracked SHA 9789ea78ad66e395a9c709146cacecdc14ce2abf.
 - [🟢] Clawhub/npm scan — no gate-passing new skill/plugin for current stack.
+[2026-05-06] 🟠 OpenClaw 2026.5.5 — fixes heartbeat/TUI session poisoning, cron maintenance after restarts, Telegram/Codex progress rendering, iOS pairing, hidden runtime-context leakage into context engines, approval delivery retries, and generated-media duplicate fallback posts. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.5 | Relevance: OpenClaw/Eve reliability | First action: run `openclaw gateway status && npm install -g openclaw@2026.5.5 && openclaw gateway restart` after confirming update window. | Priority: medium.

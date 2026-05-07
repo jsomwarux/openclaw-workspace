@@ -1,0 +1,49 @@
+{
+  "version": "2026-05-06",
+  "global_rules": {
+    "format": "Native TikTok photo slideshows via ReelFarm, not video exports",
+    "aspect_ratio": "9:16",
+    "font": "TikTokDisplay-Bold",
+    "automations": {
+      "A": "Lifestyle-only: all 5 slides lifestyle photos; every slide carries text overlay; text does the storytelling.",
+      "B": "Lifestyle hook + screenshots: slide 1 lifestyle hook with text overlay; slides 2-5 clean app screenshots with no overlay."
+    },
+    "hook_words": "8-14 words",
+    "body_words": "8-15 words",
+    "banned_overlay": ["exclamation points", "emojis", "all-caps brand names", "fake personal relationships", "features ReelFarm cannot render"],
+    "best_pattern": "Larry framework: person + conflict + reveal",
+    "recommendation_bar": "3-5 high-confidence recommendations max; 'nothing worth acting on today' is valid. No padding."
+  },
+  "apps": [
+    {
+      "name": "Vista",
+      "status": "active",
+      "product": "Social movie-rating app with 1-100 precision ratings, Taste Titles, and friend compatibility scoring.",
+      "audience": "Late-20s to 30s aesthetic-conscious viewers who watch movies socially.",
+      "positioning": "Movie taste as identity and social currency; Letterboxd-adjacent.",
+      "voice": "Warm, slightly literary, self-aware, like someone roasting their own taste at a dinner party.",
+      "strong_devices": ["compatibility drama with named real/neutral person framing", "Taste Title identity callouts", "rating-as-content lists"],
+      "banned": ["fabricated relationships", "fake boyfriend/sister/friend claims unless real", "feature-dump hooks"]
+    },
+    {
+      "name": "Nash Satoshi",
+      "status": "active",
+      "product": "4-LLM crypto token analysis platform scoring tokens 0-100 across Coordination, Schelling Rank, Reflexivity, Virality, Asymmetry, and Game Theory.",
+      "audience": "Crypto-burned retail traders 25-40 skeptical of Crypto Twitter hype.",
+      "positioning": "Anti-hype token analysis framework; helps people avoid becoming exit liquidity.",
+      "voice": "Analytical, contrarian, dry, with attitude. No hype.",
+      "strong_devices": ["exit liquidity accusation", "Phase Detection language", "tier-based authority claims without specific tickers"],
+      "banned": ["moon", "gem", "10x", "rocket emojis", "specific token tickers", "time-sensitive token claims", "hype language"]
+    },
+    {
+      "name": "Glow Index",
+      "status": "active",
+      "product": "4-AI skincare product analysis platform scoring ingredient efficacy, value, and formulation.",
+      "audience": "Ingredient-literate women 22-40 skeptical of influencer marketing.",
+      "positioning": "Catches the gap between skincare marketing claims and chemistry.",
+      "voice": "Friend-spilling-secrets, slightly skeptical, specific. Not clinical, not preachy.",
+      "strong_devices": ["price exposés", "dupe reveals", "influencer disagreement callouts"],
+      "banned": ["clinical lectures", "preachy tone", "unsupported medical claims", "specific aging product claims unless analytics proves evergreen"]
+    }
+  ]
+}

@@ -8,20 +8,16 @@ This is SEPARATE from JT's personal brand content (content-scheduler handles tha
 This agent markets the PRODUCTS — Nash Satoshi, Vista, and future apps.
 
 Platforms: **X, TikTok, Reddit, LinkedIn (monthly)**
-JT reviews all content and posts manually. Never post on his behalf.
+JT reviews X/Reddit/LinkedIn content and posts manually. Never post on his behalf.
 
-**Posting phase:** TikTok slideshows auto-publish via Reel.farm. X and Reddit remain manual review and posting. PostBridge is retired.
+**TikTok/ReelFarm execution:** JT runs ReelFarm TikTok slideshow automation separately on his laptop. The Mac mini/Eve should not duplicate ReelFarm creation or posting. This agent may generate TikTok strategy/copy/assets for review, but laptop ReelFarm is the execution layer.
 
 ---
 
 ## When This Runs
 **Monday 4:45 AM ET — generate + queue content only. Do NOT publish to TikTok in this step.**
 
-Posting is handled by 4 dedicated posting crons:
-- Vista: Friday 7PM ET + Sunday 11AM ET (lifestyle content — peak movie night audience)
-- Nash Satoshi: Tuesday 7AM ET + Thursday 7AM ET (crypto pre-market audience)
-
-Generate always runs first. Posting crons read from the queue.jsonl file.
+Historical note: older versions used Mac mini posting crons for ReelFarm. Do not add or rely on new Mac mini TikTok posting crons unless JT explicitly asks; prefer JT's laptop ReelFarm setup.
 
 ---
 
@@ -65,8 +61,16 @@ This ensures 4+ weeks of posts cover 4+ different angles rather than converging 
 
 ## Step 1: Load context
 
+0. **Read App Marketing OS first (mandatory)**
+   - `~/.openclaw/workspace/memory/app-marketing/os-spec.md`
+   - `~/.openclaw/workspace/memory/app-marketing/app-registry.md`
+   - `~/.openclaw/workspace/memory/app-marketing/weekly-scoreboard.md`
+   - `~/.openclaw/workspace/memory/app-marketing/vibe-dependency-map-2026-05-06.md`
+   These files own strategic channel routing, ReelFarm execution boundaries, and current measurement priorities. If they conflict with this legacy Vibe Marketing file, App Marketing OS wins.
+
 1. Read `~/.openclaw/workspace/agents/vibe-marketing/product-registry.json`
    - Find all products with `status: "active"`
+   - Cross-check against App Marketing OS registry before generating
    - If none: update state.json with `last_run` and exit
 
 2. **Load brand files for each active product (mandatory — read all three before generating a single word):**
@@ -101,6 +105,7 @@ This ensures 4+ weeks of posts cover 4+ different angles rather than converging 
    - Goal: calibrate hooks to what's getting traction NOW, not generic templates
    - Rule: **research what's working, then generate** — not the other way around
    - This is cheap (web_search, no X API). Skip if budget is critically tight.
+   - **Meta Ads / ad-library intelligence, when available:** use read-only ad intelligence as a creative reference layer, not an execution layer. Extract hooks, offers, visual frames, CTAs, and funnel patterns from comparable apps/categories. Do not connect ad accounts, create campaigns, upload creatives, or change spend. Vista: movie/social discovery and taste-compatibility angles. Glow Index: skincare quiz, ingredient checker, dupe finder, beauty scoring, influencer-skeptic angles. Nash Satoshi: use cautiously because crypto ads are restricted; prefer fintech/AI investing/portfolio-risk angles over token promotion.
    - **After research, overwrite `agents/vibe-marketing/trending-now.md`** with findings per product: trending topics, formats getting traction, angle to hit this week. This persists for reference — do not skip this write.
 
 6a. **Read `agents/vibe-marketing/monthly-angles-[YYYY-MM].md`** (if it exists)
@@ -196,10 +201,10 @@ This is the single biggest quality lever. Hook quality determines reach. Earn th
 | Glow Index | Slideshow (faceless) | UGC Reaction (faceless) | Any on-camera format |
 
 **Posting infrastructure modes:**
-- **Reel.farm mode (active):** Eve calls `scripts/reelfarm-create-slideshow.py` which renders the slideshow server-side and publishes directly to TikTok via Reel.farm API. Auto-music enabled. JT reviews analytics weekly.
-- **Manual fallback:** If Reel.farm is down or REELFARM_API_KEY is missing, generate slide copy as text in Drive. JT uploads to TikTok manually.
+- **Laptop ReelFarm mode (active):** JT's laptop setup creates/publishes the actual TikTok slideshows. Eve should not duplicate that execution on the Mac mini.
+- **Strategy/copy support mode:** Eve generates hook/slide/CTA recommendations, asset notes, and performance interpretation for JT's laptop ReelFarm workflow.
 
-Slide *copy* (text content per slide) is still generated in all modes. Reel.farm mode adds automated rendering + publishing on top.
+Slide *copy* (text content per slide) can still be generated for review, but publishing belongs to the laptop ReelFarm setup.
 
 ---
 
@@ -856,7 +861,7 @@ X ([N] posts) | TikTok ([N] scripts) | Reddit ([N] post) | LinkedIn ([N] — if 
 
 All content in Drive: [link]
 
-📌 TikTok: auto-published via Reel.farm. X + Reddit: review in Drive, post manually.
+📌 TikTok: use JT's laptop ReelFarm setup. X + Reddit: review in Drive, post manually.
 
 Reply with feedback after you post ("Nash Satoshi game theory post did well") — I'll log it to bias next week's generation.
 ```
@@ -1005,7 +1010,7 @@ This is how the system improves without needing analytics API access.
 
 ## Hard Rules
 
-1. **NEVER post on JT's behalf.** Generate and queue only. JT approves and posts manually.
+1. **NEVER post on JT's behalf.** Generate and queue only. JT approves and posts manually. TikTok/ReelFarm execution belongs to JT's laptop unless JT explicitly reactivates Mac mini posting.
 2. **NEVER cross-contaminate products.** Nash Satoshi posts never mention Vista. Vista never mentions Nash Satoshi.
 3. **Skip `status: "pending"` products.** No exceptions.
 4. **Reddit = value first, always.** If you can't write a post that leads with genuine value, skip it. Don't force a promotion into a community space.
@@ -1021,43 +1026,33 @@ When JT says "Eve, add [product] to vibe marketing":
 2. Fill in all fields including `platform_config` for each intended platform
 3. Next Monday 4:45AM picks it up automatically — no other changes needed
 
-## TikTok Publishing (Reel.farm)
+## TikTok / ReelFarm Execution Boundary
 
-**The Monday generate cron queues content only — it does NOT call Reel.farm.**
+JT's laptop ReelFarm setup owns slideshow creation and publishing.
 
-Posting is handled by `scripts/vibe-post.py` called by the 4 dedicated posting crons:
-- `vibe-post-vista-friday` (Fri 7PM ET) — `python3 vibe-post.py --product vista`
-- `vibe-post-vista-sunday` (Sun 11AM ET) — `python3 vibe-post.py --product vista`
-- `vibe-post-nash-tuesday` (Tue 7AM ET) — `python3 vibe-post.py --product nash-satoshi`
-- `vibe-post-nash-thursday` (Thu 7AM ET) — `python3 vibe-post.py --product nash-satoshi`
+This agent may support TikTok by:
+1. Generating hook/slide/CTA recommendations.
+2. Maintaining product voice and platform rules.
+3. Reading performance summaries when JT provides them.
+4. Updating App Marketing OS scoreboard and recommendations.
+5. Preparing optional asset notes or screenshot checklists.
 
-`vibe-post.py` handles the full publish loop:
-1. Reads oldest approved+unposted TikTok entry from queue.jsonl
-2. Parses slide text and hook from the entry
-3. Calls reelfarm-create-slideshow.py (which picks photos from library, renders, publishes)
-4. Marks entry as posted in queue.jsonl
-5. Logs to performance-log.jsonl
-6. Sends Telegram notification to JT with result
-
-TikTok account IDs are loaded automatically from product-registry.json — no manual arg needed.
-Sound is handled by Reel.farm `auto_music: true` — TikTok algorithm picks optimal sound.
-
-TikTok analytics check (every Monday generate cron):
-- Call GET /api/v1/tiktok/posts to fetch last 7 days of performance
-- Include top performing post (by views) in weekly Telegram summary
+This agent must NOT assume:
+- Mac mini posting crons are the active ReelFarm execution layer.
+- `scripts/vibe-post.py` should publish TikToks unless JT explicitly reactivates that path.
+- New products need Mac mini posting crons by default.
 
 **Adding a new product to TikTok:**
-1. Add entry to product-registry.json with correct `tiktok_account_id`
-2. Upload 20-25 photos to `agents/vibe-marketing/real-photos/[slug]/` with library.json
-3. Upload all photos to R2 (public URLs must be set in library.json)
-4. Add two posting crons at the right day/time for that product's audience
-5. Monday generate cron picks it up automatically
+1. Define product strategy in `memory/app-marketing/app-registry.md`.
+2. Confirm JT's laptop ReelFarm setup can support the app.
+3. Add brand/product/ICP files only if Vibe Marketing will generate copy for that app.
+4. Define metrics handoff into `memory/app-marketing/weekly-scoreboard.md`.
 
 ---
 
 ## Phase 2: AI UGC Talking Head Videos (activate after carousels have traction)
 
-An AI-generated avatar persona acts as a user of each product. Eve handles the full pipeline autonomously — script → voice → video → Drive. JT reviews and posts.
+An AI-generated avatar persona can act as a user of each product. Eve may prepare script/voice/asset guidance, but should not assume ownership of the full TikTok/ReelFarm production pipeline unless JT explicitly asks.
 
 ### Activation trigger (specific — not vague "traction")
 All three conditions must be met before activating Phase 2 for a product:
@@ -1078,7 +1073,7 @@ Alternative if HeyGen is unavailable or cost-prohibitive: Hedra (also has API, g
 
 ---
 
-### Pipeline (Eve runs all steps autonomously)
+### Pipeline (Eve supports; JT/laptop owns TikTok execution unless explicitly changed)
 
 **Step 1 — Avatar character image (one-time per product, reused every week)**
 

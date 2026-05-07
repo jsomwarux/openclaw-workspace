@@ -633,5 +633,22 @@
     ],
     "currentTask": "Monitor verified Guyana economic/digital transformation signals and create actionable Mission Control tasks when warranted",
     "created": "2026-04-26"
+  },
+  {
+    "id": "app-marketing-product-content",
+    "name": "App Marketing Product Content",
+    "emoji": "📱",
+    "role": "Product Marketing Draft Generator",
+    "domain": "Generates product X, Reddit, LinkedIn, and TikTok/ReelFarm support copy under the App Marketing OS. Does not post externally or own ReelFarm execution.",
+    "workspaceRel": ".openclaw/workspace/agents/app-marketing/product-content",
+    "github": null,
+    "skills": [
+      "launch-strategy",
+      "content-generation",
+      "app-marketing"
+    ],
+    "crons": [],
+    "currentTask": "Created as future replacement target for Vibe Marketing content-generation surfaces. Not wired to production cron yet.",
+    "created": "2026-05-06"
   }
 ]

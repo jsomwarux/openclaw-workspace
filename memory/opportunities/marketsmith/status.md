@@ -24,6 +24,7 @@ High-value AI/product consulting or freelance opportunity.
 - Waiting for follow-up from head of talent acquisition.
 - Next step on their side: she will talk with the product team about fit and follow up with JT.
 - No response yet as of 2026-04-30 8:04 PM ET.
+- JT followed up with Karen on 2026-05-06; no response yet as of that day.
 
 ## Strategic Fit
 Strong fit with North Star if it becomes consulting/freelance product work:
@@ -39,7 +40,9 @@ Strong fit with North Star if it becomes consulting/freelance product work:
 - Do not underprice if they want senior product/AI strategy and implementation.
 
 ## Recommended Follow-Up Timing
-If no response by early next week, send a concise follow-up that:
+JT already followed up on 2026-05-06. Do not chase again immediately.
+
+If no response after 4–5 business days, send one concise follow-up that:
 1. Reiterates excitement about MSIGenerate/product initiatives
 2. Anchors around a concrete product-team discovery or 2-week diagnostic
 3. Keeps the $175/hr or $15k/mo deliverables-based framing

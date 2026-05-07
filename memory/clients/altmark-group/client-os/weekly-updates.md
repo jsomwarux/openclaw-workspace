@@ -10,7 +10,8 @@
 ### Misses / Blockers
 - Insurance workflow acceptance/payment status is still unknown.
 - PC handoff date/time still needs confirmation with Yair/Navid.
-- Rent delinquency workflow should not begin until the 50% deposit is confirmed.
+- Rent delinquency workflow is paused by Altmark-side reporting/ledger cleanup: Matt is away, office is overwhelmed, internal reporting needs cleanup, and tenant ledgers need cleanup before the delinquency report is accurate.
+- Rent delinquency workflow should not begin until the data-readiness checklist is satisfied and the 50% deposit is confirmed.
 - Proof/referral asset should wait until handoff + acceptance are clean.
 
 ### What Changed In The Workflow
@@ -26,9 +27,11 @@
 - Complete on-site handoff with Navid/Yair.
 - Verify insurance expiration workflow and logs/audit trail.
 - Confirm insurance workflow acceptance/payment status.
-- Confirm rent delinquency deposit timing and start only after deposit.
+- Send/use the rent delinquency data-readiness checklist before build work begins.
+- Confirm rent delinquency deposit timing and start only after deposit + clean sample report.
 
 ### Client Decision / Input Needed
 - Confirm PC handoff date/time.
 - Confirm insurance expiration workflow acceptance and any remaining approval/payment step.
+- Confirm who owns the cleaned rent delinquency source report and when a sample export will be ready.
 - Confirm 50% deposit timing for rent delinquency workflow.

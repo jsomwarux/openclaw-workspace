@@ -9,3 +9,6 @@
 2026-05-04 OPENCLAW — v2026.5.1 shipped Codex binary resolution fix + 20+ plugins prepped for beta — Post angle: "OpenClaw just fixed the Codex missing-binary bug and prepped 20+ plugins for beta — here is what that means for your agent stack" — tag @openclaw @openclawdiai — official: @openclawdiai
 [2026-05-04] OpenClaw — Bundled file-transfer plugin in v2026.5.3 — Demoing node-to-node file fetch for remote office PCs — @openclaw
 [2026-05-05] OpenClaw — v2026.5.4 shipped plugin/secrets fixes + Gateway/startup performance work — Suggested post: show upgrading from 2026.5.3-1 to 2026.5.4 and verifying Gateway/channel health — official account to tag: @openclaw
+[2026-05-06] Anthropic — Launched 10 financial workflow templates — Big for high-end consulting templates — @anthropic
+[2026-05-06] n8n — n8n-mcp community release — Game changer for agent-driven workflow builds — @n8n_io
+[2026-05-06] OpenClaw — v2026.5.5 reliability release with heartbeat/TUI recovery, context-engine hygiene, Telegram/Codex progress rendering, iOS pairing, approvals, and generated-media fixes — quick “why agent ops reliability matters” reaction/demo after upgrading Eve — @openclaw

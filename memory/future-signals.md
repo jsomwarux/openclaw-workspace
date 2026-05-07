@@ -227,3 +227,9 @@
 **Why deferred:** Attractive but not current priority. Acquisition creates cash, legal, privacy, diligence, and maintenance risk. Altmark/Marketsmith/consulting cash flow should dominate until revenue is more stable.
 **Specific trigger condition:** Promote only when consulting run-rate approaches Safe ($10K/mo), or if a clearly underpriced asset appears with transferable support/customer data, strong repeated workflow pain, acquisition cost ≤ $5K, and a distribution path before build.
 **Smallest validation step:** Create a 20-candidate dead-SaaS scanner/research list and score candidates before contacting founders. Details: `memory/opportunities/dead-saas-agent-acquisition.md`.
+
+## Pay.sh / x402 Agent-Payable API Layer — Added 2026-05-06
+- **What:** Solana Foundation + Google Cloud Pay.sh gateway for agent-payable APIs via x402/MPP and stablecoins on Solana.
+- **Why deferred:** Payment-enabled agent tools are strategically important but unsafe to install/fund globally without spend controls, mainnet wallet approval, and a concrete workflow needing it.
+- **Trigger condition:** Promote when Pay.sh offers a catalog API that directly improves a current JT workflow, Nash Satoshi needs an external paid API surface, Altmark/family-office work needs controlled private dataset access, or OpenClaw exposes safe Pay.sh spend limits.
+- **Allowed near-term action:** Sandbox-only evaluation with no wallet funding and no persistent OpenClaw global config changes unless JT approves.

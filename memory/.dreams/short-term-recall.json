@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-05T22:39:51.196Z",
+  "updatedAt": "2026-05-07T00:32:03.853Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -1572,6 +1572,316 @@
         "html/gsap/code-driven",
         "agent-friendly",
         "built-in"
+      ]
+    },
+    "memory:memory/2026-02-23.md:218:239": {
+      "key": "memory:memory/2026-02-23.md:218:239",
+      "path": "memory/2026-02-23.md",
+      "startLine": 218,
+      "endLine": 239,
+      "source": "memory",
+      "snippet": "- All fixes are in DB: `workflow_entity.nodes`, `workflow_history` (b2ccae9d), `workflow_published_version` - **Blocking:** n8n in-memory cache needs to be flushed. PUT /api/v1/workflows updates DB but not runtime cache. Restart flushes cache but seems to not re-read published version correctly. ### Anthropic API Key Discovery - Decrypted n8n credentials using encryption key from `~/.n8n/config` - Anthropic key: `sk-ant-api03-_1HmwHGry3IK2ucX5...` (valid format) - Available Claude models on this account: `claude-opus-4-0` ✅, `claude-sonnet-4-0` ✅ - Unavailable (404): `claude-3-5-sonnet-20241022`, `claude-3-5-haiku-20241022`, `claude-opus-4-5-20250514`, `claude-3-opus-20240229` ### n8n Encr",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-06T23:16:38.434Z",
+      "lastRecalledAt": "2026-05-06T23:16:38.434Z",
+      "queryHashes": [
+        "546833648615"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "workflow-entity.nodes",
+        "workflow-history",
+        "workflow-published-version",
+        "in-memory",
+        "api/v1/workflows",
+        "re-read",
+        "n8n/config",
+        "sk-ant-api03"
+      ]
+    },
+    "memory:memory/2026-02-23.md:190:209": {
+      "key": "memory:memory/2026-02-23.md:190:209",
+      "path": "memory/2026-02-23.md",
+      "startLine": 190,
+      "endLine": 209,
+      "source": "memory",
+      "snippet": "- Webhook URL when done: https://unwearing-sniffingly-rudolph.ngrok-free.dev/webhook/skincare-analysis - Will auto-notify via openclaw system event when workflow is deployed ## Heartbeat 1:32 PM - tidal-meadow session exited (code 143 — context auto-compact at 4%, expected after 23-min build) - Glow Index n8n workflow confirmed active before exit: ID LNae5xv5dmIi6nBP, 19 nodes, active=true - Waiting on JT to update Replit Secret N8N_WEBHOOK_URL to real ngrok URL, then test admin panel - No other urgent items ## Afternoon Session — n8n Webhook Debugging (2–5 PM EST) ### Root Cause Chain (fully documented) n8n v2 webhook issue had 4 layered problems, all resolved one by one: **Problem 1 —",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-06T23:16:38.434Z",
+      "lastRecalledAt": "2026-05-06T23:16:38.434Z",
+      "queryHashes": [
+        "546833648615"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "auto-notify",
+        "tidal-meadow",
+        "auto-compact",
+        "23-min",
+        "n8n-webhook-url",
+        "webhook",
+        "url",
+        "when"
+      ]
+    },
+    "memory:memory/2026-03-15.md:1:21": {
+      "key": "memory:memory/2026-03-15.md:1:21",
+      "path": "memory/2026-03-15.md",
+      "startLine": 1,
+      "endLine": 21,
+      "source": "memory",
+      "snippet": "# Daily Note — 2026-03-15 (Sunday) ## Heartbeat 10:56 (10AM slot) ### Cost Alerts - None ✅ ### Cron Health Scan | Job | Status | Action | |-----|--------|--------| | Spanish Daily Lesson (babd905a) | error — delivery failed Sat 8:05PM | Resent Sat lesson to JT via Telegram ✅ | | Skills Researcher Weekly (05024e45) | error — timed out (300s, consecutiveErrors: 1) | Re-applied 600s timeout per mandatory rule ✅ (confirmed in returned JSON: timeoutSeconds: 600) | | content-sunday (d918122d) | idle, 0 run history — missed 9AM first-time slot | Triggered manually → already running ✅ | | prospect-discovery (ebb843af) | idle, 0 run history — missed 1AM first-time slot | Triggered manually → alrea",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-06T23:16:38.434Z",
+      "lastRecalledAt": "2026-05-06T23:16:38.434Z",
+      "queryHashes": [
+        "546833648615"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "re-applied",
+        "content-sunday",
+        "first-time",
+        "prospect-discovery",
+        "sunday",
+        "heartbeat",
+        "10am",
+        "slot"
+      ]
+    },
+    "memory:memory/2026-04-11.md:65:95": {
+      "key": "memory:memory/2026-04-11.md:65:95",
+      "path": "memory/2026-04-11.md",
+      "startLine": 65,
+      "endLine": 95,
+      "source": "memory",
+      "snippet": "- Proactive: drafted Wednesday LinkedIn post (M1/M2 gap pattern) → memory/drafts/wednesday-linkedin-2026-04-16.md - OpenClaw v2026.4.1 release research: no action needed, Infer Hub worth monitoring - Operational note: outreach pipeline needs M1→M2 MC task creation rule in its AGENT.md ## Heartbeat 09:06 AM - Cost alerts: same as 8:06 AM (already sent), no new action - Cron errors: pre-existing, unchanged - Proactive: Wednesday LinkedIn post already drafted at 8:06 AM ## Heartbeat 10:00 AM — Saturday (Kobe Protocol Film Review) - Cost alerts: same as 8-9AM (already sent), no new action - Cron errors: pre-existing, unchanged - Film Review: Friday April 10 reviewed - Mistake A: outreach pip",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T00:18:41.505Z",
+      "lastRecalledAt": "2026-05-07T00:18:41.505Z",
+      "queryHashes": [
+        "cbe2f9ad3ff7"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "m1/m2",
+        "v2026.4.1",
+        "agent.md",
+        "pre-existing",
+        "8-9am",
+        "proactive",
+        "drafted",
+        "wednesday"
+      ]
+    },
+    "memory:memory/2026-04-11.md:108:140": {
+      "key": "memory:memory/2026-04-11.md:108:140",
+      "path": "memory/2026-04-11.md",
+      "startLine": 108,
+      "endLine": 140,
+      "source": "memory",
+      "snippet": "- Cost alerts sent to Telegram 6608544825 (msg 12738): outreach-pipeline $1.89, Overnight Autonomy $1.64, daily spend $15.82 exceeded, monthly pace $126/mo vs $75 cap - Cron health: content-monday-send model updated to deepseek-chat-v3-0324 (fallbacks were broken); content-generate-link Telegram delivery failure (content OK, bestEffort:true so non-blocking) - Proactive: updated job-market.md with today's signals (AI Enablement 672 roles confirmed, enterprise internal-only hiring shift noted) ## Heartbeat 2:02 PM (duplicate — same state as 2:00 PM) ## Heartbeat 3:02 PM - Cost alerts: same as 2PM (already sent), no new action - Cron errors: pre-existing, d4dedeb1 model now deepseek-chat-v3-0",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T00:18:41.505Z",
+      "lastRecalledAt": "2026-05-07T00:18:41.505Z",
+      "queryHashes": [
+        "cbe2f9ad3ff7"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "outreach-pipeline",
+        "1.89",
+        "1.64",
+        "15.82",
+        "126/mo",
+        "content-monday-send",
+        "deepseek-chat-v3-0324",
+        "content-generate-link"
+      ]
+    },
+    "memory:memory/2026-04-30.md:38:48": {
+      "key": "memory:memory/2026-04-30.md:38:48",
+      "path": "memory/2026-04-30.md",
+      "startLine": 38,
+      "endLine": 48,
+      "source": "memory",
+      "snippet": "- Updated `skills/sports-gm/SKILL.md` with Action Arena positioning: fantasy league structure + sports betting strategy, weekly budget, public picks, bankroll construction, rivalry, profit standings, parlays/teasers discipline. - Updated `memory/FEEDBACK-LOG.md` with the correction: @dynastyjig content must reference the approved account universe and ladder to Action Arena instead of defaulting to player evals. - Updated cron `1e614c8a-adb8-4a02-b35f-3031db55b337` Daily DynastyJig X Post Pack to generate Action Arena-aligned hooks/post packs instead of generic Buy/Sell/Hold player evals. ## Product Context — DynastyJig / Dynasty Simulator - JT added second @dynastyjig product lane: Dynasty",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T00:18:41.505Z",
+      "lastRecalledAt": "2026-05-07T00:18:41.505Z",
+      "queryHashes": [
+        "cbe2f9ad3ff7"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "skills/sports-gm/skill.md",
+        "parlays/teasers",
+        "memory/feedback-log.md",
+        "arena-aligned",
+        "hooks/post",
+        "buy/sell/hold",
+        "updated",
+        "skills"
+      ]
+    },
+    "memory:memory/2026-05-06.md:58:74": {
+      "key": "memory:memory/2026-05-06.md:58:74",
+      "path": "memory/2026-05-06.md",
+      "startLine": 58,
+      "endLine": 74,
+      "source": "memory",
+      "snippet": "- JT corrected Eve: Action Arena is NOT the Dynasty Fantasy Football Simulator. Action Arena = fantasy football league structure + sports betting strategy. Players join leagues, get $100/week fake budget, and compete on profit through straight bets, parlays, and teasers. No real money is ever wagered. - Updated MEMORY.md and docs/agents/mistakes-log-recent.md with the correction and regression check. - Strategy note: future app-marketing plan must review existing Reddit/X/vibe systems before proposing changes, and Reddit plans must respect strict anti-self-promotion norms. ## App Marketing OS — Initial Build - Proceeded with automated app marketing priority after JT approved optimal plan. -",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T00:32:03.853Z",
+      "lastRecalledAt": "2026-05-07T00:32:03.853Z",
+      "queryHashes": [
+        "ffbc682bf3ef"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "100/week",
+        "memory.md",
+        "app-marketing",
+        "reddit/x/vibe",
+        "anti-self-promotion",
+        "corrected",
+        "eve",
+        "action"
+      ]
+    },
+    "memory:memory/2026-04-10.md:183:206": {
+      "key": "memory:memory/2026-04-10.md:183:206",
+      "path": "memory/2026-04-10.md",
+      "startLine": 183,
+      "endLine": 206,
+      "source": "memory",
+      "snippet": "Lib (7): lib/types.ts, lib/db.ts, lib/scoring.ts, lib/utils.ts, lib/stripe.ts, lib/subscription.ts, lib/beta.ts, lib/progress-store.ts App Pages (8): app/layout.tsx, app/page.tsx, app/rankings/page.tsx, app/rankings/[id]/page.tsx, app/vote/page.tsx, app/admin/page.tsx, app/analysis-status/page.tsx, app/sign-in/[[...sign-in]]/page.tsx, app/sign-up/[[...sign-up]]/page.tsx API Routes (14): trigger-analysis, analysis-callback, votes (GET/POST), votes/[id]/upvote, votes/add-product, votes/reject, products (GET), products/search, analysis-status, batch-analyze, fetch-images, clear-stuck, admin/login, stripe/checkout, stripe/portal, stripe/webhook Components (14): Header, ProductCard, RankingsCl",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T00:32:03.853Z",
+      "lastRecalledAt": "2026-05-07T00:32:03.853Z",
+      "queryHashes": [
+        "ffbc682bf3ef"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "lib/types.ts",
+        "lib/db.ts",
+        "lib/scoring.ts",
+        "lib/utils.ts",
+        "lib/stripe.ts",
+        "lib/subscription.ts",
+        "lib/beta.ts",
+        "lib/progress-store.ts"
+      ]
+    },
+    "memory:memory/2026-03-03.md:212:220": {
+      "key": "memory:memory/2026-03-03.md:212:220",
+      "path": "memory/2026-03-03.md",
+      "startLine": 212,
+      "endLine": 220,
+      "source": "memory",
+      "snippet": "- Spanish check: last_lesson_date = today, last_lesson_complete = false → nudge sent to JT ## Vista — App Store Launch (10:51 PM) - Vista iOS movie rating app approved and live on Apple App Store - Updated jtsomwaru.com: status=live, description updated, App Store tags added - MEMORY.md updated: pending → LIVE - Mission Control App Store monitoring task marked done - Need App Store URL from JT to add direct link to portfolio card",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T00:32:03.853Z",
+      "lastRecalledAt": "2026-05-07T00:32:03.853Z",
+      "queryHashes": [
+        "ffbc682bf3ef"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "last-lesson-date",
+        "last-lesson-complete",
+        "jtsomwaru.com",
+        "memory.md",
+        "spanish",
+        "check",
+        "false",
+        "nudge"
+      ]
+    },
+    "memory:memory/2026-05-06.md:67:79": {
+      "key": "memory:memory/2026-05-06.md:67:79",
+      "path": "memory/2026-05-06.md",
+      "startLine": 67,
+      "endLine": 79,
+      "source": "memory",
+      "snippet": "- memory/app-marketing/os-spec.md - memory/app-marketing/app-registry.md - memory/app-marketing/weekly-scoreboard.md - memory/app-marketing/directory-submissions.md - memory/app-marketing/seo-backlog.md - memory/app-marketing/aso-checklist.md - memory/app-marketing/future-app-template.md - memory/app-marketing/implementation-plan.md - Key finding: Vibe queue has 119 valid entries (Nash 58, Vista 61), but performance-log has only 6 pending/zero-metric rows. Measurement is the bottleneck before increasing volume. - Key finding: Vibe state reports screenshot Drive folders missing for Nash/Vista, reducing slideshow quality. - Verified ReelFarm API works via env-loaded REELFARM_AP",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T00:32:03.853Z",
+      "lastRecalledAt": "2026-05-07T00:32:03.853Z",
+      "queryHashes": [
+        "ffbc682bf3ef"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "memory/app-marketing/os-spec.md",
+        "performance-log",
+        "pending/zero-metric",
+        "nash/vista",
+        "env-loaded",
+        "reelfarm-ap",
+        "app",
+        "marketing"
       ]
     }
   }

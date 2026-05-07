@@ -105,6 +105,7 @@ The marketing must run without JT. Assess each vector:
 - **SEO**: Does this naturally rank? What would the key search terms be? Is there search volume?
 - **Social/viral**: Does the product output generate its own shareable content? (PhotoAI output = LinkedIn photo = marketing)
 - **Agent-driven posting**: Can an automated agent post content about this on TikTok, X, Pinterest, Reddit?
+- **Paid-demand validation (Meta Ads / ad-library lens):** If Meta Ads MCP, Pipeboard, or public ad-library research is available, use it as a validation layer, not as the idea source. Check whether real advertisers are actively spending in this niche, whether hooks/offers repeat across multiple advertisers, whether landing pages are simple/productizable, and whether CAC/LTV could plausibly work for a solo builder. Do not connect ad accounts, create campaigns, change budgets, or rely on paid acquisition unless unit economics support it.
 - **Referral/word of mouth**: Do users naturally share this? Why?
 - **Best marketing channel for this specific idea** — be specific, not generic
 

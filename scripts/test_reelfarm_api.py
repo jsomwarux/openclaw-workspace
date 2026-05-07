@@ -1,8 +1,16 @@
-import requests
 import os
+import sys
+
+import requests
+
 
 def get_api_key():
-    return '368494f1f6cf5b6749e3f7e5bf35c106'
+    api_key = os.getenv("REELFARM_API_KEY")
+    if not api_key:
+        print("ERROR: REELFARM_API_KEY is not set", file=sys.stderr)
+        sys.exit(1)
+    return api_key
+
 
 if __name__ == '__main__':
     api_key = get_api_key()

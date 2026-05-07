@@ -51,7 +51,8 @@ Known active/current workflows from JT update:
 - Insurance expiration workflow is finished.
 - Dedicated PC for workflows has been set up.
 - JT plans to deliver the dedicated PC to Altmark's Bronx office next week.
-- Waiting for 50% deposit before beginning rent delinquency workflow.
+- Rent delinquency workflow is temporarily paused by client-side data readiness. On 2026-05-06, after JT asked whether Altmark had the updated rent delinquency tracker ready and was ready to move forward, Yair replied that Matt is away, the office has been overwhelmed, internal reporting still needs cleanup, and many tenant ledgers need cleanup before the delinquency report is accurate. Yair expects to pick it back up early next week.
+- This is not a lost opportunity; it is a data hygiene/reporting blocker. Best next move is to help define the minimal clean input needed and keep momentum without starting build work before the report is reliable.
 
 ## Revenue / Payment Status
 - Total proposed buildout: $34,750.
@@ -76,7 +77,8 @@ Known active/current workflows from JT update:
 - Confirm deposit/payment status.
 - Prepare delivery checklist/runbook for dedicated PC handoff.
 - Create runbook for insurance expiration workflow.
-- Once deposit arrives, begin rent delinquency workflow.
+- For rent delinquency: use `runbooks/rent-delinquency-data-readiness-checklist.md` with Yair/Karen/Matt before build work begins. Required before starting: source report named, required fields present, ledger cleanup assumptions documented, edge cases flagged, cleaned sample export approved, and 50% deposit timing confirmed.
+- Once ledger/report cleanup is ready and deposit arrives, begin rent delinquency workflow.
 - Capture proof asset after PC delivery + workflow acceptance: "local-first automation infrastructure for property/operations team with insurance-expiration workflow live."
 
 ## Strategic Expansion Opportunity

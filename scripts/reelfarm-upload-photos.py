@@ -15,9 +15,12 @@ def _load_global_env():
 _load_global_env()
 
 # Cloudflare R2 Credentials (from env or global.env)
-R2_ACCESS_KEY = os.environ.get('R2_ACCESS_KEY', '368494f1f6cf5b6749e3f7e5bf35c106')
-R2_SECRET_KEY = os.environ.get('R2_SECRET_KEY', 'd8b719aa5c0c36dff1af4c384e636164f64062b067d8c08c41cccb57864aa579')
+R2_ACCESS_KEY = os.environ.get('R2_ACCESS_KEY')
+R2_SECRET_KEY = os.environ.get('R2_SECRET_KEY')
 R2_BUCKET = os.environ.get('R2_BUCKET', 'vibe-marketing-photos')
+
+if not R2_ACCESS_KEY or not R2_SECRET_KEY:
+    raise RuntimeError('R2_ACCESS_KEY and R2_SECRET_KEY must be set in environment/global.env')
 
 # Create a session with the R2 service
 session = boto3.session.Session()

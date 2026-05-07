@@ -620,12 +620,17 @@ def main():
                         os.environ.setdefault(k.strip(), v.strip())
     _load_global_env()
     
+    r2_access_key = os.environ.get('R2_ACCESS_KEY')
+    r2_secret_key = os.environ.get('R2_SECRET_KEY')
+    if not r2_access_key or not r2_secret_key:
+        raise RuntimeError('R2_ACCESS_KEY and R2_SECRET_KEY must be set in environment/global.env')
+
     s3_client = boto3.client(
         's3',
         region_name='auto',
         endpoint_url=os.environ.get('R2_ENDPOINT', 'https://7148196b25e764e7753e4c7fbcdaaa5b.r2.cloudflarestorage.com'),
-        aws_access_key_id=os.environ.get('R2_ACCESS_KEY', '368494f1f6cf5b6749e3f7e5bf35c106'),
-        aws_secret_access_key=os.environ.get('R2_SECRET_KEY', 'd8b719aa5c0c36dff1af4c384e636164f64062b067d8c08c41cccb57864aa579')
+        aws_access_key_id=r2_access_key,
+        aws_secret_access_key=r2_secret_key
     )
     bucket = os.environ.get('R2_BUCKET', 'vibe-marketing-photos')
 

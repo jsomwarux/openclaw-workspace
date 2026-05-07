@@ -11,7 +11,7 @@ Primary offer: **AI Operations Diagnostic**
 | Lead | Status | Best next move | Offer angle | Owner |
 |---|---|---|---|---|
 | Altmark / Yair family-office referrals | Active client / referral potential | Finish PC handoff + acceptance, then ask Yair for 2–3 warm intros | Local-first family-office automation systems | JT + Eve |
-| Marketsmith | Waiting on product-team follow-up | Send follow-up if no response | Product/AI diagnostic for MSIGenerate/new initiatives | JT |
+| Marketsmith | Waiting on product-team follow-up | Send follow-up if no response; draft ready at `memory/consulting/marketsmith-follow-up-draft.md` | Product/AI diagnostic for MSIGenerate/new initiatives | JT |
 | CFS / NYC luxury construction family office | Recruiter moving profile forward | Approve profile share, interview as mutual evaluation | Full-time only if scope/authority/comp clear; otherwise diagnostic/fractional frame | JT |
 | Valley National Bank contact | Warm friend signal | Draft diagnostic intro after current assets are ready | AI operations diagnostic for relationship/back-office workflows | JT |
 | Aya hospitality intro | Potential referral | Ask Gil for intro after Altmark/Aya proof is packaged | Hospitality ops diagnostic | JT |
