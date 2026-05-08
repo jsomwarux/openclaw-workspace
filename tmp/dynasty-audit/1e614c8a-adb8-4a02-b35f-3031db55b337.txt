@@ -1,0 +1,50 @@
+You are creating JT's daily @dynastyjig X account post pack.
+
+Task Context:
+- Workspace: /Users/jtsomwaru/.openclaw/workspace
+- Read `skills/sports-gm/SKILL.md` first and follow it.
+- Read `memory/content-voice.md` before drafting.
+- Read `memory/FEEDBACK-LOG.md`, especially the 2026-04-30 niche-native @dynastyjig correction.
+- Read `memory/sports-gm/dynasty-x-targets.md` to understand approved fantasy/dynasty account tone and reply lanes.
+- Pull niche-specific proven patterns from Notion before drafting:
+  `set -a; source ~/.config/env/global.env; set +a; python3 scripts/notion-swipe-fetch.py --niche "Dynasty Fantasy" --niche "Sports Betting" --limit 12 --min-engagement 0`
+
+Detailed Rules:
+- The goal is niche traction, not app promotion.
+- This is a self-improving content loop: proven X patterns inform hooks, formats, and tensions, but JT's content must remain original.
+- Use the Notion swipe results as pattern evidence only: hook type, structure, topic tension, phrasing rhythm, and why it worked.
+- Do NOT copy wording, claims, structure wholesale, or account personality from swipe examples.
+- Translate working mechanics through JT's voice: compressed, practical, lightly contrarian, specific, no AI-ish phrasing.
+- Do NOT write posts about Action Arena or the Dynasty Simulator directly unless JT explicitly asks for launch copy.
+- Action Arena and Dynasty Simulator are invisible backdrops only. Mention product lane in the internal angle note, not in the post draft.
+- Drafts must be unique but relatable to dynasty fantasy football managers and/or sports bettors.
+- Avoid generic buy/sell/hold player evals, raw rankings, and quant jargon.
+- Use community-native language: price, value, pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender, slip, parlay, leg, group chat.
+- No hashtags, no links, no engagement begging.
+- If the post could be written by any generic fantasy account, rewrite it.
+- If the post sounds copied from the swipe file, rewrite it.
+- If no strong content is found or drafted, SKIP THE TELEGRAM SEND.
+
+Immediate Task:
+1. Identify 3-5 live/proven pattern inputs from Notion swipe results before drafting.
+2. Generate 5 post-ready X drafts for @dynastyjig:
+   - 2 dynasty fantasy posts
+   - 2 sports betting posts
+   - 1 bridge post connecting shared psychology across dynasty and betting
+3. Each draft must have a hook in the first line and be standalone post-ready.
+4. For each draft, include a one-line internal angle note explaining:
+   - the niche tension
+   - the proven pattern mechanic used
+   - the invisible product backdrop
+5. Save the full pack locally under `memory/content/bank/YYYY-MM-DD/dynastyjig-niche-growth-post-pack.md`.
+6. Upload the pack to Drive under `Content/Sports GM/DynastyJig/X/Niche-Growth/YYYY-MM` using `scripts/drive_drafts.py`.
+
+Output Formatting:
+Title: 🏈 @dynastyjig Niche-Growth Post Pack
+Include a short section: Pattern inputs used: [3-5 bullets]
+Then exactly 5 numbered drafts.
+Each draft format:
+- Draft: [post-ready text]
+- Angle: [niche tension + proven pattern mechanic + invisible backdrop]
+End with: Full pack: [Drive link] | Local: [path]
+Keep under 3,000 characters.

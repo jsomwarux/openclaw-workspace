@@ -12,3 +12,5 @@
 [2026-05-06] Anthropic — Launched 10 financial workflow templates — Big for high-end consulting templates — @anthropic
 [2026-05-06] n8n — n8n-mcp community release — Game changer for agent-driven workflow builds — @n8n_io
 [2026-05-06] OpenClaw — v2026.5.5 reliability release with heartbeat/TUI recovery, context-engine hygiene, Telegram/Codex progress rendering, iOS pairing, approvals, and generated-media fixes — quick “why agent ops reliability matters” reaction/demo after upgrading Eve — @openclaw
+[2026-05-07] Anthropic — Financial Agent Templates — Suggest tagging Anthropic after building a custom KYC/Pitchbook agent using their new template repo. — @anthropic
+[2026-05-07] n8n — Microsoft Agent 365 Integration — Tag @n8n_io with a video showing an OpenClaw project agent replying to a request inside a Microsoft Teams channel via their new native integration. — @n8n_io

@@ -1,0 +1,40 @@
+{
+  "id": "c7033613-feec-456c-b72b-135beaa89fe2",
+  "agentId": "main",
+  "sessionKey": "agent:main:telegram:direct:6608544825",
+  "name": "app-marketing-weekly-scoreboard",
+  "description": "Weekly App Marketing OS scoreboard: collect metrics, update analysis/rules, write weekly scoreboard summary; no external posting.",
+  "enabled": true,
+  "deleteAfterRun": false,
+  "createdAtMs": 1778166601545,
+  "schedule": {
+    "kind": "cron",
+    "expr": "0 8 * * 1",
+    "tz": "America/New_York"
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "agentTurn",
+    "model": "openai-codex/gpt-5.5",
+    "timeoutSeconds": 600,
+    "message": "You are Eve's App Marketing OS weekly scoreboard agent.\n\nTask Context:\n- Workspace: /Users/jtsomwaru/.openclaw/workspace\n- Goal: turn app/product marketing metrics into a weekly decision layer for Vista and Nash Satoshi.\n- This is analysis only. Never post externally. Never call ReelFarm posting scripts. JT's laptop owns TikTok/ReelFarm execution.\n\nDetailed Rules:\n1. Read, in order:\n   - memory/app-marketing/os-spec.md\n   - memory/app-marketing/app-registry.md\n   - memory/app-marketing/metrics-automation-plan.md\n   - memory/app-marketing/weekly-scoreboard.md\n   - memory/app-marketing/performance-analysis.md\n   - memory/app-marketing/optimization-rules.md\n   - latest memory/app-marketing/test-briefs-*.md\n2. Run in this exact order:\n   - python3 scripts/app_marketing_discover_posts.py\n   - python3 scripts/app_marketing_collect_metrics.py\n   - python3 scripts/app_marketing_metrics.py\n   - python3 scripts/app_marketing_analyze.py\n   - python3 scripts/app_marketing_experiment_calendar.py\n   - python3 scripts/app_marketing_durable_discovery.py\n   Discovery MUST run before collection so new ReelFarm/TikTok post_id/video_id values are added to the registry automatically.\n3. If any command fails, inspect the error and produce a short blocker report. Do not invent metrics.\n4. After successful scripts, read the updated weekly-scoreboard, performance-analysis, optimization-rules, experiment-calendar, and durable-discovery-plan.\n5. Summarize only actionable decisions:\n   - best-performing product/channel\n   - weakest product/channel\n   - one double-down\n   - one retire/rework\n   - one next test per active product, sourced from experiment-calendar.md\n   - one durable discovery action, sourced from durable-discovery-plan.md\n   - measurement blockers, including App Store Connect pending agreements if still relevant\n6. If no meaningful new data exists, say so and recommend the smallest metrics handoff fix. Do not recommend more volume without measurement.\n\nOutput Formatting:\nTitle: 📊 App Marketing Weekly Scoreboard — [date]\nSections:\n- Executive read\n- Vista\n- Nash Satoshi\n- Blockers\n- Next actions\nKeep under 1,800 characters."
+  },
+  "delivery": {
+    "mode": "announce",
+    "channel": "telegram",
+    "to": "6608544825",
+    "bestEffort": true
+  },
+  "failureAlert": {
+    "after": 2,
+    "channel": "telegram",
+    "to": "6608544825",
+    "cooldownMs": 21600000,
+    "includeSkipped": false
+  },
+  "state": {
+    "nextRunAtMs": 1778500800000
+  },
+  "updatedAtMs": 1778172346520
+}

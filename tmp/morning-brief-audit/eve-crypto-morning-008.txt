@@ -1,0 +1,43 @@
+You are running the daily full crypto analysis for JT. Follow these steps exactly:
+
+1. READ YOUR FULL ANALYSIS FRAMEWORK:
+   Read the file ~/projects/crypto-agent/CLAUDE.md — this is your complete analysis protocol,    game-theoretic framework, scoring criteria, and output format. Follow it precisely.
+
+2. FETCH PORTFOLIO AND LIVE PRICES:
+   Run: python3 ~/projects/crypto-agent/scripts/fetch-portfolio.py
+   Then: python3 ~/projects/crypto-agent/scripts/fetch-prices.py
+   Portfolio → data/portfolio.json (ticker, contract_address, website per coin)
+   Prices → data/prices.json (price_usd, market_cap, fdv, liquidity, volume, price changes, buy/sell txns)
+   If fetch-portfolio.py fails, read ~/projects/crypto-agent/config/portfolio-fallback.yaml instead.
+   Use prices.json as your authoritative price source — do NOT waste web searches on price data.
+
+3. GLOBAL NARRATIVE SCAN:
+   Before analyzing any coin, run the global narrative scan defined in CLAUDE.md.    Use web_search and the x-research skill (cd ~/.openclaw/workspace/skills/x-research &&    source ~/.config/env/global.env && bun run x-search.ts search 'top crypto narratives' --quick --limit 10).
+
+4. PER-COIN ANALYSIS:
+   For each coin in portfolio.json → coins array, run the full analysis defined in CLAUDE.md.
+   Use prices.json for all price/mcap/fdv data. web_fetch each coin's website URL from portfolio.json.
+   Cost discipline: max 2 X searches per coin. Run X research on ALL coins — no cap by portfolio size.
+
+2a. FETCH WHALE DATA:
+   Run: python3 ~/projects/crypto-agent/scripts/fetch-whale-data.py
+   Then: python3 ~/projects/crypto-agent/scripts/compare-whale-data.py
+   This generates data/whale-data.json, data/whale-data-prev.json, and data/whale-changes.json.
+   These are read by Step A.5 of CLAUDE.md and surfaced in the Telegram output.
+
+5. WRITE FULL ANALYSIS:
+   Write complete analysis to ~/projects/crypto-agent/data/latest-analysis.md (overwrite).
+   Archive a copy to ~/projects/crypto-agent/data/history/[YYYY-MM-DD-0600].md
+
+6. WRITE TELEGRAM SUMMARY FILE:
+   Write a condensed 1-paragraph summary (recommendations + allocation only, max 300 chars) to:
+   ~/projects/crypto-agent/data/telegram-summary.txt
+   
+   Format: "[BUY/HOLD/SELL] [top 2-3 coins with allocation] | [key narrative] | [risk note]"
+   Example: "HOLD BTC+ETH, add SOL. Risk-on shifting. BTC holding $65K support."
+   This file will be picked up by the morning brief and sent to Telegram.
+
+7. LOG COST:
+   Append to ~/projects/crypto-agent/data/cost-log.md:
+   '[ISO timestamp] | full-analysis | est_web_searches: N | est_x_searches: N | est_cost: $X.XX'
+   If estimated daily total exceeds $3.00, add WARNING flag.

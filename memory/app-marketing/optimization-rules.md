@@ -1,6 +1,6 @@
 # App Marketing OS — Optimization Rules
 
-Last updated: 2026-05-06
+Last updated: 2026-05-07
 
 Use this file before generating future app/product content.
 
@@ -16,11 +16,13 @@ Use this file before generating future app/product content.
 - topic:model_consensus (1 winner rows)
 - specificity:high (1 winner rows)
 ### Avoid / Rework
+- topic:unclear (7 loser rows)
+- format:slideshow (7 loser rows)
+- proof:none (7 loser rows)
 - hook:one_liner_gut_punch (6 loser rows)
-- topic:unclear (6 loser rows)
-- format:slideshow (6 loser rows)
 - specificity:low (6 loser rows)
-- proof:none (6 loser rows)
+- hook:specific_number_unexpected_context (1 loser rows)
+- specificity:medium (1 loser rows)
 ### Generation Instruction
 - Generate new posts by reusing the winning structure/topic/specificity, but change the wording and example.
 - If using a losing topic, add specificity/proof/tension before approving.
@@ -57,14 +59,14 @@ Use this file before generating future app/product content.
 - hook:unclear (1 winner rows)
 - specificity:low (1 winner rows)
 ### Avoid / Rework
-- format:slideshow (5 loser rows)
-- proof:none (4 loser rows)
-- specificity:low (3 loser rows)
+- format:slideshow (6 loser rows)
+- proof:none (5 loser rows)
+- specificity:low (4 loser rows)
+- topic:unclear (3 loser rows)
 - hook:specific_number_unexpected_context (2 loser rows)
 - hook:unclear (2 loser rows)
-- topic:unclear (2 loser rows)
+- hook:one_liner_gut_punch (2 loser rows)
 - topic:rating_precision (2 loser rows)
-- topic:relationship_compatibility (1 loser rows)
 ### Generation Instruction
 - Generate new posts by reusing the winning structure/topic/specificity, but change the wording and example.
 - If using a losing topic, add specificity/proof/tension before approving.

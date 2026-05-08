@@ -1,6 +1,6 @@
 # MEMORY.md — Current Operating Context
-> Main-session long-term context. Do NOT load in group/shared chats. Full archive: `docs/memory/MEMORY-full.md`; pre-optimization snapshot: `docs/memory/archive/MEMORY-before-optimization-2026-04-26.md`.
-> This file is intentionally compact: preserve only durable context, current status, and decisions Eve needs at startup. Historical detail belongs in daily notes or archive.
+> Main-session long-term context. Do NOT load in group/shared chats. Full archive: `docs/memory/MEMORY-full.md`; snapshot: `docs/memory/archive/MEMORY-before-optimization-2026-04-26.md`.
+> Compact file: preserve durable context/current status/decisions only; historical detail belongs in daily notes/archive.
 
 ## Load Order / File Authority
 - `AGENTS.md` = operating rules + hard constraints; `TOOLS.md` = commands, paths, API usage; `USER.md` = JT profile; `SOUL.md` = tone/persona; `HEARTBEAT.md` = proactive wake behavior.
@@ -57,9 +57,9 @@
 
 ## Current Apps / Products
 - `jtsomwaru.com`: portfolio site at `~/projects/jtsomwaru-com/`, deployed via Vercel. Portfolio cards require coding-agent/build/test/push.
-- Glow Index: skincare rankings on Replit/GitHub. Replit deploy requires fresh build, not just redeploy. Engine OpenRouter key lives in LaunchAgent plist, not `global.env`.
+- Glow Index: live skincare rankings app at `https://glowindex.co`; now active for App Marketing OS durable discovery/pSEO planning. Replit deploy requires fresh build, not just redeploy. Engine OpenRouter key lives in LaunchAgent plist, not `global.env`. Marketing guardrails: no medical/dermatology claims, diagnosis/treatment language, fake testimonials, or fake before/after claims.
 - Nash Satoshi: crypto ranking app, private repo `jsomwarux/Nash-Satoshi`; morning brief drafts daily X post from live rankings.
-- Vista: App Store pending.
+- Vista: App Store live at `https://apps.apple.com/us/app/vista-movie-taste-profiles/id6758186885`; durable SEO page live on jtsomwaru.com for 1–100 movie rating positioning.
 
 ## Content System
 - App Marketing OS is first-class for passive-income apps. Eve owns strategy, hooks, asset maps, metrics handoff, scoreboarding, directory/SEO/ASO, and cross-system coordination. JT's laptop owns ReelFarm slideshow creation/posting; Eve must not duplicate it on the Mac mini. Full rules: `memory/app-marketing/` + `memory/reelfarm/`.
@@ -92,7 +92,7 @@
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM EST.
 - One-shot reminder active: 2026-05-09 9:00AM ET (`e39f312a-d99f-4944-93c2-a0e6a1046fc7`) to re-check OpenClaw Codex harness docs/schema/status and reevaluate whether to enable the codex plugin + `agents.defaults.embeddedHarness.runtime="codex"`; do not touch auth, summaryModel, summaryProvider, or primary model without JT approval.
 - `critical-files-integrity` cron (`ee357abb-2b58-44b8-8f03-4c152611117d`) runs daily 9AM ET; timeout increased 60s → 180s on 2026-05-02 after wrapper timed out at 60.018s even though the underlying script completes in ~0.37s. Prompt simplified: run script first, inspect/edit only on non-zero exit.
-- Morning brief, heartbeat, job-market, niche monitor, crypto morning, content/weekly synthesis, Weekly North Star Review, cost tracking, and health check-ins are active responsibilities.
+- Morning brief, heartbeat, job-market, niche monitor, crypto morning, content/weekly synthesis, App Marketing weekly scoreboard, Weekly North Star Review, cost tracking, and health check-ins are active responsibilities.
 - Cron count/status changes must update this file same turn. Diagnose any cron with consecutive errors ≥2; timeout fixes should be sized from actual expected runtime.
 
 ## Health / Training / Quality Loops
@@ -125,6 +125,7 @@
 - Guyana opportunity monitor active: weekly Monday 12PM ET cron `guyana-economic-opportunity-monitor`; reads existing Guyana research, checks verified live sources, sends concise brief, and creates up to 3 Mission Control tasks only for sourced actionable findings.
 - Passive-income pipeline audited 2026-04-27: signal fetch Sat 5:30AM ET → Scout Sun 6AM ET → Strategist Sun 7:30AM ET; duplicate legacy crons disabled.
 - Weekly North Star Command Center cron active: Sunday 6PM ET (`29772d9b-e007-4f62-9df9-e80b73d0cd21`); reads `memory/north-star/` OS layers.
+- App Marketing weekly scoreboard cron active: Monday 8AM ET (`c7033613-feec-456c-b72b-135beaa89fe2`); runs App Marketing metrics collection/scoreboard/analysis and summarizes Vista/Nash decisions.
 - ReelFarm Intel OS active. Source: `memory/reelfarm/`. Daily strategy intel cron `a97df783-31c5-4269-a4f0-3ece75af838d` at 5:15PM ET; weekly synthesis `bb0819d0-8900-4e2a-99a2-28ab950365ab` Sunday 5PM. Forward Social Growth Engineers newsletters to `openclawagenteve14@gmail.com`.
 - App Marketing OS created 2026-05-06. Source of truth: `memory/app-marketing/`. Ownership: Vibe Marketing = product X/Reddit/LinkedIn + TikTok copy/strategy only; ReelFarm Intel = slideshow trend intelligence; JT laptop = TikTok execution; Content Scheduler = JT personal brand; Sports GM = @dynastyjig/Action Arena/Dynasty Simulator. Bottleneck: metrics handoff before more volume.
 ## Active Client — Altmark Group
@@ -152,4 +153,4 @@
 - Altmark + Marketsmith dominate near-term strategy: deliver Altmark, pursue Yair family-office referrals, and keep Marketsmith as a $175/hr or $15k/mo product/AI consulting lane.
 - Cold outreach has produced no responses so far; JT paused it to focus on warm leads/builds and app marketing. Strategy remains: prioritize warm/referral/proof-led channels, then restart cold outreach only after redesigning it around proof assets, trigger events, and clearer ICP pain.
 - Apps remain constrained passive-income experiments: low-maintenance MVP, automated distribution, weekly metric, kill/pause threshold. JT now explicitly treats marketing/visibility as equal priority to product, because apps without distribution are pointless. Vista has ~10 active users; Nash Satoshi + Vista TikTok slideshow loops are running. Action Arena is a priority sports/product lane JT wants fully functional and tested by football season; it is fantasy football league structure + sports betting strategy: players join leagues, get a $100/week fake budget, and compete on profit through straight bets, parlays, and teasers. No real money is wagered.
-## Recent Strategy Distillations moved to `docs/memory/MEMORY-full.md` on 2026-05-05.
+<!-- Recent strategy distillations archived: docs/memory/MEMORY-full.md -->

@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-05-05",
+  "last_run": "2026-05-07",
   "drafted": [
     "new-age-global-builders",
     "essential-property-management",
@@ -38,7 +38,11 @@
     "igm-brokerage-corp",
     "serve-well-plumbing-heating",
     "central-plumbing-specialties",
-    "narrows-insurance-agency-inc"
+    "narrows-insurance-agency-inc",
+    "petri-plumbing-heating-cooling-drain-cleaning",
+    "rsi-international-inc-rsi-mga",
+    "mackoul-risk-solutions",
+    "brooks-waterburn-corp-waterburn-insurance"
   ],
   "skipped_no_channel": [
     "fargo-hvac-supply",
@@ -85,6 +89,7 @@
     "lincoln-brokerage-corp",
     "sentinel-risk-advisors",
     "cobalt-insurance-brokerage-nyc-area",
-    "national-insurance-brokerage-of-new-york-inc-nibony"
+    "national-insurance-brokerage-of-new-york-inc-nibony",
+    "jasco-plumbing-heating-supply-inc"
   ]
 }

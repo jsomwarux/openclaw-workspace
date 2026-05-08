@@ -1,0 +1,78 @@
+You are creating JT's daily @dynastyjig X account post pack.
+
+Task Context:
+- Workspace: /Users/jtsomwaru/.openclaw/workspace
+- Read `skills/sports-gm/SKILL.md` first and follow it.
+- Read `memory/content-voice.md` before drafting.
+- Read `memory/FEEDBACK-LOG.md`, especially the 2026-04-30 niche-native @dynastyjig correction.
+- Read `memory/sports-gm/dynasty-x-targets.md` to understand approved fantasy/dynasty account tone and reply lanes.
+- Pull niche-specific proven patterns from Notion before drafting, but only as recent evidence first:
+  `set -a; source ~/.config/env/global.env; set +a; python3 scripts/notion-swipe-fetch.py --platform X --niche "Dynasty Fantasy" --niche "Sports Betting" --limit 12 --min-engagement 0 --since-days 14`
+  If fewer than 3 usable recent examples return, label the gap `RECENT_SPORTS_SWIPE_GAP` and use archive examples only as `ARCHIVE_PATTERN`, not as current trend evidence.
+
+Detailed Rules:
+- The goal is niche traction, not app promotion.
+- This is a self-improving content loop: proven X patterns inform hooks, formats, and tensions, but JT's content must remain original.
+- Use the Notion swipe results as pattern evidence only: hook type, structure, topic tension, phrasing rhythm, and why it worked.
+- Do NOT copy wording, claims, structure wholesale, or account personality from swipe examples.
+- Translate working mechanics through JT's voice: compressed, practical, lightly contrarian, specific, no AI-ish phrasing.
+- Do NOT write posts about Action Arena or the Dynasty Simulator directly unless JT explicitly asks for launch copy.
+- Action Arena and Dynasty Simulator are invisible backdrops only. Mention product lane in the internal angle note, not in the post draft.
+- Drafts must be unique but relatable to dynasty fantasy football managers and/or sports bettors.
+- Avoid generic buy/sell/hold player evals, raw rankings, and quant jargon.
+- Use community-native language: price, value, pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender, slip, parlay, leg, group chat.
+- No hashtags, no links, no engagement begging.
+- If the post could be written by any generic fantasy account, rewrite it.
+- If the post sounds copied from the swipe file, rewrite it.
+- If no strong content is found or drafted, SKIP THE TELEGRAM SEND.
+
+Immediate Task:
+1. Identify 3-5 live/proven pattern inputs from Notion swipe results before drafting.
+2. Generate 5 post-ready X drafts for @dynastyjig:
+   - 2 dynasty fantasy posts
+   - 2 sports betting posts
+   - 1 bridge post connecting shared psychology across dynasty and betting
+3. Each draft must have a hook in the first line and be standalone post-ready.
+4. For each draft, include a one-line internal angle note explaining:
+   - the niche tension
+   - the proven pattern mechanic used
+   - the invisible product backdrop
+5. Save the full pack locally under `memory/content/bank/YYYY-MM-DD/dynastyjig-niche-growth-post-pack.md`.
+6. Upload the pack to Drive under `Content/Sports GM/DynastyJig/X/Niche-Growth/YYYY-MM` using `scripts/drive_drafts.py`.
+
+Output Formatting:
+Title: 🏈 @dynastyjig Niche-Growth Post Pack
+Include a short section: Pattern inputs used: [3-5 bullets]
+Then exactly 5 numbered drafts.
+Each draft format:
+- Draft: [post-ready text]
+- Angle: [niche tension + proven pattern mechanic + invisible backdrop]
+End with: Full pack: [Drive link] | Local: [path]
+Keep under 3,000 characters.
+
+## 2026-05-07 Sports Content Optimality Patch
+The goal is @dynastyjig niche traction: earn replies/follows from dynasty managers and bettors who recognize real current market/player conversations. Do not optimize for generic motivational strategy copy.
+
+Source priority before drafting:
+1. Fresh player/news/market context from the last 7-14 days. Run at least 3 live X searches with `--sort likes --since 7d --limit 12 --json`; use `--min-likes 5` for dynasty and `--min-likes 10` for betting. X API only supports the last 7 days on this plan, so do not request older than 7d with X search.
+2. Latest Sports GM market files: read the newest `memory/sports-gm/reports/weekly-gm-report-*.md`, newest `memory/sports-gm/candidates/*.csv`, and newest `memory/sports-gm/market-snapshots/*.csv`. Use player names, format, rank gaps, rookie prices, and role questions as raw material.
+3. Recent Notion swipe examples from the last 14 days. Archive examples can supply mechanics only, clearly labeled `ARCHIVE_PATTERN`.
+4. Product backdrop: Action Arena or Dynasty Simulator, internal angle note only.
+
+Mandatory specificity rule:
+- At least 3 of the 5 drafts must mention a specific player, rookie class tier, position group, NFL team context, draft pick range, betting market, playoff series/game, or market/rank gap.
+- Max 2 of 5 drafts may be broad psychology/process posts.
+- No more than 1 post can use the abstract “most managers / most rebuilds / your parlay” style unless tied to a current player/market example.
+- If live X + Sports GM files do not provide enough current specificity, output `SKIP_PACK: insufficient fresh sports signal` and do not send Telegram.
+
+Player-take safety:
+- A player-specific public recommendation needs market reference + role/context + thesis + risk.
+- If you only have a rank gap, frame it as a question/research queue, not a buy/sell command.
+- Prefer reply-generating threshold questions: “how many rookie RBs over X,” “what pick range makes Y worth it,” “what role would change Z’s price.”
+
+Tone upgrades:
+- Sound like a sharp dynasty manager/bettor in the group chat, not an AI strategy account.
+- Use names and prices when available. Community-native language only: rookie pick, tier, roster spot, window, bet, leg, slip, line, role, points, upside, risk, rebuild, contender, manager.
+- Ban generic abstractions unless they are grounded by a current player/market example.
+
+Output must add a `Fresh signal used:` line under Pattern inputs with either player/news/market examples or `RECENT_SPORTS_SWIPE_GAP`.

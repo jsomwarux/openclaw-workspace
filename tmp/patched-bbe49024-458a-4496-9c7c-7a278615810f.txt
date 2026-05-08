@@ -1,0 +1,63 @@
+**Objective:**
+Generate two high-signal Reddit drafts designed to build karma and organic authority:
+1. one Nash Satoshi/Crypto systems post,
+2. one Sports GM / dynasty fantasy football post or comment.
+
+**Required Reading:**
+1. Read `~/.openclaw/workspace/memory/content/reddit-strategy.md` for target subreddit rules.
+2. Read `~/.openclaw/workspace/skills/sports-gm/SKILL.md` before drafting the dynasty/fantasy item.
+3. Read `~/.openclaw/workspace/memory/sports-gm/reports/weekly-gm-report-$(date +%F).md` if it exists; otherwise run:
+   - `python3 ~/.openclaw/workspace/scripts/sports_gm_fetch_prices.py`
+   - `python3 ~/.openclaw/workspace/scripts/sports_gm_generate_report.py`
+
+**Crypto/Nash Satoshi Draft Rules:**
+- Target one of: `r/defi`, `r/CryptoMarkets`, `r/CryptoTechnology`, or `r/ethtrader` only when topic fit is strong.
+- No Nash Satoshi link, CTA, launch mention, referral language, or shill phrasing.
+- Focus on incentive alignment, reflexivity, protocol durability, game theory, or single-model sentiment flaws.
+- Format as a Reddit-native discussion post with a clear question at the end.
+
+**Sports GM / Dynasty Draft Rules:**
+- Use Sports GM positioning: dynasty/fantasy through a GM/front-office lens.
+- Current target stack: `r/Fantasy_Football` first, `r/fantasyfootballadvice` second, `r/fantasyfootball` only for broader NFL/fantasy macro. Do NOT target `r/DynastyFF` until JT has enough Reddit reputation.
+- Prefer useful comments or practical posts over abstract brand-building.
+- No @dynastyjig mention, links, CTA, product language, or brand promo.
+- Use the Sports GM guardrail: market disagreement is a research alarm, not a buy/sell call.
+- Do not make player-specific recommendations unless the full thesis standard is met: market price, football/usage reference, role/context reference, thesis, confidence tier, risk case, receipt row.
+- If no fully supported player-specific thesis exists, draft practical roster-construction advice based on liquidity, window alignment, picks, and trade calculators as sentiment tools.
+
+**Output Formatting:**
+Send both drafts to JT via Telegram formatted exactly like:
+
+🔥 **Daily Reddit Growth Drop**
+
+**Crypto Target:** `r/[Target Sub]`
+**Title:** [Hook]
+**Body:** [Reddit-formatted draft]
+
+*—*
+
+**Fantasy Target:** `r/[Target Sub]`
+**Post Type:** [Standalone post OR comment/advice angle]
+**Title:** [Hook, if standalone]
+**Body:** [Reddit-formatted draft]
+
+**Files Used:** [sports report/content path if generated]
+
+Keep the Telegram output under 3,500 characters. If no useful fantasy draft can be generated, skip that section rather than sending filler.
+
+## 2026-05-07 Content Freshness Patch — mandatory
+Before drafting or selecting anything, read `/Users/jtsomwaru/.openclaw/workspace/memory/content/current-efforts.md`. Current efforts outrank old proof points, old bank posts, and generic niche ideas. Every generated post/draft must explicitly map to one current effort unless it is a pure external news hook.
+
+Freshness and anti-repeat gates:
+- Prefer sources from the last 14 days. For case studies/proof posts, prefer the newest complete build or active client milestone.
+- If using older proof, tie it to a current effort from `current-efforts.md`. Otherwise skip it.
+- Read `posted-log.jsonl` and avoid repeating a topic/structure from the last 21 days.
+- Read `content-signals.md`; only use entries from the last 21 days unless the swipe fetch returns too few current examples.
+- The phrase-level stale patterns to avoid this week: generic narrow-agent/boundaries posts, generic “workflow before agent,” and generic “AI agents need less autonomy” unless backed by a new current proof point.
+
+Trend integration gate:
+- Pull platform/native references with the narrowest available filter. Extract the mechanic in your saved output: hook shape, proof style, reply trigger, rhythm.
+- Do not copy the source wording or persona. Translate the mechanic into JT's current consulting/app priorities.
+
+Quality floor:
+- If no current effort, fresh signal, or specific proof can support a slot, write `SKIP_SLOT: [reason]` instead of padding with generic content.

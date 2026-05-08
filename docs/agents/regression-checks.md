@@ -28,6 +28,7 @@ If a correction cannot name a regression check, it is only a note, not a fix.
 | Cron reports `ok` but user-visible delivery failed | Critical user-facing crons must verify latest run `deliveryStatus`/`deliveryError` with `openclaw cron runs`, not just `lastRunStatus` or state files; resend manually if delivery failed. | HEARTBEAT.md cron health + Spanish delivery check + this file | Every heartbeat for critical failures; daily for Spanish | active |
 | Duplicate heartbeat daily-note entries | Before appending, check whether the exact `## Heartbeat HH:MM` section already exists; suppress duplicate entries within 5 minutes unless state changed. | HEARTBEAT.md Heartbeat Log Idempotency Rule + daily notes | Every heartbeat + 10AM film review | active |
 | Stale sources framed as fresh content intel | Any content draft with "this week/today/new/fresh" or market-stat language must verify source date within 14 days, or explicitly label older context with date; unknown date means cut the stat. | docs/agents/content-rules.md + weekly content/intel prompts | Every content draft using external claims | active |
+| @dynastyjig content becomes generic aphorisms | Sports GM/autoresearch must verify @dynastyjig packs include 3/5 current player/news/market-specific posts and fail closed when fresh signal is thin. | skills/sports-gm/SKILL.md + Daily DynastyJig cron + agents/autoresearch/checklists/sports-gm.md | Weekly autoresearch + any sports content patch | active |
 
 ## Daily Film Review Add-on
 During 10AM film review, check yesterday's corrections:

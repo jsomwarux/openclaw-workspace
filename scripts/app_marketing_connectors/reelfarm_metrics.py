@@ -131,6 +131,9 @@ def _normalize(post: dict, candidate: dict) -> dict:
         "saves": int(candidate.get("bookmark_count") or 0),
         "reposts": int(candidate.get("share_count") or 0),
         "url": post.get("url_or_id") or str(candidate.get("post_id") or candidate.get("video_id") or ""),
+        "post_id": str(candidate.get("post_id") or ""),
+        "video_id": str(candidate.get("video_id") or ""),
+        "account": candidate.get("account_username"),
         "notes": f"reelfarm /tiktok/posts analytics; account={candidate.get('account_username')}",
     }
 

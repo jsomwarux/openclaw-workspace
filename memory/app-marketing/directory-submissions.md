@@ -75,3 +75,15 @@ Reason: separate build lane; needs product artifact/landing page before submissi
 - Do not create public claims not present in app registry/proof points.
 - No gambling/real-money implication for Action Arena.
 - Track every submission status and URL.
+
+
+## Draft Packs Created
+- [2026-05-07] Nash Satoshi directory pack: `memory/app-marketing/directory-packs-nash-satoshi.md` — draft-ready, not submitted.
+- [2026-05-07] Vista SEO brief: `memory/app-marketing/seo-briefs-vista-1-100-movie-rating-app.md` — implemented on jtsomwaru.com at `/blog/one-hundred-point-movie-rating-app`.
+- [2026-05-07] Vista directory pack: `memory/app-marketing/directory-packs-vista.md` — draft-ready, not submitted.
+
+## Draft Packs Created
+- [2026-05-07] Glow Index directory pack: `memory/app-marketing/directory-packs-glow-index.md` — draft-ready, not submitted. First recommended target: Uneed or Futurepedia after screenshots are selected and JT approves.
+
+## Crawlability Issue Log
+- [2026-05-07] Glow Index crawler-style fetches for `/categories`, `/categories/serum`, `/sitemap.xml`, and `/llms.txt` returned Cloudflare "Just a moment" to generic fetch tooling after deployment. JT can see pages in browser, but AI/search crawler access needs verification/fix before relying on GEO impact. Required follow-up: inspect Cloudflare/Replit front door settings, ensure `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/rankings`, `/categories`, and `/categories/serum` are reachable by major AI/search crawlers without JS challenge.

@@ -12,18 +12,9 @@ Deliver to JT via Telegram:
    - Only surface tasks that are actionable TODAY with no staleness risk.
    - "One concrete action" must be derived from CURRENT reality — not from tasks.md entries older than 7 days.
 2. Run web searches: AI news, crypto market, tech job market
-3. Fetch `https://nashsatoshi.com/rankings` (using Cloudflare /crawl or Firecrawl) to extract the Top Ranked tokens. Generate daily Nash Satoshi content for BOTH X and Reddit; Reddit is not a cross-post.
-   - **X post:** one short, punchy post for the Nash Satoshi account. MANDATORY: rotate the format based on the current Day of the Week to prevent staleness:
-     - Monday: The Leaderboard (Top 3 + game theory scores)
-     - Tuesday: Single Asset Spotlight (Focus exclusively on #1, why the 4-model consensus picked it)
-     - Wednesday: Anti-Bias Hot Take (Why relying on single-model ChatGPT analysis is dangerous vs Nash Satoshi's ensemble)
-     - Thursday: The Methodology (How Claude, GPT, Gemini, and Grok cross-examine each other)
-     - Friday: Momentum (Which new token broke into the top rankings recently)
-     - Weekends: Aggressive UVP (Short, punchy fact about game-theory edge + no preamble)
-   - **Reddit post/comment draft:** one community-native crypto/DeFi Reddit draft: discussion-first, non-promotional, useful without a click. Include subreddit, title, body, fit rationale, promo-risk note.
-   Include 🐦 Daily Nash Satoshi X Post and 👽 Daily Nash Satoshi Reddit Draft sections.
+3. **Daily Nash Satoshi gate:** fetch `https://nashsatoshi.com/rankings` live. If ranks/scores are unavailable, SKIP. X + Reddit must use current rankings plus fresh crypto/AI-agent signal when available. X must be token-specific (token, score, rank movement, or market reason) and rotate weekday format; no generic “four models” copy unless tied to today’s token. Reddit must be community-native/non-promo and useful without a click. Include Nash sections only when non-generic.
 
-4. Read `memory/content/dynasty-strategy.md` — generate ONE elite-tier X post for the @dynastyjig account targeting the "Systems over Symptoms" narrative (Algorithmic Exploits, Roster Construction Economics, or Draft Capital Arbitrage). Apply `skills/content-generation/SKILL.md` formatting. Include as 🏈 Daily Dynasty Strategy X Post section.
+4. **Daily @dynastyjig gate:** read `skills/sports-gm/SKILL.md`, `memory/sports-gm/dynasty-x-targets.md`, latest Sports GM report/candidates/snapshot, and 14-day sports swipe. Post only if it mentions current player/news/market specificity: player, rookie tier, team, pick range, betting market, game context, or rank gap. No broad rebuild/parlay aphorisms unless grounded in current signal. Products are invisible backdrops only. If signal is thin, `SKIP_SLOT: insufficient fresh dynasty signal` and omit section.
 
 3. Read memory/niche-monitor-latest.md — severity-filtered intel
 4. Read ~/projects/job-market-agent/data/daily-brief.md — roles (18+/25) + skill gaps + build ideas

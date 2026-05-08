@@ -16,6 +16,7 @@ Canonical execution assets:
 Known Mac mini support paths:
 - `agents/vibe-marketing/real-photos/vista/`
 - `agents/vibe-marketing/generated-images/vista-YYYY-MM-DD/`
+- `~/projects/jtsomwaru-com/public/images/vista/screenshot-1.png` through `screenshot-7.png` — verified 2026-05-07, 1284x2778 each, currently used by the portfolio site.
 - Legacy Drive screenshot path referenced by Vibe: `Eve — Drafts / Vibe Marketing / App Screenshots / vista`
 
 Needed canonical screenshots:
@@ -23,6 +24,10 @@ Needed canonical screenshots:
 - film detail
 - taste/profile or friends/social screen
 - App Store listing screenshot if useful for ASO
+
+Directory/SEO recommendation:
+- Use the jtsomwaru.com Vista screenshots as the current canonical Mac mini asset set until JT laptop/ReelFarm source folders are confirmed.
+- Before external directory submission, visually inspect screenshots 1–7 and pick the 3–5 that best support `1–100 precision rating` positioning.
 
 ## Nash Satoshi
 Canonical execution assets:
@@ -41,14 +46,29 @@ Needed canonical screenshots:
 - homepage / ranking page
 
 ## Glow Index
-Status: pending.
-Do not build asset pipeline until app/deployment/engine/account gates are reliable.
+Status: active.
+Canonical URL: https://glowindex.co
 
-Future assets:
-- product analysis screen
-- ingredient/formula scoring screen
-- rankings/list screen
-- admin or methodology proof screen if public-safe
+Needed now for directory submissions:
+- homepage / hero screenshot
+- rankings page screenshot
+- product detail page showing score breakdown/reasoning
+- optional serum category page screenshot: https://glowindex.co/categories/serum
+
+Recommended naming:
+- `glow-homepage-hero.png`
+- `glow-rankings.png`
+- `glow-product-analysis.png`
+- `glow-serum-category.png`
+
+Guardrails:
+- no admin screenshots
+- no API keys/account/private data
+- no medical/dermatology claim visuals
+- prefer clean browser window, desktop width first
+
+Asset handoff checklist saved at:
+- `memory/app-marketing/glow-jt-action-checklist-2026-05-07.md`
 
 ## Action Arena
 Status: prelaunch / Sports GM lane.

@@ -41,18 +41,26 @@ Notes:
 - Methodology page is highest priority.
 
 ## Glow Index Backlog
-Priority: wait until active
+Priority: highest active pSEO/GEO opportunity
 
 Pages:
 1. `AI skincare ingredient checker`
 2. `Skincare product value analyzer`
 3. `Skincare formulation score`
 4. `Ingredient list checker for skincare`
-5. `[Product category] ranking pages` once data exists
+5. `Best [product category] for [concern]` pages, only where source data supports the claim safely
+6. `/products/[product-slug]` product analysis pages
+7. `/compare/[product-a]-vs-[product-b]` comparison pages
+8. `/ingredients/[ingredient-slug]` education pages
+9. `/categories/[category]` ranking pages
+10. `/dupes/[product-slug]` value/alternative pages, only if the product data supports a non-misleading comparison
 
 Notes:
 - No medical/dermatology claims.
 - Avoid implying diagnosis/treatment.
+- Avoid "best for acne/eczema/rosacea" unless phrased as non-medical consumer research and backed by product data.
+- Every programmatic page needs enough unique content: product facts, ingredient evidence, model consensus/disagreement, price/value context, FAQ, schema, and safe disclaimer.
+- First build should be a pSEO/GEO module spec + 3-page pilot, not 1,000 pages immediately.
 
 ## Action Arena Backlog
 Priority: high after landing/waitlist exists

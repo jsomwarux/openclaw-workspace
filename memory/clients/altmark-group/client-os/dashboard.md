@@ -21,7 +21,8 @@
 |---|---:|---:|---:|---|---|
 
 ## Next 7 Days
-- 
+- Use `proof-assets/tomorrow-execution-pack-2026-05-08.md` for the next Altmark touchpoint: confirm PC handoff, verify insurance workflow acceptance, clarify payment/deposit status, and preserve the rent delinquency data-readiness boundary.
+
 
 ## Decision Needed From Client
 -

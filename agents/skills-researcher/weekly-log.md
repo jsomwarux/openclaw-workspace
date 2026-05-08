@@ -132,3 +132,10 @@ No new 🔴/🟠 findings today. All signals were either:
 - [🟢] Cowork plugins — latest commit unchanged from tracked SHA 9789ea78ad66e395a9c709146cacecdc14ce2abf.
 - [🟢] Clawhub/npm scan — no gate-passing new skill/plugin for current stack.
 [2026-05-06] 🟠 OpenClaw 2026.5.5 — fixes heartbeat/TUI session poisoning, cron maintenance after restarts, Telegram/Codex progress rendering, iOS pairing, hidden runtime-context leakage into context engines, approval delivery retries, and generated-media duplicate fallback posts. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.5 | Relevance: OpenClaw/Eve reliability | First action: run `openclaw gateway status && npm install -g openclaw@2026.5.5 && openclaw gateway restart` after confirming update window. | Priority: medium.
+2026-05-07 Daily Scan Findings:
+- [🔴] Anthropic Financial Templates: 10 pre-built agent templates for Pitchbooks, KYC, and Close.
+- [🔴] n8n Microsoft Agent 365: Native integration allowing agents to reside in Teams/Outlook as first-class members.
+- [🟠] Meta Ads MCP: Official protocol bridge for Meta ads programmatic access by LLMs.
+- [🟠] Blend Autopilot MCP: lending industry moving to MCP standard for orchestration.
+- [🟡] CloudPilot: Replit tool for AWS cost optimization.
+- [🟡] n8n-mcp: Custom integration to help agents build n8n workflows (czlonkowski repo).

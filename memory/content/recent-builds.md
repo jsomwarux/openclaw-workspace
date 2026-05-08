@@ -37,6 +37,16 @@
 
 <!-- Entries appended below — most recent first -->
 
+
+## Content Generation Audit + Freshness Gate — 2026-05-07
+**What:** Audited JT's content-generation system after daily posts became stale/repetitive, created `memory/content/current-efforts.md`, and patched six content crons with freshness, trend, anti-repeat, and SKIP_SLOT gates.
+**For:** internal / JT personal brand + consulting growth system
+**Outcome:** Weekly LinkedIn, X, news hook, swipe research, and Reddit generators now must map output to current efforts, prefer sources from the last 14 days, avoid repeating topics/structures from the last 21 days, and skip weak slots instead of padding.
+**Demonstrates:** content system architecture, self-improving agent workflows, current-state grounding, quality control for autonomous generation
+**Content angle:** The problem was not generating posts. The problem was keeping the generator pointed at the current business.
+**Status:** complete
+
+
 ## AgentGuard — AI Governance Layer — 2026-03-17
 **What:** Production governance middleware for AI agents — confidence scoring routes decisions automatically (≥70%) or to human review (<70%), with full audit trail, override logging, and governance reports. Live demo: HR candidate screening.
 **For:** internal (portfolio build — demonstrates enterprise AI governance patterns)
@@ -201,3 +211,19 @@
 **Content angle:** The best AI consulting content teaches the buyer what to build first, not which tool to buy.
 **Status:** complete
 
+
+## Nash Satoshi Methodology SEO Page — 2026-05-07
+**What:** Added a public `/methodology` page explaining Nash Satoshi's 4-model crypto game-theory ranking system, linked it from the homepage, and exposed it through sitemap/robots/llms.txt.
+**For:** Nash Satoshi / passive-income app distribution
+**Outcome:** Production page live; GitHub synced at commit `5473082`; `npm run check` and `npm run build` passed after preserving upstream Aggregation v2 changes.
+**Demonstrates:** AI-search/GEO page strategy, product positioning, React/Express deployment hygiene, safe Git rebase around live app functionality
+**Content angle:** The methodology page is not just SEO. It gives the model/ranking system a citation-worthy explanation instead of hiding the trust mechanism inside the app.
+**Status:** complete
+
+## jtsomwaru.com Vista 1–100 Movie Rating SEO Page — 2026-05-07
+- **What:** Added a durable SEO/AI-search blog page for Vista targeting `1–100 movie rating app` and precise movie rating queries.
+- **For:** Internal app marketing / Vista durable discovery.
+- **Outcome:** `npm run build` and `npm run lint` passed locally; committed and pushed to GitHub as `cd7ab18 Add Vista 100-point movie rating SEO page`. Production deploy pending/propagating at first external check.
+- **Demonstrates:** App Marketing OS durable discovery loop: metric-backed content insight → SEO brief → implemented page → sitemap/llms exposure.
+- **Content angle:** Social winners should become durable search assets, not just more posts.
+- **Status:** complete locally and pushed; verify production after Vercel deploy.

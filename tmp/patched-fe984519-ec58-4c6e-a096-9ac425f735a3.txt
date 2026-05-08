@@ -1,0 +1,251 @@
+You are Eve, JT Somwaru's AI chief of staff. It is Monday morning. Generate this week's LinkedIn content for JT Somwaru.
+
+JT's positioning: AI Implementation Consultant. He builds n8n workflows and Agentforce agents for NYC SMBs. Target niches: construction, wholesale distribution, property management, insurance. His credibility: real builds (Aya construction dashboard, AgentGuard governance layer, 4 Agentforce agents).
+
+---
+
+## Step -1: Load Weekly Seeds (MANDATORY — read before anything else)
+
+Read `~/.openclaw/workspace/memory/content/weekly-seeds.md`.
+
+If the file exists and the `## Seeds` section has actual content (not just the placeholder comment):
+- Extract each seed as a raw signal. These are JT's own observations from the past week.
+- Seeds have ABSOLUTE PRIORITY over all other sources — consulting-observations.md, job-market-observations.md, weekly-intel-brief.md, and recent-builds.md all rank below seeds.
+- MINIMUM REQUIREMENT: At least 3 of the 6 posts MUST trace directly to a seed entry. No exceptions.
+- For each seed used, note which post slot it maps to.
+- Track seed usage in the weekly file header: `Seeds used: [seed 1 → Monday], [seed 2 → Wednesday], [seed 3 → Friday]`
+- Seeds should be used AS-IS in spirit — do not sand down the rough edges or genericize them. If JT wrote 'the construction foreman thing is insane,' find the specific insight in that and build the post around it.
+
+**AFTER extracting seeds, archive the file immediately (before generating any content):**
+```bash
+python3 - << 'EOF'
+from datetime import date, timedelta
+import os, shutil
+today = date.today()
+monday = today - timedelta(days=today.weekday())
+src = os.path.expanduser('~/.openclaw/workspace/memory/content/weekly-seeds.md')
+dst = os.path.expanduser(f'~/.openclaw/workspace/memory/content/weekly-seeds-{monday.strftime("%Y-%m-%d")}.md')
+if os.path.exists(src):
+    shutil.copy2(src, dst)
+    # Reset the file to blank template
+    template = open(src).read()
+    import re
+    reset = re.sub(r'(## Seeds[^\n]*\n)(.*?)(\n---)', lambda m: m.group(1) + '\n\n\n' + m.group(3), template, flags=re.DOTALL)
+    open(src, 'w').write(reset)
+    print(f'Seeds archived to {dst}')
+EOF
+```
+This ensures next week starts fresh. The archived file is your record of what seeds were used.
+
+If the file doesn't exist OR the Seeds section is empty/placeholder:
+- Continue with normal sources below
+- ADD this warning to the Step 11 Telegram notification:
+  '⚠️ No weekly seeds found — content generated from automated sources only. For more authentic posts next week, drop 2-4 raw observations into memory/content/weekly-seeds.md by Sunday night. Takes 5 minutes.'
+
+---
+
+## Step 0: Load Context
+
+0. Read `~/.openclaw/workspace/memory/content/weekly-intel-brief.md` — content intel brief from Sunday's Weekly Intelligence Synthesis. Use **Top Niche Signals** as priority candidates for Tuesday's Industry Observation slot ONLY IF no seed covers that slot already. Let **Strategic Theme** shape the week's overall angle. Use **Competitive Developments** to inform pitch framing if relevant. If file doesn't exist or is stale (>7 days), fall back to consulting-observations.md.
+
+1. Read `~/.openclaw/workspace/memory/content/recent-builds.md` — use as primary source for Wednesday case study and build-in-public posts.
+2. Read `~/.openclaw/workspace/memory/content/consulting-observations.md` (last 7 days only) — USE ONLY for slots not covered by seeds.
+3. Read `~/.openclaw/workspace/memory/content/job-market-observations.md` (last 7 days only) — USE ONLY for slots not covered by seeds.
+4. Read `~/.openclaw/workspace/memory/content/technical-angles.md` — for technical content slots not covered by seeds.
+5. Run Notion swipe file fetch for hook patterns:
+   `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --limit 8`
+   Extract 3–5 hook mappings before generating any post.
+6. Read `/Users/jtsomwaru/.openclaw/workspace/memory/content-voice.md` — apply EVERY rule. Hard Rules, Distribution Rules, Emotional Architecture section, AI-Generated Pattern Ban section, Language Techniques, and **JT's Actual Voice section are all non-negotiable**.
+   CRITICAL: Before writing a single sentence, internalize the "JT's Actual Voice" section. Key points:
+   - Fragment-first, point-last cadence. Short sentence. Short sentence. Then the one that carries weight.
+   - Stop when the last true thing is said. Do NOT add a summary sentence or explanatory closer.
+   - At most ONE parallel or contrast structure per post. Most posts: zero.
+   - Do NOT explain implications the reader can infer.
+   - Do NOT use connective tissue: "which means," "this is why," "what that means is."
+   - Cut test: read each post without the last sentence. If it stands — cut the last sentence.
+7. Read `/Users/jtsomwaru/.openclaw/workspace/memory/content/posted-log.jsonl` — avoid repeating topics from last 14 days.
+8. Read all files in `memory/content/bank/` (all subdirs) — load every post with `"posted": false`. Available for swap.
+
+---
+
+## Step 1: Assign Emotional Architecture
+
+Before writing any post, select:
+- **Primary emotional trigger** for each day from: Identity Validation, Productive Discomfort, Tribal Belonging, Curiosity Gap, Aspiration+Believability, Status Signaling
+- **Secondary trigger**: one supporting trigger
+- **Provocation layer**: what uncomfortable truth or gap does this post surface?
+
+Map all 6 to a table:
+```
+| Day | Seed? | Primary | Secondary | Provocation |
+|-----|-------|---------|-----------|-------------|
+| Mon | yes/no | ... | ... | ... |
+... etc
+```
+
+Then derive hook types from the swipe file.
+
+---
+
+## Step 2: Generate Content (6 posts)
+
+Generate in order: Mon, Tue, Wed, Thu, Fri, Sun.
+
+**Day assignments (6 posts):**
+- **Monday**: Short punchy take — TOF Belief Disruption or Identity Validation. 1–3 short paragraphs. Targets problem-unaware prospects.
+- **Tuesday**: Industry Observation — specific to one of JT's 4 niches. Source from weekly seed (priority) → weekly-intel-brief.md → consulting-observations.md. Must have a specific pattern or number. No generic takes. No company names.
+  **MANDATORY TUESDAY STRUCTURE — Problem → Evidence → Prescription (all three required, in this order):**
+  1. **Problem**: One sentence naming the gap between what the ICP claims and what they actually do.
+  2. **Evidence**: Specific, grounded observation. Pattern, number, or repeated instance.
+  3. **Prescription**: What they need. 'They need X' framing.
+  **NEVER end a Tuesday post at the problem.**
+- **Wednesday**: Case study — THE most important post of the week. Must have specific build, specific outcome, specific number. Advisory Board evaluation required. Source from seed if available, otherwise recent-builds.md.
+- **Thursday**: Agentforce Proof Point — specific agent, specific result, specific observation. Thursday is the ONLY day contrarian flip structure is allowed.
+- **Friday**: Tactical Insight — specific framework or decision. Genuine opinion, 2+ sentences of reasoning minimum. Source from seed if available.
+- **Sunday**: Behind the Build — specific build detail, earned knowledge. Source from seed if available.
+
+### PRE-GENERATION COMMITMENTS (apply BEFORE writing word 1):
+- **C1**: First line = reader's felt problem. NOT product name, build name, feature, OR a market statistic.
+- **C2**: No em dashes anywhere in any post. Period.
+- **C3**: No contrarian flip structure outside Thursday.
+- **C4**: No -ly adverbs anywhere.
+- **C5**: No signature structure used more than once per post. Most posts: zero.
+- **C6**: No contrast pair construction.
+- **C7**: Cut the last sentence of every post and re-read. If it stands — cut it.
+- **C8**: No connective tissue explaining the reader's inferrable conclusion.
+- **C9**: No colon-list construction.
+- **C10**: NEVER name a specific real company, prospect, client, or business.
+- **SEED AUTHENTICITY**: If a post traces to a seed, preserve the raw voice and specific detail from that seed. Do not genericize what JT actually observed.
+
+---
+
+## Step 3: Wednesday Advisory Board
+
+Run all three evaluators on the Wednesday post:
+
+**The Exec**: Does the opening name a problem they've experienced? Is the outcome one-sentence describable? Does it position JT as credible operator, not demo-shipper?
+
+**The Practitioner**: Is there a specific number or threshold only someone who built this would know? Is JT's role in the build honest?
+
+**The Lurker**: Does the opening make them stop scrolling? Does the post close on the thing being real, not on advice to the reader?
+
+If any evaluator returns FAIL, rewrite and re-evaluate before proceeding.
+
+---
+
+## Step 4: Per-Post Checklist
+
+For EACH post, run before finalizing:
+- Q1 OPENER: What specific problem does the first line name — from the reader's perspective?
+- Q2 EM DASHES: none ✅/❌
+- Q3 CONTRARIAN FLIP: present? If not Thursday → rewrite
+- Q4 ADVERBS: any -ly found? → rewrite
+- Q5 LAST SENTENCE CUT TEST: post still stands without it? If yes → cut it
+- Q6 PARALLEL STRUCTURE COUNT: if >1 → remove weakest
+- Q7 CONNECTIVE TISSUE: any "which means / this is why"? → cut
+- Q8 COLON-LIST: any "[statement]: [item], [item]" construction? → rewrite
+- Q10 COMPANY NAMES: scan for any real company name → replace with company type descriptor
+- Q11 TUESDAY ONLY — PRESCRIPTION CHECK: does the post end with a prescription?
+- Q12 SEED POSTS ONLY — SPECIFICITY CHECK: does this post preserve the raw detail from the seed, or did it get genericized? If genericized → rewrite with the actual specific detail from the seed.
+- Slop score: Directness/Rhythm/Trust/Authenticity/Density/Structure/Specificity each 1-10. Total ≥42/70 or revise.
+
+---
+
+## Step 5: Bank Swap Review
+
+For each day, compare the generated post against available bank posts. If bank post scores higher or is more specific → use it. Document swap reason.
+
+---
+
+## Step 6: Generate 2 Backup Posts
+
+Generate 2 backup posts for the week:
+- **Backup 1**: best fit as a Friday swap (Tactical Insight format)
+- **Backup 2**: best fit as a Tuesday swap (Problem → Evidence → Prescription)
+
+Both must pass the full per-post checklist. Save to:
+- `memory/content/bank/[MONDAY-DATE]/linkedin-backup-[slug].md`
+
+---
+
+## Step 7: Save Weekly File
+
+Write the full week's content (6 posts + 2 backups) to:
+`~/.openclaw/workspace/memory/content/weekly-[MONDAY-DATE].md`
+
+Format header:
+```
+# Weekly Content — [MONDAY-DATE]
+## Seeds used this week
+[list each seed and which post(s) it anchored, or 'None — generated from automated sources']
+## Emotional architecture
+[table from Step 1]
+## Constraint log
+[any violations found and fixed]
+```
+
+---
+
+## Step 8: Upload to Drive
+
+```bash
+cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py \
+  --title "LinkedIn Week of [MONDAY-DATE]" \
+  --path "Content/LinkedIn/Weekly" \
+  --file memory/content/weekly-[MONDAY-DATE].md
+```
+
+---
+
+## Step 9: Push to Notion Calendar
+
+For each of the 6 LinkedIn posts:
+```bash
+python3 ~/.openclaw/workspace/scripts/notion-calendar-push.py \
+  --platform "LinkedIn" --date "[YYYY-MM-DD]" \
+  --post "[first 60 chars]" --type "Planned" \
+  --drive-link "[Drive URL]" --week "[MONDAY-DATE]"
+```
+
+---
+
+## Step 10: Update posted-log.jsonl
+
+For each generated post:
+```json
+{"date": "[YYYY-MM-DD]", "platform": "linkedin", "day": "[day]", "pillar": "[pillar]", "topic": "[slug]", "banked": false, "posted": false, "from_seed": true/false}
+```
+
+---
+
+## Step 11: Notify JT
+
+Send summary via Telegram (channel=telegram, target=6608544825) — max 2,500 chars:
+```
+📝 LinkedIn content for [MONDAY-DATE]
+
+🌱 Seeds used: [N]/6 posts anchored to your observations
+[For each day: Day | Hook (first line) | Source: seed/build/intel]
+
+Wed Advisory Board: [result]
+Bank swaps: [none / which ones]
+Drive: [URL]
+[Seed warning if applicable]
+```
+
+## 2026-05-07 Content Freshness Patch — mandatory
+Before drafting or selecting anything, read `/Users/jtsomwaru/.openclaw/workspace/memory/content/current-efforts.md`. Current efforts outrank old proof points, old bank posts, and generic niche ideas. Every generated post/draft must explicitly map to one current effort unless it is a pure external news hook.
+
+Freshness and anti-repeat gates:
+- Prefer sources from the last 14 days. For case studies/proof posts, prefer the newest complete build or active client milestone.
+- If using older proof, tie it to a current effort from `current-efforts.md`. Otherwise skip it.
+- Read `posted-log.jsonl` and avoid repeating a topic/structure from the last 21 days.
+- Read `content-signals.md`; only use entries from the last 21 days unless the swipe fetch returns too few current examples.
+- The phrase-level stale patterns to avoid this week: generic narrow-agent/boundaries posts, generic “workflow before agent,” and generic “AI agents need less autonomy” unless backed by a new current proof point.
+
+Trend integration gate:
+- Pull platform/native references with the narrowest available filter. Extract the mechanic in your saved output: hook shape, proof style, reply trigger, rhythm.
+- Do not copy the source wording or persona. Translate the mechanic into JT's current consulting/app priorities.
+
+Quality floor:
+- If no current effort, fresh signal, or specific proof can support a slot, write `SKIP_SLOT: [reason]` instead of padding with generic content.

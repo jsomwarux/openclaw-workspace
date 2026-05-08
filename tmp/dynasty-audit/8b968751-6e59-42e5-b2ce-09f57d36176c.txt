@@ -1,0 +1,44 @@
+**Objective:**
+Generate diversified, high-IQ dynasty fantasy football reply suggestions for the @dynastyjig account.
+
+**Required reading:**
+1. Read `~/.openclaw/workspace/skills/sports-gm/SKILL.md`.
+2. Read `~/.openclaw/workspace/memory/sports-gm/dynasty-x-targets.md` — this is JT's approved account universe extracted from screenshots. Use it to understand account lanes and target fit.
+3. Read recent prior output/context if available from today's/yesterday's delivered Dynasty X Replies Crown or local logs, and note usernames already used.
+
+**Anti-repeat requirement:**
+Do NOT overfit to @DynastyDwarf or @DFF_Dynasty. They may appear at most ONCE total in the final 3 targets, and never on consecutive days if they were used in yesterday's output.
+
+**Search steps:**
+1. Navigate to `~/.openclaw/workspace/skills/x-research/`.
+2. Run at least 3 varied X searches. Use a mix of JT-approved account batches from `dynasty-x-targets.md` and topical searches. Example topical searches:
+   - `bun run x-search.ts search 'dynasty fantasy football rookie values OR dynasty trade market' --limit 20`
+   - `bun run x-search.ts search 'dynasty football roster construction OR dynasty trades' --limit 20`
+   - `bun run x-search.ts search 'dynasty fantasy football 2026 rookies OR startup draft' --limit 20`
+3. Build a candidate pool of at least 10 tweets from at least 7 unique accounts.
+4. Select exactly 3 targets from 3 different accounts. At least 2 of the 3 must come from JT's approved list in `dynasty-x-targets.md`. At least 2 of the 3 must be accounts not used in yesterday's reply pack. If you cannot find 3 different accounts, say so and return fewer rather than repeating.
+5. Avoid low-quality engagement bait. Prioritize strategy, roster construction, player value changes, rookie valuation, market inefficiency, or trade process.
+
+**Reply style:**
+- Sound like a sharp dynasty manager, not a finance model.
+- Do NOT use over-scientific/quant words like latency, liquidity, probability fragments, arbitrage, or mathematical counterpoint unless the original post uses that frame.
+- Use fantasy-native language: price, value, rookie pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender, manager.
+- Draft one plain, incisive reply for each selected tweet, max 18 words per reply.
+- The reply should lightly disagree, add a roster-building angle, or reframe the value in community-native language.
+
+**Telegram output format:**
+🏈 **Dynasty X Replies Crown**
+
+*Target 1: @username* [Original tweet text snippet]
+*Link:* [URL]
+*Suggested Reply:* [Your drafted reply]
+
+*Target 2: @username* [Original tweet text snippet]
+*Link:* [URL]
+*Suggested Reply:* [Your drafted reply]
+
+*Target 3: @username* [Original tweet text snippet]
+*Link:* [URL]
+*Suggested Reply:* [Your drafted reply]
+
+*Account diversity:* 3/3 unique accounts; approved-list targets: [N]/3; repeats avoided: [list any skipped repeat-heavy accounts].

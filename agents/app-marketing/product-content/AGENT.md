@@ -12,14 +12,15 @@ Read these first, in order:
 3. `memory/app-marketing/weekly-scoreboard.md`
 4. `memory/app-marketing/performance-analysis.md`
 5. `memory/app-marketing/optimization-rules.md`
-6. `memory/app-marketing/content-feature-taxonomy.md`
-7. `memory/reelfarm/reports/weekly/` latest report if it exists
-8. `memory/reelfarm/reports/daily/` latest relevant report if it exists
-9. `memory/app-marketing/competitor-ad-intel.md`
-10. latest file in `memory/app-marketing/competitor-intel/` if present
-11. latest `memory/app-marketing/test-briefs-*.md` if present
-12. `memory/app-marketing/vibe-dependency-map-2026-05-06.md`
-13. `memory/content-voice.md`
+6. `memory/app-marketing/experiment-calendar.md`
+7. `memory/app-marketing/content-feature-taxonomy.md`
+8. `memory/reelfarm/reports/weekly/` latest report if it exists
+9. `memory/reelfarm/reports/daily/` latest relevant report if it exists
+10. `memory/app-marketing/competitor-ad-intel.md`
+11. latest file in `memory/app-marketing/competitor-intel/` if present
+12. latest `memory/app-marketing/test-briefs-*.md` if present
+13. `memory/app-marketing/vibe-dependency-map-2026-05-06.md`
+14. `memory/content-voice.md`
 
 If these conflict with older Vibe Marketing docs, App Marketing OS wins.
 
@@ -90,7 +91,8 @@ Current defaults:
 4. If metrics are missing, prefer automated collection first: ensure posted items are represented in `memory/app-marketing/post-registry.jsonl`, then run `python3 scripts/app_marketing_collect_metrics.py`. Use `memory/app-marketing/metrics-inbox.jsonl` manual rows only as fallback.
 5. Decide whether to generate, skip, or only request metrics.
 6. Before drafting, apply `optimization-rules.md`: reuse winning structures/topics/specificity, avoid losing feature combinations, and never copy exact wording from winners.
-7. Check latest ReelFarm Intel reports for TikTok/slideshow trend patterns and apply only if they fit the app's measured winners.
+7. Map every generated item to a named test in `experiment-calendar.md`. If no current experiment supports the item, skip it or write `NO_EXPERIMENT_MATCH` with the reason.
+8. Check latest ReelFarm Intel reports for TikTok/slideshow trend patterns and apply only if they fit the app's measured winners.
 8. Use competitor ad intelligence only as read-only pattern input when a report exists; do not generate or modify ads.
 9. If a current `test-briefs-*.md` exists, prioritize those tests unless metrics/brand rules reject them.
 10. Draft platform-native content.
@@ -104,7 +106,8 @@ Current defaults:
 15. Append a dated run note to `memory/app-marketing/weekly-scoreboard.md`.
 16. If new post registry entries or metrics were added, run `python3 scripts/app_marketing_collect_metrics.py` first; if manual rows were added directly to the inbox, run `python3 scripts/app_marketing_metrics.py`.
 17. Run `python3 scripts/app_marketing_analyze.py` after metrics updates so `optimization-rules.md` stays current.
-18. Summarize for JT with counts, skips, and measurement blocker.
+18. Run `python3 scripts/app_marketing_experiment_calendar.py` after analysis so the next generation cycle has current named experiments.
+19. Summarize for JT with counts, skips, and measurement blocker.
 
 ## Queue Compatibility
 Until migration is complete, write to:

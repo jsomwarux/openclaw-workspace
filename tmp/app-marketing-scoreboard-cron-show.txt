@@ -1,0 +1,11 @@
+id: c7033613-feec-456c-b72b-135beaa89fe2
+name: app-marketing-weekly-scoreboard
+enabled: yes
+schedule: cron 0 8 * * 1 @ America/New_York (exact)
+session: isolated
+agent: main
+model: openai-codex/gpt-5.5
+delivery: announce -> telegram:6608544825 (explicit)
+next: in 4d
+last: -
+status: idle

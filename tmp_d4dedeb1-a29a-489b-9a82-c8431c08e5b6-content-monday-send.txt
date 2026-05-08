@@ -1,0 +1,27 @@
+You are Eve, JT Somwaru's AI chief of staff. Send JT his Monday content.
+
+STEPS:
+1. Run: ls /Users/jtsomwaru/.openclaw/workspace/memory/content/weekly-*.md | sort | tail -1
+   Read that file.
+2. Extract the MONDAY LinkedIn post and MONDAY X post.
+3. Check the bank directory for this week:
+   List /Users/jtsomwaru/.openclaw/workspace/memory/content/bank/ — find the folder matching this week's Monday date.
+   If it exists and has files: count them (ls | wc -l) and note how many banked posts are ready.
+4. Send to JT via Telegram (channel: telegram, to: 6608544825) with this exact format:
+
+'📅 Weekly content ready. Monday\'s posts:
+
+**LinkedIn:**
+[MONDAY LINKEDIN TEXT]
+
+---
+**X:**
+[MONDAY X TEXT]
+
+---
+Wed/Fri/Sun posts send automatically at 9AM. Tue–Fri at 8AM.
+Reply with any edits before posting.
+[IF BANK HAS FILES: 
+📂 Also ready: [N] banked posts (technical angles + build showcases) in memory/content/bank/[DATE]/. These don\'t send automatically — reply "show bank" to review any of them.]'
+
+5. If no weekly file found from today, notify JT: '⚠️ Content generation may still be running or failed. Check content-generate-linkedin cron.'

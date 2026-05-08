@@ -86,6 +86,17 @@ Required weekly inputs:
 - If data is missing for 2 consecutive weeks, fix the metrics handoff before recommending more content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-05-07
+
+### nash-satoshi / tiktok
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: What Nash Satoshi actually measures, in 5 slides (0 views/impressions)
+
+**Best overall:** nash-satoshi / tiktok — What Nash Satoshi actually measures, in 5 slides (0 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-05-06
 
 ### nash-satoshi / tiktok
@@ -152,7 +163,7 @@ Updated top 10 ranked game theory tokens:
 ## Metrics Summary — Week of 2026-04-29
 
 ### vista / tiktok
-- Posts/results logged: 1
+- Posts/results logged: 2
 - Views/impressions: 0
 - Best item:  (0 views/impressions)
 
@@ -374,7 +385,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-06_
+_Last updated: 2026-05-07_
 
 <!-- METRICS_SUMMARY_END -->
 

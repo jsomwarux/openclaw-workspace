@@ -101,40 +101,44 @@ Promotion boundary:
 ---
 
 ## Glow Index
-Status: pending
+Status: active
 
 What it is:
-- AI skincare product analysis/ranking app.
-- 4-AI/ensemble-style skincare scoring around ingredients, value, formulation, and efficacy.
+- Live AI skincare product analysis/ranking app at `https://glowindex.co`.
+- 4-AI/ensemble-style skincare scoring around ingredients, value, formulation, evidence, pricing, safety, and unsupported marketing claims.
+- Consumer research layer, not medical/dermatology advice.
 
 Primary audience:
 - Ingredient-literate skincare buyers.
 - Beauty consumers skeptical of influencer marketing.
 - People who want formula/value checks before buying.
+- Skincare Reddit/TikTok users who compare products, dupes, ingredients, and value.
 
-Primary future channel:
-- Dedicated skincare TikTok/ReelFarm account, executed by JT's laptop setup when active.
+Primary channel:
+- Dedicated skincare TikTok/ReelFarm-style content once account/execution path is confirmed. Until then: SEO/GEO and directory surfaces first.
 
-Secondary future channels:
-- SEO pages around ingredient checker, product analyzer, dupe/value checks.
+Secondary channels:
+- Programmatic SEO/GEO pages around product rankings, ingredient checkers, product comparisons, dupe/value pages, and category pages.
 - Beauty/skincare directories where safe.
-- Reddit only with extreme caution.
+- Pinterest-style evergreen visual discovery is a high-upside future channel for skincare, but do not wire posting until asset/metrics path is defined.
+- Reddit only with extreme caution and education-first positioning.
 
 Current systems:
-- Vibe Marketing registry has Glow as pending with no active platforms.
-- ReelFarm Intel config includes Glow strategy.
+- Live production app verified at `https://glowindex.co` on 2026-05-07.
+- App Marketing OS should treat Glow as active for durable discovery, SEO/GEO, directory-pack creation, and metrics planning.
+- ReelFarm Intel config includes Glow strategy, but execution/account details still need confirmation.
 
-Activation requirements:
-- App/deployment stable.
-- Engine/workflow reliable.
-- Dedicated account created and warmed up.
-- Product proof points updated.
-- Screenshot assets available.
+Immediate marketing bottlenecks:
+- Need screenshot/asset map for live app.
+- Need product/category/ingredient data shape documented before pSEO generation.
+- Need safe claim rules embedded into templates: no medical claims, no diagnosis/treatment claims, no fake user stories, no dermatologist endorsement unless verified.
+- Need metrics source: site visits/search traffic first; TikTok/ReelFarm only after account/execution path is confirmed.
 
 Promotion boundary:
 - Avoid medical/dermatology claims.
-- Avoid fake user stories.
-- Reddit skincare subs are strict; default to education, not app promo.
+- Avoid diagnosis/treatment language.
+- Avoid fake user stories or fake before/after claims.
+- Reddit skincare subs are strict; default to education, ingredient/value analysis, or methodology discussion, not app promo.
 
 ---
 

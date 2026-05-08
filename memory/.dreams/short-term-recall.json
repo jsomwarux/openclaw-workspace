@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-07T00:32:03.853Z",
+  "updatedAt": "2026-05-07T19:57:07.637Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -953,18 +953,20 @@
       "endLine": 196,
       "source": "memory",
       "snippet": "- `bbe49024-458a-4496-9c7c-7a278615810f` / `reddit-daily-gen` - 11:30AM ET daily Updated it rather than creating a duplicate. New prompt requires: - Read `memory/content/reddit-strategy.md`. - Read `skills/sports-gm/SKILL.md`. - Use generated Sports GM report if present, otherwise run `sports_gm_fetch_prices.py` + `sports_gm_generate_report.py`. - Target fantasy subs according to current access constraints: `r/Fantasy_Football`, `r/fantasyfootballadvice`, `r/fantasyfootball`; avoid `r/DynastyFF` until reputation unlocks. - No @dynastyjig mention, links, CTA, or brand promo. - No player-specific recommendations without full Sports GM thesis standard. - Prefer practical roster-construction ad",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T14:26:03.132Z",
-      "lastRecalledAt": "2026-04-30T14:26:03.132Z",
+      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
       "queryHashes": [
-        "77a41b9bacdb"
+        "77a41b9bacdb",
+        "c2a650fbaf9b"
       ],
       "recallDays": [
-        "2026-04-30"
+        "2026-04-30",
+        "2026-05-07"
       ],
       "conceptTags": [
         "reddit-daily-gen",
@@ -1015,18 +1017,20 @@
       "endLine": 175,
       "source": "memory",
       "snippet": "Verification: - `sports_gm_fetch_prices.py` fetched 3,404 rows across KTC/FantasyCalc/DynastyProcess. - `sports_gm_generate_report.py` generated: - `memory/sports-gm/reports/weekly-gm-report-2026-04-27.md` - `memory/sports-gm/candidates/2026-04-27.csv` - `memory/content/bank/2026-04-27/dynasty-gm-automated-market-posts.md` Guardrail added: candidate generation filters out deep-tail noise and treats source disagreement as a research alarm, not an automatic recommendation. ## 11:21 — Daily @dynastyjig delivery added JT asked whether daily content is being delivered for @dynastyjig. It was not; only weekly Sports GM report cron existed. Added daily cron: - `1e614c8a-adb8-4a02-b35f-3031",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T14:26:03.132Z",
-      "lastRecalledAt": "2026-04-30T14:26:03.132Z",
+      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
       "queryHashes": [
-        "77a41b9bacdb"
+        "77a41b9bacdb",
+        "c2a650fbaf9b"
       ],
       "recallDays": [
-        "2026-04-30"
+        "2026-04-30",
+        "2026-05-07"
       ],
       "conceptTags": [
         "sports-gm-fetch-prices.py",
@@ -1767,18 +1771,22 @@
       "endLine": 74,
       "source": "memory",
       "snippet": "- JT corrected Eve: Action Arena is NOT the Dynasty Fantasy Football Simulator. Action Arena = fantasy football league structure + sports betting strategy. Players join leagues, get $100/week fake budget, and compete on profit through straight bets, parlays, and teasers. No real money is ever wagered. - Updated MEMORY.md and docs/agents/mistakes-log-recent.md with the correction and regression check. - Strategy note: future app-marketing plan must review existing Reddit/X/vibe systems before proposing changes, and Reddit plans must respect strict anti-self-promotion norms. ## App Marketing OS — Initial Build - Proceeded with automated app marketing priority after JT approved optimal plan. -",
-      "recallCount": 1,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T00:32:03.853Z",
-      "lastRecalledAt": "2026-05-07T00:32:03.853Z",
+      "lastRecalledAt": "2026-05-07T19:57:07.637Z",
       "queryHashes": [
-        "ffbc682bf3ef"
+        "ffbc682bf3ef",
+        "519d1f44ada4",
+        "c0bc4d41ab52",
+        "d9dd47e7d08c"
       ],
       "recallDays": [
-        "2026-05-06"
+        "2026-05-06",
+        "2026-05-07"
       ],
       "conceptTags": [
         "100/week",
@@ -1798,18 +1806,20 @@
       "endLine": 206,
       "source": "memory",
       "snippet": "Lib (7): lib/types.ts, lib/db.ts, lib/scoring.ts, lib/utils.ts, lib/stripe.ts, lib/subscription.ts, lib/beta.ts, lib/progress-store.ts App Pages (8): app/layout.tsx, app/page.tsx, app/rankings/page.tsx, app/rankings/[id]/page.tsx, app/vote/page.tsx, app/admin/page.tsx, app/analysis-status/page.tsx, app/sign-in/[[...sign-in]]/page.tsx, app/sign-up/[[...sign-up]]/page.tsx API Routes (14): trigger-analysis, analysis-callback, votes (GET/POST), votes/[id]/upvote, votes/add-product, votes/reject, products (GET), products/search, analysis-status, batch-analyze, fetch-images, clear-stuck, admin/login, stripe/checkout, stripe/portal, stripe/webhook Components (14): Header, ProductCard, RankingsCl",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T00:32:03.853Z",
-      "lastRecalledAt": "2026-05-07T00:32:03.853Z",
+      "lastRecalledAt": "2026-05-07T16:27:05.827Z",
       "queryHashes": [
-        "ffbc682bf3ef"
+        "ffbc682bf3ef",
+        "519d1f44ada4"
       ],
       "recallDays": [
-        "2026-05-06"
+        "2026-05-06",
+        "2026-05-07"
       ],
       "conceptTags": [
         "lib/types.ts",
@@ -1882,6 +1892,162 @@
         "reelfarm-ap",
         "app",
         "marketing"
+      ]
+    },
+    "memory:memory/2026-04-03.md:1:20": {
+      "key": "memory:memory/2026-04-03.md:1:20",
+      "path": "memory/2026-04-03.md",
+      "startLine": 1,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "## Daily Note - April 3, 2026 - Completed reading HEARTBEAT.md and followed the instructions strictly. - Checked for cost alerts: - Alerts sent to JT regarding session costs exceeding thresholds: - Niche Intelligence Monitor: $0.725 (threshold: $0.5) - Daily spending alert: Total of $4.51, exceeding the $2.0 limit. - Job Market Daily Research: $0.748 (threshold: $0.5) - Niche Intelligence Monitor: $0.725 (threshold: $0.5) - Overnight AgentGuard Positioning: $0.628 (threshold: $0.5) - Outreach Pipeline: $1.543 (threshold: $0.5) - Overnight Autonomy Agent: $0.601 (threshold: $0.5) - Daily spending alert: Total of $7.70, exceeding the $2.0 limit. - Job Market",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "queryHashes": [
+        "c2a650fbaf9b"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "0.725",
+        "0.5",
+        "4.51",
+        "2.0",
+        "0.748",
+        "0.628",
+        "1.543"
+      ]
+    },
+    "memory:memory/2026-04-29.md:132:149": {
+      "key": "memory:memory/2026-04-29.md:132:149",
+      "path": "memory/2026-04-29.md",
+      "startLine": 132,
+      "endLine": 149,
+      "source": "memory",
+      "snippet": "- Cron health: user-facing daily crons ok. Spanish Daily Lesson delivered successfully (`deliveryStatus=delivered`); crypto evening pulse ran ok. Guyana monitor still shows old error but fix was already verified at 10AM (`timeoutSeconds=2400`), next run Monday. - Tasks.md reviewed but skipped for surfacing because dated 2026-02-27. - No proactive work; evening health check-in already sent at 21:00 and no new blocker surfaced. ## Heartbeat 9:13 PM - Cost alerts: none (`[]`). - Cron health unchanged from 9:12 PM: user-facing daily crons ok; Spanish lesson delivered; crypto evening pulse ok. Guyana monitor still shows old error but fix was already verified at 10AM (`timeoutSeconds=2400`), next",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "queryHashes": [
+        "c2a650fbaf9b"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "user-facing",
+        "tasks.md",
+        "check-in",
+        "cron",
+        "health",
+        "facing",
+        "crons",
+        "spanish"
+      ]
+    },
+    "memory:memory/2026-05-06.md:132:140": {
+      "key": "memory:memory/2026-05-06.md:132:140",
+      "path": "memory/2026-05-06.md",
+      "startLine": 132,
+      "endLine": 140,
+      "source": "memory",
+      "snippet": "- Left stronger models in place for high-stakes or quality-sensitive jobs: job-market daily research, weekly synthesis, crypto full analysis, outreach/prospect discovery, weekly LinkedIn generation, ReelFarm weekly synthesis. Rationale: bad filtering/synthesis/case-study quality costs more than model savings. ## Heartbeat 20:58 - Cost alerts empty. Tasks checked; no new urgent actionable task surfaced. Cron health still shows stale last-run errors for Daily News Hook and Crypto Midday Pulse, but both have already been patched: Daily News Hook model Kimi, timeout 5400, capped 2-search/NO_NEWS_HOOK; Crypto Midday model DeepSeek, timeout 1800, exec/file-I/O and NO_ALERT_LOGGED. Latest run reco",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "queryHashes": [
+        "c2a650fbaf9b"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "high-stakes",
+        "quality-sensitive",
+        "job-market",
+        "outreach/prospect",
+        "filtering/synthesis/case-study",
+        "last-run",
+        "2-search/no-news-hook",
+        "exec/file-i/o"
+      ]
+    },
+    "memory:memory/2026-02-22.md:142:166": {
+      "key": "memory:memory/2026-02-22.md:142:166",
+      "path": "memory/2026-02-22.md",
+      "startLine": 142,
+      "endLine": 166,
+      "source": "memory",
+      "snippet": "## Pre-Compaction Flush — 6:35 PM Session compacted. Final state snapshot: **All 7 crons active in jobs.json:** 1. `eve-morning-brief-001` — 7:30 AM daily (isolated, Telegram 6608544825) ✅ 2. `eve-heartbeat-2h-002` — 8,10,12,14,16,18,20,22 EST (main session event) ✅ 3. `eve-health-checkin-003` — 9 PM daily (main session event) ✅ 4. `eve-health-report-004` — Sunday 9 AM (isolated, health weekly report) ✅ 5. `eve-job-market-daily-005` — 7 AM daily (isolated, writes ~/projects/job-market-agent/data/daily-brief.md) ✅ 6. `eve-niche-monitor-006` — 9,11,13,15,17 EST Mon–Fri (isolated, Brave search, severity-filtered) ✅ 7. `eve-weekly-synthesis-007` — Sunday 8 AM (isolated, full week synthesis → T",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "queryHashes": [
+        "c2a650fbaf9b"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "pre-compaction",
+        "jobs.json",
+        "eve-morning-brief-001",
+        "eve-heartbeat-2h-002",
+        "eve-health-checkin-003",
+        "eve-health-report-004",
+        "eve-job-market-daily-005",
+        "eve-niche-monitor-006"
+      ]
+    },
+    "memory:memory/2026-05-07.md:183:199": {
+      "key": "memory:memory/2026-05-07.md:183:199",
+      "path": "memory/2026-05-07.md",
+      "startLine": 183,
+      "endLine": 199,
+      "source": "memory",
+      "snippet": "- Added `scripts/app_marketing_experiment_calendar.py` and generated `memory/app-marketing/experiment-calendar.md`. - Current experiments: Vista rating precision retest, Nash ranking/model update, Nash model-consensus slideshow. - Patched `agents/app-marketing/product-content/AGENT.md` so every generated item must map to an experiment or skip with `NO_EXPERIMENT_MATCH`. - Patched weekly App Marketing scoreboard cron to run experiment calendar after metrics/analyze and source next tests from it. ## App Marketing Durable Discovery 13:20 - Verified app-marketing scripts and experiment calendar after previous changes: registry 29 rows, metrics 28 rows, 3 active experiments. - Added durable disc",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-07T19:24:20.630Z",
+      "lastRecalledAt": "2026-05-07T19:57:07.637Z",
+      "queryHashes": [
+        "c0bc4d41ab52",
+        "d9dd47e7d08c"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "ranking/model",
+        "model-consensus",
+        "no-experiment-match",
+        "metrics/analyze",
+        "app-marketing",
+        "added",
+        "scripts",
+        "generated"
       ]
     }
   }

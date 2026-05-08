@@ -34,6 +34,20 @@ The Notion Viral Posts Swipe database is not just an archive. It must influence 
 - Never let the swipe file flatten JT's voice. It supplies evidence of what works; JT's taste supplies the final shape.
 
 
+
+## Relevance Ladder + Current Trend Rule
+Current efforts are a relevance input, not a cage. Content should choose the strongest available source in this order:
+1. Fresh niche/platform trend from the last 7-14 days + JT has an earned angle.
+2. Current effort + useful, specific lesson.
+3. Fresh proof point/build.
+4. Older proof tied to current motion.
+5. Evergreen operator truth, sparingly, only if sharp and non-repetitive.
+
+Do not force every post to mention current efforts. Do not use old swipe examples as if they are current. If current swipe references are thin, label older examples as archive patterns and use fresh topic/proof from another source.
+
+## Viral Swipe Quality Rule
+Viral Swipe must search live X with explicit recency and performance filters: `--since 7d`, fallback `--since 14d`, `--sort likes`, and minimum engagement thresholds. Broad queries returning spam/hashtag trains/low-impression posts are `LOW_SIGNAL` and must not be logged. Strong outputs capture not only topic/format but mechanic: hook shape, proof style, reply trigger, rhythm, novelty, and audience identity. The swipe file should be refilled with recent qualifying posts; if fewer than 3 recent examples exist in a niche, report `RECENT_SWIPE_GAP` rather than pretending the archive is current.
+
 ## Source Freshness Gate for News/Intel Claims
 - Any draft that says "this week," "today," "new," "fresh," or implies current market intel must have a source published within the last 14 days, unless the draft explicitly labels it as older background context with the date.
 - Before using any stat from `memory/content/weekly-intel-brief.md`, verify the source date via live web or saved citation. If the source date is older than 14 days, remove the freshness framing or cut the stat.

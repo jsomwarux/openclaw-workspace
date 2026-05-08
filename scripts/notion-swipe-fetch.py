@@ -21,6 +21,7 @@ import json
 import os
 import sys
 import warnings
+from datetime import datetime, timezone, timedelta
 warnings.filterwarnings("ignore")
 import requests
 from pathlib import Path
@@ -111,13 +112,31 @@ def infer_platform(url: str, explicit_platform: str = "") -> str:
     return "Unknown"
 
 
-def fetch_all_posts(min_engagement=0, fetch_limit=100, niches=None, platforms=None, formats=None):
+def get_date(prop):
+    d = prop.get("date") or {}
+    return d.get("start") or ""
+
+
+def parse_iso_date(value: str):
+    if not value:
+        return None
+    try:
+        # Notion date may be YYYY-MM-DD or full ISO datetime.
+        if "T" in value:
+            return datetime.fromisoformat(value.replace("Z", "+00:00")).date()
+        return datetime.fromisoformat(value).date()
+    except Exception:
+        return None
+
+
+def fetch_all_posts(min_engagement=0, fetch_limit=100, niches=None, platforms=None, formats=None, since_days=None):
     """Fetch up to fetch_limit posts from Notion, sorted by engagement desc.
 
     Optional filters:
     - niches: posts whose Niche multi_select includes any requested niche
     - platforms: inferred from URL unless a Platform property exists later
     - formats: posts whose Format select matches any requested format
+    - since_days: only include posts captured in the last N days when Date Captured exists
     """
     payload = {
         "page_size": fetch_limit,
@@ -146,6 +165,13 @@ def fetch_all_posts(min_engagement=0, fetch_limit=100, niches=None, platforms=No
         post_format = get_select(props.get("Format", {}))
         post_url = get_url(props.get("URL", {}))
         post_platform = infer_platform(post_url, get_select(props.get("Platform", {})))
+        captured = get_date(props.get("Date Captured", {}))
+
+        if since_days is not None:
+            captured_date = parse_iso_date(captured)
+            cutoff = (datetime.now(timezone.utc).date() - timedelta(days=since_days))
+            if not captured_date or captured_date < cutoff:
+                continue
 
         if niches and not any(n in post_niches for n in niches):
             continue
@@ -164,7 +190,8 @@ def fetch_all_posts(min_engagement=0, fetch_limit=100, niches=None, platforms=No
             "hook_type": get_select(props.get("Hook Type", {})),
             "why_it_works": get_rich_text(props.get("Why It Works", {})),
             "engagement": engagement,
-            "engagement_tier": get_select(props.get("Engagement Tier", {}))
+            "engagement_tier": get_select(props.get("Engagement Tier", {})),
+            "date_captured": captured
         })
 
     return posts
@@ -229,6 +256,7 @@ def main():
     parser.add_argument("--platform", action="append", default=[], help="Filter to inferred platform: X, LinkedIn, Reddit, Unknown. Repeatable.")
     parser.add_argument("--format", action="append", default=[], help="Filter to one or more Notion Format values. Repeatable.")
     parser.add_argument("--raw", action="store_true", help="Skip stratification, return top N by engagement")
+    parser.add_argument("--since-days", type=int, help="Only return posts captured in the last N days. Use 14 for current trend work.")
     args = parser.parse_args()
 
     all_posts = fetch_all_posts(
@@ -237,6 +265,7 @@ def main():
         niches=args.niche,
         platforms=args.platform,
         formats=args.format,
+        since_days=args.since_days,
     )
 
     if args.raw or len(all_posts) <= args.limit:
