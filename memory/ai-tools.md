@@ -475,3 +475,9 @@ SalesforceDevops.net (Feb 20): "What February demonstrated was not new capabilit
 **JT Relevance:**
 JT's focus on **responsible AI governance** (AgentGuard) and **exception layers** for construction/distribution is perfectly timed. The market is moving toward exactly what he is building: safe, human-approved, audited automation.
 
+
+
+## 2026-05-08 09:04 — n8n/MCP monitoring
+- n8n docs/search signal show a 2026-05-07 release primarily described as bug fixes; no urgent action for JT/client installs from search snippets alone.
+- n8n MCP ecosystem signal: community/release snippets reference MCP workflow create/update capabilities and sanitizer hardening in the third-party `n8n-mcp` project. Track as useful for future n8n-agent builds, but not alert-worthy without a verified breaking/security advisory.
+- Microsoft Azure Updates search result surfaced a Release Communications MCP server for AI-powered update discovery; useful enterprise-platform signal, not urgent for current consulting pipeline.

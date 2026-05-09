@@ -162,7 +162,11 @@ Use for hot takes and compressed insights — NOT for announcements, launches, o
 
 - **Length:** 3–6 short paragraphs (Monday: can be 1–3 sentences). Each paragraph = 1–2 lines max.
 - **Line breaks:** blank line between every paragraph
-- **Hook line:** first line must grab attention — modeled on a swipe file hook type
+- **Hook line:** first line must grab attention by naming a buyer-recognizable workday pain, not a generic AI category debate.
+- **Default consulting structure:** concrete operational scene → specific examples → plain diagnosis → where AI fits → clean outcome. Buyer pain first, AI second, JT POV last.
+- **Friday buyer-facing rule:** Prefer hooks like “Weekly status meetings might be the most expensive meeting on your calendar” over abstract hooks like “Most businesses do not need an AI chatbot.” Start with meetings, handoffs, approvals, stale reports, duplicate entry, ownerless requests, inbox/spreadsheet/portal sprawl.
+- **No outreach-meta by default:** Do not discuss JT's prospect research, lead enrichment, buyer-channel validation, or outreach strategy on LinkedIn unless writing explicitly for a sales-ops audience.
+- **Avoid AI-generated thought-leadership smell:** no “AI chatbot” contrast hooks, no “exception layer” phrasing, no vague “messy work” language, no stacked rhetorical lists unless grounded in a concrete workflow.
 - **No hashtags.** They suppress reach.
 - **No emojis** unless they serve a specific purpose (rarely)
 - **End:** clean insight OR a direct question. Never "DM me" or "link in bio"
@@ -242,6 +246,9 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] Does it make a claim the reader has to think about?
 - [ ] For LinkedIn Wed/Fri: is there a specific number or proper noun?
 - [ ] Platform check: does the content belong on THIS platform?
+- [ ] LinkedIn consulting check: does the hook start with a concrete buyer pain a nontechnical SMB operator recognizes from their workday?
+- [ ] LinkedIn consulting check: is AI introduced only after the operational problem is clear?
+- [ ] LinkedIn consulting check: did you avoid outreach-meta and generic “AI chatbot” contrast framing?
 
 ### X only (algorithm compliance):
 - [ ] First line invites a reply?
@@ -253,7 +260,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 ---
 
-*Last updated: 2026-04-30 (global self-improving content loop added) | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*
+*Last updated: 2026-05-08 (LinkedIn consulting buyer-pain-first rule added) | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*
 - **jtsomwaru.com AI Operations Diagnostic Reposition (2026-05-05):** Updated JT's personal site from generic AI Implementation Specialist framing to AI Operations Diagnostic / ops-heavy business workflow implementation. Added who-I-help, diagnostic front door, outcome-led services, and AI-search metadata. Build + lint passed; commit `2d0bb2a` pushed; production verified with updated hero/metadata.
 - **Nash Satoshi Methodology Page (2026-05-07):** Added and shipped `/methodology` explaining the 4-model crypto game-theory ranking system, with sitemap/robots/llms.txt exposure. GitHub synced at `5473082`; build/typecheck passed; production confirmed live. Content angle: trust pages are distribution assets for AI-search, not just documentation.
 

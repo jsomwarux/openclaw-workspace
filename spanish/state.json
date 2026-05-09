@@ -1,8 +1,8 @@
 {
   "started": "2026-03-02",
-  "current_day": 54,
+  "current_day": 55,
   "current_week": 9,
-  "last_lesson_date": "2026-05-07",
+  "last_lesson_date": "2026-05-08",
   "last_lesson_complete": false,
   "streak": 29,
   "lesson_streak": 30,
@@ -30,6 +30,8 @@
     "no problemo habit",
     "e/y confusion (Italian vs Spanish)"
   ],
+  "real_world_challenges_unlocked": 2,
+  "real_world_challenges_completed": [],
   "weekly_scores": [
     {
       "week": 2,
@@ -42,8 +44,6 @@
       "grade": "B+"
     }
   ],
-  "real_world_challenges_unlocked": 2,
-  "real_world_challenges_completed": [],
   "focus": "speaking and listening, not writing",
   "notes": "Agreeing/Disagreeing (Day 53). Context: Social Conversations.",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases."

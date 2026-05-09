@@ -40,3 +40,4 @@ EOF'
 2026-05-05 11:32:50 | daily-scan | queries: 6 (X credits depleted, fell back to web) | est_cost: /bin/zsh.05
 2026-05-05T15:35:34Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-05-06T11:33:00-04:00 | daily-scan | x_queries: 6 | web_queries: 10 | findings: 7 | 🔴: 0 | 🟠: 1 | messaged_jt: yes | notes: firecrawl_search unavailable: 402 insufficient credits; web_search partially unavailable via SearXNG, duckduckgo HN fallback ok
+[2026-05-08T15:34:30Z] | daily-scan | x_queries: 6 | web_queries: 15 | findings: 4 | 🔴: 0 | 🟠: 0 | messaged_jt: no

@@ -30,3 +30,8 @@ Primary offer: **AI Operations Diagnostic**
 4. Yair referral package.
 5. Marketsmith follow-up.
 6. CFS client interview only if role clears authority/comp filters.
+
+## Latest Review
+- 2026-05-08: Warm lead review saved at `memory/consulting/warm-lead-weekly-review-2026-05-08.md`.
+- Current recommendation: tomorrow's single highest-leverage move is the Altmark PC handoff/acceptance/payment/deposit text; keep stale cold email pivots below warm/referral proof work.
+- Marketsmith support asset saved at `memory/consulting/marketsmith-product-team-discovery-plan.md`; use if product team re-engages or if no response after the 5–7 business-day follow-up window.

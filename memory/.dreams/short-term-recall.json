@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-07T19:57:07.637Z",
+  "updatedAt": "2026-05-08T20:11:43.679Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -1771,22 +1771,24 @@
       "endLine": 74,
       "source": "memory",
       "snippet": "- JT corrected Eve: Action Arena is NOT the Dynasty Fantasy Football Simulator. Action Arena = fantasy football league structure + sports betting strategy. Players join leagues, get $100/week fake budget, and compete on profit through straight bets, parlays, and teasers. No real money is ever wagered. - Updated MEMORY.md and docs/agents/mistakes-log-recent.md with the correction and regression check. - Strategy note: future app-marketing plan must review existing Reddit/X/vibe systems before proposing changes, and Reddit plans must respect strict anti-self-promotion norms. ## App Marketing OS — Initial Build - Proceeded with automated app marketing priority after JT approved optimal plan. -",
-      "recallCount": 4,
+      "recallCount": 5,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 4,
+      "totalScore": 5,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T00:32:03.853Z",
-      "lastRecalledAt": "2026-05-07T19:57:07.637Z",
+      "lastRecalledAt": "2026-05-08T20:11:43.679Z",
       "queryHashes": [
         "ffbc682bf3ef",
         "519d1f44ada4",
         "c0bc4d41ab52",
-        "d9dd47e7d08c"
+        "d9dd47e7d08c",
+        "522e77ccf4e9"
       ],
       "recallDays": [
         "2026-05-06",
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-08"
       ],
       "conceptTags": [
         "100/week",
@@ -2025,19 +2027,21 @@
       "endLine": 199,
       "source": "memory",
       "snippet": "- Added `scripts/app_marketing_experiment_calendar.py` and generated `memory/app-marketing/experiment-calendar.md`. - Current experiments: Vista rating precision retest, Nash ranking/model update, Nash model-consensus slideshow. - Patched `agents/app-marketing/product-content/AGENT.md` so every generated item must map to an experiment or skip with `NO_EXPERIMENT_MATCH`. - Patched weekly App Marketing scoreboard cron to run experiment calendar after metrics/analyze and source next tests from it. ## App Marketing Durable Discovery 13:20 - Verified app-marketing scripts and experiment calendar after previous changes: registry 29 rows, metrics 28 rows, 3 active experiments. - Added durable disc",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T19:24:20.630Z",
-      "lastRecalledAt": "2026-05-07T19:57:07.637Z",
+      "lastRecalledAt": "2026-05-08T20:11:43.679Z",
       "queryHashes": [
         "c0bc4d41ab52",
-        "d9dd47e7d08c"
+        "d9dd47e7d08c",
+        "522e77ccf4e9"
       ],
       "recallDays": [
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-08"
       ],
       "conceptTags": [
         "ranking/model",

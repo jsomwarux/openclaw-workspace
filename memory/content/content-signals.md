@@ -114,3 +114,7 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 [2026-04-22] FORMAT "build-in-public first step" (empty workflow → share the start) — 3 appearances (@Rudrapraka21990 2❤️/70👁 + @MEROUA2002 0❤️/25👁 + @olusolautomates 1❤️/24👁) / ~119 combined impressions | JT has angle: yes (Construction tracker, PM triage, G-Net 11-file — all had a "first node" moment) | JT posted recently: yes (2026-04-19 build-in-public post) | action: already covered recently
 
 [2026-04-29] TOPIC Claude Code quality degradation postmortem — 3 posts / ~21,800 views | JT has angle: yes (uses Claude Code daily for all builds, has real opinions on when it breaks vs when it shines) | JT posted recently: no | action: recommend — "The postmortem everyone skimmed. Here is what actually broke and what it means for anyone shipping with Claude Code."
+## 2026-05-08
+
+[2026-05-08] FORMAT Resource roundup / artifact pack — 3 appearances / 666 engagement | JT has angle: yes (Eve/OpenClaw skills, content freshness gate, AI Operations Diagnostic, real automation playbooks) | JT posted recently: no | action: recommend — Saturday build-in-public/tool-stack post: "The resources/tools that actually changed my agent workflow this week."
+[2026-05-08] TOPIC Claude Skills / Claude Code resource packs — 3 posts / 666 engagement | JT has angle: yes (uses skills inside OpenClaw and just patched content crons with freshness gates) | JT posted recently: yes (Claude Code quality degradation logged 2026-04-29) | action: already covered

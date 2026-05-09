@@ -1,0 +1,2394 @@
+---PROFILE MacopeninSUTABA
+{
+  "user": {
+    "name": "かずなり | 生成AI活用×大喜利",
+    "username": "MacopeninSUTABA",
+    "description": "学べる大喜利 | 実務で使える生成AI活用 | 取締役COO | 社外CAIO | Qiita 1位（2024） | 上場企業経営者会 | DM返します | 公式LINE「AI活用研究会」👉",
+    "created_at": "2020-04-11T23:29:16.000Z",
+    "id": "1249117291515543552",
+    "public_metrics": {
+      "followers_count": 113849,
+      "following_count": 206,
+      "tweet_count": 40268,
+      "listed_count": 1049,
+      "like_count": 73003,
+      "media_count": 6806
+    }
+  },
+  "tweets": [
+    {
+      "id": "2052584524664426710",
+      "text": "「あなたのClaude CodeのWebFetch、実はWebをちゃんと読んでいない」が有益。\n\nClaude CodeのWebFetchがHaikuによる要約経由になっており、想定通りの情報が取れていない実態を検証している記事。\n\nこちら👉\nhttps://t.co/Q4FlyVONvH",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-08T03:01:00.000Z",
+      "conversation_id": "2052584524664426710",
+      "metrics": {
+        "likes": 9,
+        "retweets": 1,
+        "replies": 3,
+        "quotes": 1,
+        "impressions": 2185,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://zenn.dev/zhizhiarv/articles/claude-code-webfetch-haiku-summary"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2052584524664426710"
+    },
+    {
+      "id": "2052554576264372602",
+      "text": "「AI時代に価値が出るのは『作る力』ではなく『評価して回す力』」が面白い。\n\nClaude Codeで「動く」ものは誰でも作れる時代に、価値の源泉は何か。CIに3つのエージェントを並走させ、人間はラベル付けに徹する。AI時代の開発組織の在り方を言語化した決定版。\n\nこちら👉\nhttps://t.co/N48MFfVc2Y https://t.co/5V0G94TH9q",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-08T01:02:00.000Z",
+      "conversation_id": "2052554576264372602",
+      "metrics": {
+        "likes": 29,
+        "retweets": 2,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2276,
+        "bookmarks": 15
+      },
+      "urls": [
+        "https://note.com/suthio/n/n21809850230e",
+        "https://x.com/MacopeninSUTABA/status/2052554576264372602/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2052554576264372602/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2052554576264372602/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2052554576264372602/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2052554576264372602"
+    },
+    {
+      "id": "2052523286995898809",
+      "text": "大手コンサルデロイトが公開した資料が有益。\n\n海外ベンチマーク、論点整理、フレームワーク化、ステークホルダー分析、ロードマップ提示まで、コンサルのスキルが詰まっている。 \n\nこちら👉\nhttps://t.co/BPjRl3ukt4 https://t.co/cnYmTuHiXh",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-07T22:57:40.000Z",
+      "conversation_id": "2052523286995898809",
+      "metrics": {
+        "likes": 70,
+        "retweets": 9,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 9235,
+        "bookmarks": 57
+      },
+      "urls": [
+        "https://www.fsa.go.jp/common/about/research/20260403/01.pdf",
+        "https://x.com/MacopeninSUTABA/status/2052523286995898809/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2052523286995898809/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2052523286995898809/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2052523286995898809/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2052523286995898809"
+    },
+    {
+      "id": "2052013564979016040",
+      "text": "なんでGW明けたら新卒同期私以外みんな辞めてるの https://t.co/kcYNoyqLyw",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-06T13:12:13.000Z",
+      "conversation_id": "2052013564979016040",
+      "metrics": {
+        "likes": 57,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 2,
+        "impressions": 10269,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/MacopeninSUTABA/status/2052013564979016040/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2052013564979016040"
+    },
+    {
+      "id": "2051929929097584719",
+      "text": "休日に読みたいClaude関連の有益記事まとめ\n\n① Claude Codeベストプラクティス（公式）\n② Claude Codeの仕組み（公式）\n③ Claude Codeチュートリアル\n④ CLAUDE.mdベストプラックティス\n⑤ AIに得意分野を持たせる20Skills\n⑥ Claude Skillsガイド\n\n続く👉",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-06T07:39:52.000Z",
+      "conversation_id": "2051929929097584719",
+      "metrics": {
+        "likes": 227,
+        "retweets": 16,
+        "replies": 4,
+        "quotes": 2,
+        "impressions": 25036,
+        "bookmarks": 288
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2051929929097584719"
+    },
+    {
+      "id": "2051859999895548213",
+      "text": "「プログラマーのためのCPU入門」はAI時代だからこそ読み直したい。\n\nこちら👉\nhttps://t.co/KmP5A2Lzgz https://t.co/LpvVUwVZ8i",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-06T03:02:00.000Z",
+      "conversation_id": "2051859999895548213",
+      "metrics": {
+        "likes": 375,
+        "retweets": 38,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 21303,
+        "bookmarks": 282
+      },
+      "urls": [
+        "https://speakerdeck.com/forrep/introduction-to-cpus-for-programmers-is-just-right-f33bb0e0-4242-4f9b-8813-cc830709221b",
+        "https://x.com/MacopeninSUTABA/status/2051859999895548213/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2051859999895548213"
+    },
+    {
+      "id": "2051830052354998535",
+      "text": "NTTが公開した「生成モデルの基礎と応用」の資料が有益すぎる。\n\n深層生成モデル、言語モデルまで、最先端の生成AIの全体像を網羅する圧巻のボリューム。休日のまとまった時間を使って、AIの基礎をがっつりインプットしたい人に超おすすめの決定版。\n\nこちら👉\nhttps://t.co/RzxgDUQ3BX https://t.co/Fyqoh8wQzz",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-06T01:03:00.000Z",
+      "conversation_id": "2051830052354998535",
+      "metrics": {
+        "likes": 162,
+        "retweets": 16,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 12791,
+        "bookmarks": 130
+      },
+      "urls": [
+        "https://speakerdeck.com/takahashihiroshi/generative-models",
+        "https://x.com/MacopeninSUTABA/status/2051830052354998535/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2051830052354998535/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2051830052354998535/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2051830052354998535/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2051830052354998535"
+    },
+    {
+      "id": "2051799601561387048",
+      "text": "東大計数工学科の講義として無償公開されている「AWSによるクラウド入門」が有益。\n\nクラウドとは何かという原理原則から始まり、EC2の立ち上げ、ディープラーニング環境の構築、Webサービスの仕組み、サーバーレスまでを網羅。\n\nこちら👉\nhttps://t.co/lkrv2XE7KA https://t.co/qlzNgqW2nJ",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-05T23:02:00.000Z",
+      "conversation_id": "2051799601561387048",
+      "metrics": {
+        "likes": 357,
+        "retweets": 42,
+        "replies": 1,
+        "quotes": 2,
+        "impressions": 29270,
+        "bookmarks": 314
+      },
+      "urls": [
+        "https://tomomano.gitlab.io/intro-aws/#_",
+        "https://x.com/MacopeninSUTABA/status/2051799601561387048/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2051799601561387048"
+    },
+    {
+      "id": "2051506557377187945",
+      "text": "プログラミング言語5つ答えよ\n\n名倉「ホンマごめん、Codex」 https://t.co/JEDtLhtvFc",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-05T03:37:33.000Z",
+      "conversation_id": "2051506557377187945",
+      "metrics": {
+        "likes": 819,
+        "retweets": 31,
+        "replies": 18,
+        "quotes": 14,
+        "impressions": 275041,
+        "bookmarks": 56
+      },
+      "urls": [
+        "https://x.com/MacopeninSUTABA/status/2051506557377187945/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2051506557377187945"
+    },
+    {
+      "id": "2051497612088582612",
+      "text": "サイボウズの研修資料「テクニカルライティングの基本」が有益。\n\n「良いドキュメントは読み手の時間を節約し、チームの情報共有を加速させる」という視点が素晴らしい。\n\nこちら👉\nhttps://t.co/23SqOj52tB https://t.co/t81tzqtvIQ",
+      "author_id": "1249117291515543552",
+      "username": "MacopeninSUTABA",
+      "name": "かずなり | 生成AI活用×大喜利",
+      "created_at": "2026-05-05T03:02:00.000Z",
+      "conversation_id": "2051497612088582612",
+      "metrics": {
+        "likes": 141,
+        "retweets": 17,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 18014,
+        "bookmarks": 157
+      },
+      "urls": [
+        "https://speakerdeck.com/naohiro_nakata/technicalwriting",
+        "https://x.com/MacopeninSUTABA/status/2051497612088582612/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2051497612088582612/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2051497612088582612/photo/1",
+        "https://x.com/MacopeninSUTABA/status/2051497612088582612/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacopeninSUTABA/status/2051497612088582612"
+    }
+  ]
+}
+---PROFILE seelffff
+{
+  "user": {
+    "name": "self.dll",
+    "created_at": "2016-02-17T17:20:59.000Z",
+    "username": "seelffff",
+    "public_metrics": {
+      "followers_count": 5619,
+      "following_count": 191,
+      "tweet_count": 1751,
+      "listed_count": 70,
+      "like_count": 9835,
+      "media_count": 273
+    },
+    "description": "web3 developer | @Polymarket believer\n\nDM is open/Open for collabs",
+    "id": "4924481643"
+  },
+  "tweets": [
+    {
+      "id": "2052679764687675858",
+      "text": "anthropic just published a complete guide to building skills for claude.\n\nhere's what they are:\n\na skill is a folder with one file - SKILL.md\nyou explain your workflow to claude once\nand never repeat yourself again\n\nhow it works:\n\n→ level 1 - frontmatter: always in memory. up to https://t.co/139pwU199p",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-08T09:19:27.000Z",
+      "conversation_id": "2052679764687675858",
+      "metrics": {
+        "likes": 13,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 147,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://x.com/seelffff/status/2052679764687675858/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2052679764687675858"
+    },
+    {
+      "id": "2052483300053467606",
+      "text": "a principal consultant from synergetic solutions\njust published a repo that changes how claude code works.\n\nclaude-skills → 66 specialized skills for full-stack development\n\none command to install:\n/plugin marketplace add jeffallan/claude-skills\n\nwhat's inside:\n\n→ 66 skills https://t.co/xEJBIa6Nm4 https://t.co/L5XskdFx40",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-07T20:18:46.000Z",
+      "conversation_id": "2052483300053467606",
+      "metrics": {
+        "likes": 40,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 1700,
+        "bookmarks": 23
+      },
+      "urls": [
+        "https://x.com/seelffff/status/2052483300053467606/video/1",
+        "https://twitter.com/seelffff/status/2050007245216256051"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2052483300053467606"
+    },
+    {
+      "id": "2052451332536111121",
+      "text": "february 2025. karpathy posted a tweet.\n\ncalled it \"vibe coding\" -\nfully give in to the vibes and forget the code even exists.\n\ncalled it a throwaway thought.\n\none year later:\n\n→ 46% of all new code on github is AI-generated\n→ 92% of developers use AI every single day\n→ https://t.co/5S4wd2Amch",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-07T18:11:45.000Z",
+      "conversation_id": "2052451332536111121",
+      "metrics": {
+        "likes": 20,
+        "retweets": 1,
+        "replies": 7,
+        "quotes": 0,
+        "impressions": 373,
+        "bookmarks": 13
+      },
+      "urls": [
+        "https://x.com/seelffff/status/2052451332536111121/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2052451332536111121"
+    },
+    {
+      "id": "2052032309709128190",
+      "text": "7 repos to actually learn AI in 2026\n\neverything you need is free.\n\n1. microsoft/generative-ai-for-beginners → GenAI from zero\n21 structured lessons. prompting, RAG, agents, fine-tuning.\nbuilt by microsoft cloud advocates.\n⭐ 98,000 | https://t.co/E1h9nGx8WS\n\n2. https://t.co/oNlyzUPrv6",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-06T14:26:42.000Z",
+      "conversation_id": "2052032309709128190",
+      "metrics": {
+        "likes": 131,
+        "retweets": 22,
+        "replies": 17,
+        "quotes": 0,
+        "impressions": 6457,
+        "bookmarks": 151
+      },
+      "urls": [
+        "http://github.com/microsoft/generative-ai-for-beginners",
+        "https://x.com/seelffff/status/2052032309709128190/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2052032309709128190"
+    },
+    {
+      "id": "2051759944509333909",
+      "text": "a bot on polymarket runs 24/7\n\nRN1: $14,850,000 volume. $314,000 profit.\nbonereaper. bonereader. sovereign2013.\nnone of them manually click buy.\n\ni looked at how it works\n\npolymarket runs BTC markets every 15 minutes\n96 per day. the bot scans all of them.\n\n→ finds YES mispriced https://t.co/Pvd30ErxUV https://t.co/ZOcLvI0Amb",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-05T20:24:25.000Z",
+      "conversation_id": "2051759944509333909",
+      "metrics": {
+        "likes": 32,
+        "retweets": 0,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 1543,
+        "bookmarks": 12
+      },
+      "urls": [
+        "https://x.com/seelffff/status/2051759944509333909/video/1",
+        "https://twitter.com/Predictr_Trade/status/2051712756491878411"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2051759944509333909"
+    },
+    {
+      "id": "2051650051428983234",
+      "text": "10 repos that cut your ai agent token bill by up to 80%\n\n1. microsoft/LLMLingua → cuts prompt size by up to 95%\ncompresses prompts before the api call. 20x compression.\npublished at EMNLP + ACL. near-zero quality loss.\n6,100 stars\nhttps://t.co/fFME2GyOJJ\n\n2. mem0ai/mem0 → https://t.co/CB5uNtHoZP https://t.co/L5XskdEZes",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-05T13:07:44.000Z",
+      "conversation_id": "2051650051428983234",
+      "metrics": {
+        "likes": 310,
+        "retweets": 47,
+        "replies": 22,
+        "quotes": 2,
+        "impressions": 35277,
+        "bookmarks": 550
+      },
+      "urls": [
+        "http://github.com/microsoft/LLMLingua",
+        "https://x.com/seelffff/status/2051650051428983234/video/1",
+        "https://twitter.com/seelffff/status/2050007245216256051"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2051650051428983234"
+    },
+    {
+      "id": "2051341774715593137",
+      "text": "sky sports pundits have been analyzing Chelsea for decades.\n\nCountryside has been on @Polymarket for 6 months.\n\nright now he has $975,406 saying Chelsea loses today.\nbought NO at 34.1¢.\nalready up +193%.\n\ntotal profit since november 2025: +$1,449,231.\n\nand while every football https://t.co/OXyNnTTQZR",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-04T16:42:45.000Z",
+      "conversation_id": "2051341774715593137",
+      "metrics": {
+        "likes": 59,
+        "retweets": 4,
+        "replies": 11,
+        "quotes": 0,
+        "impressions": 1935,
+        "bookmarks": 25
+      },
+      "urls": [
+        "https://x.com/seelffff/status/2051341774715593137/video/1"
+      ],
+      "mentions": [
+        "Polymarket"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2051341774715593137"
+    },
+    {
+      "id": "2051327163048005653",
+      "text": "people think building an ai agent requires:\n→ python backend\n→ cloud server\n→ $200/month in api keys\n→ 6 months of learning\n\nit requires:\n→ claude pro\n→ 1 markdown file\n→ 25 lines of code\n\nbuilt in one afternoon\n\nlike + bookmark https://t.co/f2xEQMKAoV https://t.co/L5XskdEZes",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-04T15:44:42.000Z",
+      "conversation_id": "2051327163048005653",
+      "metrics": {
+        "likes": 451,
+        "retweets": 40,
+        "replies": 27,
+        "quotes": 0,
+        "impressions": 42515,
+        "bookmarks": 467
+      },
+      "urls": [
+        "https://x.com/seelffff/status/2051327163048005653/video/1",
+        "https://twitter.com/seelffff/status/2050007245216256051"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2051327163048005653"
+    },
+    {
+      "id": "2051070938293153805",
+      "text": "when I found all of Google's internal tools in one repository on the web https://t.co/VrAeYMNUkD https://t.co/nDITpPfWmL",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-03T22:46:33.000Z",
+      "conversation_id": "2051070938293153805",
+      "metrics": {
+        "likes": 30,
+        "retweets": 2,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 4352,
+        "bookmarks": 16
+      },
+      "urls": [
+        "https://x.com/seelffff/status/2051070938293153805/video/1",
+        "https://twitter.com/seelffff/status/2051065599414128966"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2051070938293153805"
+    },
+    {
+      "id": "2051065599414128966",
+      "text": "ex-Googlers published a map of every internal tool Google uses\n\nand its open-source equivalent.\n\n15,200 stars. 1,100 forks. 99 contributors.\n\n→ Borg = Kubernetes\n→ Spanner = CockroachDB\n→ Colossus = HDFS\n→ Dremel = DuckDB / Presto\n→ Chubby = Zookeeper\n→ Stubby = gRPC\n→ https://t.co/bMcYQ0EF49 https://t.co/L5XskdFx40",
+      "author_id": "4924481643",
+      "username": "seelffff",
+      "name": "self.dll",
+      "created_at": "2026-05-03T22:25:20.000Z",
+      "conversation_id": "2051065599414128966",
+      "metrics": {
+        "likes": 1541,
+        "retweets": 132,
+        "replies": 26,
+        "quotes": 4,
+        "impressions": 229962,
+        "bookmarks": 2622
+      },
+      "urls": [
+        "https://x.com/seelffff/status/2051065599414128966/video/1",
+        "https://twitter.com/seelffff/status/2050007245216256051"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/seelffff/status/2051065599414128966"
+    }
+  ]
+}
+---PROFILE zaimiri
+{
+  "user": {
+    "name": "zaimiri",
+    "id": "1378756322041196552",
+    "public_metrics": {
+      "followers_count": 55038,
+      "following_count": 5002,
+      "tweet_count": 122503,
+      "listed_count": 1493,
+      "like_count": 177666,
+      "media_count": 4575
+    },
+    "description": "Gave my life to AI • I can help your business get ready for AI with a Company Brain",
+    "username": "zaimiri",
+    "created_at": "2021-04-04T17:08:23.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2052684973220470898",
+      "text": "For most people Claude Cowork is the best option to start automating tasks.\n\n1. Pick a task you do every week\n2. Ask Claude Cowork to help you do that task\n3. Reiterate, going back and forth until perfected\n4. Tell Cowork to turn it into a skill\n5. Now you can run it weekly\n\nThe https://t.co/fHUF8mcfZD",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-08T09:40:09.000Z",
+      "conversation_id": "2052684973220470898",
+      "metrics": {
+        "likes": 6,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 127,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/eng_khairallah1/status/2052684086414852546"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052684973220470898"
+    },
+    {
+      "id": "2052491166529249431",
+      "text": "Umia just launched a really cool tool.\n\nYou can drop any Github Repo you've been working on and see the value.\n\nGot a decent score here (58/100) for a website I've build.\n\nApparently it's worth $700k\n\nWhere do I cash out??????\n\nOn a serious note @umia_finance is building https://t.co/W1TI24aOtD https://t.co/0kagiDKa0S",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-07T20:50:02.000Z",
+      "conversation_id": "2052491166529249431",
+      "metrics": {
+        "likes": 31,
+        "retweets": 2,
+        "replies": 12,
+        "quotes": 0,
+        "impressions": 1566,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/zaimiri/status/2052491166529249431/photo/1",
+        "https://twitter.com/umia_finance/status/2052358845410803929"
+      ],
+      "mentions": [
+        "umia_finance"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052491166529249431"
+    },
+    {
+      "id": "2052462736865669153",
+      "text": "the most starred repo on GitHub has zero code.\n\nbuild-your-own-x.\n\n498,000 stars.\n\nits a list of tutorials that teach you to rebuild things from scratch.\n\n- build your own database.\n- build your own compiler.\n- build your own operating system.\n\nhalf a million people starred it. https://t.co/Zu9CLbSjbA",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-07T18:57:04.000Z",
+      "conversation_id": "2052462736865669153",
+      "metrics": {
+        "likes": 34,
+        "retweets": 1,
+        "replies": 11,
+        "quotes": 0,
+        "impressions": 505,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/zaimiri/status/2052462736865669153/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052462736865669153"
+    },
+    {
+      "id": "2052410392673239422",
+      "text": "Closed another automation client.\n\nThey had 2 people doing onboarding by hand.\n\nSame cycle every week:\n\n&gt; collect intake answers\n&gt; chase missing files\n&gt; create CRM records\n&gt; schedule content\n&gt; build the research brief\n\nI built one agent to do the first pass.\n\nOne form submission",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-07T15:29:04.000Z",
+      "conversation_id": "2052410392673239422",
+      "metrics": {
+        "likes": 28,
+        "retweets": 0,
+        "replies": 11,
+        "quotes": 0,
+        "impressions": 425,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052410392673239422"
+    },
+    {
+      "id": "2052393253274571058",
+      "text": "If you took just 15 minutes in January to learn Claude Skills.\n\nYou would be ahead of 99% of the people here.\n\nInstead, you're still here asking \"how do I start?\" https://t.co/jSZvZi86QC",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-07T14:20:57.000Z",
+      "conversation_id": "2052393253274571058",
+      "metrics": {
+        "likes": 26,
+        "retweets": 0,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 701,
+        "bookmarks": 8
+      },
+      "urls": [
+        "https://twitter.com/zaimiri/status/2007512317785936193"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052393253274571058"
+    },
+    {
+      "id": "2052387553534468316",
+      "text": "75K agents on BNB Chain.\n\nThat number matters because ERC-8004 is not another AI narrative.\n\nIt is agent identity.\n\nA registry where autonomous agents can prove:\n\n- who they are\n- what they can do\n- how other agents should route trust\n\nThe onchain AI Agent revolution is already",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-07T13:58:18.000Z",
+      "conversation_id": "2052387553534468316",
+      "metrics": {
+        "likes": 51,
+        "retweets": 1,
+        "replies": 8,
+        "quotes": 0,
+        "impressions": 1603,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052387553534468316"
+    },
+    {
+      "id": "2052351247374753938",
+      "text": "This week I automated client reporting.\n\nUsed to spend 90 minutes every Friday manually pulling data from 4 tools, formatting it, sending it.\n\nNow:\n\n• Data pulls automatically at 8am\n• Formats into a clean summary\n• Lands in my inbox ready to send\n\nFriday mornings are free",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-07T11:34:02.000Z",
+      "conversation_id": "2052351247374753938",
+      "metrics": {
+        "likes": 52,
+        "retweets": 0,
+        "replies": 27,
+        "quotes": 0,
+        "impressions": 764,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052351247374753938"
+    },
+    {
+      "id": "2052316154543432105",
+      "text": "sometimes life is just good.\n\nno lesson.\nno angle.\nnothing to do.\n\ncoffee tastes right.\nwork feels light.\nthe week starts making sense again.\n\nnot everything needs to be optimized (hard in this AI age).\n\nsome days you just notice you're happy... and let that be enough. https://t.co/8zyjAekM50",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-07T09:14:36.000Z",
+      "conversation_id": "2052316154543432105",
+      "metrics": {
+        "likes": 136,
+        "retweets": 1,
+        "replies": 85,
+        "quotes": 0,
+        "impressions": 1781,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/zaimiri/status/2052316154543432105/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052316154543432105"
+    },
+    {
+      "id": "2052086506504986631",
+      "text": "This GitHub repo is INSANE.\n\nIt turns your coding agent into an entire agency.\n\nNot a dashboard.\nNot another AI wrapper.\n\nA folder of specialist agents you can install.\n\nIt gives your agent:\n\n- Frontend builders\n- UX researchers\n- Paid media operators\n- Security reviewers\n- https://t.co/Ur90hpKsLK",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-06T18:02:03.000Z",
+      "conversation_id": "2052086506504986631",
+      "metrics": {
+        "likes": 24,
+        "retweets": 1,
+        "replies": 14,
+        "quotes": 0,
+        "impressions": 473,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://x.com/zaimiri/status/2052086506504986631/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052086506504986631"
+    },
+    {
+      "id": "2052057046854307863",
+      "text": "https://t.co/dqEuLwTYLu",
+      "author_id": "1378756322041196552",
+      "username": "zaimiri",
+      "name": "zaimiri",
+      "created_at": "2026-05-06T16:05:00.000Z",
+      "conversation_id": "2052057046854307863",
+      "metrics": {
+        "likes": 41,
+        "retweets": 0,
+        "replies": 18,
+        "quotes": 0,
+        "impressions": 750,
+        "bookmarks": 15
+      },
+      "urls": [
+        "http://x.com/i/article/2052051268575596549"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/zaimiri/status/2052057046854307863"
+    }
+  ]
+}
+---PROFILE sheilateozy
+{
+  "user": {
+    "username": "sheilateozy",
+    "created_at": "2026-05-02T13:57:16.000Z",
+    "description": "made 500k building my solo ai consulting practice in private, now i'm building in public. @Columbia, ex @Apple, 300K readers from my ai writing on @Medium",
+    "id": "2050575226547933184",
+    "name": "sheila",
+    "public_metrics": {
+      "followers_count": 1,
+      "following_count": 24,
+      "tweet_count": 3,
+      "listed_count": 0,
+      "like_count": 2,
+      "media_count": 0
+    }
+  },
+  "tweets": [
+    {
+      "id": "2051483575539962223",
+      "text": "i thought my first tweet to anyone on this account had to be to @jxnlco. i just wanted to say that you were my biggest inspiration to start ai consulting, and you've unknowingly helped me so much. i actually bought your consulting course way back when you were still doing it! \n\ni",
+      "author_id": "2050575226547933184",
+      "username": "sheilateozy",
+      "name": "sheila",
+      "created_at": "2026-05-05T02:06:13.000Z",
+      "conversation_id": "2051483575539962223",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [
+        "jxnlco"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/sheilateozy/status/2051483575539962223"
+    },
+    {
+      "id": "2051471411139772578",
+      "text": "hello world! i recently paid 6 figures to quit my job to do ai consulting full-time (yes, i had to pay to quit my job) 🤡\n\ni scaled my solo ai consulting from $0 to $500k profits in a pretty short amount of time by helping founders get $1M series A funding, and working with 200M",
+      "author_id": "2050575226547933184",
+      "username": "sheilateozy",
+      "name": "sheila",
+      "created_at": "2026-05-05T01:17:53.000Z",
+      "conversation_id": "2051471411139772578",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 17,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/sheilateozy/status/2051471411139772578"
+    }
+  ]
+}
+---PROFILE saen_dev
+{
+  "user": {
+    "description": "Automating the boring stuff and sharing the insights\nbuilding : LumaSleep , Space Ai",
+    "public_metrics": {
+      "followers_count": 1388,
+      "following_count": 240,
+      "tweet_count": 23870,
+      "listed_count": 11,
+      "like_count": 1742,
+      "media_count": 99
+    },
+    "username": "saen_dev",
+    "id": "1718576015801204736",
+    "name": "Saeed Anwar",
+    "created_at": "2023-10-29T10:30:56.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2052629268044173470",
+      "text": "Manual first, automate later is actually the right call. You learn edge cases from doing it by hand that no automation spec would ever catch. https://t.co/2rYi6fF2sd",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:58:48.000Z",
+      "conversation_id": "2052629268044173470",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 26,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052426118288826451"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052629268044173470"
+    },
+    {
+      "id": "2052629233097167125",
+      "text": "The \"start marketing before launch\" line is the one most builders read, agree with, and still don't do. Your first 10 users should exist before a single line of code. https://t.co/KXmP9snGVD",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:58:39.000Z",
+      "conversation_id": "2052629233097167125",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 19,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052399201708060772"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052629233097167125"
+    },
+    {
+      "id": "2052629198074781980",
+      "text": "The reverse is also true. People can feel when you actually believe what you're saying. That's why the awkward authentic post outperforms the polished one. https://t.co/Opd1nWe03G",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:58:31.000Z",
+      "conversation_id": "2052629198074781980",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052423095194185908"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052629198074781980"
+    },
+    {
+      "id": "2052629163081642017",
+      "text": "13 paying users in 3 weeks is a real signal. The next 87 won't come from the same channel as the first 13 though. That's where most people get stuck. https://t.co/uwIjqcf7Ez",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:58:23.000Z",
+      "conversation_id": "2052629163081642017",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 27,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052512766112469322"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052629163081642017"
+    },
+    {
+      "id": "2052629128138965469",
+      "text": "You don't have to love it. Building in public is a distribution strategy, not a personality trait. Use it when it works, go quiet when it doesn't. https://t.co/L7KP3CUyjD",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:58:14.000Z",
+      "conversation_id": "2052629128138965469",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052399881013035146"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052629128138965469"
+    },
+    {
+      "id": "2052629093166833831",
+      "text": "Consistency with a 9-5 is a completely different game than full-time builders. The constraint forces you to pick what actually matters every single day. https://t.co/5apwlZEeHp",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:58:06.000Z",
+      "conversation_id": "2052629093166833831",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052429789928079610"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052629093166833831"
+    },
+    {
+      "id": "2052629058169581709",
+      "text": "Smart pivot in attention. Impressions pay once, apps can pay forever. Most creators never make that shift because the vanity metrics feel too good. https://t.co/WkXkSB1xv9",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:57:58.000Z",
+      "conversation_id": "2052629058169581709",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052450391040618567"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052629058169581709"
+    },
+    {
+      "id": "2052629023121965251",
+      "text": "350 signups in a week with $50 MRR means conversion is the only lever that matters right now. Even moving it from 1% to 3% changes your entire trajectory. https://t.co/zFaI1ZLISq",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:57:49.000Z",
+      "conversation_id": "2052629023121965251",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052513043448262901"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052629023121965251"
+    },
+    {
+      "id": "2052628988162392125",
+      "text": "The interesting part isn't that they allow AI. It's that they're now testing whether you know which AI to use and when to stop trusting it. https://t.co/rKrzpAmZbU",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:57:41.000Z",
+      "conversation_id": "2052628988162392125",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052504364024013172"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052628988162392125"
+    },
+    {
+      "id": "2052628952833790281",
+      "text": "The jump from \"building\" to \"sending to beta testers\" is where most solo devs stall for months. Shipping the imperfect version is the actual product skill. https://t.co/AkfOf7Hxf4",
+      "author_id": "1718576015801204736",
+      "username": "saen_dev",
+      "name": "Saeed Anwar",
+      "created_at": "2026-05-08T05:57:33.000Z",
+      "conversation_id": "2052628952833790281",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/i/status/2052505018314719696"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/saen_dev/status/2052628952833790281"
+    }
+  ]
+}
+---PROFILE intellinovus
+{
+  "user": {
+    "id": "1286152332204359680",
+    "created_at": "2020-07-23T04:13:21.000Z",
+    "name": "Intellinovus",
+    "description": "Committed to unlocking business potential through cutting-edge technology to deliver forward-thinking solutions that empower innovation and positive revenue.",
+    "public_metrics": {
+      "followers_count": 30,
+      "following_count": 59,
+      "tweet_count": 352,
+      "listed_count": 1,
+      "like_count": 533,
+      "media_count": 11
+    },
+    "username": "intellinovus"
+  },
+  "tweets": [
+    {
+      "id": "2052550313559609738",
+      "text": "SMB life without a big IT team means AI tools often create more chaos than calm. \n\nWe get the integration headaches. \n\nHere's the fix. \n\nConnect email, CRM, and accounting like one smooth highway so data flows automatically and rarely breaks when tools change.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-08T00:45:03.000Z",
+      "conversation_id": "2052550313559609738",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2052550313559609738"
+    },
+    {
+      "id": "2052217107023020240",
+      "text": "Lots of SMBs try AI pilots that fizzle out. \n\nThe real pain is weak results and still needing more hires. \n\nWhat helps most? \n\nAdd basic fallbacks for failed tasks, easy human checks, and track actual outcomes not just activity.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-07T02:41:01.000Z",
+      "conversation_id": "2052217107023020240",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2052217107023020240"
+    },
+    {
+      "id": "2052176769415795093",
+      "text": "At our company we see young founders battling unreliable agent orchestration and rising costs. \n\nIt's a real bummer for them.\n\nMulti-agent systems need better governance.  \n\nThey also need fallbacks to deliver automation that runs without constant monitoring.\n\nNeed help? DM us.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-07T00:00:44.000Z",
+      "conversation_id": "2052176769415795093",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2052176769415795093"
+    },
+    {
+      "id": "2051865536120660341",
+      "text": "For SMBs without IT teams, AI hype meets integration headaches. \n\nWe help cut through brittle setups. \n\nKey wins: connecting email, CRM, and accounting into one flow. \n\nLess context switching, more predictable results without extra hires.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-06T03:24:00.000Z",
+      "conversation_id": "2051865536120660341",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2051865536120660341"
+    },
+    {
+      "id": "2051829405077405978",
+      "text": "Even with widespread AI use fragmented stacks keep founders in 80-hour weeks. \n\nEmbedded context-aware agents and hyperautomation are unlocking real-time decisions and better orchestration results.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-06T01:00:25.000Z",
+      "conversation_id": "2051829405077405978",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2051829405077405978"
+    },
+    {
+      "id": "2051799267203764619",
+      "text": "This week’s AI Signal Brief is about the messy middle of AI workflow automation.\n\nn8n, Codex, OpenAI on AWS, agent memory, Quick Flows, and why implementation still has teeth.\n\nFull issue here:\nhttps://t.co/jOHVpgoTYd https://t.co/faoSfp6nbw",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-05T23:00:40.000Z",
+      "conversation_id": "2051799267203764619",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 29,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://osishmael.substack.com/p/the-ai-schism",
+        "https://x.com/intellinovus/status/2051799267203764619/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2051799267203764619"
+    },
+    {
+      "id": "2051633260313129080",
+      "text": "If an AI agent can take action, it needs boundaries.\n\nIf it has memory, it needs structure.\n\nIf it touches customers, it needs accountability.\n\nOtherwise you have not built an agent.\n\nYou have built a very expensive intern with root access.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-05T12:01:01.000Z",
+      "conversation_id": "2051633260313129080",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2051633260313129080"
+    },
+    {
+      "id": "2051511957056798998",
+      "text": "Small biz means small team + endless tasks\n\nYou as the owner losing nights to manual ops. \n\nTop 3 automation wins for you.. invoice chasing, customer follow-ups, and inventory alerts. \n\nReliable agents free you to grow the business instead of running it manually.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-05T03:59:00.000Z",
+      "conversation_id": "2051511957056798998",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2051511957056798998"
+    },
+    {
+      "id": "2051451931218817118",
+      "text": "The AI is your enthusiastic teammate, not the architect.\n\nIt can help you move faster.\n\nIt can also make confident mistakes at impressive speed.\n\nYou still need to steer the ship.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-05T00:00:29.000Z",
+      "conversation_id": "2051451931218817118",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2051451931218817118"
+    },
+    {
+      "id": "2051119669709250926",
+      "text": "One AI workflow worth testing:\n\nUpload document → extract key fields → identify missing info → generate summary → route to human review → create report.\n\nUseful for proposals, invoices, meeting notes, sales briefs, and internal reports.\n\nBoring?\n\nYes.\n\nValuable?\n\nAlso yes.",
+      "author_id": "1286152332204359680",
+      "username": "intellinovus",
+      "name": "Intellinovus",
+      "created_at": "2026-05-04T02:00:11.000Z",
+      "conversation_id": "2051119669709250926",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/intellinovus/status/2051119669709250926"
+    }
+  ]
+}
+---PROFILE ordonez_adan
+{
+  "user": {
+    "name": "Adan Ordonez",
+    "created_at": "2014-10-07T17:41:15.000Z",
+    "id": "2843928804",
+    "public_metrics": {
+      "followers_count": 1198,
+      "following_count": 491,
+      "tweet_count": 2600,
+      "listed_count": 14,
+      "like_count": 5622,
+      "media_count": 345
+    },
+    "username": "ordonez_adan",
+    "description": "Sharing AI strategy for lawyers and law students @UChicagoLaw | ex @Phillies"
+  },
+  "tweets": [
+    {
+      "id": "2052010659366224176",
+      "text": "It seems to me that an “AI law firm” is just a law firm with lawyers using AI. \n\nSo if most law firms now use AI, wouldn’t they all be “AI law firms”? \n\nSeems like a marketing ploy to me. I like it, but at the end of the day a lawyer is doing the work.",
+      "author_id": "2843928804",
+      "username": "ordonez_adan",
+      "name": "Adan Ordonez",
+      "created_at": "2026-05-06T13:00:40.000Z",
+      "conversation_id": "2052010659366224176",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 180,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/ordonez_adan/status/2052010659366224176"
+    },
+    {
+      "id": "2050862972155871246",
+      "text": "I'm taking \"AI and the Future of Law\" this quarter, and one of the class discussions was whether lawyers who use AI have a competitive advantage over lawyers who don't. My answer was that, initially, yes, but not once every lawyer is using it.\n\nIf you take two lawyers at the same",
+      "author_id": "2843928804",
+      "username": "ordonez_adan",
+      "name": "Adan Ordonez",
+      "created_at": "2026-05-03T09:00:10.000Z",
+      "conversation_id": "2050862972155871246",
+      "metrics": {
+        "likes": 43,
+        "retweets": 6,
+        "replies": 13,
+        "quotes": 2,
+        "impressions": 13824,
+        "bookmarks": 27
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/ordonez_adan/status/2050862972155871246"
+    },
+    {
+      "id": "2050561022134784368",
+      "text": "The AI workflows that actually work long-term are the ones that failed first.\n\nOne example: I built a document workflow for a property management company and didn't account for county-specific formatting. One county came back and said the formatting for one of the files was",
+      "author_id": "2843928804",
+      "username": "ordonez_adan",
+      "name": "Adan Ordonez",
+      "created_at": "2026-05-02T13:00:19.000Z",
+      "conversation_id": "2050561022134784368",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 207,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/ordonez_adan/status/2050561022134784368"
+    },
+    {
+      "id": "2050545491050455402",
+      "text": "It's not overlooked because because the tech isn't there yet. Doesn't work well enough to make a meaningful difference in a business and anyone who says it does is trying to sell a 💩 version to make a quick buck.  \n\nI tried to set a voice agent up for ~6 months for a tree https://t.co/AjZkv5e7yK",
+      "author_id": "2843928804",
+      "username": "ordonez_adan",
+      "name": "Adan Ordonez",
+      "created_at": "2026-05-02T11:58:37.000Z",
+      "conversation_id": "2050545491050455402",
+      "metrics": {
+        "likes": 8,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 2454,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/codie_sanchez/status/2050235563706310886"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/ordonez_adan/status/2050545491050455402"
+    },
+    {
+      "id": "2050334732815090008",
+      "text": "Does @harvey  still have a Lexis connection? Trying to use it through my school account, but I can't seem to find it.",
+      "author_id": "2843928804",
+      "username": "ordonez_adan",
+      "name": "Adan Ordonez",
+      "created_at": "2026-05-01T22:01:08.000Z",
+      "conversation_id": "2050334732815090008",
+      "metrics": {
+        "likes": 15,
+        "retweets": 0,
+        "replies": 4,
+        "quotes": 1,
+        "impressions": 45262,
+        "bookmarks": 9
+      },
+      "urls": [],
+      "mentions": [
+        "harvey"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/ordonez_adan/status/2050334732815090008"
+    },
+    {
+      "id": "2050198704825729394",
+      "text": "I had a discussion in one of my classes last quarter where my professor said that AI will uncover a \"latent\" legal market.\n\nThis means that people who would not otherwise consume legal services will now do so because the services are more accessible than before.\n\nI think that's https://t.co/TFnekKU2g6",
+      "author_id": "2843928804",
+      "username": "ordonez_adan",
+      "name": "Adan Ordonez",
+      "created_at": "2026-05-01T13:00:36.000Z",
+      "conversation_id": "2050198704825729394",
+      "metrics": {
+        "likes": 4,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 491,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/ordonez_adan/status/2050198704825729394/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/ordonez_adan/status/2050198704825729394"
+    }
+  ]
+}
+---PROFILE RealDealCPA
+{
+  "user": {
+    "description": "Business | Finance | Tech | Ai  | Debate |\nOpinions are my own |\nAlways have fun ! |\nConnect with good people! |\nWork hard |\nFollow to get ahead !!",
+    "name": "VR",
+    "id": "1696277198804525056",
+    "public_metrics": {
+      "followers_count": 3165,
+      "following_count": 2029,
+      "tweet_count": 28142,
+      "listed_count": 13,
+      "like_count": 62576,
+      "media_count": 3174
+    },
+    "created_at": "2023-08-28T21:43:04.000Z",
+    "username": "RealDealCPA"
+  },
+  "tweets": [
+    {
+      "id": "2052588520368132326",
+      "text": "Which do I choose ? https://t.co/YgchXQ20F3",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-08T03:16:53.000Z",
+      "conversation_id": "2052588520368132326",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 38,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/RealDealCPA/status/2052588520368132326/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052588520368132326"
+    },
+    {
+      "id": "2052540438955909489",
+      "text": "Retention math beats ad spend: 120 clients x $500 monthly x 52% margin = $31,200 GP. If monthly churn drops from 6% to 4%, you retain 2.4 more clients and protect about $1,248 GP each month. Build a 30 day save offer before running new ads.",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-08T00:05:49.000Z",
+      "conversation_id": "2052540438955909489",
+      "metrics": {
+        "likes": 2,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 35,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052540438955909489"
+    },
+    {
+      "id": "2052521333930479751",
+      "text": "Another one ! https://t.co/f5kBfwoOqN",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-07T22:49:54.000Z",
+      "conversation_id": "2052521333930479751",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 17,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/RealDealCPA/status/2052521261276799236"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052521333930479751"
+    },
+    {
+      "id": "2052500540022505643",
+      "text": "Claude got me locked in right now... \n\nConnected to outlook, excel, notion, word\n\nThis is becoming a problem. Why you ask... \n\nBecause I don't want to be stuck with a single service provider, but on the other hand, quality and ease of use come first. \n\nCan I build it out myself,",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-07T21:27:17.000Z",
+      "conversation_id": "2052500540022505643",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 38,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052500540022505643"
+    },
+    {
+      "id": "2052425971962204575",
+      "text": "Workflow: AI pulls payroll register, EFTPS confirmations, and liability accounts after each run, then flags deposit mismatches before due dates. One 40-employee firm cut payroll tax penalties from 6 per year to 0 and reduced payroll close review time 72%.",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-07T16:30:58.000Z",
+      "conversation_id": "2052425971962204575",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 18,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052425971962204575"
+    },
+    {
+      "id": "2052389656705085758",
+      "text": "Outta here ! https://t.co/47zX2Ge8Zd",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-07T14:06:40.000Z",
+      "conversation_id": "2052389656705085758",
+      "metrics": {
+        "likes": 4,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 1,
+        "impressions": 144,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/RealDealCPA/status/2052389656705085758/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052389656705085758"
+    },
+    {
+      "id": "2052358031397077342",
+      "text": "2026 business mileage deduction is 72.5 cents per mile. If you use standard mileage, keep a contemporaneous log with date, business purpose, destination, and miles. Commuting miles are not deductible, and parking and tolls can be added separately.",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-07T12:01:00.000Z",
+      "conversation_id": "2052358031397077342",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 29,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052358031397077342"
+    },
+    {
+      "id": "2052178054714216874",
+      "text": "Use a contribution-floor rule before offering discounts. If a job sells for $2,000 at 55% gross margin, GP is $1,100. A 15% discount drops price to $1,700 and GP to $800, a 27% GP hit. Require manager approval for any discount over 5% to protect growth cash.",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-07T00:05:50.000Z",
+      "conversation_id": "2052178054714216874",
+      "metrics": {
+        "likes": 3,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 91,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052178054714216874"
+    },
+    {
+      "id": "2052155052983230940",
+      "text": "Whatever you do, do it 💯%!",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-06T22:34:26.000Z",
+      "conversation_id": "2052155052983230940",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 24,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052155052983230940"
+    },
+    {
+      "id": "2052063530241683680",
+      "text": "Workflow: AI parses IRS and state notices, matches each to return data, drafts response packets, and auto-assigns deadline tasks. One firm cut notice handling time from 3.2 hours to 38 minutes per case and reduced missed-response penalties to zero.",
+      "author_id": "1696277198804525056",
+      "username": "RealDealCPA",
+      "name": "VR",
+      "created_at": "2026-05-06T16:30:45.000Z",
+      "conversation_id": "2052063530241683680",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 94,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RealDealCPA/status/2052063530241683680"
+    }
+  ]
+}
+---PROFILE JedAIFlow
+{
+  "user": {
+    "created_at": "2013-06-08T23:01:40.000Z",
+    "username": "JedAIFlow",
+    "description": "Building the future with AI tools & automation 🤖 | Powering workflows with JedAI → https://t.co/dkDvWWKZ92",
+    "public_metrics": {
+      "followers_count": 393,
+      "following_count": 279,
+      "tweet_count": 519,
+      "listed_count": 1,
+      "like_count": 440,
+      "media_count": 45
+    },
+    "id": "1494101538",
+    "name": "JedAIFlow"
+  },
+  "tweets": [
+    {
+      "id": "2052389192857006205",
+      "text": "Your leads browse your pricing page and FAQ, but turning that into a reply-ready brief takes time you do not have.\n\nA browser agent reads the public source, drafts a qualification brief, and pauses for human approval before anything goes out. https://t.co/rTGT6ebKsU",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-07T14:04:49.000Z",
+      "conversation_id": "2052389192857006205",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 35,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/JedAIFlow/status/2052389192857006205/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2052389192857006205"
+    },
+    {
+      "id": "2052063800744984843",
+      "text": "One thing I keep noticing with useful AI agents: the win is not “autonomy.”\n\nIt is fast capture → clean intake → clear summary → human fallback.\n\nFor small service businesses, that workflow can matter more than fancy demos because it keeps real leads from going cold.",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-06T16:31:50.000Z",
+      "conversation_id": "2052063800744984843",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2052063800744984843"
+    },
+    {
+      "id": "2052027001142165830",
+      "text": "Browser agents should research, not reply alone.\n\nA lightweight workflow turns public pages into a reply-ready brief—human review included. https://t.co/TdEWkcJKri",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-06T14:05:36.000Z",
+      "conversation_id": "2052027001142165830",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 25,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/JedAIFlow/status/2052027001142165830/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2052027001142165830"
+    },
+    {
+      "id": "2051701701292273886",
+      "text": "Practical AI agent note:\n\nThe useful version for small businesses is not “autonomy.”\n\nIt is a tight handoff:\n1. answer immediately\n2. ask the 4 intake questions\n3. summarize cleanly\n4. route exceptions to a human\n\nThat boring workflow is where the money is.",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-05T16:32:59.000Z",
+      "conversation_id": "2051701701292273886",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2051701701292273886"
+    },
+    {
+      "id": "2051664468665368831",
+      "text": "Browser agents should research, not act alone.\n\nA lightweight workflow gathers public job details and turns them into a human-reviewed prep packet before anyone writes a reply. https://t.co/1fqCK0nnlj",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-05T14:05:02.000Z",
+      "conversation_id": "2051664468665368831",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 41,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/JedAIFlow/status/2051664468665368831/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2051664468665368831"
+    },
+    {
+      "id": "2051339262717550683",
+      "text": "Small-business AI lesson I keep seeing:\n\nThe valuable “agent” is usually a tight intake workflow: answer fast, ask the right 5 questions, and hand the owner a clean next step.\n\nWindow cleaning example: https://t.co/TX5T1DtLZd",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-04T16:32:46.000Z",
+      "conversation_id": "2051339262717550683",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://jedaiflow.com/blog/window-cleaning-missed-calls.html"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2051339262717550683"
+    },
+    {
+      "id": "2051302823535521966",
+      "text": "Your leads come in scattered: email, voice note, missed call, screenshot. Nobody has time to sort them.\n\nA lightweight AI workflow turns that chaos into a clean same-day action list—with a human gate before anything goes out. https://t.co/zWa7zaaerW",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-04T14:07:59.000Z",
+      "conversation_id": "2051302823535521966",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 28,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/JedAIFlow/status/2051302823535521966/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2051302823535521966"
+    },
+    {
+      "id": "2051090823563858254",
+      "text": "Your customer sends a text, a voicemail, and a form. None of it is quote-ready.\n\nA lightweight AI workflow turns that mess into a clean same-day packet—with a human approval gate before anything goes out. https://t.co/st4dpisKtw",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-04T00:05:34.000Z",
+      "conversation_id": "2051090823563858254",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 7,
+        "quotes": 0,
+        "impressions": 52,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/JedAIFlow/status/2051090823563858254/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2051090823563858254"
+    },
+    {
+      "id": "2051019222101217687",
+      "text": "OpenClaw workflow tip: make agents write down the last verified state before acting again. It prevents duplicate posts, duplicate outreach, and weird retry loops after a timeout.",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-03T19:21:03.000Z",
+      "conversation_id": "2051019222101217687",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 11,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2051019222101217687"
+    },
+    {
+      "id": "2051018923286372609",
+      "text": "DualShot Recorder hitting #1 fast is a good product lesson: win by removing one annoying step. For service businesses, the best AI automation is usually the tiny workflow that saves 10 minutes every day.",
+      "author_id": "1494101538",
+      "username": "JedAIFlow",
+      "name": "JedAIFlow",
+      "created_at": "2026-05-03T19:19:52.000Z",
+      "conversation_id": "2051018923286372609",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 17,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JedAIFlow/status/2051018923286372609"
+    }
+  ]
+}
+---PROFILE propmodo
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 10680,
+      "following_count": 2303,
+      "tweet_count": 7311,
+      "listed_count": 281,
+      "like_count": 2423,
+      "media_count": 1845
+    },
+    "username": "propmodo",
+    "id": "12273912",
+    "name": "Propmodo",
+    "description": "Defining the future of real estate",
+    "created_at": "2008-01-15T14:51:54.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2052524062514057702",
+      "text": "Galvanize and other major real estate owners are blending investment strategy with sustainability and political influence.\n\nhttps://t.co/OLH1RVl7YE https://t.co/Ffiax3HmM1",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-07T23:00:45.000Z",
+      "conversation_id": "2052524062514057702",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 39,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://propmodo.com/?p=179673",
+        "https://x.com/propmodo/status/2052524062514057702/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2052524062514057702"
+    },
+    {
+      "id": "2052441337899741229",
+      "text": "Cities including New York and San Diego adopt vacant property taxes to free up housing and raise revenue, despite debate over economic impact.\n\nhttps://t.co/EIogXJcWZV https://t.co/cvraKxNGhS",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-07T17:32:02.000Z",
+      "conversation_id": "2052441337899741229",
+      "metrics": {
+        "likes": 2,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 78,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://propmodo.com/?p=179671",
+        "https://x.com/propmodo/status/2052441337899741229/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2052441337899741229"
+    },
+    {
+      "id": "2052374153152319993",
+      "text": "AI and automation are transforming multifamily property management, enabling operators to rethink staffing models from leasing to maintenance to back-office operations.\n\nhttps://t.co/vhJZf6RQfI https://t.co/8bJlxoiCH5",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-07T13:05:04.000Z",
+      "conversation_id": "2052374153152319993",
+      "metrics": {
+        "likes": 3,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 139,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://propmodo.com/?p=178998",
+        "https://x.com/propmodo/status/2052374153152319993/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2052374153152319993"
+    },
+    {
+      "id": "2052174079369564623",
+      "text": "AI is transforming affordable housing by streamlining compliance, enhancing security, and improving operations for large-scale operators like Fairstead.\n\nhttps://t.co/jxmCZwIVbT https://t.co/OY9urxoSvk",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-06T23:50:02.000Z",
+      "conversation_id": "2052174079369564623",
+      "metrics": {
+        "likes": 1,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 90,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://propmodo.com/?p=179657",
+        "https://x.com/propmodo/status/2052174079369564623/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2052174079369564623"
+    },
+    {
+      "id": "2052085242156953674",
+      "text": "New FHA loss mitigation limits could push 250,000 distressed borrowers into sales or foreclosure, with price impacts varying by local market strength.\n\nhttps://t.co/HG85ZDiosg https://t.co/YRWh2YA3w1",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-06T17:57:02.000Z",
+      "conversation_id": "2052085242156953674",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 43,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://propmodo.com/?p=179659",
+        "https://x.com/propmodo/status/2052085242156953674/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2052085242156953674"
+    },
+    {
+      "id": "2052018805501464601",
+      "text": "The multifamily real estate market faces rising costs, softening demand, and rapid AI adoption as operators race to stay competitive and efficient.\n\nhttps://t.co/0cpfamDc4m https://t.co/5A74SfNFbn",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-06T13:33:02.000Z",
+      "conversation_id": "2052018805501464601",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 58,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://propmodo.com/?p=179573",
+        "https://x.com/propmodo/status/2052018805501464601/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2052018805501464601"
+    },
+    {
+      "id": "2051769131704180772",
+      "text": "Reliable, property-wide internet has become essential in multifamily living, transforming connectivity from a simple utility into a vital resident experience.\n\nhttps://t.co/OecYayfdL7 https://t.co/wbtHrPJNXa",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-05T21:00:55.000Z",
+      "conversation_id": "2051769131704180772",
+      "metrics": {
+        "likes": 1,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 51,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://propmodo.com/?p=179575",
+        "https://x.com/propmodo/status/2051769131704180772/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2051769131704180772"
+    },
+    {
+      "id": "2051762083247665634",
+      "text": "Hawaii Legislature lets building code reforms, REIT tax changes, and manufactured housing rules lapse as May 8 adjournment approaches without action.\n\nhttps://t.co/EF54E2amFy https://t.co/0b6HbsBBiq",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-05T20:32:55.000Z",
+      "conversation_id": "2051762083247665634",
+      "metrics": {
+        "likes": 1,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 42,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://propmodo.com/?p=179602",
+        "https://x.com/propmodo/status/2051762083247665634/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2051762083247665634"
+    },
+    {
+      "id": "2051666735678341200",
+      "text": "AvalonBay and Equity Residential, the top two apartment REITs by market value, are exploring a $50 billion merger amid sluggish rent growth.\n\nhttps://t.co/HQK0q18pjg https://t.co/VlDtBqDKW7",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-05T14:14:02.000Z",
+      "conversation_id": "2051666735678341200",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 113,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://propmodo.com/?p=179569",
+        "https://x.com/propmodo/status/2051666735678341200/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2051666735678341200"
+    },
+    {
+      "id": "2051448544897220649",
+      "text": "Cities nationwide are transforming as empty offices become housing. Discover how adaptive reuse and historic tax credits drive urban revitalization.\n\nhttps://t.co/jjw4zzftm2 https://t.co/jWDu322fLG",
+      "author_id": "12273912",
+      "username": "propmodo",
+      "name": "Propmodo",
+      "created_at": "2026-05-04T23:47:01.000Z",
+      "conversation_id": "2051448544897220649",
+      "metrics": {
+        "likes": 1,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 82,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://propmodo.com/?p=179551",
+        "https://x.com/propmodo/status/2051448544897220649/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/propmodo/status/2051448544897220649"
+    }
+  ]
+}
+---PROFILE brandon
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 27350,
+      "following_count": 2211,
+      "tweet_count": 5000,
+      "listed_count": 347,
+      "like_count": 20651,
+      "media_count": 492
+    },
+    "username": "brandon",
+    "id": "14925974",
+    "created_at": "2008-05-27T21:45:07.000Z",
+    "description": "CEO @Meow",
+    "name": "Brandon Arvanaghi"
+  },
+  "tweets": [
+    {
+      "id": "2052022232952500528",
+      "text": "Zoot raised a $6 million seed backed by Coinfund and Griffin. Their CEO Sean Ryan stopped by to share why they consolidated their treasury and crypto operations onto @Meow. And how it's saving them hours per week.\n\nCase study in the first comment! https://t.co/aESpf5TM2w",
+      "author_id": "14925974",
+      "username": "brandon",
+      "name": "Brandon Arvanaghi",
+      "created_at": "2026-05-06T13:46:39.000Z",
+      "conversation_id": "2052022232952500528",
+      "metrics": {
+        "likes": 23,
+        "retweets": 2,
+        "replies": 6,
+        "quotes": 1,
+        "impressions": 2557,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/brandon/status/2052022232952500528/video/1"
+      ],
+      "mentions": [
+        "meow"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/brandon/status/2052022232952500528"
+    },
+    {
+      "id": "2051329593324269664",
+      "text": "April was a record month at @Meow with a big number.\n\nWe crossed $2 billion in annualized stablecoin payment volume.\n\nIn addition:\n— All time high ARR\n— Applications up 50% MoM\n— Tracking for millions in profit while hiring faster than ever\n\nWe laid the foundation, now we grow.",
+      "author_id": "14925974",
+      "username": "brandon",
+      "name": "Brandon Arvanaghi",
+      "created_at": "2026-05-04T15:54:21.000Z",
+      "conversation_id": "2051329593324269664",
+      "metrics": {
+        "likes": 61,
+        "retweets": 5,
+        "replies": 10,
+        "quotes": 2,
+        "impressions": 4275,
+        "bookmarks": 6
+      },
+      "urls": [],
+      "mentions": [
+        "meow"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/brandon/status/2051329593324269664"
+    },
+    {
+      "id": "2051100074957058156",
+      "text": "One of the most bullish things about Meow is just how bad we look in our \"early days\" photos. https://t.co/cclRdvc7p3",
+      "author_id": "14925974",
+      "username": "brandon",
+      "name": "Brandon Arvanaghi",
+      "created_at": "2026-05-04T00:42:20.000Z",
+      "conversation_id": "2051100074957058156",
+      "metrics": {
+        "likes": 30,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2066,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/brandon/status/2051100074957058156/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/brandon/status/2051100074957058156"
+    },
+    {
+      "id": "2050673265979293838",
+      "text": "This is a new hire who understands the bar at @Meow. We have an extremely low take rate.\n\nIf you want to do the best work of your life — alongside a team doing the same — come build with us. https://t.co/6joFpt8TL0",
+      "author_id": "14925974",
+      "username": "brandon",
+      "name": "Brandon Arvanaghi",
+      "created_at": "2026-05-02T20:26:20.000Z",
+      "conversation_id": "2050673265979293838",
+      "metrics": {
+        "likes": 19,
+        "retweets": 2,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 3414,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/brandon/status/2050673265979293838/photo/1"
+      ],
+      "mentions": [
+        "meow"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/brandon/status/2050673265979293838"
+    },
+    {
+      "id": "2050642410460286983",
+      "text": "I'm in Miami Beach for Consensus.\n\nIf you're a founder and we haven't met — DM me.",
+      "author_id": "14925974",
+      "username": "brandon",
+      "name": "Brandon Arvanaghi",
+      "created_at": "2026-05-02T18:23:44.000Z",
+      "conversation_id": "2050642410460286983",
+      "metrics": {
+        "likes": 42,
+        "retweets": 1,
+        "replies": 9,
+        "quotes": 0,
+        "impressions": 2041,
+        "bookmarks": 3
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/brandon/status/2050642410460286983"
+    },
+    {
+      "id": "2050636351469408446",
+      "text": "Meow was the first fintech to let AI agents open business bank accounts.\n\nThe harder question came next: what does an account built for an agent actually look like?\n\nMost of the industry is still stuck on the agent layer. Better prompts, smarter models, tighter refusals. That's",
+      "author_id": "14925974",
+      "username": "brandon",
+      "name": "Brandon Arvanaghi",
+      "created_at": "2026-05-02T17:59:39.000Z",
+      "conversation_id": "2050636351469408446",
+      "metrics": {
+        "likes": 24,
+        "retweets": 4,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 2810,
+        "bookmarks": 18
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/brandon/status/2050636351469408446"
+    },
+    {
+      "id": "2050236301107249207",
+      "text": "We’re proud to serve Real American Beer (@drinkrab), co-founded by Hulk Hogan, on corporate treasury!\n\nTheir CFO Cody Anderson stopped by with some cold cases of RAB to talk about why they switched to @Meow.\n\nLink to the full case study in first comment. https://t.co/CXaNUdAWBm",
+      "author_id": "14925974",
+      "username": "brandon",
+      "name": "Brandon Arvanaghi",
+      "created_at": "2026-05-01T15:30:00.000Z",
+      "conversation_id": "2050236301107249207",
+      "metrics": {
+        "likes": 12,
+        "retweets": 1,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 1709,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/brandon/status/2050236301107249207/video/1"
+      ],
+      "mentions": [
+        "drinkrab",
+        "meow"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/brandon/status/2050236301107249207"
+    }
+  ]
+}

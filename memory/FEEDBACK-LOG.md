@@ -160,3 +160,17 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - Rule: Reference selection must be platform-first, then niche, then format. Same-platform/same-niche examples are the default. Cross-platform or cross-niche examples are forbidden by default and may only be used as explicitly labeled adjacent inspiration when the correct pool is too thin.
 - Guardrail: If same platform+niche has fewer than 3 usable examples, create a collection task instead of silently borrowing from a mismatched niche/platform.
 - Verification: Added `--platform` and `--format` filters to `scripts/notion-swipe-fetch.py`; smoke-tested Dynasty X returning examples and LinkedIn AI Consulting returning none; created MC task to collect LinkedIn consulting examples.
+
+## 2026-05-08 — LinkedIn consulting content must be buyer-facing, not outbound-meta
+- Trigger: JT rejected a Friday LinkedIn draft about prospect research mechanics because it discussed his outreach strategy instead of attracting prospects with pain they care about.
+- Rule: LinkedIn consulting posts should speak to buyer problems, implementation reality, workflow failures, proof of work, and operational outcomes. Do not publish posts about JT's prospecting, lead research, outreach process, enrichment, or channel selection unless the explicit topic is sales ops for a sales-ops audience.
+- Guardrail: Before drafting LinkedIn consulting content, ask: “Would a property manager, construction operator, wholesaler, recruiter, or SMB owner see their own operational problem in this?” If no, rewrite around buyer pain. X may be more meta, but LinkedIn must stay prospect-facing by default.
+- Verification: Regenerated 2026-05-08 Friday posts around manual exception tracking and operational AI, not outbound strategy.
+
+## 2026-05-08 — Avoid generic AI-consultant hooks like “you don’t need a chatbot”
+- Trigger: JT said the regenerated LinkedIn/X drafts sounded too AI-generated and questioned the value of “Most businesses do not need an AI chatbot” as the hook.
+- Rule: Do not lead consulting posts with generic AI-category contrasts unless the buyer already has that exact misconception. Hooks should start from a recognizable business moment: the Monday meeting, stale report, missed handoff, duplicate data entry, delayed approval, or owner asking “where does this stand?”
+- Guardrail: Before shipping a LinkedIn consulting hook, ask: “Would a nontechnical SMB operator immediately recognize this from their workday?” If the hook starts with abstract AI positioning instead of lived operational pain, rewrite it.
+- Better direction: buyer scene first, AI implementation second, JT POV last. Avoid phrases that sound like AI-generated thought leadership: “AI chatbot,” “exception layer,” “messy work your team already handles,” and stacked rhetorical lists unless grounded in a concrete workflow.
+- Preferred pattern: “Weekly status meetings might be the most expensive meeting on your calendar.” Then list concrete examples with clean bullets, diagnose the spread across inboxes/spreadsheets/PDFs/portals, and only then say where AI fits.
+- Verification: Regenerated 2026-05-08 posts with a concrete operational scene as the hook, then updated `memory/content-voice.md` LinkedIn rules + audit checklist so future drafts align with JT's preferred version.

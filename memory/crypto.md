@@ -3,6 +3,14 @@
 
 ---
 
+## May 8, 2026 — 8PM Heartbeat
+- **AI-agent crypto signal:** Consensus coverage is leaning into “AI agents could solve crypto’s user problem,” and Coinbase commentary framed agentic trading as a potential multiplier. This keeps the AI-agent + payments/trading-infra narrative alive beyond pure token hype.
+- **Portfolio implication:** Favor infrastructure/utility angles over generic agent coins: agent payments, identity/trust, execution rails, cost controls, and revenue-backed agents remain the cleaner thesis.
+- **Content angle:** For Nash Satoshi, the sharper framing is not “AI tokens are back” — it’s “agentic trading makes evaluation harder; rank tokens by live utility, revenue, and narrative strength.”
+- **No alert:** This is narrative monitoring only, not a price-move alert.
+
+---
+
 ## Mar 19, 2026 — 2PM Heartbeat
 - **BTC:** ~$69,370–$70,841 (range across sources this morning) | Down from $72.5K yesterday (-3.5% to -4.5%)
 - **Driver:** FOMC held rates unchanged (98% probability priced in) — but hawkish tone dented rate cut hopes for 2026. Bitcoin OGs dumped $100M+ post-decision. Classic "sell the news."

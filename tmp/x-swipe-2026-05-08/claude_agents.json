@@ -1,0 +1,230 @@
+[
+  {
+    "id": "2051929929097584719",
+    "text": "休日に読みたいClaude関連の有益記事まとめ\n\n① Claude Codeベストプラクティス（公式）\n② Claude Codeの仕組み（公式）\n③ Claude Codeチュートリアル\n④ CLAUDE.mdベストプラックティス\n⑤ AIに得意分野を持たせる20Skills\n⑥ Claude Skillsガイド\n\n続く👉",
+    "author_id": "1249117291515543552",
+    "username": "MacopeninSUTABA",
+    "name": "かずなり | 生成AI活用×大喜利",
+    "created_at": "2026-05-06T07:39:52.000Z",
+    "conversation_id": "2051929929097584719",
+    "metrics": {
+      "likes": 227,
+      "retweets": 16,
+      "replies": 4,
+      "quotes": 2,
+      "impressions": 25034,
+      "bookmarks": 288
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/MacopeninSUTABA/status/2051929929097584719"
+  },
+  {
+    "id": "2052483300053467606",
+    "text": "a principal consultant from synergetic solutions\njust published a repo that changes how claude code works.\n\nclaude-skills → 66 specialized skills for full-stack development\n\none command to install:\n/plugin marketplace add jeffallan/claude-skills\n\nwhat's inside:\n\n→ 66 skills https://t.co/xEJBIa6Nm4 https://t.co/L5XskdFx40",
+    "author_id": "4924481643",
+    "username": "seelffff",
+    "name": "self.dll",
+    "created_at": "2026-05-07T20:18:46.000Z",
+    "conversation_id": "2052483300053467606",
+    "metrics": {
+      "likes": 40,
+      "retweets": 0,
+      "replies": 3,
+      "quotes": 0,
+      "impressions": 1698,
+      "bookmarks": 23
+    },
+    "urls": [
+      "https://x.com/seelffff/status/2052483300053467606/video/1",
+      "https://twitter.com/seelffff/status/2050007245216256051"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/seelffff/status/2052483300053467606"
+  },
+  {
+    "id": "2051012935557018091",
+    "text": "GitHub is the best market signal on earth.\n\nTop 5 repos people starred this week:\n\n1. mattpocock/skills\n33,628 stars\nClaude skills from Matt Pocock's .claude directory.\n\n2. Alishahryar1/free-claude-code\n12,928 stars\nClaude Code in terminal, VSCode, or Discord.\n\n3. https://t.co/0yPTgbm3np",
+    "author_id": "1378756322041196552",
+    "username": "zaimiri",
+    "name": "zaimiri",
+    "created_at": "2026-05-03T18:56:04.000Z",
+    "conversation_id": "2051012935557018091",
+    "metrics": {
+      "likes": 36,
+      "retweets": 0,
+      "replies": 16,
+      "quotes": 0,
+      "impressions": 844,
+      "bookmarks": 11
+    },
+    "urls": [
+      "https://x.com/zaimiri/status/2051012935557018091/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/zaimiri/status/2051012935557018091"
+  },
+  {
+    "id": "2052338428424094104",
+    "text": "Claude code makes shitty looking websites \n\nUntil you utilize the correct claude skills \n\nOne of these dashboards was made using claude skills\n\nYou can see the difference https://t.co/JUQFvpQvSR",
+    "author_id": "2046670336150867968",
+    "username": "alwaysSarthak",
+    "name": "Sarthak Shaurya",
+    "created_at": "2026-05-07T10:43:06.000Z",
+    "conversation_id": "2052338428424094104",
+    "metrics": {
+      "likes": 2,
+      "retweets": 1,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 117,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/alwaysSarthak/status/2052338428424094104/photo/1",
+      "https://x.com/alwaysSarthak/status/2052338428424094104/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/alwaysSarthak/status/2052338428424094104"
+  },
+  {
+    "id": "2050190293656350734",
+    "text": "Matt Pocock's Claude skills repo just crossed 32k ⭐\nSkills = reusable .claude playbooks that eliminate AI slop from your repos\nThis is now table stakes for serious Claude Code users\nhttps://t.co/jIHDNbPIAR",
+    "author_id": "2897876288",
+    "username": "VadimOpenClaw",
+    "name": "Vadim Ryaboy",
+    "created_at": "2026-05-01T12:27:11.000Z",
+    "conversation_id": "2050190293656350734",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 18,
+      "bookmarks": 0
+    },
+    "urls": [
+      "http://github.com/mattpocock/skills"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/VadimOpenClaw/status/2050190293656350734"
+  },
+  {
+    "id": "2050253539281121471",
+    "text": "Top GitHub repos to level up your.\n-&gt; Top GitHub repos to level up your Claude Code skills 👇 Official Claude Code Repo – Start with the so\n-&gt; Awesome Claude Skills Collection – 50+ plug‑and‑play skills across web scraping, automation, memory https://t.co/cgAQ5jByG8",
+    "author_id": "2033655466937679872",
+    "username": "TomVibeCodes",
+    "name": "Tom Huber",
+    "created_at": "2026-05-01T16:38:30.000Z",
+    "conversation_id": "2050253539281121471",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 32,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/TomVibeCodes/status/2050253539281121471/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/TomVibeCodes/status/2050253539281121471"
+  },
+  {
+    "id": "2050168680831651840",
+    "text": "I just discovered a new Jules + Claude Code(or similar) nice lazy no brainer workflow for solo dev:\n\n1. create a jules mcp server\n2. claude skills with tools https://t.co/X64SUG4uV5\n3. copy paste your session url to claude code + call the skill\n\nYour life is now simpler.",
+    "author_id": "1678915211204640770",
+    "username": "signifocanvas",
+    "name": "SIGNIFO Canvas | Architect",
+    "created_at": "2026-05-01T11:01:18.000Z",
+    "conversation_id": "2050168680831651840",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 34,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://jules.google/docs/api/reference/overview/"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/signifocanvas/status/2050168680831651840"
+  },
+  {
+    "id": "2050831699513422019",
+    "text": "🚀 Unlock Claude Code superpowers in under 5 minutes.\n\nHere are 5 repos that change the game:  \n1️⃣ Enthropic Skills – official skill library  \n2️⃣ Awesome Claude Code – the master list  \n3️⃣ Claude Skills by Alleriza – 230+ domain skills  \n4️⃣ Plugins + Skills – 340 plugins + 300",
+    "author_id": "192075751",
+    "username": "prayag_sonar",
+    "name": "prayag sonar",
+    "created_at": "2026-05-03T06:55:54.000Z",
+    "conversation_id": "2050831699513422019",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 159,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/prayag_sonar/status/2050831699513422019"
+  },
+  {
+    "id": "2051766505789108242",
+    "text": "Claude CodeのCLAUDE.mdに全部書くと、だんだん重くなる。\n\n文体ルール。\n記事チェック。\n図解作成手順。\n投稿作成テンプレ。\nレビュー基準。\n\nこういう“毎回は使わないけど、使う時は長い指示”はSkill化した方がいい。\n\n例：\n.claude/skills/note-review/SKILL.md\n.claude/skills/x-post/SKILL.md",
+    "author_id": "2018525166205345792",
+    "username": "kojinlab",
+    "name": "コジラボ｜副業0→1攻略中",
+    "created_at": "2026-05-05T20:50:29.000Z",
+    "conversation_id": "2051766505789108242",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 50,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/kojinlab/status/2051766505789108242"
+  },
+  {
+    "id": "2051023688070275108",
+    "text": "The first bulk SQL Claude skills generator. Turn thousands of enterprise PostgreSQL queries into hundreds of Claude Code skills in a day using Opus 4.7 in https://t.co/KPbjBBbSAm.\nhttps://t.co/95WczoRNmj https://t.co/PrDcZHcvOx",
+    "author_id": "2042297914035208193",
+    "username": "chionanalytics",
+    "name": "Chion",
+    "created_at": "2026-05-03T19:38:48.000Z",
+    "conversation_id": "2051023688070275108",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 14,
+      "bookmarks": 0
+    },
+    "urls": [
+      "http://chion.ai",
+      "https://github.com/jonfdag-dot/postgres-claude-skills-generator",
+      "https://x.com/chionanalytics/status/2051023688070275108/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/chionanalytics/status/2051023688070275108"
+  }
+]

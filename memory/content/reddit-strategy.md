@@ -50,3 +50,22 @@ Use the Systems Architect approach, but translate it into practical advice so lo
 
 ## Daily Execution 
 A daily Cron (`reddit-karma-farmer`) will draft one deep-dive post or highly technical comment for these subreddits and deliver it directly to JT via Telegram.
+
+## Freshness + Anti-Repeat Rules — 2026-05-08
+
+Source of truth for Reddit repeats: `memory/content/reddit-draft-log.jsonl`.
+
+Every Reddit generator run must:
+1. Read the last 30 days of `reddit-draft-log.jsonl` and `posted-log.jsonl` before drafting.
+2. Log every non-skipped Reddit item with date, subreddit, type, title/look-for, first 120 chars, core angle, and body hash.
+3. Skip or rewrite any draft that reuses the same title, hook, first paragraph, core analogy, or broad frame from the last 30 days.
+4. Prefer `SKIP_SLOT` over recycled evergreen theory.
+
+Crypto guardrail:
+- No more generic protocol durability / stakeholder-alignment essays unless tied to a fresh specific debate.
+- Avoid stale phrases like “who is forced to keep caring,” “temporary participation,” “stakeholder coordination,” and broad TVL/fees/emissions lists.
+
+Fantasy guardrail:
+- No abstract dynasty theory comments unless the thread directly asks for it.
+- Comments must tie to a concrete thread type: trade offer, keeper decision, rookie pick, contender/rebuilder decision, player role, or draft-capital/landing-spot question.
+- Avoid stale phrases like “assets have different jobs,” “calculators as sentiment checks,” “research alarm,” “liquidity,” “optionality,” and broad roster-window lectures.

@@ -1,7 +1,7 @@
 # App Marketing OS — Experiment Calendar
 
 Week of: 2026-05-04
-Generated: 2026-05-07
+Generated: 2026-05-08
 
 ## Rule
 Every generated product post should map to a named experiment, a success threshold, and a retire/rework rule. If it does not, skip it.
