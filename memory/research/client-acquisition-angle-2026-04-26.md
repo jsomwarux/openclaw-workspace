@@ -50,3 +50,19 @@ Recent distribution/ERP coverage keeps pointing at AI value in operational edges
 
 **Pitch line:**
 "If your team answers the same stock, ETA, and order-status questions every day, I can prototype an approval-first AI assistant that drafts those replies from your existing data before we touch the ERP."
+
+## 2026-05-09 Evening Addendum — Property Maintenance Automation Wedge
+
+Heartbeat proactive research pass. Fresh market results keep clustering around property management maintenance automation: tenant intake, emergency triage, vendor routing, work-order creation, completion tracking, and 24/7 support.
+
+**Signal:** property managers are being sold broad AI support tools, but the concrete pain is narrower: maintenance requests get scattered across calls, texts, portals, and vendor threads.
+
+**Sharper JT wedge:** “maintenance request command center” for small NYC property managers.
+- Intake tenant request from email/form/text export.
+- Classify emergency vs routine.
+- Draft tenant response + vendor dispatch.
+- Track vendor status and overdue follow-ups.
+- Produce owner-visible weekly summary.
+
+**Pitch line:**
+“If maintenance requests are spread across inboxes, texts, and vendor calls, I can prototype a triage + follow-up system that keeps tenants updated and shows owners what’s stuck — without replacing your PMS.”

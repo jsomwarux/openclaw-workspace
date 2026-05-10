@@ -130,3 +130,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Before any future site contact/metadata deploy, grep `src public CLAUDE.md README.md documents` for email addresses and verify only the canonical site contact appears.
 - **Owner surface updated:** Site repo `CLAUDE.md`, `public/llms.txt`, and `src/components/Contact.tsx` corrected; this mistakes log now records the canonical rule.
 - **Verification/date:** 2026-05-05 — grep confirmed `jtsomwaru@gmail.com` in Contact/Guyana/llms/CLAUDE and no `jsomwarux@yahoo.com` in checked site paths; build + lint passed.
+
+## 2026-05-09 — @dynastyjig stale/recycled content pack
+- **Failure:** Delivered an @dynastyjig post pack that reused stale pattern inputs, included a player JT had already posted (Demond Claiborne), and leaned on outdated/generic betting angles.
+- **Root cause:** The Sports GM drafting path treated old swipe mechanics as acceptable content inputs and did not enforce a same-day freshness/no-repeat gate before finalizing drafts.
+- **Guardrail/rule:** @dynastyjig packs must run a preflight: fresh market snapshot from today, no player/topic already posted by JT when known from context, no slate/team odds unless verified current, and every draft must pass the current content-voice X checklist.
+- **Regression check:** Before sending any @dynastyjig pack, verify the output file includes a `Quality gate applied` section listing freshness source, repeat exclusions, and why the recommended first post is not stale/generic.
+- **Owner surface updated:** `skills/sports-gm/SKILL.md` and `memory/content/bank/2026-05-09/dynastyjig-niche-growth-post-pack.md`.
+- **Verification/date:** 2026-05-09 — stale pack replaced with revised pack using 2026-05-09 Sports GM data and Demond Claiborne excluded.

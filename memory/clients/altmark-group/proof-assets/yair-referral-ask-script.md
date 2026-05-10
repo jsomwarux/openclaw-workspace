@@ -23,3 +23,6 @@ I’m not looking to pitch them broadly. I’d start with a diagnostic, map the 
 
 ## One-line positioning for Yair to forward
 JT built a local-first automation setup for us around sensitive back-office workflows, with audit trail and human approval built in. Might be worth a conversation if you’re looking at AI/automation but don’t want another generic SaaS tool.
+
+## Referral-Safe Proof Package
+After acceptance, fill in `proof-assets/referral-proof-package-template.md` before asking for intros. Keep it confidential-data-free and do not add metrics until verified.

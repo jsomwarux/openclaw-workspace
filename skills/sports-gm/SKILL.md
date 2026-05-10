@@ -133,6 +133,14 @@ Every @dynastyjig post pack should include at least:
 
 Product references are banned by default in daily niche-growth content. Mention Action Arena or Dynasty Simulator only in the internal angle note, not the draft itself.
 
+Freshness/no-repeat gate for every post pack:
+1. Run or read today's Sports GM market snapshot/report before drafting dynasty posts.
+2. Do not reuse a player/topic JT says he already posted. If current conversation mentions a posted player, exclude it immediately.
+3. Do not use slate/team odds unless verified current today. If live betting signal is weak, use durable betting-card psychology instead of pretending stale games are fresh.
+4. Swipe-file mechanics are pattern evidence only. They cannot be the content signal by themselves.
+5. The saved output must include a `Quality gate applied` section naming freshness source, repeat exclusions, and stale-signal handling.
+6. Recommend the single best post first, with a plain reason why it is not generic.
+
 Minimum bar before a post is acceptable:
 1. Hook in the first line.
 2. Native fantasy/betting language.

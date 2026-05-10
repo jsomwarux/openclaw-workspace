@@ -14,3 +14,5 @@
 [2026-05-06] OpenClaw — v2026.5.5 reliability release with heartbeat/TUI recovery, context-engine hygiene, Telegram/Codex progress rendering, iOS pairing, approvals, and generated-media fixes — quick “why agent ops reliability matters” reaction/demo after upgrading Eve — @openclaw
 [2026-05-07] Anthropic — Financial Agent Templates — Suggest tagging Anthropic after building a custom KYC/Pitchbook agent using their new template repo. — @anthropic
 [2026-05-07] n8n — Microsoft Agent 365 Integration — Tag @n8n_io with a video showing an OpenClaw project agent replying to a request inside a Microsoft Teams channel via their new native integration. — @n8n_io
+[2026-05-09] OpenClaw — v2026.5.9-beta.1 added Codex harness catalog updates, model identity injection, oc-path, memory toolsAllow, Telegram/reasoning fixes, and secret redaction — suggested post angle: quick reaction/demo on how real agent stacks need runtime identity + guardrails, tag @openclaw
+[2026-05-09] OpenRouter — added Gemini 3.1 Flash Lite and Ring-2.6-1T/free in the model catalog — suggested post angle: test cheap/free agent models on one daily automation and share cost delta, tag @OpenRouterAI

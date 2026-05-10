@@ -50,6 +50,7 @@
 | niche-fitness | agents/niche-fitness/AGENT.md | checklists/niche-fitness.md | pending | — | — | 2026-05-03 |
 | passive-income-strategist | agents/passive-income-strategist/AGENT.md | checklists/passive-income-strategist.md | pending | — | — | 2026-05-03 |
 | skills-researcher | agents/skills-researcher/AGENT.md | checklists/skills-researcher.md | pending | — | — | 2026-05-03 |
+| spanish-daily-lesson | cron:babd905a-1098-49dd-8700-772fef14f817 | checklists/spanish-daily-lesson.md | pending | — | — | 2026-05-09 |
 
 ## Status values
 - `pending` — checklist written, not yet run

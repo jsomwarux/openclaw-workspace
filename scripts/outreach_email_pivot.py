@@ -392,12 +392,19 @@ jtsomwaru.com"""
 
 
 def check_mc_task_exists(prospect: dict) -> bool:
-    """Check if an Email Pivot MC task already exists for this prospect."""
+    """Check if an active Email Pivot MC task already exists for this exact prospect.
+
+    Important: Mission Control has accumulated duplicate Email Pivot tasks when the
+    nightly cron re-created tasks for prospects that already had drafts. Match the
+    full generated title, not just the first company word, and treat all non-closed
+    statuses as active.
+    """
     try:
         tasks = json.loads(urllib.request.urlopen(MC_API).read())["tasks"]
-        title_pattern = f"Email Pivot: {prospect['canonical'].split()[0]}"
+        title = f"Email Pivot: {prospect['canonical']} — {prospect['contact'].split()[0]}"
+        active_statuses = {"todo", "in_progress", "pending", "blocked"}
         for t in tasks:
-            if title_pattern in t.get("title", "") and t.get("status") != "done":
+            if t.get("title", "").strip() == title and t.get("status", "todo") in active_statuses:
                 return True
     except Exception:
         pass
@@ -529,8 +536,7 @@ def main():
 
         if check_mc_task_exists(p):
             print(f"   ⚠️  Email Pivot MC task already exists — skipping")
-            if mode == "scan":
-                continue
+            continue
 
         if mode == "scan":
             print(f"   → Would generate email + Drive + MC task")

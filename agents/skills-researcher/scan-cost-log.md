@@ -41,3 +41,5 @@ EOF'
 2026-05-05T15:35:34Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-05-06T11:33:00-04:00 | daily-scan | x_queries: 6 | web_queries: 10 | findings: 7 | 🔴: 0 | 🟠: 1 | messaged_jt: yes | notes: firecrawl_search unavailable: 402 insufficient credits; web_search partially unavailable via SearXNG, duckduckgo HN fallback ok
 [2026-05-08T15:34:30Z] | daily-scan | x_queries: 6 | web_queries: 15 | findings: 4 | 🔴: 0 | 🟠: 0 | messaged_jt: no
+2026-05-09T11:00:00Z | weekly-synthesis | x_queries: 10 (6 daily + 4 weekly deep scan; first overquoted attempt cost $0) | web_queries: 14 | findings: 12 | 🔴: 0 | 🟠: 0 | 🟡/KB: 12 | mc_tasks_pushed: 0 | messaged_jt: yes | archive: 2026-W19.md | est_cost: ~$0.50 X + web/free
+2026-05-09T15:33:00Z | daily-scan | x_queries: 6 | web_queries: 17 | findings: 7 | 🔴: 1 | 🟠: 1 | messaged_jt: yes

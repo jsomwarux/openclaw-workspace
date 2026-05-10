@@ -1,13 +1,12 @@
-# API Intelligence Report — 2026-05-02
+# API Intelligence Report — 2026-05-09
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-05-02 05:55:32
+Generated: 2026-05-09 05:44:58
 
-**Totals:** 0 new APIs | 0 PH tools | 3 HN stories | 0 discoveries
+**Totals:** 0 new APIs | 0 PH tools | 2 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **Show HN: Filling PDF forms with AI using client-side tool calling** (score: 5) | [link](https://copilot.simplepdf.com/?share=a7d00ad073c75a75d493228e6ff7b11eb3f2d945b6175913e87898ec96ca8076&form=w9&lang=en)
-- **AI coding tools are silently disagreeing with each other** (score: 3) | [link](https://github.com/sampleXbro/agentsmesh)
-- **Lucide: Open-source icon library with 1600 vector (SVG) files for icons** (score: 2) | [link](https://github.com/lucide-icons/lucide)
+- **Claude Knew It Was Being Tested. Anthropic Built a Tool to Detect It** (score: 1) | [link](https://firethering.com/anthropic-nla-claude-thoughts-interpretability/)
+- **Show HN: Hum – ad-free terminal music player (Rust, no API keys)** (score: 1) | [link](https://github.com/Devendra116/hum/)
 
 
 ## Scout Guidance

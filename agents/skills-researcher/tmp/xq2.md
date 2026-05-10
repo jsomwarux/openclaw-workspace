@@ -1,0 +1,100 @@
+=== QUERY 2 ===
+# X Research: (new model OR API update OR new endpoint OR pricing change) (Anthropic OR OpenAI OR Google OR Mistral OR Groq OR OpenRouter) -is:reply -is:retweet
+
+**Date:** 2026-05-09
+**Tweets found:** 10
+
+## Top Results (by engagement)
+
+- **@hey_hamida** (34L 21624I) [Tweet](https://x.com/hey_hamida/status/2052072468857417968)
+  > OpenAI, Google, Anthropic… meet your new headache.
+  > 
+  > @AntLingAGI just open-sourced Ling-2.6-1T a trillion-parameter beast built for actual execution, not benchmark flexing.
+  > 
+  > Fast. Token-efficient. Production-ready.
+  > 
+  > This release changes the open-model race 👇
+  Links: [x.com](https://x.com/hey_hamida/status/2052072468857417968/video/1)
+
+- **@TeksEdge** (7L 570I) [Tweet](https://x.com/TeksEdge/status/2051318183584510236)
+  > I've been using @OpenRouter recently to run benchmarks on the new mystery model Owl-Alpha. That reminded me to double-check my "Enforce Zero Data Retention" setting when requesting an endpoint. Did you remember to lock down your settings?
+  Links: [x.com](https://x.com/TeksEdge/status/2051318183584510236/photo/1)
+
+- **@scaling_tech_hq** (2L 57I) [Tweet](https://x.com/scaling_tech_hq/status/2051480799216586817)
+  > The AI trade has a new variable now: approval risk.
+  > 
+  > If Anthropic, Google, and OpenAI face safety reviews before launching new models, the question is no longer just who has the best model.
+  > 
+  > It is who can ship safely, consistently, and under government scrutiny.
+  > 
+  > That changes the
+  Links: [x.com](https://x.com/scaling_tech_hq/status/2051480799216586817/photo/1)
+
+- **@pipmoment** (2L 12I) [Tweet](https://x.com/pipmoment/status/2051888543635579329)
+  > APPLE 'S AI MOVE: iOS 27“MODEL PICKING” PERIOD
+  > 
+  > • Apple can give the user the freedom to choose an AI model
+  > • More flexible AI comes with iOS 27
+  > • OpenAI / Anthropic / Google models can be paved
+  > 
+  > • Apple enters a new
+  Links: [t.me](https://t.me/PipMoment)
+
+- **@ace_ijeoma** (1L 103I) [Tweet](https://x.com/ace_ijeoma/status/2052713244674920864)
+  > The EU often follows the precautionary principle: don’t deploy new technologies at scale until you understand the risks.
+  > 
+  > Grok: xAI, USA
+  > Gemini: Google, USA
+  > Claude: Anthropic USA
+  > ChatGPT: OpenAI, USA
+  > 
+  > There isn’t a European model that has reached the same global recognition or
+  Links: [x.com](https://x.com/ace_ijeoma/status/2052713244674920864/photo/1)
+
+- **@michael_lek** (1L 48I) [Tweet](https://x.com/michael_lek/status/2052739158024831018)
+  > 📌 Weekly AI news recap: Anthropic taught agents to learn between sessions, OpenAI halved hallucinations, and Google accidentally revealed its new model.
+  > 
+  > 1) Claude expanded on two fronts
+  > 
+  > Claude agents now learn between sessions through a feature called dreaming. They review
+  Links: [x.com](https://x.com/michael_lek/status/2052739158024831018/video/1)
+
+- **@LLMpsycho** (0L 64I) [Tweet](https://x.com/LLMpsycho/status/2051952111580000353)
+  > Claude Code 2.1.131 new update :
+  > 
+  > • Fixed VS Code extension failing to activate on Windows (createRequire polyfill)
+  > • Fixed Mantle endpoint authentication with missing x-api-key header
+  > 
+  > npm install -g @anthropic-ai/claude-code
+  Links: [github.com](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md)
+
+- **@dAAAb** (0L 135I) [Tweet](https://x.com/dAAAb/status/2051452441657475126)
+  > Major shift: Trump admin now exploring federal AI model oversight — forming a working group with Anthropic, Google &amp; OpenAI to outline review processes before new models launch.
+  > 
+  > A 180° turn from the "no regulation" stance just months ago.
+  > 
+  > Taiwan passed our AI Basic Act last
+  Links: [x.com](https://x.com/dAAAb/status/2051452441657475126/photo/1)
+
+- **@gptbotio** (0L 23I) [Tweet](https://x.com/gptbotio/status/2051398120710275184)
+  > 🟢 New model on OpenRouter
+  > 
+  > mistralai/mistral-medium-3-5
+  > Context: 262,144 tokens
+  > Pricing: $1.50 / $7.50 per 1M tokens (in/out)
+
+- **@FredRoger0x666** (0L 3I) [Tweet](https://x.com/FredRoger0x666/status/2052343041659175078)
+  > The AI war everyone's obsessing over? It's already decided. Not by who builds the smartest model. By who controls the power grid.
+  > 
+  > OpenAI, Anthropic, Google—they're all playing checkers while the real game is happening in substations. Texas alone needs 300 new nuclear reactors by
+
+---
+
+## Research Metadata
+- **Query:** (new model OR API update OR new endpoint OR pricing change) (Anthropic OR OpenAI OR Google OR Mistral OR Groq OR OpenRouter) -is:reply -is:retweet
+- **Date:** 2026-05-09
+- **Tweets scanned:** 10
+- **Est. cost:** ~$0.05
+- **Search queries:**
+  - `(new model OR API update OR new endpoint OR pricing change) (Anthropic OR OpenAI OR Google OR Mistral OR Groq OR OpenRouter) -is:reply -is:retweet`
+
