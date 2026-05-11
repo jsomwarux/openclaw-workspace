@@ -138,3 +138,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Before sending any @dynastyjig pack, verify the output file includes a `Quality gate applied` section listing freshness source, repeat exclusions, and why the recommended first post is not stale/generic.
 - **Owner surface updated:** `skills/sports-gm/SKILL.md` and `memory/content/bank/2026-05-09/dynastyjig-niche-growth-post-pack.md`.
 - **Verification/date:** 2026-05-09 — stale pack replaced with revised pack using 2026-05-09 Sports GM data and Demond Claiborne excluded.
+
+## 2026-05-10 — Passive-income concepts did not populate Passive $ correctly
+- **Failure:** New passive-income 🟢 concepts appeared incomplete/misrouted on Mission Control Passive $: PDRN Decoder and CollectionProof had blank concept fields, while RouteShade inherited PDRN blueprint text.
+- **Root cause:** Mission Control `/api/passive-income` split strategist reports only on `##` headings, so top scorecard sections swallowed later `# 🟢 Blueprint:` content. The parser did not merge blueprint sections back into matching idea cards and did not fail closed on `ALREADY QUEUED` sections.
+- **Guardrail/rule:** Passive-income parser now splits on level-1/2 headings, skips `# 🟢 Blueprint:` as standalone cards, skips `ALREADY QUEUED` idea cards, and merges blueprint concept/revenue/stack/marketing/automation details into the matching idea.
+- **Regression check:** After strategist runs, verify `/api/passive-income` shows every 🟢 idea with non-empty `concept`, no `ALREADY QUEUED` duplicate cards, and exactly one active `[PI] Build:` task under `project=passive-income` for each 🟢 idea.
+- **Owner surface updated:** `mission-control/app/api/passive-income/route.ts`, `agents/autoresearch/checklists/passive-income-strategist.md`, and `docs/agents/regression-checks.md`.
+- **Verification/date:** 2026-05-10 — `bunx tsc --noEmit` passed; `/api/passive-income` returns PDRN Decoder concept_len 518, CollectionProof concept_len 498, RouteShade count 0; MC tasks show active `[PI] Build:` tasks for both PDRN Decoder and CollectionProof in `project=passive-income`.

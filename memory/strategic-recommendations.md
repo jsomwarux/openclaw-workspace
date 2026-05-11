@@ -40,3 +40,8 @@
 **Recommendation:** Send H.C. Oswald M2 this week via LinkedIn connection note, referencing their Mar 26 Product Hunt launch as the hook. No demo attachment in M2. One value drop: mention the Intercom-based catalog search agent approach for their specific use case. Calendly in M2 only if they reply.
 **Why now:** H.C. Oswald is the only active T1 prospect. M1 sent. No response yet. Window is open but outreach goes cold without M2 follow-up within 7-10 days. "DenchClaw launch March 26" is a natural, non-pushy conversation opener that shows JT did his research on them specifically.
 **Status:** open
+
+### 2026-05-10 — Package AI Adoption Ops as a Consulting Wedge
+**Recommendation:** Turn JT's internal agent operating system and workflow experience into a buyer-facing "AI Adoption Ops Sprint": map one workflow, define owner/escalation rules, build the automation, and leave the client with a lightweight champion/operating cadence.
+**Why now:** Job-market signals on May 10 show AI enablement hiring shifting from one-off tool training to formal adoption operating systems, while niche intel shows construction, PM, and wholesale buyers need implementation support more than new AI features.
+**Status:** open

@@ -266,4 +266,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 ## Proof Points
 
+| 2026-05-10 | jtsomwaru.com AI Operations Systems Overview | Added homepage capability matrix + AI Ops Teardowns section to make consulting range legible fast. | Buyer-facing site positioning, AI ops proof packaging | Complete |
+
+
 - **Vista 1–100 Movie Rating SEO Page (2026-05-07):** Turned measured TikTok/ReelFarm rating-precision insight into a durable jtsomwaru.com SEO page targeting `1–100 movie rating app`; build/lint passed and commit `cd7ab18` pushed. Angle: social performance should feed durable discovery assets, not just more posts.

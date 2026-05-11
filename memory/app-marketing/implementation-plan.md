@@ -382,3 +382,16 @@ After JT confirmed the Glow SEO batch was rebuilt/redeployed, generic crawler-st
 Reason:
 - More page generation is lower leverage than making existing pages discoverable and tracked.
 - Ingredient/dupe/concern/condition pages remain blocked until structured data supports unique safe pages.
+
+## Phase 4 Update — AppKittie Competitive Intelligence Candidate (2026-05-10)
+Status: evaluated, not yet wired
+
+What changed:
+- Evaluated AppKittie from Jacob Rodri's X post as an app-growth intelligence source.
+- AppKittie exposes filters for revenue, downloads, launch/update date, growth, ads, creators, keywords, and reviews via dashboard/API/MCP.
+- Recommendation: add as a manual weekly competitor-intel input first; automate only after JT provides an API key/subscription and one report proves useful.
+
+Done state for adoption:
+- Create one AppKittie report for Glow/Vista using ≤20 apps.
+- Convert at least one competitor pattern into a named experiment.
+- If useful, add `scripts/app_marketing_appkittie_intel.py` with credit-safe caching and include it in weekly scoreboard flow.

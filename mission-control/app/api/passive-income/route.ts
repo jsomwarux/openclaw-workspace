@@ -141,6 +141,57 @@ function parseScoutReport(content: string, fileName: string): ParsedIdea[] {
   return ideas;
 }
 
+
+function extractBlueprints(content: string): Map<string, Partial<ParsedIdea>> {
+  const blueprints = new Map<string, Partial<ParsedIdea>>();
+  const sectionRegex = /^#\s+🟢\s+Blueprint:\s+(.+)$/gm;
+  const positions: { title: string; index: number }[] = [];
+  let match;
+
+  while ((match = sectionRegex.exec(content)) !== null) {
+    positions.push({ title: normalizeTitle(match[1].trim()), index: match.index });
+  }
+
+  for (let i = 0; i < positions.length; i++) {
+    const start = positions[i].index;
+    const end = i + 1 < positions.length ? positions[i + 1].index : content.length;
+    const section = content.slice(start, end);
+    const title = positions[i].title;
+    if (!title) continue;
+
+    const opportunity = extractNumberedSection(section, "1. The Opportunity");
+    const buildReality = new RegExp("- \\*\\*Full tech stack\\*\\*:\\s*([\\s\\S]+?)(?=\\n- \\*\\*|\\n###|$)").exec(section)?.[1]?.trim() || "";
+    const revenue = extractNumberedSection(section, "4. Monetization");
+    const marketing = extractNumberedSection(section, "5. Marketing Strategy (Autonomous — runs without JT)") || extractNumberedSection(section, "5. Marketing Strategy");
+    const automation = extractNumberedSection(section, "6. Automation Stack");
+
+    blueprints.set(title.toUpperCase().replace(/[^A-Z0-9]/g, ""), {
+      concept: opportunity,
+      jtStackFit: buildReality,
+      revenueModel: revenue,
+      researchSignal: marketing,
+      longevitySignal: automation,
+    });
+  }
+
+  return blueprints;
+}
+
+function mergeBlueprint(idea: ParsedIdea, blueprints: Map<string, Partial<ParsedIdea>>): ParsedIdea {
+  const key = idea.title.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const blueprint = blueprints.get(key);
+  if (!blueprint) return idea;
+  return {
+    ...idea,
+    concept: idea.concept || blueprint.concept || "",
+    revenueModel: idea.revenueModel || blueprint.revenueModel || "",
+    jtStackFit: idea.jtStackFit || blueprint.jtStackFit || "",
+    longevitySignal: idea.longevitySignal || blueprint.longevitySignal || "",
+    researchSignal: idea.researchSignal || blueprint.researchSignal || "",
+    creativityCheck: idea.creativityCheck || blueprint.creativityCheck || "",
+  };
+}
+
 function parseStrategistReport(content: string, fileName: string): ParsedIdea[] {
   const dateMatch = fileName.match(/(\d{4}-\d{2}-\d{2})/);
   const reportDate = dateMatch ? dateMatch[1] : "";
@@ -152,13 +203,18 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
     "Full Scoring Summary", "SATURATION FILTER RESULTS", "WATCH IDEAS",
   ];
 
-  const sectionRegex = /^## (.+)$/gm;
+  // Split on level-1 and level-2 headings so top scorecard sections do not accidentally
+  // swallow later `# 🟢 Blueprint:` sections. This previously caused RouteShade to inherit
+  // PDRN Decoder's concept and left real blueprint cards blank.
+  const blueprints = extractBlueprints(content);
+  const sectionRegex = /^#{1,2} (.+)$/gm;
   let match;
   const positions: { title: string; index: number }[] = [];
 
   while ((match = sectionRegex.exec(content)) !== null) {
     const title = match[1].trim();
     if (skipSections.some((s) => title.includes(s))) continue;
+    if (/^🟢\s+Blueprint:/i.test(title)) continue;
     positions.push({ title, index: match.index });
   }
 
@@ -168,6 +224,7 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
     const section = content.slice(start, end);
     const rawTitle = positions[i].title;
     if (isNonIdeaTitle(rawTitle)) continue;
+    if (/ALREADY QUEUED/i.test(section)) continue;
 
     // Extract score — try multiple formats:
     // 1. **Score: 5.8/10** (fully bold-wrapped, March 8 e.g. SITEAUDIT)
@@ -207,7 +264,7 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
     const cleanTitle = normalizeTitle(rawTitle);
     if (!cleanTitle || isNonIdeaTitle(cleanTitle)) continue;
 
-    ideas.push(applyNorthStarScore({
+    ideas.push(applyNorthStarScore(mergeBlueprint({
       title: cleanTitle,
       score,
       status,
@@ -219,7 +276,7 @@ function parseStrategistReport(content: string, fileName: string): ParsedIdea[] 
       longevitySignal: extractField(section, "Longevity signal") || "",
       researchSignal: extractField(section, "Research signal") || "",
       creativityCheck: extractField(section, "Creativity check") || extractNumberedSection(section, "6. What") || "",
-    }));
+    }, blueprints)));
   }
 
   return ideas;

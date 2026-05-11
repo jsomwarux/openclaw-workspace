@@ -197,16 +197,31 @@ Run this as a capability lens, not a mandatory quota. Generate at least 1 candid
 
 Include qualifying ideas in Step 3 output labeled `[M9-Vision]`. At the end of the scout report, add a short `Vision Model Opportunity Notes` section: what visual jobs appeared promising, what was rejected, and whether any vision idea deserved strategist review.
 
-### Methodology 10: Agent-Purchasable Microservice Lens
+### Methodology 11: Agent Business Model Lens
 
-Stripe Link for agents / agent wallets make it possible for agents to request user-approved purchases while completing tasks. Do NOT overweight this. Treat it as one additional opportunity lens after Exploding Topics, Google Trends, complaint mining, API mining, and vision scan.
+When evaluating AI-agent-enabled business ideas, test these patterns before proposing new builds:
+- **Outcome bounty:** replace subscription pricing with pay-per-completed result when the agent can finish the job end-to-end.
+- **Shadow spreadsheet replacement:** find a spreadsheet a business runs on and turn it into an agent desk with exceptions, owner, next action, approval queue, and weekly summary.
+- **Data refinery:** convert messy business data into agent-readable structured data with provenance.
+- **Rule-change monitor:** monitor changing rules/regulations/platform policies and sell peace of mind through sourced, actionable alerts.
+- **Agent trust layer:** evals, review queues, audit trails, provenance, and human approval boundaries for agents used in real operations.
+- **Vertical memory vault:** niche-specific memory, receipts, decisions, and source-of-truth vaults that make agents useful over time.
 
-Look for narrow products/services that an agent would rationally buy mid-task because the output saves time, reduces risk, or unlocks a next step.
+Upgrade ideas when they match JT's current edge: ops-heavy SMBs, property/family office workflows, construction, wholesale, consulting proof, exception dashboards, audit trails, or agent-readable outputs. Downgrade generic local-service agent ideas where distribution/trust is harder than the build.
+
+### Methodology 10: Agent-Native / Agent-Purchasable App Lens
+
+The passive-income agent MUST consider apps/services for agents as buyers/users, not just humans. With autonomous agents improving, some products should be designed so an agent can discover, evaluate, buy, call, and cite the output with minimal human babysitting.
+
+Important: do NOT overweight this. Agent-native is a lens, not an excuse to build imaginary-agent vaporware. A strong idea still needs human-account owner value, distribution, low support, and a clear first revenue event.
+
+Look for narrow products/services an agent would rationally use mid-task because the output saves time, reduces risk, or unlocks a next step.
 
 Good candidates:
 - $5–$50 one-shot outputs: audit, score, lookup, checklist, enrichment, verification, comparison, report
-- Agent-readable/API-first result format: JSON, markdown, PDF, CSV, webhook callback
-- Clear task context: the agent is already doing research, buying, compliance, property analysis, vendor vetting, job/applicant screening, travel planning, procurement, or SMB workflow setup
+- Agent-readable/API-first result format: JSON, markdown, PDF, CSV, webhook callback, signed/source-cited artifact
+- Clear task context: the agent is already doing research, buying, compliance, property analysis, vendor vetting, job/applicant screening, travel planning, procurement, SMB workflow setup, or app-marketing analysis
+- Machine-readable docs: llms.txt, OpenAPI/MCP docs, examples, pricing, auth, deterministic schemas, provenance fields
 - Low support burden and instant/near-instant fulfillment
 - Can be built from JT's advantages: consulting workflow docs, anomaly audits, property/construction ops, ranking engines, niche data, APIs, OpenClaw/n8n automation
 
@@ -215,9 +230,10 @@ Bad candidates:
 - “For agents” wrappers with no urgent job-to-be-done
 - Anything requiring humans to manually fulfill each request
 - Anything that only works if agentic commerce becomes mainstream immediately
+- Products agents can solve with a generic prompt and no proprietary data/workflow/output trust
 
 For each raw idea, add:
-**Agent-purchasable angle:** [Would an agent buy this mid-task? Who is the agent working for? What exact task? Price? Output format?]
+**Agent-native angle:** [Would an agent use/buy this mid-task? Who is the agent working for? What exact task? Price? Output format? What makes it easier for an agent than a human-only app?]
 
 ### Methodology 11: Event-Led Creator Economy / GTA VI Watchlist
 Use this methodology for massive upcoming launches where third-party builders/creators will need tools before demand peaks. Current standing watchlist: GTA VI / FiveM / Cfx / Tebex / QBCore / roleplay server economy.
@@ -236,6 +252,47 @@ Use this methodology for massive upcoming launches where third-party builders/cr
 - Weak candidates: running an RP server directly, generic GTA news sites, manual clipping agencies, one-off logo/branding gigs, asset packs that require deep 3D/game-asset support.
 
 **Promotion filter:** Only generate a GTA/FiveM idea when it can be prototyped in <7 days, sold before or during the GTA VI attention window, and does not require JT to run a daily community/support operation.
+
+
+### Methodology 12: TikTok Shop / Social Commerce Opportunity Lens
+
+Consider TikTok Shop only when the opportunity can stay low-ops and distribution-led. This is a commerce/distribution lens, not a mandate to become an ecommerce operator.
+
+Good candidates:
+- Affiliate-first or digital/POD products where JT does not hold inventory.
+- Products that naturally fit short-form demonstration, before/after, ranking, comparison, myth-busting, or "TikTok made me buy it" formats.
+- Opportunities that pair with JT's existing assets: Glow Index ingredient/product rankings, skincare claim-risk cards, sports/fantasy printable tools, app-marketing intelligence, or POD/simple templates.
+- High-margin, low-return-risk items with clear compliance boundaries.
+- Products where the content engine is the moat: weekly trend scouting, creator hooks, comparison pages, and automated testing.
+
+Bad candidates:
+- Inventory-heavy products, fragile shipping, returns-heavy categories, supplements/medical claims, counterfeit/IP-risk products, beauty claims that require dermatology/medical proof, or anything requiring daily customer service.
+- Chasing viral products without a JT-owned angle, data layer, content system, or reusable asset.
+- Any idea where TikTok Shop is the only demand source and SEO/email/community do not compound.
+
+For each relevant raw idea, add:
+**TikTok Shop angle:** [Is this affiliate, POD, digital, or inventory? What product/category? What content format would sell it? Support/returns/compliance risk? Does it connect to an existing JT app/content system?]
+
+
+### Methodology 13: Behavioral Demand Lens
+
+Every passive-income idea must identify the human urge that makes someone care before they rationally need it. This is a demand filter, not persuasion theater. Do not use dark patterns, fake urgency, shame, medical fear, financial hype, or manipulative scarcity.
+
+Score stronger when the idea taps a recurring, ethical motive:
+- status / taste identity
+- fear of loss or waste
+- control / certainty / reassurance
+- embarrassment avoidance
+- curiosity / comparison / disagreement
+- self-improvement / better version of self
+- belonging / community signaling
+- convenience / time recovery
+- buyer protection / skepticism
+
+Downgrade ideas that are only logically useful but emotionally flat. Many apps fail because the user agrees they are useful but does not feel urgency.
+
+For each raw idea, add:
+**Behavioral demand:** [Primary human motive, emotional trigger, identity/status/reassurance angle, and why the user would act now rather than merely agree it is useful.]
 
 ### IMPORTANT: Required Input Files
 
@@ -263,6 +320,7 @@ For each idea, write:
 **Revenue model:** [one line — be specific about pricing]
 **Longevity signal:** [why this still works in 3 years — is the underlying need secular?]
 **Research signal:** [what you found that suggests demand — be specific: link, post, pattern]
+**Behavioral demand:** [primary human motive + emotional trigger + why the user acts now]
 **Creativity check:** [Would this appear in a "top 10 passive income" list? If yes, kill it]
 ```
 
@@ -298,3 +356,8 @@ Update `~/.openclaw/workspace/agents/passive-income-scout/state.json`:
 - Update `last_run`
 
 **Do NOT push to Mission Control. Do NOT message JT. Strategist handles both.**
+
+### Niche Intelligence Library Input
+Before promoting any idea tied to an existing JT niche, read the relevant file in `memory/niche-intel/` and use it to sharpen buyer pain, behavioral demand, kill/defer rules, and first revenue event. Do not cite niche intel as evidence unless it includes a recent signal or source; use it as context and guardrail.
+
+When evaluating x402/agentic-commerce ideas, require a real agent task, human buyer value today, agent-readable output, pricing/receipt/spend-control story, and a reason normal API billing is insufficient. Do not promote generic “x402 installation” ideas.

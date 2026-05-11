@@ -1,46 +1,44 @@
 # JT SOMWARU
-New York City | jtsomwaru@gmail.com | linkedin.com/in/jon-trevor-somwaru | jtsomwaru.com
+AI Solutions Architect | AI Implementation Specialist | jtsomwaru@gmail.com | jtsomwaru.com | linkedin.com/in/jon-trevor-somwaru
 
 ## PROFESSIONAL SUMMARY
-AI Solutions Architect and AI Implementation Specialist with 6 years of enterprise customer support backend operations, systems administration, and cross-functional implementation experience at Spectrum Enterprise. Builds customer-facing AI agent workflows, automations, governance layers, and bot performance review systems that connect business operations, backend systems, and human review. Strong fit for Mercury's AI Solutions Architect role through hands-on AI agent orchestration, customer experience strategy, workflow configuration, vendor/tool evaluation, analytics, and change management for support and operations teams.
+AI Solutions Architect with 6+ years of enterprise systems implementation experience and hands-on AI agent deployment across customer workflows, operations dashboards, and governed automation. Designs simple, reliable AI workflows that clarify user needs, escalate safely, and improve operational efficiency without losing trust. Built production agent infrastructure, AI governance patterns, and client automations that connect business process design with technical teams, vendors, and non-technical stakeholders.
 
 ## EXPERIENCE
 
-### AI Implementation Specialist
-**Independent Consulting**, New York City, 2025-Present
-
-- Architected AI agent workflows and human-in-the-loop automations for operations-heavy clients, translating manual support, intake, and exception processes into configurable procedures with review queues, escalation logic, and audit trails.
-- Delivered a property operations dashboard and workflow automation layer for Aya that consolidated scattered operational views, improved follow-up visibility, and led to two follow-on implementation projects from the same anchor client.
-- Built and operate OpenClaw, a production AI operations environment with autonomous agents, scheduled performance checks, cost monitoring, failure alerts, and quality review loops across research, content, job-market, and client delivery workflows.
-- Designed AgentGuard, an AI governance and quality layer using confidence-gated routing, human review, explainability notes, override logging, and audit trails to make AI decisions safer for enterprise workflows.
-- Evaluated and configured AI tools, workflow platforms, and vendor options including n8n, OpenRouter, Claude, GPT, Gemini, Perplexity, Google Workspace, Notion, and Salesforce Agentforce for client and internal use cases.
-- Scoped internal agent co-pilot concepts for research, outreach, client documentation, job matching, market monitoring, and operational exception management, with clear handoffs between AI output and human approval.
+### Independent AI Consultant
+**Self-Employed**, New York NY, September 2025-Present
+- Designed and deployed a construction operations dashboard for a NYC construction management firm: integrated Google Sheets API across 32 buildings and 313 rooms, consolidated 8 operational views into one real-time platform, and triggered immediate follow-on work from the same client
+- Automated real estate listing research and qualification workflow using n8n, StreetEasy inputs, structured review steps, and stakeholder notifications: replaced manual weekly research loops with a repeatable AI-assisted process for property management decisions
+- Built AgentGuard, a production AI governance layer with confidence-based routing at a 70% threshold, human-in-the-loop escalation, audit trail, explainability reports, and override logging for teams that need AI systems to stay accountable
+- Architected and operates 39 autonomous AI agents for research, content generation, job market analysis, crypto intelligence, health tracking, and operations monitoring, with cost controls, quality review loops, and escalation rules
+- Partner with non-technical operators to map workflows, identify automation risk, configure AI-assisted processes, test outputs, and translate findings into clear updates for stakeholders and implementation partners
 
 ### Business Systems Analyst
-**Spectrum Enterprise / Charter Communications**, Stamford, CT, 2019-2025
-
-- Managed backend product catalog configuration and systems implementation work across a $1B+ enterprise services portfolio, coordinating business, product, engineering, sales operations, billing, and support stakeholders.
-- Led cross-functional requirements gathering, testing, launch readiness, and change management for complex product and pricing updates affecting 6+ internal teams and downstream customer support processes.
-- Configured and validated catalog, order, and operational system changes that reduced manual rework risk during enterprise product launches and improved accuracy across quoting, ordering, and support handoffs.
-- Partnered with Product, Engineering, Compliance, Sales Operations, and Support teams to translate ambiguous business needs into system-ready requirements, QA scenarios, release notes, and operational procedures.
-- Performed regular system quality reviews, defect triage, root-cause analysis, and process documentation for backend workflows, giving support teams clearer procedures for customer-impacting changes.
-- Built stakeholder communication rhythms for high-visibility releases, aligning nontechnical business owners and technical teams around scope, dependencies, testing status, and rollout timing.
-
-## SKILLS
-**AI Agents & Chatbots:** Customer-facing AI agents, chatbot workflow design, AI agent procedures, bot performance reviews, prompt engineering, human-in-the-loop escalation, quality coaching, AI governance
-**Support Operations Systems:** Customer support backend operations, CS systems administration, asynchronous support channels, workflow automation, support analytics, change management, operational procedures
-**Platforms & Tools:** Intercom AI concepts, Zendesk AI concepts, Salesforce Agentforce, n8n, Google Workspace, Notion, OpenRouter, Claude, GPT-4, Gemini, Perplexity, REST APIs, SQL fundamentals
-**Implementation & Strategy:** AI strategy roadmap, vendor evaluation, workflow configuration, data source integration, stakeholder communication, cross-functional delivery, security and compliance awareness
-**Analytics & Quality:** Bot QA review, performance monitoring, exception dashboards, audit trails, root-cause analysis, test planning, reporting, process improvement
+**Spectrum Enterprise**, New York NY, 2019-August 2025
+- Led cross-functional systems implementations for a national telecommunications enterprise, coordinating product, sales, operations, and technology teams to deliver system changes across complex stakeholder groups
+- Managed product catalog configuration across Salesforce and supporting systems for enterprise accounts generating over $1B annually, translating product, pricing, and operational requirements into structured system behavior for a national sales organization
+- Coordinated vendor relationships, operational handoffs, and process updates across 1,200+ enterprise account transitions, improving consistency across customer-facing workflows and backend support processes
+- Delivered documentation, training, and stakeholder updates for new system capabilities, reducing adoption friction for operations teams during system rollouts and process changes
 
 ## KEY PROJECTS
-**AgentGuard:** AI governance layer for confidence-gated routing, human-in-the-loop review, override logging, explainability notes, and audit trails. Directly maps to Mercury's need for secure, compliant AI agent workflows and quality review.
-**AgentGuard Quality System:** Designed bot evaluation logic that routes low-confidence or policy-sensitive cases to human review instead of allowing blind automation, creating a practical model for customer support AI coaching and risk control.
-**AgentGuard Audit Trail:** Captured decision rationale, confidence level, reviewer action, and override history so AI outputs can be reviewed, corrected, and improved over time by operations leaders.
+**AgentGuard:** Production AI governance layer for safe AI-assisted decisions. Built confidence scoring, 70% threshold routing, human review queue, audit trail, explainability reporting, and override logging. Demonstrates compliance-aware AI workflow design for regulated and customer-facing environments. Live at https://agentguard-delta.vercel.app.
+
 **Nash Satoshi:** Built production 4-LLM ensemble (Claude, GPT-4, Gemini, Grok) that generates consensus rankings via cross-model validation, demonstrating agent orchestration, model bias mitigation, and AI ops at scale.
-**OpenClaw Operations System:** Runs autonomous agents, cron monitoring, cost controls, recall tooling, and failure detection across daily operations. Demonstrates the same performance review discipline needed for customer-facing AI agents.
-**Aya Operations Dashboard:** Built a client-facing operations dashboard and automation layer for property and construction workflows, consolidating fragmented data sources into clearer owner visibility and action tracking.
+
+**Customer Workflow Automation:** Designed n8n and webhook-based automation patterns for research intake, qualification, escalation, and stakeholder notification workflows. Focused on clear decision paths, reliable handoffs, and human review for ambiguous outputs.
+
+## SKILLS
+**AI Agent Strategy:** Customer-Facing AI Agents, Chatbot Workflow Design, Conversation Flows, Escalation Logic, Bot Quality Review, AI Governance, Human-in-the-Loop Systems
+
+**Workflow Automation:** n8n, Webhook Architecture, Google Sheets API, REST APIs, Workflow Configuration, Process Mapping, Vendor Coordination, Automation QA
+
+**Analytics & Systems:** SQL (working proficiency), Data Tables, Report Analysis, Dashboard Design, Trend Identification, Operational Metrics, Quality Reviews
+
+**Customer Operations:** Customer Support Operations, CS Systems, Change Management, Stakeholder Communication, Cross-functional Collaboration, Training, Documentation
+
+**Technical Communication:** Engineering Partnership, Product Collaboration, Compliance-Aware Implementation, Vendor Management, Executive Updates, Non-Technical Enablement
 
 ## EDUCATION
-Bachelor of Science, Sport Management | Ithaca College | 2018
+Bachelor of Science, Sport Management and Legal Studies | Ithaca College | 2018
 Data Analytics Certificate | Northeastern University | 2019

@@ -1,11 +1,11 @@
 # App Marketing OS — Performance Analysis
 
-Last updated: 2026-05-08
+Last updated: 2026-05-10
 
 ## nash-satoshi / tiktok
 
-Rows: 9
-Baseline views/impressions: 42.4
+Rows: 10
+Baseline views/impressions: 38.2
 Best: Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To Solve. (200 views/impressions)
 
 ### Item Labels + Features
@@ -27,6 +27,8 @@ Best: Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To S
   - features: hook=one_liner_gut_punch; topic=unclear; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
 - **loser** — 0: What Nash Satoshi actually measures, in 5 slides  
   - features: hook=specific_number_unexpected_context; topic=unclear; format=slideshow; specificity=medium; proof=none; cta=no_cta; risk=clean
+- **loser** — 0: Every Pump Has 5 Phases. Most Traders Learn About Mania One Phase Too Late.  
+  - features: hook=specific_number_unexpected_context; topic=game_theory_explainer; format=slideshow; specificity=medium; proof=none; cta=no_cta; risk=clean
 
 ### Winning Feature Pattern
 - format:slideshow (2)
@@ -39,13 +41,14 @@ Best: Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To S
 - specificity:high (1)
 
 ### Losing Feature Pattern
+- format:slideshow (8)
+- proof:none (8)
 - topic:unclear (7)
-- format:slideshow (7)
-- proof:none (7)
 - hook:one_liner_gut_punch (6)
 - specificity:low (6)
-- hook:specific_number_unexpected_context (1)
-- specificity:medium (1)
+- hook:specific_number_unexpected_context (2)
+- specificity:medium (2)
+- topic:game_theory_explainer (1)
 
 ### Recommendation
 - Double down on game_theory_explainer using contradiction with low specificity.
@@ -146,8 +149,8 @@ It's "what's the optimal position given what rational actors
 
 ## vista / tiktok
 
-Rows: 9
-Baseline views/impressions: 195.6
+Rows: 11
+Baseline views/impressions: 160.0
 Best: IMDb gave Midsommar a 7.1. that's the wrong number. (1114 views/impressions)
 
 ### Item Labels + Features
@@ -169,6 +172,8 @@ Best: IMDb gave Midsommar a 7.1. that's the wrong number. (1114 views/impression
   - features: hook=unclear; topic=rating_precision; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
 - **loser** — 0: unknown Vista TikTok post discovered by ReelFarm  
   - features: hook=one_liner_gut_punch; topic=unclear; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
+- **loser** — 0:   
+  - features: hook=unclear; topic=unclear; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
 
 ### Winning Feature Pattern
 - topic:rating_precision (2)
@@ -180,14 +185,14 @@ Best: IMDb gave Midsommar a 7.1. that's the wrong number. (1114 views/impression
 - specificity:low (1)
 
 ### Losing Feature Pattern
-- format:slideshow (6)
-- proof:none (5)
-- specificity:low (4)
-- topic:unclear (3)
-- hook:specific_number_unexpected_context (2)
-- hook:unclear (2)
-- hook:one_liner_gut_punch (2)
-- topic:rating_precision (2)
+- format:slideshow (8)
+- proof:none (7)
+- specificity:low (5)
+- topic:unclear (4)
+- hook:specific_number_unexpected_context (3)
+- hook:unclear (3)
+- topic:rating_precision (3)
+- specificity:medium (2)
 
 ### Recommendation
 - Double down on rating_precision using specific_number_unexpected_context with high specificity.

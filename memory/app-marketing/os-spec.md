@@ -38,6 +38,16 @@ No app should be “built and hoped into visibility.”
 ## Channel Roles
 
 ### TikTok / ReelFarm
+
+### TikTok Shop / Social Commerce Intel
+Role: watch fast-moving commerce patterns that can inform Glow Index, future POD/digital products, affiliate tests, and content hooks.
+
+Rules:
+- Treat TikTok Shop as a validation/distribution channel, not an inventory business by default.
+- Prefer affiliate, POD, digital downloads, paid reports, or app-led commerce. Avoid inventory, shipping, returns, and customer support drag.
+- For Glow Index, use only safe skincare/product-discovery angles: no medical claims, fake results, fake testimonials, or before/after claims.
+- Every commerce idea must map to an owned asset: app, SEO page, email capture, product ranking, printable/template, or reusable content series.
+- Save findings under `memory/app-marketing/competitor-intel/` or passive-income reports; do not create posting/shop automations without explicit approval.
 Role: scalable rented-channel reach. JT runs the actual ReelFarm slideshow automations on his laptop; Eve supports strategy, hook/slide recommendations, performance tracking, and reusable assets.
 
 Use for:
@@ -87,6 +97,45 @@ Use for:
 Rules:
 - Every app gets a small SEO page map before/around launch.
 - Prioritize high-intent comparison and use-case pages.
+
+
+
+### x402 / Agentic Commerce Readiness
+Role: future-facing distribution and monetization lens for products that could become agent-readable or agent-purchasable.
+
+Rules:
+- Treat x402 as a content/product-readiness lens, not a default app feature.
+- Use for API/data/report/workflow-endpoint products where agents might pay per result.
+- Prioritize agent-readable outputs: JSON, markdown, CSV, PDF, API response, webhook, source-cited artifact.
+- Every x402 idea must include receipts, audit trail, spend controls, pricing, docs, auth, and human approval boundaries where relevant.
+- Do not add wallet/payment functionality to JT apps without explicit approval and a clear revenue case.
+- Source: `memory/consulting/agent-ready-revenue-layer/positioning.md`.
+
+### AppKittie / App Store Intelligence
+Role: competitive app-growth intelligence and pattern extraction.
+
+Use for:
+- finding fast-growing apps adjacent to Vista, Glow Index, Nash Satoshi, Action Arena, and future app ideas;
+- extracting hooks, creator/ad formats, screenshots, ASO keywords, IAP/pricing, and landing/store promises;
+- turning competitor patterns into named weekly experiments.
+
+Rules:
+- Read-only. Do not copy creatives or wording; extract structure/pattern only.
+- Treat AppKittie revenue/download figures as directional estimates, not truth.
+- Use small API limits and cache results; list-app calls cost credits per app returned.
+- Save reports under `memory/app-marketing/competitor-intel/`.
+- Do not create a recurring cron until JT provides an AppKittie API key/subscription and one manual report proves signal quality.
+- Every AppKittie insight must map to a concrete experiment in `experiment-calendar.md`, an ASO/screenshot change, or a durable SEO/directory action; otherwise skip it.
+
+
+### Behavioral Demand Lens
+Role: make sure app ideas and marketing tests are not merely useful, but emotionally legible enough for users to act.
+
+Rules:
+- Use `memory/app-marketing/behavioral-demand-lens.md` before generating app-marketing experiments or reviewing passive-income app ideas.
+- Every named experiment should state motive, trigger, belief challenged, identity reinforced, anxiety resolved, and desired action.
+- Do not use dark patterns, fake scarcity, fake authority, medical fear, financial promises, or shame.
+- If a draft is logically correct but emotionally flat, rewrite or skip unless it serves SEO/durable discovery.
 
 ### Competitor Ad Intelligence
 Role: read-only creative intelligence from paid-market signals.

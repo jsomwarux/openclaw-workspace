@@ -359,3 +359,8 @@ Always produce:
 - **Construction adoption/training angle:** DEWALT's AI training gap supports a field-first framing. For construction prospects, lead with mapping the jobsite/admin handoff and training users into the workflow; do not pitch AI as a back-office-only tool.
 - **Specialist positioning urgency:** The Human Agency contech role plus the skills tracker reinforce that AI generalist framing is weakening. Outreach should make JT sound like an implementation specialist with vertical workflow judgment, not a generic AI consultant.
 
+### Weekly urgency angles — added 2026-05-10
+- **Wholesale:** Lead with operational exception queues, not warehouse robotics. Signal: AWG-scale automation plus Augment/Merlin validates the category, but mid-market distributors need vendor follow-up, catalog cleanup, PO exceptions, and ETA handoffs that work with the systems they already have.
+- **Property management:** Do not pitch "better PMS features." Pitch the connective layer around AppFolio/Buildium/Rent Manager: maintenance triage, leasing follow-up, owner updates, and exception dashboards that keep work from dying between inboxes and portals.
+- **Construction:** AI demand is no longer the objection. Adoption is. Use field workflow mapping and training-heavy implementation language: "before the tool, map the jobsite handoff."
+- **AI enablement roles:** Job market demand is shifting toward AI adoption operating systems: champions networks, office hours, adoption analytics, manager toolkits, and content lifecycle. For JT's own positioning, use "AI implementation + adoption ops" instead of generic AI consulting when writing career/outreach copy.

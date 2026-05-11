@@ -101,13 +101,32 @@ Current defaults:
    - hook strength 1–10
    - platform fit 1–10
    - authenticity 1–10
-13. Only approve if all scores are ≥7.
+   - behavioral trigger 1–10: what feeling does it activate — curiosity, identity, comparison, control, reassurance, buyer protection, disagreement, or fear of waste?
+   - action clarity 1–10: what should the user want to do next?
+13. Only approve if hook/platform/authenticity are ≥7 and behavioral trigger + action clarity are each ≥6. If the post is logically accurate but emotionally flat, rewrite or skip.
 14. Save drafts to the current compatibility queue unless/until OS queue path is created.
 15. Append a dated run note to `memory/app-marketing/weekly-scoreboard.md`.
 16. If new post registry entries or metrics were added, run `python3 scripts/app_marketing_collect_metrics.py` first; if manual rows were added directly to the inbox, run `python3 scripts/app_marketing_metrics.py`.
 17. Run `python3 scripts/app_marketing_analyze.py` after metrics updates so `optimization-rules.md` stays current.
 18. Run `python3 scripts/app_marketing_experiment_calendar.py` after analysis so the next generation cycle has current named experiments.
 19. Summarize for JT with counts, skips, and measurement blocker.
+
+
+## Behavioral Demand Lens
+Before approving any app-marketing draft, state the psychology mechanic in the saved run note or draft metadata:
+- What feeling does this trigger?
+- What belief does it challenge?
+- What identity does it reinforce?
+- What anxiety does it resolve?
+- What comparison or disagreement does it invite?
+- What action should the user want to take next?
+
+Examples:
+- Vista: precision, taste identity, disagreement, comparison.
+- Glow Index: skepticism, buyer protection, control, evidence over hype.
+- Nash Satoshi: uncertainty reduction, contrarian confidence, pattern recognition.
+
+Do not use manipulative fear, fake scarcity, fake authority, medical claims, financial promises, or shame.
 
 ## Queue Compatibility
 Until migration is complete, write to:
@@ -142,3 +161,11 @@ Review:
 
 If already generated this week, respond exactly:
 `ALREADY_RAN_THIS_WEEK`
+
+## Niche Intelligence Library Input
+For app/product drafts, read relevant `memory/niche-intel/` files when they exist:
+- Glow Index → `memory/niche-intel/skincare-glow.md`
+- Vista/Nash/app growth → `memory/niche-intel/app-marketing.md`
+- agent-native/passive-income app angles → `memory/niche-intel/agent-native-apps.md`
+- sports products → `memory/niche-intel/sports-fantasy.md`
+Use these for buyer/user pains, behavioral demand, content angles, and kill/defer rules. Do not force niche intel into posts when it does not improve specificity.

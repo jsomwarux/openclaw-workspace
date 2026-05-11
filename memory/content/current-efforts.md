@@ -73,3 +73,24 @@ Current efforts do **not** have to anchor every post. They should prevent drift,
 4. Consulting posts should usually map to one of: diagnostic, exception visibility, local-first workflow, buyer-channel clarity, family-office/property ops, implementation judgment, or a current high-performing niche conversation.
 5. App/product posts should usually map to one of: distribution loop, user feedback, rankings engine, app marketing system, AI-search/SEO surface, or a current high-performing indie/app marketing conversation.
 6. Skip a post rather than filling a slot with stale content.
+
+## AI Ops Teardowns — Consulting Proof Engine
+- Status: active as of 2026-05-10.
+- Purpose: turn trending company/category research into buyer-relevant workflow teardowns and selective n8n templates.
+- First lane: Altmark-adjacent property/family-office workflows: insurance expiration, rent delinquency readiness, maintenance/vendor routing, owner summaries.
+- Content rule: frame as hypothetical/public-category teardown unless the company is an actual client; never expose private client details.
+- Source: `memory/consulting/ai-ops-teardowns/`.
+- Delivery contract: Monday morning gets one review-ready LinkedIn + X bundle; Wednesday deepens if a real n8n template/screenshot exists; Friday gets a compressed tactical follow-up only if there is a fresh angle.
+
+## Niche Intelligence Library
+- Status: active as of 2026-05-10.
+- Source: `memory/niche-intel/`.
+- Purpose: concise, agent-readable niche context for consulting teardowns, outreach, app/passive-income scoring, and content specificity.
+- Rule: use niche intel only when it changes a decision, hook, workflow, build idea, or kill/defer call; do not turn it into an encyclopedic vault.
+
+## x402 / Agentic Commerce Content Pillar
+- Status: active as of 2026-05-10.
+- Purpose: post 1–2x/week max about x402 and agentic commerce from an operator-builder perspective, not crypto shill framing.
+- Best angles: APIs becoming agent-purchasable; agents needing budgets/receipts/audit trails; narrow paid endpoints before broad autonomous shopping; services agents can discover/pay/call/cite.
+- Consulting guardrail: do not pitch “x402 installation” broadly. If inbound appears, frame as Agent-Ready Revenue Layer / x402 Readiness Sprint for API/data/product companies.
+- Source: `memory/consulting/agent-ready-revenue-layer/positioning.md`; draft pack: `memory/content/bank/2026-05-10/x402-agentic-commerce-content-pack.md`.

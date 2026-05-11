@@ -175,7 +175,7 @@
 ## Client Outcomes Section — jtsomwaru.com — 2026-04-01
 **What:** Added an anonymized client case study section above the portfolio grid on jtsomwaru.com
 **For:** internal (jtsomwaru.com)
-**Outcome:** Aya outcomes now visible above fold — construction tracker (15-20 hrs/week saved) + StreetEasy scraper (10+ hrs/week saved). Client name kept anonymous.
+**Outcome:** Aya outcomes visible above fold with conservative metrics — construction tracker (15-20 hrs/week saved) + StreetEasy scraper (4 hrs every 2 weeks). Client name kept anonymous.
 **Demonstrates:** portfolio storytelling, converting client work into social proof
 **Content angle:** Not a strong standalone post angle — no non-obvious problem. Skip for content.
 **Status:** complete
@@ -227,3 +227,19 @@
 - **Demonstrates:** App Marketing OS durable discovery loop: metric-backed content insight → SEO brief → implemented page → sitemap/llms exposure.
 - **Content angle:** Social winners should become durable search assets, not just more posts.
 - **Status:** complete locally and pushed; verify production after Vercel deploy.
+
+## jtsomwaru.com AI Operations Systems Overview — 2026-05-10
+- **What:** Added dense “Systems I Build” capability matrix and compact “AI Ops Teardowns” section to the homepage.
+- **For:** JT consulting / portfolio site.
+- **Outcome:** Homepage now shows operating range faster without adding more full project cards or turning the site into a tool gallery.
+- **Demonstrates:** Buyer-facing positioning, AI ops workflow framing, consulting proof packaging.
+- **Content angle:** “Don’t show tools; show the operating surfaces buyers feel.”
+- **Status:** complete; pushed to GitHub commit `5c163af`, Vercel deploy should auto-trigger.
+
+## jtsomwaru.com StreetEasy Metric Correction — 2026-05-10
+- **What:** Tightened homepage client outcome metric from “10+ hrs/week” to “4 hrs / 2 weeks” to match project detail data.
+- **For:** JT consulting / portfolio site.
+- **Outcome:** Higher trust; site no longer overclaims StreetEasy scraper impact.
+- **Demonstrates:** Proof discipline and buyer-facing credibility.
+- **Content angle:** Conservative proof beats inflated metrics.
+- **Status:** complete; build/lint passed; pushed commit `a164e4b`.

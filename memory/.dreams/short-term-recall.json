@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-08T20:11:43.679Z",
+  "updatedAt": "2026-05-11T00:14:02.793Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -1143,18 +1143,20 @@
       "endLine": 210,
       "source": "memory",
       "snippet": "- `health-constraint-layer.md` now includes max deep-work load and protected task categories. - Weekly cron prompt now enforces Eve-autonomous/JT-only/blocked labels and avoids cron bloat. ## Altmark Group Client Update — 7:56 PM - JT reported active AI implementation work for Altmark Group (`https://www.altmarkgroup.com/`). - Yair, CFO, reached out on Twitter asking whether JT could build automation systems; JT said yes, met at Altmark's Bronx office, scoped workflows, wrote proposal, and began delivery. - Current status: insurance expiration workflow finished; dedicated PC set up and planned for delivery to office next week; rent delinquency workflow waiting on 50% deposit before work",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-02T11:42:40.126Z",
-      "lastRecalledAt": "2026-05-02T11:42:40.126Z",
+      "lastRecalledAt": "2026-05-10T23:33:01.220Z",
       "queryHashes": [
-        "507f676613aa"
+        "507f676613aa",
+        "df59122f6250"
       ],
       "recallDays": [
-        "2026-05-02"
+        "2026-05-02",
+        "2026-05-10"
       ],
       "conceptTags": [
         "health-constraint-layer.md",
@@ -1771,24 +1773,27 @@
       "endLine": 74,
       "source": "memory",
       "snippet": "- JT corrected Eve: Action Arena is NOT the Dynasty Fantasy Football Simulator. Action Arena = fantasy football league structure + sports betting strategy. Players join leagues, get $100/week fake budget, and compete on profit through straight bets, parlays, and teasers. No real money is ever wagered. - Updated MEMORY.md and docs/agents/mistakes-log-recent.md with the correction and regression check. - Strategy note: future app-marketing plan must review existing Reddit/X/vibe systems before proposing changes, and Reddit plans must respect strict anti-self-promotion norms. ## App Marketing OS — Initial Build - Proceeded with automated app marketing priority after JT approved optimal plan. -",
-      "recallCount": 5,
+      "recallCount": 7,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 5,
+      "totalScore": 7,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T00:32:03.853Z",
-      "lastRecalledAt": "2026-05-08T20:11:43.679Z",
+      "lastRecalledAt": "2026-05-11T00:08:05.935Z",
       "queryHashes": [
         "ffbc682bf3ef",
         "519d1f44ada4",
         "c0bc4d41ab52",
         "d9dd47e7d08c",
-        "522e77ccf4e9"
+        "522e77ccf4e9",
+        "db66da880a93",
+        "397a1cd10b14"
       ],
       "recallDays": [
         "2026-05-06",
         "2026-05-07",
-        "2026-05-08"
+        "2026-05-08",
+        "2026-05-10"
       ],
       "conceptTags": [
         "100/week",
@@ -1808,20 +1813,22 @@
       "endLine": 206,
       "source": "memory",
       "snippet": "Lib (7): lib/types.ts, lib/db.ts, lib/scoring.ts, lib/utils.ts, lib/stripe.ts, lib/subscription.ts, lib/beta.ts, lib/progress-store.ts App Pages (8): app/layout.tsx, app/page.tsx, app/rankings/page.tsx, app/rankings/[id]/page.tsx, app/vote/page.tsx, app/admin/page.tsx, app/analysis-status/page.tsx, app/sign-in/[[...sign-in]]/page.tsx, app/sign-up/[[...sign-up]]/page.tsx API Routes (14): trigger-analysis, analysis-callback, votes (GET/POST), votes/[id]/upvote, votes/add-product, votes/reject, products (GET), products/search, analysis-status, batch-analyze, fetch-images, clear-stuck, admin/login, stripe/checkout, stripe/portal, stripe/webhook Components (14): Header, ProductCard, RankingsCl",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T00:32:03.853Z",
-      "lastRecalledAt": "2026-05-07T16:27:05.827Z",
+      "lastRecalledAt": "2026-05-11T00:08:05.935Z",
       "queryHashes": [
         "ffbc682bf3ef",
-        "519d1f44ada4"
+        "519d1f44ada4",
+        "397a1cd10b14"
       ],
       "recallDays": [
         "2026-05-06",
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-10"
       ],
       "conceptTags": [
         "lib/types.ts",
@@ -2027,21 +2034,24 @@
       "endLine": 199,
       "source": "memory",
       "snippet": "- Added `scripts/app_marketing_experiment_calendar.py` and generated `memory/app-marketing/experiment-calendar.md`. - Current experiments: Vista rating precision retest, Nash ranking/model update, Nash model-consensus slideshow. - Patched `agents/app-marketing/product-content/AGENT.md` so every generated item must map to an experiment or skip with `NO_EXPERIMENT_MATCH`. - Patched weekly App Marketing scoreboard cron to run experiment calendar after metrics/analyze and source next tests from it. ## App Marketing Durable Discovery 13:20 - Verified app-marketing scripts and experiment calendar after previous changes: registry 29 rows, metrics 28 rows, 3 active experiments. - Added durable disc",
-      "recallCount": 3,
+      "recallCount": 5,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3,
+      "totalScore": 5,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T19:24:20.630Z",
-      "lastRecalledAt": "2026-05-08T20:11:43.679Z",
+      "lastRecalledAt": "2026-05-11T00:08:05.935Z",
       "queryHashes": [
         "c0bc4d41ab52",
         "d9dd47e7d08c",
-        "522e77ccf4e9"
+        "522e77ccf4e9",
+        "db66da880a93",
+        "397a1cd10b14"
       ],
       "recallDays": [
         "2026-05-07",
-        "2026-05-08"
+        "2026-05-08",
+        "2026-05-10"
       ],
       "conceptTags": [
         "ranking/model",
@@ -2052,6 +2062,132 @@
         "added",
         "scripts",
         "generated"
+      ]
+    },
+    "memory:memory/2026-04-27.md:332:351": {
+      "key": "memory:memory/2026-04-27.md:332:351",
+      "path": "memory/2026-04-27.md",
+      "startLine": 332,
+      "endLine": 351,
+      "source": "memory",
+      "snippet": "Closed stale Nash launch-day tasks, duplicate RouteSafe task, old Sports GM snapshot task already completed, and superseded AI video POC. Parked lower-fit speculative ideas below active assets. ## 19:11 — Passive-income tab purpose corrected JT clarified the passive-income tab is not a normal task-pruning board; it is the portfolio of passive-income ideas generated by the passive income agent. Correction made: - Reopened/restored parked/speculative ideas as visible `todo` items where possible. - Added `[Score X.X]` prefixes and descriptions that state idea type, first action if revived, why it scores where it does, and next gate. - Kept active ideas at top, but preserved lower-scoring idea",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-10T15:56:39.773Z",
+      "lastRecalledAt": "2026-05-10T23:20:38.640Z",
+      "queryHashes": [
+        "7274917815ee",
+        "fd2006e3d141"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "launch-day",
+        "lower-fit",
+        "passive-income",
+        "task-pruning",
+        "reopened/restored",
+        "parked/speculative",
+        "x.x",
+        "lower-scoring"
+      ]
+    },
+    "memory:memory/2026-04-30.md:235:246": {
+      "key": "memory:memory/2026-04-30.md:235:246",
+      "path": "memory/2026-04-30.md",
+      "startLine": 235,
+      "endLine": 246,
+      "source": "memory",
+      "snippet": "- JT reported Passive $ tab stuck on Loading. Root cause: page relied on Convex client query/sync path, while the reliable data source is `/api/passive-income`; the API returned 38 ideas but UI stayed in loading state when Convex query did not resolve. - Patched `mission-control/app/passive-income/page.tsx` to load from `/api/passive-income` directly, keep Sync button as API reload, and show an explicit error/retry state instead of infinite loading. - Verified: `npx tsc --noEmit` passes; `/api/passive-income` returns 38 ideas; `/passive-income` serves patched page and Next logs show API calls succeeding. ## Heartbeat 8:47 PM - Cost alerts: clear (`[]`). - Cron health: checked all 49 jobs. N",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-10T15:56:39.773Z",
+      "lastRecalledAt": "2026-05-10T23:20:38.640Z",
+      "queryHashes": [
+        "7274917815ee",
+        "fd2006e3d141"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "query/sync",
+        "api/passive-income",
+        "error/retry",
+        "passive-income",
+        "reported",
+        "passive",
+        "tab",
+        "stuck"
+      ]
+    },
+    "memory:memory/2026-04-25.md:19:25": {
+      "key": "memory:memory/2026-04-25.md:19:25",
+      "path": "memory/2026-04-25.md",
+      "startLine": 19,
+      "endLine": 25,
+      "source": "memory",
+      "snippet": "- Mission Control findings: API reachable; 250 total tasks, 180 open. Open tasks skew heavily toward Consulting (97), Skills (26), Job Market (25), Passive income (15). Duplicate/stale tasks observed, including duplicate HubSpot MCP demo task. Guyana appears underrepresented on task board despite planned integration. - Vibe/TikTok findings: TikTok LaunchAgents/processes did not appear actively running, but active `vibe-post-*` crons remain and may still generate TikTok/slideshow outputs depending on payload. Full TikTok pause requires inspecting/patching those payloads. - Fabrication risk noted: prior TikTok backup account and claimed metrics remain unverified; treat `@nashsatoshibackup` and",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-10T23:29:32.529Z",
+      "lastRecalledAt": "2026-05-10T23:29:32.529Z",
+      "queryHashes": [
+        "1d82abc06673"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "backup",
+        "duplicate/stale",
+        "vibe/tiktok",
+        "launchagents/processes",
+        "vibe-post",
+        "tiktok/slideshow",
+        "inspecting/patching",
+        "mission"
+      ]
+    },
+    "memory:memory/2026-02-21.md:1:36": {
+      "key": "memory:memory/2026-02-21.md:1:36",
+      "path": "memory/2026-02-21.md",
+      "startLine": 1,
+      "endLine": 36,
+      "source": "memory",
+      "snippet": "# 2026-02-21 Daily Notes ## Setup Session (afternoon) ### Browser Automation - Added browser rules to AGENTS.md (no financial sites, no form submissions, announce before browsing, stop on CAPTCHA/MFA) - Chrome profile at `~/.openclaw/browser-profile` — logged into Google + GitHub - Refresh needed every ~10 days ### Knowledge Base System Built - SQLite + vector embeddings at `~/.openclaw/workspace/knowledge/kb.sqlite` - CLI: `bun kb.ts <cmd>` from knowledge/ dir - Embedding model: Xenova/all-MiniLM-L6-v2 (384 dims, local, ~22MB first-run download) - Commands: add, search, list, show, delete, index, embed, stats - Auto-indexer splits markdown files by headings, tracks mtime to avoid re-inde",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-11T00:14:02.793Z",
+      "lastRecalledAt": "2026-05-11T00:14:02.793Z",
+      "queryHashes": [
+        "9134c894a1b1"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "embedding",
+        "embeddings",
+        "agents.md",
+        "captcha/mfa",
+        "openclaw/browser-profile",
+        "kb.ts",
+        "xenova/all-minilm-l6-v2",
+        "first-run"
       ]
     }
   }

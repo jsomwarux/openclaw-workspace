@@ -83,6 +83,45 @@ Score these ideas with the specific GTA VI lens below. Do not treat hype as dema
 
 **Default recommendation posture:** watch/research until a specific shovel wedge passes the normal saturation/build/autonomy tests. Do not mark 🟢 solely because GTA VI attention is huge.
 
+### B3. Agent-Native Business Model Fit Check
+For any idea where agents might be users, buyers, or distribution channels, explicitly assess:
+- Is the agent completing a repeated workflow with a clear outcome, or merely wrapping chat?
+- Would an autonomous agent rationally call/buy this mid-task on behalf of a human or business? Name the exact task.
+- Is the output agent-readable: JSON, markdown, CSV, PDF, webhook, API response, or signed/source-cited artifact?
+- Is there a narrow approval boundary where a human can trust/approve the output?
+- Is provenance/audit trail needed for buyer trust? If yes, include it in the product, not as an afterthought.
+- Could pricing be outcome-based, per-result, or per-API-call instead of subscription-based?
+- Does the product expose agent-friendly surfaces: llms.txt, API docs, MCP/OpenAPI, stable schemas, examples, clear pricing, and auth?
+- Does it fit one of JT's strongest lanes: spreadsheet-to-agent desk, data refinery, rule-change monitor, agent trust layer, vertical memory vault, ops-heavy SMB workflow, or app-marketing intelligence?
+- What is harder here: building the product or earning buyer trust/distribution? If trust/distribution is the main blocker, mark WATCH unless there is a warm buyer/channel.
+
+Score agent-native opportunities higher when they serve both humans today and agents tomorrow. Score them lower when they require agentic commerce to be mainstream before any human buyer cares.
+
+
+### B4. TikTok Shop / Social Commerce Fit Check
+For any idea with TikTok Shop, affiliate commerce, POD, or social-commerce upside, explicitly assess:
+- Is this affiliate/POD/digital-first, or does it require inventory, shipping, returns, and customer support? Prefer affiliate/POD/digital.
+- What is the short-form content mechanic: demo, before/after, ranking, comparison, reaction, myth-busting, or creator challenge?
+- Does it connect to an existing JT asset: Glow Index, Vista, Nash, Sports GM, App Marketing OS, content engine, or consulting proof?
+- What are the compliance risks: medical/beauty claims, financial claims, counterfeit/IP, FTC affiliate disclosure, platform policy?
+- Is the revenue event clear: affiliate commission, digital download, POD margin, bundle sale, paid report?
+- Does it compound outside TikTok Shop through SEO, email capture, app usage, or reusable content? If not, downgrade.
+
+Default posture: WATCH unless the idea is low-support, high-margin, content-native, and tied to an owned JT system. Do not recommend inventory-heavy ecommerce as passive income.
+
+
+### B5. Behavioral Demand Fit Check
+For every idea, identify the motive that makes a real person care before they need it. Do not reward generic usefulness. Reward felt urgency.
+
+Assess:
+- **Primary motive:** status, taste identity, fear of loss/waste, control/certainty, embarrassment avoidance, curiosity/comparison, self-improvement, belonging, convenience, buyer protection, or skepticism.
+- **Emotional trigger:** what feeling makes the user click, save, share, buy, or return?
+- **Identity fit:** what does using this say about the user? Smarter buyer, sharper fan, better operator, safer parent, more prepared collector, etc.
+- **Action urgency:** why would they act this week instead of nodding and forgetting?
+- **Ethical boundary:** reject/downgrade shame, fake scarcity, medical fear, financial hype, or manipulative dark patterns.
+
+Default: if an idea is useful but emotionally flat, cap the verdict at WATCH unless SEO demand or buyer pain is extremely strong.
+
 ### C. Build Reality Check (JT's stack specifically)
 - What exactly does the coding agent build? List components: frontend, backend, data pipeline, AI integration, payment processing
 - Which of JT's existing tools does this use? (OpenClaw crons, n8n workflows, Claude API, low-cost AI vision models, Next.js, Replit, Printful API)
@@ -122,18 +161,24 @@ For visual ideas, include a short `Vision Fit` note before the scorecard: model 
 
 | Dimension | What it measures | Weight |
 |---|---|---|
-| **Longevity** | Will this work in 3-5 years? Is demand secular, not trendy? | 20% |
-| **Autonomy** | Zero-touch after launch? No customer service queue, no manual work? | 20% |
-| **Build feasibility** | Realistic with JT's actual stack in ≤4 weeks? | 15% |
-| **Marketing leverage** | Does the product generate its own marketing? SEO + agent automation possible? | 15% |
-| **Revenue ceiling** | Realistic solo revenue at maturity ($0=1, $1K=4, $3K=6, $10K=8, $50K+=10) | 15% |
-| **Agent-purchasable fit** | Could an autonomous agent rationally buy this mid-task via Stripe Link/agent wallet? Is the output instant, narrow, and agent-readable? | 5% bonus lens, not a core override |
-| **Uniqueness** | Would this appear in a "top 10 passive income" list? (Yes=1, No=10) | 10% |
-| **Competition weakness** | How beatable are existing players? | 5% |
+| **Longevity** | Will this work in 3-5 years? Is demand secular, not trendy? | 18% |
+| **Autonomy** | Zero-touch after launch? No customer service queue, no manual work? | 18% |
+| **Build feasibility** | Realistic with JT's actual stack in ≤4 weeks? | 14% |
+| **Marketing leverage** | Does the product generate its own marketing? SEO + agent automation possible? | 14% |
+| **Revenue ceiling** | Realistic solo revenue at maturity ($0=1, $1K=4, $3K=6, $8K=8, $25K+=10) | 14% |
+| **Behavioral demand** | Does a real human feel status, fear-of-waste, curiosity, control, identity, reassurance, comparison, or urgency strongly enough to act? | 10% |
+| **Uniqueness** | Would this appear in a "top 10 passive income" list? (Yes=1, No=10) | 8% |
+| **Competition weakness** | How beatable are existing players? | 4% |
+
+Bonus lenses — apply after the 100-point core score, but never let a weak core idea become BUILD by bonus alone:
+| Bonus lens | What it measures | Max impact |
+|---|---|---|
+| **Agent-native fit** | Could an autonomous agent rationally use/buy this mid-task? Is the output instant, narrow, source-cited, and agent-readable? Does it serve humans today and agents tomorrow? | +0.3 |
+| **TikTok Shop / social-commerce fit** | Could short-form commerce create fast revenue without inventory/support drag? Is it affiliate/POD/digital-first and tied to an owned JT content/app system? | +0.3 |
 
 Note: JT stack leverage is **baked into Build Feasibility** — a score of 9+ requires using his existing infrastructure meaningfully.
 
-**Overall score** = weighted average of above.
+**Overall score** = core weighted average (100%) + optional bonus lenses, capped at +0.6 total. An idea still needs autonomy, build feasibility, uniqueness, and value-proposition gates to earn BUILD.
 
 ---
 
@@ -331,3 +376,8 @@ A 9/10 means: "JT should drop what he's doing and build this Monday." A 6/10 mea
 Don't give 8s to be nice. The overnight agent or JT's time will be spent on whatever gets 🟢 — bad recommendations waste real resources.
 
 **The levelsio test**: Before finalizing any 🟢 verdict, ask — "Could I imagine this appearing on pieter's income dashboard in 12 months?" If yes, it's a real recommendation. If you're stretching, it's a 🟡.
+
+### Niche Intelligence Library Input
+Before assigning BUILD/WATCH/PASS for an idea tied to property/family-office, construction, wholesale, skilled trades, skincare/Glow, app marketing, agent-native apps, or sports/fantasy, read the relevant `memory/niche-intel/` file. Use its kill/defer rules, objections, and proof assets to avoid over-scoring logically useful but poorly positioned ideas.
+
+When evaluating x402/agentic-commerce ideas, require a real agent task, human buyer value today, agent-readable output, pricing/receipt/spend-control story, and a reason normal API billing is insufficient. Do not promote generic “x402 installation” ideas.

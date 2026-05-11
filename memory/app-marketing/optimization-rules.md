@@ -1,6 +1,6 @@
 # App Marketing OS — Optimization Rules
 
-Last updated: 2026-05-08
+Last updated: 2026-05-10
 
 Use this file before generating future app/product content.
 
@@ -16,13 +16,14 @@ Use this file before generating future app/product content.
 - topic:model_consensus (1 winner rows)
 - specificity:high (1 winner rows)
 ### Avoid / Rework
+- format:slideshow (8 loser rows)
+- proof:none (8 loser rows)
 - topic:unclear (7 loser rows)
-- format:slideshow (7 loser rows)
-- proof:none (7 loser rows)
 - hook:one_liner_gut_punch (6 loser rows)
 - specificity:low (6 loser rows)
-- hook:specific_number_unexpected_context (1 loser rows)
-- specificity:medium (1 loser rows)
+- hook:specific_number_unexpected_context (2 loser rows)
+- specificity:medium (2 loser rows)
+- topic:game_theory_explainer (1 loser rows)
 ### Generation Instruction
 - Generate new posts by reusing the winning structure/topic/specificity, but change the wording and example.
 - If using a losing topic, add specificity/proof/tension before approving.
@@ -59,14 +60,14 @@ Use this file before generating future app/product content.
 - hook:unclear (1 winner rows)
 - specificity:low (1 winner rows)
 ### Avoid / Rework
-- format:slideshow (6 loser rows)
-- proof:none (5 loser rows)
-- specificity:low (4 loser rows)
-- topic:unclear (3 loser rows)
-- hook:specific_number_unexpected_context (2 loser rows)
-- hook:unclear (2 loser rows)
-- hook:one_liner_gut_punch (2 loser rows)
-- topic:rating_precision (2 loser rows)
+- format:slideshow (8 loser rows)
+- proof:none (7 loser rows)
+- specificity:low (5 loser rows)
+- topic:unclear (4 loser rows)
+- hook:specific_number_unexpected_context (3 loser rows)
+- hook:unclear (3 loser rows)
+- topic:rating_precision (3 loser rows)
+- specificity:medium (2 loser rows)
 ### Generation Instruction
 - Generate new posts by reusing the winning structure/topic/specificity, but change the wording and example.
 - If using a losing topic, add specificity/proof/tension before approving.
