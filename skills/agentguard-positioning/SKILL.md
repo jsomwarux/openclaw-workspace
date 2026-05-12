@@ -28,6 +28,48 @@ AgentGuard is a production-deployed responsible AI governance layer that demonst
 
 ---
 
+
+## Enterprise Agent Architecture Frame
+
+Use the JPM “Ask David” pattern as validation, not as a claim that AgentGuard is JPM-scale.
+
+The production architecture buyers are converging on:
+1. **Supervisor** routes the request and selects the workflow path.
+2. **Specialists** retrieve documents, check structured data, analyze, draft, or update systems.
+3. **Judge** checks confidence, source support, completeness, and risk.
+4. **Human** approves, overrides, handles exceptions, and remains accountable.
+
+AgentGuard maps to the **judge + human accountability layer**:
+- confidence score decides auto-route vs review queue
+- review queue handles low-confidence or risky cases
+- override reason captures human judgment
+- audit log preserves the decision trail
+- report endpoint turns raw logs into governance metrics
+
+Best line:
+> “Most agent demos show the specialists. AgentGuard shows the control layer that decides when the specialists can be trusted.”
+
+Use this when positioning AgentGuard for enterprise AI, regulated workflows, or consulting prospects worried about mistakes. Do not imply AgentGuard is a full multi-agent research system unless the demo is expanded.
+
+
+
+## Production AI Stack Checklist Frame
+Use the techNmak “9-layer production AI architecture” signal as buyer education, not as a claim that every SMB needs a giant stack.
+
+The practical checklist:
+- retrieval/RAG and source freshness
+- query rewriting/decomposition
+- routing across tools/agents
+- memory/context boundaries
+- semantic cache/reuse
+- specialist tools/agents
+- judge/eval layer
+- prompt registry/versioning
+- observability, audit, cost, recovery, and human overrides
+- deployment/runtime/security boundaries
+
+Use this as a scoping checklist, not a mandate. Small internal prototypes do not need all layers. AgentGuard is strongest in the control layers: judge/eval, confidence routing, human review, audit trail, reporting, and override capture. Position it as the control surface that makes the other layers safe enough to operate.
+
 ## Interview Talking Points
 
 ### 1. Confidence-Based Routing — The Core Governance Pattern

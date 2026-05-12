@@ -244,3 +244,5 @@ _Emerging conversations JT hasn't posted about yet but has the credibility to. S
 
 [2026-05-09] OpenClaw v2026.5.9-beta.1 — Beta release shows agent platforms moving toward safer runtime identity, memory tool allowlists, secret redaction, and Codex harness packaging; strong angle for “AI agents need operating systems, not prompts.” (source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.9-beta.1)
 [2026-05-09] OpenRouter Gemini 3.1 Flash Lite + Ring-2.6-1T — Cheap/free agent-capable models create a practical angle on routing boring cron work to lower-cost models while reserving premium models for judgment. (source: https://openrouter.ai/api/v1/models)
+
+- **Supervisor + specialist + judge + human is the enterprise agent pattern:** JPMorgan's Ask David discussion reinforces that serious agent systems are not “one chatbot with tools.” The production pattern is orchestration, specialist work, evaluation, then human accountability. For JT's consulting, the strongest wedge is the judge/handoff layer: confidence, exception routing, audit trail, and clear ownership.

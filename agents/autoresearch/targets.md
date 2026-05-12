@@ -51,6 +51,8 @@
 | passive-income-strategist | agents/passive-income-strategist/AGENT.md | checklists/passive-income-strategist.md | pending | — | — | 2026-05-03 |
 | skills-researcher | agents/skills-researcher/AGENT.md | checklists/skills-researcher.md | pending | — | — | 2026-05-03 |
 | spanish-daily-lesson | cron:babd905a-1098-49dd-8700-772fef14f817 | checklists/spanish-daily-lesson.md | pending | — | — | 2026-05-09 |
+| workflow-skillify | skills/workflow-skillify/SKILL.md | checklists/workflow-skillify.md | pending | — | — | 2026-05-11 |
+| high-stakes-draft-eval | skills/high-stakes-draft-eval/SKILL.md | checklists/high-stakes-draft-eval.md | pending | — | — | 2026-05-11 |
 
 ## Status values
 - `pending` — checklist written, not yet run

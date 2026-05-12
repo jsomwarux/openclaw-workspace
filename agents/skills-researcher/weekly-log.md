@@ -21,3 +21,4 @@
 - Fits: Eve/cost tracker/model routing.
 - First action: run a one-off model smoke test for structured summary + tool-call compatibility, without changing defaults.
 - MC quality gate: PASS — specific immediate experiment with potential cost impact.
+[2026-05-11] daily scan — no critical findings. KB'd: OpenClaw v2026.5.10-beta.3 beta notes; OpenRouter free/cheap models; n8n-mcp reminder; property-management AI signals; MCP security/monitoring signals.

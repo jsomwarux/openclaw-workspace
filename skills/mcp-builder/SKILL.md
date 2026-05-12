@@ -23,7 +23,12 @@ Creating a high-quality MCP server involves four main phases:
 #### 1.1 Understand Modern MCP Design
 
 **API Coverage vs. Workflow Tools:**
-Balance comprehensive API endpoint coverage with specialized workflow tools. Workflow tools can be more convenient for specific tasks, while comprehensive coverage gives agents flexibility to compose operations. Performance varies by client—some clients benefit from code execution that combines basic tools, while others work better with higher-level workflows. When uncertain, prioritize comprehensive API coverage.
+Balance comprehensive API endpoint coverage with specialized workflow tools. Workflow tools can be more convenient for specific tasks, while comprehensive coverage gives agents flexibility to compose operations. Performance varies by client—some clients benefit from code execution that combines basic tools, while others work better with higher-level workflows. When building a general-purpose MCP server, keep broad coverage; when building for JT/Eve repeated operational work, prioritize the compound workflow tools agents will actually call.
+
+
+
+**Agent-native CLI before raw MCP sprawl:**
+For repeated operational workflows, first check whether an existing OpenClaw tool/skill/script can be improved or wrapped. If not, ask whether the better artifact is a local CLI/helper with compound commands, cache/mirror support, terse agent output, and explicit auth/safety gates. MCP should expose useful workflows, not just a bag of raw endpoints. If the workflow needs history, joins, diffs, drift checks, or fast repeated queries, consider a local SQLite/cache mirror and then expose the compound command through MCP if needed. Use `templates/agent-native-cli-template.md` for design.
 
 **Tool Naming and Discoverability:**
 Clear, descriptive tool names help agents find the right tools quickly. Use consistent prefixes (e.g., `github_create_issue`, `github_list_repos`) and action-oriented naming.

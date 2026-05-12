@@ -177,6 +177,21 @@ Resources shared:
 
 Use `--save` flag or save manually to `~/clawd/drafts/x-research-{topic-slug}-{YYYY-MM-DD}.md`.
 
+
+
+## Research Engine Output Loop
+For substantive X research, do not stop at saved snippets. Compress the research into a decision, reusable asset, task, draft, or explicit skip.
+
+After synthesis, fill or mentally apply `templates/research-engine-output-loop-template.md`:
+- What is the one useful pattern, decision, or warning?
+- Where should it route: daily note, consulting wiki, skill/checklist/template, Mission Control task, content draft, outreach/prospect note, or nowhere?
+- Did it create an action, reusable asset, or clearer decision?
+- What files/tasks changed so future sessions can observe the update?
+- Are source URLs/file paths recorded?
+- If creating a Mission Control task, does it have a concrete owner, first action, and done state? Do not create Mission Control tasks just to remember an idea.
+
+Avoid research hoarding. A tagged archive of other people’s ideas is not leverage unless it changes JT’s decisions, assets, content, offers, or workflows.
+
 ## Refinement Heuristics
 
 - **Too much noise?** Add `-is:reply`, use `--sort likes`, narrow keywords

@@ -1,5 +1,26 @@
 # Weekly Updates — Altmark Group
 
+
+## Week of 2026-05-12
+
+### Focus
+- Convert Altmark from “built” to accepted: PC handoff, insurance workflow verification, payment clarity, and clean next-workflow gate.
+
+### Wins
+- Tuesday execution pack prepared at `proof-assets/tuesday-execution-pack-2026-05-12.md`.
+- Existing runbooks/checklists already cover PC handoff, insurance workflow acceptance, and rent-delinquency data readiness.
+
+### Blockers / Risks
+- Handoff date/time still needs confirmation if not already locked.
+- Insurance workflow approval/payment status is still unknown in Eve memory.
+- Rent delinquency remains client-data-gated; building before a cleaned sample report would create rework and client risk.
+
+### Next Action
+- JT sends/uses the Tuesday execution message to lock the handoff and acceptance/payment/deposit statuses.
+
+### Decision Rule
+- Referrals wait until the first workflow is accepted and payment/deposit status is clean.
+
 ## Week of 2026-05-05
 
 ### Wins

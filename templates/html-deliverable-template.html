@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>[Deliverable Title]</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --text: #f5f7fb;
+      --muted: #a8b0c3;
+      --line: #2a3040;
+      --accent: #8ab4ff;
+      --good: #72d391;
+      --warn: #f5c86a;
+      --bad: #ff8a8a;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    main { max-width: 1120px; margin: 0 auto; padding: 32px 20px 56px; }
+    header { margin-bottom: 28px; }
+    h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.02; margin: 0 0 12px; letter-spacing: -0.04em; }
+    h2 { margin-top: 34px; border-top: 1px solid var(--line); padding-top: 24px; }
+    h3 { margin-bottom: 8px; }
+    p, li { color: var(--muted); }
+    .lede { font-size: 18px; max-width: 780px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+    .kpi { font-size: 30px; font-weight: 800; color: var(--text); }
+    .tag { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--muted); font-size: 13px; margin: 3px 4px 3px 0; }
+    .good { color: var(--good); } .warn { color: var(--warn); } .bad { color: var(--bad); }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; overflow: hidden; border-radius: 12px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--text); background: #1f2430; }
+    td { color: var(--muted); }
+    code, pre { background: #0a0c10; border: 1px solid var(--line); border-radius: 10px; }
+    code { padding: 2px 5px; }
+    pre { padding: 14px; overflow: auto; }
+    .note { border-left: 4px solid var(--accent); padding-left: 14px; color: var(--muted); }
+    .sources { font-size: 13px; }
+    button { background: var(--accent); color: #07101f; border: 0; border-radius: 10px; padding: 10px 14px; font-weight: 750; cursor: pointer; }
+    textarea { width: 100%; min-height: 110px; border-radius: 12px; border: 1px solid var(--line); background: #0a0c10; color: var(--text); padding: 12px; }
+    @media print { body { background: white; color: #111; } .card, code, pre { border-color: #ddd; background: #fff; } p, li, td, .muted { color: #333; } button, textarea { display: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="tag">[Client / Project]</p>
+    <p class="tag">[Date]</p>
+    <h1>[Deliverable Title]</h1>
+    <p class="lede">[One-paragraph executive summary. State the decision, recommendation, or finding first.]</p>
+  </header>
+
+  <section>
+    <h2>Decision / Recommendation</h2>
+    <div class="card">
+      <h3>[Recommendation]</h3>
+      <p>[Why this is the right move. Keep it concrete and buyer/operator-readable.]</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Key Findings</h2>
+    <div class="grid">
+      <div class="card"><div class="kpi">[Metric]</div><p>[What it means]</p></div>
+      <div class="card"><div class="kpi">[Metric]</div><p>[What it means]</p></div>
+      <div class="card"><div class="kpi">[Metric]</div><p>[What it means]</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Workflow / Architecture</h2>
+    <div class="card">
+      <p>[Use HTML/CSS/SVG when visual structure helps: workflow lanes, before/after, exception flow, agent layers, app funnel, etc.]</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Options Compared</h2>
+    <table>
+      <thead><tr><th>Option</th><th>Pros</th><th>Risks</th><th>Recommendation</th></tr></thead>
+      <tbody>
+        <tr><td>[A]</td><td>[Pros]</td><td>[Risks]</td><td>[Use / skip / test]</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Next Actions</h2>
+    <ol>
+      <li><strong>[Owner]</strong>: [first concrete action]</li>
+      <li><strong>[Owner]</strong>: [second concrete action]</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Export Back to Agent</h2>
+    <p class="note">If this artifact is interactive, make the output below paste-ready for Claude Code/OpenClaw: JSON, markdown, prompt text, config diff, or selected options.</p>
+    <textarea id="agentExport">[Paste-ready exported decision/config/prompt goes here.]</textarea>
+    <p><button onclick="navigator.clipboard.writeText(document.getElementById('agentExport').value).then(()=>this.textContent='Copied')">Copy export</button></p>
+  </section>
+
+  <section>
+    <h2>Sources / Audit Trail</h2>
+    <p class="sources">[Source URLs, file paths, screenshots, commands, timestamps. Do not include secrets.]</p>
+  </section>
+</main>
+</body>
+</html>

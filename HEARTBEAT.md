@@ -38,9 +38,7 @@ Deliver to JT via Telegram:
 5d. **Event scout (first Monday of each month only):**
    - Search Eventbrite NYC for: "construction technology", "property management", "AI business NYC", "real estate tech NYC"
    - Check brooklynchamber.com/events and nycchamber.com/events for that month
-   - If any relevant event found: push to MC as HIGH task with date, venue, ICP relevance
-   - Append to memory/networking/events.md
-   - Include 📅 Events section in morning brief if anything found
+   - If relevant event found: push HIGH MC task with date/venue/ICP relevance, append to `memory/networking/events.md`, and include 📅 Events section.
 
 Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash X+Reddit, Dynasty X, one action
 
@@ -59,10 +57,9 @@ Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash 
    - Never leave a cron with consecutiveErrors >= 2 unaddressed
 
 3b. **Missed cron check (10AM heartbeat only — after 7AM so crypto window has passed):**
-   - From `cron list`, check `lastRunAtMs` for these two critical daily jobs:
-     - `eve-crypto-morning-008` (should fire at 6AM daily)
-     - `651fa1da` outreach-pipeline (should fire at 2AM daily)
+   - From `cron list`, check `lastRunAtMs` for critical dailies: `eve-crypto-morning-008` (6AM) and `651fa1da` outreach-pipeline (2AM).
    - For crypto: if `lastRunAtMs` is not from today (compare date portion to current date) → fire it immediately via `cron run` with jobId `eve-crypto-morning-008` + alert JT: "⚠️ Crypto cron missed its 6AM slot — fired now."
+   - For crypto even when `lastRunStatus=ok` / `deliveryStatus=delivered`: verify the latest run explicitly sent the recommendation payload (`telegram_message_sent=true` + summary text), or manually read `/Users/jtsomwaru/projects/crypto-agent/data/telegram-summary.txt` and resend it via Telegram. Do not trust cron delivery metadata alone for this job.
    - For outreach: if `lastRunAtMs` is not from today AND `lastRunStatus` is not `error` (errors are caught by 3a) → fire it immediately + alert JT.
    - "Not from today" = `lastRunAtMs` date portion ≠ today's date in America/New_York timezone.
    - Log any fires in today's daily note under ## Heartbeat HH:MM.
@@ -132,9 +129,8 @@ During weekly synthesis, after reading content-signals.md:
 - If the high-engagement topic is a NEW niche not in JT's current matrix → log to memory/niche-fitness-signals.md for monthly niche fitness review
 The goal: let content performance data tell you which consulting angles are resonating before you invest more outreach time in them.
 
-## Weekly Skills Audit (Sunday only — runs inside weekly-synthesis cron)
-Go through every operational file, one by one. For each: is it accurate? Is anything stale, missing, or wrong?
-Files to audit in order:
+## Weekly Skills Audit (Sunday only — weekly-synthesis cron)
+Audit files for accuracy, staleness, and drift in order:
 1. `TOOLS.md` — paths, commands, API keys. Update anything that drifted.
 2. `AGENTS.md` — rules still valid? Any new patterns to add from the week?
 3. `MEMORY.md` — distill week's daily notes. Remove noise. Sharpen what matters.
@@ -142,8 +138,8 @@ Files to audit in order:
 5. All `skills/*/SKILL.md` files — are the instructions still accurate? Any new commands?
 6. All `agents/*/AGENT.md` files — are the agents configured correctly? Any drift?
 7. `memory/training/training-log.md` — review the week's film review entries. Are patterns emerging? Write a weekly summary line.
-7a. `docs/agents/regression-checks.md` — **Regression Check Audit (mandatory):** verify each repeatable mistake has a guardrail, owner surface, and check cadence. Scan recent daily notes + mistakes log for repeated failure terms. Any repeated pattern without an Active Check must be promoted before the audit is complete.
+7a. `docs/agents/regression-checks.md` — verify each repeatable mistake has guardrail, owner surface, and cadence; promote repeated failure terms lacking Active Checks.
 8. `memory/future-signals.md` — **Future Signals Review (mandatory):** Read every active signal. For each one, check whether its trigger conditions are now met based on JT's current situation (active clients, project status, outreach volume, hardware). If a signal's trigger is met: push HIGH MC task, move it to Graduated with date+trigger, and notify JT in weekly synthesis. Otherwise leave as-is.
-9. **Autoresearch enrollment check (mandatory):** Read `agents/autoresearch/targets.md`. Cross-reference against all skills in `skills/` and agents in `agents/` installed or updated this week (check file modification dates via `ls -lt`). For any skill/agent NOT already in targets.md, run the 3-question candidacy check: (1) runs repeatedly? (2) output scoreable with yes/no? (3) clear failure mode? All 3 yes → draft checklist, save to `agents/autoresearch/checklists/[slug].md`, append to targets.md with status `pending`. Log enrollments in the audit output.
+9. **Autoresearch enrollment check:** Read `agents/autoresearch/targets.md`; cross-reference skills/agents updated this week. For any missing target, run 3-question candidacy: repeats? scoreable? clear failure mode? All yes → draft checklist, save to `agents/autoresearch/checklists/[slug].md`, append pending target, log enrollment.
 10. **Passive income idea queue pruning (mandatory):** Check Mission Control for tasks with title containing "Build idea:" or "[PI]" and sortOrder ≥ 500, status = todo, age > 60 days. For each: (a) does JT's current situation (active clients, skill gaps, hardware, runway) make this more or less viable than when it was created? (b) If clearly less viable or superseded by a better idea: mark as done with note "pruned in weekly synthesis — [reason]." (c) If now viable: bump to sortOrder 400 and flag in Telegram. Audit output: append `## Skills Audit — [date]` to `memory/training/training-log.md` with one line per file: `[FILENAME]: [status: current / updated X / flagged Y]`
 

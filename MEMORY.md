@@ -62,7 +62,7 @@
 - Vista: App Store live at `https://apps.apple.com/us/app/vista-movie-taste-profiles/id6758186885`; durable SEO page live on jtsomwaru.com for 1–100 movie rating positioning.
 
 ## Content System
-- App Marketing OS is first-class for passive-income apps. Eve owns strategy, hooks, asset maps, metrics handoff, scoreboarding, directory/SEO/ASO, and cross-system coordination. JT's laptop owns ReelFarm slideshow creation/posting; Eve must not duplicate it on the Mac mini. Full rules: `memory/app-marketing/` + `memory/reelfarm/`.
+- App Marketing OS is first-class for passive-income apps. Eve owns strategy, hooks, asset maps, metrics handoff, scoreboarding, directory/SEO/ASO, and cross-system coordination. JT's laptop/ReelFarm own slideshow creation/posting; Eve must not duplicate runtime. ReelFarm baseline: Growth tier runs native TikTok photo slideshow campaigns for Vista, Nash Satoshi, and Glow Index, with two automations per app: all-lifestyle 2x/week and lifestyle hook + screenshots 1x/week. Current status as of 2026-05-11: all six automations paused; Vista/Nash had 0-view cold-start issues, Vista had silent slideshows, Glow configured but not activated. Recovery: manual TikTok app posts with hand-picked sounds, daily account engagement, restart at 1 post/week/account after warm-up, scale after 2–3 weeks of consistent reach. Screenshots are source of truth for current settings; `memory/reelfarm/reelfarm-strategy-baseline.md`, `memory/reelfarm/apps.md`, and `memory/reelfarm/reelfarm-review-checklist.md` own strategy/status/review logic.
 - Before drafting posts: read `memory/content-voice.md`; no preamble, no em dashes, no “Here’s the thing,” standalone posts 6–15 words when requested.
 - Swipe-file rule: content generation must fetch Notion Viral Posts Swipe references first (`python3 scripts/notion-swipe-fetch.py --limit 12 --min-engagement 500`) and include hook mappings in saved weekly/one-off draft files. Priority swipe niches: AI Consulting, NYC SMB, Construction, Property Management, Wholesale Distribution, Skilled Trades, AI Agents/OpenClaw, Job Market, Nash Satoshi/x402, Personal Brand.
 - Sports GM / @dynastyjig Phase 1 is active; current content-system detail archived at `docs/memory/sports-gm-content-system-current.md`. Key rule: daily @dynastyjig drafts are niche-native trust content, not app-centric promo; product names are banned by default.
@@ -71,6 +71,9 @@
 
 ## Job Market
 - Target only AI implementation / AI Solutions Architect / AI Implementation Lead roles that value BSA + ops automation background.
+- Strategic posture as of 2026-05-11: consulting-first, employment selective. Treat job discoveries as hiring-budget/pain signals first, applications second. Route each strong discovery as `apply`, `both`, `consulting-outreach`, or `market-intel`.
+- Apply only for exceptional strategic fits (generally 22+/25, $150K+, NYC/remote, low misrepresentation risk). For 18–21/25 roles, usually use the JD as market intel or a consulting lead signal instead of spending time on a resume package.
+- If a company is hiring full-time for AI implementation, do not assume they lack consulting interest; position consulting as interim de-risking, workflow mapping, pilot governance, or acceleration while the FTE is hired/ramped — never as “hire JT instead.”
 - Avoid pure software engineering, ML research, Apex/SFDX-heavy Salesforce developer, relocation, or sub-$150K roles.
 - Resume/cover letter packages must use Sonnet model via job-application skill; save local markdown + generate docx + upload to Drive.
 
@@ -83,6 +86,7 @@
 - OpenRouter active. Current tiering: MiniMax m2.7 default, Sonnet 4.6 upgrade for complex reasoning/job apps, Opus 4.6 only for high-precision n8n/complex code when ROI justifies it. Use aliases when possible.
 - Google Drive OAuth is currently a blocker for outreach uploads; JT needs to run `python3 ~/.openclaw/workspace/scripts/drive_auth.py` before Drive-dependent pipeline work.
 - LCM/lossless-claw is active; use `lcm_grep` → `lcm_describe` → `lcm_expand_query` for prior conversation recall before asserting specifics.
+- Codex `/goal` evaluated 2026-05-11: useful pattern, not active capability yet. Local `codex` CLI is not installed and OpenClaw does not currently expose `/goal` in the bundled harness docs/source. Do not install/enable/change Codex/OpenClaw config without JT approval. Use current TaskFlow/cron/subagent patterns by default; goal-style work requires one durable objective, verifiable stop condition, checkpoint/progress log, Mission Control visibility, budget/stop rules, and `templates/goal-mode-spec-template.md`.
 - Gateway restart path: prefer `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "reason"`; do not raw restart/config patch unless explicitly approved.
 - Mission Control dashboard: `http://localhost:3000`; remote tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n remote path `/n8n`.
 - Critical workspace commands and paths are in `TOOLS.md`; consult it before saying “I can’t.”
@@ -118,6 +122,8 @@
 - If corrected by JT, immediately update the Mistakes Log/rules before moving on.
 
 ## Setup State
+- 2026-05-11: GBrain consulting recall pilot completed in sandbox. Installed GBrain 0.32.0 at `~/projects/gbrain`, pilot home `~/projects/gbrain-pilot-home`, curated sanitized source `~/projects/gbrain-pilot-source`. Result: entity lookup strong (20/20 vs qmd 13/20), natural-language weak without embeddings (3/20). Use only `scripts/gbrain-consulting-search.sh "Entity"` for consulting/prospect entity lookup. Do not add crons, skillpacks, broad ingestion, or embedding/auth wiring without explicit approval.
+- 2026-05-11: Added two reusable workflow skills from Garry Tan/GBrain pattern review: `workflow-skillify` for turning repeated workflows/corrections into durable skills/checklists, and `high-stakes-draft-eval` for checking important outreach/positioning/job-app/site copy before delivery. Also added `consulting/entity-propagation/template.md` for propagating consulting facts across source/prospect/contact/pipeline/daily-note surfaces.
 - 2026-04-26: Installed `birdclaw` (local X archive workspace) and `gog` (Google Workspace CLI). Workflow rules live in `docs/tools/local-archives-workflows.md`; JT auth/import tasks created before recurring use.
 
 ## Automation / Live Opportunities

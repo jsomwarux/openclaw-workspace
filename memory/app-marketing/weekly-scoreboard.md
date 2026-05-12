@@ -406,7 +406,14 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-10_
+_Last updated: 2026-05-11_
 
 <!-- METRICS_SUMMARY_END -->
+
+## Run Note — Week of 2026-05-11 — 2026-05-11
+- Generated counts: X 0; Reddit 0; TikTok/ReelFarm support 2; LinkedIn 0.
+- Queue append: +2 approved entries; queue count 120 → 122.
+- Skips: Nash X skipped because live ranking/model-disagreement details were not verified; Reddit skipped for compliance risk; LinkedIn skipped because May monthly post already exists and no new milestone/proof was available.
+- Measurement blocker: metrics remain thin; App Store Connect parked and ReelFarm/TikTok live IDs need handoff before increasing volume.
+- Next durable discovery action: reconcile planned rows in `memory/app-marketing/post-registry.jsonl` to exact live ReelFarm/TikTok post IDs after JT posts from laptop.
 

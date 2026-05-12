@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-11T00:14:02.793Z",
+  "updatedAt": "2026-05-11T15:36:03.628Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -887,21 +887,23 @@
       "endLine": 22,
       "source": "memory",
       "snippet": "# Daily Note — March 8, 2026 ## Morning Brief — 7:30 AM - Sent to JT via Telegram ✅ - Top priorities: Squarespace SA app (time-sensitive), post content drafts (6 ready), fix job-market cron (stale since March 3) - 🔴🟠 News: Alibaba rogue AI agent mining crypto during training, US payrolls -92K shock, Anthropic labor market study (white-collar most at risk), stablecoin firms betting on AI agent payments (x402 signal) - Niche: Salesforce FY26 strong + SI partner hiring, insurance $15B at risk, 2/3 independent agencies plan AI increase - Job market: no new 18+/25 roles; \"AI Process Design\" now named in Salesforce JDs; ProcessBlueprint build idea flagged - Costs: $0.00 real API spend, X API $0",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-28T14:15:32.078Z",
-      "lastRecalledAt": "2026-05-05T13:11:18.115Z",
+      "lastRecalledAt": "2026-05-11T14:18:19.179Z",
       "queryHashes": [
         "866198893eae",
-        "1630ced39fd5"
+        "1630ced39fd5",
+        "b783e7330ff2"
       ],
       "recallDays": [
         "2026-04-28",
         "2026-04-30",
-        "2026-05-05"
+        "2026-05-05",
+        "2026-05-11"
       ],
       "conceptTags": [
         "time-sensitive",
@@ -953,20 +955,22 @@
       "endLine": 196,
       "source": "memory",
       "snippet": "- `bbe49024-458a-4496-9c7c-7a278615810f` / `reddit-daily-gen` - 11:30AM ET daily Updated it rather than creating a duplicate. New prompt requires: - Read `memory/content/reddit-strategy.md`. - Read `skills/sports-gm/SKILL.md`. - Use generated Sports GM report if present, otherwise run `sports_gm_fetch_prices.py` + `sports_gm_generate_report.py`. - Target fantasy subs according to current access constraints: `r/Fantasy_Football`, `r/fantasyfootballadvice`, `r/fantasyfootball`; avoid `r/DynastyFF` until reputation unlocks. - No @dynastyjig mention, links, CTA, or brand promo. - No player-specific recommendations without full Sports GM thesis standard. - Prefer practical roster-construction ad",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T14:26:03.132Z",
-      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-11T15:36:03.628Z",
       "queryHashes": [
         "77a41b9bacdb",
-        "c2a650fbaf9b"
+        "c2a650fbaf9b",
+        "c3e1709cf84e"
       ],
       "recallDays": [
         "2026-04-30",
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-11"
       ],
       "conceptTags": [
         "reddit-daily-gen",
@@ -1017,20 +1021,22 @@
       "endLine": 175,
       "source": "memory",
       "snippet": "Verification: - `sports_gm_fetch_prices.py` fetched 3,404 rows across KTC/FantasyCalc/DynastyProcess. - `sports_gm_generate_report.py` generated: - `memory/sports-gm/reports/weekly-gm-report-2026-04-27.md` - `memory/sports-gm/candidates/2026-04-27.csv` - `memory/content/bank/2026-04-27/dynasty-gm-automated-market-posts.md` Guardrail added: candidate generation filters out deep-tail noise and treats source disagreement as a research alarm, not an automatic recommendation. ## 11:21 — Daily @dynastyjig delivery added JT asked whether daily content is being delivered for @dynastyjig. It was not; only weekly Sports GM report cron existed. Added daily cron: - `1e614c8a-adb8-4a02-b35f-3031",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-04-30T14:26:03.132Z",
-      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-11T15:36:03.628Z",
       "queryHashes": [
         "77a41b9bacdb",
-        "c2a650fbaf9b"
+        "c2a650fbaf9b",
+        "c3e1709cf84e"
       ],
       "recallDays": [
         "2026-04-30",
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-11"
       ],
       "conceptTags": [
         "sports-gm-fetch-prices.py",
@@ -1910,18 +1916,20 @@
       "endLine": 20,
       "source": "memory",
       "snippet": "## Daily Note - April 3, 2026 - Completed reading HEARTBEAT.md and followed the instructions strictly. - Checked for cost alerts: - Alerts sent to JT regarding session costs exceeding thresholds: - Niche Intelligence Monitor: $0.725 (threshold: $0.5) - Daily spending alert: Total of $4.51, exceeding the $2.0 limit. - Job Market Daily Research: $0.748 (threshold: $0.5) - Niche Intelligence Monitor: $0.725 (threshold: $0.5) - Overnight AgentGuard Positioning: $0.628 (threshold: $0.5) - Outreach Pipeline: $1.543 (threshold: $0.5) - Overnight Autonomy Agent: $0.601 (threshold: $0.5) - Daily spending alert: Total of $7.70, exceeding the $2.0 limit. - Job Market",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T13:27:34.734Z",
-      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-11T15:36:03.628Z",
       "queryHashes": [
-        "c2a650fbaf9b"
+        "c2a650fbaf9b",
+        "c3e1709cf84e"
       ],
       "recallDays": [
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-11"
       ],
       "conceptTags": [
         "heartbeat.md",
@@ -1941,18 +1949,20 @@
       "endLine": 149,
       "source": "memory",
       "snippet": "- Cron health: user-facing daily crons ok. Spanish Daily Lesson delivered successfully (`deliveryStatus=delivered`); crypto evening pulse ran ok. Guyana monitor still shows old error but fix was already verified at 10AM (`timeoutSeconds=2400`), next run Monday. - Tasks.md reviewed but skipped for surfacing because dated 2026-02-27. - No proactive work; evening health check-in already sent at 21:00 and no new blocker surfaced. ## Heartbeat 9:13 PM - Cost alerts: none (`[]`). - Cron health unchanged from 9:12 PM: user-facing daily crons ok; Spanish lesson delivered; crypto evening pulse ok. Guyana monitor still shows old error but fix was already verified at 10AM (`timeoutSeconds=2400`), next",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T13:27:34.734Z",
-      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-11T15:36:03.628Z",
       "queryHashes": [
-        "c2a650fbaf9b"
+        "c2a650fbaf9b",
+        "c3e1709cf84e"
       ],
       "recallDays": [
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-11"
       ],
       "conceptTags": [
         "user-facing",
@@ -1972,18 +1982,20 @@
       "endLine": 140,
       "source": "memory",
       "snippet": "- Left stronger models in place for high-stakes or quality-sensitive jobs: job-market daily research, weekly synthesis, crypto full analysis, outreach/prospect discovery, weekly LinkedIn generation, ReelFarm weekly synthesis. Rationale: bad filtering/synthesis/case-study quality costs more than model savings. ## Heartbeat 20:58 - Cost alerts empty. Tasks checked; no new urgent actionable task surfaced. Cron health still shows stale last-run errors for Daily News Hook and Crypto Midday Pulse, but both have already been patched: Daily News Hook model Kimi, timeout 5400, capped 2-search/NO_NEWS_HOOK; Crypto Midday model DeepSeek, timeout 1800, exec/file-I/O and NO_ALERT_LOGGED. Latest run reco",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1,
+      "totalScore": 2,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-07T13:27:34.734Z",
-      "lastRecalledAt": "2026-05-07T13:27:34.734Z",
+      "lastRecalledAt": "2026-05-11T15:36:03.628Z",
       "queryHashes": [
-        "c2a650fbaf9b"
+        "c2a650fbaf9b",
+        "c3e1709cf84e"
       ],
       "recallDays": [
-        "2026-05-07"
+        "2026-05-07",
+        "2026-05-11"
       ],
       "conceptTags": [
         "high-stakes",
@@ -2188,6 +2200,68 @@
         "kb.ts",
         "xenova/all-minilm-l6-v2",
         "first-run"
+      ]
+    },
+    "memory:memory/2026-04-27.md:59:74": {
+      "key": "memory:memory/2026-04-27.md:59:74",
+      "path": "memory/2026-04-27.md",
+      "startLine": 59,
+      "endLine": 74,
+      "source": "memory",
+      "snippet": "- Do not ingest secrets, credentials, raw chat logs, or all workspace files blindly into GBrain. ## 10:40 — Implemented optimal low-risk GBrain/qmd changes - Implemented the immediate safe fix from the GBrain evaluation: qmd local search now indexes real workspace/project markdown instead of 0 files. - Added qmd collections: - `memory` → `/Users/jtsomwaru/.openclaw/workspace/memory` (`**/*.md`), 437 files - `skills` → `/Users/jtsomwaru/.openclaw/workspace/skills` (`**/*.md`), 49 files - `docs` → `/Users/jtsomwaru/.openclaw/workspace/docs` (`**/*.md`), 25 files - `consulting-pipeline` → `/Users/jtsomwaru/projects/jt-consulting-pipeline` (`**/*.md`), 130 files - Verification: `qmd",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-11T14:43:36.273Z",
+      "lastRecalledAt": "2026-05-11T14:43:36.273Z",
+      "queryHashes": [
+        "7d0192f5d6ca"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "qmd",
+        "low-risk",
+        "gbrain/qmd",
+        "workspace/project",
+        "users/jtsomwaru",
+        "openclaw/workspace/memory",
+        "openclaw/workspace/skills",
+        "openclaw/workspace/docs"
+      ]
+    },
+    "memory:memory/2026-04-27.md:54:65": {
+      "key": "memory:memory/2026-04-27.md:54:65",
+      "path": "memory/2026-04-27.md",
+      "startLine": 54,
+      "endLine": 65,
+      "source": "memory",
+      "snippet": "- Analyzed a respected OpenClaw user’s post about `SOUL.md`, `USER.md`, and `AGENTS.md`. Determined our `AGENTS.md` was already strong, but `SOUL.md` lacked concrete voice constraints and `USER.md` was too shallow as a working model of JT. Implemented upgrades earlier in the session: `SOUL.md` got a Voice Constitution; `USER.md` got sections for how JT thinks/works, leverage pattern, and blind spots/watchouts. Do not duplicate these changes unless verifying drift. - Deeply analyzed `garrytan/gbrain` and `garrytan/gbrain-evals`. Evaluation uploaded to Drive: https://docs.google.com/document/d/1CYYgvgvuo_g7E_fCqag_iRtHdiGrXj_TB0c2mC8UtLA/edit - Conclusion: do not replace lossless-claw; LCM s",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-11T14:43:36.273Z",
+      "lastRecalledAt": "2026-05-11T14:43:36.273Z",
+      "queryHashes": [
+        "7d0192f5d6ca"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "soul.md",
+        "user.md",
+        "agents.md",
+        "thinks/works",
+        "spots/watchouts",
+        "garrytan/gbrain",
+        "garrytan/gbrain-evals",
+        "lossless-claw"
       ]
     }
   }

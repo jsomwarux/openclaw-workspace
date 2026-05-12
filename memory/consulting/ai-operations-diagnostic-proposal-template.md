@@ -55,12 +55,41 @@ Define the first system worth building, including:
 - risks/dependencies
 - estimated timeline and price range
 
+### 5. Supervisor / Specialist / Judge / Human Design
+For any AI workflow that will touch real operations, specify the production control pattern:
+- **Supervisor:** what routes the request and decides which workflow path applies?
+- **Specialists:** which narrow jobs should AI or automation handle: retrieval, structured lookup, analysis, drafting, checking, system update?
+- **Judge:** what checks confidence, source support, completeness, risk, and exception conditions before action?
+- **Human:** who approves, overrides, handles exceptions, and owns the final decision?
+
+Diagnostic question to ask in discovery:
+> Where does this workflow need a judge, not just a generator?
+
+
+
+### 6. Production AI Architecture Readiness
+For any workflow moving beyond demo/prototype, check whether the system needs these layers:
+- retrieval/RAG with source freshness and citation rules
+- query rewriting or task decomposition for vague requests
+- router deciding deterministic vs model-judgment paths
+- memory/context boundaries and conflict handling
+- semantic cache or reuse layer for repeated queries
+- specialist tools/agents for retrieval, structured lookup, drafting, checking, and updates
+- judge/eval layer with golden cases, online monitoring, confidence/source/completeness/risk checks
+- prompt registry/versioning so prompts do not drift silently
+- observability: logs, audit trail, cost/latency metrics, failure alerts, recovery behavior, and human overrides
+- deployment/runtime/security: hosting, auth/access, secrets, background jobs, concurrency, retention/deletion
+
+Use `templates/production-ai-architecture-checklist.md` for detailed scoping. Apply this only when the workflow has repeated use, sensitive data, external action, or operational risk; do not force simple prototypes through the full checklist.
+
 ## Deliverables
 - Current-state workflow map
 - Bottleneck / exception list
 - Ranked use-case matrix
 - Recommended first build
 - Human approval and risk design
+- Supervisor/specialist/judge/human control design
+- Production AI architecture readiness checklist when risk/reuse justifies it
 - Implementation roadmap
 - Optional implementation proposal
 

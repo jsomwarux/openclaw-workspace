@@ -1,6 +1,6 @@
 # Warm Lead Command Center
 
-Last updated: 2026-05-05
+Last updated: 2026-05-11
 
 ## Operating Rule
 Warm leads should be converted into a diagnostic conversation, not chased as unrelated opportunities.
@@ -32,6 +32,7 @@ Primary offer: **AI Operations Diagnostic**
 6. CFS client interview only if role clears authority/comp filters.
 
 ## Latest Review
+- 2026-05-11 nightly: Altmark remains the highest-leverage revenue/proof move. Prepared `memory/clients/altmark-group/proof-assets/tuesday-execution-pack-2026-05-12.md` for PC handoff, insurance workflow acceptance, payment clarity, and rent-delinquency deposit/data gating.
+- Current recommendation: tomorrow's single highest-leverage move is still Altmark PC handoff/acceptance/payment/deposit clarity; keep stale cold email pivots below warm/referral proof work.
 - 2026-05-08: Warm lead review saved at `memory/consulting/warm-lead-weekly-review-2026-05-08.md`.
-- Current recommendation: tomorrow's single highest-leverage move is the Altmark PC handoff/acceptance/payment/deposit text; keep stale cold email pivots below warm/referral proof work.
 - Marketsmith support asset saved at `memory/consulting/marketsmith-product-team-discovery-plan.md`; use if product team re-engages or if no response after the 5–7 business-day follow-up window.

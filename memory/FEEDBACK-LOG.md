@@ -174,3 +174,15 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - Better direction: buyer scene first, AI implementation second, JT POV last. Avoid phrases that sound like AI-generated thought leadership: “AI chatbot,” “exception layer,” “messy work your team already handles,” and stacked rhetorical lists unless grounded in a concrete workflow.
 - Preferred pattern: “Weekly status meetings might be the most expensive meeting on your calendar.” Then list concrete examples with clean bullets, diagnose the spread across inboxes/spreadsheets/PDFs/portals, and only then say where AI fits.
 - Verification: Regenerated 2026-05-08 posts with a concrete operational scene as the hook, then updated `memory/content-voice.md` LinkedIn rules + audit checklist so future drafts align with JT's preferred version.
+
+## 2026-05-11 — LinkedIn consulting posts must not undermine AI implementation positioning
+- Trigger: JT rejected the Monday LinkedIn draft opening “Your team does not have an AI problem” because it contradicted his desired positioning as the person companies hire to implement AI solutions. The closer “AI helps after someone names the handoff” was also confusing.
+- Rule: Buyer-facing LinkedIn consulting posts can say “workflow before AI” but must still make AI implementation feel necessary and valuable. Do not open with language that sounds like companies do not need AI, or that JT is arguing against AI work.
+- Guardrail: Before shipping a LinkedIn consulting post, ask: “Would this make a buyer more likely to view JT as the right AI implementation partner?” If not, rewrite. Closing lines must be concrete enough that a nontechnical operator understands the action.
+- Verification: Replaced 2026-05-11 Monday LinkedIn post with an implementation-focused version that names the workflow-to-system job and concrete AI functions: routes, flags, drafts, checks, escalates.
+
+## 2026-05-11 — Check recent posted content before regenerating replacements
+- Trigger: After JT rejected Monday's LinkedIn draft, the first replacement repeated the same weekly-status/scattered-work/flag-what-changed angle JT had already posted the previous Friday.
+- Rule: Before regenerating a replacement post, compare against the last 7 days of posted/scheduled content for the same platform. The replacement must change the core angle, not just wording.
+- Guardrail: If the rejected post shares a theme with recent content, choose a different pillar: positioning, proof, implementation decision rule, or buyer objection. Do not reuse the same operational scene.
+- Verification: Replaced Monday with an AI implementation positioning post about tool-buying vs workflow implementation, approvals, confidence, and process fit.

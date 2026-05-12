@@ -21,6 +21,11 @@
 ## Restart Script
 - `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "reason"` — sends direct Telegram notification before restart (NO cron jobs created)
 
+
+## Image / OCR Tooling
+- OpenClaw image attachments require `sharp` inside `/opt/homebrew/lib/node_modules/openclaw/node_modules`. If image tool errors with “Optional dependency sharp is required,” fix with: `cd /opt/homebrew/lib/node_modules/openclaw && npm install sharp`.
+- OCR fallback installed via Homebrew: `tesseract` 5.5.2. Use: `tesseract [image] stdout --psm 6` for screenshot text extraction.
+
 ## Diagnostics
 - `openclaw doctor` — health check on gateway, channels, providers, cron scheduler
 - `openclaw doctor --fix` — auto-fix common issues (use when something's broken and root cause isn't obvious)
@@ -60,6 +65,15 @@
 
 ## OpenRouter
 > Moved to `docs/tools/agent-commerce-and-research-tools-archive-2026-05-10.md`.
+
+
+## GBrain Consulting Recall Pilot
+- Sandbox install: `~/projects/gbrain` (GBrain 0.32.0)
+- Pilot home: `~/projects/gbrain-pilot-home`
+- Sanitized curated source: `~/projects/gbrain-pilot-source`
+- Wrapper: `scripts/gbrain-consulting-search.sh "Entity or company name"`
+- Use only for consulting/prospect entity lookup. Eval: entity search 20/20 vs qmd 13/20; natural-language search weak without embeddings.
+- Do NOT add crons, install skillpacks, ingest broad workspace/private chats/config, or wire embeddings/auth without JT approval.
 
 ## Knowledge Base
 - CLI (from knowledge/ dir): `bun kb.ts search "query" | add --title "..." --content "..." --category CATEGORY | list | show <id>`

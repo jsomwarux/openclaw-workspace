@@ -52,3 +52,25 @@ Before any monthly niche fitness review is sent, verify the report includes:
 - A `Reality Adjustment` section explaining where recommendations differ from raw score.
 - An operational decision summary: Primary / Adjacent expansion / Hold-test / Strategic proof lane.
 If any element is missing, do not send the review; update `agents/niche-fitness/AGENT.md` output and regenerate.
+
+## Job Posting Apply Route Freshness Check
+- **Trigger:** Before surfacing any job as `apply` or `both`, or before creating application materials/tasks.
+- **Check:** Verify the live posting UI/ATS still accepts applications and does not show removed/closed/expired language. Do not rely on cached aggregator JD text or HTTP 200 alone.
+- **Failure action:** Set role status `expired`, route `market-intel`, close any application MC task, and log the stale source.
+- **Owner surface:** `~/projects/job-market-agent/CLAUDE.md` + `knowledge/scoring-criteria.md`.
+- **Added:** 2026-05-11 after Ridgeline stale apply-route failure.
+
+## Active Check — Reddit daily stale frame prevention
+- **Scope:** `reddit-daily-gen` cron (`bbe49024-458a-4496-9c7c-7a278615810f`).
+- **Check:** For the next 3 runs after 2026-05-11, verify outputs against `memory/content/reddit-draft-log.jsonl` and prior cron run summaries. Crypto must not repeat generic narrative/mechanism/protocol durability/stakeholder alignment frames without a fresh 48h source. Fantasy must not repeat roster-window/value/liquidity/calculator advice without a concrete current thread type.
+- **Pass condition:** Repeated/stale slots become `SKIP_SLOT` or are grounded in a fresh named signal.
+- **Owner surface:** Cron payload + `memory/content/reddit-strategy.md`.
+
+## Active Check — Crypto Morning Explicit Delivery
+- **Failure covered:** Crypto morning files generated but JT does not receive/notice actual portfolio recommendation while cron metadata says delivered.
+- **Check cadence:** Daily 10AM heartbeat after crypto window.
+- **Check:** For `eve-crypto-morning-008`, verify latest run final summary includes explicit `telegram_message_sent=true` and `summary_text`, or manually inspect `/Users/jtsomwaru/projects/crypto-agent/data/telegram-summary.txt` and resend it via Telegram.
+- **Do not trust:** `lastRunStatus=ok` or `deliveryStatus=delivered` alone.
+- **Owner surface:** cron payload for `eve-crypto-morning-008` and `HEARTBEAT.md` missed-cron/delivery checks.
+- **Recovery:** resend `telegram-summary.txt` to JT, then patch cron if explicit send requirement is absent.
+- **Last verified:** 2026-05-11 — cron payload patched and manual resend succeeded.

@@ -13,6 +13,16 @@ To test local web applications, write native Python Playwright scripts.
 
 **Always run scripts with `--help` first** to see usage. Do NOT read the source — invoke as black-box scripts.
 
+
+## Browser Automation Ladder
+Before using high-agency browser exploration, try cheaper/deterministic paths first:
+1. **Fetch/API probe:** If the target data or state is available through HTML, JSON, network response, local file, API, or database, use deterministic fetch/parser/script instead of browser automation.
+2. **Static DOM / rendered DOM:** For local apps, inspect HTML or rendered DOM and write a focused Playwright script with stable selectors.
+3. **Browser reconnaissance:** Use screenshots/DOM/network inspection only when JS, auth, or dynamic UI blocks deterministic access.
+4. **Skillify repeated discoveries:** If a browser task is likely to recur and exploration reveals a reliable path, write the shortest durable artifact: skill/checklist/script with selectors, endpoints, gotchas, and verification.
+
+Do not pay the browser-agent discovery tax repeatedly. Expensive exploratory runs should graduate into deterministic helpers or reusable skills. If the path is not stable enough yet, save a strategy note with `templates/browser-site-strategy-template.md`.
+
 ## Decision Tree: Choosing Your Approach
 
 ```
