@@ -22,3 +22,5 @@
 - First action: run a one-off model smoke test for structured summary + tool-call compatibility, without changing defaults.
 - MC quality gate: PASS — specific immediate experiment with potential cost impact.
 [2026-05-11] daily scan — no critical findings. KB'd: OpenClaw v2026.5.10-beta.3 beta notes; OpenRouter free/cheap models; n8n-mcp reminder; property-management AI signals; MCP security/monitoring signals.
+
+[2026-05-12] 🔴 OpenClaw v2026.5.10-beta.5 — active-stack release with agent policy controls, secret redaction, symlinked memory path rejection, process/session fixes, localService model startup, and Control UI recovery panel. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5 | Relevance: Eve/OpenClaw runtime | First action: run `openclaw update --version v2026.5.10-beta.5`, restart gateway if prompted, then run `openclaw gateway status` and one Telegram self-test.

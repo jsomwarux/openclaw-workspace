@@ -5,16 +5,16 @@
 
 ## Morning Brief (7:30 AM, cron)
 Deliver to JT via Telegram:
-1. Read memory/tasks.md — top 3 priorities
-   **STALENESS CHECK (mandatory before surfacing any task):**
-   - Any task referencing a specific content draft, Drive link, or post: check the `| Updated:` date on that task. If > 7 days old → SKIP IT, do not surface it. Stale content tasks create false urgency and JT cannot act on them.
-   - Any task referencing a job application: check MEMORY.md Job Market section. If role is marked expired/deprioritized → SKIP IT.
-   - Only surface tasks that are actionable TODAY with no staleness risk.
-   - "One concrete action" must be derived from CURRENT reality — not from tasks.md entries older than 7 days.
+1. Run `python3 scripts/mission_control_north_star_audit.py`, then read memory/tasks.md top 3.
+   **STALENESS CHECK:** content/Drive/post tasks updated >7 days ago → SKIP; expired/deprioritized job apps → SKIP; one concrete action must reflect current reality.
 2. Run web searches: AI news, crypto market, tech job market
-3. **Daily Nash Satoshi gate:** fetch `https://nashsatoshi.com/rankings` live. If ranks/scores are unavailable, SKIP. X + Reddit must use current rankings plus fresh crypto/AI-agent signal when available. X must be token-specific (token, score, rank movement, or market reason) and rotate weekday format; no generic “four models” copy unless tied to today’s token. Reddit must be community-native/non-promo and useful without a click. Include Nash sections only when non-generic. **Reddit draft must include `SUBREDDIT:` with the single best subreddit to post in plus brief rationale.** Pick based on topic fit: AI-agent token/crypto market structure → `r/CryptoCurrency` if broad and non-promotional; protocol-specific discussion → the token/protocol subreddit if active; AI-agent technical discussion → `r/ArtificialInteligence` or `r/LocalLLaMA` only if the post is not token-price focused; market/trading angle → `r/CryptoMarkets`. If no suitable subreddit is clear, write `SUBREDDIT: SKIP — [reason]` rather than forcing it.
+3. **Daily Nash Satoshi gate:** fetch `https://nashsatoshi.com/rankings` live. If ranks/scores unavailable, SKIP. Pull pattern inputs before drafting:
+   - Notion: `set -a; source ~/.config/env/global.env; set +a; python3 scripts/notion-swipe-fetch.py --platform X --niche "Crypto" --niche "AI Agents" --niche "x402" --niche "Nash Satoshi" --limit 12 --min-engagement 0 --since-days 14`
+   - X: `cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env && bun run x-search.ts search "(AI agent tokens OR crypto AI agents OR x402 OR DeFAI OR verifiable inference) -airdrop -giveaway -whitelist" --quick --sort likes --since 7d --limit 10`
+   - <3 usable current inputs → label `RECENT_NASH_SWIPE_GAP`; use archived examples only as mechanics, not trend proof.
+   X must be token-specific (token, score, rank movement, or market reason), use reply-hook first line, dwell-friendly lines, one repost-worthy line, no links/hashtags/hype/engagement begging. Reddit must be community-native, discussion-first, non-promo, materially different from X, and include `SUBREDDIT:` + rationale or `SUBREDDIT: SKIP — [reason]`. Include Nash sections only when non-generic.
 
-4. **Daily @dynastyjig gate:** read `skills/sports-gm/SKILL.md`, `memory/sports-gm/dynasty-x-targets.md`, latest Sports GM report/candidates/snapshot, and 14-day sports swipe. Post only if it mentions current player/news/market specificity: player, rookie tier, team, pick range, betting market, game context, or rank gap. No broad rebuild/parlay aphorisms unless grounded in current signal. Products are invisible backdrops only. If signal is thin, `SKIP_SLOT: insufficient fresh dynasty signal` and omit section.
+4. **Daily @dynastyjig gate:** read sports-gm skill/targets + latest report/snapshot + fresh X/sports swipe. Include `Native pattern teardown` + `Rejected generic patterns`; draft from native syntax, not topics. Public draft needs current player/news/market specificity (player, rookie tier, team, pick range, betting market, rank gap, card/unit/leg) or `SKIP_SLOT`. Products invisible; no broad rebuild/parlay aphorisms.
 
 3. Read memory/niche-monitor-latest.md — severity-filtered intel
 4. Read ~/projects/job-market-agent/data/daily-brief.md — roles (18+/25) + skill gaps + build ideas
@@ -44,7 +44,7 @@ Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash 
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK
-2. Read memory/tasks.md — urgent/overdue items?
+2. Run `python3 scripts/mission_control_north_star_audit.py`, then read memory/tasks.md — urgent/overdue items?
 3. Run `python3 scripts/cost-tracker.py --check-alerts` — if non-empty array, send each alert to JT via Telegram immediately
 3a. **Cron health check (every heartbeat — non-negotiable):**
    - Call `cron list` and scan ALL jobs for `consecutiveErrors >= 2` OR `lastRunStatus: "error"`
@@ -94,10 +94,7 @@ If an item in the priority list was already logged as done today → skip it and
 Never run the same proactive item twice in one day. Check the note first, every time.
 
 ## Heartbeat Log Idempotency Rule
-Before appending a heartbeat section to `memory/YYYY-MM-DD.md`, check whether the exact `## Heartbeat HH:MM` section already exists.
-- If it exists and the new check adds no materially new facts, do not append a duplicate section; update the existing line only if needed.
-- If the reminder fires twice within 5 minutes, treat it as a duplicate unless cost/cron/Spanish state changed.
-- Regression check: daily film review scans yesterday's note for duplicate `## Heartbeat HH:MM` headings and tightens this rule if duplicates recur.
+Before appending a heartbeat section to `memory/YYYY-MM-DD.md`, check whether the exact `## Heartbeat HH:MM` section already exists. If it exists and nothing materially changed, do not append a duplicate; update the existing line only if needed. Treat reminders within 5 minutes as duplicates unless cost/cron/Spanish state changed. Regression check: daily film review scans yesterday's note for duplicate headings.
 
 ## Proactive Work (priority order when idle)
 1. Client/market research → memory/research/

@@ -44,3 +44,4 @@ EOF'
 2026-05-09T11:00:00Z | weekly-synthesis | x_queries: 10 (6 daily + 4 weekly deep scan; first overquoted attempt cost $0) | web_queries: 14 | findings: 12 | 🔴: 0 | 🟠: 0 | 🟡/KB: 12 | mc_tasks_pushed: 0 | messaged_jt: yes | archive: 2026-W19.md | est_cost: ~$0.50 X + web/free
 2026-05-09T15:33:00Z | daily-scan | x_queries: 6 | web_queries: 17 | findings: 7 | 🔴: 1 | 🟠: 1 | messaged_jt: yes
 [2026-05-11T15:30:00Z] | daily-scan | x_queries: 6 | web_queries: 12 | findings: 5 | 🔴: 0 | 🟠: 0 | messaged_jt: no
+[2026-05-12T15:30:00Z] | daily-scan | x_queries: 6 | web_queries: 20 | findings: 6 | 🔴: 1 | 🟠: 0 | messaged_jt: yes

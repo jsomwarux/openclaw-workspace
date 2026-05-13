@@ -77,15 +77,18 @@ Deliverable: importable n8n workflow/template, sample data, runbook, screenshots
 - Build only reusable templates; do not build bespoke demos for random trending companies.
 
 ## Weekly Workflow
-1. Find 3–5 trending companies/categories from X/news/AppKittie/industry sources.
+Recurring runner: `AI Ops Teardown Weekly Draft` cron (`f96cc24f-55e6-4064-a075-b897156a22f2`) runs Sundays 7:15PM ET from `agents/ai-ops-teardown/weekly-prompt.md`.
+
+1. Find 3–5 buyer-relevant companies/categories from current proof lanes, niche intel, X/news/AppKittie/industry sources.
 2. Convert each into an ops bottleneck hypothesis.
 3. Score using the rubric.
-4. Pick one teardown.
+4. Pick one teardown only if it scores 18+; otherwise write `SKIP_WEEK — [reason]`.
 5. Produce Tier 1 or Tier 2 by default.
 6. Escalate to Tier 3 only if it maps to Altmark/family-office/property/ops offer.
 7. Save output under `memory/consulting/ai-ops-teardowns/YYYY-MM-DD-[slug].md`.
 8. If post-ready, save drafts under `memory/content/bank/[YYYY-MM-DD]/`.
-9. Add/reuse n8n templates under the appropriate project only after reading project lessons.
+9. Update delivery calendar and create/update the JT review/post Mission Control task.
+10. Add/reuse n8n templates under the appropriate project only after reading project lessons.
 
 ## Content CTA Rules
 Primary CTA is proof, not a hard sell.

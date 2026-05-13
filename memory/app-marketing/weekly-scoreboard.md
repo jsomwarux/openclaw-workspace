@@ -406,7 +406,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-11_
+_Last updated: 2026-05-12_
 
 <!-- METRICS_SUMMARY_END -->
 

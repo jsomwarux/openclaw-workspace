@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-11T15:36:03.628Z",
+  "updatedAt": "2026-05-12T19:34:58.324Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -1215,20 +1215,22 @@
       "endLine": 155,
       "source": "memory",
       "snippet": "- No new proactive work selected because DynastyJig/content strategy work already advanced materially in this hour. ## Weekly North Star Review Configured — 5:20 PM - Created `memory/north-star/rubric.md` to score lanes against JT's North Star: financial freedom + control over time through high-earning, low-maintenance income streams. - Added weekly cron `29772d9b-e007-4f62-9df9-e80b73d0cd21` — Weekly North Star Review — Sundays 6PM ET, isolated Sonnet. - Review scores consulting, apps/products, crypto monitoring, job market, content/distribution, health, and infrastructure against cash flow, leverage, distribution, credibility, energy burden, and strategic fit. - Output saves to `reports/n",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-04T14:29:03.495Z",
-      "lastRecalledAt": "2026-05-05T17:58:53.654Z",
+      "lastRecalledAt": "2026-05-12T19:34:58.324Z",
       "queryHashes": [
         "84aac9f0a182",
-        "5e20cf089b92"
+        "5e20cf089b92",
+        "4c3d49dd1d17"
       ],
       "recallDays": [
         "2026-05-04",
-        "2026-05-05"
+        "2026-05-05",
+        "2026-05-12"
       ],
       "conceptTags": [
         "dynastyjig/content",
@@ -1248,20 +1250,22 @@
       "endLine": 184,
       "source": "memory",
       "snippet": "- Updated Weekly North Star Command Center cron `29772d9b-e007-4f62-9df9-e80b73d0cd21` to include Consulting Sales Engine checks. - Created Mission Control task: “Run first Consulting Sales Engine audit” to inspect pipeline files before Sunday and identify the highest-probability next dollar. ## North Star OS Remaining Layers Implemented — 6:55 PM - JT explicitly said he does not want to keep saying “proceed”; continue until all layers are implemented and optimal. - Implemented remaining North Star OS state files: - `memory/north-star/proof-distribution-engine.md` - `memory/north-star/health-constraint-layer.md` - `memory/north-star/opportunity-intake-gate.md` - `memory/north-star/p",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-04T14:29:03.495Z",
-      "lastRecalledAt": "2026-05-05T17:58:53.654Z",
+      "lastRecalledAt": "2026-05-12T19:34:58.324Z",
       "queryHashes": [
         "84aac9f0a182",
-        "5e20cf089b92"
+        "5e20cf089b92",
+        "4c3d49dd1d17"
       ],
       "recallDays": [
         "2026-05-04",
-        "2026-05-05"
+        "2026-05-05",
+        "2026-05-12"
       ],
       "conceptTags": [
         "highest-probability",
@@ -1281,20 +1285,22 @@
       "endLine": 168,
       "source": "memory",
       "snippet": "## North Star Command Center Upgraded — 6:15 PM - JT said “Proceed optimally” after asking how Eve can best help achieve his North Star goals. - Instead of adding separate cron bloat, upgraded the existing Weekly North Star Review into a Weekly North Star Command Center. - Expanded `memory/north-star/rubric.md` with: - Revenue Command Center: run-rate, gaps to $10K/$30K/$100K, highest-probability next dollar, fastest paths to +$1K/mo and +$10K/mo. - Project Overinvestment Guard: every active project must serve cash flow, distribution, reusable IP, consulting proof, or health. - Product Portfolio Review: app/product continue/pause/kill/validation-only calls and distribution/monetizatio",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-04T14:29:03.495Z",
-      "lastRecalledAt": "2026-05-05T17:58:53.654Z",
+      "lastRecalledAt": "2026-05-12T19:34:58.324Z",
       "queryHashes": [
         "84aac9f0a182",
-        "5e20cf089b92"
+        "5e20cf089b92",
+        "4c3d49dd1d17"
       ],
       "recallDays": [
         "2026-05-04",
-        "2026-05-05"
+        "2026-05-05",
+        "2026-05-12"
       ],
       "conceptTags": [
         "memory/north-star/rubric.md",
@@ -2262,6 +2268,161 @@
         "garrytan/gbrain",
         "garrytan/gbrain-evals",
         "lossless-claw"
+      ]
+    },
+    "memory:memory/2026-05-11.md:17:38": {
+      "key": "memory:memory/2026-05-11.md:17:38",
+      "path": "memory/2026-05-11.md",
+      "startLine": 17,
+      "endLine": 38,
+      "source": "memory",
+      "snippet": "- Updated job-market agent prompts, scoring criteria, profile, daily brief template, opportunities log schema, MEMORY.md, and created Human Agency job-signal note + Eve-owned MC draft task. ## Correction — Stale Ridgeline Job - JT caught that Ridgeline AI Enablement Lead was removed April 14 despite the cached BuiltIn page still returning JD text. - Corrected job-opportunities.md: status expired, route market-intel, do not apply. - Closed Ridgeline MC application task. - Added job-market guardrail: verify live posting UI/application availability before routing any role as apply/both; cached aggregator JD text is not enough. ## Heartbeat 10:31 - Checked pending task queue: 0 pending. - Chec",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-12T15:36:01.660Z",
+      "lastRecalledAt": "2026-05-12T15:36:01.660Z",
+      "queryHashes": [
+        "e403237bc7d7"
+      ],
+      "recallDays": [
+        "2026-05-12"
+      ],
+      "conceptTags": [
+        "job-market",
+        "memory.md",
+        "job-signal",
+        "eve-owned",
+        "job-opportunities.md",
+        "market-intel",
+        "ui/application",
+        "apply/both"
+      ]
+    },
+    "memory:memory/2026-05-11.md:1:22": {
+      "key": "memory:memory/2026-05-11.md:1:22",
+      "path": "memory/2026-05-11.md",
+      "startLine": 1,
+      "endLine": 22,
+      "source": "memory",
+      "snippet": "## Session Cleanup 03:00 - Sessions before: 41, after: 34, removed: 7 - sessions.json size: 871.7 KB - Removed sessions: - agent:main:cron:4c437ff5-02cd-4288-8e6e-6e6fc07203ce (last active: 1.6d ago) - agent:main:cron:babd905a-1098-49dd-8700-772fef14f817 (last active: 1.3d ago) - agent:main:cron:5e66b4ee-aee3-497d-90ba-7aad670970a3 (last active: 1.8d ago) - agent:main:cron:f368e18b-1723-47ad-9164-94e95c106902 (last active: 1.9d ago) - agent:main:subagent:c279b836-d027-40fe-ab01-27d6cf03e0dd (last active: 1.9d ago) - agent:main:cron:05024e45-57fc-4e7c-a236-660e6eb5393f (last active: 1.8d ago) - agent:main:cron:ebb843af-e752-4c65-923d-540d5ff5ad3f (last active: 1.1d ago) ## Job",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-12T15:36:01.660Z",
+      "lastRecalledAt": "2026-05-12T15:36:01.660Z",
+      "queryHashes": [
+        "e403237bc7d7"
+      ],
+      "recallDays": [
+        "2026-05-12"
+      ],
+      "conceptTags": [
+        "sessions.json",
+        "871.7",
+        "1.6d",
+        "1.3d",
+        "1.8d",
+        "1.9d",
+        "1.1d",
+        "cleanup"
+      ]
+    },
+    "memory:memory/2026-05-12.md:21:32": {
+      "key": "memory:memory/2026-05-12.md:21:32",
+      "path": "memory/2026-05-12.md",
+      "startLine": 21,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "- Cron health: found `eve-job-market-daily-005` timed out at 1,800s this morning; fixed by re-applying timeout via `openclaw cron edit eve-job-market-daily-005 --timeout-seconds 3600` and verified persisted timeoutSeconds=3600. - Critical delivery checks: Spanish latest run delivered; crypto morning latest run includes `telegram_message_sent=true` and summary text; outreach pipeline ran today successfully. - 10AM film review: Step A fixed job-market timeout owner surface; Step B tightened @dynastyjig regression check to require native pattern teardown + syntax/rhythm mapping, not just current player specificity. ## Heartbeat 10:16 - Cost alerts: none (`[]`). - Cron health: rechecked all job",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-12T15:36:01.660Z",
+      "lastRecalledAt": "2026-05-12T15:36:01.660Z",
+      "queryHashes": [
+        "e403237bc7d7"
+      ],
+      "recallDays": [
+        "2026-05-12"
+      ],
+      "conceptTags": [
+        "eve-job-market-daily-005",
+        "re-applying",
+        "timeout-seconds",
+        "telegram-message-sent",
+        "job-market",
+        "syntax/rhythm",
+        "cron",
+        "health"
+      ]
+    },
+    "memory:memory/2026-04-30.md:126:141": {
+      "key": "memory:memory/2026-04-30.md:126:141",
+      "path": "memory/2026-04-30.md",
+      "startLine": 126,
+      "endLine": 141,
+      "source": "memory",
+      "snippet": "- Ideal life: multiple high-earning income streams requiring little/no maintenance, ideally managed by individual AI agents that only involve JT when urgent; freedom to work on creative apps, client work, or any project that pulls him, with a clear success path; bills paid, no debt accumulation, enough money for nice things for him and family. - Priority order right now: (1) AI implementation consulting, (2) app building + marketing toward eventual passive income, (3) crypto market monitoring/opportunity scanning, (4) health daily as the foundation. - Income targets accepted from Eve’s example: safe ≈ $10K/mo, free ≈ $30K/mo, rich ≈ $100K/mo. - Desired reputation: AI Implementation Specialis",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-12T19:34:58.324Z",
+      "lastRecalledAt": "2026-05-12T19:34:58.324Z",
+      "queryHashes": [
+        "4c3d49dd1d17"
+      ],
+      "recallDays": [
+        "2026-05-12"
+      ],
+      "conceptTags": [
+        "high-earning",
+        "little/no",
+        "monitoring/opportunity",
+        "10k/mo",
+        "30k/mo",
+        "100k/mo",
+        "ideal",
+        "life"
+      ]
+    },
+    "memory:memory/2026-04-30.md:180:199": {
+      "key": "memory:memory/2026-04-30.md:180:199",
+      "path": "memory/2026-04-30.md",
+      "startLine": 180,
+      "endLine": 199,
+      "source": "memory",
+      "snippet": "- Cron health: core crons ok; Build Ideas Sync and Guyana monitor remain historical errors with fixes applied and next scheduled runs pending. - Tasks.md reviewed but skipped for surfacing because dated 2026-02-27. - Proactive work already advanced this hour via North Star OS / consulting sales engine layers; no duplicate proactive item selected. ## North Star OS Audit + Optimization — 7:20 PM - JT asked to check the work and ensure all layers are optimal. - Audited layer files, weekly cron, and Mission Control first-run tasks. - Confirmed no duplicate first-run audit tasks. - Confirmed Weekly North Star Command Center is isolated, Sunday 6PM ET, 900s timeout, Telegram summary, and includes",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-12T19:34:58.324Z",
+      "lastRecalledAt": "2026-05-12T19:34:58.324Z",
+      "queryHashes": [
+        "4c3d49dd1d17"
+      ],
+      "recallDays": [
+        "2026-05-12"
+      ],
+      "conceptTags": [
+        "tasks.md",
+        "first-run",
+        "cron",
+        "health",
+        "core",
+        "crons",
+        "ideas",
+        "sync"
       ]
     }
   }

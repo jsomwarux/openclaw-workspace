@@ -1,6 +1,6 @@
 # Autoresearch Targets Registry
 *Managed by Eve. Updated whenever a new skill/agent is enrolled.*
-*Overnight agent reads this file and runs enrolled targets monthly (or on-demand).*
+*Autoresearch Sweep reads this file Mon/Wed/Fri 11:15AM ET and runs one high-value pending/active target; overnight/manual runs can also use it on demand.*
 
 ## How to enroll a new target
 1. Draft checklist (≤6 yes/no questions) → save to `checklists/[skill-slug].md`
@@ -10,8 +10,9 @@
 ## Scoring
 - Score = fraction of checklist items passing, averaged across all test inputs
 - Target score: 90% (0.90)
-- Loop stops when score hits 90%+ three consecutive rounds, or at max 20 rounds
-- Estimated cost per run: $0.10–0.20
+- Standard loop stops when score hits 90%+ three consecutive rounds, or at max 20 rounds; recurring sweep is bounded to one target, 3 inputs, and max 5 rounds.
+- Every run appends `agents/autoresearch/results.tsv` with keep/discard/crash status.
+- Estimated cost per recurring sweep: capped at $0.50
 
 ---
 
@@ -29,7 +30,6 @@
 | overnight | agents/overnight/ (overnight cron payload) | checklists/overnight.md | stable | 1.000 | 2026-03-31 | 2026-03-29 |
 | outreach-email-pivot | scripts/outreach_email_pivot.py + cron payload | checklists/outreach-email-pivot.md | pending | — | — | 2026-04-27 |
 | runbook | skills/runbook/SKILL.md | checklists/runbook.md | pending | — | — | 2026-04-12 |
-| jt-consulting-pipeline | skills/jt-consulting-pipeline/SKILL.md | checklists/jt-consulting-pipeline.md | pending | — | — | 2026-04-20 |
 | passive-income-scout | agents/passive-income-scout/AGENT.md | checklists/passive-income-scout.md | pending | — | — | 2026-04-20 |
 | content-scheduler | agents/content-scheduler/AGENT.md | checklists/content-scheduler.md | pending | — | — | 2026-04-20 |
 | vibe-post | scripts/vibe-post.py | checklists/vibe-post.md | pending | — | — | 2026-04-20 |
@@ -53,6 +53,8 @@
 | spanish-daily-lesson | cron:babd905a-1098-49dd-8700-772fef14f817 | checklists/spanish-daily-lesson.md | pending | — | — | 2026-05-09 |
 | workflow-skillify | skills/workflow-skillify/SKILL.md | checklists/workflow-skillify.md | pending | — | — | 2026-05-11 |
 | high-stakes-draft-eval | skills/high-stakes-draft-eval/SKILL.md | checklists/high-stakes-draft-eval.md | pending | — | — | 2026-05-11 |
+| mission-control-priority-auditor | agents/mission-control-priority-auditor/AGENT.md + scripts/mission_control_north_star_audit.py | checklists/mission-control-priority-auditor.md | stable | 1.000 | 2026-05-12 | 2026-05-12 |
+| ai-ops-teardown | agents/ai-ops-teardown/AGENT.md + agents/ai-ops-teardown/weekly-prompt.md | checklists/ai-ops-teardown.md | pending | — | — | 2026-05-12 |
 
 ## Status values
 - `pending` — checklist written, not yet run
@@ -66,4 +68,4 @@
 
 | Slug | Final Score | Rounds | Improvements | Archived |
 |------|-------------|--------|--------------|----------|
-| — | — | — | — | — |
+| jt-consulting-pipeline | — | — | Superseded by `opticfy-pipeline`; old path missing | 2026-05-12 |

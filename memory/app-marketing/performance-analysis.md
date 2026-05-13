@@ -1,6 +1,6 @@
 # App Marketing OS — Performance Analysis
 
-Last updated: 2026-05-11
+Last updated: 2026-05-12
 
 ## nash-satoshi / tiktok
 
@@ -39,6 +39,19 @@ Best: Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To S
 - hook:specific_number_unexpected_context (1)
 - topic:model_consensus (1)
 - specificity:high (1)
+
+### Validated Reuse Signals
+- hook:contradiction (1 winner rows, net positive)
+- topic:model_consensus (1 winner rows, net positive)
+- specificity:high (1 winner rows, net positive)
+- proof:model_names (1 winner rows, net positive)
+
+### Conflicted Signals
+- format:slideshow (winner rows 2, loser rows 8) — do not reuse without stronger proof/tension
+- topic:game_theory_explainer (winner rows 1, loser rows 1) — do not reuse without stronger proof/tension
+- specificity:low (winner rows 1, loser rows 6) — do not reuse without stronger proof/tension
+- proof:none (winner rows 1, loser rows 8) — do not reuse without stronger proof/tension
+- hook:specific_number_unexpected_context (winner rows 1, loser rows 2) — do not reuse without stronger proof/tension
 
 ### Losing Feature Pattern
 - format:slideshow (8)
@@ -132,6 +145,16 @@ It's "what's the optimal position given what rational actors
 - specificity:high (1)
 - proof:model_names (1)
 
+### Validated Reuse Signals
+- No validated reuse signal yet. Keep testing; do not copy winner features that also lost more often.
+
+### Conflicted Signals
+- hook:specific_number_unexpected_context (winner rows 1, loser rows 2) — do not reuse without stronger proof/tension
+- topic:model_consensus (winner rows 1, loser rows 2) — do not reuse without stronger proof/tension
+- format:status_update (winner rows 1, loser rows 1) — do not reuse without stronger proof/tension
+- specificity:high (winner rows 1, loser rows 1) — do not reuse without stronger proof/tension
+- proof:model_names (winner rows 1, loser rows 2) — do not reuse without stronger proof/tension
+
 ### Losing Feature Pattern
 - specificity:low (4)
 - proof:none (3)
@@ -183,6 +206,18 @@ Best: IMDb gave Midsommar a 7.1. that's the wrong number. (1114 views/impression
 - specificity:high (1)
 - hook:unclear (1)
 - specificity:low (1)
+
+### Validated Reuse Signals
+- No validated reuse signal yet. Keep testing; do not copy winner features that also lost more often.
+
+### Conflicted Signals
+- topic:rating_precision (winner rows 2, loser rows 3) — do not reuse without stronger proof/tension
+- format:slideshow (winner rows 2, loser rows 8) — do not reuse without stronger proof/tension
+- proof:none (winner rows 2, loser rows 7) — do not reuse without stronger proof/tension
+- hook:specific_number_unexpected_context (winner rows 1, loser rows 3) — do not reuse without stronger proof/tension
+- specificity:high (winner rows 1, loser rows 1) — do not reuse without stronger proof/tension
+- hook:unclear (winner rows 1, loser rows 3) — do not reuse without stronger proof/tension
+- specificity:low (winner rows 1, loser rows 5) — do not reuse without stronger proof/tension
 
 ### Losing Feature Pattern
 - format:slideshow (8)

@@ -5,6 +5,10 @@ You are Eve's weekly strategic synthesis layer for JT's ReelFarm TikTok native s
 
 ## Detailed Rules
 - Read `/Users/jtsomwaru/.openclaw/workspace/memory/reelfarm/config/apps.json` first.
+- Before synthesis, refresh App Marketing OS evidence:
+  1. `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/app_marketing_collect_metrics.py`
+  2. `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/app_marketing_analyze.py`
+  If collection reports unsupported platforms but exits successfully, continue. If it fails, note the failure in `## Input coverage` and continue only with existing App Marketing OS files.
 - Read the last 7 days of daily reports from `/Users/jtsomwaru/.openclaw/workspace/memory/reelfarm/reports/daily/`.
 - Read recent processed newsletter files from `/Users/jtsomwaru/.openclaw/workspace/memory/reelfarm/newsletters/processed/` if needed to verify repeated patterns.
 - Read analytics file `/Users/jtsomwaru/.openclaw/workspace/memory/reelfarm/analytics/post-performance.csv` if present.

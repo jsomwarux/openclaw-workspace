@@ -1,15 +1,63 @@
 {
   "x": [
-    {"product_slug": "vista", "account": "@jts_14", "username": "jts_14", "user_id": null, "status": "active", "notes": "shared JT account; classify Vista posts by movie/Vista/rating keywords"},
-    {"product_slug": "nash-satoshi", "account": "@NashSatoshi", "username": "NashSatoshi", "user_id": null, "status": "active", "notes": "dedicated Nash account"}
+    {
+      "product_slug": "vista",
+      "account": "@jts_14",
+      "username": "jts_14",
+      "user_id": null,
+      "status": "active",
+      "notes": "shared JT account; classify Vista posts by movie/Vista/rating keywords"
+    },
+    {
+      "product_slug": "nash-satoshi",
+      "account": "@NashSatoshi",
+      "username": "NashSatoshi",
+      "user_id": null,
+      "status": "active",
+      "notes": "dedicated Nash account"
+    }
   ],
   "reelfarm": [
-    {"product_slug": "vista", "account": "@mashed386", "account_username": "mashed386", "tiktok_account_id": "-000PCrRMC1RWBVoBMRKtYnoWEz3ELjxOrk4", "status": "active", "notes": "Vista currently posts through mashed386 ReelFarm account"},
-    {"product_slug": "nash-satoshi", "account": "@nashsatoshi", "account_username": "nashsatoshi", "tiktok_account_id": "-000RzbItKHVRwtBwjKKmtSJZbBnQHPgMPBh", "status": "active", "notes": "Dedicated Nash ReelFarm/TikTok account"}
+    {
+      "product_slug": "vista",
+      "account": "@mashed386",
+      "account_username": "mashed386",
+      "tiktok_account_id": "-000PCrRMC1RWBVoBMRKtYnoWEz3ELjxOrk4",
+      "status": "active",
+      "notes": "Vista currently posts through mashed386 ReelFarm account"
+    },
+    {
+      "product_slug": "nash-satoshi",
+      "account": "@nashsatoshi",
+      "account_username": "nashsatoshi",
+      "tiktok_account_id": "-000RzbItKHVRwtBwjKKmtSJZbBnQHPgMPBh",
+      "status": "active",
+      "notes": "Dedicated Nash ReelFarm/TikTok account"
+    },
+    {
+      "product_slug": "glow-index",
+      "account": "@glow.index",
+      "account_username": "glow.index",
+      "tiktok_account_id": "-000lQqU8zuTVx9NZGpfY0ZOnw6KbdT_Eo2P",
+      "status": "active",
+      "notes": "Glow Index ReelFarm/TikTok account discovered via ReelFarm API"
+    }
   ],
   "google_analytics": [
-    {"product_slug": "vista", "property_id": null, "status": "needs_ga4_property_id"},
-    {"product_slug": "nash-satoshi", "property_id": null, "status": "needs_ga4_property_id"},
-    {"product_slug": "glow-index", "property_id": null, "status": "pending"}
+    {
+      "product_slug": "vista",
+      "property_id": null,
+      "status": "needs_ga4_property_id"
+    },
+    {
+      "product_slug": "nash-satoshi",
+      "property_id": null,
+      "status": "needs_ga4_property_id"
+    },
+    {
+      "product_slug": "glow-index",
+      "property_id": null,
+      "status": "pending"
+    }
   ]
 }

@@ -95,6 +95,38 @@ Organic content should create demand for this world by hitting the emotional itc
 
 Use the simulator as the invisible thesis behind content: dynasty is really a strategy game trapped inside a once-per-week NFL calendar.
 
+
+## @dynastyjig Native Pattern Teardown Rule — 2026-05-12
+
+JT correction: specificity alone is not enough. @dynastyjig posts must model the tone, sentence construction, and native tension of recent dynasty/betting posts before drafting.
+
+Before writing a daily post pack, create a `Native pattern teardown` section from fresh X/search + Notion swipe inputs. It must identify at least 5 concrete mechanics from current niche examples:
+- **Opening syntax:** exact structure type, e.g. “Your final roster spots should…”, “One of the best times to…”, “How should you play…”, “Should you trade the 1.08…”.
+- **Native nouns:** rookie draft, final roster spots, productive vets, rookie hype, 1.08, WR2, RB dead zone, card, unit, round robin, last leg, one-run loss, record.
+- **Sentence length/rhythm:** short declarative, question prompt, list lead-in, or card-style ledger. Avoid polished essay cadence.
+- **Tension type:** timing window, price after hype, roster-spot opportunity cost, league-room disagreement, public betting-card accountability, tilt/chase behavior.
+- **What NOT to copy:** wording, author persona, emojis, promo, giveaway framing, hashtags, or generic “here are targets” list structure unless JT has real names/data.
+
+Hard bans for daily @dynastyjig packs unless deliberately justified by a quoted native example:
+- “the real question is”
+- “the kind of player/pick/bet that exposes…”
+- “that is a question worth asking”
+- “helmet and hope”
+- assistant-y moralizing like “not edge,” “discipline mechanic,” or “psychology” in the public draft
+- complete explanatory mini-essays when a native post would use one sharp line or a direct question
+
+Required style shift:
+- Dynasty posts should feel like market-room talk: price, picks, roster spot, round, value, rookie hype, vets, contender, rebuild.
+- Betting posts should feel like card/slip talk: unit, leg, card, round robin, last leg, record, one-run/one-point loss, public slip.
+- If the live betting sample is low-quality/spammy, do not imitate it. Extract only concrete nouns and accountability mechanics, then write a durable card-construction take.
+
+Daily output must include:
+1. `Native pattern teardown` with 5 mechanics.
+2. `Rejected generic patterns` naming any phrases/structures cut.
+3. `Quality gate applied` confirming the drafts use native nouns + rhythm, not just topical specificity.
+
+Regression check: before delivering a pack, compare each draft against the teardown. If a draft cannot point to a specific native syntax/rhythm mechanic, rewrite it or mark `SKIP_DRAFT`.
+
 ## @dynastyjig Content Standard
 
 @dynastyjig content should build trust and traction inside two niches: **dynasty fantasy football** and **sports betting**. The apps are context, not the copy. Do not make posts about Action Arena or the Dynasty Simulator unless JT explicitly asks for launch or product copy.
@@ -204,8 +236,8 @@ Use this when JT asks whether content is referencing the provided accounts optim
 1. Read `memory/sports-gm/dynasty-x-targets.md` before generating reply targets.
 2. Use JT-approved accounts as the main universe, but sample recent content before replying. Do not rely on handle reputation alone.
 3. Build a candidate pool from multiple topical searches plus the target list. Do not use only one narrow `from:` query.
-4. **Freshness gate is mandatory:** every recommended reply target must be from the last 24 hours; prefer last 6-12 hours. If exact timestamp is unavailable, do not use the post unless search/source evidence clearly indicates it is today. Posts older than 24 hours are disqualified, even if high quality.
-5. **Fail closed on X/search blockage:** if fresh X search is blocked, API credits are depleted, or only cached/old posts are available, output `BLOCKED: fresh X reply targets unavailable` and explain the blocker. Never use a cached viable pool as a fallback for daily engagement replies.
+4. **Freshness gate is mandatory and non-negotiable:** every recommended reply target must be from the last 24 hours; prefer last 6-12 hours. If exact timestamp is unavailable, do not use the post unless search/source evidence clearly indicates it is today. Posts older than 24 hours are disqualified, even if high quality.
+5. **No cached-pool fallback:** cached viable pools, prior-day pools, saved links, and older high-quality posts are banned for daily engagement replies. If fresh X search is blocked, API credits are depleted, or only cached/old posts are available, output exactly `BLOCKED: fresh X reply targets unavailable — [reason]` and stop. Do not generate replacement replies.
 6. Final reply pack must use 3 different accounts. At least 2 of 3 should be from JT's approved list.
 7. Cap repeat-heavy accounts (`@DynastyDwarf`, `@DFF_Dynasty`, or any account used yesterday) to at most one combined target per day.
 8. Reply only when @dynastyjig can add a sharp fantasy point: dynasty value gaps, rookie uncertainty, draft capital vs. landing spot, roster window, role, upside, risk, manager behavior, or trade process.
@@ -213,6 +245,8 @@ Use this when JT asks whether content is referencing the provided accounts optim
 10. Use community-native language: price, value, rookie pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender, manager.
 11. Avoid pure memes, giveaways, app promos, betting slips, and generic news unless the reply adds a plain dynasty/fantasy angle.
 12. Include an `Account diversity: 3/3 unique accounts` line and a `Freshness: all targets ≤24h old` line in the final output.
+
+13. Query hygiene for reply search: never use generic `trade value` alone because it pulls finance, crypto, real estate, and stock posts. Fantasy reply searches must include fantasy-football qualifiers (`dynasty fantasy`, `fantasy football`, `rookie draft`, `SF`, `TEP`, `RB`, `WR`, `QB`, `TE`, `contender`, `rebuild`, `roster spot`) and exclude obvious noise (`-crypto -defi -stock -real estate -multifamily`). If a query returns mostly non-fantasy posts, discard it and rerun narrower before declaring `BLOCKED`.
 
 ## Workflow: Roster Audit
 1. Ask for league format only if unavailable: 1QB/SF, scoring, teams, starters, bench, TE premium, roster, picks, manager goal.

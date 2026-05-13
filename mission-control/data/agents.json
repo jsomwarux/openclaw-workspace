@@ -535,9 +535,13 @@
     "domain": "Skills",
     "workspaceRel": "agents/autoresearch",
     "crons": [
-      "monthly sweep (1st of month, on-demand otherwise)"
+      {
+        "id": "ec9f36d3-3bf8-4bc9-a4b1-06aa886a24ff",
+        "name": "Autoresearch Sweep",
+        "schedule": "Mon/Wed/Fri 11:15 AM ET"
+      }
     ],
-    "currentTask": "pending first run on cold-email",
+    "currentTask": "Recurring bounded sweep active: improves one high-value pending/active target per run; updates targets.md/logs/results.tsv and applies validated prompt/rule fixes directly.",
     "created": "2026-03-19"
   },
   {
@@ -650,5 +654,53 @@
     "crons": [],
     "currentTask": "Created as future replacement target for Vibe Marketing content-generation surfaces. Not wired to production cron yet.",
     "created": "2026-05-06"
+  },
+  {
+    "id": "mission-control-priority-auditor",
+    "name": "Mission Control Priority Auditor",
+    "emoji": "🎯",
+    "role": "North Star Task Prioritization",
+    "domain": "Daily Mission Control audit that demotes stale/speculative work and keeps visible priorities aligned to JT’s North Star: consulting cash/proof, app distribution, crypto opportunity, health/financial stability.",
+    "workspaceRel": "agents/mission-control-priority-auditor",
+    "github": null,
+    "skills": [
+      "exec",
+      "mission-control",
+      "north-star"
+    ],
+    "crons": [
+      {
+        "id": "eve-morning-brief-001",
+        "name": "Morning Brief integration",
+        "schedule": "Daily before 7:30 AM brief"
+      }
+    ],
+    "currentTask": "Runs via Morning Brief step using scripts/mission_control_north_star_audit.py; saves reports under reports/mission-control-priority/.",
+    "created": "2026-05-12"
+  },
+  {
+    "id": "ai-ops-teardown",
+    "name": "AI Ops Teardown Agent",
+    "emoji": "🧩",
+    "role": "Consulting Proof Content",
+    "domain": "Turns buyer-relevant company/category signals into “If I were building AI ops for...” workflow teardown bundles with LinkedIn/X drafts and build-tier decisions.",
+    "workspaceRel": "agents/ai-ops-teardown",
+    "github": null,
+    "skills": [
+      "content-generation",
+      "web_search",
+      "x-research",
+      "notion",
+      "mission-control"
+    ],
+    "crons": [
+      {
+        "id": "f96cc24f-55e6-4064-a075-b897156a22f2",
+        "name": "AI Ops Teardown Weekly Draft",
+        "schedule": "Sunday 7:15 PM ET"
+      }
+    ],
+    "currentTask": "Recurring weekly draft engine active; produces one review-ready AI Ops Teardown bundle or skips if no candidate clears 18/30.",
+    "created": "2026-05-12"
   }
 ]

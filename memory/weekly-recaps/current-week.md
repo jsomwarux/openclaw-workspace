@@ -77,3 +77,16 @@ Archive every Monday, start fresh.
 - 2026-05-11: Updated job-market agent strategy to consulting-first opportunity routing (apply / both / consulting-outreach / market-intel), added Human Agency contech job-signal note, normalized active routes, and pushed Eve-owned MC draft task.
 - 2026-05-11: Converted job-market consulting signals into assets: Human Agency LinkedIn/email outreach draft + reusable AI Enablement Sprint positioning note, both uploaded to Drive.
 - 2026-05-11: Audited Human Agency outreach artifact, cleaned copy/format, re-uploaded with preferred Drive title, and created JT send-review task.
+- 2026-05-12 overnight ops: checked bootstrap budgets, fallback queue, daily notes, and cron health; no blocked high-priority Eve-owned task and no >=2-error cron failures. Logged focused maintenance recommendation for malformed/noisy cron delivery targets at `reports/overnight/2026-05-12-overnight-autonomy.md`.
+- 2026-05-12: Reset Guyana strategy around Local Content Operations Sprint for oil/gas-adjacent suppliers; patched monitor and created next-step tasks.
+- 2026-05-12: Audited Guyana reset, demoted stale government/demo tasks, warned that hidden /guyana page is stale until rewritten, and added page/demo follow-up tasks.
+- 2026-05-12: Reordered Mission Control around North Star: consolidated Altmark duplicates, demoted stale cold outreach/skills/demo noise, and created consolidated Vista distribution task.
+- 2026-05-12: Tightened Mission Control high-priority definition to true North Star work: immediate cash/proof/distribution/health, demoted stale cold outreach, skills, job-app, tool-update, and speculative build tasks.
+- 2026-05-12: Built Mission Control North Star priority auditor, integrated it into Morning Brief, registered it in Mission Control agents, and enrolled it in autoresearch.
+- 2026-05-12: Audited autoresearch loop; found missing dedicated sweep cadence; added bounded weekly Autoresearch Sweep cron and updated registry/agent docs.
+- 2026-05-12: Hardened autoresearch against Karpathy pattern: added results.tsv ledger, keep/discard/crash discipline, pre-mutation snapshots, missing checklists, stale-target cleanup, and upgraded cadence to Mon/Wed/Fri.
+- Wired AI Ops Teardowns into a real recurring content engine: added agent, weekly prompt, Sunday 7:15PM cron `f96cc24f`, Mission Control registration, autoresearch enrollment, and closed stale manual scan task.
+- Altmark rent delinquency tracker reactivated: Yair said he and Matt will discuss Thu/Fri and start next automation steps with the rent delinquency tracker; likely early next week.
+- Applied selective GPT-5.5 reasoning routing: high for judgment-heavy pipelines/content/research systems, xhigh only for weekly/monthly synthesis audits, default for routine ops.
+- Hardened high/xhigh cron configs after routing upgrade: added failure alerts, corrected tight timeouts, and verified elevated jobs are still enabled and aligned to North Star responsibilities.
+- Used xhigh configuration audit to fix medium-era system design issues: Monday content seed/Drive finalizer loop, outreach preflights/warm-up task closure, producer/consumer schedule buffers, passive-income decrowding, and autoresearch bootstrap safety.

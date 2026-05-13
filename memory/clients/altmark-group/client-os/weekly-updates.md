@@ -7,7 +7,8 @@
 - Convert Altmark from “built” to accepted: PC handoff, insurance workflow verification, payment clarity, and clean next-workflow gate.
 
 ### Wins
-- Tuesday execution pack prepared at `proof-assets/tuesday-execution-pack-2026-05-12.md`.
+- Wednesday execution pack prepared at `proof-assets/wednesday-execution-pack-2026-05-13.md` with exact send-first copy, acceptance criteria, post-call notes, and proof-capture checklist.
+- Tuesday execution pack remains available at `proof-assets/tuesday-execution-pack-2026-05-12.md`.
 - Existing runbooks/checklists already cover PC handoff, insurance workflow acceptance, and rent-delinquency data readiness.
 
 ### Blockers / Risks
@@ -16,7 +17,7 @@
 - Rent delinquency remains client-data-gated; building before a cleaned sample report would create rework and client risk.
 
 ### Next Action
-- JT sends/uses the Tuesday execution message to lock the handoff and acceptance/payment/deposit statuses.
+- JT sends/uses the Wednesday execution message to lock the handoff/access path and acceptance/payment/deposit statuses.
 
 ### Decision Rule
 - Referrals wait until the first workflow is accepted and payment/deposit status is clean.

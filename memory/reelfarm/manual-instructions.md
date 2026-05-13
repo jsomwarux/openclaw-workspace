@@ -29,3 +29,5 @@ Manual OAuth setup required once:
 5. Test ingestion:
    `python3 ~/.openclaw/workspace/scripts/reelfarm_gmail_ingest.py`
 6. Confirm it prints `GMAIL_INGEST_OK`.
+## Gmail unread behavior
+The Social Growth Engineers Gmail ingest uses read-only Gmail access and does not mark messages as read, archive them, label them, or otherwise modify Gmail. Unread emails in `openclawagenteve14@gmail.com` can still have been scraped and analyzed. The source of truth is `memory/reelfarm/gmail-state.json` plus files moved into `memory/reelfarm/newsletters/processed/`.

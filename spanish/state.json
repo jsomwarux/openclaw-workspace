@@ -1,27 +1,50 @@
 {
-  "started": "2026-03-02",
-  "last_lesson_date": "2026-05-11",
-  "last_lesson_complete": false,
-  "current_day": 59,
+  "current_day": 60,
   "current_week": 9,
-  "lesson_streak": 32,
-  "longest_streak": 32,
-  "streak": 31,
-  "total_lessons_completed": 17,
+  "focus": "speaking and listening, not writing",
+  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
+  "goal": "Light casual conversation with girlfriend and her family",
+  "last_lesson_complete": false,
+  "last_lesson_date": "2026-05-12",
+  "lesson_streak": 33,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
-  "goal": "Light casual conversation with girlfriend and her family",
-  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
-  "focus": "speaking and listening, not writing",
-  "use_cases": ["restaurants", "directions", "small talk", "survival Spanish"],
-  "strong_areas": ["basic greetings", "verb intuition (me llamo, estoy)", "family dinner phrases", "past tense basics (comí, fui, vi)", "quisiera vs quiero (polite ordering)"],
-  "weak_areas": ["conocer vs saber (mixing up)", "no problemo habit", "e/y confusion (Italian vs Spanish)"],
-  "real_world_challenges_unlocked": 2,
+  "longest_streak": 33,
+  "notes": "Likes & Dislikes (2026-05-12). Topic: Me gusta, No me gusta, Me encanta, Prefiero.",
   "real_world_challenges_completed": [],
-  "weekly_scores": [
-    {"week": 2, "date": "2026-03-16", "grade": "B+"},
-    {"week": 3, "date": "2026-03-22", "grade": "B+"}
+  "real_world_challenges_unlocked": 2,
+  "started": "2026-03-02",
+  "streak": 32,
+  "strong_areas": [
+    "basic greetings",
+    "verb intuition (me llamo, estoy)",
+    "family dinner phrases",
+    "past tense basics (comí, fui, vi)",
+    "quisiera vs quiero (polite ordering)"
   ],
-  "notes": "Weather & Small Talk Openers (2026-05-11). Context: Social Conversations.",
+  "total_lessons_completed": 18,
+  "use_cases": [
+    "restaurants",
+    "directions",
+    "small talk",
+    "survival Spanish"
+  ],
+  "weak_areas": [
+    "conocer vs saber (mixing up)",
+    "no problemo habit",
+    "e/y confusion (Italian vs Spanish)"
+  ],
+  "weekly_scores": [
+    {
+      "date": "2026-03-16",
+      "grade": "B+",
+      "week": 2
+    },
+    {
+      "date": "2026-03-22",
+      "grade": "B+",
+      "week": 3
+    }
+  ],
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases."
 }

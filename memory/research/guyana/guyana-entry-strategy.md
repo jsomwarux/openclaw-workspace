@@ -1,13 +1,24 @@
 # Guyana Entry Strategy — JT Somwaru Consulting
-**Created:** March 15, 2026
+**Created:** March 15, 2026  
+**Updated:** 2026-05-12 strategy reset
+
+---
+
+## 2026-05-12 Current Strategy
+
+The opportunity is still real, but the first wedge changed: **do not lead with broad government AI transformation.** Lead with private-sector/operator pain around oil/gas growth and local-content compliance.
+
+Primary path: validate warm family/diaspora/local-firm introductions into Guyanese suppliers, logistics firms, staffing/compliance vendors, procurement/service contractors, and local tech partners. Offer: Local Content Operations Sprint — workflow cleanup for compliance documents, procurement/admin tracking, bid readiness, vendor docs, tender calendars, and follow-up dashboards.
+
+Government digitization, Georgetown city services, and procurement demos remain high-upside but should only move after a credible warm intro or local partner exists.
 
 ---
 
 ## The Situation
 
-JT has a personal contact who can potentially connect him with someone in Guyana (local firm or government connection). This is the single most important asset for entering this market — Guyana runs on relationships, not cold pitches.
+JT has a personal contact who can potentially connect him with someone in Guyana (local firm, supplier/operator, or government connection). This is the single most important asset for entering this market — Guyana runs on relationships, not cold pitches.
 
-The opportunity is real: fastest-growing economy in the world, government actively spending on AI and digital transformation, drainage/infrastructure accountability gaps that directly match JT's capabilities.
+The opportunity is real: fastest-growing economy in the world, oil/gas local-content expansion, government digitization, and underbuilt workflow/process infrastructure that directly match JT's capabilities.
 
 ---
 
@@ -24,13 +35,13 @@ The answer shapes the entire strategy. A direct ministry intro is a 6-month path
 
 ---
 
-## Phase 2: Build Demo (Parallel with Phase 1)
+## Phase 2: Build Demo — PARKED UNTIL ACCESS IS REAL
 
-While validating the contact, build **Georgetown City Services Agent** (Build 1 from demo-build-plan.md).
+**Updated 2026-05-12:** Do not build the Georgetown City Services Agent by default. That was the right demo for a government/ministry conversation, but the current first wedge is supplier/operator workflow pain.
 
-Timeline: 1–2 days.
+Only build a government/city-services demo if a warm intro or local partner creates a specific government-facing meeting.
 
-This is the only demo needed for an initial meeting. It uses real Georgetown context, directly references the government's December 2025 drainage/digitization commitment, and shows a complete working system — not slides.
+Default demo now: a lightweight **Local Content Ops Sprint** mock workflow: certification tracker + bid calendar + document intake + vendor/customer CRM + exception dashboard.
 
 ---
 
@@ -98,8 +109,10 @@ Government contracts are larger than JT's current NYC SMB pricing but require mo
 
 ## Decision Trigger
 
-**Go signal:** Contact confirms a direct intro to ministry official or local firm with active government work. Then build demo + plan trip.
+**Go signal:** Contact confirms a direct intro to a supplier/operator/local firm with oil/gas, procurement, compliance, logistics, staffing, construction-support, or government-contract exposure. Then validate workflow pain and offer the Local Content Operations Sprint.
 
-**Hold signal:** Contact's connection is loose/informal, or is private sector only with no government line. Research further before investing build time.
+**Government go signal:** Contact confirms a direct intro to a ministry official or local firm with active government work. Then consider a government demo + trip plan.
+
+**Hold signal:** Contact's connection is loose/informal, or is purely general diaspora interest with no operator/business path. Keep monitoring; do not build demos.
 
 **Stop signal:** Contact cannot make a meaningful intro. Park this in future-signals.md and revisit if another Guyana connection surfaces.

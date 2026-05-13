@@ -32,3 +32,5 @@ date,app,automation,hook,views,avg_watch_time,completion_rate,swipe_rate,profile
 Edit `memory/reelfarm/config/apps.json`:
 - Add new app object with product, audience, positioning, voice, strong_devices, banned.
 - Set `status` to `paused` or `sunset` to remove from daily review without deleting history.
+## Gmail unread behavior
+The Social Growth Engineers Gmail ingest uses read-only Gmail access and does not mark messages as read, archive them, label them, or otherwise modify Gmail. Unread emails in `openclawagenteve14@gmail.com` can still have been scraped and analyzed. The source of truth is `memory/reelfarm/gmail-state.json` plus files moved into `memory/reelfarm/newsletters/processed/`.

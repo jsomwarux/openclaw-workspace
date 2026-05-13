@@ -165,6 +165,32 @@ def summarize_features(items: list[dict], baseline: float, target_label: str) ->
     return dict(sorted(counts.items(), key=lambda kv: kv[1], reverse=True))
 
 
+def split_feature_signal(win_features: dict[str, int], lose_features: dict[str, int]) -> tuple[dict[str, int], dict[str, tuple[int, int]], dict[str, int]]:
+    """Separate reusable winners from conflicted/losing features.
+
+    A feature is only a true reuse signal when it appears more often in winners
+    than losers. This prevents tiny-sample spikes from recommending poisoned
+    patterns like low specificity or proof:none when those mostly lost.
+    """
+    reuse: dict[str, int] = {}
+    conflicted: dict[str, tuple[int, int]] = {}
+    avoid: dict[str, int] = dict(lose_features)
+    for feat, w_count in win_features.items():
+        l_count = lose_features.get(feat, 0)
+        if w_count > l_count:
+            reuse[feat] = w_count
+        elif l_count > 0:
+            conflicted[feat] = (w_count, l_count)
+            avoid.setdefault(feat, l_count)
+        else:
+            # No loser evidence, but only keep if not obviously low-signal.
+            if feat not in {'specificity:low', 'proof:none', 'hook:unclear', 'topic:unclear'}:
+                reuse[feat] = w_count
+            else:
+                conflicted[feat] = (w_count, 0)
+    return reuse, conflicted, dict(sorted(avoid.items(), key=lambda kv: kv[1], reverse=True))
+
+
 def main() -> int:
     rows=load_rows()
     groups=defaultdict(list)
@@ -192,11 +218,22 @@ def main() -> int:
         lines.append("")
         win_features=summarize_features(items, baseline, 'winner')
         lose_features=summarize_features(items, baseline, 'loser')
+        reuse_features, conflicted_features, avoid_features = split_feature_signal(win_features, lose_features)
         lines.append("### Winning Feature Pattern")
         if win_features:
             for k,v in list(win_features.items())[:8]: lines.append(f"- {k} ({v})")
         else:
             lines.append("- No winner feature pattern yet.")
+        lines.append("")
+        lines.append("### Validated Reuse Signals")
+        if reuse_features:
+            for k,v in list(reuse_features.items())[:8]: lines.append(f"- {k} ({v} winner rows, net positive)")
+        else:
+            lines.append("- No validated reuse signal yet. Keep testing; do not copy winner features that also lost more often.")
+        if conflicted_features:
+            lines.append("")
+            lines.append("### Conflicted Signals")
+            for k,(w,l) in list(conflicted_features.items())[:8]: lines.append(f"- {k} (winner rows {w}, loser rows {l}) — do not reuse without stronger proof/tension")
         lines.append("")
         lines.append("### Losing Feature Pattern")
         if lose_features:
@@ -223,16 +260,22 @@ def main() -> int:
 
         # Rules file.
         rules += [f"## {product} / {platform}", ""]
-        if win_features:
-            rules.append("### Reuse")
-            for k,v in list(win_features.items())[:8]: rules.append(f"- {k} ({v} winner rows)")
-        if lose_features:
+        if reuse_features:
+            rules.append("### Reuse — validated net-positive only")
+            for k,v in list(reuse_features.items())[:8]: rules.append(f"- {k} ({v} winner rows, net positive vs losers)")
+        if conflicted_features:
+            rules.append("### Conflicted — do not blindly reuse")
+            for k,(w,l) in list(conflicted_features.items())[:8]: rules.append(f"- {k} (winner rows {w}, loser rows {l})")
+        if avoid_features:
             rules.append("### Avoid / Rework")
-            for k,v in list(lose_features.items())[:8]: rules.append(f"- {k} ({v} loser rows)")
+            for k,v in list(avoid_features.items())[:8]: rules.append(f"- {k} ({v} loser rows)")
         rules.append("### Generation Instruction")
-        if baseline > 0 and win_features:
-            rules.append("- Generate new posts by reusing the winning structure/topic/specificity, but change the wording and example.")
-            rules.append("- If using a losing topic, add specificity/proof/tension before approving.")
+        if baseline > 0 and reuse_features:
+            rules.append("- Generate new posts by reusing only validated net-positive structures/topics. Do not reuse conflicted features without adding new proof, specificity, or tension.")
+            rules.append("- If a feature appears in both winners and losers, treat it as unresolved until it repeats with clean performance.")
+        elif baseline > 0 and win_features:
+            rules.append("- Winner data exists, but no feature is net-positive yet. Treat winners as examples to study, not rules to copy.")
+            rules.append("- Keep testing one variable at a time and require stronger proof/tension before scaling.")
         else:
             rules.append("- Keep testing. Do not increase volume until baseline exists.")
         rules.append("")

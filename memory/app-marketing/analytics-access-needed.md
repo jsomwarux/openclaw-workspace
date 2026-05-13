@@ -13,6 +13,7 @@ Status: working.
 Mapped accounts:
 - `@nashsatoshi` → `nash-satoshi`
 - `@mashed386` → `vista`
+- `@glow.index` → `glow-index`
 
 ### X
 Status: partially working.

@@ -80,7 +80,7 @@ Current efforts do **not** have to anchor every post. They should prevent drift,
 - First lane: Altmark-adjacent property/family-office workflows: insurance expiration, rent delinquency readiness, maintenance/vendor routing, owner summaries.
 - Content rule: frame as hypothetical/public-category teardown unless the company is an actual client; never expose private client details.
 - Source: `memory/consulting/ai-ops-teardowns/`.
-- Delivery contract: Monday morning gets one review-ready LinkedIn + X bundle; Wednesday deepens if a real n8n template/screenshot exists; Friday gets a compressed tactical follow-up only if there is a fresh angle.
+- Delivery contract: Sunday 7:15PM ET cron (`f96cc24f`) creates one review-ready LinkedIn + X bundle or skips weak topics; Monday morning surfaces it; Wednesday deepens if a real n8n template/screenshot exists; Friday gets a compressed tactical follow-up only if there is a fresh angle.
 
 ## Niche Intelligence Library
 - Status: active as of 2026-05-10.

@@ -1,12 +1,26 @@
 # Guyana Outreach Strategy — JT Somwaru Consulting
 **Created:** March 2026  
-**Purpose:** Actionable outreach playbook for Tier 1 (government), Tier 2 (local firms), and Tier 3 (diaspora) — assuming no warm intro from personal contact.
+**Updated:** 2026-05-12 strategy reset  
+**Purpose:** Actionable outreach playbook for Guyana entry. Historical tiers remain useful, but the current primary wedge is private-sector/local-content supplier operations, not broad government transformation.
+
+---
+
+## 2026-05-12 Strategy Reset — Current Priority
+
+Primary move: **Local Content Operations Sprint** for oil/gas-adjacent Guyanese suppliers and local-content firms. Lead with compliance docs, procurement/admin workflows, bid readiness, vendor documents, tender tracking, quote/invoice follow-up, and exception visibility.
+
+Use JT’s Guyanese-American/family connection as a trust bridge, not as the offer. Government digitization, drainage, city-services, and procurement demos should only move after a warm intro or local partner exists.
+
+Current source of truth:
+- `memory/research/guyana/2026-05-12-strategy-reset.md`
+- `memory/research/guyana/local-content-ops-sprint.md`
+- `memory/research/guyana/supplier-prospect-seed-list.md`
 
 ---
 
 ## The Core Principle
 
-Guyana runs on relationships. Cold email to a ministry inbox goes nowhere. The three tiers below are ordered by how quickly they can generate real conversations — Tier 2 (local firms) is actually your fastest path in, not Tier 1 (government). Use Tier 3 (diaspora) to accelerate both.
+Guyana runs on relationships. Cold email to a ministry inbox goes nowhere. The fastest path now is private-sector supplier/operator conversations plus local firm partners. Use diaspora/family/AmCham/GCCI channels to create warm intros; use government channels only when they lead to a specific buyer or local partner.
 
 ---
 
@@ -123,7 +137,7 @@ The fastest path to a government contract is as a sub-contractor to a local firm
 - LinkedIn: gy.linkedin.com/company/techlify
 
 **Approach:**
-LinkedIn DM to Joshua Kissoon. Be direct: you're a US-based AI automation consultant, Guyanese-American, looking for a Guyana-based technical partner to pursue government digital transformation contracts together. Mention AmCham specifically (he's been recognized there) to signal you know his world.
+LinkedIn DM to Joshua Kissoon. Be direct: you're a US-based AI automation consultant, Guyanese-American, looking for a Guyana-based technical partner to support supplier/operator workflow automation around local-content, procurement, document intake, and bid readiness. Mention AmCham specifically (he's been recognized there) to signal you know his world. Do not lead with government digital transformation unless he raises government work first.
 
 ---
 
@@ -257,15 +271,15 @@ You don't need to be in Georgetown to engage AmCham. Email Richard Leo (rleo@amc
 
 5. **Before any Georgetown trip:** Have at least one confirmed meeting — either with a Techlify/GCCI firm or a GO-INVEST introduction. Don't fly down cold.
 
-6. **Georgetown trip:** Demo the Georgetown City Services Agent live. This is the single most important asset — a working system running real Georgetown scenarios beats any deck.
+6. **Georgetown trip:** Only after a confirmed meeting path. For supplier/operator meetings, demo the Local Content Ops Sprint mock workflow. For government/ministry meetings only, demo the Georgetown City Services Agent.
 
 ---
 
 ## What to Have Ready Before Outreach
 
 - **One-page capability overview** (not a proposal — a capability brief): what you build, 3 examples, and 2-3 specific Guyana use cases it maps to. PDF, clean design.
-- **Working demo of Georgetown City Services Agent** (Build 1 from your demo plan) — 1–2 days to build, invaluable in every conversation.
-- **Guyana page on jtsomwaru.com** — this is live. Use it. It's proof you've done the research and are serious.
+- **Working Local Content Ops Sprint demo** — certification tracker + bid calendar + document intake + vendor CRM + exception dashboard. Build this before any supplier/operator outreach conversation that needs proof.
+- **Guyana page on jtsomwaru.com** — current hidden/noindex page is government-infrastructure biased. Do not use in supplier outreach until it is rewritten around the Local Content Ops Sprint wedge.
 - **AgentGuard** — the governance/accountability angle is directly relevant to government procurement conversations about AI. Have the Vercel link ready.
 
 ---

@@ -62,7 +62,9 @@ FILE_REFS = {
     "skills/video-generation/SKILL.md": "8042966f",
     "skills/google-slides/SKILL.md": "b62aeb89",
     "skills/ux-architecture/SKILL.md": "933c2ef8",
-    "skills/sports-gm/SKILL.md": "357ca121"
+    "skills/sports-gm/SKILL.md": "357ca121",
+    "skills/workflow-skillify/SKILL.md": "62739dbcdeff58a46a1dd24fcb25889ccf053758",
+    "skills/high-stakes-draft-eval/SKILL.md": "62739dbcdeff58a46a1dd24fcb25889ccf053758",
 }
 
 def get_git_lines(file_path, ref):

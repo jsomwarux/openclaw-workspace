@@ -1,8 +1,8 @@
 # AI Ops Teardowns — Delivery Calendar
 
 ## Standing Cadence
-- Sunday evening: scan and score topics.
-- Monday morning: deliver one review-ready teardown draft bundle.
+- Sunday 7:15PM ET: `AI Ops Teardown Weekly Draft` cron (`f96cc24f`) scans/scores topics and writes one review-ready bundle or skips weak topics.
+- Monday morning: surface the selected bundle for JT review/posting.
 - Wednesday: publish/deepen if a real template or screenshot exists.
 - Friday: tactical compressed follow-up if new angle exists.
 
