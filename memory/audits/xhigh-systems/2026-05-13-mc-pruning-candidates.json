@@ -1,0 +1,457 @@
+[
+  {
+    "id": "j574bhxx6gj1n0esr2k409dhrh85jqcr",
+    "title": "[Score 6.6] GlamboxMatch — beauty box matcher",
+    "project": "passive-income",
+    "priority": "low",
+    "reason": "low-score passive-income idea (6.6) not promoted to PI Build/Validate; parked by North Star pruning."
+  },
+  {
+    "id": "j57903vcw44f89xckg0dqar2e185knxe",
+    "title": "[Score 6.9] PetBowlProof — dog food label interpreter",
+    "project": "passive-income",
+    "priority": "low",
+    "reason": "low-score passive-income idea (6.9) not promoted to PI Build/Validate; parked by North Star pruning."
+  },
+  {
+    "id": "j57200vc5gxqhqjrwyhd5408w585j03z",
+    "title": "[Score 7.2] RouteSafe — safer running route planner",
+    "project": "passive-income",
+    "priority": "low",
+    "reason": "mid-score passive-income idea (7.2) not promoted to PI Build/Validate; parked by North Star pruning."
+  },
+  {
+    "id": "j57byxc7z0yc31qcka845d3ka585k3jg",
+    "title": "[Score 7.1] RouteSafe scout/validation track",
+    "project": "passive-income",
+    "priority": "low",
+    "reason": "duplicate/mid-score RouteSafe scout idea (7.1) superseded by not being selected as PI Build/Validate."
+  },
+  {
+    "id": "j572tn2c7kxzg7972r26n2asa5854y3v",
+    "title": "[Score 5.8] NewsletterStack — newsletter discovery platform",
+    "project": "passive-income",
+    "priority": "low",
+    "reason": "low-score passive-income idea (5.8) not promoted to PI Build/Validate; parked by North Star pruning."
+  },
+  {
+    "id": "j5775p9jtcyyzc8f4mvra724gn84cxrm",
+    "title": "[Score 7.0] AI video agent Python POC",
+    "project": "passive-income",
+    "priority": "medium",
+    "reason": "mid-score AI video POC idea (7.0) superseded by existing AI Video Agent development tasks; parked."
+  },
+  {
+    "id": "j57a90k871cqewv9y1dwm14enx83td1d",
+    "title": "[Score 5.6] PadelRank — AI padel racket rankings",
+    "project": "passive-income",
+    "priority": "low",
+    "reason": "low-score passive-income idea (5.6) not promoted to PI Build/Validate; parked by North Star pruning."
+  },
+  {
+    "id": "j579gwrjqdbhg69091ry4rvb6n82ryfq",
+    "title": "[Score 7.4] Reusable AI UGC video pipeline",
+    "project": "passive-income",
+    "priority": "medium",
+    "reason": "mid-score reusable UGC pipeline idea (7.4) superseded by current App Marketing OS/ReelFarm tasks."
+  },
+  {
+    "id": "j575avc6gev5am4kzmsqajn2xx83971e",
+    "title": "Vista — Post 3rd X post: what surprised me (Day 5)",
+    "project": "Vista",
+    "priority": "medium",
+    "reason": "stale Day 5 Vista launch checklist item superseded by current App Marketing OS and focused Vista distribution tasks."
+  },
+  {
+    "id": "j576eehffjv1vv2jwm3cp6yjtn838e1b",
+    "title": "Vista — Post Reddit launch post to r/Letterboxd (Day 4)",
+    "project": "Vista",
+    "priority": "medium",
+    "reason": "stale Day 4 Vista launch checklist item superseded by current App Marketing OS and focused Vista distribution tasks."
+  },
+  {
+    "id": "j577g3wf4jvyhs2efh5s5s739x839qdk",
+    "title": "Vista — Send UGC creator DMs (Day 2)",
+    "project": "Vista",
+    "priority": "medium",
+    "reason": "stale Day 2 Vista creator-DM launch checklist item superseded by current App Marketing OS and focused Vista distribution tasks."
+  },
+  {
+    "id": "j572hx1wkrd38807rwrt2as9bh84eahr",
+    "title": "Build idea: A2ALink — Cross-Vendor Agent Interoperability Demo",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; superseded by Strategy Jobs Pack/current role-driven work."
+  },
+  {
+    "id": "j57ev2n1g79nmgw4bsxcffvjvx84dccv",
+    "title": "Build idea: ProcessBlueprint — Business Process → Agentforce Mapping Framework",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; superseded by Strategy Jobs Pack/current role-driven work."
+  },
+  {
+    "id": "j573x6h8qpqtvebq683sde677x84cjxq",
+    "title": "Build idea: AgentPack — Reusable Agentforce Agent Configuration Library",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; superseded by Strategy Jobs Pack/current role-driven work."
+  },
+  {
+    "id": "j57bsqx7nvh11eycftffvyc95984d8w0",
+    "title": "Build idea: TelcoAgent — Agentforce for Communications (telco vertical)",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; superseded by Strategy Jobs Pack/current role-driven work."
+  },
+  {
+    "id": "j575c6g4h9rhbgmpfpwpqvdghn84c77m",
+    "title": "Build idea: OutcomeFirst — Pre-Implementation AI Business Case Builder",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; duplicate of newer OutcomeFirst/Strategy Jobs Pack work."
+  },
+  {
+    "id": "j57b2e248c3aw5fkty5q37rpn984dmvr",
+    "title": "Build idea: AgentBridge — Cross-System Agentforce Orchestration (Salesforce + Workday)",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; duplicate of newer AgentBridge/Strategy Jobs Pack work."
+  },
+  {
+    "id": "j57awnshc753pb1pqb57p4tkph8411kj",
+    "title": "Build idea: ROIFlow — AI Implementation Value Tracker (AI ROI measurement)",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; superseded by Strategy Jobs Pack/current role-driven work."
+  },
+  {
+    "id": "j576d9tr0h1469nc9w5rswkn9x841jvp",
+    "title": "Build idea: AdoptAI — Client AI Adoption Playbook Generator (AI change management)",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; duplicate/superseded by newer AdoptAI build-idea entry."
+  },
+  {
+    "id": "j5753z94rydy5j49r3mcyhz85583jfkt",
+    "title": "Build idea: A2ALink — Agent2Agent (A2A) protocol demo",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; duplicate/superseded by newer A2ALink entry."
+  },
+  {
+    "id": "j57b1q6syxd89r21fzn0bzwmzx839fhj",
+    "title": "Build idea: ConversationFirst — Agentforce UX Design Framework (conversation design)",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; duplicate/superseded by newer ConversationFirst entries."
+  },
+  {
+    "id": "j5722y894786yq4gxd9pxya3ch82h4qd",
+    "title": "Build idea: ProcessBlueprint — AI Process Design methodology for Agentforce",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; duplicate/superseded by ProcessBlueprint entries."
+  },
+  {
+    "id": "j57a6sbbengcc19ja1xfjrmfzx82ekpj",
+    "title": "Build idea: AgentPack — composable Agentforce agent template library",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market build idea backlog older than 30 days; duplicate/superseded by AgentPack entries."
+  },
+  {
+    "id": "j573fg0cz6q8c5ncdf3wx5kz6s8253gt",
+    "title": "Build idea: WealthAgent — Agentforce Financial Services client onboarding demo",
+    "project": "Job Market",
+    "priority": "medium",
+    "reason": "old job-market WealthAgent build idea superseded by explicit WealthAgent decision tasks."
+  },
+  {
+    "id": "j575d6nh8nqgrrqnazbe868m0d83rs5t",
+    "title": "🟡 Weaviate Agent Skills — Evaluate for RAG/vector search in consulting pipeline",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "speculative tool-eval task older than 30 days with no current trigger; not part of current Skills priorities."
+  },
+  {
+    "id": "j575ejhqm9fdx3s9jwny5jb3g583rak4",
+    "title": "🟡 Anthropic pdf-viewer Cowork Plugin — Evaluate for consulting deliverable workflows",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "speculative plugin-eval task older than 30 days with no current trigger; not part of current Skills priorities."
+  },
+  {
+    "id": "j575gpq2n1cj42118y6s8cprb582bzyt",
+    "title": "🟠 skill-creator updated — Built-in test generation for Claude Code skills (Claude.ai plugin)",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "stale skill-creator update notification older than 30 days; no current trigger remains."
+  },
+  {
+    "id": "j57e1thf7vzw8syrh2r6tfeqhs82bn36",
+    "title": "🟠 x402 claw.credit — AI agents earn credit lines to pay x402 services autonomously",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "stale x402 claw.credit evaluation older than 30 days; crypto/x402 work is preserved in newer specific tasks."
+  },
+  {
+    "id": "j57e1jh2h9adshwdsz8384zvch826wed",
+    "title": "Complete: Real World Prompting — Anthropic GitHub",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "old course task older than 30 days; Anthropic Academy work represented by broader in-progress Academy task."
+  },
+  {
+    "id": "j57aentpnsqgpt43z83rfw4g4s827srv",
+    "title": "Complete: Claude with Amazon Bedrock — Anthropic Academy",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "old course task older than 30 days; Anthropic Academy work represented by broader in-progress Academy task."
+  },
+  {
+    "id": "j57c8schwhg4163byq6v94djt98267jh",
+    "title": "Complete: Intro to Agent Skills — Anthropic Academy",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "old course task older than 30 days; Anthropic Academy work represented by broader in-progress Academy task."
+  },
+  {
+    "id": "j57eaw5hmgts825jqzrmk1kzwh826rft",
+    "title": "Complete: Building with the Claude API — Anthropic Academy",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "old course task older than 30 days; Anthropic Academy work represented by broader in-progress Academy task."
+  },
+  {
+    "id": "j57dkwgc8a88b4yqk7rr3b5079826ywp",
+    "title": "Complete: Intro to MCP — Anthropic Academy",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "old course task older than 30 days; Anthropic Academy work represented by broader in-progress Academy task."
+  },
+  {
+    "id": "j579dv1sanp8mvnth413x2nv198255rz",
+    "title": "🟠 Anthropic Academy — 13 Free Courses (MCP, Claude Code, API, Prompting) — close skill gaps",
+    "project": "Skills",
+    "priority": "medium",
+    "reason": "old broad Anthropic Academy task older than 30 days; individual course tasks archived and no current trigger found."
+  },
+  {
+    "id": "j57fs907v4pn96w4anvzr0avq584awez",
+    "title": "M4 (final): Henick-Lane — Tom Cahill",
+    "project": "Consulting",
+    "priority": "medium",
+    "reason": "stale Henick-Lane M4; pipeline/shortlist show M3 sent 2026-03-24 and email pivot drafted/open instead."
+  },
+  {
+    "id": "j574q0wad5tg136e1pf4jssmz9849375",
+    "title": "M4 (final): Atlas NYC — Eric Michael",
+    "project": "Consulting",
+    "priority": "medium",
+    "reason": "stale Atlas NYC M4 from March; pipeline shows pitched M2/M3-window state and open pivot list supersedes this old final-follow-up task."
+  },
+  {
+    "id": "j57d23wy36s08ff7nc6q993rfs849agw",
+    "title": "M4 (final): ProRealty USA — David Berk",
+    "project": "Consulting",
+    "priority": "medium",
+    "reason": "stale ProRealty M4 from March; pipeline shows pitched M2/M3-window state and open pivot list supersedes this old final-follow-up task."
+  },
+  {
+    "id": "j57etbywz155zqbcfg9v14exsx849mdb",
+    "title": "M4 (final): FCM Real Estate — Albert Aranbaev",
+    "project": "Consulting",
+    "priority": "medium",
+    "reason": "stale FCM M4 from March; pipeline shows pitched M2/M3-window state and open pivot list supersedes this old final-follow-up task."
+  },
+  {
+    "id": "j574pnhhn8wv0tf4j61993429x84wczh",
+    "title": "M3: Premier HVAC Services — Final follow-up",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Premier HVAC M3; pipeline/shortlist show M2 not accepted and email pivot drafted/open instead."
+  },
+  {
+    "id": "j573g5bhr9a3722s558kks1n0n86ckq7",
+    "title": "Email Pivot: Globe Electric — Joseph",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Globe Electric email pivot; pipeline/shortlist show March M1/M2/M3-window state and no current active priority versus newer outreach targets."
+  },
+  {
+    "id": "j57002762jwqqxhnhc6bekkmw986dt6p",
+    "title": "Email Pivot: Lawley Insurance — Chris",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Lawley email pivot; shortlist shows email pivot sent 2026-03-31 and awaiting reply."
+  },
+  {
+    "id": "j57frq3qvvw1z43s1trt2v321h86d77x",
+    "title": "Email Pivot: R.E.M. Residential — Zachary",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale R.E.M. email pivot; shortlist shows email sent 2026-03-31 and awaiting reply."
+  },
+  {
+    "id": "j57aracakcp91y00sm7m7ap0nd86cxwy",
+    "title": "Email Pivot: Conner Strong & Buckelew (NYC office) — Jim",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Conner Strong email pivot; shortlist shows email sent 2026-03-31 and awaiting reply."
+  },
+  {
+    "id": "j5743x7pxg7xgcn9w6kqypdrwn84wmyt",
+    "title": "Email Pivot: Henick-Lane — Thomas",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Henick-Lane email pivot task; pipeline records pivot drafted/open and old March thread is no longer a current active review item."
+  },
+  {
+    "id": "j57cy4dsn0ag5d1xxmwaajyrad84w1p0",
+    "title": "Email Pivot: G-Net Construction — Vincent Nativo (info@gnetconstruction.com)",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale G-Net email pivot task; pipeline/shortlist already record M1 sent and email pivot drafted 2026-04-15."
+  },
+  {
+    "id": "j574krrc9bvm71bjjyrjcegcad84wdzw",
+    "title": "Email Pivot: Maxwell Plumb Mechanical — Kirk Seubert (CEO) + Max Seubert",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Maxwell email pivot task; pipeline/shortlist already record M1 sent and email pivot drafted 2026-04-15."
+  },
+  {
+    "id": "j579zgqwfgbw1bh69cgj3g1qp184wdeq",
+    "title": "M2: Citadel Property Management — Follow-up",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Citadel M2 follow-up; pipeline records M1 pitched and this old follow-up is outside current outreach focus."
+  },
+  {
+    "id": "j576tyjzhj2szbq7m60pyhwy8x84xhb7",
+    "title": "M2: BJD Property Management — Follow-up",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale BJD M2 follow-up; pipeline records M1 pitched and this old follow-up is outside current outreach focus."
+  },
+  {
+    "id": "j57dsvgfy9f0xngf29j4y0dnn984xfqy",
+    "title": "M2: Webster Plumbing Supply — Follow-up",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Webster M2 follow-up; pipeline records M1 sent and M2 due back in March."
+  },
+  {
+    "id": "j57b13s23g2kr7cyn5d74x91g184x09e",
+    "title": "M2: Park Avenue Building & Roofing — Follow-up",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Park Avenue M2 follow-up; pipeline records M1/email sent 2026-04-01 and LinkedIn channel 2 draft."
+  },
+  {
+    "id": "j57cf2y0g46m1h6snf6fpag7rd858sn0",
+    "title": "Follow-up: Edmer Supply — Ed Zeitlin (M2 overdue — email pivot)",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Edmer M2-overdue task; shortlist shows older M1/M2 due state and no current priority trigger."
+  },
+  {
+    "id": "j5713xst7mht8r9zy4s1jdgkjh8590k5",
+    "title": "Follow-up: Benfield Electric Supply — Brett Rosenberg (M2 overdue — email pivot)",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Benfield M2-overdue task; shortlist shows older M1/M2 due state and no current priority trigger."
+  },
+  {
+    "id": "j57126jmrqj8devjfgc122qzbd858svj",
+    "title": "Follow-up: Bell Electrical Supply — Anthony Baek (M2 overdue — email pivot)",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Bell Electrical M2-overdue task; shortlist shows older M1/M2 due state and no current priority trigger."
+  },
+  {
+    "id": "j57dc0q5thftgy70jcb224m71n841kys",
+    "title": "M2: Edmer Sanitary Supply — Ed Zeitlin",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Edmer M2 task; duplicate of later overdue/pivot backlog and no current priority trigger."
+  },
+  {
+    "id": "j570ysk20p634p8c4rwer244rd8401s4",
+    "title": "M2: Benfield Electric Supply — Brett Rosenberg",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Benfield M2 task; duplicate of later overdue/pivot backlog and no current priority trigger."
+  },
+  {
+    "id": "j573gm9p87ae8n01ej94gckp318412hn",
+    "title": "M2: Blackman Plumbing Supply — verify size first",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Blackman M2 task from early April; no current priority trigger in pipeline."
+  },
+  {
+    "id": "j57d7w4xs2nvmgrcn8wd5f7s61841s1e",
+    "title": "M2: Jasco Plumbing Supply — Jeff",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Jasco M2 task from early April; superseded by later T3/Jasco review backlog."
+  },
+  {
+    "id": "j57fe1jay81hyd911zs6c2ntrn84047q",
+    "title": "M2: Forest Building Supply — Anthony",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Forest Building Supply M2 task from early April; no current priority trigger."
+  },
+  {
+    "id": "j5742t6jw85pyb7d46hrzcneas840t5z",
+    "title": "M2: Bell Electrical Supply — Anthony Baek",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Bell Electrical M2 task; duplicate of later overdue/pivot backlog and no current priority trigger."
+  },
+  {
+    "id": "j57327yf6wttnjfy8jtxyyqz11859p57",
+    "title": "📤 New York Plumbing Supply — Review T3 DM + Send",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale New York Plumbing T3 task; newer specific Review + Send task for New York Plumbing/Derek remains active."
+  },
+  {
+    "id": "j57bw807c5rjdkhyrjnfc6d3th84tpck",
+    "title": "📤 Aladdin Plumbing — Review T3 DM + Send",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Aladdin T3 task; newer specific Review + Send task for Aladdin/Erik remains active."
+  },
+  {
+    "id": "j579jwqeyy5x0xr8780nnzwxrh84tesa",
+    "title": "📤 Jasco Plumbing — Review T3 Email DM + Send",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "stale Jasco T3 Email DM task; later/generic M2/T3 backlog is not current priority."
+  },
+  {
+    "id": "j576ex22ac1prsw1g3bx8mhabn86cr7y",
+    "title": "Email Pivot: Premier HVAC Services — Boris",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "already demoted stale Premier HVAC email pivot; preserve draft, archive until acquisition reset explicitly revives this prospect."
+  },
+  {
+    "id": "j571b6jcekfqtd1bht4b3zmqz985a153",
+    "title": "Review + Send: Superior Plumbing — Matthew Romagnuolo Jr., Email Pivot",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "already demoted stale Superior Plumbing email pivot; preserve draft, archive until acquisition reset explicitly revives this prospect."
+  },
+  {
+    "id": "j576hmz6e66pcfv9fedydts1hn85ahq3",
+    "title": "Review + Send: AFGO Mechanical Services — Blaine Udell, Email Pivot",
+    "project": "Consulting",
+    "priority": "low",
+    "reason": "already demoted stale AFGO Mechanical email pivot; preserve draft, archive until acquisition reset explicitly revives this prospect."
+  }
+]

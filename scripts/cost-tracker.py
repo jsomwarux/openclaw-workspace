@@ -22,13 +22,14 @@ import argparse
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Optional
+from zoneinfo import ZoneInfo
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 OPENCLAW_DIR   = Path.home() / ".openclaw"
 SESSIONS_FILE  = OPENCLAW_DIR / "agents/main/sessions/sessions.json"
 CRON_RUNS_FILE = OPENCLAW_DIR / "cron/runs/undefined.jsonl"
 COSTS_DIR      = Path.home() / ".openclaw/workspace/memory/costs"
-TZ_EST         = timezone(timedelta(hours=-5))  # EST (no DST correction needed for storage)
+TZ_EST         = ZoneInfo("America/New_York")  # local cost/reporting day, DST-aware
 
 COSTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -445,7 +446,7 @@ def check_alerts() -> list:
             alerts.append({
                 "type":    "monthly_pace",
                 "level":   level,
-                "message": f"📈 Monthly pace ${monthly_pace:.2f} — {'exceeds $75 cap' if monthly_pace >= ALERT_MONTHLY_PACE else f'above ${MONTHLY_TARGET} goal'} (${real_month_total:.2f} real spend this month)",
+                "message": f"📈 Monthly pace ${monthly_pace:.2f} — {'exceeds $50 cap' if monthly_pace >= ALERT_MONTHLY_PACE else f'above ${MONTHLY_TARGET} goal'} (${real_month_total:.2f} real spend this month)",
                 "data":    {
                     "month_total":   round(real_month_total, 2),
                     "pace":          round(monthly_pace, 2),

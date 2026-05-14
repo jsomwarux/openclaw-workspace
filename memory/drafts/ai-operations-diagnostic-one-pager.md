@@ -1,5 +1,7 @@
 # AI Operations Diagnostic — One-Pager
 
+> Source-of-truth note: this is the general fallback asset. For current buyer-facing/referral use, prefer `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md` for property/family-office referrals or `memory/research/guyana/local-content-ops-capability-brief-2026-05-13.md` for Guyana supplier validation. See `memory/consulting/offer-asset-index-2026-05-13.md`.
+
 ## What it is
 A focused 2-week diagnostic for ops-heavy businesses that know AI matters but do not know what to build first.
 

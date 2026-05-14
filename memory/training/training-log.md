@@ -75,3 +75,12 @@
 [2026-05-12 10AM] Film: reviewed 2026-05-11 notes + current cron health → Fix: resized Job Market Daily timeout 1800s→3600s after timeout | Improve: tightened @dynastyjig regression check with native teardown + syntax/rhythm mapping
 
 [2026-05-12 16:21] Autoresearch weekly sweep: mission-control-priority-auditor baseline 1.000 → final 1.000; already stable; changed file: none; logs: agents/autoresearch/logs/2026-05-12-mission-control-priority-auditor-*.md
+[2026-05-13 11:17AM] Autoresearch: opticfy-pipeline baseline 0.833 → final 0.944; changed skills/opticfy-pipeline/SKILL.md with buyer-channel + duplicate outreach safety gate.
+[2026-05-13 18:17] Weekly Systems Review proof: PASS; gates ran clean for cron monitor/cost/Mission Control; documented posture risks: 35.43 estimated cron invocations/day, dense clusters, duplicate lossless-claw plugin warning; report memory/audits/xhigh-systems/2026-05-13-weekly-systems-review-proof.md.
+
+
+## Weekly Systems Review — 2026-05-13
+- Checks run: cron health, bootstrap file budgets, process/gateway/watchdog health, LaunchAgent config, OpenClaw version, plugin settings/extensions, critical file integrity, autoresearch enrollment, future signals, passive-income idea pruning, weekly cost review.
+- Fixes applied: enrolled `agentguard-positioning` in autoresearch with checklist; created Operations task for cron cap + gateway throttle drift; saved report `memory/audits/weekly-systems/2026-05-13-weekly-systems-review.md`.
+- Recurring failure patterns: cron surface has grown past the <=20/day cap; gateway plist throttle drifted below safe threshold; AGENTS.md is too close to budget for safe appends.
+- Blockers deferred: OpenClaw update requires manual timing; LaunchAgent/service config changes deferred to explicit follow-up task; passive-income-strategist delivery failure could not be resent because final content was not available from visible metadata.

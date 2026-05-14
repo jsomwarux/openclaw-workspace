@@ -93,8 +93,29 @@ def get_or_create_folder(drive, name, parent_id):
     return f["id"]
 
 
+def find_doc(drive, title, folder_id):
+    """Return an existing non-trashed Google Doc with this exact title in folder."""
+    escaped = title.replace("'", "\\'")
+    q = (
+        f"name='{escaped}' and "
+        "mimeType='application/vnd.google-apps.document' and "
+        f"'{folder_id}' in parents and trashed=false"
+    )
+    res = drive.files().list(q=q, fields="files(id,name)", spaces="drive", pageSize=10).execute()
+    files = res.get("files", [])
+    return files[0] if files else None
+
+
+def doc_url(file_id):
+    return f"https://docs.google.com/document/d/{file_id}/edit"
+
+
 def create_doc(drive, title, content, folder_id):
-    """Upload plain text, auto-convert to Google Doc, place in folder."""
+    """Upload plain text, auto-convert to Google Doc, place in folder. Idempotent by title+folder."""
+    existing = find_doc(drive, title, folder_id)
+    if existing:
+        print(f"↩️  Existing doc reused: {title}")
+        return doc_url(existing["id"])
     media = MediaInMemoryUpload(content.encode("utf-8"), mimetype="text/plain", resumable=False)
     meta  = {
         "name": title,
@@ -102,11 +123,15 @@ def create_doc(drive, title, content, folder_id):
         "parents": [folder_id],
     }
     f = drive.files().create(body=meta, media_body=media, fields="id").execute()
-    return f"https://docs.google.com/document/d/{f['id']}/edit"
+    return doc_url(f["id"])
 
 
 def create_doc_from_docx(drive, title, content_bytes, folder_id):
-    """Upload a .docx binary, auto-convert to Google Doc, place in folder."""
+    """Upload a .docx binary, auto-convert to Google Doc, place in folder. Idempotent by title+folder."""
+    existing = find_doc(drive, title, folder_id)
+    if existing:
+        print(f"↩️  Existing doc reused: {title}")
+        return doc_url(existing["id"])
     media = MediaInMemoryUpload(
         content_bytes,
         mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -118,7 +143,7 @@ def create_doc_from_docx(drive, title, content_bytes, folder_id):
         "parents": [folder_id],
     }
     f = drive.files().create(body=meta, media_body=media, fields="id").execute()
-    return f"https://docs.google.com/document/d/{f['id']}/edit"
+    return doc_url(f["id"])
 
 
 def list_folders(drive):

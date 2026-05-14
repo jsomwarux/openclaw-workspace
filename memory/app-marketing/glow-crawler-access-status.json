@@ -1,0 +1,62 @@
+{
+  "date": "2026-05-13",
+  "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+  "all_clear": false,
+  "rows": [
+    {
+      "url": "https://glowindex.co/robots.txt",
+      "status_code": 403,
+      "ok": false,
+      "cloudflare_challenge": true,
+      "server": "cloudflare",
+      "content_type": "text/html; charset=UTF-8",
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://glowindex.co/sitemap.xml",
+      "status_code": 403,
+      "ok": false,
+      "cloudflare_challenge": true,
+      "server": "cloudflare",
+      "content_type": "text/html; charset=UTF-8",
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://glowindex.co/llms.txt",
+      "status_code": 403,
+      "ok": false,
+      "cloudflare_challenge": true,
+      "server": "cloudflare",
+      "content_type": "text/html; charset=UTF-8",
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://glowindex.co/rankings",
+      "status_code": 200,
+      "ok": true,
+      "cloudflare_challenge": false,
+      "server": "Google Frontend",
+      "content_type": "text/html; charset=utf-8",
+      "error": null
+    },
+    {
+      "url": "https://glowindex.co/categories",
+      "status_code": 403,
+      "ok": false,
+      "cloudflare_challenge": true,
+      "server": "cloudflare",
+      "content_type": "text/html; charset=UTF-8",
+      "error": "HTTP 403"
+    },
+    {
+      "url": "https://glowindex.co/categories/serum",
+      "status_code": 403,
+      "ok": false,
+      "cloudflare_challenge": true,
+      "server": "cloudflare",
+      "content_type": "text/html; charset=UTF-8",
+      "error": "HTTP 403"
+    }
+  ],
+  "next_action": "If any row is not ok, add narrow Cloudflare/Replit skip rules for discovery/category paths, then rerun this command."
+}

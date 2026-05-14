@@ -1,0 +1,47 @@
+Config warnings:
+- plugins.entries.lossless-claw: plugin lossless-claw: duplicate plugin id detected; global plugin will be overridden by global plugin (/Users/jtsomwaru/.openclaw/npm/node_modules/@martian-engineering/lossless-claw/dist/index.js)
+{
+  "entries": [
+    {
+      "ts": 1778655828581,
+      "jobId": "651fa1da-84d7-44b3-8e10-6a46e1c05cf6",
+      "action": "finished",
+      "status": "ok",
+      "runAtMs": 1778655682280,
+      "durationMs": 146297,
+      "nextRunAtMs": 1778742000000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 89019,
+        "output_tokens": 5097,
+        "total_tokens": 44256
+      },
+      "delivered": false,
+      "deliveryStatus": "not-delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": false,
+        "delivered": false
+      },
+      "sessionId": "31ffe91a-b2e9-44f3-83b2-b2ccae6c7af1",
+      "sessionKey": "agent:main:cron:651fa1da-84d7-44b3-8e10-6a46e1c05cf6:run:31ffe91a-b2e9-44f3-83b2-b2ccae6c7af1"
+    }
+  ],
+  "total": 68,
+  "offset": 0,
+  "limit": 1,
+  "hasMore": true,
+  "nextOffset": 1
+}

@@ -22,3 +22,8 @@
 - Revenue/risk protected: fewer coverage gaps and late follow-up surprises.
 - Cycle time reduced: status summary available without manual file review.
 - Client-visible confidence improved: Yair/Navid can see what ran, what changed, and what needs approval.
+
+## Evidence Status
+- No quantified savings/risk-reduction claim is approved for public reuse yet.
+- First accepted run should capture count of records processed, exceptions surfaced, open issues assigned, and estimated manual review time avoided.
+- If those values are unavailable after acceptance, log the reason and keep proof qualitative only.

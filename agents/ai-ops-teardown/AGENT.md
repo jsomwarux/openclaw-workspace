@@ -38,6 +38,14 @@ Every run should produce or update:
 Before finishing, verify:
 - The buyer would recognize the workflow as real.
 - The draft proves implementation judgment, not AI hype.
-- The first post is ready for JT to review in under 5 minutes.
+- The workflow includes inputs, current messy process, exception logic, human-in-the-loop approval, audit trail, and buyer outcome.
+- Platform-native LinkedIn/X drafts are ready for JT to review in under 5 minutes.
+- A buyer-safe diagnostic CTA is included when appropriate; property/family-office teardowns should point to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`.
+- The framing is proof-safe: hypothetical/public/category language, no fake client claims, no named private clients, no unverified ROI/hours-saved/client-acceptance claims.
 - There is a clear build-tier decision: Tier 1, 2, or 3.
-- If Tier 3, the next build task is explicit and uses synthetic data only.
+- Save paths are correct and delivery calendar is updated.
+- Mission Control has one actionable JT review/post task with exact first action, why it matters, done state, and posted-log/reply-routing instructions.
+- Posted means a public URL exists; never mark a teardown posted from draft readiness, intent, or banked content.
+- If JT defers, update the delivery calendar with reason + next review date; do not fake a posted-log entry.
+- If Tier 3, the next build task is explicit, uses synthetic data only, and remains gated until there is a posted-teardown reply/DM signal or JT explicitly prioritizes the build.
+- After the first cron run, verify run history, delivery/output, quality gate, and no duplicate MC tasks.

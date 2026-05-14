@@ -5,7 +5,14 @@
 ## Health System
 - DB: ~/.openclaw/workspace/health/health.sqlite
 - CLI (from health/ dir): `python3 health.py --log "reply" [--date YYYY-MM-DD] | --report | --history [n] | --show DATE`
+- Inbound reply handler: `python3 ~/.openclaw/workspace/health/inbound_handler.py --reply "<JT reply>"` — consumes `health/pending-checkin.json`, refuses duplicates, logs to DB, marks pending logged, and prints confirmation to send back. Docs: `health/INBOUND_REPLY_HANDLER.md`
 - Schedule: 9PM daily check-in prompt | Sunday 9AM weekly report
+
+## Spanish Learning
+- State: `spanish/state.json` | Lessons: `spanish/lessons/YYYY-MM-DD.md` | Curriculum: `spanish/curriculum.md`
+- Daily lesson cron: `babd905a-1098-49dd-8700-772fef14f817` (`Spanish Daily Lesson`) Mon–Sat 8:05PM ET → Telegram `6608544825`
+- Validate state/artifacts: `python3 scripts/spanish_state_check.py --date YYYY-MM-DD --require-today`
+- Delivery truth source: `openclaw cron runs --id babd905a-1098-49dd-8700-772fef14f817 --limit 1` (`deliveryStatus=delivered` required). `state.json` proves persistence, not receipt.
 
 ## Cost Tracker
 - `python3 ~/.openclaw/workspace/scripts/cost-tracker.py --snapshot | --brief | --check-alerts | --weekly-review | --check-runaway`
@@ -15,7 +22,8 @@
 - Alerts: session >$2, daily >$10, monthly pace >$75 | Goal: $50/mo
 
 ## Audit Trail
-- `python3 ~/.openclaw/workspace/scripts/log-proof.py --type TYPE --title "..." --description "..." --outcome success|failure|partial [--files PATH]`
+- Log: `python3 ~/.openclaw/workspace/scripts/log-proof.py --type TYPE --title "..." --description "..." --outcome success|failure|partial [--files PATH]`
+- Guard: `python3 ~/.openclaw/workspace/scripts/memory_recap_proof_guard.py --date $(date +%F) --json`
 - Daily JSONL: proofs/YYYY-MM-DD/actions.jsonl
 
 ## Restart Script
@@ -29,6 +37,13 @@
 ## Diagnostics
 - `openclaw doctor` — health check on gateway, channels, providers, cron scheduler
 - `openclaw doctor --fix` — auto-fix common issues (use when something's broken and root cause isn't obvious)
+
+## Canonical Web Search
+- **Current/fresh web research:** use `scripts/web_search.py`, not the OpenClaw Brave plugin/provider.
+- Command: `set -a; source ~/.config/env/global.env; set +a; python3 ~/.openclaw/workspace/scripts/web_search.py "QUERY" --freshness day --count 5 --json`
+- Freshness values: `day`, `week`, `month`, `year`.
+- Reason: managed `web_search` can misroute freshness/date-filtered searches, and the Brave plugin/provider path has crashed the gateway. Do **not** install/enable/configure Brave web_search plugin without explicit approval and a rollback plan.
+- Managed `web_search` is OK only for broad non-freshness lookups; do not call it with `freshness`, `date_after`, or `date_before` unless this issue is later proven fixed.
 
 ## 🚨 Gateway Freeze & Rate Limit Recovery
 **Cause:** LCM compaction + Telegram re-delivery flood on restart.
@@ -144,6 +159,7 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
   - ⚠️ **Replit deploy ≠ rebuild.** After pushing code changes to GitHub, JT must trigger a FRESH BUILD on Replit — not just redeploy. Options: (1) Shell tab → `npm run build` → then redeploy, OR (2) Deployments → Redeploy → "Rebuild from scratch." Clicking "Redeploy" without rebuilding reuses the old build and new code won't appear.
   - ⚠️ **Required Replit Secrets:** BRAVE_API_KEY (for image fetch), ADMIN_SECRET (default: glowindex-admin-2024-secret), N8N_WEBHOOK_URL, N8N_CALLBACK_SECRET
   - **Image backfill (run once after fresh deploy):** `curl -X POST https://skincare-rankings.replit.app/api/fetch-images -H "x-admin-key: glowindex-admin-2024-secret"`
+  - **Crawler access diagnostic:** `cd ~/.openclaw/workspace && python3 scripts/glow_crawler_check.py` — checks `glowindex.co` `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/rankings`, `/categories`, `/categories/serum` for Cloudflare challenge/200 status.
   - **Replit deploy checklist:** (1) git pull in Replit, (2) `npm run build` in Shell, (3) Redeploy, (4) run image backfill curl if products have no images
   - **⚠️ Engine OpenRouter key lives in LaunchAgent plist — not global.env.** `~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist` has `OPENROUTER_API_KEY`. If analyses fail with all-401 errors: update the plist key, then `launchctl unload` + `load` to force launchd to pick up the change. Engine binds `127.0.0.1:8001`.
 - Nash Satoshi: jsomwarux/Nash-Satoshi (private)

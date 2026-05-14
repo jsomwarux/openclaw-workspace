@@ -1,0 +1,107 @@
+{
+  "connector": "web",
+  "implemented": true,
+  "mode": "readiness_and_local_log_only_until_provider_configured",
+  "configured_rows": [
+    {
+      "product_slug": "vista",
+      "property_id": null,
+      "status": "needs_ga4_property_id",
+      "provider": "ga4",
+      "notes": "Add property_id only after secure auth/access path exists.",
+      "source_group": "google_analytics"
+    },
+    {
+      "product_slug": "nash-satoshi",
+      "property_id": null,
+      "status": "needs_ga4_property_id",
+      "provider": "ga4",
+      "notes": "Add property_id only after secure auth/access path exists.",
+      "source_group": "google_analytics"
+    },
+    {
+      "product_slug": "glow-index",
+      "property_id": null,
+      "status": "needs_ga4_property_id_or_alternate_web_source",
+      "provider": "ga4",
+      "notes": "Add property_id only after secure auth/access path exists.",
+      "source_group": "google_analytics"
+    }
+  ],
+  "env_present": {
+    "GA4_SERVICE_ACCOUNT_PATH": false,
+    "GOOGLE_APPLICATION_CREDENTIALS": false,
+    "SEARCH_CONSOLE_SITE_URL": false,
+    "VERCEL_ANALYTICS_TOKEN": false,
+    "PLAUSIBLE_API_KEY": false,
+    "POSTHOG_API_KEY": false
+  },
+  "ready_products": [],
+  "blocked_products": [
+    "vista",
+    "nash-satoshi",
+    "glow-index"
+  ],
+  "product_details": {
+    "vista": {
+      "status": "blocked_no_web_analytics_source",
+      "accepted_mappings": [
+        "property_id",
+        "site_url",
+        "log_path",
+        "vercel_project",
+        "plausible_site_id",
+        "posthog_project_id"
+      ],
+      "example": {
+        "product_slug": "vista",
+        "provider": "ga4|search_console|vercel|plausible|posthog|local_csv",
+        "property_id": "...",
+        "site_url": "https://...",
+        "log_path": "~/path/to/export.csv"
+      }
+    },
+    "nash-satoshi": {
+      "status": "blocked_no_web_analytics_source",
+      "accepted_mappings": [
+        "property_id",
+        "site_url",
+        "log_path",
+        "vercel_project",
+        "plausible_site_id",
+        "posthog_project_id"
+      ],
+      "example": {
+        "product_slug": "nash-satoshi",
+        "provider": "ga4|search_console|vercel|plausible|posthog|local_csv",
+        "property_id": "...",
+        "site_url": "https://...",
+        "log_path": "~/path/to/export.csv"
+      }
+    },
+    "glow-index": {
+      "status": "blocked_no_web_analytics_source",
+      "accepted_mappings": [
+        "property_id",
+        "site_url",
+        "log_path",
+        "vercel_project",
+        "plausible_site_id",
+        "posthog_project_id"
+      ],
+      "example": {
+        "product_slug": "glow-index",
+        "provider": "ga4|search_console|vercel|plausible|posthog|local_csv",
+        "property_id": "...",
+        "site_url": "https://...",
+        "log_path": "~/path/to/export.csv"
+      }
+    }
+  },
+  "status": "provider_or_property_mapping_needed",
+  "status_reason": "one_or_more_apps_missing_provider_property_or_log_path",
+  "mapping_template_path": "memory/app-marketing/web-analytics-mapping-template.md",
+  "diagnostic_command": "cd ~/.openclaw/workspace && python3 scripts/app_marketing_connectors/web_metrics.py",
+  "collector_command": "cd ~/.openclaw/workspace && python3 scripts/app_marketing_collect_metrics.py",
+  "next_action": "Add GA4/Search Console/Vercel/Plausible/PostHog property mapping or a local log_path per app in memory/app-marketing/account-map.json."
+}

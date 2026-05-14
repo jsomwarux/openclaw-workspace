@@ -75,19 +75,40 @@ When notable work completes: evaluate against `memory/content/post-detection-rub
 Pass → generate X + LinkedIn post, write to `memory/content/bank/[MONDAY-DATE]/auto-[slug].md`, upload both to Drive, push both to Notion calendar. Full procedure: `docs/agents/post-detection-rules.md`
 
 ## Proof Points Auto-Update
-Anything shipped/done/live → update `memory/content-voice.md` Proof Points immediately (same turn). Add to Builds table. Also add to Content-Ready Angles if post hook exists. Skip internal-only builds.
+Anything shipped/done/live → update `memory/content-voice.md` Proof Points immediately (same turn). Add to the `## Proof Points` table using: `Date | Proof Point | Verified Detail | Demonstrates | Status`. Use only verified evidence from recent-builds, proof logs, commits, live checks, or daily notes. No fabricated metrics. Also add to Content-Ready Angles if post hook exists. Skip internal-only builds.
 
 ## Recent Builds → Content
 Append to `memory/content/recent-builds.md` in the same turn. Required fields: Build Name + date | What | For | Outcome | Demonstrates | Content angle | Status: complete.
+
+## Recap/Proof Regression Gate
+After substantive deliverables, site/app ships, client work, cron/agent builds, or proof-point updates, run:
+`python3 scripts/log-proof.py --type TYPE --title "..." --description "..." --outcome success|partial --files PATH...` and then `python3 scripts/memory_recap_proof_guard.py --date $(date +%F) --json`.
+The guard must pass before marking the work done. If it flags recent-builds entries missing from `content-voice.md` Proof Points, backfill from verified evidence only.
 
 ## Technical Angles Bank
 `memory/content/technical-angles.md` = source bank for technical X posts.
 Append when: non-obvious problem solved, new agent/cron pattern established, "learned this the hard way" moment, or system design decision that practitioners would find useful.
 Format: `- **[Pattern name]:** [2–3 sentences, specific enough to apply immediately.]`
 
+
+## Content Calendar Follow-through Audit
+Run after weekly content generation, after any content cron patch, or when Notion/posted-log drift is suspected:
+`python3 scripts/content_calendar_audit.py --week YYYY-MM-DD`
+Use `--with-notion` only when Notion token is available and external read checks are appropriate.
+The audit must pass locally before calling the weekly content system healthy. It checks: weekly file guard, posted-log duplicate slots, content cron guard prompts, and optional Notion duplicate/missing Drive links.
+
 ## Posted Reply Logging
-When JT replies "posted" or "posted both":
-1. Identify which post(s) from the most recent content-reminder or content-sunday send
-2. Update `memory/content/posted-log.jsonl` — set `"posted": true` + `"posted_date": "YYYY-MM-DD"`
-3. If JT specifies platform, mark only that entry
-4. Confirm: "Logged ✅ — [post description] marked posted."
+When JT replies `posted`, `posted both`, `posted LinkedIn`, `posted X`, or `posted: [url]`, use the deterministic local handler instead of manual/context-only edits:
+
+```bash
+cd /Users/jtsomwaru/.openclaw/workspace
+python3 scripts/content_posted_reply_handler.py --reply "<JT reply>"
+```
+
+Rules:
+1. Never mark content posted without JT's explicit `posted` reply or a verified post URL.
+2. Use `--dry-run` first if the reply is ambiguous.
+3. Platform-specific replies mark only that platform.
+4. The handler updates `memory/content/posted-log.jsonl`, consumes `memory/content/pending-posted-reply.json` when present, idempotently refuses duplicate mutation, and updates Notion Status to Posted only when exactly one date/platform row matches.
+5. Send the handler's confirmation back to JT.
+6. Full docs: `docs/agents/content-posted-reply-handler.md`.

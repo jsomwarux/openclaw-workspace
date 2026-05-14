@@ -70,34 +70,45 @@ Best immediate next step:
 - If absent, create laptop-side export convention: one CSV/JSON dropped weekly into `memory/app-marketing/imports/`.
 
 ### App Store / Vista
-Feasibility: high with App Store Connect API if JT has API key/issuer/key id configured.
+Feasibility: high once Apple reporting vendor number/permissions are available.
 
-What can be automated:
-- impressions
-- product page views
-- downloads/first-time downloads
-- conversion-ish metrics
-- app units / acquisition reports depending on report type
+Current state:
+- `scripts/app_marketing_connectors/app_store_metrics.py` exists and passes non-secret readiness.
+- App Store metadata auth works for Vista (`VISTA - Movie Taste Profiles`).
+- Reporting is blocked on `APPSTORE_VENDOR_NUMBER` / Apple reporting permissions, not on missing metadata credentials.
+- Status file: `memory/app-marketing/app-store-metrics-status.json`.
+
+What can be automated after reporting access:
+- downloads / app units
+- product page views or equivalent acquisition/reporting rows where Apple permits
+- ratings/reviews where endpoint permissions allow
 
 Best path:
-1. Configure App Store Connect API credentials securely in env/auth location only.
-2. Build `scripts/app_store_metrics.py` to fetch Vista app analytics weekly.
-3. Normalize downloads/page views into App Marketing metrics inbox.
+1. Securely add `APPSTORE_VENDOR_NUMBER` in the approved env/config surface; never paste it into docs/chat.
+2. Run `python3 scripts/app_marketing_connectors/app_store_metrics.py`.
+3. If `reporting_status` becomes `sales_report_ready`, normalize Vista rows into `metrics-inbox.jsonl` via `scripts/app_marketing_collect_metrics.py`.
+4. If Apple returns role/agreement errors, create a one-time JT Apple-side action task with the exact error.
 
-Do not store Apple private key in workspace docs.
+Do not store Apple private key, vendor number, or account secrets in workspace docs.
 
-### Website Analytics — Nash / app landing pages
+### Website Analytics — Nash / Vista / Glow
 Feasibility: depends on analytics provider.
 
+Current state:
+- `scripts/app_marketing_connectors/web_metrics.py` emits readiness and supports local CSV/log paths.
+- Mapping template: `memory/app-marketing/web-analytics-mapping-template.md`.
+- `memory/app-marketing/web-analytics-status.json` currently reports Vista, Nash Satoshi, and Glow Index blocked because no GA4/Search Console/Vercel/Plausible/PostHog property or local `log_path` is mapped.
+
 Options:
+- GA4 / Google Search Console property IDs with service-account access.
 - Vercel Analytics API if available.
 - Plausible/PostHog if installed.
-- Server logs if self-hosted.
-- Search Console later for SEO pages.
+- Server logs/local CSV export if self-hosted/Replit logs can be exported.
 
 Best path:
-- First identify analytics provider for each app/site.
-- Add connector only where data source exists.
+- Add one concrete source per app to `memory/app-marketing/account-map.json` (`property_id`, `site_url`, `log_path`, `vercel_project`, `plausible_site_id`, or `posthog_project_id`).
+- Run `python3 scripts/app_marketing_connectors/web_metrics.py` and verify the app leaves `blocked_products`.
+- Add provider-specific fetching only after the source mapping exists; do not guess providers.
 
 ## Recommended Architecture
 
@@ -153,5 +164,5 @@ Do not increase volume until enough rows exist to establish baseline.
 2. Implement Reddit public metrics first — easiest and no private credentials likely needed for basic score/comments.
 3. Implement X metrics if credentials/access exist.
 4. Inspect ReelFarm docs/API for metrics endpoint; if none, define laptop CSV/JSON export.
-5. Implement App Store Connect metrics for Vista after secure credential setup.
-6. Add weekly scoreboard cron only after at least one connector produces real data.
+5. Add Vista App Store vendor-number/reporting access, then normalize App Store rows if Apple permits reporting.
+6. Add concrete web analytics mappings/log paths for Vista, Nash, and Glow; until then weekly scoreboard must label those products `MEASURE_FIRST` for web metrics.

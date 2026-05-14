@@ -1,0 +1,9 @@
+{
+  "provider": "brave-direct",
+  "query": "site:reddit.com/r/ClaudeAI new tool skill",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-13",
+  "results": []
+}

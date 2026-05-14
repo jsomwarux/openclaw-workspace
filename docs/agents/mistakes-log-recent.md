@@ -188,3 +188,19 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Sports GM autoresearch checklist now checks query hygiene and noisy result discard before Dynasty X Replies are accepted.
 - **Owner surface updated:** `dynasty-replies-gen` cron prompt, `skills/sports-gm/SKILL.md`, `agents/autoresearch/checklists/sports-gm.md`, this mistakes log.
 - **Verification/date:** 2026-05-12 — narrowed approved-account and fantasy-specific searches returned fresh usable targets from DynastyDadFF, EthanKreagerFF, JoeOrrico, and DLFootball.
+
+## 2026-05-13 — LinkedIn content foregrounded credibility repair instead of buyer authority
+- **Failure:** Suggested a Wednesday LinkedIn post about reducing an overstated 10-hour claim to 4 hours every 2 weeks, making the public story about JT correcting a weak claim instead of demonstrating buyer-facing implementation value.
+- **Root cause:** Content quality gates checked honesty, specificity, and style but did not include a strategic-fit test for whether the post increases buyer/hiring-manager confidence. The advisory board accepted “trust in proof” as a theme without penalizing self-undermining framing.
+- **Guardrail/rule:** Wednesday LinkedIn and all LinkedIn delivery must block drafts that foreground a mistake, inflated claim, correction, apology, weak metric, or credibility repair unless JT explicitly requests a postmortem; accurate numbers stay, but the story must lead with buyer pain, proof, and implementation authority.
+- **Regression check:** Before any Wednesday LinkedIn approval or content-reminder send, scan for correction/self-undermining terms (mistake, inflated, corrected, apology, overclaimed, weak claim, changed the metric, 10 hours) and require an explicit buyer-authority justification or regenerate.
+- **Owner surface updated:** skills/wednesday-linkedin/SKILL.md, memory/content-voice.md audit checklist, content-reminder cron, content-generate-linkedin cron, memory/content/weekly-2026-05-11.md, memory/content/bank/2026-05-13/wednesday-linkedin.md.
+- **Verification/date:** 2026-05-13 — bad post replaced with buyer-facing StreetEasy scraper case study; guardrail added to skill/checklist/crons; grep confirmed bad phrase locations were addressed in active content files.
+
+## 2026-05-13 — Dynasty reply generator repeated stale/generic targets while claiming optimality
+- **Failure:** Dynasty X Replies Crown repeated the same target/reply set from yesterday and delivered generic replies, while I had previously certified the output as optimal.
+- **Root cause:** The freshness gate checked tweet age but not durable target/reply dedupe. The isolated cron did not have reliable access to yesterday's delivered pack, and query hygiene allowed loose terms like SF/TEP that can pull non-fantasy garbage. Quality gates accepted replies that could fit many tweets.
+- **Guardrail/rule:** Dynasty reply generation must read/write `memory/sports-gm/dynasty-replies-ledger.jsonl`, reject URLs/status IDs used in the last 14 days, reject same accounts for 48 hours unless justified, ban loose SF/TEP-only query terms, and block generic reply shapes unless tied to a specific original-tweet angle.
+- **Regression check:** Before any Dynasty X Replies delivery, verify final output includes `Ledger check: passed`; grep the ledger for each selected status ID; verify each query includes unmistakable fantasy-football qualifiers and excludes real estate/finance noise; reject replies that could fit 20 different tweets.
+- **Owner surface updated:** `skills/sports-gm/SKILL.md`, `dynasty-replies-gen` cron payload, `memory/sports-gm/dynasty-replies-ledger.jsonl`.
+- **Verification/date:** 2026-05-13 — bad targets and replacement targets appended to ledger; cron contains HARD ANTI-REPEAT LEDGER, REPLY QUALITY GATE, and loose SF/TEP ban.

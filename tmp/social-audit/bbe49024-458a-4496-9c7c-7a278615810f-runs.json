@@ -1,0 +1,194 @@
+{
+  "entries": [
+    {
+      "ts": 1778686719546,
+      "jobId": "bbe49024-458a-4496-9c7c-7a278615810f",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🔥 **Daily Reddit Growth Drop**\n\n**Freshness Gate:** Used crypto-agent May 13 brief: $GITLAWB +111%, whale/volume signal, AI-agent/x402 infra tape. Checked Reddit draft log and avoided durability/TVL/roster-window/calculator repeats.\n\n**Crypto Target:** `r/CryptoMarkets`\n**Title:** What counts as real confirmation for AI-agent crypto tokens?\n**Body:** The AI-agent coin tape today has a weird split: some tokens are moving on actual volume/whale confirmation, while others still look like “agent narrative” labels with thin flow.\n\nThat makes the question less “is AI crypto hot again?” and more:\n\n**What should count as confirmation for an agent-infra token?**\n\nFor small-cap agent/x402 names, I’d separate a few signals:\n\n- volume expansion with identifiable large trades\n- product rails people can actually inspect\n- repeat usage or integrations, not just a landing page\n- buy/sell balance after the first pump\n- whether the token is tied to execution, payments, identity, compute, or just branding\n\nThe tricky part is that the best early moves often happen before the fundamentals are clean, but the worst traps also use that exact excuse.\n\nA +100% day with whale activity can be a real regime signal. It can also be exit liquidity if the product layer is vague and the flow flips sell-heavy the next day.\n\nCurious how others filter this: for AI-agent / x402 / agent-infra tokens, what do you treat as real confirmation versus just narrative beta?\n\n*—*\n\n**Fantasy Target:** `r/Fantasy_Football`\n**Post Type:** comment/advice angle\n**Look for:** Late rookie/taxi squad stash thread, especially SF/TE premium or rookie pick decision\n**Title:** \n**Body:** I’d treat a late rookie/taxi decision differently than a normal start/sit or name-value trade.\n\nFor a thread like “which late rookie should I stash?” I’d want the boring league details first:\n\n- do you have taxi spots?\n- how long can rookies sit there?\n- is it SF, 1QB, or TE premium?\n- how deep are benches?\n- when are roster cuts?\n\nThat mat…",
+      "runAtMs": 1778686596478,
+      "durationMs": 123048,
+      "nextRunAtMs": 1778772600000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 87438,
+        "output_tokens": 2869,
+        "total_tokens": 86176
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "377e2797-3179-4140-9f7f-168e50a07016",
+      "sessionKey": "agent:main:reddit-cron"
+    },
+    {
+      "ts": 1778600249192,
+      "jobId": "bbe49024-458a-4496-9c7c-7a278615810f",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🔥 **Daily Reddit Growth Drop**\n\n**Crypto Target:** `r/defi`\n**Title:** Protocol durability is mostly about who is forced to keep caring\n**Body:** A lot of DeFi analysis starts with TVL, fees, emissions, or token price.\n\nThose matter, but I think the more useful question is:\n\n**Who is economically forced to keep caring if the market gets less exciting?**\n\nA protocol looks stronger when multiple groups are aligned:\n\n- users still need the product without rewards\n- LPs can earn enough after emissions compress\n- token holders benefit from real activity\n- builders have reason to keep improving the system\n- governance controls something economically meaningful\n- insiders are not just waiting for liquidity to exit\n\nWeak protocols usually have one group extracting from another.\n\nRevenue is one layer.  \nValue capture is another.  \nStakeholder coordination is the harder part.\n\nWhat is the best sign that a DeFi protocol has durable alignment instead of temporary participation?\n\n*—*\n\n**Fantasy Target:** `r/Fantasy_Football`\n**Post Type:** Comment/advice angle\n**Title:** \n**Body:** I’d look at this through roster window first, not just player value.\n\nIn keeper/dynasty-style formats, assets have different jobs.\n\nSome give you weekly points.  \nSome give you upside.  \nSome give you liquidity.  \nSome protect you if the season goes badly.  \nSome are just market sentiment wrapped in a name.\n\nIf you are contending, stable role and weekly points matter more than squeezing out abstract calculator value.\n\nIf you are rebuilding, picks and liquid young assets usually matter more because they preserve optionality.\n\nIf you are stuck in the middle, the worst move is buying short-term production that still does not make you a real threat.\n\nUse calculators as sentiment checks, not answer keys. Same with gaps between KTC, FantasyCalc, and expert ranks. A disagreement is not automatically a buy/sell signal. It is a research alarm.\n\nThe better question is:\n\n**Which side makes your roster easier to…",
+      "runAtMs": 1778600197038,
+      "durationMs": 52135,
+      "nextRunAtMs": 1778686200000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 62290,
+        "output_tokens": 1158,
+        "total_tokens": 62121
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "47f3c126-a18c-477c-aca2-10041cdf6120",
+      "sessionKey": "agent:main:reddit-cron"
+    },
+    {
+      "ts": 1778513607817,
+      "jobId": "bbe49024-458a-4496-9c7c-7a278615810f",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🔥 **Daily Reddit Growth Drop**\n\n**Crypto Target:** `r/CryptoMarkets`\n**Title:** Crypto narratives are useful until they start hiding the actual mechanism\n**Body:** Narratives are not useless in crypto.\n\nThey explain why attention moves.\n\nThe problem is when the narrative becomes a substitute for checking the mechanism underneath it.\n\n“AI token,” “real yield,” “modular,” “restaking,” “DePIN,” “RWA” all sound clean at the narrative layer.\n\nBut the real questions are less clean:\n\n- who pays for usage?\n- who captures the value?\n- who is taking the risk?\n- what happens when incentives fall?\n- does token demand rise with activity?\n- are insiders, users, LPs, and holders actually aligned?\n\nA strong narrative can move price before any of that is proven.\n\nThat makes it tradable, but not automatically durable.\n\nI think the better split is:\n\n**Narrative:** why the market cares  \n**Mechanism:** why the system should keep working  \n**Accrual:** why the token should benefit  \n**Fragility:** what breaks when attention leaves\n\nMost bad theses collapse those into one bucket.\n\nWhat is your favorite way to test whether a crypto narrative has a real mechanism behind it?\n\n*—*\n\n**Fantasy Target:** `r/Fantasy_Football`\n**Post Type:** Comment/advice angle\n**Title:** \n**Body:** I’d separate “value” from “usefulness to your roster.”\n\nA player or pick can be valuable in the market and still be the wrong asset for your team.\n\nIn keeper/dynasty-style leagues, I’d ask:\n\n- Are you trying to win this year?\n- Are you rebuilding?\n- Are you stuck in the middle?\n- Do you need points, upside, depth, or liquidity?\n- If the season goes sideways, which side is easier to move?\n\nThat last question matters a lot.\n\nLiquid assets are underrated because they give you more ways to fix the roster later. Future picks and young players are not automatically better, but they usually preserve optionality better than older production.\n\nTrade calculators are useful here, but only as sentiment tools.\n\nThey can show rou…",
+      "runAtMs": 1778513587127,
+      "durationMs": 20672,
+      "nextRunAtMs": 1778599800000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 61577,
+        "output_tokens": 885,
+        "total_tokens": 61577
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "6ccdef40-d9de-4dfc-8cbd-605b40de8ad0",
+      "sessionKey": "agent:main:reddit-cron"
+    },
+    {
+      "ts": 1778427014626,
+      "jobId": "bbe49024-458a-4496-9c7c-7a278615810f",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🔥 **Daily Reddit Growth Drop**\n\n**Crypto Target:** `r/defi`\n**Title:** Protocol durability is mostly stakeholder alignment\n**Body:** I think DeFi analysis overweights metrics that look clean and underweights coordination.\n\nTVL, fees, volume, and yield all matter.\n\nBut the real question is:\n\n**Who has a reason to stay when incentives get worse?**\n\nA durable protocol usually has multiple groups aligned:\n\n- users still need the product without rewards\n- LPs can earn enough after emissions compress\n- token holders benefit from actual protocol activity\n- builders have reason to keep improving it\n- governance controls something economically meaningful\n- insiders are not just waiting for exit liquidity\n\nA fragile protocol often has one group extracting from another.\n\nUsers farm rewards.  \nLPs rent yield.  \nToken holders hope usage eventually matters.  \nGovernance exists, but does not control much.\n\nThat can still trade well, but it is a different setup.\n\nRevenue is one layer.  \nValue capture is another.  \nStakeholder alignment is the harder part.\n\nWhat is your best sign that a DeFi protocol has durable coordination instead of temporary participation?\n\n*—*\n\n**Fantasy Target:** `r/Fantasy_Football`\n**Post Type:** Comment/advice angle\n**Title:** \n**Body:** I’d start with roster window before player value.\n\nIn keeper/dynasty-style formats, assets do different jobs.\n\nSome give weekly points.  \nSome give upside.  \nSome give liquidity.  \nSome protect you if the season goes badly.  \nSome are mostly market sentiment.\n\nThat changes the answer.\n\nIf you are contending, stable role and weekly points matter more than squeezing out calculator value.\n\nIf you are rebuilding, picks and liquid young players usually matter more because they preserve optionality.\n\nIf you are stuck in the middle, the danger is buying short-term production that still does not make you a real threat.\n\nI’d use trade calculators as sentiment checks, not answer keys.\n\nSame with gaps between KTC, FantasyCalc, and ex…",
+      "runAtMs": 1778427000030,
+      "durationMs": 14573,
+      "nextRunAtMs": 1778513400000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 63185,
+        "output_tokens": 695,
+        "total_tokens": 63185
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "c80ad1c2-9581-4b0f-b866-1ab2f12b3ce9",
+      "sessionKey": "agent:main:reddit-cron"
+    },
+    {
+      "ts": 1778340858538,
+      "jobId": "bbe49024-458a-4496-9c7c-7a278615810f",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🔥 **Daily Reddit Growth Drop**\n\n**Crypto Target:** `r/CryptoMarkets`\n**Title:** A strong narrative is not the same thing as a strong system\n**Body:** One crypto mistake I see a lot is treating narrative strength like system strength.\n\nThey can overlap, but they are not the same.\n\nA strong narrative means the market knows what story to tell.\n\nA strong system means the incentives still work when the story gets boring.\n\nDifferent questions:\n\n- Who benefits from continued usage?\n- Who leaves when rewards compress?\n- Does activity create token demand?\n- Does liquidity stay without subsidies?\n- Are insiders aligned after unlocks?\n- Does governance control anything valuable?\n- What breaks if attention moves elsewhere?\n\nA token can have massive attention and weak durability.\n\nIt can also have real usage but poor value capture.\n\nThe edge is keeping those contradictions visible instead of forcing everything into “bullish” or “bearish.”\n\nWhat do you think is the most reliable sign that a crypto narrative has actual system durability behind it?\n\n*—*\n\n**Fantasy Target:** `r/Fantasy_Football`\n**Post Type:** Comment/advice angle\n**Title:** \n**Body:** I’d separate “market value” from “roster fit” here.\n\nIn keeper/dynasty formats, the better asset is not always the one ranked higher.\n\nIt depends what your team needs.\n\nIf you are a contender, weekly points and role stability matter more.\n\nIf you are rebuilding, liquidity and future optionality matter more.\n\nIf you are stuck in the middle, buying short-term production can be the trap because it improves your lineup without changing your actual ceiling.\n\nCalculators are useful, but mostly as market sentiment tools.\n\nThey can tell you what the crowd thinks. They cannot tell you whether your roster needs production, insulation, upside, or flexibility.\n\nSame with ranking gaps across different sources. That is not automatically a buy/sell signal. It is a research alarm.\n\nThe cleaner question is:\n\n**Which side would I rather hold if my sea…",
+      "runAtMs": 1778340840161,
+      "durationMs": 18350,
+      "nextRunAtMs": 1778427000000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 60625,
+        "output_tokens": 765,
+        "total_tokens": 63185
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "55514dbe-3f39-4361-a853-b730ea7d472b",
+      "sessionKey": "agent:main:reddit-cron"
+    }
+  ],
+  "total": 24,
+  "offset": 0,
+  "limit": 5,
+  "hasMore": true,
+  "nextOffset": 5
+}

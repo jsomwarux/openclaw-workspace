@@ -3,9 +3,10 @@
 *Autoresearch Sweep reads this file Mon/Wed/Fri 11:15AM ET and runs one high-value pending/active target; overnight/manual runs can also use it on demand.*
 
 ## How to enroll a new target
-1. Draft checklist (≤6 yes/no questions) → save to `checklists/[skill-slug].md`
+1. Draft checklist (≤6 binary yes/no questions, numbered `1.`–`6.`) → save to `checklists/[skill-slug].md`
 2. Append a row to the Active Targets table below
-3. Note enrollment in reply to JT
+3. Verify the target path and checklist path exist, unless the path is explicitly a cron/payload reference
+4. Note enrollment in reply to JT
 
 ## Scoring
 - Score = fraction of checklist items passing, averaged across all test inputs
@@ -45,7 +46,7 @@
 | app-marketing-product-content | agents/app-marketing/product-content/AGENT.md | checklists/app-marketing-product-content.md | pending | — | — | 2026-05-06 |
 
 | opticfy-ops | skills/opticfy-ops/SKILL.md | checklists/opticfy-ops.md | pending | — | — | 2026-05-03 |
-| opticfy-pipeline | skills/opticfy-pipeline/SKILL.md | checklists/opticfy-pipeline.md | pending | — | — | 2026-05-03 |
+| opticfy-pipeline | skills/opticfy-pipeline/SKILL.md | checklists/opticfy-pipeline.md | stable | 0.944 | 2026-05-13 | 2026-05-03 |
 | x-research | skills/x-research/SKILL.md | checklists/x-research.md | pending | — | — | 2026-05-03 |
 | niche-fitness | agents/niche-fitness/AGENT.md | checklists/niche-fitness.md | pending | — | — | 2026-05-03 |
 | passive-income-strategist | agents/passive-income-strategist/AGENT.md | checklists/passive-income-strategist.md | pending | — | — | 2026-05-03 |
@@ -55,6 +56,8 @@
 | high-stakes-draft-eval | skills/high-stakes-draft-eval/SKILL.md | checklists/high-stakes-draft-eval.md | pending | — | — | 2026-05-11 |
 | mission-control-priority-auditor | agents/mission-control-priority-auditor/AGENT.md + scripts/mission_control_north_star_audit.py | checklists/mission-control-priority-auditor.md | stable | 1.000 | 2026-05-12 | 2026-05-12 |
 | ai-ops-teardown | agents/ai-ops-teardown/AGENT.md + agents/ai-ops-teardown/weekly-prompt.md | checklists/ai-ops-teardown.md | pending | — | — | 2026-05-12 |
+| agentguard-positioning | skills/agentguard-positioning/SKILL.md | checklists/agentguard-positioning.md | pending | — | — | 2026-05-13 |
+| ai-governance-readiness | skills/ai-governance-readiness/SKILL.md | agents/autoresearch/checklists/ai-governance-readiness.md | pending | — | — | 2026-05-13 |
 
 ## Status values
 - `pending` — checklist written, not yet run

@@ -104,26 +104,60 @@ def append_metrics(rows: list[dict]) -> int:
         return written
 
 
+def connector_readiness() -> dict:
+    out = {}
+    seen = set()
+    for platform, mod_name in sorted(CONNECTORS.items()):
+        if mod_name in seen:
+            continue
+        seen.add(mod_name)
+        try:
+            mod = importlib.import_module(mod_name)
+            key = mod_name.rsplit(".", 1)[-1]
+            if hasattr(mod, "readiness"):
+                out[key] = mod.readiness()
+            else:
+                out[key] = {"status": "implemented_no_readiness_probe"}
+        except Exception as exc:  # noqa: BLE001
+            out[mod_name.rsplit(".", 1)[-1]] = {"status": "readiness_failed", "error": str(exc)}
+    return out
+
+
 def main() -> int:
     posts=load_posts()
     rows=[]
+    skipped_by_platform={}
+    failures=[]
     for post in posts:
         platform=str(post.get('platform','')).lower()
         mod_name=CONNECTORS.get(platform)
         if not mod_name:
+            skipped_by_platform[platform or "unknown"] = skipped_by_platform.get(platform or "unknown", 0) + 1
             print(f"SKIP unsupported platform={platform} url_or_id={post.get('url_or_id')}")
             continue
         try:
             mod=importlib.import_module(mod_name)
             result=mod.fetch(post)
         except Exception as exc:  # noqa: BLE001
+            failures.append({"platform": platform, "id": post.get("url_or_id"), "error": str(exc)})
             print(f"WARN connector_failed platform={platform} id={post.get('url_or_id')} error={exc}", file=sys.stderr)
             continue
         if result:
             rows.append(result)
+        else:
+            skipped_by_platform[platform or "unknown"] = skipped_by_platform.get(platform or "unknown", 0) + 1
     appended = append_metrics(rows)
     subprocess.run([sys.executable, str(ROOT/'scripts/app_marketing_metrics.py')], check=False)
-    print(f"APP_MARKETING_COLLECT_OK posts={len(posts)} metrics_rows={len(rows)} appended={appended}")
+    status_path = BASE / "metrics-collection-status.json"
+    status_path.write_text(json.dumps({
+        "posts_seen": len(posts),
+        "metrics_rows_fetched": len(rows),
+        "metrics_rows_appended": appended,
+        "skipped_by_platform": skipped_by_platform,
+        "failures": failures,
+        "connector_readiness": connector_readiness(),
+    }, indent=2, ensure_ascii=False))
+    print(f"APP_MARKETING_COLLECT_OK posts={len(posts)} metrics_rows={len(rows)} appended={appended} status={status_path}")
     return 0
 
 

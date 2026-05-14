@@ -1,0 +1,47 @@
+{
+  "id": "8b968751-6e59-42e5-b2ce-09f57d36176c",
+  "agentId": "main",
+  "sessionKey": "agent:main:telegram:direct:6608544825",
+  "name": "dynasty-replies-gen",
+  "description": "Daily Dynasty Fantasy X Replies Generation",
+  "enabled": true,
+  "deleteAfterRun": false,
+  "createdAtMs": 1776733321111,
+  "schedule": {
+    "expr": "0 11 * * *",
+    "tz": "America/New_York",
+    "kind": "cron"
+  },
+  "sessionTarget": "session:dynasty-cron",
+  "wakeMode": "now",
+  "payload": {
+    "message": "**Objective:**\nGenerate diversified, high-IQ dynasty fantasy football reply suggestions for the @dynastyjig account.\n\n**Required reading:**\n1. Read `~/.openclaw/workspace/skills/sports-gm/SKILL.md`.\n2. Read `~/.openclaw/workspace/memory/sports-gm/dynasty-x-targets.md` — this is JT's approved account universe extracted from screenshots. Use it to understand account lanes and target fit.\n3. Read recent prior output/context if available from today's/yesterday's delivered Dynasty X Replies Crown or local logs, and note usernames already used.\n\n\n\n**FRESHNESS HARD STOP — MOST IMPORTANT RULE:**\n- Every final reply target must be from the last 24 hours; prefer last 6-12 hours.\n- The final output must include `Freshness: all targets ≤24h old`.\n- If exact timestamps are unavailable, only use posts that the X search result proves are from today.\n- If fresh X search is blocked, X API credits are depleted, or only cached/old posts are available, output exactly:\n  `BLOCKED: fresh X reply targets unavailable — [reason]`\n  Then stop. Do NOT use cached viable pools, prior-day pools, saved links, or older high-quality posts.\n- A clever reply on a stale tweet is a failed output.\n\n**Anti-repeat requirement:**\nDo NOT overfit to @DynastyDwarf or @DFF_Dynasty. They may appear at most ONCE total in the final 3 targets, and never on consecutive days if they were used in yesterday's output.\n\n**Search steps:**\n1. Navigate to `~/.openclaw/workspace/skills/x-research/`.\n2. Run at least 3 varied X searches. Use a mix of JT-approved account batches from `dynasty-x-targets.md` and topical searches. Example topical searches, always recent and sorted by engagement:\n   - `bun run x-search.ts search '(dynasty fantasy OR dynasty football OR rookie draft OR trade value) -is:retweet -is:reply' --sort recent --since 1d --limit 20 --json`\n   - `bun run x-search.ts search '(rookie RB OR rookie WR OR superflex OR startup draft) (dynasty OR fantasy) -is:retweet -is:reply' --sort recent --since 1d --limit 20 --json`\n   - `bun run x-search.ts search '(parlay OR betting card OR bet slip OR sports betting) (NFL OR NBA OR playoffs) -is:retweet -is:reply' --sort likes --since 1d --min-likes 10 --limit 20 --json`\n3. Build a candidate pool of at least 10 tweets from at least 7 unique accounts.\n4. Select exactly 3 targets from 3 different accounts. At least 2 of the 3 must come from JT's approved list in `dynasty-x-targets.md`. At least 2 of the 3 must be accounts not used in yesterday's reply pack. If you cannot find 3 different accounts, say so and return fewer rather than repeating.\n5. Avoid low-quality engagement bait. Prioritize strategy, roster construction, player value changes, rookie valuation, market inefficiency, or trade process.\n\n**Reply style:**\n- Sound like a sharp dynasty manager, not a finance model.\n- Do NOT use over-scientific/quant words like latency, liquidity, probability fragments, arbitrage, or mathematical counterpoint unless the original post uses that frame.\n- Use fantasy-native language: price, value, rookie pick, roster spot, window, bet, role, points, upside, risk, rebuild, contender, manager.\n- Draft one plain, incisive reply for each selected tweet, max 18 words per reply.\n- The reply should lightly disagree, add a roster-building angle, or reframe the value in community-native language.\n\n**Telegram output format:**\n🏈 **Dynasty X Replies Crown**\n\n*Target 1: @username* [Original tweet text snippet]\n*Link:* [URL]\n*Suggested Reply:* [Your drafted reply]\n\n*Target 2: @username* [Original tweet text snippet]\n*Link:* [URL]\n*Suggested Reply:* [Your drafted reply]\n\n*Target 3: @username* [Original tweet text snippet]\n*Link:* [URL]\n*Suggested Reply:* [Your drafted reply]\n\n*Account diversity:* 3/3 unique accounts; approved-list targets: [N]/3; repeats avoided: [list any skipped repeat-heavy accounts].\n\n## 2026-05-07 Reply Quality Patch\nThe reply crown must be current and niche-native. Use X recent search only; this plan cannot query older than the last 7 days through X, so do not request `--since 14d` in X search.\n\nMandatory gates:\n- Every selected target must be from the last 24 hours; prefer last 6-12 hours.\n- Run searches with `--sort likes --since 1d --json`; then manually enforce the 24h target freshness.\n- At least one reply should reference a specific player/value/role/tier if such a target exists. Do not output three abstract process replies.\n- If fresh search returns mostly spam/low-signal tweets, output `BLOCKED: fresh dynasty reply targets unavailable` rather than forcing weak targets.\n- If X API credits are depleted, fresh search is blocked, search fails, or only cached/old posts are available, output `BLOCKED: fresh X reply targets unavailable — [specific blocker]`. Do NOT use cached viable pools for daily engagement replies. Cached targets are stale by default.\n- Final output must include `Freshness: all targets ≤24h old`. If you cannot verify that line truthfully, output BLOCKED instead.\n- At least one target/reply should be concrete when available: player name, rookie tier, pick range, role, landing spot, contender/rebuilder window, or clear price/value angle. Avoid three abstract process replies.\n- Replies should sound like a manager in the replies, not a model. Max 18 words remains.\n\n**Mandatory final checks before delivery:**\n- `Freshness: all targets ≤24h old`\n- `Account diversity: 3/3 unique accounts`\n- `Approved-list targets: [N]/3`\n- `Cached pool used: no`\nIf any line cannot be truthfully included, output BLOCKED instead.\n\n**NOISY QUERY HARDENING:**\nQueries must include fantasy-football qualifiers, not generic `trade value` alone. Include terms like `dynasty fantasy`, `fantasy football`, `rookie draft`, `SF`, `TEP`, `RB`, `WR`, `QB`, `TE`, `contender`, `rebuild`, `roster spot`. Exclude finance/crypto/real-estate noise with `-crypto -defi -stock -real estate -multifamily`. If a search returns mostly non-fantasy posts, discard it and rerun one narrower query before declaring BLOCKED.\n\n**HARD ANTI-REPEAT LEDGER — mandatory:**\n- Before searching/selecting, read `/Users/jtsomwaru/.openclaw/workspace/memory/sports-gm/dynasty-replies-ledger.jsonl`.\n- Reject any tweet URL/status ID used in the last 14 days.\n- Reject any same account used in the last 48 hours unless fewer than 3 approved-list fresh alternatives exist; if you use one, explain why.\n- Reject reply text that is semantically similar to any reply used in the last 14 days.\n- After delivering a valid pack, append each selected target to the ledger as JSONL with date, username, url/status_id, original_snippet, suggested_reply.\n- If the ledger cannot be read or written, output exactly `BLOCKED: dynasty replies ledger unavailable — [reason]` and stop.\n\n**REPLY QUALITY GATE — mandatory:**\n- Do not output generic agreement or generic roster advice.\n- Banned generic shapes unless the original tweet is uniquely asking for it: `Give me X unless...`, `After X this tier...`, `X is fine; the tax is...`.\n- Every reply must add one specific angle from the original tweet: price vs role, insulation vs ceiling, contender/rebuild window, liquidity, roster spot pressure, draft tier shape, or league-room behavior.\n- If the reply could fit 20 different tweets, rewrite it.\n- Final output must include `Ledger check: passed` and list skipped repeated URLs/accounts.\n\n**QUERY HYGIENE PATCH:** Fantasy reply searches must include unmistakable fantasy-football qualifiers such as quoted `\"dynasty fantasy football\"`, `\"fantasy football\"`, `\"rookie draft\"`, `\"superflex\"`, `\"TE premium\"`, `\"contender\"`, `\"rebuild\"`, or `\"roster spot\"`, plus player/position terms when useful. Do NOT use loose `SF` or `TEP` by themselves because they pull real estate and trusts/estates noise. Always exclude obvious noise (`-crypto -defi -stock -real estate -multifamily -estate`).",
+    "model": "openai-codex/gpt-5.5",
+    "kind": "agentTurn",
+    "timeoutSeconds": 360
+  },
+  "delivery": {
+    "mode": "announce",
+    "to": "6608544825",
+    "channel": "telegram"
+  },
+  "failureAlert": {
+    "after": 1,
+    "channel": "telegram",
+    "to": "6608544825",
+    "cooldownMs": 86400000,
+    "mode": "announce"
+  },
+  "state": {
+    "nextRunAtMs": 1778770800000,
+    "lastRunAtMs": 1778684400027,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 45953,
+    "lastDelivered": true,
+    "lastDeliveryStatus": "delivered",
+    "consecutiveErrors": 0,
+    "consecutiveSkipped": 0
+  },
+  "updatedAtMs": 1778710599982
+}

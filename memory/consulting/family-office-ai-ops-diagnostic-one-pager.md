@@ -27,7 +27,7 @@ The output is not an AI brainstorm. It is a ranked implementation plan with data
 3. Bottlenecks, manual copy/paste points, and owner handoffs
 4. Exception inventory: overdue, missing, risky, ambiguous, escalation-needed
 5. Human-in-the-loop rules: what can be drafted, flagged, summarized, or prepared — and what must require approval
-6. Ranked use cases by ROI, risk, data readiness, implementation complexity, and proof/referral value
+6. Ranked use cases by business value, risk, data readiness, implementation complexity, and proof/referral value
 7. Recommended first build with acceptance criteria, timeline, and dependencies
 
 ## First-Build Scoring
@@ -56,8 +56,27 @@ Insurance expiration tracking for a property/operations team:
 - No autonomous financial or external action
 - Acceptance measured by records tracked, exceptions surfaced, review time saved, and missed-expiration risk reduced
 
+
+## Proof-Safe Example
+
+A good first workflow is insurance / COI / vendor-document expiration tracking.
+
+The team already has a spreadsheet, report export, inbox folder, or document folder. The problem is that expirations, missing documents, and follow-ups are only visible when someone remembers to check.
+
+The first system should not send anything on its own. It should flag upcoming and overdue items, group exceptions by urgency and owner, draft approved follow-up language, require human approval, and log what happened.
+
+That pattern is safer than a broad AI rollout because it starts with one visible exception queue, one approval path, and one audit trail.
+
 ## Sample Diagnostic CTA
 > Worth doing a 30-minute workflow diagnostic? I can map where the manual reporting/approval bottlenecks are, identify the first automation that would actually be safe to build, and tell you what needs to be cleaned up before anything runs.
 
-## Use After Altmark Acceptance
-Use this as the forwardable support asset for Yair-style intros only after the Altmark PC handoff, insurance workflow acceptance, and payment/deposit status are clean.
+
+
+## Source / Status
+
+- Source file: `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`
+- Drive draft: https://docs.google.com/document/d/1B16BgQ-gd8KEkPV53zbDC6dg0J2PVqMmHxJWIsL2src/edit
+- Hidden page: `/property-family-office-ai-ops` (noindex, not public nav)
+- Proof gate: anonymized workflow examples only; no named Altmark/Aya proof, ROI, hours saved, or client acceptance claims until permission/evidence exists.
+
+- Call-ready Drive copy: https://docs.google.com/document/d/1LLX37Pc5MRUCD-jRKjm48Mj_XbPmnDHAis4VaR4ffhI/edit

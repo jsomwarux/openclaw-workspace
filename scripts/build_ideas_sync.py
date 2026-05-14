@@ -59,16 +59,30 @@ def similar_exists(idea_title: str, existing_titles: list[str]) -> bool:
     return False
 
 
+def dedupe_key(title: str) -> str:
+    key = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+    return f"job-market-build-idea-{key[:100]}"
+
+
 def post_task(idea: dict[str, str]) -> None:
     task_title = f"Build idea: {idea['title']}"
+    body = idea["body"].strip()
+    description = (
+        "First action: open `~/projects/job-market-agent/data/agent-ideas.md`, find this idea, and validate whether it directly supports a current target role or JT's consulting proof layer before building.\n\n"
+        "Why it matters: build ideas are useful only when they improve near-term positioning, consulting proof, or a specific application; otherwise they become task-board clutter.\n\n"
+        "Done looks like: decision is recorded as build/defer/kill; if build, a scoped implementation task with exact repo/path and success metric replaces this idea task.\n\n"
+        f"Source detail from job-market-agent daily scan:\n{body}"
+    )
     payload = {
         "title": task_title[:240],
-        "description": f"{idea['body']}\n\nSource: job-market-agent daily scan",
+        "description": description,
         "status": "todo",
         "priority": "medium",
         "assignee": "eve",
         "project": "Job Market",
         "sortOrder": 500,
+        "slug": dedupe_key(task_title),
+        "pipelineStage": "triage",
     }
     req = Request(
         TASKS_URL,

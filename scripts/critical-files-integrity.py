@@ -18,7 +18,6 @@ FILE_REFS = {
     "memory/content-voice.md": "b89cabd",
     "memory/FEEDBACK-LOG.md": "b89cabd",
     "docs/x-algorithm.md": "b89cabd",
-    "memory/content/recent-builds.md": "ccb9227",
     # Agent files (auto-discovered 2026-04-14)
     "agents/vibe-marketing/AGENT.md": "61d5594",
     "agents/content-scheduler/AGENT.md": "6605054",
@@ -65,6 +64,8 @@ FILE_REFS = {
     "skills/sports-gm/SKILL.md": "357ca121",
     "skills/workflow-skillify/SKILL.md": "62739dbcdeff58a46a1dd24fcb25889ccf053758",
     "skills/high-stakes-draft-eval/SKILL.md": "62739dbcdeff58a46a1dd24fcb25889ccf053758",
+    "agents/mission-control-priority-auditor/AGENT.md": "3e4cc2bf2da3cae470cf6f4737eb9ce9cb0897f4",
+    "agents/ai-ops-teardown/AGENT.md": "3e4cc2bf2da3cae470cf6f4737eb9ce9cb0897f4",
 }
 
 def get_git_lines(file_path, ref):

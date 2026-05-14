@@ -51,26 +51,57 @@ def update_pipeline_md(slug, message, channel):
     PIPELINE_PATH.write_text(c)
     print(f"✅ pipeline.md: {slug} → ✉️ Pitched ({mn})")
 
+def fetch_tasks():
+    data = json.loads(urllib.request.urlopen(MC_API).read())
+    return data.get("tasks", data) if isinstance(data, dict) else data
+
+
+def patch_task(task_id, fields):
+    d = json.dumps({"id": task_id, **fields}).encode()
+    r = urllib.request.Request(MC_API, data=d, method="PATCH", headers={"Content-Type":"application/json"})
+    urllib.request.urlopen(r)
+
+
 def close_mc_task(slug, company):
     try:
-        tasks = json.loads(urllib.request.urlopen(MC_API).read())["tasks"]
+        tasks = fetch_tasks()
     except Exception as e:
         print(f"WARNING: MC fetch failed: {e}"); return
+    closed = 0
+    company_tokens = [tok.lower() for tok in re.findall(r"[A-Za-z0-9]+", company) if len(tok) > 2]
     for t in tasks:
-        if "Review + Send" in t.get("title","") and company.split()[0] in t.get("title",""):
-            try:
-                d = json.dumps({"status": "done"}).encode()
-                r = urllib.request.Request(f"{MC_API}/{t['_id']}", data=d, method="PATCH", headers={"Content-Type":"application/json"})
-                urllib.request.urlopen(r)
-                print(f"✅ MC task closed: {t['title']}")
-                return
-            except Exception as e:
-                print(f"WARNING: could not close task: {e}")
+        title = t.get("title", "")
+        if t.get("status") == "done":
+            continue
+        if not any(marker in title for marker in ["Review + Send", "Email Pivot"]):
+            continue
+        title_l = title.lower()
+        if not any(tok in title_l for tok in company_tokens[:3]):
+            continue
+        try:
+            patch_task(t["_id"], {"status": "done"})
+            print(f"✅ MC task closed: {title}")
+            closed += 1
+        except Exception as e:
+            print(f"WARNING: could not close task: {e}")
+    if not closed:
+        print("ℹ️  No matching active Review + Send / Email Pivot MC task found")
+
 
 def create_followup_task(slug, company, message):
     mn = message.upper()
-    if mn == "M1": next_m, title, desc = "M2", f"M2: {company} — Follow-up", f"M1 sent. M2 due 3-4 days after M1.\nCheck connection acceptance first."
-    elif mn == "M2": next_m, title, desc = "M3", f"M3: {company} — Final follow-up", f"M2 sent, no reply. M3 due 5-7 days after M2."
+    if mn == "M1":
+        next_m, title, desc = "M2", f"M2: {company} — Follow-up", (
+            "First action: 3–4 days after M1, check whether the LinkedIn/email reply path changed; if no reply, send the approved M2 follow-up from the outreach draft.\n\n"
+            "Why it matters: follow-ups should advance one selected prospect without recreating stale outreach clutter.\n\n"
+            "Done state: M2 is sent or intentionally skipped, `outreach-draft.md`/`pipeline.md` are updated, and this task is closed."
+        )
+    elif mn == "M2":
+        next_m, title, desc = "M3", f"M3: {company} — Final follow-up", (
+            "First action: 5–7 days after M2, check for reply/connection acceptance; if no reply, send the final approved M3 touch or mark the prospect cold.\n\n"
+            "Why it matters: final touches must close the loop instead of leaving cold outreach chains open indefinitely.\n\n"
+            "Done state: M3 is sent or the prospect is marked cold, `outreach-draft.md`/`pipeline.md` are updated, and this task is closed."
+        )
     else: return
     # Read draft for contact
     dp = Path.home() / f"projects/jt-consulting-pipeline/clients/{slug}/outreach-draft.md"
@@ -80,8 +111,12 @@ def create_followup_task(slug, company, message):
         for pat, lbl in [(r'\*\*Name:\*\* (.+)',"Contact"),(r'\*\*LinkedIn:\*\* (.+)','LinkedIn'),(r'\*\*Email:\*\* (.+)','Email')]:
             r2 = re.search(pat, c)
             if r2: extra += f"{lbl}: {r2.group(1).strip()}\n"
-    task = {"title": title, "description": f"{desc}\n\n{extra}", "status": "todo", "priority": "high", "assignee": "jt", "project": "Consulting", "sortOrder": 45}
+    task = {"title": title, "description": f"{desc}\n\nSource refs:\n{extra}".strip(), "status": "todo", "priority": "low", "assignee": "jt", "project": "Consulting", "sortOrder": 220, "slug": slug, "pipelineStage": next_m}
     try:
+        for t in fetch_tasks():
+            if t.get("title") == title and t.get("status") in {"todo", "in_progress", "pending", "blocked"}:
+                print(f"↩️  Follow-up task already exists: {title}")
+                return
         d = json.dumps(task).encode()
         r = urllib.request.Request(MC_API, data=d, method="POST", headers={"Content-Type":"application/json"})
         resp = json.loads(urllib.request.urlopen(r).read())

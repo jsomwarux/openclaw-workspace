@@ -1,0 +1,189 @@
+{
+  "entries": [
+    {
+      "ts": 1778716858594,
+      "jobId": "fe575759-c8b1-4715-ae5a-0dbe034b3c9b",
+      "action": "finished",
+      "status": "ok",
+      "summary": "The Reddit karma content has been generated and sent to your Telegram. \n\nEach piece was drafted to align with your **Current Efforts** (Priority 1: AI implementation as data-readiness/exception visibility; Priority 2: distribution loops for Nash Satoshi/Vista). The drafts avoid all restricted phrases and repeat angles from the last 30 days of your `reddit-draft-log.jsonl`.\n\n### Summary of Delivered Content:\n1.  **r/defi (Post):** Focuses on the \"Exit Liquidity\" incentive gap—a technical game-theory angle to build authority for Nash Satoshi without shilling.\n2.  **r/CryptoMarkets (Backup):** Exploring \"honest metrics\" for protocol usage vs. wash trading, tied to your experience with automation and signal detection.\n3.  **r/MovieSuggestions (Comment):** A technical recommendation of *Green Room*, focusing on atmospheric tension/sound design (Vista builder persona).\n4.  **r/fantasyfootballadvice (Comment):** Advice on Draft Capital vs. Landing Spot, emphasizing durable signals over temporary hype.\n\nThe activity has been logged to `memory/content/reddit-draft-log.jsonl` for anti-repeat tracking.",
+      "runAtMs": 1778716800024,
+      "durationMs": 58566,
+      "nextRunAtMs": 1778803200000,
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "usage": {
+        "input_tokens": 77169,
+        "output_tokens": 2542,
+        "total_tokens": 40286
+      },
+      "delivered": false,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "channel": "last",
+          "to": null,
+          "source": "last"
+        },
+        "messageToolSentTo": [
+          {
+            "channel": "telegram",
+            "to": "telegram:6608544825"
+          }
+        ],
+        "fallbackUsed": false,
+        "delivered": false
+      },
+      "sessionId": "aba0d47e-cbef-4d4c-9449-71ec1d813217",
+      "sessionKey": "agent:main:cron:fe575759-c8b1-4715-ae5a-0dbe034b3c9b:run:aba0d47e-cbef-4d4c-9449-71ec1d813217"
+    },
+    {
+      "ts": 1778630449773,
+      "jobId": "fe575759-c8b1-4715-ae5a-0dbe034b3c9b",
+      "action": "finished",
+      "status": "ok",
+      "summary": "Today's Reddit karma content has been generated, sent to your Telegram, and logged.\n\nI focused the crypto discussion on **shared security risks (restaking)** to match current DeFi debates, and used a **liquidity/trade-value angle** for the fantasy advice to keep it sharp but community-native.\n\n**Summary of items sent:**\n1.  **r/defi Post:** Concentration risk in \"Shared Security\" / Restaking.\n2.  **r/CryptoMarkets (Backup):** Narrative shift from Moonshots to Real Yield.\n3.  **r/movies Comment:** Sound design in *The Lighthouse* (sensory thrillers).\n4.  **r/Fantasy_Football Comment:** Playing the \"asset appreciation\" game with rookies vs. veteran floors.\n\n*Reddit draft log updated: `/Users/jtsomwaru/.openclaw/workspace/memory/content/reddit-draft-log.jsonl`*",
+      "runAtMs": 1778630400052,
+      "durationMs": 49717,
+      "nextRunAtMs": 1778716800000,
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "usage": {
+        "input_tokens": 76605,
+        "output_tokens": 1783,
+        "total_tokens": 35442
+      },
+      "delivered": false,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "channel": "last",
+          "to": null,
+          "source": "last"
+        },
+        "messageToolSentTo": [
+          {
+            "channel": "telegram",
+            "to": "telegram:6608544825"
+          }
+        ],
+        "fallbackUsed": false,
+        "delivered": false
+      },
+      "sessionId": "17a2adee-e42e-4e7b-88e7-b2e8022b1929",
+      "sessionKey": "agent:main:cron:fe575759-c8b1-4715-ae5a-0dbe034b3c9b:run:17a2adee-e42e-4e7b-88e7-b2e8022b1929"
+    },
+    {
+      "ts": 1778544070043,
+      "jobId": "fe575759-c8b1-4715-ae5a-0dbe034b3c9b",
+      "action": "finished",
+      "status": "ok",
+      "summary": "Today's Reddit karma content has been generated and sent via Telegram. All pieces were mapped to your current efforts (AI/automation consulting angles translated for community fit) and market signals from May 2026.\n\nI have logged the drafts to `reddit-draft-log.jsonl` to ensure no repeats over the next 30 days.\n\n**Summary of angles used:**\n- **r/defi (Post):** Transition from yield-chasing to RWA and \"Lindy\" durability.\n- **r/CryptoMarkets (Backup):** Questioning the reliability of the Lindy Effect in a shifting market.\n- **r/movies (Comment):** Antoine Fuqua's direction and performance scaling in the upcoming *Michael* biopic.\n- **r/Fantasy_Football (Comment):** Prioritizing contingency paths to touches over pure \"talented\" sleepers for late stashes.",
+      "runAtMs": 1778544000060,
+      "durationMs": 69979,
+      "nextRunAtMs": 1778630400000,
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "usage": {
+        "input_tokens": 127352,
+        "output_tokens": 1823,
+        "total_tokens": 39538
+      },
+      "delivered": false,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "channel": "last",
+          "to": null,
+          "source": "last"
+        },
+        "messageToolSentTo": [
+          {
+            "channel": "message",
+            "to": "6608544825"
+          }
+        ],
+        "fallbackUsed": false,
+        "delivered": false
+      },
+      "sessionId": "6cdc696d-feb5-40c6-8c13-96f4a19c03c2",
+      "sessionKey": "agent:main:cron:fe575759-c8b1-4715-ae5a-0dbe034b3c9b:run:6cdc696d-feb5-40c6-8c13-96f4a19c03c2"
+    },
+    {
+      "ts": 1778457649044,
+      "jobId": "fe575759-c8b1-4715-ae5a-0dbe034b3c9b",
+      "action": "finished",
+      "status": "ok",
+      "summary": "Sent to JT via Telegram. \n\nI've generated the Reddit karma content for today, mapped to your current efforts (system durability, distribution loops) and recent market debates (DeFi governance wars, weak 2026 rookie class narrative).\n\n**Summary of drafts:**\n1. **Crypto (r/defi):** Deep-dive on \"Governance Fatigue\" vs. the Lindy Effect. \n2. **Crypto Backup (r/CryptoMarkets):** Questioning brand overconfidence in established protocols.\n3. **Film (r/movies):** Practical take on the Star Wars theatrical shift (Mandalorian & Grogu).\n4. **Fantasy (r/Fantasy_Football):** Advise on buying \"weak\" 2026 picks as liquidity/flexibility assets.\n\nThe items have been logged to `memory/content/reddit-draft-log.jsonl` to ensure no repeats over the next 30 days.",
+      "runAtMs": 1778457600033,
+      "durationMs": 49007,
+      "nextRunAtMs": 1778544000000,
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "usage": {
+        "input_tokens": 80584,
+        "output_tokens": 1764,
+        "total_tokens": 40591
+      },
+      "delivered": false,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "channel": "last",
+          "to": null,
+          "source": "last"
+        },
+        "messageToolSentTo": [
+          {
+            "channel": "telegram",
+            "to": "telegram:6608544825"
+          }
+        ],
+        "fallbackUsed": false,
+        "delivered": false
+      },
+      "sessionId": "cd2fb8b6-28d9-4ca8-8429-2b50adb174ba",
+      "sessionKey": "agent:main:cron:fe575759-c8b1-4715-ae5a-0dbe034b3c9b:run:cd2fb8b6-28d9-4ca8-8429-2b50adb174ba"
+    },
+    {
+      "ts": 1778371278205,
+      "jobId": "fe575759-c8b1-4715-ae5a-0dbe034b3c9b",
+      "action": "finished",
+      "status": "ok",
+      "summary": "Reddit karma content has been generated and sent to JT via Telegram. I've mapped the crypto and fantasy posts to current market signals (RWA yield convergence, Clarity Act timing, and early May rookie draft strategy) while strictly following the mod-safety and anti-repeat protocols.\n\n**Items generated:**\n1.  **r/defi Post:** RWA yield convergence vs. protocol coordination.\n2.  **r/CryptoMarkets Backup:** Clarity Act legislative deadline as a market structure signal.\n3.  **r/Letterboxd Comment:** \"Project Hail Mary\" adaptation/technical sci-fi.\n4.  **r/Fantasy_Football Comment:** 2026 rookie pick liquidity vs. young player volatility.\n\nThe items have been logged in `memory/content/reddit-draft-log.jsonl` to prevent future repeats.",
+      "runAtMs": 1778371200044,
+      "durationMs": 78157,
+      "nextRunAtMs": 1778457600000,
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "usage": {
+        "input_tokens": 47308,
+        "output_tokens": 1784,
+        "total_tokens": 40434
+      },
+      "delivered": false,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "channel": "last",
+          "to": null,
+          "source": "last"
+        },
+        "messageToolSentTo": [
+          {
+            "channel": "telegram",
+            "to": "telegram:6608544825"
+          }
+        ],
+        "fallbackUsed": false,
+        "delivered": false
+      },
+      "sessionId": "09c836d5-258c-4161-a768-b687a9f6aa23",
+      "sessionKey": "agent:main:cron:fe575759-c8b1-4715-ae5a-0dbe034b3c9b:run:09c836d5-258c-4161-a768-b687a9f6aa23"
+    }
+  ],
+  "total": 56,
+  "offset": 0,
+  "limit": 5,
+  "hasMore": true,
+  "nextOffset": 5
+}

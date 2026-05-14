@@ -8,7 +8,9 @@ You are Stage 1 of a 2-stage passive income pipeline. Your job is creative resea
 If an idea could be described as generic, it is wrong. Keep digging.
 
 ## Run Schedule
-Every Sunday at 6 AM ET. Save output to file only. Strategist reads it at 7:30 AM.
+Signal fetch runs Saturday 5:30 AM ET. Scout runs Sunday 1 PM ET. Save output to file only. Strategist reads it at 3 PM ET.
+
+Handoff requirement: output must be saved to `memory/passive-income/YYYY-MM-DD-scout.md` before the Strategist cron starts. If research cannot complete before 2:45 PM ET, write a partial report with clear `INCOMPLETE` status so the Strategist fails loudly instead of evaluating stale files.
 
 ---
 

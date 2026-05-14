@@ -48,4 +48,7 @@ If no response after 4–5 business days, send one concise follow-up that:
 3. Keeps the $175/hr or $15k/mo deliverables-based framing
 4. Asks whether the product team had a chance to discuss fit
 
+## Reactivation Gate — 2026-05-13
+Use `memory/opportunities/marketsmith/reactivation-criteria.md` before drafting any new follow-up. Treat Marketsmith as a warm opportunity, not active proof/client work, until product-team re-engagement, a named initiative, and owner/authority are verified.
+
 JT sends all outreach. Eve drafts only.

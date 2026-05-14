@@ -25,6 +25,7 @@ Wednesday is JT's most important LinkedIn post. It should make a practitioner no
 - Every number or outcome must be real or clearly estimated — banned vague outcomes: "saved time," "more efficient," "fraction of the time," "almost nothing," "improved significantly"
 - No self-promotional closing line
 - "you/your" must outnumber "I/my" — target 5:1 ratio. Reframe from reader's perspective wherever possible.
+- **Strategic-fit gate:** Wednesday LinkedIn must increase buyer confidence in JT as an implementation operator. Block drafts that foreground a mistake, inflated claim, correction, apology, weak metric, or credibility repair unless JT explicitly asks for a postmortem. Honesty belongs in accurate numbers; it should not make the story self-undermining.
 
 ---
 

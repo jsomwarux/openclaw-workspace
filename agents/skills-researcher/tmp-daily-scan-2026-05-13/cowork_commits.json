@@ -1,0 +1,417 @@
+[
+  {
+    "sha": "65f6fdbb53be937a3611c9648db985b79fb8782d",
+    "node_id": "C_kwDOQ_-q4toAKDY1ZjZmZGJiNTNiZTkzN2EzNjExYzk2NDhkYjk4NWI3OWZiODc4MmQ",
+    "commit": {
+      "author": {
+        "name": "Matt Piccolella",
+        "email": "mattpic@anthropic.com",
+        "date": "2026-05-08T18:55:53Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-05-08T18:55:53Z"
+      },
+      "message": "Merge pull request #220 from anthropics/add-consensus-mcp\n\nAdd Consensus MCP server to bio-research plugin",
+      "tree": {
+        "sha": "2628bd7ac221e9e4b32277871dcae762c141e192",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/2628bd7ac221e9e4b32277871dcae762c141e192"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/65f6fdbb53be937a3611c9648db985b79fb8782d",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJp/jG5CRC1aQ7uu5UhlAAA448QAIdT2qcnilJbAQkbd44FM9VB\nMNUclckSD29Dp5/OfEyov6ApMDKk67Sc4/qTXD7mHbx6OYJrDDK4wZKvcCEmK0lx\nPCUxhrn6/tJ4unqCn+U40bAcUvFpo4zoby8ftC4PmsjpXujdA7pHrSU3IJjnxMVH\nh/g6mZNWwx06kxO/s3WNiYtp78vJQIsT2nV2OkcQyIdC+NBa370pJW4B2EE3YEvA\n8dRUZd7dU+mLqMUzLu9pRGLFM6Y9C3ub71SIUqcTkc2jpt5tjH7ZDf8pb7bpbLoC\n29yjRBonmFiKm5xAq7JeZ1f0CtXp1A0pDA3Z+dPrHI801NTJ9XSXTwq0G5GSCV88\n0NTP7ROro0PH90bQc+GU/oJO7hQH5P7U4UKZgqy1CPjDi4NMdXUXDwQtSNShNW1J\nWCUthEVlVMhSS8Tw/nlVzPRx80M2R1dc9vSUhEI9wbOoFMp9y3DviztsFSb07Jp/\nSB6MCuDAGCE6uGqap5Q+VyrpUq50fVUDG+6sq9ku5qtJwsMbd5jKptU1XGAYp1Yr\nFGVLmHKvxJUzcTwptEKaca0PBOsGbJ7UXgyZHCrL11guM1toIQNtXO65/xOAom1q\nYtFDfdE5Oe8gOor/YYx9BwKfFuAqrDCq7CDptFiptyBO39WYsYne5wQwQ+B5+T5l\nDMeeesyDizWxaI2MEHdW\n=wWGT\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 2628bd7ac221e9e4b32277871dcae762c141e192\nparent 9789ea78ad66e395a9c709146cacecdc14ce2abf\nparent 75dde0754004178caf34db8934290d71769b7380\nauthor Matt Piccolella <mattpic@anthropic.com> 1778266553 -0700\ncommitter GitHub <noreply@github.com> 1778266553 -0700\n\nMerge pull request #220 from anthropics/add-consensus-mcp\n\nAdd Consensus MCP server to bio-research plugin",
+        "verified_at": "2026-05-08T18:55:54Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/65f6fdbb53be937a3611c9648db985b79fb8782d",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/65f6fdbb53be937a3611c9648db985b79fb8782d",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/65f6fdbb53be937a3611c9648db985b79fb8782d/comments",
+    "author": {
+      "login": "mattpic-ant",
+      "id": 227474486,
+      "node_id": "U_kgDODY78Ng",
+      "avatar_url": "https://avatars.githubusercontent.com/u/227474486?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mattpic-ant",
+      "html_url": "https://github.com/mattpic-ant",
+      "followers_url": "https://api.github.com/users/mattpic-ant/followers",
+      "following_url": "https://api.github.com/users/mattpic-ant/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mattpic-ant/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mattpic-ant/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mattpic-ant/subscriptions",
+      "organizations_url": "https://api.github.com/users/mattpic-ant/orgs",
+      "repos_url": "https://api.github.com/users/mattpic-ant/repos",
+      "events_url": "https://api.github.com/users/mattpic-ant/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mattpic-ant/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9789ea78ad66e395a9c709146cacecdc14ce2abf",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/9789ea78ad66e395a9c709146cacecdc14ce2abf",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/9789ea78ad66e395a9c709146cacecdc14ce2abf"
+      },
+      {
+        "sha": "75dde0754004178caf34db8934290d71769b7380",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/75dde0754004178caf34db8934290d71769b7380",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/75dde0754004178caf34db8934290d71769b7380"
+      }
+    ]
+  },
+  {
+    "sha": "75dde0754004178caf34db8934290d71769b7380",
+    "node_id": "C_kwDOQ_-q4toAKDc1ZGRlMDc1NDAwNDE3OGNhZjM0ZGI4OTM0MjkwZDcxNzY5YjczODA",
+    "commit": {
+      "author": {
+        "name": "Matt Piccolella",
+        "email": "mattpic@anthropic.com",
+        "date": "2026-05-08T18:35:56Z"
+      },
+      "committer": {
+        "name": "Matt Piccolella",
+        "email": "mattpic@anthropic.com",
+        "date": "2026-05-08T18:35:56Z"
+      },
+      "message": "Add Consensus MCP server to bio-research plugin\n\nAdd the Consensus academic literature search connector\n(https://mcp.consensus.app/mcp) under the literature category.\nUpdate CONNECTORS.md and README.md tables, and bump the plugin\nversion to 1.2.0.",
+      "tree": {
+        "sha": "2628bd7ac221e9e4b32277871dcae762c141e192",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/2628bd7ac221e9e4b32277871dcae762c141e192"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/75dde0754004178caf34db8934290d71769b7380",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEED0M6YfDA/rc6y7rrDt5DDufh7EZW411LXGljxP7/lq2EVfimIWOJqRUQeiIpYHHChvNR\nbzw+1zsKUKyB8w9k2wAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEkAAAAhANvEr6gwAN0iyUB2Xsk+vV1wDvT4ZY5JQck+hhPH317UAAAA\nIEtMCaE2KCfazJn5P3uWWxTIsCXIZy3SB3M5M8txVNOo\n-----END SSH SIGNATURE-----",
+        "payload": "tree 2628bd7ac221e9e4b32277871dcae762c141e192\nparent 9789ea78ad66e395a9c709146cacecdc14ce2abf\nauthor Matt Piccolella <mattpic@anthropic.com> 1778265356 -0700\ncommitter Matt Piccolella <mattpic@anthropic.com> 1778265356 -0700\n\nAdd Consensus MCP server to bio-research plugin\n\nAdd the Consensus academic literature search connector\n(https://mcp.consensus.app/mcp) under the literature category.\nUpdate CONNECTORS.md and README.md tables, and bump the plugin\nversion to 1.2.0.\n",
+        "verified_at": "2026-05-08T18:36:10Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/75dde0754004178caf34db8934290d71769b7380",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/75dde0754004178caf34db8934290d71769b7380",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/75dde0754004178caf34db8934290d71769b7380/comments",
+    "author": {
+      "login": "mattpic-ant",
+      "id": 227474486,
+      "node_id": "U_kgDODY78Ng",
+      "avatar_url": "https://avatars.githubusercontent.com/u/227474486?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mattpic-ant",
+      "html_url": "https://github.com/mattpic-ant",
+      "followers_url": "https://api.github.com/users/mattpic-ant/followers",
+      "following_url": "https://api.github.com/users/mattpic-ant/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mattpic-ant/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mattpic-ant/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mattpic-ant/subscriptions",
+      "organizations_url": "https://api.github.com/users/mattpic-ant/orgs",
+      "repos_url": "https://api.github.com/users/mattpic-ant/repos",
+      "events_url": "https://api.github.com/users/mattpic-ant/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mattpic-ant/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "mattpic-ant",
+      "id": 227474486,
+      "node_id": "U_kgDODY78Ng",
+      "avatar_url": "https://avatars.githubusercontent.com/u/227474486?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/mattpic-ant",
+      "html_url": "https://github.com/mattpic-ant",
+      "followers_url": "https://api.github.com/users/mattpic-ant/followers",
+      "following_url": "https://api.github.com/users/mattpic-ant/following{/other_user}",
+      "gists_url": "https://api.github.com/users/mattpic-ant/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/mattpic-ant/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/mattpic-ant/subscriptions",
+      "organizations_url": "https://api.github.com/users/mattpic-ant/orgs",
+      "repos_url": "https://api.github.com/users/mattpic-ant/repos",
+      "events_url": "https://api.github.com/users/mattpic-ant/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/mattpic-ant/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "9789ea78ad66e395a9c709146cacecdc14ce2abf",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/9789ea78ad66e395a9c709146cacecdc14ce2abf",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/9789ea78ad66e395a9c709146cacecdc14ce2abf"
+      }
+    ]
+  },
+  {
+    "sha": "9789ea78ad66e395a9c709146cacecdc14ce2abf",
+    "node_id": "C_kwDOQ_-q4toAKDk3ODllYTc4YWQ2NmUzOTVhOWM3MDkxNDZjYWNlY2RjMTRjZTJhYmY",
+    "commit": {
+      "author": {
+        "name": "Bryan Thompson",
+        "email": "bthompson@anthropic.com",
+        "date": "2026-04-30T19:26:08Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-04-30T19:26:08Z"
+      },
+      "message": "Add sp-global plugin (#206)",
+      "tree": {
+        "sha": "b539cc8c293e69f1eaee0f10ad43417f76ddbe08",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/b539cc8c293e69f1eaee0f10ad43417f76ddbe08"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/9789ea78ad66e395a9c709146cacecdc14ce2abf",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJp86zQCRC1aQ7uu5UhlAAAYTgQAGOt9O0SiQF81ZvUFRua2hOz\nl298wJxJhFfh04vsqOnBcCwCMlxVtROA9AioxP6P5J0b5wa/bTnVeEdomRrbYg2e\n+fcz7htOMX+aHSJBEnYPAJa/s4hKhnxRT5GwkfUbLoUo5T/YiWMlEcSKekthd64y\nMyPOKQ+v0n1qlZ9nEack8rC7ZRk4mOH5Sbabx5kHcCt0oNjVGK1RF1Qizc3P70nt\n4y0vWj4yiLfDCicX/oQ2bS/z92KxkXRZBTTF8ToeTtkTTkRKDFWCofMaBG/4HYwC\nei9nk6hUxcsMcfz/1Xf2G2B5MEVsoPouTMjjipVbGHkj8/UVKgaECbSQgaPONqWd\nRlYpPjg2WHVO3MBDvQOTPMu0BWb1fWVt+pCenYnCSWcldOo45u/Il2rmPa1HlkQx\nfYKeL8KzKrIuiBT7N50GEEHO1V32BZeZh9g6bpc+Bugpavt7u836/Hfkd4EyA1MQ\nAeEzB59Kv55QWXW8Mxiiq2egTxA5HQMDIAXGkY1Y9Y0G1e+Bbr93ylKccW1CJRTD\n2FApgnz4JNwvypcNFgYBiuUJhOHRQbb1WPHdmuF7AATtaY2lWtprl5+9WPGJNULU\n90RjYX+0A/PI2fuotmAPYJTcGse3HfqPwS/ruBfUrAD6nNIghjBcKgH1JV3TOXX1\n1MC0zICDNNoyMVy8yXuy\n=Rf+0\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree b539cc8c293e69f1eaee0f10ad43417f76ddbe08\nparent 93fefd09facd906f0df6de686ca3622aa99fc937\nauthor Bryan Thompson <bthompson@anthropic.com> 1777577168 -0500\ncommitter GitHub <noreply@github.com> 1777577168 +0100\n\nAdd sp-global plugin (#206)",
+        "verified_at": "2026-04-30T19:26:08Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/9789ea78ad66e395a9c709146cacecdc14ce2abf",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/9789ea78ad66e395a9c709146cacecdc14ce2abf",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/9789ea78ad66e395a9c709146cacecdc14ce2abf/comments",
+    "author": {
+      "login": "bryan-anthropic",
+      "id": 238056179,
+      "node_id": "U_kgDODjBy8w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/238056179?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bryan-anthropic",
+      "html_url": "https://github.com/bryan-anthropic",
+      "followers_url": "https://api.github.com/users/bryan-anthropic/followers",
+      "following_url": "https://api.github.com/users/bryan-anthropic/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bryan-anthropic/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bryan-anthropic/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bryan-anthropic/subscriptions",
+      "organizations_url": "https://api.github.com/users/bryan-anthropic/orgs",
+      "repos_url": "https://api.github.com/users/bryan-anthropic/repos",
+      "events_url": "https://api.github.com/users/bryan-anthropic/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bryan-anthropic/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "93fefd09facd906f0df6de686ca3622aa99fc937",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/93fefd09facd906f0df6de686ca3622aa99fc937",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/93fefd09facd906f0df6de686ca3622aa99fc937"
+      }
+    ]
+  },
+  {
+    "sha": "93fefd09facd906f0df6de686ca3622aa99fc937",
+    "node_id": "C_kwDOQ_-q4toAKDkzZmVmZDA5ZmFjZDkwNmYwZGY2ZGU2ODZjYTM2MjJhYTk5ZmM5Mzc",
+    "commit": {
+      "author": {
+        "name": "Bryan Thompson",
+        "email": "bthompson@anthropic.com",
+        "date": "2026-04-30T19:21:22Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-04-30T19:21:22Z"
+      },
+      "message": "Add lseg plugin (#204)",
+      "tree": {
+        "sha": "97157215bf5e2d328ac3ac9ae681783cb295891d",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/97157215bf5e2d328ac3ac9ae681783cb295891d"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/93fefd09facd906f0df6de686ca3622aa99fc937",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJp86uyCRC1aQ7uu5UhlAAAYVgQAFXrzjX9P7uw03d5QldAbAmA\n+4tdZX8vuwbP6IzzpYTJxAWeP9LMhuJ/b0qu2MwVyHMKzbTZkLdYFwE2sM4Nq7Qv\nL5Qw4SGJlJyMa7CTH2sZUvMuXXjqMoOVpZsjmGHCmuD+xwWOtjYP7jO6Q38czRwc\nU11afEzTBrhb9m1v9LeHOiYVwjtqG0vDIw5xvH1T6ZADuFxooU60nqy8ENAIpvsJ\n2KdpwhEITLzLqlqxKxfOn0Yi1PLztH2IBEUZYzkmTj/90dW5DWhsaY4+zkDCqrp1\njlics+Sumsu7BW0rNcXfJJweuOM/nJLubi329uEEdsiAonJnsP/4Rx93THlAKsVD\nmNGrR2BXSpcyARruK1h9J/aUSrY3Yz6xQvHY9X1/GPdAnHv9skYL3TbwYipjxw0q\n/jw8mVjbR3XcxGX2d9DubjwV3/RtF7erjm9HFLDvaRQC+FeTY5oKye2QtkS6D4gW\nDL4MnvHCc960rctn3r1t1y9Rfu8gm7c4SlcSsgovIGil0Few0BcL2k0XMUKxJ3Hf\nI2jl4V9q7CqzL9Q4QoyhwizTYtFXtKi14lH/YBaZDXx/OVGAVTEF7yr3aQw/OK10\nKakLZ1F24cXyZCq+UZD2W8LfbRhyM35KBHBST6T7jCCB3WC85tzoi9R8LMyvY008\nxeWOwpJ8tCWeyHmjBjiU\n=UHtA\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 97157215bf5e2d328ac3ac9ae681783cb295891d\nparent f30aca0e8889d97d69faf5e3f7397e6fbc54eea7\nauthor Bryan Thompson <bthompson@anthropic.com> 1777576882 -0500\ncommitter GitHub <noreply@github.com> 1777576882 +0100\n\nAdd lseg plugin (#204)",
+        "verified_at": "2026-04-30T19:21:22Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/93fefd09facd906f0df6de686ca3622aa99fc937",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/93fefd09facd906f0df6de686ca3622aa99fc937",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/93fefd09facd906f0df6de686ca3622aa99fc937/comments",
+    "author": {
+      "login": "bryan-anthropic",
+      "id": 238056179,
+      "node_id": "U_kgDODjBy8w",
+      "avatar_url": "https://avatars.githubusercontent.com/u/238056179?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bryan-anthropic",
+      "html_url": "https://github.com/bryan-anthropic",
+      "followers_url": "https://api.github.com/users/bryan-anthropic/followers",
+      "following_url": "https://api.github.com/users/bryan-anthropic/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bryan-anthropic/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bryan-anthropic/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bryan-anthropic/subscriptions",
+      "organizations_url": "https://api.github.com/users/bryan-anthropic/orgs",
+      "repos_url": "https://api.github.com/users/bryan-anthropic/repos",
+      "events_url": "https://api.github.com/users/bryan-anthropic/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bryan-anthropic/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f30aca0e8889d97d69faf5e3f7397e6fbc54eea7",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/f30aca0e8889d97d69faf5e3f7397e6fbc54eea7",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/f30aca0e8889d97d69faf5e3f7397e6fbc54eea7"
+      }
+    ]
+  },
+  {
+    "sha": "f30aca0e8889d97d69faf5e3f7397e6fbc54eea7",
+    "node_id": "C_kwDOQ_-q4toAKGYzMGFjYTBlODg4OWQ5N2Q2OWZhZjVlM2Y3Mzk3ZTZmYmM1NGVlYTc",
+    "commit": {
+      "author": {
+        "name": "abibbs-ant",
+        "email": "anthony@anthropic.com",
+        "date": "2026-04-30T11:28:26Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-04-30T11:28:26Z"
+      },
+      "message": "Update Adobe for creativity description (#203)\n\nAt the request of Adobe, this updates Adobe for creativity's description",
+      "tree": {
+        "sha": "40d45af6e554dc4a082b0ae48a6c64e7d1a5c1e3",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/40d45af6e554dc4a082b0ae48a6c64e7d1a5c1e3"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/f30aca0e8889d97d69faf5e3f7397e6fbc54eea7",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJp8zzaCRC1aQ7uu5UhlAAAKuUQADnkiBRTp7tn88//MamLnQlx\nxCMcdGXY7OXJgWX4M0nqFJVDTlPc8aAz6r9jI1nGQsKfhjYhfoobJXvVMPHwSRzt\nTS5qRz/SbUPHboXalTD6X+yccQOkHtusZX/tPOmfXg8GeiABQD+4ou9oGtMeaig1\nVY6GWhP0ayL3fIGEoJvMosGMQYRSwdfafEf+Q35Rxss/WxIPqZ2dAYd1pcSrFb8g\nP1nVZpislrLKkQTh+AZuQVhp236VBPMASB4VhtvxN5rbuDi8+CYIrgmWiVF1nJsc\nEpR7P7Mfr2HmlqVHDFDk98xlRKz4mSjTOt9BybpO41UkgaPLnDp9s/4/YvNEJJ8e\nk3vdMBOClRVBUaQKMz9dH+GM8bENlXm6jTije/aTt9ANya/YKPsF5Z2CLGM0NF4P\nRcJQx56alJFI/JoMz4Lbwk1B6sDAurh7w0KyvGgrFeQagZ3cC9aCCb9GLXyPuSq2\nE8tlafpGKo0+BIffbSIPim9O6105HEakpJehzi8+FQGEqVPqoRQMliVCZrP2o9Zp\nEVndVtKEIF7ZxJNbOU0CTO/POToqFMFqbd5KD0x/vo+Ve2iwdr+giCNw+MU0I7er\nen5HlruYqyZOlosiXwQgTcIcaHeAxtHUiF/QBX2zx1sA9L2S9TALNlYNkGGbJTJ3\n8BQrA11GWRGcHW+Ekxg5\n=OXV7\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 40d45af6e554dc4a082b0ae48a6c64e7d1a5c1e3\nparent 10b5d42419175847394a4cd48799f0b3a5fdd1ec\nauthor abibbs-ant <anthony@anthropic.com> 1777548506 -0700\ncommitter GitHub <noreply@github.com> 1777548506 -0500\n\nUpdate Adobe for creativity description (#203)\n\nAt the request of Adobe, this updates Adobe for creativity's description",
+        "verified_at": "2026-04-30T11:28:27Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/f30aca0e8889d97d69faf5e3f7397e6fbc54eea7",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/f30aca0e8889d97d69faf5e3f7397e6fbc54eea7",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/f30aca0e8889d97d69faf5e3f7397e6fbc54eea7/comments",
+    "author": {
+      "login": "abibbs-ant",
+      "id": 222481445,
+      "node_id": "U_kgDODULMJQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/222481445?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/abibbs-ant",
+      "html_url": "https://github.com/abibbs-ant",
+      "followers_url": "https://api.github.com/users/abibbs-ant/followers",
+      "following_url": "https://api.github.com/users/abibbs-ant/following{/other_user}",
+      "gists_url": "https://api.github.com/users/abibbs-ant/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/abibbs-ant/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/abibbs-ant/subscriptions",
+      "organizations_url": "https://api.github.com/users/abibbs-ant/orgs",
+      "repos_url": "https://api.github.com/users/abibbs-ant/repos",
+      "events_url": "https://api.github.com/users/abibbs-ant/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/abibbs-ant/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "10b5d42419175847394a4cd48799f0b3a5fdd1ec",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/10b5d42419175847394a4cd48799f0b3a5fdd1ec",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/10b5d42419175847394a4cd48799f0b3a5fdd1ec"
+      }
+    ]
+  }
+]

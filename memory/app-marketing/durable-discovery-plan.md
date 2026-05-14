@@ -1,7 +1,7 @@
 # App Marketing OS — Durable Discovery Plan
 
 Week of: 2026-05-11
-Generated: 2026-05-11
+Generated: 2026-05-13
 
 ## Rule
 Every weekly app marketing review should include one compounding discovery action: SEO page, directory/backlink pack, ASO improvement, or competitor intel scan.
@@ -25,7 +25,7 @@ Every weekly app marketing review should include one compounding discovery actio
 - Type: Directory submission pack
 - Why: Vista is live in the App Store and should not rely only on TikTok velocity.
 - Done: Submission copy exists for Product Hunt, AlternativeTo, Uneed, and iOS/movie app directories.
-- Guardrail: App Store Connect metrics still blocked by Apple agreements; directory pack can proceed anyway.
+- Guardrail: App Store metrics connector/reporting path is not complete; directory pack can proceed anyway.
 
 ### Nash Satoshi — Nash Satoshi Product Hunt/Uneed/Futurepedia pack
 - Type: Directory submission pack
@@ -38,4 +38,4 @@ Every weekly app marketing review should include one compounding discovery actio
 - SEO backlog loaded: True
 - Directory backlog loaded: True
 - ASO checklist loaded: True
-- App Store Connect blocked: False
+- App Store metrics status: metadata_ready_vendor_number_needed

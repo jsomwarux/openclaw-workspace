@@ -1,0 +1,47 @@
+{
+  "id": "bbe49024-458a-4496-9c7c-7a278615810f",
+  "agentId": "main",
+  "sessionKey": "agent:main:telegram:direct:6608544825",
+  "name": "reddit-daily-gen",
+  "description": "Daily Reddit Content Generation for Dynasty & Nash Satoshi",
+  "enabled": true,
+  "deleteAfterRun": false,
+  "createdAtMs": 1776733519287,
+  "schedule": {
+    "kind": "cron",
+    "tz": "America/New_York",
+    "expr": "30 11 * * *"
+  },
+  "sessionTarget": "session:reddit-cron",
+  "wakeMode": "now",
+  "payload": {
+    "model": "openai-codex/gpt-5.5",
+    "kind": "agentTurn",
+    "message": "**Objective:**\nGenerate two high-signal Reddit drafts designed to build karma and organic authority:\n1. one Nash Satoshi/Crypto systems post,\n2. one Sports GM / dynasty fantasy football post or comment.\n\n**Required Reading:**\n1. Read `~/.openclaw/workspace/memory/content/reddit-strategy.md` for target subreddit rules.\n2. Read `~/.openclaw/workspace/memory/content/reddit-draft-log.jsonl` and inspect at least the last 30 days before drafting.\n3. Read `~/.openclaw/workspace/memory/content/posted-log.jsonl` if present.\n4. Read `~/.openclaw/workspace/skills/sports-gm/SKILL.md` before drafting the dynasty/fantasy item.\n5. Read `~/.openclaw/workspace/memory/sports-gm/reports/weekly-gm-report-$(date +%F).md` if it exists; otherwise run:\n   - `python3 ~/.openclaw/workspace/scripts/sports_gm_fetch_prices.py`\n   - `python3 ~/.openclaw/workspace/scripts/sports_gm_generate_report.py`\n6. For crypto, use a fresh/current input: live Nash Satoshi rankings, today's crypto-agent data, or a web/X signal from the last 48 hours. If no fresh crypto signal is available, SKIP crypto.\n\n**Hard Anti-Repeat Gate — 2026-05-11:**\nThe last several runs repeated stale broad frames. These are now banned unless tied to a fresh named event/thread from the last 48 hours:\n- crypto narratives vs mechanisms\n- protocol durability / stakeholder alignment\n- TVL / fees / emissions / value capture lists\n- “who has reason to stay/care” framing\n- generic DeFi coordination essays\n- fantasy roster window before player value\n- value vs usefulness to your roster\n- calculators as sentiment tools\n- liquidity / optionality / assets have different jobs\n- broad contender/rebuilder/stuck-in-middle lectures\nIf a draft matches any of these frames, output `SKIP_SLOT: repeated stale frame` for that slot. Do not rewrite the same idea with synonyms.\n\n**Crypto/Nash Satoshi Draft Rules:**\n- Target one of: `r/defi`, `r/CryptoMarkets`, `r/CryptoTechnology`, or `r/ethtrader` only when topic fit is strong.\n- No Nash Satoshi link, CTA, launch mention, referral language, or shill phrasing.\n- Must be grounded in a current token/ranking/market/news signal from the last 48 hours OR output `SKIP_SLOT: no fresh crypto signal`.\n- Do not recommend buying/selling any token.\n- Format as a Reddit-native discussion post with a clear question at the end.\n\n**Sports GM / Dynasty Draft Rules:**\n- Use Sports GM positioning: dynasty/fantasy through a GM/front-office lens.\n- Current target stack: `r/Fantasy_Football` first, `r/fantasyfootballadvice` second, `r/fantasyfootball` only for broader NFL/fantasy macro. Do NOT target `r/DynastyFF` until JT has enough Reddit reputation.\n- Prefer useful comments on concrete existing thread types: trade offer, keeper decision, rookie pick, contender/rebuilder decision, player role, NFL draft/landing spot question.\n- Must mention the concrete thread type to look for. If it would only be generic roster-construction theory, output `SKIP_SLOT: no concrete fantasy thread signal`.\n- No @dynastyjig mention, links, CTA, product language, or brand promo.\n- Do not make player-specific recommendations unless the full thesis standard is met: market price, football/usage reference, role/context reference, thesis, confidence tier, risk case, receipt row.\n\n**Output Formatting:**\nSend both drafts to JT via Telegram formatted exactly like:\n\n🔥 **Daily Reddit Growth Drop**\n\n**Freshness Gate:** [briefly state sources used and repeat frames avoided]\n\n**Crypto Target:** `r/[Target Sub]` OR `SKIP_SLOT: [reason]`\n**Title:** [Hook]\n**Body:** [Reddit-formatted draft]\n\n*—*\n\n**Fantasy Target:** `r/[Target Sub]` OR `SKIP_SLOT: [reason]`\n**Post Type:** [Standalone post OR comment/advice angle]\n**Look for:** [specific thread type]\n**Title:** [Hook, if standalone]\n**Body:** [Reddit-formatted draft]\n\n**Files Used:** [sports report/content path if generated]\n\nKeep the Telegram output under 3,500 characters. If no useful draft can be generated, skip that section rather than sending filler.\n\n**Logging requirement:**\nAppend every non-skipped item to `~/.openclaw/workspace/memory/content/reddit-draft-log.jsonl` with date, subreddit, type, title/look-for, first 120 chars, core angle, and body hash. If both slots are skipped, still log a skip note in today's daily note.\n\nFINAL CHECK before sending: If either slot resembles the last 30 days of Reddit drops in hook, first paragraph, core analogy, or broad frame, replace it with `SKIP_SLOT: repeated stale frame`. Quality beats volume.",
+    "timeoutSeconds": 420
+  },
+  "delivery": {
+    "mode": "announce",
+    "to": "6608544825",
+    "channel": "telegram"
+  },
+  "failureAlert": {
+    "after": 1,
+    "channel": "telegram",
+    "to": "6608544825",
+    "cooldownMs": 86400000,
+    "mode": "announce"
+  },
+  "state": {
+    "nextRunAtMs": 1778772600000,
+    "lastRunAtMs": 1778686596478,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 123048,
+    "lastDelivered": true,
+    "lastDeliveryStatus": "delivered",
+    "consecutiveErrors": 0,
+    "consecutiveSkipped": 0
+  },
+  "updatedAtMs": 1778710599991
+}

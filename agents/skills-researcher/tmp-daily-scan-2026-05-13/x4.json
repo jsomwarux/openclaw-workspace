@@ -1,0 +1,189 @@
+[
+  {
+    "id": "2053391648936058939",
+    "text": "MCP-kafka\n\n#apachekafka\n\nAn open-source MCP (Model Context Protocol) server for Apache Kafka, built with Quarkus. Enables AI assistants like Claude, Goose, and Gemini to interact with Kafka clusters and Schema Registry.\n\nhttps://t.co/aqVt81DU3N",
+    "author_id": "33735222",
+    "username": "Igfasouza",
+    "name": "Igor De Souza",
+    "created_at": "2026-05-10T08:28:13.000Z",
+    "conversation_id": "2053391648936058939",
+    "metrics": {
+      "likes": 30,
+      "retweets": 3,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 812,
+      "bookmarks": 15
+    },
+    "urls": [
+      "https://github.com/gAmUssA/mcp-kafka"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "apachekafka"
+    ],
+    "tweet_url": "https://x.com/Igfasouza/status/2053391648936058939"
+  },
+  {
+    "id": "2053360790456127502",
+    "text": "GitHub builds an immune system for AI coding agents running on MCP\n\nGitHub has launched dependency and secret scanning for its Model Context Protocol server to stop security leaks in AI-assisted coding workflows \n\nhttps://t.co/9TFUuy5QyI",
+    "author_id": "332011447",
+    "username": "samuel_wong_",
+    "name": "Samuel Wong",
+    "created_at": "2026-05-10T06:25:36.000Z",
+    "conversation_id": "2053360790456127502",
+    "metrics": {
+      "likes": 15,
+      "retweets": 8,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 992,
+      "bookmarks": 8
+    },
+    "urls": [
+      "https://thenewstack.io/github-mcp-security-scanning/"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/samuel_wong_/status/2053360790456127502"
+  },
+  {
+    "id": "2052392114508681631",
+    "text": "A comprehensive Model Context Protocol (MCP) server that enables AI assistants to control Unreal Engine through the native C++ Automation Bridge plugin. Built with TypeScript...\n\nWould this fit your current agent stack?\n\nhttps://t.co/rmT9y1ZiRT",
+    "author_id": "2842904704",
+    "username": "AIDailyGems",
+    "name": "AIDailyGems",
+    "created_at": "2026-05-07T14:16:26.000Z",
+    "conversation_id": "2052392114508681631",
+    "metrics": {
+      "likes": 2,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 85,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/ChiR24/Unreal_mcp"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AIDailyGems/status/2052392114508681631"
+  },
+  {
+    "id": "2052637436145201607",
+    "text": "Weaviate, a portfolio company of CE Ventures, has released version 1.37 of its cloud-native vector database, introducing a built-in Model Context Protocol (MCP) server that enables AI agents and development tools to interact directly with the database without additional https://t.co/YNFKw6vRYy",
+    "author_id": "619908308",
+    "username": "CrescentEnterp",
+    "name": "Crescent Enterprises",
+    "created_at": "2026-05-08T06:31:15.000Z",
+    "conversation_id": "2052637436145201607",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 89,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/CrescentEnterp/status/2052637436145201607/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/CrescentEnterp/status/2052637436145201607"
+  },
+  {
+    "id": "2052262986392473612",
+    "text": "Open-source MCP server monitoring for Python apps: Pythonic Model Context Protocol servers handle tool calls, session events, module imports, and subprocess activity. BlueRock has released MCP Python Hooks, an open source runtime sensor that gives… https://t.co/n9ACHmqzOe https://t.co/5TZ4eD1tFI",
+    "author_id": "340491651",
+    "username": "shah_sheikh",
+    "name": "Shah Sheikh",
+    "created_at": "2026-05-07T05:43:19.000Z",
+    "conversation_id": "2052262986392473612",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 29,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://www.helpnetsecurity.com/2026/05/07/bluerock-mcp-python-hooks-mcp-server-monitoring/?utm_source=dlvr.it&utm_medium=twitter",
+      "https://x.com/shah_sheikh/status/2052262986392473612/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/shah_sheikh/status/2052262986392473612"
+  },
+  {
+    "id": "2054288790529700277",
+    "text": "@Xurrent, the AI-powered service and operations management platform for corporate IT teams and enterprise MSPs, today launched autonomous AI Agents and an open Model Context Protocol (MCP) server. https://t.co/P9ZHi1YMxe",
+    "author_id": "946018406259707910",
+    "username": "ITOpsTimes",
+    "name": "ITOps Times",
+    "created_at": "2026-05-12T19:53:09.000Z",
+    "conversation_id": "2054288790529700277",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 24,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://buff.ly/4yibS50"
+    ],
+    "mentions": [
+      "Xurrent"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/ITOpsTimes/status/2054288790529700277"
+  },
+  {
+    "id": "2053353990021144665",
+    "text": "New contender worth evaluating. GeneXus 18 MCP server for Claude, Cursor, and AI agents — read, edit, analyze KB objects (transactions, web panels, procedures, SDTs) over the Model Context Protocol.\n\nhttps://t.co/NthKp0Bifh",
+    "author_id": "2842904704",
+    "username": "AIDailyGems",
+    "name": "AIDailyGems",
+    "created_at": "2026-05-10T05:58:35.000Z",
+    "conversation_id": "2053353990021144665",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 31,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/lennix1337/Genexus18MCP"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AIDailyGems/status/2053353990021144665"
+  },
+  {
+    "id": "2053392333459087393",
+    "text": "1/6 Traditional SEO is dead. If your agency isn't natively queryable by LLMs, you are effectively invisible.\nThe new Zero-CAC playbook? Building an MCP server.\nHere is why Model Context Protocol is the new search ranking: 🧵",
+    "author_id": "1965736418010877952",
+    "username": "theGrowther",
+    "name": "theGrowther",
+    "created_at": "2026-05-10T08:30:57.000Z",
+    "conversation_id": "2053392333459087393",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 14,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/theGrowther/status/2053392333459087393"
+  }
+]

@@ -41,9 +41,9 @@ Why:
 Tasks:
 1. Do not duplicate JT's laptop ReelFarm slideshow automation.
 2. API-first measurement: use `memory/app-marketing/post-registry.jsonl` as canonical list of posted items and `scripts/app_marketing_collect_metrics.py` to collect available platform metrics.
-3. Use connector priority: Reddit public metrics first; X API if credentials/tier allow; ReelFarm/TikTok analytics if endpoint/export exists; App Store Connect for Vista after secure API setup; web analytics after provider is identified.
+3. Use connector priority: Reddit public metrics first; X API if credentials/tier allow; ReelFarm/TikTok analytics if endpoint/export exists; App Store Connect for Vista after secure metadata auth plus vendor-number/reporting access; web analytics after a concrete provider/property/log path is mapped.
 4. Manual metrics inbox remains fallback only: append rows to `memory/app-marketing/metrics-inbox.jsonl`, then run `python3 scripts/app_marketing_metrics.py`.
-5. Add one weekly App Marketing Scoreboard cron only after at least one connector produces real Vista/Nash data.
+5. Keep the weekly App Marketing Scoreboard cron measurement-first: if connector status reports blocked products, generate measurement-fix tasks instead of more content volume.
 
 Current done state:
 - Metrics inbox exists.
@@ -52,6 +52,8 @@ Current done state:
 
 Remaining done state:
 - Weekly scoreboard shows real Vista and Nash metrics from JT laptop/ReelFarm/X/Reddit outputs.
+- `memory/app-marketing/app-store-metrics-status.json` reports Vista App Store reporting ready or a precise Apple-side blocker; current known blocker is `APPSTORE_VENDOR_NUMBER` / reporting permissions.
+- `memory/app-marketing/web-analytics-status.json` has at least one concrete source mapped for Vista/Nash/Glow, or precise provider blockers.
 - Performance log rows move from `pending` to actual score labels once metrics are available.
 
 ## Phase 3 — Asset Fixes
@@ -87,7 +89,7 @@ Tasks:
 1. Add Action Arena to the relevant marketing registry only after there is a landing/waitlist page or beta target.
 2. Keep Action Arena primarily in Sports GM/@dynastyjig until launch assets exist.
 3. Add Dynasty Fantasy Football Simulator separately if/when it needs marketing automation.
-4. Update Glow Index from pending to active only after deployment/engine/screenshot/account gates clear.
+4. Glow Index is active for durable discovery planning, but remains crawlability/measurement blocked before scale; fix crawler access and metric source before pSEO expansion or TikTok/ReelFarm volume.
 
 Done state:
 - No product conflation.

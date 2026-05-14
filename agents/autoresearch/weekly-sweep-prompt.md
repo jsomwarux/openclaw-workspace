@@ -14,6 +14,7 @@ Run one bounded self-improvement loop for the highest-value pending/active skill
 ## Target Selection
 Pick exactly ONE target per recurring sweep run.
 Priority order:
+0. Registry/checklist hygiene that would invalidate scoring for a high-value pending/active target (missing target file, missing checklist, >6 questions, or fewer than 4 clear yes/no questions). Patch the checklist/registry first if obvious; otherwise block with a concrete reason.
 1. `pending` or `active` targets that affect live recurring output or revenue-critical work.
 2. Recently created/updated targets with no Last Run.
 3. Oldest Last Run among `active` targets.
@@ -25,9 +26,9 @@ Prefer, when pending/active: mission-control-priority-auditor, sports-gm, opticf
 - Follow `agents/autoresearch/AGENT.md`, including the bootstrap file budget preflight before any mutation.
 - Apply these stricter recurring-sweep limits:
   - Max targets: 1
-  - Max test inputs: 3
-  - Max rounds: 5
-  - Cost cap: $0.50 estimated
+  - Max test inputs: 2
+  - Max rounds: 2
+  - Cost cap: $0.50 enforced by `scripts/autoresearch_cost_guard.py` before the run starts
   - Checklist must have <=6 questions; if >6, trim the checklist first only if obvious, otherwise log BLOCKED.
 - Make only one small mutation per round.
 - Apply validated improvements directly to the target file or cron payload.
@@ -37,8 +38,11 @@ Prefer, when pending/active: mission-control-priority-auditor, sports-gm, opticf
 - No API keys or secrets in logs.
 
 ## Immediate Task
+0. Run deterministic cost guard before selecting/running any target:
+   `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/autoresearch_cost_guard.py --model openai-codex/gpt-5.5 --cap 0.50 --json`
+   If it returns non-zero or `ok:false`, stop with `AUTORESEARCH_BLOCKED: cost cap guard failed` and do not run the sweep.
 1. Select the best target.
-2. Run baseline scoring with 3 realistic test inputs.
+2. Run baseline scoring with 2 realistic test inputs.
 3. If below target, run up to 5 mutation rounds.
 4. Use the exact same test inputs for every round.
 5. Before each mutation, save the exact pre-mutation file text or cron payload.
@@ -52,6 +56,7 @@ Prefer, when pending/active: mission-control-priority-auditor, sports-gm, opticf
    - `[DATE]-[slug]-results.md`
    - `[DATE]-[slug]-changelog.md`
 11. Append one line to `memory/training/training-log.md` with selected slug, baseline, final score, and changed file.
+12. Final verification before returning: run a small file check that confirms all three log files are non-empty, `targets.md` has today's Last Run for the selected slug, `results.tsv` has the new row, and the training log line exists. If verification fails, return `AUTORESEARCH_BLOCKED` with the exact missing artifact.
 
 ## Output Formatting
 Final assistant response should be concise:

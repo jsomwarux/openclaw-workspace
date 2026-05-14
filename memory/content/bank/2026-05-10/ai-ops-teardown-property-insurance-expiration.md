@@ -52,3 +52,10 @@ The important part is not that AI writes an email.
 The important part is that the business knows what is expiring, who owns it, what is blocked, and what needs approval.
 
 That is where AI implementation actually starts.
+
+## CTA Comment / Reply
+If your team still tracks expirations, renewals, COIs, owner reports, or approval-heavy follow-up through spreadsheets and inboxes, the first step is not buying another platform.
+
+It is mapping the workflow and finding the first exception queue worth building.
+
+Diagnostic one-pager: `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`

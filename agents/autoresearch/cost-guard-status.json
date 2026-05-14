@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "model": "openai-codex/gpt-5.5",
+  "cap_usd": 0.5,
+  "estimated_usd": 0.375,
+  "limits": {
+    "max_targets": 1,
+    "max_test_inputs": 2,
+    "max_rounds": 2
+  },
+  "tokens_per_eval": 5000,
+  "status": "PASS"
+}

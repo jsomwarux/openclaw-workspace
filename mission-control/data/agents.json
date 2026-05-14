@@ -47,7 +47,7 @@
         "schedule": "10AM,2PM,6PM,10PM"
       },
       {
-        "id": "eve-health-checkin-003",
+        "id": "6be7f564-5cec-47e7-b67c-9b2fcc3ed8de",
         "name": "Health Check-in",
         "schedule": "9 PM daily"
       },
@@ -456,7 +456,7 @@
     "name": "Skills & API Researcher",
     "emoji": "🔬",
     "role": "Ecosystem Intelligence",
-    "domain": "Continuously discovers and evaluates Claude Code skills, APIs, MCP servers, and tools. X-first sourcing (8 daily queries). Recommends installations, flags new agents, surfaces skill gaps. Pushes 🔴/🟠 findings to Telegram and all discoveries to Mission Control.",
+    "domain": "Continuously discovers and evaluates Claude Code skills, APIs, MCP servers, and tools. X-first sourcing (6 daily queries). Recommends approval-gated evaluations, flags new agents, surfaces skill gaps. Pushes only quality-gated 🔴/🟠 findings to Telegram and Mission Control; never installs plugins or changes config without JT approval.",
     "workspaceRel": ".openclaw/workspace/agents/skills-researcher",
     "github": null,
     "skills": [
@@ -476,7 +476,7 @@
         "schedule": "Sat 7 AM"
       }
     ],
-    "currentTask": "Monitoring OpenClaw ecosystem, MCP servers, Claude APIs, and X for new skills and tools",
+    "currentTask": "Monitoring OpenClaw ecosystem, MCP servers, Claude APIs, and X for new skills/tools; converts only quality-gated findings into actionable Skills tasks.",
     "created": "2026-02-27",
     "capabilities": [
       "runbook-skill"

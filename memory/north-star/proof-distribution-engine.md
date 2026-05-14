@@ -74,5 +74,23 @@ After Altmark PC delivery/workflow acceptance, create a referral-safe proof pack
 - what a similar engagement looks like
 - no confidential data, no overstated metrics
 
+
+## Acquisition Engine Audit Update — 2026-05-13
+
+The strongest proof/distribution move is now the **property insurance expiration AI Ops Teardown** because it is aligned with Altmark/family-office pain without exposing client details. It should be reviewed/postable before more cold outreach volume.
+
+Priority sequence:
+1. Post/review `memory/content/bank/2026-05-10/ai-ops-teardown-property-insurance-expiration.md` on LinkedIn.
+2. Convert `memory/consulting/ai-ops-teardowns/2026-05-10-property-insurance-expiration.md` into a reusable n8n exception-layer template after content review.
+3. Use Altmark acceptance/proof only after PC handoff and permission gates clear.
+4. Package the Property / Family-Office AI Operations Diagnostic as the CTA behind the proof asset.
+
+Guardrail: do not claim Altmark metrics, naming rights, or client acceptance until captured in the proof gate.
+
 ## Integration With Sales
 Consulting outreach should reuse the strongest relevant proof point when available. If no proof fits the prospect, say so and recommend the smallest credible proof asset to create.
+
+
+## 2026-05-13 proof-led acquisition packet
+
+The property insurance expiration teardown now has a send-ready acquisition packet at `memory/consulting/proof-led-acquisition-packet-2026-05-13.md`. Use it to publish the teardown with a diagnostic CTA and route replies into the Property / Family-Office AI Operations Diagnostic. Do not add named Altmark proof or ROI claims until proof gates clear.

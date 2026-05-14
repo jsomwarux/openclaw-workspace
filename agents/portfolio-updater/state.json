@@ -2,7 +2,6 @@
   "addedSlugs": [
     "insurance-service-agent",
     "vista",
-    "glow-index",
     "jt-consulting-pipeline",
     "pm-tenant-service-agent",
     "construction-tracker",
@@ -15,7 +14,6 @@
     "wholesale-inventory-reorder",
     "construction-trades-workflow",
     "adversight-ai",
-    "b2b-account-service-agent",
     "n8n-support-triage",
     "construction-job-tracker",
     "georgetown-city-services-agent",
@@ -29,8 +27,6 @@
     "streeteasy-scraper": 18,
     "nash-satoshi": 32,
     "vista": 9,
-    "glow-index": 13,
-    "b2b-account-service-agent": 27,
     "pm-tenant-service-agent": 34,
     "insurance-service-agent": 34,
     "ai-insurance-claims-triage": 31,
@@ -40,5 +36,7 @@
     "construction-trades-workflow": 8,
     "agentguard": 34
   },
-  "flaggedPending": []
+  "flaggedPending": [],
+  "lastAudit": "2026-05-13",
+  "auditNotes": "Removed permanently excluded b2b-account-service-agent and stale glow-index public-card claim from state; current public site has no matching project cards. Glow Index requires live-state verification before any public card. 2026-05-13 A+ hardening: Glow Index live homepage verified at skincare-rankings.replit.app, but public /llms.txt redirects to Clerk sign-in and live /robots.txt returns Disallow: /, so Glow remains held from portfolio/public proof until Replit deployment exposes AI-search assets correctly."
 }

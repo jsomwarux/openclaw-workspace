@@ -235,6 +235,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 ### All content:
 - [ ] Is this the right format for this day/platform?
+- [ ] Strategic-fit gate: does this make JT look more credible to buyers/hiring managers? Block drafts that foreground a mistake, inflated claim, correction, apology, weak metric, or credibility repair unless JT explicitly asks for that postmortem angle.
 - [ ] Did you check recent/proven references for this exact platform + niche + format before drafting?
 - [ ] Did you avoid cross-platform/niche leakage unless explicitly labeled as adjacent inspiration?
 - [ ] Did you extract the mechanic instead of copying the wording/persona?
@@ -266,7 +267,11 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 ## Proof Points
 
-| 2026-05-10 | jtsomwaru.com AI Operations Systems Overview | Added homepage capability matrix + AI Ops Teardowns section to make consulting range legible fast. | Buyer-facing site positioning, AI ops proof packaging | Complete |
-
-
-- **Vista 1–100 Movie Rating SEO Page (2026-05-07):** Turned measured TikTok/ReelFarm rating-precision insight into a durable jtsomwaru.com SEO page targeting `1–100 movie rating app`; build/lint passed and commit `cd7ab18` pushed. Angle: social performance should feed durable discovery assets, not just more posts.
+| Date | Proof Point | Verified Detail | Demonstrates | Status |
+|---|---|---|---|---|
+| 2026-05-10 | jtsomwaru.com AI Operations Systems Overview | Added homepage capability matrix + AI Ops Teardowns section to make consulting range legible fast; pushed commit `5c163af`. | Buyer-facing site positioning, AI ops proof packaging | Complete |
+| 2026-05-10 | jtsomwaru.com StreetEasy Metric Correction | Tightened homepage claim from “10+ hrs/week” to “4 hrs / 2 weeks” to match project detail data; build/lint passed and pushed commit `a164e4b`. | Proof discipline, conservative client-outcome claims | Complete |
+| 2026-05-07 | Nash Satoshi Methodology SEO Page | Shipped public `/methodology` page with sitemap/robots/llms.txt exposure; GitHub synced at `5473082`; `npm run check` and `npm run build` passed. | AI-search/GEO product trust page | Complete |
+| 2026-05-07 | jtsomwaru.com Vista 1–100 Movie Rating SEO Page | Added SEO page for `1–100 movie rating app`; `npm run build` and `npm run lint` passed; commit `cd7ab18` pushed; production verified in daily note. | Durable app-distribution asset from social insight | Complete |
+| 2026-05-05 | jtsomwaru.com AI Operations Diagnostic Reposition | Production site updated around AI Operations Diagnostic, workflow segments, diagnostic offer, and AI-search metadata; build/lint passed and commit `2d0bb2a` pushed. | Consulting positioning, buyer-facing AI ops offer | Complete |
+| 2026-05-05 | jtsomwaru.com AI Operations Blog Library | Added 6 buyer-intent / AI-search blog routes; build/lint passed and commit `143d839` pushed. | GEO strategy, buyer-intent content architecture | Complete |

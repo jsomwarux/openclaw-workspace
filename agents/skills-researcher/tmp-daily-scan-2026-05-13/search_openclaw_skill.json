@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "openclaw skill github new 2026",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-13",
+  "results": [
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "It&#x27;s <strong>designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search</strong>. It also now exposes a native OpenClaw package catalog for code plugins and bundle plugins.",
+      "age": "1 day ago",
+      "page_age": "2026-05-12T14:50:04",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - LeoYeAI/openclaw-master-skills: 🧠 Curated collection of 1209+ best OpenClaw skills — weekly updated by MyClaw.ai",
+      "url": "https://github.com/LeoYeAI/openclaw-master-skills",
+      "description": "🧠 Curated collection of 1209+ best OpenClaw skills — weekly updated by MyClaw.ai - LeoYeAI/openclaw-master-skills",
+      "age": "2 days ago",
+      "page_age": "2026-05-11T11:15:04",
+      "source": "GitHub"
+    },
+    {
+      "title": "Top 10 OpenClaw Skills to Take Your Productivity Up a Notch | Composio",
+      "url": "https://composio.dev/content/top-openclaw-skills",
+      "description": "Navigate down and copy the command given after verifying Security Scan says Benign for Openclaw (Important) Head to the terminal where open claw is installed and paste it. For me its docker and its the same skill I will install! # installs clawhub npx clawhub@latest install sonoscli · # or you can use github git clone https://github.com/peterskoett/self-improving-agent.git ~/.openclaw/workspace/skills/self-improving-agent",
+      "age": "2 days ago",
+      "page_age": "2026-05-11T15:00:03",
+      "source": "Composio"
+    },
+    {
+      "title": "openclaw/openclaw v2026.5.7 on GitHub",
+      "url": "https://newreleases.io/project/github/openclaw/openclaw/release/v2026.5.7",
+      "description": "Channels CLI: make openclaw channels list channel-only, add --all for bundled and catalog channels, render installed/configured/enabled state, and move model auth/usage details to openclaw models auth list, openclaw status, and openclaw models list. (#78456) Thanks @sliverp. Native commands: honor owner enforcement for native command handlers. (#78864) Thanks @pgondhi987. Active Memory: require admin scope for global memory toggles. (#78863) Thanks @pgondhi987. Gateway/sessions: clear cached skills snapshots during /new and sessions.reset so long-lived channel sessions rebuild the visible skill list after skills change.",
+      "age": "6 days ago",
+      "page_age": "2026-05-07T20:57:43",
+      "source": "New Releases"
+    },
+    {
+      "title": "GitHub - openclaw/openclaw: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
+      "url": "https://github.com/openclaw/openclaw",
+      "description": "Preferred setup: <strong>run openclaw onboard in your terminal</strong>. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on macOS, Linux, and Windows (via ...",
+      "age": "2 days ago",
+      "page_age": "2026-05-11T13:25:04",
+      "source": "GitHub"
+    }
+  ]
+}

@@ -91,3 +91,9 @@ End goal for Altmark:
 4. Work with Yair to package the Altmark implementation as a referral/case-study wedge into other NYC family offices.
 
 Strategic implication: Altmark is not just project revenue. It is a beachhead client for a repeatable family-office automation offer.
+
+## 2026-05-13 Client OS Hardening
+- Added proof-safe acceptance checklist for insurance expiration workflow: `client-os/acceptance-checklist-insurance-expiration.md`.
+- Added reusable IP log: `client-os/reusable-ip-log.md`.
+- Added explicit raw/cleaned/output privacy boundaries under `client-os/`.
+- Current blocker remains unchanged: PC/access path, workflow acceptance, and payment/deposit clarity must be confirmed before proof/referral push or next build.

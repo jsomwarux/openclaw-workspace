@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "Anthropic API new feature tool use 2026",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-13",
+  "results": [
+    {
+      "title": "Anthropic Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic",
+      "description": "The Console includes a prompt improver, prompt generator, and evaluation tools. Claude Opus 4.7, Sonnet 4.6, and Haiku 4.5 are available, with new models shipping on the Claude Platform on AWS as they launch. Both the Claude Platform on AWS and Claude on Amazon Bedrock enable AWS customers to build on Claude models. The difference is in who operates the service and which features are available. The Claude Platform on AWS is a first of its kind offering for Anthropic, giving you all native Claude API features from day one.",
+      "age": "3 days ago",
+      "page_age": "2026-05-11T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Claude Updates by Anthropic - May 2026 - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic/claude",
+      "description": "<strong>The advisor tool</strong> is just another entry in your Messages API request. Your agent can search the web, execute code, and consult Opus in the same loop. <strong>The advisor tool</strong> is available now in beta natively on the Claude Platform. To get started: Add the beta feature header: anthropic-beta: ...",
+      "age": "16 hours ago",
+      "page_age": "2026-05-13T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Claude Code Updates by Anthropic - May 2026 - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic/claude-code",
+      "description": "First seen by Releasebot: May 13, 2026 · <strong>Claude Code</strong> by Anthropic · <strong>Claude Code</strong> improves agent matching, updates the agent color palette, and fixes a range of background service, settings, terminal, loop, and plugin issues for a smoother and more reliable experience.",
+      "age": "16 hours ago",
+      "page_age": "2026-05-13T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Inside Anthropic's 2026 Developer Conference - Every",
+      "url": "https://every.to/chain-of-thought/inside-anthropic-s-2026-developer-conference",
+      "description": "... deployed it to power our API the next day. We’ve incorporated two of the new features Anthropic announced yesterday (<strong>memory and multi-agent orchestration</strong>) and are deploying the third (outcomes) soon.",
+      "age": "3 days ago",
+      "page_age": "2026-05-11T00:00:00",
+      "source": "Every"
+    },
+    {
+      "title": "AI Updates Today (May 2026) – Latest AI Model Releases",
+      "url": "https://llm-stats.com/llm-updates",
+      "description": "Our API Provider Updates section tracks pricing changes, new features, rate limit updates, and API endpoint modifications for all major providers including OpenAI, Anthropic, Google Cloud AI, Azure OpenAI, Together AI, Fireworks, Groq, and more. We also monitor throughput and latency changes. ... Use our Model Comparison tool to see side-by-side benchmark performance, capability differences, pricing changes, and context window improvements between model versions.",
+      "age": "12 hours ago",
+      "page_age": "2026-05-13T03:43:42",
+      "source": "LLM Leaderboard"
+    }
+  ]
+}

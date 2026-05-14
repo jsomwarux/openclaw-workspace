@@ -1,0 +1,183 @@
+[
+  {
+    "id": "2053596997266075721",
+    "text": "The week in OpenAI and Anthropic news (Week 19, 2026)\n\nOpenAI rolled out GPT-5.5 Instant as the new ChatGPT default model with memory sources and ChatGPT for Excel and Google Sheets globally, launched three new realtime voice models in the API (GPT-Realtime-2, https://t.co/r5yOpXvMrP https://t.co/hnJyKg6NYC",
+    "author_id": "338443084",
+    "username": "btibor91",
+    "name": "Tibor Blaho",
+    "created_at": "2026-05-10T22:04:12.000Z",
+    "conversation_id": "2053596997266075721",
+    "metrics": {
+      "likes": 58,
+      "retweets": 6,
+      "replies": 4,
+      "quotes": 1,
+      "impressions": 12201,
+      "bookmarks": 10
+    },
+    "urls": [
+      "https://x.com/btibor91/status/2053596997266075721/video/1",
+      "https://twitter.com/btibor91/status/2053563785181299117"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/btibor91/status/2053596997266075721"
+  },
+  {
+    "id": "2052072468857417968",
+    "text": "OpenAI, Google, Anthropic… meet your new headache.\n\n@AntLingAGI just open-sourced Ling-2.6-1T a trillion-parameter beast built for actual execution, not benchmark flexing.\n\nFast. Token-efficient. Production-ready.\n\nThis release changes the open-model race 👇 https://t.co/LGyeJRLuPK",
+    "author_id": "2034278794325086208",
+    "username": "hey_hamida",
+    "name": "Hamida Rahman",
+    "created_at": "2026-05-06T17:06:16.000Z",
+    "conversation_id": "2052072468857417968",
+    "metrics": {
+      "likes": 31,
+      "retweets": 19,
+      "replies": 10,
+      "quotes": 0,
+      "impressions": 21648,
+      "bookmarks": 23
+    },
+    "urls": [
+      "https://x.com/hey_hamida/status/2052072468857417968/video/1"
+    ],
+    "mentions": [
+      "AntLingAGI"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/hey_hamida/status/2052072468857417968"
+  },
+  {
+    "id": "2054033068634394690",
+    "text": "[TL;DR Daily]\n\nA new kingpin is rising in the AI power game, and it's not OpenAI. Anthropic, supercharged by Google, Amazon, and (surprise) Musk's SpaceX, is fast outgrowing its underdog status. If you think the AI wars are just about model benchmarks, you clearly missed the",
+    "author_id": "1871033860978561024",
+    "username": "mwa_ia",
+    "name": "$MIA",
+    "created_at": "2026-05-12T02:57:00.000Z",
+    "conversation_id": "2054033068634394690",
+    "metrics": {
+      "likes": 3,
+      "retweets": 0,
+      "replies": 2,
+      "quotes": 0,
+      "impressions": 81,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/mwa_ia/status/2054033068634394690"
+  },
+  {
+    "id": "2052713244674920864",
+    "text": "The EU often follows the precautionary principle: don’t deploy new technologies at scale until you understand the risks.\n\nGrok: xAI, USA\nGemini: Google, USA\nClaude: Anthropic USA\nChatGPT: OpenAI, USA\n\nThere isn’t a European model that has reached the same global recognition or https://t.co/iGiyYJGLqi",
+    "author_id": "696515681383219200",
+    "username": "ace_ijeoma",
+    "name": "Arinze Ijeoma",
+    "created_at": "2026-05-08T11:32:29.000Z",
+    "conversation_id": "2052713244674920864",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 119,
+      "bookmarks": 1
+    },
+    "urls": [
+      "https://x.com/ace_ijeoma/status/2052713244674920864/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/ace_ijeoma/status/2052713244674920864"
+  },
+  {
+    "id": "2052739158024831018",
+    "text": "📌 Weekly AI news recap: Anthropic taught agents to learn between sessions, OpenAI halved hallucinations, and Google accidentally revealed its new model.\n\n1) Claude expanded on two fronts\n\nClaude agents now learn between sessions through a feature called dreaming. They review https://t.co/R6CTnusuG1",
+    "author_id": "269923222",
+    "username": "michael_lek",
+    "name": "Michael Lek",
+    "created_at": "2026-05-08T13:15:27.000Z",
+    "conversation_id": "2052739158024831018",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 54,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/michael_lek/status/2052739158024831018/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/michael_lek/status/2052739158024831018"
+  },
+  {
+    "id": "2052698892924269042",
+    "text": "This is huge.\n\nOpenAI is diluting the importance of this update by giving equal attention to the translation capabilities IMHO — that’s not a new capability.\n\nWhat is new is the first Realtime Voice API that uses a reasoning model as the LLM and is still able to respond sub 500 https://t.co/MlN664moU8",
+    "author_id": "6460172",
+    "username": "seanfenlon",
+    "name": "Sean Fenlon",
+    "created_at": "2026-05-08T10:35:28.000Z",
+    "conversation_id": "2052698892924269042",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 2,
+      "quotes": 0,
+      "impressions": 141,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://twitter.com/openai/status/2052438194625593804"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/seanfenlon/status/2052698892924269042"
+  },
+  {
+    "id": "2053953619842740551",
+    "text": "The White House is drafting an FDA-style vetting system for AI models.\n\nBefore companies like OpenAI, Anthropic, or Google release a new model — the government could need to approve it.\n\nHere's why it's complicated. 🧵",
+    "author_id": "2016563182421069824",
+    "username": "Be_wAIry",
+    "name": "Be_wAIry",
+    "created_at": "2026-05-11T21:41:18.000Z",
+    "conversation_id": "2053953619842740551",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 10,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Be_wAIry/status/2053953619842740551"
+  },
+  {
+    "id": "2052343041659175078",
+    "text": "The AI war everyone's obsessing over? It's already decided. Not by who builds the smartest model. By who controls the power grid.\n\nOpenAI, Anthropic, Google—they're all playing checkers while the real game is happening in substations. Texas alone needs 300 new nuclear reactors by",
+    "author_id": "2022959796907855872",
+    "username": "FredRoger0x666",
+    "name": "Fred Roger",
+    "created_at": "2026-05-07T11:01:26.000Z",
+    "conversation_id": "2052343041659175078",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 6,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/FredRoger0x666/status/2052343041659175078"
+  }
+]

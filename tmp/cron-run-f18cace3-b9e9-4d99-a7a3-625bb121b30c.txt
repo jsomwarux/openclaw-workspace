@@ -1,0 +1,22 @@
+Config warnings:
+- plugins.entries.lossless-claw: plugin lossless-claw: duplicate plugin id detected; global plugin will be overridden by global plugin (/Users/jtsomwaru/.openclaw/npm/node_modules/@martian-engineering/lossless-claw/dist/index.js)
+{
+  "entries": [
+    {
+      "ts": 1778697120296,
+      "jobId": "f18cace3-b9e9-4d99-a7a3-625bb121b30c",
+      "action": "finished",
+      "status": "ok",
+      "summary": "Pending Task Check: Read ~/.openclaw/workspace/tasks/pending.jsonl. If any entries have status 'pending': 1. Pick highest-priority task (high>medium>low, then oldest). 2. Update status to 'in_progress'. 3. Execute or spawn sub-agent. 4. Update status to 'done' or 'failed' with result note. 5. Log to today's daily note. If no pending tasks, reply HEARTBEAT_OK. Task description contains all needed context — do not rely on session history.",
+      "runAtMs": 1778697000026,
+      "durationMs": 120246,
+      "nextRunAtMs": 1778711400000,
+      "deliveryStatus": "not-requested"
+    }
+  ],
+  "total": 310,
+  "offset": 0,
+  "limit": 1,
+  "hasMore": true,
+  "nextOffset": 1
+}

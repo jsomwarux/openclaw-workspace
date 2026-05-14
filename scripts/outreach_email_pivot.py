@@ -391,21 +391,39 @@ jtsomwaru.com"""
     return draft
 
 
-def check_mc_task_exists(prospect: dict) -> bool:
-    """Check if an active Email Pivot MC task already exists for this exact prospect.
+def normalize_task_key(value: str) -> str:
+    """Normalize MC titles enough to catch FCM/First Class style variants."""
+    value = value.lower()
+    value = value.replace("fcm real estate", "first class management")
+    value = value.replace("fcmre", "first class management")
+    value = re.sub(r"[^a-z0-9]+", " ", value)
+    return re.sub(r"\s+", " ", value).strip()
 
-    Important: Mission Control has accumulated duplicate Email Pivot tasks when the
-    nightly cron re-created tasks for prospects that already had drafts. Match the
-    full generated title, not just the first company word, and treat all non-closed
-    statuses as active.
+
+def check_mc_task_exists(prospect: dict) -> bool:
+    """Check if an active Email Pivot MC task already exists for this prospect.
+
+    Important: Mission Control previously accumulated duplicate Email Pivot tasks
+    because the nightly cron matched only the exact generated title and ignored
+    title variants. Match canonical/company/contact tokens across all non-closed
+    statuses before creating anything new.
     """
     try:
         tasks = json.loads(urllib.request.urlopen(MC_API).read())["tasks"]
         title = f"Email Pivot: {prospect['canonical']} — {prospect['contact'].split()[0]}"
-        active_statuses = {"todo", "in_progress", "pending", "blocked"}
+        canonical_key = normalize_task_key(prospect["canonical"])
+        contact_first = normalize_task_key(prospect["contact"].split()[0]) if prospect.get("contact") else ""
+        active_statuses = {"todo", "in-progress", "in_progress", "pending", "blocked"}
         for t in tasks:
-            if t.get("title", "").strip() == title and t.get("status", "todo") in active_statuses:
+            if t.get("status", "todo") not in active_statuses:
+                continue
+            task_title = t.get("title", "")
+            if normalize_task_key(task_title) == normalize_task_key(title):
                 return True
+            task_key = normalize_task_key(task_title)
+            if task_title.lower().startswith("email pivot:") and canonical_key and canonical_key in task_key:
+                if not contact_first or contact_first in task_key:
+                    return True
     except Exception:
         pass
     return False
@@ -441,10 +459,11 @@ def create_mc_task(prospect: dict, drive_note: str) -> str:
     urgency = "🔴 OVERDUE" if days > 14 else "🟠 Due"
     desc = f"""{urgency} — M2 sent {prospect['m2_date'].strftime('%Y-%m-%d')} ({days} days ago), no acceptance.
 
-1. Review + edit email draft at: {CLIENTS_DIR / prospect['slug'] / 'email-draft.md'}
-2. Verify email address before sending
-3. Send via email (not LinkedIn — fresh channel)
-4. Reply "sent email pivot to [Company]" so I can update the pipeline.
+First action: review + edit email draft at `{CLIENTS_DIR / prospect['slug'] / 'email-draft.md'}` and verify the email address before sending.
+
+Why it matters: this is a stale cold-outreach recovery lane; it should not outrank warm referrals, paid client acceptance, or proof-led distribution unless JT explicitly selects this prospect/channel again.
+
+Done looks like: email is sent via email (not LinkedIn), JT replies "sent email pivot to [Company]", and the pipeline/outreach status is updated.
 
 {drive_note}"""
 
@@ -452,10 +471,12 @@ def create_mc_task(prospect: dict, drive_note: str) -> str:
         "title": title,
         "description": desc,
         "status": "todo",
-        "priority": "high",
+        "priority": "low",
         "assignee": "jt",
         "project": "Consulting",
         "sortOrder": 40,
+        "slug": prospect["slug"],
+        "pipelineStage": "email-pivot",
     }
 
     try:
@@ -528,28 +549,37 @@ def main():
 
         # Check if email already exists
         existing = (CLIENTS_DIR / slug / "email-draft.md").exists()
-        if existing and mode != "execute":
-            print(f"   ⚠️  email-draft.md already exists — skipping (use --execute to overwrite)")
-            continue
-        elif existing:
-            print(f"   📝 email-draft.md exists — overwriting with new angle")
+        task_exists = check_mc_task_exists(p)
 
-        if check_mc_task_exists(p):
-            print(f"   ⚠️  Email Pivot MC task already exists — skipping")
+        if existing and task_exists:
+            print(f"   ⚠️  email-draft.md and active Email Pivot MC task already exist — skipping")
             continue
+
+        if existing:
+            if mode == "execute":
+                print(f"   ⚠️  email-draft.md already exists and no active MC task was found — preserving draft, creating task only")
+            elif mode == "draft":
+                print(f"   ⚠️  email-draft.md already exists — skipping (use --execute only if MC task is missing)")
+                continue
 
         if mode == "scan":
-            print(f"   → Would generate email + Drive + MC task")
+            if existing and not task_exists:
+                print(f"   → Existing draft found; would create missing MC task only")
+            else:
+                print(f"   → Would generate email + Drive + MC task")
             continue
 
-        # Generate draft
-        print(f"   ✍️  Generating email pivot...")
-        email_draft = draft_email(p)
-
-        # Write to file
+        # Generate draft only when it does not already exist. Existing drafts are preserved to avoid
+        # silently changing JT-reviewed copy during task repair/backfill runs.
         draft_path = CLIENTS_DIR / slug / "email-draft.md"
-        draft_path.write_text(email_draft)
-        print(f"   ✅ email-draft.md written ({len(email_draft)} chars)")
+        if existing:
+            email_draft = draft_path.read_text()
+            print(f"   ↩️  existing email-draft.md reused ({len(email_draft)} chars)")
+        else:
+            print(f"   ✍️  Generating email pivot...")
+            email_draft = draft_email(p)
+            draft_path.write_text(email_draft)
+            print(f"   ✅ email-draft.md written ({len(email_draft)} chars)")
 
         if mode == "execute":
             # Upload to Drive

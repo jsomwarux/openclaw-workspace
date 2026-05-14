@@ -97,5 +97,32 @@ Each week, check:
 - Priority sequence: deliver Altmark cleanly → secure support retainer → ask Yair for introductions using a concise proof/case-study package → adapt the Altmark system into a repeatable family-office automation offer.
 - Do not ask for referrals before the PC handoff/workflow acceptance is strong enough to make Yair look good.
 
+
+## Acquisition Engine Audit Update — 2026-05-13
+
+Current grade: **B+ / A- after patching**. The engine is coherent again, but not A+ until proof-led warm paths produce a live conversation or sent asset.
+
+Priority order for the next acquisition cycle:
+1. **Altmark acceptance/payment/proof gate** — finish PC handoff, capture redacted proof, confirm acceptance/payment, then ask Yair for 2–3 family-office intros.
+2. **Property / Family-Office AI Operations Diagnostic** — package the diagnostic as the primary call-ready offer. Lead with exception visibility, audit trail, and human approval; do not lead with generic AI.
+3. **Proof-led distribution** — review/post the property insurance expiration AI Ops Teardown and build the reusable insurance expiration exception-layer template only after proof/content review.
+4. **Guyana validation** — run only as a 10-conversation warm-intro sprint via family/diaspora/operator contacts. Do not build the mock demo or research 30 prospects until intros confirm pain.
+5. **Cold outreach** — keep as low-priority recovery/channel testing. Email pivots exist for stale M2 prospects, but they should not outrank warm referrals, paid client acceptance, or proof-led distribution.
+
+Patch applied during audit:
+- Created/reused 8 Email Pivot MC tasks for M2-stuck prospects so stale drafts are visible instead of silently parked.
+- Archived 16 stale generic Review + Send tasks that competed with the current warm/proof-led path.
+- Updated `scripts/outreach_email_pivot.py` so new Email Pivot tasks carry `slug` and `pipelineStage=email-pivot`.
+
+A+ gate:
+- One of these must happen: Altmark acceptance/proof captured, Yair/referral ask sent after gate clears, first property/family-office diagnostic call booked, Guyana gets at least 2 qualified warm intros, or the AI Ops Teardown is posted and tied to a next action.
+
 ## Integration With North Star Command Center
 The weekly North Star Command Center should use this file to score consulting and identify the fastest credible path to +$1K/month and +$10K/month.
+
+
+## 2026-05-13 hardening update
+
+Internal controllables are now A-level for the next proof-led acquisition move: `memory/consulting/proof-led-acquisition-packet-2026-05-13.md` packages the property insurance expiration AI Ops Teardown, diagnostic CTA, DM reply, one-pager link, and proof-safe claim rules.
+
+Next unblocked JT action: review/post the AI Ops Teardown and log the posted URL. Yair referral asks remain blocked until Altmark acceptance/payment/proof gates clear. Guyana remains warm-intro validation only.

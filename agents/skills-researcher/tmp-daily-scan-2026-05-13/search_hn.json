@@ -1,0 +1,42 @@
+{
+  "provider": "brave-direct",
+  "query": "site:news.ycombinator.com Claude MCP AI agents tools",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-13",
+  "results": [
+    {
+      "title": "Agents are now 'dreaming' in Claude Managed Agents | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48039860",
+      "description": "Link to sign up to their managed agents platform · This is really helpful for those large system&#x27;s that need the long memory to ensure that you do not have to &quot;reteach&quot; the AI from a base memory or md file",
+      "age": "1 week ago",
+      "page_age": "2026-05-06T18:40:05",
+      "source": "Hacker News"
+    },
+    {
+      "title": "Agents need control flow, not more prompts | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48051562",
+      "description": "We&#x27;ve got a <strong>QA agent that needs to run through, say, 200 markdown files of requirements in a browser session</strong>. Its a cool system that has really helped improve our team&#x27;s efficiency. For the longest time we tried everything to get a prompt like the following working: &quot;Look in this directory ...",
+      "age": "2 days ago",
+      "page_age": "2026-05-11T08:00:34",
+      "source": "Hacker News"
+    },
+    {
+      "title": "Claude.ai is now at a 98.85% uptime. There's been so many frustrations with Clau... | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=47964510",
+      "description": "Claude status: https://status.claude.com/ · I have been really happy with my Codex subscription lately, but feels like these things change every other day. The OpenCode Go subscription for trying out GLM, Kimi, Qwen, Deepseek and friends also looks useful",
+      "age": "3 days ago",
+      "page_age": "2026-05-10T11:05:03",
+      "source": "Hacker News"
+    },
+    {
+      "title": "> but the co-authored by Claude makes it seem that everything was done by AI Lik... | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48018538",
+      "description": "Likely because, in 99% of cases, it was. I doubt anyone would willingly leave the co-author advertisement (because that&#x27;s what it is, an advertisement) on display in all their commits unless they&#x27;ve gone all-in on the fad and are actively proud of the fact that they&#x27;re not writing any code ...",
+      "age": "1 week ago",
+      "page_age": "2026-05-06T13:50:03",
+      "source": "Hacker News"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "entries": [
+    {
+      "ts": 1778684445992,
+      "jobId": "8b968751-6e59-42e5-b2ce-09f57d36176c",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🏈 **Dynasty X Replies Crown**\n\n*Target 1: @SmashAccept* “Top 12 combined 26/27 Running Backs… Jeremiyah Love, Ahmad Hardy, Kewan Lacy…”\n*Link:* https://x.com/SmashAccept/status/2054188472739504216\n*Suggested Reply:* After Love, this tier is mostly role bets. I’d rather buy the cheaper path to touches.\n\n*Target 2: @DynastyDaddyFF* “2026 1.01 or Bhayshul Tuten, 2028 2nd, 2026 1.04?”\n*Link:* https://x.com/DynastyDaddyFF/status/2054202472168616194\n*Suggested Reply:* Give me the 1.01 unless the roster needs two starters more than one difference-maker.\n\n*Target 3: @chu__dog* “2026 Superflex Dynasty Rookie Rankings — 1.01 Jeremiyah Love, 1.02 Fernando Mendoza…”\n*Link:* https://x.com/chu__dog/status/2054145655031886173\n*Suggested Reply:* Mendoza at 1.02 is fine in SF; the tax is passing on elite WR insulation.\n\n*Freshness:* all targets ≤24h old  \n*Account diversity:* 3/3 unique accounts  \n*Approved-list targets:* 2/3  \n*Cached pool used:* no  \n*Repeats avoided:* @DynastyDwarf, @DFF_Dynasty, @DynatyzeFF, @DynastyDadFF, @DLFootball.",
+      "runAtMs": 1778684400027,
+      "durationMs": 45953,
+      "nextRunAtMs": 1778770800000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 76550,
+        "output_tokens": 894,
+        "total_tokens": 76163
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "703acf1a-4509-40bd-aa57-45f9720c3cc2",
+      "sessionKey": "agent:main:dynasty-cron"
+    },
+    {
+      "ts": 1778599079187,
+      "jobId": "8b968751-6e59-42e5-b2ce-09f57d36176c",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🏈 **Dynasty X Replies Crown**\n\n*Target 1: @SmashAccept* “Top 12 combined 26/27 Running Backs… Jeremiyah Love, Ahmad Hardy, Kewan Lacy…”\n*Link:* https://x.com/SmashAccept/status/2054188472739504216\n*Suggested Reply:* After Love, this tier is mostly role bets. I’d rather buy the cheaper path to touches.\n\n*Target 2: @DynastyDaddyFF* “2026 1.01 or Bhayshul Tuten, 2028 2nd, 2026 1.04?”\n*Link:* https://x.com/DynastyDaddyFF/status/2054202472168616194\n*Suggested Reply:* Give me the 1.01 unless the roster needs two starters more than one difference-maker.\n\n*Target 3: @chu__dog* “2026 Superflex Dynasty Rookie Rankings — 1.01 Jeremiyah Love, 1.02 Fernando Mendoza…”\n*Link:* https://x.com/chu__dog/status/2054145655031886173\n*Suggested Reply:* Mendoza at 1.02 is fine in SF; the tax is passing on elite WR insulation.\n\n*Freshness:* all targets ≤24h old  \n*Account diversity:* 3/3 unique accounts  \n*Approved-list targets:* 2/3  \n*Cached pool used:* no  \n*Repeats avoided:* @DynastyDwarf, @DFF_Dynasty, @DynatyzeFF, @DynastyDadFF, @DLFootball.",
+      "runId": "manual:8b968751-6e59-42e5-b2ce-09f57d36176c:1778599010611:15",
+      "runAtMs": 1778599010611,
+      "durationMs": 68573,
+      "nextRunAtMs": 1778684400000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 44311,
+        "output_tokens": 1579,
+        "total_tokens": 72989
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "73d9d5dc-4903-4851-9004-e45687f0bd1a",
+      "sessionKey": "agent:main:dynasty-cron"
+    },
+    {
+      "ts": 1778598021081,
+      "jobId": "8b968751-6e59-42e5-b2ce-09f57d36176c",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🏈 **Dynasty X Replies Crown**\n\n*Target 1: @DynatyzeFF* “10 dynasty buy low targets right now… managers are overreacting…”\n*Link:* https://x.com/DynatyzeFF/status/2049834172819321109\n*Suggested Reply:* Buy lows only work when the manager is selling pain, not when everyone expects the rebound.\n\n*Target 2: @DynastyDadFF* “2027 could be a LEGENDARY Rookie class…”\n*Link:* https://x.com/DynastyDadFF/status/2049475777121362197\n*Suggested Reply:* Future classes look clean until landing spots create role problems. Don’t overpay two years early.\n\n*Target 3: @DLFootball* “Rounds 2 and 3 just shook up the dynasty market… veteran fallout…”\n*Link:* https://x.com/DLFootball/status/2048893290108293295\n*Suggested Reply:* Veteran fallout is mostly window math. Rebuilders sell rebounds; contenders buy usable points.\n\n*Account diversity:* 3/3 unique accounts; approved-list targets: 2/3; repeats avoided: @DynastyDwarf, @DFF_Dynasty, @rotounderworld, @FantasyProsNFL, @KotchFF.\n\nNote: fresh X search is blocked by depleted X API credits, so this used the latest cached viable pool.",
+      "runAtMs": 1778598000044,
+      "durationMs": 21019,
+      "nextRunAtMs": 1778684400000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 57687,
+        "output_tokens": 450,
+        "total_tokens": 57687
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "73d9d5dc-4903-4851-9004-e45687f0bd1a",
+      "sessionKey": "agent:main:dynasty-cron"
+    },
+    {
+      "ts": 1778511611733,
+      "jobId": "8b968751-6e59-42e5-b2ce-09f57d36176c",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🏈 **Dynasty X Replies Crown**\n\n*Target 1: @DynatyzeFF* “10 dynasty buy low targets right now… managers are overreacting…”\n*Link:* https://x.com/DynatyzeFF/status/2049834172819321109\n*Suggested Reply:* Buy lows only work when the manager is selling pain, not when everyone expects the rebound.\n\n*Target 2: @DynastyDadFF* “2027 could be a LEGENDARY Rookie class…”\n*Link:* https://x.com/DynastyDadFF/status/2049475777121362197\n*Suggested Reply:* Future classes look clean until landing spots create role problems. Don’t overpay two years early.\n\n*Target 3: @DLFootball* “Rounds 2 and 3 just shook up the dynasty market… veteran fallout…”\n*Link:* https://x.com/DLFootball/status/2048893290108293295\n*Suggested Reply:* Veteran fallout is mostly window math. Rebuilders sell rebounds; contenders buy usable points.\n\n*Account diversity:* 3/3 unique accounts; approved-list targets: 2/3; repeats avoided: @DynastyDwarf, @DFF_Dynasty, @rotounderworld, @FantasyProsNFL, @KotchFF.\n\nNote: fresh X search is blocked by depleted X API credits, so this used the latest cached viable pool.",
+      "runAtMs": 1778511600044,
+      "durationMs": 11671,
+      "nextRunAtMs": 1778598000000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 57180,
+        "output_tokens": 405,
+        "total_tokens": 57180
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "0d3dd07b-bd4d-4078-90f6-a101ff78eb6f",
+      "sessionKey": "agent:main:dynasty-cron"
+    },
+    {
+      "ts": 1778425211146,
+      "jobId": "8b968751-6e59-42e5-b2ce-09f57d36176c",
+      "action": "finished",
+      "status": "ok",
+      "summary": "🏈 **Dynasty X Replies Crown**\n\n*Target 1: @DynatyzeFF* “10 dynasty buy low targets right now… managers are overreacting…”\n*Link:* https://x.com/DynatyzeFF/status/2049834172819321109\n*Suggested Reply:* Buy lows only work when the manager is selling pain, not when everyone expects the rebound.\n\n*Target 2: @DynastyDadFF* “2027 could be a LEGENDARY Rookie class…”\n*Link:* https://x.com/DynastyDadFF/status/2049475777121362197\n*Suggested Reply:* Future classes look clean until landing spots create role problems. Don’t overpay two years early.\n\n*Target 3: @DLFootball* “Rounds 2 and 3 just shook up the dynasty market… veteran fallout…”\n*Link:* https://x.com/DLFootball/status/2048893290108293295\n*Suggested Reply:* Veteran fallout is mostly window math. Rebuilders sell rebounds; contenders buy usable points.\n\n*Account diversity:* 3/3 unique accounts; approved-list targets: 2/3; repeats avoided: @DynastyDwarf, @DFF_Dynasty, @rotounderworld, @FantasyProsNFL, @KotchFF.\n\nNote: fresh X search is blocked by depleted X API credits, so this used the latest cached viable pool.",
+      "runAtMs": 1778425200041,
+      "durationMs": 11081,
+      "nextRunAtMs": 1778511600000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 58788,
+        "output_tokens": 502,
+        "total_tokens": 58788
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "fallbackUsed": true,
+        "delivered": true
+      },
+      "sessionId": "20318168-579b-477a-b8f1-110f9af5fa71",
+      "sessionKey": "agent:main:dynasty-cron"
+    }
+  ],
+  "total": 24,
+  "offset": 0,
+  "limit": 5,
+  "hasMore": true,
+  "nextOffset": 5
+}

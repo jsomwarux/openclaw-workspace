@@ -6,7 +6,9 @@ You are Stage 2 of a 2-stage passive income pipeline. The Scout surfaced 6 raw i
 The benchmark is @levelsio: PhotoAI ($102k/mo), InteriorAI ($39k/mo), RemoteOK ($36k/mo). Small AI tools and niche sites with one focused purpose, running completely on autopilot, generating compounding income. JT's goal is to build a portfolio like this over time.
 
 ## Run Schedule
-Every Sunday at 7:30 AM ET — after Scout (which runs at 6 AM).
+Every Sunday at 3 PM ET — after signal fetch Saturday 5:30 AM ET and Scout Sunday 1 PM ET.
+
+Handoff requirement: before analysis, verify today's Scout file exists, is non-empty, and has modification time before this Strategist run. If missing, empty, or marked `INCOMPLETE`, create a failure report at `memory/passive-income/YYYY-MM-DD-strategist.md`, alert JT, and stop. Cron status `ok` without a strategist report is a failure.
 
 ---
 
@@ -14,7 +16,7 @@ Every Sunday at 7:30 AM ET — after Scout (which runs at 6 AM).
 
 Read: `~/.openclaw/workspace/memory/passive-income/YYYY-MM-DD-scout.md` (today's date)
 
-If file missing or empty: message JT via Telegram — "⚠️ Passive Income Scout report missing — check logs." Stop.
+If file is missing, empty, stale, or contains `INCOMPLETE`: write `memory/passive-income/YYYY-MM-DD-strategist.md` with failure reason, message JT via Telegram — "⚠️ Passive Income Strategist blocked — Scout report missing/incomplete for YYYY-MM-DD." Stop.
 
 Also read:
 - `~/.openclaw/workspace/agents/passive-income-scout/state.json`
@@ -41,9 +43,19 @@ Extract the idea names already on the board. For each Scout idea:
 
 ## Step 2: Saturation Filter (run first — fail fast)
 
-For EACH idea, run 2 quick web searches:
+For EACH idea, run 2 quick web searches using the local Brave search path, not the managed `web_search` tool with freshness/date filters:
+
+```bash
+set -a; source ~/.config/env/global.env; set +a
+python3 /Users/jtsomwaru/.openclaw/workspace/scripts/web_search.py "[idea keyword] passive income" --count 5 --json
+python3 /Users/jtsomwaru/.openclaw/workspace/scripts/web_search.py "site:reddit.com [idea keyword] passive income" --count 5 --json
+```
+
+Check:
 1. `"[idea keyword]" passive income` — does this appear in top 10 listicles?
 2. `site:reddit.com "[idea keyword]" passive income` — is there a thread with 200+ upvotes already recommending this?
+
+If local Brave search fails or returns sparse results, say that explicitly in the report and lower confidence; do not pretend exhaustive SERP validation.
 
 **If the idea is prominently featured in existing "how to make passive income" content: mark it 🔴 SATURATED and skip deep analysis.** You're looking for ideas that most people haven't thought of yet. Saturated ideas are a waste of JT's build time.
 

@@ -16,6 +16,12 @@ log() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG"
 }
 
+FAILURES=()
+record_failure() {
+  FAILURES+=("$*")
+  log "  ⚠ $*"
+}
+
 log "=== Backup started → $DEST ==="
 
 # Create destination
@@ -81,7 +87,7 @@ log "Capturing daily API cost snapshot..."
 if python3 "$WORKSPACE/scripts/cost-tracker.py" --snapshot >> "$LOG" 2>&1; then
   log "  ✓ Cost snapshot saved to memory/costs/$(date +%Y-%m-%d).json"
 else
-  log "  ⚠ Cost snapshot failed (non-fatal)"
+  record_failure "Cost snapshot failed"
 fi
 
 # ── GitHub push ───────────────────────────────────────────────────────────────
@@ -97,7 +103,7 @@ fi
 if git push origin master >> "$LOG" 2>&1; then
   log "  ✓ Pushed to jsomwarux/openclaw-workspace"
 else
-  log "  ⚠ GitHub push failed (local backup still complete)"
+  record_failure "Workspace GitHub push failed (local backup still complete)"
 fi
 
 # ── GitHub push — jt-consulting-pipeline ─────────────────────────────────────
@@ -113,7 +119,7 @@ fi
 if git push origin master >> "$LOG" 2>&1; then
   log "  ✓ Pushed to jsomwarux/jt-consulting-pipeline"
 else
-  log "  ⚠ Pipeline push failed (non-fatal)"
+  record_failure "jt-consulting-pipeline GitHub push failed"
 fi
 
 # ── GitHub push — n8n-agent ───────────────────────────────────────────────────
@@ -129,7 +135,7 @@ fi
 if git push origin main >> "$LOG" 2>&1; then
   log "  ✓ Pushed to jsomwarux/n8n-agent"
 else
-  log "  ⚠ n8n-agent push failed (non-fatal)"
+  record_failure "n8n-agent GitHub push failed"
 fi
 
 # ── Google Drive OAuth token proactive refresh ────────────────────────────────
@@ -159,13 +165,36 @@ td['token'] = creds.token
 with open(TOKEN_PATH, 'w') as f:
     json.dump(td, f)
 print('Token refreshed OK')
-" >> "$LOG" 2>&1 && log "  ✓ Drive token refreshed" || log "  ⚠ Drive token refresh failed — re-auth may be needed"
+" >> "$LOG" 2>&1 && log "  ✓ Drive token refreshed" || record_failure "Drive token refresh failed — re-auth may be needed"
   else
-    log "  ⚠ Drive token file not found at $TOKEN_PATH"
+    record_failure "Drive token file not found at $TOKEN_PATH"
   fi
+fi
+
+# ── Failure escalation artifact ──────────────────────────────────────────────
+if [ "${#FAILURES[@]}" -gt 0 ]; then
+  ALERT_DIR="$WORKSPACE/reports/backup-alerts"
+  mkdir -p "$ALERT_DIR"
+  ALERT_FILE="$ALERT_DIR/$DATE.md"
+  {
+    echo "# Backup Alert — $DATE"
+    echo
+    echo "Local backup completed at: $DEST"
+    echo
+    echo "## Nonfatal failures requiring follow-up"
+    for failure in "${FAILURES[@]}"; do
+      echo "- $failure"
+    done
+    echo
+    echo "Log: $LOG"
+  } > "$ALERT_FILE"
+  log "  ⚠ Backup completed with ${#FAILURES[@]} nonfatal failure(s); alert written to $ALERT_FILE"
 fi
 
 # ── Summary ───────────────────────────────────────────────────────────────────
 size=$(du -sh "$DEST" 2>/dev/null | cut -f1)
 remaining=$(ls -d "$BACKUP_ROOT"/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] 2>/dev/null | wc -l | tr -d ' ')
 log "=== Backup complete — $size at $DEST (${remaining} backup(s) retained) ==="
+if [ "${#FAILURES[@]}" -gt 0 ]; then
+  exit 2
+fi

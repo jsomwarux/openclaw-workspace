@@ -8,14 +8,16 @@
 
 ## Current Bundle
 ### 2026-05-10 — Property Insurance Expiration Exception Layer
-Status: ready to review/post.
+Status: ready to review/post; not posted as of 2026-05-13 hardening check.
 Recommended first platform: LinkedIn.
 Local draft: `memory/content/bank/2026-05-10/ai-ops-teardown-property-insurance-expiration.md`
 Monday delivery bundle: `memory/consulting/ai-ops-teardowns/monday-delivery-bundle-2026-05-11.md`
 Supporting teardown: `memory/consulting/ai-ops-teardowns/2026-05-10-property-insurance-expiration.md`
-Build tier: Tier 3 candidate.
-Next build: reusable n8n template task is in Mission Control.
-JT action: review LinkedIn draft, edit if desired, post, then send URL back. Mission Control task: j57e5q8chn2q3ygrd1at9s079986ek6q.
+Build tier: Tier 3 candidate, gated.
+Next build: reusable n8n template task is in Mission Control, but should wait for posted-teardown reply/DM signal or explicit JT priority.
+JT action: review LinkedIn draft, edit if desired, post or explicitly defer, then send URL back if posted. Mission Control task: j57e5q8chn2q3ygrd1at9s079986ek6q.
+Posted URL capture: append exactly one JSONL record to `memory/content/posted-log.jsonl` only after a public URL exists. Required fields: `date`, `platform`, `title`, `source`, `url`, `posted: true`, `cta`, `reply_route`.
+Defer capture: if JT defers, update this calendar with reason + next review date; do not mark posted.
 
 ## Monday Morning Delivery Checklist
 - Surface the `monday-delivery-bundle-2026-05-11.md` to JT during the first active morning check-in, not buried in overnight notes.

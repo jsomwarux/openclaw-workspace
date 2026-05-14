@@ -1,6 +1,31 @@
 # Weekly Updates — Altmark Group
 
 
+## Week of 2026-05-13 — Delivery OS Hardening
+
+### Wins
+- Added proof-safe acceptance checklist for the insurance expiration workflow: `acceptance-checklist-insurance-expiration.md`.
+- Added reusable IP log so insurance exception tracking and rent delinquency data-readiness can become templates without leaking private Altmark data.
+- Added raw/cleaned/output folder READMEs with explicit privacy boundaries.
+
+### Misses / Blockers
+- Acceptance/payment status remains unconfirmed in Eve memory.
+- Public proof/referral ask remains blocked until PC/access path, workflow acceptance, and payment/deposit clarity are clean.
+
+### What Changed In The Workflow
+- Delivery now has an explicit acceptance gate: access/use, end-to-end run, logs/audit trail, open issues, support/rollback, payment/deposit status, and redacted proof evidence.
+
+### Metrics Movement
+- Documentation completeness improved; client outcome metrics still wait on accepted workflow evidence.
+
+### Next Week's Plan
+- Use the existing Altmark MC task to lock PC handoff + acceptance/payment clarity.
+- After acceptance, capture redacted proof and only then ask for warm family-office referrals.
+
+### Client Decision / Input Needed
+- Confirm first workflow is accepted/live/useful.
+- Confirm open issues and payment/deposit timing.
+
 ## Week of 2026-05-12
 
 ### Focus

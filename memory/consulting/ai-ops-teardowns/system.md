@@ -97,6 +97,8 @@ Good endings:
 - “The workflow matters more than the model.”
 - “This is where AI implementation actually starts.”
 
+When the post is buyer-facing, add a low-friction diagnostic CTA as a comment/reply or short closer. For property/family-office teardowns, route to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md` and frame it as a workflow diagnostic, not a broad AI brainstorm.
+
 Avoid:
 - “DM me to build this” on every post.
 - Overclaiming savings without evidence.
@@ -133,8 +135,34 @@ Only build a real n8n template when all are true:
 - Inputs can be mocked safely with synthetic data.
 - The workflow demonstrates exception handling, approval, audit log, and failure path.
 - The result can be reused in outreach, portfolio, or client delivery.
+- Either the teardown has been posted and produced a real operator reply/DM signal, or JT explicitly prioritizes the build despite no market signal.
 
-Otherwise, produce content/diagram only.
+Otherwise, produce content/diagram only and keep the Tier 3 build task gated. Do not spend build time because a teardown scored well if distribution/reply signal has not happened yet.
+
+## Review / Post / Defer Workflow
+A teardown is not complete until JT makes one of two explicit decisions:
+
+1. **Post:** JT publishes the draft and sends the URL back.
+   - Append exactly one JSONL entry to `memory/content/posted-log.jsonl` with: `date`, `platform`, `title`, `source`, `url`, `posted: true`, `cta: "family-office-ai-ops-diagnostic"`, and `reply_route` when relevant.
+   - Update the Mission Control review/post task to done only after the URL is captured.
+   - Route any replies/DMs to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md` or the matching diagnostic asset.
+
+2. **Defer:** JT explicitly decides not to post now.
+   - Do not mark posted.
+   - Update the delivery calendar with defer reason and next review date.
+   - Keep or update the Mission Control task with the next concrete action; close it only if a replacement task exists.
+
+No agent may infer posting from intent, draft readiness, or banked content. A public URL is required evidence.
+
+## First-Run Cron Verification
+The weekly cron is configuration-validated until it has run at least once.
+After the first scheduled Sunday run, verify:
+- `openclaw cron runs --id f96cc24f-55e6-4064-a075-b897156a22f2 --limit 1` has a successful entry.
+- Telegram delivery occurred or a saved output path exists.
+- The generated teardown includes diagnostic CTA, proof-safe framing, posted-log instruction, and a Mission Control review/post task.
+- No duplicate review/post or build task was created.
+
+If any check fails, fix the prompt or task contract before the next Sunday run.
 
 ## Output Bundle Checklist
 Each teardown bundle must include:
@@ -144,8 +172,11 @@ Each teardown bundle must include:
 - Recommended first platform.
 - One-line buyer relevance.
 - Build tier decision.
+- Diagnostic CTA or explicit reason no CTA is appropriate.
+- Proof-safe framing note: public/hypothetical/category language, no fake client claims, no private client names, no unverified ROI/hours-saved/client-acceptance claims.
 - If Tier 2/3: pseudo n8n node list or real n8n template task.
 - Posted-log follow-up instruction if JT posts it.
+- Mission Control JT review/post task with exact first action, why it matters, done state, and reply/DM routing.
 
 ## Niche Intelligence Library Input
 Before scoring a teardown, read the relevant `memory/niche-intel/` file if it exists. Use it to identify buyer pain, common workflow, trust issue, content angle, and kill/defer rule. If no niche file exists, create a short one only when the niche is likely to recur.

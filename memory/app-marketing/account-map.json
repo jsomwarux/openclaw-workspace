@@ -47,17 +47,36 @@
     {
       "product_slug": "vista",
       "property_id": null,
-      "status": "needs_ga4_property_id"
+      "status": "needs_ga4_property_id",
+      "provider": "ga4",
+      "notes": "Add property_id only after secure auth/access path exists."
     },
     {
       "product_slug": "nash-satoshi",
       "property_id": null,
-      "status": "needs_ga4_property_id"
+      "status": "needs_ga4_property_id",
+      "provider": "ga4",
+      "notes": "Add property_id only after secure auth/access path exists."
     },
     {
       "product_slug": "glow-index",
       "property_id": null,
-      "status": "pending"
+      "status": "needs_ga4_property_id_or_alternate_web_source",
+      "provider": "ga4",
+      "notes": "Add property_id only after secure auth/access path exists."
     }
-  ]
+  ],
+  "_schema": {
+    "version": "2026-05-13",
+    "template": "memory/app-marketing/web-analytics-mapping-template.md",
+    "accepted_web_mapping_fields": [
+      "property_id",
+      "site_url",
+      "log_path",
+      "vercel_project",
+      "plausible_site_id",
+      "posthog_project_id"
+    ],
+    "credential_rule": "Store credentials only in approved secure env/config surfaces, never in account-map/docs/chat."
+  }
 }

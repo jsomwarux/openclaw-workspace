@@ -56,9 +56,9 @@ Reason: live web app; SEO/backlinks can compound.
 First action: create Nash submission pack emphasizing 4-LLM game-theory ranking and no price-prediction claims.
 
 ### Glow Index
-Status: wait
-Reason: pending/stability gate.
-First action after activation: create skincare-safe submission pack with no medical claims.
+Status: draft-ready / crawlability blocked
+Reason: live app with strong SEO/GEO potential, but discovery/category routes currently return Cloudflare challenges to crawler-style fetches.
+First action: fix/verify crawler access for `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/categories`, and `/categories/serum`; then select safe screenshots and submit first directory listing only after JT approves.
 
 ### Action Arena
 Status: prelaunch
@@ -83,7 +83,7 @@ Reason: separate build lane; needs product artifact/landing page before submissi
 - [2026-05-07] Vista directory pack: `memory/app-marketing/directory-packs-vista.md` — draft-ready, not submitted.
 
 ## Draft Packs Created
-- [2026-05-07] Glow Index directory pack: `memory/app-marketing/directory-packs-glow-index.md` — draft-ready, not submitted. First recommended target: Uneed or Futurepedia after screenshots are selected and JT approves.
+- [2026-05-07] Glow Index directory pack: `memory/app-marketing/directory-packs-glow-index.md` — draft-ready, not submitted. First recommended target: Uneed or Futurepedia after screenshots are selected, crawler access is fixed/verified, and JT approves.
 
 ## Crawlability Issue Log
 - [2026-05-07] Glow Index crawler-style fetches for `/categories`, `/categories/serum`, `/sitemap.xml`, and `/llms.txt` returned Cloudflare "Just a moment" to generic fetch tooling after deployment. JT can see pages in browser, but AI/search crawler access needs verification/fix before relying on GEO impact. Required follow-up: inspect Cloudflare/Replit front door settings, ensure `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/rankings`, `/categories`, and `/categories/serum` are reachable by major AI/search crawlers without JS challenge.

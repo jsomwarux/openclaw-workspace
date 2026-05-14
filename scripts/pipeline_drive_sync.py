@@ -104,7 +104,25 @@ def get_or_create_folder(drive, name, parent_id):
     return f["id"]
 
 
+def find_doc(drive, title, folder_id):
+    """Return an existing non-trashed Google Doc with this exact title in folder."""
+    escaped = title.replace("'", "\\'")
+    q = (
+        f"name='{escaped}' and "
+        "mimeType='application/vnd.google-apps.document' and "
+        f"'{folder_id}' in parents and trashed=false"
+    )
+    res = drive.files().list(q=q, fields="files(id,name)", spaces="drive", pageSize=10).execute()
+    files = res.get("files", [])
+    return files[0] if files else None
+
+
 def create_doc(drive, title, content, folder_id):
+    """Create a Google Doc unless the exact title already exists in the target folder."""
+    existing = find_doc(drive, title, folder_id)
+    if existing:
+        print(f"  ↩️  Existing doc reused: {title}")
+        return f"https://docs.google.com/document/d/{existing['id']}/edit"
     media = MediaInMemoryUpload(content.encode("utf-8"), mimetype="text/plain", resumable=False)
     meta = {
         "name": title,
@@ -138,7 +156,7 @@ def sync_outreach(drive, slug, client_name, client_folder_id):
     linkedin_id = get_or_create_folder(drive, "LinkedIn", outreach_id)
 
     content = outreach_path.read_text()
-    title   = f"{client_name} — Outreach Draft"
+    title   = f"{client_name} — LinkedIn DM (3-touch)"
     url     = create_doc(drive, title, content, linkedin_id)
     print(f"  ✅ Outreach Draft → {url}")
     return url

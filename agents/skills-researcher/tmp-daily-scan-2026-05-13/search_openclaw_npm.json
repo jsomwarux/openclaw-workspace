@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "openclaw npm package new",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-13",
+  "results": [
+    {
+      "title": "openclaw - npm",
+      "url": "https://www.npmjs.com/package/openclaw",
+      "description": "<strong>Multi-channel AI gateway with extensible messaging integrations</strong>. Latest version: 2026.5.7, last published: 5 days ago. Start using openclaw in your project by running `npm i openclaw`. There are 128 other projects in the npm registry using openclaw.",
+      "age": "5 days ago",
+      "page_age": "2026-05-08T06:35:03",
+      "source": "npm"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Dependencies: refresh workspace dependency pins and lockfile, including @openai/codex 0.130.0, acpx 0.7.0, AWS SDK 3.1044.0, OpenTelemetry 0.217.0, typebox 1.1.38, vite 8.0.11, oxfmt 0.48.0, and oxlint 1.63.0, and update the Codex harness model snapshot for the new bundled app-server catalog. Plugins/install: add guarded plugin install overrides so onboarding and repair tests can route specific plugins to registry specs or local npm pack artifacts via environment variables. Tests/Docker: add Codex on-demand install and live plugin-tool dependency E2E lanes for packaged onboarding and npm-pack plugin proof.",
+      "age": "2 days ago",
+      "page_age": "2026-05-11T06:35:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "Patch Notes for OpenClaw",
+      "url": "https://patchbot.io/ai/openclaw",
+      "description": "Published core npm package: openclaw@2026.5.3-1 on the beta dist-tag.",
+      "age": "6 days ago",
+      "page_age": "2026-05-08T00:50:02",
+      "source": "PatchBot"
+    },
+    {
+      "title": "openclaw 2026.5.6 on Node.js NPM",
+      "url": "https://newreleases.io/project/npm/openclaw/release/2026.5.6",
+      "description": "New release <strong>openclaw version 2026.5.6</strong> openclaw 2026.5.6 on Node.js NPM.",
+      "age": "1 week ago",
+      "page_age": "2026-05-07T04:50:02",
+      "source": "New Releases"
+    },
+    {
+      "title": "The Ultimate Guide to OpenClaw NPM Latest Version: Features, Setup, and Alternatives",
+      "url": "https://skywork.ai/skypage/en/openclaw-npm-guide/2052341345668403200",
+      "description": "Step 1: Installation Open your terminal and run the following command to fetch the latest package from the official npm registry: <strong>npm install -g openclaw@latest</strong> Step 2: The Onboarding Wizard Once installed, initialize the setup wizard.",
+      "age": "1 week ago",
+      "page_age": "2026-05-07T05:20:02",
+      "source": "Skypage"
+    }
+  ]
+}

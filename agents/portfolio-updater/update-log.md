@@ -97,3 +97,20 @@
 - Demand reorder: no (lastReorderDate 2026-03-21, within 7 days)
 - Skills grid updated: no
 - Vercel deploy triggered: yes (commit 11b8ceb, auto-deploy on push)
+
+## 2026-05-13 (Portfolio/Proof Audit Housekeeping)
+- Items in queue: audit-only housekeeping, no new public cards added.
+- Auto-approved: none.
+- Flagged to JT: none.
+- Skipped/excluded: b2b-account-service-agent marked `excluded_permanent`; removed from state addedSlugs/demandScoreCache because the public site correctly has no card and AGENT.md permanently bans it.
+- Demand reorder: no.
+- Skills grid updated: no.
+- Vercel deploy triggered: no.
+- Additional state-drift fix: Glow Index removed from `addedSlugs`/demand cache and queue marked `review_needed_public_card_missing`; current public site has no `/work/glow-index` card, so do not treat it as public proof until live-state is verified.
+
+## 2026-05-13 A+ hardening pass
+- Modernized `AGENT.md` to remove direct `claude --dangerously-skip-permissions` instructions; future portfolio site edits must use an OpenClaw background coding sub-agent/coding-agent workflow.
+- Anonymized named Aya proof in public site surfaces pending explicit permission review (`About.tsx`, `public/llms.txt`).
+- Glow Index live homepage returns 200, but live `/llms.txt` redirects to Clerk sign-in and live `robots.txt` returns `Disallow: /`; keep `glow-index` held from public portfolio proof until deployment/auth routing is fixed.
+- Created anonymized proof snippet draft: `memory/proof-assets/2026-05-13-anonymized-ai-ops-proof-snippet.md`.
+- Site validation: `npm run lint` passed; `npm run build` passed.

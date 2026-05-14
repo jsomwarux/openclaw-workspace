@@ -1,0 +1,7 @@
+💰 *API Cost Summary*
+_Anthropic/Claude: covered by OAuth subscription ($0 API charge)_
+Yesterday: *$0.79* (OpenRouter real billing)
+  Balance: $6.27 remaining ⚠️
+Month real API spend: *$10.86* / $50 target ✅
+  [██░░░░░░░░] 22%
+𝕏 API (this week): *$11.02* / $10 target 🚨  (today: $1.075 | month: $17.99)

@@ -72,15 +72,15 @@ Score each unprocessed queue item out of 10:
 
 ### Step 3: Process Approved Items
 
-For each auto-approved or JT-approved item, spawn ONE coding agent to handle the full update:
+For each auto-approved or JT-approved item, spawn ONE OpenClaw background coding sub-agent to handle the full update. Do **not** run `claude`, `claude --print`, or `claude --dangerously-skip-permissions` from the main session or any synchronous exec path; that pattern can freeze the gateway and violates the current AGENTS.md execution policy.
 
-```
-cd ~/projects/jtsomwaru-com && claude --dangerously-skip-permissions "
-[full instructions — see Coding Agent Prompt Template below]
-"
-```
+Use the approved workflow:
+1. Main session reads the queue item and site `CLAUDE.md` / lessons first.
+2. Spawn a background coding agent/sub-agent with the Coding Agent Prompt Template below, scoped to `~/projects/jtsomwaru-com/`.
+3. Require the coding agent to run validation and return commit/build details before state is updated.
+4. Main session updates `state.json` and `update-log.md` only after the sub-agent reports success.
 
-The coding agent must:
+The coding agent/sub-agent must:
 1. Add the new entry to `src/data/projects.ts`
 2. Add a new graphic component to `src/components/project-graphics/index.tsx`
 3. Add the component to the `projectGraphics` mapping in `src/components/Work.tsx`
@@ -168,10 +168,10 @@ Framer Motion entrance animation required. whileHover scale 1.02.
 
 Add [ComponentName]Graphic to the projectGraphics mapping in src/components/Work.tsx.
 
-Run: npm run build
-Fix all errors. Then: git add -A && git commit -m "feat: add [slug] to portfolio" && git push origin main
+Run: npm run lint and npm run build.
+Fix all errors. Then: git add -A && git commit -m "feat: add [slug] to portfolio" && git push origin main.
 
-When done: openclaw system event --text "Done: added [title] to jtsomwaru.com portfolio. Vercel deploy triggered." --mode now
+When done, return a concise completion report to the requester with: files changed, lint/build status, commit SHA, and whether Vercel deploy should have triggered. Do not send external messages directly unless the main session explicitly instructs it.
 ```
 
 ---

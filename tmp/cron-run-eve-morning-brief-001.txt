@@ -1,0 +1,54 @@
+Config warnings:
+- plugins.entries.lossless-claw: plugin lossless-claw: duplicate plugin id detected; global plugin will be overridden by global plugin (/Users/jtsomwaru/.openclaw/npm/node_modules/@martian-engineering/lossless-claw/dist/index.js)
+{
+  "entries": [
+    {
+      "ts": 1778674099889,
+      "jobId": "eve-morning-brief-001",
+      "action": "finished",
+      "status": "ok",
+      "summary": "Morning Brief sent to Telegram.",
+      "runId": "manual:eve-morning-brief-001:1778673869838:20",
+      "runAtMs": 1778673869838,
+      "durationMs": 230050,
+      "nextRunAtMs": 1778758200000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 63114,
+        "output_tokens": 4510,
+        "total_tokens": 60426
+      },
+      "delivered": true,
+      "deliveryStatus": "delivered",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "messageToolSentTo": [
+          {
+            "channel": "telegram",
+            "to": "6608544825"
+          }
+        ],
+        "fallbackUsed": false,
+        "delivered": true
+      },
+      "sessionId": "accb8b07-b416-4eeb-88bd-5af5c9b5a7d7",
+      "sessionKey": "agent:main:cron:eve-morning-brief-001:run:accb8b07-b416-4eeb-88bd-5af5c9b5a7d7"
+    }
+  ],
+  "total": 74,
+  "offset": 0,
+  "limit": 1,
+  "hasMore": true,
+  "nextOffset": 1
+}

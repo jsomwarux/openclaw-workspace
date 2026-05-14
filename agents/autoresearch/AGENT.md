@@ -30,7 +30,8 @@ For on-demand: match slug to row.
 ## Step 1: Load skill + checklist
 Read the skill/agent file at the path in the targets.md row.
 Read the checklist at the checklist path.
-Confirm checklist has ≤ 6 questions. If >6: halt and alert JT — checklist needs trimming before loop runs.
+Confirm checklist has ≤ 6 binary yes/no questions, preferably numbered `1.` through `6.`. If >6: halt and alert JT — checklist needs trimming before loop runs.
+If the checklist has fewer than 4 detectable yes/no questions, or the questions are multi-part enough that scoring would be ambiguous, patch the checklist first (only if the intent is obvious), log the checklist fix, and then continue. Do not run against a vague checklist.
 
 ## Step 2: Generate test inputs
 Create 3–5 test inputs appropriate for the skill. For outreach skills: use realistic prospect profiles (niche, company name, contact name, one signal). For content skills: use realistic post prompts ("Write a Thursday LinkedIn post about Agentforce routing logic").
@@ -94,6 +95,8 @@ If the mutated target crashes or cannot be evaluated: log `crash`, revert exact 
 
 ## Step 5: Apply + Save outputs
 
+**Output finality gate:** before finishing, verify the run produced non-empty inputs, changelog, results summary, targets.md update, results.tsv row, and training-log line. If any required artifact is missing or empty, mark the run `crash`, restore target mutations, and create a concrete blocker note instead of returning `AUTORESEARCH_OK`.
+
 **Apply the fix immediately — do not create an MC task.**
 If score improved from baseline, the fix is validated. Apply it now:
 
@@ -130,6 +133,8 @@ Update the row for this slug:
 - Status: `stable` (if 90%+ hit) or `active` (if max rounds hit, still improving)
 - Last Score: final score
 - Last Run: today's date
+
+After updating, re-read the row and assert it contains today's date and final score. Then verify `results.tsv` has exactly one new row for this slug/date/run id.
 
 Also append one row to `agents/autoresearch/results.tsv`:
 ```

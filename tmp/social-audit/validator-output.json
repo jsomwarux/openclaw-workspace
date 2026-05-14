@@ -1,0 +1,55 @@
+{
+  "ok": false,
+  "summary": {
+    "pass": 5,
+    "warn": 3,
+    "fail": 1
+  },
+  "checks": [
+    {
+      "name": "x_reply_targets_latest",
+      "status": "pass",
+      "detail": "reply-targets-2026-05-13.md; 5 direct X links; 16.2h old"
+    },
+    {
+      "name": "x_reply_targets_link_hygiene",
+      "status": "warn",
+      "detail": "recent files missing direct links: reply-targets-2026-04-03.md, reply-targets-2026-04-10.md, reply-targets-2026-04-13.md, reply-targets-2026-04-15.md, reply-targets-2026-04-29.md, reply-targets-2026-05-01.md, reply-targets-2026-05-04.md, reply-targets-2026-05-06.md"
+    },
+    {
+      "name": "dynasty_reply_ledger",
+      "status": "warn",
+      "detail": "ledger is valid but thin: 6 rows; dates=['2026-05-13']; cannot enforce 14-day history yet"
+    },
+    {
+      "name": "reddit_draft_log",
+      "status": "warn",
+      "detail": "8 entries; latest dates=['2026-05-11', '2026-05-14']; anti-repeat history is still shallow"
+    },
+    {
+      "name": "dynasty_recent_repeat_pack",
+      "status": "fail",
+      "detail": "latest two runs used identical X target URLs"
+    },
+    {
+      "name": "cron_dynasty-replies-gen",
+      "status": "pass",
+      "detail": "enabled; last=ok; delivery=delivered"
+    },
+    {
+      "name": "cron_reddit-daily-gen",
+      "status": "pass",
+      "detail": "enabled; last=ok; delivery=delivered"
+    },
+    {
+      "name": "cron_reddit-karma-daily-reminder",
+      "status": "pass",
+      "detail": "enabled; last=ok; delivery=not-requested"
+    },
+    {
+      "name": "cron_Viral Post Swipe File \u2014 X Research",
+      "status": "pass",
+      "detail": "enabled; last=ok; delivery=not-requested"
+    }
+  ]
+}

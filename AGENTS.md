@@ -81,10 +81,13 @@ Never add to site mid-session without coding agent build + `npm run build` + git
 When notable work completes: evaluate against `memory/content/post-detection-rubric.md`. Pass → generate X + LinkedIn post, write to `memory/content/bank/[MONDAY-DATE]/auto-[slug].md`, upload both to Drive, push both to Notion calendar. Full procedure: `docs/agents/post-detection-rules.md`
 
 ## Proof Points Auto-Update Rule
-Anything shipped/done/live → update `memory/content-voice.md` Proof Points immediately (same turn). Add to Builds table. Also add to Content-Ready Angles if post hook exists. Skip internal-only builds.
+Anything shipped/done/live → update `memory/content-voice.md` Proof Points table immediately (same turn) from verified evidence only. Then run `scripts/memory_recap_proof_guard.py --date $(date +%F) --json`. Full rules: `docs/agents/content-rules.md`.
 
 ## Recent Builds Auto-Update Rule (mandatory — same turn as build completes)
 Append to `memory/content/recent-builds.md` in the same turn. Required fields: Build Name + date | What (1 sentence) | For (client/internal) | Outcome (specific metric) | Demonstrates (skill) | Content angle (post hook) | Status: complete. Skip: config changes, hotfixes with no outcome, cron tweaks.
+
+## Proof Log Guard
+Substantive deliverables/site or app ships/client work/cron or agent builds → run `scripts/log-proof.py` with files affected, then `scripts/memory_recap_proof_guard.py --date $(date +%F) --json` before marking done.
 
 ## Technical Angles Auto-Update Rule
 `memory/content/technical-angles.md` = source bank for technical X posts. Append when: non-obvious problem solved, new agent/cron pattern established, "learned this the hard way" moment, or system design decision made that practitioners would find useful. Format: `- **[Pattern name]:** [2-3 sentences, specific enough to apply immediately.]` Do not add: speculation, generic tips, or anything from docs (must be from operational experience).
@@ -98,43 +101,20 @@ New cron/agent prompts must have all 4 before deploying: (1) Task Context — ro
 ## Task Descriptions Must Be Actionable
 Every MC task must include: (1) specific first action (URL, command, file path), (2) why it matters, (3) what done looks like. No task that just restates the title. Can't write a concrete first action → flag to JT, don't create it yet.
 
-## Task Board Rules
-> Full spec: `docs/agents/task-board-rules.md`
-## Workflow Rules
-> Full spec: `docs/agents/workflow-protocols.md`
-
-## Verification (before marking done)
-> Full spec: `docs/agents/operational-rules.md`
-
 ## Quality Rules
 - Non-trivial changes: ask "is there a more elegant way?" Fix hacky. Skip for obvious fixes.
 - Root causes only. No temp fixes. Touch only what's necessary. Bug = fix it from logs/errors/tests.
 - Non-obvious reusable workflow → save template in skills/ with README, reference in TOOLS.md.
 - Append one-line task summary to memory/weekly-recaps/current-week.md. Archive every Monday.
 
-## Clarify Before Executing
-> Full spec: `docs/agents/operational-rules.md`
-
 ## Instruction Specificity
 - Vague request + high-stakes action → ask one clarifying question before proceeding
 - Vague request + low-stakes action → proceed with most reasonable interpretation, state what you did
 - Never ask more than one clarifying question per message
 
-## Claude-Warden Setup Rule
-> Full spec: `docs/agents/operational-rules.md`
-
 ## CLAUDE.md Maintenance Rule (mandatory)
 Update CLAUDE.md files immediately (same session) when: new tool/skill/plugin installed, project status changes, strategy/pricing decision made, new agent/cron built, any hard constraint decided. Don't wait for JT to notice drift.
 Files: `~/.claude/CLAUDE.md` (global) | `~/projects/jtsomwaru-com/CLAUDE.md` | `~/projects/agentforce-agent/CLAUDE.md` | any active project-level CLAUDE.md.
-
-## Notion Calendar Drive Link Rule (mandatory)
-> Full spec: `docs/agents/content-rules.md`
-
-## Weekly Seeds Handler (mandatory)
-> Full spec: `docs/agents/content-rules.md`
-
-## "Posted" Reply Handler (mandatory)
-> Full spec: `docs/agents/content-rules.md`
 
 ## Outreach Send Confirmation Handler (mandatory — SAME TURN)
 When JT confirms sending outreach (any variant of "sent", "done", "sent it", "just sent"), this is an outreach send confirmation — update status in the SAME TURN, not later.
@@ -161,14 +141,8 @@ When JT confirms sending outreach (any variant of "sent", "done", "sent it", "ju
 
 **This rule overrides normal priority.** Outreach send confirmations are same-turn actions. Never say "I'll update that now" — update and confirm in the same reply.
 
-## Outreach Status Tracking Rule (mandatory)
-> Full spec: `docs/agents/outreach-rules.md`
-
 ## Proactive Task Closure Rule
 When any tool call, check, or verification confirms that something is already done (version installed, feature live, task complete, URL fixed, etc.) -- mark the corresponding Mission Control task as done immediately in the same turn. Do not wait for JT to point it out. "I confirmed X is done" without closing the task is incomplete work.
-
-## Validated Fix = Apply Immediately Rule
-> Full spec: `docs/agents/operational-rules.md`
 
 ## Niche Intel Propagation Rule
 🟠+ signals in `niche-monitor-latest.md` that change pitch angle or ICP criteria MUST update `documents/ICPs.md` and `skills/cold-email/SKILL.md` before next outreach batch. Surfacing in morning brief ≠ handled. Overnight agent runs this check every night (Step 1).
@@ -178,9 +152,6 @@ Anything evaluated and deferred ("not right now") → add to `memory/future-sign
 
 ## Tool/Plugin/Integration Evaluation Rule
 New tool/plugin surfaces: Eve evaluates it independently. NOT useful → skip silently. Worth adding → create MC task with recommendation, mention once. Never ask JT "should I add this?" -- Eve decides first.
-
-## Automatic Skill Detection
-> Full spec: `docs/agents/operational-rules.md`
 
 ## Skill Quality Rule
 Every skill delivers final output directly. Before shipping: "Does this produce the final output, or something that enables it?" If the latter — cut the intermediate step.
@@ -237,11 +208,11 @@ Rule: if you think you need to "reconstruct" or "recreate" one of these files, S
 4. **If an API key must be referenced in notes/docs:** use `[REDACTED]` or `YOUR_KEY_HERE` — never the actual key.
 
 ## Model Routing
-- groq/llama-3.3-70b-versatile: heartbeats, simple crons, notification sends
-- anthropic/claude-sonnet-4-6: default — all JT convo, analysis, complex crons
-- anthropic/claude-opus-4-6: JT says "go premium" only. Never self-escalate.
-- openrouter/google/gemini-2.5-pro: large document analysis only (>100K tokens) — RAG-as-a-Service ingestion, building codes, lease libraries, product catalogs. Flat $1.25/M input regardless of context size. Do NOT use for general tasks (no caching = loses to Sonnet under 100K).
-- Anthropic → direct (prompt caching). All others → openrouter/ prefix.
+- Cheap/simple: Groq 70B or Gemini Flash-Lite for heartbeats/simple crons/notifications.
+- Default quality: Sonnet 4.6 for JT conversation, analysis, complex crons, job apps, and dynamic debugging.
+- Premium: Opus 4.6 only when JT says “go premium.” Never self-escalate.
+- Large docs >100K tokens: Gemini 2.5 Pro via OpenRouter. Avoid for general tasks.
+- Anthropic direct preferred for caching; other providers usually need `openrouter/` prefix.
 
 ## 🚨 Cron Safety Rules
 - NEVER `deleteAfterRun: true` — creates scheduler loops. Notify post-restart via direct message instead.
@@ -296,8 +267,7 @@ Check `skills/` for existing SKILL.md before any recurring task. Key skills: job
 ## Content Generation Rule (X posts, threads, LinkedIn)
 > Full spec: `docs/agents/content-rules.md` · Voice ref: `memory/content-voice.md` · Wednesday LinkedIn: `skills/wednesday-linkedin/SKILL.md`
 
-Before drafting ANY post or content for JT: read `memory/content-voice.md` + run the audit checklist at the bottom of that file.
-Key rules (enforced always — no exceptions): start with the point, never preamble | "you/your" >= 5x "I/my" | standalone posts 6-15 words | no em dashes, no exclamation points, no "Here's the thing:" | threads max 5 tweets.
+Before drafting ANY post/content: read `memory/content-voice.md` + run its audit checklist. Core rules: start with the point | "you/your" >= 5x "I/my" | X singles 6-15 words | no em dashes/exclamation points/"Here's the thing" | threads max 5 tweets.
 
 ## Lessons Auto-Write Rule (mandatory)
 Whenever a non-obvious problem is solved, a silent failure mode is discovered, or a pattern is confirmed through operational experience: write the lesson immediately in the same turn. Do not wait for JT to ask.

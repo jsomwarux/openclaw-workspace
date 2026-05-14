@@ -1,12 +1,394 @@
-{"date": "2026-05-11", "subreddit": "r/defi", "type": "post", "title_or_look_for": "Is the \"Dopamine Era\" of DeFi finally dead in favor of RWA and Lindy durability?", "first_120_chars": "It feels like the era of yield farming and high-inflation token incentives has finally peaked and started to unwind. We’r", "core_angle": "Shift from high-inflation incentives to RWA/Lindy durability", "body_hash": "e3b4fac59d1a8c2d"}
-{"date": "2026-05-11", "subreddit": "r/CryptoMarkets", "type": "backup", "title_or_look_for": "How much do you actually trust the \"Lindy Effect\" when picking portfolio anchors?", "first_120_chars": "We often treat protocols that have survived five years as permanent fixtures, but the current market shift (RWA integrat", "core_angle": "Lindy effect reliability vs market shifts", "body_hash": "f4c5ebd60e2b9d3e"}
-{"date": "2026-05-11", "subreddit": "r/movies", "type": "comment", "title_or_look_for": "Michael Jackson biopic \"Michael\" / 2026 theatrical schedules", "first_120_chars": "I’m genuinely curious to see how a theatrical biopic scales Michael Jackson’s career relative to the documentary era we’", "core_angle": "Biopic performance vs historical accuracy in Michael 2026", "body_hash": "g5d6fce71f3c0d4f"}
-{"date": "2026-05-11", "subreddit": "r/Fantasy_Football", "type": "comment", "title_or_look_for": "keeper decision / late-round stash thread", "first_120_chars": "For late stashes, I’ve found it’s better to ignore the “consensus sleeper” lists and look at the path to touches if the ", "core_angle": "Path to touches vs talent for late stashes", "body_hash": "h6e7gdf82g4d1e5a"}
-{"date": "2026-05-11", "subreddit": "r/defi", "type": "post", "title_or_look_for": "Are RWAs changing DeFi risk, or just changing what we call collateral?", "core_angle": "Fresh DeFi/RWA debate framed around risk migration and due diligence, not Lindy/stakeholder durability", "first_120_chars": "A lot of the current DeFi discussion seems to treat RWAs as the more mature, boring direction for the space: cleaner yie", "body_hash": "169a3d36c818d83e"}
-{"date": "2026-05-11", "subreddit": "r/CryptoTechnology", "type": "backup", "title_or_look_for": "What is the cleanest architecture for tokenized real-world assets on-chain?", "core_angle": "Technical RWA architecture: off-chain truth, custody, oracle, redemption synchronization", "first_120_chars": "The RWA conversation is usually framed as market narrative, but the architecture seems more interesting than the hype.\n\n", "body_hash": "698a60f8bfb1dcfe"}
-{"date": "2026-05-11", "subreddit": "r/Letterboxd", "type": "comment", "title_or_look_for": "A 'best films of 2026 so far' thread or a recent watches thread where people are comparing early-year favorites", "core_angle": "Community-native Letterboxd observation about early-year favorites before consensus hardens", "first_120_chars": "I like these threads most when people include the movie that surprised them, not just the one they think is objectively ", "body_hash": "c9495ee56f2b5d81"}
-{"date": "2026-05-11", "subreddit": "r/Fantasy_Football", "type": "comment", "title_or_look_for": "A keeper or trade thread asking whether to keep a veteran RB/WR or move to a rookie/younger bench player", "core_angle": "Concrete keeper advice: clear role sentence and midseason starter path, avoiding roster-window/calculator framing", "first_120_chars": "I’d lean toward the player whose role is easiest to explain in one sentence. If the veteran still has a locked-in weekly", "body_hash": "8be6a011150d92c2"}
-{"date": "2026-05-12", "subreddit": "r/defi", "type": "post", "title_or_look_for": "Is \"Shared Security\" actually making the ecosystem more fragile?", "first_120_chars": "The transition of Ethereum into a modular security hub is usually framed as a massive win for capital efficiency, but I\u2019m", "core_angle": "Restaking concentration risk and hidden correlations in modular security", "body_hash": "a1b2c3d4e5f6g7h8"}
-{"date": "2026-05-12", "subreddit": "r/CryptoMarkets", "type": "backup", "title_or_look_for": "Has the \"Moon\" culture fundamentally shifted to a \"Real Yield\" culture?", "first_120_chars": "Looking at the data from the last few months, it seems like the era of holding coins purely for potential 100x gains is l", "core_angle": "Shift from speculative holding to sustainable revenue sharing models", "body_hash": "b2c3d4e5f6g7h8i9"}
-{"date": "2026-05-12", "subreddit": "r/movies", "type": "comment", "title_or_look_for": "A thread about \"movies that felt like a fever dream\" or \"surrealist films that actually make sense.\"", "first_120_chars": "I finally rewatched 'The Lighthouse' last night and it\u2019s incredible how much of the \"fever dream\" feeling comes from the s", "core_angle": "Sensory sound design elements in surrealist thrillers", "body_hash": "c3d4e5f6g7h8i9j0"}
-{"date": "2026-05-12", "subreddit": "r/Fantasy_Football", "type": "comment", "title_or_look_for": "A trade advice or keeper thread involving a high-upside rookie vs. a steady veteran.", "first_120_chars": "I'd take the shot on the rookie here. In a keeper/dynasty-adjacent format, you aren't just betting on the talent, you're b", "core_angle": "Rookie asset liquidity and value appreciation vs veteran floor", "body_hash": "d4e5f6g7h8i9j0k1"}
+[
+  {
+    "date": "2026-05-11",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "Is the \"Dopamine Era\" of DeFi finally dead in favor of RWA and Lindy durability?",
+    "first_120_chars": "It feels like the era of yield farming and high-inflation token incentives has finally peaked and started to unwind. We’r",
+    "core_angle": "Shift from high-inflation incentives to RWA/Lindy durability",
+    "body_hash": "e3b4fac59d1a8c2d"
+  },
+  {
+    "date": "2026-05-11",
+    "subreddit": "r/CryptoMarkets",
+    "type": "backup",
+    "title_or_look_for": "How much do you actually trust the \"Lindy Effect\" when picking portfolio anchors?",
+    "first_120_chars": "We often treat protocols that have survived five years as permanent fixtures, but the current market shift (RWA integrat",
+    "core_angle": "Lindy effect reliability vs market shifts",
+    "body_hash": "f4c5ebd60e2b9d3e"
+  },
+  {
+    "date": "2026-05-11",
+    "subreddit": "r/movies",
+    "type": "comment",
+    "title_or_look_for": "Michael Jackson biopic \"Michael\" / 2026 theatrical schedules",
+    "first_120_chars": "I’m genuinely curious to see how a theatrical biopic scales Michael Jackson’s career relative to the documentary era we’",
+    "core_angle": "Biopic performance vs historical accuracy in Michael 2026",
+    "body_hash": "g5d6fce71f3c0d4f"
+  },
+  {
+    "date": "2026-05-11",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "keeper decision / late-round stash thread",
+    "first_120_chars": "For late stashes, I’ve found it’s better to ignore the “consensus sleeper” lists and look at the path to touches if the ",
+    "core_angle": "Path to touches vs talent for late stashes",
+    "body_hash": "h6e7gdf82g4d1e5a"
+  },
+  {
+    "date": "2026-05-14",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "The \"Exit Liquidity\" Problem: How do we fix the incentive gap between early LPs and long-term token holders?",
+    "first_120_chars": "We’ve seen this cycle repeat: a protocol launches with aggressive incentives, LPs farm the rewards, and then rotate to t",
+    "core_angle": "LP vs Token Holder incentive gap / x402 audit trail tie-in",
+    "body_hash": "f5d070b4c718e2a1"
+  },
+  {
+    "date": "2026-05-14",
+    "subreddit": "r/CryptoMarkets",
+    "type": "backup",
+    "title_or_look_for": "What is the most 'honest' metric you use to distinguish between actual protocol usage and wash-traded volume?",
+    "first_120_chars": "In a market increasingly dominated by organic-looking but automated wash trading, I'm curious what filters people are us",
+    "core_angle": "Protocol usage metrics / automation detection",
+    "body_hash": "a84c2e17f0b9d3e2"
+  },
+  {
+    "date": "2026-05-14",
+    "subreddit": "r/MovieSuggestions",
+    "type": "comment",
+    "title_or_look_for": "A thread asking for 'gripping thrillers that don't rely on jump scares'",
+    "first_120_chars": "If you want pure tension without the cheap scares, 'Green Room' is one of the tightest watches of the last decade. It f",
+    "core_angle": "Atmospheric tension vs jump scares",
+    "body_hash": "e1f2g3h4i5j6k7l8"
+  },
+  {
+    "date": "2026-05-14",
+    "subreddit": "r/fantasyfootballadvice",
+    "type": "comment",
+    "title_or_look_for": "A post about post-draft rookie landing spots or draft capital 'overtakes'",
+    "first_120_chars": "I'd lean toward the draft capital here. Landing spot is great for a Year 1 spike, but the team investment (especially h",
+    "core_angle": "Draft capital vs landing spot reliability",
+    "body_hash": "m9n0o1p2q3r4s5t6"
+  },
+  {
+    "date": "2026-04-27",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "Do DeFi protocols overvalue attention and undervalue incentive alignment?",
+    "first_120_chars": "Attention is probably the easiest crypto signal to fake. A protocol can have loud social growth, rising mentions, influe",
+    "core_angle": "Do DeFi protocols overvalue attention and undervalue incentive alignment?",
+    "body_hash": "7d169b197afd90fc",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-04-27",
+    "subreddit": "r/Fantasy_Football",
+    "type": "post",
+    "title_or_look_for": "Trade calculators are sentiment tools, not truth",
+    "first_120_chars": "One thing that helps in keeper/dynasty-style leagues: Stop treating trade calculators as “fair value.” They are better v",
+    "core_angle": "Trade calculators are sentiment tools, not truth",
+    "body_hash": "5bf25312a63896fb",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-04-28",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "Protocol durability is mostly an incentive-alignment problem",
+    "first_120_chars": "A DeFi protocol can look healthy on the surface and still be structurally fragile. Volume can be rented. TVL can chase e",
+    "core_angle": "Protocol durability is mostly an incentive-alignment problem",
+    "body_hash": "1c9c3d3b68c6e8bc",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-04-28",
+    "subreddit": "r/Fantasy_Football",
+    "type": "post",
+    "title_or_look_for": "Rank gaps are not buy/sell calls. They are research alarms.",
+    "first_120_chars": "One way to avoid bad dynasty/keeper trades: Do not treat price disagreement across sources as an automatic edge. KTC, Fa",
+    "core_angle": "Rank gaps are not buy/sell calls. They are research alarms.",
+    "body_hash": "775573bffce73272",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-04-29",
+    "subreddit": "r/CryptoMarkets",
+    "type": "post",
+    "title_or_look_for": "Attention is the weakest crypto signal people overfit",
+    "first_120_chars": "A lot of crypto analysis treats attention like signal. High mentions. Rising volume. Influencer threads. Discord activit",
+    "core_angle": "Attention is the weakest crypto signal people overfit",
+    "body_hash": "506f1a037f4b321d",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-04-29",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d treat this less like “who is ranked higher?” and more like a roster-window question.",
+    "first_120_chars": "I’d treat this less like “who is ranked higher?” and more like a roster-window question. For keeper/dynasty-style league",
+    "core_angle": "**Body:** I’d treat this less like “who is ranked higher?” and more like a roster-window question.",
+    "body_hash": "b3f3fd7a7b1f50c0",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-04-30",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "TVL is a weaker DeFi signal than people want it to be",
+    "first_120_chars": "TVL gets treated like a protocol health metric, but it often measures mercenary capital better than durability. A protoc",
+    "core_angle": "TVL is a weaker DeFi signal than people want it to be",
+    "body_hash": "b884f04cc73632c7",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-04-30",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d start with roster window before player rank.",
+    "first_120_chars": "I’d start with roster window before player rank. In keeper/dynasty-style leagues, the same trade can be good for one tea",
+    "core_angle": "**Body:** I’d start with roster window before player rank.",
+    "body_hash": "4484201572782c11",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-01",
+    "subreddit": "r/CryptoTechnology",
+    "type": "post",
+    "title_or_look_for": "Single-model crypto sentiment analysis has a context-collapse problem",
+    "first_120_chars": "I’m skeptical of single-model sentiment scoring for crypto markets. Not because LLMs are useless. Because the prompt usu",
+    "core_angle": "Single-model crypto sentiment analysis has a context-collapse problem",
+    "body_hash": "dbf3d58ad43d9bde",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-01",
+    "subreddit": "r/Fantasy_Football",
+    "type": "post",
+    "title_or_look_for": "The first dynasty edge is knowing what your roster is actually trying to do",
+    "first_120_chars": "A lot of keeper/dynasty trade advice starts with player value. I think it should start with roster purpose. Before compa",
+    "core_angle": "The first dynasty edge is knowing what your roster is actually trying to do",
+    "body_hash": "a948b6e5692a451b",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-02",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "“Real yield” still needs a game-theory check",
+    "first_120_chars": "Real yield is a better signal than pure emissions, but I still think people overstate it as a shortcut for protocol dura",
+    "core_angle": "“Real yield” still needs a game-theory check",
+    "body_hash": "7aedade82958d0d2",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-02",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d avoid making this purely a “which player is ranked higher?” decision.",
+    "first_120_chars": "I’d avoid making this purely a “which player is ranked higher?” decision. In keeper/dynasty-style formats, the cleaner q",
+    "core_angle": "**Body:** I’d avoid making this purely a “which player is ranked higher?” decision.",
+    "body_hash": "ff6269ad9bfedb4e",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-03",
+    "subreddit": "r/CryptoMarkets",
+    "type": "post",
+    "title_or_look_for": "“Bullish” is too blunt for crypto market analysis",
+    "first_120_chars": "I think “bullish or bearish?” is often the wrong first question in crypto. It compresses too many different signals into",
+    "core_angle": "“Bullish” is too blunt for crypto market analysis",
+    "body_hash": "fecec3953a988d94",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-03",
+    "subreddit": "r/Fantasy_Football",
+    "type": "post",
+    "title_or_look_for": "Trade calculators are better as market sentiment tools than answer keys",
+    "first_120_chars": "Trade calculators are useful, but I think people use them for the wrong job. They are good at showing rough market senti",
+    "core_angle": "Trade calculators are better as market sentiment tools than answer keys",
+    "body_hash": "7960602779bc3a55",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-04",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "Protocol durability is mostly about who is forced to keep caring",
+    "first_120_chars": "A lot of DeFi analysis starts with TVL, fees, emissions, or token price. Those matter, but I think the more useful quest",
+    "core_angle": "Protocol durability is mostly about who is forced to keep caring",
+    "body_hash": "698af88ddcbece17",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-04",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d look at this through roster window first, not just player value.",
+    "first_120_chars": "I’d look at this through roster window first, not just player value. In keeper/dynasty-style formats, assets have differ",
+    "core_angle": "**Body:** I’d look at this through roster window first, not just player value.",
+    "body_hash": "9ec821b7f3709aed",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-05",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "Protocol durability is mostly about who is forced to keep caring",
+    "first_120_chars": "A lot of DeFi analysis starts with TVL, fees, emissions, or token price. Those matter, but I think the better question i",
+    "core_angle": "Protocol durability is mostly about who is forced to keep caring",
+    "body_hash": "74860a311028eddd",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-05",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d look at this through roster window first, not just player value.",
+    "first_120_chars": "I’d look at this through roster window first, not just player value. In keeper/dynasty-style formats, assets have differ",
+    "core_angle": "**Body:** I’d look at this through roster window first, not just player value.",
+    "body_hash": "3552fc42d250589b",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-06",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "DeFi incentives should be stress-tested after rewards disappear",
+    "first_120_chars": "A simple DeFi filter I like: **What happens when the rewards get worse?** A lot of protocols look healthy while incentiv",
+    "core_angle": "DeFi incentives should be stress-tested after rewards disappear",
+    "body_hash": "1d52c15b6c96a04f",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-06",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d separate “value” from “roster fit” here.",
+    "first_120_chars": "I’d separate “value” from “roster fit” here. In keeper/dynasty-style formats, trade calculators are useful, but they mos",
+    "core_angle": "**Body:** I’d separate “value” from “roster fit” here.",
+    "body_hash": "3e9a1399c4b25b3b",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-07",
+    "subreddit": "r/CryptoMarkets",
+    "type": "post",
+    "title_or_look_for": "The strongest crypto setups usually have more than one reason to keep working",
+    "first_120_chars": "I’m more interested in crypto setups where multiple groups are aligned than setups with one loud signal. A token can hav",
+    "core_angle": "The strongest crypto setups usually have more than one reason to keep working",
+    "body_hash": "768e9166a3619103",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-07",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d use the calculator as a starting point, not the decision.",
+    "first_120_chars": "I’d use the calculator as a starting point, not the decision. In keeper/dynasty-style formats, a “fair value” trade can ",
+    "core_angle": "**Body:** I’d use the calculator as a starting point, not the decision.",
+    "body_hash": "5d42ed1381ce2c8f",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-09",
+    "subreddit": "r/CryptoMarkets",
+    "type": "post",
+    "title_or_look_for": "A strong narrative is not the same thing as a strong system",
+    "first_120_chars": "One crypto mistake I see a lot is treating narrative strength like system strength. They can overlap, but they are not t",
+    "core_angle": "A strong narrative is not the same thing as a strong system",
+    "body_hash": "8ac4a0d6aeb6cb42",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-09",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d separate “market value” from “roster fit” here.",
+    "first_120_chars": "I’d separate “market value” from “roster fit” here. In keeper/dynasty formats, the better asset is not always the one ra",
+    "core_angle": "**Body:** I’d separate “market value” from “roster fit” here.",
+    "body_hash": "3636456e3caf9029",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-10",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "Protocol durability is mostly stakeholder alignment",
+    "first_120_chars": "I think DeFi analysis overweights metrics that look clean and underweights coordination. TVL, fees, volume, and yield al",
+    "core_angle": "Protocol durability is mostly stakeholder alignment",
+    "body_hash": "22da48f181fc52a2",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-10",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d start with roster window before player value.",
+    "first_120_chars": "I’d start with roster window before player value. In keeper/dynasty-style formats, assets do different jobs. Some give w",
+    "core_angle": "**Body:** I’d start with roster window before player value.",
+    "body_hash": "e3b76f96d55b136d",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-11",
+    "subreddit": "r/CryptoMarkets",
+    "type": "post",
+    "title_or_look_for": "Crypto narratives are useful until they start hiding the actual mechanism",
+    "first_120_chars": "Narratives are not useless in crypto. They explain why attention moves. The problem is when the narrative becomes a subs",
+    "core_angle": "Crypto narratives are useful until they start hiding the actual mechanism",
+    "body_hash": "57df80b89fb2d499",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-11",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d separate “value” from “usefulness to your roster.”",
+    "first_120_chars": "I’d separate “value” from “usefulness to your roster.” A player or pick can be valuable in the market and still be the w",
+    "core_angle": "**Body:** I’d separate “value” from “usefulness to your roster.”",
+    "body_hash": "318f88e0e4781e6c",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-12",
+    "subreddit": "r/defi",
+    "type": "post",
+    "title_or_look_for": "Protocol durability is mostly about who is forced to keep caring",
+    "first_120_chars": "A lot of DeFi analysis starts with TVL, fees, emissions, or token price. Those matter, but I think the more useful quest",
+    "core_angle": "Protocol durability is mostly about who is forced to keep caring",
+    "body_hash": "6e8d809150502460",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-12",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d look at this through roster window first, not just player value.",
+    "first_120_chars": "I’d look at this through roster window first, not just player value. In keeper/dynasty-style formats, assets have differ",
+    "core_angle": "**Body:** I’d look at this through roster window first, not just player value.",
+    "body_hash": "18f74f119658bccd",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-13",
+    "subreddit": "r/CryptoMarkets",
+    "type": "post",
+    "title_or_look_for": "What counts as real confirmation for AI-agent crypto tokens?",
+    "first_120_chars": "The AI-agent coin tape today has a weird split: some tokens are moving on actual volume/whale confirmation, while others",
+    "core_angle": "What counts as real confirmation for AI-agent crypto tokens?",
+    "body_hash": "3f1b2984872f702e",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  },
+  {
+    "date": "2026-05-13",
+    "subreddit": "r/Fantasy_Football",
+    "type": "comment",
+    "title_or_look_for": "**Body:** I’d treat a late rookie/taxi decision differently than a normal start/sit or name-value trade.",
+    "first_120_chars": "I’d treat a late rookie/taxi decision differently than a normal start/sit or name-value trade. For a thread like “which ",
+    "core_angle": "**Body:** I’d treat a late rookie/taxi decision differently than a normal start/sit or name-value tr",
+    "body_hash": "1fdde9d1cbc9316f",
+    "source": "backfill from reddit-daily-gen run history 2026-05-13 hardening"
+  }
+]

@@ -1,4 +1,4 @@
-# Failure Log — [Client]
+# Failure Log — Altmark Group
 
 Every miss becomes training data. Log failures the same day.
 

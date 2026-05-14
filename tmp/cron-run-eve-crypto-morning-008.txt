@@ -1,0 +1,53 @@
+Config warnings:
+- plugins.entries.lossless-claw: plugin lossless-claw: duplicate plugin id detected; global plugin will be overridden by global plugin (/Users/jtsomwaru/.openclaw/npm/node_modules/@martian-engineering/lossless-claw/dist/index.js)
+{
+  "entries": [
+    {
+      "ts": 1778666868970,
+      "jobId": "eve-crypto-morning-008",
+      "action": "finished",
+      "status": "ok",
+      "summary": "files_written: [\n  \"/Users/jtsomwaru/projects/crypto-agent/data/latest-analysis.md\",\n  \"/Users/jtsomwaru/projects/crypto-agent/data/history/2026-05-13-0600.md\",\n  \"/Users/jtsomwaru/projects/crypto-agent/data/telegram-summary.txt\",\n  \"/Users/jtsomwaru/projects/crypto-agent/data/allocation-history/2026-05-13.json\",\n  \"/Users/jtsomwaru/projects/crypto-agent/data/cost-log.md\",\n  \"/Users/jtsomwaru/projects/crypto-agent/data/whale-data.json\",\n  \"/Users/jtsomwaru/projects/crypto-agent/data/whale-changes.json\",\n  \"/Users/jtsomwaru/projects/crypto-agent/data/website-sweep-2026-05-13.md\"\n]\n\ntelegram_message_sent: true\n\nsummary_text: 🪙 Crypto morning — 2026-05-13\n\n📊 Crypto Brief — 2026-05-13\n\n🌐 Market Regime\n- AI-agent/x402 infrastructure is still the only pocket worth playing, but the book should rotate toward live volume + whale confirmation.\n- Today’s cleanest signal is $GITLAWB: new whale entry, +111% 24h, $2.64M volume, and buy edge.\n- Cut stale/sell-skewed exposure. This is not a “hold everything” tape.\n\n💼 Active Portfolio\n$PRXVT $0.000903 (Δ24h: +4.31%): Phase 3 | EXIT | Alpha: 5.9/10 | privacy thesis alive but volume is too thin for allocation.\n$NOX $0.0003121 (Δ24h: +1.55%): Phase 4 | EXIT | Alpha: 4.8/10 | opaque Virtuals page + weak confirmation; no reason to keep capital here.\n$ODAI $0.0000411 (Δ24h: +0.76%): Phase 2 | ADJUST DOWN | Alpha: 6.8/10 | product thesis intact, but 224/543 sell skew says reduce the overweight.\n$NOOK $0.00001288 (Δ24h: +3.99%): Phase 2 | ADJUST UP | Alpha: 7.5/10 | sub-$1.3M product-backed agent coordination play, flow neutral-positive.\n$CRED $0.000007701 (Δ24h: -1.06%): Phase 3 | EXIT | Alpha: 5.4/10 | sell skew 247/439 and no whale confirmation.\n$GOBLIN $0.01608 (Δ24h: -24.7%): Phase 3 | ADJUST DOWN | Alpha: 7.2/10 | attention is huge, but volatility is too high for 20% sizing.\n$GITLAWB $0.0001524 (Δ24h: +111%): Phase 2 | HOLD/ADD | Alpha: 8.1/10 | new whale entry + $2.64M volume makes this today’s top coordinator.\n\n🎯 Allocation\n$GI…",
+      "runAtMs": 1778666400046,
+      "durationMs": 468920,
+      "nextRunAtMs": 1778752800000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 111639,
+        "output_tokens": 8815,
+        "total_tokens": 69748
+      },
+      "delivered": true,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "messageToolSentTo": [
+          {
+            "channel": "telegram",
+            "to": "telegram:6608544825"
+          }
+        ],
+        "fallbackUsed": false,
+        "delivered": true
+      },
+      "sessionId": "1d5246b6-a75c-4a7e-a327-802f33ea3c73",
+      "sessionKey": "agent:main:cron:eve-crypto-morning-008:run:1d5246b6-a75c-4a7e-a327-802f33ea3c73"
+    }
+  ],
+  "total": 79,
+  "offset": 0,
+  "limit": 1,
+  "hasMore": true,
+  "nextOffset": 1
+}

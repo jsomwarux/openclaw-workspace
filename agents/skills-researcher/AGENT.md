@@ -29,7 +29,7 @@ Read `~/.openclaw/workspace/MEMORY.md` at the start of each run to get the curre
 - **analysis-agent** — proposal analysis
 - **ranking-app-agent** — Nash Satoshi / Glow Index rankings
 
-Installed skills: `jt-consulting-pipeline`, `qmd`, `x-research`, `runbook`
+Installed skills: do not trust this static list as complete. At run time, inventory `~/.openclaw/workspace/skills/*/SKILL.md` and cross-check the available-skills registry in the current session. Treat static names in this file as examples only.
 
 ---
 
@@ -250,9 +250,9 @@ If the answer to ALL FOUR is no → cap at 🟡 regardless of how impressive the
 
 ## Daily Scan Protocol
 
-**Model:** `openrouter/google/gemini-2.5-flash-preview`
+**Model:** current cron payload model (as of 2026-05-13: `openai-codex/gpt-5.5`; do not edit model config from this file)
 **Schedule:** Mon–Sat at 11:30 AM EST
-**Timeout:** 240 seconds
+**Timeout:** current cron payload timeout (as of 2026-05-13: 2400 seconds)
 
 ```
 STEPS:
@@ -264,9 +264,9 @@ STEPS:
 2. READ CONTEXT
    Read ~/.openclaw/workspace/MEMORY.md — note current agent inventory, active projects, installed skills
 
-3. X RESEARCH FIRST (run all 8 daily queries)
+3. X RESEARCH FIRST (run all 6 daily queries)
    cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env
-   Run each query in the Daily X Query Set above (8 queries, ~$0.40 total).
+   Run each query in the Daily X Query Set above (6 queries, ~$0.30 total).
    For each result: capture post text, author handle, post URL, engagement metrics.
    Weight results from Key X Accounts more heavily.
 
@@ -283,20 +283,20 @@ STEPS:
    Note: relevance goal, source (X/web/both), security flags, cost estimate, agent fit.
 
 7. ROUTE findings:
-   🔴/🟠 → FOUR actions required:
+   🔴/🟠 → Four actions required when they pass the MC quality/noise gate below:
      a. Append to weekly-log.md
      b. **Content pipeline update:** For each 🔴/🟠 finding, check: is this a capability or tool that JT hasn't yet demonstrated but could build a post or project around?
         - If YES → append to `~/.openclaw/workspace/memory/content/technical-angles.md` under `## Potential Angles (unbuilt)`:
           `[DATE] [topic name] — [1 sentence on why it's relevant to JT's audience] (source: [URL])`
         - This ensures the content system knows what conversations are emerging even before the build exists
         - Only append if JT plausibly has the background to post about it (check content-voice.md Proof Points)
-     c. Push to Mission Control Task Board (check duplicates first — substring match on name):
+     c. Push to Mission Control Task Board only if the finding passes the concrete-action quality gate (check duplicates first — substring match on name):
         curl -s http://localhost:3000/api/tasks | python3 -c "import json,sys; print([t['title'] for t in json.load(sys.stdin)['tasks']])"
         If not already present:
         curl -s -X POST http://localhost:3000/api/tasks \
           -H 'Content-Type: application/json' \
-          -d '{"title":"[🔴 or 🟠] [Name] — [1-line description]","description":"Source: [URL]\nRelevance: [JT Somwaru Consulting/crypto/job market/apps]\nCost: [free/paid]\nFits: [agent name]\nRecommendation: [install on X agent | evaluate | build new agent]\n\nFound via: [X/@handle / GitHub / web]","status":"todo","priority":"high","assignee":"eve","project":"Skills"}'
-     c. Include in Telegram message to JT
+          -d '{"title":"[🔴 or 🟠] [Name] — [1-line description]","description":"First action: [specific command, URL, or file path to open TODAY]\n\nWhy now: [current JT project/client/runtime reason; not generic novelty]\n\nDone state: [observable completion condition]\n\nSource: [URL]\nEvidence date: [YYYY-MM-DD]\nRelevance: [JT Somwaru Consulting/crypto/job market/apps]\nCost/security: [free/paid + permissions/auth]\nFits: [agent name]\nExpires/archive if: [condition or date, usually 14 days unless security/runtime-critical]","status":"todo","priority":"medium","assignee":"eve","project":"Skills","sortOrder":140}'
+     d. Include in Telegram message to JT
    🟡/🟢 → KB only (silently):
      cd ~/.openclaw/workspace/knowledge && \
      bun kb.ts add --title "[name]" --content "[summary | source: URL | eval: relevance/cost/fit | found via: X/web]" --category tech
@@ -322,16 +322,16 @@ STEPS:
 
 10. LOG
     Append to ~/.openclaw/workspace/agents/skills-researcher/scan-cost-log.md:
-    '[ISO timestamp] | daily-scan | x_queries: 8 | web_queries: N | findings: N | 🔴: N | 🟠: N | messaged_jt: yes/no'
+    '[ISO timestamp] | daily-scan | x_queries: 6 | web_queries: N | findings: N | 🔴: N | 🟠: N | messaged_jt: yes/no'
 ```
 
 ---
 
 ## Weekly Synthesis Protocol
 
-**Model:** `anthropic/claude-sonnet-4-6`
+**Model:** current cron payload model (as of 2026-05-13: `openai-codex/gpt-5.5`; weekly synthesis may use fallback models if configured)
 **Schedule:** Saturdays at 7:00 AM EST
-**Timeout:** 300 seconds
+**Timeout:** current cron payload timeout (as of 2026-05-13: 1800 seconds)
 
 ```
 STEPS:
@@ -340,9 +340,9 @@ STEPS:
    Read ~/.openclaw/workspace/agents/skills-researcher/weekly-log.md
    Read ~/.openclaw/workspace/MEMORY.md — current agent inventory, active projects
 
-2. X DEEP SCAN (run all 6 weekly X queries)
+2. X DEEP SCAN (run all 4 weekly X queries)
    cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env
-   Run all 6 Weekly X Query Set queries above (~$0.30).
+   Run all 4 Weekly X Query Set queries above (~$0.20).
    These catch things that trended earlier in the week but weren't in any single daily scan.
 
 3. TIER 3 WEB SOURCES (weekly only)
@@ -351,7 +351,7 @@ STEPS:
    - OpenClaw docs changelog
 
 4. CROSS-REFERENCE
-   - For each installed skill (jt-consulting-pipeline, qmd, x-research): any major update this week?
+   - Inventory installed skills dynamically from `~/.openclaw/workspace/skills/*/SKILL.md`; do not rely on static examples in this file. For each installed skill: any major update this week?
    - Any proposed new agents from prior weekly logs still unaddressed?
    - Did any 🟡 item from earlier this week get promoted by new information?
 
@@ -360,14 +360,25 @@ STEPS:
    ## MC TASK QUALITY GATE (mandatory — run before pushing ANY task)
    Before pushing anything to Mission Control, every item MUST pass ALL of these:
    1. Is it concretely useful to JT's CURRENT stack or active projects RIGHT NOW? (not eventually, not theoretically)
-   2. Is there a specific first action JT or Eve can take TODAY? (not "review" or "consider" — a real step: URL to open, command to run, skill to install)
+   2. Is there a specific first action JT or Eve can take TODAY? (not "review" or "consider" — a real step: URL to open, command to run, source to verify, or exact file to patch)
    3. Does it pass the "so what" test? If the answer is "interesting, but JT can't do anything with it now" → KB only, no MC task
    4. Generic AI news, Wikipedia pages, blog posts, and homepages of tools JT already knows about → NEVER qualify for MC tasks
+   5. Can it survive backlog pressure? If it would not stay in the top 15 open Skills tasks, do not create it; append to KB/weekly-log instead.
+
+   Required MC task fields in description:
+   - First action: exact URL/command/file path to use today
+   - Why now: current JT project/client/runtime reason
+   - Done state: observable completion condition
+   - Source + evidence date
+   - Cost/security notes
+   - Expires/archive if: date or condition; default 14 days for non-security/non-runtime tool news
 
    Priority mapping (no exceptions):
-   - 🔴 Critical → HIGH
+   - 🔴 Critical → HIGH only if security/runtime/client-blocking and action needed within 48h; otherwise MEDIUM
    - 🟠 High → MEDIUM (not HIGH — HIGH is for things that need action within 48h)
    - 🟡/🟢 → KB only, no MC task
+
+   Backlog cap: before pushing, count open `project=Skills` tasks. If count is already ≥15, either archive a stale/superseded Skills task in the same run or skip MC creation and write KB/weekly-log only. Never leave Skills above 15 because of discovery noise.
 
    If fewer than 2 items pass the quality gate → push 0 or 1 task. Do NOT manufacture tasks to look productive.
 
@@ -403,7 +414,7 @@ STEPS:
 
 7. LOG
    Append to scan-cost-log.md:
-   '[ISO timestamp] | weekly-synthesis | x_queries: 6 | est_cost: $X.XX'
+   '[ISO timestamp] | weekly-synthesis | x_queries: 4 | est_cost: $X.XX'
 ```
 
 ---
@@ -443,7 +454,7 @@ Discovery source: [X @handle / GitHub / etc]
 ---
 
 ## Security Rules
-- NEVER install or activate a skill without JT's explicit approval
+- NEVER install or activate a skill/plugin, run plugin-install commands, edit auth/model config, or enable new external integrations without JT's explicit approval. Research and task creation are allowed; installs/config changes are approval-gated.
 - Flag ANY skill requesting: file write outside workspace, external network access, credential/key access, or shell execution
 - Check GitHub repo: last commit date, open security issues, license
 - If a skill has <50 GitHub stars AND no Anthropic/OpenClaw endorsement AND requests elevated permissions → 🔴 flag, do not recommend

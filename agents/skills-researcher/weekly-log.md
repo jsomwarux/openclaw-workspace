@@ -24,3 +24,5 @@
 [2026-05-11] daily scan — no critical findings. KB'd: OpenClaw v2026.5.10-beta.3 beta notes; OpenRouter free/cheap models; n8n-mcp reminder; property-management AI signals; MCP security/monitoring signals.
 
 [2026-05-12] 🔴 OpenClaw v2026.5.10-beta.5 — active-stack release with agent policy controls, secret redaction, symlinked memory path rejection, process/session fixes, localService model startup, and Control UI recovery panel. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5 | Relevance: Eve/OpenClaw runtime | First action: run `openclaw update --version v2026.5.10-beta.5`, restart gateway if prompted, then run `openclaw gateway status` and one Telegram self-test.
+
+[2026-05-13] daily scan — no new 🔴/🟠 findings passed the MC quality gate. KB'd: OpenClaw v2026.5.12-beta.4 release follow-on; OpenRouter newest models including Opus 4.7 Fast / Perceptron / Ring / Gemini Flash Lite; GitHub MCP security scanning pattern; Dualmark AI-agent-readable marketing-site tool; EliseAI property-management rollout signal. Existing OpenClaw/OpenRouter MC tasks already cover immediate actions, so no duplicate task pushed.

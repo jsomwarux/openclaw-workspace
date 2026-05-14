@@ -27,6 +27,14 @@ bash ~/.openclaw/workspace/skills/jt-consulting-pipeline/scripts/preflight.sh [c
 
 If it exits non-zero: fix reported errors before proceeding. A failed preflight (especially n8n down) will cause agent spawns to fail silently mid-pipeline.
 
+## Outreach Task Safety Gate — buyer channel + duplicate check
+
+Before generating outreach, uploading outreach, or creating any M1/M2/M3 task:
+1. Check `pipeline.md`, the client slug folder, and existing Drive client/T3 batch folders for the company name and obvious aliases.
+2. Confirm there is at least one sendable buyer channel: verified email, LinkedIn profile URL, warm intro path, or JT-provided explicit channel.
+3. If no sendable channel exists, write `channel_status: missing` in `brief.json`, create/return a single "find buyer channel" next step, and do **not** draft M1 copy or create follow-up tasks yet.
+4. If a duplicate active client/prospect exists, update the existing record instead of creating a new client folder or duplicate outreach task.
+
 ## Tier Routing — Classify Before Starting
 
 Before spawning any agents, assign a tier. This determines the pipeline path.

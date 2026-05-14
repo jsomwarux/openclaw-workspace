@@ -8,8 +8,11 @@ from __future__ import annotations
 
 from datetime import date, timedelta
 from pathlib import Path
+import sys
 
 ROOT = Path.home() / ".openclaw" / "workspace"
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 BASE = ROOT / "memory" / "app-marketing"
 OUT = BASE / "durable-discovery-plan.md"
 DIR = BASE / "directory-submissions.md"
@@ -22,12 +25,28 @@ def week_start(d: date) -> date:
     return d - timedelta(days=d.weekday())
 
 
-def app_store_blocked() -> bool:
-    # App Store Connect is blocked until Apple agreements clear; do not select it as top action.
-    today_note = ROOT / "memory" / f"{date.today().isoformat()}.md"
-    if today_note.exists() and "REQUIRED_AGREEMENTS_MISSING_OR_EXPIRED" in today_note.read_text(errors="ignore"):
-        return True
-    return False
+def app_store_status() -> str:
+    """Return App Store metrics readiness without exposing secrets.
+
+    Metadata auth may work while analytics/reporting remains unimplemented or blocked.
+    Keep the durable-discovery plan precise so the OS does not keep claiming an
+    old Apple-agreement blocker when the real blocker is connector/reporting work.
+    """
+    try:
+        from scripts.app_marketing_connectors import app_store_metrics
+
+        info = app_store_metrics.readiness()
+        status = str(info.get("status") or "unknown")
+        reporting = str(info.get("reporting_status") or "unknown")
+        if reporting == "vendor_number_needed":
+            return "metadata_ready_vendor_number_needed"
+        if reporting == "reporting_blocked_or_permission_gap":
+            return "metadata_ready_reporting_permission_gap"
+        if status == "ready_for_connector_build":
+            return "credentials_present_connector_not_built"
+        return status
+    except Exception as exc:  # noqa: BLE001
+        return f"readiness_check_failed:{exc}"
 
 
 def main() -> int:
@@ -62,7 +81,7 @@ def main() -> int:
         "title":"Vista movie app directory pack",
         "why":"Vista is live in the App Store and should not rely only on TikTok velocity.",
         "done":"Submission copy exists for Product Hunt, AlternativeTo, Uneed, and iOS/movie app directories.",
-        "blocker":"App Store Connect metrics still blocked by Apple agreements; directory pack can proceed anyway.",
+        "blocker":"App Store metrics connector/reporting path is not complete; directory pack can proceed anyway.",
     })
     actions.append({
         "app":"Nash Satoshi",
@@ -108,7 +127,7 @@ def main() -> int:
         f"- SEO backlog loaded: {'Vista Backlog' in seo and 'Nash Satoshi Backlog' in seo and 'Glow Index Backlog' in seo}",
         f"- Directory backlog loaded: {'Priority Directories' in directory}",
         f"- ASO checklist loaded: {'Vista — Initial ASO Focus' in aso}",
-        f"- App Store Connect blocked: {app_store_blocked()}",
+        f"- App Store metrics status: {app_store_status()}",
     ]
     OUT.write_text("\n".join(lines).rstrip()+"\n")
     print(f"APP_MARKETING_DURABLE_DISCOVERY_OK out={OUT} selected={selected['app']}::{selected['title']}")

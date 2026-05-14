@@ -1,2 +1,3 @@
 date	run_id	slug	baseline_score	final_score	rounds	status	changes_kept	changes_reverted	files_touched	description
 2026-05-12	manual:ec9f36d3-3bf8-4bc9-a4b1-06aa886a24ff:1778617308385:17	mission-control-priority-auditor	1.000	1.000	0	keep	0	0	agents/autoresearch/targets.md; memory/training/training-log.md; agents/autoresearch/logs/2026-05-12-mission-control-priority-auditor-*.md	baseline already stable across 3 test inputs; no mutation needed
+2026-05-13	cron:ec9f36d3-3bf8-4bc9-a4b1-06aa886a24ff	opticfy-pipeline	0.833	0.944	1	keep	1	0	skills/opticfy-pipeline/SKILL.md; agents/autoresearch/targets.md; agents/autoresearch/logs/2026-05-13-opticfy-pipeline-*.md; memory/training/training-log.md	added buyer-channel and duplicate-check safety gate before outreach/task creation

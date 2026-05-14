@@ -1,0 +1,41 @@
+Config warnings:
+- plugins.entries.lossless-claw: plugin lossless-claw: duplicate plugin id detected; global plugin will be overridden by global plugin (/Users/jtsomwaru/.openclaw/npm/node_modules/@martian-engineering/lossless-claw/dist/index.js)
+{
+  "entries": [
+    {
+      "ts": 1778664654847,
+      "jobId": "eve-job-market-daily-005",
+      "action": "finished",
+      "status": "ok",
+      "summary": "Done.",
+      "runAtMs": 1778663700039,
+      "durationMs": 954804,
+      "nextRunAtMs": 1778750100000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 124025,
+        "output_tokens": 13265,
+        "total_tokens": 79898
+      },
+      "delivered": false,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "channel": "last",
+          "to": null,
+          "source": "last"
+        },
+        "fallbackUsed": false,
+        "delivered": false
+      },
+      "sessionId": "aee92ba3-12bb-4ef2-950b-dfa3be84ffd2",
+      "sessionKey": "agent:main:cron:eve-job-market-daily-005:run:aee92ba3-12bb-4ef2-950b-dfa3be84ffd2"
+    }
+  ],
+  "total": 80,
+  "offset": 0,
+  "limit": 1,
+  "hasMore": true,
+  "nextOffset": 1
+}

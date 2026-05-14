@@ -29,35 +29,38 @@ Limit:
 ## Needed From JT / Setup
 
 ### Google Analytics / GA4
+Status: blocked on property IDs/auth/provider mapping. `scripts/app_marketing_connectors/web_metrics.py` emits readiness/status so weekly reviews can identify the exact gap without asking JT for manual daily metrics. Mapping schema/template: `memory/app-marketing/web-analytics-mapping-template.md`.
+
 Needed:
 1. GA4 property ID for each app/site:
-   - Vista:
-   - Nash Satoshi:
-   - Glow Index, later:
+   - Vista: unmapped
+   - Nash Satoshi: unmapped
+   - Glow Index: unmapped
 2. Auth method. Best option: service account with Viewer access to the GA4 properties.
 3. Secure credential path/env var, not pasted into docs:
    - `GOOGLE_APPLICATION_CREDENTIALS=/secure/path/service-account.json`
    - or equivalent existing Google auth if GA Data API access is available.
 
 Preferred implementation:
-- Add `scripts/app_marketing_connectors/ga4_metrics.py`.
-- Fetch sessions/users/pageviews/events by landing page and source/medium.
-- Normalize rows into `metrics-inbox.jsonl`.
+- Add one concrete mapping per app in `memory/app-marketing/account-map.json` using the template file.
+- Then add provider-specific fetching only for mapped sources; do not guess providers.
+- Normalize sessions/users/pageviews/events by landing page and source/medium into `metrics-inbox.jsonl`.
 
 ### App Store Connect / Vista
-Needed tomorrow:
-1. Issuer ID
-2. Key ID
-3. Private key file path (`.p8`) stored securely outside repo/docs
-4. App ID / bundle ID for Vista
+Status: metadata auth works; reporting metrics blocked on vendor-number/reporting access.
+- Existing env/config includes `APPSTORE_ISSUER_ID`, `APPSTORE_KEY_ID`, `APPSTORE_PRIVATE_KEY_PATH`, and `APPSTORE_VISTA_APP_ID`.
+- Smoke test verified Vista app metadata: app id `6758186885`, bundle `com.jsomwaru.vista`, name `VISTA - Movie Taste Profiles`.
+- `scripts/app_marketing_connectors/app_store_metrics.py` has a non-secret readiness probe and status writer.
+- Current status file: `memory/app-marketing/app-store-metrics-status.json`.
+- Current known blocker: `reporting_status: vendor_number_needed` / Apple reporting permissions.
+- Mission Control task created: `Vista: add App Store vendor number for reporting metrics`.
 
-Preferred env:
-- `APPSTORE_ISSUER_ID`
-- `APPSTORE_KEY_ID`
-- `APPSTORE_PRIVATE_KEY_PATH`
-- `APPSTORE_APP_ID` or app-specific registry value
+Still to implement/verify:
+1. Securely add `APPSTORE_VENDOR_NUMBER` in the approved env/config surface; do not paste it into docs/chat.
+2. Run the App Store connector and, if Apple permits reporting, normalize downloads/product-page/reporting rows into `metrics-inbox.jsonl`.
+3. If Apple returns agreement/permission errors, JT must complete Apple-side agreements or grant the API key the required reporting permissions.
 
-Do not paste private key contents into chat/docs.
+Do not paste private key, vendor number, or Apple account secrets into chat/docs.
 
 ### X User Context — Optional Upgrade
 Not required for baseline.
@@ -66,10 +69,10 @@ Needed only if we want private owned metrics:
 - Use only if click/profile-click metrics are worth the setup.
 
 ## Cron Readiness
-Do not create weekly scoreboard cron until:
+Weekly scoreboard cron is active; it must stay measurement-first:
 - Discovery + collect pipeline runs idempotently.
-- At least one week of ReelFarm/X metrics is populated.
-- GA4/App Store access path is clear or explicitly deferred.
+- ReelFarm/X metrics are populated when available.
+- GA4/App Store blocked status must generate measurement-fix tasks, not more content-volume tasks.
 
 Current command sequence:
 ```bash

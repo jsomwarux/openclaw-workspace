@@ -34,6 +34,9 @@ No app should be “built and hoped into visibility.”
 - `memory/app-marketing/seo-backlog.md` — SEO/comparison/use-case page backlog.
 - `memory/app-marketing/aso-checklist.md` — App Store optimization loops.
 - `memory/app-marketing/future-app-template.md` — onboarding template for new apps.
+- `memory/app-marketing/metrics-collection-status.json` — latest connector run status, skipped platform counts, failures, and non-secret readiness probes for App Store/web/X/ReelFarm/Reddit.
+- `memory/app-marketing/web-analytics-mapping-template.md` — accepted schema for GA4/Search Console/Vercel/Plausible/PostHog/local-log mappings before social volume scales.
+- `memory/app-marketing/generated-mission-control-tasks.json` — latest deduped task-generator output; weekly review must inspect created/duplicate/error counts before claiming task sync is healthy.
 
 ## Channel Roles
 
@@ -194,11 +197,13 @@ X: @NashSatoshi methodology/rankings only; no return promises.
 Weekly metric: site visits, ranking page visits, X engagement, TikTok engagement.
 
 ### Glow Index
-Stage: pending/blocked until app + engine + deployment are reliable.
-Primary future loop: dedicated skincare TikTok/ReelFarm.
-Secondary loops: skincare SEO, ingredient/product comparison pages, beauty directories.
+Stage: active for durable discovery planning; crawlability/measurement blocked before scale.
+Primary current loop: skincare SEO/GEO, directory readiness, and safe product/category discovery surfaces.
+Primary future loop: dedicated skincare TikTok/ReelFarm only after measurement source is connected.
+Secondary loops: ingredient/product comparison pages, beauty directories, and education-first skincare content.
 Reddit: very high caution; skincare subs are strict and skeptical. Default to research/ingredient education, not app promo.
-Weekly metric once active: site visits, product searches, TikTok engagement, signup/email capture if available.
+Weekly metric: site visits/search clicks/product searches first; TikTok engagement only after account/execution + metrics path is confirmed.
+Current blocker: `https://glowindex.co` returns 403 Cloudflare challenge for `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/categories`, and `/categories/serum`; do not expand pSEO or rely on category/directory crawlability until `python3 scripts/glow_crawler_check.py` reports all routes clear.
 
 ### Action Arena
 Stage: priority build/prelaunch.
@@ -225,6 +230,12 @@ Every week, produce a short report:
 7. What to retire.
 8. One durable discovery action: directory, SEO, ASO, competitor ad intel, or screenshot asset.
 9. One decision needed from JT, only if blocked.
+
+Mandatory self-improvement layer:
+- Read `memory/app-marketing/self-improvement-rules.md` before recommending more output.
+- Assign each app/channel/experiment one decision state: `CONTINUE`, `DOUBLE_DOWN`, `REWORK`, `MEASURE_FIRST`, `PAUSE`, or `KILL`.
+- If a channel is `MEASURE_FIRST`, generate measurement-fix tasks instead of more content-volume tasks.
+- After metrics + experiment refresh, run `python3 scripts/app_marketing_task_generator.py --execute` so optimal next actions are pushed to Mission Control with dedupe, owner, first action, why, done state, references, and guardrails.
 
 ## File/Ownership Recommendation
 Short term: keep existing X/Reddit/TikTok prompt files under `agents/vibe-marketing/` to avoid breaking crons and queue assumptions.

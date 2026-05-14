@@ -2,6 +2,16 @@
 
 ---
 
+## May 13, 2026 — Heartbeat AI Tool Monitoring
+
+**Agent governance is hardening into buyer-ready infrastructure.** Fresh results today surfaced Boomi adding governed agent connectivity plus AI Gateway policy/spend monitoring, AWS + Cisco AI Defense publishing MCP/A2A security guidance, and enterprise agent playbooks emphasizing rollback + human intervention. The market language keeps moving toward governed workflows, registries, controls, and monitored agent access rather than generic chatbot automation.
+
+**JT relevance:** this reinforces the AI Operations Diagnostic and AgentGuard lane: sell the operational control plane first — owner, approval, exception, audit trail, rollback — then automate. For Altmark/family-office prospects, this maps cleanly to local-first workflows, insurance/rent/vendor exception queues, and human-approved financial actions.
+
+**Actionable demo angle:** add a small “agent control checklist” slide/section to the next property/family-office diagnostic asset: connected systems, allowed actions, approval thresholds, audit log, fallback owner, and rollback path. This is now mainstream enough to sound prudent, not over-engineered.
+
+---
+
 ## May 4, 2026 — Heartbeat AI Tool Monitoring
 
 **Enterprise agents are now being framed as infrastructure, not experiments.** Recent search results surfaced Claude enterprise-agent research, Google Cloud agent trends, Microsoft Copilot/Cowork coverage, and multiple orchestration/governance guides. The repeated theme: ROI comes from agents embedded in workflows with orchestration, accountability, MCP/A2A-style integration, and governance.

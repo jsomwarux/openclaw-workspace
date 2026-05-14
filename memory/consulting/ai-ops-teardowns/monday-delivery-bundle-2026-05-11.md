@@ -63,13 +63,32 @@ Flow:
 
 AI is most useful when it shows what is about to break.
 
-## Posting Instruction
-If JT posts it, capture the URL and append to `memory/content/posted-log.jsonl` with:
-- date: 2026-05-11
+## CTA Comment / Reply
+If your team still tracks expirations, renewals, COIs, owner reports, or approval-heavy follow-up through spreadsheets and inboxes, the first step is not buying another platform.
+
+It is mapping the workflow and finding the first exception queue worth building.
+
+Diagnostic one-pager: `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`
+
+## Post / Defer Instruction
+If JT posts it, capture the URL and append exactly one JSONL record to `memory/content/posted-log.jsonl` with:
+- date: actual post date
 - platform
 - title: Property insurance expiration exception layer
 - source: AI Ops Teardowns
 - url
+- posted: true
+- cta: family-office-ai-ops-diagnostic
+- reply_route: `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`
+
+Only mark the Mission Control task done after the URL is captured. Draft readiness, a scheduled post, or JT saying he plans to post is not posting evidence.
+
+If JT defers it, update `memory/consulting/ai-ops-teardowns/delivery-calendar.md` with the defer reason and next review date. Do not create a fake posted-log entry.
 
 ## Follow-Up If It Performs
 Use replies/comments as signal for whether to build the Tier 3 n8n template next. If a property manager/family-office/operator replies, ask what they currently use to track expirations before offering a diagnostic.
+
+Tier 3 build gate: do not build the reusable n8n template until the teardown is posted and produces operator reply/DM signal, or JT explicitly prioritizes the build despite no signal.
+
+## Proof-Safety
+Proof-safety: post as a public/hypothetical property/family-office workflow. Do not name Altmark/Aya/Yair/Navid/Matt or claim ROI, hours saved, records tracked, client acceptance, or autonomous action without verified permission/evidence.

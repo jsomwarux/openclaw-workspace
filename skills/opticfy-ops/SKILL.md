@@ -42,7 +42,9 @@ This is the services-as-software layer:
 - **Weekly account-owner update** — wins, misses, blockers, and next week's plan
 - **Quarterly decision-maker review** — talk to the buyer, not only the day-to-day operator
 - **Decision log + failure log** — every judgement call and miss becomes reusable IP
+- **Acceptance checklist per deliverable** — do not call work done until access, end-to-end run, exceptions, handoff/rollback, open issues, and proof/privacy boundaries are checked
 - **Raw + cleaned inputs + tagged outputs** — preserve the data moat before building software
+- **Reusable IP log** — extract patterns into templates/agents/content using redacted, anonymized, or synthetic examples only
 - **Automation candidates** — automate patterns observed in manual delivery, not assumptions
 
 Rule: manual delivery is not a failure state. Manual delivery is the data-collection phase. Do the work by hand until the edge cases are visible, document them, then encode the repeatable pattern into automations/agents.
@@ -60,6 +62,7 @@ Rule: manual delivery is not a failure state. Manual delivery is the data-collec
 - Before documenting: confirm which system triggers the workflow (webhook, schedule, manual)
 - Always document rollback: how do we undo this if something breaks?
 - Runbooks must be written for someone unfamiliar with the system
+- Acceptance criteria are mandatory before handoff: access/use confirmed, end-to-end run verified, exceptions visible, open issues owned, support/rollback documented, and proof assets redacted/anonymized before reuse
 
 **Client Engagement**
 - Quick-win framing: every engagement should deliver something measurable within 2 weeks

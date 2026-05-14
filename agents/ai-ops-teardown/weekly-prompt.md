@@ -30,6 +30,8 @@ Score 3–5 candidate topics using the rubric in `system.md`. Do not pick a comp
 - Do NOT build a real n8n template unless score is 24+ and the workflow is reusable with synthetic data.
 - Prefer concrete workflows over generic AI commentary.
 - Every draft must include inputs, messy current process, exception/approval boundary, audit trail, buyer outcome, and build-tier decision.
+- Every draft must include a buyer-safe CTA to the relevant diagnostic/next step unless the topic is intentionally content-only. For property/family-office workflows, use `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md` as the CTA target.
+- Every draft must use proof-safe framing: public/hypothetical/category language, no private client names, no ROI/hours-saved/client-acceptance claims unless verified in a proof gate.
 - If no candidate scores at least 18/30, update backlog with `SKIP_WEEK — [reason]` and do not create a weak draft.
 
 ## Immediate Task
@@ -39,8 +41,10 @@ Score 3–5 candidate topics using the rubric in `system.md`. Do not pick a comp
 4. Pick the strongest candidate.
 5. Produce one teardown file and one content-bank draft file.
 6. Update delivery calendar.
-7. Create or update one Mission Control task for JT to review/post the first draft.
-8. If Tier 3 is justified, create/update one separate build task for Eve with synthetic-data constraint.
+7. Create or update one Mission Control task for JT to review/post the first draft. The task description must include: exact first action/source path, why it matters, done state requiring posted URL saved to `memory/content/posted-log.jsonl`, and reply/DM routing to the diagnostic one-pager when relevant.
+8. If Tier 3 is justified, create/update one separate build task for Eve with synthetic-data constraint and an explicit gate: do not build until the teardown is posted and gets operator reply/DM signal, or JT explicitly prioritizes it.
+9. Run the final bundle quality gate before responding: buyer-relevant workflow, inputs, messy process, exception logic, HITL, audit trail, buyer outcome, platform-native drafts, diagnostic CTA, proof-safe framing, Tier 1/2/3 decision, save paths, MC review/post task, no stale/generic company choice, no fake client claims.
+10. If this is the first run after cron creation, include a note that run history should be verified with `openclaw cron runs --id f96cc24f-55e6-4064-a075-b897156a22f2 --limit 1` after completion.
 
 ## Output Paths
 Use today's date as `YYYY-MM-DD` and a short slug.

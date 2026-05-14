@@ -5,14 +5,14 @@
 
 ## Morning Brief (7:30 AM, cron)
 Deliver to JT via Telegram:
-1. Run `python3 scripts/mission_control_north_star_audit.py`, then read memory/tasks.md top 3.
-   **STALENESS CHECK:** content/Drive/post tasks updated >7 days ago → SKIP; expired/deprioritized job apps → SKIP; one concrete action must reflect current reality.
-2. Run web searches: AI news, crypto market, tech job market
+1. Run `python3 scripts/mission_control_north_star_audit.py`, then pull active high-priority tasks from `http://localhost:3000/api/tasks`. Use `memory/tasks.md` only as legacy fallback/context if Mission Control is unreachable.
+   **STALENESS CHECK:** content/Drive/post tasks updated >7 days ago → SKIP; expired/deprioritized job apps → SKIP; one concrete action must reflect current Mission Control reality.
+2. Run web searches: AI news, crypto market, tech job market. For current/fresh searches, use canonical local search: `set -a; source ~/.config/env/global.env; set +a; python3 /Users/jtsomwaru/.openclaw/workspace/scripts/web_search.py "QUERY" --freshness day --count 5 --json`. Do not use managed `web_search` with freshness/date filters.
 3. **Daily Nash Satoshi gate:** fetch `https://nashsatoshi.com/rankings` live. If ranks/scores unavailable, SKIP. Pull pattern inputs before drafting:
    - Notion: `set -a; source ~/.config/env/global.env; set +a; python3 scripts/notion-swipe-fetch.py --platform X --niche "Crypto" --niche "AI Agents" --niche "x402" --niche "Nash Satoshi" --limit 12 --min-engagement 0 --since-days 14`
    - X: `cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env && bun run x-search.ts search "(AI agent tokens OR crypto AI agents OR x402 OR DeFAI OR verifiable inference) -airdrop -giveaway -whitelist" --quick --sort likes --since 7d --limit 10`
    - <3 usable current inputs → label `RECENT_NASH_SWIPE_GAP`; use archived examples only as mechanics, not trend proof.
-   X must be token-specific (token, score, rank movement, or market reason), use reply-hook first line, dwell-friendly lines, one repost-worthy line, no links/hashtags/hype/engagement begging. Reddit must be community-native, discussion-first, non-promo, materially different from X, and include `SUBREDDIT:` + rationale or `SUBREDDIT: SKIP — [reason]`. Include Nash sections only when non-generic.
+   X must be token-specific, reply-hook first, dwell-friendly, repost-worthy, no links/hashtags/hype. Reddit: community-native, discussion-first, non-promo, different from X, with `SUBREDDIT:` + rationale or `SUBREDDIT: SKIP — [reason]`. Include Nash only when non-generic. Save output/skip reason to `memory/app-marketing/daily-nash/YYYY-MM-DD.md`.
 
 4. **Daily @dynastyjig gate:** read sports-gm skill/targets + latest report/snapshot + fresh X/sports swipe. Include `Native pattern teardown` + `Rejected generic patterns`; draft from native syntax, not topics. Public draft needs current player/news/market specificity (player, rookie tier, team, pick range, betting market, rank gap, card/unit/leg) or `SKIP_SLOT`. Products invisible; no broad rebuild/parlay aphorisms.
 
@@ -30,21 +30,24 @@ Deliver to JT via Telegram:
    - If count ≥ 15: include ✅ Outreach on track: "[N] DMs sent this week."
 
 5c. **Relationship check (every Monday morning brief only):**
-   - Read memory/networking/contacts.md
-   - Apply warmth decay: any Hot contact not touched in 7+ days → flag
-   - Any overdue next actions → flag
-   - Include 🤝 Relationship section if anything needs attention
+   - Read `memory/networking/contacts.md` and `memory/clients/proof-pipeline-gates.md`.
+   - Apply warmth decay: any `🔥 Hot` contact not touched in 7+ days → flag; any `🧊 Stale` contact with a current high-priority MC task → flag as “refresh before ask.”
+   - Flag overdue next actions, but label the action type: `relationship refresh`, `validation-only`, or `referral/proof ask`.
+   - Before surfacing any referral/proof ask, verify the relevant gate allows it. If blocked, surface the blocker instead of the draft ask.
+   - Include 🤝 Relationship section only when there is one concrete next action or blocker; do not create duplicate strategy tasks.
 
 5d. **Event scout (first Monday of each month only):**
-   - Search Eventbrite NYC for: "construction technology", "property management", "AI business NYC", "real estate tech NYC"
-   - Check brooklynchamber.com/events and nycchamber.com/events for that month
-   - If relevant event found: push HIGH MC task with date/venue/ICP relevance, append to `memory/networking/events.md`, and include 📅 Events section.
+   - Read `memory/networking/events.md` first and use its Event Scouting Checklist.
+   - Search Eventbrite NYC for: "construction technology", "property management", "AI business NYC", "real estate tech NYC".
+   - Check brooklynchamber.com/events and nycchamber.com/events for that month.
+   - Push a HIGH MC task only when the event has exact date/venue, clear buyer/operator ICP relevance, and a specific reason JT should attend.
+   - Append researched results or “no strong event found” to `memory/networking/events.md`, and include 📅 Events section only for actionable events.
 
 Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash X+Reddit, Dynasty X, one action
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK
-2. Run `python3 scripts/mission_control_north_star_audit.py`, then read memory/tasks.md — urgent/overdue items?
+2. Run `python3 scripts/mission_control_north_star_audit.py`, then inspect Mission Control active high/overdue tasks via `http://localhost:3000/api/tasks` (`memory/tasks.md` fallback only).
 3. Run `python3 scripts/cost-tracker.py --check-alerts` — if non-empty array, send each alert to JT via Telegram immediately
 3a. **Cron health check (every heartbeat — non-negotiable):**
    - Call `cron list` and scan ALL jobs for `consecutiveErrors >= 2` OR `lastRunStatus: "error"`
@@ -79,10 +82,12 @@ Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash 
 4a. **10AM only — Spanish lesson delivery check:**
    Run: `openclaw cron runs --id babd905a-1098-49dd-8700-772fef14f817 --limit 1`
    If last run entry has `deliveryError` or `deliveryStatus` != "delivered" → resend lesson from `spanish/lessons/YYYY-MM-DD.md` (use yesterday's date) to JT via Telegram immediately.
-   State.json only tracks execution completion, not delivery. This is the only reliable delivery check.
+   Then run `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/spanish_state_check.py --max-age-days 2`. If it fails, fix the state/lesson artifact or alert JT with the exact failure.
+   State.json only tracks execution completion, not delivery. Cron run delivery history is the reliable delivery check; `spanish_state_check.py` is the persistence/freshness check.
 5. **10PM only — Spanish accountability check:**
-   Read `~/.openclaw/workspace/spanish/state.json`.
-   If `last_lesson_date` == today AND `last_lesson_complete` == false:
+   Read `~/.openclaw/workspace/spanish/state.json` and run `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/spanish_state_check.py --date $(date +%F) --require-today`.
+   If the validation fails, alert JT: "⚠️ Spanish lesson state check failed: [exact failure]." Do not send a completion reminder off stale/broken state.
+   If validation passes AND `last_lesson_date` == today AND `last_lesson_complete` == false:
    → Send JT: "🇪🇸 Still need to finish tonight's Spanish lesson! 10 minutes. Reply 'lesson' to jump in now."
    Skip if lesson wasn't delivered today (cron handles that) or already complete.
 6. If nothing urgent → pick one proactive work item (see below)
@@ -126,17 +131,10 @@ During weekly synthesis, after reading content-signals.md:
 - If the high-engagement topic is a NEW niche not in JT's current matrix → log to memory/niche-fitness-signals.md for monthly niche fitness review
 The goal: let content performance data tell you which consulting angles are resonating before you invest more outreach time in them.
 
-## Weekly Skills Audit (Sunday only — weekly-synthesis cron)
-Audit files for accuracy, staleness, and drift in order:
-1. `TOOLS.md` — paths, commands, API keys. Update anything that drifted.
-2. `AGENTS.md` — rules still valid? Any new patterns to add from the week?
-3. `MEMORY.md` — distill week's daily notes. Remove noise. Sharpen what matters.
-4. `HEARTBEAT.md` — are the proactive work priorities still right for JT's current goals?
-5. All `skills/*/SKILL.md` files — are the instructions still accurate? Any new commands?
-6. All `agents/*/AGENT.md` files — are the agents configured correctly? Any drift?
-7. `memory/training/training-log.md` — review the week's film review entries. Are patterns emerging? Write a weekly summary line.
-7a. `docs/agents/regression-checks.md` — verify each repeatable mistake has guardrail, owner surface, and cadence; promote repeated failure terms lacking Active Checks.
-8. `memory/future-signals.md` — **Future Signals Review (mandatory):** Read every active signal. For each one, check whether its trigger conditions are now met based on JT's current situation (active clients, project status, outreach volume, hardware). If a signal's trigger is met: push HIGH MC task, move it to Graduated with date+trigger, and notify JT in weekly synthesis. Otherwise leave as-is.
-9. **Autoresearch enrollment check:** Read `agents/autoresearch/targets.md`; cross-reference skills/agents updated this week. For any missing target, run 3-question candidacy: repeats? scoreable? clear failure mode? All yes → draft checklist, save to `agents/autoresearch/checklists/[slug].md`, append pending target, log enrollment.
-10. **Passive income idea queue pruning (mandatory):** Check Mission Control for tasks with title containing "Build idea:" or "[PI]" and sortOrder ≥ 500, status = todo, age > 60 days. For each: (a) does JT's current situation (active clients, skill gaps, hardware, runway) make this more or less viable than when it was created? (b) If clearly less viable or superseded by a better idea: mark as done with note "pruned in weekly synthesis — [reason]." (c) If now viable: bump to sortOrder 400 and flag in Telegram. Audit output: append `## Skills Audit — [date]` to `memory/training/training-log.md` with one line per file: `[FILENAME]: [status: current / updated X / flagged Y]`
+## Sunday Weekly Split
+**Weekly Intelligence Synthesis (8AM):** intelligence only — niche/job/content signals, strategic recommendation, and `memory/content/weekly-intel-brief.md`. Do NOT run systems maintenance here.
+
+**Weekly Systems Review (10AM):** owns maintenance — cron health, file budgets, process/config/plugin checks, cost review, training/regression drift, autoresearch enrollment, `memory/future-signals.md`, and passive-income idea pruning. If a future signal triggers: push HIGH MC task, move it to Graduated with date+trigger, and report it in the systems review. For old `[PI]`/`Build idea:` tasks sortOrder ≥500 and age >60 days: prune stale/superseded ideas or bump newly viable ones to sortOrder 400.
+
+Audit output: append a concise `## Weekly Systems Review — [date]` line to `memory/training/training-log.md` covering files checked, fixes, and deferred blockers.
 

@@ -1,0 +1,54 @@
+Config warnings:
+- plugins.entries.lossless-claw: plugin lossless-claw: duplicate plugin id detected; global plugin will be overridden by global plugin (/Users/jtsomwaru/.openclaw/npm/node_modules/@martian-engineering/lossless-claw/dist/index.js)
+{
+  "entries": [
+    {
+      "ts": 1778677352729,
+      "jobId": "ee357abb-2b58-44b8-8f03-4c152611117d",
+      "action": "finished",
+      "status": "ok",
+      "summary": "Added 2 new critical file refs; rerun passed — all critical files intact.",
+      "runAtMs": 1778677246664,
+      "durationMs": 106060,
+      "nextRunAtMs": 1778763600000,
+      "model": "gpt-5.5",
+      "provider": "openai-codex",
+      "usage": {
+        "input_tokens": 33500,
+        "output_tokens": 1959,
+        "total_tokens": 31868
+      },
+      "delivered": true,
+      "deliveryStatus": "not-requested",
+      "delivery": {
+        "intended": {
+          "channel": "telegram",
+          "to": "6608544825",
+          "source": "explicit"
+        },
+        "resolved": {
+          "ok": true,
+          "channel": "telegram",
+          "to": "6608544825",
+          "accountId": "default",
+          "source": "explicit"
+        },
+        "messageToolSentTo": [
+          {
+            "channel": "telegram",
+            "to": "6608544825"
+          }
+        ],
+        "fallbackUsed": false,
+        "delivered": true
+      },
+      "sessionId": "fa321a1a-9080-4578-ba43-4b09f0400312",
+      "sessionKey": "agent:main:cron:ee357abb-2b58-44b8-8f03-4c152611117d:run:fa321a1a-9080-4578-ba43-4b09f0400312"
+    }
+  ],
+  "total": 30,
+  "offset": 0,
+  "limit": 1,
+  "hasMore": true,
+  "nextOffset": 1
+}

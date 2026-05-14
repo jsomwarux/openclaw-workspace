@@ -86,6 +86,92 @@ Required weekly inputs:
 - If data is missing for 2 consecutive weeks, fix the metrics handoff before recommending more content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-05-13
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: Glow Index web analytics readiness (None views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: Nash Satoshi web analytics readiness (None views/impressions)
+
+### nash-satoshi / x
+- Posts/results logged: 1
+- Views/impressions: 20
+- Best item: Nash Satoshi has AI Agents averaging 77.8 across 218 tokens.
+
+While AI Infrastructure is scoring 81.0 across only 18.
+
+Does this suggest the crowded trade is agents?
+
+Is the sharpe (20 views/impressions)
+
+### vista / app_store
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: Vista App Store reporting readiness (None views/impressions)
+
+### vista / web
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: Vista web analytics readiness (None views/impressions)
+
+**Best overall:** nash-satoshi / x — Nash Satoshi has AI Agents averaging 77.8 across 218 tokens.
+
+While AI Infrastructure is scoring 81.0 across only 18.
+
+Does this suggest the crowded trade is agents?
+
+Is the sharpe (20 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
+## Metrics Summary — Week of 2026-05-12
+
+### nash-satoshi / x
+- Posts/results logged: 2
+- Views/impressions: 307
+- Engagement: likes 5, comments 0, saves 0, reposts 1
+- Best item: $GITLAWB is the now the number 3 overall ranked game theory token.
+
+"GITLAWB is building a decentralized git network that gives AI agents first-class workflow primitives and crypto (230 views/impressions)
+
+**Best overall:** nash-satoshi / x — $GITLAWB is the now the number 3 overall ranked game theory token.
+
+"GITLAWB is building a decentralized git network that gives AI agents first-class workflow primitives and crypto (230 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
+## Metrics Summary — Week of 2026-05-11
+
+### glow-index / tiktok
+- Posts/results logged: 1
+- Views/impressions: 310
+- Engagement: likes 1, comments 0, saves 0, reposts 0
+- Best item: 5 ingredients dermatologists actually avoid (310 views/impressions)
+
+### nash-satoshi / tiktok
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: The Difference Between Buying Strength And Holding Someone Else's Bags Is 4 AIs (0 views/impressions)
+
+### nash-satoshi / x
+- Posts/results logged: 7
+- Views/impressions: 1524
+- Engagement: likes 28, comments 3, saves 0, reposts 6
+- Best item: GPT 5.5, Opus 4.7, Gemini 3.1 Pro, and Grok 4 worked together and cross checked each other to produce optimal crypto token analyses with a focus on game theory positioning.
+
+Here i (437 views/impressions)
+
+**Best overall:** nash-satoshi / x — GPT 5.5, Opus 4.7, Gemini 3.1 Pro, and Grok 4 worked together and cross checked each other to produce optimal crypto token analyses with a focus on game theory positioning.
+
+Here i (437 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-05-10
 
 ### nash-satoshi / tiktok
@@ -406,7 +492,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-12_
+_Last updated: 2026-05-13_
 
 <!-- METRICS_SUMMARY_END -->
 
