@@ -24,13 +24,14 @@ CRON_JOBS = Path.home() / ".openclaw" / "cron" / "jobs.json"
 NOTION_DB_ID = "32516aff-9305-81a7-8659-eac869c71ba8"
 
 CONTENT_CRONS = {
-    "content-reminder": ["content_distribution_guard.py", "posted-log.jsonl"],
-    "content-sunday": ["posted-log.jsonl", "reply", "posted"],
+    "content-reminder": ["content_distribution_guard.py", "posted-log.jsonl", "content_pending_reply_state.py", "pending-posted-reply.json"],
+    "content-sunday": ["posted-log.jsonl", "reply", "posted", "content_pending_reply_state.py", "pending-posted-reply.json"],
     "content-generate-linkedin": ["content_distribution_guard.py", "Drive", "Notion"],
     "content-generate-x": ["content_distribution_guard.py", "notion-calendar-push.py", "posted-log.jsonl"],
 }
 
 POSTED_REPLY_HANDLER = ROOT / "scripts" / "content_posted_reply_handler.py"
+PENDING_REPLY_STATE_WRITER = ROOT / "scripts" / "content_pending_reply_state.py"
 POSTED_REPLY_DOC = ROOT / "docs" / "agents" / "content-posted-reply-handler.md"
 
 
@@ -145,6 +146,13 @@ def check_crons() -> list[str]:
         for marker in ["pending-posted-reply.json", "--dry-run", "NOTION_TOKEN", "posted_log"]:
             if marker not in text:
                 problems.append(f"posted reply handler missing marker {marker!r}")
+    if not PENDING_REPLY_STATE_WRITER.exists():
+        problems.append(f"missing pending reply state writer: {PENDING_REPLY_STATE_WRITER.relative_to(ROOT)}")
+    else:
+        text = PENDING_REPLY_STATE_WRITER.read_text(encoding="utf-8")
+        for marker in ["pending-posted-reply.json", "posted-log.jsonl", "--entries-json", "--dry-run"]:
+            if marker not in text:
+                problems.append(f"pending reply state writer missing marker {marker!r}")
     if not POSTED_REPLY_DOC.exists():
         problems.append(f"missing posted reply handler docs: {POSTED_REPLY_DOC.relative_to(ROOT)}")
     return problems

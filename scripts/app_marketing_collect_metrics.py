@@ -143,7 +143,10 @@ def main() -> int:
             print(f"WARN connector_failed platform={platform} id={post.get('url_or_id')} error={exc}", file=sys.stderr)
             continue
         if result:
-            rows.append(result)
+            if isinstance(result, list):
+                rows.extend([r for r in result if r])
+            else:
+                rows.append(result)
         else:
             skipped_by_platform[platform or "unknown"] = skipped_by_platform.get(platform or "unknown", 0) + 1
     appended = append_metrics(rows)

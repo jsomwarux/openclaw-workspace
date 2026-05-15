@@ -16,3 +16,6 @@ Last reset: 2026-05-01
 2026-05-07 [EMERGING] niche=construction — Construction AI coverage continues to show safety/documentation use cases at major builders, but no new urgent buyer trigger was verified.
 2026-05-07 [EMERGING] niche=insurance — Insurance AI coverage continues to emphasize underwriting/claims automation and governance, but today’s sources were trend-level rather than a new 90-day action trigger.
 2026-05-07 [CONFIRMS] niche=wholesale distribution — Search again surfaced Augment/Merlin wholesale-distribution AI expansion, already surfaced on 2026-05-01; treated as stale/no material update.
+2026-05-14 [EMERGING] niche=ai-tools — Monitored signal: Daily AI Agent News - Last 7 Days (https://aiagentstore.ai/ai-agent-news/this-week)
+2026-05-14 [EMERGING] niche=ai-tools — Monitored signal: Latest Agentic AI News Today | Trends, Predictions, & Analysis (https://www.forbes.com/topics/agentic-ai/)
+2026-05-14 [EMERGING] niche=ai-tools — Monitored signal: AI News & Artificial Intelligence | TechCrunch (https://techcrunch.com/category/artificial-intelligence/)

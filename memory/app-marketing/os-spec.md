@@ -36,6 +36,7 @@ No app should be “built and hoped into visibility.”
 - `memory/app-marketing/future-app-template.md` — onboarding template for new apps.
 - `memory/app-marketing/metrics-collection-status.json` — latest connector run status, skipped platform counts, failures, and non-secret readiness probes for App Store/web/X/ReelFarm/Reddit.
 - `memory/app-marketing/web-analytics-mapping-template.md` — accepted schema for GA4/Search Console/Vercel/Plausible/PostHog/local-log mappings before social volume scales.
+- `memory/app-marketing/ga4-integration-reference.md` — canonical GA4/Search Console setup and debugging reference; read before new app launches, client GA setup advice, or analytics troubleshooting. Property registry table is the source of truth for queryable properties and must stay synced with `account-map.json`.
 - `memory/app-marketing/generated-mission-control-tasks.json` — latest deduped task-generator output; weekly review must inspect created/duplicate/error counts before claiming task sync is healthy.
 
 ## Channel Roles

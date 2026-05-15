@@ -19,6 +19,9 @@ SCOREBOARD = BASE / "weekly-scoreboard.md"
 
 NUMERIC_FIELDS = [
     "views_or_impressions",
+    "active_users",
+    "pageviews",
+    "event_count",
     "likes",
     "comments",
     "saves",
@@ -26,6 +29,7 @@ NUMERIC_FIELDS = [
     "clicks",
     "downloads",
     "signups",
+    "conversions",
 ]
 
 
@@ -77,8 +81,10 @@ def summarize(entries: list[dict]) -> str:
             chunks.append(f"- Views/impressions: {totals['views_or_impressions']}")
             if totals["likes"] or totals["comments"] or totals["saves"] or totals["reposts"]:
                 chunks.append(f"- Engagement: likes {totals['likes']}, comments {totals['comments']}, saves {totals['saves']}, reposts {totals['reposts']}")
-            if totals["clicks"] or totals["downloads"] or totals["signups"]:
-                chunks.append(f"- Conversion: clicks {totals['clicks']}, downloads {totals['downloads']}, signups {totals['signups']}")
+            if totals["active_users"] or totals["pageviews"] or totals["event_count"]:
+                chunks.append(f"- Web depth: active users {totals['active_users']}, pageviews {totals['pageviews']}, events {totals['event_count']}")
+            if totals["clicks"] or totals["downloads"] or totals["signups"] or totals["conversions"]:
+                chunks.append(f"- Conversion: clicks {totals['clicks']}, downloads {totals['downloads']}, signups {totals['signups']}, conversions {totals['conversions']}")
             top_item = max(items, key=lambda x: int(x.get("views_or_impressions") or 0))
             chunks.append(f"- Best item: {top_item.get('content_id_or_hook')} ({top_item.get('views_or_impressions')} views/impressions)")
             chunks.append("")

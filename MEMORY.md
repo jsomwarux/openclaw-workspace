@@ -100,9 +100,11 @@
 - Active cron responsibilities: morning brief, heartbeat, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health.
 - 2026-05-12: Mission Control North Star audit runs in Morning Brief + heartbeat via `scripts/mission_control_north_star_audit.py`.
 - 2026-05-13: App Marketing OS gained autonomous MC task generation via `scripts/app_marketing_task_generator.py`; weekly reviews must read self-improvement rules, assign states, and rerun generator after metrics refresh.
+- 2026-05-14: App Marketing OS web analytics integrated with GA4/Search Console OAuth via `scripts/app_marketing_connectors/web_metrics.py`. Nash + Glow GA4/Search Console are live; jtsomwaru.com GA4/Search Console live. Ref: `memory/app-marketing/ga4-integration-reference.md`.
 - 2026-05-13: Spanish Daily Lesson hardened: delivery now fails loudly (`bestEffort=false`), failure alert enabled, cron prompt runs `scripts/spanish_state_check.py`, and HEARTBEAT 10AM/10PM validates Spanish state before resend/reminder.
 - 2026-05-12: Autoresearch Sweep (`ec9f36d3`) Mon/Wed/Fri 11:15AM ET; AI Ops Teardown Weekly Draft (`f96cc24f`) Sundays 7:15PM ET.
 - 2026-05-12/13: Selective routing + xhigh audit fixed content seed/Drive loop, outreach preflights/buffer, passive-income decrowding, Weekly Intelligence/System Review split, stale cron descriptions, and disabled obsolete `content-monday-send`.
+- 2026-05-14: Crypto Morning (`eve-crypto-morning-008`) now hard-requires fresh full-universe X API research before allocation delivery. Added `scripts/run-x-research.py` + `scripts/x-research-guard.py`; cron timeout is 1200s and must block/send incomplete warning if X guard fails.
 - Cron count/status changes must update this file same turn. Diagnose any cron with consecutive errors ≥2; timeout fixes should be sized from actual expected runtime.
 
 ## Health / Training / Quality Loops

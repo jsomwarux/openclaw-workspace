@@ -1,6 +1,6 @@
 # App Marketing OS — Performance Analysis
 
-Last updated: 2026-05-13
+Last updated: 2026-05-14
 
 ## glow-index / tiktok
 
@@ -93,8 +93,8 @@ Best: Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To S
 
 ## nash-satoshi / x
 
-Rows: 20
-Baseline views/impressions: 205.6
+Rows: 22
+Baseline views/impressions: 189.8
 Best: We upgraded to GPT-5.4, Gemini 3.1 Pro, and Opus 4.6 for this week's updated analyses.
 
 And it produced quite different results. Only 8 S+ t (1177 views/impressions)
@@ -170,24 +170,24 @@ Updated top 10:
 - proof:specific_token,model_names,live_ranking_data (1 winner rows, net positive)
 
 ### Conflicted Signals
-- hook:specific_number_unexpected_context (winner rows 3, loser rows 5) — do not reuse without stronger proof/tension
-- specificity:high (winner rows 3, loser rows 4) — do not reuse without stronger proof/tension
+- hook:specific_number_unexpected_context (winner rows 3, loser rows 7) — do not reuse without stronger proof/tension
+- specificity:high (winner rows 3, loser rows 6) — do not reuse without stronger proof/tension
 - topic:model_consensus (winner rows 2, loser rows 4) — do not reuse without stronger proof/tension
 - proof:model_names (winner rows 2, loser rows 4) — do not reuse without stronger proof/tension
-- topic:rankings_update (winner rows 1, loser rows 1) — do not reuse without stronger proof/tension
+- topic:rankings_update (winner rows 1, loser rows 3) — do not reuse without stronger proof/tension
 - format:status_update (winner rows 1, loser rows 1) — do not reuse without stronger proof/tension
-- format:single_post (winner rows 1, loser rows 3) — do not reuse without stronger proof/tension
-- cta:rankings_check (winner rows 1, loser rows 2) — do not reuse without stronger proof/tension
+- format:single_post (winner rows 1, loser rows 5) — do not reuse without stronger proof/tension
+- cta:rankings_check (winner rows 1, loser rows 3) — do not reuse without stronger proof/tension
 
 ### Losing Feature Pattern
-- hook:specific_number_unexpected_context (5)
+- hook:specific_number_unexpected_context (7)
+- specificity:high (6)
+- format:single_post (5)
 - topic:model_consensus (4)
-- specificity:high (4)
 - proof:model_names (4)
 - specificity:low (4)
 - proof:none (4)
 - format:question_prompt (3)
-- format:single_post (3)
 
 ### Recommendation
 - Double down on rankings_update using specific_number_unexpected_context with high specificity.

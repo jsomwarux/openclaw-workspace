@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-13T18:06:11.482Z",
+  "updatedAt": "2026-05-14T15:04:41.516Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -1149,20 +1149,22 @@
       "endLine": 210,
       "source": "memory",
       "snippet": "- `health-constraint-layer.md` now includes max deep-work load and protected task categories. - Weekly cron prompt now enforces Eve-autonomous/JT-only/blocked labels and avoids cron bloat. ## Altmark Group Client Update — 7:56 PM - JT reported active AI implementation work for Altmark Group (`https://www.altmarkgroup.com/`). - Yair, CFO, reached out on Twitter asking whether JT could build automation systems; JT said yes, met at Altmark's Bronx office, scoped workflows, wrote proposal, and began delivery. - Current status: insurance expiration workflow finished; dedicated PC set up and planned for delivery to office next week; rent delinquency workflow waiting on 50% deposit before work",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2,
+      "totalScore": 3,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-02T11:42:40.126Z",
-      "lastRecalledAt": "2026-05-10T23:33:01.220Z",
+      "lastRecalledAt": "2026-05-14T15:04:41.516Z",
       "queryHashes": [
         "507f676613aa",
-        "df59122f6250"
+        "df59122f6250",
+        "9667b21a3f50"
       ],
       "recallDays": [
         "2026-05-02",
-        "2026-05-10"
+        "2026-05-10",
+        "2026-05-14"
       ],
       "conceptTags": [
         "health-constraint-layer.md",
@@ -2522,6 +2524,130 @@
         "app-marketing-metrics.py",
         "parse",
         "metrics"
+      ]
+    },
+    "memory:memory/2026-05-13.md:26:37": {
+      "key": "memory:memory/2026-05-13.md:26:37",
+      "path": "memory/2026-05-13.md",
+      "startLine": 26,
+      "endLine": 37,
+      "source": "memory",
+      "snippet": "## XHigh Systems Sweep 16:xx - Started ranked xhigh systems sweep after Passive Income repair exposed broader optimization risk. - Created `memory/audits/xhigh-systems/2026-05-13-master-plan.md`. - Spawned first three critical audits: Consulting/Outreach, Job Market, Morning Brief/North Star. ## Strategy Jobs Pack MC Tasks 16:xx - Optimized Mission Control tasks from Strategy Jobs Pack. Closed completed deliverable tasks for Guyana capability brief, Altmark repeatable offer design, and Yair referral proof package. - Updated active Altmark/Guyana tasks with exact source files and done states. - Added 5 missing next-action tasks: Strategy Jobs Pack review, Guyana first family-network intro ask",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-14T12:53:18.764Z",
+      "lastRecalledAt": "2026-05-14T12:53:18.764Z",
+      "queryHashes": [
+        "821fe7c28fa6"
+      ],
+      "recallDays": [
+        "2026-05-14"
+      ],
+      "conceptTags": [
+        "network",
+        "consulting/outreach",
+        "brief/north",
+        "altmark/guyana",
+        "next-action",
+        "family-network",
+        "xhigh",
+        "systems"
+      ]
+    },
+    "memory:memory/2026-05-11.md:178:199": {
+      "key": "memory:memory/2026-05-11.md:178:199",
+      "path": "memory/2026-05-11.md",
+      "startLine": 178,
+      "endLine": 199,
+      "source": "memory",
+      "snippet": "- Saved screenshots to `memory/reelfarm/screenshots/vista-automation-a/`. - Created `memory/reelfarm/vista-automation-a-current.md` as the current-settings artifact; extraction pending due local image/OCR dependency issue (`sharp`/OCR unavailable). - Treat screenshots as source of truth for current settings once OCR/vision is available. ## ReelFarm Screenshots — Vista Automation B - JT sent 7 screenshots for Vista ReelFarm Automation B. - Saved screenshots to `memory/reelfarm/screenshots/vista-automation-b/`. - Created `memory/reelfarm/vista-automation-b-current.md` as the current-settings artifact; extraction pending due local image/OCR dependency issue (`sharp`/OCR unavailable). - Treat s",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-14T13:40:41.227Z",
+      "lastRecalledAt": "2026-05-14T13:40:41.227Z",
+      "queryHashes": [
+        "8ceb7678ac0b"
+      ],
+      "recallDays": [
+        "2026-05-14"
+      ],
+      "conceptTags": [
+        "current-settings",
+        "image/ocr",
+        "ocr/vision",
+        "saved",
+        "screenshots",
+        "reelfarm",
+        "vista",
+        "automation"
+      ]
+    },
+    "memory:memory/2026-05-11.md:195:215": {
+      "key": "memory:memory/2026-05-11.md:195:215",
+      "path": "memory/2026-05-11.md",
+      "startLine": 195,
+      "endLine": 215,
+      "source": "memory",
+      "snippet": "- JT sent Nash Satoshi Automation A screenshots. - Saved screenshots to `memory/reelfarm/screenshots/nash-automation-a/`. - Extracted current settings into `memory/reelfarm/nash-automation-a-current.md`. - Key extracted issue: `Post as draft` is ON, which blocks Auto-music; compatible with manual warm-up, but not with fully autonomous scheduled posting plus music. ## Heartbeat 15:05 - Pending task check: no actionable pending urgent items surfaced from `tasks/pending.jsonl`. - Cost alerts: none (`[]`). - Cron health: `openclaw cron list` checked; no consecutiveErrors/error/deliveryError lines surfaced. - No user-facing alert needed. ## ReelFarm Extraction — Vista Automations A/B - Extracte",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-14T13:40:41.227Z",
+      "lastRecalledAt": "2026-05-14T13:40:41.227Z",
+      "queryHashes": [
+        "8ceb7678ac0b"
+      ],
+      "recallDays": [
+        "2026-05-14"
+      ],
+      "conceptTags": [
+        "auto-music",
+        "warm-up",
+        "tasks/pending.jsonl",
+        "user-facing",
+        "a/b",
+        "sent",
+        "nash",
+        "satoshi"
+      ]
+    },
+    "memory:memory/2026-05-07.md:17:28": {
+      "key": "memory:memory/2026-05-07.md:17:28",
+      "path": "memory/2026-05-07.md",
+      "startLine": 17,
+      "endLine": 28,
+      "source": "memory",
+      "snippet": "- Material next blocker remains JT-side: send/use the Altmark rent delinquency checklist with Yair before starting build work. ## Content Generation Audit 09:40 - JT flagged daily/weekly posts as outdated, repetitive, and misaligned with current goals. - Audited content rules, content voice, current weekly file, swipe references, content signals, recent builds, consulting observations, and live cron payloads. - Root cause: generators were passing formal style checks but lacked a mandatory current-efforts source, over-relied on stale/old proof points and generic static prompt patterns, and did not strongly force fresh platform/niche trend mechanics into every slot. - Created `memory/content/",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-14T13:40:41.227Z",
+      "lastRecalledAt": "2026-05-14T13:40:41.227Z",
+      "queryHashes": [
+        "8ceb7678ac0b"
+      ],
+      "recallDays": [
+        "2026-05-14"
+      ],
+      "conceptTags": [
+        "jt-side",
+        "send/use",
+        "daily/weekly",
+        "current-efforts",
+        "over-relied",
+        "stale/old",
+        "platform/niche",
+        "memory/content"
       ]
     }
   }

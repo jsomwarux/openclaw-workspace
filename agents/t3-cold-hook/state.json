@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-05-12",
+  "last_run": "2026-05-14",
   "drafted": [
     "new-age-global-builders",
     "essential-property-management",
@@ -42,7 +42,15 @@
     "petri-plumbing-heating-cooling-drain-cleaning",
     "rsi-international-inc-rsi-mga",
     "mackoul-risk-solutions",
-    "brooks-waterburn-corp-waterburn-insurance"
+    "brooks-waterburn-corp-waterburn-insurance",
+    "air-tactical-hvac-services",
+    "michaels-electrical-supply-corp",
+    "five-boro-building-supply",
+    "sicilian-building-materials-stucco-supply",
+    "maximus-property-management-services-llc",
+    "jfa-insurance-brokerage-associates-inc",
+    "lincoln-brokerage-corp",
+    "gfi-insurance-brokerage-inc"
   ],
   "skipped_no_channel": [
     "fargo-hvac-supply",
@@ -90,6 +98,10 @@
     "sentinel-risk-advisors",
     "cobalt-insurance-brokerage-nyc-area",
     "national-insurance-brokerage-of-new-york-inc-nibony",
-    "jasco-plumbing-heating-supply-inc"
+    "jasco-plumbing-heating-supply-inc",
+    "one-stop-management-llc",
+    "3d-hvac-supplies-corp",
+    "east-coast-paper",
+    "amaf-supply-inc"
   ]
 }

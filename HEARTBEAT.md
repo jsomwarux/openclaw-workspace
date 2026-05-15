@@ -12,7 +12,7 @@ Deliver to JT via Telegram:
    - Notion: `set -a; source ~/.config/env/global.env; set +a; python3 scripts/notion-swipe-fetch.py --platform X --niche "Crypto" --niche "AI Agents" --niche "x402" --niche "Nash Satoshi" --limit 12 --min-engagement 0 --since-days 14`
    - X: `cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env && bun run x-search.ts search "(AI agent tokens OR crypto AI agents OR x402 OR DeFAI OR verifiable inference) -airdrop -giveaway -whitelist" --quick --sort likes --since 7d --limit 10`
    - <3 usable current inputs → label `RECENT_NASH_SWIPE_GAP`; use archived examples only as mechanics, not trend proof.
-   X must be token-specific, reply-hook first, dwell-friendly, repost-worthy, no links/hashtags/hype. Reddit: community-native, discussion-first, non-promo, different from X, with `SUBREDDIT:` + rationale or `SUBREDDIT: SKIP — [reason]`. Include Nash only when non-generic. Save output/skip reason to `memory/app-marketing/daily-nash/YYYY-MM-DD.md`.
+   X must be token-specific, reply-hook first, dwell-friendly, repost-worthy, no links/hashtags/hype. Reddit: community-native, discussion-first, non-promo, different from X, with `SUBREDDIT:` + rationale or `SUBREDDIT: SKIP — [reason]`. Include Nash only when non-generic. Save output/skip reason to `memory/app-marketing/daily-nash/YYYY-MM-DD.md`. **Delivery requirement:** the Morning Brief must include the FULL Daily X Post text and FULL Daily Reddit Draft inline (subreddit/rationale, title, and body). Do not replace drafts with a file path, summary, teaser, or “saved to” line only.
 
 4. **Daily @dynastyjig gate:** read sports-gm skill/targets + latest report/snapshot + fresh X/sports swipe. Include `Native pattern teardown` + `Rejected generic patterns`; draft from native syntax, not topics. Public draft needs current player/news/market specificity (player, rookie tier, team, pick range, betting market, rank gap, card/unit/leg) or `SKIP_SLOT`. Products invisible; no broad rebuild/parlay aphorisms.
 
@@ -43,7 +43,7 @@ Deliver to JT via Telegram:
    - Push a HIGH MC task only when the event has exact date/venue, clear buyer/operator ICP relevance, and a specific reason JT should attend.
    - Append researched results or “no strong event found” to `memory/networking/events.md`, and include 📅 Events section only for actionable events.
 
-Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash X+Reddit, Dynasty X, one action
+Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash X+Reddit full drafts, Dynasty X, one action
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK

@@ -10,6 +10,10 @@ Accepted source groups/keys:
 - `search_console`: Search Console rows with `site_url`.
 - `web_analytics`: generic rows for Vercel/Plausible/PostHog/local CSV/log exports.
 
+Credential pattern:
+- GA4/Search Console uses the shared OAuth refresh token in secure env only: `GA4_OAUTH_CLIENT_ID`, `GA4_OAUTH_CLIENT_SECRET`, `GA4_OAUTH_REFRESH_TOKEN`.
+- Never paste OAuth token/secret values into docs, account-map, logs, Drive, GitHub, or chat.
+
 Accepted mapping fields:
 - `property_id` — GA4 property ID or provider property ID.
 - `site_url` — Search Console URL property/domain property.
@@ -63,7 +67,7 @@ python3 scripts/app_marketing_connectors/web_metrics.py
 python3 scripts/app_marketing_collect_metrics.py
 ```
 
-Done state: `memory/app-marketing/web-analytics-status.json` removes the app from `blocked_products`, or records a precise provider/auth/log-path blocker.
+Done state: `memory/app-marketing/web-analytics-status.json` removes the app from `blocked_products`, or records a precise provider/auth/verification/log-path blocker. For GA4, also verify that `scripts/app_marketing_collect_metrics.py` appends a `status: ga4_ok` row to `memory/app-marketing/metrics-inbox.jsonl`.
 
 Guardrails:
 - Do not paste GA4/Search Console/Vercel/Plausible/PostHog secrets into this file or account-map.

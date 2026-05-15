@@ -1,6 +1,6 @@
 # App Marketing OS — Optimization Rules
 
-Last updated: 2026-05-13
+Last updated: 2026-05-14
 
 Use this file before generating future app/product content.
 
@@ -41,23 +41,23 @@ Use this file before generating future app/product content.
 - format:list/ranking (1 winner rows, net positive vs losers)
 - proof:specific_token,model_names,live_ranking_data (1 winner rows, net positive vs losers)
 ### Conflicted — do not blindly reuse
-- hook:specific_number_unexpected_context (winner rows 3, loser rows 5)
-- specificity:high (winner rows 3, loser rows 4)
+- hook:specific_number_unexpected_context (winner rows 3, loser rows 7)
+- specificity:high (winner rows 3, loser rows 6)
 - topic:model_consensus (winner rows 2, loser rows 4)
 - proof:model_names (winner rows 2, loser rows 4)
-- topic:rankings_update (winner rows 1, loser rows 1)
+- topic:rankings_update (winner rows 1, loser rows 3)
 - format:status_update (winner rows 1, loser rows 1)
-- format:single_post (winner rows 1, loser rows 3)
-- cta:rankings_check (winner rows 1, loser rows 2)
+- format:single_post (winner rows 1, loser rows 5)
+- cta:rankings_check (winner rows 1, loser rows 3)
 ### Avoid / Rework
-- hook:specific_number_unexpected_context (5 loser rows)
+- hook:specific_number_unexpected_context (7 loser rows)
+- specificity:high (6 loser rows)
+- format:single_post (5 loser rows)
 - topic:model_consensus (4 loser rows)
-- specificity:high (4 loser rows)
 - proof:model_names (4 loser rows)
 - specificity:low (4 loser rows)
 - proof:none (4 loser rows)
 - format:question_prompt (3 loser rows)
-- format:single_post (3 loser rows)
 ### Generation Instruction
 - Generate new posts by reusing only validated net-positive structures/topics. Do not reuse conflicted features without adding new proof, specificity, or tension.
 - If a feature appears in both winners and losers, treat it as unresolved until it repeats with clean performance.

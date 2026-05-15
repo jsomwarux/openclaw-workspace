@@ -74,3 +74,45 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Owner surface:** cron payload for `eve-crypto-morning-008` and `HEARTBEAT.md` missed-cron/delivery checks.
 - **Recovery:** resend `telegram-summary.txt` to JT, then patch cron if explicit send requirement is absent.
 - **Last verified:** 2026-05-11 — cron payload patched and manual resend succeeded.
+
+## Active Check — Crypto Morning X Research Allocation Gate
+- **Failure covered:** Crypto Morning allocation delivered without fresh X/API research, relying on prices/web/whale data while treating X as skippable for cost.
+- **Check cadence:** Every Crypto Morning full-analysis before allocation scoring and again before Telegram send.
+- **Check:** Run `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/x-research-guard.py --max-age-hours 3`; it must verify fresh `data/x-research-latest.json` with one entry for `__NARRATIVE__` plus every ticker in `data/portfolio.json`, and no failed X commands.
+- **Failure action:** Do not send allocation. Send JT `⚠️ Crypto analysis incomplete — X research failed/stale: [reason]`.
+- **Owner surface:** `eve-crypto-morning-008` cron payload, `/Users/jtsomwaru/projects/crypto-agent/CLAUDE.md`, `scripts/run-x-research.py`, `scripts/x-research-guard.py`, `config/settings.yaml`.
+- **Last verified:** 2026-05-14 — full X pass 20/20 commands succeeded; guard passed with portfolio coverage 20/20.
+
+## Active Check — LinkedIn Semantic Topic Cooldown
+- **Failure covered:** Weekly/daily content recommends the same LinkedIn idea in new wording because older manually posted rows are not marked `posted=true` and exact-text duplicate checks miss semantic repeats.
+- **Check cadence:** Every content reminder before delivery and every weekly content generation audit.
+- **Check:** `scripts/content_distribution_guard.py --weekly memory/content/weekly-YYYY-MM-DD.md --check-notion-script` must scan current/future weekly sections against `memory/content/posted-log.jsonl` topic clusters over a 45-day cooldown, regardless of `posted` flag.
+- **Failure action:** Do not deliver the repeated post. Replace with a fresh current-effort/trend-backed slot or send a regeneration blocker.
+- **Owner surface:** `scripts/content_distribution_guard.py`, content reminder cron, Sunday content cron, `docs/agents/content-rules.md`.
+- **Last verified:** 2026-05-14 — repeated Agentforce boundary slot failed, replacement passed guard + content calendar audit.
+
+## Active Check — Morning Brief Nash Full-Draft Delivery
+- **Failure covered:** Morning Brief summarizes Nash X/Reddit drafts or only gives a saved file path instead of delivering usable post copy.
+- **Check cadence:** Every Morning Brief with Nash content.
+- **Check:** Final brief must include full Daily X Post text and full Reddit draft with subreddit/rationale, title, and body. Cron payload must include `NASH DELIVERY CONTRACT`.
+- **Failure action:** Regenerate/resend the Nash section inline; shorten lower-priority sections first if needed.
+- **Owner surface:** `HEARTBEAT.md` Morning Brief section + `eve-morning-brief-001` cron payload.
+- **Last verified:** 2026-05-14 — HEARTBEAT and cron payload patched.
+
+## Portfolio/site deploy inventory diff
+- **Trigger:** Any jtsomwaru.com Work/App/Client Outcomes restructuring or portfolio-card deploy.
+- **Check:** Compare previous visible cards to proposed visible cards. Every removed or renamed proof asset must be labeled `approved removal`, `anonymized rename`, or `blocked pending proof`. Client-name anonymization must still keep JT's expected work visible in a recognizable proof bucket.
+- **Fail condition:** A live app/project disappears from visible Work/App sections without explicit JT approval, or paid client work becomes invisible because it was only renamed generically.
+- **Owner surface:** portfolio-card/site-update workflow.
+
+## Client outcome attribution check
+- **Trigger:** Any portfolio/site deploy or answer involving client-work ownership, public proof, metrics, or case-study attribution.
+- **Check:** For every client outcome card or claim, verify `project slug -> actual client -> source file -> public label`. Accepted sources: `memory/clients/*/status.md`, proposal extracts, acceptance checklists, or current project source data when it explicitly names the client.
+- **Fail condition:** Claiming a client owns work based on generic/anonymized labels, or changing public labels without preserving an internal mapping.
+- **Owner surface:** portfolio-card/site-update workflow and client proof pipeline.
+
+## Public proof privacy grep check
+- **Trigger:** Any site, LinkedIn, outreach, portfolio, Drive-shareable, or public content update that references client work, proposals, paid work, or metrics.
+- **Check:** Grep public/shareable files for real client names and exact proposal/deal amounts before publishing. Default labels must be anonymized by role/segment/city. Exact amounts require an explicit approval note from JT.
+- **Fail condition:** Public copy contains unapproved client names, private stakeholder names, proposal totals, deposit amounts, or exact use-case prices.
+- **Owner surface:** portfolio-card workflow, high-stakes draft review, site deploy workflow, client proof pipeline.

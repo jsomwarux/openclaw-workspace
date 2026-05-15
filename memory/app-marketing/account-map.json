@@ -45,29 +45,58 @@
   ],
   "google_analytics": [
     {
-      "product_slug": "vista",
-      "property_id": null,
-      "status": "needs_ga4_property_id",
+      "product_slug": "jtsomwaru-com",
+      "property_id": "537855872",
+      "measurement_id": "G-EGPE6ZNQ56",
+      "domain": "https://jtsomwaru.com/",
+      "status": "pending_deploy_env",
       "provider": "ga4",
-      "notes": "Add property_id only after secure auth/access path exists."
+      "notes": "GA4 code added locally 2026-05-14. Queryable via OAuth; production transmission requires Vercel env + redeploy."
     },
     {
       "product_slug": "nash-satoshi",
-      "property_id": null,
-      "status": "needs_ga4_property_id",
+      "property_id": "537280145",
+      "measurement_id": "G-BCVXQ3CYZS",
+      "domain": "https://nashsatoshi.com/",
+      "status": "live",
       "provider": "ga4",
-      "notes": "Add property_id only after secure auth/access path exists."
+      "notes": "Confirmed transmitting production events 2026-05-14. Uses shared OAuth refresh token from secure env."
     },
     {
       "product_slug": "glow-index",
-      "property_id": null,
-      "status": "needs_ga4_property_id_or_alternate_web_source",
+      "property_id": "537965547",
+      "measurement_id": "G-YH902137XF",
+      "domain": "https://glowindex.co/",
+      "status": "live",
       "provider": "ga4",
-      "notes": "Add property_id only after secure auth/access path exists."
+      "notes": "Confirmed transmitting production events 2026-05-14. Custom events include paywall_viewed, checkout_started, sign_in_started, billing_portal_opened, view_product, vote_upvoted, vote_request_submitted, vote_seed_clicked."
+    }
+  ],
+  "search_console": [
+    {
+      "product_slug": "nash-satoshi",
+      "provider": "search_console",
+      "site_url": "sc-domain:nashsatoshi.com",
+      "status": "verified",
+      "notes": "Verified domain property with siteOwner permission. Corrected 2026-05-14 after JT clarified DNS was already verified."
+    },
+    {
+      "product_slug": "glow-index",
+      "provider": "search_console",
+      "site_url": "sc-domain:glowindex.co",
+      "status": "verified",
+      "notes": "Verified and queryable domain property with siteOwner permission."
+    },
+    {
+      "product_slug": "jtsomwaru-com",
+      "provider": "search_console",
+      "site_url": "sc-domain:jtsomwaru.com",
+      "status": "verified",
+      "notes": "Verified/queryable domain property with siteOwner permission as of 2026-05-14."
     }
   ],
   "_schema": {
-    "version": "2026-05-13",
+    "version": "2026-05-14",
     "template": "memory/app-marketing/web-analytics-mapping-template.md",
     "accepted_web_mapping_fields": [
       "property_id",
@@ -77,6 +106,7 @@
       "plausible_site_id",
       "posthog_project_id"
     ],
-    "credential_rule": "Store credentials only in approved secure env/config surfaces, never in account-map/docs/chat."
+    "credential_rule": "Store credentials only in approved secure env/config surfaces, never in account-map/docs/chat.",
+    "ga4_reference": "memory/app-marketing/ga4-integration-reference.md"
   }
 }

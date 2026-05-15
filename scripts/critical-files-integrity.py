@@ -66,6 +66,7 @@ FILE_REFS = {
     "skills/high-stakes-draft-eval/SKILL.md": "62739dbcdeff58a46a1dd24fcb25889ccf053758",
     "agents/mission-control-priority-auditor/AGENT.md": "3e4cc2bf2da3cae470cf6f4737eb9ce9cb0897f4",
     "agents/ai-ops-teardown/AGENT.md": "3e4cc2bf2da3cae470cf6f4737eb9ce9cb0897f4",
+    "skills/ai-governance-readiness/SKILL.md": "f245c53eeb57a7a1f1c9601fc8663471bed66b8f",
 }
 
 def get_git_lines(file_path, ref):

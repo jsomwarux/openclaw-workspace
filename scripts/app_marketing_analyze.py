@@ -195,6 +195,17 @@ def main() -> int:
     rows=load_rows()
     groups=defaultdict(list)
     for r in rows:
+        # Readiness/blocker rows are useful in the scoreboard, but they should not
+        # poison content-generation optimization rules. Only successful metric rows
+        # with numeric exposure values belong in performance feature analysis.
+        if r.get('status') and not str(r.get('status')).endswith('_ok') and r.get('status') not in {'local_csv'}:
+            continue
+        if r.get('views_or_impressions') is None:
+            continue
+        # Web analytics rows are channel feedback, not post copy. They should
+        # inform distribution scoring without generating hook/topic reuse rules.
+        if r.get('platform') in {'web', 'search_console'}:
+            continue
         groups[(r.get('product_slug') or 'unknown', r.get('platform') or 'unknown')].append(r)
 
     lines=["# App Marketing OS — Performance Analysis", "", f"Last updated: {date.today().isoformat()}", ""]

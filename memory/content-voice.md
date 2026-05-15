@@ -269,6 +269,9 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 | Date | Proof Point | Verified Detail | Demonstrates | Status |
 |---|---|---|---|---|
+| 2026-05-14 | jtsomwaru.com Public Proof Privacy Pass | Anonymized client names and removed exact proposal amounts from site proof copy; production verified clean for Aya/Altmark/Lady D/exact amount hits. | Public proof hygiene, privacy-safe case-study packaging | Complete |
+| 2026-05-14 | jtsomwaru.com Client Outcome Attribution Fix | Corrected Aya vs Altmark site attribution, added Altmark local-first automation detail page, restored Adversight AI to Apps; build/lint passed and commit `25b9563` pushed. | Proof attribution discipline, client-work packaging, portfolio inventory preservation | Complete |
+| 2026-05-14 | jtsomwaru.com Positioning + Roles Update | Shipped balanced Work buckets, updated niches/About/tools, new `/roles` page, footer links, and AI-search metadata; build/lint passed; pushed commit `fce1480`; production `/` and `/roles` returned HTTP 200. | Consulting positioning, proof-tier hygiene, recruiter/buyer path separation | Complete |
 | 2026-05-10 | jtsomwaru.com AI Operations Systems Overview | Added homepage capability matrix + AI Ops Teardowns section to make consulting range legible fast; pushed commit `5c163af`. | Buyer-facing site positioning, AI ops proof packaging | Complete |
 | 2026-05-10 | jtsomwaru.com StreetEasy Metric Correction | Tightened homepage claim from “10+ hrs/week” to “4 hrs / 2 weeks” to match project detail data; build/lint passed and pushed commit `a164e4b`. | Proof discipline, conservative client-outcome claims | Complete |
 | 2026-05-07 | Nash Satoshi Methodology SEO Page | Shipped public `/methodology` page with sitemap/robots/llms.txt exposure; GitHub synced at `5473082`; `npm run check` and `npm run build` passed. | AI-search/GEO product trust page | Complete |

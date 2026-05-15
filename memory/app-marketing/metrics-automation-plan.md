@@ -92,23 +92,25 @@ Best path:
 Do not store Apple private key, vendor number, or account secrets in workspace docs.
 
 ### Website Analytics — Nash / Vista / Glow
-Feasibility: depends on analytics provider.
+Feasibility: high for GA4 once the app has a GA4 property ID and OAuth credential access; medium for Search Console until DNS/property verification clears.
 
-Current state:
-- `scripts/app_marketing_connectors/web_metrics.py` emits readiness and supports local CSV/log paths.
+Current state as of 2026-05-14:
+- `scripts/app_marketing_connectors/web_metrics.py` supports live GA4 OAuth collection, Search Console collection after verification, and local CSV/log fallback.
+- Credential pattern: shared OAuth refresh token in secure env only (`GA4_OAUTH_CLIENT_ID`, `GA4_OAUTH_CLIENT_SECRET`, `GA4_OAUTH_REFRESH_TOKEN`) with `analytics.readonly` + `webmasters.readonly` scopes. Do not store token values in docs or account-map.
+- Nash Satoshi is live: GA4 property `537280145`, measurement `G-BCVXQ3CYZS`, domain `https://nashsatoshi.com/`. First test pull returned `ga4_ok` for 2026-05-07 to 2026-05-13.
+- Nash Search Console is live as verified domain property `sc-domain:nashsatoshi.com`.
+- Glow Search Console is live as verified domain property `sc-domain:glowindex.co`.
+- Glow Index GA4 is live: property `537965547`, measurement `G-YH902137XF`, domain `https://glowindex.co/`.
+- jtsomwaru.com/Vista is not started for GA4 or Search Console.
 - Mapping template: `memory/app-marketing/web-analytics-mapping-template.md`.
-- `memory/app-marketing/web-analytics-status.json` currently reports Vista, Nash Satoshi, and Glow Index blocked because no GA4/Search Console/Vercel/Plausible/PostHog property or local `log_path` is mapped.
-
-Options:
-- GA4 / Google Search Console property IDs with service-account access.
-- Vercel Analytics API if available.
-- Plausible/PostHog if installed.
-- Server logs/local CSV export if self-hosted/Replit logs can be exported.
+- Canonical setup/debugging reference: `memory/app-marketing/ga4-integration-reference.md`; read this before any new app analytics launch or GA/Search Console client advice.
 
 Best path:
-- Add one concrete source per app to `memory/app-marketing/account-map.json` (`property_id`, `site_url`, `log_path`, `vercel_project`, `plausible_site_id`, or `posthog_project_id`).
-- Run `python3 scripts/app_marketing_connectors/web_metrics.py` and verify the app leaves `blocked_products`.
-- Add provider-specific fetching only after the source mapping exists; do not guess providers.
+- Keep GA4 rows in `memory/app-marketing/account-map.json`; credentials stay in secure env only.
+- Run `python3 scripts/app_marketing_connectors/web_metrics.py` for readiness and `python3 scripts/app_marketing_collect_metrics.py` for weekly collection.
+- Use GA4 sessions/active users/events as the durable discovery feedback layer for SEO/GEO/directory work.
+- Use Search Console domain-property rows (`sc-domain:...`) when available; URL-prefix strings can 403 even when the domain property is verified.
+- Do not scale SEO/GEO/directory volume for a product without live measurement unless the task is specifically to fix measurement.
 
 ## Recommended Architecture
 

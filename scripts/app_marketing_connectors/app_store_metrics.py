@@ -77,6 +77,13 @@ def _safe_api_get(path: str, token: str, *, raw: bool = False, accept: str = "ap
         return False, None, f"{type(e).__name__}: {e}"
 
 
+def _is_no_sales_report(err: str | None) -> bool:
+    if not err:
+        return False
+    lowered = err.lower()
+    return "http 404" in lowered and "no sales for the date specified" in lowered
+
+
 def readiness() -> dict:
     """Return non-secret App Store connector readiness for audit/status reports."""
     _load_env()
@@ -109,6 +116,13 @@ def readiness() -> dict:
                 if ok:
                     reporting_status = "sales_report_ready"
                     status = "reporting_ready"
+                elif _is_no_sales_report(err):
+                    # Apple returns 404 when the vendor/reporting path is valid but the
+                    # selected report date has no sales. Treat that as reporting access
+                    # working with a zero-sales day, not a permission/config blocker.
+                    reporting_status = "sales_report_ready_zero_sales"
+                    status = "reporting_ready"
+                    reporting_error = None
                 else:
                     reporting_status = "reporting_blocked_or_permission_gap"
                     reporting_error = err
@@ -137,7 +151,7 @@ def readiness() -> dict:
         "approved_secret_surface": "approved env/config only; never docs/chat/repo",
         "diagnostic_command": "cd ~/.openclaw/workspace && python3 scripts/app_marketing_connectors/app_store_metrics.py",
         "collector_command": "cd ~/.openclaw/workspace && python3 scripts/app_marketing_collect_metrics.py",
-        "next_action": "If reporting_status is vendor_number_needed, add APPSTORE_VENDOR_NUMBER securely. If permission-blocked, fix Apple reporting role/agreements. Metadata auth already works.",
+        "next_action": "If reporting_status starts with sales_report_ready, App Store reporting access is wired; wait for sales/download report availability or expand report-date scanning. If permission-blocked, fix Apple reporting role/agreements.",
     }
     STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
     STATUS_PATH.write_text(json.dumps(result, indent=2))
@@ -170,7 +184,7 @@ def fetch(post: dict) -> dict | None:
         "captured_at": captured,
         "status": info.get("status"),
         "reporting_status": info.get("reporting_status"),
-        "notes": "App Store metadata auth works; reporting metrics require vendor number/Apple reporting access.",
+        "notes": "App Store metadata auth works; sales report access is wired when reporting_status starts with sales_report_ready. Apple may return zero/no-sales for quiet dates.",
         "blocked_details": info.get("blocked_details"),
     }
 

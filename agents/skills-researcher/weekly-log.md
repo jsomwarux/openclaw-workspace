@@ -26,3 +26,22 @@
 [2026-05-12] 🔴 OpenClaw v2026.5.10-beta.5 — active-stack release with agent policy controls, secret redaction, symlinked memory path rejection, process/session fixes, localService model startup, and Control UI recovery panel. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.10-beta.5 | Relevance: Eve/OpenClaw runtime | First action: run `openclaw update --version v2026.5.10-beta.5`, restart gateway if prompted, then run `openclaw gateway status` and one Telegram self-test.
 
 [2026-05-13] daily scan — no new 🔴/🟠 findings passed the MC quality gate. KB'd: OpenClaw v2026.5.12-beta.4 release follow-on; OpenRouter newest models including Opus 4.7 Fast / Perceptron / Ring / Gemini Flash Lite; GitHub MCP security scanning pattern; Dualmark AI-agent-readable marketing-site tool; EliseAI property-management rollout signal. Existing OpenClaw/OpenRouter MC tasks already cover immediate actions, so no duplicate task pushed.
+
+## 2026-05-14 Daily Scan
+
+### 🔴 OpenClaw v2026.5.12-beta.8 — Telegram durability + subagent model default fixes + credential-safety hardening
+- Source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.12-beta.8
+- Relevance: JT actively runs OpenClaw through Telegram and subagents. Release fixes Telegram polling during event-loop stalls with a worker/spool, lazy cron Telegram link formatting, `sessions_spawn` subagent default-model application, stale SSE history sequencing, stale OAuth file locks, and provider credential/env-var inference safety.
+- Cost/security: free beta; install/update risk. Security-relevant because it tightens credential resolution and sandbox blocked home roots.
+- Fits: Eve/OpenClaw ops.
+- First action: open release notes, compare against current installed version, then run a non-config-changing update/smoke plan: `openclaw gateway status`, Telegram self-test, one `sessions_spawn` model/default check after update approval.
+- MC quality gate: PASS — directly relevant to active Telegram cron delivery/subagent runtime within 48h.
+- Shoutout flag: OpenClaw active tool; potential post angle: “Telegram-resilient agents need spools/workers, not just better prompts.” Tag @openclaw if posting.
+
+### 🟠 Anthropic knowledge-work-plugins small-business plugin — validated SMB workflow map with HubSpot/QuickBooks/PayPal/Google MCP connectors
+- Source: https://github.com/anthropics/knowledge-work-plugins/tree/main/small-business and commit https://github.com/anthropics/knowledge-work-plugins/commit/a0fda662dd
+- Relevance: JT's consulting ICP is ops-heavy SMBs. New plugin bundles onboarding/router plus workflows including business-pulse, cash-flow-snapshot, CRM cleanup/maintenance, customer pulse, invoice chase, lead triage, margin analyzer, sales brief, and ticket deflector. Connectors include HubSpot, QuickBooks, PayPal, Stripe, Square, Gmail, Google Calendar, Google Drive, Slack, Canva, DocuSign, MS365.
+- Cost/security: free source; external MCP connectors require OAuth/business data and must not be installed without approval. Use as architecture/reference only.
+- Fits: jt-consulting-ops / jt-consulting-pipeline / HubSpot consulting playbooks.
+- First action: copy the command/skill list into a consulting reference note and map 3 reusable OpenClaw Client OS workflows: CRM cleanup, invoice chase, business pulse.
+- MC quality gate: PASS — specific reference asset can improve current SMB consulting deliverables now without installing external connectors.

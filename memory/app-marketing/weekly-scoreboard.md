@@ -86,15 +86,30 @@ Required weekly inputs:
 - If data is missing for 2 consecutive weeks, fix the metrics handoff before recommending more content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-05-14
+
+### nash-satoshi / x
+- Posts/results logged: 2
+- Views/impressions: 64
+- Best item: $BOTCOIN jumped +18.08 points in our latest game theory rankings.
+
+"BOTCOIN implements an epoch-based proof-of-inference mining protocol where AI agents earn tokens by completing i (58 views/impressions)
+
+**Best overall:** nash-satoshi / x — $BOTCOIN jumped +18.08 points in our latest game theory rankings.
+
+"BOTCOIN implements an epoch-based proof-of-inference mining protocol where AI agents earn tokens by completing i (58 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-05-13
 
 ### glow-index / web
-- Posts/results logged: 1
+- Posts/results logged: 2
 - Views/impressions: 0
 - Best item: Glow Index web analytics readiness (None views/impressions)
 
 ### nash-satoshi / web
-- Posts/results logged: 1
+- Posts/results logged: 2
 - Views/impressions: 0
 - Best item: Nash Satoshi web analytics readiness (None views/impressions)
 
@@ -110,12 +125,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 1
+- Posts/results logged: 2
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 1
+- Posts/results logged: 2
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -190,17 +205,38 @@ Here i (437 views/impressions)
 
 ## Metrics Summary — Week of 2026-05-07
 
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-05-07 to 2026-05-13 (0 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index GA4 web traffic 2026-05-07 to 2026-05-13 (0 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-05-07 to 2026-05-13 (0 views/impressions)
+
 ### nash-satoshi / tiktok
 - Posts/results logged: 1
 - Views/impressions: 0
 - Best item: What Nash Satoshi actually measures, in 5 slides (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 4
+- Web depth: active users 2, pageviews 0, events 10
+- Best item: nash-satoshi GA4 web traffic 2026-05-07 to 2026-05-13 (4 views/impressions)
 
 ### vista / tiktok
 - Posts/results logged: 1
 - Views/impressions: 0
 - Best item: My VISTA profile after rating 400 films (0 views/impressions)
 
-**Best overall:** nash-satoshi / tiktok — What Nash Satoshi actually measures, in 5 slides (0 views/impressions)
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-05-07 to 2026-05-13 (4 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
@@ -492,7 +528,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-13_
+_Last updated: 2026-05-14_
 
 <!-- METRICS_SUMMARY_END -->
 

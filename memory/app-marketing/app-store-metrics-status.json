@@ -10,16 +10,16 @@
   "private_key_path_exists": true,
   "metadata_auth_ok": true,
   "app_name": "VISTA - Movie Taste Profiles",
-  "reporting_status": "vendor_number_needed",
+  "reporting_status": "sales_report_ready_zero_sales",
   "reporting_error": null,
-  "vendor_numbers_configured": [],
-  "status": "metadata_ready_vendor_number_needed",
-  "status_reason": "vendor_number_needed",
-  "blocked_details": [
-    "APPSTORE_VENDOR_NUMBER is missing from approved secure env/config; Apple does not expose it through the app metadata endpoint."
+  "vendor_numbers_configured": [
+    "configured"
   ],
+  "status": "reporting_ready",
+  "status_reason": "sales_report_ready_zero_sales",
+  "blocked_details": [],
   "approved_secret_surface": "approved env/config only; never docs/chat/repo",
   "diagnostic_command": "cd ~/.openclaw/workspace && python3 scripts/app_marketing_connectors/app_store_metrics.py",
   "collector_command": "cd ~/.openclaw/workspace && python3 scripts/app_marketing_collect_metrics.py",
-  "next_action": "If reporting_status is vendor_number_needed, add APPSTORE_VENDOR_NUMBER securely. If permission-blocked, fix Apple reporting role/agreements. Metadata auth already works."
+  "next_action": "If reporting_status starts with sales_report_ready, App Store reporting access is wired; wait for sales/download report availability or expand report-date scanning. If permission-blocked, fix Apple reporting role/agreements."
 }

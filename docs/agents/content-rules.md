@@ -95,7 +95,9 @@ Format: `- **[Pattern name]:** [2–3 sentences, specific enough to apply immedi
 Run after weekly content generation, after any content cron patch, or when Notion/posted-log drift is suspected:
 `python3 scripts/content_calendar_audit.py --week YYYY-MM-DD`
 Use `--with-notion` only when Notion token is available and external read checks are appropriate.
-The audit must pass locally before calling the weekly content system healthy. It checks: weekly file guard, posted-log duplicate slots, content cron guard prompts, and optional Notion duplicate/missing Drive links.
+The audit must pass locally before calling the weekly content system healthy. It checks: weekly file guard, posted-log duplicate slots, content cron guard prompts, posted-reply handler + pending-state writer presence, and optional Notion duplicate/missing Drive links.
+
+Semantic repeat guard: content delivery must also pass the topic-cooldown check in `scripts/content_distribution_guard.py`. It blocks active/future LinkedIn slots that reuse recent semantic clusters from `memory/content/posted-log.jsonl` within 45 days, even when older manual rows are still marked `posted=false`. If it fails, replace/regenerate the slot instead of delivering.
 
 ## Posted Reply Logging
 When JT replies `posted`, `posted both`, `posted LinkedIn`, `posted X`, or `posted: [url]`, use the deterministic local handler instead of manual/context-only edits:
@@ -109,6 +111,7 @@ Rules:
 1. Never mark content posted without JT's explicit `posted` reply or a verified post URL.
 2. Use `--dry-run` first if the reply is ambiguous.
 3. Platform-specific replies mark only that platform.
-4. The handler updates `memory/content/posted-log.jsonl`, consumes `memory/content/pending-posted-reply.json` when present, idempotently refuses duplicate mutation, and updates Notion Status to Posted only when exactly one date/platform row matches.
-5. Send the handler's confirmation back to JT.
-6. Full docs: `docs/agents/content-posted-reply-handler.md`.
+4. Content reminder/Sunday delivery flows should write `memory/content/pending-posted-reply.json` after sending posts using `python3 scripts/content_pending_reply_state.py --date YYYY-MM-DD --platform linkedin --platform x --source content-reminder` or exact `--entries-json`.
+5. The handler updates `memory/content/posted-log.jsonl`, consumes `memory/content/pending-posted-reply.json` when present, idempotently refuses duplicate mutation, and updates Notion Status to Posted only when exactly one date/platform row matches.
+6. Send the handler's confirmation back to JT.
+7. Full docs: `docs/agents/content-posted-reply-handler.md`.

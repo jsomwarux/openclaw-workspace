@@ -1,5 +1,7 @@
 {
   "started": "2026-03-02",
+  "current_week": 11,
+  "current_day": 62,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "goal": "Light casual conversation with girlfriend and her family",
@@ -22,15 +24,14 @@
     "no problemo habit",
     "e/y confusion (Italian vs Spanish)"
   ],
-  "focus": "speaking and listening, not writing",
-  "total_lessons_completed": 19,
-  "current_day": 61,
-  "current_week": 11,
-  "last_lesson_date": "2026-05-13",
+  "streak": 34,
+  "longest_streak": 35,
+  "lesson_streak": 35,
+  "last_lesson_date": "2026-05-14",
   "last_lesson_complete": false,
-  "lesson_streak": 34,
-  "longest_streak": 34,
-  "streak": 33,
+  "total_lessons_completed": 19,
+  "real_world_challenges_unlocked": 2,
+  "real_world_challenges_completed": [],
   "weekly_scores": [
     {
       "week": 2,
@@ -43,8 +44,7 @@
       "grade": "B+"
     }
   ],
-  "real_world_challenges_unlocked": 2,
-  "real_world_challenges_completed": [],
-  "notes": "Week 11 drift repair (2026-05-13): curriculum now defines Weeks 5-11; next lesson should continue Week 11 family-table/food conversation, not recycle Week 2.",
-  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases."
+  "focus": "speaking and listening, not writing",
+  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases.",
+  "notes": "Delivered Week 11, Thu (Asking follow-up questions) to maintain calendar/curriculum synch. Corrected longest_streak to match lesson_streak during state validation."
 }

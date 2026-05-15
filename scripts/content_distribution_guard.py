@@ -10,8 +10,10 @@ news hooks, and Notion calendar script hygiene.
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 
@@ -37,6 +39,37 @@ WEEKLY_REQUIRED = [
     "Constraint log",
     "Hook mappings",
 ]
+
+POSTED_LOG = ROOT / "memory" / "content" / "posted-log.jsonl"
+COOLDOWN_DAYS = 45
+
+TOPIC_CLUSTERS = {
+    "agentforce-boundary-escalation": [
+        "agentforce",
+        "allowed to decide",
+        "where the agent stops",
+        "knows when not to",
+        "unofficial rules",
+        "topic boundaries",
+        "escalation rules",
+        "handoff conditions",
+        "stopping point",
+        "refuses the right work",
+    ],
+    "agentforce-activation-not-implementation": [
+        "agentforce",
+        "activation",
+        "not implementation",
+        "800m arr",
+        "feature is not adoption",
+    ],
+    "streeteasy-scraper": [
+        "streeteasy",
+        "runs every 14 days",
+        "manual search work",
+        "matching listings",
+    ],
+}
 
 
 def read(path: Path) -> str:
@@ -65,6 +98,85 @@ def check_common(path: Path, text: str) -> list[str]:
     return problems
 
 
+
+def parse_date(s: str | None) -> date | None:
+    if not s:
+        return None
+    try:
+        return datetime.strptime(s[:10], "%Y-%m-%d").date()
+    except Exception:
+        return None
+
+
+def load_recent_log(days: int = COOLDOWN_DAYS) -> list[dict]:
+    rows: list[dict] = []
+    if not POSTED_LOG.exists():
+        return rows
+    cutoff = date.today() - timedelta(days=days)
+    for line in POSTED_LOG.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        d = parse_date(row.get("date") or row.get("posted_date"))
+        if d and d >= cutoff:
+            rows.append(row)
+    return rows
+
+
+def cluster_hits(text: str) -> dict[str, int]:
+    lower = text.lower()
+    return {name: sum(1 for term in terms if term in lower) for name, terms in TOPIC_CLUSTERS.items()}
+
+
+def iter_weekly_sections(text: str) -> list[tuple[str, str]]:
+    matches = list(re.finditer(r"^##+\s+", text, flags=re.M))
+    if not matches:
+        return [("full file", text)]
+    sections: list[tuple[str, str]] = []
+    for i, m in enumerate(matches):
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        chunk = text[m.start():end]
+        heading = chunk.splitlines()[0].strip("# ").strip()
+        sections.append((heading, chunk))
+    return sections
+
+
+def section_is_past(chunk: str) -> bool:
+    # Delivery guard runs daily against the weekly file. Do not let already-passed
+    # slots block today's delivery, but future/current sections still get checked.
+    m = re.search(r"\*\*Date:\*\*\s*(\d{4}-\d{2}-\d{2})", chunk)
+    if not m:
+        return False
+    d = parse_date(m.group(1))
+    return bool(d and d < date.today())
+
+
+def check_topic_cooldown(path: Path, text: str) -> list[str]:
+    problems: list[str] = []
+    recent_rows = load_recent_log()
+    for heading, chunk in iter_weekly_sections(text):
+        if section_is_past(chunk):
+            continue
+        current = cluster_hits(chunk)
+        for cluster, score in current.items():
+            # 3+ markers means the actual draft is using the cluster, not merely naming it in metadata.
+            if score < 3:
+                continue
+            terms = TOPIC_CLUSTERS[cluster]
+            for row in recent_rows:
+                if str(row.get("platform", "")).lower() != "linkedin":
+                    continue
+                blob = " ".join(str(row.get(k, "")) for k in ["topic", "pillar", "summary", "title", "day"]).lower()
+                if cluster.replace("-", " ") in blob or sum(1 for term in terms if term in blob) >= 1:
+                    problems.append(
+                        f"{rel(path)}: topic cooldown breach in {heading} for {cluster}; recent log row {row.get('date')} {row.get('topic') or row.get('title')}"
+                    )
+                    break
+    return problems
+
 def check_dynasty_pack(path: Path) -> list[str]:
     text = read(path)
     problems = check_common(path, text)
@@ -88,6 +200,7 @@ def check_weekly(path: Path) -> list[str]:
         problems.append(f"{rel(path)}: Wednesday case study lacks advisory board")
     if "None - generated from automated sources" in text and "Warning" not in text:
         problems.append(f"{rel(path)}: seedless weekly file lacks explicit warning")
+    problems.extend(check_topic_cooldown(path, text))
     return problems
 
 

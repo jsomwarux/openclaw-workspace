@@ -36,3 +36,4 @@ Primary offer: **AI Operations Diagnostic**
 - Current recommendation: tomorrow's single highest-leverage move is still Altmark PC handoff/acceptance/payment/deposit clarity; keep stale cold email pivots below warm/referral proof work.
 - 2026-05-08: Warm lead review saved at `memory/consulting/warm-lead-weekly-review-2026-05-08.md`.
 - Marketsmith support asset saved at `memory/consulting/marketsmith-product-team-discovery-plan.md`; use if product team re-engages or if no response after the 5–7 business-day follow-up window.
+- 2026-05-14 nightly: Selected the unblocked Strategy Jobs Pack use: publish/review the property insurance AI Ops Teardown with diagnostic CTA. Retired duplicate MC decision task and promoted the AI Ops Teardown task behind Altmark. Tomorrow priority remains Altmark acceptance/payment clarity first, then teardown posting if Altmark has no new update.

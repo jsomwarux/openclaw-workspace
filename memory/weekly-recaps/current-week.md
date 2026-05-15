@@ -36,3 +36,9 @@ Archive every Monday, start fresh.
 - 2026-05-13: Active client/proof pipeline audit added Altmark proof/permission/referral gates, clarified Mission Control tasks for Altmark/Guyana/Strategy Jobs Pack sequencing, and kept Yair/family-office asks gated behind acceptance/payment/proof safety.
 - 2026-05-13: Active client/proof pipeline hardening added cross-client proof gates, Aya evidence checklist, Marketsmith reactivation criteria, and one MC blocker so proof/referral asks stay gated until acceptance, evidence, and permission are verified.
 - 2026-05-13 nightly: Built `skills/ai-governance-readiness/SKILL.md`, enrolled it in autoresearch with `agents/autoresearch/checklists/ai-governance-readiness.md`, and closed the Mission Control skill-build task. This strengthens JT's AI Ops Diagnostic with concrete approval/audit/rollback guardrails.
+- 2026-05-14 overnight ops: reviewed tasks/daily notes, confirmed only Vista is high-priority and externally gated, checked cron health with no current errors or >=2-error jobs, and logged non-fatal hygiene notes for duplicate lossless-claw warning plus outreach delivery noise.
+
+- 2026-05-14: Hardened Crypto Morning allocation: added mandatory full-universe X research runner + freshness/coverage guard, patched crypto agent rules/config and cron so allocation blocks instead of sending if fresh X signal is missing.
+- 2026-05-14: Shipped jtsomwaru.com positioning + roles update: balanced Work buckets, updated niches/About/tools, new /roles page, footer links, llms/schema cleanup; build/lint passed and production /roles returned 200.
+- 2026-05-14: Fixed jtsomwaru.com client outcome attribution: Aya dashboard + StreetEasy cards, added Altmark local-first automation, restored Adversight AI; build/lint passed and pushed `25b9563`.
+- 2026-05-14: Privacy pass on jtsomwaru.com proof copy: anonymized client names, removed exact proposal amounts, verified production clean, pushed `11439c7`.

@@ -31,7 +31,16 @@ Useful flags:
 
 ## Pending state schema
 
-Content reminder/router can write this after sending a post reminder:
+After sending a post reminder, content reminder/Sunday flows should write pending state before they finish:
+
+```bash
+cd /Users/jtsomwaru/.openclaw/workspace
+python3 scripts/content_pending_reply_state.py --date YYYY-MM-DD --platform linkedin --platform x --source content-reminder
+```
+
+For exact matches, pass `--entries-json '[{"date":"YYYY-MM-DD","platform":"linkedin","day":"wednesday","topic":"..."}]'`. The writer validates against `posted-log.jsonl` when entries are inferred by date/platform/day.
+
+Schema written:
 
 ```json
 {
