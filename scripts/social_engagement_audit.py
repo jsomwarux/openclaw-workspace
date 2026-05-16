@@ -51,6 +51,40 @@ def load_json(path: Path) -> Any:
         return json.load(f)
 
 
+def load_json_array_or_jsonl(path: Path) -> list[dict[str, Any]]:
+    """Load logs that may be either a JSON array or newline-delimited JSON.
+
+    The Reddit draft log is named .jsonl and cron prompts append rows, so JSONL is
+    the durable write format. Older hardening runs wrote it as a JSON array; keep
+    backward compatibility so the validator enforces row quality instead of
+    failing on storage-shape drift.
+    """
+    raw = path.read_text(encoding="utf-8")
+    if not raw.strip():
+        return []
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        rows: list[dict[str, Any]] = []
+        for idx, line in enumerate(raw.splitlines(), 1):
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except Exception as e:  # noqa: BLE001
+                raise ValueError(f"line {idx}: {e}") from e
+            if not isinstance(row, dict):
+                raise ValueError(f"line {idx}: expected JSON object, got {type(row).__name__}")
+            rows.append(row)
+        return rows
+    if not isinstance(data, list):
+        raise ValueError(f"expected JSON array or JSONL objects, got {type(data).__name__}")
+    for idx, row in enumerate(data, 1):
+        if not isinstance(row, dict):
+            raise ValueError(f"row {idx}: expected JSON object, got {type(row).__name__}")
+    return data
+
+
 def run_json(cmd: list[str], timeout: int = 30) -> Any | None:
     try:
         cp = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
@@ -138,11 +172,9 @@ def reddit_draft_log() -> Check:
     if not p.exists():
         return Check("reddit_draft_log", "fail", "missing reddit-draft-log.jsonl")
     try:
-        data = load_json(p)
+        data = load_json_array_or_jsonl(p)
     except Exception as e:
-        return Check("reddit_draft_log", "fail", f"not valid JSON array: {e}")
-    if not isinstance(data, list):
-        return Check("reddit_draft_log", "fail", f"expected JSON array, got {type(data).__name__}")
+        return Check("reddit_draft_log", "fail", f"not valid JSON array/JSONL: {e}")
     required = {"date", "subreddit", "type", "title_or_look_for", "first_120_chars", "core_angle", "body_hash"}
     missing = []
     for idx, row in enumerate(data, 1):

@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "site:news.ycombinator.com Claude MCP AI agents tools after:2026-01-01",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-15",
+  "results": [
+    {
+      "title": "Thoughts on Claude Code 2.1.139 Agent View and Background Sessions | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48124057",
+      "description": "The first item in the 2.1.139 changelog released on 2026-05-11 was Added agent view (Research Preview). Interestingly, they even included a dedicated doc link in the changelog this time: https://code.claude.com/docs/en/agent-view · Not sure how many people here have tried it yet.",
+      "age": "2 days ago",
+      "page_age": "2026-05-13T16:25:37",
+      "source": "Hacker News"
+    },
+    {
+      "title": "Claude for Small Business | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48130950",
+      "description": "Onboarding my non-software engineer teammates to it has super-charged them and essentially given them all their own personal developer that can automate tasks for them. Managing codebases, etc. is still a hassle though · 90% of the power of Excel was that it was functionally a database that ...",
+      "age": "1 hour ago",
+      "page_age": "2026-05-15T14:05:45",
+      "source": "Hacker News"
+    },
+    {
+      "title": "I've found myself so deeply embedded in the Claude Max subscription that I'm wor... | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=47880238",
+      "description": "You can replace pretty much everything - skills system, subagents, etc with just <strong>tmux and a simple cli tool that the official clients can call</strong> · Oh and definitely disable any form of &quot;memory&quot; system",
+      "age": "1 week ago",
+      "page_age": "2026-05-09T12:35:04",
+      "source": "Hacker News"
+    },
+    {
+      "title": "Claude subscription changes coverage of `claude -p` | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48126281",
+      "description": "Still interactive (conforms to spirit of Anthropic&#x27;s new rule), and <strong>runs Claude Code via the actual CLI (conforms to letter of Anthropic&#x27;s rule), without even using the JSON output flag</strong>. It would just read the outputs directly from the terminal like a user would, and then translates the user&#x27;s ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-14T18:16:02",
+      "source": "Hacker News"
+    },
+    {
+      "title": "Claude AI recovers an 11 yrs old BTC wallet holding 400k USD | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48136240",
+      "description": "So <strong>claude drafted an email even pointing to the right Internal Revenue Code (IRS Law), and specify why we fall under a specific category</strong>. The auditor got back to me two days later admitting their mistake and said our company now qualifies for $8k in tax credits.",
+      "age": "1 day ago",
+      "page_age": "2026-05-14T16:22:54",
+      "source": "Hacker News"
+    }
+  ]
+}

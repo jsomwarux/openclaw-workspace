@@ -387,3 +387,8 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 
 **Operational note:** If provider errors persist on the next crypto-monitoring pass, diagnose web_search provider routing/config rather than relying on old market notes.
 
+## May 15, 2026 — 9PM Heartbeat Crypto Monitoring
+- **AI-agent wallet/tools signal:** Fresh results show Zerion launched an open-source CLI for AI agents to access portfolios, swaps, bridges, and signing across 40+ EVM chains + Solana. This is practical infrastructure, not just narrative.
+- **x402 / Coinbase signal:** Fresh coverage says Coinbase is still pushing autonomous payment protocols like x402 so AI assistants can make instant USDC payments. The “agents transact” thesis remains intact.
+- **Majors/flows:** Search results show BTC ETF/institutional-flow monitoring remains the key macro read; one current snippet cited US BTC ETF net inflow of 1,761 BTC and ETH ETF net outflow of 2,350 ETH.
+- **JT read:** For Nash Satoshi/content, stronger angle is now “agents need wallets + payment rails + transaction tools,” not generic AI-token hype. Watch projects with real agent execution/payment rails over pure branding.

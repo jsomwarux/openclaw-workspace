@@ -42,3 +42,6 @@ Archive every Monday, start fresh.
 - 2026-05-14: Shipped jtsomwaru.com positioning + roles update: balanced Work buckets, updated niches/About/tools, new /roles page, footer links, llms/schema cleanup; build/lint passed and production /roles returned 200.
 - 2026-05-14: Fixed jtsomwaru.com client outcome attribution: Aya dashboard + StreetEasy cards, added Altmark local-first automation, restored Adversight AI; build/lint passed and pushed `25b9563`.
 - 2026-05-14: Privacy pass on jtsomwaru.com proof copy: anonymized client names, removed exact proposal amounts, verified production clean, pushed `11439c7`.
+
+- 2026-05-15 overnight ops: reviewed high-priority task files and daily notes, confirmed no Eve-actionable high-priority items beyond externally gated Vista launch, checked cron health clean, and logged a low-risk Health Check-in delivery target normalization follow-up.
+- 2026-05-15 — Converted AI-agent opportunity thread into Agent Operations Layer Audit offer, joke-vertical validation filter, and three focused MC follow-up tasks.

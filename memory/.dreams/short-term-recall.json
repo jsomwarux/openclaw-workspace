@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-14T15:04:41.516Z",
+  "updatedAt": "2026-05-16T00:45:46.921Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -232,18 +232,20 @@
       "endLine": 92,
       "source": "memory",
       "snippet": "- No urgent emails, calendar events, or alerts detected - JT active in session until ~18:00; no proactive outreach warranted KB state: 44 items (business: 8, crypto: 11, tech: 25) — 0.25 MB ## Heartbeat 20:00 - Checked tasks.md — no urgent/overdue items - Cron status: all 4 jobs healthy; morning brief ran successfully today (lastStatus: ok, 65s duration) - Health check-in cron fires at 9 PM (1h away) — no action needed - Proactive work: drafted 2 X threads + 1 standalone tweet for @jts_14 - Thread 1: \"Building an AI assistant that actually works while you sleep\" — builder/infra angle - Thread 2: \"I scored 5 Nash Satoshi expansion niches\" — baby products #1 finding - Quick post: Missi",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8827451615002277,
-      "maxScore": 0.8827451615002277,
+      "totalScore": 1.8827451615002277,
+      "maxScore": 1,
       "firstRecalledAt": "2026-04-07T15:36:05.408Z",
-      "lastRecalledAt": "2026-04-07T15:36:05.408Z",
+      "lastRecalledAt": "2026-05-15T15:30:37.145Z",
       "queryHashes": [
-        "a17d92e8ef7b"
+        "a17d92e8ef7b",
+        "613a6b111ccc"
       ],
       "recallDays": [
-        "2026-04-07"
+        "2026-04-07",
+        "2026-05-15"
       ],
       "conceptTags": [
         "0.25",
@@ -2648,6 +2650,68 @@
         "stale/old",
         "platform/niche",
         "memory/content"
+      ]
+    },
+    "memory:memory/content/news-hooks/2026-05-01.md:1:20": {
+      "key": "memory:memory/content/news-hooks/2026-05-01.md:1:20",
+      "path": "memory/content/news-hooks/2026-05-01.md",
+      "startLine": 1,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "## [09:32] - Remote coding agents move into chat **Status:** Ready to post **Hook:** Remote coding agents are becoming the default interface for async technical work. **Source:** https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5 **X Thread:** Remote coding agents are moving into chat. A model lab launched remote agents for module refactors, test generation, dependency upgrades, CI investigations, and bug fixes. --- The key shift is async delegation. Your team gives the agent a scoped task, the agent works remotely, and your developer reviews the result instead of typing every step. --- Your ops workflows will follow the same pattern. Scope the task. Limit permissions. Review",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T00:45:46.921Z",
+      "lastRecalledAt": "2026-05-16T00:45:46.921Z",
+      "queryHashes": [
+        "76155ed5021d"
+      ],
+      "recallDays": [
+        "2026-05-15"
+      ],
+      "conceptTags": [
+        "remote",
+        "coding",
+        "agents",
+        "chat",
+        "status",
+        "ready",
+        "post",
+        "hook"
+      ]
+    },
+    "memory:memory/content/news-hooks/2026-05-07.md:1:23": {
+      "key": "memory:memory/content/news-hooks/2026-05-07.md:1:23",
+      "path": "memory/content/news-hooks/2026-05-07.md",
+      "startLine": 1,
+      "endLine": 23,
+      "source": "memory",
+      "snippet": "## 09:30 - Major AI lab launches finance agents for back-office work **Status:** Ready to post **Hook:** Enterprise agents are moving from chat into back-office workflows. **Source:** https://www.wsj.com/tech/ai/anthropic-releases-new-ai-agents-for-financial-services-firms-e2829b37 **X Thread:** A major AI lab launched 10 finance agents for pitchbooks, month-end close, and credit memos. Your competitors will point agents at the work your team still does by hand. --- The AI lab also added Office app access and data platform partnerships. A bank CEO said his team has hundreds of AI use cases across risk, fraud, marketing, notes, and document review. --- Your AI edge comes from the workflow",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T00:45:46.921Z",
+      "lastRecalledAt": "2026-05-16T00:45:46.921Z",
+      "queryHashes": [
+        "76155ed5021d"
+      ],
+      "recallDays": [
+        "2026-05-15"
+      ],
+      "conceptTags": [
+        "back-office",
+        "month-end",
+        "major",
+        "lab",
+        "launches",
+        "finance",
+        "agents",
+        "back"
       ]
     }
   }

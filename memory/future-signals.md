@@ -233,3 +233,10 @@
 - **Why deferred:** Payment-enabled agent tools are strategically important but unsafe to install/fund globally without spend controls, mainnet wallet approval, and a concrete workflow needing it.
 - **Trigger condition:** Promote when Pay.sh offers a catalog API that directly improves a current JT workflow, Nash Satoshi needs an external paid API surface, Altmark/family-office work needs controlled private dataset access, or OpenClaw exposes safe Pay.sh spend limits.
 - **Allowed near-term action:** Sandbox-only evaluation with no wallet funding and no persistent OpenClaw global config changes unless JT approves.
+
+### Agent Referral / Affiliate Networks
+- **What:** Agents recommending other agents, tools, APIs, or service endpoints could create agent-native affiliate/referral networks.
+- **Why deferred:** Too early; no verified buyer behavior or standard attribution layer yet. Building now would be speculative infrastructure.
+- **Trigger:** Agents/tool marketplaces publish explicit referral APIs OR 3+ credible examples show agents choosing/recommending paid third-party agents in production workflows.
+- **Logged:** 2026-05-15
+- **Potential value:** Future distribution channel for agent-readable apps, Nash/Glow/Vista APIs, or consulting-owned workflow endpoints.

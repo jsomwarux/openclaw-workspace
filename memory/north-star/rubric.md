@@ -28,7 +28,7 @@ Score each lane 1-5 on:
 2. Long-term leverage / passive-income potential
 3. Distribution or audience growth
 4. Credibility for AI implementation consulting or product-builder identity
-5. Energy cost / maintenance burden (5 = low burden, 1 = draining)
+5. Compounding Energy Return (5 = returns future energy/leverage/proof, 1 = draining maintenance/context-switching)
 6. Strategic fit with North Star
 
 Total possible: 30.
@@ -73,6 +73,7 @@ Every active project must pass at least one of these tests:
 3. Reusable product/IP
 4. Consulting proof/credibility
 5. Health/energy preservation
+6. High CER: reduces future drag or creates reusable leverage
 
 If a project passes none, recommend pause/kill/defer. If it passes only one weakly, cap the next action to a small validation step.
 
@@ -99,7 +100,7 @@ Default bias: do not build more features until a distribution or monetization bo
 9. Project overinvestment warnings
 10. Health/focus risk and workload adjustment
 11. Top 3 actions for the week
-12. One thing to stop doing
+12. CER call: one high-CER action to prioritize and one low-CER task/project to stop, defer, or minimum-viable
 13. One configuration/system improvement Eve should make
 14. Saved file path
 

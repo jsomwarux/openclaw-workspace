@@ -60,3 +60,9 @@ N/A unless pitching agent-native capability to technical/product buyers.
 
 ## Next Best Action
 Score future passive-income ideas for agent-native/x402 fit, but require human buyer demand before BUILD. Use x402 as content and product-readiness lens; only offer readiness sprint to companies with API/data/product surfaces.
+
+## 2026-05-15 Signal Additions
+- Agent referral networks: if agents start recommending/switching to other agents, agent-readable reputation, affiliate tracking, and outcome proof become distribution surfaces. Watch, do not build yet.
+- Open-source defensive shift: source-closing by open-source/product companies may signal agent cloning pressure; useful for content and product defensibility thinking.
+- Orchestration layer thesis: models are CPUs; value accrues to workflows, memory, permissions, interfaces, distribution, and what the system lets users do. This reinforces JT's Agent Operations Layer positioning.
+- Joke vertical filter: “AI for pet groomers” style ideas are attractive when the market is large, low-tech, phone/DM scheduled, and operationally repetitive. Validate with spreadsheet/template/manual-work signals before building.

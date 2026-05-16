@@ -1,17 +1,23 @@
 {
   "started": "2026-03-02",
+  "last_lesson_date": "2026-05-15",
+  "last_lesson_complete": false,
   "current_week": 11,
-  "current_day": 62,
+  "current_day": 63,
+  "lesson_streak": 36,
+  "longest_streak": 36,
+  "streak": 35,
+  "total_lessons_completed": 19,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "goal": "Light casual conversation with girlfriend and her family",
-  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
   "use_cases": [
     "restaurants",
     "directions",
     "small talk",
     "survival Spanish"
   ],
+  "focus": "speaking and listening, not writing",
   "strong_areas": [
     "basic greetings",
     "verb intuition (me llamo, estoy)",
@@ -24,27 +30,21 @@
     "no problemo habit",
     "e/y confusion (Italian vs Spanish)"
   ],
-  "streak": 34,
-  "longest_streak": 35,
-  "lesson_streak": 35,
-  "last_lesson_date": "2026-05-14",
-  "last_lesson_complete": false,
-  "total_lessons_completed": 19,
-  "real_world_challenges_unlocked": 2,
-  "real_world_challenges_completed": [],
   "weekly_scores": [
     {
-      "week": 2,
       "date": "2026-03-16",
-      "grade": "B+"
+      "grade": "B+",
+      "week": 2
     },
     {
-      "week": 3,
       "date": "2026-03-22",
-      "grade": "B+"
+      "grade": "B+",
+      "week": 3
     }
   ],
-  "focus": "speaking and listening, not writing",
+  "real_world_challenges_unlocked": 2,
+  "real_world_challenges_completed": [],
+  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases.",
-  "notes": "Delivered Week 11, Thu (Asking follow-up questions) to maintain calendar/curriculum synch. Corrected longest_streak to match lesson_streak during state validation."
+  "notes": "Delivered Week 11, Fri (Telling one short story). Progression synced with calendar/curriculum."
 }

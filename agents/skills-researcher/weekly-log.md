@@ -45,3 +45,28 @@
 - Fits: jt-consulting-ops / jt-consulting-pipeline / HubSpot consulting playbooks.
 - First action: copy the command/skill list into a consulting reference note and map 3 reusable OpenClaw Client OS workflows: CRM cleanup, invoice chase, business pulse.
 - MC quality gate: PASS — specific reference asset can improve current SMB consulting deliverables now without installing external connectors.
+
+## 2026-05-15 Daily Scan
+
+### 🔴 OpenClaw v2026.5.14-beta.2 — startup tracing, lazy Canvas load, subagent auditability, channel status reactions, hook context caps
+- Source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.14-beta.2
+- Relevance: JT actively runs OpenClaw crons, Telegram/WhatsApp-style channels, subagents, Canvas, cost/context monitoring, and Codex-backed sessions. Release adds owner-level startup trace attribution, lazy Canvas module loading, visible subagent task handoff, hook event context-budget metadata, normalized command-turn facts, WhatsApp lifecycle status reactions, and retry fixes for proxied Anthropic-compatible providers.
+- Cost/security: free beta; install/update risk because prerelease. Includes dependency/proxy and sanitizer fixes, so treat as runtime/security-relevant.
+- Fits: Eve/OpenClaw ops.
+- First action: open release notes, compare current installed version, then update the existing OpenClaw runtime task instead of creating a duplicate; after approval run `openclaw gateway status`, one Telegram self-test, one `sessions_spawn` auditability check, and one Canvas snapshot smoke test.
+- MC quality gate: PASS, but duplicate/backlog rule applies — existing OpenClaw beta runtime task already open, so no new MC task pushed.
+- Shoutout flag: OpenClaw active tool; post angle: “Real agent ops need auditable delegation + startup traces, not just better prompts.” Tag @openclaw.
+
+### 🟠 Anthropic small-business plugin — still the strongest SMB workflow reference; no duplicate task
+- Source: https://github.com/anthropics/knowledge-work-plugins/tree/main/small-business
+- Relevance: New/validated Cowork plugin covers HubSpot, QuickBooks, PayPal/Stripe/Square, Gmail/Calendar/Drive, Slack, Canva, and DocuSign workflows that mirror JT’s consulting ICP: CRM cleanup, invoice chase, business pulse, lead triage, customer pulse, and onboarding.
+- Cost/security: free source; external connectors require OAuth/business data and are reference-only unless JT approves install.
+- Fits: jt-consulting-ops / jt-consulting-pipeline.
+- First action: existing MC task already captures mapping into Client OS; do not create duplicate. If acting, map `/crm-cleanup`, `/plan-payroll`/invoice-chase, and `/monday-brief` into Client OS workflow templates.
+- MC quality gate: PASS, but duplicate exists (`[🟠] Anthropic small-business plugin — map SMB workflow patterns into Client OS`), so no new task pushed.
+
+### KB-only signals
+- GitHub MCP server dependency/secret scanning announcement: relevant security pattern, but no immediate JT action beyond existing MCP security posture. Source: X result referencing GitHub MCP security scanning.
+- TikTok MCP server launch: interesting marketing/agentic advertising signal, but not immediately useful while ReelFarm/TikTok manual warm-up is paused. KB only.
+- Property-management AI rollout signals (EliseAI/Propurti/Gigorra): validates ICP demand, but no concrete first action today beyond existing consulting niche strategy. KB only.
+- OpenRouter Claude Opus 4.7 Fast X mention: high cost ($30/$150 per 1M in/out) and not a cost-saving model for JT’s active stack. KB only.

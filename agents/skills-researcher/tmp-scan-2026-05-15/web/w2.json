@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "openclaw npm package new",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-15",
+  "results": [
+    {
+      "title": "openclaw - npm",
+      "url": "https://www.npmjs.com/package/openclaw",
+      "description": "<strong>Multi-channel AI gateway with extensible messaging integrations</strong>. Latest version: 2026.5.12, last published: 17 hours ago. Start using openclaw in your project by running `npm i openclaw`. There are 127 other projects in the npm registry using ...",
+      "age": "1 week ago",
+      "page_age": "2026-05-08T07:50:05",
+      "source": "npm"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Update: suppress the false newer-config warning during restart health probing after an update handoff, while keeping future-version mutation guards intact. (#78652) Sessions: redact persisted tool result detail metadata before writing transcripts so diagnostic secrets do not survive tool output redaction. (#80444) Thanks @nimbleenigma. Codex runtime: allow the official installed @openclaw/codex package to use its private task-runtime SDK helper, fixing MODULE_NOT_FOUND during migrated OpenAI/Codex beta runs.",
+      "age": "6 hours ago",
+      "page_age": "2026-05-15T09:20:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "openclaw 2026.5.12 on Node.js NPM",
+      "url": "https://newreleases.io/project/npm/openclaw/release/2026.5.12",
+      "description": "New release <strong>openclaw version 2026.5.12</strong> openclaw 2026.5.12 on Node.js NPM.",
+      "age": "1 day ago",
+      "page_age": "2026-05-14T18:26:44",
+      "source": "New Releases"
+    },
+    {
+      "title": "@larksuite/openclaw-lark - npm",
+      "url": "https://www.npmjs.com/package/@larksuite/openclaw-lark",
+      "description": "<strong>OpenClaw Lark/Feishu channel plugin</strong>. Latest version: 2026.5.13, last published: a day ago. Start using @larksuite/openclaw-lark in your project by running `npm i @larksuite/openclaw-lark`. There are 1 other projects in the npm registry using ...",
+      "age": "3 days ago",
+      "page_age": "2026-05-12T14:20:03",
+      "source": "npm"
+    },
+    {
+      "title": "Patch Notes for OpenClaw",
+      "url": "https://patchbot.io/ai/openclaw",
+      "description": "Published core npm package: openclaw@2026.5.3-1 on the beta dist-tag.",
+      "age": "2 days ago",
+      "page_age": "2026-05-14T00:00:00",
+      "source": "PatchBot"
+    }
+  ]
+}

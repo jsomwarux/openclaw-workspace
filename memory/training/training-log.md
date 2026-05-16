@@ -84,3 +84,4 @@
 - Fixes applied: enrolled `agentguard-positioning` in autoresearch with checklist; created Operations task for cron cap + gateway throttle drift; saved report `memory/audits/weekly-systems/2026-05-13-weekly-systems-review.md`.
 - Recurring failure patterns: cron surface has grown past the <=20/day cap; gateway plist throttle drifted below safe threshold; AGENTS.md is too close to budget for safe appends.
 - Blockers deferred: OpenClaw update requires manual timing; LaunchAgent/service config changes deferred to explicit follow-up task; passive-income-strategist delivery failure could not be resent because final content was not available from visible metadata.
+2026-05-15 — autoresearch sports-gm: baseline 0.833 → final 0.917; changed `skills/sports-gm/SKILL.md` roster-audit step 5 to require confidence tier, risk case, market/context logic, and receipts handling per move.

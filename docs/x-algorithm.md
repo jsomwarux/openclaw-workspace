@@ -17,9 +17,12 @@ The Phoenix transformer predicts probabilities for each action. Weighted score =
 8. **Follows** — the ultimate signal. Rare but highest long-term value.
 
 ### Negative signals (suppress your post — avoid triggering these):
-- **Block / Mute** — tanks reach immediately
-- **"Not interested"** — soft suppression
-- **Report** — hard suppression
+- **Fast scroll / low dwell** — weak hook or generic post; the feed learns people skip you.
+- **Block / Mute** — tanks reach immediately.
+- **"Not interested"** — soft suppression.
+- **Report** — hard suppression.
+- **Ad-safety / sensitive labels** — NSFW, gore, violence, ragebait, conspiracy framing, or other advertiser-hostile categories can dock distribution. Avoid bait formats even when they would get replies.
+- **Slop / low-originality score** — repeated hooks, obvious AI filler, copied creator formats without JT-specific proof, AI-video slop, and generic engagement bait can get suppressed and damage account-level quality over time.
 
 ## What This Means for Post Construction
 
@@ -27,6 +30,7 @@ The Phoenix transformer predicts probabilities for each action. Weighted score =
 - **Open with a reply hook** — every post should have a line that makes someone want to respond, agree, disagree, or add to. This is the #1 signal.
 - **Dwell bait** — use short punchy lines. Break text so the reader has to keep scrolling within the post itself. No wall of text.
 - **Repost trigger** — include one line that someone would want to put their name on. A sharp take, a memorable analogy, a counterintuitive insight.
+- **Bookmark trigger** — package one saved-useful artifact: teardown, checklist, ranked list, workflow map, mistake list, or “what changed / what to do now.” Alex Finn’s 2026-05-15 algorithm-code thread worked because the wrapper promised source-code compression, not just a take.
 - **Profile click bait** — your name should feel like an authority on the topic by the end of the post. State something specific + credible.
 - **Never beg for engagement** — "like and repost if you agree" trains the algorithm to see your audience as low-quality. Let the content earn it.
 
@@ -36,6 +40,7 @@ The Phoenix transformer predicts probabilities for each action. Weighted score =
 - **Images outperform plain text** for reach. Video outperforms images. But text-only posts with high reply rates can match media posts.
 - **Polls** — useful for reply-equivalent signal at lower effort from the audience.
 - **Thread openers** — the first post in a thread gets the algorithm boost. Make it the strongest standalone hook.
+- **Avoid feed spam** — the feed appears to apply author-level repetition/decay. One strong X post beats several mediocre posts close together. Do not schedule multiple generic JT/Nash/Dynasty posts into the same audience window unless each has distinct proof and purpose.
 
 ### Timing rules:
 - **First 30 minutes are everything** — velocity of early engagement determines if the algorithm amplifies. Post when your audience is active (typically 8–10AM or 6–9PM EST for JT's niches).
@@ -44,8 +49,11 @@ The Phoenix transformer predicts probabilities for each action. Weighted score =
 
 ### Content rules:
 - **Specificity > generality** — "AI saved a contractor $1,500" beats "AI saves businesses money"
-- **Contrarian > consensus** — the algorithm rewards posts that generate debate (replies from disagree-ers count)
+- **Contrarian > consensus, but not ragebait** — disagreement can drive replies/quotes, but ad-safety and negative feedback matter. Use useful tension, not outrage bait.
 - **Personal > generic** — "I learned X from 6 years at Spectrum" outperforms "here are X tips"
+- **Original proof > copied pattern** — extracting a swipe mechanic is fine; copying another creator's hook, cadence, image-thread bait, or generic “algorithm secrets” wrapper is slop. Every post needs JT-specific proof, data, build experience, or a real source inspected.
+- **Source-teardown format works** — when a platform/tool/client workflow changes, use: `[Platform] changed [specific thing] → I reviewed [source/artifact] → here are the practical implications`. Only use if we actually inspected the source. No fake “I read 24,000 lines” claims.
+- **Avoid low-quality/AI-spam signals** — do not post obvious AI filler, duplicated hooks, engagement-bait phrasing, shock claims without source, or image-thread bait with no real substance. These may get short-term reach but damage audience quality and can trigger downranking/negative feedback.
 - **Short > long** (for reach) — under 280 chars gets more impressions. Longer posts get more profile clicks if they hook well.
 
 ## JT's Niches + Relevant Signals
@@ -66,4 +74,8 @@ The Phoenix transformer predicts probabilities for each action. Weighted score =
 - [ ] No links in the post body (move to reply)?
 - [ ] Under 280 chars for pure reach, or hooks hard enough in first line for longer format?
 - [ ] Does it sound like JT, not a generic AI tweet?
-- [ ] References swipe file pattern for this niche/format?
+- [ ] References swipe file pattern for this niche/format without copying the creator's hook/cadence?
+- [ ] If using a “source teardown” wrapper, did we actually inspect the source/artifact and save the evidence?
+- [ ] Does it avoid obvious AI filler, duplicated hooks, and engagement-bait language that could trigger negative feedback?
+- [ ] Is this the only post aimed at this audience/window, or is there a strong reason to publish another one today?
+- [ ] Is it advertiser-safe and free of ragebait, conspiracy framing, NSFW/gore/violence hooks, or “watch this fight” style bait?

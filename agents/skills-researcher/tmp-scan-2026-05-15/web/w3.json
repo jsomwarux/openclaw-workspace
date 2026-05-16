@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "Anthropic API new feature tool use 2026",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-15",
+  "results": [
+    {
+      "title": "Anthropic Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic",
+      "description": "We&#x27;ve launched Claude Platform on AWS, bringing the Claude API to Anthropic-managed infrastructure accessible through AWS, with AWS billing and IAM authentication. Access the full Messages API, Files API, Message Batches API, Claude Managed Agents, Agent Skills, code execution, and tool use through native AWS endpoints. Learn more in Claude Platform on AWS. Original source ... Claude releases the Claude Platform on AWS, bringing the full Claude API feature set to AWS customers with AWS authentication, billing, and commitment retirement.",
+      "age": "2 days ago",
+      "page_age": "2026-05-14T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Claude Updates by Anthropic - May 2026 - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic/claude",
+      "description": "<strong>The advisor tool</strong> is just another entry in your Messages API request. Your agent can search the web, execute code, and consult Opus in the same loop. <strong>The advisor tool</strong> is available now in beta natively on the Claude Platform. To get started: Add the beta feature header: anthropic-beta: ...",
+      "age": "3 days ago",
+      "page_age": "2026-05-13T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Inside Anthropic's 2026 Developer Conference - Every",
+      "url": "https://every.to/chain-of-thought/inside-anthropic-s-2026-developer-conference",
+      "description": "... deployed it to power our API the next day. We’ve incorporated two of the new features Anthropic announced yesterday (<strong>memory and multi-agent orchestration</strong>) and are deploying the third (outcomes) soon.",
+      "age": "2 days ago",
+      "page_age": "2026-05-14T00:00:00",
+      "source": "Every"
+    },
+    {
+      "title": "Claude API Pricing 2026: Full Anthropic Cost Breakdown",
+      "url": "https://www.metacto.com/blogs/anthropic-api-pricing-a-full-breakdown-of-costs-and-integration",
+      "description": "Extended thinking tokens, tool use overhead, Managed Agents runtime, and multi-modal (image/PDF) inputs are not included and will increase costs. <strong>Opus 4.7</strong>&#x27;s new tokenizer may use up to 35% more tokens for the same text.",
+      "age": "3 days ago",
+      "page_age": "2026-05-12T15:15:04",
+      "source": "MetaCTO"
+    },
+    {
+      "title": "Code with Claude 2026: 5 New Agent Features Anthropic Just Shipped | MindStudio",
+      "url": "https://www.mindstudio.ai/blog/code-with-claude-2026-new-agent-features",
+      "description": "Dreaming, Outcomes, multi-agent orchestration, Claude Finance, and Add-ins — here&#x27;s what each one does and who it&#x27;s for.",
+      "age": "1 week ago",
+      "page_age": "2026-05-08T05:45:03",
+      "source": "MindStudio"
+    }
+  ]
+}

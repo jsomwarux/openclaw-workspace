@@ -19,3 +19,4 @@ Last reset: 2026-05-01
 2026-05-14 [EMERGING] niche=ai-tools — Monitored signal: Daily AI Agent News - Last 7 Days (https://aiagentstore.ai/ai-agent-news/this-week)
 2026-05-14 [EMERGING] niche=ai-tools — Monitored signal: Latest Agentic AI News Today | Trends, Predictions, & Analysis (https://www.forbes.com/topics/agentic-ai/)
 2026-05-14 [EMERGING] niche=ai-tools — Monitored signal: AI News & Artificial Intelligence | TechCrunch (https://techcrunch.com/category/artificial-intelligence/)
+2026-05-15 [EMERGING] niche=joke-vertical-ai — X agent-opportunity thread highlighted “AI for pet groomers” logic: boring phone/DM-heavy verticals with many small operators and zero tech can be stronger wedges than obvious AI-native markets. Use as a monthly niche-review filter, not immediate pivot.

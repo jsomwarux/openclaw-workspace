@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "openclaw skill github new 2026",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-15",
+  "results": [
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "It&#x27;s <strong>designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search</strong>. It also now exposes a native OpenClaw package catalog for code plugins and bundle plugins.",
+      "age": "8 hours ago",
+      "page_age": "2026-05-15T07:10:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - openclaw/openclaw: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
+      "url": "https://github.com/openclaw/openclaw",
+      "description": "Preferred setup: <strong>run openclaw onboard in your terminal</strong>. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on macOS, Linux, and Windows (via ...",
+      "age": "2 days ago",
+      "page_age": "2026-05-13T15:30:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - LeoYeAI/openclaw-master-skills: 🧠 Curated collection of 1209+ best OpenClaw skills — weekly updated by MyClaw.ai",
+      "url": "https://github.com/LeoYeAI/openclaw-master-skills",
+      "description": "🧠 Curated collection of 1209+ best OpenClaw skills — weekly updated by MyClaw.ai - LeoYeAI/openclaw-master-skills",
+      "age": "4 days ago",
+      "page_age": "2026-05-11T09:00:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "Top 10 OpenClaw Skills you can't afford to miss in 2026 | Composio",
+      "url": "https://composio.dev/content/top-openclaw-skills",
+      "description": "Navigate down and copy the command given after verifying Security Scan says Benign for Openclaw (Important) Head to the terminal where open claw is installed and paste it. For me its docker and its the same skill I will install! # installs clawhub npx clawhub@latest install sonoscli · # or you can use github git clone https://github.com/peterskoett/self-improving-agent.git ~/.openclaw/workspace/skills/self-improving-agent",
+      "age": "4 days ago",
+      "page_age": "2026-05-11T14:20:05",
+      "source": "Composio"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Maintainers: add a Clawdtributor skill for Discrawl-backed contributor PR triage, live status checks, and compact review formatting. Telegram: support Mini App web_app buttons in generic message presentation payloads, allowing openclaw message send --presentation to render Telegram Web App inline buttons for private chats.",
+      "age": "6 hours ago",
+      "page_age": "2026-05-15T09:20:03",
+      "source": "GitHub"
+    }
+  ]
+}

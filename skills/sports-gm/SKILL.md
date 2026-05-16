@@ -255,7 +255,7 @@ Use this when JT asks whether content is referencing the provided accounts optim
 2. Classify lifecycle: True Contender, Fragile Contender, Productive Struggle, Rebuild, Trapped Middle.
 3. Map liquidity, window alignment, and positional risk.
 4. Recommend exactly 3 moves.
-5. State risk case.
+5. For each move, include: action, market/price context, role/window logic, confidence tier, risk case, and whether it should be logged to `memory/sports-gm/receipts.csv` if JT posts it publicly.
 
 ## Voice
 Sharp, plain, community-native.

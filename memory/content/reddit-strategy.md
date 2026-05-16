@@ -55,9 +55,11 @@ A daily Cron (`reddit-karma-farmer`) will draft one deep-dive post or highly tec
 
 Source of truth for Reddit repeats: `memory/content/reddit-draft-log.jsonl`.
 
+Log format: true JSONL, one JSON object per non-skipped Reddit item. Do not rewrite it as a single JSON array. Required keys: `date`, `subreddit`, `type`, `title_or_look_for`, `first_120_chars`, `core_angle`, `body_hash`.
+
 Every Reddit generator run must:
 1. Read the last 30 days of `reddit-draft-log.jsonl` and `posted-log.jsonl` before drafting.
-2. Log every non-skipped Reddit item with date, subreddit, type, title/look-for, first 120 chars, core angle, and body hash.
+2. Append every non-skipped Reddit item as one JSON object line with date, subreddit, type, title/look-for, first 120 chars, core angle, and body hash.
 3. Skip or rewrite any draft that reuses the same title, hook, first paragraph, core analogy, or broad frame from the last 30 days.
 4. Prefer `SKIP_SLOT` over recycled evergreen theory.
 

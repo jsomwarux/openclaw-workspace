@@ -1,0 +1,188 @@
+[
+  {
+    "id": "2054584231787979042",
+    "text": "When I tell frens that ANIMA was built not just to stand out, but to stay ahead of the curve when it comes to external integrations like the MCP server connection \n\nLet's break it down 👇 \n\nTake a look at MCP (Model Context Protocol) like a website connecting to another website https://t.co/chhACSQL8Z https://t.co/qcBLVQUaX8",
+    "author_id": "2871628795",
+    "username": "billzcollecshun",
+    "name": "₿illzcollecshun🚦",
+    "created_at": "2026-05-13T15:27:07.000Z",
+    "conversation_id": "2054584231787979042",
+    "metrics": {
+      "likes": 49,
+      "retweets": 1,
+      "replies": 38,
+      "quotes": 0,
+      "impressions": 467,
+      "bookmarks": 1
+    },
+    "urls": [
+      "https://x.com/billzcollecshun/status/2054584231787979042/photo/1",
+      "https://twitter.com/TheARCTERMINAL/status/2054562306055446648"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/billzcollecshun/status/2054584231787979042"
+  },
+  {
+    "id": "2053391648936058939",
+    "text": "MCP-kafka\n\n#apachekafka\n\nAn open-source MCP (Model Context Protocol) server for Apache Kafka, built with Quarkus. Enables AI assistants like Claude, Goose, and Gemini to interact with Kafka clusters and Schema Registry.\n\nhttps://t.co/aqVt81DU3N",
+    "author_id": "33735222",
+    "username": "Igfasouza",
+    "name": "Igor De Souza",
+    "created_at": "2026-05-10T08:28:13.000Z",
+    "conversation_id": "2053391648936058939",
+    "metrics": {
+      "likes": 29,
+      "retweets": 3,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 834,
+      "bookmarks": 15
+    },
+    "urls": [
+      "https://github.com/gAmUssA/mcp-kafka"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "apachekafka"
+    ],
+    "tweet_url": "https://x.com/Igfasouza/status/2053391648936058939"
+  },
+  {
+    "id": "2053360790456127502",
+    "text": "GitHub builds an immune system for AI coding agents running on MCP\n\nGitHub has launched dependency and secret scanning for its Model Context Protocol server to stop security leaks in AI-assisted coding workflows \n\nhttps://t.co/9TFUuy5QyI",
+    "author_id": "332011447",
+    "username": "samuel_wong_",
+    "name": "Samuel Wong",
+    "created_at": "2026-05-10T06:25:36.000Z",
+    "conversation_id": "2053360790456127502",
+    "metrics": {
+      "likes": 13,
+      "retweets": 7,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 1261,
+      "bookmarks": 9
+    },
+    "urls": [
+      "https://thenewstack.io/github-mcp-security-scanning/"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/samuel_wong_/status/2053360790456127502"
+  },
+  {
+    "id": "2054660498604343405",
+    "text": "The platform launched its own model context protocol (MCP) server during its sixth annual TikTok World event. https://t.co/cOqOplc0pa https://t.co/IPS4KOwNsH",
+    "author_id": "20640328",
+    "username": "Digiday",
+    "name": "Digiday",
+    "created_at": "2026-05-13T20:30:11.000Z",
+    "conversation_id": "2054660498604343405",
+    "metrics": {
+      "likes": 3,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 812,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://buff.ly/AD6QNHJ",
+      "https://x.com/Digiday/status/2054660498604343405/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Digiday/status/2054660498604343405"
+  },
+  {
+    "id": "2054288790529700277",
+    "text": "@Xurrent, the AI-powered service and operations management platform for corporate IT teams and enterprise MSPs, today launched autonomous AI Agents and an open Model Context Protocol (MCP) server. https://t.co/P9ZHi1YMxe",
+    "author_id": "946018406259707910",
+    "username": "ITOpsTimes",
+    "name": "ITOps Times",
+    "created_at": "2026-05-12T19:53:09.000Z",
+    "conversation_id": "2054288790529700277",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 25,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://buff.ly/4yibS50"
+    ],
+    "mentions": [
+      "Xurrent"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/ITOpsTimes/status/2054288790529700277"
+  },
+  {
+    "id": "2054743583610315009",
+    "text": "TikTok just made a massive move to neutralize Meta’s AI edge. 📉🛡️\n\nThey’ve officially launched an MCP (Model Context Protocol) server, allowing external AI agents and brand-owned LLMs to run campaigns directly.",
+    "author_id": "2010597460868276224",
+    "username": "beecommercer",
+    "name": "beecommercer",
+    "created_at": "2026-05-14T02:00:20.000Z",
+    "conversation_id": "2054743583610315009",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 9,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/beecommercer/status/2054743583610315009"
+  },
+  {
+    "id": "2053353990021144665",
+    "text": "New contender worth evaluating. GeneXus 18 MCP server for Claude, Cursor, and AI agents — read, edit, analyze KB objects (transactions, web panels, procedures, SDTs) over the Model Context Protocol.\n\nhttps://t.co/NthKp0Bifh",
+    "author_id": "2842904704",
+    "username": "AIDailyGems",
+    "name": "AIDailyGems",
+    "created_at": "2026-05-10T05:58:35.000Z",
+    "conversation_id": "2053353990021144665",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 31,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/lennix1337/Genexus18MCP"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AIDailyGems/status/2053353990021144665"
+  },
+  {
+    "id": "2053392333459087393",
+    "text": "1/6 Traditional SEO is dead. If your agency isn't natively queryable by LLMs, you are effectively invisible.\nThe new Zero-CAC playbook? Building an MCP server.\nHere is why Model Context Protocol is the new search ranking: 🧵",
+    "author_id": "1965736418010877952",
+    "username": "theGrowther",
+    "name": "theGrowther",
+    "created_at": "2026-05-10T08:30:57.000Z",
+    "conversation_id": "2053392333459087393",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 14,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/theGrowther/status/2053392333459087393"
+  }
+]

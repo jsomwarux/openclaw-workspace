@@ -1,0 +1,188 @@
+[
+  {
+    "id": "2053090252227555692",
+    "text": "6 n8n systems that usually sell better than another AI chatbot\n\nautomating a simple form → email flow already has value\n\nreal systems can easily reach several thousand USD\n\nthe difference is usually integration depth, not feature count\n\nsystems that actually solve business https://t.co/RwbT8jRG8Y",
+    "author_id": "1677394345647808518",
+    "username": "on_punchman",
+    "name": "aisama.code",
+    "created_at": "2026-05-09T12:30:35.000Z",
+    "conversation_id": "2053090252227555692",
+    "metrics": {
+      "likes": 18,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 41,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://twitter.com/on_punchman/status/2052734796699189703"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/on_punchman/status/2053090252227555692"
+  },
+  {
+    "id": "2054169338077381078",
+    "text": "At 1:42 AM, an n8n workflow detected a new PDF invoice uploaded to cloud storage.\n\nThat single event triggered an entire autonomous pipeline.\n\nNode 1:\nA webhook captured the upload event.\n\nNode 2:\nOCR extracted invoice text and tables.\n\nNode 3:\nAn LLM classified:\n- vendor type\n-",
+    "author_id": "769372283131432961",
+    "username": "Alacritic_Super",
+    "name": "Praveen Kumar Verma",
+    "created_at": "2026-05-12T11:58:29.000Z",
+    "conversation_id": "2054169338077381078",
+    "metrics": {
+      "likes": 3,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 240,
+      "bookmarks": 1
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Alacritic_Super/status/2054169338077381078"
+  },
+  {
+    "id": "2054516784355807385",
+    "text": "How we use n8n to auto-classify cold email replies (saves 10h/week):\n\nTrigger: New reply webhook from Smartlead\n\nClassification logic (via AI node):\n\n→ \"Interested\" → draft reply + flag for human approval\n\n→ \"Not now\" → tag in CRM, schedule 90-day follow-up\n\n→ \"OOO\" → pause",
+    "author_id": "1288970756064518144",
+    "username": "coldemaileng",
+    "name": "Cold Email Engineer",
+    "created_at": "2026-05-13T10:59:07.000Z",
+    "conversation_id": "2054516784355807385",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 36,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/coldemaileng/status/2054516784355807385"
+  },
+  {
+    "id": "2054992769475625310",
+    "text": "For n8n posts, the useful CTA is the node repo, not another generic landing page. Atlas Cloud's n8n integration is here: https://t.co/6GcafrveEC 💼 🍀 🌹",
+    "author_id": "2039099227935059968",
+    "username": "adams_elizi",
+    "name": "Elizabeth Adams",
+    "created_at": "2026-05-14T18:30:30.000Z",
+    "conversation_id": "2054992769475625310",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 3,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/AtlasCloudAI/n8n-nodes-atlascloud"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/adams_elizi/status/2054992769475625310"
+  },
+  {
+    "id": "2053723246160384506",
+    "text": "Thread test 1/3 — n8n autopost integration",
+    "author_id": "1072036141409296384",
+    "username": "masmas8a",
+    "name": "土 木 水 金 火",
+    "created_at": "2026-05-11T06:25:52.000Z",
+    "conversation_id": "2053723246160384506",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 4,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/masmas8a/status/2053723246160384506"
+  },
+  {
+    "id": "2053077248845250962",
+    "text": "Automate your business like a pro. 🛠️​I specialize in:\n🔹 Official WhatsApp API Access\n🔹 Meta-Verified Setup\n🔹 Advanced n8n Workflows\n🔹 Shopify Integration\n​Stop wasting time on repetitive tasks. Let's build your automation engine today! 🚀\n​#Automation #SaaS #WhatsAppAPI #n8n https://t.co/EHxqwAkE0v",
+    "author_id": "1694393287401172992",
+    "username": "MaulanaUr51885",
+    "name": "Khalil Automation",
+    "created_at": "2026-05-09T11:38:55.000Z",
+    "conversation_id": "2053077248845250962",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 14,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/MaulanaUr51885/status/2053077248845250962/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "Automation",
+      "SaaS",
+      "WhatsAppAPI",
+      "n8n"
+    ],
+    "tweet_url": "https://x.com/MaulanaUr51885/status/2053077248845250962"
+  },
+  {
+    "id": "2054986369575883049",
+    "text": "Demand for n8n is surging by 1,390%. 📈 Why?\n\n\"Agent Integration\" is the new standard. We’re turning months of coding into days of autonomous automation. Stop building apps; start building ecosystems.\n\n#n8n #BusinessAutomation #LowCode #MYRQUIX https://t.co/ra0DbVummt",
+    "author_id": "2038336755091283968",
+    "username": "myrquix",
+    "name": "Myrquix AI",
+    "created_at": "2026-05-14T18:05:04.000Z",
+    "conversation_id": "2054986369575883049",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 1,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/myrquix/status/2054986369575883049/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "n8n",
+      "BusinessAutomation",
+      "LowCode",
+      "MYRQUIX"
+    ],
+    "tweet_url": "https://x.com/myrquix/status/2054986369575883049"
+  },
+  {
+    "id": "2053108417263227152",
+    "text": "n8n has a node for every integration in your stack. social publishing across nine platforms natively: not a node.\n\nn8n's node library is genuinely broad: databases, apis, webhooks, authentication, message queues. you can chain these into workflows that do sophisticated things.",
+    "author_id": "1983863820654358528",
+    "username": "dropspaceapp",
+    "name": "dropspace",
+    "created_at": "2026-05-09T13:42:46.000Z",
+    "conversation_id": "2053108417263227152",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 5,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/dropspaceapp/status/2053108417263227152"
+  }
+]

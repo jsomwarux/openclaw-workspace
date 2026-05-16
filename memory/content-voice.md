@@ -258,6 +258,9 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] One repost-worthy line?
 - [ ] Lead tweet ≤ 280 chars and stands alone?
 - [ ] No hashtags?
+- [ ] Volume gate: is this the one strongest post for this audience/window? If not, bank it instead of posting.
+- [ ] Originality gate: does this contain JT-specific proof, data, build experience, or a verified source? If it is just a copied swipe pattern with new nouns, block it as slop.
+- [ ] Safety gate: no ragebait, conspiracy framing, NSFW/gore/violence bait, or advertiser-hostile angle.
 
 ---
 
