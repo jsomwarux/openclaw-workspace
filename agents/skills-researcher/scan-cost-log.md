@@ -48,3 +48,6 @@ EOF'
 2026-05-13T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 13 | findings: 5 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-05-14T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 14 | findings: 2 | 🔴: 1 | 🟠: 1 | messaged_jt: yes
 2026-05-15T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 7 | findings: 6 | 🔴: 1 | 🟠: 1 | messaged_jt: yes
+
+2026-05-16T11:00:00Z | weekly-synthesis | x_queries: 4 | est_cost: $0.18 | web_sources: Tier3+docs+MCP | findings: 5 | 🔴: 0 | 🟠: 1 | 🟡/🟢 KB: 4 | MC_tasks_pushed: 0 | reason: duplicate existing small-business task + backlog 14/15
+2026-05-16T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 10 | findings: 9 | 🔴: 0 | 🟠: 1 | messaged_jt: no

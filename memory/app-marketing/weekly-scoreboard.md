@@ -125,12 +125,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 3
+- Posts/results logged: 4
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 3
+- Posts/results logged: 4
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -200,6 +200,34 @@ Here i (437 views/impressions)
 - Best item:  (0 views/impressions)
 
 **Best overall:** nash-satoshi / tiktok — Every Pump Has 5 Phases. Most Traders Learn About Mania One Phase Too Late. (0 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
+## Metrics Summary — Week of 2026-05-09
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-05-09 to 2026-05-15 (0 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 3
+- Web depth: active users 3, pageviews 12, events 26
+- Best item: glow-index GA4 web traffic 2026-05-09 to 2026-05-15 (3 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-05-09 to 2026-05-15 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 9
+- Web depth: active users 6, pageviews 31, events 87
+- Best item: nash-satoshi GA4 web traffic 2026-05-09 to 2026-05-15 (9 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-05-09 to 2026-05-15 (9 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
@@ -556,7 +584,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-15_
+_Last updated: 2026-05-16_
 
 <!-- METRICS_SUMMARY_END -->
 

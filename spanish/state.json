@@ -1,29 +1,33 @@
 {
-  "started": "2026-03-02",
-  "last_lesson_date": "2026-05-15",
-  "last_lesson_complete": false,
+  "current_day": 64,
   "current_week": 11,
-  "current_day": 63,
-  "lesson_streak": 36,
-  "longest_streak": 36,
-  "streak": 35,
-  "total_lessons_completed": 19,
+  "focus": "speaking and listening, not writing",
+  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
+  "goal": "Light casual conversation with girlfriend and her family",
+  "last_lesson_complete": false,
+  "last_lesson_date": "2026-05-16",
+  "lesson_streak": 37,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
-  "goal": "Light casual conversation with girlfriend and her family",
-  "use_cases": [
-    "restaurants",
-    "directions",
-    "small talk",
-    "survival Spanish"
-  ],
-  "focus": "speaking and listening, not writing",
+  "longest_streak": 37,
+  "notes": "Delivered Week 11, Sat (Full dinner simulation). Progression synced. Next: Sunday Eval.",
+  "real_world_challenges_completed": [],
+  "real_world_challenges_unlocked": 2,
+  "started": "2026-03-02",
+  "streak": 36,
   "strong_areas": [
     "basic greetings",
     "verb intuition (me llamo, estoy)",
     "family dinner phrases",
     "past tense basics (comí, fui, vi)",
     "quisiera vs quiero (polite ordering)"
+  ],
+  "total_lessons_completed": 20,
+  "use_cases": [
+    "restaurants",
+    "directions",
+    "small talk",
+    "survival Spanish"
   ],
   "weak_areas": [
     "conocer vs saber (mixing up)",
@@ -42,9 +46,5 @@
       "week": 3
     }
   ],
-  "real_world_challenges_unlocked": 2,
-  "real_world_challenges_completed": [],
-  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
-  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases.",
-  "notes": "Delivered Week 11, Fri (Telling one short story). Progression synced with calendar/curriculum."
+  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases."
 }

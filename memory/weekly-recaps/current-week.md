@@ -45,3 +45,4 @@ Archive every Monday, start fresh.
 
 - 2026-05-15 overnight ops: reviewed high-priority task files and daily notes, confirmed no Eve-actionable high-priority items beyond externally gated Vista launch, checked cron health clean, and logged a low-risk Health Check-in delivery target normalization follow-up.
 - 2026-05-15 — Converted AI-agent opportunity thread into Agent Operations Layer Audit offer, joke-vertical validation filter, and three focused MC follow-up tasks.
+- 2026-05-16 overnight ops: verified no active fallback queue items and no repeated-error cron failures; logged maintenance recommendation for near-cap `HEARTBEAT.md` and duplicate lossless-claw warning at `reports/overnight/2026-05-16-overnight-autonomy.md`.
