@@ -1,0 +1,22 @@
+{
+  "payload": {
+    "title": "Strategy: Clean buyer/channel state before new outreach",
+    "description": "Spend the first consulting block this week cleaning the T2/T3 outreach queue: confirm buyer/channel state, close duplicate review tasks, and only draft/send M1s where the buyer and channel are verified.\n\nSource: Weekly Intelligence Synthesis 2026-05-17\nTrigger: Pipeline observations show the bottleneck is warm-up state, duplicate task hygiene, and unconfirmed LinkedIn buyers, not prospect discovery.",
+    "status": "todo",
+    "priority": "high",
+    "sortOrder": 6,
+    "assignee": "jt",
+    "project": "Consulting"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "returncode": 0,
+      "ok": true,
+      "response": {
+        "id": "j5789r6vae1m07gwwbzs5fvckh86wsnz",
+        "success": true
+      }
+    }
+  ]
+}

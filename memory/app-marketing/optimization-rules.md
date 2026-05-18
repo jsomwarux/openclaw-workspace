@@ -1,6 +1,6 @@
 # App Marketing OS — Optimization Rules
 
-Last updated: 2026-05-16
+Last updated: 2026-05-17
 
 Use this file before generating future app/product content.
 
@@ -84,3 +84,10 @@ Use this file before generating future app/product content.
 ### Generation Instruction
 - Winner data exists, but no feature is net-positive yet. Treat winners as examples to study, not rules to copy.
 - Keep testing one variable at a time and require stronger proof/tension before scaling.
+
+## creator-rewards / paid creator swarm
+
+### Rule
+- Do not use creator-rewards campaigns as a starting tactic. Use only as a scale layer after an app has validated hooks, clean tracking, conversion surface, creator asset pack, budget cap, and quality-control rules. Source: `memory/app-marketing/creator-rewards-growth-loop.md`.
+- Preferred future test order: Glow Index if compliance + analytics are clean; Vista if TikTok reach recovers first; Nash Satoshi only with strict anti-hype scripts.
+- Views alone are not success. Require downstream signal: site visits, product page views, downloads, email captures, saves, or intent comments.

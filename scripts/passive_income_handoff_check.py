@@ -49,6 +49,7 @@ def main() -> int:
         PI_DIR / "weekly-apis.md",
         PI_DIR / "weekly-exploding-topics.md",
         PI_DIR / "weekly-google-trends.md",
+        PI_DIR / "weekly-trustmrr.json",
     ]
     signal_states = {p.name: file_state(p) for p in required_signal_files}
 
@@ -64,6 +65,11 @@ def main() -> int:
                 problems.append(f"signal file too small: {p} ({state['size']} bytes)")
             age_days = (now - p.stat().st_mtime) / 86400
             if age_days > 8:
+                if p.name == "weekly-trustmrr.json":
+                    # TrustMRR is a soft revenue-comps lens. Stale data should be
+                    # visible to Scout/Strategist, but must not block the entire
+                    # passive-income pipeline.
+                    continue
                 problems.append(f"signal file stale >8 days: {p} ({age_days:.1f}d)")
 
     if args.mode in {"pre-strategist", "post-strategist"}:

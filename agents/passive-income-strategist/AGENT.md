@@ -21,6 +21,7 @@ If file is missing, empty, stale, or contains `INCOMPLETE`: write `memory/passiv
 Also read:
 - `~/.openclaw/workspace/agents/passive-income-scout/state.json`
 - `~/.openclaw/workspace/memory/future-signals.md` — use active signals as context when scoring, especially GTA VI/FiveM creator economy opportunities.
+- `~/.openclaw/workspace/memory/passive-income/weekly-trustmrr.json` — TrustMRR revenue-pattern comps. If missing or older than 8 days, continue but state `TrustMRR unavailable/stale` and lower confidence where revenue comps would matter.
 
 **Cross-reference Mission Control (mandatory before analysis):**
 Pull all existing passive income tasks from the board:
@@ -77,6 +78,23 @@ For each non-saturated idea, run the full analysis:
 - Honest assessment: Weak (bad UX, no AI, outdated, no moat), Medium (competent but not dominant), Strong (well-funded, high SEO, active team)
 - **The winning angle**: What specific niche or positioning does JT own that the competition misses?
 - What do beginners get wrong when they try to build this? (This is JT's defensibility — he can avoid those mistakes)
+
+### B1. TrustMRR Revenue Reality Check
+For every non-saturated idea, use `weekly-trustmrr.json` as a revenue-comps lens.
+
+Assess:
+- Does TrustMRR show companies with reported MRR in this product family or an adjacent category?
+- Are the closest examples proof of real buyer demand, or evidence that the category is already crowded?
+- What MRR ceiling is realistic for a solo/autonomous JT version after stripping out enterprise sales, services, inventory, or support-heavy work?
+- Is this idea a copycat of a listed startup? If yes, downgrade unless the audience, mechanism, or distribution wedge is meaningfully different.
+- Are comps stealth/unnamed/ambiguous? Treat those as weak evidence only.
+
+Scoring rule:
+- TrustMRR can add up to +0.3 only when the core idea already passes value proposition, autonomy, buildability, uniqueness, and separate demand evidence.
+- TrustMRR can downgrade heavily when it reveals a crowded cluster with no differentiated wedge.
+- Never mark BUILD solely because a TrustMRR listing has high reported MRR.
+
+For each evaluated idea, include a short `TrustMRR reality check` note before or inside the scoring section.
 
 ### B2. GTA VI / FiveM Opportunity Check (only for GTA, FiveM, Cfx, Tebex, QBCore, RP-server ideas)
 Score these ideas with the specific GTA VI lens below. Do not treat hype as demand.
@@ -182,15 +200,18 @@ For visual ideas, include a short `Vision Fit` note before the scorecard: model 
 | **Uniqueness** | Would this appear in a "top 10 passive income" list? (Yes=1, No=10) | 8% |
 | **Competition weakness** | How beatable are existing players? | 4% |
 
+TrustMRR is a revenue-comps lens, not a core score dimension. Mention it in the analysis and apply it only through the bonus/discount logic below.
+
 Bonus lenses — apply after the 100-point core score, but never let a weak core idea become BUILD by bonus alone:
 | Bonus lens | What it measures | Max impact |
 |---|---|---|
 | **Agent-native fit** | Could an autonomous agent rationally use/buy this mid-task? Is the output instant, narrow, source-cited, and agent-readable? Does it serve humans today and agents tomorrow? | +0.3 |
 | **TikTok Shop / social-commerce fit** | Could short-form commerce create fast revenue without inventory/support drag? Is it affiliate/POD/digital-first and tied to an owned JT content/app system? | +0.3 |
+| **TrustMRR revenue-comp fit** | Do reported-MRR comps validate an adjacent monetization pattern without making the idea a copycat or crowded-cluster bet? | +0.3 |
 
 Note: JT stack leverage is **baked into Build Feasibility** — a score of 9+ requires using his existing infrastructure meaningfully.
 
-**Overall score** = core weighted average (100%) + optional bonus lenses, capped at +0.6 total. An idea still needs autonomy, build feasibility, uniqueness, and value-proposition gates to earn BUILD.
+**Overall score** = core weighted average (100%) + optional bonus lenses, capped at +0.7 total. An idea still needs autonomy, build feasibility, uniqueness, and value-proposition gates to earn BUILD. Apply negative judgment freely when TrustMRR reveals crowding/copycat risk.
 
 ---
 

@@ -45,3 +45,8 @@
 **Recommendation:** Turn JT's internal agent operating system and workflow experience into a buyer-facing "AI Adoption Ops Sprint": map one workflow, define owner/escalation rules, build the automation, and leave the client with a lightweight champion/operating cadence.
 **Why now:** Job-market signals on May 10 show AI enablement hiring shifting from one-off tool training to formal adoption operating systems, while niche intel shows construction, PM, and wholesale buyers need implementation support more than new AI features.
 **Status:** open
+
+### 2026-05-17 — Clean buyer/channel state before new outreach
+**Recommendation:** Spend the first consulting block this week cleaning the T2/T3 outreach queue: confirm buyer/channel state, close duplicate review tasks, and only draft/send M1s where the buyer and channel are verified.
+**Why now:** This week's pipeline observations show the bottleneck is no longer prospect discovery or draft creation. It is warm-up state, duplicate task hygiene, and unconfirmed LinkedIn buyers, and forcing InMails here burns credits before the trust layer exists.
+**Status:** open

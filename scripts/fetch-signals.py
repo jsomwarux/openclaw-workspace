@@ -7,6 +7,7 @@ Outputs (all to memory/passive-income/):
   weekly-exploding-topics.md   — ExplodingTopics public scrapes
   weekly-google-trends.md      — pytrends keyword momentum
   weekly-apis.md               — API discovery (4 sources)
+  weekly-trustmrr.json/md       — TrustMRR revenue-pattern comps
 
 Runtime: ~15 minutes (pytrends = slow, rate-limited)
 Recommended schedule: Saturday 5:30 AM ET (before Scout runs Sun 6 AM)
@@ -24,6 +25,7 @@ SOURCES = [
     ("ExplodingTopics", SCRIPTS_DIR / "fetch-exploding-topics.py"),
     ("Google Trends (pytrends)", SCRIPTS_DIR / "fetch-google-trends.py"),
     ("API Discovery", SCRIPTS_DIR / "fetch-new-apis.py"),
+    ("TrustMRR Revenue Patterns", SCRIPTS_DIR / "fetch_trustmrr.py"),
 ]
 
 

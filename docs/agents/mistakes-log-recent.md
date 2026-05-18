@@ -261,3 +261,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Before deploy, grep public source for real client names and exact proposal amounts; fail the deploy if any appear in public copy without an approval note.
 - **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; `docs/agents/regression-checks.md` gets public proof privacy grep check.
 - **Verification/date:** Logged 2026-05-14 before privacy redeploy.
+
+## 2026-05-17 — Missed cron cancellation instruction
+- **Failure:** JT said “Let’s cancel this cron for now going forward” in reply to the heartbeat cron, but I treated it as an active-conversation heartbeat and replied `HEARTBEAT_OK` instead of disabling the cron.
+- **Root cause:** The active-conversation heartbeat shortcut overrode an explicit operational command because I did not inspect reply context before applying the heartbeat stop rule.
+- **Guardrail/rule:** If a message contains an explicit command like cancel/disable/stop/pause/resume/update a cron, execute that command even if it arrives in heartbeat context; heartbeat shortcut applies only to actual heartbeat polls or no-op checks.
+- **Regression check:** On any heartbeat-adjacent user message, check for operational verbs (`cancel`, `disable`, `stop`, `pause`, `resume`, `update`, `remove`) before returning `HEARTBEAT_OK`.
+- **Owner surface updated:** Mistakes log + MEMORY.md cron status + daily note.
+- **Verification/date:** 2026-05-17 — cron `eve-heartbeat-2h-002` updated to `enabled=false`; tool result confirmed disabled.

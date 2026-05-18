@@ -6,13 +6,13 @@ Applying for: | Gusto AI Solutions Architect
 
 ---
 
-Gusto is trying to turn service operations into reliable AI-powered workflows, not loose chatbot experiments. The hard part is designing agentic systems where models, tools, data, human judgment, quality, and compliance all work together in production.
+Gusto is scaling agentic service workflows where trust, escalation, and quality matter as much as automation. That is exactly the kind of environment where AI architecture has to start with operational risk, not just model capability.
 
-My background maps to that problem through 6 years in operations and product systems work at Spectrum Enterprise, plus independent consulting work designing AI-assisted workflows. At Spectrum, I translated ambiguous business requirements into production-ready system behavior across Product, Operations, IT, Sales, and Support. More recently, I built AgentGuard, a confidence-gated routing layer with human-in-the-loop review, override controls, audit trails, and explainability for governed AI workflows.
+My background combines 6+ years translating enterprise operations into system-ready workflows at Spectrum Enterprise with independent consulting work designing AI-assisted workflows, governance controls, and human-in-the-loop processes. I have built AgentGuard, a confidence-gated routing layer with override logging and escalation logic, and Mission Control, an operating system for 35+ autonomous workflows with monitoring, cost controls, audit trails, and failure recovery.
 
-At Gusto, I would bring the CX and operations lens into workflow design: analyze SOPs and interaction data, identify automation opportunities by volume and risk, define solve and assist targets, design escalation logic, and partner with Engineering, Data, Legal, Security, and Compliance on reliable primitives. My OpenClaw and Mission Control infrastructure coordinates dozens of autonomous AI workflows with monitoring, cost controls, task routing, and feedback loops, which is the same operating discipline production service AI needs.
+At Gusto, I would focus on workflow-level reliability: SOP analysis, solve and assist targets, HITL protocols, downstream safeguards, and ROI models that separate model behavior from operational process issues. My strongest fit is connecting CX, Engineering, Legal, Security, and Compliance so governance requirements are embedded before agentic systems reach production.
 
-Happy to walk through AgentGuard or the OpenClaw workflow infrastructure and show how I think about agentic workflow performance, risk, and human judgment in production.
+Happy to walk through AgentGuard, Mission Control, and the property operations dashboard as concrete examples of how I design AI workflows that remain measurable, auditable, and useful in real operations.
 
 Jon Trevor Somwaru
 jtsomwaru@gmail.com | jtsomwaru.com

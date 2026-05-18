@@ -85,3 +85,9 @@
 - Recurring failure patterns: cron surface has grown past the <=20/day cap; gateway plist throttle drifted below safe threshold; AGENTS.md is too close to budget for safe appends.
 - Blockers deferred: OpenClaw update requires manual timing; LaunchAgent/service config changes deferred to explicit follow-up task; passive-income-strategist delivery failure could not be resent because final content was not available from visible metadata.
 2026-05-15 — autoresearch sports-gm: baseline 0.833 → final 0.917; changed `skills/sports-gm/SKILL.md` roster-audit step 5 to require confidence tier, risk case, market/context logic, and receipts handling per move.
+
+## Weekly Systems Review — 2026-05-17
+- Checks run: cron health/runs, file budgets, process/gateway/watchdog health, LaunchAgent config, OpenClaw version, plugin settings/extensions, critical file integrity, autoresearch registry, future signals, MC/API reachability, and weekly cost review.
+- Fixes applied: Job Application Auto-Builder model corrected to Sonnet and timeout 1200s; Health Check-in timeout 90s→120s; passive-income strategist best-effort delivery explicit; MC follow-up task created for cron cap/gateway/bootstrap drift.
+- Recurring failure patterns: cron volume still far above 20/day cap; gateway LaunchAgent ThrottleInterval still 1; bootstrap files near cap; duplicate lossless-claw plugin warning persists.
+- Blockers deferred: cron pruning/consolidation, gateway throttle hygiene, OpenClaw 2026.5.12 update decision, HEARTBEAT/MEMORY compaction.

@@ -1,0 +1,786 @@
+{
+  "fetched_at": "2026-05-18T00:10:25.129737+00:00",
+  "source_url": "https://trustmrr.com/",
+  "freshness_days": 0,
+  "records": [
+    {
+      "rank": null,
+      "name": "Stan",
+      "url": "https://trustmrr.com/startup/stan",
+      "description": "Stan enables people to make living and work for themselves. Vitalii Dodonov",
+      "reported_mrr": 3569654,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": null,
+      "name": "quirkypublic",
+      "url": "https://trustmrr.com/startup/stealth-company-23",
+      "description": "Stealth Company Quirky-public-2681",
+      "reported_mrr": 747069,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": null,
+      "name": "Unnamed Company",
+      "url": "https://trustmrr.com/startup/unnamed-company",
+      "description": "",
+      "reported_mrr": 372868,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": true
+    },
+    {
+      "rank": 4,
+      "name": "Rezi",
+      "url": "https://trustmrr.com/startup/rezi",
+      "description": "Most people agree this is the best resume builder in the world. We have about 1M new users every year. Rezi Enterprise, a new and growing product, supports over 300 organizations, including 1 fortune 500, and multiple universities. We are now working to allow companies a way to connect with job seekers, and bridge the gap between company and job seeker while bringing transparency to job seekers. Jacob Jacquet",
+      "reported_mrr": 293651,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Education / career / interview",
+        "API / validation / infrastructure"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 5,
+      "name": "1Lookup",
+      "url": "https://trustmrr.com/startup/1lookup",
+      "description": "The #1 tool for validating phone, email and IP data in real time. All through one powerful API.",
+      "reported_mrr": 269217,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Analytics / data / attribution",
+        "API / validation / infrastructure"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 6,
+      "name": "TrimRx",
+      "url": "https://trustmrr.com/startup/trimrx",
+      "description": "TrimRx is an online telehealth company that specializes in personalized weight loss programs using GLP-1 medications like Semaglutide and Tirzepatide. Connecting users with licensed medical providers, FDA-registered pharmacies, and a focus on safety, effectiveness, and ongoing support, TrimRx has helped thousands of clients across the U.S. achieve their weight loss goals.",
+      "reported_mrr": 238761,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Health / wellness / medical"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 7,
+      "name": "Kibu",
+      "url": "https://trustmrr.com/startup/kibu",
+      "description": "Content, compliance, and EHR (Electronic Health Record) software platform built specifically for provider organizations serving people with intellectual and developmental disabilities (I/DD). It helps these organizations teach people with special needs while managing regulatory compliance, documentation, and care delivery across hundreds of organizations and 48 states. Daniel Caridi",
+      "reported_mrr": 234319,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Health / wellness / medical"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 8,
+      "name": "Cometly",
+      "url": "https://trustmrr.com/startup/cometly",
+      "description": "Marketing attribution and analytics for SaaS companies. Use AI to chat with your ads data.",
+      "reported_mrr": 205244,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Analytics / data / attribution"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 9,
+      "name": "Brand On Demand, Inc.",
+      "url": "https://trustmrr.com/startup/brand-on-demand-inc",
+      "description": "Supliful is an all-in-one platform for Creators to launch and operate a scalable CPG brand. Our approach unifies the entire business cycle – from product selection all the way through e-commerce enablement and order fulfillment – into a single digital platform with no upfront costs. We charge customers at the time they make the purchase. Martins Lasmanis",
+      "reported_mrr": 194127,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools",
+        "CPG / commerce enablement"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 10,
+      "name": "nomistair",
+      "url": "https://trustmrr.com/startup/stealth-venture-3",
+      "description": "Stealth Venture",
+      "reported_mrr": 185426,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 11,
+      "name": "sowakillian",
+      "url": "https://trustmrr.com/startup/hidden-business-12",
+      "description": "Hidden Business",
+      "reported_mrr": 184041,
+      "growth_percent": 0,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 12,
+      "name": "DM Champ",
+      "url": "https://trustmrr.com/startup/dm-champ",
+      "description": "This Al Is So Good It Feels Illegal: Watch it convince a stranger to put down $1,000 on a $40,000 treatment. No human involved. Just Al selling like your best closer, except it works 24/7 and never takes a day off. Use it for your own business. Or white-label it, sell it to others, and charge them monthly. Keep everything.",
+      "reported_mrr": 180719,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Lead generation / sales automation",
+        "Local business / agency software"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 13,
+      "name": "Medical Practice & Medical Consulting Agency",
+      "url": "https://trustmrr.com/startup/medical-practice-medical-consulting-agency",
+      "description": "Hormone Prescribing service in UK & Operations/Automation Consulting Agency",
+      "reported_mrr": 151678,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Health / wellness / medical",
+        "Local business / agency software"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 14,
+      "name": "saad__",
+      "url": "https://trustmrr.com/startup/stealth-company-17",
+      "description": "Stealth Company",
+      "reported_mrr": 135899,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 15,
+      "name": "PROSP",
+      "url": "https://trustmrr.com/startup/prosp",
+      "description": "Automate your LinkedIn Outreach with AI Yann | Prosp.ai",
+      "reported_mrr": 128005,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Lead generation / sales automation"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 16,
+      "name": "Postiz",
+      "url": "https://trustmrr.com/startup/postiz",
+      "description": "Postiz is the ultimate agentic social media scheduler tool",
+      "reported_mrr": 116429,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Creator monetization / social tools"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 17,
+      "name": "b",
+      "url": "https://trustmrr.com/startup/besbet",
+      "description": "",
+      "reported_mrr": 97465,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 18,
+      "name": "S",
+      "url": "https://trustmrr.com/startup/slop-cannon",
+      "description": "Generating high-converting AI slop at industrial scale",
+      "reported_mrr": 95986,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 19,
+      "name": "Vid.AI",
+      "url": "https://trustmrr.com/startup/vidai-llc",
+      "description": "Turn any idea or script into ready-to-post videos that get views. AI generates voiceovers, visuals, and edits – all in minutes, no skills needed.",
+      "reported_mrr": 94448,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools",
+        "API / validation / infrastructure"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 20,
+      "name": "Codédex",
+      "url": "https://trustmrr.com/startup/cod-dex",
+      "description": "Learn to code platform for Gen Z",
+      "reported_mrr": 84465,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Education / career / interview"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 21,
+      "name": "Supergrow",
+      "url": "https://trustmrr.com/startup/supergrow",
+      "description": "",
+      "reported_mrr": 79479,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 22,
+      "name": "S",
+      "url": "https://trustmrr.com/startup/stealth-venture-15",
+      "description": "Stealth Venture Health and Wellness fitness app for iOS",
+      "reported_mrr": 71178,
+      "growth_percent": 0,
+      "categories_inferred": [
+        "Health / wellness / medical"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 23,
+      "name": "S",
+      "url": "https://trustmrr.com/startup/stealth-company-9",
+      "description": "Stealth Company Social network distribution tool with advanced features",
+      "reported_mrr": 70258,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Creator monetization / social tools"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 24,
+      "name": "Teachizy",
+      "url": "https://trustmrr.com/startup/teachizy-sas-maj-digital",
+      "description": "Teachizy est le moyen le plus facile de créer une formation en ligne et en blended learning pour digitaliser son parcours de formation. Le Dev ULTIME 🍜",
+      "reported_mrr": 67938,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Education / career / interview"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 25,
+      "name": "Speel.co",
+      "url": "https://trustmrr.com/startup/speel-co",
+      "description": "Use AI to generate realistic UGC-style videos and images for ads and socials. Launched in October, went from 0 to 1M ARR in 3 months.",
+      "reported_mrr": 65843,
+      "growth_percent": 0,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 26,
+      "name": "P",
+      "url": "https://trustmrr.com/startup/project-a",
+      "description": "",
+      "reported_mrr": 65508,
+      "growth_percent": 0,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 27,
+      "name": "Indexsy",
+      "url": "https://trustmrr.com/startup/indexsy-consulting-ltd",
+      "description": "We Build, Acquire & Scale Digital Assets Jacky Chou (buying o...",
+      "reported_mrr": 63518,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 28,
+      "name": "SEOBOT",
+      "url": "https://trustmrr.com/startup/seobot",
+      "description": "SeoBOT - AI Agent for SEO (keywords, research, blog, mini apps, pSEO and more)",
+      "reported_mrr": 62958,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 29,
+      "name": "S",
+      "url": "https://trustmrr.com/startup/thumbnailcreator-com",
+      "description": "Stealth Venture The easiest to use and fastest growing AI powered YouTube thumbnail generation loved by thousands of creators.",
+      "reported_mrr": 60419,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 30,
+      "name": "SEO STACK",
+      "url": "https://trustmrr.com/startup/seo-stack",
+      "description": "SEO stack is an SEO/marketing SaaS that offers data warehousing with AI. It is a rebuild of Google search console with Google analytics, it allows SEOs and marketers to get better results in search engines and LLMs, it also provides AI and LLM visibility tracking. Daniel Foley Carter",
+      "reported_mrr": 60062,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Analytics / data / attribution"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 31,
+      "name": "DataExpert / TechCreator",
+      "url": "https://trustmrr.com/startup/dataexpert-techcreator",
+      "description": "DataExpert.io is a data engineering education company that empowers data engineers to level up their skills and become content creators as well!",
+      "reported_mrr": 58255,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools",
+        "Education / career / interview",
+        "Analytics / data / attribution"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 32,
+      "name": "kevyubin",
+      "url": "https://trustmrr.com/startup/ai-startup",
+      "description": "",
+      "reported_mrr": 57674,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 33,
+      "name": "AEO Engine",
+      "url": "https://trustmrr.com/startup/aeo-engine",
+      "description": "AEO Engine is a living network of AI agents that collaborate in perfect sync - researching, creating, optimizing, and amplifying your content every day. Each one plays a role in expanding your visibility, guided by a central orchestrator that learns and adapts with every result to deliver compounding growth across Google, ChatGPT, AI Overviews, Perplexity, and beyond. Vijay C. Jacob",
+      "reported_mrr": 55688,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Education / career / interview"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 34,
+      "name": "Upscale System LLC",
+      "url": "https://trustmrr.com/startup/upscale-system-llc",
+      "description": "We sell CRM and Lead generation softwares.",
+      "reported_mrr": 52119,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Lead generation / sales automation"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 35,
+      "name": "LocalRank.so",
+      "url": "https://trustmrr.com/startup/localrank-so",
+      "description": "All-in-one AI Local SEO Software Jacky Chou (buying o...",
+      "reported_mrr": 48408,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Local business / agency software"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 36,
+      "name": "Bookedin",
+      "url": "https://trustmrr.com/startup/bookedin",
+      "description": "BookedIn ai is a no-code AI platform agencies use to create and manage AI receptionists and sales agents across voice, SMS, email, and messaging apps like Instagram. These agents can instantly engage leads after form fills, handle inbound calls, run outbound follow-ups, and reactivate old leads—qualifying prospects and booking meetings automatically to improve speed-to-lead, show rates, and revenue without extra headcount.",
+      "reported_mrr": 47932,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Creator monetization / social tools",
+        "Lead generation / sales automation",
+        "API / validation / infrastructure",
+        "Local business / agency software"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 37,
+      "name": "Virlo",
+      "url": "https://trustmrr.com/startup/virlo",
+      "description": "Track, manage, leverage short-form data. Nicolas Mauro",
+      "reported_mrr": 47139,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Analytics / data / attribution"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 38,
+      "name": "T",
+      "url": "https://trustmrr.com/startup/top-secret",
+      "description": "No detail, cause I'm scared",
+      "reported_mrr": 46800,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 39,
+      "name": "Launch Club",
+      "url": "https://trustmrr.com/startup/launch-club",
+      "description": "Reddit marketing to improve AI search. SaaS helping business owners learn how to promote their products. Also provide tools and content creation for members.",
+      "reported_mrr": 46500,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools",
+        "Education / career / interview",
+        "CPG / commerce enablement",
+        "Local business / agency software"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 40,
+      "name": "I",
+      "url": "https://trustmrr.com/startup/interactive-video-saas",
+      "description": "Interactive Video SaaS Premier interactive video software used for education, training, marketing. $48k MRR + some services revenue. Easy to use, drag and drop editor rebuilt from the ground up in 2025, fully documented and clean with little to no tech debt. One full-time employee. Owner works 3-5 hours per week and can be replaced by a fractional engineer. High SDE. Great fit for a video-based company in the education or training space as an upsell. ***Offers must include LinkedIn profile***",
+      "reported_mrr": 45181,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Lead generation / sales automation",
+        "Education / career / interview"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 41,
+      "name": "Lunchbreak",
+      "url": "https://trustmrr.com/startup/lunchbreak",
+      "description": "Lunchbreak helps students and professionals make AI-generated content undetectable across all major detectors, including Turnitin and GPTZero, while keeping their natural tone and voice.",
+      "reported_mrr": 44046,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Education / career / interview"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 42,
+      "name": "ChatDash, LLC",
+      "url": "https://trustmrr.com/startup/chatdash-llc",
+      "description": "ChatDash is a white-labeled AI assistant dashboard solution tailor-made for agencies, enabling them to provide clients with a customizable, brandable interface for managing their own Knowledge Bases. This platform enhances the value agencies offer by saving them time on Knowledge Base maintenance and allowing for higher ticket pricing for their AI chatbot services. With plans catering to various agency sizes, from small startups to established firms, ChatDash combines full Voiceflow and OpenAI A",
+      "reported_mrr": 43032,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Analytics / data / attribution",
+        "CPG / commerce enablement",
+        "Local business / agency software"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 43,
+      "name": "Notionlytics",
+      "url": "https://trustmrr.com/startup/notionlytics",
+      "description": "Detailed analytics for Notion. For company wikis, community knowledge bases, and shared documents. Find out what's helpful, and what isn't. Notionlytics 💫",
+      "reported_mrr": 40969,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Creator monetization / social tools",
+        "Analytics / data / attribution"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 44,
+      "name": "Hack2hire",
+      "url": "https://trustmrr.com/startup/hack2hire",
+      "description": "Offers coding and system design practice for interview preparation.",
+      "reported_mrr": 40674,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Education / career / interview"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 45,
+      "name": "P",
+      "url": "https://trustmrr.com/startup/private-venture-6",
+      "description": "Private Venture Reddit GEO/LLM Agency for B2B SaaS ($1M-$10M ARR). Monthly Financials: • Revenue: $50,000 MRR • Costs: ~$13k (Reddit fees + Account Manager + Writer) • Net Profit: ~$37,000/mo (75% Margin as Owner-Operator). Growth: 100% Inbound & Referrals. We have ZERO sales process (no follow-ups), offering huge upside for a commercial buyer to close our ignored leads. Deal: Asking $500K and open with Seller Financing as we trust the growth of the next months with the right buyer.",
+      "reported_mrr": 40037,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools",
+        "Lead generation / sales automation",
+        "Local business / agency software"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 46,
+      "name": "sowakillian",
+      "url": "https://trustmrr.com/startup/parkeur",
+      "description": "Confidential Startup",
+      "reported_mrr": 39816,
+      "growth_percent": 0,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 47,
+      "name": "simpleanalytic",
+      "url": "https://trustmrr.com/startup/simple-analytics",
+      "description": "Simple Analytics We build and sell software for businesses. Simple Analytics",
+      "reported_mrr": 39194,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Analytics / data / attribution",
+        "Local business / agency software"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 48,
+      "name": "POST BRIDGE",
+      "url": "https://trustmrr.com/startup/post-bridge",
+      "description": "Post your content to multiple social media platforms at the same time, all-in one place.",
+      "reported_mrr": 38528,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools",
+        "API / validation / infrastructure"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 49,
+      "name": "P",
+      "url": "https://trustmrr.com/startup/private-enterprise-6",
+      "description": "Private Enterprise",
+      "reported_mrr": 38175,
+      "growth_percent": 0,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 50,
+      "name": "CalBuddy",
+      "url": "https://trustmrr.com/startup/calbuddy",
+      "description": "CalBuddy is an app that helps users track and manage their calorie intake. Tomer | SaaS Founder",
+      "reported_mrr": 37860,
+      "growth_percent": 0,
+      "categories_inferred": [
+        "Health / wellness / medical",
+        "Analytics / data / attribution"
+      ],
+      "stealth_or_ambiguous": false
+    }
+  ],
+  "category_patterns": [
+    {
+      "category": "AI content / SEO / AEO",
+      "examples": [
+        "Kibu",
+        "Brand On Demand, Inc.",
+        "S",
+        "Vid.AI",
+        "Speel.co",
+        "SEOBOT"
+      ],
+      "count": 16,
+      "mrr_range": "$38,528-$234,319 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "Other / unclear",
+      "examples": [
+        "Stan",
+        "quirkypublic",
+        "Unnamed Company",
+        "nomistair",
+        "sowakillian",
+        "saad__"
+      ],
+      "count": 14,
+      "mrr_range": "$38,175-$3,569,654 reported MRR",
+      "takeaway": "Ambiguous listings; weak evidence unless supported by separate demand signals."
+    },
+    {
+      "category": "Creator monetization / social tools",
+      "examples": [
+        "Brand On Demand, Inc.",
+        "Postiz",
+        "Vid.AI",
+        "S",
+        "Speel.co",
+        "S"
+      ],
+      "count": 12,
+      "mrr_range": "$38,528-$194,127 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "Analytics / data / attribution",
+      "examples": [
+        "1Lookup",
+        "Cometly",
+        "SEO STACK",
+        "DataExpert / TechCreator",
+        "Virlo",
+        "ChatDash, LLC"
+      ],
+      "count": 9,
+      "mrr_range": "$37,860-$269,217 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "Education / career / interview",
+      "examples": [
+        "Rezi",
+        "Codédex",
+        "Teachizy",
+        "DataExpert / TechCreator",
+        "AEO Engine",
+        "Launch Club"
+      ],
+      "count": 9,
+      "mrr_range": "$40,674-$293,651 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "Local business / agency software",
+      "examples": [
+        "DM Champ",
+        "Medical Practice & Medical Consulting Agency",
+        "LocalRank.so",
+        "Bookedin",
+        "Launch Club",
+        "ChatDash, LLC"
+      ],
+      "count": 8,
+      "mrr_range": "$39,194-$180,719 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "Lead generation / sales automation",
+      "examples": [
+        "DM Champ",
+        "PROSP",
+        "Upscale System LLC",
+        "Bookedin",
+        "I",
+        "P"
+      ],
+      "count": 6,
+      "mrr_range": "$40,037-$180,719 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "API / validation / infrastructure",
+      "examples": [
+        "Rezi",
+        "1Lookup",
+        "Vid.AI",
+        "Bookedin",
+        "POST BRIDGE"
+      ],
+      "count": 5,
+      "mrr_range": "$38,528-$293,651 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "Health / wellness / medical",
+      "examples": [
+        "TrimRx",
+        "Kibu",
+        "Medical Practice & Medical Consulting Agency",
+        "S",
+        "CalBuddy"
+      ],
+      "count": 5,
+      "mrr_range": "$37,860-$238,761 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "CPG / commerce enablement",
+      "examples": [
+        "Brand On Demand, Inc.",
+        "Launch Club",
+        "ChatDash, LLC"
+      ],
+      "count": 3,
+      "mrr_range": "$43,032-$194,127 reported MRR",
+      "takeaway": "Revenue-backed category; use as adjacent pattern only, not copycat instruction."
+    }
+  ],
+  "warnings": [
+    "TrustMRR data is external and directional; treat listed MRR as reported/listed, not audited financial truth.",
+    "Stealth, unnamed, hidden, or confidential listings cannot support exact conclusions or BUILD verdicts alone.",
+    "Use revenue patterns to validate adjacent opportunities; do not clone listed startups directly."
+  ]
+}

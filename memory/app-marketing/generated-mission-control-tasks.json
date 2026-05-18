@@ -1,5 +1,5 @@
 {
-  "execute": false,
+  "execute": true,
   "tasks": [
     {
       "title": "App Marketing OS: connect generated backlog to Mission Control weekly",
@@ -42,9 +42,9 @@
       "app": "Vista",
       "category": "metrics",
       "reason": "Vista App Store metadata auth works and connector readiness exists, but Apple sales/reporting metrics require vendor number/reporting permission before downloads or product-page metrics can flow into the scoreboard.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57fbpp5se15asd6jpm6mgg2ts86x7xg"
     },
     {
       "title": "Vista: run ASO baseline and one metadata/screenshot test recommendation",
@@ -147,9 +147,9 @@
       "app": "Glow Index",
       "category": "metrics",
       "reason": "Glow should not receive social volume until there is a way to measure visits/searches/clicks and learn from it.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j577q6w2bts0gfkaebjkajw1qh86w2db"
     },
     {
       "title": "Action Arena: create waitlist/landing-page spec before marketing automation",
