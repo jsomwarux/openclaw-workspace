@@ -181,7 +181,20 @@
 
 ---
 
-## Progression Guardrails
+## Week 12 — Routine/Planning & Emotional Nuance (May 18–24)
+**Theme:** Fine-tune daily coordination with your girlfriend and add emotional depth/nuance to your reactions.
+
+| Day | Date | Topic | Key Phrases |
+|-----|------|-------|-------------|
+| Mon | May 18 | Coordination: "I'm busy" vs. "I'm free" | estoy ocupado/libre, avísame cuando..., ya casi llego, espérame |
+| Tue | May 19 | Nuanced reactions (surprise/doubt) | ¡no me digas!, ¿en serio?, no lo puedo creer, me parece raro |
+| Wed | May 20 | Daily routines: "I'm about to..." | estoy por..., ya voy a..., me falta poco para..., acabo de... |
+| Thu | May 21 | Asking for specific favors | ¿puedes traerme...?, me haces un favor, tráeme..., llévate... |
+| Fri | May 22 | Expressing varying needs | no tengo ganas de, me urge, me hace falta, preferiría |
+| Sat | May 23 | Weekend planning (precise) | a ver si..., depende de..., si tenemos tiempo, vamos viendo |
+| Sun | May 24 | **WEEK 12 EVALUATION** | Role-play: daily coordination, reaction to news, plan for Sunday |
+
+---
 - The daily cron must choose topics from the calendar/curriculum week implied by `started` + today's date. If `state.current_week` differs from the calendar week, it must flag the mismatch and use the calendar/curriculum week unless explicitly doing remedial review.
 - If today's week is missing from this file, do not recycle old weeks silently. Create/flag a curriculum gap instead.
 - If the prior two lesson files have the same normalized topic as today's candidate topic, pick the next non-repeated topic in the same week or mark the lesson as review with a clear reason.

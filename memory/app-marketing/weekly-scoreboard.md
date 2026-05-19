@@ -125,12 +125,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 5
+- Posts/results logged: 6
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 5
+- Posts/results logged: 6
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -162,16 +162,38 @@ Is the sharpe (20 views/impressions)
 
 ## Metrics Summary — Week of 2026-05-11
 
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-05-11 to 2026-05-17 (0 views/impressions)
+
 ### glow-index / tiktok
 - Posts/results logged: 1
 - Views/impressions: 310
 - Engagement: likes 1, comments 0, saves 0, reposts 0
 - Best item: 5 ingredients dermatologists actually avoid (310 views/impressions)
 
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 3
+- Web depth: active users 3, pageviews 12, events 26
+- Best item: glow-index GA4 web traffic 2026-05-11 to 2026-05-17 (3 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-05-11 to 2026-05-17 (0 views/impressions)
+
 ### nash-satoshi / tiktok
 - Posts/results logged: 1
 - Views/impressions: 0
 - Best item: The Difference Between Buying Strength And Holding Someone Else's Bags Is 4 AIs (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 27
+- Web depth: active users 12, pageviews 64, events 186
+- Best item: nash-satoshi GA4 web traffic 2026-05-11 to 2026-05-17 (27 views/impressions)
 
 ### nash-satoshi / x
 - Posts/results logged: 7
@@ -606,7 +628,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-17_
+_Last updated: 2026-05-18_
 
 <!-- METRICS_SUMMARY_END -->
 
@@ -617,3 +639,12 @@ _Last updated: 2026-05-17_
 - Measurement blocker: metrics remain thin; App Store Connect parked and ReelFarm/TikTok live IDs need handoff before increasing volume.
 - Next durable discovery action: reconcile planned rows in `memory/app-marketing/post-registry.jsonl` to exact live ReelFarm/TikTok post IDs after JT posts from laptop.
 
+
+
+## Run Note — Week of 2026-05-18
+- Generated: X 1, Reddit 0, TikTok/ReelFarm support 2 hook/slide concepts only, LinkedIn 0.
+- Approved queue entries: 3 (`nash-satoshi-x-2026-05-18-ranking-update-1`, `vista-tiktok-2026-05-18-rating-precision-1`, `nash-satoshi-tiktok-2026-05-18-model-consensus-1`).
+- Skips: Reddit skipped because no clearly compliant community-native angle was needed this week; LinkedIn skipped because May monthly cadence already used and no new product milestone/proof.
+- Measurement blocker: metrics remain thin; volume should not increase until ReelFarm/TikTok live IDs, X post IDs, and App Store/web metrics are reconciled.
+- Next durable discovery action: reconcile planned queue entries to live post IDs in `memory/app-marketing/post-registry.jsonl`, then rerun metrics collection/analysis before scaling output.
+- Behavioral demand lens: Vista draft uses precision/taste identity and challenges coarse 5-star ratings; Nash drafts use uncertainty reduction, model-disagreement curiosity, and ranking-dispersion as the research trigger.

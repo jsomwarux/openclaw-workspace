@@ -1,0 +1,205 @@
+[
+  {
+    "id": "2054169338077381078",
+    "text": "At 1:42 AM, an n8n workflow detected a new PDF invoice uploaded to cloud storage.\n\nThat single event triggered an entire autonomous pipeline.\n\nNode 1:\nA webhook captured the upload event.\n\nNode 2:\nOCR extracted invoice text and tables.\n\nNode 3:\nAn LLM classified:\n- vendor type\n-",
+    "author_id": "769372283131432961",
+    "username": "Alacritic_Super",
+    "name": "Praveen Kumar Verma",
+    "created_at": "2026-05-12T11:58:29.000Z",
+    "conversation_id": "2054169338077381078",
+    "metrics": {
+      "likes": 3,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 257,
+      "bookmarks": 1
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Alacritic_Super/status/2054169338077381078"
+  },
+  {
+    "id": "2054516784355807385",
+    "text": "How we use n8n to auto-classify cold email replies (saves 10h/week):\n\nTrigger: New reply webhook from Smartlead\n\nClassification logic (via AI node):\n\n→ \"Interested\" → draft reply + flag for human approval\n\n→ \"Not now\" → tag in CRM, schedule 90-day follow-up\n\n→ \"OOO\" → pause",
+    "author_id": "1288970756064518144",
+    "username": "coldemaileng",
+    "name": "Cold Email Engineer",
+    "created_at": "2026-05-13T10:59:07.000Z",
+    "conversation_id": "2054516784355807385",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 36,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/coldemaileng/status/2054516784355807385"
+  },
+  {
+    "id": "2055635092815724651",
+    "text": "Built a real-time AI stock alert automation using n8n,Telegram,Google Sheets,APIs.\n\n✅ SELL/STOP LOSS\n✅ Real-time workflow execution\n✅ Automated data syncing\n✅ Telegram bot integration\n\nGig: https://t.co/f1AMmaEP5I\n#n8n #AIAutomation #WorkflowAutomation \nSpecialized in n8n https://t.co/UiWxzg0iuO",
+    "author_id": "1418834345134067712",
+    "username": "MdMosta39784575",
+    "name": "Md. Mostafizur Rahman",
+    "created_at": "2026-05-16T13:02:52.000Z",
+    "conversation_id": "2055635092815724651",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 52,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://www.fiverr.com/s/GzDylRL",
+      "https://x.com/MdMosta39784575/status/2055635092815724651/photo/1",
+      "https://x.com/MdMosta39784575/status/2055635092815724651/photo/1",
+      "https://x.com/MdMosta39784575/status/2055635092815724651/photo/1",
+      "https://x.com/MdMosta39784575/status/2055635092815724651/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "n8n",
+      "AIAutomation",
+      "WorkflowAutomation"
+    ],
+    "tweet_url": "https://x.com/MdMosta39784575/status/2055635092815724651"
+  },
+  {
+    "id": "2056068709047738834",
+    "text": "Using @Scrapingdog lately for web scraping &amp; SERP extraction workflows.\nFast API responses, easy integration, and works great with automation tools like n8n 🔥\nDefinitely a useful tool for scraping, lead generation, and automation projects.\n\n#automation #n8n #API #Scrapingdog",
+    "author_id": "2041654997897646081",
+    "username": "daci27534",
+    "name": "MO5",
+    "created_at": "2026-05-17T17:45:54.000Z",
+    "conversation_id": "2056068709047738834",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 1,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [
+      "scrapingdog"
+    ],
+    "hashtags": [
+      "automation",
+      "n8n",
+      "API",
+      "Scrapingdog"
+    ],
+    "tweet_url": "https://x.com/daci27534/status/2056068709047738834"
+  },
+  {
+    "id": "2056002454529945649",
+    "text": "You don’t need full-stack devs to automate your biz. Connecting APIs with n8n turns unlinked tools into one automated engine. What’s your first integration?\n\n#n8n #APIs #Automation #AIagents #SaaS #Startups #NoCode #WorkflowEngineering",
+    "author_id": "1804151939745353729",
+    "username": "AkshatShar75803",
+    "name": "Akshat Sharma",
+    "created_at": "2026-05-17T13:22:38.000Z",
+    "conversation_id": "2056002454529945649",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 0,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [
+      "n8n",
+      "APIs",
+      "Automation",
+      "AIagents",
+      "SaaS",
+      "Startups",
+      "NoCode",
+      "WorkflowEngineering"
+    ],
+    "tweet_url": "https://x.com/AkshatShar75803/status/2056002454529945649"
+  },
+  {
+    "id": "2055680153238270097",
+    "text": "This Automation tool n8n is extremely powerful.\nIt combines:\n-No_code and low_code Automation\n-AI agent workflow\n-API integration \n-Database Automation \n-CRM Automation \n-Social Media Automation \n-Web scraping.\nn8n allows deeper customisation and can be self-hosted.",
+    "author_id": "1484852054023712772",
+    "username": "Nwakoremmanuel2",
+    "name": "Nwakor emmanuel",
+    "created_at": "2026-05-16T16:01:55.000Z",
+    "conversation_id": "2055680153238270097",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 48,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Nwakoremmanuel2/status/2055680153238270097"
+  },
+  {
+    "id": "2054992769475625310",
+    "text": "For n8n posts, the useful CTA is the node repo, not another generic landing page. Atlas Cloud's n8n integration is here: https://t.co/6GcafrveEC 💼 🍀 🌹",
+    "author_id": "2039099227935059968",
+    "username": "adams_elizi",
+    "name": "Elizabeth Adams",
+    "created_at": "2026-05-14T18:30:30.000Z",
+    "conversation_id": "2054992769475625310",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 3,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/AtlasCloudAI/n8n-nodes-atlascloud"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/adams_elizi/status/2054992769475625310"
+  },
+  {
+    "id": "2054986369575883049",
+    "text": "Demand for n8n is surging by 1,390%. 📈 Why?\n\n\"Agent Integration\" is the new standard. We’re turning months of coding into days of autonomous automation. Stop building apps; start building ecosystems.\n\n#n8n #BusinessAutomation #LowCode #MYRQUIX https://t.co/ra0DbVummt",
+    "author_id": "2038336755091283968",
+    "username": "myrquix",
+    "name": "Myrquix AI",
+    "created_at": "2026-05-14T18:05:04.000Z",
+    "conversation_id": "2054986369575883049",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 1,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/myrquix/status/2054986369575883049/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "n8n",
+      "BusinessAutomation",
+      "LowCode",
+      "MYRQUIX"
+    ],
+    "tweet_url": "https://x.com/myrquix/status/2054986369575883049"
+  }
+]

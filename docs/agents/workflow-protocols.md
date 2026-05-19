@@ -22,6 +22,31 @@ For any coding task or multi-step build: before writing a single line of code, c
 Check off steps as they complete (`- [x]`). If something breaks mid-task: update the plan, STOP, re-plan.
 Exception: one-liner fixes or single-file edits don't need a plan file.
 
+## Running Implementation Notes Rule
+For any coding-agent, n8n-agent, Agentforce, app/site build, or non-trivial implementation sub-agent task, require a live `tasks/implementation-notes.html` file alongside `tasks/todo.md`.
+
+Purpose: capture anything JT or the next agent should know about how the implementation diverged from or interpreted the spec. This is the missing audit trail between prompt, code, and final summary.
+
+Canonical prompt block:
+```
+Implement <SPEC>. As you work, maintain a running `tasks/implementation-notes.html` file that captures anything I should know about how the implementation diverges from or interprets the spec, including:
+
+- Design decisions: choices you made where the spec was ambiguous
+- Deviations: places where you intentionally departed from the spec, and why
+- Tradeoffs: alternatives you considered and why you picked what you did
+- Open questions: anything you'd want me to confirm or revise
+
+Update this file while working; do not reconstruct it only at the end. If there were no meaningful decisions, deviations, tradeoffs, or open questions, write `No material spec interpretation notes` explicitly.
+```
+
+HTML file requirements:
+- Include a short summary box at top: status, date, task, and top 3 notes.
+- Use sections for Design Decisions, Deviations, Tradeoffs, Open Questions, Files Changed, and Verification.
+- Keep it readable in a browser: simple inline CSS is fine; no build step or external assets.
+- The notes file is for implementation interpretation, not a duplicate changelog. Avoid dumping every file edit unless it matters to the spec.
+
+Final handoff must cite `tasks/implementation-notes.html`, summarize the top 3 notes, and mention any open questions. If the file is missing, the implementation handoff is incomplete.
+
 
 ## Agent-Ready PRD Rule
 Before handing off a **non-trivial product/client/app build** to a coding agent, n8n agent, Agentforce agent, or implementation sub-agent, create or fill an agent-ready PRD using `templates/agent-ready-prd-template.md`.

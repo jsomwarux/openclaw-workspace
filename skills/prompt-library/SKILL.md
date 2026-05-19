@@ -184,10 +184,22 @@ Read [KEY_FILE] carefully for styling/patterns to match.
 - Match existing design system exactly — read [REFERENCE_FILE] first
 - All TypeScript must be valid
 
+## IMPLEMENTATION NOTES
+As you work, maintain a running `tasks/implementation-notes.html` file that captures anything I should know about how the implementation diverges from or interprets the spec, including:
+
+- Design decisions: choices you made where the spec was ambiguous
+- Deviations: places where you intentionally departed from the spec, and why
+- Tradeoffs: alternatives you considered and why you picked what you did
+- Open questions: anything you'd want me to confirm or revise
+
+Update this file while working; do not reconstruct it only at the end. Include a short top summary, readable HTML styling, sections for Design Decisions / Deviations / Tradeoffs / Open Questions / Files Changed / Verification, and `No material spec interpretation notes` if nothing meaningful occurred.
+
 ## WHEN DONE
 1. Run: npm run build
-2. If passes: run `openclaw system event --text "Done: [brief summary]" --mode now`
-3. If fails: fix errors, rebuild, then notify
+2. Summarize the top 3 implementation notes and cite `tasks/implementation-notes.html`
+3. Mention any open questions explicitly
+4. If passes: run `openclaw system event --text "Done: [brief summary]" --mode now`
+5. If fails: fix errors, rebuild, then notify
 ```
 
 **Last used:** 2026-02-28 (Overnight Work tab in Mission Control)

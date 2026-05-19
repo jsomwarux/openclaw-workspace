@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "site:news.ycombinator.com Claude MCP AI agents tools",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-18",
+  "results": [
+    {
+      "title": "Use the Claude Agent SDK with Your Claude Plan | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48125552",
+      "description": "One of the technical things I don&#x27;t really understand, is that it is not that hard to have an agent use tmux/etc to type into Claude code directly if you really want to? Like using tmux vs Claude -p are effectively the same aren&#x27;t they · Like, I understand the way they are subsidizing or whatever ...",
+      "age": "4 days ago",
+      "page_age": "2026-05-14T14:07:38",
+      "source": "Hacker News"
+    },
+    {
+      "title": "Claude for Small Business | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48130950",
+      "description": "Onboarding my non-software engineer teammates to it has super-charged them and essentially given them all their own personal developer that can automate tasks for them. Managing codebases, etc. is still a hassle though · 90% of the power of Excel was that it was functionally a database that ...",
+      "age": "2 days ago",
+      "page_age": "2026-05-16T16:14:03",
+      "source": "Hacker News"
+    },
+    {
+      "title": "Show HN: I spent $100 in Claude tokens and 1k battles training my AI tank | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48117078",
+      "description": "It is a small game where an AI agent writes the logic for your tank. You watch it fight, give strategic feedback, let the agent update the tank code, and send it back into battle · I have run 1,000+ battles on my own tank and spent about $200 in Claude credits improving it.",
+      "age": "4 days ago",
+      "page_age": "2026-05-14T05:37:17",
+      "source": "Hacker News"
+    },
+    {
+      "title": "Claude for Legal | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48141234",
+      "description": "Much more to it than this one-liner that I pulled out, but safe to say, don&#x27;t rely on or put your legal defense etc. (or elements of it) into AI unless you want it discovered · If somebody Googles &quot;best attorney for murder NYC&quot; a day after a murder is committed but before any case is filed ...",
+      "age": "2 days ago",
+      "page_age": "2026-05-16T22:52:21",
+      "source": "Hacker News"
+    },
+    {
+      "title": "How Claude Code works in large codebases | Hacker News",
+      "url": "https://news.ycombinator.com/item?id=48144494",
+      "description": "The frame of &quot;the way a software engineer would&quot; and the conclusion seem at odds. I&#x27;d love to be schooled otherwise · I use autocomplete/LSPs all the time and they&#x27;re useful. That&#x27;s an index? Why wouldn&#x27;t Claude be able to use one? Also a &quot;software engineer&quot; remembers the codebase - that&#x27;s ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-17T05:20:38",
+      "source": "Hacker News"
+    }
+  ]
+}

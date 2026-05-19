@@ -1,13 +1,13 @@
 # App Marketing OS — Experiment Calendar
 
-Week of: 2026-05-11
-Generated: 2026-05-13
+Week of: 2026-05-18
+Generated: 2026-05-18
 
 ## Rule
 Every generated product post should map to a named experiment, a success threshold, and a retire/rework rule. If it does not, skip it.
 
 ## Inputs used
-- Metrics rows: 43
+- Metrics rows: 81
 - Latest test brief: `test-briefs-2026-05-07.md`
 - Planned rows currently waiting for live post IDs: 4
 
@@ -56,6 +56,3 @@ Every generated product post should map to a named experiment, a success thresho
 - Every approved draft must create or update a planned row in `memory/app-marketing/post-registry.jsonl`.
 - Discovery must reconcile planned rows to exact live post IDs before performance is judged.
 - If a post cannot be tracked, do not use it as evidence for future strategy.
-
-## Creator Rewards / Content Swarm Gate
-Do not launch paid creator-rewards or clipping campaigns yet. Treat them as a future scale lever only after `memory/app-marketing/creator-rewards-growth-loop.md` readiness gates pass: validated hook, conversion surface, tracking, creator asset pack, budget cap, and quality-control rules. Current status: NOT READY because ReelFarm/TikTok accounts are paused/warming and metrics baselines are thin.

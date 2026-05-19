@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "clawhub new skill featured",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-18",
+  "results": [
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "ClawHub · Vision · Docs · Contributing · Discord · Browse skills + render their SKILL.md. Publish new skill versions with changelogs + tags (including latest).",
+      "age": "5 hours ago",
+      "page_age": "2026-05-18T10:20:04",
+      "source": "GitHub"
+    },
+    {
+      "title": "Top 10 OpenClaw Skills you can't afford to miss in 2026 | Composio",
+      "url": "https://composio.dev/content/top-openclaw-skills",
+      "description": "Clawdbot already has some self-improvement capability; this skill takes it to the next level. It dynamically tracks interactions, logging errors, active learnings, and feature requests into a dedicated memory folder. This gives the bot a structured layer of intelligence that makes it more accurate over time, not just responsive. Can be dowloaded from clawdhub at Self-Improving-Agent - ClawHub",
+      "age": "1 week ago",
+      "page_age": "2026-05-11T13:55:05",
+      "source": "Composio"
+    },
+    {
+      "title": "GitHub - VoltAgent/awesome-openclaw-skills: The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞",
+      "url": "https://github.com/VoltAgent/awesome-openclaw-skills",
+      "description": "The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞 - VoltAgent/awesome-openclaw-skills",
+      "age": "1 day ago",
+      "page_age": "2026-05-17T13:55:05",
+      "source": "GitHub"
+    },
+    {
+      "title": "15 Best OpenClaw Skills in 2026: Ranked and Tested | Blink Blog",
+      "url": "https://blink.new/blog/best-openclaw-skills-2026",
+      "description": "Via ClawHub UI: Open your OpenClaw dashboard, navigate to ClawHub, search for the skill, and click Install. ... Via Blink Claw: Open the Skills panel in your Blink Claw dashboard, search the registry, and install with one click. Your agent picks up the new skill immediately — no restart required.",
+      "age": "1 week ago",
+      "page_age": "2026-05-11T18:05:02",
+      "source": "Blink"
+    },
+    {
+      "title": "clawhub | Skills Marketplace",
+      "url": "https://lobehub.com/skills/openclaw-skills-clawhud",
+      "description": "Main advantages are <strong>faster repeat installs via local cache, smaller transfers through compression, deterministic version control, and robust scripting automation for reproducible skill management</strong>.",
+      "age": "3 days ago",
+      "page_age": "2026-05-15T10:10:03",
+      "source": "LobeHub"
+    }
+  ]
+}
