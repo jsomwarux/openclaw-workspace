@@ -1,20 +1,17 @@
 {
-  "current_day": 65,
+  "started": "2026-03-02",
   "current_week": 12,
-  "focus": "speaking and listening, not writing",
-  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
-  "goal": "Light casual conversation with girlfriend and her family",
+  "current_day": 66,
+  "last_lesson_date": "2026-05-19",
   "last_lesson_complete": false,
-  "last_lesson_date": "2026-05-18",
-  "lesson_streak": 38,
+  "lesson_streak": 39,
+  "streak": 38,
+  "longest_streak": 39,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
-  "longest_streak": 38,
-  "notes": "Delivered Week 12, Mon (Coordination). Advanced from Week 11 cumulative review.",
-  "real_world_challenges_completed": [],
-  "real_world_challenges_unlocked": 2,
-  "started": "2026-03-02",
-  "streak": 37,
+  "focus": "speaking and listening, not writing",
+  "goal": "Light casual conversation with girlfriend and her family",
+  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
   "strong_areas": [
     "basic greetings",
     "verb intuition (me llamo, estoy)",
@@ -22,29 +19,32 @@
     "past tense basics (comí, fui, vi)",
     "quisiera vs quiero (polite ordering)"
   ],
-  "total_lessons_completed": 21,
+  "weak_areas": [
+    "conocer vs saber (mixing up)",
+    "no problemo habit",
+    "e/y confusion (Italian vs Spanish)"
+  ],
   "use_cases": [
     "restaurants",
     "directions",
     "small talk",
     "survival Spanish"
   ],
-  "weak_areas": [
-    "conocer vs saber (mixing up)",
-    "no problemo habit",
-    "e/y confusion (Italian vs Spanish)"
-  ],
+  "total_lessons_completed": 21,
   "weekly_scores": [
     {
+      "week": 2,
       "date": "2026-03-16",
-      "grade": "B+",
-      "week": 2
+      "grade": "B+"
     },
     {
+      "week": 3,
       "date": "2026-03-22",
-      "grade": "B+",
-      "week": 3
+      "grade": "B+"
     }
   ],
-  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases."
+  "real_world_challenges_unlocked": 2,
+  "real_world_challenges_completed": [],
+  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases.",
+  "notes": "Delivered Week 12, Tue (Nuanced Reactions). Consistency check passed: Started Mar 2nd makes this Week 12. Corrected longest_streak typo to match lesson_streak."
 }

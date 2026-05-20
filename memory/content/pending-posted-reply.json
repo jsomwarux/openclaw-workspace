@@ -1,15 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-05-17",
-      "day": "sunday",
-      "line_no": 164,
-      "platform": "linkedin",
-      "topic": "content-freshness-gate-better-state"
+      "date": "2026-05-19",
+      "day": "tuesday",
+      "line_no": 175,
+      "platform": "x",
+      "summary": "Most ops teams have intake visibility. They do not have stuck-work visibility. The request exists. The record exists. The aging follow-up st",
+      "topic": "most-ops-teams-have-intake-visibility.-they-do-not-have-stuck-work-visibility.-the-request-exists.-the-record-exists.-th"
     }
   ],
   "note": "",
-  "sent_at": 1779022870,
-  "source": "content-sunday",
+  "sent_at": 1779192048,
+  "source": "content-reminder",
   "status": "pending"
 }

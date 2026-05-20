@@ -1,0 +1,42 @@
+{
+  "closed": [
+    "Glow competitor teardown: skincare scanner/ranking app acquisition loops",
+    "Nash competitor teardown: crypto ranking/thesis tools and newsletter loops",
+    "Vista competitor teardown: Letterboxd/social movie app acquisition loops",
+    "App Marketing OS: build borrowed-audience target lists for Vista, Nash, and Glow",
+    "App Marketing OS: create share-artifact specs for Vista, Nash, and Glow"
+  ],
+  "created": [
+    {
+      "title": "Vista implementation: build Movie Taste Card MVP after 25 ratings",
+      "id": "j576p57ez3511gdym0p31h445d871k01",
+      "sortOrder": 21
+    },
+    {
+      "title": "Nash implementation: build Weekly Ranking Receipt Card generator for AI Agents category",
+      "id": "j5781dbp93v21pajprb8b49z8s870ekp",
+      "sortOrder": 22
+    },
+    {
+      "title": "Glow implementation: build Product Verdict Card + 10 SEO-ready product verdict pages",
+      "id": "j575049d82n2ygvx814nnv2n4d870kcs",
+      "sortOrder": 23
+    },
+    {
+      "title": "Vista borrowed-audience sprint: shortlist first 5 FilmTok/Reddit targets and draft assets",
+      "id": "j5760w4sq9kxww8kd25a8a7ga18712cs",
+      "sortOrder": 44
+    },
+    {
+      "title": "Nash borrowed-audience sprint: create 2 public receipts before analyst/newsletter outreach",
+      "id": "j579p0jffg67nvnrftkntt3yxd8711py",
+      "sortOrder": 57
+    },
+    {
+      "title": "Glow borrowed-audience sprint: publish assets first, then shortlist 5 creator/writer targets",
+      "id": "j57drw4z9t46gwhznvk6cx71sn87159r",
+      "sortOrder": 66
+    }
+  ],
+  "skipped": []
+}

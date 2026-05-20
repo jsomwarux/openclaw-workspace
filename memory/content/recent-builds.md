@@ -21,6 +21,15 @@
 <!-- Entries appended below — most recent first -->
 
 
+## App Marketing Share Artifacts Batch 5 — 2026-05-19
+**What:** Built Nash Satoshi weekly receipt generator and Glow Index Product Verdict Card MVP as product-led share/acquisition artifacts.
+**For:** internal passive-income app marketing
+**Outcome:** Nash `/receipts/weekly` added with PNG export and safe caption/source tags; `npm run check` + `npm run build` passed. Glow verdict card embedded on product pages; `npm run build` + `npm run lint` passed with 0 errors and 2 existing image warnings.
+**Demonstrates:** product-led growth artifact design, repo-aware AI coding-agent orchestration, claims-safe app marketing implementation
+**Content angle:** Cheap app distribution starts with assets users and creators can share, not another generic post.
+**Status:** complete
+
+
 ## jtsomwaru.com Public Proof Privacy Pass — 2026-05-14
 **What:** Anonymized public client proof copy and removed exact proposal/deal amounts from site proof surfaces while keeping role/city/workflow specificity.
 **For:** JT consulting / public credibility + client privacy

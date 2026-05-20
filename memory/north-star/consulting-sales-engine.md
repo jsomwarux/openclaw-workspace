@@ -126,3 +126,10 @@ The weekly North Star Command Center should use this file to score consulting an
 Internal controllables are now A-level for the next proof-led acquisition move: `memory/consulting/proof-led-acquisition-packet-2026-05-13.md` packages the property insurance expiration AI Ops Teardown, diagnostic CTA, DM reply, one-pager link, and proof-safe claim rules.
 
 Next unblocked JT action: review/post the AI Ops Teardown and log the posted URL. Yair referral asks remain blocked until Altmark acceptance/payment/proof gates clear. Guyana remains warm-intro validation only.
+
+
+## 2026-05-19 Altmark post-install update
+- Dedicated workflow PC installed at Altmark office. This moves Altmark from handoff scheduling to post-install acceptance/payment/proof capture.
+- Nightly asset created: `memory/clients/altmark-group/proof-assets/post-install-acceptance-sheet-2026-05-19.md`.
+- Active JT-only action: confirm installed PC access, insurance workflow acceptance/live usefulness, open issues, insurance payment/final approval, rent-delinquency deposit timing, and clean sample report owner/date.
+- Referral ask remains blocked until acceptance/payment clarity and redacted proof capture are complete.

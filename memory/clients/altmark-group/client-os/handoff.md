@@ -1,12 +1,12 @@
 # Handoff — Altmark Insurance Expiration Workflow
 
 ## Current Handoff Status
-- Insurance expiration workflow: finished, but handoff/access path and acceptance/payment clarity are not confirmed in Eve memory.
-- Dedicated PC/access path: blocked on client confirmation.
+- Insurance expiration workflow: finished; dedicated PC installed at Altmark office on 2026-05-19, but post-install access path, workflow acceptance wording, open issues, and payment/deposit clarity are not confirmed in Eve memory.
+- Dedicated PC/access path: installed on-site; blocked on confirmation of who can access it, whether logs/workflow are visible, and whether any setup issues remain.
 - Rent delinquency workflow: intentionally paused until clean sample export, exception rules, and deposit timing are confirmed.
 
 ## How To Use / Access
-- Access path: not confirmed in Eve memory.
+- Access path: installed PC is on-site as of 2026-05-19; operational access details are not confirmed in Eve memory.
 - Required accounts/devices/files: dedicated workflow PC / local setup details must stay private.
 - Normal operating cadence: to be confirmed after first accepted run.
 
@@ -21,13 +21,13 @@
 ## Known Issues / Open Items
 | Issue | Owner | Due/Review Date | Status |
 |---|---|---|---|
-| PC handoff/access path | JT / Navid | Immediate | Not confirmed |
+| Installed PC access/verification path | JT / Navid | Immediate | Installed 2026-05-19; access/details not confirmed |
 | Insurance workflow acceptance wording | JT / Yair/Navid | Immediate | Not confirmed |
 | Insurance payment/final approval status | JT | Immediate | Not confirmed |
 | Rent delinquency deposit + clean sample export | Yair / Matt / JT | After first workflow acceptance | Not confirmed |
 
 ## Proof / Privacy Boundary
-- Evidence saved privately: proof assets/runbooks exist, but acceptance evidence is not confirmed.
+- Evidence saved privately: proof assets/runbooks exist, PC installation is logged, but acceptance/payment evidence is not confirmed.
 - Evidence safe for reusable IP/public proof: synthetic/anonymized patterns only.
 - Redactions required: tenant/property/entity names, policy numbers, internal file paths, financial details, credentials, local network details, screenshots.
 - Explicit client permission captured: no.

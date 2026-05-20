@@ -125,13 +125,103 @@ def build_task_specs() -> list[TaskSpec]:
     tasks: list[TaskSpec] = []
 
     tasks.append(mk(
-        "App Marketing OS: connect generated backlog to Mission Control weekly",
-        "All apps", "system", "high", "eve", 30,
-        "Run `python3 scripts/app_marketing_task_generator.py --execute` and inspect `memory/app-marketing/generated-mission-control-tasks.json`.",
-        "The OS already has strategy, metrics, SEO, directory, and experiment files, but no autonomous task-board sync layer means optimal actions stay buried in markdown.",
-        "The generator creates deduped Mission Control tasks with first action, why, done state, owner, priority, and source references; weekly review runs it after updating metrics/experiments.",
-        ["scripts/app_marketing_task_generator.py", "memory/app-marketing/os-spec.md", "docs/agents/task-board-rules.md"],
-        "Do not create duplicate tasks; skip done/archived items and never submit externally without JT approval."
+        "App Marketing OS: create share-artifact specs for Vista, Nash, and Glow",
+        "All apps", "share-artifact", "high", "eve", 20,
+        "Open `memory/app-marketing/share-artifact-roadmap.md` and turn each primary artifact into a build-ready spec: Vista Movie Taste Card, Nash Weekly Ranking Receipt Card, Glow Product Verdict Card.",
+        "Product-led share artifacts are the highest-leverage missing acquisition loop; without them, posting is mostly external push instead of user/creator pull.",
+        "Three spec files exist under `memory/app-marketing/share-artifacts/` with fields, visual layout, export sizes, data inputs, guardrails, and repo/app implementation notes; follow-up coding tasks are created if app changes are needed.",
+        ["memory/app-marketing/share-artifact-roadmap.md", "memory/app-marketing/revised-operating-model-2026-05-19.md"],
+        "Specs only; do not edit production apps until implementation plan is approved or delegated to a coding agent."
+    ))
+
+    tasks.append(mk(
+        "Vista app change: implement Movie Taste Card export/share artifact",
+        "Vista", "share-artifact", "high", "eve", 25,
+        "Review the Vista repo/app structure and create a build plan for a shareable Movie Taste Card export: taste profile, top/controversial ratings, 9:16 + square image export, and CTA.",
+        "Vista should not rely only on TikTok/ReelFarm. Letterboxd-style social behavior shows movie taste travels when users can share identity artifacts.",
+        "A build-ready implementation plan exists with repo path, screens/components to edit, required data, image export approach, acceptance tests, and one follow-up coding-agent task if needed.",
+        ["memory/app-marketing/share-artifact-roadmap.md", "memory/app-marketing/competitor-mining-protocol.md"],
+        "Do not position as a generic Letterboxd killer. Lead with precision/taste identity."
+    ))
+
+    tasks.append(mk(
+        "Nash app change: implement Weekly Ranking Receipt Card export",
+        "Nash Satoshi", "share-artifact", "high", "eve", 26,
+        "Review Nash Satoshi app/repo and scope a shareable weekly ranking receipt card: top movers, model disagreement, undervalued/overhyped leaderboard, methodology note, and X/9:16 export.",
+        "Nash needs to behave like a public ranking thesis engine with receipts, not another crypto dashboard.",
+        "A build-ready implementation plan exists with data inputs, visual design, safe language, export path, and coding-agent task if changes are needed.",
+        ["memory/app-marketing/share-artifact-roadmap.md", "memory/app-marketing/app-registry.md"],
+        "No financial advice, return claims, or price predictions."
+    ))
+
+    tasks.append(mk(
+        "Glow app change: implement safe Product Verdict Card export",
+        "Glow Index", "share-artifact", "high", "eve", 27,
+        "Review Glow Index app/repo and scope a shareable product verdict card: score/rank, formula/value/evidence/claim-check summary, safe suitability language, and TikTok/Pinterest-friendly export.",
+        "Glow’s strongest growth loop is likely search + creator shopping demos; creators need a clean share card they can use safely.",
+        "A build-ready implementation plan exists with data fields, visual design, claim guardrails, export path, and coding-agent task if changes are needed.",
+        ["memory/app-marketing/share-artifact-roadmap.md", "memory/app-marketing/app-registry.md"],
+        "No medical/dermatology/treatment claims, fake testimonials, before/after, or guaranteed outcomes."
+    ))
+
+    tasks.append(mk(
+        "App Marketing OS: build borrowed-audience target lists for Vista, Nash, and Glow",
+        "All apps", "borrowed-audience", "high", "eve", 30,
+        "Use `memory/app-marketing/borrowed-audience-playbook.md` to research 20 targets per app: creators, newsletters, app reviewers, community mods, roundup writers, and directory owners.",
+        "Borrowed audience is likely the highest-leverage low-budget channel. We need qualified targets before drafting outreach or collab asks.",
+        "Files exist under `memory/app-marketing/borrowed-audience/` for Vista, Nash, and Glow with 20 targets each, audience notes, fit rationale, risk, and suggested asset/pitch angle.",
+        ["memory/app-marketing/borrowed-audience-playbook.md", "memory/app-marketing/winning-pattern-research-protocol.md"],
+        "Eve drafts only. JT sends any external messages."
+    ))
+
+    tasks.append(mk(
+        "App Marketing OS: add experiment-card tracking to weekly review",
+        "All apps", "experiment-system", "high", "eve", 35,
+        "Update `memory/app-marketing/experiment-calendar.md` or the weekly review process so every promoted pattern uses `experiment-card-template.md` and the 24+/35 scoring rule.",
+        "The system should not generate content/task spam from weak swipe ideas. Only scored, measurable experiments should hit Mission Control.",
+        "Experiment calendar has a section for pattern score, source proof, tracking/source tag, 24h/72h/7d result, and scale/iterate/kill decision.",
+        ["memory/app-marketing/experiment-card-template.md", "memory/app-marketing/winning-pattern-research-protocol.md", "memory/app-marketing/measurement-spine.md"],
+        "A marketing insight cannot become a Mission Control task unless it has an experiment card or is a clear infrastructure fix."
+    ))
+
+    tasks.append(mk(
+        "App Marketing OS: implement measurement spine/source tags for all new experiments",
+        "All apps", "measurement", "high", "eve", 36,
+        "Add the fields from `memory/app-marketing/measurement-spine.md` to `post-registry.jsonl` workflow or the weekly experiment review process.",
+        "Without source tags and result windows, Eve cannot learn which channels actually produce users.",
+        "New experiments created after this task include app, channel, source URL/tag, creative type, CTA, 24h/72h/7d metrics, attribution confidence, and decision.",
+        ["memory/app-marketing/measurement-spine.md", "memory/app-marketing/post-registry.jsonl", "memory/app-marketing/weekly-scoreboard.md"],
+        "Do not scale a channel if attribution is unknown for 2 consecutive weeks."
+    ))
+
+    tasks.append(mk(
+        "Vista competitor teardown: Letterboxd/social movie app acquisition loops",
+        "Vista", "competitor-mining", "high", "eve", 40,
+        "Run the competitor mining protocol for Letterboxd, Serializd, TV Time, Likewise, Sequel, JustWatch, and IMDb app/social behavior.",
+        "Vista’s wedge must be based on proven movie-app behavior: taste identity, lists, friends/followers, and compatibility/share artifacts.",
+        "Save `memory/app-marketing/competitor-intel/vista-movie-app-teardown-YYYY-MM-DD.md` with channels, user complaints, share loops, SEO/ASO patterns, gaps, and at least 3 experiment cards.",
+        ["memory/app-marketing/competitor-mining-protocol.md", "memory/app-marketing/experiment-card-template.md"],
+        "Extract structure only; do not copy creatives or wording."
+    ))
+
+    tasks.append(mk(
+        "Nash competitor teardown: crypto ranking/thesis tools and newsletter loops",
+        "Nash Satoshi", "competitor-mining", "high", "eve", 41,
+        "Run the competitor mining protocol for CoinGecko categories, DeFiLlama, Token Terminal, Messari-style research, crypto newsletters, and AI-token dashboard/search behavior.",
+        "Nash needs proof-based distribution and borrowed credibility, not generic crypto-dashboard marketing.",
+        "Save `memory/app-marketing/competitor-intel/nash-ranking-thesis-teardown-YYYY-MM-DD.md` with acquisition channels, content formats, partner/newsletter opportunities, trust gaps, and at least 3 experiment cards.",
+        ["memory/app-marketing/competitor-mining-protocol.md", "memory/app-marketing/experiment-card-template.md"],
+        "No return claims, price predictions, or investment advice."
+    ))
+
+    tasks.append(mk(
+        "Glow competitor teardown: skincare scanner/ranking app acquisition loops",
+        "Glow Index", "competitor-mining", "high", "eve", 42,
+        "Run the competitor mining protocol for SkinSort, OnSkin, Yuka, INCIdecoder, Think Dirty, EWG Skin Deep, and Sephora/Ulta review/search behavior.",
+        "Glow’s acquisition likely comes from SEO, safe product pages, creator shopping demos, and product verdict artifacts. We need competitor proof before scaling content.",
+        "Save `memory/app-marketing/competitor-intel/glow-skincare-app-teardown-YYYY-MM-DD.md` with channels, review complaints, SEO patterns, creator/demo formats, gaps, and at least 3 experiment cards.",
+        ["memory/app-marketing/competitor-mining-protocol.md", "memory/app-marketing/experiment-card-template.md"],
+        "Avoid medical/treatment framing and do not copy creator scripts."
     ))
 
     tasks.append(mk(

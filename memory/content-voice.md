@@ -272,6 +272,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 | Date | Proof Point | Verified Detail | Demonstrates | Status |
 |---|---|---|---|---|
+| 2026-05-19 | App Marketing Share Artifacts Batch 5 | Built Nash `/receipts/weekly` PNG receipt generator and Glow Product Verdict Card MVP; Nash `npm run check` + `npm run build` passed, Glow `npm run build` + `npm run lint` passed. | Product-led app distribution assets, repo-aware AI coding-agent orchestration | Complete |
 | 2026-05-14 | jtsomwaru.com Public Proof Privacy Pass | Anonymized client names and removed exact proposal amounts from site proof copy; production verified clean for Aya/Altmark/Lady D/exact amount hits. | Public proof hygiene, privacy-safe case-study packaging | Complete |
 | 2026-05-14 | jtsomwaru.com Client Outcome Attribution Fix | Corrected Aya vs Altmark site attribution, added Altmark local-first automation detail page, restored Adversight AI to Apps; build/lint passed and commit `25b9563` pushed. | Proof attribution discipline, client-work packaging, portfolio inventory preservation | Complete |
 | 2026-05-14 | jtsomwaru.com Positioning + Roles Update | Shipped balanced Work buckets, updated niches/About/tools, new `/roles` page, footer links, and AI-search metadata; build/lint passed; pushed commit `fce1480`; production `/` and `/roles` returned HTTP 200. | Consulting positioning, proof-tier hygiene, recruiter/buyer path separation | Complete |

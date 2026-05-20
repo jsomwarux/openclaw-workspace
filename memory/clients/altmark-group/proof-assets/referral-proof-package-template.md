@@ -45,3 +45,16 @@ JT built a local-first automation setup for a family-office/property-operations 
 - Acceptance quote/paraphrase:
 - First metric:
 - Any open caveat that must not be overstated:
+
+
+## Verified Facts Captured So Far
+- Dedicated workflow PC installed at Altmark office on 2026-05-19.
+- Insurance expiration workflow is finished, but acceptance wording/payment status is not yet captured in Eve memory.
+- Rent delinquency workflow remains data-readiness/deposit-gated and must not be described as live.
+
+## Still Needed Before Referral/Named Proof Use
+- Installed PC access/verification confirmation.
+- Insurance workflow accepted/live/useful wording from Yair/Navid.
+- Insurance payment/final approval status.
+- Redacted screenshot/log/open-items evidence.
+- Explicit naming permission if Altmark/Yair/Navid are ever named publicly; default remains anonymized.

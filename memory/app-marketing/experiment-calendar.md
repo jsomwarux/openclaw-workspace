@@ -56,3 +56,16 @@ Every generated product post should map to a named experiment, a success thresho
 - Every approved draft must create or update a planned row in `memory/app-marketing/post-registry.jsonl`.
 - Discovery must reconcile planned rows to exact live post IDs before performance is judged.
 - If a post cannot be tracked, do not use it as evidence for future strategy.
+
+
+## Batch 3 Execution Queue — 2026-05-19
+
+Tracking schema: `memory/app-marketing/experiment-tracking-schema.md`
+Queue file: `memory/app-marketing/experiment-queue-2026-05-19.jsonl`
+
+### Planned Experiments
+1. `vista_tastecard_filmtok_soft_20260519` — gated borrowed-audience soft prompt after Taste Card prompt asset.
+2. `nash_aiagents_receipt_x_20260519` — 2 public AI Agents ranking receipts before analyst/newsletter outreach.
+3. `glow_productverdict_seo_batch1_20260519` — Product Verdict Card + 10 verdict pages before creator/writer outreach.
+
+Rule: no outreach/send task should be marked ready until its gate is satisfied and a source tag is assigned.

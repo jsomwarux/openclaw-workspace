@@ -1,0 +1,67 @@
+{
+  "created": [
+    {
+      "title": "App Marketing OS: create share-artifact specs for Vista, Nash, and Glow",
+      "id": "j57ags5n6p8p3pkp8vfyh35gd187123h",
+      "priority": "high",
+      "sortOrder": 20
+    },
+    {
+      "title": "Vista app change: implement Movie Taste Card export/share artifact",
+      "id": "j57f5evahspchp9xymj87xa5kh87001n",
+      "priority": "high",
+      "sortOrder": 25
+    },
+    {
+      "title": "Nash app change: implement Weekly Ranking Receipt Card export",
+      "id": "j573kvn2qgdz02r9e48sjk81wd8713vg",
+      "priority": "high",
+      "sortOrder": 26
+    },
+    {
+      "title": "Glow app change: implement safe Product Verdict Card export",
+      "id": "j576qdw7bfy659mx89541fw85d8710pk",
+      "priority": "high",
+      "sortOrder": 27
+    },
+    {
+      "title": "App Marketing OS: build borrowed-audience target lists for Vista, Nash, and Glow",
+      "id": "j57eswvsjxc0ftrjestj5vwc4x8716fj",
+      "priority": "high",
+      "sortOrder": 30
+    },
+    {
+      "title": "Vista competitor teardown: Letterboxd/social movie app acquisition loops",
+      "id": "j579rgnpcsdj82q96ngzde1as1870ga0",
+      "priority": "high",
+      "sortOrder": 40
+    },
+    {
+      "title": "Nash competitor teardown: crypto ranking/thesis tools and newsletter loops",
+      "id": "j57c7bxwmc1r10jkcjprx0kksh870a7w",
+      "priority": "high",
+      "sortOrder": 41
+    },
+    {
+      "title": "Glow competitor teardown: skincare scanner/ranking app acquisition loops",
+      "id": "j571yx8wjena5sbkr1s4a4das98710hw",
+      "priority": "high",
+      "sortOrder": 42
+    },
+    {
+      "title": "App Marketing OS: add experiment-card tracking to weekly review",
+      "id": "j571abe38rbsm78wb8d6eppxch870jnx",
+      "priority": "high",
+      "sortOrder": 35
+    },
+    {
+      "title": "App Marketing OS: implement measurement spine/source tags for all new experiments",
+      "id": "j57ew987agcwsedxaq09590hh5870kaq",
+      "priority": "high",
+      "sortOrder": 36
+    }
+  ],
+  "skipped_duplicates": [],
+  "count_created": 10,
+  "count_skipped": 0
+}

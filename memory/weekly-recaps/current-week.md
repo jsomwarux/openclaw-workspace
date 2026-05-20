@@ -1,4 +1,4 @@
-# Week of 2026-05-11 — Work Log
+# Week of 2026-05-18 — Work Log
 
 Archive every Monday, start fresh.
 
@@ -51,3 +51,8 @@ Archive every Monday, start fresh.
 - 2026-05-17: Weekly North Star review saved to `reports/north-star/2026-05-17-weekly-review.md`; called consulting/proof-led Altmark path as the near-term cash engine, kept apps distribution-only, flagged stale outreach/app/job-build overinvestment, and set next actions around AI Ops Teardown posting, one proof-safe Workflow Case File, and buyer/channel cleanup.
 - 2026-05-17 nightly: Completed Implementation Intelligence System Phase 0 with a rent delinquency data-readiness case file, governance audit, and 3 reusable implementation patterns; closed MC validation task.
 - 2026-05-18 overnight ops: checked task files/daily notes/Mission Control and cron health; no active high-priority fallback JSONL tasks. Investigated Job Application Auto-Builder’s single current error, confirmed it is not yet a >=2-error failure, and logged next safe fix in `reports/overnight/2026-05-18-overnight-autonomy.md`.
+- 2026-05-19 overnight ops: checked tasks/daily notes and 51 crons with no repeated-error jobs; verified the AI Intake + Exception Desk offer draft exists and closed the stale Eve-owned Mission Control drafting task, leaving JT review as the active next step.
+
+- 2026-05-19: Batch 5 App Marketing build shipped Nash `/receipts/weekly` PNG receipt generator and Glow Product Verdict Card MVP; Nash check/build passed, Glow build/lint passed, and MC follow-up tasks created for screenshot/deploy + 10-page verification.
+
+- 2026-05-19: Batch 6 pushed Nash weekly receipt generator (`7789f85`) and Glow Product Verdict Card (`9b9bc6f`) after passing build gates; updated MC blockers around Nash visual QA and Glow production DB/page verification.

@@ -4,13 +4,13 @@
 - Primary outcome: local-first automation for sensitive back-office/property/family-office workflows with audit trail, human approval, and clear exception handling.
 - Baseline: manual/local back-office processes; first workflow finished but acceptance/payment evidence still not confirmed in Eve memory.
 - Target: first workflow accepted, PC/access path clean, payment/deposit status clear, and next workflow gated by clean input data.
-- Current status: active — insurance expiration workflow finished/awaiting acceptance confirmation; dedicated PC handoff/access path needs clarity; rent delinquency paused by data-readiness/deposit gate.
+- Current status: active — dedicated PC installed at Altmark office on 2026-05-19; insurance expiration workflow finished and now needs post-install acceptance wording/payment clarity; rent delinquency paused by data-readiness/deposit gate.
 
 ## Live Status
 | Area | Status | Notes | Owner | Next Action | Due |
 |---|---|---|---|---|---|
-| Insurance expiration workflow | Finished / acceptance not confirmed in Eve memory | Acceptance checklist: `acceptance-checklist-insurance-expiration.md` | JT / Yair / Navid | Verify demo/logs/open issues/client acceptance/payment status | Immediate |
-| Dedicated PC handoff | Needs confirmation | PC checklist exists in `runbooks/pc-handoff-checklist.md` | JT / Navid | Lock handoff/access path | Immediate |
+| Insurance expiration workflow | Finished / post-install acceptance not confirmed in Eve memory | Acceptance checklist: `acceptance-checklist-insurance-expiration.md` | JT / Yair / Navid | Confirm workflow was verified on installed PC, capture acceptance wording/open issues/payment status | Immediate |
+| Dedicated PC handoff | Installed 2026-05-19 / access confirmation needed | PC checklist exists in `runbooks/pc-handoff-checklist.md` | JT / Navid | Confirm who can access it, whether logs/workflow are visible, and any open setup issues | Immediate |
 | Rent delinquency workflow | Paused by data readiness | Do not start until clean report + exception rules + deposit timing | Yair / Matt / JT | Use readiness checklist only after acceptance/payment path is clean | After handoff |
 | Reusable IP capture | Started | `reusable-ip-log.md` created; insurance exception-layer task already in MC | Eve / JT | Productize only with synthetic/anonymized data | After acceptance |
 
@@ -27,7 +27,7 @@
 ## Metrics
 | Metric | Baseline | Current | Target | Trend | Notes |
 |---|---:|---:|---:|---|---|
-| Accepted workflows | 0 documented | 0 confirmed in Eve memory | 1+ | Flat | Need Yair/Navid confirmation. |
+| Accepted workflows | 0 documented | 0 confirmed in Eve memory | 1+ | Flat | PC installed; need Yair/Navid post-install acceptance wording. |
 | Workflows with runbook/checklist | 0 before OS | 3 | 100% active workflows | Up | Insurance, PC handoff, rent readiness. |
 | Proof-safe reusable patterns | 0 | 2 logged | 1+ productized template | Up | Use synthetic/anonymized sample data. |
 
@@ -37,7 +37,7 @@
 
 
 ## Decision Needed From Client
-- Confirm PC handoff/access path.
+- Confirm installed PC access path and who can operate/check it.
 - Confirm insurance workflow acceptance wording/live usefulness.
 - Confirm insurance workflow payment/final approval status.
 - Confirm rent-delinquency deposit timing and cleaned sample export owner/date.
@@ -47,10 +47,10 @@
 - Proof/referral assets remain gated until acceptance/payment clarity exists.
 
 ## Current Delivery Focus — 2026-05-06
-- PC handoff: confirm exact delivery date/time or fallback access/verification path with Yair/Navid.
+- PC post-install verification: confirm access/verification path with Yair/Navid and capture open issues.
 - Insurance expiration workflow: finished, needs acceptance confirmation, screenshots, final payment/approval status.
 - Rent delinquency workflow: paused by Altmark-side reporting/ledger cleanup, not rejection. Do not start build work until the data-readiness checklist is satisfied and 50% deposit timing is confirmed.
 - Data-readiness asset: `runbooks/rent-delinquency-data-readiness-checklist.md` is ready for Yair/Karen/Matt.
-- Proof asset: capture only after PC handoff + insurance workflow acceptance.
+- Proof asset: capture only after installed PC access + insurance workflow acceptance/payment clarity.
 - Referral path: ask Yair for 2–3 family-office intros after acceptance using proof-assets/yair-referral-ask-script.md.
 

@@ -12,7 +12,12 @@ Every weekly App Marketing review must read, in this order:
 2. `memory/app-marketing/weekly-scoreboard.md`
 3. `memory/app-marketing/experiment-calendar.md`
 4. `memory/app-marketing/generated-mission-control-tasks.json`
-5. `memory/app-marketing/durable-discovery-plan.md`
+5. `memory/app-marketing/winning-pattern-research-protocol.md`
+6. `memory/app-marketing/share-artifact-roadmap.md`
+7. `memory/app-marketing/borrowed-audience-playbook.md`
+8. `memory/app-marketing/competitor-mining-protocol.md`
+9. `memory/app-marketing/measurement-spine.md`
+10. `memory/app-marketing/durable-discovery-plan.md`
 6. `memory/app-marketing/directory-submissions.md`
 7. `memory/app-marketing/seo-backlog.md`
 8. `memory/app-marketing/aso-checklist.md`
@@ -122,3 +127,13 @@ cat memory/app-marketing/generated-mission-control-tasks.json
 ```
 
 If errors occur, fix the generator or Mission Control API before claiming the weekly review is complete.
+
+
+## Experiment Promotion Rules
+A marketing insight cannot become a Mission Control task unless it has an experiment card or is a clear infrastructure fix. Pattern score must be 24+/35 using `winning-pattern-research-protocol.md`, unless the task fixes measurement, crawlability, or product-share infrastructure.
+
+## Share Artifact Rule
+Before scaling rented-channel posting for any consumer app, confirm whether that app has a product-led share artifact. If missing, create a product/spec task before creating more content-volume tasks.
+
+## Borrowed Audience Rule
+Each active app must maintain at least 20 researched borrowed-audience targets before declaring its distribution strategy mature. External outreach remains JT-owned; Eve drafts and tracks only.

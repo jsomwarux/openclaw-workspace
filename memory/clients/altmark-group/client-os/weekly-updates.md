@@ -1,5 +1,31 @@
 # Weekly Updates — Altmark Group
 
+## Week of 2026-05-19 — PC Installed / Acceptance Gate
+
+### Wins
+- Dedicated workflow PC was installed at Altmark's office on 2026-05-19.
+- Delivery state moved from pre-handoff planning to post-install acceptance, access verification, payment clarity, and proof capture.
+
+### Misses / Blockers
+- Eve memory does not yet have Yair/Navid acceptance wording, final insurance workflow payment/approval status, or rent-delinquency deposit timing.
+- Referral/proof reuse remains blocked until acceptance/payment clarity and redacted proof evidence are captured.
+
+### What Changed In The Workflow
+- The active gate is no longer “schedule PC handoff.” It is now: confirm who can access the installed PC, verify the insurance workflow/logs on-site, record open issues with owner/date, capture acceptance wording, and confirm next-payment/deposit status.
+
+### Metrics Movement
+- Installation milestone completed. Accepted workflows remain 0 confirmed in Eve memory until client acceptance wording is captured.
+
+### Next Week's Plan
+- JT confirms post-install access + insurance workflow acceptance with Yair/Navid.
+- Eve updates the proof package only from verified facts and keeps the Yair referral ask blocked until the gate clears.
+
+### Client Decision / Input Needed
+- Confirm installed PC access path and any open setup issues.
+- Confirm insurance workflow accepted/live/useful wording and payment/approval status.
+- Confirm rent-delinquency deposit timing and clean sample export owner/date.
+
+
 
 ## Week of 2026-05-13 — Delivery OS Hardening
 

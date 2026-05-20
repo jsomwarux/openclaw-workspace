@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-05-14",
+  "last_run": "2026-05-19",
   "drafted": [
     "new-age-global-builders",
     "essential-property-management",
@@ -50,7 +50,17 @@
     "maximus-property-management-services-llc",
     "jfa-insurance-brokerage-associates-inc",
     "lincoln-brokerage-corp",
-    "gfi-insurance-brokerage-inc"
+    "gfi-insurance-brokerage-inc",
+    "sterling-sanitary-supply-corp",
+    "gil-meyerowitz-inc",
+    "mayer-malbin-company-inc",
+    "metro-interior-distributors",
+    "t-f-o-brien-cooling-heating",
+    "denair-hvac-inc",
+    "palone-bros-air-conditioning-corp",
+    "a-real-good-plumber-inc",
+    "vigilante-plumbing-heating-and-air-conditioning",
+    "xl-rpm"
   ],
   "skipped_no_channel": [
     "fargo-hvac-supply",
@@ -102,6 +112,11 @@
     "one-stop-management-llc",
     "3d-hvac-supplies-corp",
     "east-coast-paper",
-    "amaf-supply-inc"
+    "amaf-supply-inc",
+    "landlord-management-ny",
+    "j-alperin-co-inc",
+    "s-b-electric-supply-corp",
+    "healthpass",
+    "shelterpoint"
   ]
 }

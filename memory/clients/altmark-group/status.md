@@ -1,6 +1,6 @@
 # Altmark Group — Client Status
 
-Last updated: 2026-04-30
+Last updated: 2026-05-19
 
 ## Client
 - Company: Altmark Group
@@ -49,8 +49,7 @@ Known active/current workflows from JT update:
 ## Current Status
 - Active client engagement.
 - Insurance expiration workflow is finished.
-- Dedicated PC for workflows has been set up.
-- JT plans to deliver the dedicated PC to Altmark's Bronx office next week.
+- Dedicated PC for workflows was installed at Altmark's office on 2026-05-19. Capture handoff/access confirmation, acceptance wording, open issues, and payment/deposit clarity before referral or named proof use.
 - Rent delinquency workflow is temporarily paused by client-side data readiness. On 2026-05-06, after JT asked whether Altmark had the updated rent delinquency tracker ready and was ready to move forward, Yair replied that Matt is away, the office has been overwhelmed, internal reporting still needs cleanup, and many tenant ledgers need cleanup before the delinquency report is accurate. Yair expects to pick it back up early next week.
 - This is not a lost opportunity; it is a data hygiene/reporting blocker. Best next move is to help define the minimal clean input needed and keep momentum without starting build work before the report is reliable.
 

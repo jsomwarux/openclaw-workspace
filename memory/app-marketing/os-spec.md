@@ -9,11 +9,13 @@ This is not a replacement for Vibe Marketing, ReelFarm, Content Scheduler, or Sp
 Every app needs:
 1. A clear audience.
 2. A clear promise.
-3. One primary discovery loop.
-4. One secondary durable discovery channel.
-5. A weekly metric.
-6. A no-manual-work default path.
-7. A kill/pause/continue rule.
+3. One product-led share artifact.
+4. One primary acquisition loop.
+5. One borrowed-audience strategy.
+6. One secondary durable discovery channel.
+7. A weekly metric and tracking/source-tag path.
+8. A no-manual-work default path where possible.
+9. A kill/pause/continue rule.
 
 No app should be “built and hoped into visibility.”
 
@@ -38,6 +40,12 @@ No app should be “built and hoped into visibility.”
 - `memory/app-marketing/web-analytics-mapping-template.md` — accepted schema for GA4/Search Console/Vercel/Plausible/PostHog/local-log mappings before social volume scales.
 - `memory/app-marketing/ga4-integration-reference.md` — canonical GA4/Search Console setup and debugging reference; read before new app launches, client GA setup advice, or analytics troubleshooting. Property registry table is the source of truth for queryable properties and must stay synced with `account-map.json`.
 - `memory/app-marketing/generated-mission-control-tasks.json` — latest deduped task-generator output; weekly review must inspect created/duplicate/error counts before claiming task sync is healthy.
+- `memory/app-marketing/winning-pattern-research-protocol.md` — daily/weekly/monthly research protocol for finding successful app acquisition patterns.
+- `memory/app-marketing/experiment-card-template.md` — required template before turning a pattern into a task.
+- `memory/app-marketing/share-artifact-roadmap.md` — product-led share artifact roadmap by app.
+- `memory/app-marketing/borrowed-audience-playbook.md` — target-record and pitch rules for creator/newsletter/community distribution.
+- `memory/app-marketing/competitor-mining-protocol.md` — monthly competitor/review mining protocol.
+- `memory/app-marketing/measurement-spine.md` — required source-tag/UTM/result fields for every acquisition experiment.
 
 ## Channel Roles
 
