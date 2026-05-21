@@ -1,6 +1,6 @@
 {
   "provider": "brave-direct",
-  "query": "site:reddit.com/r/ClaudeAI new tool skill",
+  "query": "site:reddit.com/r/LocalLLaMA new agent tool",
   "freshness": "week",
   "country": "US",
   "search_lang": "en",

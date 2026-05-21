@@ -5,6 +5,7 @@
 ### Wins
 - Dedicated workflow PC was installed at Altmark's office on 2026-05-19.
 - Delivery state moved from pre-handoff planning to post-install acceptance, access verification, payment clarity, and proof capture.
+- Eve prepared the HTTPS + Google OAuth migration runbook for the next reliability step: `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md`.
 
 ### Misses / Blockers
 - Eve memory does not yet have Yair/Navid acceptance wording, final insurance workflow payment/approval status, or rent-delinquency deposit timing.
@@ -18,6 +19,7 @@
 
 ### Next Week's Plan
 - JT confirms post-install access + insurance workflow acceptance with Yair/Navid.
+- Use the HTTPS/OAuth runbook to back up n8n, move it to a stable HTTPS endpoint, publish/configure the Google OAuth app, reconnect Google credentials, and smoke-test a non-sensitive Sheets/Drive workflow.
 - Eve updates the proof package only from verified facts and keeps the Yair referral ask blocked until the gate clears.
 
 ### Client Decision / Input Needed

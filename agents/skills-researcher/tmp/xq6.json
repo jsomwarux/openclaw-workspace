@@ -1,27 +1,5 @@
+=== QUERY 6 ===
 [
-  {
-    "id": "2054356981310542250",
-    "text": "We rolled out @elise_ai across 3,000 units over the past few months with plans to expand to 8,000 more units later this year.\n\nHere’s what we’ve learned so far.\n\nEliseAI is an AI-powered resident communications platform for property management. \n\nBefore implementation, residents",
-    "author_id": "595978500",
-    "username": "RE_Notion",
-    "name": "Eric | Real Estate - AI - Notion",
-    "created_at": "2026-05-13T00:24:07.000Z",
-    "conversation_id": "2054356981310542250",
-    "metrics": {
-      "likes": 6,
-      "retweets": 0,
-      "replies": 1,
-      "quotes": 0,
-      "impressions": 299,
-      "bookmarks": 3
-    },
-    "urls": [],
-    "mentions": [
-      "elise_ai"
-    ],
-    "hashtags": [],
-    "tweet_url": "https://x.com/RE_Notion/status/2054356981310542250"
-  },
   {
     "id": "2054698898506043787",
     "text": "DG, IP Noman Aslam said that IPO has launched aggressive 6-month digital transformation strategy aimed at revolutionizing intellectual property ecosystem through automation, ai &amp; online complaint management to make trademark, copyright &amp; patent services faster &amp; business-friendly https://t.co/6acQWWs6UO",
@@ -49,6 +27,27 @@
     "tweet_url": "https://x.com/kcci_official/status/2054698898506043787"
   },
   {
+    "id": "2056764201126056360",
+    "text": "Most property management teams looking at AI think the gap is tooling.\n\nThe actual gap is earlier than that. It's how data enters the workflow.\n\nInspection findings are the clearest example.",
+    "author_id": "2042536625108881408",
+    "username": "solwise_REPM",
+    "name": "SolWise - RE & PM",
+    "created_at": "2026-05-19T15:49:33.000Z",
+    "conversation_id": "2056764201126056360",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 9,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/solwise_REPM/status/2056764201126056360"
+  },
+  {
     "id": "2055454456926351827",
     "text": "🚀 Premium domain for sale: https://t.co/HpXOt1ajz1\nPerfect for smart home platforms, IoT systems, home automation, or AI-powered property management 🏠🤖\n\n✅ Clear, descriptive, and high commercial intent\n✅ “360” suggests full home coverage and control\n✅ Ideal for smart home https://t.co/W4T3lKgxtf",
     "author_id": "1682908466053013506",
@@ -73,27 +72,29 @@
     "tweet_url": "https://x.com/OrbitDomainsHQ/status/2055454456926351827"
   },
   {
-    "id": "2054032575316795853",
-    "text": "China is using AI 🤖 to build projects like dams. The robots handle complex, dangerous work with high precision, making construction faster, safer, and less demanding for humans. Experts say this goes beyond normal automation AI would reshape construction &amp; engineering industries https://t.co/x7Ik6SYGUN",
-    "author_id": "1911305997873971200",
-    "username": "nowyouknow_med",
-    "name": "NOW YOU KNOW",
-    "created_at": "2026-05-12T02:55:02.000Z",
-    "conversation_id": "2054032575316795853",
+    "id": "2057121889928257783",
+    "text": "The future of automation is here with @PrismaXai\n\nRobot-as-a-Service (RaaS) is transforming industries with smart robotics. From construction to healthcare and creative design,\n\n✅ Smarter automation\n✅ AI-driven efficiency\n✅ Future-ready innovation\n\nPRISMAX is connecting AI, https://t.co/SyKBsw79nT",
+    "author_id": "2006995720000385031",
+    "username": "saimWeb3",
+    "name": "Saim Blocks",
+    "created_at": "2026-05-20T15:30:52.000Z",
+    "conversation_id": "2057121889928257783",
     "metrics": {
       "likes": 1,
-      "retweets": 1,
+      "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 21,
+      "impressions": 0,
       "bookmarks": 0
     },
     "urls": [
-      "https://x.com/nowyouknow_med/status/2054032575316795853/photo/1"
+      "https://x.com/saimWeb3/status/2057121889928257783/photo/1"
     ],
-    "mentions": [],
+    "mentions": [
+      "PrismaXai"
+    ],
     "hashtags": [],
-    "tweet_url": "https://x.com/nowyouknow_med/status/2054032575316795853"
+    "tweet_url": "https://x.com/saimWeb3/status/2057121889928257783"
   },
   {
     "id": "2054653228105535613",
@@ -108,7 +109,7 @@
       "retweets": 0,
       "replies": 1,
       "quotes": 0,
-      "impressions": 30,
+      "impressions": 41,
       "bookmarks": 0
     },
     "urls": [
@@ -119,25 +120,27 @@
     "tweet_url": "https://x.com/ricks_AIjourney/status/2054653228105535613"
   },
   {
-    "id": "2054575352228479235",
-    "text": "Most AI vendors pitching property management teams can answer one question well: what workflow does this replace?\n\nThe second question is where it falls apart.\n\nSeven questions to ask any AI vendor before you sign anything 👇",
-    "author_id": "2042536625108881408",
-    "username": "solwise_REPM",
-    "name": "SolWise - RE & PM",
-    "created_at": "2026-05-13T14:51:50.000Z",
-    "conversation_id": "2054575352228479235",
+    "id": "2056627806130278469",
+    "text": "Been experimenting with building an AI-powered property management operations workflow in n8n to see how much repetitive admin work can realistically be automated. https://t.co/k6Vxl3KoKJ",
+    "author_id": "2048913043183046656",
+    "username": "michaelk1052000",
+    "name": "Michael Automation",
+    "created_at": "2026-05-19T06:47:33.000Z",
+    "conversation_id": "2056627806130278469",
     "metrics": {
       "likes": 0,
       "retweets": 0,
-      "replies": 1,
+      "replies": 0,
       "quotes": 0,
-      "impressions": 9,
+      "impressions": 2,
       "bookmarks": 0
     },
-    "urls": [],
+    "urls": [
+      "https://x.com/michaelk1052000/status/2056627806130278469/photo/1"
+    ],
     "mentions": [],
     "hashtags": [],
-    "tweet_url": "https://x.com/solwise_REPM/status/2054575352228479235"
+    "tweet_url": "https://x.com/michaelk1052000/status/2056627806130278469"
   },
   {
     "id": "2055221843834102226",
@@ -161,26 +164,30 @@
     "tweet_url": "https://x.com/polsia/status/2055221843834102226"
   },
   {
-    "id": "2054486815084773615",
-    "text": "Had a good conversation with Michael Snyman about short-term rentals, acquisitions, property management at scale, automation, and where AI actually helps in guest experience.\n\nFull episode: https://t.co/I7NYLQUFkj",
-    "author_id": "41781544",
-    "username": "oleksij",
-    "name": "Oleksij Rak",
-    "created_at": "2026-05-13T09:00:01.000Z",
-    "conversation_id": "2054486815084773615",
+    "id": "2055968509449134134",
+    "text": "Are we still building “dumb buildings”?\n\nWe live in a world of AI, smart devices, and automation — yet many buildings still waste energy and rely on outdated systems.\nIs the construction industry moving fast enough toward smarter infrastructure? 👇\n#SmartBuildings #PropTech #AI https://t.co/FLkmQRAFbE",
+    "author_id": "1378302497564078080",
+    "username": "eng_haadi",
+    "name": "Mohamed Haadi",
+    "created_at": "2026-05-17T11:07:45.000Z",
+    "conversation_id": "2055968509449134134",
     "metrics": {
       "likes": 0,
       "retweets": 0,
-      "replies": 0,
+      "replies": 1,
       "quotes": 0,
-      "impressions": 8,
-      "bookmarks": 0
+      "impressions": 30,
+      "bookmarks": 1
     },
     "urls": [
-      "https://youtu.be/x0f-YSBQDt4"
+      "https://x.com/eng_haadi/status/2055968509449134134/photo/1"
     ],
     "mentions": [],
-    "hashtags": [],
-    "tweet_url": "https://x.com/oleksij/status/2054486815084773615"
+    "hashtags": [
+      "SmartBuildings",
+      "PropTech",
+      "AI"
+    ],
+    "tweet_url": "https://x.com/eng_haadi/status/2055968509449134134"
   }
 ]

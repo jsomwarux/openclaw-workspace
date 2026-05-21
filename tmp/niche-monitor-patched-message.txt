@@ -109,3 +109,7 @@ This job must fail closed, not fail noisy.
 - Always append a short cost/run log if the normal prompt asks for one.
 - Send Telegram only for verified new 🔴/🟠 findings.
 - If no verified new high/critical finding exists, final answer exactly: NO_NEW_HIGH_FINDINGS_LOGGED
+
+
+## 2026-05-20 context-size reliability patch
+Keep the run lightweight. Do not load broad memories, prior transcripts, or large knowledge files. Use the direct-Brave wrapper only for the 8 listed searches, with count 3-5 each, then decide severity. If context gets large, skip KB insertion for 🟡/🟢 items, write the no-new-critical file and cost log, and finish exactly `NO_NEW_HIGH_FINDINGS_LOGGED`. Do not use managed `web_search` for freshness queries.

@@ -56,3 +56,8 @@ Archive every Monday, start fresh.
 - 2026-05-19: Batch 5 App Marketing build shipped Nash `/receipts/weekly` PNG receipt generator and Glow Product Verdict Card MVP; Nash check/build passed, Glow build/lint passed, and MC follow-up tasks created for screenshot/deploy + 10-page verification.
 
 - 2026-05-19: Batch 6 pushed Nash weekly receipt generator (`7789f85`) and Glow Product Verdict Card (`9b9bc6f`) after passing build gates; updated MC blockers around Nash visual QA and Glow production DB/page verification.
+
+## Overnight Autonomy — 2026-05-20 03:00
+- Advanced stale consulting pipeline infrastructure work: created canonical `brief-schema-v3.md` for Research → Analysis → Builder → Presentation handoffs.
+- Updated Research Agent and n8n Agent CLAUDE.md files to point at the schema and preserve governance/demo/test requirements across handoffs.
+- Cron health checked: 51 jobs scanned, 0 with consecutive errors >=2.

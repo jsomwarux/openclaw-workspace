@@ -94,3 +94,4 @@
 
 ## Autoresearch Sweep — 2026-05-18
 - Selected `opticfy-ops`; baseline 1.000 → final 1.000; changed file: agents/autoresearch/targets.md (checklist path hygiene + stable metadata); logs: agents/autoresearch/logs/2026-05-18-opticfy-ops-*.md.
+2026-05-20 — autoresearch x-research: baseline 0.833 → final 1.000; changed `skills/x-research/SKILL.md` to add a Search Budget First step with pulse/standard/deep caps and stop conditions for paid X API usage.

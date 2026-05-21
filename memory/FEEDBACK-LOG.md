@@ -70,6 +70,12 @@ When a build is a demonstration of architecture (not a sellable product), say so
 
 ---
 
+## 2026-05-20: LinkedIn client proof posts must stop using stale contrarian reveal patterns
+- Trigger: JT rejected another LinkedIn draft for repeating “the blocker is not X, it is whether Y” and “Not ‘look what this tool can do,’ more like…” framing. He also flagged “The dedicated machine matters more than people might think” as generic AI-copy phrasing.
+- Rule: For LinkedIn consulting/client-proof posts, contrarian reveal setups are banned unless JT explicitly asks for a contrarian take. Start with the concrete client scene, workflow, machine, business constraint, number, or outcome. Do not use “not X, it is Y,” “not look what this tool can do,” “the real blocker is…,” or similar reveal-language.
+- Guardrail: Replace generic importance phrases with the exact operational reason. “Dedicated PC matters” becomes “the workflows can run locally without touching existing servers.”
+- Verification: Updated `memory/content-voice.md` LinkedIn rules, What JT Never Does, and audit checklist with this client-proof-specific ban.
+
 ## Swipe File Criteria (for viral-swipe cron)
 
 When evaluating whether a post belongs in the swipe file, prioritize:

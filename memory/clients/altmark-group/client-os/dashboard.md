@@ -12,6 +12,7 @@
 | Insurance expiration workflow | Finished / post-install acceptance not confirmed in Eve memory | Acceptance checklist: `acceptance-checklist-insurance-expiration.md` | JT / Yair / Navid | Confirm workflow was verified on installed PC, capture acceptance wording/open issues/payment status | Immediate |
 | Dedicated PC handoff | Installed 2026-05-19 / access confirmation needed | PC checklist exists in `runbooks/pc-handoff-checklist.md` | JT / Navid | Confirm who can access it, whether logs/workflow are visible, and any open setup issues | Immediate |
 | Rent delinquency workflow | Paused by data readiness | Do not start until clean report + exception rules + deposit timing | Yair / Matt / JT | Use readiness checklist only after acceptance/payment path is clean | After handoff |
+| n8n HTTPS + Google OAuth | Planned / high priority | Migration runbook created: `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md` | Eve / JT | Confirm PC/admin access, back up n8n, then migrate to stable HTTPS and reconnect Google credentials | 2026-05-21 to 2026-05-22 |
 | Reusable IP capture | Started | `reusable-ip-log.md` created; insurance exception-layer task already in MC | Eve / JT | Productize only with synthetic/anonymized data | After acceptance |
 
 ## Wins This Week
@@ -33,6 +34,7 @@
 
 ## Next 7 Days
 - Use `proof-assets/wednesday-execution-pack-2026-05-13.md` as the current single-page execution sheet: confirm PC handoff/access path, verify insurance workflow acceptance, clarify payment/deposit status, and preserve the rent delinquency data-readiness boundary.
+- For infrastructure reliability, use `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md`: confirm workflow PC/admin access, back up n8n, choose stable HTTPS pattern, configure Google OAuth redirect, reconnect credentials, and run a non-sensitive smoke test.
 - Older prep remains available at `proof-assets/tuesday-execution-pack-2026-05-12.md`, `proof-assets/monday-command-sheet-2026-05-11.md`, and `proof-assets/tomorrow-execution-pack-2026-05-08.md`.
 
 

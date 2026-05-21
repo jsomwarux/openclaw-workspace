@@ -1,3 +1,4 @@
+=== QUERY 2 ===
 [
   {
     "id": "2055594104273465806",
@@ -8,11 +9,11 @@
     "created_at": "2026-05-16T10:20:00.000Z",
     "conversation_id": "2055594104273465806",
     "metrics": {
-      "likes": 185,
+      "likes": 186,
       "retweets": 9,
       "replies": 18,
       "quotes": 1,
-      "impressions": 11063,
+      "impressions": 11148,
       "bookmarks": 16
     },
     "urls": [],
@@ -29,12 +30,12 @@
     "created_at": "2026-05-18T13:57:52.000Z",
     "conversation_id": "2056373708382486994",
     "metrics": {
-      "likes": 32,
-      "retweets": 3,
-      "replies": 5,
-      "quotes": 0,
-      "impressions": 1697,
-      "bookmarks": 6
+      "likes": 101,
+      "retweets": 12,
+      "replies": 13,
+      "quotes": 1,
+      "impressions": 21846,
+      "bookmarks": 16
     },
     "urls": [
       "https://x.com/daniel_mac8/status/2056373708382486994/photo/1",
@@ -44,50 +45,6 @@
     "mentions": [],
     "hashtags": [],
     "tweet_url": "https://x.com/daniel_mac8/status/2056373708382486994"
-  },
-  {
-    "id": "2054890483445383530",
-    "text": "Google has all the resources that are necessary to stay in the ballpark with OpenAI and Anthropic.\n\nBut this feels like a pivotal week coming up for them.\n\nThe new Gemini model needs to be right there with 5.5.\n\nI hope they have some other major product releases planned as well. https://t.co/PLKdGo9QY8",
-    "author_id": "1918792982536335360",
-    "username": "code4scale",
-    "name": "David",
-    "created_at": "2026-05-14T11:44:03.000Z",
-    "conversation_id": "2054890483445383530",
-    "metrics": {
-      "likes": 4,
-      "retweets": 0,
-      "replies": 1,
-      "quotes": 0,
-      "impressions": 132,
-      "bookmarks": 0
-    },
-    "urls": [
-      "https://twitter.com/alexeheath/status/2054747125616169229"
-    ],
-    "mentions": [],
-    "hashtags": [],
-    "tweet_url": "https://x.com/code4scale/status/2054890483445383530"
-  },
-  {
-    "id": "2054033068634394690",
-    "text": "[TL;DR Daily]\n\nA new kingpin is rising in the AI power game, and it's not OpenAI. Anthropic, supercharged by Google, Amazon, and (surprise) Musk's SpaceX, is fast outgrowing its underdog status. If you think the AI wars are just about model benchmarks, you clearly missed the",
-    "author_id": "1871033860978561024",
-    "username": "mwa_ia",
-    "name": "$MIA",
-    "created_at": "2026-05-12T02:57:00.000Z",
-    "conversation_id": "2054033068634394690",
-    "metrics": {
-      "likes": 3,
-      "retweets": 0,
-      "replies": 2,
-      "quotes": 0,
-      "impressions": 92,
-      "bookmarks": 0
-    },
-    "urls": [],
-    "mentions": [],
-    "hashtags": [],
-    "tweet_url": "https://x.com/mwa_ia/status/2054033068634394690"
   },
   {
     "id": "2055814930847404450",
@@ -102,7 +59,7 @@
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 40,
+      "impressions": 51,
       "bookmarks": 0
     },
     "urls": [
@@ -131,7 +88,7 @@
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 464,
+      "impressions": 468,
       "bookmarks": 0
     },
     "urls": [
@@ -140,29 +97,6 @@
     "mentions": [],
     "hashtags": [],
     "tweet_url": "https://x.com/nutanc/status/2055545892179226696"
-  },
-  {
-    "id": "2054547506441195872",
-    "text": "AI models are evolving faster than ever with new releases and capabilities every few weeks.\n\nThat's exactly why your AI strategy needs to be model-agnostic.\n\nWith 35+ models available in Cassidy, including the latest from OpenAI, Anthropic, and Google, your Agents and Workflows https://t.co/rmuBR1x9hU",
-    "author_id": "1641312303659515904",
-    "username": "Cassidy_AI",
-    "name": "Cassidy",
-    "created_at": "2026-05-13T13:01:11.000Z",
-    "conversation_id": "2054547506441195872",
-    "metrics": {
-      "likes": 1,
-      "retweets": 0,
-      "replies": 0,
-      "quotes": 0,
-      "impressions": 46,
-      "bookmarks": 0
-    },
-    "urls": [
-      "https://x.com/Cassidy_AI/status/2054547506441195872/video/1"
-    ],
-    "mentions": [],
-    "hashtags": [],
-    "tweet_url": "https://x.com/Cassidy_AI/status/2054547506441195872"
   },
   {
     "id": "2055652106539843724",
@@ -187,5 +121,72 @@
       "TechNews"
     ],
     "tweet_url": "https://x.com/dylanfrom2045/status/2055652106539843724"
+  },
+  {
+    "id": "2056506209356640624",
+    "text": "Anthropic has acquired Stainless the dev tools startup used by OpenAI, Google, and Cloudflare. They make banger Software Development Kits and design  API to automatically update across all infra Stainless has built out with its SDKs\n\nhttps://t.co/jWfonlMRoH via @techcrunch",
+    "author_id": "1459351923065245699",
+    "username": "beenwilli",
+    "name": "Ben",
+    "created_at": "2026-05-18T22:44:23.000Z",
+    "conversation_id": "2056506209356640624",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 26,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/"
+    ],
+    "mentions": [
+      "TechCrunch"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/beenwilli/status/2056506209356640624"
+  },
+  {
+    "id": "2055608455088816608",
+    "text": "Google continues to build strong AI models, but the slow rollout cycle reduces their overall momentum.\n\nGemini 3.1 Pro launched around three months ago, and during that same period, both OpenAI and Anthropic released multiple new model updates and iterations.",
+    "author_id": "2837851015",
+    "username": "mnavaidd",
+    "name": "Muhammad Navaid",
+    "created_at": "2026-05-16T11:17:01.000Z",
+    "conversation_id": "2055608455088816608",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 2,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/mnavaidd/status/2055608455088816608"
+  },
+  {
+    "id": "2056797140295340161",
+    "text": "This week in AI focused on cybersecurity initiatives, legal resolutions and new model deployments from OpenAI, Anthropic and Google. ↓",
+    "author_id": "1273173925",
+    "username": "thecircuitry_",
+    "name": "The Circuitry",
+    "created_at": "2026-05-19T18:00:26.000Z",
+    "conversation_id": "2056797140295340161",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 10,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/thecircuitry_/status/2056797140295340161"
   }
 ]

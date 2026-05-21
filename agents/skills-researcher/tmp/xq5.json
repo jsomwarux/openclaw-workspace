@@ -1,26 +1,27 @@
+=== QUERY 5 ===
 [
   {
-    "id": "2054989169446023181",
-    "text": "Higgsfield just released Supercomputer.\n\nA cloud-native AI agent that unifies every model, tool, and creative workflow into one system.\n\nIt can research, write, design, generate video, and ship campaigns end-to-end. https://t.co/oh1nQVlKjG",
-    "author_id": "1712267009483022336",
-    "username": "higgsfield_ai",
-    "name": "Higgsfield AI 🧩",
-    "created_at": "2026-05-14T18:16:12.000Z",
-    "conversation_id": "2054989169446023181",
+    "id": "2056631151821746602",
+    "text": "When ChatGPT broke in late 2022, every new tool started with \"AI-powered\".\n\nThis month's editorial pick of 8 fresh tools tells a different story.\n\nNot one calls itself an AI tool. They're a cart recovery tool, a loyalty platform, a prospecting workflow. 🧵 https://t.co/XHkU2SwT9Q",
+    "author_id": "7486362",
+    "username": "rankmyai",
+    "name": "RankmyAI - the world’s largest AI directory",
+    "created_at": "2026-05-19T07:00:51.000Z",
+    "conversation_id": "2056631151821746602",
     "metrics": {
-      "likes": 893,
-      "retweets": 177,
-      "replies": 188,
-      "quotes": 33,
-      "impressions": 195219,
-      "bookmarks": 460
+      "likes": 3,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 44,
+      "bookmarks": 0
     },
     "urls": [
-      "https://x.com/higgsfield_ai/status/2054989169446023181/video/1"
+      "https://x.com/rankmyai/status/2056631151821746602/video/1"
     ],
     "mentions": [],
     "hashtags": [],
-    "tweet_url": "https://x.com/higgsfield_ai/status/2054989169446023181"
+    "tweet_url": "https://x.com/rankmyai/status/2056631151821746602"
   },
   {
     "id": "2054820797177561490",
@@ -49,34 +50,51 @@
     "tweet_url": "https://x.com/Storyboard18_/status/2054820797177561490"
   },
   {
-    "id": "2055805710286434699",
-    "text": "Discover how to turn your messy documents, notes, and PDFs into instant AI generated podcasts and expert study guides using Google's game-changing notebookLM workflow tool. #notebooklm #gemini #google #ai #create https://t.co/r7ZDriQCIT https://t.co/UrTH2ASW59",
-    "author_id": "26736149",
-    "username": "DeanIsenberg",
-    "name": "GuyForAi.Com",
-    "created_at": "2026-05-17T00:20:51.000Z",
-    "conversation_id": "2055805710286434699",
+    "id": "2056915780600816079",
+    "text": "I just shipped a major Synkora refresh. 🧵\n\nMost AI tools solve a slice of the problem. A framework. A chatbot widget. A workflow tool.\n\nWe built the missing layer — the full platform for teams who need agents in production, not just in demos.\n\nWhat's new:\n\n→ New branding + https://t.co/EWyX9psRAp",
+    "author_id": "1936591982316683264",
+    "username": "rajuniit",
+    "name": "Raju Mazumder",
+    "created_at": "2026-05-20T01:51:52.000Z",
+    "conversation_id": "2056915780600816079",
     "metrics": {
-      "likes": 1,
+      "likes": 0,
       "retweets": 0,
-      "replies": 1,
+      "replies": 0,
       "quotes": 0,
-      "impressions": 34,
+      "impressions": 13,
       "bookmarks": 0
     },
     "urls": [
-      "http://www.NetNerds.com",
-      "https://x.com/DeanIsenberg/status/2055805710286434699/video/1"
+      "https://x.com/rajuniit/status/2056915780600816079/video/1"
     ],
     "mentions": [],
-    "hashtags": [
-      "notebooklm",
-      "gemini",
-      "google",
-      "ai",
-      "create"
+    "hashtags": [],
+    "tweet_url": "https://x.com/rajuniit/status/2056915780600816079"
+  },
+  {
+    "id": "2057115188222960056",
+    "text": "What if AI isn’t just a tool but a whole new way of working for marketers?\n\nCognizant's marketing team is finding out, with a plan to go t beyond using AI and redesign every workflow and reskill every member of the team: https://t.co/r1YJjtGGzv https://t.co/3lVVkZDJSq",
+    "author_id": "69687111",
+    "username": "Cognizant",
+    "name": "Cognizant",
+    "created_at": "2026-05-20T15:04:14.000Z",
+    "conversation_id": "2057115188222960056",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 397,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://cgnz.at/6013vpl9x",
+      "https://x.com/Cognizant/status/2057115188222960056/video/1"
     ],
-    "tweet_url": "https://x.com/DeanIsenberg/status/2055805710286434699"
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Cognizant/status/2057115188222960056"
   },
   {
     "id": "2055003654701097046",
@@ -91,7 +109,7 @@
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 15,
+      "impressions": 17,
       "bookmarks": 0
     },
     "urls": [],
@@ -112,7 +130,7 @@
       "retweets": 1,
       "replies": 0,
       "quotes": 0,
-      "impressions": 33,
+      "impressions": 42,
       "bookmarks": 0
     },
     "urls": [
@@ -121,6 +139,32 @@
     "mentions": [],
     "hashtags": [],
     "tweet_url": "https://x.com/GeorgeG45568956/status/2054961627586249157"
+  },
+  {
+    "id": "2057008575138951296",
+    "text": "Before scaling AI, you need a method.\n\nThe CDI Method Foundation certification validates your ability to design AI assistants using a structured, proven workflow — from selecting use cases to improving performance.  ￼\n\nView details:\nhttps://t.co/YSBxMcREL3\n\n#ConversationalAI https://t.co/hERDAbpwMo",
+    "author_id": "2839406489",
+    "username": "CDInstitute_",
+    "name": "Conversation Design Institute",
+    "created_at": "2026-05-20T08:00:36.000Z",
+    "conversation_id": "2057008575138951296",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 6,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://hubs.la/Q04f1s0n0",
+      "https://x.com/CDInstitute_/status/2057008575138951296/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "ConversationalAI"
+    ],
+    "tweet_url": "https://x.com/CDInstitute_/status/2057008575138951296"
   },
   {
     "id": "2055270980008755538",
@@ -144,52 +188,5 @@
     "mentions": [],
     "hashtags": [],
     "tweet_url": "https://x.com/theoperatorai2/status/2055270980008755538"
-  },
-  {
-    "id": "2055898471064858834",
-    "text": "AI isn't taking your job, but the person using it to automate their workflow definitely is. Stop fearing the tool and start letting it do the heavy lifting for your side hustle. #AI #SideHustle",
-    "author_id": "2046608361790017536",
-    "username": "MiguelV83671974",
-    "name": "Miguel Vargas",
-    "created_at": "2026-05-17T06:29:26.000Z",
-    "conversation_id": "2055898471064858834",
-    "metrics": {
-      "likes": 0,
-      "retweets": 0,
-      "replies": 0,
-      "quotes": 0,
-      "impressions": 0,
-      "bookmarks": 0
-    },
-    "urls": [],
-    "mentions": [],
-    "hashtags": [
-      "AI",
-      "SideHustle"
-    ],
-    "tweet_url": "https://x.com/MiguelV83671974/status/2055898471064858834"
-  },
-  {
-    "id": "2055865643581440137",
-    "text": "Most developers are using AI like autocomplete.\n\nTop AI engineers use it differently:\n• architecture exploration\n• debugging hypotheses\n• test generation\n• refactor planning\n• documentation synthesis\nThe gap isn’t tool access anymore.\nIt’s workflow intelligence.\n@qmmitai",
-    "author_id": "2048630555714138112",
-    "username": "qmmitai",
-    "name": "Qmmit",
-    "created_at": "2026-05-17T04:19:00.000Z",
-    "conversation_id": "2055865643581440137",
-    "metrics": {
-      "likes": 0,
-      "retweets": 0,
-      "replies": 0,
-      "quotes": 0,
-      "impressions": 7,
-      "bookmarks": 0
-    },
-    "urls": [],
-    "mentions": [
-      "qmmitai"
-    ],
-    "hashtags": [],
-    "tweet_url": "https://x.com/qmmitai/status/2055865643581440137"
   }
 ]

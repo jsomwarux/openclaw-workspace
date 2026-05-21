@@ -12,6 +12,7 @@ Before drafting ANY post or content for JT:
 6. Write a `Pattern inputs / Hook mappings from swipe file` section in the draft file before the posts.
 7. Translate the mechanics through JT's voice. Do not copy wording, claims, account persona, or structure wholesale.
 8. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering.
+9. For every LinkedIn draft, run the executable stale-pattern guard before delivery: `python3 scripts/content_distribution_guard.py --linkedin-draft [draft-file]`. If it fails, rewrite before showing JT.
 
 ## Self-Improving Content Loop
 All content Eve generates for JT must use a feedback loop calibrated to the niche and platform.
@@ -60,6 +61,7 @@ Viral Swipe must search live X with explicit recency and performance filters: `-
 - Standalone posts: target 6–15 words
 - No forbidden words (full list in content-voice.md)
 - No em dashes, no exclamation points, no "Here's the thing:" openers
+- LinkedIn client-proof posts must not use contrarian reveal patterns: no “the blocker is not whether X, it is whether Y,” no “not look what this tool can do, more like…,” no “not X, but Y” reveal framing, and no “matters more than people think” generic importance phrases.
 - Threads: max 5 tweets; most should be 3
 
 ## Wednesday LinkedIn
@@ -94,6 +96,10 @@ Format: `- **[Pattern name]:** [2–3 sentences, specific enough to apply immedi
 ## Content Calendar Follow-through Audit
 Run after weekly content generation, after any content cron patch, or when Notion/posted-log drift is suspected:
 `python3 scripts/content_calendar_audit.py --week YYYY-MM-DD`
+
+Run before delivering any one-off LinkedIn draft:
+`python3 scripts/content_distribution_guard.py --linkedin-draft [draft-file]`
+
 Use `--with-notion` only when Notion token is available and external read checks are appropriate.
 The audit must pass locally before calling the weekly content system healthy. It checks: weekly file guard, posted-log duplicate slots, content cron guard prompts, posted-reply handler + pending-state writer presence, and optional Notion duplicate/missing Drive links.
 

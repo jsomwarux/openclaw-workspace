@@ -103,15 +103,27 @@ Required weekly inputs:
 
 ## Metrics Summary — Week of 2026-05-13
 
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 1
+- Best item: glow-index Search Console queries 2026-05-13 to 2026-05-19 (1 views/impressions)
+
 ### glow-index / web
-- Posts/results logged: 2
+- Posts/results logged: 3
+- Views/impressions: 3
+- Web depth: active users 3, pageviews 12, events 26
+- Best item: glow-index GA4 web traffic 2026-05-13 to 2026-05-19 (3 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
 - Views/impressions: 0
-- Best item: Glow Index web analytics readiness (None views/impressions)
+- Best item: nash-satoshi Search Console queries 2026-05-13 to 2026-05-19 (0 views/impressions)
 
 ### nash-satoshi / web
-- Posts/results logged: 2
-- Views/impressions: 0
-- Best item: Nash Satoshi web analytics readiness (None views/impressions)
+- Posts/results logged: 3
+- Views/impressions: 40
+- Web depth: active users 10, pageviews 130, events 382
+- Best item: nash-satoshi GA4 web traffic 2026-05-13 to 2026-05-19 (40 views/impressions)
 
 ### nash-satoshi / x
 - Posts/results logged: 1
@@ -125,22 +137,16 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 7
+- Posts/results logged: 8
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 7
+- Posts/results logged: 8
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
-**Best overall:** nash-satoshi / x — Nash Satoshi has AI Agents averaging 77.8 across 218 tokens.
-
-While AI Infrastructure is scoring 81.0 across only 18.
-
-Does this suggest the crowded trade is agents?
-
-Is the sharpe (20 views/impressions)
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-05-13 to 2026-05-19 (40 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
@@ -650,7 +656,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-19_
+_Last updated: 2026-05-20_
 
 <!-- METRICS_SUMMARY_END -->
 

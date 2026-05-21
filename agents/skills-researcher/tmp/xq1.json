@@ -1,31 +1,5 @@
+=== QUERY 1 ===
 [
-  {
-    "id": "2054459295631364581",
-    "text": "we just launched dualmark on @ProductHunt.\n\nit's the open-source tool we built at @dodopayments to make marketing sites readable by AI agents. gave us 5x AI agent traffic in 60 days without rewriting a single page.\n\nif you think AI search matters, we'd appreciate your upvote. https://t.co/JHt3aDLwEV https://t.co/Expx3pC0VA",
-    "author_id": "1134115783158583297",
-    "username": "ayushagarwal",
-    "name": "Ayush Agarwal",
-    "created_at": "2026-05-13T07:10:40.000Z",
-    "conversation_id": "2054459295631364581",
-    "metrics": {
-      "likes": 86,
-      "retweets": 9,
-      "replies": 15,
-      "quotes": 3,
-      "impressions": 11322,
-      "bookmarks": 57
-    },
-    "urls": [
-      "https://x.com/ayushagarwal/status/2054459295631364581/video/1",
-      "https://twitter.com/ayushagarwal/status/2054123413145604227"
-    ],
-    "mentions": [
-      "ProductHunt",
-      "dodopayments"
-    ],
-    "hashtags": [],
-    "tweet_url": "https://x.com/ayushagarwal/status/2054459295631364581"
-  },
   {
     "id": "2055879931134144864",
     "text": "Anthropic’s Head of Product just released a 28-minute deep dive on how real AI agents are built and deployed.\n\nIt covers:\n• prompt caching\n• tool orchestration\n• automated tool calling\n• context compaction\n• multi-agent strategies\n\nFree. Practical. More useful than most long https://t.co/Mu04NVGuHF",
@@ -35,12 +9,12 @@
     "created_at": "2026-05-17T05:15:46.000Z",
     "conversation_id": "2055879931134144864",
     "metrics": {
-      "likes": 63,
-      "retweets": 27,
+      "likes": 65,
+      "retweets": 28,
       "replies": 8,
       "quotes": 0,
-      "impressions": 3619,
-      "bookmarks": 63
+      "impressions": 3747,
+      "bookmarks": 64
     },
     "urls": [
       "https://x.com/allen_explains/status/2055879931134144864/video/1"
@@ -48,50 +22,6 @@
     "mentions": [],
     "hashtags": [],
     "tweet_url": "https://x.com/allen_explains/status/2055879931134144864"
-  },
-  {
-    "id": "2054011175680033082",
-    "text": "Hermes Agent just got a HUGE free upgrade.\n\nAnd almost nobody is talking about it yet.\n\nYou can now run Hermes completely FREE using Our Alpha on OpenRouter.\n\n→ 1M token context window\n→ Built specifically for AI agents\n→ Native tool use\n→ Strong code + workflow automation\n→ https://t.co/w72tnDcmvi",
-    "author_id": "1405031034",
-    "username": "JulianGoldieSEO",
-    "name": "Julian Goldie SEO",
-    "created_at": "2026-05-12T01:30:00.000Z",
-    "conversation_id": "2054011175680033082",
-    "metrics": {
-      "likes": 37,
-      "retweets": 6,
-      "replies": 6,
-      "quotes": 0,
-      "impressions": 2001,
-      "bookmarks": 38
-    },
-    "urls": [
-      "https://x.com/JulianGoldieSEO/status/2054011175680033082/video/1"
-    ],
-    "mentions": [],
-    "hashtags": [],
-    "tweet_url": "https://x.com/JulianGoldieSEO/status/2054011175680033082"
-  },
-  {
-    "id": "2054329521961369997",
-    "text": "Everyone’s waiting to quit before they start building.\n\nI built a 6-agent local AI system, a dropshipping scout bot, and a Google review automation tool. All while still in a 9-5.\n\nThe exit isn’t a moment. It’s what you build before the moment.\n\nWhat’s one thing you could start",
-    "author_id": "3152020770",
-    "username": "ShipNotHype",
-    "name": "Andrew",
-    "created_at": "2026-05-12T22:35:00.000Z",
-    "conversation_id": "2054329521961369997",
-    "metrics": {
-      "likes": 6,
-      "retweets": 0,
-      "replies": 4,
-      "quotes": 0,
-      "impressions": 79,
-      "bookmarks": 0
-    },
-    "urls": [],
-    "mentions": [],
-    "hashtags": [],
-    "tweet_url": "https://x.com/ShipNotHype/status/2054329521961369997"
   },
   {
     "id": "2054702802585469262",
@@ -106,7 +36,7 @@
       "retweets": 1,
       "replies": 0,
       "quotes": 0,
-      "impressions": 61,
+      "impressions": 65,
       "bookmarks": 0
     },
     "urls": [
@@ -133,7 +63,7 @@
       "retweets": 0,
       "replies": 4,
       "quotes": 0,
-      "impressions": 174,
+      "impressions": 192,
       "bookmarks": 0
     },
     "urls": [
@@ -148,6 +78,27 @@
     "tweet_url": "https://x.com/IamWelma/status/2055813935438184664"
   },
   {
+    "id": "2056214997148340398",
+    "text": "🚨 Microsoft just launched the GitHub Certified: Agentic AI Developer certification.\n\nSkills covered 👇\n\n• AI agents in production SDLC workflows\n• Tool calling + orchestration\n• Agent governance + safety\n• GitHub as the AI control plane\n• Reliability, observability, and",
+    "author_id": "769372283131432961",
+    "username": "Alacritic_Super",
+    "name": "Praveen Kumar Verma",
+    "created_at": "2026-05-18T03:27:12.000Z",
+    "conversation_id": "2056214997148340398",
+    "metrics": {
+      "likes": 2,
+      "retweets": 1,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 163,
+      "bookmarks": 2
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Alacritic_Super/status/2056214997148340398"
+  },
+  {
     "id": "2055965814847881647",
     "text": "Imagine hiring a brilliant assistant.\n\nYou train them all day. \n\nThey do great work.\n\nThen they wake up the next morning with zero memory of who you are.\n\nThat's every AI tool you've been using.\n\nHermes Agent OS was built specifically to end that.\n\n→ Launched February 25th, https://t.co/ngQPKW2O3t",
     "author_id": "1405031034",
@@ -160,7 +111,7 @@
       "retweets": 1,
       "replies": 1,
       "quotes": 0,
-      "impressions": 470,
+      "impressions": 478,
       "bookmarks": 2
     },
     "urls": [
@@ -171,26 +122,75 @@
     "tweet_url": "https://x.com/JulianGoldieSEO/status/2055965814847881647"
   },
   {
-    "id": "2054215064249389516",
-    "text": "We built a lot in 60 minutes. 🚀\n\nLast week, we went live with our partners and showed exactly how to connect your Viirtue AI agent to virtually any tool — no theory, no slides. Just live builds, real automation, and answers to your questions in real time.\n\nHere's what we https://t.co/qGeMVPLz3V",
-    "author_id": "934962989307977728",
-    "username": "Viirtue1",
-    "name": "Viirtue",
-    "created_at": "2026-05-12T15:00:11.000Z",
-    "conversation_id": "2054215064249389516",
+    "id": "2056412055603990975",
+    "text": "Evening thought.\n\n'AI for SMEs' is a marketing line that's been around for 3 years. Nobody actually shipped it as an end-to-end company — they shipped tools, dashboards, chatbots.\n\nAgent Networks is the AI team, not the AI tool. There's a difference.\n\nhttps://t.co/YupY0Ogg2u",
+    "author_id": "101790250",
+    "username": "PaulGLomas",
+    "name": "Paul Lomas",
+    "created_at": "2026-05-18T16:30:15.000Z",
+    "conversation_id": "2056412055603990975",
     "metrics": {
       "likes": 1,
       "retweets": 0,
-      "replies": 0,
+      "replies": 1,
       "quotes": 0,
-      "impressions": 16,
+      "impressions": 12,
       "bookmarks": 0
     },
     "urls": [
-      "https://x.com/Viirtue1/status/2054215064249389516/photo/1"
+      "http://agentnetworks.co.uk"
     ],
     "mentions": [],
     "hashtags": [],
-    "tweet_url": "https://x.com/Viirtue1/status/2054215064249389516"
+    "tweet_url": "https://x.com/PaulGLomas/status/2056412055603990975"
+  },
+  {
+    "id": "2056268585350344970",
+    "text": "spent 2 years testing every AI tool, agent, automation, and voice system that launched.\n\nevery demo. every course. every \"how i built a $500k AI agency in 6 months\" video.\n\nhere's what none of those show you.\n\naccounting firms across the world are losing hundreds of thousands of",
+    "author_id": "1897908523226611715",
+    "username": "JoshJefferd",
+    "name": "Josh Jefferd",
+    "created_at": "2026-05-18T07:00:09.000Z",
+    "conversation_id": "2056268585350344970",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 25,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/JoshJefferd/status/2056268585350344970"
+  },
+  {
+    "id": "2055660603310526776",
+    "text": "n8n with AI nodes is the most slept-on\nagent orchestration tool right now.\n\nBuilt a research pipeline for auto-insight\nin 2 hours. Visual workflow + AI reasoning.\n\n@n8n_io #AITools #Automation https://t.co/jwwzEzrffx",
+    "author_id": "1885198644372267012",
+    "username": "Mosss_OS",
+    "name": "Mo",
+    "created_at": "2026-05-16T14:44:14.000Z",
+    "conversation_id": "2055660603310526776",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 53,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/Mosss_OS/status/2055660603310526776/photo/1"
+    ],
+    "mentions": [
+      "n8n_io"
+    ],
+    "hashtags": [
+      "AITools",
+      "Automation"
+    ],
+    "tweet_url": "https://x.com/Mosss_OS/status/2055660603310526776"
   }
 ]

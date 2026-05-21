@@ -47,7 +47,7 @@
 
 | opticfy-ops | skills/opticfy-ops/SKILL.md | agents/autoresearch/checklists/opticfy-ops.md | stable | 1.000 | 2026-05-18 | 2026-05-03 |
 | opticfy-pipeline | skills/opticfy-pipeline/SKILL.md | checklists/opticfy-pipeline.md | stable | 0.944 | 2026-05-13 | 2026-05-03 |
-| x-research | skills/x-research/SKILL.md | checklists/x-research.md | pending | — | — | 2026-05-03 |
+| x-research | skills/x-research/SKILL.md | checklists/x-research.md | stable | 1.000 | 2026-05-20 | 2026-05-03 |
 | niche-fitness | agents/niche-fitness/AGENT.md | checklists/niche-fitness.md | pending | — | — | 2026-05-03 |
 | passive-income-strategist | agents/passive-income-strategist/AGENT.md | checklists/passive-income-strategist.md | pending | — | — | 2026-05-03 |
 | skills-researcher | agents/skills-researcher/AGENT.md | checklists/skills-researcher.md | pending | — | — | 2026-05-03 |

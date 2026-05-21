@@ -123,6 +123,15 @@ bun run x-search.ts cache clear    # Clear all cached results
 
 When doing deep research (not just a quick search), follow this loop:
 
+### 0. Set a Search Budget First
+
+Before running X API commands, choose and state a bounded plan:
+- **Pulse / cheap answer:** start with 1 `--quick --limit 10` search; add at most one follow-up query, profile, thread, or linked fetch only if the first result set is too thin or one cited thread is clearly central.
+- **Standard research:** 2-3 targeted searches, normally `--pages 1 --limit 10-15`; use `--quality`, `--min-likes`, `--no-replies`, Lists, or `from:` searches before adding pages.
+- **Deep dive:** only when the user explicitly asks for depth; cap at 3-5 searches/pages and name the expected API cost.
+
+If the question can be answered with a cheaper pulse, do not default to the 3-5 query loop. Stop once the synthesis has enough cited evidence for a decision, content angle, or explicit skip.
+
 ### 1. Decompose the Question into Queries
 
 Turn the research question into 3-5 keyword queries using X search operators:

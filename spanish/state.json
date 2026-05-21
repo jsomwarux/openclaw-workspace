@@ -1,17 +1,24 @@
 {
   "started": "2026-03-02",
+  "current_day": 67,
   "current_week": 12,
-  "current_day": 66,
-  "last_lesson_date": "2026-05-19",
+  "last_lesson_date": "2026-05-20",
   "last_lesson_complete": false,
-  "lesson_streak": 39,
-  "streak": 38,
-  "longest_streak": 39,
+  "lesson_streak": 40,
+  "longest_streak": 40,
+  "streak": 39,
+  "total_lessons_completed": 21,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "focus": "speaking and listening, not writing",
   "goal": "Light casual conversation with girlfriend and her family",
   "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
+  "use_cases": [
+    "restaurants",
+    "directions",
+    "small talk",
+    "survival Spanish"
+  ],
   "strong_areas": [
     "basic greetings",
     "verb intuition (me llamo, estoy)",
@@ -24,13 +31,6 @@
     "no problemo habit",
     "e/y confusion (Italian vs Spanish)"
   ],
-  "use_cases": [
-    "restaurants",
-    "directions",
-    "small talk",
-    "survival Spanish"
-  ],
-  "total_lessons_completed": 21,
   "weekly_scores": [
     {
       "week": 2,
@@ -45,6 +45,6 @@
   ],
   "real_world_challenges_unlocked": 2,
   "real_world_challenges_completed": [],
-  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases.",
-  "notes": "Delivered Week 12, Tue (Nuanced Reactions). Consistency check passed: Started Mar 2nd makes this Week 12. Corrected longest_streak typo to match lesson_streak."
+  "notes": "Delivered Week 12, Wed (Daily Routines: I'm about to...). Current week matches calendar. Streak incremented.",
+  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases."
 }

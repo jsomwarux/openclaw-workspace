@@ -27,6 +27,33 @@ BAD_PLACEHOLDERS = [
     "todo:",
 ]
 
+LINKEDIN_STALE_PATTERNS = [
+    (
+        re.compile(r"\b(?:the\s+)?(?:biggest|real|main)\s+blocker\s+(?:to\s+[^.\n]{0,120}\s+)?(?:is|was)\s+not\s+(?:whether|if)\b", re.I),
+        "contrarian blocker reveal: 'the blocker is not whether X...'",
+    ),
+    (
+        re.compile(r"\b(?:it|this|that)\s+(?:is|was|isn['’]t|wasn['’]t)\s+not\s+[^.\n]{0,120}\b(?:it\s+is|it['’]s|but|more\s+like)\b", re.I),
+        "contrarian reveal: 'it is not X, it is Y'",
+    ),
+    (
+        re.compile(r"\bnot\s+[\"'“”‘’]?look\s+what\s+[^.\n]{0,120}\b(?:more\s+like|it\s+is|it['’]s|but)\b", re.I),
+        "stale demo contrast: 'not look what this tool can do...'",
+    ),
+    (
+        re.compile(r"\bmore\s+like\s*[:\"'“”‘’]", re.I),
+        "stale reveal phrase: 'more like...'",
+    ),
+    (
+        re.compile(r"\b(?:matters\s+more\s+than\s+people\s+(?:think|realize)|people\s+underestimate|that\s+part\s+matters)\b", re.I),
+        "generic importance phrase",
+    ),
+    (
+        re.compile(r"\bNo\s+[^.\n]{1,80}\.\s*No\s+[^.\n]{1,80}\.\s*Just\s+[^.\n]{1,80}\.", re.I),
+        "tricolon negation: 'No X. No Y. Just Z.'",
+    ),
+]
+
 DYNASTY_REQUIRED = [
     "Native pattern teardown",
     "Rejected generic patterns",
@@ -95,6 +122,15 @@ def check_common(path: Path, text: str) -> list[str]:
         problems.append(f"{rel(path)}: em dash present")
     if re.search(r"\b(game-changing|revolutionary|unlock the power|seamless)\b", text, re.I):
         problems.append(f"{rel(path)}: generic marketing phrase present")
+    return problems
+
+
+def check_linkedin_stale_patterns(path: Path, text: str) -> list[str]:
+    problems: list[str] = []
+    for pattern, label in LINKEDIN_STALE_PATTERNS:
+        for match in pattern.finditer(text):
+            excerpt = " ".join(match.group(0).split())[:160]
+            problems.append(f"{rel(path)}: LinkedIn stale pattern: {label} -> {excerpt!r}")
     return problems
 
 
@@ -193,6 +229,7 @@ def check_dynasty_pack(path: Path) -> list[str]:
 def check_weekly(path: Path) -> list[str]:
     text = read(path)
     problems = check_common(path, text)
+    problems.extend(check_linkedin_stale_patterns(path, text))
     for heading in WEEKLY_REQUIRED:
         if heading not in text:
             problems.append(f"{rel(path)}: missing weekly gate section: {heading}")
@@ -234,6 +271,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Validate content distribution artifacts without external writes.")
     parser.add_argument("--dynasty-pack", action="append", default=[], help="Path to @dynastyjig pack markdown")
     parser.add_argument("--weekly", action="append", default=[], help="Path to weekly content markdown")
+    parser.add_argument("--linkedin-draft", action="append", default=[], help="Path to LinkedIn draft markdown/text to scan for stale AI-copy patterns")
     parser.add_argument("--news-hook", action="append", default=[], help="Path to daily news hook markdown")
     parser.add_argument("--check-notion-script", action="store_true", help="Check scripts/notion-calendar-push.py auth/dry-run hygiene")
     args = parser.parse_args()
@@ -243,6 +281,11 @@ def main() -> int:
         problems.extend(check_dynasty_pack(Path(item)))
     for item in args.weekly:
         problems.extend(check_weekly(Path(item)))
+    for item in args.linkedin_draft:
+        path = Path(item)
+        text = read(path)
+        problems.extend(check_common(path, text))
+        problems.extend(check_linkedin_stale_patterns(path, text))
     for item in args.news_hook:
         problems.extend(check_news_hook(Path(item)))
     if args.check_notion_script:

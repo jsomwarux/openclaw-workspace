@@ -4,47 +4,47 @@
   "freshness": "week",
   "country": "US",
   "search_lang": "en",
-  "retrieved_at_date": "2026-05-18",
+  "retrieved_at_date": "2026-05-20",
   "results": [
-    {
-      "title": "Anthropic Release Notes - May 2026 Latest Updates - Releasebot",
-      "url": "https://releasebot.io/updates/anthropic",
-      "description": "We&#x27;ve launched Claude Platform on AWS, bringing the Claude API to Anthropic-managed infrastructure accessible through AWS, with AWS billing and IAM authentication. Access the full Messages API, Files API, Message Batches API, Claude Managed Agents, Agent Skills, code execution, and tool use through native AWS endpoints. Learn more in Claude Platform on AWS. Original source ... Claude releases the Claude Platform on AWS, bringing the full Claude API feature set to AWS customers with AWS authentication, billing, and commitment retirement.",
-      "age": "4 days ago",
-      "page_age": "2026-05-15T00:00:00",
-      "source": "Releasebot"
-    },
     {
       "title": "Claude Updates by Anthropic - May 2026 - Releasebot",
       "url": "https://releasebot.io/updates/anthropic/claude",
       "description": "<strong>The advisor tool</strong> is just another entry in your Messages API request. Your agent can search the web, execute code, and consult Opus in the same loop. <strong>The advisor tool</strong> is available now in beta natively on the Claude Platform. To get started: Add the beta feature header: anthropic-beta: ...",
-      "age": "3 days ago",
-      "page_age": "2026-05-16T00:00:00",
+      "age": "16 hours ago",
+      "page_age": "2026-05-20T00:00:00",
       "source": "Releasebot"
+    },
+    {
+      "title": "Anthropic Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic",
+      "description": "Original source ... Anthropic launches <strong>Claude for Small Business</strong>, bringing Claude into tools like QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 with ready-to-run workflows for payroll, invoicing, sales, marketing, and month-end close.",
+      "age": "2 days ago",
+      "page_age": "2026-05-19T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Anthropic enhances Claude Managed Agents with two new privacy and security features - 9to5Mac",
+      "url": "https://9to5mac.com/2026/05/19/anthropic-enhances-claude-managed-agents-with-two-new-privacy-and-security-features/",
+      "description": "The new <strong>MCP tunnels</strong> feature allows Claude Managed Agents users to route services through a private network. With <strong>MCP tunnels</strong>, your agents reach MCP servers inside your private network without exposing them to the public internet.",
+      "age": "1 day ago",
+      "page_age": "2026-05-19T15:45:04",
+      "source": "9to5Mac"
     },
     {
       "title": "Inside Anthropic's 2026 Developer Conference - Every",
       "url": "https://every.to/chain-of-thought/inside-anthropic-s-2026-developer-conference",
       "description": "... deployed it to power our API the next day. We’ve incorporated two of the new features Anthropic announced yesterday (<strong>memory and multi-agent orchestration</strong>) and are deploying the third (outcomes) soon.",
       "age": "3 days ago",
-      "page_age": "2026-05-16T00:00:00",
+      "page_age": "2026-05-18T00:00:00",
       "source": "Every"
     },
     {
-      "title": "Anthropic API Pricing in 2026: Complete Guide — Models, Caching, Batch & Optimization",
-      "url": "https://www.finout.io/blog/anthropic-api-pricing",
-      "description": "For teams operating at scale across multiple providers, a FinOps platform like Finout provides unified visibility, cost allocation by team or feature, and real-time anomaly detection across your full AI and cloud spend — without requiring custom instrumentation. Anthropic&#x27;s API pricing in 2026 is meaningfully more nuanced than it was a year ago.",
-      "age": "1 week ago",
-      "page_age": "2026-05-11T11:10:49",
-      "source": "Finout"
-    },
-    {
-      "title": "What Is Claude Dreaming? Anthropic's New AI Memory Feature",
-      "url": "https://felloai.com/what-is-claude-dreaming/",
-      "description": "<strong>Anthropic launched it on May 6, 2026 at Code with Claude as a research preview, alongside Outcomes and Multiagent Orchestration</strong>. Harvey reported a ~6x jump in agent task-completion rates after enabling Dreaming for legal-drafting workflows.",
-      "age": "3 days ago",
-      "page_age": "2026-05-15T11:44:22",
-      "source": "Fello AI"
+      "title": "AI Updates Today (May 2026) – Latest AI Model Releases",
+      "url": "https://llm-stats.com/llm-updates",
+      "description": "Our API Provider Updates section tracks pricing changes, new features, rate limit updates, and API endpoint modifications for all major providers including OpenAI, Anthropic, Google Cloud AI, Azure OpenAI, Together AI, Fireworks, Groq, and more. We also monitor throughput and latency changes. ... Use our Model Comparison tool to see side-by-side benchmark performance, capability differences, pricing changes, and context window improvements between model versions.",
+      "age": "1 day ago",
+      "page_age": "2026-05-19T17:44:18",
+      "source": "LLM Leaderboard"
     }
   ]
 }

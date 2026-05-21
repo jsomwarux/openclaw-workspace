@@ -1,53 +1,28 @@
+=== QUERY 4 ===
 [
   {
-    "id": "2054249674408952146",
-    "text": ".@AnthropicAI launched new @claudeai solutions for the legal industry today. Box is built in.\n\nThrough the Box plugin - with the Box MCP server and 3 new legal skills - Claude can now build virtual data rooms, automate client intake and onboarding, and review contracts, all while https://t.co/ktbTPVBzA3",
-    "author_id": "14936846",
-    "username": "Box",
-    "name": "Box",
-    "created_at": "2026-05-12T17:17:43.000Z",
-    "conversation_id": "2054249674408952146",
+    "id": "2054614259703652402",
+    "text": "This guy built an AI army on the new Shopify MCP bridge and in the first month after launch earned $24,000 net.\n\nOn May 4, 2026, Shopify connected directly to Claude and ChatGPT through the Model Context Protocol.\n\nBefore, Claude was just a tool for generating product https://t.co/nqALdXnfhe https://t.co/fVgyjfiJwt",
+    "author_id": "1808903543816065024",
+    "username": "xkaidus",
+    "name": "Kaidu",
+    "created_at": "2026-05-13T17:26:27.000Z",
+    "conversation_id": "2054614259703652402",
     "metrics": {
-      "likes": 96,
-      "retweets": 18,
-      "replies": 7,
-      "quotes": 1,
-      "impressions": 3249937,
-      "bookmarks": 49
-    },
-    "urls": [
-      "https://x.com/Box/status/2054249674408952146/video/1"
-    ],
-    "mentions": [
-      "AnthropicAI",
-      "claudeai"
-    ],
-    "hashtags": [],
-    "tweet_url": "https://x.com/Box/status/2054249674408952146"
-  },
-  {
-    "id": "2054584231787979042",
-    "text": "When I tell frens that ANIMA was built not just to stand out, but to stay ahead of the curve when it comes to external integrations like the MCP server connection \n\nLet's break it down 👇 \n\nTake a look at MCP (Model Context Protocol) like a website connecting to another website https://t.co/chhACSQL8Z https://t.co/qcBLVQUaX8",
-    "author_id": "2871628795",
-    "username": "billzcollecshun",
-    "name": "₿illzcollecshun🚦",
-    "created_at": "2026-05-13T15:27:07.000Z",
-    "conversation_id": "2054584231787979042",
-    "metrics": {
-      "likes": 49,
-      "retweets": 1,
-      "replies": 38,
+      "likes": 7,
+      "retweets": 0,
+      "replies": 1,
       "quotes": 0,
-      "impressions": 467,
-      "bookmarks": 1
+      "impressions": 559,
+      "bookmarks": 7
     },
     "urls": [
-      "https://x.com/billzcollecshun/status/2054584231787979042/photo/1",
-      "https://twitter.com/TheARCTERMINAL/status/2054562306055446648"
+      "https://x.com/xkaidus/status/2054614259703652402/video/1",
+      "https://twitter.com/RetroChainer/status/2051980350239191077"
     ],
     "mentions": [],
     "hashtags": [],
-    "tweet_url": "https://x.com/billzcollecshun/status/2054584231787979042"
+    "tweet_url": "https://x.com/xkaidus/status/2054614259703652402"
   },
   {
     "id": "2054660498604343405",
@@ -62,7 +37,7 @@
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 829,
+      "impressions": 831,
       "bookmarks": 0
     },
     "urls": [
@@ -86,7 +61,7 @@
       "retweets": 1,
       "replies": 2,
       "quotes": 0,
-      "impressions": 51,
+      "impressions": 53,
       "bookmarks": 0
     },
     "urls": [
@@ -95,6 +70,29 @@
     "mentions": [],
     "hashtags": [],
     "tweet_url": "https://x.com/0rdlibrary/status/2055771356386521586"
+  },
+  {
+    "id": "2056799982947012719",
+    "text": "Black Forest Labs just released an official MCP server for FLUX, and the real story is not \"generate images inside Claude.\" It is that image generation is becoming a native step inside your working environment, not a detour to a separate tool.\n\nMCP (Model Context Protocol) lets https://t.co/yVs5gl9vde",
+    "author_id": "16922531",
+    "username": "adityarao310",
+    "name": "Aditya ⚡Rao",
+    "created_at": "2026-05-19T18:11:44.000Z",
+    "conversation_id": "2056799982947012719",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 150,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/adityarao310/status/2056799982947012719/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/adityarao310/status/2056799982947012719"
   },
   {
     "id": "2054764123615826307",
@@ -109,7 +107,7 @@
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 19,
+      "impressions": 24,
       "bookmarks": 0
     },
     "urls": [
@@ -121,31 +119,6 @@
       "buildinpublic"
     ],
     "tweet_url": "https://x.com/SellWithBoost/status/2054764123615826307"
-  },
-  {
-    "id": "2054288790529700277",
-    "text": "@Xurrent, the AI-powered service and operations management platform for corporate IT teams and enterprise MSPs, today launched autonomous AI Agents and an open Model Context Protocol (MCP) server. https://t.co/P9ZHi1YMxe",
-    "author_id": "946018406259707910",
-    "username": "ITOpsTimes",
-    "name": "ITOps Times",
-    "created_at": "2026-05-12T19:53:09.000Z",
-    "conversation_id": "2054288790529700277",
-    "metrics": {
-      "likes": 0,
-      "retweets": 0,
-      "replies": 0,
-      "quotes": 0,
-      "impressions": 26,
-      "bookmarks": 0
-    },
-    "urls": [
-      "https://buff.ly/4yibS50"
-    ],
-    "mentions": [
-      "Xurrent"
-    ],
-    "hashtags": [],
-    "tweet_url": "https://x.com/ITOpsTimes/status/2054288790529700277"
   },
   {
     "id": "2054743583610315009",
@@ -160,7 +133,7 @@
       "retweets": 0,
       "replies": 1,
       "quotes": 0,
-      "impressions": 10,
+      "impressions": 13,
       "bookmarks": 0
     },
     "urls": [],
@@ -181,12 +154,33 @@
       "retweets": 0,
       "replies": 2,
       "quotes": 0,
-      "impressions": 21,
+      "impressions": 24,
       "bookmarks": 0
     },
     "urls": [],
     "mentions": [],
     "hashtags": [],
     "tweet_url": "https://x.com/johniosifov/status/2055615639747023226"
+  },
+  {
+    "id": "2057006291017425155",
+    "text": "AI agents are getting memory. But if that local context or history is tampered with behind the scenes... how would you know? 🔍\n\nI built verifiable-memory-mcp: a local-first Model Context Protocol server that adds an integrity layer to agent memory. (1/3)",
+    "author_id": "1856983581609865216",
+    "username": "ManuelSen109",
+    "name": "manuel señorans",
+    "created_at": "2026-05-20T07:51:31.000Z",
+    "conversation_id": "2057006291017425155",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 1,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/ManuelSen109/status/2057006291017425155"
   }
 ]

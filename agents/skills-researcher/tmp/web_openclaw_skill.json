@@ -4,46 +4,46 @@
   "freshness": "week",
   "country": "US",
   "search_lang": "en",
-  "retrieved_at_date": "2026-05-18",
+  "retrieved_at_date": "2026-05-20",
   "results": [
-    {
-      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
-      "url": "https://github.com/openclaw/clawhub",
-      "description": "It&#x27;s <strong>designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search</strong>. It also now exposes a native OpenClaw package catalog for code plugins and bundle plugins.",
-      "age": "5 hours ago",
-      "page_age": "2026-05-18T10:20:04",
-      "source": "GitHub"
-    },
     {
       "title": "GitHub - VoltAgent/awesome-openclaw-skills: The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞",
       "url": "https://github.com/VoltAgent/awesome-openclaw-skills",
       "description": "OpenClaw&#x27;s public registry (ClawHub) hosts 13,729 community-built skills as of February 28, 2026. This awesome list has <strong>5,211 skills</strong>.",
-      "age": "1 day ago",
-      "page_age": "2026-05-17T13:55:05",
+      "age": "2 days ago",
+      "page_age": "2026-05-18T14:50:05",
       "source": "GitHub"
     },
     {
-      "title": "Top 10 OpenClaw Skills you can't afford to miss in 2026 | Composio",
-      "url": "https://composio.dev/content/top-openclaw-skills",
-      "description": "Navigate down and copy the command given after verifying Security Scan says Benign for Openclaw (Important) Head to the terminal where open claw is installed and paste it. For me its docker and its the same skill I will install! # installs clawhub npx clawhub@latest install sonoscli · # or you can use github git clone https://github.com/peterskoett/self-improving-agent.git ~/.openclaw/workspace/skills/self-improving-agent",
-      "age": "1 week ago",
-      "page_age": "2026-05-11T13:55:05",
-      "source": "Composio"
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "It&#x27;s <strong>designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search</strong>. It also now exposes a native OpenClaw package catalog for code plugins and bundle plugins.",
+      "age": "2 days ago",
+      "page_age": "2026-05-18T07:40:04",
+      "source": "GitHub"
     },
     {
       "title": "GitHub - openclaw/openclaw: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
       "url": "https://github.com/openclaw/openclaw",
       "description": "Preferred setup: <strong>run openclaw onboard in your terminal</strong>. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on macOS, Linux, and Windows (via ...",
-      "age": "1 day ago",
-      "page_age": "2026-05-17T15:25:03",
+      "age": "5 hours ago",
+      "page_age": "2026-05-20T10:20:03",
       "source": "GitHub"
     },
     {
       "title": "GitHub - prompt-security/clawsec: A complete security skill suite for OpenClaw, Hermes, PicoClaw and NanoClaw agents (and variants). Protect your SOUL.md (etc') with drift detection, live security recommendations, automated audits, and skill integrity verification. All from one installable suite. · GitHub",
       "url": "https://github.com/prompt-security/clawsec",
       "description": "{ &quot;id&quot;: &quot;CVE-2026-XXXXX&quot;, &quot;severity&quot;: &quot;critical|high|medium|low&quot;, &quot;type&quot;: &quot;vulnerable_skill&quot;, &quot;platforms&quot;: [&quot;openclaw&quot;, &quot;nanoclaw&quot;], &quot;title&quot;: &quot;Short description&quot;, &quot;description&quot;: &quot;Full CVE description from NVD&quot;, &quot;published&quot;: &quot;2026-02-01T00:00:00Z&quot;, &quot;cvss_score&quot;: 8.8, &quot;nvd_url&quot;: &quot;https://nvd.nist.gov/vuln/detail/CVE-2026-XXXXX&quot;, &quot;exploitability_score&quot;: &quot;high|medium|low|unknown&quot;, &quot;exploitability_rationale&quot;: &quot;Why this CVE is or is not likely exploitable in agent deployments&quot;, &quot;references&quot;: [&quot;...&quot;], &quot;action&quot;: &quot;Recommended remediation&quot; } Community Advisory: { &quot;id&quot;: &quot;CLAW-2026-0042&quot;, &quot;severity&quot;: &quot;hig",
-      "age": "4 days ago",
+      "age": "1 week ago",
       "page_age": "2026-05-14T06:35:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Agents/tools: shorten built-in ... while preserving routing guardrails. Skills: <strong>add node inspector debugging, fused diagram generation, and throwaway spike workflow skills</strong>....",
+      "age": "1 day ago",
+      "page_age": "2026-05-19T14:55:04",
       "source": "GitHub"
     }
   ]

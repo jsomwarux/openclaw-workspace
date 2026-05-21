@@ -1,46 +1,5 @@
+=== QUERY 3 ===
 [
-  {
-    "id": "2054169338077381078",
-    "text": "At 1:42 AM, an n8n workflow detected a new PDF invoice uploaded to cloud storage.\n\nThat single event triggered an entire autonomous pipeline.\n\nNode 1:\nA webhook captured the upload event.\n\nNode 2:\nOCR extracted invoice text and tables.\n\nNode 3:\nAn LLM classified:\n- vendor type\n-",
-    "author_id": "769372283131432961",
-    "username": "Alacritic_Super",
-    "name": "Praveen Kumar Verma",
-    "created_at": "2026-05-12T11:58:29.000Z",
-    "conversation_id": "2054169338077381078",
-    "metrics": {
-      "likes": 3,
-      "retweets": 0,
-      "replies": 1,
-      "quotes": 0,
-      "impressions": 257,
-      "bookmarks": 1
-    },
-    "urls": [],
-    "mentions": [],
-    "hashtags": [],
-    "tweet_url": "https://x.com/Alacritic_Super/status/2054169338077381078"
-  },
-  {
-    "id": "2054516784355807385",
-    "text": "How we use n8n to auto-classify cold email replies (saves 10h/week):\n\nTrigger: New reply webhook from Smartlead\n\nClassification logic (via AI node):\n\n→ \"Interested\" → draft reply + flag for human approval\n\n→ \"Not now\" → tag in CRM, schedule 90-day follow-up\n\n→ \"OOO\" → pause",
-    "author_id": "1288970756064518144",
-    "username": "coldemaileng",
-    "name": "Cold Email Engineer",
-    "created_at": "2026-05-13T10:59:07.000Z",
-    "conversation_id": "2054516784355807385",
-    "metrics": {
-      "likes": 0,
-      "retweets": 0,
-      "replies": 1,
-      "quotes": 0,
-      "impressions": 36,
-      "bookmarks": 0
-    },
-    "urls": [],
-    "mentions": [],
-    "hashtags": [],
-    "tweet_url": "https://x.com/coldemaileng/status/2054516784355807385"
-  },
   {
     "id": "2055635092815724651",
     "text": "Built a real-time AI stock alert automation using n8n,Telegram,Google Sheets,APIs.\n\n✅ SELL/STOP LOSS\n✅ Real-time workflow execution\n✅ Automated data syncing\n✅ Telegram bot integration\n\nGig: https://t.co/f1AMmaEP5I\n#n8n #AIAutomation #WorkflowAutomation \nSpecialized in n8n https://t.co/UiWxzg0iuO",
@@ -54,7 +13,7 @@
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 52,
+      "impressions": 54,
       "bookmarks": 0
     },
     "urls": [
@@ -73,32 +32,27 @@
     "tweet_url": "https://x.com/MdMosta39784575/status/2055635092815724651"
   },
   {
-    "id": "2056068709047738834",
-    "text": "Using @Scrapingdog lately for web scraping &amp; SERP extraction workflows.\nFast API responses, easy integration, and works great with automation tools like n8n 🔥\nDefinitely a useful tool for scraping, lead generation, and automation projects.\n\n#automation #n8n #API #Scrapingdog",
-    "author_id": "2041654997897646081",
-    "username": "daci27534",
-    "name": "MO5",
-    "created_at": "2026-05-17T17:45:54.000Z",
-    "conversation_id": "2056068709047738834",
+    "id": "2056872004276584550",
+    "text": "For n8n posts, the repo is the CTA. Atlas Cloud's n8n integration is here: https://t.co/nUAuoNhMlK",
+    "author_id": "2042440971816738816",
+    "username": "MartSchroeff",
+    "name": "Mart Schroeff",
+    "created_at": "2026-05-19T22:57:55.000Z",
+    "conversation_id": "2056872004276584550",
     "metrics": {
       "likes": 0,
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 1,
+      "impressions": 5,
       "bookmarks": 0
     },
-    "urls": [],
-    "mentions": [
-      "scrapingdog"
+    "urls": [
+      "https://github.com/AtlasCloudAI/n8n-nodes-atlascloud"
     ],
-    "hashtags": [
-      "automation",
-      "n8n",
-      "API",
-      "Scrapingdog"
-    ],
-    "tweet_url": "https://x.com/daci27534/status/2056068709047738834"
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/MartSchroeff/status/2056872004276584550"
   },
   {
     "id": "2056002454529945649",
@@ -143,7 +97,7 @@
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 48,
+      "impressions": 51,
       "bookmarks": 0
     },
     "urls": [],
@@ -164,7 +118,7 @@
       "retweets": 0,
       "replies": 0,
       "quotes": 0,
-      "impressions": 3,
+      "impressions": 4,
       "bookmarks": 0
     },
     "urls": [
@@ -173,6 +127,59 @@
     "mentions": [],
     "hashtags": [],
     "tweet_url": "https://x.com/adams_elizi/status/2054992769475625310"
+  },
+  {
+    "id": "2056068709047738834",
+    "text": "Using @Scrapingdog lately for web scraping &amp; SERP extraction workflows.\nFast API responses, easy integration, and works great with automation tools like n8n 🔥\nDefinitely a useful tool for scraping, lead generation, and automation projects.\n\n#automation #n8n #API #Scrapingdog",
+    "author_id": "2041654997897646081",
+    "username": "daci27534",
+    "name": "MO5",
+    "created_at": "2026-05-17T17:45:54.000Z",
+    "conversation_id": "2056068709047738834",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 1,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [
+      "scrapingdog"
+    ],
+    "hashtags": [
+      "automation",
+      "n8n",
+      "API",
+      "Scrapingdog"
+    ],
+    "tweet_url": "https://x.com/daci27534/status/2056068709047738834"
+  },
+  {
+    "id": "2057121225277837317",
+    "text": "Building Sovio — an AI automation agency for local businesses.\n\nThe outreach system is almost live. Cold iMessage sequences, Google Sheets lead tracking, and n8n automation all wired together.\n\nUsing @sendbluehq to send iMessages at scale. Clean API, seamless n8n integration. https://t.co/7Yb4yHXyIV",
+    "author_id": "2056503334622945280",
+    "username": "SovioAI",
+    "name": "Sovio AI",
+    "created_at": "2026-05-20T15:28:14.000Z",
+    "conversation_id": "2057121225277837317",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 0,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/SovioAI/status/2057121225277837317/photo/1"
+    ],
+    "mentions": [
+      "sendbluehq"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/SovioAI/status/2057121225277837317"
   },
   {
     "id": "2054986369575883049",
