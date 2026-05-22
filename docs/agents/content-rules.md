@@ -61,7 +61,7 @@ Viral Swipe must search live X with explicit recency and performance filters: `-
 - Standalone posts: target 6–15 words
 - No forbidden words (full list in content-voice.md)
 - No em dashes, no exclamation points, no "Here's the thing:" openers
-- LinkedIn client-proof posts must not use contrarian reveal patterns: no “the blocker is not whether X, it is whether Y,” no “not look what this tool can do, more like…,” no “not X, but Y” reveal framing, and no “matters more than people think” generic importance phrases.
+- All JT content must not use stale contrarian/reveal patterns: no “the blocker is not whether X, it is whether Y,” no “not look what this tool can do, more like…,” no “not X, but Y,” no two-sentence “X is not just Y. It is Z.” framing, and no “matters more than people think” generic importance phrases.
 - Threads: max 5 tweets; most should be 3
 
 ## Wednesday LinkedIn

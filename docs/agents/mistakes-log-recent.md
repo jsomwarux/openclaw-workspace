@@ -269,3 +269,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** On any heartbeat-adjacent user message, check for operational verbs (`cancel`, `disable`, `stop`, `pause`, `resume`, `update`, `remove`) before returning `HEARTBEAT_OK`.
 - **Owner surface updated:** Mistakes log + MEMORY.md cron status + daily note.
 - **Verification/date:** 2026-05-17 — cron `eve-heartbeat-2h-002` updated to `enabled=false`; tool result confirmed disabled.
+
+## 2026-05-21 — Not-Y-X reveal pattern escaped content guard
+- **Failure:** A LinkedIn content reminder delivered “A methodology page is not just documentation. It is trust infrastructure.” after JT had explicitly banned the “Not Y, X” / contrast-reveal pattern.
+- **Root cause:** The prior fix banned only narrow “not X, it is Y / not X but Y” variants and scoped the rule mostly to client-proof posts. The deterministic guard did not include the semantically identical two-sentence “X is not just Y. It is Z.” construction, so the content system could pass a stale AI-copy pattern while technically satisfying the old regex.
+- **Guardrail/rule:** The ban is now global across JT content and includes “not X, it’s Y,” “not X but Y,” and “X is not just Y. It is Z.” variants. Drafts must state the positive claim directly instead of using contrast-reveal framing.
+- **Regression check:** `python3 scripts/content_distribution_guard.py --linkedin-draft [draft-file]` must fail any LinkedIn draft containing the two-sentence “X is not just Y. It is Z.” variant before delivery.
+- **Owner surface updated:** `scripts/content_distribution_guard.py`, `memory/content-voice.md`, `docs/agents/content-rules.md`, `docs/agents/regression-checks.md`, and this Mistakes Log entry.
+- **Verification/date:** 2026-05-21 — verified with `/tmp/bad_linkedin_not_just.md`; guard returned `CONTENT_DISTRIBUTION_GUARD_FAIL` for `banned Not-Y-X variant: 'X is not just Y. It is Z.'`.

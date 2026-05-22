@@ -61,3 +61,4 @@ Archive every Monday, start fresh.
 - Advanced stale consulting pipeline infrastructure work: created canonical `brief-schema-v3.md` for Research → Analysis → Builder → Presentation handoffs.
 - Updated Research Agent and n8n Agent CLAUDE.md files to point at the schema and preserve governance/demo/test requirements across handoffs.
 - Cron health checked: 51 jobs scanned, 0 with consecutive errors >=2.
+- 2026-05-21 overnight ops: checked task files/daily notes/Mission Control and cron health; no repeated-error cron failures. Advanced Glow crawler-access blocker by running `scripts/glow_crawler_check.py`, confirming rankings is 200 but discovery/category paths are Cloudflare 403; logged fix recommendation in `reports/overnight/2026-05-21-overnight-autonomy.md`.

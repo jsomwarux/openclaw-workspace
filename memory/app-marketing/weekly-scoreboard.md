@@ -88,6 +88,28 @@ Required weekly inputs:
 <!-- METRICS_SUMMARY_START -->
 ## Metrics Summary — Week of 2026-05-14
 
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 2
+- Best item: glow-index Search Console queries 2026-05-14 to 2026-05-20 (2 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 3
+- Web depth: active users 3, pageviews 12, events 26
+- Best item: glow-index GA4 web traffic 2026-05-14 to 2026-05-20 (3 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-05-14 to 2026-05-20 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 47
+- Web depth: active users 13, pageviews 147, events 434
+- Best item: nash-satoshi GA4 web traffic 2026-05-14 to 2026-05-20 (47 views/impressions)
+
 ### nash-satoshi / x
 - Posts/results logged: 2
 - Views/impressions: 64
@@ -137,12 +159,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 8
+- Posts/results logged: 9
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 8
+- Posts/results logged: 9
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -656,7 +678,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-20_
+_Last updated: 2026-05-21_
 
 <!-- METRICS_SUMMARY_END -->
 

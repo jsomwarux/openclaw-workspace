@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-05-19",
+  "last_run": "2026-05-21",
   "drafted": [
     "new-age-global-builders",
     "essential-property-management",
@@ -60,7 +60,16 @@
     "palone-bros-air-conditioning-corp",
     "a-real-good-plumber-inc",
     "vigilante-plumbing-heating-and-air-conditioning",
-    "xl-rpm"
+    "xl-rpm",
+    "globe-electric-supply-co-inc",
+    "benfield-electric-supply-co-inc",
+    "edmer-supply-edmer-sanitary-supply-co-inc",
+    "jimcor-agencies",
+    "capacity-coverage-company",
+    "levitt-fuirst-associates-ltd",
+    "foa-son-corporation",
+    "hotaling-insurance-services",
+    "tri-state-supply-company-mount-vernon"
   ],
   "skipped_no_channel": [
     "fargo-hvac-supply",
@@ -117,6 +126,10 @@
     "j-alperin-co-inc",
     "s-b-electric-supply-corp",
     "healthpass",
-    "shelterpoint"
+    "shelterpoint",
+    "brownyard-group",
+    "gotham-brokerage-co-inc",
+    "northeast-coverages",
+    "blackman-plumbing-supply-co-llc"
   ]
 }

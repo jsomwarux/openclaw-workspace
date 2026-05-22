@@ -37,6 +37,10 @@ LINKEDIN_STALE_PATTERNS = [
         "contrarian reveal: 'it is not X, it is Y'",
     ),
     (
+        re.compile(r"\b(?:a|an|the|this|that|your|my|our|[A-Z][A-Za-z0-9'’/-]{1,40})\s+[^.\n]{0,80}\s+(?:is|are|was|were)\s+not\s+just\s+[^.\n]{1,120}\.\s*(?:it|this|that|they|those|these|he|she)\s+(?:is|are|was|were)\s+[^.\n]{1,120}\.", re.I),
+        "banned Not-Y-X variant: 'X is not just Y. It is Z.'",
+    ),
+    (
         re.compile(r"\bnot\s+[\"'“”‘’]?look\s+what\s+[^.\n]{0,120}\b(?:more\s+like|it\s+is|it['’]s|but)\b", re.I),
         "stale demo contrast: 'not look what this tool can do...'",
     ),

@@ -167,7 +167,7 @@ Use for hot takes and compressed insights — NOT for announcements, launches, o
 - **Friday buyer-facing rule:** Prefer hooks like “Weekly status meetings might be the most expensive meeting on your calendar” over abstract hooks like “Most businesses do not need an AI chatbot.” Start with meetings, handoffs, approvals, stale reports, duplicate entry, ownerless requests, inbox/spreadsheet/portal sprawl.
 - **No outreach-meta by default:** Do not discuss JT's prospect research, lead enrichment, buyer-channel validation, or outreach strategy on LinkedIn unless writing explicitly for a sales-ops audience.
 - **Avoid AI-generated thought-leadership smell:** no “AI chatbot” contrast hooks, no “exception layer” phrasing, no vague “messy work” language, no stacked rhetorical lists unless grounded in a concrete workflow.
-- **Contrarian setup ban for client proof posts:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” or any “not X, but Y” reveal framing. Start with the concrete scene, machine, workflow, owner, number, or business constraint.
+- **Contrarian setup ban for all JT content:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” “not X, but Y,” or the two-sentence “X is not just Y. It is Z.” variant. This is banned across LinkedIn, X, reminders, client-proof posts, product-builder posts, and methodology/trust posts. Start with the positive claim, concrete scene, machine, workflow, owner, number, or business constraint.
 - **Generic importance phrase ban:** never write “matters more than people think,” “people underestimate,” or “that part matters” unless replaced with the specific business reason.
 - **No hashtags.** They suppress reach.
 - **No emojis** unless they serve a specific purpose (rarely)
@@ -206,8 +206,8 @@ implementation excellence, transformative, leverage (as buzzword), solution, opt
 - Humblebragging ("Grateful to share that we...")
 - Long explanations of things the reader can infer
 - "We" or "our team" — JT is a solo operator
-- Contrast pairs as standalone structural framing ("X isn't Y, they're Z") — banned for LinkedIn client proof posts unless JT explicitly asks for a contrarian take; the Two-Part Parallel is fine only when it states a functional distinction without reveal-language
-- “The blocker is not whether X, it is whether Y” and “Not ‘look what this tool can do,’ more like…” patterns — stale AI-copy smell; replace with direct proof or operational architecture
+- Contrast pairs as standalone structural framing ("X isn't Y, they're Z") — banned across JT content unless JT explicitly asks for a contrarian take; the Two-Part Parallel is fine only when it states a functional distinction without reveal-language
+- “The blocker is not whether X, it is whether Y,” “Not ‘look what this tool can do,’ more like…,” and “X is not just Y. It is Z.” patterns — stale AI-copy smell; replace with direct proof or operational architecture
 - Generic importance phrases like “matters more than people think,” “people underestimate,” and “that part matters”
 - @jts_14 or Twitter references in LinkedIn content
 
@@ -254,7 +254,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] LinkedIn consulting check: does the hook start with a concrete buyer pain a nontechnical SMB operator recognizes from their workday?
 - [ ] LinkedIn consulting check: is AI introduced only after the operational problem is clear?
 - [ ] LinkedIn consulting check: did you avoid outreach-meta and generic “AI chatbot” contrast framing?
-- [ ] Client proof post check: did you avoid “not X, it’s Y” reveal framing and generic “matters more than people think” language?
+- [ ] Contrast/reveal ban: did you avoid “not X, it’s Y,” “not X but Y,” and “X is not just Y. It is Z.” framing across the entire draft?
 
 ### X only (algorithm compliance):
 - [ ] First line invites a reply?

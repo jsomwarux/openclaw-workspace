@@ -54,3 +54,4 @@ EOF'
 [2026-05-18T15:30:00Z] | daily-scan | x_queries: 6 | web_queries: 14 | findings: 4 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-05-19T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 14 | findings: 6 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-05-20T15:46:00Z | daily-scan | x_queries: 6 | web_queries: 14 | findings: 5 | 🔴: 0 | 🟠: 0 | messaged_jt: no
+[2026-05-21T11:34:57-04:00] | daily-scan | x_queries: 6 | web_queries: 7 | findings: 6 | 🔴: 0 | 🟠: 0 | messaged_jt: no

@@ -1,18 +1,18 @@
 {
   "started": "2026-03-02",
-  "current_day": 67,
+  "current_day": 68,
   "current_week": 12,
-  "last_lesson_date": "2026-05-20",
+  "streak": 40,
+  "lesson_streak": 41,
+  "longest_streak": 41,
+  "last_lesson_date": "2026-05-21",
   "last_lesson_complete": false,
-  "lesson_streak": 40,
-  "longest_streak": 40,
-  "streak": 39,
   "total_lessons_completed": 21,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
+  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
   "focus": "speaking and listening, not writing",
   "goal": "Light casual conversation with girlfriend and her family",
-  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
   "use_cases": [
     "restaurants",
     "directions",
@@ -31,6 +31,8 @@
     "no problemo habit",
     "e/y confusion (Italian vs Spanish)"
   ],
+  "real_world_challenges_unlocked": 2,
+  "real_world_challenges_completed": [],
   "weekly_scores": [
     {
       "week": 2,
@@ -43,8 +45,6 @@
       "grade": "B+"
     }
   ],
-  "real_world_challenges_unlocked": 2,
-  "real_world_challenges_completed": [],
-  "notes": "Delivered Week 12, Wed (Daily Routines: I'm about to...). Current week matches calendar. Streak incremented.",
+  "notes": "Delivered Week 12, Thu (Asking for specific favors). Current week matches calendar. Streak incremented.",
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases."
 }

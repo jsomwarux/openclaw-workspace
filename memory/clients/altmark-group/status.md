@@ -1,6 +1,6 @@
 # Altmark Group — Client Status
 
-Last updated: 2026-05-19
+Last updated: 2026-05-22
 
 ## Client
 - Company: Altmark Group
@@ -78,6 +78,7 @@ Known active/current workflows from JT update:
 - Create runbook for insurance expiration workflow.
 - For rent delinquency: use `runbooks/rent-delinquency-data-readiness-checklist.md` with Yair/Karen/Matt before build work begins. Required before starting: source report named, required fields present, ledger cleanup assumptions documented, edge cases flagged, cleaned sample export approved, and 50% deposit timing confirmed.
 - Once ledger/report cleanup is ready and deposit arrives, begin rent delinquency workflow.
+- 2026-05-22 Friday command sheet prepared: `proof-assets/friday-command-sheet-2026-05-22.md`. Use it to separate acceptance/payment proof capture from the HTTPS/Google OAuth reliability work.
 - Capture proof asset after PC delivery + workflow acceptance: "local-first automation infrastructure for property/operations team with insurance-expiration workflow live."
 
 ## Strategic Expansion Opportunity
