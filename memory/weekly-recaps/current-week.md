@@ -62,3 +62,5 @@ Archive every Monday, start fresh.
 - Updated Research Agent and n8n Agent CLAUDE.md files to point at the schema and preserve governance/demo/test requirements across handoffs.
 - Cron health checked: 51 jobs scanned, 0 with consecutive errors >=2.
 - 2026-05-21 overnight ops: checked task files/daily notes/Mission Control and cron health; no repeated-error cron failures. Advanced Glow crawler-access blocker by running `scripts/glow_crawler_check.py`, confirming rankings is 200 but discovery/category paths are Cloudflare 403; logged fix recommendation in `reports/overnight/2026-05-21-overnight-autonomy.md`.
+- 2026-05-22 overnight ops: checked task files/daily notes/Mission Control and cron health; no repeated-error cron failures. Advanced App Marketing OS by wiring the experiment calendar generator to include the experiment-card gate, 24+/35 pattern score rule, source-tag fields, and 24h/72h/7d measurement windows.
+- 2026-05-22 nightly leverage: prepared Altmark weekend command sheet, updated Client OS/status/weekly update/acceptance checklist, and corrected the top MC task so acceptance/access/payment gates come before HTTPS/OAuth migration.

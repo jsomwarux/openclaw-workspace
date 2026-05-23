@@ -23,6 +23,7 @@ from pathlib import Path
 CLIENTS_DIR = Path.home() / "projects/jt-consulting-pipeline" / "clients"
 PIPELINE_PATH = Path.home() / "projects/jt-consulting-pipeline" / "pipeline.md"
 DRIVE_SCRIPT = Path.home() / ".openclaw/workspace/scripts/drive_drafts.py"
+DRIVE_TOKEN_PATH = Path.home() / ".openclaw/workspace/config/google-oauth-token.json"
 MC_API = "http://localhost:3000/api/tasks"
 
 # Threshold: M2 sent N+ days ago = email pivot ready
@@ -429,6 +430,41 @@ def check_mc_task_exists(prospect: dict) -> bool:
     return False
 
 
+
+
+def ensure_drive_auth_recovery_task() -> str:
+    """Create or reference one active MC task for missing Google Drive OAuth."""
+    title = "Recover Google Drive OAuth for outreach email pivots"
+    active_statuses = {"todo", "in-progress", "in_progress", "pending", "blocked"}
+    try:
+        tasks = json.loads(urllib.request.urlopen(MC_API).read()).get("tasks", [])
+        for t in tasks:
+            if t.get("status", "todo") in active_statuses and normalize_task_key(t.get("title", "")) == normalize_task_key(title):
+                return f"↩️  Drive OAuth recovery task already exists: {title}"
+
+        task = {
+            "title": title,
+            "description": (
+                f"Google Drive OAuth token is missing at `{DRIVE_TOKEN_PATH}`. "
+                "Run `python3 ~/.openclaw/workspace/scripts/drive_auth.py`, then rerun the outreach email pivot job. "
+                "The pivot job stopped before generating drafts or Mission Control outreach tasks to avoid duplicates."
+            ),
+            "status": "todo",
+            "priority": "medium",
+            "assignee": "jt",
+            "project": "Consulting",
+            "sortOrder": 35,
+            "slug": "drive-oauth-outreach-pivot",
+            "pipelineStage": "auth-recovery",
+        }
+        data = json.dumps(task).encode()
+        req = urllib.request.Request(MC_API, data=data, method="POST",
+                                   headers={"Content-Type": "application/json"})
+        urllib.request.urlopen(req).read()
+        return f"✅ Drive OAuth recovery task created: {title}"
+    except Exception as e:
+        return f"⚠️  Drive OAuth missing; could not create/reuse MC recovery task: {e}"
+
 def upload_to_drive(slug: str, canonical: str, email_content: str) -> str:
     """Upload email draft to Drive. Returns the Drive URL."""
     # Write draft to client folder first
@@ -535,6 +571,11 @@ def main():
         print("No email pivots needed yet.")
         return
 
+    if mode == "execute" and not DRIVE_TOKEN_PATH.exists():
+        print(f"Drive OAuth token missing at {DRIVE_TOKEN_PATH}; stopping before draft/task generation.")
+        print(ensure_drive_auth_recovery_task())
+        return
+
     # Process each pivot-ready prospect
     results = []
     for p in pivot_ready:
@@ -555,6 +596,10 @@ def main():
             print(f"   ⚠️  email-draft.md and active Email Pivot MC task already exist — skipping")
             continue
 
+        if existing and not task_exists:
+            print(f"   ⚠️  email-draft.md already exists but no active MC task was found — skipping task creation to avoid duplicate/manual-review drift")
+            continue
+
         if existing:
             if mode == "execute":
                 print(f"   ⚠️  email-draft.md already exists and no active MC task was found — preserving draft, creating task only")
@@ -563,10 +608,7 @@ def main():
                 continue
 
         if mode == "scan":
-            if existing and not task_exists:
-                print(f"   → Existing draft found; would create missing MC task only")
-            else:
-                print(f"   → Would generate email + Drive + MC task")
+            print(f"   → Would generate email + Drive + MC task")
             continue
 
         # Generate draft only when it does not already exist. Existing drafts are preserved to avoid

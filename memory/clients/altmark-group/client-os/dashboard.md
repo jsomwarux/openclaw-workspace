@@ -33,8 +33,8 @@
 | Proof-safe reusable patterns | 0 | 2 logged | 1+ productized template | Up | Use synthetic/anonymized sample data. |
 
 ## Next 7 Days
-- Use `proof-assets/friday-command-sheet-2026-05-22.md` as the current single-page execution sheet: confirm installed PC access/admin owner, verify insurance workflow/log visibility, capture acceptance wording/open issues, clarify insurance payment/approval status, and confirm rent delinquency deposit + clean sample report owner/date. Older Wednesday pack remains available for context but is no longer the primary sheet.
-- For infrastructure reliability, use `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md`: confirm workflow PC/admin access, back up n8n, choose stable HTTPS pattern, configure Google OAuth redirect, reconnect credentials, and run a non-sensitive smoke test.
+- Use `proof-assets/weekend-command-sheet-2026-05-23.md` as the current single-page execution sheet: confirm installed PC access/admin owner, verify insurance workflow/log visibility, capture acceptance wording/open issues, clarify insurance payment/approval status, and confirm rent delinquency deposit + clean sample report owner/date. Friday/Wed packs remain available for context but are no longer the primary sheet.
+- For infrastructure reliability, use `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md` only after PC/admin access and backup path are confirmed: back up n8n, choose stable HTTPS pattern, configure Google OAuth redirect, reconnect credentials, and run a non-sensitive smoke test.
 - Older prep remains available at `proof-assets/tuesday-execution-pack-2026-05-12.md`, `proof-assets/monday-command-sheet-2026-05-11.md`, and `proof-assets/tomorrow-execution-pack-2026-05-08.md`.
 
 

@@ -79,6 +79,7 @@ Known active/current workflows from JT update:
 - For rent delinquency: use `runbooks/rent-delinquency-data-readiness-checklist.md` with Yair/Karen/Matt before build work begins. Required before starting: source report named, required fields present, ledger cleanup assumptions documented, edge cases flagged, cleaned sample export approved, and 50% deposit timing confirmed.
 - Once ledger/report cleanup is ready and deposit arrives, begin rent delinquency workflow.
 - 2026-05-22 Friday command sheet prepared: `proof-assets/friday-command-sheet-2026-05-22.md`. Use it to separate acceptance/payment proof capture from the HTTPS/Google OAuth reliability work.
+- 2026-05-23 weekend command sheet prepared: `proof-assets/weekend-command-sheet-2026-05-23.md`. Treat acceptance/payment/access confirmation as the top move before HTTPS/OAuth migration.
 - Capture proof asset after PC delivery + workflow acceptance: "local-first automation infrastructure for property/operations team with insurance-expiration workflow live."
 
 ## Strategic Expansion Opportunity

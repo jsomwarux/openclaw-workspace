@@ -173,6 +173,12 @@ def main() -> int:
         f'- Latest test brief: `{brief.name if brief else "none"}`',
         f'- Planned rows currently waiting for live post IDs: {sum(planned_count(p, plat) for p,plat in priority_keys)}',
         '',
+        '## Required Experiment Card + Measurement Spine',
+        '- Before any experiment becomes a Mission Control execution task, fill `memory/app-marketing/experiment-card-template.md` or an equivalent experiment-card section.',
+        '- Pattern score gate: only promote patterns scoring **24+/35** via `memory/app-marketing/winning-pattern-research-protocol.md`, unless the task is a measurement/crawlability/infrastructure fix.',
+        '- Required tracking fields: app, experiment name, channel, source URL/post URL, source tag or UTM, creative type, target audience, CTA, run date, 24h metric, 72h metric, 7d metric, downstream metric, decision, attribution confidence.',
+        '- Source-tag convention: `vista_tiktok_rating_precision_YYYYMMDD`, `nash_x_rankdelta_YYYYMMDD`, `glow_seo_category_[page]_YYYYMMDD`, or a similarly specific tag from `measurement-spine.md`.',
+        '',
         '## This Week’s Experiments',
     ]
     for i,e in enumerate(experiments,1):
@@ -188,6 +194,17 @@ def main() -> int:
         ]
     lines += [
         '',
+        '## Active Execution Queue',
+        'Tracking schema: `memory/app-marketing/experiment-tracking-schema.md`',
+        'Queue file: `memory/app-marketing/experiment-queue-2026-05-19.jsonl`',
+        '',
+        '### Planned Experiments',
+        '1. `vista_tastecard_filmtok_soft_20260519` — gated borrowed-audience soft prompt after Taste Card prompt asset.',
+        '2. `nash_aiagents_receipt_x_20260519` — 2 public AI Agents ranking receipts before analyst/newsletter outreach.',
+        '3. `glow_productverdict_seo_batch1_20260519` — Product Verdict Card + 10 verdict pages before creator/writer outreach.',
+        '',
+        'Rule: no outreach/send task should be marked ready until its gate is satisfied and a source tag is assigned.',
+        '',
         '## Do Not Test This Week',
         '- Vista relationship compatibility unless a real proof asset exists. Current winner is rating precision.',
         '- Glow TikTok/ReelFarm volume until account, assets, and metric path are confirmed.',
@@ -196,8 +213,9 @@ def main() -> int:
         '- Any “watch this” TikTok/ReelFarm title or unclear slideshow hook.',
         '',
         '## Measurement Requirement',
-        '- Every approved draft must create or update a planned row in `memory/app-marketing/post-registry.jsonl`.',
+        '- Every approved draft must create or update a planned row in `memory/app-marketing/post-registry.jsonl` with source tag/UTM, creative type, target audience, CTA, run date, and attribution confidence when known.',
         '- Discovery must reconcile planned rows to exact live post IDs before performance is judged.',
+        '- Record 24h/72h/7d result windows before scale/iterate/kill decisions.',
         '- If a post cannot be tracked, do not use it as evidence for future strategy.',
     ]
     OUT.write_text('\n'.join(lines).rstrip()+'\n')

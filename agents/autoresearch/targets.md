@@ -29,7 +29,7 @@
 | vibe-marketing | agents/vibe-marketing/AGENT.md | checklists/vibe-marketing.md | stable | 0.900 | 2026-03-30 | 2026-03-22 |
 | job-application | skills/job-application/SKILL.md | checklists/job-application.md | stable | 1.000 | 2026-03-30 | 2026-03-22 |
 | overnight | agents/overnight/ (overnight cron payload) | checklists/overnight.md | stable | 1.000 | 2026-03-31 | 2026-03-29 |
-| outreach-email-pivot | scripts/outreach_email_pivot.py + cron payload | checklists/outreach-email-pivot.md | pending | — | — | 2026-04-27 |
+| outreach-email-pivot | scripts/outreach_email_pivot.py + cron payload | agents/autoresearch/checklists/outreach-email-pivot.md | stable | 1.000 | 2026-05-22 | 2026-04-27 |
 | runbook | skills/runbook/SKILL.md | checklists/runbook.md | pending | — | — | 2026-04-12 |
 | passive-income-scout | agents/passive-income-scout/AGENT.md | checklists/passive-income-scout.md | pending | — | — | 2026-04-20 |
 | content-scheduler | agents/content-scheduler/AGENT.md | checklists/content-scheduler.md | pending | — | — | 2026-04-20 |

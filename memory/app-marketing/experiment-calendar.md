@@ -1,15 +1,21 @@
 # App Marketing OS — Experiment Calendar
 
 Week of: 2026-05-18
-Generated: 2026-05-18
+Generated: 2026-05-22
 
 ## Rule
 Every generated product post should map to a named experiment, a success threshold, and a retire/rework rule. If it does not, skip it.
 
 ## Inputs used
-- Metrics rows: 81
+- Metrics rows: 99
 - Latest test brief: `test-briefs-2026-05-07.md`
 - Planned rows currently waiting for live post IDs: 4
+
+## Required Experiment Card + Measurement Spine
+- Before any experiment becomes a Mission Control execution task, fill `memory/app-marketing/experiment-card-template.md` or an equivalent experiment-card section.
+- Pattern score gate: only promote patterns scoring **24+/35** via `memory/app-marketing/winning-pattern-research-protocol.md`, unless the task is a measurement/crawlability/infrastructure fix.
+- Required tracking fields: app, experiment name, channel, source URL/post URL, source tag or UTM, creative type, target audience, CTA, run date, 24h metric, 72h metric, 7d metric, downstream metric, decision, attribution confidence.
+- Source-tag convention: `vista_tiktok_rating_precision_YYYYMMDD`, `nash_x_rankdelta_YYYYMMDD`, `glow_seo_category_[page]_YYYYMMDD`, or a similarly specific tag from `measurement-spine.md`.
 
 ## This Week’s Experiments
 
@@ -45,21 +51,7 @@ Every generated product post should map to a named experiment, a success thresho
 - **Retire/rework rule:** Never approve “watch this” or unclear title slides again.
 - **Evidence:** Best observed Nash TikTok topic: game_theory_explainer; best="Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To Solve." views=200
 
-## Do Not Test This Week
-- Vista relationship compatibility unless a real proof asset exists. Current winner is rating precision.
-- Glow TikTok/ReelFarm volume until account, assets, and metric path are confirmed.
-- Glow ingredient/dupe/concern pSEO pages until structured data supports unique safe pages.
-- Nash generic methodology explainers without a live ranking, model-update, or methodology-page launch angle.
-- Any “watch this” TikTok/ReelFarm title or unclear slideshow hook.
-
-## Measurement Requirement
-- Every approved draft must create or update a planned row in `memory/app-marketing/post-registry.jsonl`.
-- Discovery must reconcile planned rows to exact live post IDs before performance is judged.
-- If a post cannot be tracked, do not use it as evidence for future strategy.
-
-
-## Batch 3 Execution Queue — 2026-05-19
-
+## Active Execution Queue
 Tracking schema: `memory/app-marketing/experiment-tracking-schema.md`
 Queue file: `memory/app-marketing/experiment-queue-2026-05-19.jsonl`
 
@@ -69,3 +61,16 @@ Queue file: `memory/app-marketing/experiment-queue-2026-05-19.jsonl`
 3. `glow_productverdict_seo_batch1_20260519` — Product Verdict Card + 10 verdict pages before creator/writer outreach.
 
 Rule: no outreach/send task should be marked ready until its gate is satisfied and a source tag is assigned.
+
+## Do Not Test This Week
+- Vista relationship compatibility unless a real proof asset exists. Current winner is rating precision.
+- Glow TikTok/ReelFarm volume until account, assets, and metric path are confirmed.
+- Glow ingredient/dupe/concern pSEO pages until structured data supports unique safe pages.
+- Nash generic methodology explainers without a live ranking, model-update, or methodology-page launch angle.
+- Any “watch this” TikTok/ReelFarm title or unclear slideshow hook.
+
+## Measurement Requirement
+- Every approved draft must create or update a planned row in `memory/app-marketing/post-registry.jsonl` with source tag/UTM, creative type, target audience, CTA, run date, and attribution confidence when known.
+- Discovery must reconcile planned rows to exact live post IDs before performance is judged.
+- Record 24h/72h/7d result windows before scale/iterate/kill decisions.
+- If a post cannot be tracked, do not use it as evidence for future strategy.

@@ -85,3 +85,4 @@ Format: [DATE] [NICHE] — [observation]. (Source: prospect context)
 2026-05-20 — The outreach bottleneck is no longer research volume. The best fresh T2 prospects already have pain signals, but warm-up state and contact authority are deciding whether a clean M1 can go out.
 
 [2026-05-21] — Salesforce insurance outreach only sharpens when the signal names a concrete workflow owner. “They use Salesforce” is weak; “client-service hire owns inquiries, claims, renewals, onboarding, and Salesforce record accuracy” gives the Agentforce pitch a real first workflow.
+- **2026-05-22 — outreach dedup beats volume:** Several T2-looking prospects were already drafted, pitched, or warm-up-held. The highest-leverage overnight pipeline move was not more copy, it was protecting the sequence: skip any M1/M2/M3/Email Pivot record first, then only create warm-up tasks where the next action is genuinely missing.

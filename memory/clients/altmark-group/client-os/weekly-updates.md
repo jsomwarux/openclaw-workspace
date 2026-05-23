@@ -18,8 +18,8 @@
 - Installation milestone completed. Accepted workflows remain 0 confirmed in Eve memory until client acceptance wording is captured.
 
 ### Next Week's Plan
-- JT uses `proof-assets/friday-command-sheet-2026-05-22.md` to confirm post-install access + insurance workflow acceptance with Yair/Navid before mixing in infrastructure work.
-- Use the HTTPS/OAuth runbook only after access/admin ownership is clear: back up n8n, move it to a stable HTTPS endpoint, publish/configure the Google OAuth app, reconnect Google credentials, and smoke-test a non-sensitive Sheets/Drive workflow.
+- JT uses `proof-assets/weekend-command-sheet-2026-05-23.md` to confirm post-install access + insurance workflow acceptance with Yair/Navid before mixing in infrastructure work.
+- Use the HTTPS/OAuth runbook only after access/admin ownership and backup path are clear: back up n8n, move it to a stable HTTPS endpoint, publish/configure the Google OAuth app, reconnect Google credentials, and smoke-test a non-sensitive Sheets/Drive workflow.
 - Eve updates the proof package only from verified facts and keeps the Yair referral ask blocked until the gate clears.
 
 ### Client Decision / Input Needed

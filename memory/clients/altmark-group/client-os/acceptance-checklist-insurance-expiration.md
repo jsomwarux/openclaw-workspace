@@ -11,7 +11,7 @@
 ## Acceptance Criteria
 | Criterion | Evidence Required | Owner | Status | Notes |
 |---|---|---|---|---|
-| Dedicated PC/access path is confirmed | Handoff note or access confirmation | JT / Navid | In progress | Current MC task: lock PC handoff + acceptance/payment clarity. |
+| Dedicated PC/access path is confirmed | Handoff note or access confirmation | JT / Navid | In progress | Current MC task now points to `proof-assets/weekend-command-sheet-2026-05-23.md`: confirm access/admin owner before HTTPS/OAuth migration. |
 | Workflow is demonstrated or verified | Screenshot/log/demo note | JT / Yair/Navid | Not confirmed in Eve memory | Keep proof private until redacted. |
 | Logs/audit trail are visible | Redacted screenshot or run log reference | JT | Not confirmed in Eve memory | |
 | Open issues have owner/date | Dashboard/failure-log entry | JT | Not confirmed in Eve memory | |

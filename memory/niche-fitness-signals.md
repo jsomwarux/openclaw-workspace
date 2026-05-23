@@ -29,3 +29,6 @@ Last reset: 2026-05-01
 2026-05-21 [EMERGING] niche=insurance — Insurance AI search results continue showing underwriting/claims automation coverage, including NEXT/ZestyAI mention; no verified near-term action trigger found this run.
 2026-05-21 [EMERGING] niche=Salesforce Agentforce — Agentforce 360 pages emphasize Builder, Agent Script, Voice, Intelligent Context, hybrid reasoning, and model choice; appears previously announced/evergreen, not a new alert.
 2026-05-21 [CONFIRMS] niche=insurance — Gallagher Re Q1 2026 report says ~95% of Q1 InsurTech funding flowed to AI-focused companies; confirms strong insurance AI demand but no immediate JT action required.
+2026-05-22 [EMERGING] niche=ai-agents — Partial live scan found ongoing agentic AI infrastructure/governance coverage, but no verified new decision-today or high-severity update.
+2026-05-22 [EMERGING] niche=construction — Search results continue to show AI safety/training use cases in construction, but no new concrete buyer/action signal beyond already tracked themes.
+2026-05-22 [EMERGING] niche=enterprise-rag — Enterprise RAG/knowledge assistant comparison content remains active in May 2026, but no verified new platform release or JT-actionable change this run.
