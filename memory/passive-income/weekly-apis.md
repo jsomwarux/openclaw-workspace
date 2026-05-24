@@ -1,15 +1,12 @@
-# API Intelligence Report — 2026-05-16
+# API Intelligence Report — 2026-05-23
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-05-16 05:49:34
+Generated: 2026-05-23 05:48:40
 
-**Totals:** 0 new APIs | 0 PH tools | 5 HN stories | 0 discoveries
+**Totals:** 0 new APIs | 0 PH tools | 2 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **We Built SynapseKit: The Truth About Production LLM Frameworks** (score: 1) | [link](https://medium.com/@engineersofai/why-we-built-synapsekit-the-truth-about-production-llm-frameworks-94214cc3a172)
-- **Algorithms as a Tool of Thought (2021) [video]** (score: 1) | [link](https://www.youtube.com/watch?v=GZuZgCDql6g)
-- **Capital Must Seek Delight** (score: 1) | [link](https://contraptions.venkateshrao.com/p/capital-must-seek-delight)
-- **ToolEasy – Free Online Tools for Everyday Tasks** (score: 1) | [link](https://tooleasy.org/)
-- **Show HN: Orchid Mantis – PoC Zero Knowledge Proof of Exploit (ZKPoX) Framework** (score: 1) | [link](https://github.com/unprovable/orchidmantis)
+- **AMD's Lemonade SDK for AI Promotes macOS to GA Status, ROCm 7.13 Integrated** (score: 2) | [link](https://www.phoronix.com/news/Lemonade-SDK-10.5-Released)
+- **The Pkg.go.dev API** (score: 1) | [link](https://go.dev/blog/pkgsite-api)
 
 
 ## Scout Guidance

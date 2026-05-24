@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "Anthropic API new feature tool use 2026",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-23",
+  "results": [
+    {
+      "title": "Anthropic Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic",
+      "description": "Original source ... Anthropic launches <strong>Claude for Small Business</strong>, bringing Claude into tools like QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365 with ready-to-run workflows for payroll, invoicing, sales, marketing, and month-end close.",
+      "age": "2 days ago",
+      "page_age": "2026-05-22T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Claude Updates by Anthropic - May 2026 - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic/claude",
+      "description": "Claude releases the <strong>Claude Platform on AWS, bringing the full Claude API feature set to AWS customers with AWS authentication, billing, and commitment retirement</strong>. It adds managed agents, code execution, web tools, skills, prompt caching, and new models, all available today.",
+      "age": "2 days ago",
+      "page_age": "2026-05-22T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Claude Code Updates by Anthropic - May 2026 - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic/claude-code",
+      "description": "Fixed /model picker &quot;Default&quot; row not reflecting ANTHROPIC_DEFAULT_OPUS_MODEL/ANTHROPIC_DEFAULT_SONNET_MODEL overrides · Fixed spurious &quot;stream idle timeout&quot; 5 minutes after a response completed, caused by the watchdog timer not being cleared on stream cancellation · Fixed ToolSearch missing MCP tools that connected after session start in nonblocking mode · Fixed !exit / !quit in bash mode terminating the CLI instead of running as a shell command · Fixed images sent to newer models being resized to 2576px per side instead of the correct 2000px maximum",
+      "age": "2 days ago",
+      "page_age": "2026-05-22T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Claude Buddy: Anthropic April Fools Terminal Tamagotchi",
+      "url": "https://claudefa.st/blog/guide/mechanics/claude-buddy",
+      "description": "<strong>Claude Buddy</strong> is a virtual pet companion built into Claude Code, Anthropic&#x27;s terminal-based AI coding assistant. It works like a tamagotchi that lives in your terminal and reacts to your development sessions.",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T16:54:12",
+      "source": "Claude Fast"
+    },
+    {
+      "title": "Claude Code Changelog: All Release Notes (2026)",
+      "url": "https://claudefa.st/blog/guide/changelog",
+      "description": "Bare mode - Added --bare flag for scripted -p calls that skips hooks, LSP, plugin sync, and skill directory walks; requires ANTHROPIC_API_KEY or apiKeyHelper via --settings · Channels permission relay - Added --channels permission relay so channel servers can forward tool approval prompts to your phone",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T16:54:08",
+      "source": "Claude Fast"
+    }
+  ]
+}

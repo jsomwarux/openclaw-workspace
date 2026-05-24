@@ -41,7 +41,7 @@ Each contact should include:
 - **Relationship source:** Active client / paid implementation.
 - **Warmth:** 🚫 Blocked for referral ask until acceptance/payment/proof gates clear and current real-world touch outcome is captured.
 - **Last touch:** Unknown current client outcome. 2026-05-13 notes/assets were updated, but internal asset creation is not a touch.
-- **Next action:** JT confirms latest Altmark/Yair status: PC handoff/access path, insurance workflow acceptance/payment, proof capture, and whether the engagement feels complete/positive. Eve then updates gates before any Yair intro ask.
+- **Next action:** JT uses `memory/clients/altmark-group/proof-assets/monday-closeout-sheet-2026-05-25.md` if no weekend reply exists to confirm latest Altmark/Yair status: PC/admin access path, insurance workflow acceptance/payment, proof capture, and whether the engagement feels complete/positive. Eve then updates `memory/clients/altmark-group/proof-assets/referral-readiness-gate-2026-05-23.md` before any Yair intro ask.
 - **Referral gate:** Blocked — PC handoff/access path, insurance workflow acceptance/payment clarity, and redacted proof capture must be clean first.
 - **Fit criteria:** NYC family offices/property operators with manual insurance, rent delinquency, QuickBooks/local-file, reporting, deadline, or approval-heavy workflows.
 - **Privacy/proof constraints:** Do not name Altmark publicly, do not imply rent delinquency is live, do not claim ROI/hours saved/records tracked without measured evidence, no blast ask to all ~15 offices.

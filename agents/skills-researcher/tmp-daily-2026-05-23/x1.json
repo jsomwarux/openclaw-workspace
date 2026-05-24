@@ -1,0 +1,200 @@
+[
+  {
+    "id": "2055879931134144864",
+    "text": "Anthropic’s Head of Product just released a 28-minute deep dive on how real AI agents are built and deployed.\n\nIt covers:\n• prompt caching\n• tool orchestration\n• automated tool calling\n• context compaction\n• multi-agent strategies\n\nFree. Practical. More useful than most long https://t.co/Mu04NVGuHF",
+    "author_id": "1608443381038088192",
+    "username": "allen_explains",
+    "name": "Allen Braden",
+    "created_at": "2026-05-17T05:15:46.000Z",
+    "conversation_id": "2055879931134144864",
+    "metrics": {
+      "likes": 65,
+      "retweets": 28,
+      "replies": 8,
+      "quotes": 0,
+      "impressions": 3818,
+      "bookmarks": 64
+    },
+    "urls": [
+      "https://x.com/allen_explains/status/2055879931134144864/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/allen_explains/status/2055879931134144864"
+  },
+  {
+    "id": "2055813935438184664",
+    "text": "Just shipped btcrecover-skill — an open-source AI agent skill built on top of @YTCryptoGuide btcrecover tool. It turns the powerful but technical recovery engine into a simple, safe, natural-language experience for anyone.\n\nRepo: https://t.co/U3HUSEX0qB\nInspired by @cprkrn https://t.co/mxxaqpVUXO",
+    "author_id": "1222508435515826176",
+    "username": "IamWelma",
+    "name": "iamwelma",
+    "created_at": "2026-05-17T00:53:32.000Z",
+    "conversation_id": "2055813935438184664",
+    "metrics": {
+      "likes": 3,
+      "retweets": 1,
+      "replies": 4,
+      "quotes": 0,
+      "impressions": 231,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/welliv/btcrecover-skill",
+      "https://twitter.com/IamWelma/status/2055417736075919471"
+    ],
+    "mentions": [
+      "YTCryptoGuide",
+      "cprkrn"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/IamWelma/status/2055813935438184664"
+  },
+  {
+    "id": "2058075201238372393",
+    "text": "Built a production-style “NEXEAGENT Multi-Tool AI Agent” during my AI &amp; Automation Internship at @nexa_agent25 \n\nUsing #Python, #Flask, @reactjs, @GeminiApp  AI + Email Automation + AI Job Search\n\nGitHub: https://t.co/5qlqCxSLXe\n\n@MaryamArif118 @MehakAkram597 \n#AI #Python #React https://t.co/nseyunhf1o",
+    "author_id": "1951362746576150534",
+    "username": "YasirAwan4831",
+    "name": "Muhammad Yasir",
+    "created_at": "2026-05-23T06:38:59.000Z",
+    "conversation_id": "2058075201238372393",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 35,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/YasirAwan4831/nexeagent-multi-tool-ai-agent",
+      "https://x.com/YasirAwan4831/status/2058075201238372393/photo/1"
+    ],
+    "mentions": [
+      "nexa_agent25",
+      "reactjs",
+      "GeminiApp",
+      "MaryamArif118",
+      "MehakAkram597"
+    ],
+    "hashtags": [
+      "Python",
+      "Flask",
+      "AI",
+      "Python",
+      "React"
+    ],
+    "tweet_url": "https://x.com/YasirAwan4831/status/2058075201238372393"
+  },
+  {
+    "id": "2055965814847881647",
+    "text": "Imagine hiring a brilliant assistant.\n\nYou train them all day. \n\nThey do great work.\n\nThen they wake up the next morning with zero memory of who you are.\n\nThat's every AI tool you've been using.\n\nHermes Agent OS was built specifically to end that.\n\n→ Launched February 25th, https://t.co/ngQPKW2O3t",
+    "author_id": "1405031034",
+    "username": "JulianGoldieSEO",
+    "name": "Julian Goldie SEO",
+    "created_at": "2026-05-17T10:57:02.000Z",
+    "conversation_id": "2055965814847881647",
+    "metrics": {
+      "likes": 1,
+      "retweets": 1,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 482,
+      "bookmarks": 2
+    },
+    "urls": [
+      "https://x.com/JulianGoldieSEO/status/2055965814847881647/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/JulianGoldieSEO/status/2055965814847881647"
+  },
+  {
+    "id": "2056412055603990975",
+    "text": "Evening thought.\n\n'AI for SMEs' is a marketing line that's been around for 3 years. Nobody actually shipped it as an end-to-end company — they shipped tools, dashboards, chatbots.\n\nAgent Networks is the AI team, not the AI tool. There's a difference.\n\nhttps://t.co/YupY0Ogg2u",
+    "author_id": "101790250",
+    "username": "PaulGLomas",
+    "name": "Paul Lomas",
+    "created_at": "2026-05-18T16:30:15.000Z",
+    "conversation_id": "2056412055603990975",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 23,
+      "bookmarks": 0
+    },
+    "urls": [
+      "http://agentnetworks.co.uk"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/PaulGLomas/status/2056412055603990975"
+  },
+  {
+    "id": "2056268585350344970",
+    "text": "spent 2 years testing every AI tool, agent, automation, and voice system that launched.\n\nevery demo. every course. every \"how i built a $500k AI agency in 6 months\" video.\n\nhere's what none of those show you.\n\naccounting firms across the world are losing hundreds of thousands of",
+    "author_id": "1897908523226611715",
+    "username": "JoshJefferd",
+    "name": "Josh Jefferd",
+    "created_at": "2026-05-18T07:00:09.000Z",
+    "conversation_id": "2056268585350344970",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 29,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/JoshJefferd/status/2056268585350344970"
+  },
+  {
+    "id": "2057841976935092540",
+    "text": "Built an AI Data Analyst Agent that can analyze datasets using Python code execution.\n\nTech: Python, Google ADK, Gemini\n\nLearned: tool calling, agent workflows, data analysis automation\n\nGitHub: https://t.co/cRDjtOqHkJ https://t.co/D9o8lv3t6a",
+    "author_id": "1704863193615765504",
+    "username": "dheeraj_singh08",
+    "name": "Dheeraj",
+    "created_at": "2026-05-22T15:12:14.000Z",
+    "conversation_id": "2057841976935092540",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 47,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://lnkd.in/dhywjpmc",
+      "https://x.com/dheeraj_singh08/status/2057841976935092540/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/dheeraj_singh08/status/2057841976935092540"
+  },
+  {
+    "id": "2056471018265333931",
+    "text": "1/4 🧵\n\nJust shipped Intelligence Agent — a competitive intel tool for AI startups.\n\nTracks competitors across 4 signals, delivers daily reports to Telegram. No dashboards to check. No manual research.\n\nBuilt on our Forge stack: Puppeteer + SQLite + Express.",
+    "author_id": "2056381412186464256",
+    "username": "ForgeExecutive",
+    "name": "Forge Executive",
+    "created_at": "2026-05-18T20:24:32.000Z",
+    "conversation_id": "2056471018265333931",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 1,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/ForgeExecutive/status/2056471018265333931"
+  }
+]

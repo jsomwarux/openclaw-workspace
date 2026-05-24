@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "openclaw skill github new 2026",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-23",
+  "results": [
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "It&#x27;s <strong>designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search</strong>. It also now exposes a native OpenClaw package catalog for code plugins and bundle plugins.",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T14:55:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - openclaw/openclaw: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
+      "url": "https://github.com/openclaw/openclaw",
+      "description": "Preferred setup: <strong>run openclaw onboard in your terminal</strong>. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on macOS, Linux, and Windows (via ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T15:20:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Agents/tools: shorten built-in ... while preserving routing guardrails. Skills: <strong>add node inspector debugging, fused diagram generation, and throwaway spike workflow skills</strong>....",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T05:20:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "openclaw repositories · GitHub",
+      "url": "https://github.com/orgs/openclaw/repositories",
+      "description": "Useful skills for agents and claws. Python• · MIT License•00 forks•1212 stars•00 issues•00 pull requests•Updated · May 22, 2026 · May 22, 2026 · Public · Process-global proxy routing for Node.js · TypeScript• · MIT License•33 forks•1717 stars•00 issues•00 pull requests•Updated · May 22, 2026 · May 22, 2026 · Public · openclaw/Peekaboo’s past year of commit activity ·",
+      "age": "8 hours ago",
+      "page_age": "2026-05-23T07:20:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "OpenClaw Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/openclaw",
+      "description": "Gateway/skills: preflight remote macOS skill-bin refreshes with a WebSocket connectivity check so stale node sessions skip quickly instead of logging slow system.which timeout warnings. CLI/config: keep broken discovered plugins that are not referenced by active config from failing openclaw config validate, while preserving fatal errors for explicitly configured plugin entries. GitHub Copilot: drop unsafe native Responses reasoning replay items with non-replayable IDs before dispatch, preventing affected Copilot sessions from failing with invalid_request_body.",
+      "age": "2 days ago",
+      "page_age": "2026-05-22T00:00:00",
+      "source": "Releasebot"
+    }
+  ]
+}

@@ -131,5 +131,5 @@ Next unblocked JT action: review/post the AI Ops Teardown and log the posted URL
 ## 2026-05-19 Altmark post-install update
 - Dedicated workflow PC installed at Altmark office. This moves Altmark from handoff scheduling to post-install acceptance/payment/proof capture.
 - Nightly asset created: `memory/clients/altmark-group/proof-assets/post-install-acceptance-sheet-2026-05-19.md`.
-- Active JT-only action: confirm installed PC access, insurance workflow acceptance/live usefulness, open issues, insurance payment/final approval, rent-delinquency deposit timing, and clean sample report owner/date.
+- Active JT-only action: use `memory/clients/altmark-group/proof-assets/monday-closeout-sheet-2026-05-25.md` if no weekend reply exists to confirm installed PC access, insurance workflow acceptance/live usefulness, open issues, insurance payment/final approval, rent-delinquency deposit timing, and clean sample report owner/date.
 - Referral ask remains blocked until acceptance/payment clarity and redacted proof capture are complete.

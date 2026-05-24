@@ -33,7 +33,7 @@
 | Proof-safe reusable patterns | 0 | 2 logged | 1+ productized template | Up | Use synthetic/anonymized sample data. |
 
 ## Next 7 Days
-- Use `proof-assets/weekend-command-sheet-2026-05-23.md` as the current single-page execution sheet: confirm installed PC access/admin owner, verify insurance workflow/log visibility, capture acceptance wording/open issues, clarify insurance payment/approval status, and confirm rent delinquency deposit + clean sample report owner/date. Friday/Wed packs remain available for context but are no longer the primary sheet.
+- Use `proof-assets/monday-closeout-sheet-2026-05-25.md` as the next active closeout sheet if no weekend reply exists: confirm installed PC access/admin owner, verify insurance workflow/log visibility, capture acceptance wording/open issues, clarify insurance payment/approval status, and confirm rent delinquency deposit + clean sample report owner/date. `proof-assets/weekend-command-sheet-2026-05-23.md` remains the prior version; Friday/Wed packs remain available for context.
 - For infrastructure reliability, use `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md` only after PC/admin access and backup path are confirmed: back up n8n, choose stable HTTPS pattern, configure Google OAuth redirect, reconnect credentials, and run a non-sensitive smoke test.
 - Older prep remains available at `proof-assets/tuesday-execution-pack-2026-05-12.md`, `proof-assets/monday-command-sheet-2026-05-11.md`, and `proof-assets/tomorrow-execution-pack-2026-05-08.md`.
 
@@ -54,5 +54,5 @@
 - Rent delinquency workflow: paused by Altmark-side reporting/ledger cleanup, not rejection. Do not start build work until the data-readiness checklist is satisfied and 50% deposit timing is confirmed.
 - Data-readiness asset: `runbooks/rent-delinquency-data-readiness-checklist.md` is ready for Yair/Karen/Matt.
 - Proof asset: capture only after installed PC access + insurance workflow acceptance/payment clarity.
-- Referral path: ask Yair for 2–3 family-office intros after acceptance using proof-assets/yair-referral-ask-script.md.
+- Referral path: ask Yair for 2–3 family-office intros only after `proof-assets/referral-readiness-gate-2026-05-23.md` is green; then use `proof-assets/yair-referral-ask-script.md` / `memory/consulting/yair-family-office-intro-ask-2026-05-13.md`.
 

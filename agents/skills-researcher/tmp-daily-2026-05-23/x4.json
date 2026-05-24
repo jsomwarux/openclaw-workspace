@@ -1,0 +1,186 @@
+[
+  {
+    "id": "2057370813817311443",
+    "text": "TIL: .NET 11 Preview 4 ships an MCP Server template right in the SDK.\n\ndotnet new mcpserver\n\nScaffolds a Model Context Protocol server. No extra packages to find, no boilerplate to copy. Create and start adding your tools.",
+    "author_id": "31391457",
+    "username": "jfversluis",
+    "name": "Gerald Versluis",
+    "created_at": "2026-05-21T08:00:00.000Z",
+    "conversation_id": "2057370813817311443",
+    "metrics": {
+      "likes": 31,
+      "retweets": 1,
+      "replies": 4,
+      "quotes": 0,
+      "impressions": 1783,
+      "bookmarks": 4
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/jfversluis/status/2057370813817311443"
+  },
+  {
+    "id": "2055771356386521586",
+    "text": "The Solana Clawd MCP server v3 has been released.\n\n\"The MCP (Model Context Protocol) server is the central orchestration plane for the entire Solana Clawd framework. It transforms a monolithic tool server into a federated, plugin-driven command-and-control layer that discovers, https://t.co/74ORipoyYV",
+    "author_id": "1723999359635709952",
+    "username": "0rdlibrary",
+    "name": "8Bit🦞",
+    "created_at": "2026-05-16T22:04:20.000Z",
+    "conversation_id": "2055771356386521586",
+    "metrics": {
+      "likes": 2,
+      "retweets": 1,
+      "replies": 2,
+      "quotes": 0,
+      "impressions": 56,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/0rdlibrary/status/2055771356386521586/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/0rdlibrary/status/2055771356386521586"
+  },
+  {
+    "id": "2056799982947012719",
+    "text": "Black Forest Labs just released an official MCP server for FLUX, and the real story is not \"generate images inside Claude.\" It is that image generation is becoming a native step inside your working environment, not a detour to a separate tool.\n\nMCP (Model Context Protocol) lets https://t.co/yVs5gl9vde",
+    "author_id": "16922531",
+    "username": "adityarao310",
+    "name": "Aditya ⚡Rao",
+    "created_at": "2026-05-19T18:11:44.000Z",
+    "conversation_id": "2056799982947012719",
+    "metrics": {
+      "likes": 2,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 189,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/adityarao310/status/2056799982947012719/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/adityarao310/status/2056799982947012719"
+  },
+  {
+    "id": "2057118479505871133",
+    "text": "We just launched the first MCP server built for mobile game DTC monetization.\n\nFaster integrations. Less operational friction. More time building great game experiences\n\nMore: https://t.co/YqJrP8zAAz",
+    "author_id": "1949365002948788224",
+    "username": "appchargeHQ",
+    "name": "Appcharge",
+    "created_at": "2026-05-20T15:17:19.000Z",
+    "conversation_id": "2057118479505871133",
+    "metrics": {
+      "likes": 1,
+      "retweets": 1,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 16,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://www.appcharge.com/blog/introducing-the-appcharge-mcp-server"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/appchargeHQ/status/2057118479505871133"
+  },
+  {
+    "id": "2056671889498735028",
+    "text": "The Svelte team just launched official AI tools.\n\nThey built an MCP server, custom skills, and subagents to fix common LLM coding mistakes.\n\nIf you use AI to write Svelte, your setup is now outdated.\n\nhttps://t.co/iSx2qpUkXU\n\n@sveltejs #sveltekit",
+    "author_id": "1614212720806486017",
+    "username": "milonspace",
+    "name": "Milon",
+    "created_at": "2026-05-19T09:42:44.000Z",
+    "conversation_id": "2056671889498735028",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 30,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://svelte.dev/docs/ai/instructions"
+    ],
+    "mentions": [
+      "sveltejs"
+    ],
+    "hashtags": [
+      "sveltekit"
+    ],
+    "tweet_url": "https://x.com/milonspace/status/2056671889498735028"
+  },
+  {
+    "id": "2057006291017425155",
+    "text": "AI agents are getting memory. But if that local context or history is tampered with behind the scenes... how would you know? 🔍\n\nI built verifiable-memory-mcp: a local-first Model Context Protocol server that adds an integrity layer to agent memory. (1/3)",
+    "author_id": "1856983581609865216",
+    "username": "ManuelSen109",
+    "name": "manuel señorans",
+    "created_at": "2026-05-20T07:51:31.000Z",
+    "conversation_id": "2057006291017425155",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 2,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/ManuelSen109/status/2057006291017425155"
+  },
+  {
+    "id": "2056940981375664508",
+    "text": "New contender worth evaluating. Amazon Ads MCP - Model Context Protocol server for Amazon Advertising API\n\nhttps://t.co/M6A0Z3uzSs",
+    "author_id": "2842904704",
+    "username": "AIDailyGems",
+    "name": "AIDailyGems",
+    "created_at": "2026-05-20T03:32:00.000Z",
+    "conversation_id": "2056940981375664508",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 32,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/KuudoAI/amazon_ads_mcp"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AIDailyGems/status/2056940981375664508"
+  },
+  {
+    "id": "2056423595921076485",
+    "text": "TikTok Launches Ads MCP Server for AI Agents at the TikTok World 2026!\n\nTikTok is introducing the TikTok Ads Model Context Protocol (MCP) Server, a new interface that allows developers and advertisers to build AI agents and tools directly on top of the TikTok Ads ecosystem to https://t.co/FO0Xid9Rod",
+    "author_id": "31073789",
+    "username": "udaraumd",
+    "name": "Udara Dharmasena",
+    "created_at": "2026-05-18T17:16:06.000Z",
+    "conversation_id": "2056423595921076485",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 1,
+      "impressions": 202,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/udaraumd/status/2056423595921076485/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/udaraumd/status/2056423595921076485"
+  }
+]

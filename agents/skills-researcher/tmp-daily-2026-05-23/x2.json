@@ -1,0 +1,190 @@
+[
+  {
+    "id": "2056373708382486994",
+    "text": "big week for AI. (what else is new)\n\npotential model releases from:\n\n&gt; Google: Gemini 3.2 at Google I/O tomorrow\n&gt; OpenAI: GPT-5.6 reportedly being A/B tested\n&gt; Anthropic: Claude Dev day in London. Opus 5?\n\ncould get new models from the big 3 in the same week. https://t.co/WWLTcZI7Qa",
+    "author_id": "1963466798",
+    "username": "daniel_mac8",
+    "name": "Dan McAteer",
+    "created_at": "2026-05-18T13:57:52.000Z",
+    "conversation_id": "2056373708382486994",
+    "metrics": {
+      "likes": 102,
+      "retweets": 12,
+      "replies": 13,
+      "quotes": 2,
+      "impressions": 24927,
+      "bookmarks": 16
+    },
+    "urls": [
+      "https://x.com/daniel_mac8/status/2056373708382486994/photo/1",
+      "https://x.com/daniel_mac8/status/2056373708382486994/photo/1",
+      "https://x.com/daniel_mac8/status/2056373708382486994/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/daniel_mac8/status/2056373708382486994"
+  },
+  {
+    "id": "2055814930847404450",
+    "text": "AI race heating up! Google's new Gemini model rumored to rival GPT 5.5. Can they stay competitive against OpenAI, Anthropic, and Meta? #AI #TechNews #Google #OpenAI #DeepMind https://t.co/H0XpaJaJVA",
+    "author_id": "2047374487486955520",
+    "username": "JJXeron",
+    "name": "JJ Xeron",
+    "created_at": "2026-05-17T00:57:29.000Z",
+    "conversation_id": "2055814930847404450",
+    "metrics": {
+      "likes": 2,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 51,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/JJXeron/status/2055814930847404450/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "AI",
+      "TechNews",
+      "Google",
+      "OpenAI",
+      "DeepMind"
+    ],
+    "tweet_url": "https://x.com/JJXeron/status/2055814930847404450"
+  },
+  {
+    "id": "2058201295564226698",
+    "text": "Sonnet 5.\n\nGPT 5.6.\n\nGemini 3.5.\n\nAll rumored.\n\nNone confirmed.\n\nBut the signals are getting harder to ignore.\n\nOpenAI breadcrumbs.\n\nAnthropic “Fenck” leaks.\n\nGoogle teasing a new Gemini model “very very soon.”\n\nIf these three drop close together, the AI workflow game changes https://t.co/bgxJQXT777",
+    "author_id": "1405031034",
+    "username": "JulianGoldieSEO",
+    "name": "Julian Goldie SEO",
+    "created_at": "2026-05-23T15:00:03.000Z",
+    "conversation_id": "2058201295564226698",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 119,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/JulianGoldieSEO/status/2058201295564226698/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/JulianGoldieSEO/status/2058201295564226698"
+  },
+  {
+    "id": "2056506209356640624",
+    "text": "Anthropic has acquired Stainless the dev tools startup used by OpenAI, Google, and Cloudflare. They make banger Software Development Kits and design  API to automatically update across all infra Stainless has built out with its SDKs\n\nhttps://t.co/jWfonlMRoH via @techcrunch",
+    "author_id": "1459351923065245699",
+    "username": "beenwilli",
+    "name": "Ben",
+    "created_at": "2026-05-18T22:44:23.000Z",
+    "conversation_id": "2056506209356640624",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 27,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/"
+    ],
+    "mentions": [
+      "TechCrunch"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/beenwilli/status/2056506209356640624"
+  },
+  {
+    "id": "2058107727348474070",
+    "text": "This project now has a multi-model architecture review board:\n\n- Anthropic handling implementation rigor\n- Google handling ontology and systems philosophy\n- OpenAI somewhere in the middle trying to stop the thing from accidentally becoming a new branch of epistemology research",
+    "author_id": "2036246706954907648",
+    "username": "topicspace1",
+    "name": "topicspace",
+    "created_at": "2026-05-23T08:48:14.000Z",
+    "conversation_id": "2058107727348474070",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 6,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/topicspace1/status/2058107727348474070"
+  },
+  {
+    "id": "2057134896187863399",
+    "text": "Google has unveiled the Gemini 3.5 family and a new AI video-generation model called Omni at Google I/O 2026, deepening the AI race with OpenAI and Anthropic. https://t.co/4kNUXJOkMB",
+    "author_id": "2285536255",
+    "username": "MarketingEdgeM",
+    "name": "Marketing Edge",
+    "created_at": "2026-05-20T16:22:33.000Z",
+    "conversation_id": "2057134896187863399",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 46,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/MarketingEdgeM/status/2057134896187863399/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/MarketingEdgeM/status/2057134896187863399"
+  },
+  {
+    "id": "2056797140295340161",
+    "text": "This week in AI focused on cybersecurity initiatives, legal resolutions and new model deployments from OpenAI, Anthropic and Google. ↓",
+    "author_id": "1273173925",
+    "username": "thecircuitry_",
+    "name": "The Circuitry",
+    "created_at": "2026-05-19T18:00:26.000Z",
+    "conversation_id": "2056797140295340161",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 12,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/thecircuitry_/status/2056797140295340161"
+  },
+  {
+    "id": "2057488591044141180",
+    "text": "Google just shipped a new model aimed at Anthropic and OpenAI: better coding, more autonomous, cheaper.\n\nThe model wars are over. The agent wars are the new battlefield, and coding is the beachhead everyone is fighting for.\n\nWho's actually winning your terminal?",
+    "author_id": "1444928806003699716",
+    "username": "alexlarchee",
+    "name": "Alex Larcheveque",
+    "created_at": "2026-05-21T15:48:01.000Z",
+    "conversation_id": "2057488591044141180",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 14,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/alexlarchee/status/2057488591044141180"
+  }
+]

@@ -1,18 +1,23 @@
 {
   "started": "2026-03-02",
-  "current_day": 69,
   "current_week": 12,
-  "streak": 41,
-  "longest_streak": 42,
-  "lesson_streak": 42,
-  "total_lessons_completed": 21,
-  "last_lesson_date": "2026-05-22",
+  "current_day": 70,
+  "last_lesson_date": "2026-05-23",
   "last_lesson_complete": false,
+  "lesson_streak": 43,
+  "streak": 42,
+  "longest_streak": 43,
+  "total_lessons_completed": 21,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
   "focus": "speaking and listening, not writing",
-  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
   "goal": "Light casual conversation with girlfriend and her family",
+  "use_cases": [
+    "restaurants",
+    "directions",
+    "small talk",
+    "survival Spanish"
+  ],
   "strong_areas": [
     "basic greetings",
     "verb intuition (me llamo, estoy)",
@@ -25,14 +30,9 @@
     "no problemo habit",
     "e/y confusion (Italian vs Spanish)"
   ],
-  "use_cases": [
-    "restaurants",
-    "directions",
-    "small talk",
-    "survival Spanish"
-  ],
-  "real_world_challenges_completed": [],
+  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
   "real_world_challenges_unlocked": 2,
+  "real_world_challenges_completed": [],
   "weekly_scores": [
     {
       "week": 2,
@@ -45,6 +45,6 @@
       "grade": "B+"
     }
   ],
-  "notes": "Delivered Week 12, Fri (Expressing varying needs). Current week matches calendar. Streak incremented.",
-  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases."
+  "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases.",
+  "notes": "Delivered Week 12, Sat (Weekend planning). Corrected longest_streak to match lesson_streak."
 }

@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "clawhub new skill featured",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-23",
+  "results": [
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "ClawHub · Vision · Docs · Contributing · Discord · Browse skills + render their SKILL.md. Publish new skill versions with changelogs + tags (including latest).",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T14:55:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - garrytan/gbrain: Garry's Opinionated OpenClaw/Hermes Agent Brain · GitHub",
+      "url": "https://github.com/garrytan/gbrain",
+      "description": "That&#x27;s it. Your agent picks up 43 skills (<strong>signal detection, brain-ops, ingest, enrich, citation-fixer, daily-task-manager, cron-scheduler, eval framework, and 35 more</strong>). Routing lives in skills/RESOLVER.md — the agent reads it once per request, ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T14:10:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - openclaw/openclaw: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
+      "url": "https://github.com/openclaw/openclaw",
+      "description": "Onboarding + skills — onboarding-driven setup with bundled/managed/workspace skills.",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T15:20:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - mvanhorn/last30days-skill: AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary · GitHub",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "description": "clawhub install last30days-official · git clone https://github.com/mvanhorn/last30days-skill.git ln -s &quot;$(pwd)/last30days-skill/skills/last30days&quot; ~/.claude/skills/last30days · The symlink keeps the install in sync with your working tree as you edit — no re-copy needed. For claude.ai, build the .skill file from source: bash skills/last30days/scripts/build-skill.sh produces dist/last30days.skill. Reddit (with comments), Hacker News, Polymarket, and GitHub work immediately.",
+      "age": "18 hours ago",
+      "page_age": "2026-05-22T21:15:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "Agent Skills Marketplace | Claude, Codex & ChatGPT Skills · LobeHub",
+      "url": "https://lobehub.com/skills",
+      "description": "Credits: Original skill by @blader - https://github.com/blader/humanizer ... Delegate coding tasks to Codex, Claude Code, or Pi agents via a background process. Use when: (1) building or creating new features or apps, (2) reviewing PRs (spawn in a temp dir), (3) refactoring large codebases, (4) iterative coding that requires file exploration.",
+      "age": "4 hours ago",
+      "page_age": "2026-05-23T11:08:37",
+      "source": "LobeHub"
+    }
+  ]
+}

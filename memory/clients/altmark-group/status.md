@@ -1,6 +1,6 @@
 # Altmark Group — Client Status
 
-Last updated: 2026-05-22
+Last updated: 2026-05-23
 
 ## Client
 - Company: Altmark Group
@@ -80,6 +80,7 @@ Known active/current workflows from JT update:
 - Once ledger/report cleanup is ready and deposit arrives, begin rent delinquency workflow.
 - 2026-05-22 Friday command sheet prepared: `proof-assets/friday-command-sheet-2026-05-22.md`. Use it to separate acceptance/payment proof capture from the HTTPS/Google OAuth reliability work.
 - 2026-05-23 weekend command sheet prepared: `proof-assets/weekend-command-sheet-2026-05-23.md`. Treat acceptance/payment/access confirmation as the top move before HTTPS/OAuth migration.
+- 2026-05-23 nightly closeout added Monday execution assets: `proof-assets/monday-closeout-sheet-2026-05-25.md` and `proof-assets/referral-readiness-gate-2026-05-23.md`. Use the Monday sheet as the next active closeout if no weekend reply exists.
 - Capture proof asset after PC delivery + workflow acceptance: "local-first automation infrastructure for property/operations team with insurance-expiration workflow live."
 
 ## Strategic Expansion Opportunity

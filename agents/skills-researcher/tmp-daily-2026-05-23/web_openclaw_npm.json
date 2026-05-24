@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "openclaw npm package new",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-23",
+  "results": [
+    {
+      "title": "OpenClaw Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/openclaw",
+      "description": "npm package: https://www.npmjs.com/package/openclaw/v/2026.5.20-beta.2",
+      "age": "2 days ago",
+      "page_age": "2026-05-22T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Dependencies: update @openclaw/proxyline to 0.3.3. Dependencies: update Pi packages to 0.75.1 and raise the minimum supported Node.js 22 line to 22.19.",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T05:20:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - openclaw/openclaw: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
+      "url": "https://github.com/openclaw/openclaw",
+      "description": "Pairs as a WS node via device pairing (openclaw devices ...). Exposes Connect/Chat/Voice tabs plus Canvas, Camera, Screen capture, and Android device command families. Runbook: Android connect. Use pnpm for source checkouts. The repository is a pnpm workspace, and bundled plugins load from extensions/* during development so their package-local dependencies and your edits are used directly. Plain npm ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T15:20:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "openclaw | Snyk",
+      "url": "https://security.snyk.io/package/npm/openclaw",
+      "description": "We found that openclaw demonstrates a positive version release cadence with at least one new version released in the past 3 months. As a healthy sign for on-going project maintenance, we found that the GitHub repository had at least 1 pull request or issue interacted with by the community. ... The npm package openclaw receives a total of 777,316 downloads a week.",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T05:20:03",
+      "source": "Snyk"
+    },
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "It&#x27;s designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search. It also now exposes a native OpenClaw package catalog for code plugins and bundle plugins. ClawHub · Vision · Docs · Contributing · Discord · Browse skills + render their SKILL.md. Publish new skill versions with changelogs + tags (including latest).",
+      "age": "1 day ago",
+      "page_age": "2026-05-22T14:55:02",
+      "source": "GitHub"
+    }
+  ]
+}

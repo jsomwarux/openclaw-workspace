@@ -86,3 +86,5 @@ Format: [DATE] [NICHE] — [observation]. (Source: prospect context)
 
 [2026-05-21] — Salesforce insurance outreach only sharpens when the signal names a concrete workflow owner. “They use Salesforce” is weak; “client-service hire owns inquiries, claims, renewals, onboarding, and Salesforce record accuracy” gives the Agentforce pitch a real first workflow.
 - **2026-05-22 — outreach dedup beats volume:** Several T2-looking prospects were already drafted, pitched, or warm-up-held. The highest-leverage overnight pipeline move was not more copy, it was protecting the sequence: skip any M1/M2/M3/Email Pivot record first, then only create warm-up tasks where the next action is genuinely missing.
+
+- **2026-05-23 — Insurance T3 verification pattern:** Insurance prospects can look Agentforce-ready from workflow complexity alone, but Salesforce evidence is the gating signal. Foa, Hotaling, and Brownyard all passed the <200 employee cap, yet stayed HOLD/T3 because public CRM proof was missing. Treat employee cap and CRM proof as separate gates: size qualifies the account, CRM evidence qualifies the pitch.
