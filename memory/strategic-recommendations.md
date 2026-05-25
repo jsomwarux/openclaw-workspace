@@ -50,3 +50,9 @@
 **Recommendation:** Spend the first consulting block this week cleaning the T2/T3 outreach queue: confirm buyer/channel state, close duplicate review tasks, and only draft/send M1s where the buyer and channel are verified.
 **Why now:** This week's pipeline observations show the bottleneck is no longer prospect discovery or draft creation. It is warm-up state, duplicate task hygiene, and unconfirmed LinkedIn buyers, and forcing InMails here burns credits before the trust layer exists.
 **Status:** open
+
+### 2026-05-24 — Clean Buyer-Channel State Before More Outreach
+**Recommendation:** Spend this week cleaning buyer/channel state for the warmest T2 prospects — confirmed owner/operator, channel, prior task status, and one next action — before creating more M1 drafts.
+**Why now:** Every consulting observation this week pointed to the same bottleneck: good companies exist, but unvalidated buyers and duplicate/out-of-sequence tasks turn outreach into shelfware and burn InMails.
+**Status:** open
+

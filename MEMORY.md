@@ -97,7 +97,8 @@
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM ET.
 - One-shot reminder active: 2026-05-15 3PM ET (`0f4d8f45`) to check after Yair/Matt Thu/Fri rent-delinquency discussion; suggest light follow-up only if no update.
 - `critical-files-integrity` (`ee357abb`) runs daily 9AM ET, timeout 180s; run script first, inspect/edit only on non-zero exit.
-- Active cron responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
+- Active cron count: 53 as of 2026-05-24 after adding a temporary reddit rerun check plus passive-income strategist delivery guard. Active cron responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
+- 2026-05-24: Passive-income strategist hardened after silent miss. Guard cron `e7d45070` runs Sundays 3:20PM ET and executes `scripts/passive_income_strategist_delivery_guard.py --send` to verify report + Telegram delivery, resend digest, or alert.
 - 2026-05-12: Mission Control North Star audit runs in Morning Brief + heartbeat via `scripts/mission_control_north_star_audit.py`.
 - 2026-05-13: App Marketing OS gained autonomous MC task generation via `scripts/app_marketing_task_generator.py`; weekly reviews must read self-improvement rules, assign states, and rerun generator after metrics refresh.
 - 2026-05-14: App Marketing OS web analytics integrated with GA4/Search Console OAuth via `scripts/app_marketing_connectors/web_metrics.py`. Nash + Glow GA4/Search Console are live; jtsomwaru.com GA4/Search Console live. Ref: `memory/app-marketing/ga4-integration-reference.md`.

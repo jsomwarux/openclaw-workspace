@@ -7,22 +7,34 @@
 - Friday: tactical compressed follow-up if new angle exists.
 
 ## Current Bundle
+### 2026-05-24 — Family Office Cash Timing Approval Queue
+Status: ready to review/post; not posted as of 2026-05-24 weekly run.
+Recommended first platform: LinkedIn.
+Local draft: `memory/content/bank/2026-05-24/ai-ops-teardown-family-office-cash-timing-approval-queue.md`
+Supporting teardown: `memory/consulting/ai-ops-teardowns/2026-05-24-family-office-cash-timing-approval-queue.md`
+Build tier: Tier 2 now; Tier 3 candidate gated until the teardown is posted and produces operator reply/DM signal, or JT explicitly prioritizes a synthetic-data build.
+JT action: review LinkedIn draft, edit if desired, post or explicitly defer, then send URL back if posted. Mission Control task: `j5758pva0bw51gtx17pjdaxcmn86we3s`.
+Proof-safe framing: category/hypothetical language only; no private client names, no fake client claims, no ROI/hours-saved/client-acceptance claims, no autonomous financial action.
+Why this matters: shows buyer-safe implementation judgment for family-office/property-finance teams by putting cash timing, entity mapping, approval thresholds, and audit trails before any AI-assisted finance workflow.
+Posted URL capture: append exactly one JSONL record to `memory/content/posted-log.jsonl` only after a public URL exists. Required fields: `date`, `platform`, `title`, `source`, `url`, `posted: true`, `cta`, `reply_route`.
+Reply/DM routing: route relevant property/family-office replies to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`.
+Defer capture: if JT defers, update this calendar with reason + next review date; do not mark posted.
+
+## Prior Unposted Bundle
 ### 2026-05-17 — Rent Delinquency Data Readiness Queue
-Status: ready to review/post; not posted as of 2026-05-17 weekly run.
+Status: ready to review/post; not posted as of 2026-05-24 weekly run. Preserved as alternate if JT prefers tenant-ledger data readiness over cash-timing approval queue.
 Recommended first platform: LinkedIn.
 Local draft: `memory/content/bank/2026-05-17/ai-ops-teardown-rent-delinquency-readiness.md`
 Supporting teardown: `memory/consulting/ai-ops-teardowns/2026-05-17-rent-delinquency-readiness.md`
 Build tier: Tier 2 now; Tier 3 gated until the teardown is posted and produces operator reply/DM signal, or JT explicitly prioritizes a synthetic-data build.
-JT action: review LinkedIn draft, edit if desired, post or explicitly defer, then send URL back if posted. Mission Control task: `j5758pva0bw51gtx17pjdaxcmn86we3s`.
 Proof-safe framing: category/hypothetical language only; no private client names, no fake client claims, no ROI/hours-saved/collection-rate/client-acceptance claims.
 Why this matters: shows buyer-safe implementation judgment for property/family-office teams by validating delinquency reports and approval boundaries before tenant-facing automation.
 Posted URL capture: append exactly one JSONL record to `memory/content/posted-log.jsonl` only after a public URL exists. Required fields: `date`, `platform`, `title`, `source`, `url`, `posted: true`, `cta`, `reply_route`.
 Reply/DM routing: route relevant property/family-office replies to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`.
 Defer capture: if JT defers, update this calendar with reason + next review date; do not mark posted.
 
-## Prior Unposted Bundle
 ### 2026-05-10 — Property Insurance Expiration Exception Layer
-Status: ready to review/post; not posted as of 2026-05-17 weekly run. Do not create duplicate review/post tasks; the active MC review/post task now points to the latest rent-delinquency draft while preserving this as an alternate if JT prefers the cleaner insurance-expiration angle.
+Status: ready to review/post; not posted as of 2026-05-24 weekly run. Do not create duplicate review/post tasks; the active MC review/post task now points to the latest cash-timing draft while preserving this as an alternate if JT prefers the cleaner insurance-expiration angle.
 Recommended first platform: LinkedIn.
 Local draft: `memory/content/bank/2026-05-10/ai-ops-teardown-property-insurance-expiration.md`
 Monday delivery bundle: `memory/consulting/ai-ops-teardowns/monday-delivery-bundle-2026-05-11.md`
@@ -34,12 +46,12 @@ Posted URL capture: append exactly one JSONL record to `memory/content/posted-lo
 Defer capture: if JT defers, update this calendar with reason + next review date; do not mark posted.
 
 ## Monday Morning Delivery Checklist
-- Surface the current 2026-05-17 rent delinquency readiness draft to JT during the first active morning check-in.
+- Surface the current 2026-05-24 cash timing approval queue draft to JT during the first active morning check-in.
 - If JT posts it, capture the URL and append to `memory/content/posted-log.jsonl`.
 - If JT defers it, update this calendar with defer reason + next review date and keep the MC task open or replace it with one concrete next action.
 - Do not build any Tier 3 n8n template unless a posted teardown produces operator reply/DM signal or JT explicitly prioritizes the build.
 
 ## Next Planned Bundles
-1. Construction Field Note → Owner Update — drafted 2026-05-10; use as X-first test.
-2. Wholesale Order Status Exception Desk — Tier 2 mock workflow.
-3. Family Office Cash Timing / Overdraft Risk Queue — approval-only content; use after property workflow posts have been tested.
+1. Wholesale Order Status Exception Desk — Tier 2 mock workflow.
+2. Construction Field Note → Owner Update — drafted 2026-05-10; use as X-first test.
+3. Skilled Trades Quote Follow-Up Queue — use only if a fresh buyer signal appears.

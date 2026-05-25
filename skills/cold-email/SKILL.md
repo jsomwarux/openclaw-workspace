@@ -371,3 +371,9 @@ Always produce:
 - **Agent accountability:** New AI-agent product signals are moving toward named AI seats, action history, override, and escalation. When relevant, frame JT's edge as "the workflow includes the audit trail and human handoff," not "the agent runs autonomously."
 - **Agentforce Operations:** Salesforce's back-office Agentforce push is useful in warm follow-ups for Salesforce-adjacent prospects. Keep the copy workflow-specific: one intake, status-routing, renewal-prep, exception-review, or document-follow-up cycle, not broad transformation.
 - **Outreach sequencing:** This week's pipeline evidence says the bottleneck is buyer/channel state, not more M1 drafts. Before writing a new cold message, confirm the buyer, channel, and prior task status so JT does not burn InMails on unvalidated contacts.
+
+
+### Weekly urgency angles — added 2026-05-24
+- **Insurance:** ReSource Pro reports 98% of insurance agencies are planning AI investments in 2026. Use this as warm-follow-up timing proof, not a cold M1 opener. The sharper pitch is still stack-qualified: if Salesforce/Novidea/Salesforce-native workflow evidence exists, propose one auditable cycle — claims intake, renewal prep, broker servicing, or documentation follow-up.
+- **Property management:** Inspection and maintenance findings still fail at the handoff into tracked work. For AppFolio/Buildium/Rent Manager prospects, lead with exception visibility: inspection notes → accountable ticket/owner/vendor queue → human approval → tenant/owner update.
+- **Construction/skilled trades:** This week's construction AI signal is not a new shiny tool; it is field adoption pressure. Keep outreach grounded in jobsite/admin handoffs, safety/document workflows, estimate/doc extraction, and crew training.

@@ -98,6 +98,15 @@ SPECULATIVE_PRODUCT_PATTERNS = [
     "Action Arena",
 ]
 
+# Tasks that should exist as a single active card at a time. Recurring tasks can
+# be recreated after completion, but two active copies split attention and make
+# the North Star layer look noisier than it is.
+SINGLE_ACTIVE_TITLE_PATTERNS = [
+    "Complete weekly unemployment certification",
+    "Strategy: Clean buyer/channel state before new outreach",
+    "Strategy: Clean Buyer-Channel State Before More Outreach",
+]
+
 
 def fetch_tasks() -> list[dict[str, Any]]:
     with urllib.request.urlopen(BASE, timeout=15) as resp:
@@ -263,6 +272,61 @@ def desired_for(task: dict[str, Any]) -> tuple[dict[str, Any] | None, str | None
     return None, None
 
 
+def canonical_duplicate_key(title: str) -> str | None:
+    """Return a normalized duplicate key for active one-card task families."""
+    lower = title.lower()
+    if "complete weekly unemployment certification" in lower:
+        return "weekly_unemployment_certification"
+    if "clean buyer" in lower and "channel state" in lower and "outreach" in lower:
+        return "clean_buyer_channel_state"
+    return None
+
+
+def dedupe_active_tasks(tasks: list[dict[str, Any]], dry_run: bool) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Archive duplicate active recurring tasks, keeping the newest active copy.
+
+    This is deliberately narrow and only applies to explicit one-card task
+    families. It avoids broad title fuzzy matching so the audit cannot archive
+    unrelated work that merely sounds similar.
+    """
+    active = [t for t in tasks if t.get("status") not in {"done", "archived"}]
+    buckets: dict[str, list[dict[str, Any]]] = {}
+    for task in active:
+        key = canonical_duplicate_key(str(task.get("title") or ""))
+        if key:
+            buckets.setdefault(key, []).append(task)
+
+    changes: list[dict[str, Any]] = []
+    errors: list[dict[str, Any]] = []
+    for key, group in buckets.items():
+        if len(group) < 2:
+            continue
+        # Keep newest task; if timestamps tie, keep the one with latest update.
+        group.sort(key=lambda t: (t.get("createdAt") or 0, t.get("updatedAt") or 0), reverse=True)
+        keep = group[0]
+        for dup in group[1:]:
+            note = (
+                f"Archived by daily North Star audit: duplicate active `{key}` task. "
+                f"Current active card kept: {keep.get('_id')} — {keep.get('title')}."
+            )
+            desc = append_note(str(dup.get("description") or ""), note)
+            desired = {"status": "archived", "description": desc}
+            ok, detail = patch_task(str(dup.get("_id")), desired, dry_run)
+            entry = {
+                "id": dup.get("_id"),
+                "title": dup.get("title"),
+                "reason": "archive duplicate active recurring task",
+                "from": {"status": dup.get("status"), "kept": keep.get("_id")},
+                "to": {"status": "archived"},
+                "status": detail,
+            }
+            if ok:
+                changes.append(entry)
+            else:
+                errors.append(entry)
+    return changes, errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
@@ -293,6 +357,10 @@ def main() -> int:
             changes.append(entry)
         else:
             errors.append(entry)
+
+    duplicate_changes, duplicate_errors = dedupe_active_tasks(tasks, args.dry_run)
+    changes.extend(duplicate_changes)
+    errors.extend(duplicate_errors)
 
     after = fetch_tasks() if not args.dry_run else tasks
     active_after = [t for t in after if t.get("status") not in {"done", "archived"}]

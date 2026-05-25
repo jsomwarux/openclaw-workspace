@@ -62,5 +62,20 @@ Anonymized default only:
 
 Do not claim hours saved, ROI, named Altmark proof, tenant outreach automation, or client quote unless explicitly captured and permitted.
 
+## Monday Morning Execution Order
+1. **Send/confirm the four-point closeout first.** Do not bundle HTTPS/OAuth, referral asks, or future workflow scoping into the same ask.
+2. **If Yair/Navid replies with clean acceptance/access/payment facts:** update Client OS, then decide whether migration can start.
+3. **If the reply is partial:** log the missing fields and ask one targeted follow-up. Do not infer acceptance from silence.
+4. **If no reply:** keep the JT task open; Eve should not start reliability migration without access/admin owner + backup path.
+
+## Eve Update Targets After Reply
+- `client-os/dashboard.md`
+- `client-os/weekly-updates.md`
+- `client-os/acceptance-checklist-insurance-expiration.md`
+- `client-os/decision-log.md` if a client/commercial decision is confirmed
+- `client-os/failure-log.md` only if an issue or broken workflow is reported
+- `memory/networking/contacts.md` Yair ledger
+- `proof-assets/referral-readiness-gate-2026-05-23.md`
+
 ## Done State
 This sheet is complete when the four confirmation points are recorded in Client OS and Mission Control no longer has infrastructure migration ranked above acceptance/payment clarity.

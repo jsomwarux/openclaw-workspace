@@ -19,12 +19,25 @@ Purpose: make Altmark's local-first automation environment reliable enough for G
 - Keep local-first posture: sensitive Altmark files stay on Altmark-controlled machine/network unless explicitly approved.
 - If a firewall/router/domain decision is needed, pause and ask JT/client rather than guessing.
 
+## Commercial Gate Before Any Migration
+This migration is blocked until the Monday closeout gate is at least partially clear.
+
+Minimum required before touching infrastructure:
+1. Installed PC/admin access owner is known.
+2. Backup path is known and JT can access the environment enough to export workflows/data.
+3. Insurance workflow acceptance/open-issue status has been requested separately from the migration.
+4. Any payment/deposit facts received are logged privately; missing facts are not guessed.
+
+Reason: HTTPS/OAuth is reliability work. Acceptance/payment/access clarity is the revenue/proof gate. Do not let infrastructure work become the reason the commercial closeout stays vague.
+
 ## Preflight Checklist
 Fill before changing anything.
 
 | Item | Status | Notes |
 |---|---|---|
-| Can JT access the Altmark workflow PC/admin session? | Unknown | Needed before migration. |
+| Monday closeout sent/answered or explicitly attempted | Unknown | Use `proof-assets/monday-closeout-sheet-2026-05-25.md`. |
+| Can JT access the Altmark workflow PC/admin session? | Unknown | Hard gate before migration. |
+| Backup path confirmed | Unknown | Hard gate before migration. |
 | Current n8n URL and port known | Unknown | Capture privately, do not paste secrets. |
 | Current n8n data directory backed up | Unknown | Backup before URL/credential changes. |
 | Current workflow export created | Unknown | Export active workflows before migration. |

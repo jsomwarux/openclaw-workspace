@@ -1,18 +1,18 @@
 # Weekly Intel Brief — for Content Generation
 > Written by Weekly Intelligence Synthesis. Read by content-generate-linkedin and content-generate-x Monday morning.
 
-**Week of:** 2026-05-11
+**Week of:** 2026-05-18
 
 ## Top Niche Signals This Week
-1. [property management] A property-management operator reported EliseAI rolling across 3,000 units with a plan for 8,000 more, which validates PM AI moving into portfolio-scale operations while leaving room for exception dashboards around AppFolio/Buildium/Rent Manager.
-2. [wholesale/PM] Pipeline observations this week show the same operating gap across distribution and property management: portals/catalogs capture work, but stalled quotes, delivery issues, vendor follow-ups, and maintenance exceptions still rely on someone noticing.
-3. [insurance] Insurance prospects only become strong Agentforce targets when the stack evidence is visible: Salesforce ownership, Novidea, Salesforce-based insurance platforms, or a clear CRM/AMS handoff.
+1. [property-management] PM teams are not short on portals; the new bottleneck is turning inspection findings, maintenance notes, and vendor follow-ups into accountable work queues.
+2. [insurance] Insurance agencies are moving into 2026 AI investment mode, but JT's best wedge is still stack-qualified Salesforce/Novidea workflow automation with auditability.
+3. [construction] Construction AI coverage stayed focused on safety, training, project data, and skilled-trades labor pressure, so the credible SMB angle is field workflow mapping before tool rollout.
 
 ## Strategic Theme This Week
-The market is validating AI workflows, but JT's immediate leverage is operational trust: verified buyer channels, exception visibility, audit trails, and human handoffs beat more generic AI outreach.
+The market is no longer debating whether AI belongs in operations; the edge is proving the buyer, the workflow owner, and the handoff before pitching an automation.
 
 ## Competitive Developments
-Salesforce Agentforce Operations reinforces the back-office workflow wedge: pitch one measurable cycle inside Salesforce-adjacent operations, not broad transformation. EliseAI rollout chatter makes PM AI feel real, but JT should avoid leasing-assistant feature parity and own the exception layer.
+ReSource Pro says 98% of insurance agencies are planning AI investments in 2026, which strengthens insurance timing but makes stack qualification more important, not less.
 
 ---
-_Last updated: 2026-05-17 Sunday_
+_Last updated: 2026-05-24 Sunday_

@@ -71,6 +71,12 @@ Rule: no outreach/send task should be marked ready until its gate is satisfied a
 
 ## Measurement Requirement
 - Every approved draft must create or update a planned row in `memory/app-marketing/post-registry.jsonl` with source tag/UTM, creative type, target audience, CTA, run date, and attribution confidence when known.
+- Required fields for new rows: experiment_name, source_tag, creative_type, target_audience, CTA, metric_24h, metric_72h, metric_7d, downstream_metric, attribution_confidence, and decision.
 - Discovery must reconcile planned rows to exact live post IDs before performance is judged.
 - Record 24h/72h/7d result windows before scale/iterate/kill decisions.
-- If a post cannot be tracked, do not use it as evidence for future strategy.
+- If a post cannot be tracked, do not use it as evidence for future strategy and do not create follow-on volume from it.
+
+## Weekly Review Process Update — 2026-05-24
+- Each weekly review must include a tracking-completeness check for every active experiment.
+- Experiments missing source tags or result windows are labeled `tracking_incomplete` and their next action is measurement repair.
+- Pattern promotion still requires a filled experiment card and 24+/35 pattern score unless the work is a measurement/crawlability/infrastructure fix.

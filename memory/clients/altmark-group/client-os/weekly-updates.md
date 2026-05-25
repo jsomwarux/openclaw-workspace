@@ -19,7 +19,8 @@
 
 ### Next Week's Plan
 - JT uses `proof-assets/monday-closeout-sheet-2026-05-25.md` if no weekend reply exists to confirm post-install access + insurance workflow acceptance with Yair/Navid before mixing in infrastructure work.
-- Use the HTTPS/OAuth runbook only after access/admin ownership and backup path are clear: back up n8n, move it to a stable HTTPS endpoint, publish/configure the Google OAuth app, reconnect Google credentials, and smoke-test a non-sensitive Sheets/Drive workflow.
+- Sequence is explicit: closeout/acceptance first, migration second. If the reply is partial, log missing fields and ask one targeted follow-up; do not infer acceptance from silence.
+- Use the HTTPS/OAuth runbook only after access/admin ownership and backup path are clear: back up n8n, move it to a stable HTTPS endpoint, publish/configure the Google OAuth app, reconnect credentials, and smoke-test a non-sensitive Sheets/Drive workflow.
 - Eve updates the proof package only from verified facts and keeps the Yair referral ask blocked until `proof-assets/referral-readiness-gate-2026-05-23.md` is green.
 
 ### Client Decision / Input Needed

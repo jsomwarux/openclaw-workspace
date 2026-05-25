@@ -3,6 +3,21 @@
 ## Purpose
 One weekly view of whether each app's marketing is producing attention, learning, and users.
 
+
+## Measurement Spine Gate — added 2026-05-24
+Before recommending more content volume or marking an experiment as ready, confirm the related `post-registry.jsonl` row includes:
+- experiment_name
+- source_tag or UTM
+- creative_type
+- target_audience
+- CTA
+- 24h / 72h / 7d metric fields, even if still null
+- downstream_metric
+- attribution_confidence
+- decision
+
+Weekly review rule: if a promoted post lacks these fields, classify the next action as **fix tracking first**, not **ship more content**.
+
 ## Weekly Review Template
 
 ```md
@@ -86,6 +101,33 @@ Required weekly inputs:
 - If data is missing for 2 consecutive weeks, fix the metrics handoff before recommending more content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-05-17
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 3
+- Best item: glow-index Search Console queries 2026-05-17 to 2026-05-23 (3 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index GA4 web traffic 2026-05-17 to 2026-05-23 (0 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-05-17 to 2026-05-23 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 58
+- Web depth: active users 19, pageviews 171, events 539
+- Best item: nash-satoshi GA4 web traffic 2026-05-17 to 2026-05-23 (58 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-05-17 to 2026-05-23 (58 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-05-16
 
 ### glow-index / search_console
@@ -214,12 +256,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 11
+- Posts/results logged: 12
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 11
+- Posts/results logged: 12
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -733,7 +775,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-23_
+_Last updated: 2026-05-24_
 
 <!-- METRICS_SUMMARY_END -->
 

@@ -65,3 +65,8 @@ Archive every Monday, start fresh.
 - 2026-05-22 overnight ops: checked task files/daily notes/Mission Control and cron health; no repeated-error cron failures. Advanced App Marketing OS by wiring the experiment calendar generator to include the experiment-card gate, 24+/35 pattern score rule, source-tag fields, and 24h/72h/7d measurement windows.
 - 2026-05-22 nightly leverage: prepared Altmark weekend command sheet, updated Client OS/status/weekly update/acceptance checklist, and corrected the top MC task so acceptance/access/payment gates come before HTTPS/OAuth migration.
 - 2026-05-23 overnight ops: checked task files/daily notes and 51 crons; no repeated-error cron failures. Converted yesterday's PM maintenance-AI signal into a reusable LinkedIn/X content draft at `memory/content/bank/2026-05-23/property-management-maintenance-exception-desk.md`.
+- 2026-05-24 overnight ops: checked task files/daily notes and cron health; no repeated-error cron failures or active fallback tasks. Logged bootstrap budget warning because HEARTBEAT/MEMORY/TOOLS are near cap, with report at `reports/overnight/2026-05-24-overnight-autonomy.md`.
+- 2026-05-24: Recovered passive-income strategist silent cron miss, delivered the missed report, and added deterministic Sunday 3:20PM delivery guard.
+- 2026-05-24: Weekly North Star review saved to `reports/north-star/2026-05-24-weekly-review.md`; prioritized Altmark acceptance/payment/proof gate as fastest next dollar, kept apps distribution-only, deferred passive-income builds, and recommended Mission Control priority cleanup.
+
+- 2026-05-24 nightly: hardened Altmark Monday closeout + n8n migration gate so acceptance/access/payment clarity stays ahead of reliability work.

@@ -1,8 +1,13 @@
 # Canonical registry of app/product posts that should be tracked for metrics.
 # Append one JSON object per posted item. This is the input to automated metric collectors.
-# Required: date, product_slug, platform, account, url_or_id, hook_or_title, source_system.
+# Required for every posted item: date, week_of, product_slug, platform, account, url_or_id, hook_or_title, source_system.
+# Required measurement-spine fields for new experiments after 2026-05-24:
+# - experiment_name, source_tag, creative_type, target_audience, cta
+# - metric_24h, metric_72h, metric_7d (null until measured)
+# - downstream_metric, attribution_confidence, decision
+# Planned-but-not-live rows may use status="planned" and url_or_id="pending"; reconcile to the live URL/post ID before judging performance.
 # Example:
-# {"date":"2026-05-11","product_slug":"nash-satoshi","platform":"x","account":"@NashSatoshi","url_or_id":"https://x.com/NashSatoshi/status/123","hook_or_title":"single-model crypto rankings are too easy to fool","source_system":"vibe-marketing"}
+# {"date":"2026-05-24","week_of":"2026-05-18","product_slug":"nash-satoshi","platform":"x","account":"@NashSatoshi","url_or_id":"pending","status":"planned","hook_or_title":"AI Agents receipt: model disagreement moved the ranking","source_system":"app-marketing-os","experiment_name":"nash_aiagents_receipt_x_20260524","source_tag":"nash_x_rankdelta_20260524","creative_type":"ranking receipt","target_audience":"crypto researchers and AI-agent token watchers","cta":"open ranking receipt / follow for weekly receipt","metric_24h":null,"metric_72h":null,"metric_7d":null,"downstream_metric":"site visit","attribution_confidence":"medium","decision":"pending"}
 {"date": "2026-05-06", "week_of": "2026-05-06", "product_slug": "nash-satoshi", "platform": "tiktok", "account": "nashsatoshi", "url_or_id": "7636858598601133342", "hook_or_title": "Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To Solve.", "source_system": "reelfarm-discovery", "post_id": "7636858598601133342"}
 {"date": "2026-05-05", "week_of": "2026-05-05", "product_slug": "vista", "platform": "tiktok", "account": "mashed386", "url_or_id": "7636546975957060878", "hook_or_title": "My best friend and I are 91% compatible on Vista. I'm starting to think we share a brain.", "source_system": "reelfarm-discovery", "post_id": "7636546975957060878"}
 {"date": "2026-05-05", "week_of": "2026-05-05", "product_slug": "nash-satoshi", "platform": "tiktok", "account": "nashsatoshi", "url_or_id": "7636523839295376670", "hook_or_title": "4 AIs Agreeing On A Token Is Rarer Than You Think. It Matters When They Do.", "source_system": "reelfarm-discovery", "post_id": "7636523839295376670"}
