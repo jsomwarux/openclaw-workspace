@@ -1,0 +1,184 @@
+[
+  {
+    "id": "2057370813817311443",
+    "text": "TIL: .NET 11 Preview 4 ships an MCP Server template right in the SDK.\n\ndotnet new mcpserver\n\nScaffolds a Model Context Protocol server. No extra packages to find, no boilerplate to copy. Create and start adding your tools.",
+    "author_id": "31391457",
+    "username": "jfversluis",
+    "name": "Gerald Versluis",
+    "created_at": "2026-05-21T08:00:00.000Z",
+    "conversation_id": "2057370813817311443",
+    "metrics": {
+      "likes": 31,
+      "retweets": 1,
+      "replies": 4,
+      "quotes": 0,
+      "impressions": 1788,
+      "bookmarks": 4
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/jfversluis/status/2057370813817311443"
+  },
+  {
+    "id": "2056799982947012719",
+    "text": "Black Forest Labs just released an official MCP server for FLUX, and the real story is not \"generate images inside Claude.\" It is that image generation is becoming a native step inside your working environment, not a detour to a separate tool.\n\nMCP (Model Context Protocol) lets https://t.co/yVs5gl9vde",
+    "author_id": "16922531",
+    "username": "adityarao310",
+    "name": "Aditya ⚡Rao",
+    "created_at": "2026-05-19T18:11:44.000Z",
+    "conversation_id": "2056799982947012719",
+    "metrics": {
+      "likes": 2,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 192,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/adityarao310/status/2056799982947012719/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/adityarao310/status/2056799982947012719"
+  },
+  {
+    "id": "2058291888604754158",
+    "text": "Trust3 AI launched MCP Security for the Model Context Protocol today — a necessary bit of friction. Every autonomous agent is just a liability suit waiting to happen until there is a specific gatekeeper sitting between the model and the internal data silo.",
+    "author_id": "2037041148066471936",
+    "username": "pinchbook_ai",
+    "name": "PinchBook.ai",
+    "created_at": "2026-05-23T21:00:02.000Z",
+    "conversation_id": "2058291888604754158",
+    "metrics": {
+      "likes": 2,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 36,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/pinchbook_ai/status/2058291888604754158"
+  },
+  {
+    "id": "2057118479505871133",
+    "text": "We just launched the first MCP server built for mobile game DTC monetization.\n\nFaster integrations. Less operational friction. More time building great game experiences\n\nMore: https://t.co/YqJrP8zAAz",
+    "author_id": "1949365002948788224",
+    "username": "appchargeHQ",
+    "name": "Appcharge",
+    "created_at": "2026-05-20T15:17:19.000Z",
+    "conversation_id": "2057118479505871133",
+    "metrics": {
+      "likes": 1,
+      "retweets": 1,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 17,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://www.appcharge.com/blog/introducing-the-appcharge-mcp-server"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/appchargeHQ/status/2057118479505871133"
+  },
+  {
+    "id": "2056671889498735028",
+    "text": "The Svelte team just launched official AI tools.\n\nThey built an MCP server, custom skills, and subagents to fix common LLM coding mistakes.\n\nIf you use AI to write Svelte, your setup is now outdated.\n\nhttps://t.co/iSx2qpUkXU\n\n@sveltejs #sveltekit",
+    "author_id": "1614212720806486017",
+    "username": "milonspace",
+    "name": "Milon",
+    "created_at": "2026-05-19T09:42:44.000Z",
+    "conversation_id": "2056671889498735028",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 32,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://svelte.dev/docs/ai/instructions"
+    ],
+    "mentions": [
+      "sveltejs"
+    ],
+    "hashtags": [
+      "sveltekit"
+    ],
+    "tweet_url": "https://x.com/milonspace/status/2056671889498735028"
+  },
+  {
+    "id": "2058738853461029115",
+    "text": "BoardroomBob MCP Server: Run 19 Strategy Frameworks from Claude, Cursor &amp; Claude Code\nThe same boardroom-grade analysis. Now inside your AI assistant.\n\nWhat We Launched\nBoardroomBob now speaks MCP — the Model Context Protocol. That means you can run any of our 19 strategy https://t.co/S1TtB1duRU",
+    "author_id": "1436451328474193947",
+    "username": "paulrodturner",
+    "name": "paulrodturner",
+    "created_at": "2026-05-25T02:36:06.000Z",
+    "conversation_id": "2058738853461029115",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 26,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/paulrodturner/status/2058738853461029115/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/paulrodturner/status/2058738853461029115"
+  },
+  {
+    "id": "2057006291017425155",
+    "text": "AI agents are getting memory. But if that local context or history is tampered with behind the scenes... how would you know? 🔍\n\nI built verifiable-memory-mcp: a local-first Model Context Protocol server that adds an integrity layer to agent memory. (1/3)",
+    "author_id": "1856983581609865216",
+    "username": "ManuelSen109",
+    "name": "manuel señorans",
+    "created_at": "2026-05-20T07:51:31.000Z",
+    "conversation_id": "2057006291017425155",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 2,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/ManuelSen109/status/2057006291017425155"
+  },
+  {
+    "id": "2056940981375664508",
+    "text": "New contender worth evaluating. Amazon Ads MCP - Model Context Protocol server for Amazon Advertising API\n\nhttps://t.co/M6A0Z3uzSs",
+    "author_id": "2842904704",
+    "username": "AIDailyGems",
+    "name": "AIDailyGems",
+    "created_at": "2026-05-20T03:32:00.000Z",
+    "conversation_id": "2056940981375664508",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 32,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/KuudoAI/amazon_ads_mcp"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AIDailyGems/status/2056940981375664508"
+  }
+]

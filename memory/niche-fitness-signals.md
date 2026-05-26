@@ -32,3 +32,6 @@ Last reset: 2026-05-01
 2026-05-22 [EMERGING] niche=ai-agents — Partial live scan found ongoing agentic AI infrastructure/governance coverage, but no verified new decision-today or high-severity update.
 2026-05-22 [EMERGING] niche=construction — Search results continue to show AI safety/training use cases in construction, but no new concrete buyer/action signal beyond already tracked themes.
 2026-05-22 [EMERGING] niche=enterprise-rag — Enterprise RAG/knowledge assistant comparison content remains active in May 2026, but no verified new platform release or JT-actionable change this run.
+2026-05-25 [EMERGING] niche=salesforce-agentforce — Agentforce 360 continues platform expansion with Builder, Agent Script, Voice, and Intelligent Context; useful for implementation/activation positioning but already-covered theme.
+2026-05-25 [CONFIRMS] niche=construction — Major builders continue applying AI to safety/training workflows, reinforcing construction ops AI demand without a new urgent trigger.
+2026-05-25 [EMERGING] niche=enterprise-rag — 2026 RAG content emphasizes traceability/citations/version provenance for enterprise knowledge assistants, confirming governance-aware RAG positioning.

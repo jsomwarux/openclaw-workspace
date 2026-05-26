@@ -240,3 +240,9 @@
 - **Trigger:** Agents/tool marketplaces publish explicit referral APIs OR 3+ credible examples show agents choosing/recommending paid third-party agents in production workflows.
 - **Logged:** 2026-05-15
 - **Potential value:** Future distribution channel for agent-readable apps, Nash/Glow/Vista APIs, or consulting-owned workflow endpoints.
+
+## Guyana ICT Masterplan 2030 release watch — added 2026-05-25
+- What: Guyana ICT Masterplan 2030 forthcoming, per ITA signal surfaced by Guyana monitor.
+- Why deferred: policy framework is relevant but not an immediate buyer action until the plan is published or procurement/private-sector programs become concrete.
+- Trigger condition: public release of ICT Masterplan 2030, named NDMA/private-sector procurement program, or business-process digitization grant/vendor opportunity tied to private suppliers.
+- Action when triggered: update Guyana Local Content Ops Sprint positioning and create a Mission Control task only if it creates a private-sector supplier/partner route, not generic government transformation.

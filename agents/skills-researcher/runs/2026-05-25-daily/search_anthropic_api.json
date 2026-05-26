@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "Anthropic API new feature tool use 2026",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-25",
+  "results": [
+    {
+      "title": "Inside Anthropic's 2026 Developer Conference - Every",
+      "url": "https://every.to/chain-of-thought/inside-anthropic-s-2026-developer-conference",
+      "description": "... deployed it to power our API the next day. We’ve incorporated two of the new features Anthropic announced yesterday (<strong>memory and multi-agent orchestration</strong>) and are deploying the third (outcomes) soon.",
+      "age": "3 days ago",
+      "page_age": "2026-05-23T00:00:00",
+      "source": "Every"
+    },
+    {
+      "title": "Claude Updates by Anthropic - May 2026 - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic/claude",
+      "description": "Claude releases the <strong>Claude Platform on AWS, bringing the full Claude API feature set to AWS customers with AWS authentication, billing, and commitment retirement</strong>. It adds managed agents, code execution, web tools, skills, prompt caching, and new models, all available today.",
+      "age": "4 days ago",
+      "page_age": "2026-05-22T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Anthropic Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic",
+      "description": "Fixed background jobs on a custom ANTHROPIC_BASE_URL gateway not getting auto-named 6 the namer now uses the main model when no Haiku model is configured · Fixed /model in one session silently changing the autocompact threshold in other concurrent sessions · Fixed switching permission mode while a tool-permission prompt is open not auto-dismissing the prompt when the new setting permits the tool",
+      "age": "3 days ago",
+      "page_age": "2026-05-23T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Anthropic enhances Claude Managed Agents with two new privacy and security features - 9to5Mac",
+      "url": "https://9to5mac.com/2026/05/19/anthropic-enhances-claude-managed-agents-with-two-new-privacy-and-security-features/",
+      "description": "The new <strong>MCP tunnels</strong> feature allows Claude Managed Agents users to route services through a private network. With <strong>MCP tunnels</strong>, your agents reach MCP servers inside your private network without exposing them to the public internet.",
+      "age": "6 days ago",
+      "page_age": "2026-05-19T17:00:03",
+      "source": "9to5Mac"
+    },
+    {
+      "title": "Anthropic has acquired the dev tools startup used by OpenAI, Google, and Cloudflare | TechCrunch",
+      "url": "https://techcrunch.com/2026/05/18/anthropic-has-acquired-the-dev-tools-startup-used-by-openai-google-and-cloudflare/",
+      "description": "It became a popular tool because the platform automatically updates the SDKs as APIs change and eliminated the time-consuming process of manually maintaining them. The technology is particularly valuable to companies like Anthropic, OpenAI, Google, Replicate, Runway, and Cloudflare that are building AI agents that can connect to external software and complete tasks on behalf of users.",
+      "age": "1 week ago",
+      "page_age": "2026-05-19T05:15:04",
+      "source": "TechCrunch"
+    }
+  ]
+}

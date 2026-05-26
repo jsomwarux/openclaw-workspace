@@ -18,8 +18,8 @@
 - Installation milestone completed. Accepted workflows remain 0 confirmed in Eve memory until client acceptance wording is captured.
 
 ### Next Week's Plan
-- JT uses `proof-assets/monday-closeout-sheet-2026-05-25.md` if no weekend reply exists to confirm post-install access + insurance workflow acceptance with Yair/Navid before mixing in infrastructure work.
-- Sequence is explicit: closeout/acceptance first, migration second. If the reply is partial, log missing fields and ask one targeted follow-up; do not infer acceptance from silence.
+- JT uses `proof-assets/tuesday-closeout-branch-sheet-2026-05-26.md` after the Monday closeout ask to choose the exact next move: record confirmed facts, ask one missing-field follow-up, or send a short no-reply bump.
+- Sequence is explicit: closeout/acceptance first, migration second. Do not infer acceptance from silence, and do not let HTTPS/OAuth migration outrank access/payment/proof capture.
 - Use the HTTPS/OAuth runbook only after access/admin ownership and backup path are clear: back up n8n, move it to a stable HTTPS endpoint, publish/configure the Google OAuth app, reconnect credentials, and smoke-test a non-sensitive Sheets/Drive workflow.
 - Eve updates the proof package only from verified facts and keeps the Yair referral ask blocked until `proof-assets/referral-readiness-gate-2026-05-23.md` is green.
 

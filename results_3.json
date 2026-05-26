@@ -1,0 +1,34 @@
+{
+  "provider": "brave-direct",
+  "query": "GCCI AmCham Guyana events June July 2026 diaspora",
+  "freshness": "month",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-25",
+  "results": [
+    {
+      "title": "Upcoming International Conferences in Guyana 2026",
+      "url": "https://www.allconferencealert.com/guyana",
+      "description": "Explore upcoming international conferences in Guyana in 2026. Discover academic events, industry summits, venues, visa guidance, and invitation letter support for global attendees.",
+      "age": "2 weeks ago",
+      "page_age": "2026-05-12T14:20:09",
+      "source": "AllConferenceAlert"
+    },
+    {
+      "title": "Statement by the American Chamber of Commerce in Georgia",
+      "url": "https://www.amcham.ge/archive.php",
+      "description": "Homepage || Membership Types || Patron Membership || Investor.ge || Contact Us · Ronny&#x27;s Ltd. Corporate A Member CaucasPack LLC Corporate B Member Ecovis Georgia LLC Corporate B Member Global Accounting LLC Corporate B Member Kvareli Lake Resort Corporate B Member MED.CO Health Care - Medical ...",
+      "age": "2 weeks ago",
+      "page_age": "2026-05-14T15:53:20",
+      "source": "Amcham"
+    },
+    {
+      "title": "'Sound, soul & taste' - Guyana Festival returns - News Room Guyana",
+      "url": "https://newsroom.gy/2026/05/01/sound-soul-taste-guyana-festival-returns/",
+      "description": "<strong>The event is expected to attract visitors from across Guyana, the diaspora, and international markets</strong>, further boosting the country’s tourism sector. ... Major projects are taking shape across Guyana, and President Dr.",
+      "age": "3 weeks ago",
+      "page_age": "2026-05-01T15:54:34",
+      "source": "News Room Guyana"
+    }
+  ]
+}

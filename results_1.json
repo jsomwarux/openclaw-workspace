@@ -1,0 +1,34 @@
+{
+  "provider": "brave-direct",
+  "query": "Guyana Local Content Secretariat Register portal renewal notice 2026",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-25",
+  "results": [
+    {
+      "title": "29985 Federal Register / Vol. 91, No. 98 / Thursday, May 21, 2026 / Notices",
+      "url": "https://www.govinfo.gov/content/pkg/FR-2026-05-21/pdf/2026-10138.pdf",
+      "description": "Federal Register / Vol. 91, No. 98 / <strong>Thursday, May 21, 2026</strong> / Notices · 1 The record is defined in § 207.2(f) of the",
+      "age": "4 days ago",
+      "page_age": "2026-05-21T04:20:13",
+      "source": "GovInfo"
+    },
+    {
+      "title": "Ministry of Public Utilities and Aviation (MARAD) – Notice to Mariners – No. 085 (2026) Offshore Guyana",
+      "url": "https://dpi.gov.gy/ministry-of-public-utilities-and-aviation-marad-notice-to-mariners-no-085-2026-offshore-guyana/",
+      "description": "Visit the post for more.",
+      "age": "5 days ago",
+      "page_age": "2026-05-20T15:10:09",
+      "source": "DPI Guyana"
+    },
+    {
+      "title": "Celebrating Guyana's Cultural Heritage @25 -",
+      "url": "https://guyfolkfest.org/",
+      "description": "The Guyana Cultural Association of New York (GCA) is dedicated to documenting, celebrating, and preserving Guyana’s rich cultural heritage. Our mission is to showcase the diverse roots of Guyanese culture, making it accessible through various channels to inspire and connect Guyanese communities at home and abroad.",
+      "age": "6 days ago",
+      "page_age": "2026-05-20T00:57:14",
+      "source": "guyfolkfest.ord"
+    }
+  ]
+}

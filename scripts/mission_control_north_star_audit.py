@@ -35,31 +35,14 @@ TOP_RULES: list[tuple[str, int, str]] = [
     ("Complete weekly unemployment certification", 1, "Protects current financial stability; keep above optional work."),
     ("Altmark: lock PC handoff + acceptance/payment clarity", 2, "Fastest path to client acceptance, payment clarity, proof, and referrals."),
     ("Altmark: capture redacted proof screenshots", 3, "Turns accepted client work into proof/distribution assets."),
-    ("Strategy Jobs Pack: pick the first real send/use", 4, "Choose the first real send/use from the completed Strategy Jobs Pack."),
-    ("Aya: capture proof-safe evidence before referral ask", 5, "Warm referral route from proven client work."),
-    ("Aya co-living dashboard", 6, "Pending paid/client expansion opportunity."),
-    ("CFS: reply yes to Dan sharing profile", 7, "Selective job-market option with construction/AI fit."),
-    ("Vista: run one focused distribution block", 8, "App distribution action; no more stale launch checklist."),
-    ("Guyana: ask dad/family network", 9, "Warm-intro gate for Guyana supplier wedge."),
-    ("Land first wholesale pilot client", 11, "Credibility and consulting pipeline unlock."),
-    ("Relationship system: refresh stale contacts before referral asks", 12, "Refreshes warm/referral paths before cold outbound takes attention."),
-    ("Run first Consulting Sales Engine audit", 13, "Finds highest-probability next consulting dollar."),
-    ("AI Ops Teardown: review/post property insurance", 14, "Proof-led content tied to real implementation work."),
-    ("App Marketing OS: connect generated backlog", 30, "Keeps app marketing tasks synced into Mission Control without manual backlog drift."),
-    ("App Marketing OS: implement weekly self-improvement", 35, "Forces app marketing continue/rework/measure-first decisions from evidence."),
-    ("Vista: submit first durable directory listing", 40, "Durable discovery action for live Vista app."),
-    ("Vista: add App Store vendor number", 43, "Unblocks measured App Store reporting for Vista distribution."),
-    ("Vista: run ASO baseline", 45, "Turns Vista distribution into measured App Store optimization."),
-    ("Health system: wire Telegram replies to inbound handler", 46, "Closes the loop on daily health check-ins without manual logging."),
-    ("Vista: schedule one clean rating-precision", 50, "Runs the next ReelFarm test with required metrics capture."),
-    ("Content posting: wire Telegram posted replies", 55, "Closes content follow-through tracking from JT's posted confirmations."),
-    ("Nash Satoshi: submit first methodology-backed", 56, "Durable discovery action for Nash Satoshi with no return claims."),
-    ("Nash Satoshi: create one live-ranking", 60, "Only ships Nash content when current live ranking data exists."),
-    ("Glow Index: fix/verify crawler access", 65, "Unblocks durable discovery and AI-search visibility for Glow Index."),
-    ("Glow Index: define metrics source", 70, "Prevents Glow social volume before measurement exists."),
-    ("Weekly systems review: prune cron cap", 70, "Protects the operating layer from cost/noise/restart drift."),
-    ("Harden cost/cron/security layer", 75, "Closes known protection-layer blockers from the xhigh systems audit."),
+    ("Fix weekly systems review drift", 5, "Critical operating-layer blocker: cron cap, gateway load, bootstrap budgets."),
+    ("Altmark: Gate acceptance/access before n8n HTTPS", 6, "Prevents infrastructure work from outranking acceptance, payment, and access clarity."),
 ]
+
+# Weekly single-focus guard. The North Star active-week file is the owner of the
+# current top layer. When present, do not re-promote generic app/outreach/system
+# tasks to high just because they were historically important.
+ACTIVE_WEEK_FILE = ROOT / "memory" / "north-star" / "active-this-week.md"
 
 STALE_COLD_PATTERNS = [
     "M2 OVERDUE",

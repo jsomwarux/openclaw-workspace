@@ -1,22 +1,29 @@
 {
   "started": "2026-03-02",
   "current_week": 12,
-  "current_day": 70,
-  "last_lesson_date": "2026-05-23",
+  "current_day": 71,
+  "last_lesson_date": "2026-05-24",
   "last_lesson_complete": false,
-  "lesson_streak": 43,
-  "streak": 42,
-  "longest_streak": 43,
-  "total_lessons_completed": 21,
   "level": "A1+",
   "level_description": "High Beginner — dormant high school foundation, passive comprehension, disconnected basics",
-  "focus": "speaking and listening, not writing",
   "goal": "Light casual conversation with girlfriend and her family",
-  "use_cases": [
-    "restaurants",
-    "directions",
-    "small talk",
-    "survival Spanish"
+  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
+  "focus": "speaking and listening, not writing",
+  "lesson_streak": 0,
+  "streak": 0,
+  "longest_streak": 43,
+  "total_lessons_completed": 21,
+  "weekly_scores": [
+    {
+      "week": 2,
+      "date": "2026-03-16",
+      "grade": "B+"
+    },
+    {
+      "week": 3,
+      "date": "2026-03-22",
+      "grade": "B+"
+    }
   ],
   "strong_areas": [
     "basic greetings",
@@ -30,21 +37,14 @@
     "no problemo habit",
     "e/y confusion (Italian vs Spanish)"
   ],
-  "girlfriend_family_background": "unknown — default to neutral Latin American Spanish",
+  "use_cases": [
+    "restaurants",
+    "directions",
+    "small talk",
+    "survival Spanish"
+  ],
   "real_world_challenges_unlocked": 2,
   "real_world_challenges_completed": [],
-  "weekly_scores": [
-    {
-      "week": 2,
-      "date": "2026-03-16",
-      "grade": "B+"
-    },
-    {
-      "week": 3,
-      "date": "2026-03-22",
-      "grade": "B+"
-    }
-  ],
   "whisper_note": "Whisper auto-detects language and translates Spanish to English on longer phrases.",
-  "notes": "Delivered Week 12, Sat (Weekend planning). Corrected longest_streak to match lesson_streak."
+  "notes": "Sunday Evaluation for Week 12 triggered. Streak reset due to gap between 2026-05-23 and 2026-05-24 evaluation run."
 }

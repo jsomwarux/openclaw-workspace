@@ -1,5 +1,5 @@
 {
-  "execute": false,
+  "execute": true,
   "tasks": [
     {
       "title": "App Marketing OS: create share-artifact specs for Vista, Nash, and Glow",
@@ -12,9 +12,9 @@
       "app": "All apps",
       "category": "share-artifact",
       "reason": "Product-led share artifacts are the highest-leverage missing acquisition loop; without them, posting is mostly external push instead of user/creator pull.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57dwkmmyfe4gq6186w4rwn4ms87d6nm"
     },
     {
       "title": "Vista app change: implement Movie Taste Card export/share artifact",
@@ -27,9 +27,9 @@
       "app": "Vista",
       "category": "share-artifact",
       "reason": "Vista should not rely only on TikTok/ReelFarm. Letterboxd-style social behavior shows movie taste travels when users can share identity artifacts.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j571bcrwwtv8yd820ywgkc8snn87cax7"
     },
     {
       "title": "Nash app change: implement Weekly Ranking Receipt Card export",
@@ -42,9 +42,9 @@
       "app": "Nash Satoshi",
       "category": "share-artifact",
       "reason": "Nash needs to behave like a public ranking thesis engine with receipts, not another crypto dashboard.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57dz59pfrn5kr6khevy60p4v587dhy1"
     },
     {
       "title": "Glow app change: implement safe Product Verdict Card export",
@@ -57,9 +57,9 @@
       "app": "Glow Index",
       "category": "share-artifact",
       "reason": "Glow\u2019s strongest growth loop is likely search + creator shopping demos; creators need a clean share card they can use safely.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57bfxmx4h8faxxty1bfhs68fn87dw76"
     },
     {
       "title": "App Marketing OS: build borrowed-audience target lists for Vista, Nash, and Glow",
@@ -72,9 +72,9 @@
       "app": "All apps",
       "category": "borrowed-audience",
       "reason": "Borrowed audience is likely the highest-leverage low-budget channel. We need qualified targets before drafting outreach or collab asks.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57f0m666s9kzwcp6ep1hqvwv187c95g"
     },
     {
       "title": "App Marketing OS: add experiment-card tracking to weekly review",
@@ -117,9 +117,9 @@
       "app": "Vista",
       "category": "competitor-mining",
       "reason": "Vista\u2019s wedge must be based on proven movie-app behavior: taste identity, lists, friends/followers, and compatibility/share artifacts.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j5738g4esp5gbrf9nfh5aeyx9x87c5v5"
     },
     {
       "title": "Nash competitor teardown: crypto ranking/thesis tools and newsletter loops",
@@ -132,9 +132,9 @@
       "app": "Nash Satoshi",
       "category": "competitor-mining",
       "reason": "Nash needs proof-based distribution and borrowed credibility, not generic crypto-dashboard marketing.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j577y8f5rd7dds7g019gpk9sb987c8ze"
     },
     {
       "title": "Glow competitor teardown: skincare scanner/ranking app acquisition loops",
@@ -147,9 +147,9 @@
       "app": "Glow Index",
       "category": "competitor-mining",
       "reason": "Glow\u2019s acquisition likely comes from SEO, safe product pages, creator shopping demos, and product verdict artifacts. We need competitor proof before scaling content.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57fwa155n6x18b0214ndv9z0587c5tp"
     },
     {
       "title": "Vista: submit first durable directory listing from existing pack",
@@ -327,9 +327,9 @@
       "app": "All apps",
       "category": "self-improvement",
       "reason": "Autonomy without kill/continue rules becomes stale task spam. The OS needs to stop dead channels and double down on evidence.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57a3nq0adxbxg8q218x3hjy0d87de5y"
     }
   ]
 }

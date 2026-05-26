@@ -1,0 +1,26 @@
+{
+  "provider": "brave-direct",
+  "query": "Guyana AI data center Cerebras 100MW status May 2026",
+  "freshness": "month",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-25",
+  "results": [
+    {
+      "title": "Cerebras signs on for 40MW of capacity at Digi Power X data center in Alabama - DCD",
+      "url": "https://www.datacenterdynamics.com/en/news/cerebras-signs-on-for-40mw-of-capacity-at-digi-power-x-data-center-in-alabama/",
+      "description": "<strong>The data center itself is still under development</strong>, with Digi Power X set to deliver the data center in two phases: phase one with 15MW of IT load, and phase two to deliver 25MW incrementally for a total IT capacity of 40MW.",
+      "age": "3 weeks ago",
+      "page_age": "2026-05-07T00:00:00",
+      "source": "Data Center Dynamics"
+    },
+    {
+      "title": "Cerebras",
+      "url": "https://www.cerebras.ai/",
+      "description": "Cerebras is the go-to platform for fast and effortless AI training. Learn more at cerebras.ai.",
+      "age": "1 day ago",
+      "page_age": "2026-05-24T17:00:04",
+      "source": "Cerebras"
+    }
+  ]
+}

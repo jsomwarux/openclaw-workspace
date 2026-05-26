@@ -1,7 +1,7 @@
 # App Marketing OS — Durable Discovery Plan
 
-Week of: 2026-05-18
-Generated: 2026-05-18
+Week of: 2026-05-25
+Generated: 2026-05-25
 
 ## Rule
 Every weekly app marketing review should include one compounding discovery action: SEO page, directory/backlink pack, ASO improvement, or competitor intel scan.

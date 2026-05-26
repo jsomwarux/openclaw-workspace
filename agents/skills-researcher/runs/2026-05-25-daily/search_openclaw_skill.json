@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "openclaw skill github new 2026",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-25",
+  "results": [
+    {
+      "title": "GitHub - VoltAgent/awesome-openclaw-skills: The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞",
+      "url": "https://github.com/VoltAgent/awesome-openclaw-skills",
+      "description": "OpenClaw&#x27;s public registry (ClawHub) hosts 13,729 community-built skills as of February 28, 2026. This awesome list has <strong>5,211 skills</strong>.",
+      "age": "2 days ago",
+      "page_age": "2026-05-23T09:50:04",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "It&#x27;s <strong>designed for fast browsing + a CLI-friendly API, with moderation hooks and vector search</strong>. It also now exposes a native OpenClaw package catalog for code plugins and bundle plugins.",
+      "age": "7 hours ago",
+      "page_age": "2026-05-25T08:35:04",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - openclaw/openclaw: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
+      "url": "https://github.com/openclaw/openclaw",
+      "description": "Preferred setup: <strong>run openclaw onboard in your terminal</strong>. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on macOS, Linux, and Windows (via ...",
+      "age": "9 hours ago",
+      "page_age": "2026-05-25T06:30:02",
+      "source": "GitHub"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Agents/tools: shorten built-in ... while preserving routing guardrails. Skills: <strong>add node inspector debugging, fused diagram generation, and throwaway spike workflow skills</strong>....",
+      "age": "11 hours ago",
+      "page_age": "2026-05-25T04:55:04",
+      "source": "GitHub"
+    },
+    {
+      "title": "openclaw/docs/tools/skills.md at main · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/blob/main/docs/tools/skills.md",
+      "description": "Legacy `metadata.clawdbot` blocks are still accepted when `metadata.openclaw` is absent, so older installed skills keep their dependency gates and installer hints. New and updated skills should use `metadata.openclaw`.",
+      "age": "3 days ago",
+      "page_age": "2026-05-22T04:05:03",
+      "source": "GitHub"
+    }
+  ]
+}

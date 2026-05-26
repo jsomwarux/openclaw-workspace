@@ -58,3 +58,4 @@ EOF'
 [2026-05-22T15:30:00Z] | daily-scan | x_queries: 6 | web_queries: 15 | findings: 5 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
 2026-05-23T11:00:00Z | weekly-synthesis | x_queries: 10 | est_cost: $0.49
 [2026-05-23T15:30:00Z] | daily-scan | x_queries: 6 | web_queries: 7 + tier-fetches | findings: 4 KB-only | 🔴: 0 | 🟠: 0 | messaged_jt: no
+2026-05-25T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 15 | findings: 5 | 🔴: 1 | 🟠: 0 | messaged_jt: no

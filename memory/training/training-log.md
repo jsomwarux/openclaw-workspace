@@ -104,3 +104,4 @@
 - Blockers deferred: OpenClaw update available (current 2026.5.3-1, npm latest 2026.5.22) requires manual update decision; any gateway restart/load remediation should be scheduled intentionally because current cron is running under the gateway.
 
 [2026-05-24 10AM] Film: reviewed 2026-05-23 daily note + MC audit output showing duplicate high-priority recurring tasks → Fix: added narrow duplicate-active-task archiving to mission_control_north_star_audit.py for weekly unemployment + buyer/channel cleanup, verified active duplicates 2→1 for both families | Improve: Mission Control North Star audit now removes duplicate attention sinks automatically while keeping newest active card.
+[2026-05-25 11:15AM] Autoresearch weekly sweep: app-marketing-product-content baseline 1.000 → final 1.000; changed file: agents/autoresearch/targets.md (checklist path hygiene); logs: agents/autoresearch/logs/2026-05-25-app-marketing-product-content-*.md

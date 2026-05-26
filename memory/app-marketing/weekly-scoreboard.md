@@ -101,6 +101,34 @@ Required weekly inputs:
 - If data is missing for 2 consecutive weeks, fix the metrics handoff before recommending more content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-05-18
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 3
+- Best item: glow-index Search Console queries 2026-05-18 to 2026-05-24 (3 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 1
+- Web depth: active users 1, pageviews 1, events 3
+- Best item: glow-index GA4 web traffic 2026-05-18 to 2026-05-24 (1 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-05-18 to 2026-05-24 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 71
+- Web depth: active users 22, pageviews 174, events 552
+- Best item: nash-satoshi GA4 web traffic 2026-05-18 to 2026-05-24 (71 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-05-18 to 2026-05-24 (71 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-05-17
 
 ### glow-index / search_console
@@ -256,12 +284,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 12
+- Posts/results logged: 13
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 12
+- Posts/results logged: 13
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -775,7 +803,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-24_
+_Last updated: 2026-05-25_
 
 <!-- METRICS_SUMMARY_END -->
 
@@ -795,3 +823,11 @@ _Last updated: 2026-05-24_
 - Measurement blocker: metrics remain thin; volume should not increase until ReelFarm/TikTok live IDs, X post IDs, and App Store/web metrics are reconciled.
 - Next durable discovery action: reconcile planned queue entries to live post IDs in `memory/app-marketing/post-registry.jsonl`, then rerun metrics collection/analysis before scaling output.
 - Behavioral demand lens: Vista draft uses precision/taste identity and challenges coarse 5-star ratings; Nash drafts use uncertainty reduction, model-disagreement curiosity, and ranking-dispersion as the research trigger.
+
+
+## Run Note — 2026-05-25
+- Generated counts: X 0; Reddit 0; TikTok/ReelFarm support 1; LinkedIn 0.
+- Approved: 1 Vista rating-precision ReelFarm concept mapped to `Vista rating precision retest` with source tag `vista_tiktok_rating_precision_20260525`.
+- Skips: Nash X/TikTok skipped because live rankings are stale (~161h old); Reddit skipped for compliance risk; LinkedIn skipped because May monthly post already exists and no new milestone/proof.
+- Measurement blocker: Vista/ReelFarm live post IDs + App Store metrics still need reconciliation; Nash leaderboard freshness must be restored before ranking copy.
+- Next durable discovery action: fix/refresh Nash ranking generation or leaderboard freshness, then produce one ranking/model-disagreement X draft from live data only.

@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "clawhub new skill featured",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-25",
+  "results": [
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "ClawHub · Vision · Docs · Contributing · Discord · Browse skills + render their SKILL.md. Publish new skill versions with changelogs + tags (including latest).",
+      "age": "7 hours ago",
+      "page_age": "2026-05-25T08:35:04",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - VoltAgent/awesome-openclaw-skills: The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞",
+      "url": "https://github.com/VoltAgent/awesome-openclaw-skills",
+      "description": "The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞 - VoltAgent/awesome-openclaw-skills",
+      "age": "2 days ago",
+      "page_age": "2026-05-23T09:50:04",
+      "source": "GitHub"
+    },
+    {
+      "title": "awesome-openclaw-skills/README.md at main · VoltAgent/awesome-openclaw-skills",
+      "url": "https://github.com/VoltAgent/awesome-openclaw-skills/blob/main/README.md",
+      "description": "The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞 - VoltAgent/awesome-openclaw-skills",
+      "age": "2 days ago",
+      "page_age": "2026-05-23T14:40:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "Top 6 OpenClaw Skills you can't afford to miss in 2026",
+      "url": "https://viblo.asia/p/top-6-openclaw-skills-you-cant-afford-to-miss-in-2026-XRJ8R0b9VGq",
+      "description": "Defined primarily via SKILL.md (natural language instructions + tool calls), they allow the LLM to interpret and execute complex, multi-step tasks reliably. Community contributions exploded in 2026, with high-quality skills vetted on ClawHub. ... Modularity: Install only what you need; chain them for complex workflows. Extensibility: Community and self-created skills allow custom behaviors.",
+      "age": "5 days ago",
+      "page_age": "2026-05-20T21:00:06",
+      "source": "Viblo"
+    },
+    {
+      "title": "open-webui | Skills Marketplace · LobeHub",
+      "url": "https://lobehub.com/skills/openclaw-skills-open-webui",
+      "description": "Perfect for controlling Ollama through Open WebUI. Total skills: 36. View More · 4.0 · affaan-m · Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction. 2 · AI &amp; LLMs · May 22, 2026 · 2 · 186.9k · Featured ·",
+      "age": "6 days ago",
+      "page_age": "2026-05-20T01:33:20",
+      "source": "LobeHub"
+    }
+  ]
+}

@@ -1,17 +1,16 @@
 {
-  "last_run": "2026-05-18T08:45:00Z",
-  "last_successful_run": "2026-05-18T08:45:00Z",
-  "last_week_of": "2026-05-18",
-  "last_status": "success_low_volume_metrics_thin",
+  "last_run": "2026-05-25T08:45:00Z",
+  "last_successful_run": "2026-05-25T08:45:00Z",
+  "last_week_of": "2026-05-25",
+  "last_status": "success_low_volume_metrics_thin_nash_stale",
   "last_error": null,
   "last_linkedin_month": "2026-05",
   "last_angles_month": "2026-05",
   "products_processed": [
-    "nash-satoshi",
     "vista"
   ],
-  "queue_count": 124,
-  "drive_link": "https://docs.google.com/document/d/1d6EIXcMf0stIg6nsL9J3zP6HTpM0qNCvdle5w3hAg34/edit",
+  "queue_count": 125,
+  "drive_link": "https://docs.google.com/document/d/1uIgmlWkEg1y0G78gBHBCi6sGu3837mKWPiI4MIJQ_2s/edit",
   "nash_satoshi_drive_link": "https://docs.google.com/document/d/1Eyu-1oTO1CqnwfPleMoFEPJohciYPXZc1MemUzCT5v4/edit",
   "vista_drive_link": "https://docs.google.com/document/d/1cgs_h9mgsgVYXkknydJd44ZaSlym7iMBADXI1RMuhg0/edit",
   "local_review_docs": {
@@ -30,7 +29,7 @@
     "nash-satoshi": "folder_missing",
     "vista": "folder_missing",
     "blocked_by": null,
-    "drive_path": "Eve \u2014 Drafts / Vibe Marketing / App Screenshots / [product-slug]",
+    "drive_path": "Eve — Drafts / Vibe Marketing / App Screenshots / [product-slug]",
     "flagged_at": "2026-05-04T08:48:00Z"
   },
   "generated_images": {
@@ -82,15 +81,17 @@
     }
   },
   "generated_counts": {
-    "x": 1,
+    "x": 0,
     "reddit": 0,
-    "tiktok_reelfarm_support": 2,
+    "tiktok_reelfarm_support": 1,
     "linkedin": 0
   },
   "skips": {
-    "reddit": "Skipped: no clearly compliant community-native angle for this week; product mention would be risky and test brief prioritizes X/ReelFarm concepts.",
+    "nash_x": "Skipped: live Nash rankings are stale (~161h old), so no ranking/model-update copy was generated.",
+    "nash_tiktok_reelfarm_support": "Skipped: ranking/model proof is stale; avoided generic four-model filler.",
+    "reddit": "Skipped: no clearly compliant community-native angle for this week.",
     "linkedin": "Skipped: monthly cadence already used for May and no new product milestone/proof."
   },
-  "measurement_blocker": "Metrics are still thin; do not increase volume until ReelFarm/TikTok live IDs, X post IDs, and App Store/web metrics are reconciled.",
-  "local_review_doc": "/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-05-18.md"
+  "measurement_blocker": "Vista/ReelFarm live post IDs and App Store metrics need reconciliation; Nash rankings are stale (~161h), so ranking-specific copy is blocked.",
+  "local_review_doc": "/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-05-25.md"
 }

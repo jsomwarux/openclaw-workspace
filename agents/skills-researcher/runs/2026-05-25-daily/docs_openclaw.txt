@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="OpenClaw is a multi-channel gateway for AI agents that runs on any OS.">
+<title>OpenClaw - OpenClaw</title>
+<link rel="canonical" href="https://docs.openclaw.ai/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OpenClaw">
+<meta property="og:title" content="OpenClaw">
+<meta property="og:description" content="OpenClaw is a multi-channel gateway for AI agents that runs on any OS.">
+<meta property="og:url" content="https://docs.openclaw.ai/">
+<meta property="og:image" content="https://docs.openclaw.ai/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="OpenClaw — OpenClaw is a multi-channel gateway for AI agents that runs on any OS.">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenClaw">
+<meta name="twitter:description" content="OpenClaw is a multi-channel gateway for AI agents that runs on any OS.">
+<meta name="twitter:image" content="https://docs.openclaw.ai/og-card.png">
+<meta name="twitter:image:alt" content="OpenClaw — OpenClaw is a multi-channel gateway for AI agents that runs on any OS.">
+<meta name="theme-color" content="#FF5A36">
+<link rel="icon" href="/assets/pixel-lobster.svg">
+<link rel="stylesheet" href="/assets/docs-site.css?v=e827648cca02">
+<script>window.OPENCLAW_DOCS_BASE="";window.OPENCLAW_DOCS_CHAT_API="/ask-molty/api/chat";document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"</script>
+</head>
+<body>
+<header class="site-header">
+<div class="header-row">
+<div class="header-left"><a class="brand" href="/"><img src="/assets/pixel-lobster.svg" alt=""></a><div class="language-picker" data-language-picker><button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false"><span class="locale-flag" aria-hidden="true">🇺🇸</span><span class="language-current">English</span><span class="language-chevron" aria-hidden="true"><svg class="icon icon-chevron-down" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></button><div class="language-menu" role="listbox" aria-label="Language"><a class="language-option active" role="option" aria-selected="true" href="/" data-locale-option><span class="locale-flag" aria-hidden="true">🇺🇸</span><span class="language-name">English</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/zh-CN" data-locale-option><span class="locale-flag" aria-hidden="true">🇨🇳</span><span class="language-name">简体中文</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/zh-TW" data-locale-option><span class="locale-flag" aria-hidden="true">🇨🇳</span><span class="language-name">繁體中文</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/ja-JP" data-locale-option><span class="locale-flag" aria-hidden="true">🇯🇵</span><span class="language-name">日本語</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/es" data-locale-option><span class="locale-flag" aria-hidden="true">🇪🇸</span><span class="language-name">Español</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/pt-BR" data-locale-option><span class="locale-flag" aria-hidden="true">🇧🇷</span><span class="language-name">Português (BR)</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/ko" data-locale-option><span class="locale-flag" aria-hidden="true">🇰🇷</span><span class="language-name">한국어</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/de" data-locale-option><span class="locale-flag" aria-hidden="true">🇩🇪</span><span class="language-name">Deutsch</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/fr" data-locale-option><span class="locale-flag" aria-hidden="true">🇫🇷</span><span class="language-name">Français</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/ar" data-locale-option><span class="locale-flag" aria-hidden="true">🇸🇦</span><span class="language-name">العربية</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/it" data-locale-option><span class="locale-flag" aria-hidden="true">🇮🇹</span><span class="language-name">Italiano</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/vi" data-locale-option><span class="locale-flag" aria-hidden="true">🇻🇳</span><span class="language-name">Tiếng Việt</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/nl" data-locale-option><span class="locale-flag" aria-hidden="true">🇳🇱</span><span class="language-name">Nederlands</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/tr" data-locale-option><span class="locale-flag" aria-hidden="true">🇹🇷</span><span class="language-name">Türkçe</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/uk" data-locale-option><span class="locale-flag" aria-hidden="true">🇺🇦</span><span class="language-name">Українська</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/id" data-locale-option><span class="locale-flag" aria-hidden="true">🇮🇩</span><span class="language-name">Bahasa Indonesia</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/pl" data-locale-option><span class="locale-flag" aria-hidden="true">🇵🇱</span><span class="language-name">Polski</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/fa" data-locale-option><span class="locale-flag" aria-hidden="true">🇮🇷</span><span class="language-name">فارسی</span><span class="language-check" aria-hidden="true">✓</span></a><a class="language-option" role="option" aria-selected="false" href="/th" data-locale-option><span class="locale-flag" aria-hidden="true">🇹🇭</span><span class="language-name">ไทย</span><span class="language-check" aria-hidden="true">✓</span></a></div></div></div>
+<button class="search-button" type="button" data-search-open><svg class="icon icon-search" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.35-4.35"/><circle cx="11" cy="11" r="7"/></svg><span class="search-label">Search...</span><span class="search-shortcut">⌘K</span></button>
+<nav class="header-links"><a href="https://github.com/openclaw/openclaw"><svg class="icon icon-github" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg><span>GitHub</span></a><a href="https://github.com/openclaw/openclaw/releases"><svg class="icon icon-package" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="m3 8 9 5 9-5"/><path d="M12 22V13"/><path d="m3 8v8l9 6 9-6V8"/></svg><span>Releases</span></a><a href="https://discord.com/invite/clawd"><svg class="icon icon-discord" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M20.32 4.37A19.8 19.8 0 0 0 15.37 2.84a13.77 13.77 0 0 0-.63 1.31 18.4 18.4 0 0 0-5.48 0 13.7 13.7 0 0 0-.64-1.31 19.72 19.72 0 0 0-4.95 1.54C.55 9.07-.32 13.64.1 18.15a19.9 19.9 0 0 0 6.07 3.07 14.6 14.6 0 0 0 1.3-2.11 12.9 12.9 0 0 1-2.05-.98c.17-.13.34-.26.5-.39a14.2 14.2 0 0 0 12.16 0c.17.14.33.27.5.39-.65.38-1.33.7-2.05.98.38.74.82 1.45 1.3 2.11a19.86 19.86 0 0 0 6.08-3.07c.5-5.23-.84-9.76-3.59-13.78ZM8.02 15.38c-1.18 0-2.15-1.08-2.15-2.41 0-1.33.95-2.42 2.15-2.42 1.2 0 2.18 1.1 2.15 2.42 0 1.33-.95 2.41-2.15 2.41Zm7.96 0c-1.18 0-2.15-1.08-2.15-2.41 0-1.33.95-2.42 2.15-2.42 1.2 0 2.17 1.1 2.15 2.42 0 1.33-.95 2.41-2.15 2.41Z"/></svg><span>Discord</span></a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle theme"><svg class="icon icon-moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.9 13.5a8.5 8.5 0 0 1-10.4-10.4 8.5 8.5 0 1 0 10.4 10.4Z"/></svg></button></nav>
+<button class="nav-toggle" type="button" data-nav-toggle>Menu</button>
+</div>
+<nav class="tabs"><a class="tab-link active" href="/">Get started</a><a class="tab-link" href="/install">Install</a><a class="tab-link" href="/channels">Channels</a><a class="tab-link" href="/concepts/architecture">Agents</a><a class="tab-link" href="/tools">Capabilities</a><a class="tab-link" href="/clawhub">ClawHub</a><a class="tab-link" href="/providers">Models</a><a class="tab-link" href="/platforms">Platforms</a><a class="tab-link" href="/gateway">Gateway &amp; Ops</a><a class="tab-link" href="/cli">Reference</a><a class="tab-link" href="/help">Help</a><span class="tab-underline" aria-hidden="true"></span></nav>
+</header>
+<div class="doc-shell">
+<aside class="sidebar">
+<button class="sidebar-close" type="button" data-nav-close aria-label="Close menu">Close</button>
+<nav><section class="nav-section"><h2>Overview</h2><a class="nav-link active" href="/">OpenClaw</a><a class="nav-link" href="/start/showcase">Showcase</a><a class="nav-link" href="/concepts/features">Features</a></section><section class="nav-section"><h2>First steps</h2><a class="nav-link" href="/start/getting-started">Getting started</a><a class="nav-link" href="/start/onboarding-overview">Onboarding overview</a><a class="nav-link" href="/start/wizard">Onboarding (CLI)</a><a class="nav-link" href="/start/onboarding">Onboarding (macOS app)</a></section><section class="nav-section"><h2>Guides</h2><a class="nav-link" href="/start/openclaw">Personal assistant setup</a><a class="nav-link" href="/start/wizard-cli-reference">CLI setup reference</a><a class="nav-link" href="/start/wizard-cli-automation">CLI automation</a></section></nav>
+</aside>
+<main class="main" id="main">
+<article class="article">
+<header class="article-header">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><span>Get started</span><span aria-hidden="true">/</span><span>Overview</span><span aria-hidden="true">/</span><span aria-current="page">OpenClaw</span></nav>
+<p class="article-kicker">Overview</p>
+<h1>OpenClaw</h1>
+
+<div class="page-tools" data-page-tools data-page-url="https://docs.openclaw.ai/"><button type="button" data-copy-page>Copy page</button><a href="https://github.com/openclaw/openclaw/edit/main/docs/index.md">Edit source</a></div>
+</header>
+<div class="doc" data-pagefind-body><h1 id="openclaw-%F0%9F%A6%9E" tabindex="-1">OpenClaw 🦞</h1>
+<p align="center">
+    <img
+        src="/assets/openclaw-logo-text-dark.png"
+        alt="OpenClaw"
+        width="500"
+        class="dark:hidden"
+    />
+    <img
+        src="/assets/openclaw-logo-text.png"
+        alt="OpenClaw"
+        width="500"
+        class="hidden dark:block"
+    />
+</p>
+<blockquote>
+<p><em>&quot;EXFOLIATE! EXFOLIATE!&quot;</em> — A space lobster, probably</p>
+</blockquote>
+<p align="center">
+  <strong>Any OS gateway for AI agents across Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more.</strong>
+<p>Send a message, get an agent response from your pocket. Run one Gateway across built-in channels, bundled channel plugins, WebChat, and mobile nodes.</p>
+</p>
+<div class="oc-card-grid oc-card-cols-2">
+<a class="oc-card" href="/start/getting-started"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.1.9-1.7 2-1.9 3.5 1.5-.2 2.7-.8 3.5-1.9"/><path d="M9 15l-4-4 3-3c4-4 8-5 12-5-0 4-1 8-5 12l-3 3-3-3z"/><path d="M14 6l4 4"/><path d="M8 16l-2 4 4-2"/></svg><div><strong>Get Started</strong>
+<p>Install OpenClaw and bring up the Gateway in minutes.</p>
+</div></a>
+<a class="oc-card" href="/start/wizard"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.4 4.2L17.5 9l-4.1 1.8L12 15l-1.4-4.2L6.5 9l4.1-1.8L12 3z"/><path d="M5 14l.8 2.2L8 17l-2.2.8L5 20l-.8-2.2L2 17l2.2-.8L5 14z"/><path d="M19 13l.7 1.8L21.5 16l-1.8.7L19 18.5l-.7-1.8-1.8-.7 1.8-.7L19 13z"/></svg><div><strong>Run Onboarding</strong>
+<p>Guided setup with <code>openclaw onboard</code> and pairing flows.</p>
+</div></a>
+<a class="oc-card" href="/web/control-ui"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><div><strong>Open the Control UI</strong>
+<p>Launch the browser dashboard for chat, config, and sessions.</p>
+</div></a>
+</div>
+<h2 id="what-is-openclaw%3F" tabindex="-1">What is OpenClaw?</h2>
+<p>OpenClaw is a <strong>self-hosted gateway</strong> that connects your favorite chat apps and channel surfaces — built-in channels plus bundled or external channel plugins such as Discord, Google Chat, iMessage, Matrix, Microsoft Teams, Signal, Slack, Telegram, WhatsApp, Zalo, and more — to AI coding agents like Pi. You run a single Gateway process on your own machine (or a server), and it becomes the bridge between your messaging apps and an always-available AI assistant.</p>
+<p><strong>Who is it for?</strong> Developers and power users who want a personal AI assistant they can message from anywhere — without giving up control of their data or relying on a hosted service.</p>
+<p><strong>What makes it different?</strong></p>
+<ul>
+<li><strong>Self-hosted</strong>: runs on your hardware, your rules</li>
+<li><strong>Multi-channel</strong>: one Gateway serves built-in channels plus bundled or external channel plugins simultaneously</li>
+<li><strong>Agent-native</strong>: built for coding agents with tool use, sessions, memory, and multi-agent routing</li>
+<li><strong>Open source</strong>: MIT licensed, community-driven</li>
+</ul>
+<p><strong>What do you need?</strong> Node 24 (recommended), or Node 22 LTS (<code>22.19+</code>) for compatibility, an API key from your chosen provider, and 5 minutes. For best quality and security, use the strongest latest-generation model available.</p>
+<h2 id="how-it-works" tabindex="-1">How it works</h2>
+<figure class="oc-mermaid" data-mermaid="flowchart LR
+  A[&quot;Chat apps + plugins&quot;] --&gt; B[&quot;Gateway&quot;]
+  B --&gt; C[&quot;Pi agent&quot;]
+  B --&gt; D[&quot;CLI&quot;]
+  B --&gt; E[&quot;Web Control UI&quot;]
+  B --&gt; F[&quot;macOS app&quot;]
+  B --&gt; G[&quot;iOS and Android nodes&quot;]"><pre><code>flowchart LR
+  A[&quot;Chat apps + plugins&quot;] --&gt; B[&quot;Gateway&quot;]
+  B --&gt; C[&quot;Pi agent&quot;]
+  B --&gt; D[&quot;CLI&quot;]
+  B --&gt; E[&quot;Web Control UI&quot;]
+  B --&gt; F[&quot;macOS app&quot;]
+  B --&gt; G[&quot;iOS and Android nodes&quot;]</code></pre></figure><p>The Gateway is the single source of truth for sessions, routing, and channel connections.</p>
+<h2 id="key-capabilities" tabindex="-1">Key capabilities</h2>
+<div class="oc-card-grid oc-card-cols-2">
+<a class="oc-card" href="/channels"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Multi-channel gateway</strong>
+<p>Discord, iMessage, Signal, Slack, Telegram, WhatsApp, WebChat, and more with a single Gateway process.</p>
+</div></a>
+<a class="oc-card" href="/tools/plugin"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Plugin channels</strong>
+<p>Bundled plugins add Matrix, Nostr, Twitch, Zalo, and more in normal current releases.</p>
+</div></a>
+<a class="oc-card" href="/concepts/multi-agent"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Multi-agent routing</strong>
+<p>Isolated sessions per agent, workspace, or sender.</p>
+</div></a>
+<a class="oc-card" href="/nodes/images"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Media support</strong>
+<p>Send and receive images, audio, and documents.</p>
+</div></a>
+<a class="oc-card" href="/web/control-ui"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Web Control UI</strong>
+<p>Browser dashboard for chat, config, sessions, and nodes.</p>
+</div></a>
+<a class="oc-card" href="/nodes"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Mobile nodes</strong>
+<p>Pair iOS and Android nodes for Canvas, camera, and voice-enabled workflows.</p>
+</div></a>
+</div>
+<h2 id="quick-start" tabindex="-1">Quick start</h2>
+<div class="oc-steps">
+<li class="oc-step"><h3>Install OpenClaw</h3>
+<figure class="oc-code" data-code-label="bash"><figcaption><span class="oc-code-label">bash</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-bash"><span class="code-line" data-line="1">npm install -g openclaw@latest</span></code></pre></figure></li>
+<li class="oc-step"><h3>Onboard and install the service</h3>
+<figure class="oc-code" data-code-label="bash"><figcaption><span class="oc-code-label">bash</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-bash"><span class="code-line" data-line="1">openclaw onboard --install-daemon</span></code></pre></figure></li>
+<li class="oc-step"><h3>Chat</h3>
+<p>Open the Control UI in your browser and send a message:</p>
+<figure class="oc-code" data-code-label="bash"><figcaption><span class="oc-code-label">bash</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-bash"><span class="code-line" data-line="1">openclaw dashboard</span></code></pre></figure><p>Or connect a channel (<a href="/channels/telegram">Telegram</a> is fastest) and chat from your phone.</p>
+</li>
+</div>
+<p>Need the full install and dev setup? See <a href="/start/getting-started">Getting Started</a>.</p>
+<h2 id="dashboard" tabindex="-1">Dashboard</h2>
+<p>Open the browser Control UI after the Gateway starts.</p>
+<ul>
+<li>Local default: <a href="http://127.0.0.1:18789/">http://127.0.0.1:18789/</a></li>
+<li>Remote access: <a href="/web">Web surfaces</a> and <a href="/gateway/tailscale">Tailscale</a></li>
+</ul>
+<p align="center">
+  <img src="/whatsapp-openclaw.jpg" alt="OpenClaw" width="420" />
+</p>
+<h2 id="configuration-(optional)" tabindex="-1">Configuration (optional)</h2>
+<p>Config lives at <code>~/.openclaw/openclaw.json</code>.</p>
+<ul>
+<li>If you <strong>do nothing</strong>, OpenClaw uses the bundled Pi binary in RPC mode with per-sender sessions.</li>
+<li>If you want to lock it down, start with <code>channels.whatsapp.allowFrom</code> and (for groups) mention rules.</li>
+</ul>
+<p>Example:</p>
+<figure class="oc-code" data-code-label="json5"><figcaption><span class="oc-code-label">json5</span><button type="button" data-code-copy data-copy-label="Copy code" aria-label="Copy code"><span class="oc-visually-hidden">Copy code</span></button></figcaption><pre><code class="language-json5"><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">  <span class="hljs-attr">channels</span>: {</span><span class="code-line" data-line="3">    <span class="hljs-attr">whatsapp</span>: {</span><span class="code-line" data-line="4">      <span class="hljs-attr">allowFrom</span>: [<span class="hljs-string">&quot;+15555550123&quot;</span>],</span><span class="code-line" data-line="5">      <span class="hljs-attr">groups</span>: { <span class="hljs-string">&quot;*&quot;</span>: { <span class="hljs-attr">requireMention</span>: <span class="hljs-literal">true</span> } },</span><span class="code-line" data-line="6">    },</span><span class="code-line" data-line="7">  },</span><span class="code-line" data-line="8">  <span class="hljs-attr">messages</span>: { <span class="hljs-attr">groupChat</span>: { <span class="hljs-attr">mentionPatterns</span>: [<span class="hljs-string">&quot;@openclaw&quot;</span>] } },</span><span class="code-line" data-line="9">}</span></code></pre></figure><h2 id="start-here" tabindex="-1">Start here</h2>
+<div class="oc-card-grid oc-card-cols-2">
+<a class="oc-card" href="/start/hubs"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Docs hubs</strong>
+<p>All docs and guides, organized by use case.</p>
+</div></a>
+<a class="oc-card" href="/gateway/configuration"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 100 8 4 4 0 000-8z"/><path d="M4 12h2m12 0h2M12 4v2m0 12v2M6.3 6.3l1.4 1.4m8.6 8.6l1.4 1.4m0-11.4l-1.4 1.4m-8.6 8.6l-1.4 1.4"/></svg><div><strong>Configuration</strong>
+<p>Core Gateway settings, tokens, and provider config.</p>
+</div></a>
+<a class="oc-card" href="/gateway/remote"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.3 2.5 3.5 5.5 3.5 9S14.3 18.5 12 21c-2.3-2.5-3.5-5.5-3.5-9S9.7 5.5 12 3z"/></svg><div><strong>Remote access</strong>
+<p>SSH and tailnet access patterns.</p>
+</div></a>
+<a class="oc-card" href="/channels/telegram"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Channels</strong>
+<p>Channel-specific setup for Feishu, Microsoft Teams, WhatsApp, Telegram, Discord, and more.</p>
+</div></a>
+<a class="oc-card" href="/nodes"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Nodes</strong>
+<p>iOS and Android nodes with pairing, Canvas, camera, and device actions.</p>
+</div></a>
+<a class="oc-card" href="/help"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Help</strong>
+<p>Common fixes and troubleshooting entry point.</p>
+</div></a>
+</div>
+<h2 id="learn-more" tabindex="-1">Learn more</h2>
+<div class="oc-card-grid oc-card-cols-2">
+<a class="oc-card" href="/concepts/features"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Full feature list</strong>
+<p>Complete channel, routing, and media capabilities.</p>
+</div></a>
+<a class="oc-card" href="/concepts/multi-agent"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Multi-agent routing</strong>
+<p>Workspace isolation and per-agent sessions.</p>
+</div></a>
+<a class="oc-card" href="/gateway/security"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>Security</strong>
+<p>Tokens, allowlists, and safety controls.</p>
+</div></a>
+<a class="oc-card" href="/gateway/troubleshooting"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 005 5L9.5 21 4 15.5 14.7 6.3z"/><path d="M6 18l-2 2"/></svg><div><strong>Troubleshooting</strong>
+<p>Gateway diagnostics and common errors.</p>
+</div></a>
+<a class="oc-card" href="/reference/credits"><svg class="oc-card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg><div><strong>About and credits</strong>
+<p>Project origins, contributors, and license.</p>
+</div></a>
+</div>
+</div>
+<section class="page-feedback" aria-label="Page feedback"><span>Was this useful?</span><button type="button" data-feedback-value="yes">Yes</button><button type="button" data-feedback-value="no">No</button><output data-feedback-result></output></section>
+<nav class="page-nav"><span></span><a class="next" href="/start/showcase"><small>Next</small>Showcase</a></nav>
+</article>
+<aside class="toc"><h2>On this page</h2><a class="toc-l2" href="#what-is-openclaw%3F">What is OpenClaw?</a><a class="toc-l2" href="#how-it-works">How it works</a><a class="toc-l2" href="#key-capabilities">Key capabilities</a><a class="toc-l2" href="#quick-start">Quick start</a><a class="toc-l2" href="#dashboard">Dashboard</a><a class="toc-l2" href="#configuration-(optional)">Configuration (optional)</a><a class="toc-l2" href="#start-here">Start here</a><a class="toc-l2" href="#learn-more">Learn more</a></aside>
+</main>
+</div>
+<div class="search-modal"><div class="search-panel"><div class="search-head"><input data-search-input placeholder="Search commands, channels, config..."><button data-search-close>Close</button></div><div class="search-hints" aria-label="Search shortcuts"><button type="button" data-search-suggestion="install">install</button><button type="button" data-search-suggestion="telegram">telegram</button><button type="button" data-search-suggestion="gateway">gateway</button><button type="button" data-search-suggestion="plugins">plugins</button></div><div class="search-results" data-search-results></div></div></div>
+<section class="docs-chat" data-docs-chat aria-label="OpenClaw docs assistant">
+<button class="docs-chat-launcher" type="button" data-chat-toggle aria-expanded="false" aria-controls="docs-chat-panel"><span aria-hidden="true">*</span><span>Ask Molty</span></button>
+<div class="docs-chat-panel" id="docs-chat-panel" role="dialog" aria-modal="false" aria-labelledby="docs-chat-title">
+<header class="docs-chat-head"><div class="docs-chat-title"><span class="docs-chat-mark" aria-hidden="true"><svg class="icon icon-sparkles" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.6 4.4L6 9l4.4 1.6L12 15l1.6-4.4L18 9l-4.4-1.6L12 3Z"/><path d="m19 14-.8 2.2L16 17l2.2.8L19 20l.8-2.2L22 17l-2.2-.8L19 14Z"/><path d="m5 4-.7 1.8L2.5 6.5l1.8.7L5 9l.7-1.8 1.8-.7-1.8-.7L5 4Z"/></svg></span><h2 id="docs-chat-title">Assistant</h2></div><div class="docs-chat-actions"><button class="docs-chat-icon docs-chat-maximize" type="button" data-chat-maximize aria-label="Maximize docs assistant" aria-pressed="false"><svg class="icon icon-maximize-2" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="m21 3-7 7"/><path d="M9 21H3v-6"/><path d="m3 21 7-7"/></svg></button><button class="docs-chat-icon docs-chat-copy" type="button" data-chat-copy aria-label="Copy conversation" hidden><svg class="icon icon-copy" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><button class="docs-chat-icon docs-chat-retry" type="button" data-chat-retry aria-label="Reload last answer" hidden disabled><svg class="icon icon-refresh-cw" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15.1 6.64"/><path d="M3 12A9 9 0 0 1 18.1 5.36"/><path d="M21 3v6h-6"/><path d="M3 21v-6h6"/></svg></button><button class="docs-chat-icon docs-chat-clear" type="button" data-chat-clear aria-label="Clear conversation" hidden><svg class="icon icon-trash" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="m19 6-1 14H6L5 6"/><path d="M10 11v5"/><path d="M14 11v5"/></svg></button><button class="docs-chat-icon docs-chat-close" type="button" data-chat-close aria-label="Close docs assistant">x</button></div></header>
+<div class="docs-chat-auth" data-chat-auth hidden></div>
+<div class="docs-chat-log" data-chat-log aria-live="polite">
+<div class="docs-chat-empty">Responses are generated using AI and may contain mistakes.</div>
+</div>
+<form class="docs-chat-form" data-chat-form><textarea data-chat-input rows="2" maxlength="2000" placeholder="Ask a question..."></textarea><span class="docs-chat-attach" aria-hidden="true"><svg class="icon icon-paperclip" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></span><button type="submit" data-chat-submit aria-label="Send"><svg class="icon icon-send" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg></button></form>
+</div>
+</section>
+<script type="module" src="/assets/docs-site.js?v=e827648cca02"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"bb604857b0bb4175bfb02f98001d3956","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

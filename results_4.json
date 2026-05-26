@@ -1,0 +1,26 @@
+{
+  "provider": "brave-direct",
+  "query": "Guyana NDMA digitization procurement partner 2026",
+  "freshness": "month",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-25",
+  "results": [
+    {
+      "title": "Guyana - Digital Economy",
+      "url": "https://www.trade.gov/country-commercial-guides/guyana-digital-economy",
+      "description": "Key government initiatives include the forthcoming “ICT Masterplan 2030,” which, once publicly released, will outline strategic priorities such as expanding broadband access, improving e-government services, and fostering a culture of innovation through partnering with the private sector. The plan will also emphasize the need for digital inclusion, particularly in remote and rural areas, to ensure that all citizens benefit from technological advancements. Guyana’s digital economy is poised for significant growth in the coming years.",
+      "age": "2 weeks ago",
+      "page_age": "2026-05-13T00:00:00",
+      "source": "International Trade Administration"
+    },
+    {
+      "title": "Defense Contract Management Agency",
+      "url": "https://www.dcma.mil/",
+      "description": "The official site of the <strong>Defense Contract Management Agency</strong>. DCMA ensures the integrity of the contracting process and provides a range of contract-procurement management services.",
+      "age": "4 days ago",
+      "page_age": "2026-05-21T06:07:59",
+      "source": "Defense Contract Management Agency"
+    }
+  ]
+}

@@ -70,3 +70,4 @@ Archive every Monday, start fresh.
 - 2026-05-24: Weekly North Star review saved to `reports/north-star/2026-05-24-weekly-review.md`; prioritized Altmark acceptance/payment/proof gate as fastest next dollar, kept apps distribution-only, deferred passive-income builds, and recommended Mission Control priority cleanup.
 
 - 2026-05-24 nightly: hardened Altmark Monday closeout + n8n migration gate so acceptance/access/payment clarity stays ahead of reliability work.
+- 2026-05-25 overnight ops: checked task files/daily notes, Mission Control, and 52 crons; no repeated-error jobs or active fallback tasks. Logged urgent bootstrap-budget drift recommendation because HEARTBEAT.md has only 3 bytes of headroom: `reports/overnight/2026-05-25-overnight-autonomy.md`.

@@ -27,6 +27,19 @@ Do not start or prioritize the HTTPS/Google OAuth migration until at least the a
 
 Why: the migration is reliability work; acceptance/payment clarity is the revenue gate. If the URL/OAuth work breaks or needs client decisions before the commercial facts are captured, it creates avoidable confusion.
 
+## Closeout Gate Status — update only from client facts
+
+| Gate | Required evidence | Status | Next action |
+|---|---|---:|---|
+| Access/admin owner | Named person or role who owns PC/n8n/log access | Unknown | Ask in Monday closeout |
+| Insurance acceptance | Client says accepted/live/useful OR lists open issues | Unknown | Ask in Monday closeout |
+| Final payment/approval | Paid/approved/pending/blocker stated by client | Unknown | Ask in Monday closeout |
+| Rent delinquency readiness | Deposit timing + clean sample report owner/date | Unknown | Ask in Monday closeout |
+| Proof permission | Internal-only/anonymized/named/no-reuse boundary | Blocked | Do not ask until acceptance/payment are clean |
+| Referral readiness | Positive relationship + permitted proof boundary | Blocked | Do not ask until proof gate clears |
+
+Regression check: if any status above is still `Unknown` or `Blocked`, Mission Control must keep Altmark closeout/proof ahead of n8n HTTPS/OAuth migration and ahead of generic outreach/app work.
+
 ## If Acceptance Is Confirmed
 Record immediately:
 
@@ -79,3 +92,8 @@ Do not claim hours saved, ROI, named Altmark proof, tenant outreach automation, 
 
 ## Done State
 This sheet is complete when the four confirmation points are recorded in Client OS and Mission Control no longer has infrastructure migration ranked above acceptance/payment clarity.
+
+## 2026-05-25 14:30 Heartbeat Check
+- Mission Control verified at 303 active / 4 high; current high layer is Altmark handoff/payment, Altmark proof screenshots, weekly systems drift, and Altmark access gate before n8n HTTPS/OAuth.
+- Weekly unemployment is no longer high, so the remaining commercial focus is cleanly Altmark-first.
+- Added the Closeout Gate Status table above so future heartbeats can update from client facts without guessing.

@@ -43,7 +43,7 @@
 | video-generation | skills/video-generation/SKILL.md | checklists/video-generation.md | pending | — | — | 2026-04-26 |
 | sports-gm | skills/sports-gm/SKILL.md | checklists/sports-gm.md | stable | 0.917 | 2026-05-15 | 2026-04-27 |
 | portfolio-card | skills/portfolio-card/SKILL.md | checklists/portfolio-card.md | pending | — | — | 2026-05-02 |
-| app-marketing-product-content | agents/app-marketing/product-content/AGENT.md | checklists/app-marketing-product-content.md | pending | — | — | 2026-05-06 |
+| app-marketing-product-content | agents/app-marketing/product-content/AGENT.md | agents/autoresearch/checklists/app-marketing-product-content.md | stable | 1.000 | 2026-05-25 | 2026-05-06 |
 
 | opticfy-ops | skills/opticfy-ops/SKILL.md | agents/autoresearch/checklists/opticfy-ops.md | stable | 1.000 | 2026-05-18 | 2026-05-03 |
 | opticfy-pipeline | skills/opticfy-pipeline/SKILL.md | checklists/opticfy-pipeline.md | stable | 0.944 | 2026-05-13 | 2026-05-03 |
