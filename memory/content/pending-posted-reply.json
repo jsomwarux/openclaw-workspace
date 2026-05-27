@@ -1,16 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-05-24",
-      "day": "sunday",
-      "line_no": 179,
+      "date": "2026-05-26",
+      "day": "tuesday",
+      "line_no": 183,
       "platform": "x",
-      "summary": "What makes public proof believable? Not naming every client. Clean attribution. Client outcomes in the right bucket. Demo work separated fro",
-      "topic": "what-makes-public-proof-believable?-not-naming-every-client.-clean-attribution.-client-outcomes-in-the-right-bucket.-dem"
+      "summary": "Which part of your AI stack should stay human?  Claude Code can build.  n8n can move data.  Someone still has to decide what deserves agent ",
+      "topic": "which-part-of-your-ai-stack-should-stay-human-claude-code-can-build-n8n-can-move-data-someone-still-has-to-decide"
     }
   ],
   "note": "",
-  "sent_at": 1779627684,
-  "source": "content-sunday",
+  "sent_at": 1779796848,
+  "source": "content-reminder",
   "status": "pending"
 }

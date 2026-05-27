@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-05-21",
+  "last_run": "2026-05-26",
   "drafted": [
     "new-age-global-builders",
     "essential-property-management",
@@ -69,7 +69,9 @@
     "levitt-fuirst-associates-ltd",
     "foa-son-corporation",
     "hotaling-insurance-services",
-    "tri-state-supply-company-mount-vernon"
+    "tri-state-supply-company-mount-vernon",
+    "bell-electrical-supply-co-inc",
+    "fargo-hvac-supply-inc"
   ],
   "skipped_no_channel": [
     "fargo-hvac-supply",

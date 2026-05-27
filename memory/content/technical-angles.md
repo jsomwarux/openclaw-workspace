@@ -253,3 +253,7 @@ _Emerging conversations JT hasn't posted about yet but has the credibility to. S
 [2026-05-15] OpenClaw auditable delegation + startup traces — Real agent systems need visible handoffs, startup attribution, and context-budget telemetry before they can be trusted in ops-heavy SMB workflows. (source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.14-beta.2)
 
 [2026-05-22] OpenClaw policy/doctor/runtime hardening — useful content angle for showing why production agents need policy checks, secret hygiene, and boring runtime maintenance, not just flashy demos. (source: https://github.com/openclaw/openclaw/releases/tag/v2026.5.20)
+- **Native Microsoft Personas in n8n:** n8n agents now have real Microsoft identities (Outlook/Teams/SharePoint). Great for SMBs who want AI to act as a "virtual teammate" with its own inbox, not just a faceless bot. (Source: https://x.com/darshan_gupta17/status/2058797714012536871)
+
+- **Agentic Drift Detection:** As agent stacks grow, SOUL.md and settings drift. ClawSec introduces automated integrity verification—a critical "Governance" layer for enterprise AI implementation consulting. (Source: https://github.com/prompt-security/clawsec)
+- **Local-First Voice Infrastructure:** Local TTS (Voicebox/MLX) eliminates the trust barrier for high-stakes voice cloning. Businesses that won't touch cloud TTS will deploy a local 'Voice Operator' on-site for automated (human-approved) customer/maintenance alerts. Moat = security + hardware proximity.

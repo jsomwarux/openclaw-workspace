@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-24T21:10:44.731Z",
+  "updatedAt": "2026-05-26T18:05:57.738Z",
   "entries": {
     "memory:memory/2026-04-05.md:1:26": {
       "key": "memory:memory/2026-04-05.md:1:26",
@@ -1151,22 +1151,24 @@
       "endLine": 210,
       "source": "memory",
       "snippet": "- `health-constraint-layer.md` now includes max deep-work load and protected task categories. - Weekly cron prompt now enforces Eve-autonomous/JT-only/blocked labels and avoids cron bloat. ## Altmark Group Client Update — 7:56 PM - JT reported active AI implementation work for Altmark Group (`https://www.altmarkgroup.com/`). - Yair, CFO, reached out on Twitter asking whether JT could build automation systems; JT said yes, met at Altmark's Bronx office, scoped workflows, wrote proposal, and began delivery. - Current status: insurance expiration workflow finished; dedicated PC set up and planned for delivery to office next week; rent delinquency workflow waiting on 50% deposit before work",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3,
+      "totalScore": 4,
       "maxScore": 1,
       "firstRecalledAt": "2026-05-02T11:42:40.126Z",
-      "lastRecalledAt": "2026-05-14T15:04:41.516Z",
+      "lastRecalledAt": "2026-05-26T18:05:57.738Z",
       "queryHashes": [
         "507f676613aa",
         "df59122f6250",
-        "9667b21a3f50"
+        "9667b21a3f50",
+        "1834acaa50f4"
       ],
       "recallDays": [
         "2026-05-02",
         "2026-05-10",
-        "2026-05-14"
+        "2026-05-14",
+        "2026-05-26"
       ],
       "conceptTags": [
         "health-constraint-layer.md",
@@ -2813,6 +2815,68 @@
         "support/returns-heavy",
         "owned-system",
         "research/trending"
+      ]
+    },
+    "memory:memory/2026-05-25.md:25:35": {
+      "key": "memory:memory/2026-05-25.md:25:35",
+      "path": "memory/2026-05-25.md",
+      "startLine": 25,
+      "endLine": 35,
+      "source": "memory",
+      "snippet": "- Pending tasks clear; cost alerts clear; cron health clear (52 jobs, 0 error/consecutive-error jobs; duplicate lossless-claw plugin warning persists but non-blocking). - Mission Control audit clean: 303 active / 4 high / 0 uncontrolled high. High layer is now Altmark handoff/payment, Altmark proof screenshots, weekly systems drift, and Altmark access gate before n8n HTTPS/OAuth. - Proactive North Star progress: tightened `memory/clients/altmark-group/proof-assets/monday-closeout-sheet-2026-05-25.md` with a Closeout Gate Status table and regression check so acceptance/payment/proof gates stay ahead of infrastructure migration and generic work. ## Heartbeat 18:30 - Pending tasks clear; cost",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-26T18:05:57.738Z",
+      "lastRecalledAt": "2026-05-26T18:05:57.738Z",
+      "queryHashes": [
+        "1834acaa50f4"
+      ],
+      "recallDays": [
+        "2026-05-26"
+      ],
+      "conceptTags": [
+        "error/consecutive-error",
+        "lossless-claw",
+        "non-blocking",
+        "handoff/payment",
+        "https/oauth",
+        "acceptance/payment/proof",
+        "pending",
+        "tasks"
+      ]
+    },
+    "memory:memory/2026-05-19.md:36:48": {
+      "key": "memory:memory/2026-05-19.md:36:48",
+      "path": "memory/2026-05-19.md",
+      "startLine": 36,
+      "endLine": 48,
+      "source": "memory",
+      "snippet": "- Pushed Nash weekly receipt generator to GitHub commit `7789f85`; `npm run check` and `npm run build` passed. Deterministic route/static/API checks passed; screenshot QA remains blocked by unavailable browser tooling. - Rebasing and pushed Glow Product Verdict Card to GitHub commit `9b9bc6f`; `npm run build` and `npm run lint` passed with 0 errors and 2 existing `<img>` warnings. Live product-page verification remains blocked on production DB/admin access. ## Altmark PC Installed - JT installed the dedicated local automation PC at Altmark's office today. Public proof/content should stay anonymized unless explicit naming permission exists. Update Altmark proof gates next: capture handoff/a",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-26T18:05:57.738Z",
+      "lastRecalledAt": "2026-05-26T18:05:57.738Z",
+      "queryHashes": [
+        "1834acaa50f4"
+      ],
+      "recallDays": [
+        "2026-05-26"
+      ],
+      "conceptTags": [
+        "route/static/api",
+        "product-page",
+        "db/admin",
+        "proof/content",
+        "handoff/a",
+        "pushed",
+        "nash",
+        "weekly"
       ]
     }
   }

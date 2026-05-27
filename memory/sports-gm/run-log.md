@@ -19,3 +19,9 @@
 - Outputs: `memory/sports-gm/market-snapshots/2026-05-19.csv`, `memory/sports-gm/reports/weekly-gm-report-2026-05-19.md`, `memory/sports-gm/candidates/2026-05-19.csv`, `memory/content/bank/2026-05-19/dynasty-gm-automated-market-posts.md`.
 - Candidate count: 310.
 - Top research candidates by rank dislocation: Oscar Delp (1QB), Adam Randall (1QB), Seth McGowan (1QB). Treat as research queue only, not public buy/sell calls.
+
+## 2026-05-26 — Weekly Market Report
+- Ran `scripts/sports_gm_fetch_prices.py` and `scripts/sports_gm_generate_report.py`.
+- Outputs: `memory/sports-gm/market-snapshots/2026-05-26.csv`, `memory/sports-gm/reports/weekly-gm-report-2026-05-26.md`, `memory/sports-gm/candidates/2026-05-26.csv`, `memory/content/bank/2026-05-26/dynasty-gm-automated-market-posts.md`.
+- Candidates: 136. Top research candidates: Cedric Tillman, Keenan Allen, Rashod Bateman.
+- Source note: KeepTradeCut fetch timed out after 45s; report used FantasyCalc, FantasyPros, and DynastyProcess. Treat all candidates as rank-dislocation research, not public calls.

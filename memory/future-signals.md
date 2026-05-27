@@ -246,3 +246,4 @@
 - Why deferred: policy framework is relevant but not an immediate buyer action until the plan is published or procurement/private-sector programs become concrete.
 - Trigger condition: public release of ICT Masterplan 2030, named NDMA/private-sector procurement program, or business-process digitization grant/vendor opportunity tied to private suppliers.
 - Action when triggered: update Guyana Local Content Ops Sprint positioning and create a Mission Control task only if it creates a private-sector supplier/partner route, not generic government transformation.
+- **Signal:** Local-First High-Quality Voice (Voicebox). **Trigger:** Altmark rent-delinquency deployment + proof capture. **Value:** Expansion offer for 'Local-First Voice Desk' (automated human-approved voice alerts).

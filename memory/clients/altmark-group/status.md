@@ -1,6 +1,6 @@
 # Altmark Group — Client Status
 
-Last updated: 2026-05-23
+Last updated: 2026-05-26
 
 ## Client
 - Company: Altmark Group
@@ -42,22 +42,24 @@ Payment structure from proposal:
 - Each use case: 50% to start, 50% upon delivery and approval
 
 Known active/current workflows from JT update:
-1. Insurance expiration workflow — just finished ($2,250 use case; final payment/approval status unknown)
-2. Dedicated PC setup — done; to be delivered to Altmark office next week
-3. Rent delinquency workflow — pending 50% deposit before work begins ($4,500 use case; deposit expected $2,250 if terms unchanged)
+1. Insurance expiration workflow — launched in production, working as expected after a few minor updates, and final 50% paid.
+2. Dedicated PC setup — installed in Altmark office last week and running production workflow environment.
+3. Rent delinquency workflow — initial 50% paid; JT is actively building and about to start testing.
+4. DHCR Lease Renewal Automation Phase 1 — Altmark requested a new legal-rent renewal workflow; JT created a $3,500 proposal; Eve reviewed it on 2026-05-26 and created kickoff/acceptance/runbook assets on 2026-05-27. Sequence after rent delinquency deployment/testing unless Altmark explicitly reprioritizes.
 
 ## Current Status
 - Active client engagement.
-- Insurance expiration workflow is finished.
-- Dedicated PC for workflows was installed at Altmark's office on 2026-05-19. Capture handoff/access confirmation, acceptance wording, open issues, and payment/deposit clarity before referral or named proof use.
-- Rent delinquency workflow is temporarily paused by client-side data readiness. On 2026-05-06, after JT asked whether Altmark had the updated rent delinquency tracker ready and was ready to move forward, Yair replied that Matt is away, the office has been overwhelmed, internal reporting still needs cleanup, and many tenant ledgers need cleanup before the delinquency report is accurate. Yair expects to pick it back up early next week.
-- This is not a lost opportunity; it is a data hygiene/reporting blocker. Best next move is to help define the minimal clean input needed and keep momentum without starting build work before the report is reliable.
+- Insurance expiration workflow is live in production and working as expected after a few minor updates.
+- Altmark paid the final 50% for the insurance expiration workflow.
+- Dedicated PC for workflows was installed in Altmark's office last week.
+- Rent delinquency workflow is active: Altmark paid the initial 50%; JT is working on it and about to begin testing.
+- Altmark pitched an additional workflow request: DHCR Lease Renewal Automation Phase 1, legal-rent renewals only. Proposal reviewed and delivery assets prepared. Next step after rent delinquency deployment/testing: confirm $1,750 kickoff payment, populated command center spreadsheet owner/date, current RGB rates, Phase 1 included units/properties, approved email recipients, and DHCR rent rolls for all included properties.
 
 ## Revenue / Payment Status
 - Total proposed buildout: $34,750.
 - Foundation Infrastructure Setup: $4,000, paid in full at kickoff per proposal.
-- Insurance Expiration Tracking: $2,250; workflow finished, payment/approval status unknown.
-- Rent Delinquency Outreach: $4,500; pending 50% deposit before work starts, expected $2,250 if terms unchanged.
+- Insurance Expiration Tracking: $2,250; launched in production and final 50% paid.
+- Rent Delinquency Outreach: $4,500; initial 50% paid, actively being built/tested.
 - Monthly support & maintenance: $1,500/month with 3-month minimum after buildout completion.
 
 ## Timeline From Proposal
@@ -73,15 +75,16 @@ Known active/current workflows from JT update:
 - Full audit trail for workflow actions.
 
 ## Immediate Next Actions
-- Confirm deposit/payment status.
-- Prepare delivery checklist/runbook for dedicated PC handoff.
-- Create runbook for insurance expiration workflow.
-- For rent delinquency: use `runbooks/rent-delinquency-data-readiness-checklist.md` with Yair/Karen/Matt before build work begins. Required before starting: source report named, required fields present, ledger cleanup assumptions documented, edge cases flagged, cleaned sample export approved, and 50% deposit timing confirmed.
-- Once ledger/report cleanup is ready and deposit arrives, begin rent delinquency workflow.
+- Update Client OS proof/payment gates to reflect insurance workflow live + paid.
+- For rent delinquency: continue build and begin testing; document test cases, edge cases, sample inputs/outputs, and acceptance criteria before production deployment.
+- Capture proof-safe evidence from the live insurance workflow: redacted screenshots, run logs, acceptance wording, and before/after workflow summary.
+- DHCR Lease Renewal Automation proposal has been reviewed. Use `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `client-os/acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md` after rent delinquency deployment/testing or if Altmark explicitly pulls this forward.
+- Prepare support/maintenance/retainer path after the second workflow proves stable.
 - 2026-05-22 Friday command sheet prepared: `proof-assets/friday-command-sheet-2026-05-22.md`. Use it to separate acceptance/payment proof capture from the HTTPS/Google OAuth reliability work.
 - 2026-05-23 weekend command sheet prepared: `proof-assets/weekend-command-sheet-2026-05-23.md`. Treat acceptance/payment/access confirmation as the top move before HTTPS/OAuth migration.
 - 2026-05-23 nightly closeout added Monday execution assets: `proof-assets/monday-closeout-sheet-2026-05-25.md` and `proof-assets/referral-readiness-gate-2026-05-23.md`.
 - 2026-05-25 nightly added Tuesday branch sheet: `proof-assets/tuesday-closeout-branch-sheet-2026-05-26.md`. Use it after the Monday closeout based on reply state: confirmed facts → update Client OS/proof gate; partial reply → one missing-field follow-up; no reply → short closeout bump. Keep HTTPS/OAuth migration and referral asks blocked until acceptance/access/payment facts are clear.
+- 2026-05-27 nightly converted the DHCR Lease Renewal proposal into delivery assets: `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `client-os/acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md`. Phase 1 is legal-rent renewals only; preferential-rent renewals remain Phase 2.
 - Capture proof asset after PC delivery + workflow acceptance: "local-first automation infrastructure for property/operations team with insurance-expiration workflow live."
 
 ## Strategic Expansion Opportunity

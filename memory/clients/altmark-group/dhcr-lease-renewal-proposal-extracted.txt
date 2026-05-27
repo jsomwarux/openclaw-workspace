@@ -1,0 +1,96 @@
+
+--- Page 1 ---
+
+DHCR Lease Renewal
+AutomationAdd-On Proposal
+Prepared for
+Altmark Group
+JT Somwaru | May 2026
+SCOPE
+Phase 1: Legal Rent Renewals Only $3,500
+Covers ~2/3 of stabilized units (~40 leases). Preferential rent renewals scoped as Phase 2.
+Daily automated scan of the command center spreadsheet for upcoming lease expirations
+At 120 days before expiration: generates a completed RTP-8 Renewal Lease Form as a filled PDF
+Calculates 1-year and 2-year renewal rent options using configurable RGB percentages, including
+support for stacked 2-year increases
+Calculates additional security deposit required for each renewal option
+Populates all tenant information, owner/entity information (entity name varies by property, address
+always 2447 Third Ave, c/o Matt Grabina), lease dates, and computed fields
+Emails completed forms to Matt with a summary of all renewals generated that day
+At 95 days before expiration: sends a reminder for any forms not yet marked as sent, with the 90-
+day statutory deadline highlighted
+Weekly summary digest: all upcoming expirations in the next 150 days, form status, and deadline
+tracking
+Tracks all renewal activity in Google Sheets for audit and visibility
+DATA SOURCE
+Command Center Spreadsheet
+Single source of truth maintained by Matt, combining DHCR Rent Roll and current rent roll data.
+The spreadsheet includes: entity name, property address, apartment number, tenant name, apartment
+status, legal registered rent, current security deposit on file, lease start date, and lease end date. The
+workflow reads from this spreadsheet and writes tracking columns back to it (form generated date,
+form sent date). 
+RENT CALCULATION LOGIC
+Automated Computations
+1-year renewal: Legal Rent × (1 + 1-year RGB rate)
+2-year renewal (standard): Legal Rent × (1 + 2-year RGB rate)
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+
+--- Page 2 ---
+
+2-year renewal (stacked): Legal Rent × (1 + year 1 rate) × (1 + year 2 rate) — for split-year RGB
+increases
+Additional security deposit: New legal rent minus current deposit on file
+RGB rates are configurable — Matt updates once per year. Current rates: 3.0% (1-year), 4.5% (2-
+year)
+DELIVERY & REVIEW
+What Matt Handles
+The workflow generates the forms and manages timing. Matt reviews each form for accuracy, prints
+and mails to tenants, countersigns returned forms, and updates tenant accounts in AppFolio. The
+workflow does not send forms directly to tenants or interact with AppFolio. 
+FUTURE EXPANSION
+Phase 2: Preferential Rent Renewals
+Scoped and priced separately after Phase 1 is live and validated.
+Adds support for the remaining ~1/3 of stabilized units with preferential rents. Requires additional form
+fields, dual rent calculations (legal vs. preferential), and a supplemental form. 
+PRICING SUMMARY
+Use Case Price
+DHCR Lease Renewal Automation (Phase 1 — Legal Rent Only) $3,500
+Total $3,500
+PAYMENT STRUCTURE
+50% ($1,750) to start
+50% ($1,750) upon delivery and approval
+WHAT I NEED FROM YOUR TEAM
+The command center spreadsheet populated with tenant data for all rent-stabilized units (entity
+name, property address, apartment number, tenant name, legal registered rent, current security
+deposit, lease dates)
+Current RGB rates confirmed (currently 3.0% for 1-year, 4.5% for 2-year)
+A sample completed RTP-8 form for reference (already provided)
+The DHCR Rent Roll report for each property (already provided for 2490 3rd Ave)
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+
+--- Page 3 ---
+
+TIMELINE
+1–2 weeks from kickoff to delivery. The command center spreadsheet template will be provided within
+2 days of starting. Once Matt populates it with tenant data, the workflow can be built and tested within
+one week. Delivery includes a test run generating sample renewal forms for Matt to verify accuracy
+before going live. 
+JT Somwaru | jtsomwaru.com

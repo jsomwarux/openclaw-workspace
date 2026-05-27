@@ -35,3 +35,6 @@ Last reset: 2026-05-01
 2026-05-25 [EMERGING] niche=salesforce-agentforce — Agentforce 360 continues platform expansion with Builder, Agent Script, Voice, and Intelligent Context; useful for implementation/activation positioning but already-covered theme.
 2026-05-25 [CONFIRMS] niche=construction — Major builders continue applying AI to safety/training workflows, reinforcing construction ops AI demand without a new urgent trigger.
 2026-05-25 [EMERGING] niche=enterprise-rag — 2026 RAG content emphasizes traceability/citations/version provenance for enterprise knowledge assistants, confirming governance-aware RAG positioning.
+2026-05-26 [EMERGING] niche=insurance — BriteCore embedded AI copilots and MCP service layer reinforce insurance core-system vendors moving toward agentic automation, but no immediate JT action verified.
+2026-05-26 [EMERGING] niche=construction — NYC transit/construction tech pilots include AI proposals, suggesting continued public-infrastructure AI adoption but not a high-severity consulting signal.
+2026-05-26 [EMERGING] niche=agentforce — Agentforce 360 capability pages continue emphasizing builder, voice, scripting, and intelligent context; tracked as platform background rather than new high finding.

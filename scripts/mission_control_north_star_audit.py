@@ -32,11 +32,13 @@ DONE_MARKERS = ("Done state:", "Done looks like:")
 
 # Explicit top layer. These are title fragments, not IDs, so the rule survives task recreation.
 TOP_RULES: list[tuple[str, int, str]] = [
-    ("Complete weekly unemployment certification", 1, "Protects current financial stability; keep above optional work."),
-    ("Altmark: lock PC handoff + acceptance/payment clarity", 2, "Fastest path to client acceptance, payment clarity, proof, and referrals."),
-    ("Altmark: capture redacted proof screenshots", 3, "Turns accepted client work into proof/distribution assets."),
+    ("Altmark: test and deploy rent delinquency workflow", 1, "Active paid client delivery: initial 50% received; testing/deployment is this week's revenue/proof gate."),
+    ("Altmark: capture redacted proof screenshots", 2, "Insurance workflow is live and paid; capture proof-safe evidence while fresh."),
+    ("Altmark: provide new workflow proposal", 3, "Next paid Altmark workflow after rent delinquency; proposal review is required before delivery planning."),
     ("Fix weekly systems review drift", 5, "Critical operating-layer blocker: cron cap, gateway load, bootstrap budgets."),
-    ("Altmark: Gate acceptance/access before n8n HTTPS", 6, "Prevents infrastructure work from outranking acceptance, payment, and access clarity."),
+    ("ReelFarm/TikTok: design warm-up", 20, "Current app marketing blocker: direct slideshow posting is producing 0-view/shadow-ban behavior."),
+    ("ReelFarm Intel: synthesize results", 21, "Convert ReelFarm Intel into actual app-specific settings/prompt changes before resuming posting."),
+    ("Action Arena: prepare App Store launch marketing checklist", 24, "Action Arena is nearly finished; launch marketing must be ready before App Store approval."),
 ]
 
 # Weekly single-focus guard. The North Star active-week file is the owner of the

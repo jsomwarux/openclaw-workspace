@@ -1,6 +1,6 @@
 # Marketsmith — Opportunity Status
 
-Last updated: 2026-04-30
+Last updated: 2026-05-26
 
 ## Opportunity Type
 High-value AI/product consulting or freelance opportunity.
@@ -21,10 +21,9 @@ High-value AI/product consulting or freelance opportunity.
 - Framing: deliverables-focused rather than rigid set number of hours worked
 
 ## Current Status
-- Waiting for follow-up from head of talent acquisition.
-- Next step on their side: she will talk with the product team about fit and follow up with JT.
-- No response yet as of 2026-04-30 8:04 PM ET.
-- JT followed up with Karen on 2026-05-06; no response yet as of that day.
+- Warm re-engaged. Sam Foy emailed JT on Friday before Memorial Day weekend apologizing for delay and said he needs to follow up with Karen, who was going to set JT up with conversations with folks on the team. Sam or Karen will get back to JT after the holiday.
+- JT is watching for a follow-up this week about product/team meetings.
+- Next action: do not chase immediately; if no reply by later this week or early next week, send a concise check-in anchored on scheduling those team conversations.
 
 ## Strategic Fit
 Strong fit with North Star if it becomes consulting/freelance product work:
@@ -40,9 +39,9 @@ Strong fit with North Star if it becomes consulting/freelance product work:
 - Do not underprice if they want senior product/AI strategy and implementation.
 
 ## Recommended Follow-Up Timing
-JT already followed up on 2026-05-06. Do not chase again immediately.
+Sam re-engaged before the holiday weekend. Do not chase immediately.
 
-If no response after 4–5 business days, send one concise follow-up that:
+If no response by later this week / early next week, send one concise follow-up that:
 1. Reiterates excitement about MSIGenerate/product initiatives
 2. Anchors around a concrete product-team discovery or 2-week diagnostic
 3. Keeps the $175/hr or $15k/mo deliverables-based framing

@@ -2,18 +2,19 @@
 
 ## Outcome We Are Paid To Improve
 - Primary outcome: local-first automation for sensitive back-office/property/family-office workflows with audit trail, human approval, and clear exception handling.
-- Baseline: manual/local back-office processes; first workflow finished but acceptance/payment evidence still not confirmed in Eve memory.
-- Target: first workflow accepted, PC/access path clean, payment/deposit status clear, and next workflow gated by clean input data.
-- Current status: active — dedicated PC installed at Altmark office on 2026-05-19; insurance expiration workflow finished and now needs post-install acceptance wording/payment clarity; rent delinquency paused by data-readiness/deposit gate.
+- Baseline: manual/local back-office processes before JT installed local workflow infrastructure.
+- Target: insurance workflow stable in production, rent delinquency workflow tested/deployed cleanly, and DHCR Lease Renewal Phase 1 ready to kick off after rent delinquency acceptance.
+- Current status: active — dedicated PC installed at Altmark office; insurance expiration workflow live in production and final 50% paid; rent delinquency initial 50% paid and in active build/testing; DHCR Lease Renewal proposal reviewed and delivery assets prepared.
 
 ## Live Status
 | Area | Status | Notes | Owner | Next Action | Due |
 |---|---|---|---|---|---|
-| Insurance expiration workflow | Finished / post-install acceptance not confirmed in Eve memory | Acceptance checklist: `acceptance-checklist-insurance-expiration.md` | JT / Yair / Navid | Confirm workflow was verified on installed PC, capture acceptance wording/open issues/payment status | Immediate |
-| Dedicated PC handoff | Installed 2026-05-19 / access confirmation needed | PC checklist exists in `runbooks/pc-handoff-checklist.md` | JT / Navid | Confirm who can access it, whether logs/workflow are visible, and any open setup issues | Immediate |
-| Rent delinquency workflow | Paused by data readiness | Do not start until clean report + exception rules + deposit timing | Yair / Matt / JT | Use readiness checklist only after acceptance/payment path is clean | After handoff |
-| n8n HTTPS + Google OAuth | Planned / blocked by commercial/access gate | Migration runbook created: `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md`; do not start until Monday closeout/access + backup path are clear | Eve / JT | First confirm acceptance/access/payment facts with `proof-assets/monday-closeout-sheet-2026-05-25.md`; then back up n8n and migrate only if safe | After access/admin owner + backup path confirmed |
-| Reusable IP capture | Started | `reusable-ip-log.md` created; insurance exception-layer task already in MC | Eve / JT | Productize only with synthetic/anonymized data | After acceptance |
+| Insurance expiration workflow | Live in production / paid | Working as expected after a few minor updates; final 50% received | JT / Yair / Navid | Capture proof-safe screenshots/run logs/acceptance wording for referral/case-study use | This week |
+| Dedicated PC handoff | Installed in office | Local workflow environment running production workflow | JT / Navid | Confirm support/admin path and backup visibility, but do not block revenue proof on old install uncertainty | This week |
+| Rent delinquency workflow | Active build + testing | Initial 50% received; JT is about to start testing | JT / Yair / Matt/Karen | Document test cases, edge cases, sample output, acceptance criteria, and production cutover plan | Immediate |
+| DHCR Lease Renewal Phase 1 | Proposal reviewed / delivery assets ready | Legal-rent renewals only; $3,500 proposal; preferential-rent renewals parked as Phase 2 | JT / Eve / Yair / Matt | After rent delinquency deployment/testing, confirm kickoff payment, populated command center spreadsheet, RGB rates, included units/properties, approved email recipients, and rent rolls | After rent delinquency gate |
+| n8n HTTPS + Google OAuth | Reliability improvement / not commercial gate | Migration runbook exists; now lower priority than rent testing and proof capture unless current production workflow needs it | Eve / JT | Only migrate after backup/admin path is clear and non-sensitive smoke test is ready | After testing/proof |
+| Reusable IP capture | Active | Insurance workflow is now proof-eligible subject to privacy/anonymization boundary | Eve / JT | Build anonymized workflow case file from verified facts only | This week |
 
 ## Wins This Week
 - Weekly execution pack exists for acceptance/handoff/payment/referral sequencing.
@@ -34,25 +35,24 @@
 
 ## Next 7 Days
 - Use `proof-assets/tuesday-closeout-branch-sheet-2026-05-26.md` after the Monday closeout ask: if facts are confirmed, record them in Client OS/proof assets; if partial, ask only for the missing field; if no reply, send the short Tuesday bump. `proof-assets/monday-closeout-sheet-2026-05-25.md` remains the source four-point closeout; `proof-assets/weekend-command-sheet-2026-05-23.md` remains the prior version.
+- DHCR Lease Renewal Phase 1 is now ready for kickoff sequencing after rent delinquency: use `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `client-os/acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md`.
 - For infrastructure reliability, use `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md` only after PC/admin access and backup path are confirmed: back up n8n, choose stable HTTPS pattern, configure Google OAuth redirect, reconnect credentials, and run a non-sensitive smoke test.
 - Older prep remains available at `proof-assets/tuesday-execution-pack-2026-05-12.md`, `proof-assets/monday-command-sheet-2026-05-11.md`, and `proof-assets/tomorrow-execution-pack-2026-05-08.md`.
 
 
 ## Decision Needed From Client
-- Confirm installed PC access path and who can operate/check it.
-- Confirm insurance workflow acceptance wording/live usefulness.
-- Confirm insurance workflow payment/final approval status.
-- Confirm rent-delinquency deposit timing and cleaned sample export owner/date.
+- Confirm support/admin owner for the installed PC and production workflow environment.
+- Confirm any remaining insurance workflow open issues, if any.
+- Confirm rent delinquency testing inputs, owner/date for acceptance, and production cutover expectations.
+- Confirm DHCR Lease Renewal kickoff timing after rent delinquency deployment/testing, including $1,750 start payment, populated spreadsheet owner/date, RGB rates, included legal-rent units/properties, and approved recipients.
 
 ## Internal Control Added — 2026-05-13
 - Weekly update must explicitly say whether the Altmark MC blocker was updated.
 - Proof/referral assets remain gated until acceptance/payment clarity exists.
 
-## Current Delivery Focus — 2026-05-06
-- PC post-install verification: confirm access/verification path with Yair/Navid and capture open issues.
-- Insurance expiration workflow: finished, needs acceptance confirmation, screenshots, final payment/approval status.
-- Rent delinquency workflow: paused by Altmark-side reporting/ledger cleanup, not rejection. Do not start build work until the data-readiness checklist is satisfied and 50% deposit timing is confirmed.
-- Data-readiness asset: `runbooks/rent-delinquency-data-readiness-checklist.md` is ready for Yair/Karen/Matt.
-- Proof asset: capture only after installed PC access + insurance workflow acceptance/payment clarity.
-- Referral path: ask Yair for 2–3 family-office intros only after `proof-assets/referral-readiness-gate-2026-05-23.md` is green; then use `proof-assets/yair-referral-ask-script.md` / `memory/consulting/yair-family-office-intro-ask-2026-05-13.md`.
+## Current Delivery Focus — 2026-05-26
+- Insurance expiration workflow: live in production, stable after minor updates, final payment received. Capture proof-safe evidence and support/runbook details.
+- Rent delinquency workflow: paid kickoff complete; active build/testing is now the main delivery priority. Testing must capture edge cases, sample outputs, acceptance criteria, and cutover plan.
+- DHCR Lease Renewal Phase 1: proposal reviewed; kickoff/acceptance/runbook assets created. Next delivery after rent delinquency deploys unless Altmark explicitly reprioritizes.
+- Referral path: stronger now because one workflow is live and paid, but still keep naming/permission boundaries clean before using Altmark publicly or asking Yair for intros.
 

@@ -1,4 +1,4 @@
-# Week of 2026-05-18 — Work Log
+# Week of 2026-05-25 — Work Log
 
 Archive every Monday, start fresh.
 
@@ -71,3 +71,9 @@ Archive every Monday, start fresh.
 
 - 2026-05-24 nightly: hardened Altmark Monday closeout + n8n migration gate so acceptance/access/payment clarity stays ahead of reliability work.
 - 2026-05-25 overnight ops: checked task files/daily notes, Mission Control, and 52 crons; no repeated-error jobs or active fallback tasks. Logged urgent bootstrap-budget drift recommendation because HEARTBEAT.md has only 3 bytes of headroom: `reports/overnight/2026-05-25-overnight-autonomy.md`.
+
+## Overnight Autonomy — 2026-05-26 03:00
+- Checked `memory/tasks.md`, `tasks/pending.jsonl`, May 25/26 notes, and cron health. No active pending.jsonl work; only high unchecked memory task is Vista pre-launch marketing, blocked on App Store approval/JT review.
+- Cron health clean: no jobs showing error/consecutive-error; current 3AM jobs were running as expected. Duplicate lossless-claw plugin warning remains non-blocking.
+- Logged bootstrap budget watch because MEMORY.md and HEARTBEAT.md are effectively at cap; next append should trim/archive before writing.
+- 2026-05-27 nightly leverage: trimmed MEMORY.md below budget, converted Altmark DHCR Lease Renewal proposal into kickoff sheet, acceptance checklist, and runbook, updated Client OS/status/weekly update, and created MC task `j573gzze01mactdfvagaydmptd87geps` for DHCR kickoff inputs after rent delinquency gate.

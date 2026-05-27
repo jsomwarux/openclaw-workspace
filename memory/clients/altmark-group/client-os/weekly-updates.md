@@ -1,5 +1,31 @@
 # Weekly Updates — Altmark Group
 
+## Week of 2026-05-26 — Insurance Paid / Rent Testing / DHCR Prepared
+
+### Wins
+- Insurance expiration workflow is live in production, stable after minor updates, and final 50% payment is received.
+- Rent delinquency workflow is the active paid build/testing priority.
+- DHCR Lease Renewal Automation proposal has been reviewed and turned into delivery assets: `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md`.
+
+### Misses / Blockers
+- Rent delinquency test cases, edge cases, sample outputs, acceptance wording, and cutover plan still need to be captured before production delivery.
+- DHCR kickoff should not outrank rent delinquency unless Altmark explicitly changes priority.
+- Public proof/referral use still requires privacy-safe evidence and permission boundaries.
+
+### What Changed In The Workflow
+- The additional workflow is no longer an unknown proposal. It is specifically DHCR Lease Renewal Automation Phase 1: legal-rent renewals only, $3,500, 50/50 payment, with preferential-rent renewals parked as Phase 2.
+
+### Next Week's Plan
+- Keep rent delinquency testing as the delivery priority.
+- When DHCR is ready to start, use the kickoff command sheet to collect $1,750 start payment, populated command center spreadsheet, RGB rate confirmation, included legal-rent units/properties, approved recipient(s), and all DHCR rent rolls.
+- Use the DHCR acceptance checklist before production approval or final payment request.
+
+### Client Decision / Input Needed
+- Confirm rent delinquency test/cutover owner and acceptance path.
+- Confirm whether DHCR should wait until rent delinquency is accepted or be pulled forward.
+- If pulled forward, confirm start payment and spreadsheet/input ownership.
+
+
 ## Week of 2026-05-19 — PC Installed / Acceptance Gate
 
 ### Wins

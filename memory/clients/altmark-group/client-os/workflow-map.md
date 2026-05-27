@@ -42,3 +42,10 @@
 - Manual judgement to preserve: legal/eviction-sensitive accounts, disputes, payment plans, special relationships, final external-send approval.
 - Repeatable steps to automate: report intake, field validation, delinquency categorization, exception detection, owner assignment, draft generation/status output.
 - Human approval gates: source report acceptance, edge-case rules, deposit/start approval, tenant-facing outreach send approval.
+
+
+## 2026-05-26 Status Update
+- Rent delinquency workflow is no longer paused: Altmark paid the initial 50%, and JT is actively building it.
+- Current phase: testing preparation.
+- Required testing artifacts: sample input report, validation rules, exception cases, skipped/flagged record reasons, human approval state, generated output/draft format, and production cutover checklist.
+- Keep tenant-facing outreach human-approved. Legal/eviction-sensitive, disputed, payment-plan, recent-payment, and ledger-lag records must remain exception-gated.
