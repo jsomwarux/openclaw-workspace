@@ -9,4 +9,4 @@ Score each generated lesson/run against these yes/no checks:
 5. Does the lesson save `spanish/lessons/YYYY-MM-DD.md` with topic/phrases covered?
 6. Does the lesson stay within the 10-minute structure: review, 3–4 phrases, mini-practice, real-world challenge, TTS phrase audio?
 7. Does it avoid duplicate topics from the prior two lesson files unless explicitly reviewing?
-8. Does the 10PM accountability path validate state before nudging, so stale/broken state cannot trigger a false reminder?
+8. Does the 10PM accountability path validate state before nudging, and does it treat `"paused": true` as a valid non-nudge state so stale/broken or intentionally paused state cannot trigger a false reminder?

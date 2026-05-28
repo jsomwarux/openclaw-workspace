@@ -191,19 +191,21 @@ Track:
 
 ### Vista
 Stage: active.
-Primary loop: ReelFarm/TikTok movie taste slideshows.
-Secondary loops: App Store optimization, SEO comparison pages, directory submissions.
+Primary loop: Vista-first artifact-led growth sprint: movie taste/ranking cards, 1-100 rating hooks, and taste match/clash comparisons.
+Secondary loops: App Store optimization, SEO/AI-search comparison pages, directory submissions, and limited ReelFarm/TikTok tests after manual-post/tracking gates are healthy.
 Reddit: careful movie discussion/rating-system posts; no hard app pitch.
 X: @jts_14 for build/product/milestones, not heavy product spam.
 Weekly metric: TikTok views/saves/comments, App Store downloads, landing visits if available.
+Current cadence rule: 5-7 total app posts/week across the whole portfolio, not 4-5 posts/week per app. Vista should receive 60-70% of the app-marketing slots during the next sprint.
 
 ### Nash Satoshi
 Stage: active.
-Primary loop: dedicated crypto methodology content + ReelFarm/TikTok.
+Primary loop: secondary weekly ranking-receipt and model-disagreement content tied to live data.
 Secondary loops: SEO methodology pages, crypto/tool directories, X account growth.
 Reddit: crypto game-theory/methodology discussion; product absent or lightly referenced only when safe.
 X: @NashSatoshi methodology/rankings only; no return promises.
 Weekly metric: site visits, ranking page visits, X engagement, TikTok engagement.
+Current cadence rule: 1-2 weekly app-marketing slots unless a strong live ranking update creates a timely artifact.
 
 ### Glow Index
 Stage: active for durable discovery planning; crawlability/measurement blocked before scale.
@@ -213,6 +215,7 @@ Secondary loops: ingredient/product comparison pages, beauty directories, and ed
 Reddit: very high caution; skincare subs are strict and skeptical. Default to research/ingredient education, not app promo.
 Weekly metric: site visits/search clicks/product searches first; TikTok engagement only after account/execution + metrics path is confirmed.
 Current blocker: `https://glowindex.co` returns 403 Cloudflare challenge for `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/categories`, and `/categories/serum`; do not expand pSEO or rely on category/directory crawlability until `python3 scripts/glow_crawler_check.py` reports all routes clear.
+Current cadence rule: no recurring social volume. Use SEO/AI-search and safe page assets first.
 
 ### Action Arena
 Stage: priority build/prelaunch.

@@ -80,6 +80,18 @@ def find_folder(drive, name, parent_id=None):
     return files[0]["id"] if files else None
 
 
+def find_root_folder(drive):
+    """Return the top-level Eve — Drafts folder, not same-named nested drift folders."""
+    q = (
+        f"name='{ROOT_FOLDER}' and "
+        "mimeType='application/vnd.google-apps.folder' and "
+        "trashed=false and 'root' in parents"
+    )
+    res = drive.files().list(q=q, fields="files(id,name)", spaces="drive", pageSize=10).execute()
+    files = res.get("files", [])
+    return files[0]["id"] if files else None
+
+
 def get_or_create_folder(drive, name, parent_id):
     fid = find_folder(drive, name, parent_id)
     if fid:
@@ -147,7 +159,7 @@ def create_doc_from_docx(drive, title, content_bytes, folder_id):
 
 
 def list_folders(drive):
-    root_id = find_folder(drive, ROOT_FOLDER)
+    root_id = find_root_folder(drive)
     if not root_id:
         print(f"ERROR: '{ROOT_FOLDER}' not found. Make sure you're authorised as the right Google account.")
         sys.exit(1)
@@ -165,7 +177,7 @@ def get_folder_by_path(drive, path_str):
     Traverse or create folders along a slash-separated path under Eve — Drafts.
     e.g. "Consulting/Clients/H.C. Oswald/Outreach/LinkedIn"
     """
-    root_id = find_folder(drive, ROOT_FOLDER)
+    root_id = find_root_folder(drive)
     if not root_id:
         print(f"ERROR: '{ROOT_FOLDER}' folder not found in your Drive.")
         sys.exit(1)
@@ -204,7 +216,7 @@ def main():
     if args.path:
         folder_id, display_path = get_folder_by_path(drive, args.path)
     elif args.project and args.type:
-        root_id = find_folder(drive, ROOT_FOLDER)
+        root_id = find_root_folder(drive)
         if not root_id:
             print(f"ERROR: '{ROOT_FOLDER}' folder not found in your Drive.")
             sys.exit(1)

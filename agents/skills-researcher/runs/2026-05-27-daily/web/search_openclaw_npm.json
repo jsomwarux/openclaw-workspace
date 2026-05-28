@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "openclaw npm package new",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-27",
+  "results": [
+    {
+      "title": "openclaw - npm",
+      "url": "https://www.npmjs.com/package/openclaw",
+      "description": "<strong>Multi-channel AI gateway with extensible messaging integrations</strong>. Latest version: 2026.5.22, last published: 3 days ago. Start using openclaw in your project by running `npm i openclaw`. There are 126 other projects in the npm registry using openclaw.",
+      "age": "3 days ago",
+      "page_age": "2026-05-24T14:00:03",
+      "source": "npm"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Docs: clarify media provider credentials, Codex/OpenClaw code-mode boundaries, Slack and Telegram ack reactions, Feishu dynamic agents, secrets plaintext boundaries, memory guidance, and Chinese glossary terms. Thanks @nielskaspers, @cosmopolitan033, @drclaw-iq, @alexgduarte, @zccyman, @chengoak, and @cassthebandit. Packaging: exclude documentation images and assets from the npm tarball, reducing published package size without affecting runtime docs search or CLI behavior.",
+      "age": "16 hours ago",
+      "page_age": "2026-05-27T00:00:05",
+      "source": "GitHub"
+    },
+    {
+      "title": "OpenClaw Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/openclaw",
+      "description": "Release/security: ship the root npm package and OpenClaw-owned npm plugins with generated shrinkwrap, support bundled plugin runtime dependencies for suitable plugin tarballs, and require review for lockfile/shrinkwrap changes so published installs use locked dependency graphs.",
+      "age": "8 hours ago",
+      "page_age": "2026-05-27T07:25:03",
+      "source": "Releasebot"
+    },
+    {
+      "title": "OpenClaw v2026.5.22 + v2026.5.20: Meeting Notes, 4,100× Faster Models, and Smarter Agents | Blink Blog",
+      "url": "https://blink.new/blog/openclaw-v2026-5-22-release",
+      "description": "If you run OpenClaw through Blink Claw, no manual update is needed. Blink Claw auto-applies patches and version upgrades as they ship — no npm update required, no maintenance overhead. Comparing self-managed OpenClaw to a managed setup?",
+      "age": "3 days ago",
+      "page_age": "2026-05-24T12:25:06",
+      "source": "Blink"
+    },
+    {
+      "title": "How to Install OpenClaw — Step-by-Step Guide (2026)",
+      "url": "https://www.theclawreport.com/install",
+      "description": "The fastest way to get OpenClaw running. # Install globally <strong>npm install -g openclaw</strong> # Verify installation openclaw --version # Start the agent openclaw start",
+      "age": "5 days ago",
+      "page_age": "2026-05-23T00:00:00",
+      "source": "The Claw Report"
+    }
+  ]
+}

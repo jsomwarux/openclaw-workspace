@@ -167,7 +167,7 @@ Use for hot takes and compressed insights — NOT for announcements, launches, o
 - **Friday buyer-facing rule:** Prefer hooks like “Weekly status meetings might be the most expensive meeting on your calendar” over abstract hooks like “Most businesses do not need an AI chatbot.” Start with meetings, handoffs, approvals, stale reports, duplicate entry, ownerless requests, inbox/spreadsheet/portal sprawl.
 - **No outreach-meta by default:** Do not discuss JT's prospect research, lead enrichment, buyer-channel validation, or outreach strategy on LinkedIn unless writing explicitly for a sales-ops audience.
 - **Avoid AI-generated thought-leadership smell:** no “AI chatbot” contrast hooks, no “exception layer” phrasing, no vague “messy work” language, no stacked rhetorical lists unless grounded in a concrete workflow.
-- **Contrarian setup ban for all JT content:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” “not X, but Y,” or the two-sentence “X is not just Y. It is Z.” variant. This is banned across LinkedIn, X, reminders, client-proof posts, product-builder posts, and methodology/trust posts. Start with the positive claim, concrete scene, machine, workflow, owner, number, or business constraint.
+- **Contrarian setup ban for all JT content:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” “not X, but Y,” the two-sentence “X is not just Y. It is Z.” variant, or repeated-noun reveals like “The risk is not X. The risk is Y.” This is banned across LinkedIn, X, reminders, client-proof posts, product-builder posts, and methodology/trust posts. Start with the positive claim, concrete scene, machine, workflow, owner, number, or business constraint.
 - **Generic importance phrase ban:** never write “matters more than people think,” “people underestimate,” or “that part matters” unless replaced with the specific business reason.
 - **No hashtags.** They suppress reach.
 - **No emojis** unless they serve a specific purpose (rarely)
@@ -207,7 +207,7 @@ implementation excellence, transformative, leverage (as buzzword), solution, opt
 - Long explanations of things the reader can infer
 - "We" or "our team" — JT is a solo operator
 - Contrast pairs as standalone structural framing ("X isn't Y, they're Z") — banned across JT content unless JT explicitly asks for a contrarian take; the Two-Part Parallel is fine only when it states a functional distinction without reveal-language
-- “The blocker is not whether X, it is whether Y,” “Not ‘look what this tool can do,’ more like…,” and “X is not just Y. It is Z.” patterns — stale AI-copy smell; replace with direct proof or operational architecture
+- “The blocker is not whether X, it is whether Y,” “Not ‘look what this tool can do,’ more like…,” “X is not just Y. It is Z.,” and “The risk is not X. The risk is Y.” patterns — stale AI-copy smell; replace with direct proof, operational architecture, or the concrete failure moment
 - Generic importance phrases like “matters more than people think,” “people underestimate,” and “that part matters”
 - @jts_14 or Twitter references in LinkedIn content
 
@@ -277,7 +277,9 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 | Date | Proof Point | Verified Detail | Demonstrates | Status |
 |---|---|---|---|---|
+| 2026-05-27 | Altmark Rent Delinquency Testing Pack | Created Altmark rent delinquency acceptance checklist and runbook for sample-report testing, exception routing, human approval, rollback, and production cutover; Mission Control top task now points to the checklist. | Paid-client delivery control, property-ops workflow acceptance design, privacy-safe reusable IP capture | Complete |
 | 2026-05-19 | App Marketing Share Artifacts Batch 5 | Built Nash `/receipts/weekly` PNG receipt generator and Glow Product Verdict Card MVP; Nash `npm run check` + `npm run build` passed, Glow `npm run build` + `npm run lint` passed. | Product-led app distribution assets, repo-aware AI coding-agent orchestration | Complete |
+| 2026-05-27 | jtsomwaru.com n8n Automation Service Page | Built `/services/n8n-automation` with FAQ schema, Service JSON-LD, sitemap exposure, homepage links, llms.txt coverage, and an updated Drive roundup packet; verifier/build/lint and production live checks passed. | AI-search/GEO service-page build, proof-safe consulting positioning, citation-ready outreach infrastructure | Complete |
 | 2026-05-14 | jtsomwaru.com Public Proof Privacy Pass | Anonymized client names and removed exact proposal amounts from site proof copy; production verified clean for Aya/Altmark/Lady D/exact amount hits. | Public proof hygiene, privacy-safe case-study packaging | Complete |
 | 2026-05-14 | jtsomwaru.com Client Outcome Attribution Fix | Corrected Aya vs Altmark site attribution, added Altmark local-first automation detail page, restored Adversight AI to Apps; build/lint passed and commit `25b9563` pushed. | Proof attribution discipline, client-work packaging, portfolio inventory preservation | Complete |
 | 2026-05-14 | jtsomwaru.com Positioning + Roles Update | Shipped balanced Work buckets, updated niches/About/tools, new `/roles` page, footer links, and AI-search metadata; build/lint passed; pushed commit `fce1480`; production `/` and `/roles` returned HTTP 200. | Consulting positioning, proof-tier hygiene, recruiter/buyer path separation | Complete |

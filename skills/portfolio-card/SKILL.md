@@ -28,6 +28,11 @@ If it exits non-zero: fix the reported errors before continuing. Do NOT proceed 
 
 Run `git pull origin main` first if there's any chance the repo is behind.
 
+## Step 1a: Existing Card + Access Gate
+Before adding anything new, search `src/data/projects.ts` for the requested project slug, title, and obvious aliases.
+- If the card already exists, update only the requested fields; do not create a duplicate project entry or duplicate graphic component.
+- If a required external action cannot be verified, stop and report the blocker instead of publishing partial work. Examples: missing Drive file access for a demo video, no usable Vercel/deploy visibility, or a failed `git push`.
+
 ---
 
 ## Step 1: Define the card data

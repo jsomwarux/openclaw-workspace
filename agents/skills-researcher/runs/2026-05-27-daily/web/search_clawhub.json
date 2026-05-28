@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "clawhub new skill featured",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-27",
+  "results": [
+    {
+      "title": "GitHub - openclaw/clawhub: Skill Directory for OpenClaw · GitHub",
+      "url": "https://github.com/openclaw/clawhub",
+      "description": "ClawHub · Vision · Docs · Contributing · Discord · Browse skills + render their SKILL.md. Publish new skill versions with changelogs + tags (including latest).",
+      "age": "2 days ago",
+      "page_age": "2026-05-25T08:40:05",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - LeoYeAI/openclaw-master-skills: 🧠 Curated collection of 1209+ best OpenClaw skills — weekly updated by MyClaw.ai",
+      "url": "https://github.com/LeoYeAI/openclaw-master-skills",
+      "description": "🧠 Curated collection of 1209+ best OpenClaw skills — weekly updated by MyClaw.ai - LeoYeAI/openclaw-master-skills",
+      "age": "2 days ago",
+      "page_age": "2026-05-25T11:45:21",
+      "source": "GitHub"
+    },
+    {
+      "title": "GitHub - VoltAgent/awesome-openclaw-skills: The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞",
+      "url": "https://github.com/VoltAgent/awesome-openclaw-skills",
+      "description": "The awesome collection of OpenClaw skills. 5,400+ skills filtered and categorized from the official OpenClaw Skills Registry.🦞 - VoltAgent/awesome-openclaw-skills",
+      "age": "3 days ago",
+      "page_age": "2026-05-24T15:05:03",
+      "source": "GitHub"
+    },
+    {
+      "title": "Skills · OpenClaw",
+      "url": "https://docs.openclaw.ai/tools/skills",
+      "description": "Skill Workshop writes only to &lt;workspace&gt;/skills, scans generated content, supports pending approval or automatic safe writes, quarantines unsafe proposals, and refreshes the skill snapshot after successful writes so new skills become available without a Gateway restart. Use it for corrections such as &quot;next time, verify GIF attribution&quot; or hard-won workflows such as media QA checklists. Start with pending approval; use automatic writes only in trusted workspaces after reviewing its proposals. Full guide: Skill Workshop plugin. ClawHub is the public skills registry for OpenClaw.",
+      "age": "11 hours ago",
+      "page_age": "2026-05-27T04:10:03",
+      "source": "OpenClaw"
+    },
+    {
+      "title": "Agent Skills Marketplace | Claude, Codex & ChatGPT Skills · LobeHub",
+      "url": "https://lobehub.com/skills",
+      "description": "Credits: Original skill by @blader - https://github.com/blader/humanizer ... Delegate coding tasks to Codex, Claude Code, or Pi agents via a background process. Use when: (1) building or creating new features or apps, (2) reviewing PRs (spawn in a temp dir), (3) refactoring large codebases, (4) iterative coding that requires file exploration.",
+      "age": "20 hours ago",
+      "page_age": "2026-05-26T19:57:30",
+      "source": "LobeHub"
+    }
+  ]
+}

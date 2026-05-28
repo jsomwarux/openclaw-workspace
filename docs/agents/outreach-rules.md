@@ -4,6 +4,17 @@
 ## Outreach Status Tracking Rule (mandatory)
 When JT says he sent an outreach message, connection request, or follow-up to ANY prospect — do ALL of the following in the same turn, immediately. Do NOT defer.
 
+## Warm-Up Comment Strategy Rule
+Warm-up comments are no longer the default route for new prospects. Treat warm-up as a narrow gate, not a work queue.
+
+Use a warm-up comment only when all are true:
+- The prospect is high-fit T1/T2, not generic backlog.
+- The buyer or company has recent relevant LinkedIn activity.
+- The comment can be made naturally in under a few minutes.
+- There is a concrete M1 or follow-up plan within 24-48h.
+
+Do not create or preserve bulk “Warm-up comment:” tasks for JT. If a warm-up task is stale, channel-unclear, or not tied to an immediate follow-up, archive it or merge it into a buyer-channel validation task. Default outreach priority is proof-led referrals/warm intros, service-page/citation outreach, and review-only packets with a clear send path.
+
 **Step 1 — Update files:**
 - Mark outreach-draft.md status line with what was sent, the date, and the next window
 - Update the shortlist's contact line with current M-status and next action

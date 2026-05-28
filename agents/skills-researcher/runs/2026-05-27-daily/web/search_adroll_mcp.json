@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "AdRoll MCP Server open beta n8n Claude ChatGPT",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-27",
+  "results": [
+    {
+      "title": "n8n-MCP | MCP Servers",
+      "url": "https://lobehub.com/mcp/czlonkowski-n8n-mcp",
+      "description": "<strong>Read https://lobehub.com/mcp/czlonkowski-n8n-mcp/skill.md and follow the instructions to setup LobeHub MCP Marketplace and install the MCP server</strong>. ... AI results can be unpredictable.",
+      "age": "3 days ago",
+      "page_age": "2026-05-25T01:18:50",
+      "source": "LobeHub"
+    },
+    {
+      "title": "n8n-mcp - npm",
+      "url": "https://www.npmjs.com/package/n8n-mcp",
+      "description": "<strong>A Model Context Protocol (MCP) server that provides AI assistants with comprehensive access to n8n node documentation, properties, and operations</strong>. Deploy in minutes to give Claude and other AI assistants deep knowledge about n8n&#x27;s 1,851 workflow ...",
+      "age": "4 days ago",
+      "page_age": "2026-05-23T17:50:05",
+      "source": "npm"
+    },
+    {
+      "title": "N8n Connector für Claude Code - Questions - n8n Community",
+      "url": "https://community.n8n.io/t/n8n-connector-fur-claude-code/296356",
+      "description": "Hey, I have an issue with connecting the instance mcp server to claude code. Claude only accepts OAuth, but n8n only provides an Access Token, so I always get an error message. Describe the problem/error/question What is the error message (if any)? Please share your workflow (Select the nodes ...",
+      "age": "1 week ago",
+      "page_age": "2026-05-21T06:30:05",
+      "source": "n8n"
+    },
+    {
+      "title": "Python MCP server for n8n: control workflows from Claude Desktop and Claude Code - Built with n8n - n8n Community",
+      "url": "https://community.n8n.io/t/python-mcp-server-for-n8n-control-workflows-from-claude-desktop-and-claude-code/296411",
+      "description": "<strong>Built a Python-native MCP server that lets Claude Desktop and Claude Code CLI interact directly with n8n</strong>. Saw several posts here about people struggling to connect Claude to n8n; this should solve it cleanly.",
+      "age": "1 week ago",
+      "page_age": "2026-05-21T09:25:28",
+      "source": "n8n"
+    },
+    {
+      "title": "Official Meta Ads MCP for Claude: Complete Guide to All 29 Tools (April 2026)",
+      "url": "https://pasqualepillitteri.it/en/news/1707/official-meta-ads-mcp-claude-29-tools-2026",
+      "description": "<strong>Yes with ChatGPT and Cursor, no with Gemini</strong>. Meta has stated support for &quot;any MCP-compatible client&quot;. ChatGPT (in Connectors mode) and Cursor (via custom MCP) connect to the same mcp.facebook.com/ads endpoint.",
+      "age": "3 hours ago",
+      "page_age": "2026-05-27T12:07:00",
+      "source": "Pasquale Pillitteri"
+    }
+  ]
+}

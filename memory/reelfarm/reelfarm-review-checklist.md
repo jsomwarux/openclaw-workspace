@@ -4,6 +4,7 @@ Use this before giving ReelFarm/App Marketing OS recommendations.
 
 ## Inputs
 
+- Read `memory/reelfarm/calibration-2026-05-27.md`.
 - Read `memory/reelfarm/reelfarm-strategy-baseline.md`.
 - Read `memory/reelfarm/apps.md`.
 - Use screenshots as source of truth for current ReelFarm settings.
@@ -17,6 +18,8 @@ Use this before giving ReelFarm/App Marketing OS recommendations.
 4. Check hook list weighting:
    - Favor Larry framework: another person + conflict + reveal.
    - Keep feature-forward hooks as minority/supplemental.
+   - Prefer declarative hooks over question prompts.
+   - Surface cross-source convergence as its own finding when multiple sources point to the same app angle.
 5. Check format constraints:
    - native photo slideshow, not video
    - 9:16
@@ -36,12 +39,19 @@ Use this before giving ReelFarm/App Marketing OS recommendations.
    - rationale
    - expected impact
    - whether to test or apply immediately
-8. Avoid generic advice. Every recommendation must tie to app, automation, setting, hook list, schedule, or recovery stage.
+8. Apply the Automation A/B slotting test before assigning a hook:
+   - Does this hook promise the viewer will see the product working in the following slides?
+   - If yes: Automation B candidate.
+   - If no: Automation A.
+9. Cap confidence at `Medium - hypothesis` until the relevant account has 20+ posts with normal, non-throttled distribution.
+10. Avoid generic advice. Every recommendation must tie to app, automation, setting, hook list, schedule, or recovery stage.
 
 ## Current Recovery Logic
 
 While accounts are cold/paused:
 
+- Label recommendations as tests, not optimizations.
+- Do not use "High confidence" based on thin new-account view counts.
 - Do not recommend instantly returning to 3 posts/week per app.
 - First priority: manual TikTok app posts with hand-picked sounds.
 - Second priority: daily human-pattern engagement.
@@ -53,7 +63,9 @@ While accounts are cold/paused:
 For each app:
 
 - Current status
+- Confidence label
 - What is already correct
+- Cross-source convergence
 - Exact issues
 - Exact setting changes
 - Hook list changes

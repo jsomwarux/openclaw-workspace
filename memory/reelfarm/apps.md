@@ -7,6 +7,9 @@ Source: JT direct explanation. Screenshots are the source of truth for current R
 
 All six automations are currently paused.
 
+Source recovery protocol:
+`memory/reelfarm/manual-post-recovery-protocol-2026-05-26.md`
+
 Reason:
 - Vista and Nash Satoshi had recent posts getting 0 views.
 - Vista posts were going out silent, with no audio attached.
@@ -15,10 +18,11 @@ Reason:
 - Glow Index automations are configured but have not yet been activated.
 
 Recovery plan:
-1. Manual posting from TikTok app on each account: 2–3 posts each, sounds picked by hand.
+1. Manual posting from TikTok app on each account: 2-3 posts each, sounds picked by hand.
 2. Daily account engagement during warm-up: scroll, like, comment in niche.
-3. Restart automations at reduced frequency: 1 post per week per account after warming.
-4. Scale frequency back up after 2–3 weeks of consistent reach.
+3. Prefer ReelFarm draft generation/upload when possible; JT manually reviews/posts from TikTok.
+4. Restart automations at reduced frequency: 1 post per week per account after warming.
+5. Scale frequency back up only after 24h/72h/7d metrics show normal distribution for 2-3 weeks.
 
 ## Universal Automation A/B Settings
 

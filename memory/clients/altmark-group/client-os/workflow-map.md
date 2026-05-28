@@ -49,3 +49,9 @@
 - Current phase: testing preparation.
 - Required testing artifacts: sample input report, validation rules, exception cases, skipped/flagged record reasons, human approval state, generated output/draft format, and production cutover checklist.
 - Keep tenant-facing outreach human-approved. Legal/eviction-sensitive, disputed, payment-plan, recent-payment, and ledger-lag records must remain exception-gated.
+
+## 2026-05-27 Testing Pack
+- Acceptance checklist: `acceptance-checklist-rent-delinquency.md`.
+- Runbook: `../runbooks/rent-delinquency-workflow.md`.
+- Testing sequence: validate required fields, run edge-case rows, confirm included/skipped/flagged reasons, verify approval state, then document production cutover.
+- Default proof boundary: synthetic/anonymized examples only until Altmark explicitly approves proof reuse.

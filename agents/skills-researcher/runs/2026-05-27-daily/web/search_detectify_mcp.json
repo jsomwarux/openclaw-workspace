@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "Detectify MCP server AI agents continuous testing",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-27",
+  "results": [
+    {
+      "title": "Detectify Launches MCP Server to Secure the Autonomous Coding Loop",
+      "url": "https://www.businesswire.com/news/home/20260526990378/en/Detectify-Launches-MCP-Server-to-Secure-the-Autonomous-Coding-Loop",
+      "description": "As AI agents take over the software lifecycle, <strong>Detectify embeds continuous, autonomous security validation directly into AI-driven development workflows</strong> · STOCKHOLM--(BUSINESS WIRE)--Detectify, the Swedish application security platform built ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-26T12:13:00",
+      "source": "Business Wire"
+    },
+    {
+      "title": "New MCP server helps secure AI coding - BetaNews",
+      "url": "https://betanews.com/article/new-mcp-server-helps-secure-ai-coding/",
+      "description": "Rather than relying on periodic reviews or delayed security handoffs, organizations can embed continuous validation more directly into the software delivery process as code, infrastructure, and services evolve. &quot;We aren&#x27;t competing with the AI’s reasoning; we are providing the professional-grade tools that reasoning requires,&quot; says Rickard Carlsson, CEO of Detectify. &quot;By structuring our capabilities as modular, high-performance building blocks, we allow agents to call our scanner as naturally as they call a test runner.",
+      "age": "1 day ago",
+      "page_age": "2026-05-26T12:39:33",
+      "source": "BetaNews"
+    },
+    {
+      "title": "Detectify Launches MCP Server to Secure the Autonomous Coding Loop",
+      "url": "https://cioinfluence.com/security/detectify-launches-mcp-server-to-secure-the-autonomous-coding-loop/",
+      "description": "We are expanding from a dashboard ... with software delivery. The Detectify MCP Server <strong>reflects a broader shift in AppSec toward continuous, real-time security validation as AI</strong> ......",
+      "age": "1 day ago",
+      "page_age": "2026-05-26T12:53:22",
+      "source": "CIO Influence"
+    },
+    {
+      "title": "Detectify launches MCP server to integrate security testing into AI coding workflows | brief | SC Media",
+      "url": "https://www.scworld.com/brief/detectify-launches-mcp-server-to-integrate-security-testing-into-ai-coding-workflows",
+      "description": "This new offering <strong>aims to enable AI agents to identify, validate, and remediate exploitable vulnerabilities in real-time</strong>, addressing the growing challenge of AI-generated code outpacing human review cycles.",
+      "age": "1 day ago",
+      "page_age": "2026-05-26T16:27:06",
+      "source": "SC Media"
+    },
+    {
+      "title": "Detectify’s New MCP Server Enables AI Agents To Scan, Validate And Repair Security Flaws Faster - Pizzafranchisehub.com",
+      "url": "https://www.pizzafranchisehub.com/archives/31807",
+      "description": "By integrating its scanning engines ... development. Instead of waiting for periodic human reviews, <strong>the system enables continuous testing and remediation inside</strong> ......",
+      "age": "1 day ago",
+      "page_age": "2026-05-26T08:33:56",
+      "source": "Pizza Franchise Hub"
+    }
+  ]
+}

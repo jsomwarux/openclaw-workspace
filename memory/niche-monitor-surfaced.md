@@ -46,3 +46,5 @@
 2026-05-01 augment-merlin-wholesale — Augment acquires Merlin AI to expand into wholesale distribution; competitor signal in AI automation for wholesale
 2026-05-04 insurance-ai-risk-coverage-gap — Major insurers backing away from AI risk coverage, removing AI from standard corporate policies; coverage gap signal
 2026-05-17 eliseai-pm-rollout — Property-management operator reports EliseAI rollout across 3,000 units with plan for 8,000 more; validates PM AI adoption moving from vendor pitch to portfolio-scale operations.
+
+2026-05-27 burns-mcdonnell-preconstruction-ai — Burns & McDonnell reports enterprise-wide AI training and discipline-specific agentic capabilities for preconstruction, using internal project data to improve cost and delivery certainty.

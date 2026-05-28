@@ -29,7 +29,9 @@ Read `~/.openclaw/workspace/MEMORY.md` at the start of each run to get the curre
 - **analysis-agent** — proposal analysis
 - **ranking-app-agent** — Nash Satoshi / Glow Index rankings
 
-Installed skills: do not trust this static list as complete. At run time, inventory `~/.openclaw/workspace/skills/*/SKILL.md` and cross-check the available-skills registry in the current session. Treat static names in this file as examples only.
+Installed skills: do not trust this static list as complete. At run time, inventory skills with this exact command and cross-check the available-skills registry in the current session:
+`rg --files ~/.openclaw/workspace/skills | rg '/SKILL\\.md$' | sort`
+Do not use ad hoc `sed` path transforms for this inventory; macOS sed syntax differences have caused cron failures. Treat static names in this file as examples only.
 
 ---
 
@@ -39,9 +41,10 @@ Installed skills: do not trust this static list as complete. At run time, invent
 
 ### X Search Tool
 ```bash
-cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env && \
-bun run x-search.ts search "[QUERY]" --quick --limit 8
+cd ~/.openclaw/workspace/skills/x-research && set -a; source ~/.config/env/global.env; set +a; bun run x-search.ts search "[QUERY]" --quick --limit 8
 ```
+Keep this as one shell command with semicolons exactly as shown; do not concatenate
+`set +a` directly with `cd` or any other command.
 
 ### Daily X Query Set (run ALL 6 — these are your primary scan)
 
@@ -123,15 +126,26 @@ WEEKLY X QUERY 4 — Model + platform ecosystem shifts (anything that changes th
 
 ## Web Research Sources
 
+### Cron Shell Safety Rules
+- Never use `python3 - <<'PY'` in this cron. Use `python3 -c '...'` for small parsing, or write JSON/HTML to `/tmp/skills-researcher-*` and run a normal script file.
+- Do not pipe data into a command that also uses a heredoc; the heredoc consumes stdin and drops the piped data.
+- Treat individual web/API source failures as best-effort: capture the failure in the run notes and continue unless the failure is a security/runtime alert for an installed tool. Use `|| true` on non-critical source fetches after logging enough context.
+- When comparing a fetched page or JSON response against `state.json`, save the response to `/tmp/skills-researcher-source.json` or `/tmp/skills-researcher-source.html`, then parse it with `python3 -c` or a short temp script.
+
+For GitHub/API JSON endpoints, prefer quoted shell fetches:
+`curl -sL --fail 'URL' | python3 -m json.tool`.
+Do not leave `?` query-string URLs unquoted in zsh, and if an agent `fetch`
+tool fails on a reachable API URL, retry with `curl` before failing the scan.
+
 ### Tier 1 — High signal, check every run (alongside X)
 
 1. **GitHub — openclaw/openclaw releases**
-   - `web_fetch https://api.github.com/repos/openclaw/openclaw/releases?per_page=5`
+   - `curl -sL --fail 'https://api.github.com/repos/openclaw/openclaw/releases?per_page=5' | python3 -m json.tool`
    - Compare tag against `state.json → last_openclaw_release`
    - `web_search "openclaw skill github new 2026"`
 
 2. **npm — @openclaw/ + community skill packages**
-   - `web_fetch https://registry.npmjs.org/-/v1/search?text=%40openclaw&size=10`
+   - `curl -sL --fail 'https://registry.npmjs.org/-/v1/search?text=%40openclaw&size=10' | python3 -m json.tool`
    - `web_search "openclaw npm package new"`
 
 3. **Anthropic changelog / blog**
@@ -144,9 +158,9 @@ WEEKLY X QUERY 4 — Model + platform ecosystem shifts (anything that changes th
    - `web_search "clawhub new skill featured"`
 
 5. **GitHub — anthropics/knowledge-work-plugins (Cowork plugins)**
-   - `web_fetch https://api.github.com/repos/anthropics/knowledge-work-plugins/commits?per_page=5`
+   - `curl -sL --fail 'https://api.github.com/repos/anthropics/knowledge-work-plugins/commits?per_page=5' | python3 -m json.tool`
    - Compare first commit SHA against `state.json → last_cowork_plugin_commit`. If different: new plugin activity.
-   - `web_fetch https://api.github.com/repos/anthropics/knowledge-work-plugins/contents` — scan directory list for new plugin folders
+   - `curl -sL --fail 'https://api.github.com/repos/anthropics/knowledge-work-plugins/contents' | python3 -m json.tool` — scan directory list for new plugin folders
    - **Gap analysis:** Each new plugin = Anthropic validating a niche. Plugins marked "needs customization" or with thin skills coverage = direct consulting opportunity for JT.
    - **consulting signal:** Flag if any new plugin targets construction, property mgmt, insurance, or wholesale — these validate niches AND create implementation demand.
    - Update `last_cowork_plugin_commit` in state.json after each check.
@@ -168,16 +182,16 @@ WEEKLY X QUERY 4 — Model + platform ecosystem shifts (anything that changes th
 ### Tier 3 — Weekly synthesis only
 
 8. **nordeim/openclaw-curated-skills — community skill index (monitoring only, not install source)**
-   - `web_fetch https://api.github.com/repos/nordeim/openclaw-curated-skills/commits?per_page=5`
+   - `curl -sL --fail 'https://api.github.com/repos/nordeim/openclaw-curated-skills/commits?per_page=5' | python3 -m json.tool`
    - Compare first commit SHA against `state.json → last_nordeim_commit`. If different: new additions.
-   - `web_fetch https://raw.githubusercontent.com/nordeim/openclaw-curated-skills/main/skills-index.json`
+   - `curl -sL --fail 'https://raw.githubusercontent.com/nordeim/openclaw-curated-skills/main/skills-index.json' | python3 -m json.tool`
    - Scan for skills relevant to JT's goals (consulting niches, MCP tooling, workflow automation).
    - **Security rule:** This is a discovery source ONLY. Never recommend installing directly from this repo. Any interesting skill must be manually vetted and JT-approved before installation. Flag source as "nordeim (community, unvetted)" in any recommendation.
    - Update `last_nordeim_commit` in state.json after each check.
 
 9. **Claude Cowork plugin library — full weekly analysis**
    - `web_fetch https://claude.com/plugins` — full plugin list
-   - `web_fetch https://api.github.com/repos/anthropics/knowledge-work-plugins/contents` — scan for new directories vs. prior weeks
+   - `curl -sL --fail 'https://api.github.com/repos/anthropics/knowledge-work-plugins/contents' | python3 -m json.tool` — scan for new directories vs. prior weeks
    - `web_fetch https://www.anthropic.com/news` — check for plugin release announcements
    - For each new or updated plugin since last week:
      - What skills does it bundle? Which MCP connectors?
@@ -265,7 +279,8 @@ STEPS:
    Read ~/.openclaw/workspace/MEMORY.md — note current agent inventory, active projects, installed skills
 
 3. X RESEARCH FIRST (run all 6 daily queries)
-   cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env
+   Use this exact command pattern for each query:
+   `cd ~/.openclaw/workspace/skills/x-research && set -a; source ~/.config/env/global.env; set +a; bun run x-search.ts search "[QUERY]" --quick --limit 8`
    Run each query in the Daily X Query Set above (6 queries, ~$0.30 total).
    For each result: capture post text, author handle, post URL, engagement metrics.
    Weight results from Key X Accounts more heavily.
@@ -291,7 +306,8 @@ STEPS:
         - This ensures the content system knows what conversations are emerging even before the build exists
         - Only append if JT plausibly has the background to post about it (check content-voice.md Proof Points)
      c. Push to Mission Control Task Board only if the finding passes the concrete-action quality gate (check duplicates first — substring match on name):
-        curl -s http://localhost:3000/api/tasks | python3 -c "import json,sys; print([t['title'] for t in json.load(sys.stdin)['tasks']])"
+        curl -s http://localhost:3000/api/tasks | python3 -c "import json,sys; data=json.load(sys.stdin); print([t.get('title') for t in data.get('tasks', [])])"
+        Do not use `python3 - <<'PY'` with piped JSON for this check; the heredoc consumes stdin and causes the task fetch to fail.
         If not already present:
         curl -s -X POST http://localhost:3000/api/tasks \
           -H 'Content-Type: application/json' \
@@ -341,7 +357,8 @@ STEPS:
    Read ~/.openclaw/workspace/MEMORY.md — current agent inventory, active projects
 
 2. X DEEP SCAN (run all 4 weekly X queries)
-   cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env
+   Use this exact command pattern for each query:
+   `cd ~/.openclaw/workspace/skills/x-research && set -a; source ~/.config/env/global.env; set +a; bun run x-search.ts search "[QUERY]" --quick --limit 8`
    Run all 4 Weekly X Query Set queries above (~$0.20).
    These catch things that trended earlier in the week but weren't in any single daily scan.
 
@@ -351,7 +368,7 @@ STEPS:
    - OpenClaw docs changelog
 
 4. CROSS-REFERENCE
-   - Inventory installed skills dynamically from `~/.openclaw/workspace/skills/*/SKILL.md`; do not rely on static examples in this file. For each installed skill: any major update this week?
+   - Inventory installed skills dynamically with `rg --files ~/.openclaw/workspace/skills | rg '/SKILL\\.md$' | sort`; do not rely on static examples in this file. For each installed skill: any major update this week?
    - Any proposed new agents from prior weekly logs still unaddressed?
    - Did any 🟡 item from earlier this week get promoted by new information?
 

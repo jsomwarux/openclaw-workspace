@@ -1,0 +1,417 @@
+[
+  {
+    "sha": "f2c8f30b5b9b42301ad7c3696f4bf93d5b872e2f",
+    "node_id": "C_kwDOQ_-q4toAKGYyYzhmMzBiNWI5YjQyMzAxYWQ3YzM2OTZmNGJmOTNkNWI4NzJlMmY",
+    "commit": {
+      "author": {
+        "name": "zenexer-ant",
+        "email": "zenexer@anthropic.com",
+        "date": "2026-05-24T21:48:50Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-05-24T21:48:50Z"
+      },
+      "message": "ci: migrate scan-plugins.yml to Workload Identity Federation auth (#248)\n\n* ci: migrate scan-plugins.yml to Workload Identity Federation auth\n\nReplaces the static ANTHROPIC_API_KEY repo secret with Workload\nIdentity Federation: the scan-plugins shared action mints a GitHub\nOIDC token (id-token: write) and the claude CLI exchanges it for a\nshort-lived bearer. The federation rule is bound to this repository\n(repository_id-pinned).\n\nDepends on anthropics/claude-plugins-community#34 (adds the WIF\ninputs to the shared action). Pinned to that PR's head SHA; will\nre-pin to a main-branch SHA once #34 merges.\n\nDrops the 'Require ANTHROPIC_API_KEY' fail-closed guard — the WIF\ninputs are literal in this file, so the action's skip-if-no-auth\npath can't trigger. Updates the prompt-injection security comment\nto reflect the short-lived bearer model.\n\n* scan-plugins: re-pin to cpc#34 merge commit on main\n\nclaude-plugins-community#34 merged at e85f0d65b4fc87f07862e1dcdc467950514414ec — re-pinning from\nthe PR head SHA to the squash-merge commit on main so the pin survives\nany future branch GC.",
+      "tree": {
+        "sha": "8c026f946000565bb26e6e0b9ee4c66387415b9a",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/8c026f946000565bb26e6e0b9ee4c66387415b9a"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/f2c8f30b5b9b42301ad7c3696f4bf93d5b872e2f",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqE3JCCRC1aQ7uu5UhlAAAPR8QAF8XAf0Cmid7Qu3zyzsHNgEI\nZUwQFe3ZOC467yUtRGpWBc1Xgz0JaJ11vqB1qN1cA+2ekRkdm6c7wFt9XiNSdYdH\nRa5lEjmXPol1m648yt00TjfCw904ljhLY2mLZk2upf8iSTMN917gwQY1YUXRXQov\n5uEBSawI7hjmp572vdRXqXPFzckxNZKLTKdV0kE2Ar68C2fHJNFHK/ijLUSHuKbW\nG2J9FzX/Pkm8H3U0U/nroNGrjdCPGrSccAUZxlVcmQWSORIGT4AexU6CrzGT1pH3\nMYJ+Ut8/S1DG1zqrlh+4IHqFf80Eu/qxUKjGZcSIdzLpQ+FMRCUFGsnTwhZI5RwT\nf+AHDvGgyS860XA0EgqYBJiapbIFe9F2vfAapmZCm691r3Qdzkauv1WiQGlsHFJT\nrW2yurkpfRYWgXg4PWfg0Wa82Myxumhoav3fdHW8m/CqnTaPOpIWC2zvFaO9EW2N\nu1ExuxQw+31D8yIyuj7FOYTqCwvlemSjsEU2LcWuCZz9jOKZuTuza/CYT73nWQDe\nNAQ7P/7g3Bzw1PBV2gPmhsxe4HHMQloRbHr/nrk1/zJuBMojh9neftBRYh8cjSsS\n9T9X8Ezdt3SYg0O8lN5Lm1PNFX7PbhMbQr1ygNif/bWKzbTQHJJKwtEqKnYGRSIW\nqMEMmsbR669Rxohdj1m2\n=Igch\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 8c026f946000565bb26e6e0b9ee4c66387415b9a\nparent 3bf5929025edffd209d8123a68d99088b14f3767\nauthor zenexer-ant <zenexer@anthropic.com> 1779659330 -0700\ncommitter GitHub <noreply@github.com> 1779659330 -0700\n\nci: migrate scan-plugins.yml to Workload Identity Federation auth (#248)\n\n* ci: migrate scan-plugins.yml to Workload Identity Federation auth\n\nReplaces the static ANTHROPIC_API_KEY repo secret with Workload\nIdentity Federation: the scan-plugins shared action mints a GitHub\nOIDC token (id-token: write) and the claude CLI exchanges it for a\nshort-lived bearer. The federation rule is bound to this repository\n(repository_id-pinned).\n\nDepends on anthropics/claude-plugins-community#34 (adds the WIF\ninputs to the shared action). Pinned to that PR's head SHA; will\nre-pin to a main-branch SHA once #34 merges.\n\nDrops the 'Require ANTHROPIC_API_KEY' fail-closed guard — the WIF\ninputs are literal in this file, so the action's skip-if-no-auth\npath can't trigger. Updates the prompt-injection security comment\nto reflect the short-lived bearer model.\n\n* scan-plugins: re-pin to cpc#34 merge commit on main\n\nclaude-plugins-community#34 merged at e85f0d65b4fc87f07862e1dcdc467950514414ec — re-pinning from\nthe PR head SHA to the squash-merge commit on main so the pin survives\nany future branch GC.",
+        "verified_at": "2026-05-24T21:48:51Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/f2c8f30b5b9b42301ad7c3696f4bf93d5b872e2f",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/f2c8f30b5b9b42301ad7c3696f4bf93d5b872e2f",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/f2c8f30b5b9b42301ad7c3696f4bf93d5b872e2f/comments",
+    "author": {
+      "login": "zenexer-ant",
+      "id": 260779868,
+      "node_id": "U_kgDOD4svXA",
+      "avatar_url": "https://avatars.githubusercontent.com/u/260779868?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/zenexer-ant",
+      "html_url": "https://github.com/zenexer-ant",
+      "followers_url": "https://api.github.com/users/zenexer-ant/followers",
+      "following_url": "https://api.github.com/users/zenexer-ant/following{/other_user}",
+      "gists_url": "https://api.github.com/users/zenexer-ant/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/zenexer-ant/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/zenexer-ant/subscriptions",
+      "organizations_url": "https://api.github.com/users/zenexer-ant/orgs",
+      "repos_url": "https://api.github.com/users/zenexer-ant/repos",
+      "events_url": "https://api.github.com/users/zenexer-ant/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/zenexer-ant/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "3bf5929025edffd209d8123a68d99088b14f3767",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/3bf5929025edffd209d8123a68d99088b14f3767",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/3bf5929025edffd209d8123a68d99088b14f3767"
+      }
+    ]
+  },
+  {
+    "sha": "3bf5929025edffd209d8123a68d99088b14f3767",
+    "node_id": "C_kwDOQ_-q4toAKDNiZjU5MjkwMjVlZGZmZDIwOWQ4MTIzYTY4ZDk5MDg4YjE0ZjM3Njc",
+    "commit": {
+      "author": {
+        "name": "Jake Marsh",
+        "email": "jakemmarsh@gmail.com",
+        "date": "2026-05-21T16:50:17Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-05-21T16:50:17Z"
+      },
+      "message": "Merge pull request #247 from anthropics/add-plugin-display-names\n\nAdd displayName to all marketplace plugin entries",
+      "tree": {
+        "sha": "10be75c3576b5ba6c9373fb312b4101003896f1d",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/10be75c3576b5ba6c9373fb312b4101003896f1d"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/3bf5929025edffd209d8123a68d99088b14f3767",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqDzfJCRC1aQ7uu5UhlAAAU/IQAB2IWi/lKmiVOkLZosRDQkgN\nMBkOcvOg3FARZj8CHPNCCFqsbeopBwxHFgxFcvLsQmltlj868g4vxeElWsbpOTcX\nfJVkPbSFQUbwqSNnnVkgEQwgq15UJV+k2MUddMr3FA/W/JcWk8kU4VXe13uOclNC\n7VWgFDH1V/3AIX8fhqIVPW7nKvkyfM+5fFxtE5KzK2dE5DUFr3D1pZEP9HcEQuC1\nrPmi6MkGgsI4CK5VIQbAaB7sOU8+DHZqTmTTbIvr0eld/9KC8lRBxbEcsJIzhY+A\n/EO8rF4taK43GFj4lRUkhrwD70woZv7j64ieXyg2YgzeEmY7h0qiiLSq4/H5gtvZ\nxIeyu4Vb0j8wR4nZ3dW17JvgIIxdDLpgEq75EqLkzKkyNf4iqM/5OxF8kpDbGByO\ngdCUCG0TEi2X+RJdedN4yl0KtUPNktEL42d7KBelJ3qj6MInfkBwa+GJTPHnL9YJ\nkVKREQs6b0UXyVV53d0VVOX3pWLMBQ9i1hKAkj2J3ao2E6d+DjxYDAFfwPMgrB5A\nCv8e1ICSCBlPHh55DO3EIYCNrtSSeAHc4T4NuMm9yhWjuaWPYcV1AP+byZ6DOpW9\nF7/1ZHCMzZtwoz8EUzxsTHyq8/c38gpwdF3BlwBT5jXR889DSjjjjKwCzbwIncZh\n9nKkrpUVN6M9G+ucznqZ\n=7mWc\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 10be75c3576b5ba6c9373fb312b4101003896f1d\nparent 09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be\nparent 66e99253885ca209ff69cc2855081bf49e8928ac\nauthor Jake Marsh <jakemmarsh@gmail.com> 1779382217 -0400\ncommitter GitHub <noreply@github.com> 1779382217 -0400\n\nMerge pull request #247 from anthropics/add-plugin-display-names\n\nAdd displayName to all marketplace plugin entries",
+        "verified_at": "2026-05-21T16:50:17Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/3bf5929025edffd209d8123a68d99088b14f3767",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/3bf5929025edffd209d8123a68d99088b14f3767",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/3bf5929025edffd209d8123a68d99088b14f3767/comments",
+    "author": {
+      "login": "jakemmarsh",
+      "id": 2916671,
+      "node_id": "MDQ6VXNlcjI5MTY2NzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2916671?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jakemmarsh",
+      "html_url": "https://github.com/jakemmarsh",
+      "followers_url": "https://api.github.com/users/jakemmarsh/followers",
+      "following_url": "https://api.github.com/users/jakemmarsh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jakemmarsh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jakemmarsh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jakemmarsh/subscriptions",
+      "organizations_url": "https://api.github.com/users/jakemmarsh/orgs",
+      "repos_url": "https://api.github.com/users/jakemmarsh/repos",
+      "events_url": "https://api.github.com/users/jakemmarsh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jakemmarsh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be"
+      },
+      {
+        "sha": "66e99253885ca209ff69cc2855081bf49e8928ac",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/66e99253885ca209ff69cc2855081bf49e8928ac",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/66e99253885ca209ff69cc2855081bf49e8928ac"
+      }
+    ]
+  },
+  {
+    "sha": "66e99253885ca209ff69cc2855081bf49e8928ac",
+    "node_id": "C_kwDOQ_-q4toAKDY2ZTk5MjUzODg1Y2EyMDlmZjY5Y2MyODU1MDgxYmY0OWU4OTI4YWM",
+    "commit": {
+      "author": {
+        "name": "Jake Marsh",
+        "email": "jakemarsh@anthropic.com",
+        "date": "2026-05-21T16:44:15Z"
+      },
+      "committer": {
+        "name": "Jake Marsh",
+        "email": "jakemarsh@anthropic.com",
+        "date": "2026-05-21T16:44:15Z"
+      },
+      "message": "Drop displayName for cockroachdb to clear policy scan\n\nThe cockroachdb plugin has a cached failing policy verdict (its\nhooks/hooks.json PostToolUse hook fires on every Write|Edit|MultiEdit\nwith no project-relevance gate). Adding displayName put its entry in\nthe scan's changed set, so the cached failure blocked this PR.\n\nLeaving the cockroachdb entry byte-identical to main keeps it out of\nthe changed set so the gate passes. cockroachdb still needs its hook\nfixed upstream before it can carry a displayName.\n\nCo-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>",
+      "tree": {
+        "sha": "10be75c3576b5ba6c9373fb312b4101003896f1d",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/10be75c3576b5ba6c9373fb312b4101003896f1d"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/66e99253885ca209ff69cc2855081bf49e8928ac",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEEDgjCAgg09MxcMOW3gDfZIurUl59XjCbSNqH32RkkdwViDPAyRlnJWligUBIBoq7cvZdm\nLxUKKSxdIMaIeHBP+wAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEkAAAAgD9TQX/NScL9EKEOhC/3HGzce0AdK43rOST4jzT8I+sQAAAAh\nAK83+cVGG76w6agN+6bQnF4KllkMhEa14kFRjsZar7ms\n-----END SSH SIGNATURE-----",
+        "payload": "tree 10be75c3576b5ba6c9373fb312b4101003896f1d\nparent 370deb5720856196869196126da806d708219def\nauthor Jake Marsh <jakemarsh@anthropic.com> 1779381855 -0400\ncommitter Jake Marsh <jakemarsh@anthropic.com> 1779381855 -0400\n\nDrop displayName for cockroachdb to clear policy scan\n\nThe cockroachdb plugin has a cached failing policy verdict (its\nhooks/hooks.json PostToolUse hook fires on every Write|Edit|MultiEdit\nwith no project-relevance gate). Adding displayName put its entry in\nthe scan's changed set, so the cached failure blocked this PR.\n\nLeaving the cockroachdb entry byte-identical to main keeps it out of\nthe changed set so the gate passes. cockroachdb still needs its hook\nfixed upstream before it can carry a displayName.\n\nCo-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>\n",
+        "verified_at": "2026-05-21T16:44:47Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/66e99253885ca209ff69cc2855081bf49e8928ac",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/66e99253885ca209ff69cc2855081bf49e8928ac",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/66e99253885ca209ff69cc2855081bf49e8928ac/comments",
+    "author": {
+      "login": "jakemmarsh",
+      "id": 2916671,
+      "node_id": "MDQ6VXNlcjI5MTY2NzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2916671?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jakemmarsh",
+      "html_url": "https://github.com/jakemmarsh",
+      "followers_url": "https://api.github.com/users/jakemmarsh/followers",
+      "following_url": "https://api.github.com/users/jakemmarsh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jakemmarsh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jakemmarsh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jakemmarsh/subscriptions",
+      "organizations_url": "https://api.github.com/users/jakemmarsh/orgs",
+      "repos_url": "https://api.github.com/users/jakemmarsh/repos",
+      "events_url": "https://api.github.com/users/jakemmarsh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jakemmarsh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "jakemmarsh",
+      "id": 2916671,
+      "node_id": "MDQ6VXNlcjI5MTY2NzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2916671?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jakemmarsh",
+      "html_url": "https://github.com/jakemmarsh",
+      "followers_url": "https://api.github.com/users/jakemmarsh/followers",
+      "following_url": "https://api.github.com/users/jakemmarsh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jakemmarsh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jakemmarsh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jakemmarsh/subscriptions",
+      "organizations_url": "https://api.github.com/users/jakemmarsh/orgs",
+      "repos_url": "https://api.github.com/users/jakemmarsh/repos",
+      "events_url": "https://api.github.com/users/jakemmarsh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jakemmarsh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "370deb5720856196869196126da806d708219def",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/370deb5720856196869196126da806d708219def",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/370deb5720856196869196126da806d708219def"
+      }
+    ]
+  },
+  {
+    "sha": "370deb5720856196869196126da806d708219def",
+    "node_id": "C_kwDOQ_-q4toAKDM3MGRlYjU3MjA4NTYxOTY4NjkxOTYxMjZkYTgwNmQ3MDgyMTlkZWY",
+    "commit": {
+      "author": {
+        "name": "Jake Marsh",
+        "email": "jakemarsh@anthropic.com",
+        "date": "2026-05-21T15:36:21Z"
+      },
+      "committer": {
+        "name": "Jake Marsh",
+        "email": "jakemarsh@anthropic.com",
+        "date": "2026-05-21T15:36:21Z"
+      },
+      "message": "feat: add displayName to all marketplace plugin entries\n\nRender human-readable plugin names in the plugin directory instead of the\nslug-humanize fallback (\"Brand voice\", \"Cockroachdb\", \"Sp global\").\nAdds displayName to each of the 49 entries in marketplace.json.\n\nPartner plugins can still override via their own plugin.json — the consumer\nprefers a plugin's manifest displayName and falls back to the marketplace\nentry value.\n\nCo-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>",
+      "tree": {
+        "sha": "9c9bf1045c8f45ef099f37a3621402e0f4ef46e4",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/9c9bf1045c8f45ef099f37a3621402e0f4ef46e4"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/370deb5720856196869196126da806d708219def",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEEDgjCAgg09MxcMOW3gDfZIurUl59XjCbSNqH32RkkdwViDPAyRlnJWligUBIBoq7cvZdm\nLxUKKSxdIMaIeHBP+wAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEkAAAAhAKaMDwfvRzpZlu4SYwt9KBtWC1E2fca8Zd3+BV9OJ2ZlAAAA\nIA19aFAU4rf+nqfRVwwDLw3vNVqNCrcgzdGC3q763TfA\n-----END SSH SIGNATURE-----",
+        "payload": "tree 9c9bf1045c8f45ef099f37a3621402e0f4ef46e4\nparent 09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be\nauthor Jake Marsh <jakemarsh@anthropic.com> 1779377781 -0400\ncommitter Jake Marsh <jakemarsh@anthropic.com> 1779377781 -0400\n\nfeat: add displayName to all marketplace plugin entries\n\nRender human-readable plugin names in the plugin directory instead of the\nslug-humanize fallback (\"Brand voice\", \"Cockroachdb\", \"Sp global\").\nAdds displayName to each of the 49 entries in marketplace.json.\n\nPartner plugins can still override via their own plugin.json — the consumer\nprefers a plugin's manifest displayName and falls back to the marketplace\nentry value.\n\nCo-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>\n",
+        "verified_at": "2026-05-21T15:37:43Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/370deb5720856196869196126da806d708219def",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/370deb5720856196869196126da806d708219def",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/370deb5720856196869196126da806d708219def/comments",
+    "author": {
+      "login": "jakemmarsh",
+      "id": 2916671,
+      "node_id": "MDQ6VXNlcjI5MTY2NzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2916671?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jakemmarsh",
+      "html_url": "https://github.com/jakemmarsh",
+      "followers_url": "https://api.github.com/users/jakemmarsh/followers",
+      "following_url": "https://api.github.com/users/jakemmarsh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jakemmarsh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jakemmarsh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jakemmarsh/subscriptions",
+      "organizations_url": "https://api.github.com/users/jakemmarsh/orgs",
+      "repos_url": "https://api.github.com/users/jakemmarsh/repos",
+      "events_url": "https://api.github.com/users/jakemmarsh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jakemmarsh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "jakemmarsh",
+      "id": 2916671,
+      "node_id": "MDQ6VXNlcjI5MTY2NzE=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2916671?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jakemmarsh",
+      "html_url": "https://github.com/jakemmarsh",
+      "followers_url": "https://api.github.com/users/jakemmarsh/followers",
+      "following_url": "https://api.github.com/users/jakemmarsh/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jakemmarsh/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jakemmarsh/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jakemmarsh/subscriptions",
+      "organizations_url": "https://api.github.com/users/jakemmarsh/orgs",
+      "repos_url": "https://api.github.com/users/jakemmarsh/repos",
+      "events_url": "https://api.github.com/users/jakemmarsh/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jakemmarsh/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be"
+      }
+    ]
+  },
+  {
+    "sha": "09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be",
+    "node_id": "C_kwDOQ_-q4toAKDA5ZjYyZmI0YzA3ZWJmN2IwYmIwYWRlZDM2YmVjNGVlYmE1OWY2YmU",
+    "commit": {
+      "author": {
+        "name": "Tobin South",
+        "email": "tobin.south@gmail.com",
+        "date": "2026-05-19T17:36:53Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-05-19T17:36:53Z"
+      },
+      "message": "Fix dead MCP server URLs: deepsense rehosted, paypal moved to SSE (#239)\n\nThe Check MCP URLs workflow (after the connection-failure probe fix in\nthis PR's parent) surfaced four endpoints that fail every connection:\n\n- mcp.deepsense.ai does not resolve in DNS at all. The biorxiv, chembl,\n  and clinical_trials servers were rehosted under\n  hcls.mcp.claude.com (Anthropic MCP directory entries dated\n  2026-01-07). Paths are unchanged; only the host moved. All three\n  return a complete MCP initialize response with no auth.\n\n- mcp.paypal.com/mcp returns 404 at every path. PayPal's live endpoint\n  is /sse (SSE transport, not streamable HTTP) and returns 401 with\n  WWW-Authenticate: Bearer realm=\"OAuth\" — alive, OAuth required.\n  Their docs claim /http for streamable transport but it returns 404\n  today. Type changed http -> sse to match the actual transport.\n\nAnyone with the bio-research or small-business bundle installed gets\nconnect failures on every agent spawn until this lands.",
+      "tree": {
+        "sha": "3ae47863ca6645d59430ff71223db37f6e315012",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/trees/3ae47863ca6645d59430ff71223db37f6e315012"
+      },
+      "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/git/commits/09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqDJ+1CRC1aQ7uu5UhlAAAZu4QAIdhXrkYfX1uoa2ITPMrL077\nc21O1+jAwwK/bvwDmULju53dntJhGZwqqJG/ZPblN2ccrEwlrtLyyflaGP1YHMMN\nf3GisGe/QrxByk3VFdEUd+BxiEpacgVP71FTn7XMyET/IkG2xo1CzZhg5n10uAJ+\nkYL0tDnh07WW7Ogu4wHuSpFxNIqWPIwRylhhhIqI24hpOaRiFAA9wanKPYgUjyBy\n38vpwBatPTvcD+It96DtRhp7OFWMI4zwdc3wv2dK+MRJ1NQN5qJMCp/dRTH3C+3c\n5rbgBUreqGqiMoBdp6XpDqFfP7cnW7EvUd1dNiO77VZV/uzDwCIBJb2MtZsjnoLT\n6sWO+3JJtvBE6CAEziP7MBzfR2nEh6WiyGXq133PGhn/zdVPGV8hDguGrhM8PycB\neCl87CZjaP9QCjDjIJ8wWvGebbbdbDPmNBDTAEP8UfQ1eajdMUC3pzhLKiLKl/Af\n3s8gu0HQzioR2tx6CHZHqXdgTU3qqwE4AmIyOKcWYZ0SuOW2rApzNRCJnDmlx+Lv\no6oVDPxjgcsz/PVEginBvfSuLY7Fc4w2Z+L81w8jYI34Fh3FTgqi+OTGGVdpKlvh\nlF1mpXOywyUZZEGNOz8GwKdB80Td52ZeUQeqbNZIASqX5DNB/INXRRZV5M37jDal\nhm0A30u/aMFVQgtsxMN6\n=Q2Z1\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 3ae47863ca6645d59430ff71223db37f6e315012\nparent 2ba85d9732f417c5f83d02a487b71e252187cd73\nauthor Tobin South <tobin.south@gmail.com> 1779212213 -0700\ncommitter GitHub <noreply@github.com> 1779212213 -0700\n\nFix dead MCP server URLs: deepsense rehosted, paypal moved to SSE (#239)\n\nThe Check MCP URLs workflow (after the connection-failure probe fix in\nthis PR's parent) surfaced four endpoints that fail every connection:\n\n- mcp.deepsense.ai does not resolve in DNS at all. The biorxiv, chembl,\n  and clinical_trials servers were rehosted under\n  hcls.mcp.claude.com (Anthropic MCP directory entries dated\n  2026-01-07). Paths are unchanged; only the host moved. All three\n  return a complete MCP initialize response with no auth.\n\n- mcp.paypal.com/mcp returns 404 at every path. PayPal's live endpoint\n  is /sse (SSE transport, not streamable HTTP) and returns 401 with\n  WWW-Authenticate: Bearer realm=\"OAuth\" — alive, OAuth required.\n  Their docs claim /http for streamable transport but it returns 404\n  today. Type changed http -> sse to match the actual transport.\n\nAnyone with the bio-research or small-business bundle installed gets\nconnect failures on every agent spawn until this lands.",
+        "verified_at": "2026-05-19T17:36:54Z"
+      }
+    },
+    "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be",
+    "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be",
+    "comments_url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/09f62fb4c07ebf7b0bb0aded36bec4eeba59f6be/comments",
+    "author": {
+      "login": "tobinsouth",
+      "id": 32489862,
+      "node_id": "MDQ6VXNlcjMyNDg5ODYy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32489862?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/tobinsouth",
+      "html_url": "https://github.com/tobinsouth",
+      "followers_url": "https://api.github.com/users/tobinsouth/followers",
+      "following_url": "https://api.github.com/users/tobinsouth/following{/other_user}",
+      "gists_url": "https://api.github.com/users/tobinsouth/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/tobinsouth/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/tobinsouth/subscriptions",
+      "organizations_url": "https://api.github.com/users/tobinsouth/orgs",
+      "repos_url": "https://api.github.com/users/tobinsouth/repos",
+      "events_url": "https://api.github.com/users/tobinsouth/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/tobinsouth/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "2ba85d9732f417c5f83d02a487b71e252187cd73",
+        "url": "https://api.github.com/repos/anthropics/knowledge-work-plugins/commits/2ba85d9732f417c5f83d02a487b71e252187cd73",
+        "html_url": "https://github.com/anthropics/knowledge-work-plugins/commit/2ba85d9732f417c5f83d02a487b71e252187cd73"
+      }
+    ]
+  }
+]

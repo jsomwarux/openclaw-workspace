@@ -25,7 +25,7 @@ If rent delinquency status is stable enough to discuss the next workflow, send a
 |---|---|---:|---|
 | 50% kickoff payment | Yair / Altmark | Yes | $1,750 before build starts. |
 | Populated command center spreadsheet | Matt | Yes | Required fields below. |
-| Current RGB rates | Matt/Yair | Yes | Proposal says current rates are 3.0% 1-year, 4.5% 2-year; confirm before use. |
+| Current RGB rates | Matt/Yair | Yes | Official NYC RGB Order #57 confirms 3.0% 1-year and 4.5% 2-year for leases commencing 2025-10-01 through 2026-09-30. Reconfirm before production use if any lease commencement falls outside that window. |
 | Sample completed RTP-8 | Matt | Yes | Proposal says already provided. Store private; do not use in public proof. |
 | DHCR Rent Roll for each property | Matt | Yes | 2490 3rd Ave already provided per proposal; confirm remaining properties. |
 | Approved email recipient(s) | Matt/Yair | Yes | Forms contain tenant/legal rent data; do not widen recipients casually. |
@@ -53,6 +53,12 @@ If rent delinquency status is stable enough to discuss the next workflow, send a
 - Do not hardcode RGB rates.
 - Do not generate a form when required fields are blank or ambiguous; route to exception list.
 - Matt reviews/prints/mails/countersigns/updates AppFolio.
+
+## Current Rate Source Check
+- Verified 2026-05-27 against NYC Rent Guidelines Board Apartment/Loft Order #57.
+- Applies to rent stabilized apartment leases commencing between 2025-10-01 and 2026-09-30.
+- Phase 1 rate layer should store the effective date window with the rates, not just the percentage values.
+- Source: https://rentguidelinesboard.cityofnewyork.us/2025-26-apartment-loft-order-57/
 
 ## Build Sequence
 1. Confirm kickoff payment + Phase 1 scope.

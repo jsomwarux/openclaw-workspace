@@ -20,6 +20,7 @@
 4. **Bootstrap file budgets:** Before appending to AGENTS.md (>28k), MEMORY.md (>20k), or TOOLS.md (>16k): check `wc -c` first. If over limit, move existing content to subfiles before adding.
 5. **Session length:** If a session exceeds 200 messages, proactively suggest starting a fresh session.
 6. **Cron exec paths:** All cron exec commands must use `python3 /full/path/script.py` format. No `cd` chaining.
+7. **OpenClaw updates:** NEVER update OpenClaw without JT's explicit approval.
 
 ## Plan Mode
 3+ steps or architectural decisions: write plan first, show JT, wait for approval. If something breaks mid-task: STOP, re-plan. Multi-session projects: write to plans/[name].md, re-read each session, update as steps complete.
@@ -116,30 +117,8 @@ Every MC task must include: (1) specific first action (URL, command, file path),
 Update CLAUDE.md files immediately (same session) when: new tool/skill/plugin installed, project status changes, strategy/pricing decision made, new agent/cron built, any hard constraint decided. Don't wait for JT to notice drift.
 Files: `~/.claude/CLAUDE.md` (global) | `~/projects/jtsomwaru-com/CLAUDE.md` | `~/projects/agentforce-agent/CLAUDE.md` | any active project-level CLAUDE.md.
 
-## Outreach Send Confirmation Handler (mandatory — SAME TURN)
-When JT confirms sending outreach (any variant of "sent", "done", "sent it", "just sent"), this is an outreach send confirmation — update status in the SAME TURN, not later.
-
-**Detection patterns (match any):**
-- "sent M1/M2/M3 to [Company]" or "sent to [Company]"
-- "sent it to [Company]"
-- "[Company] sent" (prospect name in outreach context)
-- "sent via LinkedIn/Email"
-- Any message within 30 minutes of an outreach review that contains "sent"
-
-**What to do (same turn — never defer):**
-1. Parse from context: prospect name/slug, message number (M1/M2/M3), channel (LinkedIn/Email), date (today if not specified)
-2. Run the update immediately:
-   ```
-   python3 scripts/outreach_update.py --slug [slug] --company "[Company]" --message [M1|M2|M3] --channel [LinkedIn|Email] --date [YYYY-MM-DD]
-   ```
-3. Confirm to JT: what was updated (outreach-draft.md, pipeline.md, MC task closed, M2/M3 task created)
-4. Log to today's daily note under ## Outreach Sends
-
-**Slug lookup:** company name → `~/projects/jt-consulting-pipeline/clients/[slug]/outreach-draft.md`. If slug unknown, search clients/ directory for the company name in outreach-draft.md header.
-
-**Channel default:** LinkedIn if not specified and contact has LinkedIn, else Email.
-
-**This rule overrides normal priority.** Outreach send confirmations are same-turn actions. Never say "I'll update that now" — update and confirm in the same reply.
+## Outreach Send Confirmation Handler
+JT confirms outreach sent → same-turn run `python3 scripts/outreach_update.py --slug [slug] --company "[Company]" --message M1|M2|M3 --channel LinkedIn|Email --date YYYY-MM-DD`, confirm changed files/tasks, and log under today's `## Outreach Sends`. Full detection/slug rules: `docs/agents/bootstrap-trimmed-rules-2026-05-27.md` + `docs/agents/outreach-rules.md`.
 
 ## Proactive Task Closure Rule
 When any tool call, check, or verification confirms that something is already done (version installed, feature live, task complete, URL fixed, etc.) -- mark the corresponding Mission Control task as done immediately in the same turn. Do not wait for JT to point it out. "I confirmed X is done" without closing the task is incomplete work.
@@ -200,28 +179,18 @@ These files are APPEND-ONLY or EDIT-ONLY. Using `Write` (full overwrite) on any 
 - `memory/content/content-signals.md` — historical signal log. ALWAYS use `Edit` tool to append new entries at the end. NEVER use `Write`. Verify file size with `wc -c` after editing — target <20K.
 Rule: if you think you need to "reconstruct" or "recreate" one of these files, STOP and alert JT instead. Keys lost to an overwrite cannot be recovered.
 
-## 🔑 API Key Exposure Prevention (HARD RULES — 2026-04-10)
-**Root cause of OpenRouter key revocation:** API key embedded in workspace files (memory/2026-02-21-model-routing.md, docs/tools/TOOLS-full.md) — scanned and auto-revoked by OpenRouter.
-1. **NEVER embed API keys in any code, project files, daily notes, docs, or uploaded content.** Keys live ONLY in: `~/.config/env/global.env`, `auth-profiles.json`, `models.json`, and `openclaw.json` auth sections.
-2. **NEVER modify auth-profiles.json, models.json, openclaw.json auth section, summaryModel, or summaryProvider without JT's explicit approval.** These have been changed multiple times and broken the system. Get approval first.
-3. **Before writing any file that will be uploaded to Google Drive, pushed to GitHub, or shared externally:** scan for API key patterns (sk-or-v1, sk-ant-, Bearer, 32+ char hex/base64). Redact before saving.
-4. **If an API key must be referenced in notes/docs:** use `[REDACTED]` or `YOUR_KEY_HERE` — never the actual key.
+## 🔑 API Key Exposure Prevention
+Never embed keys in code/docs/uploads; approved homes only are env/auth files. Never modify auth/model config without JT approval. Scan externally shared files for key patterns and redact. Full incident/rules: `docs/agents/bootstrap-trimmed-rules-2026-05-27.md`.
 
 ## Model Routing
-- Cheap/simple: Groq 70B or Gemini Flash-Lite for heartbeats/simple crons/notifications.
-- Default quality: Sonnet 4.6 for JT conversation, analysis, complex crons, job apps, and dynamic debugging.
+- Cheap/simple: OpenAI OAuth default unless an isolated task explicitly justifies another provider.
+- Default quality: OpenAI OAuth for JT conversation and crons. Do not put OpenRouter/Moonshot/Anthropic models in the main/default fallback chain or enabled cron fallback lists without JT approval and a named cost cap.
 - Premium: Opus 4.6 only when JT says “go premium.” Never self-escalate.
 - Large docs >100K tokens: Gemini 2.5 Pro via OpenRouter. Avoid for general tasks.
 - Anthropic direct preferred for caching; other providers usually need `openrouter/` prefix.
 
 ## 🚨 Cron Safety Rules
-- NEVER `deleteAfterRun: true` — creates scheduler loops. Notify post-restart via direct message instead.
-- LaunchAgents: zero-LLM-call automation ONLY. New LaunchAgent = get JT approval first.
-- Rate limit: never schedule >2 jobs in same 15-min window. On rate_limit error: no retry for ≥10 min.
-- Daily cap: ≤20 cron invocations/day.
-- Post-restart drift: crons may fire early — skip if >2h before scheduled window, log, run `cron list`. Don't recreate.
-- **Timeout sizing (10AM heartbeat check):** When cron complexity increases (more coins, new steps, new agents, more data sources), proactively bump timeout BEFORE task fails. Check `lastDurationMs` from `cron runs --id <jobId> --limit 1` — if last run hit the timeout ceiling (durationMs ≈ timeoutSeconds × 1000), increase timeout by 50% minimum. Default 120s only covers trivial tasks.
-- **Telegram delivery guard (all crons):** Crons that save content locally AND send Telegram must skip the Telegram send if content is empty or "All clear." Empty messages fail Telegram delivery. Fix: add `If no new [findings]: SKIP THE TELEGRAM SEND` to every cron payload that has a Telegram send step. Already applied to: niche-monitor, Spanish Weekly Eval, crypto morning.
+No `deleteAfterRun: true`; LaunchAgents must be zero-LLM and approved; avoid >2 jobs per 15-min window; run `python3 scripts/cron_volume_guard.py`; skip post-restart early fires; size timeouts from real duration; avoid empty Telegram sends. Full detail: `docs/agents/bootstrap-trimmed-rules-2026-05-27.md`.
 
 ## LaunchAgent Category Rules
 ✅ Approved (zero LLM calls): ai.openclaw.gateway, com.openclaw.backup, com.openclaw.cleanup-sessions, com.openclaw.mission-control-next, com.openclaw.mission-control-convex.

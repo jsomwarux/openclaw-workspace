@@ -19,6 +19,7 @@ import json
 import os
 import sys
 import argparse
+import subprocess
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Optional
@@ -150,9 +151,9 @@ PRICING = {
 DEFAULT_PRICING = {"input": 3.00, "output": 15.00, "cache_read": 0.30, "cache_write": 3.75}  # fallback for unknown models
 
 # ── Alert Thresholds ─────────────────────────────────────────────────────────
-ALERT_SESSION_USD   = 1.50   # single session cost (was $0.50 — too tight, causing alert spam. Normal cron runs $0.65-$1.41)
-ALERT_DAILY_USD     = 15.00  # daily total real API spend (was $2.00 — too tight. Realistic daily is $5-$15 with current crons)
-ALERT_MONTHLY_PACE  = 50.00  # projected monthly real API spend (raised from $15 to match MEMORY.md $50/mo goal)
+ALERT_SESSION_USD   = 2.00   # single session cost
+ALERT_DAILY_USD     = 10.00  # daily total real API spend
+ALERT_MONTHLY_PACE  = 75.00  # projected monthly real API spend
 MONTHLY_TARGET      = 50.00  # goal: keep real API costs under $50/mo (Anthropic = subscription, not counted)
 RUNAWAY_CALLS       = 10     # API calls in 5 min = runaway
 RUNAWAY_WINDOW_SEC  = 300    # 5 minutes
@@ -529,6 +530,41 @@ def check_runaway() -> list:
     return alerts
 
 
+def check_model_routing_guard() -> list:
+    """Alert if default or cron routing can leak into paid non-OpenAI models."""
+    guard = Path(__file__).with_name("model_routing_guard.py")
+    if not guard.exists():
+        return [{
+            "type": "model_routing_guard_missing",
+            "level": "warning",
+            "message": "⚠️ Model routing guard script is missing",
+            "data": {"path": str(guard)}
+        }]
+
+    proc = subprocess.run(
+        [sys.executable, str(guard), "--include-disabled"],
+        text=True,
+        capture_output=True,
+        timeout=10,
+        check=False,
+    )
+    if proc.returncode == 0:
+        return []
+
+    try:
+        payload = json.loads(proc.stdout or "{}")
+        errors = payload.get("errors") or [proc.stderr.strip() or proc.stdout.strip()]
+    except json.JSONDecodeError:
+        errors = [proc.stderr.strip() or proc.stdout.strip()]
+
+    return [{
+        "type": "model_routing_guard_failed",
+        "level": "critical",
+        "message": "🚨 Model routing guard failed: paid non-OpenAI model route detected",
+        "data": {"errors": errors}
+    }]
+
+
 def brief() -> str:
     """Human-readable cost section for morning brief."""
     yesterday = (datetime.now(tz=TZ_EST) - timedelta(days=1)).strftime("%Y-%m-%d")
@@ -765,7 +801,7 @@ def main():
     elif args.report:
         print(json.dumps(report(args.report), indent=2))
     elif args.check_alerts:
-        alerts = check_alerts() + check_runaway()
+        alerts = check_alerts() + check_runaway() + check_model_routing_guard()
         print(json.dumps(alerts, indent=2))
     elif args.brief:
         print(brief())

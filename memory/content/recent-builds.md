@@ -20,6 +20,23 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Altmark Rent Delinquency Testing Pack - 2026-05-27
+**What:** Created the rent delinquency acceptance checklist and workflow runbook for sample-report testing, exception routing, human approval, rollback, and production cutover.
+**For:** Altmark / client delivery
+**Outcome:** Mission Control top task now points to the checklist; Altmark Client OS dashboard, workflow map, weekly update, reusable IP log, and MEMORY.md all reflect the new testing surface.
+**Demonstrates:** Paid-client delivery control, property-ops workflow acceptance design, privacy-safe reusable IP capture
+**Content angle:** Tenant outreach automation is not a writing problem first. It is a ledger-quality and exception-routing problem.
+**Status:** complete
+
+
+## jtsomwaru.com n8n Automation Service Page — 2026-05-27
+**What:** Built `/services/n8n-automation` as a proof-safe n8n automation consulting page with FAQ schema, Service JSON-LD, canonical metadata, sitemap exposure, homepage service links, and llms.txt coverage.
+**For:** JT consulting / AI SEO and roundup citation outreach
+**Outcome:** Dedicated verifier passed; `npm run build` and `npm run lint` passed; production `/services/n8n-automation` returned HTTP 200 with canonical/schema strings; commits `6243b57` and `7c8c8ec` pushed; updated roundup packet uploaded to Drive.
+**Demonstrates:** AI-search/GEO service-page build, proof-safe consulting positioning, Next.js implementation, citation-ready outreach infrastructure
+**Content angle:** A service page should be a citation target and sales filter, not a generic list of tools.
+**Status:** complete
+
 
 ## App Marketing Share Artifacts Batch 5 — 2026-05-19
 **What:** Built Nash Satoshi weekly receipt generator and Glow Index Product Verdict Card MVP as product-led share/acquisition artifacts.
@@ -121,4 +138,3 @@
 - **Status:** Configurable template, live on jtsomwaru.com
 - **URL:** jtsomwaru.com/work/pm-maintenance-triage
 - **Content hook:** Exit condition design — when does automation hand off to a human?
-

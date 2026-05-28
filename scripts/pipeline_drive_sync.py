@@ -90,6 +90,18 @@ def find_folder(drive, name, parent_id=None):
     return files[0]["id"] if files else None
 
 
+def find_root_folder(drive):
+    """Return the top-level Eve — Drafts folder, not same-named nested drift folders."""
+    q = (
+        f"name='{ROOT_FOLDER}' and "
+        "mimeType='application/vnd.google-apps.folder' and "
+        "trashed=false and 'root' in parents"
+    )
+    res = drive.files().list(q=q, fields="files(id,name)", spaces="drive", pageSize=10).execute()
+    files = res.get("files", [])
+    return files[0]["id"] if files else None
+
+
 def get_or_create_folder(drive, name, parent_id):
     fid = find_folder(drive, name, parent_id)
     if fid:
@@ -135,7 +147,7 @@ def create_doc(drive, title, content, folder_id):
 
 def get_client_folder(drive, client_name):
     """Get or create the Drive folder for this client under Consulting/Clients/."""
-    root_id        = find_folder(drive, ROOT_FOLDER)
+    root_id        = find_root_folder(drive)
     if not root_id:
         print(f"ERROR: '{ROOT_FOLDER}' not found in Drive.")
         sys.exit(1)
@@ -205,7 +217,7 @@ Then re-run:
 
 
 def list_clients(drive):
-    root_id = find_folder(drive, ROOT_FOLDER)
+    root_id = find_root_folder(drive)
     if not root_id:
         print(f"'{ROOT_FOLDER}' not found.")
         return

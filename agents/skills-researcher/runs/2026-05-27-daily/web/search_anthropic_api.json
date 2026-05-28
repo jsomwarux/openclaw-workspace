@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "Anthropic API new feature tool use 2026",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-27",
+  "results": [
+    {
+      "title": "Anthropic Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic",
+      "description": "Fixed background jobs on a custom ANTHROPIC_BASE_URL gateway not getting auto-named 6 the namer now uses the main model when no Haiku model is configured · Fixed /model in one session silently changing the autocompact threshold in other concurrent sessions · Fixed switching permission mode while a tool-permission prompt is open not auto-dismissing the prompt when the new setting permits the tool",
+      "age": "4 days ago",
+      "page_age": "2026-05-23T18:05:06",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Inside Anthropic's 2026 Developer Conference - Every",
+      "url": "https://every.to/chain-of-thought/inside-anthropic-s-2026-developer-conference",
+      "description": "... deployed it to power our API the next day. We’ve incorporated two of the new features Anthropic announced yesterday (<strong>memory and multi-agent orchestration</strong>) and are deploying the third (outcomes) soon.",
+      "age": "4 days ago",
+      "page_age": "2026-05-24T00:00:00",
+      "source": "Every"
+    },
+    {
+      "title": "Claude Updates by Anthropic - May 2026 - Releasebot",
+      "url": "https://releasebot.io/updates/anthropic/claude",
+      "description": "Claude releases the <strong>Claude Platform on AWS, bringing the full Claude API feature set to AWS customers with AWS authentication, billing, and commitment retirement</strong>. It adds managed agents, code execution, web tools, skills, prompt caching, and new models, all available today.",
+      "age": "6 days ago",
+      "page_age": "2026-05-22T00:00:00",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Anthropic adds 28 security and compliance integrations for Claude - Help Net Security",
+      "url": "https://www.helpnetsecurity.com/2026/05/25/anthropic-security-compliance-integrations-claude/",
+      "description": "Rather than relying on manual exports and periodic reviews, organizations can use the <strong>Claude Compliance API</strong> for real-time programmatic access to Claude usage data and customer content, enabling them to build continuous monitoring and automated ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-26T05:40:05",
+      "source": "Help Net Security"
+    },
+    {
+      "title": "Claude (language model) - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Claude_(language_model)",
+      "description": "In May 2026, Anthropic introduced <strong>&quot;Dreaming&quot;,</strong> a research preview feature for its Managed Agents API that consolidates an agent&#x27;s persistent memory between sessions by merging duplicates and removing stale entries; a memory consolidation feature called autoDream had been identified in the March ...",
+      "age": "4 hours ago",
+      "page_age": "2026-05-27T12:00:03",
+      "source": "Wikipedia"
+    }
+  ]
+}

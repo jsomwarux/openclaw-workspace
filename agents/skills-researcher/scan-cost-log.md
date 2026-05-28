@@ -60,3 +60,9 @@ EOF'
 [2026-05-23T15:30:00Z] | daily-scan | x_queries: 6 | web_queries: 7 + tier-fetches | findings: 4 KB-only | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-05-25T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 15 | findings: 5 | 🔴: 1 | 🟠: 0 | messaged_jt: no
 2026-05-26T15:30:00Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 5 | 🔴: 1 | 🟠: 2 | messaged_jt: yes | mc_tasks_pushed: 3 | notes: repeated cron turn detected; no additional duplicate pushes after first completion
+[2026-05-27T15:30:00Z] | daily-scan | x_queries: 6 | web_queries: 18 | findings: 7 | 🔴: 0 | 🟠: 2 | messaged_jt: yes
+2026-05-27T12:18:29-04:00 | daily-scan | x_queries: 6 | web_queries: 16 | findings: 6 | 🔴: 0 | 🟠: 2 | messaged_jt: yes
+[2026-05-27T12:26:17-04:00] | daily-scan | x_queries: 6 | web_queries: 13 | findings: 6 | 🔴: 0 | 🟠: 2 duplicate/no-new-push | messaged_jt: no
+2026-05-27T16:30:20Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 5 | 🔴: 0 | 🟠: 0 | messaged_jt: no
+[2026-05-27T12:35:49-04:00] | daily-scan | x_queries: 6 | web_queries: 17 | findings: 6 | 🔴: 1 | 🟠: 2 | messaged_jt: yes
+2026-05-27T16:40:08Z | daily-scan | x_queries: 6 | web_queries: 17 | findings: 6 duplicate/already-logged | 🔴: 0 new | 🟠: 0 new | messaged_jt: no

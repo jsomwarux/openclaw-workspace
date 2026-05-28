@@ -28,6 +28,12 @@ When available, export TikTok/ReelFarm performance into:
 Columns:
 date,app,automation,hook,views,avg_watch_time,completion_rate,swipe_rate,profile_visits,link_clicks,notes
 
+## Posting recovery
+Current TikTok/ReelFarm posting is governed by:
+`memory/reelfarm/manual-post-recovery-protocol-2026-05-26.md`
+
+Do not resume direct auto-post scaling after 0-view/shadow-ban behavior until accounts have been warmed manually, posts are published manually from TikTok or reviewed as drafts, and 24h/72h/7d metrics show normal distribution.
+
 ## Add/remove apps
 Edit `memory/reelfarm/config/apps.json`:
 - Add new app object with product, audience, positioning, voice, strong_devices, banned.

@@ -521,3 +521,11 @@ JT's focus on **responsible AI governance** (AgentGuard) and **exception layers*
 **Actionable angle:** for outreach/pipeline demos, lead with one implementation map: current tool → AI assist point → human approval → logged outcome. This maps cleanly to insurance follow-ups, wholesale quote cleanup, property maintenance/vendor exceptions, and construction dashboard intake.
 
 ---
+
+## May 27, 2026 — Heartbeat AI Tool Monitoring
+
+**Microsoft Agent Governance Toolkit public preview appeared in fresh search.** The May 27 result positions agent governance around policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering for autonomous agents. Signal: governance is moving from slideware into installable developer infrastructure.
+
+**JT relevance:** keep selling governed workflow implementation, not generic agents. AgentGuard / Altmark-style Client OS proof should emphasize tool access boundaries, approval checkpoints, execution logs, and failure handling as the thing buyers can trust.
+
+**Market note:** fresh IAPP vendor-report coverage also frames AI governance as a capabilities market: policy/compliance, documentation, risk management, procurement process, and operating controls. This supports using governance language in consulting materials without sounding premature.

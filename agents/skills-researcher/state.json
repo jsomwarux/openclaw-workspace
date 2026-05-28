@@ -1,11 +1,11 @@
 {
-  "last_openclaw_release": "v2026.5.25-beta.1",
-  "last_npm_check": 1779895800,
+  "last_openclaw_release": "v2026.5.26",
+  "last_npm_check": 1779900008,
   "last_anthropic_post": "2026-05-26",
-  "last_openrouter_check": 1779895800,
-  "last_clawhub_check": 1779895800,
-  "last_cowork_check": 1779895800,
-  "last_cowork_plugin_commit": "f2c8f30b5b9b42301ad7c3696f4bf93d5b872e2f",
+  "last_openrouter_check": 1779900008,
+  "last_clawhub_check": 1779900008,
+  "last_cowork_check": 1779900008,
+  "last_cowork_plugin_commit": "82fc5d26417ab5663023948a0dba1f8eb5b0cd2c",
   "last_nordeim_commit": "8864d11d4adf872d5f3ab4debe3a9971020962ce",
-  "last_updated": 1779895800
+  "last_updated": 1779900008
 }

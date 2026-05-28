@@ -54,6 +54,8 @@
 
 > Format: `[DATE] | [What was wrong] | [What JT prefers instead]`
 
+**[2026-05-27] | Repeated-noun contrarian reveal pattern slipped into LinkedIn scheduled content: “The risk is not X. The risk is Y.” | Treat this as the same banned “X is not / it’s Y” pattern. Do not use semantic variants even when the sentence avoids “it’s.” Lead with the concrete failure moment or operational architecture directly.**
+
 **[2026-03-18] | Em dashes ("—") in any written content | NEVER use em dashes in any output: posts, cover letters, resume bullets, cold emails, DMs, news hooks, LinkedIn, X — anything. Use commas, colons, periods, or parentheses instead. This rule applies at generation time, not just review. No exceptions.**
 
 **[2026-03-18] | Overused contrarian reframe pattern "X isn't Y, it's Z" / "X wasn't Y, it was Z" | Use this structure at most once per document. Never in back-to-back paragraphs or consecutive posts. This applies at generation time — not just when reviewing drafts. Check before writing, not after.**

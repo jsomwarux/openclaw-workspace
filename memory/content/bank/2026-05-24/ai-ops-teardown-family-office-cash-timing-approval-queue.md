@@ -52,33 +52,21 @@ This shows the exact family-office implementation judgment JT wants to be known 
 
 Cash timing reviews get risky when the answer lives in five places.
 
-A family-office or property-finance team might have the balance report, AP calendar, recurring obligations, pending deposits, and approval rules.
+A family-office or property-finance team might have the balance report, AP calendar, recurring obligations, pending deposits, entity map, approval thresholds, and owner notes.
 
-The problem is that they do not always live in the same workflow.
+The fragile moment is the manual assembly right before a payment, transfer, tax item, vendor issue, or owner question.
 
-The current process usually looks like this:
-- someone checks the bank portal
-- someone checks the accounting export
-- someone checks the spreadsheet
-- someone searches the inbox for a timing change
-- someone asks whether a transfer, hold, or approval is needed
+The first AI workflow I would build here is a cash timing approval queue.
 
-If I were building AI ops for that team, I would start with a cash timing approval queue.
+The workflow ingests balance, AP, deposit, and obligation reports. It maps each item to the right entity or property. It flags stale reports, missing confirmations, due-date changes, threshold issues, and conflicting source data.
 
-The workflow:
-1. ingest balance, AP, deposit, and obligation reports
-2. map each item to the right entity or property
-3. flag stale reports, missing confirmations, due-date changes, and threshold issues
-4. draft a source-cited risk note
-5. route every transfer, payment, wire, tax, debt-service, or owner-distribution item to a human
-6. log the source, draft, approver, decision, and timestamp
-7. produce a weekly owner-ready exception brief
+Then it drafts a source-cited risk note and routes anything involving transfers, payments, wires, taxes, debt service, or owner distributions to a human.
 
-The system should never move money.
+Keep money movement outside the workflow.
 
-It should show what changed, what is blocked, who owns the review, and what needs approval.
+Use the system to show what changed, what is blocked, who owns the review, what needs approval, and what got logged.
 
-That is the safer first AI workflow for finance-heavy operations.
+That is the safer first AI layer for finance-heavy operations: earlier visibility, tighter approval, and a decision trail before anything sensitive happens.
 
 ## CTA Comment
 

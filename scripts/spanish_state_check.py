@@ -103,6 +103,8 @@ def main() -> int:
             return fail(f"missing required key {key!r}")
         if not isinstance(state[key], expected_type):
             return fail(f"{key!r} must be {expected_type.__name__}, got {type(state[key]).__name__}")
+    if "paused" in state and not isinstance(state["paused"], bool):
+        return fail(f"'paused' must be bool, got {type(state['paused']).__name__}")
 
     try:
         started = parse_iso(state["started"], "started")
@@ -114,6 +116,19 @@ def main() -> int:
         return fail("last_lesson_date is before started date")
     if last > today:
         return fail("last_lesson_date is in the future")
+    if state.get("paused") is True:
+        status = {
+            "ok": True,
+            "paused": True,
+            "last_lesson_date": last.isoformat(),
+            "last_lesson_complete": state["last_lesson_complete"],
+            "current_day": state["current_day"],
+            "current_week": state["current_week"],
+            "progression_checked": False,
+            "evaluation_checked": False,
+        }
+        print(json.dumps(status, indent=2))
+        return 0
     if args.require_today and last != today:
         return fail(f"last_lesson_date {last} does not equal expected date {today}")
     if today - last > timedelta(days=args.max_age_days):

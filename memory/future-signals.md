@@ -22,6 +22,13 @@
 
 ## Active Signals
 
+### Passive-Income Build Queue — VendorChase / RuleWatch / Spreadsheet Desk / Consumer Utilities
+- **What:** Current Mission Control passive-income build queue, including VendorChase Desk, RuleWatch NYC, Spreadsheet-to-Agent Desk, EarStack Studio, GymPhoto Coach, HomeGym FitCheck, LabelLaunder, CollectionProof, PDRN Decoder, and WalkthroughProof.
+- **Why deferred:** These are not bad ideas, but building them now competes with Altmark delivery, proof capture, and consulting cash flow. VendorChase/RuleWatch/Spreadsheet Desk are the strongest because they reuse consulting proof patterns; the consumer utilities need distribution evidence before build time.
+- **Trigger:** Promote one build only when Altmark proof is accepted and either consulting reaches $3K+/mo, a family-office/property intro asks for the workflow, or existing apps show 4 weeks of revenue/distribution signal. If none of those happen, keep them as medium/late-sort backlog.
+- **Logged:** 2026-05-27
+- **Potential value:** Productizes repeated consulting workflow pain into low-maintenance software, but only after the active consulting proof engine creates distribution or buyer pull.
+
 ### ViewTrack ($24-79/month social analytics + OpenClaw plugin)
 - **What:** Cross-platform video performance tracker (TikTok/IG/YT/X) with native OpenClaw integration. Pulls views, engagement, hook patterns from competitor accounts. Feeds performance data back into AI content agent for self-improvement loop.
 - **Why deferred:** Half the product is unbuilt (Dec 2025 features still "coming"). Nash Satoshi and Vista have $0 revenue — paying for optimization infrastructure before content is running is wrong order of operations. Performance feedback loop already exists in vibe marketing AGENT.md.

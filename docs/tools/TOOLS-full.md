@@ -302,10 +302,10 @@ cd "$WORKSPACE/knowledge" && bun install
 
 ## Firecrawl
 
-- **API Key:** `fc-0d0961fa920a466a869fdd4068b9fe7e`
+- **API Key:** stored in approved env/auth store as `FIRECRAWL_API_KEY`
 - **Endpoint:** `https://api.firecrawl.dev`
 - **Scrape:** `POST /v1/scrape` with `{"url": "...", "formats": ["markdown"]}`
-- **Auth header:** `Authorization: Bearer fc-0d0961fa920a466a869fdd4068b9fe7e`
+- **Auth header:** `Authorization: Bearer $FIRECRAWL_API_KEY`
 
 ### Pipeline: Brave → Firecrawl
 1. Use `web_search` (Brave) to find relevant URLs
@@ -574,7 +574,6 @@ Add whatever helps you do your job. This is your cheat sheet.
 - Docs: https://developers.deepgram.com | Sign up + add API key to global.env when needed
 
 ## Firecrawl (moved from TOOLS.md — 2026-04-20)
-- Key: fc-0d0961fa920a466a869fdd4068b9fe7e
 - `POST https://api.firecrawl.dev/v1/scrape` `{"url":"...","formats":["markdown"]}`
-- Auth header: `Authorization: Bearer fc-0d0961fa920a466a869fdd4068b9fe7e`
+- Auth header: `Authorization: Bearer $FIRECRAWL_API_KEY`
 - Use for: single-page scrapes where Cloudflare /crawl is overkill

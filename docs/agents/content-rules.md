@@ -13,6 +13,7 @@ Before drafting ANY post or content for JT:
 7. Translate the mechanics through JT's voice. Do not copy wording, claims, account persona, or structure wholesale.
 8. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering.
 9. For every LinkedIn draft, run the executable stale-pattern guard before delivery: `python3 scripts/content_distribution_guard.py --linkedin-draft [draft-file]`. If it fails, rewrite before showing JT.
+10. AI Ops Teardown Drive hygiene: top-level `Eve — Drafts / Content / LinkedIn / AI Ops Teardowns` must contain one canonical doc per teardown plus `Archive/`. Prep packs, delivery bundles, superseded drafts, and weekly batches must not sit beside canonical teardowns. If local copy changes after upload, update the existing Google Doc body or create a new canonical doc and archive stale copies.
 
 ## Self-Improving Content Loop
 All content Eve generates for JT must use a feedback loop calibrated to the niche and platform.

@@ -19,6 +19,14 @@ Every generated product post should map to a named experiment, a success thresho
 
 ## This Week’s Experiments
 
+### 0. Vista-first artifact sprint setup
+- **Channel:** X + SEO/AI-search planning
+- **Hypothesis:** Vista's movie-taste identity mechanics can create more shareable low-cost artifacts than equal-effort posting across all apps.
+- **Post plan:** Build one weekly artifact pack before posting: 5 Vista-led draft posts, 3 visual card concepts, source tags, CTAs, and a manual-approval gate.
+- **Success threshold:** Pack is ready for JT approval with source tags and each post maps to a named artifact/test.
+- **Retire/rework rule:** Do not scale to more than 5-7 total app posts/week until one format shows measurable traction.
+- **Evidence:** Grok/X scan favored recent visual demo/taste/ranking posts; current App Marketing OS already identifies share artifacts as the missing acquisition loop.
+
 ### 1. Glow product-page GEO baseline
 - **Channel:** SEO/GEO
 - **Hypothesis:** Direct-answer product summaries, safe schema, FAQs, and llms.txt should create a stronger AI-search foundation before social fanout.

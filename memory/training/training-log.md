@@ -105,3 +105,11 @@
 
 [2026-05-24 10AM] Film: reviewed 2026-05-23 daily note + MC audit output showing duplicate high-priority recurring tasks → Fix: added narrow duplicate-active-task archiving to mission_control_north_star_audit.py for weekly unemployment + buyer/channel cleanup, verified active duplicates 2→1 for both families | Improve: Mission Control North Star audit now removes duplicate attention sinks automatically while keeping newest active card.
 [2026-05-25 11:15AM] Autoresearch weekly sweep: app-marketing-product-content baseline 1.000 → final 1.000; changed file: agents/autoresearch/targets.md (checklist path hygiene); logs: agents/autoresearch/logs/2026-05-25-app-marketing-product-content-*.md
+[2026-05-27 10AM] Film: reviewed 2026-05-26 daily note + current Spanish/cron checks → Fix: paused Spanish lessons no longer trigger stale-state heartbeat failures; added regression row and verified state checks | Improve: tightened Spanish daily lesson autoresearch checklist with paused non-nudge behavior.
+[2026-05-27 11:15AM] Autoresearch weekly sweep: portfolio-card baseline 0.667 -> final 1.000; changed file: skills/portfolio-card/SKILL.md; logs: agents/autoresearch/logs/2026-05-27-portfolio-card-*.md
+
+## Weekly Systems Review — 2026-05-27 Closeout
+- Checks run: gateway LaunchAgent throttle/load, bootstrap budgets, Mission Control task state, model routing guard, cron volume guard, proof guard.
+- Fixes applied: compacted HEARTBEAT.md to 3,612 bytes, moved extended rules to `docs/agents/heartbeat-extended-rules.md`, added `scripts/cron_volume_guard.py`, replaced retired blunt `<=20/day` cap with executable <=35 scheduled/day + <=28 agentTurn/day guard, and closed the Mission Control task.
+- Current posture: cron guard passes at 51 enabled jobs, ~208.46 weekly invocations, 29.78/day average, 25.78 agentTurn/day average, 0 unknown schedules; gateway sample ~771MB RSS / 0.3% CPU.
+- Deferred blockers: none for this task. Future weekly systems review must run `scripts/cron_volume_guard.py` and only reopen pruning work if the guard fails or warnings appear.

@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "n8n Microsoft Agent node Teams Outlook SharePoint new",
+  "freshness": "month",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-27",
+  "results": [
+    {
+      "title": "Deploy n8n agents that show up as members of the team inside Microsoft apps – n8n Blog",
+      "url": "https://blog.n8n.io/deploy-n8n-agents-that-show-up-as-members-of-the-team-inside-microsoft-apps/",
+      "description": "Learn how to build an agent in n8n using the Microsoft Agent 365 Trigger node, connect it to the tools your team relies on, and put it to work inside Microsoft Teams, Outlook, Word, and SharePoint.",
+      "age": "1 week ago",
+      "page_age": "2026-05-20T15:11:13",
+      "source": "n8n"
+    },
+    {
+      "title": "n8n Outlook Integration: Connect and Automate",
+      "url": "https://goodspeed.studio/blog/n8n-outlook-automation",
+      "description": "The n8n Outlook integration <strong>automates email workflows across your Microsoft 365 environment, turning your inbox into a trigger for real business actions</strong>. Use the n8n Outlook node and Graph API to route shared mailbox traffic, automate approvals, ...",
+      "age": "3 weeks ago",
+      "page_age": "2026-05-05T00:00:00",
+      "source": "Goodspeed"
+    },
+    {
+      "title": "n8n Microsoft Teams Integration: Connect & Automate",
+      "url": "https://goodspeed.studio/blog/n8n-microsoft-teams-integration",
+      "description": "For Microsoft-stack organisations, <strong>this often anchors a wider n8n implementation connecting Outlook, SharePoint, and Dynamics 365 alongside Teams</strong>",
+      "age": "3 weeks ago",
+      "page_age": "2026-05-05T00:00:00",
+      "source": "Goodspeed"
+    },
+    {
+      "title": "Use and collaborate with agents with their own identity in Agent 365 (preview) | Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/microsoft-agent-365/use",
+      "description": "McpServers.OneDriveSharepoint.All: Allows the application to access the OneDrive and SharePoint MCP server. McpServers.Word.All: Allows the application to access the Word MCP server. McpServers.Excel.All: Allows the application to access the Excel MCP server. McpServers.Knowledge.All: Allows the application to access the Knowledge MCP server. McpServers.Teams.All: Allows the application to access the Teams MCP server.",
+      "age": "1 month ago",
+      "page_age": "2026-05-01T13:25:05",
+      "source": "Microsoft Learn"
+    },
+    {
+      "title": "From the n8n canvas to Microsoft Teams with Microsoft Agent 365 - YouTube",
+      "url": "https://www.youtube.com/watch?v=zjJUTP1nHH0",
+      "description": "​With Microsoft Agent 365 generally available, <strong>n8n users can now build agents that show up as members of the team in Microsoft 365 applications</strong>. Microsoft ha...",
+      "age": "1 week ago",
+      "page_age": "2026-05-19T16:32:30",
+      "source": "YouTube"
+    }
+  ]
+}

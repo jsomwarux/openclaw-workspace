@@ -1,16 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-05-26",
-      "day": "tuesday",
-      "line_no": 183,
+      "date": "2026-05-27",
+      "day": "wednesday",
+      "line_no": 184,
       "platform": "x",
-      "summary": "Which part of your AI stack should stay human?  Claude Code can build.  n8n can move data.  Someone still has to decide what deserves agent ",
-      "topic": "which-part-of-your-ai-stack-should-stay-human-claude-code-can-build-n8n-can-move-data-someone-still-has-to-decide"
+      "summary": "Would you trust an AI agent with a cash timing decision?  I would trust it with the review queue.  Balance report.  AP calendar.  Pending de",
+      "topic": "would-you-trust-an-ai-agent-with-a-cash-timing-decision-i-would-trust-it-with-the-review-queue-balance-report-ap-c"
     }
   ],
   "note": "",
-  "sent_at": 1779796848,
+  "sent_at": 1779883244,
   "source": "content-reminder",
   "status": "pending"
 }

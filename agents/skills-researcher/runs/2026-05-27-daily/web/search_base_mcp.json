@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "Base MCP smart wallet launched Model Context Protocol",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-27",
+  "results": [
+    {
+      "title": "Base introduces MCP gateway for agent tokenization and commerce",
+      "url": "https://cryptobriefing.com/base-mcp-gateway-agent-tokenization-commerce/",
+      "description": "Base, the company’s Ethereum Layer-2 network, launched Base MCP on <strong>May 26,</strong> creating a gateway that lets AI agents connect directly with users’ smart wallets to perform onchain actions like token swaps, portfolio tracking, and DeFi interactions.",
+      "age": "18 hours ago",
+      "page_age": "2026-05-26T21:44:43",
+      "source": "Crypto Briefing"
+    },
+    {
+      "title": "Base MCP skill enables AI agents to manage wallets and tokens on-chain",
+      "url": "https://cryptobriefing.com/base-mcp-ai-agents-wallets-tokens/",
+      "description": "Coinbase launches Base MCP, a Model Context Protocol server that <strong>lets AI agents like Claude and ChatGPT manage wallets, swap tokens, and execute DeFi transactions on Base</strong>.",
+      "age": "3 hours ago",
+      "page_age": "2026-05-27T12:17:05",
+      "source": "Crypto Briefing"
+    },
+    {
+      "title": "Coinbase pushes further into AI payments with new MCP for Base network | Fortune",
+      "url": "https://fortune.com/2026/05/26/coinbase-pushes-further-into-ai-payments-with-new-mcp-for-base-network/",
+      "description": "The name Base MCP invokes a popular standard known as Model Context Protocol <strong>launched by Anthropic in 2024</strong> that makes it easy for agents to communicate with AI models. According to Lincoln Murr, Head of AI Product for Coinbase, MCPs are like ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-26T16:15:02",
+      "source": "Fortune"
+    },
+    {
+      "title": "Base Unveils MCP for AI Agents to Swap and Trade Crypto",
+      "url": "https://www.coinnewsspan.com/base-unveil-mcp-ai-agents-swap-trade-crypto/",
+      "description": "The MCP is working like a universal adapter. This protocol <strong>allows artificial intelligence models such as Claude, ChatGPT, or Cursor to connect with external tools and different sources of data</strong>.",
+      "age": "20 hours ago",
+      "page_age": "2026-05-26T19:57:23",
+      "source": "CoinNewsSpan"
+    },
+    {
+      "title": "Coinbase pushes further into AI payments with new MCP for Base network",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/coinbase-pushes-further-ai-payments-161202964.html",
+      "description": "The name Base MCP invokes a popular standard known as Model Context Protocol <strong>launched by Anthropic in 2024</strong> that makes it easy for agents to communicate with AI models. According to Lincoln Murr, Head of AI Product for Coinbase, MCPs are like ...",
+      "age": "1 day ago",
+      "page_age": "2026-05-26T16:12:02",
+      "source": "Yahoo! Finance"
+    }
+  ]
+}

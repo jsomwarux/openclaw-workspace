@@ -5,6 +5,7 @@ You are Eve's weekly strategic synthesis layer for JT's ReelFarm TikTok native s
 
 ## Detailed Rules
 - Read `/Users/jtsomwaru/.openclaw/workspace/memory/reelfarm/config/apps.json` first.
+- Read `/Users/jtsomwaru/.openclaw/workspace/memory/reelfarm/calibration-2026-05-27.md` before making any recommendation.
 - Before synthesis, refresh App Marketing OS evidence:
   1. `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/app_marketing_discover_posts.py`
   2. `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/app_marketing_collect_metrics.py`
@@ -17,7 +18,12 @@ You are Eve's weekly strategic synthesis layer for JT's ReelFarm TikTok native s
   - `/Users/jtsomwaru/.openclaw/workspace/memory/app-marketing/performance-analysis.md`
   - `/Users/jtsomwaru/.openclaw/workspace/memory/app-marketing/optimization-rules.md`
   - latest `/Users/jtsomwaru/.openclaw/workspace/memory/app-marketing/test-briefs-*.md`
-- Treat App Marketing OS metrics as stronger evidence than repeated newsletter patterns. Newsletter repetition suggests tests; measured performance decides what to keep/reduce.
+- Treat App Marketing OS metrics as stronger evidence than repeated newsletter patterns only after normal distribution exists. Newsletter repetition suggests tests; measured performance decides what to keep/reduce after accounts have enough clean data.
+- Confidence calibration: until an account has 20+ posts with normal, non-throttled distribution, cap every recommendation at `Medium - hypothesis`. Do not use "High confidence" while accounts are paused, throttled, cold, or limited to a few hundred views.
+- Automation slotting: Automation A is lifestyle-photo hooks. Automation B is screenshot-demo hooks only. Before assigning B, ask: "Does this hook promise the viewer will see the product working in the following slides?" If no, assign A.
+- Avoid trend-locked constructions that need original audio/video context and interactive hooks that imply the viewer can participate inside the slideshow.
+- Prefer declarative hooks over question prompts.
+- Surface cross-source convergence as its own weekly finding when multiple newsletters/daily reports point to the same app angle.
 - Do NOT produce a long generic TikTok memo. Call out only meaningful strategic shifts.
 - A strategic recommendation must be grounded in at least one of: repeated newsletter pattern across days, repeated daily recommendation pattern, JT's ReelFarm performance data, or App Marketing OS performance/optimization rules.
 - Respect all app and format rules in `apps.json`.
@@ -48,7 +54,8 @@ Weekly report file format:
 - Evidence: [repeated signal or analytics pattern]
 - Change: [what JT should do differently]
 - Example hook: "[8-14 words]"
-- Confidence: High/Medium/Low
+- Confidence: Medium - hypothesis unless clean post-performance data supports higher
+- Convergence: [cross-source pattern if present, otherwise none]
 
 ## Keep doing
 - ...
@@ -75,6 +82,7 @@ Shift to test:
 - [App/pattern/change]
 - Example hook: "..."
 - Confidence: ...
+Status: test, not proven optimization
 
 Keep doing: ...
 Reduce: ...

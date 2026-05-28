@@ -11,7 +11,7 @@
 |---|---|---|---|---|---|
 | Insurance expiration workflow | Live in production / paid | Working as expected after a few minor updates; final 50% received | JT / Yair / Navid | Capture proof-safe screenshots/run logs/acceptance wording for referral/case-study use | This week |
 | Dedicated PC handoff | Installed in office | Local workflow environment running production workflow | JT / Navid | Confirm support/admin path and backup visibility, but do not block revenue proof on old install uncertainty | This week |
-| Rent delinquency workflow | Active build + testing | Initial 50% received; JT is about to start testing | JT / Yair / Matt/Karen | Document test cases, edge cases, sample output, acceptance criteria, and production cutover plan | Immediate |
+| Rent delinquency workflow | Active build + testing | Initial 50% received; acceptance checklist and runbook now prepared for sample-report testing | JT / Yair / Matt/Karen | Use `acceptance-checklist-rent-delinquency.md` to test sample data, record included/skipped/flagged reasons, and document production cutover | Immediate |
 | DHCR Lease Renewal Phase 1 | Proposal reviewed / delivery assets ready | Legal-rent renewals only; $3,500 proposal; preferential-rent renewals parked as Phase 2 | JT / Eve / Yair / Matt | After rent delinquency deployment/testing, confirm kickoff payment, populated command center spreadsheet, RGB rates, included units/properties, approved email recipients, and rent rolls | After rent delinquency gate |
 | n8n HTTPS + Google OAuth | Reliability improvement / not commercial gate | Migration runbook exists; now lower priority than rent testing and proof capture unless current production workflow needs it | Eve / JT | Only migrate after backup/admin path is clear and non-sensitive smoke test is ready | After testing/proof |
 | Reusable IP capture | Active | Insurance workflow is now proof-eligible subject to privacy/anonymization boundary | Eve / JT | Build anonymized workflow case file from verified facts only | This week |
@@ -52,7 +52,6 @@
 
 ## Current Delivery Focus — 2026-05-26
 - Insurance expiration workflow: live in production, stable after minor updates, final payment received. Capture proof-safe evidence and support/runbook details.
-- Rent delinquency workflow: paid kickoff complete; active build/testing is now the main delivery priority. Testing must capture edge cases, sample outputs, acceptance criteria, and cutover plan.
+- Rent delinquency workflow: paid kickoff complete; active build/testing is now the main delivery priority. Testing pack prepared at `acceptance-checklist-rent-delinquency.md` and `runbooks/rent-delinquency-workflow.md`.
 - DHCR Lease Renewal Phase 1: proposal reviewed; kickoff/acceptance/runbook assets created. Next delivery after rent delinquency deploys unless Altmark explicitly reprioritizes.
 - Referral path: stronger now because one workflow is live and paid, but still keep naming/permission boundaries clean before using Altmark publicly or asking Yair for intros.
-

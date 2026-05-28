@@ -1,3 +1,3 @@
-**Last updated:** 2026-05-26 09:00 AM EST
+**Last updated:** 2026-05-27 09:01 AM EDT
 
-No new critical findings as of 9:00 AM EST.
+🟠 **Burns & McDonnell enterprise-wide AI roadmap for preconstruction** — Construction Dive reports Burns & McDonnell has deployed enterprise-wide AI training, built discipline-specific agentic capabilities, and is using design, estimating, cost, schedule, procurement, and productivity data as inputs for preconstruction AI workflows; this is a concrete construction demand signal for AI ops / RAG-style implementation work. (https://www.constructiondive.com/news/burns-mcdonnell-tradesworkers-preconstruction-ai/820742/)

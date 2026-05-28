@@ -38,3 +38,4 @@ Last reset: 2026-05-01
 2026-05-26 [EMERGING] niche=insurance — BriteCore embedded AI copilots and MCP service layer reinforce insurance core-system vendors moving toward agentic automation, but no immediate JT action verified.
 2026-05-26 [EMERGING] niche=construction — NYC transit/construction tech pilots include AI proposals, suggesting continued public-infrastructure AI adoption but not a high-severity consulting signal.
 2026-05-26 [EMERGING] niche=agentforce — Agentforce 360 capability pages continue emphasizing builder, voice, scripting, and intelligent context; tracked as platform background rather than new high finding.
+2026-05-27 [CONFIRMS] niche=construction — Burns & McDonnell says AI is at the forefront of technology spend, with enterprise-wide training and agentic preconstruction capabilities using internal design, cost, schedule, procurement, and productivity data.

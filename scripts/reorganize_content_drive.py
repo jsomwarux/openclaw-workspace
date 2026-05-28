@@ -26,6 +26,8 @@ def find_folder(name, parent_id=None):
     q = f"name='{name}' and mimeType='application/vnd.google-apps.folder' and trashed=false"
     if parent_id:
         q += f" and '{parent_id}' in parents"
+    elif name == "Eve — Drafts":
+        q += " and 'root' in parents"
     r = service.files().list(q=q, fields="files(id,name)").execute()
     files = r.get("files", [])
     return files[0]["id"] if files else None

@@ -15,11 +15,12 @@
 - Delivery truth source: `openclaw cron runs --id babd905a-1098-49dd-8700-772fef14f817 --limit 1` (`deliveryStatus=delivered` required). `state.json` proves persistence, not receipt.
 
 ## Cost Tracker
-- `python3 ~/.openclaw/workspace/scripts/cost-tracker.py --snapshot | --brief | --check-alerts | --weekly-review | --check-runaway`
+- `python3 ~/.openclaw/workspace/scripts/cost-tracker.py --snapshot | --brief | --check-alerts | --weekly-review | --check-runaway`; routing guard: `python3 scripts/model_routing_guard.py --include-disabled`
 - `--diagnose` is **not currently supported**. During cost spikes, run `--check-runaway` plus `--snapshot`/`--weekly-review` before repeating generic spend alerts; use those outputs to identify likely culprit jobs/sessions and reduce or pause that source.
 - `--check-alerts` returns a JSON array; send each alert to JT only when non-empty, and avoid duplicate sends when the same alert was already logged in today's daily note.
 - Snapshot runs at 2AM via backup.sh → memory/costs/YYYY-MM-DD.json
-- Alerts: session >$2, daily >$10, monthly pace >$75 | Goal: $50/mo
+- Alerts: session >$2, daily >$10, monthly pace >$75
+- Cron volume guard: `python3 scripts/cron_volume_guard.py`
 
 ## Audit Trail
 - Log: `python3 ~/.openclaw/workspace/scripts/log-proof.py --type TYPE --title "..." --description "..." --outcome success|failure|partial [--files PATH]`
@@ -28,7 +29,6 @@
 
 ## Restart Script
 - `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "reason"` — sends direct Telegram notification before restart (NO cron jobs created)
-
 
 ## Image / OCR Tooling
 - OpenClaw image attachments require `sharp` inside `/opt/homebrew/lib/node_modules/openclaw/node_modules`. If image tool errors with “Optional dependency sharp is required,” fix with: `cd /opt/homebrew/lib/node_modules/openclaw && npm install sharp`.
@@ -47,7 +47,7 @@
 
 ## 🚨 Gateway Freeze & Rate Limit Recovery
 **Cause:** LCM compaction + Telegram re-delivery flood on restart.
-**Prevention:** LCM `summaryModel`=`openrouter/google/gemini-3.1-flash-lite-preview` (NOT Groq — 12k TPM too low for 20k+ token compaction). `contextThreshold`=0.65 | `incrementalMaxDepth`=0 | `largeFileThresholdTokens`=1000 | `freshTailCount`=6. Never send 5+ images in one Telegram message.
+**Prevention:** LCM `summaryModel`=`openrouter/google/gemini-3.1-flash-lite-preview` (NOT Groq — 12k TPM too low for 20k+ token compaction). `reserveTokensFloor`=20000+ | `truncateAfterCompaction`=true | `maxActiveTranscriptBytes`=`2mb` | `contextThreshold`=0.45 | `sweepMaxDepth`=0 (`incrementalMaxDepth` is deprecated) | `largeFileThresholdTokens`=1000 | `freshTailCount`=6 | `freshTailMaxTokens`=24000. Never send 5+ images in one Telegram message.
 **Recovery (in order):**
 1. Flush Telegram: `source ~/.config/env/global.env && curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=-1"`
 2. Clear cooldown: `python3 -c "import json,os; path=os.path.expanduser('~/.openclaw/agents/main/agent/auth-profiles.json'); d=json.load(open(path)); d['usageStats']={};  json.dump(d,open(path,'w'),indent=2)"`
@@ -63,7 +63,6 @@
 
 ## Task Queue
 - File: ~/.openclaw/workspace/tasks/pending.jsonl
-- Schema: {id, created_at, priority (high|medium|low), title, task, context, status}
 - Cron: every 2h 8AM–10PM EST (main session) — reduced from 30min post-incident to stay under 20/day cap
 
 ## X Research Skill
@@ -106,8 +105,7 @@
 - Next.js at http://localhost:3000 | Convex at port 3210
 - LaunchAgents: com.openclaw.mission-control-convex + com.openclaw.mission-control-next
 - Task API: `POST http://localhost:3000/api/tasks`
-- **Remote access (laptop/phone):** `https://jts-mac-mini.tailaf2fd2.ts.net` — tailnet only, requires Tailscale connected
-- **n8n remote:** `https://jts-mac-mini.tailaf2fd2.ts.net/n8n`
+- Remote: `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n: `/n8n` (tailnet only)
 - **Recovery** (if board unreachable): `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-convex && launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next` — do NOT just log "may be down"; attempt kickstart immediately
 - **Tailscale serve config** (if lost after reboot): `tailscale serve --bg http://localhost:3000 && tailscale serve --bg --set-path /n8n http://localhost:5678`
 
@@ -118,23 +116,21 @@ When activating a persona for open-ended coding tasks: read `docs/tools/claude-p
 - research-agent/ | analysis-agent/ | n8n-agent/ (n8n: localhost:5678) | agentforce-agent/ (sf CLI needed)
 - crypto-agent/ | job-market-agent/ | ranking-app-agent/
 - Pipeline: ~/projects/jt-consulting-pipeline/ | Skill: skills/jt-consulting-pipeline/SKILL.md
+- Outreach pipeline preflight: `python3 scripts/outreach_pipeline_runner.py --json` — deterministic script-first stages for Drive auth, M-status/T3 dedupe, existing draft/doc checks, warm-up holds, and report generation before any LLM copy work.
 
 ## Salesforce Data Cloud (paired with Agentforce)
 Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data Streams → DLOs → DMOs → Unified Profiles → Data Graphs. Two paths: (1) Data Libraries (simple) or (2) Manual RAG pipeline. SF-to-SF ingestion free; 2.5M credits bundled in Agentforce Editions. **Full ref:** `docs/tools/salesforce-data-cloud.md`
 ## Drive Drafts
 - Script: scripts/drive_drafts.py | Account: openclawagenteve14@gmail.com | Root: "Eve — Drafts"
 - **Command:** `cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py --title "[Title]" --path "[path]" --file [path]`
-- **Key paths:** Client LinkedIn → `Consulting/Clients/[Client]/Outreach/LinkedIn` | Client Email → `Consulting/Clients/[Client]/Outreach/Email` | Decks → `Consulting/Clients/[Client]/Decks` | Resumes → `Job Applications/Resumes` | Cover letters → `Job Applications/Cover Letters` | X posts → `Content/X/[Weekly|News Hooks|Bank]` | LinkedIn → `Content/LinkedIn/[Weekly|News Hooks|Bank]` | Vibe → `Content/Vibe Marketing/[Product]` | Research → `Research` | Frameworks → `Frameworks` | Analysis → `Analysis` | T2 decks → `Consulting/Templates`
+- Key paths: client outreach/decks under `Consulting/Clients/[Client]/...`; job docs under `Job Applications/...`; content under `Content/...`; research/frameworks/analysis under same-name folders.
+- Root lookup must use the top-level `Eve — Drafts` folder (`'root' in parents`); duplicate nested `Eve — Drafts` folders are archived drift, not valid upload roots.
 - **Legacy `--project`/`--type`** still works for non-consulting projects (Vista, Nash Satoshi)
-## Mission Control — Task Push Template
-- **Quick push (copy-paste and fill in):**
-  ```
-  curl -s -X POST http://localhost:3000/api/tasks \
-    -H 'Content-Type: application/json' \
-    -d '{"title":"[TITLE]","description":"[DESCRIPTION]","status":"todo","priority":"[high|medium|low]","assignee":"[eve|JT]","project":"[Job Market|Skills|Consulting|passive-income]","sortOrder":[N]}'
-  ```
-- **Check for duplicates first:** `curl -s http://localhost:3000/api/tasks | python3 -c "import sys,json; [print(t['title']) for t in json.load(sys.stdin)]" | grep -i "[keyword]"`
-- **sortOrder bands:** HIGH: 10-40 quick wins | 50-90 alerts | 100+ strategic | MEDIUM: 10,20,30… | speculative: 500+
+
+## Mission Control — Task Push
+- Create: `curl -s -X POST http://localhost:3000/api/tasks -H 'Content-Type: application/json' -d '{"title":"[TITLE]","description":"[FIRST ACTION + WHY + DONE]","status":"todo","priority":"[high|medium|low]","assignee":"[eve|JT]","project":"[PROJECT]","sortOrder":[N]}'`
+- Check duplicates first: `curl -s http://localhost:3000/api/tasks | python3 -c "import sys,json; [print(t['title']) for t in json.load(sys.stdin)]" | grep -i "[keyword]"`
+- sortOrder bands: high 10-100+, medium 10/20/30..., speculative 500+.
 
 - Client OS template: `skills/opticfy-ops/templates/client-os/` — copy into active client folders.
 ## Consulting Pipeline Drive Sync
@@ -147,24 +143,18 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 
 ## Notion
 - Integration token: [REDACTED - use NOTION_TOKEN in ~/.config/env/global.env]
-- **Viral Post Swipe File** DB ID: 31316aff930580f6a195ca179793eb0e
-- **Content Calendar** DB ID: 32516aff930581a78659eac869c71ba8 | Page: https://www.notion.so/32516aff930581a78659eac869c71ba8
-  - Properties: Post (title), Date, Platform (select), Type (Planned/News Hook/Vibe), Status (To Post/Posted/Skipped), Drive Link, Week
+- DBs: Viral Post Swipe File `31316aff930580f6a195ca179793eb0e`; Content Calendar `32516aff930581a78659eac869c71ba8`
 - Swipe push: `python3 ~/.openclaw/workspace/scripts/notion-swipe-push.py --text "..." --author "@handle" --url "..." --niche "AI Agents" --format "Hot Take" --why "..." --engagement 1200 --hook "Contrarian claim"`
-- Seed script: `python3 ~/.openclaw/workspace/scripts/notion-swipe-seed.py` (one-time bulk population)
-- **Calendar push:** `python3 ~/.openclaw/workspace/scripts/notion-calendar-push.py --platform "X" --date "YYYY-MM-DD" --post "post text" --type "Planned" --drive-link "URL"`
-  - Args: `--platform`, `--date`, `--post` (title text), `--type` (Planned/News Hook/Vibe), `--drive-link`, `--week` (YYYY-MM-DD), `--batch` (JSON array)
-  - ⚠️ No `--title` arg — use `--post` for the post title/text
+- Calendar push: `python3 ~/.openclaw/workspace/scripts/notion-calendar-push.py --platform "X" --date "YYYY-MM-DD" --post "post text" --type "Planned" --drive-link "URL"`; no `--title` arg.
 - Cron: 3x/week Mon/Wed/Fri 5:30AM EST isolated sonnet — searches X for viral posts, pushes to Notion
 - X Algorithm reference: ~/.openclaw/workspace/docs/x-algorithm.md
 
 ## Apps
 - jtsomwaru.com: ~/projects/jtsomwaru-com/ → Vercel
-- Glow Index: Replit | Admin: /admin?key=glowindex-admin-2024-secret | jsomwarux/skincare-rankings
+- Glow Index: Replit | Admin key in approved secret store only | jsomwarux/skincare-rankings
   - ⚠️ **Replit deploy ≠ rebuild.** After pushing code changes to GitHub, JT must trigger a FRESH BUILD on Replit — not just redeploy. Options: (1) Shell tab → `npm run build` → then redeploy, OR (2) Deployments → Redeploy → "Rebuild from scratch." Clicking "Redeploy" without rebuilding reuses the old build and new code won't appear.
-  - ⚠️ **Required Replit Secrets:** BRAVE_API_KEY (for image fetch), ADMIN_SECRET (default: glowindex-admin-2024-secret), N8N_WEBHOOK_URL, N8N_CALLBACK_SECRET
-  - **Image backfill (run once after fresh deploy):** `curl -X POST https://skincare-rankings.replit.app/api/fetch-images -H "x-admin-key: glowindex-admin-2024-secret"`
+  - Required Replit Secrets: BRAVE_API_KEY, ADMIN_SECRET, N8N_WEBHOOK_URL, N8N_CALLBACK_SECRET.
+  - Image backfill after fresh deploy: `curl -X POST https://skincare-rankings.replit.app/api/fetch-images -H "x-admin-key: $ADMIN_SECRET"`
   - **Crawler access diagnostic:** `cd ~/.openclaw/workspace && python3 scripts/glow_crawler_check.py` — checks `glowindex.co` `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/rankings`, `/categories`, `/categories/serum` for Cloudflare challenge/200 status.
-  - **Replit deploy checklist:** (1) git pull in Replit, (2) `npm run build` in Shell, (3) Redeploy, (4) run image backfill curl if products have no images
   - **⚠️ Engine OpenRouter key lives in LaunchAgent plist — not global.env.** `~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist` has `OPENROUTER_API_KEY`. If analyses fail with all-401 errors: update the plist key, then `launchctl unload` + `load` to force launchd to pick up the change. Engine binds `127.0.0.1:8001`.
 - Nash Satoshi: jsomwarux/Nash-Satoshi (private)

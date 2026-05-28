@@ -17,7 +17,7 @@
 - Constraints: not positioning as hands-on developer; avoid Apex/SFDX/ML-engineering roles. Job target: AI Solutions Architect / AI Implementation Lead, $150K min, $180–220K ideal, NYC/remote only. Non-negotiables: sleep, health, and staying in NYC/location stability.
 
 ## Hard Rules / Security Essentials
-- Never modify `openclaw.json` auth, `summaryModel`, `summaryProvider`, primary model, `auth-profiles.json`, or `models.json` without JT approval.
+- Never modify `openclaw.json` auth, `summaryModel`, `summaryProvider`, primary model, `auth-profiles.json`, `models.json`, or update OpenClaw without JT approval.
 - Never store or paste API keys outside approved auth/env files. Redact secrets in shareable files and Drive uploads.
 - Never send messages to third parties on JT’s behalf. Draft, save, and summarize; JT presses send.
 - Sacred files are edit-only/append-only: `~/.config/env/global.env`, `~/.openclaw/openclaw.json`, `~/.openclaw/credentials/*`, `memory/content/content-signals.md`.
@@ -31,11 +31,12 @@
 - Preferred stack: n8n over Make.com for client automation; Agentforce when Salesforce/Data Cloud fit the client.
 
 ## Active Clients
-- **Altmark Group:** priority paid client. Dedicated PC installed in office; insurance expiration workflow is live in production, working after minor updates, and final 50% paid. Rent delinquency workflow initial 50% paid; JT is actively building/testing. Altmark pitched another workflow and JT created a proposal; Eve needs the proposal file/text/location before reviewing/scope planning. Keep proof capture privacy-safe; public naming requires permission.
+- **Altmark Group:** priority paid client. Dedicated PC installed in office; insurance expiration workflow is live in production, working after minor updates, and final 50% paid. Rent delinquency workflow initial 50% paid; JT is actively building/testing and this remains the top proof/revenue gate; acceptance checklist/runbook now prepared for sample-report testing. DHCR Lease Renewal Phase 1 assets are prepared but sequence after rent delinquency acceptance unless Altmark explicitly reprioritizes. Keep proof capture privacy-safe; public naming requires permission.
 - **Aya:** anchor client. Completed: $1,500 dashboard. Active: $1,000 StreetEasy scraper. Pending: $2,500 co-living dashboard. Stalled: acquisitions dashboard. Treat Aya as proof-point source only after accepted proof-safe evidence exists; gate: `memory/clients/aya/proof-evidence-checklist.md`.
 
 ## Pipeline / Business Development
 - Active client proof pipeline gate lives at `memory/clients/proof-pipeline-gates.md`: acceptance/payment/scope → evidence capture → permission/anonymization → referral ask → distribution. Do not publish, pitch, ask for referrals, or reuse proof when acceptance/screenshots/metrics/permission are unverified.
+- 2026-05-27 outreach strategy reset: LinkedIn warm-up comments are not the default route for new prospects. Use them only for high-fit T1/T2 prospects with recent relevant activity and a concrete M1/follow-up plan within 24-48h. Default prospecting should prioritize proof-led referrals/warm intros, live service pages/citation outreach, buyer-channel validation, and review-only outreach packets.
 - H.C. Oswald: hold outreach until personal site is polished and demo agents are built.
 - Consulting pipeline lives under `~/projects/jt-consulting-pipeline/`; client folders contain research, deck, outreach draft, and pipeline status.
 - After deck/outreach stages, sync with `python3 scripts/pipeline_drive_sync.py --slug [slug] --client "[Name]" --stage all` and include Drive links for JT review.
@@ -53,16 +54,14 @@
 - Current consulting lane remains SMB operational AI implementation: workflow cleanup, dashboards, automation, vendor/tool integration, and reusable delivery IP.
 
 ## Current Apps / Products
-- `jtsomwaru.com`: portfolio site at `~/projects/jtsomwaru-com/`, deployed via Vercel. Portfolio cards require coding-agent/build/test/push.
+- `jtsomwaru.com`: portfolio site at `~/projects/jtsomwaru-com/`, deployed via Vercel. Portfolio cards require coding-agent/build/test/push. AI SEO/citation path as of 2026-05-27: build n8n service/proof pages first, then directory/entity profiles and roundup outreach; no public submissions before JT approval.
 - Glow Index: live skincare rankings app at `https://glowindex.co`; now active for App Marketing OS durable discovery/pSEO planning. Replit deploy requires fresh build, not just redeploy. Engine OpenRouter key lives in LaunchAgent plist, not `global.env`. Marketing guardrails: no medical/dermatology claims, diagnosis/treatment language, fake testimonials, or fake before/after claims.
 - Nash Satoshi: crypto ranking app, private repo `jsomwarux/Nash-Satoshi`; morning brief drafts daily X post from live rankings.
-- Vista: App Store live at `https://apps.apple.com/us/app/vista-movie-taste-profiles/id6758186885`; durable SEO page live on jtsomwaru.com for 1–100 movie rating positioning.
+- Vista: App Store live at `https://apps.apple.com/us/app/vista-movie-taste-profiles/id6758186885`; durable SEO page live on jtsomwaru.com for 1–100 movie rating positioning. 2026-05-27 app-marketing reset: run a Vista-first, artifact-led growth sprint; use 5-7 total weekly app posts across the portfolio, with Vista getting 60-70%, Nash getting 20-30%, and Glow staying SEO/AI-search first until crawler/claim-safety/measurement gates are healthy.
 
 ## Content System
-- App Marketing OS is first-class for passive-income apps. Eve owns low-cost user-acquisition strategy, research, hooks, asset maps, scoreboarding, directory/SEO/ASO, Mission Control task generation, and cross-system coordination. Current reset as of 2026-05-26: TikTok/ReelFarm slideshow posting is paused after 0-view/shadow-ban behavior; do not scale volume. Priority is account warm-up, ReelFarm draft generation + JT manual posting, app-specific prompt/settings updates from ReelFarm Intel, and metric capture before resuming. Action Arena is nearly finished and needs App Store launch marketing; Dynasty Simulator remains in testing/prelaunch validation. Current status: `memory/app-marketing/current-status-2026-05-26.md`; ReelFarm details live in `memory/reelfarm/*`.
 - Before drafting posts: read `memory/content-voice.md`; no preamble, no em dashes, no “Here’s the thing,” standalone posts 6–15 words when requested.
-- Swipe-file rule: content generation must fetch Notion Viral Posts Swipe references first (`python3 scripts/notion-swipe-fetch.py --limit 12 --min-engagement 500`) and include hook mappings in saved weekly/one-off draft files. Priority swipe niches: AI Consulting, NYC SMB, Construction, Property Management, Wholesale Distribution, Skilled Trades, AI Agents/OpenClaw, Job Market, Nash Satoshi/x402, Personal Brand.
-- Sports GM / @dynastyjig Phase 1 is active; current content-system detail archived at `docs/memory/sports-gm-content-system-current.md`. Key rule: daily @dynastyjig drafts are niche-native trust content, not app-centric promo; product names are banned by default. As of 2026-05-12, daily @dynastyjig packs must include `Native pattern teardown` + `Rejected generic patterns`, and drafts must model fresh niche syntax/rhythm before topics. Dynasty reply targets are stricter than posts: targets must be ≤24h old, cached pools are banned, and blocked X/search must return `BLOCKED` instead of stale suggestions.
+- App Marketing/ReelFarm reset, swipe-file requirements, and Sports GM/@dynastyjig content rules are archived in `docs/memory/current-context-details-2026-05-27.md` and `docs/memory/sports-gm-content-system-current.md`.
 - Notable completed work triggers: update proof points, recent builds, technical angles if useful, generate content when rubric passes, upload substantive deliverables to Drive.
 - Wednesday LinkedIn case studies use `skills/wednesday-linkedin/SKILL.md`.
 
@@ -80,7 +79,7 @@
 - Morning crypto cron and Nash Satoshi ranking content are operationally important; missed critical crons should be detected/fired per HEARTBEAT rules.
 
 ## Infrastructure / OpenClaw State
-- OpenRouter active. Use Sonnet for complex reasoning/job apps; Opus only when JT explicitly approves premium/high-precision work. Use aliases when possible.
+- OpenRouter cost-gated. Main/default routing + all cron payloads use OpenAI OAuth with no non-OpenAI fallbacks; OpenRouter/Opus require named JT approval. Regression guard: `python3 scripts/model_routing_guard.py --include-disabled`.
 - Google Drive OAuth may block Drive-dependent pipeline work; if uploads fail, JT needs to run `python3 ~/.openclaw/workspace/scripts/drive_auth.py`.
 - LCM/lossless-claw is active; use `lcm_grep` → `lcm_describe` → `lcm_expand_query` for prior conversation recall before asserting specifics.
 - Fresh web search: use `scripts/web_search.py` direct Brave API for freshness/date filters; managed `web_search` only for broad non-freshness lookups until proven fixed. Do not configure Brave plugin/provider without approval.
@@ -89,37 +88,28 @@
 - Critical commands/paths live in `TOOLS.md`; consult it before saying “I can’t.”
 
 ## Active Automation / Crons
-- Keep daily cron invocations ≤20. Do not create `deleteAfterRun: true` jobs.
+- Cron volume is guarded by `scripts/cron_volume_guard.py`: ≤35 scheduled invocations/day average and ≤28 agentTurn/day average; >30/day warns. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM ET.
 - `critical-files-integrity` (`ee357abb`) runs daily 9AM ET, timeout 180s; run script first, inspect/edit only on non-zero exit.
-- Active cron count: 52 as of 2026-05-26. Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
-- 2026-05-24: Passive-income strategist hardened after silent miss. Guard cron `e7d45070` runs Sundays 3:20PM ET and executes `scripts/passive_income_strategist_delivery_guard.py --send` to verify report + Telegram delivery, resend digest, or alert.
+- Active cron count: 51 enabled / 77 total as of 2026-05-27. Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
+- 2026-05-27: Outreach pipeline cron is script-first. Cron `outreach-pipeline` now runs `scripts/outreach_pipeline_runner.py --json` before any copy generation; deterministic preflight handles Drive auth, M-status/T3 dedupe, existing draft/doc checks, warm-up holds, and report paths. LLM copy only runs for explicitly eligible copy-review items.
+- 2026-05-27: `Overnight Autonomy Agent` moved from 3:00AM to 3:20AM ET to avoid same-minute contention with outreach preflight; prompt is now Mission-Control/North-Star-first, light-context enabled, `thinking=high`, timeout 1800s, and legacy `memory/tasks.md` is fallback only.
 - 2026-05-12: Mission Control North Star audit runs in Morning Brief + heartbeat via `scripts/mission_control_north_star_audit.py`.
-- 2026-05-13: App Marketing OS gained autonomous MC task generation via `scripts/app_marketing_task_generator.py`; weekly reviews must read self-improvement rules, assign states, and rerun generator after metrics refresh.
-- 2026-05-14: App Marketing OS web analytics integrated with GA4/Search Console OAuth via `scripts/app_marketing_connectors/web_metrics.py`. Nash + Glow GA4/Search Console are live; jtsomwaru.com GA4/Search Console live. Ref: `memory/app-marketing/ga4-integration-reference.md`.
-- 2026-05-19: App Marketing OS xhigh review sharpened strategy: prioritize niche-specific acquisition loops, product-led share artifacts, measurement spine, competitor/review mining, and borrowed-audience lists. Operating model: `memory/app-marketing/revised-operating-model-2026-05-19.md`.
 - 2026-05-13: Spanish Daily Lesson hardened: delivery now fails loudly (`bestEffort=false`), failure alert enabled, cron prompt runs `scripts/spanish_state_check.py`, and HEARTBEAT 10AM/10PM validates Spanish state before resend/reminder.
-- 2026-05-26: Spanish lessons paused at JT's request. Disabled `Spanish Daily Lesson` (`babd905a-1098-49dd-8700-772fef14f817`) and `Spanish Weekly Evaluation` (`05024e45-57fc-4e7c-a236-660e6eb5393f`). State updated to `paused: true`.
-- 2026-05-12: Autoresearch Sweep (`ec9f36d3`) Mon/Wed/Fri 11:15AM ET; AI Ops Teardown Weekly Draft (`f96cc24f`) Sundays 7:15PM ET.
-- 2026-05-14: Crypto Morning (`eve-crypto-morning-008`) now hard-requires fresh full-universe X API research before allocation delivery. Added `scripts/run-x-research.py` + `scripts/x-research-guard.py`; cron timeout is 1200s and must block/send incomplete warning if X guard fails.
+- 2026-05-26: Spanish lessons paused at JT's request. Disabled `Spanish Daily Lesson` (`babd905a-1098-49dd-8700-772fef14f817`); `Spanish Weekly Evaluation` (`012216b9`) was already disabled. `05024e45` is Skills & API Researcher Weekly Synthesis and remains enabled. Spanish state updated to `paused: true`.
+- Passive-income/App Marketing/web metrics/crypto X-research cron details are archived in `docs/memory/current-context-details-2026-05-27.md`.
 - Cron count/status changes must update this file same turn. Diagnose any cron with consecutive errors ≥2; timeout fixes should be sized from actual expected runtime.
 
 ## Health / Training / Quality Loops
 - Health DB: `health/health.sqlite`; daily check-in 9PM; Sunday report.
-- Cost tracker: `scripts/cost-tracker.py`; alert thresholds session >$2, daily >$10, monthly pace >$75.
+- Cost tracker: `scripts/cost-tracker.py`; alert thresholds session >$2, daily >$10, monthly pace >$75; `--check-alerts` includes model-routing guard.
 - Kobe Protocol: daily film review at 10AM and weekly skills audit. Mistake entries require failure + root cause + prevention rule.
 - Lessons auto-write: capture non-obvious solved problems in the relevant lessons/skill/rules file immediately.
 
 ## Strategic Decisions Log
-- 2026-04-26: consulting acquisition wedge: sell contained 7-day ops bottleneck audits/prototypes, not broad “AI transformation.” First workflows: property maintenance triage, construction field-note→punch-item/customer-update, wholesale stock/ETA/order-status reply drafts with human approval.
-- 2026-05-04: Exception Dashboard positioning: AI as exception layer, not chatbot — stuck work, owner, changed state, approval need, audit trail across PM/wholesale/construction/client intake. Draft: `memory/drafts/exception-dashboard-consulting-post-2026-05-04.md`.
-- 2026-03-31: consulting positioning is permanent until explicitly changed: practical AI implementation for ops-heavy SMBs.
-- 2026-03-23: no anime/NBA apps right now; prioritize B2B consultable products and client-work proof.
-- AgentSync concept deferred unless a direct need appears; Mission Control already provides enough orchestration.
-- Zapier MCP integration not needed now; n8n MCP + MCP-router covers needs.
-- Railway MCP: not needed now; revisit only for multi-service deployments.
-- Selenium MCP still needed despite Cloudflare `/crawl` because browser automation remains useful.
-- x402 / agentic commerce: active content pillar and passive-income/app-readiness lens as of 2026-05-10. Post 1–2x/week max from operator-builder POV. Do not sell generic “x402 installation” to SMBs; if tested, frame as Agent-Ready Revenue Layer / x402 Readiness Sprint for API/data/product companies with agent-readable outputs, pricing, receipts, spend controls, and docs. Source: `memory/consulting/agent-ready-revenue-layer/positioning.md`.
+- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof over anime/NBA apps; x402 is an operator-builder content/app-readiness pillar, not a generic SMB install offer.
+- Deferred/not-needed items: AgentSync unless direct need appears; Zapier MCP and Railway MCP not needed now; Selenium MCP still useful for browser automation.
+- Full dated decision detail: `docs/memory/current-context-details-2026-05-27.md` and `docs/memory/MEMORY-full.md`.
 
 ## Integrity / Fabrication Corrections
 - Never claim outreach/messages were sent unless tool/script evidence confirms it.
@@ -133,7 +123,6 @@
 
 ## Automation / Live Opportunities
 - Automation/client/opportunity history archived at `docs/memory/automation-and-live-opportunities-archive-2026-05-10.md`.
-- Current must-remember items remain: Altmark is top consulting/proof lane. Insurance workflow is live/paid; rent delinquency is the active paid build/testing priority; next Altmark proposal needs review once available. Yair may refer ~15 NYC family offices, but proof/referral use stays anonymized/permission-gated. Marketsmith is warm again: Sam Foy said before Memorial Day weekend that he/Karen will follow up after the holiday about team conversations; watch this week, do not chase immediately. CFS luxury construction AI role is secondary/full-time optional; App Marketing OS/ReelFarm/Sports GM/North Star crons are active responsibilities.
-- Guyana strategy reset 2026-05-12: keep Guyana active but narrow the wedge. Primary path is Local Content Operations Sprint for oil/gas-adjacent Guyanese suppliers/local-content firms (compliance docs, procurement/admin workflows, bid readiness, vendor docs, tender tracking), using JT’s Guyanese-American/family-network edge as trust bridge. Government digitization/city-services demos are secondary and should only move through warm intros/local partners; stop broad “AI transformation for Guyana” framing. Files: `memory/research/guyana/2026-05-12-strategy-reset.md`, `local-content-ops-sprint.md`, `supplier-prospect-seed-list.md`. Current hidden/noindex `jtsomwaru.com/guyana` page is stale/government-infrastructure biased; do not use in supplier outreach until rewritten around Local Content Ops Sprint. MC tasks added for dad/family intro ask, capability brief, 30 supplier prospects, Richard Leo/AmCham re-engagement, hidden page rewrite, and mock demo scoping.
+- Current must-remember items: Altmark rent delinquency deployment is the top consulting/proof lane; ReelFarm/TikTok warm-up recovery is the other active high-priority lane. Yair may refer ~15 NYC family offices, but proof/referral use stays anonymized/permission-gated. Marketsmith is warm again after Memorial Day; watch this week, do not chase immediately. CFS role is secondary; App Marketing OS/ReelFarm/Sports GM/North Star crons stay active.
+- Guyana strategy reset 2026-05-12: keep Guyana active but narrow the wedge to Local Content Operations Sprint for oil/gas-adjacent Guyanese suppliers/local-content firms. Current artifact is the 30-company prospect map at `memory/research/guyana/guyana-local-content-prospect-map-2026-05-27.md`; first five review-only outreach packets are in `memory/drafts/guyana-first-5-supplier-outreach-packets-2026-05-27.md`. No outreach without JT review/send-path approval. Hidden/noindex `jtsomwaru.com/guyana` remains stale until rewritten around the supplier/local-content wedge.
 - Nightly autonomous leverage, Guyana monitor, passive-income pipeline, North Star review, App Marketing scoreboard, ReelFarm Intel, and related automation are active unless cron list says otherwise.
-

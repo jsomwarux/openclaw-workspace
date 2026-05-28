@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "OpenClaw v2026.5.26 release notes gateway safer content boundaries",
+  "freshness": "week",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-05-27",
+  "results": [
+    {
+      "title": "OpenClaw Release Notes - May 2026 Latest Updates - Releasebot",
+      "url": "https://releasebot.io/updates/openclaw",
+      "description": "<strong>WhatsApp/QQ/Twitch/IRC/Slack</strong>: restore WhatsApp ack identity and group-drop warnings, make QQ Bot media respect OPENCLAW_HOME, serialize Twitch auth disconnects, store IRC channel routes canonically, and keep Slack downloaded files out of reply media.",
+      "age": "8 hours ago",
+      "page_age": "2026-05-27T07:25:03",
+      "source": "Releasebot"
+    },
+    {
+      "title": "Releases · openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw/releases",
+      "description": "Releases · openclaw/openclaw · 27 May 05:46 · steipete · v2026.5.26-beta.2 · This tag was signed with the committer’s verified signature. steipete Peter Steinberger · SSH Key Fingerprint: WmI9lVtd7F2c5XyRHbZVO3yYYJzwsSNzcZQMPT147HI · Verified · Learn about vigilant mode.",
+      "age": "16 hours ago",
+      "page_age": "2026-05-27T00:00:05",
+      "source": "GitHub"
+    },
+    {
+      "title": "OpenClaw v2026.5.22 + v2026.5.20: Meeting Notes, 4,100× Faster Models, and Smarter Agents | Blink Blog",
+      "url": "https://blink.new/blog/openclaw-v2026-5-22-release",
+      "description": "<strong>Safer Agent Ops extends the autonomy safety boundary for autonomous operations</strong>. Agents handling multi-step tasks apply more conservative defaults when operating outside explicit instructions.",
+      "age": "3 days ago",
+      "page_age": "2026-05-24T12:25:06",
+      "source": "Blink"
+    },
+    {
+      "title": "Patch Notes for OpenClaw",
+      "url": "https://patchbot.io/ai/openclaw",
+      "description": "Dependencies: <strong>update @openclaw/proxyline to 0.3.3.</strong>",
+      "age": "4 days ago",
+      "page_age": "2026-05-24T00:00:03",
+      "source": "PatchBot"
+    },
+    {
+      "title": "OpenClaw 2026.5.22: Faster Gateway Startup, Meeting Notes, and Safer Agent Defaults — OpenClaw Playbook Blog",
+      "url": "https://www.openclawplaybook.ai/blog/openclaw-2026-5-22-release-gateway-performance-meeting-notes/",
+      "description": "OpenClaw 2026.5.22 <strong>speeds up Gateway hot paths, adds meeting notes, trims subagent context, and hardens cron, browser, and session reliability</strong>.",
+      "age": "4 days ago",
+      "page_age": "2026-05-24T00:00:00",
+      "source": "Openclawplaybook"
+    }
+  ]
+}

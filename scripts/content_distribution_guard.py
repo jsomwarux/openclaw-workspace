@@ -37,6 +37,14 @@ LINKEDIN_STALE_PATTERNS = [
         "contrarian reveal: 'it is not X, it is Y'",
     ),
     (
+        re.compile(r"\b(?:the\s+)?(?P<noun>[A-Za-z][A-Za-z0-9'’/-]{1,40})\s+(?:is|are|was|were)\s+not\s+[^.\n]{1,160}\.\s*(?:the\s+)?(?P=noun)\s+(?:is|are|was|were|becomes|gets)\s+(?:that|when|where|how|[^.\n]{1,80})", re.I),
+        "contrarian repeated-noun reveal: 'The risk is not X. The risk is Y.'",
+    ),
+    (
+        re.compile(r"\b(?:it|this|that)\s+(?:is|are|was|were)\s+not\s+[^.\n]{1,160}\.\s*(?:it|this|that)\s+(?:is|are|was|were)\s+[^.\n]{1,160}", re.I),
+        "contrarian pronoun reveal: 'That is not X. It is Y.'",
+    ),
+    (
         re.compile(r"\b(?:a|an|the|this|that|your|my|our|[A-Z][A-Za-z0-9'’/-]{1,40})\s+[^.\n]{0,80}\s+(?:is|are|was|were)\s+not\s+just\s+[^.\n]{1,120}\.\s*(?:it|this|that|they|those|these|he|she)\s+(?:is|are|was|were)\s+[^.\n]{1,120}\.", re.I),
         "banned Not-Y-X variant: 'X is not just Y. It is Z.'",
     ),
