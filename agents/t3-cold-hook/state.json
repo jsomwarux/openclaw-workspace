@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-05-26",
+  "last_run": "2026-05-28",
   "drafted": [
     "new-age-global-builders",
     "essential-property-management",
@@ -71,7 +71,15 @@
     "hotaling-insurance-services",
     "tri-state-supply-company-mount-vernon",
     "bell-electrical-supply-co-inc",
-    "fargo-hvac-supply-inc"
+    "fargo-hvac-supply-inc",
+    "midtown-electric-supply-corp",
+    "bdb-construction-enterprise",
+    "couch-braunsdorf-insurance-group",
+    "silver-lining-insurance-agency",
+    "benefitsguide-hillcrest-business-systems",
+    "preferred-concepts-llc",
+    "otterstedt-insurance-agency",
+    "bwd-group-llc"
   ],
   "skipped_no_channel": [
     "fargo-hvac-supply",
@@ -132,6 +140,8 @@
     "brownyard-group",
     "gotham-brokerage-co-inc",
     "northeast-coverages",
-    "blackman-plumbing-supply-co-llc"
+    "blackman-plumbing-supply-co-llc",
+    "t-f-obrien-cooling-heating",
+    "fairmont-insurance-brokers-ltd"
   ]
 }

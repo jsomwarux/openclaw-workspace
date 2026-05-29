@@ -1,0 +1,9 @@
+case_id,tenant_ref,property_ref,unit_ref,current_balance,overdue_amount,days_past_due,last_payment_date,internal_owner,contact_method,payment_plan_active,dispute_flag,legal_flag,recent_payment_flag,credit_prepayment_flag,expected_queue,expected_reason
+RD-001,Tenant A,Property 1,1A,2450.00,2450.00,45,2026-04-01,Manager A,email,false,false,false,false,false,included,standard delinquent balance with required fields present
+RD-002,Tenant B,Property 1,1B,1800.00,1800.00,38,2026-05-25,Manager A,email,false,false,false,true,false,manual_review,recent payment requires cutoff review before inclusion
+RD-003,Tenant C,Property 2,2A,3200.00,3200.00,62,2026-03-15,Manager B,email,true,false,false,false,false,manual_review,active payment plan stays out of normal outreach
+RD-004,Tenant D,Property 2,2B,1550.00,1550.00,33,2026-04-12,Manager B,email,false,true,false,false,false,manual_review,disputed balance requires manual review
+RD-005,Tenant E,Property 3,3A,4100.00,4100.00,90,2026-02-20,Manager C,email,false,false,true,false,false,manual_review,legal or eviction-sensitive account cannot be normal outreach
+RD-006,Tenant F,Property 3,3B,-250.00,0.00,0,2026-05-20,Manager C,email,false,false,false,false,true,excluded,credit or prepayment is not delinquent
+RD-007,Tenant G,Property 4,4A,975.00,975.00,21,2026-05-01,Manager D,,false,false,false,false,false,cleanup,missing contact method blocks outreach-ready output
+RD-008,Tenant H,Property 4,,1200.00,1200.00,30,2026-04-28,Manager D,email,false,false,false,false,false,cleanup,missing unit or property identifier blocks classification

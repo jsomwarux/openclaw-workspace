@@ -2,6 +2,18 @@
 
 ---
 
+## May 28, 2026 — Heartbeat AI Tool Monitoring
+
+**Connected, governed agents are moving from enterprise demos into SMB-ready product packaging.** Recent official updates show the same pattern from multiple vendors: Anthropic launched Claude for Small Business with connectors into QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365, with human approval before sends/posts/payments; Anthropic also acquired Stainless to deepen SDK/MCP server tooling; Google I/O introduced Managed Agents in the Gemini API with isolated Linux execution and persistent state; OpenAI and Dell announced Codex work for hybrid/on-prem enterprise environments.
+
+**JT relevance:** the market is validating the exact wedge that fits property management, family-office, insurance, and wholesale operations: connected workflow agents, existing permissions, approval gates, evidence logs, and system-of-record context. The stronger buyer message is not "AI assistant"; it is "safe ops layer inside your existing tools."
+
+**Actionable demo angle:** the next consulting demo should show one governed cross-app task end-to-end: read source context, classify exceptions, draft the output, require owner approval, and write a proof log. For Altmark, that maps directly to the rent delinquency exception workflow; for broader SMB prospects, use invoice chasing, lead triage, or contract follow-up as the template.
+
+Sources: Anthropic Claude for Small Business (2026-05-13) https://www.anthropic.com/news/claude-for-small-business; Anthropic Stainless acquisition (2026-05-18) https://www.anthropic.com/news/anthropic-acquires-stainless; Google I/O developer highlights / Managed Agents (2026-05-19) https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/; OpenAI + Dell Codex enterprise partnership (2026-05-18) https://openai.com/index/dell-codex-enterprise-partnership/
+
+---
+
 
 
 ## May 25, 2026 — Heartbeat AI Tool Monitoring

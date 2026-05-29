@@ -194,3 +194,9 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - Rule: Before regenerating a replacement post, compare against the last 7 days of posted/scheduled content for the same platform. The replacement must change the core angle, not just wording.
 - Guardrail: If the rejected post shares a theme with recent content, choose a different pillar: positioning, proof, implementation decision rule, or buyer objection. Do not reuse the same operational scene.
 - Verification: Replaced Monday with an AI implementation positioning post about tool-buying vs workflow implementation, approvals, confidence, and process fit.
+
+## 2026-05-28 — X client-proof quote tweets need ownership, architecture, metrics
+- Trigger: JT preferred his quote tweet for Yair's COI workflow over Eve's suggested compressed AI aphorism.
+- Rule: When quote tweeting a concrete client result JT built, lead with verified ownership: "Built this AI workflow for [person/company]." Then include real deployment detail, hard metrics, and the vertical thesis. Do not default to generic "chatbots vs agents" or "AI businesses pay for" framing when proof is available.
+- Preferred pattern: ownership first, operational architecture second, metric third, market/vertical thesis last, partner tag only when useful.
+- Verification: Updated `memory/content-voice.md` X rules, You/I exception, theme library, and audit checklist on 2026-05-28.

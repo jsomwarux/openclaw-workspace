@@ -241,6 +241,21 @@ Drive: [link]
 Review each, edit if needed, send individually on LinkedIn. Reply "sent [company]" to log it.
 ```
 
+## Step 8: Log Proof + Run Guard
+
+After the batch file, Drive upload, state update, Mission Control tasks, weekly recap, and Telegram notification are complete, run the proof commands with explicit arguments. Do not run bare `python3 scripts/log-proof.py`; it prints help and causes the cron to fail even when the batch work succeeded.
+
+```bash
+cd ~/.openclaw/workspace
+python3 scripts/log-proof.py \
+  --type other \
+  --title "T3 Cold Hook Batch $(date +%F)" \
+  --description "Drafted verified T3 cold hook sequences, uploaded the review-only Drive batch, updated state, created Mission Control review/send tasks, and notified JT. No external outreach sent." \
+  --outcome success \
+  --files "memory/drafts/t3-batch-$(date +%F).md" "agents/t3-cold-hook/state.json" "memory/weekly-recaps/current-week.md"
+python3 scripts/memory_recap_proof_guard.py --date "$(date +%F)" --json
+```
+
 ---
 
 ## Niche Templates Reference

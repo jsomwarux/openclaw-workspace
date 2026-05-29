@@ -39,3 +39,7 @@ Last reset: 2026-05-01
 2026-05-26 [EMERGING] niche=construction — NYC transit/construction tech pilots include AI proposals, suggesting continued public-infrastructure AI adoption but not a high-severity consulting signal.
 2026-05-26 [EMERGING] niche=agentforce — Agentforce 360 capability pages continue emphasizing builder, voice, scripting, and intelligent context; tracked as platform background rather than new high finding.
 2026-05-27 [CONFIRMS] niche=construction — Burns & McDonnell says AI is at the forefront of technology spend, with enterprise-wide training and agentic preconstruction capabilities using internal design, cost, schedule, procurement, and productivity data.
+2026-05-28 [EMERGING] niche=construction — Construction tech sources continue to report AI moving from pilots toward field workflows, but with fragmented data and readiness bottlenecks.
+2026-05-28 [EMERGING] niche=property-management — Property management software market-growth coverage remains strong, but today's results were mostly market reports/vendor pages rather than urgent adoption events.
+2026-05-28 [EMERGING] niche=insurance — Insurance automation coverage continues to emphasize underwriting, claims, servicing, and finance automation; no verified new high-severity vendor/regulatory trigger found today.
+2026-05-28 [CONFIRMS] niche=enterprise-rag — Enterprise RAG/knowledge-assistant content continues to cluster around scalable internal knowledge bases and support-ticket reduction use cases.

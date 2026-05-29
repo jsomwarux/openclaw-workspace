@@ -88,14 +88,14 @@ Two sides of a contrast start with the same letter. The sound link makes the ins
 
 ---
 
-### 2. You > I (5:1 ratio — non-negotiable)
+### 2. You > I (5:1 ratio — default, not for proof posts)
 Every post should create a realization in the reader's mind, not report on JT's life.
 
 ❌ "I built an AI workflow for a construction client that saves 3 hours a day."
 ✅ "Your ops team is spending 3 hours a day on a problem a workflow could solve in 3 seconds."
 
 The "I" only appears as evidence to back up a "you" claim. Never as the subject.
-*Exception: Wednesday case studies — "I built X" is fine when used to set up a lesson for the reader.*
+*Exception: case studies, client proof, quote tweets on client results, launches, and build-in-public posts. When credibility is the point, lead with ownership: "Built this workflow for [client/person/company]." Then prove it with architecture, metric, and vertical thesis.*
 
 ---
 
@@ -152,6 +152,7 @@ Use for hot takes and compressed insights — NOT for announcements, launches, o
 | **Implementation gap** | 6 years watching $500K systems fail due to no change management |
 | **Build in public** | Consulting clients, Vista, Nash Satoshi — shipped, not theorized |
 | **AI for unglamorous verticals** | Construction, wholesale, property mgmt — where the real ROI is |
+| **Real estate operations automation** | COI tracking, rent delinquency, lease renewals, compliance workflows, local systems, recurring exception handling |
 | **Manual → automated** | Concrete before/after from Aya client ($1,500 dashboard, $1,000 scraper) |
 | **x402 / agentic payments** | Early builder, forward bet on infrastructure layer |
 | **Consulting without the corpo** | No buzzwords, no decks that gather dust |
@@ -180,7 +181,11 @@ Use for hot takes and compressed insights — NOT for announcements, launches, o
 
 - **Lead tweet:** ≤ 240 chars. The hook IS the post.
 - **Thread format:** `1/`, `2/`, `3/` Max 5 tweets.
-- **Single tweet:** 6–15 words ideal.
+- **Single tweet:** 6–15 words ideal for observations. Client-proof quote tweets can be longer when they include ownership, deployment detail, metrics, and market thesis.
+- **Client-proof quote tweet shape:** ownership first → operational architecture → hard metric → vertical thesis → partner/client tag only when relevant.
+- **Proof beats aphorism:** when someone else posts a concrete result JT built, do not answer with generic "AI businesses pay for" framing, "chatbots vs agents," or abstract category commentary. Say JT built it, name the real-world setup, cite the numbers, and connect it to the buyer vertical.
+- **Architecture detail is a feature:** include concrete deployment facts when they make the result feel real: mini PC, client office, existing systems, inbox, tracker, PDF workflow, daily summary, approval loop, 24/7 workflow. Specific machinery beats slogan language.
+- **Good client-proof X pattern:** "Built this AI workflow for [person/company]." Then 1-2 concrete deployment lines, 1 line of measured outcome, 1 line of vertical POV.
 - **No hashtags.** No "🧵 Thread below."
 - **Tone:** slightly more casual than LinkedIn, punchier, more direct
 - **End of thread:** clean conclusion line, no "follow me for more"
@@ -245,7 +250,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] Did you extract the mechanic instead of copying the wording/persona?
 - [ ] Does this sound like JT, not the source account or a generic creator?
 - [ ] Does it start with the point, not the setup?
-- [ ] Is the "I" to "you" ratio ≤ 1:5? (exception: Wednesday case study setup)
+- [ ] Is the "I" to "you" ratio ≤ 1:5? Exception: client proof, case studies, quote tweets on client results, launches, and build-in-public posts should lead with verified ownership when credibility is the point.
 - [ ] Does it use any forbidden words?
 - [ ] Is there any preamble that can be cut?
 - [ ] Does it make a claim the reader has to think about?
@@ -263,13 +268,14 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] One repost-worthy line?
 - [ ] Lead tweet ≤ 280 chars and stands alone?
 - [ ] No hashtags?
+- [ ] If quote tweeting a client result JT built, did it lead with ownership, include deployment detail, cite the metric, and end with a vertical thesis instead of a generic AI aphorism?
 - [ ] Volume gate: is this the one strongest post for this audience/window? If not, bank it instead of posting.
 - [ ] Originality gate: does this contain JT-specific proof, data, build experience, or a verified source? If it is just a copied swipe pattern with new nouns, block it as slop.
 - [ ] Safety gate: no ragebait, conspiracy framing, NSFW/gore/violence bait, or advertiser-hostile angle.
 
 ---
 
-*Last updated: 2026-05-08 (LinkedIn consulting buyer-pain-first rule added) | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*
+*Last updated: 2026-05-28 (X client-proof quote tweet rule added) | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*
 - **jtsomwaru.com AI Operations Diagnostic Reposition (2026-05-05):** Updated JT's personal site from generic AI Implementation Specialist framing to AI Operations Diagnostic / ops-heavy business workflow implementation. Added who-I-help, diagnostic front door, outcome-led services, and AI-search metadata. Build + lint passed; commit `2d0bb2a` pushed; production verified with updated hero/metadata.
 - **Nash Satoshi Methodology Page (2026-05-07):** Added and shipped `/methodology` explaining the 4-model crypto game-theory ranking system, with sitemap/robots/llms.txt exposure. GitHub synced at `5473082`; build/typecheck passed; production confirmed live. Content angle: trust pages are distribution assets for AI-search, not just documentation.
 

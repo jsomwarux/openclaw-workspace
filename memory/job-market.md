@@ -256,3 +256,11 @@ Read today’s job-market-agent brief. No newly found US/NYC/remote role cleared
 **Strongest signal:** AI enablement demand is converging around managed adoption systems: intake, prompt/workflow libraries, internal training, champion communities, responsible-use guardrails, ROI reporting, and measurable productivity/time-saved metrics.
 
 **Positioning implication:** Keep packaging Mission Control/OpenClaw as an AI operations control plane and JT Somwaru Consulting as AI enablement/change adoption, not only automation delivery. Existing AdoptAI, ROIFlow, and AgentOps Console ideas already cover the gap; no new build idea needed today.
+
+## 2026-05-28 — Heartbeat Job Market Pulse
+
+Read today’s job-market-agent brief. Seven required searches found no new 18+/25 role worth surfacing; public-board supply is thinner than yesterday and still skewed toward stale aggregators, non-US roles, pre-sales/solutions tracks, contract platform work, and engineering-heavy postings.
+
+**Strongest signal:** today’s market value is credential/salary positioning, not a new application target. Fresh results increasingly route "AI architect" credibility through proof-backed credential language: AI architect salary bands, AWS AI Practitioner, GenAI Developer, Agentforce Specialist, Microsoft, and GitHub agentic credentials.
+
+**Positioning implication:** keep the job-market lane tied to actual proof rather than a generic certification chase. The strongest resume/portfolio line is "AI architect credential path in progress" backed by Agentforce, MCP/AgentMesh, OpenClaw operations, AI governance/value artifacts, and n8n automation proof. No new build idea or application task was created today.

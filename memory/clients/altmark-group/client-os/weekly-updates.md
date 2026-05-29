@@ -6,10 +6,12 @@
 - Insurance expiration workflow is live in production, stable after minor updates, and final 50% payment is received.
 - Rent delinquency workflow is the active paid build/testing priority.
 - Rent delinquency testing now has a dedicated acceptance checklist and runbook: `acceptance-checklist-rent-delinquency.md` and `runbooks/rent-delinquency-workflow.md`.
+- Friday smoke-test execution sheet added: `proof-assets/friday-rent-delinquency-smoke-test-sheet-2026-05-29.md`.
 - DHCR Lease Renewal Automation proposal has been reviewed and turned into delivery assets: `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md`.
 
 ### Misses / Blockers
 - Rent delinquency sample data still needs to be tested against the checklist; acceptance wording and first production cutover evidence are not captured yet.
+- The next safe test is the synthetic dry run: 8 rows, 1 included, 4 manual review, 1 excluded, 2 cleanup, and 0 tenant-facing drafts from sensitive/cleanup rows.
 - DHCR kickoff should not outrank rent delinquency unless Altmark explicitly changes priority.
 - Public proof/referral use still requires privacy-safe evidence and permission boundaries.
 

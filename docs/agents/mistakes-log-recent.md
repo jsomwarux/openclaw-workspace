@@ -333,3 +333,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** `docs/agents/regression-checks.md` now has an active check for Telegram stalls behind maintenance/tool chains; daily film review must flag any active Telegram turn with more than four tool calls and no visible reply.
 - **Owner surface updated:** `docs/agents/mistakes-log-recent.md`, `docs/agents/regression-checks.md`, and `TOOLS.md` bootstrap pressure was reduced so the hot tool file is not sitting at 99% budget.
 - **Verification/date:** 2026-05-27 — sent immediate visible ack to JT, added regression check, trimmed `TOOLS.md`, and redacted stale secrets from tool docs.
+
+## 2026-05-28 — LinkedIn weekly queue skipped posted-log tracking
+- **Failure:** Thursday content reminder sent only X, and this week's LinkedIn slots were absent from `memory/content/posted-log.jsonl` even though the LinkedIn generator claimed the queue was ready and pushed Notion.
+- **Root cause:** The `content-generate-linkedin` cron prompt required writing the weekly file, running the guard, Drive upload, and review packet, but did not explicitly require local `posted-log.jsonl` rows before success. The 8AM reminder and pending posted-reply state depend on `posted-log`, so Notion scheduling alone was not enough.
+- **Guardrail/rule:** Weekly LinkedIn generation must append one `posted-log.jsonl` row per LinkedIn slot before announcing success. A ready queue without local tracking rows is a blocker, not success.
+- **Regression check:** After every LinkedIn generator run, verify `posted-log.jsonl` contains `platform=linkedin` rows whose `source_weekly` matches the current weekly file. Friday 2026-05-29 pending-state dry run must return both X and LinkedIn entries.
+- **Owner surface updated:** `content-generate-linkedin` cron payload, `memory/content/posted-log.jsonl`, Mistakes Log.
+- **Verification/date:** 2026-05-28 — added 4 missing LinkedIn rows for week of 2026-05-25; `content_pending_reply_state.py --date 2026-05-29 --platform linkedin --platform x --dry-run --json` returns 2 entries; content guard passes.

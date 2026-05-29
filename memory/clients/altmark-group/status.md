@@ -77,6 +77,7 @@ Known active/current workflows from JT update:
 ## Immediate Next Actions
 - Update Client OS proof/payment gates to reflect insurance workflow live + paid.
 - For rent delinquency: continue build and begin testing; document test cases, edge cases, sample inputs/outputs, and acceptance criteria before production deployment.
+- 2026-05-28 nightly: Friday synthetic smoke-test sheet is ready at `proof-assets/friday-rent-delinquency-smoke-test-sheet-2026-05-29.md`. Next safe move is to run `client-os/cleaned-inputs/rent-delinquency-synthetic-smoke-test-2026-05-28.csv` in dry-run/review-only mode and verify 8 rows classify as 1 included, 4 manual review, 1 excluded, 2 cleanup, with 0 tenant-facing drafts from sensitive/cleanup rows.
 - Capture proof-safe evidence from the live insurance workflow: redacted screenshots, run logs, acceptance wording, and before/after workflow summary.
 - DHCR Lease Renewal Automation proposal has been reviewed. Use `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `client-os/acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md` after rent delinquency deployment/testing or if Altmark explicitly pulls this forward.
 - Prepare support/maintenance/retainer path after the second workflow proves stable.

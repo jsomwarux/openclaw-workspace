@@ -124,3 +124,9 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Check:** Read `memory/reelfarm/calibration-2026-05-27.md`. Verify every recommendation uses `Medium - hypothesis` unless the account has 20+ normal-distribution posts, applies the Automation B screenshot-demo slotting test, uses Vista/Nash Satoshi/Glow Index proper casing, avoids trend-locked and viewer-interactive hooks, favors declarative hooks over questions, and surfaces cross-source convergence as its own finding.
 - **Fail condition:** "High confidence" appears without real post-performance data, a non-screenshot walkthrough hook is assigned to Automation B, app names are all-caps, or static slideshow hooks require trend audio/video context or viewer interaction.
 - **Owner surface:** ReelFarm review checklist, App Marketing OS optimization rules, ReelFarm strategy baseline.
+
+## LinkedIn posted-log finalization check
+- **Trigger:** Every `content-generate-linkedin` weekly run before it announces the LinkedIn queue is ready.
+- **Check:** `memory/content/posted-log.jsonl` must contain one `platform=linkedin` row for every LinkedIn slot in the current weekly file, with `source_weekly` set to that file and `posted=false`. Run a pending-state dry run for the next eligible reminder date with both `--platform linkedin --platform x`.
+- **Fail condition:** The weekly file or Notion has LinkedIn copy, but `posted-log.jsonl` has zero matching rows. Treat this as a blocker because reminders and posted-reply logging will drop LinkedIn.
+- **Owner surface:** `content-generate-linkedin` cron payload, content reminder flow, posted-log hygiene.

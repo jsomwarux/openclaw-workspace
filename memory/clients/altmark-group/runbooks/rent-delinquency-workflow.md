@@ -21,13 +21,14 @@ Convert a cleaned Altmark rent delinquency report into an approval-gated excepti
 - Internal owner/manager.
 - Contact method only if outreach/draft generation is in scope.
 - Flags for payment plan, dispute, legal/eviction, recent payment, credits/prepayments, missing contact, and special handling.
+- Optional internal review flags for prior written demand, case/court status, notice status, and payment received after report date if Altmark tracks them. These are review signals only, not legal conclusions.
 
 ## Processing Rules
 1. Validate required fields before categorizing records.
 2. Fail loudly or create a data-cleanup queue when required fields are missing.
 3. Categorize records into included, manual-review, excluded, and cleanup states.
-4. Keep legal/eviction-sensitive, disputed, payment-plan, recent-payment, credit/prepayment, and missing-contact records out of normal outreach.
-5. Generate tenant-facing language only in draft/review mode and only if Altmark has approved that scope.
+4. Keep legal/eviction-sensitive, prior-demand/case/notice, disputed, payment-plan, recent-payment, post-report-payment, credit/prepayment, and missing-contact records out of normal outreach.
+5. Generate tenant-facing language only in draft/review mode and only if Altmark has approved that scope. Do not generate language referencing eviction, rent demand, court, warrant, marshal, sheriff, or legal deadlines unless Altmark provides approved wording.
 6. Log row counts, transformations, skipped reasons, flagged reasons, and errors.
 
 ## Outputs
@@ -42,6 +43,7 @@ Convert a cleaned Altmark rent delinquency report into an approval-gated excepti
 - Yair or named Altmark owner approves any tenant-facing outreach.
 - JT does not automate financial/accounting actions.
 - Records with legal, disputed, payment-plan, recent-payment, or credit/prepayment signals default to manual review.
+- Official-process context check: `../../../research/altmark-rent-delinquency-nonpayment-risk-check-2026-05-28.md`.
 
 ## Acceptance Criteria
 - Test cases in `../client-os/acceptance-checklist-rent-delinquency.md` pass on non-sensitive/redacted sample data.
@@ -58,4 +60,3 @@ Convert a cleaned Altmark rent delinquency report into an approval-gated excepti
 
 ## Reusable Pattern
 Rent delinquency automation is primarily an input-contract and exception-routing system. The reusable family-office/property-ops pattern is: validate ledger data, isolate sensitive exceptions, create a review queue, and require human approval before any external communication.
-

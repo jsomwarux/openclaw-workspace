@@ -107,6 +107,7 @@
 [2026-05-25 11:15AM] Autoresearch weekly sweep: app-marketing-product-content baseline 1.000 → final 1.000; changed file: agents/autoresearch/targets.md (checklist path hygiene); logs: agents/autoresearch/logs/2026-05-25-app-marketing-product-content-*.md
 [2026-05-27 10AM] Film: reviewed 2026-05-26 daily note + current Spanish/cron checks → Fix: paused Spanish lessons no longer trigger stale-state heartbeat failures; added regression row and verified state checks | Improve: tightened Spanish daily lesson autoresearch checklist with paused non-nudge behavior.
 [2026-05-27 11:15AM] Autoresearch weekly sweep: portfolio-card baseline 0.667 -> final 1.000; changed file: skills/portfolio-card/SKILL.md; logs: agents/autoresearch/logs/2026-05-27-portfolio-card-*.md
+[2026-05-28 10AM] Film: reviewed 2026-05-27 daily note + active-conversation recovery failure → Fix: tightened heartbeat extended rules so live JT messages block heartbeat/proactive work and verified the active Telegram stall regression row remains active | Improve: 10AM film review now explicitly checks active-conversation stall coverage before doing maintenance.
 
 ## Weekly Systems Review — 2026-05-27 Closeout
 - Checks run: gateway LaunchAgent throttle/load, bootstrap budgets, Mission Control task state, model routing guard, cron volume guard, proof guard.
