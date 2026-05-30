@@ -7,11 +7,13 @@
 - Rent delinquency workflow is the active paid build/testing priority.
 - Rent delinquency testing now has a dedicated acceptance checklist and runbook: `acceptance-checklist-rent-delinquency.md` and `runbooks/rent-delinquency-workflow.md`.
 - Friday smoke-test execution sheet added: `proof-assets/friday-rent-delinquency-smoke-test-sheet-2026-05-29.md`.
+- Synthetic rent delinquency dry run passed on 2026-05-29: 8 rows processed into 1 included, 4 manual review, 1 excluded, 2 cleanup, 0 unclassified, and 0 tenant-facing drafts from sensitive/cleanup rows.
+- Next-step request/cutover gate added: `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md`.
 - DHCR Lease Renewal Automation proposal has been reviewed and turned into delivery assets: `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md`.
 
 ### Misses / Blockers
-- Rent delinquency sample data still needs to be tested against the checklist; acceptance wording and first production cutover evidence are not captured yet.
-- The next safe test is the synthetic dry run: 8 rows, 1 included, 4 manual review, 1 excluded, 2 cleanup, and 0 tenant-facing drafts from sensitive/cleanup rows.
+- Redacted Altmark sample export, source report path, refresh cadence, named output reviewer, and exception rules are still needed before live sample testing.
+- Acceptance wording and first production cutover evidence are not captured yet.
 - DHCR kickoff should not outrank rent delinquency unless Altmark explicitly changes priority.
 - Public proof/referral use still requires privacy-safe evidence and permission boundaries.
 
@@ -19,12 +21,14 @@
 - The additional workflow is no longer an unknown proposal. It is specifically DHCR Lease Renewal Automation Phase 1: legal-rent renewals only, $3,500, 50/50 payment, with preferential-rent renewals parked as Phase 2.
 
 ### Next Week's Plan
-- Keep rent delinquency testing as the delivery priority.
+- Keep rent delinquency testing as the delivery priority; use the redacted-sample request as the next client-facing action.
+- Run the first Altmark sample in review-only mode after the source/export/reviewer/exception gate clears.
 - When DHCR is ready to start, use the kickoff command sheet to collect $1,750 start payment, populated command center spreadsheet, RGB rate confirmation, included legal-rent units/properties, approved recipient(s), and all DHCR rent rolls.
 - Use the DHCR acceptance checklist before production approval or final payment request.
 
 ### Client Decision / Input Needed
-- Confirm rent delinquency test/cutover owner and acceptance path.
+- Send redacted rent delinquency sample export with columns intact.
+- Confirm source report path/name or export process, refresh cadence, named output reviewer, and exception rules.
 - Confirm whether DHCR should wait until rent delinquency is accepted or be pulled forward.
 - If pulled forward, confirm start payment and spreadsheet/input ownership.
 

@@ -1,0 +1,255 @@
+{
+  "user": {
+    "name": "God of Prompt",
+    "public_metrics": {
+      "followers_count": 275871,
+      "following_count": 1209,
+      "tweet_count": 27025,
+      "listed_count": 2880,
+      "like_count": 75526,
+      "media_count": 5787
+    },
+    "id": "1643695629665722379",
+    "username": "godofprompt",
+    "description": "Human + AI = Superpowers \n\n🔑 Sharing AI Prompts, Systems, Tips & Tricks",
+    "created_at": "2023-04-05T19:22:39.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2060296343676166504",
+      "text": "\"Why does my AI output sound so generic?\"\n\nBecause you're prompting at the surface.\n\nYou ask for a strategy, AI gives you one, you move on. You never ask \"and then what happens?\"\n\nThat one missing question separates average AI work from exceptional. And it has a name. https://t.co/h1IY06quEO",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-29T09:45:01.000Z",
+      "conversation_id": "2060296343676166504",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 86,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2060296343676166504/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060296343676166504"
+    },
+    {
+      "id": "2060258591303663942",
+      "text": "Some people calling this a declaration of war on AI.\n\nIt's not. I read it.\n\nPope Leo XIV just released \"Magnifica Humanitas.\" 42,300 words. His first encyclical. The most authoritative document a pope can issue. Entirely focused on AI.\n\nHe signed it on the 135th anniversary of https://t.co/j0XUMl3mvZ",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-29T07:15:00.000Z",
+      "conversation_id": "2060258591303663942",
+      "metrics": {
+        "likes": 12,
+        "retweets": 3,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 3616,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://twitter.com/1922567634907791360/status/2058873214873325977"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060258591303663942"
+    },
+    {
+      "id": "2060013276772393208",
+      "text": "🚨 THIS WORKS: You can use Claude to filter out freelancers who are faking their prompting skills.\n\nOpen a shared screen. Give them a fresh Claude session. Run these 7 challenges live, like a coding interview but for prompting.\n\nNothing rehearsed. Just them, Claude, and 30 https://t.co/F06Iwnd293",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-28T15:00:13.000Z",
+      "conversation_id": "2060013276772393208",
+      "metrics": {
+        "likes": 50,
+        "retweets": 0,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 5916,
+        "bookmarks": 53
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2060013276772393208/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060013276772393208"
+    },
+    {
+      "id": "2060008737985962428",
+      "text": "TRAE just killed the “which agent should I use?” problem.\n\nSOLO Builder and SOLO Coder are now merged into one unified SOLO Agent.\n\nOne agent for frontend apps, complex programming tasks, routine dev work, MCPs, tools, and shipping.\n\n@Trae_ai https://t.co/zU7JNgicDU",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-28T14:42:10.000Z",
+      "conversation_id": "2060008737985962428",
+      "metrics": {
+        "likes": 47,
+        "retweets": 14,
+        "replies": 7,
+        "quotes": 0,
+        "impressions": 13524,
+        "bookmarks": 21
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2060008737985962428/photo/1"
+      ],
+      "mentions": [
+        "Trae_ai"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060008737985962428"
+    },
+    {
+      "id": "2060000308705530146",
+      "text": "Agents don’t need another shiny demo.\n\nThey need memory for the boring production flows that actually matter.\n\nRote turns successful API runs into replayable local flows, so agents stop burning tokens to rediscover what already worked.\n\nThat’s the missing infra layer.\n\n@modiqoai https://t.co/WWmEgi3V0z",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-28T14:08:41.000Z",
+      "conversation_id": "2060000308705530146",
+      "metrics": {
+        "likes": 14,
+        "retweets": 1,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 3896,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://twitter.com/conikeec/status/2059998133602627762"
+      ],
+      "mentions": [
+        "modiqoai"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060000308705530146"
+    },
+    {
+      "id": "2059971759882060227",
+      "text": "How I imagine developers are feeling right now. https://t.co/NQpzgk68el https://t.co/2CnngzoS6y",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-28T12:15:14.000Z",
+      "conversation_id": "2059971759882060227",
+      "metrics": {
+        "likes": 68,
+        "retweets": 6,
+        "replies": 6,
+        "quotes": 1,
+        "impressions": 28848,
+        "bookmarks": 17
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2059971759882060227/video/1",
+        "https://twitter.com/1261335549215989760/status/2059265311640019242"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2059971759882060227"
+    },
+    {
+      "id": "2059933955584110980",
+      "text": "A startup just proved that the benchmark the entire AI industry uses to rank coding models has been broken the whole time.\n\nAnd one model family was consistently exploiting the flaw. 👇 https://t.co/IDSK9sT8fc",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-28T09:45:01.000Z",
+      "conversation_id": "2059933955584110980",
+      "metrics": {
+        "likes": 142,
+        "retweets": 9,
+        "replies": 32,
+        "quotes": 3,
+        "impressions": 31402,
+        "bookmarks": 77
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2059933955584110980/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2059933955584110980"
+    },
+    {
+      "id": "2059548217285713933",
+      "text": "Perplexity just open-sourced their internal security scanner. It's called Bumblebee.\n\nIt scans your machine for compromised packages, malicious browser extensions, infected editor extensions (VS Code, Cursor, Windsurf), and MCP server configs.\n\nRead-only. Doesn't execute https://t.co/o3Np6LPhDF",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-27T08:12:14.000Z",
+      "conversation_id": "2059548217285713933",
+      "metrics": {
+        "likes": 85,
+        "retweets": 18,
+        "replies": 9,
+        "quotes": 0,
+        "impressions": 12499,
+        "bookmarks": 130
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2059548217285713933/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2059548217285713933"
+    },
+    {
+      "id": "2059421414201937999",
+      "text": "The prompt box was never enough.\n\nAI video needs a creative workflow, not another “type and pray” casino.\n\nTopview Canvas lets you build the storyboard first, arrange scenes on an infinite Figma-like canvas, work with an agent, then generate with Seedance 2.0.\n\nControl before https://t.co/Q2Qu1D4Zzb https://t.co/nDA3Zhiv8F",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-26T23:48:22.000Z",
+      "conversation_id": "2059421414201937999",
+      "metrics": {
+        "likes": 29,
+        "retweets": 3,
+        "replies": 6,
+        "quotes": 1,
+        "impressions": 5417,
+        "bookmarks": 9
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2059421414201937999/video/1",
+        "https://twitter.com/TopviewAIhq/status/2059260852134625631"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2059421414201937999"
+    },
+    {
+      "id": "2059415584257827081",
+      "text": "Voice agents finally got out of the waveform era.\n\nYour agent can already talk.\nNow it can look back, react, and feel present without rebuilding your stack.\n\nLiveAvatar plugging into LiveKit, Pipecat, Agora, and VisionAgent is a big unlock for real conversational UX. https://t.co/apZ4aYU4D8",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-26T23:25:12.000Z",
+      "conversation_id": "2059415584257827081",
+      "metrics": {
+        "likes": 42,
+        "retweets": 2,
+        "replies": 14,
+        "quotes": 0,
+        "impressions": 10120,
+        "bookmarks": 31
+      },
+      "urls": [
+        "https://twitter.com/TryLiveAvatar/status/2059317922443719133"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2059415584257827081"
+    }
+  ]
+}

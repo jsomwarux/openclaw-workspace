@@ -305,13 +305,14 @@ STEPS:
           `[DATE] [topic name] — [1 sentence on why it's relevant to JT's audience] (source: [URL])`
         - This ensures the content system knows what conversations are emerging even before the build exists
         - Only append if JT plausibly has the background to post about it (check content-voice.md Proof Points)
-     c. Push to Mission Control Task Board only if the finding passes the concrete-action quality gate (check duplicates first — substring match on name):
-        curl -s http://localhost:3000/api/tasks | python3 -c "import json,sys; data=json.load(sys.stdin); print([t.get('title') for t in data.get('tasks', [])])"
-        Do not use `python3 - <<'PY'` with piped JSON for this check; the heredoc consumes stdin and causes the task fetch to fail.
-        If not already present:
-        curl -s -X POST http://localhost:3000/api/tasks \
-          -H 'Content-Type: application/json' \
-          -d '{"title":"[🔴 or 🟠] [Name] — [1-line description]","description":"First action: [specific command, URL, or file path to open TODAY]\n\nWhy now: [current JT project/client/runtime reason; not generic novelty]\n\nDone state: [observable completion condition]\n\nSource: [URL]\nEvidence date: [YYYY-MM-DD]\nRelevance: [JT Somwaru Consulting/crypto/job market/apps]\nCost/security: [free/paid + permissions/auth]\nFits: [agent name]\nExpires/archive if: [condition or date, usually 14 days unless security/runtime-critical]","status":"todo","priority":"medium","assignee":"eve","project":"Skills","sortOrder":140}'
+     c. Push to Mission Control Task Board only if the finding passes the concrete-action quality gate.
+        Use `scripts/mission_control_task_gate.py` for duplicate checks and task creation. Do not fetch `/api/tasks` and then run inline Python; that pattern has caused cron failures.
+        Check only:
+        `python3 ~/.openclaw/workspace/scripts/mission_control_task_gate.py --title "[Name]" --json`
+        Create only after writing a complete JSON payload to `/tmp/skills-researcher-task.json`:
+        `python3 ~/.openclaw/workspace/scripts/mission_control_task_gate.py --title "[Name]" --create-file /tmp/skills-researcher-task.json --json`
+        The JSON payload must include:
+        `{"title":"[🔴 or 🟠] [Name] — [1-line description]","description":"First action: [specific command, URL, or file path to open TODAY]\n\nWhy now: [current JT project/client/runtime reason; not generic novelty]\n\nDone state: [observable completion condition]\n\nSource: [URL]\nEvidence date: [YYYY-MM-DD]\nRelevance: [JT Somwaru Consulting/crypto/job market/apps]\nCost/security: [free/paid + permissions/auth]\nFits: [agent name]\nExpires/archive if: [condition or date, usually 14 days unless security/runtime-critical]","status":"todo","priority":"medium","assignee":"eve","project":"Skills","sortOrder":140}`
      d. Include in Telegram message to JT
    🟡/🟢 → KB only (silently):
      cd ~/.openclaw/workspace/knowledge && \

@@ -1,0 +1,49 @@
+{
+  "user": {
+    "id": "373402567",
+    "description": "Salesforce MVP | Application Architect | Co-founder Bharat Dreamin’Building Salesforce solutions, growing communities,  & sharing what I learn at SalesforceBolt",
+    "public_metrics": {
+      "followers_count": 1992,
+      "following_count": 812,
+      "tweet_count": 1280,
+      "listed_count": 14,
+      "like_count": 4033,
+      "media_count": 409
+    },
+    "created_at": "2011-09-14T14:29:34.000Z",
+    "name": "Kapil Batra",
+    "username": "iamKapilBatra"
+  },
+  "tweets": [
+    {
+      "id": "2058212873269289215",
+      "text": "Just published a new video on Multi-Agent Orchestration in Agentforce — Full Build and Demo | The Right Way to Scale Agentforce\n\nVideo: https://t.co/IhzLn4SB7N\n GitHub: https://t.co/df6IWG4Tbi\n\n#Agentforce #Salesforce  #SalesforceDevelopers  #SalesforceMVP https://t.co/IU6eq0SiSj",
+      "author_id": "373402567",
+      "username": "iamKapilBatra",
+      "name": "Kapil Batra",
+      "created_at": "2026-05-23T15:46:03.000Z",
+      "conversation_id": "2058212873269289215",
+      "metrics": {
+        "likes": 9,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 236,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://www.youtube.com/watch?v=lKZZ1zUgadw",
+        "https://github.com/batra-kapil/Multi-Agent-Orchastration",
+        "https://x.com/iamKapilBatra/status/2058212873269289215/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "Agentforce",
+        "Salesforce",
+        "SalesforceDevelopers",
+        "SalesforceMVP"
+      ],
+      "tweet_url": "https://x.com/iamKapilBatra/status/2058212873269289215"
+    }
+  ]
+}

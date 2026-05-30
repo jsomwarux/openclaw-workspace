@@ -1,0 +1,135 @@
+{
+  "user": {
+    "created_at": "2026-05-03T15:39:20.000Z",
+    "username": "New_Alchemy_AI",
+    "public_metrics": {
+      "followers_count": 1,
+      "following_count": 3,
+      "tweet_count": 18,
+      "listed_count": 0,
+      "like_count": 0,
+      "media_count": 10
+    },
+    "description": "New Alchemy Innovations works with small businesses with 2 to 50 people to cut through the noise around AI.",
+    "id": "2050963380261777411",
+    "name": "New Alchemy Innovations"
+  },
+  "tweets": [
+    {
+      "id": "2059360861794259207",
+      "text": "If your business stops when you stop, you own a job.\n\nTest it: take one week off and watch what breaks.\n\nList every recurring task, score it by frequency and impact, assign an owner.\n\nThen use AI to write SOPs, draft emails, pull reports, and run daily checks before you log in. https://t.co/FUFGheSnXg",
+      "author_id": "2050963380261777411",
+      "username": "New_Alchemy_AI",
+      "name": "New Alchemy Innovations",
+      "created_at": "2026-05-26T19:47:45.000Z",
+      "conversation_id": "2059360861794259207",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/New_Alchemy_AI/status/2059360861794259207/photo/1",
+        "https://x.com/New_Alchemy_AI/status/2059360861794259207/photo/1",
+        "https://x.com/New_Alchemy_AI/status/2059360861794259207/photo/1",
+        "https://x.com/New_Alchemy_AI/status/2059360861794259207/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/New_Alchemy_AI/status/2059360861794259207"
+    },
+    {
+      "id": "2058805265403719946",
+      "text": "Your business probably runs on 8 to 12 different software tools. None of them were built to talk to each other. That gap is costing you more than you think.",
+      "author_id": "2050963380261777411",
+      "username": "New_Alchemy_AI",
+      "name": "New Alchemy Innovations",
+      "created_at": "2026-05-25T07:00:00.000Z",
+      "conversation_id": "2058805265403719946",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/New_Alchemy_AI/status/2058805265403719946"
+    },
+    {
+      "id": "2058656210560200928",
+      "text": "I spent years fighting with AI tools.\n\nThen I discovered Claude's desktop app and everything changed.\n\nMost people use it wrong - they stick to basic chat mode.\n\nHere's how to turn Claude into your work partner in one weekend:\n\nUse project mode for teams and cowork for deep tasks https://t.co/Pa6SsvLNX9",
+      "author_id": "2050963380261777411",
+      "username": "New_Alchemy_AI",
+      "name": "New Alchemy Innovations",
+      "created_at": "2026-05-24T21:07:43.000Z",
+      "conversation_id": "2058656210560200928",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/New_Alchemy_AI/status/2058656210560200928/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/New_Alchemy_AI/status/2058656210560200928"
+    },
+    {
+      "id": "2058301045281861812",
+      "text": "Claude dropped a small business plugin with 31 built-in skills.\n\nI tested it and ran my cash flow, inbox, calendar, and CRM from one dashboard.\n\nIf you run a business, ask yourself how many hours you lose switching between apps. https://t.co/FMISh5JsVK",
+      "author_id": "2050963380261777411",
+      "username": "New_Alchemy_AI",
+      "name": "New Alchemy Innovations",
+      "created_at": "2026-05-23T21:36:25.000Z",
+      "conversation_id": "2058301045281861812",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/New_Alchemy_AI/status/2058301045281861812/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/New_Alchemy_AI/status/2058301045281861812"
+    },
+    {
+      "id": "2058277911988207660",
+      "text": "Claude For Small Business is INSANE!!!!\n\nI've built a complete breakdown of all Anthropic Small Business skills that maps every workflow, connector, and automation in under 10 minutes.\n\nThe same skill stack had 382,000 downloads on its first day.\n\n1/ https://t.co/0r9HkCyUlH",
+      "author_id": "2050963380261777411",
+      "username": "New_Alchemy_AI",
+      "name": "New Alchemy Innovations",
+      "created_at": "2026-05-23T20:04:29.000Z",
+      "conversation_id": "2058277911988207660",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/New_Alchemy_AI/status/2058277911988207660/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/New_Alchemy_AI/status/2058277911988207660"
+    }
+  ]
+}

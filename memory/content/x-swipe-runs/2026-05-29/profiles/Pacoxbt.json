@@ -1,0 +1,111 @@
+{
+  "user": {
+    "description": "Matters of Importance and Some Not in the AI ​​Space\n\nBy Paco",
+    "public_metrics": {
+      "followers_count": 723,
+      "following_count": 422,
+      "tweet_count": 4032,
+      "listed_count": 32,
+      "like_count": 4786,
+      "media_count": 525
+    },
+    "created_at": "2011-09-24T21:31:48.000Z",
+    "name": "Paco",
+    "id": "379384703",
+    "username": "Pacoxbt"
+  },
+  "tweets": [
+    {
+      "id": "2059516808797831350",
+      "text": "One of the best uses of Claude is not planning.\n\nIt is anti-planning.\n\nA premortem forces the model to assume your plan already failed, then explain why.\n\nThat matters because asking “is this a good idea?” usually pulls Claude into supportive mode. It looks for what works, https://t.co/oC5H4w25Zh",
+      "author_id": "379384703",
+      "username": "Pacoxbt",
+      "name": "Paco",
+      "created_at": "2026-05-27T06:07:25.000Z",
+      "conversation_id": "2059516808797831350",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 29,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/itsolelehmann/status/2051373618727469152"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Pacoxbt/status/2059516808797831350"
+    },
+    {
+      "id": "2059249273829466372",
+      "text": "Claude for Small Business might be one of the most underrated AI drops for operators.\n\nThe full breakdown of its 31 skills makes it obvious why.\n\nEvery workflow.\nEvery connector.\nEvery automation.\nExplained in under 10 minutes.\nThis is the same package that hit 382,000 downloads https://t.co/M1cl5GLryo",
+      "author_id": "379384703",
+      "username": "Pacoxbt",
+      "name": "Paco",
+      "created_at": "2026-05-26T12:24:20.000Z",
+      "conversation_id": "2059249273829466372",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 40,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Pacoxbt/status/2059249273829466372/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Pacoxbt/status/2059249273829466372"
+    },
+    {
+      "id": "2058879878200545381",
+      "text": "The traditional agency org chart is already becoming obsolete.\n\nFunctions and handoffs are being replaced by agent loops and outcome systems.\n\nThe old structure optimized for labor.\n\nThe new structure optimizes for feedback, memory, and execution velocity.\n\nEvery role owns a https://t.co/KSk0fHxedO",
+      "author_id": "379384703",
+      "username": "Pacoxbt",
+      "name": "Paco",
+      "created_at": "2026-05-25T11:56:29.000Z",
+      "conversation_id": "2058879878200545381",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 18,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Pacoxbt/status/2058879878200545381/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Pacoxbt/status/2058879878200545381"
+    },
+    {
+      "id": "2058124630645223894",
+      "text": "Most AI agents fail before they even answer the first prompt.\n\nBecause they have no identity.\n\nThat’s what SOUL.md fixes.\n\nIt’s the file every agent reads before doing anything.\n\nWithout it:\n\nno personality\nno boundaries\nno durable behavior\njust a raw LLM improvising every https://t.co/YKhN7TxwDW",
+      "author_id": "379384703",
+      "username": "Pacoxbt",
+      "name": "Paco",
+      "created_at": "2026-05-23T09:55:24.000Z",
+      "conversation_id": "2058124630645223894",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 59,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Pacoxbt/status/2058124630645223894/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Pacoxbt/status/2058124630645223894"
+    }
+  ]
+}

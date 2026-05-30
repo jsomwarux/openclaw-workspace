@@ -1,0 +1,9 @@
+case_id,queue,result_reason,tenant_facing_draft_generated,approval_state
+RD-001,included,standard delinquent balance with required fields present,false,locked_review_only
+RD-002,manual_review,recent payment requires cutoff review before inclusion,false,locked_review_only
+RD-003,manual_review,active payment plan stays out of normal outreach,false,locked_review_only
+RD-004,manual_review,disputed balance requires manual review,false,locked_review_only
+RD-005,manual_review,legal or eviction-sensitive account cannot be normal outreach,false,locked_review_only
+RD-006,excluded,credit or prepayment is not delinquent,false,locked_review_only
+RD-007,cleanup,missing contact method blocks outreach-ready output,false,locked_review_only
+RD-008,cleanup,missing unit or property identifier blocks classification,false,locked_review_only

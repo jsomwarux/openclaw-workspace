@@ -3,6 +3,15 @@
 
 ---
 
+## May 29, 2026 — 12:12PM Heartbeat
+- **Market snapshot:** BTC ~$73.9K (+1.3% vs previous close), ETH ~$2,034 (+2.1%), SOL ~$82.64 (+1.9%). This is constructive but still below broad alert threshold; no immediate Telegram-worthy price alert.
+- **Fresh narrative check:** x402/agent-payment coverage remains the cleanest crypto + AI thread. Recent coverage points to Coinbase/Base, AWS Bedrock AgentCore Payments, Solana/USDC rails, batch settlement, and MCP/tool-payment use cases. The signal is infrastructure adoption, not a blanket AI-token bid.
+- **Crypto-agent context:** The 6AM run already identified x402/agent commerce as the live narrative and ranked $ZAUTH, $PRXVT, $ODAI, and $GITLAWB as the concentrated watch set while excluding spam-heavy feeds.
+- **Risk note:** The new risk layer is authorization and custody, not just price. Agent-payment protocols can move real value, so thesis quality depends on permissioning, spend limits, identity, receipts, and recoverability.
+- **JT read:** No action alert. Keep watching x402/Base/Solana rails and token-level coordination, but do not chase thin micro-cap pumps without fresh human-quality X signal plus on-chain confirmation.
+
+---
+
 ## May 28, 2026 — 2PM Heartbeat
 - **Market snapshot:** BTC ~$73.6K (-1.4% vs previous close), ETH ~$2,022 (-1.1%), SOL ~$82.60 (-0.7%). No broad-market alert threshold was triggered.
 - **Crypto-agent context:** The 6AM run identified x402/agent-commerce as the live Phase 2 narrative, with X research passing 23/23 searches and 21 non-empty result sets. The clean signal is not generic AI-token beta; it is agent payments, tool access, identity/trust, and Base/Solana rails with visible coordination.

@@ -1,0 +1,243 @@
+{
+  "user": {
+    "created_at": "2022-09-26T17:23:13.000Z",
+    "public_metrics": {
+      "followers_count": 70,
+      "following_count": 165,
+      "tweet_count": 2733,
+      "listed_count": 0,
+      "like_count": 8639,
+      "media_count": 0
+    },
+    "description": "Machine learning, ethical tech, and indie game developer.",
+    "name": "JakeSmith Tech",
+    "id": "1574449519478984705",
+    "username": "JakeSmGaming"
+  },
+  "tweets": [
+    {
+      "id": "2060161615031394807",
+      "text": "No more let me start the recorder is nice. I'd still be asking who signed off on the watch recording bit lol https://t.co/6hFjaDhc7f",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-29T00:49:39.000Z",
+      "conversation_id": "2060161615031394807",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/aaliya_va/status/2059895085395828842"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2060161615031394807"
+    },
+    {
+      "id": "2060160162564915714",
+      "text": "Good idea: voice AI for real workflows Bad idea: pretending every company that doesnt use it is doomed https://t.co/txJgbtCXUv",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-29T00:43:53.000Z",
+      "conversation_id": "2060160162564915714",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/sunglassesface/status/2060128293987266853"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2060160162564915714"
+    },
+    {
+      "id": "2060156881738371522",
+      "text": "Good idea: use frontier models for the 20% that needs it. Bad idea: burning money on Opus for stuff a cheaper model already does. https://t.co/sV6bfKp1uV",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-29T00:30:51.000Z",
+      "conversation_id": "2060156881738371522",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/coreyganim/status/2060134271298261219"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2060156881738371522"
+    },
+    {
+      "id": "2060121763648770315",
+      "text": "The more an AI product sounds like a wizard poster, the more I assume the workflow is doing absolutely nothing.",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-28T22:11:18.000Z",
+      "conversation_id": "2060121763648770315",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2060121763648770315"
+    },
+    {
+      "id": "2060113794639028399",
+      "text": "This matters way more than marginal model gains imo https://t.co/KIdNeRdUoM",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-28T21:39:38.000Z",
+      "conversation_id": "2060113794639028399",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/rileybrown/status/2060100511978656177"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2060113794639028399"
+    },
+    {
+      "id": "2060112013141983625",
+      "text": "For me this is just AI PR. They spent money and said AI. Cool story. https://t.co/PKa1Skym9D",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-28T21:32:33.000Z",
+      "conversation_id": "2060112013141983625",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/Trace_Cohen/status/2059988795353653510"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2060112013141983625"
+    },
+    {
+      "id": "2059976619557597528",
+      "text": "I keep seeing firms blame AI for layoffs when really they were already looking for a reason. Good companies use automation to do more. Weak ones use it to dress up retreat.",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-28T12:34:33.000Z",
+      "conversation_id": "2059976619557597528",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2059976619557597528"
+    },
+    {
+      "id": "2059805180569211089",
+      "text": "Yeah this is the part people keep skipping. Why do private companies get to roll the dice on everyone else? https://t.co/RLkqXuUtgY",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-28T01:13:19.000Z",
+      "conversation_id": "2059805180569211089",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/uncover_ai/status/2059621087407898672"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2059805180569211089"
+    },
+    {
+      "id": "2059530348703162578",
+      "text": "What's the logo now a disco ball https://t.co/SIiLxY0ue4",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-27T07:01:14.000Z",
+      "conversation_id": "2059530348703162578",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 46,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/thiswillblossom/status/2059299166979784759"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2059530348703162578"
+    },
+    {
+      "id": "2059468461307298252",
+      "text": "I keep seeing people confuse \"AI can do it\" with \"people will pay for it.\" Those are not the same thing.",
+      "author_id": "1574449519478984705",
+      "username": "JakeSmGaming",
+      "name": "JakeSmith Tech",
+      "created_at": "2026-05-27T02:55:18.000Z",
+      "conversation_id": "2059468461307298252",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JakeSmGaming/status/2059468461307298252"
+    }
+  ]
+}

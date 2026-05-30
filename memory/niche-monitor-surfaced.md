@@ -48,3 +48,7 @@
 2026-05-17 eliseai-pm-rollout — Property-management operator reports EliseAI rollout across 3,000 units with plan for 8,000 more; validates PM AI adoption moving from vendor pitch to portfolio-scale operations.
 
 2026-05-27 burns-mcdonnell-preconstruction-ai — Burns & McDonnell reports enterprise-wide AI training and discipline-specific agentic capabilities for preconstruction, using internal project data to improve cost and delivery certainty.
+2026-05-29 canals-35m-wholesale-ai — Canals announced a $35M round for AI that automates messy wholesale-distribution inputs and manual data entry, a direct competitor/demand signal in JT's wholesale automation niche.
+2026-05-29 roots-bevaya-insurance-ai-agent-platform — Roots Automation launched Bevaya, an AI-agent platform built exclusively for insurance workflows, creating a direct insurance automation competitor signal.
+2026-05-29 navigate-ai-construction-trades-copilot — Navigate.AI launched an AI copilot for training crews and quality control using phone/smart-glasses video, with $25M raised and Lennar named as a partner.
+2026-05-29 entrata-ipo-property-management-ai-revenue — Entrata filed for a NYSE IPO after reporting 23% Q1 2026 revenue growth, reinforcing property-management software demand around unified operating systems with embedded AI.

@@ -1,0 +1,248 @@
+[
+  {
+    "id": "2059209193446621688",
+    "text": "Here's a version of this for Claude Code.\n\nRebuilt the evidence stack for Claude's memory architecture: Session Memory, MEMORY. md, CLAUDE. md, git history, .claude/skills/, and hooks.\n\nRemoved the Chronicle reference (no Claude Code equivalent yet).\n\nFull prompt in the image. https://t.co/3Nqh1tvHvt https://t.co/M3v7fcFtX2",
+    "author_id": "1643695629665722379",
+    "username": "godofprompt",
+    "name": "God of Prompt",
+    "created_at": "2026-05-26T09:45:04.000Z",
+    "conversation_id": "2059209193446621688",
+    "metrics": {
+      "likes": 194,
+      "retweets": 20,
+      "replies": 13,
+      "quotes": 1,
+      "impressions": 27562,
+      "bookmarks": 245
+    },
+    "urls": [
+      "https://x.com/godofprompt/status/2059209193446621688/photo/1",
+      "https://twitter.com/874987512850128897/status/2058538305872949490"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/godofprompt/status/2059209193446621688"
+  },
+  {
+    "id": "2059298167024193728",
+    "text": "Best AI tooling decision I made this quarter:\n\nCodex and Claude Code on the same repo.\n\nThree wires made it work:\n\n1. Instructions: @AGENTS.md in CLAUDE.md. One source of truth.\n\n2. Skills: ask Claude Code to mirror .claude/skills into .agents/skills with a sync hook. Edit once, https://t.co/KXdWOI34Rz",
+    "author_id": "1459767830623178755",
+    "username": "PawelHuryn",
+    "name": "Paweł Huryn",
+    "created_at": "2026-05-26T15:38:37.000Z",
+    "conversation_id": "2059298167024193728",
+    "metrics": {
+      "likes": 37,
+      "retweets": 5,
+      "replies": 16,
+      "quotes": 0,
+      "impressions": 3664,
+      "bookmarks": 64
+    },
+    "urls": [
+      "https://x.com/PawelHuryn/status/2059298167024193728/photo/1"
+    ],
+    "mentions": [
+      "agents"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/PawelHuryn/status/2059298167024193728"
+  },
+  {
+    "id": "2058909085001724061",
+    "text": "Best GitHub repos for Claude Code that will 10x your next project in 2026:\n\n1. Claude Skills\nhttps://t.co/oY6AwRgyfI…\n\n2. Claude Code Plugins + Skills\nhttps://t.co/jnj4lXfNYZ…\n\n3. Awesome Claude Skills\nhttps://t.co/EuXsdPVu5U…\n\n4. Awesome Claude Skills\nhttps://t.co/LqZgfjYebu https://t.co/ShVMzFsGI5",
+    "author_id": "2042209087367036928",
+    "username": "vishesh_ti94290",
+    "name": "Vishesh tiwari",
+    "created_at": "2026-05-25T13:52:33.000Z",
+    "conversation_id": "2058909085001724061",
+    "metrics": {
+      "likes": 8,
+      "retweets": 2,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 284,
+      "bookmarks": 3
+    },
+    "urls": [
+      "http://github.com/alirezarezvani",
+      "http://github.com/jeremylongshor",
+      "http://github.com/ComposioHQ/awe",
+      "http://github.com/travisvn/awe",
+      "https://x.com/vishesh_ti94290/status/2058909085001724061/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/vishesh_ti94290/status/2058909085001724061"
+  },
+  {
+    "id": "2059446488783057277",
+    "text": "把 Claude Code 的 system prompt 替换成一套原始人语料，让模型用最短 token 表达相同意图，实测省 65% token  \n\nhttps://t.co/JkNQ5YatXI \n\ncaveman 是一个 Claude Code skill，安装后会在 .claude/skills/ 下注入 caveman.md。该文件重写了 system prompt https://t.co/xNsV5wemOV",
+    "author_id": "2201538910",
+    "username": "veyhon",
+    "name": "veyhon",
+    "created_at": "2026-05-27T01:28:00.000Z",
+    "conversation_id": "2059446488783057277",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 82,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/JuliusBrussee/caveman",
+      "https://x.com/veyhon/status/2059446488783057277/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/veyhon/status/2059446488783057277"
+  },
+  {
+    "id": "2059028079314391301",
+    "text": "This episode explores the significant shift from static chatbots to autonomous, self-learning AI agents. We analyze Anthropic’s rollout of the Claude 2.0 ecosystem, specifically Claude Code 2.0 and Claude Skills 2.0, https://t.co/dwbw99ntGK",
+    "author_id": "1816617295101276160",
+    "username": "NeuralNewscast",
+    "name": "Neural Newscast",
+    "created_at": "2026-05-25T21:45:23.000Z",
+    "conversation_id": "2059028079314391301",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 13,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/NeuralNewscast/status/2059028079314391301/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/NeuralNewscast/status/2059028079314391301"
+  },
+  {
+    "id": "2058582046696685675",
+    "text": "Best GitHub repos for Claude Code that will 10x your next project in 2026:\n\n1. Claude Skills\nhttps://t.co/tKAWRsCumr…\n\n2. Claude Code Plugins + Skills\nhttps://t.co/6iLtg0UDt5…\n\n3. Awesome Claude Skills\nhttps://t.co/CsSIYwDdYL…\n\n4. Awesome Claude Skills\nhttps://t.co/cBvjGAKyO9 https://t.co/y7j6IeHpN3",
+    "author_id": "2023831043711893504",
+    "username": "Shubham9340x",
+    "name": "Shubham tiwari",
+    "created_at": "2026-05-24T16:13:01.000Z",
+    "conversation_id": "2058582046696685675",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 26,
+      "bookmarks": 1
+    },
+    "urls": [
+      "http://github.com/alirezarezvani",
+      "http://github.com/jeremylongshor",
+      "http://github.com/ComposioHQ/awe",
+      "http://github.com/travisvn/awe",
+      "https://x.com/Shubham9340x/status/2058582046696685675/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Shubham9340x/status/2058582046696685675"
+  },
+  {
+    "id": "2059756837944381516",
+    "text": "62K stars and counting. This repo is basically the App Store for Claude skills.\n\nAwesome Claude Skills packs 1000+ production-ready skills and plugins for Claude, Claude Code, Codex, Cursor, Gemini CLI, and more. It also lets Claude connect to 500+ apps and actually take actions: https://t.co/A9MaIi8Jvj",
+    "author_id": "1498803336048353288",
+    "username": "chenzeling4",
+    "name": "Zane Chen",
+    "created_at": "2026-05-27T22:01:13.000Z",
+    "conversation_id": "2059756837944381516",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 46,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/chenzeling4/status/2059756837944381516/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/chenzeling4/status/2059756837944381516"
+  },
+  {
+    "id": "2059550588736606453",
+    "text": "Claude Skills Tutorial (2026): Chat, Cowork, and Claude Code https://t.co/0NtwqQNwca via @YouTube",
+    "author_id": "1429287373",
+    "username": "DonteeLWrenn",
+    "name": "Dontee Wrenn 🇺🇸✊🏿👨‍🦯",
+    "created_at": "2026-05-27T08:21:39.000Z",
+    "conversation_id": "2059550588736606453",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 41,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://youtu.be/O_z9vDLgvoY?si=QZQC3OYafvsaypDp"
+    ],
+    "mentions": [
+      "YouTube"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/DonteeLWrenn/status/2059550588736606453"
+  },
+  {
+    "id": "2058080490180198532",
+    "text": "One command:\n\n  npx versuz install pdf-extract\n\n→ resolves from https://t.co/4Xrlgl8JKo\n→ downloads SKILL.md + bundle\n→ verifies license (MIT)\n→ writes to .claude/skills/pdf-extract/\n\nAvailable in Claude Code immediately. No restart.\n\nhttps://t.co/4Xrlgl8JKo https://t.co/DZ4jB5rcbz",
+    "author_id": "2054812317016100864",
+    "username": "versuzdev",
+    "name": "Versuz",
+    "created_at": "2026-05-23T07:00:00.000Z",
+    "conversation_id": "2058080490180198532",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 0,
+      "bookmarks": 0
+    },
+    "urls": [
+      "http://versuz.dev",
+      "http://versuz.dev",
+      "https://x.com/versuzdev/status/2058080490180198532/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/versuzdev/status/2058080490180198532"
+  },
+  {
+    "id": "2058357661717168314",
+    "text": "👀 The era of the coding machine is over. AI is shifting data science to pure strategy.\nMaster these 3 Claude skills for 2026:\n\nInstant EDA dashboards\n\nAutomating Jira workflows\n\nTerminal debugging with Claude Code\n\nRead here: https://t.co/cwHpm08UOd",
+    "author_id": "1652717727105048578",
+    "username": "grimnej1",
+    "name": "GrimNej",
+    "created_at": "2026-05-24T01:21:23.000Z",
+    "conversation_id": "2058357661717168314",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 6,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://shorturl.at/NgmW0"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/grimnej1/status/2058357661717168314"
+  }
+]

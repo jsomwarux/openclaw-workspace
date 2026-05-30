@@ -118,3 +118,7 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 
 [2026-05-08] FORMAT Resource roundup / artifact pack — 3 appearances / 666 engagement | JT has angle: yes (Eve/OpenClaw skills, content freshness gate, AI Operations Diagnostic, real automation playbooks) | JT posted recently: no | action: recommend — Saturday build-in-public/tool-stack post: "The resources/tools that actually changed my agent workflow this week."
 [2026-05-08] TOPIC Claude Skills / Claude Code resource packs — 3 posts / 666 engagement | JT has angle: yes (uses skills inside OpenClaw and just patched content crons with freshness gates) | JT posted recently: yes (Claude Code quality degradation logged 2026-04-29) | action: already covered
+
+## 2026-05-29
+
+[2026-05-29] FORMAT Concrete stack/artifact breakdown — 4 appearances / 1090 engagement | JT has angle: yes (Eve/OpenClaw uses AGENTS.md, CLAUDE.md, skills, memory, hooks, crons, n8n, and Claude Code as a real operating stack) | JT posted recently: yes | action: already covered

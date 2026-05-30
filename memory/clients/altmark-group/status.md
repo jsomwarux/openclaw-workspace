@@ -1,6 +1,6 @@
 # Altmark Group — Client Status
 
-Last updated: 2026-05-26
+Last updated: 2026-05-30
 
 ## Client
 - Company: Altmark Group
@@ -52,7 +52,7 @@ Known active/current workflows from JT update:
 - Insurance expiration workflow is live in production and working as expected after a few minor updates.
 - Altmark paid the final 50% for the insurance expiration workflow.
 - Dedicated PC for workflows was installed in Altmark's office last week.
-- Rent delinquency workflow is active: Altmark paid the initial 50%; JT is working on it and about to begin testing.
+- Rent delinquency workflow is active: Altmark paid the initial 50%; 2026-05-29 synthetic dry run passed with 8 rows classified into 1 included, 4 manual review, 1 excluded, 2 cleanup, 0 unclassified, and 0 tenant-facing drafts from sensitive/cleanup rows. Next gate is a redacted Altmark source export, source report path/export process, refresh cadence, named output reviewer, and confirmed exception rules.
 - Altmark pitched an additional workflow request: DHCR Lease Renewal Automation Phase 1, legal-rent renewals only. Proposal reviewed and delivery assets prepared. Next step after rent delinquency deployment/testing: confirm $1,750 kickoff payment, populated command center spreadsheet owner/date, current RGB rates, Phase 1 included units/properties, approved email recipients, and DHCR rent rolls for all included properties.
 
 ## Revenue / Payment Status
@@ -76,8 +76,8 @@ Known active/current workflows from JT update:
 
 ## Immediate Next Actions
 - Update Client OS proof/payment gates to reflect insurance workflow live + paid.
-- For rent delinquency: continue build and begin testing; document test cases, edge cases, sample inputs/outputs, and acceptance criteria before production deployment.
-- 2026-05-28 nightly: Friday synthetic smoke-test sheet is ready at `proof-assets/friday-rent-delinquency-smoke-test-sheet-2026-05-29.md`. Next safe move is to run `client-os/cleaned-inputs/rent-delinquency-synthetic-smoke-test-2026-05-28.csv` in dry-run/review-only mode and verify 8 rows classify as 1 included, 4 manual review, 1 excluded, 2 cleanup, with 0 tenant-facing drafts from sensitive/cleanup rows.
+- For rent delinquency: synthetic testing is complete; use `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md` to request the redacted Altmark sample export and live-sample prerequisites.
+- 2026-05-29 synthetic dry-run passed: see `client-os/outputs/rent-delinquency-synthetic-smoke-test-log-2026-05-29.md` and `client-os/outputs/rent-delinquency-synthetic-smoke-test-output-2026-05-29.csv`. First Altmark sample remains review-only until source/export/reviewer/exception gates clear.
 - Capture proof-safe evidence from the live insurance workflow: redacted screenshots, run logs, acceptance wording, and before/after workflow summary.
 - DHCR Lease Renewal Automation proposal has been reviewed. Use `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `client-os/acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md` after rent delinquency deployment/testing or if Altmark explicitly pulls this forward.
 - Prepare support/maintenance/retainer path after the second workflow proves stable.

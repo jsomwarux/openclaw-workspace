@@ -1,16 +1,24 @@
 {
   "entries": [
     {
-      "date": "2026-05-28",
-      "day": "thursday",
-      "line_no": 185,
+      "date": "2026-05-29",
+      "day": "friday",
+      "line_no": 186,
       "platform": "x",
-      "summary": "Pod of one only works when the handoffs are visible.  Designer, PM, engineer, operator.  One person can wear every hat.  They cannot remembe",
-      "topic": "pod-of-one-only-works-when-the-handoffs-are-visible-designer-pm-engineer-operator-one-person-can-wear-every-hat"
+      "summary": "Your maintenance inbox is probably a margin leak.  The request is easy.  The handoffs are where money disappears.  Urgency.  Unit history.  ",
+      "topic": "your-maintenance-inbox-is-probably-a-margin-leak-the-request-is-easy-the-handoffs-are-where-money-disappears-urgen"
+    },
+    {
+      "date": "2026-05-29",
+      "day": "friday",
+      "line_no": 192,
+      "platform": "linkedin",
+      "summary": "The maintenance inbox leaks margin through handoffs; useful AI classifies, routes, drafts updates, and keeps humans approving expensive or ambiguous work.",
+      "topic": "maintenance-inbox-exception-desk"
     }
   ],
   "note": "",
-  "sent_at": 1779969635,
+  "sent_at": 1780056056,
   "source": "content-reminder",
   "status": "pending"
 }

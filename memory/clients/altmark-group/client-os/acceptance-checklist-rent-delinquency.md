@@ -36,6 +36,13 @@ Created: 2026-05-27
 | Missing contact method | Included in cleanup queue, not outreach-ready queue | Test row + cleanup output | Synthetic row RD-007 ready |
 | Missing required field | Workflow fails loudly or routes to data cleanup | Run log/error output | Synthetic row RD-008 ready |
 
+## Synthetic Dry-Run Result — 2026-05-29
+- Output: `outputs/rent-delinquency-synthetic-smoke-test-output-2026-05-29.csv`
+- Log: `outputs/rent-delinquency-synthetic-smoke-test-log-2026-05-29.md`
+- Result: 8 synthetic rows processed; 1 included, 4 manual review, 1 excluded, 2 cleanup, 0 unclassified.
+- Draft safety: no tenant-facing draft generated for manual-review, excluded, or cleanup rows.
+- Gate status: synthetic gate passed. Live acceptance still requires a redacted Altmark source export, source report path, refresh cadence, named output reviewer, and confirmed exception rules.
+
 ## Acceptance Criteria
 The workflow is accepted only when all are true:
 

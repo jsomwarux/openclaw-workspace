@@ -1,0 +1,199 @@
+{
+  "user": {
+    "id": "1876555667278024705",
+    "name": "V. Rangani",
+    "public_metrics": {
+      "followers_count": 4,
+      "following_count": 103,
+      "tweet_count": 21,
+      "listed_count": 0,
+      "like_count": 306,
+      "media_count": 3
+    },
+    "username": "RanganiVandan",
+    "description": "Open to work | Freelancer | Open source contributor",
+    "created_at": "2025-01-07T09:05:39.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2060212187751501998",
+      "text": "Today's build:\n\n📄 SRS Document + 🧠 RAG + 🤖 LLM = Intelligent Requirements Assistant\n\nAsk anything about your project requirements and get instant, context-aware answers.\n\nLet's see how far I can take this. 🚀\n\n#AI #RAG #LLM #BuildInPublic",
+      "author_id": "1876555667278024705",
+      "username": "RanganiVandan",
+      "name": "V. Rangani",
+      "created_at": "2026-05-29T04:10:37.000Z",
+      "conversation_id": "2060212187751501998",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 30,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [
+        "AI",
+        "RAG",
+        "LLM",
+        "BuildInPublic"
+      ],
+      "tweet_url": "https://x.com/RanganiVandan/status/2060212187751501998"
+    },
+    {
+      "id": "2058826773916512312",
+      "text": "Today I explored LangChain, LangGraph, and LangSmith.",
+      "author_id": "1876555667278024705",
+      "username": "RanganiVandan",
+      "name": "V. Rangani",
+      "created_at": "2026-05-25T08:25:28.000Z",
+      "conversation_id": "2058826773916512312",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 50,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RanganiVandan/status/2058826773916512312"
+    },
+    {
+      "id": "2058463629973086280",
+      "text": "Built my first AI Agent workflow in n8n ⚡\n\nEmails, Calendar, Docs &amp; Sheets — all automated with AI 🤯\n\nThis is addictive 🚀\n\n#AI #n8n #Automation #AIagents https://t.co/YSgqVUhBVK",
+      "author_id": "1876555667278024705",
+      "username": "RanganiVandan",
+      "name": "V. Rangani",
+      "created_at": "2026-05-24T08:22:28.000Z",
+      "conversation_id": "2058463629973086280",
+      "metrics": {
+        "likes": 12,
+        "retweets": 0,
+        "replies": 14,
+        "quotes": 1,
+        "impressions": 384,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/RanganiVandan/status/2058463629973086280/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "AI",
+        "n8n",
+        "Automation",
+        "AIagents"
+      ],
+      "tweet_url": "https://x.com/RanganiVandan/status/2058463629973086280"
+    },
+    {
+      "id": "2058388576174542927",
+      "text": "Hello, today I’m gonna build an AI agent using n8n 🤖⚡🚀",
+      "author_id": "1876555667278024705",
+      "username": "RanganiVandan",
+      "name": "V. Rangani",
+      "created_at": "2026-05-24T03:24:14.000Z",
+      "conversation_id": "2058388576174542927",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 30,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RanganiVandan/status/2058388576174542927"
+    },
+    {
+      "id": "2058186395802640496",
+      "text": "Built a smart form automation in n8n ⚡\n📝 Form → 🔀 Conditional Logic → 📊 Google Sheets Auto Update\nLearning workflows one by one 🚀\n\n#n8n #Automation #BuildInPublic #NoCode #AI https://t.co/prHayQ7wui",
+      "author_id": "1876555667278024705",
+      "username": "RanganiVandan",
+      "name": "V. Rangani",
+      "created_at": "2026-05-23T14:00:50.000Z",
+      "conversation_id": "2058186395802640496",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 68,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/RanganiVandan/status/2058186395802640496/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "n8n",
+        "Automation",
+        "BuildInPublic",
+        "NoCode",
+        "AI"
+      ],
+      "tweet_url": "https://x.com/RanganiVandan/status/2058186395802640496"
+    },
+    {
+      "id": "2058185151910449550",
+      "text": "Built an AI email automation in n8n ⚡\n📩 Gmail → 🧠 OpenAI → 📬 Auto Summary &amp; Reply\n#n8n #AI #Automation #BuildInPublic https://t.co/LpjH9bBcCW",
+      "author_id": "1876555667278024705",
+      "username": "RanganiVandan",
+      "name": "V. Rangani",
+      "created_at": "2026-05-23T13:55:54.000Z",
+      "conversation_id": "2058185151910449550",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 61,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/RanganiVandan/status/2058185151910449550/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "n8n",
+        "AI",
+        "Automation",
+        "BuildInPublic"
+      ],
+      "tweet_url": "https://x.com/RanganiVandan/status/2058185151910449550"
+    },
+    {
+      "id": "2058044286365847881",
+      "text": "🚀 Currently learning n8n to build powerful AI automations and smart workflows.\n\nExploring API integrations, AI agents, and no-code/low-code automation systems every day ⚡\n\nBuilding the future, one workflow at a time.\n\n#n8n #AIAutomation #WorkflowAutomation #AI #LearningInPublic",
+      "author_id": "1876555667278024705",
+      "username": "RanganiVandan",
+      "name": "V. Rangani",
+      "created_at": "2026-05-23T04:36:09.000Z",
+      "conversation_id": "2058044286365847881",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 45,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [
+        "n8n",
+        "AIAutomation",
+        "WorkflowAutomation",
+        "AI",
+        "LearningInPublic"
+      ],
+      "tweet_url": "https://x.com/RanganiVandan/status/2058044286365847881"
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "user": {
+    "created_at": "2020-07-14T16:21:29.000Z",
+    "description": "Building apps and sharing my path. \n\nhttps://t.co/PAGtKvL2za ~700$\nhttps://t.co/zNg362Qmn7 ~ 10$\nhttps://t.co/eCJKtR06x7 ~ coming soon\n\nRoad to 1k revenue\n🟩🟩🟩⬜⬜ 71%",
+    "username": "MacdevM",
+    "public_metrics": {
+      "followers_count": 540,
+      "following_count": 485,
+      "tweet_count": 458,
+      "listed_count": 2,
+      "like_count": 499,
+      "media_count": 32
+    },
+    "id": "1283071986244169731",
+    "name": "MacDev"
+  },
+  "tweets": [
+    {
+      "id": "2060238926778925263",
+      "text": "Before the review of my third app ends, starting to my fourth app that I found it today🔥",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-29T05:56:52.000Z",
+      "conversation_id": "2060238926778925263",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 17,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2060238926778925263"
+    },
+    {
+      "id": "2060092040977752394",
+      "text": "Hey founders !  Looking to connect with people building in:  \n📷 SaaS  \n📷 Tech \n📷 AI tools \n📷 Web APP \n📷 Fintech/ Finance  \nDrop what you are working on at the moment https://t.co/piVVK66RiI",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-28T20:13:11.000Z",
+      "conversation_id": "2060092040977752394",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 93,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/MacdevM/status/2060092040977752394/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2060092040977752394"
+    },
+    {
+      "id": "2060079293217017975",
+      "text": "Hey everyone! 👋\nSolo developer here — I just submitted my first iOS app, StyleDeck, to App Store review.\nIt’s a personal wardrobe app: scan your closet, get your color palette from a 5-second face scan, and let AI build outfits using only what you already own. Everything stays",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-28T19:22:32.000Z",
+      "conversation_id": "2060079293217017975",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 55,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2060079293217017975"
+    },
+    {
+      "id": "2060052445238050896",
+      "text": "Hey @X algorithm 👋\nI’m looking to #connect with people (to grow my saas https://t.co/nCe9sAH2X7) interested in:\n• Frontend\n• Backend\n• Full-stack\n• DevOps\n• App Development\n• SaaS\n• AI / ML\n• Data Science\n• LeetCode &amp; DSA\n• Freelancing\n• Startups\n• Building in public",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-28T17:35:51.000Z",
+      "conversation_id": "2060052445238050896",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 63,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://voyasim.io"
+      ],
+      "mentions": [
+        "X"
+      ],
+      "hashtags": [
+        "connect"
+      ],
+      "tweet_url": "https://x.com/MacdevM/status/2060052445238050896"
+    },
+    {
+      "id": "2060043071727800437",
+      "text": "Let’s start to cook with new opus 4.8🚀 https://t.co/O52466O8au",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-28T16:58:36.000Z",
+      "conversation_id": "2060043071727800437",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 55,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/claudeai/status/2060042702150930686"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2060043071727800437"
+    },
+    {
+      "id": "2059967932726120699",
+      "text": "Finally🫡 sent my third project StyleDeck to the review🔥 Let’s see if I can get “approved message” at first time🚀 https://t.co/7xrn55uPw9",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-28T12:00:02.000Z",
+      "conversation_id": "2059967932726120699",
+      "metrics": {
+        "likes": 7,
+        "retweets": 0,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 81,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/MacdevM/status/2059967932726120699/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2059967932726120699"
+    },
+    {
+      "id": "2059927159800496411",
+      "text": "Finally! https://t.co/2ml781XIyw reached 700$ total revenue! Big milestone for me🔥 Next target: 1000$🚀🚀🚀 https://t.co/IHGkZfUi0S",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-28T09:18:01.000Z",
+      "conversation_id": "2059927159800496411",
+      "metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 40,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://Voyasim.io",
+        "https://x.com/MacdevM/status/2059927159800496411/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2059927159800496411"
+    },
+    {
+      "id": "2059855120410578975",
+      "text": "Twitter is cool.\n\nBut it’s 100x better when your timeline is full with people who code and build things.\n\nI need to connect with more founders and tech people.\n\nIf you’re into Tech, AI, Startups, Design, web dev, SaaS, or programming, say hi.\n\nWill follow back!!",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-28T04:31:45.000Z",
+      "conversation_id": "2059855120410578975",
+      "metrics": {
+        "likes": 6,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 111,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2059855120410578975"
+    },
+    {
+      "id": "2059682470828646404",
+      "text": "Got my highest order today, 17 USD , Really big win for me🥹\n\nLet’s ship, till order payments reaches my full time daily work payment🚀🚀🚀\n\nLet’s expand our network with connecting guys! https://t.co/LFxWabALvs",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-27T17:05:42.000Z",
+      "conversation_id": "2059682470828646404",
+      "metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 119,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/MacdevM/status/2059682470828646404/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2059682470828646404"
+    },
+    {
+      "id": "2059656563313287532",
+      "text": "Cooking third project🔥 Let’s see if we can publish it until weekend🔥🚀 Trying to deploy on domain, will share the link on next posts to join waitlist🐋 https://t.co/03sA2zqzfs",
+      "author_id": "1283071986244169731",
+      "username": "MacdevM",
+      "name": "MacDev",
+      "created_at": "2026-05-27T15:22:45.000Z",
+      "conversation_id": "2059656563313287532",
+      "metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 77,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/MacdevM/status/2059656563313287532/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/MacdevM/status/2059656563313287532"
+    }
+  ]
+}

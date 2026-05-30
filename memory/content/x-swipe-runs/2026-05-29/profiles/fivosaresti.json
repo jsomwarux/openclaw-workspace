@@ -1,0 +1,216 @@
+{
+  "user": {
+    "id": "1592198362572509184",
+    "created_at": "2022-11-14T16:50:58.000Z",
+    "username": "fivosaresti",
+    "public_metrics": {
+      "followers_count": 2656,
+      "following_count": 40,
+      "tweet_count": 1036,
+      "listed_count": 20,
+      "like_count": 787,
+      "media_count": 109
+    },
+    "description": "Co-Founder @ https://t.co/hjbHe3knbV | B2B Growth playbooks using AI",
+    "name": "Fivos Aresti"
+  },
+  "tweets": [
+    {
+      "id": "2060073683285070100",
+      "text": "As a 20-person team with 150K combined followers, we generated 12M impressions in the last 10 months.\n\nThe model is simple...\n\nMany personal brands together build the company brand. \n\n• Founder posts\n• GTM lead post\n• Product lead posts\n• Engineering lead posts\n• Design lead",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-28T19:00:15.000Z",
+      "conversation_id": "2060073683285070100",
+      "metrics": {
+        "likes": 13,
+        "retweets": 9,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 592,
+        "bookmarks": 13
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2060073683285070100"
+    },
+    {
+      "id": "2059998171762155796",
+      "text": "First-party signals are the cleanest signals you can act on. \n\nAlmost every B2B company is sitting on 8 of them...\n\nBut only acting on MAYBE 2 of them.\n\nThese 8 fire from systems you already own:\n\n1) Website visits to pricing, compare, and demo pages\n→ Route through Warmly or",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-28T14:00:11.000Z",
+      "conversation_id": "2059998171762155796",
+      "metrics": {
+        "likes": 17,
+        "retweets": 8,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 479,
+        "bookmarks": 16
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2059998171762155796"
+    },
+    {
+      "id": "2059635801315586243",
+      "text": "2027 prediction: \n\nFounder-led marketing becomes the undisputed no.1 growth channel for b2b companies. \n\nThis is how my co founder and I bootstrapped from 2-20 employees in 9 months. \n\nAll we did was follow this 4-pillar operating layer:\n\n(bookmark this)\n\nPILLAR 1: Voice",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-27T14:00:15.000Z",
+      "conversation_id": "2059635801315586243",
+      "metrics": {
+        "likes": 22,
+        "retweets": 8,
+        "replies": 11,
+        "quotes": 0,
+        "impressions": 979,
+        "bookmarks": 24
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2059635801315586243"
+    },
+    {
+      "id": "2059348915980251267",
+      "text": "6 workflows to master if you’re in GTM engineering:\n\n1) Inbound Orchestration.\n\nEvery: \n\n• Form fill\n• Demo request\n• Newsletter signup\n\nALL routed automatically through: \n\n• Clay\n• Customer(.)io\n• Cal(.)com\n• Tally\n• HubSpot.\n\n2) TAM Sourcing. \n\nEvery account worth https://t.co/S1sbJLXKuO",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-26T19:00:17.000Z",
+      "conversation_id": "2059348915980251267",
+      "metrics": {
+        "likes": 81,
+        "retweets": 6,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 4123,
+        "bookmarks": 144
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2059348915980251267/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2059348915980251267"
+    },
+    {
+      "id": "2059273427433730394",
+      "text": "After working with over 250+ VC backed &amp; enterprise B2B SaaS clients...\n\nThis 1 pattern keeps surfacing in the teams who are underperforming:\n\nThey run outbound off live buying signals instead of static lists.\n\nThe static-list model is dying inside every account we audit.\n\nWhat https://t.co/3s5ygi0uBy",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-26T14:00:19.000Z",
+      "conversation_id": "2059273427433730394",
+      "metrics": {
+        "likes": 19,
+        "retweets": 2,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 987,
+        "bookmarks": 27
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2059273427433730394/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2059273427433730394"
+    },
+    {
+      "id": "2058261752018502053",
+      "text": "Your team's LinkedIn likes and comments are a qualified outbound list.\n\nMost teams do nothing with them. \n\nHere's how anyone can turn content engagement → pipeline:\n\n1. Jungler captures every engagement across your team's posts\n2. Engagement data routes to Clay for ICP",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-23T19:00:16.000Z",
+      "conversation_id": "2058261752018502053",
+      "metrics": {
+        "likes": 28,
+        "retweets": 1,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 1185,
+        "bookmarks": 26
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2058261752018502053"
+    },
+    {
+      "id": "2058186248003432570",
+      "text": "MCPs are bringing HubSpot + Salesforce back in fashion.\n\nYour CRM is the most important knowledge layer for Claude Code/Codex.\n\nThere are 1000s of different opinions out there about how to setup your CRM...\n\nBut here's how I setup our HubSpot, condensed into a cheat sheet with 6 https://t.co/jSk31cFkil",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-23T14:00:15.000Z",
+      "conversation_id": "2058186248003432570",
+      "metrics": {
+        "likes": 20,
+        "retweets": 2,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 592,
+        "bookmarks": 19
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2058186248003432570/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2058186248003432570"
+    },
+    {
+      "id": "2057899353964994862",
+      "text": "The best GTM tool per category in 2026\n\n(top pick for 18 categories)\n\n1️⃣ AI Agent Builder: Claude Code\nMost powerful Claude version, run from terminal with your tools connected\n\n2️⃣ Workflow Automation: n8n\nFor recurring automations &amp; custom agentic workflows\n\n3️⃣ Technographic https://t.co/CYb30S6DUH",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-22T19:00:14.000Z",
+      "conversation_id": "2057899353964994862",
+      "metrics": {
+        "likes": 47,
+        "retweets": 4,
+        "replies": 13,
+        "quotes": 0,
+        "impressions": 1746,
+        "bookmarks": 53
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2057899353964994862/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2057899353964994862"
+    },
+    {
+      "id": "2057826298899161533",
+      "text": "If your form only captures complete submissions, you're leaving 5-6 figures in pipeline per month on the table.\n\nPartial Tally submissions used to disappear for us.\n\nNow they route to Clay and then Slack automatically.\n\nThat lead is gone forever unless you have a capture system.",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-22T14:09:56.000Z",
+      "conversation_id": "2057826298899161533",
+      "metrics": {
+        "likes": 19,
+        "retweets": 2,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 949,
+        "bookmarks": 20
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2057826298899161533"
+    }
+  ]
+}

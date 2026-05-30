@@ -1,0 +1,234 @@
+{
+  "user": {
+    "name": "Stake Signal",
+    "public_metrics": {
+      "followers_count": 0,
+      "following_count": 18,
+      "tweet_count": 18,
+      "listed_count": 0,
+      "like_count": 2,
+      "media_count": 2
+    },
+    "id": "2058083698197852160",
+    "username": "StakeSignalHQ",
+    "description": "Practical signals on AI tools, self-hosted apps, dashboards, and automation for small businesses, builders, and operators. Less hype. More useful systems.",
+    "created_at": "2026-05-23T07:15:08.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2060253267230339498",
+      "text": "Most automation retainers are too vague.\n\n“Support” sounds fine until the workflow breaks and nobody knows:\n- who owns it\n- what gets monitored\n- what counts as a fix\n- what is new project work\n- when the client needs to approve change\nMaintenance🛠️ https://t.co/B3KheuSLzX",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-29T06:53:51.000Z",
+      "conversation_id": "2060253267230339498",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/StakeSignalHQ/status/2060253267230339498/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2060253267230339498"
+    },
+    {
+      "id": "2060248180059787433",
+      "text": "AI agents do not need more vibes.  They need a control plane. Before giving them real tools, give them:\n\n1. approvals\n2. least privilege\n3. audit logs\n4. sandboxes\n5. spend limits\n\nOtherwise your “agent workforce” is just a robot squad speedrunning chaos.",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-29T06:33:38.000Z",
+      "conversation_id": "2060248180059787433",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2060248180059787433"
+    },
+    {
+      "id": "2060098304193740916",
+      "text": "Selling automation is easy.\n\nMaintaining it is where the goblins live. 🎮\n\nReal workflow upkeep includes:\n- fixing broken APIs\n- checking logs\n- handling weird data\n- updating prompts\n- stopping silent failures",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-28T20:38:05.000Z",
+      "conversation_id": "2060098304193740916",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2060098304193740916"
+    },
+    {
+      "id": "2059734321053978918",
+      "text": "Most people don’t need “more AI tools”.\n\nThey need one boring workflow that saves them 30 minutes every week.\n\n Automate the annoying repeat task.\nTrack whether it actually helped.\n Then improve it.\n\nThat’s how AI becomes useful instead of just another tab you forgot about.",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-27T20:31:44.000Z",
+      "conversation_id": "2059734321053978918",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2059734321053978918"
+    },
+    {
+      "id": "2059381248158785962",
+      "text": "An automation is not production-ready because it ran once. 😅\n\nBefore trusting it with real work, ask:\n- what if the data is wrong?\n- what if the API fails?\n- what if it duplicates records?\n- where are the logs?\n- who gets pinged when it goes feral?",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-26T21:08:45.000Z",
+      "conversation_id": "2059381248158785962",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2059381248158785962"
+    },
+    {
+      "id": "2058826524707668347",
+      "text": "AI agents without rules are just interns with admin access and caffeine. ☕🤖\n\nGive them:\n- roles\n- limits\n- checklists\n- escalation rules\n- a human final boss\n\nAutomation is great.\n\nUnsupervised chaos with a monthly API bill is not. 💸",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-25T08:24:29.000Z",
+      "conversation_id": "2058826524707668347",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2058826524707668347"
+    },
+    {
+      "id": "2058649792063168773",
+      "text": "If an AI agent cannot see the workflow, the docs, the code, the costs, and the decision history, it just guesses faster.\n\nThe useful setup is starting to look like:\n- one dashboard\n- specialist agents with clear roles\n- a command-and-control layer\n- clear human approval points",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-24T20:42:12.000Z",
+      "conversation_id": "2058649792063168773",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2058649792063168773"
+    },
+    {
+      "id": "2058457277037007175",
+      "text": "Before adding AI to a small business, ask 3 boring questions:\n\n1. Who owns this workflow?\n2. What manual task disappears?\n3. How will we know it worked?\n\nIf those answers are fuzzy, the AI tool is not automation yet.\n\nIt is just another app in the stack.",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-24T07:57:13.000Z",
+      "conversation_id": "2058457277037007175",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2058457277037007175"
+    },
+    {
+      "id": "2058296186625540152",
+      "text": "AI agents are not free labour.\n\nThey can quietly become a new cost centre if they loop, call tools, and burn tokens without cutting real work.\n\nUse AI where it removes a task — not where it adds invisible overhead.\n\nSource: https://t.co/1GICOdhfCZ https://t.co/E5lV4jALPD",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-23T21:17:06.000Z",
+      "conversation_id": "2058296186625540152",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://fortune.com/2026/05/22/microsoft-ai-cost-problem-tokens-agents/",
+        "https://x.com/StakeSignalHQ/status/2058296186625540152/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2058296186625540152"
+    },
+    {
+      "id": "2058158633410822404",
+      "text": "Welcome to Stake Signal.\n\nI’m sharing practical AI tools, self-hosted apps, dashboards, and automations that can actually save time, cut costs, or make small businesses run more smoothly.\n\nLess hype. More useful systems.",
+      "author_id": "2058083698197852160",
+      "username": "StakeSignalHQ",
+      "name": "Stake Signal",
+      "created_at": "2026-05-23T12:10:31.000Z",
+      "conversation_id": "2058158633410822404",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/StakeSignalHQ/status/2058158633410822404"
+    }
+  ]
+}

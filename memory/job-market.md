@@ -3,6 +3,18 @@
 
 ---
 
+## 2026-05-29 — Heartbeat Job Market Pulse
+
+**Read:** The market is still thin for broad AI architect roles, but the useful signal is sharper: AI enablement roles are increasingly platform-ops roles, not generic strategy roles. Today's strongest example is H.I.G. Capital's Director, AI Enablement role, which frames the work as proprietary AI platform ownership, connectors/MCP-style tooling, eval harnesses, governance, adoption, and ROI reporting.
+
+**JT relevance:** This validates the current positioning lane: BSA workflow translation + governed agent orchestration + proof logs + adoption/value reporting. The gap is not another generic demo; it is packaging OpenClaw/FastMCP-style operating-system work into an executive-facing control-plane artifact with workflow mapping, allowed actions, eval/rollback checks, and value reporting.
+
+**Action:** Keep H.I.G. below Altmark, but treat it as a dual-track signal: application target plus consulting bridge. Current handoff is already routed through Mission Control as `Dual-track H.I.G. Capital — apply + consulting bridge` and the prospect note at `/Users/jtsomwaru/projects/jt-consulting-pipeline/prospects/hig-capital-ai-enablement-job-signal/job-signal.md`.
+
+**Watch:** MCP/connectors, evals, data lineage, rollback standards, and ROI dashboards moving from engineering JDs into AI enablement leadership roles. These are resume/portfolio proof terms to use only where JT can point to an actual artifact.
+
+---
+
 ## 2026-02-22 — First Check
 
 ### 2026 Layoff Landscape

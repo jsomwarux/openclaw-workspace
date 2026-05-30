@@ -1,0 +1,253 @@
+{
+  "user": {
+    "username": "PawelHuryn",
+    "name": "Paweł Huryn",
+    "id": "1459767830623178755",
+    "created_at": "2021-11-14T06:19:25.000Z",
+    "description": "AI PM | Deep research. I build, test, then teach. 130K+ subscribe → https://t.co/Tpe2QTFxY2",
+    "public_metrics": {
+      "followers_count": 67542,
+      "following_count": 415,
+      "tweet_count": 7781,
+      "listed_count": 916,
+      "like_count": 4856,
+      "media_count": 1835
+    }
+  },
+  "tweets": [
+    {
+      "id": "2060283233447600145",
+      "text": "Earlier this week I called DeepSWE the best coding benchmark out there. I meant it. It's the one that matches what these models actually feel like day to day.\n\nThen Opus 4.8 shipped without a number on the board, so I went to add one myself. That's where I learned how little of a https://t.co/w49depdWP1",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-29T08:52:55.000Z",
+      "conversation_id": "2060283233447600145",
+      "metrics": {
+        "likes": 2,
+        "retweets": 1,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 317,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/PawelHuryn/status/2060283233447600145/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2060283233447600145"
+    },
+    {
+      "id": "2060275052164055553",
+      "text": "This chart is going around as \"FT data\" proving AI is a money pit: Microsoft -9%, Meta -29%, Oracle -36%.\n\nIt's not FT data. I checked the chart. The numbers come from Panmure Liberum, a brokerage. The FT just ran it.\n\nThen the subtitle: \"implied return, 2025-30, assuming zero https://t.co/w79SWisLW9",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-29T08:20:25.000Z",
+      "conversation_id": "2060275052164055553",
+      "metrics": {
+        "likes": 6,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 289,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/PawelHuryn/status/2060275052164055553/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2060275052164055553"
+    },
+    {
+      "id": "2060075478543704302",
+      "text": "4.6 guessed what you meant.\n4.7 stopped guessing.\n4.8 stops pretending it's done.\n\nTwo upgrades on the same axis: honesty. https://t.co/mQVQg3tO3t",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-28T19:07:23.000Z",
+      "conversation_id": "2060075478543704302",
+      "metrics": {
+        "likes": 11,
+        "retweets": 1,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 1918,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://twitter.com/claudeai/status/2060042702150930686"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2060075478543704302"
+    },
+    {
+      "id": "2060063258527088984",
+      "text": "Tested Claude Code's new dynamic workflows. 8 agents in 24.5s. 253k tokens.\n\nThe launch post frames it as a large fleet of coordinated subagents. That part isn't new. The SDK has had parallel calls for years.\n\nThe new part is where the orchestrator runs. It's JavaScript, not a https://t.co/PxLpU8wwPS",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-28T18:18:49.000Z",
+      "conversation_id": "2060063258527088984",
+      "metrics": {
+        "likes": 473,
+        "retweets": 29,
+        "replies": 20,
+        "quotes": 7,
+        "impressions": 90522,
+        "bookmarks": 337
+      },
+      "urls": [
+        "https://twitter.com/ClaudeDevs/status/2060044853279617150"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2060063258527088984"
+    },
+    {
+      "id": "2060062998895759796",
+      "text": "Tested Claude Code's new dynamic workflows. 8 agents in 14.5s. 253k tokens.\n\nThe launch post frames it as a large fleet of coordinated subagents. That part isn't new. The SDK has had parallel calls for years.\n\nThe new part is where the orchestrator runs. It's JavaScript, not a https://t.co/PxLpU8x4Fq",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-28T18:17:47.000Z",
+      "conversation_id": "2060062998895759796",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 54,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/ClaudeDevs/status/2060044853279617150"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2060062998895759796"
+    },
+    {
+      "id": "2060023957240131747",
+      "text": "Capabilities and bug fixes shipped to Grok Build for VS Code v 1.2.0 (ACP wrapper)\n\n• Plan mode implemented (despite CLI limits)\n• Three-verdict plan review with a comment\n• Plan markdown rendering\n• Per-session plan history\n• Native-Windows webview fixes\n• Testing — 178 https://t.co/7OPg7qgR2h https://t.co/3iYRmFKihW",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-28T15:42:39.000Z",
+      "conversation_id": "2060023957240131747",
+      "metrics": {
+        "likes": 8,
+        "retweets": 2,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 8460,
+        "bookmarks": 7
+      },
+      "urls": [
+        "https://x.com/PawelHuryn/status/2060023957240131747/photo/1",
+        "https://x.com/PawelHuryn/status/2060023957240131747/photo/1",
+        "https://twitter.com/skcd42/status/2059832717542555657"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2060023957240131747"
+    },
+    {
+      "id": "2059918273571881327",
+      "text": "It's the first time I feel bad about sharing a private conversation with Claude. https://t.co/obiYVDgy3B",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-28T08:42:42.000Z",
+      "conversation_id": "2059918273571881327",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1988,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/PawelHuryn/status/2059918273571881327/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2059918273571881327"
+    },
+    {
+      "id": "2059747762464260270",
+      "text": "I built a Claude Code command that audits the code you already shipped, not just the diff you're about to commit.\n\nRun it on your repo, or scope it to one area. The point isn't volume. Most scanners bury you because reporting everything is free. This one tries to kill each https://t.co/jGmAwAjdHN",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-27T21:25:09.000Z",
+      "conversation_id": "2059747762464260270",
+      "metrics": {
+        "likes": 15,
+        "retweets": 3,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 1254,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/PawelHuryn/status/2059747762464260270/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2059747762464260270"
+    },
+    {
+      "id": "2059616049591463957",
+      "text": "Grok Build v1.1.0 for VS Code has shipped. New:\n- Windows support\n- Approve by default\n- Inline diffs\n\nOpen source + marketplace: https://t.co/QOaVmc4i6o https://t.co/f4ZpGvHlxS",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-27T12:41:46.000Z",
+      "conversation_id": "2059616049591463957",
+      "metrics": {
+        "likes": 4,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 867,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://marketplace.visualstudio.com/items?itemName=PawelHuryn.grok-vscode-phuryn",
+        "https://x.com/PawelHuryn/status/2059616049591463957/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2059616049591463957"
+    },
+    {
+      "id": "2059533995121971605",
+      "text": "Claude Code's new security plugin has one missing mode: static audit.\n\nIt guards the code Claude writes next:\n- edits\n- turn diffs\n- commits\n- pushes\n\nIt does not audit the repo you already have.\n\nSo I made the missing command:\n\n`/security-audit-static`\n\nIt adapts the public https://t.co/zSs5iPOgUF https://t.co/h1iUJrV2Av",
+      "author_id": "1459767830623178755",
+      "username": "PawelHuryn",
+      "name": "Paweł Huryn",
+      "created_at": "2026-05-27T07:15:43.000Z",
+      "conversation_id": "2059533995121971605",
+      "metrics": {
+        "likes": 35,
+        "retweets": 6,
+        "replies": 9,
+        "quotes": 0,
+        "impressions": 6865,
+        "bookmarks": 39
+      },
+      "urls": [
+        "https://x.com/PawelHuryn/status/2059533995121971605/photo/1",
+        "https://twitter.com/ClaudeDevs/status/2059385239781384341"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/PawelHuryn/status/2059533995121971605"
+    }
+  ]
+}

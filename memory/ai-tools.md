@@ -2,6 +2,18 @@
 
 ---
 
+## May 29, 2026 — Heartbeat AI Tool Monitoring
+
+**Enterprise agents are moving into admin-controlled workspaces, not just developer sandboxes.** OpenAI's latest Enterprise help/update surface shows workspace agents gaining scheduled runs, Slack channels, custom MCP servers, version history, analytics, EKM support, and default-off admin enablement. Microsoft's Frontier Suite/Agent 365 packaging pushes the same direction: agent creation and governance bundled into Microsoft 365 rather than sold as isolated experiments. Anthropic's Managed Agents engineering notes reinforce the infrastructure angle: stable interfaces around long-horizon hosted work even as harnesses change.
+
+**JT relevance:** buyer trust is converging around three proof points: admin control, connected-app execution, and evidence of what changed. That maps directly to the consulting wedge already being built: approval-gated workflows, exception queues, and proof logs inside the client's existing operating surface.
+
+**Actionable demo angle:** keep Altmark and future SMB demos framed as "workspace-controlled automation" rather than "an AI agent." The demo should explicitly show who can publish/run it, which systems it can touch, what actions are approval-only, where version/history lives, and what proof log the owner reviews.
+
+Sources: OpenAI Workspace Agents help (updated 2026-05-29) https://help.openai.com/en/articles/20001143; OpenAI Enterprise/Edu release notes (May 2026) https://help.openai.com/en/articles/10128477-chatgpt-enterprise-edu-release-notes; Microsoft Frontier Suite / Agent 365 (2026-03-09) https://blogs.microsoft.com/blog/2026/03/09/introducing-the-first-frontier-suite-built-on-intelligence-trust/; Anthropic Managed Agents engineering (2026-04-08) https://www.anthropic.com/engineering/managed-agents
+
+---
+
 ## May 28, 2026 — Heartbeat AI Tool Monitoring
 
 **Connected, governed agents are moving from enterprise demos into SMB-ready product packaging.** Recent official updates show the same pattern from multiple vendors: Anthropic launched Claude for Small Business with connectors into QuickBooks, PayPal, HubSpot, Canva, Docusign, Google Workspace, and Microsoft 365, with human approval before sends/posts/payments; Anthropic also acquired Stainless to deepen SDK/MCP server tooling; Google I/O introduced Managed Agents in the Gemini API with isolated Linux execution and persistent state; OpenAI and Dell announced Codex work for hybrid/on-prem enterprise environments.

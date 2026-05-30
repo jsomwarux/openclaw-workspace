@@ -1,3 +1,6 @@
-**Last updated:** 2026-05-28 09:00 AM EDT
+**Last updated:** 2026-05-29 09:01 AM EDT
 
-No new critical findings as of 09:00 AM EDT.
+🟠 **Canals raises $35M for wholesale-distribution AI automation** — Canals announced a $35M round for AI that automates messy wholesale-distribution inputs and manual data entry, a direct competitor/demand signal in JT's wholesale automation niche. (https://www.globenewswire.com/news-release/2026/05/28/3302917/0/en/Canals-Raises-35M-to-Eliminate-Friction-from-the-Industrial-Supply-Chain.html)
+🟠 **Roots Automation launches insurance-native AI agent platform** — Roots Automation launched Bevaya, an AI-agent platform built exclusively for insurance workflows, creating a direct insurance automation competitor signal. (https://www.prnewswire.com/news-releases/roots-automation-inc-launches-bevaya-its-new-flagship-ai-agent-platform-for-insurance-302783940.html)
+🟠 **Navigate.AI launches construction trades copilot with Lennar partnership** — Navigate.AI launched an AI copilot for training crews and quality control using phone/smart-glasses video, with $25M raised and Lennar named as a partner. (https://www.housingwire.com/articles/a-start-up-with-a-deep-tech-pedigree-launches-ai-to-train-the-trades/)
+🟠 **Entrata files for IPO with 23% Q1 revenue growth** — Entrata filed for a NYSE IPO after reporting 23% Q1 2026 revenue growth, reinforcing property-management software demand around unified operating systems with embedded AI. (https://www.tradingview.com/news/reuters.com,2026:newsml_L4N4250VG:0-silver-lake-backed-property-management-software-firm-entrata-files-for-us-ipo/)

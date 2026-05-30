@@ -43,3 +43,7 @@ Last reset: 2026-05-01
 2026-05-28 [EMERGING] niche=property-management — Property management software market-growth coverage remains strong, but today's results were mostly market reports/vendor pages rather than urgent adoption events.
 2026-05-28 [EMERGING] niche=insurance — Insurance automation coverage continues to emphasize underwriting, claims, servicing, and finance automation; no verified new high-severity vendor/regulatory trigger found today.
 2026-05-28 [CONFIRMS] niche=enterprise-rag — Enterprise RAG/knowledge-assistant content continues to cluster around scalable internal knowledge bases and support-ticket reduction use cases.
+2026-05-29 [CONFIRMS] niche=wholesale distribution — A wholesale-distribution AI automation vendor raised $35M around eliminating manual data entry from messy distributor workflows.
+2026-05-29 [CONFIRMS] niche=insurance — Roots Automation launched Bevaya as an insurance-specific AI agent platform for operational automation.
+2026-05-29 [CONFIRMS] niche=construction — A new construction AI copilot launched with funding and a named Lennar partnership, confirming demand for practical field AI workflows.
+2026-05-29 [CONFIRMS] niche=property management — Property-management software vendor Entrata filed for IPO and reported 23% Q1 2026 revenue growth, validating PM software budget expansion.

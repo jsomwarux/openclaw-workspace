@@ -10,6 +10,14 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 | Date | Mistake | Fix |
 |------|---------|-----|
 
+## 2026-05-29 — Nightly Leverage overfit to same Altmark blocker
+- **Failure:** Nightly Leverage reports were not exact duplicates, but recent runs repeatedly treated adjacent Altmark prep artifacts/task repoints as fresh nightly wins while the real blocker still required JT/client input.
+- **Root cause:** The cron prompt prioritized active revenue/client delivery but did not define material progress, compare the last two nightly runs, enforce a same-blocker cooldown, or rotate to self-serve work when the top blocker was unchanged.
+- **Guardrail/rule:** Nightly Leverage must scan the last 7 days of nightly outputs, compare the last two runs, name a `Material delta`, and suppress/rotate when the same client/project/blocker appears twice without new external input or verification evidence.
+- **Regression check:** After any Nightly Leverage report, 10AM film review checks that the report includes a material delta versus the last two nightly runs; if not, patch the cron and log the repeated blocker instead of accepting the report as progress.
+- **Owner surface updated:** Live cron `003191af-45a7-4e3b-a824-f7a6cd52f8c7` / `nightly-autonomous-leverage-agent`, `docs/agents/regression-checks.md`, `memory/audits/xhigh-systems/2026-05-29-nightly-leverage-anti-repeat-audit.md`, and this Mistakes Log entry.
+- **Verification/date:** 2026-05-29 — prompt file created with anti-repeat/material-progress gate; live cron patch and verification performed same turn.
+
 ## 2026-05-27 — Paused Spanish lessons still triggered stale-state heartbeat failure
 - **Failure:** The 10AM heartbeat Spanish state check failed with `FAIL: last lesson is stale: 2026-05-24 (3 days ago)` even though Spanish lessons were intentionally paused on 2026-05-26.
 - **Root cause:** `spanish_state_check.py` validated freshness before accounting for the explicit `"paused": true` state, so a deliberate pause looked like a stale/broken lesson pipeline.
