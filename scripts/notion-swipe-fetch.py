@@ -257,11 +257,12 @@ def main():
     parser.add_argument("--format", action="append", default=[], help="Filter to one or more Notion Format values. Repeatable.")
     parser.add_argument("--raw", action="store_true", help="Skip stratification, return top N by engagement")
     parser.add_argument("--since-days", type=int, help="Only return posts captured in the last N days. Use 14 for current trend work.")
+    parser.add_argument("--fetch-limit", type=int, default=100, help="Notion pages to inspect before local filtering. Raise for narrow platform/niche audits.")
     args = parser.parse_args()
 
     all_posts = fetch_all_posts(
         min_engagement=args.min_engagement,
-        fetch_limit=100,
+        fetch_limit=max(args.fetch_limit, args.limit * 4),
         niches=args.niche,
         platforms=args.platform,
         formats=args.format,

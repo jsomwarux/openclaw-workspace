@@ -35,6 +35,32 @@ The Notion Viral Posts Swipe database is not just an archive. It must influence 
 - If a niche/platform has fewer than 3 usable recent examples, create a Mission Control task to collect more examples instead of pretending the swipe file is sufficient. Until then, use adjacent references only as labeled inspiration, not as the primary pattern source.
 - Never let the swipe file flatten JT's voice. It supplies evidence of what works; JT's taste supplies the final shape.
 
+## Reference Mechanics Contract
+Any recurring content generator that claims it used swipe/native references must save a platform-specific reference section in the artifact before delivery.
+
+Required section headings:
+- `## LinkedIn Reference Mechanics`
+- `## X Reference Mechanics`
+- `## Reddit Reference Mechanics`
+- `## TikTok Reference Mechanics`
+
+Each section must include at least 2 source rows unless it explicitly marks `RECENT_SWIPE_GAP` or `ADJACENT_REFERENCE_ONLY`. Each row must include:
+- `Source URL`
+- `Platform`
+- `Niche`
+- `Format`
+- `Hook mechanic`
+- `JT translation`
+
+Use the narrowest available fetch first:
+`python3 scripts/notion-swipe-fetch.py --platform [PLATFORM] --niche "[NICHE]" --format "[FORMAT]" --limit 8 --since-days 30`
+
+If fewer than 3 usable current references exist, label the gap and either use adjacent references explicitly or skip the slot. Do not silently fall back to old all-platform mega posts.
+
+New weekly LinkedIn/X queues must pass:
+`python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-[MONDAY].md --require-reference-map linkedin --check-notion-script`
+or `--require-reference-map x` for the X queue.
+
 
 
 ## Relevance Ladder + Current Trend Rule

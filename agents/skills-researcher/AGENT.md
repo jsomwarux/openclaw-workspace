@@ -303,6 +303,7 @@ STEPS:
      b. **Content pipeline update:** For each 🔴/🟠 finding, check: is this a capability or tool that JT hasn't yet demonstrated but could build a post or project around?
         - If YES → append to `~/.openclaw/workspace/memory/content/technical-angles.md` under `## Potential Angles (unbuilt)`:
           `[DATE] [topic name] — [1 sentence on why it's relevant to JT's audience] (source: [URL])`
+        - Append with `printf '%s\n' ... >> ~/.openclaw/workspace/memory/content/technical-angles.md` or a `/tmp/skills-researcher-technical-angle.txt` file created with `printf`; do not use heredocs or inline multi-line interpreter snippets.
         - This ensures the content system knows what conversations are emerging even before the build exists
         - Only append if JT plausibly has the background to post about it (check content-voice.md Proof Points)
      c. Push to Mission Control Task Board only if the finding passes the concrete-action quality gate.
@@ -317,6 +318,7 @@ STEPS:
    🟡/🟢 → KB only (silently):
      cd ~/.openclaw/workspace/knowledge && \
      bun kb.ts add --title "[name]" --content "[summary | source: URL | eval: relevance/cost/fit | found via: X/web]" --category tech
+     Never run bare `bun kb.ts` from the workspace root or agent run directory. If a KB command fails because of the working directory, rerun it from `~/.openclaw/workspace/knowledge` before marking the scan unhealthy.
 
 8. UPDATE STATE
    Write updated timestamps/release tags to state.json

@@ -115,6 +115,7 @@ When activating a persona for open-ended coding tasks: read `docs/tools/claude-p
 ## Consulting Pipeline Agents (~/projects/)
 - research-agent/ | analysis-agent/ | n8n-agent/ (n8n: localhost:5678) | agentforce-agent/ (sf CLI needed)
 - crypto-agent/ | job-market-agent/ | ranking-app-agent/
+- Crypto full-analysis validator: `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/validate-full-analysis.py --max-x-age-hours 3` — blocks Telegram allocation delivery when artifacts are stale/incomplete or bear-case analysis is generic/repeated.
 - Pipeline: ~/projects/jt-consulting-pipeline/ | Skill: skills/jt-consulting-pipeline/SKILL.md
 - Outreach pipeline preflight: `python3 scripts/outreach_pipeline_runner.py --json` — deterministic script-first stages for Drive auth, M-status/T3 dedupe, existing draft/doc checks, warm-up holds, and report generation before any LLM copy work.
 
@@ -145,6 +146,7 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 - Integration token: [REDACTED - use NOTION_TOKEN in ~/.config/env/global.env]
 - DBs: Viral Post Swipe File `31316aff930580f6a195ca179793eb0e`; Content Calendar `32516aff930581a78659eac869c71ba8`
 - Swipe push: `python3 ~/.openclaw/workspace/scripts/notion-swipe-push.py --text "..." --author "@handle" --url "..." --niche "AI Agents" --format "Hot Take" --why "..." --engagement 1200 --hook "Contrarian claim"`
+- Swipe fetch/reference guard: `python3 scripts/notion-swipe-fetch.py --platform X --niche "AI Consulting" --limit 8 --since-days 30 --fetch-limit 200`; new weekly queues must pass `python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-[MONDAY].md --require-reference-map linkedin --check-notion-script` or `--require-reference-map x`.
 - Calendar push: `python3 ~/.openclaw/workspace/scripts/notion-calendar-push.py --platform "X" --date "YYYY-MM-DD" --post "post text" --type "Planned" --drive-link "URL"`; no `--title` arg.
 - Cron: 3x/week Mon/Wed/Fri 5:30AM EST isolated sonnet — searches X for viral posts, pushes to Notion
 - X Algorithm reference: ~/.openclaw/workspace/docs/x-algorithm.md

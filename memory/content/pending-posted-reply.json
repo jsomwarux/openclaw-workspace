@@ -1,24 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-05-29",
-      "day": "friday",
-      "line_no": 186,
+      "date": "2026-05-30",
+      "day": "saturday",
+      "line_no": 187,
       "platform": "x",
-      "summary": "Your maintenance inbox is probably a margin leak.  The request is easy.  The handoffs are where money disappears.  Urgency.  Unit history.  ",
-      "topic": "your-maintenance-inbox-is-probably-a-margin-leak-the-request-is-easy-the-handoffs-are-where-money-disappears-urgen"
-    },
-    {
-      "date": "2026-05-29",
-      "day": "friday",
-      "line_no": 192,
-      "platform": "linkedin",
-      "summary": "The maintenance inbox leaks margin through handoffs; useful AI classifies, routes, drafts updates, and keeps humans approving expensive or ambiguous work.",
-      "topic": "maintenance-inbox-exception-desk"
+      "summary": "Should your app explain itself inside the product or in public?  Both.  Nash now has weekly receipt images.  Glow now has product verdict ca",
+      "topic": "should-your-app-explain-itself-inside-the-product-or-in-public-both-nash-now-has-weekly-receipt-images-glow-now-ha"
     }
   ],
   "note": "",
-  "sent_at": 1780056056,
+  "sent_at": 1780142446,
   "source": "content-reminder",
   "status": "pending"
 }

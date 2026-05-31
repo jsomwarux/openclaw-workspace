@@ -12,11 +12,11 @@
 | Criterion | Evidence Required | Owner | Status | Notes |
 |---|---|---|---|---|
 | Dedicated PC/access path is confirmed | Handoff note or access confirmation | JT / Navid | In progress | Current MC task now points to `proof-assets/monday-closeout-sheet-2026-05-25.md` / weekend sheet: confirm access/admin owner before HTTPS/OAuth migration. |
-| Workflow is demonstrated or verified | Screenshot/log/demo note | JT / Yair/Navid | Not confirmed in Eve memory | Keep proof private until redacted. |
+| Workflow is demonstrated or verified | Screenshot/log/demo note | JT / Yair/Navid | Live in production per status notes; proof screenshot/log not captured | Keep proof private until redacted. |
 | Logs/audit trail are visible | Redacted screenshot or run log reference | JT | Not confirmed in Eve memory | |
 | Open issues have owner/date | Dashboard/failure-log entry | JT | Not confirmed in Eve memory | |
-| Client accepts first workflow as live/useful | Yair/Navid confirmation | Yair/Navid | Not confirmed in Eve memory | Referral ask waits on this. |
-| Payment/final approval status is clear | Internal note only | JT | Not confirmed in Eve memory | |
+| Client accepts first workflow as live/useful | Yair/Navid confirmation | Yair/Navid | Working as expected per status notes; explicit proof wording still needed | Referral ask waits on proof evidence and permission boundary. |
+| Payment/final approval status is clear | Internal note only | JT | Final 50% paid per 2026-05-30 status | Do not keep treating payment as the proof blocker. |
 | Support/rollback path is documented | `runbooks/insurance-expiration-workflow.md` section verified | JT | Drafted | |
 
 ## Proof-Safe Evidence Rules

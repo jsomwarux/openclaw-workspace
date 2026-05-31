@@ -101,6 +101,34 @@ Required weekly inputs:
 - If data is missing for 2 consecutive weeks, fix the metrics handoff before recommending more content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-05-23
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-05-23 to 2026-05-29 (0 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 5
+- Web depth: active users 5, pageviews 8, events 18
+- Best item: glow-index GA4 web traffic 2026-05-23 to 2026-05-29 (5 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-05-23 to 2026-05-29 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 47
+- Web depth: active users 5, pageviews 87, events 256
+- Best item: nash-satoshi GA4 web traffic 2026-05-23 to 2026-05-29 (47 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-05-23 to 2026-05-29 (47 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-05-22
 
 ### glow-index / search_console
@@ -396,12 +424,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 17
+- Posts/results logged: 18
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 17
+- Posts/results logged: 18
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -915,7 +943,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-29_
+_Last updated: 2026-05-30_
 
 <!-- METRICS_SUMMARY_END -->
 

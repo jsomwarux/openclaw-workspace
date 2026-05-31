@@ -553,3 +553,13 @@ JT's focus on **responsible AI governance** (AgentGuard) and **exception layers*
 **JT relevance:** keep selling governed workflow implementation, not generic agents. AgentGuard / Altmark-style Client OS proof should emphasize tool access boundaries, approval checkpoints, execution logs, and failure handling as the thing buyers can trust.
 
 **Market note:** fresh IAPP vendor-report coverage also frames AI governance as a capabilities market: policy/compliance, documentation, risk management, procurement process, and operating controls. This supports using governance language in consulting materials without sounding premature.
+
+## May 30, 2026 — Heartbeat AI Tool Monitoring
+
+**Workspace agents are becoming governed operating surfaces, not standalone assistants.** OpenAI's workspace-agent launch frames shared agents as long-running cloud workflows that can run in ChatGPT or Slack, gather context across systems, require approval for sensitive actions, and expose configuration/run visibility through admin controls and compliance APIs. ChatGPT Business release notes add the adjacent admin pattern: app templates for GitHub Enterprise, Snowflake, and Databricks with OAuth/callback/MCP setup, role access, action controls, action confirmation, and workspace analytics. Sources: https://openai.com/index/introducing-workspace-agents-in-chatgpt/ and https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes.
+
+**Connector UX is moving toward interactive work inside the chat surface.** Claude interactive connectors now expose app-like interfaces for tools such as Asana, Box, Canva, Figma, Hex, and Slack; Team/Enterprise owners can disable the specific interactive rendering tool calls, and the interfaces run in sandboxed iframes with auditable JSON-RPC messaging. Source: https://support.claude.com/en/articles/13454812-use-interactive-connectors-in-claude.
+
+**Workspace-native personal agents are also coming from Google.** Google Workspace announced Gemini Spark as a 24/7 personal agent that integrates with Workspace apps, acts under user direction, and asks before high-stakes actions such as sending emails or adding calendar events. Source: https://blog.google/products-and-platforms/products/workspace/workspace-updates/.
+
+**JT relevance:** keep positioning demos as "governed workflow workers inside the tools you already use." The credible proof points are: who owns the agent, which systems it can touch, what actions require approval, what exceptions go to a queue, and what run history/proof log exists. This maps directly to Altmark-style review-only outputs and to SMB back-office pilots where the buyer cares more about permission boundaries than model names.

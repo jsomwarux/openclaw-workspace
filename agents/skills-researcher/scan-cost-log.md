@@ -68,3 +68,5 @@ EOF'
 2026-05-27T16:40:08Z | daily-scan | x_queries: 6 | web_queries: 17 | findings: 6 duplicate/already-logged | 🔴: 0 new | 🟠: 0 new | messaged_jt: no
 [2026-05-28T11:33:02-04:00] | daily-scan | x_queries: 6 | web_queries: 15 | findings: 8 | 🔴: 1 | 🟠: 1 | messaged_jt: yes
 2026-05-29T11:33:43-04:00 | daily-scan | x_queries: 6 | web_queries: 12 | findings: 6 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
+[2026-05-30T11:02:39Z] | weekly-synthesis | x_queries: 6 | est_cost: $0.00 | web_sources: 7 | findings: 7 | 🔴: 1 | 🟠: 2 | 🟡/🟢: 4 | mc_tasks_pushed: 0 | kb_added: 2 | messaged_jt: yes
+2026-05-30T11:33:34-04:00 | daily-scan | x_queries: 6 | web_queries: 14 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes

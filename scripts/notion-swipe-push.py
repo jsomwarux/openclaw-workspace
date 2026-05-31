@@ -22,9 +22,28 @@ import os
 import sys
 import urllib.request
 import urllib.error
+from pathlib import Path
 from datetime import datetime, timezone
 
-NOTION_TOKEN = os.environ.get("NOTION_TOKEN") or os.environ.get("NOTION_API_KEY")
+def env_from_global_env(*names):
+    for name in names:
+        if os.environ.get(name):
+            return os.environ[name]
+    env_path = Path.home() / ".config/env/global.env"
+    if env_path.exists():
+        for line in env_path.read_text().splitlines():
+            if not line or line.lstrip().startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key = key.strip().removeprefix("export ")
+            if key in names:
+                value = value.strip().strip('"').strip("'")
+                if value:
+                    return value
+    return None
+
+
+NOTION_TOKEN = env_from_global_env("NOTION_TOKEN", "NOTION_API_KEY")
 DATABASE_ID = os.environ.get("NOTION_VIRAL_SWIPE_DB_ID", "31316aff930580f6a195ca179793eb0e")
 if not NOTION_TOKEN:
     print("❌ Missing NOTION_TOKEN or NOTION_API_KEY environment variable", file=sys.stderr)
@@ -34,7 +53,7 @@ NOTION_VERSION = "2022-06-28"
 API_URL = "https://api.notion.com/v1/pages"
 QUERY_URL = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
 
-VALID_NICHES = ["AI Consulting", "NYC SMB", "Construction", "Property Management", "Wholesale Distribution", "Skilled Trades", "Crypto", "AI Agents", "Job Market", "Personal Brand", "x402", "Nash Satoshi", "Dynasty Fantasy", "Sports Betting"]
+VALID_NICHES = ["AI Consulting", "NYC SMB", "Construction", "Property Management", "Wholesale Distribution", "Skilled Trades", "Crypto", "AI Agents", "Claude Code", "Claude Code/OpenClaw", "Job Market", "Personal Brand", "x402", "Nash Satoshi", "Vista", "Glow Index", "App Marketing", "Dynasty Fantasy", "Sports Betting"]
 VALID_FORMATS = ["Hot Take", "Thread Opener", "Story", "List", "Question", "Contrarian", "Behind-the-scenes", "Data Drop", "Analogy", "Tactical Breakdown", "Case Study", "Build-in-public"]
 VALID_HOOKS = [
     "Curiosity gap",

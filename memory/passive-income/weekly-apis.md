@@ -1,12 +1,12 @@
-# API Intelligence Report — 2026-05-23
+# API Intelligence Report — 2026-05-30
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-05-23 05:48:40
+Generated: 2026-05-30 05:41:40
 
 **Totals:** 0 new APIs | 0 PH tools | 2 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **AMD's Lemonade SDK for AI Promotes macOS to GA Status, ROCm 7.13 Integrated** (score: 2) | [link](https://www.phoronix.com/news/Lemonade-SDK-10.5-Released)
-- **The Pkg.go.dev API** (score: 1) | [link](https://go.dev/blog/pkgsite-api)
+- **Microsoft wants you to share your health symptoms with its new Copilot tool** (score: 2) | [link](https://www.xda-developers.com/microsoft-wants-you-to-share-your-symptoms-with-its-new-copilot-health-tool/)
+- **Best OLM to PST Converter Tool to Convert Mac OLM to PST** (score: 1) | [link](https://apps.microsoft.com/detail/9n7jk7z3546j?hl=en-US&gl=US)
 
 
 ## Scout Guidance

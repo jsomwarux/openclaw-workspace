@@ -28,18 +28,35 @@ Content must be modeled on proven viral hooks from the Notion swipe file, not ge
    - If a FORMAT is trending (3+ appearances), **use that format** for at least one post this week
    This is what separates JT's content from generic AI content — he rides real signals, not templates.
 
-4. Run: `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --limit 8`
+4. Run platform/niche-specific swipe fetches. Do not use the unfiltered default fetch for generation.
+
+   Required minimum fetches:
+   - LinkedIn consulting/case-study mechanics:
+     `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --platform LinkedIn --niche "AI Consulting" --niche "Personal Brand" --limit 8 --since-days 30`
+   - X consulting/AI-agent mechanics:
+     `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --platform X --niche "AI Consulting" --niche "AI Agents" --niche "Personal Brand" --limit 10 --since-days 30`
+   - If a slot targets a specific niche, run a narrower fetch first, for example:
+     `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/notion-swipe-fetch.py --platform X --niche "Nash Satoshi" --niche "Crypto" --limit 8 --since-days 30`
+
+   If fewer than 3 usable current references exist for the platform+niche, write `RECENT_SWIPE_GAP` in the reference mechanics section and use adjacent references only as labeled inspiration. If the gap makes the slot generic, write `SKIP_SLOT` instead of forcing it.
 
    **Do not just "study" these.** For each post returned, extract and write out:
    - Hook structure (e.g., "historical failure → present adoption", "reframe weakness as strength", "specific result first → lesson second")
    - The mechanism that made it shareable (e.g., "changes how you think in one sentence", "names a pain point the audience recognizes instantly")
    - The JT-equivalent: what proof point from content-voice.md (JT's Proof Points section) would let JT use the same structure?
+   - Source URL, platform, niche, format, and date captured
 
    **Example extraction:**
    - Swipe: "CLIs are exciting precisely because they're legacy tech — AI agents can use them natively." Hook: reframe weakness (old tech) as unexpected strength. JT equivalent: "n8n isn't new. That's exactly why every system you need to automate already has a connector for it."
    - Swipe: "HTTP had 402 for decades. Nobody used it. We are now." Hook: historical dead-end → sudden relevance. JT equivalent: "Salesforce has had workflow automation since 2015. Nobody used it well. Agentforce changes that."
 
    Generate 3–5 extracted hook mappings before writing any post. For each, note which content-signals entry (if any) it reinforces.
+
+   Save the mappings in the weekly file under:
+   - `## LinkedIn Reference Mechanics`
+   - `## X Reference Mechanics`
+
+   Each source row must include `Source URL`, `Platform`, `Niche`, `Format`, `Hook mechanic`, and `JT translation`. Generic lines like "Notion swipe references checked" do not count.
 
 5. Read: `/Users/jtsomwaru/.openclaw/workspace/memory/content-voice.md`
    → Apply every rule. Pay special attention to: Platform Distinction, Format by Day, JT's Proof Points, and The Uniqueness Test.
@@ -161,6 +178,12 @@ Use Monday's date (start of the week).
 _Swipe file patterns used: [list the hook types you pulled from the swipe data]_
 
 ---
+
+## LinkedIn Reference Mechanics
+- Source URL: [url] | Platform: LinkedIn | Niche: [niche] | Format: [format] | Hook mechanic: [mechanic] | JT translation: [how it maps to this week's LinkedIn copy]
+
+## X Reference Mechanics
+- Source URL: [url] | Platform: X | Niche: [niche] | Format: [format] | Hook mechanic: [mechanic] | JT translation: [how it maps to this week's X copy]
 
 ## LINKEDIN
 _Optimized for LinkedIn. Substantive on Wed/Fri. No hashtags. No X/Twitter references._

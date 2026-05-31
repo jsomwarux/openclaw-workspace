@@ -8,13 +8,19 @@ This file is a ready-to-fill skeleton for the Altmark proof asset. It can become
 
 | Gate | Required evidence | Current status |
 |---|---|---:|
-| Insurance workflow accepted/live/useful | Client confirmation or issue list | Unknown |
-| Payment/final approval | Paid/approved/pending/blocker from client | Unknown |
+| Insurance workflow accepted/live/useful | Client confirmation or issue list | Live in production per status notes; usefulness/acceptance wording still needed |
+| Payment/final approval | Paid/approved/pending/blocker from client | Final 50% paid per 2026-05-30 status |
 | Redacted screenshots/log evidence | No confidential tenant/vendor/client data visible | Not captured |
 | Permission boundary | Internal-only/anonymized/named/no-reuse | Unknown |
-| Referral readiness | Positive enough for 2–3 qualified intros | Unknown |
+| Referral readiness | Positive enough for 2–3 qualified intros | Not ready until redacted evidence + permission boundary are captured |
 
-If any gate is unknown, keep this as internal prep only.
+If any gate is unknown or marked not ready, keep this as internal prep only.
+
+## Material Update — 2026-05-30
+
+Durable status now shows the insurance expiration workflow is live in production, working as expected after minor updates, and final payment was received. The proof blocker is no longer payment status; it is proof-safe evidence and permission boundary.
+
+Tonight's practical change: tomorrow's ask should not re-ask whether the insurance workflow was paid. It should ask for one redacted screenshot/run-log sample, any remaining open issue, and whether JT can describe the work as an anonymized property-ops automation example.
 
 ## Safe Default Positioning
 
@@ -46,8 +52,8 @@ Property/family-office operations often have recurring compliance and reporting 
 
 | Field | Evidence |
 |---|---|
-| Accepted/live/useful? | TBD |
-| Final payment/approval status | TBD |
+| Accepted/live/useful? | Live in production per status notes; usefulness wording still needs client-safe phrasing |
+| Final payment/approval status | Final 50% paid per 2026-05-30 status |
 | Open issues | TBD |
 | Screenshots/logs available | TBD |
 | Permission boundary | TBD |
@@ -80,9 +86,9 @@ Use only after the proof gate clears.
 
 ## Next Fill Actions
 
-1. Wait for Monday closeout facts: access owner, acceptance/open issues, payment/approval, rent delinquency timing.
-2. Capture redacted screenshot/log evidence if accepted.
-3. Record permission boundary.
+1. Capture one redacted screenshot or run log from the insurance workflow, with tenant/vendor/property/client-private details removed.
+2. Record remaining open issue, if any, with owner/date.
+3. Record permission boundary: internal-only, anonymized public proof, named public proof, or no-reuse.
 4. Convert this into one of:
    - referral proof snippet for Yair,
    - LinkedIn case note,

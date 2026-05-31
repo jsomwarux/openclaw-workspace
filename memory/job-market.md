@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-05-30 — Heartbeat Job Market Pulse
+
+**Read:** Today's job-market brief found no new NYC/remote role clearing JT's hard filters or 18+/25 threshold. The useful signal is negative: public boards remain thin for non-coding AI implementation roles, while the recurring market language keeps pointing at governed implementation systems, adoption, and value measurement.
+
+**JT relevance:** This reinforces the current route rather than adding a new target. Mission Control/OpenClaw should stay framed as an AI enablement operating-system proof: intake, agents, tool access, monitoring, approval gates, and value reporting. DealDesk, AgentGuard, ChampionOps, and ROIFlow already cover the discovered market gaps.
+
+**Action:** Do not create a duplicate application or build task today. Keep Altmark first; use the job-market signal only to tighten portfolio/resume language around governed AI implementation, adoption, and measurable outcomes.
+
+---
+
 ## 2026-05-29 — Heartbeat Job Market Pulse
 
 **Read:** The market is still thin for broad AI architect roles, but the useful signal is sharper: AI enablement roles are increasingly platform-ops roles, not generic strategy roles. Today's strongest example is H.I.G. Capital's Director, AI Enablement role, which frames the work as proprietary AI platform ownership, connectors/MCP-style tooling, eval harnesses, governance, adoption, and ROI reporting.

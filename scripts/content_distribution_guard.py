@@ -79,6 +79,14 @@ WEEKLY_REQUIRED = [
     "Hook mappings",
 ]
 
+REFERENCE_REQUIRED_FIELDS = [
+    "source url",
+    "niche",
+    "format",
+    "hook mechanic",
+    "jt translation",
+]
+
 POSTED_LOG = ROOT / "memory" / "content" / "posted-log.jsonl"
 COOLDOWN_DAYS = 45
 
@@ -253,6 +261,57 @@ def check_weekly(path: Path) -> list[str]:
     return problems
 
 
+def extract_reference_section(text: str, platform: str) -> str:
+    """Return the reference-mechanics section for a platform, if present."""
+    platform_re = re.escape(platform)
+    patterns = [
+        rf"^##+\s+{platform_re}\s+Reference Mechanics\b",
+        rf"^##+\s+Reference Mechanics\s*[-:]\s*{platform_re}\b",
+        rf"^##+\s+Reference Mechanics\b.*\b{platform_re}\b",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.I | re.M)
+        if not match:
+            continue
+        next_heading = re.search(r"^##+\s+", text[match.end():], flags=re.M)
+        end = match.end() + next_heading.start() if next_heading else len(text)
+        return text[match.start():end]
+    return ""
+
+
+def check_reference_map(path: Path, platform: str) -> list[str]:
+    """Ensure saved drafts show platform/niche-specific reference mechanics.
+
+    This is intentionally opt-in so older weekly files do not break daily
+    delivery. Generation crons should call it before declaring new queues ready.
+    """
+    text = read(path)
+    section = extract_reference_section(text, platform)
+    label = platform.lower()
+    if not section:
+        return [f"{rel(path)}: missing {label} reference mechanics section"]
+
+    lower = section.lower()
+    problems: list[str] = []
+    missing = [field for field in REFERENCE_REQUIRED_FIELDS if field not in lower]
+    if missing:
+        problems.append(f"{rel(path)}: {label} reference mechanics missing fields: {', '.join(missing)}")
+
+    source_count = len(re.findall(r"source\s+url\s*:", section, flags=re.I))
+    gap_marked = "recent_swipe_gap" in lower or "adjacent_reference_only" in lower
+    if source_count < 2 and not gap_marked:
+        problems.append(
+            f"{rel(path)}: {label} reference mechanics has {source_count} Source URL rows; need at least 2 or explicit RECENT_SWIPE_GAP/ADJACENT_REFERENCE_ONLY"
+        )
+
+    if re.search(r"notion swipe references checked\b", lower) and source_count == 0:
+        problems.append(f"{rel(path)}: {label} uses generic swipe assertion without source URLs")
+    if "platform: " not in lower and "platform=" not in lower:
+        problems.append(f"{rel(path)}: {label} reference mechanics does not name source platform")
+
+    return problems
+
+
 def check_news_hook(path: Path) -> list[str]:
     text = read(path)
     problems = check_common(path, text)
@@ -285,6 +344,13 @@ def main() -> int:
     parser.add_argument("--weekly", action="append", default=[], help="Path to weekly content markdown")
     parser.add_argument("--linkedin-draft", action="append", default=[], help="Path to LinkedIn draft markdown/text to scan for stale AI-copy patterns")
     parser.add_argument("--news-hook", action="append", default=[], help="Path to daily news hook markdown")
+    parser.add_argument(
+        "--require-reference-map",
+        action="append",
+        default=[],
+        choices=["linkedin", "x", "reddit", "tiktok"],
+        help="Require a platform-specific Reference Mechanics section in each --weekly file.",
+    )
     parser.add_argument("--check-notion-script", action="store_true", help="Check scripts/notion-calendar-push.py auth/dry-run hygiene")
     args = parser.parse_args()
 
@@ -292,7 +358,11 @@ def main() -> int:
     for item in args.dynasty_pack:
         problems.extend(check_dynasty_pack(Path(item)))
     for item in args.weekly:
-        problems.extend(check_weekly(Path(item)))
+        weekly_path = Path(item)
+        problems.extend(check_weekly(weekly_path))
+        for platform in args.require_reference_map:
+            canonical = "X" if platform == "x" else platform.title()
+            problems.extend(check_reference_map(weekly_path, canonical))
     for item in args.linkedin_draft:
         path = Path(item)
         text = read(path)

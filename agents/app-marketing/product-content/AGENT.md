@@ -95,21 +95,35 @@ Current defaults:
 8. Check latest ReelFarm Intel reports for TikTok/slideshow trend patterns and apply only if they fit the app's measured winners.
 8. Use competitor ad intelligence only as read-only pattern input when a report exists; do not generate or modify ads.
 9. If a current `test-briefs-*.md` exists, prioritize those tests unless metrics/brand rules reject them.
-10. Draft platform-native content.
-11. Apply hard boundaries and brand checks.
-12. Score every generated item:
+10. Before drafting, build a platform/niche reference map for each product/platform being generated:
+   - Vista X/TikTok/Reddit: movie-rating, FilmTok, app-growth, and taste-identity mechanics.
+   - Nash Satoshi X/TikTok/Reddit: crypto methodology, crypto systems, rankings, uncertainty-reduction, and game-theory mechanics.
+   - Glow Index when active: skincare buyer-protection, ingredient skepticism, and beauty comparison mechanics.
+   Use the narrowest available source first: app-marketing performance winners, latest ReelFarm reports, competitor/ad intel, then Notion swipe filtered by platform+niche. Never use JT personal-brand consulting swipe examples as primary input for product-account copy.
+11. Save the chosen mechanics in the review doc and queue metadata before the drafts:
+   - `source_url` or local source path
+   - `platform`
+   - `niche`
+   - `format`
+   - `hook_mechanic`
+   - `behavioral_trigger`
+   - `jt_translation`
+   If fewer than 2 relevant current examples exist for a platform/product, label `RECENT_REFERENCE_GAP` and generate a smaller batch or skip that platform.
+12. Draft platform-native content.
+13. Apply hard boundaries and brand checks.
+14. Score every generated item:
    - hook strength 1–10
    - platform fit 1–10
    - authenticity 1–10
    - behavioral trigger 1–10: what feeling does it activate — curiosity, identity, comparison, control, reassurance, buyer protection, disagreement, or fear of waste?
    - action clarity 1–10: what should the user want to do next?
-13. Only approve if hook/platform/authenticity are ≥7 and behavioral trigger + action clarity are each ≥6. If the post is logically accurate but emotionally flat, rewrite or skip.
-14. Save drafts to the current compatibility queue unless/until OS queue path is created.
-15. Append a dated run note to `memory/app-marketing/weekly-scoreboard.md`.
-16. If new post registry entries or metrics were added, run `python3 scripts/app_marketing_collect_metrics.py` first; if manual rows were added directly to the inbox, run `python3 scripts/app_marketing_metrics.py`.
-17. Run `python3 scripts/app_marketing_analyze.py` after metrics updates so `optimization-rules.md` stays current.
-18. Run `python3 scripts/app_marketing_experiment_calendar.py` after analysis so the next generation cycle has current named experiments.
-19. Summarize for JT with counts, skips, and measurement blocker.
+15. Only approve if hook/platform/authenticity are ≥7 and behavioral trigger + action clarity are each ≥6. If the post is logically accurate but emotionally flat, rewrite or skip.
+16. Save drafts to the current compatibility queue unless/until OS queue path is created.
+17. Append a dated run note to `memory/app-marketing/weekly-scoreboard.md`.
+18. If new post registry entries or metrics were added, run `python3 scripts/app_marketing_collect_metrics.py` first; if manual rows were added directly to the inbox, run `python3 scripts/app_marketing_metrics.py`.
+19. Run `python3 scripts/app_marketing_analyze.py` after metrics updates so `optimization-rules.md` stays current.
+20. Run `python3 scripts/app_marketing_experiment_calendar.py` after analysis so the next generation cycle has current named experiments.
+21. Summarize for JT with counts, skips, and measurement blocker.
 
 
 ## Behavioral Demand Lens
@@ -137,6 +151,7 @@ Rules:
 - Read JSONL, append new entries, write combined file.
 - Do not use Write tool blindly on the queue.
 - Verify count increased by exactly the number of new entries.
+- Every new entry must include `reference_mechanics` with source/platform/niche/format/hook_mechanic/behavioral_trigger/jt_translation. Entries without this field are not approved.
 
 Future target path should be defined in App Marketing OS before migration.
 
