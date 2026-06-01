@@ -1,16 +1,24 @@
 {
   "entries": [
     {
-      "date": "2026-05-30",
-      "day": "saturday",
-      "line_no": 187,
+      "date": "2026-05-31",
+      "day": "sunday",
+      "line_no": 188,
       "platform": "x",
-      "summary": "Should your app explain itself inside the product or in public?  Both.  Nash now has weekly receipt images.  Glow now has product verdict ca",
-      "topic": "should-your-app-explain-itself-inside-the-product-or-in-public-both-nash-now-has-weekly-receipt-images-glow-now-ha"
+      "summary": "What makes an autonomous content system useful?  Current state.  A relevance ladder.  A repeat check.  A stop condition.  Otherwise it can p",
+      "topic": "what-makes-an-autonomous-content-system-useful-current-state-a-relevance-ladder-a-repeat-check-a-stop-condition"
+    },
+    {
+      "date": "2026-05-31",
+      "day": "sunday",
+      "line_no": 193,
+      "platform": "linkedin",
+      "summary": "A ranking product earns trust in public; Nash Satoshi's methodology page gives the app a citation-worthy distribution surface.",
+      "topic": "nash-satoshi-methodology-page-trust-surface"
     }
   ],
   "note": "",
-  "sent_at": 1780142446,
-  "source": "content-reminder",
+  "sent_at": 1780232466,
+  "source": "content-sunday",
   "status": "pending"
 }

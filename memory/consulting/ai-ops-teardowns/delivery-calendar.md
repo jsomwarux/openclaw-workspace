@@ -7,6 +7,22 @@
 - Friday: tactical compressed follow-up if new angle exists.
 
 ## Current Bundle
+### 2026-05-31 — Property Lease Renewal Deadline Queue
+Status: ready to review/post; not posted as of 2026-05-31 weekly run.
+Recommended first platform: LinkedIn.
+Local draft: `memory/content/bank/2026-05-31/ai-ops-teardown-property-lease-renewal-deadline-queue.md`
+Supporting teardown: `memory/consulting/ai-ops-teardowns/2026-05-31-property-lease-renewal-deadline-queue.md`
+Drive teardown: https://docs.google.com/document/d/1sqsPDWMoTzOqPYKuAivNCCl_icmAwDjfzAn1hI8HheY/edit
+Drive draft: https://docs.google.com/document/d/162b7FErfo6yWnxySka6rUrR96kS6Ww_JB8ulDziejcg/edit
+Build tier: Tier 2 now; Tier 3 candidate gated until the teardown is posted and produces operator reply/DM signal, or JT explicitly prioritizes a synthetic-data build.
+JT action: review LinkedIn draft, edit if desired, post or explicitly defer, then send URL back if posted. Mission Control task: `j5758pva0bw51gtx17pjdaxcmn86we3s`.
+Proof-safe framing: category/hypothetical language only; no private client names, no fake client claims, no ROI/hours-saved/client-acceptance/legal/compliance claims, no autonomous tenant-facing action.
+Why this matters: shows buyer-safe implementation judgment for property/family-office teams by putting lease deadlines, document readiness, approval queues, and audit trails before any tenant-facing AI workflow.
+Posted URL capture: append exactly one JSONL record to `memory/content/posted-log.jsonl` only after a public URL exists. Required fields: `date`, `platform`, `title`, `source`, `url`, `posted: true`, `cta`, `reply_route`.
+Reply/DM routing: route relevant property/family-office replies to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`.
+Defer capture: if JT defers, update this calendar with reason + next review date; do not mark posted.
+
+## Prior Unposted Bundle
 ### 2026-05-24 — Family Office Cash Timing Approval Queue
 Status: ready to review/post; not posted as of 2026-05-24 weekly run.
 Recommended first platform: LinkedIn.
@@ -20,7 +36,6 @@ Posted URL capture: append exactly one JSONL record to `memory/content/posted-lo
 Reply/DM routing: route relevant property/family-office replies to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`.
 Defer capture: if JT defers, update this calendar with reason + next review date; do not mark posted.
 
-## Prior Unposted Bundle
 ### 2026-05-17 — Rent Delinquency Data Readiness Queue
 Status: ready to review/post; not posted as of 2026-05-24 weekly run. Preserved as alternate if JT prefers tenant-ledger data readiness over cash-timing approval queue.
 Recommended first platform: LinkedIn.
@@ -46,7 +61,7 @@ Posted URL capture: append exactly one JSONL record to `memory/content/posted-lo
 Defer capture: if JT defers, update this calendar with reason + next review date; do not mark posted.
 
 ## Monday Morning Delivery Checklist
-- Surface the current 2026-05-24 cash timing approval queue draft to JT during the first active morning check-in.
+- Surface the current 2026-05-31 lease renewal deadline queue draft to JT during the first active morning check-in.
 - If JT posts it, capture the URL and append to `memory/content/posted-log.jsonl`.
 - If JT defers it, update this calendar with defer reason + next review date and keep the MC task open or replace it with one concrete next action.
 - Do not build any Tier 3 n8n template unless a posted teardown produces operator reply/DM signal or JT explicitly prioritizes the build.

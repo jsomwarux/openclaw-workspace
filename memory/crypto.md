@@ -424,3 +424,9 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Crypto-agent read:** Latest allocation model still favors AI-agent/x402-adjacent names with stronger flow/coordination (`DREAMS`, `ODAI`, `LITCOIN`, `PRXVT`) and exits weaker coordination (`NOOK`, `NOX`, `SIBYL`). Treat that as model-only, not a wallet action.
 - **Signal:** x402/agent-payment infrastructure remains the strongest durable thesis; the useful distinction is payment rails and wallet/tool authorization for agents, not generic AI-token branding.
 - **Guardrail:** Do not chase micro-cap pumps without fresh human-quality X signal, buy/sell confirmation, and token-level value-capture evidence. Keep funded-wallet/payment-MCP testing approval-gated.
+
+## May 31, 2026 — 9:48PM Heartbeat Crypto Monitoring
+- **Majors:** BTC ~$73.4K, ETH ~$2.00K, SOL ~$82.0K during the heartbeat; each was down roughly 0.9-1.4% and below alert-level movement.
+- **x402 signal:** Fresh search showed Base reporting 3.1M x402 transactions and $1.2M transferred over the prior 30 days as of May 29, plus coverage of The Graph enabling x402/USDC gateway payments for per-request on-chain data.
+- **JT read:** The agent-payments thesis remains structurally stronger than a generic AI-token trade. The practical angle is metered APIs/data/tools with explicit payment caps and human approval, not autonomous treasury behavior.
+- **Guardrail:** No portfolio alert inferred from majors-only movement. Keep funded-wallet/payment-MCP experiments approval-gated and use Base Sepolia or empty-wallet demos only.

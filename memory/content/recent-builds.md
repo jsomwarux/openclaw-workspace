@@ -138,3 +138,19 @@
 - **Status:** Configurable template, live on jtsomwaru.com
 - **URL:** jtsomwaru.com/work/pm-maintenance-triage
 - **Content hook:** Exit condition design — when does automation hand off to a human?
+
+## jtsomwaru.com AI Context OS Sprint Service Page — 2026-05-31
+- **What:** Added `/services/ai-context-os`, homepage service routing, sitemap/llms/JSON-LD exposure, and an `ai-context-os` delivery skill with reusable sprint template.
+- **For:** JT consulting / service packaging.
+- **Outcome:** New consulting offer is live at `https://jtsomwaru.com/services/ai-context-os`, packaged as agent-ready operating context plus evals, with one high-priority Mission Control proof task and one completed reusable-template task.
+- **Demonstrates:** Offer strategy, AI context engineering, GEO/service-page implementation, reusable consulting IP packaging.
+- **Content angle:** The moat is not “knowledge-base cleanup”; it is extracting workflow judgment into context that agents can use and testing whether output quality improves.
+- **Status:** complete; build/lint passed; pushed commit `9fc24fd`; production returned HTTP 200.
+
+## AI Ops Teardown Drive Sync — 2026-05-31
+- **What:** Added a deterministic Drive sync script for weekly AI Ops Teardown bundles and wired the agent prompt to require Drive links before success.
+- **For:** internal consulting proof/content operations.
+- **Outcome:** Current lease-renewal teardown and review draft uploaded to organized Drive folders; Mission Control review task now includes both Drive links.
+- **Demonstrates:** agent closeout hardening, Drive workflow automation, content-proof organization.
+- **Content angle:** A good content agent should leave the review artifact where the human actually reviews it, not buried in local files.
+- **Status:** complete; tests passed and proof log recorded.

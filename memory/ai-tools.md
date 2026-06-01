@@ -2,6 +2,18 @@
 
 ---
 
+## May 31, 2026 — Heartbeat AI Tool Monitoring
+
+**Agent governance is becoming a control-plane sale, not an abstract risk conversation.** Fresh monitoring surfaced OpenAI Workspace Agents with schedules, custom MCPs, app templates, and admin publishing controls; Microsoft Agent 365 GA positioning around registry/lifecycle/access/compliance; AWS AI Security Framework guidance to centrally register agents and MCP servers; and Okta guidance that approved AI workflows need standard cross-app access rather than shadow tool sprawl.
+
+**JT relevance:** this strengthens the AI Context OS / Property Ops Control Plane lane. The buyer-safe pitch should show a governed operating layer: registered agents/tools, approved connected apps, role-based publishing, scheduled runs, exception queues, and proof logs. That is more credible than “we add AI to your workflow.”
+
+**Actionable demo angle:** the first property-ops proof artifact should include a small “agent registry + approval map” section: owner, source systems, allowed tools, approval-only actions, schedule, audit/proof log, rollback owner, and current permission boundary.
+
+Sources: OpenAI Workspace Agents help (updated 2026-05-28) https://help.openai.com/en/articles/20001143-chatgpt-workspace-agents-for-enterprise-and-business; Microsoft Agent 365 overview (2026-05-12) https://learn.microsoft.com/en-us/microsoft-agent-365/overview; AWS AI Security Framework (2026-05-26) https://aws.amazon.com/blogs/security/the-aws-ai-security-framework-securing-ai-with-the-right-controls-at-the-right-layers-at-the-right-phases/; Okta AI Agents at Work 2026 (2026-05-30) https://www.okta.com/newsroom/articles/ai-agents-at-work-2026-agentic-enterprise-security/
+
+---
+
 ## May 29, 2026 — Heartbeat AI Tool Monitoring
 
 **Enterprise agents are moving into admin-controlled workspaces, not just developer sandboxes.** OpenAI's latest Enterprise help/update surface shows workspace agents gaining scheduled runs, Slack channels, custom MCP servers, version history, analytics, EKM support, and default-off admin enablement. Microsoft's Frontier Suite/Agent 365 packaging pushes the same direction: agent creation and governance bundled into Microsoft 365 rather than sold as isolated experiments. Anthropic's Managed Agents engineering notes reinforce the infrastructure angle: stable interfaces around long-horizon hosted work even as harnesses change.

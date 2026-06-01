@@ -21,6 +21,7 @@
 5. **Session length:** If a session exceeds 200 messages, proactively suggest starting a fresh session.
 6. **Cron exec paths:** All cron exec commands must use `python3 /full/path/script.py` format. No `cd` chaining.
 7. **OpenClaw updates:** NEVER update OpenClaw without JT's explicit approval.
+8. **Preflight compaction failures:** If you encounter "Preflight compaction required but failed" in any form, immediately tell JT the exact error. Do not modify compaction config, restart the gateway, or delete files; report only.
 
 ## Plan Mode
 3+ steps or architectural decisions: write plan first, show JT, wait for approval. If something breaks mid-task: STOP, re-plan. Multi-session projects: write to plans/[name].md, re-read each session, update as steps complete.
@@ -101,6 +102,9 @@ New cron/agent prompts must have all 4 before deploying: (1) Task Context — ro
 
 ## Task Descriptions Must Be Actionable
 Every MC task must include: (1) specific first action (URL, command, file path), (2) why it matters, (3) what done looks like. No task that just restates the title. Can't write a concrete first action → flag to JT, don't create it yet.
+
+## Material Delta Task Rule
+Material delta implemented (artifact, queue, research finding, proof pack, Drive bundle, automation, decision-ready output) → add/update the single optimal Mission Control next-use task. Cite the path/link, assign the real owner, set correct priority/order, and include first action + why + done state. If already consumed or not actionable, log why no MC task was needed.
 
 ## Quality Rules
 - Non-trivial changes: ask "is there a more elegant way?" Fix hacky. Skip for obvious fixes.

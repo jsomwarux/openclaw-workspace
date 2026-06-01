@@ -230,6 +230,8 @@ e. **Update state**: Write results to `state.json` and append to `update-log.md`
 
 Every overnight run generates items JT must act on. These MUST appear on his task board — not just in the log. Run this before writing the log.
 
+**Material delta routing is mandatory.** For every material delta implemented overnight (new artifact, queue, research finding, proof pack, Drive bundle, automation, or decision-ready output), add or update the single optimal Mission Control task for how JT or Eve should use it next. The task must cite the artifact/path/link, assign the real owner, use the right priority/sort order, and include first action + why + done state. If the delta is already fully consumed or not actionable, write the skip reason in the nightly log.
+
 **De-dupe check first:**
 ```
 curl -s http://localhost:3000/api/tasks | python3 -c "

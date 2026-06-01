@@ -53,7 +53,96 @@ NOTION_VERSION = "2022-06-28"
 API_URL = "https://api.notion.com/v1/pages"
 QUERY_URL = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
 
-VALID_NICHES = ["AI Consulting", "NYC SMB", "Construction", "Property Management", "Wholesale Distribution", "Skilled Trades", "Crypto", "AI Agents", "Claude Code", "Claude Code/OpenClaw", "Job Market", "Personal Brand", "x402", "Nash Satoshi", "Vista", "Glow Index", "App Marketing", "Dynasty Fantasy", "Sports Betting"]
+VALID_NICHES = [
+    "SMB AI Implementation",
+    "AI Consulting",
+    "AI Implementation",
+    "AI Ops",
+    "NYC SMB Operations",
+    "NYC SMB",
+    "Property Management Operations",
+    "Property Management",
+    "Wholesale Distribution Operations",
+    "Wholesale Distribution",
+    "Construction + Skilled Trades Operations",
+    "Construction Operations",
+    "Construction",
+    "Skilled Trades Operations",
+    "Skilled Trades",
+    "Insurance / Agentforce Operations",
+    "Insurance Operations",
+    "Agentforce Operations",
+    "AI Operating Systems / Agent Orchestration",
+    "AI Operating Systems",
+    "Agent Orchestration",
+    "AI Enablement / Solutions Architecture Career",
+    "AI Enablement",
+    "Solutions Architecture",
+    "Productized Services / Solo Operator Systems",
+    "Productized Services",
+    "Solo Operator Systems",
+    "App Growth / App Marketing OS",
+    "App Growth",
+    "App Marketing",
+    "Vista / Movie Taste Apps",
+    "Vista",
+    "Nash Satoshi / Crypto Ranking",
+    "Nash Satoshi",
+    "Crypto Ranking",
+    "Glow Index / Skincare Ranking",
+    "Glow Index",
+    "x402 / Agentic Payments",
+    "x402",
+    "Crypto",
+    "Dynasty Fantasy / Sports GM",
+    "Dynasty Fantasy",
+    "Sports Betting",
+    "Guyana Local Content Operations",
+    "Guyana Local Content",
+    # Backward-compatible legacy labels. These should not be default lanes.
+    "AI Agents",
+    "Claude Code",
+    "Claude Code/OpenClaw",
+    "Job Market",
+    "Personal Brand",
+]
+
+LEGACY_NICHE_ALIAS_MAP = {
+    "AI Consulting": "SMB AI Implementation",
+    "AI Implementation": "SMB AI Implementation",
+    "AI Ops": "SMB AI Implementation",
+    "NYC SMB": "NYC SMB Operations",
+    "Property Management": "Property Management Operations",
+    "Wholesale Distribution": "Wholesale Distribution Operations",
+    "Construction Operations": "Construction + Skilled Trades Operations",
+    "Construction": "Construction + Skilled Trades Operations",
+    "Skilled Trades Operations": "Construction + Skilled Trades Operations",
+    "Skilled Trades": "Construction + Skilled Trades Operations",
+    "Insurance Operations": "Insurance / Agentforce Operations",
+    "Agentforce Operations": "Insurance / Agentforce Operations",
+    "AI Operating Systems": "AI Operating Systems / Agent Orchestration",
+    "Agent Orchestration": "AI Operating Systems / Agent Orchestration",
+    "AI Agents": "AI Operating Systems / Agent Orchestration",
+    "Claude Code": "AI Operating Systems / Agent Orchestration",
+    "Claude Code/OpenClaw": "AI Operating Systems / Agent Orchestration",
+    "AI Enablement": "AI Enablement / Solutions Architecture Career",
+    "Solutions Architecture": "AI Enablement / Solutions Architecture Career",
+    "Job Market": "AI Enablement / Solutions Architecture Career",
+    "Productized Services": "Productized Services / Solo Operator Systems",
+    "Solo Operator Systems": "Productized Services / Solo Operator Systems",
+    "Personal Brand": "Productized Services / Solo Operator Systems",
+    "App Growth": "App Growth / App Marketing OS",
+    "App Marketing": "App Growth / App Marketing OS",
+    "Vista": "Vista / Movie Taste Apps",
+    "Nash Satoshi": "Nash Satoshi / Crypto Ranking",
+    "Crypto Ranking": "Nash Satoshi / Crypto Ranking",
+    "Crypto": "Nash Satoshi / Crypto Ranking",
+    "Glow Index": "Glow Index / Skincare Ranking",
+    "x402": "x402 / Agentic Payments",
+    "Dynasty Fantasy": "Dynasty Fantasy / Sports GM",
+    "Sports Betting": "Dynasty Fantasy / Sports GM",
+    "Guyana Local Content": "Guyana Local Content Operations",
+}
 VALID_FORMATS = ["Hot Take", "Thread Opener", "Story", "List", "Question", "Contrarian", "Behind-the-scenes", "Data Drop", "Analogy", "Tactical Breakdown", "Case Study", "Build-in-public"]
 VALID_HOOKS = [
     "Curiosity gap",
@@ -203,11 +292,20 @@ def push_to_notion(args) -> dict:
     if normalized_hook != args.hook:
         print(f"ℹ️  Hook normalized: '{args.hook}' → '{normalized_hook}'")
 
-    # Validate niches
-    niches = [n.strip() for n in args.niche.split(",")]
-    for n in niches:
-        if n not in VALID_NICHES:
+    # Validate and normalize niches to the canonical current niche map.
+    raw_niches = [n.strip() for n in args.niche.split(",")]
+    niches = []
+    for n in raw_niches:
+        canonical = LEGACY_NICHE_ALIAS_MAP.get(n, n)
+        if canonical != n:
+            print(f"ℹ️  Niche normalized: '{n}' → '{canonical}'")
+        if canonical not in VALID_NICHES:
             print(f"⚠️  Warning: '{n}' not a recognized niche. Valid: {VALID_NICHES}")
+        elif canonical not in niches:
+            niches.append(canonical)
+    if not niches:
+        print("❌ No recognized niche after normalization; refusing to push unslotted swipe reference.")
+        return {"success": False, "error": "no_recognized_niche"}
 
     # Deduplication check
     existing_texts = fetch_existing_texts(limit=100)

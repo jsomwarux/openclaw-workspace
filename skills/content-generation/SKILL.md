@@ -1,8 +1,13 @@
+---
+name: content-generation
+description: "Use when drafting, reviewing, scheduling, or generating JT's X, LinkedIn, Reddit, TikTok, or social content, especially when selecting niches, swipe references, hooks, voice, or platform-specific content strategy."
+---
+
 # Content Generation Skill
 > Unified framework for writing all of JT Somwaru's content (X, LinkedIn).
 
 ## Description
-Generates zero-fluff, highly compressed, high-leverage content for JT's social channels. Enforces brand voice, platform constraints, and Mamba-level execution against his consulting positioning (wholesale, property management, construction AI implementation).
+Generates zero-fluff, highly compressed, high-leverage content for JT's social channels. Enforces brand voice, platform constraints, and Mamba-level execution against his current niche map (`memory/content/current-niche-map.md`), with consulting/proof lanes prioritized above product/app lanes unless the request explicitly asks for app marketing.
 
 ## Usage
 `openclaw sessions_spawn --agentId [id] --task "Create a LinkedIn case study using the content-generation skill on [Topic]"`
@@ -27,9 +32,10 @@ For agents/CRONs: Load this skill before drafting any post.
 
 ## Execution Steps
 1. **Analyze Request:** Determine the platform (X or LinkedIn) and the content type (Hot Take, Case Study, Workflow Teardown).
-2. **Drafting:** Write the post explicitly applying the 5 Core Directives.
-3. **Compression Pass:** Read the draft. Delete 20% of the words. If the meaning changes, you cut the wrong words. If it hits harder, keep going.
-4. **Output:** Return ONLY the post text. No "Here is your drafted post." Just the text. 
+2. **Load Niche Map:** Read `~/.openclaw/workspace/memory/content/current-niche-map.md`. Pick the exact canonical niche lane before fetching references or drafting. Default LinkedIn lanes are `SMB AI Implementation`, `Property Management Operations`, `NYC SMB Operations`, `Wholesale Distribution Operations`, `Construction + Skilled Trades Operations`, `Insurance / Agentforce Operations`, `AI Operating Systems / Agent Orchestration`, `AI Enablement / Solutions Architecture Career`, and `Productized Services / Solo Operator Systems`.
+3. **Drafting:** Write the post explicitly applying the 5 Core Directives.
+4. **Compression Pass:** Read the draft. Delete 20% of the words. If the meaning changes, you cut the wrong words. If it hits harder, keep going.
+5. **Output:** Return ONLY the post text. No "Here is your drafted post." Just the text. 
 
 ## Data Flow & Integration Guidelines
 - **Input Content:** For Monday/Thursday crons, always load `~/.openclaw/workspace/memory/content/weekly-intel-brief.md` for this week's niche signals before drafting any content.

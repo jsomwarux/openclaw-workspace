@@ -79,7 +79,17 @@ def check_weekly(week: date) -> list[str]:
         problems.append(f"{path.relative_to(ROOT)} contains SKIP_SLOT without explicit Do not send instruction")
     try:
         result = subprocess.run(
-            [sys.executable, "scripts/content_distribution_guard.py", "--weekly", str(path), "--check-notion-script"],
+            [
+                sys.executable,
+                "scripts/content_distribution_guard.py",
+                "--weekly",
+                str(path),
+                "--require-reference-map",
+                "linkedin",
+                "--require-reference-map",
+                "x",
+                "--check-notion-script",
+            ],
             cwd=ROOT,
             capture_output=True,
             text=True,

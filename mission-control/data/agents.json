@@ -702,5 +702,38 @@
     ],
     "currentTask": "Recurring weekly draft engine active; produces one review-ready AI Ops Teardown bundle or skips if no candidate clears 18/30.",
     "created": "2026-05-12"
+  },
+  {
+    "id": "linkedin-corpus",
+    "name": "LinkedIn Corpus Agent",
+    "emoji": "🔗",
+    "role": "LinkedIn Reference Corpus",
+    "domain": "Maintains JT's LinkedIn creator targets and pattern library from user-provided posts/accounts, using canonical niche lanes and JT translation fields.",
+    "workspaceRel": "agents/linkedin-corpus",
+    "github": null,
+    "skills": [
+      "linkedin-corpus",
+      "content-generation"
+    ],
+    "crons": [],
+    "currentTask": "Ready for JT-provided LinkedIn URLs/screenshots; builds corpus until 5+ creators and 30+ usable posts exist across Tier 1/Tier 2 lanes.",
+    "created": "2026-05-31"
+  },
+  {
+    "id": "client-proof-engine",
+    "name": "Client Proof Engine",
+    "emoji": "📎",
+    "role": "Client Proof and Reusable IP Packaging",
+    "domain": "Turns accepted client work into proof-safe evidence, reusable delivery IP, portfolio/content/referral routing, and missing-proof tasks.",
+    "workspaceRel": "agents/client-proof-engine",
+    "github": null,
+    "skills": [
+      "client-proof-capture",
+      "jt-consulting-ops",
+      "portfolio-card"
+    ],
+    "crons": [],
+    "currentTask": "Ready to run on Altmark/Aya accepted deliverables; public proof remains permission/anonymization gated.",
+    "created": "2026-05-31"
   }
 ]

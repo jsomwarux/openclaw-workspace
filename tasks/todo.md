@@ -11,3 +11,18 @@
 - [x] Add deterministic validation for platform/niche reference mechanics in saved content artifacts.
 - [x] Patch active content generation cron prompts to require narrow filtered swipe/reference fetches and saved hook mappings.
 - [x] Run content, cron, routing, and proof verification before closeout.
+
+## Plan — Capability Routing System — 2026-05-31
+- [x] Create a durable capability routing map for JT's work.
+- [x] Add skills for LinkedIn corpus intake and client proof capture.
+- [x] Add agent manuals for corpus maintenance and client proof packaging.
+- [x] Register new agents in Mission Control.
+- [x] Add project instructions for the consulting pipeline.
+- [x] Scaffold a portable Codex plugin bundle only if it adds useful packaging.
+- [x] Validate skills/plugin/frontmatter and log closeout.
+
+## Plan — AI Ops Teardown Drive Sync — 2026-05-31
+- [x] Add deterministic Drive upload planner for teardown + content-bank draft bundles.
+- [x] Upload the latest bundle to organized Google Drive folders.
+- [x] Wire weekly agent/cron instructions to run Drive sync automatically.
+- [x] Verify tests, Drive upload output, prompt wiring, and bootstrap file sizes.

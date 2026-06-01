@@ -349,3 +349,35 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** After every LinkedIn generator run, verify `posted-log.jsonl` contains `platform=linkedin` rows whose `source_weekly` matches the current weekly file. Friday 2026-05-29 pending-state dry run must return both X and LinkedIn entries.
 - **Owner surface updated:** `content-generate-linkedin` cron payload, `memory/content/posted-log.jsonl`, Mistakes Log.
 - **Verification/date:** 2026-05-28 — added 4 missing LinkedIn rows for week of 2026-05-25; `content_pending_reply_state.py --date 2026-05-29 --platform linkedin --platform x --dry-run --json` returns 2 entries; content guard passes.
+
+## 2026-05-31 — Content audit said healthy while reference-map guard failed
+- **Failure:** I told JT the content pipeline was hardened, but the current weekly file still failed the new platform-specific reference-map guards for both LinkedIn and X while `scripts/content_calendar_audit.py --week 2026-05-25` still returned PASS.
+- **Root cause:** I added the stricter `--require-reference-map` validation to the guard and cron prompts, but did not wire that stricter validation into the existing weekly audit script. The system could therefore report overall content health from older generic checks while missing the exact failure JT asked me to prevent.
+- **Guardrail/rule:** A weekly content audit is not healthy unless it verifies both `## LinkedIn Reference Mechanics` and `## X Reference Mechanics` with source URLs, platform, niche, format, hook mechanic, and JT translation, or an explicit gap label.
+- **Regression check:** `python3 scripts/content_calendar_audit.py --week 2026-05-25` must now fail on the current stale weekly file because the reference mechanics sections are missing; future generated weekly files must pass this audit before being called healthy.
+- **Owner surface updated:** `scripts/content_calendar_audit.py`, `docs/agents/regression-checks.md`, `docs/agents/mistakes-log-recent.md`, daily note, and `MEMORY.md`.
+- **Verification/date:** 2026-05-31 — audit script patched to call `content_distribution_guard.py` with both `--require-reference-map linkedin` and `--require-reference-map x`; `python3 scripts/content_calendar_audit.py --week 2026-05-25` now fails on missing LinkedIn/X reference mechanics instead of incorrectly passing.
+
+## 2026-05-31 — Content niche map was too narrow and product/tool-biased
+- **Failure:** I referenced current niches as if Claude Code, Vista, Glow Index, and App Marketing were acceptable default lanes for JT's broader content system, even though those are tools/product lanes and not JT's optimal current niches.
+- **Root cause:** I treated "current projects" as the content taxonomy instead of deriving the hierarchy from JT's North Star, active consulting proof, buyer ICPs, job-market leverage, and passive-income priorities. The system had scattered niche labels but no canonical source of truth with priority order.
+- **Guardrail/rule:** Content systems must load `memory/content/current-niche-map.md` before selecting a niche. Default LinkedIn content must bias toward consulting/proof and authority/career lanes; product/app lanes are secondary unless explicitly requested. Saved swipe/reference mechanics must use exact canonical lane names, not old shorthand aliases.
+- **Regression check:** Before any content-generation prompt, swipe backfill task, or LinkedIn corpus task is called optimized, verify it references `memory/content/current-niche-map.md` and does not treat Claude Code, Vista, Glow Index, Nash Satoshi, App Marketing, AI Consulting, NYC SMB, or Personal Brand as the default/saved niche universe. `content_distribution_guard.py --require-reference-map linkedin --require-reference-map x` must fail non-canonical `Niche:` values.
+- **Owner surface updated:** `memory/content/current-niche-map.md`, `docs/agents/content-rules.md`, `memory/content-voice.md`, `agents/content-calendar/AGENT.md`, `skills/content-generation/SKILL.md`, `scripts/notion-swipe-push.py`, Mission Control content tasks, `MEMORY.md`, daily note, weekly recap, and this Mistakes Log entry.
+- **Verification/date:** 2026-05-31 — created canonical niche map, patched content rules/agents/skill/swipe taxonomy, updated relevant Mission Control task descriptions, added exact-niche enforcement to `content_distribution_guard.py`, and verified Python compilation plus task-board state.
+
+## 2026-05-31 — Reused invalid proof-log type
+- **Failure:** I tried to log a Mission Control task correction with `scripts/log-proof.py --type task_update`, which is not a valid proof type.
+- **Root cause:** I relied on a semantic label that sounded right instead of checking the script's accepted enum before calling it. This repeated the same class of invalid proof-type error from earlier in the day.
+- **Guardrail/rule:** Before using `scripts/log-proof.py` with a non-obvious type, run `python3 scripts/log-proof.py --help` or use a known accepted generic type: `file_edit`, `script_execution`, `api_call`, or `other`.
+- **Regression check:** Any failed `log-proof.py` invocation must be retried with a valid enum and the proof guard must pass before closeout.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; proof logging was retried with `--type other`.
+- **Verification/date:** 2026-05-31 — invalid `task_update` call failed, then `python3 scripts/log-proof.py --type other --title "Passive Income Mission Control ClaimRisk correction" ...` succeeded with proof id `[df5cd6ef]`.
+
+## 2026-05-31 — `openclaw doctor --fix` applied an unprompted route repair
+- **Failure:** JT instructed me to run `openclaw doctor --fix` and accept only orphan transcript cleanup. I approved the orphan transcript prompt, but the command also auto-repaired one legacy Codex session route without a separate prompt before I could stop it.
+- **Root cause:** I assumed `doctor --fix` would prompt for each fixable category because orphan cleanup prompted, instead of treating the command as a batch fixer that may apply additional noninteractive repairs after the accepted prompt.
+- **Guardrail/rule:** When JT authorizes only one doctor fix category, do not run broad `openclaw doctor --fix` unless the CLI exposes a category-specific flag or dry-run plan proving it will not apply other fixes. If no scoped flag exists, stop after `openclaw doctor`, report the proposed fixes, and ask JT before running broad `--fix`.
+- **Regression check:** Before future doctor repairs, run `openclaw doctor --help` / `openclaw doctor --fix --help` and verify whether a scoped fix flag exists; if not, do not execute broad `--fix` for a single-category approval.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; user-facing report explicitly disclosed the unprompted route repair.
+- **Verification/date:** 2026-05-31 — follow-up `openclaw doctor` no longer shows the orphan transcript state-integrity warning; it still shows the duplicate lossless-claw warning, command-owner warning, cron model override warning, plaintext secret warning, and memory-search warning.

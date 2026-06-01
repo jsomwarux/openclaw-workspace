@@ -1,18 +1,18 @@
 # Weekly Intel Brief — for Content Generation
 > Written by Weekly Intelligence Synthesis. Read by content-generate-linkedin and content-generate-x Monday morning.
 
-**Week of:** 2026-05-18
+**Week of:** 2026-05-25
 
 ## Top Niche Signals This Week
-1. [property-management] PM teams are not short on portals; the new bottleneck is turning inspection findings, maintenance notes, and vendor follow-ups into accountable work queues.
-2. [insurance] Insurance agencies are moving into 2026 AI investment mode, but JT's best wedge is still stack-qualified Salesforce/Novidea workflow automation with auditability.
-3. [construction] Construction AI coverage stayed focused on safety, training, project data, and skilled-trades labor pressure, so the credible SMB angle is field workflow mapping before tool rollout.
+1. [wholesale] Canals raised $35M for AI that turns distributor emails, PDFs, spreadsheets, sales orders, AP docs, and purchasing validation into structured ERP workflow.
+2. [construction] NavigateAI launched with $25M for field-worker copilots, showing construction AI is moving toward jobsite media, quality control, training, and field documentation.
+3. [insurance] Roots Automation launched Bevaya as an insurance-native AI agent platform across underwriting, claims, and policy servicing.
 
 ## Strategic Theme This Week
-The market is no longer debating whether AI belongs in operations; the edge is proving the buyer, the workflow owner, and the handoff before pitching an automation.
+Vertical AI platforms are moving from generic assistant demos to workflow-specific operating systems; JT's content should frame AI implementation as governed workflow control, not tool adoption.
 
 ## Competitive Developments
-ReSource Pro says 98% of insurance agencies are planning AI investments in 2026, which strengthens insurance timing but makes stack qualification more important, not less.
+Entrata filed for IPO after 23% Q1 2026 revenue growth, reinforcing that property-management software plus embedded AI is now a capital-market category. Salesforce is also pushing Agentforce around MCP servers and AgentExchange, which strengthens the "activate the workflow layer you already own" pitch for Salesforce shops.
 
 ---
-_Last updated: 2026-05-24 Sunday_
+_Last updated: 2026-05-31 Sunday_

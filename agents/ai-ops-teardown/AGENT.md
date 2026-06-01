@@ -32,7 +32,8 @@ Every run should produce or update:
 1. `memory/consulting/ai-ops-teardowns/YYYY-MM-DD-[slug].md`
 2. `memory/content/bank/YYYY-MM-DD/ai-ops-teardown-[slug].md`
 3. `memory/consulting/ai-ops-teardowns/delivery-calendar.md`
-4. Mission Control JT review/post task if a draft is ready.
+4. Google Drive docs via `python3 scripts/ai_ops_teardown_drive_sync.py --json`
+5. Mission Control JT review/post task if a draft is ready.
 
 ## Quality Gate
 Before finishing, verify:
@@ -44,6 +45,9 @@ Before finishing, verify:
 - The framing is proof-safe: hypothetical/public/category language, no fake client claims, no named private clients, no unverified ROI/hours-saved/client-acceptance claims.
 - There is a clear build-tier decision: Tier 1, 2, or 3.
 - Save paths are correct and delivery calendar is updated.
+- Drive upload completed for both the teardown and content-bank draft under:
+  - `Eve — Drafts / Consulting / AI Ops Teardowns / YYYY-MM-DD / Teardowns`
+  - `Eve — Drafts / Content / AI Ops Teardowns / YYYY-MM-DD / Drafts`
 - Mission Control has one actionable JT review/post task with exact first action, why it matters, done state, and posted-log/reply-routing instructions.
 - Posted means a public URL exists; never mark a teardown posted from draft readiness, intent, or banked content.
 - If JT defers, update the delivery calendar with reason + next review date; do not fake a posted-log entry.

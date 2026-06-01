@@ -44,3 +44,14 @@ Every MC task must include:
 3. What done looks like
 
 No task that just restates the title. Can't write a concrete first action → flag to JT, don't create it yet.
+
+## Material Delta Routing
+Whenever Eve implements a material delta — a new artifact, queue, research finding, proof pack, Drive bundle, automation, or decision-ready output — Mission Control must get the single optimal next-use task.
+
+Rules:
+- Add or update exactly the task that helps JT/Eve use the new material, not a generic “review this” placeholder.
+- Cite the source artifact/path/link in the task description.
+- Assign the real owner: JT only when he must approve, review, post, send, pay, decide, or provide input; Eve when the next action is internal execution.
+- Match priority to leverage and readiness. HIGH only for near-term cash, client proof, warm opportunity, urgent risk, app distribution, health/financial stability, or a JT action needed within 48 hours.
+- Include first action, why it matters, and done state.
+- If no task is justified because the material is already consumed, blocked, or purely archival, log the skip reason in the work summary/daily note.

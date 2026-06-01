@@ -84,8 +84,33 @@ REFERENCE_REQUIRED_FIELDS = [
     "niche",
     "format",
     "hook mechanic",
+    "opening line mechanic",
+    "proof mechanism",
+    "emotional driver",
+    "specificity level",
+    "cta type",
+    "why it worked",
     "jt translation",
 ]
+
+CANONICAL_NICHE_LANES = {
+    "SMB AI Implementation",
+    "Property Management Operations",
+    "NYC SMB Operations",
+    "Wholesale Distribution Operations",
+    "Construction + Skilled Trades Operations",
+    "Insurance / Agentforce Operations",
+    "AI Operating Systems / Agent Orchestration",
+    "AI Enablement / Solutions Architecture Career",
+    "Productized Services / Solo Operator Systems",
+    "App Growth / App Marketing OS",
+    "Vista / Movie Taste Apps",
+    "Nash Satoshi / Crypto Ranking",
+    "Glow Index / Skincare Ranking",
+    "x402 / Agentic Payments",
+    "Dynasty Fantasy / Sports GM",
+    "Guyana Local Content Operations",
+}
 
 POSTED_LOG = ROOT / "memory" / "content" / "posted-log.jsonl"
 COOLDOWN_DAYS = 45
@@ -309,7 +334,50 @@ def check_reference_map(path: Path, platform: str) -> list[str]:
     if "platform: " not in lower and "platform=" not in lower:
         problems.append(f"{rel(path)}: {label} reference mechanics does not name source platform")
 
+    for raw_niche in extract_reference_niches(section):
+        normalized = raw_niche.strip().strip("*` ")
+        if not normalized:
+            continue
+        normalized_upper = normalized.upper()
+        if normalized_upper in {"ADJACENT_REFERENCE_ONLY", "RECENT_SWIPE_GAP"}:
+            continue
+        if normalized not in CANONICAL_NICHE_LANES:
+            problems.append(
+                f"{rel(path)}: {label} reference mechanics uses non-canonical niche {normalized!r}; use memory/content/current-niche-map.md lanes or ADJACENT_REFERENCE_ONLY"
+            )
+
     return problems
+
+
+def extract_reference_niches(section: str) -> list[str]:
+    """Pull explicit Niche values from bullet or simple markdown-table rows."""
+    niches: list[str] = []
+    for line in section.splitlines():
+        stripped = line.strip()
+        lower = stripped.lower()
+        if "niche" not in lower:
+            continue
+        if "source url" in lower or "why it worked" in lower:
+            continue
+
+        if stripped.startswith("|"):
+            cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+            for idx, cell in enumerate(cells[:-1]):
+                if cell.lower() == "niche":
+                    niches.extend(split_niche_values(cells[idx + 1]))
+            continue
+
+        match = re.search(r"\bniche\s*[:=]\s*(.+)$", stripped, flags=re.I)
+        if match:
+            niches.extend(split_niche_values(match.group(1)))
+    return niches
+
+
+def split_niche_values(value: str) -> list[str]:
+    value = re.sub(r"\s+#.*$", "", value).strip().strip("|")
+    if not value:
+        return []
+    return [part.strip() for part in re.split(r"\s*(?:,|;|\band\b)\s*", value) if part.strip()]
 
 
 def check_news_hook(path: Path) -> list[str]:

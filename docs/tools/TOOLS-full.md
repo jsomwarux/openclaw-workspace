@@ -577,3 +577,27 @@ Add whatever helps you do your job. This is your cheat sheet.
 - `POST https://api.firecrawl.dev/v1/scrape` `{"url":"...","formats":["markdown"]}`
 - Auth header: `Authorization: Bearer $FIRECRAWL_API_KEY`
 - Use for: single-page scrapes where Cloudflare /crawl is overkill
+
+---
+
+## GBrain Consulting Recall Pilot
+- Sandbox install: `~/projects/gbrain` (GBrain 0.32.0)
+- Pilot home: `~/projects/gbrain-pilot-home`
+- Sanitized curated source: `~/projects/gbrain-pilot-source`
+- Wrapper: `scripts/gbrain-consulting-search.sh "Entity or company name"`
+- Use only for consulting/prospect entity lookup. Eval: entity search 20/20 vs qmd 13/20; natural-language search weak without embeddings.
+- Do NOT add crons, install skillpacks, ingest broad workspace/private chats/config, or wire embeddings/auth without JT approval.
+
+## JT Operating-System Routing
+- Capability map: `docs/agents/capability-routing-map.md`
+- New skills: `skills/client-proof-capture/SKILL.md`, `skills/linkedin-corpus/SKILL.md`, `skills/ai-context-os/SKILL.md`
+- New agents: `agents/client-proof-engine/AGENT.md`, `agents/linkedin-corpus/AGENT.md`
+- Portable Codex plugin scaffold: `~/plugins/jt-operating-system`; marketplace: `~/.agents/plugins/marketplace.json`
+
+## Glow Index Ops
+- Glow Index: Replit | Admin key in approved secret store only | jsomwarux/skincare-rankings.
+- Replit deploy is not a rebuild. After pushing code changes to GitHub, JT must trigger a fresh build on Replit: Shell tab → `npm run build` → redeploy, or Deployments → Redeploy → "Rebuild from scratch." Plain redeploy can reuse the old build.
+- Required Replit Secrets: BRAVE_API_KEY, ADMIN_SECRET, N8N_WEBHOOK_URL, N8N_CALLBACK_SECRET.
+- Image backfill after fresh deploy: `curl -X POST https://skincare-rankings.replit.app/api/fetch-images -H "x-admin-key: $ADMIN_SECRET"`.
+- Crawler access diagnostic: `cd ~/.openclaw/workspace && python3 scripts/glow_crawler_check.py` checks `glowindex.co` `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/rankings`, `/categories`, `/categories/serum` for Cloudflare challenge/200 status.
+- Engine OpenRouter key lives in `~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist`, not `global.env`. If analyses fail with all-401 errors, update the plist key, then `launchctl unload` + `load` to force launchd to pick up the change. Engine binds `127.0.0.1:8001`.

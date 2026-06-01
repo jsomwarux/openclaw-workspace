@@ -5,10 +5,10 @@
 ## Pre-Draft Checklist (mandatory)
 Before drafting ANY post or content for JT:
 1. Read `memory/content-voice.md` in full.
-2. Identify the exact platform, niche, and format before fetching references. Platform/niche fit matters more than raw engagement.
-3. Fetch current swipe-file references using the narrowest relevant filters available: platform first, then niche, then format. Example: `python3 scripts/notion-swipe-fetch.py --platform X --niche "Dynasty Fantasy" --niche "Sports Betting" --limit 12 --min-engagement 0` or `python3 scripts/notion-swipe-fetch.py --platform LinkedIn --niche "AI Consulting" --format "Case Study" --limit 8`.
+2. Read `memory/content/current-niche-map.md`. Choose the exact platform, niche, and format from that priority map before fetching references. Platform/niche fit matters more than raw engagement.
+3. Fetch current swipe-file references using the narrowest relevant filters available: platform first, then niche, then format. Example: `python3 scripts/notion-swipe-fetch.py --platform X --niche "Dynasty Fantasy / Sports GM" --limit 12 --min-engagement 0` or `python3 scripts/notion-swipe-fetch.py --platform LinkedIn --niche "SMB AI Implementation" --format "Case Study" --limit 8`.
 4. Never use cross-platform or cross-niche references by default. LinkedIn consulting content must not use dynasty X hooks/context. Dynasty X content must not use LinkedIn consulting patterns. Adjacent references are allowed only when same platform+niche examples are insufficient, and the draft must explicitly label them as adjacent inspiration.
-5. Select 2-4 reference patterns that match the platform + niche + format. Extract the mechanic: hook shape, emotional tension, context, rhythm, reply trigger, proof style, and why it worked.
+5. Select 2-4 reference patterns that match the platform + niche + format. Extract the mechanic: hook shape, opening-line move, emotional tension, context, rhythm, reply trigger, proof mechanism, specificity level, CTA type, and why it worked.
 6. Write a `Pattern inputs / Hook mappings from swipe file` section in the draft file before the posts.
 7. Translate the mechanics through JT's voice. Do not copy wording, claims, account persona, or structure wholesale.
 8. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering.
@@ -31,8 +31,8 @@ This applies to X, LinkedIn, Reddit, newsletters, scripts, launch posts, consult
 The Notion Viral Posts Swipe database is not just an archive. It must influence output.
 - Weekly content packs: include a `Pattern inputs / Hook mappings from swipe file` section with the actual mechanics used.
 - One-off X/LinkedIn/Reddit drafts: mention the pattern internally in the saved draft when a file is created.
-- Priority niches to keep represented: AI Consulting, NYC SMB, Construction, Property Management, Wholesale Distribution, Skilled Trades, AI Agents/OpenClaw, Job Market, Nash Satoshi/x402, Crypto, Personal Brand, Dynasty Fantasy, Sports Betting.
-- If a niche/platform has fewer than 3 usable recent examples, create a Mission Control task to collect more examples instead of pretending the swipe file is sufficient. Until then, use adjacent references only as labeled inspiration, not as the primary pattern source.
+- Priority niches are defined in `memory/content/current-niche-map.md`. Do not replace that map with a narrow product/tool list. Default LinkedIn content should bias toward Tier 1 consulting/proof niches and Tier 2 authority/career niches before product lanes.
+- If a niche/platform has fewer than 3 usable recent examples, create a Mission Control task to collect more examples instead of pretending the swipe file is sufficient. For LinkedIn consulting generation, do not call the system optimized until the corpus has at least 5 niche-relevant creator/account sources and 30 recent or evergreen high-performing posts scored for mechanics. Until then, use adjacent references only as labeled inspiration, not as the primary pattern source.
 - Never let the swipe file flatten JT's voice. It supplies evidence of what works; JT's taste supplies the final shape.
 
 ## Reference Mechanics Contract
@@ -50,16 +50,23 @@ Each section must include at least 2 source rows unless it explicitly marks `REC
 - `Niche`
 - `Format`
 - `Hook mechanic`
+- `Opening line mechanic`
+- `Proof mechanism`
+- `Emotional driver`
+- `Specificity level`
+- `CTA type`
+- `Why it worked`
 - `JT translation`
 
 Use the narrowest available fetch first:
 `python3 scripts/notion-swipe-fetch.py --platform [PLATFORM] --niche "[NICHE]" --format "[FORMAT]" --limit 8 --since-days 30`
 
 If fewer than 3 usable current references exist, label the gap and either use adjacent references explicitly or skip the slot. Do not silently fall back to old all-platform mega posts.
+For LinkedIn consulting drafts, raw viral structures must pass through a voice translation layer before generation: convert the winning mechanic into JT's operator voice, add real proof/specificity, remove guru/engagement-bait posture, and prefer concrete workflow detail over generic business outcomes.
+The reference section's `Niche` value must exactly match a lane in `memory/content/current-niche-map.md` or explicitly state `ADJACENT_REFERENCE_ONLY` / `RECENT_SWIPE_GAP`. Do not use legacy shorthand like `AI Consulting`, `NYC SMB`, `Claude Code`, `Vista`, `Glow Index`, `Nash Satoshi`, or `App Marketing` as the saved niche value unless the canonical map lane itself uses that exact name.
 
 New weekly LinkedIn/X queues must pass:
-`python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-[MONDAY].md --require-reference-map linkedin --check-notion-script`
-or `--require-reference-map x` for the X queue.
+`python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-[MONDAY].md --require-reference-map linkedin --require-reference-map x --check-notion-script`
 
 
 

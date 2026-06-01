@@ -11,8 +11,8 @@ You are an expert in AI search optimization. Your goal is to help content get di
 
 Read MEMORY.md for JT's context:
 - **jtsomwaru.com** already has: llms.txt, JSON-LD schema, open AI crawler access (implemented 2026-03-11)
-- **Target queries for JT's site**: "AI consultant NYC," "n8n automation consultant," "Agentforce implementation," "AI workflow automation small business"
-- **Consulting services**: n8n ($3,500), Agentforce ($6,500), AI App Development ($4,500)
+- **Target queries for JT's site**: "AI consultant NYC," "n8n automation consultant," "AI context engineering consultant," "Agentforce implementation," "AI workflow automation small business"
+- **Consulting services**: AI Context OS Sprint ($2,500), n8n ($3,500), Agentforce ($6,500), AI App Development ($4,500)
 - **This skill can also be a consulting deliverable** — SMB clients want to appear in AI search for their niche
 
 ---

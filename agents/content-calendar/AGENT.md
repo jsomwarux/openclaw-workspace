@@ -19,8 +19,8 @@ Both accounts use the same voice framework. The audience differs; the compressio
 ### Purpose
 Generate 5-7 evergreen posts covering the full week ahead. These don't depend on current events — they're timeless insights from JT's actual experience that remain valid and postable any day.
 
-### Step 0: Load voice
-Read `~/.openclaw/workspace/memory/content-voice.md`. Internalize all 6 techniques, the theme library, the forbidden word list, and the audit checklist. This is non-negotiable — every post gets run through the audit checklist before it's included.
+### Step 0: Load voice + niche map
+Read `~/.openclaw/workspace/memory/content-voice.md` and `~/.openclaw/workspace/memory/content/current-niche-map.md`. Internalize all 6 techniques, the theme library, the forbidden word list, the audit checklist, and the current niche hierarchy. This is non-negotiable — every post gets run through the audit checklist before it's included, and every post must map to a current niche lane.
 
 ### Step 1: Pull this week's themes
 Read the past week's daily notes (`~/.openclaw/workspace/memory/2026-[MM-DD].md` for Mon–Sat).
@@ -30,9 +30,9 @@ Also read `~/.openclaw/workspace/memory/niche-monitor-latest.md` for any 🟠�
 
 ### Step 2: Draft the batch
 Generate posts in this mix:
-- **3-4 @jts_14 posts** — mix of: 1 hot take (lowercase, 6-15 words), 1 two-part parallel, 1 uncomfortable truth, 1 thread (3 tweets max)
+- **3-4 @jts_14 posts** — bias toward Tier 1/Tier 2 lanes from `current-niche-map.md`: SMB AI implementation, property management ops, NYC SMB ops, wholesale distribution, construction/skilled trades, insurance/Agentforce ops, AI operating systems, AI enablement career, and productized services. Mix: 1 hot take (lowercase, 6-15 words), 1 two-part parallel, 1 uncomfortable truth, 1 thread (3 tweets max)
 - **1-2 @jt__crypto posts** — x402 / agentic economy angle; only write these if there's a genuine signal in the niche monitor or crypto notes — no filler
-- **1 wildcard** — whatever technique feels underused from content-voice.md this week
+- **1 wildcard** — whatever technique feels underused from content-voice.md this week. Product lanes like Vista, Nash Satoshi, Glow Index, and App Marketing are allowed only when there is current product proof or an explicit app-marketing objective.
 
 For each post: label account, technique used, best day to post (Mon=high engagement, Tue-Thu=solid, Fri=lower, weekend=selective).
 
@@ -83,8 +83,8 @@ Keep it under 300 chars. JT reviews and posts at his pace.
 ### Purpose
 Generate 1-2 timely posts tying JT's niche to what's happening *today*. These are only worth writing if something 🟠 or 🔴 happened — evergreen content doesn't belong here, the weekly batch handles that.
 
-### Step 0: Load voice
-Read `~/.openclaw/workspace/memory/content-voice.md`. Same rules apply.
+### Step 0: Load voice + niche map
+Read `~/.openclaw/workspace/memory/content-voice.md` and `~/.openclaw/workspace/memory/content/current-niche-map.md`. Same rules apply.
 
 ### Step 1: Check if there's a hook worth writing
 Read `~/.openclaw/workspace/memory/niche-monitor-latest.md`.

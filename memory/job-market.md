@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-05-31 — Heartbeat Job Market Pulse
+
+**Read:** Today's generated job-market brief found no critical alerts and no new role that should outrank current consulting proof. Coupa remains the strongest live duplicate signal at 20/25, but the source-to-pay/procurement domain gap makes it a selective apply/consulting-bridge target, not a top-priority pivot. Human Agency remains a consulting-outreach signal at 19/25 with a construction credibility/travel caveat. Marriott is now confirmed expired by live verification, and Anaplan is disqualified after full JD review.
+
+**JT relevance:** The market continues to reward governed AI enablement operating models: AI opportunity mapping, HITL controls, COE adoption, ROI/value reporting, and domain-specific workflow transformation. This supports the current Property Ops / AI Context OS / proof-led outreach lane more than it supports starting a new build.
+
+**Action:** Do not create a new application or demo task from today's brief. Keep Altmark and proof-led consulting outreach first; reuse the job-market signal only to sharpen Coupa/Human Agency language around governance, adoption, and measured workflow outcomes if JT chooses to pursue those already-tracked lanes.
+
+---
+
 ## 2026-05-30 — Heartbeat Job Market Pulse
 
 **Read:** Today's job-market brief found no new NYC/remote role clearing JT's hard filters or 18+/25 threshold. The useful signal is negative: public boards remain thin for non-coding AI implementation roles, while the recurring market language keeps pointing at governed implementation systems, adoption, and value measurement.

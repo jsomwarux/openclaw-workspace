@@ -1,6 +1,7 @@
 # Content Voice — JT Somwaru
 *Jack Butcher framework applied to language and compression — but content format varies by platform and day.*
 *Load this file before drafting any X post, thread, or LinkedIn content.*
+*Also load `memory/content/current-niche-map.md` before choosing the niche or swipe references.*
 
 ---
 
@@ -159,6 +160,27 @@ Use for hot takes and compressed insights — NOT for announcements, launches, o
 
 ---
 
+## Current Niche Hierarchy
+
+Canonical map: `memory/content/current-niche-map.md`.
+
+Default LinkedIn lanes:
+1. SMB AI implementation.
+2. Property management operations.
+3. NYC SMB operations.
+4. Wholesale distribution operations.
+5. Construction + skilled trades operations.
+6. Insurance / Agentforce operations.
+7. AI operating systems / agent orchestration.
+8. AI enablement / solutions architecture career.
+9. Productized services / solo operator systems.
+
+Product lanes like Vista, Nash Satoshi, Glow Index, and App Marketing are active but secondary. Use them when the post is explicitly about product growth, app proof, passive-income experiments, or builder credibility. Do not let them become the default niche set for LinkedIn consulting content.
+
+Claude Code is a tool/proof ingredient, not a primary niche.
+
+---
+
 ## LinkedIn Post Format Rules
 
 - **Length:** 3–6 short paragraphs (Monday: can be 1–3 sentences). Each paragraph = 1–2 lines max.
@@ -248,6 +270,9 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] Did you check recent/proven references for this exact platform + niche + format before drafting?
 - [ ] Did you avoid cross-platform/niche leakage unless explicitly labeled as adjacent inspiration?
 - [ ] Did you extract the mechanic instead of copying the wording/persona?
+- [ ] Did you translate the reference through JT's operator voice before writing, instead of copying the creator's posture?
+- [ ] Did you replace generic outcomes with concrete operational detail, numbers, queues, systems, roles, or failure modes wherever possible?
+- [ ] Does the draft breathe: short opening, clean paragraph breaks, one idea per paragraph, and a final line that lands without engagement bait?
 - [ ] Does this sound like JT, not the source account or a generic creator?
 - [ ] Does it start with the point, not the setup?
 - [ ] Is the "I" to "you" ratio ≤ 1:5? Exception: client proof, case studies, quote tweets on client results, launches, and build-in-public posts should lead with verified ownership when credibility is the point.
@@ -284,6 +309,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 | Date | Proof Point | Verified Detail | Demonstrates | Status |
 |---|---|---|---|---|
 | 2026-05-27 | Altmark Rent Delinquency Testing Pack | Created Altmark rent delinquency acceptance checklist and runbook for sample-report testing, exception routing, human approval, rollback, and production cutover; Mission Control top task now points to the checklist. | Paid-client delivery control, property-ops workflow acceptance design, privacy-safe reusable IP capture | Complete |
+| 2026-05-31 | jtsomwaru.com AI Context OS Sprint Service Page | Added `/services/ai-context-os`, homepage service routing, sitemap/llms/JSON-LD exposure, and an `ai-context-os` delivery skill with reusable sprint template; build/lint passed, pushed commit `9fc24fd`, and production returned HTTP 200. | AI context engineering offer packaging, GEO service-page build, reusable consulting IP system | Complete |
 | 2026-05-19 | App Marketing Share Artifacts Batch 5 | Built Nash `/receipts/weekly` PNG receipt generator and Glow Product Verdict Card MVP; Nash `npm run check` + `npm run build` passed, Glow `npm run build` + `npm run lint` passed. | Product-led app distribution assets, repo-aware AI coding-agent orchestration | Complete |
 | 2026-05-27 | jtsomwaru.com n8n Automation Service Page | Built `/services/n8n-automation` with FAQ schema, Service JSON-LD, sitemap exposure, homepage links, llms.txt coverage, and an updated Drive roundup packet; verifier/build/lint and production live checks passed. | AI-search/GEO service-page build, proof-safe consulting positioning, citation-ready outreach infrastructure | Complete |
 | 2026-05-14 | jtsomwaru.com Public Proof Privacy Pass | Anonymized client names and removed exact proposal amounts from site proof copy; production verified clean for Aya/Altmark/Lady D/exact amount hits. | Public proof hygiene, privacy-safe case-study packaging | Complete |

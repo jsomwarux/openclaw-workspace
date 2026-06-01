@@ -16,6 +16,11 @@
 
 <!-- Entries appended by Weekly Intelligence Synthesis (eve-weekly-synthesis-007) -->
 
+### 2026-05-31 — Package Property Ops Control Plane Proof
+**Recommendation:** Turn the Altmark rent-delinquency testing pack into a buyer-facing Property Ops Control Plane proof this week: one page or artifact showing ledger readiness, exception routing, human approval, rollback, audit trail, and ROI language.
+**Why now:** Entrata's IPO filing validates property-management operating software demand, while H.I.G.'s AI Enablement role and this week's skills signals show business-side buyers now expect governed AI platforms with connectors, evals, adoption metrics, and rollback standards. JT has the freshest proof in Altmark; package it before the signal goes stale.
+**Status:** open
+
 ### 2026-05-03 — Reframe Around Specialist Implementation Proof
 **Recommendation:** This week, update JT's public/job-market positioning around "AI Implementation Specialist — Agentforce + Telco Operations" and create one visible specialist proof artifact. Use the Human Agency contech role as validation that the market wants AI + field workflow judgment, not generic AI fluency.
 **Why now:** The skills tracker still shows AI Specialist vs. Generalist Divergence as 🔴 Critical, and the new Human Agency AI Implementation Specialist (Contech) role validates the same pattern in construction. JT's current edge is specialist workflow judgment; it needs to show up in LinkedIn, resume, site copy, and one demo artifact.
@@ -55,4 +60,3 @@
 **Recommendation:** Spend this week cleaning buyer/channel state for the warmest T2 prospects — confirmed owner/operator, channel, prior task status, and one next action — before creating more M1 drafts.
 **Why now:** Every consulting observation this week pointed to the same bottleneck: good companies exist, but unvalidated buyers and duplicate/out-of-sequence tasks turn outreach into shelfware and burn InMails.
 **Status:** open
-

@@ -82,12 +82,12 @@
 
 
 ## GBrain Consulting Recall Pilot
-- Sandbox install: `~/projects/gbrain` (GBrain 0.32.0)
-- Pilot home: `~/projects/gbrain-pilot-home`
-- Sanitized curated source: `~/projects/gbrain-pilot-source`
 - Wrapper: `scripts/gbrain-consulting-search.sh "Entity or company name"`
-- Use only for consulting/prospect entity lookup. Eval: entity search 20/20 vs qmd 13/20; natural-language search weak without embeddings.
-- Do NOT add crons, install skillpacks, ingest broad workspace/private chats/config, or wire embeddings/auth without JT approval.
+- Use only for consulting/prospect entity lookup; no crons/skillpacks/broad ingestion/embeddings/auth without JT approval. Full pilot paths/details: `docs/tools/TOOLS-full.md`.
+
+## JT Operating-System Routing
+- Capability map: `docs/agents/capability-routing-map.md`
+- Skills/agents/plugin scaffold details live in `docs/tools/TOOLS-full.md`.
 
 ## Knowledge Base
 - CLI (from knowledge/ dir): `bun kb.ts search "query" | add --title "..." --content "..." --category CATEGORY | list | show <id>`
@@ -124,6 +124,7 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 ## Drive Drafts
 - Script: scripts/drive_drafts.py | Account: openclawagenteve14@gmail.com | Root: "Eve — Drafts"
 - **Command:** `cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py --title "[Title]" --path "[path]" --file [path]`
+- AI Ops teardown bundles: `python3 scripts/ai_ops_teardown_drive_sync.py --json` uploads current teardown + content draft to `Consulting/AI Ops Teardowns/[date]/Teardowns` and `Content/AI Ops Teardowns/[date]/Drafts`.
 - Key paths: client outreach/decks under `Consulting/Clients/[Client]/...`; job docs under `Job Applications/...`; content under `Content/...`; research/frameworks/analysis under same-name folders.
 - Root lookup must use the top-level `Eve — Drafts` folder (`'root' in parents`); duplicate nested `Eve — Drafts` folders are archived drift, not valid upload roots.
 - **Legacy `--project`/`--type`** still works for non-consulting projects (Vista, Nash Satoshi)
@@ -153,10 +154,5 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 
 ## Apps
 - jtsomwaru.com: ~/projects/jtsomwaru-com/ → Vercel
-- Glow Index: Replit | Admin key in approved secret store only | jsomwarux/skincare-rankings
-  - ⚠️ **Replit deploy ≠ rebuild.** After pushing code changes to GitHub, JT must trigger a FRESH BUILD on Replit — not just redeploy. Options: (1) Shell tab → `npm run build` → then redeploy, OR (2) Deployments → Redeploy → "Rebuild from scratch." Clicking "Redeploy" without rebuilding reuses the old build and new code won't appear.
-  - Required Replit Secrets: BRAVE_API_KEY, ADMIN_SECRET, N8N_WEBHOOK_URL, N8N_CALLBACK_SECRET.
-  - Image backfill after fresh deploy: `curl -X POST https://skincare-rankings.replit.app/api/fetch-images -H "x-admin-key: $ADMIN_SECRET"`
-  - **Crawler access diagnostic:** `cd ~/.openclaw/workspace && python3 scripts/glow_crawler_check.py` — checks `glowindex.co` `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/rankings`, `/categories`, `/categories/serum` for Cloudflare challenge/200 status.
-  - **⚠️ Engine OpenRouter key lives in LaunchAgent plist — not global.env.** `~/Library/LaunchAgents/com.openclaw.glow-index-engine.plist` has `OPENROUTER_API_KEY`. If analyses fail with all-401 errors: update the plist key, then `launchctl unload` + `load` to force launchd to pick up the change. Engine binds `127.0.0.1:8001`.
+- Glow Index: Replit | jsomwarux/skincare-rankings | fresh build required before redeploy; full ops commands in `docs/tools/TOOLS-full.md`.
 - Nash Satoshi: jsomwarux/Nash-Satoshi (private)

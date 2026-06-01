@@ -41,10 +41,16 @@ Score 3–5 candidate topics using the rubric in `system.md`. Do not pick a comp
 4. Pick the strongest candidate.
 5. Produce one teardown file and one content-bank draft file.
 6. Update delivery calendar.
-7. Create or update one Mission Control task for JT to review/post the first draft. The task description must include: exact first action/source path, why it matters, done state requiring posted URL saved to `memory/content/posted-log.jsonl`, and reply/DM routing to the diagnostic one-pager when relevant.
-8. If Tier 3 is justified, create/update one separate build task for Eve with synthetic-data constraint and an explicit gate: do not build until the teardown is posted and gets operator reply/DM signal, or JT explicitly prioritizes it.
-9. Run the final bundle quality gate before responding: buyer-relevant workflow, inputs, messy process, exception logic, HITL, audit trail, buyer outcome, platform-native drafts, diagnostic CTA, proof-safe framing, Tier 1/2/3 decision, save paths, MC review/post task, no stale/generic company choice, no fake client claims.
-10. If this is the first run after cron creation, include a note that run history should be verified with `openclaw cron runs --id f96cc24f-55e6-4064-a075-b897156a22f2 --limit 1` after completion.
+7. Upload both bundle docs to Google Drive by running:
+   `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/ai_ops_teardown_drive_sync.py --json`
+   Required Drive organization:
+   - teardown file → `Eve — Drafts / Consulting / AI Ops Teardowns / YYYY-MM-DD / Teardowns`
+   - content-bank draft → `Eve — Drafts / Content / AI Ops Teardowns / YYYY-MM-DD / Drafts`
+   If Drive auth fails, do not call the run successful; report the exact auth/upload error and keep the local files.
+8. Create or update one Mission Control task for JT to review/post the first draft. The task description must include: exact first action/source path, Drive links, why it matters, done state requiring posted URL saved to `memory/content/posted-log.jsonl`, and reply/DM routing to the diagnostic one-pager when relevant.
+9. If Tier 3 is justified, create/update one separate build task for Eve with synthetic-data constraint and an explicit gate: do not build until the teardown is posted and gets operator reply/DM signal, or JT explicitly prioritizes it.
+10. Run the final bundle quality gate before responding: buyer-relevant workflow, inputs, messy process, exception logic, HITL, audit trail, buyer outcome, platform-native drafts, diagnostic CTA, proof-safe framing, Tier 1/2/3 decision, save paths, Drive upload links, MC review/post task, no stale/generic company choice, no fake client claims.
+11. If this is the first run after cron creation, include a note that run history should be verified with `openclaw cron runs --id f96cc24f-55e6-4064-a075-b897156a22f2 --limit 1` after completion.
 
 ## Output Paths
 Use today's date as `YYYY-MM-DD` and a short slug.
@@ -61,6 +67,7 @@ Then bullets:
 - Score:
 - Build tier:
 - Files written:
+- Drive links:
 - Mission Control tasks created/updated:
 - JT action:
 - Why this is the right next teardown:

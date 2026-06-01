@@ -58,6 +58,12 @@
 | ai-ops-teardown | agents/ai-ops-teardown/AGENT.md + agents/ai-ops-teardown/weekly-prompt.md | checklists/ai-ops-teardown.md | pending | — | — | 2026-05-12 |
 | agentguard-positioning | skills/agentguard-positioning/SKILL.md | checklists/agentguard-positioning.md | pending | — | — | 2026-05-13 |
 | ai-governance-readiness | skills/ai-governance-readiness/SKILL.md | agents/autoresearch/checklists/ai-governance-readiness.md | pending | — | — | 2026-05-13 |
+| reelfarm-intel | agents/reelfarm-intel/daily-prompt.md + agents/reelfarm-intel/weekly-prompt.md | agents/autoresearch/checklists/reelfarm-intel.md | pending | — | — | 2026-05-31 |
+| linkedin-corpus | skills/linkedin-corpus/SKILL.md | agents/autoresearch/checklists/linkedin-corpus.md | pending | — | — | 2026-05-31 |
+| client-proof-capture | skills/client-proof-capture/SKILL.md | agents/autoresearch/checklists/client-proof-capture.md | pending | — | — | 2026-05-31 |
+| ai-context-os | skills/ai-context-os/SKILL.md | agents/autoresearch/checklists/ai-context-os.md | pending | — | — | 2026-05-31 |
+| linkedin-corpus-agent | agents/linkedin-corpus/AGENT.md | agents/autoresearch/checklists/linkedin-corpus-agent.md | pending | — | — | 2026-05-31 |
+| client-proof-engine | agents/client-proof-engine/AGENT.md | agents/autoresearch/checklists/client-proof-engine.md | pending | — | — | 2026-05-31 |
 
 ## Status values
 - `pending` — checklist written, not yet run
