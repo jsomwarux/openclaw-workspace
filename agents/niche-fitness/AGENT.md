@@ -114,6 +114,23 @@ Recommendation must include:
 
 **Anti-static-table rule:** The Telegram summary must not merely repeat scores. It must state the operational decision: where JT should put prospecting, proof-building, content, and demo effort this month.
 
+### Mission Control task gate
+If the recommendation requires a Mission Control task, use the existing script-file gate instead of fetching `/api/tasks` and parsing it with inline Python, heredocs, or ad hoc multi-line interpreter snippets.
+
+Duplicate check:
+```bash
+python3 /Users/jtsomwaru/.openclaw/workspace/scripts/mission_control_task_gate.py --title "Task title" --json
+```
+
+Task creation:
+1. Write a complete JSON task payload to `/tmp/niche-fitness-task.json` with `title`, `description`, `status`, `priority`, `assignee`, and `project`.
+2. Run:
+```bash
+python3 /Users/jtsomwaru/.openclaw/workspace/scripts/mission_control_task_gate.py --title "Task title" --create-file /tmp/niche-fitness-task.json --json
+```
+
+Do not mark a run unhealthy just because the gate returns `duplicate:true` or no task is needed.
+
 ### Step 6: Write report
 Save to `~/.openclaw/workspace/memory/research/niche-fitness-[YYYY-MM].md`:
 

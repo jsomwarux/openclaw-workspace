@@ -1,0 +1,250 @@
+{
+  "user": {
+    "id": "1643695629665722379",
+    "public_metrics": {
+      "followers_count": 276527,
+      "following_count": 1211,
+      "tweet_count": 27078,
+      "listed_count": 2889,
+      "like_count": 75585,
+      "media_count": 5799
+    },
+    "username": "godofprompt",
+    "created_at": "2023-04-05T19:22:39.000Z",
+    "description": "Human + AI = Superpowers \n\n🔑 Sharing AI Prompts, Systems, Tips & Tricks",
+    "name": "God of Prompt"
+  },
+  "tweets": [
+    {
+      "id": "2061373784771465595",
+      "text": "Stanford ran 3,680 sessions on Claude, GPT-5.2, and Gemini.\n\nOverworked AI agents started questioning the system they ran in.\n\nThe headlines called it Marxism. I read the full paper. The real finding is about how agents actually work.\n\nResearchers Andy Hall, Alex Imas, and Jeremy https://t.co/62lhbBWmzA",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-06-01T09:06:23.000Z",
+      "conversation_id": "2061373784771465595",
+      "metrics": {
+        "likes": 7,
+        "retweets": 2,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 864,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2061373784771465595/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2061373784771465595"
+    },
+    {
+      "id": "2061175021272215713",
+      "text": "Temperature is dead. Every frontier AI provider killed it. And most people are panicking about the wrong thing.\n\nOpenAI removed it on o1, o3, and GPT-5. Google warned against changing it on Gemini 3. Anthropic deprecated it on Claude Opus 4.7 and continued that on 4.8. \n\nThis",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-31T19:56:34.000Z",
+      "conversation_id": "2061175021272215713",
+      "metrics": {
+        "likes": 51,
+        "retweets": 3,
+        "replies": 8,
+        "quotes": 1,
+        "impressions": 8324,
+        "bookmarks": 33
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2061175021272215713"
+    },
+    {
+      "id": "2060983420873027595",
+      "text": "Everyone is comparing Seedance 2.0 and Gemini Omni Flash side by side.\n\nThey're missing the point.\n\nSure, Omni might not be as good as Seedance right now, but it has one advantage... https://t.co/Z4dOnnRZjj",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-31T07:15:13.000Z",
+      "conversation_id": "2060983420873027595",
+      "metrics": {
+        "likes": 29,
+        "retweets": 2,
+        "replies": 9,
+        "quotes": 0,
+        "impressions": 9504,
+        "bookmarks": 16
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2060983420873027595/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060983420873027595"
+    },
+    {
+      "id": "2060808562314772519",
+      "text": "I pulled a full week of @OpenAI's X analytics without an API key, a scraper, or a single line of code 🤯\n\nOne prompt. 30 seconds.\n\nThe tool that made this possible isn't Claude, Cursor, or ChatGPT. It's a browser called ego lite: https://t.co/HHu42pKDCn",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-30T19:40:23.000Z",
+      "conversation_id": "2060808562314772519",
+      "metrics": {
+        "likes": 70,
+        "retweets": 19,
+        "replies": 10,
+        "quotes": 1,
+        "impressions": 18018,
+        "bookmarks": 81
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2060808562314772519/photo/1"
+      ],
+      "mentions": [
+        "OpenAI"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060808562314772519"
+    },
+    {
+      "id": "2060727682623508565",
+      "text": "A finance professor summed up every AI valuation in one line: nobody wants to use the eighth best product.\n\nThat's the whole bet behind Anthropic's $1 trillion. In most industries you can be fourth and still run a good business. \n\nIn AI, the theory goes, you're one of a tiny https://t.co/VG0aupJrNm",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-30T14:19:00.000Z",
+      "conversation_id": "2060727682623508565",
+      "metrics": {
+        "likes": 44,
+        "retweets": 5,
+        "replies": 17,
+        "quotes": 2,
+        "impressions": 12884,
+        "bookmarks": 20
+      },
+      "urls": [
+        "https://twitter.com/Polymarket/status/2060449764433428732"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060727682623508565"
+    },
+    {
+      "id": "2060696477115339136",
+      "text": "Anthropic just gave Claude Code a \"don't stop until it's done\" mode.\n\n/goal lets you set a completion condition, walk away, and Claude keeps iterating across turns until the condition is met. Hours. Sometimes days.\n\nThe capability is real. So is the bill.\n\nEvery turn reprocesses https://t.co/bGVCrv6YXR",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-30T12:15:00.000Z",
+      "conversation_id": "2060696477115339136",
+      "metrics": {
+        "likes": 70,
+        "retweets": 8,
+        "replies": 18,
+        "quotes": 1,
+        "impressions": 12078,
+        "bookmarks": 46
+      },
+      "urls": [
+        "https://twitter.com/2024518793679294464/status/2054351031279186040"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060696477115339136"
+    },
+    {
+      "id": "2060689820108910985",
+      "text": "Your prompt isn't broken. One word inside it is.\n\nSame structure. Same model. Same context. Change one word and the output shifts completely.\n\nMost people treat synonyms as interchangeable inside prompts. LLMs don't. Here are 3 common ones that mean very different things to an https://t.co/HNDeEWYBOv",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-30T11:48:33.000Z",
+      "conversation_id": "2060689820108910985",
+      "metrics": {
+        "likes": 50,
+        "retweets": 7,
+        "replies": 8,
+        "quotes": 1,
+        "impressions": 14126,
+        "bookmarks": 78
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2060689820108910985/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060689820108910985"
+    },
+    {
+      "id": "2060639105596399962",
+      "text": "The AI crowd keeps worshipping giant models.\n\nMeanwhile, MiniCPM-5 1B is trying to make them look bloated.\n\nA 1B open-source model that runs locally, on CPUs, edge devices, and even browsers.\n\nTiny model. Real deployment. No GPU cult required. https://t.co/XWH8uso0SE",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-30T08:27:02.000Z",
+      "conversation_id": "2060639105596399962",
+      "metrics": {
+        "likes": 76,
+        "retweets": 20,
+        "replies": 12,
+        "quotes": 1,
+        "impressions": 20005,
+        "bookmarks": 62
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2060639105596399962/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060639105596399962"
+    },
+    {
+      "id": "2060413721189454201",
+      "text": "Chrome puppets are about to get buried.\n\nego lite is what happens when you stop forcing agents into browsers built for humans and give them their own execution layer.\n\nReal login state. Background isolation. Complete browser control.\n\nThe toy-agent era is ending. https://t.co/TkayhTFQ4b",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-29T17:31:26.000Z",
+      "conversation_id": "2060413721189454201",
+      "metrics": {
+        "likes": 15,
+        "retweets": 1,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 21427,
+        "bookmarks": 8
+      },
+      "urls": [
+        "https://twitter.com/ego_agent/status/2060406816925012063"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060413721189454201"
+    },
+    {
+      "id": "2060406332453179600",
+      "text": "🚨 BREAKING: AI tutoring is moving from “show me the answer” to “help me think through it.”\n\nBrilliant is an interactive STEM learning platform with a real-time AI tutor built directly into the problem-solving flow.\n\nInstead of watching a lecture, getting stuck, and checking the https://t.co/iKxhhiuEMO https://t.co/CXBdHToRIN",
+      "author_id": "1643695629665722379",
+      "username": "godofprompt",
+      "name": "God of Prompt",
+      "created_at": "2026-05-29T17:02:04.000Z",
+      "conversation_id": "2060406332453179600",
+      "metrics": {
+        "likes": 26,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 1,
+        "impressions": 4395,
+        "bookmarks": 20
+      },
+      "urls": [
+        "https://x.com/godofprompt/status/2060406332453179600/photo/1",
+        "https://twitter.com/suekhim/status/2060378988606878147"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/godofprompt/status/2060406332453179600"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Skills gap: create JT architecture proof-map for AI SA roles",
+  "description": "First action: write `memory/job-market/architecture-proof-map.md` mapping Spectrum, Altmark, Aya, AgentGuard, AI Context OS, and OpenClaw systems to architecture, governance, integration, rollout, and ROI claims. Why it matters: target JDs value solution architecture, stakeholder discovery, integration architecture, governance, and change management; JT has proof but needs it translated into hiring-manager language. Done: one-page proof-map exists and can be reused by the job-application skill and interview prep.",
+  "status": "todo",
+  "priority": "medium",
+  "assignee": "eve",
+  "project": "Skills",
+  "sortOrder": 147
+}

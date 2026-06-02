@@ -6,6 +6,7 @@
 - TikTok/ReelFarm slideshow posting has been paused for about a week because posts were getting shadow banned / 0 views.
 - Current hypothesis: Reelfarm direct posting may look bot-like; better path may be Reelfarm uploads as drafts, then JT manually posts from TikTok after account warm-up and niche engagement.
 - This week JT plans to synthesize Reelfarm Intel results and update TikTok slideshow settings/prompts for each app before resuming.
+- 2026-06-01 update: JT is still warming up the TikTok accounts for Vista, Nash, and Glow Index and has not been posting slideshows recently. He expects to resume this week after a couple more days of warm-up. Treat TikTok slideshow execution as warm-up gated, not overdue. Eve owns re-entry planning, source tags, metric rows, and follow-up task cleanup; JT owns account warm-up and manual TikTok posting.
 
 ## Strategy Reset
 1. Do not scale slideshow volume while accounts are cold or posts get 0 views.
@@ -15,6 +16,7 @@
 5. Reelfarm Intel should be synthesized into app-specific prompt/settings changes before posting resumes.
 6. Until accounts have 20+ posts with normal, non-throttled distribution, ReelFarm Intel recommendations are capped at `Medium - hypothesis` and must be treated as tests, not optimizations.
 7. Automation B is screenshot-demo only; if the hook does not promise product screenshots/walkthrough in the following slides, it belongs in Automation A.
+8. 2026-06-01 re-entry rule: resume with one manual post per account first, then wait for 24h/72h/7d metrics before any additional volume. If a resumed post gets 0 views again, stop and diagnose account trust/posting mode before changing creative.
 
 ## App Priority
 - Vista: next app-marketing sprint focus. Use a Vista-first, artifact-led growth test instead of equal effort across all apps. Allocate roughly 60-70% of app-marketing slots to Vista, 20-30% to Nash, and keep Glow SEO/AI-search first until crawler/claim-safety/measurement gates are healthy.
@@ -29,5 +31,6 @@
 - Add weekly app signal review that recommends only 5-7 total app posts from metrics.
 - Create Reelfarm Intel synthesis + settings-update task.
 - TikTok account warm-up / manual-post protocol exists at `memory/reelfarm/manual-post-recovery-protocol-2026-05-26.md`; next step is JT manual warm-up/posting plus metrics capture before scaling.
+- Re-entry plan exists at `memory/app-marketing/tiktok-reentry-plan-2026-06-01.md`; next Eve-owned step is reconciling live TikTok post URLs/IDs and metrics after JT resumes posting.
 - Create Action Arena App Store launch marketing checklist task.
 - Create Dynasty Simulator validation/prelaunch positioning task.

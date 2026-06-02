@@ -86,6 +86,14 @@ bun run x-search.ts profile <username> [--count N] [--replies] [--json]
 
 Fetches recent tweets from a specific user (excludes replies by default).
 
+When parsing `--json` profile output, treat it as an object with a `tweets`
+array. Do not use `jq '.[0] // .tweets[0] // empty'` because indexing an
+object with `.[0]` can fail before the fallback runs. Use:
+
+```bash
+jq '.tweets[0] // empty' profile-username.json
+```
+
 ### Thread
 
 ```bash

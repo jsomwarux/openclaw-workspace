@@ -63,6 +63,10 @@ curl -X PATCH http://localhost:3000/api/tasks \
 curl http://localhost:3000/api/tasks
 ```
 
+Task descriptions with links should put each URL on its own line under a short label. The task board renders URLs as clickable links and uses `overflow-wrap: anywhere`; do not rely on one long sentence of inline Drive links.
+
+`npm run build` must not write to the live `.next` directory while the LaunchAgent is running `next dev`; it uses `NEXT_DIST_DIR=.next-build` for isolated verification builds. If a manual build ever causes `Cannot find module './*.js'` from `.next/server/webpack-runtime.js`, recover with `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next`.
+
 ## Architecture Decisions
 
 - **Convex for tasks only** — real-time sync, both JT and Eve can write, persists across sessions

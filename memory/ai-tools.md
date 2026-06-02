@@ -575,3 +575,11 @@ JT's focus on **responsible AI governance** (AgentGuard) and **exception layers*
 **Workspace-native personal agents are also coming from Google.** Google Workspace announced Gemini Spark as a 24/7 personal agent that integrates with Workspace apps, acts under user direction, and asks before high-stakes actions such as sending emails or adding calendar events. Source: https://blog.google/products-and-platforms/products/workspace/workspace-updates/.
 
 **JT relevance:** keep positioning demos as "governed workflow workers inside the tools you already use." The credible proof points are: who owns the agent, which systems it can touch, what actions require approval, what exceptions go to a queue, and what run history/proof log exists. This maps directly to Altmark-style review-only outputs and to SMB back-office pilots where the buyer cares more about permission boundaries than model names.
+
+## Jun 1, 2026 — Heartbeat AI Tool Monitoring
+
+**Claude Code is pushing toward larger autonomous coding runs.** Anthropic's Opus 4.8 release says Claude Code now has dynamic workflows for large-scale problems, with Claude able to plan work and run many parallel subagents in a single session. Source: https://www.anthropic.com/news/claude-opus-4-8
+
+**Enterprise agents keep converging on context, governance, and app connectivity.** Google Cloud's Gemini Enterprise materials frame the product as a secure workplace agent platform that connects to Workspace, Microsoft 365, Salesforce, SAP, BigQuery, and other systems, with central governance and audit controls. Source: https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise
+
+**JT relevance:** this reinforces the same consulting lane as the Agentforce/Data Cloud proof-pack work: buyers will reward context maps, approval boundaries, run visibility, and evals more than generic "we use agents" copy. For internal OpenClaw work, dynamic subagent patterns are worth using only when the task has clean boundaries, clear file ownership, and a verification step.

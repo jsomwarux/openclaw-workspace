@@ -179,6 +179,22 @@ Product lanes like Vista, Nash Satoshi, Glow Index, and App Marketing are active
 
 Claude Code is a tool/proof ingredient, not a primary niche.
 
+## AI Ops Teardown Standard
+
+AI Ops Teardown posts are not generic workflow advice. They should examine a current company, funding event, product launch, market shift, regulation, or visible buyer problem in a niche relevant to JT, then show the optimal AI workflow JT would build for that exact company/problem.
+
+Minimum bar:
+- Current signal, preferably last 30 days.
+- JT-relevant niche: property ops, construction/trades, wholesale distribution, insurance/Agentforce, SMB operations, or AI operating systems when tied to business adoption.
+- Specific workflow map: inputs, extraction/classification, system-of-record check, exception handling, human approval, output, audit trail.
+- Distinct angle from the last 45 days of scheduled/posted content.
+- Buyer learns what should be built, not just that "AI needs workflow."
+- Concrete operating scene before abstract diagnosis: name the input formats, wrong/missing details, system-of-record need, and owner handoff.
+- Customer/operator behavior stays realistic: the best teardown often adds a cleaner intake layer without asking customers to change how they already send work.
+
+Strong shape:
+`[Company/event] just showed a problem [buyer] already recognizes: [plain bottleneck]. [Concrete input scene]. [System] still needs [clean output/check/owner/confirmation]. The workflow I would build starts with [desk/router/queue]. It reads [inputs], extracts [fields], checks [systems/rules], drafts [output], routes exceptions, and preserves the source. [Customers/operators] keep working normally. [Buyer] gets [cleaner handoff] before [bad data/missed work] hits [system of record].`
+
 ---
 
 ## LinkedIn Post Format Rules
@@ -189,7 +205,9 @@ Claude Code is a tool/proof ingredient, not a primary niche.
 - **Default consulting structure:** concrete operational scene → specific examples → plain diagnosis → where AI fits → clean outcome. Buyer pain first, AI second, JT POV last.
 - **Friday buyer-facing rule:** Prefer hooks like “Weekly status meetings might be the most expensive meeting on your calendar” over abstract hooks like “Most businesses do not need an AI chatbot.” Start with meetings, handoffs, approvals, stale reports, duplicate entry, ownerless requests, inbox/spreadsheet/portal sprawl.
 - **No outreach-meta by default:** Do not discuss JT's prospect research, lead enrichment, buyer-channel validation, or outreach strategy on LinkedIn unless writing explicitly for a sales-ops audience.
+- **No content-ops reveal by default:** Do not discuss JT's internal content generation, publishing system, swipe mechanics, posted logs, state files, or content automation on LinkedIn. That may be useful for internal build discipline, but it weakens the public trust surface.
 - **Avoid AI-generated thought-leadership smell:** no “AI chatbot” contrast hooks, no “exception layer” phrasing, no vague “messy work” language, no stacked rhetorical lists unless grounded in a concrete workflow.
+- **Originality over acceptable:** every weekly slot must clear a 45-day semantic repeat check. Rewording a familiar angle is still a failure. Current hard-block phrases/angles: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” and content-system/process transparency.
 - **Contrarian setup ban for all JT content:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” “not X, but Y,” the two-sentence “X is not just Y. It is Z.” variant, or repeated-noun reveals like “The risk is not X. The risk is Y.” This is banned across LinkedIn, X, reminders, client-proof posts, product-builder posts, and methodology/trust posts. Start with the positive claim, concrete scene, machine, workflow, owner, number, or business constraint.
 - **Generic importance phrase ban:** never write “matters more than people think,” “people underestimate,” or “that part matters” unless replaced with the specific business reason.
 - **No hashtags.** They suppress reach.
@@ -310,6 +328,11 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 |---|---|---|---|---|
 | 2026-05-27 | Altmark Rent Delinquency Testing Pack | Created Altmark rent delinquency acceptance checklist and runbook for sample-report testing, exception routing, human approval, rollback, and production cutover; Mission Control top task now points to the checklist. | Paid-client delivery control, property-ops workflow acceptance design, privacy-safe reusable IP capture | Complete |
 | 2026-05-31 | jtsomwaru.com AI Context OS Sprint Service Page | Added `/services/ai-context-os`, homepage service routing, sitemap/llms/JSON-LD exposure, and an `ai-context-os` delivery skill with reusable sprint template; build/lint passed, pushed commit `9fc24fd`, and production returned HTTP 200. | AI context engineering offer packaging, GEO service-page build, reusable consulting IP system | Complete |
+| 2026-06-01 | jtsomwaru.com Vista 1-100 Movie Rating Landing Page | Built `/1-100-movie-rating-app` with direct-answer copy, App Store CTA, screenshots, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, and llms.txt coverage; build/lint/local route checks passed; commit `f09e09f` pushed and production returned HTTP 200. | Durable product-distribution page, AI-search/GEO app marketing, Vista growth infrastructure | Complete |
+| 2026-06-01 | jtsomwaru.com Vista Movie Taste Profile Landing Page | Built `/movie-taste-profile-app` with direct-answer copy, App Store CTA, Vista screenshot, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, llms.txt coverage, and cross-linking from `/1-100-movie-rating-app`; build/lint/local route checks passed; commit `eb983d3` pushed and production returned HTTP 200. | Product SEO clustering, AI-search/GEO app marketing, internal-link compounding | Complete |
+| 2026-06-01 | jtsomwaru.com Vista Letterboxd Precise Ratings Landing Page | Built `/letterboxd-alternative-precise-ratings` with careful Letterboxd-adjacent positioning, direct-answer copy, App Store CTA, Vista screenshot, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, llms.txt coverage, and cross-links from both existing Vista SEO pages; build/lint/local route checks passed; commits `61ba431` and `6640cbf` pushed and production returned HTTP 200. | Guardrailed comparison SEO, AI-search/GEO product-page clustering, product positioning discipline | Complete |
+| 2026-06-01 | jtsomwaru.com Vista Private Movie Rating Landing Page | Built `/private-movie-rating-app` with private personal tracking positioning, direct-answer copy, App Store CTA, Vista screenshot, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, llms.txt coverage, and reciprocal links from the existing Vista SEO pages; lint/build/local rendered checks passed; commit `f8f8149` pushed and production returned HTTP 200. | Privacy-positioned product SEO, AI-search/GEO page clustering, unsupported-claim avoidance | Complete |
+| 2026-06-01 | jtsomwaru.com Vista Rate Movies Out Of 100 Landing Page | Built `/rate-movies-out-of-100` with 100-point rating-method copy, App Store CTA, Vista screenshot, FAQ schema, SoftwareApplication schema, HowTo schema, BreadcrumbList schema, sitemap exposure, llms.txt coverage, and reciprocal Vista cluster links; final source verifier, lint, build, and production checks passed after commits `6ff6610`, `5111a61`, and `a24616f`. | Educational product SEO, AI-search/GEO page clustering, verification hardening | Complete |
 | 2026-05-19 | App Marketing Share Artifacts Batch 5 | Built Nash `/receipts/weekly` PNG receipt generator and Glow Product Verdict Card MVP; Nash `npm run check` + `npm run build` passed, Glow `npm run build` + `npm run lint` passed. | Product-led app distribution assets, repo-aware AI coding-agent orchestration | Complete |
 | 2026-05-27 | jtsomwaru.com n8n Automation Service Page | Built `/services/n8n-automation` with FAQ schema, Service JSON-LD, sitemap exposure, homepage links, llms.txt coverage, and an updated Drive roundup packet; verifier/build/lint and production live checks passed. | AI-search/GEO service-page build, proof-safe consulting positioning, citation-ready outreach infrastructure | Complete |
 | 2026-05-14 | jtsomwaru.com Public Proof Privacy Pass | Anonymized client names and removed exact proposal amounts from site proof copy; production verified clean for Aya/Altmark/Lady D/exact amount hits. | Public proof hygiene, privacy-safe case-study packaging | Complete |

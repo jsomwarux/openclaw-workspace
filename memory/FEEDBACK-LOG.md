@@ -200,3 +200,20 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - Rule: When quote tweeting a concrete client result JT built, lead with verified ownership: "Built this AI workflow for [person/company]." Then include real deployment detail, hard metrics, and the vertical thesis. Do not default to generic "chatbots vs agents" or "AI businesses pay for" framing when proof is available.
 - Preferred pattern: ownership first, operational architecture second, metric third, market/vertical thesis last, partner tag only when useful.
 - Verification: Updated `memory/content-voice.md` X rules, You/I exception, theme library, and audit checklist on 2026-05-28.
+## 2026-06-01 — LinkedIn content must optimize for novelty, buyer trust, and strategic surface
+- Trigger: JT rejected the 2026-06-01 LinkedIn queue as generic/repetitive and called out four failures: recycled "best first AI project" framing, repeated "gets risky/lives in different places" structure, overuse of "exception layer," and a Sunday post revealing internal content automation.
+- Rule: LinkedIn queues must pass a semantic originality check against recent posts before they reach JT. Reworded repeats are still failures.
+- Guardrail: Do not publish about JT's internal content generation, publishing system, swipe mechanics, posted logs, state files, or content automation unless JT explicitly asks for that public topic.
+- Better direction: buyer-recognizable workflow pain, real proof, implementation judgment, productized-service IP, and content that strengthens JT as an AI implementation operator.
+
+## 2026-06-01 — AI Ops Teardowns must be current-signal workflow teardowns
+- Trigger: JT rejected the AI Ops Teardown framing because the posts felt like simple, generic AI ops advice and repetitive against recent content. He clarified the purpose: examine trending companies or trending problems in JT-relevant niches, have the agent analyze the company/problem, design the optimal AI workflow, then turn that into a LinkedIn post demonstrating what JT would build.
+- Rule: AI Ops Teardowns must start from a current company, funding/product/market signal, regulation, or visible buyer problem. They must then show the optimal workflow map: inputs, checks, exception routing, approval boundary, output, and buyer outcome.
+- Guardrail: If the draft could apply to any business, or if it only says "AI needs workflow/approval/exception handling," it is not a teardown. Replace it with a current-signal company/problem teardown or skip the slot.
+- Better direction: current signal first, concrete niche second, workflow architecture third, JT implementation judgment last.
+
+## 2026-06-01 — AI Ops Teardowns need an operating-scene spine
+- Trigger: JT rewrote the Canals teardown into a stronger post: current funding signal, scattered-information bottleneck, concrete order-input examples, ERP needs, shared intake desk, extraction/checking/routing, and a close about cleaner intake before bad data hits the ERP.
+- Rule: Future AI Ops Teardowns should use that spine by default: current signal → buyer-recognizable bottleneck → concrete messy input scene → system-of-record need → workflow start point → read/extract/check/draft/route steps → business outcome before downstream damage.
+- Guardrail: Avoid news-summary hooks and generic “AI workflow” closes. The hook must translate the news into an operator pain, and the close must name the operational improvement.
+- Better direction: customers/operators keep their normal behavior; JT’s workflow cleans the intake, routing, and handoff layer around the system of record.

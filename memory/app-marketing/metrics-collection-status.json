@@ -1,10 +1,10 @@
 {
-  "posts_seen": 54,
+  "posts_seen": 59,
   "metrics_rows_fetched": 38,
   "metrics_rows_appended": 0,
   "skipped_by_platform": {
-    "tiktok": 16,
-    "x": 1,
+    "tiktok": 20,
+    "x": 2,
     "seo": 1
   },
   "failures": [],

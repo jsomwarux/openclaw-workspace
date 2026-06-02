@@ -37,6 +37,26 @@ const ASSIGNEE_COLORS: Record<Assignee, string> = {
   both: "bg-purple-500/20 text-purple-400",
 };
 
+const URL_PATTERN = /(https?:\/\/[^\s]+)/g;
+
+function renderDescription(text: string) {
+  return text.split(URL_PATTERN).map((part, index) => {
+    if (!part.match(URL_PATTERN)) return <span key={index}>{part}</span>;
+    return (
+      <a
+        key={index}
+        href={part}
+        target="_blank"
+        rel="noreferrer"
+        className="text-emerald-400 underline decoration-emerald-500/40 underline-offset-2 hover:text-emerald-300"
+        onClick={(event) => event.stopPropagation()}
+      >
+        {part}
+      </a>
+    );
+  });
+}
+
 export default function TasksPage() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
@@ -176,7 +196,9 @@ export default function TasksPage() {
             }
           </button>
           {expandedIds.has(task._id) && (
-            <p className="text-[10px] text-zinc-500 mt-1.5 leading-relaxed whitespace-pre-wrap border-t border-[#2a2a2a] pt-1.5">{task.description}</p>
+            <div className="text-[10px] text-zinc-500 mt-1.5 leading-relaxed whitespace-pre-wrap break-words [overflow-wrap:anywhere] border-t border-[#2a2a2a] pt-1.5">
+              {renderDescription(task.description)}
+            </div>
           )}
         </>
       )}

@@ -3,6 +3,15 @@
 
 ---
 
+## Jun 1, 2026 — 10:20AM Heartbeat
+- **Market regime:** Latest crypto-agent run framed x402/agent commerce as still Phase 2: real usage narrative, not mainstream mania. AI inference markets and Base developer infrastructure have the cleanest flow; vote/link spam remains the main negative filter.
+- **Allocation read:** Model shifted the live allocation toward `$SURPLUS` 35%, `$GITLAWB` 25%, `$ODAI` 25%, and reduced `$PRXVT` to 15%. It exited `$NOX`, `$NOOK`, and `$SIBYL` because fresh X quality was mostly paid-call/vote spam or weak value-capture proof.
+- **Watch signals:** `$SURPLUS` had the strongest inference-market + whale-entry combination; `$GITLAWB` had the strongest active-holder buy/volume confirmation; `$ODAI` became the new watchlist entry from organic accumulation posts.
+- **Risk note:** The useful signal is selective infrastructure flow, not broad AI-token beta. Treat thin liquidity, spam-heavy engagement, and sell-dominant flow as exit-liquidity risk even when the headline narrative fits.
+- **JT read:** No immediate alert beyond the morning crypto packet. Keep the filter tight: fresh human-quality X signal plus on-chain/volume confirmation before chasing any x402 or agent-commerce ticker.
+
+---
+
 ## May 29, 2026 — 12:12PM Heartbeat
 - **Market snapshot:** BTC ~$73.9K (+1.3% vs previous close), ETH ~$2,034 (+2.1%), SOL ~$82.64 (+1.9%). This is constructive but still below broad alert threshold; no immediate Telegram-worthy price alert.
 - **Fresh narrative check:** x402/agent-payment coverage remains the cleanest crypto + AI thread. Recent coverage points to Coinbase/Base, AWS Bedrock AgentCore Payments, Solana/USDC rails, batch settlement, and MCP/tool-payment use cases. The signal is infrastructure adoption, not a blanket AI-token bid.

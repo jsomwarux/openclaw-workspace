@@ -1,0 +1,9 @@
+{
+  "title": "Skills gap: build HubSpot/CRM AI integration playbook",
+  "description": "First action: research HubSpot AI/API/workflow patterns and create `skills/hubspot-crm-ai/SKILL.md` with lead routing, ticket triage, renewal risk, and sales ops workflow templates. Why it matters: HubSpot is a stronger SMB expansion wedge than Salesforce in some consulting lanes, and current market demand rewards CRM/data/workflow integration fluency. Done: skill includes fit criteria, auth/safety notes, workflow templates, proof artifacts, and at least one NYC SMB use case.",
+  "status": "todo",
+  "priority": "medium",
+  "assignee": "eve",
+  "project": "Skills",
+  "sortOrder": 146
+}

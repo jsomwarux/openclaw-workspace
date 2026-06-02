@@ -69,14 +69,20 @@ def close_mc_task(slug, company):
         print(f"WARNING: MC fetch failed: {e}"); return
     closed = 0
     company_tokens = [tok.lower() for tok in re.findall(r"[A-Za-z0-9]+", company) if len(tok) > 2]
+    slug_phrase = slug.replace("-", " ").lower()
     for t in tasks:
         title = t.get("title", "")
+        description = t.get("description", "")
         if t.get("status") == "done":
+            continue
+        if t.get("slug") and t.get("slug") != slug:
             continue
         if not any(marker in title for marker in ["Review + Send", "Email Pivot"]):
             continue
-        title_l = title.lower()
-        if not any(tok in title_l for tok in company_tokens[:3]):
+        haystack = f"{title} {description}".lower()
+        exact_slug_match = slug in haystack or slug_phrase in haystack
+        exact_company_match = bool(company_tokens) and all(tok in haystack for tok in company_tokens)
+        if not (exact_slug_match or exact_company_match):
             continue
         try:
             patch_task(t["_id"], {"status": "done"})
@@ -111,7 +117,7 @@ def create_followup_task(slug, company, message):
         for pat, lbl in [(r'\*\*Name:\*\* (.+)',"Contact"),(r'\*\*LinkedIn:\*\* (.+)','LinkedIn'),(r'\*\*Email:\*\* (.+)','Email')]:
             r2 = re.search(pat, c)
             if r2: extra += f"{lbl}: {r2.group(1).strip()}\n"
-    task = {"title": title, "description": f"{desc}\n\nSource refs:\n{extra}".strip(), "status": "todo", "priority": "low", "assignee": "jt", "project": "Consulting", "sortOrder": 220, "slug": slug, "pipelineStage": next_m}
+    task = {"title": title, "description": f"{desc}\n\nSource refs:\n{extra}".strip(), "status": "todo", "priority": "high", "assignee": "jt", "project": "Consulting", "sortOrder": 20, "slug": slug, "pipelineStage": next_m}
     try:
         for t in fetch_tasks():
             if t.get("title") == title and t.get("status") in {"todo", "in_progress", "pending", "blocked"}:

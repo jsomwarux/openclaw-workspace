@@ -67,6 +67,11 @@ FILE_REFS = {
     "agents/mission-control-priority-auditor/AGENT.md": "3e4cc2bf2da3cae470cf6f4737eb9ce9cb0897f4",
     "agents/ai-ops-teardown/AGENT.md": "3e4cc2bf2da3cae470cf6f4737eb9ce9cb0897f4",
     "skills/ai-governance-readiness/SKILL.md": "f245c53eeb57a7a1f1c9601fc8663471bed66b8f",
+    "agents/client-proof-engine/AGENT.md": "b8619d18007ffce53fe12daf2a1ca09c8001c2a4",
+    "agents/linkedin-corpus/AGENT.md": "b8619d18007ffce53fe12daf2a1ca09c8001c2a4",
+    "skills/ai-context-os/SKILL.md": "b8619d18007ffce53fe12daf2a1ca09c8001c2a4",
+    "skills/client-proof-capture/SKILL.md": "b8619d18007ffce53fe12daf2a1ca09c8001c2a4",
+    "skills/linkedin-corpus/SKILL.md": "b8619d18007ffce53fe12daf2a1ca09c8001c2a4",
 }
 
 def get_git_lines(file_path, ref):

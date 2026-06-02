@@ -14,6 +14,7 @@ Before drafting ANY post or content for JT:
 8. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering.
 9. For every LinkedIn draft, run the executable stale-pattern guard before delivery: `python3 scripts/content_distribution_guard.py --linkedin-draft [draft-file]`. If it fails, rewrite before showing JT.
 10. AI Ops Teardown Drive hygiene: top-level `Eve — Drafts / Content / LinkedIn / AI Ops Teardowns` must contain one canonical doc per teardown plus `Archive/`. Prep packs, delivery bundles, superseded drafts, and weekly batches must not sit beside canonical teardowns. If local copy changes after upload, update the existing Google Doc body or create a new canonical doc and archive stale copies.
+11. AI Ops Teardown purpose: each teardown must start from a current company, funding, product, market, regulation, or buyer-problem signal in a JT-relevant niche, then show the optimal AI workflow JT would build for that company/problem. Generic "AI ops" advice, repeated approval-queue content, or evergreen workflow tips are not valid teardowns unless tied to a new current signal and distinct workflow. The preferred shape is current signal → buyer-recognizable bottleneck → concrete messy input scene → system-of-record need → workflow JT would build → clean operating outcome.
 
 ## Self-Improving Content Loop
 All content Eve generates for JT must use a feedback loop calibrated to the niche and platform.
@@ -96,6 +97,8 @@ Viral Swipe must search live X with explicit recency and performance filters: `-
 - No forbidden words (full list in content-voice.md)
 - No em dashes, no exclamation points, no "Here's the thing:" openers
 - All JT content must not use stale contrarian/reveal patterns: no “the blocker is not whether X, it is whether Y,” no “not look what this tool can do, more like…,” no “not X, but Y,” no two-sentence “X is not just Y. It is Z.” framing, and no “matters more than people think” generic importance phrases.
+- LinkedIn originality gate: before delivery, compare every slot against the last 45 days of `memory/content/posted-log.jsonl` and the prior week's published/scheduled posts. Block drafts that reuse the same semantic angle, not just the same words. Current hard blocks: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” and any public discussion of internal content-generation or publishing machinery.
+- LinkedIn strategic-fit gate: posts must make JT look like the operator a buyer or hiring manager would trust with implementation. Default to buyer-recognizable workflows, real proof, service-delivery judgment, and business constraints. Do not publish posts about how JT generates, schedules, guards, or automates his own content unless JT explicitly asks for that topic.
 - Threads: max 5 tweets; most should be 3
 
 ## Wednesday LinkedIn

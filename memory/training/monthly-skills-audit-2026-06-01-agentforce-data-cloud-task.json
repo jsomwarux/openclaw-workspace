@@ -1,0 +1,9 @@
+{
+  "title": "Skills gap: build Agentforce/Data Cloud implementation proof pack",
+  "description": "First action: create `skills/agentforce-data-cloud/SKILL.md` with fit criteria, discovery checklist, demo/proof artifacts, no-Apex boundaries, and smoke-test steps. Why it matters: current AI Implementation Lead and Agentforce SE roles explicitly value Data Cloud, Agentforce, Flow Builder, and agent configuration; JT needs proof language without drifting into developer-only Salesforce work. Done: skill exists, references `docs/tools/salesforce-data-cloud.md`, includes client/job-market proof artifacts, and passes a quick validation run.",
+  "status": "todo",
+  "priority": "medium",
+  "assignee": "eve",
+  "project": "Skills",
+  "sortOrder": 145
+}

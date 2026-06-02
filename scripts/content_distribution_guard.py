@@ -64,6 +64,34 @@ LINKEDIN_STALE_PATTERNS = [
         re.compile(r"\bNo\s+[^.\n]{1,80}\.\s*No\s+[^.\n]{1,80}\.\s*Just\s+[^.\n]{1,80}\.", re.I),
         "tricolon negation: 'No X. No Y. Just Z.'",
     ),
+    (
+        re.compile(r"\bthe\s+best\s+first\s+ai\s+project\s+is\s+usually\s+the\s+least\s+glamorous\s+one\b", re.I),
+        "overused generic AI opener: 'best first AI project / least glamorous'",
+    ),
+    (
+        re.compile(r"\bgets\s+risky\s+when\b[^.\n]{0,180}\blive\s+in\s+different\s+places\b", re.I),
+        "repeated risk/place pattern: 'gets risky when...live in different places'",
+    ),
+    (
+        re.compile(r"\bexception\s+layer\b", re.I),
+        "overused implementation phrase: 'exception layer'",
+    ),
+    (
+        re.compile(r"\bautonomous\s+content\s+systems?\b", re.I),
+        "private operating-system reveal: autonomous content systems",
+    ),
+    (
+        re.compile(r"\b(?:content\s+generator|publishing\s+system|content\s+system)\b[^.\n]{0,160}\b(?:current\s+efforts|posted\s+log|swipe\s+references|state\s+file|niche\s+map)\b", re.I),
+        "private content-ops reveal: internal publishing machinery",
+    ),
+    (
+        re.compile(r"\bhandoff\s+everyone\s+checks\s+manually\b", re.I),
+        "overused generic AI motif: 'handoff everyone checks manually'",
+    ),
+    (
+        re.compile(r"\b(?:content|publishing|post)\b[^.\n]{0,160}\b(?:state\s+file|stop\s+condition)\b", re.I),
+        "private content-ops reveal: state file / stop condition",
+    ),
 ]
 
 DYNASTY_REQUIRED = [
@@ -140,6 +168,30 @@ TOPIC_CLUSTERS = {
         "runs every 14 days",
         "manual search work",
         "matching listings",
+    ],
+    "exception-layer": [
+        "exception layer",
+        "messy cases",
+        "ownership rules",
+        "gets approved",
+        "gets escalated",
+        "stuck orders",
+    ],
+    "generic-first-ai-project": [
+        "best first ai project",
+        "least glamorous",
+        "handoff everyone checks manually",
+        "operating loop",
+        "business can trust",
+    ],
+    "private-content-ops": [
+        "autonomous content system",
+        "content generator",
+        "publishing system",
+        "posted log",
+        "swipe references",
+        "niche map",
+        "current efforts",
     ],
 }
 

@@ -100,7 +100,86 @@ Required weekly inputs:
 - Do not increase posting volume until metrics are captured reliably.
 - If data is missing for 2 consecutive weeks, fix the metrics handoff before recommending more content volume.
 
+## Weekly App Signal Review — added 2026-06-01
+
+Purpose: choose a small weekly app-marketing queue from measured signals, not equal-volume content across every app.
+
+### Portfolio Allocation Rule
+- Total app posts/week: 5-7.
+- Vista: 60-70% of the queue, normally 3-4 posts.
+- Nash Satoshi: 20-30% of the queue, normally 1-2 posts.
+- Glow Index: SEO/GEO and safe page work first until crawler access, claim-safety, and metrics gates are healthy.
+- Action Arena / Dynasty: only if launch, waitlist, or native sports-account signals beat the active app queue.
+
+### Required Review Inputs
+Each weekly review must check:
+- winning format from the prior week;
+- losing format from the prior week;
+- source tag / UTM coverage;
+- 24h, 72h, and 7d metric windows;
+- downstream metric: App Store click/download, site visit, signup, reply, save, export, or qualified comment;
+- attribution confidence: high / medium / low;
+- scale / iterate / kill decision.
+
+### Queue Selection Template
+
+```md
+## Next 5-7 App Posts
+
+| Slot | App | Format | Source tag | Owner | CTA | Metric window | Decision rule |
+|---:|---|---|---|---|---|---|---|
+| 1 | Vista |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
+| 2 | Vista |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
+| 3 | Vista |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
+| 4 | Vista or Nash |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
+| 5 | Nash |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
+| 6 | Optional best signal |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
+| 7 | Optional best signal |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
+```
+
+### Kill / Hold Rules
+- If a post idea has no source tag, hold it.
+- If the matching app has no metric path, hold it.
+- If Glow's crawler access is blocked or claim-safety is unclear, replace Glow social volume with a safe SEO/page task.
+- If Vista assets are missing, choose a lower-volume post paired with a buildable visual instead of publishing text-only product claims.
+- If Nash language implies returns, price prediction, or financial advice, kill the slot.
+
+### Weekly Output Requirement
+Every weekly review ends with exactly one of these:
+- `SHIP_QUEUE`: 5-7 posts have owner, source tag, CTA, and metric windows.
+- `FIX_TRACKING_FIRST`: tracking is too weak to justify more posts.
+- `BUILD_ASSET_FIRST`: the best post needs a visual/card/page before distribution.
+- `SEO_FIRST`: app should get page work instead of social volume this week.
+
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-05-25
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-05-25 to 2026-05-31 (0 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 4
+- Web depth: active users 4, pageviews 7, events 15
+- Best item: glow-index GA4 web traffic 2026-05-25 to 2026-05-31 (4 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-05-25 to 2026-05-31 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 34
+- Web depth: active users 7, pageviews 62, events 170
+- Best item: nash-satoshi GA4 web traffic 2026-05-25 to 2026-05-31 (34 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-05-25 to 2026-05-31 (34 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-05-24
 
 ### glow-index / search_console
@@ -452,12 +531,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 19
+- Posts/results logged: 20
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 19
+- Posts/results logged: 20
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -971,7 +1050,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-05-31_
+_Last updated: 2026-06-01_
 
 <!-- METRICS_SUMMARY_END -->
 
@@ -999,3 +1078,11 @@ _Last updated: 2026-05-31_
 - Skips: Nash X/TikTok skipped because live rankings are stale (~161h old); Reddit skipped for compliance risk; LinkedIn skipped because May monthly post already exists and no new milestone/proof.
 - Measurement blocker: Vista/ReelFarm live post IDs + App Store metrics still need reconciliation; Nash leaderboard freshness must be restored before ranking copy.
 - Next durable discovery action: fix/refresh Nash ranking generation or leaderboard freshness, then produce one ranking/model-disagreement X draft from live data only.
+
+## Run Note — 2026-06-01 Product Content
+- Generated counts: X 1, Reddit 0, TikTok/ReelFarm support 1 hook/slide concept only, LinkedIn 0.
+- Approved queue entries: `vista-x-2026-06-01-rating-precision-1`, `vista-tiktok-2026-06-01-rating-precision-1`.
+- Skips: Nash X/TikTok skipped because `scripts/nash_rankings_probe.py --json --limit 10` returned stale rankings (~329h old); Reddit skipped fail-closed; LinkedIn skipped because no new product milestone/proof.
+- Measurement blocker: Vista/ReelFarm live post IDs and App Store/App metrics still need reconciliation before volume increases.
+- Next durable discovery action: reconcile Vista live post IDs into `memory/app-marketing/post-registry.jsonl`, then compare 24h/72h/7d metrics before reusing rating-precision again.
+- Review doc: `https://docs.google.com/document/d/1CPONywqHxRlmcvf_kbXFvgVpadUMeGYBCGd5kKBiDq8/edit` (local: `/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-06-01.md`).

@@ -19,6 +19,9 @@ For agents/CRONs: Load this skill before drafting any post.
 3. **Uncomfortable Truths:** State facts flatly. E.g., "AI builds aren't expensive — they're cheaper than the humans that would do the same work."
 4. **No "Broetry":** Do not use cringe LinkedIn spacing (one sentence per line for 20 lines) unless mocking it.
 5. **No Preamble:** Never start with "Here's a thought" or "I was thinking today." Start with the punchline.
+6. **No Semantic Repeats:** For LinkedIn, check the last 45 days of posted/scheduled content before drafting. Repeating the same idea with new wording is a failed draft.
+7. **No Internal Content Ops:** Do not publish about JT's content generation, publishing system, posted logs, swipe mechanics, state files, or content automation unless JT explicitly asks for that public topic.
+8. **AI Ops Teardown Standard:** A teardown must examine a current company or trending operational problem in a JT-relevant niche, then show the optimal AI workflow JT would build for that company/problem. If there is no current signal, named problem, workflow map, approval boundary, and buyer outcome, it is not a teardown. Strong teardowns translate the news into a buyer-recognizable operating bottleneck, show the messy input scene, then explain what the workflow reads, extracts, checks, drafts, routes, and prevents before bad data or unclear ownership hits the system of record.
 
 ## Platform Formatting Rules
 ### X (Twitter)
@@ -31,11 +34,13 @@ For agents/CRONs: Load this skill before drafting any post.
 - **Structure:** Bullet points for readability. First line must stop the scroll without being clickbait.
 
 ## Execution Steps
-1. **Analyze Request:** Determine the platform (X or LinkedIn) and the content type (Hot Take, Case Study, Workflow Teardown).
+1. **Analyze Request:** Determine the platform (X or LinkedIn) and the content type (Hot Take, Case Study, Workflow Teardown). For AI Ops Teardowns, identify the current company/problem signal before drafting.
 2. **Load Niche Map:** Read `~/.openclaw/workspace/memory/content/current-niche-map.md`. Pick the exact canonical niche lane before fetching references or drafting. Default LinkedIn lanes are `SMB AI Implementation`, `Property Management Operations`, `NYC SMB Operations`, `Wholesale Distribution Operations`, `Construction + Skilled Trades Operations`, `Insurance / Agentforce Operations`, `AI Operating Systems / Agent Orchestration`, `AI Enablement / Solutions Architecture Career`, and `Productized Services / Solo Operator Systems`.
-3. **Drafting:** Write the post explicitly applying the 5 Core Directives.
+3. **Drafting:** Write the post explicitly applying the Core Directives.
 4. **Compression Pass:** Read the draft. Delete 20% of the words. If the meaning changes, you cut the wrong words. If it hits harder, keep going.
-5. **Output:** Return ONLY the post text. No "Here is your drafted post." Just the text. 
+5. **Teardown Fit Pass:** For AI Ops Teardowns, reject drafts that read like a news summary or generic AI advice. The post must include: current signal, buyer-recognizable bottleneck, concrete input examples, system-of-record need, workflow start point, extraction/check/routing steps, and a practical outcome that lets customers/operators keep normal behavior while the business gets cleaner handoffs.
+6. **Originality Pass:** Compare against `memory/content/posted-log.jsonl` and reject repeated hooks, phrasing, or angles. Current blocked LinkedIn repeats include "best first AI project / least glamorous," "handoff everyone checks manually," "gets risky when...live in different places," "exception layer," "autonomous content system," "state file," "stop condition," and internal content-system transparency.
+7. **Output:** Return ONLY the post text. No "Here is your drafted post." Just the text. 
 
 ## Data Flow & Integration Guidelines
 - **Input Content:** For Monday/Thursday crons, always load `~/.openclaw/workspace/memory/content/weekly-intel-brief.md` for this week's niche signals before drafting any content.

@@ -1,0 +1,209 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 45773,
+      "following_count": 1701,
+      "tweet_count": 68810,
+      "listed_count": 195,
+      "like_count": 147714,
+      "media_count": 7454
+    },
+    "id": "1685300163420844032",
+    "created_at": "2023-07-29T14:44:21.000Z",
+    "name": "Aryan Rakib",
+    "username": "tec_aryan",
+    "description": "AI & Tech Strategist || Empowering Businesses with Cutting-Edge AI Solutions || Professional Ghostwriter ||📩 aryanrakib101@gmail.com"
+  },
+  "tweets": [
+    {
+      "id": "2060996946962366658",
+      "text": "Your voice can now write as smoothly as you think.\n\n@typelessdotcom turns spoken thoughts into polished emails, clear notes, natural Slack replies and organized docs — all while keeping your personal tone consistent across apps.\n\nIt’s faster than typing, smarter than basic https://t.co/IUcyBgMJdP",
+      "author_id": "1685300163420844032",
+      "username": "tec_aryan",
+      "name": "Aryan Rakib",
+      "created_at": "2026-05-31T08:08:58.000Z",
+      "conversation_id": "2060996946962366658",
+      "metrics": {
+        "likes": 201,
+        "retweets": 73,
+        "replies": 35,
+        "quotes": 0,
+        "impressions": 47191,
+        "bookmarks": 48
+      },
+      "urls": [
+        "https://x.com/tec_aryan/status/2060996946962366658/video/1"
+      ],
+      "mentions": [
+        "typelessdotcom"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tec_aryan/status/2060996946962366658"
+    },
+    {
+      "id": "2059983090056102325",
+      "text": "Most AI can now:\n→ search the web\n→ write code\n→ summarize documents\n\nBut ask it to reorder your groceries, track your packages or post across 5 platforms every morning? It freezes.\n\nThat's the gap nobody was talking about.\n\nAirtap fills it.\n\n@airtap_ai https://t.co/DXUhKZusGU",
+      "author_id": "1685300163420844032",
+      "username": "tec_aryan",
+      "name": "Aryan Rakib",
+      "created_at": "2026-05-28T13:00:15.000Z",
+      "conversation_id": "2059983090056102325",
+      "metrics": {
+        "likes": 147,
+        "retweets": 65,
+        "replies": 42,
+        "quotes": 0,
+        "impressions": 56934,
+        "bookmarks": 48
+      },
+      "urls": [
+        "https://x.com/tec_aryan/status/2059983090056102325/video/1"
+      ],
+      "mentions": [
+        "airtap_ai"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tec_aryan/status/2059983090056102325"
+    },
+    {
+      "id": "2059751488063406427",
+      "text": "Hollywood needed massive crews, long production cycles, and a $200M budget. \n\nI used one Flova Skill.\n\nThe future of filmmaking won’t look anything like the past. https://t.co/QMhJHgdMDK",
+      "author_id": "1685300163420844032",
+      "username": "tec_aryan",
+      "name": "Aryan Rakib",
+      "created_at": "2026-05-27T21:39:57.000Z",
+      "conversation_id": "2059751488063406427",
+      "metrics": {
+        "likes": 6,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 898,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://twitter.com/heyrobinai/status/2058908013336129996"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tec_aryan/status/2059751488063406427"
+    },
+    {
+      "id": "2059694663288987856",
+      "text": "AI image generation was already impressive, but @Magnific just took it to a whole new level.\n\nForget simple images—this tool upgrades, extends, animates, and reshapes visuals into a cinematic experience.\n\nThis isn't just another AI tool; it's the dawn of a new category. 🧵✨ https://t.co/0y4Vo2ai41",
+      "author_id": "1685300163420844032",
+      "username": "tec_aryan",
+      "name": "Aryan Rakib",
+      "created_at": "2026-05-27T17:54:09.000Z",
+      "conversation_id": "2059694663288987856",
+      "metrics": {
+        "likes": 162,
+        "retweets": 53,
+        "replies": 35,
+        "quotes": 0,
+        "impressions": 49314,
+        "bookmarks": 36
+      },
+      "urls": [
+        "https://x.com/tec_aryan/status/2059694663288987856/video/1"
+      ],
+      "mentions": [
+        "magnific"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tec_aryan/status/2059694663288987856"
+    },
+    {
+      "id": "2059679396387319891",
+      "text": "Tonight proved something important:\n\nonce voice becomes good enough, nobody wants to go back to typing. https://t.co/vej00PKFCc",
+      "author_id": "1685300163420844032",
+      "username": "tec_aryan",
+      "name": "Aryan Rakib",
+      "created_at": "2026-05-27T16:53:29.000Z",
+      "conversation_id": "2059679396387319891",
+      "metrics": {
+        "likes": 11,
+        "retweets": 7,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 369,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/huang_song_/status/2059524004042707189"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tec_aryan/status/2059679396387319891"
+    },
+    {
+      "id": "2059563684096356810",
+      "text": "I built a fully automated e-commerce store while I slept.\n\nNo team. No agency. No $3,000/month overhead.\n\nHere's the exact 4-agent workflow 🧵 https://t.co/oVloaWFAPG",
+      "author_id": "1685300163420844032",
+      "username": "tec_aryan",
+      "name": "Aryan Rakib",
+      "created_at": "2026-05-27T09:13:41.000Z",
+      "conversation_id": "2059563684096356810",
+      "metrics": {
+        "likes": 196,
+        "retweets": 59,
+        "replies": 40,
+        "quotes": 0,
+        "impressions": 43682,
+        "bookmarks": 74
+      },
+      "urls": [
+        "https://x.com/tec_aryan/status/2059563684096356810/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tec_aryan/status/2059563684096356810"
+    },
+    {
+      "id": "2059308173031510298",
+      "text": "What's interesting here isn't just the performance number. It's the three-stage approach: \n\nbuild the harness, achieve parity, then remove the constraints and push past the reference. \n\nThat's a falsifiable, reproducible methodology rather than a one-off result. The fact that https://t.co/pFbR8OG51z",
+      "author_id": "1685300163420844032",
+      "username": "tec_aryan",
+      "name": "Aryan Rakib",
+      "created_at": "2026-05-26T16:18:23.000Z",
+      "conversation_id": "2059308173031510298",
+      "metrics": {
+        "likes": 72,
+        "retweets": 29,
+        "replies": 30,
+        "quotes": 0,
+        "impressions": 8701,
+        "bookmarks": 7
+      },
+      "urls": [
+        "https://twitter.com/openbmb/status/2059265926126825951"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tec_aryan/status/2059308173031510298"
+    },
+    {
+      "id": "2058954320671117526",
+      "text": "AI video has entered a new era and most creators haven't caught up yet.\n\nThe era of complex prompts is over.\nWith Flova AI, you just need a casual conversation to create your video.\n\nAnd with Skill Call? You're applying templates built by animation masters → instantly.\n\nThis https://t.co/KtMrj2MQfa",
+      "author_id": "1685300163420844032",
+      "username": "tec_aryan",
+      "name": "Aryan Rakib",
+      "created_at": "2026-05-25T16:52:18.000Z",
+      "conversation_id": "2058954320671117526",
+      "metrics": {
+        "likes": 219,
+        "retweets": 84,
+        "replies": 52,
+        "quotes": 9,
+        "impressions": 65726,
+        "bookmarks": 73
+      },
+      "urls": [
+        "https://x.com/tec_aryan/status/2058954320671117526/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tec_aryan/status/2058954320671117526"
+    }
+  ]
+}

@@ -70,8 +70,8 @@ QUERY 5 — AI implementation + consulting tools (what practitioners are actuall
 "(AI implementation OR AI consulting OR AI workflow) (tool OR platform OR method) (new OR released OR using) -is:reply"
 
 QUERY 6 — ROTATING NICHE SLOT (read current value from MEMORY.md → Consulting Niche-Skill Matrix)
-Current primary niche stack (updated 2026-05-01):
-"(construction AI OR property management AI OR wholesale distribution AI OR Agentforce insurance OR Salesforce insurance) (automation OR workflow OR implementation OR released OR launched) -is:reply"
+Current primary niche stack (updated 2026-06-01):
+"(property management AI OR property operations AI OR rent delinquency automation OR construction field operations AI OR AI Context OS OR Agentforce insurance OR Data Cloud readiness) (automation OR workflow OR implementation OR exception queue OR released OR launched) -is:reply"
 ```
 
 **Rotating slot rule:** When the monthly niche fitness review recommends a niche change, it updates the niche-skill matrix in MEMORY.md AND rewrites Query 6 in this file to match the new primary niche. The other 5 queries are never touched by the niche review.

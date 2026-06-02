@@ -20,6 +20,7 @@ Purpose: one source of truth for JT's current buyer-facing consulting assets. Us
    - Capability brief: `memory/research/guyana/local-content-ops-capability-brief-2026-05-13.md`
    - Validation sprint/source: `memory/research/guyana/local-content-ops-validation-sprint-2026-05-13.md`
    - Intro scripts: `memory/research/guyana/guyana-intro-ask-scripts-2026-05-13.md`
+   - Summit-reply audit offer: `memory/drafts/guyana-local-content-supplier-workflow-audit-offer-2026-06-01.md`
    - Hidden site page source: `/Users/jtsomwaru/projects/jtsomwaru-com/src/app/guyana/GuyanaContent.tsx`
    - Use when: warm family/diaspora/local-operator intros to suppliers, logistics firms, compliance/admin leads, procurement/service contractors.
    - Gate: only pursue as a 10-conversation warm-intro validation sprint. Do not lead with government digitization or smart-city demos unless a specific warm government/partner meeting exists.

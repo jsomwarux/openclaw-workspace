@@ -1,9 +1,9 @@
 # AI Ops Teardowns — Content Templates
 
 ## X Template
-[Company/category] probably does not need another chatbot.
+[Current company/problem signal] is really about [workflow].
 
-The first AI workflow I would build is [workflow].
+The AI ops workflow I would build:
 
 Inputs:
 - [input 1]
@@ -17,34 +17,31 @@ Flow:
 4. human approves the risky part
 5. everything gets logged
 
-AI is most useful as the exception layer.
+[Buyer] gets [specific outcome] without changing how customers/operators send the work.
 
 ## LinkedIn Template
-Most AI implementations start in the wrong place.
+[Company/event] just showed a problem [buyer/niche] already recognizes: [plain bottleneck].
 
-If I were building AI ops for [company/category], I would not start with a chatbot.
+[Concrete scene. One buyer/operator sends [format]. Another sends [format]. A rep/manager forwards [format]. One key detail is wrong/missing.]
 
-I would start with [workflow].
+[System of record] still needs [clean output], [check], [owner], and [confirmation/next action].
 
-The current process probably looks something like this:
-- [manual process]
-- [handoff/problem]
-- [missed deadline/stale info]
-- [owner has no visibility]
+The workflow I would build starts with [specific desk/queue/router].
 
-The workflow I would build:
-1. [input ingestion]
-2. [classification/extraction]
-3. [exception detection]
-4. [draft/action preparation]
-5. [human approval]
-6. [audit log / weekly summary]
+It reads [inputs]. It extracts [fields]. Then it checks [catalog/system/pricing/rules/inventory/status].
 
-The important part is not that AI writes something.
+When the work is clean, it drafts [system-ready output].
 
-The important part is that the business knows what is stuck, who owns it, what changed, and what needs approval.
+When something is off, it routes the exception to [owner] with the source attached.
 
-That is where AI implementation actually starts.
+[Customers/operators] keep working the way they already do. [Buyer] gets [cleaner intake/clearer routing/faster confirmation] before [bad data/missed handoff/stale work] hits the system of record.
+
+## LinkedIn Quality Bar
+- Start with the current signal, but avoid news-summary phrasing. The hook should translate the news into a buyer-recognizable bottleneck.
+- Use a concrete operating scene before naming the workflow.
+- Keep AI secondary to the workflow. Show what the system reads, extracts, checks, drafts, routes, and logs.
+- Keep the customer's/operator's existing behavior intact when possible. Strong teardowns show the new intake layer without pretending the whole business changes overnight.
+- End on the business outcome before bad data, missed handoffs, or unclear ownership reaches the system of record.
 
 ## Workflow Map Template
 # [Title]

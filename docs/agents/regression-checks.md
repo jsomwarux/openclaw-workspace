@@ -30,6 +30,8 @@ If a correction cannot name a regression check, it is only a note, not a fix.
 | Duplicate heartbeat daily-note entries | Before appending, check whether the exact `## Heartbeat HH:MM` section already exists; suppress duplicate entries within 5 minutes unless state changed. | HEARTBEAT.md Heartbeat Log Idempotency Rule + daily notes | Every heartbeat + 10AM film review | active |
 | Stale sources framed as fresh content intel | Any content draft with "this week/today/new/fresh" or market-stat language must verify source date within 14 days, or explicitly label older context with date; unknown date means cut the stat. | docs/agents/content-rules.md + weekly content/intel prompts | Every content draft using external claims | active |
 | Weekly content audit passes without platform-specific reference mechanics | `python3 scripts/content_calendar_audit.py --week YYYY-MM-DD` must call `content_distribution_guard.py` with `--require-reference-map linkedin` and `--require-reference-map x`, so generic “Notion swipe references checked” cannot pass as healthy weekly generation. | `scripts/content_calendar_audit.py` + `scripts/content_distribution_guard.py` + content generation cron payloads | Every weekly content audit and content cron patch | active |
+| Revised LinkedIn queue buries named recurring series | Before Drive/Notion/MC sync, scan revised LinkedIn sections for expected recurring-series labels from the plan/content bank, especially `AI Ops Teardown`; if the label is missing, either restore a clearly labeled slot or explicitly record why the series was skipped. | Content generation workflow + weekly LinkedIn review closeout | Every revised weekly LinkedIn queue | active |
+| AI Ops Teardown becomes generic evergreen workflow advice | Verify each AI Ops Teardown has a current company/problem signal, source date within 30 days or explicit evergreen label, JT-relevant niche, concrete messy input scene, system-of-record need, and workflow map with read/extract/check/draft/route/output/audit trail. | AI Ops Teardown OS + content rules + content-generation skill | Every AI Ops Teardown bundle and weekly queue insertion | active |
 | @dynastyjig content becomes generic aphorisms | Sports GM/autoresearch must verify @dynastyjig packs include `Native pattern teardown`, `Rejected generic patterns`, 3/5 current player/news/market-specific posts, and draft-to-native-syntax/rhythm mapping; fail closed when fresh signal is thin. | skills/sports-gm/SKILL.md + Daily DynastyJig cron + agents/autoresearch/checklists/sports-gm.md | Weekly autoresearch + any sports content patch | active |
 | Spanish lesson cron state update fails after delivery | After Spanish Daily Lesson runs, verify latest run delivery fields and run `python3 scripts/spanish_state_check.py --date YYYY-MM-DD --require-today`; if delivery succeeded but state update/artifact validation failed, patch state manually and update cron prompt/tool rule. | Spanish Daily Lesson cron payload + `scripts/spanish_state_check.py` + `spanish/state.json` + `agents/autoresearch/checklists/spanish-daily-lesson.md` | Daily lesson delivery check + heartbeat on errors | active |
 | Paused Spanish lessons trigger stale-state alerts | If `spanish/state.json` has `"paused": true`, `python3 scripts/spanish_state_check.py --max-age-days 2` and `--require-today` must return `ok` with `paused:true` after validating required fields and date sanity, without requiring a fresh lesson. | `scripts/spanish_state_check.py` + `spanish/state.json` + HEARTBEAT Spanish checks | Every 10AM/10PM Spanish heartbeat check while paused | active |
@@ -144,3 +146,45 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Fail condition:** Claude Code, Vista, Glow Index, Nash Satoshi, App Marketing, Generic AI Agents, Personal Brand, or shorthand aliases like AI Consulting/NYC SMB are treated as the saved/default niche instead of exact canonical lanes or explicit secondary/product/tool lanes.
 - **Command:** New weekly files must pass `python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-YYYY-MM-DD.md --require-reference-map linkedin --require-reference-map x --check-notion-script`; the guard must fail non-canonical `Niche:` values in reference mechanics.
 - **Owner surface:** `docs/agents/content-rules.md`, `memory/content-voice.md`, `memory/content/current-niche-map.md`, content-calendar agent, content-generation skill, and Notion swipe tooling.
+
+## LinkedIn recurring-series visibility check
+- **Trigger:** Any revised weekly LinkedIn queue or content review packet that was expected to include a named recurring series such as `AI Ops Teardown`.
+- **Check:** Inspect the LinkedIn section headings and slot metadata before Drive/Notion/MC sync. A promised series must appear as a clearly labeled slot heading, pillar, or source-backed series marker. A post that merely has a teardown shape does not pass if the review doc hides the series.
+- **Fail condition:** The expected series only appears in checklist/source internals, X-only sections, or not at all.
+- **Recovery:** Restore one visible LinkedIn slot for the series or write `SKIP_SLOT: [reason]` in the weekly file and tell JT.
+- **Owner surface:** Weekly LinkedIn generation/revision workflow, `memory/content/weekly-YYYY-MM-DD.md`, Notion Content Calendar sync, and Mission Control review task.
+
+## AI Ops Teardown current-signal check
+- **Trigger:** Any AI Ops Teardown bundle, weekly LinkedIn teardown slot, Drive sync, or teardown review task.
+- **Check:** The teardown must name a current company/problem signal and source date, preferably within the last 30 days, then map a JT-relevant workflow with concrete messy input examples, system-of-record need, read/extract/check/draft/route steps, exception handling, human approval boundary, output, and audit trail.
+- **Fail condition:** The draft only says "workflow first," "approval queue," "exception layer," or similar generic AI ops advice without a current signal and concrete company/problem workflow.
+- **Recovery:** Replace with a current-signal teardown or write `SKIP_SLOT: no current company/problem signal`.
+- **Owner surface:** `memory/consulting/ai-ops-teardowns/system.md`, `memory/consulting/ai-ops-teardowns/templates.md`, `docs/agents/content-rules.md`, `skills/content-generation/SKILL.md`, and weekly content queue files.
+
+## Mission Control task payload enum check
+- **Trigger:** Any generated Mission Control task JSON, especially cron-created payloads passed through `scripts/mission_control_task_gate.py`.
+- **Check:** Task payloads must use lowercase enum values: `assignee` is `jt`, `eve`, or `both`; `priority` is `high`, `medium`, or `low`. If task creation returns HTTP 500, inspect payload enum casing against `mission-control/convex/tasks.ts` before treating Mission Control as unavailable.
+- **Fail condition:** Payload uses uppercase `JT`, title-only description, or any assignee value outside the Convex enum.
+- **Command:** `python3 scripts/mission_control_task_gate.py --title "[Task title]" --create-file /tmp/task.json --json` must return `created: true` or `duplicate: true`.
+- **Owner surface:** `TOOLS.md`, `docs/agents/task-board-rules.md`, Mission Control task-gate usage.
+
+## Outreach task exact-match closeout check
+- **Trigger:** Any `scripts/outreach_update.py` run after JT confirms an outreach send.
+- **Check:** The script may close only a task whose explicit slug matches the prospect slug, or whose title/description contains the exact slug phrase or all meaningful company tokens. Shared industry/category terms like "Plumbing," "Supply," "Property," or "Management" are not enough.
+- **Fail condition:** An adjacent same-category prospect task is marked done/archived or disappears from active tasks after a different prospect send is logged.
+- **Command:** After logging, query Mission Control and verify the intended Review + Send task is done, the new M-sequence follow-up exists, and adjacent queue prospects remain in their prior state.
+- **Owner surface:** `scripts/outreach_update.py`, consulting outreach confirmation workflow, Mission Control task cleanup.
+
+## Proof log enum check
+- **Trigger:** Any `scripts/log-proof.py` call during closeout.
+- **Check:** Use only accepted proof types from the script enum. Website/app page shipments should use `--type deployment`; generic task evidence can use `other`, `file_edit`, `script_execution`, or `api_call` as appropriate.
+- **Fail condition:** The command contains invented proof types such as `build`, `outreach`, or `task_update`, or fails with `invalid choice`.
+- **Recovery:** Rerun with a valid enum and verify the proof id is created before final closeout.
+- **Owner surface:** closeout workflow, Proof Log Guard, `scripts/log-proof.py` usage.
+
+## Vista SEO cluster completeness check
+- **Trigger:** Any new Vista SEO/AI-search landing page on `jtsomwaru.com`.
+- **Check:** The page-specific verifier must check: new route source exists, sitemap includes the route, `public/llms.txt` includes the route, the new page includes App Store CTA plus required schema strings, the new page links to every relevant existing Vista SEO page named in the task, every existing Vista SEO page named in the task links back to the new route, and the new page stays within the source-file line cap.
+- **Fail condition:** The new page is live but one reciprocal cluster link is missing, or source verification accepts partial inbound links such as “at least two” when the task requires all existing pages.
+- **Recovery:** Patch the missing page link and tighten the verifier before declaring production done. Rerun source verifier, `git diff --check`, lint, build, and production route/sitemap/llms/reciprocal-link checks.
+- **Owner surface:** `jtsomwaru-com/scripts/verify-vista-*.mjs`, Vista SEO implementation workflow, Mission Control Vista SEO tasks.

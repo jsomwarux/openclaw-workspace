@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-06-01 — Heartbeat Job Market Pulse
+
+**Read:** Today's job-market brief found no critical alerts and no clean new 18+/25 live opportunity. Fresh follow-up searches reinforced the same pattern: broad AI architect pages, Salesforce/Agentforce platform language, one Salesforce AI Integration Architect posting, and salary/skills pages around AI architecture. The concrete role signal still skews toward engineering-heavy integration, cloud/data/RAG architecture, or non-target postings rather than JT's best BSA + AI implementation lane.
+
+**JT relevance:** This supports staying on the proof-led consulting track instead of opening another application branch. The market keeps rewarding governed AI implementation language: Agentforce, supervised agents, architecture, integration, RAG/data plumbing, evaluation, approval gates, and measurable business outcomes. JT should use those words only where they map to real proof: OpenClaw/Mission Control, AI Context OS, Altmark/property ops, and the current Canals-style AI Ops Teardown workflow thinking.
+
+**Action:** No new Mission Control application task. Keep Altmark and the first three proof-led property/construction outreach items ahead of job-market exploration. Use today's signal to sharpen portfolio/resume wording around governed agent operations and implementation taste, not to claim a new Salesforce or cloud specialty without a proof artifact.
+
+---
+
 ## 2026-05-31 — Heartbeat Job Market Pulse
 
 **Read:** Today's generated job-market brief found no critical alerts and no new role that should outrank current consulting proof. Coupa remains the strongest live duplicate signal at 20/25, but the source-to-pay/procurement domain gap makes it a selective apply/consulting-bridge target, not a top-priority pivot. Human Agency remains a consulting-outreach signal at 19/25 with a construction credibility/travel caveat. Marriott is now confirmed expired by live verification, and Anaplan is disqualified after full JD review.

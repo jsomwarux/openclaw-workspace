@@ -26,7 +26,7 @@ Eve adds a task OR JT asks "are my tasks prioritized?" → quick audit + fix sam
 ```bash
 curl -s -X POST http://localhost:3000/api/tasks \
   -H 'Content-Type: application/json' \
-  -d '{"title":"[TITLE]","description":"[DESCRIPTION]","status":"todo","priority":"[high|medium|low]","assignee":"[eve|JT]","project":"[Job Market|Skills|Consulting|passive-income]","sortOrder":[N]}'
+  -d '{"title":"[TITLE]","description":"[DESCRIPTION]","status":"todo","priority":"[high|medium|low]","assignee":"[jt|eve|both]","project":"[Job Market|Skills|Consulting|passive-income]","sortOrder":[N]}'
 ```
 
 ## De-dupe Check

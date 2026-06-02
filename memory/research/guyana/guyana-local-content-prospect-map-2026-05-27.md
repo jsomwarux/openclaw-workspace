@@ -603,3 +603,29 @@ Status: seed list only — needs full research before outreach.
 2. Find operations/compliance/procurement decision-maker.
 3. Identify one real workflow signal from website, job postings, supplier notices, or LinkedIn.
 4. Draft partner-first / operator-first outreach only after workflow signal is concrete.
+
+## 2026-06-01 Summit-Adjacent Outreach Sprint
+
+Trigger: Guyana Local Content Summit 2026 is happening June 2-3 at the Houston Events Centre / Four Points by Sheraton in Georgetown. JT sent the Richard Leo / AmCham supplier-wedge follow-up and asked for a 10-person summit-adjacent outreach list.
+
+Artifact:
+- Local: `memory/drafts/guyana-local-content-summit-outreach-pack-2026-06-01.md`
+- Drive: https://docs.google.com/document/d/16P9WoKNLEWRccO-NY1jrm1gt8u_fPlZCiC1RNdPHW3w/edit
+
+Target mix:
+- Connector nodes: Iman Cummings / AmCham, Kathy Smith / GCCI, Josephine Tapp / WCCIG.
+- Operator or supply-chain perspectives: Lars Mangal / TOTALTEC-Jaguar, John Percival / Jaguar, Jaysen Toocaram / Newrest Guyana, Chandradat Chintamani / Muneshwers, Dominique Fraser / John Fernandes, Elchin Rzayev / SLB, Natina Singh / ExxonMobil. Martin Cheong / SBM is held as optional senior/warm-route target.
+
+Recommended first-send batch:
+1. Iman Cummings
+2. Kathy Smith
+3. Josephine Tapp
+4. Lars Mangal
+5. Jaysen Toocaram
+
+Mission Control:
+- Richard Leo / AmCham task is done after JT sent the note.
+- New high-priority JT review task: `j5777phkjrepb2bnewfy3szs8s87vqrn` / "Guyana summit sprint: review/send first 5 outreach notes".
+
+Rule:
+No outreach is sent by Eve. JT reviews, edits, and sends manually; Eve logs sends and creates follow-up tasks only after confirmation.

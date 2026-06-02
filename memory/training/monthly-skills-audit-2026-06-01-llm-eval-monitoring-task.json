@@ -1,0 +1,9 @@
+{
+  "title": "Skills gap: add LLM/RAG eval-monitoring acceptance checklist",
+  "description": "First action: create or extend `skills/ai-governance-readiness` with golden cases, retrieval/source checks, human-review routing, drift metrics, rollback, and client signoff criteria. Why it matters: production reliability, evaluation, monitoring, and governance are recurring JD requirements and client-risk controls. Done: a reusable checklist exists and is referenced by client automation/app handoff workflows.",
+  "status": "todo",
+  "priority": "medium",
+  "assignee": "eve",
+  "project": "Skills",
+  "sortOrder": 148
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Skills gap: add governance/context proof-packager run mode",
+  "description": "First action: extend `agents/client-proof-engine/AGENT.md` or create a proof-packager run mode that bundles proof, risk controls, context maps, evals, and ROI into one private artifact from accepted client work. Why it matters: Eve has AI Context OS, governance, and proof-capture pieces, but they need to ship as one sales/job proof package instead of scattered artifacts. Done: agent/run mode exists, is registered if new, and can produce a proof-safe private pack for Altmark or Aya without public overclaiming.",
+  "status": "todo",
+  "priority": "medium",
+  "assignee": "eve",
+  "project": "Skills",
+  "sortOrder": 149
+}

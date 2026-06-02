@@ -7,10 +7,13 @@ Turn timely company/category research into buyer-relevant workflow demos that sh
 
 This is a consulting proof engine, not a random trend-chasing content gimmick.
 
+AI Ops Teardowns should examine a trending company or trending operational problem in a niche relevant to JT, then have Eve/JT's agentic system produce the optimal AI workflow JT would build for that company/problem. The public post should demonstrate implementation judgment: why this problem matters now, what the workflow should do, where humans approve, and what the buyer would get.
+
 ## Core Format
-**If I were building AI ops for [company/category], I would not start with a chatbot. I would automate [specific invisible workflow] first.**
+**[Current company/problem signal] shows [niche] is ready for [specific workflow]. The AI ops workflow I would build is [workflow with inputs, decisions, approvals, and outputs].**
 
 Every teardown must show:
+0. The current signal: company, funding, product launch, market shift, regulation, buyer pain, or recurring niche problem.
 1. The operational bottleneck.
 2. The current messy/manual process.
 3. The proposed workflow map.
@@ -18,6 +21,22 @@ Every teardown must show:
 5. The n8n/AI architecture.
 6. The buyer-relevant outcome.
 7. What this proves about implementation.
+
+Preferred LinkedIn shape:
+1. Translate the current signal into a buyer-recognizable bottleneck, not a news recap.
+2. Show the operating scene with concrete inputs and failure modes.
+3. Name the system of record or business process that still needs a clean output.
+4. Introduce the workflow JT would build as an intake desk, router, review queue, or operating layer.
+5. Explain what it reads, extracts, checks, drafts, routes, and preserves.
+6. Close with the practical outcome: customers/operators keep working normally while the business gets cleaner data, clearer ownership, and fewer downstream errors.
+
+Weak teardown smell:
+- Generic "workflow before AI" advice with no current signal.
+- Reusing the same approval-queue/exception-layer framing without a new company, niche, or problem.
+- Hypothetical client-safe content that could apply to any business.
+- A post that sounds like AI consulting advice instead of a teardown of a concrete company/problem.
+- A hook that only summarizes the news instead of turning the news into an operational bottleneck.
+- A close that says AI is useful in general instead of naming the before-it-hits-the-system outcome.
 
 ## Topic Selection Rule
 Prefer **trending categories with operational pain**, not trending logos for their own sake.
@@ -38,6 +57,13 @@ Weak topics:
 - companies trending because of drama only
 - anything requiring confidential assumptions about a real company
 - workflows that imply access to private systems without clearly labeling as hypothetical
+
+Selection bar:
+- Current signal within the last 30 days unless explicitly marked evergreen.
+- Clear relevance to JT's priority niches.
+- Specific operational workflow with named inputs, failure modes, owner boundaries, and output.
+- Enough public information to avoid confidential assumptions.
+- Distinct angle from the last 45 days of posted/scheduled content.
 
 ## Scoring Rubric
 Score 1–5 each:
@@ -93,9 +119,9 @@ Recurring runner: `AI Ops Teardown Weekly Draft` cron (`f96cc24f-55e6-4064-a075-
 ## Content CTA Rules
 Primary CTA is proof, not a hard sell.
 Good endings:
-- “AI is most useful when it becomes the exception layer.”
-- “The workflow matters more than the model.”
-- “This is where AI implementation actually starts.”
+- “Customers keep sending orders the way they already do. The distributor gets a cleaner intake layer before bad data hits the ERP.”
+- “The operator keeps the existing front door. The workflow cleans the handoff before it reaches the system of record.”
+- “[Buyer] gets [cleaner data / clearer ownership / faster confirmation] before [bad data / missed handoffs / stale work] becomes a downstream problem.”
 
 When the post is buyer-facing, add a low-friction diagnostic CTA as a comment/reply or short closer. For property/family-office teardowns, route to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md` and frame it as a workflow diagnostic, not a broad AI brainstorm.
 
@@ -122,10 +148,10 @@ Delivery format:
 
 ## Source Scan Inputs
 Use these in priority order:
-1. Existing active client/proof lanes: Altmark, Aya, Marketsmith, family-office/property ops.
-2. Warm opportunity categories from MEMORY.md and current efforts.
-3. AppKittie / app-growth intel only when it maps to a business-ops workflow.
-4. X/news trends only when a trending company/category reveals a workflow pattern relevant to JT's ICP.
+1. Fresh company/category/problem signals from the last 30 days that map to JT's priority niches.
+2. Existing active client/proof lanes: Altmark, Aya, Marketsmith, family-office/property ops.
+3. Warm opportunity categories from MEMORY.md and current efforts.
+4. AppKittie / app-growth intel only when it maps to a business-ops workflow.
 5. Generic trend lists are weak unless converted into a specific ops bottleneck.
 
 ## Teardown-to-Template Escalation Rule

@@ -130,7 +130,7 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 - **Legacy `--project`/`--type`** still works for non-consulting projects (Vista, Nash Satoshi)
 
 ## Mission Control — Task Push
-- Create: `curl -s -X POST http://localhost:3000/api/tasks -H 'Content-Type: application/json' -d '{"title":"[TITLE]","description":"[FIRST ACTION + WHY + DONE]","status":"todo","priority":"[high|medium|low]","assignee":"[eve|JT]","project":"[PROJECT]","sortOrder":[N]}'`
+- Create: `curl -s -X POST http://localhost:3000/api/tasks -H 'Content-Type: application/json' -d '{"title":"[TITLE]","description":"[FIRST ACTION + WHY + DONE]","status":"todo","priority":"[high|medium|low]","assignee":"[jt|eve|both]","project":"[PROJECT]","sortOrder":[N]}'`
 - Check duplicates first: `curl -s http://localhost:3000/api/tasks | python3 -c "import sys,json; [print(t['title']) for t in json.load(sys.stdin)]" | grep -i "[keyword]"`
 - sortOrder bands: high 10-100+, medium 10/20/30..., speculative 500+.
 

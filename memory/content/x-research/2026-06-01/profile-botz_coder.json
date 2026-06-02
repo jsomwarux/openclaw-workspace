@@ -1,0 +1,179 @@
+{
+  "user": {
+    "name": "Aman Kumar Srivastava",
+    "description": "Building https://t.co/FoOB67Mrzc\n\nBuilding Agentic AI Systems for Business Automation  | Data Engineer",
+    "username": "botz_coder",
+    "id": "1461650789076647940",
+    "created_at": "2021-11-19T11:01:41.000Z",
+    "public_metrics": {
+      "followers_count": 22,
+      "following_count": 462,
+      "tweet_count": 119,
+      "listed_count": 0,
+      "like_count": 53,
+      "media_count": 12
+    }
+  },
+  "tweets": [
+    {
+      "id": "2061152578122240443",
+      "text": "Just shipped Noderift at the @OpenAI x @Outskill hackathon 🚀\nNoderift is a visual workflow automation tool — but instead of building workflows manually, you just describe what you want and the AI builds it for you.\n\"Fetch a joke from this API and email it to me every day at 5pm\"",
+      "author_id": "1461650789076647940",
+      "username": "botz_coder",
+      "name": "Aman Kumar Srivastava",
+      "created_at": "2026-05-31T18:27:23.000Z",
+      "conversation_id": "2061152578122240443",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 40,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [
+        "OpenAI",
+        "Outskill"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/botz_coder/status/2061152578122240443"
+    },
+    {
+      "id": "2060049310339957229",
+      "text": "I'm building Noderift for the @Outskill AI Builders Hackathon 🧵\n\nMost workflow automation tools (n8n, Zapier, Make) make you wire nodes manually.\n\nNoderift flips that — you describe what you want in plain English, and an AI agent builds &amp; runs the workflow for you.",
+      "author_id": "1461650789076647940",
+      "username": "botz_coder",
+      "name": "Aman Kumar Srivastava",
+      "created_at": "2026-05-28T17:23:24.000Z",
+      "conversation_id": "2060049310339957229",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 39,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [
+        "Outskill"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/botz_coder/status/2060049310339957229"
+    },
+    {
+      "id": "2059665096935436508",
+      "text": "Day 12 of building https://t.co/47UJh8BEQI 🚀\n\nShipped today: → Multi-stage Docker build — React frontend + FastAPI backend in a single unified image. → Fixed a sneaky routing conflict where FastAPI's root was silently blocking the entire frontend. → Containerized the full",
+      "author_id": "1461650789076647940",
+      "username": "botz_coder",
+      "name": "Aman Kumar Srivastava",
+      "created_at": "2026-05-27T15:56:40.000Z",
+      "conversation_id": "2059665096935436508",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://noderift.fun"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/botz_coder/status/2059665096935436508"
+    },
+    {
+      "id": "2059302679160230372",
+      "text": "Day 11 of building https://t.co/47UJh8BEQI🚀\n\nShipped today: → Premium, ultra-sleek landing page with a gorgeous glassmorphic capsule design. → Stagger-delayed loading animations that make the viewport feel incredibly fluid. → Live interactive React Flow canvas simulating https://t.co/tek0UxWWFP",
+      "author_id": "1461650789076647940",
+      "username": "botz_coder",
+      "name": "Aman Kumar Srivastava",
+      "created_at": "2026-05-26T15:56:33.000Z",
+      "conversation_id": "2059302679160230372",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://noderift.fun",
+        "https://x.com/botz_coder/status/2059302679160230372/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/botz_coder/status/2059302679160230372"
+    },
+    {
+      "id": "2059190603095920712",
+      "text": "I needed a log viewer for my project https://t.co/47UJh8BEQI\n\nRequirements were simple:\n→ lightweight\n→ no heavy setup\n→ teammates can see logs without EC2 access\n\nFound Dozzle. The Docker image is ~30MB. That's it. 🧵 https://t.co/ReSsvtLFgx",
+      "author_id": "1461650789076647940",
+      "username": "botz_coder",
+      "name": "Aman Kumar Srivastava",
+      "created_at": "2026-05-26T08:31:12.000Z",
+      "conversation_id": "2059190603095920712",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://noderift.fun",
+        "https://x.com/botz_coder/status/2059190603095920712/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/botz_coder/status/2059190603095920712"
+    },
+    {
+      "id": "2059007232113852465",
+      "text": "Day 10 of building Noderift🚀\n\nShipped today: → Super smooth sidebar sliding (drag near-zero) + slide-up variables. → Dedicated Execution History page with auto-triggered runs logging. → Fixed DAG data passing — no more python compilation KeyErrors. → You can now connect HTTP",
+      "author_id": "1461650789076647940",
+      "username": "botz_coder",
+      "name": "Aman Kumar Srivastava",
+      "created_at": "2026-05-25T20:22:33.000Z",
+      "conversation_id": "2059007232113852465",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/botz_coder/status/2059007232113852465"
+    },
+    {
+      "id": "2059006927276052810",
+      "text": "Day 10 of building Noderift🚀\n\nShipped today: → Super smooth sidebar sliding (drag near-zero) + slide-up variables. → Dedicated Execution History page with auto-triggered runs logging. → Fixed DAG data passing — no more python compilation KeyErrors. → You can now connect HTTP",
+      "author_id": "1461650789076647940",
+      "username": "botz_coder",
+      "name": "Aman Kumar Srivastava",
+      "created_at": "2026-05-25T20:21:20.000Z",
+      "conversation_id": "2059006927276052810",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/botz_coder/status/2059006927276052810"
+    }
+  ]
+}

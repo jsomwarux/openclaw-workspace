@@ -1,2 +1,4 @@
 
 .env.local
+.next
+.next-build

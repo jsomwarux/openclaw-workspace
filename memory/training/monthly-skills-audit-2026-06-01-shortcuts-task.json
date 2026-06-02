@@ -1,0 +1,9 @@
+{
+  "title": "Skills gap: document MC task gate and Drive Drafts shortcuts",
+  "description": "First action: add a compact named-shortcut section to `TOOLS.md` or a micro-skill covering `scripts/mission_control_task_gate.py` and `scripts/drive_drafts.py` with exact command examples and duplicate/upload guardrails. Why it matters: these scripts are called often enough that crons should stop reinventing syntax and should use the same safe path every time. Done: shortcut documentation exists, includes examples, and points crons to the script-file path instead of inline parsing.",
+  "status": "todo",
+  "priority": "medium",
+  "assignee": "eve",
+  "project": "Skills",
+  "sortOrder": 150
+}
