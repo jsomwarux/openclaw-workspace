@@ -52,3 +52,4 @@
 2026-05-29 roots-bevaya-insurance-ai-agent-platform — Roots Automation launched Bevaya, an AI-agent platform built exclusively for insurance workflows, creating a direct insurance automation competitor signal.
 2026-05-29 navigate-ai-construction-trades-copilot — Navigate.AI launched an AI copilot for training crews and quality control using phone/smart-glasses video, with $25M raised and Lennar named as a partner.
 2026-05-29 entrata-ipo-property-management-ai-revenue — Entrata filed for a NYSE IPO after reporting 23% Q1 2026 revenue growth, reinforcing property-management software demand around unified operating systems with embedded AI.
+2026-06-02 agentforce-coworker-beta — Salesforce Agentforce Coworker beta is documented as activatable for supported editions and includes billing guidance for Agentforce license holders.

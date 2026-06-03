@@ -28,7 +28,7 @@
 - Brand: JT Somwaru Consulting / JT Somwaru Consulting direction. Positioning: “practical AI implementation for ops-heavy SMBs” — workflows, AI context systems, dashboards, agents, and integrations that save time or surface revenue.
 - Differentiator: JT speaks operations and technology; sells implementation outcomes, not abstract AI strategy.
 - Target ICP: NYC/metro SMBs in construction, wholesale distribution, property management, skilled trades; HubSpot is a strong expansion platform due to less Salesforce competition.
-- Outreach tiers: T1 custom 2–4/mo; T2 template 8–12/mo; T3 cold hook 50–100/mo, replies promote to T2. JT sends all outreach.
+- Outreach tiers use score gates: T1 80+ proof-led custom; T2 60-79 template/validation; T3 40-59 market-sensing only. JT sends all outreach.
 - Preferred stack: n8n over Make.com for client automation; Agentforce when Salesforce/Data Cloud fit the client.
 
 ## Active Clients
@@ -38,6 +38,8 @@
 ## Pipeline / Business Development
 - Active client proof pipeline gate lives at `memory/clients/proof-pipeline-gates.md`: acceptance/payment/scope → evidence capture → permission/anonymization → referral ask → distribution. Do not publish, pitch, ask for referrals, or reuse proof when acceptance/screenshots/metrics/permission are unverified.
 - 2026-05-27 outreach strategy reset: LinkedIn warm-up comments are not the default route for new prospects. Use them only for high-fit T1/T2 prospects with recent relevant activity and a concrete M1/follow-up plan within 24-48h. Default prospecting should prioritize proof-led referrals/warm intros, live service pages/citation outreach, buyer-channel validation, and review-only outreach packets.
+- 2026-06-02 contact completeness rule: every prospect that clears outreach threshold must include both LinkedIn profile URL and verified email. LinkedIn-only packets are incomplete; create/return the email-finding next step before treating them as send-ready.
+- 2026-06-02 prospect re-score/contact execution: `memory/consulting/prospect-tier-action-review-2026-06-02.md`. Petri/HPM/Superior are T2 with contact routes captured and JT-owned M2 follow-ups due Jun 4/5 if no reply; weak/no-email T3s are parked; New Yorker is the only possible wholesale limited-test after proof-led M2 window; Guyana Summit is connector/operator validation, not standard sales outreach.
 - H.C. Oswald: hold outreach until personal site is polished and demo agents are built.
 - Consulting pipeline lives under `~/projects/jt-consulting-pipeline/`; client folders contain research, deck, outreach draft, and pipeline status.
 - After deck/outreach stages, sync with `python3 scripts/pipeline_drive_sync.py --slug [slug] --client "[Name]" --stage all` and include Drive links for JT review.
@@ -51,10 +53,8 @@
 - Offer filter: outsourced line item, intelligence-heavy, services spend > software spend, manually documentable. Two ghosts = targeting/offer signal. Scale delivery before marketing/sales.
 
 ## Consulting Niche-Skill Matrix
-- Last reviewed 2026-06-01. Current report: `memory/research/niche-fitness-2026-06.md`; prior matrix archived at `docs/memory/consulting-niche-skill-matrix-2026-05-01.md`.
-- **n8n Track:** Property Management / Real Estate Ops **35/40 Primary** for June because Altmark + HPM give the closest proof/reply path; Construction & Skilled Trades **32/40 Adjacent expansion** via Petri/Superior; Wholesale Distribution **29/40 Hold/test** until response data or proof assets improve; AI Context OS / Enterprise Knowledge Assistants **29/40 Adjacent expansion** as an offer layer, not a standalone cold-outreach vertical.
-- **Agentforce Track:** P&C Insurance / MGAs **29/40 Strategic proof lane**; Agentforce/Data Cloud Readiness Proof Pack **29/40 Strategic proof lane** for job-market/high-ticket credibility; Manufacturing / Industrial Service Ops **25/40 Hold/test**; Financial Services / Wealth **23/40 Deprioritize**.
-- Decision rule: June effort goes property-ops first, construction second, wholesale limited-test, Agentforce as proof/readiness unless Salesforce stack + trigger + reply path are confirmed.
+- Last reviewed 2026-06-01: `memory/research/niche-fitness-2026-06.md`; prior matrix archived at `docs/memory/consulting-niche-skill-matrix-2026-05-01.md`.
+- June effort: property ops first, construction/skilled trades second, wholesale limited-test, Agentforce as strategic proof/readiness unless Salesforce stack + trigger + reply path are confirmed.
 
 ## Current Apps / Products
 - `jtsomwaru.com`: portfolio site at `~/projects/jtsomwaru-com/`, deployed via Vercel. Portfolio cards require coding-agent/build/test/push. AI SEO/citation path as of 2026-05-27: build n8n service/proof pages first, then directory/entity profiles and roundup outreach; no public submissions before JT approval.
@@ -76,6 +76,7 @@
 - Apply only for exceptional strategic fits (generally 22+/25, $150K+, NYC/remote, low misrepresentation risk). For 18–21/25 roles, usually use the JD as market intel or a consulting lead signal instead of spending time on a resume package.
 - If a company is hiring full-time for AI implementation, do not assume they lack consulting interest; position consulting as interim de-risking, workflow mapping, pilot governance, or acceleration while the FTE is hired/ramped — never as “hire JT instead.”
 - 2026-05-29 xhigh audit: AI enablement roles now map to AI operating-system proof lanes (intake, connectors/MCP, evals, lineage, governance, adoption, rollback, ROI). `~/projects/job-market-agent/data/role-to-build-matrix.md` is canonical before creating role-derived build/demo tasks; Altmark proof still outranks H.I.G./DealDesk speculation.
+- 2026-06-02 job-market pulse: no new qualifying 18+/25 US/NYC/remote role surfaced; useful positioning signal was to frame JT Somwaru Consulting as AI adoption operating-system design: workflow intake, prioritization, governance touchpoints, adoption metrics, and ROI/value reporting.
 - Avoid pure software engineering, ML research, Apex/SFDX-heavy Salesforce developer, relocation, or sub-$150K roles.
 - Resume/cover letter packages must use Sonnet model via job-application skill; save local markdown + generate docx + upload to Drive.
 
@@ -97,8 +98,9 @@
 - Cron volume is guarded by `scripts/cron_volume_guard.py`: ≤35 scheduled invocations/day average and ≤28 agentTurn/day average; >30/day warns. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM ET.
 - `critical-files-integrity` (`ee357abb`) runs daily 9AM ET, timeout 180s; run script first, inspect/edit only on non-zero exit.
-- Active cron count: 51 enabled / 77 total as of 2026-05-29. Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
+- Active cron count: 51 enabled / 77 total as of 2026-06-02. Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
 - Recent cron hardening details for outreach pipeline, Overnight Autonomy, job tracker, t3-cold-hook, Skills/API Researcher, Viral Swipe, and stale red statuses live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. Do not rerun content/reporting crons solely to clear metadata.
+- 2026-06-02 cron health: Overnight Autonomy and Viral Post Swipe remain stale `consecutiveErrors: 2` items from known jq/API-shape failures; live payload fixes and verification follow-ups are in place. Crypto Full Analysis June 2 non-delivery remains tracked by high-priority recovery task `j57avtc1ct6179ts70trw6qz0h87xraa`; nightly recovery refreshed portfolio/prices/X research and patched `validate-full-analysis.py` so stale `latest-analysis.md`, `telegram-summary.txt`, or allocation-history dates cannot pass after X-only refresh.
 - 2026-05-12: Mission Control North Star audit runs in Morning Brief + heartbeat via `scripts/mission_control_north_star_audit.py`.
 - Spanish lessons paused 2026-05-26; Daily Lesson and Weekly Evaluation are disabled. `05024e45` is Skills & API Researcher Weekly Synthesis and remains enabled.
 - Passive-income/App Marketing/web metrics/crypto X-research cron details are archived in `docs/memory/current-context-details-2026-05-27.md`.
@@ -111,9 +113,8 @@
 - Lessons auto-write: capture non-obvious solved problems in the relevant lessons/skill/rules file immediately.
 
 ## Strategic Decisions Log
-- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof over anime/NBA apps; x402 is an operator-builder content/app-readiness pillar, not a generic SMB install offer.
-- Deferred/not-needed items: AgentSync unless direct need appears; Zapier MCP and Railway MCP not needed now; Selenium MCP still useful for browser automation.
-- Full dated decision detail: `docs/memory/current-context-details-2026-05-27.md` and `docs/memory/MEMORY-full.md`.
+- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof. x402 is an operator-builder content/app-readiness pillar, not a generic SMB install offer.
+- Full dated decision detail/deferred items: `docs/memory/current-context-details-2026-05-27.md` and `docs/memory/MEMORY-full.md`.
 
 ## Integrity / Fabrication Corrections
 - Never claim outreach/messages were sent unless tool/script evidence confirms it.
@@ -122,12 +123,13 @@
 
 ## Setup State
 - 2026-05-31: Added AI Context OS Sprint as a consulting sub-offer after /critic + market audit; positioned as agent-ready company context + eval packs, not generic knowledge-base cleanup. New skill: `skills/ai-context-os/SKILL.md`; site page: `~/projects/jtsomwaru-com/src/app/services/ai-context-os/page.tsx`.
-- 2026-05-31: Added capability-routing map at `docs/agents/capability-routing-map.md`; new skills `client-proof-capture` and `linkedin-corpus`; new agents `client-proof-engine` and `linkedin-corpus`; portable Codex plugin scaffold `~/plugins/jt-operating-system`; consulting-pipeline `CLAUDE.md`/`AGENTS.md` now route proof/corpus work.
+- 2026-06-02: Claude toolkit audit synthesized into OpenClaw OS. New skills: `n8n-blueprint`, `proposal-pdf`, `product-build-loop`; new agents: `workflow-strategist`, `product-quality-pass`; portable Codex plugin `~/plugins/jt-operating-system` expanded to v0.2.0. Comparison: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
+- 2026-05-31: Added capability-routing map at `docs/agents/capability-routing-map.md`; skills `client-proof-capture` and `linkedin-corpus`; agents `client-proof-engine` and `linkedin-corpus`; portable Codex plugin scaffold `~/plugins/jt-operating-system`; consulting-pipeline `CLAUDE.md`/`AGENTS.md` route proof/corpus work.
 - 2026-05-11: GBrain consulting recall pilot lives at `~/projects/gbrain*`; use only `scripts/gbrain-consulting-search.sh "Entity"` for consulting/prospect entity lookup. No crons/skillpacks/broad ingestion/embeddings without JT approval.
 - Prior setup details (`workflow-skillify`, `high-stakes-draft-eval`, birdclaw, gog) are archived in `docs/memory/MEMORY-full.md` and tool commands live in `TOOLS.md`.
 
 ## Automation / Live Opportunities
 - Automation/client/opportunity history archived at `docs/memory/automation-and-live-opportunities-archive-2026-05-10.md`.
-- Current must-remember items: Altmark rent delinquency is the top consulting/proof lane. JT sent LinkedIn M1s to Petri, HPM, and Superior on 2026-06-01; next consulting board step is high-priority M2 follow-up tracking for those three. Internal proof/content tasks stay medium until evidence/send paths are ready. ReelFarm warm-up is active but not high-priority. Yair may refer ~15 NYC family offices, proof/referral use gated. CFS role is secondary; App Marketing OS/ReelFarm/Sports GM/North Star crons stay active.
-- Guyana strategy reset 2026-05-12: active wedge is a Local Content Operations Sprint for oil/gas-adjacent Guyanese suppliers/local-content firms. Current artifacts: prospect map, summit outreach pack, connection-request map, and top-5 email drafts live under `memory/research/guyana/` and `memory/drafts/guyana-local-content-summit-*`; Drive docs include outreach pack `16P9WoKNLEWRccO-NY1jrm1gt8u_fPlZCiC1RNdPHW3w`, connection map `1OD2NOGPxMSGE_82SJozV1qDAS4uEdyx8BsHsx8MQ27M`, and email drafts `1hKL9pDlLtIZNTAQMOpSdgbKXLyHM8Uu91H0vXQeZgx4`. Richard Leo note and all 10 summit connection requests were sent by JT on 2026-06-01. Email is the cleaner second lane for top prospects, but do not send the same night as LinkedIn requests; review/send during the 2026-06-02 Summit window. Hidden/noindex `jtsomwaru.com/guyana` remains stale until rewritten around the supplier/local-content wedge.
+- Current must-remember items: Altmark rent delinquency is the top consulting/proof lane. Internal proof/content tasks stay medium until evidence/send paths are ready. Yair may refer ~15 NYC family offices, proof/referral use gated.
+- Guyana wedge: Local Content Operations Sprint for oil/gas-adjacent suppliers. Artifacts/Drive IDs live in `docs/memory/current-context-details-2026-05-27.md`; hidden/noindex `jtsomwaru.com/guyana` remains stale until rewritten.
 - Nightly autonomous leverage, Guyana monitor, passive-income pipeline, North Star review, App Marketing scoreboard, ReelFarm Intel, and related automation are active unless cron list says otherwise.

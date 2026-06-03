@@ -15,6 +15,21 @@ Use a warm-up comment only when all are true:
 
 Do not create or preserve bulk “Warm-up comment:” tasks for JT. If a warm-up task is stale, channel-unclear, or not tied to an immediate follow-up, archive it or merge it into a buyer-channel validation task. Default outreach priority is proof-led referrals/warm intros, service-page/citation outreach, and review-only packets with a clear send path.
 
+## Prospect Contact Completeness Rule
+Every prospect that clears the outreach threshold must include both:
+- LinkedIn profile URL
+- Verified email address
+
+Do not treat LinkedIn-only prospects as send-ready. If email is missing, mark the packet incomplete and create/return the next step: "find verified email." Keep the outreach sequencing rule intact: do not send LinkedIn and email on the same day unless JT explicitly directs it.
+
+## Prospect Tier Action Rule
+Tier prospects by strategic value before creating outreach tasks: proof proximity, revenue likelihood, workflow specificity, buyer/channel quality, stack fit, NYC/stability fit, and repeatable IP value.
+
+- **T1:** 80+ score with strong proof proximity and buyer access. Use full research, proof-led custom outreach, JT review, and optional custom demo only when reusable.
+- **T2:** 60-79, or strong prospect missing one detail. Use light research, niche template configuration, buyer-channel validation, and review-only outreach. Promote to T1 after reply/referral/proof trigger.
+- **T3:** 40-59. Use batch market-sensing only. No custom build, deck, demo, or individual client folder. Reply promotes to T2.
+- **Hold/reject:** under 40 or fails hard gate. Missing LinkedIn/email creates a channel-enrichment next step, not a send task.
+
 **Step 1 — Update files:**
 - Mark outreach-draft.md status line with what was sent, the date, and the next window
 - Update the shortlist's contact line with current M-status and next action

@@ -25,3 +25,10 @@
 - Outputs: `memory/sports-gm/market-snapshots/2026-05-26.csv`, `memory/sports-gm/reports/weekly-gm-report-2026-05-26.md`, `memory/sports-gm/candidates/2026-05-26.csv`, `memory/content/bank/2026-05-26/dynasty-gm-automated-market-posts.md`.
 - Candidates: 136. Top research candidates: Cedric Tillman, Keenan Allen, Rashod Bateman.
 - Source note: KeepTradeCut fetch timed out after 45s; report used FantasyCalc, FantasyPros, and DynastyProcess. Treat all candidates as rank-dislocation research, not public calls.
+
+## 2026-06-02 09:00 ET — Weekly Market Report
+- Ran `python3 scripts/sports_gm_fetch_prices.py` and `python3 scripts/sports_gm_generate_report.py`.
+- Fetch completed: KeepTradeCut 1000 rows, FantasyCalc 924 rows, FantasyPros 529 rows, DynastyProcess 1562 rows.
+- Outputs: `memory/sports-gm/market-snapshots/2026-06-02.csv`, `memory/sports-gm/reports/weekly-gm-report-2026-06-02.md`, `memory/sports-gm/candidates/2026-06-02.csv`, `memory/content/bank/2026-06-02/dynasty-gm-automated-market-posts.md`.
+- Candidate count: 303.
+- Top research candidates by rank dislocation: Carson Beck, Oscar Delp, Adam Randall. Treat as research queue only, not public buy/sell calls.

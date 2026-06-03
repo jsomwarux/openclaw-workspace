@@ -31,24 +31,37 @@ If it exits non-zero: fix reported errors before proceeding. A failed preflight 
 
 Before generating outreach, uploading outreach, or creating any M1/M2/M3 task:
 1. Check `pipeline.md`, the client slug folder, and existing Drive client/T3 batch folders for the company name and obvious aliases.
-2. Confirm there is at least one sendable buyer channel: verified email, LinkedIn profile URL, warm intro path, or JT-provided explicit channel.
-3. If no sendable channel exists, write `channel_status: missing` in `brief.json`, create/return a single "find buyer channel" next step, and do **not** draft M1 copy or create follow-up tasks yet.
+2. Confirm every prospect that passes the outreach threshold has both a LinkedIn profile URL and a verified email address. Warm intro paths are useful context, but do not replace email capture unless JT explicitly says this prospect is an exception.
+3. If LinkedIn or verified email is missing, write `channel_status: incomplete` in `brief.json`, create/return a single "find verified email/LinkedIn" next step, and do **not** call the packet send-ready yet.
 4. If a duplicate active client/prospect exists, update the existing record instead of creating a new client folder or duplicate outreach task.
 
 ## Tier Routing — Classify Before Starting
 
-Before spawning any agents, assign a tier. This determines the pipeline path.
+Classify prospects by strategic value, not just personalization quality. A warm intro or specific hook can raise a score, but never automatically makes a prospect T1.
 
-| Signal | Tier |
-|--------|------|
-| Referral / warm intro | T1 |
-| Research surfaces a highly specific, verifiable hook (e.g. a named article, a quote, a job posting) | T1 |
-| Qualified niche fit, no exceptional hook | T2 |
-| Cold list prospect with minimal research | T3 |
+Hard gates before scoring:
+- Prospect fits JT's non-developer AI implementation positioning.
+- Prospect maps to n8n workflow automation, Agentforce activation, AI Context OS, dashboarding, or ops implementation.
+- Prospect is NYC/metro, referral-connected, or clearly remote-serviceable without enterprise-procurement drag.
+- Agentforce prospects require confirmed Salesforce, Novidea, or Salesforce-native workflow evidence.
+- Before send-ready status, prospect has buyer access plus both a LinkedIn profile URL and verified email.
 
-**T1 path:** Research → Analysis → [JT Review] → n8n Custom Build → Presentation → Outreach → [JT sends]
-**T2 path:** Research (light brief) → Template Config → Deck (from template) → Outreach → [optional JT review] → [overnight can send]
-**T3 path:** Quick surface research → Outreach Agent (cold hook batch) → [no review needed] → Reply → promotes to T2
+Score prospects /100:
+- Proof proximity 25: Altmark/Aya/property/construction resemblance, reusable proof, screenshot/story potential.
+- Revenue likelihood 20: realistic $3.5K-$15K project, owner/ops pain, budget line already implied.
+- Workflow specificity 15: visible manual process, job post, review pattern, platform gap, compliance/deadline trigger.
+- Buyer/channel quality 15: direct decision-maker, warm intro/referral, recent activity, verified email + LinkedIn.
+- Stack fit 10: n8n-friendly SMB stack or confirmed Salesforce/Agentforce lane.
+- NYC/stability fit 10: NYC metro, local credibility, no travel-heavy delivery.
+- Maintenance/IP fit 5: repeatable template, low ongoing support burden.
+
+Tier thresholds and actions:
+- **T1 = 80+ with proof proximity 18+ and buyer/channel 10+.** Run full research, analysis, JT review, and proof-led custom outreach. Build a custom demo only when it compounds into reusable proof/IP; otherwise configure an existing proof/template. Follow-up cadence: M1 custom observation, M2 proof/value artifact, M3 soft Calendly close, M4 final check or email pivot.
+- **T2 = 60-79, or 75+ missing one channel/detail.** Run light research, niche template configuration, buyer-channel validation, and review-only outreach. No custom deck/demo before a reply unless a reusable template can be configured in under 30 minutes. Promote to T1 after reply, referral, proof-safe trigger, or confirmed budget/process owner.
+- **T3 = 40-59.** Market-sensing batch only. No custom build, no individual Drive client folder, no deck, no demo. Draft only short cold hooks after contact completeness is met; reply promotes to T2.
+- **Hold/reject = under 40 or fails any hard gate.** Create the single missing-next-step task only when useful; otherwise archive.
+
+Priority bias for June 2026: property management/real estate ops first, construction/skilled trades second, wholesale limited-test, Agentforce insurance/Data Cloud as strategic proof unless Salesforce stack and buyer trigger are confirmed.
 
 Write `tier: 1 | 2 | 3` and `jt_review_required: true` into the client's `brief.json` before handoff to the next agent. `jt_review_required` defaults to true for ALL tiers — never send without JT approval unless he explicitly sets it to false for a given tier.
 

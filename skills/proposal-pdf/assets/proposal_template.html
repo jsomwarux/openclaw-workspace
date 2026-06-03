@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{TITLE}}</title>
+  <style>
+    @page { size: Letter; margin: 0.65in; }
+    body { font-family: Helvetica, Arial, sans-serif; color: #2D3748; font-size: 10.5pt; line-height: 1.45; }
+    .header { display: flex; justify-content: space-between; gap: 32px; align-items: flex-start; }
+    h1 { margin: 0; font-size: 24pt; color: #111827; }
+    .subtitle { margin-top: 6px; color: #4A5568; font-size: 11pt; }
+    .prepared { text-align: right; font-size: 9.5pt; color: #4A5568; }
+    .accent { height: 4px; margin: 22px 0 24px; background: linear-gradient(90deg, #4A6CF7, #6B8AFF); }
+    .label { margin: 22px 0 8px; color: #4A6CF7; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+    .use-case { border-top: 1px solid #E2E8F0; padding: 12px 0; }
+    .use-head { display: flex; justify-content: space-between; gap: 20px; font-weight: 700; color: #111827; }
+    .price { color: #4A6CF7; white-space: nowrap; }
+    .note { color: #4A6CF7; font-style: italic; margin-top: 5px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    td { padding: 7px 0; border-bottom: 1px solid #EDF2F7; }
+    td:last-child { text-align: right; white-space: nowrap; }
+    .total td { border-top: 2px solid #4A6CF7; border-bottom: 0; font-weight: 700; }
+    .total td:last-child { color: #4A6CF7; }
+    .footer { position: fixed; bottom: 0.25in; left: 0.65in; right: 0.65in; color: #718096; font-size: 8.5pt; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <h1>{{TITLE}}</h1>
+      <div class="subtitle">{{SUBTITLE}}</div>
+    </div>
+    <div class="prepared">
+      <strong>Prepared for</strong><br>
+      {{CLIENT}}<br>
+      {{CONTACT}}<br>
+      {{DATE}}
+    </div>
+  </div>
+  <div class="accent"></div>
+
+  <div class="label">Overview</div>
+  <p>{{OVERVIEW}}</p>
+
+  <div class="label">Recommended Scope</div>
+  {{USE_CASES}}
+
+  <div class="label">Investment</div>
+  <table>
+    {{PRICING_ROWS}}
+    <tr class="total"><td>Total</td><td>{{TOTAL}}</td></tr>
+  </table>
+
+  <div class="label">Timeline</div>
+  <p>{{TIMELINE}}</p>
+
+  <div class="label">Assumptions & Access Needed</div>
+  <p>{{ASSUMPTIONS}}</p>
+
+  <div class="label">Next Step</div>
+  <p>{{NEXT_STEP}}</p>
+
+  <div class="footer">JT Somwaru | jtsomwaru.com</div>
+</body>
+</html>

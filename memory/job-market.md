@@ -306,3 +306,11 @@ Read today’s job-market-agent brief. Seven required searches found no new 18+/
 **Strongest signal:** today’s market value is credential/salary positioning, not a new application target. Fresh results increasingly route "AI architect" credibility through proof-backed credential language: AI architect salary bands, AWS AI Practitioner, GenAI Developer, Agentforce Specialist, Microsoft, and GitHub agentic credentials.
 
 **Positioning implication:** keep the job-market lane tied to actual proof rather than a generic certification chase. The strongest resume/portfolio line is "AI architect credential path in progress" backed by Agentforce, MCP/AgentMesh, OpenClaw operations, AI governance/value artifacts, and n8n automation proof. No new build idea or application task was created today.
+
+## 2026-06-02 — Heartbeat Job Market Pulse
+
+Read the current job-market-agent daily brief generated at 2026-06-02 05:15. No new US/NYC/remote role cleared JT's 18+/25 filter today. The strongest non-target signal was Charles Schwab Sr. Manager, AI Enablement & Adoption, AI.x at $150K-$220K, but the canonical data is Austin, TX and remote:false, so it fails the location hard filter.
+
+**Strongest signal:** enterprise AI enablement language is becoming more operational: workflow intake, pilot-to-production adoption, value indicators, governance partnership, role-based rollout, and ROI reporting. This is closer to Mission Control/OpenClaw proof than to generic "AI automation" copy.
+
+**Positioning implication:** describe JT Somwaru Consulting as AI adoption operating-system design: intake, prioritization, governance touchpoints, adoption metrics, and ROI/value reporting. Extend EnablementOps / AdoptAI / ChampionOps / ROIFlow rather than creating another demo. No new application task or build idea was created today.

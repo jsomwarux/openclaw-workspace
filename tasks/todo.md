@@ -1,3 +1,10 @@
+## Plan — JT Toolkit Synthesis — 2026-06-02
+- [x] Clone and fully inventory `jsomwarux/jt-claude-toolkit`.
+- [x] Compare Claude plugin output against OpenClaw skills, plugin, agents, and routing docs.
+- [x] Add the missing high-value portable skills and agent manuals.
+- [x] Update routing/plugin/project docs and Mission Control agent registry.
+- [x] Validate frontmatter/plugin JSON/registry JSON and log proof.
+
 ## Plan — Screenshot Mission Control Tasks — 2026-05-27
 - [x] Verify AI Ops Teardown weekly cron run, output files, delivery, and duplicate-task state.
 - [x] Refactor outreach-pipeline cron into script-first deterministic stages.

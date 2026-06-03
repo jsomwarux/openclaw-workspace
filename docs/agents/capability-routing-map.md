@@ -13,7 +13,7 @@ This is the operating split for what JT does and where each repeatable pattern b
 
 ### Consulting Revenue
 - **What JT does:** sells and delivers practical AI implementation for ops-heavy SMBs, especially property management, NYC SMB operations, wholesale distribution, construction/skilled trades, insurance/Agentforce, and productized service workflows.
-- **Best surfaces:** `skills/opticfy-ops`, `skills/opticfy-pipeline`, `skills/ai-context-os`, `skills/client-proof-capture`, `agents/client-proof-engine`, project `CLAUDE.md` in `~/projects/jt-consulting-pipeline`.
+- **Best surfaces:** `skills/opticfy-ops`, `skills/opticfy-pipeline`, `skills/ai-context-os`, `skills/client-proof-capture`, `skills/n8n-blueprint`, `skills/proposal-pdf`, `agents/workflow-strategist`, `agents/client-proof-engine`, project `CLAUDE.md` in `~/projects/jt-consulting-pipeline`.
 - **Do not make:** a plugin for each vertical. The verticals are context, not separate products yet.
 
 ### AI Context / Knowledge Readiness
@@ -34,8 +34,8 @@ This is the operating split for what JT does and where each repeatable pattern b
 
 ### App Products
 - **What JT does:** builds and markets Vista, Nash Satoshi, Glow Index, Sports GM/Dynasty content, and App Marketing OS loops.
-- **Best surfaces:** existing app/project `CLAUDE.md` files plus focused agents where cadence matters (`app-marketing-product-content`, Sports GM skill).
-- **Do not make:** broad “app builder” skill. Existing project files should hold project-specific commands and gotchas.
+- **Best surfaces:** existing app/project `CLAUDE.md` files plus focused agents where cadence matters (`app-marketing-product-content`, Sports GM skill), with `skills/product-build-loop` and `agents/product-quality-pass` for non-trivial build/ship quality gates.
+- **Do not make:** a vertical-specific app plugin until the app has repeated build/release workflows that need portability. Project files should hold project-specific commands and gotchas; the build-quality method belongs in the skill/plugin.
 
 ### Job Market / Career Leverage
 - **What JT does:** selectively applies to AI implementation / AI enablement roles and uses job posts as market-intel/proof-lane signals.
@@ -57,3 +57,15 @@ This is the operating split for what JT does and where each repeatable pattern b
 2. Agents only where ongoing state/cadence exists: corpus maintenance, proof packaging.
 3. Plugins only as distribution wrappers around stable skills/tools.
 4. CLAUDE.md/AGENTS.md only for project-specific constraints and commands.
+
+## Claude Toolkit Audit — 2026-06-02
+- Claude's `jt-claude-toolkit` was stronger on portable packaging, proposal PDF styling, workflow strategist/builder split, and product quality-pass language.
+- OpenClaw's system is stronger on JT-specific routing: prospect tiers, verified-contact gates, Mission Control, proof privacy, Client OS, Drive sync, and live automation state.
+- Adopted missing portable pieces into OpenClaw instead of replacing the OS:
+  - `skills/n8n-blueprint`
+  - `skills/proposal-pdf`
+  - `skills/product-build-loop`
+  - `agents/workflow-strategist`
+  - `agents/product-quality-pass`
+  - expanded `~/plugins/jt-operating-system`
+- Rejected importing Claude's `resume-tailor`, `new-client`, global prettier hook, and generic vertical plugin split because existing OpenClaw rules are stricter or safer.

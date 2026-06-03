@@ -735,5 +735,39 @@
     "crons": [],
     "currentTask": "Ready to run on Altmark/Aya accepted deliverables; public proof remains permission/anonymization gated.",
     "created": "2026-05-31"
+  },
+  {
+    "id": "workflow-strategist",
+    "name": "Workflow Strategist",
+    "emoji": "🧭",
+    "role": "n8n Workflow Architecture",
+    "domain": "Designs build-ready n8n workflow blueprints with node specs, data contracts, error handling, test payloads, and single-LLM versus ensemble recommendations before the n8n builder implements.",
+    "workspaceRel": "agents/workflow-strategist",
+    "github": null,
+    "skills": [
+      "n8n-blueprint",
+      "jt-consulting-ops",
+      "jt-consulting-pipeline"
+    ],
+    "crons": [],
+    "currentTask": "Ready for client workflow architecture handoffs; designs only, does not build live nodes.",
+    "created": "2026-06-02"
+  },
+  {
+    "id": "product-quality-pass",
+    "name": "Product Quality Pass",
+    "emoji": "✅",
+    "role": "Product Build Verification",
+    "domain": "Runs skeptical simplification, AI-slop cleanup, LARP/fake-implementation checks, and real build/test/lint/browser verification before product work ships.",
+    "workspaceRel": "agents/product-quality-pass",
+    "github": null,
+    "skills": [
+      "product-build-loop",
+      "webapp-testing",
+      "verification-before-completion"
+    ],
+    "crons": [],
+    "currentTask": "Ready for app/site/dashboard pre-ship reviews and post-build quality passes.",
+    "created": "2026-06-02"
   }
 ]

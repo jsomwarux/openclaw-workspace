@@ -124,6 +124,12 @@ Files: `~/.claude/CLAUDE.md` (global) | `~/projects/jtsomwaru-com/CLAUDE.md` | `
 ## Outreach Send Confirmation Handler
 JT confirms outreach sent → same-turn run `python3 scripts/outreach_update.py --slug [slug] --company "[Company]" --message M1|M2|M3 --channel LinkedIn|Email --date YYYY-MM-DD`, confirm changed files/tasks, and log under today's `## Outreach Sends`. Full detection/slug rules: `docs/agents/bootstrap-trimmed-rules-2026-05-27.md` + `docs/agents/outreach-rules.md`.
 
+## Prospect Contact Completeness Rule
+Every prospect that passes the outreach threshold must include both a LinkedIn profile URL and a verified email address. LinkedIn-only prospects are not outreach-ready; flag them as incomplete and create/return a "find verified email" next step before treating the packet as send-ready.
+
+## Prospect Tier Routing Rule
+Tier prospects by strategic value, not just personalization quality. T1 requires 80+ score with strong proof proximity and buyer/channel quality; T2 is 60-79 or strong-but-incomplete; T3 is 40-59 market-sensing only. Warm intro or specific hook can raise score but never automatically makes a prospect T1. T3 gets no custom build, deck, demo, or individual client folder; reply promotes to T2.
+
 ## Proactive Task Closure Rule
 When any tool call, check, or verification confirms that something is already done (version installed, feature live, task complete, URL fixed, etc.) -- mark the corresponding Mission Control task as done immediately in the same turn. Do not wait for JT to point it out. "I confirmed X is done" without closing the task is incomplete work.
 

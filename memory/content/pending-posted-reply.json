@@ -1,24 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-05-31",
-      "day": "sunday",
-      "line_no": 188,
+      "date": "2026-06-02",
+      "day": "tuesday",
+      "line_no": 201,
       "platform": "x",
-      "summary": "What makes an autonomous content system useful?  Current state.  A relevance ladder.  A repeat check.  A stop condition.  Otherwise it can p",
-      "topic": "what-makes-an-autonomous-content-system-useful-current-state-a-relevance-ladder-a-repeat-check-a-stop-condition"
-    },
-    {
-      "date": "2026-05-31",
-      "day": "sunday",
-      "line_no": 193,
-      "platform": "linkedin",
-      "summary": "A ranking product earns trust in public; Nash Satoshi's methodology page gives the app a citation-worthy distribution surface.",
-      "topic": "nash-satoshi-methodology-page-trust-surface"
+      "summary": "Distributor AI gets real when extraction survives missing SKUs, wrong unit counts, vendor mismatches, and exception ownership.",
+      "topic": "distributor-weird-order-exception-ownership"
     }
   ],
   "note": "",
-  "sent_at": 1780232466,
-  "source": "content-sunday",
+  "sent_at": 1780401641,
+  "source": "content-reminder",
   "status": "pending"
 }
