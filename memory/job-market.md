@@ -314,3 +314,11 @@ Read the current job-market-agent daily brief generated at 2026-06-02 05:15. No 
 **Strongest signal:** enterprise AI enablement language is becoming more operational: workflow intake, pilot-to-production adoption, value indicators, governance partnership, role-based rollout, and ROI reporting. This is closer to Mission Control/OpenClaw proof than to generic "AI automation" copy.
 
 **Positioning implication:** describe JT Somwaru Consulting as AI adoption operating-system design: intake, prioritization, governance touchpoints, adoption metrics, and ROI/value reporting. Extend EnablementOps / AdoptAI / ChampionOps / ROIFlow rather than creating another demo. No new application task or build idea was created today.
+
+## 2026-06-03 — Heartbeat Job Market Pulse
+
+Read the current job-market-agent daily brief generated at 2026-06-03 05:15. No new US/NYC/remote role cleared JT's 18+/25 filter today. The strongest role-shaped signal was Coupa Principal Agentic Architect, but the canonical location is United Kingdom, so it fails the location filter despite strong alignment.
+
+**Strongest signal:** enterprise buyers are naming the pre-build operating-model work more directly: agentic target operating model, autonomous-vs-HITL decisions, policy changes, COE/adoption plan, KPIs, AI readiness, and process ownership before implementation.
+
+**Positioning implication:** keep framing JT as the person who turns messy workflows into agent-ready operating systems before a build team touches tooling. The strongest proof language is: define intents, decide what stays human-reviewed, set policy/approval gates, and measure value. Extend ProcurePilot / ROIFlow / AI Pilot Governance Kit language; no duplicate procurement demo or application task needed today.

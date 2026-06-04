@@ -51,7 +51,7 @@ const tiers = [
 
 /* ─── Pipeline steps ─── */
 const pipelineSteps = [
-  { label: "Discovery", icon: Search, detail: "prospect-discovery cron · Sun 1AM · 20-30 prospects/week" },
+  { label: "Discovery", icon: Search, detail: "prospect-discovery cron · Sun/Wed 12AM · 6-12 capped prospects/run" },
   { label: "Shortlist", icon: ListFilter, detail: "wholesale-distribution.md · construction-trades.md · property-management.md · T1/T2/T3 classified" },
   { label: "Research", icon: Bot, detail: "outreach-pipeline cron · 2AM daily · 2 T2s/night · web search + company analysis" },
   { label: "Brief + DM", icon: FileText, detail: "brief.md + outreach-draft.md · auto-uploaded to Drive · Consulting/Clients/[Company]/" },
@@ -63,7 +63,7 @@ const pipelineSteps = [
 
 /* ─── Agents ─── */
 const agents = [
-  { name: "prospect-discovery", schedule: "Sun 1AM", status: "active", desc: "Finds 20–30 NYC prospects across wholesale/construction/PM, classifies T1/T2/T3, appends to shortlists, pings JT" },
+  { name: "prospect-discovery", schedule: "Sun/Wed 12AM", status: "active", desc: "Finds capped NYC prospects across insurance/wholesale/construction/PM, classifies T1/T2/T3, appends to shortlists, writes a run report, pings JT" },
   { name: "outreach-pipeline", schedule: "Daily 2AM", status: "active", desc: "Processes top 2 T2s from shortlist → research → brief → DM draft → Drive → Telegram summary" },
   { name: "overnight-autonomy", schedule: "Daily 3AM", status: "active", desc: "General MC task execution — separate from pipeline" },
   { name: "research-agent", schedule: "On-demand", status: "active", desc: "Deep company research sub-agent, spawned by outreach-pipeline per prospect" },

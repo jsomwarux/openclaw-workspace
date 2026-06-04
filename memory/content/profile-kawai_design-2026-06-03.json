@@ -1,0 +1,249 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 41197,
+      "following_count": 912,
+      "tweet_count": 36773,
+      "listed_count": 595,
+      "like_count": 85106,
+      "media_count": 6215
+    },
+    "id": "1292995835966312448",
+    "description": "AIの情報をわかりやすく毎日発信中｜セミナー登壇・動画出演50回以上、法人AI研修4社｜著書『AIでゼロからデザイン』重版｜Google画像生成プロンプト監修｜SHIFT AI デザイン部長/講師｜ベイジ AIデザイン顧問｜NewsPicksトピックスオーナー｜Voicy｜デザイナー歴14年｜ご相談はWebサイトへ",
+    "username": "kawai_design",
+    "created_at": "2020-08-11T01:26:54.000Z",
+    "name": "KAWAI"
+  },
+  "tweets": [
+    {
+      "id": "2062096963701797068",
+      "text": "【 KAWAI APP 】Vol.4\n\n＼ 今日のAI仕事道具 ／\nCSVビューアを紹介します。\n\nCSVを少し確認したいだけなのに、\nExcelを開くのが重い。\n\nその小さな面倒を減らすための\nシンプルなWebアプリです。\n\n✅ 貼り付け\n✅ ドラッグ&amp;ドロップ\n✅ セル直接編集\n✅ URL自動リンク化\n✅ CSV / PDF / HTML出力 https://t.co/by6UJxWszd",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-03T09:00:02.000Z",
+      "conversation_id": "2062096963701797068",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 622,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2062096963701797068/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062096963701797068"
+    },
+    {
+      "id": "2062062657549820130",
+      "text": "https://t.co/NDvHEgNxKf",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-03T06:43:43.000Z",
+      "conversation_id": "2062062657549820130",
+      "metrics": {
+        "likes": 8,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1213,
+        "bookmarks": 5
+      },
+      "urls": [
+        "http://x.com/i/article/2062061169679200256"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062062657549820130"
+    },
+    {
+      "id": "2062051658973237706",
+      "text": "【 HUMAN RULES 】Vol.5\n\n最初に見た数字は、\n判断の基準になりやすい。\n\nこれはアンカリング。\n\n人は不確実な判断をするとき、\n最初に与えられた情報へ\n引っぱられることがあります。\n\n価格、見積もり、\n広告コピーでも同じです。\n\nAIに考えさせる前に、\n基準値を決める。\n\n例:\n月額3万円を基準に、 https://t.co/Ha2lP7XuxO",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-03T06:00:01.000Z",
+      "conversation_id": "2062051658973237706",
+      "metrics": {
+        "likes": 7,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 987,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2062051658973237706/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062051658973237706"
+    },
+    {
+      "id": "2062006367658057994",
+      "text": "デザインの小話 Vol.10\n【 テーマ：デザインは翻訳 】\n\nデザインは、センスで\n飾る作業ではありません。\n\n伝えたいことを、見る人に\n分かる形へ翻訳する作業です。\n\n────────────────\n\n難しい説明を、相手の言葉に\n置き換えると伝わりやすくなります。\n\nデザインも同じです。 https://t.co/HZJzz5uFDL",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-03T03:00:02.000Z",
+      "conversation_id": "2062006367658057994",
+      "metrics": {
+        "likes": 15,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1269,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2062006367658057994/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062006367658057994"
+    },
+    {
+      "id": "2061946524163350849",
+      "text": "【 Codex Sites登場 】\n\nSite登場前のCodexは、\n主にコード、文章、表、資料など\n「ファイル」を作るAIでした。\n\nSitesで変わったのは、\n成果物が共有URL付きの\n「動く作業画面」になる点。\n\n✅ ダッシュボード\n✅ プランナー\n✅ レビュー画面\n✅ プロジェクトボード\n\nAI活用は「作成代行」から、 https://t.co/bzkhy0LaTD",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-02T23:02:15.000Z",
+      "conversation_id": "2061946524163350849",
+      "metrics": {
+        "likes": 15,
+        "retweets": 1,
+        "replies": 2,
+        "quotes": 1,
+        "impressions": 2366,
+        "bookmarks": 14
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2061946524163350849/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2061946524163350849"
+    },
+    {
+      "id": "2061942848522772548",
+      "text": "【 最新AIエージェント公開 】\n\nMicrosoft Scout、かなり重要です。\n\nCopilotの次は\n「質問に答えるAI」ではなく\n「裏で仕事を進めるAI」へ移ります。\n\nMicrosoft Scoutは\nMicrosoft初のAutopilot agent。\n\n🟣 Teams / Outlook\n🟣 OneDrive / SharePoint\n🟣 ファイル / shell / ブラウザ\n🟣 Microsoft https://t.co/stzyVCaZgU",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-02T22:47:38.000Z",
+      "conversation_id": "2061942848522772548",
+      "metrics": {
+        "likes": 15,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2173,
+        "bookmarks": 7
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2061942848522772548/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2061942848522772548"
+    },
+    {
+      "id": "2061930859469349292",
+      "text": "＼ 1日1つ学ぶ ／\nClaude Code入門【 Vol.10 】\n\nWeb版は\nローカルPCの外にある\n「クラウド作業室」です。\n\n自分のPCで全部動かすのではなく、\nブラウザからリポジトリをつなぎ、\nクラウド上で作業を進められます。\n\nイメージは外部の作業部屋。\n\n自分の机を占領せず、\n長めの作業を頼み、 https://t.co/YDXiY4PJG7",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-02T22:00:00.000Z",
+      "conversation_id": "2061930859469349292",
+      "metrics": {
+        "likes": 20,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2425,
+        "bookmarks": 19
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2061930859469349292/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2061930859469349292"
+    },
+    {
+      "id": "2061802276013113489",
+      "text": "残念ですが、Claude Codeが使えても\n「マネタイズ設計」がないと止まります。\n\n今日メンタリングを受けていただいた方は\nXのフォロワーが10,000人以上いて、\nClaude Codeも実務で使っている人でした。\n\nでも「収益化の道筋」が\n見えていませんでした。\n\n私が伝えたのは\n\n① noteメンバーシップ\n② https://t.co/quqD5y9Mcy",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-02T13:29:03.000Z",
+      "conversation_id": "2061802276013113489",
+      "metrics": {
+        "likes": 16,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2658,
+        "bookmarks": 12
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2061802276013113489/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2061802276013113489"
+    },
+    {
+      "id": "2061799974376177684",
+      "text": "Gensparkで画像生成していたら\nGensparkの広告が流れました。\n\n電車の中でも広告を見かけましたし、サードパーティ系のAIツールの中では1番マスへのアプローチに力を入れている印象を受けます。どこが代理店を担っているのか、効果はどれくらいか、気になります。 https://t.co/eUpXHcr5cO",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-02T13:19:54.000Z",
+      "conversation_id": "2061799974376177684",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1631,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2061799974376177684/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2061799974376177684"
+    },
+    {
+      "id": "2061789788731306310",
+      "text": "https://t.co/3Rzy2DFPhs",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-02T12:39:26.000Z",
+      "conversation_id": "2061789788731306310",
+      "metrics": {
+        "likes": 51,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6204,
+        "bookmarks": 91
+      },
+      "urls": [
+        "http://x.com/i/article/2061787968428511232"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2061789788731306310"
+    }
+  ]
+}

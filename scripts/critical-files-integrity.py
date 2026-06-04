@@ -72,6 +72,11 @@ FILE_REFS = {
     "skills/ai-context-os/SKILL.md": "b8619d18007ffce53fe12daf2a1ca09c8001c2a4",
     "skills/client-proof-capture/SKILL.md": "b8619d18007ffce53fe12daf2a1ca09c8001c2a4",
     "skills/linkedin-corpus/SKILL.md": "b8619d18007ffce53fe12daf2a1ca09c8001c2a4",
+    "agents/workflow-strategist/AGENT.md": "46f0d88b71ddaf7ba6931b7408858c9647df4695",
+    "agents/product-quality-pass/AGENT.md": "46f0d88b71ddaf7ba6931b7408858c9647df4695",
+    "skills/n8n-blueprint/SKILL.md": "46f0d88b71ddaf7ba6931b7408858c9647df4695",
+    "skills/product-build-loop/SKILL.md": "46f0d88b71ddaf7ba6931b7408858c9647df4695",
+    "skills/proposal-pdf/SKILL.md": "46f0d88b71ddaf7ba6931b7408858c9647df4695",
 }
 
 def get_git_lines(file_path, ref):

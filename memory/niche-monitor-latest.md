@@ -1,3 +1,3 @@
-**Last updated:** 2026-06-02 09:01 AM EDT
+**Last updated:** 2026-06-03 09:03:14 EDT
 
-🟠 **Agentforce Coworker beta is now documented and activatable for Agentforce customers** — Salesforce has a live Agentforce Coworker product page and developer docs showing the beta can be turned on for Enterprise, Unlimited, and Agentforce 1 editions, with unmetered access included for Agentforce 1 / Agentforce for Sales, Service, and Industries per-user licenses; this is a significant Agentforce capability update for JT's Salesforce automation positioning. Source: https://www.salesforce.com/agentforce/coworker/ and https://developer.salesforce.com/docs/data/agentforce-coworker/guide/agentforce-coworker-turn-on-infrastructure.html
+No new critical findings as of 9:03 AM EST.

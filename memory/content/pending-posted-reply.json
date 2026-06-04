@@ -1,16 +1,24 @@
 {
   "entries": [
     {
-      "date": "2026-06-02",
-      "day": "tuesday",
-      "line_no": 201,
+      "date": "2026-06-03",
+      "day": "wednesday",
+      "line_no": 197,
+      "platform": "linkedin",
+      "summary": "Canals raised $35M around wholesale distribution automation; the teardown uses JT's operating-scene spine: messy order inputs, ERP-ready needs, shared intake desk, catalog/pricing/inventory checks, exception routing, and cleaner data before it hits the ERP.",
+      "topic": "canals-wholesale-order-intake-desk"
+    },
+    {
+      "date": "2026-06-03",
+      "day": "wednesday",
+      "line_no": 202,
       "platform": "x",
-      "summary": "Distributor AI gets real when extraction survives missing SKUs, wrong unit counts, vendor mismatches, and exception ownership.",
-      "topic": "distributor-weird-order-exception-ownership"
+      "summary": "Lease renewal AI should start with due dates, missing docs, special cases, owner notes, manager review, and audit trail.",
+      "topic": "lease-renewal-approval-queue-before-tenant-automation"
     }
   ],
   "note": "",
-  "sent_at": 1780401641,
+  "sent_at": 1780488089,
   "source": "content-reminder",
   "status": "pending"
 }

@@ -1,0 +1,241 @@
+{
+  "user": {
+    "description": "Founder @ Boom Automations. Building custom AI operating systems. 80+ implementations.",
+    "name": "Luke Pierce",
+    "username": "lukepierceops",
+    "id": "1788715083981307904",
+    "created_at": "2024-05-09T23:38:13.000Z",
+    "public_metrics": {
+      "followers_count": 8688,
+      "following_count": 253,
+      "tweet_count": 9889,
+      "listed_count": 76,
+      "like_count": 9695,
+      "media_count": 153
+    }
+  },
+  "tweets": [
+    {
+      "id": "2061967293932806185",
+      "text": "225 people joined my first FREE Ai Agency Challenge.\n\nWe're running it back this Sunday, June 7th.\n\nLink to signup is in my bio.",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-06-03T00:24:47.000Z",
+      "conversation_id": "2061967293932806185",
+      "metrics": {
+        "likes": 15,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1167,
+        "bookmarks": 5
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2061967293932806185"
+    },
+    {
+      "id": "2061841302119956588",
+      "text": "Just getting started https://t.co/NHfVk3UJTm",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-06-02T16:04:08.000Z",
+      "conversation_id": "2061841302119956588",
+      "metrics": {
+        "likes": 14,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 1603,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/lukepierceops/status/2061841302119956588/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2061841302119956588"
+    },
+    {
+      "id": "2061786308624715824",
+      "text": "I've run 200+ discovery calls for companies wanting Ai and automation. Here's what this call is actually for.\n\nThe discovery call has one job. Get enough information out of a qualified company to build a strategy doc (and/or demo) so good that the next call closes itself.\n\nBefore",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-06-02T12:25:36.000Z",
+      "conversation_id": "2061786308624715824",
+      "metrics": {
+        "likes": 138,
+        "retweets": 5,
+        "replies": 10,
+        "quotes": 1,
+        "impressions": 6347,
+        "bookmarks": 254
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2061786308624715824"
+    },
+    {
+      "id": "2061545642036539422",
+      "text": "Over 70,000 views and 600 DMs from this, and I’m absolutely humbled. \n\nWhat has surprised me the most is the number of DMs from people who already have Ai implementation (Ai Consulting and Ai Agency) clients. \n\nI would estimate at least 30%.\n\nI've been doing this for 4 years. My https://t.co/UeKWpnOdr4",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-06-01T20:29:17.000Z",
+      "conversation_id": "2061545642036539422",
+      "metrics": {
+        "likes": 59,
+        "retweets": 1,
+        "replies": 7,
+        "quotes": 0,
+        "impressions": 7721,
+        "bookmarks": 29
+      },
+      "urls": [
+        "https://twitter.com/lukepierceops/status/2061099614934098280"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2061545642036539422"
+    },
+    {
+      "id": "2061099614934098280",
+      "text": "I’m looking for 5 people who\n\n1. Are doing this right now and want to throw rocket fuel on it\n\nOr\n\n2. Want to get started from 0\n\nHighly recommend you DM me, I have something for you. \n\nToday only. https://t.co/yhuBJy7GLu",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-05-31T14:56:56.000Z",
+      "conversation_id": "2061099614934098280",
+      "metrics": {
+        "likes": 368,
+        "retweets": 14,
+        "replies": 81,
+        "quotes": 1,
+        "impressions": 84921,
+        "bookmarks": 494
+      },
+      "urls": [
+        "https://twitter.com/lukepierceops/status/2060813023539794385"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2061099614934098280"
+    },
+    {
+      "id": "2060813023539794385",
+      "text": "Ai Consulting (Ai Agency and Ai Implementation) is the best business model and opportunity of the decade https://t.co/Iho9I9yJOe",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-05-30T19:58:07.000Z",
+      "conversation_id": "2060813023539794385",
+      "metrics": {
+        "likes": 364,
+        "retweets": 15,
+        "replies": 18,
+        "quotes": 2,
+        "impressions": 109408,
+        "bookmarks": 601
+      },
+      "urls": [
+        "https://x.com/lukepierceops/status/2060813023539794385/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2060813023539794385"
+    },
+    {
+      "id": "2060771498164453585",
+      "text": "This is a HIGH IMPACT and IMMEDIATE role.\n\nI will be making a decision in the next 48 hours.\n\nDM me or drop \"MSC\" below and I'll send you the application link, which takes all of 5 minutes to fill out. https://t.co/KzI8T8Rham",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-05-30T17:13:07.000Z",
+      "conversation_id": "2060771498164453585",
+      "metrics": {
+        "likes": 9,
+        "retweets": 0,
+        "replies": 13,
+        "quotes": 0,
+        "impressions": 3325,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://twitter.com/lukepierceops/status/2060710436371046877"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2060771498164453585"
+    },
+    {
+      "id": "2060710436371046877",
+      "text": "HIRING: Member Success Coach @ Ai Agency Inner Circle\n\nOverseeing up to 50 of our members.\n\nThis is an ESSENTIAL, FULL TIME role, and you will be trained directly by me.\n\nWhat you'll do:\n- Hold weekly office hours\n- Hold monthly 1-on-1s with each member to review KPIs, business",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-05-30T13:10:28.000Z",
+      "conversation_id": "2060710436371046877",
+      "metrics": {
+        "likes": 36,
+        "retweets": 0,
+        "replies": 7,
+        "quotes": 1,
+        "impressions": 6686,
+        "bookmarks": 19
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2060710436371046877"
+    },
+    {
+      "id": "2060384142177575019",
+      "text": "If you find my tweets valuable\n\nFollow me on IG (brand new account)\n\nHave some big things planned there\n\nLink below https://t.co/aWJBkXYVe5",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-05-29T15:33:54.000Z",
+      "conversation_id": "2060384142177575019",
+      "metrics": {
+        "likes": 6,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 2449,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://twitter.com/lukepierceops/status/2059606571357720939"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2060384142177575019"
+    },
+    {
+      "id": "2059970288092082232",
+      "text": "We deleted 9 of a client's 14 tools last quarter and their revenue went up. \n\nHere's exactly what we cut, what replaced it, and how we did it.\n\n(This is pretty detailed so you will want to bookmark this)\n\nThis was a marketing agency doing around $4M-$5M/yr. \n\n22 people total, and",
+      "author_id": "1788715083981307904",
+      "username": "lukepierceops",
+      "name": "Luke Pierce",
+      "created_at": "2026-05-28T12:09:23.000Z",
+      "conversation_id": "2059970288092082232",
+      "metrics": {
+        "likes": 34,
+        "retweets": 2,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 3341,
+        "bookmarks": 43
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lukepierceops/status/2059970288092082232"
+    }
+  ]
+}

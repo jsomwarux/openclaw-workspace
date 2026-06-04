@@ -27,6 +27,7 @@
 ## Consulting Positioning
 - Brand: JT Somwaru Consulting / JT Somwaru Consulting direction. Positioning: “practical AI implementation for ops-heavy SMBs” — workflows, AI context systems, dashboards, agents, and integrations that save time or surface revenue.
 - Differentiator: JT speaks operations and technology; sells implementation outcomes, not abstract AI strategy.
+- 2026-06-03 positioning refinement: lead with AI operating controls / agent-ready operating models, not generic agent adoption. Buyer pain maps to budget ceilings, owner approvals, sandboxed execution, PII rules, run logs, escalation paths, and human-review boundaries before tools are implemented.
 - Target ICP: NYC/metro SMBs in construction, wholesale distribution, property management, skilled trades; HubSpot is a strong expansion platform due to less Salesforce competition.
 - Outreach tiers use score gates: T1 80+ proof-led custom; T2 60-79 template/validation; T3 40-59 market-sensing only. JT sends all outreach.
 - Preferred stack: n8n over Make.com for client automation; Agentforce when Salesforce/Data Cloud fit the client.
@@ -39,6 +40,7 @@
 - Active client proof pipeline gate lives at `memory/clients/proof-pipeline-gates.md`: acceptance/payment/scope → evidence capture → permission/anonymization → referral ask → distribution. Do not publish, pitch, ask for referrals, or reuse proof when acceptance/screenshots/metrics/permission are unverified.
 - 2026-05-27 outreach strategy reset: LinkedIn warm-up comments are not the default route for new prospects. Use them only for high-fit T1/T2 prospects with recent relevant activity and a concrete M1/follow-up plan within 24-48h. Default prospecting should prioritize proof-led referrals/warm intros, live service pages/citation outreach, buyer-channel validation, and review-only outreach packets.
 - 2026-06-02 contact completeness rule: every prospect that clears outreach threshold must include both LinkedIn profile URL and verified email. LinkedIn-only packets are incomplete; create/return the email-finding next step before treating them as send-ready.
+- 2026-06-03 NYCB donor list: pass only as 50-name enrichment seed; fail as direct outreach. Never mention donor/NYCB source; keep only contact-complete operating-business buyers.
 - 2026-06-02 prospect re-score/contact execution: `memory/consulting/prospect-tier-action-review-2026-06-02.md`. Petri/HPM/Superior are T2 with contact routes captured and JT-owned M2 follow-ups due Jun 4/5 if no reply; weak/no-email T3s are parked; New Yorker is the only possible wholesale limited-test after proof-led M2 window; Guyana Summit is connector/operator validation, not standard sales outreach.
 - H.C. Oswald: hold outreach until personal site is polished and demo agents are built.
 - Consulting pipeline lives under `~/projects/jt-consulting-pipeline/`; client folders contain research, deck, outreach draft, and pipeline status.
@@ -76,7 +78,7 @@
 - Apply only for exceptional strategic fits (generally 22+/25, $150K+, NYC/remote, low misrepresentation risk). For 18–21/25 roles, usually use the JD as market intel or a consulting lead signal instead of spending time on a resume package.
 - If a company is hiring full-time for AI implementation, do not assume they lack consulting interest; position consulting as interim de-risking, workflow mapping, pilot governance, or acceleration while the FTE is hired/ramped — never as “hire JT instead.”
 - 2026-05-29 xhigh audit: AI enablement roles now map to AI operating-system proof lanes (intake, connectors/MCP, evals, lineage, governance, adoption, rollback, ROI). `~/projects/job-market-agent/data/role-to-build-matrix.md` is canonical before creating role-derived build/demo tasks; Altmark proof still outranks H.I.G./DealDesk speculation.
-- 2026-06-02 job-market pulse: no new qualifying 18+/25 US/NYC/remote role surfaced; useful positioning signal was to frame JT Somwaru Consulting as AI adoption operating-system design: workflow intake, prioritization, governance touchpoints, adoption metrics, and ROI/value reporting.
+- 2026-06-02/03 job-market pulses: no qualifying US/NYC/remote roles cleared filter. Useful positioning signal: AI adoption operating-system / target-operating-model work before implementation: intake, governance, HITL boundaries, adoption metrics, ROI reporting, KPIs, and process ownership.
 - Avoid pure software engineering, ML research, Apex/SFDX-heavy Salesforce developer, relocation, or sub-$150K roles.
 - Resume/cover letter packages must use Sonnet model via job-application skill; save local markdown + generate docx + upload to Drive.
 
@@ -98,9 +100,9 @@
 - Cron volume is guarded by `scripts/cron_volume_guard.py`: ≤35 scheduled invocations/day average and ≤28 agentTurn/day average; >30/day warns. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM ET.
 - `critical-files-integrity` (`ee357abb`) runs daily 9AM ET, timeout 180s; run script first, inspect/edit only on non-zero exit.
-- Active cron count: 51 enabled / 77 total as of 2026-06-02. Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
-- Recent cron hardening details for outreach pipeline, Overnight Autonomy, job tracker, t3-cold-hook, Skills/API Researcher, Viral Swipe, and stale red statuses live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. Do not rerun content/reporting crons solely to clear metadata.
-- 2026-06-02 cron health: Overnight Autonomy and Viral Post Swipe remain stale `consecutiveErrors: 2` items from known jq/API-shape failures; live payload fixes and verification follow-ups are in place. Crypto Full Analysis June 2 non-delivery remains tracked by high-priority recovery task `j57avtc1ct6179ts70trw6qz0h87xraa`; nightly recovery refreshed portfolio/prices/X research and patched `validate-full-analysis.py` so stale `latest-analysis.md`, `telegram-summary.txt`, or allocation-history dates cannot pass after X-only refresh.
+- Active cron count: 51 enabled / 77 total as of 2026-06-03. Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
+- Recent cron hardening/details live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. Current red states are covered by recovery tasks: Crypto Full Analysis, Viral Swipe, prospect-discovery, Weekly Systems Review. Do not rerun content/reporting crons solely to clear metadata.
+- 2026-06-03 Crypto Full Analysis recovery: added deterministic `scripts/generate-full-analysis.py`, validated June 3 artifacts, and patched cron `eve-crypto-morning-008` to require deterministic artifact writing plus `CRYPTO_FULL_ANALYSIS_OK`.
 - 2026-05-12: Mission Control North Star audit runs in Morning Brief + heartbeat via `scripts/mission_control_north_star_audit.py`.
 - Spanish lessons paused 2026-05-26; Daily Lesson and Weekly Evaluation are disabled. `05024e45` is Skills & API Researcher Weekly Synthesis and remains enabled.
 - Passive-income/App Marketing/web metrics/crypto X-research cron details are archived in `docs/memory/current-context-details-2026-05-27.md`.
@@ -131,5 +133,5 @@
 ## Automation / Live Opportunities
 - Automation/client/opportunity history archived at `docs/memory/automation-and-live-opportunities-archive-2026-05-10.md`.
 - Current must-remember items: Altmark rent delinquency is the top consulting/proof lane. Internal proof/content tasks stay medium until evidence/send paths are ready. Yair may refer ~15 NYC family offices, proof/referral use gated.
-- Guyana wedge: Local Content Operations Sprint for oil/gas-adjacent suppliers. Artifacts/Drive IDs live in `docs/memory/current-context-details-2026-05-27.md`; hidden/noindex `jtsomwaru.com/guyana` remains stale until rewritten.
+- Guyana wedge: Local Content Operations Sprint for oil/gas-adjacent suppliers. As of 2026-06-03, Dad-forward and warm-intro language should emphasize supplier ops/admin drag across logistics, construction, transportation, warehousing, professional services, ICT, vendor records, bid readiness, and local-content evidence. Artifacts/Drive IDs live in `docs/memory/current-context-details-2026-05-27.md`; hidden/noindex `jtsomwaru.com/guyana` remains stale until rewritten.
 - Nightly autonomous leverage, Guyana monitor, passive-income pipeline, North Star review, App Marketing scoreboard, ReelFarm Intel, and related automation are active unless cron list says otherwise.

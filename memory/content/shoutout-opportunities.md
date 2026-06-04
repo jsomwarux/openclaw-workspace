@@ -28,3 +28,4 @@
 [2026-05-30] n8n — Microsoft Agent 365 Trigger lets n8n agents appear as Microsoft 365 identities in Teams/Outlook/SharePoint — quick demo: build a tenant-support or maintenance-triage agent that answers in Teams and pulls SharePoint docs — tag @n8n_io
 [2026-06-02] OpenClaw — v2026.6.1-beta.2 shipped runtime/cron reliability, Codex recovery, channel timeout bounds, plugin loader recovery, and Skill Workshop UI — demo a before/after reliability checklist for crons — tag @openclaw
 [2026-06-02] OpenRouter — MiniMax M3 appeared on the model API with low-cost 1M context — post a model-routing cost/quality eval for Glow Index-style scoring — tag @OpenRouterAI
+[2026-06-03] OpenClaw — v2026.6.1-beta.3 shipped Skill Workshop, Workboard, cron/channel/runtime recovery, and plugin loading fixes — suggested post angle: demo a governed skill proposal or cron reliability checklist from a real personal ops agent — @openclaw

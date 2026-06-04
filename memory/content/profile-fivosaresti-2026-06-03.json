@@ -1,0 +1,237 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 2679,
+      "following_count": 40,
+      "tweet_count": 1051,
+      "listed_count": 20,
+      "like_count": 793,
+      "media_count": 112
+    },
+    "id": "1592198362572509184",
+    "description": "Co-Founder @ https://t.co/hjbHe3knbV | B2B Growth playbooks using AI",
+    "name": "Fivos Aresti",
+    "created_at": "2022-11-14T16:50:58.000Z",
+    "username": "fivosaresti"
+  },
+  "tweets": [
+    {
+      "id": "2061885630527754428",
+      "text": "5 winning outbound plays that will book you more meetings TOMORROW:\n\n1) Customer alumni\n→ Pull closed-won accounts from HubSpot, find former employees who moved through Clay, qualify their new company against your ICP, and tier them for outreach.\n\n2) LinkedIn connections\n→",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-02T19:00:16.000Z",
+      "conversation_id": "2061885630527754428",
+      "metrics": {
+        "likes": 21,
+        "retweets": 8,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 886,
+        "bookmarks": 26
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2061885630527754428"
+    },
+    {
+      "id": "2061810130627293262",
+      "text": "Set up this play once and it will backfill your pipeline with Tier 1 accounts EVERY quarter.\n\nBecause “Customer alumni” are the warmest leads in B2B.\n\nWhen someone moves from a company that already bought your product to a new company, that new company becomes a strong target",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-02T14:00:16.000Z",
+      "conversation_id": "2061810130627293262",
+      "metrics": {
+        "likes": 15,
+        "retweets": 8,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 2469,
+        "bookmarks": 20
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2061810130627293262"
+    },
+    {
+      "id": "2061523228934250534",
+      "text": "The 8 first-party intent signals every B2B team owns:\n\n- Website visits to pricing, compare, and demo pages\n- Form submissions across the site\n- Email opens, clicks, and replies on past outbound\n- Product usage events for free trial or freemium users\n- CRM activity and lifecycle",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-01T19:00:13.000Z",
+      "conversation_id": "2061523228934250534",
+      "metrics": {
+        "likes": 18,
+        "retweets": 9,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 819,
+        "bookmarks": 16
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2061523228934250534"
+    },
+    {
+      "id": "2061447762625888589",
+      "text": "10 months ago @Dan__rosenthal and I launched Workflows(.)io with a minimal website and 40K combined LinkedIn followers:\n\nThen, in 2 months time, we:\n\n• Booked 170+ meetings\n• Hit 1M ARR\n• Hired 7 full-time before the site was even finished.\n\nThe inbound came 100% through our https://t.co/Q4KgNuvQpt",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-01T14:00:21.000Z",
+      "conversation_id": "2061447762625888589",
+      "metrics": {
+        "likes": 14,
+        "retweets": 8,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 451,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2061447762625888589/photo/1"
+      ],
+      "mentions": [
+        "dan__rosenthal"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2061447762625888589"
+    },
+    {
+      "id": "2060798478800814341",
+      "text": "The best GTM tool per category in 2026:\n\n(top picks across 18 categories)\n\n1) AI agent builder: Claude Code\n2) Workflow automation: n8n\n3) Technographic Sumble\n4) AI notetaker and reporting: Ergo\n5) All-in-one sales prospecting: Apollo(.)io\n6) Cold call dialer: Nooks\n7) Cold https://t.co/jkW67ijNZt",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-30T19:00:19.000Z",
+      "conversation_id": "2060798478800814341",
+      "metrics": {
+        "likes": 28,
+        "retweets": 0,
+        "replies": 7,
+        "quotes": 0,
+        "impressions": 1070,
+        "bookmarks": 33
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2060798478800814341/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2060798478800814341"
+    },
+    {
+      "id": "2060722983371460979",
+      "text": "9 out of 10 companies that try to run signal based outbound NEVER have success. \n\nThey stand up Clay, RB2B, and Jungler inside a quarter.\n\nSignals fire on day one.\n\nFrom there:\n\n- the data piles up in dashboards nobody opens\n- the reps keep working the same static list\n- and the https://t.co/2ypSoBI7Rp",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-30T14:00:20.000Z",
+      "conversation_id": "2060722983371460979",
+      "metrics": {
+        "likes": 33,
+        "retweets": 10,
+        "replies": 41,
+        "quotes": 0,
+        "impressions": 2729,
+        "bookmarks": 44
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2060722983371460979/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2060722983371460979"
+    },
+    {
+      "id": "2060436061621264815",
+      "text": "The warmest cold lead I see almost no team prospect:\n\nSomeone who used to work at one of your closed-won accounts and just moved companies.\n\nThey already champion your product.\n\nTheir new company becomes a Tier 1 target with a champion built in.\n\nHere's the play we run:\n\n1) Pull",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-29T19:00:12.000Z",
+      "conversation_id": "2060436061621264815",
+      "metrics": {
+        "likes": 11,
+        "retweets": 7,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 737,
+        "bookmarks": 14
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2060436061621264815"
+    },
+    {
+      "id": "2060360587834474932",
+      "text": "Founder-led content ONLY works if you build an operating layer around the founder.\n\nThe founder cannot maintain the cadence alone.\n\nWe run 4 pillars at workflows. \n\nThese are the layers wired for our own founders and installed for clients running founder-led inbound:\n\nPillar 1:",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-29T14:00:18.000Z",
+      "conversation_id": "2060360587834474932",
+      "metrics": {
+        "likes": 31,
+        "retweets": 9,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 1733,
+        "bookmarks": 44
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2060360587834474932"
+    },
+    {
+      "id": "2060073683285070100",
+      "text": "As a 20-person team with 150K combined followers, we generated 12M impressions in the last 10 months.\n\nThe model is simple...\n\nMany personal brands together build the company brand. \n\n• Founder posts\n• GTM lead post\n• Product lead posts\n• Engineering lead posts\n• Design lead",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-28T19:00:15.000Z",
+      "conversation_id": "2060073683285070100",
+      "metrics": {
+        "likes": 14,
+        "retweets": 9,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 718,
+        "bookmarks": 13
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2060073683285070100"
+    },
+    {
+      "id": "2059998171762155796",
+      "text": "First-party signals are the cleanest signals you can act on. \n\nAlmost every B2B company is sitting on 8 of them...\n\nBut only acting on MAYBE 2 of them.\n\nThese 8 fire from systems you already own:\n\n1) Website visits to pricing, compare, and demo pages\n→ Route through Warmly or",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-28T14:00:11.000Z",
+      "conversation_id": "2059998171762155796",
+      "metrics": {
+        "likes": 19,
+        "retweets": 8,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 576,
+        "bookmarks": 16
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2059998171762155796"
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "user": {
+    "description": "Follow for posts about GitHub repos, DSPy, and agents\nSubscribe for top posts\nDM to share your AI project (Due to volume of DMs I'll prioritize subscribers)",
+    "id": "1326180756310331399",
+    "public_metrics": {
+      "followers_count": 208738,
+      "following_count": 2589,
+      "tweet_count": 52728,
+      "listed_count": 2077,
+      "like_count": 70281,
+      "media_count": 31075
+    },
+    "name": "Tom Dörr",
+    "username": "tom_doerr",
+    "created_at": "2020-11-10T15:13:32.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2062101572939641009",
+      "text": "Provides a strictly native bottom sheet for React Native\n\nhttps://t.co/imIBLTnnDV https://t.co/X8NAtBpjye",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T09:18:21.000Z",
+      "conversation_id": "2062101572939641009",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 460,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://github.com/lodev09/react-native-true-sheet",
+        "https://x.com/tom_doerr/status/2062101572939641009/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2062101572939641009"
+    },
+    {
+      "id": "2062084083639861382",
+      "text": "Generates Manim animations from text prompts\n\nhttps://t.co/ucUcVQCpmd https://t.co/4UeQfAc5Ux",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T08:08:51.000Z",
+      "conversation_id": "2062084083639861382",
+      "metrics": {
+        "likes": 11,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1347,
+        "bookmarks": 14
+      },
+      "urls": [
+        "https://github.com/marcelo-earth/generative-manim",
+        "https://x.com/tom_doerr/status/2062084083639861382/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2062084083639861382"
+    },
+    {
+      "id": "2062067600973070597",
+      "text": "Low-latency AI engine optimized for ARM CPUs and wearables\n\nhttps://t.co/Z2ktPyw07j https://t.co/rzqQsDE0Lr",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T07:03:22.000Z",
+      "conversation_id": "2062067600973070597",
+      "metrics": {
+        "likes": 19,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1601,
+        "bookmarks": 20
+      },
+      "urls": [
+        "https://github.com/cactus-compute/cactus",
+        "https://x.com/tom_doerr/status/2062067600973070597/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2062067600973070597"
+    },
+    {
+      "id": "2062051809494028535",
+      "text": "Semi-autonomous agents optimize codebases through parallel experimentation\n\nhttps://t.co/loqIQr3RNN https://t.co/DRuS437RpG",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T06:00:37.000Z",
+      "conversation_id": "2062051809494028535",
+      "metrics": {
+        "likes": 19,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1885,
+        "bookmarks": 22
+      },
+      "urls": [
+        "https://github.com/evo-hq/evo",
+        "https://x.com/tom_doerr/status/2062051809494028535/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2062051809494028535"
+    },
+    {
+      "id": "2062036515878748303",
+      "text": "Simultaneously streams to multiple targets from one OBS Studio scene\n\nhttps://t.co/YI22Ek5hx0 https://t.co/NeuZ0rziFI",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T04:59:50.000Z",
+      "conversation_id": "2062036515878748303",
+      "metrics": {
+        "likes": 23,
+        "retweets": 4,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2036,
+        "bookmarks": 20
+      },
+      "urls": [
+        "https://github.com/OPENSPHERE-Inc/branch-output",
+        "https://x.com/tom_doerr/status/2062036515878748303/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2062036515878748303"
+    },
+    {
+      "id": "2062022000449556616",
+      "text": "Robust HTML to PDF generator for Go applications\n\nhttps://t.co/YncxEVhC21 https://t.co/6T8elunGZ9",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T04:02:10.000Z",
+      "conversation_id": "2062022000449556616",
+      "metrics": {
+        "likes": 42,
+        "retweets": 3,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2282,
+        "bookmarks": 35
+      },
+      "urls": [
+        "https://github.com/carlos7ags/folio",
+        "https://x.com/tom_doerr/status/2062022000449556616/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2062022000449556616"
+    },
+    {
+      "id": "2062007814348759346",
+      "text": "Expert-level LLM agent for competitive Pokémon\n\nhttps://t.co/ZijL3peI7S https://t.co/CUbBindXig",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T03:05:47.000Z",
+      "conversation_id": "2062007814348759346",
+      "metrics": {
+        "likes": 26,
+        "retweets": 2,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 2651,
+        "bookmarks": 24
+      },
+      "urls": [
+        "https://github.com/sethkarten/pokechamp",
+        "https://x.com/tom_doerr/status/2062007814348759346/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2062007814348759346"
+    },
+    {
+      "id": "2061995006458568913",
+      "text": "Generates automated data reports from Python scripts\n\nhttps://t.co/e1hRvABkwB https://t.co/yNCM1LTkzu",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T02:14:54.000Z",
+      "conversation_id": "2061995006458568913",
+      "metrics": {
+        "likes": 32,
+        "retweets": 8,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 2308,
+        "bookmarks": 27
+      },
+      "urls": [
+        "https://github.com/man-group/PyBloqs",
+        "https://x.com/tom_doerr/status/2061995006458568913/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2061995006458568913"
+    },
+    {
+      "id": "2061981123744326074",
+      "text": "Generates ATS scores and custom feedback for resumes\n\nhttps://t.co/F02khzAjyQ https://t.co/qrAhF1s0Ch",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T01:19:44.000Z",
+      "conversation_id": "2061981123744326074",
+      "metrics": {
+        "likes": 52,
+        "retweets": 8,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 3666,
+        "bookmarks": 77
+      },
+      "urls": [
+        "https://github.com/adrianhajdin/ai-resume-analyzer",
+        "https://x.com/tom_doerr/status/2061981123744326074/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2061981123744326074"
+    },
+    {
+      "id": "2061968561203990878",
+      "text": "Manage hundreds of Xray proxy accounts via a single dashboard\n\nhttps://t.co/0Q0OdrcaqS https://t.co/T1KebaJMjI",
+      "author_id": "1326180756310331399",
+      "username": "tom_doerr",
+      "name": "Tom Dörr",
+      "created_at": "2026-06-03T00:29:49.000Z",
+      "conversation_id": "2061968561203990878",
+      "metrics": {
+        "likes": 16,
+        "retweets": 1,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 2680,
+        "bookmarks": 27
+      },
+      "urls": [
+        "https://github.com/Gozargah/Marzban",
+        "https://x.com/tom_doerr/status/2061968561203990878/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/tom_doerr/status/2061968561203990878"
+    }
+  ]
+}

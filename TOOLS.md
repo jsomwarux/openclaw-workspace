@@ -119,6 +119,8 @@ When activating a persona for open-ended coding tasks: read `docs/tools/claude-p
 - research-agent/ | analysis-agent/ | n8n-agent/ (n8n: localhost:5678) | agentforce-agent/ (sf CLI needed)
 - crypto-agent/ | job-market-agent/ | ranking-app-agent/
 - Crypto full-analysis validator: `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/validate-full-analysis.py --max-x-age-hours 3` — blocks Telegram allocation delivery when artifacts are stale/incomplete or bear-case analysis is generic/repeated.
+- Crypto deterministic full-analysis writer: `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/generate-full-analysis.py` — writes dated `latest-analysis.md`, history archive, `telegram-summary.txt`, and allocation-history JSON from fresh portfolio/prices/X/whale inputs before validator delivery.
+- Crypto full-analysis pipeline: `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/run-full-analysis-pipeline.py --max-x-age-hours 3 --since 1d --limit 5` — canonical 6AM/recovery path; refreshes inputs/X, runs guards, writes artifacts, validates, and returns `CRYPTO_FULL_ANALYSIS_OK` only when safe to send.
 - Pipeline: ~/projects/jt-consulting-pipeline/ | Skill: skills/jt-consulting-pipeline/SKILL.md
 - Outreach pipeline preflight: `python3 scripts/outreach_pipeline_runner.py --json` — deterministic script-first stages for Drive auth, M-status/T3 dedupe, existing draft/doc checks, warm-up holds, and report generation before any LLM copy work.
 
@@ -127,6 +129,8 @@ Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data S
 ## Drive Drafts
 - Script: scripts/drive_drafts.py | Account: openclawagenteve14@gmail.com | Root: "Eve — Drafts"
 - **Command:** `cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py --title "[Title]" --path "[path]" --file [path]`
+- Reusing the same title/path now updates the existing Google Doc body. For corrected high-stakes drafts, verify the live Google Doc text after sync, not just the local markdown.
+- Regression: `python3 -m unittest scripts/test_drive_drafts.py`
 - AI Ops teardown bundles: `python3 scripts/ai_ops_teardown_drive_sync.py --json` uploads current teardown + content draft to `Consulting/AI Ops Teardowns/[date]/Teardowns` and `Content/AI Ops Teardowns/[date]/Drafts`.
 - Key paths: client outreach/decks under `Consulting/Clients/[Client]/...`; job docs under `Job Applications/...`; content under `Content/...`; research/frameworks/analysis under same-name folders.
 - Root lookup must use the top-level `Eve — Drafts` folder (`'root' in parents`); duplicate nested `Eve — Drafts` folders are archived drift, not valid upload roots.

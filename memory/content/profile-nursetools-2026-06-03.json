@@ -1,0 +1,70 @@
+{
+  "user": {
+    "description": "Founder of Blyft\n\nBuild. Brand. Market. Launch.\n\nUSC '20 · CS & Music Technology",
+    "id": "303632195",
+    "public_metrics": {
+      "followers_count": 22742,
+      "following_count": 508,
+      "tweet_count": 6470,
+      "listed_count": 49,
+      "like_count": 59,
+      "media_count": 6
+    },
+    "name": "nursetools (📜,📜)",
+    "username": "nursetools",
+    "created_at": "2011-05-23T06:33:39.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2062068169880240430",
+      "text": "shipped StackFl0w.\n\npaste any agent workflow → get a live CFG graph →\nstep through execution → watch Stack / Memory / Storage update in real time.\n\n→ https://t.co/ADbbMWWSzi v1.0\n→ @buidlguidl \n\n// demo https://t.co/vZkMm56fzD // https://t.co/2YwlmzVzsH\n\n=/ https://t.co/hIqpQIUIAe",
+      "author_id": "303632195",
+      "username": "nursetools",
+      "name": "nursetools (📜,📜)",
+      "created_at": "2026-06-03T07:05:37.000Z",
+      "conversation_id": "2062068169880240430",
+      "metrics": {
+        "likes": 290,
+        "retweets": 31,
+        "replies": 18,
+        "quotes": 10,
+        "impressions": 24025,
+        "bookmarks": 1
+      },
+      "urls": [
+        "http://stackflow.app",
+        "https://speedrunethereum.com/builds/ab150780-cf01-4cb9-b0e8-203e5004f085",
+        "https://stackfl0w.vercel.app/",
+        "https://twitter.com/nursetools/status/2062067694552432641"
+      ],
+      "mentions": [
+        "buidlguidl"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/nursetools/status/2062068169880240430"
+    },
+    {
+      "id": "2062067694552432641",
+      "text": "https://t.co/oh5AMv7v6o",
+      "author_id": "303632195",
+      "username": "nursetools",
+      "name": "nursetools (📜,📜)",
+      "created_at": "2026-06-03T07:03:44.000Z",
+      "conversation_id": "2062067694552432641",
+      "metrics": {
+        "likes": 2946,
+        "retweets": 410,
+        "replies": 120,
+        "quotes": 0,
+        "impressions": 108471,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://x.com/i/article/2062065149419327488"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/nursetools/status/2062067694552432641"
+    }
+  ]
+}

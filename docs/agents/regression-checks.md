@@ -84,8 +84,8 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Check:** For `eve-crypto-morning-008`, verify latest run final summary includes explicit `telegram_message_sent=true` and `summary_text`, or manually inspect `/Users/jtsomwaru/projects/crypto-agent/data/telegram-summary.txt` and resend it via Telegram.
 - **Do not trust:** `lastRunStatus=ok` or `deliveryStatus=delivered` alone.
 - **Owner surface:** cron payload for `eve-crypto-morning-008` and `HEARTBEAT.md` missed-cron/delivery checks.
-- **Recovery:** resend `telegram-summary.txt` to JT, then patch cron if explicit send requirement is absent.
-- **Last verified:** 2026-05-11 — cron payload patched and manual resend succeeded.
+- **Recovery:** before any manual resend, rerun `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/x-research-guard.py --max-age-hours 3` and `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/validate-full-analysis.py --max-x-age-hours 3`. If either fails, send only a concise incomplete-analysis notice with exact blocker; do not resend allocation from stale X or stale artifacts. If both pass, resend `telegram-summary.txt` to JT, then patch cron if explicit send requirement is absent or too late in the prompt.
+- **Last verified:** 2026-06-03 — 6AM run produced dated artifacts but no Telegram/final checkpoint; 10AM manual recovery refused resend because X research was 4.23h old against the 3h gate, sent incomplete notice, and patched cron to make Telegram send the next tool call after validation passes.
 
 ## Active Check — Crypto Morning X Research Allocation Gate
 - **Failure covered:** Crypto Morning allocation delivered without fresh X/API research, relying on prices/web/whale data while treating X as skippable for cost.
@@ -101,7 +101,7 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Check:** Run `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/validate-full-analysis.py --max-x-age-hours 3`; it must require today's America/New_York date in `latest-analysis.md`, `telegram-summary.txt`, and `data/allocation-history/YYYY-MM-DD.json`.
 - **Failure action:** Do not send allocation. Send JT `⚠️ Crypto analysis incomplete — stale artifacts: [exact validation errors]`.
 - **Owner surface:** `/Users/jtsomwaru/projects/crypto-agent/scripts/validate-full-analysis.py`, `/Users/jtsomwaru/projects/crypto-agent/CLAUDE.md`, and `eve-crypto-morning-008` recovery checks.
-- **Last verified:** 2026-06-02 — validator correctly failed stale 2026-06-01 analysis/summary/allocation after fresh 2026-06-02 X research.
+- **Last verified:** 2026-06-03 — dated artifacts existed, but manual recovery still failed the X freshness guard; stale-X failure must block allocation resend even when analysis/summary/allocation dates are current.
 
 ## Active Check — LinkedIn Semantic Topic Cooldown
 - **Failure covered:** Weekly/daily content recommends the same LinkedIn idea in new wording because older manually posted rows are not marked `posted=true` and exact-text duplicate checks miss semantic repeats.
@@ -190,6 +190,14 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Fail condition:** The command contains invented proof types such as `build`, `outreach`, or `task_update`, or fails with `invalid choice`.
 - **Recovery:** Rerun with a valid enum and verify the proof id is created before final closeout.
 - **Owner surface:** closeout workflow, Proof Log Guard, `scripts/log-proof.py` usage.
+
+## Drive draft live-doc sync check
+- **Trigger:** Any corrected high-stakes draft, outreach pack, resume/cover package, proposal, or client-facing document is re-uploaded to Google Drive using an existing title/path.
+- **Check:** After `scripts/drive_drafts.py` reports an existing Google Doc was reused, read or export the live Google Doc and verify the corrected phrase/content is present. Local markdown alone is not proof of Drive freshness.
+- **Fail condition:** The local file contains corrected copy but the live Google Doc still shows older body text.
+- **Recovery:** Update the existing Google Doc body, rerun the Drive sync, and verify live-doc text before replying with the Drive link.
+- **Command:** `python3 -m unittest scripts/test_drive_drafts.py` must pass after changing Drive draft sync behavior.
+- **Owner surface:** `scripts/drive_drafts.py`, Drive Drafts workflow, high-stakes draft review closeout.
 
 ## Vista SEO cluster completeness check
 - **Trigger:** Any new Vista SEO/AI-search landing page on `jtsomwaru.com`.

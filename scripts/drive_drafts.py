@@ -122,11 +122,46 @@ def doc_url(file_id):
     return f"https://docs.google.com/document/d/{file_id}/edit"
 
 
+def replace_google_doc_text(drive, file_id, content):
+    """Replace the body text of an existing Google Doc."""
+    creds = drive._http.credentials
+    docs = build("docs", "v1", credentials=creds, cache_discovery=False)
+    doc = docs.documents().get(
+        documentId=file_id,
+        fields="body(content(endIndex))",
+    ).execute()
+    body = doc.get("body", {}).get("content", [])
+    end_index = body[-1].get("endIndex", 1) if body else 1
+    requests = []
+    if end_index > 2:
+        requests.append({
+            "deleteContentRange": {
+                "range": {
+                    "startIndex": 1,
+                    "endIndex": end_index - 1,
+                }
+            }
+        })
+    if content:
+        requests.append({
+            "insertText": {
+                "location": {"index": 1},
+                "text": content,
+            }
+        })
+    if requests:
+        docs.documents().batchUpdate(
+            documentId=file_id,
+            body={"requests": requests},
+        ).execute()
+
+
 def create_doc(drive, title, content, folder_id):
     """Upload plain text, auto-convert to Google Doc, place in folder. Idempotent by title+folder."""
     existing = find_doc(drive, title, folder_id)
     if existing:
-        print(f"↩️  Existing doc reused: {title}")
+        print(f"↩️  Existing doc reused and body updated: {title}")
+        replace_google_doc_text(drive, existing["id"], content)
         return doc_url(existing["id"])
     media = MediaInMemoryUpload(content.encode("utf-8"), mimetype="text/plain", resumable=False)
     meta  = {
@@ -140,15 +175,21 @@ def create_doc(drive, title, content, folder_id):
 
 def create_doc_from_docx(drive, title, content_bytes, folder_id):
     """Upload a .docx binary, auto-convert to Google Doc, place in folder. Idempotent by title+folder."""
-    existing = find_doc(drive, title, folder_id)
-    if existing:
-        print(f"↩️  Existing doc reused: {title}")
-        return doc_url(existing["id"])
     media = MediaInMemoryUpload(
         content_bytes,
         mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         resumable=False
     )
+    existing = find_doc(drive, title, folder_id)
+    if existing:
+        print(f"↩️  Existing doc reused and body updated: {title}")
+        drive.files().update(
+            fileId=existing["id"],
+            media_body=media,
+            body={"mimeType": "application/vnd.google-apps.document"},
+            fields="id",
+        ).execute()
+        return doc_url(existing["id"])
     meta = {
         "name": title,
         "mimeType": "application/vnd.google-apps.document",

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "2060941842762342646",
+    "text": "Claude Code初心者が\n最初に作るべきもの\n\nプロンプトではなく\n作業フォルダです。\n\n素材、参考資料、下書き、完成物が\n同じ場所にあると、\nClaude Codeも迷います。\n\n最小構成はこれ。\n\n✅ CLAUDE.md\n✅ inbox/\n✅ reference/\n✅ draft/\n✅ output/\n✅ archive/\n✅ .claude/skills/ https://t.co/iwze3cWwmb",
+    "author_id": "1292995835966312448",
+    "username": "kawai_design",
+    "name": "KAWAI",
+    "created_at": "2026-05-31T04:30:00.000Z",
+    "conversation_id": "2060941842762342646",
+    "metrics": {
+      "likes": 185,
+      "retweets": 12,
+      "replies": 7,
+      "quotes": 3,
+      "impressions": 41430,
+      "bookmarks": 239
+    },
+    "urls": [
+      "https://twitter.com/kawai_design/status/2060907716378517739"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/kawai_design/status/2060941842762342646"
+  },
+  {
+    "id": "2060684704941310152",
+    "text": "People think learning Claude takes days. It doesn't. \n\nI wrote 17 free guides that teach it in hours:\n\nClaude 101: ruben.substack. com/p/claude-for-d…\nClaude Code: ruben.substack. com/p/claude-code\nClaude Skills: ruben.substack. com/p/claude-skills\nClaude Connectors: https://t.co/b4e29ttESJ",
+    "author_id": "1485262989121007625",
+    "username": "raunak_yadush",
+    "name": "Raunak Yadush",
+    "created_at": "2026-05-30T11:28:13.000Z",
+    "conversation_id": "2060684704941310152",
+    "metrics": {
+      "likes": 61,
+      "retweets": 15,
+      "replies": 12,
+      "quotes": 0,
+      "impressions": 3474,
+      "bookmarks": 70
+    },
+    "urls": [
+      "https://x.com/raunak_yadush/status/2060684704941310152/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/raunak_yadush/status/2060684704941310152"
+  }
+]
