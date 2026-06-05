@@ -53,3 +53,6 @@
 2026-05-29 navigate-ai-construction-trades-copilot — Navigate.AI launched an AI copilot for training crews and quality control using phone/smart-glasses video, with $25M raised and Lennar named as a partner.
 2026-05-29 entrata-ipo-property-management-ai-revenue — Entrata filed for a NYSE IPO after reporting 23% Q1 2026 revenue growth, reinforcing property-management software demand around unified operating systems with embedded AI.
 2026-06-02 agentforce-coworker-beta — Salesforce Agentforce Coworker beta is documented as activatable for supported editions and includes billing guidance for Agentforce license holders.
+2026-06-04 agentforce-marketing-launch — Salesforce launched Agentforce Marketing as an agentic marketing-team layer with Rawlings reporting 75% faster campaign creation.
+2026-06-04 agentforce-arr-1-2b — Salesforce reported Agentforce ARR reached $1.2B, up 205% Y/Y, materially updating the prior $800M ARR signal.
+2026-06-04 insurance-underwriting-ai-demand-2026 — Insurance Business reported nearly 90% of insurers expect more underwriting automation and 65.9% plan additional AI tools in 2026.

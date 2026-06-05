@@ -2,6 +2,7 @@
 *Jack Butcher framework applied to language and compression — but content format varies by platform and day.*
 *Load this file before drafting any X post, thread, or LinkedIn content.*
 *Also load `memory/content/current-niche-map.md` before choosing the niche or swipe references.*
+*For taste-level voice decisions, load `memory/content/jt-voice-profile.md`; this file owns mechanical/platform rules.*
 
 ---
 

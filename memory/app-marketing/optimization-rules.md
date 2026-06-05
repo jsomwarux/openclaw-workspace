@@ -1,6 +1,6 @@
 # App Marketing OS — Optimization Rules
 
-Last updated: 2026-06-03
+Last updated: 2026-06-04
 
 Use this file before generating future app/product content.
 

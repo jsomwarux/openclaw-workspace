@@ -1,24 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-06-03",
-      "day": "wednesday",
-      "line_no": 197,
-      "platform": "linkedin",
-      "summary": "Canals raised $35M around wholesale distribution automation; the teardown uses JT's operating-scene spine: messy order inputs, ERP-ready needs, shared intake desk, catalog/pricing/inventory checks, exception routing, and cleaner data before it hits the ERP.",
-      "topic": "canals-wholesale-order-intake-desk"
-    },
-    {
-      "date": "2026-06-03",
-      "day": "wednesday",
-      "line_no": 202,
+      "date": "2026-06-04",
+      "day": "thursday",
+      "line_no": 203,
       "platform": "x",
-      "summary": "Lease renewal AI should start with due dates, missing docs, special cases, owner notes, manager review, and audit trail.",
-      "topic": "lease-renewal-approval-queue-before-tenant-automation"
+      "summary": "An AI agent becomes trustworthy when it has a source, queue, rule, stop condition, and human owner.",
+      "topic": "agent-job-title-source-queue-rule-stop-owner"
     }
   ],
   "note": "",
-  "sent_at": 1780488089,
+  "sent_at": 1780574458,
   "source": "content-reminder",
   "status": "pending"
 }

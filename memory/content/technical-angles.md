@@ -272,3 +272,4 @@ _Emerging conversations JT hasn't posted about yet but has the credibility to. S
 
 - **Atomic freshness-gated cron pipeline:** A deterministic artifact writer still fails if it trusts stale upstream evidence. The robust pattern is one pipeline command that owns fetch, freshness guard, artifact writing, validation, and checkpoint output, with the writer itself refusing to write when freshness gates fail.
 [2026-06-03] OpenClaw Skill Workshop + Workboard release — show how governed skill proposals and task-backed agent coordination make personal agent ops safer for SMB implementation work. (source: https://github.com/openclaw/openclaw/releases/tag/v2026.6.1-beta.3)
+[2026-06-04] OpenClaw 2026.6.1 Skill Workshop + channel hardening — JT can post a quick operator view on why agent runtimes now need governed skill/plugin installs, not just bigger models. (source: https://github.com/openclaw/openclaw/releases/tag/v2026.6.1)

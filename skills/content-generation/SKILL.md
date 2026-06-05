@@ -7,7 +7,7 @@ description: "Use when drafting, reviewing, scheduling, or generating JT's X, Li
 > Unified framework for writing all of JT Somwaru's content (X, LinkedIn).
 
 ## Description
-Generates zero-fluff, highly compressed, high-leverage content for JT's social channels. Enforces brand voice, platform constraints, and Mamba-level execution against his current niche map (`memory/content/current-niche-map.md`), with consulting/proof lanes prioritized above product/app lanes unless the request explicitly asks for app marketing.
+Generates zero-fluff, highly compressed, high-leverage content for JT's social channels. Enforces brand voice, platform constraints, and Mamba-level execution against his current niche map (`memory/content/current-niche-map.md`) plus the taste profile (`memory/content/jt-voice-profile.md`), with consulting/proof lanes prioritized above product/app lanes unless the request explicitly asks for app marketing.
 
 ## Usage
 `openclaw sessions_spawn --agentId [id] --task "Create a LinkedIn case study using the content-generation skill on [Topic]"`
@@ -36,11 +36,12 @@ For agents/CRONs: Load this skill before drafting any post.
 ## Execution Steps
 1. **Analyze Request:** Determine the platform (X or LinkedIn) and the content type (Hot Take, Case Study, Workflow Teardown). For AI Ops Teardowns, identify the current company/problem signal before drafting.
 2. **Load Niche Map:** Read `~/.openclaw/workspace/memory/content/current-niche-map.md`. Pick the exact canonical niche lane before fetching references or drafting. Default LinkedIn lanes are `SMB AI Implementation`, `Property Management Operations`, `NYC SMB Operations`, `Wholesale Distribution Operations`, `Construction + Skilled Trades Operations`, `Insurance / Agentforce Operations`, `AI Operating Systems / Agent Orchestration`, `AI Enablement / Solutions Architecture Career`, and `Productized Services / Solo Operator Systems`.
-3. **Drafting:** Write the post explicitly applying the Core Directives.
-4. **Compression Pass:** Read the draft. Delete 20% of the words. If the meaning changes, you cut the wrong words. If it hits harder, keep going.
-5. **Teardown Fit Pass:** For AI Ops Teardowns, reject drafts that read like a news summary or generic AI advice. The post must include: current signal, buyer-recognizable bottleneck, concrete input examples, system-of-record need, workflow start point, extraction/check/routing steps, and a practical outcome that lets customers/operators keep normal behavior while the business gets cleaner handoffs.
-6. **Originality Pass:** Compare against `memory/content/posted-log.jsonl` and reject repeated hooks, phrasing, or angles. Current blocked LinkedIn repeats include "best first AI project / least glamorous," "handoff everyone checks manually," "gets risky when...live in different places," "exception layer," "autonomous content system," "state file," "stop condition," and internal content-system transparency.
-7. **Output:** Return ONLY the post text. No "Here is your drafted post." Just the text. 
+3. **Load Voice Profile:** Read `~/.openclaw/workspace/memory/content/jt-voice-profile.md`. Use it for taste-level decisions: buyer-scene hooks, rejected patterns, proof-safe ownership, and the pre-send voice gate.
+4. **Drafting:** Write the post explicitly applying the Core Directives.
+5. **Compression Pass:** Read the draft. Delete 20% of the words. If the meaning changes, you cut the wrong words. If it hits harder, keep going.
+6. **Teardown Fit Pass:** For AI Ops Teardowns, reject drafts that read like a news summary or generic AI advice. The post must include: current signal, buyer-recognizable bottleneck, concrete input examples, system-of-record need, workflow start point, extraction/check/routing steps, and a practical outcome that lets customers/operators keep normal behavior while the business gets cleaner handoffs.
+7. **Originality Pass:** Compare against `memory/content/posted-log.jsonl` and reject repeated hooks, phrasing, or angles. Current blocked LinkedIn repeats include "best first AI project / least glamorous," "handoff everyone checks manually," "gets risky when...live in different places," "exception layer," "autonomous content system," "state file," "stop condition," and internal content-system transparency.
+8. **Output:** Return ONLY the post text. No "Here is your drafted post." Just the text. 
 
 ## Data Flow & Integration Guidelines
 - **Input Content:** For Monday/Thursday crons, always load `~/.openclaw/workspace/memory/content/weekly-intel-brief.md` for this week's niche signals before drafting any content.

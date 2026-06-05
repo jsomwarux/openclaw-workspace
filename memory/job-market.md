@@ -322,3 +322,11 @@ Read the current job-market-agent daily brief generated at 2026-06-03 05:15. No 
 **Strongest signal:** enterprise buyers are naming the pre-build operating-model work more directly: agentic target operating model, autonomous-vs-HITL decisions, policy changes, COE/adoption plan, KPIs, AI readiness, and process ownership before implementation.
 
 **Positioning implication:** keep framing JT as the person who turns messy workflows into agent-ready operating systems before a build team touches tooling. The strongest proof language is: define intents, decide what stays human-reviewed, set policy/approval gates, and measure value. Extend ProcurePilot / ROIFlow / AI Pilot Governance Kit language; no duplicate procurement demo or application task needed today.
+
+## 2026-06-04 — Heartbeat Job Market Pulse
+
+Read the current job-market-agent daily brief generated at 2026-06-04 05:15. No new US/NYC/remote role cleared JT's 18+/25 filter today. The strongest role-like hits were structurally blocked: Schwab is Austin/SF on-site, Coupa is UK-only and already tracked, Contentsquare is London, Novartis is Cambridge/pharma R&D, Dice is W2 contract/tech-lead, and InfiCare is Princeton hybrid contract.
+
+**Strongest signal:** the market continues to describe AI adoption as operating-model work: workflow intake, use-case prioritization, governance, champion networks, KPI/value reporting, and business-as-usual integration. The demand is real, but public-board fit for NYC/remote non-developer roles remains poor.
+
+**Positioning implication:** reframe Mission Control, OpenClaw, and Altmark as proof of an AI Enablement Operating System: intake -> workflow mapping -> governed agent handoff -> adoption/value measurement. Existing EnablementOps / DealDesk / ROIFlow / AgentGuard lanes cover the signal; no new application task, build idea, or consulting handoff artifact was needed today.

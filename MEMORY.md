@@ -2,11 +2,6 @@
 > Main-session long-term context. Do NOT load in group/shared chats. Full archive: `docs/memory/MEMORY-full.md`; snapshot: `docs/memory/archive/MEMORY-before-optimization-2026-04-26.md`.
 > Compact file: durable current context only; history belongs in daily notes/archive.
 
-## Load Order / File Authority
-- `AGENTS.md` = operating rules + hard constraints; `TOOLS.md` = commands, paths, API usage; `USER.md` = JT profile; `SOUL.md` = tone/persona; `HEARTBEAT.md` = proactive wake behavior.
-- `MEMORY.md` owns current decisions/status. If a fact changes here, update every file that references it.
-- Never raise `agents.defaults.bootstrapMaxChars` above 32,000. If bootstrap truncates, optimize files rather than increasing the firehose.
-
 ## JT Snapshot
 - Jon Trevor Somwaru, “JT”; timezone America/New_York; Telegram primary; direct, low-ceremony, expects Eve to figure things out before asking.
 - Background: Business Systems Analyst at Spectrum Enterprise/Charter; strong business-ops + tech translation edge.
@@ -25,9 +20,10 @@
 - Use `trash` over `rm` when removing user/workspace files.
 
 ## Consulting Positioning
-- Brand: JT Somwaru Consulting / JT Somwaru Consulting direction. Positioning: “practical AI implementation for ops-heavy SMBs” — workflows, AI context systems, dashboards, agents, and integrations that save time or surface revenue.
+- Brand: JT Somwaru Consulting. Positioning: “practical AI implementation for ops-heavy SMBs” — workflows, AI context systems, dashboards, agents, and integrations that save time or surface revenue.
 - Differentiator: JT speaks operations and technology; sells implementation outcomes, not abstract AI strategy.
 - 2026-06-03 positioning refinement: lead with AI operating controls / agent-ready operating models, not generic agent adoption. Buyer pain maps to budget ceilings, owner approvals, sandboxed execution, PII rules, run logs, escalation paths, and human-review boundaries before tools are implemented.
+- 2026-06-04 positioning refinement: local-business/property-ops agent offers should sell distribution + governed handoffs, not “AI writes copy.” Durable buyer controls: identity, scoped tool access, approval rules, audit trail, kill switch, cost caps, sandboxing, run logs, source-of-truth ownership, and measured adoption/value reporting.
 - Target ICP: NYC/metro SMBs in construction, wholesale distribution, property management, skilled trades; HubSpot is a strong expansion platform due to less Salesforce competition.
 - Outreach tiers use score gates: T1 80+ proof-led custom; T2 60-79 template/validation; T3 40-59 market-sensing only. JT sends all outreach.
 - Preferred stack: n8n over Make.com for client automation; Agentforce when Salesforce/Data Cloud fit the client.
@@ -78,7 +74,7 @@
 - Apply only for exceptional strategic fits (generally 22+/25, $150K+, NYC/remote, low misrepresentation risk). For 18–21/25 roles, usually use the JD as market intel or a consulting lead signal instead of spending time on a resume package.
 - If a company is hiring full-time for AI implementation, do not assume they lack consulting interest; position consulting as interim de-risking, workflow mapping, pilot governance, or acceleration while the FTE is hired/ramped — never as “hire JT instead.”
 - 2026-05-29 xhigh audit: AI enablement roles now map to AI operating-system proof lanes (intake, connectors/MCP, evals, lineage, governance, adoption, rollback, ROI). `~/projects/job-market-agent/data/role-to-build-matrix.md` is canonical before creating role-derived build/demo tasks; Altmark proof still outranks H.I.G./DealDesk speculation.
-- 2026-06-02/03 job-market pulses: no qualifying US/NYC/remote roles cleared filter. Useful positioning signal: AI adoption operating-system / target-operating-model work before implementation: intake, governance, HITL boundaries, adoption metrics, ROI reporting, KPIs, and process ownership.
+- 2026-06-02/03/04 job-market pulses: no qualifying US/NYC/remote roles cleared filter. Useful positioning signal: AI adoption operating-system / target-operating-model work before implementation: intake, governance, HITL boundaries, adoption metrics, ROI reporting, KPIs, process ownership, champions, and business-as-usual integration.
 - Avoid pure software engineering, ML research, Apex/SFDX-heavy Salesforce developer, relocation, or sub-$150K roles.
 - Resume/cover letter packages must use Sonnet model via job-application skill; save local markdown + generate docx + upload to Drive.
 
@@ -91,17 +87,17 @@
 - OpenRouter cost-gated. Main/default routing + all cron payloads use OpenAI OAuth with no non-OpenAI fallbacks; OpenRouter/Opus require named JT approval. Regression guard: `python3 scripts/model_routing_guard.py --include-disabled`.
 - Google Drive OAuth may block Drive-dependent pipeline work; if uploads fail, JT needs to run `python3 ~/.openclaw/workspace/scripts/drive_auth.py`.
 - LCM/lossless-claw is active; use `lcm_grep` → `lcm_describe` → `lcm_expand_query` for prior conversation recall before asserting specifics.
-- Fresh web search: use `scripts/web_search.py` direct Brave API for freshness/date filters; managed `web_search` only for broad non-freshness lookups until proven fixed. Do not configure Brave plugin/provider without approval.
+- Fresh web search: use `scripts/web_search.py` direct Brave API for freshness/date filters; managed `web_search` only for broad non-freshness lookups. Do not configure Brave plugin/provider without approval.
 - Gateway restart path: prefer `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "reason"`; do not raw restart/config patch unless explicitly approved.
 - Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`.
-- Critical commands/paths live in `TOOLS.md`; consult it before saying “I can’t.”
+- Critical commands/paths: `TOOLS.md`.
 
 ## Active Automation / Crons
 - Cron volume is guarded by `scripts/cron_volume_guard.py`: ≤35 scheduled invocations/day average and ≤28 agentTurn/day average; >30/day warns. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM ET.
 - `critical-files-integrity` (`ee357abb`) runs daily 9AM ET, timeout 180s; run script first, inspect/edit only on non-zero exit.
 - Active cron count: 51 enabled / 77 total as of 2026-06-03. Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron `eve-heartbeat-2h-002` disabled 2026-05-17 at JT request.
-- Recent cron hardening/details live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. Current red states are covered by recovery tasks: Crypto Full Analysis, Viral Swipe, prospect-discovery, Weekly Systems Review. Do not rerun content/reporting crons solely to clear metadata.
+- Recent cron hardening/details live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. Current red states are covered by recovery tasks/hardening: Nightly Leverage pseudo-command residue, Viral Swipe pseudo-command/content-voice path issue, prospect-discovery, and Weekly Systems Review pseudo-command posting check. Crypto Full Analysis is validating and sending Telegram again, but its cron delivery metadata still reports not-requested/delivered=false, so keep the existing recovery task open until metadata/final checkpoint is reconciled. Do not rerun content/reporting crons solely to clear metadata.
 - 2026-06-03 Crypto Full Analysis recovery: added deterministic `scripts/generate-full-analysis.py`, validated June 3 artifacts, and patched cron `eve-crypto-morning-008` to require deterministic artifact writing plus `CRYPTO_FULL_ANALYSIS_OK`.
 - 2026-05-12: Mission Control North Star audit runs in Morning Brief + heartbeat via `scripts/mission_control_north_star_audit.py`.
 - Spanish lessons paused 2026-05-26; Daily Lesson and Weekly Evaluation are disabled. `05024e45` is Skills & API Researcher Weekly Synthesis and remains enabled.
@@ -111,12 +107,11 @@
 ## Health / Training / Quality Loops
 - Health DB: `health/health.sqlite`; daily check-in 9PM; Sunday report.
 - Cost tracker: `scripts/cost-tracker.py`; alert thresholds session >$2, daily >$10, monthly pace >$75; `--check-alerts` includes model-routing guard.
-- Kobe Protocol: daily film review at 10AM and weekly skills audit. Mistake entries require failure + root cause + prevention rule.
+- Kobe Protocol: daily film review at 10AM and weekly skills audit.
 - Lessons auto-write: capture non-obvious solved problems in the relevant lessons/skill/rules file immediately.
 
 ## Strategic Decisions Log
-- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof. x402 is an operator-builder content/app-readiness pillar, not a generic SMB install offer.
-- Full dated decision detail/deferred items: `docs/memory/current-context-details-2026-05-27.md` and `docs/memory/MEMORY-full.md`.
+- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof. x402 is an operator-builder content/app-readiness pillar, not a generic SMB install offer. Full dated decisions/deferred items: `docs/memory/current-context-details-2026-05-27.md` and `docs/memory/MEMORY-full.md`.
 
 ## Integrity / Fabrication Corrections
 - Never claim outreach/messages were sent unless tool/script evidence confirms it.
@@ -128,10 +123,10 @@
 - 2026-06-02: Claude toolkit audit synthesized into OpenClaw OS. New skills: `n8n-blueprint`, `proposal-pdf`, `product-build-loop`; new agents: `workflow-strategist`, `product-quality-pass`; portable Codex plugin `~/plugins/jt-operating-system` expanded to v0.2.0. Comparison: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
 - 2026-05-31: Added capability-routing map at `docs/agents/capability-routing-map.md`; skills `client-proof-capture` and `linkedin-corpus`; agents `client-proof-engine` and `linkedin-corpus`; portable Codex plugin scaffold `~/plugins/jt-operating-system`; consulting-pipeline `CLAUDE.md`/`AGENTS.md` route proof/corpus work.
 - 2026-05-11: GBrain consulting recall pilot lives at `~/projects/gbrain*`; use only `scripts/gbrain-consulting-search.sh "Entity"` for consulting/prospect entity lookup. No crons/skillpacks/broad ingestion/embeddings without JT approval.
-- Prior setup details (`workflow-skillify`, `high-stakes-draft-eval`, birdclaw, gog) are archived in `docs/memory/MEMORY-full.md` and tool commands live in `TOOLS.md`.
+- Prior setup details are archived in `docs/memory/MEMORY-full.md`; tool commands live in `TOOLS.md`.
 
 ## Automation / Live Opportunities
 - Automation/client/opportunity history archived at `docs/memory/automation-and-live-opportunities-archive-2026-05-10.md`.
-- Current must-remember items: Altmark rent delinquency is the top consulting/proof lane. Internal proof/content tasks stay medium until evidence/send paths are ready. Yair may refer ~15 NYC family offices, proof/referral use gated.
+- Current must-remember: Altmark rent delinquency is the top consulting/proof lane. Internal proof/content tasks stay medium until evidence/send paths are ready. Yair may refer ~15 NYC family offices, proof/referral use gated.
 - Guyana wedge: Local Content Operations Sprint for oil/gas-adjacent suppliers. As of 2026-06-03, Dad-forward and warm-intro language should emphasize supplier ops/admin drag across logistics, construction, transportation, warehousing, professional services, ICT, vendor records, bid readiness, and local-content evidence. Artifacts/Drive IDs live in `docs/memory/current-context-details-2026-05-27.md`; hidden/noindex `jtsomwaru.com/guyana` remains stale until rewritten.
-- Nightly autonomous leverage, Guyana monitor, passive-income pipeline, North Star review, App Marketing scoreboard, ReelFarm Intel, and related automation are active unless cron list says otherwise.
+- Nightly leverage, Guyana monitor, passive-income pipeline, North Star review, App Marketing scoreboard, ReelFarm Intel, and related automation are active unless cron list says otherwise.
