@@ -1,0 +1,233 @@
+{
+  "user": {
+    "username": "AverySoftware",
+    "name": "Avery.Software",
+    "created_at": "2025-09-09T06:09:13.000Z",
+    "id": "1965296313240879104",
+    "public_metrics": {
+      "followers_count": 18,
+      "following_count": 16,
+      "tweet_count": 3115,
+      "listed_count": 0,
+      "like_count": 22,
+      "media_count": 33
+    },
+    "description": "The engine for software that actually moves the business. Three solutions one universe: https://t.co/uMX545sZNF | https://t.co/R970TsCLpc | https://t.co/uqqjWFyFbH ⇶ https://t.co/VzUexJyNJb. Powered by AI."
+  },
+  "tweets": [
+    {
+      "id": "2062615266216063229",
+      "text": "1/10\n\nRasa vs Avery Software - both AI agent space, different problems and target teams.\n\nRasa = foundational open-source conversational AI framework. Deep customization for eng teams.\n\nAvery = local-first specialized agents for developer workflows.\n\nFramework for conversation vs",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T19:19:35.000Z",
+      "conversation_id": "2062615266216063229",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062615266216063229"
+    },
+    {
+      "id": "2062611133207613712",
+      "text": "1/10\n\nBotpress vs Avery Software - both fall under \"AI agent\" umbrella but solve different problems.\n\nBotpress = open-source conversational AI platform. Chatbots, voice agents. Self-host first-class.\n\nAvery = local-first developer agents. Next.js scaffolding.\n\nDifferent",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T19:03:10.000Z",
+      "conversation_id": "2062611133207613712",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062611133207613712"
+    },
+    {
+      "id": "2062610524559622629",
+      "text": "1/10\n\nStack AI vs Avery Software - both target AI agents, very different starting points.\n\nStack AI = no-code AI workflow platform. Visual builder. Enterprise-focused.\n\nAvery = local-first specialized agents w/ fine-tuned models.\n\nDifferent users + deployments + scopes. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T19:00:45.000Z",
+      "conversation_id": "2062610524559622629",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062610524559622629"
+    },
+    {
+      "id": "2062609156826407217",
+      "text": "1/10\n\nGoogle Vertex AI Agents vs Avery Software - both AI agent platforms, very different starting points.\n\nVertex = Google Cloud's platform-native, tight GCP integration.\n\nAvery = local-first specialized agents, model on user's machine.\n\nGCP-shop vs not is the decision. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T18:55:19.000Z",
+      "conversation_id": "2062609156826407217",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062609156826407217"
+    },
+    {
+      "id": "2062608159798440297",
+      "text": "1/10\n\nSierra vs Avery Software - both fall under \"AI agent\" umbrella but solve completely different problems.\n\nSierra = enterprise AI customer service. White-glove, brand-aware, custom-built per customer.\n\nAvery = local-first developer agents. Packaged products. Next.js",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T18:51:21.000Z",
+      "conversation_id": "2062608159798440297",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062608159798440297"
+    },
+    {
+      "id": "2062607402063777939",
+      "text": "1/10\n\nReplit Agent vs Avery Software - both AI for building software, different homes.\n\nReplit Agent = autonomous coding in Replit cloud IDE. Many languages. Hosted in browser.\n\nAvery NXR = local desktop, Next.js specialist, packaged scaffolding agent.\n\nDifferent developer",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T18:48:20.000Z",
+      "conversation_id": "2062607402063777939",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 43,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062607402063777939"
+    },
+    {
+      "id": "2062606693427757404",
+      "text": "1/10\n\nhttps://t.co/4xtyxSMc0W vs Avery Software - both prompt → working app.\n\nBolt = WebContainers in browser, full apps run live in tabs, general-purpose across JS stacks.\n\nAvery NXR = local desktop app, fine-tuned model, Next.js specialist, production-ready output.\n\nDifferent",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T18:45:31.000Z",
+      "conversation_id": "2062606693427757404",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://Bolt.new"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062606693427757404"
+    },
+    {
+      "id": "2062606049144963514",
+      "text": "1/10\n\nhttps://t.co/VZCfY7h4Vz vs Avery Software - both AI for Next.js developers, different artifacts.\n\nv0 = browser-based UI/page generation, Vercel-integrated, conversational iteration.\n\nAvery NXR = full production app scaffolding, local fine-tuned model, 90 seconds.\n\nDifferent",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T18:42:58.000Z",
+      "conversation_id": "2062606049144963514",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://v0.dev"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062606049144963514"
+    },
+    {
+      "id": "2062605351053410306",
+      "text": "1/10\n\nDevin (Cognition) vs Avery Software - both AI software engineering agents, very different choices.\n\nDevin = autonomous, general-purpose, cloud-based, long-horizon work.\n\nAvery = specialized (Next.js), local-first, packaged scaffolding agent.\n\nHonest comparison. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-04T18:40:11.000Z",
+      "conversation_id": "2062605351053410306",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062605351053410306"
+    },
+    {
+      "id": "2062274264213176411",
+      "text": "1/10\n\nZapier Agents vs Avery Software - both AI agent platforms, very different value propositions.\n\nZapier Agents = AI + Zapier's massive integration library. Cross-tool automation.\n\nAvery = local-first specialized agents. Production software.\n\nTools talking to tools vs",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-03T20:44:34.000Z",
+      "conversation_id": "2062274264213176411",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2062274264213176411"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 2687,
+      "following_count": 41,
+      "tweet_count": 1071,
+      "listed_count": 20,
+      "like_count": 809,
+      "media_count": 113
+    },
+    "username": "fivosaresti",
+    "id": "1592198362572509184",
+    "name": "Fivos Aresti",
+    "description": "Co-Founder @ https://t.co/hjbHe3knbV | B2B Growth playbooks using AI",
+    "created_at": "2022-11-14T16:50:58.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2062610395009823199",
+      "text": "Third-party intent signals fire before a prospect ever touches your site.\n\nThe 12 worth tracking in 2026:\n\n- LinkedIn post engagement on your team and competitor posts\n- LinkedIn ad engagement on your campaigns and competitors'\n- LinkedIn job changes inside target accounts\n- Job",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-04T19:00:14.000Z",
+      "conversation_id": "2062610395009823199",
+      "metrics": {
+        "likes": 15,
+        "retweets": 8,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1109,
+        "bookmarks": 18
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2062610395009823199"
+    },
+    {
+      "id": "2062534908292030696",
+      "text": "Teams that rely on only on referrals and word of mouth are going to be left behind in 2027. \n\nHere’s the outbound system we’re using to generate 20 to 30% of our pipeline:\n\n(add this ASAP)\n\nPHASE 1: Capture and centralize\n\n1) Capture signals from first, second, and third-party",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-04T14:00:16.000Z",
+      "conversation_id": "2062534908292030696",
+      "metrics": {
+        "likes": 14,
+        "retweets": 8,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 506,
+        "bookmarks": 16
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2062534908292030696"
+    },
+    {
+      "id": "2062248019647406535",
+      "text": "Your highest-intent prospects walk off your pricing page every day.\n\nMost teams NEVER know they were there.\n\nUse this same-day de-anonymization play to take advantage of this: \n\n1) Connect the RB2B pixel to capture visitor data at the contact level\n2) Route the data into Clay for",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-03T19:00:17.000Z",
+      "conversation_id": "2062248019647406535",
+      "metrics": {
+        "likes": 18,
+        "retweets": 8,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 817,
+        "bookmarks": 16
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2062248019647406535"
+    },
+    {
+      "id": "2062172534653530188",
+      "text": "Over the last 12 months, we’ve tested 500+ GTM tools to find what actually books meetings. \n\nWe landed on 78 that we STILL use weekly.\n\nThe other 272 sit in a graveyard of free trials and one-month subs that taught us what doesn't belong in an AI-native stack.\n\nMost B2B teams https://t.co/l0kU3NBR8b",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-03T14:00:20.000Z",
+      "conversation_id": "2062172534653530188",
+      "metrics": {
+        "likes": 16,
+        "retweets": 9,
+        "replies": 8,
+        "quotes": 0,
+        "impressions": 884,
+        "bookmarks": 16
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2062172534653530188/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2062172534653530188"
+    },
+    {
+      "id": "2061885630527754428",
+      "text": "5 winning outbound plays that will book you more meetings TOMORROW:\n\n1) Customer alumni\n→ Pull closed-won accounts from HubSpot, find former employees who moved through Clay, qualify their new company against your ICP, and tier them for outreach.\n\n2) LinkedIn connections\n→",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-02T19:00:16.000Z",
+      "conversation_id": "2061885630527754428",
+      "metrics": {
+        "likes": 26,
+        "retweets": 8,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 1212,
+        "bookmarks": 30
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2061885630527754428"
+    },
+    {
+      "id": "2061810130627293262",
+      "text": "Set up this play once and it will backfill your pipeline with Tier 1 accounts EVERY quarter.\n\nBecause “Customer alumni” are the warmest leads in B2B.\n\nWhen someone moves from a company that already bought your product to a new company, that new company becomes a strong target",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-02T14:00:16.000Z",
+      "conversation_id": "2061810130627293262",
+      "metrics": {
+        "likes": 18,
+        "retweets": 8,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 2555,
+        "bookmarks": 21
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2061810130627293262"
+    },
+    {
+      "id": "2061523228934250534",
+      "text": "The 8 first-party intent signals every B2B team owns:\n\n- Website visits to pricing, compare, and demo pages\n- Form submissions across the site\n- Email opens, clicks, and replies on past outbound\n- Product usage events for free trial or freemium users\n- CRM activity and lifecycle",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-01T19:00:13.000Z",
+      "conversation_id": "2061523228934250534",
+      "metrics": {
+        "likes": 18,
+        "retweets": 9,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 863,
+        "bookmarks": 16
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2061523228934250534"
+    },
+    {
+      "id": "2061447762625888589",
+      "text": "10 months ago @Dan__rosenthal and I launched Workflows(.)io with a minimal website and 40K combined LinkedIn followers:\n\nThen, in 2 months time, we:\n\n• Booked 170+ meetings\n• Hit 1M ARR\n• Hired 7 full-time before the site was even finished.\n\nThe inbound came 100% through our https://t.co/Q4KgNuvQpt",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-06-01T14:00:21.000Z",
+      "conversation_id": "2061447762625888589",
+      "metrics": {
+        "likes": 14,
+        "retweets": 8,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 468,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2061447762625888589/photo/1"
+      ],
+      "mentions": [
+        "dan__rosenthal"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2061447762625888589"
+    },
+    {
+      "id": "2060798478800814341",
+      "text": "The best GTM tool per category in 2026:\n\n(top picks across 18 categories)\n\n1) AI agent builder: Claude Code\n2) Workflow automation: n8n\n3) Technographic Sumble\n4) AI notetaker and reporting: Ergo\n5) All-in-one sales prospecting: Apollo(.)io\n6) Cold call dialer: Nooks\n7) Cold https://t.co/jkW67ijNZt",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-30T19:00:19.000Z",
+      "conversation_id": "2060798478800814341",
+      "metrics": {
+        "likes": 28,
+        "retweets": 0,
+        "replies": 8,
+        "quotes": 0,
+        "impressions": 1111,
+        "bookmarks": 33
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2060798478800814341/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2060798478800814341"
+    },
+    {
+      "id": "2060722983371460979",
+      "text": "9 out of 10 companies that try to run signal based outbound NEVER have success. \n\nThey stand up Clay, RB2B, and Jungler inside a quarter.\n\nSignals fire on day one.\n\nFrom there:\n\n- the data piles up in dashboards nobody opens\n- the reps keep working the same static list\n- and the https://t.co/2ypSoBI7Rp",
+      "author_id": "1592198362572509184",
+      "username": "fivosaresti",
+      "name": "Fivos Aresti",
+      "created_at": "2026-05-30T14:00:20.000Z",
+      "conversation_id": "2060722983371460979",
+      "metrics": {
+        "likes": 33,
+        "retweets": 10,
+        "replies": 41,
+        "quotes": 0,
+        "impressions": 2765,
+        "bookmarks": 43
+      },
+      "urls": [
+        "https://x.com/fivosaresti/status/2060722983371460979/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fivosaresti/status/2060722983371460979"
+    }
+  ]
+}

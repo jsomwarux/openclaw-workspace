@@ -330,3 +330,11 @@ Read the current job-market-agent daily brief generated at 2026-06-04 05:15. No 
 **Strongest signal:** the market continues to describe AI adoption as operating-model work: workflow intake, use-case prioritization, governance, champion networks, KPI/value reporting, and business-as-usual integration. The demand is real, but public-board fit for NYC/remote non-developer roles remains poor.
 
 **Positioning implication:** reframe Mission Control, OpenClaw, and Altmark as proof of an AI Enablement Operating System: intake -> workflow mapping -> governed agent handoff -> adoption/value measurement. Existing EnablementOps / DealDesk / ROIFlow / AgentGuard lanes cover the signal; no new application task, build idea, or consulting handoff artifact was needed today.
+
+## 2026-06-05 — Heartbeat Job Market Pulse
+
+Read the current job-market-agent daily brief generated at 2026-06-05 05:16. No new US/NYC/remote role cleared JT's 18+/25 filter today. The strongest live-looking posts were location/domain blocked: Prosper is SF hybrid, Schwab remains Austin/SF on-site, Coupa is UK, Contentsquare is London, and Novartis is Cambridge pharma/R&D.
+
+**Strongest signal:** AI adoption roles are tightening around frontline workflow discovery, use-case triage, human-in-the-loop governance, adoption/value signals, and KPI/ROI dashboards. Customer-service AI agent platform ops showed up as a watch signal, but not as a clean JT-fit role yet.
+
+**Positioning implication:** keep packaging JT as an AI adoption operator, not a developer: map frontline work, decide what agents may touch, set governance and handoff rules, then prove value. Reframe Mission Control/OpenClaw as governed AI operations proof with intake, routing, monitoring, and value-oriented handoffs. Extend EnablementOps / ROIFlow / AgentOps language; no new application task or build idea was created today.

@@ -1,0 +1,91 @@
+{
+  "user": {
+    "description": "@Salesforce MVP HOF | Author x10 | @Salesforce Architect | Co-founder @automationhour @virtual_dreamin | Content Creator @automationchamp | 32x Certified",
+    "id": "114278277",
+    "name": "Rakesh Gupta",
+    "username": "rakeshistom",
+    "created_at": "2010-02-14T20:39:58.000Z",
+    "public_metrics": {
+      "followers_count": 11051,
+      "following_count": 2234,
+      "tweet_count": 43974,
+      "listed_count": 253,
+      "like_count": 14465,
+      "media_count": 9990
+    }
+  },
+  "tweets": [
+    {
+      "id": "2062597808235143523",
+      "text": "Simplify Your SOQL Queries Using SOQL FORMULA() in WHERE https://t.co/lPjbnRZAK9 https://t.co/C8f0Mn8zRv",
+      "author_id": "114278277",
+      "username": "rakeshistom",
+      "name": "Rakesh Gupta",
+      "created_at": "2026-06-04T18:10:13.000Z",
+      "conversation_id": "2062597808235143523",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 45,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://dlvr.it/TStF6t",
+        "https://x.com/rakeshistom/status/2062597808235143523/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/rakeshistom/status/2062597808235143523"
+    },
+    {
+      "id": "2061885112686641441",
+      "text": "The MCP Server for Marketing Cloud Engagement is Now GA https://t.co/0NaAAmN5F3 https://t.co/3RGnVzIHDs",
+      "author_id": "114278277",
+      "username": "rakeshistom",
+      "name": "Rakesh Gupta",
+      "created_at": "2026-06-02T18:58:13.000Z",
+      "conversation_id": "2061885112686641441",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 64,
+        "bookmarks": 1
+      },
+      "urls": [
+        "http://dlvr.it/TSrH8m",
+        "https://x.com/rakeshistom/status/2061885112686641441/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/rakeshistom/status/2061885112686641441"
+    },
+    {
+      "id": "2060415526019707298",
+      "text": "Build a Salesforce Agent Skill with Claude Code https://t.co/3kNZz22IJs https://t.co/fmrRgFuq3x",
+      "author_id": "114278277",
+      "username": "rakeshistom",
+      "name": "Rakesh Gupta",
+      "created_at": "2026-05-29T17:38:36.000Z",
+      "conversation_id": "2060415526019707298",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 48,
+        "bookmarks": 1
+      },
+      "urls": [
+        "http://dlvr.it/TSn9D7",
+        "https://x.com/rakeshistom/status/2060415526019707298/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/rakeshistom/status/2060415526019707298"
+    }
+  ]
+}

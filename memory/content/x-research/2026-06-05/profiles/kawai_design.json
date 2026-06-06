@@ -1,0 +1,246 @@
+{
+  "user": {
+    "created_at": "2020-08-11T01:26:54.000Z",
+    "id": "1292995835966312448",
+    "public_metrics": {
+      "followers_count": 41293,
+      "following_count": 912,
+      "tweet_count": 36816,
+      "listed_count": 598,
+      "like_count": 85139,
+      "media_count": 6230
+    },
+    "description": "AIの情報をわかりやすく毎日発信中｜セミナー登壇・動画出演50回以上、法人AI研修4社｜著書『AIでゼロからデザイン』重版｜Google画像生成プロンプト監修｜SHIFT AI デザイン部長/講師｜ベイジ AIデザイン顧問｜NewsPicksトピックスオーナー｜Voicy｜デザイナー歴14年｜ご相談はWebサイトへ",
+    "username": "kawai_design",
+    "name": "KAWAI"
+  },
+  "tweets": [
+    {
+      "id": "2062830722059309474",
+      "text": "AIを学び尽くしたが、\nなぜか成果が出ない。\n\nその原因は「デザイン」\nかもしれません。\n\nまだまだAIを使いこなせていない人の方が多い印象です。ただ、使いこなせている人達の中では差がわからにくくなってきていませんか？",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-05T09:35:44.000Z",
+      "conversation_id": "2062830722059309474",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 200,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062830722059309474"
+    },
+    {
+      "id": "2062821742410621216",
+      "text": "【 KAWAI APP 】Vol.6\n\n＼ 今日のAI仕事道具 ／\n売れる言葉のスパイス辞典をご紹介\n\nコピーが弱くなる原因は、\n才能不足ではありません。\n\n使える言葉が少ないだけです。\n\n・すごい\n・便利\n・おすすめ\n\nこの3つだけでは、\n人はなかなか動きません。\n\nこの辞典では、\n好奇心、共感、権威、希少性、 https://t.co/ci3ELV6iCy",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-05T09:00:03.000Z",
+      "conversation_id": "2062821742410621216",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 527,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2062821742410621216/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062821742410621216"
+    },
+    {
+      "id": "2062776432821207506",
+      "text": "【 HUMAN RULES 】最終回\n\n人は体験の全部を、\n均等には覚えていません。\n\n強く印象に残った瞬間と、\n最後の体験が記憶に残りやすい。\n\nこれは「ピークエンド」の考え方です。\n\n広告、UI、セミナー、\n営業資料でも同じ。\n\n途中を完璧にするより、\n山場と終わりを設計します。\n\n例: https://t.co/iSdhxbavCq",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-05T06:00:00.000Z",
+      "conversation_id": "2062776432821207506",
+      "metrics": {
+        "likes": 9,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 977,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2062776432821207506/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062776432821207506"
+    },
+    {
+      "id": "2062731148036329625",
+      "text": "デザインの小話 Vol.12\n【 テーマ：主役はひとつ 】\n\nデザインが散らかる理由は、\n要素が多いからではありません。\n\n主役が多すぎるからです。\n\n映画に主人公が何人もいると、\n誰の物語か分かりにくくなります。\n\nデザインも同じです。\n\n・見出しも目立つ\n・写真も目立つ\n・ボタンも目立つ https://t.co/fl35f08PrH",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-05T03:00:04.000Z",
+      "conversation_id": "2062731148036329625",
+      "metrics": {
+        "likes": 12,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 1,
+        "impressions": 1217,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2062731148036329625/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062731148036329625"
+    },
+    {
+      "id": "2062696974609224171",
+      "text": "アールヌーボー的な\nGoogle I/O\n\nアールデコ的な\nMicrosoft Build\n\nみんなはどっちの\nアートディレクションが好き？\n\n私の答えは、私のアイコンが\n語っています。",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-05T00:44:16.000Z",
+      "conversation_id": "2062696974609224171",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 963,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062696974609224171"
+    },
+    {
+      "id": "2062673705961234713",
+      "text": "「クリエイティブブリーフ」がないと、\nただ見た目が良さそうなデザインが\n量産されていきます。\n\n要件定義のない「Vibe Coding」が使われないアプリを量産するように、クリエイティブブリーフのない「Vibe Design」は響かないデザインを量産します。 https://t.co/bUOleMfiDD",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-04T23:11:48.000Z",
+      "conversation_id": "2062673705961234713",
+      "metrics": {
+        "likes": 24,
+        "retweets": 2,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 4594,
+        "bookmarks": 13
+      },
+      "urls": [
+        "https://twitter.com/Biz_Producer/status/2062672258657841489"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062673705961234713"
+    },
+    {
+      "id": "2062664657354330268",
+      "text": "そう感じる方は多いと思いますし、私も自分の\n「好き」を取られる感覚が以前ありました。\n\nただ、今は違う考えに変わっています。\n\n自分が「好き」な部分に全力を注ぐために、\n「それ以外」をAIフル活用する体制です。\n\n好きなことを、AIに渡す必要がありません。\nあくまで、決定権は人にあります。 https://t.co/ECkOKh9soS",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-04T22:35:51.000Z",
+      "conversation_id": "2062664657354330268",
+      "metrics": {
+        "likes": 13,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 3695,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/reinamakoto1/status/2062576626504966567"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062664657354330268"
+    },
+    {
+      "id": "2062655640477061558",
+      "text": "＼ 1日1つ学ぶ ／\nClaude Code入門【 Vol.12 】\n\nHooksは\n作業後に必ず通る\n「検品ライン」です。\n\nClaude Codeに\n「ちゃんと整えて」と頼むだけだと、\n毎回同じ精度になるとは限りません。\n\nでもHooksなら、\n特定のタイミングで\nシェルコマンドを自動実行できます。\n\nイメージは工場の検品ライン。 https://t.co/JZMSetHuEc",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-04T22:00:01.000Z",
+      "conversation_id": "2062655640477061558",
+      "metrics": {
+        "likes": 27,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 1,
+        "impressions": 4081,
+        "bookmarks": 23
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2062655640477061558/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062655640477061558"
+    },
+    {
+      "id": "2062525658316890549",
+      "text": "「brand.md」とは？\n\nそれは、デザイナー向け資料ではなく\nAIに渡す「思想のルール」です。\n\n入れるものは難しくありません。\n\n☑︎ どんな印象にしたいか\n☑︎ どんな印象を避けるか\n☑︎ 色\n☑︎ フォント\n☑︎ 写真トーン\n☑︎ 余白\n☑︎ 禁止表現\n\nこれがあると、\nサムネ、資料、Webを作るたびに https://t.co/UoF0xCQDtQ",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-04T13:23:31.000Z",
+      "conversation_id": "2062525658316890549",
+      "metrics": {
+        "likes": 217,
+        "retweets": 15,
+        "replies": 2,
+        "quotes": 2,
+        "impressions": 13157,
+        "bookmarks": 222
+      },
+      "urls": [
+        "https://x.com/kawai_design/status/2062525658316890549/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062525658316890549"
+    },
+    {
+      "id": "2062523200504991980",
+      "text": "【 AIで広告画像を作る人へ 】\n\n毎回「何をどう指示するか」で止まるなら、\nプロンプトを資産化した方が早いかも。\n\n広告、サムネ、LP、商品画像、背景、図解。\n画像生成プロンプトを120個まとめました。\n\n広告生成プロンプト大全はこちら\nhttps://t.co/MOgulsK6FG https://t.co/0IQTAAqHIU",
+      "author_id": "1292995835966312448",
+      "username": "kawai_design",
+      "name": "KAWAI",
+      "created_at": "2026-06-04T13:13:45.000Z",
+      "conversation_id": "2062523200504991980",
+      "metrics": {
+        "likes": 33,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3472,
+        "bookmarks": 54
+      },
+      "urls": [
+        "https://note.com/kawaidesign/n/ndfa4afa6d5ca",
+        "https://x.com/kawai_design/status/2062523200504991980/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/kawai_design/status/2062523200504991980"
+    }
+  ]
+}

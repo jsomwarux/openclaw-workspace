@@ -74,3 +74,4 @@ EOF'
 [2026-06-02T15:32:06Z] | daily-scan | x_queries: 6 | web_queries: 13 | findings: 8 | 🔴: 0 | 🟠: 2 | messaged_jt: yes
 2026-06-03T11:33:12-04:00 | daily-scan | x_queries: 6 | web_queries: 8 | findings: 6 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-04T15:34:13Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
+2026-06-05T15:32:58Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 4 | 🔴: 0 | 🟠: 0 | messaged_jt: no

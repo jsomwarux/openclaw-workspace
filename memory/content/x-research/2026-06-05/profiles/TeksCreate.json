@@ -1,0 +1,229 @@
+{
+  "user": {
+    "created_at": "2021-11-09T12:37:20.000Z",
+    "id": "1458050975596531717",
+    "public_metrics": {
+      "followers_count": 5,
+      "following_count": 33,
+      "tweet_count": 355,
+      "listed_count": 0,
+      "like_count": 0,
+      "media_count": 31
+    },
+    "description": "",
+    "username": "TeksCreate",
+    "name": "Teksart"
+  },
+  "tweets": [
+    {
+      "id": "2062825995611079166",
+      "text": "n8n just crossed 191K GitHub stars and it's not slowing down.\n\nMost people still think of n8n as \"Zapier but self-hosted.\" That's underselling what it's become.\n\nThe real story: n8n is now a full AI workflow platform with 400+ integrations, native MCP client and server support,",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T09:16:57.000Z",
+      "conversation_id": "2062825995611079166",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062825995611079166"
+    },
+    {
+      "id": "2062824677441933743",
+      "text": "OpenRouter just shipped Fusion — and it changes how you should think about model routing.\n\nFusion isn't a single model. It's a multi-model deliberation system. You call one endpoint, and behind the scenes a panel of expert models analyzes your prompt in parallel, then a judge",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T09:11:43.000Z",
+      "conversation_id": "2062824677441933743",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062824677441933743"
+    },
+    {
+      "id": "2062823353665101856",
+      "text": "Most AI agents out there feel like demo toys — they never get any better and just keep repeating the same errors.\n\nHermes Agent from NousResearch is a different story. It's already racked up more than 181K stars on GitHub, and it actually learns from its own experience, turning",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T09:06:27.000Z",
+      "conversation_id": "2062823353665101856",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 2,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062823353665101856"
+    },
+    {
+      "id": "2062796241235230756",
+      "text": "OpenAI just rebuilt ChatGPT's memory system. And it's not what you think.\n\nThey're rolling out a background memory engine that synthesizes information from your entire chat history — not just the current conversation, not just what you explicitly tell it to remember. It's always",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T07:18:43.000Z",
+      "conversation_id": "2062796241235230756",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062796241235230756"
+    },
+    {
+      "id": "2062794922290204981",
+      "text": "AppFlowy just hit 71 K stars on GitHub - a figure that says more than hype; it's a clear signal.\n\nBuilt entirely with Flutter, it's the first serious open-source challenger to Notion. It offers AI-powered blocks, self-hosting, and a fully collaborative workspace. With AppFlowy,",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T07:13:29.000Z",
+      "conversation_id": "2062794922290204981",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062794922290204981"
+    },
+    {
+      "id": "2062793592456786182",
+      "text": "Claude Opus 4.8 just landed—and it's not a flashy, new‑fangled model. It's a surgical upgrade aimed at developers who actually ship code.\n\nSame price tag, but a noticeable jump in agentic performance. The stat that caught my eye? It's four times less likely to miss a code flaw",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T07:08:11.000Z",
+      "conversation_id": "2062793592456786182",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062793592456786182"
+    },
+    {
+      "id": "2062765949325820361",
+      "text": "Google is quietly making Gemini the connective tissue between every workspace tool you use.\n\nThe latest update: Gemini in Drive can now pull Gmail threads as sources for AI-powered answers, summaries, and cross-referenced insights. Your email history becomes a data source for",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T05:18:21.000Z",
+      "conversation_id": "2062765949325820361",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062765949325820361"
+    },
+    {
+      "id": "2062764572738531803",
+      "text": "LobeHub just crossed 78K stars on GitHub — and it's one of the most ambitious agent orchestration platforms out there.\n\nIt calls itself the \"Chief Agent Operator\" — hiring, scheduling, and reporting on your entire AI team. Think of it as a production-grade control plane for",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T05:12:53.000Z",
+      "conversation_id": "2062764572738531803",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062764572738531803"
+    },
+    {
+      "id": "2062763261292925439",
+      "text": "MiniMax just dropped M3 — and it's the first open-weight model that genuinely competes with GPT-5.5 and Claude Opus.\n\nReleased June 1, 2026, M3 scores 59% on SWE-bench Pro (beats GPT-5.5's 58.6%), supports 1M token context, handles images and video natively, and can operate a",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T05:07:40.000Z",
+      "conversation_id": "2062763261292925439",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 2,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062763261292925439"
+    },
+    {
+      "id": "2062733579264618844",
+      "text": "The folks behind the Hermes model line just rolled out an AI agent that's already racked up 181,000 GitHub stars — and it's far more than a simple wrapper. NousResearch's Hermes Agent is an open-weight, Python-based framework that grows with you, supporting everything from Claude",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-05T03:09:43.000Z",
+      "conversation_id": "2062733579264618844",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2062733579264618844"
+    }
+  ]
+}

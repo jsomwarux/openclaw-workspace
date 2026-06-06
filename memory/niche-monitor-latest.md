@@ -1,5 +1,3 @@
-**Last updated:** 2026-06-04 09:02 AM EDT
+**Last updated:** 2026-06-05 09:01 AM EDT
 
-🟠 **Agentforce Marketing launched** — Salesforce launched Agentforce Marketing as an agentic marketing-team layer, with Rawlings reporting 75% faster campaign creation; this is a significant Agentforce capability update JT can map to CRM/marketing ops offers. (https://www.salesforce.com/news/stories/agentic-marketing-teams-announcement/)
-🟠 **Agentforce ARR reached $1.2B** — Salesforce reported $1.2B Agentforce ARR, up 205% Y/Y, a material adoption update from the previously surfaced $800M ARR signal. (https://www.salesforce.com/in/news/press-releases/2026/05/29/fy27-q1-earnings/)
-🟠 **Insurance underwriting AI demand accelerated** — Insurance Business reported nearly 90% of surveyed insurers expect more underwriting automation, 70.6% delivered AI underwriting tools in 2025, and 65.9% plan additional tools in 2026. (https://www.insurancebusinessmag.com/us/news/breaking-news/insurers-have-the-ai-tools--but-they-dont-have-the-confidence-577540.aspx)
+🟠 **Salesforce acquiring Contentful for Agentforce content layer** — Salesforce signed a definitive agreement to acquire Contentful, making structured CMS content accessible to Agentforce so agents can query, assemble, and deliver content dynamically after close. (https://www.salesforce.com/news/stories/salesforce-signs-definitive-agreement-to-acquire-contentful/)

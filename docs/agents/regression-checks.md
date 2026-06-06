@@ -157,6 +157,12 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Command:** New weekly files must pass `python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-YYYY-MM-DD.md --require-reference-map linkedin --require-reference-map x --check-notion-script`; the guard must fail non-canonical `Niche:` values in reference mechanics.
 - **Owner surface:** `docs/agents/content-rules.md`, `memory/content-voice.md`, `memory/content/current-niche-map.md`, content-calendar agent, content-generation skill, and Notion swipe tooling.
 
+## JT voice evidence-level check
+- **Trigger:** Any content-generation prompt, creator-corpus task, voice-profile update, or content-system health claim that relies on `memory/content/jt-voice-profile.md`.
+- **Check:** Verify the workflow loads the voice profile and states whether it is still correction-derived or backed by the Tier 1 public JT-written post inventory named in its Missing Evidence section. Until that inventory exists, use the file as a guardrail for rejected patterns and buyer-scene hooks, not as a full voice clone.
+- **Fail condition:** Content agents claim they captured JT's voice, publish profile-derived content without the pre-send voice gate, or ignore the missing Tier 1 corpus while treating the v0 profile as authoritative.
+- **Owner surface:** `memory/content/jt-voice-profile.md`, `skills/content-generation/SKILL.md`, content-generation workflow, and Content Voice Sprint task.
+
 ## LinkedIn recurring-series visibility check
 - **Trigger:** Any revised weekly LinkedIn queue or content review packet that was expected to include a named recurring series such as `AI Ops Teardown`.
 - **Check:** Inspect the LinkedIn section headings and slot metadata before Drive/Notion/MC sync. A promised series must appear as a clearly labeled slot heading, pillar, or source-backed series marker. A post that merely has a teardown shape does not pass if the review doc hides the series.

@@ -1,16 +1,24 @@
 {
   "entries": [
     {
-      "date": "2026-06-04",
-      "day": "thursday",
-      "line_no": 203,
+      "date": "2026-06-05",
+      "day": "friday",
+      "line_no": 198,
+      "platform": "linkedin",
+      "summary": "Construction AI can turn field photos, job notes, issue tags, and change-order evidence into an internal summary a human approves before customer follow-up.",
+      "topic": "field-photo-decision-evidence"
+    },
+    {
+      "date": "2026-06-05",
+      "day": "friday",
+      "line_no": 204,
       "platform": "x",
-      "summary": "An AI agent becomes trustworthy when it has a source, queue, rule, stop condition, and human owner.",
-      "topic": "agent-job-title-source-queue-rule-stop-owner"
+      "summary": "Construction AI wins when field photos, notes, change orders, quality issues, and training gaps tell the next person what changed.",
+      "topic": "field-to-office-handoff-what-changed"
     }
   ],
   "note": "",
-  "sent_at": 1780574458,
+  "sent_at": 1780660852,
   "source": "content-reminder",
   "status": "pending"
 }

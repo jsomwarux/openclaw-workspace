@@ -1,0 +1,312 @@
+{
+  "user": {
+    "created_at": "2010-05-28T02:55:41.000Z",
+    "name": "GSPANN Technologies",
+    "public_metrics": {
+      "followers_count": 1350,
+      "following_count": 284,
+      "tweet_count": 4433,
+      "listed_count": 49,
+      "like_count": 1065,
+      "media_count": 2824
+    },
+    "description": "We help our clients optimize their IT capabilities, practices, and operations with our experience in #retail, #technology, and #manufacturing.",
+    "username": "gspanntech",
+    "id": "148975904"
+  },
+  "tweets": [
+    {
+      "id": "2062785250460422269",
+      "text": "@salesforce Connections 2026 is in the books! \nThe biggest takeaway? Winning with AI isn't about having more AI. \n \nIt's about having the right data foundation, architecture, and strategy to scale. \n \nThanks for an incredible #CNX26! \n \n#Salesforce #Agentforce #GSPANNEvents https://t.co/YRjoubFpOA",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-05T06:35:03.000Z",
+      "conversation_id": "2062785250460422269",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2062785250460422269/photo/1",
+        "https://x.com/gspanntech/status/2062785250460422269/photo/1",
+        "https://x.com/gspanntech/status/2062785250460422269/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [
+        "CNX26",
+        "Salesforce",
+        "Agentforce",
+        "GSPANNEvents"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2062785250460422269"
+    },
+    {
+      "id": "2062777521582813607",
+      "text": "For one sweet day, our offices transformed into Candyland! 🍭✨ \nFrom creative challenges and cupcake decorating to gummy bear towers and endless smiles, Kids at Workplace 2026 was filled with fun, learning, and unforgettable memories. \n \n#GSPANNLife #EnjoyLife #LetsCoCreate https://t.co/G4o6eWAyzH",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-05T06:04:20.000Z",
+      "conversation_id": "2062777521582813607",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2062777521582813607/photo/1",
+        "https://x.com/gspanntech/status/2062777521582813607/photo/1",
+        "https://x.com/gspanntech/status/2062777521582813607/photo/1",
+        "https://x.com/gspanntech/status/2062777521582813607/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "GSPANNLife",
+        "EnjoyLife",
+        "LetsCoCreate"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2062777521582813607"
+    },
+    {
+      "id": "2062542393615007910",
+      "text": "Day 2 at @salesforce Connections 2026 is on! 🚀\nYesterday's conversations made one thing clear: teams aren't asking whether to adopt #Agentforce, they're asking how to do it right.\n \nLet's talk. Visit us at Booth #502.\n \n#CNX26 #GSPANNEvents https://t.co/TJK96DcQXw",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-04T14:30:01.000Z",
+      "conversation_id": "2062542393615007910",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2062542393615007910/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [
+        "Agentforce",
+        "CNX26",
+        "GSPANNEvents"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2062542393615007910"
+    },
+    {
+      "id": "2062489373506150887",
+      "text": "What a start to @salesforce Connections2026! 🙌\n \nDay 1 was packed with great conversations at Booth #502 on #Agentforce, composable commerce, and customer data strategies. Thanks to everyone who stopped by and shared their insights.\n \n#CNX26 #GSPANNEvents https://t.co/kHKVLT9xT5",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-04T10:59:20.000Z",
+      "conversation_id": "2062489373506150887",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 19,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2062489373506150887/photo/1",
+        "https://x.com/gspanntech/status/2062489373506150887/photo/1",
+        "https://x.com/gspanntech/status/2062489373506150887/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [
+        "Agentforce",
+        "CNX26",
+        "GSPANNEvents"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2062489373506150887"
+    },
+    {
+      "id": "2062444381307883952",
+      "text": "The Agentic AI Governance Mistake | Move Fast and Pay Thrice | Thursday Bytes\n\nhttps://t.co/xSm4WBZDnK\n\n#ThursdayBytes #AgenticAI #EnterpriseAI #AIGovernance #GSPANN",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-04T08:00:33.000Z",
+      "conversation_id": "2062444381307883952",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 11,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://na2.hubs.ly/H05XqRQ0"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "ThursdayBytes",
+        "AgenticAI",
+        "EnterpriseAI",
+        "AIGovernance",
+        "GSPANN"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2062444381307883952"
+    },
+    {
+      "id": "2062232851664543966",
+      "text": "10 minutes to go! 🎬\nPraveen Chandra is about to take the stage and share the 7 building blocks every team needs before launching their first Agentforce agent.\n\n📍 Theater 1 | Campground, Level 3\n\nSee you there!\n\n#SalesforceConnections2026 #CNX26 #Agentforce #GSPANNEvents https://t.co/z5O8FM9Y6F",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-03T18:00:00.000Z",
+      "conversation_id": "2062232851664543966",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 32,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2062232851664543966/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "SalesforceConnections2026",
+        "CNX26",
+        "Agentforce",
+        "GSPANNEvents"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2062232851664543966"
+    },
+    {
+      "id": "2062225300722000375",
+      "text": "1 hour to go! ⏰\n \nJoin Praveen Chandra at #SalesforceConnections2026 as he breaks down why Agentforce projects stall and the 7 building blocks needed to get your first agent live.\n \n📍 Theater 1, Campground | 1:30 PM – 1:50 PM CDT \n \n#CNX26 #Agentforce #GSPANNEvents https://t.co/JOfwFOk1d2",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-03T17:30:00.000Z",
+      "conversation_id": "2062225300722000375",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 21,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2062225300722000375/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "SalesforceConnections2026",
+        "CNX26",
+        "Agentforce",
+        "GSPANNEvents"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2062225300722000375"
+    },
+    {
+      "id": "2062180001353707572",
+      "text": "We're LIVE at #SalesforceConnections2026! 🚀\n \nMeet Rama Aluri and Praveen Chandra at Booth #502 to discuss Agentforce, AI, composable commerce, and platform modernization. Stop by and explore what's next for enterprise growth.\n \n#CNX26 #Agentforce #GSPANNEvents https://t.co/WYbkocqY59",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-03T14:30:00.000Z",
+      "conversation_id": "2062180001353707572",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 33,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2062180001353707572/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "SalesforceConnections2026",
+        "CNX26",
+        "Agentforce",
+        "GSPANNEvents"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2062180001353707572"
+    },
+    {
+      "id": "2061757216051601432",
+      "text": "Why do most Agentforce projects stall before day 90?\nIt’s not the tech, it’s the foundation.\n\nJoin Praveen Chandra at #SalesforceConnections 2026 for “Kickstarting Agentforce: Building Blocks to Your First Agent.”\n\n📅 Jun 3 | 1:30 PM - 1:50 PM CDT\n\n#Agentforce #GSPANNEvents https://t.co/lrjuxX6vgo",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-02T10:30:00.000Z",
+      "conversation_id": "2061757216051601432",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2061757216051601432/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "SalesforceConnections",
+        "Agentforce",
+        "GSPANNEvents"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2061757216051601432"
+    },
+    {
+      "id": "2061706518748348570",
+      "text": "Commitment in action 💡\n \nFrom enabling #BOPIS to scaling seamless #customerexperiences, our team delivered 60–70% faster rollouts, stronger reliability, and smoother order journeys across markets. \n \n#LifeAtGSPANN #CoreValues #commitment #customerjourney #orderjourney https://t.co/JgkojfJb58",
+      "author_id": "148975904",
+      "username": "gspanntech",
+      "name": "GSPANN Technologies",
+      "created_at": "2026-06-02T07:08:33.000Z",
+      "conversation_id": "2061706518748348570",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/gspanntech/status/2061706518748348570/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "BOPIS",
+        "customerexperiences",
+        "LifeAtGSPANN",
+        "CoreValues",
+        "commitment",
+        "customerjourney",
+        "orderjourney"
+      ],
+      "tweet_url": "https://x.com/gspanntech/status/2061706518748348570"
+    }
+  ]
+}

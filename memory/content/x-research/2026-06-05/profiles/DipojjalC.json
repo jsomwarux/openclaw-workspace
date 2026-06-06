@@ -1,0 +1,268 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 141,
+      "following_count": 249,
+      "tweet_count": 265,
+      "listed_count": 0,
+      "like_count": 79,
+      "media_count": 71
+    },
+    "created_at": "2010-05-06T04:04:25.000Z",
+    "id": "140679865",
+    "name": "Dipojjal",
+    "username": "DipojjalC",
+    "description": "Enterprise Solution Architect @ A5 | 25X Salesforce Certified | 4 Star Ranger"
+  },
+  "tweets": [
+    {
+      "id": "2062716038618210773",
+      "text": "All 40+ Salesforce certifications, mapped by role, with study time and prerequisites.\n\nThe roadmap to bookmark before you book your next exam.\n\nhttps://t.co/Ly71jiVbay https://t.co/6fWcORINmU",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-05T02:00:01.000Z",
+      "conversation_id": "2062716038618210773",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://salesforcedictionary.com/blogs/salesforce-certifications-roadmap-2026-all-exams-mapped",
+        "https://x.com/DipojjalC/status/2062716038618210773/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/DipojjalC/status/2062716038618210773"
+    },
+    {
+      "id": "2062672712288338085",
+      "text": "Shipped a new article on Salesforce Agent Broker hitting GA today, fixed some wonky diagrams in the Contentful acquisition piece, and squashed a bug that kept breaking deploys. Solo founder life! Check it out: https://t.co/6ODoC7B1Je #buildinpublic #Salesforce #indiehacker",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-04T23:07:51.000Z",
+      "conversation_id": "2062672712288338085",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 23,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic",
+        "Salesforce",
+        "indiehacker"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2062672712288338085"
+    },
+    {
+      "id": "2062353650987442568",
+      "text": "The Agentforce Specialist exam tests how you build, ground, and operate agents, not how you memorize features.\n\nWhat to study, what to skip, and what the exam tests.\n\nhttps://t.co/oq4jyCShSp https://t.co/XU5zKQExIP",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-04T02:00:01.000Z",
+      "conversation_id": "2062353650987442568",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://salesforcedictionary.com/blogs/agentforce-specialist-certification-study-guide",
+        "https://x.com/DipojjalC/status/2062353650987442568/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/DipojjalC/status/2062353650987442568"
+    },
+    {
+      "id": "2062310551699575289",
+      "text": "Salesforce acquired Contentful — the headless CMS behind 4,800 enterprise brands. We broke down what it means for Agentforce, overlap with Salesforce CMS, and vendor-neutrality questions.\n\nhttps://t.co/6ODoC7B1Je\n\n#Salesforce #Agentforce #buildinpublic",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-03T23:08:46.000Z",
+      "conversation_id": "2062310551699575289",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 37,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "Salesforce",
+        "Agentforce",
+        "buildinpublic"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2062310551699575289"
+    },
+    {
+      "id": "2061991262626988132",
+      "text": "50 real Salesforce admin interview questions, with the answer they're looking for.\n\nWhether you're hiring or interviewing, this is the prep list.\n\nhttps://t.co/NDHI7YaThg https://t.co/kK7YmPCNjm",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-03T02:00:01.000Z",
+      "conversation_id": "2061991262626988132",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 60,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://salesforcedictionary.com/blogs/50-salesforce-admin-interview-questions-2026",
+        "https://x.com/DipojjalC/status/2061991262626988132/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/DipojjalC/status/2061991262626988132"
+    },
+    {
+      "id": "2061947926784401625",
+      "text": "Building in public — June 2.\n\n2 Salesforce news pieces live today:\n- Salesforce's Anthropic stake now ~$5B (CRM +10%)\n- Agentforce Vibes billing change hits Dev Edition orgs\n\nhttps://t.co/6ODoC7B1Je\n#buildinpublic #Salesforce",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-02T23:07:49.000Z",
+      "conversation_id": "2061947926784401625",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 38,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic",
+        "Salesforce"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2061947926784401625"
+    },
+    {
+      "id": "2061628877256921537",
+      "text": "The 30 Salesforce errors that show up in production, and the working fix for each.\n\nBookmark this one. You'll need it.\n\nhttps://t.co/TB3HzzEoPE https://t.co/an71iPNctK",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-02T02:00:02.000Z",
+      "conversation_id": "2061628877256921537",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://salesforcedictionary.com/blogs/30-most-common-salesforce-errors-and-fixes",
+        "https://x.com/DipojjalC/status/2061628877256921537/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/DipojjalC/status/2061628877256921537"
+    },
+    {
+      "id": "2061585681827139715",
+      "text": "Just published a new piece on Salesforce Dictionary: Salesforce's $2B bet on France through 2030, announced at Choose France. Built two custom charts to break down where the money actually goes vs. the €93B summit. Read it: https://t.co/6ODoC7B1Je #buildinpublic",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-01T23:08:23.000Z",
+      "conversation_id": "2061585681827139715",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 18,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2061585681827139715"
+    },
+    {
+      "id": "2061266488456028667",
+      "text": "Agentforce 360 is Salesforce's 2025 rebrand of its agentic-AI platform. The name is new, the architecture is real.\n\nThe complete admin + dev + architect tour.\n\nhttps://t.co/UdPN4pAyLH https://t.co/ddyho4xqco",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-01T02:00:01.000Z",
+      "conversation_id": "2061266488456028667",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://salesforcedictionary.com/blogs/what-is-agentforce-360-complete-2026-guide",
+        "https://x.com/DipojjalC/status/2061266488456028667/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/DipojjalC/status/2061266488456028667"
+    },
+    {
+      "id": "2060904099508371588",
+      "text": "SOQL is for one object plus relationships. SOSL is for searching across many.\n\nIn this guide:\n• When SOSL outperforms multiple SOQLs by 10x\n• When SOQL is the only correct answer\n\nhttps://t.co/ica34JPOLS https://t.co/liyWrW3GV4",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-05-31T02:00:01.000Z",
+      "conversation_id": "2060904099508371588",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 2,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://salesforcedictionary.com/blogs/soql-vs-sosl-when-to-use-each",
+        "https://x.com/DipojjalC/status/2060904099508371588/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/DipojjalC/status/2060904099508371588"
+    }
+  ]
+}

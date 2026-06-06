@@ -1,0 +1,237 @@
+{
+  "user": {
+    "username": "EMC2Ops",
+    "created_at": "2026-05-27T01:00:54.000Z",
+    "name": "EMC2Ops",
+    "description": "AI Automation for Property Management\nAutomating leasing, maintenance, tenant communication & operations with AI.",
+    "public_metrics": {
+      "followers_count": 1,
+      "following_count": 67,
+      "tweet_count": 33,
+      "listed_count": 0,
+      "like_count": 22,
+      "media_count": 1
+    },
+    "id": "2059439339453415425"
+  },
+  "tweets": [
+    {
+      "id": "2062690176887865548",
+      "text": "Property managers: if leasing calls, web leads, and maintenance requests all die in separate inboxes, I’ll map the fix. Free workflow audit covering AI front desk, missed-call text-back, leasing follow-up automation, and CRM workflows. DM \"audit\".",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-05T00:17:15.000Z",
+      "conversation_id": "2062690176887865548",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062690176887865548"
+    },
+    {
+      "id": "2062644931944939822",
+      "text": "Specific use case: after-hours leasing. An AI front desk for property managers should text every guest card, answer FAQs, tag the property, and create a CRM task before morning. That is property management CRM automation. DM \"audit\" for a free workflow review.",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-04T21:17:28.000Z",
+      "conversation_id": "2062644931944939822",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062644931944939822"
+    },
+    {
+      "id": "2062619398561464503",
+      "text": "New EMC2Ops guide: property management tour scheduling automation\n\nHow property managers can automate tour s...\n\nFor owners/operators managing 50+ units who want faster leasing response, cleaner maintenance intake, and fewer manual CRM handoffs.\n\n#PropertyManagement #AIAutomation",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-04T19:36:00.000Z",
+      "conversation_id": "2062619398561464503",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [
+        "PropertyManagement",
+        "AIAutomation"
+      ],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062619398561464503"
+    },
+    {
+      "id": "2062599352976130354",
+      "text": "Workflow proof for property managers: when a guest card sits untouched for 5 minutes, property management CRM automation should send the first SMS, queue AI voice for no-response leads, and alert leasing before the prospect disappears. DM \"audit\" for a free workflow review.",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-04T18:16:21.000Z",
+      "conversation_id": "2062599352976130354",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062599352976130354"
+    },
+    {
+      "id": "2062575910113423860",
+      "text": "Property managers miss calls every day.  We're building EMC2Ops to recover missed calls, qualify renters, book next steps, and log CRM updates.  Demo + workflow audit: https://t.co/oiw4nFjY09",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-04T16:43:12.000Z",
+      "conversation_id": "2062575910113423860",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/EMC2Ops/status/2062575910113423860/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062575910113423860"
+    },
+    {
+      "id": "2062554013724209164",
+      "text": "What is missed-call text-back for property managers? It automatically sends an SMS when leasing or maintenance calls go unanswered, asks the next question, and logs the handoff into CRM workflows so staff can pick up with context. DM \"audit\" for a free workflow review.",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-04T15:16:11.000Z",
+      "conversation_id": "2062554013724209164",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 9,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062554013724209164"
+    },
+    {
+      "id": "2062508862603673718",
+      "text": "Strong POV: more leasing hires will not fix missed calls. Property management automation should answer, send missed-call text-back, and trigger leasing follow-up in the CRM before prospects move on. DM \"audit\" for a free workflow review.",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-04T12:16:47.000Z",
+      "conversation_id": "2062508862603673718",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062508862603673718"
+    },
+    {
+      "id": "2062327396846424222",
+      "text": "Free workflow audit for property managers: I will map where property management automation, AI front desk, missed-call text-back, leasing follow-up automation, and maintenance intake automation fit your team. DM \"audit\" and I will send the teardown.",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-04T00:15:42.000Z",
+      "conversation_id": "2062327396846424222",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062327396846424222"
+    },
+    {
+      "id": "2062282469315924376",
+      "text": "Mini teardown: a missed maintenance call should trigger SMS, collect the issue, tag urgency, and create the CRM task before staff calls back. That is maintenance intake automation for property managers. DM \"audit\" for a free workflow review.",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-03T21:17:10.000Z",
+      "conversation_id": "2062282469315924376",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 15,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062282469315924376"
+    },
+    {
+      "id": "2062257263700504956",
+      "text": "New EMC2Ops guide: property management maintenance status update automation\n\nHow property managers can autom...\n\nFor owners/operators managing 50+ units who want faster leasing response, cleaner maintenance intake, and fewer manual CRM handoffs.\n\n#PropertyManagement #AIAutomation",
+      "author_id": "2059439339453415425",
+      "username": "EMC2Ops",
+      "name": "EMC2Ops",
+      "created_at": "2026-06-03T19:37:01.000Z",
+      "conversation_id": "2062257263700504956",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 16,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [
+        "PropertyManagement",
+        "AIAutomation"
+      ],
+      "tweet_url": "https://x.com/EMC2Ops/status/2062257263700504956"
+    }
+  ]
+}
