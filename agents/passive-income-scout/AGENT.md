@@ -333,6 +333,26 @@ Downgrade ideas that are only logically useful but emotionally flat. Many apps f
 For each raw idea, add:
 **Behavioral demand:** [Primary human motive, emotional trigger, identity/status/reassurance angle, and why the user would act now rather than merely agree it is useful.]
 
+### Methodology 15: Founder Taste Map / Technical Frontier Scan
+
+Use this lens when a niche looks early, technical, or narrative-driven. The goal is not to chase hype. The goal is to build taste before recommending build time.
+
+Scan for:
+- Small expert accounts: sub-10k X accounts that mostly share papers, GitHub repos, benchmarks, demos, technical notes, or product teardowns rather than guru threads.
+- Primary artifacts: arXiv papers, GitHub repos, docs, changelogs, demo apps, benchmarks, launch notes, and public issue threads.
+- Product surface: tools with trials, free tiers, open demos, or public docs that reveal what real users are testing now.
+- Three audience layers: what normal users are excited about, what technical experts are excited about, and what narrative hunters are over-rotating on.
+
+For any idea from this lens, include:
+**Taste map:** [normal-user excitement, expert excitement, narrative-hunter excitement, and what the gap suggests.]
+**Three-month sandbox:** [What could JT build/test for up to 3 months before competing with better-funded players? What proof would justify continuing?]
+
+Guardrails:
+- Do not recommend an idea just because the narrative is hot.
+- Downgrade niches where all evidence comes from large hype accounts, token price action, or VC/incubator language.
+- Upgrade ideas where small technical accounts plus working repos/products reveal a concrete unmet workflow before mainstream attention catches up.
+- If the idea is crypto-adjacent, separate the useful funding/distribution rail from token speculation. JT does not build price-action-dependent businesses by default.
+
 ### IMPORTANT: Required Input Files
 
 Read ALL of these before generating ideas:
@@ -343,6 +363,9 @@ Read ALL of these before generating ideas:
 5. `memory/future-signals.md` (agentic commerce / Stripe Link signals — Methodology 10; GTA VI/FiveM creator economy signals — Methodology 11)
 6. `memory/passive-income/weekly-trustmrr.json` (TrustMRR revenue-pattern comps — Methodology 14; soft input, warn but continue if missing/stale)
 7. All prior scout reports in `memory/passive-income/` (to avoid duplicating ideas)
+
+Optional live research lens:
+- Use Methodology 15 when an idea's edge depends on early technical taste. Prioritize primary artifacts and small expert accounts over large hype accounts.
 
 ---
 
@@ -362,6 +385,7 @@ For each idea, write:
 **Research signal:** [what you found that suggests demand — be specific: link, post, pattern]
 **Behavioral demand:** [primary human motive + emotional trigger + why the user acts now]
 **TrustMRR pattern:** [revenue-backed adjacent pattern, relevant examples, and why this is not a copycat; or "No direct TrustMRR comp"]
+**Taste map:** [if Methodology 15 applies — normal-user excitement, expert excitement, narrative-hunter excitement, and the three-month sandbox proof threshold]
 **Creativity check:** [Would this appear in a "top 10 passive income" list? If yes, kill it]
 ```
 

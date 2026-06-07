@@ -22,6 +22,13 @@
 
 ## Active Signals
 
+### Crypto Rails as Founder Funding Channel
+- **What:** Crypto launchpads/rails can act like an always-on funding/distribution mechanism for technical products, not just token speculation. Useful lesson from the X post: crypto can compress feedback cycles and fundraising, but it also punishes slow execution and can make teams believe their own narrative too early.
+- **Why deferred:** JT's current priority is consulting cash flow and proof-backed passive-income apps. No current build needs tokenized funding, public market volatility, or a launchpad. Using crypto rails before there is a sharp product/community would add chaos without improving the first revenue path.
+- **Trigger:** Reconsider only when a crypto-native product has (1) a working demo, (2) a real technical/user community on X or GitHub, (3) a reason normal Stripe/subscription pricing is worse than crypto rails, and (4) a clear non-speculative buyer/user job.
+- **Logged:** 2026-06-07
+- **Potential value:** Could fund or distribute a crypto-native app faster than traditional bootstrapping, but only after product proof exists. Not a default GTM path.
+
 ### Passive-Income Build Queue — VendorChase / RuleWatch / Spreadsheet Desk / Consumer Utilities
 - **What:** Current Mission Control passive-income build queue, including VendorChase Desk, RuleWatch NYC, Spreadsheet-to-Agent Desk, EarStack Studio, GymPhoto Coach, HomeGym FitCheck, LabelLaunder, CollectionProof, PDRN Decoder, and WalkthroughProof.
 - **Why deferred:** These are not bad ideas, but building them now competes with Altmark delivery, proof capture, and consulting cash flow. VendorChase/RuleWatch/Spreadsheet Desk are the strongest because they reuse consulting proof patterns; the consumer utilities need distribution evidence before build time.

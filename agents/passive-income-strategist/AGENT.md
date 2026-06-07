@@ -159,6 +159,18 @@ Assess:
 
 Default: if an idea is useful but emotionally flat, cap the verdict at WATCH unless SEO demand or buyer pain is extremely strong.
 
+### B6. Founder Sandbox / Technical Taste Check
+For early, technical, AI-native, or crypto-adjacent ideas, verify that the Scout did more than repeat a hot narrative.
+
+Assess:
+- **Small-account signal:** Did the idea come from small expert accounts, primary artifacts, repos, papers, docs, or working products rather than large hype accounts?
+- **Taste map:** What are normal users excited about, what are experts excited about, and what are narrative hunters over-rotating on?
+- **Sandbox path:** Can JT test the idea for up to 3 months with a tiny shipped surface, public artifact, waitlist, reply path, or paid micro-offer before a full build?
+- **Commitment threshold:** What proof justifies continuing: first paid user, 10 qualified replies, 3 buyer calls, repeated search demand, or usage from a narrow community?
+- **Funding route fit:** If the idea mentions crypto rails, launchpads, or tokenized funding, is that actually useful for the product/category, or just price-action theater?
+
+Default: cap at WATCH when the idea is technically interesting but lacks a concrete sandbox proof path. Do not mark BUILD because a niche is early, funded, or loud. Upgrade only when the frontier signal maps to a low-cost test JT can ship with his current stack.
+
 ### C. Build Reality Check (JT's stack specifically)
 - What exactly does the coding agent build? List components: frontend, backend, data pipeline, AI integration, payment processing
 - Which of JT's existing tools does this use? (OpenClaw crons, n8n workflows, Claude API, low-cost AI vision models, Next.js, Replit, Printful API)
