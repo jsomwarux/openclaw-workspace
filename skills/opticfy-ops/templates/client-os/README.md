@@ -13,6 +13,7 @@ Create one folder per client engagement and keep these files current:
 - `metrics.md` — outcome metrics, baseline, target, reporting cadence
 - `quarterly-review.md` — decision-maker review agenda and account expansion opportunities
 - `acceptance-checklist.md` — proof-safe acceptance gate for each deliverable before it is called done
+- `plan-review-pack.md` — client/collaborator-readable review surface for plans, specs, risk questions, and acceptance criteria
 - `reusable-ip-log.md` — reusable patterns captured without leaking private client data
 - `raw-inputs/` — raw third-party/source inputs before cleaning
 - `cleaned-inputs/` — normalized/cleaned datasets or extracts

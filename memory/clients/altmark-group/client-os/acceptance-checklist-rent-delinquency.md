@@ -66,6 +66,11 @@ The workflow is accepted only when all are true:
 - [ ] Open issues recorded with owner/date in `failure-log.md`.
 - [ ] Final acceptance wording captured after first reviewed production run.
 
+## Review Pack Gate — 2026-06-06
+- Human-readable review artifact: `../proof-assets/rent-delinquency-plan-review-pack-2026-06-06.md`.
+- Use before the first Altmark sample run to confirm source report, reviewer, cadence, exception rules, proof boundary, and review-only cutover posture.
+- Reviewer comments must update this checklist, `decision-log.md`, or `failure-log.md`; do not leave resolved rules only in chat.
+
 ## Proof-Safe Evidence Rules
 - Do not store real tenant names, balances, unit numbers, contact info, legal status, or ledger notes in reusable proof assets.
 - Use synthetic examples for public proof and referral materials unless Altmark explicitly approves a named/anonymized case study.

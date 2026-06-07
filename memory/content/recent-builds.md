@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Plan Review Pack Skill + Human Signal Workflow - 2026-06-06
+**What:** Added `plan-review-pack` plus Client OS, AI Context OS, workflow protocol, proof, product, and video-generation wiring so internal agent plans become human-readable review/proof artifacts.
+**For:** internal consulting delivery system
+**Outcome:** New skill validated, portable `jt-operating-system` plugin updated/validated with cachebuster `0.2.0+codex.20260606170202`, autoresearch checklist/target added, and Mission Control task `j5728192wnpdjqhzg4bcrryj0x884rm6` created to apply it to the Altmark rent delinquency gate.
+**Demonstrates:** agent operating-system design, client proof workflow packaging, human-as-signal delivery loops
+**Content angle:** The useful version of human-in-the-loop is not approval on every step; it is a review pack that asks for direction, risk, taste, and acceptance at the exact right point.
+**Status:** complete
+
 ## Crypto Full Analysis Atomic Pipeline - 2026-06-03
 **What:** Added `scripts/run-full-analysis-pipeline.py` and X preflight enforcement inside `generate-full-analysis.py` so the crypto cron runs fetch -> X -> guard -> generate -> validate as one deterministic recovery path.
 **For:** internal crypto automation

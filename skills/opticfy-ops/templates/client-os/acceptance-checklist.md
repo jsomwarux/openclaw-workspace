@@ -19,6 +19,8 @@ Use this before calling any client deliverable “done.” Acceptance must be pr
 | Human approval gates are clear | Documented approval step before external/financial action | JT / Client | Not started | |
 | Rollback/support path is documented | Runbook section or handoff note | JT | Not started | |
 | Open issues have owner/date | Client OS dashboard or issue list | JT / Client | Not started | |
+| Human-readable plan/review pack exists when acceptance requires judgment | `plan-review-pack.md`, Drive doc, Proof-style link, or explicit no-review-needed decision | JT / Eve | Not started | |
+| Demo/proof asset exists when the workflow can be shown | MP4, GIF, screenshots, or explicit no-demo-needed decision | JT / Eve | Not started | |
 | Payment/deposit status is clear | Internal note only; no sensitive finance detail in proof asset | JT | Not started | |
 | Privacy/redaction review completed | Redacted proof folder note or explicit no-proof-needed decision | JT / Eve | Not started | |
 | Handoff reviewed with client or internal owner | Handoff note, Loom/demo note, or client confirmation | JT / Client | Not started | |

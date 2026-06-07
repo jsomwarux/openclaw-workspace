@@ -20,6 +20,7 @@ This content is NOT tutorial content. It's **earned observations** from someone 
 Each angle has an `angle_id` in brackets — use this in `posted-log.jsonl` when you post it so the system knows which angles have been used recently.
 
 ### Agent Architecture & Design
+- `[arch-human-signal-review-pack]` **Human-as-signal beats generic human-in-the-loop:** Agents can supply volume, but the scarce input is taste, direction, risk boundary, and acceptance. The durable pattern is an internal `plan.md` for agents plus a review pack for humans that asks exact questions and routes feedback back into the source plan, Client OS, or task. Otherwise feedback dies in chat.
 - `[arch-isolated-split]` **Isolated vs. main session split:** Why content generation and content delivery are separate crons. The generator runs isolated (no conversational context needed, just file I/O). The delivery runs fast in 60 seconds. If both are in one job, a generation failure kills the delivery. Separation = reliability.
 - `[arch-overnight-constraints]` **The overnight agent constraint:** Max 2 tasks, hard $1.50 cost cap, no external sends. Constraints don't limit the agent — they make it reliable. An unconstrained overnight agent is a liability.
 - `[arch-heartbeat-vs-cron]` **Heartbeat vs. cron distinction:** Heartbeats (main session, 4x/day) carry conversational context but can drift on timing. Crons (isolated, exact schedule) have no context but execute precisely. Using the wrong type for the wrong job is a common source of failures.

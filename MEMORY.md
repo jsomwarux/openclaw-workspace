@@ -25,6 +25,7 @@
 - 2026-06-03 positioning refinement: lead with AI operating controls / agent-ready operating models, not generic agent adoption. Buyer pain maps to budget ceilings, owner approvals, sandboxed execution, PII rules, run logs, escalation paths, and human-review boundaries before tools are implemented.
 - 2026-06-04 positioning refinement: local-business/property-ops agent offers should sell distribution + governed handoffs, not “AI writes copy.” Durable buyer controls: identity, scoped tool access, approval rules, audit trail, kill switch, cost caps, sandboxing, run logs, source-of-truth ownership, and measured adoption/value reporting.
 - 2026-06-05 positioning refinement: package frontline AI adoption as an operating-model problem before automation. Durable buyer language: trusted customer/workflow context, approval rules, exception owner, system-of-record writeback, and value/KPI measurement. Use AI Context OS / Altmark-style workflow readiness as the proof path, not generic agent builds.
+- 2026-06-06 agent-ops positioning: “human-as-signal” is stronger than generic human-in-the-loop. Consulting/AI Context OS should frame agents as volume/execution and JT/client leaders as taste, priority, risk boundary, and react-and-redirect loops. Adopted `plan-review-pack` so internal `plan.md`/raw notes become external proof/review artifacts for clients.
 - Target ICP: NYC/metro SMBs in construction, wholesale distribution, property management, skilled trades; HubSpot is a strong expansion platform due to less Salesforce competition.
 - Outreach tiers use score gates: T1 80+ proof-led custom; T2 60-79 template/validation; T3 40-59 market-sensing only. JT sends all outreach.
 - Preferred stack: n8n over Make.com for client automation; Agentforce when Salesforce/Data Cloud fit the client.
@@ -97,8 +98,8 @@
 - Cron volume is guarded by `scripts/cron_volume_guard.py`: ≤35 scheduled invocations/day average and ≤28 agentTurn/day average; >30/day warns. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM ET.
 - `critical-files-integrity` (`ee357abb`) runs daily 9AM ET, timeout 180s; run script first, inspect/edit only on non-zero exit.
-- Active cron count: 52 enabled / 78 total as of 2026-06-05 after adding one June 25 YouTube TV midday reminder. Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron disabled 2026-05-17 at JT request.
-- Recent cron hardening/details live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. As of 2026-06-05 active cron count is 52 jobs with red states only for `prospect-discovery` and `Weekly Systems Review`; both are covered. Crypto Full Analysis content is validating/sending, but delivery metadata still needs reconciliation. Do not rerun content/reporting crons solely to clear metadata.
+- Active cron count: 54 enabled / 80 total as of 2026-06-06 after adding daily TikTok app account warm-up reminders at 2:00PM ET (`8033e775`) and 7:45PM ET (`d163df4a`). Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron disabled 2026-05-17 at JT request.
+- Recent cron hardening/details live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. As of 2026-06-06 cron volume guard is ok but near cap: 31.78 scheduled/day, 27.78 agentTurn/day. Do not rerun content/reporting crons solely to clear metadata.
 - 2026-06-03 Crypto Full Analysis recovery: added deterministic `scripts/generate-full-analysis.py`, validated June 3 artifacts, and patched cron `eve-crypto-morning-008` to require deterministic artifact writing plus `CRYPTO_FULL_ANALYSIS_OK`.
 - 2026-05-12: Mission Control North Star audit runs in Morning Brief + heartbeat via `scripts/mission_control_north_star_audit.py`.
 - Spanish lessons paused 2026-05-26; Daily Lesson and Weekly Evaluation are disabled. `05024e45` is Skills & API Researcher Weekly Synthesis and remains enabled.
@@ -120,7 +121,7 @@
 - If corrected by JT, immediately update the Mistakes Log/rules before moving on.
 
 ## Setup State
-- 2026-05-31/06-02: Added AI Context OS Sprint, capability-routing map, proof/corpus skills, workflow/product agents, and portable Codex plugin `~/plugins/jt-operating-system` v0.2.0. Details: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
+- 2026-05-31/06-06: Added AI Context OS Sprint, plan-review-pack, capability-routing map, proof/corpus skills, workflow/product agents, and portable Codex plugin `~/plugins/jt-operating-system` v0.2.0. Details: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
 - 2026-05-11: GBrain consulting recall pilot lives at `~/projects/gbrain*`; use only `scripts/gbrain-consulting-search.sh "Entity"` for consulting/prospect entity lookup. No crons/skillpacks/broad ingestion/embeddings without JT approval.
 - Prior setup details are archived in `docs/memory/MEMORY-full.md`; tool commands live in `TOOLS.md`.
 

@@ -64,6 +64,7 @@
 | ai-context-os | skills/ai-context-os/SKILL.md | agents/autoresearch/checklists/ai-context-os.md | pending | — | — | 2026-05-31 |
 | linkedin-corpus-agent | agents/linkedin-corpus/AGENT.md | agents/autoresearch/checklists/linkedin-corpus-agent.md | pending | — | — | 2026-05-31 |
 | client-proof-engine | agents/client-proof-engine/AGENT.md | agents/autoresearch/checklists/client-proof-engine.md | pending | — | — | 2026-05-31 |
+| plan-review-pack | skills/plan-review-pack/SKILL.md | agents/autoresearch/checklists/plan-review-pack.md | pending | — | — | 2026-06-06 |
 
 ## Status values
 - `pending` — checklist written, not yet run

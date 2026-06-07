@@ -61,3 +61,8 @@
 - Rent delinquency synthetic smoke test passed on 2026-05-29.
 - Next gate: get redacted Altmark source export with columns intact, source report path/name or export process, refresh cadence, named output reviewer, and exception rules.
 - First real-report test stays review-only and blocked from tenant-facing sends until Altmark approves scope.
+
+## Plan Review Pack — 2026-06-06
+- Human-readable review pack created at `proof-assets/rent-delinquency-plan-review-pack-2026-06-06.md`.
+- Use it to review the rent delinquency gate with JT before any client-facing send or first Altmark sample run.
+- Comment-back destinations are `acceptance-checklist-rent-delinquency.md`, `decision-log.md`, and `failure-log.md` so reviewer signal updates the Client OS instead of staying in chat.

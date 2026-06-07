@@ -75,3 +75,5 @@ EOF'
 2026-06-03T11:33:12-04:00 | daily-scan | x_queries: 6 | web_queries: 8 | findings: 6 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-04T15:34:13Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-05T15:32:58Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 4 | 🔴: 0 | 🟠: 0 | messaged_jt: no
+[2026-06-06T11:01:41Z] | weekly-synthesis | x_queries: 4 | est_cost: $0.20 | web_sources: cowork_plugins,mcp_servers,openclaw_docs,nordeim | findings: 4 | 🔴: 0 | 🟠: 1 | 🟡/🟢: 3 | mc_tasks_pushed: 0 | kb_items: 4 | messaged_jt: yes
+2026-06-06T11:32:22-04:00 | daily-scan | x_queries: 6 | web_queries: 11 | findings: 5 | 🔴: 0 | 🟠: 0 | messaged_jt: no

@@ -76,6 +76,21 @@ Minimum handoff quality:
 
 The PRD can live in the project root as `tasks/prd.md`, in the client folder, or in `memory/drafts/` for early concepts. Link it from `tasks/todo.md` before coding begins.
 
+## Agent Review Pack Rule
+Use `templates/agent-review-pack-template.md` when an internal plan/spec needs human judgment before or during execution.
+
+Use for:
+- client-facing, collaborator-facing, or high-risk plans
+- multi-step work where success criteria are unclear
+- plans that need JT/client taste, priority, risk boundary, acceptance, or redirect
+- proof/review handoffs where `plan.md` would be unreadable to a non-terminal reviewer
+
+Skip for:
+- one-line fixes, deterministic scripts, narrow copy edits, and plans nobody else needs to review
+- raw research that has not yet become a decision, plan, proof pack, or task
+
+The review pack must ask for exact human signal, not vague approval. Capture the resolved feedback back into the source plan, Client OS, Mission Control task, or implementation notes.
+
 
 ## Code-Agent Failure Prevention Rules
 Use this before and during coding-agent, n8n-agent, Agentforce, or implementation sub-agent work. These are adapted from the Mnilax/Karpathy Claude Code rules and JT/Eve failure history.
@@ -147,6 +162,8 @@ Before starting, fill or mentally apply `templates/goal-mode-spec-template.md`:
 - checkpoint cadence
 - budget/stop rules
 - completion audit
+
+Remote/background loops must also name the control surface: Mission Control task, plan file, proof target, or checkpoint log. They may not send third-party messages, perform financial actions, edit auth/model/gateway config, install plugins, or exceed scoped workdir/files without explicit JT approval.
 
 If Codex `/goal` becomes available, treat it as experimental and require explicit JT approval before enabling/installing or changing OpenClaw config. Prefer current OpenClaw TaskFlow/cron/subagent patterns unless `/goal` clearly beats them for one code-heavy, long-running, verifiable objective.
 

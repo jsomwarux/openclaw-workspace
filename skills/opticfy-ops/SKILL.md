@@ -44,6 +44,7 @@ This is the services-as-software layer:
 - **Decision log + failure log** — every judgement call and miss becomes reusable IP
 - **Acceptance checklist per deliverable** — do not call work done until access, end-to-end run, exceptions, handoff/rollback, open issues, and proof/privacy boundaries are checked
 - **Raw + cleaned inputs + tagged outputs** — preserve the data moat before building software
+- **Plan review pack** — convert internal plans/specs into a client-readable artifact with exact decision points and acceptance criteria
 - **Reusable IP log** — extract patterns into templates/agents/content using redacted, anonymized, or synthetic examples only
 - **Automation candidates** — automate patterns observed in manual delivery, not assumptions
 
@@ -71,6 +72,7 @@ Rule: manual delivery is not a failure state. Manual delivery is the data-collec
 - Capture every repeatable task, edge case, failure, judgement call, client objection, raw input, cleaned input, delivered output, and outcome produced
 - Turn the first 10 sales-call objections into landing-page/proposal copy before scaling outreach
 - Data Anomaly Audit is the lowest-risk entry point for new clients; always offer it if they're hesitant
+- Before sending a plan/spec to a client or collaborator, use the `plan-review-pack` skill. Ask for human signal on direction, risk, missing edge cases, and acceptance instead of vague approval.
 
 **Vendor/Tech Evaluation**
 - Score each tool on: integration capability, data export access, API availability, and vendor lock-in risk

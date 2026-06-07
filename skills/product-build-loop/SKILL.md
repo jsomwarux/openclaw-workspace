@@ -21,7 +21,8 @@ The output must be real software, not a plausible-looking draft. Every build end
    - delete over-abstracted AI boilerplate
    - check for stubs, fake data, swallowed errors, and mocks of the code under test
 6. Verify with real commands: build, typecheck, lint, tests, and UI/browser checks when relevant.
-7. Update proof/recent-build/content/portfolio routing only when the build is substantive and verified.
+7. For visual shipped work, consider a 30-90s demo MP4/GIF or screenshot walkthrough before calling it content/proof-ready.
+8. Update proof/recent-build/content/portfolio routing only when the build is substantive and verified.
 
 ## App-Specific Defaults
 - Next.js: `npm run build` before any deploy or completion claim.
@@ -36,4 +37,5 @@ Return:
 - what got simplified or removed
 - what LARP/fake implementation risk was checked
 - exact verification commands and results
+- demo/proof asset path or explicit no-demo-needed reason
 - remaining risks or blockers

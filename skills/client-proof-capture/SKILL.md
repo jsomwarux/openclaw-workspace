@@ -24,6 +24,7 @@ Do not publish, pitch, or reuse proof until all relevant gates are explicit:
    - screenshots
    - redacted samples
    - run logs
+   - short demo MP4/GIF or screen recording when the work is visual and safe to show
    - acceptance notes
    - metric/outcome
    - edge cases/failures/judgment calls
@@ -38,10 +39,12 @@ Do not publish, pitch, or reuse proof until all relevant gates are explicit:
 ## Privacy Rule
 Client proof defaults to private. Public naming requires explicit permission. Otherwise use anonymized, redacted, or synthetic examples.
 
+## Demo Proof Rule
+If the deliverable can be shown without exposing client-private data, capture a 30-90s walkthrough, GIF, or rendered demo clip. Store the path/Drive link in the proof checklist or Client OS. Skip video when it would reveal sensitive data, secrets, internal URLs, or add no proof value.
+
 ## Output
 Return:
 - proof status: blocked / private-ready / publish-ready
 - missing gate list
 - files updated
 - recommended next action
-

@@ -88,7 +88,7 @@
 ## JT Operating-System Routing
 - Capability map: `docs/agents/capability-routing-map.md`
 - Synthesis/audit: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
-- Portable Codex plugin: `~/plugins/jt-operating-system` (skills: `ai-context-os`, `client-proof-capture`, `linkedin-corpus`, `n8n-blueprint`, `proposal-pdf`, `product-build-loop`).
+- Portable Codex plugin: `~/plugins/jt-operating-system` (skills: `ai-context-os`, `client-proof-capture`, `plan-review-pack`, `linkedin-corpus`, `n8n-blueprint`, `proposal-pdf`, `product-build-loop`).
 - Workspace agents added from toolkit synthesis: `agents/workflow-strategist/AGENT.md`, `agents/product-quality-pass/AGENT.md`.
 - Skills/agents/plugin scaffold details live in `docs/tools/TOOLS-full.md`.
 

@@ -18,8 +18,9 @@ Start from `assets/context-os-sprint-template.md`.
 
 1. Inventory where operating knowledge lives: people, inboxes, spreadsheets, portals, CRMs, folders, SOPs, notes, and recurring reports.
 2. Map one target AI workflow first. Context has to serve a job.
-3. Extract tacit rules: owners, thresholds, exceptions, approval boundaries, sensitive data, escalation paths, and examples.
-4. Convert into agent-ready context:
+3. Use plan-for-the-plan when inputs are messy: define what to read, what to extract, how to compare sources, and what decisions are needed before producing the final plan.
+4. Extract tacit rules: owners, thresholds, exceptions, approval boundaries, sensitive data, escalation paths, and examples.
+5. Convert into agent-ready context:
    - source-of-truth map
    - glossary
    - operating rules
@@ -27,15 +28,22 @@ Start from `assets/context-os-sprint-template.md`.
    - edge cases
    - escalation rules
    - output style and reviewer expectations
-5. Build an eval pack with 20-50 realistic prompts or tasks.
-6. Test before and after context changes.
-7. Package reusable vertical patterns only after the client-specific version works.
+6. Build an eval pack with 20-50 realistic prompts or tasks.
+7. Produce a human-readable review pack when client/JT judgment is needed. Internal plans stay agent-native; review packs summarize objective, scope, risks, acceptance criteria, and exact signal requested.
+8. Test before and after context changes.
+9. Package reusable vertical patterns only after the client-specific version works.
+
+## Memory Layers
+- Raw notes/transcripts are fuel, not durable truth.
+- Durable truth belongs in scoped artifacts: Client OS, MEMORY.md, project CLAUDE/AGENTS files, skills, eval packs, proof logs, and decision logs.
+- Do not let stale raw notes outrank newer verified decisions or proof evidence.
 
 ## Quality Gate
 - Every context file has a named workflow and source owner.
 - Every sensitive action has a human-review or escalation boundary.
 - Every reusable rule is backed by client evidence, not invented.
 - Every sprint ends with eval results, not only documents.
+- Every review loop has a named human signal point: taste, priority, risk boundary, acceptance, or redirect.
 - Public proof remains anonymized unless permission is explicit.
 
 ## Output

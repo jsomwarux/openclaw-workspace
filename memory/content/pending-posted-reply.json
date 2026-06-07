@@ -1,24 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-06-05",
-      "day": "friday",
-      "line_no": 198,
-      "platform": "linkedin",
-      "summary": "Construction AI can turn field photos, job notes, issue tags, and change-order evidence into an internal summary a human approves before customer follow-up.",
-      "topic": "field-photo-decision-evidence"
-    },
-    {
-      "date": "2026-06-05",
-      "day": "friday",
-      "line_no": 204,
+      "date": "2026-06-06",
+      "day": "saturday",
+      "line_no": 205,
       "platform": "x",
-      "summary": "Construction AI wins when field photos, notes, change orders, quality issues, and training gaps tell the next person what changed.",
-      "topic": "field-to-office-handoff-what-changed"
+      "summary": "Best AI tooling decision: instructions beat vibes, skills beat prompts, memory beats chat history, and guards beat confidence.",
+      "topic": "instructions-skills-memory-guards-beat-vibes"
     }
   ],
   "note": "",
-  "sent_at": 1780660852,
+  "sent_at": 1780747262,
   "source": "content-reminder",
   "status": "pending"
 }

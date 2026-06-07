@@ -77,6 +77,7 @@ Known active/current workflows from JT update:
 ## Immediate Next Actions
 - Update Client OS proof/payment gates to reflect insurance workflow live + paid.
 - For rent delinquency: synthetic testing is complete; use `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md` to request the redacted Altmark sample export and live-sample prerequisites.
+- 2026-06-06: Plan Review Pack applied to the rent delinquency gate at `proof-assets/rent-delinquency-plan-review-pack-2026-06-06.md`; use it to review source report, reviewer, cadence, exception rules, and proof boundary before first Altmark sample run.
 - 2026-05-29 synthetic dry-run passed: see `client-os/outputs/rent-delinquency-synthetic-smoke-test-log-2026-05-29.md` and `client-os/outputs/rent-delinquency-synthetic-smoke-test-output-2026-05-29.csv`. First Altmark sample remains review-only until source/export/reviewer/exception gates clear.
 - Capture proof-safe evidence from the live insurance workflow: redacted screenshots, run logs, acceptance wording, and before/after workflow summary.
 - DHCR Lease Renewal Automation proposal has been reviewed. Use `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `client-os/acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md` after rent delinquency deployment/testing or if Altmark explicitly pulls this forward.

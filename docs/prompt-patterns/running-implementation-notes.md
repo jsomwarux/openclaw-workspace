@@ -13,6 +13,7 @@ Implement <SPEC>. As you work, maintain a running `tasks/implementation-notes.ht
 - Deviations: places where you intentionally departed from the spec, and why
 - Tradeoffs: alternatives you considered and why you picked what you did
 - Open questions: anything you'd want me to confirm or revise
+- Human signal / redirects: material JT/client feedback on taste, priority, risk boundaries, acceptance, or direction changes
 
 Update this file while working; do not reconstruct it only at the end. If there were no meaningful decisions, deviations, tradeoffs, or open questions, write `No material spec interpretation notes` explicitly.
 ```
@@ -32,6 +33,7 @@ Skip only for one-line fixes, copy edits, or deterministic file updates with no 
 - Deviations
 - Tradeoffs
 - Open Questions
+- Human Signal / Redirects
 - Files Changed
 - Verification
 
@@ -49,6 +51,7 @@ The final implementation handoff is incomplete unless it includes:
 - Do not reconstruct from memory at the end.
 - Do not bury open questions in a final paragraph only.
 - Do not use the notes file to justify scope creep after the fact.
+- Do not log casual preference noise. Only record feedback that changes direction, risk, acceptance, or what gets shipped.
 
 ## Relationship to `tasks/todo.md`
 - `tasks/todo.md` = planned execution checklist.
