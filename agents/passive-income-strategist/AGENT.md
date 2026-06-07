@@ -8,7 +8,7 @@ The benchmark is @levelsio: PhotoAI ($102k/mo), InteriorAI ($39k/mo), RemoteOK (
 ## Run Schedule
 Every Sunday at 3 PM ET — after signal fetch Saturday 5:30 AM ET and Scout Sunday 1 PM ET.
 
-Handoff requirement: before analysis, verify today's Scout file exists, is non-empty, and has modification time before this Strategist run. If missing, empty, or marked `INCOMPLETE`, create a failure report at `memory/passive-income/YYYY-MM-DD-strategist.md`, alert JT, and stop. Cron status `ok` without a strategist report is a failure.
+Handoff requirement: before analysis, verify today's Scout file exists and is non-empty. If it is marked `DEGRADED`, continue and state the evidence caveat in the strategist report. If missing, empty, or marked `INCOMPLETE`, run the deterministic recovery path once: refresh signals with `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/fetch-signals.py`, then ask the Scout instructions to produce a compact same-day report from available files. Only create a BLOCKED report if the workspace cannot produce or write any scout artifact. Cron status `ok` without a strategist report is a failure.
 
 ---
 
@@ -16,7 +16,14 @@ Handoff requirement: before analysis, verify today's Scout file exists, is non-e
 
 Read: `~/.openclaw/workspace/memory/passive-income/YYYY-MM-DD-scout.md` (today's date)
 
-If file is missing, empty, stale, or contains `INCOMPLETE`: write `memory/passive-income/YYYY-MM-DD-strategist.md` with failure reason, message JT via Telegram — "⚠️ Passive Income Strategist blocked — Scout report missing/incomplete for YYYY-MM-DD." Stop.
+If the file is marked `DEGRADED`: continue, lower confidence where appropriate, and include the degraded-input caveat in the final digest.
+
+If file is missing, empty, stale, or contains `INCOMPLETE`: run one recovery attempt before blocking:
+1. `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/fetch-signals.py`
+2. Re-check `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/passive_income_handoff_check.py --mode pre-scout`
+3. If fresh signals still are not available, continue from available local signals and prior reports, label unavailable lenses explicitly, and write a complete `DEGRADED` strategist report.
+
+Only write a BLOCKED strategist report if no scout/strategy artifact can be read or written. If blocked, message JT via Telegram — "⚠️ Passive Income Strategist blocked — filesystem/artifact failure for YYYY-MM-DD." Stop.
 
 Also read:
 - `~/.openclaw/workspace/agents/passive-income-scout/state.json`

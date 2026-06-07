@@ -92,6 +92,10 @@ LINKEDIN_STALE_PATTERNS = [
         re.compile(r"\b(?:content|publishing|post)\b[^.\n]{0,160}\b(?:state\s+file|stop\s+condition)\b", re.I),
         "private content-ops reveal: state file / stop condition",
     ),
+    (
+        re.compile(r"\b(?:public\s+proof|proof\s+layer|privacy\s+layer|site\s+proof|case-study\s+bait|private\s+client\s+details)\b", re.I),
+        "low-value proof hygiene/process-meta angle: public proof/privacy cleanup",
+    ),
 ]
 
 DYNASTY_REQUIRED = [
@@ -192,6 +196,13 @@ TOPIC_CLUSTERS = {
         "swipe references",
         "niche map",
         "current efforts",
+    ],
+    "proof-hygiene-process-meta": [
+        "public proof",
+        "privacy layer",
+        "site proof",
+        "case-study bait",
+        "private client details",
     ],
 }
 

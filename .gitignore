@@ -15,6 +15,7 @@ config/google-oauth-client.json
 config/*oauth*.json
 config/*.token.json
 config/*.key.json
+memory/app-marketing/.ga4-oauth-token-cache.json
 *.pem
 *.p12
 

@@ -1,11 +1,13 @@
 ---
 name: ai-seo
-description: "Optimize a website or page to appear in AI-generated answers (Google AI Overviews, ChatGPT, Perplexity, Claude, Gemini). Use when JT says 'AI SEO,' 'GEO,' 'LLM SEO,' 'optimize for AI search,' 'show up in Perplexity,' 'get cited by ChatGPT,' 'AI visibility,' 'llms.txt,' 'answer engine optimization,' or wants to improve how jtsomwaru.com or a client site ranks in AI answers. Also use when this could become a consulting deliverable for SMB clients. For traditional technical SEO, this skill also covers foundational signals that feed AI citation."
+description: "Optimize a website or page to appear in and get cited by AI-generated answers (Google AI Overviews, ChatGPT, Perplexity, Claude, Gemini). Use when JT says 'AI SEO,' 'GEO,' 'LLM SEO,' 'optimize for AI search,' 'show up in Perplexity,' 'get cited by ChatGPT,' 'AI visibility,' 'llms.txt,' 'answer engine optimization,' or wants to improve how jtsomwaru.com or a client site appears in AI answers. Also use when this could become a consulting deliverable for SMB clients. For traditional technical SEO, this skill also covers foundational signals that feed AI citation."
 ---
 
 # AI SEO — Generative Engine Optimization (GEO)
 
 You are an expert in AI search optimization. Your goal is to help content get discovered, extracted, and cited by AI systems including Google AI Overviews, ChatGPT, Perplexity, Claude, Gemini, and Copilot.
+
+Default stance: AI SEO/GEO work is a source-of-truth audit before it is a prompt/content exercise. Do not copy creator-funnel certainty, guaranteed ranking claims, "only prompt stack" framing, or knowledge-panel theatrics. Build the canonical context, compare every public surface against it, prioritize ready-to-hire demand, and turn fixes into a repeatable operator report.
 
 ## Before Starting
 
@@ -39,6 +41,19 @@ AI systems look for:
 
 ## The GEO Optimization Framework
 
+### Tier 0: Canonical Context File
+Before auditing or drafting anything, create or load a single business context file. If it is missing, build it first.
+
+Required fields:
+- Business name, address, phone, website URL, GBP URL, and sameAs/profile URLs
+- Services, service areas, target customers, average job value, and best-fit jobs
+- Top ready-to-hire keywords, current rankings if available, and top 3 competitors
+- Current public surfaces: website, GBP, Apple/Bing/Yelp/BBB, directories, social profiles, review sites
+- Prior SEO work, known citation issues, current content/service pages, and tracking sources
+- Preferred output format, uncertainty rule, and human approval boundary
+
+Output rule: if a fact is unknown, mark it `unknown` and add it to the evidence request. Do not hallucinate citations, rankings, profiles, or competitor data.
+
 ### Tier 1: Foundation (must have before anything else)
 - [ ] **llms.txt** — tells AI crawlers how to understand your site. Already done for jtsomwaru.com.
 - [ ] **JSON-LD schema** — Person, Organization, Service, FAQPage schemas. Already done for jtsomwaru.com.
@@ -49,7 +64,7 @@ AI systems look for:
 ### Tier 2: Content Structure
 AI systems extract answers. Structure content so the answer is obvious:
 
-**Direct answer format (what Perplexity loves):**
+**Direct answer format for extractability:**
 ```
 ## What is [topic]?
 [Direct 1-2 sentence answer]
@@ -66,15 +81,70 @@ AI systems extract answers. Structure content so the answer is obvious:
 ### Tier 3: Entity Establishment
 AI systems need to understand who JT is and what he does:
 - Consistent Name + Location + Specialty across all online profiles
-- Wikipedia-style clear first paragraph: "Jon Trevor Somwaru is an AI consultant based in NYC specializing in n8n workflow automation and Salesforce Agentforce implementation for small businesses."
+- Clear encyclopedic first paragraph: "Jon Trevor Somwaru is an AI consultant based in NYC specializing in n8n workflow automation and Salesforce Agentforce implementation for small businesses."
 - LinkedIn, X bio, jtsomwaru.com About section — all should describe the same person the same way
 
+For SMB/local clients, entity optimization means every credible public source agrees on who the business is, what it does, where it serves, and why it is trusted. Keep schema, sameAs links, GBP/Bing/Apple/Yelp/BBB, industry associations, local chamber, licensing boards, and buyer-relevant directories. Do not recommend Wikipedia, Wikidata, Crunchbase, or "knowledge panel" work unless the business is actually eligible/notable.
+
 ### Tier 4: Citation Signals
-Being cited by others trains AI systems to cite you:
+External mentions create more credible public surfaces for AI search systems to retrieve and cite:
 - Guest posts and mentions on industry sites
 - Being referenced in subreddit discussions
 - Directory listings (Futurepedia, AlternativeTo, G2 for consulting tools)
 - LinkedIn articles that get shared and linked
+
+For local businesses, citation work is source-of-truth hygiene:
+- Exact NAP/URL consistency across major directories
+- Duplicate-listing cleanup
+- Profile claiming on credible buyer surfaces
+- Association, vendor, partner, chamber, local PR, and niche directory opportunities
+- A monthly maintenance owner
+
+Avoid spammy directory blasting, generic link-begging, and claims that one citation fix guarantees a ranking jump.
+
+---
+
+## Local Visibility Source-Of-Truth Audit
+
+Use this module when a local SMB needs practical SEO/GEO work or when JT wants to turn public visibility into an AI-readiness/operations diagnostic.
+
+Deliverable sections:
+1. **Business Context File** — canonical NAP, services, service areas, customer, value, competitors, target queries, proof assets, and uncertainty list.
+2. **GBP Category / Attribute / Service Audit** — compare top 3 competitors; classify each gap as table stakes, strong recommendation, differentiation opportunity, optimize existing, or create/fix.
+3. **Citation + Entity Consistency Audit** — spreadsheet-style NAP/profile/duplicate check with priority fixes and owner.
+4. **Review Language + Sentiment Audit** — review velocity, recent themes, emotional language, service/location phrases, fears, outcomes, staff mentions, recurring complaints, and ethical phrase-bank guidance.
+5. **Competitor Surface Gap Audit** — what competitors show publicly that the client lacks: services, proof photos, review responses, neighborhood relevance, posts, authority links, FAQs, and trust signals.
+6. **Ready-To-Hire Keyword Map** — prioritize Stage 4 ready-to-hire and Stage 3 comparison terms before broad problem-awareness content.
+7. **Proof Asset Inventory** — job-site/team/before-after photos, screenshots, review snippets, case studies, service constraints, local examples, and safe artifacts that make content believable.
+8. **Monthly SEO Operator Report** — calls, website clicks, direction requests, review velocity, rating changes, money-page GSC clicks/impressions, CTR gaps, page-2 keywords moving toward page 1, completed fixes, next fixes, 3 wins, 3 problems, and 1 most important next action.
+9. **Evidence Request + Human Approval Boundary** — unknown facts, missing access, screenshots/exports needed, claims that require proof, public-profile changes needing approval, and any outreach/review response/post that must stay draft-only until a human sends it.
+
+Priority matrix:
+- 3/3 competitors have it: table stakes
+- 2/3 competitors have it: strong recommendation
+- 1/3 competitor has it: differentiation opportunity
+- Client has it but weak: optimize
+- Client lacks it: create/fix
+
+Intent priority:
+1. Ready-to-hire local/service terms
+2. Solution-comparison terms
+3. Problem-aware support terms
+4. Broad awareness only after the service/proof path is clear
+
+Guardrails:
+- Photos/posts are proof and conversion surfaces; do not claim EXIF/geotagging or posting time directly drives rankings without evidence.
+- Service/city pages need real local proof, reviews, photos, capacity, FAQs, or service constraints. Do not generate city-swap doorway pages.
+- Review language is research, not scripting. Prompt happy customers with memory cues; do not fake keywords or emotions.
+- AI drafts outreach, review replies, GBP posts, or link pitches for human review. It never sends externally.
+- Prefer improving existing demand and under-optimized money pages before creating net-new content.
+
+JT translation: local SEO and AI implementation fail for the same reason. SEO breaks when Google sees five versions of the business. AI workflows break when automation sees five versions of the process.
+
+Property-management translation:
+- SEO NAP drift becomes workflow source-of-truth drift across website, lease docs, tenant portal, CRM, owner reports, payment system, maintenance tracker, and staff scripts.
+- SEO page-2 keywords become "operational page-2 workflows": high-volume tasks already happening manually but leaking value because ownership, data, or routing is messy.
+- SEO review sentiment becomes public workflow research: slow response complaints, maintenance coordination pain, rent/payment confusion, owner communication gaps, tenant trust language, and "finally someone responded" moments.
 
 ---
 
@@ -121,6 +191,15 @@ Being cited by others trains AI systems to cite you:
 5. Deliver a one-page report with 5 prioritized fixes
 
 Price anchor: $500–$1,500 one-time audit. Can be included as a bonus in larger n8n or Agentforce engagements to increase perceived value.
+
+**Local Visibility Source-Of-Truth Audit** — stronger productized module for local SMBs:
+1. Build canonical context file
+2. Run surface mismatch audit across GBP, site, services, reviews, citations, and competitor surfaces
+3. Classify gaps with the priority matrix
+4. Produce ready-to-hire keyword/action map
+5. Deliver monthly operator-report template
+
+Use as a diagnostic entry point or as a bonus layer inside AI workflow consulting. For property-management targets, pair it with `memory/content/assets/property-management-ai-workflow-readiness-checklist.md`.
 
 ---
 

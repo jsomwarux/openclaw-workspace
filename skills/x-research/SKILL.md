@@ -199,6 +199,8 @@ Use `--save` flag or save manually to `~/clawd/drafts/x-research-{topic-slug}-{Y
 ## Research Engine Output Loop
 For substantive X research, do not stop at saved snippets. Compress the research into a decision, reusable asset, task, draft, or explicit skip.
 
+For @jts_14 content research, do not leave results scattered across raw JSON, swipe reports, and weekly content files. Create or update `memory/content/jts14-x-reference-ledger-[MONDAY].md` with source URL, canonical niche lane, why selected, analyzed mechanic, influence type, and draft touched or rejection reason. Then run `python3 scripts/jts14_x_reference_ledger_guard.py memory/content/jts14-x-reference-ledger-[MONDAY].md`.
+
 After synthesis, fill or mentally apply `templates/research-engine-output-loop-template.md`:
 - What is the one useful pattern, decision, or warning?
 - Where should it route: daily note, consulting wiki, skill/checklist/template, Mission Control task, content draft, outreach/prospect note, or nowhere?

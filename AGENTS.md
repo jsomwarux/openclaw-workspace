@@ -247,6 +247,7 @@ Check `skills/` for existing SKILL.md before any recurring task. Key skills: job
 > Full spec: `docs/agents/content-rules.md` · Voice ref: `memory/content-voice.md` · Wednesday LinkedIn: `skills/wednesday-linkedin/SKILL.md`
 
 Before drafting ANY post/content: read `memory/content-voice.md` + run its audit checklist. Core rules: start with the point | "you/your" >= 5x "I/my" | X singles 6-15 words | no em dashes/exclamation points/"Here's the thing" | threads max 5 tweets.
+Worthiness gate: do not deliver merely true/internal-hygiene content. Client-name removal, public-proof privacy cleanup, attribution cleanup, and content/process-meta are not standalone post topics unless attached to a real buyer problem, shipped outcome, or permission-safe case study.
 
 ## Lessons Auto-Write Rule (mandatory)
 Whenever a non-obvious problem is solved, a silent failure mode is discovered, or a pattern is confirmed through operational experience: write the lesson immediately in the same turn. Do not wait for JT to ask.

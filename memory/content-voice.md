@@ -1,8 +1,9 @@
 # Content Voice — JT Somwaru
-*Jack Butcher framework applied to language and compression — but content format varies by platform and day.*
+*JT operator voice first. Compression is useful only when it preserves proof, specificity, and natural cadence.*
 *Load this file before drafting any X post, thread, or LinkedIn content.*
 *Also load `memory/content/current-niche-map.md` before choosing the niche or swipe references.*
 *For taste-level voice decisions, load `memory/content/jt-voice-profile.md`; this file owns mechanical/platform rules.*
+*For evidence-backed voice calibration, load `memory/content/jt-voice-evidence-corpus.md`; run `python3 scripts/jt_voice_guard.py [draft] --platform linkedin|x` before serious drafts reach JT.*
 
 ---
 
@@ -10,6 +11,122 @@
 Compression is confidence — but compression is a **language tool**, not a length requirement for every post.
 A 300-word LinkedIn case study written tight is better than a 12-word aphorism that proves nothing.
 Use compression to cut waste. Use depth when the goal is credibility, not virality.
+
+## Actual Voice Evidence Layer
+
+Generated posts should now be judged against `memory/content/jt-voice-evidence-corpus.md`, not just generic style rules.
+
+JT's voice is not "short AI consultant copy." It is:
+
+- Direct request/decision cadence.
+- Short verdict fragments when conversationally earned.
+- "But" pivots that sharpen the real point.
+- Concrete nouns before abstract claims.
+- Workflow objects before AI categories.
+- Ownership when proof exists.
+- Buyer scene when selling implementation judgment.
+- System, owner, approval, input, queue, record, metric, or exception before conclusion.
+- Practical constraint stacks when reflecting on old builds.
+- Condition-first implementation clarity: "If [source/condition] can live in [one place], this should be straightforward."
+- Direct next-step/dependency language in client-facing copy.
+- Safe operating environment when selling implementation into established businesses.
+- Short casual conviction only after the proof/method has done the work.
+
+If a draft cannot name the operating object it is about, it is not specific enough.
+
+If verified proof exists, the most JT-native structure is often: built this -> deployment detail -> metric -> vertical thesis. Do not dilute that into generic "AI automation saves time" copy.
+
+For longer LinkedIn proof posts, the most JT-native structure can be: deployment story -> workflow count/examples -> why the setup is safe -> what real implementation means -> human exception boundary -> projected or verified outcome.
+
+Before delivering a serious LinkedIn/X draft:
+
+1. Load `memory/content/jt-voice-profile.md`.
+2. Load `memory/content/jt-voice-evidence-corpus.md`.
+3. Run `python3 scripts/jt_voice_guard.py [draft-file] --platform linkedin|x`.
+4. Rewrite until score is 80+ and no listed problems remain. The guard fails on any problem line.
+
+Hard-banned AI-slop hooks from JT's Question 2 answer:
+
+- "The best first AI project is..."
+- "[Niche] AI gets useful at..."
+- "Most AI projects do not fail because X. They fail because Y."
+- "Most SMBs do not need X. They need Y."
+- Colon plus comma-list instructions like "answer four questions: what..., what..., who..., where..."
+
+These can contain good operational ideas and still sound fake. Rewrite around the actual deployment, buyer scene, constraint, or result.
+
+Hard-banned borrowed-creator patterns from JT's Question 3 answer:
+
+- "what most people miss"
+- "here's the system:"
+- "here's what you need to do"
+- "the results?"
+- Insult hooks like "you're a moron"
+- Hype caps/manic urgency: "INSANE opportunity," "DO NOT," "EVERYTHING," "PISSED"
+- Numbered lists with no JT-specific personality
+- Motivational CTAs like "take action before someone else does"
+
+If using @AlexFinn-style references, borrow only the structure: urgent opportunity, concrete tool stack, setup path, market-pain scan, prototype loop. Rewrite the persona into JT's calmer operator voice.
+
+Hard-banned sentence shapes from JT's Question 5 answer:
+
+- "gets solved with a hire"
+- "X don't Y, they Z"
+- Statement followed by colon as hook machinery, e.g. "The question that changes every build: what are you trying to prevent?"
+- Closing posts with "X happened/changed/worked when Y"
+
+Rewrite those into direct sentences with the real operational consequence, owner, rule, or result.
+
+Hard-banned too-polished X patterns from JT's Question 7 answer:
+
+- "Would you trust an AI agent with..." staged trust hooks.
+- "I would trust it with..." reveal lines.
+- One-word or two-word operational noun stacks as dramatic line breaks: "Urgency. Unit history. Vendor route."
+- "Your [inbox/workflow/etc.] is probably a margin leak."
+- "The useful question is uglier:"
+- "Make stuck work visible before you make replies faster."
+- Big build-list flex posts ending with "What did you build in [month]?"
+- "The difference between [X] and [Y] is the difference between automation and chaos."
+- "That's not automation. That's leverage."
+
+The issue is not that these are short. The issue is that they sound staged: guru compression, dramatic list rhythm, abstract moral lines, or creator flex CTAs. For X, prefer a rawer single observation, a concrete build fact, or a direct operational judgment that still sounds like JT texting the point.
+
+Positive sentence shapes inferred from JT's Question 4 answer:
+
+- "Facts. But [actual point]."
+- "I like that [specific positive]. [Short reaction]. Very unconvinced [practical concern] though."
+- "[Actor/system] has proven to be [practical judgment]."
+- "They just don't have [constraint]."
+- "If [all information/source data] could live in [single source], this should be pretty straightforward."
+- "Please review and let me know if all looks good, and if so, I can get started [real timing/dependency]."
+
+Use these as cadence references, not templates to spam. The rule is: keep JT's practical qualifier, source-of-truth thinking, and direct dependency language. Do not smooth it into "in today's landscape," "broader implications," "centralized source of truth," or "streamline execution."
+
+---
+
+## Content Balance Rule
+
+Generated content should balance two credibility modes:
+
+1. **Operator explaining a build:** real workflows, dashboards, deployment details, local machines, approval routes, source-of-truth decisions, automation constraints, metrics, and implementation edge cases.
+2. **Consultant naming a buyer problem:** niche-specific operating problems, buyer scenes, messy handoffs, current market signals, and solution shapes for property management, real estate operations, wholesale/distribution, construction/trades, insurance/Agentforce, and AI operating systems.
+
+Use JT's expertise to choose the right mix. Do not ask JT to pick the lane unless the request is genuinely ambiguous.
+
+For a normal weekly queue:
+
+- Include at least one build/proof post when a real build or verified implementation detail exists.
+- Include at least one consultant POV post about a focused niche buyer problem.
+- Prefer bridge posts when possible: build detail -> why it matters in the niche -> solution shape or buyer implication.
+- Skip build updates that are only activity with no transferable consulting judgment.
+- Skip buyer-problem posts that could be written by any AI consultant.
+
+Strong content should make a potential client/employer think one of two things:
+
+- "He has actually built this kind of workflow."
+- "He understands this operational problem well enough to build the right workflow."
+
+If a batch does not create at least one of those impressions, it is not balanced enough.
 
 ---
 
@@ -21,12 +138,17 @@ Use compression to cut waste. Use depth when the goal is credibility, not virali
 - **Tone:** Professional but direct. No corporate jargon. Confident, specific, no filler.
 - **What works:** Case studies with real outcomes, tactical insights, proof of work, substantive opinions
 - **What doesn't:** One-line aphorisms (weak signal), vague claims, anything that sounds like a tweet
+- **Too casual:** builder diary updates, lowercase hot takes, "quick update" posts, vibes/slang, weekend-project chatter, tool fandom, app-growth notes with no consulting lesson, or anything that would not make a potential client or employer trust JT more
 - **Never reference @jts_14, X, or Twitter** in LinkedIn content
+
+**Trust-era proof rule:** A serious LinkedIn post should feel like it could only be written by someone close to the work. Include at least two proof assets when available: workflow input, system of record, owner/approval boundary, deployment constraint, before/after metric, safe artifact/screenshot, client/operator scene, or a specific implementation decision. Do not let generic AI commentary, trend reactions, or funnel tactics replace proof.
+
+**Pipeline infrastructure rule:** If a LinkedIn post is designed to generate inbound, name the asset or path behind it: checklist, diagnostic, lead magnet, reply prompt, consultation offer, email capture, or call-prep artifact. Qualified trust beats raw comments. Skip engagement-network and virality-first advice unless it creates trust with the right buyer. Current property-management asset path: `memory/content/assets/property-management-ai-workflow-readiness-checklist.md`.
 
 ### X / Twitter — Brand + Community Surface
 - **Audience:** Tech builders, founders, AI community, crypto crowd
 - **Goal:** Build reach, establish POV, start conversations, attract inbound
-- **Tone:** Punchy, a little edgy, direct. Jack Butcher compression works here.
+- **Tone:** Punchy, a little edgy, direct. Compression works only when it still sounds like JT, not a creator template.
 - **What works:** Hot takes, short observations, compressed truths, build-in-public moments
 - **What doesn't:** Long explanations, LinkedIn-style case study posts
 - **Can reference LinkedIn posts, builds, or consulting work** with a link when relevant
@@ -77,16 +199,15 @@ For X: neither wants a pitch — both want an insight or observation they haven'
 
 ## The 6 Language Techniques (apply to all posts regardless of length)
 
-### 1. Alliterative Contrast — Signature Move
-Two sides of a contrast start with the same letter. The sound link makes the insight feel inevitable.
+### 1. Sound-Based Contrast — Use Only After Specificity
+Sound-based contrast is allowed only when the sentence is already grounded in a concrete object, metric, owner, system, approval rule, or deployment fact.
 
-**JT's domain vocabulary:**
-- "Agents handle the work. You keep the margin."
-- "Build the process. Buy back the time."
-- "Manual processes scale with headcount. Machine processes scale with a config file."
-- "Consultants charge for advice. I charge for the thing that works."
-- "Demo proves it's possible. Deploy proves it's real."
-- "Specs live in decks. Systems live in production."
+Do not use slogan pairs as standalone content. Lines like "Agents handle the work. You keep the margin," "Build the process. Buy back the time," "Consultants charge for advice. I charge for the thing that works," "Demo proves it's possible. Deploy proves it's real," and "Specs live in decks. Systems live in production" are too polished unless they follow real proof.
+
+Better shape:
+- "The scraper was easy. The approval queue was the part that made it usable."
+- "The demo worked in a clean file. The deployment had to survive the spreadsheet the client already checks."
+- "The local machine mattered because the workflow could run near the files without creating a new IT problem."
 
 ---
 
@@ -106,29 +227,35 @@ Each line should survive this test: read it aloud. If a word can be removed with
 
 **Rewrite drill:**
 ❌ "Most businesses are still running on spreadsheets and manual workflows even though the AI tools to fix this have already been built."
-✅ "The tools exist. The implementation doesn't."
+❌ "The tools exist. The implementation doesn't."
+✅ "The StreetEasy scraper only mattered because the output landed in the sheet the client already used every 14 days."
 
 This applies to every post regardless of length — a 300-word post should feel tight, not padded.
 
 ---
 
-### 4. The Two-Part Parallel (core structure for punchy posts)
-Two sentences. Same structure. Contrasting meaning.
+### 4. Two-Part Parallel — Not A Default Template
+Two sentences can work when they describe a real functional distinction. They fail when they become generic category contrast.
 
+Bad:
 - "Chatbots answer questions. Agents close tickets."
-- "Software demos look clean. Production data is messy."
 - "The tech is ready. The operations aren't."
 - "Every business has the data. Almost none has the workflow."
+
+Better:
+- "The tenant email is only the start. The owner approval rule decides whether the workflow is usable."
+- "The PDF has the answer. The workflow still needs to know who owns the exception."
+- "The system can draft the follow-up. A manager still needs the flagged rows in review."
 
 ---
 
 ### 5. Uncomfortable Truths — Stated Flat
 Say the thing people avoid saying. No softening. No hedge.
 
-- "Most AI implementations fail in month two because no one changed the workflow."
-- "Your AI vendor sold you the capability. Not the result."
-- "Automating a broken process just breaks it faster."
-- "If your team still has to touch it every day, it's not automated."
+- "If your team still checks the same spreadsheet every morning, the system is not finished."
+- "A workflow with no exception owner just creates cleaner follow-up work."
+- "The scraper is not the hard part. The hard part is where the output lands and who reviews the edge case."
+- "If the approval rule lives in someone's head, the automation is not ready."
 
 **Rule:** One sentence. No follow-up explanation needed. Trust the reader.
 *Use on Mondays (LinkedIn) and Thursdays (X). Not every post.*
@@ -140,7 +267,8 @@ Lowercase signals observation, not announcement. Counterintuitively gives more a
 Use for hot takes and compressed insights — NOT for announcements, launches, or threads.
 
 ✅ "automating a broken process just breaks it faster"
-✅ "the implementation is always the bottleneck"
+❌ "the implementation is always the bottleneck"
+✅ "the approval rule is usually where the build gets real"
 
 ❌ lowercase on: launch announcements, project milestones, demo drops, case studies
 
@@ -207,9 +335,12 @@ Strong shape:
 - **Friday buyer-facing rule:** Prefer hooks like “Weekly status meetings might be the most expensive meeting on your calendar” over abstract hooks like “Most businesses do not need an AI chatbot.” Start with meetings, handoffs, approvals, stale reports, duplicate entry, ownerless requests, inbox/spreadsheet/portal sprawl.
 - **No outreach-meta by default:** Do not discuss JT's prospect research, lead enrichment, buyer-channel validation, or outreach strategy on LinkedIn unless writing explicitly for a sales-ops audience.
 - **No content-ops reveal by default:** Do not discuss JT's internal content generation, publishing system, swipe mechanics, posted logs, state files, or content automation on LinkedIn. That may be useful for internal build discipline, but it weakens the public trust surface.
+- **No proof-hygiene standalone posts:** Removing client names, cleaning public proof, hiding private details, or fixing attribution is internal trust discipline, not a post-worthy idea by itself. Use it only as a support line inside a real buyer problem, shipped client outcome, or permission-safe case study. Never deliver "public proof/privacy cleanup" as the main LinkedIn/X recommendation.
+- **No too-casual LinkedIn:** do not post "quick update," "small win," "built this weekend," "been playing with," "not gonna lie," "nothing crazy," "pretty cool," "vibes," "ship it and see," or app/build diary updates unless they are converted into client/employer-facing proof. LinkedIn should still sound like JT, but the reader should leave with trust, not just awareness that JT was building.
 - **Avoid AI-generated thought-leadership smell:** no “AI chatbot” contrast hooks, no “exception layer” phrasing, no vague “messy work” language, no stacked rhetorical lists unless grounded in a concrete workflow.
-- **Originality over acceptable:** every weekly slot must clear a 45-day semantic repeat check. Rewording a familiar angle is still a failure. Current hard-block phrases/angles: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” and content-system/process transparency.
+- **Originality over acceptable:** every weekly slot must clear a 45-day semantic repeat check. Rewording a familiar angle is still a failure. Current hard-block phrases/angles: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” content-system/process transparency, and public-proof/privacy cleanup as standalone content.
 - **Contrarian setup ban for all JT content:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” “not X, but Y,” the two-sentence “X is not just Y. It is Z.” variant, or repeated-noun reveals like “The risk is not X. The risk is Y.” This is banned across LinkedIn, X, reminders, client-proof posts, product-builder posts, and methodology/trust posts. Start with the positive claim, concrete scene, machine, workflow, owner, number, or business constraint.
+- **Question 5 sentence-shape ban:** do not use "gets solved with a hire," "X don't Y, they Z," statement-colon hook lines, or "X happened/changed/worked when Y" as a closing pattern. These sound like generated reflection, not JT's natural voice.
 - **Generic importance phrase ban:** never write “matters more than people think,” “people underestimate,” or “that part matters” unless replaced with the specific business reason.
 - **No hashtags.** They suppress reach.
 - **No emojis** unless they serve a specific purpose (rarely)
@@ -242,6 +373,18 @@ implementation excellence, transformative, leverage (as buzzword), solution, opt
 **Filler:** at the end of the day, in terms of, it is important to note, that being said, in order to, here's the thing
 
 **Never use:** em dashes (—), excessive question marks, exclamation points, "No X. No Y. Just Z." tricolon negation
+
+**Never use sentence shapes:** "X don't Y, they Z"; "The question that changes every build: ..."; "X happened/changed/worked when Y" as the closing line; "gets solved with a hire"
+
+**Stop Slop delta adopted 2026-06-07:** Use `scripts/jt_voice_guard.py` to catch the parts of `hardikpandya/stop-slop` that improve JT content without flattening his voice:
+- false agency: data, markets, workflows, decisions, complaints, bets, or culture acting like people
+- narrator-from-distance phrasing: "people tend to," "nobody designed this," "this happens because," "this is why"
+- vague declaratives: "the stakes are high," "the implications are significant," "the reasons are structural," "the consequences are real"
+- Wh-opener setups: "What makes this hard is...," "Why this matters...," "How teams should think..."
+- pull-quote endings: "That's the lesson," "That's the tradeoff," "X is the new Y"
+- high-confidence passive voice: "was created/generated/decided/reached" or "mistakes were made"
+
+Do not adopt the repo's blanket bans on all adverbs, all passive voice, two-item lists, or ultra-short aphoristic rewrites. JT uses practical qualifiers and constraint stacks when they carry real judgment.
 
 ---
 
@@ -319,7 +462,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 
 ---
 
-*Last updated: 2026-05-28 (X client-proof quote tweet rule added) | Framework: Jack Butcher language style + platform-specific depth model + X Phoenix algorithm*
+*Last updated: 2026-06-07 (JT voice evidence corpus + voice guard added) | Framework: JT correction-derived voice evidence + platform-specific depth model + X Phoenix algorithm*
 - **jtsomwaru.com AI Operations Diagnostic Reposition (2026-05-05):** Updated JT's personal site from generic AI Implementation Specialist framing to AI Operations Diagnostic / ops-heavy business workflow implementation. Added who-I-help, diagnostic front door, outcome-led services, and AI-search metadata. Build + lint passed; commit `2d0bb2a` pushed; production verified with updated hero/metadata.
 - **Nash Satoshi Methodology Page (2026-05-07):** Added and shipped `/methodology` explaining the 4-model crypto game-theory ranking system, with sitemap/robots/llms.txt exposure. GitHub synced at `5473082`; build/typecheck passed; production confirmed live. Content angle: trust pages are distribution assets for AI-search, not just documentation.
 

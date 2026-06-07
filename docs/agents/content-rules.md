@@ -5,16 +5,18 @@
 ## Pre-Draft Checklist (mandatory)
 Before drafting ANY post or content for JT:
 1. Read `memory/content-voice.md` in full.
-2. Read `memory/content/current-niche-map.md`. Choose the exact platform, niche, and format from that priority map before fetching references. Platform/niche fit matters more than raw engagement.
-3. Fetch current swipe-file references using the narrowest relevant filters available: platform first, then niche, then format. Example: `python3 scripts/notion-swipe-fetch.py --platform X --niche "Dynasty Fantasy / Sports GM" --limit 12 --min-engagement 0` or `python3 scripts/notion-swipe-fetch.py --platform LinkedIn --niche "SMB AI Implementation" --format "Case Study" --limit 8`.
-4. Never use cross-platform or cross-niche references by default. LinkedIn consulting content must not use dynasty X hooks/context. Dynasty X content must not use LinkedIn consulting patterns. Adjacent references are allowed only when same platform+niche examples are insufficient, and the draft must explicitly label them as adjacent inspiration.
-5. Select 2-4 reference patterns that match the platform + niche + format. Extract the mechanic: hook shape, opening-line move, emotional tension, context, rhythm, reply trigger, proof mechanism, specificity level, CTA type, and why it worked.
-6. Write a `Pattern inputs / Hook mappings from swipe file` section in the draft file before the posts.
-7. Translate the mechanics through JT's voice. Do not copy wording, claims, account persona, or structure wholesale.
-8. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering.
-9. For every LinkedIn draft, run the executable stale-pattern guard before delivery: `python3 scripts/content_distribution_guard.py --linkedin-draft [draft-file]`. If it fails, rewrite before showing JT.
-10. AI Ops Teardown Drive hygiene: top-level `Eve — Drafts / Content / LinkedIn / AI Ops Teardowns` must contain one canonical doc per teardown plus `Archive/`. Prep packs, delivery bundles, superseded drafts, and weekly batches must not sit beside canonical teardowns. If local copy changes after upload, update the existing Google Doc body or create a new canonical doc and archive stale copies.
-11. AI Ops Teardown purpose: each teardown must start from a current company, funding, product, market, regulation, or buyer-problem signal in a JT-relevant niche, then show the optimal AI workflow JT would build for that company/problem. Generic "AI ops" advice, repeated approval-queue content, or evergreen workflow tips are not valid teardowns unless tied to a new current signal and distinct workflow. The preferred shape is current signal → buyer-recognizable bottleneck → concrete messy input scene → system-of-record need → workflow JT would build → clean operating outcome.
+2. Read `memory/content/jt-voice-profile.md` and `memory/content/jt-voice-evidence-corpus.md` for actual JT cadence, phrasing, rhythm, specificity, proof rules, and hard-fail patterns.
+3. Read `memory/content/current-niche-map.md`. Choose the exact platform, niche, and format from that priority map before fetching references. Platform/niche fit matters more than raw engagement.
+4. Fetch current swipe-file references using the narrowest relevant filters available: platform first, then niche, then format. Example: `python3 scripts/notion-swipe-fetch.py --platform X --niche "Dynasty Fantasy / Sports GM" --limit 12 --min-engagement 0` or `python3 scripts/notion-swipe-fetch.py --platform LinkedIn --niche "SMB AI Implementation" --format "Case Study" --limit 8`.
+5. Never use cross-platform or cross-niche references by default. LinkedIn consulting content must not use dynasty X hooks/context. Dynasty X content must not use LinkedIn consulting patterns. Adjacent references are allowed only when same platform+niche examples are insufficient, and the draft must explicitly label them as adjacent inspiration.
+6. Select 2-4 reference patterns that match the platform + niche + format. Extract the mechanic: hook shape, opening-line move, emotional tension, context, rhythm, reply trigger, proof mechanism, specificity level, CTA type, and why it worked.
+7. Write a `Pattern inputs / Hook mappings from swipe file` section in the draft file before the posts.
+8. Translate the mechanics through JT's voice. Do not copy wording, claims, account persona, or structure wholesale.
+9. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering.
+10. For every serious saved draft, run `python3 scripts/jt_voice_guard.py [draft-file] --platform linkedin|x`. Rewrite until score is 80+ and no hard-fail problems remain.
+11. For every LinkedIn draft, run the executable stale-pattern guard before delivery: `python3 scripts/content_distribution_guard.py --linkedin-draft [draft-file]`. If it fails, rewrite before showing JT.
+12. AI Ops Teardown Drive hygiene: top-level `Eve — Drafts / Content / LinkedIn / AI Ops Teardowns` must contain one canonical doc per teardown plus `Archive/`. Prep packs, delivery bundles, superseded drafts, and weekly batches must not sit beside canonical teardowns. If local copy changes after upload, update the existing Google Doc body or create a new canonical doc and archive stale copies.
+13. AI Ops Teardown purpose: each teardown must start from a current company, funding, product, market, regulation, or buyer-problem signal in a JT-relevant niche, then show the optimal AI workflow JT would build for that company/problem. Generic "AI ops" advice, repeated approval-queue content, or evergreen workflow tips are not valid teardowns unless tied to a new current signal and distinct workflow. The preferred shape is current signal → buyer-recognizable bottleneck → concrete messy input scene → system-of-record need → workflow JT would build → clean operating outcome.
 
 ## Self-Improving Content Loop
 All content Eve generates for JT must use a feedback loop calibrated to the niche and platform.
@@ -38,6 +40,15 @@ The Notion Viral Posts Swipe database is not just an archive. It must influence 
 
 ## Reference Mechanics Contract
 Any recurring content generator that claims it used swipe/native references must save a platform-specific reference section in the artifact before delivery.
+
+For @jts_14 X content, the weekly artifact must also have a dedicated source-to-draft ledger, or a linked ledger file, that separates:
+- `Topic selection`: source directly influenced what the post was about.
+- `Structure`: source influenced hook shape, pacing, format, or compression.
+- `Credibility/proof`: source validated artifact-first proof, visible systems, or stack detail.
+- `Niche signal only`: source showed market/buyer language but was not strong enough to anchor a post.
+- `Rejected`: source was reviewed and intentionally not used.
+
+Minimum row contract: `scraped source -> lane -> why selected -> analyzed mechanic -> influence type -> draft touched -> rejection/constraint if not used`. Run `python3 scripts/jts14_x_reference_ledger_guard.py memory/content/jts14-x-reference-ledger-[MONDAY].md` before claiming @jts_14 X research is optimal.
 
 Required section headings:
 - `## LinkedIn Reference Mechanics`
@@ -97,7 +108,8 @@ Viral Swipe must search live X with explicit recency and performance filters: `-
 - No forbidden words (full list in content-voice.md)
 - No em dashes, no exclamation points, no "Here's the thing:" openers
 - All JT content must not use stale contrarian/reveal patterns: no “the blocker is not whether X, it is whether Y,” no “not look what this tool can do, more like…,” no “not X, but Y,” no two-sentence “X is not just Y. It is Z.” framing, and no “matters more than people think” generic importance phrases.
-- LinkedIn originality gate: before delivery, compare every slot against the last 45 days of `memory/content/posted-log.jsonl` and the prior week's published/scheduled posts. Block drafts that reuse the same semantic angle, not just the same words. Current hard blocks: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” and any public discussion of internal content-generation or publishing machinery.
+- LinkedIn originality gate: before delivery, compare every slot against the last 45 days of `memory/content/posted-log.jsonl` and the prior week's published/scheduled posts. Block drafts that reuse the same semantic angle, not just the same words. Current hard blocks: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” any public discussion of internal content-generation or publishing machinery, and standalone public-proof/privacy-cleanup posts.
+- Worthiness gate: a draft must improve JT's position with a buyer, recruiter, or builder. Internal hygiene work like removing client names, cleaning site proof, hiding private details, attribution cleanup, or "proof needs privacy" is not post-worthy unless attached to a real buyer problem, shipped client outcome, or permission-safe case study.
 - LinkedIn strategic-fit gate: posts must make JT look like the operator a buyer or hiring manager would trust with implementation. Default to buyer-recognizable workflows, real proof, service-delivery judgment, and business constraints. Do not publish posts about how JT generates, schedules, guards, or automates his own content unless JT explicitly asks for that topic.
 - Threads: max 5 tweets; most should be 3
 

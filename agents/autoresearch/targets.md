@@ -65,6 +65,9 @@
 | linkedin-corpus-agent | agents/linkedin-corpus/AGENT.md | agents/autoresearch/checklists/linkedin-corpus-agent.md | pending | — | — | 2026-05-31 |
 | client-proof-engine | agents/client-proof-engine/AGENT.md | agents/autoresearch/checklists/client-proof-engine.md | pending | — | — | 2026-05-31 |
 | plan-review-pack | skills/plan-review-pack/SKILL.md | agents/autoresearch/checklists/plan-review-pack.md | pending | — | — | 2026-06-06 |
+| ui-clone | skills/ui-clone/SKILL.md | agents/autoresearch/checklists/ui-clone.md | pending | — | — | 2026-06-07 |
+| workflow-strategist | agents/workflow-strategist/AGENT.md | agents/autoresearch/checklists/workflow-strategist.md | pending | — | — | 2026-06-07 |
+| product-quality-pass | agents/product-quality-pass/AGENT.md | agents/autoresearch/checklists/product-quality-pass.md | pending | — | — | 2026-06-07 |
 
 ## Status values
 - `pending` — checklist written, not yet run

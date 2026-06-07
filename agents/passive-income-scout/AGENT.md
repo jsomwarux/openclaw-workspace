@@ -12,6 +12,22 @@ Signal fetch runs Saturday 5:30 AM ET. Scout runs Sunday 1 PM ET. Save output to
 
 Handoff requirement: output must be saved to `memory/passive-income/YYYY-MM-DD-scout.md` before the Strategist cron starts. If research cannot complete before 2:45 PM ET, write a partial report with clear `INCOMPLETE` status so the Strategist fails loudly instead of evaluating stale files.
 
+## Runtime Boundaries
+
+The Scout must finish inside a cron runner. Do not try to read every historical report or run every methodology at full depth in one turn.
+
+Hard limits per run:
+- Before research, run `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/passive_income_handoff_check.py --mode pre-scout`.
+- If the pre-scout gate returns `degraded=true` or warning lines, continue with a compact report and include a `DEGRADED INPUTS` note. Stale signals are evidence-quality warnings, not a reason to leave the pipeline blocked.
+- If the pre-scout gate fails because a required file is missing/unreadable/too small, try one deterministic repair first: run `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/fetch-signals.py`. Re-run the gate. If it still fails, write a compact scout report using available local files and label unsupported lenses `Unavailable`; do not write `INCOMPLETE` unless the workspace filesystem cannot be read or written.
+- Read the current weekly signal files first.
+- Read `state.json` plus only the last 4 scout reports and last 4 strategist reports for dedupe/context.
+- Produce 4 raw ideas minimum, 6 maximum. Prefer 4 high-signal ideas over 6 padded ideas.
+- Run at most 6 live searches total. If local signal files are rich, run fewer.
+- Keep the report under 18,000 words.
+- Write the report before doing any optional research. A complete compact report beats an unfinished perfect pass.
+- If the run starts running long, stop research and write a complete `DEGRADED` report with exact caveats rather than leaving no file or writing `INCOMPLETE`.
+
 ---
 
 ## JT's Stack (ideas that use these are significantly faster/cheaper to build)
@@ -56,7 +72,7 @@ Handoff requirement: output must be saved to `memory/passive-income/YYYY-MM-DD-s
 
 ## Step 1: Load Previous Ideas
 
-Read all files in `~/.openclaw/workspace/memory/passive-income/` — extract idea names. Don't regenerate the same concept. Adjacent angles to past ideas are fine.
+Read `~/.openclaw/workspace/agents/passive-income-scout/state.json`, then read only the last 4 scout reports and last 4 strategist reports in `~/.openclaw/workspace/memory/passive-income/`. Extract idea names. Do not regenerate the same concept. Adjacent angles to past ideas are fine.
 
 ---
 

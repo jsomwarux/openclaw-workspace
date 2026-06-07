@@ -1,18 +1,18 @@
 # Weekly Intel Brief — for Content Generation
 > Written by Weekly Intelligence Synthesis. Read by content-generate-linkedin and content-generate-x Monday morning.
 
-**Week of:** 2026-05-25
+**Week of:** 2026-06-01
 
 ## Top Niche Signals This Week
-1. [wholesale] Canals raised $35M for AI that turns distributor emails, PDFs, spreadsheets, sales orders, AP docs, and purchasing validation into structured ERP workflow.
-2. [construction] NavigateAI launched with $25M for field-worker copilots, showing construction AI is moving toward jobsite media, quality control, training, and field documentation.
-3. [insurance] Roots Automation launched Bevaya as an insurance-native AI agent platform across underwriting, claims, and policy servicing.
+Property management: AI front desk, missed-call text-back, leasing follow-up, maintenance intake, tenant support, and vendor routing are becoming table-stakes PM features; the sharper JT angle is front desk plus exception desk.
+Construction: Sitemetric launched an AI construction camera and fresh construction software coverage keeps pushing field photos, inspection notes, and site updates; the useful post angle is what happens after evidence is captured.
+Insurance: Insurance Business reported nearly 90% of respondents expect more underwriting automation and 65.9% plan additional AI underwriting tools in 2026; the post angle is confidence, review queues, and audit trail.
 
 ## Strategic Theme This Week
-Vertical AI platforms are moving from generic assistant demos to workflow-specific operating systems; JT's content should frame AI implementation as governed workflow control, not tool adoption.
+Vertical AI is moving from generic assistants into workflow-specific operating surfaces, so JT's strongest angle is the governed handoff after intake: who owns the exception, who approves the output, and what gets logged.
 
 ## Competitive Developments
-Entrata filed for IPO after 23% Q1 2026 revenue growth, reinforcing that property-management software plus embedded AI is now a capital-market category. Salesforce is also pushing Agentforce around MCP servers and AgentExchange, which strengthens the "activate the workflow layer you already own" pitch for Salesforce shops.
+Salesforce signed a definitive agreement to acquire Contentful so Agentforce can use structured content as part of AI-assembled experiences, while Agentforce ARR reportedly reached $1.2B with 205% year-over-year growth.
 
 ---
-_Last updated: 2026-05-31 Sunday_
+_Last updated: 2026-06-07 Sunday_

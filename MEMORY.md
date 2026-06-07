@@ -57,13 +57,13 @@
 - June effort: property ops first, construction/skilled trades second, wholesale limited-test, Agentforce as strategic proof/readiness unless Salesforce stack + trigger + reply path are confirmed.
 
 ## Current Apps / Products
-- `jtsomwaru.com`: portfolio site at `~/projects/jtsomwaru-com/`, deployed via Vercel. Portfolio cards require coding-agent/build/test/push. AI SEO/citation path as of 2026-05-27: build n8n service/proof pages first, then directory/entity profiles and roundup outreach; no public submissions before JT approval.
+- `jtsomwaru.com`: portfolio site at `~/projects/jtsomwaru-com/`, deployed via Vercel. Portfolio cards require coding-agent/build/test/push. AI SEO now uses source-of-truth audits first: context file, surface mismatch, citations/entity, review language, ready-to-hire intent, proof assets, and monthly operator report. No public submissions before JT approval.
 - Glow Index: live skincare rankings app at `https://glowindex.co`; now active for App Marketing OS durable discovery/pSEO planning. Replit deploy requires fresh build, not just redeploy. Engine OpenRouter key lives in LaunchAgent plist, not `global.env`. Marketing guardrails: no medical/dermatology claims, diagnosis/treatment language, fake testimonials, or fake before/after claims.
 - Nash Satoshi: crypto ranking app, private repo `jsomwarux/Nash-Satoshi`; morning brief drafts daily X post from live rankings.
 - Vista: App Store live; durable SEO page live on jtsomwaru.com. Current Vista-first app-marketing split/details live in `docs/memory/current-context-details-2026-05-27.md`.
 
 ## Content System
-- Before drafting: read `memory/content-voice.md`; no preamble/em dashes/“Here’s the thing”; standalone X posts 6–15 words when requested.
+- Before drafting: read content voice/profile/evidence corpus; run `scripts/jt_voice_guard.py`; no preamble/em dashes/“Here’s the thing”; X singles 6–15 words. Stop Slop delta 2026-06-07 catches false agency/narrator-distance/vague/Wh/pull-quote/passive slop. LinkedIn now requires proof density + buyer-readable conversion asset when pipeline-oriented.
 - Content niche/source-map rules live in `memory/content/current-niche-map.md` and `docs/memory/current-context-details-2026-05-27.md`; new queues must pass `content_distribution_guard.py --require-reference-map`.
 - AI Ops Teardown purpose reset 2026-06-01: teardowns must examine a current company, funding/product/market signal, regulation, or visible buyer problem in a JT-relevant niche, then show the optimal AI workflow JT would build for that company/problem. Strong default spine: current signal → buyer-recognizable bottleneck → concrete messy input scene → system-of-record need → workflow JT would build → cleaner operating outcome. Generic evergreen approval-queue/workflow advice is not enough.
 - AI Ops Teardown weekly bundles must auto-upload to Drive via `scripts/ai_ops_teardown_drive_sync.py --json`; teardown docs go to `Consulting/AI Ops Teardowns/[date]/Teardowns`, content drafts to `Content/AI Ops Teardowns/[date]/Drafts`.
@@ -113,7 +113,7 @@
 - Lessons auto-write: capture non-obvious solved problems in the relevant lessons/skill/rules file immediately.
 
 ## Strategic Decisions Log
-- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof. x402 is an operator-builder content/app-readiness pillar, not a generic SMB install offer. Full dated decisions/deferred items: `docs/memory/current-context-details-2026-05-27.md` and `docs/memory/MEMORY-full.md`.
+- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof. x402 is an operator-builder pillar. Passive-income 2026-06-07 top BUILD: `ChargeTrip Fit` (`memory/passive-income/2026-06-07-strategist.md`, MC `j5724f5hfc07cr9a7skahz1121887dnm`).
 
 ## Integrity / Fabrication Corrections
 - Never claim outreach/messages were sent unless tool/script evidence confirms it.
@@ -121,7 +121,7 @@
 - If corrected by JT, immediately update the Mistakes Log/rules before moving on.
 
 ## Setup State
-- 2026-05-31/06-06: Added AI Context OS Sprint, plan-review-pack, capability-routing map, proof/corpus skills, workflow/product agents, and portable Codex plugin `~/plugins/jt-operating-system` v0.2.0. Details: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
+- 2026-05-31/06-06: Added AI Context OS/plan-review/proof skills, workflow/product agents, and `~/plugins/jt-operating-system` v0.2.0. Details: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
 - 2026-05-11: GBrain consulting recall pilot lives at `~/projects/gbrain*`; use only `scripts/gbrain-consulting-search.sh "Entity"` for consulting/prospect entity lookup. No crons/skillpacks/broad ingestion/embeddings without JT approval.
 - Prior setup details are archived in `docs/memory/MEMORY-full.md`; tool commands live in `TOOLS.md`.
 

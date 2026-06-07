@@ -1,16 +1,7 @@
 {
-  "entries": [
-    {
-      "date": "2026-06-06",
-      "day": "saturday",
-      "line_no": 205,
-      "platform": "x",
-      "summary": "Best AI tooling decision: instructions beat vibes, skills beat prompts, memory beats chat history, and guards beat confidence.",
-      "topic": "instructions-skills-memory-guards-beat-vibes"
-    }
-  ],
-  "note": "",
-  "sent_at": 1780747262,
-  "source": "content-reminder",
-  "status": "pending"
+  "entries": [],
+  "note": "Cleared after JT rejected the public-proof/privacy cleanup angle as not post-worthy on 2026-06-07.",
+  "sent_at": 1780837271,
+  "source": "content-sunday",
+  "status": "rejected"
 }

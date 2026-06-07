@@ -1,3 +1,9 @@
+## Plan — Stop Slop Voice Guard Integration — 2026-06-07
+- [x] Add regression coverage for Stop Slop gaps: false agency, narrator distance, vague declaratives, Wh-openers, pull-quote endings, and high-confidence passive voice.
+- [x] Patch `scripts/jt_voice_guard.py` with enforceable checks while preserving JT-specific qualifiers and proof rhythm.
+- [x] Update content voice docs and content-generation skill with the adopted delta, not the whole external skill.
+- [x] Verify regression tests, good JT sample pass, syntax, proof guard, and Mission Control task state.
+
 ## Plan — JT Toolkit Synthesis — 2026-06-02
 - [x] Clone and fully inventory `jsomwarux/jt-claude-toolkit`.
 - [x] Compare Claude plugin output against OpenClaw skills, plugin, agents, and routing docs.

@@ -81,6 +81,25 @@ def summarize_report(path: Path) -> str:
     return digest
 
 
+def report_is_blocked(path: Path) -> bool:
+    if not path.exists():
+        return False
+    text = path.read_text(errors="replace")[:3000]
+    return (
+        "## Status" in text
+        and "BLOCKED" in text
+        and "Pre-strategist handoff check failed" in text
+    )
+
+
+def run_message_tool_delivered(run: dict) -> bool:
+    delivery = run.get("delivery") if isinstance(run.get("delivery"), dict) else {}
+    if delivery.get("delivered") is True:
+        return True
+    sent_to = delivery.get("messageToolSentTo")
+    return isinstance(sent_to, list) and len(sent_to) > 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d"))
@@ -91,8 +110,13 @@ def main() -> int:
     scout = PI_DIR / f"{args.date}-scout.md"
     marker = PI_DIR / f"{args.date}-strategist-delivery.json"
     run = latest_run()
-    cron_delivered = run.get("delivered") is True or run.get("deliveryStatus") == "delivered"
+    cron_delivered = (
+        run.get("delivered") is True
+        or run.get("deliveryStatus") == "delivered"
+        or run_message_tool_delivered(run)
+    )
     status = run.get("status")
+    blocked_report = report_is_blocked(report)
 
     marker_state: dict = {"exists": marker.exists()}
     message_tool_delivered = False
@@ -114,7 +138,7 @@ def main() -> int:
     problems: list[str] = []
     if not scout.exists() or scout.stat().st_size < 500:
         problems.append(f"Scout missing/too small: {scout}")
-    if not report.exists() or report.stat().st_size < 500:
+    if not report.exists() or (report.stat().st_size < 500 and not blocked_report):
         problems.append(f"Strategist report missing/too small: {report}")
     if status != "ok":
         problems.append(f"Latest strategist run status is {status!r}")
@@ -131,6 +155,7 @@ def main() -> int:
         "report": str(report),
         "report_exists": report.exists(),
         "report_size": report.stat().st_size if report.exists() else 0,
+        "blocked_report": blocked_report,
         "delivery_marker": marker_state,
         "message_tool_delivered": message_tool_delivered,
         "cron_delivered": cron_delivered,

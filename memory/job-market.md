@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-06-07 — Heartbeat Job Market Pulse
+
+**Read:** Today's job-market brief found no critical alerts and no new 18+/25 actionable role. Fresh searches reinforced that the job-board surface is still noisy: plausible AI architect or consultant hits degrade into contract work, pre-sales demos/SOWs, EU/UK freelance training, or hands-on tech lead roles.
+
+**JT relevance:** The useful signal is not a new application. It is positioning pressure: demand keeps clustering around AI ROI/value realization, implementation capability, and agentic operating roles. Mission Control/OpenClaw and Altmark/property ops should be described as measurable workflow-outcome proof, not generic personal automation or broad AI architecture.
+
+**Action:** No new Mission Control role or build task. Keep Altmark and PM Front Desk proof ahead of job-market exploration. Reuse today's signal only to tighten portfolio/resume wording around outcome-led AI operations, approval gates, and value realization.
+
+---
+
 ## 2026-06-01 — Heartbeat Job Market Pulse
 
 **Read:** Today's job-market brief found no critical alerts and no clean new 18+/25 live opportunity. Fresh follow-up searches reinforced the same pattern: broad AI architect pages, Salesforce/Agentforce platform language, one Salesforce AI Integration Architect posting, and salary/skills pages around AI architecture. The concrete role signal still skews toward engineering-heavy integration, cloud/data/RAG architecture, or non-target postings rather than JT's best BSA + AI implementation lane.

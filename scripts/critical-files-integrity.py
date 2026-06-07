@@ -77,6 +77,7 @@ FILE_REFS = {
     "skills/n8n-blueprint/SKILL.md": "46f0d88b71ddaf7ba6931b7408858c9647df4695",
     "skills/product-build-loop/SKILL.md": "46f0d88b71ddaf7ba6931b7408858c9647df4695",
     "skills/proposal-pdf/SKILL.md": "46f0d88b71ddaf7ba6931b7408858c9647df4695",
+    "skills/plan-review-pack/SKILL.md": "d0b62d2d9726224259e1d9e6e049bcd3113ff39f",
 }
 
 def get_git_lines(file_path, ref):

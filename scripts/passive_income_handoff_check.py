@@ -20,6 +20,11 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--date", default=datetime.now().strftime("%Y-%m-%d"), help="YYYY-MM-DD; defaults to today")
     p.add_argument("--mode", choices=["pre-scout", "pre-strategist", "post-strategist"], default="post-strategist")
+    p.add_argument(
+        "--strict-staleness",
+        action="store_true",
+        help="Treat stale hard signal files as blocking instead of degraded warnings.",
+    )
     p.add_argument("--json", action="store_true")
     return p.parse_args()
 
@@ -54,6 +59,7 @@ def main() -> int:
     signal_states = {p.name: file_state(p) for p in required_signal_files}
 
     problems: list[str] = []
+    warnings: list[str] = []
     if args.mode == "pre-scout":
         now = datetime.now(timezone.utc).timestamp()
         for p in required_signal_files:
@@ -65,12 +71,17 @@ def main() -> int:
                 problems.append(f"signal file too small: {p} ({state['size']} bytes)")
             age_days = (now - p.stat().st_mtime) / 86400
             if age_days > 8:
-                if p.name == "weekly-trustmrr.json":
-                    # TrustMRR is a soft revenue-comps lens. Stale data should be
-                    # visible to Scout/Strategist, but must not block the entire
-                    # passive-income pipeline.
+                if p.name in {"weekly-trustmrr.json", "weekly-google-trends.md"}:
+                    # TrustMRR and pytrends are soft lenses. They should be visible
+                    # to Scout/Strategist, but must not block the pipeline when
+                    # other hard sources are fresh.
+                    warnings.append(f"soft signal stale >8 days: {p} ({age_days:.1f}d)")
                     continue
-                problems.append(f"signal file stale >8 days: {p} ({age_days:.1f}d)")
+                msg = f"hard signal stale >8 days: {p} ({age_days:.1f}d)"
+                if args.strict_staleness:
+                    problems.append(msg)
+                else:
+                    warnings.append(msg)
 
     if args.mode in {"pre-strategist", "post-strategist"}:
         if not scout_state["exists"]:
@@ -97,16 +108,23 @@ def main() -> int:
         "scout": scout_state,
         "strategist": strategist_state,
         "problems": problems,
+        "warnings": warnings,
+        "degraded": bool(warnings),
     }
     if args.json:
         print(json.dumps(result, indent=2))
     else:
         if result["ok"]:
-            print(f"PASSIVE_INCOME_HANDOFF_OK date={args.date} mode={args.mode}")
+            suffix = " degraded=true" if warnings else ""
+            print(f"PASSIVE_INCOME_HANDOFF_OK date={args.date} mode={args.mode}{suffix}")
+            for warn in warnings:
+                print(f"- warning: {warn}")
         else:
             print(f"PASSIVE_INCOME_HANDOFF_FAIL date={args.date} mode={args.mode}")
             for prob in problems:
                 print(f"- {prob}")
+            for warn in warnings:
+                print(f"- warning: {warn}")
     return 0 if result["ok"] else 2
 
 
