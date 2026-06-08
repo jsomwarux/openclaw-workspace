@@ -28,6 +28,7 @@ Score 3–5 candidate topics using the rubric in `system.md`. Do not pick a comp
 - Do NOT imply any company is a client unless MEMORY.md confirms it.
 - Do NOT expose private client details.
 - Do NOT build a real n8n template unless score is 24+ and the workflow is reusable with synthetic data.
+- If `delivery-calendar.md` has a current ready-to-review bundle that is still unposted and has an open JT review/post task, do not create a duplicate weekly bundle. Return `AI_OPS_TEARDOWN_SKIP` with the existing source path, task id, and exact JT action.
 - Prefer concrete workflows over generic AI commentary.
 - Every draft must include inputs, messy current process, exception/approval boundary, audit trail, buyer outcome, and build-tier decision.
 - Every draft must include a buyer-safe CTA to the relevant diagnostic/next step unless the topic is intentionally content-only. For property/family-office workflows, use `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md` as the CTA target.
@@ -51,6 +52,14 @@ Score 3–5 candidate topics using the rubric in `system.md`. Do not pick a comp
 9. If Tier 3 is justified, create/update one separate build task for Eve with synthetic-data constraint and an explicit gate: do not build until the teardown is posted and gets operator reply/DM signal, or JT explicitly prioritizes it.
 10. Run the final bundle quality gate before responding: buyer-relevant workflow, inputs, messy process, exception logic, HITL, audit trail, buyer outcome, platform-native drafts, diagnostic CTA, proof-safe framing, Tier 1/2/3 decision, save paths, Drive upload links, MC review/post task, no stale/generic company choice, no fake client claims.
 11. If this is the first run after cron creation, include a note that run history should be verified with `openclaw cron runs --id f96cc24f-55e6-4064-a075-b897156a22f2 --limit 1` after completion.
+
+## Final Checkpoint Hardening — 2026-06-07
+Before the turn ends, always produce exactly one final status:
+- `AI_OPS_TEARDOWN_OK` when a new bundle was fully written, Drive sync was attempted, and the review/post task was created or updated.
+- `AI_OPS_TEARDOWN_SKIP` when the current unposted bundle should remain the next action or no candidate clears the quality bar.
+- A concise blocker when a required dependency fails, with the exact file, command, or auth issue.
+
+Do not spend the last step trying to verify this same cron run's delivery from inside the run. Save the local evidence, state the final status, and stop.
 
 ## Output Paths
 Use today's date as `YYYY-MM-DD` and a short slug.

@@ -19,7 +19,7 @@
 ### 2026-06-07 — Ship PM Front Desk + Exception Desk Proof
 **Recommendation:** Package one buyer-facing proof asset this week around the property-management "front desk plus exception desk" workflow: tenant/resident intake, urgency classification, vendor routing, aging follow-up, manager review, and audit trail. Anchor it to Altmark-style property ops work and use it as the Tuesday observation/content spine plus PM outreach proof.
 **Why now:** Fresh June PM signals show AI front desk, missed-call text-back, leasing follow-up, maintenance intake, and vendor routing becoming table stakes, while RapidEyeAI and visual-documentation signals show PM operators are moving from generic assistants toward workflow-specific tools. JT already has the stronger implementation angle: capture the request, then govern the unresolved exceptions.
-**Status:** open
+**Status:** actioned 2026-06-07 — proof spine created at `memory/content/assets/pm-front-desk-exception-desk-proof-spine-2026-06-07.md`; LinkedIn draft created at `memory/content/bank/2026-06-08/pm-front-desk-exception-desk-linkedin.md`; Mission Control task repointed to JT review/post/use.
 
 ### 2026-05-31 — Package Property Ops Control Plane Proof
 **Recommendation:** Turn the Altmark rent-delinquency testing pack into a buyer-facing Property Ops Control Plane proof this week: one page or artifact showing ledger readiness, exception routing, human approval, rollback, audit trail, and ROI language.
