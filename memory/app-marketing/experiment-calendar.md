@@ -1,25 +1,13 @@
 # App Marketing OS — Experiment Calendar
 
-Week of: 2026-06-01
-Generated: 2026-06-01
+Week of: 2026-06-08
+Generated: 2026-06-08
 
 ## Rule
 Every generated product post should map to a named experiment, a success threshold, and a retire/rework rule. If it does not, skip it.
 
-## TikTok Re-entry Gate — added 2026-06-01
-JT is still warming up the TikTok accounts for Vista, Nash Satoshi, and Glow Index after recent 0-view / likely throttling behavior. TikTok slideshow execution is warm-up gated, not overdue.
-
-Re-entry plan: `memory/app-marketing/tiktok-reentry-plan-2026-06-01.md`
-
-Rules:
-- Resume with one manual TikTok post per account first.
-- Prefer ReelFarm draft generation plus JT manual posting from TikTok.
-- Do not use direct auto-post scaling until normal distribution returns.
-- Eve reconciles live post URLs/IDs and metric windows after JT posts.
-- If any resumed post gets 0 views again, stop and diagnose account trust/posting mode before changing creative.
-
 ## Inputs used
-- Metrics rows: 165
+- Metrics rows: 207
 - Latest test brief: `test-briefs-2026-05-07.md`
 - Planned rows currently waiting for live post IDs: 6
 
@@ -42,7 +30,7 @@ Rules:
 ### 2. Vista rating precision retest
 - **Channel:** TikTok/ReelFarm
 - **Hypothesis:** Specific movie + exact rating-number tension beats relationship-compatibility hooks.
-- **Post plan:** Warm-up gated. 1 manual TikTok/ReelFarm slideshow using a specific movie/rating hook after JT finishes account warm-up. Use source tag `vista_tiktok_rating_precision_reentry_20260603`.
+- **Post plan:** 1 ReelFarm slideshow using a specific movie/rating hook. Use the latest test brief unless metrics reject it.
 - **Success threshold:** ≥2x Vista TikTok baseline or ≥500 views, whichever is lower while sample is thin.
 - **Retire/rework rule:** Do not run relationship-compatibility again until rating precision gets another clean test or compatibility has real proof.
 - **Evidence:** Best observed Vista TikTok topic: rating_precision; best="IMDb gave Midsommar a 7.1. that's the wrong number." views=1114
@@ -58,7 +46,7 @@ Rules:
 ### 4. Nash model-consensus slideshow
 - **Channel:** TikTok/ReelFarm
 - **Hypothesis:** Model-consensus/game-theory hooks with a concrete number beat vague “watch this” slides.
-- **Post plan:** Warm-up gated. 1 manual TikTok/ReelFarm slideshow around 4-AI agreement/disagreement after JT finishes account warm-up. Use source tag `nash_tiktok_model_consensus_reentry_20260603`. Add token/score only if live proof is visible.
+- **Post plan:** 1 slideshow around 4-AI agreement/disagreement. Add token/score only if live proof is visible.
 - **Success threshold:** ≥2x Nash TikTok baseline or ≥150 views while sample is thin.
 - **Retire/rework rule:** Never approve “watch this” or unclear title slides again.
 - **Evidence:** Best observed Nash TikTok topic: game_theory_explainer; best="Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To Solve." views=200

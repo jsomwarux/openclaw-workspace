@@ -30,3 +30,5 @@
 [2026-06-02] OpenRouter — MiniMax M3 appeared on the model API with low-cost 1M context — post a model-routing cost/quality eval for Glow Index-style scoring — tag @OpenRouterAI
 [2026-06-03] OpenClaw — v2026.6.1-beta.3 shipped Skill Workshop, Workboard, cron/channel/runtime recovery, and plugin loading fixes — suggested post angle: demo a governed skill proposal or cron reliability checklist from a real personal ops agent — @openclaw
 [2026-06-04] OpenClaw — released 2026.6.1 stable / 2026.6.2 beta with Skill Workshop, plugin install policy, Telegram/channel durability, cron/runtime hardening — suggested post angle: quick demo of update checklist + why governed skill installs matter for personal agents — tag @openclaw
+[2026-06-08] OpenClaw — v2026.6.5-beta.2 shipped runtime/MCP/cron recovery fixes — suggested post angle: quick operator reaction on reliability work behind always-on agents — tag @openclaw
+[2026-06-08] OpenRouter — released workspace security/governance controls for budget enforcement, zero data retention, provider restrictions, prompt-injection defense, and DLP — quick demo of cost/risk guardrails for app model keys — tag @OpenRouterAI

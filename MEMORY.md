@@ -24,7 +24,7 @@
 - Differentiator: JT speaks operations and technology; sells implementation outcomes, not abstract AI strategy.
 - 2026-06-03 positioning refinement: lead with AI operating controls / agent-ready operating models, not generic agent adoption. Buyer pain maps to budget ceilings, owner approvals, sandboxed execution, PII rules, run logs, escalation paths, and human-review boundaries before tools are implemented.
 - 2026-06-04 positioning refinement: local-business/property-ops agent offers should sell distribution + governed handoffs, not “AI writes copy.” Durable buyer controls: identity, scoped tool access, approval rules, audit trail, kill switch, cost caps, sandboxing, run logs, source-of-truth ownership, and measured adoption/value reporting.
-- 2026-06-05 positioning refinement: package frontline AI adoption as an operating-model problem before automation. Durable buyer language: trusted customer/workflow context, approval rules, exception owner, system-of-record writeback, and value/KPI measurement. Use AI Context OS / Altmark-style workflow readiness as the proof path, not generic agent builds.
+- 2026-06-05/08 positioning refinement: package frontline AI adoption as an operating-model problem before automation. Durable buyer language: trusted customer/workflow context, approval rules, exception owner, system-of-record writeback, and value/KPI measurement. PM Front Desk + Exception Desk is the current buyer-readable proof path: intake source, system of record, approval owner, exception path, review queue, and audit evidence before autonomous action.
 - 2026-06-06 agent-ops positioning: “human-as-signal” is stronger than generic human-in-the-loop. Consulting/AI Context OS should frame agents as volume/execution and JT/client leaders as taste, priority, risk boundary, and react-and-redirect loops. Adopted `plan-review-pack` so internal `plan.md`/raw notes become external proof/review artifacts for clients.
 - Target ICP: NYC/metro SMBs in construction, wholesale distribution, property management, skilled trades; HubSpot is a strong expansion platform due to less Salesforce competition.
 - Outreach tiers use score gates: T1 80+ proof-led custom; T2 60-79 template/validation; T3 40-59 market-sensing only. JT sends all outreach.
@@ -63,7 +63,7 @@
 - Vista: App Store live; durable SEO page live on jtsomwaru.com. Current Vista-first app-marketing split/details live in `docs/memory/current-context-details-2026-05-27.md`.
 
 ## Content System
-- Before drafting: read content voice/profile/evidence corpus; run `scripts/jt_voice_guard.py`; no preamble/em dashes/“Here’s the thing”; X singles 6–15 words. Stop Slop delta 2026-06-07 catches false agency/narrator-distance/vague/Wh/pull-quote/passive slop. LinkedIn now requires proof density + buyer-readable conversion asset when pipeline-oriented.
+- Before drafting: read content voice/profile/evidence corpus; run `scripts/jt_voice_guard.py`; no preamble/em dashes/“Here’s the thing”; X singles 6–15 words. Stop Slop delta 2026-06-07 catches false agency/narrator-distance/vague/Wh/pull-quote/passive slop. LinkedIn now requires proof density + buyer-readable conversion asset when pipeline-oriented. Current PM proof assets: `memory/content/bank/2026-06-08/pm-front-desk-exception-desk-linkedin.md` and `memory/drafts/pm-front-desk-exception-desk-reply-proof-2026-06-08.md`.
 - Content niche/source-map rules live in `memory/content/current-niche-map.md` and `docs/memory/current-context-details-2026-05-27.md`; new queues must pass `content_distribution_guard.py --require-reference-map`.
 - AI Ops Teardown purpose reset 2026-06-01: teardowns must examine a current company, funding/product/market signal, regulation, or visible buyer problem in a JT-relevant niche, then show the optimal AI workflow JT would build for that company/problem. Strong default spine: current signal → buyer-recognizable bottleneck → concrete messy input scene → system-of-record need → workflow JT would build → cleaner operating outcome. Generic evergreen approval-queue/workflow advice is not enough.
 - AI Ops Teardown weekly bundles must auto-upload to Drive via `scripts/ai_ops_teardown_drive_sync.py --json`; teardown docs go to `Consulting/AI Ops Teardowns/[date]/Teardowns`, content drafts to `Content/AI Ops Teardowns/[date]/Drafts`.
@@ -76,7 +76,7 @@
 - Apply only for exceptional strategic fits (generally 22+/25, $150K+, NYC/remote, low misrepresentation risk). For 18–21/25 roles, usually use the JD as market intel or a consulting lead signal instead of spending time on a resume package.
 - If a company is hiring full-time for AI implementation, do not assume they lack consulting interest; position consulting as interim de-risking, workflow mapping, pilot governance, or acceleration while the FTE is hired/ramped — never as “hire JT instead.”
 - 2026-05-29 xhigh audit: AI enablement roles now map to AI operating-system proof lanes (intake, connectors/MCP, evals, lineage, governance, adoption, rollback, ROI). `~/projects/job-market-agent/data/role-to-build-matrix.md` is canonical before creating role-derived build/demo tasks; Altmark proof still outranks H.I.G./DealDesk speculation.
-- 2026-06-02/03/04/05 job-market pulses: no qualifying US/NYC/remote roles cleared filter. Useful positioning signal: AI adoption operating-system / target-operating-model work before implementation: frontline workflow discovery, intake, use-case triage, governance, HITL boundaries, adoption metrics, ROI reporting, KPIs, process ownership, champions, and business-as-usual integration.
+- 2026-06-02 through 2026-06-08 job-market pulses: no qualifying US/NYC/remote roles cleared filter. Useful positioning signal: AI adoption operating-system / target-operating-model work before implementation: frontline workflow discovery, readiness audits, intake, use-case triage, governance, HITL boundaries, adoption metrics, ROI/KPI dashboards, process ownership, champions, and business-as-usual integration.
 - Avoid pure software engineering, ML research, Apex/SFDX-heavy Salesforce developer, relocation, or sub-$150K roles.
 - Resume/cover letter packages must use Sonnet model via job-application skill; save local markdown + generate docx + upload to Drive.
 
@@ -98,8 +98,8 @@
 - Cron volume is guarded by `scripts/cron_volume_guard.py`: ≤35 scheduled invocations/day average and ≤28 agentTurn/day average; >30/day warns. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM ET.
 - `critical-files-integrity` (`ee357abb`) runs daily 9AM ET, timeout 180s; run script first, inspect/edit only on non-zero exit.
-- Active cron count: 54 enabled / 80 total as of 2026-06-06 after adding daily TikTok app account warm-up reminders at 2:00PM ET (`8033e775`) and 7:45PM ET (`d163df4a`). Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron disabled 2026-05-17 at JT request.
-- Recent cron hardening/details live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. As of 2026-06-06 cron volume guard is ok but near cap: 31.78 scheduled/day, 27.78 agentTurn/day. Do not rerun content/reporting crons solely to clear metadata.
+- Active cron count: 54 enabled / 80 total as of 2026-06-08. Daily TikTok app warm-up reminders remain 2:00PM ET (`8033e775`) and 7:45PM ET (`d163df4a`). Responsibilities: morning brief, job market, niche monitor, crypto, content, App Marketing/ReelFarm, Sports GM, North Star, cost, health, passive-income pipeline. Heartbeat cron disabled 2026-05-17 at JT request.
+- Recent cron hardening/details live in `docs/memory/current-context-details-2026-05-27.md` plus daily notes. As of 2026-06-08 known red rows are `Weekly Systems Review` and `passive-income-scout` at consecutiveErrors=2, both already covered by runtime-drift/passive-income fixes, plus single-error `AI Ops Teardown Weekly Draft` and `vibe-marketing-generate`. Do not rerun content/reporting crons solely to clear metadata.
 - 2026-06-03 Crypto Full Analysis recovery: added deterministic `scripts/generate-full-analysis.py`, validated June 3 artifacts, and patched cron `eve-crypto-morning-008` to require deterministic artifact writing plus `CRYPTO_FULL_ANALYSIS_OK`.
 - 2026-05-12: Mission Control North Star audit runs in Morning Brief + heartbeat via `scripts/mission_control_north_star_audit.py`.
 - Spanish lessons paused 2026-05-26; Daily Lesson and Weekly Evaluation are disabled. `05024e45` is Skills & API Researcher Weekly Synthesis and remains enabled.
@@ -113,7 +113,7 @@
 - Lessons auto-write: capture non-obvious solved problems in the relevant lessons/skill/rules file immediately.
 
 ## Strategic Decisions Log
-- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof. x402 is an operator-builder pillar. Passive-income 2026-06-07 top BUILD: `ChargeTrip Fit` (`memory/passive-income/2026-06-07-strategist.md`, MC `j5724f5hfc07cr9a7skahz1121887dnm`).
+- Current strategy: contained SMB ops bottleneck audits/prototypes; practical AI implementation for ops-heavy SMBs; prioritize B2B consultable products/client proof. App-growth next moves: `ChargeTrip Fit` spec-first MVP, Nash Satoshi conversion patch, Vista measurement/distribution loop.
 
 ## Integrity / Fabrication Corrections
 - Never claim outreach/messages were sent unless tool/script evidence confirms it.
@@ -121,12 +121,11 @@
 - If corrected by JT, immediately update the Mistakes Log/rules before moving on.
 
 ## Setup State
-- 2026-05-31/06-06: Added AI Context OS/plan-review/proof skills, workflow/product agents, and `~/plugins/jt-operating-system` v0.2.0. Details: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
+- 2026-05-31/06-06: Added AI Context OS/plan-review/proof skills, workflow/product agents, and `~/plugins/jt-operating-system` v0.2.0.
 - 2026-05-11: GBrain consulting recall pilot lives at `~/projects/gbrain*`; use only `scripts/gbrain-consulting-search.sh "Entity"` for consulting/prospect entity lookup. No crons/skillpacks/broad ingestion/embeddings without JT approval.
-- Prior setup details are archived in `docs/memory/MEMORY-full.md`; tool commands live in `TOOLS.md`.
 
 ## Automation / Live Opportunities
 - Automation/client/opportunity history archived at `docs/memory/automation-and-live-opportunities-archive-2026-05-10.md`.
 - Current must-remember: Altmark rent delinquency is the top consulting/proof lane. Internal proof/content tasks stay medium until evidence/send paths are ready. Yair may refer ~15 NYC family offices, proof/referral use gated.
-- Guyana wedge: Local Content Operations Sprint for oil/gas-adjacent suppliers. As of 2026-06-03, Dad-forward and warm-intro language should emphasize supplier ops/admin drag across logistics, construction, transportation, warehousing, professional services, ICT, vendor records, bid readiness, and local-content evidence. Artifacts/Drive IDs live in `docs/memory/current-context-details-2026-05-27.md`; hidden/noindex `jtsomwaru.com/guyana` remains stale until rewritten.
+- Guyana wedge: Local Content Operations Sprint for oil/gas-adjacent suppliers. Dad-forward/warm-intro language should emphasize supplier ops/admin drag, vendor records, bid readiness, and local-content evidence. Hidden/noindex `jtsomwaru.com/guyana` remains stale until rewritten.
 - Nightly leverage, Guyana monitor, passive-income pipeline, North Star review, App Marketing scoreboard, ReelFarm Intel, and related automation are active unless cron list says otherwise.

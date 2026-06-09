@@ -67,7 +67,7 @@
 | plan-review-pack | skills/plan-review-pack/SKILL.md | agents/autoresearch/checklists/plan-review-pack.md | pending | — | — | 2026-06-06 |
 | ui-clone | skills/ui-clone/SKILL.md | agents/autoresearch/checklists/ui-clone.md | pending | — | — | 2026-06-07 |
 | workflow-strategist | agents/workflow-strategist/AGENT.md | agents/autoresearch/checklists/workflow-strategist.md | pending | — | — | 2026-06-07 |
-| product-quality-pass | agents/product-quality-pass/AGENT.md | agents/autoresearch/checklists/product-quality-pass.md | pending | — | — | 2026-06-07 |
+| product-quality-pass | agents/product-quality-pass/AGENT.md | agents/autoresearch/checklists/product-quality-pass.md | stable | 1.000 | 2026-06-08 | 2026-06-07 |
 
 ## Status values
 - `pending` — checklist written, not yet run

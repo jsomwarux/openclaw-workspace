@@ -18,3 +18,11 @@ Last reset: 2026-06-01
 2026-06-04 [CONFIRMS] niche=insurance — Insurance underwriting automation demand remains active: nearly 90% expect more automated underwriting tasks and 65.9% plan added AI tools in 2026.
 2026-06-04 [EMERGING] niche=construction — Construction AI procurement/field-tech products continue gaining funding and deployment traction; monitor for direct NYC/midmarket service opportunities.
 2026-06-05 [CONFIRMS] niche=Salesforce Agentforce — Salesforce's Contentful acquisition gives Agentforce a native structured-content layer for dynamic experience assembly, strengthening the need for implementation and content-governance consulting.
+
+2026-06-08 [EMERGING] niche=ai-agents — Enterprise AI-agent coverage is emphasizing agent sprawl, governance, cybersecurity, and cost control rather than net-new deployment urgency.
+2026-06-08 [EMERGING] niche=property-management — Current property-management software results remain mostly market-sizing and uneven-adoption content, useful background but not a new high-confidence demand event.
+2026-06-08 [EMERGING] niche=construction — Construction AI coverage continues to focus on workflow/jobsite integration and adoption friction; no verified new niche-stack competitor signal found this run.
+2026-06-08 [EMERGING] niche=wholesale-distribution — Wholesale automation search still surfaces the already-surfaced Canals funding story plus process modernization commentary, with no material update verified.
+2026-06-08 [EMERGING] niche=insurance — Insurance AI results remain claims/underwriting automation trend coverage, overlapping recent surfaced Roots/underwriting-demand signals without material change.
+2026-06-08 [CONFIRMS] niche=construction — McCarthy + Palantir multi-year AIP partnership validates demand for connected AI operating systems spanning design, operations, and field execution.
+2026-06-08 [CONFIRMS] niche=insurance — Pace $46M Series B validates continued investor and market demand for agentic automation across insurer servicing, claims, renewals, and submissions.

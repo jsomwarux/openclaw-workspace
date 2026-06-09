@@ -3,6 +3,14 @@
 
 ---
 
+## 2026-06-08 — Heartbeat Job Market Pulse
+
+**Read:** Today's job-market brief ran successfully and found no critical alerts and no new 18+/25 actionable role. The strongest signal is Coupa-style agentic target-operating-model language: AI opportunity mapping, readiness audits, autonomous-vs-HITL decisions, COE/governance, and KPI/ROI targets, but the clean role example is UK-only and not a JT application target.
+
+**JT relevance:** This reinforces the current proof-led lane. Position OpenClaw, Mission Control, Altmark/property ops, and PM Front Desk as operating-model proof: workflow opportunity map, readiness audit, approval gates, HITL policy, governance rhythm, and value dashboard.
+
+**Action:** No new Mission Control role or build task. Keep Altmark and PM Front Desk proof above job-market exploration; reuse today's signal only to tighten resume/portfolio wording around governed agent operations and outcome-led AI consulting.
+
 ## 2026-06-07 — Heartbeat Job Market Pulse
 
 **Read:** Today's job-market brief found no critical alerts and no new 18+/25 actionable role. Fresh searches reinforced that the job-board surface is still noisy: plausible AI architect or consultant hits degrade into contract work, pre-sales demos/SOWs, EU/UK freelance training, or hands-on tech lead roles.

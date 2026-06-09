@@ -3,6 +3,15 @@
 
 ---
 
+## Jun 8, 2026 — 2:58PM Heartbeat
+- **Market snapshot:** BTC ~$63.4K (+2.3% vs previous close), ETH ~$1,684 (+3.3%), SOL ~$67.38 (+3.6%). This is a bounce from the June 5-6 washout, not a clean broad risk-on confirmation yet.
+- **Crypto-agent context:** Today’s 6AM run kept the useful signal narrow: AI agents/x402 and Base AI infrastructure are active, but spam/vote traffic is heavy. The model concentrated only where price flow, X quality, volume, and whale evidence aligned.
+- **Allocation read from morning run:** $AEON and $SURPLUS were the strongest ranking outputs; $PRXVT and $SIBYL stayed in the hold bucket. $NOX, $NOOK, and $GITLAWB were flagged for exit because the current signal quality or price action weakened.
+- **Fresh narrative check:** Recent reporting still supports the agent-payments thesis: x402/Base agent payments crossed large transaction milestones, Coinbase/Stripe/Visa/AWS remain attached to the rails, and current research is now stress-testing x402 logic/security flaws. Infrastructure adoption is real, but the risk lens has shifted toward authorization, free-riding, wallet/payment safety, and token value capture.
+- **JT read:** No immediate alert. Treat today as a selective rebound after a hard drawdown; avoid broad AI-token beta unless the token has human-quality coordination, real usage proof, and payment-security boundaries.
+
+---
+
 ## Jun 1, 2026 — 10:20AM Heartbeat
 - **Market regime:** Latest crypto-agent run framed x402/agent commerce as still Phase 2: real usage narrative, not mainstream mania. AI inference markets and Base developer infrastructure have the cleanest flow; vote/link spam remains the main negative filter.
 - **Allocation read:** Model shifted the live allocation toward `$SURPLUS` 35%, `$GITLAWB` 25%, `$ODAI` 25%, and reduced `$PRXVT` to 15%. It exited `$NOX`, `$NOOK`, and `$SIBYL` because fresh X quality was mostly paid-call/vote spam or weak value-capture proof.
