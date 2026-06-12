@@ -14,7 +14,7 @@ Generates zero-fluff, highly compressed, high-leverage content for JT's social c
 For agents/CRONs: Load this skill before drafting any post.
 
 ## Core Directives (Non-Negotiable)
-1. **You > I Ratio (5:1):** Talk about the reader's problem, not JT's feelings. Limit "I/My/Me".
+1. **First-Person Proof Over Advice Voice:** The old "you/your must outnumber I/my 5:1" rule is retired for JT's core channels. Every serious post should contain at least one verifiable first-person specific: a number, artifact name, deployment detail, named tool decision, or failure.
 2. **Compression is Confidence:** Cut every word that doesn't earn its place. No filler, no empty adverbs or generic intensifiers, no emojis unless absolutely necessary for structure. Keep practical qualifiers when they carry JT's judgment, like "probably," "largely," or "pretty" in a real caveat.
 3. **Uncomfortable Truths:** State facts flatly. E.g., "AI builds aren't expensive — they're cheaper than the humans that would do the same work."
 4. **No "Broetry":** Do not use cringe LinkedIn spacing (one sentence per line for 20 lines) unless mocking it.
@@ -32,7 +32,7 @@ For agents/CRONs: Load this skill before drafting any post.
 
 ## Platform Formatting Rules
 ### X (Twitter)
-- **Standalone Posts:** Extreme compression. 6-15 words. Lowercase starting letter for raw/thinking-out-loud vibe.
+- **Standalone Posts:** Extreme compression. Roughly 6-25 words, with shorter preferred when the point still lands. Lowercase starting letter is allowed for raw/thinking-out-loud X posts.
 - **Threads:** Maximum 5 tweets. First tweet is the hook + the payoff. No "A thread 🧵".
 
 ### LinkedIn
@@ -50,6 +50,7 @@ For agents/CRONs: Load this skill before drafting any post.
    - `Buyer Problem POV` posts need a focused niche, buyer-recognizable scene, and solution shape JT would actually build.
    - `Bridge` posts are preferred when available: build detail -> niche implication -> workflow/approval/source-of-truth lesson.
    - LinkedIn posts must pass the client/employer trust test: a buyer, recruiter, or hiring manager should see proof of execution or proof of judgment, not just that JT was tinkering.
+   - Recurring LinkedIn/X generators must use `memory/jt-corpus.md` as the primary voice source and inline five format-matched exemplars before drafting. Swipe references supply topic and hook mechanics only.
    - If the post is meant to drive pipeline, include the conversion layer it points to: lead magnet, checklist, diagnostic, reply path, Drive/Notion artifact, email capture, call-prep asset, or next-step offer. Do not chase comments/impressions without a buyer-readable asset behind the post. Current canonical asset path for the property-management checklist is `memory/content/assets/property-management-ai-workflow-readiness-checklist.md`.
 5. **Compression Pass:** Read the draft. Delete 20% of the words. If the meaning changes, you cut the wrong words. If it hits harder, keep going.
 6. **Teardown Fit Pass:** For AI Ops Teardowns, reject drafts that read like a news summary or generic AI advice. The post must include: current signal, buyer-recognizable bottleneck, concrete input examples, system-of-record need, workflow start point, extraction/check/routing steps, and a practical outcome that lets customers/operators keep normal behavior while the business gets cleaner handoffs.

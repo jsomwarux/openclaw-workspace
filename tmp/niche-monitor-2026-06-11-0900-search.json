@@ -1,0 +1,402 @@
+[
+  {
+    "provider": "brave-direct",
+    "query": "AI agents news today",
+    "freshness": "week",
+    "country": "US",
+    "search_lang": "en",
+    "retrieved_at_date": "2026-06-11",
+    "results": [
+      {
+        "title": "Latest Agentic AI News Today | Trends, Predictions, & Analysis",
+        "url": "https://www.forbes.com/topics/agentic-ai/",
+        "description": "The platform wars heat up as Apple, ... study reveals a productivity gap: <strong>AI coding agents write 180% more code, but the amount of code actually shipped to production has only increased by 30%</strong>....",
+        "age": "2 days ago",
+        "page_age": "2026-06-09T11:38:18",
+        "source": "Forbes"
+      },
+      {
+        "title": "Daily AI Agent News - Last 7 Days",
+        "url": "https://aiagentstore.ai/ai-agent-news/this-week",
+        "description": "What changed: <strong>Volante announced Vol360i</strong>, an agentic AI upgrade that is now integrated into its cloud payments platform and PaaS to run autonomous and semi-autonomous workflows for exception handling, routing, SLA monitoring, and self-healing in production payment flows.",
+        "age": "2 days ago",
+        "page_age": "2026-06-09T11:34:17",
+        "source": "AI Agent Store"
+      },
+      {
+        "title": "Reuters AI News | Latest Headlines and Developments | Reuters",
+        "url": "https://www.reuters.com/technology/artificial-intelligence/",
+        "description": "Explore the latest artificial intelligence news with Reuters - from AI breakthroughs and technology trends to regulation, ethics, business and global impact.",
+        "age": "8 hours ago",
+        "page_age": "2026-06-11T05:05:02",
+        "source": "Reuters"
+      },
+      {
+        "title": "AI News | Latest News | Insights Powering AI-Driven Business Growth",
+        "url": "https://www.artificialintelligence-news.com/",
+        "description": "AI News delivers the latest updates in artificial intelligence, machine learning, deep learning, enterprise AI, and emerging tech worldwide.",
+        "age": "9 hours ago",
+        "page_age": "2026-06-11T04:20:04",
+        "source": "Artificial Intelligence News"
+      },
+      {
+        "title": "OpenAI News | OpenAI",
+        "url": "https://openai.com/news/",
+        "description": "Stay up to speed on the rapid advancement of AI technology and the benefits it offers to humanity.",
+        "age": "3 days ago",
+        "page_age": "2026-06-08T22:40:02",
+        "source": "OpenAI"
+      }
+    ]
+  },
+  {
+    "provider": "brave-direct",
+    "query": "Salesforce Agentforce news today",
+    "freshness": "week",
+    "country": "US",
+    "search_lang": "en",
+    "retrieved_at_date": "2026-06-11",
+    "results": [
+      {
+        "title": "Salesforce Puts an AI Marketing Team in Every Marketer’s Hands - Salesforce",
+        "url": "https://www.salesforce.com/news/stories/agentic-marketing-teams-announcement/",
+        "description": "Companies are already beginning to see the impact. <strong>Sporting goods brand Rawlings reports 75% faster campaign creation using Agentforce Marketing</strong>, allowing teams to personalize engagement and act on customer behavior in real time.",
+        "age": "19 hours ago",
+        "page_age": "2026-06-10T18:27:06",
+        "source": "Salesforce"
+      },
+      {
+        "title": "Salesforce Cuts Jobs Again As AI Threat Lingers - Business Insider",
+        "url": "https://www.businessinsider.com/salesforce-cuts-jobs-agentforce-2026-6",
+        "description": "<strong>Salesforce laid off more employees in a new round of cuts</strong>, according to people familiar with the matter and a regulatory notice in California. The cuts affected employees working on the company&#x27;s Agentforce AI product, its Mulesoft IT integration ...",
+        "age": "1 day ago",
+        "page_age": "2026-06-10T08:55:04",
+        "source": "Business Insider"
+      },
+      {
+        "title": "Salesforce layoff: Agentforce, Mulesoft staff offered 30 weeks of severance pay, more than Oracle & Amazon | Company Business News",
+        "url": "https://www.livemint.com/companies/news/salesforce-layoff-agentforce-mulesoft-staff-offered-30-weeks-of-severance-pay-more-than-oracle-and-amazon-11781047651424.html",
+        "description": "<strong>Salesforce has cut jobs across its Agentforce, Mulesoft and Marketing Cloud teams in a new round of layoffs</strong>. Eligible US employees stand to receive up to 30 weeks of severance pay, internal documents show.",
+        "age": "1 day ago",
+        "page_age": "2026-06-10T08:55:04",
+        "source": "Live Mint"
+      },
+      {
+        "title": "Salesforce Blog — News and Tips About Agentic AI, Data and CRM",
+        "url": "https://www.salesforce.com/blog/",
+        "description": "<strong>Small businesses can put AI to work directly inside Salesforce Suites, now powered by Agentforce</strong>, turning customer data and context into action across every team.",
+        "age": "2 days ago",
+        "page_age": "2026-06-09T20:16:17",
+        "source": "Salesforce"
+      },
+      {
+        "title": "Salesforce Signs Definitive Agreement to Acquire m3ter - Salesforce",
+        "url": "https://www.salesforce.com/news/stories/salesforce-signs-definitive-agreement-to-acquire-m3ter/",
+        "description": "Salesforce, the #1 AI CRM, today announced <strong>it has signed a definitive agreement to acquire m3ter</strong>, a leading metering and rating platform purpose-built for consumption-based monetization.",
+        "age": "3 days ago",
+        "page_age": "2026-06-08T20:00:00",
+        "source": "Salesforce"
+      }
+    ]
+  },
+  {
+    "provider": "brave-direct",
+    "query": "AI automation tools released today",
+    "freshness": "week",
+    "country": "US",
+    "search_lang": "en",
+    "retrieved_at_date": "2026-06-11",
+    "results": [
+      {
+        "title": "The Best AI Automation Tools for Enterprise Efficiency",
+        "url": "https://www.moveworks.com/us/en/resources/blog/best-ai-automation-tools-for-efficiency",
+        "description": "Explore the best AI automation tools for enterprises, compare use cases, and learn how agentic AI reduces friction, resolves work, and scales support.",
+        "age": "17 hours ago",
+        "page_age": "2026-06-10T20:00:04",
+        "source": "Moveworks"
+      },
+      {
+        "title": "The Best AI Workflow Automation Tools | Product Hunt",
+        "url": "https://www.producthunt.com/categories/ai-workflow-automation",
+        "description": "We just wrapped the Orbit Awards for AI Dictation and now we re moving to the next category: AI Automation. This one is for the tools that actually do work for you clearing chores, running workflows in the background, or quietly taking over a chunk of your week without turning into another dashboard you have to babysit. ... last week, I shared an update on everything Inr has shipped over the last 20 months in automation, CRM, and integrations. today I am doing a final update on the bigger shift coming this Saturday 25th: Inr is now an AI-first platform, and here&#x27;s what that actually means.",
+        "age": "1 day ago",
+        "page_age": "2026-06-10T16:25:02",
+        "source": "Product Hunt"
+      },
+      {
+        "title": "10+ Free AI tools for 2026 | Google Cloud",
+        "url": "https://cloud.google.com/use-cases/free-ai-tools",
+        "description": "By using a single environment, your teams can more easily maintain better version control and automate their workflows more effectively. This integration can help you spend less time on infrastructure management and more time on refining your models to solve complex business problems. Visit the AI product directory for a full list of AI products, including the monthly limits of Google Cloud free AI tools.",
+        "age": "3 days ago",
+        "page_age": "2026-06-08T12:21:41",
+        "source": "Google Cloud"
+      },
+      {
+        "title": "10 AI Automation Platform Options for Workflows (2026)",
+        "url": "https://www.domo.com/learn/article/ai-automation-platforms",
+        "description": "Need an AI automation platform? Compare 10 tools, pricing, and low-code features—<strong>Domo, ChatGPT, Moveworks, Claude, Writer</strong>, and more for 2026 team workflows.",
+        "age": "4 days ago",
+        "page_age": "2026-06-08T00:34:08",
+        "source": "Domo"
+      },
+      {
+        "title": "The 7 best automation tools 2026: Tested and rated",
+        "url": "https://www.bakedwith.com/en/blog/the-7-best-automation-tools",
+        "description": "Automation software has a wide range of applications: For example, it can be used as a chatbot for lead qualification, a robot for invoice processing or a workflow builder that assigns tasks and notifies your team. ... Depending on the tool, it either runs invisibly in the background (like Zapier or UiPath) or works directly on your side like an AI co-pilot.",
+        "age": "1 day ago",
+        "page_age": "2026-06-10T09:57:16",
+        "source": "Bakedwith"
+      }
+    ]
+  },
+  {
+    "provider": "brave-direct",
+    "query": "property management software news",
+    "freshness": "week",
+    "country": "US",
+    "search_lang": "en",
+    "retrieved_at_date": "2026-06-11",
+    "results": [
+      {
+        "title": "LCS and Rent Manager Honored in 2026 American Business Awards® and Hermes Creative Awards",
+        "url": "https://www.prnewswire.com/news-releases/lcs-and-rent-manager-honored-in-2026-american-business-awards-and-hermes-creative-awards-302796237.html",
+        "description": "CINCINNATI, June 10, 2026 /PRNewswire/ ... essential business technologies, was <strong>recognized with seven awards across the 24th Annual American Business Awards and the 2026 Hermes Creative Awards</strong>....",
+        "age": "20 hours ago",
+        "page_age": "2026-06-10T17:00:11",
+        "source": "PR Newswire"
+      },
+      {
+        "title": "10 Best Commercial Property Management Software for 2026",
+        "url": "https://www.doorloop.com/blog/best-commercial-property-management-software",
+        "description": "Discover the best commercial property management software in 2026 to enhance efficiency and streamline operations. Read the article for top recommendations!",
+        "age": "1 week ago",
+        "page_age": "2026-06-05T00:00:00",
+        "source": "Doorloop"
+      },
+      {
+        "title": "Inman | Inman Real Estate News",
+        "url": "https://www.inman.com/",
+        "description": "<strong>Inman News</strong> is the leading real estate news source for real estate agents, Realtors, brokers, real estate executives and real estate technology leaders who need the latest real estate news, insights and analysis to grow their business and stay ...",
+        "age": "1 day ago",
+        "page_age": "2026-06-10T08:49:45",
+        "source": "Inman"
+      },
+      {
+        "title": "How AI Property Management Software Reshapes Real Estate? - TechRev-Blog",
+        "url": "https://www.techrev.us/blog/how-ai-property-management-software-reshapes-real-estate/",
+        "description": "The real estate AI market is surging. Discover how AI property management software, and real estate AI agents drive ROI and cost reduction.",
+        "age": "19 hours ago",
+        "page_age": "2026-06-10T18:09:27",
+        "source": "TechRev-Blog"
+      },
+      {
+        "title": "11 Best Property Management Software | 2026 Reviews",
+        "url": "https://softwareconnect.com/roundups/best-property-management-software/",
+        "description": "... Want more options? Check out our list of the best homeowner association software. <strong>Yardi Breeze</strong> is one of the easiest platforms to operate, with a user-centric design and intuitive navigation.",
+        "age": "1 week ago",
+        "page_age": "2026-06-04T11:52:14",
+        "source": "Software Connect"
+      }
+    ]
+  },
+  {
+    "provider": "brave-direct",
+    "query": "construction technology AI news",
+    "freshness": "week",
+    "country": "US",
+    "search_lang": "en",
+    "retrieved_at_date": "2026-06-11",
+    "results": [
+      {
+        "title": "Hands Off, Hard Hats On: Autonomous Construction Technology Takes Over - Construction Executive",
+        "url": "https://constructionexec.com/article/hands-off-hard-hats-on-autonomous-construction-technology-takes-over/",
+        "description": "An influx of funding into autonomous heavy equipment is boosting progress: <strong>Venture capital investment in construction tech hit a record high of $2.6 billion in 2025</strong>, a 63% year-over-year increase as more top firms direct talent toward embodied ...",
+        "age": "6 days ago",
+        "page_age": "2026-06-05T18:12:51",
+        "source": "Constructionexec"
+      },
+      {
+        "title": "Construction Quality Startup Structured AI Raises $4.2M Seed Round | Engineering News-Record",
+        "url": "https://www.enr.com/articles/63139-construction-quality-startup-structured-ai-raises-42m-seed-round",
+        "description": "<strong>Structured AI, a platform that has quality assurance and quality control artificial intelligence agents developed for construction, has raised a $4.2 million seed round, bringing its total funding to $5 million</strong>.",
+        "age": "16 hours ago",
+        "page_age": "2026-06-10T20:52:01",
+        "source": "Engineering News-Record"
+      },
+      {
+        "title": "McCarthy, Palantir partner on AI | Construction Dive",
+        "url": "https://www.constructiondive.com/news/mccarthy-palantir-artificial-intelligence-ai-partnership/822517/",
+        "description": "The contractor will use Palantir’s Artificial Intelligence Platform to develop a connected AI operating system, per Palantir, which will help McCarthy employees on construction steps that range from design to building in the field.",
+        "age": "16 hours ago",
+        "page_age": "2026-06-10T21:10:04",
+        "source": "Construction Dive"
+      },
+      {
+        "title": "Best AI Construction Estimating Software in 2026 | Dan Cumberland Labs",
+        "url": "https://dancumberlandlabs.com/blog/ai-construction-estimating-software/",
+        "description": "<strong>Togal.AI claims 98% accuracy4 on floor plan takeoffs</strong>, and independent testing backs the performance— Robotics &amp; Automation News found it completed a full architectural takeoff in 12 minutes5.",
+        "age": "5 days ago",
+        "page_age": "2026-06-06T22:08:38",
+        "source": "Dan Cumberland Labs"
+      },
+      {
+        "title": "AI-Powered Construction Risk Analysis Platform Enlaye Raises $5 Million | Engineering News-Record",
+        "url": "https://www.enr.com/articles/63134-ai-powered-construction-risk-analysis-platform-enlaye-raises-5-million",
+        "description": "<strong>Enlaye, an artificial intelligence-powered construction risk management platform, has raised $5 million in seed funding to accelerate development of its predictive project risk platform</strong>, expand its AI and machine learning capabilities and support ...",
+        "age": "20 hours ago",
+        "page_age": "2026-06-10T17:21:20",
+        "source": "Engineering News-Record"
+      }
+    ]
+  },
+  {
+    "provider": "brave-direct",
+    "query": "wholesale distribution automation news",
+    "freshness": "week",
+    "country": "US",
+    "search_lang": "en",
+    "retrieved_at_date": "2026-06-11",
+    "results": [
+      {
+        "title": "MDM Podcast: Inside Supply Technologies' $50M Investment in the Future - Modern Distribution Management",
+        "url": "https://www.mdm.com/article/top-distributor-sectors/fasteners/mdm-podcast-inside-supply-technologies-50m-investment-in-the-future/",
+        "description": "Engineered assembly components distributor Supply Technologies is making the largest infrastructure investment in its history, betting that the future of industrial supply chain management will require greater automation, enhanced visibility and a fundamentally different distribution network.",
+        "age": "6 days ago",
+        "page_age": "2026-06-05T19:41:43",
+        "source": "Modern Distribution Management"
+      },
+      {
+        "title": "How to Scale Apparel Wholesale Operations in 2026",
+        "url": "https://www.repspark.com/blog/how-to-scale-apparel-wholesale-operations-in-2026",
+        "description": "Expanding your B2B footprint ... adopting automation. Modern apparel brand operations demand a centralized infrastructure where raw inventory data translates instantly into clear, actionable commercial opportunities. By utilizing a dedicated digital ecosystem, enterprise brands can eliminate operational friction, build resilient distribution channels, and scale wholesale orders seamlessly ...",
+        "age": "6 days ago",
+        "page_age": "2026-06-05T21:57:24",
+        "source": "Repspark"
+      },
+      {
+        "title": "Cosmos Health CEO Issues Letter to Shareholders: Building an Innovative AI-Driven Global Healthcare Platform — Record Growth with U.S. Expansion Underway",
+        "url": "https://www.globenewswire.com/news-release/2026/06/10/3309738/0/en/Cosmos-Health-CEO-Issues-Letter-to-Shareholders-Building-an-Innovative-AI-Driven-Global-Healthcare-Platform-Record-Growth-with-U-S-Expansion-Underway.html",
+        "description": "Record operational momentum: CosmoFarm wholesale distribution and GMP-certified Cana contract manufacturing both delivering record volumes.",
+        "age": "1 day ago",
+        "page_age": "2026-06-10T13:00:00",
+        "source": "GlobeNewswire"
+      },
+      {
+        "title": "5 Best Towel Manufacturers for Wholesale Purchasing in 2026",
+        "url": "https://roboticsandautomationnews.com/2026/06/08/5-best-towel-manufacturers-for-wholesale-purchasing/102353/",
+        "description": "Cathgro Industries Inc has been running B2B wholesale distribution for over 45 years, focusing entirely on bedding and bath textiles for commercial buyers.",
+        "age": "3 days ago",
+        "page_age": "2026-06-08T18:39:25",
+        "source": "Robotics & Automation News"
+      },
+      {
+        "title": "AR Automation for Wholesale and Distribution | Paystorm",
+        "url": "https://paystorm.ai/industries/wholesale-distribution",
+        "description": "<strong>Paystorm turns wholesale aging reports, customer emails, promises, disputes, and follow-up history into a daily AR action queue for distribution finance teams</strong>.",
+        "age": "4 days ago",
+        "page_age": "2026-06-07T16:36:38",
+        "source": "Paystorm"
+      }
+    ]
+  },
+  {
+    "provider": "brave-direct",
+    "query": "insurance automation AI news",
+    "freshness": "week",
+    "country": "US",
+    "search_lang": "en",
+    "retrieved_at_date": "2026-06-11",
+    "results": [
+      {
+        "title": "Roots' Agentic AI Platform for Insurance",
+        "url": "https://www.roots.ai/platform",
+        "description": "Stay updated with the latest trends and insights in Agentic AI on the Roots Automation blog. Discover expert articles, industry news, and practical tips to help you navigate the future of automation. Stay current on the latest best practices and trends in the insurance AI space.",
+        "age": "4 days ago",
+        "page_age": "2026-06-07T07:53:23",
+        "source": "Roots"
+      },
+      {
+        "title": "The Race to Same-Day Claims: AI Promises a Revolution in Insurance - BriefGlance.com",
+        "url": "https://briefglance.com/articles/the-race-to-same-day-claims-ai-promises-a-revolution-in-insurance",
+        "description": "On June 11, Vital Soupel, a Senior Insurance IT and AI Consultant at ScienceSoft, will take the stage to deliver a presentation titled “How to Reduce the Claims Lifecycle From Weeks to Same-Day With AI.” The ambitious title reflects a growing industry sentiment that the current claims model is no longer sustainable in a digital-first world. The presentation promises to detail how a centralized AI “workbench” can not only automate individual tasks but, more critically, orchestrate the entire claims journey.",
+        "age": "5 days ago",
+        "page_age": "2026-06-06T15:03:54",
+        "source": "BriefGlance"
+      },
+      {
+        "title": "Automated Insurance Claims: How AI Is Transforming Claims Processing",
+        "url": "https://www.druidai.com/blog/automated-insurance-claims",
+        "description": "Why <strong>70% of customers will start claims via AI by 2028</strong>. Discover how automated insurance claims and multiagent systems redefine the claims lifecycle.",
+        "age": "6 days ago",
+        "page_age": "2026-06-05T16:51:38",
+        "source": "DRUID AI"
+      },
+      {
+        "title": "Artificial Intelligence news, trends and insights - Insurance Journal",
+        "url": "https://www.insurancejournal.com/ai/",
+        "description": "<strong>Feb 18 2026</strong> // ALIS DX provides wholesale, underwriting and delegated authority teams with AI-driven intake and workflow automation Dyad, a leading provider of insurance technology solutions for MGAs, wholesalers, and program...",
+        "age": "1 week ago",
+        "page_age": "2026-06-05T02:32:30",
+        "source": "Insurance Journal"
+      },
+      {
+        "title": "Agentic AI in underwriting: The future of insurance decision making at scale",
+        "url": "https://www.capgemini.com/insights/expert-perspectives/agentic-ai-in-underwriting-the-future-of-insurance-decision-making-at-scale/",
+        "description": "<strong>Capgemini is helping insurers build the foundation for agentic underwriting</strong>. We start by consolidating underwriting processes onto a unified workbench and codifying appetite and referral logic, creating the structure AI agents need to operate ...",
+        "age": "2 days ago",
+        "page_age": "2026-06-09T16:39:44",
+        "source": "Capgemini"
+      }
+    ]
+  },
+  {
+    "provider": "brave-direct",
+    "query": "RAG knowledge assistant enterprise 2026",
+    "freshness": "week",
+    "country": "US",
+    "search_lang": "en",
+    "retrieved_at_date": "2026-06-11",
+    "results": [
+      {
+        "title": "Foundation Models for RAG - Amazon Bedrock Knowledge Bases - AWS",
+        "url": "https://aws.amazon.com/bedrock/knowledge-bases/",
+        "description": "With Amazon Bedrock Knowledge Bases, ... organizations use Retrieval Augmented Generation (RAG), <strong>a technique that fetches data from company data sources and enriches the prompt to provide more relevant and accurate responses</strong>....",
+        "age": "3 days ago",
+        "page_age": "2026-06-08T17:57:27",
+        "source": "Amazon Web Services"
+      },
+      {
+        "title": "Unlocking dependable responses with Gemini Enterprise Agent Platform’s Agentic RAG",
+        "url": "https://research.google/blog/unlocking-dependable-responses-with-gemini-enterprise-agent-platforms-agentic-rag/",
+        "description": "<strong>By combining advanced query planning, routing, and sufficient context, our agentic RAG system ensures that AI-generated responses are auditable, traceable, and grounded</strong>. We look forward to seeing how the machine learning community leverages ...",
+        "age": "5 days ago",
+        "page_age": "2026-06-06T15:50:04",
+        "source": "Google Research"
+      },
+      {
+        "title": "GitHub - infiniflow/ragflow: RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a superior context layer for LLMs · GitHub",
+        "url": "https://github.com/infiniflow/ragflow",
+        "description": "2026-03-24 <strong>RAGFlow Skill on OpenClaw — Provides an official skill for accessing RAGFlow datasets via OpenClaw</strong>. ... ⭐️ Star our repository to stay up-to-date with exciting new features and improvements!",
+        "age": "1 week ago",
+        "page_age": "2026-06-05T12:40:02",
+        "source": "GitHub"
+      },
+      {
+        "title": "What is RAG? - Retrieval-Augmented Generation AI Explained - AWS",
+        "url": "https://aws.amazon.com/what-is/retrieval-augmented-generation/",
+        "description": "With knowledge bases for Amazon Bedrock, you can connect FMs to your data sources for RAG in just a few clicks. Vector conversions, retrievals, and improved output generation are all handled automatically. For organizations managing their own RAG, Amazon Kendra is a highly-accurate enterprise search service powered by machine learning.",
+        "age": "3 days ago",
+        "page_age": "2026-06-08T18:03:21",
+        "source": "AWS"
+      },
+      {
+        "title": "Best Generative AI Development Companies for RAG Solutions in 2026 | The AI Journal",
+        "url": "https://aijourn.com/best-generative-ai-development-companies-for-rag-solutions-in-2026/",
+        "description": "<strong>Cleveroad specializes in developing generative AI and RAG (retrieval augmented generation) solutions</strong>. Our expertise lies in creating enterprise-level knowledge assistants by integrating LLMs with special proprietary datasets in order to provide ...",
+        "age": "1 day ago",
+        "page_age": "2026-06-10T13:05:37",
+        "source": "The AI Journal"
+      }
+    ]
+  }
+]

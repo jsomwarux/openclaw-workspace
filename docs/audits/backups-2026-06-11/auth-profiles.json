@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "profiles": {
+    "anthropic:default": {
+      "type": "token",
+      "provider": "anthropic",
+      "token": "[REDACTED-token]"
+    },
+    "groq:manual": {
+      "type": "token",
+      "provider": "groq",
+      "token": "[REDACTED-token]"
+    },
+    "openrouter:default": {
+      "type": "token",
+      "provider": "openrouter",
+      "token": "[REDACTED-token]"
+    },
+    "groq:default": {
+      "type": "token",
+      "provider": "groq",
+      "token": "[REDACTED-token]"
+    },
+    "moonshot:default": {
+      "type": "api_key",
+      "provider": "moonshot",
+      "key": "[REDACTED-key]"
+    },
+    "openai-codex:jsomwarux@yahoo.com": {
+      "type": "oauth",
+      "provider": "openai-codex",
+      "email": "jsomwarux@yahoo.com",
+      "access": "[REDACTED-access]",
+      "refresh": "[REDACTED-refresh]",
+      "accountId": "2f844c2d-e56d-4447-ad1d-3473711f6a7b",
+      "chatgptPlanType": "prolite",
+      "expires": 1781471719048
+    }
+  }
+}

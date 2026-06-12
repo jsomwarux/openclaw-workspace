@@ -769,5 +769,28 @@
     "crons": [],
     "currentTask": "Ready for app/site/dashboard pre-ship reviews and post-build quality passes.",
     "created": "2026-06-02"
+  },
+  {
+    "id": "night-autonomy-agent",
+    "name": "Night Autonomy Agent",
+    "emoji": "🌙",
+    "role": "Nightly Autonomous Artifact Builder",
+    "domain": "Completes one full artifact per night inside sanctioned autonomy lanes: content ready state, prospect outreach packet, or ops self-healing, then verifies and logs the result.",
+    "workspaceRel": "cron:f146d8b8-94e0-49ff-8e4a-5050a284e894",
+    "github": null,
+    "skills": [
+      "content-generation",
+      "jt-consulting-pipeline",
+      "verification-before-completion"
+    ],
+    "crons": [
+      {
+        "id": "f146d8b8-94e0-49ff-8e4a-5050a284e894",
+        "name": "Night Autonomy Agent",
+        "schedule": "Daily 11:00 PM ET"
+      }
+    ],
+    "currentTask": "Active nightly merged strategic-worker plus verification/blocker-removal loop; old 9:45PM and 3:20AM night jobs are disabled, not deleted.",
+    "created": "2026-06-11"
   }
 ]

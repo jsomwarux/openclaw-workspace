@@ -1,5 +1,5 @@
-**Last updated:** 2026-06-08 02:52 PM EDT
+**Last updated:** 2026-06-11 09:01 AM EST
 
-🟠 **McCarthy + Palantir construction AI partnership** — McCarthy Building Companies signed a multi-year, multi-million-dollar Palantir AIP partnership to create a connected AI operating system for construction workflows from early design through field execution. (https://www.businesswire.com/news/home/20260604988849/en/McCarthy-and-Palantir-Announce-Strategic-Partnership-to-Bring-AI-to-the-Construction-Field-and-Beyond)
-
-🟠 **Pace raises $46M for insurance AI operations** — Pace raised a $46M Series B to expand agentic automation for insurer workflows including policy servicing, claims, renewals, and submissions. (https://fintech.global/2026/06/01/pace-lands-46m-funding-round-to-automate-insurance-workflows/)
+🟠 **Structured AI raises $4.2M for construction QA/QC agents** — ENR reported on June 10 that Structured AI raised a $4.2M seed round for construction QA/QC AI agents, with Syska Hennessy testing the platform in Revit/document workflows. (https://www.enr.com/articles/63139-construction-quality-startup-structured-ai-raises-42m-seed-round)
+🟠 **Enlaye raises $5M for construction risk AI** — ENR reported on June 10 that Enlaye raised $5M to expand an AI construction risk platform that connects to project data sources like SharePoint and Autodesk Forma/Construction Cloud. (https://www.enr.com/articles/63134-ai-powered-construction-risk-analysis-platform-enlaye-raises-5-million)
+🟠 **Supply Technologies puts $50M into automated distribution infrastructure** — MDM reported Supply Technologies is making a $50M infrastructure investment including a 375,000-square-foot distribution center and modernization across a 70+ warehouse network, citing automation and visibility as core drivers. (https://www.mdm.com/article/top-distributor-sectors/fasteners/mdm-podcast-inside-supply-technologies-50m-investment-in-the-future/)

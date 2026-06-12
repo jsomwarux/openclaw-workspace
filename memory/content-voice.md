@@ -211,14 +211,14 @@ Better shape:
 
 ---
 
-### 2. You > I (5:1 ratio — default, not for proof posts)
-Every post should create a realization in the reader's mind, not report on JT's life.
+### 2. First-Person Proof > Generic Advice
+The old "you/your must outnumber I/my 5:1" rule is retired for JT's core channels. It pushed too many drafts into generic advice voice.
 
 ❌ "I built an AI workflow for a construction client that saves 3 hours a day."
 ✅ "Your ops team is spending 3 hours a day on a problem a workflow could solve in 3 seconds."
 
-The "I" only appears as evidence to back up a "you" claim. Never as the subject.
-*Exception: case studies, client proof, quote tweets on client results, launches, and build-in-public posts. When credibility is the point, lead with ownership: "Built this workflow for [client/person/company]." Then prove it with architecture, metric, and vertical thesis.*
+The better rule: every serious post needs at least one verifiable specific. Use first person when it proves execution: a number, artifact, deployment environment, named tool decision, failure, client/operator scene, or before/after result.
+For case studies, client proof, launches, and build-in-public posts, lead with ownership when credibility is the point. Then prove it with architecture, metric, and vertical thesis.
 
 ---
 
@@ -437,7 +437,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] Does the draft breathe: short opening, clean paragraph breaks, one idea per paragraph, and a final line that lands without engagement bait?
 - [ ] Does this sound like JT, not the source account or a generic creator?
 - [ ] Does it start with the point, not the setup?
-- [ ] Is the "I" to "you" ratio ≤ 1:5? Exception: client proof, case studies, quote tweets on client results, launches, and build-in-public posts should lead with verified ownership when credibility is the point.
+- [ ] Does it include at least one verifiable first-person specific when credibility is the point: a number, artifact, deployment environment, named tool decision, failure, client/operator scene, or before/after result?
 - [ ] Does it use any forbidden words?
 - [ ] Is there any preamble that can be cut?
 - [ ] Does it make a claim the reader has to think about?

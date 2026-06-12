@@ -28,6 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT_DIR = ROOT / "memory" / "content"
 DEFAULT_POSTED_LOG = CONTENT_DIR / "posted-log.jsonl"
 DEFAULT_PENDING = CONTENT_DIR / "pending-posted-reply.json"
+DEFAULT_EDIT_DELTAS = CONTENT_DIR / "edit-deltas.jsonl"
 NOTION_DB_ID = "32516aff-9305-81a7-8659-eac869c71ba8"
 URL_RE = re.compile(r"https?://\S+", re.I)
 
@@ -113,6 +114,12 @@ def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text("\n".join(serializable) + "\n", encoding="utf-8")
     tmp.replace(path)
+
+
+def append_jsonl(path: Path, row: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(row, ensure_ascii=False, separators=(",", ":")) + "\n")
 
 
 def load_pending(path: Path) -> dict[str, Any]:
@@ -252,9 +259,26 @@ def summarize_row(row: dict[str, Any]) -> str:
     return f"{row.get('date')} {display_platform(str(row.get('platform', '')))} {row.get('day', '')}: {label}".strip()
 
 
+def excerpt(value: Any, limit: int = 500) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    return text[:limit]
+
+
+def summarize_delta(draft_text: str, final_text: str | None) -> str:
+    final = (final_text or "").strip()
+    if not final:
+        return "none"
+    draft_words = draft_text.split()
+    final_words = final.split()
+    if final == draft_text.strip():
+        return "none"
+    return f"changed: draft_words={len(draft_words)}, final_words={len(final_words)}"
+
+
 def handle_reply(raw: str, *, posted_log: Path = DEFAULT_POSTED_LOG, pending_path: Path = DEFAULT_PENDING,
                  posted_date: str | None = None, dry_run: bool = False, lookback_hours: int = 48,
-                 update_notion: bool = True) -> dict[str, Any]:
+                 update_notion: bool = True, edit_deltas: Path = DEFAULT_EDIT_DELTAS,
+                 final_text: str | None = None) -> dict[str, Any]:
     parsed = parse_reply(raw)
     target = parse_iso_date(posted_date) or date.today()
     if not target:
@@ -306,6 +330,18 @@ def handle_reply(raw: str, *, posted_log: Path = DEFAULT_POSTED_LOG, pending_pat
     if not dry_run:
         if changed:
             write_jsonl(posted_log, rows)
+            for row in changed:
+                draft = row.get("text") or row.get("summary") or row.get("topic") or summarize_row(row)
+                append_jsonl(edit_deltas, {
+                    "date": target.isoformat(),
+                    "platform": canonical_platform(row.get("platform")),
+                    "draft_excerpt": excerpt(draft),
+                    "final_excerpt": excerpt(final_text) if final_text else "",
+                    "delta_summary": summarize_delta(str(draft), final_text),
+                    "posted_log_line": row.get("__line_no"),
+                    "source_weekly": row.get("source_weekly", ""),
+                    "logged_at": now,
+                })
         if pending:
             pending = dict(pending)
             pending.update({
@@ -333,6 +369,7 @@ def handle_reply(raw: str, *, posted_log: Path = DEFAULT_POSTED_LOG, pending_pat
         "notion": notion_results,
         "pending_path": str(pending_path),
         "posted_log": str(posted_log),
+        "edit_deltas": str(edit_deltas),
         "confirmation": confirmation,
     }
 
@@ -342,6 +379,8 @@ def main() -> None:
     parser.add_argument("--reply", required=True, help="Raw inbound reply text from JT, e.g. 'posted Wednesday LinkedIn'")
     parser.add_argument("--date", help="Posted date YYYY-MM-DD; defaults to today")
     parser.add_argument("--posted-log", default=str(DEFAULT_POSTED_LOG), help="Path to posted-log.jsonl")
+    parser.add_argument("--edit-deltas", default=str(DEFAULT_EDIT_DELTAS), help="Path to edit-deltas.jsonl")
+    parser.add_argument("--final-text", help="JT's final posted text when he changed the draft")
     parser.add_argument("--pending", default=str(DEFAULT_PENDING), help="Path to pending content reminder state")
     parser.add_argument("--lookback-hours", type=int, default=48, help="Fallback match window when no pending state exists")
     parser.add_argument("--dry-run", action="store_true", help="Validate and show target rows without writing")
@@ -357,6 +396,8 @@ def main() -> None:
         dry_run=args.dry_run,
         lookback_hours=args.lookback_hours,
         update_notion=not args.skip_notion,
+        edit_deltas=Path(args.edit_deltas).expanduser(),
+        final_text=args.final_text,
     )
     if args.json:
         print(json.dumps(result, indent=2, sort_keys=True))

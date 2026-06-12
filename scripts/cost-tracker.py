@@ -147,6 +147,7 @@ PRICING = {
     "openrouter/deepseek/deepseek-r1":              {"input": 0.55,  "output": 2.19,  "cache_read": 0.0, "cache_write": 0.0},
     "openrouter/mistralai/mistral-large":           {"input": 2.00,  "output": 6.00,  "cache_read": 0.0, "cache_write": 0.0},
     "openrouter/mistralai/mistral-small":           {"input": 0.10,  "output": 0.30,  "cache_read": 0.0, "cache_write": 0.0},
+    "openrouter/anthropic/claude-sonnet-4-6":       {"input": 3.00,  "output": 15.00, "cache_read": 0.30, "cache_write": 3.75},
 }
 DEFAULT_PRICING = {"input": 3.00, "output": 15.00, "cache_read": 0.30, "cache_write": 3.75}  # fallback for unknown models
 
@@ -178,6 +179,53 @@ def ts_to_date(ts_ms: int) -> str:
 
 def today_est() -> str:
     return datetime.now(tz=TZ_EST).strftime("%Y-%m-%d")
+
+
+def content_sonnet_month_usage() -> dict:
+    """Estimate this month's OpenRouter Sonnet spend for the two Phase 4 content jobs."""
+    job_ids = {
+        "content-generate-linkedin": "fe984519-ec58-4c6e-a096-9ac425f735a3",
+        "content-generate-x": "cb8f29dd-0db1-4abd-b87e-3e7168ca4a97",
+    }
+    model = "openrouter/anthropic/claude-sonnet-4-6"
+    now = datetime.now(tz=TZ_EST)
+    month_prefix = f"{now.year}-{now.month:02d}"
+    total = 0.0
+    runs = 0
+    by_job = {}
+    for name, job_id in job_ids.items():
+        path = OPENCLAW_DIR / "cron/runs" / f"{job_id}.jsonl"
+        job_total = 0.0
+        job_runs = 0
+        if path.exists():
+            for line in path.read_text(errors="ignore").splitlines():
+                if not line.strip():
+                    continue
+                try:
+                    event = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if event.get("action") != "finished" or event.get("status") != "ok":
+                    continue
+                if event.get("model") != model:
+                    continue
+                ts_ms = event.get("ts") or event.get("runAtMs")
+                if not ts_ms or not ts_to_date(int(ts_ms)).startswith(month_prefix):
+                    continue
+                usage = event.get("usage") or {}
+                cost = calc_cost(
+                    model,
+                    int(usage.get("input_tokens") or 0),
+                    int(usage.get("output_tokens") or 0),
+                    int(usage.get("cache_read") or usage.get("cache_read_tokens") or 0),
+                    int(usage.get("cache_write") or usage.get("cache_write_tokens") or 0),
+                )
+                job_total += cost
+                job_runs += 1
+        by_job[name] = {"runs": job_runs, "cost_usd": round(job_total, 6)}
+        total += job_total
+        runs += job_runs
+    return {"model": model, "runs": runs, "cost_usd": round(total, 6), "by_job": by_job}
 
 
 def load_sessions() -> dict:
@@ -456,6 +504,20 @@ def check_alerts() -> list:
                     "source":        "openrouter_api"
                 }
             })
+
+    # ── Phase 4 content Sonnet cap (two approved content jobs only) ─────────
+    content_sonnet = content_sonnet_month_usage()
+    if content_sonnet["cost_usd"] >= 10.0:
+        alerts.append({
+            "type":    "content_sonnet_cap",
+            "level":   "critical",
+            "message": f"Content Sonnet jobs crossed $10/month cap (${content_sonnet['cost_usd']:.2f}).",
+            "data":    {
+                "cap_usd": 10.0,
+                "source": "cron_runs",
+                **content_sonnet,
+            }
+        })
 
     # ── Deduplicate against already-alerted today ────────────────────────────
     dedup_file = COSTS_DIR / "alerts-sent.json"

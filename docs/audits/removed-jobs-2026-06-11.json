@@ -1,0 +1,330 @@
+{
+  "removed_at": "2026-06-11",
+  "source": "/Users/jtsomwaru/.openclaw/cron/jobs.json",
+  "removed_count": 12,
+  "jobs": [
+    {
+      "id": "98fda582-0103-45cc-b71f-86ad08383951",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "content-generate (DISABLED — split into linkedin + x generators)",
+      "enabled": false,
+      "createdAtMs": 1773172102678,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * 1",
+        "tz": "America/New_York"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "openai/gpt-5.5",
+        "message": "You are Eve, JT Somwaru's AI chief of staff. Generate JT's weekly content calendar.\n\nRead and follow ALL instructions in:\n/Users/jtsomwaru/.openclaw/workspace/agents/content-scheduler/AGENT.md\n\nThis is your complete operating manual. Follow every step exactly:\n- Step 0: Load recent-builds.md, technical-angles.md, swipe file, content-voice.md, x-algorithm.md, posted-log.jsonl\n- Generate 4 LinkedIn + 7 X posts using the day-by-day requirements\n- Run the full quality checklist on every post before saving\n- Save the weekly file, append 11 entries to posted-log.jsonl (include angle_id for technical posts)\n- Upload to Drive (LinkedIn folder AND X folder separately)\n\nDo NOT send a Telegram message — content-monday-send at 7:45AM handles that separately.\nDo NOT skip steps. The AGENT.md is the single source of truth.",
+        "timeoutSeconds": 4320
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {}
+    },
+    {
+      "id": "658af126-2f7b-4ac2-80df-dae902a24dd7",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Review Stalled Projects/Outreach",
+      "enabled": false,
+      "deleteAfterRun": true,
+      "createdAtMs": 1775448601583,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-04-07T09:00:00.000Z"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Review previously stalled projects and strategize re-engagement or adjustments for outreach.",
+        "model": "openai/gpt-5.5",
+        "fallbacks": []
+      },
+      "delivery": {
+        "mode": "announce",
+        "to": "6608544825",
+        "channel": "telegram"
+      },
+      "state": {}
+    },
+    {
+      "id": "5b78ce01-316e-47eb-9dd4-5c5467825065",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Catch-up: Morning Brief missed during gateway outage",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1777383569272,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-04-28T13:50:00.000Z"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "openai/gpt-5.5",
+        "timeoutSeconds": 900,
+        "message": "Catch-up task caused by OpenClaw gateway outage from 2026-04-27 19:54 ET to 2026-04-28 09:15 ET. Generate and deliver the missed Morning Brief for 2026-04-28. Keep it concise and do not overwhelm JT.\n\nUse current local files/data where available. Include only high-value sections:\n- Top 3 priorities from memory/tasks.md with staleness filtering\n- Overnight news: max 3 bullets\n- Job market: read ~/projects/job-market-agent/data/daily-brief.md if present\n- API costs: run python3 scripts/cost-tracker.py --brief\n- Workout if health/todays-workout.py exists\n- One concrete action\n\nIf a source is unavailable, say skipped briefly. Output as a Telegram-ready catch-up brief with title: 🌅 Catch-up Morning Brief — Apr 28."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "6608544825",
+        "bestEffort": true
+      },
+      "state": {}
+    },
+    {
+      "id": "f30be5a6-5192-4d7e-b0f5-7ada9b99d401",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Catch-up: Daily DynastyJig X Post Pack",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1777383579451,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-04-28T14:05:00.000Z"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "openai/gpt-5.5",
+        "timeoutSeconds": 900,
+        "message": "Catch-up task caused by OpenClaw gateway outage from 2026-04-27 19:54 ET to 2026-04-28 09:15 ET. Run the missed Daily DynastyJig X Post Pack for 2026-04-28.\n\nRules:\n- Use the Sports GM rank-only methodology. Never compare raw cross-source values.\n- Read skills/sports-gm/SKILL.md.\n- If current market snapshot/report exists, use it; otherwise run the sports GM scripts once.\n- Draft 3 concise @dynastyjig X posts focused on one valid market dislocation or methodology insight.\n- Include source-rank context and risk case.\n- Do not send duplicate/old contaminated content.\n\nOutput Telegram-ready with title: 🏈 Catch-up DynastyJig Post Pack — Apr 28."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "6608544825",
+        "bestEffort": true
+      },
+      "state": {}
+    },
+    {
+      "id": "6e5c2978-3345-48ef-9464-7520c1f4456a",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Catch-up: Sports GM Weekly Market Report",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1777383588749,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-04-28T14:20:00.000Z"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "openai/gpt-5.5",
+        "timeoutSeconds": 900,
+        "message": "Catch-up task caused by OpenClaw gateway outage from 2026-04-27 19:54 ET to 2026-04-28 09:15 ET. Run or redeliver the missed Sports GM Weekly Market Report for 2026-04-28.\n\nRules:\n- Read skills/sports-gm/SKILL.md.\n- Use rank-only methodology across KTC/FantasyCalc/FantasyPros. DynastyProcess secondary only.\n- If report already exists locally for today, summarize and deliver it instead of regenerating.\n- If not, run scripts/sports_gm_fetch_prices.py then scripts/sports_gm_generate_report.py once.\n- Keep Telegram output concise: top 5 candidates, why each is a research alarm, and next action.\n\nOutput title: 📊 Catch-up Sports GM Market Report — Apr 28."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "6608544825",
+        "bestEffort": true
+      },
+      "state": {}
+    },
+    {
+      "id": "84b88df3-48ab-4d1d-8020-c9fb629ef697",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Catch-up: Niche Intelligence Monitor",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1777383596077,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-04-28T14:35:00.000Z"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "openai/gpt-5.5",
+        "timeoutSeconds": 900,
+        "message": "Catch-up task caused by OpenClaw gateway outage from 2026-04-27 19:54 ET to 2026-04-28 09:15 ET. Run/redeliver the missed Niche Intelligence Monitor for 2026-04-28.\n\nRules:\n- If memory/niche-monitor-latest.md already has today's result, summarize only material 🟠/🔴 signals.\n- If not, perform a bounded scan for consulting ICP signals: NYC SMB, construction, property management, wholesale distribution, skilled trades, AI automation.\n- Max 6 web searches. No huge report.\n- If no 🟠/🔴 signals, output exactly: Niche monitor catch-up complete — no material signals.\n\nOutput title if material: 🔍 Catch-up Niche Intel — Apr 28."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "6608544825",
+        "bestEffort": true
+      },
+      "state": {}
+    },
+    {
+      "id": "9d6fa2d4-11bf-4a67-ae5f-7bc55c3aecae",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Catch-up: Content generation summary",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1777383604266,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-04-28T14:50:00.000Z"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "openai/gpt-5.5",
+        "timeoutSeconds": 900,
+        "message": "Catch-up task caused by OpenClaw gateway outage from 2026-04-27 19:54 ET to 2026-04-28 09:15 ET. Consolidate/redeliver missed content-generation outputs without duplicating huge drafts.\n\nCheck these likely missed/undelivered jobs: content-generate-linkedin, content-generate-x, content-monday-send, content-reminder.\n\nRules:\n- First look for files in memory/content/bank/2026-04-28, memory/content/weekly-2026-04-28.md, memory/content/news-hooks/2026-04-28.md, and Drive upload logs.\n- If content already exists, deliver a short summary with local paths/Drive links if available.\n- If content does not exist, generate only a concise recovery pack: 2 X post drafts + 1 LinkedIn draft, following content rules and mandatory Notion swipe fetch if script available.\n- Keep under 2,000 words. Do not send massive tables.\n\nOutput title: ✍️ Catch-up Content Pack — Apr 28."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "6608544825",
+        "bestEffort": true
+      },
+      "state": {}
+    },
+    {
+      "id": "c60b7a3e-26f7-4147-9997-d9f789caa2ae",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Catch-up: Ops/research missed jobs summary",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1777383613015,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-04-28T15:05:00.000Z"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "openai/gpt-5.5",
+        "timeoutSeconds": 900,
+        "message": "Catch-up task caused by OpenClaw gateway outage from 2026-04-27 19:54 ET to 2026-04-28 09:15 ET. Consolidate low-noise missed ops/research jobs rather than rerunning all of them.\n\nJobs to check/redeliver only if useful: Build Ideas → Mission Control Sync, critical-files-integrity, outreach-pipeline, Job Market Daily Research, Job Application Auto-Builder, outreach-email-pivot-daily, t3-cold-hook, Overnight Autonomy Agent.\n\nRules:\n- Prefer existing stored outputs/logs over reruns.\n- If a job already caught up after 9:15, summarize result instead of running again.\n- If outreach-pipeline errored, diagnose one-line cause and safe next step; do not run a broad pipeline if unstable.\n- Do not generate job application packages unless a qualified active role is already identified in stored job-market output.\n- Keep under 1,500 words.\n\nOutput title: 🧭 Catch-up Ops Summary — Apr 28."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "6608544825",
+        "bestEffort": true
+      },
+      "state": {}
+    },
+    {
+      "id": "8afd772d-7c7d-4c9c-922c-7f9ea65e42ea",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Catch-up: Personal reminders missed during outage",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1777383623385,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-04-28T15:20:00.000Z"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "openai/gpt-5.5",
+        "timeoutSeconds": 600,
+        "message": "Catch-up task caused by OpenClaw gateway outage from 2026-04-27 19:54 ET to 2026-04-28 09:15 ET. Redeliver only the useful missed personal reminders from the outage window.\n\nLikely missed reminders: Spanish Daily Lesson, Health Check-in, reddit-karma-daily-reminder. Do not include anything already irrelevant.\n\nRules:\n- Keep it short and gentle.\n- Include Spanish lesson only if it can be generated from existing lesson source; otherwise skip.\n- Health check-in should be one question, not a long report.\n- Reddit karma reminder should be one line if still relevant.\n\nOutput title: 🔁 Catch-up Reminders — Apr 28."
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "telegram",
+        "to": "6608544825",
+        "bestEffort": true
+      },
+      "state": {}
+    },
+    {
+      "id": "e39f312a-d99f-4944-93c2-a0e6a1046fc7",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Reminder: Reevaluate Codex harness config",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1777726780433,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-05-09T13:00:00.000Z"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "Reminder: It has been 1 week since JT asked to wait on Codex harness changes. Check current OpenClaw docs/schema/status, verify whether Codex harness is now stable/default, and reevaluate whether to enable the codex plugin + agents.defaults.embeddedHarness.runtime=\"codex\". Do not touch auth, summaryModel, summaryProvider, or primary model without explicit JT approval. Report recommendation to JT."
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {}
+    },
+    {
+      "id": "0f4d8f45-62fb-4a44-b1c9-dc6cb7011371",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "Altmark rent delinquency tracker follow-up check",
+      "description": "One-shot reminder to revisit Yair/Altmark follow-up after giving him a couple days.",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1778597881962,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-05-15T19:00:00.000Z"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "Reminder: Check whether Yair/Matt confirmed next steps after their Thu/Fri discussion about starting the Altmark rent delinquency tracker. Context: Yair replied 2026-05-12 that Matt had just returned after a 100-mile race, needed Tue/Wed to catch up, and Yair planned to sit with him Thu/Fri to discuss next automation steps starting with the rent delinquency tracker. If no update by now, suggest a light value-preserving follow-up for JT; do not pressure them."
+      },
+      "failureAlert": {
+        "after": 1,
+        "channel": "telegram",
+        "to": "6608544825",
+        "cooldownMs": 86400000,
+        "mode": "announce"
+      },
+      "state": {}
+    },
+    {
+      "id": "9b78d1be-3cd6-4e18-ab49-cf7f8cca06d1",
+      "agentId": "main",
+      "sessionKey": "agent:main:telegram:direct:6608544825",
+      "name": "reddit-daily-gen-rerun-check-2026-05-24",
+      "enabled": false,
+      "deleteAfterRun": false,
+      "createdAtMs": 1779659531843,
+      "schedule": {
+        "kind": "at",
+        "at": "2026-05-24T22:05:00.000Z"
+      },
+      "sessionTarget": "session:agent:main:telegram:direct:6608544825",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Check whether manual rerun of reddit-daily-gen (job bbe49024-458a-4496-9c7c-7a278615810f) after the 2026-05-24 11:30 not-delivered HEARTBEAT_OK failure completed. If it produced a valid Daily Reddit Growth Drop and delivered to Telegram, tell JT briefly. If not, inspect runs/artifacts and alert JT with blocker + next fix. Context: user asked whether any crons today were missed; crypto summary was already resent; passive-income strategist was recovered; reddit-daily-gen was the remaining confirmed failed delivery.",
+        "timeoutSeconds": 180
+      },
+      "delivery": {
+        "mode": "none"
+      },
+      "state": {}
+    }
+  ]
+}

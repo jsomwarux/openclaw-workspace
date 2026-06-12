@@ -14,4 +14,4 @@ export HOME="/Users/jtsomwaru"
 
 cd /Users/jtsomwaru/.openclaw/workspace/mission-control
 
-exec /opt/homebrew/bin/node node_modules/.bin/next dev -H 0.0.0.0 -p 3000
+exec /opt/homebrew/bin/node node_modules/.bin/next dev -H 127.0.0.1 -p 3000

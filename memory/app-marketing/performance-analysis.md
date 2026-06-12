@@ -1,14 +1,16 @@
 # App Marketing OS — Performance Analysis
 
-Last updated: 2026-06-08
+Last updated: 2026-06-11
 
 ## glow-index / tiktok
 
-Rows: 1
-Baseline views/impressions: 310.0
-Best: 5 ingredients dermatologists actually avoid (310 views/impressions)
+Rows: 2
+Baseline views/impressions: 401.0
+Best: 4 AIs flagged the ingredient in your clean skincare that's actually irritating (492 views/impressions)
 
 ### Item Labels + Features
+- **neutral** — 492: 4 AIs flagged the ingredient in your clean skincare that's actually irritating  
+  - features: hook=specific_number_unexpected_context; topic=unclear; format=slideshow; specificity=high; proof=model_names; cta=no_cta; risk=clean
 - **neutral** — 310: 5 ingredients dermatologists actually avoid  
   - features: hook=specific_number_unexpected_context; topic=unclear; format=slideshow; specificity=medium; proof=none; cta=no_cta; risk=clean
 
@@ -93,8 +95,8 @@ Best: Crypto Isn't A Guessing Game. It's A Math Problem Most Traders Refuse To S
 
 ## nash-satoshi / x
 
-Rows: 22
-Baseline views/impressions: 189.8
+Rows: 23
+Baseline views/impressions: 183.3
 Best: We upgraded to GPT-5.4, Gemini 3.1 Pro, and Opus 4.6 for this week's updated analyses.
 
 And it produced quite different results. Only 8 S+ t (1177 views/impressions)
@@ -138,11 +140,11 @@ Updated top 10:
 
 "Reppo builds stake-backed prediction markets (Datanets) that produce verifiable training and evaluation data for AI model  
   - features: hook=specific_number_unexpected_context; topic=rankings_update; format=single_post; specificity=high; proof=specific_token,live_ranking_data; cta=no_cta; risk=clean
-- **neutral** — 230: $GITLAWB is the now the number 3 overall ranked game theory token.
+- **promising** — 230: $GITLAWB is the now the number 3 overall ranked game theory token.
 
 "GITLAWB is building a decentralized git network that gives AI agents first-class workflow primitives and crypto  
   - features: hook=specific_number_unexpected_context; topic=rankings_update; format=single_post; specificity=high; proof=specific_token,live_ranking_data; cta=no_cta; risk=clean
-- **neutral** — 230: $LFI is the current number 2 ranked game theory token.
+- **promising** — 230: $LFI is the current number 2 ranked game theory token.
 
 "LienFi tokenizes U.S. property tax liens on Base, creating a first-mover on-chain yield marketplace backed by real estate c  
   - features: hook=specific_number_unexpected_context; topic=rankings_update; format=single_post; specificity=high; proof=specific_token,live_ranking_data; cta=no_cta; risk=clean
@@ -171,22 +173,22 @@ Updated top 10:
 
 ### Conflicted Signals
 - hook:specific_number_unexpected_context (winner rows 3, loser rows 7) — do not reuse without stronger proof/tension
-- specificity:high (winner rows 3, loser rows 6) — do not reuse without stronger proof/tension
+- specificity:high (winner rows 3, loser rows 7) — do not reuse without stronger proof/tension
 - topic:model_consensus (winner rows 2, loser rows 4) — do not reuse without stronger proof/tension
 - proof:model_names (winner rows 2, loser rows 4) — do not reuse without stronger proof/tension
 - topic:rankings_update (winner rows 1, loser rows 3) — do not reuse without stronger proof/tension
 - format:status_update (winner rows 1, loser rows 1) — do not reuse without stronger proof/tension
-- format:single_post (winner rows 1, loser rows 5) — do not reuse without stronger proof/tension
+- format:single_post (winner rows 1, loser rows 6) — do not reuse without stronger proof/tension
 - cta:rankings_check (winner rows 1, loser rows 3) — do not reuse without stronger proof/tension
 
 ### Losing Feature Pattern
 - hook:specific_number_unexpected_context (7)
-- specificity:high (6)
-- format:single_post (5)
+- specificity:high (7)
+- format:single_post (6)
+- proof:none (5)
 - topic:model_consensus (4)
 - proof:model_names (4)
 - specificity:low (4)
-- proof:none (4)
 - format:question_prompt (3)
 
 ### Recommendation

@@ -1,0 +1,64 @@
+{
+  "id": "3ed01a8a-c3fb-4673-9ae0-993611e94c5a",
+  "agentId": "main",
+  "sessionKey": "agent:main:telegram:direct:6608544825",
+  "name": "t3-cold-hook",
+  "enabled": true,
+  "createdAtMs": 1773324234276,
+  "schedule": {
+    "kind": "cron",
+    "expr": "30 6 * * 2,4",
+    "tz": "America/New_York"
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "agentTurn",
+    "timeoutSeconds": 900,
+    "message": "IMPORTANT TOOLING HARDENING — 2026-05-31\nDo not chain proof/audit commands with arrows or treat a post-delivery proof-log issue as a draft-generation failure. Run `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/log-proof.py ...` and `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/memory_recap_proof_guard.py --date $(date +%F) --json` as separate commands. If draft files and Drive links were created but proof logging fails, report `PARTIAL: draft delivered, proof logging failed` and include the exact command/error instead of marking the whole cron as failed.\n\nYou are Eve's T3 Cold Hook Drafter. Read and follow ALL instructions in ~/.openclaw/workspace/agents/t3-cold-hook/AGENT.md exactly.\n\nCRITICAL: You NEVER send anything. You draft only. JT always presses send himself.\n\n## DRIVE FOLDER NAMING RULE\nBefore ANY Drive upload, read `~/projects/jt-consulting-pipeline/drive-canonical-names.md` and use the exact canonical name from that table. Never shorten or vary company names in Drive paths.\n\nShortlist files to read:\n- ~/projects/jt-consulting-pipeline/shortlists/wholesale-distribution.md\n- ~/projects/jt-consulting-pipeline/shortlists/construction-trades.md (if exists)\n- ~/projects/jt-consulting-pipeline/shortlists/property-management.md (if exists)\n- ~/projects/jt-consulting-pipeline/shortlists/insurance.md (Agentforce targets)\n\nIMPORTANT for insurance T3 prospects: hooks must reference Agentforce/Salesforce, NOT n8n.\n\nState file: ~/.openclaw/workspace/agents/t3-cold-hook/state.json\n\nFollow the AGENT.md steps exactly: collect T3 prospects, generate DMs, save batch file, upload to Drive, update state, notify JT via Telegram (channel=telegram, target=6608544825).\n\n## T3 Cold Hook Mission Control Command Safety — 2026-06-11\nDo not use pseudo agent/tool chains for Mission Control checks. Never write commands like `fetch http://localhost:3000/api/tasks -> run python3 inline script (agent)`. If checking existing tasks is required, use one executable command only: `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/mission_control_task_gate.py --title \"[Task title]\" --json`, or use `curl -s http://localhost:3000/api/tasks | jq '(.tasks // .items // .)'` for read-only inspection. Do not use inline Python, heredocs, or arrow-chain pseudo commands. If drafts and Telegram notification were created but a later proof/MC check fails, finish `PARTIAL: drafts delivered, proof/MC check failed` with the exact executable command/error instead of marking draft generation itself as failed.",
+    "thinking": "none",
+    "fallbacks": []
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "failureAlert": {
+    "after": 1,
+    "channel": "telegram",
+    "to": "6608544825",
+    "cooldownMs": 86400000,
+    "mode": "announce"
+  },
+  "state": {
+    "nextRunAtMs": 1781605800000,
+    "lastRunAtMs": 1781173800029,
+    "lastRunStatus": "error",
+    "lastStatus": "error",
+    "lastDurationMs": 222356,
+    "lastDeliveryStatus": "not-requested",
+    "consecutiveErrors": 2,
+    "consecutiveSkipped": 0,
+    "lastFailureNotificationDeliveryStatus": "not-requested",
+    "lastDiagnostics": {
+      "summary": "⚠️ 🛠️ `fetch http://localhost:3000/api/tasks -> run python3 inline script (agent)` failed",
+      "entries": [
+        {
+          "ts": 1781174022385,
+          "source": "tool",
+          "severity": "error",
+          "message": "⚠️ 🛠️ `fetch http://localhost:3000/api/tasks -> run python3 inline script (agent)` failed"
+        },
+        {
+          "ts": 1781174022385,
+          "source": "agent-run",
+          "severity": "error",
+          "message": "⚠️ 🛠️ `fetch http://localhost:3000/api/tasks -> run python3 inline script (agent)` failed"
+        }
+      ]
+    },
+    "lastDiagnosticSummary": "⚠️ 🛠️ `fetch http://localhost:3000/api/tasks -> run python3 inline script (agent)` failed",
+    "lastFailureAlertAtMs": 1781174022391,
+    "lastError": "⚠️ 🛠️ `fetch http://localhost:3000/api/tasks -> run python3 inline script (agent)` failed"
+  },
+  "updatedAtMs": 1781180101344
+}

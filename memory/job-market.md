@@ -364,3 +364,11 @@ Read the current job-market-agent daily brief generated at 2026-06-06 05:16. No 
 **Strongest signal:** the public-board job market is sparse for JT-fit AI consulting roles, but the strategy language keeps improving: firms are shifting from labor resale toward AI strategy, integration, change management, outcome ownership, and value-led adoption. The fresh skew toward demos, SOWs, cloud architecture, and GCP/AWS/Azure certification is useful market intel but not yet a reason to chase GCP certification.
 
 **Positioning implication:** keep framing OpenClaw and JT Somwaru Consulting as outcome-led AI integration/adoption proof, not generic automation or cloud pre-sales. The portfolio language should emphasize workflow discovery, governed handoffs, system-of-record integration, adoption metrics, and value ownership. No new application task, certification task, or build idea was created today.
+
+## 2026-06-11 — Heartbeat Job Market Pulse
+
+Read the current job-market-agent daily brief generated at 2026-06-11 05:15. One live Remote US role cleared the brief's signal filter: Intradiem Director, Enterprise AI Enablement, scored 19/25. It is a stronger consulting bridge than direct application target because the scope leans director/team-leadership, but it validates the EnablementOps lane.
+
+**Strongest signal:** "AI enablement" is being hired as an operating-model owner role: use-case intake, governance, roadmap, tool administration, role-based enablement, and ROI/value metrics. This is closer to JT's Mission Control/OpenClaw proof than to generic automation delivery.
+
+**Positioning implication:** package EnablementOps as an AI Enablement Operating Model Readiness Sprint: front door, prioritization, COE rhythm, risk gates, role-based enablement, and KPI/ROI dashboard. Extend EnablementOps / DealDesk / ROIFlow / AgentGuard instead of creating another demo today.

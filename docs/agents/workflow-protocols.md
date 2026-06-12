@@ -208,3 +208,6 @@ Not done until: (1) workflow JSON saved (2) git commit + push (3) lessons.md upd
 ## Agentforce Site Rules (still enforced)
 - B2B Account Service Agent: permanently banned from jtsomwaru.com. Do not add it under any circumstances.
 - NEVER add anything to jtsomwaru.com that is not fully built, fully tested, and explicitly approved by JT. Adding unbuilt/untested work misrepresents JT's capabilities. This is a trust violation.
+
+## Watchdog Health-Check Rule
+Watchdogs must probe the served interface before using process shape as evidence. For OpenClaw gateway, `http://127.0.0.1:18789/` is the recovery source of truth; argv/process matching is diagnostic only because launchd/node wrappers can change and broad process output can expose secrets. Restart-loop windows must be longer than the LaunchAgent interval, or every run looks like the first failure and backoff never activates.

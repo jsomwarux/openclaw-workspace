@@ -470,6 +470,54 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Owner surface updated:** `scripts/verify-vista-rate-movies-page.mjs`, `src/app/rate-movies-out-of-100/page.tsx`, `src/app/1-100-movie-rating-app/page.tsx`, `docs/agents/regression-checks.md`, and this Mistakes Log entry.
 - **Verification/date:** 2026-06-01 — tightened `scripts/verify-vista-rate-movies-page.mjs` to require `/private-movie-rating-app`, enforce the 250-line cap on the new page, and require all three existing Vista SEO pages to link back; `node scripts/verify-vista-rate-movies-page.mjs`, `git diff --check`, `npm run lint`, `npm run build`, and production checks passed after commits `5111a61` and `a24616f`.
 
+## 2026-06-11 — Auth profile inspection printed raw credential-looking values
+- **Failure:** While verifying whether Moonshot fallback was actually configured, I read `auth-profiles.json` too broadly and the tool output included raw credential-looking token/API-key values in the internal session transcript.
+- **Root cause:** I used a quick string preview of the auth profile object instead of a structured redacted projection of provider/profile names only.
+- **Guardrail/rule:** When inspecting auth/profile files, never print raw object previews. Use a script that emits only profile IDs, providers, auth types, and boolean presence flags, with values omitted before output.
+- **Regression check:** Future auth inspections must run a redacted projection command only; any command output containing `sk-`, `Bearer`, JWT-looking strings, or long token values is a security failure and must be reported immediately.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; no config or credential files changed.
+- **Verification/date:** 2026-06-11 — stopped further raw auth inspection, did not quote the values to JT, and alerted JT in the active conversation.
+
+## 2026-06-11 — Evening Digest surfaced low-value ReelFarm hypotheses
+- **Failure:** Evening Digest sent a ReelFarm Daily Strategy Intel item with three routine test hypotheses and a file path, leaving JT asking what he was supposed to take away from it.
+- **Root cause:** Phase 5 routed routine FYI output into the digest, but the ReelFarm prompt still treated "meaningful hypotheses" as enough for delivery instead of requiring a decision, same-day action, or verified critical finding.
+- **Guardrail/rule:** Digest entries must answer "what should JT do with this?" Routine hypotheses, trend translations, and saved reports stay in files unless they create a concrete action, decision, or critical alert.
+- **Regression check:** A ReelFarm report with only medium-confidence app-marketing hypotheses must say `Send Telegram: no`, must not append to `memory/digest-queue.md`, and Evening Digest should remain empty unless another actionable item exists.
+- **Owner surface updated:** `agents/reelfarm-intel/daily-prompt.md`, ReelFarm cron delivery instruction, `docs/agents/mistakes-log-recent.md`, and `memory/2026-06-11.md`.
+- **Verification/date:** 2026-06-11 — updated the prompt and cron instruction after inspecting `memory/reelfarm/reports/daily/2026-06-11.md`; report value was only optional future creative tests, not a JT action.
+
+## 2026-06-11 — Temporary cron smoke used deleteAfterRun true
+- **Failure:** During Follow-up E Sonnet preflight, I created a temporary cron smoke with the CLI default `deleteAfterRun: true`, even though cron safety rules forbid delete-after-run jobs.
+- **Root cause:** I optimized for a minimal cron-runtime preflight and trusted the CLI one-shot default instead of explicitly passing `--keep-after-run` or using an existing durable smoke harness.
+- **Guardrail/rule:** Any temporary cron smoke must be created with `--keep-after-run`, then explicitly removed after verification if cleanup is approved/appropriate; never rely on `deleteAfterRun`.
+- **Regression check:** Future cron smoke commands must show `--keep-after-run` in the creation command or use a non-cron preflight API; `openclaw cron get [temp-id]` or run history must confirm cleanup state after the smoke.
+- **Owner surface updated:** This Mistakes Log entry; Follow-up E audit notes the temp job auto-deleted after success.
+- **Verification/date:** 2026-06-11 — `openclaw cron get 60c2a353-3df9-4aee-a63e-1770120fa1cb` returned job not found after success, confirming the temporary job was removed, but the creation pattern was still wrong.
+
+## 2026-06-11 — Broad process listing exposed a runtime secret in tool output
+- **Failure:** While verifying Phase 2A post-restart health, I ran a broad `ps aux` and the internal tool output included a command-line `instance-secret` value from a local Convex process.
+- **Root cause:** I used a whole-system process listing for health evidence instead of a targeted OpenClaw-only process query with sensitive argument redaction.
+- **Guardrail/rule:** For runtime health checks, never run broad process dumps. Query only the needed process names/PIDs and redact command-line arguments before output, or use `pgrep`/`ps -p` with minimal columns.
+- **Regression check:** Before any process-inspection command, check that it cannot print full command arguments for unrelated services; if full args are needed, pass them through a redaction script before output.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; no credential files changed.
+- **Verification/date:** 2026-06-11 — did not quote or forward the secret value to JT; future Phase 2B loopback/Convex checks must use targeted `lsof`/health URLs and redacted process output.
+
+## 2026-06-11 — Targeted pgrep still exposed Convex secret arguments
+- **Failure:** During Phase 2B investigation, I ran `pgrep -fl openclaw` after already logging a process-output secret slip; because Mission Control/Convex paths include `.openclaw`, the internal tool output included the Convex command line and its `instance-secret` value again.
+- **Root cause:** I treated `pgrep -fl` as a targeted process check, but `-f` prints full command arguments and a broad `openclaw` match can include local services with secrets embedded in argv.
+- **Guardrail/rule:** Never use `pgrep -fl` with broad workspace/path terms. For process checks, either query exact ports with `lsof -nP -iTCP:<port> -sTCP:LISTEN` or use `ps -axo pid,comm` without command arguments. If full command arguments are unavoidable, pipe through a tested redactor before output.
+- **Regression check:** Phase 2B loopback verification must use `lsof` for ports 3000/3210/3211/5678 and only print command, PID, user, protocol, and listen address; no `pgrep -fl`, `ps aux`, or full argv output.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md` and `memory/2026-06-11.md`; no credential files changed.
+- **Verification/date:** 2026-06-11 — did not quote or forward the exposed value to JT; subsequent plan text will describe only the service/argument name and not the value.
+
+## 2026-06-11 — Model status redaction missed a partial API key
+- **Failure:** During the 18:12 heartbeat cron-auth check, I ran `openclaw models status` with a weak text redactor and the internal tool output still included a partial static provider key preview.
+- **Root cause:** I assumed keyword-based `sed` redaction would cover all model-status credential previews, but the CLI prints shortened key samples without a nearby `key` label in every field.
+- **Guardrail/rule:** Do not print `openclaw models status` raw during heartbeat/auth checks. Use a structured redacted projection or a narrower runtime-auth probe that reports provider status only.
+- **Regression check:** Any future model/auth status command must redact `sk-`/provider-key patterns before output, or use a script that emits only provider names, profile counts, and runtime usability booleans.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; no credential or config files changed.
+- **Verification/date:** 2026-06-11 — did not quote or forward the partial key preview to JT; subsequent heartbeat summary omits credential material.
+
 ## 2026-06-03 — Cron prompts let useful work fail after brittle checkpoints
 - **Failure:** `Viral Post Swipe File — X Research` failed after producing the current reply-target artifact because the agent tried to read `memory/content/content-voice.md`, which does not exist; `prospect-discovery` failed after a large live-research run because it consumed about 144k tokens and stopped before final confirmation.
 - **Root cause:** The cron prompts relied on natural-language file/tool operations and oversized open-ended research goals. They did not pin the canonical `content-voice.md` path with a deterministic preflight, and Prospect Discovery asked for 15-30 prospects in one turn without hard search/candidate limits or a mandatory final checkpoint.
@@ -509,3 +557,10 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** `python3 scripts/passive_income_handoff_check.py --date 2026-06-07 --mode pre-scout --json`, `--mode pre-strategist --json`, and `--mode post-strategist --json` must return `ok: true`; `rg -n "INCOMPLETE|BLOCKED|PASSIVE_INCOME_HANDOFF_FAIL" memory/passive-income/2026-06-07-scout.md memory/passive-income/2026-06-07-strategist.md` must return no matches after rerun.
 - **Owner surface updated:** `scripts/fetch-signals.py`, `agents/passive-income-scout/AGENT.md`, passive-income-scout cron payload in `~/.openclaw/cron/jobs.json`, `agents/passive-income-strategist/AGENT.md`, `scripts/passive_income_handoff_check.py`, `scripts/passive_income_strategist_delivery_guard.py`, `memory/passive-income/2026-06-07-scout.md`, `memory/passive-income/2026-06-07-strategist.md`, `agents/passive-income-scout/state.json`, Mission Control, daily note, weekly recap, and this Mistakes Log entry.
 - **Verification/date:** 2026-06-07 — refreshed `weekly-trends.md`; regenerated complete June 7 scout and strategist reports; created Mission Control task `j5724f5hfc07cr9a7skahz1121887dnm`; pre-scout, pre-strategist, and post-strategist handoff checks returned `ok: true`; no `INCOMPLETE`, `BLOCKED`, or `PASSIVE_INCOME_HANDOFF_FAIL` markers remained in the June 7 reports.
+## 2026-06-11 — Phase 4 checklist drift after corpus-first content cron rebuild
+- **Failure:** Phase 4 was reported complete even though the exact prompt-specific backup file `docs/audits/replaced-prompts-2026-06-11.md` had not been created, and the posted-reply edit-delta rule was placed directly in `AGENTS.md` while `AGENTS.md` was within 1,500 chars of its 28K budget buffer.
+- **Root cause:** I verified the operational cron outcome and broad guard behavior, but did not run a literal requirement-by-requirement checklist against JT's Phase 4 prompt before claiming completion.
+- **Guardrail/rule:** For plan-gated phases, create a checklist from the user's exact requested artifacts and verify each named path/routing condition before final reporting; "behavior works" is not enough when the prompt names artifacts.
+- **Regression check:** Rerun a verifier that checks corpus gate counts, cron JSON parsing, both model fields, first 200 chars of both payload messages, replaced-prompt backup existence, edit-delta rule ownership, wrapper presence, preservation versus backup, and plan status.
+- **Owner surface updated:** Added `docs/audits/replaced-prompts-2026-06-11.md`; moved the full posted-reply edit-delta rule to `docs/agents/content-rules.md`; reduced `AGENTS.md` to a pointer.
+- **Verification/date:** 2026-06-11; follow-up verification rerun in the same turn after remediation.

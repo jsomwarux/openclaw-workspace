@@ -1,0 +1,43 @@
+{
+  "id": "fb1d6691-5663-47aa-bb78-f90813b33203",
+  "agentId": "main",
+  "sessionKey": "agent:main:telegram:direct:6608544825",
+  "name": "Weekly Seeds Prompt",
+  "description": "Sunday 7PM — prompts JT to drop raw observations for next week's content",
+  "enabled": true,
+  "createdAtMs": 1775332051312,
+  "schedule": {
+    "kind": "cron",
+    "expr": "0 19 * * 0",
+    "tz": "America/New_York"
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "agentTurn",
+    "timeoutSeconds": 120,
+    "message": "Send JT his weekly content seeds prompt via Telegram.\n\nFirst, check if memory/content/weekly-seeds.md already has content this week (has actual text in the ## Seeds section beyond the placeholder). If yes, skip — he already filled it in.\n\nIf no seeds yet, send to JT (channel=telegram, target=6608544825):\n\n'🌱 Content seeds — 5 minutes for better posts\n\nDrop 2-4 raw observations from this week and I'll build next week's posts from them. No formatting needed.\n\nWhat counts:\n- Something you built or shipped (even small)\n- A pattern you noticed in a prospect conversation or research\n- Something that surprised you or clicked\n- A lesson from something that didn't work\n\nJust reply here. I'll save them and Monday's content cron will use them.'\n\nIf seeds already filled: exit silently.\n\n## WHEN JT REPLIES TO THIS MESSAGE\nIf JT replies with any observations/notes:\n1. Read the full reply\n2. Write their observations to memory/content/weekly-seeds.md, replacing the placeholder under ## Seeds:\n   ```bash\n   python3 -c \"\nimport re\npath = '/Users/jtsomwaru/.openclaw/workspace/memory/content/weekly-seeds.md'\ncontent = open(path).read()\n# Replace everything after '## Seeds' header up to the next '---' with JT's observations\nnew_content = re.sub(r'(## Seeds[^\\n]*\\n)(.*?)(---)', lambda m: m.group(1) + '\\n[OBSERVATIONS]\\n\\n' + m.group(3), content, flags=re.DOTALL)\nopen(path, 'w').write(new_content)\n   \".replace('[OBSERVATIONS]', '''[JT_REPLY]''')\n   ```\n   Or more simply — use exec to append the observations directly to the seeds section of the file.\n3. Confirm back to JT: '✅ Seeds saved. Monday's content will be anchored to these. If you want to add more, just reply again.'"
+  },
+  "delivery": {
+    "mode": "none"
+  },
+  "failureAlert": {
+    "after": 1,
+    "channel": "telegram",
+    "to": "6608544825",
+    "cooldownMs": 86400000,
+    "mode": "announce"
+  },
+  "state": {
+    "nextRunAtMs": 1781478000000,
+    "lastRunAtMs": 1780873200033,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 24146,
+    "lastDeliveryStatus": "not-requested",
+    "consecutiveErrors": 0,
+    "consecutiveSkipped": 0,
+    "lastFailureNotificationDeliveryStatus": "not-requested"
+  },
+  "updatedAtMs": 1780873224179
+}

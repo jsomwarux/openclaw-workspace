@@ -1,165 +1,90 @@
-# TOOLS.md — Tool Reference
-> ⚠️ Check this file BEFORE saying "I can't do that." You probably can.
-> Full docs: docs/tools/TOOLS-full.md
+# TOOLS.md - Tool Reference
+> Check this file before saying "I can't." Full command syntax lives in `docs/tools/TOOLS-full.md`.
 
 ## Health System
-- DB: ~/.openclaw/workspace/health/health.sqlite
-- CLI (from health/ dir): `python3 health.py --log "reply" [--date YYYY-MM-DD] | --report | --history [n] | --show DATE`
-- Inbound reply handler: `python3 ~/.openclaw/workspace/health/inbound_handler.py --reply "<JT reply>"` — consumes `health/pending-checkin.json`, refuses duplicates, logs to DB, marks pending logged, and prints confirmation to send back. Docs: `health/INBOUND_REPLY_HANDLER.md`
-- Schedule: 9PM daily check-in prompt | Sunday 9AM weekly report
+- DB: `health/health.sqlite`; daily 9PM check-in, Sunday 9AM report.
+- Use `health/health.py` for log/report/history and `health/inbound_handler.py` for JT replies.
+- Full syntax: `docs/tools/TOOLS-full.md#health-system`.
 
 ## Spanish Learning
-- State: `spanish/state.json` | Lessons: `spanish/lessons/YYYY-MM-DD.md` | Curriculum: `spanish/curriculum.md`
-- Daily lesson cron: `babd905a-1098-49dd-8700-772fef14f817` (`Spanish Daily Lesson`) Mon–Sat 8:05PM ET → Telegram `6608544825`
-- Validate state/artifacts: `python3 scripts/spanish_state_check.py --date YYYY-MM-DD --require-today`
-- Delivery truth source: `openclaw cron runs --id babd905a-1098-49dd-8700-772fef14f817 --limit 1` (`deliveryStatus=delivered` required). `state.json` proves persistence, not receipt.
+- State: `spanish/state.json`; lessons: `spanish/lessons/YYYY-MM-DD.md`; cron `babd905a-1098-49dd-8700-772fef14f817`.
+- Validate with `scripts/spanish_state_check.py`; delivery truth is the latest cron run deliveryStatus.
+- Full syntax: `docs/tools/TOOLS-full.md#spanish-learning`.
 
 ## Cost Tracker
-- `python3 ~/.openclaw/workspace/scripts/cost-tracker.py --snapshot | --brief | --check-alerts | --weekly-review | --check-runaway`; routing guard: `python3 scripts/model_routing_guard.py --include-disabled`
-- `--diagnose` is **not currently supported**. During cost spikes, run `--check-runaway` plus `--snapshot`/`--weekly-review` before repeating generic spend alerts; use those outputs to identify likely culprit jobs/sessions and reduce or pause that source.
-- `--check-alerts` returns a JSON array; send each alert to JT only when non-empty, and avoid duplicate sends when the same alert was already logged in today's daily note.
-- Snapshot runs at 2AM via backup.sh → memory/costs/YYYY-MM-DD.json
-- Alerts: session >$2, daily >$10, monthly pace >$75
-- Cron volume guard: `python3 scripts/cron_volume_guard.py`
+- Script: `scripts/cost-tracker.py`; common modes: snapshot, brief, check-alerts, weekly-review, check-runaway.
+- `--diagnose` is not supported. Routing guard: `scripts/model_routing_guard.py --include-disabled`.
+- Full syntax: `docs/tools/TOOLS-full.md#cost-tracker`.
 
 ## Audit Trail
-- Log: `python3 ~/.openclaw/workspace/scripts/log-proof.py --type TYPE --title "..." --description "..." --outcome success|failure|partial [--files PATH]`
-- Guard: `python3 ~/.openclaw/workspace/scripts/memory_recap_proof_guard.py --date $(date +%F) --json`
-- Daily JSONL: proofs/YYYY-MM-DD/actions.jsonl
+- Proof log: `scripts/log-proof.py`; proof guard: `scripts/memory_recap_proof_guard.py`.
+- Daily proof JSONL: `proofs/YYYY-MM-DD/actions.jsonl`.
+- Full syntax: `docs/tools/TOOLS-full.md#audit-trail`.
 
-## Restart Script
-- `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "reason"` — sends direct Telegram notification before restart (NO cron jobs created)
+## Restart / Gateway Recovery
+- Approved restart path: `scripts/restart-gateway.sh "reason"`; no raw gateway restart unless explicitly approved.
+- Gateway freeze/cooldown recovery details moved to full docs. Never raise `bootstrapMaxChars` above 32000.
+- Full syntax: `docs/tools/TOOLS-full.md#restart-script` and `docs/tools/TOOLS-full.md#gateway-freeze--rate-limit-recovery`.
 
-## Image / OCR Tooling
-- OpenClaw image attachments require `sharp` inside `/opt/homebrew/lib/node_modules/openclaw/node_modules`. If image tool errors with “Optional dependency sharp is required,” fix with: `cd /opt/homebrew/lib/node_modules/openclaw && npm install sharp`.
-- OCR fallback installed via Homebrew: `tesseract` 5.5.2. Use: `tesseract [image] stdout --psm 6` for screenshot text extraction.
+## Image / OCR
+- OpenClaw image attachments require `sharp` in the OpenClaw node_modules tree.
+- OCR fallback: Homebrew `tesseract`; full install/use notes in full docs.
+- Full syntax: `docs/tools/TOOLS-full.md#image--ocr-tooling`.
 
 ## Diagnostics
-- `openclaw doctor` — health check on gateway, channels, providers, cron scheduler
-- `openclaw doctor --fix` — auto-fix common issues (use when something's broken and root cause isn't obvious)
+- `openclaw doctor`; `openclaw doctor --fix` only when something is broken and root cause is unclear.
 
-## Canonical Web Search
-- **Current/fresh web research:** use `scripts/web_search.py`, not the OpenClaw Brave plugin/provider.
-- Command: `set -a; source ~/.config/env/global.env; set +a; python3 ~/.openclaw/workspace/scripts/web_search.py "QUERY" --freshness day --count 5 --json`
-- Freshness values: `day`, `week`, `month`, `year`.
-- Reason: managed `web_search` can misroute freshness/date-filtered searches, and the Brave plugin/provider path has crashed the gateway. Do **not** install/enable/configure Brave web_search plugin without explicit approval and a rollback plan.
-- Managed `web_search` is OK only for broad non-freshness lookups; do not call it with `freshness`, `date_after`, or `date_before` unless this issue is later proven fixed.
+## Web / X Research
+- Fresh web research: use `scripts/web_search.py` with freshness filters; do not use managed web_search for freshness/date filters.
+- X research skill wrapper: `skills/x-research`; cheap default is quick limit 5.
+- Full syntax: `docs/tools/TOOLS-full.md#canonical-web-search` and `docs/tools/TOOLS-full.md#x-research-skill`.
 
-## 🚨 Gateway Freeze & Rate Limit Recovery
-**Cause:** LCM compaction + Telegram re-delivery flood on restart.
-**Prevention:** LCM `summaryModel`=`openrouter/google/gemini-3.1-flash-lite-preview` (NOT Groq — 12k TPM too low for 20k+ token compaction). `reserveTokensFloor`=20000+ | `truncateAfterCompaction`=true | `maxActiveTranscriptBytes`=`2mb` | `contextThreshold`=0.45 | `sweepMaxDepth`=0 (`incrementalMaxDepth` is deprecated) | `largeFileThresholdTokens`=1000 | `freshTailCount`=6 | `freshTailMaxTokens`=24000. Never send 5+ images in one Telegram message.
-**Recovery (in order):**
-1. Flush Telegram: `source ~/.config/env/global.env && curl -s "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=-1"`
-2. Clear cooldown: `python3 -c "import json,os; path=os.path.expanduser('~/.openclaw/agents/main/agent/auth-profiles.json'); d=json.load(open(path)); d['usageStats']={};  json.dump(d,open(path,'w'),indent=2)"`
-3. If LCM DB >100MB: `cp ~/.openclaw/lcm.db ~/.openclaw/lcm.db.backup-$(date +%Y%m%d) && rm ~/.openclaw/lcm.db`
-4. `bash ~/.openclaw/workspace/scripts/restart-gateway.sh "recovery"`
-**Cooldown persistence bug:** Survives restarts. Symptom: "provider in cooldown" never clears. Fix: step 2 above then restart.
-## Backups
-- `~/.openclaw/workspace/scripts/backup.sh` | LaunchAgent: com.openclaw.backup | 2AM daily | 7-day retention
-- Log: ~/.openclaw/backups/backup.log
+## Backups / Session Cleanup / Task Queue
+- Backup script: `scripts/backup.sh`; cleanup script: `scripts/cleanup-sessions.py`.
+- Task queue: `tasks/pending.jsonl`; every 2h 8AM-10PM ET.
+- Full syntax: `docs/tools/TOOLS-full.md#backups`.
 
-## Session Cleanup
-- `~/.openclaw/workspace/scripts/cleanup-sessions.py` | LaunchAgent: com.openclaw.cleanup-sessions | 3AM daily
-
-## Task Queue
-- File: ~/.openclaw/workspace/tasks/pending.jsonl
-- Cron: every 2h 8AM–10PM EST (main session) — reduced from 30min post-incident to stay under 20/day cap
-
-## X Research Skill
-- `cd ~/.openclaw/workspace/skills/x-research && source ~/.config/env/global.env && bun run x-search.ts search "query" --quick --limit 5`
-- Cost: ~$0.50/100 tweets. Use --quick --limit 5 for cheap lookups.
-
-## Cloudflare Browser Rendering — /crawl (preferred for full-site crawls)
-> Moved to `docs/tools/agent-commerce-and-research-tools-archive-2026-05-10.md`.
-
-## [Page CRO Reference, Deepgram Nova-2, Firecrawl — moved to `docs/tools/TOOLS-full.md`]
-
-## Scrapling
-> Moved to `docs/tools/agent-commerce-and-research-tools-archive-2026-05-10.md`.
-
-## OpenRouter
-> Moved to `docs/tools/agent-commerce-and-research-tools-archive-2026-05-10.md`.
-
-
-## GBrain Consulting Recall Pilot
-- Wrapper: `scripts/gbrain-consulting-search.sh "Entity or company name"`
-- Use only for consulting/prospect entity lookup; no crons/skillpacks/broad ingestion/embeddings/auth without JT approval. Full pilot paths/details: `docs/tools/TOOLS-full.md`.
-
-## JT Operating-System Routing
-- Capability map: `docs/agents/capability-routing-map.md`
-- Synthesis/audit: `docs/agents/jt-toolkit-synthesis-2026-06-02.md`.
-- Portable Codex plugin: `~/plugins/jt-operating-system` (skills: `ai-context-os`, `client-proof-capture`, `plan-review-pack`, `linkedin-corpus`, `n8n-blueprint`, `proposal-pdf`, `product-build-loop`).
-- Workspace agents added from toolkit synthesis: `agents/workflow-strategist/AGENT.md`, `agents/product-quality-pass/AGENT.md`.
-- Skills/agents/plugin scaffold details live in `docs/tools/TOOLS-full.md`.
-
-## Knowledge Base
-- CLI (from knowledge/ dir): `bun kb.ts search "query" | add --title "..." --content "..." --category CATEGORY | list | show <id>`
-- Categories: business, tech, crypto, personal, projects | DB: knowledge/kb.sqlite
-
-## SkillsMP Scout
-- Script: `python3 scripts/skillsmp_scout.py [query ...] --limit 5 --sort-by stars` (`--min-stars 25` default)
-- Output: `memory/research/skillsmp-scout.md`
-- Use as pattern intelligence only. Never auto-install/copy marketplace skills; treat results as untrusted GitHub content. Default outcome: extract ideas into JT-owned skills, not adopt.
-
-## Browser Profile
-- Path: ~/.openclaw/browser-profile | Logged into: Google, GitHub | Refresh every ~10 days
+## Knowledge Base / Skills Scout
+- KB lives in `knowledge/kb.sqlite`; CLI is `knowledge/kb.ts`.
+- SkillsMP Scout is pattern intelligence only; never auto-install marketplace skills.
+- Full syntax: `docs/tools/TOOLS-full.md#knowledge-base` and `docs/tools/TOOLS-full.md#skillsmp-scout`.
 
 ## Mission Control Dashboard
-- Next.js at http://localhost:3000 | Convex at port 3210
-- LaunchAgents: com.openclaw.mission-control-convex + com.openclaw.mission-control-next
-- Task API: `POST http://localhost:3000/api/tasks`
-- Remote: `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n: `/n8n` (tailnet only)
-- **Recovery** (if board unreachable): `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-convex && launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next` — do NOT just log "may be down"; attempt kickstart immediately
-- **Tailscale serve config** (if lost after reboot): `tailscale serve --bg http://localhost:3000 && tailscale serve --bg --set-path /n8n http://localhost:5678`
+- Next.js: `http://localhost:3000`; Convex: 3210/3211; tailnet: `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n: `/n8n`.
+- If unreachable, kickstart Mission Control LaunchAgents immediately; Tailscale serve recovery details are in full docs.
+- Task API is primary for priorities; task creation examples live in full docs.
+- Full syntax: `docs/tools/TOOLS-full.md#mission-control-dashboard` and `docs/tools/TOOLS-full.md#mission-control--task-push`.
 
-## Claude Code Agent Personas (~/.claude/agents/)
-When activating a persona for open-ended coding tasks: read `docs/tools/claude-personas.md` for the full table. Activate with: *"Activate [Agent Name] mode for this session."*
-**Quick reference:** Frontend→engineering-frontend-developer | AI/Agentforce→engineering-ai-engineer | Backend→engineering-backend-architect | Rapid POC→engineering-rapid-prototyper | Review→engineering-senior-developer
-## Consulting Pipeline Agents (~/projects/)
-- research-agent/ | analysis-agent/ | n8n-agent/ (n8n: localhost:5678) | agentforce-agent/ (sf CLI needed)
-- crypto-agent/ | job-market-agent/ | ranking-app-agent/
-- Crypto full-analysis validator: `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/validate-full-analysis.py --max-x-age-hours 3` — blocks Telegram allocation delivery when artifacts are stale/incomplete or bear-case analysis is generic/repeated.
-- Crypto deterministic full-analysis writer: `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/generate-full-analysis.py` — writes dated `latest-analysis.md`, history archive, `telegram-summary.txt`, and allocation-history JSON from fresh portfolio/prices/X/whale inputs before validator delivery.
-- Crypto full-analysis pipeline: `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/run-full-analysis-pipeline.py --max-x-age-hours 3 --since 1d --limit 5` — canonical 6AM/recovery path; refreshes inputs/X, runs guards, writes artifacts, validates, and returns `CRYPTO_FULL_ANALYSIS_OK` only when safe to send.
-- Pipeline: ~/projects/jt-consulting-pipeline/ | Skill: skills/jt-consulting-pipeline/SKILL.md
-- Outreach pipeline preflight: `python3 scripts/outreach_pipeline_runner.py --json` — deterministic script-first stages for Drive auth, M-status/T3 dedupe, existing draft/doc checks, warm-up holds, and report generation before any LLM copy work.
+## Claude Code Agent Personas
+- Full persona table: `docs/tools/claude-personas.md`.
+- Quick map: frontend, AI/Agentforce, backend, rapid POC, review.
 
-## Salesforce Data Cloud (paired with Agentforce)
-Real-time CDP → Agentforce via Grounding. Also called "Data 360." Flow: Data Streams → DLOs → DMOs → Unified Profiles → Data Graphs. Two paths: (1) Data Libraries (simple) or (2) Manual RAG pipeline. SF-to-SF ingestion free; 2.5M credits bundled in Agentforce Editions. **Full ref:** `docs/tools/salesforce-data-cloud.md`
+## Consulting / Project Agents
+- Project roots: `~/projects/research-agent`, `analysis-agent`, `n8n-agent`, `agentforce-agent`, `crypto-agent`, `job-market-agent`, `ranking-app-agent`.
+- Crypto full-analysis validator/writer/pipeline commands moved to full docs.
+- Consulting pipeline skill: `skills/opticfy-pipeline/SKILL.md`; command details in full docs.
+- Full syntax: `docs/tools/TOOLS-full.md#consulting-pipeline-agents-projects`.
+
+## Salesforce Data Cloud
+- Real-time CDP/Data 360 grounding path for Agentforce; details: `docs/tools/salesforce-data-cloud.md`.
+
 ## Drive Drafts
-- Script: scripts/drive_drafts.py | Account: openclawagenteve14@gmail.com | Root: "Eve — Drafts"
-- **Command:** `cd ~/.openclaw/workspace && python3 scripts/drive_drafts.py --title "[Title]" --path "[path]" --file [path]`
-- Reusing the same title/path now updates the existing Google Doc body. For corrected high-stakes drafts, verify the live Google Doc text after sync, not just the local markdown.
-- Regression: `python3 -m unittest scripts/test_drive_drafts.py`
-- AI Ops teardown bundles: `python3 scripts/ai_ops_teardown_drive_sync.py --json` uploads current teardown + content draft to `Consulting/AI Ops Teardowns/[date]/Teardowns` and `Content/AI Ops Teardowns/[date]/Drafts`.
-- Key paths: client outreach/decks under `Consulting/Clients/[Client]/...`; job docs under `Job Applications/...`; content under `Content/...`; research/frameworks/analysis under same-name folders.
-- Root lookup must use the top-level `Eve — Drafts` folder (`'root' in parents`); duplicate nested `Eve — Drafts` folders are archived drift, not valid upload roots.
-- **Legacy `--project`/`--type`** still works for non-consulting projects (Vista, Nash Satoshi)
+- Script: `scripts/drive_drafts.py`; account root: `Eve - Drafts`.
+- Reusing title/path updates the existing Google Doc. Corrected high-stakes drafts require live doc verification.
+- Full syntax: `docs/tools/TOOLS-full.md#drive-drafts`.
 
-## Mission Control — Task Push
-- Create: `curl -s -X POST http://localhost:3000/api/tasks -H 'Content-Type: application/json' -d '{"title":"[TITLE]","description":"[FIRST ACTION + WHY + DONE]","status":"todo","priority":"[high|medium|low]","assignee":"[jt|eve|both]","project":"[PROJECT]","sortOrder":[N]}'`
-- Check duplicates first: `curl -s http://localhost:3000/api/tasks | python3 -c "import sys,json; [print(t['title']) for t in json.load(sys.stdin)]" | grep -i "[keyword]"`
-- sortOrder bands: high 10-100+, medium 10/20/30..., speculative 500+.
-
-- Client OS template: `skills/opticfy-ops/templates/client-os/` — copy into active client folders.
 ## Consulting Pipeline Drive Sync
-- Script: `python3 ~/.openclaw/workspace/scripts/pipeline_drive_sync.py --slug [slug] --client "[Name]" --stage [deck|outreach|all]`
-- Syncs deck + outreach draft to Google Drive: Eve — Drafts / Consulting / Clients / [Company Name] / Outreach|Decks/
-- Run after deck-built and outreach-drafted stages. Include Drive links in JT's review message.
-- List synced clients: `python3 scripts/pipeline_drive_sync.py --list`
-- **Outreach send confirmation:** `python3 scripts/outreach_update.py --slug [slug] --company "[Name]" --message [M1|M2|M3] --channel [LinkedIn|Email] --date [YYYY-MM-DD]` — updates outreach-draft.md status, pipeline.md, closes "Review + Send" MC task, creates M2/M3 follow-up task. Triggered automatically when JT confirms a send (AGENTS.md rule).
-- **Email pivot automation:** `python3 scripts/outreach_email_pivot.py [--draft|--execute] [--prospect slug] [--min-days N]` — scans outreach-draft.md files for M2-stuck prospects (M2 sent, M3 not sent, 7+ days), generates email pivot draft (different angle from LinkedIn), uploads to Drive, creates Email Pivot MC task. Daily cron at 6:45 AM (UUID: 9d9b165b).
+- Script: `scripts/pipeline_drive_sync.py`; outreach confirmation: `scripts/outreach_update.py`; email pivot: `scripts/outreach_email_pivot.py`.
+- Full syntax: `docs/tools/TOOLS-full.md#consulting-pipeline-drive-sync`.
 
 ## Notion
-- Integration token: [REDACTED - use NOTION_TOKEN in ~/.config/env/global.env]
-- DBs: Viral Post Swipe File `31316aff930580f6a195ca179793eb0e`; Content Calendar `32516aff930581a78659eac869c71ba8`
-- Swipe push: `python3 ~/.openclaw/workspace/scripts/notion-swipe-push.py --text "..." --author "@handle" --url "..." --niche "AI Agents" --format "Hot Take" --why "..." --engagement 1200 --hook "Contrarian claim"`
-- Swipe fetch/reference guard: `python3 scripts/notion-swipe-fetch.py --platform X --niche "AI Consulting" --limit 8 --since-days 30 --fetch-limit 200`; new weekly queues must pass `python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-[MONDAY].md --require-reference-map linkedin --check-notion-script` or `--require-reference-map x`.
-- Calendar push: `python3 ~/.openclaw/workspace/scripts/notion-calendar-push.py --platform "X" --date "YYYY-MM-DD" --post "post text" --type "Planned" --drive-link "URL"`; no `--title` arg.
-- Cron: 3x/week Mon/Wed/Fri 5:30AM EST isolated sonnet — searches X for viral posts, pushes to Notion
-- X Algorithm reference: ~/.openclaw/workspace/docs/x-algorithm.md
+- DBs: Viral Post Swipe File `31316aff930580f6a195ca179793eb0e`; Content Calendar `32516aff930581a78659eac869c71ba8`.
+- Use env `NOTION_TOKEN`; never paste tokens. Push/fetch/calendar command syntax moved to full docs.
+- Cron truth: `Viral Post Swipe File - X Research`, Mon/Wed/Fri 5:45AM ET; model defaults follow cron config, not a standing isolated-sonnet rule.
+- Full syntax: `docs/tools/TOOLS-full.md#notion`.
 
 ## Apps
-- jtsomwaru.com: ~/projects/jtsomwaru-com/ → Vercel
-- Glow Index: Replit | jsomwarux/skincare-rankings | fresh build required before redeploy; full ops commands in `docs/tools/TOOLS-full.md`.
-- Nash Satoshi: jsomwarux/Nash-Satoshi (private)
+- `jtsomwaru.com`: `~/projects/jtsomwaru-com/` -> Vercel.
+- Glow Index: Replit / `jsomwarux/skincare-rankings`; fresh build required before redeploy.
+- Nash Satoshi: `jsomwarux/Nash-Satoshi` private.
+- Full ops details: `docs/tools/TOOLS-full.md#apps`.

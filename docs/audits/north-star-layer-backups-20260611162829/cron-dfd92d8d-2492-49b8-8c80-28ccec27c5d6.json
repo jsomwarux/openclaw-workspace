@@ -1,0 +1,46 @@
+{
+  "id": "dfd92d8d-2492-49b8-8c80-28ccec27c5d6",
+  "agentId": "main",
+  "sessionKey": "agent:main:cron:11835cf6-83d3-4fdf-826a-202f3ec3fa46",
+  "name": "Build Ideas Sync",
+  "enabled": true,
+  "createdAtMs": 1775733510621,
+  "schedule": {
+    "kind": "every",
+    "everyMs": 86400000,
+    "anchorMs": 1775733510621
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "agentTurn",
+    "message": "Run the deterministic build ideas sync script and report its JSON output only. Command: cd /Users/jtsomwaru/.openclaw/workspace && python3 scripts/build_ideas_sync.py. Do not do research. Do not inspect unrelated files. If the script succeeds, summarize pushed/skipped counts in one line. If it fails, report the exact stderr/stdout.",
+    "fallbacks": [],
+    "timeoutSeconds": 300
+  },
+  "delivery": {
+    "mode": "announce",
+    "channel": "telegram",
+    "to": "6608544825"
+  },
+  "failureAlert": {
+    "after": 1,
+    "channel": "telegram",
+    "to": "6608544825",
+    "cooldownMs": 86400000,
+    "mode": "announce"
+  },
+  "state": {
+    "nextRunAtMs": 1781263110621,
+    "lastRunAtMs": 1781176710648,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 10932,
+    "lastDeliveryStatus": "delivered",
+    "consecutiveErrors": 0,
+    "consecutiveSkipped": 0,
+    "lastFailureNotificationDeliveryStatus": "not-requested",
+    "lastDelivered": true
+  },
+  "updatedAtMs": 1781176721580
+}

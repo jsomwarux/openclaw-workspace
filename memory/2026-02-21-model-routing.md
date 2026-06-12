@@ -52,7 +52,7 @@ user: Conversation info (untrusted metadata):
 }
 ```
 
-Here's my XAI/Grok API key: xai-1GeuV7OPRQphqKlSj7JjcQ683jW42Cy7NnSsCKhjWpzF7dGvqW94JooMewhyWKoQFAvJShkofzsc52qN Set up Grok access for X/Twitter research. When I ask "what's trending" or want social media intelligence, route to Grok. It has real-time access to X posts. Also document in TOOLS.md: • Brave Search — General web search, URL discovery • Firecrawl — Full page scraping into markdown (use after Brave finds URLs) • Grok — X/Twitter data, trending topics, real-time social • • QMD — Long-term memory and knowledge base
+Here's my XAI/Grok API key: [REDACTED-XAI_API_KEY] Set up Grok access for X/Twitter research. When I ask "what's trending" or want social media intelligence, route to Grok. It has real-time access to X posts. Also document in TOOLS.md: • Brave Search — General web search, URL discovery • Firecrawl — Full page scraping into markdown (use after Brave finds URLs) • Grok — X/Twitter data, trending topics, real-time social • • QMD — Long-term memory and knowledge base
 assistant: Not a native OpenClaw integration — storing in TOOLS.md. Also noting it can route through OpenRouter as an alternative.
 assistant: [[reply_to_current]] Done. TOOLS.md now has:
 

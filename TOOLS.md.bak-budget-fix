@@ -253,6 +253,6 @@ Include in the task prompt: *"Activate [Agent Name] mode for this session."*
 - Glow Index: Replit | Admin: /admin?key=glowindex-admin-2024-secret | jsomwarux/skincare-rankings
   - ⚠️ **Replit deploy ≠ rebuild.** After pushing code changes to GitHub, JT must trigger a FRESH BUILD on Replit — not just redeploy. Options: (1) Shell tab → `npm run build` → then redeploy, OR (2) Deployments → Redeploy → "Rebuild from scratch." Clicking "Redeploy" without rebuilding reuses the old build and new code won't appear.
   - ⚠️ **Required Replit Secrets:** BRAVE_API_KEY (for image fetch), ADMIN_SECRET (default: glowindex-admin-2024-secret), N8N_WEBHOOK_URL, N8N_CALLBACK_SECRET
-  - **Image backfill (run once after fresh deploy):** `curl -X POST https://skincare-rankings.replit.app/api/fetch-images -H "x-admin-key: glowindex-admin-2024-secret"`
+  - **Image backfill (run once after fresh deploy):** `curl -X POST https://skincare-rankings.replit.app/api/fetch-images -H "x-admin-key: [REDACTED-ADMIN_KEY]"`
   - **Replit deploy checklist:** (1) git pull in Replit, (2) `npm run build` in Shell, (3) Redeploy, (4) run image backfill curl if products have no images
 - Nash Satoshi: jsomwarux/Nash-Satoshi (private)

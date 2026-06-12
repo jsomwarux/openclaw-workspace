@@ -5,7 +5,7 @@ Detailed rules extracted from `HEARTBEAT.md` to keep the bootstrap file below bu
 ## Morning Brief Gates
 - **Staleness:** content/Drive/post tasks updated >7 days ago → skip; expired/deprioritized job apps → skip; one concrete action must reflect current Mission Control reality.
 - **Fresh search:** use `scripts/web_search.py` with freshness filters; do not use managed `web_search` for freshness/date filters.
-- **Daily Nash Satoshi:** fetch `https://nashsatoshi.com/rankings`; if unavailable, skip. Read `docs/x-algorithm.md`, `memory/content-voice.md`, and Nash X optimization rules. Pull Notion swipe refs and X research. Require ≥1 live ranking delta, named token, model disagreement, market context, or methodology proof. Generic hype, copied cadence, proof:none, or repeated ranking-update phrasing → `SKIP_SLOT`. Save output/skip reason to `memory/app-marketing/daily-nash/YYYY-MM-DD.md`. Morning Brief must include full X + Reddit drafts inline when generated.
+- **Daily Nash Satoshi:** fetch `https://nashsatoshi.com/rankings`; if unavailable, skip. Read `docs/x-algorithm.md`, `memory/content-voice.md`, and Nash X optimization rules. Pull Notion swipe refs and X research. Require ≥1 live ranking delta, named token, model disagreement, market context, or methodology proof. Generic hype, copied cadence, proof:none, or repeated ranking-update phrasing → `SKIP_SLOT`. Save output/skip reason to `memory/app-marketing/daily-nash/YYYY-MM-DD.md`. As of JT's 2026-06-11 Phase 5 override, Morning Brief includes only the first 2 lines of the Nash X post and Reddit draft plus file path and Drive link; full text appears only when selected as one of the capped Send Queue items.
 - **Daily @dynastyjig:** read sports-gm skill/targets, latest report/snapshot, and fresh sports/X swipe. Include `Native pattern teardown` + `Rejected generic patterns`. Public drafts need current player/news/market specificity or `SKIP_SLOT`; products stay invisible.
 - **Monday outreach count:** count shortlist M1 sends in past 7 days; alert if <10, mark on track if ≥15.
 - **Monday relationship check:** read `memory/networking/contacts.md` and proof pipeline gates. Flag hot contacts not touched in 7+ days, stale contacts tied to high-priority MC tasks, and overdue next actions. Verify proof/referral gates before surfacing any ask.
@@ -23,6 +23,7 @@ Detailed rules extracted from `HEARTBEAT.md` to keep the bootstrap file below bu
 - Sunday synthesis cross-references high-engagement topics with consulting niches and routes gaps to content, Wednesday LinkedIn case studies, or niche-fitness signals.
 
 ## Weekly Systems Review
+- Open with the North Star scoreboard from `memory/north-star.md`, then report consulting pipeline stage movement, `waiting_on` items older than 7 days from `memory/pipeline.jsonl`, and the six KPI numbers before recommendations.
 - Systems review owns cron health, file budgets, process/config/plugin checks, cost review, training/regression drift, autoresearch enrollment, `memory/future-signals.md`, and passive-income idea pruning.
 - Run `python3 scripts/cron_volume_guard.py`; if it fails, prune/consolidate nonessential schedules or create one explicit Mission Control blocker with the top offending schedules.
 - If a future signal triggers, push a HIGH MC task, move it to Graduated with date+trigger, and report it.

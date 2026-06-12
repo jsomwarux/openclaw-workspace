@@ -26,8 +26,8 @@ NOTION_DB_ID = "32516aff-9305-81a7-8659-eac869c71ba8"
 CONTENT_CRONS = {
     "content-reminder": ["content_distribution_guard.py", "posted-log.jsonl", "content_pending_reply_state.py", "pending-posted-reply.json"],
     "content-sunday": ["posted-log.jsonl", "reply", "posted", "content_pending_reply_state.py", "pending-posted-reply.json"],
-    "content-generate-linkedin": ["content_distribution_guard.py", "Drive", "Notion"],
-    "content-generate-x": ["content_distribution_guard.py", "notion-calendar-push.py", "posted-log.jsonl"],
+    "content-generate-linkedin": ["run_content_guard.sh", "memory/jt-corpus.md", "memory/content/edit-deltas.jsonl", "Drive", "scheduled_in_notion"],
+    "content-generate-x": ["run_content_guard.sh", "memory/jt-corpus.md", "memory/content/edit-deltas.jsonl", "notion-calendar-push.py", "posted-log.jsonl"],
 }
 
 POSTED_REPLY_HANDLER = ROOT / "scripts" / "content_posted_reply_handler.py"

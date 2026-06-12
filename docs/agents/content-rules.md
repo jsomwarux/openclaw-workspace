@@ -12,7 +12,7 @@ Before drafting ANY post or content for JT:
 6. Select 2-4 reference patterns that match the platform + niche + format. Extract the mechanic: hook shape, opening-line move, emotional tension, context, rhythm, reply trigger, proof mechanism, specificity level, CTA type, and why it worked.
 7. Write a `Pattern inputs / Hook mappings from swipe file` section in the draft file before the posts.
 8. Translate the mechanics through JT's voice. Do not copy wording, claims, account persona, or structure wholesale.
-9. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering.
+9. Run the audit checklist at the bottom of `memory/content-voice.md` on every draft before delivering, except where the retired 5:1 ratio conflicts with the first-person-proof rule below.
 10. For every serious saved draft, run `python3 scripts/jt_voice_guard.py [draft-file] --platform linkedin|x`. Rewrite until score is 80+ and no hard-fail problems remain.
 11. For every LinkedIn draft, run the executable stale-pattern guard before delivery: `python3 scripts/content_distribution_guard.py --linkedin-draft [draft-file]`. If it fails, rewrite before showing JT.
 12. AI Ops Teardown Drive hygiene: top-level `Eve — Drafts / Content / LinkedIn / AI Ops Teardowns` must contain one canonical doc per teardown plus `Archive/`. Prep packs, delivery bundles, superseded drafts, and weekly batches must not sit beside canonical teardowns. If local copy changes after upload, update the existing Google Doc body or create a new canonical doc and archive stale copies.
@@ -77,8 +77,8 @@ If fewer than 3 usable current references exist, label the gap and either use ad
 For LinkedIn consulting drafts, raw viral structures must pass through a voice translation layer before generation: convert the winning mechanic into JT's operator voice, add real proof/specificity, remove guru/engagement-bait posture, and prefer concrete workflow detail over generic business outcomes.
 The reference section's `Niche` value must exactly match a lane in `memory/content/current-niche-map.md` or explicitly state `ADJACENT_REFERENCE_ONLY` / `RECENT_SWIPE_GAP`. Do not use legacy shorthand like `AI Consulting`, `NYC SMB`, `Claude Code`, `Vista`, `Glow Index`, `Nash Satoshi`, or `App Marketing` as the saved niche value unless the canonical map lane itself uses that exact name.
 
-New weekly LinkedIn/X queues must pass:
-`python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-[MONDAY].md --require-reference-map linkedin --require-reference-map x --check-notion-script`
+New weekly LinkedIn/X queues must pass the platform guard, preferably through:
+`/Users/jtsomwaru/.openclaw/workspace/scripts/run_content_guard.sh [linkedin|x] [MONDAY]`
 
 
 
@@ -103,7 +103,7 @@ Viral Swipe must search live X with explicit recency and performance filters: `-
 
 ## Core Voice Rules
 - Start with the point, never with setup or preamble
-- "you/your" must outnumber "I/my" 5:1 or better
+- The old "you/your must outnumber I/my 5:1" rule is retired for JT's core channels. First-person proof is encouraged when it carries a verifiable specific: number, artifact, deployment detail, tool decision, or failure.
 - Standalone posts: target 6–15 words
 - No forbidden words (full list in content-voice.md)
 - No em dashes, no exclamation points, no "Here's the thing:" openers
@@ -169,4 +169,5 @@ Rules:
 4. Content reminder/Sunday delivery flows should write `memory/content/pending-posted-reply.json` after sending posts using `python3 scripts/content_pending_reply_state.py --date YYYY-MM-DD --platform linkedin --platform x --source content-reminder` or exact `--entries-json`.
 5. The handler updates `memory/content/posted-log.jsonl`, consumes `memory/content/pending-posted-reply.json` when present, idempotently refuses duplicate mutation, and updates Notion Status to Posted only when exactly one date/platform row matches.
 6. Send the handler's confirmation back to JT.
-7. Full docs: `docs/agents/content-posted-reply-handler.md`.
+7. When JT replies posted: ask once, "any edits? paste final text if changed." If he pastes final text, diff it against the draft and append `{date, platform, draft_excerpt, final_excerpt, delta_summary}` to `memory/content/edit-deltas.jsonl`. If no edits, log `delta_summary: none`. Never fetch from the X API for this.
+8. Full docs: `docs/agents/content-posted-reply-handler.md`.

@@ -60,3 +60,7 @@
 
 2026-06-08 mccarthy-palantir-construction-ai — McCarthy signed a multi-year, multi-million-dollar Palantir AIP partnership to build a connected AI operating system for construction workflows.
 2026-06-08 pace-insurance-ai-operations-series-b — Pace raised $46M to expand AI agents for insurer policy servicing, claims, renewals, and submissions.
+
+2026-06-11 structured-ai-construction-qaqc — Structured AI raised $4.2M for construction QA/QC AI agents with Syska Hennessy testing the platform.
+2026-06-11 enlaye-construction-risk-ai — Enlaye raised $5M to expand AI construction risk analysis connected to project data sources like SharePoint and Autodesk.
+2026-06-11 supply-technologies-automation-investment — Supply Technologies is investing $50M in automated distribution infrastructure and modernization across 70+ warehouses.

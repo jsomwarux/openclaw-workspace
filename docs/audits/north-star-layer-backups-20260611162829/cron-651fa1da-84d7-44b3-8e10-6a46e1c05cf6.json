@@ -1,0 +1,47 @@
+{
+  "id": "651fa1da-84d7-44b3-8e10-6a46e1c05cf6",
+  "agentId": "main",
+  "sessionKey": "agent:main:telegram:direct:6608544825",
+  "name": "outreach-pipeline",
+  "enabled": true,
+  "createdAtMs": 1773264997995,
+  "schedule": {
+    "kind": "cron",
+    "expr": "0 3 * * *",
+    "tz": "America/New_York"
+  },
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "agentTurn",
+    "timeoutSeconds": 900,
+    "message": "You are the script-first JT Somwaru Consulting outreach pipeline.\n\nRequired first action: run exactly this deterministic preflight command before any research or copy generation:\npython3 /Users/jtsomwaru/.openclaw/workspace/scripts/outreach_pipeline_runner.py --json\n\nThen read the generated Markdown report path from the JSON output.\n\nRules:\n- Do not send outreach, submit forms, or create public messages.\n- If drive_auth_ok is false, do not claim Drive upload success. Create one JT-owned HIGH Mission Control task: Fix Google Drive OAuth for outreach drafts, with command python3 /Users/jtsomwaru/.openclaw/workspace/scripts/drive_auth.py and affected local paths.\n- Treat the preflight report as the authority for M-status dedupe, T3 sent flags, warm-up holds, existing local drafts, and existing Drive-link evidence.\n- Only use LLM judgment/copy for a prospect explicitly surfaced by the report as eligible_for_copy_review. If none are eligible, summarize and stop.\n- Review + Send tasks must always be assigned to jt, never eve.\n- No duplicate Drive docs. LinkedIn outreach title standard: [Company] — LinkedIn DM (3-touch).\n- No InMail for M2/M3. M1 only when not connected; M2 connection note; M3/M4 free DM only when connected; email pivot only when connection request was not accepted after 7+ days.\n\nFinal response format:\nOutreach Pipeline - YYYY-MM-DD\nPreflight: [PASS/FAIL]\nReport: [path]\nEligible copy-review items: [N]\nWarm-up holds: [N]\nSkipped as already active/duplicate/T3/template: [N]\nTasks/docs created: [list or None]\nExternal outreach sent: No",
+    "thinking": "high",
+    "lightContext": true
+  },
+  "delivery": {
+    "mode": "none",
+    "channel": "telegram",
+    "to": "6608544825"
+  },
+  "failureAlert": {
+    "after": 1,
+    "channel": "telegram",
+    "to": "6608544825",
+    "cooldownMs": 86400000,
+    "mode": "announce"
+  },
+  "description": "Daily 3:00AM ET — consulting outreach consumer. No routine delivery; failure-alerted. Requires Drive auth preflight and consumes prospect shortlists after 12AM producer buffer. 2026-05-13 sales audit: proof/warm-intro path is priority; cold Review+Send creation remains low-priority and must pass M-status dedup.",
+  "state": {
+    "nextRunAtMs": 1781247600000,
+    "lastRunAtMs": 1781161200031,
+    "lastRunStatus": "ok",
+    "lastStatus": "ok",
+    "lastDurationMs": 26124,
+    "lastDeliveryStatus": "not-requested",
+    "consecutiveErrors": 0,
+    "consecutiveSkipped": 0,
+    "lastFailureNotificationDeliveryStatus": "not-requested"
+  },
+  "updatedAtMs": 1781161226155
+}

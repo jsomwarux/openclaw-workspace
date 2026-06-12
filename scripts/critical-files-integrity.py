@@ -134,6 +134,18 @@ def discover_new_critical_files():
                         new_files.append(str(rel))
     return new_files
 
+def run_cron_snapshot():
+    """Snapshot jobs.json daily through the existing zero-LLM integrity cron."""
+    snapshot_script = WORKSPACE / "scripts/cron_snapshot.py"
+    if not snapshot_script.exists():
+        return False, "CRON_SNAPSHOT_MISSING scripts/cron_snapshot.py"
+    result = subprocess.run(
+        ["python3", str(snapshot_script)],
+        capture_output=True, text=True, timeout=60
+    )
+    output = (result.stdout or result.stderr).strip()
+    return result.returncode == 0, output or f"CRON_SNAPSHOT_EXIT_{result.returncode}"
+
 def main():
     alerts = []
     restored = []
@@ -185,6 +197,11 @@ def main():
         for n in new_found:
             print(f"  {n}")
         print("\nTo add: run 'git log --all --format=\"%H\" -- <file> | head -1' to find the oldest good ref.")
+
+    snapshot_ok, snapshot_output = run_cron_snapshot()
+    print(f"=== Cron Snapshot ===\n  {snapshot_output}")
+    if not snapshot_ok:
+        alerts.append(f"  CRON SNAPSHOT FAILED: {snapshot_output}")
 
     # Exit codes: 0=all OK, 1=wipe detected or restore failed, 2=new files found
     if alerts:

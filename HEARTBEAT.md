@@ -9,7 +9,8 @@ Deliver to JT via Telegram:
 2. Follow `docs/agents/heartbeat-extended-rules.md` Morning Brief gates for staleness, fresh web search, Nash Satoshi, @dynastyjig, Monday outreach/relationship checks, and first-Monday event scouting.
 3. Read `memory/reminders.jsonl` if it exists. Include any reminder whose `date` equals today's America/New_York date; top-priority reminders go at the top of the priorities section.
 4. Read `memory/niche-monitor-latest.md`, `~/projects/job-market-agent/data/daily-brief.md`, run `python3 scripts/cost-tracker.py --brief`, run `python3 health/todays-workout.py`, and check approved Vibe queue items.
-5. Send punchy bullets with one action. Sections: priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash X+Reddit full drafts when generated, Dynasty X, one action.
+5. Read `memory/north-star.md`, `memory/pipeline.jsonl`, and `memory/send-queue.md`. SEND QUEUE ordering is pipeline-advancing first, content second, everything else third. Max 3 finished artifacts; each needs a direct link/path and one-word reply keyword.
+6. Send punchy bullets with one action. Sections: SEND QUEUE (max 3 finished artifacts), priorities, news, niche intel, jobs, costs, workout, vibe queue, Nash X+Reddit excerpts/links when generated, Dynasty X, one action. As of 2026-06-11, Nash full text appears only when it is selected as a capped Send Queue item.
 
 ## Heartbeat (4x/day: 10AM, 2PM, 6PM, 10PM EST, cron)
 1. Check outside active hours → HEARTBEAT_OK

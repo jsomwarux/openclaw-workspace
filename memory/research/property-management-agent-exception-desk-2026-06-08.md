@@ -32,3 +32,22 @@ The strongest claim is not "AI replaces property managers." It is "AI can reduce
 - Kognitos, "AI Automation for Real Estate: Where the Operations Money Goes in 2026" - https://www.kognitos.com/blog/ai-automation-real-estate-operations-2026/
 - Monday.com, "15 best AI platforms for real estate agents and operations teams" - https://monday.com/blog/ai-agents/ai-for-real-estate/
 - DoorLoop, "How to Use AI in Property Management: Use Cases, Tools, and Software" - https://www.doorloop.com/blog/how-to-use-ai-in-property-management
+
+## 2026-06-11 Fresh Addendum
+
+Fresh search reinforced the same buyer direction but made the "agent handoff" language more explicit:
+- AppFolio is positioning Realm-X around assistants, messages, flows, and performers that can pull reports, execute bulk actions, and take over leasing, maintenance, and resident communication workflows.
+- AppFolio-adjacent 2026 coverage now frames AI as active workflow automation for rent collection, maintenance coordination, resident communication, and leasing, not just chat.
+- Buildium's 2026 AI-tools guide keeps the human role clear: AI reduces repetitive admin work so operators can focus on owner relationships, resident experience, and growth.
+- The useful consulting wedge is therefore not "add an AI bot." It is "decide which actions can be delegated, which records must be read/written, and which exceptions need a human approval queue."
+
+PM Front Desk implication for JT:
+- Lead with the workflow-control layer: intake source, system of record, allowed action, exception reason, reviewer, and log.
+- Use AppFolio/Buildium/Yardi/Entrata language as proof that the market accepts embedded AI, but sell the missing middle for smaller operators: scoped handoffs, review queues, and proof that risky actions did not run unattended.
+- For Altmark-style proof, rent delinquency is still a strong first sample because it exposes all the important boundaries: payment status, tenant tone, owner/legal sensitivity, follow-up cadence, and escalation owner.
+
+Sources checked June 11:
+- AppFolio Realm-X - https://www.appfolio.com/ai
+- AppFolio, "Introducing AppFolio Realm-X Performers" - https://www.appfolio.com/articles/performers
+- AppFolio, "Best Property Management Software 2026" - https://www.appfolio.com/blog/best-property-management-softwares-compared-2026
+- Buildium, "7 of the Best AI Property Management Tools in 2026" - https://www.buildium.com/blog/best-ai-property-management-tools/

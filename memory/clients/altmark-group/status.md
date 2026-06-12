@@ -1,6 +1,6 @@
 # Altmark Group — Client Status
 
-Last updated: 2026-05-30
+Last updated: 2026-06-11
 
 ## Client
 - Company: Altmark Group
@@ -52,14 +52,14 @@ Known active/current workflows from JT update:
 - Insurance expiration workflow is live in production and working as expected after a few minor updates.
 - Altmark paid the final 50% for the insurance expiration workflow.
 - Dedicated PC for workflows was installed in Altmark's office last week.
-- Rent delinquency workflow is active: Altmark paid the initial 50%; 2026-05-29 synthetic dry run passed with 8 rows classified into 1 included, 4 manual review, 1 excluded, 2 cleanup, 0 unclassified, and 0 tenant-facing drafts from sensitive/cleanup rows. Next gate is a redacted Altmark source export, source report path/export process, refresh cadence, named output reviewer, and confirmed exception rules.
+- Rent delinquency workflow is active but blocked on Yair: Altmark paid the initial 50%; 2026-05-29 synthetic dry run passed with 8 rows classified into 1 included, 4 manual review, 1 excluded, 2 cleanup, 0 unclassified, and 0 tenant-facing drafts from sensitive/cleanup rows. JT cannot finish, invoice the remaining 50%, or move to the next workflows until Yair sends the source/export/reviewer/cadence/exception-rule inputs.
 - Altmark pitched an additional workflow request: DHCR Lease Renewal Automation Phase 1, legal-rent renewals only. Proposal reviewed and delivery assets prepared. Next step after rent delinquency deployment/testing: confirm $1,750 kickoff payment, populated command center spreadsheet owner/date, current RGB rates, Phase 1 included units/properties, approved email recipients, and DHCR rent rolls for all included properties.
 
 ## Revenue / Payment Status
 - Total proposed buildout: $34,750.
 - Foundation Infrastructure Setup: $4,000, paid in full at kickoff per proposal.
 - Insurance Expiration Tracking: $2,250; launched in production and final 50% paid.
-- Rent Delinquency Outreach: $4,500; initial 50% paid, actively being built/tested.
+- Rent Delinquency Outreach: $4,500; initial 50% paid, remaining $2,250 blocked on Yair sending source/export/reviewer/cadence/exception-rule inputs.
 - Monthly support & maintenance: $1,500/month with 3-month minimum after buildout completion.
 
 ## Timeline From Proposal
@@ -76,7 +76,7 @@ Known active/current workflows from JT update:
 
 ## Immediate Next Actions
 - Update Client OS proof/payment gates to reflect insurance workflow live + paid.
-- For rent delinquency: synthetic testing is complete; use `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md` to request the redacted Altmark sample export and live-sample prerequisites.
+- For rent delinquency: synthetic testing is complete; use `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md` to request/confirm the redacted Altmark sample export and live-sample prerequisites with Yair.
 - 2026-06-06: Plan Review Pack applied to the rent delinquency gate at `proof-assets/rent-delinquency-plan-review-pack-2026-06-06.md`; use it to review source report, reviewer, cadence, exception rules, and proof boundary before first Altmark sample run.
 - 2026-05-29 synthetic dry-run passed: see `client-os/outputs/rent-delinquency-synthetic-smoke-test-log-2026-05-29.md` and `client-os/outputs/rent-delinquency-synthetic-smoke-test-output-2026-05-29.csv`. First Altmark sample remains review-only until source/export/reviewer/exception gates clear.
 - Capture proof-safe evidence from the live insurance workflow: redacted screenshots, run logs, acceptance wording, and before/after workflow summary.
