@@ -3,6 +3,14 @@
 
 ---
 
+## 2026-06-12 — Heartbeat Job Market Pulse
+
+**Read:** Today's job-market brief found no critical alerts and no new 18+/25 role worth interrupting JT. The strongest concrete role-like hit was a remote $240K Tact Healthcare & Life Sciences AI Solutions Architect opening, but it is below JT threshold because the fit depends on deep HCLS/pharma regulatory architecture, HIPAA/CMS/GDPR/ISO/FHIR/HL7 fluency, hyperscaler GenAI, vector/RAG, Snowflake/Databricks, and vertical HCLS IP.
+
+**JT relevance:** The useful signal is positioning, not an application. Demand keeps clustering around governed implementation, vertical constraints, AI infrastructure, integration, and value-led adoption. That supports Altmark/property-ops proof, Mission Control/OpenClaw as operating-system evidence, and the Fable decision to prioritize delivery plus sends over another application branch.
+
+**Action:** No new Mission Control role or build task. Keep Yair packet, Petri/HPM/Superior M2s, NYC PM lookalike list, and Altmark proof draft ahead of job-market work; reuse today's signal only to sharpen resume/portfolio language around governed AI implementation and measurable workflow outcomes.
+
 ## 2026-06-08 — Heartbeat Job Market Pulse
 
 **Read:** Today's job-market brief ran successfully and found no critical alerts and no new 18+/25 actionable role. The strongest signal is Coupa-style agentic target-operating-model language: AI opportunity mapping, readiness audits, autonomous-vs-HITL decisions, COE/governance, and KPI/ROI targets, but the clean role example is UK-only and not a JT application target.

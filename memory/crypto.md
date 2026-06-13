@@ -3,6 +3,14 @@
 
 ---
 
+## Jun 12, 2026 — 12:12PM Heartbeat
+- **Market snapshot:** BTC ~$63.8K (+1.7%), ETH ~$1,666 (+1.2%), SOL ~$67.38 (+2.8%) via CoinGecko spot/24h change. Majors are modestly green and no broad-market alert threshold triggered.
+- **Crypto-agent context:** Today's 6AM run was research/ranking only and explicitly took no trades, transfers, or wallet actions. It kept the live narrative narrow: AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is heavy.
+- **Allocation read from morning run:** The research packet favored `$SURPLUS` 35%, `$WIRE` 25%, `$NOX` 20%, and `$ODAI` 20%, while exiting `$PRXVT`, `$NOOK`, `$GITLAWB`, and `$SIBYL`. `$SURPLUS` stayed the strongest ranked signal, but the filter remains quality of coordination, buy/sell flow, volume, and value capture rather than broad AI-token beta.
+- **JT read:** No immediate alert from this heartbeat. Keep the crypto-agent's manual-decision boundary intact: use the packet as ranking/research, not automated action. Do not chase thin x402/Base microcaps without fresh human-quality X signal plus on-chain/volume confirmation.
+
+---
+
 ## Jun 11, 2026 — 12:31PM Heartbeat
 - **Market snapshot:** BTC ~$62.5K, ETH ~$1,639, SOL ~$65.31. BTC is bouncing inside the day's range after opening near ~$61.5K; ETH is still soft and SOL is only modestly green. This is selective BTC strength, not broad alt confirmation.
 - **Fresh market read:** CoinDesk's June 11 framing is that BTC is holding a technical level ETH/SOL have not matched, while June 10 coverage tied the latest crypto drawdown to broader AI/risk-off selling rather than a single crypto-native catalyst.

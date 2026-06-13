@@ -1,0 +1,457 @@
+{
+  "user": {
+    "username": "mycomradio",
+    "name": "Nik",
+    "created_at": "2007-11-11T21:52:52.000Z",
+    "id": "10163162",
+    "public_metrics": {
+      "followers_count": 2369,
+      "following_count": 3086,
+      "tweet_count": 5542,
+      "listed_count": 39,
+      "like_count": 1514,
+      "media_count": 319
+    },
+    "description": "Farther of 2. AI Builder (TACIT app). EIR in enterprise, bringing HRtech AI expertise to VC/PE. My own opinions & random quotes (#quoteserious). Angel investor."
+  },
+  "tweets": [
+    {
+      "id": "2065324727540077026",
+      "text": "#Tacitapp is welcoming you with context https://t.co/VUtjlpbmta",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-12T06:46:01.000Z",
+      "conversation_id": "2065324727540077026",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/mycomradio/status/2065324727540077026/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "Tacitapp"
+      ],
+      "tweet_url": "https://x.com/mycomradio/status/2065324727540077026"
+    },
+    {
+      "id": "2065299856202338491",
+      "text": "Cerenovus (YC S26): Harvard Sophomores Building the \"Company Brain\" Literally Three Harvard sophomores in YC S26 building a company brain that aggregates every file a company produces — docs, PDFs, emails, Slack, spreadsheets, meeting notes — and converts them into a single",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-12T05:07:11.000Z",
+      "conversation_id": "2065299856202338491",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 28,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2065299856202338491"
+    },
+    {
+      "id": "2065299660047270238",
+      "text": "The AI Agent Funding Bubble — Capital Concentrating at the Top New analysis reveals the average agentic AI round hit $155M in late 2025/early 2026, nearly double the $82M average from H1 2025. But the vast majority of VC dollars flow into a small elite group of core",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-12T05:06:25.000Z",
+      "conversation_id": "2065299660047270238",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 11,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2065299660047270238"
+    },
+    {
+      "id": "2065292419088982142",
+      "text": "Salesforce Agent Fabric Context Catalog Goes GA — First Unified Governance for Agents + Data Salesforce integrated Agent Fabric with Informatica's Cloud Data Governance &amp; Catalog to create Agent Fabric Context Catalog — a unified governance control plane for AI services and data",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-12T04:37:38.000Z",
+      "conversation_id": "2065292419088982142",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2065292419088982142"
+    },
+    {
+      "id": "2065225455188230387",
+      "text": "Cool overview of the Work tech and HR tech investments and trends \n\nhttps://t.co/4Up169WlEM",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-12T00:11:33.000Z",
+      "conversation_id": "2065225455188230387",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://open.substack.com/pub/niksobolev/p/the-hr-tech-m-and-a-map-h1-2026?utm_source=share&utm_medium=android&r=q98n"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2065225455188230387"
+    },
+    {
+      "id": "2064869242709668244",
+      "text": "STARTUP PROFILE: Jedify\n• HQ: New York\n• Founded: ~2024\n• Total raised: $33M+\n• Product: Context graphs via \"Semantic Fusion\" — automated semantic models combining structured + unstructured enterprise data\n• Key tech: Patent-pending. Model-agnostic. Real-time updates.",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-11T00:36:05.000Z",
+      "conversation_id": "2064869242709668244",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 25,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2064869242709668244"
+    },
+    {
+      "id": "2064852972983455869",
+      "text": "Jedify Raises $24M Series A for Context Graphs — Snowflake Ventures Backs It\nNew York-based Jedify raised $24M Series A led by Norwest, with strategic investment from Snowflake Ventures and participation from S Capital, Cerca Partners, and Oceans Ventures ($33M+ total). Jedify",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-10T23:31:26.000Z",
+      "conversation_id": "2064852972983455869",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 25,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2064852972983455869"
+    },
+    {
+      "id": "2064490351117922654",
+      "text": ".@gokulr oh https://t.co/TgxVvCxVli",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-09T23:30:30.000Z",
+      "conversation_id": "2064490351117922654",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 15,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/mycomradio/status/2064490351117922654/photo/1"
+      ],
+      "mentions": [
+        "gokulr"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2064490351117922654"
+    },
+    {
+      "id": "2064487636740493353",
+      "text": "The WWDC Claude integration is a sleeper hit for the context graph thesis. If Claude becomes the default AI backend on iOS/macOS, every context graph startup building on Claude's MCP ecosystem gets indirect access to billions of devices. The distribution question — \"who owns the",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-09T23:19:43.000Z",
+      "conversation_id": "2064487636740493353",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 54,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2064487636740493353"
+    },
+    {
+      "id": "2064484686748086724",
+      "text": "@gokulr oh https://t.co/GCy8vLVlCb",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-09T23:08:00.000Z",
+      "conversation_id": "2064484686748086724",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/mycomradio/status/2064484686748086724/photo/1"
+      ],
+      "mentions": [
+        "gokulr"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2064484686748086724"
+    },
+    {
+      "id": "2064337264268730640",
+      "text": "The Agentic AI Platform War: Who Controls Enterprise Memory, Context, and Action?\nWindowsNews published a definitive analysis: the battle has shifted from \"who has the best model\" to who owns the agentic client — the chokepoint controlling enterprise memory, context, and",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-09T13:22:11.000Z",
+      "conversation_id": "2064337264268730640",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 23,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2064337264268730640"
+    },
+    {
+      "id": "2064331244742078877",
+      "text": "Tacit logo https://t.co/E5lpS5iMu4",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-09T12:58:16.000Z",
+      "conversation_id": "2064331244742078877",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 13,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/mycomradio/status/2064331244742078877/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2064331244742078877"
+    },
+    {
+      "id": "2064331074184880238",
+      "text": "Apple WWDC: Claude Integrated into Apple Intelligence — 2.2B Device Distribution Play\nApple rebuilt Siri with a custom 1.2T-parameter Gemini model under a ~$1B/year Google deal. But the real story: iOS 27 lets users choose ChatGPT, Gemini, or Claude as their AI backend. Claude",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-09T12:57:36.000Z",
+      "conversation_id": "2064331074184880238",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 84,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2064331074184880238"
+    },
+    {
+      "id": "2063456928991154415",
+      "text": "Flourish — $500M at $2.5B (Brain-Inspired AI)\nLed by Lux Capital and GV, with ~$100M from Jeff Bezos personally. Building brain-inspired AI architectures. The bet: current transformer architectures hit a wall on reasoning; neuromorphic approaches will power the next generation of",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-07T03:04:03.000Z",
+      "conversation_id": "2063456928991154415",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 49,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2063456928991154415"
+    },
+    {
+      "id": "2063456681879560469",
+      "text": "Colrows\n• Product: Semantic Execution Layer — typed, versioned semantic graph for enterprise AI\n• Thesis: Every business object needs a semantic identity agents can reason over\n• Differentiator: Not just storing context, but making it executable — agents can traverse the graph",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-07T03:03:04.000Z",
+      "conversation_id": "2063456681879560469",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 13,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2063456681879560469"
+    },
+    {
+      "id": "2063350848843890806",
+      "text": "In the future everyone will come to work with their own context agent https://t.co/eqrKYPDAvL",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-06T20:02:32.000Z",
+      "conversation_id": "2063350848843890806",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 11,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/alliekmiller/status/2025963360622100550"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2063350848843890806"
+    },
+    {
+      "id": "2062979796590563388",
+      "text": "Snowflake Summit 2026 is the week \"context\" went from thesis to product SKU. Snowflake (Horizon Context), Atlan (Context Lakehouse), Arango (AutoGraph), RelationalAI (Rel App), and Open Semantic Exchange all shipped in the same 72 hours. The governed context layer is now the",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-05T19:28:06.000Z",
+      "conversation_id": "2062979796590563388",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 33,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2062979796590563388"
+    },
+    {
+      "id": "2062944620326097226",
+      "text": "HackerNoon: \"Context Graphs, Ontologies, and the Race to Fix Enterprise AI\"\n\nHackerNoon published a comprehensive piece mapping the ontology debate in context graphs — prescribed ontologies (Palantir-style) vs. learned ontologies that emerge from actual work patterns. The piece",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-05T17:08:19.000Z",
+      "conversation_id": "2062944620326097226",
+      "metrics": {
+        "likes": 0,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 317,
+        "bookmarks": 2
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2062944620326097226"
+    },
+    {
+      "id": "2062887649443016922",
+      "text": "Atlan's Context Lakehouse Hits 8 Billion Reads in 90 Days\n\nAtlan revealed that its \"Context Lakehouse\" logged 8 billion reads in just 90 days — a unified context layer accessible via MCP, API, or SQL by engines like Cortex, Genie, Claude, and Codex. Their \"Context Agents\"",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-05T13:21:56.000Z",
+      "conversation_id": "2062887649443016922",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 31,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2062887649443016922"
+    },
+    {
+      "id": "2062887408794796222",
+      "text": "Snowflake Summit 2026: \"Context\" Is Now the Product\n\nSnowflake shipped Horizon Context — a governed context layer for AI, BI, and apps — making \"context\" an official product category in the enterprise data stack. Key features: Semantic Studio (define shared business logic without",
+      "author_id": "10163162",
+      "username": "mycomradio",
+      "name": "Nik",
+      "created_at": "2026-06-05T13:20:59.000Z",
+      "conversation_id": "2062887408794796222",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 52,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mycomradio/status/2062887408794796222"
+    }
+  ]
+}

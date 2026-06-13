@@ -133,3 +133,10 @@ Next unblocked JT action: review/post the AI Ops Teardown and log the posted URL
 - Nightly asset created: `memory/clients/altmark-group/proof-assets/post-install-acceptance-sheet-2026-05-19.md`.
 - Active JT-only action: use `memory/clients/altmark-group/proof-assets/monday-closeout-sheet-2026-05-25.md` if no weekend reply exists to confirm installed PC access, insurance workflow acceptance/live usefulness, open issues, insurance payment/final approval, rent-delinquency deposit timing, and clean sample report owner/date.
 - Referral ask remains blocked until acceptance/payment clarity and redacted proof capture are complete.
+
+## 2026-06-12 North Star Audit Update
+- Real bottleneck: no repeatable acquisition system. Altmark is still the fastest cash lane, but relying on one client inbox is the structural failure mode.
+- This week's acquisition quota: 10 sends/week, starting with Petri/HPM/Superior M2s and then property-management lookalikes.
+- Default offer ladder: Ops Bottleneck Audit ($1,500), One Workflow Live ($3,500-$6,500), Ops Copilot Retainer ($1,500-$2,500/mo), Productized Verticals ($4,500-$6,000).
+- Lead positioning for property ops: "I install the back-office automations property managers wish AppFolio had - built, supervised, monitored."
+- Pipeline dashboard requirement: stage, weighted dollars, days-in-stage, blocked-on-client flag, and 48h/96h escalation timers.

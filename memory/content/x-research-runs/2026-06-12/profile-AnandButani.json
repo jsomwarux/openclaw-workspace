@@ -1,0 +1,261 @@
+{
+  "user": {
+    "name": "Anand Butani",
+    "username": "AnandButani",
+    "public_metrics": {
+      "followers_count": 1393,
+      "following_count": 1354,
+      "tweet_count": 20189,
+      "listed_count": 19,
+      "like_count": 16819,
+      "media_count": 1189
+    },
+    "created_at": "2013-08-05T22:21:30.000Z",
+    "id": "1648787052",
+    "description": "💻 Simplifying Claude Code & Cursor\n⚙️ Agentic Engineering | Product Management \n🚀 Speeding Up Enterprises & Startups"
+  },
+  "tweets": [
+    {
+      "id": "2065159832798118095",
+      "text": "🚨 Anthropic, the company behind Claude,  just committed $150 million to put 1,000 people inside nonprofits across America. \n\nTheir job: help those organizations actually use AI.\n\nHere's the gap they're trying to close 👇️ \n\nAI tools exist. They're powerful, widely available, https://t.co/IlEkmROoco",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-11T19:50:47.000Z",
+      "conversation_id": "2065159832798118095",
+      "metrics": {
+        "likes": 12,
+        "retweets": 8,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 588,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2065159832798118095/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2065159832798118095"
+    },
+    {
+      "id": "2065070141126115716",
+      "text": "🚀 Claude skills for almost any task!\n\n2-min way to find one:\n\n1. Name task in 1 sentence\n2. Run /skills\n3. Check https://t.co/fwPOAvnr0m or awesome-claude-code GitHub\n4. Install to ~/.claude/skills/\n5. No match? Create text file\n\nStop reinventing!\n\nWhich one first? 👇 https://t.co/y4ZnafwCj5",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-11T13:54:23.000Z",
+      "conversation_id": "2065070141126115716",
+      "metrics": {
+        "likes": 12,
+        "retweets": 8,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 234,
+        "bookmarks": 11
+      },
+      "urls": [
+        "http://skills.sh",
+        "https://x.com/AnandButani/status/2065070141126115716/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2065070141126115716"
+    },
+    {
+      "id": "2064781162136908159",
+      "text": "🚨 Most CLAUDE.md files are written like boring docs. \n\nClaude reads them like strict instructions.\n\nOne simple fix changes everything:\n\nEvery single line starts with a verb.\n\n“Code quality standards” = instantly ignored ❌️ \n“Always run the linter before editing any file” = https://t.co/hjcu9eGIRl",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-10T18:46:05.000Z",
+      "conversation_id": "2064781162136908159",
+      "metrics": {
+        "likes": 15,
+        "retweets": 10,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 480,
+        "bookmarks": 15
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064781162136908159/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2064781162136908159"
+    },
+    {
+      "id": "2064722755077960172",
+      "text": "🔥 Anthropic just dropped Claude Fable 5 and Mythos 5 \n\nCoding. Drug design. Finance.\n\nAll state-of-the-art. Read the full breakdown 🧵 \n\nWhich one are you trying first?\n\n#AI #Claude #Tech https://t.co/IZdb90MrTN",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-10T14:54:00.000Z",
+      "conversation_id": "2064722755077960172",
+      "metrics": {
+        "likes": 11,
+        "retweets": 8,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 357,
+        "bookmarks": 10
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064722755077960172/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "AI",
+        "Claude",
+        "Tech"
+      ],
+      "tweet_url": "https://x.com/AnandButani/status/2064722755077960172"
+    },
+    {
+      "id": "2064414761677119668",
+      "text": "Apple just quietly gave Claude 2.5 BILLION potential users.\n\nEveryone’s talking about the Siri/Gemini headline from WWDC.\n\nBut the real move? iOS 27 now ships with Extensions.\n\nOne toggle in Settings → Claude becomes the default AI across:\n\n➡️ Writing Tools\n➡️Image Playground https://t.co/8PSyozS8XC",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-09T18:30:08.000Z",
+      "conversation_id": "2064414761677119668",
+      "metrics": {
+        "likes": 12,
+        "retweets": 8,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 681,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064414761677119668/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2064414761677119668"
+    },
+    {
+      "id": "2064358547262247122",
+      "text": "https://t.co/8jDyR7U36F",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-09T14:46:46.000Z",
+      "conversation_id": "2064358547262247122",
+      "metrics": {
+        "likes": 12,
+        "retweets": 8,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1019,
+        "bookmarks": 11
+      },
+      "urls": [
+        "http://x.com/i/article/2064357926857555969"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2064358547262247122"
+    },
+    {
+      "id": "2064069978236534916",
+      "text": "1/ CLAUDE NOW WRITES 80% OF ANTHROPIC'S CODE\n\n4 data points showing exactly how fast recursive self-improvement is moving. 🧵\n\nWhich stat hits hardest? Reply below 👇️ \n \n #AI #ClaudeCode #Anthropic https://t.co/yiQ9uWzgVx",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-08T19:40:06.000Z",
+      "conversation_id": "2064069978236534916",
+      "metrics": {
+        "likes": 16,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 729,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064069978236534916/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "AI",
+        "ClaudeCode",
+        "Anthropic"
+      ],
+      "tweet_url": "https://x.com/AnandButani/status/2064069978236534916"
+    },
+    {
+      "id": "2064019094160986602",
+      "text": "🔥 1/ Tips to get the most use out of Claude Code from day one. \n\nCopy this before your first session. Which one are you using first? \n\n#ClaudeCode #VibeCoding https://t.co/iZ5kdlmwUR",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-08T16:17:54.000Z",
+      "conversation_id": "2064019094160986602",
+      "metrics": {
+        "likes": 12,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 462,
+        "bookmarks": 13
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064019094160986602/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "ClaudeCode",
+        "VibeCoding"
+      ],
+      "tweet_url": "https://x.com/AnandButani/status/2064019094160986602"
+    },
+    {
+      "id": "2062976758392000691",
+      "text": "POV: you almost scroll past the Anthropic Managed Agents launch\n\nThen you notice: overnight agents, self-hosted sandboxes, private MCP tunnels, usage-based billing, bring-your-own-infra. \n\nMost of it usable by a solo builder today.\n\nWhich one hits your workflow first? Reply below https://t.co/NAInk4e2SP",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-05T19:16:02.000Z",
+      "conversation_id": "2062976758392000691",
+      "metrics": {
+        "likes": 15,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 546,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2062976758392000691/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2062976758392000691"
+    },
+    {
+      "id": "2062897591872844017",
+      "text": "1/ Anthropic, OpenAI, and Cursor all shipped agent orchestration in the IDE. \n\nThe IDE is no longer a text editor. It's an agent runtime that happens to render text.\n\nMost teams haven't noticed. The ones who have are restructuring around it.\n\nAgree or disagree? Reply with your https://t.co/2QMI9WJCIa",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-05T14:01:27.000Z",
+      "conversation_id": "2062897591872844017",
+      "metrics": {
+        "likes": 11,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 357,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2062897591872844017/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2062897591872844017"
+    }
+  ]
+}

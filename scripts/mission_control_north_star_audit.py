@@ -36,9 +36,6 @@ TOP_RULES: list[tuple[str, int, str]] = [
     ("Altmark: capture redacted proof screenshots", 2, "Insurance workflow is live and paid; capture proof-safe evidence while fresh."),
     ("Altmark: provide new workflow proposal", 3, "Next paid Altmark workflow after rent delinquency; proposal review is required before delivery planning."),
     ("Fix weekly systems review drift", 5, "Critical operating-layer blocker: cron cap, gateway load, bootstrap budgets."),
-    ("ReelFarm/TikTok: design warm-up", 20, "Current app marketing blocker: direct slideshow posting is producing 0-view/shadow-ban behavior."),
-    ("ReelFarm Intel: synthesize results", 21, "Convert ReelFarm Intel into actual app-specific settings/prompt changes before resuming posting."),
-    ("Action Arena: prepare App Store launch marketing checklist", 24, "Action Arena is nearly finished; launch marketing must be ready before App Store approval."),
 ]
 
 # Weekly single-focus guard. The North Star active-week file is the owner of the
@@ -81,6 +78,16 @@ SPECULATIVE_PRODUCT_PATTERNS = [
     "Video Agent",
     "fantasy app",
     "Action Arena",
+]
+
+FABLE_DEFERRED_LANE_PATTERNS = [
+    "Guyana summit",
+    "Guyana growth resume",
+    "Guyana:",
+]
+
+FABLE_APP_FREEZE_MONITORING_PATTERNS = [
+    "Glow Index: define metrics source before any TikTok/ReelFarm volume",
 ]
 
 # Tasks that should exist as a single active card at a time. Recurring tasks can
@@ -236,6 +243,26 @@ def desired_for(task: dict[str, Any]) -> tuple[dict[str, Any] | None, str | None
             "description": add_task_contract(task, reason) if not has_structured_task_contract(desc) else append_note(desc, note),
         }, "demote skill/job-market noise"
 
+    if contains_any(title, FABLE_DEFERRED_LANE_PATTERNS):
+        note = "Demoted by daily North Star audit: Fable audit classified Guyana as validation-only until a named buyer/problem/reply exists."
+        reason = "Guyana work should not outrank Altmark cash, proof, or the active consulting acquisition queue unless there is a fresh named buyer/problem/reply."
+        deferred_priority = "low" if task.get("priority") == "low" else "medium"
+        deferred_sort = 230 if deferred_priority == "low" else 180
+        return {
+            "priority": deferred_priority,
+            "sortOrder": deferred_sort,
+            "description": add_task_contract(task, reason) if not has_structured_task_contract(desc) else append_note(desc, note),
+        }, "demote Fable-deferred Guyana lane"
+
+    if contains_any(title, FABLE_APP_FREEZE_MONITORING_PATTERNS):
+        note = "Demoted by daily North Star audit: Glow is in data-accrual freeze; keep one monitoring/setup task only, below consulting cash/proof."
+        reason = "Glow metrics setup may support later learning, but it should not compete with Altmark cash, proof, or consulting sends during the Fable product freeze."
+        return {
+            "priority": "low",
+            "sortOrder": 130,
+            "description": add_task_contract(task, reason) if not has_structured_task_contract(desc) else append_note(desc, note),
+        }, "demote Glow freeze monitoring"
+
     if contains_any(title, SPECULATIVE_PRODUCT_PATTERNS):
         note = "Demoted by daily North Star audit: speculative product/build work cannot outrank consulting cash/proof or current distribution actions."
         reason = "speculative build work must be explicitly selected before it consumes attention ahead of consulting cash, proof, or current app distribution."
@@ -264,6 +291,8 @@ def canonical_duplicate_key(title: str) -> str | None:
         return "weekly_unemployment_certification"
     if "clean buyer" in lower and "channel state" in lower and "outreach" in lower:
         return "clean_buyer_channel_state"
+    if "glow index: define metrics source before any tiktok/reelfarm volume" in lower:
+        return "glow_metrics_source"
     return None
 
 

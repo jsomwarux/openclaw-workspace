@@ -94,3 +94,11 @@ Consulting outreach should reuse the strongest relevant proof point when availab
 ## 2026-05-13 proof-led acquisition packet
 
 The property insurance expiration teardown now has a send-ready acquisition packet at `memory/consulting/proof-led-acquisition-packet-2026-05-13.md`. Use it to publish the teardown with a diagnostic CTA and route replies into the Property / Family-Office AI Operations Diagnostic. Do not add named Altmark proof or ROI claims until proof gates clear.
+
+## 2026-06-12 Proof Engine Update
+- Separate proof into public, private, referral, and sales proof.
+- Public proof: anonymized case studies, shipped-artifact posts, silent-failure lessons after permission/anonymization gates.
+- Private proof: case-study one-pagers, short Loom/demo walkthroughs, anonymized architecture diagrams for outreach packets.
+- Referral proof: Yair testimonial/referral ask only after acceptance and proof-safe boundaries clear.
+- Sales proof: before/after ledger per workflow with artifacts for hours saved, days-to-first-contact, lapses caught, row counts, or exception handling.
+- Standing evidence rule: every numeric or client-facing claim needs an artifact link, screenshot, log line, or explicit unverified flag.

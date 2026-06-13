@@ -1,0 +1,464 @@
+{
+  "generated_at": "2026-06-12T12:47:56.879458-04:00",
+  "enabled_jobs": 49,
+  "estimated_weekly_invocations": 198.45999999999998,
+  "estimated_daily_average": 28.35,
+  "unknown_schedule_estimates": [
+    "Reminder: YouTube TV midday"
+  ],
+  "dense_clusters": {
+    "6:45 America/New_York": [
+      "outreach-email-pivot-daily",
+      "content-generate-linkedin"
+    ],
+    "7:0 America/New_York": [
+      "Skills & API Researcher \u2014 Weekly Synthesis",
+      "weekly-unemployment-cert"
+    ],
+    "8:0 America/New_York": [
+      "content-reminder",
+      "Weekly Intelligence Synthesis",
+      "app-marketing-weekly-scoreboard",
+      "Monthly Goal-Skills Gap Analysis"
+    ],
+    "9:0 America/New_York": [
+      "critical-files-integrity",
+      "content-sunday",
+      "content-generate-x",
+      "Niche Intelligence Monitor",
+      "Sports GM Weekly Market Report"
+    ],
+    "11:30 America/New_York": [
+      "Skills & API Researcher \u2014 Daily Scan",
+      "reddit-daily-gen"
+    ],
+    "12:0 America/New_York": [
+      "Crypto Midday Pulse (12 PM)",
+      "guyana-economic-opportunity-monitor"
+    ],
+    "9:30 America/New_York": [
+      "Daily News Hook",
+      "Monthly Niche Fitness Review"
+    ]
+  },
+  "missing_failure_alerts": [
+    "TikTok App Account Warm-up Reminder (2 PM)",
+    "Night Autonomy Agent",
+    "Reminder: YouTube TV midday"
+  ],
+  "delete_after_run": [],
+  "announce_jobs_without_empty_guard_hint": [
+    "Health Check-in (Pattern-Focused)",
+    "Night Autonomy Agent",
+    "Skills & API Researcher \u2014 Weekly Synthesis",
+    "Daily DynastyJig Niche-Growth X Post Pack",
+    "dynasty-replies-gen",
+    "reddit-daily-gen",
+    "weekly-unemployment-cert",
+    "Weekly Intelligence Synthesis",
+    "content-sunday",
+    "Weekly Strategic Gut-Check",
+    "AI Ops Teardown Weekly Draft",
+    "vibe-marketing-generate",
+    "content-generate-linkedin",
+    "app-marketing-weekly-scoreboard",
+    "content-generate-x",
+    "Reminder: YouTube TV midday",
+    "Monthly Goal-Skills Gap Analysis",
+    "Monthly Niche Fitness Review"
+  ],
+  "rows": [
+    {
+      "id": "8033e775-29d2-42f2-83e9-1392352f6493",
+      "name": "TikTok App Account Warm-up Reminder (2 PM)",
+      "expr": "0 14 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": false,
+      "delivery": "none"
+    },
+    {
+      "id": "f18cace3-b9e9-4d99-a7a3-625bb121b30c",
+      "name": "Pending Task Processor",
+      "expr": "30 10,14,18,22 * * *",
+      "weekly_estimate": 28,
+      "failure_alert": true,
+      "delivery": null
+    },
+    {
+      "id": "a97df783-31c5-4269-a4f0-3ece75af838d",
+      "name": "ReelFarm Daily Strategy Intel",
+      "expr": "15 17 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "evening-digest-001",
+      "name": "Evening Digest",
+      "expr": "0 19 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "eve-crypto-evening-010",
+      "name": "Crypto Evening Pulse (9 PM)",
+      "expr": "30 20 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "6be7f564-5cec-47e7-b67c-9b2fcc3ed8de",
+      "name": "Health Check-in (Pattern-Focused)",
+      "expr": "0 21 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "f146d8b8-94e0-49ff-8e4a-5050a284e894",
+      "name": "Night Autonomy Agent",
+      "expr": "0 23 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": false,
+      "delivery": "announce"
+    },
+    {
+      "id": "651fa1da-84d7-44b3-8e10-6a46e1c05cf6",
+      "name": "outreach-pipeline",
+      "expr": "0 3 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "eve-job-market-daily-005",
+      "name": "Job Market Daily Research",
+      "expr": "15 5 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "f368e18b-1723-47ad-9164-94e95c106902",
+      "name": "passive-income-fetch-signals",
+      "expr": "30 5 * * 6",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "eve-crypto-morning-008",
+      "name": "Crypto Full Analysis (6 AM)",
+      "expr": "0 6 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "b2357bd5-651d-4151-80df-49e4a928826f",
+      "name": "Job Application Auto-Builder",
+      "expr": "15 6 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "9d9b165b-a52f-4dc6-bc02-58f154bcff06",
+      "name": "outreach-email-pivot-daily",
+      "expr": "45 6 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "05024e45-57fc-4e7c-a236-660e6eb5393f",
+      "name": "Skills & API Researcher \u2014 Weekly Synthesis",
+      "expr": "0 7 * * 6",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "eve-morning-brief-001",
+      "name": "Morning Brief",
+      "expr": "30 7 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "5e66b4ee-aee3-497d-90ba-7aad670970a3",
+      "name": "content-reminder",
+      "expr": "0 8 * * 2,3,4,5,6",
+      "weekly_estimate": 5,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "1e614c8a-adb8-4a02-b35f-3031db55b337",
+      "name": "Daily DynastyJig Niche-Growth X Post Pack",
+      "expr": "30 8 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "ee357abb-2b58-44b8-8f03-4c152611117d",
+      "name": "critical-files-integrity",
+      "expr": "0 9 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "8b968751-6e59-42e5-b2ce-09f57d36176c",
+      "name": "dynasty-replies-gen",
+      "expr": "0 11 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "4c437ff5-02cd-4288-8e6e-6e6fc07203ce",
+      "name": "Skills & API Researcher \u2014 Daily Scan",
+      "expr": "30 11 * * 1-6",
+      "weekly_estimate": 6,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "bbe49024-458a-4496-9c7c-7a278615810f",
+      "name": "reddit-daily-gen",
+      "expr": "30 11 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "eve-crypto-midday-009",
+      "name": "Crypto Midday Pulse (12 PM)",
+      "expr": "0 12 * * *",
+      "weekly_estimate": 7,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "ebb843af-e752-4c65-923d-540d5ff5ad3f",
+      "name": "prospect-discovery",
+      "expr": "0 0 * * 0,3",
+      "weekly_estimate": 2,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "ac53b979-44c6-481b-b2aa-7cb9203e6476",
+      "name": "weekly-unemployment-cert",
+      "expr": "0 7 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "eve-weekly-synthesis-007",
+      "name": "Weekly Intelligence Synthesis",
+      "expr": "0 8 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "d918122d-d58c-4985-a181-126cfd7e6be7",
+      "name": "content-sunday",
+      "expr": "0 9 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "eve-health-report-004",
+      "name": "Weekly Health Report",
+      "expr": "20 9 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "b2ca53ab-0c07-4a22-8424-9d39bf988405",
+      "name": "Weekly Systems Review",
+      "expr": "0 10 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "39435f7a-1102-49f0-8eec-4f7e0c38e7d5",
+      "name": "passive-income-scout",
+      "expr": "0 13 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "922082ee-da62-4b6e-b9e3-909c3446e381",
+      "name": "passive-income-strategist",
+      "expr": "0 15 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "e7d45070-1443-4cca-9776-8b016d97e225",
+      "name": "passive-income-strategist-delivery-guard",
+      "expr": "20 15 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "bb0819d0-8900-4e2a-99a2-28ab950365ab",
+      "name": "ReelFarm Weekly Strategy Synthesis",
+      "expr": "0 17 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "29772d9b-e007-4f62-9df9-e80b73d0cd21",
+      "name": "Weekly North Star Command Center",
+      "expr": "0 18 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "d5290646-02a4-4682-9efe-d6577316e8fc",
+      "name": "Weekly Strategic Gut-Check",
+      "expr": "30 18 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "f96cc24f-55e6-4064-a075-b897156a22f2",
+      "name": "AI Ops Teardown Weekly Draft",
+      "expr": "15 19 * * 0",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "870bf3ff-55c9-49c0-9970-361c81a0920b",
+      "name": "vibe-marketing-generate",
+      "expr": "45 4 * * 1",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "33b8b0a2-e86c-4f51-aa4f-b8537def3107",
+      "name": "Viral Post Swipe File \u2014 X Research",
+      "expr": "45 5 * * 1,3,5",
+      "weekly_estimate": 3,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "fe984519-ec58-4c6e-a096-9ac425f735a3",
+      "name": "content-generate-linkedin",
+      "expr": "45 6 * * 1",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "c7033613-feec-456c-b72b-135beaa89fe2",
+      "name": "app-marketing-weekly-scoreboard",
+      "expr": "0 8 * * 1",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "cb8f29dd-0db1-4abd-b87e-3e7168ca4a97",
+      "name": "content-generate-x",
+      "expr": "0 9 * * 1",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "eve-niche-monitor-006",
+      "name": "Niche Intelligence Monitor",
+      "expr": "0 9 * * 1-5",
+      "weekly_estimate": 5,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "4a70dda4-da77-4437-9e1d-9c3001e9e1f9",
+      "name": "Daily News Hook",
+      "expr": "30 9 * * 1-5",
+      "weekly_estimate": 5,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "ec9f36d3-3bf8-4bc9-a4b1-06aa886a24ff",
+      "name": "Autoresearch Sweep",
+      "expr": "15 11 * * 1,3,5",
+      "weekly_estimate": 3,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "d401b26a-bcde-44ba-9689-4ded28ac2b0e",
+      "name": "guyana-economic-opportunity-monitor",
+      "expr": "0 12 * * MON",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "008a349c-af59-4e6b-88bb-97f65dba61c6",
+      "name": "Sports GM Weekly Market Report",
+      "expr": "0 9 * * 2",
+      "weekly_estimate": 1,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "b0b04601-7518-4681-9761-4bbe5054ce9b",
+      "name": "Job Application Tracker",
+      "expr": "15 10 * * 2,4",
+      "weekly_estimate": 2,
+      "failure_alert": true,
+      "delivery": "none"
+    },
+    {
+      "id": "113e3870-13b4-47d3-a325-c9fef056e44d",
+      "name": "Reminder: YouTube TV midday",
+      "expr": null,
+      "weekly_estimate": 0,
+      "failure_alert": false,
+      "delivery": "announce"
+    },
+    {
+      "id": "fdc2cf75-50d8-4466-bbb7-5a8683eb6afd",
+      "name": "Monthly Goal-Skills Gap Analysis",
+      "expr": "0 8 1 * *",
+      "weekly_estimate": 0.23,
+      "failure_alert": true,
+      "delivery": "announce"
+    },
+    {
+      "id": "1e2cf966-d5d6-4fe4-8ffc-f19ed3a5c094",
+      "name": "Monthly Niche Fitness Review",
+      "expr": "30 9 1 * *",
+      "weekly_estimate": 0.23,
+      "failure_alert": true,
+      "delivery": "announce"
+    }
+  ]
+}

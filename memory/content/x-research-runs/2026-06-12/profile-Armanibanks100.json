@@ -1,0 +1,116 @@
+{
+  "user": {
+    "name": "Armani Banks",
+    "username": "Armanibanks100",
+    "created_at": "2024-02-23T06:48:45.000Z",
+    "description": "Founder @LuckyFeeAI | building on @Solana | shipping live onchain systems",
+    "public_metrics": {
+      "followers_count": 4138,
+      "following_count": 3584,
+      "tweet_count": 63170,
+      "listed_count": 21,
+      "like_count": 41185,
+      "media_count": 1293
+    },
+    "id": "1760919550118268928"
+  },
+  "tweets": [
+    {
+      "id": "2064971002065428740",
+      "text": "A few weeks ago, I was still building Verifiable Agent Memory Vault.\n\nToday, 112 agents have been created, and builders are already applying the same memory layer in ways I never expected.\n\nFrom Payment Settlement Agents and Helm Risk Allocation Agents to Marketplace Listing https://t.co/x0k9iVblBI https://t.co/4SyY4Mg7vf",
+      "author_id": "1760919550118268928",
+      "username": "Armanibanks100",
+      "name": "Armani Banks",
+      "created_at": "2026-06-11T07:20:26.000Z",
+      "conversation_id": "2064971002065428740",
+      "metrics": {
+        "likes": 60,
+        "retweets": 19,
+        "replies": 49,
+        "quotes": 0,
+        "impressions": 662,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/Armanibanks100/status/2064971002065428740/photo/1",
+        "https://x.com/Armanibanks100/status/2064971002065428740/photo/1",
+        "https://twitter.com/VAMVault_/status/2064734799546208717"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Armanibanks100/status/2064971002065428740"
+    },
+    {
+      "id": "2064611936600310082",
+      "text": "While building Verifiable Agent Memory Vault, we kept running into the same problem:\n\nBuilders understood the idea of verifiable memory.\n\nThey weren't always sure where it fit inside an existing agent workflow.\n\nThat's an adoption problem.\n\nSo we shipped Builder Docs.\n\nInstead of https://t.co/hhc2cGdBxM",
+      "author_id": "1760919550118268928",
+      "username": "Armanibanks100",
+      "name": "Armani Banks",
+      "created_at": "2026-06-10T07:33:38.000Z",
+      "conversation_id": "2064611936600310082",
+      "metrics": {
+        "likes": 44,
+        "retweets": 13,
+        "replies": 37,
+        "quotes": 0,
+        "impressions": 499,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://twitter.com/VAMVault_/status/2064603004544721185"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Armanibanks100/status/2064611936600310082"
+    },
+    {
+      "id": "2064298340506873991",
+      "text": "Another improvement we're working on for Verifiable Agent Memory Vault:\n\nBuilder Docs.\n\nThe onboarding update focuses on helping builders understand where @VAMVault_ fits within an existing agent workflow.\n\nBuilder Docs focuses on helping builders integrate @VAMVault_ into one. https://t.co/vh7WzCfwDw",
+      "author_id": "1760919550118268928",
+      "username": "Armanibanks100",
+      "name": "Armani Banks",
+      "created_at": "2026-06-09T10:47:31.000Z",
+      "conversation_id": "2064298340506873991",
+      "metrics": {
+        "likes": 30,
+        "retweets": 14,
+        "replies": 24,
+        "quotes": 0,
+        "impressions": 564,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/VAMVault_/status/2064209766411354309"
+      ],
+      "mentions": [
+        "VAMVault_",
+        "VAMVault_"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Armanibanks100/status/2064298340506873991"
+    },
+    {
+      "id": "2062950250483249568",
+      "text": "The challenge becomes much harder when an agent's decisions start compounding over time.\n\nA single unverified transition doesn't stop at one state.\n\nIt influences the next decision, and the one after that.\n\nThe further an agent operates from an unverified change, the harder it https://t.co/4SgEQwOW6S",
+      "author_id": "1760919550118268928",
+      "username": "Armanibanks100",
+      "name": "Armani Banks",
+      "created_at": "2026-06-05T17:30:42.000Z",
+      "conversation_id": "2062950250483249568",
+      "metrics": {
+        "likes": 36,
+        "retweets": 13,
+        "replies": 22,
+        "quotes": 1,
+        "impressions": 758,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/vamvault_/status/2062862566309740839"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Armanibanks100/status/2062950250483249568"
+    }
+  ]
+}

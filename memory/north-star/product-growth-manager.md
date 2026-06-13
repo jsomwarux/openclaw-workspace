@@ -91,3 +91,11 @@ When evaluating new products or acquisition candidates, ask whether the legacy S
 
 ## Integration With North Star
 The Weekly North Star Command Center should force every app/product into a clear continue/pause/kill/validation-only call and should name the next distribution or monetization step before any feature work.
+
+## 2026-06-12 Product Freeze / Action Arena Gate
+- Action Arena is strategic only if it has a hard gate: App Store submission by 2026-07-15 for NFL preseason plus <=10 hours/week. Without that commitment, pause it.
+- Vista is frozen. Revive only if someone besides JT uses it weekly without prompting.
+- Glow Index is frozen for 60 days while GA4/Search Console data accrues. Revive pSEO only after meaningful organic clicks.
+- Nash Satoshi active development is frozen. It may feed crypto/content only when it costs no build time. Revive on unprompted organic traffic signal.
+- ChargeTrip Fit and new app ideation are killed until any existing app hits $500/mo organic.
+- ReelFarm/TikTok automation does not scale until human account warming produces output.

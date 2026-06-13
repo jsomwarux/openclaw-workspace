@@ -51,3 +51,23 @@ Sources checked June 11:
 - AppFolio, "Introducing AppFolio Realm-X Performers" - https://www.appfolio.com/articles/performers
 - AppFolio, "Best Property Management Software 2026" - https://www.appfolio.com/blog/best-property-management-softwares-compared-2026
 - Buildium, "7 of the Best AI Property Management Tools in 2026" - https://www.buildium.com/blog/best-ai-property-management-tools/
+
+## 2026-06-12 Rent-Collection Addendum
+
+Fresh 2026 search narrowed the same PM Exception Desk wedge around rent collection and delinquency:
+- Buildium is explicitly advising review checkpoints for legal, financial, or compliance-sensitive AI outputs, while also framing rent reminders, rent collection, renewals, and revenue tasks as automation candidates.
+- Buildium's resident-communication content positions online rent payments plus automated reminders as a way to reduce late payments, with late-payment notices following the operator's schedule and policies.
+- Aptly's property-management AI positioning now names a Collections Agent that sends payment reminders, processes payments, negotiates payment plans, and escalates delinquencies according to policy.
+- AppFolio's 2026 platform positioning emphasizes unified data, native agentic AI, and automation across property-management operations.
+
+Consulting implication for JT:
+- Keep the Altmark rent-delinquency proof ask framed as "policy-bound review queue," not "AI collections." The public market is already comfortable with reminders and escalations, so the differentiator is the safety layer: source report quality, exception reasons, reviewer, approved next action, and audit trail.
+- Buyer-facing copy should name the moments that must not run unattended: disputed balance, payment plan, legal status, credit/prepayment, missing contact, owner-sensitive unit, or unclear last-payment timing.
+- The reusable offer can be: "turn a delinquency export into a reviewed action queue with drafted next steps and a clean exception log."
+
+Sources checked June 12:
+- Buildium, "Leveling Up Automation and AI in Property Management" - https://www.buildium.com/blog/level-up-automation-and-ai-in-property-management/
+- Buildium, "Tech Shifts Property Managers Can't Ignore in 2026" - https://www.buildium.com/blog/tech-shifts-property-managers-cant-ignore/
+- Buildium, "Property Management AI Communication for Owners and Tenants" - https://www.buildium.com/blog/property-management-ai-communication/
+- Aptly, "AI Property Management Software for AppFolio & Yardi" - https://www.getaptly.com/ai-property-management-software
+- AppFolio, "Move Beyond Property Management Software" - https://www.appfolio.com/

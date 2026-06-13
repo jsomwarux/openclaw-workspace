@@ -1,0 +1,74 @@
+{
+  "user": {
+    "description": "",
+    "public_metrics": {
+      "followers_count": 1,
+      "following_count": 6,
+      "tweet_count": 7,
+      "listed_count": 0,
+      "like_count": 72,
+      "media_count": 3
+    },
+    "created_at": "2019-06-09T06:05:27.000Z",
+    "name": "Prashant Sen",
+    "id": "1137601583313637377",
+    "username": "Prashant_4250"
+  },
+  "tweets": [
+    {
+      "id": "2064969121566265523",
+      "text": "Do you remember when you joined X? I do! #MyXAnniversary https://t.co/zuayvJiNx7",
+      "author_id": "1137601583313637377",
+      "username": "Prashant_4250",
+      "name": "Prashant Sen",
+      "created_at": "2026-06-11T07:12:58.000Z",
+      "conversation_id": "2064969121566265523",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Prashant_4250/status/2064969121566265523/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "MyXAnniversary"
+      ],
+      "tweet_url": "https://x.com/Prashant_4250/status/2064969121566265523"
+    },
+    {
+      "id": "2064964754633097221",
+      "text": "Another Trailhead milestone unlocked! 🎉\n\nCompleted the Setup with Agentforce Quest and gained hands-on experience using Agentforce to simplify setup tasks and improve admin efficiency.\n\n@salesforce \n\n#SetupWithAgentforce #Salesforce #Trailblazer #Agentforce https://t.co/hlmMcX9bek",
+      "author_id": "1137601583313637377",
+      "username": "Prashant_4250",
+      "name": "Prashant Sen",
+      "created_at": "2026-06-11T06:55:37.000Z",
+      "conversation_id": "2064964754633097221",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Prashant_4250/status/2064964754633097221/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [
+        "SetupWithAgentforce",
+        "Salesforce",
+        "Trailblazer",
+        "Agentforce"
+      ],
+      "tweet_url": "https://x.com/Prashant_4250/status/2064964754633097221"
+    }
+  ]
+}

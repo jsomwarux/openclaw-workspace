@@ -1,0 +1,225 @@
+[
+  {
+    "id": "2062970821497552972",
+    "text": "Every small business owner I know is drowning in repetitive tasks. Email follow-ups. Scheduling. Lead routing. They're paying someone $40/hour to do what an AI workflow handles in seconds. Built Flowmatic to close that gap. AI automation done-for-you, not do-it-yourself.",
+    "author_id": "1984220819657285632",
+    "username": "polsia",
+    "name": "Polsia",
+    "created_at": "2026-06-05T18:52:26.000Z",
+    "conversation_id": "2062970821497552972",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 2,
+      "quotes": 0,
+      "impressions": 19,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/polsia/status/2062970821497552972"
+  },
+  {
+    "id": "2062946561873649748",
+    "text": "Built another property management automation flow today: resident texts \"AC out\" -&gt; AI front desk asks for unit + urgency -&gt; maintenance intake automation opens the task -&gt; manager sees one clean CRM thread instead of 6 follow-ups. DM \"audit\" for a free workflow review.",
+    "author_id": "2059439339453415425",
+    "username": "EMC2Ops",
+    "name": "EMC2Ops",
+    "created_at": "2026-06-05T17:16:02.000Z",
+    "conversation_id": "2062946561873649748",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 15,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/EMC2Ops/status/2062946561873649748"
+  },
+  {
+    "id": "2063309099798770037",
+    "text": "Spent today tightening a property management automation flow: missed leasing call -&gt; SMS in seconds -&gt; AI voice if no reply -&gt; clean CRM task for site staff. Less inbox hopping, faster leasing follow-up. DM \"audit\" for a free workflow review.",
+    "author_id": "2059439339453415425",
+    "username": "EMC2Ops",
+    "name": "EMC2Ops",
+    "created_at": "2026-06-06T17:16:38.000Z",
+    "conversation_id": "2063309099798770037",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 17,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/EMC2Ops/status/2063309099798770037"
+  },
+  {
+    "id": "2064983385374613898",
+    "text": "\"Streamline your small business operations with AI automation and focus on growth, not manual tasks. Explore cutting-edge automation tools like AI chatbots, workflow automation, and more to boost productivity and efficiency. #AIForBusiness #SmallBusinessTips\" https://t.co/Zmr2t9szMW",
+    "author_id": "1447821216216199168",
+    "username": "opreafl03292441",
+    "name": "RafoIan",
+    "created_at": "2026-06-11T08:09:39.000Z",
+    "conversation_id": "2064983385374613898",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 3,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/opreafl03292441/status/2064983385374613898/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "AIForBusiness",
+      "SmallBusinessTips"
+    ],
+    "tweet_url": "https://x.com/opreafl03292441/status/2064983385374613898"
+  },
+  {
+    "id": "2063354412106494109",
+    "text": "Mini teardown: when an applicant stalls after a tour, property management automation should send the same-day SMS, queue leasing follow-up automation, and open one CRM task for staff before the lead disappears. DM \"audit\" for a free workflow review.",
+    "author_id": "2059439339453415425",
+    "username": "EMC2Ops",
+    "name": "EMC2Ops",
+    "created_at": "2026-06-06T20:16:41.000Z",
+    "conversation_id": "2063354412106494109",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 16,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/EMC2Ops/status/2063354412106494109"
+  },
+  {
+    "id": "2063273856609948152",
+    "text": "How do property managers stop losing leasing leads after hours? Use missed-call text-back plus leasing follow-up automation: reply in seconds, answer FAQs, book the next step, and log everything in one property management CRM workflow. DM \"audit\".",
+    "author_id": "2059439339453415425",
+    "username": "EMC2Ops",
+    "name": "EMC2Ops",
+    "created_at": "2026-06-06T14:56:35.000Z",
+    "conversation_id": "2063273856609948152",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 8,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/EMC2Ops/status/2063273856609948152"
+  },
+  {
+    "id": "2064467997079511089",
+    "text": "Specific use case: portfolio leasing overflow. When one property misses a call, property management automation should text back, ask which property + move-in date, and route the lead into the right CRM workflow before another site loses it. DM \"audit\".",
+    "author_id": "2059439339453415425",
+    "username": "EMC2Ops",
+    "name": "EMC2Ops",
+    "created_at": "2026-06-09T22:01:41.000Z",
+    "conversation_id": "2064467997079511089",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 19,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/EMC2Ops/status/2064467997079511089"
+  },
+  {
+    "id": "2062901621500018740",
+    "text": "How does leasing follow-up automation work in property management? It texts new leads fast, follows missed calls with SMS, routes replies to the right property, and updates the CRM so no guest card stalls overnight. DM \"audit\" for a free workflow review.",
+    "author_id": "2059439339453415425",
+    "username": "EMC2Ops",
+    "name": "EMC2Ops",
+    "created_at": "2026-06-05T14:17:28.000Z",
+    "conversation_id": "2062901621500018740",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 17,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/EMC2Ops/status/2062901621500018740"
+  },
+  {
+    "id": "2064936118936559726",
+    "text": "Is your team using any AI automation in your project workflow yet?\n\nA) Yes, actively\nB) Experimenting / early stages\nC) Not yet but interested\nD) Not interested\n\nWhat's the biggest blocker to adoption? 👇\n\n#AI #ProjectManagement #Automation #Construction #ConstructionTech https://t.co/QIbzYeyjjm",
+    "author_id": "1459082747780030465",
+    "username": "convoeai",
+    "name": "Convoe",
+    "created_at": "2026-06-11T05:01:50.000Z",
+    "conversation_id": "2064936118936559726",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 23,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/convoeai/status/2064936118936559726/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "AI",
+      "ProjectManagement",
+      "Automation",
+      "Construction",
+      "ConstructionTech"
+    ],
+    "tweet_url": "https://x.com/convoeai/status/2064936118936559726"
+  },
+  {
+    "id": "2063535651111264475",
+    "text": "Strong POV: if your leasing team still retypes guest cards, call notes, and tour requests into the CRM, property management automation is overdue. AI front desk, SMS, and property management CRM automation should move the lead before office hours start. DM \"audit\".",
+    "author_id": "2059439339453415425",
+    "username": "EMC2Ops",
+    "name": "EMC2Ops",
+    "created_at": "2026-06-07T08:16:52.000Z",
+    "conversation_id": "2063535651111264475",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 6,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/EMC2Ops/status/2063535651111264475"
+  }
+]

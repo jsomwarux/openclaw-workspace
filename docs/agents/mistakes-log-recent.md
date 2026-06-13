@@ -5,6 +5,14 @@
 ## Logging Rule
 Every entry MUST have six fields: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete guardrail/rule, (4) regression check that would catch recurrence, (5) owner surface updated, (6) verification/date. A mistake entry without a regression check + owner surface is incomplete — finish it before moving on. Reference: `docs/agents/regression-checks.md`.
 
+## 2026-06-12 — Fable closeout left deferred lanes in high priority
+- **Failure:** After reporting the Fable North Star closeout as finished, live Mission Control still had Guyana validation tasks and a duplicate Glow metrics task in/near the high-priority layer, contradicting Fable's instruction to keep Guyana validation-only and freeze app/product work except gated Action Arena.
+- **Root cause:** I verified the created artifacts and archive counts, but did not run a final Fable-specific priority-layer checklist against the live Mission Control high-priority set after the North Star audit script re-promoted stale tasks.
+- **Guardrail/rule:** Any Fable/North Star closeout must verify the live high-priority layer contains only Altmark cash, active consulting sends, proof, or urgent ops; Guyana, app-marketing, passive-income, and product tasks must be medium/low/archived unless a trigger is explicitly documented.
+- **Regression check:** Run `python3 scripts/mission_control_north_star_audit.py --dry-run` and a live `/api/tasks` high-priority query; dry run must show `changes=0/errors=0`, and the high todo/in-progress set must not include Guyana, generic app marketing, duplicate Glow metrics, or ungated Action Arena launch work.
+- **Owner surface updated:** `scripts/mission_control_north_star_audit.py`, `reports/evidence/2026-06-12-fable-north-star-closeout.md`, `memory/2026-06-12.md`, `memory/weekly-recaps/current-week.md`, and this Mistakes Log entry.
+- **Verification/date:** 2026-06-12 — patched the audit script, reran it, verified follow-up dry run `changes=0/errors=0`, live Mission Control showed 260 active tasks, 5 high todo/in-progress tasks, and 0 overdue; duplicate Glow metrics task was archived while one low-priority Glow metrics task stayed active.
+
 ## Recent Entries (2026-04)
 
 | Date | Mistake | Fix |

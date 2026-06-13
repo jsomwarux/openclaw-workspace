@@ -64,3 +64,6 @@
 2026-06-11 structured-ai-construction-qaqc — Structured AI raised $4.2M for construction QA/QC AI agents with Syska Hennessy testing the platform.
 2026-06-11 enlaye-construction-risk-ai — Enlaye raised $5M to expand AI construction risk analysis connected to project data sources like SharePoint and Autodesk.
 2026-06-11 supply-technologies-automation-investment — Supply Technologies is investing $50M in automated distribution infrastructure and modernization across 70+ warehouses.
+
+2026-06-12 salesforce-m3ter-agentforce-consumption-billing — Salesforce signed a definitive agreement to acquire m3ter to add high-volume metering/rating and native consumption and outcome-based billing to Agentforce Revenue Management, a concrete shift in Agentforce monetization architecture.
+2026-06-12 trimble-document-crunch-construction-risk-ai — Document Crunch, a Trimble company, launched a project-level AI risk intelligence platform with an agentic Project Assist layer, deployed across 10,000+ projects and $350B in annual construction volume.

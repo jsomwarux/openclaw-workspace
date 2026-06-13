@@ -160,3 +160,11 @@
 - **Demonstrates:** Revenue operations design, agent prompt grounding, automation pruning.
 - **Content angle:** A good chief-of-staff agent should not just remind you to make money; it should maintain the actual scoreboard and cut work that does not move it.
 - **Status:** complete.
+
+## jtsomwaru.com Phase 1 Fable Copy Overhaul — 2026-06-12
+- **What:** Rewrote the homepage/project copy layer to align with the Fable audit: human-approved outreach, durable agent proof, non-perishable metrics, standard AI Implementation Consultant title, and intro-call CTA naming.
+- **For:** JT consulting site / internal proof hub.
+- **Outcome:** Local preview running at `http://localhost:3001`, before/after screenshots captured in `reports/screenshots/2026-06-12-phase1/`, `npm run lint` passed, and `NEXT_DIST_DIR=.next-build npm run build` passed with 51/51 static pages; Vercel preview deploy is blocked by missing credentials.
+- **Demonstrates:** Consulting-positioning cleanup, proof-safe copy editing, preview evidence discipline.
+- **Content angle:** A consulting site should say what the system actually does, who approves external actions, and what is paid/productized without pretending a draft retainer is live.
+- **Status:** preview complete; production deploy held for JT review.

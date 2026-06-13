@@ -1,0 +1,227 @@
+{
+  "user": {
+    "description": "Building an AI GTM brain https://t.co/5nFyO2JBSm (YC P26)\n2000+ customers are using GojiberryAI daily !",
+    "public_metrics": {
+      "followers_count": 14721,
+      "following_count": 243,
+      "tweet_count": 11820,
+      "listed_count": 101,
+      "like_count": 5440,
+      "media_count": 1555
+    },
+    "name": "Romàn",
+    "username": "romanbuildsaas",
+    "id": "1893653481858433024",
+    "created_at": "2025-02-23T13:26:25.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2065137135834034485",
+      "text": "If you're a little too pushy on Reddit and end up getting banned or called out, don't beat yourself up too much. \n\nReddit has become so crazy that they're now banning entire subreddits 😂😂 https://t.co/lpjU0V08ic",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-11T18:20:36.000Z",
+      "conversation_id": "2065137135834034485",
+      "metrics": {
+        "likes": 50,
+        "retweets": 1,
+        "replies": 25,
+        "quotes": 1,
+        "impressions": 6480,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2065137135834034485/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2065137135834034485"
+    },
+    {
+      "id": "2064913485771981007",
+      "text": "10 @ycombinator's Lessons all Founder Should Know :\n(We grew from $0 to $250k MRR in under a year with this approach)\n\n1/ Launch now, not when it's \"ready\". A mediocre product in front of real users teaches you more in a week than 6 months of polishing in the dark. Ship the https://t.co/YzneNEZZfD",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-11T03:31:53.000Z",
+      "conversation_id": "2064913485771981007",
+      "metrics": {
+        "likes": 150,
+        "retweets": 14,
+        "replies": 33,
+        "quotes": 4,
+        "impressions": 7613,
+        "bookmarks": 116
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2064913485771981007/photo/1"
+      ],
+      "mentions": [
+        "ycombinator"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2064913485771981007"
+    },
+    {
+      "id": "2064775705603514418",
+      "text": "\"AI will take your job.\"\n\nMaybe. But it also lets one person do the work of an entire team:\n\n- Build outbound systems instead of grinding lists by hand\n- Run AI agents that find leads and book demos while you sleep\n- Pump out content at volume but win on human taste\n- Operate a",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-10T18:24:24.000Z",
+      "conversation_id": "2064775705603514418",
+      "metrics": {
+        "likes": 27,
+        "retweets": 4,
+        "replies": 10,
+        "quotes": 2,
+        "impressions": 1948,
+        "bookmarks": 12
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2064775705603514418"
+    },
+    {
+      "id": "2064422611573178500",
+      "text": "Introducing Outreach Agents powered by Claude Fable 5 (Mythos).\n\n→ Find high-intent buyers.\n→ Generate personalized messages.\n→ Reach out via email and LinkedIn.\n→ Book more meetings.\n\nYour AI-powered outbound team, running 24/7. https://t.co/0hNf00BQJT https://t.co/iXNDZDZhRk",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-09T19:01:20.000Z",
+      "conversation_id": "2064422611573178500",
+      "metrics": {
+        "likes": 79,
+        "retweets": 9,
+        "replies": 15,
+        "quotes": 1,
+        "impressions": 15286,
+        "bookmarks": 83
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2064422611573178500/video/1",
+        "https://twitter.com/claudeai/status/2064394146916229443"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2064422611573178500"
+    },
+    {
+      "id": "2064124704835956969",
+      "text": "Talked to a GTM engineer at Mindflow doing ~35% reply rates selling enterprise cybersecurity software.\n\nTheir average contract value is ~€25k.\n\nAnd they did it without relying on traditional ICP-based outbound.\n\nHere's the playbook they cracked step by step:\n\nSTEP 1: Stop https://t.co/7ZIkjZdhER",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-08T23:17:33.000Z",
+      "conversation_id": "2064124704835956969",
+      "metrics": {
+        "likes": 45,
+        "retweets": 2,
+        "replies": 9,
+        "quotes": 0,
+        "impressions": 3497,
+        "bookmarks": 44
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2064124704835956969/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2064124704835956969"
+    },
+    {
+      "id": "2063774121947983974",
+      "text": "Demo Day is in 8 days at @ycombinator \nQuick recap of what happened since we joined YC:\n\n- grew from $800k to $2.8M+ ARR\n\n- went from 700 to 2,100+ customers\n\n- stayed profitable since day 1, even while growing fast\n\n- shipped our new AI GTM operator that runs outbound for you https://t.co/Wa3zrzjfzm",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-08T00:04:28.000Z",
+      "conversation_id": "2063774121947983974",
+      "metrics": {
+        "likes": 94,
+        "retweets": 4,
+        "replies": 24,
+        "quotes": 0,
+        "impressions": 6628,
+        "bookmarks": 21
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2063774121947983974/photo/1"
+      ],
+      "mentions": [
+        "ycombinator"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2063774121947983974"
+    },
+    {
+      "id": "2063426074000728367",
+      "text": "I'm having a hard time recruiting a great Growth Manager.\n\nWe're offering a competitive salary, fully remote work, and a lot of freedom.\n\nWhat I'm really looking for is a growth pirate: someone who can outsmart algorithms, find unconventional acquisition channels, and create",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-07T01:01:27.000Z",
+      "conversation_id": "2063426074000728367",
+      "metrics": {
+        "likes": 163,
+        "retweets": 3,
+        "replies": 84,
+        "quotes": 6,
+        "impressions": 50665,
+        "bookmarks": 108
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2063426074000728367"
+    },
+    {
+      "id": "2063307109312454898",
+      "text": "I don't know if you realize the era we're living through.\n\nTools like Cursor and Claude Code now allow any reasonably resourceful growth marketer to build their own apps, AI agents, and Chrome extensions to automate work that used to require entire teams.\n\nIndividually, we now https://t.co/sqjUenckU5",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-06T17:08:43.000Z",
+      "conversation_id": "2063307109312454898",
+      "metrics": {
+        "likes": 39,
+        "retweets": 3,
+        "replies": 12,
+        "quotes": 0,
+        "impressions": 3137,
+        "bookmarks": 12
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2063307109312454898/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2063307109312454898"
+    },
+    {
+      "id": "2063074107735077268",
+      "text": "For most of the journey from $0 to $250k MRR, I personally ran:\n\n- Reddit\n- 5 LinkedIn accounts\n- 3 X accounts\n- influencer partnerships\n- YouTube\n- newsletter sponsorships\n- outbound infrastructure\n- paid ads\n- sales calls\n- Follow ups\n\nFor a while, it was basically me, Claude, https://t.co/oG3ILQsaIl",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-06T01:42:52.000Z",
+      "conversation_id": "2063074107735077268",
+      "metrics": {
+        "likes": 164,
+        "retweets": 5,
+        "replies": 35,
+        "quotes": 1,
+        "impressions": 11555,
+        "bookmarks": 151
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2063074107735077268/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2063074107735077268"
+    }
+  ]
+}

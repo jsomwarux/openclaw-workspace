@@ -1,0 +1,210 @@
+[
+  {
+    "id": "2063086207030944002",
+    "text": "Content skills are easy to scatter. This repo turns them into an installable system.\n\nSocial Media Skills for AI Agents is a public collection of Claude skills for social media workflows across voice building, newsletter writing, LinkedIn, graphics, short-form video, YouTube, https://t.co/RFFUaOnfWi",
+    "author_id": "1406639376675770374",
+    "username": "DanKornas",
+    "name": "Dan Kornas",
+    "created_at": "2026-06-06T02:30:56.000Z",
+    "conversation_id": "2063086207030944002",
+    "metrics": {
+      "likes": 22,
+      "retweets": 3,
+      "replies": 7,
+      "quotes": 0,
+      "impressions": 1620,
+      "bookmarks": 31
+    },
+    "urls": [
+      "https://x.com/DanKornas/status/2063086207030944002/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/DanKornas/status/2063086207030944002"
+  },
+  {
+    "id": "2065070141126115716",
+    "text": "🚀 Claude skills for almost any task!\n\n2-min way to find one:\n\n1. Name task in 1 sentence\n2. Run /skills\n3. Check https://t.co/fwPOAvnr0m or awesome-claude-code GitHub\n4. Install to ~/.claude/skills/\n5. No match? Create text file\n\nStop reinventing!\n\nWhich one first? 👇 https://t.co/y4ZnafwCj5",
+    "author_id": "1648787052",
+    "username": "AnandButani",
+    "name": "Anand Butani",
+    "created_at": "2026-06-11T13:54:23.000Z",
+    "conversation_id": "2065070141126115716",
+    "metrics": {
+      "likes": 12,
+      "retweets": 8,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 234,
+      "bookmarks": 11
+    },
+    "urls": [
+      "http://skills.sh",
+      "https://x.com/AnandButani/status/2065070141126115716/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AnandButani/status/2065070141126115716"
+  },
+  {
+    "id": "2064335491604877473",
+    "text": "This is the only Claude learning path you need in 2026.\n\n13 free guides. Chat, Cowork, and Claude Code. Beginner to advanced.\n\nLevel 1 (Beginner):\n✦ Claude Chat Setup\n✦ Create Your .md File\n\nLevel 2 (Intermediate):\n✦ Cowork Setup\n✦ Claude Skills\n✦ Scheduled Tasks\n✦ Cowork https://t.co/cO96m6KkTR",
+    "author_id": "1489609913785540608",
+    "username": "ThePyCoach",
+    "name": "Frank Andrade",
+    "created_at": "2026-06-09T13:15:09.000Z",
+    "conversation_id": "2064335491604877473",
+    "metrics": {
+      "likes": 5,
+      "retweets": 1,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 303,
+      "bookmarks": 8
+    },
+    "urls": [
+      "https://x.com/ThePyCoach/status/2064335491604877473/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/ThePyCoach/status/2064335491604877473"
+  },
+  {
+    "id": "2065114838674931887",
+    "text": "How to Create and Use Claude Skills in Claude Code\nhttps://t.co/9ypPhsnIkO",
+    "author_id": "1768503963693780992",
+    "username": "LLM_Insider",
+    "name": "LLM Insider",
+    "created_at": "2026-06-11T16:52:00.000Z",
+    "conversation_id": "2065114838674931887",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 37,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://www.youtube.com/watch?v=6la8jc7hmqI"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/LLM_Insider/status/2065114838674931887"
+  },
+  {
+    "id": "2064365858844021250",
+    "text": "Tiny Claude Code field note:\n\nPersonal skill:\n~/.claude/skills/&lt;name&gt;/SKILL.md\n\nProject skill:\n.claude/skills/&lt;name&gt;/SKILL.md\n\nUse personal for habits. Use project for repo rules.\n\nThat split keeps reusable procedure out of random prompts.",
+    "author_id": "1708020108",
+    "username": "agentfieldnotes",
+    "name": "Agent Field Notes",
+    "created_at": "2026-06-09T15:15:49.000Z",
+    "conversation_id": "2064365858844021250",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 13,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/agentfieldnotes/status/2064365858844021250"
+  },
+  {
+    "id": "2063633063587045393",
+    "text": "Most Claude Code users have 3–5 custom skills.\n\nThe top 1% are building entire skill libraries.\n\nBecause the future of AI isn't prompts.\n\nIt's reusable expertise.\n\n\"Awesome Claude Skills\" \n\nis a curated collection of specialized Claude Code skills for engineering, research, https://t.co/vAC2pngytN",
+    "author_id": "347946501",
+    "username": "RoyAmal",
+    "name": "Amal Roy",
+    "created_at": "2026-06-07T14:43:57.000Z",
+    "conversation_id": "2063633063587045393",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 2,
+      "quotes": 0,
+      "impressions": 69,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/RoyAmal/status/2063633063587045393/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/RoyAmal/status/2063633063587045393"
+  },
+  {
+    "id": "2065102572869099986",
+    "text": "The launch of Claude 3.5 Sonnet and tool-use environments changed the baseline for autonomous software execution, but individual developer workflows frequently hit a ceiling: building custom agent tools from scratch is repetitive and prone to fragile integration code.\n\nInstead of https://t.co/n9nylvJDYF",
+    "author_id": "347946501",
+    "username": "RoyAmal",
+    "name": "Amal Roy",
+    "created_at": "2026-06-11T16:03:15.000Z",
+    "conversation_id": "2065102572869099986",
+    "metrics": {
+      "likes": 0,
+      "retweets": 1,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 20,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/RoyAmal/status/2065102572869099986/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/RoyAmal/status/2065102572869099986"
+  },
+  {
+    "id": "2063550855719370813",
+    "text": "Claude Code is quietly turning from a terminal assistant into a platform.\nJune update: plugins in .claude/skills load automatically, Claude Code rate limits doubled, Opus API limits raised. Plus command autocomplete, cleaner MCP, faster rendering.\nEach is small. Together it reads",
+    "author_id": "2042299885316083713",
+    "username": "AdamArcada",
+    "name": "Adam Arcada",
+    "created_at": "2026-06-07T09:17:17.000Z",
+    "conversation_id": "2063550855719370813",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 32,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AdamArcada/status/2063550855719370813"
+  },
+  {
+    "id": "2064770989502673368",
+    "text": "Claude Code: Veštine korišćenja modela\nhttps://t.co/5AIUjS0Dn1 #Claude #Skills https://t.co/l1WIcD9C3A",
+    "author_id": "1986203397876559872",
+    "username": "AIZONArs",
+    "name": "AIZONA",
+    "created_at": "2026-06-10T18:05:40.000Z",
+    "conversation_id": "2064770989502673368",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 0,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://www.aizona.rs/vest/claude-code-vestine-koriscenja-modela",
+      "https://x.com/AIZONArs/status/2064770989502673368/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "Claude",
+      "Skills"
+    ],
+    "tweet_url": "https://x.com/AIZONArs/status/2064770989502673368"
+  }
+]

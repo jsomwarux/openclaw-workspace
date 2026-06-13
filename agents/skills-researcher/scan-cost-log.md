@@ -80,3 +80,4 @@ EOF'
 2026-06-08T15:33:59Z | daily-scan | x_queries: 6 | web_queries: 15 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-08T15:04:30-04:00 | daily-scan | x_queries: 6 | web_queries: 16 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-11T15:34:54Z | daily-scan | x_queries: 6 | web_queries: 14 | findings: 8 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
+[2026-06-12T15:33:35Z] | daily-scan | x_queries: 6 | web_queries: 10 | findings: 6 | 🔴: 1 | 🟠: 0 | messaged_jt: yes

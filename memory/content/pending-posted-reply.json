@@ -1,7 +1,24 @@
 {
-  "entries": [],
-  "note": "Cleared after JT rejected the public-proof/privacy cleanup angle as not post-worthy on 2026-06-07.",
-  "sent_at": 1780837271,
-  "source": "content-sunday",
-  "status": "rejected"
+  "entries": [
+    {
+      "date": "2026-06-12",
+      "day": "friday",
+      "line_no": 214,
+      "platform": "linkedin",
+      "summary": "Vendor follow-up gets expensive when routine questions and owner decisions share one inbox; useful AI tags source, property, request type, dollar exposure, and approval owner before drafting.",
+      "topic": "vendor-follow-up-dollar-exposure-approval-routing"
+    },
+    {
+      "date": "2026-06-12",
+      "day": "friday",
+      "line_no": 220,
+      "platform": "x",
+      "summary": "Vendor follow-up should not draft before dollar exposure is clear; $400 requests and $4,000 owner decisions need different routing.",
+      "topic": "vendor-follow-up-dollar-exposure-routing"
+    }
+  ],
+  "note": "",
+  "sent_at": 1781265639,
+  "source": "content-reminder",
+  "status": "pending"
 }
