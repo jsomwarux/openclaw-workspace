@@ -20,6 +20,22 @@
 
 <!-- Entries appended below — most recent first -->
 
+## jtsomwaru.com Phase 3 Site Hygiene - 2026-06-13
+**What:** Added blog Consulting/Product categories, dynamic diagram OG images for the three client case studies, Calendly `generate_lead` tracking, a site hygiene verifier, and email-alias handoff notes.
+**For:** internal consulting site / JT consulting
+**Outcome:** Pushed commit `9a7fad2` to GitHub and Vercel production completed; `npm run lint`, `NEXT_PUBLIC_GA4_MEASUREMENT_ID=G-EGPE6ZNQ56 npm run build`, and the production verifier passed against `https://jtsomwaru.com` with 44 pages, 7 external links, 3 OG images, and 0 failures.
+**Demonstrates:** site hygiene, AI-search/social-share metadata, conversion tracking instrumentation, proof-safe launch readiness
+**Content angle:** The unsexy launch layer matters: links, categories, OG cards, and conversion events decide whether proof can travel and be measured.
+**Status:** complete
+
+## jtsomwaru.com Phase 2 Offer Pages - 2026-06-13
+**What:** Added preview-ready COI tracking and rent delinquency automation service pages, sitemap/llms exposure, homepage routing, and a held silent-failure teardown draft.
+**For:** internal consulting site / JT consulting
+**Outcome:** Pushed commit `9a7fad2` to GitHub and Vercel production completed; production returned HTTP 200 for both new service routes and `/sitemap.xml`, while lint, build, and the production site verifier passed with 0 failures.
+**Demonstrates:** consulting offer packaging, AI-search service-page implementation, property-ops workflow positioning, proof-safe human-approval framing
+**Content angle:** Sensitive ops automation should sell the exception layer first: what gets held, reviewed, approved, and logged before AI touches the customer.
+**Status:** complete
+
 ## Plan Review Pack Skill + Human Signal Workflow - 2026-06-06
 **What:** Added `plan-review-pack` plus Client OS, AI Context OS, workflow protocol, proof, product, and video-generation wiring so internal agent plans become human-readable review/proof artifacts.
 **For:** internal consulting delivery system

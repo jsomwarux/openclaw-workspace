@@ -44,7 +44,7 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice. Phase 3/4: approved corpus, Sonnet content crons, edit deltas, guard wrapper, $10/month cap.
-- PM Front Desk + Exception Desk is the strongest proof asset path.
+- PM Front Desk + Exception Desk is the strongest proof asset; 2026-06-13 draft: `memory/drafts/linkedin-pm-collections-control-sheet-2026-06-13.md`.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
@@ -66,11 +66,11 @@
 ## Active Automation / Crons
 - Phase 7: old night jobs disabled, replaced by 11PM `Night Autonomy Agent` (`f146d8b8`). After North Star cuts: 49 enabled jobs.
 - Digest queue: `memory/digest-queue.md`; reminders/FYIs append there. Cron volume guard required; avoid `deleteAfterRun:true`.
-- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json` via `scripts/cron_snapshot.py`.
+- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json`. 2026-06-13 cron: 49 enabled, 0 red rows.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
-- Health, cost tracker, proof guard, daily film review, and weekly skills audit remain active. Non-obvious solved problems become lessons immediately.
+- Health, cost tracker, proof guard, film review, and skills audit remain active. 2026-06-13 regression: after 9PM Health Check-in, verify Telegram delivery + pending-checkin date; repair stale state.
 - Detail: `docs/memory/MEMORY-full.md#health--training--quality-loops`.
 
 ## Strategic Decisions Log

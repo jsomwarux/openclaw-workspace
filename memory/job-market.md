@@ -380,3 +380,11 @@ Read the current job-market-agent daily brief generated at 2026-06-11 05:15. One
 **Strongest signal:** "AI enablement" is being hired as an operating-model owner role: use-case intake, governance, roadmap, tool administration, role-based enablement, and ROI/value metrics. This is closer to JT's Mission Control/OpenClaw proof than to generic automation delivery.
 
 **Positioning implication:** package EnablementOps as an AI Enablement Operating Model Readiness Sprint: front door, prioritization, COE rhythm, risk gates, role-based enablement, and KPI/ROI dashboard. Extend EnablementOps / DealDesk / ROIFlow / AgentGuard instead of creating another demo today.
+
+## 2026-06-13 — Heartbeat Job Market Pulse
+
+Read the current job-market-agent daily brief generated at 2026-06-13 05:16. No new live US/NYC/remote role cleared JT's 18+/25 filter today; the brief says 3 of 6 searches returned zero results and the populated searches were mostly career index pages, trend content, conference/vendor pages, or broad AI company lists.
+
+**Strongest signal:** the market keeps rewarding workflow redesign over generic AI productivity. Today's useful trend language is workflow architecture, human-agent collaboration, manager enablement, governance, and outcome metrics.
+
+**Positioning implication:** keep Mission Control/OpenClaw and consulting proof framed as an AI operating model: workflow intake, redesign, governed handoffs, manager/operator enablement, and value measurement. This reinforces EnablementOps, AgentGuard, ChampionOps, and ROIFlow; no new application task or build idea was created today.

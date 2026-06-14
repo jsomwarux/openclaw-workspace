@@ -81,3 +81,5 @@ EOF'
 2026-06-08T15:04:30-04:00 | daily-scan | x_queries: 6 | web_queries: 16 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-11T15:34:54Z | daily-scan | x_queries: 6 | web_queries: 14 | findings: 8 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
 [2026-06-12T15:33:35Z] | daily-scan | x_queries: 6 | web_queries: 10 | findings: 6 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
+[2026-06-13T11:01:46Z] | weekly-synthesis | x_queries: 4 | est_cost: $0.20 | web_sources: cowork_plugins,mcp_servers,openclaw_docs,nordeim,claude_plugins | findings: 6 | 🔴: 1 | 🟠: 1 | 🟡/🟢: 4 | mc_tasks_pushed: 0 | kb_items: 2 | messaged_jt: yes
+2026-06-13T15:32:00Z | daily-scan | x_queries: 6 | web_queries: 12 | findings: 7 | 🔴: 0 | 🟠: 0 | messaged_jt: no

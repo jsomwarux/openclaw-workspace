@@ -1,72 +1,68 @@
-# Google Trends — 2026-05-23
+# Google Trends — 2026-06-13
 _90-day window, US geo | breakout = +10% 30-day change | channels matched to ExplodingTopics_
-Generated: 2026-05-23 05:36:42
+Generated: 2026-06-13 05:36:06
 
 ## Monetization & Side Income
-Breakout 🔥: 2 | Rising 📈: 0 | Declining 📉: 5
+Breakout 🔥: 1 | Rising 📈: 0 | Declining 📉: 6
 
-🔥 **affiliate marketing beginners** — +2666.7% (30d) | current=26.7 | slope=0.964
-🔥 **how to monetize skills** — +333.3% (30d) | current=3.3 | slope=0.092
-📉 digital product ideas — -44.5% (30d)
-📉 passive income ideas — -38.2% (30d)
-📉 side hustle ideas — -36.5% (30d)
-📉 online business ideas — -28.9% (30d)
-📉 make money online — -13.6% (30d)
+🔥 **affiliate marketing beginners** — +193.1% (30d) | current=8.5 | slope=0.183
+📉 freelance pricing guide — -94.0% (30d)
+📉 digital product ideas — -65.7% (30d)
+📉 side hustle ideas — -54.3% (30d)
+📉 online business ideas — -42.5% (30d)
+📉 make money online — -14.2% (30d)
+📉 passive income ideas — -8.4% (30d)
 
 ## Health & Wellness
-Breakout 🔥: 1 | Rising 📈: 1 | Declining 📉: 6
+Breakout 🔥: 0 | Rising 📈: 0 | Declining 📉: 6
 
-🔥 **meditation app comparison** — +520.0% (30d) | current=5.2 | slope=0.196
-📈 fitness challenge creator — +0.0% (30d)
-📉 supplement stack — -52.5% (30d)
-📉 home workout plan — -43.9% (30d)
-📉 personal training app — -34.5% (30d)
-📉 calorie counter app — -29.0% (30d)
-📉 sleep tracking app — -27.8% (30d)
-📉 meal prep delivery — -24.3% (30d)
+📉 home workout plan — -33.4% (30d)
+📉 supplement stack — -23.5% (30d)
+📉 meal prep delivery — -22.9% (30d)
+📉 sleep tracking app — -20.8% (30d)
+📉 personal training app — -15.2% (30d)
+📉 calorie counter app — -8.0% (30d)
 
 ## Beauty & Personal Care
-Breakout 🔥: 1 | Rising 📈: 1 | Declining 📉: 4
+Breakout 🔥: 3 | Rising 📈: 2 | Declining 📉: 3
 
-🔥 **beauty product comparison** — +46.7% (30d) | current=0.5 | slope=0.014
-📈 makeup lookup — +4.9% (30d)
-📉 cosmetic ingredients guide — -100.0% (30d)
-📉 beauty subscription box — -67.9% (30d)
-📉 hair care app — -43.2% (30d)
-📉 perfume finder — -42.8% (30d)
+🔥 **perfume finder** — +371.0% (30d) | current=15.7 | slope=0.196
+🔥 **makeup lookup** — +144.2% (30d) | current=7.0 | slope=0.099
+🔥 **skincare routine builder** — +16.7% (30d) | current=0.2 | slope=0.005
+📈 cosmetic ingredients guide — +0.0% (30d)
+📈 nail care tutorial — +0.0% (30d)
+📉 beauty product comparison — -93.6% (30d)
+📉 hair care app — -26.4% (30d)
+📉 beauty subscription box — -11.8% (30d)
 
 ## Food & Drink
-Breakout 🔥: 3 | Rising 📈: 1 | Declining 📉: 4
+Breakout 🔥: 3 | Rising 📈: 0 | Declining 📉: 4
 
-🔥 **kitchen timer app** — +540.0% (30d) | current=5.4 | slope=0.157
-🔥 **ingredient substitution** — +107.1% (30d) | current=16.5 | slope=0.073
-🔥 **meal planning app** — +16.6% (30d) | current=14.8 | slope=0.203
-📈 wine pairing guide — +0.0% (30d)
-📉 restaurant calorie lookup — -100.0% (30d)
-📉 food delivery comparison — -81.2% (30d)
-📉 recipe organized — -62.6% (30d)
-📉 coffee subscription — -40.5% (30d)
+🔥 **recipe organized** — +1816.7% (30d) | current=18.2 | slope=0.679
+🔥 **kitchen timer app** — +25.3% (30d) | current=3.5 | slope=-0.095
+🔥 **wine pairing guide** — +16.7% (30d) | current=0.2 | slope=0.008
+📉 ingredient substitution — -85.7% (30d)
+📉 food delivery comparison — -51.9% (30d)
+📉 coffee subscription — -18.9% (30d)
+📉 meal planning app — -11.4% (30d)
 
 ## Sports & Fitness
-Breakout 🔥: 3 | Rising 📈: 1 | Declining 📉: 3
+Breakout 🔥: 4 | Rising 📈: 0 | Declining 📉: 2
 
-🔥 **running route planner** — +3570.0% (30d) | current=35.7 | slope=1.313
-🔥 **gym workout tracker** — +85.0% (30d) | current=6.2 | slope=0.071
-🔥 **cycling training plan** — +74.0% (30d) | current=5.8 | slope=0.094
-📈 fantasy sports tools — +0.0% (30d)
-📉 sports equipment review — -63.4% (30d)
-📉 personal best tracker — -40.2% (30d)
-📉 sports betting odds — -1.8% (30d)
+🔥 **running route planner** — +2753.3% (30d) | current=27.5 | slope=0.969
+🔥 **fantasy sports tools** — +333.3% (30d) | current=3.3 | slope=0.125
+🔥 **cycling training plan** — +103.1% (30d) | current=6.5 | slope=0.13
+🔥 **gym workout tracker** — +51.0% (30d) | current=5.0 | slope=0.18
+📉 sports betting odds — -46.1% (30d)
+📉 sports equipment review — -39.3% (30d)
 
 ## Entertainment & Lifestyle
-Breakout 🔥: 2 | Rising 📈: 0 | Declining 📉: 4
+Breakout 🔥: 1 | Rising 📈: 1 | Declining 📉: 2
 
-🔥 **book tracking app** — +46.6% (30d) | current=21.3 | slope=0.123
-🔥 **tv show tracker** — +11.0% (30d) | current=30.6 | slope=0.078
-📉 movie recommendation engine — -100.0% (30d)
-📉 gaming achievement tracker — -100.0% (30d)
-📉 collection organizer — -59.1% (30d)
-📉 hobby app — -54.1% (30d)
+🔥 **movie recommendation engine** — +333.3% (30d) | current=3.3 | slope=0.069
+📈 hobby app — +4.0% (30d)
+📉 collection organizer — -25.3% (30d)
+📉 tv show tracker — -2.6% (30d)
 
 ## Scout Guidance
 - 🔥 Breakout keywords = strong demand signal, validate with Brave Search

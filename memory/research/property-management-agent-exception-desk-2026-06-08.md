@@ -71,3 +71,23 @@ Sources checked June 12:
 - Buildium, "Property Management AI Communication for Owners and Tenants" - https://www.buildium.com/blog/property-management-ai-communication/
 - Aptly, "AI Property Management Software for AppFolio & Yardi" - https://www.getaptly.com/ai-property-management-software
 - AppFolio, "Move Beyond Property Management Software" - https://www.appfolio.com/
+
+## 2026-06-13 Agent-to-Agent Control Addendum
+
+Fresh search added a sharper control-plane proof point for the PM Front Desk + Exception Desk lane:
+- AppFolio announced a Realm-X connector for Claude on June 9, 2026. The useful signal is not "Claude can answer questions"; it is that property-management operational jobs are triggered from a chat/reasoning surface while execution stays inside AppFolio's governed platform, domain rules, accounting rules, authentication, permissioning, and operator oversight.
+- AppFolio's companion product note says property managers can ask Claude for maintenance bottleneck analysis or listing improvements, with Realm-X acting in the AppFolio platform while the operator retains visibility and approval of actions.
+- Aptly and AI Frontdesk continue to make rent-delinquency automation explicit: reminders, payment-plan negotiation, escalations, PMS/ledger updates, and policy-based collections workflows.
+- Surface AI's property-management workflow automation language emphasizes property-specific timelines, policy-aligned communications, and auditable outreach.
+
+Consulting implication for JT:
+- The buyer-safe Altmark/PM proof should mirror the AppFolio pattern at small-operator scale: reasoning and drafting can happen outside the PMS, but any risky action needs a governed execution surface with named permissions, source data, approval state, and proof log.
+- For rent delinquency, the strongest artifact is a "collections control sheet": source balance, last payment date, policy status, exception reason, recommended next step, reviewer, approved action, and evidence link.
+- Avoid claiming agent-to-agent infrastructure. The better line is: "We build the lightweight control layer before collections automation touches tenants, ledgers, or legal-sensitive messages."
+
+Sources checked June 13:
+- AppFolio, "AppFolio Connects Realm-X to Anthropic's Claude" - https://www.appfolio.com/newsroom/appfolio-connects-realm-x-to-anthropics-claude-2026
+- AppFolio, "AppFolio Connects Realm-X to Anthropic Claude" - https://www.appfolio.com/blog/appfolio-connects-realm-x-to-anthropic-claude
+- Aptly, "AI Property Management Software for AppFolio & Yardi" - https://www.getaptly.com/ai-property-management-software
+- AI Frontdesk, "AI Rent Delinquency & Collections for Multifamily" - https://www.myaifrontdesk.com/multifamily/ai-rent-delinquency-collections
+- Surface AI, "How Property Management Workflow Automation Transforms Operations" - https://www.getsurface.ai/insights/how-property-management-workflow-automation-transforms-operations/

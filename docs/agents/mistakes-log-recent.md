@@ -5,6 +5,14 @@
 ## Logging Rule
 Every entry MUST have six fields: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete guardrail/rule, (4) regression check that would catch recurrence, (5) owner surface updated, (6) verification/date. A mistake entry without a regression check + owner surface is incomplete — finish it before moving on. Reference: `docs/agents/regression-checks.md`.
 
+## 2026-06-13 — Phase 2 site work stalled between short bursts
+- **Failure:** During JT's approved Phase 2 jtsomwaru.com work, I repeatedly worked for a short burst, stopped at a partial state, and forced JT to ask "Update?" multiple times instead of carrying the task through implementation and verification.
+- **Root cause:** I treated interim status replies as a substitute for continuous execution. The active-conversation update rules were followed superficially, but the task loop was not anchored to a completion gate like "new pages written, lint/build passed, screenshots captured, evidence report saved."
+- **Guardrail/rule:** For approved multi-step work, define the next verification gate and keep executing until that gate is reached or a real blocker appears. Send proactive progress updates, but do not pause the work just because an update was sent.
+- **Regression check:** On the next active multi-step coding task, verify there is no gap where JT has to ask for status before the current verification gate is attempted; final report must include the exact lint/build/test/evidence commands run.
+- **Owner surface updated:** `AGENTS.md` rule 9c; this Mistakes Log entry.
+- **Verification/date:** 2026-06-13 — continued Phase 2 after correction, completed the two offer pages, reran lint/build, captured Playwright screenshots, and saved the evidence report.
+
 ## 2026-06-12 — Fable closeout left deferred lanes in high priority
 - **Failure:** After reporting the Fable North Star closeout as finished, live Mission Control still had Guyana validation tasks and a duplicate Glow metrics task in/near the high-priority layer, contradicting Fable's instruction to keep Guyana validation-only and freeze app/product work except gated Action Arena.
 - **Root cause:** I verified the created artifacts and archive counts, but did not run a final Fable-specific priority-layer checklist against the live Mission Control high-priority set after the North Star audit script re-promoted stale tasks.
