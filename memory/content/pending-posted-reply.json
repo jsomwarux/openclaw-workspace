@@ -1,16 +1,24 @@
 {
   "entries": [
     {
-      "date": "2026-06-13",
-      "day": "saturday",
-      "line_no": 221,
+      "date": "2026-06-14",
+      "day": "sunday",
+      "line_no": 215,
+      "platform": "linkedin",
+      "summary": "A dedicated automation PC can host 6 workflows, keep logs close to office files, run 24/7, and keep sensitive exceptions in human review.",
+      "topic": "local-first-automation-pc-six-workflows"
+    },
+    {
+      "date": "2026-06-14",
+      "day": "sunday",
+      "line_no": 222,
       "platform": "x",
-      "summary": "The agent stack works when each tool has a job: Codex builds, n8n moves the workflow, OpenClaw remembers state, and guards stop weak handoffs.",
-      "topic": "codex-n8n-openclaw-guard-division-of-labor"
+      "summary": "The dedicated automation PC keeps workflows near local files, logs, and human approvals; it runs 6 workflows locally and alerts the team when a row needs review.",
+      "topic": "dedicated-automation-pc-local-workflows-human-review"
     }
   ],
   "note": "",
-  "sent_at": 1781352042,
-  "source": "content-reminder",
+  "sent_at": 1781442052,
+  "source": "content-sunday",
   "status": "pending"
 }

@@ -91,3 +91,21 @@ Sources checked June 13:
 - Aptly, "AI Property Management Software for AppFolio & Yardi" - https://www.getaptly.com/ai-property-management-software
 - AI Frontdesk, "AI Rent Delinquency & Collections for Multifamily" - https://www.myaifrontdesk.com/multifamily/ai-rent-delinquency-collections
 - Surface AI, "How Property Management Workflow Automation Transforms Operations" - https://www.getsurface.ai/insights/how-property-management-workflow-automation-transforms-operations/
+
+## 2026-06-14 Exception Control Plane Addendum
+
+Weekly Intelligence Synthesis broadened the same PM Front Desk + Exception Desk pattern into a reusable "Exception Control Plane" proof asset.
+
+The useful proof shape is:
+- Source input: delinquency export, intake message, maintenance issue, owner request, vendor update, or ledger exception.
+- AI classification: workflow type, confidence, source record, risk level, and missing-data flag.
+- Owner queue: named reviewer, approval status, escalation timer, and blocked-on field.
+- Approval rule: what can be drafted, what can be sent, what must be held, and when legal/owner-sensitive language blocks automation.
+- Audit log: evidence link, action taken, who approved it, and measurable event.
+
+Positioning implication:
+- Keep the property-management proof narrow enough to inspect, but name it as the first example of the broader control-plane pattern.
+- Altmark rent delinquency can be the anchor because it has the full chain: source report, tenant-sensitive next step, policy/approval boundary, reviewer, and cash impact.
+- The cross-vertical bridge should stay concrete: construction project risk, wholesale order/AR exceptions, and insurance underwriting or claims review all need the same queue, approval rule, audit trail, and measurable event after AI reads the request.
+
+Source signal: `memory/content/weekly-intel-brief.md` and `memory/strategic-recommendations.md`, 2026-06-14 Weekly Intelligence Synthesis.

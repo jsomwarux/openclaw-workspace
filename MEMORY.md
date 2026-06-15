@@ -15,7 +15,7 @@
 - Detail: `docs/memory/MEMORY-full.md#hard-rules--security-essentials`.
 
 ## Consulting Positioning
-- Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs and agent-ready operating controls before automation.
+- Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs before automation.
 - ICP: NYC/metro property ops, construction, wholesale, skilled trades; T1 proof-led, T2 validation/template, T3 market-sensing.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
@@ -43,8 +43,9 @@
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
-- Read JT voice/corpus before drafting; first-person proof beats generic advice. Phase 3/4: approved corpus, Sonnet content crons, edit deltas, guard wrapper, $10/month cap.
-- PM Front Desk + Exception Desk is the strongest proof asset; 2026-06-13 draft: `memory/drafts/linkedin-pm-collections-control-sheet-2026-06-13.md`.
+- Read JT voice/corpus before drafting; first-person proof beats generic advice. Sonnet content crons have guardrails, edit deltas, and $10/month cap.
+- PM Front Desk + Exception Desk is the strongest proof asset; 2026-06-14 Exception Control Plane draft: `memory/drafts/linkedin-exception-control-plane-2026-06-14.md`.
+- AI Ops Teardowns should name the public company/signal and what JT would build, but withhold exact implementation recipes: prompts, schemas, node stack, thresholds, vendors, and proprietary routing logic.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
@@ -57,20 +58,20 @@
 - Detail: `docs/memory/MEMORY-full.md#crypto--finance`.
 
 ## Infrastructure / OpenClaw State
-- Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved Phase 4 content jobs.
-- Approved content Sonnet model is allowlisted; Moonshot fallback remains blocked by account billing pending JT recharge/reactivation.
+- Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs.
+- Approved Sonnet content model is allowlisted; Moonshot fallback blocked until billing recharge/reactivation.
 - Phase 2B: watchdog/restart hardened, n8n + Mission Control loopback-bound, `/n8n` restored, requested secret artifacts redacted.
 - Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Phase 7: old night jobs disabled, replaced by 11PM `Night Autonomy Agent` (`f146d8b8`). After North Star cuts: 49 enabled jobs.
+- Phase 7: old night jobs disabled, replaced by 11PM `Night Autonomy Agent` (`f146d8b8`). Current baseline: 49 enabled jobs.
 - Digest queue: `memory/digest-queue.md`; reminders/FYIs append there. Cron volume guard required; avoid `deleteAfterRun:true`.
-- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json`. 2026-06-13 cron: 49 enabled, 0 red rows.
+- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json`. 2026-06-14 cron: 49 enabled, 0 red rows after PI recovery; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
-- Health, cost tracker, proof guard, film review, and skills audit remain active. 2026-06-13 regression: after 9PM Health Check-in, verify Telegram delivery + pending-checkin date; repair stale state.
+- Health, cost tracker, proof guard, film review, and skills audit remain active. After 9PM Health Check-in, verify Telegram + pending-checkin date; repair stale state.
 - Detail: `docs/memory/MEMORY-full.md#health--training--quality-loops`.
 
 ## Strategic Decisions Log
@@ -87,5 +88,5 @@
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
 
 ## Automation / Live Opportunities
-- Altmark rent delinquency is top proof/revenue lane; PM proof review is next public asset. Nightly leverage, North Star, App Marketing, ReelFarm automations remain active unless cron list says otherwise.
+- Altmark rent delinquency is top proof/revenue lane; PM proof review/Exception Control Plane is next public asset. Nightly leverage, North Star, App Marketing, ReelFarm automations remain active unless cron list says otherwise.
 - Detail: `docs/memory/MEMORY-full.md#automation--live-opportunities`.

@@ -472,3 +472,10 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Morning packet:** Crypto Full Analysis ran at 06:00 with validation passed, X research guard passed, 25 X entries, estimated X research cost $0.84, and Telegram summary sent. Treat the output as research/ranking only.
 - **Model read:** Morning packet rotated out PRXVT/NOX/NOOK/GITLAWB/SIBYL and adjusted toward SURPLUS with WIRE/ODAI also in the allocation section. SURPLUS had the strongest listed 24h move in the packet; do not translate that into an automatic trade.
 - **JT read:** No heartbeat alert beyond the already-sent morning packet. Keep the manual-decision boundary intact: no trades, wallet actions, swaps, or x402/payment-MCP experiments without JT approval.
+
+## Jun 14, 2026 — 12:12PM Heartbeat Crypto Monitoring
+
+- **Local refresh:** Crypto-agent portfolio and price files refreshed at 12:00 with 26 tracked coins in `prices.json`; this heartbeat did not use majors as the alert driver.
+- **Midday pulse:** Crypto Midday Pulse ran at 12:00 and finished OK. It sent JT a Telegram alert because the active portfolio was +11.28% versus the 6AM baseline.
+- **Read:** The alert is portfolio-threshold monitoring, not a trade instruction. Treat the current crypto outputs as research/ranking and threshold awareness only.
+- **Guardrail:** No trades, swaps, wallet actions, transfers, or x402/payment-MCP experiments without JT manually deciding and approving.

@@ -14,12 +14,15 @@ Local draft: `memory/content/bank/2026-06-01/ai-ops-teardown-canals-wholesale-or
 Supporting teardown: `memory/consulting/ai-ops-teardowns/2026-06-01-canals-wholesale-order-intake.md`
 Drive teardown: https://docs.google.com/document/d/1B11azLIhCTBlQuQduAowGVuFM74u8hauMO1IGtJgFvg/edit
 Drive draft: https://docs.google.com/document/d/1UmR5AiYyZh2xeg2-WciL48X-RBIvxmP1wVfTXShzhWo/edit
+Score: 26/30.
 Build tier: Tier 2 now; Tier 3 candidate gated until the teardown is posted and produces operator reply/DM signal, or JT explicitly prioritizes a synthetic-data build.
-JT action: review LinkedIn draft in the weekly queue v4, edit if desired, post or explicitly defer, then send URL back if posted. Mission Control task: `j57fdnkcyd9ath934d35cyrdnh87tcbz`.
+JT action: first open `memory/content/bank/2026-06-01/ai-ops-teardown-canals-wholesale-order-intake.md`, review the LinkedIn draft and CTA comment, edit if desired, post or explicitly defer, then send URL back if posted. Mission Control task: `j57fdnkcyd9ath934d35cyrdnh87tcbz`.
 Proof-safe framing: public Canals funding signal only; Canals is not a client; no private client names, no fake ROI/hours-saved/client-acceptance claims, no internal access claims.
+Public blueprint boundary: name Canals and the workflow JT would build, but keep exact node stack, prompts, schema, confidence thresholds, vendor choices, and routing logic out of public posts.
 Why this matters: turns a current $35M wholesale distribution signal into a concrete order-intake workflow that fits JT's product-catalog and operations background.
+Diagnostic CTA: included as a buyer-safe order-intake workflow diagnostic comment. Route wholesale/distribution replies to `memory/drafts/ai-operations-diagnostic-one-pager.md`; route property/family-office replies to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md` if relevant.
 Posted URL capture: append exactly one JSONL record to `memory/content/posted-log.jsonl` only after a public URL exists. Required fields: `date`, `platform`, `title`, `source`, `url`, `posted: true`, `cta`, `reply_route`.
-Reply/DM routing: route relevant distributor/operations replies to the current proof-led acquisition packet or consulting pipeline.
+Reply/DM routing: route relevant distributor/operations replies to `memory/drafts/ai-operations-diagnostic-one-pager.md` and the consulting pipeline.
 Defer capture: if JT defers, update this calendar with reason + next review date; do not mark posted.
 
 ## Prior Unposted Bundle

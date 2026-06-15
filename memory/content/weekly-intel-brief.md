@@ -1,18 +1,18 @@
 # Weekly Intel Brief — for Content Generation
 > Written by Weekly Intelligence Synthesis. Read by content-generate-linkedin and content-generate-x Monday morning.
 
-**Week of:** 2026-06-01
+**Week of:** 2026-06-08
 
 ## Top Niche Signals This Week
-Property management: AI front desk, missed-call text-back, leasing follow-up, maintenance intake, tenant support, and vendor routing are becoming table-stakes PM features; the sharper JT angle is front desk plus exception desk.
-Construction: Sitemetric launched an AI construction camera and fresh construction software coverage keeps pushing field photos, inspection notes, and site updates; the useful post angle is what happens after evidence is captured.
-Insurance: Insurance Business reported nearly 90% of respondents expect more underwriting automation and 65.9% plan additional AI underwriting tools in 2026; the post angle is confidence, review queues, and audit trail.
+Construction: Document Crunch/Trimble and McCarthy/Palantir signals show construction AI moving from document review into project-level risk intelligence and connected operating systems.
+Wholesale: Fresh distribution coverage is pushing AI WMS, warehouse modernization, inventory velocity, and AR/action queues, which makes JT's cleaner angle one daily exception queue before any full system replacement.
+Insurance: Insurance-native AI platforms are packaging underwriting extraction, claims intake, policy servicing, and renewal status, so the useful post angle is confidence thresholds, review queues, and audit trail.
 
 ## Strategic Theme This Week
-Vertical AI is moving from generic assistants into workflow-specific operating surfaces, so JT's strongest angle is the governed handoff after intake: who owns the exception, who approves the output, and what gets logged.
+Vertical AI is moving from intake automation to governed control planes: the valuable layer is the queue, approval rule, audit trail, and measurable event after the AI reads the request.
 
 ## Competitive Developments
-Salesforce signed a definitive agreement to acquire Contentful so Agentforce can use structured content as part of AI-assembled experiences, while Agentforce ARR reportedly reached $1.2B with 205% year-over-year growth.
+Salesforce signed a definitive agreement to acquire m3ter for Agentforce Revenue Management, bringing native usage/outcome billing closer to the agent workflow layer. The positioning implication: pitch measurable workflow events, not generic agents or token savings.
 
 ---
-_Last updated: 2026-06-07 Sunday_
+_Last updated: 2026-06-14 Sunday_

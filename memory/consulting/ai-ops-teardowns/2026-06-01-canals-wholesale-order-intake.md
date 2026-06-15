@@ -1,6 +1,7 @@
 # AI Ops Teardown - Canals Wholesale Order Intake Desk
 
 Date: 2026-06-01
+Score: 26/30
 Current signal: Canals raised $35M to bring AI automation to wholesale distribution, reported 2026-05-29 by Unite.AI.
 Source URL: https://www.unite.ai/canals-raises-35m-to-bring-ai-automation-to-the-8-2-trillion-wholesale-distribution-industry/
 Niche: Wholesale Distribution Operations
@@ -64,6 +65,12 @@ This pattern applies across wholesale, supply houses, restaurant equipment, elec
 
 Canals just raised $35M for a wholesale problem every distributor recognizes: orders arrive messy.
 
+## Public Post Boundary
+
+The LinkedIn/X version should name Canals as the public signal and say what JT would build for a distributor in this lane: a shared order-intake desk that reads messy inputs, extracts order fields, checks catalog/pricing/inventory/margin rules, drafts clean ERP-ready output, and routes exceptions to the right owner.
+
+Hold back the build recipe. Do not publish the exact node stack, prompts, schemas, confidence thresholds, duplicate-detection logic, vendor choices, or proprietary routing rules. The public value is the diagnostic map and operating shape; the paid value is implementation.
+
 ## Proof-Safe Framing
 
 - Public Canals funding signal only.
@@ -71,3 +78,21 @@ Canals just raised $35M for a wholesale problem every distributor recognizes: or
 - No private client names.
 - No fake ROI, hours saved, client acceptance, or access to Canals' internal workflow.
 - The workflow is JT's proposed implementation pattern, not a claim about Canals' internal product architecture.
+
+## Diagnostic CTA
+
+Buyer-safe CTA/comment:
+
+> If messy order intake is the workflow holding the team together, start with an order-intake readiness checklist and diagnostic: inputs, exception owners, approval rules, ERP handoff, and audit trail before anything autonomous.
+
+Reply/DM routing: route relevant wholesale/distribution operator replies to the order-intake workflow diagnostic path in `memory/drafts/ai-operations-diagnostic-one-pager.md` and the consulting pipeline. If a reply is property/family-office specific, route it instead to `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md`.
+
+## Posted-Log Instruction
+
+Only after JT posts and provides a public URL, append exactly one JSONL entry to `memory/content/posted-log.jsonl`:
+
+```json
+{"date":"2026-06-03","platform":"LinkedIn","title":"Canals Wholesale Order Intake Desk","source":"memory/content/bank/2026-06-01/ai-ops-teardown-canals-wholesale-order-intake.md","url":"PUBLIC_URL_HERE","posted":true,"cta":"ai-operations-diagnostic","reply_route":"memory/drafts/ai-operations-diagnostic-one-pager.md"}
+```
+
+If JT defers, do not write a posted-log record. Update `memory/consulting/ai-ops-teardowns/delivery-calendar.md` with the reason and next review date.

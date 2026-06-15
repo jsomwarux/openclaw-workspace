@@ -16,6 +16,11 @@
 
 <!-- Entries appended by Weekly Intelligence Synthesis (eve-weekly-synthesis-007) -->
 
+### 2026-06-14 — Package The Exception Control Plane
+**Recommendation:** Package one reusable "Exception Control Plane" proof asset this week: source input, AI classification, owner queue, approval rule, audit log, and measurable event. Anchor it to the existing property/local-automation proof, then show how the same pattern maps to construction project risk, wholesale order/AR exceptions, and insurance underwriting or claims review.
+**Why now:** This week's signals clustered around vertical AI becoming control infrastructure: Document Crunch/Trimble moved construction AI into project-level risk, Salesforce/m3ter moved Agentforce toward usage and outcome billing, insurance AI platforms are packaging underwriting and claims workflows, and distribution coverage is emphasizing action queues and inventory velocity.
+**Status:** open
+
 ### 2026-06-07 — Ship PM Front Desk + Exception Desk Proof
 **Recommendation:** Package one buyer-facing proof asset this week around the property-management "front desk plus exception desk" workflow: tenant/resident intake, urgency classification, vendor routing, aging follow-up, manager review, and audit trail. Anchor it to Altmark-style property ops work and use it as the Tuesday observation/content spine plus PM outreach proof.
 **Why now:** Fresh June PM signals show AI front desk, missed-call text-back, leasing follow-up, maintenance intake, and vendor routing becoming table stakes, while RapidEyeAI and visual-documentation signals show PM operators are moving from generic assistants toward workflow-specific tools. JT already has the stronger implementation angle: capture the request, then govern the unresolved exceptions.

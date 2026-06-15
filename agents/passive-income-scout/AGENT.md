@@ -27,6 +27,10 @@ Hard limits per run:
 - Keep the report under 18,000 words.
 - Write the report before doing any optional research. A complete compact report beats an unfinished perfect pass.
 - If the run starts running long, stop research and write a complete `DEGRADED` report with exact caveats rather than leaving no file or writing `INCOMPLETE`.
+- Critical-path rule: live search is optional. If any X/web search command fails, continue from local weekly signal files and write the scout report. Never let a failed research command prevent `memory/passive-income/YYYY-MM-DD-scout.md` from existing.
+- Command safety: use only real executable shell commands. Do not write pseudo tool chains such as `run source -> run python3 ... (agent)` or `search ... (agent)`. Use one shell invocation with full paths, for example:
+  `set -a; source /Users/jtsomwaru/.config/env/global.env; set +a; python3 /Users/jtsomwaru/.openclaw/workspace/scripts/web_search.py "QUERY" --count 5 --json`
+- If a command is expected to sometimes return no matches, make it nonfatal with `|| true` and interpret the output. Empty search results are a research signal, not a cron failure.
 
 ---
 

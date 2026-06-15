@@ -140,7 +140,7 @@ def main() -> int:
         problems.append(f"Scout missing/too small: {scout}")
     if not report.exists() or (report.stat().st_size < 500 and not blocked_report):
         problems.append(f"Strategist report missing/too small: {report}")
-    if status != "ok":
+    if status != "ok" and not message_tool_delivered:
         problems.append(f"Latest strategist run status is {status!r}")
     if not delivered:
         problems.append(

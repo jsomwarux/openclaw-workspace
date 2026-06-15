@@ -320,6 +320,8 @@ Minimum bar:
 - Buyer learns what should be built, not just that "AI needs workflow."
 - Concrete operating scene before abstract diagnosis: name the input formats, wrong/missing details, system-of-record need, and owner handoff.
 - Customer/operator behavior stays realistic: the best teardown often adds a cleaner intake layer without asking customers to change how they already send work.
+- Named-company teardown posture: mention the company/signal when it is public and relevant, then frame the workflow as "what I would build" or "how I would map the implementation" without implying the company is a client or exposing internal facts.
+- Partial-blueprint boundary: publish the workflow shape, business logic, approval boundary, and before/after operating outcome. Hold back node stack, prompts, schemas, confidence thresholds, vendor choices, duplicate-detection logic, and proprietary routing rules.
 
 Strong shape:
 `[Company/event] just showed a problem [buyer] already recognizes: [plain bottleneck]. [Concrete input scene]. [System] still needs [clean output/check/owner/confirmation]. The workflow I would build starts with [desk/router/queue]. It reads [inputs], extracts [fields], checks [systems/rules], drafts [output], routes exceptions, and preserves the source. [Customers/operators] keep working normally. [Buyer] gets [cleaner handoff] before [bad data/missed work] hits [system of record].`
