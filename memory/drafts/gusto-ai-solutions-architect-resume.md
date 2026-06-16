@@ -2,7 +2,7 @@
 AI Solutions Architect | AI Implementation Specialist | New York City Metro Area | jtsomwaru@gmail.com | linkedin.com/in/jon-trevor-somwaru | jtsomwaru.com
 
 ## PROFESSIONAL SUMMARY
-AI Solutions Architect with 6+ years of enterprise systems implementation experience and hands-on AI agent workflow deployment across service operations, customer workflows, and governed automation. Designs agentic workflows that connect models, tools, data, human judgment, override logic, and quality safeguards into reliable operating systems. Strong fit for Gusto's Service Transformation work scaling Gus, with experience translating operational risk between business teams, engineering partners, vendors, and non-technical stakeholders.
+AI Solutions Architect with 6+ years of enterprise systems implementation experience and hands-on AI agent workflow deployment across service operations, customer workflows, and governed automation. Designs agentic workflows that connect models, tools, data, human judgment, override logic, and quality safeguards into reliable operating systems. Experienced translating operational risk between business teams, engineering partners, vendors, and non-technical stakeholders.
 
 ## EXPERIENCE
 

@@ -35,7 +35,7 @@ Forward Deployed AI Consultant with 7+ years of enterprise systems experience em
 
 **AgentGuard** Confidence-gated AI governance layer with 70% routing threshold, human-in-the-loop review queue, and EEOC-compliant audit trail. Live at agentguard-delta.vercel.app.
 **Agentforce Portfolio (4 Agents)** Insurance claims intake, PM tenant service, employee self-service, and lending application agents built using ConversationFirst, a proprietary 25-point conversational UX methodology for no-code Agentforce configuration.
-**Aya Construction Automation** Replaced manual field coordination workflows with n8n automated progress dashboard and StreetEasy property data pipeline. Follow-on scope commissioned within 30 days of delivery.
+**Construction Automation** Replaced manual field coordination workflows with n8n automated progress dashboard and StreetEasy property data pipeline. Follow-on scope commissioned within 30 days of delivery.
 
 ## EDUCATION
 

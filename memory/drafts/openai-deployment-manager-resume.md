@@ -11,7 +11,7 @@ AI enablement and adoption specialist with 6 years of enterprise cross-functiona
 
 ## Experience
 
-### JT Somwaru Consulting · AI Automation Consultant
+### Independent Consulting · AI Automation Consultant
 *New York City · 2025–Present*
 
 - Designed and deployed a multi-agent AI operations infrastructure running 35 autonomous jobs — prospect research, outreach pipelines, content generation, market intelligence, and cost monitoring — entirely without manual input, enabling clients to scale operations without additional headcount.
@@ -19,7 +19,7 @@ AI enablement and adoption specialist with 6 years of enterprise cross-functiona
 - Developed **ConversationFirst**, a 25-point enterprise AI adoption framework — persona cards, conversation flows, and enablement architecture — adopted as a repeatable implementation standard across insurance and property management deployments.
 - Designed and facilitated hands-on AI workshops for property management and insurance operations teams; delivered **PM Maintenance Triage** n8n workflow — multi-tier complaint classification (routine / urgent / emergency), automated vendor dispatch, tenant confirmation, and audit log — reducing unrouted emergencies and manual dispatch time for NYC property management clients.
 - Built and deployed **Agentforce agents** for insurance claims intake routing, PM tenant service, and employee self-service — led customer enablement from sandbox through production deployment across Salesforce orgs.
-- Delivered a **construction field reporting system** for NYC-based Aya ($1,500) — replaced manual update chains with real-time job tracking; led client onboarding that drove immediate adoption and two follow-on project commissions ($3,500+ in additional scope).
+- Delivered a **construction field reporting system** for NYC-based a construction and property operations client ($1,500) — replaced manual update chains with real-time job tracking; led client onboarding that drove immediate adoption and two follow-on project commissions ($3,500+ in additional scope).
 - Shipped **Vista** (Apple App Store) and **Nash Satoshi** (4-LLM ensemble crypto rankings) — proof of ability to take a product from prototype to production deployment.
 
 ---
@@ -40,7 +40,7 @@ AI enablement and adoption specialist with 6 years of enterprise cross-functiona
 | Project | Description | Status |
 |---|---|---|
 | AgentGuard | Enterprise evaluation layer: confidence-gated routing, operational controls, EEOC audit trail | Live |
-| Construction Job Tracker | Real-time field reporting for Aya — immediate adoption, $3,500+ follow-on scope | Deployed, client |
+| Construction Job Tracker | Real-time field reporting for a construction and property operations client — immediate adoption, $3,500+ follow-on scope | Deployed, client |
 | Agentforce Agents | Insurance, PM, employee service agents — sandbox to production (Salesforce) | Deployed |
 | PM Maintenance Triage | Multi-tier classification + automated vendor dispatch — reduced manual routing for NYC PM clients | Deployed |
 | Vista | Movie rating/tracking app | Live — Apple App Store |

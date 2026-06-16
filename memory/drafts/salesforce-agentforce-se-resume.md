@@ -23,7 +23,7 @@ Enterprise-facing AI implementation specialist with hands-on Agentforce build ex
 ## Experience
 
 ### AI Implementation Consultant & Agentforce Architect
-**JT Somwaru Consulting** — New York, NY | Sep 2025–Present
+**Independent Consulting** — New York, NY | Sep 2025–Present
 
 Independent AI consulting practice focused on Agentforce implementations and n8n workflow automation for NYC businesses. Sole practitioner — responsible for discovery, architecture, configuration, and client guidance through to production.
 
@@ -31,8 +31,8 @@ Independent AI consulting practice focused on Agentforce implementations and n8n
 - **Designed conversation architectures from scratch** — built topic structures, slot-filling flows, and fallback handling that mirror real customer service edge cases; all agents handle unstructured input and multi-intent conversations
 - **Built the ConversationFirst framework** — a structured methodology for Agentforce UX design including persona cards, conversation flow diagrams, and a 25-point pre-build checklist. Applied this before every agent build to catch scope gaps before they become production failures
 - **Led end-to-end client implementations** — scoped requirements with non-technical stakeholders, translated operational workflows into Agentforce architectures, and guided clients through the handoff from working prototype to operational deployment
-- **Delivered a $1,500 construction progress dashboard** and **$1,000 automated StreetEasy property scraper** for a NYC real estate firm (Aya) — both in production, replacing manual workflows
-- **Currently building an AI-powered product knowledge copilot** for H.C. Oswald Supply Co. (Bronx, 103-year-old HVAC distributor) — RAG over a Shopify catalog, surfacing parts knowledge via Intercom in English and Spanish
+- **Delivered a $1,500 construction progress dashboard** and **$1,000 automated StreetEasy property scraper** for a NYC real estate firm (a construction and property operations client) — both in production, replacing manual workflows
+- **Currently building an AI-powered product knowledge copilot** for a Bronx HVAC distributor (Bronx, 103-year-old HVAC distributor) — RAG over a Shopify catalog, surfacing parts knowledge via Intercom in English and Spanish
 
 ---
 

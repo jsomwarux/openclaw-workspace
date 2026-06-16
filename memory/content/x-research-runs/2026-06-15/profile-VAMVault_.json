@@ -1,0 +1,130 @@
+{
+  "user": {
+    "name": "VamVault",
+    "public_metrics": {
+      "followers_count": 111,
+      "following_count": 62,
+      "tweet_count": 383,
+      "listed_count": 1,
+      "like_count": 713,
+      "media_count": 39
+    },
+    "description": "Verifiable AI memory infrastructure on @0G_labs.\nPersistent agent memory, proof verification, and execution traceability.\nTG: https://t.co/0MR5M9EEnE",
+    "id": "2054165562368925696",
+    "created_at": "2026-05-12T11:43:33.000Z",
+    "username": "VAMVault_"
+  },
+  "tweets": [
+    {
+      "id": "2065466988479099029",
+      "text": "Verifiable Agent Memory Vault has been recognized as a Community Award winner in the 0G APAC Hackathon.\n\nBuilders tested it across payment settlement, marketplace listing, risk allocation, trading, and coordination workflows.\n\nWhat meant the most was seeing people apply it to use https://t.co/SFh7ZqR5FY",
+      "author_id": "2054165562368925696",
+      "username": "VAMVault_",
+      "name": "VamVault",
+      "created_at": "2026-06-12T16:11:19.000Z",
+      "conversation_id": "2065466988479099029",
+      "metrics": {
+        "likes": 18,
+        "retweets": 9,
+        "replies": 15,
+        "quotes": 1,
+        "impressions": 1248,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/HackQuest_/status/2065450620128256302"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/VAMVault_/status/2065466988479099029"
+    },
+    {
+      "id": "2065327520560382185",
+      "text": "Payment Settlement Agents.\n\nMarketplace Listing Agents.\n\nHelm Risk Allocation Agents.\n\nTrading Conscience Agents.\n\nSynapseMesh Task Coordination Agents.\n\nThese weren't use cases I originally planned for.\n\nThey emerged as other builders started testing Verifiable Agent Memory",
+      "author_id": "2054165562368925696",
+      "username": "VAMVault_",
+      "name": "VamVault",
+      "created_at": "2026-06-12T06:57:07.000Z",
+      "conversation_id": "2065327520560382185",
+      "metrics": {
+        "likes": 28,
+        "retweets": 12,
+        "replies": 18,
+        "quotes": 0,
+        "impressions": 260,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/VAMVault_/status/2065327520560382185"
+    },
+    {
+      "id": "2064734799546208717",
+      "text": "Builder Docs were created to answer a simple question:\n\nWhere does Verifiable Agent Memory Vault fit inside a real agent workflow?\n\nSo far, 106 agents have been created.\n\nBuilders have already started applying the same memory layer to completely different systems.\n\nFrom risk",
+      "author_id": "2054165562368925696",
+      "username": "VAMVault_",
+      "name": "VamVault",
+      "created_at": "2026-06-10T15:41:51.000Z",
+      "conversation_id": "2064734799546208717",
+      "metrics": {
+        "likes": 22,
+        "retweets": 11,
+        "replies": 15,
+        "quotes": 1,
+        "impressions": 1031,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/VAMVault_/status/2064734799546208717"
+    },
+    {
+      "id": "2064603004544721185",
+      "text": "Builder Docs are now live in Verifiable Agent Memory Vault.\n\nOne challenge we kept seeing was that builders understood the idea of verifiable memory, but weren't always sure where it fit inside an existing agent workflow.\n\nThe new docs focus on practical integration patterns https://t.co/7Mw1M1RtBz",
+      "author_id": "2054165562368925696",
+      "username": "VAMVault_",
+      "name": "VamVault",
+      "created_at": "2026-06-10T06:58:09.000Z",
+      "conversation_id": "2064603004544721185",
+      "metrics": {
+        "likes": 31,
+        "retweets": 13,
+        "replies": 22,
+        "quotes": 1,
+        "impressions": 755,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/VAMVault_/status/2064603004544721185/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/VAMVault_/status/2064603004544721185"
+    },
+    {
+      "id": "2064209766411354309",
+      "text": "The latest onboarding update in Verifiable Agent Memory Vault now walks through real agent workflows:\n\n• Research Agents\n• Coding Agents\n• Multi-Agent Handoffs\n• Autonomous Analysts\n\nThe goal is simple:\n\nHelp builders understand where memory anchoring and verification fit https://t.co/As4xIvRRpp",
+      "author_id": "2054165562368925696",
+      "username": "VAMVault_",
+      "name": "VamVault",
+      "created_at": "2026-06-09T04:55:34.000Z",
+      "conversation_id": "2064209766411354309",
+      "metrics": {
+        "likes": 41,
+        "retweets": 15,
+        "replies": 35,
+        "quotes": 1,
+        "impressions": 1241,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/VAMVault_/status/2064209766411354309/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/VAMVault_/status/2064209766411354309"
+    }
+  ]
+}

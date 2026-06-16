@@ -1,0 +1,276 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 14549,
+      "following_count": 5,
+      "tweet_count": 3374,
+      "listed_count": 65,
+      "like_count": 6002,
+      "media_count": 1719
+    },
+    "id": "1687728691357638656",
+    "description": "CT NEWS & UPDATES. POWERED BY @BagsApp",
+    "name": "BNN",
+    "created_at": "2023-08-05T07:34:24.000Z",
+    "username": "BNNBags"
+  },
+  "tweets": [
+    {
+      "id": "2066349050488643825",
+      "text": "BREAKING: $LORIA from @AndyAyrey is trending +13% today on @BagsApp 👏 https://t.co/RwdXIxoimg",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-15T02:36:19.000Z",
+      "conversation_id": "2066349050488643825",
+      "metrics": {
+        "likes": 19,
+        "retweets": 2,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 680,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2066349050488643825/photo/1",
+        "https://x.com/BNNBags/status/2066349050488643825/photo/1"
+      ],
+      "mentions": [
+        "AndyAyrey",
+        "BagsApp"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2066349050488643825"
+    },
+    {
+      "id": "2066348519863042247",
+      "text": "BRAINBLAST JUST EVOLVED FROM A CLI INTO A SECURITY ECONOMY 🔥\n\n@brainblast_ai has shipped v0.5.0\n\n- Pluggable rule packs\n- Zero-friction rule authoring\n- Opt-in graduation telemetry\n- New checker + auto-fixer\n- Brainblast Registry is now live\n- Create security rule packs\n- https://t.co/uyKJ6KwDcr",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-15T02:34:12.000Z",
+      "conversation_id": "2066348519863042247",
+      "metrics": {
+        "likes": 30,
+        "retweets": 7,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 710,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2066348519863042247/photo/1"
+      ],
+      "mentions": [
+        "brainblast_ai"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2066348519863042247"
+    },
+    {
+      "id": "2066223941119619101",
+      "text": "BREAKING: $SGL @x402_Layer is trending +26% in the last 24 hours on @BagsApp 👏 https://t.co/ybxolvWG9c",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-14T18:19:10.000Z",
+      "conversation_id": "2066223941119619101",
+      "metrics": {
+        "likes": 26,
+        "retweets": 2,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 801,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2066223941119619101/photo/1",
+        "https://x.com/BNNBags/status/2066223941119619101/photo/1"
+      ],
+      "mentions": [
+        "x402_Layer",
+        "BagsApp"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2066223941119619101"
+    },
+    {
+      "id": "2066214806730723748",
+      "text": "BREAKING: @x402_Layer TEASES THE NEXT CHAPTER OF SINGULARITY 🔥 \n\n\"SINGULARITY TOKENIZED COMPUTE MARKETS.\" https://t.co/8UbsKxRvwJ",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-14T17:42:52.000Z",
+      "conversation_id": "2066214806730723748",
+      "metrics": {
+        "likes": 33,
+        "retweets": 4,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 908,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2066214806730723748/video/1"
+      ],
+      "mentions": [
+        "x402_Layer"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2066214806730723748"
+    },
+    {
+      "id": "2066205572274266317",
+      "text": "BREAKING: @agentlayer_ai NOW LETS AI AGENTS TRADE STOCKS INCLUDING $SPCX 🤯\n\nAGENTS CAN NOW RESEARCH MARKETS, ANALYZE DATA, AND EXECUTE TRADES ALL FROM A SINGLE CHAT. https://t.co/LGDY1QJwyi",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-14T17:06:11.000Z",
+      "conversation_id": "2066205572274266317",
+      "metrics": {
+        "likes": 38,
+        "retweets": 5,
+        "replies": 5,
+        "quotes": 1,
+        "impressions": 859,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2066205572274266317/video/1"
+      ],
+      "mentions": [
+        "agentlayer_ai"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2066205572274266317"
+    },
+    {
+      "id": "2065980959233577074",
+      "text": "BREAKING: $POLYBLOCK is trending +78% today on @BagsApp 🔥 https://t.co/Ioya5rU97v",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-14T02:13:39.000Z",
+      "conversation_id": "2065980959233577074",
+      "metrics": {
+        "likes": 20,
+        "retweets": 2,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 719,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2065980959233577074/photo/1",
+        "https://x.com/BNNBags/status/2065980959233577074/photo/1"
+      ],
+      "mentions": [
+        "BagsApp"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2065980959233577074"
+    },
+    {
+      "id": "2065979927854243925",
+      "text": "AI AGENTS ARE NOW LAUNCHING TOKENS, TRADING THEM, AND EARNING REVENUE 🤯\n\n@P0Systems just pushed the agent economy one step further.\n\nThrough p0's API, agents can:\n\n- Deploy tokens\n- Trade tokens\n- Collect creator fees\n- Manage their own onchain activity\n\np0 just gave developers https://t.co/qL70uZ1xnA",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-14T02:09:33.000Z",
+      "conversation_id": "2065979927854243925",
+      "metrics": {
+        "likes": 27,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 1,
+        "impressions": 1000,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2065979927854243925/photo/1"
+      ],
+      "mentions": [
+        "P0Systems"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2065979927854243925"
+    },
+    {
+      "id": "2065818782090527224",
+      "text": "BREAKING: @BagsApp FOUNDER @finnbags TEASES PERPS WHILE GOING LONG ON $SPCX 🔥 https://t.co/nNLHKqq1Dc",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-13T15:29:13.000Z",
+      "conversation_id": "2065818782090527224",
+      "metrics": {
+        "likes": 26,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 1130,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2065818782090527224/photo/1"
+      ],
+      "mentions": [
+        "BagsApp",
+        "finnbags"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2065818782090527224"
+    },
+    {
+      "id": "2065818034606878919",
+      "text": "BREAKING: Anthropic officially disables access for all users worldwide to its Mythos Fable 5 AI model 🤯\n\nThe move comes after the U.S. government reportedly ordered Anthropic to suspend foreign access to the model, citing national security concerns. https://t.co/WUUU99iCit",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-13T15:26:15.000Z",
+      "conversation_id": "2065818034606878919",
+      "metrics": {
+        "likes": 23,
+        "retweets": 2,
+        "replies": 2,
+        "quotes": 1,
+        "impressions": 1136,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2065818034606878919/photo/1",
+        "https://x.com/BNNBags/status/2065818034606878919/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2065818034606878919"
+    },
+    {
+      "id": "2065797375403139097",
+      "text": "BREAKING: $AGENTLAYER @agentlayer_ai is trending +19% today on @BagsApp 🔥 https://t.co/HaRCVFQo9H",
+      "author_id": "1687728691357638656",
+      "username": "BNNBags",
+      "name": "BNN",
+      "created_at": "2026-06-13T14:04:09.000Z",
+      "conversation_id": "2065797375403139097",
+      "metrics": {
+        "likes": 54,
+        "retweets": 8,
+        "replies": 2,
+        "quotes": 1,
+        "impressions": 1273,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/BNNBags/status/2065797375403139097/photo/1",
+        "https://x.com/BNNBags/status/2065797375403139097/photo/1"
+      ],
+      "mentions": [
+        "agentlayer_ai",
+        "BagsApp"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BNNBags/status/2065797375403139097"
+    }
+  ]
+}

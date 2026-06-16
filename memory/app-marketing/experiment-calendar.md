@@ -1,13 +1,13 @@
 # App Marketing OS — Experiment Calendar
 
-Week of: 2026-06-08
-Generated: 2026-06-08
+Week of: 2026-06-15
+Generated: 2026-06-15
 
 ## Rule
 Every generated product post should map to a named experiment, a success threshold, and a retire/rework rule. If it does not, skip it.
 
 ## Inputs used
-- Metrics rows: 207
+- Metrics rows: 239
 - Latest test brief: `test-briefs-2026-05-07.md`
 - Planned rows currently waiting for live post IDs: 6
 

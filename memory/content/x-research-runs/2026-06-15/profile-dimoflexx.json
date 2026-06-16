@@ -1,0 +1,258 @@
+{
+  "user": {
+    "id": "1481009393101643784",
+    "name": "dimaflexx",
+    "username": "dimoflexx",
+    "created_at": "2022-01-11T21:05:59.000Z",
+    "public_metrics": {
+      "followers_count": 1405,
+      "following_count": 110,
+      "tweet_count": 7058,
+      "listed_count": 16,
+      "like_count": 18559,
+      "media_count": 766
+    },
+    "description": "sidelined trading & ai | open for dm\nalways dyor"
+  },
+  "tweets": [
+    {
+      "id": "2066210921501147646",
+      "text": "been testing Co-Invest on Liquid today and wanted to know if it can help the newbies, so asked the simple question:\n\n\"ETH keeps falling. Is it better to hold, sell, or short?\"\n\nit broke down both the bearish and bullish cases, looked at funding, positioning, open interest, and https://t.co/iX90e5sJ2C",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-14T17:27:26.000Z",
+      "conversation_id": "2066210921501147646",
+      "metrics": {
+        "likes": 7,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 52,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066210921501147646/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066210921501147646"
+    },
+    {
+      "id": "2066189152819827179",
+      "text": "Demis Hassabis said something most people completely misunderstood:\n\n\"One person who understands AI will outperform an entire startup team.\"\n\nMost founders heard that and started chasing better prompts.\n\nThat wasn't the point.\n\nThe people pulling ahead aren't getting better at https://t.co/R0621bltG7 https://t.co/pk0ZsYFnL6",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-14T16:00:56.000Z",
+      "conversation_id": "2066189152819827179",
+      "metrics": {
+        "likes": 20,
+        "retweets": 5,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 625,
+        "bookmarks": 10
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066189152819827179/video/1",
+        "https://twitter.com/cryptowluha/status/2065069357399433272"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066189152819827179"
+    },
+    {
+      "id": "2066071130050289951",
+      "text": "THIS VETERAN DEVELOPER SPENT $1,198 ON 2 MAC MINIS AND REPLACED A $210/MONTH AGENT STACK\n\nMost people still use AI like a chat tab.\n\nEvery session begins from zero.\n\nEvery workflow gets rebuilt.\n\nEvery useful process disappears when the conversation ends.\n\nHermes changes that. https://t.co/qn9x0nk4xm https://t.co/6PlIn09VJG",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-14T08:11:57.000Z",
+      "conversation_id": "2066071130050289951",
+      "metrics": {
+        "likes": 46,
+        "retweets": 8,
+        "replies": 10,
+        "quotes": 0,
+        "impressions": 2123,
+        "bookmarks": 16
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066071130050289951/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066071130050289951"
+    },
+    {
+      "id": "2065875069767938349",
+      "text": "Anthropic just revealed the mistake most Claude users still make.\n\nThey treat it like a search box.\n\nEvery session begins from zero.\n\nEvery workflow gets rebuilt.\n\nEvery useful insight disappears when the tab closes.\n\nThe people pulling ahead use Claude differently.\n\nTheir work https://t.co/wHVWqc2CRH https://t.co/pk0ZsYFVAE",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-13T19:12:53.000Z",
+      "conversation_id": "2065875069767938349",
+      "metrics": {
+        "likes": 20,
+        "retweets": 6,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 1382,
+        "bookmarks": 14
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2065875069767938349/video/1",
+        "https://twitter.com/cryptowluha/status/2065069357399433272"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2065875069767938349"
+    },
+    {
+      "id": "2065760727101571257",
+      "text": "THIS GIRL USED HERMES AGENT AFTER IT PASSED 140,000 GITHUB STARS AND TURNED A $0 LOCAL SETUP INTO $5,200/MONTH IN CLIENT REPORTS\n\nMost people use AI to generate outputs.\n\nShe used it to build assets.\n\nHermes doesn't just complete a task and forget it.\n\nIt completes a task.\n\nSaves https://t.co/sNuIg1jBoJ https://t.co/6PlIn09VJG",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-13T11:38:31.000Z",
+      "conversation_id": "2065760727101571257",
+      "metrics": {
+        "likes": 55,
+        "retweets": 10,
+        "replies": 7,
+        "quotes": 1,
+        "impressions": 6263,
+        "bookmarks": 38
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2065760727101571257/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2065760727101571257"
+    },
+    {
+      "id": "2065536131824037961",
+      "text": "THIS VETERAN DEVELOPER SPENT $1,198 ON 2 MAC MINIS AND REPLACED A $210/MONTH AGENT STACK WITH A LOCAL HERMES WORKSPACE\n\nMost people still treat AI like a chat tab.\n\nAsk.\n\nAnswer.\n\nReset.\n\nRepeat.\n\nOnce Hermes runs locally, that changes.\n\nThe laptop stops acting like a chatbot and https://t.co/8huGfeBfae https://t.co/6PlIn0atze",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-12T20:46:04.000Z",
+      "conversation_id": "2065536131824037961",
+      "metrics": {
+        "likes": 83,
+        "retweets": 15,
+        "replies": 11,
+        "quotes": 2,
+        "impressions": 13444,
+        "bookmarks": 74
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2065536131824037961/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2065536131824037961"
+    },
+    {
+      "id": "2065365934450102751",
+      "text": "THIS 19-YEAR-OLD OPENED THE HERMES SETUP WIZARD AND ACCIDENTALLY SHOWED WHERE MOST AI COSTS REALLY COME FROM\n\nLocal model.\n\nThe place where the agent actually runs.\n\nIt looks boring.\n\nUntil you realize that's where the economics are decided.\n\nMost people leak money in small https://t.co/ADkEwImGz9 https://t.co/6PlIn09VJG",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-12T09:29:46.000Z",
+      "conversation_id": "2065365934450102751",
+      "metrics": {
+        "likes": 68,
+        "retweets": 9,
+        "replies": 7,
+        "quotes": 1,
+        "impressions": 5050,
+        "bookmarks": 26
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2065365934450102751/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2065365934450102751"
+    },
+    {
+      "id": "2065201347650027948",
+      "text": "THIS GIRL USED HERMES AGENT AFTER IT PASSED 140,000 GITHUB STARS AND TURNED A $0 LOCAL SETUP INTO $5,200/MONTH IN CLIENT REPORTS\n\nShe used it to build workflows.\n\nHermes isn't a typical agent that forgets everything when the task ends.\n\nComplete a report once.\n\nSave the process. https://t.co/cl50YO3rHA https://t.co/6PlIn09VJG",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-11T22:35:45.000Z",
+      "conversation_id": "2065201347650027948",
+      "metrics": {
+        "likes": 67,
+        "retweets": 33,
+        "replies": 4,
+        "quotes": 1,
+        "impressions": 6579,
+        "bookmarks": 28
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2065201347650027948/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2065201347650027948"
+    },
+    {
+      "id": "2065133512345153634",
+      "text": "Most people see a Mac Mini as a home computer.\n\nHe saw a $300 invoice waiting to happen.\n\nA developer in Shenzhen noticed a pattern:\n\nEvery startup founder.\n\nEvery small business owner.\n\nEvery early-stage team.\n\nWants to know what competitors are doing and where the opportunities https://t.co/daTuTmR8hz https://t.co/6PlIn09VJG",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-11T18:06:12.000Z",
+      "conversation_id": "2065133512345153634",
+      "metrics": {
+        "likes": 40,
+        "retweets": 11,
+        "replies": 8,
+        "quotes": 0,
+        "impressions": 3322,
+        "bookmarks": 18
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2065133512345153634/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2065133512345153634"
+    },
+    {
+      "id": "2065004054623703379",
+      "text": "THIS CHINESE DEVELOPER CONNECTED 4 MAC MINIS AND BUILT A LOCAL HERMES AGENT FARM THAT RUNS RESEARCH TASKS WITH ZERO CLOUD COST\n\nMost people think the breakthrough is the hardware.\n\nIt's not.\n\nThe breakthrough is that the workflow remembers.\n\nHermes doesn't just complete a task. https://t.co/Rb8RAb5Qfj https://t.co/6PlIn09VJG",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-11T09:31:47.000Z",
+      "conversation_id": "2065004054623703379",
+      "metrics": {
+        "likes": 20,
+        "retweets": 4,
+        "replies": 7,
+        "quotes": 0,
+        "impressions": 1145,
+        "bookmarks": 14
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2065004054623703379/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2065004054623703379"
+    }
+  ]
+}

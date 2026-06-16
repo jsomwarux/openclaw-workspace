@@ -2,7 +2,7 @@
 AI Operations Lead | AI Implementation Specialist | New York City Metro Area | jtsomwaru@gmail.com | linkedin.com/in/jon-trevor-somwaru | jtsomwaru.com
 
 ## PROFESSIONAL SUMMARY
-AI Operations Lead with 6+ years of enterprise systems implementation experience and hands-on applied AI deployment across workflow discovery, process mapping, automation, adoption, dashboards, training, and governance. Builds practical AI systems for Product, Sales, Customer Success, Marketing, Operations, and Support teams: copilots, agentic workflows, n8n automations, QA loops, AI champions, and playbooks that make AI usable in messy operating environments. Strong fit for ApartmentIQ and MavenAI's profitable growth-stage SaaS environment, with the operator judgment to connect business pain, tools, data, adoption, and measurable outcomes.
+AI Operations Lead with 6+ years of enterprise systems implementation experience and hands-on applied AI deployment across workflow discovery, process mapping, automation, adoption, dashboards, training, and governance. Builds practical AI systems for Product, Sales, Customer Success, Marketing, Operations, and Support teams: copilots, agentic workflows, n8n automations, QA loops, AI champions, and playbooks that make AI usable in messy operating environments. Connects business pain, tools, data, adoption, and measurable outcomes in growth-stage SaaS and operations-heavy environments.
 
 ## EXPERIENCE
 
@@ -32,7 +32,7 @@ AI Operations Lead with 6+ years of enterprise systems implementation experience
 
 **OpenClaw AI Operations System**: Runs 39 autonomous agents for research, content, job market analysis, crypto intelligence, health tracking, cost monitoring, and workflow execution, with dashboards, alerts, model routing, cost controls, escalation rules, and recovery playbooks.
 
-**Aya Property Operations Proof**: Delivered a real-time operations dashboard across 32 buildings and 313 rooms, then extended the engagement into AI-assisted property research and workflow automation for property operations decisions.
+**Property Operations Proof**: Delivered a real-time operations dashboard across 32 buildings and 313 rooms, then extended the engagement into AI-assisted property research and workflow automation for property operations decisions.
 
 **Nash Satoshi**: Built production 4-LLM ensemble (Claude, GPT-4, Gemini, Grok) that generates consensus rankings via cross-model validation, demonstrating agent orchestration, model bias mitigation, and AI ops at scale.
 

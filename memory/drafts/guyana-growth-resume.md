@@ -2,7 +2,7 @@
 AI Implementation & Operations Specialist | New York City | jtsomwaru@gmail.com | jtsomwaru.com | linkedin.com/in/jon-trevor-somwaru
 
 ## PROFESSIONAL SUMMARY
-AI Implementation & Operations Specialist with 6 years of enterprise business systems experience at Spectrum Enterprise and current independent consulting work for operations-heavy businesses. Builds practical AI workflows, dashboards, CRM/reporting systems, and human-in-the-loop operating processes for companies that need cleaner execution, faster reporting, and better handoffs. Strong fit for Guyana growth opportunities where oil and gas, construction, logistics, real estate, professional services, finance, and public-private organizations need modern operating systems without overcomplicated software projects.
+AI Implementation & Operations Specialist with 6 years of enterprise business systems experience at Spectrum Enterprise and current independent consulting work for operations-heavy businesses. Builds practical AI workflows, dashboards, CRM/reporting systems, and human-in-the-loop operating processes for companies that need cleaner execution, faster reporting, and better handoffs. Brings practical implementation judgment to oil and gas, construction, logistics, real estate, professional services, finance, and public-private organizations that need modern operating systems without overcomplicated software projects.
 
 ## EXPERIENCE
 
@@ -41,7 +41,7 @@ AI Implementation & Operations Specialist with 6 years of enterprise business sy
 
 **Local Content Operations Sprint:** Designed a Guyana-focused operating-system concept for oil and gas adjacent suppliers: document intake, certification checklist, vendor database, procurement tracker, quote follow-up, and executive reporting. Built for suppliers facing more opportunity volume and more administrative proof requirements.
 
-**Aya Construction & Property Operations Dashboard:** Delivered a live dashboard for a construction and co-living operator, centralizing unit, tenant, project, and building data across 32 buildings and 313 rooms. Demonstrates the same back-office modernization pattern needed by growing suppliers, real estate operators, and service businesses.
+**Construction & Property Operations Dashboard:** Delivered a live dashboard for a construction and co-living operator, centralizing unit, tenant, project, and building data across 32 buildings and 313 rooms. Demonstrates the same back-office modernization pattern needed by growing suppliers, real estate operators, and service businesses.
 
 **AgentGuard:** Built an AI governance layer with confidence scoring, human review queues, audit trails, and escalation logic. Relevant for organizations adopting AI in regulated or sensitive workflows where leaders need transparency before automation.
 

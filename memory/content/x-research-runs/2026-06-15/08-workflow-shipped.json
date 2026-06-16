@@ -1,0 +1,243 @@
+[
+  {
+    "id": "2064044298513809622",
+    "text": "CLAUDE CODE AGENTS CAN NOW EXECUTE ONCHAIN 🤯\n\n@agentlayer_ai just shipped AgentLayer support for Claude Code, bringing wallets, DeFi, and onchain execution directly into the agent workflow.\n\nInside Claude Code:\n\n- Send transfers\n- Execute swaps\n- Access DeFi\n- Operate across https://t.co/OG4IDGxPWC",
+    "author_id": "1687728691357638656",
+    "username": "BNNBags",
+    "name": "BNN",
+    "created_at": "2026-06-08T17:58:03.000Z",
+    "conversation_id": "2064044298513809622",
+    "metrics": {
+      "likes": 66,
+      "retweets": 20,
+      "replies": 6,
+      "quotes": 3,
+      "impressions": 2852,
+      "bookmarks": 4
+    },
+    "urls": [
+      "https://x.com/BNNBags/status/2064044298513809622/photo/1"
+    ],
+    "mentions": [
+      "agentlayer_ai"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/BNNBags/status/2064044298513809622"
+  },
+  {
+    "id": "2064611936600310082",
+    "text": "While building Verifiable Agent Memory Vault, we kept running into the same problem:\n\nBuilders understood the idea of verifiable memory.\n\nThey weren't always sure where it fit inside an existing agent workflow.\n\nThat's an adoption problem.\n\nSo we shipped Builder Docs.\n\nInstead of https://t.co/hhc2cGdBxM",
+    "author_id": "1760919550118268928",
+    "username": "Armanibanks100",
+    "name": "Armani Banks",
+    "created_at": "2026-06-10T07:33:38.000Z",
+    "conversation_id": "2064611936600310082",
+    "metrics": {
+      "likes": 44,
+      "retweets": 13,
+      "replies": 37,
+      "quotes": 0,
+      "impressions": 505,
+      "bookmarks": 1
+    },
+    "urls": [
+      "https://twitter.com/VAMVault_/status/2064603004544721185"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Armanibanks100/status/2064611936600310082"
+  },
+  {
+    "id": "2064764233754259762",
+    "text": "AgentLayer just shipped wallets inside Claude Code.\n\nAI agents can now hold assets, swap, transfer, and interact with DeFi directly from the agent workflow.\n\nCT response? Dump it to a $60k market cap.\n\nThis space is so conditioned to chase memes that it can’t recognize https://t.co/PwuAx3PF2y",
+    "author_id": "16788599",
+    "username": "VannDough",
+    "name": "vann dough💰💹🧲",
+    "created_at": "2026-06-10T17:38:49.000Z",
+    "conversation_id": "2064764233754259762",
+    "metrics": {
+      "likes": 37,
+      "retweets": 10,
+      "replies": 3,
+      "quotes": 0,
+      "impressions": 840,
+      "bookmarks": 6
+    },
+    "urls": [
+      "https://twitter.com/agentlayer_ai/status/2064037601485430882"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/VannDough/status/2064764233754259762"
+  },
+  {
+    "id": "2064603004544721185",
+    "text": "Builder Docs are now live in Verifiable Agent Memory Vault.\n\nOne challenge we kept seeing was that builders understood the idea of verifiable memory, but weren't always sure where it fit inside an existing agent workflow.\n\nThe new docs focus on practical integration patterns https://t.co/7Mw1M1RtBz",
+    "author_id": "2054165562368925696",
+    "username": "VAMVault_",
+    "name": "VamVault",
+    "created_at": "2026-06-10T06:58:09.000Z",
+    "conversation_id": "2064603004544721185",
+    "metrics": {
+      "likes": 31,
+      "retweets": 13,
+      "replies": 22,
+      "quotes": 1,
+      "impressions": 755,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/VAMVault_/status/2064603004544721185/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/VAMVault_/status/2064603004544721185"
+  },
+  {
+    "id": "2065727825836195975",
+    "text": "https://t.co/PCy0g0UysK Beta launch soon.🚀\n\nA payment infrastructure designed for AI Agents:\n• Pay and get paid autonomously\n• Move value across chains\n• Integrate with any Agent workflow\n• Built for the next generation of autonomous businesses\n\n#PayAgent #AI #A2A #AgentFi https://t.co/F2fXZEebsm",
+    "author_id": "1858149157065891840",
+    "username": "PayA_gent",
+    "name": "PayA.gent",
+    "created_at": "2026-06-13T09:27:47.000Z",
+    "conversation_id": "2065727825836195975",
+    "metrics": {
+      "likes": 8,
+      "retweets": 0,
+      "replies": 7,
+      "quotes": 1,
+      "impressions": 442,
+      "bookmarks": 1
+    },
+    "urls": [
+      "http://PayA.gent",
+      "https://x.com/PayA_gent/status/2065727825836195975/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "PayAgent",
+      "AI",
+      "A2A",
+      "AgentFi"
+    ],
+    "tweet_url": "https://x.com/PayA_gent/status/2065727825836195975"
+  },
+  {
+    "id": "2065102513049645472",
+    "text": "Day 2 of #CyOpsArena and this is actually wild 🔥\n\nI launched one prompt in CyOps and now multiple agents are working together:\n\n- Planner structures the task  \n- Implementer writes the code  \n- Reviewer reviews and improves it  \n\nFeels like I hired a small dev team to build my https://t.co/ZP99ceeSMb",
+    "author_id": "1496496253835911172",
+    "username": "0xZanuda",
+    "name": "zanuda",
+    "created_at": "2026-06-11T16:03:01.000Z",
+    "conversation_id": "2065102513049645472",
+    "metrics": {
+      "likes": 2,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 69,
+      "bookmarks": 1
+    },
+    "urls": [
+      "https://x.com/0xZanuda/status/2065102513049645472/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "CyOpsArena"
+    ],
+    "tweet_url": "https://x.com/0xZanuda/status/2065102513049645472"
+  },
+  {
+    "id": "2065352908401697227",
+    "text": "The interview loop for backend roles is quietly gaining a new section: design an agent workflow, explain your inference cost model, show something you shipped with AI in prod. It's not universal yet but I have seen it four times this month.\n\n#devlife #ai",
+    "author_id": "2026294874505695233",
+    "username": "wontf1x",
+    "name": "wontf1x",
+    "created_at": "2026-06-12T08:38:00.000Z",
+    "conversation_id": "2065352908401697227",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 12,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [
+      "devlife",
+      "ai"
+    ],
+    "tweet_url": "https://x.com/wontf1x/status/2065352908401697227"
+  },
+  {
+    "id": "2065359405793554684",
+    "text": "CEOs at 1,000+ person orgs run one layoff playbook.\nhaven't shipped an ai workflow in 30 days? you're next.\n\nthe plan: max ai access for everyone, track who actually uses it, cross-reference against shipped work. non-adopters ship less. every function, not just engineering. https://t.co/8tTRJuXZGT",
+    "author_id": "771397836663554048",
+    "username": "julienverse",
+    "name": "Julien Rosilio",
+    "created_at": "2026-06-12T09:03:49.000Z",
+    "conversation_id": "2065359405793554684",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 17,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/julienverse/status/2065359405793554684/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/julienverse/status/2065359405793554684"
+  },
+  {
+    "id": "2065640229311336545",
+    "text": "Security shouldn’t be an afterthought, it needs to be built‑in.\n\nAstrid embeds sandboxing and control layers directly into your agent workflow, operating invisibly under your current setup. \n\nNot just a feature: 👇\n\na new baseline for safe, scalable agent deployment. https://t.co/C6lbVUDxms",
+    "author_id": "1984448988087713792",
+    "username": "RPL_Paracetamol",
+    "name": "⚡️ZugChain | Szn | 🐍 One Refill Gallon",
+    "created_at": "2026-06-13T03:39:43.000Z",
+    "conversation_id": "2065640229311336545",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 10,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://twitter.com/unicity_labs/status/2065396605054853245"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/RPL_Paracetamol/status/2065640229311336545"
+  },
+  {
+    "id": "2063975081152241721",
+    "text": "Every AI workflow you shipped against this year's model is on a depreciation schedule. Microsoft retires Azure models on 12-18 month cycles. Nobody priced the rewrite obligation in. https://t.co/msbAK96N0f",
+    "author_id": "2003572847755829248",
+    "username": "TBenchmarkCo",
+    "name": "The Benchmark",
+    "created_at": "2026-06-08T13:23:00.000Z",
+    "conversation_id": "2063975081152241721",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 0,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://thebenchmark.co/p/prompt-debt"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/TBenchmarkCo/status/2063975081152241721"
+  }
+]

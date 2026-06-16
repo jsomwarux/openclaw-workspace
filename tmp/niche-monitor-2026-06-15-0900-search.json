@@ -1,0 +1,50 @@
+[
+  {
+    "query": "AI agents news today",
+    "provider": "brave-direct",
+    "error": "ERROR: BRAVE_API_KEY is not set",
+    "results": []
+  },
+  {
+    "query": "Salesforce Agentforce news today",
+    "provider": "brave-direct",
+    "error": "ERROR: BRAVE_API_KEY is not set",
+    "results": []
+  },
+  {
+    "query": "AI automation tools released today",
+    "provider": "brave-direct",
+    "error": "ERROR: BRAVE_API_KEY is not set",
+    "results": []
+  },
+  {
+    "query": "property management software news",
+    "provider": "brave-direct",
+    "error": "ERROR: BRAVE_API_KEY is not set",
+    "results": []
+  },
+  {
+    "query": "construction technology AI news",
+    "provider": "brave-direct",
+    "error": "ERROR: BRAVE_API_KEY is not set",
+    "results": []
+  },
+  {
+    "query": "wholesale distribution automation news",
+    "provider": "brave-direct",
+    "error": "ERROR: BRAVE_API_KEY is not set",
+    "results": []
+  },
+  {
+    "query": "insurance automation AI news",
+    "provider": "brave-direct",
+    "error": "ERROR: BRAVE_API_KEY is not set",
+    "results": []
+  },
+  {
+    "query": "RAG knowledge assistant enterprise 2026",
+    "provider": "brave-direct",
+    "error": "ERROR: BRAVE_API_KEY is not set",
+    "results": []
+  }
+]

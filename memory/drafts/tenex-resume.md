@@ -13,7 +13,7 @@ AI Implementation Specialist with 7+ years of enterprise operations experience c
 - Lead end-to-end AI strategy engagements: interview stakeholders to surface highest-friction workflows, quantify pain points, map data assets, and deliver phased automation roadmaps ranked by ROI and implementation effort
 - Design and deploy automated workflows using low-code platforms and off-the-shelf SaaS tools (n8n, Salesforce/Agentforce, webhook architecture, REST APIs); scope technical direction for engineers, drive delivery to production
 - Built and operate 39-agent production AI infrastructure: autonomous agents covering prospect research, outreach pipelines, content generation, market intelligence, and cost monitoring; full model routing by task type, watchdog recovery, and per-job spend controls
-- Delivered construction field operations platform for Aya (NYC): led discovery, replaced manual field update chains with real-time dashboard, drove stakeholder adoption; client commissioned two follow-on projects immediately
+- Delivered construction field operations platform for a construction and property operations client (NYC): led discovery, replaced manual field update chains with real-time dashboard, drove stakeholder adoption; client commissioned two follow-on projects immediately
 - Designed PM Maintenance Triage system: AI-powered multi-tier classification (routine/urgent/emergency), automated vendor dispatch, tenant notification, and audit log; eliminated unrouted emergencies and manual dispatch decisions
 - Built and deployed Agentforce agents for insurance claims intake, PM tenant service, and employee self-service; owned full implementation lifecycle from scoping through enablement and adoption measurement
 - Built AgentGuard: AI governance middleware with confidence-scored routing, human-in-the-loop escalation, and explainability reports; designed as a reusable pattern for compliance-sensitive enterprise deployments
@@ -34,7 +34,7 @@ AI Implementation Specialist with 7+ years of enterprise operations experience c
 
 **AgentGuard:** AI governance middleware with confidence-scored routing, human-in-the-loop escalation, audit trail, and explainability reporting. Designed for compliance-sensitive deployments. | Live at agentguard-delta.vercel.app
 
-**Construction Operations Platform:** End-to-end engagement for Aya (NYC). Discovery through production deployment. Replaced manual field update chains; two follow-on client commissions. | Deployed
+**Construction Operations Platform:** End-to-end engagement for a construction and property operations client (NYC). Discovery through production deployment. Replaced manual field update chains; two follow-on client commissions. | Deployed
 
 **PM Maintenance Triage:** AI workflow automation. Multi-tier classification, automated dispatch, tenant notification, audit log. POC to production. | Deployed
 

@@ -12,9 +12,9 @@
       "app": "All apps",
       "category": "share-artifact",
       "reason": "Product-led share artifacts are the highest-leverage missing acquisition loop; without them, posting is mostly external push instead of user/creator pull.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j575d5s4ph1zr8hpc29m2meykh88p5by"
     },
     {
       "title": "Vista app change: implement Movie Taste Card export/share artifact",
@@ -27,9 +27,9 @@
       "app": "Vista",
       "category": "share-artifact",
       "reason": "Vista should not rely only on TikTok/ReelFarm. Letterboxd-style social behavior shows movie taste travels when users can share identity artifacts.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j577b2vszv9f6h94t1akzbkqnh88q52p"
     },
     {
       "title": "Nash app change: implement Weekly Ranking Receipt Card export",
@@ -42,9 +42,9 @@
       "app": "Nash Satoshi",
       "category": "share-artifact",
       "reason": "Nash needs to behave like a public ranking thesis engine with receipts, not another crypto dashboard.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57806fp8ej5a7q5werkt64nqs88qh6g"
     },
     {
       "title": "Glow app change: implement safe Product Verdict Card export",
@@ -57,9 +57,9 @@
       "app": "Glow Index",
       "category": "share-artifact",
       "reason": "Glow\u2019s strongest growth loop is likely search + creator shopping demos; creators need a clean share card they can use safely.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57f12mw4gtbqs3td6fahq803h88qteq"
     },
     {
       "title": "App Marketing OS: build borrowed-audience target lists for Vista, Nash, and Glow",
@@ -72,9 +72,9 @@
       "app": "All apps",
       "category": "borrowed-audience",
       "reason": "Borrowed audience is likely the highest-leverage low-budget channel. We need qualified targets before drafting outreach or collab asks.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57aw4jhaqj34rwsa1pq7zegfx88qbh8"
     },
     {
       "title": "App Marketing OS: add experiment-card tracking to weekly review",
@@ -117,9 +117,9 @@
       "app": "Vista",
       "category": "competitor-mining",
       "reason": "Vista\u2019s wedge must be based on proven movie-app behavior: taste identity, lists, friends/followers, and compatibility/share artifacts.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j577eppm4t8hhcrh7bj71pwmjx88q1ht"
     },
     {
       "title": "Nash competitor teardown: crypto ranking/thesis tools and newsletter loops",
@@ -132,9 +132,9 @@
       "app": "Nash Satoshi",
       "category": "competitor-mining",
       "reason": "Nash needs proof-based distribution and borrowed credibility, not generic crypto-dashboard marketing.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j570970568fp5bay26c6d5h2xx88qmyg"
     },
     {
       "title": "Glow competitor teardown: skincare scanner/ranking app acquisition loops",
@@ -147,9 +147,9 @@
       "app": "Glow Index",
       "category": "competitor-mining",
       "reason": "Glow\u2019s acquisition likely comes from SEO, safe product pages, creator shopping demos, and product verdict artifacts. We need competitor proof before scaling content.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j5710rjz1dvd6hyrp7798g5bzh88qy43"
     },
     {
       "title": "Vista: submit first durable directory listing from existing pack",
@@ -162,9 +162,9 @@
       "app": "Vista",
       "category": "directory",
       "reason": "Vista is live and already has a precision-rating SEO page; a durable listing/backlink compounds while TikTok/ReelFarm metrics are still thin.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57ecf8e876p1k3bz70345gf9s88qvpe"
     },
     {
       "title": "Vista: add App Store vendor number for reporting metrics",
@@ -177,9 +177,9 @@
       "app": "Vista",
       "category": "metrics",
       "reason": "Vista App Store metadata auth works and connector readiness exists, but Apple sales/reporting metrics require vendor number/reporting permission before downloads or product-page metrics can flow into the scoreboard.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j571h510b8mm4rffrehba5rsc588phnt"
     },
     {
       "title": "Vista: run ASO baseline and one metadata/screenshot test recommendation",
@@ -192,9 +192,9 @@
       "app": "Vista",
       "category": "ASO",
       "reason": "Vista is an App Store product; ASO is a durable acquisition lever that does not depend on ReelFarm cold starts.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j575t1phz5v9c9x8421v2sdee188q6fc"
     },
     {
       "title": "Vista: schedule one clean rating-precision ReelFarm test and require metrics capture",
@@ -207,9 +207,9 @@
       "app": "Vista",
       "category": "experiment",
       "reason": "Prior data says rating precision beat vague hooks; the OS needs one clean test with captured metrics before increasing volume.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j5766qeta86zaehcwm410bssbh88qkyt"
     },
     {
       "title": "Nash Satoshi: submit first methodology-backed directory listing",
@@ -222,9 +222,9 @@
       "app": "Nash Satoshi",
       "category": "directory",
       "reason": "Nash has a methodology page and needs durable discovery beyond volatile crypto social reach.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57fcsmggfh0dn92vymgbj4x8s88pg5d"
     },
     {
       "title": "Nash Satoshi: create one live-ranking model-disagreement post only if current data exists",
@@ -237,9 +237,9 @@
       "app": "Nash Satoshi",
       "category": "experiment",
       "reason": "The experiment calendar says specific rankings/model updates beat abstract methodology explainers; generic crypto content is a waste.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j5721cr5mckdmmqhdgyxxctvc188pvdj"
     },
     {
       "title": "Glow Index: fix/verify crawler access for sitemap, llms.txt, rankings, and categories",
@@ -267,9 +267,9 @@
       "app": "Glow Index",
       "category": "directory",
       "reason": "Glow is live and has active SEO/GEO opportunity, but listings need safe consumer-research framing and visual assets.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57fs2zkynb88b3a02qp8j90g588q5q2"
     },
     {
       "title": "Glow Index: define metrics source before any TikTok/ReelFarm volume",

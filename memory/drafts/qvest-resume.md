@@ -13,7 +13,7 @@ AI Implementation Specialist with 7+ years of experience leading enterprise tech
 - Led full Applied AI implementation lifecycle for NYC clients in construction, property management, and insurance: requirements gathering, solution design, development oversight, testing, deployment, and stakeholder enablement
 - Facilitated client discovery workshops to surface high-friction manual processes; translated findings into automation roadmaps and delivered MVP systems within defined scope and timeline
 - Built AgentGuard, an AI governance middleware layer with confidence-gated routing, human-in-the-loop escalation triggers, audit trail, and explainability reporting; designed as a reusable pattern for compliance-sensitive enterprise deployments
-- Delivered construction field operations platform for Aya (NYC): scoped requirements with project leads, replaced ad-hoc manual update chains with a real-time dashboard, drove adoption; client commissioned two follow-on projects immediately
+- Delivered construction field operations platform for a construction and property operations client (NYC): scoped requirements with project leads, replaced ad-hoc manual update chains with a real-time dashboard, drove adoption; client commissioned two follow-on projects immediately
 - Designed PM Maintenance Triage system: multi-tier classification (routine/urgent/emergency), automated vendor dispatch, tenant notification flow, and audit log; eliminated manual decision-making at the intake stage
 - Built and deployed Agentforce agents for insurance claims intake, property management tenant service, and employee self-service; each required full OCM support including training materials and rollout coordination
 - Operates 39 autonomous agents in production: prospect research, outreach pipelines, content generation, market intelligence, cost monitoring; all with monitoring, recovery logic, and cost controls
@@ -32,7 +32,7 @@ AI Implementation Specialist with 7+ years of experience leading enterprise tech
 
 **AgentGuard:** AI governance middleware with confidence-scored routing, human-in-the-loop escalation, audit trail, and explainability reports. Built for compliance-sensitive enterprise deployments. | Live
 
-**Construction Operations Platform:** End-to-end implementation for Aya (NYC). Requirements through deployment. Replaced manual field update chains; immediate adoption and two follow-on commissions. | Deployed
+**Construction Operations Platform:** End-to-end implementation for a construction and property operations client (NYC). Requirements through deployment. Replaced manual field update chains; immediate adoption and two follow-on commissions. | Deployed
 
 **PM Maintenance Triage:** Applied AI workflow for NYC property management clients. Multi-tier classification, automated dispatch, tenant notification, audit log. Full SDLC from scoping to production. | Deployed
 

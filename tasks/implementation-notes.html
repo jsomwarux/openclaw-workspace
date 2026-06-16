@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Stop Slop Voice Guard Integration Notes</title>
+  <title>Content Swipe Optimization Fixes Notes</title>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 32px; line-height: 1.45; color: #1f2933; }
     .summary { border: 1px solid #cbd5e1; border-radius: 8px; padding: 16px; background: #f8fafc; }
@@ -11,29 +11,29 @@
   </style>
 </head>
 <body>
-  <h1>Stop Slop Voice Guard Integration Notes</h1>
+  <h1>Content Swipe Optimization Fixes Notes</h1>
   <div class="summary">
     <strong>Status:</strong> Complete<br>
-    <strong>Date:</strong> 2026-06-07<br>
-    <strong>Task:</strong> Integrate high-signal Stop Slop rules into JT's content voice guard<br>
+    <strong>Date:</strong> 2026-06-15<br>
+    <strong>Task:</strong> Convert the @jts_14 swipe ledger from a prompt promise into a deterministic artifact contract<br>
     <strong>Top notes:</strong>
     <ol>
-      <li>Adopt the repo as a delta guard, not a replacement voice model.</li>
-      <li>Keep JT's allowed practical qualifiers; do not import the repo's blanket adverb ban.</li>
-      <li>Use deterministic regression tests so new filters catch slop without blocking good proof posts.</li>
+      <li>The root issue is not missing research; it is missing deterministic packaging from research outputs into the required ledger.</li>
+      <li>The generator should use local run artifacts only, with no network calls and no blind cron reruns.</li>
+      <li>The content distribution guard should be able to fail closed on a missing ledger during recovery or generation checks.</li>
     </ol>
   </div>
   <h2>Design Decisions</h2>
-  <p>Adopted Stop Slop as a delta guard, not a replacement style system. The implementation adds deterministic failures for false agency, narrator-from-distance phrasing, vague declaratives, generic Wh-opener setups, pull-quote endings, and high-confidence passive voice.</p>
+  <p>Add a local generator for <code>memory/content/jts14-x-reference-ledger-YYYY-MM-DD.md</code> instead of relying on a cron prompt to remember the ledger. Keep source classification conservative and inspectable.</p>
   <h2>Deviations</h2>
-  <p>Rejected the repo's blanket bans on all adverbs, all passive voice, two-item lists, and ultra-short aphoristic rewrites because those would erase JT's practical qualifiers and constraint-stack style.</p>
+  <p>No live X or Notion fetch is part of this fix. The goal is to repair the artifact contract from already-saved local outputs and make future recovery deterministic.</p>
   <h2>Tradeoffs</h2>
-  <p>The guard uses high-confidence regex checks instead of broad grammar analysis. This catches the slop families JT is likely to see without blocking natural client/proof phrasing.</p>
+  <p>The generator can infer lane and influence type from saved report text, but final judgment still remains visible in the ledger table. This is better than invisible prompt-state, and safer than inventing fresh signals.</p>
   <h2>Open Questions</h2>
-  <p>None.</p>
+  <p>Whether to patch the live cron prompt is still a separate systems-review decision because the repeated content cron failure can partially mutate state. The deterministic builder and guard hook are now available for safe recovery and verification.</p>
   <h2>Files Changed</h2>
-  <p><code>scripts/jt_voice_guard.py</code>, <code>scripts/test_jt_voice_guard.py</code>, <code>memory/content-voice.md</code>, <code>memory/content/jt-voice-profile.md</code>, <code>skills/content-generation/SKILL.md</code>, <code>docs/agents/regression-checks.md</code>, <code>MEMORY.md</code>, <code>~/.claude/CLAUDE.md</code>, <code>memory/2026-06-07.md</code>, and <code>memory/weekly-recaps/current-week.md</code>.</p>
+  <p><code>scripts/build_jts14_x_reference_ledger.py</code>, <code>scripts/test_jts14_x_reference_ledger.py</code>, <code>scripts/content_distribution_guard.py</code>, <code>memory/content/jts14-x-reference-ledger-2026-06-15.md</code>, <code>skills/content-generation/SKILL.md</code>, <code>skills/x-research/SKILL.md</code>, <code>docs/agents/mistakes-log-recent.md</code>, <code>memory/weekly-recaps/current-week.md</code>, <code>memory/2026-06-15.md</code>, <code>tasks/todo.md</code>, and this file.</p>
   <h2>Verification</h2>
-  <p><code>PYTHONPATH=scripts python3 -m unittest scripts/test_jt_voice_guard.py</code> passed 7 tests. <code>python3 -m py_compile scripts/jt_voice_guard.py scripts/test_jt_voice_guard.py</code> passed. Scoped <code>git diff --check</code> passed. Mission Control task <code>j575a4k8t4qq10x423hxfakjyx887xej</code> was marked done.</p>
+  <p><code>PYTHONPATH=scripts python3 -m unittest scripts/test_jts14_x_reference_ledger.py</code> passed 2 tests. <code>python3 -m py_compile scripts/build_jts14_x_reference_ledger.py scripts/jts14_x_reference_ledger_guard.py scripts/content_distribution_guard.py scripts/test_jts14_x_reference_ledger.py</code> passed. <code>python3 scripts/jts14_x_reference_ledger_guard.py memory/content/jts14-x-reference-ledger-2026-06-15.md</code> passed. <code>python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-2026-06-15.md --require-reference-map linkedin --require-reference-map x --require-jts14-ledger memory/content/jts14-x-reference-ledger-2026-06-15.md</code> passed. Scoped <code>git diff --check</code> passed.</p>
 </body>
 </html>

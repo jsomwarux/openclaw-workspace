@@ -14,7 +14,7 @@ AI Enablement Lead and Implementation Specialist with 7+ years translating compl
 - Deliver targeted, workflow-specific enablement for non-technical teams: map the current manual process, demonstrate the AI-supported version side-by-side, and guide adoption through hands-on working sessions tailored to each team's level of familiarity
 - Built and operate internal AI workflows across 12+ business functions (research, outreach, content generation, market intelligence, cost monitoring), providing direct, practical understanding of where AI helps and where it does not
 - Deployed AgentGuard: AI governance middleware with confidence-based routing and human-in-the-loop escalation, demonstrating practical implementation of responsible AI principles for teams that need AI to move quickly while staying accountable
-- Delivered construction field operations platform for Aya (NYC construction firm): opened with a use case discovery session, translated operational pain into a practical workflow solution, drove adoption across the team; client immediately commissioned two follow-on projects
+- Delivered construction field operations platform for a construction and property operations client (NYC construction firm): opened with a use case discovery session, translated operational pain into a practical workflow solution, drove adoption across the team; client immediately commissioned two follow-on projects
 - Developed repeatable playbooks and knowledge resources for AI workflow design across PM maintenance triage, job-matching automation, and content pipeline systems; documented patterns so teams can apply them without starting from scratch each time
 
 ### Business Systems Analyst
@@ -33,7 +33,7 @@ AI Enablement Lead and Implementation Specialist with 7+ years translating compl
 
 **AgentGuard:** Responsible AI middleware with confidence-scored routing, human-in-the-loop escalation, and audit trail. Built to support teams using AI in contexts that require oversight and accountability. | Live at agentguard-delta.vercel.app
 
-**Construction Operations Platform (Aya):** Scoped the use case with operations leaders, built the workflow solution, drove adoption. Client commissioned two follow-on projects. | Deployed
+**Construction Operations Platform:** Scoped the use case with operations leaders, built the workflow solution, drove adoption. Client commissioned two follow-on projects. | Deployed
 
 **PM Maintenance Triage:** AI-supported triage workflow with multi-tier classification, automated dispatch, and audit log. Repeatable pattern documented for reuse across property management clients. | Deployed
 

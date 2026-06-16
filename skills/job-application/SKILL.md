@@ -41,7 +41,7 @@ Base: JT's experience is fixed. What changes is emphasis and framing.
 **JT's strongest angles for AI roles:**
 - 6 years as BSA at Spectrum Enterprise — product catalog config, cross-team coordination, system implementations. This is implementation expertise, not just consulting.
 - Gap bridge: speaks both business operations AND technology — frame this explicitly, it's rare for AI roles
-- JT Somwaru Consulting: AI automation consulting, n8n workflows, Agentforce implementations, real client deliverables (Aya — $1,500 dashboard, $1,000 StreetEasy scraper)
+- Independent consulting work: AI automation consulting, n8n workflows, Agentforce implementations, and anonymized client deliverables such as operational dashboards, data pipelines, approval queues, and governed AI workflows
 - Built: Vista (App Store), Nash Satoshi, Glow Index — proof of shipping, not just planning
 - ConversationFirst framework — Agentforce UX methodology (differentiator for Salesforce roles)
 - OpenClaw AI infrastructure — running 44 autonomous agents, cron system, health tracking, cost optimization
@@ -49,7 +49,7 @@ Base: JT's experience is fixed. What changes is emphasis and framing.
 **5 mandatory quality rules (apply to every resume — no exceptions):**
 
 **Rule 1 — Consulting bullets: outcomes, not activity.**
-Every bullet under JT Somwaru Consulting must follow: [specific thing built/done] → [specific result/outcome]. Never describe what JT 'does' generically. The Aya bullet is the gold standard — mirror it.
+Every bullet under independent consulting work must follow: [specific thing built/done] → [specific result/outcome]. Never describe what JT 'does' generically. Use anonymized client descriptors only.
 Bad: 'Develop and execute AI transformation roadmaps... identifying use cases, evaluating vendors...'
 Good: 'Mapped and automated 3 client workflows (construction, PM, insurance) — eliminated daily manual coordination loops; 2 follow-on projects from the same anchor client.'
 
@@ -80,6 +80,8 @@ Em dashes are a clear AI writing tell. Apply to both documents without exception
 - Bullets start with strong verbs: Built, Automated, Reduced, Delivered, Designed, Managed
 - Quantify everything possible: dollar amounts, time saved, completion rates
 - No: "responsible for," "helped with," "assisted in," "various," "etc."
+- No evaluator/verdict language inside the resume: never write "Strong fit," "good fit," "great fit," "ideal candidate," "perfect fit," or "fit for [company/role]." That belongs in internal scoring notes or JT-facing recommendation, not applicant-facing materials.
+- No specific consulting client names in the resume or cover letter. Use anonymized descriptors such as "a NYC construction client," "a property management client," "a Bronx HVAC distributor," or "an operations-heavy client." This applies even when the client name is useful proof.
 - **Never use em dashes (—) anywhere in the resume or cover letter.** Em dashes are a clear AI writing tell. Use commas, colons, periods, or parentheses instead.
 
 Save to: `~/.openclaw/workspace/memory/drafts/[company-slug]-resume.md`
@@ -117,6 +119,7 @@ No "I look forward to hearing from you." Say something like: "Happy to walk thro
 - [ ] No "I am excited to apply" or "I look forward to hearing from you"
 - [ ] At least one named project/deliverable with an outcome
 - [ ] No mention of "JT Somwaru Consulting" as a business name — say "independent consulting work" or describe work directly
+- [ ] No specific consulting client names anywhere — anonymize client proof before finalizing
 - [ ] No specific dollar figures anywhere in the letter
 - [ ] Closing does NOT sound like a consulting pitch — fits a job application context
 
@@ -163,7 +166,7 @@ print("Name:", data['name'])
 print("Skills:", [s[0] for s in data['skills']])
 print("Experience:", [(j['title'], j['company']) for j in data['experience']])
 print("Education:", data['education'])
-# STOP if: name wrong, Spectrum missing, JT Somwaru Consulting present, any field empty
+# STOP if: name wrong, Spectrum missing, JT Somwaru Consulting present, any field empty, specific consulting client names appear, or resume contains evaluator/verdict language such as "Strong fit"
 ```
 
 ```python
@@ -175,7 +178,7 @@ cl = local_ns['parse_cover_letter_md']('/path/to/[company-slug]-cover-letter.md'
 print("Company:", cl['company'])
 print("Paragraphs:", len(cl['paragraphs']))
 print("P1:", cl['paragraphs'][0][:80] if cl['paragraphs'] else 'EMPTY')
-# STOP if: paragraphs == 0 or P1 is a markdown header/metadata line
+# STOP if: paragraphs == 0, P1 is a markdown header/metadata line, or specific consulting client names appear
 ```
 
 If either check fails — fix the markdown, do not upload.

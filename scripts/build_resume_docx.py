@@ -381,6 +381,54 @@ def parse_resume_md(md_path):
     return data
 
 
+FIT_VERDICT_PHRASES = [
+    'strong fit',
+    'great fit',
+    'good fit',
+    'ideal candidate',
+    'perfect fit',
+]
+
+BANNED_CLIENT_NAMES = [
+    ('Aya', r'\baya\b'),
+    ('Altmark', r'\baltmark\b'),
+    ('H.C. Oswald', r'\bh\.c\. oswald\b'),
+    ('HC Oswald', r'\bhc oswald\b'),
+    ('JT Somwaru Consulting', r'\bjt somwaru consulting\b'),
+]
+
+
+def validate_applicant_material_content(md_path, material_type):
+    """Fail closed on private-client names and applicant-facing anti-patterns."""
+    with open(md_path) as f:
+        raw = f.read()
+
+    lowered = raw.lower()
+    fit_hits = [phrase for phrase in FIT_VERDICT_PHRASES if phrase in lowered]
+    if fit_hits:
+        raise ValueError(
+            f'{material_type} contains evaluator/verdict language not suitable for applicant-facing materials: '
+            + ', '.join(fit_hits)
+        )
+    if 'fit for ' in lowered:
+        raise ValueError(f'{material_type} contains evaluator/verdict language not suitable for applicant-facing materials: fit for')
+
+    import re
+    client_hits = [label for label, pattern in BANNED_CLIENT_NAMES if re.search(pattern, lowered)]
+    if client_hits:
+        raise ValueError(
+            f'{material_type} contains specific consulting client names; anonymize client proof before upload: '
+            + ', '.join(client_hits)
+        )
+
+
+def validate_resume_content(md_path, data):
+    """Fail closed on applicant-facing resume anti-patterns."""
+    validate_applicant_material_content(md_path, 'Resume')
+    if not data.get('name') or not data.get('summary') or not data.get('experience'):
+        raise ValueError('Resume markdown parse produced empty required fields')
+
+
 def parse_cover_letter_md(md_path):
     assert os.path.exists(md_path), 'Cover letter markdown file not found!'
     """
@@ -447,10 +495,13 @@ def parse_cover_letter_md(md_path):
 
 def build_resume(output_path, resume_md=None):
     print('Building resume from:', resume_md)
+    if not resume_md:
+        raise ValueError('Resume markdown path must be provided!')
     # ── Load data from markdown if provided (preferred) ───────────────────────
     md = None
     if resume_md:
         md = parse_resume_md(resume_md)
+        validate_resume_content(resume_md, md)
 
     doc = Document()
 
@@ -533,7 +584,7 @@ def build_resume(output_path, resume_md=None):
         for b in [
             'Architected and deployed AgentGuard, a confidence-gated AI governance layer with automated routing at a 70% confidence threshold and a full EEOC-compliant audit trail. Live at agentguard-delta.vercel.app.',
             'Built and operate 35 autonomous cron jobs in production covering prospect research, outreach pipelines, content generation, market intelligence, and cost monitoring.',
-            'Delivered a $1,500 operational intelligence dashboard for Aya (NYC construction firm); client commissioned $3,500 in follow-on projects immediately after delivery.',
+            'Delivered a $1,500 operational intelligence dashboard for a NYC construction client; client commissioned $3,500 in follow-on projects immediately after delivery.',
         ]:
             add_bullet(doc, b)
 
@@ -621,6 +672,7 @@ def build_cover_letter(output_path, cover_letter_md=None):
     cl = None
     if cover_letter_md:
         cl = parse_cover_letter_md(cover_letter_md)
+        validate_applicant_material_content(cover_letter_md, 'Cover letter')
 
     doc = Document()
 

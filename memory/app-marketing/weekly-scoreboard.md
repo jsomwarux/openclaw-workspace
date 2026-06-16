@@ -179,6 +179,34 @@ The intersection of AI and crypto is going (40 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
+## Metrics Summary — Week of 2026-06-08
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 1
+- Best item: glow-index Search Console queries 2026-06-08 to 2026-06-14 (1 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 1
+- Web depth: active users 0, pageviews 1, events 2
+- Best item: glow-index GA4 web traffic 2026-06-08 to 2026-06-14 (1 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-08 to 2026-06-14 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 46
+- Web depth: active users 10, pageviews 195, events 515
+- Best item: nash-satoshi GA4 web traffic 2026-06-08 to 2026-06-14 (46 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-06-08 to 2026-06-14 (46 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-06-07
 
 ### glow-index / search_console
@@ -861,12 +889,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 31
+- Posts/results logged: 32
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 31
+- Posts/results logged: 32
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1380,7 +1408,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-06-14_
+_Last updated: 2026-06-15_
 
 <!-- METRICS_SUMMARY_END -->
 

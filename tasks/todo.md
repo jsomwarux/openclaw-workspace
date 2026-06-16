@@ -1,3 +1,10 @@
+## Plan — Content Swipe Optimization Fixes — 2026-06-15
+- [x] Add a deterministic @jts_14 X reference-ledger generator for swipe runs.
+- [x] Generate and validate the missing 2026-06-15 ledger artifact.
+- [x] Wire content distribution verification to require a valid ledger when requested.
+- [x] Update content/x-research rules with the generator command and verification path.
+- [x] Log the operational lesson, weekly recap, and proof after verification.
+
 ## Plan — Stop Slop Voice Guard Integration — 2026-06-07
 - [x] Add regression coverage for Stop Slop gaps: false agency, narrator distance, vague declaratives, Wh-openers, pull-quote endings, and high-confidence passive voice.
 - [x] Patch `scripts/jt_voice_guard.py` with enforceable checks while preserving JT-specific qualifiers and proof rhythm.

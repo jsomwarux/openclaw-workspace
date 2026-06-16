@@ -8,13 +8,13 @@ AI Implementation Specialist with 7 years of enterprise technology and business 
 ## EXPERIENCE
 
 ### AI Automation Consultant
-**JT Somwaru Consulting**, New York City, 2025-Present
+**Independent Consulting**, New York City, 2025-Present
 
 - Develop and execute AI transformation roadmaps for NYC-based clients across property management, construction, and insurance: identifying high-priority use cases, evaluating vendors, designing automation architecture, and phasing implementation aligned to each client's business objectives and digital strategy
 - Build AI governance and value realization infrastructure: AgentGuard (confidence-gated routing at 70% threshold, full audit trail, explainability reporting) delivers measurable compliance controls and operational reliability for enterprise AI deployments; live at agentguard-delta.vercel.app
 - Lead cross-functional initiatives integrating AI capabilities into core business processes for construction and property management clients using n8n workflow automation; identify opportunities for operational efficiency gains, build ROI cases for leadership, and deliver end-to-end implementations with measurable outcomes
 - Build and deploy Agentforce agents for insurance claims intake, PM tenant service, and employee self-service; lead cross-functional implementation from AI strategy through production deployment, communicating progress and business impact to stakeholders at each milestone
-- Delivered AI-powered construction field operations platform for Aya (NYC): replaced manual update chains with a real-time job tracking dashboard, driving immediate organizational adoption and two follow-on commissions demonstrating measurable business value from the initial AI transformation initiative
+- Delivered AI-powered construction field operations platform for a construction and property operations client (NYC): replaced manual update chains with a real-time job tracking dashboard, driving immediate organizational adoption and two follow-on commissions demonstrating measurable business value from the initial AI transformation initiative
 - Design PM Maintenance Triage automation with multi-tier classification (routine/urgent/emergency), automated vendor dispatch, tenant confirmation, and audit log; reduced unrouted emergencies and created measurable operational efficiency gains for NYC property management clients
 - Build business cases and value realization frameworks for client AI investments: establishing baseline metrics, projecting efficiency and revenue gains, and tracking post-deployment outcomes to communicate ROI to operations and executive leadership
 
@@ -31,7 +31,7 @@ AI Implementation Specialist with 7 years of enterprise technology and business 
 
 **AgentGuard:** Enterprise AI governance middleware with confidence-scored routing, human-in-the-loop triggers, audit trail, explainability reports. Built for insurance and compliance use cases. | Live
 
-**Construction Operations Platform:** Real-time field reporting dashboard for Aya (NYC construction/co-living client). Replaced manual update chains, immediate organizational adoption, two follow-on projects. | Deployed
+**Construction Operations Platform:** Real-time field reporting dashboard for a construction and property operations client (NYC construction/co-living client). Replaced manual update chains, immediate organizational adoption, two follow-on projects. | Deployed
 
 **PM Maintenance Triage:** Property management workflow automation: multi-tier complaint classification, vendor dispatch, tenant notifications, audit log. Deployed for NYC PM clients. | Deployed
 

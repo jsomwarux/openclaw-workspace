@@ -2,7 +2,7 @@
 AI Solution Architect / AI Implementation Specialist | New York, NY | jtsomwaru@gmail.com | jtsomwaru.com | linkedin.com/in/jon-trevor-somwaru
 
 ## PROFESSIONAL SUMMARY
-AI Solution Architect and AI Implementation Specialist with 6+ years of enterprise product and program management experience bridging business operations, technical teams, and system implementation. Builds AI-assisted prototypes, low-code workflow automations, API-connected operating systems, and governance layers that replace manual workflows with scalable, measurable execution. Strong fit for YouTube Marketing's AI-first mandate: rapid prototyping, prompt engineering, workflow replacement, cross-functional translation, and production-minded handoff from agile concept to durable operating system.
+AI Solution Architect and AI Implementation Specialist with 6+ years of enterprise product and program management experience bridging business operations, technical teams, and system implementation. Builds AI-assisted prototypes, low-code workflow automations, API-connected operating systems, and governance layers that replace manual workflows with scalable, measurable execution. Experienced in rapid prototyping, prompt engineering, workflow replacement, cross-functional translation, and production-minded handoff from agile concept to durable operating system.
 
 ## SKILLS
 **AI Solution Architecture:** AI-assisted development, vibe-coded prototypes, prompt engineering, generative AI workflows, workflow automation, human-in-the-loop design, AI governance, confidence scoring, audit trails

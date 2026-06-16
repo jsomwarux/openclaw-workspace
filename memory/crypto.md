@@ -479,3 +479,10 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Midday pulse:** Crypto Midday Pulse ran at 12:00 and finished OK. It sent JT a Telegram alert because the active portfolio was +11.28% versus the 6AM baseline.
 - **Read:** The alert is portfolio-threshold monitoring, not a trade instruction. Treat the current crypto outputs as research/ranking and threshold awareness only.
 - **Guardrail:** No trades, swaps, wallet actions, transfers, or x402/payment-MCP experiments without JT manually deciding and approving.
+
+## Jun 15, 2026 — 10:12AM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00, validation passed, X research guard passed, 25 X entries, estimated X research cost $1.06, and the actual recommendation payload was present in cron metadata and `data/telegram-summary.txt`.
+- **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is heavy. The packet explicitly treats vote-heavy X as distribution risk, not conviction.
+- **Model read:** Research/ranking output exited PRXVT, NOX, NOOK, and GITLAWB; adjusted SIBYL and SURPLUS up; added BOTCOIN and AEON in the model allocation. NOX and BOTCOIN had whale alerts, but spam-heavy X was a major risk flag.
+- **Guardrail:** This is research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. Because X API spend is over the weekly target, do not run extra nonessential X crypto pulls today.

@@ -10,7 +10,7 @@ The hardest part of deploying agentic automation is not the technology. It is si
 
 For six years at Charter Communications, I coordinated CRM and platform rollouts across 1,200+ enterprise accounts — managing requirements across Sales, Operations, and Engineering, translating technical capabilities into workflows field teams could actually use, and tracking adoption through full implementation cycles. I was the person who stayed after go-live to figure out why adoption was lagging and fix it. That is the same work a Forward Deployed Consultant does, with a different product stack.
 
-More recently I have been configuring Agentforce agents and n8n automation workflows for clients in construction, property management, and insurance — no-code implementations, training non-technical stakeholders, and driving outcomes in exactly the kind of ambiguous environments OSF deploys into. The Aya construction project I can walk through on a call: one client, two delivered projects, a third in scope.
+More recently I have been configuring Agentforce agents and n8n automation workflows for clients in construction, property management, and insurance — no-code implementations, training non-technical stakeholders, and driving outcomes in exactly the kind of ambiguous environments OSF deploys into. The a construction and property operations client construction project I can walk through on a call: one client, two delivered projects, a third in scope.
 
 My job at OSF would be the same as it has always been: make clients confident in the system, not just informed about it.
 

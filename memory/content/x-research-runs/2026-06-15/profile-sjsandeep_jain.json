@@ -1,0 +1,134 @@
+{
+  "user": {
+    "created_at": "2025-12-14T17:18:11.000Z",
+    "name": "Sandeep Jain",
+    "description": "AI & tech content creator | Sharing AI tools, free resources, useful websites, and data-backed insights. DM for collabs at : collab.sandeepjain@gmail.com",
+    "id": "2000253938730455040",
+    "username": "sjsandeep_jain",
+    "public_metrics": {
+      "followers_count": 3709,
+      "following_count": 42,
+      "tweet_count": 570,
+      "listed_count": 7,
+      "like_count": 667,
+      "media_count": 248
+    }
+  },
+  "tweets": [
+    {
+      "id": "2066450588368515406",
+      "text": "Most AI engineers know what MCP is.\n\nVery few understand the 5 server patterns that make AI agents scalable, maintainable, and production-ready.\n\nHere's the architecture every AI builder should know 👇\n\n1. Tool Server 🔧\nGives LLMs the ability to take actions:\n• Call APIs\n• https://t.co/JUblct7FBe",
+      "author_id": "2000253938730455040",
+      "username": "sjsandeep_jain",
+      "name": "Sandeep Jain",
+      "created_at": "2026-06-15T09:19:47.000Z",
+      "conversation_id": "2066450588368515406",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 13,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/sjsandeep_jain/status/2066450588368515406/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/sjsandeep_jain/status/2066450588368515406"
+    },
+    {
+      "id": "2066335129669083426",
+      "text": "Claude AI in 60 Minutes 🚀 \n\nLearn how to build AI apps, automate workflows, and turn ideas into reality.  \n\nOne free course. \nA skill you'll use for years. \nWatch it. Bookmark it. Build with it. https://t.co/XQAUbUr6kA",
+      "author_id": "2000253938730455040",
+      "username": "sjsandeep_jain",
+      "name": "Sandeep Jain",
+      "created_at": "2026-06-15T01:41:00.000Z",
+      "conversation_id": "2066335129669083426",
+      "metrics": {
+        "likes": 74,
+        "retweets": 29,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 2609,
+        "bookmarks": 60
+      },
+      "urls": [
+        "https://x.com/sjsandeep_jain/status/2066335129669083426/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/sjsandeep_jain/status/2066335129669083426"
+    },
+    {
+      "id": "2064320009019822325",
+      "text": "Your next job probably won’t come from a résumé.\n\nIt’ll come from knowing where to look. 👀\n\nHere are 20 platforms helping people land remote jobs that pay in USD 🌎💵\n\nFrom:\n• Full-time remote roles\n• Startup opportunities\n• Freelance projects\n• Contract work\n• Global https://t.co/wivp20I7mz",
+      "author_id": "2000253938730455040",
+      "username": "sjsandeep_jain",
+      "name": "Sandeep Jain",
+      "created_at": "2026-06-09T12:13:38.000Z",
+      "conversation_id": "2064320009019822325",
+      "metrics": {
+        "likes": 76,
+        "retweets": 32,
+        "replies": 11,
+        "quotes": 0,
+        "impressions": 1358,
+        "bookmarks": 20
+      },
+      "urls": [
+        "https://x.com/sjsandeep_jain/status/2064320009019822325/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/sjsandeep_jain/status/2064320009019822325"
+    },
+    {
+      "id": "2064162312622334133",
+      "text": "Most people think Claude gets better with better prompts.\n\nThey're wrong.\n\nThe biggest gains come from how you use Claude, not what you type.\n\nHere are 19 Claude habits that separate casual users from power users 👇\n\n🧠 Use Memory → let Claude remember context across chats\n\n🎭 https://t.co/RbabDSJd4B",
+      "author_id": "2000253938730455040",
+      "username": "sjsandeep_jain",
+      "name": "Sandeep Jain",
+      "created_at": "2026-06-09T01:47:00.000Z",
+      "conversation_id": "2064162312622334133",
+      "metrics": {
+        "likes": 98,
+        "retweets": 40,
+        "replies": 9,
+        "quotes": 0,
+        "impressions": 1403,
+        "bookmarks": 50
+      },
+      "urls": [
+        "https://x.com/sjsandeep_jain/status/2064162312622334133/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/sjsandeep_jain/status/2064162312622334133"
+    },
+    {
+      "id": "2063953232775561710",
+      "text": "Most people want to build AI agents.\n\nVery few know where to start.\n\nHere are 12 of the most popular AI agent frameworks builders are using right now 👇\n\n⚡ LangChain → The go-to framework for memory, tools, RAG, and agent orchestration.\n\n🤖 AutoGPT → Autonomous agents that can https://t.co/RBSWELt21a",
+      "author_id": "2000253938730455040",
+      "username": "sjsandeep_jain",
+      "name": "Sandeep Jain",
+      "created_at": "2026-06-08T11:56:11.000Z",
+      "conversation_id": "2063953232775561710",
+      "metrics": {
+        "likes": 89,
+        "retweets": 34,
+        "replies": 20,
+        "quotes": 0,
+        "impressions": 1952,
+        "bookmarks": 38
+      },
+      "urls": [
+        "https://x.com/sjsandeep_jain/status/2063953232775561710/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/sjsandeep_jain/status/2063953232775561710"
+    }
+  ]
+}

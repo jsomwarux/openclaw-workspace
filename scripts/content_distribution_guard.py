@@ -111,6 +111,8 @@ WEEKLY_REQUIRED = [
     "Hook mappings",
 ]
 
+WEEKLY_MIN_BYTES = 1500
+
 REFERENCE_REQUIRED_FIELDS = [
     "source url",
     "niche",
@@ -335,12 +337,22 @@ def check_dynasty_pack(path: Path) -> list[str]:
 
 
 def check_weekly(path: Path) -> list[str]:
-    text = read(path)
+    if not path.exists():
+        return [f"{rel(path)}: weekly artifact missing"]
+    text = path.read_text(encoding="utf-8")
     problems = check_common(path, text)
+    if len(text.encode("utf-8")) < WEEKLY_MIN_BYTES:
+        problems.append(f"{rel(path)}: weekly artifact too small to be a deliverable ({len(text.encode('utf-8'))} bytes)")
     problems.extend(check_linkedin_stale_patterns(path, text))
     for heading in WEEKLY_REQUIRED:
         if heading not in text:
             problems.append(f"{rel(path)}: missing weekly gate section: {heading}")
+    if not re.search(r"^##\s+LinkedIn\b", text, flags=re.I | re.M):
+        problems.append(f"{rel(path)}: missing LinkedIn section")
+    if not re.search(r"^##\s+X\b", text, flags=re.I | re.M):
+        problems.append(f"{rel(path)}: missing X section")
+    if not re.search(r"^###+\s+Monday\b", text, flags=re.I | re.M):
+        problems.append(f"{rel(path)}: missing Monday post section")
     if "Wednesday Advisory Board" not in text and "Wednesday - Case Study" in text:
         problems.append(f"{rel(path)}: Wednesday case study lacks advisory board")
     if "None - generated from automated sources" in text and "Warning" not in text:
@@ -409,6 +421,23 @@ def check_reference_map(path: Path, platform: str) -> list[str]:
                 f"{rel(path)}: {label} reference mechanics uses non-canonical niche {normalized!r}; use memory/content/current-niche-map.md lanes or ADJACENT_REFERENCE_ONLY"
             )
 
+    return problems
+
+
+def check_required_jts14_ledger(weekly_path: Path, ledger_path: Path) -> list[str]:
+    """Require a valid @jts_14 source-to-draft ledger for weekly X delivery."""
+    problems: list[str] = []
+    if not ledger_path.exists():
+        return [f"{rel(weekly_path)}: jts14 X reference ledger missing: {rel(ledger_path)}"]
+
+    try:
+        import jts14_x_reference_ledger_guard
+    except ImportError as exc:
+        return [f"{rel(weekly_path)}: jts14 X reference ledger guard unavailable: {exc}"]
+
+    ledger_problems = jts14_x_reference_ledger_guard.check(ledger_path)
+    for problem in ledger_problems:
+        problems.append(f"{rel(weekly_path)}: jts14 X reference ledger invalid: {problem}")
     return problems
 
 
@@ -482,18 +511,31 @@ def main() -> int:
         choices=["linkedin", "x", "reddit", "tiktok"],
         help="Require a platform-specific Reference Mechanics section in each --weekly file.",
     )
+    parser.add_argument(
+        "--require-jts14-ledger",
+        action="append",
+        default=[],
+        help="Require a valid @jts_14 X reference ledger path for each --weekly file.",
+    )
     parser.add_argument("--check-notion-script", action="store_true", help="Check scripts/notion-calendar-push.py auth/dry-run hygiene")
     args = parser.parse_args()
 
     problems: list[str] = []
+    if args.require_jts14_ledger and len(args.require_jts14_ledger) != len(args.weekly):
+        problems.append(
+            f"--require-jts14-ledger count ({len(args.require_jts14_ledger)}) must match --weekly count ({len(args.weekly)})"
+        )
+
     for item in args.dynasty_pack:
         problems.extend(check_dynasty_pack(Path(item)))
-    for item in args.weekly:
+    for index, item in enumerate(args.weekly):
         weekly_path = Path(item)
         problems.extend(check_weekly(weekly_path))
         for platform in args.require_reference_map:
             canonical = "X" if platform == "x" else platform.title()
             problems.extend(check_reference_map(weekly_path, canonical))
+        if index < len(args.require_jts14_ledger):
+            problems.extend(check_required_jts14_ledger(weekly_path, Path(args.require_jts14_ledger[index])))
     for item in args.linkedin_draft:
         path = Path(item)
         text = read(path)

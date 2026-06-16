@@ -1,0 +1,267 @@
+{
+  "user": {
+    "id": "1648787052",
+    "description": "💻 Simplifying Claude Code & Cursor\n⚙️ Agentic Engineering | Product Management \n🚀 Speeding Up Enterprises & Startups",
+    "created_at": "2013-08-05T22:21:30.000Z",
+    "public_metrics": {
+      "followers_count": 1395,
+      "following_count": 1357,
+      "tweet_count": 20222,
+      "listed_count": 19,
+      "like_count": 16835,
+      "media_count": 1197
+    },
+    "username": "AnandButani",
+    "name": "Anand Butani"
+  },
+  "tweets": [
+    {
+      "id": "2065584970249232673",
+      "text": "AI doesn’t replace your intent.\n\nIt removes the friction that used to slow you down.\n\nIf your instinct is to add checkpoints, approvals, and process, AI now lets you build ten layers of it before lunch.\n\nThis is creating two very different types of founders:\n\nThose who use AI to https://t.co/cdM9lUUC0x",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-13T00:00:08.000Z",
+      "conversation_id": "2065584970249232673",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 41,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2065584970249232673/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2065584970249232673"
+    },
+    {
+      "id": "2065509692000883197",
+      "text": "Is Claude Fable 5 actually cracked or are we getting played again?\n\n@karpathy is hyped. Builders are pissed. The internet can’t agree 👀 \n\nWhich side are you on? \n\n#Claude @anthropicai #Mythos #AI https://t.co/TbwC2D5Aaz",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-12T19:01:00.000Z",
+      "conversation_id": "2065509692000883197",
+      "metrics": {
+        "likes": 21,
+        "retweets": 8,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 739,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2065509692000883197/video/1"
+      ],
+      "mentions": [
+        "karpathy",
+        "AnthropicAI"
+      ],
+      "hashtags": [
+        "Claude",
+        "Mythos",
+        "AI"
+      ],
+      "tweet_url": "https://x.com/AnandButani/status/2065509692000883197"
+    },
+    {
+      "id": "2065434176690557214",
+      "text": "1/ ⚠️ Most engineers dump everything into CLAUDE.md.\n\nClaude Code has 3 layers:\n\n→ User: global (machine only)\n→ Local: personal (git-ignored)\n→ Project: team (committed)\n\nLocal is the fix for settings leaking into repos.\n\nWhich layer are you missing? 👇\n\n#ClaudeCode https://t.co/JTRXfPmIvC",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-12T14:00:56.000Z",
+      "conversation_id": "2065434176690557214",
+      "metrics": {
+        "likes": 16,
+        "retweets": 8,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 372,
+        "bookmarks": 13
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2065434176690557214/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "ClaudeCode"
+      ],
+      "tweet_url": "https://x.com/AnandButani/status/2065434176690557214"
+    },
+    {
+      "id": "2065159832798118095",
+      "text": "🚨 Anthropic, the company behind Claude,  just committed $150 million to put 1,000 people inside nonprofits across America. \n\nTheir job: help those organizations actually use AI.\n\nHere's the gap they're trying to close 👇️ \n\nAI tools exist. They're powerful, widely available, https://t.co/IlEkmROoco",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-11T19:50:47.000Z",
+      "conversation_id": "2065159832798118095",
+      "metrics": {
+        "likes": 12,
+        "retweets": 8,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 706,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2065159832798118095/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2065159832798118095"
+    },
+    {
+      "id": "2065070141126115716",
+      "text": "🚀 Claude skills for almost any task!\n\n2-min way to find one:\n\n1. Name task in 1 sentence\n2. Run /skills\n3. Check https://t.co/fwPOAvnr0m or awesome-claude-code GitHub\n4. Install to ~/.claude/skills/\n5. No match? Create text file\n\nStop reinventing!\n\nWhich one first? 👇 https://t.co/y4ZnafwCj5",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-11T13:54:23.000Z",
+      "conversation_id": "2065070141126115716",
+      "metrics": {
+        "likes": 12,
+        "retweets": 8,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 266,
+        "bookmarks": 11
+      },
+      "urls": [
+        "http://skills.sh",
+        "https://x.com/AnandButani/status/2065070141126115716/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2065070141126115716"
+    },
+    {
+      "id": "2064781162136908159",
+      "text": "🚨 Most CLAUDE.md files are written like boring docs. \n\nClaude reads them like strict instructions.\n\nOne simple fix changes everything:\n\nEvery single line starts with a verb.\n\n“Code quality standards” = instantly ignored ❌️ \n“Always run the linter before editing any file” = https://t.co/hjcu9eGIRl",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-10T18:46:05.000Z",
+      "conversation_id": "2064781162136908159",
+      "metrics": {
+        "likes": 15,
+        "retweets": 10,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 512,
+        "bookmarks": 15
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064781162136908159/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2064781162136908159"
+    },
+    {
+      "id": "2064722755077960172",
+      "text": "🔥 Anthropic just dropped Claude Fable 5 and Mythos 5 \n\nCoding. Drug design. Finance.\n\nAll state-of-the-art. Read the full breakdown 🧵 \n\nWhich one are you trying first?\n\n#AI #Claude #Tech https://t.co/IZdb90MrTN",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-10T14:54:00.000Z",
+      "conversation_id": "2064722755077960172",
+      "metrics": {
+        "likes": 11,
+        "retweets": 8,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 381,
+        "bookmarks": 10
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064722755077960172/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "AI",
+        "Claude",
+        "Tech"
+      ],
+      "tweet_url": "https://x.com/AnandButani/status/2064722755077960172"
+    },
+    {
+      "id": "2064414761677119668",
+      "text": "Apple just quietly gave Claude 2.5 BILLION potential users.\n\nEveryone’s talking about the Siri/Gemini headline from WWDC.\n\nBut the real move? iOS 27 now ships with Extensions.\n\nOne toggle in Settings → Claude becomes the default AI across:\n\n➡️ Writing Tools\n➡️Image Playground https://t.co/8PSyozS8XC",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-09T18:30:08.000Z",
+      "conversation_id": "2064414761677119668",
+      "metrics": {
+        "likes": 12,
+        "retweets": 8,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 708,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064414761677119668/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2064414761677119668"
+    },
+    {
+      "id": "2064358547262247122",
+      "text": "https://t.co/8jDyR7U36F",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-09T14:46:46.000Z",
+      "conversation_id": "2064358547262247122",
+      "metrics": {
+        "likes": 13,
+        "retweets": 8,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1313,
+        "bookmarks": 11
+      },
+      "urls": [
+        "http://x.com/i/article/2064357926857555969"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AnandButani/status/2064358547262247122"
+    },
+    {
+      "id": "2064069978236534916",
+      "text": "1/ CLAUDE NOW WRITES 80% OF ANTHROPIC'S CODE\n\n4 data points showing exactly how fast recursive self-improvement is moving. 🧵\n\nWhich stat hits hardest? Reply below 👇️ \n \n #AI #ClaudeCode #Anthropic https://t.co/yiQ9uWzgVx",
+      "author_id": "1648787052",
+      "username": "AnandButani",
+      "name": "Anand Butani",
+      "created_at": "2026-06-08T19:40:06.000Z",
+      "conversation_id": "2064069978236534916",
+      "metrics": {
+        "likes": 16,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 742,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/AnandButani/status/2064069978236534916/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "AI",
+        "ClaudeCode",
+        "Anthropic"
+      ],
+      "tweet_url": "https://x.com/AnandButani/status/2064069978236534916"
+    }
+  ]
+}

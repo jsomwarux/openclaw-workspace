@@ -14,7 +14,7 @@ AI Implementation Specialist with 7+ years of enterprise operations experience b
 - Own end-to-end AI governance: confidence-gated routing (70% threshold triggers human review), audit trail, explainability reporting, and model lifecycle management across Anthropic, OpenRouter, Groq, and Google providers
 - Proactively interview clients to identify highest-friction manual workflows; translate findings into automation roadmaps, build POCs independently, validate ROI, then scale successful pilots into production systems
 - Built AgentGuard: AI governance middleware with confidence-scored routing, human-in-the-loop escalation, structured audit trail, and explainability reports; designed as a reusable governance pattern for compliance-sensitive deployments
-- Delivered construction field operations platform for Aya (NYC): scoped requirements, replaced ad-hoc manual update chains with real-time dashboard, drove adoption; client commissioned two follow-on projects immediately
+- Delivered construction field operations platform for a construction and property operations client (NYC): scoped requirements, replaced ad-hoc manual update chains with real-time dashboard, drove adoption; client commissioned two follow-on projects immediately
 - Designed PM Maintenance Triage system: multi-tier AI classification (routine/urgent/emergency), automated vendor dispatch, tenant notification, and audit log; eliminated unrouted emergencies and manual dispatch decisions
 - Built and deployed Agentforce agents for insurance claims intake, PM tenant service, and employee self-service on Salesforce; full lifecycle from scoping through stakeholder enablement
 
@@ -34,7 +34,7 @@ AI Implementation Specialist with 7+ years of enterprise operations experience b
 
 **AgentGuard:** AI governance middleware with confidence-scored routing, human-in-the-loop escalation triggers, audit trail, and explainability reporting. Designed for compliance-sensitive enterprise deployments. | Live at agentguard-delta.vercel.app
 
-**Construction Operations Platform:** End-to-end implementation for Aya (NYC). Business discovery through production deployment. Replaced manual field update chains; two follow-on commissions. | Deployed
+**Construction Operations Platform:** End-to-end implementation for a construction and property operations client (NYC). Business discovery through production deployment. Replaced manual field update chains; two follow-on commissions. | Deployed
 
 **PM Maintenance Triage:** Applied AI workflow automation. Multi-tier classification, automated dispatch, tenant notification, audit log. POC to production. | Deployed
 

@@ -35,7 +35,7 @@ AI Implementation Specialist with 7+ years of enterprise systems experience driv
 
 **AgentGuard** Confidence-gated AI governance layer with 70% routing threshold, human-in-the-loop review queue, and audit trail. Demonstrates AI governance architecture for regulated deployment contexts. Live at agentguard-delta.vercel.app.
 **Agentforce Portfolio (4 Agents)** Insurance claims intake, PM tenant service, employee self-service, and lending application agents built with ConversationFirst, a proprietary 25-point conversational UX evaluation framework developed for Agentforce rollouts.
-**Aya Construction Automation** Replaced manual field coordination with n8n automated progress dashboard and property data pipeline. Adoption was immediate; client commissioned two follow-on scopes within 30 days of delivery.
+**Construction Automation** Replaced manual field coordination with n8n automated progress dashboard and property data pipeline. Adoption was immediate; client commissioned two follow-on scopes within 30 days of delivery.
 
 ## EDUCATION
 

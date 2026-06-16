@@ -4,7 +4,7 @@
 > Bootstrap figure covers only `AGENTS.md`, `MEMORY.md`, `TOOLS.md`, `HEARTBEAT.md`.
 
 ## JT Snapshot
-- JT Somwaru, America/New_York; direct Telegram primary. Edge: business systems/product-catalog ops translated into practical AI implementation.
+- JT Somwaru, America/New_York; Telegram primary. Edge: business systems/product-catalog ops translated into practical AI implementation.
 - North Star: financial freedom through high-earning, low-maintenance streams; priority order consulting, apps/marketing, crypto, health.
 - Constraints: no relocation, protect sleep/health/NYC stability, avoid developer-only positioning.
 - Detail: `docs/memory/MEMORY-full.md#jt-snapshot`.
@@ -27,8 +27,7 @@
 ## Pipeline / Business Development
 - North Star layer added 2026-06-11: scoreboard `memory/north-star.md`, live pipeline `memory/pipeline.jsonl`, backlog `memory/pipeline-backlog.md`, Send Queue `memory/send-queue.md`, helper `scripts/north_star_pipeline.py`.
 - 2026-06-12 Fable decision: no acquisition system is the bottleneck. Enforce 10 sends/week; start with Yair packet + Petri/HPM/Superior M2s; earned income excluding unemployment ($3,375 June) is truth metric.
-- Proof-led referrals/warm intros beat generic LinkedIn warm-up. Outreach-ready = LinkedIn URL + verified email; JT sends.
-- Guyana is validation only unless a named buyer/problem/reply exists. H.C. Oswald paused until site/demo proof improves. Pipeline root: `~/projects/jt-consulting-pipeline/`.
+- Proof-led referrals/warm intros beat generic LinkedIn warm-up. JT sends. Guyana validation-only unless named buyer/problem/reply exists. Pipeline root: `~/projects/jt-consulting-pipeline/`.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix
@@ -37,20 +36,21 @@
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com` is the proof hub; no untested public work. Glow Index, Nash Satoshi, and Vista are live app/product lanes.
-- 2026-06-12 product freeze: Action Arena must be gated (App Store by 2026-07-15 and <=10 hrs/week) or paused; Vista/Nash/Glow/ChargeTrip/ReelFarm wait for revive triggers.
+- `jtsomwaru.com` is the proof hub; no untested public work. Glow, Nash, and Vista are live app lanes.
+- 2026-06-12 product freeze: Action Arena must be gated (App Store by 2026-07-15 and <=10 hrs/week) or paused; other app lanes wait for revive triggers.
 - App marketing stays proof/measurement driven with no unsupported claims.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice. Sonnet content crons have guardrails, edit deltas, and $10/month cap.
-- PM Front Desk + Exception Desk is the strongest proof asset; 2026-06-14 Exception Control Plane draft: `memory/drafts/linkedin-exception-control-plane-2026-06-14.md`.
-- AI Ops Teardowns should name the public company/signal and what JT would build, but withhold exact implementation recipes: prompts, schemas, node stack, thresholds, vendors, and proprietary routing logic.
+- PM Front Desk + Exception Desk is the strongest proof asset; key drafts: Exception Control Plane `memory/drafts/linkedin-exception-control-plane-2026-06-14.md`, paid-agent budget gates `memory/drafts/linkedin-paid-agent-budget-gates-2026-06-15.md`.
+- AI Ops Teardowns should name the public signal and what JT would build, but withhold exact recipes: prompts, schemas, node stack, thresholds, vendors, and proprietary routing logic.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first, employment selective; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Job packages use job-application skill + Sonnet.
+- Application materials never include specific consulting client names; resumes and cover letters must use anonymized proof descriptors unless JT explicitly approves an exception.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
 ## Crypto / Finance
@@ -59,15 +59,14 @@
 
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs.
-- Approved Sonnet content model is allowlisted; Moonshot fallback blocked until billing recharge/reactivation.
-- Phase 2B: watchdog/restart hardened, n8n + Mission Control loopback-bound, `/n8n` restored, requested secret artifacts redacted.
+- Approved Sonnet content model is allowlisted; Moonshot fallback blocked. Phase 2B: watchdog/restart hardened; n8n + Mission Control loopback-bound.
 - Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
 - Phase 7: old night jobs disabled, replaced by 11PM `Night Autonomy Agent` (`f146d8b8`). Current baseline: 49 enabled jobs.
 - Digest queue: `memory/digest-queue.md`; reminders/FYIs append there. Cron volume guard required; avoid `deleteAfterRun:true`.
-- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json`. 2026-06-14 cron: 49 enabled, 0 red rows after PI recovery; duplicate `lossless-claw` warning persists.
+- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json`. 2026-06-15 cron: 49 enabled, 0 red rows, volume guard green; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

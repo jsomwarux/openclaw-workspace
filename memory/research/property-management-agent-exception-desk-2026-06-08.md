@@ -109,3 +109,16 @@ Positioning implication:
 - The cross-vertical bridge should stay concrete: construction project risk, wholesale order/AR exceptions, and insurance underwriting or claims review all need the same queue, approval rule, audit trail, and measurable event after AI reads the request.
 
 Source signal: `memory/content/weekly-intel-brief.md` and `memory/strategic-recommendations.md`, 2026-06-14 Weekly Intelligence Synthesis.
+
+## 2026-06-15 Morning Brief Market Addendum
+
+The June 15 Morning Brief added two useful positioning constraints for the PM Front Desk + Exception Desk lane:
+- Consulting-market pressure from AI strengthens the small-operator implementation angle: JT should sell the owner/operator control surface and fast workflow proof, not broad transformation decks.
+- Property-management AI remains crowded around tenant communication, screening, maintenance, and collections. That makes "AI chatbot" language weak; the stronger wedge is exception control, approval boundaries, and audit evidence before tenant, ledger, owner, or legal-sensitive actions move.
+
+Product/offer implication:
+- Keep Altmark/Yair as the cash-first proof path, but package the proof artifact as a reusable Exception Control Plane: source input, AI classification, owner queue, approval rule, audit log, and measurable event.
+- For property managers, lead with the uncomfortable handoff points: disputed balances, missing payment context, payment plans, owner-sensitive units, legal-status ambiguity, unclear last contact, and messages that need human review before send.
+- Cross-vertical bridge stays concrete: Salesforce/m3ter outcome-billing and Trimble/Document Crunch construction-risk signals both point toward governed exceptions and measurable events, not generic "agent" demos.
+
+Source signal: 2026-06-15 Morning Brief SEND QUEUE/news/niche intel.

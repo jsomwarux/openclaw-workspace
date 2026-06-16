@@ -7,10 +7,10 @@ AI Implementation Consultant with 7+ years of experience connecting organization
 ## EXPERIENCE
 
 ### Founder and AI Implementation Consultant
-**JT Somwaru Consulting**, New York, NY, 2025-Present
+**Independent Consulting**, New York, NY, 2025-Present
 
 - Led AI strategy audits for NYC construction and property management firms: mapped workflows, quantified pain points, identified highest-ROI automation opportunities, and delivered phased implementation roadmaps to executive stakeholders
-- Built and deployed n8n workflow automation system for Aya (NYC construction and co-living firm): replaced manual coordination chains, delivered live operations dashboard integrating data across 32 buildings; client commissioned $3,500 in follow-on projects within weeks of delivery
+- Built and deployed n8n workflow automation system for a construction and property operations client (NYC construction and co-living firm): replaced manual coordination chains, delivered live operations dashboard integrating data across 32 buildings; client commissioned $3,500 in follow-on projects within weeks of delivery
 - Deployed StreetEasy property acquisition scraper automating bi-weekly data pulls to Google Sheets, replacing 6+ hours of manual research per cycle; delivered in under 3 weeks
 - Architected and operate 35+ autonomous AI agents in production: prospect research, outreach pipelines, content generation, and market intelligence; built confidence-gated governance layer (AgentGuard) with automated routing at 70% threshold, human-in-the-loop review queue, and full audit trail
 - Built and deployed 4 Agentforce AI agents across insurance claims intake, property management tenant service, employee self-service, and lending application workflows using Salesforce Agentforce, Flow Builder, and Agent Script
@@ -31,7 +31,7 @@ AI Implementation Consultant with 7+ years of experience connecting organization
 **Development Tools:** React, TypeScript, Node.js, Supabase, GitHub, Vercel
 
 ## KEY PROJECTS
-**Aya Construction Dashboard:** Live operations dashboard (React/TypeScript/Node.js) integrating Google Sheets API across 32 buildings and 313 rooms; consolidated 8 manual operational views into a single platform. $1,500 project delivered in 3 weeks; client immediately commissioned $3,500 in follow-on work
+**Construction Operations Dashboard:** Live operations dashboard (React/TypeScript/Node.js) integrating Google Sheets API across 32 buildings and 313 rooms; consolidated 8 manual operational views into a single platform. $1,500 project delivered in 3 weeks; client immediately commissioned $3,500 in follow-on work
 
 **AgentGuard:** Confidence-gated AI governance layer with automated routing at 70% threshold, human-in-the-loop review queue, and full audit trail. EEOC-compliant for HR use cases. Live at agentguard-delta.vercel.app
 

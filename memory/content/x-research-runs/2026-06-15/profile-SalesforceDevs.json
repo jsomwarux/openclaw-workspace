@@ -1,0 +1,264 @@
+{
+  "user": {
+    "id": "7834512",
+    "name": "Salesforce Developers",
+    "username": "SalesforceDevs",
+    "created_at": "2007-07-31T01:18:34.000Z",
+    "public_metrics": {
+      "followers_count": 120968,
+      "following_count": 789,
+      "tweet_count": 16657,
+      "listed_count": 1312,
+      "like_count": 8576,
+      "media_count": 4051
+    },
+    "description": "Build the Agentic Enterprise. Stay up to date with news and resources for Salesforce Developers."
+  },
+  "tweets": [
+    {
+      "id": "2066347487057600777",
+      "text": "Don't miss your chance to get hands-on with the new Agentforce Builder. 🙌\n\nJoin @Salesforce Developer Advocate @adityanaag to learn how Agentforce Builder makes it easy to generate, refine, and control agent behavior from a single canvas using Agent Script.\n\n📅 June 17 at 10:30 https://t.co/WLGXH1YjK0",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-15T02:30:06.000Z",
+      "conversation_id": "2066347487057600777",
+      "metrics": {
+        "likes": 4,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 506,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2066347487057600777/photo/1"
+      ],
+      "mentions": [
+        "salesforce",
+        "adityanaag"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2066347487057600777"
+    },
+    {
+      "id": "2065501926918115698",
+      "text": "Your feedback helps shape the @Salesforce Developers experience. ✨\n\nShare your thoughts on the content, channels, and programs that matter most to you in our 5-minute survey.\n\n🗓️ Complete by June 30, 2026. ➡️ https://t.co/uruO2jQWyn https://t.co/dAzSE5Kbli",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-12T18:30:09.000Z",
+      "conversation_id": "2065501926918115698",
+      "metrics": {
+        "likes": 10,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 548,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://sforce.co/devsurvey",
+        "https://x.com/SalesforceDevs/status/2065501926918115698/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2065501926918115698"
+    },
+    {
+      "id": "2065181050108612812",
+      "text": "One workshop. Two chances to join. 🎉\n\nJoin us to get hands-on with the new Agentforce Builder and learn how to build, refine, and test agent behavior from a single canvas using Agent Script.\n\n🔹 June 17 | 10:30 a.m. SGT / 1:30 p.m. AEST ➡️ https://t.co/nDQ4IExYdj\n\n🔹 June 17 | https://t.co/oF4CIhX1Gb",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-11T21:15:06.000Z",
+      "conversation_id": "2065181050108612812",
+      "metrics": {
+        "likes": 7,
+        "retweets": 2,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 775,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://sforce.co/4adjZFk",
+        "https://x.com/SalesforceDevs/status/2065181050108612812/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2065181050108612812"
+    },
+    {
+      "id": "2065158405010915559",
+      "text": "Debug faster and unify your data pipeline. 🛠️\n\nMaster the Data 360 Web SDK transformation layer. Learn how nested website event payloads flatten into Data Model Objects (DMOs) and eliminate common schema validation bottlenecks.\n\nTrack your data: https://t.co/cufFNL5lJs https://t.co/QFAiOGhnAZ",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-11T19:45:07.000Z",
+      "conversation_id": "2065158405010915559",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 492,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://sforce.co/4xoRr5M",
+        "https://x.com/SalesforceDevs/status/2065158405010915559/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2065158405010915559"
+    },
+    {
+      "id": "2065094259225547161",
+      "text": "🚀 Introducing React on Salesforce, a new video series from @Salesforce Developer Advocates exploring how to build modern, headless web experiences natively on Salesforce with React.\n\nIn Episode 1, Charles Watkins shows how to get started building React on Salesforce with https://t.co/z2o4ZH3dEh",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-11T15:30:13.000Z",
+      "conversation_id": "2065094259225547161",
+      "metrics": {
+        "likes": 23,
+        "retweets": 7,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 1063,
+        "bookmarks": 16
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2065094259225547161/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2065094259225547161"
+    },
+    {
+      "id": "2064796378845655405",
+      "text": "🤯 How does Indeed build and deploy Agentforce agents without ever opening a browser?\n\nLearn how the team uses @Salesforce Headless 360, APIs, and coding agents to accelerate agent development at scale.\n\nRead the blog: https://t.co/0zJMxkqKEt",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-10T19:46:33.000Z",
+      "conversation_id": "2064796378845655405",
+      "metrics": {
+        "likes": 9,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1772,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://www.salesforce.com/blog/indeed-agentforce/"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2064796378845655405"
+    },
+    {
+      "id": "2064777150801039745",
+      "text": "Debug LWC failures faster. 🔍\n\nDon't mistake a namespaced storage failure for a framework block. Master the three security layers isolating your components, learn why proxy unwrapping fails silently, and protect your cross-boundary data.\n\nSecure your components: https://t.co/CWM0B1fJ24",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-10T18:30:09.000Z",
+      "conversation_id": "2064777150801039745",
+      "metrics": {
+        "likes": 7,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 653,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2064777150801039745/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2064777150801039745"
+    },
+    {
+      "id": "2064758269621440609",
+      "text": "🤩 Agentforce World Tour London is almost here.\n\nSee what's new across the Agentforce 360 Platform, experience the new Agentforce Builder, and learn from experts through 150+ sessions, demos, workshops, and more.\n\n📍 Excel London\n🗓️ 18 June 2026\n\n👉 Register for free today: https://t.co/wVRKC6bmUc",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-10T17:15:07.000Z",
+      "conversation_id": "2064758269621440609",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 538,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2064758269621440609/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2064758269621440609"
+    },
+    {
+      "id": "2064429859598684455",
+      "text": "⚙️ The future of @Salesforce DevOps is here.\n\nGot questions? Join True to the Core Deep Dive: DevOps Center on June 16 at 9:00 a.m. PT to hear what’s next, ask questions live, and connect with Salesforce product experts.\n\nRSVP: https://t.co/9SVZAbVh9u https://t.co/YqL9eno2jq",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-09T19:30:08.000Z",
+      "conversation_id": "2064429859598684455",
+      "metrics": {
+        "likes": 11,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 566,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://sforce.co/4va6E8W",
+        "https://x.com/SalesforceDevs/status/2064429859598684455/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2064429859598684455"
+    },
+    {
+      "id": "2064403492672860599",
+      "text": "Your customer data is fragmented. 🧩\n\nThe same person exists in your CRM, BigQuery, and website analytics as separate records, leaving agents without the full picture. \n\nEpisode 3 of Data 360 Activated shows how Data 360 unifies customer data with Identity Resolution, households, https://t.co/vIdzTATM8M",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-09T17:45:22.000Z",
+      "conversation_id": "2064403492672860599",
+      "metrics": {
+        "likes": 10,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 1,
+        "impressions": 1202,
+        "bookmarks": 7
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2064403492672860599/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2064403492672860599"
+    }
+  ]
+}

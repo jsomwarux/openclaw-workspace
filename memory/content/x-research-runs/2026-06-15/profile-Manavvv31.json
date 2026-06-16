@@ -1,0 +1,248 @@
+{
+  "user": {
+    "description": "Exploring AI, business, and internet trends. Sharing what I learn along the way",
+    "public_metrics": {
+      "followers_count": 499,
+      "following_count": 186,
+      "tweet_count": 12709,
+      "listed_count": 2,
+      "like_count": 111,
+      "media_count": 145
+    },
+    "username": "Manavvv31",
+    "name": "Manav",
+    "created_at": "2026-03-05T16:00:50.000Z",
+    "id": "2029587888145657856"
+  },
+  "tweets": [
+    {
+      "id": "2066453159409823910",
+      "text": "Databricks just open-sourced Omnigent, a layer that sits above your existing AI agents, Claude Code, Codex, Pi, custom ones, and turns them into a single composable, governed system. \n\nIt was built in six weeks, and it is a clean statement of where serious agent engineering is https://t.co/pHJak7ffbH",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-15T09:30:00.000Z",
+      "conversation_id": "2066453159409823910",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 39,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066453159409823910/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066453159409823910"
+    },
+    {
+      "id": "2066438059202084908",
+      "text": "Generative AI just hit 53 percent of the entire world's population in three years, spreading faster than the personal computer or the internet did. The Stanford report documenting this is full of numbers that complicate the simple story everyone tells about who is winning.\n\nThe https://t.co/hM30j3rtmo",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-15T08:30:00.000Z",
+      "conversation_id": "2066438059202084908",
+      "metrics": {
+        "likes": 2,
+        "retweets": 2,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 208,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066438059202084908/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066438059202084908"
+    },
+    {
+      "id": "2066422960613920931",
+      "text": "NVIDIA analyzed 42,447 public AI agent skills, the capability packages that tools like Claude Code and other agents install and run, and the results are the npm-malware era all over again, this time for agents. So NVIDIA open-sourced the scanner built to catch them.\n\nThe tool is https://t.co/IJvTqzB3jG",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-15T07:30:00.000Z",
+      "conversation_id": "2066422960613920931",
+      "metrics": {
+        "likes": 3,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 258,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066422960613920931/video/1",
+        "https://x.com/Manavvv31/status/2066422960613920931/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066422960613920931"
+    },
+    {
+      "id": "2066408110793937227",
+      "text": "Humanoid robots just crossed the line from research demo to factory floor. For years they were impressive YouTube clips operating in controlled labs. As of 2026, they are production tools, and the entire first year of output is already committed to one buyer.\n\nThe robot is Atlas, https://t.co/UlbKvCcPGt",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-15T06:31:00.000Z",
+      "conversation_id": "2066408110793937227",
+      "metrics": {
+        "likes": 5,
+        "retweets": 5,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 338,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066408110793937227/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066408110793937227"
+    },
+    {
+      "id": "2066393158116876652",
+      "text": "One of the most powerful AI models ever released to the public lasted three days before a government directive pulled it. The story underneath is not about a product launch. It is about who is allowed to hold the most capable version of this technology, and the answer turns out https://t.co/0l82bQVkZd",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-15T05:31:35.000Z",
+      "conversation_id": "2066393158116876652",
+      "metrics": {
+        "likes": 6,
+        "retweets": 5,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 827,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066393158116876652/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066393158116876652"
+    },
+    {
+      "id": "2066384169492717581",
+      "text": "Two things change in the Anthropic ecosystem today at 9AM PT.\n\nIf you build with Claude, both of them could break your production code before lunch.\n\nHere is every number you need and exactly what to do.Deadline one. Two model IDs stop working today.\n\nAnthropic announced on April https://t.co/Z3KaZWnZe7",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-15T04:55:52.000Z",
+      "conversation_id": "2066384169492717581",
+      "metrics": {
+        "likes": 12,
+        "retweets": 9,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 1482,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066384169492717581/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066384169492717581"
+    },
+    {
+      "id": "2066192691575328806",
+      "text": "The co-founder of Plex left the company, then quietly built a free music player that turns a $35 Raspberry Pi into an audiophile streaming system you fully own. No subscription. No cloud. No company that can take it away.\n\nIt is called Caldera Music, and it shipped in June 2026.",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-14T16:15:00.000Z",
+      "conversation_id": "2066192691575328806",
+      "metrics": {
+        "likes": 3,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 821,
+        "bookmarks": 2
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066192691575328806"
+    },
+    {
+      "id": "2066181366870622713",
+      "text": "The number of security vulnerabilities found in open-source code jumped 107 percent in a single year. \nThe cause is not that developers suddenly got worse.\nIt is that AI is now writing code faster than anyone can secure it.\n\nThe figure comes from Black Duck's 2026 Open Source https://t.co/x84UGnjkxk",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-14T15:30:00.000Z",
+      "conversation_id": "2066181366870622713",
+      "metrics": {
+        "likes": 5,
+        "retweets": 4,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 698,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066181366870622713/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066181366870622713"
+    },
+    {
+      "id": "2066151168708067839",
+      "text": "Anthropic just launched two new models. This is what actually happened.\n\nClaude Fable 5 launched on June 9, 2026. It is the first Mythos-class model Anthropic has made available to the general public, and the most capable model the company has ever released outside of restricted https://t.co/zsUhWr0lrw",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-14T13:30:00.000Z",
+      "conversation_id": "2066151168708067839",
+      "metrics": {
+        "likes": 13,
+        "retweets": 10,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 1713,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066151168708067839/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066151168708067839"
+    },
+    {
+      "id": "2066120970579177552",
+      "text": "Between 2023 and 2026, the estimated share of content on the public web generated fully or primarily by AI increased from under 3 percent to between 30 and 57 percent.\n\nThe range is wide because distinguishing AI-generated content from human-written content has become genuinely https://t.co/99HgVRZJJG",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-14T11:30:00.000Z",
+      "conversation_id": "2066120970579177552",
+      "metrics": {
+        "likes": 11,
+        "retweets": 11,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 946,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2066120970579177552/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2066120970579177552"
+    }
+  ]
+}

@@ -14,10 +14,10 @@ AI Enablement Manager candidate with 6 years of enterprise program and systems i
 ## EXPERIENCE
 
 ### AI Strategy & Implementation Consultant
-**JT Somwaru Consulting**, New York City, 2025-Present
+**Independent Consulting**, New York City, 2025-Present
 
 - Own AI enablement programs from discovery through launch across multiple concurrent client initiatives, including workflow mapping, solution design, milestone planning, stakeholder training, launch support, and post-launch iteration.
-- Delivered a construction field reporting dashboard for Aya, replacing manual update chains with real-time job tracking and client visibility; the first delivery drove immediate adoption and two follow-on project commissions.
+- Delivered a construction field reporting dashboard for a construction and property operations client, replacing manual update chains with real-time job tracking and client visibility; the first delivery drove immediate adoption and two follow-on project commissions.
 - Built and deployed a StreetEasy scraping workflow for a real estate client, converting a manual property search process into a repeatable automation with structured outputs for review and follow-up.
 - Designed AI adoption resources for non-technical operators, including workflow maps, intake questions, runbooks, stakeholder-ready demos, and plain-language explanations of AI capabilities, limits, scope, and timeline tradeoffs.
 - Built production multi-agent operations infrastructure running 35 autonomous jobs for research, content, cost monitoring, alerts, and market intelligence, with KPI tracking, failure logs, cost controls, and escalation rules.

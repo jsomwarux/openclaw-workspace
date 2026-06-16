@@ -11,7 +11,7 @@ AI Strategy & Implementation Consultant with 7+ years translating complex techno
 **Independent Consulting**, New York City, 2025-Present
 
 - Designed AI enablement programs for operations-heavy teams: mapped manual workflows, identified automation and augmentation opportunities, built hands-on workshops, and converted use cases into phased adoption plans with measurable outcomes
-- Delivered construction operations platform for Aya, a NYC construction and co-living operator: ran workflow evaluation with operators, replaced manual coordination loops with a live dashboard across 32 buildings and 313 rooms, and earned two follow-on projects from the same client
+- Delivered construction operations platform for a construction and property operations client, a NYC construction and co-living operator: ran workflow evaluation with operators, replaced manual coordination loops with a live dashboard across 32 buildings and 313 rooms, and earned two follow-on projects from the same client
 - Built AgentGuard, a confidence-gated AI governance layer with human-in-the-loop review, audit trail, explainability reporting, and 70% routing threshold, giving teams a repeatable adoption framework for accountable enterprise AI use
 - Built and operate 35+ autonomous AI workflows for research, market intelligence, outreach operations, content systems, cost monitoring, and task routing, with model routing, escalation rules, and production monitoring
 - Developed reusable playbooks for property maintenance triage, construction field-note-to-update workflows, client intake routing, and AI-assisted research pipelines so nontechnical teams can repeat successful patterns without starting from scratch
@@ -35,7 +35,7 @@ AI Strategy & Implementation Consultant with 7+ years translating complex techno
 
 **OpenClaw AI Operations Infrastructure:** Operates 35+ autonomous agents and scheduled workflows across research, content, market monitoring, cost controls, and task routing. Includes production monitoring, prompt playbooks, model selection by task type, escalation rules, and measurable system health checks.
 
-**Aya Construction Operations Platform:** Delivered live dashboard and workflow automation for a NYC construction and co-living operator across 32 buildings and 313 rooms. Converted manual status tracking into an adopted operating system, then expanded into follow-on StreetEasy scraping and co-living dashboard scopes.
+**Construction Operations Platform:** Delivered live dashboard and workflow automation for a NYC construction and co-living operator across 32 buildings and 313 rooms. Converted manual status tracking into an adopted operating system, then expanded into follow-on StreetEasy scraping and co-living dashboard scopes.
 
 ## SKILLS
 

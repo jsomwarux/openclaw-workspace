@@ -27,14 +27,14 @@ Solutions Architect with 6 years of enterprise systems experience in generative 
 ## EXPERIENCE
 
 ### Founder and AI Implementation Consultant
-**JT Somwaru Consulting**, New York, NY, 2025–Present
+**Independent Consulting**, New York, NY, 2025–Present
 
 NYC-based AI consulting delivering full-cycle generative AI implementations: discovery, architecture, build, and deployment for enterprise-adjacent clients.
 
 - Architected and deployed AgentGuard, a confidence-gated AI governance layer with automated routing at a 70% confidence threshold, a human review queue for below-threshold decisions, and a full EEOC-compliant audit trail. Live at agentguard-delta.vercel.app
 - Built and operate 35 autonomous cron jobs in production covering prospect research, content generation, outreach pipelines, market intelligence, and cost monitoring, with watchdog processes, multi-model routing, and automated cost controls
-- Delivered a $1,500 operational intelligence dashboard for Aya (NYC construction firm), integrating real-time data pipelines across project management and finance teams to replace manual workflows. Client commissioned $3,500 in follow-on projects immediately after delivery
-- Delivered a $1,000 automated property intelligence system for Aya, scraping live StreetEasy market data and surfacing acquisition targets, replacing a fully manual research process
+- Delivered a $1,500 operational intelligence dashboard for a construction and property operations client (NYC construction firm), integrating real-time data pipelines across project management and finance teams to replace manual workflows. Client commissioned $3,500 in follow-on projects immediately after delivery
+- Delivered a $1,000 automated property intelligence system for a construction and property operations client, scraping live StreetEasy market data and surfacing acquisition targets, replacing a fully manual research process
 - Managed Agentforce full lifecycle across client implementations: Agent Builder configuration, topic and action design, channel deployment, and runtime governance using the ConversationFirst methodology
 - Architected multi-LLM orchestration systems combining Claude, GPT-4o, and Gemini in parallel with a consensus-scoring layer to improve output reliability for high-stakes business decisions
 - Led end-to-end technical discovery with enterprise-adjacent stakeholders: scoped requirements, translated operational pain points into generative AI architectures, and presented technical roadmaps to non-technical decision-makers
@@ -64,7 +64,7 @@ Enterprise division of one of the largest US telecoms ($52B revenue). Served as 
 
 **PM Maintenance Triage** (Live: jtsomwaru.com): Agentforce agent for property management tenant service, handling intake, triage, and routing for maintenance requests with full fallback and escalation logic built on the ConversationFirst framework.
 
-**Construction Intelligence Dashboard** (Delivered, $1,500): React/TypeScript operational dashboard for Aya (NYC construction firm), integrating real-time project and finance data across 8 operational views. Client commissioned $3,500 in follow-on projects immediately after launch.
+**Construction Intelligence Dashboard** (Delivered, $1,500): React/TypeScript operational dashboard for a construction and property operations client (NYC construction firm), integrating real-time project and finance data across 8 operational views. Client commissioned $3,500 in follow-on projects immediately after launch.
 
 ---
 

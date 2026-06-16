@@ -199,7 +199,18 @@ Use `--save` flag or save manually to `~/clawd/drafts/x-research-{topic-slug}-{Y
 ## Research Engine Output Loop
 For substantive X research, do not stop at saved snippets. Compress the research into a decision, reusable asset, task, draft, or explicit skip.
 
-For @jts_14 content research, do not leave results scattered across raw JSON, swipe reports, and weekly content files. Create or update `memory/content/jts14-x-reference-ledger-[MONDAY].md` with source URL, canonical niche lane, why selected, analyzed mechanic, influence type, and draft touched or rejection reason. Then run `python3 scripts/jts14_x_reference_ledger_guard.py memory/content/jts14-x-reference-ledger-[MONDAY].md`.
+For @jts_14 content research, do not leave results scattered across raw JSON, swipe reports, and weekly content files. Create or update `memory/content/jts14-x-reference-ledger-[MONDAY].md` with source URL, canonical niche lane, why selected, analyzed mechanic, influence type, and draft touched or rejection reason. Prefer:
+
+```bash
+python3 scripts/build_jts14_x_reference_ledger.py \
+  --report memory/content/x-research-runs/[MONDAY]/report.md \
+  --replies memory/content/reply-targets-[MONDAY].md \
+  --weekly memory/content/weekly-[MONDAY].md \
+  --output memory/content/jts14-x-reference-ledger-[MONDAY].md
+python3 scripts/jts14_x_reference_ledger_guard.py memory/content/jts14-x-reference-ledger-[MONDAY].md
+```
+
+When a weekly artifact exists, also run `python3 scripts/content_distribution_guard.py --weekly memory/content/weekly-[MONDAY].md --require-reference-map linkedin --require-reference-map x --require-jts14-ledger memory/content/jts14-x-reference-ledger-[MONDAY].md`.
 
 After synthesis, fill or mentally apply `templates/research-engine-output-loop-template.md`:
 - What is the one useful pattern, decision, or warning?
