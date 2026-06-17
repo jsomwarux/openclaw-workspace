@@ -14,6 +14,9 @@ When spawning a sub-agent, check here first. Find the closest template, adapt th
 After the sub-agent completes: did the output match expectations? If not, note what the prompt missed.
 If a new prompt pattern works well: add it here.
 
+## External Model Context Rule
+When writing prompts for external models such as Claude Fable 5, assume the model has zero knowledge of JT's specific projects, apps, clients, agents, or prior decisions unless the prompt states them explicitly. Any prompt that asks the model to evaluate a named project/app/client must include a compact self-contained primer: what it is, current status, revenue/proof state, best growth hypothesis, constraints, and risk. Never ask an external model to allocate attention across names only.
+
 ## Anthropic Prompt Structure Checklist
 Run every new prompt through this before committing it to a cron or agent.
 Minimum required: ✅ 1, 4, 7, 9. Strongly recommended: also 2, 5.

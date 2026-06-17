@@ -5,6 +5,22 @@
 ## Logging Rule
 Every entry MUST have six fields: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete guardrail/rule, (4) regression check that would catch recurrence, (5) owner surface updated, (6) verification/date. A mistake entry without a regression check + owner surface is incomplete — finish it before moving on. Reference: `docs/agents/regression-checks.md`.
 
+## 2026-06-16 — App Marketing prompt stalled after status replies
+- **Failure:** JT had to ask for repeated updates on the Claude Fable App Marketing Strategy + Automation prompt because I sent status/context messages but did not create the local draft before pausing or getting interrupted.
+- **Root cause:** I let the active-conversation update rule dominate the execution loop. I reported intent and gathered enough context, but did not anchor the work to the first irreversible artifact gate: local file exists.
+- **Guardrail/rule:** For prompt-package work after scope is clear, create the local draft before any nonessential status update. Status replies must say which artifact gate has been reached: no file, local file, Drive URL, live verification, or recap.
+- **Regression check:** Before answering "update?" on a prompt-package task, run `test -f memory/drafts/[slug].md && wc -c memory/drafts/[slug].md` or state "no local file yet"; completion requires local draft, Drive URL, live Google Docs verification, and weekly recap entry.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; current Claude Fable prompt-package operating behavior.
+- **Verification/date:** 2026-06-16 — App Marketing Strategy + Automation prompt completed with local draft, Drive upload, live Google Docs verification `missing=[]`, and weekly recap entry.
+
+## 2026-06-16 — Fable prompt referenced apps by name without project primers
+- **Failure:** Prompt 1 asked Claude Fable 5 to decide whether Vista, Nash Satoshi, and Glow Index should receive time in the next 30 days without explaining what the apps are, and omitted Action Arena.
+- **Root cause:** I wrote the prompt from workspace memory instead of from the external model's viewpoint. I treated project names as shared context even though Fable 5 would only see the pasted prompt.
+- **Guardrail/rule:** External strategy prompts must include compact self-contained primers for every named app/project/client/agent being evaluated: what it is, current status, revenue/proof state, best growth hypothesis, constraints, and risks.
+- **Regression check:** Before uploading any future Fable/external strategy prompt, scan for named project/app/client references and confirm each has a primer or is irrelevant to the requested decision.
+- **Owner surface updated:** `memory/drafts/claude-fable-north-star-revenue-architecture-prompt-2026-06-16.md`, `skills/prompt-library/SKILL.md`, `AGENTS.md`, and this Mistakes Log entry.
+- **Verification/date:** 2026-06-16; Prompt 1 updated to include Vista, Nash Satoshi, Glow Index, and Action Arena project context plus an explicit no-prior-knowledge instruction.
+
 ## 2026-06-13 — Phase 2 site work stalled between short bursts
 - **Failure:** During JT's approved Phase 2 jtsomwaru.com work, I repeatedly worked for a short burst, stopped at a partial state, and forced JT to ask "Update?" multiple times instead of carrying the task through implementation and verification.
 - **Root cause:** I treated interim status replies as a substitute for continuous execution. The active-conversation update rules were followed superficially, but the task loop was not anchored to a completion gate like "new pages written, lint/build passed, screenshots captured, evidence report saved."
@@ -540,6 +556,14 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Guardrail/rule:** Do not print `openclaw models status` raw during heartbeat/auth checks. Use a structured redacted projection or a narrower runtime-auth probe that reports provider status only.
 - **Regression check:** Any future model/auth status command must redact `sk-`/provider-key patterns before output, or use a script that emits only provider names, profile counts, and runtime usability booleans.
 - **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; no credential or config files changed.
+## 2026-06-16 — AI Ops Teardown reused prior company context inside the post
+- **Failure:** The AppFolio AI Ops Teardown draft mentioned Canals twice even though JT had only provided Canals as a prior-post exclusion signal.
+- **Root cause:** I treated "I already posted about Canal" as continuity context for the public post instead of exclusion-only context. The content guard checked stale phrasing and voice but did not specifically block prior AI Ops Teardown company references.
+- **Guardrail/rule:** Previous AI Ops Teardown companies are exclusion-only context and must never be mentioned in the new teardown post. Each teardown must stand alone on the current company/signal.
+- **Regression check:** `python3 scripts/content_distribution_guard.py --linkedin-draft [new-ai-ops-teardown-file]` must fail when the draft mentions a company derived from earlier `memory/content/bank/*/ai-ops-teardown-*.md` files and pass only after those references are removed.
+- **Owner surface updated:** `docs/agents/content-rules.md`, `scripts/content_distribution_guard.py`, `scripts/test_content_distribution_guard.py`, AppFolio local teardown files, and Drive teardown docs.
+- **Verification/date:** 2026-06-16 — regression test first failed because `check_ai_ops_teardown_prior_company_references` did not exist, then passed after implementation; guard failed on the Canals references before local cleanup and passed after removal.
+
 - **Verification/date:** 2026-06-11 — did not quote or forward the partial key preview to JT; subsequent heartbeat summary omits credential material.
 
 ## 2026-06-03 — Cron prompts let useful work fail after brittle checkpoints
@@ -620,3 +644,27 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** `scripts/build_resume_docx.py` must fail both resume and cover-letter generation when banned consulting client names appear. Before upload, scan resume/cover-letter markdown drafts for the banned client-name list and verify the generated DOCX text is clean.
 - **Owner surface updated:** `skills/job-application/SKILL.md`, `scripts/build_resume_docx.py`, Notion resume and cover-letter sources, older affected resume/cover-letter drafts, and this Mistakes Log entry.
 - **Verification/date:** 2026-06-15 — scrubbed applicant-facing resume/cover-letter drafts for banned client names, rebuilt Notion DOCX files, replaced the existing Drive resume and cover letter docs in place, confirmed generated DOCX text contains no banned client names or fit-verdict language, verified negative fixtures fail for both resume and cover letter, and verified the no-markdown resume fallback is rejected.
+
+## 2026-06-16 — Prompt 6 stalled because execution stopped between phases
+- **Failure:** JT had to repeatedly ask for updates and completion on Claude Fable Prompt 6 because I gathered context, reported progress, then stopped before writing/uploading the artifact.
+- **Root cause:** I over-applied research/context gathering to a prompt-writing task that already had enough structure, and I treated intermediate status updates as acceptable progress instead of forcing the artifact through the full local draft -> Drive upload -> live verification -> recap loop in one uninterrupted run.
+- **Guardrail/rule:** For sequential prompt-package work after the first prompt in a series, cap context gathering at the minimum needed and execute the artifact pipeline immediately. A progress update is not a checkpoint unless the local file exists or a real blocker occurred.
+- **Regression check:** Before telling JT a prompt is "in progress," confirm which phase is active. Before stopping, run `test -f memory/drafts/[prompt].md` for the expected local artifact or explicitly state the blocker. Completion requires local file, Drive URL, live Docs verification, and recap entry.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; operational behavior for current Claude Fable prompt series.
+- **Verification/date:** 2026-06-16 — Prompt 7 was completed straight through with local draft, Drive upload, live Google Doc verification, weekly recap entry, and no stop after a partial progress update.
+
+## 2026-06-16 — Mission Control mobile Work nav selected the legacy task board
+- **Failure:** After Mission Control Slice 1 was reported complete, JT opened mobile Mission Control and saw the legacy `/tasks` Kanban board while the bottom nav highlighted Work, contradicting the expected Slice 1 Work lane.
+- **Root cause:** I left `/tasks` as a reachable legacy route and included `/tasks` in the new Work nav aliases. That made an old URL look like the active redesigned Work lane instead of forcing users onto `/work`.
+- **Guardrail/rule:** When replacing a primary route with a new lane, old primary URLs must redirect to the new lane or be clearly namespaced under `/legacy/*`; navigation aliases must not mark legacy pages as current primary lanes.
+- **Regression check:** `bun test lib/mission-control/routes.test.ts` must assert Work href is `/work`, `/tasks` is not a Work alias, and `/tasks` redirects to `/work`; HTTP verification must confirm `curl -I /tasks` returns `location: /work`.
+- **Owner surface updated:** `mission-control/lib/mission-control/routes.ts`, `mission-control/lib/mission-control/routes.test.ts`, `mission-control/components/Sidebar.tsx`, `mission-control/app/tasks/page.tsx`, `mission-control/app/legacy/tasks/page.tsx`, `mission-control/components/mission-control/LegacyTaskBoard.tsx`, `mission-control/CLAUDE.md`, weekly recap, and this Mistakes Log entry.
+- **Verification/date:** 2026-06-16 — route tests passed, TypeScript passed, isolated Next build passed, `/tasks` returned 307 to `/work`, following `/tasks` landed on `/work`, and mobile Playwright screenshot of `/tasks` showed the Task router instead of Task Board.
+
+## 2026-06-16 — Mission Control Work lane sorted by recency instead of priority
+- **Failure:** JT opened mobile `/work` and saw medium-priority tasks above high-priority tasks, with weak priority color coordination, making the redesigned Work lane feel unlike the intended Claude Design operating cockpit.
+- **Root cause:** I reused Convex/API newest-updated order for the Work router and only added neutral priority text. That made the lane behave like a chronological task feed instead of a priority-ranked operating surface.
+- **Guardrail/rule:** Mission Control Work defaults must rank by operational importance before recency: high > medium > low, active/problem states above done inside each priority tier, then newest update as the tie-breaker. Priority must have visible color treatment on mobile rows.
+- **Regression check:** `bun test lib/mission-control/work-priority.test.ts` must assert high-priority tasks sort above newer medium tasks, done work is demoted inside a priority tier, and high/medium/low visual classes are distinct.
+- **Owner surface updated:** `mission-control/lib/mission-control/work-priority.ts`, `mission-control/lib/mission-control/work-priority.test.ts`, `mission-control/app/work/page.tsx`, `mission-control/CLAUDE.md`, Mission Control implementation notes/todo, weekly recap, content proof surfaces, and this Mistakes Log entry.
+- **Verification/date:** 2026-06-16 — Work priority tests passed, full Mission Control test suite passed 25 tests / 66 assertions, TypeScript passed, isolated Next build passed, API order spot-check showed high-priority tasks leading, and mobile Playwright screenshot captured `/tmp/mission-control-screens/work-mobile-priority-sorted.png`.

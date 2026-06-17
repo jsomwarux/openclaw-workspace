@@ -122,3 +122,23 @@ Product/offer implication:
 - Cross-vertical bridge stays concrete: Salesforce/m3ter outcome-billing and Trimble/Document Crunch construction-risk signals both point toward governed exceptions and measurable events, not generic "agent" demos.
 
 Source signal: 2026-06-15 Morning Brief SEND QUEUE/news/niche intel.
+
+## 2026-06-16 Morning Brief Control-Queue Addendum
+
+Fresh June 16 scan reinforces the same point from a slightly different angle:
+- AppFolio's Realm-X/Claude connector is being framed around complex operational work executed inside the trusted property-management platform, not free-form chat. That supports a small-operator proof that keeps tenant, ledger, owner, and legal-sensitive actions behind a visible approval state.
+- AppFolio's AI positioning names responsible AI principles such as reliability, privacy/security, transparency, and accountability. Buyer-safe PM automation should therefore show the control record first: source record, allowed action, reviewer, approval state, and action log.
+- Broader AI-ops/job-market signals from Anthropic and PwC make the consulting angle stronger when it is about operating models and human judgment gates, not "agents are magic."
+- Collections-specific AI commentary is also converging on audit trails, contact-rule enforcement, deterministic offers, and traceability as architecture requirements, which maps cleanly to rent delinquency and payment-plan exceptions.
+
+Altmark/Yair implication:
+- The next proof asset should make the review queue inspectable before any automation claim: delinquent account row, missing context flag, exception reason, suggested next step, human reviewer, approved send/hold/escalate decision, and timestamped evidence.
+- For copy and proof review, lead with "the control sheet that prevents risky collections follow-up from running unattended" rather than "AI rent collections."
+- This keeps the cash-first path intact: send the Yair approve/edit packet, collect the missing rent-delinquency inputs, finish the workflow, and turn the evidence into the first Exception Control Plane example.
+
+Sources checked June 16:
+- AppFolio, "AppFolio Connects Realm-X to Anthropic's Claude" - https://www.appfolio.com/newsroom/appfolio-connects-realm-x-to-anthropics-claude-2026
+- AppFolio Realm-X AI - https://www.appfolio.com/ai
+- Anthropic Economic Futures Program, "When AI builds itself" - https://www.anthropic.com/institute/recursive-self-improvement
+- PwC, "2026 AI Jobs Barometer" - https://www.pwc.com/gx/en/services/ai/ai-jobs-barometer.html
+- Zowie, "AI Debt Collection (2026): How AI Agents Work Every Account" - https://getzowie.com/blog/ai-debt-collection-2026

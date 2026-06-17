@@ -1,38 +1,15 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard, CheckSquare, Calendar, Brain,
-  Users, Server, DollarSign, FileText, Moon, Wrench, Archive, Building2, Sparkles, Network, Coins,
-} from "lucide-react";
+import { mobileNavInnerClassName, mobileNavShellClassName } from "@/lib/mission-control/nav-layout";
+import { missionControlNav, mobileNav } from "@/lib/mission-control/routes";
 import { cn } from "@/lib/utils";
-
-const nav = [
-  { href: "/",         icon: LayoutDashboard, label: "Overview"   },
-  { href: "/tasks",    icon: CheckSquare,      label: "Tasks"      },
-  { href: "/consulting", icon: Building2,      label: "Pipeline"   },
-  { href: "/vibe",       icon: Sparkles,       label: "Vibe Mktg"  },
-  { href: "/passive-income", icon: Coins,      label: "Passive $"  },
-  { href: "/calendar", icon: Calendar,         label: "Schedule"   },
-  { href: "/memory",   icon: Brain,            label: "Memory"     },
-  { href: "/agents",   icon: Users,            label: "Agents"     },
-  { href: "/monitor",  icon: Server,           label: "Monitor"    },
-  { href: "/costs",    icon: DollarSign,       label: "Costs"      },
-  { href: "/history",  icon: Archive,          label: "History"    },
-  { href: "/audit",    icon: FileText,         label: "Audit"      },
-  { href: "/overnight", icon: Moon,            label: "Overnight"  },
-  { href: "/skills",    icon: Wrench,          label: "Skills"     },
-  { href: "/systems",   icon: Network,         label: "Systems"    },
-];
-
-// Primary nav items shown in bottom bar (mobile)
-const mobileNav = nav.slice(0, 5);
 
 export default function Sidebar() {
   const path = usePathname();
 
-  const isActive = (href: string) =>
-    href === "/" ? path === "/" : path.startsWith(href);
+  const isActive = (item: (typeof missionControlNav)[number]) =>
+    item.aliases.some((href) => (href === "/" ? path === "/" : path.startsWith(href)));
 
   return (
     <>
@@ -48,8 +25,9 @@ export default function Sidebar() {
 
         {/* Nav */}
         <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
-          {nav.map(({ href, icon: Icon, label }) => {
-            const active = isActive(href);
+          {missionControlNav.map((item) => {
+            const { href, icon: Icon, label, desc } = item;
+            const active = isActive(item);
             return (
               <Link
                 key={href}
@@ -62,7 +40,10 @@ export default function Sidebar() {
                 )}
               >
                 <Icon size={14} />
-                {label}
+                <span className="min-w-0">
+                  <span className="block">{label}</span>
+                  <span className="block text-[9px] font-normal text-zinc-600">{desc}</span>
+                </span>
               </Link>
             );
           })}
@@ -83,16 +64,17 @@ export default function Sidebar() {
       </header>
 
       {/* ── Mobile bottom nav ── */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0d0d0d] border-t border-[#2a2a2a] z-40">
-        <div className="flex items-center h-full overflow-x-auto scrollbar-none px-1">
-          {nav.map(({ href, icon: Icon, label }) => {
-            const active = isActive(href);
+      <nav className={mobileNavShellClassName}>
+        <div className={mobileNavInnerClassName}>
+          {mobileNav.map((item) => {
+            const { href, icon: Icon, label } = item;
+            const active = isActive(item);
             return (
               <Link
                 key={href}
                 href={href}
                 className={cn(
-                  "flex-shrink-0 flex flex-col items-center justify-center gap-1 py-2 px-3 transition-colors min-w-[60px]",
+                  "flex min-w-0 flex-col items-center justify-center gap-1 rounded-md px-1 py-2 text-center transition-colors",
                   active ? "text-emerald-400" : "text-zinc-500 hover:text-zinc-300"
                 )}
               >

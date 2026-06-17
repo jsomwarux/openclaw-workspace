@@ -67,6 +67,26 @@ Task descriptions with links should put each URL on its own line under a short l
 
 `npm run build` must not write to the live `.next` directory while the LaunchAgent is running `next dev`; it uses `NEXT_DIST_DIR=.next-build` for isolated verification builds. If a manual build ever causes `Cannot find module './*.js'` from `.next/server/webpack-runtime.js`, recover with `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next`.
 
+After Slice 1, `/work` is the primary task lane. `/tasks` must redirect to `/work`; the old Kanban board lives at `/legacy/tasks`. Do not include legacy routes like `/tasks` as active aliases for primary lanes, or mobile will show legacy UI while highlighting the redesigned lane.
+
+After Slice 1.1, `/consulting` is the primary Revenue cash-path cockpit, backed by North Star, pipeline, and active task data through `lib/mission-control/revenue.ts` and `/api/revenue`. The old consulting strategy screen lives at `/legacy/consulting`; do not restore it as the primary Revenue lane.
+
+The `/work` lane must expose task status changes directly on mobile rows. Keep Todo/Doing/Done controls visible and backed by `PATCH /api/tasks`; do not hide status changes behind the small colored indicator.
+
+The `/work` lane must sort by task importance before recency: high priority before medium before low, active/problem states before done within a priority tier, then newest updated as the tie-breaker. Priority must be visually encoded with distinct badges/rails so mobile users can scan importance without opening a task.
+
+The `/work` inspection drawer is now an action surface, not a read-only note. Keep ranking explanation, evidence/context, status controls, priority controls, Defer, and Archive together in the drawer, all backed by `PATCH /api/tasks`.
+
+The Command cockpit must include an attention brief, not a placeholder "last seen" block. Keep the `/` brief backed by `lib/mission-control/command-brief.ts`, summarizing top action, latest proof, urgent JT count, revenue pressure, and risk count from current signals.
+
+After Slice 1.4, `/ship` is the primary Ship lane. `/vibe` redirects to `/ship`, and the old Vibe Marketing reference lives at `/legacy/vibe`. Do not restore `/vibe` as the primary Ship surface. The Ship lane should stay focused on app distribution, content shipping, release gates, proof coverage, and blocked/stale work from current Mission Control signals.
+
+After Slice 1.5, `/machine` is the primary Machine lane. `/agents` redirects to `/machine`, and the old Agent Team reference lives at `/legacy/agents`. Do not restore `/agents` as the primary Machine surface. The Machine lane should stay focused on cron health, agent posture, cost pressure, automation risks, and recent system work from current Mission Control signals.
+
+After Slice 1.6, `/evidence` is the primary Evidence lane. `/audit` redirects to `/evidence`, and the old Audit Trail reference lives at `/legacy/audit`. Do not restore `/audit` as the primary Evidence surface. The Evidence lane should stay focused on buyer-readable proof, system receipts, content proof assets, and proof gaps from current proof signals.
+
+After Slice 1.7, `/health` is the primary Health lane. `/monitor` and `/costs` redirect to `/health`, and the old Deployment Monitor and Cost Dashboard references live at `/legacy/monitor` and `/legacy/costs`. Do not restore `/monitor` or `/costs` as primary Health surfaces. The Health lane should stay focused on ops failures, cost pressure, stale risk, and recovery work from current signals and cost data.
+
 ## Architecture Decisions
 
 - **Convex for tasks only** — real-time sync, both JT and Eve can write, persists across sessions

@@ -1,181 +1,233 @@
 "use client";
-import { useEffect, useState, useCallback } from "react";
-import Link from "next/link";
-import { CheckSquare, Calendar, Brain, Users, FileText, ArrowRight, RotateCcw } from "lucide-react";
 
-export default function OverviewPage() {
-  const [tasks, setTasks] = useState<any[]>([]);
-  const [crons, setCrons] = useState<any[]>([]);
-  const [proofs, setProofs] = useState<any[]>([]);
-  const [showRestartConfirm, setShowRestartConfirm] = useState(false);
-  const [restarting, setRestarting] = useState(false);
-  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+import { useState } from "react";
+import { AlertTriangle, ArrowRight, CheckCircle2, CircleDollarSign, RefreshCw } from "lucide-react";
+import { InspectionDrawer } from "@/components/mission-control/InspectionDrawer";
+import { StateBlock } from "@/components/mission-control/StateBlock";
+import { useMissionControlData } from "@/lib/mission-control/hooks";
+import type { Signal } from "@/lib/mission-control/types";
+import { cn, formatRelative } from "@/lib/utils";
 
-  const fetchAll = useCallback(async () => {
-    const [tasksRes, cronsRes, proofsRes] = await Promise.all([
-      fetch("/api/tasks").then(r => r.json()),
-      fetch("/api/cron").then(r => r.json()),
-      fetch("/api/proofs?limit=5").then(r => r.json()),
-    ]);
-    setTasks(tasksRes.tasks ?? []);
-    setCrons(cronsRes.jobs ?? []);
-    setProofs(proofsRes.entries ?? []);
-  }, []);
+function bandClass(signal: Signal) {
+  if (signal.band === "high" || signal.status === "failed" || signal.status === "blocked") {
+    return "border-l-red-400";
+  }
+  if (signal.band === "medium" || signal.status === "stale") return "border-l-amber-400";
+  return "border-l-zinc-600";
+}
 
-  useEffect(() => {
-    fetchAll();
-    const poll = setInterval(fetchAll, 10000);
-    return () => clearInterval(poll);
-  }, [fetchAll]);
+function ActionCard({ signal, onInspect }: { signal: Signal; onInspect: (signal: Signal) => void }) {
+  return (
+    <button
+      onClick={() => onInspect(signal)}
+      className={cn(
+        "w-full rounded-lg border border-[#20262d] border-l-2 bg-[#0f1316] p-3 text-left transition-colors hover:border-[#38414a]",
+        bandClass(signal),
+      )}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded bg-[#16191d] px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[#f0883e]">
+              {signal.status.replace(/-/g, " ")}
+            </span>
+            <span className="text-[10px] uppercase text-zinc-600">{signal.lane}</span>
+          </div>
+          <p className="mt-2 text-sm font-semibold leading-snug text-zinc-100">{signal.title}</p>
+          <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-zinc-500">
+            {signal.context || signal.project || "No context attached yet."}
+          </p>
+        </div>
+        <div className="flex flex-col items-end gap-1">
+          <span className="rounded border border-[#2b333c] bg-[#0b0d0f] px-2 py-1 font-mono text-xs font-semibold text-zinc-200">
+            {signal.score ?? 0}
+          </span>
+          <span className="text-[9px] uppercase text-zinc-600">score</span>
+        </div>
+      </div>
+      <div className="mt-3 flex items-center justify-between text-[10px] text-zinc-600">
+        <span>{signal.project || signal.source}</span>
+        <span className="flex items-center gap-1 text-emerald-400">
+          Inspect <ArrowRight size={10} />
+        </span>
+      </div>
+    </button>
+  );
+}
 
-  const handleRestartGateway = async () => {
-    setShowRestartConfirm(false);
-    setRestarting(true);
-    try {
-      const res = await fetch("/api/gateway/restart", { method: "POST" });
-      const data = await res.json();
-      if (data.success) {
-        setToast({ message: "Gateway restart initiated", type: "success" });
-      } else {
-        setToast({ message: data.error || "Restart failed", type: "error" });
-      }
-    } catch {
-      setToast({ message: "Failed to reach API", type: "error" });
-    } finally {
-      setRestarting(false);
-      setTimeout(() => setToast(null), 4000);
-    }
-  };
+function MiniSignal({ signal, onInspect }: { signal: Signal; onInspect: (signal: Signal) => void }) {
+  return (
+    <button
+      onClick={() => onInspect(signal)}
+      className="w-full rounded-md border border-[#20262d] bg-[#0f1316] p-3 text-left hover:border-[#38414a]"
+    >
+      <div className="flex items-center justify-between gap-2">
+        <p className="truncate text-xs font-medium text-zinc-200">{signal.title}</p>
+        <span className="shrink-0 text-[9px] uppercase text-zinc-600">{signal.source}</span>
+      </div>
+      <p className="mt-1 text-[10px] text-zinc-600">{formatRelative(signal.updatedAt)}</p>
+    </button>
+  );
+}
 
-  const todo = (tasks ?? []).filter(t => t.status === "todo").length;
-  const inProgress = (tasks ?? []).filter(t => t.status === "in-progress").length;
-  const done = (tasks ?? []).filter(t => t.status === "done").length;
-  const failing = crons.filter(j => j.failed).length;
-
-  const stats = [
-    { label: "To Do",           value: todo,          color: "text-zinc-300",   href: "/tasks"    },
-    { label: "In Progress",     value: inProgress,    color: "text-yellow-400", href: "/tasks"    },
-    { label: "Completed",       value: done,          color: "text-emerald-400",href: "/tasks"    },
-    { label: "Cron Jobs",       value: crons.length,  color: "text-zinc-300",   href: "/calendar" },
-    { label: "Failed Jobs",     value: failing,       color: failing > 0 ? "text-red-400" : "text-zinc-500", href: "/calendar" },
-    { label: "Proofs Today",    value: proofs.length, color: "text-zinc-300",   href: "/audit"    },
-  ];
-
-  const quickLinks = [
-    { href: "/tasks",    icon: CheckSquare, label: "Task Board",    desc: "Manage shared task queue" },
-    { href: "/calendar", icon: Calendar,    label: "Schedule",      desc: "Cron jobs and automations" },
-    { href: "/memory",   icon: Brain,       label: "Memory",        desc: "Search Eve's memory" },
-    { href: "/agents",   icon: Users,       label: "Agent Team",    desc: "All agents and their status" },
-    { href: "/audit",    icon: FileText,    label: "Audit Trail",   desc: "Every significant action logged" },
-  ];
+export default function CommandPage() {
+  const { queue, eveHandling, risk, revenue, brief, loading, degraded, lastUpdated, refresh } = useMissionControlData();
+  const [selected, setSelected] = useState<Signal | null>(null);
 
   return (
-    <div className="p-4 sm:p-6 max-w-5xl">
-      <div className="flex items-start justify-between mb-6">
+    <div className="min-h-screen bg-[#0a0b0d] p-4 sm:p-6">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-zinc-100">Mission Control</h1>
-          <p className="text-xs text-zinc-500 mt-1">
-            Eve & JT — {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f0883e]">Command</p>
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-zinc-100">Mission Control cockpit</h1>
+          <p className="mt-1 text-xs text-zinc-500">
+            Decision queue, money path, Eve activity, and machine risk from current data.
           </p>
         </div>
         <button
-          onClick={() => setShowRestartConfirm(true)}
-          disabled={restarting}
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-red-600/80 hover:bg-red-600 disabled:opacity-50 text-white text-xs rounded font-medium transition-colors active:scale-[.97]"
+          onClick={refresh}
+          className="flex w-fit items-center gap-2 rounded-md border border-[#20262d] bg-[#0f1316] px-3 py-2 text-xs text-zinc-300 hover:border-[#38414a]"
         >
-          <RotateCcw size={12} className={restarting ? "animate-spin" : ""} />
-          {restarting ? "Restarting…" : "Restart Gateway"}
+          <RefreshCw size={13} className={loading ? "animate-spin" : ""} />
+          Refresh
         </button>
       </div>
 
-      {/* Stats grid — 2 cols on mobile, 3 on sm+ */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-        {stats.map(s => (
-          <Link
-            key={s.label}
-            href={s.href}
-            className="bg-[#111] border border-[#2a2a2a] rounded-lg p-4 hover:border-[#3a3a3a] transition-colors active:scale-[.98]"
-          >
-            <p className={`text-2xl font-bold font-mono ${s.color}`}>{s.value}</p>
-            <p className="text-[10px] text-zinc-500 mt-1">{s.label}</p>
-          </Link>
-        ))}
-      </div>
+      {degraded.length > 0 && (
+        <StateBlock
+          kind="stale"
+          title="Some data routes are degraded"
+          detail={`Showing cached or partial data for: ${degraded.join(", ")}.`}
+          className="mb-4"
+        />
+      )}
 
-      {/* Activity + Quick links — stacked on mobile, 2-col on sm+ */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {/* Active tasks */}
-        <div>
-          <div className="flex items-center justify-between mb-3">
-            <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Active Tasks</p>
-            <Link href="/tasks" className="text-[10px] text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
-              View all <ArrowRight size={10} />
-            </Link>
+      <section className="mb-4 grid gap-3 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
+        <div className="rounded-lg border border-emerald-900/40 bg-emerald-950/10 p-4">
+          <div className="flex items-center gap-2 text-emerald-300">
+            <CircleDollarSign size={16} />
+            <span className="font-mono text-[10px] uppercase tracking-wider">Revenue cockpit</span>
+          </div>
+          <p className="mt-3 text-2xl font-semibold text-zinc-100">{revenue.active}</p>
+          <p className="text-[11px] text-zinc-500">active revenue-path tasks</p>
+        </div>
+        <div className="rounded-lg border border-[#20262d] bg-[#0f1316] p-4">
+          <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">High priority</p>
+          <p className="mt-3 text-2xl font-semibold text-zinc-100">{revenue.high}</p>
+          <p className="text-[11px] text-zinc-500">revenue/job items</p>
+        </div>
+        <div className="rounded-lg border border-[#20262d] bg-[#0f1316] p-4">
+          <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">Completed</p>
+          <p className="mt-3 text-2xl font-semibold text-zinc-100">{revenue.done}</p>
+          <p className="text-[11px] text-zinc-500">closed revenue-path tasks</p>
+        </div>
+        <div className="rounded-lg border border-[#20262d] bg-[#0f1316] p-4">
+          <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">Cost today</p>
+          <p className="mt-3 text-2xl font-semibold text-zinc-100">
+            {revenue.costToday == null ? "unknown" : `$${Number(revenue.costToday).toFixed(2)}`}
+          </p>
+          <p className="text-[11px] text-zinc-500">{revenue.costAlerts.length} cost alerts</p>
+        </div>
+      </section>
+
+      <div className="grid gap-4 xl:grid-cols-[1fr_360px]">
+        <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
+          <div className="mb-3 flex items-center justify-between">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-wider text-[#f0883e]">Needs You Now</p>
+              <p className="text-[11px] text-zinc-600">Ranked JT-owned decisions, capped at 7.</p>
+            </div>
+            <span className="rounded bg-[#16191d] px-2 py-1 font-mono text-[10px] text-zinc-500">{queue.length}/7</span>
           </div>
           <div className="space-y-2">
-            {(tasks ?? []).filter(t => t.status !== "done").slice(0, 5).map(t => (
-              <div key={t._id} className="bg-[#111] border border-[#2a2a2a] rounded-md p-3">
-                <div className="flex items-center justify-between gap-2">
-                  <p className="text-xs text-zinc-300 truncate">{t.title}</p>
-                  <span className={`text-[9px] flex-shrink-0 ${t.status === "in-progress" ? "text-yellow-400" : "text-zinc-500"}`}>
-                    {t.status}
-                  </span>
-                </div>
-                {t.project && <p className="text-[9px] text-zinc-600 mt-0.5">{t.project}</p>}
-              </div>
-            ))}
-            {(tasks ?? []).filter(t => t.status !== "done").length === 0 && (
-              <p className="text-[10px] text-zinc-600 py-4 text-center">No active tasks</p>
+            {loading && queue.length === 0 ? (
+              <StateBlock kind="loading" title="Ranking current work" detail="Pulling tasks, crons, proofs, agents, and costs." />
+            ) : queue.length === 0 ? (
+              <StateBlock kind="empty" title="Queue clear" detail="Nothing currently needs JT. Eve-owned work stays out of this queue." />
+            ) : (
+              queue.map((signal) => <ActionCard key={signal.id} signal={signal} onInspect={setSelected} />)
             )}
           </div>
-        </div>
+        </section>
 
-        {/* Quick links */}
-        <div>
-          <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3">Quick Access</p>
-          <div className="space-y-2">
-            {quickLinks.map(({ href, icon: Icon, label, desc }) => (
-              <Link
-                key={href}
-                href={href}
-                className="flex items-center gap-3 bg-[#111] border border-[#2a2a2a] rounded-md p-3 hover:border-[#3a3a3a] hover:bg-[#161616] transition-all active:scale-[.99] group"
+        <aside className="space-y-4">
+          <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
+            <div className="mb-3 flex items-center gap-2">
+              <CheckCircle2 size={14} className="text-purple-300" />
+              <p className="font-mono text-[10px] uppercase tracking-wider text-purple-300">Eve Is Handling</p>
+            </div>
+            <div className="space-y-2">
+              {eveHandling.length === 0 ? (
+                <StateBlock kind="empty" title="No Eve-owned work in flight" />
+              ) : (
+                eveHandling.map((signal) => <MiniSignal key={signal.id} signal={signal} onInspect={setSelected} />)
+              )}
+            </div>
+          </section>
+
+          <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
+            <div className="mb-3 flex items-center gap-2">
+              <AlertTriangle size={14} className="text-red-300" />
+              <p className="font-mono text-[10px] uppercase tracking-wider text-red-300">Risk & Drift</p>
+            </div>
+            <div className="space-y-2">
+              {risk.length === 0 ? (
+                <StateBlock kind="empty" title="No obvious drift" detail="Failed, stale, and blocked signals are clear." />
+              ) : (
+                risk.map((signal) => <MiniSignal key={signal.id} signal={signal} onInspect={setSelected} />)
+              )}
+            </div>
+          </section>
+
+          <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
+            <p className="font-mono text-[10px] uppercase tracking-wider text-emerald-300">Command Brief</p>
+            <p className="mt-2 text-sm font-semibold leading-snug text-zinc-100">{brief.headline}</p>
+            <div className="mt-3 space-y-3 text-xs">
+              <button
+                type="button"
+                onClick={() => brief.topAction && setSelected(brief.topAction)}
+                disabled={!brief.topAction}
+                className="w-full rounded-md border border-[#20262d] bg-[#0f1316] p-3 text-left disabled:cursor-default disabled:opacity-60"
               >
-                <Icon size={14} className="text-zinc-500 group-hover:text-emerald-400 transition-colors flex-shrink-0" />
-                <div className="min-w-0">
-                  <p className="text-xs text-zinc-300 font-medium">{label}</p>
-                  <p className="text-[10px] text-zinc-600">{desc}</p>
-                </div>
-                <ArrowRight size={10} className="text-zinc-700 group-hover:text-zinc-400 ml-auto flex-shrink-0 transition-colors" />
-              </Link>
-            ))}
-          </div>
-        </div>
+                <span className="block text-[10px] font-semibold uppercase tracking-wider text-zinc-600">Top action</span>
+                <span className="mt-1 block line-clamp-2 text-zinc-300">
+                  {brief.topAction?.title ?? "No JT action pressure."}
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => brief.latestProof && setSelected(brief.latestProof)}
+                disabled={!brief.latestProof}
+                className="w-full rounded-md border border-[#20262d] bg-[#0f1316] p-3 text-left disabled:cursor-default disabled:opacity-60"
+              >
+                <span className="block text-[10px] font-semibold uppercase tracking-wider text-zinc-600">Latest proof</span>
+                <span className="mt-1 block line-clamp-2 text-zinc-300">
+                  {brief.latestProof?.title ?? "No proof signal loaded yet."}
+                </span>
+              </button>
+            </div>
+            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+              <div className="rounded-md border border-[#20262d] bg-[#0f1316] p-2">
+                <p className="text-sm font-semibold text-zinc-100">{brief.urgentJtCount}</p>
+                <p className="text-[9px] uppercase text-zinc-600">urgent</p>
+              </div>
+              <div className="rounded-md border border-[#20262d] bg-[#0f1316] p-2">
+                <p className="text-sm font-semibold text-zinc-100">{brief.revenuePressure}</p>
+                <p className="text-[9px] uppercase text-zinc-600">revenue</p>
+              </div>
+              <div className="rounded-md border border-[#20262d] bg-[#0f1316] p-2">
+                <p className="text-sm font-semibold text-zinc-100">{brief.riskCount}</p>
+                <p className="text-[9px] uppercase text-zinc-600">risk</p>
+              </div>
+            </div>
+            <p className="mt-3 text-[11px] leading-relaxed text-zinc-600">
+              {lastUpdated ? `Refreshed ${formatRelative(lastUpdated)}.` : "Waiting for first refresh."}
+            </p>
+          </section>
+        </aside>
       </div>
 
-      {/* Gateway Restart Confirmation */}
-      {showRestartConfirm && (
-        <div className="fixed inset-0 bg-black/70 z-50 flex items-end sm:items-center justify-center" onClick={() => setShowRestartConfirm(false)}>
-          <div onClick={e => e.stopPropagation()} className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-t-xl sm:rounded-lg p-5 w-full sm:max-w-sm space-y-4">
-            <h2 className="text-sm font-semibold text-zinc-200">Restart Gateway?</h2>
-            <p className="text-xs text-zinc-400">The assistant will be briefly offline.</p>
-            <div className="flex justify-end gap-2">
-              <button onClick={() => setShowRestartConfirm(false)} className="px-3 py-2 text-xs text-zinc-400 hover:text-zinc-200 transition-colors">Cancel</button>
-              <button onClick={handleRestartGateway} className="px-4 py-2 bg-red-600 hover:bg-red-500 text-white text-xs rounded font-medium transition-colors">Restart</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Toast */}
-      {toast && (
-        <div className={`fixed bottom-20 md:bottom-6 right-6 z-50 px-4 py-2.5 rounded-lg text-xs font-medium border ${
-          toast.type === "success"
-            ? "bg-emerald-950/90 text-emerald-300 border-emerald-800"
-            : "bg-red-950/90 text-red-300 border-red-800"
-        }`}>
-          {toast.message}
-        </div>
-      )}
+      <InspectionDrawer signal={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }

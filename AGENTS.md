@@ -104,6 +104,9 @@ Substantive deliverables → upload to Drive immediately. Drive link in reply. S
 ## New Prompt Quality Rule
 New cron/agent prompts must have all 4 before deploying: (1) Task Context — role defined, (2) Detailed Rules — constraints + what NOT to do, (3) Immediate Task — clear action verbs, (4) Output Formatting — exact sections + file path. Missing any = not ready. Full checklist: `skills/prompt-library/SKILL.md`.
 
+## External Strategy Prompt Context Rule
+For Claude Fable / external strategy prompts, assume the model knows none of JT's project specifics. If asking it to evaluate named apps, projects, clients, or agents, include a compact primer for each: what it is, current status, revenue/proof state, best growth hypothesis, constraints, and risks. Never ask an external model to allocate attention across names only.
+
 ## Task Descriptions Must Be Actionable
 Every MC task must include: (1) specific first action (URL, command, file path), (2) why it matters, (3) what done looks like. No task that just restates the title. Can't write a concrete first action → flag to JT, don't create it yet.
 

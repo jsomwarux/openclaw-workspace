@@ -147,7 +147,36 @@ CANONICAL_NICHE_LANES = {
 }
 
 POSTED_LOG = ROOT / "memory" / "content" / "posted-log.jsonl"
+AI_OPS_TEARDOWN_DIR = ROOT / "memory" / "content" / "bank"
 COOLDOWN_DAYS = 45
+
+GENERIC_TEARDOWN_TITLE_WORDS = {
+    "AI",
+    "Ops",
+    "Teardown",
+    "Property",
+    "Insurance",
+    "Expiration",
+    "Rent",
+    "Delinquency",
+    "Readiness",
+    "Construction",
+    "Field",
+    "Note",
+    "Family",
+    "Office",
+    "Cash",
+    "Timing",
+    "Approval",
+    "Queue",
+    "Lease",
+    "Renewal",
+    "Deadline",
+    "Wholesale",
+    "Order",
+    "Intake",
+    "Desk",
+}
 
 TOPIC_CLUSTERS = {
     "agentforce-boundary-escalation": [
@@ -241,6 +270,72 @@ def check_linkedin_stale_patterns(path: Path, text: str) -> list[str]:
         for match in pattern.finditer(text):
             excerpt = " ".join(match.group(0).split())[:160]
             problems.append(f"{rel(path)}: LinkedIn stale pattern: {label} -> {excerpt!r}")
+    return problems
+
+
+def path_date(path: Path) -> date | None:
+    match = re.search(r"(\d{4}-\d{2}-\d{2})", str(path))
+    return parse_date(match.group(1)) if match else None
+
+
+def current_teardown_slug_words(path: Path) -> set[str]:
+    name = path.stem
+    name = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", name)
+    name = re.sub(r"^ai-ops-teardown-", "", name)
+    return {part.lower() for part in re.split(r"[^A-Za-z0-9]+", name) if len(part) >= 3}
+
+
+def extract_prior_teardown_company_names(current_path: Path) -> set[str]:
+    """Find named companies from earlier AI Ops Teardowns.
+
+    Previous teardown companies are exclusion-only context. Generic workflow
+    titles such as "Property Lease Renewal" are intentionally ignored.
+    """
+    current_date = path_date(current_path)
+    current_slug_words = current_teardown_slug_words(current_path)
+    names: set[str] = set()
+
+    for prior_path in AI_OPS_TEARDOWN_DIR.glob("*/ai-ops-teardown-*.md"):
+        if prior_path.resolve() == current_path.resolve():
+            continue
+        prior_date = path_date(prior_path)
+        if current_date and prior_date and prior_date >= current_date:
+            continue
+        try:
+            prior_text = read(prior_path)
+        except FileNotFoundError:
+            continue
+
+        candidates: set[str] = set()
+        heading = prior_text.splitlines()[0] if prior_text.splitlines() else ""
+        heading_match = re.search(r"^#\s+AI Ops Teardown\s*[-–]\s+([A-Z][A-Za-z0-9&.'-]+)", heading)
+        if heading_match:
+            candidates.add(heading_match.group(1))
+        for signal_match in re.finditer(r"\bCurrent signal:\s*([A-Z][A-Za-z0-9&.'-]+)\b", prior_text):
+            candidates.add(signal_match.group(1))
+
+        for candidate in candidates:
+            clean = candidate.strip(" .,:;()[]{}")
+            if not clean or clean in GENERIC_TEARDOWN_TITLE_WORDS:
+                continue
+            if clean.lower() in current_slug_words:
+                continue
+            names.add(clean)
+    return names
+
+
+def check_ai_ops_teardown_prior_company_references(path: Path, text: str) -> list[str]:
+    if "ai-ops-teardown" not in path.name and "AI Ops Teardown" not in text:
+        return []
+
+    problems: list[str] = []
+    for company in sorted(extract_prior_teardown_company_names(path), key=str.lower):
+        pattern = re.compile(rf"\b{re.escape(company)}\b", re.I)
+        for match in pattern.finditer(text):
+            excerpt = " ".join(text[max(0, match.start() - 80): match.end() + 80].split())[:180]
+            problems.append(
+                f"{rel(path)}: prior AI Ops Teardown company mentioned: {company} -> {excerpt!r}"
+            )
     return problems
 
 
@@ -344,6 +439,7 @@ def check_weekly(path: Path) -> list[str]:
     if len(text.encode("utf-8")) < WEEKLY_MIN_BYTES:
         problems.append(f"{rel(path)}: weekly artifact too small to be a deliverable ({len(text.encode('utf-8'))} bytes)")
     problems.extend(check_linkedin_stale_patterns(path, text))
+    problems.extend(check_ai_ops_teardown_prior_company_references(path, text))
     for heading in WEEKLY_REQUIRED:
         if heading not in text:
             problems.append(f"{rel(path)}: missing weekly gate section: {heading}")
@@ -541,6 +637,7 @@ def main() -> int:
         text = read(path)
         problems.extend(check_common(path, text))
         problems.extend(check_linkedin_stale_patterns(path, text))
+        problems.extend(check_ai_ops_teardown_prior_company_references(path, text))
     for item in args.news_hook:
         problems.extend(check_news_hook(Path(item)))
     if args.check_notion_script:

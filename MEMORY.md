@@ -60,13 +60,13 @@
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs.
 - Approved Sonnet content model is allowlisted; Moonshot fallback blocked. Phase 2B: watchdog/restart hardened; n8n + Mission Control loopback-bound.
-- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`.
+- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. 2026-06-16 Slice 1.1: mobile nav centered/safe-area-aware; `/consulting` is live Revenue cash-path cockpit; legacy strategy page at `/legacy/consulting`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Phase 7: old night jobs disabled, replaced by 11PM `Night Autonomy Agent` (`f146d8b8`). Current baseline: 49 enabled jobs.
+- Phase 7: old night jobs disabled, replaced by 11PM `Night Autonomy Agent` (`f146d8b8`). Current baseline: 45 enabled jobs after 2026-06-16 dynasty-content cancellation.
 - Digest queue: `memory/digest-queue.md`; reminders/FYIs append there. Cron volume guard required; avoid `deleteAfterRun:true`.
-- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json`. 2026-06-15 cron: 49 enabled, 0 red rows, volume guard green; duplicate `lossless-claw` warning persists.
+- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json`. 2026-06-16 cron: 45 enabled, volume guard green; duplicate `lossless-claw` warning persists. Disabled dynasty-content crons: `dynasty-replies-gen`, `reddit-daily-gen`, `Sports GM Weekly Market Report`, `Daily DynastyJig Niche-Growth X Post Pack`.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
@@ -80,6 +80,7 @@
 ## Integrity / Fabrication Corrections
 - Never fabricate; verify outreach, URLs, deployments, Drive links, and task closure with tool/script evidence.
 - JT corrections require Mistakes Log/rule updates with regression checks. Compacted history: use `lcm_grep`, `lcm_describe`, `lcm_expand_query` before exact claims.
+- External strategy prompts, including Claude Fable prompts, must assume zero prior JT-project knowledge; any named app/project/client being evaluated needs a compact primer before asking the model to decide.
 - Detail: `docs/memory/MEMORY-full.md#integrity--fabrication-corrections`.
 
 ## Setup State

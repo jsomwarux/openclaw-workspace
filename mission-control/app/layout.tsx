@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { ConvexClientProvider } from "./ConvexClientProvider";
+import { mobileMainClassName } from "@/lib/mission-control/nav-layout";
 
 export const metadata: Metadata = {
   title: "Mission Control",
@@ -15,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ConvexClientProvider>
           <Sidebar />
           {/* pt-12 for mobile top bar, pb-16 for mobile bottom nav; md: uses sidebar instead */}
-          <main className="pt-12 pb-16 md:pt-0 md:pb-0 md:ml-52 min-h-screen">
+          <main className={mobileMainClassName}>
             {children}
           </main>
         </ConvexClientProvider>

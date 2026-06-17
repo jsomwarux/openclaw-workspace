@@ -1,18 +1,20 @@
 # App Marketing OS — Performance Analysis
 
-Last updated: 2026-06-15
+Last updated: 2026-06-16
 
 ## glow-index / tiktok
 
-Rows: 2
-Baseline views/impressions: 401.0
+Rows: 3
+Baseline views/impressions: 354.7
 Best: 4 AIs flagged the ingredient in your clean skincare that's actually irritating (492 views/impressions)
 
 ### Item Labels + Features
-- **neutral** — 492: 4 AIs flagged the ingredient in your clean skincare that's actually irritating  
+- **promising** — 492: 4 AIs flagged the ingredient in your clean skincare that's actually irritating  
   - features: hook=specific_number_unexpected_context; topic=unclear; format=slideshow; specificity=high; proof=model_names; cta=no_cta; risk=clean
 - **neutral** — 310: 5 ingredients dermatologists actually avoid  
   - features: hook=specific_number_unexpected_context; topic=unclear; format=slideshow; specificity=medium; proof=none; cta=no_cta; risk=clean
+- **neutral** — 262: The Ordinary, ranked best to worst by 4 AIs. Some picks will surprise you.  
+  - features: hook=specific_number_unexpected_context; topic=unclear; format=slideshow; specificity=high; proof=model_names,live_ranking_data; cta=no_cta; risk=clean
 
 ### Winning Feature Pattern
 - No winner feature pattern yet.
@@ -198,8 +200,8 @@ Updated top 10:
 
 ## vista / tiktok
 
-Rows: 11
-Baseline views/impressions: 160.0
+Rows: 12
+Baseline views/impressions: 158.8
 Best: IMDb gave Midsommar a 7.1. that's the wrong number. (1114 views/impressions)
 
 ### Item Labels + Features
@@ -209,6 +211,8 @@ Best: IMDb gave Midsommar a 7.1. that's the wrong number. (1114 views/impression
   - features: hook=unclear; topic=rating_precision; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
 - **neutral** — 193: Me and my boyfriend are 34% compatible on Vista. We're doing couples counseling now.  
   - features: hook=specific_number_unexpected_context; topic=relationship_compatibility; format=slideshow; specificity=medium; proof=specific_user_scenario; cta=no_cta; risk=fake_social_claim_check
+- **neutral** — 145: Rating every film I watched this year on VISTA  
+  - features: hook=unclear; topic=rating_precision; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
 - **loser** — 0: My best friend and I are 91% compatible on Vista. I'm starting to think we share a brain.  
   - features: hook=specific_number_unexpected_context; topic=relationship_compatibility; format=slideshow; specificity=medium; proof=specific_user_scenario; cta=no_cta; risk=fake_social_claim_check
 - **loser** — 0:   
@@ -221,8 +225,6 @@ Best: IMDb gave Midsommar a 7.1. that's the wrong number. (1114 views/impression
   - features: hook=unclear; topic=rating_precision; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
 - **loser** — 0: unknown Vista TikTok post discovered by ReelFarm  
   - features: hook=one_liner_gut_punch; topic=unclear; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
-- **loser** — 0:   
-  - features: hook=unclear; topic=unclear; format=slideshow; specificity=low; proof=none; cta=no_cta; risk=clean
 
 ### Winning Feature Pattern
 - topic:rating_precision (2)

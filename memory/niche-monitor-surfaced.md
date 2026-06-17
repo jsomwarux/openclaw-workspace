@@ -67,3 +67,5 @@
 
 2026-06-12 salesforce-m3ter-agentforce-consumption-billing — Salesforce signed a definitive agreement to acquire m3ter to add high-volume metering/rating and native consumption and outcome-based billing to Agentforce Revenue Management, a concrete shift in Agentforce monetization architecture.
 2026-06-12 trimble-document-crunch-construction-risk-ai — Document Crunch, a Trimble company, launched a project-level AI risk intelligence platform with an agentic Project Assist layer, deployed across 10,000+ projects and $350B in annual construction volume.
+2026-06-16 salesforce-fin-agentforce-acquisition — Salesforce agreed to buy autonomous AI agent platform Fin for about $3.6B to strengthen Agentforce customer-service automation.
+2026-06-16 construction-ai-agent-data-access-conflict — ENR reported construction platforms are fighting over data access for AI agents, including Procore blocking Trunk Tools API access.

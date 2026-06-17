@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mission Control Implementation Notes</title>
+    <style>
+      body { margin: 0; background: #0a0b0d; color: #e4e4e7; font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+      main { max-width: 920px; margin: 0 auto; padding: 32px 20px; }
+      section { border: 1px solid #20262d; background: #0d1014; border-radius: 8px; padding: 18px; margin: 14px 0; }
+      h1 { font-size: 22px; margin: 0 0 12px; }
+      h2 { font-size: 13px; color: #34d399; text-transform: uppercase; letter-spacing: .12em; margin: 0 0 10px; }
+      ul { margin: 0; padding-left: 20px; }
+      code { color: #93c5fd; }
+      .summary { border-color: #064e3b; background: #06251f; }
+      .muted { color: #a1a1aa; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Mission Control Slice 1.1 Notes</h1>
+      <section class="summary">
+        <h2>Summary</h2>
+        <p><strong>Status:</strong> complete · <strong>Date:</strong> 2026-06-16 · <strong>Task:</strong> mobile shell polish and Revenue lane.</p>
+        <ul>
+          <li>Mobile nav now behaves like centered app chrome, with safe-area padding and a capped rail width.</li>
+          <li>Revenue now routes attention closest to consulting/job/app cash decisions with live local data.</li>
+          <li>Work now exposes explicit Todo/Doing/Done controls on mobile task rows instead of hiding status changes behind the colored dot.</li>
+          <li>Work now sorts tasks by priority first and uses visible priority color treatment.</li>
+          <li>Work task inspection now has real actions: ranking explanation, status controls, priority controls, defer, and archive.</li>
+          <li>Command now has a real attention brief instead of the static <code>Since Last Look</code> placeholder.</li>
+          <li>No backend/schema rewrite for this slice; use current local APIs/files and client adapters.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Design Decisions</h2>
+        <ul>
+          <li>Keep five mobile nav items visible: Command, Work, Revenue, Ship, Machine.</li>
+          <li>Tailwind must scan <code>lib/</code> because Mission Control now keeps shared class constants there.</li>
+          <li>Move legacy consulting strategy content out of the primary Revenue lane rather than deleting it.</li>
+          <li>Status changes in the redesigned Work lane must be visible controls, not implied dot interactions.</li>
+          <li>Newest-updated order is not a good Work default; priority and active/problem states come before recency.</li>
+          <li>The drawer should explain why a task is ranked and let JT act without leaving the Work lane.</li>
+          <li>The Command homepage should compress live attention state: top action, latest proof, urgent JT count, revenue pressure, and risk count.</li>
+          <li>Ship should be a real <code>/ship</code> lane, not the old <code>/vibe</code> page with a new nav label.</li>
+          <li>Machine should be a real <code>/machine</code> lane, not the old <code>/agents</code> page with a new nav label.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Deviations</h2>
+        <p class="muted">Kept the old consulting strategy page under <code>/legacy/consulting</code> so the primary <code>/consulting</code> lane can become the cash-path cockpit without deleting prior work.</p>
+        <p class="muted">Kept a lightweight legacy Vibe reference under <code>/legacy/vibe</code>; <code>/vibe</code> now redirects to <code>/ship</code> so stale links cannot show the old marketing-system page as the active Ship lane.</p>
+        <p class="muted">Kept the old Agent Team screen under <code>/legacy/agents</code>; <code>/agents</code> now redirects to <code>/machine</code> so stale links cannot show the agent directory as the active Machine lane.</p>
+        <p class="muted">Kept the old Audit Trail screen under <code>/legacy/audit</code>; <code>/audit</code> now redirects to <code>/evidence</code> so stale links cannot show the old proof log as the active Evidence lane.</p>
+        <p class="muted">Kept the old Deployment Monitor and Cost Dashboard under <code>/legacy/monitor</code> and <code>/legacy/costs</code>; <code>/monitor</code> and <code>/costs</code> now redirect to <code>/health</code> so stale links cannot show placeholders as the active Health lane.</p>
+      </section>
+      <section>
+        <h2>Tradeoffs</h2>
+        <ul>
+          <li>Static/client aggregation is faster and safer for Slice 1.1; a shared <code>/api/signals</code> aggregator remains deferred.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Open Questions</h2>
+        <p class="muted">None blocking.</p>
+      </section>
+      <section>
+        <h2>Files Changed</h2>
+        <ul>
+          <li><code>app/layout.tsx</code></li>
+          <li><code>components/Sidebar.tsx</code></li>
+          <li><code>lib/mission-control/nav-layout.ts</code></li>
+          <li><code>lib/mission-control/nav-layout.test.ts</code></li>
+          <li><code>lib/mission-control/tailwind-content.test.ts</code></li>
+          <li><code>lib/mission-control/revenue.ts</code></li>
+          <li><code>lib/mission-control/revenue.test.ts</code></li>
+          <li><code>lib/mission-control/work-status.ts</code></li>
+          <li><code>lib/mission-control/work-status.test.ts</code></li>
+          <li><code>lib/mission-control/work-priority.ts</code></li>
+          <li><code>lib/mission-control/work-priority.test.ts</code></li>
+          <li><code>lib/mission-control/work-actions.ts</code></li>
+          <li><code>lib/mission-control/work-actions.test.ts</code></li>
+          <li><code>lib/mission-control/command-brief.ts</code></li>
+          <li><code>lib/mission-control/command-brief.test.ts</code></li>
+          <li><code>lib/mission-control/ship.ts</code></li>
+          <li><code>lib/mission-control/ship.test.ts</code></li>
+          <li><code>lib/mission-control/machine.ts</code></li>
+          <li><code>lib/mission-control/machine.test.ts</code></li>
+          <li><code>lib/mission-control/evidence.ts</code></li>
+          <li><code>lib/mission-control/evidence.test.ts</code></li>
+          <li><code>lib/mission-control/health.ts</code></li>
+          <li><code>lib/mission-control/health.test.ts</code></li>
+          <li><code>app/api/revenue/route.ts</code></li>
+          <li><code>app/page.tsx</code></li>
+          <li><code>app/work/page.tsx</code></li>
+          <li><code>app/consulting/page.tsx</code></li>
+          <li><code>app/ship/page.tsx</code></li>
+          <li><code>app/machine/page.tsx</code></li>
+          <li><code>app/evidence/page.tsx</code></li>
+          <li><code>app/health/page.tsx</code></li>
+          <li><code>app/audit/page.tsx</code></li>
+          <li><code>app/monitor/page.tsx</code></li>
+          <li><code>app/costs/page.tsx</code></li>
+          <li><code>app/agents/page.tsx</code></li>
+          <li><code>app/vibe/page.tsx</code></li>
+          <li><code>app/legacy/consulting/page.tsx</code></li>
+          <li><code>app/legacy/vibe/page.tsx</code></li>
+          <li><code>app/legacy/agents/page.tsx</code></li>
+          <li><code>app/legacy/audit/page.tsx</code></li>
+          <li><code>app/legacy/monitor/page.tsx</code></li>
+          <li><code>app/legacy/costs/page.tsx</code></li>
+          <li><code>components/mission-control/RevenueTaskRails.tsx</code></li>
+          <li><code>tailwind.config.ts</code></li>
+          <li><code>tasks/todo.md</code></li>
+          <li><code>tasks/implementation-notes.html</code></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Verification</h2>
+        <ul>
+          <li><code>bun test lib/mission-control/nav-layout.test.ts lib/mission-control/tailwind-content.test.ts lib/mission-control/routes.test.ts</code> passed.</li>
+          <li><code>bun test lib/mission-control/*.test.ts</code> passed with 44 tests and 132 assertions.</li>
+          <li><code>bunx tsc --noEmit</code> passed.</li>
+          <li><code>NEXT_DIST_DIR=.next-build bun run build</code> passed.</li>
+          <li><code>/</code> returned 200 with <code>Command Brief</code> rendered.</li>
+          <li><code>/consulting</code> returned 200 with live cash-path values; <code>/legacy/consulting</code> returned 200 with the old strategy page.</li>
+          <li><code>/ship</code> returned 200 with <code>Ship cockpit</code>, app distribution, content queue, and release gates; <code>/vibe</code> returned 307 to <code>/ship</code>; <code>/legacy/vibe</code> returned 200.</li>
+          <li><code>/machine</code> returned 200 with <code>System health cockpit</code>, cron health, and agent posture; <code>/agents</code> returned 307 to <code>/machine</code>; <code>/legacy/agents</code> returned 200.</li>
+          <li><code>/evidence</code> returned 200 with <code>Proof ledger</code>, buyer proof, and proof gaps; <code>/audit</code> returned 307 to <code>/evidence</code>; <code>/legacy/audit</code> returned 200.</li>
+          <li><code>/health</code> returned 200 with <code>Ops health cockpit</code>, ops failures, cost pressure, stale risk, and recovery work; <code>/monitor</code> and <code>/costs</code> returned 307 to <code>/health</code>; <code>/legacy/monitor</code> and <code>/legacy/costs</code> returned 200.</li>
+          <li><code>/work</code> returned 200 with Todo/Doing/Done controls, and a temporary task create/update/delete check verified <code>PATCH /api/tasks</code>.</li>
+          <li>A temporary task verified drawer action PATCH paths for priority change, defer, archive, and delete cleanup.</li>
+          <li><code>/api/tasks</code> spot-check confirmed high-priority tasks now lead the intended Work order.</li>
+          <li>Mobile screenshot captured at <code>/tmp/mission-control-screens/work-mobile-centered-nav-v2.png</code>.</li>
+          <li>Status-control screenshot captured at <code>/tmp/mission-control-screens/work-mobile-status-actions.png</code>.</li>
+          <li>Priority-sorted screenshot captured at <code>/tmp/mission-control-screens/work-mobile-priority-sorted.png</code>.</li>
+          <li>Drawer action screenshot captured at <code>/tmp/mission-control-screens/work-mobile-drawer-actions.png</code>.</li>
+          <li>Command brief screenshot captured at <code>/tmp/mission-control-screens/command-mobile-brief.png</code>.</li>
+          <li>Ship cockpit screenshot captured at <code>/tmp/mission-control-screens/ship-mobile-cockpit-final.png</code>.</li>
+          <li>Machine cockpit screenshot captured at <code>/tmp/mission-control-screens/machine-mobile-cockpit.png</code>.</li>
+          <li>Evidence ledger screenshot captured at <code>/tmp/mission-control-screens/evidence-mobile-ledger.png</code>.</li>
+          <li>Health cockpit screenshot captured at <code>/tmp/mission-control-screens/health-mobile-cockpit.png</code>.</li>
+          <li>Revenue screenshots captured at <code>/tmp/mission-control-screens/revenue-mobile-final.png</code> and <code>/tmp/mission-control-screens/revenue-desktop-final.png</code>.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

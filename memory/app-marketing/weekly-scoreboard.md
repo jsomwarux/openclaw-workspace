@@ -152,6 +152,29 @@ Every weekly review ends with exactly one of these:
 - `SEO_FIRST`: app should get page work instead of social volume this week.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-06-16
+
+### vista / tiktok
+- Posts/results logged: 1
+- Views/impressions: 145
+- Best item: Rating every film I watched this year on VISTA (145 views/impressions)
+
+**Best overall:** vista / tiktok — Rating every film I watched this year on VISTA (145 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
+## Metrics Summary — Week of 2026-06-15
+
+### glow-index / tiktok
+- Posts/results logged: 1
+- Views/impressions: 262
+- Engagement: likes 2, comments 0, saves 0, reposts 0
+- Best item: The Ordinary, ranked best to worst by 4 AIs. Some picks will surprise you. (262 views/impressions)
+
+**Best overall:** glow-index / tiktok — The Ordinary, ranked best to worst by 4 AIs. Some picks will surprise you. (262 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-06-11
 
 ### glow-index / tiktok
@@ -176,6 +199,34 @@ The intersection of AI and crypto is going (40 views/impressions)
 **Best overall:** nash-satoshi / x — Mastercard using crypto to securely verify AI identity on the front end and to settle transactions on the back end through stablecoins. 
 
 The intersection of AI and crypto is going (40 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
+## Metrics Summary — Week of 2026-06-09
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 1
+- Best item: glow-index Search Console queries 2026-06-09 to 2026-06-15 (1 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 1
+- Web depth: active users 0, pageviews 1, events 2
+- Best item: glow-index GA4 web traffic 2026-06-09 to 2026-06-15 (1 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-09 to 2026-06-15 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 37
+- Web depth: active users 9, pageviews 121, events 384
+- Best item: nash-satoshi GA4 web traffic 2026-06-09 to 2026-06-15 (37 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-06-09 to 2026-06-15 (37 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
@@ -889,12 +940,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 32
+- Posts/results logged: 33
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 32
+- Posts/results logged: 33
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1408,7 +1459,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-06-15_
+_Last updated: 2026-06-16_
 
 <!-- METRICS_SUMMARY_END -->
 

@@ -32,3 +32,10 @@
 - Outputs: `memory/sports-gm/market-snapshots/2026-06-02.csv`, `memory/sports-gm/reports/weekly-gm-report-2026-06-02.md`, `memory/sports-gm/candidates/2026-06-02.csv`, `memory/content/bank/2026-06-02/dynasty-gm-automated-market-posts.md`.
 - Candidate count: 303.
 - Top research candidates by rank dislocation: Carson Beck, Oscar Delp, Adam Randall. Treat as research queue only, not public buy/sell calls.
+
+## 2026-06-16 09:01 ET — Weekly Market Report
+- Ran `python3 scripts/sports_gm_fetch_prices.py` and `python3 scripts/sports_gm_generate_report.py`.
+- Fetch completed: KeepTradeCut 1000 rows, FantasyCalc 922 rows, FantasyPros 511 rows, DynastyProcess 1574 rows.
+- Outputs: `memory/sports-gm/market-snapshots/2026-06-16.csv`, `memory/sports-gm/reports/weekly-gm-report-2026-06-16.md`, `memory/sports-gm/candidates/2026-06-16.csv`, `memory/content/bank/2026-06-16/dynasty-gm-automated-market-posts.md`.
+- Candidate count: 276.
+- Top research candidates by rank dislocation: Carson Beck, Deshaun Watson, Adam Randall. Treat as research queue only, not public buy/sell calls.

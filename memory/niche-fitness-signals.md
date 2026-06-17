@@ -34,3 +34,5 @@ Last reset: 2026-06-01
 2026-06-15 [EMERGING] niche=wholesale_distribution — Search results continue to show distributor demand for demand-planning and warehouse automation, including cited 54% demand-planning and 45% warehouse-automation interest; tracked as medium, not newly alertable.
 2026-06-15 [EMERGING] niche=insurance — Insurance AI automation remains active across underwriting, claims, servicing, and finance, but today's results did not verify a materially new entrant beyond recently surfaced Roots/Pace/Duck Creek signals.
 2026-06-15 [EMERGING] niche=property_management — Property-management software results continue to show market growth and uneven AI adoption, with no verified new high-severity development since recent PM AI signals.
+2026-06-16 [CONFIRMS] niche=Agentforce — Salesforce's planned $3.6B Fin acquisition materially strengthens Agentforce customer-service automation and confirms enterprise AI-agent consolidation.
+2026-06-16 [EMERGING] niche=construction — Construction AI agent adoption is exposing platform data-access conflicts, creating discovery and integration-risk work for automation consultants.

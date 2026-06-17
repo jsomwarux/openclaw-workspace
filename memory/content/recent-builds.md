@@ -20,6 +20,30 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Mission Control Slice 1.7 Health Lane — 2026-06-16
+**What:** Promoted Health to a first-class `/health` ops cockpit for failures, cost pressure, stale risk, and recovery work; `/monitor` and `/costs` now redirect to `/health`, with legacy views preserved at `/legacy/monitor` and `/legacy/costs`.
+**For:** internal operating system / ops health and reliability
+**Outcome:** `bun test lib/mission-control/*.test.ts` passed 44 tests and 132 assertions, `bunx tsc --noEmit` passed, `NEXT_DIST_DIR=.next-build bun run build` passed with `/health`, `/monitor`, `/costs`, `/legacy/monitor`, and `/legacy/costs` generated, live HTTP checks returned `/health` 200, `/monitor` 307 to `/health`, `/costs` 307 to `/health`, legacy routes 200, and mobile screenshot `/tmp/mission-control-screens/health-mobile-cockpit.png` showed the ops health cockpit.
+**Demonstrates:** ops-health cockpit design, route migration, cost/risk signal grouping, and reliability-focused UX without backend rewrite
+**Content angle:** Health is not a placeholder monitor; it should separate failures, cost pressure, stale risk, and recovery work so operators know what needs intervention.
+**Status:** complete
+
+## Mission Control Slice 1.6 Evidence Lane — 2026-06-16
+**What:** Promoted Evidence to a first-class `/evidence` proof ledger for buyer proof, system receipts, content proof assets, and proof gaps; `/audit` now redirects to `/evidence` and legacy Audit Trail context lives at `/legacy/audit`.
+**For:** internal operating system / proof and trust ledger
+**Outcome:** `bun test lib/mission-control/*.test.ts` passed 40 tests and 114 assertions, `bunx tsc --noEmit` passed, `NEXT_DIST_DIR=.next-build bun run build` passed with `/evidence`, `/audit`, and `/legacy/audit` generated, live HTTP checks returned `/evidence` 200, `/audit` 307 to `/evidence`, `/legacy/audit` 200, and mobile screenshot `/tmp/mission-control-screens/evidence-mobile-ledger.png` showed the proof ledger.
+**Demonstrates:** proof-led operating-system UX, route migration, trust-led evidence grouping, and audit-log adaptation without backend rewrite
+**Content angle:** A proof lane is useful only when it separates buyer proof, system receipts, content assets, and missing references instead of leaving proof buried in an audit log.
+**Status:** complete
+
+## Mission Control Command Attention Brief — 2026-06-16
+**What:** Replaced the dead `Since Last Look` block on `/` with a tested Command Brief that surfaces top action, latest proof, urgent JT count, revenue pressure, and risk count from current Mission Control signals.
+**For:** internal operating system / JT + Eve daily command surface
+**Outcome:** `bun test lib/mission-control/*.test.ts` passed 31 tests and 81 assertions, `bunx tsc --noEmit` passed, `NEXT_DIST_DIR=.next-build bun run build` passed, `/` returned 200 with `Command Brief`, and mobile screenshot `/tmp/mission-control-screens/command-mobile-brief.png` was captured.
+**Demonstrates:** operating-cockpit UX, tested attention summarization, proof/revenue/risk signal compression
+**Content angle:** The homepage of an agent OS should not show stale dashboard filler; it should compress the current decision state into one readable brief.
+**Status:** complete
+
 ## jtsomwaru.com Phase 3 Site Hygiene - 2026-06-13
 **What:** Added blog Consulting/Product categories, dynamic diagram OG images for the three client case studies, Calendly `generate_lead` tracking, a site hygiene verifier, and email-alias handoff notes.
 **For:** internal consulting site / JT consulting
@@ -59,75 +83,6 @@
 **Demonstrates:** cron reliability hardening, validator-gated artifact generation, financial-safety boundaries
 **Content angle:** Production agents should not ask a model to remember to write every required artifact when deterministic code can guarantee the handoff.
 **Status:** complete
-
-## Altmark Rent Delinquency Testing Pack - 2026-05-27
-**What:** Created the rent delinquency acceptance checklist and workflow runbook for sample-report testing, exception routing, human approval, rollback, and production cutover.
-**For:** Altmark / client delivery
-**Outcome:** Mission Control top task now points to the checklist; Altmark Client OS dashboard, workflow map, weekly update, reusable IP log, and MEMORY.md all reflect the new testing surface.
-**Demonstrates:** Paid-client delivery control, property-ops workflow acceptance design, privacy-safe reusable IP capture
-**Content angle:** Tenant outreach automation is not a writing problem first. It is a ledger-quality and exception-routing problem.
-**Status:** complete
-
-
-## jtsomwaru.com n8n Automation Service Page — 2026-05-27
-**What:** Built `/services/n8n-automation` as a proof-safe n8n automation consulting page with FAQ schema, Service JSON-LD, canonical metadata, sitemap exposure, homepage service links, and llms.txt coverage.
-**For:** JT consulting / AI SEO and roundup citation outreach
-**Outcome:** Dedicated verifier passed; `npm run build` and `npm run lint` passed; production `/services/n8n-automation` returned HTTP 200 with canonical/schema strings; commits `6243b57` and `7c8c8ec` pushed; updated roundup packet uploaded to Drive.
-**Demonstrates:** AI-search/GEO service-page build, proof-safe consulting positioning, Next.js implementation, citation-ready outreach infrastructure
-**Content angle:** A service page should be a citation target and sales filter, not a generic list of tools.
-**Status:** complete
-
-
-## App Marketing Share Artifacts Batch 5 — 2026-05-19
-**What:** Built Nash Satoshi weekly receipt generator and Glow Index Product Verdict Card MVP as product-led share/acquisition artifacts.
-**For:** internal passive-income app marketing
-**Outcome:** Nash `/receipts/weekly` added with PNG export and safe caption/source tags; `npm run check` + `npm run build` passed. Glow verdict card embedded on product pages; `npm run build` + `npm run lint` passed with 0 errors and 2 existing image warnings.
-**Demonstrates:** product-led growth artifact design, repo-aware AI coding-agent orchestration, claims-safe app marketing implementation
-**Content angle:** Cheap app distribution starts with assets users and creators can share, not another generic post.
-**Status:** complete
-
-
-## jtsomwaru.com Public Proof Privacy Pass — 2026-05-14
-**What:** Anonymized public client proof copy and removed exact proposal/deal amounts from site proof surfaces while keeping role/city/workflow specificity.
-**For:** JT consulting / public credibility + client privacy
-**Outcome:** Build + lint passed; pushed commit `11439c7`; production homepage, family-office detail route, and `/llms.txt` verified with no Aya/Altmark/Lady D/exact amount hits.
-**Demonstrates:** Public proof hygiene, privacy-safe case-study packaging, attribution correction
-**Content angle:** Strong proof does not require naming the client. It requires the workflow, the buyer type, and the operating result.
-**Status:** complete
-
-
-## jtsomwaru.com Client Outcome Attribution Fix — 2026-05-14
-**What:** Corrected the site so Aya owns the construction dashboard and StreetEasy pipeline, added Altmark local-first family-office automation as its own client outcome/detail page, and restored Adversight AI under Apps.
-**For:** JT consulting / proof accuracy
-**Outcome:** Build + lint passed; pushed commit `25b9563`; production `/` and `/work/altmark-local-automation` verified with HTTP 200 and expected content strings.
-**Demonstrates:** Proof attribution discipline, client-work packaging, portfolio inventory preservation
-**Content angle:** Proof only works if the attribution is precise. Generic labels can hide the actual client story.
-**Status:** complete
-
-
-## jtsomwaru.com Positioning + Roles Update — 2026-05-14
-**What:** Reworked the personal site around consulting-first positioning with balanced Work buckets, updated Who I Help niches, cleaner About/tools language, a new `/roles` recruiter path, footer links, and AI-search metadata updates.
-**For:** JT consulting / selective recruiting upside
-**Outcome:** `npm run build` and `npm run lint` passed; pushed to GitHub commit `fce1480`; production checks returned HTTP 200 for `/` and `/roles` on Vercel.
-**Demonstrates:** Consulting positioning, proof-tier hygiene, Next.js implementation, recruiter/buyer path separation, GEO metadata maintenance
-**Content angle:** A portfolio site should separate client outcomes, demos, internal systems, and apps without making the real client work look scarce.
-**Status:** complete
-
-## jtsomwaru.com AI Context OS Sprint Service Page — 2026-05-31
-- **What:** Added `/services/ai-context-os`, homepage service routing, sitemap/llms/JSON-LD exposure, and an `ai-context-os` delivery skill with reusable sprint template.
-- **For:** JT consulting / service packaging.
-- **Outcome:** New consulting offer is live at `https://jtsomwaru.com/services/ai-context-os`, packaged as agent-ready operating context plus evals, with one high-priority Mission Control proof task and one completed reusable-template task.
-- **Demonstrates:** Offer strategy, AI context engineering, GEO/service-page implementation, reusable consulting IP packaging.
-- **Content angle:** The moat is not “knowledge-base cleanup”; it is extracting workflow judgment into context that agents can use and testing whether output quality improves.
-- **Status:** complete; build/lint passed; pushed commit `9fc24fd`; production returned HTTP 200.
-
-## AI Ops Teardown Drive Sync — 2026-05-31
-- **What:** Added a deterministic Drive sync script for weekly AI Ops Teardown bundles and wired the agent prompt to require Drive links before success.
-- **For:** internal consulting proof/content operations.
-- **Outcome:** Current lease-renewal teardown and review draft uploaded to organized Drive folders; Mission Control review task now includes both Drive links.
-- **Demonstrates:** agent closeout hardening, Drive workflow automation, content-proof organization.
-- **Content angle:** A good content agent should leave the review artifact where the human actually reviews it, not buried in local files.
-- **Status:** complete; tests passed and proof log recorded.
 
 ## jtsomwaru.com Vista 1-100 Movie Rating Landing Page — 2026-06-01
 - **What:** Built the exact `/1-100-movie-rating-app` landing page for Vista with direct-answer copy, App Store CTA, iPhone screenshots, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, and llms.txt coverage.
@@ -184,3 +139,35 @@
 - **Demonstrates:** Consulting-positioning cleanup, proof-safe copy editing, preview evidence discipline.
 - **Content angle:** A consulting site should say what the system actually does, who approves external actions, and what is paid/productized without pretending a draft retainer is live.
 - **Status:** preview complete; production deploy held for JT review.
+
+## Mission Control Command Cockpit Slice 1 — 2026-06-16
+- **What:** Rebuilt Mission Control's home experience into a 7-lane operating cockpit with a ranked `Needs You Now` queue, revenue cockpit, Eve-handling column, risk/drift column, Work task-router lane, signal adapters, scoring tests, inspection drawer, and state blocks.
+- **For:** Internal operating system / JT + Eve daily command surface.
+- **Outcome:** `bun test lib/mission-control/score.test.ts lib/mission-control/adapters.test.ts` passed 11/11, `bunx tsc --noEmit` passed, `NEXT_DIST_DIR=.next-build bun run build` passed with `/` and `/work` generated, local HTTP checks returned 200, and Playwright screenshots were captured for desktop/mobile Command and Work.
+- **Demonstrates:** productized agent operating-system UX, repo-grounded redesign, tested ranking logic, graceful current-data adaptation without backend rewrite.
+- **Content angle:** The useful AI dashboard is not a dashboard; it is a ranked decision queue backed by proof and machine state.
+- **Status:** complete.
+
+## Mission Control Slice 1.1 Mobile Shell + Revenue Lane — 2026-06-16
+- **What:** Centered and safe-area-hardened the mobile bottom nav, replaced `/consulting` with a live cash-path cockpit over North Star/pipeline/task data, and hardened `/work` with explicit status controls, priority sorting, priority color treatment, and a task inspection/action drawer.
+- **For:** Internal operating system / JT revenue focus.
+- **Outcome:** `bun test lib/mission-control/*.test.ts` passed 28 tests and 73 assertions, `bunx tsc --noEmit` passed, `NEXT_DIST_DIR=.next-build bun run build` passed, `/consulting` returned live values including `$3,375`, `$4,058`, `$368`, `/legacy/consulting` returned the old strategy page, `/work` rendered high-priority tasks first with distinct priority colors, Todo/Doing/Done controls, and drawer actions for status/priority/defer/archive, the task PATCH API was verified with temporary create/update/archive/delete checks, and Playwright screenshots were captured.
+- **Demonstrates:** revenue-ops cockpit design, mobile product polish, deterministic local-data parsing, and practical cash-path prioritization without a backend rewrite.
+- **Content angle:** A revenue dashboard is only useful when it shows collected cash, weighted forecast, remaining gap, and the exact next revenue actions in one place.
+- **Status:** complete.
+
+## Mission Control Slice 1.4 Ship Lane — 2026-06-16
+- **What:** Promoted Ship to a first-class `/ship` cockpit for app distribution, content queue, release gates, proof coverage, and blocked/stale shipping work; `/vibe` now redirects to `/ship` and legacy Vibe context lives at `/legacy/vibe`.
+- **For:** Internal operating system / app and content shipping focus.
+- **Outcome:** `bun test lib/mission-control/*.test.ts` passed 34 tests and 90 assertions, `bunx tsc --noEmit` passed, `NEXT_DIST_DIR=.next-build bun run build` passed with `/ship`, `/vibe`, and `/legacy/vibe` generated, live HTTP checks returned `/ship` 200, `/vibe` 307 to `/ship`, `/legacy/vibe` 200, and mobile screenshot `/tmp/mission-control-screens/ship-mobile-cockpit-final.png` showed live Ship counters.
+- **Demonstrates:** product-shipping cockpit design, lane promotion without backend rewrite, route preservation, and proof-aware app/content prioritization.
+- **Content angle:** A shipping lane is useful only when it separates distribution work, content work, release gates, and proof coverage instead of burying apps inside a generic marketing page.
+- **Status:** complete.
+
+## Mission Control Slice 1.5 Machine Lane — 2026-06-16
+- **What:** Promoted Machine to a first-class `/machine` cockpit for cron health, agent posture, cost pressure, automation risks, and recent system work; `/agents` now redirects to `/machine` and legacy Agent Team context lives at `/legacy/agents`.
+- **For:** Internal operating system / automation reliability.
+- **Outcome:** `bun test lib/mission-control/*.test.ts` passed 37 tests and 102 assertions, `bunx tsc --noEmit` passed, `NEXT_DIST_DIR=.next-build bun run build` passed with `/machine`, `/agents`, and `/legacy/agents` generated, live HTTP checks returned `/machine` 200, `/agents` 307 to `/machine`, `/legacy/agents` 200, and mobile screenshot `/tmp/mission-control-screens/machine-mobile-cockpit.png` showed the system-health cockpit.
+- **Demonstrates:** machine-status cockpit design, route migration, cron/agent/cost signal modeling, and reliability-focused product UX without a backend rewrite.
+- **Content angle:** A machine lane is useful only when it separates cron health, agent state, cost pressure, and automation work instead of burying system risk in an agent directory.
+- **Status:** complete.

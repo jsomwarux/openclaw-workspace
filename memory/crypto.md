@@ -486,3 +486,10 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is heavy. The packet explicitly treats vote-heavy X as distribution risk, not conviction.
 - **Model read:** Research/ranking output exited PRXVT, NOX, NOOK, and GITLAWB; adjusted SIBYL and SURPLUS up; added BOTCOIN and AEON in the model allocation. NOX and BOTCOIN had whale alerts, but spam-heavy X was a major risk flag.
 - **Guardrail:** This is research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. Because X API spend is over the weekly target, do not run extra nonessential X crypto pulls today.
+
+## Jun 16, 2026 — 10:17AM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00, validation passed, X research guard passed, 25 X entries, estimated X research cost `$1.07`, and `data/telegram-summary.txt` contained the dated recommendation payload.
+- **Market read:** AI agents/x402 and Base AI infrastructure remain active, but the packet still flags heavy spam/vote traffic. Treat social coordination as a quality filter, not proof by itself.
+- **Model read:** Research/ranking output held PRXVT at 20%, adjusted SIBYL up to 30%, exited NOX/NOOK/GITLAWB/SURPLUS, and added ODAI 30% plus HEU 20%. ODAI and HEU were the new entry signals; PUMPCADE had a first whale-trade watchlist signal.
+- **Guardrail:** This is research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. Avoid extra nonessential X crypto pulls today.
