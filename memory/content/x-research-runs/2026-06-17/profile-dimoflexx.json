@@ -1,0 +1,256 @@
+{
+  "user": {
+    "name": "dimaflexx",
+    "created_at": "2022-01-11T21:05:59.000Z",
+    "username": "dimoflexx",
+    "description": "sidelined trading & ai | open for dm\nalways dyor",
+    "public_metrics": {
+      "followers_count": 1419,
+      "following_count": 115,
+      "tweet_count": 7092,
+      "listed_count": 16,
+      "like_count": 18629,
+      "media_count": 772
+    },
+    "id": "1481009393101643784"
+  },
+  "tweets": [
+    {
+      "id": "2066985699459428539",
+      "text": "PAVEL DUROV OPENED HIS SPEECH WITH A METAPHOR MOST PEOPLE AREN'T READY TO HEAR\n\nPassengers on the Titanic didn't want to leave the ship.\n\nFor almost 2 hours after it hit the iceberg.\n\nThey thought it was unsinkable.\n\nLifeboats left half empty.\n\nOnly in the last 30 minutes did https://t.co/MjBRPcOany https://t.co/EpwzPcbhvH",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-16T20:46:08.000Z",
+      "conversation_id": "2066985699459428539",
+      "metrics": {
+        "likes": 9,
+        "retweets": 3,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 134,
+        "bookmarks": 7
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066985699459428539/video/1",
+        "https://twitter.com/dimoflexx/status/2066948511501816098"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066985699459428539"
+    },
+    {
+      "id": "2066948511501816098",
+      "text": "https://t.co/Tt7MfQuyDr",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-16T18:18:21.000Z",
+      "conversation_id": "2066948511501816098",
+      "metrics": {
+        "likes": 12,
+        "retweets": 3,
+        "replies": 3,
+        "quotes": 1,
+        "impressions": 418,
+        "bookmarks": 6
+      },
+      "urls": [
+        "http://x.com/i/article/2066944060779122688"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066948511501816098"
+    },
+    {
+      "id": "2066919116087128528",
+      "text": "A kid from my school showed me his phone.\n\nThe notifications wouldn't stop.\n\nOrder #12310. $42.\n\nOrder #12313. $135.\n\nOrder #12316. $33.\n\nOver and over.\n\nHe sells caps.\n\nThat's it.\n\nNo warehouse.\n\nNo team.\n\nNo complicated business model.\n\nJust one product and a storefront.\n\nThe https://t.co/S51YIosdMN https://t.co/Il1Km7OVNN",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-16T16:21:33.000Z",
+      "conversation_id": "2066919116087128528",
+      "metrics": {
+        "likes": 10,
+        "retweets": 3,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 96,
+        "bookmarks": 7
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066919116087128528/video/1",
+        "https://twitter.com/Raytar/status/2052339833247277321"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066919116087128528"
+    },
+    {
+      "id": "2066830288336867676",
+      "text": "THIS VETERAN DEVELOPER SPENT $1,198 ON 2 MAC MINIS AND REPLACED A $210/MONTH AGENT STACK\n\nMost people still think AI is a chat interface.\n\nPrompt.\n\nResponse.\n\nStart over.\n\nRepeat.\n\nEvery session begins from zero.\n\nEvery workflow gets rebuilt.\n\nEvery useful process disappears the https://t.co/QyjYR5GUeC https://t.co/6PlIn09VJG",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-16T10:28:35.000Z",
+      "conversation_id": "2066830288336867676",
+      "metrics": {
+        "likes": 71,
+        "retweets": 13,
+        "replies": 19,
+        "quotes": 0,
+        "impressions": 7314,
+        "bookmarks": 55
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066830288336867676/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066830288336867676"
+    },
+    {
+      "id": "2066630234628362725",
+      "text": "THIS 19-YEAR-OLD OPENED THE HERMES SETUP WIZARD AND ACCIDENTALLY REVEALED WHERE MOST AI COSTS ACTUALLY LIVE\n\nNot in the model.\n\nNot in the prompt.\n\nIn the layer underneath.\n\nThe place where the workflow runs.\n\nAt first glance, the setup screen looks boring.\n\nProvider.\n\nAuth https://t.co/CvWKbP6Ief https://t.co/6PlIn0atze",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-15T21:13:38.000Z",
+      "conversation_id": "2066630234628362725",
+      "metrics": {
+        "likes": 62,
+        "retweets": 13,
+        "replies": 10,
+        "quotes": 0,
+        "impressions": 6066,
+        "bookmarks": 25
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066630234628362725/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066630234628362725"
+    },
+    {
+      "id": "2066582955607163078",
+      "text": "THIS 19-YEAR-OLD OPENED THE HERMES SETUP WIZARD AND ACCIDENTALLY REVEALED WHERE MOST AI COSTS ACTUALLY COME FROM\n\nNot the model.\n\nNot the prompts.\n\nThe layer underneath.\n\nThe place where the agent runs.\n\nIt looks boring.\n\nUntil you realize that's where the economics are decided. https://t.co/TJM6xM8Vd2",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-15T18:05:46.000Z",
+      "conversation_id": "2066582955607163078",
+      "metrics": {
+        "likes": 26,
+        "retweets": 10,
+        "replies": 10,
+        "quotes": 0,
+        "impressions": 530,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066582955607163078/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066582955607163078"
+    },
+    {
+      "id": "2066514609469628688",
+      "text": "A college student built an AI girl with 4 files and a few hundred dollars a month in compute.\n\nMonth 1:\n\n$43,000 revenue.\n\nHer name is Maya.\n\nShe remembers subscribers' names.\n\nRemembers details from conversations weeks later.\n\nSends voice notes that sound human.\n\nNever breaks https://t.co/Rl3LbcXl5V https://t.co/WBQ40RLdQV",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-15T13:34:11.000Z",
+      "conversation_id": "2066514609469628688",
+      "metrics": {
+        "likes": 22,
+        "retweets": 3,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 483,
+        "bookmarks": 8
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066514609469628688/video/1",
+        "https://twitter.com/cryptowluha/status/2064425098304733531"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066514609469628688"
+    },
+    {
+      "id": "2066210921501147646",
+      "text": "been testing Co-Invest on Liquid today and wanted to know if it can help the newbies, so asked the simple question:\n\n\"ETH keeps falling. Is it better to hold, sell, or short?\"\n\nit broke down both the bearish and bullish cases, looked at funding, positioning, open interest, and https://t.co/iX90e5sJ2C",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-14T17:27:26.000Z",
+      "conversation_id": "2066210921501147646",
+      "metrics": {
+        "likes": 9,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 77,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066210921501147646/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066210921501147646"
+    },
+    {
+      "id": "2066189152819827179",
+      "text": "Demis Hassabis said something most people completely misunderstood:\n\n\"One person who understands AI will outperform an entire startup team.\"\n\nMost founders heard that and started chasing better prompts.\n\nThat wasn't the point.\n\nThe people pulling ahead aren't getting better at https://t.co/R0621bltG7 https://t.co/pk0ZsYFnL6",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-14T16:00:56.000Z",
+      "conversation_id": "2066189152819827179",
+      "metrics": {
+        "likes": 23,
+        "retweets": 7,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 750,
+        "bookmarks": 12
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066189152819827179/video/1",
+        "https://twitter.com/cryptowluha/status/2065069357399433272"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066189152819827179"
+    },
+    {
+      "id": "2066071130050289951",
+      "text": "THIS VETERAN DEVELOPER SPENT $1,198 ON 2 MAC MINIS AND REPLACED A $210/MONTH AGENT STACK\n\nMost people still use AI like a chat tab.\n\nEvery session begins from zero.\n\nEvery workflow gets rebuilt.\n\nEvery useful process disappears when the conversation ends.\n\nHermes changes that. https://t.co/qn9x0nk4xm https://t.co/6PlIn09VJG",
+      "author_id": "1481009393101643784",
+      "username": "dimoflexx",
+      "name": "dimaflexx",
+      "created_at": "2026-06-14T08:11:57.000Z",
+      "conversation_id": "2066071130050289951",
+      "metrics": {
+        "likes": 50,
+        "retweets": 9,
+        "replies": 11,
+        "quotes": 0,
+        "impressions": 2205,
+        "bookmarks": 16
+      },
+      "urls": [
+        "https://x.com/dimoflexx/status/2066071130050289951/video/1",
+        "https://twitter.com/dimoflexx/status/2064349826242822332"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/dimoflexx/status/2066071130050289951"
+    }
+  ]
+}

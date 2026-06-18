@@ -1,0 +1,261 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 12942,
+      "following_count": 883,
+      "tweet_count": 30266,
+      "listed_count": 142,
+      "like_count": 35933,
+      "media_count": 1264
+    },
+    "name": "Atenov int.",
+    "id": "1577008378852802561",
+    "description": "📚 | Part of @zscdao |  FullTime Crypto/X | @Polymarket Adept | Two master's degrees in engineering and marketing | Become part of our big family of smart-users",
+    "created_at": "2022-10-03T18:51:26.000Z",
+    "username": "Atenov_D"
+  },
+  "tweets": [
+    {
+      "id": "2067004333292683381",
+      "text": "Codex broke today. OpenAI's Head of Core Products fixed it and teased \"you know what's coming\". 24 hours. Something's launching.\n\nCodex API and Claude Code API both choked at the same time. Frontier models barely responding.\n\n&gt; Two theories: either they're loading a new model(GPT https://t.co/zckBwbx6jO https://t.co/K8LlrrY87H",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-16T22:00:10.000Z",
+      "conversation_id": "2067004333292683381",
+      "metrics": {
+        "likes": 39,
+        "retweets": 1,
+        "replies": 13,
+        "quotes": 1,
+        "impressions": 3755,
+        "bookmarks": 20
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2067004333292683381/photo/1",
+        "https://twitter.com/Atenov_D/status/2066944535377190921"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2067004333292683381"
+    },
+    {
+      "id": "2066944535377190921",
+      "text": "I just found a weather contract that a model says should be worth a dollar - it's sitting at 5 cents right now. 20x if it hits.\n\n&gt; New York today. Public forecast says 78°F. The model behind this says 81°F. The 81° bucket sits at 5 cents because nobody else sees it coming.\n\nThis https://t.co/Cv4X7LiKB6 https://t.co/exZuStydq5",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-16T18:02:33.000Z",
+      "conversation_id": "2066944535377190921",
+      "metrics": {
+        "likes": 49,
+        "retweets": 2,
+        "replies": 12,
+        "quotes": 2,
+        "impressions": 6009,
+        "bookmarks": 22
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2066944535377190921/video/1",
+        "https://twitter.com/minmax_one/status/2066933649887392020"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2066944535377190921"
+    },
+    {
+      "id": "2066905977278886246",
+      "text": "FREE 1 month Plus subscription. Seedance 2.0, Kling 3.0, Veo 3.1, WAN. No card, no phone. Just 6 tasks in your dashboard.\n\nThe platform is HotGen AI. Top video and image generation models in one place, normally locked behind a paid tier.\n\nHere's the exact flow:\n\n→ Go to https://t.co/S4Fwh5nBub https://t.co/QQxVd7oiJl",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-16T15:29:20.000Z",
+      "conversation_id": "2066905977278886246",
+      "metrics": {
+        "likes": 210,
+        "retweets": 27,
+        "replies": 26,
+        "quotes": 0,
+        "impressions": 8761,
+        "bookmarks": 230
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2066905977278886246/photo/1",
+        "https://twitter.com/Atenov_D/status/2066878651086323819"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2066905977278886246"
+    },
+    {
+      "id": "2066878651086323819",
+      "text": "This free GitHub repo can get you to $3,000/month on YouTube Shorts. Script, voice, footage, editing - fully automated.\n\nIt's called AutoShorts AI. Python pipeline. You give it one topic. It researches, writes the script, generates the voiceover, pulls stock footage, and edits https://t.co/mN3InjO82z https://t.co/gwm4flEprx",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-16T13:40:45.000Z",
+      "conversation_id": "2066878651086323819",
+      "metrics": {
+        "likes": 132,
+        "retweets": 9,
+        "replies": 24,
+        "quotes": 1,
+        "impressions": 14716,
+        "bookmarks": 151
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2066878651086323819/photo/1",
+        "https://twitter.com/Atenov_D/status/2066579919694434538"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2066878651086323819"
+    },
+    {
+      "id": "2066579919694434538",
+      "text": "+74.83% in 5 days on Polymarket weather markets. $100 became $174.83. 100% win rate. Tested @TycheTerminal trading script, and here are the results\n\n&gt;&gt; The play: build a grid of 3 adjacent temperature outcomes under 85c total. One of them hits 100c.\n\nJune 11-13: closed at https://t.co/iTLMFIvCTb https://t.co/LBZI2dIJIE",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-15T17:53:42.000Z",
+      "conversation_id": "2066579919694434538",
+      "metrics": {
+        "likes": 89,
+        "retweets": 7,
+        "replies": 16,
+        "quotes": 1,
+        "impressions": 10208,
+        "bookmarks": 39
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2066579919694434538/video/1",
+        "https://twitter.com/Atenov_D/status/2066266635900494250"
+      ],
+      "mentions": [
+        "TycheTerminal"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2066579919694434538"
+    },
+    {
+      "id": "2066494166209536037",
+      "text": "This guy built a $5,000/month workflow with Claude. He clones any YouTube channel's exact format and turns it into a brand new faceless channel. No coding.\n\n&gt; Here's the exact process.\n\nStep 1 - Steal the script formula\n\nPick a channel that's already working. He used a channel https://t.co/sYQU8NWpx7 https://t.co/LBZI2dIJIE",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-15T12:12:57.000Z",
+      "conversation_id": "2066494166209536037",
+      "metrics": {
+        "likes": 44,
+        "retweets": 4,
+        "replies": 10,
+        "quotes": 1,
+        "impressions": 1823,
+        "bookmarks": 32
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2066494166209536037/video/1",
+        "https://twitter.com/Atenov_D/status/2066266635900494250"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2066494166209536037"
+    },
+    {
+      "id": "2066266635900494250",
+      "text": "$315 free API credits for Claude Opus 4.8. Registration takes 2 minutes. $35 instant + $280 in weekly limits. Already tested - works.\n\nThis is the same setup as the FreeModel proxy, different provider. $35(Many people started receiving $80) lands instantly on signup. \n\nThe rest https://t.co/RHJ0ZVlIEt https://t.co/w7q8IumI0i",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-14T21:08:50.000Z",
+      "conversation_id": "2066266635900494250",
+      "metrics": {
+        "likes": 264,
+        "retweets": 26,
+        "replies": 28,
+        "quotes": 3,
+        "impressions": 27255,
+        "bookmarks": 384
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2066266635900494250/photo/1",
+        "https://twitter.com/Atenov_D/status/2065850851953119349"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2066266635900494250"
+    },
+    {
+      "id": "2066238783628902634",
+      "text": "I'm fading Netherlands tonight. 6 straight wins for Japan including Brazil and England. Netherlands haven't won clean since March. The market hasn't moved yet.\n\n&gt; Japan beat England 1-0 at Wembley in March. Beat Brazil in a friendly this spring. Ranked 18th in the world and https://t.co/NdWIsJXZA8 https://t.co/k3r6dgXBbA",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-14T19:18:09.000Z",
+      "conversation_id": "2066238783628902634",
+      "metrics": {
+        "likes": 57,
+        "retweets": 0,
+        "replies": 16,
+        "quotes": 1,
+        "impressions": 3688,
+        "bookmarks": 20
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2066238783628902634/photo/1",
+        "https://twitter.com/Atenov_D/status/2064727068718383515"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2066238783628902634"
+    },
+    {
+      "id": "2066140882068242550",
+      "text": "A team of AI scientists just proved most \"top\" AI skills on GitHub are actively hurting you. 1 in 3 makes performance worse. Stars don't predict it.\n\n&gt; Here's what they did.\n\n175,632 skills scanned. 19,214 pulled as candidates. 7,950 deep-indexed and run through real evals - not https://t.co/1StVzMRD07 https://t.co/w7q8IumI0i",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-14T12:49:07.000Z",
+      "conversation_id": "2066140882068242550",
+      "metrics": {
+        "likes": 55,
+        "retweets": 0,
+        "replies": 16,
+        "quotes": 1,
+        "impressions": 3431,
+        "bookmarks": 36
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2066140882068242550/video/1",
+        "https://twitter.com/Atenov_D/status/2065850851953119349"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2066140882068242550"
+    },
+    {
+      "id": "2065850851953119349",
+      "text": "FREE $100 in credits with access to Opus 4.8 and GPT 5.5. Sauna AI. No card. Gmail or Slack connect. Nobody is talking about this.\n\nSauna AI gives you $100 in credits on signup. No card required. Just email plus Gmail or Slack connection - and Slack gets you more credits than https://t.co/EwlLttmkIR https://t.co/FyLySnKVlp",
+      "author_id": "1577008378852802561",
+      "username": "Atenov_D",
+      "name": "Atenov int.",
+      "created_at": "2026-06-13T17:36:39.000Z",
+      "conversation_id": "2065850851953119349",
+      "metrics": {
+        "likes": 193,
+        "retweets": 17,
+        "replies": 28,
+        "quotes": 2,
+        "impressions": 45990,
+        "bookmarks": 268
+      },
+      "urls": [
+        "https://x.com/Atenov_D/status/2065850851953119349/video/1",
+        "https://twitter.com/Atenov_D/status/2065794871273619942"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Atenov_D/status/2065850851953119349"
+    }
+  ]
+}

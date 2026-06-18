@@ -1,0 +1,245 @@
+{
+  "user": {
+    "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+    "username": "jasonlk",
+    "created_at": "2007-04-11T17:42:28.000Z",
+    "id": "4215921",
+    "description": "GET funded ➡ $200m https://t.co/AVvPIrIdFP🦄🦄🦄🦄🦄🦄🦄 FREE PLAYBOOK ➡ https://t.co/TIsMr22AhO CHAT Digital Jason ▶ https://t.co/bwkZCtvqlr Founder AdobeSign",
+    "public_metrics": {
+      "followers_count": 242370,
+      "following_count": 2320,
+      "tweet_count": 112253,
+      "listed_count": 3285,
+      "like_count": 54311,
+      "media_count": 23257
+    }
+  },
+  "tweets": [
+    {
+      "id": "2067161127289839999",
+      "text": "JFC https://t.co/ywOzsJJzFE",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-17T08:23:13.000Z",
+      "conversation_id": "2067161127289839999",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 829,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/techmeme/status/2067097964527681640"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2067161127289839999"
+    },
+    {
+      "id": "2067146197903593591",
+      "text": "In this SaaStr Deploy session, Tom Occhino (CPO of Vercel and co-creator of React) explains how Vercel evolved from a front-end cloud provider to an AI-native company by building and running hundreds of internal AI agents.\n\nKey Takeaways:\n\n1. The Shift from Pages to Agents:",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-17T07:23:53.000Z",
+      "conversation_id": "2067146197903593591",
+      "metrics": {
+        "likes": 4,
+        "retweets": 1,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 1554,
+        "bookmarks": 6
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2067146197903593591"
+    },
+    {
+      "id": "2067097680476610614",
+      "text": "Everything is bigger in Shanghai https://t.co/DoDddDc78I",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-17T04:11:06.000Z",
+      "conversation_id": "2067097680476610614",
+      "metrics": {
+        "likes": 16,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 2418,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/jasonlk/status/2067097680476610614/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2067097680476610614"
+    },
+    {
+      "id": "2067093859491004867",
+      "text": "The real \"luck\" in seed investing is really about the size of the outcome \n\nSome don't work of course\n\nBut the best founders find a way.  How big it truly gets is harder to predict",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-17T03:55:55.000Z",
+      "conversation_id": "2067093859491004867",
+      "metrics": {
+        "likes": 8,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 1372,
+        "bookmarks": 2
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2067093859491004867"
+    },
+    {
+      "id": "2067085214606844089",
+      "text": "We've sold 100,000+ tickets to SaaStr events over the years\n\nEverything helps, and multitouch tracking is critical.  Still .. \n\nTop sources of direct ticket sales, from 2014 to 2026:\n\n- email\n- email\n- email\n- email\n- email\n- email\n- also\n- email",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-17T03:21:34.000Z",
+      "conversation_id": "2067085214606844089",
+      "metrics": {
+        "likes": 6,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 2316,
+        "bookmarks": 2
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2067085214606844089"
+    },
+    {
+      "id": "2066996306321736160",
+      "text": "A new The Agents is out!!\n\n1. The Guardrail Trap: \n\nThe team discovered that over-guardrailing can be as detrimental as under-guardrailing. They specifically highlight how adding too many rules broke their VC pitch deck analyzer (0:03:00 - 0:09:35).\n\n2. Agents as Decision Makers:",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-16T21:28:17.000Z",
+      "conversation_id": "2066996306321736160",
+      "metrics": {
+        "likes": 8,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 3359,
+        "bookmarks": 7
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2066996306321736160"
+    },
+    {
+      "id": "2066938354332049860",
+      "text": "\"Our Digital Amelia agent does dynamic, real-time lead routing.\n\nIt weight our Salesforce data, who is the best closer for what type of lead, and ... who has time.\" https://t.co/hqDjPYwwO3 https://t.co/AQINbCDJYS",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-16T17:38:00.000Z",
+      "conversation_id": "2066938354332049860",
+      "metrics": {
+        "likes": 5,
+        "retweets": 1,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 2840,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/jasonlk/status/2066938354332049860/video/1",
+        "https://twitter.com/jasonlk/status/2062606562170904694"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2066938354332049860"
+    },
+    {
+      "id": "2066892852345315540",
+      "text": "Go upmarket, you scale faster, with less churn.  \n\nAnd if you also stay downmarket too &gt;at the same time&lt; and keep serving those small customers well?\n\nThen you end up with a product that is both super powerful.   And with unparalleled ease-of-use.",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-16T14:37:11.000Z",
+      "conversation_id": "2066892852345315540",
+      "metrics": {
+        "likes": 54,
+        "retweets": 1,
+        "replies": 13,
+        "quotes": 0,
+        "impressions": 5700,
+        "bookmarks": 18
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2066892852345315540"
+    },
+    {
+      "id": "2066830846154395827",
+      "text": "Hello Xiantandi! https://t.co/IdXlrKDk7e",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-16T10:30:48.000Z",
+      "conversation_id": "2066830846154395827",
+      "metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2158,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/jasonlk/status/2066830846154395827/photo/1",
+        "https://x.com/jasonlk/status/2066830846154395827/photo/1",
+        "https://x.com/jasonlk/status/2066830846154395827/photo/1",
+        "https://x.com/jasonlk/status/2066830846154395827/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2066830846154395827"
+    },
+    {
+      "id": "2066705140510531584",
+      "text": "“$150K AEs closing $2M+ ARR per year. Outbound BDRs generating $100K in closed-won ARR per BDR per month. 4X the ARR per rep compared to direct competitors.\n\nNone of that happens by accident.”\n\nHow @owner’s CRO Closes $2M+ ARR Per Rep With AI  https://t.co/As3jIzeZEY",
+      "author_id": "4215921",
+      "username": "jasonlk",
+      "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+      "created_at": "2026-06-16T02:11:17.000Z",
+      "conversation_id": "2066705140510531584",
+      "metrics": {
+        "likes": 35,
+        "retweets": 3,
+        "replies": 10,
+        "quotes": 1,
+        "impressions": 14102,
+        "bookmarks": 74
+      },
+      "urls": [
+        "https://youtu.be/BzA8bTjFIgk?si=KgR2cbVZz4a5S5-s"
+      ],
+      "mentions": [
+        "owner"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/jasonlk/status/2066705140510531584"
+    }
+  ]
+}

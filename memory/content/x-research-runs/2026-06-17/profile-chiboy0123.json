@@ -1,0 +1,136 @@
+{
+  "user": {
+    "created_at": "2025-02-18T13:16:23.000Z",
+    "public_metrics": {
+      "followers_count": 1182,
+      "following_count": 891,
+      "tweet_count": 16487,
+      "listed_count": 7,
+      "like_count": 11035,
+      "media_count": 1521
+    },
+    "username": "chiboy0123",
+    "id": "1891838578419957764",
+    "description": "upcoming web3 security researcher trying to make web3 a bit safer",
+    "name": "chiboy"
+  },
+  "tweets": [
+    {
+      "id": "2066527696436236371",
+      "text": "Guys pls is almost ending \n\nAbeg make i no loose vote for minimax\n\nhttps://t.co/PiMwJxcNkw https://t.co/oG6zhkRhms",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-15T14:26:11.000Z",
+      "conversation_id": "2066527696436236371",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 108,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://arena.cysic.xyz/projects/WUuJLEtAuFE90TayqblxU",
+        "https://twitter.com/chiboy0123/status/2065419428968218870"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2066527696436236371"
+    },
+    {
+      "id": "2065753953598361670",
+      "text": "Guys pls I join the cyops arena and would love for you guys to vote minimax\n\nGo to; https://t.co/sqniZT3lA0\n\nSign in with discord or x \n\nThen go to minimax open pj and vote \n\nGod bless u https://t.co/oG6zhkRhms",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-13T11:11:37.000Z",
+      "conversation_id": "2065753953598361670",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 41,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://arena.cysic.xyz/",
+        "https://twitter.com/chiboy0123/status/2065419428968218870"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2065753953598361670"
+    },
+    {
+      "id": "2065419428968218870",
+      "text": "I just built an MCP server that gives any AI coding tool direct access to MiniMax M3's brain. This is what i mean;\n\nMiniMax just launched M3; a frontier model with 1 million token context, beating GPT-5.5 on SWE-bench. But i noticed developers couldn't use it inside their AI https://t.co/y5DNzRSMDq",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-12T13:02:20.000Z",
+      "conversation_id": "2065419428968218870",
+      "metrics": {
+        "likes": 25,
+        "retweets": 10,
+        "replies": 19,
+        "quotes": 1,
+        "impressions": 2151,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/chiboy0123/status/2065419428968218870/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2065419428968218870"
+    },
+    {
+      "id": "2064781006637285497",
+      "text": "Working on something that will level up what coding agents can do in the real world.  Orchestrated and built entirely inside CyOps Arena with M3. https://t.co/jre6jr24CO",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-10T18:45:28.000Z",
+      "conversation_id": "2064781006637285497",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 50,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/cysic_xyz/status/2064720982422753372"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2064781006637285497"
+    },
+    {
+      "id": "2064729579487416781",
+      "text": "It's finally here guy's https://t.co/jre6jr24CO",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-10T15:21:07.000Z",
+      "conversation_id": "2064729579487416781",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 46,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/cysic_xyz/status/2064720982422753372"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2064729579487416781"
+    }
+  ]
+}

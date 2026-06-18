@@ -111,7 +111,7 @@ const FIELDS =
  * Accepts: "1h", "2h", "6h", "12h", "1d", "2d", "3d", "7d"
  * Or a raw ISO 8601 string.
  */
-function parseSince(since: string): string | null {
+function parseSince(since: string, now = new Date()): string | null {
   // Check for shorthand like "1h", "3h", "1d"
   const match = since.match(/^(\d+)(m|h|d)$/);
   if (match) {
@@ -121,7 +121,7 @@ function parseSince(since: string): string | null {
       unit === "m" ? num * 60_000 :
       unit === "h" ? num * 3_600_000 :
       num * 86_400_000;
-    const startTime = new Date(Date.now() - ms);
+    const startTime = new Date(now.getTime() - ms);
     return startTime.toISOString();
   }
 
@@ -135,6 +135,24 @@ function parseSince(since: string): string | null {
   }
 
   return null;
+}
+
+const RECENT_SEARCH_WINDOW_MS = 7 * 86_400_000;
+
+export function normalizeRecentSearchStartTime(
+  since: string,
+  now = new Date()
+): { startTime: string | null; clamped: boolean } {
+  const parsed = parseSince(since, now);
+  if (!parsed) return { startTime: null, clamped: false };
+
+  const earliest = new Date(now.getTime() - RECENT_SEARCH_WINDOW_MS);
+  const requested = new Date(parsed);
+  if (requested < earliest) {
+    return { startTime: earliest.toISOString(), clamped: true };
+  }
+
+  return { startTime: requested.toISOString(), clamped: false };
 }
 
 async function apiGet(url: string): Promise<RawResponse> {
@@ -181,9 +199,15 @@ export async function search(
   // Build time filter
   let timeFilter = "";
   if (opts.since) {
-    const startTime = parseSince(opts.since);
+    const normalized = normalizeRecentSearchStartTime(opts.since);
+    const startTime = normalized.startTime;
     if (startTime) {
       timeFilter = `&start_time=${startTime}`;
+      if (normalized.clamped) {
+        console.error(
+          `Warning: X recent search only supports the last 7 days; clamped --since ${opts.since} to ${startTime}.`
+        );
+      }
     }
   }
 

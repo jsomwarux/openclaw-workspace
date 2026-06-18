@@ -1,0 +1,135 @@
+{
+  "user": {
+    "created_at": "2024-04-02T23:41:58.000Z",
+    "name": "KingDEmark",
+    "username": "KingDEmark",
+    "public_metrics": {
+      "followers_count": 246,
+      "following_count": 419,
+      "tweet_count": 2271,
+      "listed_count": 0,
+      "like_count": 30881,
+      "media_count": 444
+    },
+    "id": "1775307655810052096",
+    "description": "AI Automation Specialist | Building with n8n |\nCM @official_DDay | \nA moving man will one day meet his luck |\nJohn 21:21-25, 14:8-14, 8:58 | Luke 11:5-13"
+  },
+  "tweets": [
+    {
+      "id": "2066500100541550777",
+      "text": "https://t.co/QSVbkeYXF5 https://t.co/g6KyHJERhC",
+      "author_id": "1775307655810052096",
+      "username": "KingDEmark",
+      "name": "KingDEmark",
+      "created_at": "2026-06-15T12:36:32.000Z",
+      "conversation_id": "2066500100541550777",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 180,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/KingDEmark/status/2066500100541550777/photo/1",
+        "https://twitter.com/Abu_Jawaadd/status/2066167144400695642"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/KingDEmark/status/2066500100541550777"
+    },
+    {
+      "id": "2066136464727867882",
+      "text": "I built an AI system that screens CVs, scores them out of 100, and sends personalised result emails automatically.\nNo human needed. No bias. Just pure automation.\nHere's how it works :\n\n#BuildingInPublic #AIAutomation #TechAfrica #n8n #Workflow #Automation https://t.co/RUeQI2q6Ea",
+      "author_id": "1775307655810052096",
+      "username": "KingDEmark",
+      "name": "KingDEmark",
+      "created_at": "2026-06-14T12:31:34.000Z",
+      "conversation_id": "2066136464727867882",
+      "metrics": {
+        "likes": 42,
+        "retweets": 4,
+        "replies": 16,
+        "quotes": 1,
+        "impressions": 1432,
+        "bookmarks": 10
+      },
+      "urls": [
+        "https://x.com/KingDEmark/status/2066136464727867882/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "BuildingInPublic",
+        "AIAutomation",
+        "TechAfrica",
+        "n8n",
+        "Workflow",
+        "Automation"
+      ],
+      "tweet_url": "https://x.com/KingDEmark/status/2066136464727867882"
+    },
+    {
+      "id": "2064938151139799479",
+      "text": "Support Tickets Log sheet \n\n#BuildingInPublic #AIAutomation #n8n #WorkflowAutomation #TechAfrica #NoCode #AITools https://t.co/U7kolIZDvt https://t.co/sVTMLbxhJd",
+      "author_id": "1775307655810052096",
+      "username": "KingDEmark",
+      "name": "KingDEmark",
+      "created_at": "2026-06-11T05:09:54.000Z",
+      "conversation_id": "2064938151139799479",
+      "metrics": {
+        "likes": 6,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 134,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/KingDEmark/status/2064938151139799479/photo/1",
+        "https://twitter.com/KingDEmark/status/2064937330922664276"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "BuildingInPublic",
+        "AIAutomation",
+        "n8n",
+        "WorkflowAutomation",
+        "TechAfrica",
+        "NoCode",
+        "AITools"
+      ],
+      "tweet_url": "https://x.com/KingDEmark/status/2064938151139799479"
+    },
+    {
+      "id": "2064937330922664276",
+      "text": "I just built an AI-powered support ticket system that reads customer complaints, classifies them &amp; routes them to the right department automatically.\nZero manual sorting. Zero missed tickets.\nHere's how it works: \n\n#BuildingInPublic #AIAutomation #Tech #n8n #Automation #NoCode https://t.co/wtS68vhmpc",
+      "author_id": "1775307655810052096",
+      "username": "KingDEmark",
+      "name": "KingDEmark",
+      "created_at": "2026-06-11T05:06:39.000Z",
+      "conversation_id": "2064937330922664276",
+      "metrics": {
+        "likes": 15,
+        "retweets": 1,
+        "replies": 4,
+        "quotes": 1,
+        "impressions": 368,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://x.com/KingDEmark/status/2064937330922664276/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "BuildingInPublic",
+        "AIAutomation",
+        "Tech",
+        "n8n",
+        "Automation",
+        "NoCode"
+      ],
+      "tweet_url": "https://x.com/KingDEmark/status/2064937330922664276"
+    }
+  ]
+}

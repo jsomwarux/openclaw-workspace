@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- Clamp `--since` values older than the X recent-search 7-day window before calling the API, warning on stderr instead of failing the run with a 400.
+
 ## v2.3.0 (2026-02-09)
 
 ### Fixed — Remove LLM Hallucinations

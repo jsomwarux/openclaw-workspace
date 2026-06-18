@@ -7,4 +7,4 @@ Score X research outputs against these yes/no checks:
 3. Does it cite enough context for the user to trust the synthesis?
 4. Does it map findings to a concrete content, product, or strategy action when appropriate?
 5. Does it avoid fabricated claims about sentiment or consensus?
-6. Does it keep paid API usage bounded with sensible limits?
+6. Does it keep paid API usage bounded with sensible limits and stay inside the X recent-search 7-day window?

@@ -1,0 +1,251 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 14825,
+      "following_count": 246,
+      "tweet_count": 11896,
+      "listed_count": 102,
+      "like_count": 5539,
+      "media_count": 1563
+    },
+    "name": "Romàn",
+    "id": "1893653481858433024",
+    "description": "Building an AI GTM brain https://t.co/5nFyO2JBSm (YC P26)\n2000+ customers are using GojiberryAI daily !",
+    "created_at": "2025-02-23T13:26:25.000Z",
+    "username": "romanbuildsaas"
+  },
+  "tweets": [
+    {
+      "id": "2067114878016577585",
+      "text": "Peak @ycombinator demo day experience https://t.co/edNmCeORs5",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-17T05:19:26.000Z",
+      "conversation_id": "2067114878016577585",
+      "metrics": {
+        "likes": 8,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 756,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://twitter.com/RaphaelDabadie/status/2066917845909577758"
+      ],
+      "mentions": [
+        "ycombinator"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2067114878016577585"
+    },
+    {
+      "id": "2066605189130486264",
+      "text": "No one wants to admit this, but the Steve Wozniak / Steve Jobs era of \"technical founder + business founder\" is over.\n\nFor 40 years the model was the same.\n\nOne founder builds. One founder sells.\n\nThat split made sense when writing code took a CS degree and distribution took a https://t.co/uS4uMnQcsv",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-15T19:34:07.000Z",
+      "conversation_id": "2066605189130486264",
+      "metrics": {
+        "likes": 83,
+        "retweets": 8,
+        "replies": 28,
+        "quotes": 5,
+        "impressions": 5245,
+        "bookmarks": 35
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2066605189130486264/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2066605189130486264"
+    },
+    {
+      "id": "2066254497035526426",
+      "text": "\"Being in San Francisco doesn't matter. You can build a company from anywhere.\"\n\nYou're right.\n\nToday you can build from Paris, Stockholm, Lisbon, even a remote village in Transylvania.\n\nBut San Francisco helps. In ways you won't understand until you're here.\n\nLast week someone https://t.co/QqcEsgDJqW",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-14T20:20:35.000Z",
+      "conversation_id": "2066254497035526426",
+      "metrics": {
+        "likes": 236,
+        "retweets": 7,
+        "replies": 43,
+        "quotes": 2,
+        "impressions": 18317,
+        "bookmarks": 66
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2066254497035526426/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2066254497035526426"
+    },
+    {
+      "id": "2066101525127315721",
+      "text": "Work - gym - sleep - repeat https://t.co/E1yoSTWiOL",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-14T10:12:44.000Z",
+      "conversation_id": "2066101525127315721",
+      "metrics": {
+        "likes": 29,
+        "retweets": 3,
+        "replies": 10,
+        "quotes": 0,
+        "impressions": 3091,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://twitter.com/pierreeliottlal/status/2066037831626362988"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2066101525127315721"
+    },
+    {
+      "id": "2065921510213361811",
+      "text": "We're hiring a Social Content Manager at GojiberryAI.\n\nFull remote.\n\nLooking for someone who can become one of the faces of the company and create UGC-style content for TikTok, Instagram Reels, YouTube Shorts, LinkedIn and X.\n\nIf you love being on camera, understand how to grab",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-13T22:17:25.000Z",
+      "conversation_id": "2065921510213361811",
+      "metrics": {
+        "likes": 88,
+        "retweets": 4,
+        "replies": 20,
+        "quotes": 0,
+        "impressions": 6652,
+        "bookmarks": 31
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2065921510213361811"
+    },
+    {
+      "id": "2065861427332841540",
+      "text": "BREAKING: Fable 5 just got banned outside the US.\n\nWhile it makes a good headline (and there are likely second-order consequences), I'm not worried.\n\nIf you’re running an agency or a SaaS, you don't need the latest model to make money.\n\nI book 20+ demos a week running GTM solo https://t.co/89sfm5H1v0",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-13T18:18:40.000Z",
+      "conversation_id": "2065861427332841540",
+      "metrics": {
+        "likes": 29,
+        "retweets": 2,
+        "replies": 8,
+        "quotes": 0,
+        "impressions": 2685,
+        "bookmarks": 9
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2065861427332841540/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2065861427332841540"
+    },
+    {
+      "id": "2065858965465121060",
+      "text": "Must watch if you want to get a better sales pipeline 👇 https://t.co/pBnONzjUKb",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-13T18:08:53.000Z",
+      "conversation_id": "2065858965465121060",
+      "metrics": {
+        "likes": 25,
+        "retweets": 2,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 7659,
+        "bookmarks": 37
+      },
+      "urls": [
+        "https://twitter.com/pierreeliottlal/status/2065858790948561088"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2065858965465121060"
+    },
+    {
+      "id": "2065535196565483662",
+      "text": "How to Find and Contact High-Intent Leads in 2026 (Full Tutorial) \n\nI show exactly how we do it:\n\n- Find prospects actively researching solutions like yours\n-  Track competitor engagement and buying signals\n-  Identify people changing jobs, hiring, raising funds, or engaging with https://t.co/XqExir4b3p",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-12T20:42:21.000Z",
+      "conversation_id": "2065535196565483662",
+      "metrics": {
+        "likes": 59,
+        "retweets": 7,
+        "replies": 7,
+        "quotes": 1,
+        "impressions": 12504,
+        "bookmarks": 119
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2065535196565483662/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2065535196565483662"
+    },
+    {
+      "id": "2065137135834034485",
+      "text": "If you're a little too pushy on Reddit and end up getting banned or called out, don't beat yourself up too much. \n\nReddit has become so crazy that they're now banning entire subreddits 😂😂 https://t.co/lpjU0V08ic",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-11T18:20:36.000Z",
+      "conversation_id": "2065137135834034485",
+      "metrics": {
+        "likes": 79,
+        "retweets": 2,
+        "replies": 41,
+        "quotes": 4,
+        "impressions": 17571,
+        "bookmarks": 14
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2065137135834034485/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2065137135834034485"
+    },
+    {
+      "id": "2064913485771981007",
+      "text": "10 @ycombinator's Lessons all Founder Should Know :\n(We grew from $0 to $250k MRR in under a year with this approach)\n\n1/ Launch now, not when it's \"ready\". A mediocre product in front of real users teaches you more in a week than 6 months of polishing in the dark. Ship the https://t.co/YzneNEZZfD",
+      "author_id": "1893653481858433024",
+      "username": "romanbuildsaas",
+      "name": "Romàn",
+      "created_at": "2026-06-11T03:31:53.000Z",
+      "conversation_id": "2064913485771981007",
+      "metrics": {
+        "likes": 158,
+        "retweets": 16,
+        "replies": 35,
+        "quotes": 4,
+        "impressions": 8725,
+        "bookmarks": 128
+      },
+      "urls": [
+        "https://x.com/romanbuildsaas/status/2064913485771981007/photo/1"
+      ],
+      "mentions": [
+        "ycombinator"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/romanbuildsaas/status/2064913485771981007"
+    }
+  ]
+}

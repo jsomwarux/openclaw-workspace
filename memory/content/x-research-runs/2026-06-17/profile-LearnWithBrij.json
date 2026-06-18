@@ -1,0 +1,256 @@
+{
+  "user": {
+    "description": "AI Architect | 725K+ on LinkedIn | Breaking down AI engineering, agentic systems & enterprise architecture | Building in public",
+    "created_at": "2026-03-29T03:42:21.000Z",
+    "public_metrics": {
+      "followers_count": 2937,
+      "following_count": 55,
+      "tweet_count": 263,
+      "listed_count": 20,
+      "like_count": 397,
+      "media_count": 152
+    },
+    "username": "LearnWithBrij",
+    "name": "Brij Pandey",
+    "id": "2038099371556823041"
+  },
+  "tweets": [
+    {
+      "id": "2066964800664711385",
+      "text": "LeetCode felt impossible...\n\nUntil I realized most coding interviews are built around the SAME patterns.\n\nMaster these 15 patterns, and you'll solve 80%+ of interview questions faster 👇\n\n1️⃣ Prefix Sum\n\nUse when:\n→ range sum queries\n→ cumulative calculations\n\nCommon problems: https://t.co/J7L48jf26V",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-16T19:23:05.000Z",
+      "conversation_id": "2066964800664711385",
+      "metrics": {
+        "likes": 61,
+        "retweets": 15,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 1526,
+        "bookmarks": 50
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066964800664711385/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066964800664711385"
+    },
+    {
+      "id": "2066854354251042936",
+      "text": "2 years ago, knowing 2 AI words was enough:\n\n→ LLM\n→ Prompt\n\nThat was the entire conversation.\n\nToday?\n\nYou're expected to know:\n\n• RAG\n• Embeddings\n• Vector Databases\n• Hybrid Search\n• Reranking\n• Tool Calling\n• Memory\n• Agents\n• MCP\n• A2A\n• Guardrails\n• https://t.co/W74p2XlGFR",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-16T12:04:13.000Z",
+      "conversation_id": "2066854354251042936",
+      "metrics": {
+        "likes": 42,
+        "retweets": 9,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 663,
+        "bookmarks": 26
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066854354251042936/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066854354251042936"
+    },
+    {
+      "id": "2066599494939238800",
+      "text": "Everyone is building AI agents.\nVery few understand the agentic frameworks that actually power them.\n\nIn 2025, two frameworks dominate agent development —\nnot as competitors, but as complementary layers:\n\nn8n — Visual Workflow Automation\n\nWhat it does\n• Visually connects AI https://t.co/Sf3bQOOGj8",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-15T19:11:29.000Z",
+      "conversation_id": "2066599494939238800",
+      "metrics": {
+        "likes": 26,
+        "retweets": 8,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 1170,
+        "bookmarks": 25
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066599494939238800/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066599494939238800"
+    },
+    {
+      "id": "2066500538246877423",
+      "text": "Data Analyst Vs Data Engineer Vs Data Scientist https://t.co/f6sWJPgW0p",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-15T12:38:16.000Z",
+      "conversation_id": "2066500538246877423",
+      "metrics": {
+        "likes": 87,
+        "retweets": 13,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1549,
+        "bookmarks": 36
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066500538246877423/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066500538246877423"
+    },
+    {
+      "id": "2066193074620133634",
+      "text": "Top 20 SQL Interview Questions  \n\nBookmark it for later \n\n#sql #database https://t.co/CfJvwF5GA7",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-14T16:16:31.000Z",
+      "conversation_id": "2066193074620133634",
+      "metrics": {
+        "likes": 61,
+        "retweets": 8,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 1368,
+        "bookmarks": 49
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066193074620133634/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "sql",
+        "database"
+      ],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066193074620133634"
+    },
+    {
+      "id": "2066151911599063155",
+      "text": "LeetCode was HARD until I Learned these 15 Patterns:\n\n1. Prefix Sum\n2. Two Pointers\n3. Sliding Window\n4. Fast &amp; Slow Pointers\n5. LinkedList In-place Reversal\n6. Monotonic Stack\n7. Top ‘K’ Elements\n8. Overlapping Intervals\n9. Modified Binary Search\n10. Binary Tree Traversal\n11. https://t.co/5KvPwdsJsB",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-14T13:32:57.000Z",
+      "conversation_id": "2066151911599063155",
+      "metrics": {
+        "likes": 189,
+        "retweets": 40,
+        "replies": 6,
+        "quotes": 1,
+        "impressions": 5258,
+        "bookmarks": 153
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066151911599063155/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066151911599063155"
+    },
+    {
+      "id": "2065735555967791460",
+      "text": "Stop building RAG like it’s still 2022.\n\nChunk → Embed → Retrieve → Generate\nThat pipeline works…\nuntil you try to ship it to production.\n\nThe moment RAG meets real users, real data, and real edge cases — it breaks.\n\nI mapped what production-grade RAG actually needs.\nMost https://t.co/tyu8R5fMVn",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-13T09:58:30.000Z",
+      "conversation_id": "2065735555967791460",
+      "metrics": {
+        "likes": 245,
+        "retweets": 46,
+        "replies": 11,
+        "quotes": 1,
+        "impressions": 6843,
+        "bookmarks": 174
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2065735555967791460/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2065735555967791460"
+    },
+    {
+      "id": "2065407843600359658",
+      "text": "Stop wasting hours trying to learn AI. 📘📚\n\nI have already done it for you.\n\nWith one list. Zero confusion. And no fluff\n\n📹 Videos:\n\n1. LLM Introduction: https://t.co/FJqJUEXX7T\n\n2. LLMs from Scratch: https://t.co/wgYSqOQEXw\n\n3. Agentic AI Overview (Stanford): https://t.co/uMDojSzQCN",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-12T12:16:17.000Z",
+      "conversation_id": "2065407843600359658",
+      "metrics": {
+        "likes": 32,
+        "retweets": 15,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 1186,
+        "bookmarks": 40
+      },
+      "urls": [
+        "http://lnkd.in/dMqbaZdK",
+        "http://lnkd.in/dYYwEhYy",
+        "https://x.com/LearnWithBrij/status/2065407843600359658/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2065407843600359658"
+    },
+    {
+      "id": "2065294156424175673",
+      "text": "Normalization in SQL 📘📚\n\nsave it for later ✅\n\n#sql https://t.co/wsP508gI5E",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-12T04:44:32.000Z",
+      "conversation_id": "2065294156424175673",
+      "metrics": {
+        "likes": 49,
+        "retweets": 2,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 911,
+        "bookmarks": 22
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2065294156424175673/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "sql"
+      ],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2065294156424175673"
+    },
+    {
+      "id": "2065065374123688220",
+      "text": "LLM ENGINEERING — MASTER TREE 🧠\n\nLLM Engineering\n│\n├── 01. Foundations\n│ ├── Transformers\n│ ├── Attention Mechanism\n│ ├── Tokens &amp; Tokenization\n│ ├── Embeddings\n│ ├── Context Windows\n│ └── Inference Basics\n│\n├── 02. Model Landscape\n│ ├── GPT https://t.co/YlZSCi6KRt",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-11T13:35:26.000Z",
+      "conversation_id": "2065065374123688220",
+      "metrics": {
+        "likes": 81,
+        "retweets": 15,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 1544,
+        "bookmarks": 46
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2065065374123688220/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2065065374123688220"
+    }
+  ]
+}
