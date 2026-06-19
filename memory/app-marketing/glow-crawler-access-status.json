@@ -1,34 +1,34 @@
 {
-  "date": "2026-06-01",
+  "date": "2026-06-18",
   "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-  "all_clear": false,
+  "all_clear": true,
   "rows": [
     {
       "url": "https://glowindex.co/robots.txt",
-      "status_code": 403,
-      "ok": false,
-      "cloudflare_challenge": true,
-      "server": "cloudflare",
-      "content_type": "text/html; charset=UTF-8",
-      "error": "HTTP 403"
+      "status_code": 200,
+      "ok": true,
+      "cloudflare_challenge": false,
+      "server": "Google Frontend",
+      "content_type": "text/plain",
+      "error": null
     },
     {
       "url": "https://glowindex.co/sitemap.xml",
-      "status_code": 403,
-      "ok": false,
-      "cloudflare_challenge": true,
-      "server": "cloudflare",
-      "content_type": "text/html; charset=UTF-8",
-      "error": "HTTP 403"
+      "status_code": 200,
+      "ok": true,
+      "cloudflare_challenge": false,
+      "server": "Google Frontend",
+      "content_type": "application/xml",
+      "error": null
     },
     {
       "url": "https://glowindex.co/llms.txt",
-      "status_code": 403,
-      "ok": false,
-      "cloudflare_challenge": true,
-      "server": "cloudflare",
-      "content_type": "text/html; charset=UTF-8",
-      "error": "HTTP 403"
+      "status_code": 200,
+      "ok": true,
+      "cloudflare_challenge": false,
+      "server": "Google Frontend",
+      "content_type": "text/plain; charset=UTF-8",
+      "error": null
     },
     {
       "url": "https://glowindex.co/rankings",
@@ -41,22 +41,22 @@
     },
     {
       "url": "https://glowindex.co/categories",
-      "status_code": 403,
-      "ok": false,
-      "cloudflare_challenge": true,
-      "server": "cloudflare",
-      "content_type": "text/html; charset=UTF-8",
-      "error": "HTTP 403"
+      "status_code": 200,
+      "ok": true,
+      "cloudflare_challenge": false,
+      "server": "Google Frontend",
+      "content_type": "text/html; charset=utf-8",
+      "error": null
     },
     {
       "url": "https://glowindex.co/categories/serum",
-      "status_code": 403,
-      "ok": false,
-      "cloudflare_challenge": true,
-      "server": "cloudflare",
-      "content_type": "text/html; charset=UTF-8",
-      "error": "HTTP 403"
+      "status_code": 200,
+      "ok": true,
+      "cloudflare_challenge": false,
+      "server": "Google Frontend",
+      "content_type": "text/html; charset=utf-8",
+      "error": null
     }
   ],
-  "next_action": "If any row is not ok, add narrow Cloudflare/Replit skip rules for discovery/category paths, then rerun this command."
+  "next_action": "Crawler gate is clear. The first Glow SEO/GEO batch is live; continue post-deploy measurement before building another category or methodology page."
 }

@@ -189,41 +189,56 @@ Track:
 
 ## Current App Strategy
 
+### 2026-06-18 Opus Reset
+This reset overrides older Vista-first allocation until a later written decision memo changes it.
+
+Rule: app work stays under 10 hours/week and subordinate to consulting cash/proof.
+
+Order:
+1. Action Arena gate.
+2. Glow SEO/GEO.
+3. Nash weekly receipt cap.
+4. Vista hold.
+
+Paid UGC/creator rule: paused for all apps except a future capped Action Arena kickoff test. That exception is unavailable until the app is live, attribution is ready, kickoff timing is near, and the first App Store gate is closed. Nash is a hard no; Glow stays low priority and requires compliance scripting.
+
 ### Vista
-Stage: active.
-Primary loop: Vista-first artifact-led growth sprint: movie taste/ranking cards, 1-100 rating hooks, and taste match/clash comparisons.
-Secondary loops: App Store optimization, SEO/AI-search comparison pages, directory submissions, and limited ReelFarm/TikTok tests after manual-post/tracking gates are healthy.
-Reddit: careful movie discussion/rating-system posts; no hard app pitch.
-X: @jts_14 for build/product/milestones, not heavy product spam.
-Weekly metric: TikTok views/saves/comments, App Store downloads, landing visits if available.
-Current cadence rule: 5-7 total app posts/week across the whole portfolio, not 4-5 posts/week per app. Vista should receive 60-70% of the app-marketing slots during the next sprint.
+Stage: paused.
+Primary loop: dormant until proven share-to-install or $10K/month consulting trigger.
+Secondary loops: passive monitoring of existing SEO/App Store surfaces only.
+Reddit/X/TikTok/ReelFarm: hold. No routine Vista content, directory push, taste-card build sprint, or feature work.
+Weekly metric: passive Search Console/App Store data if available.
+Current cadence rule: zero routine app-marketing slots.
 
 ### Nash Satoshi
-Stage: active.
-Primary loop: secondary weekly ranking-receipt and model-disagreement content tied to live data.
-Secondary loops: SEO methodology pages, crypto/tool directories, X account growth.
+Stage: capped.
+Primary loop: one human-reviewed weekly ranking-receipt/model-disagreement receipt when live data creates a real delta.
+Secondary loops: methodology page and research-only waitlist only.
 Reddit: crypto game-theory/methodology discussion; product absent or lightly referenced only when safe.
 X: @NashSatoshi methodology/rankings only; no return promises.
-Weekly metric: site visits, ranking page visits, X engagement, TikTok engagement.
-Current cadence rule: 1-2 weekly app-marketing slots unless a strong live ranking update creates a timely artifact.
+Weekly metric: methodology-page visits, receipt clicks, waitlist signups. Impressions alone are vanity.
+Current cadence rule: one receipt/week max; no daily generic Nash cadence.
 
 ### Glow Index
-Stage: active for durable discovery planning; crawlability/measurement blocked before scale.
-Primary current loop: skincare SEO/GEO, directory readiness, and safe product/category discovery surfaces.
-Primary future loop: dedicated skincare TikTok/ReelFarm only after measurement source is connected.
-Secondary loops: ingredient/product comparison pages, beauty directories, and education-first skincare content.
+Stage: primary ongoing app bet.
+Primary current loop: skincare SEO/GEO, money pages, methodology trust anchor, and safe product/category discovery surfaces.
+Primary future loop: dedicated skincare TikTok/ReelFarm only after SEO signal and measurement path are healthy.
+Secondary loops: ingredient/product comparison pages and education-first skincare content after crawler access is clean.
+Paid UGC/creators: paused and low priority. Consider only after crawler/indexing, claim-safety, analytics, and compliant creator scripts are stable.
 Reddit: very high caution; skincare subs are strict and skeptical. Default to research/ingredient education, not app promo.
-Weekly metric: site visits/search clicks/product searches first; TikTok engagement only after account/execution + metrics path is confirmed.
+Weekly metric: indexed pages, Search Console impressions/clicks, pages ranked top 20, affiliate/email conversion, AI citations when detectable.
 Current blocker: `https://glowindex.co` returns 403 Cloudflare challenge for `/robots.txt`, `/sitemap.xml`, `/llms.txt`, `/categories`, and `/categories/serum`; do not expand pSEO or rely on category/directory crawlability until `python3 scripts/glow_crawler_check.py` reports all routes clear.
 Current cadence rule: no recurring social volume. Use SEO/AI-search and safe page assets first.
 
 ### Action Arena
-Stage: priority build/prelaunch.
+Stage: gate sprint, then park.
 Definition: fantasy football league structure + sports betting strategy. Players join leagues, receive a weekly fake budget (default $100), and compete on profit through straight bets, parlays, and teasers. No real money is wagered.
-Primary loop: @dynastyjig native sports betting/fantasy strategy content with Action Arena as invisible backdrop.
-Secondary loops: prelaunch waitlist, SEO pages around fake-money sports betting league / betting strategy league / fantasy football betting game, football-season launch plan.
+Primary loop: App Store submission by 2026-07-15 and private 20-commissioner support list.
+Secondary loops: football-season launch plan after submission; @dynastyjig stays niche-growth/invisible-backdrop unless launch asset exists.
+Optional launch test: capped paid UGC via SideShift or Home From College only after app live, loop instrumented, per-creator attribution ready, and football kickoff timing is near. Test 2-3 creators with a fixed small budget inside the app envelope before any scale.
 Reddit: strategy prompts and league-mechanics discussions only; no direct product pitch by default.
-Weekly metric: @dynastyjig engagement, waitlist signups when live, beta testers, league creation once built.
+Weekly metric: EAS/TestFlight/App Store status, 20 named commissioners; post-launch leagues created, invite-to-join, weekly active leagues, week-2 retention, and if UGC is tested, creator-level attributable installs.
+Current blocker: source is found at `/Users/jtsomwaru/projects/action-arena`; first action is confirm EAS secrets + App Store Connect/TestFlight state and produce/locate the submission build, not create more launch copy.
 
 ### Dynasty Fantasy Football Simulator
 Stage: separate sports product lane.

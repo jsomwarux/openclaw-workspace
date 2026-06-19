@@ -5,6 +5,14 @@
 ## Logging Rule
 Every entry MUST have six fields: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete guardrail/rule, (4) regression check that would catch recurrence, (5) owner surface updated, (6) verification/date. A mistake entry without a regression check + owner surface is incomplete — finish it before moving on. Reference: `docs/agents/regression-checks.md`.
 
+## 2026-06-18 — Glow measurement update stalled after status promises
+- **Failure:** JT had to ask "Update?" repeatedly during the Glow post-deploy measurement step because I twice said I was finishing the baseline note, then did not produce the artifact or proactively close the loop.
+- **Root cause:** I treated the active-conversation status reply as progress instead of anchoring the work to an artifact gate. The task was no longer code-heavy, so I let measurement-note writing drift behind repeated observational checks.
+- **Guardrail/rule:** For measurement or research tasks, every "working on it" status must name the current artifact gate: no artifact yet, artifact drafted, artifact verified, Mission Control updated, or blocker logged. If an update says "finishing the note," the next user-visible update must include the file path and task state, not another intent statement.
+- **Regression check:** Before answering any future "Update?" on measurement work, run `test -f memory/app-marketing/[dated-measurement-note].md && rg -n "Decision|Next check|Source-tag" memory/app-marketing/[dated-measurement-note].md`; if the file does not exist, create it before replying unless there is a real blocker.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; current Glow measurement workflow.
+- **Verification/date:** 2026-06-18 — logged the mistake before continuing, created `memory/app-marketing/glow-post-deploy-measurement-2026-06-18.md`, updated stale crawler/serum guidance, and verified syntax/whitespace checks.
+
 ## 2026-06-16 — App Marketing prompt stalled after status replies
 - **Failure:** JT had to ask for repeated updates on the Claude Fable App Marketing Strategy + Automation prompt because I sent status/context messages but did not create the local draft before pausing or getting interrupted.
 - **Root cause:** I let the active-conversation update rule dominate the execution loop. I reported intent and gathered enough context, but did not anchor the work to the first irreversible artifact gate: local file exists.

@@ -30,6 +30,22 @@ Tier prospects by strategic value before creating outreach tasks: proof proximit
 - **T3:** 40-59. Use batch market-sensing only. No custom build, deck, demo, or individual client folder. Reply promotes to T2.
 - **Hold/reject:** under 40 or fails hard gate. Missing LinkedIn/email creates a channel-enrichment next step, not a send task.
 
+## Property-Management Artifact-Led Sprint — June 2026
+For the next 30-day acquisition sprint, property management is the only new cold-outreach lane unless JT explicitly redirects. Pause wholesale, insurance/Agentforce, trades, and generic T3 sends except already-due follow-ups.
+
+The first PM batch should use reusable proof-safe artifacts in M1, not curiosity-only copy:
+- Start with 20-25 NYC/metro PM prospects from existing lookalike lists.
+- Lead with one reusable anonymized/synthetic PM artifact: vendor COI/insurance-expiration tracker first, then rent-review queue or PM Front Desk + Exception Desk if stronger for the prospect.
+- Artifact format: 60-90s Loom plus one annotated screenshot/one-pager when available. The artifact must show input, exception queue, review owner, approved next action, and audit trail.
+- Keep tiers as effort throttles, not send throttles. T1/T2 can receive the reusable artifact; custom research, custom demos, decks, and client folders stay reply-triggered.
+- Contact completeness still applies before calling a packet outreach-ready: LinkedIn profile URL plus verified email. LinkedIn-first testing is allowed when buyer/role is strong, but email is required before an email pivot.
+
+Proof and referral safety remains stricter than speed:
+- Do not name Altmark, Aya, Yair, Navid, Matt, or any private client detail unless JT has explicit permission.
+- Do not use private screenshots, tenant data, balances, addresses, policies, internal paths, or unverified metrics.
+- Do not ask Altmark/Aya for referrals until acceptance/payment clarity, proof capture, and permission/anonymization gates are clean.
+- No fourth touch on silence. Two LinkedIn touches plus one email pivot is the stop rule; re-enter only on a concrete trigger.
+
 **Step 1 — Update files:**
 - Mark outreach-draft.md status line with what was sent, the date, and the next window
 - Update the shortlist's contact line with current M-status and next action

@@ -66,12 +66,24 @@ def check(url: str) -> dict:
 
 def main() -> int:
     rows = [check(url) for url in URLS]
+    all_clear = all(r["ok"] for r in rows)
     result = {
         "date": date.today().isoformat(),
         "user_agent": UA,
-        "all_clear": all(r["ok"] for r in rows),
+        "all_clear": all_clear,
         "rows": rows,
-        "next_action": "If any row is not ok, add narrow Cloudflare/Replit skip rules for discovery/category paths, then rerun this command.",
+        "next_action": (
+            "Crawler gate is clear. The first Glow SEO/GEO batch is live; "
+            "continue post-deploy measurement before building another "
+            "category or methodology page."
+            if all_clear
+            else (
+                "If any discovery/category row is not ok, first verify the "
+                "skincare-rankings proxy.ts public-route fix is deployed/rebuilt. "
+                "These paths previously redirected to Clerk sign-in, which then "
+                "surfaced as a Cloudflare challenge on accounts.glowindex.co."
+            )
+        ),
     }
     OUT.write_text(json.dumps(result, indent=2))
     print(json.dumps(result, indent=2))

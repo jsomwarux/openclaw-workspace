@@ -51,10 +51,10 @@ Does NOT own:
 Use `memory/app-marketing/app-registry.md` for active/inactive status and channel routing.
 
 Current defaults:
-- Vista: movie taste/rating-system content; careful FilmTok/TikTok concept support; Reddit only as movie discussion/rating-system value.
-- Nash Satoshi: crypto methodology/game-theory/incentive content; no price-prediction claims; Reddit only as analysis/methodology discussion.
-- Glow Index: pending until registry says active.
-- Action Arena: keep under Sports GM/@dynastyjig until landing/waitlist exists.
+- Vista: paused; monitor only unless app-registry un-pause trigger fires.
+- Nash Satoshi: capped to one weekly human-reviewed methodology/ranking-disagreement receipt; no daily generic drafts and no price-prediction claims.
+- Glow Index: primary ongoing app bet through SEO/GEO page work, not recurring social volume.
+- Action Arena: gate sprint only until App Store submission path is closed; keep public launch work parked until football season.
 - Dynasty Fantasy Football Simulator: separate sports product lane; not Action Arena.
 
 ## Platform Rules
@@ -90,6 +90,8 @@ Current defaults:
 3. Check `weekly-scoreboard.md` for measurement gaps and recent performance.
 4. If metrics are missing, prefer automated collection first: ensure posted items are represented in `memory/app-marketing/post-registry.jsonl`, then run `python3 scripts/app_marketing_collect_metrics.py`. Use `memory/app-marketing/metrics-inbox.jsonl` manual rows only as fallback.
 5. Decide whether to generate, skip, or only request metrics.
+   - 2026-06-18 reset: default to `SKIP_CONTENT_VOLUME` unless the item directly supports Action Arena gate, Glow SEO/GEO pages, or the one weekly Nash receipt cap.
+   - Never generate Vista routine content while the registry status is paused.
 6. Before drafting, apply `optimization-rules.md`: reuse winning structures/topics/specificity, avoid losing feature combinations, and never copy exact wording from winners.
 7. Map every generated item to a named test in `experiment-calendar.md`. If no current experiment supports the item, skip it or write `NO_EXPERIMENT_MATCH` with the reason.
 8. Check latest ReelFarm Intel reports for TikTok/slideshow trend patterns and apply only if they fit the app's measured winners.

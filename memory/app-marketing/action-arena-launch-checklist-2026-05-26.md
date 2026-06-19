@@ -25,6 +25,7 @@ Do not do yet:
 - Do not run paid acquisition until store conversion assets are tested.
 - Do not use generic TikTok/ReelFarm direct posting while account trust is unresolved.
 - Do not promote Action Arena as a sportsbook, betting tips product, or gambling edge.
+- Do not brief or pay creators until the app is live, attribution is ready, and kickoff timing is near.
 
 ## Apple/App Store Guardrails
 
@@ -117,6 +118,19 @@ Proof needed before stronger launch claims:
 - At least one completed sample week or simulated week.
 - App Store approval status.
 - Any early TestFlight/beta interest signal.
+
+## Optional Capped UGC Test
+
+This is not part of the submission gate. It unlocks only after Action Arena is live, attribution is ready, and football kickoff timing is close.
+
+Approved test shape:
+- Platform/vendor: SideShift for organic reach or Home From College for college sports creators.
+- Size: 2-3 creators before any scale.
+- Budget: fixed small budget inside the app-marketing envelope.
+- Attribution: per-creator link, promo code, or equivalent App Store campaign tag.
+- Creative guardrails: fake budget, group-chat league, no real money, no sportsbook or betting-edge claims.
+- Success threshold: one creator drives attributable installs above a written threshold and those installs create or join leagues.
+- Scale rule: no scale on views alone.
 
 ## @dynastyjig Content Hooks
 

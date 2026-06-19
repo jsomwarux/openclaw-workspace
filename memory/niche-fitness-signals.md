@@ -36,3 +36,7 @@ Last reset: 2026-06-01
 2026-06-15 [EMERGING] niche=property_management — Property-management software results continue to show market growth and uneven AI adoption, with no verified new high-severity development since recent PM AI signals.
 2026-06-16 [CONFIRMS] niche=Agentforce — Salesforce's planned $3.6B Fin acquisition materially strengthens Agentforce customer-service automation and confirms enterprise AI-agent consolidation.
 2026-06-16 [EMERGING] niche=construction — Construction AI agent adoption is exposing platform data-access conflicts, creating discovery and integration-risk work for automation consultants.
+2026-06-18 [EMERGING] niche=agentforce — Agentforce 360 capabilities remain a relevant platform-tracking signal, but no verified new high-severity launch/pricing/action deadline surfaced in this scan.
+2026-06-18 [CONFIRMS] niche=property-management — Property management software market growth remains a broad demand backdrop; today's result did not create an immediate action signal.
+2026-06-18 [CONFIRMS] niche=wholesale-distribution — Demand-planning and warehouse automation interest remains visible in distributor coverage, but not as a new urgent/high finding.
+2026-06-18 [EMERGING] niche=enterprise-rag — Enterprise knowledge assistants increasingly emphasize traceable answers tied to source documents, versions, and approvals.

@@ -4,13 +4,14 @@
 > Bootstrap figure covers only `AGENTS.md`, `MEMORY.md`, `TOOLS.md`, `HEARTBEAT.md`.
 
 ## JT Snapshot
-- JT Somwaru, America/New_York; Telegram primary. Edge: business systems/product-catalog ops translated into practical AI implementation.
-- North Star: financial freedom through high-earning, low-maintenance streams; priority order consulting, apps/marketing, crypto, health.
+- JT Somwaru, America/New_York; Telegram primary; ops-to-AI implementation edge.
+- North Star: financial freedom via consulting first, then apps/marketing, crypto, health.
 - Constraints: no relocation, protect sleep/health/NYC stability, avoid developer-only positioning.
 - Detail: `docs/memory/MEMORY-full.md#jt-snapshot`.
 
 ## Hard Rules / Security Essentials
 - No auth/model/OpenClaw/sacred-file/credential changes without explicit approval; never expose keys outside approved auth/env homes.
+- Credential/cache artifacts must stay outside workspace memory; app-marketing GA4 OAuth cache belongs under `~/.cache/openclaw/app-marketing/`, not `memory/`.
 - Never send third-party outreach for JT; draft/sync only.
 - Detail: `docs/memory/MEMORY-full.md#hard-rules--security-essentials`.
 
@@ -25,9 +26,10 @@
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
-- North Star layer added 2026-06-11: scoreboard `memory/north-star.md`, live pipeline `memory/pipeline.jsonl`, backlog `memory/pipeline-backlog.md`, Send Queue `memory/send-queue.md`, helper `scripts/north_star_pipeline.py`.
-- 2026-06-12 Fable decision: no acquisition system is the bottleneck. Enforce 10 sends/week; start with Yair packet + Petri/HPM/Superior M2s; earned income excluding unemployment ($3,375 June) is truth metric.
-- Proof-led referrals/warm intros beat generic LinkedIn warm-up. JT sends. Guyana validation-only unless named buyer/problem/reply exists. Pipeline root: `~/projects/jt-consulting-pipeline/`.
+- North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
+- Cash path: no acquisition-system bottleneck; enforce 10 sends/week starting with Yair packet + Petri/HPM/Superior M2s. Earned consulting income excluding unemployment is truth metric.
+- Proof-led referrals/warm intros beat generic LinkedIn warm-up. JT sends all outreach. Pipeline root: `~/projects/jt-consulting-pipeline/`.
+- 2026-06-18 outreach reset: next 30 days of new cold outreach are property-management only, led by reusable proof-safe artifacts in M1. First asset to package is PM Vendor COI / insurance-expiration tracker; first batch is 20-25 NYC/metro PM prospects; no custom demos/decks or fourth touches before reply. Control doc: `memory/consulting/pm-artifact-led-outreach-sprint-2026-06-18.md`.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix
@@ -36,21 +38,22 @@
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com` is the proof hub; no untested public work. Glow, Nash, and Vista are live app lanes.
-- 2026-06-12 product freeze: Action Arena must be gated (App Store by 2026-07-15 and <=10 hrs/week) or paused; other app lanes wait for revive triggers.
-- App marketing stays proof/measurement driven with no unsupported claims.
+- `jtsomwaru.com` is proof hub; no untested public work. 2026-06-18 reset: Action Arena gate, Glow SEO/GEO, Nash cap, Vista pause.
+- Action Arena must reach App Store path by 2026-07-15 and stay <=10 hrs/week or pause.
+- Action Arena source is at `/Users/jtsomwaru/projects/action-arena`; next gate is Apple Developer Organization transfer, then EAS secrets + TestFlight/App Store readiness before any creator/launch spend.
+- Glow crawler + first SEO/GEO batch are live and verified on production (`3c60c25` includes `2fa05cf`); baseline note is `memory/app-marketing/glow-post-deploy-measurement-2026-06-18.md`. Current blocker: GA4 page/event data exists, but `customEvent:source_tag` is not queryable until `source_tag` is registered as an event-scoped custom dimension. No further Replit rebuild or `/categories/serum` batch before 72h/7d measurement.
+- Paid UGC paused except capped Action Arena kickoff test after app live + attribution; Nash hard no.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
-- Read JT voice/corpus before drafting; first-person proof beats generic advice. Sonnet content crons have guardrails, edit deltas, and $10/month cap.
-- PM Front Desk + Exception Desk is the strongest proof asset; key drafts: Exception Control Plane `memory/drafts/linkedin-exception-control-plane-2026-06-14.md`, paid-agent budget gates `memory/drafts/linkedin-paid-agent-budget-gates-2026-06-15.md`.
-- AI Ops Teardowns should name the public signal and what JT would build, but withhold exact recipes: prompts, schemas, node stack, thresholds, vendors, and proprietary routing logic.
+- Read JT voice/corpus before drafting; first-person proof beats generic advice. Sonnet content crons are capped/guarded.
+- Strongest proof asset: PM Front Desk + Exception Desk / Exception Control Plane.
+- AI Ops Teardowns name the public signal and build angle, but withhold exact prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
-- Consulting-first, employment selective; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
-- Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Job packages use job-application skill + Sonnet.
-- Application materials never include specific consulting client names; resumes and cover letters must use anonymized proof descriptors unless JT explicitly approves an exception.
+- Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
+- Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
 ## Crypto / Finance
@@ -59,14 +62,12 @@
 
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs.
-- Approved Sonnet content model is allowlisted; Moonshot fallback blocked. Phase 2B: watchdog/restart hardened; n8n + Mission Control loopback-bound.
-- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. 2026-06-16 Slice 1.1: mobile nav centered/safe-area-aware; `/consulting` is live Revenue cash-path cockpit; legacy strategy page at `/legacy/consulting`.
+- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`; `/consulting` is live Revenue cockpit.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Phase 7: old night jobs disabled, replaced by 11PM `Night Autonomy Agent` (`f146d8b8`). Current baseline: 45 enabled jobs after 2026-06-16 dynasty-content cancellation.
-- Digest queue: `memory/digest-queue.md`; reminders/FYIs append there. Cron volume guard required; avoid `deleteAfterRun:true`.
-- Morning Brief opens with capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots `jobs.json`. 2026-06-16 cron: 45 enabled, volume guard green; duplicate `lossless-claw` warning persists. Disabled dynasty-content crons: `dynasty-replies-gen`, `reddit-daily-gen`, `Sports GM Weekly Market Report`, `Daily DynastyJig Niche-Growth X Post Pack`.
+- Baseline: 45 enabled jobs; Night Autonomy Agent 11PM; Morning Brief capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots jobs.
+- Digest queue: `memory/digest-queue.md`; cron volume guard required; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
@@ -80,7 +81,7 @@
 ## Integrity / Fabrication Corrections
 - Never fabricate; verify outreach, URLs, deployments, Drive links, and task closure with tool/script evidence.
 - JT corrections require Mistakes Log/rule updates with regression checks. Compacted history: use `lcm_grep`, `lcm_describe`, `lcm_expand_query` before exact claims.
-- External strategy prompts, including Claude Fable prompts, must assume zero prior JT-project knowledge; any named app/project/client being evaluated needs a compact primer before asking the model to decide.
+- External strategy prompts must assume zero prior JT-project knowledge and include a compact primer for named apps/projects/clients.
 - Detail: `docs/memory/MEMORY-full.md#integrity--fabrication-corrections`.
 
 ## Setup State

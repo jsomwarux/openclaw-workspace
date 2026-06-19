@@ -42,6 +42,14 @@ If any gate fails, do not run a creator-rewards campaign yet. Fix the gate first
 
 ## App-Specific Fit
 
+### 2026-06-18 Reset Overlay
+Paid UGC creators are paused for all apps except one future Action Arena kickoff test.
+
+- Action Arena: optional SideShift or Home From College test only after app live, attribution ready, loop instrumented, and kickoff timing. Start with 2-3 creators and a fixed small budget. Scale only if one creator drives attributable installs above a written threshold and those installs create leagues.
+- Nash Satoshi: hard no. Creator hype creates shill/signal risk and is misaligned with research-only positioning.
+- Glow Index: low priority. Consider only with full compliance scripting, stable analytics, and claim-safe asset packs.
+- Vista: paused until its share-card loop is proven or consulting reaches the $10K/month trigger.
+
 ### Vista
 Potentially strong later.
 - Best creator angle: movie-taste identity, compatibility drama, exact ratings, Letterboxd-adjacent taste debates.

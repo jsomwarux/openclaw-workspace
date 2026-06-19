@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Glow Index Product Analysis SEO/GEO Pass — 2026-06-18
+- **What:** Upgraded existing `/rankings/[id]` product analysis pages with explicit `AI skincare analysis` extraction copy, source tag instrumentation, and category internal links.
+- **For:** Internal app marketing / Glow Index organic acquisition.
+- **Outcome:** Red/green source assertions passed, `npm run lint` exited 0 with two known image warnings, `DATABASE_URL='postgresql://postgres:password@localhost:5432/glowindex' npm run build` passed, final batch commit `3c60c25` was pushed, and production live verification passed after republish with crawler `all_clear=true`, `/rankings` extraction/schema markers, and a live product detail extraction section present.
+- **Demonstrates:** GEO product-page optimization, acquisition instrumentation, safe consumer-research positioning, and crawl-gated app marketing execution.
+- **Content angle:** Product SEO should start with pages that already match purchase intent before building new content volume.
+- **Status:** complete.
+
 ## Mission Control Slice 1.7 Health Lane — 2026-06-16
 **What:** Promoted Health to a first-class `/health` ops cockpit for failures, cost pressure, stale risk, and recovery work; `/monitor` and `/costs` now redirect to `/health`, with legacy views preserved at `/legacy/monitor` and `/legacy/costs`.
 **For:** internal operating system / ops health and reliability
@@ -83,46 +91,6 @@
 **Demonstrates:** cron reliability hardening, validator-gated artifact generation, financial-safety boundaries
 **Content angle:** Production agents should not ask a model to remember to write every required artifact when deterministic code can guarantee the handoff.
 **Status:** complete
-
-## jtsomwaru.com Vista 1-100 Movie Rating Landing Page — 2026-06-01
-- **What:** Built the exact `/1-100-movie-rating-app` landing page for Vista with direct-answer copy, App Store CTA, iPhone screenshots, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, and llms.txt coverage.
-- **For:** Internal app marketing / Vista durable discovery.
-- **Outcome:** `npm run build`, `npm run lint`, `git diff --check`, local HTTP route check, sitemap check, and llms.txt check passed; commit `f09e09f` pushed to GitHub and production returned HTTP 200 with sitemap/llms.txt updated.
-- **Demonstrates:** App Marketing OS durable SEO loop, AI-search/GEO page implementation, product-distribution infrastructure.
-- **Content angle:** A winning app-growth artifact should become a crawlable answer page, not just another post.
-- **Status:** complete.
-
-## jtsomwaru.com Vista Movie Taste Profile Landing Page — 2026-06-01
-- **What:** Built `/movie-taste-profile-app` as Vista's second durable SEO/AI-search landing page with direct-answer copy, App Store CTA, Vista screenshot, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, and llms.txt coverage.
-- **For:** Internal app marketing / Vista durable discovery.
-- **Outcome:** `npm run build`, `npm run lint`, `git diff --check`, local rendered route checks, production HTTP 200, production sitemap, production llms.txt, and cross-link checks passed; commit `eb983d3` pushed to GitHub.
-- **Demonstrates:** App Marketing OS durable SEO loop, AI-search/GEO product-page compounding, internal-link hygiene.
-- **Content angle:** Product SEO compounds when one answer page becomes a cluster, not a standalone orphan.
-- **Status:** complete.
-
-## jtsomwaru.com Vista Letterboxd Precise Ratings Landing Page — 2026-06-01
-- **What:** Built `/letterboxd-alternative-precise-ratings` as Vista's third durable SEO/AI-search landing page with careful Letterboxd-adjacent positioning, direct-answer copy, App Store CTA, Vista screenshot, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, and llms.txt coverage.
-- **For:** Internal app marketing / Vista durable discovery.
-- **Outcome:** `npm run build`, `npm run lint`, `git diff --check`, local rendered route checks, production HTTP 200, production sitemap, production llms.txt, and cross-link checks passed; commits `61ba431` and `6640cbf` pushed to GitHub.
-- **Demonstrates:** Guardrailed comparison SEO, AI-search/GEO product-page clustering, product positioning discipline.
-- **Content angle:** Competitor-adjacent SEO only works when the page is honest about what the product does and does not do.
-- **Status:** complete.
-
-## jtsomwaru.com Vista Private Movie Rating Landing Page — 2026-06-01
-- **What:** Built `/private-movie-rating-app` as Vista's fourth durable SEO/AI-search landing page with private personal tracking positioning, direct-answer copy, App Store CTA, Vista screenshot, FAQ schema, SoftwareApplication schema, BreadcrumbList schema, sitemap exposure, and llms.txt coverage.
-- **For:** Internal app marketing / Vista durable discovery.
-- **Outcome:** `npm run lint`, `npm run build`, `git diff --check`, local rendered route checks, production HTTP 200, production sitemap, production llms.txt, and reciprocal cross-link checks passed; commit `f8f8149` pushed to GitHub.
-- **Demonstrates:** Privacy-positioned product SEO, AI-search/GEO product-page clustering, unsupported-claim avoidance.
-- **Content angle:** Privacy SEO is dangerous if you imply security guarantees; the cleaner wedge is “ratings for yourself before public review pressure.”
-- **Status:** complete.
-
-## jtsomwaru.com Vista Rate Movies Out Of 100 Landing Page — 2026-06-01
-- **What:** Built `/rate-movies-out-of-100` as Vista's fifth durable SEO/AI-search landing page with 100-point rating-method copy, App Store CTA, Vista screenshot, FAQ schema, SoftwareApplication schema, HowTo schema, BreadcrumbList schema, sitemap exposure, and llms.txt coverage.
-- **For:** Internal app marketing / Vista durable discovery.
-- **Outcome:** `node scripts/verify-vista-rate-movies-page.mjs`, `git diff --check`, `npm run lint`, `npm run build`, production HTTP 200, production sitemap, production llms.txt, and reciprocal Vista cluster-link checks passed; commits `6ff6610`, `5111a61`, and `a24616f` pushed.
-- **Demonstrates:** Educational product SEO, AI-search/GEO page clustering, verification hardening after parent review.
-- **Content angle:** Method-search pages can convert vague product interest into a specific user action when the page teaches the scoring system before pitching the app.
-- **Status:** complete.
 
 ## North Star Management Layer — 2026-06-11
 - **What:** Built a deterministic scoreboard/pipeline/send-queue layer for JT's $10K/$30K/$100K monthly North Star and wired core review crons to read it.

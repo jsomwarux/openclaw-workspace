@@ -142,3 +142,19 @@ Sources checked June 16:
 - Anthropic Economic Futures Program, "When AI builds itself" - https://www.anthropic.com/institute/recursive-self-improvement
 - PwC, "2026 AI Jobs Barometer" - https://www.pwc.com/gx/en/services/ai/ai-jobs-barometer.html
 - Zowie, "AI Debt Collection (2026): How AI Agents Work Every Account" - https://getzowie.com/blog/ai-debt-collection-2026
+
+## 2026-06-18 Morning Brief Market Addendum
+
+The June 18 Morning Brief keeps the property-ops proof lane pointed at cash conversion first, not broader acquisition or product work.
+
+Useful market signal:
+- Salesforce buying Fin keeps customer-service and workflow-agent consolidation hot, which supports "operator control surface" language over generic chatbot language.
+- Construction data-access conflict is a useful adjacent proof that vertical AI value depends on system-of-record access, permission boundaries, and audit evidence before automated decisions scale.
+- SMB-agent commentary keeps saying lower deployment barriers are coming, which makes governance and exception handling more valuable: if every team can spin up agents, buyers need a way to decide what agents may read, draft, send, or block.
+
+Altmark/Yair implication:
+- Send the Yair approve/edit packet first because it is the closest cash gate and the cleanest path to accepted client proof.
+- Keep the reusable artifact framed as an Exception Control Plane: source row, AI classification, exception reason, owner/reviewer queue, approval state, audit evidence, and measurable event.
+- Do not dilute the proof with a platform claim. The buyer-safe claim is narrower: risky tenant, ledger, owner, or legal-sensitive follow-up should pause in an inspectable queue until a named reviewer approves the next action.
+
+Source signal: 2026-06-18 Morning Brief SEND QUEUE/news/niche intel.

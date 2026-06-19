@@ -3,6 +3,14 @@
 
 ---
 
+## 2026-06-18 — Heartbeat Job Market Pulse
+
+Read the current job-market-agent daily brief generated at 2026-06-18 05:15. No new untracked US/NYC/remote 18+/25 role cleared JT's filter today; Xplor AI Transformation Lead remains the live 22/25 application target and is already represented in Mission Control.
+
+**Strongest signal:** the market keeps converging on AI portfolio governance and value realization: governed pilots-to-production, adoption leadership, responsible AI, vendor/build-buy judgment, and measurable outcomes.
+
+**Positioning implication:** keep job-market effort below Altmark/Yair and active consulting sends. Reframe Mission Control/OpenClaw plus consulting proof as an AI portfolio operating system: intake, governance, pilot selection, adoption rhythm, and ROI/value reporting. No new application, certification, or build task today.
+
 ## 2026-06-15 — Heartbeat Job Market Pulse
 
 Read the current job-market-agent daily brief generated at 2026-06-15 05:15. No new US/NYC/remote non-coding AI implementation role cleared JT's 18+/25 filter today; six fresh searches mostly returned no scoreable role or low-fit/inaccessible results.

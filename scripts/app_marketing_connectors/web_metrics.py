@@ -16,7 +16,7 @@ ENV_PATH = Path.home() / ".config" / "env" / "global.env"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 GA4_RUN_REPORT = "https://analyticsdata.googleapis.com/v1beta/properties/{property_id}:runReport"
 GSC_SEARCH_ANALYTICS = "https://searchconsole.googleapis.com/webmasters/v3/sites/{site_url}/searchAnalytics/query"
-ACCESS_TOKEN_CACHE = ROOT / "memory" / "app-marketing" / ".ga4-oauth-token-cache.json"
+ACCESS_TOKEN_CACHE = Path.home() / ".cache" / "openclaw" / "app-marketing" / "ga4-oauth-token-cache.json"
 
 GA4_ENV_KEYS = ["GA4_OAUTH_CLIENT_ID", "GA4_OAUTH_CLIENT_SECRET", "GA4_OAUTH_REFRESH_TOKEN"]
 

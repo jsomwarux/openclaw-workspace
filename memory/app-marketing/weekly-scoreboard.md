@@ -3,6 +3,27 @@
 ## Purpose
 One weekly view of whether each app's marketing is producing attention, learning, and users.
 
+## 2026-06-18 Portfolio Decision Model
+Opus strategy reset overrides the older Vista-first allocation below until a new decision memo changes it.
+
+Portfolio posture:
+- **Consulting first:** app work cannot outrank Yair/Altmark, Petri/HPM/Superior follow-ups, or proof assets.
+- **Action Arena:** gate sprint only. Diagnose and clear App Store submission by 2026-07-15, build the 20-commissioner list, then park until football season.
+- **Glow Index:** only ongoing app bet. SEO/GEO money pages, methodology trust anchor, indexing/impression trend, affiliate/email conversion.
+- **Nash Satoshi:** capped. One human-reviewed research receipt/week, measured by methodology-page clicks and waitlist signups.
+- **Vista:** paused. Monitor existing SEO/App Store data only; no ReelFarm scaling, taste-card build sprint, or directory push until an explicit un-pause trigger.
+- **Paid UGC creators:** paused for all apps except a future capped Action Arena kickoff test. The Action Arena test requires app live, attribution ready, loop instrumented, fixed small budget, and 2-3 creators before any scale.
+
+Weekly output requirement for the reset:
+- `GATE_ACTION_ARENA`: EAS/TestFlight/App Store state and next submission action are known, or the app is submitted.
+- `PUSH_GLOW_SEO`: next Glow money pages are chosen from intent/winnability/affiliate fit and tracked for indexing.
+- `CAP_NASH`: one receipt max, research-only, with click/signup measurement.
+- `HOLD_VISTA`: no new work unless share-to-install proof or $10K/month consulting trigger exists.
+
+Do not recommend Product Hunt, broad directory pushes, daily Nash drafts, Vista taste-card implementation, TikTok/ReelFarm scaling, or new app features until the scoreboard shows a measured loop.
+
+Do not recommend paid creators for Nash under any condition. Do not recommend Glow creators until compliance scripts, analytics, and crawler/indexing are healthy.
+
 
 ## Measurement Spine Gate — added 2026-05-24
 Before recommending more content volume or marking an experiment as ready, confirm the related `post-registry.jsonl` row includes:
@@ -69,12 +90,15 @@ Primary goal this week:
 - Reply targets/replies:
 - Waitlist/page actions:
 - SEO/directory actions:
+- UGC test status: locked until app live + attribution ready + kickoff timing
 
 ### Metrics
 - @dynastyjig impressions/engagement:
 - Replies/comments:
 - Waitlist signups:
 - Beta interest:
+- Per-creator attributable installs, if unlocked:
+- Creator-to-league creation rate, if unlocked:
 
 ### Learning
 - Winning sports/betting angle:
@@ -100,16 +124,18 @@ Required weekly inputs:
 - Do not increase posting volume until metrics are captured reliably.
 - If data is missing for 2 consecutive weeks, fix the metrics handoff before recommending more content volume.
 
-## Weekly App Signal Review — added 2026-06-01
+## Weekly App Signal Review — updated 2026-06-18
 
 Purpose: choose a small weekly app-marketing queue from measured signals, not equal-volume content across every app.
 
 ### Portfolio Allocation Rule
-- Total app posts/week: 5-7.
-- Vista: 60-70% of the queue, normally 3-4 posts.
-- Nash Satoshi: 20-30% of the queue, normally 1-2 posts.
-- Glow Index: SEO/GEO and safe page work first until crawler access, claim-safety, and metrics gates are healthy.
-- Action Arena / Dynasty: only if launch, waitlist, or native sports-account signals beat the active app queue.
+- Consulting work outranks app marketing.
+- Action Arena: gate sprint only until Apple Developer Organization transfer, EAS secrets, and App Store/TestFlight path are clear.
+- Glow Index: only ongoing compounding app bet, but current action is measurement and GA4 source-tag setup, not another Replit rebuild.
+- Nash Satoshi: one human-reviewed receipt/week max.
+- Vista: paused; monitor only unless a later written decision memo unpauses it.
+- Dynasty Simulator: validation-first only; no launch/content expansion unless a concrete validation plan exists.
+- Paid creators: locked except a future capped Action Arena kickoff test after app-live + attribution gates.
 
 ### Required Review Inputs
 Each weekly review must check:
@@ -124,24 +150,22 @@ Each weekly review must check:
 ### Queue Selection Template
 
 ```md
-## Next 5-7 App Posts
+## Next App Marketing Queue
 
-| Slot | App | Format | Source tag | Owner | CTA | Metric window | Decision rule |
+| Slot | App | Work type | Source tag / tracking | Owner | CTA / done state | Metric window | Decision rule |
 |---:|---|---|---|---|---|---|---|
-| 1 | Vista |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
-| 2 | Vista |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
-| 3 | Vista |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
-| 4 | Vista or Nash |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
-| 5 | Nash |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
-| 6 | Optional best signal |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
-| 7 | Optional best signal |  |  | JT |  | 24h / 72h / 7d | scale / iterate / kill |
+| 1 | Glow | Measurement setup | source_tag custom dimension | Eve/JT | GA4 source_tag queryable | 24h / 72h / 7d | fix / measure / defer build |
+| 2 | Glow | SEO/GEO measurement | glow_seo_product_analysis_20260618 + glow_seo_rankings_index_20260618 | Eve | baseline + 72h/7d checks | 72h / 7d | build next batch only if signal appears |
+| 3 | Action Arena | Submission gate | App Store/TestFlight state | JT/Eve | org transfer then EAS/App Store path clear | weekly until 2026-07-15 | submit / fix / pause |
+| 4 | Nash | Weekly receipt | nash_newsletter_receipt_[name]_YYYYMMDD | Eve/JT | one reviewed receipt only | 7d / 30d | keep weekly / cap monthly |
+| 5 | Vista | Monitor only | App Store/web baseline | Eve | no new build/content unless trigger | weekly | hold / unpause by written memo only |
 ```
 
 ### Kill / Hold Rules
 - If a post idea has no source tag, hold it.
 - If the matching app has no metric path, hold it.
-- If Glow's crawler access is blocked or claim-safety is unclear, replace Glow social volume with a safe SEO/page task.
-- If Vista assets are missing, choose a lower-volume post paired with a buildable visual instead of publishing text-only product claims.
+- If Glow's crawler access is blocked, source-tag reporting is broken, or claim-safety is unclear, replace page building with measurement/setup.
+- If Vista assets are missing, do nothing; Vista is paused unless an explicit un-pause trigger exists.
 - If Nash language implies returns, price prediction, or financial advice, kill the slot.
 
 ### Weekly Output Requirement
@@ -150,6 +174,7 @@ Every weekly review ends with exactly one of these:
 - `FIX_TRACKING_FIRST`: tracking is too weak to justify more posts.
 - `BUILD_ASSET_FIRST`: the best post needs a visual/card/page before distribution.
 - `SEO_FIRST`: app should get page work instead of social volume this week.
+- `MEASURE_FIRST`: live work shipped and the next move is source-tag/reporting/indexing measurement before more build or content volume.
 
 <!-- METRICS_SUMMARY_START -->
 ## Metrics Summary — Week of 2026-06-16
@@ -177,11 +202,32 @@ Every weekly review ends with exactly one of these:
 
 ## Metrics Summary — Week of 2026-06-11
 
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 1
+- Best item: glow-index Search Console queries 2026-06-11 to 2026-06-17 (1 views/impressions)
+
 ### glow-index / tiktok
 - Posts/results logged: 1
 - Views/impressions: 492
 - Engagement: likes 3, comments 0, saves 0, reposts 0
 - Best item: 4 AIs flagged the ingredient in your clean skincare that's actually irritating (492 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index GA4 web traffic 2026-06-11 to 2026-06-17 (0 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-11 to 2026-06-17 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 37
+- Web depth: active users 11, pageviews 118, events 381
+- Best item: nash-satoshi GA4 web traffic 2026-06-11 to 2026-06-17 (37 views/impressions)
 
 **Best overall:** glow-index / tiktok — 4 AIs flagged the ingredient in your clean skincare that's actually irritating (492 views/impressions)
 
@@ -940,12 +986,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 33
+- Posts/results logged: 34
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 33
+- Posts/results logged: 34
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1459,7 +1505,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-06-16_
+_Last updated: 2026-06-18_
 
 <!-- METRICS_SUMMARY_END -->
 

@@ -81,8 +81,6 @@ def slugify(s: str) -> str:
 def existing_keys(tasks: list[dict[str, Any]]) -> set[str]:
     keys = set()
     for t in tasks:
-        if t.get("status") in {"done", "archived"}:
-            continue
         title = (t.get("title") or "").strip().lower()
         slug = (t.get("slug") or "").strip().lower()
         if title:
@@ -121,8 +119,76 @@ def build_task_specs() -> list[TaskSpec]:
     exp = read_text("memory/app-marketing/experiment-calendar.md")
     durable = read_text("memory/app-marketing/durable-discovery-plan.md")
 
-    # Current optimal task set is explicit by design. The generator keeps it deduped and repeatable.
+    _ = (registry, weekly, exp, durable)
+
+    # 2026-06-18 Opus reset: keep generated tasks concentrated on measurement,
+    # Action Arena's submission gate, and Glow SEO. Paid UGC is paused except
+    # a future capped Action Arena kickoff test after app-live + attribution
+    # gates. Older all-app/share-artifact tasks remain below for history but
+    # are intentionally unreachable.
     tasks: list[TaskSpec] = []
+
+    tasks.append(mk(
+        "App Marketing OS: execute Opus strategy reset - measurement, Action Arena gate, Glow SEO bet",
+        "All apps", "strategy-reset", "high", "eve", 18,
+        "Open `memory/app-marketing/opus-strategy-reset-2026-06-18.md`, then update the weekly scoreboard with Action Arena gate status, Glow crawler/indexing state, Nash cap status, and Vista hold status.",
+        "The app portfolio was drifting into all-app work. The reset keeps consulting first, closes the Action Arena gate, makes Glow the only ongoing app bet, caps Nash, and parks Vista.",
+        "One Friday-ready scoreboard section exists with push/cap/pause/gate decisions and the active Mission Control app-marketing layer matches the reset.",
+        ["memory/app-marketing/opus-strategy-reset-2026-06-18.md", "memory/app-marketing/weekly-scoreboard.md", "memory/app-marketing/app-registry.md"],
+        "No new app features, no external posting automation, no daily Nash cadence, no Vista/ReelFarm scaling, no paid creators except the gated Action Arena kickoff test."
+    ))
+
+    tasks.append(mk(
+        "Action Arena: clear Apple Developer org transfer, then EAS/App Store readiness",
+        "Action Arena", "submission-gate", "high", "eve", 19,
+        "Open `memory/app-marketing/action-arena-submission-gate-2026-06-18.md`, track the Apple Developer Organization transfer under the LLC, then after it clears confirm EAS project secrets and App Store Connect/TestFlight status from `/Users/jtsomwaru/projects/action-arena`.",
+        "Action Arena is the only timed gate. Source is now found, and JT is moving the Apple Developer membership from individual to organization because in-app purchases blocked individual submission; that Apple-side blocker must clear before commissioner outreach or creator tests can convert.",
+        "Apple Developer organization status is recorded, EAS secrets/status are confirmed after the transfer clears, the latest TestFlight/App Store Connect state is recorded, one next submission/build action exists, and optional UGC remains locked until app live + attribution ready.",
+        ["memory/app-marketing/opus-strategy-reset-2026-06-18.md", "memory/app-marketing/action-arena-submission-gate-2026-06-18.md", "memory/app-marketing/action-arena-launch-checklist-2026-05-26.md"],
+        "Do not run broad dependency upgrades inside this gate. Keep no-real-money positioning. Do not brief/pay creators before app-live + attribution gates."
+    ))
+
+    tasks.append(mk(
+        "Glow Index: register GA4 source_tag and run 72h/7d SEO checks",
+        "Glow Index", "seo-page-build", "high", "eve", 20,
+        "Register event parameter `source_tag` as an event-scoped custom dimension in GA4 property `537965547`, then re-run Data API checks for `customEvent:source_tag`, `/rankings` page paths, `view_product`, and Search Console page/query rows.",
+        "The first SEO/GEO batch is live and baseline is written, but GA4 rejects `customEvent:source_tag` as an invalid dimension. Without this setup, the site can collect page/event data but cannot segment the SEO/GEO source tags.",
+        "`memory/app-marketing/glow-post-deploy-measurement-2026-06-18.md` or a follow-up dated note records source-tag dimension queryability, 72h check, 7d check, GSC rows, GA4 page/event counts, and the next-deploy yes/no recommendation.",
+        ["memory/app-marketing/glow-post-deploy-measurement-2026-06-18.md", "memory/app-marketing/glow-first-five-money-pages-2026-06-18.md", "memory/app-marketing/measurement-spine.md"],
+        "No new Replit rebuild, no new category/methodology page, no medical/treatment claims, no fake testimonials, and no before/after claims until measurement says the next page is worth the deploy cost."
+    ))
+
+    tasks.append(mk(
+        "Glow Index: choose first five money pages after crawler gate",
+        "Glow Index", "seo-pages", "high", "eve", 21,
+        "After crawler access is clean, choose the first five pages by intent, affiliate fit, available product data, and claim safety; save the page queue with target query, direct-answer block, schema, and measurement tag.",
+        "Glow's upside is asynchronous SEO/GEO. The page queue must be chosen by winnability and monetization, not generic volume.",
+        "`memory/app-marketing/glow-first-five-money-pages-2026-06-18.md` exists with five pages, source tags, build order, claim guardrails, and indexing checks.",
+        ["memory/app-marketing/glow-seo-first-page-plan-2026-06-01.md", "memory/app-marketing/glow-10-verdict-pages-status-2026-05-19.md", "memory/app-marketing/measurement-spine.md"],
+        "No medical/treatment claims; no fake before/after or testimonials; no dupe pages without structured similarity criteria."
+    ))
+
+    tasks.append(mk(
+        "Nash Satoshi: enforce weekly receipt cap and kill daily generic cadence",
+        "Nash Satoshi", "content-cap", "medium", "eve", 60,
+        "Update Nash app-marketing routines so only one weekly human-reviewed ranking-delta/model-disagreement receipt is eligible, measured by methodology-page clicks and waitlist signups.",
+        "Nash has a real methodology wedge but is the highest distraction/compliance-risk app. Impressions without clicks are fake momentum.",
+        "Weekly review records either one approved receipt with source tag and click/signup metrics, or `NO_NASH_RECEIPT_THIS_WEEK` because no strong delta/disagreement exists.",
+        ["memory/app-marketing/app-registry.md", "memory/app-marketing/measurement-spine.md"],
+        "No financial advice, no price predictions, no performance claims, no automated posting."
+    ))
+
+    tasks.append(mk(
+        "Vista: keep paused and archive immediate-growth tasks unless un-pause trigger fires",
+        "Vista", "pause", "low", "eve", 120,
+        "Review active Vista App Marketing tasks and archive/demote anything that implies immediate share-card builds, directory pushes, or ReelFarm scaling.",
+        "Vista is the clearest overbuilding trap. It can be monitored, but it should not consume current app-marketing execution time.",
+        "The active board has no high-priority Vista execution tasks except passive measurement or an explicit un-pause trigger note.",
+        ["memory/app-marketing/app-registry.md", "memory/app-marketing/opus-strategy-reset-2026-06-18.md"],
+        "Un-pause only on proven share-to-install loop or consulting cash at $10K/month."
+    ))
+
+    return tasks
 
     tasks.append(mk(
         "App Marketing OS: create share-artifact specs for Vista, Nash, and Glow",
