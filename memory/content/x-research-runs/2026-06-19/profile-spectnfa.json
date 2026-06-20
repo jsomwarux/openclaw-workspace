@@ -1,0 +1,258 @@
+{
+  "user": {
+    "description": "ai addiction\n\ndm is always open...",
+    "username": "spectnfa",
+    "id": "3399807072",
+    "name": "spect",
+    "created_at": "2015-08-31T04:18:13.000Z",
+    "public_metrics": {
+      "followers_count": 12631,
+      "following_count": 12681,
+      "tweet_count": 1452,
+      "listed_count": 7,
+      "like_count": 2615,
+      "media_count": 131
+    }
+  },
+  "tweets": [
+    {
+      "id": "2067710039062622436",
+      "text": "🚨 Google CEO, Sundar Pichai says in this video:\n\n\"If you don't teach your agents to debug themselves now, you'll keep wasting hours every week\"\n\nPeople charge $500 to teach you this. He just said it for free.\n\nThe engineers pulling ahead don't fix failures by hand anymore https://t.co/LDuLfwMkEO https://t.co/Urlg2pQwrY",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-18T20:44:24.000Z",
+      "conversation_id": "2067710039062622436",
+      "metrics": {
+        "likes": 38,
+        "retweets": 2,
+        "replies": 10,
+        "quotes": 0,
+        "impressions": 852,
+        "bookmarks": 19
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2067710039062622436/video/1",
+        "https://twitter.com/0xwhrrari/status/2065539680146182270"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2067710039062622436"
+    },
+    {
+      "id": "2067548739510636734",
+      "text": "🚨 Microsoft CEO, Satya Nadella:\n\n“I don’t want models that only follow instructions. I want models that are truly steerable”\n\nIn one hour, he explains why the real AI skill is no longer prompting.\n\nIt is directing agents toward an outcome.\n\n&gt; Set the goal\n&gt; Define the evaluation https://t.co/UYkfkv6OyO https://t.co/TzqlJrDtbl",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-18T10:03:27.000Z",
+      "conversation_id": "2067548739510636734",
+      "metrics": {
+        "likes": 55,
+        "retweets": 6,
+        "replies": 15,
+        "quotes": 0,
+        "impressions": 3003,
+        "bookmarks": 30
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2067548739510636734/video/1",
+        "https://twitter.com/beamnxw/status/2067495668789166425"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2067548739510636734"
+    },
+    {
+      "id": "2067330753348632629",
+      "text": "🚨 Google CEO Sundar Pichai:\n\n\"If you don't learn how to orchestrate agents now, you'll spend 2027 catching up to people who started today\"\n\n30 minutes. One interview. Why the best engineers at Google quietly stopped shipping code in 2025 and what they orchestrate instead.\n\nDon't https://t.co/psnAkyCi0A https://t.co/NdHz10XDge",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-17T19:37:15.000Z",
+      "conversation_id": "2067330753348632629",
+      "metrics": {
+        "likes": 38,
+        "retweets": 3,
+        "replies": 12,
+        "quotes": 0,
+        "impressions": 2871,
+        "bookmarks": 31
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2067330753348632629/video/1",
+        "https://twitter.com/whemohere/status/2066891639889465401"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2067330753348632629"
+    },
+    {
+      "id": "2067209404680712599",
+      "text": "🚨 Microsoft CEO Satya Nadella just said the thing most people are still not ready to hear:\n\n\"Agents can write code now. The human job is to understand what they built\"\n\nRead that again.\n\nThe skill gap is no longer just coding.\n\nIt is knowing how to direct AI, review its work, https://t.co/M7kTwgO6q4 https://t.co/ktgnpflqQA",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-17T11:35:03.000Z",
+      "conversation_id": "2067209404680712599",
+      "metrics": {
+        "likes": 39,
+        "retweets": 0,
+        "replies": 16,
+        "quotes": 0,
+        "impressions": 810,
+        "bookmarks": 18
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2067209404680712599/video/1",
+        "https://twitter.com/spectnfa/status/2066826231513809152"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2067209404680712599"
+    },
+    {
+      "id": "2067160279444521171",
+      "text": "Google's former CEO just revealed what industry insiders have been saying all along\n\nWealth in AI isn't built by scrolling through hype\n\nIt's built by mastering the actual tools\n\nAgents, Interactions API, prompts, memory, skills, MCP, and automation workflows\n\nYour competition is https://t.co/paGeirJtq7 https://t.co/ktgnpflqQA",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-17T08:19:51.000Z",
+      "conversation_id": "2067160279444521171",
+      "metrics": {
+        "likes": 37,
+        "retweets": 0,
+        "replies": 14,
+        "quotes": 0,
+        "impressions": 1316,
+        "bookmarks": 15
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2067160279444521171/video/1",
+        "https://twitter.com/spectnfa/status/2066826231513809152"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2067160279444521171"
+    },
+    {
+      "id": "2066948424377799003",
+      "text": "🚨 Anthropic CEO Dario Amodei just said the thing most people aren't ready to hear:\n\n\"AI revenue could hit a trillion dollars before 2030\"\n\nRead that again. A trillion. Before 2030.\n\nAnd here is the part everyone misses\n\nWe are not late. We are early. Painfully early.\n\nThe https://t.co/eQlsCW1sdT https://t.co/ktgnpflqQA",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-16T18:18:01.000Z",
+      "conversation_id": "2066948424377799003",
+      "metrics": {
+        "likes": 155,
+        "retweets": 15,
+        "replies": 28,
+        "quotes": 2,
+        "impressions": 14450,
+        "bookmarks": 59
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2066948424377799003/video/1",
+        "https://twitter.com/spectnfa/status/2066826231513809152"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2066948424377799003"
+    },
+    {
+      "id": "2066918194246255053",
+      "text": "Anthropic CEO Dario Amodei said the thing every programmer is afraid to hear:\n\n\"In a year or two, AI won't just help write code it'll do the entire job of a software engineer\"\n\nNot autocomplete. Not a faster assistant\n\nThe whole thing: figure out the problem, write it, test it, https://t.co/m817IHjlv7 https://t.co/NdHz10XDge",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-16T16:17:53.000Z",
+      "conversation_id": "2066918194246255053",
+      "metrics": {
+        "likes": 22,
+        "retweets": 2,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 1100,
+        "bookmarks": 9
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2066918194246255053/video/1",
+        "https://twitter.com/whemohere/status/2066891639889465401"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2066918194246255053"
+    },
+    {
+      "id": "2066846294035849394",
+      "text": "🚨 Jack Clark: Co-founder of Claude and former OpenAI policy director:\n\n\"80% of the code that goes into Anthropic now comes from Claude\"\n\nLet that sink in. The company building one of the world's most powerful AI models now writes most of its own code with that AI.\n\nMost people https://t.co/83k02UT2AT https://t.co/ktgnpflqQA",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-16T11:32:11.000Z",
+      "conversation_id": "2066846294035849394",
+      "metrics": {
+        "likes": 35,
+        "retweets": 3,
+        "replies": 15,
+        "quotes": 0,
+        "impressions": 1728,
+        "bookmarks": 16
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2066846294035849394/video/1",
+        "https://twitter.com/spectnfa/status/2066826231513809152"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2066846294035849394"
+    },
+    {
+      "id": "2066826231513809152",
+      "text": "https://t.co/drrWAZdmP8",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-16T10:12:28.000Z",
+      "conversation_id": "2066826231513809152",
+      "metrics": {
+        "likes": 52,
+        "retweets": 4,
+        "replies": 15,
+        "quotes": 4,
+        "impressions": 27739,
+        "bookmarks": 73
+      },
+      "urls": [
+        "http://x.com/i/article/2066672472284434432"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2066826231513809152"
+    },
+    {
+      "id": "2066509411091177901",
+      "text": "Boris Cherny, the engineer who built Claude Code, just said the quiet part out loud:\n\n\"Claude has been writing 100% of my code. For at least six months\"\n\nRead that again. The guy who built the tool doesn't write code anymore.\n\nAnd most engineers are still polishing the exact https://t.co/T5ooQjWhRY https://t.co/Urlg2pQwrY",
+      "author_id": "3399807072",
+      "username": "spectnfa",
+      "name": "spect",
+      "created_at": "2026-06-15T13:13:32.000Z",
+      "conversation_id": "2066509411091177901",
+      "metrics": {
+        "likes": 66,
+        "retweets": 3,
+        "replies": 19,
+        "quotes": 0,
+        "impressions": 5970,
+        "bookmarks": 50
+      },
+      "urls": [
+        "https://x.com/spectnfa/status/2066509411091177901/video/1",
+        "https://twitter.com/0xwhrrari/status/2065539680146182270"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/spectnfa/status/2066509411091177901"
+    }
+  ]
+}

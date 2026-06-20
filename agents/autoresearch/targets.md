@@ -51,7 +51,7 @@
 | niche-fitness | agents/niche-fitness/AGENT.md | checklists/niche-fitness.md | pending | — | — | 2026-05-03 |
 | passive-income-strategist | agents/passive-income-strategist/AGENT.md | checklists/passive-income-strategist.md | pending | — | — | 2026-05-03 |
 | skills-researcher | agents/skills-researcher/AGENT.md | checklists/skills-researcher.md | pending | — | — | 2026-05-03 |
-| spanish-daily-lesson | cron:babd905a-1098-49dd-8700-772fef14f817 | checklists/spanish-daily-lesson.md | pending | — | — | 2026-05-09 |
+| spanish-daily-lesson | cron:babd905a-1098-49dd-8700-772fef14f817 | checklists/spanish-daily-lesson.md | stable | 1.000 | 2026-06-19 | 2026-05-09 |
 | workflow-skillify | skills/workflow-skillify/SKILL.md | checklists/workflow-skillify.md | stable | 1.000 | 2026-05-29 | 2026-05-11 |
 | high-stakes-draft-eval | skills/high-stakes-draft-eval/SKILL.md | checklists/high-stakes-draft-eval.md | stable | 1.000 | 2026-06-01 | 2026-05-11 |
 | mission-control-priority-auditor | agents/mission-control-priority-auditor/AGENT.md + scripts/mission_control_north_star_audit.py | checklists/mission-control-priority-auditor.md | stable | 1.000 | 2026-05-12 | 2026-05-12 |

@@ -40,3 +40,6 @@ Last reset: 2026-06-01
 2026-06-18 [CONFIRMS] niche=property-management — Property management software market growth remains a broad demand backdrop; today's result did not create an immediate action signal.
 2026-06-18 [CONFIRMS] niche=wholesale-distribution — Demand-planning and warehouse automation interest remains visible in distributor coverage, but not as a new urgent/high finding.
 2026-06-18 [EMERGING] niche=enterprise-rag — Enterprise knowledge assistants increasingly emphasize traceable answers tied to source documents, versions, and approvals.
+2026-06-19 [CONFIRMS] niche=insurance — Earnix launched AIOS, an insurance-native AI orchestration system for governed decisioning across pricing, underwriting, claims, customer engagement, and retention.
+2026-06-19 [CONFIRMS] niche=construction/real-estate — YC construction and real-estate portfolio reached 126 funded companies, with recent cohorts shifting toward AI-native agents and construction intelligence.
+2026-06-19 [EMERGING] niche=enterprise-rag — Neo4j highlighted agentic GraphRAG patterns with autonomous graph construction, adaptive retrieval, and failure-aware routing.

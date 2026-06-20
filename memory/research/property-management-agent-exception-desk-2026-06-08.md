@@ -158,3 +158,25 @@ Altmark/Yair implication:
 - Do not dilute the proof with a platform claim. The buyer-safe claim is narrower: risky tenant, ledger, owner, or legal-sensitive follow-up should pause in an inspectable queue until a named reviewer approves the next action.
 
 Source signal: 2026-06-18 Morning Brief SEND QUEUE/news/niche intel.
+
+## 2026-06-19 Morning Brief Market Addendum
+
+The June 19 Morning Brief keeps the cash order unchanged: the Yair approve/edit packet is still the closest path to finishing the Altmark rent-delinquency workflow, collecting the remaining Altmark amount, and producing usable proof.
+
+Fresh market scan:
+- AppFolio's Realm-X/Claude positioning is explicit about executing real-estate work inside existing permissions and governance, which makes a visible approval/control layer the buyer-safe proof to show smaller operators.
+- Real-estate automation commentary is moving from "AI drafts messages" toward exception handling, rent-roll reconciliation, property-manager routing, and audit trails for decisions.
+- Collections AI commentary continues to treat full traceability, contact-rule enforcement, and compliance-by-architecture as table stakes.
+- PMS permission/audit-trail guidance reinforces that AI actions need the same accountability as human actions: who changed what, when, on which record, and under which permission.
+
+Altmark/Yair implication:
+- The proof asset should not sell "autonomous collections." It should show a collections exception queue: delinquent row, payment/context gap, risk flag, proposed next step, reviewer, approve/edit/hold state, and evidence link.
+- The fastest next proof remains the same as the cash gate: send the Yair packet, force approval or edits, then turn the resulting workflow into a named Exception Control Plane example.
+- For the PM proof post, make the contrast simple: generic AI sends reminders; the control plane proves which resident-sensitive action was allowed, blocked, or escalated before anything touches tenants, ledgers, owners, or legal-sensitive language.
+
+Sources checked June 19:
+- AppFolio, "AppFolio Connects Realm-X to Anthropic Claude" - https://www.appfolio.com/blog/appfolio-connects-realm-x-to-anthropic-claude
+- AppFolio Realm-X AI - https://www.appfolio.com/ai
+- Kognitos, "AI Automation for Real Estate Operations: A 2026 Guide" - https://www.kognitos.com/blog/ai-automation-real-estate-operations-2026/
+- Zowie, "AI Debt Collection (2026): How AI Agents Work Every Account" - https://getzowie.com/blog/ai-debt-collection-2026
+- Haven AI, "PMS Permissions for AI: 2026 Complete Glossary & Guide" - https://www.usehaven.ai/post/pms-permissions-for-ai-glossary-guide

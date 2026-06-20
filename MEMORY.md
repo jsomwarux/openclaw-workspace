@@ -30,6 +30,7 @@
 - Cash path: no acquisition-system bottleneck; enforce 10 sends/week starting with Yair packet + Petri/HPM/Superior M2s. Earned consulting income excluding unemployment is truth metric.
 - Proof-led referrals/warm intros beat generic LinkedIn warm-up. JT sends all outreach. Pipeline root: `~/projects/jt-consulting-pipeline/`.
 - 2026-06-18 outreach reset: next 30 days of new cold outreach are property-management only, led by reusable proof-safe artifacts in M1. First asset to package is PM Vendor COI / insurance-expiration tracker; first batch is 20-25 NYC/metro PM prospects; no custom demos/decks or fourth touches before reply. Control doc: `memory/consulting/pm-artifact-led-outreach-sprint-2026-06-18.md`.
+- 2026-06-19 PM COI board state: wave one is JT-owned/send-ready for 8 LinkedIn M1s; expansion is Eve-owned only after JT handles/holds wave one; Petri M2 is separate from HPM/Superior.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix

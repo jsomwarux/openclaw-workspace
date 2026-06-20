@@ -1,0 +1,251 @@
+{
+  "user": {
+    "id": "594718367",
+    "username": "GrishinRobotics",
+    "name": "Grishin Robotics",
+    "description": "Grishin Robotics is one of the leading venture firms to focus exclusively on hardware and robotics companies, investing out of its second $100M fund.",
+    "public_metrics": {
+      "followers_count": 6480,
+      "following_count": 630,
+      "tweet_count": 4601,
+      "listed_count": 251,
+      "like_count": 1384,
+      "media_count": 1354
+    },
+    "created_at": "2012-05-30T16:28:05.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2067887342900146394",
+      "text": "Trussed AI just raised an undisclosed strategic investment from Nassau Financial Group and is hiring.\n\nThe Saratoga company is building an AI control plane for regulated enterprises - the layer between business apps, agents, and models where policies can be enforced before https://t.co/eLRwteQAr3",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:28:56.000Z",
+      "conversation_id": "2067887342900146394",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 33,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067887342900146394/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067887342900146394"
+    },
+    {
+      "id": "2067886414138618153",
+      "text": "AI made coding faster. Devplan raised $2.5M to fix the coordination drag that shows up after the code is written.\n\nAI2 Incubator led the seed round, with Acequia Capital, Mighty Capital, Grand Ventures, and eLab Ventures participating.\n\nChris Bee and Anton Safonov are building https://t.co/G8NOGhNoDp",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:25:15.000Z",
+      "conversation_id": "2067886414138618153",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 41,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067886414138618153/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067886414138618153"
+    },
+    {
+      "id": "2067885681918066829",
+      "text": "Enterprise AI keeps running into a less glamorous bottleneck: the files companies already have.\n\nClario launched from stealth with $6M in seed funding led by Preface Ventures to attack data ROT - redundant, obsolete, and trivial content spread across Drive, SharePoint, OneDrive, https://t.co/4z94ireSKt",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:22:20.000Z",
+      "conversation_id": "2067885681918066829",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 24,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067885681918066829/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067885681918066829"
+    },
+    {
+      "id": "2067884791677047107",
+      "text": "BoolSi raised $6M to make custom silicon feel less like a specialist craft and more like a compiler target.\n\nFine Structure Ventures led the seed round, with Pillar VC, Fifth Quarter Ventures, and Coalition Ventures participating.\n\nThe Boston startup is building a compiler that https://t.co/1YE1sF6wYT",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:18:48.000Z",
+      "conversation_id": "2067884791677047107",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 22,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067884791677047107/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067884791677047107"
+    },
+    {
+      "id": "2067884080079753580",
+      "text": "Frontier Health raised $16M to automate the NHS admin work that quietly decides whether care actually moves.\n\nAtomico led the seed round, with firstminute capital, XYZ Venture Capital, Tenacity Capital, MMC Ventures, and Avenir participating.\n\nThe company is building JUNO, a https://t.co/FLTiKM575q",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:15:58.000Z",
+      "conversation_id": "2067884080079753580",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067884080079753580/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067884080079753580"
+    },
+    {
+      "id": "2067883487877611641",
+      "text": "reltix just raised €3M and is hiring.\n\nTenity backed the pre-seed round as the Düsseldorf startup crossed €1M ARR in less than a year on the market.\n\nThe interesting part is not another dashboard for property managers. reltix is running the property-management service itself, https://t.co/rKiOf8Lf7T",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:13:37.000Z",
+      "conversation_id": "2067883487877611641",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 19,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067883487877611641/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067883487877611641"
+    },
+    {
+      "id": "2067882805044924485",
+      "text": "Cargofy raised $11M to put AI workers inside freight operations, not just another dashboard beside them.\n\nThe Series A includes $6M in primary capital and $5M in secondaries, led by https://t.co/CGUCFbOt5T, https://t.co/eEfSloLwsy, and Movens Capital, with Des Traynor and other https://t.co/kJ0ZSvWK3C",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:10:54.000Z",
+      "conversation_id": "2067882805044924485",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://u.ventures",
+        "http://Toloka.vc",
+        "https://x.com/GrishinRobotics/status/2067882805044924485/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067882805044924485"
+    },
+    {
+      "id": "2067881108952248336",
+      "text": "vibefam already powers 700+ fitness locations and 500,000 end users. Now it has US$1M in seed funding to turn that footprint into an AI operating layer for gyms, studios, and wellness brands.\n\nThe round was led by an undisclosed Singapore-based family office, with vibefam also https://t.co/YJwDKcFL0R",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:04:10.000Z",
+      "conversation_id": "2067881108952248336",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 16,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067881108952248336/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067881108952248336"
+    },
+    {
+      "id": "2067880410676187569",
+      "text": "Tenet Security raised $6M to defend a threat model most enterprise security stacks were not built to see.\n\nThe Westly Group and MizMaa Ventures led the seed round for the New York company, which is building runtime protection for autonomous AI agents.\n\nThe product thesis is https://t.co/nvC1ddwhoQ",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T08:01:23.000Z",
+      "conversation_id": "2067880410676187569",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 21,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067880410676187569/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067880410676187569"
+    },
+    {
+      "id": "2067877642599108942",
+      "text": "Gradial just raised $65M and is hiring.\n\nInsight Partners led the Series C at a reported $675M valuation, with VMG Partners, Madrona, and Pruven Capital returning.\n\nThe interesting part is not \"AI for marketing\" in the generic sense. Large brands already have Adobe, Salesforce, https://t.co/yqvMLqw1lE",
+      "author_id": "594718367",
+      "username": "GrishinRobotics",
+      "name": "Grishin Robotics",
+      "created_at": "2026-06-19T07:50:23.000Z",
+      "conversation_id": "2067877642599108942",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 31,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GrishinRobotics/status/2067877642599108942/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GrishinRobotics/status/2067877642599108942"
+    }
+  ]
+}

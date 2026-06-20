@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "RAG knowledge assistant enterprise 2026",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-06-19",
+  "results": [
+    {
+      "title": "What is RAG? - Retrieval-Augmented Generation AI Explained - AWS",
+      "url": "https://aws.amazon.com/what-is/retrieval-augmented-generation/",
+      "description": "With knowledge bases for Amazon Bedrock, you can connect FMs to your data sources for RAG in just a few clicks. Vector conversions, retrievals, and improved output generation are all handled automatically. For organizations managing their own RAG, Amazon Kendra is a highly-accurate enterprise search service powered by machine learning.",
+      "age": "12 hours ago",
+      "page_age": "2026-06-19T01:19:24",
+      "source": "AWS"
+    },
+    {
+      "title": "Turning Knowledge Assistants Into Production Systems | eWeek",
+      "url": "https://www.eweek.com/sponsored/what-it-takes-to-turn-knowledge-assistants-into-production-systems/",
+      "description": "Dell AI Factory with NVIDIA brings those requirements together through AI infrastructure, secure deployment options, and Dell AI Data Platform with NVIDIA, which helps organizations prepare, govern, retrieve, and serve enterprise data for RAG and knowledge assistant workloads.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T13:24:19",
+      "source": "eWeek"
+    },
+    {
+      "title": "The Top 12 AWS AI Services Redefining Enterprise Architecture in 2026",
+      "url": "https://press.farm/the-top-12-aws-ai-services-redefining/",
+      "description": "Developers invoke frontier LLMs using simple boto3 client calls. In 2026, its enterprise-grade orchestration capabilities set it apart: Knowledge Bases: <strong>Native support for Retrieval-Augmented Generation (RAG) architecture</strong>.",
+      "age": "2 hours ago",
+      "page_age": "2026-06-19T11:29:55",
+      "source": "Pressfarm"
+    },
+    {
+      "title": "Video: NODES AI 2026 - Agentic GraphRAG: Autonomous Knowledge Graph Construction and Adaptive Retrieval",
+      "url": "https://neo4j.com/videos/nodes-ai-2026-agentic-graphrag-autonomous-knowledge-graph-construction-and-adaptive-retrieval-2/",
+      "description": "The talk walks through how specialized agents collaborate to extract entities and relationships, resolve conflicts, handle multi-hop queries, and select an appropriate retrieval strategy using explicit routing logic informed by empirical failure patterns. Athulya will discuss failure-aware routing and show how both task-level metrics (e.g., Exact Match on HotpotQA) and RAGAS-style diagnostics are used to analyze grounding, recall, and relevance across retrieval strategies.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T01:26:31",
+      "source": "Neo4j"
+    },
+    {
+      "title": "AI-Powered Mobile App Development Cost 2026 | Primocys",
+      "url": "https://primocys.com/blog/ai-mobile-app-development-cost/",
+      "description": "Building an AI app costs $12K–$25K for an MVP chatbot/copilot, <strong>$25K–$60K</strong> for a RAG-powered app with vector search, and $80K+ for enterprise multi-agent platforms — all at India rates.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T08:35:24",
+      "source": "Primocys"
+    }
+  ]
+}

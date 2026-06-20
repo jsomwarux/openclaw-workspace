@@ -1,0 +1,249 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 157038,
+      "following_count": 766,
+      "tweet_count": 101847,
+      "listed_count": 1458,
+      "like_count": 179,
+      "media_count": 480
+    },
+    "created_at": "2010-04-01T07:38:15.000Z",
+    "username": "Dinosn",
+    "id": "128484298",
+    "name": "Nicolas Krassas",
+    "description": "Head of Threat & Vulnerability Mgmt @ Henkel AG & Co. KGaA\nhttps://t.co/NC1orlKZLB\n\nPosting content that I find interesting."
+  },
+  "tweets": [
+    {
+      "id": "2067872056843092430",
+      "text": "renee-jia/scholar-loop: An autonomous AI scientist: a multi-agent loop over literature, experiments, self-critique and write-up, with deterministic guards against reward-hacking and hallucination. https://t.co/0Eek1blIFJ",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:28:12.000Z",
+      "conversation_id": "2067872056843092430",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 445,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://github.com/renee-jia/scholar-loop"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067872056843092430"
+    },
+    {
+      "id": "2067872034223231240",
+      "text": "diffusionstudio/lottie: Generate production-ready Lottie animations with Claude Code or Codex https://t.co/5eL4TVokPa",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:28:06.000Z",
+      "conversation_id": "2067872034223231240",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 407,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://github.com/diffusionstudio/lottie"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067872034223231240"
+    },
+    {
+      "id": "2067871887909109989",
+      "text": "noonghunna/club-3090: Community recipes for serving LLMs on RTX 3090/4090/5090 CUDA gpus. Multi-engine (vLLM, llama.cpp, ik_llama) and model-agnostic. Currently shipping Qwen3.6-27B Qwen3.6 35B Gemma 4 26B Gemma 4 31B configs f... https://t.co/FtnetBbADl",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:27:31.000Z",
+      "conversation_id": "2067871887909109989",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 421,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://github.com/noonghunna/club-3090"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067871887909109989"
+    },
+    {
+      "id": "2067870971797606573",
+      "text": "elementalsouls/claude-osint: Two paired Claude skills · 90+ recon modules · 48 secret-regex patterns · 80+ dorks · 9 read-only credential validators · 27 attack-path templates · 5,500+ lines of structured tradecraft. Drop-in SK... https://t.co/FGOi7dWByc",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:23:53.000Z",
+      "conversation_id": "2067870971797606573",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 445,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://github.com/elementalsouls/Claude-OSINT"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067870971797606573"
+    },
+    {
+      "id": "2067870752112570772",
+      "text": "m14r41/pentestingchecklist: Comprehensive, data-driven security assessment checklists across 23 platforms web, API, mobile, cloud, Active Directory, Kubernetes, LLM, and more. Expandable hierarchy, global search, progress track... https://t.co/JrOla1DQyb",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:23:01.000Z",
+      "conversation_id": "2067870752112570772",
+      "metrics": {
+        "likes": 13,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 1,
+        "impressions": 1061,
+        "bookmarks": 10
+      },
+      "urls": [
+        "https://github.com/m14r41/PentestingChecklist"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067870752112570772"
+    },
+    {
+      "id": "2067867827034321014",
+      "text": "Black Box Probing: a Security Analysis of Xiaomi's MJA1 Secure Chip https://t.co/bU6WVh3Ksf",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:11:23.000Z",
+      "conversation_id": "2067867827034321014",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 448,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://blog.quarkslab.com/black-box-probing-a-security-analysis-of-xiaomis-mja1-secure-chip.html"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067867827034321014"
+    },
+    {
+      "id": "2067867781098266727",
+      "text": "Major US carrier stored credit card info in the clear, employee learned on first day https://t.co/UJu35G4BGh",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:11:12.000Z",
+      "conversation_id": "2067867781098266727",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 460,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://www.theregister.com/security/2026/06/18/major-us-carrier-stored-credit-card-info-in-the-clear-employee-learned-on-first-day/5257932"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067867781098266727"
+    },
+    {
+      "id": "2067867753730470134",
+      "text": "Killing me gently: Inside Gentlemen’s EDR killer framework https://t.co/47HsVPCLCk",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:11:06.000Z",
+      "conversation_id": "2067867753730470134",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 436,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://www.welivesecurity.com/en/eset-research/killing-me-gently-inside-gentlemens-edr-killer-framework/"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067867753730470134"
+    },
+    {
+      "id": "2067867692619505838",
+      "text": "F5 Patches Two Critical NGINX Open Source Flaws Enabling Remote Code Execution https://t.co/oVyuvWNhad",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:10:51.000Z",
+      "conversation_id": "2067867692619505838",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 408,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://thehackernews.com/2026/06/f5-patches-two-critical-nginx-open.html"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067867692619505838"
+    },
+    {
+      "id": "2067867669139689739",
+      "text": "CISA warns Fortinet users to secure devices after FortiBleed leak https://t.co/JRl86Xh1Zc",
+      "author_id": "128484298",
+      "username": "Dinosn",
+      "name": "Nicolas Krassas",
+      "created_at": "2026-06-19T07:10:46.000Z",
+      "conversation_id": "2067867669139689739",
+      "metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 600,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://www.bleepingcomputer.com/news/security/cisa-warns-fortinet-users-to-secure-devices-after-fortibleed-leak/"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Dinosn/status/2067867669139689739"
+    }
+  ]
+}

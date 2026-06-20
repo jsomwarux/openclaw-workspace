@@ -1,0 +1,63 @@
+{
+  "user": {
+    "username": "GraysonDXYZ",
+    "created_at": "2021-12-16T15:59:03.000Z",
+    "public_metrics": {
+      "followers_count": 4042,
+      "following_count": 26,
+      "tweet_count": 22,
+      "listed_count": 8,
+      "like_count": 3216,
+      "media_count": 4
+    },
+    "id": "1471510161818734593",
+    "name": "Grayson Dodson",
+    "description": "Founder of https://t.co/CEMRXCxAOr. Building practical AI tools, business systems, and technical workflows for all people! Opinions are my own."
+  },
+  "tweets": [
+    {
+      "id": "2067085000793641419",
+      "text": "A coding agent's biggest risk isn't being wrong. It's being confidently wrong.\nLeft to defaults, it commits to the first viable solution and writes toward it — and you don't catch the bad assumption until you're deep in the implementation.\nThe fix lives in how you frame the task.",
+      "author_id": "1471510161818734593",
+      "username": "GraysonDXYZ",
+      "name": "Grayson Dodson",
+      "created_at": "2026-06-17T03:20:43.000Z",
+      "conversation_id": "2067085000793641419",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 24,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GraysonDXYZ/status/2067085000793641419"
+    },
+    {
+      "id": "2066702142988034123",
+      "text": "If you've ever shipped an AI workflow that felt fine in testing and then got slow, expensive, or flaky once a team actually used it — this shows you why. You watch the request budget get eaten by instructions, context, examples, tool output, and retries before the model even https://t.co/8QbbuG45T4",
+      "author_id": "1471510161818734593",
+      "username": "GraysonDXYZ",
+      "name": "Grayson Dodson",
+      "created_at": "2026-06-16T01:59:23.000Z",
+      "conversation_id": "2066702142988034123",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 57,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/GraysonDXYZ/status/2066702142988034123/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/GraysonDXYZ/status/2066702142988034123"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "user": {
+    "created_at": "2009-04-16T13:02:50.000Z",
+    "name": "Lesmes",
+    "username": "lesmeslp",
+    "description": "",
+    "public_metrics": {
+      "followers_count": 319,
+      "following_count": 1006,
+      "tweet_count": 2666,
+      "listed_count": 12,
+      "like_count": 2547,
+      "media_count": 146
+    },
+    "id": "31768397"
+  },
+  "tweets": [
+    {
+      "id": "2067893784822567176",
+      "text": "1/ Every week here somebody asks: will [product X] survive AI agents? Is [SaaS Y] still worth the renewal? How do we build something agents will actually choose?\nI packaged two frameworks as open-source Claude skills. Anyone with Claude Code can use them in 1 minute 👇",
+      "author_id": "31768397",
+      "username": "lesmeslp",
+      "name": "Lesmes",
+      "created_at": "2026-06-19T08:54:32.000Z",
+      "conversation_id": "2067893784822567176",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/lesmeslp/status/2067893784822567176"
+    }
+  ]
+}

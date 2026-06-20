@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "AI automation tools released today",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-06-19",
+  "results": [
+    {
+      "title": "12 BEST AI Test Automation Tools for 2026 The Third Wave",
+      "url": "https://testguild.com/7-innovative-ai-test-automation-tools-future-third-wave/",
+      "description": "The AI test automation tools actually delivering ROI for enterprise teams right now fall into three categories: <strong>visual validation (Applitools), autonomous test generation (Blinq.io, Mabl), and self-healing execution agentic (Perfecto Perforce).</strong>",
+      "age": "15 hours ago",
+      "page_age": "2026-06-18T21:32:01",
+      "source": "Test Guild"
+    },
+    {
+      "title": "Experience AI in our products and experimental tools — Google AI",
+      "url": "https://ai.google/products/",
+      "description": "How anyone can experience the AI in Google products and services, and discover the latest experimental AI tools and technology.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T16:07:49",
+      "source": "Google AI"
+    },
+    {
+      "title": "The Best AI Workflow Automation Tools | Product Hunt",
+      "url": "https://www.producthunt.com/categories/ai-workflow-automation",
+      "description": "We just wrapped the Orbit Awards for AI Dictation and now we re moving to the next category: AI Automation. This one is for the tools that actually do work for you clearing chores, running workflows in the background, or quietly taking over a chunk of your week without turning into another dashboard you have to babysit. ... last week, I shared an update on everything Inr has shipped over the last 20 months in automation, CRM, and integrations. today I am doing a final update on the bigger shift coming this Saturday 25th: Inr is now an AI-first platform, and here&#x27;s what that actually means.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T07:31:15",
+      "source": "Product Hunt"
+    },
+    {
+      "title": "What is AI Automation? - AI Automation Explained - AWS",
+      "url": "https://aws.amazon.com/what-is/ai-automation/",
+      "description": "AI automation seeks to solve these challenges by combining artificial intelligence with existing enterprise automation tools and knowledge repositories. Generative and predictive AI algorithms combine to sort, filter, classify, and create data in ways that reduce human intervention in the most complex workflows.",
+      "age": "12 hours ago",
+      "page_age": "2026-06-19T01:19:08",
+      "source": "AWS"
+    },
+    {
+      "title": "The best AI code editors in 2025 | Product Hunt",
+      "url": "https://www.producthunt.com/categories/ai-code-editors",
+      "description": "Limits: Full end‑to‑end automation (generate → run → auto‑verify/fix) varies by product and usually keeps a human in the loop. ... Recent launches skew toward agent orchestration and specialized workflows: Canopy and Claude Code Desktop App Redesigned emphasize parallel repo sessions, isolated contexts, and smoother review/merge flows, while MoDev pushes AI coding onto phones with Git, deploy, and database controls.",
+      "age": "10 hours ago",
+      "page_age": "2026-06-19T02:46:26",
+      "source": "Product Hunt"
+    }
+  ]
+}

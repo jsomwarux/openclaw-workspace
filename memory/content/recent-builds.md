@@ -139,3 +139,11 @@
 - **Demonstrates:** machine-status cockpit design, route migration, cron/agent/cost signal modeling, and reliability-focused product UX without a backend rewrite.
 - **Content angle:** A machine lane is useful only when it separates cron health, agent state, cost pressure, and automation work instead of burying system risk in an agent directory.
 - **Status:** complete.
+
+## Mission Control Done Task Visibility — 2026-06-19
+- **What:** Fixed the redesigned `/work` task router so completed tasks no longer stay mixed into active priority filters, added a Done view for recent completions, and exposed History for archived tasks.
+- **For:** Internal operating system / JT + Eve task routing.
+- **Outcome:** High-priority done tasks no longer remain on the active board; recently completed tasks are visible under Done until the existing seven-day archival path moves them to History; `bun test lib/mission-control/*.test.ts` passed 47/47, `npm run build` passed, `/work` and `/history` returned HTTP 200, and proof guard passed.
+- **Demonstrates:** regression-driven product repair, task lifecycle UX, and tested Mission Control routing behavior.
+- **Content angle:** Task systems need an explicit completion lane; hiding done work inside active priority sorting destroys trust in the board.
+- **Status:** complete.

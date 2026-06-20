@@ -1,0 +1,229 @@
+{
+  "user": {
+    "username": "AverySoftware",
+    "description": "The engine for software that actually moves the business. Three solutions one universe: https://t.co/uMX545sZNF | https://t.co/R970TsCLpc | https://t.co/uqqjWFyFbH ⇶ https://t.co/VzUexJyNJb. Powered by AI.",
+    "public_metrics": {
+      "followers_count": 28,
+      "following_count": 16,
+      "tweet_count": 4054,
+      "listed_count": 0,
+      "like_count": 22,
+      "media_count": 33
+    },
+    "created_at": "2025-09-09T06:09:13.000Z",
+    "name": "Avery.Software",
+    "id": "1965296313240879104"
+  },
+  "tweets": [
+    {
+      "id": "2067686559663669455",
+      "text": "1/10\n\nROI question for AI agent platforms is usually framed as 6-12 month payback.\n\nFor ONE specific agent in Avery NXR's template library, payback is one week. Sometimes one day.\n\nThe agent: Marcus, the resume screening agent. Math + why this single agent pays for the whole",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T19:11:06.000Z",
+      "conversation_id": "2067686559663669455",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067686559663669455"
+    },
+    {
+      "id": "2067685879418941514",
+      "text": "1/10\n\nOne of the harder things about positioning Avery NXR: \"who uses it\" looks different across customer segments.\n\nSolo consultant uses it differently than 50-person team. 50-person team uses it differently than 500-person regulated enterprise.\n\nSame product. Three very",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T19:08:24.000Z",
+      "conversation_id": "2067685879418941514",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 2,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067685879418941514"
+    },
+    {
+      "id": "2067685187278999607",
+      "text": "1/10\n\nAvery NXR ships with 63 connectors: 15 OAuth + 48 API-key across 13 categories.\n\nSpecific number. Not 50, not 100. Behind it = a real prioritization story.\n\nHere's why 63 and not 1,000. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T19:05:39.000Z",
+      "conversation_id": "2067685187278999607",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067685187278999607"
+    },
+    {
+      "id": "2067684469272924283",
+      "text": "1/10\n\nWhen we built Avery NXR, Excel/workbook bidirectional sync was a \"nice to have.\" Mentioned on website. Didn't lead with it.\n\n3 months in, it's one of the most-used features by deployed customers.\n\nWe've reordered marketing because of how heavily it shows up. Here's why. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T19:02:47.000Z",
+      "conversation_id": "2067684469272924283",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067684469272924283"
+    },
+    {
+      "id": "2067683765409960237",
+      "text": "1/10\n\nProduct strategy is usually framed in terms of what you ARE building.\n\nThe less-discussed half: what you're DELIBERATELY not building.\n\nHere's what Avery NXR is NOT and why each \"no\" makes the product better. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T19:00:00.000Z",
+      "conversation_id": "2067683765409960237",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067683765409960237"
+    },
+    {
+      "id": "2067682965656949117",
+      "text": "1/10\n\nWe get asked often: Avery NXR vs CrewAI?\n\nHonest answer: they're not really competitors. They're solving adjacent problems for different audiences.\n\nHere's the framing that makes the difference clear. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T18:56:49.000Z",
+      "conversation_id": "2067682965656949117",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067682965656949117"
+    },
+    {
+      "id": "2067681727456379052",
+      "text": "1/10\n\nProspects evaluating Avery NXR ask about:\n→ Templates\n→ Connectors\n→ Pricing\n→ Model selection\n\nRarely about: the audit ledger.\n\nThen they deploy. Two months in, the audit ledger is the feature they bring up in every renewal conversation.\n\nHere's why. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T18:51:54.000Z",
+      "conversation_id": "2067681727456379052",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067681727456379052"
+    },
+    {
+      "id": "2067681006103220538",
+      "text": "1/10\n\nAvery NXR runs local models through Ollama.\n\nThis sometimes surprises engineers who'd expect us to use vLLM or another \"production-grade\" runtime.\n\nHere's the reasoning behind that choice. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T18:49:02.000Z",
+      "conversation_id": "2067681006103220538",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067681006103220538"
+    },
+    {
+      "id": "2067679398418071756",
+      "text": "1/10\n\nWe gave our Avery NXR agents Slack access 3 months ago.\n\nThe change was bigger than expected.\n\nWhen you put an agent INSIDE Slack instead of in a separate interface, the relationship inverts. Agent is where the team already is. 🧵",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T18:42:38.000Z",
+      "conversation_id": "2067679398418071756",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067679398418071756"
+    },
+    {
+      "id": "2067678700070658476",
+      "text": "1/10\n\nWe watched how Avery NXR users schedule their agents.\n\nThe single most common cron expression: between 2-6 AM local time. Peak at 4 AM.\n\nNobody chose 4 AM because their morning starts then. They chose 4 AM so their work is waiting when their morning DOES start.",
+      "author_id": "1965296313240879104",
+      "username": "AverySoftware",
+      "name": "Avery.Software",
+      "created_at": "2026-06-18T18:39:52.000Z",
+      "conversation_id": "2067678700070658476",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AverySoftware/status/2067678700070658476"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "AI agents news today",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-06-19",
+  "results": [
+    {
+      "title": "Latest Agentic AI News Today | Trends, Predictions, & Analysis",
+      "url": "https://www.forbes.com/topics/agentic-ai/",
+      "description": "The rise of agentic AI is transforming ... who fail to deliver value from the technology. <strong>Computex 2026 revealed new hardware ecosystems for agentic AI in the physical world</strong>, with platforms from Nvidia, Microsoft, and others targeting ...",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T10:45:03",
+      "source": "Forbes"
+    },
+    {
+      "title": "AWS Summit New York 2026: New ways to make AI agents more effective at work",
+      "url": "https://www.aboutamazon.com/news/aws/aws-summit-nyc-2026-ai-agents",
+      "description": "Today at AWS Summit New York, I shared insights into how agents are being put to work effectively and how they create momentum across global organizations. I also showed the new innovations that are helping you get there, including AWS Continuum, a new AI-native security service, and AWS Context, a knowledge graph that gives agents access to the context they need to do their best work, along with new innovations across Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Amazon Bedrock AgentCore.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T16:35:03",
+      "source": "Amazon"
+    },
+    {
+      "title": "AI Updates Today (June 2026) – Latest AI Model Releases",
+      "url": "https://llm-stats.com/llm-updates",
+      "description": "Track recent AI model releases, API changes, pricing updates, and feature launches across the major model providers in one daily changelog.",
+      "age": "19 hours ago",
+      "page_age": "2026-06-18T17:37:13",
+      "source": "LLM Leaderboard"
+    },
+    {
+      "title": "AI News | Latest News | Insights Powering AI-Driven Business Growth",
+      "url": "https://www.artificialintelligence-news.com/",
+      "description": "AI News delivers the latest updates in artificial intelligence, machine learning, deep learning, enterprise AI, and emerging tech worldwide.",
+      "age": "14 hours ago",
+      "page_age": "2026-06-18T22:32:31",
+      "source": "Artificial Intelligence News"
+    },
+    {
+      "title": "Reuters AI News | Latest Headlines and Developments | Reuters",
+      "url": "https://www.reuters.com/technology/artificial-intelligence/",
+      "description": "<strong>SpaceX&#x27;s bankers are preparing to meet investors as early ​as next week to discuss a bond offering of ‌at least $20 billion</strong>, a source familiar with the matter said on Thursday, as Elon Musk&#x27;s newly public company seeks funding for an ambitious ...",
+      "age": "20 hours ago",
+      "page_age": "2026-06-18T17:25:03",
+      "source": "Reuters"
+    }
+  ]
+}

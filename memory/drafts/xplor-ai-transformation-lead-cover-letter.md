@@ -12,7 +12,7 @@ My background maps directly to that work. At Spectrum Enterprise, I spent 6 year
 
 For Xplor, I would bring a practical portfolio lens to AI across products, operations, risk, customer experience, and internal workflows. AgentGuard is the best example: a confidence-gated governance layer with explainability, escalation, and override logging. OpenClaw is the operating proof: 35+ autonomous AI workflows running with model routing, cost monitoring, failure logs, and clear intervention rules.
 
-The honest gap is payments-specific depth and formal MLOps ownership, but the core job is the bridge I have been building: translate complex business problems into scalable, pragmatic AI solutions that teams can actually use. Happy to share the governance layer or AI operations system in more detail.
+The core job is the bridge I have been building: translate complex business problems into scalable, pragmatic AI solutions that teams can actually use. Happy to share the governance layer or AI operations system in more detail.
 
 Jon Trevor Somwaru
 jtsomwaru@gmail.com | jtsomwaru.com

@@ -1,0 +1,202 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 142,
+      "following_count": 262,
+      "tweet_count": 283,
+      "listed_count": 0,
+      "like_count": 80,
+      "media_count": 75
+    },
+    "username": "DipojjalC",
+    "created_at": "2010-05-06T04:04:25.000Z",
+    "description": "Enterprise Solution Architect @ A5 | 25X Salesforce Certified | 4 Star Ranger",
+    "id": "140679865",
+    "name": "Dipojjal"
+  },
+  "tweets": [
+    {
+      "id": "2067745902001893443",
+      "text": "Big polish day on https://t.co/6ODoC7B1Je: a bold new homepage hero, a redesigned Tools hub that finally reads like a product, color-coded Games, sharper dark mode, and a fresh deep-dive on Salesforce's Agentic Advisor for Financial Services. Come take a look! #buildinpublic",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-18T23:06:54.000Z",
+      "conversation_id": "2067745902001893443",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2067745902001893443"
+    },
+    {
+      "id": "2067384033395282378",
+      "text": "Salesforce + Databricks expanded Zero Copy for Agentforce at Data + AI Summit 2026.\n\nMuleSoft Agent Scanner for Databricks: GA now. Federated search + Slack Genie App in preview.\n\nFull breakdown → https://t.co/6ODoC7B1Je\n\n#buildinpublic #Salesforce #Databricks #Agentforce",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-17T23:08:58.000Z",
+      "conversation_id": "2067384033395282378",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 57,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic",
+        "Salesforce",
+        "Databricks",
+        "Agentforce"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2067384033395282378"
+    },
+    {
+      "id": "2067021357112566173",
+      "text": "Shipped today on https://t.co/6ODoC7B1Je: a System/Light/Dark theme that tracks your OS live, server-side quiz scoring so leaderboards can't be faked, clearer sign-in fields, and a new piece on Salesforce x FIFA World Cup 2026. Come take a look 👉 #buildinpublic #Salesforce",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-16T23:07:49.000Z",
+      "conversation_id": "2067021357112566173",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 64,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic",
+        "Salesforce"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2067021357112566173"
+    },
+    {
+      "id": "2066659189938631124",
+      "text": "Salesforce just dropped $3.6B to acquire Fin (formerly Intercom) — wrote up the full story on https://t.co/6ODoC7B1Je 🧵",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-15T23:08:42.000Z",
+      "conversation_id": "2066659189938631124",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 33,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/DipojjalC/status/2066659189938631124"
+    },
+    {
+      "id": "2066296560548188617",
+      "text": "Shipped to https://t.co/6ODoC7B1Je today:\n\n- Bot protection on every public form, so no more junk signups\n- New article on Salesforce Summer '26 GA + Apex breaking changes\n- Fixed a messy cert stats chart\n\nHonest progress, one day at a time.\n\n#buildinpublic #Salesforce",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-14T23:07:44.000Z",
+      "conversation_id": "2066296560548188617",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 49,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic",
+        "Salesforce"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2066296560548188617"
+    },
+    {
+      "id": "2065933942507667796",
+      "text": "Just shipped \"Real or Fake?\" — a daily game on Salesforce Dictionary 🎯\n\n10 rounds. Guess if a Salesforce term is real or made up. Speed bonuses + leaderboard included.\n\nTry it at https://t.co/6ODoC7B1Je\n\n#buildinpublic #Salesforce #Trailblazers",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-13T23:06:49.000Z",
+      "conversation_id": "2065933942507667796",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 22,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic",
+        "Salesforce",
+        "Trailblazers"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2065933942507667796"
+    },
+    {
+      "id": "2065572130884886690",
+      "text": "Salesforce stock just hit a new 52-week low ($163.31) while Agentforce ARR grew 205% to $1.2B.\n\nSame company. Same week.\n\nI broke down the 3 reasons behind the disconnect — with charts.\n\nFull analysis on https://t.co/6ODoC7B1Je\n\n#buildinpublic #Salesforce #Agentforce #CRM",
+      "author_id": "140679865",
+      "username": "DipojjalC",
+      "name": "Dipojjal",
+      "created_at": "2026-06-12T23:09:07.000Z",
+      "conversation_id": "2065572130884886690",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 30,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://salesforcedictionary.com"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "buildinpublic",
+        "Salesforce",
+        "Agentforce",
+        "CRM"
+      ],
+      "tweet_url": "https://x.com/DipojjalC/status/2065572130884886690"
+    }
+  ]
+}

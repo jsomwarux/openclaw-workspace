@@ -200,6 +200,34 @@ Every weekly review ends with exactly one of these:
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
+## Metrics Summary — Week of 2026-06-12
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 2
+- Best item: glow-index Search Console queries 2026-06-12 to 2026-06-18 (2 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 2
+- Web depth: active users 2, pageviews 8, events 12
+- Best item: glow-index GA4 web traffic 2026-06-12 to 2026-06-18 (2 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-12 to 2026-06-18 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 47
+- Web depth: active users 12, pageviews 124, events 385
+- Best item: nash-satoshi GA4 web traffic 2026-06-12 to 2026-06-18 (47 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-06-12 to 2026-06-18 (47 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-06-11
 
 ### glow-index / search_console
@@ -986,12 +1014,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 34
+- Posts/results logged: 35
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 34
+- Posts/results logged: 35
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1505,7 +1533,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-06-18_
+_Last updated: 2026-06-19_
 
 <!-- METRICS_SUMMARY_END -->
 

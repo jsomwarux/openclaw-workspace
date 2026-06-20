@@ -1,0 +1,229 @@
+{
+  "user": {
+    "public_metrics": {
+      "followers_count": 92,
+      "following_count": 535,
+      "tweet_count": 577,
+      "listed_count": 0,
+      "like_count": 1431,
+      "media_count": 52
+    },
+    "description": "AI Psychosis | Hermes Agent Practice\nhttps://t.co/OwvvnWtDbX",
+    "id": "717635278769229824",
+    "created_at": "2016-04-06T08:49:18.000Z",
+    "username": "JayTL00",
+    "name": "Jay.TL"
+  },
+  "tweets": [
+    {
+      "id": "2067761117112451103",
+      "text": "Anthropic's \"engineers ship 8x more code\" headline buried the real story.\n\nTheir own data shows the skill that matters in the age of AI coding isn't coding at all — it's knowing what to ask for.\n\nOn June 16, Anthropic's Economic Research team published a study of ~400,000 Claude",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-19T00:07:22.000Z",
+      "conversation_id": "2067761117112451103",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 118,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2067761117112451103"
+    },
+    {
+      "id": "2067715440634421439",
+      "text": "Three AI labs shipped the same feature within one hour today. That's not competition. That's a signal the unit of interaction just changed.\n\nFor two years, the atomic unit of working with an AI agent was one prompt. You type. It responds. You type again. Every workflow was a",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-18T21:05:51.000Z",
+      "conversation_id": "2067715440634421439",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 107,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2067715440634421439"
+    },
+    {
+      "id": "2067670373450342785",
+      "text": "Perplexity just shipped the most important agent feature of 2026, and almost nobody noticed what it really is.\n\nBrain, announced today for Perplexity Computer, is being covered as a \"memory system.\" That's like calling a database \"a place to put things.\" Brain is not memory.",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-18T18:06:47.000Z",
+      "conversation_id": "2067670373450342785",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 35,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2067670373450342785"
+    },
+    {
+      "id": "2067625084265836919",
+      "text": "A leaked Claude Code source just got reverse-engineered by UCL researchers.\n\nThe finding most people skipped past: only 1.6% of the codebase is AI decision logic. The other 98.4% is permission gates, context compaction, recovery logic, tool routing, session persistence.\n\nThat's",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-18T15:06:49.000Z",
+      "conversation_id": "2067625084265836919",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 1,
+        "impressions": 107,
+        "bookmarks": 2
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2067625084265836919"
+    },
+    {
+      "id": "2067398501315792959",
+      "text": "Vercel just open-sourced eve — \"Next.js for agents.\" 610 stars in 24 hours. The design is genuinely elegant: an agent is just a folder. Markdown for instructions, TypeScript for tools.\n\nBut the elegant folder is the bait. The hook is the nine \"Leverages\" tags underneath it.\n\n1/",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-18T00:06:27.000Z",
+      "conversation_id": "2067398501315792959",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 134,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2067398501315792959"
+    },
+    {
+      "id": "2067352660735651926",
+      "text": "Unreal Engine 5.8 shipped today with native MCP server support.\n\nRead past the headline. Epic didn't build \"Unreal AI.\" They didn't partner with one lab or ship a proprietary assistant. They exposed the engine as MCP tools and let any agent connect.\n\nThat's a flagship creative",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-17T21:04:18.000Z",
+      "conversation_id": "2067352660735651926",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 1,
+        "impressions": 382,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2067352660735651926"
+    },
+    {
+      "id": "2067262672996110528",
+      "text": "Cursor just announced Origin — a git forge \"built for the agentic era.\"\n\n11.5K likes on the announcement. Nobody is asking the obvious question: is this a GitHub competitor, or the most aggressive vendor lock-in play since Microsoft bundled IE into Windows?\n\nThe framing is \"code",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-17T15:06:43.000Z",
+      "conversation_id": "2067262672996110528",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 99,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2067262672996110528"
+    },
+    {
+      "id": "2066990389626843165",
+      "text": "Microsoft just admitted the economics of unlimited AI don't work. Their fix? A Chinese open-source model.\n\nAxios reports Microsoft is exploring an Azure-hosted DeepSeek V4 as a cheaper backend for Copilot Cowork. The company has already fine-tuned the model. Final decision is",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-16T21:04:46.000Z",
+      "conversation_id": "2066990389626843165",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 308,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2066990389626843165"
+    },
+    {
+      "id": "2066945255476482358",
+      "text": "Everyone is treating the Claude Fable 5 prompt leak like a TMZ story. It's actually an architecture reveal.\n\nThe real headline is buried under 120,000 characters of leaked instructions: frontier AI models are no longer products. The prompt is the product.\n\nHere's what the leak",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-16T18:05:25.000Z",
+      "conversation_id": "2066945255476482358",
+      "metrics": {
+        "likes": 0,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 290,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2066945255476482358"
+    },
+    {
+      "id": "2066900186610414002",
+      "text": "SpaceX bought Cursor for $60 billion.\n\nThat's the headline. Here's what it actually means.\n\nElon Musk spent 2.4% of SpaceX's freshly-minted $2.5T IPO valuation to acquire the company behind the most-used AI code editor on Earth. The deal closed 96 hours after the largest IPO in",
+      "author_id": "717635278769229824",
+      "username": "JayTL00",
+      "name": "Jay.TL",
+      "created_at": "2026-06-16T15:06:20.000Z",
+      "conversation_id": "2066900186610414002",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 144,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/JayTL00/status/2066900186610414002"
+    }
+  ]
+}

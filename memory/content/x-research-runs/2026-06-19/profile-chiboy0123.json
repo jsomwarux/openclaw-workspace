@@ -1,0 +1,113 @@
+{
+  "user": {
+    "description": "upcoming web3 security researcher trying to make web3 a bit safer",
+    "id": "1891838578419957764",
+    "name": "chiboy",
+    "public_metrics": {
+      "followers_count": 1180,
+      "following_count": 893,
+      "tweet_count": 16506,
+      "listed_count": 7,
+      "like_count": 11047,
+      "media_count": 1522
+    },
+    "username": "chiboy0123",
+    "created_at": "2025-02-18T13:16:23.000Z"
+  },
+  "tweets": [
+    {
+      "id": "2067641850052141169",
+      "text": "Is it only me that have noticed but this kdrama they act in local villages there must be one of the character house that is up a stip hill 😭😭 https://t.co/CWWPHxNh2n",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-18T16:13:26.000Z",
+      "conversation_id": "2067641850052141169",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/chiboy0123/status/2067641850052141169/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2067641850052141169"
+    },
+    {
+      "id": "2066527696436236371",
+      "text": "Guys pls is almost ending \n\nAbeg make i no loose vote for minimax\n\nhttps://t.co/PiMwJxcNkw https://t.co/oG6zhkRhms",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-15T14:26:11.000Z",
+      "conversation_id": "2066527696436236371",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 110,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://arena.cysic.xyz/projects/WUuJLEtAuFE90TayqblxU",
+        "https://twitter.com/chiboy0123/status/2065419428968218870"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2066527696436236371"
+    },
+    {
+      "id": "2065753953598361670",
+      "text": "Guys pls I join the cyops arena and would love for you guys to vote minimax\n\nGo to; https://t.co/sqniZT3lA0\n\nSign in with discord or x \n\nThen go to minimax open pj and vote \n\nGod bless u https://t.co/oG6zhkRhms",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-13T11:11:37.000Z",
+      "conversation_id": "2065753953598361670",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 44,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://arena.cysic.xyz/",
+        "https://twitter.com/chiboy0123/status/2065419428968218870"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2065753953598361670"
+    },
+    {
+      "id": "2065419428968218870",
+      "text": "I just built an MCP server that gives any AI coding tool direct access to MiniMax M3's brain. This is what i mean;\n\nMiniMax just launched M3; a frontier model with 1 million token context, beating GPT-5.5 on SWE-bench. But i noticed developers couldn't use it inside their AI https://t.co/y5DNzRSMDq",
+      "author_id": "1891838578419957764",
+      "username": "chiboy0123",
+      "name": "chiboy",
+      "created_at": "2026-06-12T13:02:20.000Z",
+      "conversation_id": "2065419428968218870",
+      "metrics": {
+        "likes": 27,
+        "retweets": 11,
+        "replies": 19,
+        "quotes": 1,
+        "impressions": 2290,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://x.com/chiboy0123/status/2065419428968218870/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/chiboy0123/status/2065419428968218870"
+    }
+  ]
+}

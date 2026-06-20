@@ -1,0 +1,244 @@
+[
+  {
+    "id": "2067322141947973895",
+    "text": "📄 @base daily recap\n\nwhat happened on @base in the last 24 hours\n\nNEWS\n\n■ @coinbase announced Base MCP, x402, Coinbase for Agents, Coinbase Advisor, B20, Base App upgrades, and enterprise privacy.\n\n■ Base Beryl goes mainnet on June 25, bringing B20 as Base’s native token https://t.co/BD4aphC9iK https://t.co/Wp0H75kT65",
+    "author_id": "1685997752969564160",
+    "username": "BaseHubHB",
+    "name": "Base Hub 🛡️",
+    "created_at": "2026-06-17T19:03:02.000Z",
+    "conversation_id": "2067322141947973895",
+    "metrics": {
+      "likes": 59,
+      "retweets": 5,
+      "replies": 7,
+      "quotes": 2,
+      "impressions": 4045,
+      "bookmarks": 3
+    },
+    "urls": [
+      "https://x.com/BaseHubHB/status/2067322141947973895/photo/1",
+      "https://twitter.com/BaseHubHB/status/2066958995458277840"
+    ],
+    "mentions": [
+      "base",
+      "base",
+      "coinbase"
+    ],
+    "hashtags": [],
+    "tweet_url": "https://x.com/BaseHubHB/status/2067322141947973895"
+  },
+  {
+    "id": "2065419428968218870",
+    "text": "I just built an MCP server that gives any AI coding tool direct access to MiniMax M3's brain. This is what i mean;\n\nMiniMax just launched M3; a frontier model with 1 million token context, beating GPT-5.5 on SWE-bench. But i noticed developers couldn't use it inside their AI https://t.co/y5DNzRSMDq",
+    "author_id": "1891838578419957764",
+    "username": "chiboy0123",
+    "name": "chiboy",
+    "created_at": "2026-06-12T13:02:20.000Z",
+    "conversation_id": "2065419428968218870",
+    "metrics": {
+      "likes": 27,
+      "retweets": 11,
+      "replies": 19,
+      "quotes": 1,
+      "impressions": 2290,
+      "bookmarks": 5
+    },
+    "urls": [
+      "https://x.com/chiboy0123/status/2065419428968218870/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/chiboy0123/status/2065419428968218870"
+  },
+  {
+    "id": "2065727825836195975",
+    "text": "https://t.co/PCy0g0UysK Beta launch soon.🚀\n\nA payment infrastructure designed for AI Agents:\n• Pay and get paid autonomously\n• Move value across chains\n• Integrate with any Agent workflow\n• Built for the next generation of autonomous businesses\n\n#PayAgent #AI #A2A #AgentFi https://t.co/F2fXZEebsm",
+    "author_id": "1858149157065891840",
+    "username": "PayA_gent",
+    "name": "PayA.gent",
+    "created_at": "2026-06-13T09:27:47.000Z",
+    "conversation_id": "2065727825836195975",
+    "metrics": {
+      "likes": 8,
+      "retweets": 0,
+      "replies": 7,
+      "quotes": 1,
+      "impressions": 461,
+      "bookmarks": 1
+    },
+    "urls": [
+      "http://PayA.gent",
+      "https://x.com/PayA_gent/status/2065727825836195975/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "PayAgent",
+      "AI",
+      "A2A",
+      "AgentFi"
+    ],
+    "tweet_url": "https://x.com/PayA_gent/status/2065727825836195975"
+  },
+  {
+    "id": "2067701028363862463",
+    "text": "I literally just built a human/agent workflow recorder when I had Fable 🤣 💀 https://t.co/fJnF9PLFYo",
+    "author_id": "1518730154192818178",
+    "username": "StevenDarlow",
+    "name": "Steve Darlow",
+    "created_at": "2026-06-18T20:08:35.000Z",
+    "conversation_id": "2067701028363862463",
+    "metrics": {
+      "likes": 2,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 52,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://twitter.com/openaidevs/status/2067681320281723113"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/StevenDarlow/status/2067701028363862463"
+  },
+  {
+    "id": "2066702142988034123",
+    "text": "If you've ever shipped an AI workflow that felt fine in testing and then got slow, expensive, or flaky once a team actually used it — this shows you why. You watch the request budget get eaten by instructions, context, examples, tool output, and retries before the model even https://t.co/8QbbuG45T4",
+    "author_id": "1471510161818734593",
+    "username": "GraysonDXYZ",
+    "name": "Grayson Dodson",
+    "created_at": "2026-06-16T01:59:23.000Z",
+    "conversation_id": "2066702142988034123",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 57,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/GraysonDXYZ/status/2066702142988034123/video/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/GraysonDXYZ/status/2066702142988034123"
+  },
+  {
+    "id": "2067715440634421439",
+    "text": "Three AI labs shipped the same feature within one hour today. That's not competition. That's a signal the unit of interaction just changed.\n\nFor two years, the atomic unit of working with an AI agent was one prompt. You type. It responds. You type again. Every workflow was a",
+    "author_id": "717635278769229824",
+    "username": "JayTL00",
+    "name": "Jay.TL",
+    "created_at": "2026-06-18T21:05:51.000Z",
+    "conversation_id": "2067715440634421439",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 107,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/JayTL00/status/2067715440634421439"
+  },
+  {
+    "id": "2065766403144102289",
+    "text": "Week 15. One week left. 🚀\n\nWe shipped 3 major AI governance features, fixed 12 critical bugs, and nailed the human+AI workflow logic.\n\nIt wasn't pretty. But it works.\n\nNext week: Beta access opens.\n\n#BuildingInPublic #AI #Engineering #Elixium https://t.co/PhuXDxrjdA",
+    "author_id": "2028582527133421568",
+    "username": "Elixium_ai",
+    "name": "Elixium.ai",
+    "created_at": "2026-06-13T12:01:05.000Z",
+    "conversation_id": "2065766403144102289",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 10,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/Elixium_ai/status/2065766403144102289/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "BuildingInPublic",
+      "AI",
+      "Engineering",
+      "Elixium"
+    ],
+    "tweet_url": "https://x.com/Elixium_ai/status/2065766403144102289"
+  },
+  {
+    "id": "2067201642139983939",
+    "text": "2026 AI shift: less 'which model wins?' more 'which agent workflow survives production?' Claude Opus 4.8 pushed coding + agentic tasks. GitHub shipped Copilot SDK GA and usage-based billing. Model quality matters. Reliability, observability, and cost control matter more.",
+    "author_id": "1530790438613184512",
+    "username": "Ace09902365",
+    "name": "周振家Ace",
+    "created_at": "2026-06-17T11:04:12.000Z",
+    "conversation_id": "2067201642139983939",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 1,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/Ace09902365/status/2067201642139983939"
+  },
+  {
+    "id": "2067095989039649055",
+    "text": "1 simple question, Claude Code launched a 189 agents swarm...\n\nMy session usage burnt out in minues..\n\nI guess if you would like to adopt dynamic agent workflow, it is crucial to discuss a meta-principle on agent swarm size control. https://t.co/mw1pbc7fCa",
+    "author_id": "1905995523385090049",
+    "username": "huang68863",
+    "name": "Tony Huang",
+    "created_at": "2026-06-17T04:04:23.000Z",
+    "conversation_id": "2067095989039649055",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 10,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/huang68863/status/2067095989039649055/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/huang68863/status/2067095989039649055"
+  },
+  {
+    "id": "2065640229311336545",
+    "text": "Security shouldn’t be an afterthought, it needs to be built‑in.\n\nAstrid embeds sandboxing and control layers directly into your agent workflow, operating invisibly under your current setup. \n\nNot just a feature: 👇\n\na new baseline for safe, scalable agent deployment. https://t.co/C6lbVUDxms",
+    "author_id": "1984448988087713792",
+    "username": "RPL_Paracetamol",
+    "name": "⚡️ZugChain | Szn | 🐍 One Refill Gallon",
+    "created_at": "2026-06-13T03:39:43.000Z",
+    "conversation_id": "2065640229311336545",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 12,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://twitter.com/unicity_labs/status/2065396605054853245"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/RPL_Paracetamol/status/2065640229311336545"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "insurance automation AI news",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-06-19",
+  "results": [
+    {
+      "title": "The future of insurance is contextual, conversational and customer-first – thanks to AI | CIO",
+      "url": "https://www.cio.com/article/4186404/the-future-of-insurance-is-contextual-conversational-and-customer-first-thanks-to-ai.html",
+      "description": "<strong>AI is shifting insurance toward a hyper-personalized, context-driven model</strong>, requiring strict guardrails to blend automated efficiency with human expertise.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T09:02:43",
+      "source": "CIO"
+    },
+    {
+      "title": "AI in insurance regulation From principles to operational accountability",
+      "url": "https://www.wolterskluwer.com/en/expert-insights/ai-in-insurance-regulation-from-principles-to-operational-accountability",
+      "description": "Insights from a recent multi-state regulatory forum point to a clear shift: <strong>AI is now a supervisory priority—and an immediate operational challenge for compliance teams</strong>. For most insurers, the challenge is not understanding regulatory intent.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T14:43:00",
+      "source": "Wolters Kluwer"
+    },
+    {
+      "title": "Exclusive: New line or better underwriting? AI specialists split on insurance’s next frontier | Intelligent Insurer",
+      "url": "https://www.intelligentinsurer.com/exclusive-new-line-or-better-underwriting-ai-specialists-split-on-insurances-next-frontier",
+      "description": "Exclusive: New line or better underwriting? AI specialists split on insurance’s next frontier",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T11:31:11",
+      "source": "Intelligentinsurer"
+    },
+    {
+      "title": "Earnix AIOS ensures insurers get 'anchored intelligence' for native AI tools &amp; services",
+      "url": "https://www.computerweekly.com/blog/CW-Developer-Network/Earnix-AIOS-ensures-insurers-get-anchored-intelligence-for-native-AI-tools-services",
+      "description": "The company claims to offer “production-grade” AI and decisioning technology into the workflows and decisions that shape insurance performance across insurers’ pricing, underwriting, claims, customer engagement, retention etc.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T06:46:05",
+      "source": "Computer Weekly"
+    },
+    {
+      "title": "They say AI will screen my insurance payouts·loans···how much can I trust it? - 경향신문",
+      "url": "https://www.khan.co.kr/en/article/202606190958007/",
+      "description": "These days, if you photograph your ... away. This is the result of <strong>insurers racing to adopt AI automated assessment models, optical character recognition (OCR), and instant transfer systems</strong>....",
+      "age": "11 hours ago",
+      "page_age": "2026-06-19T02:06:00",
+      "source": "Khan"
+    }
+  ]
+}

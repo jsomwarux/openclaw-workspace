@@ -1,0 +1,246 @@
+{
+  "user": {
+    "id": "2029587888145657856",
+    "public_metrics": {
+      "followers_count": 510,
+      "following_count": 194,
+      "tweet_count": 12778,
+      "listed_count": 2,
+      "like_count": 127,
+      "media_count": 171
+    },
+    "created_at": "2026-03-05T16:00:50.000Z",
+    "description": "Exploring AI, business, and internet trends. Sharing what I learn along the way",
+    "name": "Manav",
+    "username": "Manavvv31"
+  },
+  "tweets": [
+    {
+      "id": "2067903942269542499",
+      "text": "A new open-source GitHub alternative launched this year with a familiar promise:\n\nYour code. Your server. Your rules.\n\nThen developers opened the repository and found more than fifteen separate CLAUDE.md files.\n\nThe project is called gitdot, a self-hosted git forge designed to https://t.co/orkYzVJPQN",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-19T09:34:54.000Z",
+      "conversation_id": "2067903942269542499",
+      "metrics": {
+        "likes": 2,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 17,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2067903942269542499/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067903942269542499"
+    },
+    {
+      "id": "2067890275637408102",
+      "text": "A Chinese AI lab launched a model claiming it beats GPT-5.5 and Gemini 3.1 Pro on coding.\n\nThe headlines were technically true.\n\nThe full story was much more complicated.\n\nOn June 1, Shanghai-based MiniMax released M3, an open-weight model combining three capabilities that rarely https://t.co/OlnzPSsGtw",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-19T08:40:35.000Z",
+      "conversation_id": "2067890275637408102",
+      "metrics": {
+        "likes": 2,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 99,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2067890275637408102/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067890275637408102"
+    },
+    {
+      "id": "2067873723257139632",
+      "text": "Europe just launched what its backers call the first sovereign open-source alternative to Microsoft 365.\n\nWithin 24 hours, the people behind LibreOffice publicly called the claim misleading.\n\nThe project is Euro-Office, a coalition backed by Nextcloud, IONOS, Proton, and other https://t.co/1muuHhn1cS",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-19T07:34:49.000Z",
+      "conversation_id": "2067873723257139632",
+      "metrics": {
+        "likes": 4,
+        "retweets": 3,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 251,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2067873723257139632/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067873723257139632"
+    },
+    {
+      "id": "2067657719885271236",
+      "text": "Three AI companies looked at the exact same business problem this year and made three completely opposite bets. One of them put it on a Super Bowl billboard.\n\nOpenAI launched ads inside ChatGPT on February 9, 2026, for free and low-cost Go tier users in the United States. Product https://t.co/8EmmWzyRmx",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-18T17:16:30.000Z",
+      "conversation_id": "2067657719885271236",
+      "metrics": {
+        "likes": 8,
+        "retweets": 9,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 171,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2067657719885271236/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067657719885271236"
+    },
+    {
+      "id": "2067643882112991550",
+      "text": "Every AI lab spent three years racing to build the smartest model. In 2026, the smartest people in the room stopped caring which model you use entirely.\n\nThe argument now circulating across data engineering circles, enterprise CTOs, and venture capital alike comes down to a https://t.co/st4ik1R19x",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-18T16:21:31.000Z",
+      "conversation_id": "2067643882112991550",
+      "metrics": {
+        "likes": 8,
+        "retweets": 8,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 162,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2067643882112991550/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067643882112991550"
+    },
+    {
+      "id": "2067623373752991907",
+      "text": "Open source software in 2026 is no longer the unified movement it spent two decades pretending to be. It has become a collection of competing corporate interests, fighting each other using licenses that turned out to be far more ambiguous, and far more weaponizable, than the",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-18T15:00:01.000Z",
+      "conversation_id": "2067623373752991907",
+      "metrics": {
+        "likes": 2,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 165,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067623373752991907"
+    },
+    {
+      "id": "2067608271377318186",
+      "text": "An open-weight model from a Chinese lab now resolves real production GitHub issues autonomously at a rate beating every open model published before it, and you can download the complete weights and run it yourself starting today.\n\nThe benchmark in question is SWE-bench Verified, https://t.co/n8fX0Z58kI",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-18T14:00:00.000Z",
+      "conversation_id": "2067608271377318186",
+      "metrics": {
+        "likes": 8,
+        "retweets": 9,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 236,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2067608271377318186/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067608271377318186"
+    },
+    {
+      "id": "2067593173841727962",
+      "text": "A free coding agent closes a feedback gap that no major paid alternative currently fills.\n\nTHE DETAIL THAT MATTERS :\n1. Most AI coding agents write code, run it, and react to whether the output looks right\n2. This tool integrates directly with your Language Server Protocol, the",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-18T13:00:01.000Z",
+      "conversation_id": "2067593173841727962",
+      "metrics": {
+        "likes": 3,
+        "retweets": 4,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 546,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067593173841727962"
+    },
+    {
+      "id": "2067578077102662055",
+      "text": "A company quietly closed authentication checks that let outside tools use your paid Al subscription. The open-source alternative gained 18,000 users in two weeks. The block backfired completely.\n\nA defensive platform move backfired so completely it became free advertising for its https://t.co/1nLoVX5M23",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-18T12:00:01.000Z",
+      "conversation_id": "2067578077102662055",
+      "metrics": {
+        "likes": 3,
+        "retweets": 4,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 332,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2067578077102662055/video/1",
+        "https://x.com/Manavvv31/status/2067578077102662055/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067578077102662055"
+    },
+    {
+      "id": "2067563779223953575",
+      "text": "A maintainer fed an open-source library into an AI, told it to rewrite the entire codebase, and released the result under a far more permissive license than the project ever carried. \n\nThe original author called it a clear violation. The uncomfortable truth is that nobody, https://t.co/9QBQ31A4cl",
+      "author_id": "2029587888145657856",
+      "username": "Manavvv31",
+      "name": "Manav",
+      "created_at": "2026-06-18T11:03:13.000Z",
+      "conversation_id": "2067563779223953575",
+      "metrics": {
+        "likes": 6,
+        "retweets": 7,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 239,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Manavvv31/status/2067563779223953575/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Manavvv31/status/2067563779223953575"
+    }
+  ]
+}

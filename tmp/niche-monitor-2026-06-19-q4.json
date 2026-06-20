@@ -1,0 +1,34 @@
+{
+  "provider": "brave-direct",
+  "query": "property management software news",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-06-19",
+  "results": [
+    {
+      "title": "AI HOA Management Software for Property Management Firms",
+      "url": "https://www.svermo.ai/blog/ai-hoa-management-software-for-property-management-companies",
+      "description": "As communities continue to grow, property management firms are being asked to do more while maintaining service quality and operational consistency. This is where modern AI HOA management software, HOA management software integrating AI, and a smart HOA management system can create measurable operational improvements.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T10:21:44",
+      "source": "Svermo"
+    },
+    {
+      "title": "6 Property Maintenance Software Platforms for UK Teams",
+      "url": "https://www.joblogic.com/blog/property-maintenance-software",
+      "description": "Property maintenance software gives building and estate teams a single system for logging repairs, scheduling engineers, and tracking every job from raised to resolved. For Facilities Managers, Maintenance Managers, and Estate Managers overseeing multiple sites, the gap between a general property management tool and a purpose-built maintenance platform matters day to day.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T10:00:12",
+      "source": "Joblogic"
+    },
+    {
+      "title": "PropertyPal - Find Property For Sale And Rent In Ireland And Northern Ireland",
+      "url": "https://www.propertypal.com/",
+      "description": "There are two types of people. People who use PropertyPal because they’re house hunting.",
+      "age": "2 days ago",
+      "page_age": "2026-06-18T00:40:31",
+      "source": "PropertyPal"
+    }
+  ]
+}

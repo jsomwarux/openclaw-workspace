@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "construction technology AI news",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-06-19",
+  "results": [
+    {
+      "title": "Y Combinator's 2026 real estate and construction cohort bets big on AI agents and construction intelligence | MarketScale",
+      "url": "https://www.marketscale.com/industries/engineering-and-construction/y-combinators-2026-real-estate-and-construction-cohort-bets-big-on-ai-agents-and-construction-intelligence",
+      "description": "<strong>Y Combinator&#x27;s real estate and construction portfolio has reached 126 funded companies</strong>, according to the accelerator&#x27;s June 2026 directory, with the most recent cohorts reflecting a pronounced shift toward AI-native tools that embed directly ...",
+      "age": "17 hours ago",
+      "page_age": "2026-06-18T20:10:44",
+      "source": "MarketScale"
+    },
+    {
+      "title": "Artificial intelligence | AP News",
+      "url": "https://apnews.com/hub/artificial-intelligence",
+      "description": "Don&#x27;t miss an update on the latest artificial intelligence news from The Associated Press.",
+      "age": "18 hours ago",
+      "page_age": "2026-06-18T19:14:21",
+      "source": "AP News"
+    },
+    {
+      "title": "AI in Construction Project Management: Applications, Benefits, and Future Trends",
+      "url": "https://ibom.vn/en/solution-news/ai-in-construction-project-management-from-manual-reporting-to-intelligent-decision-support-the-end.html",
+      "description": "<strong>Explore how AI in construction project management helps companies control schedule, BOQ, cost, subcontractors, risks, and project execution data</strong>. Learn how iBot – AI Decision Assistant supports faster decision-making in construction and EPC ...",
+      "age": "11 hours ago",
+      "page_age": "2026-06-19T02:14:23",
+      "source": "IBOM"
+    },
+    {
+      "title": "Artificial intelligence | MIT News | Massachusetts Institute of Technology",
+      "url": "https://news.mit.edu/topic/artificial-intelligence2",
+      "description": "The fellowships in applied sciences, ... and technology. ... Founded by two researchers from MIT, Ferveret reduces the amount of energy and water required to cool the chips that power AI. ... A Media Lab study shows that, much like how GPS has weakened our navigation skills, AI can make us worse at detecting fake news...",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T03:35:04",
+      "source": "MIT News"
+    },
+    {
+      "title": "Artificial Intelligence News -- ScienceDaily",
+      "url": "https://www.sciencedaily.com/news/computers_math/artificial_intelligence/",
+      "description": "Artificial Intelligence News. Everything on AI including futuristic robots with artificial intelligence, computer models of human intelligence and more.",
+      "age": "19 hours ago",
+      "page_age": "2026-06-18T17:49:24",
+      "source": "ScienceDaily"
+    }
+  ]
+}

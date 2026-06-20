@@ -1,0 +1,272 @@
+{
+  "user": {
+    "id": "1685997752969564160",
+    "name": "Base Hub 🛡️",
+    "created_at": "2023-07-31T12:56:30.000Z",
+    "public_metrics": {
+      "followers_count": 58248,
+      "following_count": 24,
+      "tweet_count": 10364,
+      "listed_count": 434,
+      "like_count": 43960,
+      "media_count": 3913
+    },
+    "username": "BaseHubHB",
+    "description": "#base 1st media & community since testnet 2023 🟦  Daily updates, insights, alphas & guides on @base 💡  🤝 collabs: https://t.co/klyCThZLdp"
+  },
+  "tweets": [
+    {
+      "id": "2067877706516300000",
+      "text": "🚨 @Coinbase launches Coinbase Advisor, an SEC-registered AI financial advisor for personalized guidance. https://t.co/b84OannWBj",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-19T07:50:39.000Z",
+      "conversation_id": "2067877706516300000",
+      "metrics": {
+        "likes": 21,
+        "retweets": 2,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 754,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067877706516300000/photo/1"
+      ],
+      "mentions": [
+        "coinbase"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067877706516300000"
+    },
+    {
+      "id": "2067806420905623768",
+      "text": "Study Base App https://t.co/N8mXVF5YUe",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-19T03:07:23.000Z",
+      "conversation_id": "2067806420905623768",
+      "metrics": {
+        "likes": 54,
+        "retweets": 3,
+        "replies": 11,
+        "quotes": 1,
+        "impressions": 1618,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://twitter.com/base/status/2067720468124078331"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067806420905623768"
+    },
+    {
+      "id": "2067729071698817394",
+      "text": "State of DeFi on @base\n\nBase is doing $1B+ daily DEX volume and becoming the main liquidity hub for onchain finance.\n\nThe numbers:\n\n&gt; 44% of all Spot Bitcoin DEX volume settles on Base\n\n&gt; $4T+ monthly stablecoin payment volume\n\n&gt; 25+ local stablecoins live globally\n\n&gt; https://t.co/7PUcYjeXe2",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-18T22:00:01.000Z",
+      "conversation_id": "2067729071698817394",
+      "metrics": {
+        "likes": 64,
+        "retweets": 71,
+        "replies": 8,
+        "quotes": 1,
+        "impressions": 1186,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067729071698817394/photo/1"
+      ],
+      "mentions": [
+        "base"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067729071698817394"
+    },
+    {
+      "id": "2067683766835835158",
+      "text": "Top 10 AI projects to watch this week on @base\n\n1. @AskSurplus - inference marketplace routing 2B+ input tokens/day, with 240+ models, 7,200+ suppliers, and buyer routing upgrades.\n\n2. @trynullsec - Legion is now live and open-source, with MCP support for agentic coding, https://t.co/EGtoT9ehV8",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-18T19:00:00.000Z",
+      "conversation_id": "2067683766835835158",
+      "metrics": {
+        "likes": 78,
+        "retweets": 19,
+        "replies": 20,
+        "quotes": 2,
+        "impressions": 2948,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067683766835835158/photo/1"
+      ],
+      "mentions": [
+        "base",
+        "AskSurplus",
+        "trynullsec"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067683766835835158"
+    },
+    {
+      "id": "2067645377248112787",
+      "text": "📄 @base daily recap\n\nwhat happened on @base in the last 24 hours\n\nNEWS\n\n■ @awscloud added USDC payments on Base for AWS WAF publishers.\n\n■ @baseapac shared the Base AI Connect recap from @superai_conf.\n\nAI\n\n■ @CreatorBid launched BID Protocol for trading-agent competitions. https://t.co/IoYFqN8mnF https://t.co/x2keKFJgPn",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-18T16:27:27.000Z",
+      "conversation_id": "2067645377248112787",
+      "metrics": {
+        "likes": 39,
+        "retweets": 4,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 1628,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067645377248112787/photo/1",
+        "https://twitter.com/BaseHubHB/status/2067322141947973895"
+      ],
+      "mentions": [
+        "base",
+        "base",
+        "awscloud",
+        "baseapac",
+        "superai_conf",
+        "CreatorBid"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067645377248112787"
+    },
+    {
+      "id": "2067538810993594608",
+      "text": "All roads lead to Base. https://t.co/iF2HxNst0j",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-18T09:24:00.000Z",
+      "conversation_id": "2067538810993594608",
+      "metrics": {
+        "likes": 101,
+        "retweets": 6,
+        "replies": 28,
+        "quotes": 0,
+        "impressions": 2117,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067538810993594608/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067538810993594608"
+    },
+    {
+      "id": "2067479412531163231",
+      "text": "Which AI on Base have your support? https://t.co/YqcprB6IUF",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-18T05:27:58.000Z",
+      "conversation_id": "2067479412531163231",
+      "metrics": {
+        "likes": 80,
+        "retweets": 8,
+        "replies": 17,
+        "quotes": 3,
+        "impressions": 2185,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067479412531163231/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067479412531163231"
+    },
+    {
+      "id": "2067366681807319168",
+      "text": "BASE IS UNSTOPPABLE 🚀 https://t.co/IcNNj9trhQ",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-17T22:00:01.000Z",
+      "conversation_id": "2067366681807319168",
+      "metrics": {
+        "likes": 163,
+        "retweets": 10,
+        "replies": 35,
+        "quotes": 4,
+        "impressions": 3781,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067366681807319168/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067366681807319168"
+    },
+    {
+      "id": "2067322141947973895",
+      "text": "📄 @base daily recap\n\nwhat happened on @base in the last 24 hours\n\nNEWS\n\n■ @coinbase announced Base MCP, x402, Coinbase for Agents, Coinbase Advisor, B20, Base App upgrades, and enterprise privacy.\n\n■ Base Beryl goes mainnet on June 25, bringing B20 as Base’s native token https://t.co/BD4aphC9iK https://t.co/Wp0H75kT65",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-17T19:03:02.000Z",
+      "conversation_id": "2067322141947973895",
+      "metrics": {
+        "likes": 59,
+        "retweets": 5,
+        "replies": 7,
+        "quotes": 2,
+        "impressions": 4047,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067322141947973895/photo/1",
+        "https://twitter.com/BaseHubHB/status/2066958995458277840"
+      ],
+      "mentions": [
+        "base",
+        "base",
+        "coinbase"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067322141947973895"
+    },
+    {
+      "id": "2067277124894073159",
+      "text": "Project of the week: @OpenGradient\n\nAI access can be taken away overnight.\n\nOpenGradient is building the opposite: private, verifiable, decentralized AI that users and builders can rely on.\n\nOpenGradient Chat brings ChatGPT, Claude, Gemini, Grok, Seed, and Hermes 4 405B by https://t.co/v9ycuCG00W",
+      "author_id": "1685997752969564160",
+      "username": "BaseHubHB",
+      "name": "Base Hub 🛡️",
+      "created_at": "2026-06-17T16:04:09.000Z",
+      "conversation_id": "2067277124894073159",
+      "metrics": {
+        "likes": 27,
+        "retweets": 4,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 919,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/BaseHubHB/status/2067277124894073159/photo/1"
+      ],
+      "mentions": [
+        "OpenGradient"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/BaseHubHB/status/2067277124894073159"
+    }
+  ]
+}

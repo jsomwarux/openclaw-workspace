@@ -1,25 +1,26 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { RefreshCw } from "lucide-react";
+import Link from "next/link";
+import { Archive, RefreshCw } from "lucide-react";
 import { InspectionDrawer } from "@/components/mission-control/InspectionDrawer";
 import { StateBlock } from "@/components/mission-control/StateBlock";
 import { taskToSignal } from "@/lib/mission-control/adapters";
 import { useMissionControlData } from "@/lib/mission-control/hooks";
 import type { Signal, SignalPriority } from "@/lib/mission-control/types";
 import { deferTaskPatch } from "@/lib/mission-control/work-actions";
-import { priorityBadgeClassName, priorityRailClassName, sortWorkSignals } from "@/lib/mission-control/work-priority";
+import { filterWorkSignals, type WorkFilter } from "@/lib/mission-control/work-filters";
+import { priorityBadgeClassName, priorityRailClassName } from "@/lib/mission-control/work-priority";
 import { statusOptions, toTaskStatus, type TaskStatus } from "@/lib/mission-control/work-status";
 import { cn, formatRelative } from "@/lib/utils";
 
-type Filter = "all" | "jt" | "eve" | "high" | "blocked";
-
-const filters: { id: Filter; label: string }[] = [
+const filters: { id: WorkFilter; label: string }[] = [
   { id: "all", label: "All" },
   { id: "jt", label: "JT" },
   { id: "eve", label: "Eve" },
   { id: "high", label: "High" },
   { id: "blocked", label: "Blocked/Stale" },
+  { id: "done", label: "Done" },
 ];
 
 function statusColor(status: Signal["status"]) {
@@ -32,23 +33,15 @@ function statusColor(status: Signal["status"]) {
 
 export default function WorkPage() {
   const { tasks, loading, errors, refresh } = useMissionControlData();
-  const [filter, setFilter] = useState<Filter>("all");
+  const [filter, setFilter] = useState<WorkFilter>("all");
   const [selected, setSelected] = useState<Signal | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [localTasks, setLocalTasks] = useState<any[] | null>(null);
 
   const sourceTasks = localTasks ?? tasks;
   const taskSignals = useMemo(() => sourceTasks.map(taskToSignal), [sourceTasks]);
-  const filtered = useMemo(() => {
-    const matching = taskSignals.filter((signal) => {
-      if (filter === "jt") return signal.owner === "jt";
-      if (filter === "eve") return signal.owner === "eve";
-      if (filter === "high") return signal.priority === "high";
-      if (filter === "blocked") return signal.status === "blocked" || signal.status === "stale" || signal.ageDays >= 14;
-      return true;
-    });
-    return sortWorkSignals(matching);
-  }, [filter, taskSignals]);
+  const filtered = useMemo(() => filterWorkSignals(taskSignals, filter), [filter, taskSignals]);
+  const doneCount = useMemo(() => taskSignals.filter((signal) => signal.status === "done").length, [taskSignals]);
 
   async function updateTask(
     signal: Signal,
@@ -132,15 +125,26 @@ export default function WorkPage() {
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-blue-300">Work</p>
           <h1 className="mt-1 text-2xl font-semibold tracking-tight text-zinc-100">Task router</h1>
-          <p className="mt-1 text-xs text-zinc-500">Current Convex tasks, organized for routing, inspection, and stale-work pressure.</p>
+          <p className="mt-1 text-xs text-zinc-500">
+            Active Convex tasks for routing, with recently completed work kept in Done until archival.
+          </p>
         </div>
-        <button
-          onClick={refresh}
-          className="flex w-fit items-center gap-2 rounded-md border border-[#20262d] bg-[#0f1316] px-3 py-2 text-xs text-zinc-300 hover:border-[#38414a]"
-        >
-          <RefreshCw size={13} className={loading ? "animate-spin" : ""} />
-          Refresh
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href="/history"
+            className="flex w-fit items-center gap-2 rounded-md border border-[#20262d] bg-[#0f1316] px-3 py-2 text-xs text-zinc-300 hover:border-[#38414a]"
+          >
+            <Archive size={13} />
+            History
+          </Link>
+          <button
+            onClick={refresh}
+            className="flex w-fit items-center gap-2 rounded-md border border-[#20262d] bg-[#0f1316] px-3 py-2 text-xs text-zinc-300 hover:border-[#38414a]"
+          >
+            <RefreshCw size={13} className={loading ? "animate-spin" : ""} />
+            Refresh
+          </button>
+        </div>
       </div>
 
       {errors.tasks && <StateBlock kind="error" title="/api/tasks unreachable" detail={errors.tasks} className="mb-4" />}
@@ -158,6 +162,7 @@ export default function WorkPage() {
             )}
           >
             {item.label}
+            {item.id === "done" && doneCount > 0 ? <span className="ml-1 text-[10px] text-zinc-500">{doneCount}</span> : null}
           </button>
         ))}
       </div>

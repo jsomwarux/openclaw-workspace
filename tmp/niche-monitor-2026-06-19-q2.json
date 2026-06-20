@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "Salesforce Agentforce news today",
+  "freshness": "day",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-06-19",
+  "results": [
+    {
+      "title": "How Bobbi Is Transforming the Way People Interact with Law Enforcement - Salesforce",
+      "url": "https://www.salesforce.com/news/stories/bobbi-agentforce-transforms-law-enforcement/",
+      "description": "Today, <strong>both forces are operating differently</strong>. Since November 2025, an AI-powered digital assistant called Bobbi — built on Agentforce Public Sector and deployed in just 12 weeks — has been handling roughly 200 nonemergency conversations ...",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T07:00:00",
+      "source": "Salesforce"
+    },
+    {
+      "title": "Salesforce Debuts Agentic Tool to Automate Financial Busywork | PYMNTS.com",
+      "url": "https://www.pymnts.com/news/artificial-intelligence/2026/salesforce-debuts-agentic-tool-automate-financial-busywork/",
+      "description": "<strong>Salesforce introduced new agentic AI tools for financial advisers that will roll out through the remainder of the year</strong>.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T14:20:02",
+      "source": "PYMNTS.com"
+    },
+    {
+      "title": "Salesforce completes deal to buy AI customer service platform Fin for $3.6 billion amid stock pressure from AI disruption concerns",
+      "url": "https://eciks.org/9608-34589-salesforce-crm-fin-acquisition-3-6-billion",
+      "description": "Salesforce — definitive agreement announcement, acquisition price, Fin’s AI capabilities, customer base, Agentforce ARR, expected close date",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T14:44:06",
+      "source": "Eciks"
+    },
+    {
+      "title": "Agentforce World Tour London '26 Live - Salesforce",
+      "url": "https://www.salesforce.com/uk/news/stories/agentforce-world-tour-london-live-2026/",
+      "description": "Product innovation: Salesforce Puts an AI Marketing Team in Every Marketer’s Hands: <strong>Salesforce unveiled a suite of AI agents purpose-built for marketing, from prospecting and content creation to full autonomous campaign management</strong>.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T16:12:24",
+      "source": "Salesforce"
+    },
+    {
+      "title": "Salesforce Blog — News and Tips About Agentic AI, Data and CRM",
+      "url": "https://www.salesforce.com/blog/",
+      "description": "<strong>Small businesses can put AI to work directly inside Salesforce Suites, now powered by Agentforce</strong>, turning customer data and context into action across every team.",
+      "age": "1 day ago",
+      "page_age": "2026-06-18T09:45:49",
+      "source": "Salesforce"
+    }
+  ]
+}

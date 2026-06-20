@@ -1,0 +1,229 @@
+{
+  "user": {
+    "id": "1975148676155949056",
+    "name": "Yick Ho Pang",
+    "created_at": "2025-10-06T10:38:46.000Z",
+    "public_metrics": {
+      "followers_count": 51,
+      "following_count": 3,
+      "tweet_count": 785,
+      "listed_count": 1,
+      "like_count": 880,
+      "media_count": 7
+    },
+    "username": "onebox69",
+    "description": "Co-founder @ DivineSide | AI systems for tutoring/test prep centers | Referrals, reviews, follow-up on autopilot | 19, building in public"
+  },
+  "tweets": [
+    {
+      "id": "2067896920949842095",
+      "text": "This post exists because of a spreadsheet.\n\nI tracked every post I've written, saw which topic and format were converting, and wrote today's post to match. Using the data of past posts to tell me what to write.\n\nI'm 19, building this all in public.",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-19T09:07:00.000Z",
+      "conversation_id": "2067896920949842095",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067896920949842095"
+    },
+    {
+      "id": "2067866721604514036",
+      "text": "If you're posting on LinkedIn/X for business and not tracking which posts convert, you're posting randomly and hoping.\n\nHope isn't a content strategy. Log the hook, the format, the topic, and the numbers, then write more of what already worked.\n\nWhat do you track?",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-19T07:07:00.000Z",
+      "conversation_id": "2067866721604514036",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 2,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067866721604514036"
+    },
+    {
+      "id": "2067821171442393231",
+      "text": "Once a day my scraper scrapes 4 metrics per post: views, likes, comments, reposts.\n\nMy dashboard then shows my top 5 posts by engagement with their hooks, median engagement by type and topic, and my real content mix vs target.\n\nThen I write more of what's working.",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-19T04:06:00.000Z",
+      "conversation_id": "2067821171442393231",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 2,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067821171442393231"
+    },
+    {
+      "id": "2067775855171084456",
+      "text": "Every post I publish gets 9 fields logged at posting time into a csv:\n\npost_type, framework, topic, format, the differentiator it draws, the hook word-for-word, the closing, platform, funnel stage.\n\nThen I'll used a scraper to fill in the metrics to help me write my next post.",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-19T01:05:55.000Z",
+      "conversation_id": "2067775855171084456",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067775855171084456"
+    },
+    {
+      "id": "2067775640942809456",
+      "text": "My content rule runs on a giant csv with metrics of past posts.\n\nA hook that hit 2,000 impressions last month? I run it again with a new angle. A format that's averaged 0 engagement across 15 posts? I kill it.\n\nThat's it. I just double down on what's working.",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-19T01:05:04.000Z",
+      "conversation_id": "2067775640942809456",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067775640942809456"
+    },
+    {
+      "id": "2067775368954835154",
+      "text": "I built a tracker so I stop guessing what to post.\n\nEvery post gets logged with its hook, format, and topic. Once a week I add the engagement numbers. Then I just write more of what's already converting.\n\nHow do you guys decide what to post?",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-19T01:04:00.000Z",
+      "conversation_id": "2067775368954835154",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067775368954835154"
+    },
+    {
+      "id": "2067718998305997048",
+      "text": "The real money is in the games measured in years, not months.\n\nLonger games have fewer players, so that's where the least competition and the biggest payoff sit. Fish where the fewest go.\n\nAre you planning for this quarter, or this decade?",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-18T21:20:00.000Z",
+      "conversation_id": "2067718998305997048",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067718998305997048"
+    },
+    {
+      "id": "2067688799216501001",
+      "text": "A compelling offer beats a convincing argument.\n\nStop making the customer carry all the risk. Take it on yourself, define the result clearly, make it a no-brainer.\n\nMy test: if your offer doesn't scare you a little, it isn't strong enough. Who carries the risk in yours?",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-18T19:20:00.000Z",
+      "conversation_id": "2067688799216501001",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067688799216501001"
+    },
+    {
+      "id": "2067658348603007040",
+      "text": "Everyone wants the advanced tactic. The secret funnel, the new ad targeting, the clever hack.\n\nThe biggest businesses just do the fundamentals exceptionally well. The people selling you advanced tactics usually don't have a big business themselves.\n\nDo the basics.",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-18T17:19:00.000Z",
+      "conversation_id": "2067658348603007040",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067658348603007040"
+    },
+    {
+      "id": "2067628149677199702",
+      "text": "Marketing's real job is to make selling redundant.\n\nBuild so much desire that people show up already sold. Walk into an Apple store, nobody hard-sells you a MacBook, the staff just take orders. They earned that.\n\nIf you're still hard-selling, you haven't built enough desire.",
+      "author_id": "1975148676155949056",
+      "username": "onebox69",
+      "name": "Yick Ho Pang",
+      "created_at": "2026-06-18T15:19:00.000Z",
+      "conversation_id": "2067628149677199702",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 11,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/onebox69/status/2067628149677199702"
+    }
+  ]
+}
