@@ -1,24 +1,15 @@
 {
   "entries": [
     {
-      "date": "2026-06-14",
-      "day": "sunday",
-      "line_no": 215,
-      "platform": "linkedin",
-      "summary": "A dedicated automation PC can host 6 workflows, keep logs close to office files, run 24/7, and keep sensitive exceptions in human review.",
-      "topic": "local-first-automation-pc-six-workflows"
-    },
-    {
-      "date": "2026-06-14",
-      "day": "sunday",
-      "line_no": 222,
+      "date": "2026-06-20",
+      "day": "saturday",
       "platform": "x",
-      "summary": "The dedicated automation PC keeps workflows near local files, logs, and human approvals; it runs 6 workflows locally and alerts the team when a row needs review.",
-      "topic": "dedicated-automation-pc-local-workflows-human-review"
+      "summary": "Reusable client work starts when the approval rules become assets, not one-off judgment calls.",
+      "topic": "approval-rules-assets-not-one-off-judgment"
     }
   ],
   "note": "",
-  "sent_at": 1781442052,
-  "source": "content-sunday",
+  "sent_at": 1781956848,
+  "source": "content-reminder",
   "status": "pending"
 }

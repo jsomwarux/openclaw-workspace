@@ -180,3 +180,22 @@ Sources checked June 19:
 - Kognitos, "AI Automation for Real Estate Operations: A 2026 Guide" - https://www.kognitos.com/blog/ai-automation-real-estate-operations-2026/
 - Zowie, "AI Debt Collection (2026): How AI Agents Work Every Account" - https://getzowie.com/blog/ai-debt-collection-2026
 - Haven AI, "PMS Permissions for AI: 2026 Complete Glossary & Guide" - https://www.usehaven.ai/post/pms-permissions-for-ai-glossary-guide
+
+## 2026-06-20 Morning Brief Market Addendum
+
+The June 20 Morning Brief keeps the property-management proof lane cash-first while sharpening the automation-vs-AI language.
+
+Fresh market scan:
+- Real Estate Business says many property-management "AI" tasks should simply be automation, especially rent collection, payments, and reporting. That is useful validation for avoiding inflated AI claims in the Altmark/PM proof.
+- Earnix AIOS is a fresh insurance-adjacent proof point for governed orchestration: pricing, underwriting, claims, retention, and customer engagement all need controlled workflow execution, not open-ended agent behavior.
+- The crypto/x402 signal is monitor-only, but it reinforces the same governance pattern for future payment rails: when automation touches money, identity, or compliance-sensitive records, the proof has to show authorization and auditability first.
+
+Altmark/Yair implication:
+- The strongest proof message is not "AI collects rent." It is "the exception queue shows which delinquency follow-up is allowed, edited, held, or escalated before a tenant, ledger, owner, or legal-sensitive action moves."
+- Keep the public PM proof post grounded in the control record: source row, payment/context gap, risk flag, proposed next step, reviewer, approve/edit/hold state, and evidence link.
+- Cash order remains unchanged: send Petri M2 first if only one small pipeline action happens today, but the Altmark/Yair packet is still the workflow-completion and remaining-invoice gate.
+
+Sources checked June 20:
+- Real Estate Business, "Most AI tasks should just be automation, agencies warned" - https://www.realestatebusiness.com.au/property-management/32015-most-ai-tasks-should-just-be-automation-agencies-warned
+- Yahoo Finance, "Earnix Launches AIOS, Extending Insurance..." - https://finance.yahoo.com/technology/ai/articles/earnix-launches-aios-extending-insurance-200000439.html
+- Forbes Digital Assets news watch - https://www.forbes.com/digital-assets/news/

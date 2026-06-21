@@ -87,3 +87,5 @@ EOF'
 [2026-06-16T11:32:50-04:00] | daily-scan | x_queries: 6 | web_queries: 15 | findings: 5 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 [2026-06-18T11:33:01-04:00] | daily-scan | x_queries: 6 | web_queries: 15 | findings: 6 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-19T11:33:38-04:00 | daily-scan | x_queries: 6 | web_queries: 17 | findings: 6 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
+[2026-06-20T11:02:07Z] | weekly-synthesis | x_queries: 4 | est_cost: $0.20 | web_sources: cowork_plugins,mcp_servers,openclaw_docs,nordeim,openclaw_releases | findings: 5 | 🔴: 0 | 🟠: 2 | 🟡/🟢: 3 | mc_tasks_pushed: 0 | kb_items: 3 | messaged_jt: yes | note: Skills backlog 38 open, so no new MC tasks per cap
+[2026-06-20T15:32:41Z] | daily-scan | x_queries: 6 | web_queries: 14 | findings: 7 | 🔴: 0 | 🟠: 0 | messaged_jt: no

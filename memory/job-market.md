@@ -3,6 +3,14 @@
 
 ---
 
+## 2026-06-20 — Heartbeat Job Market Pulse
+
+Read the current job-market-agent daily brief generated at 2026-06-20 05:15. No new US/NYC/remote non-coding AI implementation role cleared JT's 18+/25 filter today; open-board results were thin and mostly returned certification pages, empty job-board results, vendor/event pages, or broad trend content rather than active advisory-track postings.
+
+**Strongest signal:** the useful hiring signal is still operating-model ownership, not another application branch. Trend language supports AI enablement, governance, readiness, tool adoption, and value measurement for roles outside pure engineering.
+
+**Positioning implication:** describe Mission Control/OpenClaw and the Altmark proof as an AI operating-model proof layer: intake, governed agent execution, human review, and value evidence. Extend EnablementOps / ROIFlow / AgentGuard / DealDesk language; no new application, certification, or build task today.
+
 ## 2026-06-19 — Heartbeat Job Market Pulse
 
 Read the current job-market-agent daily brief generated at 2026-06-19 05:15. Xplor Technologies AI Transformation Lead remains the strongest active apply target at 22/25 and is already represented by the existing Mission Control review/submit task. Jobgether AI Enablement Director scored 18/25 as market intel only because the company is anonymous and salary is undisclosed.

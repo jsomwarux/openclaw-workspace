@@ -17,6 +17,7 @@
 
 ## Consulting Positioning
 - Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs before automation.
+- 2026-06-20 packaging rule: stop one-off demos per JD; consolidate proof as an AI Enablement OS offer showing intake, governance, HITL review, evals, adoption, ROI, and control records.
 - ICP: NYC/metro property ops, construction, wholesale, skilled trades; T1 proof-led, T2 validation/template, T3 market-sensing.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
@@ -54,6 +55,7 @@
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
+- Job-market proof should reuse the AI Enablement OS package across property ops, OpenClaw, AgentGuard, and ROIFlow instead of spawning custom demos per role.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 

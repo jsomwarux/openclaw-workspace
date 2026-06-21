@@ -51,6 +51,9 @@ If a correction cannot name a regression check, it is only a note, not a fix.
 | Nightly Leverage stops after useful work without a final checkpoint | Before accepting a Nightly Leverage red state as stale/covered, verify the live payload contains `Delivery Checkpoint Hardening`, `NO_ACTION_NEEDED`, and concise-blocker fallback language exactly once; next natural run must end with a Nightly Leverage Report, `NO_ACTION_NEEDED`, or blocker rather than stopping after analysis. | `nightly-autonomous-leverage-agent` cron payload + HEARTBEAT 10AM film review | Every Nightly Leverage cron-health check and 10AM film review until next ok run | active |
 | Passive-income build ideas fail to populate Passive $ / MC | After strategist runs, verify `/api/passive-income` shows each 🟢 idea with non-empty `concept`, no `ALREADY QUEUED` duplicate cards, and exactly one active `[PI] Build:` task with `project=passive-income` for each 🟢 idea. | `mission-control/app/api/passive-income/route.ts` + `agents/autoresearch/checklists/passive-income-strategist.md` | Weekly strategist run + weekly autoresearch | active |
 
+## Recent Recurrence Evidence
+- 2026-06-20 film review: 2026-06-19 Health Check-in repeated the fallback-mask pattern. Cron finished `ok` only because fallback delivered a failure summary, while the intended Evening Check-in prompt still needed numeric Telegram resend and `health/pending-checkin.json` repair. Existing active check remains the owner surface; do not create another duplicate row for this recurrence.
+
 ## Daily Film Review Add-on
 During 10AM film review, check yesterday's corrections:
 - Did each correction include a guardrail and regression check?

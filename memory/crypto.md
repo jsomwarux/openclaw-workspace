@@ -507,3 +507,10 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Market read:** The packet still frames AI agents/x402 and Base AI infrastructure as active, but again warns that spam/vote traffic is heavy. Treat X coordination quality, buy/sell flow, volume, and product evidence as filters, not automatic conviction.
 - **Model read:** Research/ranking output adjusted PRXVT up from 20% to 30%, adjusted SIBYL up from 20% to 25%, exited NOX, NOOK, GITLAWB, and SURPLUS, and added LFI 25% plus ZAUTH 20%. No new whale alerts were present.
 - **Guardrail:** This is research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run in this heartbeat.
+
+## Jun 20, 2026 - 10:12AM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00, validation passed, X research guard passed, 25 X entries, estimated X research cost `$0.885`, generated dated artifacts, and cron metadata included `telegram_message_sent: true` plus dated `summary_text`. Local summaries were present in `/Users/jtsomwaru/projects/crypto-agent/data/telegram-summary.txt` and `/Users/jtsomwaru/projects/crypto-agent/data/latest-analysis.md`.
+- **Market read:** The packet still frames AI agents/x402 and Base AI infrastructure as active, but says spam/vote traffic is heavy. Treat X coordination quality, buy/sell flow, volume, and product evidence as filters, not automatic conviction.
+- **Model read:** Research/ranking output adjusted SURPLUS up to 35%, SIBYL up to 30%, added AEON at 20%, and adjusted PRXVT down to 15%. It exited NOX, NOOK, and GITLAWB. No new whale alerts were present.
+- **Guardrail:** This is research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run in this heartbeat.

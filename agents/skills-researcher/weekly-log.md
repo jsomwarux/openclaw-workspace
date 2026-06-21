@@ -1,10 +1,6 @@
 # Weekly Log — Skills & API Researcher
 
-## Week: 2026-W25 (June 15 - June 21, 2026)
+## Week: 2026-W26 (June 22 - June 28, 2026)
 
-[2026-06-15] — reset after synthesis
-[2026-06-13] daily scan — no critical findings
-[2026-06-15] 🟠 OpenClaw v2026.6.8-beta.1 — latest beta adds richer Telegram delivery, cron/session recovery fixes, provider/model normalization, and memory/state diagnostics relevant to Eve; local CLI is still OpenClaw 2026.5.28. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.6.8-beta.1 | Fits: Eve/OpenClaw runtime | Cost/security: free, install/update approval required | Action: evaluate update path before changing runtime.
-[2026-06-16] 🟠 OpenClaw v2026.6.8-beta.2 — latest beta adds richer Telegram delivery, cron/session recovery fixes, provider/model normalization, and memory/state diagnostics relevant to Eve; local CLI is still OpenClaw 2026.5.28. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.6.8-beta.2 | Fits: Eve/OpenClaw runtime | Cost/security: free, install/update approval required | Action: compare release notes and decide update path before changing runtime.
-[2026-06-18] 🟠 OpenClaw 2026.6.8 stable — fixes Telegram rich delivery, cron/runtime recovery, memory search, OpenRouter/model routing, and explicit web-search defaults; MC task created j570jax17eddqrdcx9gdyqtkd188w4kg; source: https://github.com/openclaw/openclaw/releases/tag/v2026.6.8
-[2026-06-19] 🟠 OpenRouter Fusion Router — Official docs now expose openrouter/fusion for multi-model deliberation in one API call; benchmark against current paid research/crypto-agent routes before adopting. Source: https://openrouter.ai/docs/guides/routing/routers/fusion
+[2026-06-22] — reset after synthesis
+[2026-06-20T15:32:41Z] daily scan — no critical findings
