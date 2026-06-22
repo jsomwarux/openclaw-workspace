@@ -18,6 +18,7 @@
 ## Consulting Positioning
 - Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs before automation.
 - 2026-06-20 packaging rule: stop one-off demos per JD; consolidate proof as an AI Enablement OS offer showing intake, governance, HITL review, evals, adoption, ROI, and control records.
+- 2026-06-21 weekly synthesis theme: vertical AI is moving into run control; lead with data access, human review, audit trail, and measurable outcome events around agents.
 - ICP: NYC/metro property ops, construction, wholesale, skilled trades; T1 proof-led, T2 validation/template, T3 market-sensing.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
@@ -70,6 +71,7 @@
 
 ## Active Automation / Crons
 - Baseline: 45 enabled jobs; Night Autonomy Agent 11PM; Morning Brief capped Send Queue; Evening Digest 7PM ET; `critical-files-integrity` snapshots jobs.
+- 2026-06-21 systems state: direct cron `current_red` is empty after WSR and passive-income recovery, but 5 stale `status:error`/null-metadata rows remain as cleanup bucket (vibe marketing, Job Application Auto-Builder, content-generate-x, Niche Monitor, Weekly Systems Review).
 - Digest queue: `memory/digest-queue.md`; cron volume guard required; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 

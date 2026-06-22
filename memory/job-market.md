@@ -436,3 +436,11 @@ Read the current job-market-agent daily brief generated at 2026-06-14 05:15. No 
 **Strongest signal:** useful language continues to cluster around AI-enabled employee support, support deflection, escalation frameworks, governance standards, and adoption/performance measurement. This is not a new application target, but it is another proof point that buyers value operating model and governed support workflows more than generic AI demos.
 
 **Positioning implication:** fold employee-support deflection into EnablementOps/AgentGuard only if it repeats. Keep Altmark and the Exception Control Plane proof higher priority than building a generic HR-service AI demo. No new application task, certification task, or build idea was created today.
+
+## 2026-06-21 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief. No new US/NYC/remote role cleared JT's 18+/25 filter today. The strongest signal was Schwab Workplace Services: AI enablement is pulling client-facing AI request intake, RFP response, risk/legal/security governance, Champions adoption rhythm, and value metrics into one operating model, but the role is Westlake/Austin onsite 4 days/week and fails JT's location filter.
+
+**Strongest signal:** AI enablement is becoming a front-office/client-service run-control function, not only internal copilots or tool training. The market language now overlaps with JT's proof assets: request intake, approved-tool governance, adoption cadence, legal/security review, and measurable value.
+
+**Positioning implication:** Reframe EnablementOps / DealDesk / ROIFlow / AgentGuard around AI request intake, approved-tool governance, Champions rhythm, and value reporting. Mission Control/OpenClaw remains proof that JT can operate multiple AI workflows with governance and measurement. No new application task or build idea was created today.

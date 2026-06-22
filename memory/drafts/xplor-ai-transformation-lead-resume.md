@@ -31,7 +31,11 @@ AI Transformation Consultant with 6 years of enterprise systems implementation e
 
 ## KEY PROJECTS
 
-**AgentGuard:** Built confidence-gated AI governance layer for human-in-the-loop review, audit trails, override logging, and explainability reporting. Demonstrates practical AI control patterns for teams that need transparency, security, regulatory awareness, and adoption accountability.
+**AgentGuard, Governance Routing:** Built confidence-gated AI routing that sends routine outputs forward and escalates uncertain or sensitive cases to human review, giving teams a practical control layer before production rollout.
+
+**AgentGuard, Audit and Explainability:** Designed audit trails, explainability reporting, override logging, and failure-mode notes for AI-assisted workflows that need transparency, security awareness, and regulatory accountability.
+
+**AgentGuard, Adoption Pattern:** Packaged the governance layer into reusable implementation guidance for intake, review boundaries, approval workflows, and responsible AI rollout across nontechnical operator teams.
 
 **OpenClaw AI Operations Infrastructure:** Operates 35+ autonomous AI workflows across research, market monitoring, content systems, alerts, cost controls, task routing, and daily operational reporting. Includes escalation rules, model routing, production monitoring, failure logs, and quality-control checks.
 
@@ -43,11 +47,11 @@ AI Transformation Consultant with 6 years of enterprise systems implementation e
 
 ## SKILLS
 
-**AI Transformation and Strategy:** AI strategy, AI initiative portfolio management, use-case prioritization, pilots from concept to production, measurable outcomes, AI operating models, executive stakeholder translation, roadmap planning
+**AI Transformation and Strategy:** AI strategy, AI initiative portfolio management, use-case prioritization, pilots from concept to production, measurable outcomes, AI operating models, executive stakeholder translation, roadmap planning, vertical SaaS operations
 
 **Governance and Responsible AI:** AI governance, human-in-the-loop controls, audit trails, explainability reports, transparency, security-aware workflow design, regulatory compliance awareness, escalation rules, failure-mode documentation
 
-**AI and Workflow Tools:** Claude, ChatGPT, GPT-4, Gemini, Grok, n8n workflow automation, Agentforce, Google Workspace automation, Google Sheets API, webhook workflows, model routing, prompt engineering, LLM API orchestration
+**AI and Workflow Tools:** Claude, ChatGPT, GPT-4, Gemini, Grok, n8n workflow automation, Agentforce, Google Workspace automation, Google Sheets API, webhook workflows, model routing, prompt engineering, LLM API orchestration, MLOps familiarity
 
 **Enablement and Change Management:** AI literacy, playbook development, stakeholder training, change management, adoption planning, workshop facilitation, rollout communications, usability testing, implementation runbooks
 

@@ -12,6 +12,7 @@ import json
 import re
 import sys
 import urllib.request
+import urllib.error
 from pathlib import Path
 from typing import Any
 
@@ -75,10 +76,27 @@ def post_task(task: dict[str, Any]) -> dict[str, Any]:
         return json.load(resp)
 
 
+def patch_task(task_id: str, fields: dict[str, Any]) -> dict[str, Any]:
+    payload = {"id": task_id, **fields}
+    req = urllib.request.Request(
+        MC_URL,
+        data=json.dumps(payload).encode(),
+        headers={"Content-Type": "application/json"},
+        method="PATCH",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return json.load(resp)
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"PATCH failed HTTP {exc.code}: {body}") from exc
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--title", required=True, help="Finding/task title to dedupe")
     parser.add_argument("--create-file", help="JSON task payload to POST if no match exists")
+    parser.add_argument("--update-file", help="JSON task fields to PATCH onto the first matching active task")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
@@ -98,7 +116,14 @@ def main() -> int:
         ],
         "created": False,
         "created_task": None,
+        "updated": False,
+        "updated_task": None,
     }
+
+    if args.update_file and matches:
+        fields = load_task(Path(args.update_file))
+        result["updated"] = True
+        result["updated_task"] = patch_task(result["matches"][0]["id"], fields)
 
     if args.create_file and not matches:
         task = load_task(Path(args.create_file))

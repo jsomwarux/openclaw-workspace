@@ -16,6 +16,11 @@
 
 <!-- Entries appended by Weekly Intelligence Synthesis (eve-weekly-synthesis-007) -->
 
+### 2026-06-21 — Turn Run Control Into The Sales Asset
+**Recommendation:** Package one buyer-facing run-control asset this week: source data access, AI read/classification, owner queue, human approval rule, audit log, and measurable outcome event. Anchor it to the property/local automation proof, then map the same structure to construction project data, insurance decisioning, and Salesforce service queues.
+**Why now:** This week's strongest signals all moved toward controlled vertical agent operations: Salesforce agreed to buy Fin for about $3.6B, Trunk Tools launched Cortex while construction platforms fought over data access, Earnix launched AIOS for insurance decision orchestration, and fresh AI transformation roles repeated intake, governance, pilots-to-production, tool registry, and quantified outcomes.
+**Status:** open
+
 ### 2026-06-14 — Package The Exception Control Plane
 **Recommendation:** Package one reusable "Exception Control Plane" proof asset this week: source input, AI classification, owner queue, approval rule, audit log, and measurable event. Anchor it to the existing property/local-automation proof, then show how the same pattern maps to construction project risk, wholesale order/AR exceptions, and insurance underwriting or claims review.
 **Why now:** This week's signals clustered around vertical AI becoming control infrastructure: Document Crunch/Trimble moved construction AI into project-level risk, Salesforce/m3ter moved Agentforce toward usage and outcome billing, insurance AI platforms are packaging underwriting and claims workflows, and distribution coverage is emphasizing action queues and inventory velocity.

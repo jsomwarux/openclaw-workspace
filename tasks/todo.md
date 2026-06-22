@@ -1,3 +1,9 @@
+## Plan — Passive Income Scout Handoff Hardening — 2026-06-21
+- [x] Add failing regression coverage for deterministic same-day Scout handoff creation.
+- [x] Implement a script-first Scout handoff generator using fresh local signal files.
+- [x] Patch the Scout cron prompt to create the handoff artifact before optional LLM research.
+- [x] Verify handoff checks, tests, cron payload, and file budgets.
+
 ## Plan — Content Swipe Optimization Fixes — 2026-06-15
 - [x] Add a deterministic @jts_14 X reference-ledger generator for swipe runs.
 - [x] Generate and validate the missing 2026-06-15 ledger artifact.

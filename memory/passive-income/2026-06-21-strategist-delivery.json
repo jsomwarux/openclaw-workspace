@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "channel": "telegram",
+  "target": "6608544825",
+  "messageId": "24334",
+  "report": "/Users/jtsomwaru/.openclaw/workspace/memory/passive-income/2026-06-21-strategist.md",
+  "sentAt": "2026-06-21T17:36:51.123297-04:00",
+  "mode": "delivery-guard-fallback"
+}

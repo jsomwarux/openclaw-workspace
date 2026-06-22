@@ -17,6 +17,9 @@ Handoff requirement: output must be saved to `memory/passive-income/YYYY-MM-DD-s
 The Scout must finish inside a cron runner. Do not try to read every historical report or run every methodology at full depth in one turn.
 
 Hard limits per run:
+- First, create a deterministic same-day handoff before any research:
+  `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/passive_income_scout_handoff.py`
+  This fallback can be overwritten by a richer Scout report later, but the Strategist must never be left without a same-day artifact when local signals are readable.
 - Before research, run `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/passive_income_handoff_check.py --mode pre-scout`.
 - If the pre-scout gate returns `degraded=true` or warning lines, continue with a compact report and include a `DEGRADED INPUTS` note. Stale signals are evidence-quality warnings, not a reason to leave the pipeline blocked.
 - If the pre-scout gate fails because a required file is missing/unreadable/too small, try one deterministic repair first: run `python3 /Users/jtsomwaru/.openclaw/workspace/scripts/fetch-signals.py`. Re-run the gate. If it still fails, write a compact scout report using available local files and label unsupported lenses `Unavailable`; do not write `INCOMPLETE` unless the workspace filesystem cannot be read or written.

@@ -199,3 +199,19 @@ Sources checked June 20:
 - Real Estate Business, "Most AI tasks should just be automation, agencies warned" - https://www.realestatebusiness.com.au/property-management/32015-most-ai-tasks-should-just-be-automation-agencies-warned
 - Yahoo Finance, "Earnix Launches AIOS, Extending Insurance..." - https://finance.yahoo.com/technology/ai/articles/earnix-launches-aios-extending-insurance-200000439.html
 - Forbes Digital Assets news watch - https://www.forbes.com/digital-assets/news/
+
+## 2026-06-21 Weekly Intelligence Market Addendum
+
+The June 21 Weekly Intelligence Synthesis tightens the reusable proof frame from "exception control" into "run control": source data access, AI read/classification, owner queue, human approval rule, audit log, and measurable outcome event.
+
+Useful market signal:
+- Construction AI is becoming a data-access and document-control fight, not just a field-capture or summarization problem. The practical buyer question is which source supports the change, who owns the next action, and what gets reviewed before a client-facing update moves.
+- Earnix AIOS packages insurance agents, models, workflows, governance, and human oversight into one decisioning layer. That makes confidence thresholds, reviewer queues, and audit trails the buyer language for high-stakes workflow automation.
+- Salesforce/Fin pushes service agents deeper into Agentforce, but the useful consulting angle is service queue run control: intake, routing, approval boundary, escalation, and measurable resolution event.
+
+Altmark/Yair implication:
+- Keep the property-management proof anchored to one controlled rent-delinquency workflow, not a platform claim. Show which delinquent row was read, what context gap or risk flag was found, who owns review, whether the next action is approved/edited/held, and what evidence proves the decision.
+- The public proof language should shift from "AI exception desk" toward "run control for sensitive property actions." This keeps the same asset portable to construction document changes, insurance underwriting/claims decisions, and Salesforce service queues.
+- Cash order stays unchanged: unemployment certification is today's quick admin must-do, Petri M2 is the fastest send, and Altmark/Yair remains the workflow-completion plus remaining-invoice gate.
+
+Source signal: 2026-06-21 Morning Brief and Weekly Intelligence Synthesis.
