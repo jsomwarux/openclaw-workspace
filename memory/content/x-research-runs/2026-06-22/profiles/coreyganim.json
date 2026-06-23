@@ -1,0 +1,239 @@
+{
+  "user": {
+    "id": "1535963469220020228",
+    "public_metrics": {
+      "followers_count": 55721,
+      "following_count": 114,
+      "tweet_count": 25449,
+      "listed_count": 566,
+      "like_count": 12689,
+      "media_count": 1746
+    },
+    "name": "Corey Ganim",
+    "created_at": "2022-06-12T12:33:45.000Z",
+    "username": "coreyganim",
+    "description": "Simplifying AI for non-technical entrepreneurs. Built an eCom biz to $16 M+ revenue. Built (then sold) a coaching biz to $340 k ARR."
+  },
+  "tweets": [
+    {
+      "id": "2068324880676733394",
+      "text": "Here’s a simple 5-step framework for how to approach AI services:\n\n1. Audit \nFind the leak. \n\nExamples: \n- leads not getting answered \n- quotes taking too long \n- customers asking the same questions \n- sales calls never turning into follow-up \n- owner doing admin every week\n\n2.",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-20T13:27:33.000Z",
+      "conversation_id": "2068324880676733394",
+      "metrics": {
+        "likes": 78,
+        "retweets": 5,
+        "replies": 10,
+        "quotes": 2,
+        "impressions": 5683,
+        "bookmarks": 162
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2068324880676733394"
+    },
+    {
+      "id": "2068090194662699234",
+      "text": "the people that get rich selling AI agents will pick one repetitive problem in one niche.\n\nthen build one agent around it.\n\nnot 10 agents.\nnot some giant platform.\n\nOne workflow that already costs the business time, leads or money.\n\n5 examples:\n\n1. Roofers\nProblem:\nNew leads call",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-19T21:55:00.000Z",
+      "conversation_id": "2068090194662699234",
+      "metrics": {
+        "likes": 117,
+        "retweets": 12,
+        "replies": 12,
+        "quotes": 0,
+        "impressions": 8127,
+        "bookmarks": 234
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2068090194662699234"
+    },
+    {
+      "id": "2068006140789874831",
+      "text": "the AI version of market research as a service:\n\n1. pick a niche\n2. collect where the market talks\n3. use AI to find repeated pain\n4. turn it into content/offers/scripts\n5. sell the monthly update\n\nmost businesses are NOT listening to their market.\n\nthey (sometimes) check",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-19T16:21:00.000Z",
+      "conversation_id": "2068006140789874831",
+      "metrics": {
+        "likes": 93,
+        "retweets": 3,
+        "replies": 10,
+        "quotes": 0,
+        "impressions": 6675,
+        "bookmarks": 185
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2068006140789874831"
+    },
+    {
+      "id": "2067913325229306159",
+      "text": "I'm making $1,000 per hour as an AI Concierge.\n\nI scaled this offer to $8K MRR in 10 days.\n\nIt requires 0 coding, minimal experience, and the demand is INSANE.\n\nHow to start your own AI Concierge business this week:  🧵",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-19T10:12:11.000Z",
+      "conversation_id": "2067913325229306159",
+      "metrics": {
+        "likes": 295,
+        "retweets": 18,
+        "replies": 26,
+        "quotes": 1,
+        "impressions": 43870,
+        "bookmarks": 980
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2067913325229306159"
+    },
+    {
+      "id": "2067671938613289304",
+      "text": "My AI Concierge offer hit $8K MRR in 10 days.\n\nToday, I just added the ENTIRE 11-lesson AI Concierge playbook to our AI Operator Academy community.\n\nIt covers:\n\n-business model explanation\n-the intake questionnaire\n-the strategy call framework\n-the AOA framework\n-Voxer setup https://t.co/9jWOwCd196",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-18T18:13:00.000Z",
+      "conversation_id": "2067671938613289304",
+      "metrics": {
+        "likes": 73,
+        "retweets": 4,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 12836,
+        "bookmarks": 124
+      },
+      "urls": [
+        "https://twitter.com/coreyganim/status/2066925520176955512"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2067671938613289304"
+    },
+    {
+      "id": "2067614095109431324",
+      "text": "This is a $3,000 service hiding in plain sight.\n\nThe build costs under $9.\n\nEvery town is full of brick and mortar businesses with 5-star reviews and websites that look like 2002. Plumbers. Landscapers. Dentists. Med spas.\n\nHere's the play we ran:\n\n1. Pointed an agent at our https://t.co/alcGWWLcqf",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-18T14:23:09.000Z",
+      "conversation_id": "2067614095109431324",
+      "metrics": {
+        "likes": 186,
+        "retweets": 8,
+        "replies": 13,
+        "quotes": 1,
+        "impressions": 14922,
+        "bookmarks": 457
+      },
+      "urls": [
+        "https://x.com/coreyganim/status/2067614095109431324/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2067614095109431324"
+    },
+    {
+      "id": "2067551963777052846",
+      "text": "this works SO well for a few reasons:\n\n1) the price point on the Audit is high enough to feel valuable, low enough for a one-call close\n\n2) the audit immediately uncovers the exact opportunity areas for a managed agent to add value\n\n3) when you quantify the value of the client's https://t.co/gNDHg3Veio",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-18T10:16:16.000Z",
+      "conversation_id": "2067551963777052846",
+      "metrics": {
+        "likes": 94,
+        "retweets": 5,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 11235,
+        "bookmarks": 138
+      },
+      "urls": [
+        "https://twitter.com/coreyganim/status/2067352081271271899"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2067551963777052846"
+    },
+    {
+      "id": "2067352081271271899",
+      "text": "a model I'm super bullish on:\n\n-sell a $999 AI audit as the tripwire offer.\n-Upsell to $5k per month managed AI agents.\n-credit the audit cost towards the first month of service\n\n@nickvasiles is crushing with this offer (Build With AI pod episode dropping on Monday deep diving",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-17T21:02:00.000Z",
+      "conversation_id": "2067352081271271899",
+      "metrics": {
+        "likes": 622,
+        "retweets": 22,
+        "replies": 25,
+        "quotes": 3,
+        "impressions": 143560,
+        "bookmarks": 1649
+      },
+      "urls": [],
+      "mentions": [
+        "nickvasiles"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2067352081271271899"
+    },
+    {
+      "id": "2067289417803538931",
+      "text": "The 80/20 of a useful AI second brain:\n\nMost people make this way too complicated.\n\nYou need 3 folders and one schema file.\n\n1. raw/\nDump everything here.\n\nExamples:\n- call transcripts\n- meeting notes\n- screenshots\n- SOPs\n- bookmarks\n- articles\n- customer emails\n- sales https://t.co/DXois3FcBh",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-17T16:53:00.000Z",
+      "conversation_id": "2067289417803538931",
+      "metrics": {
+        "likes": 276,
+        "retweets": 12,
+        "replies": 9,
+        "quotes": 1,
+        "impressions": 29427,
+        "bookmarks": 600
+      },
+      "urls": [
+        "https://twitter.com/coreyganim/status/2066961507330535812"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2067289417803538931"
+    },
+    {
+      "id": "2067183236476801353",
+      "text": "Everyone's trying to build the next Cursor.\n\nBut I think the most successful AI businesses will be dead simple.\n\nThe ones who crush will:\n\n1. pick one boring workflow \n2. build one plugin/set of skills around it \n3. sell setup to 5 businesses for $2K each \n4. charge $300/mo to",
+      "author_id": "1535963469220020228",
+      "username": "coreyganim",
+      "name": "Corey Ganim",
+      "created_at": "2026-06-17T09:51:04.000Z",
+      "conversation_id": "2067183236476801353",
+      "metrics": {
+        "likes": 116,
+        "retweets": 7,
+        "replies": 20,
+        "quotes": 1,
+        "impressions": 8537,
+        "bookmarks": 228
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/coreyganim/status/2067183236476801353"
+    }
+  ]
+}

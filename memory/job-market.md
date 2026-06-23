@@ -444,3 +444,11 @@ Read today's job-market-agent brief. No new US/NYC/remote role cleared JT's 18+/
 **Strongest signal:** AI enablement is becoming a front-office/client-service run-control function, not only internal copilots or tool training. The market language now overlaps with JT's proof assets: request intake, approved-tool governance, adoption cadence, legal/security review, and measurable value.
 
 **Positioning implication:** Reframe EnablementOps / DealDesk / ROIFlow / AgentGuard around AI request intake, approved-tool governance, Champions rhythm, and value reporting. Mission Control/OpenClaw remains proof that JT can operate multiple AI workflows with governance and measurement. No new application task or build idea was created today.
+
+## 2026-06-22 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief. No new US/NYC/remote non-developer role cleared JT's application filter. The useful signal was Shield AI Principal Technical Product Manager, which scored 19/25 but is market intel only because it leans too far into deep technical PM, developer-platform, autonomy/model-lifecycle, and defense context.
+
+**Strongest signal:** internal agentic AI platform roles are becoming operating-model roles: portfolio ownership, incubation-to-handoff, adoption metrics, governance, executive briefs, eval/model lifecycle, and KPI instrumentation. That is directionally aligned with JT's orchestration story but not a clean apply lane when the posting expects developer-platform depth.
+
+**Positioning implication:** keep Mission Control/OpenClaw framed as internal AI platform operations proof: agent portfolio, adoption metrics, governance, workflow handoff, and reliability controls. Extend AgentOps / AgentGuard / DealDesk / EnablementOps rather than creating another build idea or application task today. Altmark and the PM run-control proof remain higher priority than a generic AI-platform portfolio page.

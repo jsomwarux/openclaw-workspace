@@ -59,6 +59,8 @@ Four moves, in order:
 
 Each reviewer: **PASS / REVISE** + one specific note if REVISE. Address any REVISE before publishing.
 
+Before marking the draft approved, run one mechanical pronoun pass: count `you/your` against `I/my` and revise from the reader's operating reality until `you/your` is at least equal. Do not solve this by adding filler questions or a generic CTA.
+
 ---
 
 ## Output

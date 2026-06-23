@@ -1,3 +1,3 @@
-**Last updated:** 2026-06-19 09:01 AM EST
+**Last updated:** 2026-06-22 09:02:16 EDT
 
-🟠 **Earnix launches insurance-native AI orchestration system** — Earnix launched AIOS, an AI Orchestration System for Insurance that extends governed, real-time decisioning across insurance pricing, underwriting, claims, customer engagement, and retention workflows; this is a fresh competitor/capability signal in JT's insurance automation niche. (https://finance.yahoo.com/technology/ai/articles/earnix-launches-aios-extending-insurance-200000439.html)
+No new critical findings as of 9:02 AM EST.

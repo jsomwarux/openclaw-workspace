@@ -1,16 +1,16 @@
 {
-  "last_run": "2026-06-01T08:45:00Z",
-  "last_successful_run": "2026-06-01T08:45:00Z",
-  "last_week_of": "2026-06-01",
-  "last_status": "success_small_batch_metrics_thin_nash_stale",
+  "last_run": "2026-06-22T08:45:00Z",
+  "last_successful_run": "2026-06-22T08:45:00Z",
+  "last_week_of": "2026-06-22",
+  "last_status": "success_small_batch_nash_live_rankings_vista_paused",
   "last_error": null,
   "last_linkedin_month": "2026-05",
   "last_angles_month": "2026-05",
   "products_processed": [
-    "vista"
+    "nash-satoshi"
   ],
-  "queue_count": 128,
-  "drive_link": "https://docs.google.com/document/d/1CPONywqHxRlmcvf_kbXFvgVpadUMeGYBCGd5kKBiDq8/edit",
+  "queue_count": 130,
+  "drive_link": "https://docs.google.com/document/d/16YdnE1Zuw9SwQe4xcC7a0Lk3u3yG1fg9caAFybZS5l0/edit",
   "nash_satoshi_drive_link": "https://docs.google.com/document/d/1Eyu-1oTO1CqnwfPleMoFEPJohciYPXZc1MemUzCT5v4/edit",
   "vista_drive_link": "https://docs.google.com/document/d/1cgs_h9mgsgVYXkknydJd44ZaSlym7iMBADXI1RMuhg0/edit",
   "local_review_docs": {
@@ -87,11 +87,17 @@
     "linkedin": 0
   },
   "skips": {
-    "nash_x": "Skipped: live Nash rankings are stale (~329h old), so no ranking/model-update copy was generated.",
-    "nash_tiktok_reelfarm_support": "Skipped: live ranking/model proof is stale; avoided generic four-model filler.",
-    "reddit": "Skipped: no clearly compliant community-native angle for this week.",
+    "vista": "Skipped: App Marketing OS registry says Vista is paused after the 2026-06-18 reset.",
+    "glow_index_social": "Skipped: Glow is active for SEO/GEO durable discovery, not recurring social queue volume.",
+    "reddit": "Skipped: no clearly compliant community-native angle was needed this week.",
     "linkedin": "Skipped: monthly cadence requires real product milestone/proof; none new for June run."
   },
-  "measurement_blocker": "Vista/ReelFarm live post IDs and App Store metrics need reconciliation; Nash rankings are stale (~329h), so ranking-specific copy is blocked.",
-  "local_review_doc": "/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-06-01.md"
+  "measurement_blocker": "Live post IDs and downstream metrics still need reconciliation for planned Nash/Vista rows; do not increase content volume until pending rows have 24h/72h/7d results.",
+  "local_review_doc": "/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-06-22.md",
+  "nash_rankings_probe": {
+    "ok": true,
+    "newestAnalysisDate": "2026-06-22T08:18:15.479000+00:00",
+    "ageHours": 0.46,
+    "source_url": "https://nashsatoshi.com/api/leaderboard?limit=10"
+  }
 }

@@ -521,3 +521,10 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is still heavy. Treat X coordination quality, buy/sell flow, volume, whale evidence, and product/narrative signal as filters, not automatic conviction.
 - **Model read:** Research/ranking output adjusted NOX up to 30%, SURPLUS up to 30%, held PRXVT at 20%, adjusted GITLAWB up to 20%, and exited NOOK and SIBYL. CLUDE had the lone whale alert, but it did not make the allocation cut.
 - **Guardrail:** This is research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run in this heartbeat.
+
+## Jun 22, 2026 - 10:13AM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00, validation passed, X research guard passed, 25 X entries, estimated X research cost `$0.805`, created the 06:00 baseline, wrote dated artifacts, and cron metadata showed Telegram delivery to `6608544825` with `delivered: true`. Local summaries were present in `/Users/jtsomwaru/projects/crypto-agent/data/telegram-summary.txt` and `/Users/jtsomwaru/projects/crypto-agent/data/latest-analysis.md`.
+- **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is still heavy. Treat X coordination quality, buy/sell flow, volume, market-cap room, and product/narrative evidence as filters, not automatic conviction.
+- **Model read:** Research/ranking output adjusted PRXVT up to 30%, GITLAWB up to 25%, SURPLUS up to 25%, and NOX up to 20%; it exited NOOK and SIBYL. Two watchlist whale alerts were present, but neither made the allocation cut.
+- **Guardrail:** This is research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run in this heartbeat.

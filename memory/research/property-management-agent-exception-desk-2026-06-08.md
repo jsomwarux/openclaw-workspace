@@ -215,3 +215,22 @@ Altmark/Yair implication:
 - Cash order stays unchanged: unemployment certification is today's quick admin must-do, Petri M2 is the fastest send, and Altmark/Yair remains the workflow-completion plus remaining-invoice gate.
 
 Source signal: 2026-06-21 Morning Brief and Weekly Intelligence Synthesis.
+
+## 2026-06-22 Morning Brief Market Addendum
+
+The June 22 Morning Brief keeps the sales asset narrow: run control for sensitive property actions, not a broad AI-agent platform claim.
+
+Fresh market scan:
+- AI Agent Store's weekly roundup says Estonia introduced AI ID codes for autonomous agents. The useful buyer-language signal is not "agents are autonomous"; it is agent identity, responsible operator, scoped access, and auditability before automation acts.
+- BC Solutions' multifamily AI guide says resident communication and delinquency workflows need approved templates, tone rules, escalation paths, and compliance review. It also names delinquency, fees, lease obligations, accommodations, complaints, and disputes as topics that should not move without tighter review.
+- Earnix AIOS continues to validate the adjacent vertical pattern: high-stakes AI is being packaged as workflow orchestration with governance, human oversight, traceability, and auditability across underwriting, claims, pricing, engagement, and retention.
+
+Altmark/Yair implication:
+- The source-export ask should stay the top cash/proof move because it creates the control record: source row, payment/context gap, risk flag, proposed next step, reviewer, approve/edit/hold state, and evidence link.
+- For property-management buyers, describe the proof as controlled exception handling for delinquency and resident-sensitive follow-up. Do not call it autonomous collections.
+- The PM COI wave can use the same language after the Altmark ask moves: "I built the review layer that shows what the agent read, what it recommended, who approved it, and what evidence proves the action was allowed."
+
+Sources checked June 22:
+- AI Agent Store, "Daily AI Agent News - Last 7 Days" - https://aiagentstore.ai/ai-agent-news/this-week
+- BC Solutions, "AI for Multifamily Property Management" - https://www.bcsolut.com/resources/ai-for-multifamily-property-management
+- Earnix, "Earnix Launches AIOS, Extending Insurance AI Decisioning" - https://earnix.com/newsroom/press-releases/earnix-launches-aios-insurance-ai-orchestration-system/

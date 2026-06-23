@@ -166,6 +166,8 @@
 [2026-06-12 11:15AM] Autoresearch: reelfarm-intel baseline 1.000 -> final 1.000; changed file: agents/autoresearch/targets.md (no skill mutation needed).
 [2026-06-15 11:15AM] Autoresearch: ai-seo baseline 1.000 -> final 1.000; changed file: agents/autoresearch/targets.md (no skill mutation needed).
 [2026-06-19 11:15AM] Autoresearch: spanish-daily-lesson baseline 1.000 -> final 1.000; changed file: agents/autoresearch/checklists/spanish-daily-lesson.md (trimmed checklist to 6 scoped binary checks; no cron payload mutation needed).
+[2026-06-22 10AM] Film: reviewed 2026-06-21 note + Health Check-in fallback-mask recurrence; friction was the cron showing ok/delivered while the real Evening Check-in still required manual numeric Telegram send and pending-marker repair. -> Fix: logged recurrence evidence under the existing fallback-mask regression row and verified the live Health Check-in cron now allows only `exec` + `message`, uses both paths, and has a 120s timeout. | Improve: 10AM missed-cron gate verified Crypto Full Analysis validation/X guard/Telegram delivery, outreach preflight PASS/no external outreach, and critical-files integrity OK before accepting the heartbeat.
+[2026-06-22 11:15AM] Autoresearch: wednesday-linkedin baseline 0.833 -> final 1.000; changed file: skills/wednesday-linkedin/SKILL.md (added mandatory pronoun pass before approval so case studies keep reader-facing balance without filler).
 
 ## Weekly Systems Review — 2026-06-07
 - Checks run: cron health/runs, bootstrap file budgets, process/gateway/watchdog health, LaunchAgent config, OpenClaw version search, plugin/extensions, critical file integrity, autoresearch enrollment, future signals, passive-income queue pruning, Mission Control reachability, and weekly cost review.

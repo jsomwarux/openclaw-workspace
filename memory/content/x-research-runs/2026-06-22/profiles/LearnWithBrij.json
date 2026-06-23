@@ -1,0 +1,207 @@
+{
+  "user": {
+    "created_at": "2026-03-29T03:42:21.000Z",
+    "name": "Brij Pandey",
+    "username": "LearnWithBrij",
+    "id": "2038099371556823041",
+    "public_metrics": {
+      "followers_count": 2986,
+      "following_count": 55,
+      "tweet_count": 267,
+      "listed_count": 20,
+      "like_count": 413,
+      "media_count": 156
+    },
+    "description": "AI Architect | 725K+ on LinkedIn | Breaking down AI engineering, agentic systems & enterprise architecture | Building in public"
+  },
+  "tweets": [
+    {
+      "id": "2067950086534087092",
+      "text": "SQL Interview Cheat Sheet 📘 \n\n#sql https://t.co/bhedtheNEf",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-19T12:38:15.000Z",
+      "conversation_id": "2067950086534087092",
+      "metrics": {
+        "likes": 50,
+        "retweets": 12,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1470,
+        "bookmarks": 29
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2067950086534087092/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "sql"
+      ],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2067950086534087092"
+    },
+    {
+      "id": "2067661108429869096",
+      "text": "Math Cheetsheet for Data Science 📚📘\n\nSave it for later ✅ \n\n#datascience https://t.co/ySxWU000EQ",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-18T17:29:58.000Z",
+      "conversation_id": "2067661108429869096",
+      "metrics": {
+        "likes": 88,
+        "retweets": 18,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 2351,
+        "bookmarks": 47
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2067661108429869096/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "datascience"
+      ],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2067661108429869096"
+    },
+    {
+      "id": "2067574462351028693",
+      "text": "Most people think AI is about prompts.\n\nThat's where beginners stop.\n\nThe people building the next generation of AI products are thinking about completely different things:\n\n→ Agents that can plan and execute\n→ MCPs that connect models to real tools\n→ Multi-agent systems https://t.co/ZDmFbJBmrf",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-18T11:45:40.000Z",
+      "conversation_id": "2067574462351028693",
+      "metrics": {
+        "likes": 129,
+        "retweets": 29,
+        "replies": 6,
+        "quotes": 3,
+        "impressions": 3052,
+        "bookmarks": 88
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2067574462351028693/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2067574462351028693"
+    },
+    {
+      "id": "2067252683749445943",
+      "text": "Advanced Agent Security Hardening\n\nBeyond basic prompt injection defense, Advanced Agent Security includes tool sandboxing, output validation, data loss prevention, adversarial testing, and runtime policy enforcement.\n\nSecurity must evolve as agents gain more power and autonomy. https://t.co/gRhrQ8oThA",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-17T14:27:02.000Z",
+      "conversation_id": "2067252683749445943",
+      "metrics": {
+        "likes": 81,
+        "retweets": 10,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 2655,
+        "bookmarks": 59
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2067252683749445943/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2067252683749445943"
+    },
+    {
+      "id": "2066964800664711385",
+      "text": "LeetCode felt impossible...\n\nUntil I realized most coding interviews are built around the SAME patterns.\n\nMaster these 15 patterns, and you'll solve 80%+ of interview questions faster 👇\n\n1️⃣ Prefix Sum\n\nUse when:\n→ range sum queries\n→ cumulative calculations\n\nCommon problems: https://t.co/J7L48jf26V",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-16T19:23:05.000Z",
+      "conversation_id": "2066964800664711385",
+      "metrics": {
+        "likes": 136,
+        "retweets": 32,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 3312,
+        "bookmarks": 110
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066964800664711385/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066964800664711385"
+    },
+    {
+      "id": "2066854354251042936",
+      "text": "2 years ago, knowing 2 AI words was enough:\n\n→ LLM\n→ Prompt\n\nThat was the entire conversation.\n\nToday?\n\nYou're expected to know:\n\n• RAG\n• Embeddings\n• Vector Databases\n• Hybrid Search\n• Reranking\n• Tool Calling\n• Memory\n• Agents\n• MCP\n• A2A\n• Guardrails\n• https://t.co/W74p2XlGFR",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-16T12:04:13.000Z",
+      "conversation_id": "2066854354251042936",
+      "metrics": {
+        "likes": 41,
+        "retweets": 8,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 768,
+        "bookmarks": 27
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066854354251042936/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066854354251042936"
+    },
+    {
+      "id": "2066599494939238800",
+      "text": "Everyone is building AI agents.\nVery few understand the agentic frameworks that actually power them.\n\nIn 2025, two frameworks dominate agent development —\nnot as competitors, but as complementary layers:\n\nn8n — Visual Workflow Automation\n\nWhat it does\n• Visually connects AI https://t.co/Sf3bQOOGj8",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-15T19:11:29.000Z",
+      "conversation_id": "2066599494939238800",
+      "metrics": {
+        "likes": 27,
+        "retweets": 7,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 1409,
+        "bookmarks": 29
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066599494939238800/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066599494939238800"
+    },
+    {
+      "id": "2066500538246877423",
+      "text": "Data Analyst Vs Data Engineer Vs Data Scientist https://t.co/f6sWJPgW0p",
+      "author_id": "2038099371556823041",
+      "username": "LearnWithBrij",
+      "name": "Brij Pandey",
+      "created_at": "2026-06-15T12:38:16.000Z",
+      "conversation_id": "2066500538246877423",
+      "metrics": {
+        "likes": 86,
+        "retweets": 12,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 1635,
+        "bookmarks": 38
+      },
+      "urls": [
+        "https://x.com/LearnWithBrij/status/2066500538246877423/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/LearnWithBrij/status/2066500538246877423"
+    }
+  ]
+}

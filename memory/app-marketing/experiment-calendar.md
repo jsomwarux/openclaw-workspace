@@ -1,15 +1,15 @@
 # App Marketing OS — Experiment Calendar
 
-Week of: 2026-06-15
-Generated: 2026-06-15
+Week of: 2026-06-22
+Generated: 2026-06-22
 
 ## Rule
 Every generated product post should map to a named experiment, a success threshold, and a retire/rework rule. If it does not, skip it.
 
 ## Inputs used
-- Metrics rows: 239
+- Metrics rows: 277
 - Latest test brief: `test-briefs-2026-05-07.md`
-- Planned rows currently waiting for live post IDs: 6
+- Planned rows currently waiting for live post IDs: 8
 
 ## Required Experiment Card + Measurement Spine
 - Before any experiment becomes a Mission Control execution task, fill `memory/app-marketing/experiment-card-template.md` or an equivalent experiment-card section.

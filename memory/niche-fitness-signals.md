@@ -43,3 +43,7 @@ Last reset: 2026-06-01
 2026-06-19 [CONFIRMS] niche=insurance — Earnix launched AIOS, an insurance-native AI orchestration system for governed decisioning across pricing, underwriting, claims, customer engagement, and retention.
 2026-06-19 [CONFIRMS] niche=construction/real-estate — YC construction and real-estate portfolio reached 126 funded companies, with recent cohorts shifting toward AI-native agents and construction intelligence.
 2026-06-19 [EMERGING] niche=enterprise-rag — Neo4j highlighted agentic GraphRAG patterns with autonomous graph construction, adaptive retrieval, and failure-aware routing.
+2026-06-22 [EMERGING] niche=AI agents — Microsoft AutoJack research shows web-enabled AI agents plus local MCP services can create host-level RCE risk; track for agent/MCP deployment hardening.
+2026-06-22 [CONFIRMS] niche=insurance — Neutrinos AI Agent Composer adds another insurance-native agent platform signal, reinforcing insurer demand for workflow-specific AI agents.
+2026-06-22 [CONFIRMS] niche=property management — MRI Software search result cites record client growth and AI platform adoption, reinforcing PM AI demand without a new urgent action.
+2026-06-22 [CONFIRMS] niche=wholesale distribution — Continental warehouse automation investment signal supports continuing distribution modernization demand.

@@ -190,11 +190,33 @@ Every weekly review ends with exactly one of these:
 
 ## Metrics Summary — Week of 2026-06-15
 
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 2
+- Best item: glow-index Search Console queries 2026-06-15 to 2026-06-21 (2 views/impressions)
+
 ### glow-index / tiktok
 - Posts/results logged: 1
 - Views/impressions: 262
 - Engagement: likes 2, comments 0, saves 0, reposts 0
 - Best item: The Ordinary, ranked best to worst by 4 AIs. Some picks will surprise you. (262 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 2
+- Web depth: active users 2, pageviews 15, events 24
+- Best item: glow-index GA4 web traffic 2026-06-15 to 2026-06-21 (2 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-15 to 2026-06-21 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 39
+- Web depth: active users 10, pageviews 136, events 422
+- Best item: nash-satoshi GA4 web traffic 2026-06-15 to 2026-06-21 (39 views/impressions)
 
 **Best overall:** glow-index / tiktok — The Ordinary, ranked best to worst by 4 AIs. Some picks will surprise you. (262 views/impressions)
 
@@ -1070,12 +1092,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 37
+- Posts/results logged: 38
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 37
+- Posts/results logged: 38
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1589,7 +1611,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-06-21_
+_Last updated: 2026-06-22_
 
 <!-- METRICS_SUMMARY_END -->
 
@@ -1625,3 +1647,12 @@ _Last updated: 2026-06-21_
 - Measurement blocker: Vista/ReelFarm live post IDs and App Store/App metrics still need reconciliation before volume increases.
 - Next durable discovery action: reconcile Vista live post IDs into `memory/app-marketing/post-registry.jsonl`, then compare 24h/72h/7d metrics before reusing rating-precision again.
 - Review doc: `https://docs.google.com/document/d/1CPONywqHxRlmcvf_kbXFvgVpadUMeGYBCGd5kKBiDq8/edit` (local: `/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-06-01.md`).
+
+## Run Note — 2026-06-22 Product Content
+- Generated counts: X 1; Reddit 0; TikTok/ReelFarm support 1 hook/slide concept only; LinkedIn 0.
+- Approved queue entries: `nash-satoshi-x-2026-06-22-ranking-receipt-1`, `nash-satoshi-tiktok-2026-06-22-contradiction-receipt-1`.
+- Queue append: +2 approved entries; queue count 128 → 130. Added 2 planned measurement rows to `memory/app-marketing/post-registry.jsonl`.
+- Skips: Vista skipped because App Marketing OS registry says paused; Glow skipped for social volume because current lane is SEO/GEO durable discovery; Reddit skipped fail-closed; LinkedIn skipped because no new June product milestone/proof.
+- Measurement blocker: live post IDs and downstream metrics still need reconciliation for planned Nash/Vista rows; do not increase content volume until pending rows have 24h/72h/7d results.
+- Next durable discovery action: reconcile planned Nash receipt rows in `memory/app-marketing/post-registry.jsonl` to exact live X/TikTok IDs after JT posts, then run metric collection and analysis before scaling.
+- Review doc: `https://docs.google.com/document/d/16YdnE1Zuw9SwQe4xcC7a0Lk3u3yG1fg9caAFybZS5l0/edit` (local: `/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-06-22.md`).

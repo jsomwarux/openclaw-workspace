@@ -1,0 +1,231 @@
+{
+  "user": {
+    "name": "Alex the Engineer",
+    "description": "Senior Dev (10y+) Now building with AI. 👨‍💻 \nTweeting about Engineering & AI Automation\nBuilding:\nhttps://t.co/BQlAvWHopq\nhttps://t.co/cbCH1KeX7Y",
+    "username": "AlexEngineerAI",
+    "created_at": "2024-06-25T16:09:15.000Z",
+    "id": "1805634311174885376",
+    "public_metrics": {
+      "followers_count": 5479,
+      "following_count": 3254,
+      "tweet_count": 8320,
+      "listed_count": 14,
+      "like_count": 11035,
+      "media_count": 307
+    }
+  },
+  "tweets": [
+    {
+      "id": "2068846646260048187",
+      "text": "Something I see constantly from beginners starting an AI side hustle:\n\nThey pick the tool first.\n\n\"I want to use Midjourney, what should I sell?\"\n\"I got ElevenLabs, how do I make money with it?\"\n\"ChatGPT is incredible, now what?\"\n\nThe tool is not the starting point. The platform",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-22T00:00:52.000Z",
+      "conversation_id": "2068846646260048187",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 86,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068846646260048187"
+    },
+    {
+      "id": "2068831771022504260",
+      "text": "Most small businesses are still copying and pasting data between apps by hand.\n\nNew form submission comes in. Someone manually adds it to a spreadsheet. That payment confirmation triggers someone to send a welcome email. A new lead needs to appear in Slack.\n\nAll of that can be",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-21T23:01:45.000Z",
+      "conversation_id": "2068831771022504260",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 110,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068831771022504260"
+    },
+    {
+      "id": "2068695852055416887",
+      "text": "Most local businesses set up their Google Business Profile once and never touch it again.\n\nNo posts. No updates. No new photos. Just a static listing while competitors stay active.\n\nThat gap is a real beginner opportunity.\n\nGoogle Business Profiles let businesses post updates,",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-21T14:01:40.000Z",
+      "conversation_id": "2068695852055416887",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 109,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068695852055416887"
+    },
+    {
+      "id": "2068695727316795454",
+      "text": "Printful vs Printify for a beginner Etsy t-shirt side hustle — the actual margin math.\n\nBella+Canvas 3001 on a $25 listing:\n\nPrintful (no monthly fee)\n- Base production cost: ~$15.00\n- Etsy fees (6.5% txn + 3%+$0.25 processing + $0.20 listing): ~$2.80\n- Net per sale: ~$7.20",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-21T14:01:10.000Z",
+      "conversation_id": "2068695727316795454",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 73,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068695727316795454"
+    },
+    {
+      "id": "2068485031060746570",
+      "text": "6 months selling Canva social media template packs on Gumroad. Here is the realistic math.\n\nMonth 1: one pack live, $12 price, zero Gumroad Discover placement. Gumroad only surfaces products once you have sales and reviews. New sellers are invisible to Discover traffic.",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-21T00:03:56.000Z",
+      "conversation_id": "2068485031060746570",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 100,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068485031060746570"
+    },
+    {
+      "id": "2068469293629472963",
+      "text": "Real estate agents generate the same content over and over.\n\nProperty listing descriptions. Neighborhood guides. Open house follow-up emails. Just-listed and just-sold social posts. Market update newsletters.\n\nMost agents either write everything themselves (takes forever) or pay",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-20T23:01:24.000Z",
+      "conversation_id": "2068469293629472963",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 89,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068469293629472963"
+    },
+    {
+      "id": "2068333652002406430",
+      "text": "Payhip's free plan charges 5% per sale. Gumroad charges 10%. Here is when the difference matters.\n\nPayhip is built for digital product sellers — ebooks, templates, courses, and printables. Free to join, no monthly fee required.\n\nFee structure on the free plan:\n- Payhip takes 5%",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-20T14:02:25.000Z",
+      "conversation_id": "2068333652002406430",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 110,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068333652002406430"
+    },
+    {
+      "id": "2068333377938186562",
+      "text": "Most podcasters don't write show notes, timestamps, or episode summaries. They either skip it or keep it on their to-do list for months.\n\nThat's a real gap you can fill as a beginner.\n\nThe workflow: take the podcast transcript or a recording, run it through ChatGPT with a",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-20T14:01:19.000Z",
+      "conversation_id": "2068333377938186562",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 93,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068333377938186562"
+    },
+    {
+      "id": "2068122045544616406",
+      "text": "The most common Etsy mistake beginners make with AI art is not the tool they pick. Not the price. Not even the artwork quality.\n\nIt is listing 150 products across 8 different themes and hoping volume beats everything.\n\nHere is how Etsy's algorithm actually works:\n\nEtsy ranks",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-20T00:01:34.000Z",
+      "conversation_id": "2068122045544616406",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 70,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068122045544616406"
+    },
+    {
+      "id": "2068106922801131956",
+      "text": "The brands you remember from childhood? Most of them had jingles.\n\nThat memory effect is real, and it works for small businesses too.\n\nGet your own in 24 hours. Starting at $39. https://t.co/nlFsHZADYl",
+      "author_id": "1805634311174885376",
+      "username": "AlexEngineerAI",
+      "name": "Alex the Engineer",
+      "created_at": "2026-06-19T23:01:28.000Z",
+      "conversation_id": "2068106922801131956",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 51,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://jinglecraft.agency"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/AlexEngineerAI/status/2068106922801131956"
+    }
+  ]
+}
