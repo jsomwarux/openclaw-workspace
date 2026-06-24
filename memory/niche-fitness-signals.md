@@ -47,3 +47,4 @@ Last reset: 2026-06-01
 2026-06-22 [CONFIRMS] niche=insurance — Neutrinos AI Agent Composer adds another insurance-native agent platform signal, reinforcing insurer demand for workflow-specific AI agents.
 2026-06-22 [CONFIRMS] niche=property management — MRI Software search result cites record client growth and AI platform adoption, reinforcing PM AI demand without a new urgent action.
 2026-06-22 [CONFIRMS] niche=wholesale distribution — Continental warehouse automation investment signal supports continuing distribution modernization demand.
+2026-06-23 [EMERGING] niche=ai-automation — Search scan found continued Agentforce 360/AI-agent platform packaging and enterprise agent governance chatter, but no verified new high-severity development after dedupe.

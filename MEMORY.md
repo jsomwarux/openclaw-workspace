@@ -16,7 +16,7 @@
 
 ## Consulting Positioning
 - Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs before automation.
-- Current package: AI Enablement OS / Run Control: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric.
+- Current package: AI Enablement OS / Run Control: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric. Buyer-facing asset: `memory/consulting/run-control-sales-asset-outline-2026-06-23.md`.
 - ICP: NYC/metro property ops first; construction, wholesale/skilled trades, insurance/Agentforce as adjacent proof lanes.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
@@ -39,15 +39,12 @@
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com` is proof hub; no untested public work. 2026-06-18 reset: Action Arena gate, Glow SEO/GEO, Nash cap, Vista pause.
-- Action Arena source: `/Users/jtsomwaru/projects/action-arena`; next gate Apple Developer Organization transfer, then EAS secrets + TestFlight/App Store readiness before spend.
-- Glow crawler + first SEO/GEO batch live; register GA4 `source_tag` custom dimension before next Replit rebuild or `/categories/serum` batch.
-- Paid UGC paused except possible capped Action Arena kickoff after app live + attribution; Nash hard no.
+- `jtsomwaru.com` is proof hub; no untested public work. Current app gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Strongest current proof asset: PM run-control / source-export control record around Altmark-style rent delinquency.
+- 2026-06-23 content angle: property-management AI governance should frame vendor AI adoption around source record, allowed action, sensitive-row review, and final evidence trail; draft saved at `memory/drafts/linkedin-vendor-ai-governance-property-management-2026-06-23.md`.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
@@ -69,14 +66,14 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Baseline: 45 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 21.21 agentTurn/day; one known unknown schedule: `Reminder: YouTube TV midday`.
-- 2026-06-22 state: current red rows empty; stale cleanup bucket is `Viral Post Swipe File - X Research`, `Weekly Systems Review`, `content-generate-x`.
+- Baseline: 45 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; one known unknown schedule: `Reminder: YouTube TV midday`.
+- 2026-06-23 state: stale/error rows remain for `Viral Post Swipe File - X Research`, `Job Application Auto-Builder`, `Weekly Systems Review`, `content-generate-x`. Safe repairs applied: created missing content/audit folders; set `content-generate-x` light context. Verify after next runs.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
 - Health, cost tracker, proof guard, film review, and skills audit remain active.
-- Health Check-in fallback-mask issue was repaired late 2026-06-22 after JT approved proceeding: cron `6be7f564-5cec-47e7-b67c-9b2fcc3ed8de` now uses a main-session `systemEvent` that calls deterministic helper `scripts/health_checkin_cron.py` instead of relying on isolated filesystem tools. Regression: `python3 -m unittest scripts/test_health_checkin_cron.py` passes 3/3; duplicate guard returned `SKIPPED_DUPLICATE_HEALTH_CHECKIN` for 2026-06-22; MC task `j572zr0zcfky50mj8cjqg045c5897xhy` closed. Next live verification: 2026-06-23 21:00 ET.
+- Health Check-in cron `6be7f564-5cec-47e7-b67c-9b2fcc3ed8de` now uses main-session `systemEvent` + `scripts/health_checkin_cron.py`; helper tests pass 3/3. Next live verification: 2026-06-23 21:00 ET.
 - Detail: `docs/memory/MEMORY-full.md#health--training--quality-loops`.
 
 ## Integrity / Fabrication Corrections

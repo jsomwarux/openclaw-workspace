@@ -234,3 +234,21 @@ Sources checked June 22:
 - AI Agent Store, "Daily AI Agent News - Last 7 Days" - https://aiagentstore.ai/ai-agent-news/this-week
 - BC Solutions, "AI for Multifamily Property Management" - https://www.bcsolut.com/resources/ai-for-multifamily-property-management
 - Earnix, "Earnix Launches AIOS, Extending Insurance AI Decisioning" - https://earnix.com/newsroom/press-releases/earnix-launches-aios-insurance-ai-orchestration-system/
+
+## 2026-06-23 Heartbeat Market Addendum
+
+Fresh scan keeps the property-management sales angle pointed at governance and run control, not broader AI adoption:
+- Grant Thornton's June 22 multifamily AI piece says front-office AI adoption is moving faster than governance, with operators still owning liability even when vendors own the tools. It names data, regulatory compliance, and accountability as the three governance areas leaders must handle before scaling.
+- Grant Thornton also ties multifamily AI value to measurable front-office KPIs: lead response/conversion, maintenance resolution/cost/satisfaction, and revenue signals like occupancy, rent growth, and delinquency trends. That makes a reviewed delinquency queue a better proof asset than another generic agent demo.
+- BC Solutions' June 2026 multifamily guide keeps the same operating boundary: AI is useful in high-volume leasing, maintenance, resident communication, delinquency, renewals, reporting, and central-ops workflows only when source systems, escalation paths, human ownership, and measurable outcomes are clear.
+- Haven's June 11 glossary is a useful buyer education signal: PMS, automation, and AI are separate layers, and only a small share of property-management workflows are fully automated end to end. The gap between "we use AI" and "the process is safely automated" is the opening for a control layer.
+
+Altmark / PM proof implication:
+- Keep using "run control for sensitive property actions" as the umbrella. The proof should show source row, allowed data access, AI classification, risk or missing-context flag, proposed next step, reviewer, approve/edit/hold state, evidence link, and KPI event.
+- For PM COI outreach, the best hook is governance-before-scale: "If the vendor adds AI faster than your team can govern it, the missing layer is the approval queue and audit trail."
+- Petri M2 and PM COI sends should stay distribution-first today; do not turn this into more asset polish.
+
+Sources checked June 23:
+- Grant Thornton, "Multifamily AI growth starts with governance" - https://www.grantthornton.com/insights/articles/real-estate/2026/multifamily-ai-growth-starts-with-governance
+- BC Solutions, "AI for Multifamily Property Management" - https://www.bcsolut.com/resources/ai-for-multifamily-property-management
+- Haven AI, "Property Management System Automation AI: 2026 Glossary" - https://www.usehaven.ai/post/property-management-system-automation-ai-glossary

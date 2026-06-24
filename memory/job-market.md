@@ -452,3 +452,11 @@ Read today's job-market-agent brief. No new US/NYC/remote non-developer role cle
 **Strongest signal:** internal agentic AI platform roles are becoming operating-model roles: portfolio ownership, incubation-to-handoff, adoption metrics, governance, executive briefs, eval/model lifecycle, and KPI instrumentation. That is directionally aligned with JT's orchestration story but not a clean apply lane when the posting expects developer-platform depth.
 
 **Positioning implication:** keep Mission Control/OpenClaw framed as internal AI platform operations proof: agent portfolio, adoption metrics, governance, workflow handoff, and reliability controls. Extend AgentOps / AgentGuard / DealDesk / EnablementOps rather than creating another build idea or application task today. Altmark and the PM run-control proof remain higher priority than a generic AI-platform portfolio page.
+
+## 2026-06-23 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief. No new NYC/remote non-coding AI implementation role cleared JT's filter; the search set was still crowded by engineering-primary roles, generic AI career content, and inaccessible snippets.
+
+**Strongest signal:** the useful market signal is not a new title today; it is proof packaging. Employers still show an AI skills/adoption gap, but the public postings that surface are over-indexing toward engineering, cloud infrastructure, and generic AI content. That makes company-specific, proof-backed operating-model language more valuable than broad "AI consultant" positioning.
+
+**Positioning implication:** describe Mission Control/OpenClaw plus Altmark as an AI operating system proof: intake, governed agent/tool access, eval and rollback, adoption rhythm, and value reporting. Extend EnablementOps / DealDesk / AgentGuard / ROIFlow rather than creating a duplicate demo or application task.
