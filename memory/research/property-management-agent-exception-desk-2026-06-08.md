@@ -252,3 +252,22 @@ Sources checked June 23:
 - Grant Thornton, "Multifamily AI growth starts with governance" - https://www.grantthornton.com/insights/articles/real-estate/2026/multifamily-ai-growth-starts-with-governance
 - BC Solutions, "AI for Multifamily Property Management" - https://www.bcsolut.com/resources/ai-for-multifamily-property-management
 - Haven AI, "Property Management System Automation AI: 2026 Glossary" - https://www.usehaven.ai/post/property-management-system-automation-ai-glossary
+
+## 2026-06-24 Heartbeat Market Addendum
+
+The June 24 Morning Brief keeps the same buyer-safe property-management thesis: sell the control record and exception review layer, not generic "AI collections."
+
+Fresh market signals:
+- OmniDimension's AI automation platform bundle is the broader market pattern: voice agents, workflow orchestration, CRM sync, and analytics are being packaged together. That makes operator governance, approval state, and audit evidence the differentiator, because buyers will have more automation touching more systems.
+- TIDY's 2026 property-management software roundup shows AI staying concentrated in leasing, collections, screening, maintenance, board packages, and delinquency trend monitoring. These are resident-, owner-, vendor-, and ledger-sensitive workflows, so the missing layer remains review and proof before action.
+- CoinDCX's crypto context is monitor-only, but the "not broad alt euphoria" note is a useful reminder for app/agent claims too: avoid hype-cycle positioning; lead with narrow evidence, source record, and measurable outcome.
+
+Altmark / PM proof implication:
+- The Altmark rent-delinquency sample ask remains the highest-leverage proof gate because it requests the real source export shape, reviewer, refresh cadence, and exception rules.
+- The proof asset should show source row, allowed data access, payment/context gap, risk or missing-context flag, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and KPI event.
+- Petri M2 and PM COI wave one should remain distribution-first today. Do not turn the market signal into another proof-polish loop before the Altmark ask moves.
+
+Sources checked June 24:
+- OmniDimension, "OmniDimension Launches End-to-End AI Automation Platform..." - https://www.finanzwire.com/press-release/omnidimension-launches-end-to-end-ai-automation-platform-for-the-customer-engagement-oFTXmCL8eCV
+- TIDY, "Best AI Property Management Software for Long-Term Rentals 2026" - https://www.tidy.com/blog/best-ai-property-management-software-long-term-rentals-2026
+- CoinDCX, "Crypto Bull Run" context - https://coindcx.com/blog/crypto-deep-dives/crypto-bull-run/

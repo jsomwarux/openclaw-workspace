@@ -1,5 +1,5 @@
 # ReelFarm Gmail Ingest Status
 
-Last checked: 2026-06-23 17:15:13 EDT
+Last checked: 2026-06-24 17:15:18 EDT
 
-Gmail ingestion active. New files: 0. Skipped/deduped: 3. Query: `(from:socialgrowthengineers.com OR from:socialgrowthengineers OR "Social Growth Engineers") newer_than:7d`
+Gmail ingestion active. New files: 1. Skipped/deduped: 2. Query: `(from:socialgrowthengineers.com OR from:socialgrowthengineers OR "Social Growth Engineers") newer_than:7d`

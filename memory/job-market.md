@@ -460,3 +460,11 @@ Read today's job-market-agent brief. No new NYC/remote non-coding AI implementat
 **Strongest signal:** the useful market signal is not a new title today; it is proof packaging. Employers still show an AI skills/adoption gap, but the public postings that surface are over-indexing toward engineering, cloud infrastructure, and generic AI content. That makes company-specific, proof-backed operating-model language more valuable than broad "AI consultant" positioning.
 
 **Positioning implication:** describe Mission Control/OpenClaw plus Altmark as an AI operating system proof: intake, governed agent/tool access, eval and rollback, adoption rhythm, and value reporting. Extend EnablementOps / DealDesk / AgentGuard / ROIFlow rather than creating a duplicate demo or application task.
+
+## 2026-06-24 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief. No new NYC/remote non-coding AI implementation role cleared the 18/25 filter; the brief flags zero critical/high opportunities and says the open-board inventory is still crowded by certification pages, developer postings, empty LinkedIn results, and non-target snippets.
+
+**Strongest signal:** public search is currently noisy for JT's lane, but the market language still rewards AI fluency plus human judgment. The useful resume/portfolio move is not a new application; it is packaging Mission Control/OpenClaw as business-side AI operating-system proof.
+
+**Positioning implication:** keep describing the proof as intake, governed tools, agent workflows, evaluation, adoption rhythm, and value reporting. This supports the current cash/proof lanes more than another build idea or generic certification task.

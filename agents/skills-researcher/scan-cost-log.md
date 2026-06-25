@@ -91,3 +91,4 @@ EOF'
 [2026-06-20T15:32:41Z] | daily-scan | x_queries: 6 | web_queries: 14 | findings: 7 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-06-22T15:33:00Z | daily-scan | x_queries: 6 | web_queries: 15 | findings: 8 | 🔴: 1 | 🟠: 0 | messaged_jt: yes
 [2026-06-23T11:33:31-04:00] | daily-scan | x_queries: 6 | web_queries: 18 | findings: 6 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
+[2026-06-24T11:34:00-04:00] | daily-scan | x_queries: 6 | web_queries: 13 | findings: 7 | 🔴: 1 | 🟠: 2 | messaged_jt: yes

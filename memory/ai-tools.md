@@ -705,3 +705,9 @@ Source checks: https://www.theregister.com/2026/06/18/estonia-intends-to-recogni
 **JT relevance:** keep the Run Control / AI Enablement OS proof grounded in runtime evidence, not policy language. For Altmark, PM COI, and internal OpenClaw jobs, the artifact should show approved tools, credential scope, action risk tier, blocked-action path, reviewer decision, activity log, and recovery owner. The useful sales line is: "the agent is only production-ready when the action can be authorized before it runs and reconstructed after it runs."
 
 Source checks: https://www.truefoundry.com/blog/enterprise-ai-agent-security-solutions, https://cycode.com/blog/owasp-mcp-top-10/, and https://devblogs.microsoft.com/dotnet/governing-mcp-tool-calls-in-dotnet-with-the-agent-governance-toolkit/.
+
+## Jun 24, 2026 - Heartbeat AI Tool Monitoring
+
+**Production-agent reliability now needs input hygiene beside MCP/run-control evidence.** Today's morning operating surface already shows the pattern: Vibe Queue has 116 approved items, 3 review-needed items, and 1 bad JSONL line, so bulk scheduling should stay blocked until the invalid row is cleaned. That is the small, practical version of the broader agent-governance theme from the past week: approved tools and audit logs are not enough if the queue, source export, or content payload can feed the agent malformed data.
+
+**JT relevance:** keep the Run Control / AI Enablement OS proof showing both action authorization and data-quality gates. For Altmark, the source-export ask should name the expected row shape, refresh cadence, exception rules, reviewer, approve/edit/hold state, and evidence link. For OpenClaw/content automations, the production standard is allowed tools, scoped credentials, queue validation, blocked-action path, delivery proof, and recovery owner before any bulk scheduling or mutating workflow is trusted.

@@ -1,6 +1,6 @@
 # App Marketing OS — Performance Analysis
 
-Last updated: 2026-06-23
+Last updated: 2026-06-24
 
 ## glow-index / tiktok
 

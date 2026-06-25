@@ -96,3 +96,7 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 ## 2026-06-22
 
 [2026-06-22] TOPIC Live-build AI consulting offer — 1 post / 1,138 engagement | JT has angle: yes (AI Operations Diagnostic + fixed-scope implementation work; business owners want the trusted operator helping them build the system, not abstract AI consulting) | JT posted recently: no direct live-build offer post in last 21 days | action: recommend
+
+## 2026-06-24
+
+[2026-06-24] FORMAT Claude/resource-stack list — 5 appearances / ~850+ engagement | JT has angle: yes (Eve/OpenClaw skills, crons, context files, model routing, and real agent operating workflows) | JT posted recently: yes | action: already covered

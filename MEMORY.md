@@ -16,7 +16,7 @@
 
 ## Consulting Positioning
 - Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs before automation.
-- Current package: AI Enablement OS / Run Control: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric. Buyer-facing asset: `memory/consulting/run-control-sales-asset-outline-2026-06-23.md`.
+- Current package: AI Enablement OS / Run Control: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric; asset: `memory/consulting/run-control-sales-asset-outline-2026-06-23.md`.
 - ICP: NYC/metro property ops first; construction, wholesale/skilled trades, insurance/Agentforce as adjacent proof lanes.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
@@ -44,7 +44,7 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- 2026-06-23 content angle: property-management AI governance should frame vendor AI adoption around source record, allowed action, sensitive-row review, and final evidence trail; draft saved at `memory/drafts/linkedin-vendor-ai-governance-property-management-2026-06-23.md`.
+- Current drafts: OpenClaw/ClawHub skill-audit AI OS trust post (`memory/drafts/linkedin-openclaw-skill-audit-agent-os-2026-06-24.md`, voice 100); PM vendor-AI governance around source record, allowed action, sensitive-row review, evidence trail (`memory/drafts/linkedin-vendor-ai-governance-property-management-2026-06-23.md`).
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
@@ -67,13 +67,13 @@
 
 ## Active Automation / Crons
 - Baseline: 45 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; one known unknown schedule: `Reminder: YouTube TV midday`.
-- 2026-06-23 state: stale/error rows remain for `Viral Post Swipe File - X Research`, `Job Application Auto-Builder`, `Weekly Systems Review`, `content-generate-x`. Safe repairs applied: created missing content/audit folders; set `content-generate-x` light context. Verify after next runs.
+- 2026-06-24 heartbeat: MC API 276 total / 258 active / 11 high / 0 overdue; cost alerts empty. CLI `lastRunStatus` is null-heavy, so verify critical jobs by run history. Watch rows: `Job Application Auto-Builder`, `Viral Post Swipe File - X Research`, `prospect-discovery`, `Weekly Systems Review`, `content-generate-x`.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
 - Health, cost tracker, proof guard, film review, and skills audit remain active.
-- Health Check-in cron `6be7f564-5cec-47e7-b67c-9b2fcc3ed8de` now uses main-session `systemEvent` + `scripts/health_checkin_cron.py`; helper tests pass 3/3. Next live verification: 2026-06-23 21:00 ET.
+- 2026-06-24 ClawHub skill audit clean after excluding vendored `node_modules`; report: `memory/audits/security/clawhub-skill-supply-chain-audit-2026-06-24.md`.
 - Detail: `docs/memory/MEMORY-full.md#health--training--quality-loops`.
 
 ## Integrity / Fabrication Corrections

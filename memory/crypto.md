@@ -535,3 +535,10 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **X freshness:** `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/x-research-guard.py --max-age-hours 5` passed with 25 entries, 25/25 portfolio coverage, and age 4.22h. No extra nonessential X pulls were run during this heartbeat.
 - **Model read:** Research/ranking output adjusted PRXVT up to 30%, SURPLUS up to 30%, added ODAI at 25% and AEON at 15%, and exited GITLAWB, NOOK, NOX, and SIBYL. Whale alerts were present for PRXVT, CLUDE, and SURPLUS; only PRXVT and SURPLUS made the allocation cut.
 - **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving.
+
+## Jun 24, 2026 - 10:12AM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00, validation passed, X research guard passed, 25 X entries, estimated X research cost `$0.85`, created the 06:00 baseline, wrote dated artifacts, and cron metadata showed `telegram_message_sent: true` with delivery to `6608544825`.
+- **X freshness:** `python3 /Users/jtsomwaru/projects/crypto-agent/scripts/x-research-guard.py --max-age-hours 5` passed with 25 entries, 25/25 portfolio coverage, and age 4.23h. `validate-full-analysis.py --max-x-age-hours 5` passed with warnings that zero-result X rows for `$A0T`, `$CRED`, and `$HEU` should be treated as weak-coordination signals. No extra nonessential X pulls were run during this heartbeat.
+- **Model read:** Research/ranking output exited PRXVT, NOX, NOOK, GITLAWB, and SIBYL; adjusted SURPLUS up to 30%; and added BOTCOIN 25%, AEON 25%, and LFI 20%. AEON had a first whale-trade alert, but the summary still frames everything as research/ranking only.
+- **Guardrail:** No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. With X API already over target, avoid extra crypto pulls unless a later threshold alert requires it.

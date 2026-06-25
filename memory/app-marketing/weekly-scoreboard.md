@@ -177,6 +177,34 @@ Every weekly review ends with exactly one of these:
 - `MEASURE_FIRST`: live work shipped and the next move is source-tag/reporting/indexing measurement before more build or content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-06-17
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 1
+- Best item: glow-index Search Console queries 2026-06-17 to 2026-06-23 (1 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 2
+- Web depth: active users 2, pageviews 15, events 24
+- Best item: glow-index GA4 web traffic 2026-06-17 to 2026-06-23 (2 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-17 to 2026-06-23 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 36
+- Web depth: active users 9, pageviews 141, events 472
+- Best item: nash-satoshi GA4 web traffic 2026-06-17 to 2026-06-23 (36 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-06-17 to 2026-06-23 (36 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-06-16
 
 ### glow-index / search_console
@@ -1114,12 +1142,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 39
+- Posts/results logged: 40
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 39
+- Posts/results logged: 40
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1633,7 +1661,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-06-23_
+_Last updated: 2026-06-24_
 
 <!-- METRICS_SUMMARY_END -->
 

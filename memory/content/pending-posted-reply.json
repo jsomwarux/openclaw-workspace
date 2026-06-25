@@ -1,15 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-06-20",
-      "day": "saturday",
-      "platform": "x",
-      "summary": "Reusable client work starts when the approval rules become assets, not one-off judgment calls.",
-      "topic": "approval-rules-assets-not-one-off-judgment"
+      "date": "2026-06-24",
+      "day": "wednesday",
+      "line_no": 233,
+      "platform": "linkedin",
+      "summary": "Salesforce paid $3.6B for run control, not chatbot quality; the operating layer after the agent reads the request is where the value lives.",
+      "topic": "salesforce-fin-run-control-moat"
     }
   ],
   "note": "",
-  "sent_at": 1781956848,
+  "sent_at": 1782302541,
   "source": "content-reminder",
   "status": "pending"
 }
