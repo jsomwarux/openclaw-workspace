@@ -44,13 +44,14 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Current drafts: OpenClaw/ClawHub skill-audit AI OS trust post (`memory/drafts/linkedin-openclaw-skill-audit-agent-os-2026-06-24.md`, voice 100); PM vendor-AI governance around source record, allowed action, sensitive-row review, evidence trail (`memory/drafts/linkedin-vendor-ai-governance-property-management-2026-06-23.md`).
+- Current drafts: AI enablement approved-tool-stack post (`memory/drafts/linkedin-ai-enablement-approved-tool-stack-2026-06-25.md`, voice 100), OpenClaw/ClawHub skill-audit AI OS trust post (`memory/drafts/linkedin-openclaw-skill-audit-agent-os-2026-06-24.md`, voice 100), and PM vendor-AI governance around source record/allowed action/sensitive-row review/evidence trail.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
+- 2026-06-25 signal: PureSpectrum AI Enablement Manager validates consulting-bridge language around AI Academy, approved tool stack, function playbooks, prompt libraries, AI portfolio, adoption metrics, and ROI.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -66,8 +67,8 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Baseline: 45 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; one known unknown schedule: `Reminder: YouTube TV midday`.
-- 2026-06-24 heartbeat: MC API 276 total / 258 active / 11 high / 0 overdue; cost alerts empty. CLI `lastRunStatus` is null-heavy, so verify critical jobs by run history. Watch rows: `Job Application Auto-Builder`, `Viral Post Swipe File - X Research`, `prospect-discovery`, `Weekly Systems Review`, `content-generate-x`.
+- Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after the one-off YouTube TV reminder fired.
+- 2026-06-25 heartbeat: MC API 276 total / 258 active / 11 high / 0 overdue; cost alerts empty. CLI `lastRunStatus` is null-heavy, so verify critical jobs by run history/artifacts. Watch stale list-metadata rows: `Job Market Daily Research`, `Viral Post Swipe File - X Research`, `Job Application Auto-Builder`, `Niche Intelligence Monitor`, `Daily News Hook`, `prospect-discovery`, `Weekly Systems Review`, `content-generate-x`.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 

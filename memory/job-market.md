@@ -468,3 +468,13 @@ Read today's job-market-agent brief. No new NYC/remote non-coding AI implementat
 **Strongest signal:** public search is currently noisy for JT's lane, but the market language still rewards AI fluency plus human judgment. The useful resume/portfolio move is not a new application; it is packaging Mission Control/OpenClaw as business-side AI operating-system proof.
 
 **Positioning implication:** keep describing the proof as intake, governed tools, agent workflows, evaluation, adoption rhythm, and value reporting. This supports the current cash/proof lanes more than another build idea or generic certification task.
+
+## 2026-06-25 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief. PureSpectrum AI Enablement Manager is the cleanest current signal at 20/25, remote US, but the recommended route is consulting bridge rather than a full application package because salary is undisclosed and the market-research domain is new.
+
+**Strongest signal:** the role maps directly to EnablementOps: AI Academy, approved tool stack, function-level playbooks, prompt libraries, AI project portfolio, adoption metrics, and ROI. That validates JT's BSA + agent-orchestration lane without turning the day into resume-build work.
+
+**Positioning implication:** package Mission Control/OpenClaw as an AI enablement operating model: intake, approved tools, governed workflows, function playbooks, adoption cadence, ROI dashboard, and value reporting. Best next move is still cash/proof distribution: Altmark packet first, then Petri/PM COI as queued. Extend EnablementOps / ROIFlow / AgentGuard; no new build idea or application task.
+
+Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; PureSpectrum posting: https://www.builtinaustin.com/job/ai-enablement-manager/9875102

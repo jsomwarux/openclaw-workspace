@@ -271,3 +271,21 @@ Sources checked June 24:
 - OmniDimension, "OmniDimension Launches End-to-End AI Automation Platform..." - https://www.finanzwire.com/press-release/omnidimension-launches-end-to-end-ai-automation-platform-for-the-customer-engagement-oFTXmCL8eCV
 - TIDY, "Best AI Property Management Software for Long-Term Rentals 2026" - https://www.tidy.com/blog/best-ai-property-management-software-long-term-rentals-2026
 - CoinDCX, "Crypto Bull Run" context - https://coindcx.com/blog/crypto-deep-dives/crypto-bull-run/
+
+## 2026-06-25 Heartbeat Market Addendum
+
+Fresh scan keeps the PM proof pointed at governed work execution rather than "AI collection" language:
+- Zuora's quote-to-cash AI push is a useful adjacent proof: finance buyers are being sold agents that operate inside systems of record, existing controls, permissions, audit frameworks, explainable recommendations, and workflow ownership. That is the same trust pattern Altmark needs for rent-delinquency follow-up.
+- Real-estate AI platform coverage is converging on one intelligence/execution layer over property operations, asset management, leasing, reporting, and back-office workflows. The gap for operators is not another model; it is knowing which source row the workflow touched, what action was allowed, and who approved it.
+- Property-management workflow automation guidance is increasingly explicit that some workflows are AI-ready while others need cleaner data, clearer ownership, and human review before outcomes move. Delinquency, resident communication, ledger, owner, and legal-sensitive follow-up belongs in the reviewed lane.
+
+Altmark / PM proof implication:
+- Keep the Altmark packet first. Ask for the redacted export/sample plus reviewer and exception rules so the proof can show source row, payment/context gap, risk flag, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and KPI event.
+- For PM COI outreach, use "run control for sensitive property actions" as the bridge: the agent can draft or classify, but the control record proves what happened before the tenant, owner, ledger, or legal-sensitive action moved.
+- Today's separate priority reminder is operational, not proof work: cancel YouTube TV before the next charge.
+
+Sources checked June 25:
+- Zuora, "Zuora AI Adds New Agents To Supercharge Finance Productivity" - https://www.zuora.com/press-release/zuora-ai/
+- Zuora, "Supercharging Finance Productivity: Zuora AI Expands..." - https://www.zuora.com/resource/60-days-of-zuora-ai/
+- Kognitos, "AI Automation for Real Estate Operations: A 2026 Guide" - https://www.kognitos.com/blog/ai-automation-real-estate-operations-2026/
+- BC Solutions, "Property Management Workflow Automation: Where AI Actually Helps" - https://www.bcsolut.com/resources/property-management-workflow-automation

@@ -70,3 +70,5 @@
 2026-06-16 salesforce-fin-agentforce-acquisition — Salesforce agreed to buy autonomous AI agent platform Fin for about $3.6B to strengthen Agentforce customer-service automation.
 2026-06-16 construction-ai-agent-data-access-conflict — ENR reported construction platforms are fighting over data access for AI agents, including Procore blocking Trunk Tools API access.
 2026-06-19 earnix-aios-insurance-orchestration — Earnix launched AIOS, an insurance-native AI orchestration system for governed decisioning across core insurer workflows.
+
+2026-06-25 salesforce-agentforce-commerce-b2b-buyer-agent — Salesforce released Agentforce Commerce with B2B Buyer Agent GA for procurement orchestration across WhatsApp/SMS plus agentic order management and commerce channel integrations.
