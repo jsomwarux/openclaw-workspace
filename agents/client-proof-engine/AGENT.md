@@ -36,7 +36,7 @@ Does not own:
    - portfolio queue when proof score is high enough
    - content proof points from verified evidence only
    - referral ask after acceptance and permission/anonymization safety
-   - Mission Control task only when the first action and done state are concrete
+   - Mission Control task only when the first action, why, and done state are concrete
 
 ## Quality Gate
 - Proof status is one of: blocked, private-ready, publish-ready.
@@ -44,4 +44,3 @@ Does not own:
 - Evidence paths are local paths or Drive links, not vague claims.
 - Public naming is blocked unless permission exists.
 - Redacted/synthetic proof is clearly labeled.
-

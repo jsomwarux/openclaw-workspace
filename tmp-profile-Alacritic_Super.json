@@ -1,0 +1,248 @@
+{
+  "user": {
+    "created_at": "2016-08-27T03:13:41.000Z",
+    "description": "AI/ML | FinTech @PaymentusCorp | Trading | Helping you understand AI, money, crypto, habits & robotics. Sharing practical insights on real world systems.",
+    "id": "769372283131432961",
+    "name": "Praveen Kumar Verma",
+    "public_metrics": {
+      "followers_count": 3047,
+      "following_count": 459,
+      "like_count": 4492,
+      "listed_count": 4,
+      "media_count": 3379,
+      "tweet_count": 31039
+    },
+    "username": "Alacritic_Super"
+  },
+  "tweets": [
+    {
+      "id": "2070421150145110402",
+      "text": "🔥 10 free resources that teach you more about AI in 30 days\n\n1. 3Blue1Brown. Grant Sanderson's neural network visualizations. The math inside ChatGPT, made visible. Watch: https://t.co/WbgjGLx4G3\n\n2. Andrej Karpathy's Zero to Hero. The OpenAI founding member walks you through",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-26T08:17:23.000Z",
+      "conversation_id": "2070421150145110402",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 75,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://www.youtube.com/c/3blue1brown"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070421150145110402"
+    },
+    {
+      "id": "2070400822798856386",
+      "text": "⚡ PCB design is getting a software engineering upgrade.\n\nMeet tscircuit.\n\nInstead of drawing schematics manually, you build real electronic circuits using TypeScript + React. The framework compiles your code into schematics, PCB layouts, 3D previews, and manufacturing files. https://t.co/CcflnCoZpR",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-26T06:56:36.000Z",
+      "conversation_id": "2070400822798856386",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 90,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/Alacritic_Super/status/2070400822798856386/photo/1",
+        "https://x.com/Alacritic_Super/status/2070400822798856386/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070400822798856386"
+    },
+    {
+      "id": "2070363667829510647",
+      "text": "🔒 Most messaging apps know who you are.\n\nSimpleX Chat is built so they don't.\n\nNo phone number.\nNo email.\nNo usernames.\nNo permanent user IDs.\n\nInstead, every conversation uses temporary message queues and end-to-end encrypted relay servers, making it much harder to correlate https://t.co/jmFBqPjAYY",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-26T04:28:58.000Z",
+      "conversation_id": "2070363667829510647",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 53,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Alacritic_Super/status/2070363667829510647/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070363667829510647"
+    },
+    {
+      "id": "2070339333228527775",
+      "text": "🎙️ NanoMaestro-Realtime: A Tiny Speech Model Built for Real-Time AI\n\nMost voice assistants rely on the cloud.\n\nNanoMaestro-Realtime brings speech recognition to the edge.\n\nAudio\n→ NanoMaestro\n→ Real-Time Transcription\n→ AI Agent\n\nFeatures\n\n✓ Real-Time Speech Recognition\n✓ https://t.co/pcaN9F5zUO",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-26T02:52:16.000Z",
+      "conversation_id": "2070339333228527775",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 55,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Alacritic_Super/status/2070339333228527775/photo/1",
+        "https://x.com/Alacritic_Super/status/2070339333228527775/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070339333228527775"
+    },
+    {
+      "id": "2070200775733809165",
+      "text": "📚 Want to build a strong foundation in Algebra?\n\nHere are some of the best books and free online resources.\n\n📘 Linear Algebra Done Right — Sheldon Axler\n🔗 https://t.co/OPGq0pS5UH\nA modern, proof-based introduction to linear algebra.\n\n📘 Introduction to Linear Algebra — Gilbert",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-25T17:41:42.000Z",
+      "conversation_id": "2070200775733809165",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 83,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://linear.axler.net"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070200775733809165"
+    },
+    {
+      "id": "2070200229929144408",
+      "text": "Complete Robotics Perception Engineer Roadmap 🤖👁️🔥\n\n🧠 STEP 1: Learn Programming &amp; Math Foundations\n✔ Python &amp; C++\n✔ Linear Algebra\n✔ Calculus\n✔ Probability &amp; Statistics\n✔ Data Structures &amp; Algorithms\n\n🛠 Libraries to Learn:\n✔ NumPy\n✔ Eigen\n✔ OpenCV\n\n📷 STEP 2: Learn https://t.co/OoWK6o1F9S",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-25T17:39:31.000Z",
+      "conversation_id": "2070200229929144408",
+      "metrics": {
+        "likes": 29,
+        "retweets": 8,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 704,
+        "bookmarks": 31
+      },
+      "urls": [
+        "https://x.com/Alacritic_Super/status/2070200229929144408/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070200229929144408"
+    },
+    {
+      "id": "2070199046330048979",
+      "text": "🖥️ Want to learn PCB design?\n\nHere are some of the best free resources I've found:\n\n📘 KiCad Documentation\n🔗 https://t.co/eqFpaodqhR\nLearn schematic capture, PCB layout, routing, and manufacturing.\n\n📘 Phil's Lab\n🔗 https://t.co/GvBrZwX1Q8\nHands-on PCB design, STM32, RF, and",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-25T17:34:49.000Z",
+      "conversation_id": "2070199046330048979",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 89,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://docs.kicad.org",
+        "https://www.youtube.com/@PhilsLab"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070199046330048979"
+    },
+    {
+      "id": "2070179090745995264",
+      "text": "Software is infinitely scalable, but hardware is incredibly defensible. Once you build a reliable physical solution for a business, they will almost never replace you.\n\n​Pick up your soldering iron, master a layout tool, and build a moat.\n\n​If you found this valuable, bookmark it",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-25T16:15:31.000Z",
+      "conversation_id": "2070179090745995264",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 37,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070179090745995264"
+    },
+    {
+      "id": "2070177124192043506",
+      "text": "From breadboard chaos to custom PCBs — my hardware journey just leveled up 🔥\n\nGone are the days of messy wires and fragile prototypes. Designing my first proper PCB for an ESP32-powered robotics project taught me more in one week than months of tinkering.\n\nKey lessons:\n- Proper https://t.co/U1XshcdxR9",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-25T16:07:43.000Z",
+      "conversation_id": "2070177124192043506",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 81,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Alacritic_Super/status/2070177124192043506/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070177124192043506"
+    },
+    {
+      "id": "2070099256900517894",
+      "text": "Privacy Laws Around the World\n\nCanada 🇨🇦 \n\nCanada has two federal privacy laws - the Privacy Act, which covers how the federal government handles personal information, and the Personal Information Protection and Electronic Documents Act (PIPEDA), which covers how businesses",
+      "author_id": "769372283131432961",
+      "username": "Alacritic_Super",
+      "name": "Praveen Kumar Verma",
+      "created_at": "2026-06-25T10:58:18.000Z",
+      "conversation_id": "2070099256900517894",
+      "metrics": {
+        "likes": 0,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 67,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Alacritic_Super/status/2070099256900517894"
+    }
+  ]
+}

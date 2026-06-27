@@ -289,3 +289,23 @@ Sources checked June 25:
 - Zuora, "Supercharging Finance Productivity: Zuora AI Expands..." - https://www.zuora.com/resource/60-days-of-zuora-ai/
 - Kognitos, "AI Automation for Real Estate Operations: A 2026 Guide" - https://www.kognitos.com/blog/ai-automation-real-estate-operations-2026/
 - BC Solutions, "Property Management Workflow Automation: Where AI Actually Helps" - https://www.bcsolut.com/resources/property-management-workflow-automation
+
+## 2026-06-26 Heartbeat Market Addendum
+
+The June 26 Morning Brief adds a sharper buyer-language pattern: agents are being sold around measurable outcomes, controlled action scope, and discoverable/trusted capabilities.
+
+Fresh market signals:
+- Salesforce Agentforce Help Agent packages service agents as out-of-the-box knowledge grounding, prepackaged actions, channel deployment, testing, and pay-per-resolution pricing. The important proof pattern is not "agent answers questions"; it is "the agent resolves only when the full issue closes, and escalation/negative feedback breaks the chargeable outcome."
+- OpenAI's Codex work study validates the shift from short prompts to delegated, long-horizon work. Heavy users now run many parallel hours of agent work, including non-developers in legal, finance, recruiting, operations, marketing, and support. The services opportunity is helping non-technical operators decide which tasks can be delegated and which ones need a control record.
+- Salesforce Open Discovery / ARD reframes the next agent problem as discovery, trust, and invocation across platforms. Static manifests, registries, domain ownership, role-based controls, and Agent Fabric-style observe/govern/orchestrate layers are becoming enterprise vocabulary.
+
+Altmark / PM proof implication:
+- Keep the Altmark packet first, but position the workflow as a resolution ledger for sensitive property actions: source row, allowed data/action scope, payment/context gap, proposed resolution, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- "Pay per resolution" maps cleanly to a PM proof KPI: a follow-up is only a completed resolution if the owner-approved next step is logged and the exception leaves the queue; escalations, missing context, disputes, legal-sensitive language, or tenant-risk flags stay non-resolved.
+- Open Discovery / Agent Fabric language supports the sales asset: the buyer is not buying another chatbot; they are buying the registry/control surface that shows which capability was trusted, what it reached, who approved it, and what happened.
+- For PM COI outreach, the strongest bridge is now: "I built the record that lets a property team delegate the first pass without losing control of tenant, ledger, owner, or legal-sensitive decisions."
+
+Sources checked June 26:
+- Salesforce, "Salesforce Launches Agentforce Help Agent That Deploys in Minutes and Only Charges for Resolutions" - https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/
+- OpenAI, "How agents are transforming work" - https://openai.com/index/how-agents-are-transforming-work/
+- Salesforce, "Trusted Agents at Scale: How Open Discovery Is Unifying the Agentic Enterprise" - https://www.salesforce.com/blog/open-discovery-agentic-enterprise/

@@ -72,3 +72,5 @@
 2026-06-19 earnix-aios-insurance-orchestration — Earnix launched AIOS, an insurance-native AI orchestration system for governed decisioning across core insurer workflows.
 
 2026-06-25 salesforce-agentforce-commerce-b2b-buyer-agent — Salesforce released Agentforce Commerce with B2B Buyer Agent GA for procurement orchestration across WhatsApp/SMS plus agentic order management and commerce channel integrations.
+
+2026-06-26 agentforce-360-builder-script-voice-context — Salesforce Agentforce 360 adds Builder, Agent Script controls, Voice, and Intelligent Context for enterprise agent implementation.

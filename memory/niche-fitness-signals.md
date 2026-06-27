@@ -54,3 +54,4 @@ Last reset: 2026-06-01
 2026-06-24 [EMERGING] niche=insurance — Insurance AI coverage continues shifting from pilots toward underwriting, claims, servicing, and finance automation, but today's results did not verify a new actionable change.
 2026-06-24 [EMERGING] niche=enterprise-rag — Enterprise RAG coverage increasingly stresses traceability, connectors, security, and governed knowledge assistants as buyer requirements for 2026.
 2026-06-25 [CONFIRMS] niche=wholesale distribution/B2B commerce — Salesforce Agentforce Commerce made B2B Buyer Agent generally available for procurement orchestration over WhatsApp/SMS with catalog, inventory, contract pricing, and ordering context.
+2026-06-26 [EMERGING] niche=Salesforce Agentforce — Agentforce 360 adds Builder, Agent Script, Voice, and Intelligent Context, confirming richer enterprise agent implementation surfaces for consulting work.

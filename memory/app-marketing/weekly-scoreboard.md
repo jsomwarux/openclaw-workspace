@@ -177,6 +177,34 @@ Every weekly review ends with exactly one of these:
 - `MEASURE_FIRST`: live work shipped and the next move is source-tag/reporting/indexing measurement before more build or content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-06-19
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-06-19 to 2026-06-25 (0 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 1
+- Web depth: active users 1, pageviews 1, events 4
+- Best item: glow-index GA4 web traffic 2026-06-19 to 2026-06-25 (1 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-19 to 2026-06-25 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 19
+- Web depth: active users 7, pageviews 72, events 273
+- Best item: nash-satoshi GA4 web traffic 2026-06-19 to 2026-06-25 (19 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-06-19 to 2026-06-25 (19 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-06-18
 
 ### glow-index / search_console
@@ -1170,12 +1198,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 41
+- Posts/results logged: 42
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 41
+- Posts/results logged: 42
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1689,7 +1717,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-06-25_
+_Last updated: 2026-06-26_
 
 <!-- METRICS_SUMMARY_END -->
 

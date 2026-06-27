@@ -63,7 +63,7 @@
 | client-proof-capture | skills/client-proof-capture/SKILL.md | agents/autoresearch/checklists/client-proof-capture.md | pending | — | — | 2026-05-31 |
 | ai-context-os | skills/ai-context-os/SKILL.md | agents/autoresearch/checklists/ai-context-os.md | pending | — | — | 2026-05-31 |
 | linkedin-corpus-agent | agents/linkedin-corpus/AGENT.md | agents/autoresearch/checklists/linkedin-corpus-agent.md | pending | — | — | 2026-05-31 |
-| client-proof-engine | agents/client-proof-engine/AGENT.md | agents/autoresearch/checklists/client-proof-engine.md | pending | — | — | 2026-05-31 |
+| client-proof-engine | agents/client-proof-engine/AGENT.md | agents/autoresearch/checklists/client-proof-engine.md | stable | 1.000 | 2026-06-26 | 2026-05-31 |
 | plan-review-pack | skills/plan-review-pack/SKILL.md | agents/autoresearch/checklists/plan-review-pack.md | pending | — | — | 2026-06-06 |
 | ui-clone | skills/ui-clone/SKILL.md | agents/autoresearch/checklists/ui-clone.md | pending | — | — | 2026-06-07 |
 | workflow-strategist | agents/workflow-strategist/AGENT.md | agents/autoresearch/checklists/workflow-strategist.md | stable | 1.000 | 2026-06-24 | 2026-06-07 |

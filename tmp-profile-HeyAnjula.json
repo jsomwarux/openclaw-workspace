@@ -1,0 +1,249 @@
+{
+  "user": {
+    "created_at": "2026-05-23T10:24:15.000Z",
+    "description": "Making AI feel unfair\nOpen for collaboration",
+    "id": "2058131623393304576",
+    "name": "Anjula Dwivedi",
+    "public_metrics": {
+      "followers_count": 206,
+      "following_count": 20,
+      "like_count": 81,
+      "listed_count": 1,
+      "media_count": 87,
+      "tweet_count": 320
+    },
+    "username": "HeyAnjula"
+  },
+  "tweets": [
+    {
+      "id": "2070443438001250444",
+      "text": "lawyer loses a week on a 500-page contract.\nAn accountant, four days on 200 invoices.\nA researcher, two weeks on 50 PDFs.\nAll copying and pasting.\nMinerU changes everything.\nFree and open-source tool that converts any PDF, Word, Excel, or scanned image into clean Markdown in https://t.co/ltFru9M27K",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-26T09:45:57.000Z",
+      "conversation_id": "2070443438001250444",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070443438001250444/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070443438001250444"
+    },
+    {
+      "id": "2070442336216322195",
+      "text": "🚨 99% of people are wasting Claude.\n\nIf you're still using Claude like ChatGPT, you're leaving money on the table.\n\nThese 8 prompts can turn a simple idea into a real business faster than most people build a website.\nSave this before it disappears. 👇 https://t.co/pnqwqL30dU",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-26T09:41:34.000Z",
+      "conversation_id": "2070442336216322195",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070442336216322195/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070442336216322195"
+    },
+    {
+      "id": "2070437325856010599",
+      "text": "99% of people use Claude like a chatbot.\n\nPower users use it like an entire company.\n\nThat's the difference.\n\nHere's the framework that unlocks Claude's real potential: 🧵\n\n1. Stop Prompt Engineering. Start Context Engineering.\n\nDon't just ask what you want.\n\nTell Claude: • Who https://t.co/oNTPTmoWeV",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-26T09:21:40.000Z",
+      "conversation_id": "2070437325856010599",
+      "metrics": {
+        "likes": 2,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 74,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070437325856010599/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070437325856010599"
+    },
+    {
+      "id": "2070416892909797460",
+      "text": "99% of developers are using Claude Code wrong.\n\nIt fixes itself in 90 seconds. Here's exactly how:\n\n1. Getting Started\n→ One command installs it. No Node.js needed.\n→ Run /init, and it builds your first CLAUDE. md.\n→ That's the whole setup.\n\n2. CLAUDE. md\n→ This file is https://t.co/ONv4RYgRqb",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-26T08:00:28.000Z",
+      "conversation_id": "2070416892909797460",
+      "metrics": {
+        "likes": 2,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 204,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070416892909797460/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070416892909797460"
+    },
+    {
+      "id": "2070373287579009369",
+      "text": "Apple fired Steve Jobs.\n\nHe walked into MIT and gave the most honest 60-minute business lecture ever recorded.\n\nNo PR filter. No image to protect. Just raw thinking from the guy who built Apple once — and was about to do it again.\n\nWatch this instead of Netflix tonight.\nBookmark https://t.co/yfVfhQM9sj",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-26T05:07:12.000Z",
+      "conversation_id": "2070373287579009369",
+      "metrics": {
+        "likes": 6,
+        "retweets": 6,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 418,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070373287579009369/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070373287579009369"
+    },
+    {
+      "id": "2070372212037787887",
+      "text": "Loop Engineering is the next step after prompt engineering.\n\nMost people still use Claude Code, Codex, Cursor, or Grok like a chat box:\n\nPrompt.\nWait.\nCopy.\nFix.\nPrompt again.\n\nThis repo shows the next step:\n\nYou stop prompting the agent.\n\nYou design the loop that prompts the https://t.co/l3vb61kLyu",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-26T05:02:55.000Z",
+      "conversation_id": "2070372212037787887",
+      "metrics": {
+        "likes": 11,
+        "retweets": 6,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 529,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070372212037787887/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070372212037787887"
+    },
+    {
+      "id": "2070213110548578663",
+      "text": "INSTEAD OF WATCHING NETFLIX TONIGHT.   \n\nSpend 1 hour with this.   \n\nClaude AI FULL COURSE that teaches you how to BUILD and AUTOMATE anything. \n\nThe people who watch this tonight will wake up tomorrow with a new skill.\n\nWatch it and Bookmark it now https://t.co/X6iYt7z4Vl",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-25T18:30:42.000Z",
+      "conversation_id": "2070213110548578663",
+      "metrics": {
+        "likes": 11,
+        "retweets": 6,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 518,
+        "bookmarks": 7
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070213110548578663/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070213110548578663"
+    },
+    {
+      "id": "2070207497588310192",
+      "text": "🚨BREAKING: Someone just solved Claude Code's biggest problem.\n\nIt's called Claude-Mem and it gives Claude persistent memory across sessions.\n\n- You can use up to 95% fewer tokens each time.\n- Make 20 times more tool calls before reaching limits.\n\n100% Opensource. https://t.co/3xMYOgu7e4",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-25T18:08:24.000Z",
+      "conversation_id": "2070207497588310192",
+      "metrics": {
+        "likes": 3,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 64,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070207497588310192/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070207497588310192"
+    },
+    {
+      "id": "2070190927717777715",
+      "text": "Most people will spend 60 minutes scrolling tonight.\n\nSpend that hour on this Cambridge lecture by Demis Hassabis instead.\n\nIn just 1 hour, you'll understand more about where AI is heading than 99% of people will learn this year.\n\nBookmark this. Future you will thank you. https://t.co/3waYLA1oB6",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-25T17:02:34.000Z",
+      "conversation_id": "2070190927717777715",
+      "metrics": {
+        "likes": 6,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 351,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070190927717777715/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070190927717777715"
+    },
+    {
+      "id": "2070132115388387404",
+      "text": "Most companies say they're \"using AI.\"\n\nAlmost none can prove it's working.\n\nThat gap is the most interesting story in tech right now. 🧵 https://t.co/8oRBYnbfp0",
+      "author_id": "2058131623393304576",
+      "username": "HeyAnjula",
+      "name": "Anjula Dwivedi",
+      "created_at": "2026-06-25T13:08:52.000Z",
+      "conversation_id": "2070132115388387404",
+      "metrics": {
+        "likes": 6,
+        "retweets": 4,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 409,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/HeyAnjula/status/2070132115388387404/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HeyAnjula/status/2070132115388387404"
+    }
+  ]
+}

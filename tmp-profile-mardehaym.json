@@ -1,0 +1,244 @@
+{
+  "user": {
+    "created_at": "2011-06-29T07:34:26.000Z",
+    "description": "Husband. Father. Pilot. Founder @LimestoneHQ → AI-native embedded engineering. $14M ARR on referrals alone.\n\nCTOs bring us to their next company.",
+    "id": "326024615",
+    "name": "Mark Ajzenstadt",
+    "public_metrics": {
+      "followers_count": 893,
+      "following_count": 378,
+      "like_count": 846,
+      "listed_count": 9,
+      "media_count": 64,
+      "tweet_count": 507
+    },
+    "username": "mardehaym"
+  },
+  "tweets": [
+    {
+      "id": "2070235033961705915",
+      "text": "PE firms don't have an engineering problem. They have a hiring problem money can't fix.\n\nMost execs don't last to exit. The right engineers are even rarer. Try searching for people who actually understand HIPAA, KYC, and compliance workflows. \n\nGood luck. \n\nEvery operating",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-25T19:57:49.000Z",
+      "conversation_id": "2070235033961705915",
+      "metrics": {
+        "likes": 16,
+        "retweets": 12,
+        "replies": 4,
+        "quotes": 1,
+        "impressions": 7936,
+        "bookmarks": 5
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2070235033961705915"
+    },
+    {
+      "id": "2070052984231227785",
+      "text": "gstack is vibe coded slop https://t.co/c8uLlOIEJg",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-25T07:54:25.000Z",
+      "conversation_id": "2070052984231227785",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 265,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/adamsilverman/status/2069553390951293244"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2070052984231227785"
+    },
+    {
+      "id": "2070051109490594046",
+      "text": "And the thinking.\n\nOR.. https://t.co/bRiIWvR8hv",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-25T07:46:58.000Z",
+      "conversation_id": "2070051109490594046",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 161,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/naval/status/2069994029593543005"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2070051109490594046"
+    },
+    {
+      "id": "2070048819899777467",
+      "text": "Claude Tag is turning your company's context into vendor lock-in and it looks like convenience until you try to cancel.\n\nYou've sat in that meeting. Your team floats switching providers. Nobody says no, but nobody moves either, because so much of how your org works lives inside https://t.co/w1VzkNcTip",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-25T07:37:52.000Z",
+      "conversation_id": "2070048819899777467",
+      "metrics": {
+        "likes": 28,
+        "retweets": 17,
+        "replies": 9,
+        "quotes": 2,
+        "impressions": 5239,
+        "bookmarks": 9
+      },
+      "urls": [
+        "https://twitter.com/claudeai/status/2069468693017268244"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2070048819899777467"
+    },
+    {
+      "id": "2069852455899111480",
+      "text": "Something is deeply wrong with AI consulting and everyone is just... fine with it?\n\nA Big Four firm submitted a government report this year.\n\nAI-generated content. Fabricated court quotes. \n\nReferences to papers that don't exist. Nobody reviewed it. AU$440,000 contract.\n\nThese",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-24T18:37:36.000Z",
+      "conversation_id": "2069852455899111480",
+      "metrics": {
+        "likes": 29,
+        "retweets": 13,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 3567,
+        "bookmarks": 5
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2069852455899111480"
+    },
+    {
+      "id": "2069804428731805890",
+      "text": "Your consulting firm sells you AI transformation while their entire revenue model depends on you never transforming.\n\nThink about it. They live on headcount. AI cuts headcount. Every time you get more efficient, they lose billables. \n\nMDs are rewarded for selling deals, not https://t.co/faf7drctdn",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-24T15:26:45.000Z",
+      "conversation_id": "2069804428731805890",
+      "metrics": {
+        "likes": 30,
+        "retweets": 14,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 4165,
+        "bookmarks": 11
+      },
+      "urls": [
+        "https://x.com/mardehaym/status/2069804428731805890/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2069804428731805890"
+    },
+    {
+      "id": "2069760639384375712",
+      "text": "A Cursor AI bot wiped a production database in 9 seconds.\n\nIt hit a credential mismatch on staging. Instead of stopping, it scanned the codebase, grabbed an API token from an unrelated file, and fired off a single GraphQL mutation. \n\nAll production data and backups, gone. The https://t.co/O2A9x5DFHn",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-24T12:32:45.000Z",
+      "conversation_id": "2069760639384375712",
+      "metrics": {
+        "likes": 29,
+        "retweets": 11,
+        "replies": 10,
+        "quotes": 0,
+        "impressions": 3207,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/mardehaym/status/2069760639384375712/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2069760639384375712"
+    },
+    {
+      "id": "2069759663139156417",
+      "text": "A Cursor AI bot wiped a production database in 9 seconds.\n\nIt hit a credential mismatch on staging. Instead of stopping, it scanned the codebase, grabbed an API token from an unrelated file, and fired off a single GraphQL mutation. All production data and backups, gone. \n\nThe https://t.co/p1RR5yZ7y4",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-24T12:28:52.000Z",
+      "conversation_id": "2069759663139156417",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 13,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/mardehaym/status/2069759663139156417/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2069759663139156417"
+    },
+    {
+      "id": "2069740474777137608",
+      "text": "AWS CEO Matt Garman says cutting junior devs for AI is \"the dumbest thing I've ever heard.\"\n\nHe's half right.\n\nGitLab just cut 14% of staff and exited 22 countries to bet on agentic. For GitLab, that bet makes sense. Remote-first org with high engineering standards. Massive",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-24T11:12:37.000Z",
+      "conversation_id": "2069740474777137608",
+      "metrics": {
+        "likes": 28,
+        "retweets": 11,
+        "replies": 5,
+        "quotes": 1,
+        "impressions": 11500,
+        "bookmarks": 6
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2069740474777137608"
+    },
+    {
+      "id": "2069521987718840522",
+      "text": "Claude went down 3 times in 22 days. Government kept access. You didn't.\n\nSomewhere today a senior engineer making $180K was sitting at his desk refreshing https://t.co/K94YDHa4qI like it's a hospital waiting room. \n\nCan't open a PR. Can't debug a function. Can't remember how a https://t.co/rSpa5Ac5P6",
+      "author_id": "326024615",
+      "username": "mardehaym",
+      "name": "Mark Ajzenstadt",
+      "created_at": "2026-06-23T20:44:26.000Z",
+      "conversation_id": "2069521987718840522",
+      "metrics": {
+        "likes": 42,
+        "retweets": 15,
+        "replies": 5,
+        "quotes": 4,
+        "impressions": 41384,
+        "bookmarks": 14
+      },
+      "urls": [
+        "http://status.anthropic.com",
+        "https://twitter.com/jackfriks/status/2069427487298232725"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/mardehaym/status/2069521987718840522"
+    }
+  ]
+}

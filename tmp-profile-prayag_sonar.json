@@ -1,0 +1,239 @@
+{
+  "user": {
+    "created_at": "2010-09-18T03:24:02.000Z",
+    "description": "Building: Full Stack Apps | AI Agents 🤖 |\nSharing 3T - Tech, Thoughts, Trends. DM for collab 📩",
+    "id": "192075751",
+    "name": "prayag sonar",
+    "public_metrics": {
+      "followers_count": 12451,
+      "following_count": 2227,
+      "like_count": 31178,
+      "listed_count": 31,
+      "media_count": 2895,
+      "tweet_count": 67283
+    },
+    "username": "prayag_sonar"
+  },
+  "tweets": [
+    {
+      "id": "2070439262705832006",
+      "text": "🚨 You need to know these AI hardware terms in 2026.\n\nNVIDIA and Apple often use different names for the same concepts.\n\n⚡ CUDA Cores → GPU ALUs (general computing &amp; graphics)\n\n🧠 Tensor Cores → Neural Accelerators + AMX (fast AI matrix operations)\n\n💻 CUDA → Metal + MPS +",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-26T09:29:21.000Z",
+      "conversation_id": "2070439262705832006",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 34,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2070439262705832006"
+    },
+    {
+      "id": "2070387744816439383",
+      "text": "Soon: PR from AI companies cant be merged until Washington says its okay:) https://t.co/v5GZ2gyT2Y",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-26T06:04:38.000Z",
+      "conversation_id": "2070387744816439383",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 35,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/prayag_sonar/status/2070387744816439383/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2070387744816439383"
+    },
+    {
+      "id": "2070341301980090796",
+      "text": "ChatGPT that can pass the ‘Humanity’s Last Exam” but can’t count the number of R’s in ‘strawberry https://t.co/TdOuj52QPo",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-26T03:00:06.000Z",
+      "conversation_id": "2070341301980090796",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 46,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/prayag_sonar/status/2070341301980090796/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2070341301980090796"
+    },
+    {
+      "id": "2070200278494912830",
+      "text": "If I had 6 months to become an AI Infrastructure Engineer, I would follow this roadmap:\n\n1. Linux + Networking (OS, TCP/IP, HTTP, GPUs)\n\n2. Python + Backend (AsyncIO, FastAPI, concurrency, queues)\n\n3. GPU Fundamentals (CUDA, VRAM, batching, quantization)\n\n4. LLM Inference (vLLM,",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-25T17:39:43.000Z",
+      "conversation_id": "2070200278494912830",
+      "metrics": {
+        "likes": 2,
+        "retweets": 1,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 140,
+        "bookmarks": 3
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2070200278494912830"
+    },
+    {
+      "id": "2070147964354592782",
+      "text": "\"I will learn AI later,\" said every developer who is now struggling to find a job.\n\n2024 was the warning. \n2025 was the shift. \n2026 is the cutoff.",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-25T14:11:50.000Z",
+      "conversation_id": "2070147964354592782",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 77,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2070147964354592782"
+    },
+    {
+      "id": "2070094510143774888",
+      "text": "WhatsApp after 3 months https://t.co/1BX7TXD4DS",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-25T10:39:26.000Z",
+      "conversation_id": "2070094510143774888",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 211,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/prayag_sonar/status/2070094510143774888/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2070094510143774888"
+    },
+    {
+      "id": "2070025322385576189",
+      "text": "🤖 Want to train a local LLM? Learn techniques first, frameworks second.\n\n🧠 Techniques (How to train)\n\n• LoRA (fast &amp; efficient) ⭐⭐\n• QLoRA (low VRAM) ⭐⭐\n• SFT (teach new skills) ⭐⭐⭐\n• DPO (align preferences) ⭐⭐⭐⭐\n• GRPO (reasoning models) ⭐⭐⭐⭐⭐\n• Continued",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-25T06:04:30.000Z",
+      "conversation_id": "2070025322385576189",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 145,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2070025322385576189"
+    },
+    {
+      "id": "2069981084583133452",
+      "text": "Most thoughtful App icons? https://t.co/hVnhipOS9A",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-25T03:08:43.000Z",
+      "conversation_id": "2069981084583133452",
+      "metrics": {
+        "likes": 11,
+        "retweets": 1,
+        "replies": 9,
+        "quotes": 1,
+        "impressions": 393,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/prayag_sonar/status/2069981084583133452/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2069981084583133452"
+    },
+    {
+      "id": "2069831856523247667",
+      "text": "🚨 The best way to learn or Use AI in 2026: \n\n1. Pick a problem you have. \n2. Tell Claude Code to build a solution. \n3. Read every line it writes. \n4. Ask it, “Why did you do it this way?” \n5. Refactor it yourself. \n6. Ship it. Not a course. \n\nNot a book. Six steps. Repeat.🔁",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-24T17:15:44.000Z",
+      "conversation_id": "2069831856523247667",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 92,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2069831856523247667"
+    },
+    {
+      "id": "2069797537477955952",
+      "text": "bro is back in the poor people club https://t.co/EERcQcOENw",
+      "author_id": "192075751",
+      "username": "prayag_sonar",
+      "name": "prayag sonar",
+      "created_at": "2026-06-24T14:59:22.000Z",
+      "conversation_id": "2069797537477955952",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 69,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/bladeofthes/status/2069159362682114087"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/prayag_sonar/status/2069797537477955952"
+    }
+  ]
+}

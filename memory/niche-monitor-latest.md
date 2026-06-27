@@ -1,3 +1,3 @@
-**Last updated:** 2026-06-25 09:00 AM EST
+**Last updated:** 2026-06-26 09:02 AM EDT
 
-🟠 **Salesforce releases Agentforce Commerce** — Salesforce released Agentforce Commerce on June 24 with Shopper Agent, B2B Buyer Agent, Merchant Agent, and Agentic Order Management generally available, plus ChatGPT/Google/Gemini commerce integrations arriving in July/summer; the B2B Buyer Agent directly targets procurement via WhatsApp/SMS with catalog, inventory, contract pricing, and order context. (https://www.salesforce.com/news/stories/agentforce-commerce-announcement/).
+🟠 **Salesforce Agentforce 360 release expands builder, scripting, voice, and enterprise context controls** — Salesforce says the Agentforce 360 release adds Agentforce Builder, Agent Script deterministic behavior controls, Agentforce Voice, and Intelligent Context for unstructured enterprise data, a material capability update for JT's Agentforce positioning. (https://www.salesforce.com/agentforce/what-is-new/)

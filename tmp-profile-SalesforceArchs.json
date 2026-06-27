@@ -1,0 +1,212 @@
+{
+  "user": {
+    "created_at": "2019-06-30T22:55:36.000Z",
+    "description": "Architect the Agentic Enterprise. Stay up to date with news and resources for Salesforce Architects.",
+    "id": "1145465939275595776",
+    "name": "Salesforce Architects",
+    "public_metrics": {
+      "followers_count": 12999,
+      "following_count": 83,
+      "like_count": 1187,
+      "listed_count": 115,
+      "media_count": 364,
+      "tweet_count": 1043
+    },
+    "username": "SalesforceArchs"
+  },
+  "tweets": [
+    {
+      "id": "2070220609284383206",
+      "text": "Missed it live? The latest Think Like an Architect session is now available on demand. ▶️ \n\nExperts break down the technical complexities of securely exposing enterprise data to a third-party AI agent. Watch as they map out the integration patterns and debate exactly when to rely https://t.co/k6aA4sRC8N",
+      "author_id": "1145465939275595776",
+      "username": "SalesforceArchs",
+      "name": "Salesforce Architects",
+      "created_at": "2026-06-25T19:00:30.000Z",
+      "conversation_id": "2070220609284383206",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 320,
+        "bookmarks": 5
+      },
+      "urls": [
+        "https://x.com/SalesforceArchs/status/2070220609284383206/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceArchs/status/2070220609284383206"
+    },
+    {
+      "id": "2070167689889305015",
+      "text": "Built on years of enterprise architecture experience, Nadina D. Lisbon, Certified Technical Architect, wrote Make Your Existing Automation Agent-Ready to help @salesforce Architects move beyond theory and apply practical patterns for extending existing automation into agentic https://t.co/QcbBhDfiwC",
+      "author_id": "1145465939275595776",
+      "username": "SalesforceArchs",
+      "name": "Salesforce Architects",
+      "created_at": "2026-06-25T15:30:13.000Z",
+      "conversation_id": "2070167689889305015",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 349,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/SalesforceArchs/status/2070167689889305015/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceArchs/status/2070167689889305015"
+    },
+    {
+      "id": "2069866470058688529",
+      "text": "What is @salesforce Headless 360, and how do you connect your first MCP client? 🔌\n\nWatch as @NavaForce, Principal Architect Evangelist, explains the four-layer architecture behind Headless 360 and walks through a live Slack-to-Salesforce MCP integration demo.\n\nLearn the https://t.co/w4zQNCijJl",
+      "author_id": "1145465939275595776",
+      "username": "SalesforceArchs",
+      "name": "Salesforce Architects",
+      "created_at": "2026-06-24T19:33:17.000Z",
+      "conversation_id": "2069866470058688529",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 336,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/SalesforceArchs/status/2069866470058688529/photo/1"
+      ],
+      "mentions": [
+        "salesforce",
+        "NavaForce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceArchs/status/2069866470058688529"
+    },
+    {
+      "id": "2069809068194120111",
+      "text": "@salesforce Certified Technical Architect (CTA) preparation is more than studying for an exam. It’s training your architectural thinking. 💭\n\nIn this new blog, Lilith Van Biesen, Principal Architect Evangelist, shares how the following Salesforce Architecture Program resources",
+      "author_id": "1145465939275595776",
+      "username": "SalesforceArchs",
+      "name": "Salesforce Architects",
+      "created_at": "2026-06-24T15:45:11.000Z",
+      "conversation_id": "2069809068194120111",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 394,
+        "bookmarks": 5
+      },
+      "urls": [],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceArchs/status/2069809068194120111"
+    },
+    {
+      "id": "2069495793757585714",
+      "text": "When a third-party AI agent becomes your sales channel, who owns the customer? 👔\n\nA clothing company wants to sell through an AI-powered shopping platform. The platform owns the shopper relationship, manages transactions, and expects real-time access to products, inventory, https://t.co/nIbROuY6uK",
+      "author_id": "1145465939275595776",
+      "username": "SalesforceArchs",
+      "name": "Salesforce Architects",
+      "created_at": "2026-06-23T19:00:21.000Z",
+      "conversation_id": "2069495793757585714",
+      "metrics": {
+        "likes": 5,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 469,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/SalesforceArchs/status/2069495793757585714/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceArchs/status/2069495793757585714"
+    },
+    {
+      "id": "2069460487109030162",
+      "text": "Your new Agentforce-powered assistant has arrived on the @salesforce Architecture Center. 🤖\n\nAsk architecture questions in natural language and discover trusted Salesforce guidance across integrations, security, data, Agentforce, Salesforce Headless 360, Data 360, governance, https://t.co/nIMHRGHyYC",
+      "author_id": "1145465939275595776",
+      "username": "SalesforceArchs",
+      "name": "Salesforce Architects",
+      "created_at": "2026-06-23T16:40:03.000Z",
+      "conversation_id": "2069460487109030162",
+      "metrics": {
+        "likes": 11,
+        "retweets": 2,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 845,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/SalesforceArchs/status/2069460487109030162/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceArchs/status/2069460487109030162"
+    },
+    {
+      "id": "2069103222686412819",
+      "text": "How do you give a cross-platform AI agent real-time access to customer data through @salesforce Headless 360, while maintaining governance, security, and control? 🔒\n\nIn this new blog, Scott Ratliff, Principal Architect Evangelist, walks through the architectural decisions and",
+      "author_id": "1145465939275595776",
+      "username": "SalesforceArchs",
+      "name": "Salesforce Architects",
+      "created_at": "2026-06-22T17:00:25.000Z",
+      "conversation_id": "2069103222686412819",
+      "metrics": {
+        "likes": 5,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 501,
+        "bookmarks": 3
+      },
+      "urls": [],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceArchs/status/2069103222686412819"
+    },
+    {
+      "id": "2068001001534009728",
+      "text": "Join us on June 25 for Think Like an Architect: How to Decide between API and MCP 💭\n\nFollow along as experts apply the What/How/Why approach to decide when REST APIs are the right integration pattern and when Salesforce-hosted MCP servers are the better fit for a @salesforce https://t.co/1ZPF7ciMxB",
+      "author_id": "1145465939275595776",
+      "username": "SalesforceArchs",
+      "name": "Salesforce Architects",
+      "created_at": "2026-06-19T16:00:35.000Z",
+      "conversation_id": "2068001001534009728",
+      "metrics": {
+        "likes": 7,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 704,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://x.com/SalesforceArchs/status/2068001001534009728/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceArchs/status/2068001001534009728"
+    }
+  ]
+}

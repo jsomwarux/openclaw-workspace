@@ -1,0 +1,115 @@
+{
+  "user": {
+    "created_at": "2017-08-22T20:04:18.000Z",
+    "description": "News and insights from Salesforce. Please send media requests to pr@salesforce.com",
+    "id": "900086244499111936",
+    "name": "Salesforce News & Insights",
+    "public_metrics": {
+      "followers_count": 23741,
+      "following_count": 896,
+      "like_count": 369,
+      "listed_count": 181,
+      "media_count": 2175,
+      "tweet_count": 4736
+    },
+    "username": "SalesforceNews"
+  },
+  "tweets": [
+    {
+      "id": "2070134729563672781",
+      "text": "Salesforce is launching Agentforce Help Agent, an autonomous service agent that’s deployable in minutes. \n\nBuilt on the Agentforce 360 Platform, the Help Agent is designed to help enterprises resolve their customer issues from start to finish, on day one. \nhttps://t.co/5zsu02OI1q https://t.co/TKAyOC1CiI",
+      "author_id": "900086244499111936",
+      "username": "SalesforceNews",
+      "name": "Salesforce News & Insights",
+      "created_at": "2026-06-25T13:19:15.000Z",
+      "conversation_id": "2070134729563672781",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 209,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/",
+        "https://x.com/SalesforceNews/status/2070134729563672781/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceNews/status/2070134729563672781"
+    },
+    {
+      "id": "2069798446161084491",
+      "text": "Struggling to make a doctor’s appointment or fill a prescription is a widespread issue, according to Salesforce research.\n\nA survey found that as agentic AI moves deeper into care delivery, patients are not opposed to it; they are setting clear terms.\n\nhttps://t.co/fNIUlXSMrv https://t.co/pO7Cu70WPp",
+      "author_id": "900086244499111936",
+      "username": "SalesforceNews",
+      "name": "Salesforce News & Insights",
+      "created_at": "2026-06-24T15:02:59.000Z",
+      "conversation_id": "2069798446161084491",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 180,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://www.salesforce.com/news/stories/patients-trust-doctors-agents-over-public-ai/",
+        "https://x.com/SalesforceNews/status/2069798446161084491/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceNews/status/2069798446161084491"
+    },
+    {
+      "id": "2069770999873073337",
+      "text": "Today, shoppers interact with AI-powered assistants before they ever reach a traditional search bar. \n\nIt's the era of agentic commerce, and Salesforces new release from Agentforce Commerce equips sellers with a workforce of ready-to-deploy agents.  \n\nhttps://t.co/3gZRwKlp59 https://t.co/JurnIXbgfy",
+      "author_id": "900086244499111936",
+      "username": "SalesforceNews",
+      "name": "Salesforce News & Insights",
+      "created_at": "2026-06-24T13:13:55.000Z",
+      "conversation_id": "2069770999873073337",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 218,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://www.salesforce.com/news/stories/agentforce-commerce-announcement/",
+        "https://x.com/SalesforceNews/status/2069770999873073337/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceNews/status/2069770999873073337"
+    },
+    {
+      "id": "2069436461292614099",
+      "text": "Headlines are predicting that AI will reduce the need for middle management positions. A new survey from Salesforce says otherwise. 78% of managers agree that they are personally responsible for ensuring their team successfully adopts new technologies. \n\nhttps://t.co/xCJ4YfiQSx https://t.co/8oJiJzaXlG",
+      "author_id": "900086244499111936",
+      "username": "SalesforceNews",
+      "name": "Salesforce News & Insights",
+      "created_at": "2026-06-23T15:04:35.000Z",
+      "conversation_id": "2069436461292614099",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 257,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://www.salesforce.com/news/stories/middle-managers-vital-age-of-ai/",
+        "https://x.com/SalesforceNews/status/2069436461292614099/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceNews/status/2069436461292614099"
+    }
+  ]
+}

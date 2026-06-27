@@ -1,0 +1,249 @@
+{
+  "user": {
+    "created_at": "2010-05-20T11:06:55.000Z",
+    "description": "AI Strategist & Educator | Founder Of H&H| Community: 90k IG | 70k LinkedIn. | Open for brand partnerships. Email - ritzswag@gmail.com",
+    "id": "146000731",
+    "name": "Rituraj",
+    "public_metrics": {
+      "followers_count": 63165,
+      "following_count": 2552,
+      "like_count": 2216,
+      "listed_count": 1690,
+      "media_count": 9399,
+      "tweet_count": 86144
+    },
+    "username": "RituWithAI"
+  },
+  "tweets": [
+    {
+      "id": "2070436684458832153",
+      "text": "We are optimizing our local GPU clusters while letting closed cloud engines write unverified backend code that handles our enterprise environment keys.\n\nThe Anthropic-Cybersecurity-Skills library brings 754 production-grade security playbooks directly to your local terminal. https://t.co/cGSkWmcPzD",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-26T09:19:07.000Z",
+      "conversation_id": "2070436684458832153",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 74,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/RituWithAI/status/2070373716492710112"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2070436684458832153"
+    },
+    {
+      "id": "2070373716492710112",
+      "text": "🚨 Someone just gave every AI coding agent a complete cybersecurity brain.\n\n754 skills. 26 security domains. 5 major frameworks. One install.\n\nIt's called Anthropic-Cybersecurity-Skills. 754 structured cybersecurity skills for AI agents — mapped to MITRE ATT&amp;CK, NIST CSF 2.0, https://t.co/Ji2SMDbr5j",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-26T05:08:54.000Z",
+      "conversation_id": "2070373716492710112",
+      "metrics": {
+        "likes": 7,
+        "retweets": 6,
+        "replies": 5,
+        "quotes": 2,
+        "impressions": 207,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://x.com/RituWithAI/status/2070373716492710112/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2070373716492710112"
+    },
+    {
+      "id": "2070231507751588162",
+      "text": "The relentless exodus of Gemini's core training and coding leads proves that proprietary web APIs are built on shifting sand. True architectural sovereignty means routing your primary processing loops to an unmetered Qwen 35B running locally on your own hardware.\n  \nStop letting https://t.co/IqZSASA6gB",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-25T19:43:49.000Z",
+      "conversation_id": "2070231507751588162",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 162,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/RituWithAI/status/2070203987996139872"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2070231507751588162"
+    },
+    {
+      "id": "2070203987996139872",
+      "text": "Google just lost the person who invented modern AI.\n\nThen two more key researchers followed. In the same week.\n\nThe company that created the Transformer architecture — the mathematical foundation that powers ChatGPT, Claude, Gemini, and every other AI model you've ever used — is https://t.co/d8wkaLOrkR",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-25T17:54:27.000Z",
+      "conversation_id": "2070203987996139872",
+      "metrics": {
+        "likes": 6,
+        "retweets": 6,
+        "replies": 2,
+        "quotes": 1,
+        "impressions": 539,
+        "bookmarks": 10
+      },
+      "urls": [
+        "https://x.com/RituWithAI/status/2070203987996139872/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2070203987996139872"
+    },
+    {
+      "id": "2070202382718570861",
+      "text": "High-fidelity 4K rendering at 30-second lengths usually drains massive compute budgets or demands heavy enterprise commitments. \n\nBuzzy’s surprise 60% discount completely disrupts this margin layout. Individual builders can now execute commercial-grade cinematic hooks with the https://t.co/ctzFb5wCwk",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-25T17:48:05.000Z",
+      "conversation_id": "2070202382718570861",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 165,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://twitter.com/Buzzy_now_AI/status/2070168538351075547"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2070202382718570861"
+    },
+    {
+      "id": "2070045001787330915",
+      "text": "Someone built the document management system that every household and small business has needed for decades.\n\nIt's called Paperless-ngx. 42.4K GitHub stars. A completely free, self-hosted engine that processes, tags, and organizes your physical records using local, air-gapped AI https://t.co/4NZ4cJDsfP",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-25T07:22:42.000Z",
+      "conversation_id": "2070045001787330915",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 220,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/RituWithAI/status/2070014950748360851"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2070045001787330915"
+    },
+    {
+      "id": "2070014950748360851",
+      "text": "🚨 Someone built the document management system that every household and small business has needed for decades.\n\n42,400 GitHub stars. 2,800 forks. And it replaces something most people pay $20-$50 per month for with something that costs nothing.\n\nIt's called Paperless-ngx. And https://t.co/gcvyqnTkZC",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-25T05:23:17.000Z",
+      "conversation_id": "2070014950748360851",
+      "metrics": {
+        "likes": 6,
+        "retweets": 6,
+        "replies": 2,
+        "quotes": 1,
+        "impressions": 543,
+        "bookmarks": 7
+      },
+      "urls": [
+        "https://x.com/RituWithAI/status/2070014950748360851/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2070014950748360851"
+    },
+    {
+      "id": "2069860713464783077",
+      "text": "RIP THE AI MONOPOLY. \n\nSakana AI just killed vendor lock-in by launching Fugu Ultra—a single model API that acts as an autonomous multi-agent swarm, pooling together swappable endpoints to match frontier performance with zero export control risk.\n\nCopy these 8 frameworks to build https://t.co/eWmgZ2d9Gn",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-24T19:10:24.000Z",
+      "conversation_id": "2069860713464783077",
+      "metrics": {
+        "likes": 1,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 298,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/RituWithAI/status/2069843880951038103"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2069860713464783077"
+    },
+    {
+      "id": "2069843880951038103",
+      "text": "RIP THE AI MONOPOLY⚠️\n\nSAKANA AI JUST KILLED VENDOR LOCK-IN.\nNO MORE 100% DEPENDENCE ON OPENAI.\nNO MORE FORCED PRICE HIKES.\n\nCopy these 5 prompts to escape the ecosystem trap and build your own multi-agent swarm: https://t.co/FNkrnW9z4K",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-24T18:03:31.000Z",
+      "conversation_id": "2069843880951038103",
+      "metrics": {
+        "likes": 6,
+        "retweets": 7,
+        "replies": 1,
+        "quotes": 1,
+        "impressions": 571,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://x.com/RituWithAI/status/2069843880951038103/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2069843880951038103"
+    },
+    {
+      "id": "2069798933531074867",
+      "text": "Seedance 2.5 is a significant step above Seedance 2.0 in both 4K and 30s length! \n\nByteDance just skipped the minor iterations and dropped a true cinematic foundation layer live on Buzzy, enabling 30-second native video clips with absolute zero stitching seams.\n\nCopy these 8 https://t.co/KNmwLCRVb1",
+      "author_id": "146000731",
+      "username": "RituWithAI",
+      "name": "Rituraj",
+      "created_at": "2026-06-24T15:04:55.000Z",
+      "conversation_id": "2069798933531074867",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 240,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/Buzzy_now_AI/status/2069786573122793754"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/RituWithAI/status/2069798933531074867"
+    }
+  ]
+}

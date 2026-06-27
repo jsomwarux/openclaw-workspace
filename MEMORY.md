@@ -28,9 +28,8 @@
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Cash path: no acquisition-system bottleneck; enforce 10 sends/week starting with Altmark/Yair, Petri M2, PM COI wave one, HPM/Superior M2s.
-- Property-management outreach reset: 30 days PM-only, proof-safe M1 assets, first 20-25 NYC/metro prospects, no custom decks/demos before reply.
-- PM COI wave one is JT-owned/send-ready for 8 LinkedIn M1s; expansion is Eve-owned only after JT handles/holds wave one.
+- Cash path/send queue: Altmark/Yair source-export ask first, then Petri M2, PM COI wave one, HPM/Superior M2s. No custom decks/demos before reply.
+- PM COI wave one is JT-owned/send-ready for 8 LinkedIn M1s; expand only after JT handles/holds wave one.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix
@@ -39,19 +38,19 @@
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com` is proof hub; no untested public work. Current app gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
+- `jtsomwaru.com` is proof hub. App gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Current drafts: AI enablement approved-tool-stack post (`memory/drafts/linkedin-ai-enablement-approved-tool-stack-2026-06-25.md`, voice 100), OpenClaw/ClawHub skill-audit AI OS trust post (`memory/drafts/linkedin-openclaw-skill-audit-agent-os-2026-06-24.md`, voice 100), and PM vendor-AI governance around source record/allowed action/sensitive-row review/evidence trail.
+- Current review drafts: PM resolution ledger (`memory/drafts/linkedin-property-management-resolution-ledger-2026-06-26.md`, voice 100), AI enablement approved-tool-stack (`memory/drafts/linkedin-ai-enablement-approved-tool-stack-2026-06-25.md`, voice 100), and OpenClaw/ClawHub skill-audit trust post (`memory/drafts/linkedin-openclaw-skill-audit-agent-os-2026-06-24.md`, voice 100).
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- 2026-06-25 signal: PureSpectrum AI Enablement Manager validates consulting-bridge language around AI Academy, approved tool stack, function playbooks, prompt libraries, AI portfolio, adoption metrics, and ROI.
+- Latest signals: 2026-06-25 PureSpectrum validates approved-tool-stack/AI Academy language; 2026-06-26 has no qualifying role and reinforces business-side AI OS proof over developer-advocate positioning.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -67,8 +66,8 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after the one-off YouTube TV reminder fired.
-- 2026-06-25 heartbeat: MC API 276 total / 258 active / 11 high / 0 overdue; cost alerts empty. CLI `lastRunStatus` is null-heavy, so verify critical jobs by run history/artifacts. Watch stale list-metadata rows: `Job Market Daily Research`, `Viral Post Swipe File - X Research`, `Job Application Auto-Builder`, `Niche Intelligence Monitor`, `Daily News Hook`, `prospect-discovery`, `Weekly Systems Review`, `content-generate-x`.
+- Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
+- 2026-06-26 heartbeat: MC API 272 total / 261 active / 11 high / 0 overdue; cost alerts empty. CLI `lastRunStatus` is null-heavy, so verify critical jobs by run history/artifacts. Current stale list-metadata rows: `prospect-discovery`, `Weekly Systems Review`, `content-generate-x`.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
@@ -85,5 +84,5 @@
 
 ## Setup State / Live Opportunities
 - JT OS plugin/skills and workflow/product agents are installed; paths live in TOOLS. Drive/MC/Tailscale/n8n are canonical.
-- Altmark rent delinquency remains top proof/revenue lane; PM proof review and Run Control sales asset are next public proof assets.
+- Altmark rent delinquency is top proof/revenue lane; PM proof review and Run Control sales asset are next.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.

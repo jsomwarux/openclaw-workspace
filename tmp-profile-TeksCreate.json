@@ -1,0 +1,239 @@
+{
+  "user": {
+    "created_at": "2021-11-09T12:37:20.000Z",
+    "description": "",
+    "id": "1458050975596531717",
+    "name": "Teksart",
+    "public_metrics": {
+      "followers_count": 49,
+      "following_count": 44,
+      "like_count": 66,
+      "listed_count": 0,
+      "media_count": 87,
+      "tweet_count": 1153
+    },
+    "username": "TeksCreate"
+  },
+  "tweets": [
+    {
+      "id": "2070442446706626877",
+      "text": "Five major models hit OpenRouter in ten days. That's not a coincidence — it's a market signal.\n\nFrom May 27 to June 4: Claude Opus 4.8, Step 3.7 Flash, MiniMax M3, Qwen3.7-Plus, and NVIDIA Nemotron 3 Ultra. Every tier of the price ladder now has a credible 1M-context option.\n\nThe",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T09:42:00.000Z",
+      "conversation_id": "2070442446706626877",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070442446706626877"
+    },
+    {
+      "id": "2070441127916748921",
+      "text": "Career-Ops — an AI-powered job search system built entirely on Claude Code.\n\n14 skill modes, a Go dashboard, PDF generation, and batch processing. It automates the entire job hunt pipeline: resume tailoring, cover letter generation, job matching, application tracking, and",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T09:36:46.000Z",
+      "conversation_id": "2070441127916748921",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070441127916748921"
+    },
+    {
+      "id": "2070439808812323213",
+      "text": "Ponytail — the AI agent plugin that makes your LLM think like the laziest senior dev.\n\nBuilt by Dietrich Gebert, this is a Claude Code plugin that enforces YAGNI at the agent level. Before writing any code, it forces the model to answer: \"Do you actually need this right now?\"",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T09:31:31.000Z",
+      "conversation_id": "2070439808812323213",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 17,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070439808812323213"
+    },
+    {
+      "id": "2070438489456300129",
+      "text": "RTK — the CLI proxy that cuts LLM token consumption by 60-90%.\n\nBuilt in Rust as a single binary with zero dependencies. It sits between you and the LLM, intercepting common dev commands and optimizing them before they hit the API.\n\nHow it works:\n- Caches repeated responses",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T09:26:17.000Z",
+      "conversation_id": "2070438489456300129",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 10,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070438489456300129"
+    },
+    {
+      "id": "2070410954844581897",
+      "text": "Google's Gemini 3.5 Flash is now GA and it inverts the usual Pro-over-Flash hierarchy.\n\nAt $1.50/$9.00 per million tokens, it beats Gemini 3.1 Pro on coding and agentic benchmarks at roughly 4x the speed. That's not a typo — the Flash tier is outperforming the previous Pro tier https://t.co/8RNzhDhrPN",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T07:36:52.000Z",
+      "conversation_id": "2070410954844581897",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 127,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/TeksCreate/status/2070410954844581897/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070410954844581897"
+    },
+    {
+      "id": "2070409592824004848",
+      "text": "The June 2026 model leaderboard is out — and the top tier tells a clear story.\n\nClaude Opus 4.8 holds #1 on the Artificial Analysis Intelligence Index at 61.4 — the first model to break 60. SWE-Bench Verified 88.6%, Terminal-Bench 74.6%, USAMO 2026 at 96.7%. But at $25/M output https://t.co/2DcinB1vPG",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T07:31:27.000Z",
+      "conversation_id": "2070409592824004848",
+      "metrics": {
+        "likes": 1,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 39,
+        "bookmarks": 1
+      },
+      "urls": [
+        "https://x.com/TeksCreate/status/2070409592824004848/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070409592824004848"
+    },
+    {
+      "id": "2070408249443078324",
+      "text": "JetBrains just released Mellum2 — a 12B MoE model for software development, and it's Apache 2.0.\n\nArchitecture: 12B total, 2.5B active (8 of 64 experts). 131K context. LiveCodeBench v6 score of 69.9 — near Qwen3-14B coding quality at a fraction of the active params.\n\nWhat makes https://t.co/Cs1jCwn03A",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T07:26:07.000Z",
+      "conversation_id": "2070408249443078324",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 12,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/TeksCreate/status/2070408249443078324/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070408249443078324"
+    },
+    {
+      "id": "2070406893051265071",
+      "text": "Ideogram 4 just shipped its first-ever open weights — a 9.3B Diffusion Transformer trained from scratch.\n\nThis is the biggest open-weight image model release of 2026 so far. Architecture: flow-matching DiT with native 2K output resolution. Structured prompts support JSON with https://t.co/AjEVEFIriH",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T07:20:44.000Z",
+      "conversation_id": "2070406893051265071",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 24,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/TeksCreate/status/2070406893051265071/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070406893051265071"
+    },
+    {
+      "id": "2070405525536182381",
+      "text": "NVIDIA just dropped a 550B hybrid Mamba-MoE model — and it's openly weighted.\n\nNemotron 3 Ultra: 55B active params, 1M context, 89.1 MMLU. The architecture is a Mamba–Transformer hybrid with sparse MoE routing. Only ~10% of params activate per token.\n\nWhy this matters: This is https://t.co/xSYhAYjFne",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T07:15:18.000Z",
+      "conversation_id": "2070405525536182381",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 18,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/TeksCreate/status/2070405525536182381/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070405525536182381"
+    },
+    {
+      "id": "2070378074206585269",
+      "text": "The agent harness market is splitting into two distinct camps — and the gap is widening fast.\n\nCamp 1: \"The Model is the Agent\" — Claude Code, Codex, Cursor, Windsurf. These are vertically integrated: the model and the environment are one product. You get a polished UX, but",
+      "author_id": "1458050975596531717",
+      "username": "TeksCreate",
+      "name": "Teksart",
+      "created_at": "2026-06-26T05:26:13.000Z",
+      "conversation_id": "2070378074206585269",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 43,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeksCreate/status/2070378074206585269"
+    }
+  ]
+}
