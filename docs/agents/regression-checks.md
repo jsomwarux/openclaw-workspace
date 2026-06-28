@@ -240,3 +240,16 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Check:** Treat cron-list status as a triage hint, not proof. For critical or user-facing jobs, verify the latest `openclaw cron runs --id <id> --limit 1` status, summary payload, delivery fields, and expected artifacts before alerting, editing, or rerunning. If run history is ok and artifacts are current, record the row as stale/null metadata and leave cleanup to the systems task.
 - **Fail condition:** A heartbeat reports an urgent cron failure, reruns a content/research/delivery job, or edits a prompt solely because cron-list status is `error` while run history and artifacts prove the current scheduled run passed.
 - **Owner surface:** HEARTBEAT cron health checks, `scripts/cron_volume_guard.py`, OpenClaw cron metadata parsing, and Weekly Systems Review cron cleanup.
+
+## 10AM missed-cron full-id check
+- **Trigger:** The HEARTBEAT 10AM missed-cron gate for crypto morning or outreach pipeline.
+- **Check:** Use the exact cron job id for run-history lookups. Crypto morning is `eve-crypto-morning-008`; outreach pipeline is `651fa1da-84d7-44b3-8e10-6a46e1c05cf6`. If a short id or prefix returns zero entries, retry with the full id from `openclaw cron list --json` before declaring a miss.
+- **Fail condition:** The heartbeat fires, alerts, reruns, or logs a missed outreach pipeline solely because `openclaw cron runs --id 651fa1da --limit N` returned zero entries while the full UUID history shows today's run passed.
+- **Owner surface:** `docs/agents/heartbeat-extended-rules.md`, HEARTBEAT 10AM missed-cron checks, cron run-history verification.
+
+## Gated live-file diff signoff check
+- **Trigger:** Any user-approved phase where edits to existing live files, agent prompts, cron-read docs, or runtime-consumed instructions require individual diff approval before commit.
+- **Check:** Before saying the phase is complete, asking for signoff, or committing, run `git diff --name-only -- [scoped target paths]` and verify each modified live file has had its own visible `git diff -- [path]` message or attached diff artifact sent in the current approval sequence. Additive files can be batched only when the user explicitly allowed batching.
+- **Fail condition:** A completion summary, status list, rg verification, or broad scoped `git status` is sent instead of the individual file diffs requested for approval.
+- **Recovery:** Stop before commit, send every missing individual diff, then wait for confirmation.
+- **Owner surface:** live-file gated edit workflow, Distribution/App Marketing OS change reviews, `docs/agents/mistakes-log-recent.md`.

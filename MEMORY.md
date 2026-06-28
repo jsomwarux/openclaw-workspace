@@ -39,18 +39,20 @@
 
 ## Current Apps / Products
 - `jtsomwaru.com` is proof hub. App gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
+- App strategy correction: distribution + retention are the survival constraint. New app loops must include niche-specific content/testing and retention instrumentation before treating the build as viable.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Current review drafts: PM resolution ledger (`memory/drafts/linkedin-property-management-resolution-ledger-2026-06-26.md`, voice 100), AI enablement approved-tool-stack (`memory/drafts/linkedin-ai-enablement-approved-tool-stack-2026-06-25.md`, voice 100), and OpenClaw/ClawHub skill-audit trust post (`memory/drafts/linkedin-openclaw-skill-audit-agent-os-2026-06-24.md`, voice 100).
+- App content loop priority: for each app, generate niche-native X/LinkedIn creative, test hooks/captions/formats consistently, and tie content angles back to audience pains, differentiated value, and retention behavior.
+- Current review drafts: AI CoE run-control (`memory/drafts/linkedin-ai-coe-run-control-2026-06-27.md`, voice 100) and PM resolution ledger (`memory/drafts/linkedin-property-management-resolution-ledger-2026-06-26.md`, voice 100).
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest signals: 2026-06-25 PureSpectrum validates approved-tool-stack/AI Academy language; 2026-06-26 has no qualifying role and reinforces business-side AI OS proof over developer-advocate positioning.
+- Latest signals: PureSpectrum validates approved-tool-stack/AI Academy language; 2026-06-27 Atmosera is market intel only, reinforcing AI CoE/governance/ROI operating-model proof while failing hard filters.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -67,7 +69,7 @@
 
 ## Active Automation / Crons
 - Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- 2026-06-26 heartbeat: MC API 272 total / 261 active / 11 high / 0 overdue; cost alerts empty. CLI `lastRunStatus` is null-heavy, so verify critical jobs by run history/artifacts. Current stale list-metadata rows: `prospect-discovery`, `Weekly Systems Review`, `content-generate-x`.
+- 2026-06-27 heartbeat: MC API 265 total / 263 active / 11 high / 0 overdue; cost alerts empty. CLI `lastRunStatus` is null-heavy, so verify critical jobs by run history/artifacts. Current stale list-metadata rows: `prospect-discovery`, `Job Application Auto-Builder`, `Weekly Systems Review`, `content-generate-x`.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 

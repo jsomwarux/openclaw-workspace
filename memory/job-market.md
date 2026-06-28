@@ -488,3 +488,13 @@ Read today's job-market-agent brief. No new NYC/remote non-coding AI implementat
 **Positioning implication:** keep Mission Control/OpenClaw and Altmark framed as business-side AI operating-system proof: intake, governed tool access, approved workflow paths, review/escalation, measurement, and value reporting. Extend EnablementOps / DealDesk / AgentGuard / ROIFlow instead of creating a new build idea or application task today. Cash/proof priority stays Altmark packet first.
 
 Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`.
+
+## 2026-06-27 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief. No new NYC/remote non-coding AI implementation role cleared the 18/25 hard filter. Atmosera Principal Consultant, Artificial Intelligence is useful market intel only: remote US and $170K-$190K, but filtered by prior hands-on AI/ML engineer experience plus cloud/security/integration architecture requirements.
+
+**Strongest signal:** advisory AI roles keep asking for discovery, AI CoE design, governance, use-case portfolios, ROI stress tests, adoption roadmaps, and measurable operational/financial outcomes. The public market is validating JT's operating-model lane, but many roles still attach it to ML/cloud-architecture credentials.
+
+**Positioning implication:** keep packaging Mission Control/OpenClaw, Altmark, and PM run-control proof as executive AI operating-system evidence: AI readiness discovery, approved workflow portfolio, governance gates, ROI/value reporting, and adoption cadence. Extend DealDesk / EnablementOps / ROIFlow / AgentGuard language; no new application task or build idea today.
+
+Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; Atmosera posting: https://jobs.lever.co/atmosera/27386fa8-7a4d-4c1c-9760-c5811d93475c

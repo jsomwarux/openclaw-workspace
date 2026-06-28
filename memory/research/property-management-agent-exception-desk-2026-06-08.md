@@ -309,3 +309,25 @@ Sources checked June 26:
 - Salesforce, "Salesforce Launches Agentforce Help Agent That Deploys in Minutes and Only Charges for Resolutions" - https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/
 - OpenAI, "How agents are transforming work" - https://openai.com/index/how-agents-are-transforming-work/
 - Salesforce, "Trusted Agents at Scale: How Open Discovery Is Unifying the Agentic Enterprise" - https://www.salesforce.com/blog/open-discovery-agentic-enterprise/
+
+## 2026-06-27 Heartbeat Market Addendum
+
+Fresh scan reinforces the same sales-safe PM lane: operators are being told AI can touch collections, screening, maintenance, compliance, and reporting, but the credible buyer language is permissions, approval rules, audit trails, human overrides, and pre-execution controls.
+
+Fresh market signals:
+- Kognitos' real-estate automation guide emphasizes audit trails that capture each AI-driven decision with timestamp, inputs, policy applied, plain-language reasoning, resulting action, and human reviewer when applicable. This is directly usable as the proof structure for Altmark-style delinquency follow-up.
+- Haven's AI compliance and PMS-permissions guidance keeps the property-management risk frame concrete: AI decisions need clear records of data considered, outputs, and overrides, while PMS permissions define what an agent may see, create, modify, or execute.
+- Debt-collection AI commentary is moving from soft scripting to compliance-by-design: hard constraints and pre-execution validations before any contact or collection action. That maps cleanly to resident-sensitive delinquency workflows.
+- Broader real-estate AI commentary names a control layer of permissions, approval rules, audit trails, escalation logic, compliance checks, and human-in-the-loop controls before AI changes contract terms, concessions, or sensitive client matters.
+
+Altmark / PM proof implication:
+- Keep the Altmark rent-delinquency packet as the first sales/proof move. The artifact should read like a resolution ledger, not a chatbot demo: source row, allowed data/action scope, payment/context gap, proposed next step, rule or policy applied, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- The outreach hook for PM COI wave one should be governance-before-automation: "I help property teams delegate the first pass while preserving proof of what the AI read, what it was allowed to do, who approved it, and why sensitive actions were held."
+- Do not broaden into platform claims. The near-term buyer promise is controlled resolution of one sensitive workflow, with a log the operator can defend.
+
+Sources checked June 27:
+- Kognitos, "AI Automation for Real Estate Operations: A 2026 Guide" - https://www.kognitos.com/blog/ai-automation-real-estate-operations-2026/
+- Haven AI, "AI Property Management Compliance: 2026 Guide to HUD & FHA" - https://www.usehaven.ai/post/ai-property-management-compliance-fair-housing-guide
+- Haven AI, "PMS Permissions for AI: 2026 Complete Glossary & Guide" - https://www.usehaven.ai/post/pms-permissions-for-ai-glossary-guide
+- Moveo.AI, "Compliance by design: AI agents in Debt Collection" - https://moveo.ai/blog/compliance-by-design-debt-collection-ai
+- instinctools, "AI Tools for Real Estate Agents" - https://www.instinctools.com/blog/ai-real-estate-agent/

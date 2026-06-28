@@ -1,13 +1,13 @@
-# API Intelligence Report — 2026-06-20
+# API Intelligence Report — 2026-06-27
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-06-20 05:45:17
+Generated: 2026-06-27 05:45:48
 
 **Totals:** 0 new APIs | 0 PH tools | 3 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **Show HN: Created On-Page SEO Tool – AI Action Plans for Search Console Data** (score: 2) | [link](https://blogr.ai)
-- **Fli -a tiny (18KB) easy to read file listing tool. Rust no_std and Libc** (score: 2) | [link]()
-- **Show HN: Aastro – Extendable API Gateway in Go** (score: 2) | [link](https://starwalkn.github.io/aastro-docs/)
+- **DeepSeek open-sources inference optimizations with 60–85% faster generation [pdf]** (score: 6) | [link](https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf)
+- **Search SDK – Integrate web search into agents** (score: 1) | [link](https://search-sdk.dev/)
+- **Higher rate limits on the Claude API** (score: 1) | [link](https://platform.claude.com/docs/en/api/rate-limits)
 
 
 ## Scout Guidance
