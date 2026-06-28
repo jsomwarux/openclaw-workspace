@@ -13,16 +13,18 @@ The output must be real software, not a plausible-looking draft. Every build end
 ## Workflow
 1. Read project `CLAUDE.md`, `AGENTS.md`, and any `tasks/lessons.md` before editing.
 2. Create or update `tasks/todo.md` unless the change is a one-liner.
-3. Plan the smallest useful shipped version.
-4. Implement in logical chunks.
-5. Run the quality pass:
+3. Confirm the build has a validation-gate artifact with a `BUILD` decision. If it is a new app/product wedge and no validation-gate artifact exists, stop and run the app-discovery loop first.
+4. Freeze the data contract before implementation: entities, fields, event names, API shape, import/export formats, and analytics events. Treat this as the handoff boundary before frontend or backend build work.
+5. Plan the smallest useful shipped version.
+6. Implement in logical chunks.
+7. Run the quality pass:
    - simplify
    - remove dead code and redundant comments
    - delete over-abstracted AI boilerplate
    - check for stubs, fake data, swallowed errors, and mocks of the code under test
-6. Verify with real commands: build, typecheck, lint, tests, and UI/browser checks when relevant.
-7. For visual shipped work, consider a 30-90s demo MP4/GIF or screenshot walkthrough before calling it content/proof-ready.
-8. Update proof/recent-build/content/portfolio routing only when the build is substantive and verified.
+8. Verify with real commands: build, typecheck, lint, tests, and UI/browser checks when relevant.
+9. For visual shipped work, consider a 30-90s demo MP4/GIF or screenshot walkthrough before calling it content/proof-ready.
+10. Update proof/recent-build/content/portfolio routing only when the build is substantive and verified.
 
 ## App-Specific Defaults
 - Next.js: `npm run build` before any deploy or completion claim.
