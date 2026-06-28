@@ -26,13 +26,30 @@ Paid UGC rule: paused by default. The only current exception is a capped Action 
 - source tag or UTM
 - creative type
 - target audience
+- right-person reach definition
+- right-person reach result or `UNAVAILABLE`
 - CTA
 - run date
+- clicks or `UNAVAILABLE`
+- installs/signups or `UNAVAILABLE`
+- D1 retention or `UNAVAILABLE`
+- D7 retention or `UNAVAILABLE`
 - 24h metric
 - 72h metric
 - 7d metric
 - downstream metric: download, signup, site visit, search click, waitlist, reply, or qualified lead
+- unavailable metric fields and reason
 - decision: scale / iterate / kill
+
+## Metric Order
+Judge app-distribution experiments in this order:
+1. right-person reach
+2. clicks
+3. installs/signups
+4. D1 retention
+5. D7 retention
+
+Views, impressions, likes, follows, and generic engagement can explain context, but they do not move an experiment to scale unless the ordered metrics above show real pull. If a metric cannot be measured yet, write `UNAVAILABLE` with the reason instead of leaving it blank.
 
 ## Link/Source Tag Convention
 Use short source tags even when UTM links are unavailable:

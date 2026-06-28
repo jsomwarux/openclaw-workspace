@@ -22,19 +22,31 @@ If we [asset/action] for [audience] on [channel], then [expected user behavior] 
 
 ### Asset Needed
 - Creative/share artifact:
+- Shareable product output:
+- Reach motion:
 - Copy/hook:
 - Landing/app destination:
 - Tracking link/source tag:
 
 ### Distribution
 Channel:
-Borrowed audience target, if any:
+Channel-fit artifact:
+Borrowed-audience surface:
+Borrowed-audience target list:
+Why this audience is reachable:
+Low-competition angle:
 CTA:
 Run date:
 
 ### Measurement
 Primary metric:
 Secondary metric:
+Right-person reach:
+Clicks:
+Installs/signups:
+D1 retention:
+D7 retention:
+Unavailable metric fields and reason:
 24h result:
 72h result:
 7d result:

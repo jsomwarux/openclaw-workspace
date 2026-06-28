@@ -67,6 +67,8 @@ This ensures 4+ weeks of posts cover 4+ different angles rather than converging 
    - `~/.openclaw/workspace/memory/app-marketing/weekly-scoreboard.md`
    - `~/.openclaw/workspace/memory/app-marketing/vibe-dependency-map-2026-05-06.md`
    These files own strategic channel routing, ReelFarm execution boundaries, and current measurement priorities. If they conflict with this legacy Vibe Marketing file, App Marketing OS wins.
+   Legacy multi-platform volume is not a strategy and is not automatically allowed. Before generating any product content, read `memory/app-marketing/channel-fit/[app-slug].md`; if it is missing or does not choose the platform being generated, stop with `CHANNEL_FIT_REQUIRED`. If the channel-fit artifact conflicts with this file's platform volume table, the channel-fit artifact and App Marketing OS win.
+   If the Vibe product registry slug differs from the App Marketing OS app-registry slug, map the product slug to the app-registry slug and use that app slug as the channel-fit filename.
 
 1. Read `~/.openclaw/workspace/agents/vibe-marketing/product-registry.json`
    - Find all products with `status: "active"`
@@ -123,9 +125,11 @@ This ensures 4+ weeks of posts cover 4+ different angles rather than converging 
 
 ## Step 2: Generate content per product
 
-For each active product, read its `platform_config` in the registry and generate for each listed platform.
+For each active product, read its `platform_config` in the registry and the matching `memory/app-marketing/channel-fit/[app-slug].md` artifact. Generate only for platforms explicitly chosen by the channel-fit artifact and supported by an App Marketing OS experiment. If no platform is chosen, output `NO_CHANNEL_FIT_CONTENT` and do not generate a batch.
 
 ### Volume per platform
+
+The table below is a legacy ceiling, not a quota. Use it only after the channel-fit artifact and App Marketing OS gates choose that platform. Do not fill all platforms by default.
 
 | Platform | Volume |
 |---|---|
