@@ -735,3 +735,11 @@ Source checks: https://www.salesforce.com/blog/open-discovery-agentic-enterprise
 **JT relevance:** keep Run Control / AI Enablement OS proof tied to the exact enforcement record: who or what acted, on whose behalf, which tool/data scope was requested, what policy evaluated the action, whether the gateway allowed/rejected/required approval, and where the replayable log lives. For Altmark/PM, this strengthens the resolution-ledger frame: a resident-, ledger-, owner-, or legal-sensitive action is production-ready only when the operator can prove the action was scoped, approved, or blocked before it moved. For OpenClaw, any mutating or delivery workflow should leave the same evidence: job identity, owner, allowed tools, OBO/user context when relevant, budget/rate boundary, rejection path, delivery proof, and recovery owner.
 
 Source checks: https://composio.dev/content/mcp-gateway-governance, https://workos.com/blog/ai-agent-auth-checklist, https://zuplo.com/blog/what-regulators-expect-ai-agents, https://barndoor.ai/blog-mcp-gateway-security-requirements/, and https://www.gravitee.io/state-of-ai-agent-security.
+
+## Jun 28, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent platforms are turning workflow design into scriptable run control.** This week's Salesforce Agentforce 360 signal adds Agentforce Builder, deterministic Agent Script controls, voice, and enterprise-context controls, while the weekly intel brief points at commerce, service, property, and insurance workflows that need approval and exception rules before they touch systems of record.
+
+**JT relevance:** keep Run Control / AI Enablement OS anchored to the first workflow an agent is allowed to touch. For Altmark/PM, proof should show source row/input validation, workflow or capability identity, allowed data/tools, deterministic script or rule step, confidence/risk threshold, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event. For OpenClaw/content crons, today's model-routing and Weekly Systems Review pseudo-command repairs reinforce the same production bar: configured model route, command-safe prompt, owner, delivery proof, and replayable recovery path before a mutating workflow is trusted.
+
+Source checks: https://www.salesforce.com/agentforce/what-is-new/ and `memory/content/weekly-intel-brief.md`.

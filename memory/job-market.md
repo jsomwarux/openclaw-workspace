@@ -498,3 +498,13 @@ Read today's job-market-agent brief. No new NYC/remote non-coding AI implementat
 **Positioning implication:** keep packaging Mission Control/OpenClaw, Altmark, and PM run-control proof as executive AI operating-system evidence: AI readiness discovery, approved workflow portfolio, governance gates, ROI/value reporting, and adoption cadence. Extend DealDesk / EnablementOps / ROIFlow / AgentGuard language; no new application task or build idea today.
 
 Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; Atmosera posting: https://jobs.lever.co/atmosera/27386fa8-7a4d-4c1c-9760-c5811d93475c
+
+## 2026-06-28 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief. No new NYC/remote non-coding AI implementation role cleared the 18/25 hard filter; public results skewed toward MLOps, DevOps, production-platform work, certification/training pages, or generic AI-career content.
+
+**Strongest signal:** the useful market signal is still business-side AI fluency with human judgment, governance, adoption, and value proof. Open-board roles remain noisy, but the advisory/enablement language keeps validating workflow discovery, use-case triage, approved paths, review/escalation, KPI/ROI dashboards, and operating-model proof.
+
+**Positioning implication:** keep Mission Control/OpenClaw, Altmark, and PM run-control proof framed as an AI operating-model layer: intake, governed tool use, approval rules, evaluation/rollback, adoption rhythm, and value reporting. Extend EnablementOps / DealDesk / AgentGuard / ROIFlow; no new application task, certification task, or build idea today.
+
+Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`.

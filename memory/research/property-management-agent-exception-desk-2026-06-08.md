@@ -331,3 +331,21 @@ Sources checked June 27:
 - Haven AI, "PMS Permissions for AI: 2026 Complete Glossary & Guide" - https://www.usehaven.ai/post/pms-permissions-for-ai-glossary-guide
 - Moveo.AI, "Compliance by design: AI agents in Debt Collection" - https://moveo.ai/blog/compliance-by-design-debt-collection-ai
 - instinctools, "AI Tools for Real Estate Agents" - https://www.instinctools.com/blog/ai-real-estate-agent/
+
+## 2026-06-28 Heartbeat Market Addendum
+
+The June 28 Morning Brief keeps the proof lane focused on workflow orchestration and recurring control, not generic chatbot automation.
+
+Fresh market signals:
+- MRI's Agora Intelligence / Agora Orchestrator launch is a direct property-ops signal: real-estate vendors are now packaging agentic workflow orchestration and governance vocabulary for PM buyers. That raises the bar for JT's proof asset to show what the system controlled, not just what it drafted.
+- The boutique-consulting recurring-revenue signal supports packaging Run Control as an ongoing operating layer: intake, exception queue, approval state, audit evidence, and monthly improvement rhythm are easier to retain than one-off automations.
+- Morning Brief cost context also matters: X API is already over the weekly target, so PM proof and distribution should reuse verified signals instead of adding speculative pulls.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The redacted source-export ask should lead with resolution control: source row, allowed data/action scope, payment/context gap, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- PM COI wave one should use MRI-style orchestration language carefully: "workflow orchestration with approval evidence" is buyer-safe; "autonomous collections" is not.
+- The retainer wedge is the control surface after the first proof: unresolved exceptions, owner approvals, blocked actions, and value events reviewed weekly/monthly.
+
+Sources checked June 28:
+- MRI Software, "MRI Software Launches Agora Intelligence and Agora Orchestrator" - https://www.zawya.com/en/press-release/companies-news/mri-software-launches-agora-intelligence-and-agora-orchestrator-l4b8shaz
+- Kirnani Technologies, "Salesforce Consulting Partners: Building Recurring Revenue at Scale" - https://blog.kirnanitechnologies.com/salesforce-consulting-partners-building-recurring-revenue-at-scale/

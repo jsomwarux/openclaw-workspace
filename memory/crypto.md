@@ -563,3 +563,11 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is still heavy. Treat X coordination quality, buy/sell flow, volume, whale evidence, and product/narrative signal as filters, not automatic conviction.
 - **Model read:** Research/ranking output exited PRXVT, NOOK, and SIBYL; adjusted NOX up from 5% to 25%, GITLAWB up from 15% to 20%, and SURPLUS up from 20% to 35%; and added SERV at 20%. No new whale alerts were present. SERV is the new-entry signal; SURPLUS had the strongest allocation weight and listed 24h move.
 - **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run during this heartbeat.
+
+## Jun 28, 2026 - 12:12PM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00, validation passed, X research guard passed with 25 entries, 25/25 portfolio coverage, and age 6.22h. `validate-full-analysis.py --max-x-age-hours 8` passed with 24 coins, 6 held coins, 25 X entries, and allocation history at `/Users/jtsomwaru/projects/crypto-agent/data/allocation-history/2026-06-28.json`.
+- **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is still heavy. Treat X coordination quality, buy/sell flow, volume, whale evidence, and product/narrative signal as filters, not automatic conviction.
+- **Model read:** Research/ranking output exited PRXVT, NOOK, and SIBYL; adjusted NOX up from 5% to 25%, GITLAWB up from 15% to 30%, held SURPLUS at 20%, and added SERV at 25%. SURPLUS had the lone whale alert; SERV is the new-entry signal with the strongest alpha score in the packet.
+- **Weak-coordination warnings:** zero-result X rows were present for A0T, BOTCOIN, CRED, PERKOS, and HEU, and should stay treated as weak-coordination signals.
+- **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run during this heartbeat.

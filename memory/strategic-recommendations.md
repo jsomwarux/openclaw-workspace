@@ -16,6 +16,11 @@
 
 <!-- Entries appended by Weekly Intelligence Synthesis (eve-weekly-synthesis-007) -->
 
+### 2026-06-28 — Make Run Control The Live-Build Offer
+**Recommendation:** Package and post one live-build consulting offer this week: "bring one messy workflow, I will map the source, owner queue, approval rule, audit trail, and first automation live." Anchor it to property-management/front-desk-plus-exception-desk proof, then map it to wholesale reorder exceptions and insurance run-control in follow-up content.
+**Why now:** This week's strongest signals all moved from generic AI adoption toward buyer-visible run control: Agentforce Commerce made text-native B2B procurement real, PM AI coverage paired leasing automation with governance, insurance AI coverage emphasized core-system trust and human-in-the-loop oversight, and the content swipe file flagged a live-build consulting offer as an unposted high-fit topic.
+**Status:** open
+
 ### 2026-06-21 — Turn Run Control Into The Sales Asset
 **Recommendation:** Package one buyer-facing run-control asset this week: source data access, AI read/classification, owner queue, human approval rule, audit log, and measurable outcome event. Anchor it to the property/local automation proof, then map the same structure to construction project data, insurance decisioning, and Salesforce service queues.
 **Why now:** This week's strongest signals all moved toward controlled vertical agent operations: Salesforce agreed to buy Fin for about $3.6B, Trunk Tools launched Cortex while construction platforms fought over data access, Earnix launched AIOS for insurance decision orchestration, and fresh AI transformation roles repeated intake, governance, pilots-to-production, tool registry, and quantified outcomes.

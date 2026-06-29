@@ -197,3 +197,10 @@
 
 ## Autoresearch Sweep - 2026-06-26
 - `client-proof-engine`: baseline 0.833 -> final 1.000; changed file: agents/client-proof-engine/AGENT.md.
+
+## Weekly Systems Review - 2026-06-28
+- Checks run: cron health/runs, bootstrap budgets, process/gateway/watchdog health, LaunchAgent config, direct-Brave OpenClaw version search, plugin/extensions, critical file integrity, autoresearch enrollment, future signals, passive-income pruning, Mission Control reachability, Phase 7 KPIs, North Star summary, and weekly cost review.
+- Fixes applied: updated the existing high-priority Mission Control repair task with 2026-06-28 evidence, saved the weekly systems report artifact, and corrected pending queue validation to line-by-line JSONL.
+- Recurring failure patterns: useful cron work can still end red because final content generation/delivery fails after heavy context; current active case is `content-generate-x` with `consecutiveErrors=2` and no useful latest output.
+- Blockers deferred: OpenClaw update requires JT approval; duplicate `lossless-claw` plugin warning and gateway memory over 500 MB should be handled in a quiet ops window; no failed job was rerun solely to clear stale status.
+[2026-06-28 10AM] Film: reviewed 2026-06-27 note + current Weekly Systems Review run; friction was the weekly cron repeating the pseudo-command failure pattern with `print lines ... (agent)` after useful systems work had already been done. -> Fix: patched the live Weekly Systems Review cron payload with a top-of-prompt command-only execution rule and verified existing pseudo-command regression rows remain the owner checks. | Improve: 10AM gate verified Crypto Full Analysis actual Telegram send, outreach preflight PASS, Spanish paused state, cron volume, and content weekly guard before accepting the heartbeat.

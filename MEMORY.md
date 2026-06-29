@@ -16,7 +16,7 @@
 
 ## Consulting Positioning
 - Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs before automation.
-- Current package: AI Enablement OS / Run Control: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric; asset: `memory/consulting/run-control-sales-asset-outline-2026-06-23.md`.
+- Package: AI Enablement OS / Run Control: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric.
 - ICP: NYC/metro property ops first; construction, wholesale/skilled trades, insurance/Agentforce as adjacent proof lanes.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
@@ -28,7 +28,7 @@
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Cash path/send queue: Altmark/Yair source-export ask first, then Petri M2, PM COI wave one, HPM/Superior M2s. No custom decks/demos before reply.
+- Cash path/send queue: Altmark/Yair source-export ask first, then Petri M2, PM COI wave one, HPM/Superior M2s.
 - PM COI wave one is JT-owned/send-ready for 8 LinkedIn M1s; expand only after JT handles/holds wave one.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
@@ -45,14 +45,14 @@
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
 - App content loop priority: for each app, generate niche-native X/LinkedIn creative, test hooks/captions/formats consistently, and tie content angles back to audience pains, differentiated value, and retention behavior.
-- Current review drafts: AI CoE run-control (`memory/drafts/linkedin-ai-coe-run-control-2026-06-27.md`, voice 100) and PM resolution ledger (`memory/drafts/linkedin-property-management-resolution-ledger-2026-06-26.md`, voice 100).
+- Current review drafts: Run Control live-build offer, local-service operating record, AI CoE Run Control; all passed voice guard.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest signals: PureSpectrum validates approved-tool-stack/AI Academy language; 2026-06-27 Atmosera is market intel only, reinforcing AI CoE/governance/ROI operating-model proof while failing hard filters.
+- Latest signals: no qualifying Jun 28 role; AI Academy/approved tool stack/project portfolio/adoption metrics/ROI remain useful consulting language.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -63,25 +63,25 @@
 
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs.
-- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`; `/consulting` is live Revenue cockpit.
+- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`; `/consulting` live.
 - Mission Control API responses may be objects; normalize with `(.tasks // .items // .)`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
 - Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- 2026-06-27 heartbeat: MC API 265 total / 263 active / 11 high / 0 overdue; cost alerts empty. CLI `lastRunStatus` is null-heavy, so verify critical jobs by run history/artifacts. Current stale list-metadata rows: `prospect-discovery`, `Job Application Auto-Builder`, `Weekly Systems Review`, `content-generate-x`.
+- Jun 28: MC 267 total / 264 active / 12 high / 0 overdue; cost clear. Red metadata: `content-generate-x` route fixed, `Weekly Systems Review` prompt patched/manual run done; wait for natural next runs.
+- Passive Income Strategist: deterministic fallback digest is artifact safety only, not a true no-build recommendation. June 21 and June 28 were fallback-only; repeated fallback requires a real validation task before the next Sunday.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
-- Health, cost tracker, proof guard, film review, and skills audit remain active.
-- 2026-06-24 ClawHub skill audit clean after excluding vendored `node_modules`; report: `memory/audits/security/clawhub-skill-supply-chain-audit-2026-06-24.md`.
+- Health, cost tracker, proof guard, film review, and skills audit remain active. ClawHub skill audit clean after excluding vendored `node_modules`.
 - Detail: `docs/memory/MEMORY-full.md#health--training--quality-loops`.
 
 ## Integrity / Fabrication Corrections
 - Never fabricate; verify outreach, URLs, deployments, Drive links, task closure, and delivery with tool/script evidence.
 - JT corrections require Mistakes Log/rule updates with regression checks. Compacted history: use lossless-claw recall before exact claims: `lcm_grep`, `lcm_describe`, then `lcm_expand_query` when exact details matter.
-- External strategy prompts must assume zero prior JT-project knowledge and include a compact primer.
+- External strategy prompts need zero-prior-context primer.
 - Detail: `docs/memory/MEMORY-full.md#integrity--fabrication-corrections`.
 
 ## Setup State / Live Opportunities

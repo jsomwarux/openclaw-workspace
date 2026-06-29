@@ -1,18 +1,18 @@
 # Weekly Intel Brief — for Content Generation
 > Written by Weekly Intelligence Synthesis. Read by content-generate-linkedin and content-generate-x Monday morning.
 
-**Week of:** 2026-06-15
+**Week of:** 2026-06-28
 
 ## Top Niche Signals This Week
-Construction: Trunk Tools Cortex plus the Procore/Trunk Tools access conflict shows construction AI is becoming a project-data control problem, not just a field-capture problem.
-Insurance: Earnix AIOS packages insurance-native agents, models, workflows, governance, and human oversight into one decisioning layer, making confidence thresholds and audit trail the real buyer language.
-PM/insurance: Salesforce buying Fin for about $3.6B pushes customer-service agents deeper into Agentforce, so the useful angle is service queue run control rather than another chatbot.
+B2B commerce is moving toward text-native procurement, but wholesale distributors still need catalog, pricing, inventory, approval, and exception rules clean enough for reorder-by-text to work. [wholesale]
+Property-management AI is expanding from leasing/front-desk speed into governed renewal, tour, lead-response, and manager-review workflows. [property-management]
+Insurance AI is moving into underwriting, claims, and service orchestration, where the real buyer need is confidence thresholds, review owners, audit trails, and status logging. [insurance]
 
 ## Strategic Theme This Week
-Vertical AI is moving into run control: buyers need data access, human review, audit trail, and measurable outcome events more than another AI assistant.
+The market is not asking for more generic AI assistants; it is asking for run control around the first workflow an agent is allowed to touch.
 
 ## Competitive Developments
-Trunk Tools, Earnix, and Salesforce all moved this week toward vertical agent control layers: construction project data, insurance decision orchestration, and Agentforce service automation. JT's positioning should stay grounded in the workflow after the agent reads the request.
+Salesforce expanded Agentforce into commerce and service-agent surfaces this week, while insurance vendors kept pushing governed AI orchestration. JT's positioning should stay on first-workflow activation, human review, and measurable outcome events.
 
 ---
-_Last updated: 2026-06-21 Sunday_
+_Last updated: 2026-06-28 Sunday_
