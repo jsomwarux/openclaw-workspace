@@ -743,3 +743,11 @@ Source checks: https://composio.dev/content/mcp-gateway-governance, https://work
 **JT relevance:** keep Run Control / AI Enablement OS anchored to the first workflow an agent is allowed to touch. For Altmark/PM, proof should show source row/input validation, workflow or capability identity, allowed data/tools, deterministic script or rule step, confidence/risk threshold, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event. For OpenClaw/content crons, today's model-routing and Weekly Systems Review pseudo-command repairs reinforce the same production bar: configured model route, command-safe prompt, owner, delivery proof, and replayable recovery path before a mutating workflow is trusted.
 
 Source checks: https://www.salesforce.com/agentforce/what-is-new/ and `memory/content/weekly-intel-brief.md`.
+
+## Jun 29, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent platforms are selling business-owned resolution paths, not free-floating autonomy.** This morning's Salesforce Agentforce commerce/help-agent and AI-ready CRM data signals reinforce the same production pattern: an agent is only useful when it is grounded in trusted data, assigned to a specific business workflow, constrained by approved actions, and measured by completed resolution rather than raw activity.
+
+**JT relevance:** keep Run Control / AI Enablement OS tied to the workflow record a business owner can inspect. For Altmark/PM proof, show trusted source row, workflow identity, allowed data/action scope, proposed next step, reviewer decision, approve/edit/hold/escalate state, evidence link, and outcome event. For OpenClaw jobs, today's Job Market Daily Research repair is the internal version of the same rule: production agents need command-safe prompts, real shell/API verification, owner-visible final status, and no pseudo tool-chain steps before their output can be trusted.
+
+Source checks: https://www.salesforce.com/news/stories/agentforce-commerce-announcement/, https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/, https://www.martechnotes.com/traction-complete-launches-data-agents-for-salesforce-on-june-25-to-harden-ai-ready-crm-data/, and `memory/2026-06-29.md`.

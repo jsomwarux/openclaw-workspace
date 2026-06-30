@@ -39,20 +39,20 @@
 
 ## Current Apps / Products
 - `jtsomwaru.com` is proof hub. App gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
-- App strategy correction: distribution + retention are the survival constraint. New app loops must include niche-specific content/testing and retention instrumentation before treating the build as viable.
+- App strategy: distribution + retention are the survival constraint; new app loops need niche content/testing and retention instrumentation before viability.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
 - App content loop priority: for each app, generate niche-native X/LinkedIn creative, test hooks/captions/formats consistently, and tie content angles back to audience pains, differentiated value, and retention behavior.
-- Current review drafts: Run Control live-build offer, local-service operating record, AI CoE Run Control; all passed voice guard.
+- Current review drafts: Run Control offer, local-service operating record, AI CoE Run Control, Claude workflow productionization; all passed voice guard.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest signals: no qualifying Jun 28 role; AI Academy/approved tool stack/project portfolio/adoption metrics/ROI remain useful consulting language.
+- Latest: CodePath AI Enablement is consulting-bridge only; Claude/MCP productionization, eval gates, assets & outcome reporting are useful after Altmark proof.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -69,7 +69,7 @@
 
 ## Active Automation / Crons
 - Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- Jun 28: MC 267 total / 264 active / 12 high / 0 overdue; cost clear. Red metadata: `content-generate-x` route fixed, `Weekly Systems Review` prompt patched/manual run done; wait for natural next runs.
+- Jun 29: MC 274 total / 271 active / 13 audit high / 0 overdue; cost clear. Red metadata: `Job Market Daily Research`, `Autoresearch Sweep`, `Weekly Systems Review`; already hardened/owned, wait for natural next runs.
 - Passive Income Strategist: deterministic fallback digest is artifact safety only, not a true no-build recommendation. June 21 and June 28 were fallback-only; repeated fallback requires a real validation task before the next Sunday.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.

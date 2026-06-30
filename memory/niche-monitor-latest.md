@@ -1,3 +1,3 @@
-**Last updated:** 2026-06-26 09:02 AM EDT
+**Last updated:** 2026-06-29 09:02 AM EDT
 
-🟠 **Salesforce Agentforce 360 release expands builder, scripting, voice, and enterprise context controls** — Salesforce says the Agentforce 360 release adds Agentforce Builder, Agent Script deterministic behavior controls, Agentforce Voice, and Intelligent Context for unstructured enterprise data, a material capability update for JT's Agentforce positioning. (https://www.salesforce.com/agentforce/what-is-new/)
+🟠 **Highwire AI Findings for Inspections** — Highwire/Veriforce launched an AI-powered construction safety inspection feature that turns spoken jobsite observations into structured findings, a concrete construction-ops automation signal for JT's construction niche. Source: https://www.forconstructionpros.com/construction-technology/construction-safety-technology/product/22969044/highwire-highwire-launches-ai-tool-for-faster-construction-safety-inspections

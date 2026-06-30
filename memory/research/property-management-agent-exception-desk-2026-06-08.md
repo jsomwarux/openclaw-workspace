@@ -349,3 +349,22 @@ Altmark / PM proof implication:
 Sources checked June 28:
 - MRI Software, "MRI Software Launches Agora Intelligence and Agora Orchestrator" - https://www.zawya.com/en/press-release/companies-news/mri-software-launches-agora-intelligence-and-agora-orchestrator-l4b8shaz
 - Kirnani Technologies, "Salesforce Consulting Partners: Building Recurring Revenue at Scale" - https://blog.kirnanitechnologies.com/salesforce-consulting-partners-building-recurring-revenue-at-scale/
+
+## 2026-06-29 Morning Brief Market Addendum
+
+The June 29 Morning Brief keeps the PM proof centered on run control, source trust, and resolution evidence.
+
+Fresh market signals:
+- Salesforce's latest Agentforce commerce/help-agent positioning keeps shifting the agent story toward business-owned agents, grounded data, and resolution-based outcomes. That supports selling the control layer around a workflow, not a generic "AI can answer or collect" story.
+- AI-ready CRM data is being pitched as the gate before Agentforce-style automation. That maps directly to Altmark: the useful first artifact is the trusted source export plus rules for who can approve, edit, hold, or escalate a sensitive action.
+- The Monday outreach check showed 0 confirmed shortlist M1 sends in the past 7 days, so the proof and send queue need to stay operationally narrow: Altmark first, then Petri M2 and PM COI wave one.
+
+Altmark / PM proof implication:
+- Keep the Altmark rent delinquency packet first. It is still the closest cash and proof unlock because it asks for the source export and cutover gate needed to finish the workflow.
+- Phrase the proof as a resolution-control record: source row, trusted input state, allowed action scope, payment/context gap, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- PM COI outreach should borrow the same language: "business-owned run control for sensitive property actions" with resolution evidence, not autonomous collections.
+
+Sources checked June 29:
+- Salesforce, "Agentforce Commerce" - https://www.salesforce.com/news/stories/agentforce-commerce-announcement/
+- Salesforce, "Agentforce Help Agent" - https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/
+- MarTechNotes, "Traction Complete Launches Data Agents for Salesforce..." - https://www.martechnotes.com/traction-complete-launches-data-agents-for-salesforce-on-june-25-to-harden-ai-ready-crm-data/

@@ -1,11 +1,12 @@
 # AI Context OS Autoresearch Checklist
 
-Score new signals against this skill before changing positioning or delivery.
+Score generated outputs against this skill before changing positioning or delivery.
 
-- Does the signal improve workflow-specific context extraction, not generic knowledge-base cleanup?
-- Does it help define eval packs, provenance, approval boundaries, freshness, or source ownership?
-- Does it apply to JT's ICPs: property management, construction/trades, wholesale distribution, insurance/CRM, family-office operations?
-- Does it support a sellable implementation sprint with a clear before/after result?
-- Does it avoid medical/legal/financial advice, public client claims without permission, and generic RAG hype?
+1. Does the output frame the work around a named workflow or operating job, not generic knowledge-base cleanup?
+2. Does the output identify concrete context artifacts such as source-of-truth maps, operating rules, examples, escalation rules, or reviewer expectations?
+3. Does the output include eval pack, provenance, approval boundary, freshness, or source-ownership considerations?
+4. Does the output stay grounded in JT's ICPs: property management, construction/trades, wholesale distribution, insurance/CRM operations, or family-office operations?
+5. Does the output support a sellable implementation sprint with a clear before/after result and next task or blocker?
+6. Does the output avoid medical/legal/financial advice, public client claims without permission, generic RAG hype, and invented client evidence?
 
-Promote only signals that sharpen the offer, delivery artifacts, or reusable vertical patterns.
+Pass only outputs that sharpen the offer, delivery artifacts, or reusable vertical patterns.

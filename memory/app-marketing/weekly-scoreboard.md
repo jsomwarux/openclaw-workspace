@@ -177,6 +177,34 @@ Every weekly review ends with exactly one of these:
 - `MEASURE_FIRST`: live work shipped and the next move is source-tag/reporting/indexing measurement before more build or content volume.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-06-22
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-06-22 to 2026-06-28 (0 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 1
+- Web depth: active users 1, pageviews 1, events 4
+- Best item: glow-index GA4 web traffic 2026-06-22 to 2026-06-28 (1 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-22 to 2026-06-28 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 17
+- Web depth: active users 8, pageviews 63, events 258
+- Best item: nash-satoshi GA4 web traffic 2026-06-22 to 2026-06-28 (17 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-06-22 to 2026-06-28 (17 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-06-21
 
 ### glow-index / search_console
@@ -1254,12 +1282,12 @@ Does this suggest the crowded trade is agents?
 Is the sharpe (20 views/impressions)
 
 ### vista / app_store
-- Posts/results logged: 44
+- Posts/results logged: 45
 - Views/impressions: 0
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 44
+- Posts/results logged: 45
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1773,7 +1801,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-06-28_
+_Last updated: 2026-06-29_
 
 <!-- METRICS_SUMMARY_END -->
 
@@ -1818,3 +1846,11 @@ _Last updated: 2026-06-28_
 - Measurement blocker: live post IDs and downstream metrics still need reconciliation for planned Nash/Vista rows; do not increase content volume until pending rows have 24h/72h/7d results.
 - Next durable discovery action: reconcile planned Nash receipt rows in `memory/app-marketing/post-registry.jsonl` to exact live X/TikTok IDs after JT posts, then run metric collection and analysis before scaling.
 - Review doc: `https://docs.google.com/document/d/16YdnE1Zuw9SwQe4xcC7a0Lk3u3yG1fg9caAFybZS5l0/edit` (local: `/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-06-22.md`).
+
+## Run Note — 2026-06-29 Product Content
+- Generated counts: X 0; Reddit 0; TikTok/ReelFarm support 0 hook/slide concepts only; LinkedIn 0.
+- Approved queue entries: none. Queue unchanged at 130 because the required Nash channel-fit artifact is missing.
+- Skips: Nash skipped with `CHANNEL_FIT_REQUIRED` for missing `memory/app-marketing/channel-fit/nash-satoshi.md`; Vista skipped because App Marketing OS registry says paused; Reddit skipped fail-closed; LinkedIn skipped because no new monthly product milestone/proof.
+- Measurement blocker: live post IDs and downstream metrics still need reconciliation, and Nash needs a channel-fit artifact before any new weekly receipt is queued.
+- Next durable discovery action: create `memory/app-marketing/channel-fit/nash-satoshi.md` with chosen channel, reach definition, borrowed-audience surface, shareable output, conversion path, source-tag plan, and kill/scale threshold.
+- Review doc: `https://docs.google.com/document/d/1QcBmTaDQlsN_AQo7bkir64R7x-S4IkEF47ZBDpNe94M/edit` (local: `/Users/jtsomwaru/.openclaw/workspace/memory/drafts/app-marketing-review-2026-06-29.md`).

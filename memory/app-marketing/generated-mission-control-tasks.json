@@ -12,9 +12,9 @@
       "app": "All apps",
       "category": "strategy-reset",
       "reason": "The app portfolio was drifting into all-app work. The reset keeps consulting first, closes the Action Arena gate, makes Glow the only ongoing app bet, caps Nash, and parks Vista.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j573ymvz34g36czc5xza6s0tdd89k7fh"
     },
     {
       "title": "Action Arena: clear Apple Developer org transfer, then EAS/App Store readiness",
@@ -57,9 +57,9 @@
       "app": "Glow Index",
       "category": "seo-pages",
       "reason": "Glow's upside is asynchronous SEO/GEO. The page queue must be chosen by winnability and monetization, not generic volume.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57cj95ktsje702p87d7qzjfv989j604"
     },
     {
       "title": "Nash Satoshi: enforce weekly receipt cap and kill daily generic cadence",
@@ -72,9 +72,9 @@
       "app": "Nash Satoshi",
       "category": "content-cap",
       "reason": "Nash has a real methodology wedge but is the highest distraction/compliance-risk app. Impressions without clicks are fake momentum.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57c7qd1v9a7v87gywt455sg4d89k6v7"
     },
     {
       "title": "Vista: keep paused and archive immediate-growth tasks unless un-pause trigger fires",
@@ -87,9 +87,9 @@
       "app": "Vista",
       "category": "pause",
       "reason": "Vista is the clearest overbuilding trap. It can be monitored, but it should not consume current app-marketing execution time.",
-      "duplicate": true,
-      "created": false,
-      "id": null
+      "duplicate": false,
+      "created": true,
+      "id": "j57dnwh4b8ne842rz3qybhjbvd89jg5f"
     }
   ]
 }

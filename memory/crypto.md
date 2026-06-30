@@ -571,3 +571,11 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Model read:** Research/ranking output exited PRXVT, NOOK, and SIBYL; adjusted NOX up from 5% to 25%, GITLAWB up from 15% to 30%, held SURPLUS at 20%, and added SERV at 25%. SURPLUS had the lone whale alert; SERV is the new-entry signal with the strongest alpha score in the packet.
 - **Weak-coordination warnings:** zero-result X rows were present for A0T, BOTCOIN, CRED, PERKOS, and HEU, and should stay treated as weak-coordination signals.
 - **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, or payment-MCP/x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run during this heartbeat.
+
+## Jun 29, 2026 - 10:17AM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00, validation passed, X research guard passed with 25 entries, 25/25 portfolio coverage, and age 4.31h. `validate-full-analysis.py --max-x-age-hours 8` passed with 24 coins, 6 held coins, 25 X entries, and allocation history at `/Users/jtsomwaru/projects/crypto-agent/data/allocation-history/2026-06-29.json`.
+- **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is heavy. Treat X coordination quality, buy/sell flow, volume, whale evidence, and product/narrative signal as filters, not automatic conviction.
+- **Model read:** Research/ranking output adjusted PRXVT up from 20% to 25%, SIBYL up from 20% to 25%, and SURPLUS up from 20% to 25%; exited NOX, NOOK, and GITLAWB; and added AEON at 25%. SURPLUS had the strongest alpha score in the packet, while AEON was the new-entry signal.
+- **Weak-coordination warnings:** zero-result X rows were present for A0T, CRED, PERKOS, WIRE, and HEU, and should stay treated as weak-coordination signals.
+- **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, payment-MCP, or x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run during this heartbeat.

@@ -61,7 +61,7 @@
 | reelfarm-intel | agents/reelfarm-intel/daily-prompt.md + agents/reelfarm-intel/weekly-prompt.md | agents/autoresearch/checklists/reelfarm-intel.md | stable | 1.000 | 2026-06-12 | 2026-05-31 |
 | linkedin-corpus | skills/linkedin-corpus/SKILL.md | agents/autoresearch/checklists/linkedin-corpus.md | pending | — | — | 2026-05-31 |
 | client-proof-capture | skills/client-proof-capture/SKILL.md | agents/autoresearch/checklists/client-proof-capture.md | pending | — | — | 2026-05-31 |
-| ai-context-os | skills/ai-context-os/SKILL.md | agents/autoresearch/checklists/ai-context-os.md | pending | — | — | 2026-05-31 |
+| ai-context-os | skills/ai-context-os/SKILL.md | agents/autoresearch/checklists/ai-context-os.md | stable | 1.000 | 2026-06-29 | 2026-05-31 |
 | linkedin-corpus-agent | agents/linkedin-corpus/AGENT.md | agents/autoresearch/checklists/linkedin-corpus-agent.md | pending | — | — | 2026-05-31 |
 | client-proof-engine | agents/client-proof-engine/AGENT.md | agents/autoresearch/checklists/client-proof-engine.md | stable | 1.000 | 2026-06-26 | 2026-05-31 |
 | plan-review-pack | skills/plan-review-pack/SKILL.md | agents/autoresearch/checklists/plan-review-pack.md | pending | — | — | 2026-06-06 |
