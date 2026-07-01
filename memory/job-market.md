@@ -3,6 +3,14 @@
 
 ---
 
+## 2026-06-30 - Heartbeat Job Market Pulse
+
+Read the current job-market-agent artifact and verified it is stale: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` is still `Job Market Brief - 2026-06-29`, modified 2026-06-29 05:18 EDT. The 2026-06-30 Job Market Daily Research cron is already in the live non-urgent repair set after stopping before final confirmation, and its payload was patched earlier today with the required final-response checkpoint. No blind rerun.
+
+**Strongest usable signal:** the latest available market signal remains CodePath.org Senior Manager of AI Enablement: strong scope fit around Claude Enterprise, Claude Code, MCP-assisted agents, reusable workflow assets, eval rubrics, review gates, coaching, and outcome reporting, but salary-capped at `$110K-$150K`.
+
+**Positioning implication:** do not create a new application or build task from stale input. Reuse the signal only to tighten JT's AI Workflow Productionization language after Altmark proof: source workflow, approved tools/connectors, eval gate, reviewer state, reusable asset, and outcome proof. Priority stays Altmark packet first, then Petri M2 and PM COI wave one.
+
 ## 2026-06-20 — Heartbeat Job Market Pulse
 
 Read the current job-market-agent daily brief generated at 2026-06-20 05:15. No new US/NYC/remote non-coding AI implementation role cleared JT's 18+/25 filter today; open-board results were thin and mostly returned certification pages, empty job-board results, vendor/event pages, or broad trend content rather than active advisory-track postings.

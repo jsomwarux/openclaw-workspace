@@ -44,8 +44,8 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- App content loop priority: for each app, generate niche-native X/LinkedIn creative, test hooks/captions/formats consistently, and tie content angles back to audience pains, differentiated value, and retention behavior.
-- Current review drafts: Run Control offer, local-service operating record, AI CoE Run Control, Claude workflow productionization; all passed voice guard.
+- App content loop: niche-native creative, tested hooks/formats, and angles tied to audience pains, value, and retention.
+- Current review drafts include Run Control/live-build, local-service proof, Claude productionization, and workspace-agent control-record angles; all voice-guarded.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
@@ -69,7 +69,7 @@
 
 ## Active Automation / Crons
 - Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- Jun 29: MC 274 total / 271 active / 13 audit high / 0 overdue; cost clear. Red metadata: `Job Market Daily Research`, `Autoresearch Sweep`, `Weekly Systems Review`; already hardened/owned, wait for natural next runs.
+- Jun 30: MC 275 total / 271 active / 13 high / 0 overdue; cost clear. Red metadata: `Job Market Daily Research`, `Niche Intelligence Monitor`, `Autoresearch Sweep`, `Weekly Systems Review`; prompt-hardened/owned, wait for natural next runs.
 - Passive Income Strategist: deterministic fallback digest is artifact safety only, not a true no-build recommendation. June 21 and June 28 were fallback-only; repeated fallback requires a real validation task before the next Sunday.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.

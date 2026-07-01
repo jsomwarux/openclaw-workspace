@@ -368,3 +368,23 @@ Sources checked June 29:
 - Salesforce, "Agentforce Commerce" - https://www.salesforce.com/news/stories/agentforce-commerce-announcement/
 - Salesforce, "Agentforce Help Agent" - https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/
 - MarTechNotes, "Traction Complete Launches Data Agents for Salesforce..." - https://www.martechnotes.com/traction-complete-launches-data-agents-for-salesforce-on-june-25-to-harden-ai-ready-crm-data/
+
+## 2026-06-30 Morning Brief Market Addendum
+
+The June 30 Morning Brief reinforces the same buyer-safe lane: productionized agents need a governed workflow surface before they can touch support, property, construction, or resident-sensitive work.
+
+Fresh market signals:
+- Jotform's n8n AI-agent workflow examples keep the agent story practical: support/query automation and multi-step workflows are valuable when the operator can see the flow, inputs, and handoff points.
+- A.CRE's commercial-real-estate AI coverage keeps property workflows broad: leasing, resident communications, maintenance, reporting, and asset workflows all create a need for governance before autonomous action.
+- Highwire/Veriforce's construction-inspection AI signal is a strong adjacent wedge: spoken field observations become structured findings only after they enter a review/assignment trail.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The source export request is still the shortest path to cash and proof because it gives the controlled input needed for the rent-delinquency resolution record.
+- Frame the proof as a governed workflow queue: source row, allowed data/action scope, missing payment/context, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- The construction signal helps the broader Run Control story: "field observation to structured finding to owner assignment" is the same pattern as "ledger/source row to sensitive follow-up to owner-approved resolution."
+- Do not widen the pitch into generic AI automation. The useful first promise remains one controlled workflow with proof of what the AI read, what it was allowed to do, who reviewed it, and what changed.
+
+Sources checked June 30:
+- Jotform, "n8n AI agent workflow example" - https://www.jotform.com/ai/agents/n8n-ai-agent-workflow-example/
+- A.CRE, "AI Tools for Commercial Real Estate" - https://www.adventuresincre.com/ai-tools-commercial-real-estate/
+- For Construction Pros / Highwire, "Highwire Launches AI Tool for Faster Construction Safety Inspections" - https://www.forconstructionpros.com/construction-technology/construction-safety-technology/product/22969044/highwire-highwire-launches-ai-tool-for-faster-construction-safety-inspections

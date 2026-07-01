@@ -75,3 +75,4 @@
 
 2026-06-26 agentforce-360-builder-script-voice-context — Salesforce Agentforce 360 adds Builder, Agent Script controls, Voice, and Intelligent Context for enterprise agent implementation.
 2026-06-29 highwire-ai-inspections-construction-safety — Highwire/Veriforce launched AI Findings for Inspections to convert spoken jobsite observations into structured construction safety findings.
+2026-06-30 salesforce-agentforce-help-agent — Salesforce announced Agentforce Help Agent, generally available July 2026, with guided setup, omni-channel deployment, Salesforce Knowledge grounding, prepackaged actions, and pay-per-resolution pricing.

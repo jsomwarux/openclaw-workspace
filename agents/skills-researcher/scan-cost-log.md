@@ -97,3 +97,4 @@ EOF'
 [2026-06-27T11:01:37Z] | weekly-synthesis | x_queries: 6 | est_cost: $0.25 | web_sources: cowork_plugins,mcp_servers,openclaw_docs,nordeim | findings: 8 | 🔴: 0 | 🟠: 0 | 🟡/🟢: 8 | MC_tasks_pushed: 0 | backlog_skills_open: 44
 2026-06-27T11:33:49-04:00 | daily-scan | x_queries: 6 | web_queries: 18 | findings: 4 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-29T11:32:46-04:00 | daily-scan | x_queries: 6 | web_queries: 15 | findings: 8 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
+2026-06-30T11:32:44-04:00 | daily-scan | x_queries: 6 | web_queries: 11 | findings: 10 | 🔴: 0 | 🟠: 0 | messaged_jt: no

@@ -208,3 +208,4 @@
 
 ## Autoresearch Sweep - 2026-06-29
 - `ai-context-os`: baseline 1.000 -> final 1.000; changed file: agents/autoresearch/checklists/ai-context-os.md.
+[2026-06-30 10AM] Film: reviewed 2026-06-29 note + today Job Market Daily recurrence; friction was the job-market cron stopping after useful work without final confirmation, leaving the latest daily brief stale at 2026-06-29. -> Fix: patched `eve-job-market-daily-005` with a top-of-prompt final-response checkpoint requiring `JOB_MARKET_DAILY_OK`, `NO_QUALIFYING_ROLES`, or `MARKET_INTEL_ONLY`, and added an active regression row to inspect artifact freshness before any retry. | Improve: 10AM gate verified Crypto Full Analysis actual summary/Telegram send and outreach preflight PASS before accepting stale cron metadata.
