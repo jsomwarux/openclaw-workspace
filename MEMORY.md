@@ -17,13 +17,12 @@
 ## Consulting Positioning
 - Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs before automation.
 - Package: AI Enablement OS / Run Control: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric.
-- ICP: NYC/metro property ops first; construction, wholesale/skilled trades, insurance/Agentforce as adjacent proof lanes.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
 ## Active Clients
 - Altmark is top paid/proof lane: rent delinquency source-export ask/Yair approve-edit packet is the cash + proof gate before deploy and remaining invoice.
 - Best public proof frame: controlled exception handling for delinquency/resident-sensitive follow-up, not autonomous collections.
-- Aya dashboard is done; acquisition lanes stalled; keep proof privacy-safe until permission.
+- Aya dashboard is done; acquisition lanes stalled. Marketsmith 30-day dashboard + AI-insights acceleration opportunity is active; frame as operating sprint, not raw Azure staff augmentation.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
@@ -34,7 +33,7 @@
 
 ## Consulting Delivery / Niche Matrix
 - Client/discovery work requires Client OS + reusable-IP capture. Services-as-software = manual proof, edge cases, failures, metrics before automation.
-- Delivery focus: property ops first, construction/skilled trades second, Agentforce when Salesforce readiness is real.
+- Delivery focus: July PM-first n8n GTM; construction one test; wholesale/home services hold; Agentforce only with SF stack + trigger + reply path.
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
@@ -45,7 +44,7 @@
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
 - App content loop: niche-native creative, tested hooks/formats, and angles tied to audience pains, value, and retention.
-- Current review drafts include Run Control/live-build, local-service proof, Claude productionization, and workspace-agent control-record angles; all voice-guarded.
+- Current review drafts include Run Control/live-build, local-service proof, Claude productionization, workspace-agent control-record, and completed-resolution operating-record angles.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
@@ -69,8 +68,7 @@
 
 ## Active Automation / Crons
 - Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- Jun 30: MC 275 total / 271 active / 13 high / 0 overdue; cost clear. Red metadata: `Job Market Daily Research`, `Niche Intelligence Monitor`, `Autoresearch Sweep`, `Weekly Systems Review`; prompt-hardened/owned, wait for natural next runs.
-- Passive Income Strategist: deterministic fallback digest is artifact safety only, not a true no-build recommendation. June 21 and June 28 were fallback-only; repeated fallback requires a real validation task before the next Sunday.
+- Jul 1: MC 279 total / 276 active / 13 high / 0 overdue; cost clear. Red metadata now only `Autoresearch Sweep` and `Weekly Systems Review`, both command-style repair/natural-next-run items; no blind reruns.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 

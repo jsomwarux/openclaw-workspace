@@ -587,3 +587,11 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Model read:** Research/ranking output adjusted SURPLUS up from 20% to 35%, GITLAWB up from 15% to 25%, held PRXVT at 20%, exited NOX, NOOK, and SIBYL, and added AEON at 20%. SURPLUS had the strongest alpha score in the packet and a first whale-trade alert; AEON was the new-entry signal.
 - **Weak-coordination warnings:** zero-result X rows were present for A0T, BOTCOIN, LITCOIN, CRED, PERKOS, and WIRE, and should stay treated as weak-coordination signals.
 - **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, payment-MCP, or x402 experiments without JT manually deciding and approving. No extra nonessential X pulls were run during this heartbeat.
+
+## Jul 1, 2026 - 10:12AM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00, validation passed, X research guard passed with 25 entries, 25/25 portfolio coverage, and age 4.22h. `validate-full-analysis.py --max-x-age-hours 8` passed with 24 coins, 6 held coins, 25 X entries, and allocation history at `/Users/jtsomwaru/projects/crypto-agent/data/allocation-history/2026-07-01.json`.
+- **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is heavy. Treat X coordination quality, buy/sell flow, volume, market-cap room, and product/narrative evidence as filters, not automatic conviction.
+- **Model read:** Research/ranking output adjusted PRXVT up from 20% to 25%; exited NOX, NOOK, GITLAWB, SIBYL, and SURPLUS; and added LFI at 30%, FOLD at 25%, and SAID at 20%. No new whale alerts were present.
+- **Weak-coordination warnings:** zero-result X rows were present for A0T, WIRE, and HEU, and should stay treated as weak-coordination signals.
+- **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, payment-MCP, x402 experiments, or personalized financial advice. No extra nonessential X pulls were run during this heartbeat.

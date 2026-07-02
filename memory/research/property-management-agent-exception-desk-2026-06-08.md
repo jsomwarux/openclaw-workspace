@@ -388,3 +388,21 @@ Sources checked June 30:
 - Jotform, "n8n AI agent workflow example" - https://www.jotform.com/ai/agents/n8n-ai-agent-workflow-example/
 - A.CRE, "AI Tools for Commercial Real Estate" - https://www.adventuresincre.com/ai-tools-commercial-real-estate/
 - For Construction Pros / Highwire, "Highwire Launches AI Tool for Faster Construction Safety Inspections" - https://www.forconstructionpros.com/construction-technology/construction-safety-technology/product/22969044/highwire-highwire-launches-ai-tool-for-faster-construction-safety-inspections
+
+## 2026-07-01 Heartbeat Market Addendum
+
+The July 1 Morning Brief reinforces the same buyer-safe claim: agents are becoming accountable workflow actors, so JT's proof needs to show control, traceability, and resolution evidence before sensitive actions move.
+
+Fresh market signals:
+- CIO's AI AGENT Act coverage frames the emerging governance bar around user-linked accountability, FTC registration, revocable access, and traceability for agent actions. Even though the proposal targets consumer agents, the enterprise takeaway is procurement and risk review will ask who authorized the agent, what access it had, how revocation works, and how actions are recorded.
+- Salesforce's Agentforce Help Agent announcement moves service-agent pricing toward pay-per-resolution and end-to-end issue handling, with escalation/no-charge boundaries when a human is needed or the customer is unhappy. That strengthens the pitch for outcome-tied service workflows only when escalation and audit boundaries are explicit.
+- The Morning Brief's Nash/Dynasty skips are also useful operational proof: stale external signals should be held, not forced into content. That is the same run-control pattern as holding resident-sensitive actions when the input is stale or incomplete.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The rent-delinquency packet should read as a controlled resolution record: source export, authorized actor, allowed data/action scope, payment/context gap, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- PM COI wave one should use the language of accountable service workflows: "resolution with escalation evidence" is stronger than "autonomous collections."
+- The weekly retainer wedge is operating evidence: review stale inputs, revoked/blocked actions, owner approvals, completed resolutions, and dollars/value moved.
+
+Sources checked July 1:
+- CIO, "How the Senate's AI AGENT Act could reshape enterprise AI governance" - https://www.cio.com/article/4191009/how-the-senates-ai-agent-act-could-reshape-enterprise-ai-governance.html
+- Salesforce, "Salesforce Launches Agentforce Help Agent That Deploys in Minutes and Only Charges for Resolutions" - https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/

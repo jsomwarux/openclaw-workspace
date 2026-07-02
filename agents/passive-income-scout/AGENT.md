@@ -387,7 +387,7 @@ For each idea, write:
 **Lateral connection:** [what two things are being combined, if applicable]
 **levelsio equivalent:** [which of his properties this resembles most — or if it's a new pattern]
 **JT stack fit:** [specific tools used + what the shortcut is vs. someone without his stack]
-**Revenue model:** [one line — be specific about pricing]
+**Revenue/distribution/ops:** [pricing, automated distribution path, maintenance burden, and first-revenue path within 4 weeks]
 **Longevity signal:** [why this still works in 3 years — is the underlying need secular?]
 **Research signal:** [what you found that suggests demand — be specific: link, post, pattern]
 **Behavioral demand:** [primary human motive + emotional trigger + why the user acts now]

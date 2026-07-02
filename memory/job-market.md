@@ -526,3 +526,13 @@ Read today's job-market-agent brief. CodePath.org Senior Manager of AI Enablemen
 **Positioning implication:** reframe OpenClaw/Mission Control as AI workflow productionization proof with quality gates, reusable agent assets, and outcome reporting. Extend EnablementOps / AgentGuard / ROIFlow with Claude/MCP eval-gate language after Altmark proof; do not create a new application or build task ahead of Altmark.
 
 Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; CodePath signal: https://www.builtinaustin.com/job/senior-manager-ai-enablement/9967588
+
+## 2026-07-01 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief. No new NYC/remote non-coding AI implementation role cleared the 18/25 filter. Search quality remained weak: the role-shaped hits were blocked by geography, pre-sales/partner focus, contract status, or hands-on software/AI engineering depth.
+
+**Strongest signal:** the useful market signal is governance and value reporting, not a new application. The brief points to AI-native SDLC, eval, observability, rollback, and AI-generated-code governance as demand themes, but the public postings attach them to software architecture or DevSecOps rather than JT's business-side lane.
+
+**Positioning implication:** keep Mission Control/OpenClaw, Altmark, and Run Control framed as business-side agent operations proof: request intake, approved workflows, eval/review gates, rollback or blocked-action evidence, adoption cadence, and measurable outcome reporting. No new application, certification, or build task today; Altmark packet and active consulting sends stay above job-market exploration.
+
+Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`.

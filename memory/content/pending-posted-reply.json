@@ -1,16 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-06-24",
+      "date": "2026-07-01",
       "day": "wednesday",
-      "line_no": 233,
+      "line_no": 238,
       "platform": "linkedin",
-      "summary": "Salesforce paid $3.6B for run control, not chatbot quality; the operating layer after the agent reads the request is where the value lives.",
-      "topic": "salesforce-fin-run-control-moat"
+      "summary": "AI Operations Diagnostic drives first-workflow selection: source trusted, approval owner named, stop rule clear, output lands in system someone already checks.",
+      "topic": "first-workflow-run-control-diagnostic-criteria"
     }
   ],
   "note": "",
-  "sent_at": 1782302541,
+  "sent_at": 1782907361,
   "source": "content-reminder",
   "status": "pending"
 }

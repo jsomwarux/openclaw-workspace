@@ -98,3 +98,4 @@ EOF'
 2026-06-27T11:33:49-04:00 | daily-scan | x_queries: 6 | web_queries: 18 | findings: 4 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-29T11:32:46-04:00 | daily-scan | x_queries: 6 | web_queries: 15 | findings: 8 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 2026-06-30T11:32:44-04:00 | daily-scan | x_queries: 6 | web_queries: 11 | findings: 10 | 🔴: 0 | 🟠: 0 | messaged_jt: no
+[2026-07-01T11:30:00-04:00] | daily-scan | x_queries: 6 | web_queries: 8 | findings: 7 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
