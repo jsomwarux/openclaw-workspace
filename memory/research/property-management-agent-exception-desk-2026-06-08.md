@@ -406,3 +406,23 @@ Altmark / PM proof implication:
 Sources checked July 1:
 - CIO, "How the Senate's AI AGENT Act could reshape enterprise AI governance" - https://www.cio.com/article/4191009/how-the-senates-ai-agent-act-could-reshape-enterprise-ai-governance.html
 - Salesforce, "Salesforce Launches Agentforce Help Agent That Deploys in Minutes and Only Charges for Resolutions" - https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/
+
+## 2026-07-02 Heartbeat Market Addendum
+
+The July 2 Morning Brief reinforces the Run Control lane from both sides of the market: AI agents are getting policy/identity/sandboxing layers, while NYC property decisions remain compliance-sensitive and date-bound.
+
+Fresh market signals:
+- Microsoft's Agent Governance Toolkit is a direct agent-production signal: the public positioning centers on policy enforcement, zero-trust identity, execution sandboxing, reliability engineering, and OWASP Agentic Top 10 coverage. That is the technical version of the same buyer question JT needs to answer in proofs: what was the agent allowed to do, under whose identity, with what guardrails, and what evidence exists after the run?
+- NYC Rent Guidelines Board guidance for leases commencing October 1, 2026 through September 30, 2027 was adopted on June 25, 2026. That keeps property workflows in a rule-sensitive context where rent, renewal, delinquency, and tenant-action steps need auditability rather than generic automation.
+- The Morning Brief's X API cost warning also matters: avoid chasing extra X pulls for PM proof. Use verified official sources and convert them into client-facing proof language.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The rent-delinquency packet should show a control record before action: source export, rule/date context, authorized actor, allowed data/action scope, payment/context gap, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- PM COI wave one should frame the offer as "run control for sensitive property workflows": not autonomous collections, but an owner-visible queue that proves what changed and what was held.
+- The Microsoft signal gives the technical analogy for the proof asset: policy enforcement plus identity plus sandboxing becomes, in buyer language, role-scoped tools, blocked actions, review gates, and replayable evidence.
+
+Sources checked July 2:
+- Microsoft, "Agent Governance Toolkit" - https://github.com/microsoft/agent-governance-toolkit
+- Microsoft docs site, "Agent Governance Toolkit" - https://microsoft.github.io/agent-governance-toolkit/
+- NYC Rent Guidelines Board, "Rent Guidelines" - https://rentguidelinesboard.cityofnewyork.us/rent-guidelines/
+- NYC Rent Guidelines Board, "Adopted Summary Of Guidelines (2026-27)" - https://rentguidelinesboard.cityofnewyork.us/adopted-summary-of-guidelines-2026-27/

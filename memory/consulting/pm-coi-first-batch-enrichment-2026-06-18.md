@@ -1,6 +1,8 @@
 # PM COI First Batch Enrichment - 2026-06-18
 
-Status: in progress. Research notes only. Do not send. Contact completeness still requires LinkedIn profile URL plus verified email before outreach-ready status.
+Status: superseded by Outbound v2 on 2026-07-02. Research notes only. Do not send from this file.
+
+Outbound v2 channel rule: a prospect is send-ready with a named buyer plus verified email OR accepted LinkedIn connection. Both are preferred but no longer mandatory. Unaccepted LinkedIn-only remains connection-path only.
 
 Artifact bundle:
 - Local: `memory/consulting/pm-coi-artifact-bundle-2026-06-18.md`
@@ -373,7 +375,7 @@ Status: still not promoted.
 
 Reason:
 - Clinton remains strong fit, but the clean current path is split: Phillip Hunsinger has a clean LinkedIn and first-party role evidence, while Troy Berman has a source-verified Clinton email in an NYPSC filing but no clean Clinton LinkedIn profile found in this pass.
-- Do not promote unless one same-person route has both a LinkedIn profile URL and a buyer-specific verified email, or JT explicitly accepts a lower-quality LinkedIn-first/general-route test.
+- Do not promote unless one same-person route has a named buyer plus verified email OR accepted LinkedIn connection. General-route tests require explicit JT acceptance.
 
 Sources checked:
 - https://www.clintonmanagement.com/about/executive-and-senior-management-team/

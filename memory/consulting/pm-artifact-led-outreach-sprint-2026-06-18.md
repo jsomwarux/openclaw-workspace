@@ -1,4 +1,17 @@
-# PM Artifact-Led Outreach Sprint - 2026-06-18
+# PM / Trades Outbound v2 Sprint - adopted 2026-07-02
+
+Supersedes the June 18 artifact-led sprint wherever rules conflict.
+
+## 2026-07-02 Decision
+Adopt the Fable outreach output as `JT Outbound Operating System v2` for July 2026.
+
+Core changes:
+- Old contact completeness rule is retired. Send-ready now requires verified email OR accepted LinkedIn connection, plus a named buyer and live niche proof asset.
+- Proof claim goes in M1. Email M1 has no link; accepted LinkedIn DM can carry one-pager PNG; Email M2 carries Loom/link.
+- PM is 80% of outbound. GCs/specialty trades are 20% only after the Job Status Dashboard artifact exists. Wholesale and Agentforce/insurance are trigger-only.
+- Build once per niche, personalize one sentence per prospect. No custom decks/demos/builds before reply.
+- Volume target is 15 new prospects launched per week, 60/month, about 200 touches/month.
+- Weekly review must start with sends vs target. If sends missed, copy debate is secondary.
 
 ## Decision
 Run the next 30 days of new cold outreach through one narrow property-management lane. Do not spread new acquisition effort across wholesale, Agentforce insurance, trades, generic T3 sends, or new custom demos until this sprint has 30-50 measured sends.

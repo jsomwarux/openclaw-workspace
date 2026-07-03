@@ -1,6 +1,6 @@
 # Altmark Group — Client Status
 
-Last updated: 2026-06-11
+Last updated: 2026-07-02
 
 ## Client
 - Company: Altmark Group
@@ -52,7 +52,7 @@ Known active/current workflows from JT update:
 - Insurance expiration workflow is live in production and working as expected after a few minor updates.
 - Altmark paid the final 50% for the insurance expiration workflow.
 - Dedicated PC for workflows was installed in Altmark's office last week.
-- Rent delinquency workflow is active but blocked on Yair: Altmark paid the initial 50%; 2026-05-29 synthetic dry run passed with 8 rows classified into 1 included, 4 manual review, 1 excluded, 2 cleanup, 0 unclassified, and 0 tenant-facing drafts from sensitive/cleanup rows. JT cannot finish, invoice the remaining 50%, or move to the next workflows until Yair sends the source/export/reviewer/cadence/exception-rule inputs.
+- Rent delinquency workflow is active. 2026-07-02 execution path from JT: finish setting up Conductor on Beelink, follow Danny's guide and set up everything needed, configure everything else needed for the rent delinquency bot, then use Fable for final playbook review before deploy/payment closeout. Altmark paid the initial 50%; 2026-05-29 synthetic dry run passed with 8 rows classified into 1 included, 4 manual review, 1 excluded, 2 cleanup, 0 unclassified, and 0 tenant-facing drafts from sensitive/cleanup rows.
 - Altmark pitched an additional workflow request: DHCR Lease Renewal Automation Phase 1, legal-rent renewals only. Proposal reviewed and delivery assets prepared. Next step after rent delinquency deployment/testing: confirm $1,750 kickoff payment, populated command center spreadsheet owner/date, current RGB rates, Phase 1 included units/properties, approved email recipients, and DHCR rent rolls for all included properties.
 
 ## Revenue / Payment Status
@@ -75,6 +75,9 @@ Known active/current workflows from JT update:
 - Full audit trail for workflow actions.
 
 ## Immediate Next Actions
+- 2026-07-02: finish setting up Conductor on Beelink.
+- 2026-07-02: follow Danny's guide and configure everything needed for the rent delinquency bot.
+- 2026-07-02: run Fable final playbook review before deploy/payment closeout.
 - Update Client OS proof/payment gates to reflect insurance workflow live + paid.
 - For rent delinquency: synthetic testing is complete; use `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md` to request/confirm the redacted Altmark sample export and live-sample prerequisites with Yair.
 - 2026-06-06: Plan Review Pack applied to the rent delinquency gate at `proof-assets/rent-delinquency-plan-review-pack-2026-06-06.md`; use it to review source report, reviewer, cadence, exception rules, and proof boundary before first Altmark sample run.

@@ -386,7 +386,7 @@ Best candidates:
 Current issue:
 - Phillip has clean LinkedIn and first-party role evidence, but no verified direct email.
 - Troy has a source-verified Clinton email from a public NYPSC filing, but no clean Clinton LinkedIn profile found in this pass.
-- Keep blocked until one same-person route has both LinkedIn profile URL and verified buyer email, or JT explicitly accepts a lower-quality LinkedIn-first/general-route test.
+- Outbound v2 update: keep blocked until one same-person route has a named buyer plus verified buyer email OR accepted LinkedIn connection. General-route tests require explicit JT acceptance.
 
 ## Anti-Pattern Check
 

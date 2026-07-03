@@ -230,3 +230,4 @@
 
 ## Autoresearch Sweep - 2026-07-01
 - `passive-income-scout`: baseline 0.667 -> final 1.000; changed file: agents/passive-income-scout/AGENT.md.
+[2026-07-02 10AM] Film: reviewed 2026-07-01 note + current Autoresearch red row; friction was the recurring Autoresearch Sweep still failing on pseudo-command text (`print lines ... (agent)`) even though the referenced weekly prompt had command-safety guidance. -> Fix: patched the live Autoresearch cron message with a top-of-prompt `LATEST AUTORESEARCH COMMAND PATCH - 2026-07-02` requiring executable `sed`/`rg`/`test` shell commands and blocking pseudo tool text; existing pseudo-command regression rows remain the owner checks. | Improve: 10AM gate verified Crypto Full Analysis validation/Telegram delivery and outreach preflight PASS before accepting the heartbeat.

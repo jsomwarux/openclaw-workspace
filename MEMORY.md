@@ -20,15 +20,16 @@
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
 ## Active Clients
-- Altmark is top paid/proof lane: rent delinquency source-export ask/Yair approve-edit packet is the cash + proof gate before deploy and remaining invoice.
+- Karen Vitale site live; post only with permission + proof framing. Profile/content/payment closeout remains.
+- Altmark is top paid/proof lane: finish Conductor on Beelink from Danny's guide, configure the rent delinquency bot, then use Fable for final playbook review before deploy/payment closeout.
 - Best public proof frame: controlled exception handling for delinquency/resident-sensitive follow-up, not autonomous collections.
-- Aya dashboard is done; acquisition lanes stalled. Marketsmith 30-day dashboard + AI-insights acceleration opportunity is active; frame as operating sprint, not raw Azure staff augmentation.
+- Aya dashboard needs full Fable review, final updates, then a Gil review meeting; acquisitions remain stalled.
+- Marketsmith interview went well; follow-up expected Jul 6-7. Angle: secure data, agent lessons, Snowflake gates, client prompts, competitor research.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Cash path/send queue: Altmark/Yair source-export ask first, then Petri M2, PM COI wave one, HPM/Superior M2s.
-- PM COI wave one is JT-owned/send-ready for 8 LinkedIn M1s; expand only after JT handles/holds wave one.
+- Outbound v2 adopted Jul 2: proof in M1, email-primary PM sequence, verified email OR accepted LinkedIn as reachable channel, 15 new prospects/week after deliverability audit + COI proof pack.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix
@@ -38,7 +39,7 @@
 
 ## Current Apps / Products
 - `jtsomwaru.com` is proof hub. App gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
-- App strategy: distribution + retention are the survival constraint; new app loops need niche content/testing and retention instrumentation before viability.
+- App strategy: distribution + retention are the survival constraint. Current ops: Apple follow-up, Fable UGC/paid onboarding review, Yair idea exchange, then Fable playbooks and Codex/Opus implementation.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
@@ -68,7 +69,7 @@
 
 ## Active Automation / Crons
 - Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- Jul 1: MC 279 total / 276 active / 13 high / 0 overdue; cost clear. Red metadata now only `Autoresearch Sweep` and `Weekly Systems Review`, both command-style repair/natural-next-run items; no blind reruns.
+- Jul 2: MC 282 total / 280 active / 14 high / 0 overdue; cost clear. Red metadata: `Job Application Auto-Builder` 1, `Autoresearch Sweep` 2, `Weekly Systems Review` 2; prompt-hardened/natural-next-run, no blind reruns.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 

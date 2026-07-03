@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Karen Vitale SoberLife-Coach Website — 2026-07-02
+**What:** Finished and verified the live SoberLife-Coach website for Karen Vitale with clear confidential recovery-coaching positioning, executive/public-figure/family audience paths, credential proof, and consultation CTA.
+**For:** Karen Vitale client work.
+**Outcome:** `https://soberlife-coach.com` redirects to `https://www.soberlife-coach.com/`, returns HTTP 200 on Vercel, and exposes title `SoberLife-Coach | Confidential Recovery Coaching` plus description metadata for confidential recovery coaching.
+**Demonstrates:** local-service website delivery, sensitive-service positioning, metadata/launch verification, and client web presence packaging.
+**Content angle:** The proof is not "I built a website." It is turning a sensitive solo-professional service into a clear, private, credible web presence that can support referrals and consultations.
+**Status:** complete.
+
 ## Glow Index Product Analysis SEO/GEO Pass — 2026-06-18
 - **What:** Upgraded existing `/rankings/[id]` product analysis pages with explicit `AI skincare analysis` extraction copy, source tag instrumentation, and category internal links.
 - **For:** Internal app marketing / Glow Index organic acquisition.

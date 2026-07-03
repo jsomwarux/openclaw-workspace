@@ -4,9 +4,14 @@
 - Client: Aya
 - Relationship: active anchor client
 - Completed: $1,500 dashboard
-- Active: $1,000 StreetEasy scraper
-- Pending: $2,500 co-living dashboard
+- Active as of 2026-07-02: full Fable review of dashboard, final updates, and meeting with Gil to review
+- Prior lanes: StreetEasy scraper/co-living dashboard are not the current execution path unless JT reactivates them
 - Stalled: acquisitions dashboard
+
+## Immediate Next Actions — 2026-07-02
+- Have Fable review the dashboard in entirety.
+- Make any final dashboard updates from that review.
+- Set up meeting with Gil to review.
 
 ## Operating Rule
 Treat Aya as a proof-point source when shipped work has a concrete outcome. Update proof points, recent builds, and content angles immediately when completed.

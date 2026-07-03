@@ -102,3 +102,11 @@ The property insurance expiration teardown now has a send-ready acquisition pack
 - Referral proof: Yair testimonial/referral ask only after acceptance and proof-safe boundaries clear.
 - Sales proof: before/after ledger per workflow with artifacts for hours saved, days-to-first-contact, lapses caught, row counts, or exception handling.
 - Standing evidence rule: every numeric or client-facing claim needs an artifact link, screenshot, log line, or explicit unverified flag.
+
+## 2026-07-02 Outbound v2 Proof Stack
+Build only these three outbound proof assets before further outbound asset sprawl:
+1. COI Compliance Autopilot proof pack: annotated PNG/PDF plus 90-second Loom hosted at `jtsomwaru.com/proof/coi` with analytics.
+2. Job Status Dashboard pack: 60-second Loom and snapshot PNG, only with Gil/Aya permission or fully blurred/anonymized detail.
+3. Arrears Follow-up one-pager: honest status as currently deploying, not accepted/live unless verified.
+
+Proof in M1 is now allowed and required for v2, but private names/data remain blocked without explicit permission.

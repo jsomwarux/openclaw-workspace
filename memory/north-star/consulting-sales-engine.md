@@ -140,3 +140,12 @@ Next unblocked JT action: review/post the AI Ops Teardown and log the posted URL
 - Default offer ladder: Ops Bottleneck Audit ($1,500), One Workflow Live ($3,500-$6,500), Ops Copilot Retainer ($1,500-$2,500/mo), Productized Verticals ($4,500-$6,000).
 - Lead positioning for property ops: "I install the back-office automations property managers wish AppFolio had - built, supervised, monitored."
 - Pipeline dashboard requirement: stage, weighted dollars, days-in-stage, blocked-on-client flag, and 48h/96h escalation timers.
+
+## 2026-07-02 Outbound v2 Adoption
+- Adopted Fable outreach output as the July outbound operating system after the prior system produced zero replies.
+- Diagnosis: visibility/volume failure, proof buried in M2, offer names written in JT/internal language, channel-ICP mismatch, unsystematized warm referrals, and homework CTAs.
+- New channel rule: send-ready requires named buyer plus verified email OR accepted LinkedIn connection. Both are no longer mandatory.
+- New ICP split: 80% NYC metro property management, 20% GCs/specialty trades only after the job-status proof asset exists. Wholesale and Agentforce/insurance are trigger-only.
+- New proof rule: proof claim goes in M1. Email M1 has no link; LinkedIn post-accept DM can carry PNG; Email M2 delivers Loom/link unconditionally.
+- New quota: 15 new prospects launched/week, 60/month, roughly 200 touches/month. Do not judge a variant below 30 sends or a channel below 100 touches.
+- Immediate 72h order: baseline send/deliverability audit, permission/referral asks for proof, COI proof pack, rebuild 40 PM-firm list, launch first 15.

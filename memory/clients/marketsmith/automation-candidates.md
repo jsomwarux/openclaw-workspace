@@ -1,4 +1,9 @@
-# Automation Candidates — [Client]
+# Automation Candidates — Marketsmith
 
 | Candidate | Manual Trigger | Frequency | Pain | Inputs | Outputs | Edge Cases Known | Ready To Automate? | Notes |
 |---|---|---:|---|---|---|---|---|---|
+| Snowflake data-readiness checker | Data refresh lands | Per refresh | Bad or incomplete data can generate wrong insights | Clean-data qualification file, Snowflake table/export metadata, required fields | Pass/fail report, missing fields, blocked reason | Dirty data, schema drift, stale data, client-specific requirements | Not yet | Needs client-specific clean-data criteria |
+| Client-specific insight prompt pack | New client/dashboard insight request | Per client/report | Generic Snowflake AI may miss client priorities | Client business goals, audience, KPIs, dashboard context | Tailored insight prompts and review checklist | Conflicting priorities, confidential client info, weak business context | Not yet | Strong proposal angle |
+| Build lessons memory | Dashboard/build completed | After each build | Builds do not automatically get faster unless lessons are captured | Build notes, issues, fixes, acceptance feedback | `lessons.md`-style improvement log | Low-quality lessons, private data leakage | Yes, with privacy guard | Mirrors JT/OpenClaw operating model |
+| Competitor research agent | Marketing strategy refresh | Weekly/monthly | Competitor learnings are manual and easy to miss | Competitor sites/content/ads/public signals | Pattern summary, recommended ideas to test | Copyright/privacy boundaries, superficial copying | Not yet | Present as research + adaptation, not cloning |
+| Industry learning agent | Ongoing growth research | Daily/weekly | Business needs fresh niche learning | Industry sources, competitor updates, client goals | Growth opportunities and experiments | Noisy sources, irrelevant trends | Not yet | OpenClaw-like personal agent angle |

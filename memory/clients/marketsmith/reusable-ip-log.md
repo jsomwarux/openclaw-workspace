@@ -4,6 +4,9 @@ Capture patterns that can become templates, offers, agents, scripts, checklists,
 
 | Date | Source Workflow | Reusable Pattern | What To Productize | Privacy Boundary | Next Asset | Owner | Status |
 |---|---|---|---|---|---|---|---|
+| 2026-07-02 | Marketsmith interview/discovery | AI insight ops buyers need security, scalability, and data-readiness gates before generated insights are trusted | Security/scalability/data-intake discovery checklist for dashboard/marketing analytics clients | Redacted; no client dashboard examples stored | Marketsmith follow-up playbook/proposal | Eve/JT | Draft after leadership follow-up |
+| 2026-07-02 | Snowflake insight workflow | Client-specific prompt packs beat generic built-in AI insight generation | Client-priority prompt-brief template for dashboard insights | Redacted; business needs only, no private data | Prompt-pack section in proposal | Eve/JT | Candidate |
+| 2026-07-02 | JT/OpenClaw operating model | Build agents should maintain `lessons.md` so each build gets faster and more reliable | Delivery-memory pattern for repeatable dashboard/agent builds | Generic pattern, no client data | Proposal/process diagram | Eve/JT | Candidate |
 
 ## Capture Prompts
 After each delivery block, ask and answer:

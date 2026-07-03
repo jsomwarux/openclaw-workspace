@@ -47,6 +47,8 @@ n8n workflow that automates their single biggest manual process. For parts distr
 
 ## ICP 2 — NYC Construction & Skilled Trades ($3M–$20M)
 
+**July 2026 outbound status:** Secondary lane only. Do not scale trades outreach until the Job Status Dashboard proof asset exists: blurred Aya-style dashboard snapshot plus 60-second Loom showing floor-by-floor / room-by-room visibility from existing tracking sheets. Sequence is email plus phone, not LinkedIn-first.
+
 **Who they are:**
 General contractors, specialty subcontractors (plumbing, electrical, HVAC, roofing), or construction management firms. Typically 5–50 employees, $3M–$20M in annual revenue. NYC-based or NYC metro. Often hold state licensing (electrical, plumbing, general contractor). Family business or founder-led. May operate on ServiceTitan, Jobber, or Buildertrend — or nothing at all.
 
@@ -84,6 +86,8 @@ Construction progress tracker (like Aya dashboard) or job cost tracking automati
 ---
 
 ## ICP 3 — NYC Property Management (Small–Mid)
+
+**July 2026 outbound priority:** Primary cold-outbound lane for the next 30 days. Target NYC metro firms around 200-3,000 units, especially rent-stabilized exposure or AppFolio/Yardi/Buildium signals. First proof asset is COI Compliance Autopilot: vendor cert expiration tracking, 30/14/7-day alerts, drafted chase emails, and logged review state. Send-ready requires a named buyer plus verified email OR accepted LinkedIn connection.
 
 **Who they are:**
 Independent property managers or small PM firms handling 50–500 units across NYC residential/commercial. May manage for third-party owners (common in NYC) or own the properties themselves. Often using AppFolio, Buildium, or Rent Manager — NOT Salesforce.

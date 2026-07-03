@@ -31,8 +31,8 @@ If it exits non-zero: fix reported errors before proceeding. A failed preflight 
 
 Before generating outreach, uploading outreach, or creating any M1/M2/M3 task:
 1. Check `pipeline.md`, the client slug folder, and existing Drive client/T3 batch folders for the company name and obvious aliases.
-2. Confirm every prospect that passes the outreach threshold has both a LinkedIn profile URL and a verified email address. Warm intro paths are useful context, but do not replace email capture unless JT explicitly says this prospect is an exception.
-3. If LinkedIn or verified email is missing, write `channel_status: incomplete` in `brief.json`, create/return a single "find verified email/LinkedIn" next step, and do **not** call the packet send-ready yet.
+2. Confirm every prospect that passes the outreach threshold has a named buyer and one reachable channel: verified email OR accepted LinkedIn connection. Both are useful but no longer mandatory under Outbound v2 adopted 2026-07-02.
+3. If the only channel is an unaccepted LinkedIn profile, write `channel_status: connection_path_only` in `brief.json`, create/return a connection/request next step, and do **not** call the packet send-ready yet.
 4. If a duplicate active client/prospect exists, update the existing record instead of creating a new client folder or duplicate outreach task.
 
 ## Tier Routing — Classify Before Starting
@@ -44,22 +44,18 @@ Hard gates before scoring:
 - Prospect maps to n8n workflow automation, Agentforce activation, AI Context OS, dashboarding, or ops implementation.
 - Prospect is NYC/metro, referral-connected, or clearly remote-serviceable without enterprise-procurement drag.
 - Agentforce prospects require confirmed Salesforce, Novidea, or Salesforce-native workflow evidence.
-- Before send-ready status, prospect has buyer access plus both a LinkedIn profile URL and verified email.
+- Before send-ready status, prospect has buyer access plus one reachable channel: verified email OR accepted LinkedIn connection.
 
-Score prospects /100:
-- Proof proximity 25: Altmark/Aya/property/construction resemblance, reusable proof, screenshot/story potential.
-- Revenue likelihood 20: realistic $3.5K-$15K project, owner/ops pain, budget line already implied.
-- Workflow specificity 15: visible manual process, job post, review pattern, platform gap, compliance/deadline trigger.
-- Buyer/channel quality 15: direct decision-maker, warm intro/referral, recent activity, verified email + LinkedIn.
-- Stack fit 10: n8n-friendly SMB stack or confirmed Salesforce/Agentforce lane.
-- NYC/stability fit 10: NYC metro, local credibility, no travel-heavy delivery.
-- Maintenance/IP fit 5: repeatable template, low ongoing support burden.
+Outbound v2 binary gates:
+1. Niche has a live proof asset.
+2. Reachable channel exists: verified email OR accepted LinkedIn connection.
+3. Named buyer exists.
+4. Trigger bonus exists: ops job posting, portfolio growth, PM software in stack, rent-stabilized exposure, or similar.
 
 Tier thresholds and actions:
-- **T1 = 80+ with proof proximity 18+ and buyer/channel 10+.** Run full research, analysis, JT review, and proof-led custom outreach. Build a custom demo only when it compounds into reusable proof/IP; otherwise configure an existing proof/template. Follow-up cadence: M1 custom observation, M2 proof/value artifact, M3 soft Calendly close, M4 final check or email pivot.
-- **T2 = 60-79, or 75+ missing one channel/detail.** Run light research, niche template configuration, buyer-channel validation, and review-only outreach. No custom deck/demo before a reply unless a reusable template can be configured in under 30 minutes. Promote to T1 after reply, referral, proof-safe trigger, or confirmed budget/process owner.
-- **T3 = 40-59.** Market-sensing batch only. No custom build, no individual Drive client folder, no deck, no demo. Draft only short cold hooks after contact completeness is met; reply promotes to T2.
-- **Hold/reject = under 40 or fails any hard gate.** Create the single missing-next-step task only when useful; otherwise archive.
+- **T1 = all four gates.** Run proof-led outreach and JT review. No custom demo/build/deck before reply.
+- **T2 = gates 1-3.** Run light research, niche template, one personalized line, JT review, and strict measurement.
+- **Hold/dead = anything less.** Create the single missing-next-step task only when useful; otherwise archive.
 
 Priority bias for June 2026: property management/real estate ops first, construction/skilled trades second, wholesale limited-test, Agentforce insurance/Data Cloud as strategic proof unless Salesforce stack and buyer trigger are confirmed.
 

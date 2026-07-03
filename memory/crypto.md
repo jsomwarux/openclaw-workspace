@@ -595,3 +595,11 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Model read:** Research/ranking output adjusted PRXVT up from 20% to 25%; exited NOX, NOOK, GITLAWB, SIBYL, and SURPLUS; and added LFI at 30%, FOLD at 25%, and SAID at 20%. No new whale alerts were present.
 - **Weak-coordination warnings:** zero-result X rows were present for A0T, WIRE, and HEU, and should stay treated as weak-coordination signals.
 - **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, payment-MCP, x402 experiments, or personalized financial advice. No extra nonessential X pulls were run during this heartbeat.
+
+## Jul 2, 2026 - 10:12AM Heartbeat Crypto Monitoring
+
+- **Morning packet:** Crypto Full Analysis ran at 06:00 with checkpoint `CRYPTO_FULL_ANALYSIS_OK`; validation passed, X research guard passed, 25 X research entries were used, estimated X research cost was `$0.83`, a 06:00 baseline was created, dated artifacts were written, and Telegram delivery to `6608544825` was marked delivered. Local summaries were present in `/Users/jtsomwaru/projects/crypto-agent/data/latest-analysis.md` and `/Users/jtsomwaru/projects/crypto-agent/data/telegram-summary.txt`.
+- **Market read:** AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is heavy. Treat X coordination quality, buy/sell flow, volume, market-cap room, whale evidence, and product/narrative signal as filters, not automatic conviction.
+- **Model read:** Research/ranking output adjusted SURPLUS up from 20% to 30%, PRXVT up from 20% to 25%, exited GITLAWB, NOOK, NOX, and SIBYL, and added FOLD at 25% plus SERV at 20%. SURPLUS and A0T had first whale-trade alerts; only SURPLUS made the allocation cut.
+- **Weak-coordination warnings:** zero-result or thin/spam-heavy coordination appeared across several watchlist names, including A0T, LITCOIN, BOTCOIN, and PUMPCADE. Keep treating vote-heavy or zero-result X rows as weak-coordination/distribution-risk signals.
+- **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, payment-MCP, x402 experiments, or personalized financial advice. No extra nonessential X pulls were run during this heartbeat.

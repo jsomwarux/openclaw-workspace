@@ -1,6 +1,6 @@
-# PM COI Controlled Send Test - 2026-06-18
+# PM COI Controlled Send Test - updated for Outbound v2 on 2026-07-02
 
-Status: JT review only. Eve does not send outreach.
+Status: superseded by Outbound v2 sequencing. JT review only. Eve does not send outreach.
 
 Source packet:
 - Local: `memory/consulting/pm-coi-artifact-led-m1-review-packet-2026-06-18.md`
@@ -59,14 +59,14 @@ Reason:
 ## Send Rules
 
 - JT sends manually after review.
-- Use LinkedIn M1 first unless JT chooses email for a specific A-grade row.
-- Email pivot only after no LinkedIn response or when the direct email route is unusually strong.
+- Use email M1 first for property management when verified email exists. LinkedIn connection request follows on day 2.
+- Accepted LinkedIn DM may carry the one-pager PNG. Email M2 carries Loom/link unconditionally on day 5.
 - No Calendly in M1.
 - No signature block.
 - No private-client names, private screenshots, or private data.
 - No custom demo, deck, or client folder before a reply.
 - No generic inbox/contact-form send unless JT explicitly chooses lower-quality volume.
-- No fourth touch on silence.
+- Follow v2 sequence: day 1 Email M1, day 2 LinkedIn connection, day 4 LinkedIn DM if connected, day 5 Email M2, day 10 Email M3, day 18 breakup/referral ask.
 
 ## Response Tracker
 
