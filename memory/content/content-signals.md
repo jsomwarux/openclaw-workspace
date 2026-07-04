@@ -100,3 +100,7 @@ Format: `[DATE] [FORMAT|TOPIC] [name] — [N] appearances / [engagement total] |
 ## 2026-06-24
 
 [2026-06-24] FORMAT Claude/resource-stack list — 5 appearances / ~850+ engagement | JT has angle: yes (Eve/OpenClaw skills, crons, context files, model routing, and real agent operating workflows) | JT posted recently: yes | action: already covered
+
+## 2026-07-03
+
+[2026-07-03] FORMAT Claude/resource-stack list — 6 appearances / ~2,025 engagement | JT has angle: yes (Eve/OpenClaw skills, crons, content freshness gates, and AI Operations Diagnostic artifacts) | JT posted recently: yes | action: already covered

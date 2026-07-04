@@ -38,7 +38,7 @@
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com` is proof hub. App gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
+- `jtsomwaru.com`: Workflow Audit + `/property` live/current; dormant kill loops wait for JT timer-start confirmation. App gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
 - App strategy: distribution + retention are the survival constraint. Current ops: Apple follow-up, Fable UGC/paid onboarding review, Yair idea exchange, then Fable playbooks and Codex/Opus implementation.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
@@ -69,7 +69,7 @@
 
 ## Active Automation / Crons
 - Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- Jul 2: MC 282 total / 280 active / 14 high / 0 overdue; cost clear. Red metadata: `Job Application Auto-Builder` 1, `Autoresearch Sweep` 2, `Weekly Systems Review` 2; prompt-hardened/natural-next-run, no blind reruns.
+- Jul 3: MC 287 total / 283 active / 15 high / 0 overdue; cost clear. Red cron metadata: `Weekly Systems Review` 2, prior repair/natural Sunday run. No blind reruns.
 - Digest queue: `memory/digest-queue.md`; duplicate `lossless-claw` warning persists.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 

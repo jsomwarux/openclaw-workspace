@@ -8,3 +8,4 @@
 [2026-06-30] daily scan — no critical findings; KB only: LlamaParse n8n verified node, OpenRouter image API/open-weight model survey, Erigon MCP, mcp-tailscale, ClawHub supply-chain duplicate, Vercel AI SDK 7, Notion External Agents, career-ops eval endpoint, Entrata property-ops webinar signal.
 [2026-07-01] 🟠 OpenClaw v2026.6.11 stable — stable release adds Telegram/channel delivery fixes, cron fallback controls, tool failure events, config validation fixes, and stuck-message recovery; created MC task to test upgrade path before runtime changes. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.6.11
 [2026-07-02] daily scan — no critical findings
+2026-07-03 daily scan — no critical findings

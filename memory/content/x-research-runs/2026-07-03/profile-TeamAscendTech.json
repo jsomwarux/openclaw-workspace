@@ -1,0 +1,97 @@
+{
+  "user": {
+    "created_at": "2009-02-04T18:15:07.000Z",
+    "description": "Empowering Technology. Powered by People.",
+    "id": "20075729",
+    "name": "Ascend Technologies",
+    "public_metrics": {
+      "followers_count": 492,
+      "following_count": 405,
+      "like_count": 81,
+      "listed_count": 24,
+      "media_count": 768,
+      "tweet_count": 2361
+    },
+    "username": "TeamAscendTech"
+  },
+  "tweets": [
+    {
+      "id": "2072388520614731873",
+      "text": "Agentforce is more than another AI feature. It can handle real business tasks, but success starts with clean data, solid automation, and clear governance. Our latest guide covers what you need to know before getting started.\n\n👉 https://t.co/i9pUGETFzo\n\n#Salesforce #Agentforce https://t.co/dkqE9BeDRi",
+      "author_id": "20075729",
+      "username": "TeamAscendTech",
+      "name": "Ascend Technologies",
+      "created_at": "2026-07-01T18:35:01.000Z",
+      "conversation_id": "2072388520614731873",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://hubs.la/Q04n6Q7n0",
+        "https://x.com/TeamAscendTech/status/2072388520614731873/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "Salesforce",
+        "Agentforce"
+      ],
+      "tweet_url": "https://x.com/TeamAscendTech/status/2072388520614731873"
+    },
+    {
+      "id": "2072350765377560819",
+      "text": "Salesforce just introduced Agentic Advisor, an AI-powered digital teammate built natively into Agentforce for Financial Services. Game-changing for anyone in wealth management.\n\n👉 https://t.co/fh4HthyXUE",
+      "author_id": "20075729",
+      "username": "TeamAscendTech",
+      "name": "Ascend Technologies",
+      "created_at": "2026-07-01T16:04:59.000Z",
+      "conversation_id": "2072350765377560819",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 13,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://hubs.la/Q04mGCvg0"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/TeamAscendTech/status/2072350765377560819"
+    },
+    {
+      "id": "2071957706743668752",
+      "text": "#TestimonialTuesday\n\nLong-term growth starts with strong foundations. Let’s build systems that scale with you.\n\n#ClientTestimonial #ScalableSolutions #Growth https://t.co/vyXJSUmHvX",
+      "author_id": "20075729",
+      "username": "TeamAscendTech",
+      "name": "Ascend Technologies",
+      "created_at": "2026-06-30T14:03:07.000Z",
+      "conversation_id": "2071957706743668752",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/TeamAscendTech/status/2071957706743668752/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [
+        "TestimonialTuesday",
+        "ClientTestimonial",
+        "ScalableSolutions",
+        "Growth"
+      ],
+      "tweet_url": "https://x.com/TeamAscendTech/status/2071957706743668752"
+    }
+  ]
+}

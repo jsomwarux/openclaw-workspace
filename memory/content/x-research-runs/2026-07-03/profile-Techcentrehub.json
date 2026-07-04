@@ -1,0 +1,97 @@
+{
+  "user": {
+    "created_at": "2026-01-25T16:35:12.000Z",
+    "description": "Welcome to the Tech Centre. Where Artificial Intelligence meets real-world opportunities.",
+    "id": "2015463428845142016",
+    "name": "Tech centre",
+    "public_metrics": {
+      "followers_count": 310,
+      "following_count": 99,
+      "like_count": 160,
+      "listed_count": 0,
+      "media_count": 81,
+      "tweet_count": 665
+    },
+    "username": "Techcentrehub"
+  },
+  "tweets": [
+    {
+      "id": "2072559219992396070",
+      "text": "Hi @X\nI'm looking to #connect with new accounts who are:\n- #SaaS #founders \n- #GTM engineers\n- #Sales teams\n- #MarketingAutomation  \n- #AI tools \n- #Agentic  orchestration  \n\nLet's connect, Let's grow together!! 👋",
+      "author_id": "2015463428845142016",
+      "username": "Techcentrehub",
+      "name": "Tech centre",
+      "created_at": "2026-07-02T05:53:18.000Z",
+      "conversation_id": "2072559219992396070",
+      "metrics": {
+        "likes": 17,
+        "retweets": 0,
+        "replies": 19,
+        "quotes": 0,
+        "impressions": 525,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [
+        "X"
+      ],
+      "hashtags": [
+        "connect",
+        "SaaS",
+        "founders",
+        "GTM",
+        "Sales",
+        "MarketingAutomation",
+        "AI",
+        "Agentic"
+      ],
+      "tweet_url": "https://x.com/Techcentrehub/status/2072559219992396070"
+    },
+    {
+      "id": "2072186518979178898",
+      "text": "Hey @X algorithm 👋\nI’m looking to #connect with people interested in:  \n\n• SaaS\n• Frontend \n• Backend \n• Full-stack \n• DevOps \n• App Development \n• AI / ML \n• Data Science \n• LeetCode &amp; DSA \n• Freelancing \n• Building in public  \n\nIf that’s you, let’s connect",
+      "author_id": "2015463428845142016",
+      "username": "Techcentrehub",
+      "name": "Tech centre",
+      "created_at": "2026-07-01T05:12:20.000Z",
+      "conversation_id": "2072186518979178898",
+      "metrics": {
+        "likes": 29,
+        "retweets": 1,
+        "replies": 34,
+        "quotes": 1,
+        "impressions": 1192,
+        "bookmarks": 2
+      },
+      "urls": [],
+      "mentions": [
+        "X"
+      ],
+      "hashtags": [
+        "connect"
+      ],
+      "tweet_url": "https://x.com/Techcentrehub/status/2072186518979178898"
+    },
+    {
+      "id": "2071461998844629436",
+      "text": "Looking to connect with people interested in:\n\n→ Frontend \n→ Backend \n→ Full Stack \n→ DevOps \n→ LeetCode \n→ AI/ML \n→ Data Science \n→ UI/UX \n→ DSA \n→ Freelancing \n→ Startups \n\nIf you're learning, building, coding, or growing in tech... Drop a hi and let's connect",
+      "author_id": "2015463428845142016",
+      "username": "Techcentrehub",
+      "name": "Tech centre",
+      "created_at": "2026-06-29T05:13:21.000Z",
+      "conversation_id": "2071461998844629436",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 54,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Techcentrehub/status/2071461998844629436"
+    }
+  ]
+}

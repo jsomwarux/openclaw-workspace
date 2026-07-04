@@ -1,0 +1,109 @@
+{
+  "user": {
+    "created_at": "2026-01-08T19:02:25.000Z",
+    "description": "Building tech products to make life easier | Ex-Intern at a @ Startup,\nFind Latest Hiring tweets - @XRadarAI",
+    "id": "2009339871345954822",
+    "name": "Athashri Keny",
+    "public_metrics": {
+      "followers_count": 106,
+      "following_count": 80,
+      "like_count": 378,
+      "listed_count": 0,
+      "media_count": 57,
+      "tweet_count": 412
+    },
+    "username": "Athashri_k"
+  },
+  "tweets": [
+    {
+      "id": "2072531998854598888",
+      "text": "Crossed 100 followers !!\n\nThank you everyone \n\nIf you are in tech let's connect and grow together! https://t.co/WTys8aPg1a",
+      "author_id": "2009339871345954822",
+      "username": "Athashri_k",
+      "name": "Athashri Keny",
+      "created_at": "2026-07-02T04:05:08.000Z",
+      "conversation_id": "2072531998854598888",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 135,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/Athashri_k/status/2072531998854598888/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Athashri_k/status/2072531998854598888"
+    },
+    {
+      "id": "2072250404247892251",
+      "text": "Hey @X algorithm 👋\n\nI’m looking to #connect with people interested in:\n\n- SaaS \n- Frontend  \n- Backend  \n- Full-stack  \n- DevOps  \n- App Development  \n- AI / ML \n - Data Science  \n- LeetCode &amp; DSA  \n- Freelancing  \n- Building in public\n\nIf that’s you, let’s connect👤",
+      "author_id": "2009339871345954822",
+      "username": "Athashri_k",
+      "name": "Athashri Keny",
+      "created_at": "2026-07-01T09:26:11.000Z",
+      "conversation_id": "2072250404247892251",
+      "metrics": {
+        "likes": 28,
+        "retweets": 0,
+        "replies": 42,
+        "quotes": 0,
+        "impressions": 1460,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [
+        "X"
+      ],
+      "hashtags": [
+        "connect"
+      ],
+      "tweet_url": "https://x.com/Athashri_k/status/2072250404247892251"
+    },
+    {
+      "id": "2071805884309893391",
+      "text": "Success is a choice",
+      "author_id": "2009339871345954822",
+      "username": "Athashri_k",
+      "name": "Athashri Keny",
+      "created_at": "2026-06-30T03:59:49.000Z",
+      "conversation_id": "2071805884309893391",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 32,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Athashri_k/status/2071805884309893391"
+    },
+    {
+      "id": "2071471293501980957",
+      "text": "X is cool.\n\nBut it’s 100x better when your timeline is full with people who code and build things.\n\nI need to connect with more founders and tech people.\n\nIf you’re into Tech, AI, Agents, Startups, Design, web dev, SaaS, or programming, say hi.👋",
+      "author_id": "2009339871345954822",
+      "username": "Athashri_k",
+      "name": "Athashri Keny",
+      "created_at": "2026-06-29T05:50:17.000Z",
+      "conversation_id": "2071471293501980957",
+      "metrics": {
+        "likes": 18,
+        "retweets": 0,
+        "replies": 15,
+        "quotes": 0,
+        "impressions": 615,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/Athashri_k/status/2071471293501980957"
+    }
+  ]
+}

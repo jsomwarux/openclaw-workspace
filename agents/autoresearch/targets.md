@@ -32,7 +32,7 @@
 | outreach-email-pivot | scripts/outreach_email_pivot.py + cron payload | agents/autoresearch/checklists/outreach-email-pivot.md | stable | 1.000 | 2026-05-22 | 2026-04-27 |
 | runbook | skills/runbook/SKILL.md | checklists/runbook.md | pending | — | — | 2026-04-12 |
 | passive-income-scout | agents/passive-income-scout/AGENT.md | checklists/passive-income-scout.md | stable | 1.000 | 2026-07-01 | 2026-04-20 |
-| content-scheduler | agents/content-scheduler/AGENT.md | checklists/content-scheduler.md | pending | — | — | 2026-04-20 |
+| content-scheduler | agents/content-scheduler/AGENT.md | checklists/content-scheduler.md | stable | 1.000 | 2026-07-03 | 2026-04-20 |
 | vibe-post | scripts/vibe-post.py | checklists/vibe-post.md | pending | — | — | 2026-04-20 |
 | content-generation | skills/content-generation/SKILL.md | checklists/content-generation.md | pending | — | — | 2026-04-26 |
 | google-drive | skills/google-drive/SKILL.md | checklists/google-drive.md | pending | — | — | 2026-04-26 |

@@ -426,3 +426,22 @@ Sources checked July 2:
 - Microsoft docs site, "Agent Governance Toolkit" - https://microsoft.github.io/agent-governance-toolkit/
 - NYC Rent Guidelines Board, "Rent Guidelines" - https://rentguidelinesboard.cityofnewyork.us/rent-guidelines/
 - NYC Rent Guidelines Board, "Adopted Summary Of Guidelines (2026-27)" - https://rentguidelinesboard.cityofnewyork.us/adopted-summary-of-guidelines-2026-27/
+
+## 2026-07-03 Heartbeat Market Addendum
+
+The July 3 Morning Brief strengthens the same Run Control proof lane: enterprise AI buyers are being trained to buy deployment capacity, resolution outcomes, and governed action records, while NYC property operators are still under rule-sensitive pressure.
+
+Fresh market signals:
+- Microsoft's new Frontier Company signal is useful because it packages AI deployment as an implementation category, not a software feature. The buyer expectation is measurable deployment help: experts close the gap between available AI tools and working operating outcomes.
+- Salesforce's Agentforce Help Agent keeps moving the market toward resolution pricing and outcome language. That is good positioning only if the workflow can show when the agent resolved, escalated, or stopped.
+- NYC Rent Guidelines Board 2026-27 orders keep the PM context current and compliance-sensitive. Rent, renewal, delinquency, and tenant-action workflows need date/rule context and reviewer evidence before action.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The rent-delinquency input packet is the clearest proof/cash gate because it asks for the source export needed to build a controlled resolution record.
+- The proof should show deployment control, not autonomous collections: source export, rule/date context, authorized actor, allowed data/action scope, payment/context gap, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- PM COI language should borrow from the market without overclaiming: "deployment help for one sensitive workflow, with proof of what resolved, what escalated, and what was held."
+
+Sources checked July 3:
+- TechCrunch, "Microsoft launches its own AI deployment company with $2.5 billion commitment" - https://techcrunch.com/2026/07/02/microsoft-launches-its-own-ai-deployment-company-with-2-5-billion-commitment/
+- Salesforce, "Salesforce Announces Prepackaged Agentforce Help Agent" - https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/
+- NYC Rent Guidelines Board, "Rent Guidelines" - https://rentguidelinesboard.cityofnewyork.us/rent-guidelines/

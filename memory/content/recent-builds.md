@@ -84,6 +84,14 @@
 **Content angle:** The useful version of human-in-the-loop is not approval on every step; it is a review pack that asks for direction, risk, taste, and acceptance at the exact right point.
 **Status:** complete
 
+## jtsomwaru.com Workflow Audit Conversion Pass - 2026-07-03
+**What:** Converted the homepage from broad AI Operations Diagnostic/service-menu positioning into one Workflow Audit front door and added `/property` as the forwardable warm-referral page.
+**For:** internal consulting site / buyer conversion path
+**Outcome:** `npm run lint` passed, `npm run build` passed with `/property` generated as a static route, and local route probes returned 200 for `/`, `/property`, `/sitemap.xml`, and `/llms.txt` with Workflow Audit/property-page checks present.
+**Demonstrates:** conversion-focused consulting positioning, proof-safe site copy, AI-search surface maintenance, warm-referral page packaging
+**Content angle:** A consulting site should not make warm referrals explain the offer. One link should name the buyer, the workflow, the price, the timeline, and the first decision.
+**Status:** complete
+
 ## Crypto Full Analysis Atomic Pipeline - 2026-06-03
 **What:** Added `scripts/run-full-analysis-pipeline.py` and X preflight enforcement inside `generate-full-analysis.py` so the crypto cron runs fetch -> X -> guard -> generate -> validate as one deterministic recovery path.
 **For:** internal crypto automation

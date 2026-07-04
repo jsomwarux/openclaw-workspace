@@ -1,0 +1,229 @@
+{
+  "user": {
+    "created_at": "2010-01-14T13:16:05.000Z",
+    "description": "पूर्णतः सनातनी , गर्वित भारतीय,\nविशेषञ योग्यता : Mobile Application and cloud architect having 18+ years of IT experience.",
+    "id": "104806862",
+    "name": "satyam kumar",
+    "public_metrics": {
+      "followers_count": 454,
+      "following_count": 831,
+      "like_count": 15495,
+      "listed_count": 6,
+      "media_count": 433,
+      "tweet_count": 6800
+    },
+    "username": "subham11"
+  },
+  "tweets": [
+    {
+      "id": "2072887654979649893",
+      "text": "PEFT in 2026: If You're Still Defaulting to QLoRA, You're Leaving Performance on the Table\n\nThe biggest shift in LLM fine-tuning isn't a new model.\n\nIt's realizing that QLoRA is no longer the default answer.\n\nProduction teams aren't asking, \"Which PEFT method is best?\"\n\nThey're",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-07-03T03:38:23.000Z",
+      "conversation_id": "2072887654979649893",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 15,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2072887654979649893"
+    },
+    {
+      "id": "2072884988945822151",
+      "text": "n8n in 2026: The Biggest AI Mistake Is Treating Automation Like an Agent\n\nEveryone wants AI agents.\n\nVery few actually need them.\n\nMost enterprise AI value still comes from deterministic workflows with AI embedded at the right decision points, not autonomous loops running the",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-07-03T03:27:48.000Z",
+      "conversation_id": "2072884988945822151",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 50,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2072884988945822151"
+    },
+    {
+      "id": "2072883307629650090",
+      "text": "Running LLMs Locally in 2026 Isn't a Privacy Decision. It's an Architecture Decision.\n\nToo many teams ask:\n\n\"Which local LLM framework is the fastest?\"\n\nThat's the wrong question.\n\nProduction failures rarely come from choosing Ollama over vLLM. They come from deploying the right",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-07-03T03:21:07.000Z",
+      "conversation_id": "2072883307629650090",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 31,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2072883307629650090"
+    },
+    {
+      "id": "2072519353816465889",
+      "text": "LLM Distillation in 2026: Stop Paying Frontier Prices for Commodity Intelligence\n\nMost organizations think distillation is a machine learning optimization.\n\nIt isn't.\n\nIt's an infrastructure strategy that decides whether your AI platform scales profitably or becomes an",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-07-02T03:14:54.000Z",
+      "conversation_id": "2072519353816465889",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 32,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2072519353816465889"
+    },
+    {
+      "id": "2072517344019337660",
+      "text": "MCP in 2026: The Hard Part Isn't Building the Server. It's Surviving Production.\n\nEvery engineering team is celebrating a 100-line MCP demo.\n\nVery few are asking what happens when thousands of autonomous agents start calling it simultaneously.\n\nProduction failures don't begin",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-07-02T03:06:54.000Z",
+      "conversation_id": "2072517344019337660",
+      "metrics": {
+        "likes": 4,
+        "retweets": 0,
+        "replies": 8,
+        "quotes": 0,
+        "impressions": 91,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2072517344019337660"
+    },
+    {
+      "id": "2072169294902055222",
+      "text": "Local-First Is Replacing Cloud-First in 2026. Most Teams Haven't Realized It Yet.\n\nWe've spent years optimizing cloud latency.\n\nThe better question is: why does every user action need the cloud in the first place?\n\nIf every write waits on a network round trip, your architecture",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-07-01T04:03:53.000Z",
+      "conversation_id": "2072169294902055222",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 1,
+        "quotes": 0,
+        "impressions": 22,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2072169294902055222"
+    },
+    {
+      "id": "2072169035614289990",
+      "text": "TPU Inference in 2026: GPUs Are No Longer the Default Answer\n\nMost infrastructure discussions still begin with one question:\n\n\"Which GPU should we buy?\"\n\nThat's already the wrong optimization.\n\nProduction AI is no longer about hardware preference. It's about cost-per-token,",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-07-01T04:02:51.000Z",
+      "conversation_id": "2072169035614289990",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 31,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2072169035614289990"
+    },
+    {
+      "id": "2072168335685648889",
+      "text": "LLM Model Selection in 2026: The Biggest AI Cost Isn't Tokens. It's Bad Routing.\n\nMost AI teams still debate which model is \"the best.\"\n\nThat's the wrong question.\n\nProduction systems don't win by standardizing on one frontier model.\nThey win by routing every request to the",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-07-01T04:00:04.000Z",
+      "conversation_id": "2072168335685648889",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 96,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2072168335685648889"
+    },
+    {
+      "id": "2071804732721734125",
+      "text": "# Deep Agents in 2026: The Future Isn't Better Models. It's Better Architecture.\n\nMost AI agents don't fail because the model is weak.\n\nThey fail because the architecture forces the model to remember everything, plan nothing, and carry every intermediate result forever.\n\nPast a",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-06-30T03:55:15.000Z",
+      "conversation_id": "2071804732721734125",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 26,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2071804732721734125"
+    },
+    {
+      "id": "2071803698528018733",
+      "text": "Prompt Caching Is the Highest-ROI LLM Optimization Most Teams Still Ignore (2026)\n\nEveryone is chasing smaller models, better prompts, and cheaper GPUs.\n\nMeanwhile, their agents keep paying full price for the exact same instructions on every request.\n\nThat isn't an AI problem.",
+      "author_id": "104806862",
+      "username": "subham11",
+      "name": "satyam kumar",
+      "created_at": "2026-06-30T03:51:08.000Z",
+      "conversation_id": "2071803698528018733",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 43,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/subham11/status/2071803698528018733"
+    }
+  ]
+}

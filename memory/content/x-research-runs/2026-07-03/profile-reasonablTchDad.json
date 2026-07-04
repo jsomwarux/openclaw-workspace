@@ -1,0 +1,42 @@
+{
+  "user": {
+    "created_at": "2011-01-19T14:49:40.000Z",
+    "description": "Host of \"The Reasonable Contractor\" Podcast | AI Websites - $2,500 - 48 Hour Delivery | I speak construction & code 🔨",
+    "id": "240266733",
+    "name": "Reasonable Tech Dad",
+    "public_metrics": {
+      "followers_count": 161,
+      "following_count": 530,
+      "like_count": 18684,
+      "listed_count": 2,
+      "media_count": 175,
+      "tweet_count": 1950
+    },
+    "username": "reasonablTchDad"
+  },
+  "tweets": [
+    {
+      "id": "2072492706668978227",
+      "text": "I gave an AI agent 25 minutes to do my Target grocery run. It burned $35 in credits and got 12 of 19 items in the cart.\n\nI had the whole thing set up for success too...my shopping list in Markdown, my eating schedule, the kids' groceries, all of it. The problem? The agent https://t.co/cpSm1bE9rz",
+      "author_id": "240266733",
+      "username": "reasonablTchDad",
+      "name": "Reasonable Tech Dad",
+      "created_at": "2026-07-02T01:29:00.000Z",
+      "conversation_id": "2072492706668978227",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 58,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/reasonablTchDad/status/2072492706668978227/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/reasonablTchDad/status/2072492706668978227"
+    }
+  ]
+}

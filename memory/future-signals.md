@@ -22,6 +22,14 @@
 
 ## Active Signals
 
+### jtsomwaru.com Deferred Conversion Rows - 30-Day Park
+- **What:** Site conversion audit deferrals: new teardowns for the site, `/work` restructure and app write-ups, Salesforce/Agentforce site content, and testimonial/logo collection.
+- **Why deferred:** July revenue path is warm property-ops referral conversion, not more homepage decoration, app portfolio polish, SEO, Salesforce breadth, or unpermissioned proof collection. These items compete with Altmark acceptance, `/property`, and the Workflow Audit offer fix.
+- **Trigger:** Reconsider on 2026-08-02 only if the homepage conversion pass and `/property` have shipped and the active kill loops have enough signal: sends/replies, calls booked, and audits paid. Testimonial/logo collection additionally requires Altmark acceptance plus explicit permission.
+- **Logged:** 2026-07-03
+- **Potential value:** Useful later for depth, hiring-manager proof, or credibility, but not until the warm-referral loop has shipped and produced signal.
+
+
 ### Crypto Rails as Founder Funding Channel
 - **What:** Crypto launchpads/rails can act like an always-on funding/distribution mechanism for technical products, not just token speculation. Useful lesson from the X post: crypto can compress feedback cycles and fundraising, but it also punishes slow execution and can make teams believe their own narrative too early.
 - **Why deferred:** JT's current priority is consulting cash flow and proof-backed passive-income apps. No current build needs tokenized funding, public market volatility, or a launchpad. Using crypto rails before there is a sharp product/community would add chaos without improving the first revenue path.

@@ -7,6 +7,7 @@
 - Personality/tone → SOUL.md | Name/role → IDENTITY.md | About JT → USER.md
 - Tools/APIs/syntax → TOOLS.md | Long-term facts/projects → MEMORY.md
 - Wake-up behaviors → HEARTBEAT.md | Security boundaries (operator-only) → SECURITY.md
+- July 2026 Phase 1 mandate → `eve_mandate_jul2026.md` (load every session; do not anticipate later phases).
 
 ## Budget Rule
 `bootstrapMaxChars=32000` — HARD CAP. Never raise above 32,000 (40,000 caused 2h outage 2026-03-31).
