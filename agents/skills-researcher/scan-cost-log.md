@@ -101,3 +101,5 @@ EOF'
 [2026-07-01T11:30:00-04:00] | daily-scan | x_queries: 6 | web_queries: 8 | findings: 7 | 🔴: 0 | 🟠: 1 | messaged_jt: yes
 [2026-07-02T11:32:28-04:00] | daily-scan | x_queries: 6 | web_queries: 14 | findings: 9 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 2026-07-03T11:33:18-04:00 | daily-scan | x_queries: 6 | web_queries: 8 | findings: 5 | 🔴: 0 | 🟠: 0 | messaged_jt: no
+2026-07-04T11:02:34Z | weekly-synthesis | x_queries: 6 | est_cost: $0.245 | web_sources: 6 | findings: 6 | 🔴: 0 | 🟠: 3 | kb_added: 3 | mc_tasks_pushed: 0 | messaged_jt: yes | backlog_skills_open: 49
+2026-07-04T11:32:11-04:00 | daily-scan | x_queries: 6 | web_queries: 12 | findings: 6 | 🔴: 0 | 🟠: 0 | messaged_jt: no

@@ -122,6 +122,14 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Owner surface:** `/Users/jtsomwaru/projects/crypto-agent/scripts/validate-full-analysis.py`, `/Users/jtsomwaru/projects/crypto-agent/CLAUDE.md`, and `eve-crypto-morning-008` recovery checks.
 - **Last verified:** 2026-06-03 — dated artifacts existed, but manual recovery still failed the X freshness guard; stale-X failure must block allocation resend even when analysis/summary/allocation dates are current.
 
+## Active Check — Crypto EOD Recovery Log Proof
+- **Failure covered:** Manual Crypto Evening Pulse recovery is reported as logged, but the evening log lacks a same-day proof line for the recovery or Telegram alert.
+- **Check cadence:** Every manual recovery after `eve-crypto-evening-010` fails, times out, or may have missed a threshold alert.
+- **Check:** Verify `/Users/jtsomwaru/projects/crypto-agent/data/evening-log.md` contains a same-day recovery or quiet entry with timestamp, threshold result, Telegram message id when alerted, and research/ranking-only guardrail. If the heartbeat note says recovery was logged, the displayed file tail must prove it.
+- **Failure action:** Append the missing deterministic recovery line to the evening log, then rerun `tail -n 20 /Users/jtsomwaru/projects/crypto-agent/data/evening-log.md` before reporting completion.
+- **Owner surface:** `eve-crypto-evening-010`, `/Users/jtsomwaru/projects/crypto-agent/scripts/crypto-baseline.py`, `/Users/jtsomwaru/projects/crypto-agent/data/evening-log.md`, HEARTBEAT 10AM film review.
+- **Last verified:** 2026-07-04 — Jul 3 manual EOD recovery log line exists with `ALERT_SENT`, active portfolio +26.22%, PRXVT +24.66%, DOT +30.76%, Telegram message 24776, and research/ranking-only guardrail.
+
 ## Active Check — LinkedIn Semantic Topic Cooldown
 - **Failure covered:** Weekly/daily content recommends the same LinkedIn idea in new wording because older manually posted rows are not marked `posted=true` and exact-text duplicate checks miss semantic repeats.
 - **Check cadence:** Every content reminder before delivery and every weekly content generation audit.

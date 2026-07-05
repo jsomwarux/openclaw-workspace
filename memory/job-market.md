@@ -513,6 +513,16 @@ Read today's job-market-agent brief. No new NYC/remote non-coding AI implementat
 
 Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`.
 
+## 2026-07-04 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief generated at 2026-07-04 05:15. No new NYC/remote non-coding AI implementation role cleared the 18/25 filter, and the brief had no critical or high severity flags. The role-shaped false positives were AIG Principal Solutions Architect, GenAI and ServiceRocket Delivery Architect: both carry useful AI/adoption language, but AIG is senior enterprise architecture/DevSecOps/data-pipeline heavy and ServiceRocket is Atlassian-platform-specific delivery.
+
+**Strongest signal:** open-board scarcity is stable, but the useful language continues to validate JT's orchestrator lane. ServiceRocket's split between roadmap/solution ownership and technical build inside a CoE model reinforces the AI enablement operator story: own readiness, workflow direction, adoption rhythm, and value reporting while specialists or agents handle implementation details.
+
+**Positioning implication:** keep Altmark/PM Run Control and jtsomwaru.com Workflow Audit positioned around AI roadmap, delivery-readiness checks, governance, adoption rhythm, and measurable value reporting. No new application, certification, or build task today; Altmark packet, Petri M2, and active consulting sends remain above job-market exploration.
+
+Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`.
+
 ## 2026-06-27 — Heartbeat Job Market Pulse
 
 Read today's job-market-agent brief. No new NYC/remote non-coding AI implementation role cleared the 18/25 hard filter. Atmosera Principal Consultant, Artificial Intelligence is useful market intel only: remote US and $170K-$190K, but filtered by prior hands-on AI/ML engineer experience plus cloud/security/integration architecture requirements.

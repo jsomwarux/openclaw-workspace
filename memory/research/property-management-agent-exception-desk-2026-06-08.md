@@ -445,3 +445,22 @@ Sources checked July 3:
 - TechCrunch, "Microsoft launches its own AI deployment company with $2.5 billion commitment" - https://techcrunch.com/2026/07/02/microsoft-launches-its-own-ai-deployment-company-with-2-5-billion-commitment/
 - Salesforce, "Salesforce Announces Prepackaged Agentforce Help Agent" - https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/
 - NYC Rent Guidelines Board, "Rent Guidelines" - https://rentguidelinesboard.cityofnewyork.us/rent-guidelines/
+
+## 2026-07-04 Heartbeat Market Addendum
+
+The July 4 Morning Brief keeps the PM/Altmark lane pointed at run control, not demo automation. The strongest current signal is that buyers and regulators are converging on named ownership, traceable delegation, and proof that sensitive actions were resolved, escalated, or held.
+
+Fresh market signals:
+- AI Agent Store's July 4 news roundup frames AI-run companies, multi-agent hubs, cyber risk, DoD agent marketplaces, zero-trust gaps, agentjacking, and agent observability as governance and traceability problems. The common thread is not "more agents"; it is accountability for who authorized the action, what credentials/tools were used, and what evidence remains.
+- EliseAI's Olympus Property case story validates the PM wedge from inside property operations: operators are buying consolidation and onsite-experience workflows, including delinquency and lease-audit-style automation, but the buyer-safe promise still needs a visible control record.
+- Business Insider's Built Robotics / Meta solar infrastructure story is an adjacent construction-ops signal: automation is moving upstream into real assets and field execution, which strengthens the case for owner-visible assignment, exception, and proof loops before broad automation claims.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The rent-delinquency input packet is still the shortest path to both cash and a reusable proof asset because it requests the source export needed for a controlled resolution record.
+- The proof should show what the system was allowed to read and do, who owned the decision, what was blocked or held, and what outcome changed. For PM buyers, that is safer than saying "AI collections."
+- PM COI language can stay concrete: "one sensitive workflow with proof of what resolved, what escalated, and what was held." The live artifact should include source export, rule/date context, authorized actor, allowed data/action scope, payment/context gap, proposed next step, reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+
+Sources checked July 4:
+- AI Agent Store, "Daily AI Agent News - Last 7 Days" - https://aiagentstore.ai/ai-agent-news/this-week
+- EliseAI, "How Olympus Property Consolidated Its Tech Stack and Elevated the Onsite Experience with EliseAI & EliseCRM" - https://eliseai.com/customer-stories/how-olympus-property-consolidated-its-tech-stack-and-elevated-the-onsite-experience-with-eliseai
+- Business Insider, "Autonomous Robots Build Solar Power for Meta's Hyperion Data Center" - https://www.businessinsider.com/autonomous-robots-built-robotics-solar-power-meta-hyperion-data-center-2026-7
