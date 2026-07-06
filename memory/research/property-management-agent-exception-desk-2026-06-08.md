@@ -464,3 +464,22 @@ Sources checked July 4:
 - AI Agent Store, "Daily AI Agent News - Last 7 Days" - https://aiagentstore.ai/ai-agent-news/this-week
 - EliseAI, "How Olympus Property Consolidated Its Tech Stack and Elevated the Onsite Experience with EliseAI & EliseCRM" - https://eliseai.com/customer-stories/how-olympus-property-consolidated-its-tech-stack-and-elevated-the-onsite-experience-with-eliseai
 - Business Insider, "Autonomous Robots Build Solar Power for Meta's Hyperion Data Center" - https://www.businessinsider.com/autonomous-robots-built-robotics-solar-power-meta-hyperion-data-center-2026-7
+
+## 2026-07-05 Heartbeat Market Addendum
+
+The July 5 heartbeat keeps the property-management offer pointed at a narrow first workflow: maintenance/delinquency-style triage is becoming a common AI entry point, but the durable buyer need is still evidence that the right source, owner, escalation rule, approval boundary, and resolution event were captured.
+
+Fresh market signals:
+- Maintenance AI guides are now selling triage, after-hours intake, dispatch support, and ROI measurement as mainstream PM automation. That validates the workflow category, but it also makes undifferentiated "AI triage" easier to commoditize.
+- 2026 PM buyer guides keep stressing integration with Yardi/RealPage/AppFolio/Buildium/Entrata-style systems, privacy/fair-housing controls, human handling of exceptions, and measurable operating-cost impact. The implication is that the implementation proof has to show system-of-record fit and controlled handoff, not just chatbot output.
+- Agentic-AI governance coverage in regulated industries is warning that adoption is moving faster than oversight. The useful sales angle is therefore not "agent autonomy"; it is accountable run control with data integrity, role ownership, human review, and evidence trails before sensitive actions are executed.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The rent-delinquency source-export packet is still the closest cash/proof gate because it turns a sensitive workflow into a controlled record: source export, tenant/payment context, allowed read/write scope, proposed next action, owner/reviewer, approve/edit/hold/escalate state, evidence link, and outcome event.
+- PM COI wave one should avoid broad "we automate maintenance/collections" claims. Use the sharper offer: "one sensitive workflow with proof of what resolved, what escalated, and what was held."
+- The reusable proof asset should show integration boundaries and evidence, because buyers are being trained to ask whether AI can work with their existing systems while preserving compliance, privacy, escalation, and auditability.
+
+Sources checked July 5:
+- Haven, "Maintenance AI Property Management Guide 2026: Triage & ROI" - https://www.usehaven.ai/post/maintenance-ai-property-management-guide-triage-roi
+- The AI Consulting Network, "AI Property Management Tools Compared: 2026 Buyer's Guide" - https://www.theaiconsultingnetwork.com/blog/ai-property-management-tools-compared-2026-buyers-guide
+- TechRadar, "Agentic AI adoption outpaces governance in regulated industries" - https://www.techradar.com/pro/agentic-ai-adoption-outpaces-governance-in-regulated-industries

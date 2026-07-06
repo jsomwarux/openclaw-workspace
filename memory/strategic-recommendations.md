@@ -16,6 +16,11 @@
 
 <!-- Entries appended by Weekly Intelligence Synthesis (eve-weekly-synthesis-007) -->
 
+### 2026-07-05 — Package Outcome-Based Run Control
+**Recommendation:** Package one buyer-facing Workflow Audit proof packet this week around outcome-based run control: source record, AI read/classification, owner queue, escalation rule, approval boundary, audit log, and measurable resolution event. Use property management as the front door, then show the same pattern for wholesale order exceptions, construction findings, and Salesforce insurance/service queues.
+**Why now:** Agentforce Help Agent moved pricing toward resolved outcomes, construction AI is turning site observations into structured findings, wholesale AI is still only live in a small minority of supply-chain workflows, and fresh AI enablement roles keep validating governance, adoption, and measurable value as the non-coding lane.
+**Status:** open
+
 ### 2026-06-28 — Make Run Control The Live-Build Offer
 **Recommendation:** Package and post one live-build consulting offer this week: "bring one messy workflow, I will map the source, owner queue, approval rule, audit trail, and first automation live." Anchor it to property-management/front-desk-plus-exception-desk proof, then map it to wholesale reorder exceptions and insurance run-control in follow-up content.
 **Why now:** This week's strongest signals all moved from generic AI adoption toward buyer-visible run control: Agentforce Commerce made text-native B2B procurement real, PM AI coverage paired leasing automation with governance, insurance AI coverage emphasized core-system trust and human-in-the-loop oversight, and the content swipe file flagged a live-build consulting offer as an unposted high-fit topic.

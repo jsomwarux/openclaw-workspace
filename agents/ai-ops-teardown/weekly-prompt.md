@@ -29,6 +29,7 @@ Score 3–5 candidate topics using the rubric in `system.md`. Do not pick a comp
 - Do NOT expose private client details.
 - Do NOT build a real n8n template unless score is 24+ and the workflow is reusable with synthetic data.
 - If `delivery-calendar.md` has a current ready-to-review bundle that is still unposted and has an open JT review/post task, do not create a duplicate weekly bundle. Return `AI_OPS_TEARDOWN_SKIP` with the existing source path, task id, and exact JT action.
+- Before returning `AI_OPS_TEARDOWN_SKIP` for an existing bundle, cross-check `memory/content/posted-log.jsonl` and the bundle's content-bank file. If either says `posted: true` or JT-confirmed posted, treat the calendar/task as stale, close or update the stale task, and do not resurface that company/topic as the next teardown.
 - Prefer concrete workflows over generic AI commentary.
 - Every draft must include inputs, messy current process, exception/approval boundary, audit trail, buyer outcome, and build-tier decision.
 - Every draft must include a buyer-safe CTA to the relevant diagnostic/next step unless the topic is intentionally content-only. For property/family-office workflows, use `memory/consulting/family-office-ai-ops-diagnostic-one-pager.md` as the CTA target.

@@ -77,3 +77,5 @@
 2026-06-29 highwire-ai-inspections-construction-safety — Highwire/Veriforce launched AI Findings for Inspections to convert spoken jobsite observations into structured construction safety findings.
 2026-06-30 salesforce-agentforce-help-agent — Salesforce announced Agentforce Help Agent, generally available July 2026, with guided setup, omni-channel deployment, Salesforce Knowledge grounding, prepackaged actions, and pay-per-resolution pricing.
 2026-07-03 built-robotics-construction-infra-automation — Built Robotics autonomous heavy equipment is handling majority pile-driving scope on Meta-linked infrastructure work and expanding via a $75M Blattner Energy contract.
+2026-07-05 wholesale-supply-chain-ai-live-gap — First Analysis/Sage 2026 signal: only 10% of retail and wholesale supply-chain operators have AI live in workflows despite AI exception, forecasting, replenishment, and order-management vendor movement.
+2026-07-05 property-management-ai-escalation-routing — Fresh PM AI assistant/receptionist coverage emphasizes maintenance triage, diagnostic questions, tenant updates, escalation rules, and routing configuration as the useful implementation layer.

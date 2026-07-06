@@ -562,3 +562,13 @@ Read today's job-market-agent brief. No new NYC/remote non-coding AI implementat
 **Positioning implication:** keep Mission Control/OpenClaw, Altmark, and Run Control framed as business-side agent operations proof: request intake, approved workflows, eval/review gates, rollback or blocked-action evidence, adoption cadence, and measurable outcome reporting. No new application, certification, or build task today; Altmark packet and active consulting sends stay above job-market exploration.
 
 Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`.
+
+## 2026-07-05 — Heartbeat Job Market Pulse
+
+Read today's job-market-agent brief generated at 2026-07-05 05:15. There are no critical flags. Crain Communications Director, Enterprise AI Enablement is the one high market-intel signal at 18/25, with real fit around workflow discovery, Claude Enterprise rollout, guardrails, micro-learning, adoption measurement, and roadmap ownership. Caveats keep it below proof/revenue work: salary is $140K-$160K, Detroit is preferred, Chicago/Manhattan is only possible with 3 days/week, and the route is market intel rather than an apply package.
+
+**Strongest signal:** AI enablement roles are moving from training into operating-model ownership: approved tool rollout, policy/guardrails, workflow discovery, adoption analytics, executive prioritization, and value reporting. That validates JT's BSA plus agent-orchestration lane without creating a new app, certification, or application task.
+
+**Positioning implication:** extend EnablementOps / AgentGuard / ROIFlow language around governed adoption infrastructure: intake, approved tools, guardrails, adoption rhythm, micro-learning, and value reporting. Use Claude Enterprise-style rollout language only where backed by real JT artifacts. Altmark/Yair source-export packet, Petri M2, and active consulting sends remain higher priority than job-market exploration today.
+
+Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; Crain signal: https://wd1.myworkdaysite.com/en-US/recruiting/crain/Crain_Careers/job/Detroit/Director--Enterprise-AI-Enablement_R-11154
