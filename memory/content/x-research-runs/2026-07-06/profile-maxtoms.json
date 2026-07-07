@@ -1,0 +1,109 @@
+{
+  "user": {
+    "created_at": "2009-07-08T23:42:49.000Z",
+    "description": "AI builder helping businesses automate work. Mushroom enthusiast, dog dad, & someone who thinks a lot about life",
+    "id": "55071832",
+    "name": "Max ",
+    "public_metrics": {
+      "followers_count": 378,
+      "following_count": 1134,
+      "like_count": 7305,
+      "listed_count": 3,
+      "media_count": 833,
+      "tweet_count": 3833
+    },
+    "username": "maxtoms"
+  },
+  "tweets": [
+    {
+      "id": "2073504236688843019",
+      "text": "Software development shouldn't be boring https://t.co/YUUMRwTt80",
+      "author_id": "55071832",
+      "username": "maxtoms",
+      "name": "Max ",
+      "created_at": "2026-07-04T20:28:28.000Z",
+      "conversation_id": "2073504236688843019",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 13,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/maxtoms/status/2073504121668370829"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/maxtoms/status/2073504236688843019"
+    },
+    {
+      "id": "2073055125577588745",
+      "text": "Ugh https://t.co/Cvlc3zQmOB",
+      "author_id": "55071832",
+      "username": "maxtoms",
+      "name": "Max ",
+      "created_at": "2026-07-03T14:43:52.000Z",
+      "conversation_id": "2073055125577588745",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 32,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/testingcatalog/status/2073049917266821338"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/maxtoms/status/2073055125577588745"
+    },
+    {
+      "id": "2072018857641054245",
+      "text": "I’ve got room this week for one quick AI/workflow build for a small business.\n\nExamples:\n• intake form → spreadsheet/CRM\n• invoice or field-ticket automation\n• simple customer portal\n• AI assistant for FAQs or lead capture\n• internal dashboard / lightweight app\n\nFast",
+      "author_id": "55071832",
+      "username": "maxtoms",
+      "name": "Max ",
+      "created_at": "2026-06-30T18:06:06.000Z",
+      "conversation_id": "2072018857641054245",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 6,
+        "quotes": 0,
+        "impressions": 71,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/maxtoms/status/2072018857641054245"
+    },
+    {
+      "id": "2071685117312127077",
+      "text": "Savage https://t.co/s9gr8xtVN3",
+      "author_id": "55071832",
+      "username": "maxtoms",
+      "name": "Max ",
+      "created_at": "2026-06-29T19:59:56.000Z",
+      "conversation_id": "2071685117312127077",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 56,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://twitter.com/world_xyz/status/2071674490761728167"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/maxtoms/status/2071685117312127077"
+    }
+  ]
+}

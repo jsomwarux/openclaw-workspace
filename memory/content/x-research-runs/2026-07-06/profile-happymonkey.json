@@ -1,0 +1,229 @@
+{
+  "user": {
+    "created_at": "2025-07-21T09:56:41.000Z",
+    "description": "Transform Your Business with AI Automation - Streamline workflows, reduce costs, and boost productivity with our cutting-edge AI automation solutions.",
+    "id": "1947233997718786048",
+    "name": "Happy Monkey AI",
+    "public_metrics": {
+      "followers_count": 26,
+      "following_count": 227,
+      "like_count": 1258,
+      "listed_count": 1,
+      "media_count": 156,
+      "tweet_count": 704
+    },
+    "username": "HappyMonkeyAI"
+  },
+  "tweets": [
+    {
+      "id": "2073756980947165454",
+      "text": "🤖 Specific beats broad with AI automation. Instead of “AI can help your business,” pick one promise: draft quote follow-ups, sort new enquiries, or prep tomorrow’s appointment list. Clear job, clear review, clear value.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T13:12:47.000Z",
+      "conversation_id": "2073756980947165454",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073756980947165454"
+    },
+    {
+      "id": "2073741470352146809",
+      "text": "🤖 Fast AI is great. For a small business, the useful layer is control: what did it run, what did it cost, who approved it, and where did the result land? Speed helps most when the workflow is visible.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T12:11:09.000Z",
+      "conversation_id": "2073741470352146809",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 5,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073741470352146809"
+    },
+    {
+      "id": "2073709879039041860",
+      "text": "🤖 Before wiring AI into email, define the handoff: which messages it can draft, what it must never send, what gets escalated, and where replies are logged. Inbox automation should reduce risk, not hide it.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T10:05:37.000Z",
+      "conversation_id": "2073709879039041860",
+      "metrics": {
+        "likes": 1,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 7,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073709879039041860"
+    },
+    {
+      "id": "2073694110481793515",
+      "text": "🤖 When two AI agents work on the same feature, give them boring boundaries: one owner, shared context, clear handoff notes, and a final human review. Collaboration works better when the workflow is explicit.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T09:02:57.000Z",
+      "conversation_id": "2073694110481793515",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 6,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073694110481793515"
+    },
+    {
+      "id": "2073662344329077112",
+      "text": "🤖 AI advice gets more useful when it moves from “agent can do everything” to “this handoff is now clearer.” For a small business, the win is not autonomy for its own sake—it is fewer stuck requests and faster next steps.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T06:56:44.000Z",
+      "conversation_id": "2073662344329077112",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 8,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073662344329077112"
+    },
+    {
+      "id": "2073646648715067853",
+      "text": "🤖 If your AI experiments are scattered across chats, folders, and half-finished demos, make a tiny “reuse shelf”: what it does, input needed, next action, and owner. Small teams get more value when experiments can be found again.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T05:54:22.000Z",
+      "conversation_id": "2073646648715067853",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 3,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073646648715067853"
+    },
+    {
+      "id": "2073615307604738320",
+      "text": "🤖 AI agents are most useful when they shrink decisions into a clean queue: what came in, what changed, what needs approval, and what happens next. For small businesses, clarity compounds faster than clever demos.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T03:49:49.000Z",
+      "conversation_id": "2073615307604738320",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073615307604738320"
+    },
+    {
+      "id": "2073599591719587880",
+      "text": "🤖 A repeatable client request is a clue, not a nuisance. If the same setup keeps coming back, turn it into a tiny system: template the inputs, automate the draft, keep an approval step, and document the handoff.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T02:47:22.000Z",
+      "conversation_id": "2073599591719587880",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 0,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073599591719587880"
+    },
+    {
+      "id": "2073567902809079917",
+      "text": "🤖 AI agents are easiest to judge when the job is tiny: take messy input, draft one next step, flag what’s missing, and leave a trail. If the workflow cannot be checked, it is not ready for customers yet.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-05T00:41:27.000Z",
+      "conversation_id": "2073567902809079917",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 2,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073567902809079917"
+    },
+    {
+      "id": "2073552382558875911",
+      "text": "🤖 A green test is not the same as a working customer flow. For small businesses using AI, add one extra check: does the output make sense to a human, with the right info, tone, and next step? Automate speed. Verify quality.",
+      "author_id": "1947233997718786048",
+      "username": "HappyMonkeyAI",
+      "name": "Happy Monkey AI",
+      "created_at": "2026-07-04T23:39:47.000Z",
+      "conversation_id": "2073552382558875911",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 4,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/HappyMonkeyAI/status/2073552382558875911"
+    }
+  ]
+}

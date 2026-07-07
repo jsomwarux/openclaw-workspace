@@ -172,8 +172,8 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 
 ## LinkedIn posted-log finalization check
 - **Trigger:** Every `content-generate-linkedin` weekly run before it announces the LinkedIn queue is ready.
-- **Check:** `memory/content/posted-log.jsonl` must contain one `platform=linkedin` row for every LinkedIn slot in the current weekly file, with `source_weekly` set to that file and `posted=false`. Run a pending-state dry run for the next eligible reminder date with both `--platform linkedin --platform x`.
-- **Fail condition:** The weekly file or Notion has LinkedIn copy, but `posted-log.jsonl` has zero matching rows. Treat this as a blocker because reminders and posted-reply logging will drop LinkedIn.
+- **Check:** `memory/content/posted-log.jsonl` must contain one `platform=linkedin` row for every LinkedIn slot in the current weekly file, with `source_weekly` set to that file and `posted=false`. Run a pending-state dry run for the next eligible reminder date with both `--platform linkedin --platform x`. If the cron ends with "Agent couldn't generate a response" or similar final-response failure, inspect the weekly file, Drive/review packet, posted-log rows, and Notion/scheduling state before retrying or resending. The live cron payload must end with exactly `LINKEDIN_QUEUE_READY`, `LINKEDIN_QUEUE_SKIPPED`, or `LINKEDIN_QUEUE_BLOCKED: [reason]`.
+- **Fail condition:** The weekly file or Notion has LinkedIn copy, but `posted-log.jsonl` has zero matching rows; or the cron performs file/Drive/log writes and exits without a final status checkpoint. Treat this as a blocker because reminders and posted-reply logging will drop LinkedIn or a partial queue may be retried blindly.
 - **Owner surface:** `content-generate-linkedin` cron payload, content reminder flow, posted-log hygiene.
 
 ## Current content niche-map check

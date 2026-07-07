@@ -24,7 +24,7 @@
 - Altmark is top paid/proof lane: finish Conductor on Beelink from Danny's guide, configure the rent delinquency bot, then use Fable for final playbook review before deploy/payment closeout.
 - Best public proof frame: controlled exception handling for delinquency/resident-sensitive follow-up, not autonomous collections.
 - Aya dashboard needs full Fable review, final updates, then a Gil review meeting; acquisitions remain stalled.
-- Marketsmith interview went well; follow-up expected Jul 6-7. Angle: secure data, agent lessons, Snowflake gates, client prompts, competitor research.
+- Marketsmith Nexus SOW active: quote $150/hr, ~$12K cap; Amanda meeting Jul 7. Details in full memory/SOW review.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
@@ -38,21 +38,21 @@
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com`: Workflow Audit + `/property` live/current; dormant kill loops wait for JT timer-start confirmation. App gates: Action Arena Apple org transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
+- `jtsomwaru.com`: AI ops homepage; `/property` remains PM Workflow Audit path. Kill loops wait for JT timer approval. App gates: Action Arena Apple transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
 - App strategy: distribution + retention are the survival constraint. Current ops: Apple follow-up, Fable UGC/paid onboarding review, Yair idea exchange, then Fable playbooks and Codex/Opus implementation.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
 - App content loop: niche-native creative, tested hooks/formats, and angles tied to audience pains, value, and retention.
-- Current review drafts include property Workflow Audit, AI-roadmap, and Jul 5 AI-enablement operating-record angles; review-only unless JT posts.
+- Current review drafts include property Workflow Audit, AI-roadmap, Jul 5 AI-enablement operating-record, and Jul 6 forwardable-offer-path angles; review-only unless JT posts.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 5 Crain Enterprise AI Enablement signal is market intel only for Claude rollout, guardrails, adoption measurement, and roadmap language.
+- Latest: Jul 6 brief found no critical/high role or qualifying NYC/remote non-coding AI implementation role; use job-market signals for positioning, not a new app/build task.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -69,8 +69,8 @@
 
 ## Active Automation / Crons
 - Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- Jul 5 16:36: MC 291 total / 287 active / 16 high / 0 overdue; cost clear; Spanish paused; digest queue routine only.
-- Red cron metadata: `Morning Brief` 1, `Skills & API Researcher` 1, `Weekly Systems Review` 3; hardened/awaiting natural reruns. No blind reruns.
+- Jul 6 13:20: MC 295 total / 291 active / 16 high / 0 overdue; cost clear; Spanish paused; digest queue 0.
+- Red cron metadata: `Weekly Systems Review` 3 and `content-generate-linkedin` 1; both are known/patched final-status or command-style rows. No blind reruns.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

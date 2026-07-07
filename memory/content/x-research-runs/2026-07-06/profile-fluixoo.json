@@ -1,0 +1,257 @@
+{
+  "user": {
+    "created_at": "2010-09-13T08:05:45.000Z",
+    "description": "Researcher | Marketing & Al | KOL Manager | Outreach @frameonx | Building @PlayTerra_ | EGO Elite @egodaox",
+    "id": "190174881",
+    "name": "Fluixo",
+    "public_metrics": {
+      "followers_count": 2675,
+      "following_count": 2376,
+      "like_count": 55238,
+      "listed_count": 46,
+      "media_count": 835,
+      "tweet_count": 31957
+    },
+    "username": "fluixoo"
+  },
+  "tweets": [
+    {
+      "id": "2074045438215287071",
+      "text": "Prompting is asking AI to do one thing.\n\nLoop engineering is building a system that keeps doing the right thing without you waking it up.\n\nThat is the shift.\n\nNot:\n\n“Claude, check my project.”\n\nBut:\n\nwake up at 6am\nread CI, issues, commits\npick what matters\ncreate isolated https://t.co/DqnZsJA9kc https://t.co/f7bgLhiJXQ",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-06T08:19:01.000Z",
+      "conversation_id": "2074045438215287071",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 62,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2074045438215287071/video/1",
+        "https://twitter.com/0x_kaize/status/2073438517775003671"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2074045438215287071"
+    },
+    {
+      "id": "2073809133589905835",
+      "text": "A domain is not just a name.\n\nIt is a timestamp.\n\nThe person who buys the term early pays $12.\n\nThe person who buys the same term after the market understands it pays six figures.\n\nThat is the whole game.\n\nMost domain investors watch lagging signals:\n\nGoogle Trends.\nExpired https://t.co/TDVrUne6bE https://t.co/z9trgwn7Lf",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-05T16:40:01.000Z",
+      "conversation_id": "2073809133589905835",
+      "metrics": {
+        "likes": 516,
+        "retweets": 30,
+        "replies": 9,
+        "quotes": 1,
+        "impressions": 8126,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2073809133589905835/video/1",
+        "https://twitter.com/vanvster/status/2073806218129244624"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2073809133589905835"
+    },
+    {
+      "id": "2073758985597878289",
+      "text": "Claude Fable 5 is back.\n\nDo not waste it on small tasks.\n\nNot buttons.\nNot copy edits.\nNot simple refactors.\nNot “make this cleaner”.\n\nUse cheaper models for that.\n\nFable 5 is for work with leverage:\n\nclone software you already pay for\naudit your Claude and Codex setup\ndesign https://t.co/ZaAPy3k9KQ https://t.co/iwWeX34Of5",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-05T13:20:45.000Z",
+      "conversation_id": "2073758985597878289",
+      "metrics": {
+        "likes": 259,
+        "retweets": 29,
+        "replies": 7,
+        "quotes": 0,
+        "impressions": 9684,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2073758985597878289/video/1",
+        "https://twitter.com/fluixoo/status/2073009944123605007"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2073758985597878289"
+    },
+    {
+      "id": "2073672046161121470",
+      "text": "Most people use ChatGPT and Claude like magic boxes.\n\nBut every frontier model is built through the same pipeline.\n\nData.\nPretraining.\nSupervised fine-tuning.\nReward modeling.\nReinforcement learning.\n\nThat is the whole shape.\n\nFirst, you clean a mountain of text.\n\nThen the model https://t.co/m76FC8vIxj https://t.co/6PqNjMAh9m",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-05T07:35:17.000Z",
+      "conversation_id": "2073672046161121470",
+      "metrics": {
+        "likes": 324,
+        "retweets": 44,
+        "replies": 6,
+        "quotes": 2,
+        "impressions": 9828,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2073672046161121470/video/1",
+        "https://twitter.com/eng_khairallah1/status/2073334640123769289"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2073672046161121470"
+    },
+    {
+      "id": "2073424911897411969",
+      "text": "I built a Telegram bot called Open Offers.\n\nIt’s a place where content creators, KOLs, and people in Web3 can find open partnership opportunities in one place.\n\nWhen I first started looking for offers, there were barely any. I had to join dozens of Telegram chats just to catch a https://t.co/GcfrUMGwhQ",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-04T15:13:16.000Z",
+      "conversation_id": "2073424911897411969",
+      "metrics": {
+        "likes": 14,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 367,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2073424911897411969/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2073424911897411969"
+    },
+    {
+      "id": "2073304963162185871",
+      "text": "Claude Fable 5 is back.\n\nDo not waste it on tiny tasks.\n\nNot buttons.\nNot copy edits.\nNot simple refactors.\nNot “make this cleaner”.\n\nUse cheaper models for that.\n\nFable 5 is for leverage:\n\nclone a tool you already pay for\naudit your Claude and Codex setup\ndesign your own agentic https://t.co/tEHYyq8qBn https://t.co/iwWeX34Of5",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-04T07:16:38.000Z",
+      "conversation_id": "2073304963162185871",
+      "metrics": {
+        "likes": 41,
+        "retweets": 0,
+        "replies": 5,
+        "quotes": 1,
+        "impressions": 4377,
+        "bookmarks": 4
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2073304963162185871/video/1",
+        "https://twitter.com/fluixoo/status/2073009944123605007"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2073304963162185871"
+    },
+    {
+      "id": "2073099733111906587",
+      "text": "A $200 Claude subscription does not become a $40,000/month business by itself.\n\nThe business is not the tool.\n\nThe business is the wedge.\n\nHelp 3 small businesses for free.\nFind one painful workflow.\nBuild one useful AI fix.\nGet one real testimonial.\nTurn that proof into a $500 https://t.co/PqsN9d7ziP https://t.co/fEHwH2FU1L",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-03T17:41:07.000Z",
+      "conversation_id": "2073099733111906587",
+      "metrics": {
+        "likes": 95,
+        "retweets": 14,
+        "replies": 13,
+        "quotes": 2,
+        "impressions": 14230,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2073099733111906587/video/1",
+        "https://twitter.com/LoopOnChain/status/2073042316630086040"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2073099733111906587"
+    },
+    {
+      "id": "2073009944123605007",
+      "text": "https://t.co/Wzu9rqTtJ8",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-03T11:44:19.000Z",
+      "conversation_id": "2073009944123605007",
+      "metrics": {
+        "likes": 18,
+        "retweets": 1,
+        "replies": 3,
+        "quotes": 5,
+        "impressions": 23497,
+        "bookmarks": 10
+      },
+      "urls": [
+        "http://x.com/i/article/2073003739904897024"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2073009944123605007"
+    },
+    {
+      "id": "2072958355820159423",
+      "text": "Faceless YouTube is not about hiding your face.\n\nIt is about building a repeatable media machine.\n\nThe stack is simple:\n\nClaude writes the script.\nElevenLabs reads it.\nRunway and Midjourney build the visuals.\nCapCut assembles the video.\nVidIQ helps package it for search.\nYouTube https://t.co/hDt11E65Fn https://t.co/8FzPeukNSA",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-03T08:19:20.000Z",
+      "conversation_id": "2072958355820159423",
+      "metrics": {
+        "likes": 75,
+        "retweets": 4,
+        "replies": 7,
+        "quotes": 0,
+        "impressions": 5960,
+        "bookmarks": 12
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2072958355820159423/video/1",
+        "https://twitter.com/WillamsXevu/status/2071347845899407732"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2072958355820159423"
+    },
+    {
+      "id": "2072727519552242072",
+      "text": "I spent way too much time trying to build this manually in Obsidian.\n\nGTM history.\nFailed experiments.\nDead channels.\nOld positioning ideas.\nCustomer objections.\nLaunch notes.\nThings I promised myself not to repeat.\n\nAll of it.\n\nBecause most AI tools have the same problem:\n\nthey https://t.co/SdrccRmC2t https://t.co/UFCua6A7YT",
+      "author_id": "190174881",
+      "username": "fluixoo",
+      "name": "Fluixo",
+      "created_at": "2026-07-02T17:02:04.000Z",
+      "conversation_id": "2072727519552242072",
+      "metrics": {
+        "likes": 24,
+        "retweets": 8,
+        "replies": 6,
+        "quotes": 1,
+        "impressions": 1054,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://x.com/fluixoo/status/2072727519552242072/photo/1",
+        "https://twitter.com/pashuk/status/2072657053043003584"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/fluixoo/status/2072727519552242072"
+    }
+  ]
+}

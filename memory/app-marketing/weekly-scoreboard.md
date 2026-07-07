@@ -176,7 +176,42 @@ Every weekly review ends with exactly one of these:
 - `SEO_FIRST`: app should get page work instead of social volume this week.
 - `MEASURE_FIRST`: live work shipped and the next move is source-tag/reporting/indexing measurement before more build or content volume.
 
+## Product Content Run — Week of 2026-07-06
+- Generated counts: X 0; Reddit 0; TikTok/ReelFarm support 0; LinkedIn 0.
+- Skips: `CHANNEL_FIT_REQUIRED` before drafting. Missing `memory/app-marketing/channel-fit/nash-satoshi.md` and `memory/app-marketing/channel-fit/vista.md`.
+- Measurement blocker: channel-fit artifacts are missing, so platform compliance, source-tag path, and kill/scale threshold are not defined for this run.
+- Next durable discovery action: create the Nash Satoshi channel-fit artifact first, then only generate one capped ranking/model-disagreement receipt if live rankings are available. Vista remains paused under the 2026-06-18 reset unless a written unpause trigger fires.
+- Review doc: `memory/app-marketing/review-docs/app-marketing-review-2026-07-06.md`.
+
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-06-29
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-06-29 to 2026-07-05 (0 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 5
+- Web depth: active users 5, pageviews 5, events 21
+- Best item: glow-index GA4 web traffic 2026-06-29 to 2026-07-05 (5 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-29 to 2026-07-05 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 19
+- Web depth: active users 15, pageviews 27, events 96
+- Best item: nash-satoshi GA4 web traffic 2026-06-29 to 2026-07-05 (19 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-06-29 to 2026-07-05 (19 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-06-28
 
 ### glow-index / search_console
@@ -1453,7 +1488,7 @@ Is the sharpe (20 views/impressions)
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 51
+- Posts/results logged: 52
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -1967,7 +2002,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-07-05_
+_Last updated: 2026-07-06_
 
 <!-- METRICS_SUMMARY_END -->
 

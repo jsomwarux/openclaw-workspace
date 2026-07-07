@@ -57,4 +57,5 @@ Here is the screenshot. Replicate it exactly.
 ## JT-Specific Notes
 - For web projects: output as Next.js + Tailwind CSS components
 - For iOS: output as SwiftUI
+- For existing codebases: inspect local components, design tokens, layout primitives, and styling conventions first; implement the clone with those project-native patterns while preserving the screenshot's visible design
 - Always adapt the cloned design to jtsomwaru.com's design system if integrating into the site (bg #09090b, accent teal-500)

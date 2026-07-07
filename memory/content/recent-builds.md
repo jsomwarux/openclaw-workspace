@@ -84,6 +84,14 @@
 **Content angle:** The useful version of human-in-the-loop is not approval on every step; it is a review pack that asks for direction, risk, taste, and acceptance at the exact right point.
 **Status:** complete
 
+## jtsomwaru.com Homepage Positioning Broadening - 2026-07-06
+**What:** Repositioned the homepage from property-first copy to broad AI operations implementation for ops-heavy teams while keeping `/property` as the focused PM referral page.
+**For:** internal consulting site / buyer conversion path
+**Outcome:** Commit `c870c52` pushed to `main`; `npm run lint` passed, `npm run build` passed with 54 static pages generated, local `/` returned 200 with the new AI workflows/dashboard/internal-tools hero, and `/property` remained property-specific.
+**Demonstrates:** consulting positioning correction, proof-safe homepage copy, vertical wedge separation, AI-search metadata maintenance
+**Content angle:** A vertical wedge should make referrals easier, not turn the whole brand into one niche. Put the broad category on the homepage and the narrow buyer path on its own URL.
+**Status:** complete
+
 ## jtsomwaru.com Workflow Audit Conversion Pass - 2026-07-03
 **What:** Converted the homepage from broad AI Operations Diagnostic/service-menu positioning into one Workflow Audit front door and added `/property` as the forwardable warm-referral page.
 **For:** internal consulting site / buyer conversion path

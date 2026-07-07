@@ -1,0 +1,229 @@
+{
+  "user": {
+    "created_at": "2026-02-04T06:57:10.000Z",
+    "description": "AI is cool i guess",
+    "id": "2018941753601208320",
+    "name": "Yash",
+    "public_metrics": {
+      "followers_count": 2773,
+      "following_count": 1577,
+      "like_count": 17333,
+      "listed_count": 10,
+      "media_count": 206,
+      "tweet_count": 12540
+    },
+    "username": "YashHustle_22"
+  },
+  "tweets": [
+    {
+      "id": "2074056400565911973",
+      "text": "Anthropic is beginning to look like a cult for some reason",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-06T09:02:34.000Z",
+      "conversation_id": "2074056400565911973",
+      "metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 112,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2074056400565911973"
+    },
+    {
+      "id": "2074037574214287437",
+      "text": "Upgraded Codex plan from $8 -&gt; $20 -&gt; $100 in a span of 4 months to keep the same limits. \n\nI don't like where this is going.",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-06T07:47:46.000Z",
+      "conversation_id": "2074037574214287437",
+      "metrics": {
+        "likes": 5,
+        "retweets": 0,
+        "replies": 4,
+        "quotes": 0,
+        "impressions": 249,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2074037574214287437"
+    },
+    {
+      "id": "2074012843452838099",
+      "text": "Working with GPT-5.5 be like \n\n10min backend, 20hours UI",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-06T06:09:29.000Z",
+      "conversation_id": "2074012843452838099",
+      "metrics": {
+        "likes": 20,
+        "retweets": 1,
+        "replies": 9,
+        "quotes": 0,
+        "impressions": 819,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2074012843452838099"
+    },
+    {
+      "id": "2073990129690321186",
+      "text": "I feel like many would pay for a $1000 Claude Code sub that has higher Fable 5 limits",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-06T04:39:14.000Z",
+      "conversation_id": "2073990129690321186",
+      "metrics": {
+        "likes": 19,
+        "retweets": 0,
+        "replies": 12,
+        "quotes": 0,
+        "impressions": 1497,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2073990129690321186"
+    },
+    {
+      "id": "2073879013911929237",
+      "text": "feeling opus 4.8 or gpt 5.5 isn't good? go use gemini for 5 minutes.",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-05T21:17:42.000Z",
+      "conversation_id": "2073879013911929237",
+      "metrics": {
+        "likes": 373,
+        "retweets": 6,
+        "replies": 46,
+        "quotes": 0,
+        "impressions": 19293,
+        "bookmarks": 9
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2073879013911929237"
+    },
+    {
+      "id": "2073856835782860885",
+      "text": "If GPT 5.6 matches Fable 5 performance, but without the 50% limit + 7 days restriction, it's over for Anthropic",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-05T19:49:34.000Z",
+      "conversation_id": "2073856835782860885",
+      "metrics": {
+        "likes": 640,
+        "retweets": 14,
+        "replies": 77,
+        "quotes": 4,
+        "impressions": 35537,
+        "bookmarks": 24
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2073856835782860885"
+    },
+    {
+      "id": "2073837422803325144",
+      "text": "Where are most of your side projects deployed?\n\n- Vercel\n- AWS\n- DigitalOcean\n- Netlify\n- Self-hosted",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-05T18:32:26.000Z",
+      "conversation_id": "2073837422803325144",
+      "metrics": {
+        "likes": 2,
+        "retweets": 0,
+        "replies": 5,
+        "quotes": 0,
+        "impressions": 206,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2073837422803325144"
+    },
+    {
+      "id": "2073817633540173945",
+      "text": "When building an app,\nwhat do you start with first?\n\n- UI\n- Backend logic",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-05T17:13:48.000Z",
+      "conversation_id": "2073817633540173945",
+      "metrics": {
+        "likes": 15,
+        "retweets": 1,
+        "replies": 34,
+        "quotes": 1,
+        "impressions": 1179,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2073817633540173945"
+    },
+    {
+      "id": "2073793822757466515",
+      "text": "As a founder,\nwhat’s the best way to get your first 100 users?\n\n- Cold outreach / DMs\n- Building in public\n- Organic SEO / Content\n- Ads",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-05T15:39:11.000Z",
+      "conversation_id": "2073793822757466515",
+      "metrics": {
+        "likes": 12,
+        "retweets": 0,
+        "replies": 15,
+        "quotes": 0,
+        "impressions": 783,
+        "bookmarks": 1
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2073793822757466515"
+    },
+    {
+      "id": "2073761897313444070",
+      "text": "As a vibe coder,\n\nhow many projects are you working on at the same time?",
+      "author_id": "2018941753601208320",
+      "username": "YashHustle_22",
+      "name": "Yash",
+      "created_at": "2026-07-05T13:32:19.000Z",
+      "conversation_id": "2073761897313444070",
+      "metrics": {
+        "likes": 14,
+        "retweets": 0,
+        "replies": 15,
+        "quotes": 0,
+        "impressions": 1111,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/YashHustle_22/status/2073761897313444070"
+    }
+  ]
+}

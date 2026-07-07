@@ -1,0 +1,1116 @@
+{
+  "canonical_drive_names": 53,
+  "dry_run": true,
+  "generated_at": "2026-07-06T03:00:11",
+  "pipeline_root": "/Users/jtsomwaru/projects/jt-consulting-pipeline",
+  "prospects": [
+    {
+      "company": "A-List Janitorial Supplies",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "a-list-janitorial",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Aarco Contracting \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": false,
+      "reason": "T3 already sent flag found.",
+      "slug": "aarco-contracting",
+      "t3_already_sent": true
+    },
+    {
+      "company": "AFGO Mechanical Services \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "afgo-mechanical",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Air Tactical HVAC Services",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "air-tactical-hvac",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Aladdin Plumbing Corp. \u2014 LinkedIn Outreach (3-Touch)",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "outreach-draft.md",
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "aladdin-plumbing",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Warm-up \u2014 AMAF Supply Inc.",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "amaf-supply-inc",
+      "t3_already_sent": true
+    },
+    {
+      "company": "AssuredPartners \u2014 Outreach Draft",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": false,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "assuredpartners",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Atlantic Global Risk",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "atlantic-global-risk",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Atlas NYC Property Management \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "atlas-nyc",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Warm-up \u2014 BenefitsGuide / Hillcrest Business Systems",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "benefitsguide",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Biz2Credit",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "biz2credit",
+      "t3_already_sent": false
+    },
+    {
+      "company": "BJD Property Management \u2014 LinkedIn DM Draft",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "bjd-property",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Brick Property Management \u2014 Outreach Draft",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "brick-property-mgmt",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Brothers Supply Corporation \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "brief.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "brothers-supply",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Citadel Property Management Corp. \u2014 LinkedIn DM Draft",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "citadel-property",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Common Living",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "common-living",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Conner Strong & Buckelew \u2014 LinkedIn DM Draft (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.md",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "conner-strong",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Dirty Gloves Drain Services LLC \u2014 LinkedIn Outreach (3-Touch)",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "outreach-draft.md",
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "dirty-gloves-drain",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Distinguished Programs \u2014 LinkedIn DM Draft (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.md",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "distinguished-programs",
+      "t3_already_sent": false
+    },
+    {
+      "company": "First Class Management (FCMRE) \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "fcm-real-estate",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Warm-up \u2014 Five Boro Building Supply",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "five-boro-building-supply",
+      "t3_already_sent": true
+    },
+    {
+      "company": "G&G Electric Supply \u2014 Outreach Draft",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": true,
+      "local_files": [
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md",
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "g-g-electric",
+      "t3_already_sent": false
+    },
+    {
+      "company": "G-Net Construction Corp \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "email-pivot.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "g-net-construction",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Warm-up \u2014 Gil Meyerowitz, Inc.",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "gil-meyerowitz-inc",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Globe Electric Supply \u2014 Outreach Draft",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": false,
+      "has_warm_up": false,
+      "local_files": [
+        "email-draft.md",
+        "outreach-draft.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "globe-electric",
+      "t3_already_sent": false
+    },
+    {
+      "company": "H.C. Oswald Supply Co. \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": false,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "brief.md",
+        "outreach-draft.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "hc-oswald",
+      "t3_already_sent": false
+    },
+    {
+      "company": "HealthPass \u2014 Warm-up",
+      "decision": "warm_up_only",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": false,
+      "reason": "Warm-up draft exists; do not create full outreach until warmed.",
+      "slug": "healthpass",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Henick-Lane Inc \u2014 LinkedIn DM Draft (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.md",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "henick-lane",
+      "t3_already_sent": false
+    },
+    {
+      "company": "HPM (Harlem Property Management) \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "hpm-property-management",
+      "t3_already_sent": false
+    },
+    {
+      "company": "\"title\": \"HubSpot MCP Insurance Agency Pipeline Demo\",",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json"
+      ],
+      "m_sequence_active": false,
+      "reason": "Template/demo folder, not an outreach prospect.",
+      "slug": "hubspot-mcp-insurance-demo",
+      "t3_already_sent": false
+    },
+    {
+      "company": "\"template_name\": \"HubSpot T2 Outreach\",",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json"
+      ],
+      "m_sequence_active": false,
+      "reason": "Template/demo folder, not an outreach prospect.",
+      "slug": "hubspot-t2-template",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Independent Pipe and Supply Corp \u2014 LinkedIn DM Draft (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "brief.md",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "independent-pipe",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Warm-up \u2014 L. Richards Plumbing & Heating, Inc.",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "l-richards-plumbing",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Outreach Status",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "lawley-insurance",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Madison Insurance Group \u2014 LinkedIn DM (3-touch)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": true,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md",
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "madison-insurance-group",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Maxwell Plumb Mechanical Corp \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "email-pivot.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "maxwell-plumb",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Michaels Electrical Supply Corp.",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "michaels-electrical-supply",
+      "t3_already_sent": true
+    },
+    {
+      "company": "MyPropertyMan \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "mypropertyman",
+      "t3_already_sent": true
+    },
+    {
+      "company": "New York Heating Corp \u2014 LinkedIn Outreach (3-Touch)",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": true,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md",
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "new-york-heating",
+      "t3_already_sent": true
+    },
+    {
+      "company": "New York Plumbing Supply",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "new-york-plumbing-supply",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Park Avenue Building & Roofing Supplies \u2014 LinkedIn DM Draft",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "park-ave-building",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Petri Plumbing, Heating, Cooling & Drain Cleaning",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "petri-plumbing",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Premier HVAC Services \u2014 LinkedIn DM Draft (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.md",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "premier-hvac",
+      "t3_already_sent": false
+    },
+    {
+      "company": "ProRealty USA \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "prorealty-usa",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Rampart Insurance Services",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "rampart-insurance",
+      "t3_already_sent": true
+    },
+    {
+      "company": "R.E.M. Residential \u2014 LinkedIn DM Draft (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.md",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "rem-residential",
+      "t3_already_sent": false
+    },
+    {
+      "company": "RSI International Inc. (RSI MGA) \u2014 LinkedIn DM Draft",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "rsi-mga",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Warm-up \u2014 S&B Electric Supply Corp.",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "s-b-electric-supply-corp",
+      "t3_already_sent": true
+    },
+    {
+      "company": "SDL+GHS Insurance Agency \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "sdl-ghs",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Silvercrest Asset Management",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "brief.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "silvercrest",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Spring Health",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "spring-health",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Warm-up \u2014 Sterling Sanitary Supply Corp.",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "sterling-sanitary-supply",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Superior Plumbing & Heating of NYC \u2014 LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "superior-plumbing",
+      "t3_already_sent": false
+    },
+    {
+      "company": "Warm-up \u2014 T.F. O'Brien Cooling & Heating",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "tf-obrien",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Warm-up \u2014 Weather Makers NYC",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": false,
+      "has_email_draft": false,
+      "has_outreach_draft": false,
+      "has_research": false,
+      "has_warm_up": true,
+      "local_files": [
+        "warm-up.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "weather-makers-nyc",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Webster Plumbing Supply Inc. -- LinkedIn DM (3-touch sequence)",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": true,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "email-draft.md",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "webster-plumbing",
+      "t3_already_sent": false
+    },
+    {
+      "company": "The Whitmore Group",
+      "decision": "skip",
+      "has_brief": true,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "brief.json",
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "T3 already sent flag found.",
+      "slug": "whitmore-group",
+      "t3_already_sent": true
+    },
+    {
+      "company": "Wynne Plumbing & Heating Corp \u2014 LinkedIn DM Draft",
+      "decision": "skip",
+      "has_brief": false,
+      "has_drive_doc_link": true,
+      "has_email_draft": false,
+      "has_outreach_draft": true,
+      "has_research": true,
+      "has_warm_up": false,
+      "local_files": [
+        "outreach-draft.md",
+        "research.md"
+      ],
+      "m_sequence_active": true,
+      "reason": "M-sequence already active or pitched.",
+      "slug": "wynne-plumbing",
+      "t3_already_sent": false
+    }
+  ],
+  "stages": [
+    {
+      "detail": "required files present",
+      "name": "source_file_preflight",
+      "ok": true
+    },
+    {
+      "detail": "Drive auth ok; Eve Drafts root visible.",
+      "name": "drive_auth_preflight",
+      "ok": true
+    },
+    {
+      "detail": "53 canonical names loaded",
+      "name": "canonical_drive_names",
+      "ok": true
+    },
+    {
+      "detail": "58 client folders scanned",
+      "name": "prospect_scan",
+      "ok": true
+    }
+  ],
+  "summary": {
+    "skip": 57,
+    "warm_up_only": 1
+  }
+}

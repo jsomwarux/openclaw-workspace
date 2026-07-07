@@ -79,3 +79,6 @@
 2026-07-03 built-robotics-construction-infra-automation — Built Robotics autonomous heavy equipment is handling majority pile-driving scope on Meta-linked infrastructure work and expanding via a $75M Blattner Energy contract.
 2026-07-05 wholesale-supply-chain-ai-live-gap — First Analysis/Sage 2026 signal: only 10% of retail and wholesale supply-chain operators have AI live in workflows despite AI exception, forecasting, replenishment, and order-management vendor movement.
 2026-07-05 property-management-ai-escalation-routing — Fresh PM AI assistant/receptionist coverage emphasizes maintenance triage, diagnostic questions, tenant updates, escalation rules, and routing configuration as the useful implementation layer.
+
+2026-07-06 agentforce-commerce-july-search-channels — Salesforce's July 6 Agentforce Commerce release adds Agentic Commerce Search, ChatGPT/Google AI Mode/Gemini integrations, Storefront Next, and B2B/headless commerce updates relevant to B2B distribution automation.
+2026-07-06 construction-insurer-site-monitoring-discounts — Builders-risk insurers are offering premium discounts for contractors that deploy site-monitoring technology, creating a direct ROI lever for construction tech adoption.

@@ -1,0 +1,247 @@
+[
+  {
+    "id": "2073052083805462788",
+    "text": "🔖BOOKMARK THIS!\n\n🚨8 GITHUB REPOS YOU CAN'T MISS \n\n1. OPENCLAW — 210,000+ stars\n   The terminal AI agent that went viral overnight\n   → Browser automation, scheduling, workflow automation\n   → Free to self-host\n\n2. OLLAMA — 165,000+ stars\n   Run any LLM locally. No data leaves",
+    "author_id": "1648787052",
+    "username": "AnandButani",
+    "name": "Anand Butani",
+    "created_at": "2026-07-03T14:31:46.000Z",
+    "conversation_id": "2073052083805462788",
+    "metrics": {
+      "likes": 16,
+      "retweets": 9,
+      "replies": 4,
+      "quotes": 0,
+      "impressions": 736,
+      "bookmarks": 12
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AnandButani/status/2073052083805462788"
+  },
+  {
+    "id": "2072005023798612283",
+    "text": "🚀 Built a Telegram AI Agent with n8n that uses OpenAI + SerpAPI to search Google for live 2026 FIFA World Cup updates before responding. Great practice with AI agents, prompt engineering, tool calling, and workflow automation.\n\n#n8n #AIAgents #OpenAI #Automation",
+    "author_id": "1554223616887328768",
+    "username": "OviroroO",
+    "name": "ovibuks",
+    "created_at": "2026-06-30T17:11:08.000Z",
+    "conversation_id": "2072005023798612283",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 93,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [
+      "n8n",
+      "AIAgents",
+      "OpenAI",
+      "Automation"
+    ],
+    "tweet_url": "https://x.com/OviroroO/status/2072005023798612283"
+  },
+  {
+    "id": "2072004152540946608",
+    "text": "Built another AI Agent with n8n!\n\nI created a Telegram AI Agent that provides 2026 FIFA World Cup updates.\n\nKey concepts I practiced:\n⚽ AI Agents\n🤖 Prompt Engineering (role, tone, goals &amp; guardrails)\n🔍 Live Web Search with SerpAPI\n💬 Telegram Integration\n⚙️ Workflow automation",
+    "author_id": "1554223616887328768",
+    "username": "OviroroO",
+    "name": "ovibuks",
+    "created_at": "2026-06-30T17:07:40.000Z",
+    "conversation_id": "2072004152540946608",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 110,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/OviroroO/status/2072004152540946608"
+  },
+  {
+    "id": "2073069644047339683",
+    "text": "4 open-source AI tools worth your time right now:\n\n1) n8n - Visual workflow automation with 400+ integrations and native AI. Self-hosted, fair-code. Build AI pipelines without glue code.\nhttps://t.co/KhCB5eOWD4\n\n2) Dify - Production platform for AI apps. RAG, MCP support,",
+    "author_id": "403848842",
+    "username": "iGamesDev",
+    "name": "Vladimirs Matusevics",
+    "created_at": "2026-07-03T15:41:33.000Z",
+    "conversation_id": "2073069644047339683",
+    "metrics": {
+      "likes": 1,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 116,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://github.com/n8n-io/n8n"
+    ],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/iGamesDev/status/2073069644047339683"
+  },
+  {
+    "id": "2073695815927820711",
+    "text": "Built an AI voice agent for a restaurant.\n\nStack: Vapi + ElevenLabs + OpenAI + n8n\n\nFeatures:\n• 📞 Call handling\n• 🍽️ Reservations\n• 📍 Business information\n• 🔄 Workflow automation\nDesigned to reduce missed calls, inquiries, and improve experience.\n#AI #VoiceAI #AIAutomation https://t.co/gcxnJw9rfD",
+    "author_id": "2073354215737737216",
+    "username": "Crownn_AI",
+    "name": "CrownAI",
+    "created_at": "2026-07-05T09:09:44.000Z",
+    "conversation_id": "2073695815927820711",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 3,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/Crownn_AI/status/2073695815927820711/photo/1"
+    ],
+    "mentions": [],
+    "hashtags": [
+      "AI",
+      "VoiceAI",
+      "AIAutomation"
+    ],
+    "tweet_url": "https://x.com/Crownn_AI/status/2073695815927820711"
+  },
+  {
+    "id": "2072739298382684169",
+    "text": "إذا كنت تبني Chatbot أو AI Agent باستخدام n8n فلا تتجاهل الـ Guard\n\nطبقة حماية تفحص أي Input قبل ما يوصل للذكاء الاصطناعي وتحمي الـ Workflow من الأخطاء والاستخدام الخاطئ\n\n#n8n #AI #AIAgents #Workflow #Automation #الذكاء_الاصطناعي #برمجة #تقنية",
+    "author_id": "2066216221838655488",
+    "username": "MaisDaifallah",
+    "name": "Mais Daifallah",
+    "created_at": "2026-07-02T17:48:53.000Z",
+    "conversation_id": "2072739298382684169",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 50,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [
+      "n8n",
+      "AI",
+      "AIAgents",
+      "Workflow",
+      "Automation",
+      "الذكاء_الاصطناعي",
+      "برمجة",
+      "تقنية"
+    ],
+    "tweet_url": "https://x.com/MaisDaifallah/status/2072739298382684169"
+  },
+  {
+    "id": "2071969003208142853",
+    "text": "Zapier just got an open source AI native cousin for workflow automation.\n\nByteChef is open source low code with 180+ integrations:\n- Connects SaaS and internal systems without glue code\n- Drop in custom Python, JS, or shell steps anywhere\n- Self host and extend with components",
+    "author_id": "1820657653086859264",
+    "username": "so_sthbryan",
+    "name": "Bryan",
+    "created_at": "2026-06-30T14:48:00.000Z",
+    "conversation_id": "2071969003208142853",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 1,
+      "quotes": 0,
+      "impressions": 44,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/so_sthbryan/status/2071969003208142853"
+  },
+  {
+    "id": "2073051224950133192",
+    "text": "Bookmark this: 8 GitHub repos every AI developer should star right now\n\n1. ⭐ OPENCLAW — 210,000+ stars\n   The terminal AI agent that went viral overnight\n   → Browser automation, scheduling, workflow automation\n   → Free to self-host\n\n2. 🔥 OLLAMA — 165,000+ stars\n   Run any",
+    "author_id": "1648787052",
+    "username": "AnandButani",
+    "name": "Anand Butani",
+    "created_at": "2026-07-03T14:28:22.000Z",
+    "conversation_id": "2073051224950133192",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 19,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AnandButani/status/2073051224950133192"
+  },
+  {
+    "id": "2073051945552760866",
+    "text": "🔖BOOKMARK THIS!\n\n🚨8 GITHUB REPOS YOU CAN'T MISS \n\n1. ⭐ OPENCLAW — 210,000+ stars\n   The terminal AI agent that went viral overnight\n   → Browser automation, scheduling, workflow automation\n   → Free to self-host\n\n2. 🔥 OLLAMA — 165,000+ stars\n   Run any LLM locally. No data",
+    "author_id": "1648787052",
+    "username": "AnandButani",
+    "name": "Anand Butani",
+    "created_at": "2026-07-03T14:31:13.000Z",
+    "conversation_id": "2073051945552760866",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 13,
+      "bookmarks": 0
+    },
+    "urls": [],
+    "mentions": [],
+    "hashtags": [],
+    "tweet_url": "https://x.com/AnandButani/status/2073051945552760866"
+  },
+  {
+    "id": "2073281498111947015",
+    "text": "✅ Completed AI &amp; Automation with n8n by @myskill_id \n\nBelajar membuat workflow automation menggunakan n8n, memahami integrasi AI, serta membangun alur otomatis untuk meningkatkan efisiensi pekerjaan.\n\n#MySkill #n8n #AI #Automation #Workflow #TechLearning #LearnatMySkill https://t.co/1IUz9XB7Ys",
+    "author_id": "1458535998",
+    "username": "csrlina_",
+    "name": "Caesarani Lina Dwi Setyaning",
+    "created_at": "2026-07-04T05:43:23.000Z",
+    "conversation_id": "2073281498111947015",
+    "metrics": {
+      "likes": 0,
+      "retweets": 0,
+      "replies": 0,
+      "quotes": 0,
+      "impressions": 31,
+      "bookmarks": 0
+    },
+    "urls": [
+      "https://x.com/csrlina_/status/2073281498111947015/photo/1",
+      "https://x.com/csrlina_/status/2073281498111947015/photo/1"
+    ],
+    "mentions": [
+      "myskill_id"
+    ],
+    "hashtags": [
+      "MySkill",
+      "n8n",
+      "AI",
+      "Automation",
+      "Workflow",
+      "TechLearning",
+      "LearnatMySkill"
+    ],
+    "tweet_url": "https://x.com/csrlina_/status/2073281498111947015"
+  }
+]

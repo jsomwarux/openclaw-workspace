@@ -1,0 +1,63 @@
+{
+  "user": {
+    "created_at": "2022-03-10T07:07:50.000Z",
+    "description": "Deep dive into electronic components 🔌 | RF, Industrial & Energy Storage tech, reviews & performance analysis | Sharing cutting-edge hardware insights 💡",
+    "id": "1501817027165515777",
+    "name": "Sunrise Lee",
+    "public_metrics": {
+      "followers_count": 54,
+      "following_count": 261,
+      "like_count": 364,
+      "listed_count": 0,
+      "media_count": 34,
+      "tweet_count": 172
+    },
+    "username": "SunriseLeevot"
+  },
+  "tweets": [
+    {
+      "id": "2073785424141856942",
+      "text": "His claws are tied and he still looks like he’s about to ask for the manager. This isn’t a crab. This is seafood with legal representation. 🦀 https://t.co/flR8hto72x",
+      "author_id": "1501817027165515777",
+      "username": "SunriseLeevot",
+      "name": "Sunrise Lee",
+      "created_at": "2026-07-05T15:05:48.000Z",
+      "conversation_id": "2073785424141856942",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 2,
+        "bookmarks": 0
+      },
+      "urls": [
+        "https://x.com/SunriseLeevot/status/2073785424141856942/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SunriseLeevot/status/2073785424141856942"
+    },
+    {
+      "id": "2071768406894977385",
+      "text": "AI automation gets real when a workflow stops being a chat and becomes an inspectable loop. For a small business, the value is not one more prompt. It is checkpoints, memory, validation, and clear handoff points so the agent can keep moving without creating hidden risk.",
+      "author_id": "1501817027165515777",
+      "username": "SunriseLeevot",
+      "name": "Sunrise Lee",
+      "created_at": "2026-06-30T01:30:54.000Z",
+      "conversation_id": "2071768406894977385",
+      "metrics": {
+        "likes": 0,
+        "retweets": 0,
+        "replies": 2,
+        "quotes": 0,
+        "impressions": 18,
+        "bookmarks": 0
+      },
+      "urls": [],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SunriseLeevot/status/2071768406894977385"
+    }
+  ]
+}

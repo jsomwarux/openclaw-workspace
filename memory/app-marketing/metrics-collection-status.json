@@ -1,11 +1,12 @@
 {
   "posts_seen": 66,
-  "metrics_rows_fetched": 32,
+  "metrics_rows_fetched": 31,
   "metrics_rows_appended": 0,
   "skipped_by_platform": {
     "tiktok": 30,
     "x": 4,
     "seo": 1,
+    "app_store": 1,
     "tiktok_reelfarm_support": 1
   },
   "failures": [],
@@ -20,16 +21,18 @@
         "APPSTORE_VISTA_APP_ID": true
       },
       "private_key_path_exists": true,
-      "metadata_auth_ok": true,
-      "app_name": "VISTA - Movie Taste Profiles",
-      "reporting_status": "sales_report_ready_zero_sales",
-      "reporting_error": null,
+      "metadata_auth_ok": false,
+      "app_name": null,
+      "reporting_status": "reporting_blocked_or_permission_gap",
+      "reporting_error": "HTTP 403: {\n  \"errors\" : [ {\n    \"id\" : \"KN2OERPMAASSRGHEMMA3OKIGHY\",\n    \"status\" : \"403\",\n    \"code\" : \"FORBIDDEN.REQUIRED_AGREEMENTS_MISSING_OR_EXPIRED\",\n    \"title\" : \"A required agreement is missing or has expired.\",\n    \"detail\" : \"This request requires an in-effect agreement that has not been signed or has expired.\",\n    \"links\" : {\n      \"see\" : \"/business\"\n    }\n  } ]\n}\n",
       "vendor_numbers_configured": [
         "configured"
       ],
-      "status": "reporting_ready",
-      "status_reason": "sales_report_ready_zero_sales",
-      "blocked_details": [],
+      "status": "missing_secure_credentials_or_permissions",
+      "status_reason": "reporting_blocked_or_permission_gap",
+      "blocked_details": [
+        "Apple sales report endpoint rejected the configured vendor number/API key; JT may need to accept agreements or grant reporting access in App Store Connect."
+      ],
       "approved_secret_surface": "approved env/config only; never docs/chat/repo",
       "diagnostic_command": "cd ~/.openclaw/workspace && python3 scripts/app_marketing_connectors/app_store_metrics.py",
       "collector_command": "cd ~/.openclaw/workspace && python3 scripts/app_marketing_collect_metrics.py",

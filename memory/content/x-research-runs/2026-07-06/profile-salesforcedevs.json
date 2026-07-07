@@ -1,0 +1,272 @@
+{
+  "user": {
+    "created_at": "2007-07-31T01:18:34.000Z",
+    "description": "Build the Agentic Enterprise. Stay up to date with news and resources for Salesforce Developers.",
+    "id": "7834512",
+    "name": "Salesforce Developers",
+    "public_metrics": {
+      "followers_count": 121077,
+      "following_count": 789,
+      "like_count": 8597,
+      "listed_count": 1312,
+      "media_count": 4081,
+      "tweet_count": 16702
+    },
+    "username": "SalesforceDevs"
+  },
+  "tweets": [
+    {
+      "id": "2073096967597576497",
+      "text": "From AI agents in @SlackHQ to custom React apps, here's what @Salesforce Headless 360 makes possible. ⚡\n\nSee how @BACASystems built a headless architecture that:\n\n🔹 Powers AI agents across multiple experiences\n🔹 Embeds Salesforce workflows beyond the traditional UI\n🔹 Saves https://t.co/o642rb0qyG",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-07-03T17:30:08.000Z",
+      "conversation_id": "2073096967597576497",
+      "metrics": {
+        "likes": 10,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1567,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2073096967597576497/photo/1"
+      ],
+      "mentions": [
+        "SlackHQ",
+        "salesforce",
+        "BACASystems"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2073096967597576497"
+    },
+    {
+      "id": "2073060474690621475",
+      "text": "🤖 Build AI-powered React apps with Agentforce.\n\nJoin @Salesforce Developer Advocates @msrivastav13 and @DevRelSean for this month's Agentforce NOW codeLive and learn how to:\n\n🔹 Set up a React app on Salesforce from scratch\n🔹 Configure an Agentforce Employee Agent with https://t.co/qNnFqDM0UR",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-07-03T15:05:07.000Z",
+      "conversation_id": "2073060474690621475",
+      "metrics": {
+        "likes": 9,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1244,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2073060474690621475/photo/1"
+      ],
+      "mentions": [
+        "salesforce",
+        "msrivastav13",
+        "DevRelSean"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2073060474690621475"
+    },
+    {
+      "id": "2072772353583378880",
+      "text": "📱 Accelerate mobile development with Mobile Skills, now GA. \n\nUse simple prompts to generate native mobile projects with authentication, offline support, and the @Salesforce Mobile SDK built in - so you can spend less time on setup and more time building.\n\nLearn more: https://t.co/wrFBMJN2xF",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-07-02T20:00:13.000Z",
+      "conversation_id": "2072772353583378880",
+      "metrics": {
+        "likes": 9,
+        "retweets": 4,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1213,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2072772353583378880/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2072772353583378880"
+    },
+    {
+      "id": "2072696917457310005",
+      "text": "AI agents need a trusted way to discover and connect with capabilities across organizational boundaries. 🔎\n\nThat's why @Salesforce has partnered with @Google and other industry leaders on the new Agentic Resource Discovery (ARD) specification.\n\nLearn what it means for Agentforce https://t.co/lHh8g5lOpK",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-07-02T15:00:28.000Z",
+      "conversation_id": "2072696917457310005",
+      "metrics": {
+        "likes": 10,
+        "retweets": 4,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1408,
+        "bookmarks": 3
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2072696917457310005/photo/1"
+      ],
+      "mentions": [
+        "salesforce",
+        "Google"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2072696917457310005"
+    },
+    {
+      "id": "2072379846898974821",
+      "text": "🤖 Bring @Salesforce into your AI coding agent with Headless 360.\n\nIn Episode 2 of Salesforce Headless 360 Decoded, Charles Watkins shows how to connect Claude Code, Cursor, and other AI coding agents to Salesforce using the Salesforce Skills Library and Salesforce DX MCP Server. https://t.co/SEMGttw5a6",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-07-01T18:00:33.000Z",
+      "conversation_id": "2072379846898974821",
+      "metrics": {
+        "likes": 18,
+        "retweets": 3,
+        "replies": 3,
+        "quotes": 0,
+        "impressions": 2698,
+        "bookmarks": 20
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2072379846898974821/video/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2072379846898974821"
+    },
+    {
+      "id": "2072355834445623571",
+      "text": "State Managers are now generally available in Lightning Web Components (LWC). 🎉\n\nSpend less time wiring components together and more time building. Share state across component trees without property drilling, custom events, or pub/sub workarounds.\n\nGet started: https://t.co/0v8KGPazis",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-07-01T16:25:08.000Z",
+      "conversation_id": "2072355834445623571",
+      "metrics": {
+        "likes": 15,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1691,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2072355834445623571/photo/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2072355834445623571"
+    },
+    {
+      "id": "2072033772694909154",
+      "text": "🎉 Episode 6 of Data 360 Activated just dropped.\n\nLearn how to:\n\n⚡ Catch missed-search demand with a calculated insight\n🔁 Auto-create opportunities via a Data 360 triggered flow\n🤖 Forecast deal revenue with an Einstein Studio regression model\n📊 Surface the prediction as a https://t.co/92QMbKYe9w",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-30T19:05:22.000Z",
+      "conversation_id": "2072033772694909154",
+      "metrics": {
+        "likes": 11,
+        "retweets": 1,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1671,
+        "bookmarks": 10
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2072033772694909154/video/1"
+      ],
+      "mentions": [],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2072033772694909154"
+    },
+    {
+      "id": "2072006036316176492",
+      "text": "🔐 Secure your @Salesforce Hosted MCP Servers with confidence.\n\nAs a core component of Headless 360, Salesforce Hosted MCP Servers extend agent capabilities across any frontend. Learn the security fundamentals - from authentication and authorization to permission controls and https://t.co/5BBkxB8Eoe",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-30T17:15:09.000Z",
+      "conversation_id": "2072006036316176492",
+      "metrics": {
+        "likes": 13,
+        "retweets": 3,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1522,
+        "bookmarks": 6
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2072006036316176492/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2072006036316176492"
+    },
+    {
+      "id": "2071670121752379393",
+      "text": "Don't miss your chance to get hands-on with @Salesforce Headless 360.\n\nJoin Salesforce Developer Advocate @PhilippeOzil to explore Salesforce Hosted MCPs, Agentforce Vibes, APIs, and MCP tools for building agent-ready experiences beyond the platform.\n\n🔌 Any frontend. Any https://t.co/LNz4IWQkRP",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-29T19:00:21.000Z",
+      "conversation_id": "2071670121752379393",
+      "metrics": {
+        "likes": 7,
+        "retweets": 2,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1233,
+        "bookmarks": 2
+      },
+      "urls": [
+        "https://x.com/SalesforceDevs/status/2071670121752379393/photo/1"
+      ],
+      "mentions": [
+        "salesforce",
+        "PhilippeOzil"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2071670121752379393"
+    },
+    {
+      "id": "2071643644340109735",
+      "text": "🚨Just 1 day left!\n\nHelp shape the future of the @Salesforce Developers program.\n\nIn just 5 minutes, you can tell us what content, channels, and programs matter most to you.\n\nSurvey closes tomorrow, June 30.\n\n📣 Share your anonymous feedback today: https://t.co/uruO2jQWyn https://t.co/xMV0FQblvF",
+      "author_id": "7834512",
+      "username": "SalesforceDevs",
+      "name": "Salesforce Developers",
+      "created_at": "2026-06-29T17:15:08.000Z",
+      "conversation_id": "2071643644340109735",
+      "metrics": {
+        "likes": 3,
+        "retweets": 0,
+        "replies": 0,
+        "quotes": 0,
+        "impressions": 1093,
+        "bookmarks": 0
+      },
+      "urls": [
+        "http://sforce.co/devsurvey",
+        "https://x.com/SalesforceDevs/status/2071643644340109735/photo/1"
+      ],
+      "mentions": [
+        "salesforce"
+      ],
+      "hashtags": [],
+      "tweet_url": "https://x.com/SalesforceDevs/status/2071643644340109735"
+    }
+  ]
+}

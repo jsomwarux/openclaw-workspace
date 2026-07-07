@@ -483,3 +483,22 @@ Sources checked July 5:
 - Haven, "Maintenance AI Property Management Guide 2026: Triage & ROI" - https://www.usehaven.ai/post/maintenance-ai-property-management-guide-triage-roi
 - The AI Consulting Network, "AI Property Management Tools Compared: 2026 Buyer's Guide" - https://www.theaiconsultingnetwork.com/blog/ai-property-management-tools-compared-2026-buyers-guide
 - TechRadar, "Agentic AI adoption outpaces governance in regulated industries" - https://www.techradar.com/pro/agentic-ai-adoption-outpaces-governance-in-regulated-industries
+
+## 2026-07-06 Heartbeat Market Addendum
+
+The July 6 Morning Brief keeps the property-management proof path tied to governed execution, not more strategy. The strongest buyer-safe wedge is still a narrow Altmark rent-delinquency run record that proves who owned the source input, what the system was allowed to do, what needed review, and what outcome changed.
+
+Fresh market signals:
+- Enterprise-agent guidance is converging on supervised action, approvals, audit logs, reversible workflows, and controlled tool/data access. That is the same operating model PM buyers need before letting AI touch resident, ledger, renewal, or delinquency workflows.
+- Lette-style property-ops tools validate the workflow category: tenant intake, maintenance routing, work orders, and field coordination are becoming expected AI surfaces. The differentiation is not "AI handles property ops"; it is source-aware run control with owner/reviewer state and evidence.
+- The First-Monday event scout did not clear the task gate because exact buyer, venue, and date details were insufficient. That is useful discipline for the sales motion: do not turn weak context into outreach or an ask before proof and fit are clear.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The rent-delinquency packet should ask for the source export and reviewer/exception rules needed to finish the controlled record and invoice the remaining $2,250.
+- PM COI and v2 batch language should lead with one sensitive workflow: source input, allowed scope, owner/reviewer, approve/edit/hold/escalate state, evidence link, delivery proof, and resolution event.
+- Relationship paths are not referral-ready until proof is cleaner. Use the Altmark packet and Petri/HPM/Superior sends to create current evidence before asking Yair, Gil, Richard Leo, or Guyana-family contacts for leverage.
+
+Sources checked July 6:
+- Velocity Smart, "AI agents in enterprise IT: a practical 2026 guide" - https://www.velocity-smart.com/velocity-hub/blog/ai-agents-in-enterprise-it-a-practical-2026-guide
+- AI CRE Tools, "Lette - property management ai software" - https://www.aicretools.com/lette
+- Eventbrite, "New York Business Events" - https://www.eventbrite.com/b/ny--new-york/business/
