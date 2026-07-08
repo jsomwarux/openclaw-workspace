@@ -11,7 +11,7 @@ The pack:
 4. 04-state-file-discipline.md
 5. 05-repeat-offender-digest.md
 
-## Approved registry, 8 recurring jobs (marketing agent removed, rebuild pending as Engine B Stage 3)
+## Approved registry, 12 recurring jobs (Engine B Stage 1 idea engine kept; marketing Stage 3 rebuild pending)
 
 | Job | Schedule | Class | Ping |
 |---|---|---|---|
@@ -23,6 +23,7 @@ The pack:
 | Weekly Systems Review | 0 10 * * 0 | green, fixes yellow | only if red |
 | weekly-unemployment-cert | 0 7 * * 0 | green reminder | yes, 1/week |
 | Health Check-in (Pattern-Focused) | 0 21 * * * | green | yes, 1/day |
+| Passive Income idea engine: fetch-signals, scout, strategist, delivery-guard (Engine B Stage 1) | weekly now, monthly after Engine B rewrite | green run, yellow build-recs | no |
 
 One-shot reminders remain allowed. Everything else is disabled.
 
@@ -72,9 +73,11 @@ EVE SCOREBOARD - week ending <date>
 
 Line 6 is the self-reduction ratchet. Registry count never rises week over week.
 
-## Disable list, 37 jobs
+## Disable list, 33 jobs
 
-Refused scope, 16: Crypto Full Analysis (6 AM), Crypto Midday Pulse (12 PM), Crypto Evening Pulse (9 PM), Job Market Daily Research, Job Application Auto-Builder, Job Application Tracker, passive-income-fetch-signals, passive-income-scout, passive-income-strategist, passive-income-strategist-delivery-guard, ReelFarm Daily Strategy Intel, ReelFarm Weekly Strategy Synthesis, TikTok App Account Warm-up Reminder (2 PM), app-marketing-weekly-scoreboard, vibe-marketing-generate, guyana-economic-opportunity-monitor.
+Refused scope, 12: Crypto Full Analysis (6 AM), Crypto Midday Pulse (12 PM), Crypto Evening Pulse (9 PM), Job Market Daily Research, Job Application Auto-Builder, Job Application Tracker, ReelFarm Daily Strategy Intel, ReelFarm Weekly Strategy Synthesis, TikTok App Account Warm-up Reminder (2 PM), app-marketing-weekly-scoreboard, vibe-marketing-generate, guyana-economic-opportunity-monitor.
+
+KEEP correction, not disable: passive-income-fetch-signals, passive-income-scout, passive-income-strategist, passive-income-strategist-delivery-guard are Engine B Stage 1, the idea engine JT values. Earlier drafts of this list wrongly filed them under refused scope. Corrected 2026-07-08.
 
 Reading not sends, 9: Niche Intelligence Monitor, Daily News Hook, Viral Post Swipe File - X Research, Autoresearch Sweep, Skills & API Researcher - Daily Scan, Skills & API Researcher - Weekly Synthesis, Evening Digest, Monthly Goal-Skills Gap Analysis, Monthly Niche Fitness Review.
 
@@ -84,7 +87,7 @@ Merged into survivors, 6: Weekly North Star Command Center, Weekly Strategic Gut
 ## Install checklist, on the Mini
 
 1. Sync this repo into ~/.openclaw/workspace.
-2. One batch registry edit, JT keyword on the diff: disable the 37 jobs above, set Pending Task Processor to 30 10,18 * * *, set prospect-discovery to 0 23 * * 0.
+2. One batch registry edit, JT keyword on the diff: disable the 33 jobs above, set Pending Task Processor to 30 10,18 * * *, set prospect-discovery to 0 23 * * 0.
 3. Rewrite the Morning Brief payload to the Daily Send Sheet format above and rename the job Daily Send Sheet. Remove the Nash probe and every non-send section.
 4. Create the replacement job: Friday Scoreboard at 0 16 * * 5 with announce delivery. No marketing cron is created. The marketing agent is being rebuilt and stays off until JT approves the new strategy.
 5. Create memory/job-state/ with claims/ and archive/ subfolders and one state file per surviving job from TEMPLATE.md.

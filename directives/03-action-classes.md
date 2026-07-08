@@ -18,4 +18,5 @@ Effective 2026-07-06. Approved by JT. Every action is classified green, yellow, 
    7. Pending Task Processor, twice daily: green plumbing, each task inherits its own class.
    8. weekly-unemployment-cert, Sunday 7:00: green reminder only, the certification is red and JT does it.
    9. Health Check-in, 21:00 daily: green.
+   10. Passive Income idea engine (fetch-signals, scout, strategist, delivery-guard), Engine B Stage 1: green to fetch, analyze, and write its own idea files; the build recommendation it emits is yellow and never triggers a build by itself. Every build waits for JT's keyword per the red rule. Cadence reduces to monthly in the Engine B rewrite.
 8. Reference case: the 2026-07-03 autonomous deploy and push to jtsomwaru.com was red executed as green. Under this directive that run ends at a staged diff and a queue item.
