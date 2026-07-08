@@ -1,16 +1,16 @@
 {
   "entries": [
     {
-      "date": "2026-07-01",
-      "day": "wednesday",
-      "line_no": 238,
-      "platform": "linkedin",
-      "summary": "AI Operations Diagnostic drives first-workflow selection: source trusted, approval owner named, stop rule clear, output lands in system someone already checks.",
-      "topic": "first-workflow-run-control-diagnostic-criteria"
+      "date": "2026-07-07",
+      "day": "tuesday",
+      "line_no": 244,
+      "platform": "x",
+      "summary": "Company discovery is easy; buyer-channel enrichment needs authority, reachable channel, and reason to care before a sequence exists.",
+      "topic": "buyer-channel-enrichment-authority-channel-reason"
     }
   ],
   "note": "",
-  "sent_at": 1782907361,
+  "sent_at": 1783425628,
   "source": "content-reminder",
   "status": "pending"
 }

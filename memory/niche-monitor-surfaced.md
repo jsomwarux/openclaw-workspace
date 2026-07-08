@@ -82,3 +82,5 @@
 
 2026-07-06 agentforce-commerce-july-search-channels — Salesforce's July 6 Agentforce Commerce release adds Agentic Commerce Search, ChatGPT/Google AI Mode/Gemini integrations, Storefront Next, and B2B/headless commerce updates relevant to B2B distribution automation.
 2026-07-06 construction-insurer-site-monitoring-discounts — Builders-risk insurers are offering premium discounts for contractors that deploy site-monitoring technology, creating a direct ROI lever for construction tech adoption.
+
+2026-07-07 mri-agora-real-estate-ai-orchestration — MRI Software launched Agora Intelligence and Agora Orchestrator for AI-powered real estate recommendations and governed agentic workflow execution.

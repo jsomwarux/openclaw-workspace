@@ -502,3 +502,21 @@ Sources checked July 6:
 - Velocity Smart, "AI agents in enterprise IT: a practical 2026 guide" - https://www.velocity-smart.com/velocity-hub/blog/ai-agents-in-enterprise-it-a-practical-2026-guide
 - AI CRE Tools, "Lette - property management ai software" - https://www.aicretools.com/lette
 - Eventbrite, "New York Business Events" - https://www.eventbrite.com/b/ny--new-york/business/
+
+## 2026-07-07 Heartbeat Market Addendum
+
+The July 7 Morning Brief reinforces the same sales posture: buyer-facing agents are becoming normal, but the useful consulting offer is still governed run control for one workflow with proof of scope, approval, and outcome. For property management, that keeps Altmark as a source-export and reviewer-state problem before it is an automation story.
+
+Fresh market signals:
+- Salesforce's July 6 Agentforce Commerce release moves buyer, shopper, and merchant agents into generally available commerce workflows and connects the story to ChatGPT, Google AI Mode, and Gemini. This is useful proof that agent workflows are moving closer to real buyer actions, but the implementation risk is still approval, data scope, and evidence.
+- SMB AI services are being packaged around budget, data environment, compliance, and workflow automation. That supports JT's operator positioning: diagnose the first workflow, define what the system can read/do, and ship proof that survives buyer review.
+- Construction-insurance incentives for site-monitoring technology keep the adjacent construction lane value-based rather than novelty-based. The pattern is the same as PM delinquency: automate only after the source, risk state, reviewer, and outcome event are explicit.
+
+Altmark / PM proof implication:
+- Keep Altmark first. The rent-delinquency packet should get the source export, refresh cadence, reviewer, exception rules, and acceptance gate needed to finish a controlled run record and close the remaining payment path.
+- PM COI language should use the buyer-agent market signal carefully: "we help one sensitive workflow run with proof of source, owner, approval state, and result," not "we deploy autonomous property agents."
+- The reusable proof asset should show source input, allowed data/action scope, owner/reviewer, approve/edit/hold/escalate state, evidence link, delivery proof, and cash/outcome event.
+
+Sources checked July 7:
+- Salesforce, "As AI Agents Transform Commerce, Salesforce Unleashes Its Biggest Agentforce Commerce Release Yet" - https://www.salesforce.com/ap/news/press-releases/2026/07/06/as-ai-agents-transform-commerce-salesforce-unleashes-its-biggest-agentforce-commerce-release-yet/
+- The 20 MSP, "The 20 Builds AI Momentum..." - https://www.the20msp.com/2026/07/06/acquisition-of-sundance-networks/

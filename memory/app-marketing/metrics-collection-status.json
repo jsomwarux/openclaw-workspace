@@ -1,7 +1,7 @@
 {
   "posts_seen": 66,
   "metrics_rows_fetched": 31,
-  "metrics_rows_appended": 0,
+  "metrics_rows_appended": 5,
   "skipped_by_platform": {
     "tiktok": 30,
     "x": 4,
@@ -24,7 +24,7 @@
       "metadata_auth_ok": false,
       "app_name": null,
       "reporting_status": "reporting_blocked_or_permission_gap",
-      "reporting_error": "HTTP 403: {\n  \"errors\" : [ {\n    \"id\" : \"KN2OERPMAASSRGHEMMA3OKIGHY\",\n    \"status\" : \"403\",\n    \"code\" : \"FORBIDDEN.REQUIRED_AGREEMENTS_MISSING_OR_EXPIRED\",\n    \"title\" : \"A required agreement is missing or has expired.\",\n    \"detail\" : \"This request requires an in-effect agreement that has not been signed or has expired.\",\n    \"links\" : {\n      \"see\" : \"/business\"\n    }\n  } ]\n}\n",
+      "reporting_error": "HTTP 403: {\n  \"errors\" : [ {\n    \"id\" : \"BMTJDVVGQMI3SAYAVWX2RBZLTU\",\n    \"status\" : \"403\",\n    \"code\" : \"FORBIDDEN.REQUIRED_AGREEMENTS_MISSING_OR_EXPIRED\",\n    \"title\" : \"A required agreement is missing or has expired.\",\n    \"detail\" : \"This request requires an in-effect agreement that has not been signed or has expired.\",\n    \"links\" : {\n      \"see\" : \"/business\"\n    }\n  } ]\n}\n",
       "vendor_numbers_configured": [
         "configured"
       ],

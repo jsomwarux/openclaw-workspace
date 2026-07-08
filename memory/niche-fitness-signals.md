@@ -19,3 +19,4 @@ Last reset: 2026-07-01
 2026-07-06 [CONFIRMS] niche=construction — Builders-risk insurance premium discounts for site-monitoring technology create a concrete financial incentive for construction AI/monitoring adoption.
 2026-07-06 [EMERGING] niche=insurance — Zywave frames agentic insurance workflows as moving from pilot to production, with renewal quoting and distribution orchestration still underused.
 2026-07-06 [EMERGING] niche=ai_agents — Fresh agent energy-use coverage suggests cost/efficiency questions may become part of agent deployment ROI discussions.
+2026-07-07 [CONFIRMS] niche=property_management_real_estate — MRI Software made Agora Intelligence and Agora Orchestrator available to clients, confirming established real-estate software vendors are embedding governed AI recommendations and workflow execution into property operations.

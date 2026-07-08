@@ -2,3 +2,4 @@
 [2026-07-04] daily scan — no critical findings; 6 KB-only items captured (ClawHub skill-security signal, Safari MCP, mcp-tailscale, OpenRouter/Claude model-routing watch, MagicDoor PM signal, OpenClaw release already tracked).
 [2026-07-06] 🟠 OpenClaw 2026.7.1-beta.2 — release includes cron correctness fixes, Telegram Codex workflow/durability improvements, ClawRouter, scoped conversation profiles, and control-tool reliability; local OpenClaw is 2026.5.28, so evaluate update path before changing core runtime. Source: https://github.com/openclaw/openclaw/releases/tag/v2026.7.1-beta.2
 [2026-07-06] 🟠 SkillCloak / ClawHub scanner bypass — July 6 security report says malicious agent skills can evade static scanners via ignored-directory packing/runtime reconstruction; audit installed local skills before any new ClawHub/community installs. Source: https://thehackernews.com/2026/07/new-skillcloak-technique-lets-malicious.html
+[2026-07-07] daily scan — no critical findings

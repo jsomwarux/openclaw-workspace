@@ -104,3 +104,4 @@ EOF'
 2026-07-04T11:02:34Z | weekly-synthesis | x_queries: 6 | est_cost: $0.245 | web_sources: 6 | findings: 6 | 🔴: 0 | 🟠: 3 | kb_added: 3 | mc_tasks_pushed: 0 | messaged_jt: yes | backlog_skills_open: 49
 2026-07-04T11:32:11-04:00 | daily-scan | x_queries: 6 | web_queries: 12 | findings: 6 | 🔴: 0 | 🟠: 0 | messaged_jt: no
 [2026-07-06T11:33:43-04:00] | daily-scan | x_queries: 6 | web_queries: 15 | findings: 7 | 🔴: 0 | 🟠: 2 | 🟡/🟢: 5 | messaged_jt: yes | mc_tasks_pushed: 2 | kb_items: 5 | note: KB parallel writes locked; failed adds rerun sequentially from knowledge cwd
+[2026-07-07T11:33:25-04:00] | daily-scan | x_queries: 6 | web_queries: 17 | findings: 6 | 🔴: 0 | 🟠: 0 | messaged_jt: no

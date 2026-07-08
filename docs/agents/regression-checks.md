@@ -260,6 +260,13 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Recovery:** Patch the Morning Brief cron payload with command-only instructions and a final response checkpoint, then send a manual recovery brief from current files if the scheduled delivery was missed.
 - **Owner surface:** `eve-morning-brief-001` cron payload, `scripts/nash_rankings_probe.py`, `memory/app-marketing/daily-nash/`, Morning Brief recovery workflow.
 
+## Daily News Hook command-safe read check
+- **Trigger:** Daily News Hook cron failure or any edit to cron `4a70dda4-da77-4437-9e1d-9c3001e9e1f9`.
+- **Check:** The cron must use real shell commands for local file reads and writes, such as `find`, `tail`, `rg`, `mkdir -p`, and shell append. Empty `tail`/`rg` output is a normal no-existing-file/no-match state. The live payload must ban pseudo read chains, arrow-chain commands, `(agent)` steps, heredocs, and inline ad hoc interpreter snippets, and must end with `NEWS_HOOK_SENT`, `NO_NEWS_HOOK`, or `NEWS_HOOK_BLOCKED: [reason]`.
+- **Fail condition:** The run fails on natural-language tool text such as `list files in memory/content/news-hooks -> show last 60 lines ... (agent)`, or continues searching instead of writing/verifying a skip note when no fresh hook clears the quality gate.
+- **Recovery:** Patch the live cron payload with command-safe file-read examples and final-status strings. Do not rerun solely to clear metadata unless artifacts or delivery state show a user-facing miss.
+- **Owner surface:** Daily News Hook cron payload, `memory/content/news-hooks/`, `memory/content/current-efforts.md`, content news-hook workflow.
+
 ## 10AM missed-cron full-id check
 - **Trigger:** The HEARTBEAT 10AM missed-cron gate for crypto morning or outreach pipeline.
 - **Check:** Use the exact cron job id for run-history lookups. Crypto morning is `eve-crypto-morning-008`; outreach pipeline is `651fa1da-84d7-44b3-8e10-6a46e1c05cf6`. If a short id or prefix returns zero entries, retry with the full id from `openclaw cron list --json` before declaring a miss.

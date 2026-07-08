@@ -184,6 +184,34 @@ Every weekly review ends with exactly one of these:
 - Review doc: `memory/app-marketing/review-docs/app-marketing-review-2026-07-06.md`.
 
 <!-- METRICS_SUMMARY_START -->
+## Metrics Summary — Week of 2026-06-30
+
+### glow-index / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: glow-index Search Console queries 2026-06-30 to 2026-07-06 (0 views/impressions)
+
+### glow-index / web
+- Posts/results logged: 1
+- Views/impressions: 5
+- Web depth: active users 5, pageviews 5, events 21
+- Best item: glow-index GA4 web traffic 2026-06-30 to 2026-07-06 (5 views/impressions)
+
+### nash-satoshi / search_console
+- Posts/results logged: 1
+- Views/impressions: 0
+- Best item: nash-satoshi Search Console queries 2026-06-30 to 2026-07-06 (0 views/impressions)
+
+### nash-satoshi / web
+- Posts/results logged: 1
+- Views/impressions: 18
+- Web depth: active users 15, pageviews 31, events 113
+- Best item: nash-satoshi GA4 web traffic 2026-06-30 to 2026-07-06 (18 views/impressions)
+
+**Best overall:** nash-satoshi / web — nash-satoshi GA4 web traffic 2026-06-30 to 2026-07-06 (18 views/impressions)
+
+**Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
+
 ## Metrics Summary — Week of 2026-06-29
 
 ### glow-index / search_console
@@ -1488,7 +1516,7 @@ Is the sharpe (20 views/impressions)
 - Best item: Vista App Store reporting readiness (None views/impressions)
 
 ### vista / web
-- Posts/results logged: 52
+- Posts/results logged: 53
 - Views/impressions: 0
 - Best item: Vista web analytics readiness (None views/impressions)
 
@@ -2002,7 +2030,7 @@ A scoreca (27 views/impressions)
 
 **Next action:** double down only after this pattern repeats or beats baseline by a clear margin.
 
-_Last updated: 2026-07-06_
+_Last updated: 2026-07-07_
 
 <!-- METRICS_SUMMARY_END -->
 
