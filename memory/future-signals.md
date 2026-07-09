@@ -22,6 +22,13 @@
 
 ## Active Signals
 
+### FantasyPoints Data Suite / Sports Analytics Product
+- **What:** JT-mentioned app idea: a FantasyPoints-style data suite or sports analytics product. Local context already has adjacent Sports GM, DynastyJig, Action Arena, and Dynasty Fantasy Football Simulator lanes, but no prior exact `FantasyPoints Data Suite` spec was found.
+- **Why deferred:** Consulting cash/proof is the July priority, and sports products need audience pull before build time. Do not build until the sports content/receipts lane proves demand.
+- **Trigger:** Promote when Sports GM/DynastyJig produces 10+ engaged replies/DMs, 3+ roster audit/data-tool requests, consistent post traction, or JT provides a concrete spec tied to a reachable buyer/community.
+- **Logged:** 2026-07-08
+- **Potential value:** Could become the practical data/tools layer behind DynastyJig if it solves a specific fantasy manager job better than generic rankings.
+
 ### jtsomwaru.com Deferred Conversion Rows - 30-Day Park
 - **What:** Site conversion audit deferrals: new teardowns for the site, `/work` restructure and app write-ups, Salesforce/Agentforce site content, and testimonial/logo collection.
 - **Why deferred:** July revenue path is warm property-ops referral conversion, not more homepage decoration, app portfolio polish, SEO, Salesforce breadth, or unpermissioned proof collection. These items compete with Altmark acceptance, `/property`, and the Workflow Audit offer fix.

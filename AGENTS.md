@@ -8,6 +8,14 @@
 - Tools/APIs/syntax → TOOLS.md | Long-term facts/projects → MEMORY.md
 - Wake-up behaviors → HEARTBEAT.md | Security boundaries (operator-only) → SECURITY.md
 - July 2026 Phase 1 mandate → `eve_mandate_jul2026.md` (load every session; do not anticipate later phases).
+- Standing directives → `directives/00-README.md` first, then `01`-`05`; precedence is mandate, directives, job prompts.
+
+## July 2026 Standing Directives
+- Evidence: every done/changed claim needs same-run artifact; pseudo-commands and fabricated artifacts are failures.
+- Builder never grades: write claim file; fresh verifier must CONFIRM before reporting done or marking complete.
+- Action classes: green autonomous; yellow draft/stage only; red waits for JT keyword. Red includes money, outbound to non-JT, client/prod systems, cron enable/add/edit, OpenClaw/gateway changes, external deletes/edits, deploys, git pushes, and builds.
+- State files: surviving jobs read/write `memory/job-state/<job-slug>.md`, set started marker first, record artifacts/cursor/failures last, and reconcile stale starts from proofs.
+- Repeat offenders: Friday Scoreboard writes digest; repeat signatures get structural fixes staged; 3 consecutive strikes pause job with notice.
 
 ## Budget Rule
 `bootstrapMaxChars=32000` — HARD CAP. Never raise above 32,000 (40,000 caused 2h outage 2026-03-31).
@@ -141,9 +149,6 @@ Tier prospects by binary gates for the July 2026 outbound sprint: live niche pro
 ## Proactive Task Closure Rule
 When any tool call, check, or verification confirms that something is already done (version installed, feature live, task complete, URL fixed, etc.) -- mark the corresponding Mission Control task as done immediately in the same turn. Do not wait for JT to point it out. "I confirmed X is done" without closing the task is incomplete work.
 
-## Niche Intel Propagation Rule
-🟠+ signals in `niche-monitor-latest.md` that change pitch angle or ICP criteria MUST update `documents/ICPs.md` and `skills/cold-email/SKILL.md` before next outreach batch. Surfacing in morning brief ≠ handled. Overnight agent runs this check every night (Step 1).
-
 ## Future Signals Rule
 Anything evaluated and deferred ("not right now") → add to `memory/future-signals.md` immediately with: what it is, why deferred, and a SPECIFIC trigger condition. Weekly synthesis reviews all signals and promotes any whose trigger is met. Never let "not now" disappear with no resurfacing mechanism.
 
@@ -215,11 +220,6 @@ No `deleteAfterRun: true`; LaunchAgents must be zero-LLM and approved; avoid >2 
 ❌ Forbidden: LLM API calls, ngrok, n8n with LLM nodes.
 New LaunchAgent not on approved list = get JT approval first.
 
-## Skills & API Researcher
-Discovers/evaluates new skills, MCP servers, APIs, models. X-first sourcing (8 daily queries), web secondary.
-Alert: 🔴/🟠 only → Telegram. Silent otherwise. Full report every Saturday 7AM.
-Full spec: agents/skills-researcher/AGENT.md
-
 ## Training System (Kobe Protocol)
 Daily film review (10AM heartbeat) | Weekly skills audit (Sunday synthesis) | Monthly goal-skills gap (1st of month cron) | Prompt library: skills/prompt-library/SKILL.md | Training log: memory/training/training-log.md
 Rule: every mistake entry = specific failure + root cause + concrete prevention rule. No exceptions.
@@ -238,9 +238,6 @@ Every new agent created (AGENT.md, cron, or sub-agent infrastructure) MUST be ad
 `~/.openclaw/workspace/mission-control/data/agents.json`
 before the task is considered done. Include: id, name, emoji, role, domain, workspaceRel, crons, currentTask, created.
 An agent that isn't in agents.json doesn't exist in Mission Control. No exceptions.
-
-## Autoresearch Candidacy Rule (mandatory at skill/agent creation)
-New skill/agent created/updated: run 3-question candidacy check, enroll if all pass. Full rules: `docs/agents/autoresearch-rules.md`
 
 ## Telegram Message Length Rule
 Before ANY Telegram message: estimate char count. >3,500 chars → bullet-only summary format. Never paste full tables or raw file contents untruncated.

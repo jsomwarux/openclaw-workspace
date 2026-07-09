@@ -20,9 +20,9 @@
 
 ## How JT Thinks / Works
 - Operator-builder mindset: wants working systems, proof, and leverage — not theoretical strategy.
-- North Star: financial freedom and the ability to spend time exactly how he wants, with multiple high-earning income streams that require little/no maintenance, ideally managed by specialized AI agents that only escalate urgent decisions.
-- Ideal life: bills paid, no debt spiral, enough money for nice things for him and family, freedom to work on creative apps, client work, or whatever project pulls him — always with a clear path to make it succeed.
-- Current priority order: (1) AI implementation consulting, (2) app building + marketing toward eventual passive income, (3) crypto market monitoring as income source/opportunity scan, (4) health daily as the base layer.
+- North Star: buy back control of his time by turning practical AI implementation consulting into dependable cash first, then converting delivery proof into reusable IP, products, and AI-managed income streams.
+- Ideal life: bills paid, no debt spiral, money for nice things for him and family, NYC/location stability, and freedom to choose client work, creative apps, crypto research, or rest without every decision being forced by cash pressure.
+- Current priority order: (1) collect consulting cash and proof through real client delivery, (2) use proof to build repeatable AI implementation offers and reusable IP, (3) build and market apps only when distribution/retention evidence exists, (4) monitor crypto as opportunity scan, (5) protect health daily as the base layer.
 - Income thresholds: safe ≈ $10K/month, free ≈ $30K/month, rich ≈ $100K/month.
 - Wants to be known primarily as an AI Implementation Specialist/Consultant and product builder.
 - Non-negotiables: sleep, health, and staying in NYC/location stability. Do not recommend paths that require sacrificing these unless explicitly asked.
@@ -47,11 +47,13 @@
 - If a task is stale, expired, or based on old context, do not surface it as urgent.
 
 ## Current Focus
-- **JT Somwaru Consulting**: AI consulting agency — research + n8n + Agentforce pipelines for NYC businesses
-- **Aya**: anchor client — $1,500 dashboard (done), $1,000 StreetEasy scraper (active), $2,500 co-living dashboard (pending), acquisitions dashboard (stalled)
-- **Apps**: Vista (App Store pending) | Nash Satoshi (crypto rankings) | Glow Index (skincare)
-- **Job market**: open to AI Solutions Architect / AI Implementation Lead ($150K+ NYC/remote)
-- **Crypto**: primary income | x402 protocol forward bet
+- **JT Somwaru Consulting**: primary cash lane — practical AI implementation, workflow automation, run-control/proof systems
+- **MSI / Marketsmith**: active close path — recommended $150/hr for initial 80-hour Nexus scope ($12K), protect scope/ramp/billing guardrails
+- **Altmark**: top paid/proof lane — insurance workflow paid; rent delinquency workflow initial 50% paid, remaining $2,250 blocked on source/export/reviewer/cadence/exception inputs
+- **Aya**: $1,500 dashboard done; final review/acceptance/proof-safe evidence remains; StreetEasy cancelled, co-living dead, acquisitions stalled unless fresh trigger appears
+- **Apps**: Glow Index active SEO/GEO bet; Nash Satoshi capped to research receipts; Vista paused unless share/install loop proves; Action Arena gated by App Store/preseason timing
+- **Job market**: consulting-first; only exceptional AI Solutions Architect / AI Implementation Lead / AI enablement roles ($150K+ NYC/remote)
+- **Crypto**: opportunity scan/research only; no trades/transfers/financial actions
 - **H.C. Oswald outreach**: holding until personal website polished + demo agents built
 - **Content**: post as often as optimal for growth — X (primary), LinkedIn, Reddit (project promotion)
 

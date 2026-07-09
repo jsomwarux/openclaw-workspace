@@ -28,8 +28,13 @@
       },
       {
         "id": "eve-morning-brief-001",
-        "name": "Morning Brief",
+        "name": "Daily Send Sheet",
         "schedule": "7:30 AM daily"
+      },
+      {
+        "id": "18169759-7450-4e06-8db0-e0d14fbc25fd",
+        "name": "Friday Scoreboard",
+        "schedule": "Friday 4 PM"
       },
       {
         "id": "eve-niche-monitor-006",

@@ -268,8 +268,8 @@ JT asked whether daily Nash Satoshi content was optimally generated for both X a
 ## JT Snapshot
 - Jon Trevor Somwaru, “JT”; timezone America/New_York; Telegram primary; direct, low-ceremony, expects Eve to figure things out before asking.
 - Background: Business Systems Analyst at Spectrum Enterprise/Charter; strong business-ops + tech translation edge.
-- North Star: financial freedom and control over time. Ideal state = multiple high-earning, low-maintenance income streams, ideally managed by specialized AI agents that only escalate urgent decisions; bills paid, no debt spiral, money for nice things for him and family, and freedom to build creative apps/client work with a clear path to success.
-- Current priority order: (1) AI implementation consulting, (2) app building + marketing toward eventual passive income, (3) crypto market monitoring/opportunity scanning, (4) health daily as the foundation.
+- North Star: buy back control of time by turning practical AI implementation consulting into dependable cash first, then converting delivery proof into reusable IP, products, and AI-managed income streams. Ideal state = bills paid, no debt spiral, money for nice things for him and family, NYC/location stability, and freedom to choose client work, creative apps, crypto research, or rest without every decision being forced by cash pressure.
+- Current priority order: (1) collect consulting cash and proof through real client delivery, (2) use proof to build repeatable AI implementation offers and reusable IP, (3) build and market apps only when distribution/retention evidence exists, (4) monitor crypto as opportunity scan, (5) protect health daily as the foundation.
 - Income thresholds: safe ≈ $10K/mo, free ≈ $30K/mo, rich ≈ $100K/mo.
 - Wants to be known primarily as an AI Implementation Specialist/Consultant and product builder.
 - Constraints: not positioning as hands-on developer; avoid Apex/SFDX/ML-engineering roles. Job target: AI Solutions Architect / AI Implementation Lead, $150K min, $180–220K ideal, NYC/remote only. Non-negotiables: sleep, health, and staying in NYC/location stability.
@@ -373,6 +373,8 @@ JT asked whether daily Nash Satoshi content was optimally generated for both X a
 - Critical commands/paths: `TOOLS.md`.
 
 ## Active Automation / Crons
+- 2026-07-08 Phase 4: created `memory/job-state/claims/`, `memory/job-state/archive/`, and 12 survivor job state files from `memory/job-state/TEMPLATE.md`; proof id `13cb69f0`.
+- 2026-07-08 migration lane: after JT approval, disabled 33 deprecated cron jobs without deletion; `eve-morning-brief-001` was renamed from Morning Brief to Daily Send Sheet; Friday Scoreboard was created as `18169759-7450-4e06-8db0-e0d14fbc25fd`; live count verified as 12 enabled / 60 disabled / 72 total. Approved jobs now enabled: Daily Send Sheet, Friday Scoreboard, outreach-pipeline, Pending Task Processor, prospect-discovery, Weekly Systems Review, weekly-unemployment-cert, Health Check-in, and four passive-income Engine B Stage 1 jobs. Daily Send Sheet stays `30 7 * * * America/New_York`; Friday Scoreboard runs `0 16 * * 5 America/New_York`; both are isolated, Telegram announce to `6608544825`.
 - Cron volume is guarded by `scripts/cron_volume_guard.py`: ≤35 scheduled invocations/day average and ≤28 agentTurn/day average; >30/day warns. Do not create `deleteAfterRun: true` jobs.
 - Task queue: `tasks/pending.jsonl`; cron every 2h 8AM–10PM ET.
 - `critical-files-integrity` (`ee357abb`) runs daily 9AM ET, timeout 180s; run script first, inspect/edit only on non-zero exit.

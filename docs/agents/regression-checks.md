@@ -269,8 +269,8 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 
 ## 10AM missed-cron full-id check
 - **Trigger:** The HEARTBEAT 10AM missed-cron gate for crypto morning or outreach pipeline.
-- **Check:** Use the exact cron job id for run-history lookups. Crypto morning is `eve-crypto-morning-008`; outreach pipeline is `651fa1da-84d7-44b3-8e10-6a46e1c05cf6`. If a short id or prefix returns zero entries, retry with the full id from `openclaw cron list --json` before declaring a miss.
-- **Fail condition:** The heartbeat fires, alerts, reruns, or logs a missed outreach pipeline solely because `openclaw cron runs --id 651fa1da --limit N` returned zero entries while the full UUID history shows today's run passed.
+- **Check:** Use the exact cron job id for run-history lookups. Crypto morning is `eve-crypto-morning-008`; outreach pipeline is `651fa1da-84d7-44b3-8e10-6a46e1c05cf6`. If a short id or prefix returns zero entries, retry with the full id from `openclaw cron list --json` before declaring a miss. For crypto, check `openclaw cron get eve-crypto-morning-008` and `directives/00-README.md`; if the job is disabled under refused scope, log intentionally disabled and do not rerun, enable, alert, or spend X API.
+- **Fail condition:** The heartbeat fires, alerts, reruns, or logs a missed outreach pipeline solely because `openclaw cron runs --id 651fa1da --limit N` returned zero entries while the full UUID history shows today's run passed. The heartbeat also fails if it treats a directives-disabled crypto job as a missed live schedule.
 - **Owner surface:** `docs/agents/heartbeat-extended-rules.md`, HEARTBEAT 10AM missed-cron checks, cron run-history verification.
 
 ## Gated live-file diff signoff check

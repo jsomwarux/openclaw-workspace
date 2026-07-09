@@ -219,3 +219,9 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - Rule: Future AI Ops Teardowns should use that spine by default: current signal → buyer-recognizable bottleneck → concrete messy input scene → system-of-record need → workflow start point → read/extract/check/draft/route steps → business outcome before downstream damage.
 - Guardrail: Avoid news-summary hooks and generic “AI workflow” closes. The hook must translate the news into an operator pain, and the close must name the operational improvement.
 - Better direction: customers/operators keep their normal behavior; JT’s workflow cleans the intake, routing, and handoff layer around the system of record.
+
+## 2026-07-08 — X replies must not sound like packaged AI-consultant proof copy
+- Trigger: JT rejected Eve's Alex Lieberman reply draft and asked whether anti-AI-slop guidelines were actually applied. The draft used polished phrases like "implementation edge," "what breaks when AI leaves the demo," and a list rhythm that felt optimized rather than natural.
+- Rule: For X replies, prioritize normal human reply cadence over proving every credential. Lead with `ai`, one grounded build detail if useful, and a plain reason the group would benefit. Avoid polished positioning phrases, "demo vs real world" abstractions, and stacked proof lists.
+- Guardrail: Before sending a reply draft, ask: "Would JT actually type this under someone's tweet, or does it sound like a mini LinkedIn pitch?" If it sounds packaged, cut it by 40% and make the language more direct.
+- Better direction: "ai — I’ve been building practical AI workflows for property/real estate ops: dashboards, n8n workflows, RAG, approval gates. I’d be useful on the parts people usually skip over: messy source data, owners in the loop, and making sure the system fails visibly when it should."

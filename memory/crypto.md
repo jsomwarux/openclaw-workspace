@@ -3,6 +3,15 @@
 
 ---
 
+## Jul 8, 2026 — 10AM Heartbeat
+
+- **Policy/state:** July directive pack lists Crypto Full Analysis, Crypto Midday Pulse, and Crypto Evening Pulse under refused-scope disabled recurring jobs. Live cron state confirms `eve-crypto-morning-008` is disabled.
+- **10AM gate result:** Outreach pipeline ran today and passed. Crypto Full Analysis did not run today; latest crypto artifacts remain Jul 7. Because the job is directive-disabled, this is an intentional skip, not an active missed schedule.
+- **Action taken:** No rerun, no cron enablement, no Telegram crypto alert, no trade/wallet action, and no fresh X API pull. The heartbeat rule was patched so future 10AM checks first respect directive-disabled crypto state before considering a miss.
+- **JT read:** Treat the Jul 7 packet as the last available research/ranking snapshot until JT explicitly re-enables crypto recurring analysis or asks for a manual research run.
+
+---
+
 ## Jun 12, 2026 — 12:12PM Heartbeat
 - **Market snapshot:** BTC ~$63.8K (+1.7%), ETH ~$1,666 (+1.2%), SOL ~$67.38 (+2.8%) via CoinGecko spot/24h change. Majors are modestly green and no broad-market alert threshold triggered.
 - **Crypto-agent context:** Today's 6AM run was research/ranking only and explicitly took no trades, transfers, or wallet actions. It kept the live narrative narrow: AI agents/x402 and Base AI infrastructure remain active, but spam/vote traffic is heavy.

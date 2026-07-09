@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-07-08 - Heartbeat Job Market Pulse
+
+Read the current job-market-agent artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` is fresh for 2026-07-08 and reports no critical/high JT-fit role. A remote/NYC-salary Salesforce Distinguished Architect signal was disqualified because the work skews toward sales-demo/release-management support with Salesforce lifecycle, OmniStudio, Git, and CI/CD expectations.
+
+**Strongest usable signal:** the market is asking for reusable AI implementation assets, demo/release governance, documentation, adoption leadership, and human judgment rather than one-off demos. Salesforce-style Agentforce packaging is converging with the Run Control / AgentPack / EnablementOps lane.
+
+**Positioning implication:** no new application, certification, or build task today. Keep Altmark proof and current send queue above job-market work. Reuse the signal to frame JT's work as reusable governed agent assets: release notes, permission boundaries, eval/rollback thinking, enablement docs, and outcome ownership. The old Job Market Daily Research cron is now directive-disabled, so future pulses should use existing artifacts or explicit JT instructions, not restart the recurring research loop.
+
+---
+
 ## 2026-07-03 - Heartbeat Job Market Pulse
 
 Read the current job-market-agent artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` is fresh for 2026-07-03 and reports no critical/high role alert. The only live role-shaped hits were Axpo in Baden, Switzerland and New Relic in Bangalore; both hard-filter out on geography and coding/platform-engineering weight.

@@ -2,6 +2,18 @@
 
 ---
 
+## Jul 8, 2026 — Heartbeat AI Tool Monitoring
+
+**Enterprise agent tooling is converging on governed production controls.** Fresh monitoring shows the same buyer pattern across vendor and analyst surfaces: agent-level RBAC, unique/scoped agent identity, audit trails for every tool call, approval gates for high-stakes actions, sandboxed testing, observability, and MCP/tool access governance. This is no longer only a security-team concern; it is becoming the evaluation checklist for whether an agent workflow can leave pilot mode.
+
+**JT relevance:** keep the AI Enablement OS / Run Control pitch centered on implementation controls, not model choice. The sales proof should show agent/tool registry, allowed actions, forbidden actions, named approver, audit trail, rollback owner, and "what changed" evidence. That maps directly to property workflows, COI checks, rent delinquency actions, outbound deliverability gates, and any workflow that touches money, tenants, legal language, or client records.
+
+**Actionable demo angle:** add an "agent control plane" row to the next proof packet: identity, connected systems, permission boundary, approval-only actions, exception owner, audit log path, and rollback/retry rule. This turns AI from a vague capability into an operations artifact a buyer can inspect.
+
+Sources: Dataiku agentic AI tools for enterprises https://www.dataiku.com/blog/agentic-ai-tools-for-enterprises; Microsoft Cyber Pulse agent observability/governance/security https://www.microsoft.com/en-us/security/blog/2026/02/10/80-of-fortune-500-use-active-ai-agents-observability-governance-and-security-shape-the-new-frontier/; Praesidia AI Agent Governance for Financial Services https://praesidia.ai/blog/ai-agent-governance-financial-services; Microsoft Copilot Studio MCP-compliant tools release plan https://learn.microsoft.com/en-us/power-platform/release-plan/2026wave1/microsoft-copilot-studio/use-mcp-compliant-tools-agent-workflows
+
+---
+
 ## May 31, 2026 — Heartbeat AI Tool Monitoring
 
 **Agent governance is becoming a control-plane sale, not an abstract risk conversation.** Fresh monitoring surfaced OpenAI Workspace Agents with schedules, custom MCPs, app templates, and admin publishing controls; Microsoft Agent 365 GA positioning around registry/lifecycle/access/compliance; AWS AI Security Framework guidance to centrally register agents and MCP servers; and Okta guidance that approved AI workflows need standard cross-app access rather than shadow tool sprawl.

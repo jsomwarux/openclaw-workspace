@@ -1,0 +1,49 @@
+# Property Ops Run-Control Signal - 2026-07-08
+
+## Why It Matters
+
+The clearest buyer signal is not "AI chatbot for property management." It is governed workflow execution on top of existing property, construction, and real-estate operating systems.
+
+This supports JT's Workflow Audit / Run Control positioning:
+
+- Source records and system context before agent action.
+- Recommendation or classification with business-impact ranking.
+- Exception handling for cases that require judgment.
+- Named owner/approver before tenant, money, ledger, legal, or regulated communication actions.
+- Searchable/exportable audit trail after every automated or human-approved action.
+
+## Fresh Signals
+
+1. MRI Agora is the cleanest enterprise PM proof point.
+   - MRI announced Agora Intelligence for proactive portfolio signals and recommended actions, plus Agora Orchestrator for real-estate-specific agentic workflow execution.
+   - The product language emphasizes shared real-estate data, role-level permissions, explainability, governed actions, traceability to source data, and exportable audit trails.
+   - Source: https://www.mrisoftware.com/news/mri-software-launches-agora-intelligence-and-agora-orchestrator-delivering-ai-powered-recommendations-and-workflow-execution-for-real-estate/
+
+2. YC construction/proptech concentration validates the back-office wedge.
+   - MarketScale's July 8 read of YC Summer 2026 says the new construction/proptech cohort is concentrated around administrative overhead, estimation, maintenance workflow, AppFolio/Buildium/Yardi-native agents, and integration-first PM automation.
+   - The practical evaluation question called out for PM teams is how AI agents handle exception cases when a ticket cannot be resolved and must escalate.
+   - Source: https://www.marketscale.com/industries/engineering-and-construction/ycs-summer-2026-cohort-floods-construction-and-proptech-with-ai-back-office-tools
+
+3. Commercial Observer's "company brain" frame reinforces that context beats model size.
+   - The article argues CRE AI projects stall when tools lack business memory, workflow adaptation, and feedback loops.
+   - The useful sales translation: a buyer does not need a bigger model; they need a consistent operating record of how their team reads deals, decides exceptions, and improves with use.
+   - Source: https://commercialobserver.com/2026/07/commercial-real-estate-ai-models-that-work-2026/
+
+4. Agent governance is crossing from finance into any high-stakes workflow.
+   - Praesidia's financial-services governance post frames production agents around attributable identity, scoped/revocable credentials, immutable logs, data classification, and architectural human approval gates.
+   - This maps cleanly to PM/CRE workflows when the action can touch rent, tenants, owner communication, insurance, ledger state, or legal escalation.
+   - Source: https://praesidia.ai/blog/ai-agent-governance-financial-services
+
+## JT Positioning Translation
+
+Use this as the near-term proof spine:
+
+> I do not build generic agents for property teams. I map the workflow, define the exception boundaries, and install the approval/audit layer so AI can recommend or execute only where the operating rules are clear.
+
+The Altmark rent delinquency work remains the highest-value proof because it already contains the necessary structure: source report, exception rules, named reviewer, approved next action, and evidence before tenant-sensitive outreach.
+
+## Recommended Use
+
+- Keep Altmark as the first concrete send/proof action because it ties directly to the closest verified cash gate.
+- When talking to PM/CRE prospects, lead with "workflow execution with approval boundaries" instead of "AI assistant."
+- For content, the strongest angle is: "The market is not asking for AI chat. It is asking for governed execution inside Yardi/AppFolio/MRI-style workflows."

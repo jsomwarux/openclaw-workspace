@@ -4,7 +4,7 @@
 
 ## JT Snapshot
 - JT Somwaru, America/New_York; Telegram primary; ops-to-AI implementation edge.
-- North Star: financial freedom via consulting first, then apps/marketing, crypto, health.
+- North Star: consulting cash first; convert proof into reusable IP/products without sacrificing health/NYC stability.
 - Constraints: no relocation, protect sleep/health/NYC stability, avoid developer-only positioning.
 - Detail: `docs/memory/MEMORY-full.md#jt-snapshot`.
 
@@ -45,14 +45,14 @@
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
 - App content loop: niche-native creative, tested hooks/formats, and angles tied to audience pains, value, and retention.
-- Current review drafts: property Workflow Audit, AI-roadmap, Jul 5 enablement record, Jul 6 offer path, Jul 7 real-estate workflow execution; review-only unless JT posts.
+- Review drafts: property Workflow Audit, AI-roadmap, Jul 5 enablement record, Jul 6 offer path, Jul 7 real-estate workflow execution; review-only.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 7 found no new 18/25 qualifying role; use MCP/governance/value-realization signals for Run Control / AI Enablement OS positioning.
+- Latest: Jul 8 no qualifying role; AI assets, release governance, docs, adoption, and judgment support Run Control positioning.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -63,14 +63,14 @@
 
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs.
-- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`; `/consulting` live.
+- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`.
 - Mission Control API responses may be objects; normalize with `(.tasks // .items // .)`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Baseline: 44 enabled jobs; cron volume green at ~176.46/wk, 25.21/day, 20.21 agentTurn/day; no unknown enabled schedules after YouTube TV reminder completion.
-- Jul 7 13:12: MC 291 active / 16 high / 0 overdue; cost clear; Spanish paused; cron volume green.
-- Red cron metadata: `Daily News Hook` 1, `Weekly Systems Review` 3, `content-generate-linkedin` 1. News Hook command-safety patched Jul 7; observe natural run. No blind reruns.
+- Jul 8 directive migration: 33 deprecated jobs disabled; registry 12 enabled / 60 disabled / 72 total. Daily Send Sheet 7:30 and Friday Scoreboard 16:00 are main summaries.
+- Jul 8 heartbeat checks: MC 291 active / 16 high / 0 errors; costs clear; Spanish paused; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day; no enabled red rows.
+- Directive-disabled crypto/job/content jobs are not misses; do not rerun/enable/alert/spend unless JT explicitly reactivates. No blind reruns.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
@@ -80,7 +80,7 @@
 ## Integrity / Fabrication Corrections
 - Never fabricate; verify outreach, URLs, deployments, Drive links, task closure, and delivery with tool/script evidence.
 - JT corrections require Mistakes Log/rule updates with regression checks. Compacted history: use lossless-claw recall before exact claims: `lcm_grep`, `lcm_describe`, then `lcm_expand_query` when exact details matter.
-- External strategy prompts need zero-prior-context primer.
+- External strategy prompts need no-prior-context primer.
 - Detail: `docs/memory/MEMORY-full.md#integrity--fabrication-corrections`.
 
 ## Setup State / Live Opportunities
