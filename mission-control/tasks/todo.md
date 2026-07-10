@@ -1,104 +1,61 @@
-# Mission Control Redesign Slice 1
+## Plan — Passive Income Ship Lane Fix — 2026-07-09
+- [x] Add regression coverage for Ship nav surfacing Passive Income and for enriched idea records.
+- [x] Restore Passive Income as a visible Ship cockpit entry point.
+- [x] Enrich passive-income API records with score rationale, score dimensions, source file path, freshness, and decision-quality fallbacks.
+- [x] Redesign `/passive-income` as a decision board with ranked rationale, filters, score breakdown, and expanded details.
+- [x] Run focused tests, build verification, and local page/API checks.
 
-## Goal
-Ship the first useful cockpit slice in the existing Mission Control app without a backend rewrite.
+## Plan — Passive Income Scout Handoff Hardening — 2026-06-21
+- [x] Add failing regression coverage for deterministic same-day Scout handoff creation.
+- [x] Implement a script-first Scout handoff generator using fresh local signal files.
+- [x] Patch the Scout cron prompt to create the handoff artifact before optional LLM research.
+- [x] Verify handoff checks, tests, cron payload, and file budgets.
 
-## Plan
-- [x] Read project rules and current Mission Control docs.
-- [x] Audit existing routes, components, task schema, and API shapes.
-- [x] Add score/signal model tests first.
-- [x] Implement client-side signal normalization and ranking.
-- [x] Replace the 16-tab sidebar with the 7-lane navigation model while keeping old routes reachable.
-- [x] Build the Command cockpit over existing task/cron/proof/agent/cost data.
-- [x] Build the Work lane over existing task data with inspection drawer support.
-- [x] Add empty/loading/error/stale states for the new surfaces.
-- [x] Run focused tests, type/build checks, and browser verification.
+## Plan — Content Swipe Optimization Fixes — 2026-06-15
+- [x] Add a deterministic @jts_14 X reference-ledger generator for swipe runs.
+- [x] Generate and validate the missing 2026-06-15 ledger artifact.
+- [x] Wire content distribution verification to require a valid ledger when requested.
+- [x] Update content/x-research rules with the generator command and verification path.
+- [x] Log the operational lesson, weekly recap, and proof after verification.
 
-## Deferred
-- `/api/signals` backend aggregation.
-- Persisted multi-device `lastSeenAt`.
-- Full proof-ref resolver.
-- Saved filters.
-- Systems/Skills redesign.
-- Deep Ship/Machine/Evidence/Health lane implementations beyond safe redirects and shell alignment.
+## Plan — Stop Slop Voice Guard Integration — 2026-06-07
+- [x] Add regression coverage for Stop Slop gaps: false agency, narrator distance, vague declaratives, Wh-openers, pull-quote endings, and high-confidence passive voice.
+- [x] Patch `scripts/jt_voice_guard.py` with enforceable checks while preserving JT-specific qualifiers and proof rhythm.
+- [x] Update content voice docs and content-generation skill with the adopted delta, not the whole external skill.
+- [x] Verify regression tests, good JT sample pass, syntax, proof guard, and Mission Control task state.
 
-# Mission Control Slice 1.1 Mobile Shell + Revenue Lane
+## Plan — JT Toolkit Synthesis — 2026-06-02
+- [x] Clone and fully inventory `jsomwarux/jt-claude-toolkit`.
+- [x] Compare Claude plugin output against OpenClaw skills, plugin, agents, and routing docs.
+- [x] Add the missing high-value portable skills and agent manuals.
+- [x] Update routing/plugin/project docs and Mission Control agent registry.
+- [x] Validate frontmatter/plugin JSON/registry JSON and log proof.
 
-## Goal
-Make the mobile cockpit feel intentional on phone screens, then replace the old Revenue/Consulting page with a North Star cash-path lane over existing local data.
+## Plan — Screenshot Mission Control Tasks — 2026-05-27
+- [x] Verify AI Ops Teardown weekly cron run, output files, delivery, and duplicate-task state.
+- [x] Refactor outreach-pipeline cron into script-first deterministic stages.
+- [x] Run the first Opportunity Intake Gate audit and save the report.
+- [ ] Update Mission Control, daily note, weekly recap, and proof logs after each completed task.
+- [ ] Run verification guards before final closeout.
 
-## Plan
-- [x] Add tested mobile shell/nav layout constants so bottom navigation stays centered and phone-safe.
-- [x] Patch the mobile top/bottom shell and Work lane spacing for current iPhone/Safari constraints.
-- [x] Verify the mobile `/work` screenshot after the nav fix.
-- [x] Audit existing local revenue/job/consulting data sources that can power Slice 1.1 without schema rewrites.
-- [x] Add tested revenue-signal adapters over current task/proof/local-data shapes.
-- [x] Replace `/consulting` with a Revenue cockpit focused on collected/contracted/pipeline/job/app upside.
-- [x] Run tests, typecheck, isolated build, route HTTP checks, and mobile screenshots.
-- [x] Add explicit Todo/Doing/Done task controls to `/work` so mobile users can move tasks without discovering the old tiny status-dot behavior.
-- [x] Sort Work tasks by priority before recency and add visible high/medium/low color treatment.
-- [x] Add a Work task inspection/action drawer with context, evidence, ranking explanation, status controls, priority controls, defer, and archive actions.
+## Plan — Content Pipeline Quality Audit — 2026-05-31
+- [x] Map all active scrape, storage, analysis, and generation lanes by platform/niche.
+- [x] Identify weak gates where references can be stale, cross-platform, cross-niche, or only prompt-asserted.
+- [x] Add deterministic validation for platform/niche reference mechanics in saved content artifacts.
+- [x] Patch active content generation cron prompts to require narrow filtered swipe/reference fetches and saved hook mappings.
+- [x] Run content, cron, routing, and proof verification before closeout.
 
-# Mission Control Slice 1.3 Command Attention Brief
+## Plan — Capability Routing System — 2026-05-31
+- [x] Create a durable capability routing map for JT's work.
+- [x] Add skills for LinkedIn corpus intake and client proof capture.
+- [x] Add agent manuals for corpus maintenance and client proof packaging.
+- [x] Register new agents in Mission Control.
+- [x] Add project instructions for the consulting pipeline.
+- [x] Scaffold a portable Codex plugin bundle only if it adds useful packaging.
+- [x] Validate skills/plugin/frontmatter and log closeout.
 
-## Goal
-Make the Command cockpit explain what changed and what matters now, using existing task/proof/revenue signals without backend/schema rewrites.
-
-## Plan
-- [x] Add failing tests for Command attention brief summary logic.
-- [x] Implement a small Command brief model over current signals and queue data.
-- [x] Wire the homepage to show top priority, latest proof, stale/risk count, and money-path pressure.
-- [x] Verify tests, typecheck, isolated build, live HTTP, and mobile screenshot.
-- [x] Update implementation notes, memory/proof surfaces, and the JT review task.
-
-# Mission Control Slice 1.4 Ship Lane
-
-## Goal
-Turn Ship from a legacy Vibe/Passive Income alias into a first-class operating lane for app distribution, content shipping, release gates, and proof coverage.
-
-## Plan
-- [x] Add failing tests for Ship summary/grouping behavior and `/ship` route promotion.
-- [x] Implement a small Ship model over current Mission Control signals.
-- [x] Make `/ship` the primary Ship lane, redirect `/vibe` to `/ship`, and preserve a legacy Vibe reference under `/legacy/vibe`.
-- [x] Build the Ship cockpit with app distribution, content queue, release gates, proof coverage, and blocker/stale counters.
-- [x] Verify focused tests, full Mission Control tests, TypeScript, isolated build, live HTTP routes, and mobile screenshot.
-- [x] Update implementation notes, memory/proof surfaces, and the JT review task.
-
-# Mission Control Slice 1.5 Machine Lane
-
-## Goal
-Turn Machine from an Agent Team alias into a first-class system-health lane for cron health, agent posture, cost pressure, and machine risks using existing APIs and signal adapters.
-
-## Plan
-- [x] Add failing tests for Machine summary/grouping behavior and `/machine` route promotion.
-- [x] Implement a small Machine model over current cron, agent, cost, and machine-risk signals.
-- [x] Make `/machine` the primary Machine lane, redirect `/agents` to `/machine`, and preserve the legacy Agent Team page under `/legacy/agents`.
-- [x] Build the Machine cockpit with cron health, active agents, cost posture, automation risks, and recent machine work.
-- [x] Verify focused tests, full Mission Control tests, TypeScript, isolated build, live HTTP routes, and mobile screenshot.
-- [x] Update implementation notes, memory/proof surfaces, and the JT review task.
-
-# Mission Control Slice 1.6 Evidence Lane
-
-## Goal
-Turn Evidence from the old Audit Trail page into a first-class proof/trust ledger over current proof signals and proof logs, while preserving the old audit list under legacy routing.
-
-## Plan
-- [x] Add failing tests for Evidence summary/grouping behavior and `/evidence` route promotion.
-- [x] Implement a small Evidence model over current proof signals.
-- [x] Make `/evidence` the primary Evidence lane, redirect `/audit` to `/evidence`, and preserve the old Audit Trail page under `/legacy/audit`.
-- [x] Build the Evidence cockpit with proof coverage, latest proof, proof gaps, buyer/client proof, system proof, and content/proof assets.
-- [x] Verify focused tests, full Mission Control tests, TypeScript, isolated build, live HTTP routes, and mobile screenshot.
-- [x] Update implementation notes, memory/proof surfaces, and the JT review task.
-
-# Mission Control Slice 1.7 Health Lane
-
-## Goal
-Turn Health from the old Monitor/Costs placeholders into a first-class ops health lane for failures, cost pressure, stale risk, and recovery work using existing Mission Control signals and cost data.
-
-## Plan
-- [x] Add failing tests for Health summary/grouping behavior and `/health` route promotion.
-- [x] Implement a small Health model over current health, machine, risk, and cost signals.
-- [x] Make `/health` the primary Health lane, redirect `/monitor` and `/costs` to `/health`, and preserve old views under `/legacy/monitor` and `/legacy/costs`.
-- [x] Build the Health cockpit with ops failures, cost pressure, stale risk, and recovery work.
-- [x] Verify focused tests, full Mission Control tests, TypeScript, isolated build, live HTTP routes, and mobile screenshot.
-- [x] Update implementation notes, memory/proof surfaces, and the JT review task.
+## Plan — AI Ops Teardown Drive Sync — 2026-05-31
+- [x] Add deterministic Drive upload planner for teardown + content-bank draft bundles.
+- [x] Upload the latest bundle to organized Google Drive folders.
+- [x] Wire weekly agent/cron instructions to run Drive sync automatically.
+- [x] Verify tests, Drive upload output, prompt wiring, and bootstrap file sizes.

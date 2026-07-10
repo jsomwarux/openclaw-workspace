@@ -81,6 +81,8 @@ The Command cockpit must include an attention brief, not a placeholder "last see
 
 After Slice 1.4, `/ship` is the primary Ship lane. `/vibe` redirects to `/ship`, and the old Vibe Marketing reference lives at `/legacy/vibe`. Do not restore `/vibe` as the primary Ship surface. The Ship lane should stay focused on app distribution, content shipping, release gates, proof coverage, and blocked/stale work from current Mission Control signals.
 
+After the 2026-07-09 fix, `/passive-income` remains a live Ship subpage and must stay discoverable from the `/ship` cockpit. It is a decision board over `memory/passive-income/`, not a legacy redirect: keep ranked ideas, score rationale, scorecard dimensions, source file, search/filter/sort controls, and expanded detail fields visible.
+
 After Slice 1.5, `/machine` is the primary Machine lane. `/agents` redirects to `/machine`, and the old Agent Team reference lives at `/legacy/agents`. Do not restore `/agents` as the primary Machine surface. The Machine lane should stay focused on cron health, agent posture, cost pressure, automation risks, and recent system work from current Mission Control signals.
 
 After Slice 1.6, `/evidence` is the primary Evidence lane. `/audit` redirects to `/evidence`, and the old Audit Trail reference lives at `/legacy/audit`. Do not restore `/audit` as the primary Evidence surface. The Evidence lane should stay focused on buyer-readable proof, system receipts, content proof assets, and proof gaps from current proof signals.

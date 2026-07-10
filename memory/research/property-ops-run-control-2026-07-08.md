@@ -47,3 +47,14 @@ The Altmark rent delinquency work remains the highest-value proof because it alr
 - Keep Altmark as the first concrete send/proof action because it ties directly to the closest verified cash gate.
 - When talking to PM/CRE prospects, lead with "workflow execution with approval boundaries" instead of "AI assistant."
 - For content, the strongest angle is: "The market is not asking for AI chat. It is asking for governed execution inside Yardi/AppFolio/MRI-style workflows."
+
+## 2026-07-09 Addendum - Rent-Delinquency Control Proof
+
+Fresh 2026 property-management AI coverage reinforces the same narrow proof requirement: buyers are being told AI can help with rent roll, payments, resident communication, screening, and reconciliation, but sensitive housing or ledger decisions need traceable source inputs, human review, and audit-ready decision records.
+
+Sources checked:
+- Haven AI property-management compliance guide, published week of 2026-07-09: audit records should preserve what data an AI considered, what result it produced, and any human override. Source: https://www.usehaven.ai/post/ai-property-management-compliance-fair-housing-guide
+- MRI AI property-management guide, published June 2026: resident-impacting decisions need transparent criteria, audit trails for recommendations, and human-in-the-loop review. Source: https://www.mrisoftware.com/blog/ai-for-property-management/
+- Kognitos real-estate operations guide, published June 2026: rent-roll automation becomes credible when exceptions are routed with plain-English explanations and every rent-roll decision leaves an audit trail. Source: https://www.kognitos.com/blog/ai-automation-real-estate-operations-2026/
+
+Altmark translation: the send-ready ask should not promise "AI collections." It should ask for the redacted export, source report path/process, refresh cadence, named reviewer, and exception rules so the first real run stays review-only and produces a row-level decision record before any tenant-facing action.

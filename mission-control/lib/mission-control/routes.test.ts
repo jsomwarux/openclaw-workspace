@@ -21,6 +21,13 @@ describe("mission control routes", () => {
     expect(legacyRedirects["/vibe"]).toBe("/ship");
   });
 
+  test("keeps Passive Income discoverable as a Ship subpage without redirecting it away", () => {
+    const ship = missionControlNav.find((item) => item.label === "Ship");
+
+    expect(ship?.aliases.includes("/passive-income")).toBe(true);
+    expect(legacyRedirects["/passive-income"]).toBe(undefined);
+  });
+
   test("uses /machine as the primary Machine lane and preserves old agents route as legacy", () => {
     const machine = missionControlNav.find((item) => item.label === "Machine");
 

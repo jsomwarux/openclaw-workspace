@@ -45,7 +45,7 @@
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
 - App content loop: niche-native creative, tested hooks/formats, and angles tied to audience pains, value, and retention.
-- Review drafts: property Workflow Audit, AI-roadmap, Jul 5 enablement record, Jul 6 offer path, Jul 7 real-estate workflow execution; review-only.
+- Review drafts remain review-only; do not auto-post.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
@@ -68,9 +68,9 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Jul 8 directive migration: 33 deprecated jobs disabled; registry 12 enabled / 60 disabled / 72 total. Daily Send Sheet 7:30 and Friday Scoreboard 16:00 are main summaries.
-- Jul 8 heartbeat checks: MC 291 active / 16 high / 0 errors; costs clear; Spanish paused; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day; no enabled red rows.
-- Directive-disabled crypto/job/content jobs are not misses; do not rerun/enable/alert/spend unless JT explicitly reactivates. No blind reruns.
+- Jul 9: Daily Send Sheet delivered Altmark as the only send due; Pending Task Processor 10:30 returned HEARTBEAT_OK.
+- Registry: 12 enabled / 60 disabled / 72 total; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day. Only enabled red row is Weekly Systems Review from Jul 5 pseudo-command failure; live prompt already patched, next natural proof Jul 12.
+- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Jul 9 lanes updated PM control proof and MCP/tool-access ledger positioning.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
-import { AlertTriangle, CheckCircle2, PackageCheck, RefreshCw, Rocket, Send } from "lucide-react";
+import { AlertTriangle, ArrowRight, CheckCircle2, Lightbulb, PackageCheck, RefreshCw, Rocket, Send } from "lucide-react";
 import { InspectionDrawer } from "@/components/mission-control/InspectionDrawer";
 import { StateBlock } from "@/components/mission-control/StateBlock";
 import { useMissionControlData } from "@/lib/mission-control/hooks";
@@ -146,7 +147,8 @@ export default function ShipPage() {
       </div>
 
       <section className="mt-4 rounded-lg border border-purple-500/30 bg-purple-950/10 p-4">
-        <div className="flex items-start gap-3">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-start gap-3">
           <span className="rounded-md border border-purple-500/30 bg-purple-500/10 p-2 text-purple-300">
             <Send size={16} />
           </span>
@@ -156,6 +158,15 @@ export default function ShipPage() {
               Ship lane favors proof-generating distribution: directory listings, ASO tests, share artifacts, content drafts, and launch gates. Build-only work stays lower unless it unlocks public proof.
             </p>
           </div>
+          </div>
+          <Link
+            href="/passive-income"
+            className="inline-flex w-fit items-center gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs font-medium text-emerald-200 transition-colors hover:border-emerald-400/60 hover:bg-emerald-500/15"
+          >
+            <Lightbulb size={14} />
+            Passive Income Board
+            <ArrowRight size={13} />
+          </Link>
         </div>
       </section>
 

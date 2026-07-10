@@ -2,6 +2,18 @@
 
 ---
 
+## Jul 9, 2026 — Heartbeat AI Tool Monitoring
+
+**MCP governance is moving from developer plumbing into the buyer checklist.** Fresh monitoring shows the same control-plane language across enterprise agent coverage: per-user or scoped identity, governed MCP/tool access, formal approval workflows for new tools or risky actions, observability dashboards, anomaly alerts, and immutable audit trails. The technical standard matters less than the operating evidence around it.
+
+**JT relevance:** keep Run Control / AI Enablement OS framed as the layer that makes agent work inspectable and reversible. For property, insurance, wholesale, and client ops workflows, the proof packet should show: who/what the agent is, which systems it can touch, what requires approval, where tool calls are logged, how a bad action is stopped, and which owner can retry or roll back.
+
+**Actionable demo angle:** add a "tool access ledger" row to the next Altmark/control proof: source system, connected tool, allowed read/write scope, approval-required action, reviewer, audit path, and rollback rule. This turns MCP from hidden infrastructure into a buyer-visible control record.
+
+Sources: Workato control/execution plane for enterprise AI (2026-07-07) https://www.workato.com/the-connector/control-and-execution-plane-enterprise-ai/; Celigo MCP governance guide (2026-06-25) https://www.celigo.com/blog/mcp-governance/; Nudge Security AI agent governance guide (2026-06-23) https://www.nudgesecurity.com/post/ai-agent-governance-security-team-guide; Blockchain Council MCP manager guide (2026-07-08) https://www.blockchain-council.org/agentic-ai/ai-agents-with-mcp-explained-managers/
+
+---
+
 ## Jul 8, 2026 — Heartbeat AI Tool Monitoring
 
 **Enterprise agent tooling is converging on governed production controls.** Fresh monitoring shows the same buyer pattern across vendor and analyst surfaces: agent-level RBAC, unique/scoped agent identity, audit trails for every tool call, approval gates for high-stakes actions, sandboxed testing, observability, and MCP/tool access governance. This is no longer only a security-team concern; it is becoming the evaluation checklist for whether an agent workflow can leave pilot mode.

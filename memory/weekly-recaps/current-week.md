@@ -10,3 +10,4 @@ Archive every Monday, start fresh.
 - 2026-07-08: Refined JT North Star across USER.md, MEMORY.md, and expanded memory: consulting cash and proof first, then reusable IP/products/AI-managed income streams, with health and NYC stability protected.
 - 2026-07-08: Updated USER.md current focus for MSI/Marketsmith, Altmark, Aya, and app posture; logged FantasyPoints Data Suite as a future sports analytics signal gated by audience/request proof.
 - 2026-07-08: Phase 4 migration created 12 surviving-job state files plus `claims/` and `archive/`; proof id `13cb69f0`.
+- 2026-07-09: Restored Mission Control's hidden Passive Income page as a visible Ship subpage and upgraded it into a ranked decision board with score rationale, scorecard dimensions, source files, filters, search, and desktop/mobile screenshots.
