@@ -230,14 +230,65 @@ describe("commandQueue exclusions", () => {
     expect(queue.map((item) => item.id)).toEqual(["snooze-expired"]);
   });
 
-  test("eve's in-progress work is excluded but her failures escalate to JT", () => {
+  test("eve's in-progress and stale work is excluded but her failures escalate to JT", () => {
     const items = [
       signal({ id: "eve-working", owner: "eve", status: "in-progress" }),
       signal({ id: "eve-failed", owner: "eve", status: "failed", riskContainment: true }),
+      // Stale is idle, not actionable: it belongs to the EVE HAS IT strip, not the queue.
       signal({ id: "eve-stale", owner: "eve", status: "stale" }),
     ];
     const queue = commandQueue(items, { now });
-    expect(queue.map((item) => item.id).sort()).toEqual(["eve-failed", "eve-stale"]);
+    expect(queue.map((item) => item.id)).toEqual(["eve-failed"]);
+  });
+
+  test("agent and proof signals never enter the queue, whatever their status", () => {
+    const items = [
+      signal({ id: "agent-stale", source: "agent", owner: "eve", status: "stale", lane: "machine" }),
+      signal({ id: "agent-failed", source: "agent", owner: "eve", status: "failed", lane: "machine" }),
+      signal({ id: "agent-jt", source: "agent", owner: "jt", status: "failed", lane: "machine" }),
+      signal({ id: "proof-gap", source: "proof", owner: "jt", status: "stale", lane: "evidence" }),
+      signal({ id: "jt-task", proofRequired: true }),
+    ];
+    const queue = commandQueue(items, { now });
+    expect(queue.map((item) => item.id)).toEqual(["jt-task"]);
+  });
+
+  test("a failed cron escalates but a running one does not", () => {
+    const items = [
+      signal({ id: "cron-failed", source: "cron", owner: "eve", status: "failed", lane: "machine" }),
+      signal({ id: "cron-running", source: "cron", owner: "eve", status: "in-progress", lane: "machine" }),
+    ];
+    const queue = commandQueue(items, { now });
+    expect(queue.map((item) => item.id)).toEqual(["cron-failed"]);
+  });
+
+  test("a jt cash task outranks every machine item that survives the exclusions", () => {
+    const items = [
+      signal({ id: "agent-a", source: "agent", owner: "eve", status: "stale", lane: "machine" }),
+      signal({ id: "agent-b", source: "agent", owner: "eve", status: "stale", lane: "machine" }),
+      signal({ id: "agent-c", source: "agent", owner: "eve", status: "stale", lane: "machine" }),
+      signal({
+        id: "cron-failed",
+        source: "cron",
+        owner: "eve",
+        status: "failed",
+        lane: "machine",
+        riskContainment: true,
+      }),
+      signal({ id: "eve-stale-task", owner: "eve", status: "stale" }),
+      signal({ id: "eve-failed-task", owner: "eve", status: "failed" }),
+      signal({
+        id: "jt-cash",
+        lane: "revenue",
+        project: "Consulting",
+        dollars: 3500,
+        stageProbability: 0.6,
+      }),
+    ];
+    const queue = commandQueue(items, cashMandate);
+    expect(queue[0].id).toBe("jt-cash");
+    expect(queue.some((item) => item.source === "agent")).toBe(false);
+    expect(queue.map((item) => item.id)).toEqual(["jt-cash", "cron-failed", "eve-failed-task"]);
   });
 
   test("sorts by score, tiebreaks on recency then title, and caps at seven", () => {

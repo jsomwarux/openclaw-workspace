@@ -1,4 +1,4 @@
-import type { Factors, ScoreBand, ScoreContext, ScoreResult, Signal } from "./types";
+import type { Factors, ScoreBand, ScoreContext, ScoreResult, Signal, SignalSource } from "./types";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -152,7 +152,21 @@ export function scoreSignal(signal: Signal, ctx: ScoreContext = {}): Signal {
 }
 
 const EXCLUDED_STATUSES = new Set(["done", "archived", "snoozed"]);
-const EVE_ESCALATIONS = new Set(["failed", "stale"]);
+
+/**
+ * Agent definitions and proofs are machine/evidence posture, never a JT decision.
+ * They render on /machine and /evidence; they must never reach NOW or UP NEXT,
+ * whatever status the adapters give them.
+ */
+const NON_DECISION_SOURCES = new Set<SignalSource>(["agent", "proof"]);
+
+/** Only a genuinely failed Eve task or cron is worth pulling JT in. A stale one is idle, not actionable. */
+const EVE_ESCALATIONS = new Set(["failed"]);
+const EVE_ESCALATION_SOURCES = new Set<SignalSource>(["task", "cron"]);
+
+function eveEscalates(signal: Signal): boolean {
+  return EVE_ESCALATIONS.has(signal.status) && EVE_ESCALATION_SOURCES.has(signal.source);
+}
 
 function nudgeDue(signal: Signal, now: number): boolean {
   const waiting = signal.waitingOn;
@@ -164,15 +178,20 @@ function nudgeDue(signal: Signal, now: number): boolean {
  * Hard exclusions first, then score. Nothing that JT cannot act on right now
  * is allowed into the queue — externally blocked work only reappears when its
  * nudge comes due, and then as a nudge, not as the underlying task.
+ *
+ * What survives: task-source signals owned by jt or both, plus cron-source
+ * signals that actually failed. Eve's in-progress and stale work is shown by
+ * the EVE HAS IT strip, and failures by RISK; neither goes through here.
  */
 export function commandQueue(signals: Signal[], ctx: ScoreContext = {}): Signal[] {
   const now = ctx.now ?? Date.now();
 
   const eligible: Signal[] = [];
   for (const signal of signals) {
+    if (NON_DECISION_SOURCES.has(signal.source)) continue;
     if (EXCLUDED_STATUSES.has(signal.status)) continue;
     if (signal.snoozedUntil && signal.snoozedUntil > now) continue;
-    if (signal.owner === "eve" && !EVE_ESCALATIONS.has(signal.status)) continue;
+    if (signal.owner === "eve" && !eveEscalates(signal)) continue;
 
     const waiting = signal.waitingOn;
     if (waiting?.who) {
