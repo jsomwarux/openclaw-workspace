@@ -1,6 +1,8 @@
 "use client";
 
-import { Archive, Clock3, X } from "lucide-react";
+import { Archive, Clock3, UserPlus, X } from "lucide-react";
+import { useTaskAudit } from "@/lib/mission-control/hooks";
+import { reasonChips, reasonToneClassName } from "@/lib/mission-control/reason-codes";
 import type { Signal } from "@/lib/mission-control/types";
 import { priorityOptions, rankingExplanation } from "@/lib/mission-control/work-actions";
 import { priorityBadgeClassName } from "@/lib/mission-control/work-priority";
@@ -16,6 +18,9 @@ type InspectionDrawerProps = {
   onPriorityChange?: (signal: Signal, priority: NonNullable<Signal["priority"]>) => void;
   onArchive?: (signal: Signal) => void;
   onDefer?: (signal: Signal) => void;
+  onSnooze?: (signal: Signal) => void;
+  onNotNow?: (signal: Signal) => void;
+  onHandToEve?: (signal: Signal) => void;
 };
 
 function statusClass(status: Signal["status"]) {
@@ -33,11 +38,20 @@ export function InspectionDrawer({
   onPriorityChange,
   onArchive,
   onDefer,
+  onSnooze,
+  onNotNow,
+  onHandToEve,
 }: InspectionDrawerProps) {
+  const auditTaskId = signal?.source === "task" ? signal.id : null;
+  const { entries: audit, loading: auditLoading } = useTaskAudit(auditTaskId);
+
   if (!signal) return null;
 
   const currentStatus = toTaskStatus(signal.status);
   const isTask = signal.source === "task";
+  const chips = reasonChips(signal.reasonCodes);
+  const hasSecondaryActions = Boolean(onSnooze || onNotNow || onHandToEve);
+  const hasWorkActions = Boolean(onDefer || onArchive);
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/70" onClick={onClose}>
@@ -107,8 +121,66 @@ export function InspectionDrawer({
         </section>
 
         <section className="mt-6 rounded-lg border border-[#20262d] bg-[#0b0d0f] p-3">
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Why This Is Ranked Here</p>
+          <div className="flex items-start justify-between gap-3">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Why This Is Ranked Here</p>
+            <span className="shrink-0 rounded border border-[#2b333c] bg-[#0f1316] px-2 py-1 font-mono text-xs font-semibold text-zinc-200">
+              {signal.score ?? 0}
+              <span className="ml-1 text-[9px] font-normal uppercase text-zinc-600">score</span>
+            </span>
+          </div>
           <p className="mt-2 text-xs leading-relaxed text-zinc-300">{rankingExplanation(signal)}</p>
+
+          <div className="mt-3">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-600">Reason codes</p>
+            {chips.length > 0 ? (
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {chips.map((chip) => (
+                  <span
+                    key={chip.code}
+                    title={chip.code}
+                    className={cn(
+                      "rounded border px-2 py-0.5 text-[10px] font-medium",
+                      reasonToneClassName[chip.tone],
+                    )}
+                  >
+                    {chip.label}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-2 text-[11px] text-zinc-600">
+                The scorer attached no reason codes, so this item is ranked on recency alone.
+              </p>
+            )}
+          </div>
+
+          <div className="mt-4">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-600">Rank audit</p>
+            {!isTask ? (
+              <p className="mt-2 text-[11px] text-zinc-600">Only tasks carry a rank audit trail.</p>
+            ) : auditLoading ? (
+              <p className="mt-2 text-[11px] text-zinc-600">Loading audit trail…</p>
+            ) : audit.length === 0 ? (
+              <p className="mt-2 text-[11px] text-zinc-600">No rank changes recorded for this task yet.</p>
+            ) : (
+              <ol className="mt-2 space-y-2">
+                {audit.map((entry) => (
+                  <li key={entry._id} className="rounded border border-[#20262d] bg-[#0f1316] p-2">
+                    <div className="flex items-center justify-between gap-2 text-[10px] uppercase text-zinc-600">
+                      <span>{entry.field}</span>
+                      <span>
+                        {entry.source} · {formatRelative(entry.ts)}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-[11px] text-zinc-300">
+                      {entry.oldValue || "—"} → {entry.newValue || "—"}
+                    </p>
+                    {entry.evidence && <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">{entry.evidence}</p>}
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
         </section>
 
         <section className="mt-6 rounded-lg border border-[#20262d] bg-[#0b0d0f] p-3">
@@ -170,28 +242,65 @@ export function InspectionDrawer({
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                disabled={!isTask || updating}
-                onClick={() => onDefer?.(signal)}
-                className="flex h-10 items-center justify-center gap-2 rounded-md border border-amber-500/30 bg-amber-500/10 px-3 text-xs font-medium text-amber-200 transition-colors hover:border-amber-400/50 disabled:cursor-not-allowed disabled:opacity-60"
-                title="Move to low priority without marking done"
-              >
-                <Clock3 size={13} />
-                Defer
-              </button>
-              <button
-                type="button"
-                disabled={!isTask || updating}
-                onClick={() => onArchive?.(signal)}
-                className="flex h-10 items-center justify-center gap-2 rounded-md border border-zinc-700 bg-zinc-900/80 px-3 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
-                title="Archive this task"
-              >
-                <Archive size={13} />
-                Archive
-              </button>
-            </div>
+            {hasSecondaryActions && (
+              <div className="grid grid-cols-3 gap-2">
+                <button
+                  type="button"
+                  disabled={!isTask || updating}
+                  onClick={() => onSnooze?.(signal)}
+                  className="flex h-10 items-center justify-center gap-1.5 rounded-md border border-[#20262d] bg-[#101318] px-2 text-xs font-medium text-zinc-300 transition-colors hover:border-[#38414a] disabled:cursor-not-allowed disabled:opacity-60"
+                  title="Hide this item from the queue for seven days"
+                >
+                  <Clock3 size={13} />
+                  Snooze 7d
+                </button>
+                <button
+                  type="button"
+                  disabled={!isTask || updating}
+                  onClick={() => onNotNow?.(signal)}
+                  className="flex h-10 items-center justify-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-900/80 px-2 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
+                  title="Archive this item out of the queue"
+                >
+                  <Archive size={13} />
+                  Not now
+                </button>
+                <button
+                  type="button"
+                  disabled={!isTask || updating}
+                  onClick={() => onHandToEve?.(signal)}
+                  className="flex h-10 items-center justify-center gap-1.5 rounded-md border border-purple-500/30 bg-purple-500/10 px-2 text-xs font-medium text-purple-200 transition-colors hover:border-purple-400/50 disabled:cursor-not-allowed disabled:opacity-60"
+                  title="Reassign this item to Eve"
+                >
+                  <UserPlus size={13} />
+                  Hand to Eve
+                </button>
+              </div>
+            )}
+
+            {hasWorkActions && (
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  disabled={!isTask || updating}
+                  onClick={() => onDefer?.(signal)}
+                  className="flex h-10 items-center justify-center gap-2 rounded-md border border-amber-500/30 bg-amber-500/10 px-3 text-xs font-medium text-amber-200 transition-colors hover:border-amber-400/50 disabled:cursor-not-allowed disabled:opacity-60"
+                  title="Move to low priority without marking done"
+                >
+                  <Clock3 size={13} />
+                  Defer
+                </button>
+                <button
+                  type="button"
+                  disabled={!isTask || updating}
+                  onClick={() => onArchive?.(signal)}
+                  className="flex h-10 items-center justify-center gap-2 rounded-md border border-zinc-700 bg-zinc-900/80 px-3 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
+                  title="Archive this task"
+                >
+                  <Archive size={13} />
+                  Archive
+                </button>
+              </div>
+            )}
           </div>
         </section>
       </aside>

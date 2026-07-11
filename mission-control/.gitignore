@@ -2,3 +2,4 @@
 .env.local
 .next
 .next-build
+.claude/audit.log

@@ -1,13 +1,4 @@
-import {
-  Activity,
-  Bot,
-  BriefcaseBusiness,
-  Command,
-  HeartPulse,
-  Rocket,
-  ShieldCheck,
-  type LucideIcon,
-} from "lucide-react";
+import { Bot, BriefcaseBusiness, Command, type LucideIcon } from "lucide-react";
 
 export type MissionControlNavItem = {
   href: string;
@@ -17,59 +8,49 @@ export type MissionControlNavItem = {
   aliases: string[];
 };
 
+/**
+ * Three lanes only. Work, Ship, Evidence, and Health routes still resolve — they
+ * are reachable from their cockpits — but a nav with seven entries is a menu,
+ * not a cockpit, so Systems absorbs the machine/evidence/health surfaces.
+ */
 export const missionControlNav: MissionControlNavItem[] = [
   {
     href: "/",
     icon: Command,
-    label: "Command",
+    label: "Cockpit",
     desc: "Decisions",
     aliases: ["/"],
   },
   {
-    href: "/work",
-    icon: Activity,
-    label: "Work",
-    desc: "Tasks",
-    aliases: ["/work", "/history"],
-  },
-  {
     href: "/consulting",
     icon: BriefcaseBusiness,
-    label: "Revenue",
+    label: "Money",
     desc: "Cash path",
     aliases: ["/consulting"],
   },
   {
-    href: "/ship",
-    icon: Rocket,
-    label: "Ship",
-    desc: "Apps",
-    aliases: ["/ship", "/vibe", "/passive-income"],
-  },
-  {
     href: "/machine",
     icon: Bot,
-    label: "Machine",
-    desc: "Agents",
-    aliases: ["/machine", "/agents", "/calendar"],
-  },
-  {
-    href: "/evidence",
-    icon: ShieldCheck,
-    label: "Evidence",
-    desc: "Proof",
-    aliases: ["/evidence", "/audit", "/memory", "/overnight", "/skills", "/systems"],
-  },
-  {
-    href: "/health",
-    icon: HeartPulse,
-    label: "Health",
-    desc: "Ops",
-    aliases: ["/health", "/monitor", "/costs"],
+    label: "Systems",
+    desc: "Agents · proof · ops",
+    aliases: [
+      "/machine",
+      "/agents",
+      "/calendar",
+      "/evidence",
+      "/audit",
+      "/health",
+      "/monitor",
+      "/costs",
+      "/memory",
+      "/overnight",
+      "/skills",
+      "/systems",
+    ],
   },
 ];
 
-export const mobileNav = missionControlNav.slice(0, 5);
+export const mobileNav = missionControlNav;
 
 export const legacyRedirects: Record<string, string> = {
   "/tasks": "/work",

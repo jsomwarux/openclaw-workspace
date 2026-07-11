@@ -131,6 +131,7 @@ export function taskToSignal(task: RawTask): Signal {
     lane: laneForProject(task.project, task.title, task.lane),
     priority: task.priority,
     project: task.project,
+    pipelineStage: task.pipelineStage,
     ageDays: ageDays(updatedAt),
     context: task.description,
     evidence: extractEvidence(task.description),

@@ -175,8 +175,11 @@ describe("explainability", () => {
     }
   });
 
-  test("an unexplained high score is flagged rather than trusted", () => {
-    // Force the degenerate case: score above the band with no factors firing.
+  test("a task with no factors firing scores zero and carries no reason codes", () => {
+    // The "unexplained" guard in scoreTask is a backstop, not a live path: every factor
+    // that contributes points also pushes a reason code, so a 50-plus score with empty
+    // reasonCodes is unreachable through this API. What is reachable is the opposite
+    // degenerate case — nothing fires, so there is nothing to explain.
     const result = scoreTask(signal({ lane: "work" }), { now });
     expect(result.score).toBe(0);
     expect(result.reasonCodes).toEqual([]);

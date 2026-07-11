@@ -40,6 +40,17 @@ function moneyAfter(label: string, text: string): number {
   return match ? Number(match[1].replace(/,/g, "")) : 0;
 }
 
+const NORTH_STAR_LABELS = ["Total collected:", "Pipeline-weighted forecast:", "Consulting:"];
+
+/**
+ * A north-star file that parses to all zeros is indistinguishable from one that
+ * says JT earned nothing. Callers that show cash need to know which it is, so
+ * report whether any metric label was actually present.
+ */
+export function hasNorthStarMetrics(markdown: string): boolean {
+  return NORTH_STAR_LABELS.some((label) => new RegExp(`${label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}[^$]*\\$`, "i").test(markdown));
+}
+
 export function parseNorthStarMetrics(markdown: string): RevenueMetric {
   return {
     consultingCollected: moneyAfter("Consulting:", markdown),

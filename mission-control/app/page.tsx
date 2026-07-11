@@ -1,96 +1,130 @@
 "use client";
 
-import { useState } from "react";
-import { AlertTriangle, ArrowRight, CheckCircle2, CircleDollarSign, RefreshCw } from "lucide-react";
+import { useState, type ReactNode } from "react";
+import { AlertTriangle, Bell, Bot, ChevronDown, ChevronRight, CircleDollarSign } from "lucide-react";
 import { InspectionDrawer } from "@/components/mission-control/InspectionDrawer";
 import { StateBlock } from "@/components/mission-control/StateBlock";
 import { useMissionControlData } from "@/lib/mission-control/hooks";
-import type { Signal } from "@/lib/mission-control/types";
+import { primaryActionVerb, reasonChips, reasonToneClassName } from "@/lib/mission-control/reason-codes";
+import type { Signal, SignalPriority } from "@/lib/mission-control/types";
 import { cn, formatRelative } from "@/lib/utils";
 
-function bandClass(signal: Signal) {
-  if (signal.band === "high" || signal.status === "failed" || signal.status === "blocked") {
-    return "border-l-red-400";
-  }
-  if (signal.band === "medium" || signal.status === "stale") return "border-l-amber-400";
-  return "border-l-zinc-600";
-}
+const DAY_MS = 24 * 60 * 60 * 1000;
+const SNOOZE_DAYS = 7;
 
-function ActionCard({ signal, onInspect }: { signal: Signal; onInspect: (signal: Signal) => void }) {
+type TaskPatch = {
+  status?: string;
+  priority?: SignalPriority;
+  assignee?: "jt" | "eve" | "both";
+  pipelineStage?: string;
+  snoozedUntil?: number;
+  waitingOn?: Signal["waitingOn"];
+};
+
+function ReasonChipRow({ codes, limit }: { codes?: string[]; limit?: number }) {
+  const chips = reasonChips(codes);
+  const shown = limit ? chips.slice(0, limit) : chips;
+  if (shown.length === 0) return null;
+
   return (
-    <button
-      onClick={() => onInspect(signal)}
-      className={cn(
-        "w-full rounded-lg border border-[#20262d] border-l-2 bg-[#0f1316] p-3 text-left transition-colors hover:border-[#38414a]",
-        bandClass(signal),
-      )}
-    >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded bg-[#16191d] px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[#f0883e]">
-              {signal.status.replace(/-/g, " ")}
-            </span>
-            <span className="text-[10px] uppercase text-zinc-600">{signal.lane}</span>
-          </div>
-          <p className="mt-2 text-sm font-semibold leading-snug text-zinc-100">{signal.title}</p>
-          <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-zinc-500">
-            {signal.context || signal.project || "No context attached yet."}
-          </p>
-        </div>
-        <div className="flex flex-col items-end gap-1">
-          <span className="rounded border border-[#2b333c] bg-[#0b0d0f] px-2 py-1 font-mono text-xs font-semibold text-zinc-200">
-            {signal.score ?? 0}
-          </span>
-          <span className="text-[9px] uppercase text-zinc-600">score</span>
-        </div>
-      </div>
-      <div className="mt-3 flex items-center justify-between text-[10px] text-zinc-600">
-        <span>{signal.project || signal.source}</span>
-        <span className="flex items-center gap-1 text-emerald-400">
-          Inspect <ArrowRight size={10} />
+    <div className="flex flex-wrap items-center gap-1.5">
+      {shown.map((chip) => (
+        <span
+          key={chip.code}
+          title={chip.code}
+          className={cn("rounded border px-2 py-0.5 text-[10px] font-medium", reasonToneClassName[chip.tone])}
+        >
+          {chip.label}
         </span>
-      </div>
-    </button>
+      ))}
+    </div>
   );
 }
 
-function MiniSignal({ signal, onInspect }: { signal: Signal; onInspect: (signal: Signal) => void }) {
+function CollapsedStrip({
+  title,
+  count,
+  tone,
+  icon: Icon,
+  children,
+}: {
+  title: string;
+  count: number;
+  tone: "neutral" | "eve" | "risk";
+  icon: typeof Bell;
+  children: ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  const toneClass =
+    tone === "risk" ? "text-red-300" : tone === "eve" ? "text-purple-300" : "text-zinc-400";
+
   return (
-    <button
-      onClick={() => onInspect(signal)}
-      className="w-full rounded-md border border-[#20262d] bg-[#0f1316] p-3 text-left hover:border-[#38414a]"
-    >
-      <div className="flex items-center justify-between gap-2">
-        <p className="truncate text-xs font-medium text-zinc-200">{signal.title}</p>
-        <span className="shrink-0 text-[9px] uppercase text-zinc-600">{signal.source}</span>
-      </div>
-      <p className="mt-1 text-[10px] text-zinc-600">{formatRelative(signal.updatedAt)}</p>
-    </button>
+    <section className="rounded-lg border border-[#20262d] bg-[#0d1014]">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left"
+      >
+        <span className={cn("flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider", toneClass)}>
+          <Icon size={13} />
+          {title} ({count})
+        </span>
+        {open ? <ChevronDown size={14} className="text-zinc-600" /> : <ChevronRight size={14} className="text-zinc-600" />}
+      </button>
+      {open && <div className="space-y-2 border-t border-[#16191d] p-3">{children}</div>}
+    </section>
   );
 }
 
-export default function CommandPage() {
-  const { queue, eveHandling, risk, revenue, brief, loading, degraded, lastUpdated, refresh } = useMissionControlData();
+export default function CockpitPage() {
+  const { queue, eveHandling, waitingOn, risk, cash, cashPending, loading, degraded, lastUpdated, refresh } =
+    useMissionControlData();
   const [selected, setSelected] = useState<Signal | null>(null);
+  const [updatingId, setUpdatingId] = useState<string | null>(null);
+
+  const now = Date.now();
+  const nowCard = queue[0] ?? null;
+  const upNext = queue.slice(1, 7);
+
+  async function patchTask(signal: Signal, patch: TaskPatch, options: { closeDrawer?: boolean } = {}) {
+    if (signal.source !== "task") return;
+    setUpdatingId(signal.id);
+    try {
+      await fetch("/api/tasks", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: signal.id, ...patch }),
+      });
+      await refresh();
+      if (options.closeDrawer) setSelected(null);
+    } finally {
+      setUpdatingId(null);
+    }
+  }
+
+  function nudge(signal: Signal) {
+    if (!signal.waitingOn) return;
+    return patchTask(signal, { waitingOn: { ...signal.waitingOn, since: Date.now() } }, { closeDrawer: true });
+  }
+
+  async function runPrimaryAction(signal: Signal) {
+    const verb = primaryActionVerb(signal);
+    if (verb === "Approve") return patchTask(signal, { status: "done" });
+    if (verb === "Nudge") return nudge(signal);
+    if (verb === "Mark sent") return patchTask(signal, { pipelineStage: "sent" });
+    setSelected(signal);
+  }
 
   return (
     <div className="min-h-screen bg-[#0a0b0d] p-4 sm:p-6">
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f0883e]">Command</p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-zinc-100">Mission Control cockpit</h1>
-          <p className="mt-1 text-xs text-zinc-500">
-            Decision queue, money path, Eve activity, and machine risk from current data.
-          </p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f0883e]">Cockpit</p>
+          <h1 className="mt-1 text-xl font-semibold tracking-tight text-zinc-100">One decision at a time</h1>
         </div>
-        <button
-          onClick={refresh}
-          className="flex w-fit items-center gap-2 rounded-md border border-[#20262d] bg-[#0f1316] px-3 py-2 text-xs text-zinc-300 hover:border-[#38414a]"
-        >
-          <RefreshCw size={13} className={loading ? "animate-spin" : ""} />
-          Refresh
-        </button>
+        <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">
+          {lastUpdated ? `updated ${formatRelative(lastUpdated)}` : "loading…"}
+        </p>
       </div>
 
       {degraded.length > 0 && (
@@ -102,132 +136,190 @@ export default function CommandPage() {
         />
       )}
 
-      <section className="mb-4 grid gap-3 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
-        <div className="rounded-lg border border-emerald-900/40 bg-emerald-950/10 p-4">
-          <div className="flex items-center gap-2 text-emerald-300">
-            <CircleDollarSign size={16} />
-            <span className="font-mono text-[10px] uppercase tracking-wider">Revenue cockpit</span>
-          </div>
-          <p className="mt-3 text-2xl font-semibold text-zinc-100">{revenue.active}</p>
-          <p className="text-[11px] text-zinc-500">active revenue-path tasks</p>
-        </div>
-        <div className="rounded-lg border border-[#20262d] bg-[#0f1316] p-4">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">High priority</p>
-          <p className="mt-3 text-2xl font-semibold text-zinc-100">{revenue.high}</p>
-          <p className="text-[11px] text-zinc-500">revenue/job items</p>
-        </div>
-        <div className="rounded-lg border border-[#20262d] bg-[#0f1316] p-4">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">Completed</p>
-          <p className="mt-3 text-2xl font-semibold text-zinc-100">{revenue.done}</p>
-          <p className="text-[11px] text-zinc-500">closed revenue-path tasks</p>
-        </div>
-        <div className="rounded-lg border border-[#20262d] bg-[#0f1316] p-4">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">Cost today</p>
-          <p className="mt-3 text-2xl font-semibold text-zinc-100">
-            {revenue.costToday == null ? "unknown" : `$${Number(revenue.costToday).toFixed(2)}`}
-          </p>
-          <p className="text-[11px] text-zinc-500">{revenue.costAlerts.length} cost alerts</p>
-        </div>
+      {/* Band 1 — cash strip */}
+      <section
+        className={cn(
+          "mb-5 flex items-center gap-3 rounded-lg border px-4 py-3",
+          cashPending
+            ? "border-[#20262d] bg-[#0f1316] text-zinc-500"
+            : cash.available
+              ? "border-emerald-900/40 bg-emerald-950/10 text-emerald-300"
+              : "border-amber-900/60 bg-amber-950/20 text-amber-300",
+        )}
+      >
+        <CircleDollarSign size={16} className="shrink-0" />
+        <p className="font-mono text-xs tracking-wide sm:text-sm">{cashPending ? "reading cash metrics…" : cash.text}</p>
       </section>
 
-      <div className="grid gap-4 xl:grid-cols-[1fr_360px]">
-        <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
-          <div className="mb-3 flex items-center justify-between">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-wider text-[#f0883e]">Needs You Now</p>
-              <p className="text-[11px] text-zinc-600">Ranked JT-owned decisions, capped at 7.</p>
+      {/* Band 2 — NOW */}
+      <section className="mb-5">
+        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#f0883e]">Now</p>
+        {loading && !nowCard ? (
+          <StateBlock kind="loading" title="Ranking current work" detail="Pulling tasks, crons, proofs, agents, and cash." />
+        ) : !nowCard ? (
+          <StateBlock kind="empty" title="Queue clear. Protect the block." />
+        ) : (
+          <article className="rounded-xl border-2 border-[#f0883e]/40 bg-[#12161a] p-6 shadow-[0_0_40px_-20px_rgba(240,136,62,0.5)] sm:p-8">
+            <div className="flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-wider">
+              <span className="rounded bg-[#f0883e]/10 px-2 py-1 font-semibold text-[#f0883e]">
+                {nowCard.status.replace(/-/g, " ")}
+              </span>
+              <span className="text-zinc-600">{nowCard.lane}</span>
+              <span className="text-zinc-600">{formatRelative(nowCard.updatedAt)}</span>
             </div>
-            <span className="rounded bg-[#16191d] px-2 py-1 font-mono text-[10px] text-zinc-500">{queue.length}/7</span>
-          </div>
-          <div className="space-y-2">
-            {loading && queue.length === 0 ? (
-              <StateBlock kind="loading" title="Ranking current work" detail="Pulling tasks, crons, proofs, agents, and costs." />
-            ) : queue.length === 0 ? (
-              <StateBlock kind="empty" title="Queue clear" detail="Nothing currently needs JT. Eve-owned work stays out of this queue." />
-            ) : (
-              queue.map((signal) => <ActionCard key={signal.id} signal={signal} onInspect={setSelected} />)
-            )}
-          </div>
-        </section>
 
-        <aside className="space-y-4">
-          <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
-            <div className="mb-3 flex items-center gap-2">
-              <CheckCircle2 size={14} className="text-purple-300" />
-              <p className="font-mono text-[10px] uppercase tracking-wider text-purple-300">Eve Is Handling</p>
-            </div>
-            <div className="space-y-2">
-              {eveHandling.length === 0 ? (
-                <StateBlock kind="empty" title="No Eve-owned work in flight" />
-              ) : (
-                eveHandling.map((signal) => <MiniSignal key={signal.id} signal={signal} onInspect={setSelected} />)
-              )}
-            </div>
-          </section>
-
-          <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
-            <div className="mb-3 flex items-center gap-2">
-              <AlertTriangle size={14} className="text-red-300" />
-              <p className="font-mono text-[10px] uppercase tracking-wider text-red-300">Risk & Drift</p>
-            </div>
-            <div className="space-y-2">
-              {risk.length === 0 ? (
-                <StateBlock kind="empty" title="No obvious drift" detail="Failed, stale, and blocked signals are clear." />
-              ) : (
-                risk.map((signal) => <MiniSignal key={signal.id} signal={signal} onInspect={setSelected} />)
-              )}
-            </div>
-          </section>
-
-          <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
-            <p className="font-mono text-[10px] uppercase tracking-wider text-emerald-300">Command Brief</p>
-            <p className="mt-2 text-sm font-semibold leading-snug text-zinc-100">{brief.headline}</p>
-            <div className="mt-3 space-y-3 text-xs">
-              <button
-                type="button"
-                onClick={() => brief.topAction && setSelected(brief.topAction)}
-                disabled={!brief.topAction}
-                className="w-full rounded-md border border-[#20262d] bg-[#0f1316] p-3 text-left disabled:cursor-default disabled:opacity-60"
-              >
-                <span className="block text-[10px] font-semibold uppercase tracking-wider text-zinc-600">Top action</span>
-                <span className="mt-1 block line-clamp-2 text-zinc-300">
-                  {brief.topAction?.title ?? "No JT action pressure."}
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => brief.latestProof && setSelected(brief.latestProof)}
-                disabled={!brief.latestProof}
-                className="w-full rounded-md border border-[#20262d] bg-[#0f1316] p-3 text-left disabled:cursor-default disabled:opacity-60"
-              >
-                <span className="block text-[10px] font-semibold uppercase tracking-wider text-zinc-600">Latest proof</span>
-                <span className="mt-1 block line-clamp-2 text-zinc-300">
-                  {brief.latestProof?.title ?? "No proof signal loaded yet."}
-                </span>
-              </button>
-            </div>
-            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-              <div className="rounded-md border border-[#20262d] bg-[#0f1316] p-2">
-                <p className="text-sm font-semibold text-zinc-100">{brief.urgentJtCount}</p>
-                <p className="text-[9px] uppercase text-zinc-600">urgent</p>
-              </div>
-              <div className="rounded-md border border-[#20262d] bg-[#0f1316] p-2">
-                <p className="text-sm font-semibold text-zinc-100">{brief.revenuePressure}</p>
-                <p className="text-[9px] uppercase text-zinc-600">revenue</p>
-              </div>
-              <div className="rounded-md border border-[#20262d] bg-[#0f1316] p-2">
-                <p className="text-sm font-semibold text-zinc-100">{brief.riskCount}</p>
-                <p className="text-[9px] uppercase text-zinc-600">risk</p>
-              </div>
-            </div>
-            <p className="mt-3 text-[11px] leading-relaxed text-zinc-600">
-              {lastUpdated ? `Refreshed ${formatRelative(lastUpdated)}.` : "Waiting for first refresh."}
+            <h2 className="mt-4 text-2xl font-semibold leading-tight tracking-tight text-zinc-50 sm:text-3xl">
+              {nowCard.title}
+            </h2>
+            <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-zinc-400">
+              {nowCard.context || nowCard.project || "No context attached yet."}
             </p>
-          </section>
-        </aside>
+
+            <div className="mt-5">
+              <ReasonChipRow codes={nowCard.reasonCodes} />
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                disabled={updatingId === nowCard.id}
+                onClick={() => runPrimaryAction(nowCard)}
+                className="h-11 rounded-md bg-[#f0883e] px-6 text-sm font-semibold text-[#12161a] transition-opacity hover:opacity-90 disabled:opacity-60"
+              >
+                {updatingId === nowCard.id ? "Saving…" : primaryActionVerb(nowCard)}
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelected(nowCard)}
+                className="h-11 rounded-md border border-[#2b333c] px-4 text-sm text-zinc-400 transition-colors hover:border-[#38414a] hover:text-zinc-200"
+              >
+                Inspect
+              </button>
+            </div>
+          </article>
+        )}
+      </section>
+
+      {/* Band 3 — UP NEXT */}
+      <section className="mb-5">
+        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-600">Up next</p>
+        {upNext.length === 0 ? (
+          <StateBlock kind="empty" title="Nothing else is queued behind this." />
+        ) : (
+          <div className="divide-y divide-[#16191d] overflow-hidden rounded-lg border border-[#20262d] bg-[#0d1014]">
+            {upNext.map((signal) => (
+              <button
+                key={signal.id}
+                type="button"
+                onClick={() => setSelected(signal)}
+                className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-white/[0.02]"
+              >
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-sm text-zinc-200">{signal.title}</span>
+                  <span className="mt-1 block text-[10px] uppercase text-zinc-600">
+                    {signal.project || signal.lane}
+                  </span>
+                </span>
+                <ReasonChipRow codes={signal.reasonCodes} limit={1} />
+                <span className="w-16 shrink-0 text-right text-[10px] text-zinc-600">{signal.ageDays}d</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Band 4 — collapsed strips */}
+      <div className="space-y-3">
+        <CollapsedStrip title="Waiting on others" count={waitingOn.length} tone="neutral" icon={Bell}>
+          {waitingOn.length === 0 ? (
+            <StateBlock kind="empty" title="Nobody owes you anything right now." />
+          ) : (
+            waitingOn.map((signal) => {
+              const days = Math.max(0, Math.floor((now - (signal.waitingOn?.since ?? now)) / DAY_MS));
+              return (
+                <div
+                  key={signal.id}
+                  className="flex items-center gap-3 rounded-md border border-[#20262d] bg-[#0f1316] px-3 py-2"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setSelected(signal)}
+                    className="min-w-0 flex-1 truncate text-left text-xs text-zinc-300"
+                  >
+                    <span className="font-medium text-zinc-100">{signal.waitingOn?.who}</span>
+                    <span className="text-zinc-600"> · </span>
+                    {signal.waitingOn?.what}
+                    <span className="text-zinc-600"> · {days}d</span>
+                  </button>
+                  <button
+                    type="button"
+                    disabled={updatingId === signal.id}
+                    onClick={() => nudge(signal)}
+                    className="h-8 shrink-0 rounded-md border border-[#2b333c] bg-[#12161a] px-3 text-[11px] font-medium text-zinc-300 transition-colors hover:border-[#f0883e]/50 hover:text-[#f0883e] disabled:opacity-60"
+                  >
+                    {updatingId === signal.id ? "…" : "Nudge"}
+                  </button>
+                </div>
+              );
+            })
+          )}
+        </CollapsedStrip>
+
+        <CollapsedStrip title="Eve has it" count={eveHandling.length} tone="eve" icon={Bot}>
+          {eveHandling.length === 0 ? (
+            <StateBlock kind="empty" title="No Eve-owned work in flight." />
+          ) : (
+            eveHandling.map((signal) => {
+              const attention = signal.status === "failed" || signal.status === "stale";
+              return (
+                <button
+                  key={signal.id}
+                  type="button"
+                  onClick={() => setSelected(signal)}
+                  className={cn(
+                    "flex w-full items-center justify-between gap-3 rounded-md border px-3 py-2 text-left",
+                    attention
+                      ? "border-amber-900/60 bg-amber-950/20 text-amber-200"
+                      : "border-[#20262d] bg-[#0f1316] text-zinc-300",
+                  )}
+                >
+                  <span className="min-w-0 flex-1 truncate text-xs">{signal.title}</span>
+                  <span className="shrink-0 text-[10px] uppercase text-zinc-600">
+                    {attention ? signal.status : formatRelative(signal.updatedAt)}
+                  </span>
+                </button>
+              );
+            })
+          )}
+        </CollapsedStrip>
+
+        {risk.length > 0 && (
+          <CollapsedStrip title="Risk" count={risk.length} tone="risk" icon={AlertTriangle}>
+            {risk.map((signal) => (
+              <button
+                key={signal.id}
+                type="button"
+                onClick={() => setSelected(signal)}
+                className="flex w-full items-center justify-between gap-3 rounded-md border border-red-900/50 bg-red-950/10 px-3 py-2 text-left"
+              >
+                <span className="min-w-0 flex-1 truncate text-xs text-zinc-200">{signal.title}</span>
+                <span className="shrink-0 text-[10px] uppercase text-red-300">{signal.status}</span>
+              </button>
+            ))}
+          </CollapsedStrip>
+        )}
       </div>
 
-      <InspectionDrawer signal={selected} onClose={() => setSelected(null)} />
+      <InspectionDrawer
+        signal={selected}
+        onClose={() => setSelected(null)}
+        updating={Boolean(selected && updatingId === selected.id)}
+        onSnooze={(signal) =>
+          patchTask(signal, { snoozedUntil: Date.now() + SNOOZE_DAYS * DAY_MS }, { closeDrawer: true })
+        }
+        onNotNow={(signal) => patchTask(signal, { status: "archived" }, { closeDrawer: true })}
+        onHandToEve={(signal) => patchTask(signal, { assignee: "eve" }, { closeDrawer: true })}
+      />
     </div>
   );
 }

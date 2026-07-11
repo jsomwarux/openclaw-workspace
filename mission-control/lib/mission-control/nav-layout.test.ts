@@ -9,6 +9,10 @@ describe("mobile shell layout", () => {
     expect(mobileNavInnerClassName).toContain("justify-center");
   });
 
+  test("sizes the bottom rail for the three-lane nav", () => {
+    expect(mobileNavInnerClassName).toContain("grid-cols-3");
+  });
+
   test("reserves enough mobile bottom space for the app nav", () => {
     expect(mobileMainClassName).toContain("pb-28");
     expect(mobileMainClassName).toContain("md:pb-0");

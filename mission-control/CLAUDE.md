@@ -89,6 +89,18 @@ After Slice 1.6, `/evidence` is the primary Evidence lane. `/audit` redirects to
 
 After Slice 1.7, `/health` is the primary Health lane. `/monitor` and `/costs` redirect to `/health`, and the old Deployment Monitor and Cost Dashboard references live at `/legacy/monitor` and `/legacy/costs`. Do not restore `/monitor` or `/costs` as primary Health surfaces. The Health lane should stay focused on ops failures, cost pressure, stale risk, and recovery work from current signals and cost data.
 
+## Cockpit contract
+
+The `/` cockpit renders four bands, in this order:
+1. **Cash strip** — one full-width line: collected / $10K gate / weighted / days left.
+2. **NOW** — exactly one card, the top `commandQueue` item, at roughly triple the visual weight of anything else on the page.
+3. **UP NEXT** — queue items 2–7 as compact rows, first reason chip and age only.
+4. **Three collapsed strips** — Waiting on others, Eve has it, Risk (Risk renders only when its count is above zero).
+
+No numeric score renders on the cockpit. Rank is communicated through reason-code chips (`lib/mission-control/reason-codes.ts`), never a number. The score itself appears only inside `InspectionDrawer`, beside the full reasonCodes list and the task's `priorityAudit` trail.
+
+Primary nav is three lanes: **Cockpit** (`/`), **Money** (`/consulting`), **Systems** (`/machine`, aliasing the machine, evidence, and health surfaces). `/work`, `/ship`, `/evidence`, and `/health` remain live routes reachable from their cockpits, but they are not nav entries. Do not re-add them to the nav.
+
 ## Architecture Decisions
 
 - **Convex for tasks only** — real-time sync, both JT and Eve can write, persists across sessions

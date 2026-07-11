@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
-import { AlertTriangle, ArrowUpRight, BriefcaseBusiness, DollarSign, FileText, RefreshCw, Send, Target, TrendingUp } from "lucide-react";
+import { AlertTriangle, BriefcaseBusiness, DollarSign, FileText, RefreshCw, Send, Target, TrendingUp } from "lucide-react";
 import { RevenueTaskRails } from "@/components/mission-control/RevenueTaskRails";
 import { parseNorthStarMetrics, parsePipelineJsonl, type RevenueMetric } from "@/lib/mission-control/revenue";
 import { cn } from "@/lib/utils";
@@ -135,9 +135,6 @@ export default function RevenuePage() {
         <section>
           <div className="mb-3 flex items-center justify-between gap-3">
             <h2 className="text-sm font-semibold text-zinc-100">Consulting Pipeline</h2>
-            <a href="/legacy/consulting" className="inline-flex items-center gap-1 text-[11px] text-zinc-500 hover:text-zinc-300">
-              Legacy strategy <ArrowUpRight size={12} />
-            </a>
           </div>
           <div className="overflow-hidden rounded-lg border border-[#20262d] bg-[#0d1014]">
             <div className="grid grid-cols-[1fr_86px_72px_84px] gap-3 border-b border-[#20262d] px-4 py-3 font-mono text-[10px] uppercase tracking-wider text-zinc-600 max-md:hidden">

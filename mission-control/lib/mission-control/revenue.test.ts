@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { parseNorthStarMetrics, parsePipelineJsonl, revenueTasks } from "./revenue";
+import { hasNorthStarMetrics, parseNorthStarMetrics, parsePipelineJsonl, revenueTasks } from "./revenue";
 
 const northStar = `# North Star Scoreboard - 2026-06
 
@@ -53,6 +53,17 @@ describe("parseNorthStarMetrics", () => {
       gapCollected: 4425,
       gapWithForecast: 368,
     });
+  });
+});
+
+describe("hasNorthStarMetrics", () => {
+  test("reports metrics present when the scoreboard carries cash labels", () => {
+    expect(hasNorthStarMetrics(northStar)).toBe(true);
+  });
+
+  test("reports no metrics for an empty or prose-only file, so zeros are never shown as real cash", () => {
+    expect(hasNorthStarMetrics("")).toBe(false);
+    expect(hasNorthStarMetrics("# North Star\n\nJuly collected consulting cash: UNVERIFIED.\n")).toBe(false);
   });
 });
 

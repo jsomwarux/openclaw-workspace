@@ -2,9 +2,15 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { agentToSignal, cronToSignal, proofToSignal, taskToSignal } from "./adapters";
+import { cashStrip, type CashStrip } from "./cash-strip";
 import { commandBrief } from "./command-brief";
 import { commandQueue } from "./score";
 import type { Signal } from "./types";
+
+type RevenueResponse = {
+  metrics?: { totalCollected: number; weightedForecast: number };
+  available?: { northStar?: boolean };
+};
 
 type ApiState = {
   tasks: any[];
@@ -12,6 +18,7 @@ type ApiState = {
   proofs: any[];
   agents: any[];
   costs: any | null;
+  revenueFile: RevenueResponse | null;
 };
 
 type RouteKey = keyof ApiState;
@@ -22,7 +29,11 @@ const EMPTY_STATE: ApiState = {
   proofs: [],
   agents: [],
   costs: null,
+  revenueFile: null,
 };
+
+const POLL_MS = 60_000;
+const EVE_IN_FLIGHT = ["in-progress", "failed", "stale"];
 
 async function fetchJson(path: string) {
   const res = await fetch(path);
@@ -45,7 +56,7 @@ export function useMissionControlData() {
     const nextErrors: Partial<Record<RouteKey, string>> = {};
     const previous = dataRef.current;
 
-    const [tasks, crons, proofs, agents, costs] = await Promise.all([
+    const [tasks, crons, proofs, agents, costs, revenueFile] = await Promise.all([
       fetchJson("/api/tasks")
         .then((json) => json.tasks ?? [])
         .catch((error) => {
@@ -75,9 +86,14 @@ export function useMissionControlData() {
           nextErrors.costs = error.message;
           return previous.costs;
         }),
+      fetchJson("/api/revenue")
+        .catch((error) => {
+          nextErrors.revenueFile = error.message;
+          return previous.revenueFile;
+        }),
     ]);
 
-    setData({ tasks, crons, proofs, agents, costs });
+    setData({ tasks, crons, proofs, agents, costs, revenueFile });
     setErrors(nextErrors);
     setLastUpdated(Date.now());
     setLoading(false);
@@ -85,7 +101,7 @@ export function useMissionControlData() {
 
   useEffect(() => {
     refresh();
-    const interval = setInterval(refresh, 30_000);
+    const interval = setInterval(refresh, POLL_MS);
     return () => clearInterval(interval);
   }, [refresh]);
 
@@ -99,16 +115,26 @@ export function useMissionControlData() {
   }, [data.agents, data.crons, data.proofs, data.tasks]);
 
   const queue = useMemo(() => commandQueue(signals), [signals]);
+
   const eveHandling = useMemo(
-    () => signals.filter((signal) => signal.owner === "eve" && signal.status === "in-progress").slice(0, 6),
+    () => signals.filter((signal) => signal.owner === "eve" && EVE_IN_FLIGHT.includes(signal.status)).slice(0, 8),
     [signals],
   );
+
+  const waitingOn = useMemo(
+    () =>
+      signals
+        .filter((signal) => Boolean(signal.waitingOn?.who))
+        .sort((a, b) => (a.waitingOn?.since ?? 0) - (b.waitingOn?.since ?? 0)),
+    [signals],
+  );
+
   const risk = useMemo(
     () =>
       signals
         .filter((signal) => ["failed", "stale", "blocked"].includes(signal.status))
         .sort((a, b) => b.updatedAt - a.updatedAt)
-        .slice(0, 6),
+        .slice(0, 8),
     [signals],
   );
 
@@ -126,6 +152,15 @@ export function useMissionControlData() {
     };
   }, [data.costs, data.tasks]);
 
+  const cash = useMemo<CashStrip>(() => {
+    const metrics = data.revenueFile?.metrics ?? null;
+    const available = Boolean(data.revenueFile?.available?.northStar) && !errors.revenueFile;
+    return cashStrip({ metrics, available, now: Date.now() });
+  }, [data.revenueFile, errors.revenueFile]);
+
+  // Before the first response lands there is nothing to be unavailable about.
+  const cashPending = loading && data.revenueFile === null;
+
   const brief = useMemo(() => commandBrief({ queue, signals, revenue }), [queue, revenue, signals]);
 
   return {
@@ -133,8 +168,11 @@ export function useMissionControlData() {
     signals,
     queue,
     eveHandling,
+    waitingOn,
     risk,
     revenue,
+    cash,
+    cashPending,
     brief,
     loading,
     errors,
@@ -142,4 +180,50 @@ export function useMissionControlData() {
     lastUpdated,
     refresh,
   };
+}
+
+export type AuditEntry = {
+  _id: string;
+  taskId: string;
+  field: string;
+  oldValue: string;
+  newValue: string;
+  evidence: string;
+  source: "eve" | "jt" | "model";
+  ts: number;
+};
+
+/** The rank audit is the drawer's receipt for a score. It loads only when a task is open. */
+export function useTaskAudit(taskId: string | null) {
+  const [entries, setEntries] = useState<AuditEntry[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!taskId) {
+      setEntries([]);
+      return;
+    }
+
+    let cancelled = false;
+    setLoading(true);
+
+    fetchJson(`/api/task-audit?taskId=${encodeURIComponent(taskId)}`)
+      .then((json) => {
+        if (cancelled) return;
+        const rows: AuditEntry[] = json.entries ?? [];
+        setEntries([...rows].sort((a, b) => b.ts - a.ts));
+      })
+      .catch(() => {
+        if (!cancelled) setEntries([]);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [taskId]);
+
+  return { entries, loading };
 }

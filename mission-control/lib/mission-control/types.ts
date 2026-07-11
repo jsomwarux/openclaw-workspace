@@ -40,6 +40,7 @@ export type Signal = {
   lane: SignalLane;
   priority?: SignalPriority;
   project?: string;
+  pipelineStage?: string;
   dollars?: number;
   ageDays: number;
   dueToday?: boolean;
