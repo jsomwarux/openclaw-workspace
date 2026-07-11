@@ -5,7 +5,8 @@ import { agentToSignal, cronToSignal, proofToSignal, taskToSignal } from "./adap
 import { cashStrip, type CashStrip } from "./cash-strip";
 import { commandBrief } from "./command-brief";
 import { commandQueue } from "./score";
-import type { Signal } from "./types";
+import { buildScoreContext, mondayOf } from "./score-context";
+import type { FocusRow, Signal } from "./types";
 
 type RevenueResponse = {
   metrics?: { totalCollected: number; weightedForecast: number };
@@ -19,6 +20,7 @@ type ApiState = {
   agents: any[];
   costs: any | null;
   revenueFile: RevenueResponse | null;
+  focus: FocusRow | null;
 };
 
 type RouteKey = keyof ApiState;
@@ -30,6 +32,7 @@ const EMPTY_STATE: ApiState = {
   agents: [],
   costs: null,
   revenueFile: null,
+  focus: null,
 };
 
 const POLL_MS = 60_000;
@@ -56,7 +59,7 @@ export function useMissionControlData() {
     const nextErrors: Partial<Record<RouteKey, string>> = {};
     const previous = dataRef.current;
 
-    const [tasks, crons, proofs, agents, costs, revenueFile] = await Promise.all([
+    const [tasks, crons, proofs, agents, costs, revenueFile, focus] = await Promise.all([
       fetchJson("/api/tasks")
         .then((json) => json.tasks ?? [])
         .catch((error) => {
@@ -91,9 +94,15 @@ export function useMissionControlData() {
           nextErrors.revenueFile = error.message;
           return previous.revenueFile;
         }),
+      fetchJson(`/api/focus?weekOf=${mondayOf(Date.now())}`)
+        .then((json) => json.focus ?? null)
+        .catch((error) => {
+          nextErrors.focus = error.message;
+          return previous.focus;
+        }),
     ]);
 
-    setData({ tasks, crons, proofs, agents, costs, revenueFile });
+    setData({ tasks, crons, proofs, agents, costs, revenueFile, focus });
     setErrors(nextErrors);
     setLastUpdated(Date.now());
     setLoading(false);
@@ -114,7 +123,16 @@ export function useMissionControlData() {
     ];
   }, [data.agents, data.crons, data.proofs, data.tasks]);
 
-  const queue = useMemo(() => commandQueue(signals), [signals]);
+  // The consulting-cash mandate must reach the scorer, or the ship cap and the
+  // focus penalty in score.ts evaluate against an empty context and never fire.
+  // Collected cash is only trusted when the north-star read actually succeeded;
+  // an unreadable file falls back to 0, which leaves the cap armed.
+  const queue = useMemo(() => {
+    const northStarRead = Boolean(data.revenueFile?.available?.northStar) && !errors.revenueFile;
+    const collected = northStarRead ? data.revenueFile?.metrics?.totalCollected : undefined;
+    const ctx = buildScoreContext({ focus: data.focus, collected, now: Date.now() });
+    return commandQueue(signals, ctx);
+  }, [signals, data.focus, data.revenueFile, errors.revenueFile]);
 
   const eveHandling = useMemo(
     () => signals.filter((signal) => signal.owner === "eve" && EVE_IN_FLIGHT.includes(signal.status)).slice(0, 8),
