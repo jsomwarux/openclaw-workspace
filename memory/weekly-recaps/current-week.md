@@ -1,5 +1,7 @@
 # Week of 2026-07-06 - Work Log
 
+- 2026-07-10: Ran first Friday Scoreboard, saved `memory/audits/friday-scoreboards/2026-07-10.md`, created repeat-offender digest `memory/audits/repeat-offenders/2026-07-10.md`, and logged same-day proof `8468cec8`.
+
 Archive every Monday, start fresh.
 
 > 2026-06-29 week archived to `memory/weekly-recaps/archive/week-2026-06-29.md` on 2026-07-06.

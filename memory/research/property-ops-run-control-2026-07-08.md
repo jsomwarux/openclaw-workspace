@@ -58,3 +58,14 @@ Sources checked:
 - Kognitos real-estate operations guide, published June 2026: rent-roll automation becomes credible when exceptions are routed with plain-English explanations and every rent-roll decision leaves an audit trail. Source: https://www.kognitos.com/blog/ai-automation-real-estate-operations-2026/
 
 Altmark translation: the send-ready ask should not promise "AI collections." It should ask for the redacted export, source report path/process, refresh cadence, named reviewer, and exception rules so the first real run stays review-only and produces a row-level decision record before any tenant-facing action.
+
+## 2026-07-10 Addendum - Single-Workflow Adoption Wedge
+
+Fresh property-management AI search results continue to point toward the same buyer-safe wedge: one governed workflow, complete audit trail, and human approval before resident-impacting decisions.
+
+Sources checked with local `scripts/web_search.py` on 2026-07-10:
+- TechnBrains PropTech AI adoption guide, updated 2026-07-07: property AI is being framed around tenant replies, rent reminders, owner reporting, anomaly detection, and leasing workflows, but risk language centers on clean data, audit logs, bias checks, explainable rules, and human review for tenant screening, pricing, approvals, and eligibility workflows. Source: https://www.technbrains.com/blog/ai-in-proptech/
+- AI for CRE Collective 2026 workflow guide, updated 2026-07-08: general models can help with leases, rent rolls, and offering memorandums, but purpose-built tools win when they connect to approved systems and preserve audit trails. Source: https://aiforcrecollective.com/ai-tools-for-commercial-real-estate
+- RentPayment/MRI 2026 property-management AI guide, updated 2026-07-07: portfolio-wide governance, escalation rules, screening criteria, and owner-visible reporting are recommended before broader adoption. Source: https://mrisoftware.rentpayment.com/blog/ai-property-management-use-cases-software-options/
+
+Altmark implication: today should stay focused on the redacted sample/source/export/reviewer/rules ask. That ask is not administrative overhead; it is the control evidence needed to prove the first rent-delinquency workflow can run in review-only mode with explainable reasons, audit trail, and a named approval owner.

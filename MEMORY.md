@@ -39,20 +39,19 @@
 
 ## Current Apps / Products
 - `jtsomwaru.com`: AI ops homepage; `/property` remains PM Workflow Audit path. Kill loops wait for JT timer approval. App gates: Action Arena Apple transfer; Glow GA4 `source_tag`; Nash capped/no paid UGC; Vista paused.
-- App strategy: distribution + retention are the survival constraint. Current ops: Apple follow-up, Fable UGC/paid onboarding review, Yair idea exchange, then Fable playbooks and Codex/Opus implementation.
+- App strategy: distribution + retention first; Apple/Fable/Yair gates before more build work.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- App content loop: niche-native creative, tested hooks/formats, and angles tied to audience pains, value, and retention.
-- Review drafts remain review-only; do not auto-post.
+- Review drafts remain review-only; do not auto-post. Latest Jul 10 draft: `memory/drafts/linkedin-ai-implementation-acceptance-record-2026-07-10.md`, voice guard PASS 100.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 8 no qualifying role; AI assets, release governance, docs, adoption, and judgment support Run Control positioning.
+- Latest: Jul 10 no qualifying role; Salesforce Distinguished Architect disqualified. AI assets, release governance, docs, adoption, and value reporting support Run Control / AgentPack.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -68,9 +67,9 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Jul 9: Daily Send Sheet delivered Altmark as the only send due; Pending Task Processor 10:30 returned HEARTBEAT_OK.
+- Jul 10: Daily Send Sheet delivered; Mission Control 291 active / 16 high / 0 overdue / 0 errors; cost empty; Spanish paused.
 - Registry: 12 enabled / 60 disabled / 72 total; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day. Only enabled red row is Weekly Systems Review from Jul 5 pseudo-command failure; live prompt already patched, next natural proof Jul 12.
-- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Jul 9 lanes updated PM control proof and MCP/tool-access ledger positioning.
+- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Jul 10 lanes updated PM control proof, MCP/tool ledger, crypto disabled state, job pulse, and one review-only content draft.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

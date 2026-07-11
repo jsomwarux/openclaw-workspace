@@ -651,3 +651,10 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Model read:** Research/ranking output exited `$PRXVT`, `$NOX`, `$NOOK`, `$SAID`, and `$DOT`; added `$SURPLUS` 30%, `$GITLAWB` 25%, `$SIBYL` 25%, and `$LITCOIN` 20%. `$SURPLUS` carried the strongest alpha score in the packet; `$GITLAWB` carried the whale alert.
 - **Weak-coordination warnings:** zero-result, thin, or spam-heavy rows remain a major filter across the broader watchlist. Keep treating vote-heavy or zero-result X rows as distribution risk, especially while X API spend is over target.
 - **Guardrail:** Research/ranking only. No trades, swaps, wallet actions, transfers, payment-MCP, x402 experiments, personalized financial advice, or extra nonessential X pulls were run during this heartbeat.
+
+## Jul 10, 2026 - 10:13AM Directive-Disabled Crypto Check
+
+- **Live registry:** `openclaw cron list --all --json` showed 72 total jobs, 12 enabled, 60 disabled, no refused-scope jobs enabled, and no enabled crypto jobs.
+- **Directive state:** `directives/00-README.md` still lists Crypto Full Analysis, Crypto Midday Pulse, and Crypto Evening Pulse under refused/disabled scope for July.
+- **10AM missed-cron handling:** crypto morning is intentionally disabled, not missed. No rerun, enablement, alert, X/API spend, market pull, or recommendation artifact was created.
+- **Guardrail:** crypto remains research/ranking/threshold-awareness only if JT explicitly re-enables it later. No trades, swaps, wallet actions, transfers, payment-MCP, x402 experiments, or personalized financial advice.

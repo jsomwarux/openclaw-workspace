@@ -523,6 +523,16 @@ Read today's job-market-agent brief. No new NYC/remote non-coding AI implementat
 
 Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`.
 
+## 2026-07-10 — Heartbeat Job Market Pulse
+
+Read the latest local job-market-agent brief at `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`. It is dated 2026-07-08 because `Job Market Daily Research` is intentionally disabled under the July directive pack; no fresh crawl, application task, or external search was run.
+
+No new NYC/remote non-coding AI implementation role should be surfaced today. The last verified brief disqualified Salesforce Distinguished Architect despite remote/NYC-salary adjacency because the role is sales-demo/release-management support with Salesforce lifecycle, OmniStudio, Git, and CI/CD expectations.
+
+**Strongest signal:** the useful market evidence remains packaging and governance, not a new application. Salesforce-style Agentforce demo assets, reusable accelerators, release governance, documentation, adoption leadership, and judgment/value reporting all validate JT's Run Control / AgentPack / EnablementOps lane.
+
+**Positioning implication:** keep Altmark and Marketsmith proof focused on reusable AI implementation assets with owner/reviewer boundaries, release notes, governance gates, eval/rollback thinking, documentation, and value reporting. Do not create a new role target, certification task, or demo ahead of consulting cash/proof work.
+
 ## 2026-07-04 — Heartbeat Job Market Pulse
 
 Read today's job-market-agent brief generated at 2026-07-04 05:15. No new NYC/remote non-coding AI implementation role cleared the 18/25 filter, and the brief had no critical or high severity flags. The role-shaped false positives were AIG Principal Solutions Architect, GenAI and ServiceRocket Delivery Architect: both carry useful AI/adoption language, but AIG is senior enterprise architecture/DevSecOps/data-pipeline heavy and ServiceRocket is Atlassian-platform-specific delivery.
