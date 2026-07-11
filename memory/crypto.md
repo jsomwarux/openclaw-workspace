@@ -3,6 +3,15 @@
 
 ---
 
+## Jul 11, 2026 - 10AM Heartbeat
+
+- **Policy/state:** July directive pack still lists Crypto Full Analysis, Crypto Midday Pulse, and Crypto Evening Pulse under refused-scope disabled recurring jobs.
+- **10AM gate result:** Full cron registry check showed 72 total jobs, 12 enabled, 60 disabled, no refused-scope jobs enabled, and all crypto recurring jobs disabled: `eve-crypto-morning-008`, `eve-crypto-midday-009`, and `eve-crypto-evening-010`.
+- **Action taken:** No rerun, no cron enablement, no Telegram crypto alert, no X/API spend, no market pull, no recommendation artifact, and no trade/wallet/payment action.
+- **JT read:** Jul 7 remains the latest retained research snapshot. Treat crypto as intentionally paused by directive until JT explicitly asks for a manual research run or re-enables the recurring jobs.
+
+---
+
 ## Jul 8, 2026 — 10AM Heartbeat
 
 - **Policy/state:** July directive pack lists Crypto Full Analysis, Crypto Midday Pulse, and Crypto Evening Pulse under refused-scope disabled recurring jobs. Live cron state confirms `eve-crypto-morning-008` is disabled.

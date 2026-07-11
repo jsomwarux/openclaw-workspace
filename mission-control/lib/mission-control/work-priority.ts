@@ -13,7 +13,10 @@ const STATUS_RANK: Record<SignalStatus, number> = {
   "awaiting-decision": 3,
   "awaiting-approval": 3,
   "in-progress": 2,
+  "waiting-external": 1,
+  snoozed: 0,
   done: 0,
+  archived: 0,
 };
 
 export function priorityRank(priority?: SignalPriority): number {

@@ -1,13 +1,12 @@
-# API Intelligence Report — 2026-07-04
+# API Intelligence Report — 2026-07-11
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-07-04 05:44:52
+Generated: 2026-07-11 05:45:01
 
-**Totals:** 0 new APIs | 0 PH tools | 3 HN stories | 0 discoveries
+**Totals:** 0 new APIs | 0 PH tools | 2 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **Show HN: I built LibreYOLO, an MIT-licensed YOLO library** (score: 2) | [link](https://github.com/LibreYOLO/libreyolo)
-- **Carbon Engine – open-source tech powering EVE Online** (score: 1) | [link](https://github.com/orgs/carbonengine/repositories)
-- **LiteOne V3 – A 12KB Zero-Build framework aiming for strict CSP security** (score: 1) | [link](https://github.com/reflexmanofficial/LiteOne-v3)
+- **Show HN: Image Generation API with QR code tracking and MCP support** (score: 1) | [link](https://templateson.com)
+- **Open-source finance infrastructure in Rust** (score: 1) | [link](https://www.railsinfra.com)
 
 
 ## Scout Guidance

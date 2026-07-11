@@ -2,6 +2,18 @@
 
 ---
 
+## Jul 11, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent gateways are becoming the production control surface for enterprise AI.** Fresh monitoring again shows the same pattern across official/vendor sources: agent identity, central policy enforcement, tool-call governance, per-user or task-based access controls, quotas/budgets, audit logs, and approval gates before high-risk tool use. The important shift is that MCP/tool access is being governed at the gateway/control-plane layer instead of being left inside each individual agent.
+
+**JT relevance:** keep Run Control / AI Enablement OS framed as implementation governance, not model selection. For Altmark, Marketsmith/Nexus, QA agents, dashboard playbooks, and future ops workflows, the buyer-visible proof should include: agent/workflow identity, connected systems, allowed tools, forbidden tools, approval-required actions, reviewer, audit log path, quota/cost boundary, and rollback/escalation rule.
+
+**Actionable demo angle:** add an "agent gateway / tool-call ledger" section to the next proof packet. One row should show the source system, tool/action requested, permission boundary, approval state, reviewer, output location, and recovery path. That makes agent governance inspectable without creating a new demo or touching production systems.
+
+Sources checked with local `scripts/web_search.py` on 2026-07-11: Microsoft Agent Governance Toolkit https://github.com/microsoft/agent-governance-toolkit; Workato Control and Execution Plane for Enterprise AI https://www.workato.com/the-connector/control-and-execution-plane-enterprise-ai/; Google Gemini Enterprise Agent Platform overview https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview; TrueFoundry TBAC for AI agents https://www.truefoundry.com/blog/tbac-task-based-access-control-ai-agents
+
+---
+
 ## Jul 9, 2026 — Heartbeat AI Tool Monitoring
 
 **MCP governance is moving from developer plumbing into the buyer checklist.** Fresh monitoring shows the same control-plane language across enterprise agent coverage: per-user or scoped identity, governed MCP/tool access, formal approval workflows for new tools or risky actions, observability dashboards, anomaly alerts, and immutable audit trails. The technical standard matters less than the operating evidence around it.

@@ -4,7 +4,7 @@ import { agentToSignal, cronToSignal, extractEvidence, proofToSignal, taskToSign
 const now = Date.now();
 
 describe("taskToSignal", () => {
-  test("maps a JT high priority consulting task to a revenue decision signal", () => {
+  test("treats a JT-owned todo as work in flight, not a decision", () => {
     const signal = taskToSignal({
       _id: "task-1",
       title: "Apply: Decagon Agent Development Team",
@@ -18,9 +18,75 @@ describe("taskToSignal", () => {
 
     expect(signal.id).toBe("task-1");
     expect(signal.owner).toBe("jt");
-    expect(signal.status).toBe("awaiting-decision");
+    expect(signal.status).toBe("in-progress");
     expect(signal.lane).toBe("revenue");
     expect(signal.evidence[0]).toMatchObject({ kind: "drive", quality: "verified" });
+  });
+
+  test("maps the external-block and snooze statuses through", () => {
+    const base = { title: "Yair signs scope", assignee: "jt", priority: "high" } as const;
+    expect(taskToSignal({ ...base, status: "waiting-external" }).status).toBe("waiting-external");
+    expect(taskToSignal({ ...base, status: "snoozed" }).status).toBe("snoozed");
+    expect(taskToSignal({ ...base, status: "archived" }).status).toBe("archived");
+  });
+
+  test("a shared high-priority task is still a real approval gate", () => {
+    const signal = taskToSignal({
+      title: "Approve Altmark retainer",
+      status: "todo",
+      assignee: "both",
+      priority: "high",
+      project: "Consulting",
+    });
+    expect(signal.status).toBe("awaiting-approval");
+  });
+
+  test("a stored lane wins over the title regex fallback", () => {
+    const stored = taskToSignal({
+      title: "Client outreach sequence",
+      status: "todo",
+      assignee: "jt",
+      priority: "medium",
+      project: "Consulting",
+      lane: "machine",
+    });
+    expect(stored.lane).toBe("machine");
+
+    const fallback = taskToSignal({
+      title: "Client outreach sequence",
+      status: "todo",
+      assignee: "jt",
+      priority: "medium",
+      project: "Consulting",
+    });
+    expect(fallback.lane).toBe("revenue");
+  });
+
+  test("carries stored scoring fields onto the signal", () => {
+    const signal = taskToSignal({
+      title: "Collect DHCR deposit",
+      status: "todo",
+      assignee: "jt",
+      priority: "high",
+      lane: "revenue",
+      dollars: 3500,
+      stageProbability: 1,
+      dueDate: 1_700_000_000_000,
+      dueDateSource: "external",
+      effortMinutes: 30,
+      proofRequired: true,
+      waitingOn: { who: "Yair", what: "signature", since: 1, nudgeAfterDays: 3 },
+    });
+
+    expect(signal).toMatchObject({
+      dollars: 3500,
+      stageProbability: 1,
+      dueDate: 1_700_000_000_000,
+      dueDateSource: "external",
+      effortMinutes: 30,
+      proofRequired: true,
+    });
+    expect(signal.waitingOn?.who).toBe("Yair");
   });
 
   test("keeps Eve in-progress work out of the JT decision queue", () => {

@@ -69,3 +69,11 @@ Sources checked with local `scripts/web_search.py` on 2026-07-10:
 - RentPayment/MRI 2026 property-management AI guide, updated 2026-07-07: portfolio-wide governance, escalation rules, screening criteria, and owner-visible reporting are recommended before broader adoption. Source: https://mrisoftware.rentpayment.com/blog/ai-property-management-use-cases-software-options/
 
 Altmark implication: today should stay focused on the redacted sample/source/export/reviewer/rules ask. That ask is not administrative overhead; it is the control evidence needed to prove the first rent-delinquency workflow can run in review-only mode with explainable reasons, audit trail, and a named approval owner.
+
+## 2026-07-11 Addendum - Send-Gate Control Proof
+
+Today’s Daily Send Sheet and Friday Scoreboard both point to the same highest-leverage client move: Altmark rent delinquency remaining is the closest verified cash/proof gate, while July verified cash is still $0 and yesterday had 0 confirmed sends.
+
+The research implication is unchanged but sharper: do not broaden the proof into a generic property-management AI story before the control inputs are captured. The buyer-facing ask should remain the redacted sample export with columns intact, source report/export process, refresh cadence, named reviewer, and exception rules for payment plans, disputes, recent payments, legal/process-sensitive accounts, credits/prepayments, and missing contact info.
+
+Proof boundary for the next send: the value is the acceptance gate itself. It shows source data, review-only mode, row-level reasons, approval ownership, and the stop condition before any tenant-facing action. That is stronger than a new demo, dashboard, or outreach list until JT sends the staged Altmark request or confirms a newer reply changed the gate.

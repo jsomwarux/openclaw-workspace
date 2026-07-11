@@ -1,17 +1,40 @@
-import type { ProofRef, Signal, SignalLane, SignalOwner, SignalPriority, SignalStatus } from "./types";
+import type {
+  DueDateSource,
+  ProofRef,
+  Signal,
+  SignalLane,
+  SignalOwner,
+  SignalPriority,
+  SignalStatus,
+  WaitingOn,
+} from "./types";
 
 type RawTask = {
   _id?: string;
   id?: string;
   title: string;
   description?: string;
-  status: "todo" | "in-progress" | "done" | "archived";
+  status: "todo" | "in-progress" | "done" | "archived" | "waiting-external" | "snoozed";
   assignee: SignalOwner;
   priority: SignalPriority;
   project?: string;
   pipelineStage?: string;
   updatedAt?: number;
   createdAt?: number;
+  lane?: string;
+  dueDate?: number;
+  dueDateSource?: DueDateSource;
+  dollars?: number;
+  stageProbability?: number;
+  effortMinutes?: number;
+  proofRequired?: boolean;
+  riskContainment?: boolean;
+  cashDirect?: boolean;
+  blocks?: number;
+  blocksAgent?: boolean;
+  waitingOn?: WaitingOn;
+  snoozedUntil?: number;
+  reasonCodes?: string[];
 };
 
 type RawCron = {
@@ -57,7 +80,15 @@ function ageDays(updatedAt?: number): number {
   return Math.max(0, Math.floor((Date.now() - updatedAt) / DAY_MS));
 }
 
-function laneForProject(project?: string, title = ""): SignalLane {
+const LANES: SignalLane[] = ["work", "revenue", "ship", "machine", "evidence", "health"];
+
+function isLane(value?: string): value is SignalLane {
+  return Boolean(value) && LANES.includes(value as SignalLane);
+}
+
+// Stored lane wins. The regex is a fallback for tasks written before lanes existed.
+function laneForProject(project?: string, title = "", stored?: string): SignalLane {
+  if (isLane(stored)) return stored;
   const haystack = `${project ?? ""} ${title}`.toLowerCase();
   if (/(consult|pipeline|job|apply|client|altmark|revenue|sales|outreach)/.test(haystack)) return "revenue";
   if (/(app|vista|nash|glow|action arena|content|vibe|passive|marketing|ship)/.test(haystack)) return "ship";
@@ -67,10 +98,14 @@ function laneForProject(project?: string, title = ""): SignalLane {
   return "work";
 }
 
+// A todo owned by JT is just work in flight. Only a shared high-priority task is
+// a real approval gate; ownership alone is not a decision.
 function taskStatusToSignal(task: RawTask): SignalStatus {
   if (task.status === "done") return "done";
+  if (task.status === "archived") return "archived";
+  if (task.status === "waiting-external") return "waiting-external";
+  if (task.status === "snoozed") return "snoozed";
   if (task.status === "in-progress") return "in-progress";
-  if (task.assignee === "jt") return "awaiting-decision";
   if (task.assignee === "both" && task.priority === "high") return "awaiting-approval";
   return "in-progress";
 }
@@ -93,13 +128,26 @@ export function taskToSignal(task: RawTask): Signal {
     title: task.title,
     owner: task.assignee,
     status: taskStatusToSignal(task),
-    lane: laneForProject(task.project, task.title),
+    lane: laneForProject(task.project, task.title, task.lane),
     priority: task.priority,
     project: task.project,
     ageDays: ageDays(updatedAt),
     context: task.description,
     evidence: extractEvidence(task.description),
     updatedAt,
+    dollars: task.dollars,
+    dueDate: task.dueDate,
+    dueDateSource: task.dueDateSource,
+    stageProbability: task.stageProbability,
+    effortMinutes: task.effortMinutes,
+    proofRequired: task.proofRequired,
+    riskContainment: task.riskContainment,
+    cashDirect: task.cashDirect,
+    blocks: task.blocks,
+    blocksAgent: task.blocksAgent,
+    waitingOn: task.waitingOn,
+    snoozedUntil: task.snoozedUntil,
+    reasonCodes: task.reasonCodes,
     raw: task,
   };
 }

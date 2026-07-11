@@ -1,6 +1,6 @@
-# Exploding Topics — 2026-07-04
-_14 categories | 1466 total topics | real API data_
-Generated: 2026-07-04 05:34:34
+# Exploding Topics — 2026-07-11
+_14 categories | 1454 total topics | real API data_
+Generated: 2026-07-11 05:34:41
 
 **Priority guide:** 🔴 high (non-tech, highest PI signal) | 🟡 medium | 🔵 low (saturated tech)_
 **Growth format:** '99x+' means 99x or greater. '5.67x' means 5.67x growth over 24 months.
@@ -8,10 +8,10 @@ Generated: 2026-07-04 05:34:34
 **Key fields:** keyword | growth (24mo) | volume (monthly searches) | CPC ($) | sub-categories
 
 ## 🔴 Beauty & Personal Care — HIGH | 157/157 topics
+- **Klow peptide** | growth: 98.00x | vol: 49,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/klow-peptide)
+  _A 4-peptide complex designed to support natural recovery, cellular renewal, and tissue resilience. It includes BPC-157, which is known for its potenti_
 - **Pdrn  serum** | growth: 60.00x | vol: 74,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/pdrn-serum-nLoLq6tz)
   _This skincare product incorporates Polydeoxyribonucleotide (PDRN), a compound sourced from salmon DNA, known for its compatibility with human DNA. It _
-- **Collagen multi balm** | growth: 49.00x | vol: 110 | cpc: ? |  | [link](https://explodingtopics.com/topics/collagen-multi-balm)
-  _Collagen Multi-Balm is a multi-purpose skincare balm designed to hydrate, nourish, and improve the appearance of dry or aging skin on areas such as th_
 - **Hydrating conditioner** | growth: 10.40x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/hydrating-conditioner)
   _A hair care product formulated to replenish moisture and repair hair, providing protection against future damage. Hydrating conditioners are especiall_
 - **Glossing shampoo** | growth: 10.00x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/glossing-shampoo)
@@ -30,7 +30,7 @@ Generated: 2026-07-04 05:34:34
   _Styling product used to enhance volume, texture, and hold in hair, typically applied to damp hair before styling. It is particularly effective for cre_
 - **Cream Mist** | growth: 6.25x | vol: 1,300 | cpc: ? |  | [link](https://explodingtopics.com/topics/cream-mist)
   _Cream mist is a hybrid skincare product that combines the hydration of a mist with the nourishment of a cream, typically delivered in a fine spray for_
-- **Micro-sculpting cream** | growth: 6.20x | vol: 60,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/micro-sculpting-cream-p8LuxWzC)
+- **Micro-sculpting cream** | growth: 6.20x | vol: 74,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/micro-sculpting-cream-p8LuxWzC)
   _This anti-aging moisturizer is formulated to hydrate the skin and maintain its youthful surface contours. It is distinguished by its use of advanced i_
 - **Transparent mascara** | growth: 6.11x | vol: 4,810 | cpc: ? |  | [link](https://explodingtopics.com/topics/transparent-mascara-Lp9H7SFT)
   _Clear mascara is a cosmetic product used to define and separate eyelashes without adding any color, offering a natural appearance. It can also serve a_
@@ -50,10 +50,12 @@ Generated: 2026-07-04 05:34:34
   _Solid forms of hair conditioner designed to moisturize and detangle hair, similar in appearance to a bar of soap. Conditioner bars are often made with_
 
 ## 🔴 Health & Wellness — HIGH | 180/180 topics
-- **rē•spin by Halle Berry** | growth: 99x+ | vol: 70 | cpc: ? |  | [link](https://explodingtopics.com/topics/rspin-by-halle-berry)
-  _Community platform dedicated to health and wellness, offering stories, conversations, and products to support individuals in their wellness journeys. _
 - **Retatrutide** | growth: 99x+ | vol: 1,830,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/retatrutide-8cpJpWHN)
   _This is a triple agonist medication developed by Eli Lilly, designed to aid in weight loss by targeting multiple pathways. It distinguishes itself by _
+- **Klow peptide** | growth: 98.00x | vol: 49,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/klow-peptide)
+  _A 4-peptide complex designed to support natural recovery, cellular renewal, and tissue resilience. It includes BPC-157, which is known for its potenti_
+- **Emora health** | growth: 89.00x | vol: 3,600 | cpc: ? |  | [link](https://explodingtopics.com/topics/emora-health)
+  _Virtual behavioral therapy provider focusing on mental health issues for children, teens, and young adults. Emora Health differentiates itself by offe_
 - **Thyroid Ayurvedic Tablet** | growth: 52.00x | vol: 720 | cpc: ? |  | [link](https://explodingtopics.com/topics/thyroid-ayurvedic-tablet)
   _Thyroid Ayurvedic Tablets are herbal supplements designed to support thyroid function and balance hormones using a blend of 12 Ayurvedic herbs. These _
 - **Wolverine peptide** | growth: 32.33x | vol: 49,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/wolverine-peptide-hWS3jsMm)
@@ -62,8 +64,6 @@ Generated: 2026-07-04 05:34:34
   _This synthetic peptide is utilized to decrease excess abdominal fat in HIV-infected patients with lipodystrophy by promoting growth hormone production_
 - **Clear protein powder** | growth: 20.67x | vol: 49,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/clear-protein-powder)
   _Clear protein powders are a type of protein supplement that offer a lighter and more refreshing alternative to traditional protein shakes, often featu_
-- **Therapeutic plasma exchange** | growth: 14.00x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/therapeutic-plasma-exchange)
-  _This medical procedure involves the removal of plasma from the blood and its replacement with a substitute fluid to eliminate harmful substances. It i_
 - **Smart helmet** | growth: 13.20x | vol: 8,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/smart-helmet)
   _A smart helmet is a technologically enhanced protective headgear equipped with features such as GPS navigation, Bluetooth connectivity, built-in camer_
 - **Hydrating conditioner** | growth: 10.40x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/hydrating-conditioner)
@@ -199,9 +199,7 @@ Generated: 2026-07-04 05:34:34
 - **Ravyn** | growth: 4.38x | vol: 90,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/ravyn-yhKvnSM2)
   _Musician known for her intricate and harmonically rich music, often blending elements of R&B, soul, and electronic genres. Her work is distinguished b_
 
-## 🔴 Entertainment & Media — HIGH | 82/82 topics
-- **Lovescape** | growth: 32.33x | vol: 60,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/lovescape)
-  _AI-based platform that generates photorealistic, uncensored adult content, offering users full control and privacy over the content they create. It di_
+## 🔴 Entertainment & Media — HIGH | 81/81 topics
 - **RGB speaker** | growth: 19.00x | vol: 1,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/rgb-speaker)
   _Audio devices equipped with integrated RGB lighting, often utilized in gaming setups for customizable lighting effects. These speakers provide feature_
 - **wqxga** | growth: 8.50x | vol: 12,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/wqxga)
@@ -240,6 +238,8 @@ Generated: 2026-07-04 05:34:34
   _Maxsoft Pte. Ltd. is a company established in 2004 that specializes in the wholesale distribution of computers, computer peripheral equipment, and com_
 - **G2g game** | growth: 1.42x | vol: 49,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/g2g-game)
   _Online marketplace where users can buy and sell in-game items, game accounts, game coaching, game skins, and gift cards. G2G differentiates itself by _
+- **Konami** | growth: 1.26x | vol: 1,830,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/konami)
+  _Japanese entertainment and gaming company founded in 1969, known for developing and publishing a variety of video games, trading card games, anime, to_
 
 ## 🟡 Education — MEDIUM | 2/28 topics
 - **Gamified learning** | growth: 4.54x | vol: 2,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/gamified-learning)
@@ -265,19 +265,15 @@ Generated: 2026-07-04 05:34:34
 - **White pc** | growth: 3.00x | vol: 9,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/white-pc)
   _A white PC typically refers to a personal computer that features a white-colored chassis or casing. These computers can come in various configurations_
 
-## 🟡 Science & Research — MEDIUM | 11/29 topics
+## 🟡 Science & Research — MEDIUM | 9/27 topics
 - **Retatrutide** | growth: 99x+ | vol: 1,830,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/retatrutide-8cpJpWHN)
   _This is a triple agonist medication developed by Eli Lilly, designed to aid in weight loss by targeting multiple pathways. It distinguishes itself by _
 - **Tesamorelin** | growth: 20.75x | vol: 450,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/tesamorelin-ECvfxQsf)
   _This synthetic peptide is utilized to decrease excess abdominal fat in HIV-infected patients with lipodystrophy by promoting growth hormone production_
-- **Therapeutic plasma exchange** | growth: 14.00x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/therapeutic-plasma-exchange)
-  _This medical procedure involves the removal of plasma from the blood and its replacement with a substitute fluid to eliminate harmful substances. It i_
 - **Weight loss peptides** | growth: 9.00x | vol: 40,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/weight-loss-peptides)
   _Peptides used for weight loss are compounds that mimic the GLP-1 hormone, which plays a role in regulating appetite and metabolism. These peptides are_
 - **Epitalon** | growth: 9.00x | vol: 27,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/epitalon)
   _A synthetic peptide derived from epithalamin, known for its potential anti-aging properties by stimulating telomerase production. It has been studied _
-- **Quantum machine learning** | growth: 7.33x | vol: 5,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/quantum-machine-learning)
-  _This field merges quantum computing with machine learning to enhance algorithms and tackle complex problems using quantum systems. It leverages quantu_
 - **Echodyne** | growth: 5.25x | vol: 5,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/echodyne)
   _A company specializing in advanced radar solutions, Echodyne focuses on enhancing sensing capabilities for intelligent systems and autonomous machines_
 - **Vagus nerve stimulator** | growth: 4.79x | vol: 2,800 | cpc: ? |  | [link](https://explodingtopics.com/topics/vagus-nerve-stimulator)
@@ -289,41 +285,19 @@ Generated: 2026-07-04 05:34:34
 - **Industrial robots** | growth: 3.94x | vol: 33,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/industrial-robots)
   _Automated, programmable machines designed to perform a variety of tasks in manufacturing and production settings. Industrial robots increase efficienc_
 
-## 🔵 Business & Finance — LOW | 7/429 topics
-- **niashot** | growth: 99x+ | vol: ? | cpc: ? |  | [link](https://explodingtopics.com/topics/niashot)
-  _Specializing in a variety of clothing items, Niashot is an Amazon-only brand known for its diverse product line. The brand's offerings encompass T-shi_
-- **Detectify AB** | growth: 99x+ | vol: 170 | cpc: ? |  | [link](https://explodingtopics.com/topics/detectify-ab)
-  _Detectify AB is a computer security service based in Stockholm, Sweden, specializing in External Attack Surface Management (EASM). The company provide_
-- **Coralogix Ltd.** | growth: 99x+ | vol: 9,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/coralogix-ltd)
-  _SaaS platform that analyzes log, metric, and security data in real-time using machine learning to streamline delivery and maintenance processes for so_
-- **Smartpredict** | growth: 22.00x | vol: 170 | cpc: ? |  | [link](https://explodingtopics.com/topics/smartpredict)
+## 🔵 Business & Finance — LOW | 3/425 topics
+- **Smartpredict** | growth: 22.00x | vol: 210 | cpc: ? |  | [link](https://explodingtopics.com/topics/smartpredict)
   _End-to-end AI SaaS platform designed to solve real-world AI use cases by leveraging machine learning to analyze historical patterns and provide predic_
-- **tf–idf** | growth: 17.00x | vol: 40,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/tfidf)
-  _Term Frequency–Inverse Document Frequency (TF-IDF) is a numerical statistic used to reflect the importance of a word in a document relative to a colle_
 - **Claude ai** | growth: 15.67x | vol: 45,500,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/claude-ai)
   _AI assistant developed by Anthropic, designed to generate natural, human-like responses to users' prompts and questions. Claude can handle both text a_
 - **tableplus** | growth: 15.67x | vol: 550,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/tableplus)
   _Modern, native, and user-friendly GUI tool designed for managing relational databases. It supports various databases such as MySQL, PostgreSQL, SQLite_
 
-## 🔵 Marketing — LOW | 1/50 topics
-- **tf–idf** | growth: 17.00x | vol: 40,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/tfidf)
-  _Term Frequency–Inverse Document Frequency (TF-IDF) is a numerical statistic used to reflect the importance of a word in a document relative to a colle_
-
-## 🔵 E-Commerce — LOW | 1/96 topics
-- **niashot** | growth: 99x+ | vol: ? | cpc: ? |  | [link](https://explodingtopics.com/topics/niashot)
-  _Specializing in a variety of clothing items, Niashot is an Amazon-only brand known for its diverse product line. The brand's offerings encompass T-shi_
-
-## 🔵 Software & Tech — LOW | 5/71 topics
-- **Detectify AB** | growth: 99x+ | vol: 170 | cpc: ? |  | [link](https://explodingtopics.com/topics/detectify-ab)
-  _Detectify AB is a computer security service based in Stockholm, Sweden, specializing in External Attack Surface Management (EASM). The company provide_
-- **Coralogix Ltd.** | growth: 99x+ | vol: 9,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/coralogix-ltd)
-  _SaaS platform that analyzes log, metric, and security data in real-time using machine learning to streamline delivery and maintenance processes for so_
+## 🔵 Software & Tech — LOW | 2/68 topics
 - **placepay** | growth: 40.00x | vol: 590 | cpc: ? |  | [link](https://explodingtopics.com/topics/placepay)
   _PlacePay is a payment platform designed to streamline rent and housing-related transactions for landlords, property managers, and tenants. It offers f_
-- **Smartpredict** | growth: 22.00x | vol: 170 | cpc: ? |  | [link](https://explodingtopics.com/topics/smartpredict)
+- **Smartpredict** | growth: 22.00x | vol: 210 | cpc: ? |  | [link](https://explodingtopics.com/topics/smartpredict)
   _End-to-end AI SaaS platform designed to solve real-world AI use cases by leveraging machine learning to analyze historical patterns and provide predic_
-- **tf–idf** | growth: 17.00x | vol: 40,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/tfidf)
-  _Term Frequency–Inverse Document Frequency (TF-IDF) is a numerical statistic used to reflect the importance of a word in a document relative to a colle_
 
 ## Scout Guidance
 

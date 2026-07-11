@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-04T09:44:52.579720+00:00",
+  "fetched_at": "2026-07-11T09:45:02.147221+00:00",
   "source_url": "https://trustmrr.com/",
   "freshness_days": 0,
   "records": [
@@ -32,7 +32,7 @@
       "name": "Unnamed Company",
       "url": "https://trustmrr.com/startup/unnamed-company",
       "description": "",
-      "reported_mrr": 357403,
+      "reported_mrr": 353491,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -44,7 +44,7 @@
       "name": "Rezi",
       "url": "https://trustmrr.com/startup/rezi",
       "description": "Most people agree this is the best resume builder in the world. We have about 1M new users every year. Rezi Enterprise, a new and growing product, supports over 300 organizations, including 1 fortune 500, and multiple universities. We are now working to allow companies a way to connect with job seekers, and bridge the gap between company and job seeker while bringing transparency to job seekers. Jacob Jacquet",
-      "reported_mrr": 262849,
+      "reported_mrr": 259774,
       "growth_percent": null,
       "categories_inferred": [
         "Education / career / interview",
@@ -54,19 +54,6 @@
     },
     {
       "rank": 5,
-      "name": "1Lookup",
-      "url": "https://trustmrr.com/startup/1lookup",
-      "description": "The #1 tool for validating phone, email and IP data in real time. All through one powerful API.",
-      "reported_mrr": 235089,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Analytics / data / attribution",
-        "API / validation / infrastructure"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 6,
       "name": "Kibu",
       "url": "https://trustmrr.com/startup/kibu",
       "description": "Content, compliance, and EHR (Electronic Health Record) software platform built specifically for provider organizations serving people with intellectual and developmental disabilities (I/DD). It helps these organizations teach people with special needs while managing regulatory compliance, documentation, and care delivery across hundreds of organizations and 48 states. Daniel Caridi",
@@ -79,11 +66,24 @@
       "stealth_or_ambiguous": false
     },
     {
+      "rank": 6,
+      "name": "1Lookup",
+      "url": "https://trustmrr.com/startup/1lookup",
+      "description": "The #1 tool for validating phone, email and IP data in real time. All through one powerful API.",
+      "reported_mrr": 220880,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Analytics / data / attribution",
+        "API / validation / infrastructure"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
       "rank": 7,
       "name": "Cometly",
       "url": "https://trustmrr.com/startup/cometly",
       "description": "Marketing attribution and analytics for SaaS companies. Use AI to chat with your ads data.",
-      "reported_mrr": 201114,
+      "reported_mrr": 203689,
       "growth_percent": null,
       "categories_inferred": [
         "Analytics / data / attribution"
@@ -95,7 +95,7 @@
       "name": "Brand On Demand, Inc.",
       "url": "https://trustmrr.com/startup/brand-on-demand-inc",
       "description": "Supliful is an all-in-one platform for Creators to launch and operate a scalable CPG brand. Our approach unifies the entire business cycle – from product selection all the way through e-commerce enablement and order fulfillment – into a single digital platform with no upfront costs. We charge customers at the time they make the purchase. Martins Lasmanis",
-      "reported_mrr": 191711,
+      "reported_mrr": 190516,
       "growth_percent": null,
       "categories_inferred": [
         "AI content / SEO / AEO",
@@ -109,7 +109,7 @@
       "name": "nomistair",
       "url": "https://trustmrr.com/startup/stealth-venture-3",
       "description": "Stealth Venture",
-      "reported_mrr": 188402,
+      "reported_mrr": 189899,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -121,7 +121,7 @@
       "name": "sowakillian",
       "url": "https://trustmrr.com/startup/hidden-business-12",
       "description": "Hidden Business",
-      "reported_mrr": 176335,
+      "reported_mrr": 175198,
       "growth_percent": 0,
       "categories_inferred": [
         "Other / unclear"
@@ -133,7 +133,7 @@
       "name": "Postiz",
       "url": "https://trustmrr.com/startup/postiz",
       "description": "Postiz is the ultimate agentic social media scheduler tool",
-      "reported_mrr": 159604,
+      "reported_mrr": 167615,
       "growth_percent": null,
       "categories_inferred": [
         "Creator monetization / social tools"
@@ -145,7 +145,7 @@
       "name": "Medical Practice & Medical Consulting Agency",
       "url": "https://trustmrr.com/startup/medical-practice-medical-consulting-agency",
       "description": "Hormone Prescribing service in UK & Operations/Automation Consulting Agency",
-      "reported_mrr": 157907,
+      "reported_mrr": 160109,
       "growth_percent": null,
       "categories_inferred": [
         "Health / wellness / medical",
@@ -155,10 +155,10 @@
     },
     {
       "rank": 13,
-      "name": "saad__",
-      "url": "https://trustmrr.com/startup/stealth-company-17",
-      "description": "Stealth Company",
-      "reported_mrr": 135899,
+      "name": "anorsich",
+      "url": "https://trustmrr.com/startup/anonymous-startup-25",
+      "description": "Anonymous Startup Andrei Orsich",
+      "reported_mrr": 139993,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -167,10 +167,10 @@
     },
     {
       "rank": 14,
-      "name": "anorsich",
-      "url": "https://trustmrr.com/startup/anonymous-startup-25",
-      "description": "Anonymous Startup Andrei Orsich",
-      "reported_mrr": 128886,
+      "name": "saad__",
+      "url": "https://trustmrr.com/startup/stealth-company-17",
+      "description": "Stealth Company",
+      "reported_mrr": 135899,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -191,10 +191,10 @@
     },
     {
       "rank": 16,
-      "name": "T",
-      "url": "https://trustmrr.com/startup/tro-kik",
-      "description": "",
-      "reported_mrr": 93193,
+      "name": "BIG",
+      "url": "https://trustmrr.com/startup/big",
+      "description": "BIG turns building a business into a game you can win — small quests, real income, a clear path to your goal. BIG - Business Is a ...",
+      "reported_mrr": 97034,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -203,22 +203,22 @@
     },
     {
       "rank": 17,
-      "name": "Upscale System LLC",
-      "url": "https://trustmrr.com/startup/upscale-system-llc",
-      "description": "We sell CRM and Lead generation softwares.",
-      "reported_mrr": 88687,
+      "name": "T",
+      "url": "https://trustmrr.com/startup/tro-kik",
+      "description": "",
+      "reported_mrr": 95232,
       "growth_percent": null,
       "categories_inferred": [
-        "Lead generation / sales automation"
+        "Other / unclear"
       ],
       "stealth_or_ambiguous": false
     },
     {
       "rank": 18,
       "name": "Codédex",
-      "url": "https://trustmrr.com/startup/cod-dex",
+      "url": "https://trustmrr.com/startup/codedex",
       "description": "Start your coding adventure ⋆˙⟡",
-      "reported_mrr": 88029,
+      "reported_mrr": 88201,
       "growth_percent": null,
       "categories_inferred": [
         "Education / career / interview"
@@ -227,22 +227,22 @@
     },
     {
       "rank": 19,
-      "name": "eyali__",
-      "url": "https://trustmrr.com/startup/propgpt-ai-props-analysis",
-      "description": "PropGPT: AI Props Analysis Unleash the power of AI and elevate your betting game with PropGPT: AI Props Analysis, the first app of its kind dedicated to transforming how you approach sports betting.",
-      "reported_mrr": 84385,
+      "name": "Upscale System LLC",
+      "url": "https://trustmrr.com/startup/upscale-system-llc",
+      "description": "We sell CRM and Lead generation softwares.",
+      "reported_mrr": 86915,
       "growth_percent": null,
       "categories_inferred": [
-        "Other / unclear"
+        "Lead generation / sales automation"
       ],
       "stealth_or_ambiguous": false
     },
     {
       "rank": 20,
-      "name": "Supergrow",
-      "url": "https://trustmrr.com/startup/supergrow",
-      "description": "",
-      "reported_mrr": 79479,
+      "name": "eyali__",
+      "url": "https://trustmrr.com/startup/propgpt-ai-props-analysis",
+      "description": "PropGPT: AI Props Analysis Unleash the power of AI and elevate your betting game with PropGPT: AI Props Analysis, the first app of its kind dedicated to transforming how you approach sports betting.",
+      "reported_mrr": 81727,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -254,7 +254,7 @@
       "name": "S",
       "url": "https://trustmrr.com/startup/stealth-venture-15",
       "description": "Stealth Venture Health and Wellness fitness app for iOS",
-      "reported_mrr": 78724,
+      "reported_mrr": 80649,
       "growth_percent": 0,
       "categories_inferred": [
         "Health / wellness / medical"
@@ -263,10 +263,22 @@
     },
     {
       "rank": 22,
+      "name": "Supergrow",
+      "url": "https://trustmrr.com/startup/supergrow",
+      "description": "",
+      "reported_mrr": 79479,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 23,
       "name": "Vid.AI",
       "url": "https://trustmrr.com/startup/vidai-llc",
       "description": "Turn any idea or script into ready-to-post videos that get views. AI generates voiceovers, visuals, and edits – all in minutes, no skills needed.",
-      "reported_mrr": 77853,
+      "reported_mrr": 74433,
       "growth_percent": null,
       "categories_inferred": [
         "AI content / SEO / AEO",
@@ -276,11 +288,35 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 23,
+      "rank": 24,
+      "name": "S",
+      "url": "https://trustmrr.com/startup/teachizy-sas-maj-digital",
+      "description": "Stealth Company",
+      "reported_mrr": 67165,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 25,
+      "name": "kevyubin",
+      "url": "https://trustmrr.com/startup/ai-startup",
+      "description": "",
+      "reported_mrr": 67113,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 26,
       "name": "AEO Engine",
       "url": "https://trustmrr.com/startup/aeo-engine",
       "description": "AEO Engine is a living network of AI agents that collaborate in perfect sync - researching, creating, optimizing, and amplifying your content every day. Each one plays a role in expanding your visibility, guided by a central orchestrator that learns and adapts with every result to deliver compounding growth across Google, ChatGPT, AI Overviews, Perplexity, and beyond. Vijay C. Jacob",
-      "reported_mrr": 67813,
+      "reported_mrr": 66733,
       "growth_percent": null,
       "categories_inferred": [
         "AI content / SEO / AEO",
@@ -289,19 +325,7 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 24,
-      "name": "Teachizy",
-      "url": "https://trustmrr.com/startup/teachizy-sas-maj-digital",
-      "description": "Teachizy est le moyen le plus facile de créer une formation en ligne et en blended learning pour digitaliser son parcours de formation. Le Dev ULTIME 🍜",
-      "reported_mrr": 66856,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Education / career / interview"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 25,
+      "rank": 27,
       "name": "Speel.co",
       "url": "https://trustmrr.com/startup/speel-co",
       "description": "Use AI to generate realistic UGC-style videos and images for ads and socials. Launched in October, went from 0 to 1M ARR in 3 months.",
@@ -314,23 +338,11 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 26,
-      "name": "kevyubin",
-      "url": "https://trustmrr.com/startup/ai-startup",
-      "description": "",
-      "reported_mrr": 63928,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Other / unclear"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 27,
+      "rank": 28,
       "name": "Project A",
       "url": "https://trustmrr.com/startup/project-a",
       "description": "Project A is a popular AI-powered fortune-telling and astrology app with more than 50 Million downloads and 1M Active users. It provides personalized readings—including tarot, astrology, clairvoyance, and traditional coffee cup readings—by combining machine learning algorithms with ancient mystical practices.",
-      "reported_mrr": 63867,
+      "reported_mrr": 63797,
       "growth_percent": 0,
       "categories_inferred": [
         "Education / career / interview"
@@ -338,23 +350,23 @@
       "stealth_or_ambiguous": true
     },
     {
-      "rank": 28,
+      "rank": 29,
       "name": "b",
       "url": "https://trustmrr.com/startup/b2bsaas",
-      "description": "",
-      "reported_mrr": 63726,
+      "description": "We sell probate leads to real estate investors and agents. Tech stack is TALL Tailwind Alpine Laravel Livewire",
+      "reported_mrr": 63223,
       "growth_percent": null,
       "categories_inferred": [
-        "Other / unclear"
+        "Lead generation / sales automation"
       ],
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 29,
+      "rank": 30,
       "name": "DataExpert / TechCreator",
       "url": "https://trustmrr.com/startup/dataexpert-techcreator",
       "description": "DataExpert.io is a data engineering education company that empowers data engineers to level up their skills and become content creators as well!",
-      "reported_mrr": 61057,
+      "reported_mrr": 63003,
       "growth_percent": null,
       "categories_inferred": [
         "AI content / SEO / AEO",
@@ -365,27 +377,14 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 30,
-      "name": "G",
-      "url": "https://trustmrr.com/startup/gotall",
-      "description": "Superwall ios application",
-      "reported_mrr": 56594,
+      "rank": 31,
+      "name": "RankAI",
+      "url": "https://trustmrr.com/startup/rankai",
+      "description": "Get search visitors autonomously. RankAI runs autonomously – getting you millions of web visitors from Google & ChatGPT. Investors from YCombinator, OpenAI, A16z, etc.",
+      "reported_mrr": 57209,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 31,
-      "name": "S",
-      "url": "https://trustmrr.com/startup/thumbnailcreator-com",
-      "description": "Stealth Venture The easiest to use and fastest growing AI powered YouTube thumbnail generation loved by thousands of creators.",
-      "reported_mrr": 56557,
-      "growth_percent": null,
-      "categories_inferred": [
-        "AI content / SEO / AEO",
-        "Creator monetization / social tools"
       ],
       "stealth_or_ambiguous": false
     },
@@ -394,7 +393,7 @@
       "name": "appm8ker",
       "url": "https://trustmrr.com/startup/stealth-02",
       "description": "",
-      "reported_mrr": 56487,
+      "reported_mrr": 56897,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -406,7 +405,7 @@
       "name": "U",
       "url": "https://trustmrr.com/startup/depuff-ai",
       "description": "Unnamed Company",
-      "reported_mrr": 55433,
+      "reported_mrr": 56754,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -415,6 +414,44 @@
     },
     {
       "rank": 34,
+      "name": "G",
+      "url": "https://trustmrr.com/startup/gotall",
+      "description": "Superwall ios application",
+      "reported_mrr": 56296,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 35,
+      "name": "BackPedal Ltd",
+      "url": "https://trustmrr.com/startup/backpedal-ltd",
+      "description": "GPS tracking and 24/7 recovery for your bike or ebike. If it gets stolen, we get it back. Customers pay an upfront fee for the tracker and a recurring monthly subscription.",
+      "reported_mrr": 55460,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Analytics / data / attribution",
+        "API / validation / infrastructure"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 36,
+      "name": "S",
+      "url": "https://trustmrr.com/startup/thumbnailcreator-com",
+      "description": "Stealth Venture The easiest to use and fastest growing AI powered YouTube thumbnail generation loved by thousands of creators.",
+      "reported_mrr": 55324,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 37,
       "name": "Adspirer",
       "url": "https://trustmrr.com/startup/adspirer",
       "description": "Adspirer is the AI-powered paid media agent for every business. We're building a future where any founder, marketer, or agency can manage their entire advertising operation — across Google, Meta, LinkedIn, and TikTok — through a simple conversation with their AI assistant. Abhilash Mekala",
@@ -428,11 +465,11 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 35,
+      "rank": 38,
       "name": "SEOBOT",
       "url": "https://trustmrr.com/startup/seobot",
       "description": "SeoBOT - AI Agent for SEO (keywords, research, blog, mini apps, pSEO and more)",
-      "reported_mrr": 54056,
+      "reported_mrr": 53121,
       "growth_percent": null,
       "categories_inferred": [
         "AI content / SEO / AEO"
@@ -440,23 +477,11 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 36,
-      "name": "RankAI",
-      "url": "https://trustmrr.com/startup/rankai",
-      "description": "Get search visitors autonomously. RankAI runs autonomously – getting you millions of web visitors from Google & ChatGPT. Investors from YCombinator, OpenAI, A16z, etc.",
-      "reported_mrr": 53824,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Other / unclear"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 37,
+      "rank": 39,
       "name": "Indexsy",
       "url": "https://trustmrr.com/startup/indexsy-consulting-ltd",
       "description": "We Build, Acquire & Scale Digital Assets Jacky Chou (buying o...",
-      "reported_mrr": 49317,
+      "reported_mrr": 50314,
       "growth_percent": null,
       "categories_inferred": [
         "Other / unclear"
@@ -464,11 +489,11 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 38,
+      "rank": 40,
       "name": "S",
       "url": "https://trustmrr.com/startup/stealth-company-9",
       "description": "Stealth Company Social network tool with advanced features",
-      "reported_mrr": 49056,
+      "reported_mrr": 47506,
       "growth_percent": null,
       "categories_inferred": [
         "Creator monetization / social tools"
@@ -476,47 +501,11 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 39,
-      "name": "Hack2hire",
-      "url": "https://trustmrr.com/startup/hack2hire",
-      "description": "Offers coding and system design practice for interview preparation.",
-      "reported_mrr": 46277,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Education / career / interview"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 40,
-      "name": "T",
-      "url": "https://trustmrr.com/startup/top-secret",
-      "description": "No detail, cause I'm scared",
-      "reported_mrr": 44897,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Other / unclear"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
       "rank": 41,
-      "name": "U",
-      "url": "https://trustmrr.com/startup/unnamed-company-21",
-      "description": "Unnamed Company AI voice and chat agents for SMB.",
-      "reported_mrr": 44618,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Other / unclear"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 42,
-      "name": "sowakillian",
-      "url": "https://trustmrr.com/startup/parkeur",
-      "description": "Confidential Startup",
-      "reported_mrr": 43831,
+      "name": "Taller",
+      "url": "https://trustmrr.com/startup/taller",
+      "description": "We analyze your growth potential and give you a custom plan to make sure you reach it.",
+      "reported_mrr": 46605,
       "growth_percent": 0,
       "categories_inferred": [
         "Other / unclear"
@@ -524,11 +513,63 @@
       "stealth_or_ambiguous": false
     },
     {
+      "rank": 42,
+      "name": "U",
+      "url": "https://trustmrr.com/startup/unnamed-company-21",
+      "description": "Unnamed Company AI voice and chat agents for SMB.",
+      "reported_mrr": 46407,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
       "rank": 43,
+      "name": "T",
+      "url": "https://trustmrr.com/startup/top-secret",
+      "description": "No detail, cause I'm scared",
+      "reported_mrr": 44959,
+      "growth_percent": null,
+      "categories_inferred": [
+        "Other / unclear"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 44,
+      "name": "Dropkiller",
+      "url": "https://trustmrr.com/startup/dropkiller",
+      "description": "We offer a subscription-based service that provides e-commerce entrepreneurs with access to product insights, ad creatives, and market analysis tools. Customers are charged at checkout or on a recurring monthly basis.",
+      "reported_mrr": 43838,
+      "growth_percent": null,
+      "categories_inferred": [
+        "API / validation / infrastructure",
+        "CPG / commerce enablement"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 45,
+      "name": "Peekaboo",
+      "url": "https://trustmrr.com/startup/peekaboo",
+      "description": "Peekaboo (aipeekaboo.com) is an AI Visibility platform that helps brands, agencies, and publishers understand and improve how they appear in AI-generated search results and answers. We track your visibility across key AI engines including ChatGPT, Gemini, Perplexity, Google AI Overviews (AIO), and Google AI Mode, showing where and how your brand is mentioned, cited, or recommended.",
+      "reported_mrr": 43772,
+      "growth_percent": null,
+      "categories_inferred": [
+        "AI content / SEO / AEO",
+        "Analytics / data / attribution",
+        "API / validation / infrastructure",
+        "CPG / commerce enablement"
+      ],
+      "stealth_or_ambiguous": false
+    },
+    {
+      "rank": 46,
       "name": "POST BRIDGE",
       "url": "https://trustmrr.com/startup/post-bridge",
       "description": "Post your content to multiple social media platforms at the same time, all-in one place.",
-      "reported_mrr": 43748,
+      "reported_mrr": 43617,
       "growth_percent": null,
       "categories_inferred": [
         "AI content / SEO / AEO",
@@ -538,11 +579,11 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 44,
+      "rank": 47,
       "name": "I",
       "url": "https://trustmrr.com/startup/interactive-video-saas",
       "description": "Interactive Video SaaS Premier interactive video software used for education, training, marketing. $48k MRR + some services revenue. Easy to use, drag and drop editor rebuilt from the ground up in 2025, fully documented and clean with little to no tech debt. One full-time employee. Owner works 3-5 hours per week and can be replaced by a fractional engineer. High SDE. Great fit for a video-based company in the education or training space as an upsell. ***Offers must include LinkedIn profile***",
-      "reported_mrr": 41051,
+      "reported_mrr": 42678,
       "growth_percent": null,
       "categories_inferred": [
         "AI content / SEO / AEO",
@@ -552,78 +593,41 @@
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 45,
-      "name": "Virlo",
-      "url": "https://trustmrr.com/startup/virlo",
-      "description": "Track, manage, leverage short-form data. Nicolas Mauro",
-      "reported_mrr": 39576,
+      "rank": 48,
+      "name": "P",
+      "url": "https://trustmrr.com/startup/private-venture-6",
+      "description": "Private Venture Reddit GEO/LLM Agency for B2B SaaS ($1M-$10M ARR). Monthly Financials: • Revenue: $50,000 MRR • Costs: ~$13k (Reddit fees + Account Manager + Writer) • Net Profit: ~$37,000/mo (75% Margin as Owner-Operator). Growth: 100% Inbound & Referrals. We have ZERO sales process (no follow-ups), offering huge upside for a commercial buyer to close our ignored leads. Deal: Asking $500K and open with Seller Financing as we trust the growth of the next months with the right buyer.",
+      "reported_mrr": 40954,
       "growth_percent": null,
       "categories_inferred": [
-        "Analytics / data / attribution"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 46,
-      "name": "simpleanalytic",
-      "url": "https://trustmrr.com/startup/simple-analytics",
-      "description": "Simple Analytics We build and sell software for businesses. Simple Analytics",
-      "reported_mrr": 39457,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Analytics / data / attribution",
+        "AI content / SEO / AEO",
+        "Creator monetization / social tools",
+        "Lead generation / sales automation",
         "Local business / agency software"
       ],
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 47,
-      "name": "anonymous-startup-2",
-      "url": "https://trustmrr.com/startup/anonymous-startup-2",
-      "description": "One form to rule them all.",
-      "reported_mrr": 39417,
-      "growth_percent": null,
+      "rank": 49,
+      "name": "sowakillian",
+      "url": "https://trustmrr.com/startup/parkeur",
+      "description": "Confidential Startup",
+      "reported_mrr": 40855,
+      "growth_percent": 0,
       "categories_inferred": [
         "Other / unclear"
       ],
       "stealth_or_ambiguous": false
     },
     {
-      "rank": 48,
-      "name": "Dropkiller",
-      "url": "https://trustmrr.com/startup/dropkiller",
-      "description": "We offer a subscription-based service that provides e-commerce entrepreneurs with access to product insights, ad creatives, and market analysis tools. Customers are charged at checkout or on a recurring monthly basis.",
-      "reported_mrr": 39407,
-      "growth_percent": null,
-      "categories_inferred": [
-        "API / validation / infrastructure",
-        "CPG / commerce enablement"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 49,
-      "name": "PolyPick",
-      "url": "https://trustmrr.com/startup/polypick",
-      "description": "The #1 AI platform for beating prediction markets. Analyze Polymarket, Kalshi & more with AI, copy top traders, track whales, and make smarter bets in seconds.",
-      "reported_mrr": 39185,
+      "rank": 50,
+      "name": "Virlo",
+      "url": "https://trustmrr.com/startup/virlo",
+      "description": "Track, manage, leverage short-form data. Nicolas Mauro",
+      "reported_mrr": 40509,
       "growth_percent": null,
       "categories_inferred": [
         "Analytics / data / attribution"
-      ],
-      "stealth_or_ambiguous": false
-    },
-    {
-      "rank": 50,
-      "name": "ChatDash, LLC",
-      "url": "https://trustmrr.com/startup/chatdash-llc",
-      "description": "ChatDash is a white-labeled AI assistant dashboard solution tailor-made for agencies, enabling them to provide clients with a customizable, brandable interface for managing their own Knowledge Bases. This platform enhances the value agencies offer by saving them time on Knowledge Base maintenance and allowing for higher ticket pricing for their AI chatbot services. With plans catering to various agency sizes, from small startups to established firms, ChatDash combines full Voiceflow and OpenAI A",
-      "reported_mrr": 38263,
-      "growth_percent": null,
-      "categories_inferred": [
-        "Analytics / data / attribution",
-        "CPG / commerce enablement",
-        "Local business / agency software"
       ],
       "stealth_or_ambiguous": false
     }
@@ -637,10 +641,10 @@
         "Unnamed Company",
         "nomistair",
         "sowakillian",
-        "saad__"
+        "anorsich"
       ],
-      "count": 21,
-      "mrr_range": "$39,417-$3,569,654 reported MRR",
+      "count": 22,
+      "mrr_range": "$40,855-$3,569,654 reported MRR",
       "takeaway": "Ambiguous listings; weak evidence unless supported by separate demand signals."
     },
     {
@@ -653,8 +657,8 @@
         "Speel.co",
         "DataExpert / TechCreator"
       ],
-      "count": 10,
-      "mrr_range": "$41,051-$234,319 reported MRR",
+      "count": 12,
+      "mrr_range": "$40,954-$234,319 reported MRR",
       "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
     },
     {
@@ -667,36 +671,8 @@
         "DataExpert / TechCreator",
         "S"
       ],
-      "count": 9,
-      "mrr_range": "$43,748-$191,711 reported MRR",
-      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
-    },
-    {
-      "category": "Education / career / interview",
-      "examples": [
-        "Rezi",
-        "Codédex",
-        "AEO Engine",
-        "Teachizy",
-        "Project A",
-        "DataExpert / TechCreator"
-      ],
-      "count": 8,
-      "mrr_range": "$41,051-$262,849 reported MRR",
-      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
-    },
-    {
-      "category": "Analytics / data / attribution",
-      "examples": [
-        "1Lookup",
-        "Cometly",
-        "DataExpert / TechCreator",
-        "Virlo",
-        "simpleanalytic",
-        "PolyPick"
-      ],
-      "count": 7,
-      "mrr_range": "$38,263-$235,089 reported MRR",
+      "count": 10,
+      "mrr_range": "$40,954-$190,516 reported MRR",
       "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
     },
     {
@@ -705,11 +681,40 @@
         "Rezi",
         "1Lookup",
         "Vid.AI",
-        "POST BRIDGE",
-        "Dropkiller"
+        "BackPedal Ltd",
+        "Dropkiller",
+        "Peekaboo"
       ],
-      "count": 5,
-      "mrr_range": "$39,407-$262,849 reported MRR",
+      "count": 7,
+      "mrr_range": "$43,617-$259,774 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "Analytics / data / attribution",
+      "examples": [
+        "1Lookup",
+        "Cometly",
+        "DataExpert / TechCreator",
+        "BackPedal Ltd",
+        "Peekaboo",
+        "Virlo"
+      ],
+      "count": 6,
+      "mrr_range": "$40,509-$220,880 reported MRR",
+      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
+    },
+    {
+      "category": "Education / career / interview",
+      "examples": [
+        "Rezi",
+        "Codédex",
+        "AEO Engine",
+        "Project A",
+        "DataExpert / TechCreator",
+        "I"
+      ],
+      "count": 6,
+      "mrr_range": "$42,678-$259,774 reported MRR",
       "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
     },
     {
@@ -717,23 +722,13 @@
       "examples": [
         "PROSP",
         "Upscale System LLC",
+        "b",
         "Adspirer",
-        "I"
+        "I",
+        "P"
       ],
-      "count": 4,
-      "mrr_range": "$41,051-$128,005 reported MRR",
-      "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
-    },
-    {
-      "category": "Local business / agency software",
-      "examples": [
-        "Medical Practice & Medical Consulting Agency",
-        "Adspirer",
-        "simpleanalytic",
-        "ChatDash, LLC"
-      ],
-      "count": 4,
-      "mrr_range": "$38,263-$157,907 reported MRR",
+      "count": 6,
+      "mrr_range": "$40,954-$128,005 reported MRR",
       "takeaway": "Multiple visible comps; validates demand but raises saturation/copycat risk."
     },
     {
@@ -741,10 +736,10 @@
       "examples": [
         "Brand On Demand, Inc.",
         "Dropkiller",
-        "ChatDash, LLC"
+        "Peekaboo"
       ],
       "count": 3,
-      "mrr_range": "$38,263-$191,711 reported MRR",
+      "mrr_range": "$43,772-$190,516 reported MRR",
       "takeaway": "Revenue-backed category; use as adjacent pattern only, not copycat instruction."
     },
     {
@@ -755,7 +750,18 @@
         "S"
       ],
       "count": 3,
-      "mrr_range": "$78,724-$234,319 reported MRR",
+      "mrr_range": "$80,649-$234,319 reported MRR",
+      "takeaway": "Revenue-backed category; use as adjacent pattern only, not copycat instruction."
+    },
+    {
+      "category": "Local business / agency software",
+      "examples": [
+        "Medical Practice & Medical Consulting Agency",
+        "Adspirer",
+        "P"
+      ],
+      "count": 3,
+      "mrr_range": "$40,954-$160,109 reported MRR",
       "takeaway": "Revenue-backed category; use as adjacent pattern only, not copycat instruction."
     }
   ],

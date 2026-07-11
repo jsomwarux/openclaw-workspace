@@ -533,6 +533,16 @@ No new NYC/remote non-coding AI implementation role should be surfaced today. Th
 
 **Positioning implication:** keep Altmark and Marketsmith proof focused on reusable AI implementation assets with owner/reviewer boundaries, release notes, governance gates, eval/rollback thinking, documentation, and value reporting. Do not create a new role target, certification task, or demo ahead of consulting cash/proof work.
 
+## 2026-07-11 — Heartbeat Job Market Pulse
+
+Read the latest local job-market-agent brief at `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`. It is still dated 2026-07-08 because `Job Market Daily Research` remains intentionally disabled under the July directive pack; no fresh crawl, external search, role packaging, or application task was run.
+
+No new NYC/remote non-coding AI implementation role should be surfaced today. The retained Salesforce Distinguished Architect signal stays disqualified as a role target because it is sales-demo/release-management support with Salesforce lifecycle, OmniStudio, Git, and CI/CD expectations.
+
+**Strongest signal:** the durable market read is still governed reusable AI implementation, not a job-application pivot. Agentforce-style demo assets, release governance, documentation, adoption leadership, and value reporting validate JT's Run Control / AgentPack / EnablementOps positioning.
+
+**Positioning implication:** keep Mission Control, Altmark, and MSI/Marketsmith framed as proof that JT can turn messy operating work into governed AI implementation assets: source record, owner queue, reviewer boundary, release notes, rollback/eval thinking, and value report. Do not create a new role target, certification task, or demo ahead of consulting cash/proof work.
+
 ## 2026-07-04 — Heartbeat Job Market Pulse
 
 Read today's job-market-agent brief generated at 2026-07-04 05:15. No new NYC/remote non-coding AI implementation role cleared the 18/25 filter, and the brief had no critical or high severity flags. The role-shaped false positives were AIG Principal Solutions Architect, GenAI and ServiceRocket Delivery Architect: both carry useful AI/adoption language, but AIG is senior enterprise architecture/DevSecOps/data-pipeline heavy and ServiceRocket is Atlassian-platform-specific delivery.
