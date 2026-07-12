@@ -21,7 +21,7 @@
 
 ## Active Clients
 - Karen Vitale site done/live; profile/content/payment closeout remains.
-- Altmark is top paid/proof lane: finish Conductor on Beelink from Danny's guide, configure the rent delinquency bot, then use Fable for final playbook review before deploy/payment closeout.
+- Altmark is top paid/proof lane: get/send the rent-delinquency source/export gate, reviewer/rules, and review-only run path before tenant-sensitive action or payment closeout.
 - Best public proof frame: controlled exception handling for delinquency/resident-sensitive follow-up, not autonomous collections.
 - Aya dashboard updates are effectively near-complete; next gate is Gil review/acceptance and proof-safe evidence. Acquisitions remain stalled.
 - Marketsmith Nexus SOW active: recommended reply is $150/hr for initial 80-hour scope ($12K) with scope/ramp/billing guardrails; full SOW detail lives in expanded memory.
@@ -44,14 +44,14 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Review drafts remain review-only; do not auto-post. Latest Jul 10 draft: `memory/drafts/linkedin-ai-implementation-acceptance-record-2026-07-10.md`, voice guard PASS 100.
+- Review drafts remain review-only; do not auto-post. Latest Jul 11 draft: `memory/drafts/linkedin-rent-delinquency-source-record-2026-07-11.md`, voice guard PASS 100.
 - AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 10 no qualifying role; Salesforce Distinguished Architect disqualified. AI assets, release governance, docs, adoption, and value reporting support Run Control / AgentPack.
+- Latest: Jul 11 no qualifying role; Job Market Daily Research remains directive-disabled. Agentforce-style assets, release governance, docs, adoption, and value reporting support Run Control / AgentPack.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -67,9 +67,9 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Jul 10: Daily Send Sheet delivered; Mission Control 291 active / 16 high / 0 overdue / 0 errors; cost empty; Spanish paused.
+- Jul 11: Daily Send Sheet delivered; Mission Control 284 active / 14 high / 0 overdue / 0 errors; cost empty; Spanish paused.
 - Registry: 12 enabled / 60 disabled / 72 total; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day. Only enabled red row is Weekly Systems Review from Jul 5 pseudo-command failure; live prompt already patched, next natural proof Jul 12.
-- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Jul 10 lanes updated PM control proof, MCP/tool ledger, crypto disabled state, job pulse, and one review-only content draft.
+- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Jul 11 lanes updated PM control proof, MCP/tool ledger, crypto disabled state, job pulse, review-only content draft, and memory.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
