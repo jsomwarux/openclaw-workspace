@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "NYC HVAC contractor company Brooklyn Queens 10-50 employees",
+  "freshness": "year",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-07-12",
+  "results": [
+    {
+      "title": "Weather Makers NYC | Best HVAC Contractor in New York City",
+      "url": "https://weathermakers.nyc/",
+      "description": "📞 <strong>(212) 739-6817</strong> — Call Now Book Free Estimate → · ✔ Same-Day Service ✔ Licensed &amp; Insured ✔ All 5 Boroughs ✔ PTAC, Mini-Split &amp; HVAC Experts ✔ Commercial &amp; Residential ✔ 10+ Years NYC Experience",
+      "age": "March 27, 2026",
+      "page_age": "2026-03-27T21:16:32",
+      "source": "Weather Makers NYC"
+    },
+    {
+      "title": "Commercial HVAC System Repair, Maintenance & Installation Service Company, HVAC Mechanical & Heating Contractors NYC - Henick-Lane",
+      "url": "https://henick-lane.com/",
+      "description": "I highly recommend Henick-Lane to anyone who is searching for a strong and reputable HVAC contractor. Edward J. <strong>Minskoff Equities, Inc.</strong> I have been working with Henick-Lane for the last 10 years.",
+      "age": "April 22, 2026",
+      "page_age": "2026-04-22T17:16:34",
+      "source": "Henick-Lane"
+    },
+    {
+      "title": "HVAC Services in Brooklyn & Queens | Brooklyn Queens HVAC",
+      "url": "https://brooklynqueenshvac.com/",
+      "description": "<strong>Brooklyn Queens HVAC</strong> is the most reliable company to hire for HVAC installs and repairs in Brooklyn and Queens. Give us a call today.",
+      "age": "September 25, 2025",
+      "page_age": "2025-09-25T19:22:26",
+      "source": "Queens HVAC Services"
+    },
+    {
+      "title": "Mechanical Contractors in NYC - American HVAC Corp",
+      "url": "https://americanhvac.nyc/mechanical-contractors-nyc/",
+      "description": "Brooklyn, Queens, Bronx, Staten Island, Manhattan, NY. Welcome to <strong>American HVAC Corp.</strong>, your go-to mechanical contractor for all your heating, ventilation, and air conditioning needs in Queens, Bronx, Brooklyn, and Manhattan, NY.",
+      "age": "March 20, 2026",
+      "page_age": "2026-03-20T05:35:55",
+      "source": "American HVAC Corp"
+    },
+    {
+      "title": "Heating & Cooling Repair in Brooklyn, Manhattan & NYC | NYH",
+      "url": "https://newyorkheating.com/",
+      "description": "<strong>New York Heating Corp.</strong> is a full service heating and cooling contractor serving Manhattan, Brooklyn, Queens and the Bronx.",
+      "age": "March 11, 2026",
+      "page_age": "2026-03-11T17:15:14",
+      "source": "New York Heating"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "NYC insurance brokerage 20-100 employees property casualty Salesforce",
+  "freshness": "year",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-07-12",
+  "results": [
+    {
+      "title": "13 Best New York, NY Life Insurance Companies | Expertise.com",
+      "url": "https://www.expertise.com/insurance/life-insurance/new-york/nyc",
+      "description": "<strong>Jimco Associates Inc</strong> is an insurance agency that serves clients in New York City. It specializes in group life insurance, group health insurance, medicare, voluntary benefits, and property &amp; casualty for companies in the tri-state area.",
+      "age": "2 weeks ago",
+      "page_age": "2026-06-30T00:00:00",
+      "source": "Expertise"
+    },
+    {
+      "title": "Insurance Agents in New York City - New York Lists",
+      "url": "https://newyorklists.com/new-york/nyc/insurance-companies-nyc/",
+      "description": "Find the best Insurance Agents in New York City. Browse 20 listings with ratings, reviews, phone numbers, and addresses.",
+      "age": "May 5, 2026",
+      "page_age": "2026-05-05T00:00:00",
+      "source": "Newyorklists"
+    },
+    {
+      "title": "12 Best Manhattan Health Insurance Companies (2026 Reviews & Ratings) | NewYorkLists",
+      "url": "https://www.newyorklists.com/new-york/nyc/health-insurance-companies-in-manhattan/",
+      "description": "<strong>HealthPass</strong> operates as a private health insurance exchange serving small to midsize employers across the New York metropolitan area. Designed for companies with 1–100 full-time equivalent employees, the platform gives businesses a structured ...",
+      "age": "March 25, 2026",
+      "page_age": "2026-03-25T00:00:00",
+      "source": "Newyorklists"
+    },
+    {
+      "title": "2025 Top 100 Property/Casualty Agencies",
+      "url": "https://www.insurancejournal.com/top-100-insurance-agencies/",
+      "description": "Welcome to the 21st annual Insurance Journal Top 100 Independent Property/Casualty Agencies report. The Top 100 list is ranked by total property/casualty agency revenue and comprises only those agencies whose business is primarily retail, not wholesale. (See also Top Agency Partnerships.) All information in this report has been garnered from voluntary online submissions from agencies and brokerages ...",
+      "age": "August 1, 2025",
+      "page_age": "2025-08-01T17:13:17",
+      "source": "Insurance Journal"
+    },
+    {
+      "title": "Broker I, National Casualty Practice - New York, NY 10006 - Indeed.com",
+      "url": "https://www.indeed.com/viewjob?jk=5701ad1864d673b2",
+      "description": "<strong>The National Casualty Practice</strong> is a premier team of casualty brokerage professionals with extensive experience in representing buyers of primary and umbrella/excess liability.",
+      "age": "May 29, 2026",
+      "page_age": "2026-05-29T16:25:43",
+      "source": "Indeed"
+    }
+  ]
+}

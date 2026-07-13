@@ -44,20 +44,20 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Review drafts remain review-only; do not auto-post. Latest Jul 11 draft: `memory/drafts/linkedin-rent-delinquency-source-record-2026-07-11.md`, voice guard PASS 100.
-- AI Ops Teardowns name the public signal and build angle, while withholding prompts/schemas/node stack/thresholds/vendors/routing.
+- Review drafts remain review-only; do not auto-post. Latest Jul 12 draft: `memory/drafts/linkedin-agent-control-record-2026-07-12.md`, voice guard PASS 100.
+- AI Ops Teardowns name public signal + build angle; withhold prompts/schemas/node stack/thresholds/vendors/routing.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 11 no qualifying role; Job Market Daily Research remains directive-disabled. Agentforce-style assets, release governance, docs, adoption, and value reporting support Run Control / AgentPack.
+- Latest: Jul 12 local-brief-only pulse found no qualifying role; Job Market Daily Research remains directive-disabled. Agentforce-style assets, release governance, docs, adoption, value reporting support Run Control / AgentPack.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
 ## Crypto / Finance
 - Crypto is research/ranking/threshold-awareness only. Never trade, transfer, swap, spend, or run payment-MCP/x402 experiments without JT approval.
-- X API spend is hot; avoid nonessential X pulls and reuse verified packets.
+- Jul 12 crypto loop remains directive-disabled; latest retained research snapshot is Jul 7. X API spend is hot; avoid nonessential X pulls and reuse verified packets.
 - Detail: `docs/memory/MEMORY-full.md#crypto--finance`.
 
 ## Infrastructure / OpenClaw State
@@ -67,9 +67,9 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Jul 11: Daily Send Sheet delivered; Mission Control 284 active / 14 high / 0 overdue / 0 errors; cost empty; Spanish paused.
-- Registry: 12 enabled / 60 disabled / 72 total; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day. Only enabled red row is Weekly Systems Review from Jul 5 pseudo-command failure; live prompt already patched, next natural proof Jul 12.
-- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Jul 11 lanes updated PM control proof, MCP/tool ledger, crypto disabled state, job pulse, review-only content draft, and memory.
+- Jul 12: Mission Control 283 active / 14 high / 0 overdue / 0 errors; cost empty.
+- Registry: 12 enabled / 60 disabled / 72 total; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day. Weekly Systems Review naturally ran/sent Telegram but ended red on pseudo `run openclaw status`; live prompt patched, no blind rerun.
+- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Passive-income Jul 12 strategist is DEGRADED FALLBACK: BUILD 0, WATCH 4, no MC changes.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

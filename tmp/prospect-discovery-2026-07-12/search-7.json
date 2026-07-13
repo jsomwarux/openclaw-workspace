@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "residential property manager New York City portfolio Buildium",
+  "freshness": "year",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-07-12",
+  "results": [
+    {
+      "title": "Property Management Software | Buildium",
+      "url": "https://www.buildium.com/",
+      "description": "Buildium is <strong>purpose-built for the management of residential property management—including single-family and multi-family rentals and community associations</strong>— and can also handle mixed portfolios with student housing, commercial properties, ...",
+      "age": "April 29, 2026",
+      "page_age": "2026-04-29T19:01:07",
+      "source": "Buildium"
+    },
+    {
+      "title": "How to Start a Property Management Company in New York | Buildium",
+      "url": "https://www.buildium.com/blog/how-to-start-a-property-management-company-in-new-york/",
+      "description": "You’ll test your systems in the real world, see what works well, and identify areas for improvement. This experience prepares you to add more doors to your portfolio with confidence. Starting a property management company in New York is a step-by-step process that moves from legal compliance and business formation to operational setup and marketing.",
+      "age": "May 9, 2026",
+      "page_age": "2026-05-09T05:20:36",
+      "source": "Buildium"
+    },
+    {
+      "title": "Best Nyc Property Management Software | 2026 Expert Picks",
+      "url": "https://worldmetrics.org/best/nyc-property-management-software/",
+      "description": "A concrete tradeoff is that deeper reporting and analytics still depend on data hygiene, since rent charges, payments, and accounting classifications must be entered consistently to avoid misleading variance. Buildium fits a usage situation where a property management office needs consistent monthly reporting, delinquency visibility, and maintenance-to-cost linkage across an NYC portfolio rather than only tracking transactions in isolation.",
+      "age": "2 weeks ago",
+      "page_age": "2026-06-30T00:00:00",
+      "source": "World Metrics"
+    },
+    {
+      "title": "Buildium Review 2026: Pricing, Features & Honest Verdict",
+      "url": "https://www.clearleaddigital.com/blog/buildium-review",
+      "description": "... Buildium is <strong>a cloud-based property management software designed for residential portfolios — single-family homes, small multifamily properties, HOAs, and mixed-use buildings</strong>.",
+      "age": "2 weeks ago",
+      "page_age": "2026-06-27T22:50:12",
+      "source": "ClearLead Digital"
+    },
+    {
+      "title": "5 Best Rental Markets in New York State | Buildium Research",
+      "url": "https://www.buildium.com/blog/best-rental-markets-in-new-york-state-2025/",
+      "description": "Discover the 5 best rental markets in New York State for property managers and investors based on Buildium&#x27;s extensive research.",
+      "age": "February 12, 2026",
+      "page_age": "2026-02-12T19:34:41",
+      "source": "Buildium"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "electrical supply wholesale distributor New York City",
+  "freshness": "year",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-07-12",
+  "results": [
+    {
+      "title": "Home lighting, builder, LED, electric supplies",
+      "url": "https://www.wolberg.com/",
+      "description": "Proudly serving the Capital Region and Mid-Hudson Valley since 1925, <strong>Wolberg Lighting Design and Electrical Supply</strong> has been a trusted source for quality lighting products and electrical supplies for 100 years.",
+      "age": "4 days ago",
+      "page_age": "2026-07-09T13:13:26",
+      "source": "Wolberg"
+    },
+    {
+      "title": "List Of Electrical products wholesalers in New York",
+      "url": "https://rentechdigital.com/smartscraper/business-report-details/united-states/list-of-electrical-products-wholesalers-in-new-york",
+      "description": "New York City leads at the top with <strong>29 Electrical products wholesalers, at 31.52%</strong>. Islip follows with 4 Electrical products wholesalers, at 4.35%. Allegany comes third with 3 Electrical products wholesalers, accounting for 3.26% of its total.",
+      "age": "April 1, 2026",
+      "page_age": "2026-04-01T00:00:00",
+      "source": "ReTech Digital"
+    },
+    {
+      "title": "Elliott Electric Supply Company - Electrical Supply Store providing Quality Electrical Supplies at Lower Prices with Personal Service",
+      "url": "https://www.elliottelectric.com/",
+      "description": "Electrical Supplies Distributor. <strong>Elliott Electric Supply company</strong> is your local electrical supply house. We Deliver Lower Cost, Quality Products, and Personal Service",
+      "age": "June 5, 2026",
+      "page_age": "2026-06-05T14:51:05",
+      "source": "Elliott Electric Supply Company"
+    },
+    {
+      "title": "Home - Wholesale Electric",
+      "url": "https://wes-hou.com/",
+      "description": "<strong>Wholesale Electric Supply</strong> is a leader in the electrical distribution industry providing customized solutions and services.",
+      "age": "December 5, 2025",
+      "page_age": "2025-12-05T19:34:08",
+      "source": "Wholesale Electric"
+    },
+    {
+      "title": "Electrical Supplies At Wholesale Prices - City Electric Supply",
+      "url": "https://cesupplyshop.com/",
+      "description": "Discover reliable electrical supplies with <strong>City Electric Supply</strong>, a family-owned distributor dedicated to providing high-quality products at cost-effective wholesale prices. Whether for residential, commercial, or industrial projects, we offer ...",
+      "age": "January 9, 2026",
+      "page_age": "2026-01-09T12:30:48",
+      "source": "demo1"
+    }
+  ]
+}

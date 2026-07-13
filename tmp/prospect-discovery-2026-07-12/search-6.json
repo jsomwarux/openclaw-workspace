@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "property management company NYC Brooklyn Queens AppFolio small",
+  "freshness": "year",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-07-12",
+  "results": [
+    {
+      "title": "6 Top-Rated New York City Property Management Companies in 2025",
+      "url": "https://belonghome.com/blog/top-property-management-companies-in-new-york-city",
+      "description": "<strong>MD Squared Property Group</strong> is a New York City–focused property management firm serving all five boroughs with services that include tenant screening, maintenance coordination, and 24/7 emergency support.",
+      "age": "December 16, 2025",
+      "page_age": "2025-12-16T15:59:00",
+      "source": "Belong Home"
+    },
+    {
+      "title": "NYC Property Manager | Comprehensive Property Management in NY, Westchester & Northern NJ",
+      "url": "https://remny.com/",
+      "description": "With custom-coded AI solutions, and leading software like Appfolio, we streamline management, optimize efficiency, and provide you with real-time updates.",
+      "age": "April 30, 2026",
+      "page_age": "2026-04-30T16:43:50",
+      "source": "Remny"
+    },
+    {
+      "title": "Property Management NYC - MD Squared Property Group",
+      "url": "https://www.mdsquaredpropertygroup.com/property-management-nyc/",
+      "description": "At <strong>MD Squared</strong> we utilize Domecile and Appfolio as our application processing system. Are you a resident of one of our managed properties? Interested in selling, buying, renting, or refinancing an apartment in a New York City Condominium or ...",
+      "age": "February 15, 2026",
+      "page_age": "2026-02-15T14:43:48",
+      "source": "Mdsquaredpropertygroup"
+    },
+    {
+      "title": "First Class Management - a New York Property Management Company",
+      "url": "https://www.fcmre.com/",
+      "description": "We are <strong>property management company servicing the boroughs of New York</strong>. We manage properties in Brooklyn, Queens, Staten Island and Nassau and Suffolk Counties. Our goal to team up with you so that your property can become more profitable and ...",
+      "age": "December 22, 2025",
+      "page_age": "2025-12-22T19:29:17",
+      "source": "Fcmre"
+    },
+    {
+      "title": "r/NYCapartments on Reddit: Brooklyn property management companies or small agencies you recommend?",
+      "url": "https://www.reddit.com/r/NYCapartments/comments/1qyngb2/brooklyn_property_management_companies_or_small/",
+      "description": "I’m currently looking for an apartment and trying to contact property management companies or smaller real estate agencies directly. If you like who…",
+      "age": "February 7, 2026",
+      "page_age": "2026-02-07T19:48:27",
+      "source": "Reddit"
+    }
+  ]
+}

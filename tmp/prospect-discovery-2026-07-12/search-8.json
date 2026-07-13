@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "NYC insurance MGA Salesforce CRM operations",
+  "freshness": "year",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-07-12",
+  "results": [
+    {
+      "title": "Salesforce for Insurance: Tools, Features and Benefits",
+      "url": "https://www.itransition.com/crm/salesforce/insurance",
+      "description": "As a Salesforce implementation company with 10+ years of experience, we <strong>help insurance companies and InsurTech providers adopt suitable Salesforce platform-based solutions and ensure their efficient operation through configuration or customization</strong>.",
+      "age": "November 19, 2025",
+      "page_age": "2025-11-19T00:00:00",
+      "source": "Itransition"
+    },
+    {
+      "title": "Best CRM for Insurance Agents 2026: Navigating the Future of Agency Management and the Modern Insurance Agent Portal",
+      "url": "https://www.decerto.com/us/post/best-crm-for-insurance-agents-2026-navigating-the-future-of-agency-management",
+      "description": "When it doesn’t: Carriers with non-standard distribution patterns (specialty, complex commercial, multi-tier MGA networks) often find packaged products are too rigid. The 80/20 of the product fits, but the missing 20% is exactly the part that makes the carrier competitive. You partner with a specialized InsurTech that builds the portal layer for your specific environment, integrates with your existing PAS and CRM, and either operates the platform on your behalf or hands it off to your team after a defined transition.",
+      "age": "5 days ago",
+      "page_age": "2026-07-08T07:31:26",
+      "source": "Decerto"
+    },
+    {
+      "title": "Salesforce Automates Commissions for a Call-Center Insurer",
+      "url": "https://vantagepoint.io/blog/casestudies/salesforce-commission-automation-call-center-insurer",
+      "description": "This case study explains how a national, call-center-based life insurance brokerage replaced its proprietary CRM and policy tracking platform with a unified Salesforce ecosystem, unifying three call centers and automating multi-tiered commission calculations. It matters for insurance brokerages, agencies, and MGAs relying on aging homegrown systems that can no longer integrate with modern telephony, marketing automation, or identity management tools.",
+      "age": "1 week ago",
+      "page_age": "2026-07-06T15:29:50",
+      "source": "Vantagepoint"
+    },
+    {
+      "title": "Salesforce Insurance CRM Review: Is It Worth It? (2026) - The Insurtech Guide",
+      "url": "https://theinsurtechguide.com/salesforce-insurance-crm-review/",
+      "description": "The Salesforce insurance CRM review verdict is clear: it’s a powerful platform for mid-to-large carriers and brokerages, but it’s often overkill — and over budget — for smaller independent agencies. Starting cost: Financial Services Cloud licenses begin at ~$225/user/month before add-ons. Implementation timeline: 3 to 9 months on average for insurance-specific configurations. Best fit: Carriers, MGAs, and multi-line brokerages with 20+ users and a dedicated Salesforce admin.",
+      "age": "June 3, 2026",
+      "page_age": "2026-06-03T09:24:31",
+      "source": "The Insurtech Guide"
+    },
+    {
+      "title": "Best Insurance CRM Software for Insurers in 2026",
+      "url": "https://www.damcogroup.com/blogs/best-insurance-crm-software",
+      "description": "InsuraCRM is one of the few insurance ... <strong>a single operational framework, making it suitable for insurers that view CRM as a foundational component of long-term business architecture</strong>.",
+      "age": "4 days ago",
+      "page_age": "2026-07-09T05:54:53",
+      "source": "Damco Group"
+    }
+  ]
+}

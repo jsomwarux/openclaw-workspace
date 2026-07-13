@@ -1,0 +1,50 @@
+{
+  "provider": "brave-direct",
+  "query": "NYC wholesale plumbing supply distributor family owned",
+  "freshness": "year",
+  "country": "US",
+  "search_lang": "en",
+  "retrieved_at_date": "2026-07-12",
+  "results": [
+    {
+      "title": "F.W. Webb opens new Somerdale, New Jersey self-service wholesale store | Supply House Times",
+      "url": "https://www.supplyht.com/articles/107154-fw-webb-opens-new-somerdale-new-jersey-self-service-wholesale-store",
+      "description": "Since 1936, <strong>Platsky Company</strong> has been a family-owned Manufacturing Representative in the Plumbing, Heating, Mechanical, Fire, and Decorative industries. Serving manufacturers, wholesalers, architects, engineers, builders, and contractors in the ...",
+      "age": "April 6, 2026",
+      "page_age": "2026-04-06T13:54:50",
+      "source": "Supply House Times"
+    },
+    {
+      "title": "Local Plumbing, Heating & Cooling Supply | RIM Plumbing & Heating",
+      "url": "https://rimsupply.com/",
+      "description": "At <strong>R.I.M. Plumbing &amp; Heating Supply</strong>, we take pride in being a family-owned and operated business serving the Hudson Valley for over 50 years. Our commitment to family values extends to every aspect of our operations, ensuring personalized service ...",
+      "age": "2 weeks ago",
+      "page_age": "2026-07-02T12:29:37",
+      "source": "Rimsupply"
+    },
+    {
+      "title": "About Central Plumbing Specialties | Plumbing Supplies Since '63",
+      "url": "https://www.cpsnys.com/about-us",
+      "description": "FOUNDED IN PRE-WAR NEW YORK CITY BY BROTHERS brothers George and David Rashes, <strong>Central Plumbing Specialties</strong> began as a plumbing supply business. After pausing operations during World War II, the company incorporated in 1963.",
+      "age": "April 29, 2026",
+      "page_age": "2026-04-29T15:49:56",
+      "source": "Central Plumbing TSG"
+    },
+    {
+      "title": "New York Plumbing Supply - Honest, Unbiased Reviews. Helping Consumers Make Better Choices,",
+      "url": "https://reviewshark.com/new-york-plumbing-supply/",
+      "description": "As a <strong>3rd generation business owner</strong>, currently operating out of the same community that his father and grandfather once established businesses in, Derek recognizes the importance of giving back to",
+      "age": "November 20, 2025",
+      "page_age": "2025-11-20T11:34:10",
+      "source": "review"
+    },
+    {
+      "title": "Home - New York Plumbing Supply",
+      "url": "https://nyps1.com/",
+      "description": "New York Plumbing Supply is a premium distributor of commercial and residential plumbing and heating products. Shop fittings, tools, pipe and more!",
+      "age": "April 23, 2026",
+      "page_age": "2026-04-23T16:09:52",
+      "source": "Nyps1"
+    }
+  ]
+}
