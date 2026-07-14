@@ -51,13 +51,13 @@
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 12 local-brief-only pulse found no qualifying role; Job Market Daily Research remains directive-disabled. Agentforce-style assets, release governance, docs, adoption, value reporting support Run Control / AgentPack.
+- Latest: Jul 13 local-brief-only pulse used the Jul 8 artifact; Job Market Daily Research/App Builder/Tracker remain directive-disabled. Asset/release governance signal supports Run Control / AgentPack.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
 ## Crypto / Finance
 - Crypto is research/ranking/threshold-awareness only. Never trade, transfer, swap, spend, or run payment-MCP/x402 experiments without JT approval.
-- Jul 12 crypto loop remains directive-disabled; latest retained research snapshot is Jul 7. X API spend is hot; avoid nonessential X pulls and reuse verified packets.
+- Jul 13 crypto loop remains directive-disabled; latest retained research snapshot is Jul 7. X API spend is hot; avoid nonessential X pulls and reuse verified packets.
 - Detail: `docs/memory/MEMORY-full.md#crypto--finance`.
 
 ## Infrastructure / OpenClaw State
@@ -67,9 +67,9 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Jul 12: Mission Control 283 active / 14 high / 0 overdue / 0 errors; cost empty.
+- Jul 13: Mission Control 283 active / 14 high / 0 overdue / 0 errors; cost empty.
 - Registry: 12 enabled / 60 disabled / 72 total; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day. Weekly Systems Review naturally ran/sent Telegram but ended red on pseudo `run openclaw status`; live prompt patched, no blind rerun.
-- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Passive-income Jul 12 strategist is DEGRADED FALLBACK: BUILD 0, WATCH 4, no MC changes.
+- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Passive-income Jul 12 strategist is DEGRADED FALLBACK; Jul 13 MC validation task was updated.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

@@ -77,3 +77,14 @@ Today’s Daily Send Sheet and Friday Scoreboard both point to the same highest-
 The research implication is unchanged but sharper: do not broaden the proof into a generic property-management AI story before the control inputs are captured. The buyer-facing ask should remain the redacted sample export with columns intact, source report/export process, refresh cadence, named reviewer, and exception rules for payment plans, disputes, recent payments, legal/process-sensitive accounts, credits/prepayments, and missing contact info.
 
 Proof boundary for the next send: the value is the acceptance gate itself. It shows source data, review-only mode, row-level reasons, approval ownership, and the stop condition before any tenant-facing action. That is stronger than a new demo, dashboard, or outreach list until JT sends the staged Altmark request or confirms a newer reply changed the gate.
+
+## 2026-07-13 Addendum - Monday Send-Gate Priority
+
+The July 13 Daily Send Sheet keeps the proof lane practical: three sends are due, but the highest-value research implication is still to make the Altmark rent-delinquency ask easier to approve rather than expanding the product story.
+
+Use this ordering for today:
+- Altmark: closest cash/proof gate. The ask should request the redacted source/export packet, source report path, export process, refresh cadence, output reviewer, and exception rules.
+- Petri Plumbing M2: smallest pipeline-advancing follow-up. Keep it as a prepared send, not a new asset build.
+- HPM/Superior M2: stale but lower-confidence bundle. Send only from the existing packet; do not create a new proof branch before Altmark moves.
+
+Positioning implication: the useful claim remains "review-only run control for sensitive property actions." The artifact should show what was read, which action was allowed or held, who reviews it, and what evidence proves the decision before anything touches tenants, ledgers, owners, or legal-sensitive language.

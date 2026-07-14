@@ -2,6 +2,18 @@
 
 ---
 
+## Jul 13, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent governance is becoming policy-decision evidence, not just an admin setting.** Fresh monitoring shows the strongest new signal in the same control-plane lane: enterprise agent tooling is now making the policy decision itself visible, including the requested action, rule applied, approval requirement, allow/deny result, and audit-log record. The useful buyer proof is not "we have governance"; it is a concrete decision record that shows why a tool call was allowed, held, denied, or escalated.
+
+**JT relevance:** keep Run Control / AI Enablement OS tied to inspectable workflow decisions. For Altmark rent delinquency, Marketsmith/Nexus QA/playbook agents, and future ops-heavy clients, the proof packet should show one row per sensitive step: source record, requested tool/action, policy rule, approval owner, decision state, output location, and retry/rollback path. This keeps the work anchored in buyer-visible operating evidence rather than a new demo.
+
+**Actionable demo angle:** add a "policy decision record" row to the next control-proof artifact. It should show `requested_action`, `policy_rule`, `decision`, `approval_owner`, `evidence_path`, and `rollback_or_retry_rule` next to the source/export row.
+
+Sources checked with local `scripts/web_search.py` on 2026-07-13: Microsoft Agent Governance Toolkit https://github.com/microsoft/agent-governance-toolkit; Blockchain Council MCP manager guide https://www.blockchain-council.org/agentic-ai/ai-agents-with-mcp-explained-managers/; Atlan governed enterprise data access for AI agents https://atlan.com/know/ai-agent/how-to-give-ai-agents-access-to-enterprise-data/; Lyzr Agent Control Plane launch https://www.einpresswire.com/article/925427523/lyzr-launches-control-plane-for-enterprise-ai-agent-deployment-and-governance
+
+---
+
 ## Jul 11, 2026 - Heartbeat AI Tool Monitoring
 
 **Agent gateways are becoming the production control surface for enterprise AI.** Fresh monitoring again shows the same pattern across official/vendor sources: agent identity, central policy enforcement, tool-call governance, per-user or task-based access controls, quotas/budgets, audit logs, and approval gates before high-risk tool use. The important shift is that MCP/tool access is being governed at the gateway/control-plane layer instead of being left inside each individual agent.

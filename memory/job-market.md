@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-07-13 - Directive-Limited Heartbeat Job Market Pulse
+
+Read the current local job-market artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` is still the 2026-07-08 brief, modified 2026-07-08 05:17 EDT. The July directive pack lists Job Market Daily Research, Job Application Auto-Builder, and Job Application Tracker under refused/disabled scope, so no fresh job research, application build, tracker update, or Mission Control role task was created.
+
+**Strongest usable signal:** the last retained brief still points to reusable AI implementation assets, governance gates, release notes, eval/rollback thinking, enablement documentation, and adoption leadership. This remains positioning input only, not a new application branch.
+
+**Positioning implication:** keep job-market energy below Altmark rent-delinquency proof/cash, Marketsmith/Nexus scope closure, and the active send queue. Reuse the signal only to describe JT as an AI operations implementation owner who turns workflows into governed, reviewable operating assets. No new application, certification, build task, or search loop today.
+
+---
+
 ## 2026-07-08 - Heartbeat Job Market Pulse
 
 Read the current job-market-agent artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` is fresh for 2026-07-08 and reports no critical/high JT-fit role. A remote/NYC-salary Salesforce Distinguished Architect signal was disqualified because the work skews toward sales-demo/release-management support with Salesforce lifecycle, OmniStudio, Git, and CI/CD expectations.
