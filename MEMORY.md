@@ -24,7 +24,7 @@
 - Altmark is top paid/proof lane: get/send the rent-delinquency source/export gate, reviewer/rules, and review-only run path before tenant-sensitive action or payment closeout.
 - Best public proof frame: controlled exception handling for delinquency/resident-sensitive follow-up, not autonomous collections.
 - Aya dashboard updates are effectively near-complete; next gate is Gil review/acceptance and proof-safe evidence. Acquisitions remain stalled.
-- Marketsmith Nexus SOW active: recommended reply is $150/hr for initial 80-hour scope ($12K) with scope/ramp/billing guardrails; full SOW detail lives in expanded memory.
+- Marketsmith: Jul 14 pricing pushback; propose one $10,800 fixed-fee Ed SOW, 50% kickoff / 50% completion; no hourly menu, lower anchor, or $100 remote.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
@@ -51,13 +51,13 @@
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 13 local-brief-only pulse used the Jul 8 artifact; Job Market Daily Research/App Builder/Tracker remain directive-disabled. Asset/release governance signal supports Run Control / AgentPack.
+- Latest: Jul 14 local-only pulse used stale Jul 8 brief; job loops directive-disabled; no fresh search/app/task. Signal supports reusable AI implementation/governance proof, not job pivot.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
 ## Crypto / Finance
 - Crypto is research/ranking/threshold-awareness only. Never trade, transfer, swap, spend, or run payment-MCP/x402 experiments without JT approval.
-- Jul 13 crypto loop remains directive-disabled; latest retained research snapshot is Jul 7. X API spend is hot; avoid nonessential X pulls and reuse verified packets.
+- Jul 14 crypto loop remains directive-disabled; full registry confirms three crypto jobs disabled/no next run. Latest retained snapshot Jul 7; avoid X pulls unless JT reactivates/asks.
 - Detail: `docs/memory/MEMORY-full.md#crypto--finance`.
 
 ## Infrastructure / OpenClaw State
@@ -67,9 +67,9 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Jul 13: Mission Control 283 active / 14 high / 0 overdue / 0 errors; cost empty.
-- Registry: 12 enabled / 60 disabled / 72 total; cron volume green at 43/wk, 6.14/day, 3.14 agent-turn/day. Weekly Systems Review naturally ran/sent Telegram but ended red on pseudo `run openclaw status`; live prompt patched, no blind rerun.
-- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Passive-income Jul 12 strategist is DEGRADED FALLBACK; Jul 13 MC validation task was updated.
+- Jul 14: Mission Control 283 active / 14 high / 0 overdue / 0 errors; cost alerts empty; Spanish paused.
+- Registry: 12 enabled / 60 disabled / 72 total; Weekly Systems Review row remains known Jul 12 historical pseudo-command red after useful completion/live patch; no blind rerun.
+- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Passive-income Jul 12 strategist is DEGRADED FALLBACK with MC validation task updated Jul 13.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

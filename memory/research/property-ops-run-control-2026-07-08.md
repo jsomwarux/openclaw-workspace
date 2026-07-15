@@ -88,3 +88,16 @@ Use this ordering for today:
 - HPM/Superior M2: stale but lower-confidence bundle. Send only from the existing packet; do not create a new proof branch before Altmark moves.
 
 Positioning implication: the useful claim remains "review-only run control for sensitive property actions." The artifact should show what was read, which action was allowed or held, who reviews it, and what evidence proves the decision before anything touches tenants, ledgers, owners, or legal-sensitive language.
+
+## 2026-07-14 Addendum - Stale-Send Recovery Gate
+
+The July 14 Daily Send Sheet repeats the same commercial truth with more urgency: verified July cash is still $0, the Altmark rent-delinquency input gate is 33 days stale, and yesterday's surfaced Altmark/Petri/HPM-Superior sends were not confirmed sent.
+
+Research implication: do not create a new PM proof asset today. The highest-value move is to treat the existing Altmark redacted sample request as the control-plane proof: it asks for source report path/export process, refresh cadence, named reviewer, and exception rules before any tenant-facing or ledger-sensitive action. That is exactly the buyer-safe adoption pattern the PM/CRE market keeps validating.
+
+Use this ordering for today:
+- Altmark first: send/confirm the existing redacted sample request and cutover gate. Success condition is client input or a concrete reply path, not a prettier demo.
+- Petri Plumbing second: send the existing M2 note as a small pipeline-advancing action; do not build a new packet.
+- HPM/Superior third: send only from the existing M2 bundle if JT chooses to move the stale bundle; do not let it outrank Altmark proof.
+
+Proof boundary: the Altmark ask should stay framed as review-only workflow control. The evidence to capture is source, reviewer, exception rules, row-level reason, approve/hold/cleanup state, and stop condition before tenant/owner/legal-sensitive output.
