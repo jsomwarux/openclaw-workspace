@@ -573,6 +573,16 @@ No new NYC/remote non-coding AI implementation role should be surfaced today. Th
 
 **Positioning implication:** keep Altmark and Marketsmith framed as cash/proof consulting lanes: source record, reviewer/owner queue, approval boundary, fixed scope, acceptance evidence, rollback/eval thinking, and measurable value report. Do not create a new role target, certification task, demo, or application ahead of active consulting sends and the Marketsmith project-fee proposal path.
 
+## 2026-07-15 — Heartbeat Job Market Pulse
+
+Read the latest local job-market-agent brief at `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`. It is still dated 2026-07-08 and was last modified 2026-07-08 05:17 EDT because `Job Market Daily Research`, `Job Application Auto-Builder`, and `Job Application Tracker` remain intentionally disabled/refused under the July directive pack; live cron registry confirmed all three job-market/application jobs disabled with no next run. No fresh crawl, external search, application, tracker update, role packaging, demo, certification task, or Mission Control role task was run.
+
+No new NYC/remote non-coding AI implementation role should be surfaced today. The retained Salesforce Distinguished Architect signal remains disqualified as a target because it is sales-demo/release-management support with Salesforce lifecycle, OmniStudio, Git, and CI/CD expectations.
+
+**Strongest signal:** the stale-but-retained market read still supports governed reusable AI implementation assets, not a job-market pivot. The useful language remains Agentforce/demo asset packaging, release governance, adoption leadership, documentation, value reporting, and reusable control records.
+
+**Positioning implication:** keep Altmark and Marketsmith framed as cash/proof consulting lanes: source record, reviewer/owner queue, approval boundary, fixed scope, acceptance evidence, rollback/eval thinking, and measurable value report. Do not create a new role target, application package, certification task, or demo ahead of active consulting sends and the Marketsmith fixed-fee proposal path.
+
 ## 2026-07-04 — Heartbeat Job Market Pulse
 
 Read today's job-market-agent brief generated at 2026-07-04 05:15. No new NYC/remote non-coding AI implementation role cleared the 18/25 filter, and the brief had no critical or high severity flags. The role-shaped false positives were AIG Principal Solutions Architect, GenAI and ServiceRocket Delivery Architect: both carry useful AI/adoption language, but AIG is senior enterprise architecture/DevSecOps/data-pipeline heavy and ServiceRocket is Atlassian-platform-specific delivery.
