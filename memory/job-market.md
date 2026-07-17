@@ -563,6 +563,16 @@ No new NYC/remote non-coding AI implementation role should be surfaced today. Th
 
 **Positioning implication:** keep Altmark and MSI/Marketsmith proof framed as consulting-operating evidence: source record, reviewer/owner queue, approval boundary, release note, rollback/eval thinking, and measurable value report. Do not create a new role target, certification task, or demo ahead of consulting cash/proof work.
 
+## 2026-07-16 — Heartbeat Job Market Pulse
+
+Read the latest local job-market-agent brief at `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`. It is still dated 2026-07-08 and was last modified 2026-07-08 05:17 EDT because `Job Market Daily Research`, `Job Application Auto-Builder`, and `Job Application Tracker` remain intentionally disabled/refused under the July directive pack; live cron registry confirmed all three job-market/application jobs disabled with no next run. No fresh crawl, external search, application, tracker update, role packaging, demo, certification task, or Mission Control role task was run.
+
+No new NYC/remote non-coding AI implementation role should be surfaced today. The retained Salesforce Distinguished Architect signal remains disqualified as a target because it is sales-demo/release-management support with Salesforce lifecycle, OmniStudio, Git, and CI/CD expectations.
+
+**Strongest signal:** the stale-but-retained market read still supports reusable implementation assets and governance proof, not a job-market pivot. The useful language remains Agentforce/demo asset packaging, release governance, adoption leadership, documentation, value reporting, and reusable control records.
+
+**Positioning implication:** keep active consulting lanes framed as cash/proof work: Altmark source/export gate, Marketsmith signed delivery/kickoff methodology, Petri/HPM/Superior sends, source record, reviewer/owner queue, approval boundary, fixed scope, acceptance evidence, rollback/eval thinking, and measurable value report. Do not create a new role target, application package, certification task, or demo ahead of active consulting sends and delivery gates.
+
 ## 2026-07-14 — Heartbeat Job Market Pulse
 
 Read the latest local job-market-agent brief at `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`. It is still dated 2026-07-08 and was last modified 2026-07-08 05:17 EDT because `Job Market Daily Research`, `Job Application Auto-Builder`, and `Job Application Tracker` remain intentionally disabled/refused under the July directive pack; no fresh crawl, external search, application, tracker update, role packaging, or Mission Control role task was run.

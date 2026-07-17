@@ -1,4 +1,4 @@
-# Week of 2026-07-06 - Work Log
+# Week of 2026-07-13 - Work Log
 
 - 2026-07-10: Ran first Friday Scoreboard, saved `memory/audits/friday-scoreboards/2026-07-10.md`, created repeat-offender digest `memory/audits/repeat-offenders/2026-07-10.md`, and logged same-day proof `8468cec8`.
 
@@ -14,3 +14,4 @@ Archive every Monday, start fresh.
 - 2026-07-08: Phase 4 migration created 12 surviving-job state files plus `claims/` and `archive/`; proof id `13cb69f0`.
 - 2026-07-09: Restored Mission Control's hidden Passive Income page as a visible Ship subpage and upgraded it into a ranked decision board with score rationale, scorecard dimensions, source files, filters, search, and desktop/mobile screenshots.
 - 2026-07-11: Reconciled Mission Control task priorities around July mandate: Altmark and MSI moved to the top closeout layer, vague combined North Star task archived, Action Arena shifted to JT-owned Apple gate, and Glow/Vista app work archived.
+- 2026-07-16: Loaded JT's canonical state: MSI signed/active delivery, SoberLife and Aya closed-won/paid, cash pipeline/reminders/send queue updated, Watchdog/Outbound v2 benched to August, Action Arena re-gated Aug 15, and Ron/Yair logged as watch-only.

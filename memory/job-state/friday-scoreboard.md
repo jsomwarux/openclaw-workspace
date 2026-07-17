@@ -3,7 +3,7 @@
 ## Current
 1. Last completed run: 2026-07-10T20:02:14Z
 2. Cursor: week ending 2026-07-10
-3. Open items: MSI post-counter reply/acceptance state unknown after July 7; July cash source unverified; proposed pseudo-command linter is yellow for JT approval
+3. Open items: Friday scoreboard must use Jul 16 exact sections; MSI is signed/active delivery; Altmark $2,250 remains blocked; SoberLife/Aya are collected closed-won; live cron prompt still has older embedded format until JT approves cron edit.
 4. Last failure: none
 5. Started marker: 
 

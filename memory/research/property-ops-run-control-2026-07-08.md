@@ -101,3 +101,14 @@ Use this ordering for today:
 - HPM/Superior third: send only from the existing M2 bundle if JT chooses to move the stale bundle; do not let it outrank Altmark proof.
 
 Proof boundary: the Altmark ask should stay framed as review-only workflow control. The evidence to capture is source, reviewer, exception rules, row-level reason, approve/hold/cleanup state, and stop condition before tenant/owner/legal-sensitive output.
+
+## 2026-07-16 Addendum - Outcome-Priced Control Plane
+
+Fresh Agentforce pricing/search checks sharpen the same run-control angle: Salesforce is now selling Agentforce around metered actions and a Help Agent pay-per-resolution path, where successful autonomous resolution matters more than raw interaction volume.
+
+Sources checked:
+- Salesforce Agentforce pricing page, crawled 2026-07-16: Flex Credits remain listed as pay-per-action usage at $500 per 100k credits for customer-facing, employee-facing, voice, wallet, and Agentforce Vibes usage. Source: https://www.salesforce.com/agentforce/pricing/
+- Salesforce Agentforce Help Agent announcement, published late June 2026: Help Agent is framed around pay-per-resolution, with no charge when the issue needs a human or the customer leaves unhappy. Source: https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/
+- Salesforce for Service LinkedIn launch note, published late June 2026: the pitch is outcome-based pricing for issues resolved by the agent rather than token/conversation activity. Source: https://www.linkedin.com/posts/salesforce-for-service_customerservice-cx-aiagent-activity-7475910894582050816-pGE3
+
+JT translation: outcome pricing makes the control layer the sales asset. A credible PM/CRE Workflow Audit should define what counts as resolved, what triggers human escalation, which source record proves the state, and how the buyer audits false-positive resolutions. Altmark stays the best proof because rent-delinquency work has a clear "do not auto-resolve" boundary: review-only classification, exception rules, named approval owner, and tenant/ledger/legal stop conditions.

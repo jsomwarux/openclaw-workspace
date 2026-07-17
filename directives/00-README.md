@@ -62,16 +62,15 @@ Nothing due means one line: "Nothing due today. Clock checked <time>." No news, 
 
 ```
 EVE SCOREBOARD - week ending <date>
-1. CASH: collected this week $X (artifact path). MTD $X. Gap to $10K $X.
-2. SENDS: launched X of 15 target. Replies X. Meetings X. Evidence per item.
-3. PIPELINE MOVEMENT: <stage changes or "none">
-4. NEXT WEEK'S 3 SENDS: <from clock, drafts attached>
-5. CLIENT GATES: Altmark day <n>. MSI silence day <n> of 14. Aya spec check: <result>.
-6. SYSTEM: registry <n> jobs (last week <n>). Killed or reduced this week: <job plus evidence, or "none">. Cron failures <n>. Repeat offenders <n>, worst <signature>. Unverified claims <n>.
-7. ONE DECISION FOR JT: <the single thing only JT can decide>
+1. Cash collected month-to-date vs $10K.
+2. Altmark ladder position: inputs / deployed / accepted / invoiced / paid.
+3. MSI stage: kickoff / milestone n / invoiced / collected.
+4. Asks sent and packets forwarded, with follow-up aging (target: 0 threads stale past 7 days).
+5. Qualified calls held and audits/builds signed.
+6. Exceptions.
 ```
 
-Line 6 is the self-reduction ratchet. Registry count never rises week over week.
+Vanity metrics to never report: LinkedIn impressions/reactions, follower counts, link views without a reply, app downloads, anything crypto, and count of assets/documents produced.
 
 ## Disable list, 33 jobs
 

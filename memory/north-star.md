@@ -1,39 +1,59 @@
-# North Star Scoreboard - 2026-07-07 Night Mandate
+# North Star Scoreboard - 2026-07-16 Canonical Alignment
 
-Truth metric for July: earned consulting cash collected. Documents, drafts, plans, and internal assets do not count as progress unless they cause a JT send, close a gate, or update the cash clock with evidence.
+Truth metric for July: earned consulting cash collected, excluding unemployment. Equity, weighted pipeline, someday-MRR, and paper crypto gains never count and never appear in the number.
 
-## Verified Cash State
+Canonical source: `memory/canonical/jt-mission-control-state-2026-07-16.md`.
 
-- Latest confirmed earned consulting cash in the local scoreboard remains June: $3,375 from Altmark ($1,125 insurance final 50% + $2,250 rent delinquency kickoff).
-- July collected consulting cash: UNVERIFIED from local records checked tonight.
-- Confirmed recurring consulting MRR: $0 / unknown in local records.
-- Closest verified next-dollar gate: Altmark rent delinquency remaining $2,250.
+## Cash Pipeline
+
+| Item | Amount | Status | Gate |
+|---|---|---|---|
+| Altmark rent delinquency remainder | $2,250 | BLOCKED | Client inputs from Yair; escalate now, log-only fallback by ~Jul 24 |
+| DHCR Lease Renewal Phase 1 deposit | ~$1,750 (of $3,500) | PENDING | Matt approval + deposit |
+| MSI engagement | $10,800 (50% kickoff / 50% completion) | SIGNED / IN DELIVERY | $5,400 kickoff, $5,400 completion |
+| SoberLife balance | - | COLLECTED | Closed-won, removed |
+| Aya dashboard | - | COLLECTED | Closed-won, removed |
+
+Every number in the Friday report must come from a logged entry. Where no logged data exists, write "no data." Never estimate or infer.
 
 ## Active July Workstreams
 
-1. Altmark close-out and referral unlock
-   - Current gate: redacted rent delinquency sample export, source report/export process, refresh cadence, named reviewer, and exception rules.
-   - Cash tied to gate: $2,250 remaining on Rent Delinquency Outreach.
-   - Referral ask status: blocked until delivery/payment/proof gates are clean.
-   - Evidence: `memory/clients/altmark-group/status.md` and `memory/clients/altmark-group/proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md`.
+1. Altmark delivery and referral unlock
+   - Verdict: DOUBLE DOWN.
+   - Current gate: delinquency inputs from Yair; escalate now.
+   - Fallback: if still stalled around 2026-07-24, log-only deploy, written build-acceptance request, invoice the $2,250 per contract.
 
-2. MSI / Marketsmith close
-   - Current gate: missing verified July 6-7 reply/no-reply state in local records.
-   - Cash tied to gate: no active value assigned in `memory/pipeline.jsonl`; weekly review frames it as fastest credible +$10K/month path if converted.
-   - Evidence: `reports/north-star/2026-07-05-weekly-review.md` and `memory/pipeline.jsonl`.
+2. MSI delivery
+   - Verdict: ACTIVE, priority slot alongside Altmark.
+   - Status: signed, active delivery, displacement rule in effect.
+   - Cash: $10,800 signed value, 50% kickoff / 50% completion.
 
-3. Contracted collections: Aya, SoberLife/Karen, invoice hygiene
-   - Current gate: no verified send-ready receivable thread found tonight.
-   - Aya: StreetEasy scraper and co-living dashboard are closed/cancelled in `memory/pipeline.jsonl`; acquisitions dashboard only revives on fresh trigger.
-   - SoberLife/Karen: Mission Control has a JT-owned closeout/payment/profile task, but no invoice thread source was verified in this run.
-   - Evidence: `memory/pipeline.jsonl` and Mission Control active task list checked 2026-07-07 23:00 ET.
+3. Governed AI Ops methodology kit
+   - Verdict: BUILD NOW, generic-first.
+   - Trigger: MSI kickoff.
+   - IP boundary: generic methodology is JT's; MSI-specific configs/deliverables are MSI's and must never enter JT's reusable repo.
 
-## Tonight's Queue Result
+4. Warm referral engine
+   - Verdict: DOUBLE DOWN.
+   - Current gate: Gil referral ask and Karen referral ask are now eligible; Yair referral ask fires within 5 business days after delinquency accepted in writing and anonymized summary shown.
 
-- Queue log refreshed at `memory/send-queue.md`.
-- One send is ready by reference: Altmark uses exact existing draft text in `memory/clients/altmark-group/proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md`.
-- Two blockers are explicit: MSI reply/no-reply evidence, and contracted-collections receivable/thread evidence.
+5. Referral packet v1
+   - Verdict: SHIP if not live.
+   - Cap: 6 hours.
+   - Kill loop: no connector forwards packet v1 within 14 days of first ask wave -> fix the ask, not the asset.
+
+## Frozen / Benched / Killed
+
+- Watchdog: BENCHED -> AUGUST. No jobs, copy, or outbound now.
+- Outbound v2: BENCHED -> AUGUST.
+- Action Arena: RE-GATE AUG 15. Apple org conversion is the blocker to clear now; if unresolved, wait for next season.
+- Glow Index: MAINTAIN, 2 hr/wk, Sept 1 data gate.
+- Nash Satoshi / crypto: CAP, 1 merged hr/wk, one human-reviewed receipt.
+- Vista, Market Bubble, Injury Edge, DynastyPulse, permit engine, Guyana: KILLED 90 DAYS.
+- App discovery loop, distribution engine, app marketing OS: SHELVED until 2 consecutive $10K collected months.
+- Eve expansion, toolkit, Mission Control build: FROZEN except status logging, 15-min weekly update.
+- Ron/Yair entity: WATCH ITEM ONLY; no jobs, drafts, or builds.
 
 ## Operating Rule
 
-Do not add cold outreach, app work, crypto work, job-market work, new proof assets, or new dashboards to this July scoreboard before August 1 unless JT directly instructs it or the July mandate changes.
+No external sends. No Beelink / 100.94.117.7 access. No website or client-repo changes. No new offers or jobs beyond the registry without explicit JT instruction. No prospect-specific builds of any kind.

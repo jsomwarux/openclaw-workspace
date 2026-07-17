@@ -48,10 +48,11 @@
 
 ## Current Focus
 - **JT Somwaru Consulting**: primary cash lane — practical AI implementation, workflow automation, run-control/proof systems
-- **MSI / Marketsmith**: active close path — recommended $150/hr for initial 80-hour Nexus scope ($12K), protect scope/ramp/billing guardrails
+- **MSI / Marketsmith**: signed, active delivery — 80-hour fixed-scope Nexus engagement, $10,800 signed value, 50% kickoff / 50% completion; displacement rule in effect
 - **Altmark**: top paid/proof lane — insurance workflow paid; rent delinquency workflow initial 50% paid, remaining $2,250 blocked on source/export/reviewer/cadence/exception inputs
-- **Aya**: $1,500 dashboard done; final review/acceptance/proof-safe evidence remains; StreetEasy cancelled, co-living dead, acquisitions stalled unless fresh trigger appears
-- **Apps**: Glow Index active SEO/GEO bet; Nash Satoshi capped to research receipts; Vista paused unless share/install loop proves; Action Arena gated by App Store/preseason timing
+- **SoberLife-Coach / Karen**: complete and paid; closed-won; Karen referral ask eligible
+- **Aya**: $1,500 dashboard complete and paid; closed-won; Gil referral ask eligible; StreetEasy cancelled, co-living dead, acquisitions stalled unless fresh trigger appears
+- **Apps**: Glow Index maintain only with Sept 1 data gate; Nash capped to one merged hr/week; Vista killed 90 days; Action Arena re-gates Aug 15 after Apple org conversion
 - **Job market**: consulting-first; only exceptional AI Solutions Architect / AI Implementation Lead / AI enablement roles ($150K+ NYC/remote)
 - **Crypto**: opportunity scan/research only; no trades/transfers/financial actions
 - **H.C. Oswald outreach**: holding until personal website polished + demo agents built
