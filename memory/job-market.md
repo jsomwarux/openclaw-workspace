@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-07-17 - Directive-Limited Heartbeat Job Market Pulse
+
+Read the current local job-market artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` is still the 2026-07-08 brief. The July directive-disabled posture remains in effect for recurring job-market research, so no fresh search, application build, tracker update, or Mission Control role task was created.
+
+**Strongest usable signal:** the last retained brief continues to support reusable AI implementation assets, governance gates, release notes, eval/rollback thinking, enablement documentation, adoption leadership, and business judgment.
+
+**Positioning implication:** use this as language for MSI/Altmark/Run Control proof only. Do not open a new application branch or build task from stale job-market input.
+
+---
+
 ## 2026-07-13 - Directive-Limited Heartbeat Job Market Pulse
 
 Read the current local job-market artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` is still the 2026-07-08 brief, modified 2026-07-08 05:17 EDT. The July directive pack lists Job Market Daily Research, Job Application Auto-Builder, and Job Application Tracker under refused/disabled scope, so no fresh job research, application build, tracker update, or Mission Control role task was created.

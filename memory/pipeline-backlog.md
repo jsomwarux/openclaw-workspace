@@ -2,10 +2,12 @@
 
 Do not promote these without JT approval. Active scoreboard stays limited to `memory/pipeline.jsonl`.
 
+## Benched Until 2026-08-01
+- Petri Plumbing: BENCHED - Outbound-v2 cold item deferred until 2026-08-01 per MSI displacement rule. M1 sent 2026-06-01, no reply. Reactivate Aug 1 only if Outbound v2 reopens.
+- HPM / Harlem Property Management: BENCHED - Outbound-v2 cold item deferred until 2026-08-01 per MSI displacement rule. M1 sent 2026-06-01, no reply. Reactivate Aug 1 only if Outbound v2 reopens.
+- Superior Plumbing: BENCHED - Outbound-v2 cold item deferred until 2026-08-01 per MSI displacement rule. M1 sent 2026-06-01, no reply. Reactivate Aug 1 only if Outbound v2 reopens.
+
 ## Revive
-- Petri Plumbing: M1 sent 2026-06-01, no reply. Revive with M2 connection note.
-- HPM / Harlem Property Management: M1 sent 2026-06-01, no reply. Revive with M2 connection note.
-- Superior Plumbing: M1 sent 2026-06-01, no reply. Revive with M2 connection note.
 - Altmark family-office referral lane: revive only after rent delinquency acceptance/proof.
 
 ## Park

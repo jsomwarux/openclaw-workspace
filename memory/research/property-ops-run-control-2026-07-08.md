@@ -112,3 +112,18 @@ Sources checked:
 - Salesforce for Service LinkedIn launch note, published late June 2026: the pitch is outcome-based pricing for issues resolved by the agent rather than token/conversation activity. Source: https://www.linkedin.com/posts/salesforce-for-service_customerservice-cx-aiagent-activity-7475910894582050816-pGE3
 
 JT translation: outcome pricing makes the control layer the sales asset. A credible PM/CRE Workflow Audit should define what counts as resolved, what triggers human escalation, which source record proves the state, and how the buyer audits false-positive resolutions. Altmark stays the best proof because rent-delinquency work has a clear "do not auto-resolve" boundary: review-only classification, exception rules, named approval owner, and tenant/ledger/legal stop conditions.
+
+## 2026-07-17 Addendum - Send-Gate Proof Boundary
+
+The July 17 Daily Send Sheet makes the research implication operational: the right move is not another asset, but sending the existing escalation/confirmation packets that force the approval path into the open. Altmark delinquency inputs, MSI kickoff confirmation, and DHCR deposit chase are all overdue now, and yesterday had 0 confirmed sends.
+
+Fresh search on enterprise agent governance/outcome pricing still points to the same buyer pattern: agents are being evaluated by business outcomes, audit-grade evidence, approval thresholds, and escalation rules rather than by token volume or generic automation.
+
+Sources checked with local `scripts/web_search.py` on 2026-07-17:
+- Windows Forum / Microsoft enterprise agent governance coverage, published 2026-06-29: enterprise agent control requires specifying which humans approve, at what threshold, with what evidence and audit trail. Source: https://windowsforum.com/threads/microsoft-enterprise-ai-agents-control-governance-and-the-audit-trail.432087/
+- Superblocks AI agent governance platform roundup, published 2026-06-30: governance platforms are positioning around centralized control, observability, security, and audit-grade evidence trails. Source: https://www.superblocks.com/blog/ai-agent-governance-platform
+- Elementum enterprise agent platform roundup, published 2026-07-02: enterprise agentic workflows are being packaged around case/orchestration pricing, case management, audit controls, and non-token pricing models. Source: https://www.elementum.ai/blog/best-enterprise-ai-agent-platforms
+- Dataiku enterprise agent tooling guide, published 2026-06-18: enterprise-grade agents should be governed, outcome-evaluated, and supported by RBAC, audit logs, approval workflows, SSO/VPC, and the same governed data layer as other AI assets. Source: https://www.dataiku.com/blog/agentic-ai-tools-for-enterprises
+- Lorikeet regulated-industry audit-trail roundup, published 2026-06-17: outcome-based support-agent pricing is framed around paying only for full resolution, with escalations excluded and enterprise logging/reporting included. Source: https://www.lorikeetcx.ai/articles/best-ai-agents-full-audit-trails-regulated-2026
+
+JT translation: today should treat "send" as the proof event. Altmark proves source/export/reviewer/exception-rule control. MSI proves fixed-fee scope, approval, and delivery gates. DHCR proves deposit/phase decision ownership. The market signal supports asking for decision evidence, not doing more speculative build work before these gates move.

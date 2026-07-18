@@ -1,6 +1,7 @@
 # Marketsmith Fixed-Fee Proposal Send Packet - 2026-07-15
 
 ## Status
+- OBSOLETE FOR DAILY SEND SHEET ROUTING as of 2026-07-17: MSI is signed. Do not surface this packet as "send MSI proposal." Use `memory/clients/marketsmith/kickoff-invoice-action-2026-07-17.md` instead.
 - Purpose: convert the July 14 pricing discussion into one send-ready fixed-fee proposal path.
 - Source context: Karen said $150/hr is above budget, cited $135/hr in office / $100/hr remote benchmarks, and asked JT to look at a project-based structure if the work may not take the full 80 hours.
 - Recommended posture: one fixed-fee proposal for the full Ed SOW scope at $10,800, with 50% due at kickoff and 50% due at completion.

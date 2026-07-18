@@ -535,3 +535,12 @@ JT asked whether daily Nash Satoshi content was optimally generated for both X a
 - Later local state showed MSI signed and active delivery: 80-hour fixed-scope Nexus engagement, $10,800 signed value, 50% kickoff / 50% completion. SoberLife/Karen and Aya dashboard are complete/paid; referral asks are now eligible.
 - Today completed/handled deduped lanes: PM/Agentforce outcome-pricing client/market addendum, AI-tool monitoring on authorization records, directive-disabled crypto check, directive-limited local job-market pulse, and memory maintenance. Content drafting remained constrained because marketing/content generation jobs are killed pending Marketing Stage 3 rebuild and JT approval.
 - Compact `MEMORY.md` refreshed under advisory with Jul 16 client, automation, job, and crypto state.
+
+## 2026-07-17 Heartbeat Memory Maintenance
+- Active-hours baseline through 11:30: Mission Control audit/API ok at 256 active / 12 high / 0 overdue / 0 errors; cost alerts empty; Spanish paused with `last_lesson_date=2026-05-24`.
+- Cron registry remained 12 enabled / 60 disabled / 72 total. The only red enabled row was known Weekly Systems Review `b2ca53ab-0c07-4a22-8424-9d39bf988405`; no blind rerun was started. One shell lacked `node`, but node@22 PATH workaround succeeded.
+- Daily Send Sheet sent at 07:32 with Altmark delinquency inputs escalation, MSI kickoff confirmation, and DHCR Phase 1 deposit chase. Later JT approved data-surface reconciliation only: MSI is signed active delivery and current action is kickoff invoice `$5,400`; `memory/clients/marketsmith/kickoff-invoice-action-2026-07-17.md` supersedes the proposal packet for Daily Send Sheet routing.
+- Petri, HPM, Superior, and the HPM/Superior bundle were moved to BENCHED/snoozed until 2026-08-01 under the MSI displacement rule. DHCR remains a distinct Altmark deposit chase, not Ron/Yair partnership talk.
+- 10AM film review added a Daily Send Sheet stale-routing-after-reconciliation regression row and training-log line. Outreach Pipeline passed by full UUID; crypto jobs remained disabled/refused with no next run and no crypto action.
+- Today completed/handled deduped lanes: send-gate client/market addendum, AI gateway/governance monitoring, directive-disabled crypto check, directive-limited local job-market pulse, 10AM stale-routing regression, and memory maintenance. Content drafting remained constrained by July directives.
+- Compact `MEMORY.md` refreshed under advisory with Jul 17 client, automation, job, and crypto state.

@@ -21,14 +21,15 @@
 
 ## Active Clients
 - Canonical July 16 state: `memory/canonical/jt-mission-control-state-2026-07-16.md`.
-- Closed-won/paid: SoberLife-Coach/Karen and Aya dashboard; Karen and Gil referral asks are now eligible.
-- Altmark is top paid/proof lane: get/send rent-delinquency source/export gate, reviewer/rules, and review-only run path before tenant-sensitive action or payment closeout. $2,250 remains blocked; log-only fallback target is ~Jul 24 if still stalled. Public proof frame = controlled exception handling, not autonomous collections.
-- MSI / Marketsmith is signed active delivery: 80-hour fixed-scope Nexus engagement, $10,800 signed value, 50% kickoff / 50% completion. MSI displacement rule is in effect.
+- Altmark top paid/proof lane: send/confirm rent-delinquency source/export gate, reviewer/rules, and review-only path; $2,250 blocked; log-only fallback ~Jul 24 if still stalled. Public proof = controlled exception handling, not autonomous collections.
+- MSI signed active: $10,800 fixed-scope Nexus, 50% kickoff / 50% completion. Jul 17 action is kickoff invoice only: `memory/clients/marketsmith/kickoff-invoice-action-2026-07-17.md`; proposal packet obsolete. MSI displacement rule active.
+- Closed-won/paid: SoberLife-Coach/Karen and Aya dashboard; Karen and Gil referral asks are eligible.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- July 16 acquisition posture: new-logo acquisition shrinks to referral packet v1, the Yair referral ask at the gate, and at most three warm Tier B/C asks. Lower-tier acquisition is cut for July; Outbound v2 and Watchdog are benched until August.
+- Jul 17 send queue: Altmark delinquency escalation first; MSI kickoff invoice second. Petri/HPM/Superior benched until 2026-08-01; DHCR remains distinct Altmark deposit chase.
+- Referral packet v1 plus Gil/Karen asks are warm paths; lower-tier acquisition cut for July.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix
@@ -49,13 +50,13 @@
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 16 local-only pulse used stale Jul 8 brief; job loops directive-disabled; no fresh search/app/task. Signal supports reusable AI implementation/governance proof, not job pivot.
+- Latest: Jul 17 local-only pulse used stale Jul 8 brief; job loops directive-disabled; no fresh search/app/task. Signal supports reusable AI implementation/governance proof, not job pivot.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
 ## Crypto / Finance
 - Crypto is research/ranking/threshold-awareness only. Never trade, transfer, swap, spend, or run payment-MCP/x402 experiments without JT approval.
-- Jul 16 crypto loop remains directive-disabled; full registry confirms three crypto jobs disabled/no next run. Latest retained snapshot Jul 7; avoid X pulls unless JT reactivates/asks.
+- Jul 17 crypto loop remains directive-disabled; full registry confirms three crypto jobs disabled/no next run. Latest retained snapshot Jul 7; avoid X pulls unless JT reactivates/asks.
 - Detail: `docs/memory/MEMORY-full.md#crypto--finance`.
 
 ## Infrastructure / OpenClaw State
@@ -66,7 +67,7 @@
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
 - Registry: 12 enabled / 60 disabled / 72 total; Weekly Systems Review row remains known Jul 12 historical pseudo-command red after useful completion/live patch; no blind rerun.
-- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT explicitly reactivates. Jul 16 lanes handled: client/market addendum, AI-tool authorization-record signal, crypto disabled check, job local-only pulse, and memory refresh.
+- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT reactivates. Jul 17 lanes handled: send-gate research, AI gateway signal, crypto disabled check, job local-only pulse, stale-routing regression, and memory refresh.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
