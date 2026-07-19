@@ -1,23 +1,19 @@
-# Exploding Topics — 2026-07-11
-_14 categories | 1454 total topics | real API data_
-Generated: 2026-07-11 05:34:41
+# Exploding Topics — 2026-07-18
+_14 categories | 1451 total topics | real API data_
+Generated: 2026-07-18 05:34:44
 
 **Priority guide:** 🔴 high (non-tech, highest PI signal) | 🟡 medium | 🔵 low (saturated tech)_
 **Growth format:** '99x+' means 99x or greater. '5.67x' means 5.67x growth over 24 months.
 
 **Key fields:** keyword | growth (24mo) | volume (monthly searches) | CPC ($) | sub-categories
 
-## 🔴 Beauty & Personal Care — HIGH | 157/157 topics
-- **Klow peptide** | growth: 98.00x | vol: 49,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/klow-peptide)
-  _A 4-peptide complex designed to support natural recovery, cellular renewal, and tissue resilience. It includes BPC-157, which is known for its potenti_
+## 🔴 Beauty & Personal Care — HIGH | 152/152 topics
 - **Pdrn  serum** | growth: 60.00x | vol: 74,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/pdrn-serum-nLoLq6tz)
   _This skincare product incorporates Polydeoxyribonucleotide (PDRN), a compound sourced from salmon DNA, known for its compatibility with human DNA. It _
 - **Hydrating conditioner** | growth: 10.40x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/hydrating-conditioner)
   _A hair care product formulated to replenish moisture and repair hair, providing protection against future damage. Hydrating conditioners are especiall_
 - **Glossing shampoo** | growth: 10.00x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/glossing-shampoo)
   _This type of hair care product is formulated to enhance shine and smoothness while protecting hair color from fading. Glossing shampoos typically cont_
-- **Milky moisturizer** | growth: 9.25x | vol: 2,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/milky-moisturizer-89Hevj9N)
-  _This skincare product is formulated with Snow Mushroom, Hyaluronic Acid, and Shea Butter to enhance skin barrier strength and deliver prolonged hydrat_
 - **Coconut fragrance** | growth: 8.09x | vol: 33,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/coconut-fragrance)
   _A sweet, creamy, and nutty scent often used in perfumes, body lotions, candles, and air fresheners, evoking tropical and beachy themes. This fragrance_
 - **Protein shampoo** | growth: 8.09x | vol: 8,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/protein-shampoo-fJdFs5Lu)
@@ -30,8 +26,6 @@ Generated: 2026-07-11 05:34:41
   _Styling product used to enhance volume, texture, and hold in hair, typically applied to damp hair before styling. It is particularly effective for cre_
 - **Cream Mist** | growth: 6.25x | vol: 1,300 | cpc: ? |  | [link](https://explodingtopics.com/topics/cream-mist)
   _Cream mist is a hybrid skincare product that combines the hydration of a mist with the nourishment of a cream, typically delivered in a fine spray for_
-- **Micro-sculpting cream** | growth: 6.20x | vol: 74,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/micro-sculpting-cream-p8LuxWzC)
-  _This anti-aging moisturizer is formulated to hydrate the skin and maintain its youthful surface contours. It is distinguished by its use of advanced i_
 - **Transparent mascara** | growth: 6.11x | vol: 4,810 | cpc: ? |  | [link](https://explodingtopics.com/topics/transparent-mascara-Lp9H7SFT)
   _Clear mascara is a cosmetic product used to define and separate eyelashes without adding any color, offering a natural appearance. It can also serve a_
 - **Milk mist** | growth: 5.88x | vol: 60,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/milk-mist)
@@ -42,18 +36,22 @@ Generated: 2026-07-11 05:34:41
   _Beef tallow face cream is a skincare product formulated using rendered fat from cattle, valued for its high content of vitamins A, D, E, and K and its_
 - **Spf serum** | growth: 5.56x | vol: 12,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/spf-serum)
   _An SPF serum is a skincare product that combines sun protection with the lightweight texture and active ingredients commonly found in facial serums. I_
-- **Nectar oil** | growth: 5.25x | vol: 390 | cpc: ? |  | [link](https://explodingtopics.com/topics/nectar-oil-rc2qixjy)
+- **Nectar oil** | growth: 5.25x | vol: 260 | cpc: ? |  | [link](https://explodingtopics.com/topics/nectar-oil-rc2qixjy)
   _NECTAR Nourishing Face Oil is a botanical facial oil designed to hydrate, nourish, and support the appearance of healthy skin using a blend of organic_
 - **Water cream** | growth: 5.00x | vol: 5,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/water-cream)
   _A lightweight, gel-like moisturizer designed to hydrate the skin without feeling heavy, often containing ingredients like hyaluronic acid and botanica_
 - **Conditioner bar** | growth: 4.71x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/conditioner-bar)
   _Solid forms of hair conditioner designed to moisturize and detangle hair, similar in appearance to a bar of soap. Conditioner bars are often made with_
+- **Curl foam** | growth: 4.63x | vol: 2,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/curl-foam)
+  _Curl foam is a hairstyling product designed to define, enhance, and hold natural curls while maintaining a lightweight feel. It distinguishes itself f_
+- **Capsule Cream** | growth: 4.58x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/capsule-cream)
+  _Skincare product designed to provide long-lasting hydration and barrier care, suitable for all skin types. It utilizes hyaluronic acid to deliver mois_
+- **Anti-dandruff shampoo** | growth: 4.27x | vol: 368,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/anti-dandruff-shampoo)
+  _Specialized hair care products formulated to treat and prevent dandruff by incorporating active ingredients such as ketoconazole and salicylic acid. T_
 
-## 🔴 Health & Wellness — HIGH | 180/180 topics
+## 🔴 Health & Wellness — HIGH | 181/181 topics
 - **Retatrutide** | growth: 99x+ | vol: 1,830,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/retatrutide-8cpJpWHN)
   _This is a triple agonist medication developed by Eli Lilly, designed to aid in weight loss by targeting multiple pathways. It distinguishes itself by _
-- **Klow peptide** | growth: 98.00x | vol: 49,500 | cpc: ? |  | [link](https://explodingtopics.com/topics/klow-peptide)
-  _A 4-peptide complex designed to support natural recovery, cellular renewal, and tissue resilience. It includes BPC-157, which is known for its potenti_
 - **Emora health** | growth: 89.00x | vol: 3,600 | cpc: ? |  | [link](https://explodingtopics.com/topics/emora-health)
   _Virtual behavioral therapy provider focusing on mental health issues for children, teens, and young adults. Emora Health differentiates itself by offe_
 - **Thyroid Ayurvedic Tablet** | growth: 52.00x | vol: 720 | cpc: ? |  | [link](https://explodingtopics.com/topics/thyroid-ayurvedic-tablet)
@@ -82,7 +80,7 @@ Generated: 2026-07-11 05:34:41
   _A hormone produced in the intestine and other sites, playing a crucial role in regulating glucose metabolism. It stimulates insulin secretion, inhibit_
 - **Vt cosmetics** | growth: 6.60x | vol: 74,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/vt-cosmetics-achTp7kn)
   _South Korean beauty brand recognized for its skincare and makeup products, often collaborating with celebrities such as BTS. Vt Cosmetics is distingui_
-- **Walking yoga** | growth: 6.33x | vol: 9,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/walking-yoga)
+- **Walking yoga** | growth: 6.33x | vol: 6,600 | cpc: ? |  | [link](https://explodingtopics.com/topics/walking-yoga)
   _This practice integrates walking with yoga by coordinating steps with breath and incorporating pauses for yoga poses like side bends or twists. It off_
 - **Protein Coffee** | growth: 6.09x | vol: 74,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/protein-coffee)
   _Protein coffee is a functional beverage that combines coffee with added protein, typically in the form of whey, collagen, or plant-based protein. It o_
@@ -90,9 +88,11 @@ Generated: 2026-07-11 05:34:41
   _Beef tallow face cream is a skincare product formulated using rendered fat from cattle, valued for its high content of vitamins A, D, E, and K and its_
 - **Spf serum** | growth: 5.56x | vol: 12,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/spf-serum)
   _An SPF serum is a skincare product that combines sun protection with the lightweight texture and active ingredients commonly found in facial serums. I_
+- **Odyssey Elixir** | growth: 5.50x | vol: 4,400 | cpc: ? |  | [link](https://explodingtopics.com/topics/odyssey-elixir)
+  _Nootropic product designed to enhance cognitive functions such as memory, focus, and learning. It utilizes a high concentration of active mushroom com_
 
 ## 🔴 Food & Drink — HIGH | 83/83 topics
-- **Shotis puri** | growth: 47.00x | vol: 1,300 | cpc: ? |  | [link](https://explodingtopics.com/topics/shotis-puri)
+- **Shotis puri** | growth: 47.00x | vol: 1,600 | cpc: ? |  | [link](https://explodingtopics.com/topics/shotis-puri)
   _Traditional Georgian flatbread that is a daily staple in the Republic of Georgia. Shotis puri is baked in a deep clay oven called a 'tone,' giving it _
 - **Coconut fragrance** | growth: 8.09x | vol: 33,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/coconut-fragrance)
   _A sweet, creamy, and nutty scent often used in perfumes, body lotions, candles, and air fresheners, evoking tropical and beachy themes. This fragrance_
@@ -157,7 +157,7 @@ Generated: 2026-07-11 05:34:41
 - **Gametime** | growth: 0.28x | vol: 301,000 | cpc: ? |  | [link](https://explodingtopics.com/topics/gametime)
   _Gametime is a mobile-first ticketing platform that specializes in last-minute tickets for sports, music, and theater events across the U.S. and Canada_
 
-## 🔴 Lifestyle & Hobbies — HIGH | 171/171 topics
+## 🔴 Lifestyle & Hobbies — HIGH | 172/172 topics
 - **Barrel leg pants** | growth: 27.67x | vol: 12,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/barrel-leg-pants-ih34TQ7G)
   _These trousers feature a wide, rounded silhouette that tapers at the ankle, providing a relaxed and comfortable fit. They are distinguished by their v_
 - **Suede sneakers** | growth: 12.80x | vol: 18,100 | cpc: ? |  | [link](https://explodingtopics.com/topics/suede-sneakers)
@@ -172,7 +172,7 @@ Generated: 2026-07-11 05:34:41
   _A type of skirt that resembles a slip, typically crafted from lightweight, silky materials such as satin or silk. Known for its simple, elegant design_
 - **Twin floor bed** | growth: 6.70x | vol: 6,600 | cpc: ? |  | [link](https://explodingtopics.com/topics/twin-floor-bed)
   _This type of bed is designed to be low to the ground, making it suitable for children's rooms or minimalist decor. Twin floor beds often come in vario_
-- **Walking yoga** | growth: 6.33x | vol: 9,900 | cpc: ? |  | [link](https://explodingtopics.com/topics/walking-yoga)
+- **Walking yoga** | growth: 6.33x | vol: 6,600 | cpc: ? |  | [link](https://explodingtopics.com/topics/walking-yoga)
   _This practice integrates walking with yoga by coordinating steps with breath and incorporating pauses for yoga poses like side bends or twists. It off_
 - **Beef tallow face cream** | growth: 5.73x | vol: 3,600 | cpc: ? |  | [link](https://explodingtopics.com/topics/beef-tallow-face-cream-JteAGSXf)
   _Beef tallow face cream is a skincare product formulated using rendered fat from cattle, valued for its high content of vitamins A, D, E, and K and its_
