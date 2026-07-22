@@ -24,6 +24,7 @@ Detailed rules extracted from `HEARTBEAT.md` to keep the bootstrap file below bu
 
 ## Weekly Systems Review
 - Open with the North Star scoreboard from `memory/north-star.md`, then report consulting pipeline stage movement, `waiting_on` items older than 7 days from `memory/pipeline.jsonl`, and the six KPI numbers before recommendations.
+- For cash collected, reconcile the live Mission Control `/api/revenue` `metrics.consultingCollected` value with the Friday Scoreboard and canonical/client state before reporting. If the sources disagree, write `cash source conflict` with each source/value and do not carry forward older `$5,575` June/weekly-review figures as July collected cash without a logged payment source.
 - Systems review owns cron health, file budgets, process/config/plugin checks, cost review, training/regression drift, autoresearch enrollment, `memory/future-signals.md`, and passive-income idea pruning.
 - Run `python3 scripts/cron_volume_guard.py`; if it fails, prune/consolidate nonessential schedules or create one explicit Mission Control blocker with the top offending schedules.
 - If a future signal triggers, push a HIGH MC task, move it to Graduated with date+trigger, and report it.
