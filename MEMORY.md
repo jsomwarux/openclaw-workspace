@@ -67,7 +67,7 @@
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
 - Registry: 12 enabled / 60 disabled / 72 total; Weekly Systems Review row remains known Jul 12 historical pseudo-command red after useful completion/live patch; no blind rerun.
-- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT reactivates. Jul 21: MC 248 active / 12 high / 0 overdue; costs empty; Spanish paused; cron 72 total / 12 enabled / 0 suspicious; Daily Send cash-source conflict guard added; proactive research + AI tool notes logged.
+- Directive-disabled crypto/job/content loops are not misses; no rerun/enable/alert/spend unless JT reactivates. 7/22: MC 248 active / 12 high / 0 overdue; costs empty; Spanish paused; cron 72 total / 12 enabled / 0 suspicious; Send search hardening, memory refresh logged.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

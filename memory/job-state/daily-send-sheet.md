@@ -1,14 +1,15 @@
 # State: Daily Send Sheet
 
 ## Current
-1. Last completed run: 2026-07-21T11:30:00Z
-2. Cursor: send-queue 2026-07-21; MC tasks reachable via `/api/tasks`; local cash source from `/api/revenue` confirms consultingCollected $0 and Friday Scoreboard 2026-07-17 confirms $10,000 gap to $10K. 2026-07-21 10AM film review noted that Weekly Systems Review 2026-07-19 carried `$5,575` as July collected without matching `/api/revenue`/Friday Scoreboard evidence; treat that as a cash-source conflict for WSR audit, not as a Daily Send Sheet override.
+1. Last completed run: 2026-07-22T11:30:00Z
+2. Cursor: send-queue 2026-07-22; MC tasks reachable via `/api/tasks`; local cash source from `/api/revenue` confirms consultingCollected $0 and Friday Scoreboard 2026-07-17 confirms $10,000 gap to $10K. 2026-07-21 10AM film review noted that Weekly Systems Review 2026-07-19 carried `$5,575` as July collected without matching `/api/revenue`/Friday Scoreboard evidence; treat that as a cash-source conflict for WSR audit, not as a Daily Send Sheet override.
 3. Open items: Altmark delinquency escalation; MSI kickoff invoice; DHCR decision chase conditional after rent delinquency gate; Gil/Karen referral asks eligible but not in top 3.
 4. Last failure: none
-5. Started marker: 2026-07-21T11:30:00Z
+5. Started marker: 2026-07-22T11:30:00Z
 6. Routing note: generated `memory/send-queue.md` may contain fewer than three items; Daily Send Sheet can fill the cap from current Mission Control/client action artifacts. For 2026-07-18, keep DHCR decision chase as the third send from the active Altmark DHCR task and `memory/clients/altmark-group/proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, even though generated send queue lists only Altmark delinquency and MSI.
 
 ## Runs, last 5, newest first
+1. 2026-07-22T11:30:00Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/revenue`, memory/2026-07-21.md, reports/mission-control-priority/2026-07-21.md, reports/outreach-pipeline/2026-07-22-script-first-preflight.md, memory/audits/friday-scoreboards/2026-07-17.md, Altmark Yair unblock packet, Altmark DHCR kickoff command sheet, Marketsmith kickoff invoice action.
 1. 2026-07-21T11:30:00Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/revenue`, memory/2026-07-20.md, reports/mission-control-priority/2026-07-20.md, memory/audits/friday-scoreboards/2026-07-17.md, Altmark redacted sample gate, Marketsmith kickoff invoice action.
 1. 2026-07-20T11:31:29Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/revenue`, memory/2026-07-19.md, reports/mission-control-priority/2026-07-19.md, reports/outreach-pipeline/2026-07-20-script-first-preflight.md, memory/audits/friday-scoreboards/2026-07-17.md, Altmark Yair unblock packet, Marketsmith kickoff invoice action.
 1. 2026-07-19T11:30:00Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/tasks` redirect, reports/mission-control-priority/2026-07-18.md, memory/pipeline.jsonl, memory/2026-07-18.md, memory/audits/friday-scoreboards/2026-07-17.md, Altmark Yair unblock packet, Altmark DHCR kickoff command sheet, Marketsmith kickoff invoice action.

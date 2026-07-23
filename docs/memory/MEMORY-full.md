@@ -553,3 +553,10 @@ JT asked whether daily Nash Satoshi content was optimally generated for both X a
 - 10AM film review accepted the already-owned Weekly Systems Review pseudo cost-tracker issue because the prompt had been patched on Jul 19 with literal `python3 scripts/cost-tracker.py --weekly-review`; regression rows for pseudo commands/API shape remained active.
 - Proactive dedupe honored through the day: 14:12 added client/market research to `memory/research/heartbeat-market-signals.md` on governed-agent buyer signals from NIST AI 600-1, OWASP Agentic AI threats/mitigations, and Microsoft Entra Agent ID; 18:12 added `memory/ai-tools.md` monitoring on runtime enforcement, identity, safe tool binding, policy decisions, and audit trails; 22:00 skipped directive-disabled crypto/job/content lanes and refreshed compact/full memory.
 - Compact `MEMORY.md` refreshed under advisory with Jul 20 automation baseline. Touched-file `git diff --check` passed for heartbeat/memory updates.
+
+## 2026-07-22 Heartbeat Memory Maintenance
+- Active-hours baseline through 18:12: Mission Control audit/API ok at 248 active-like / 12 high / 0 overdue / 0 errors / 0 changes; cost alerts empty; Spanish paused with `last_lesson_date=2026-05-24`, day 73/week 13.
+- Daily Send Sheet delivered at 07:30 with 3 send-ready items and `$0` MTD / `$10,000` gap. Heartbeats did not duplicate sends, invoices, payment links, client messages, or Telegram alerts.
+- Cron state: 72 total, 12 enabled, 0 suspicious rows after node@22 PATH scan; cron volume guard green at 43 estimated weekly invocations. Weekly Systems Review remains a known historical metadata issue only; no blind rerun.
+- 10AM film review hardened Daily Send Sheet by patching `eve-morning-brief-001` with a command-safe `rg ... || true` evidence-search rule instead of pseudo `search ... (agent)` text. Existing pseudo-command regression row remains the owner check.
+- Proactive dedupe honored: 10:12 added PM lease/delinquency control-record research, 14:12 added AI tool monitoring on MCP/tool-access observability, and 18:12 skipped directive-disabled/constrained crypto/job/content lanes and refreshed memory.
