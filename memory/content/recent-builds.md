@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Passive Income Strategist Recovery + Mission Control Startup Repair — 2026-07-27
+**What:** Recovered the Passive Income Strategist fallback report/delivery path and repaired Mission Control startup scripts for the installed Homebrew `node@22` path.
+**For:** internal Eve operations.
+**Outcome:** Strategist guard verification returned `ok=true`, `fresh_for_report=true`, and `problems=[]`; Telegram digest marker refreshed to message `25289`; Mission Control `/api/tasks` returned 248 active tasks after Next.js and Convex started.
+**Demonstrates:** cron/artifact recovery, delivery-marker verification, internal ops self-healing, and local service repair.
+**Content angle:** A cron saying OK is not proof. The artifact, fresh delivery marker, and downstream task API need to agree.
+**Status:** complete.
+
 ## Karen Vitale SoberLife-Coach Website — 2026-07-02
 **What:** Finished and verified the live SoberLife-Coach website for Karen Vitale with clear confidential recovery-coaching positioning, executive/public-figure/family audience paths, credential proof, and consultation CTA.
 **For:** Karen Vitale client work.

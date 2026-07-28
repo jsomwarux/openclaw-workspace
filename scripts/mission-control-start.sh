@@ -9,9 +9,15 @@
 # and changes its deployment ID, the stale build can't connect → 500 errors.
 # `next dev` reads .env.local at startup, always fresh. No rebuild needed.
 
-export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+export PATH="/opt/homebrew/opt/node@22/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
 export HOME="/Users/jtsomwaru"
 
 cd /Users/jtsomwaru/.openclaw/workspace/mission-control
 
-exec /opt/homebrew/bin/node node_modules/.bin/next dev -H 127.0.0.1 -p 3000
+NODE_BIN="$(command -v node)"
+if [ -z "$NODE_BIN" ]; then
+  echo "node not found on PATH: $PATH" >&2
+  exit 127
+fi
+
+exec "$NODE_BIN" node_modules/.bin/next dev -H 127.0.0.1 -p 3000

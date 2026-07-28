@@ -5,6 +5,22 @@
 ## Logging Rule
 Every entry MUST have six fields: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete guardrail/rule, (4) regression check that would catch recurrence, (5) owner surface updated, (6) verification/date. A mistake entry without a regression check + owner surface is incomplete — finish it before moving on. Reference: `docs/agents/regression-checks.md`.
 
+## 2026-07-27 — Passive Income Strategist guard reported before the artifact existed
+- **Failure:** Passive Income Strategist sent a silent-failure alert for 2026-07-27 pointing at `memory/passive-income/2026-07-27-strategist.md` before a valid strategist report existed, then required a manual guard rerun to send the actual fallback digest.
+- **Root cause:** The scheduled cron payload had been reduced to deterministic fallback/delivery only, but the delivery guard's verification/send flow allowed an old marker to be evaluated before the fallback report and fresh marker were in place. Cron status could remain `ok` or `already-running` while the user-visible artifact contract was still false.
+- **Guardrail/rule:** Strategist delivery is not complete unless the same-run verification JSON returns `ok=true`, `report_exists=true`, `fresh_for_report=true`, and `problems=[]` after any fallback send. A status `ok` run summary is not sufficient.
+- **Regression check:** Run `set -a; source /Users/jtsomwaru/.config/env/global.env; set +a; python3 /Users/jtsomwaru/.openclaw/workspace/scripts/passive_income_strategist_delivery_guard.py --date YYYY-MM-DD` after every strategist guard/send; fail the job if `ok` is false or `fresh_for_report` is false.
+- **Owner surface updated:** `memory/job-state/passive-income-strategist.md`, Mission Control task `[PI] Validate fallback-only Passive Income Strategist weeks`, and this Mistakes Log entry. Structural script fix remains assigned in MC.
+- **Verification/date:** 2026-07-27 — manual guard rerun sent Telegram message `25289`, wrote `memory/passive-income/2026-07-27-strategist.md`, refreshed `memory/passive-income/2026-07-27-strategist-delivery.json`, and post-send guard verification returned `ok=true` with `problems=[]`.
+
+## 2026-07-27 — Mission Control scripts hardcoded stale Homebrew Node path
+- **Failure:** Mission Control task API was unavailable during the strategist follow-up because Next.js could not reach Convex, and the approved start scripts failed with `/opt/homebrew/bin/node: No such file or directory` / missing `npx`.
+- **Root cause:** The LaunchAgent scripts assumed unversioned Homebrew Node shims under `/opt/homebrew/bin`, while this machine currently exposes Node through `/opt/homebrew/opt/node@22/bin`. The scripts had no dynamic binary lookup or explicit failure message.
+- **Guardrail/rule:** Approved Mission Control start scripts must put the stable Homebrew `node@22` opt path on `PATH` and resolve `node`/`npx` with `command -v` before `exec`.
+- **Regression check:** Run `bash scripts/mission-control-start.sh` and `bash scripts/mission-control-convex-sync.sh` when Mission Control is unreachable; then verify `curl -s --max-time 10 http://localhost:3000/api/tasks` returns parseable JSON.
+- **Owner surface updated:** `scripts/mission-control-start.sh`, `scripts/mission-control-convex-sync.sh`, and this Mistakes Log entry.
+- **Verification/date:** 2026-07-27 — both services started, Convex functions became ready, and `/api/tasks` returned 248 active tasks.
+
 ## 2026-06-18 — Glow measurement update stalled after status promises
 - **Failure:** JT had to ask "Update?" repeatedly during the Glow post-deploy measurement step because I twice said I was finishing the baseline note, then did not produce the artifact or proactively close the loop.
 - **Root cause:** I treated the active-conversation status reply as progress instead of anchoring the work to an artifact gate. The task was no longer code-heavy, so I let measurement-note writing drift behind repeated observational checks.
@@ -724,3 +740,10 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** For AI Ops Teardown weekly runs, `rg -n "\"posted\":true|JT_CONFIRMED|Status: posted" memory/content/posted-log.jsonl memory/content/bank memory/consulting/ai-ops-teardowns/delivery-calendar.md` must be checked before selecting an existing bundle; no selected topic may have a posted/retired marker.
 - **Owner surface updated:** `memory/consulting/ai-ops-teardowns/delivery-calendar.md`, `memory/content/posted-log.jsonl`, `agents/ai-ops-teardown/weekly-prompt.md`, Mission Control task `j57fdnkcyd9ath934d35cyrdnh87tcbz`, and this Mistakes Log entry.
 - **Verification/date:** 2026-07-05 — Canals delivery calendar moved to Posted / Retired, posted-log changed to posted with URL-not-captured marker, weekly prompt gained the cross-check rule, and Mission Control task `j57fdnkcyd9ath934d35cyrdnh87tcbz` verified `status: done`.
+## 2026-07-23 — One-shot reminder inherited `deleteAfterRun:true`
+- **Failure:** The Brandon doctor's-note one-shot reminder was initially created with the cron tool's default `deleteAfterRun:true`, violating the standing cron safety rule.
+- **Root cause:** I assumed omitting `deleteAfterRun` would preserve the workspace safety default, but the cron add tool auto-filled `deleteAfterRun:true` for an `at` schedule.
+- **Guardrail/rule:** Every one-shot reminder or `schedule.kind="at"` cron must be verified immediately after creation for `deleteAfterRun:false`, enabled state, intended local time, and delivery target before reporting done.
+- **Regression check:** After any one-shot cron add, run `openclaw.cron get` or registry inspection and fail closeout unless `deleteAfterRun:false` is present; patch it before final response if needed.
+- **Owner surface updated:** `docs/agents/regression-checks.md`, `docs/agents/mistakes-log-recent.md`, and OpenClaw one-shot reminder closeout behavior.
+- **Verification/date:** 2026-07-23 — patched cron `74a5b557-084e-4632-b3de-4b8c9cb5ac62` to `deleteAfterRun:false`; `openclaw.cron get` confirmed enabled, 2026-07-24 1:00PM ET next run, Telegram announce delivery, and `deleteAfterRun:false`.

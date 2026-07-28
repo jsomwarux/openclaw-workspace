@@ -1,4 +1,4 @@
-# Week of 2026-07-13 - Work Log
+# Week of 2026-07-27 - Work Log
 
 - 2026-07-10: Ran first Friday Scoreboard, saved `memory/audits/friday-scoreboards/2026-07-10.md`, created repeat-offender digest `memory/audits/repeat-offenders/2026-07-10.md`, and logged same-day proof `8468cec8`.
 
@@ -16,3 +16,7 @@ Archive every Monday, start fresh.
 - 2026-07-11: Reconciled Mission Control task priorities around July mandate: Altmark and MSI moved to the top closeout layer, vague combined North Star task archived, Action Arena shifted to JT-owned Apple gate, and Glow/Vista app work archived.
 - 2026-07-16: Loaded JT's canonical state: MSI signed/active delivery, SoberLife and Aya closed-won/paid, cash pipeline/reminders/send queue updated, Watchdog/Outbound v2 benched to August, Action Arena re-gated Aug 15, and Ron/Yair logged as watch-only.
 - 2026-07-17: Reconciled Daily Send Sheet data to July 16 state: MSI now points to kickoff invoice $5,400, Petri/HPM/Superior are benched until Aug 1 across queue/backlog/MC/pipeline state, and DHCR remains a client deposit chase.
+- 2026-07-23: Added nightly Claude Daily Delta Packet reminder cron (`fbae700d-4e23-414a-8a4e-dc563176d4b3`) and updated MEMORY/CLAUDE tracking; volume guard passed.
+- 2026-07-23: Added one-shot Brandon doctor's-note text reminder for Jul 24 1PM ET (`74a5b557-084e-4632-b3de-4b8c9cb5ac62`); corrected `deleteAfterRun:false` and verified volume guard stayed green.
+- 2026-07-27: Reran Passive Income Strategist fallback, verified `memory/passive-income/2026-07-27-strategist.md` and delivery marker message `25289`, updated the fallback-only MC task, and fixed Mission Control start scripts for Homebrew `node@22`.
+- 2026-07-27: Ran Friday Scoreboard off local evidence, saved `memory/audits/friday-scoreboards/2026-07-27.md` and `memory/audits/repeat-offenders/2026-07-27.md`, and logged proof `bb9983e0`; cash-source conflict and registry rise were reported instead of smoothed over.

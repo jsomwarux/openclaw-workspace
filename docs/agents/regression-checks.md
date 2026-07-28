@@ -284,3 +284,10 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Fail condition:** A completion summary, status list, rg verification, or broad scoped `git status` is sent instead of the individual file diffs requested for approval.
 - **Recovery:** Stop before commit, send every missing individual diff, then wait for confirmation.
 - **Owner surface:** live-file gated edit workflow, Distribution/App Marketing OS change reviews, `docs/agents/mistakes-log-recent.md`.
+
+## One-shot cron deleteAfterRun check
+- **Trigger:** Any one-shot reminder or `schedule.kind=\"at\"` cron created through OpenClaw cron tooling.
+- **Check:** Immediately run `openclaw.cron get` or equivalent registry inspection after creation and confirm `deleteAfterRun:false`, enabled state, intended local run time, delivery target, and no schedule collisions. If the tool defaulted to `deleteAfterRun:true`, patch it to false before reporting done.
+- **Fail condition:** A one-shot reminder remains with `deleteAfterRun:true`, or completion is reported before verifying the live cron record after creation.
+- **Recovery:** Patch the cron with `deleteAfterRun:false`, verify with `get`, and log the correction in the daily note/proof log if it happened during the same turn.
+- **Owner surface:** OpenClaw one-shot reminder workflow, cron setup closeout checks, `docs/agents/mistakes-log-recent.md`.
