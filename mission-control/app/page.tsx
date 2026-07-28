@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import { AlertTriangle, Bell, Bot, ChevronDown, ChevronRight, CircleDollarSign } from "lucide-react";
 import { InspectionDrawer } from "@/components/mission-control/InspectionDrawer";
 import { StateBlock } from "@/components/mission-control/StateBlock";
@@ -20,6 +21,33 @@ type TaskPatch = {
   snoozedUntil?: number;
   waitingOn?: Signal["waitingOn"];
 };
+
+type ClientRef = { name: string; slug: string };
+
+// A task's client, resolved from its stored clientId via /api/clients. Reuses the
+// project slot on NOW/UP NEXT — a chip that deep-links to the client's detail.
+function ClientTag({ client }: { client: ClientRef }) {
+  const router = useRouter();
+  return (
+    <span
+      role="link"
+      tabIndex={0}
+      onClick={(e) => {
+        e.stopPropagation();
+        router.push(`/clients/${client.slug}`);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          e.stopPropagation();
+          router.push(`/clients/${client.slug}`);
+        }
+      }}
+      className="cursor-pointer rounded bg-emerald-500/10 px-1.5 py-0.5 text-emerald-300 hover:bg-emerald-500/20"
+    >
+      {client.name}
+    </span>
+  );
+}
 
 function ReasonChipRow({ codes, limit }: { codes?: string[]; limit?: number }) {
   const chips = reasonChips(codes);
@@ -81,6 +109,23 @@ export default function CockpitPage() {
     useMissionControlData();
   const [selected, setSelected] = useState<Signal | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [clientsById, setClientsById] = useState<Record<string, ClientRef>>({});
+
+  useEffect(() => {
+    fetch("/api/clients")
+      .then((res) => (res.ok ? res.json() : { clients: [] }))
+      .then((json) => {
+        const map: Record<string, ClientRef> = {};
+        for (const c of json.clients ?? []) map[c._id] = { name: c.name, slug: c.slug };
+        setClientsById(map);
+      })
+      .catch(() => setClientsById({}));
+  }, []);
+
+  const clientOf = (signal: Signal): ClientRef | undefined => {
+    const clientId = (signal.raw as { clientId?: string } | undefined)?.clientId;
+    return clientId ? clientsById[clientId] : undefined;
+  };
 
   const now = Date.now();
   const nowCard = queue[0] ?? null;
@@ -164,7 +209,7 @@ export default function CockpitPage() {
               <span className="rounded bg-[#f0883e]/10 px-2 py-1 font-semibold text-[#f0883e]">
                 {nowCard.status.replace(/-/g, " ")}
               </span>
-              <span className="text-zinc-600">{nowCard.lane}</span>
+              {clientOf(nowCard) ? <ClientTag client={clientOf(nowCard)!} /> : <span className="text-zinc-600">{nowCard.lane}</span>}
               <span className="text-zinc-600">{formatRelative(nowCard.updatedAt)}</span>
             </div>
 
@@ -217,7 +262,7 @@ export default function CockpitPage() {
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm text-zinc-200">{signal.title}</span>
                   <span className="mt-1 block text-[10px] uppercase text-zinc-600">
-                    {signal.project || signal.lane}
+                    {clientOf(signal) ? <ClientTag client={clientOf(signal)!} /> : signal.project || signal.lane}
                   </span>
                 </span>
                 <ReasonChipRow codes={signal.reasonCodes} limit={1} />

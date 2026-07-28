@@ -48,28 +48,44 @@ function proofAssets(memoryPath?: string): string[] {
   }
 }
 
+const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
 export async function GET() {
-  const [clients, payments, tasks] = await Promise.all([
+  const [clients, payments, active, archived] = await Promise.all([
     convex.query(api.clients.list, {}).catch(() => []),
     convex.query(api.payments.list, {}).catch(() => []),
     convex.query(api.tasks.listActive, {}).catch(() => []),
+    convex.query(api.tasks.listArchived, {}).catch(() => []),
   ]);
+
+  const weekAgo = Date.now() - WEEK_MS;
 
   const enriched = clients.map((client) => {
     const clientPayments = payments.filter((p) => p.clientId === client._id);
     const collected = clientPayments
       .filter((p) => p.cleared && p.kind === "consulting")
       .reduce((sum, p) => sum + p.amount, 0);
-    const openTasks = tasks.filter(
-      (t) => t.clientId === client._id && t.status !== "done" && t.status !== "archived",
-    );
+
+    const mine = active.filter((t) => t.clientId === client._id);
+    const openTasks = mine.filter((t) => t.status !== "done" && t.status !== "archived");
+    const done = mine.filter((t) => t.status === "done");
+    const completedThisWeek = done.filter((t) => (t.updatedAt ?? 0) >= weekAgo);
+    // Older completions: done > 7d ago plus any archived task still carrying the link.
+    const olderCompletions = [
+      ...done.filter((t) => (t.updatedAt ?? 0) < weekAgo),
+      ...archived.filter((t) => t.clientId === client._id),
+    ];
+    const openDollars = openTasks.reduce((sum, t) => sum + (t.dollars ?? 0), 0);
 
     return {
       ...client,
       payments: clientPayments,
       collected,
+      openDollars,
       openTaskCount: openTasks.length,
       openTasks,
+      completedThisWeek,
+      olderCompletions,
       statusFile: statusExcerpt(client.memoryPath),
       proofAssets: proofAssets(client.memoryPath),
     };
