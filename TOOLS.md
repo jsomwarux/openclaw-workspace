@@ -29,6 +29,7 @@
 ## Image / OCR
 - OpenClaw image attachments require `sharp` in the OpenClaw node_modules tree.
 - OCR fallback: Homebrew `tesseract`; full install/use notes in full docs.
+- Recruiter PDFs with broken text extraction: render pages with Python `pypdfium2` then OCR with `tesseract`.
 - Full syntax: `docs/tools/TOOLS-full.md#image--ocr-tooling`.
 
 ## Diagnostics
