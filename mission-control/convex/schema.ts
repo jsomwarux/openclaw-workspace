@@ -17,6 +17,17 @@ export const waitingOn = v.object({
   nudgeAfterDays: v.number(),
 });
 
+// Collected cash is stored per-payment. pipeline.jsonl zeroes items once paid, so
+// it can never be the system of record for collected cash — this table is.
+export const paymentKind = v.union(
+  v.literal("consulting"),
+  v.literal("unemployment"),
+  v.literal("other"),
+);
+
+// The $10K gate can be read two ways. Store which one, never assume it.
+export const gateBasis = v.union(v.literal("monthly"), v.literal("all-time"));
+
 export default defineSchema({
   tasks: defineTable({
     title: v.string(),
@@ -40,18 +51,60 @@ export default defineSchema({
     reasonCodes: v.optional(v.array(v.string())),
     rankScore: v.optional(v.number()),
     rankUpdatedAt: v.optional(v.number()),
+    clientId: v.optional(v.id("clients")),
     createdAt: v.number(),
     updatedAt: v.number(),
   })
     .index("by_status", ["status"])
     .index("by_assignee", ["assignee"])
     .index("by_project", ["project"])
-    .index("by_slug", ["slug"]),
+    .index("by_slug", ["slug"])
+    .index("by_client", ["clientId"]),
+
+  clients: defineTable({
+    slug: v.string(), // matches memory/clients/<slug>
+    name: v.string(),
+    emoji: v.optional(v.string()),
+    stage: v.union(
+      v.literal("active-delivery"),
+      v.literal("blocked"),
+      v.literal("pending"),
+      v.literal("closed-won"),
+      v.literal("archived"),
+    ),
+    status: v.optional(v.string()),
+    waitingOn: v.optional(waitingOn),
+    lastTouch: v.optional(v.number()),
+    memoryPath: v.optional(v.string()),
+    referralEligible: v.optional(v.boolean()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_stage", ["stage"]),
+
+  payments: defineTable({
+    clientId: v.optional(v.id("clients")),
+    clientName: v.string(), // denormalized so a payment always renders
+    amount: v.number(), // USD, positive = money in
+    paidOn: v.number(), // epoch ms — the clearance date
+    milestone: v.optional(v.string()),
+    kind: paymentKind,
+    cleared: v.boolean(), // true = cleared, false = invoiced/pending
+    source: v.optional(v.string()), // evidence / provenance note
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_client", ["clientId"])
+    .index("by_paidOn", ["paidOn"])
+    .index("by_kind", ["kind"]),
 
   focus: defineTable({
     weekOf: v.string(),
     projects: v.array(v.string()),
     gate: v.number(),
+    // Which window the gate runs on. Defaults to "monthly" in code when absent.
+    gateBasis: v.optional(gateBasis),
     createdAt: v.number(),
   }).index("by_weekOf", ["weekOf"]),
 

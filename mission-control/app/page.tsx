@@ -119,7 +119,7 @@ export default function CockpitPage() {
     <div className="min-h-screen bg-[#0a0b0d] p-4 sm:p-6">
       <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f0883e]">Cockpit</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#f0883e]">Today</p>
           <h1 className="mt-1 text-xl font-semibold tracking-tight text-zinc-100">One decision at a time</h1>
         </div>
         <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600">

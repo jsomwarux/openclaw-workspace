@@ -9,6 +9,7 @@
  */
 
 import type * as crons from "../crons.js";
+import type * as payments from "../payments.js";
 import type * as pideas from "../pideas.js";
 import type * as tasks from "../tasks.js";
 
@@ -20,6 +21,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   crons: typeof crons;
+  payments: typeof payments;
   pideas: typeof pideas;
   tasks: typeof tasks;
 }>;

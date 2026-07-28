@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { agentToSignal, cronToSignal, proofToSignal, taskToSignal } from "./adapters";
 import { cashStrip, type CashStrip } from "./cash-strip";
+import type { CollectedMetrics } from "./collected";
 import { commandBrief } from "./command-brief";
 import { commandQueue } from "./score";
 import { buildScoreContext, mondayOf } from "./score-context";
@@ -10,7 +11,13 @@ import type { FocusRow, Signal } from "./types";
 
 type RevenueResponse = {
   metrics?: { totalCollected: number; weightedForecast: number };
+  pipeline?: { totals?: { openWeighted: number } };
   available?: { northStar?: boolean };
+};
+
+type PaymentsResponse = {
+  payments: any[];
+  metrics: CollectedMetrics;
 };
 
 type ApiState = {
@@ -20,6 +27,7 @@ type ApiState = {
   agents: any[];
   costs: any | null;
   revenueFile: RevenueResponse | null;
+  payments: PaymentsResponse | null;
   focus: FocusRow | null;
 };
 
@@ -32,6 +40,7 @@ const EMPTY_STATE: ApiState = {
   agents: [],
   costs: null,
   revenueFile: null,
+  payments: null,
   focus: null,
 };
 
@@ -59,7 +68,7 @@ export function useMissionControlData() {
     const nextErrors: Partial<Record<RouteKey, string>> = {};
     const previous = dataRef.current;
 
-    const [tasks, crons, proofs, agents, costs, revenueFile, focus] = await Promise.all([
+    const [tasks, crons, proofs, agents, costs, revenueFile, payments, focus] = await Promise.all([
       fetchJson("/api/tasks")
         .then((json) => json.tasks ?? [])
         .catch((error) => {
@@ -94,6 +103,11 @@ export function useMissionControlData() {
           nextErrors.revenueFile = error.message;
           return previous.revenueFile;
         }),
+      fetchJson("/api/payments")
+        .catch((error) => {
+          nextErrors.payments = error.message;
+          return previous.payments;
+        }),
       fetchJson(`/api/focus?weekOf=${mondayOf(Date.now())}`)
         .then((json) => json.focus ?? null)
         .catch((error) => {
@@ -102,7 +116,7 @@ export function useMissionControlData() {
         }),
     ]);
 
-    setData({ tasks, crons, proofs, agents, costs, revenueFile, focus });
+    setData({ tasks, crons, proofs, agents, costs, revenueFile, payments, focus });
     setErrors(nextErrors);
     setLastUpdated(Date.now());
     setLoading(false);
@@ -125,14 +139,15 @@ export function useMissionControlData() {
 
   // The consulting-cash mandate must reach the scorer, or the ship cap and the
   // focus penalty in score.ts evaluate against an empty context and never fire.
-  // Collected cash is only trusted when the north-star read actually succeeded;
-  // an unreadable file falls back to 0, which leaves the cap armed.
+  // Collected cash now comes from the stored payments ledger (gate-basis
+  // consulting), not the fragile north-star regex. A failed read falls back to
+  // undefined → 0, which leaves the ship cap armed.
   const queue = useMemo(() => {
-    const northStarRead = Boolean(data.revenueFile?.available?.northStar) && !errors.revenueFile;
-    const collected = northStarRead ? data.revenueFile?.metrics?.totalCollected : undefined;
+    const paymentsRead = Boolean(data.payments?.metrics) && !errors.payments;
+    const collected = paymentsRead ? data.payments?.metrics?.gateCollected : undefined;
     const ctx = buildScoreContext({ focus: data.focus, collected, now: Date.now() });
     return commandQueue(signals, ctx);
-  }, [signals, data.focus, data.revenueFile, errors.revenueFile]);
+  }, [signals, data.focus, data.payments, errors.payments]);
 
   const eveHandling = useMemo(
     () => signals.filter((signal) => signal.owner === "eve" && EVE_IN_FLIGHT.includes(signal.status)).slice(0, 8),
@@ -170,14 +185,23 @@ export function useMissionControlData() {
     };
   }, [data.costs, data.tasks]);
 
+  // Cash strip reads collected from the payments ledger (gate-basis consulting)
+  // and the weighted forecast from the pipeline file. Collected cash is never
+  // taken from pipeline.jsonl, which zeroes items once paid.
   const cash = useMemo<CashStrip>(() => {
-    const metrics = data.revenueFile?.metrics ?? null;
-    const available = Boolean(data.revenueFile?.available?.northStar) && !errors.revenueFile;
+    const collectedMetrics = data.payments?.metrics ?? null;
+    const available = Boolean(collectedMetrics) && !errors.payments;
+    const metrics = collectedMetrics
+      ? {
+          totalCollected: collectedMetrics.gateCollected,
+          weightedForecast: data.revenueFile?.pipeline?.totals?.openWeighted ?? 0,
+        }
+      : null;
     return cashStrip({ metrics, available, now: Date.now() });
-  }, [data.revenueFile, errors.revenueFile]);
+  }, [data.payments, data.revenueFile, errors.payments]);
 
   // Before the first response lands there is nothing to be unavailable about.
-  const cashPending = loading && data.revenueFile === null;
+  const cashPending = loading && data.payments === null;
 
   const brief = useMemo(() => commandBrief({ queue, signals, revenue }), [queue, revenue, signals]);
 

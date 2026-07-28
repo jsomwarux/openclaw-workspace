@@ -2,9 +2,9 @@ import { describe, expect, test } from "bun:test";
 import { legacyRedirects, missionControlNav, mobileNav } from "./routes";
 
 describe("mission control routes", () => {
-  test("cuts primary nav to Cockpit, Money, and Systems", () => {
-    expect(missionControlNav.map((item) => item.label)).toEqual(["Cockpit", "Money", "Systems"]);
-    expect(missionControlNav.map((item) => item.href)).toEqual(["/", "/consulting", "/machine"]);
+  test("sets primary nav to the five lanes: Today, Clients, Money, Library, Systems", () => {
+    expect(missionControlNav.map((item) => item.label)).toEqual(["Today", "Clients", "Money", "Library", "Systems"]);
+    expect(missionControlNav.map((item) => item.href)).toEqual(["/", "/clients", "/consulting", "/library", "/machine"]);
   });
 
   test("drops Ship, Work, Evidence, and Health as their own nav entries", () => {
@@ -25,7 +25,15 @@ describe("mission control routes", () => {
     expect(systems?.aliases.includes("/machine")).toBe(true);
   });
 
-  test("mobile nav mirrors the same three lanes", () => {
+  test("Library aliases the existing skills surface for now", () => {
+    const library = missionControlNav.find((item) => item.label === "Library");
+
+    expect(library?.href).toBe("/library");
+    expect(library?.aliases.includes("/skills")).toBe(true);
+    expect(legacyRedirects["/library"]).toBe("/skills");
+  });
+
+  test("mobile nav mirrors the same five lanes", () => {
     expect(mobileNav).toEqual(missionControlNav);
   });
 

@@ -9,8 +9,8 @@ describe("mobile shell layout", () => {
     expect(mobileNavInnerClassName).toContain("justify-center");
   });
 
-  test("sizes the bottom rail for the three-lane nav", () => {
-    expect(mobileNavInnerClassName).toContain("grid-cols-3");
+  test("sizes the bottom rail for the five-lane nav", () => {
+    expect(mobileNavInnerClassName).toContain("grid-cols-5");
   });
 
   test("reserves enough mobile bottom space for the app nav", () => {

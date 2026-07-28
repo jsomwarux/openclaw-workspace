@@ -89,9 +89,9 @@ After Slice 1.6, `/evidence` is the primary Evidence lane. `/audit` redirects to
 
 After Slice 1.7, `/health` is the primary Health lane. `/monitor` and `/costs` redirect to `/health`, and the old Deployment Monitor and Cost Dashboard references live at `/legacy/monitor` and `/legacy/costs`. Do not restore `/monitor` or `/costs` as primary Health surfaces. The Health lane should stay focused on ops failures, cost pressure, stale risk, and recovery work from current signals and cost data.
 
-## Cockpit contract
+## Today (cockpit) contract
 
-The `/` cockpit renders four bands, in this order:
+The `/` lane is **Today** (eyebrow "Today"). It renders four bands, in this order:
 1. **Cash strip** — one full-width line: collected / $10K gate / weighted / days left.
 2. **NOW** — exactly one card, the top `commandQueue` item, at roughly triple the visual weight of anything else on the page.
 3. **UP NEXT** — queue items 2–7 as compact rows, first reason chip and age only.
@@ -99,7 +99,11 @@ The `/` cockpit renders four bands, in this order:
 
 No numeric score renders on the cockpit. Rank is communicated through reason-code chips (`lib/mission-control/reason-codes.ts`), never a number. The score itself appears only inside `InspectionDrawer`, beside the full reasonCodes list and the task's `priorityAudit` trail.
 
-Primary nav is three lanes: **Cockpit** (`/`), **Money** (`/consulting`), **Systems** (`/machine`, aliasing the machine, evidence, and health surfaces). `/work`, `/ship`, `/evidence`, and `/health` remain live routes reachable from their cockpits, but they are not nav entries. Do not re-add them to the nav.
+The four-band behavior above is fixed. Today stays one-decision-at-a-time — it is never a task list. `score.ts` and `commandQueue` are not changed to alter ranking behavior.
+
+The cash strip's collected number and the scorer's `ctx.collected` come from the stored `payments` ledger (gate-basis consulting via `lib/mission-control/collected.ts`), never from `pipeline.jsonl` (which zeroes items once paid) or a `north-star.md` regex. The $10K gate basis (monthly vs all-time) is a stored field (`focus.gateBasis`, default "monthly"), not an assumption.
+
+Primary nav is five lanes, in this order: **Today** (`/`), **Clients** (`/clients` — per-client status, open work, collected cash), **Money** (`/consulting` — cash path + payments ledger), **Library** (`/library`, aliasing `/skills` for now — skills & agents), **Systems** (`/machine`, aliasing the machine, evidence, and health surfaces). `/work`, `/ship`, `/evidence`, and `/health` remain live routes reachable from their cockpits, but they are not nav entries. Do not re-add them to the nav. This five-lane IA supersedes the earlier three-lane nav (`docs/redesign-spec.md`).
 
 ## Architecture Decisions
 
