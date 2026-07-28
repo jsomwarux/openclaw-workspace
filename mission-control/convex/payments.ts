@@ -9,6 +9,30 @@ export const list = query({
   },
 });
 
+// Task 2: link each payment to its seeded client by exact clientName → clients.name.
+// Reports any ledger row whose name does not resolve to a client.
+export const linkClients = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const clients = await ctx.db.query("clients").collect();
+    const byName = new Map(clients.map((c) => [c.name, c._id]));
+    const payments = await ctx.db.query("payments").collect();
+
+    let linked = 0;
+    const unmatched: string[] = [];
+    for (const p of payments) {
+      const clientId = byName.get(p.clientName);
+      if (!clientId) {
+        unmatched.push(`${p.clientName} · ${p.milestone ?? "?"}`);
+        continue;
+      }
+      await ctx.db.patch(p._id, { clientId, updatedAt: Date.now() });
+      linked++;
+    }
+    return { linked, unmatched };
+  },
+});
+
 export const create = mutation({
   args: {
     clientId: v.optional(v.id("clients")),
