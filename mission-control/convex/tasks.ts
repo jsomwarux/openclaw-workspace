@@ -265,3 +265,50 @@ export const listAudit = query({
     return await ctx.db.query("priorityAudit").withIndex("by_ts").order("desc").take(100);
   },
 });
+
+/**
+ * Phase 2a clientId backfill. Reviewed and approved by JT 2026-07-28: the 8
+ * high-confidence title-scoped matches plus the "Local-First Voice Ops"
+ * expansion (expansion work for a live client counts as client-scoped). The
+ * reusable insurance-expiration n8n template and the "similar to Aya" research
+ * task are deliberately excluded (reusable IP / reference use, not delivery), as
+ * are all 36 description-only mentions (content/prospecting/build-idea/priority
+ * context, not client-owed work). Matches by unique title substring so it is
+ * reproducible and env-agnostic; idempotent (only patches open tasks).
+ */
+const CLIENT_BACKFILL: Array<{ match: string; client: string }> = [
+  { match: "capture insurance workflow proof-safe evidence", client: "Altmark" },
+  { match: "DHCR: collect kickoff inputs", client: "Altmark" },
+  { match: "Local-First Voice Ops", client: "Altmark" },
+  { match: "send rent delinquency source/export gate", client: "Altmark" },
+  { match: "Gate acceptance/access before n8n HTTPS", client: "Altmark" },
+  { match: "ask Yair for", client: "Altmark" },
+  { match: "Tuesday closeout acceptance/access/payment gate", client: "Altmark" },
+  { match: "Gil referral ask eligible", client: "Aya" },
+  { match: "MSI: deliver remaining 50%", client: "MSI" },
+  { match: "Karen referral ask eligible", client: "SoberLife" },
+];
+
+export const backfillClientIds = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const clients = await ctx.db.query("clients").collect();
+    const byName = new Map(clients.map((c) => [c.name, c._id]));
+    const tasks = await ctx.db.query("tasks").collect();
+
+    const applied: Array<{ match: string; client: string; taskId: string | null; title?: string }> = [];
+    for (const rule of CLIENT_BACKFILL) {
+      const clientId = byName.get(rule.client);
+      const task = tasks.find(
+        (t) => t.title.includes(rule.match) && t.status !== "done" && t.status !== "archived",
+      );
+      if (!clientId || !task) {
+        applied.push({ match: rule.match, client: rule.client, taskId: null });
+        continue;
+      }
+      await ctx.db.patch(task._id, { clientId, updatedAt: Date.now() });
+      applied.push({ match: rule.match, client: rule.client, taskId: task._id, title: task.title });
+    }
+    return { applied };
+  },
+});
