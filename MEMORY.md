@@ -50,7 +50,7 @@
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 17 local-only pulse used stale Jul 8 brief; job loops directive-disabled; no fresh search/app/task. Signal supports reusable AI implementation/governance proof, not job pivot.
+- Latest: Jul 28 pulse found no immediate application; signal = connector/tool scope, MCP/action boundaries, evals, governance, observability, and productionized customer workflows.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -60,13 +60,13 @@
 - Detail: `docs/memory/MEMORY-full.md#crypto--finance`.
 
 ## Infrastructure / OpenClaw State
-- Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs.
+- Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. Jul 28 model-routing guard now falls back to live cron list when legacy `jobs.json` is absent; cost alerts clean.
 - Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
-- 7/27 crons: 13 enabled / 50 weekly invocations; volume guard green. WSR row still red from pseudo `run openclaw cron (agent)` after useful output; live prompt patched with literal node@22 PATH OpenClaw commands, no blind rerun.
+- 7/28 crons: cost/model routing guard clean after live-cron fallback fix; WSR row still red from prior pseudo `run openclaw cron (agent)` failure with next natural run 2026-08-02 10:00; outreach pipeline ran 2026-07-28 03:00 ok with no external sends.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

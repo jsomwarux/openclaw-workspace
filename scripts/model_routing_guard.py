@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 from pathlib import Path
 
 
@@ -25,6 +26,30 @@ APPROVED_PAID_CRON_MODELS = {
 def load_json(path: Path) -> dict:
     with path.open() as f:
         return json.load(f)
+
+
+def load_json_from_cli_output(output: str) -> dict:
+    start = output.find("{")
+    if start == -1:
+        raise ValueError("cron list output did not contain JSON")
+    return json.loads(output[start:])
+
+
+def load_cron_jobs() -> dict:
+    if CRON_JOBS.exists():
+        return load_json(CRON_JOBS)
+
+    proc = subprocess.run(
+        ["openclaw", "cron", "list", "--json"],
+        text=True,
+        capture_output=True,
+        timeout=10,
+        check=False,
+    )
+    if proc.returncode != 0:
+        detail = proc.stderr.strip() or proc.stdout.strip() or f"exit {proc.returncode}"
+        raise RuntimeError(f"openclaw cron list --json failed: {detail}")
+    return load_json_from_cli_output(proc.stdout)
 
 
 def model_refs(obj, path=""):
@@ -132,7 +157,7 @@ def main() -> int:
     config = load_json(OPENCLAW_CONFIG)
     errors = []
     errors.extend(check_default_route(config))
-    errors.extend(check_crons(load_json(CRON_JOBS), args.include_disabled, config))
+    errors.extend(check_crons(load_cron_jobs(), args.include_disabled, config))
 
     if errors:
         print(json.dumps({"ok": False, "errors": errors}, indent=2))

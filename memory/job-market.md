@@ -692,3 +692,13 @@ Read today's job-market-agent brief generated at 2026-07-07 05:15. There are no 
 **Positioning implication:** keep Mission Control/OpenClaw, Altmark, and Marketsmith framed as governed agent-tool access plus business-side value proof: approved tool scope, workflow ownership, review gates, eval/rollback, and measurable outcomes. Extend DealDesk / EnablementOps / AgentGuard language with MCP, governance, eval, rollback, and value-reporting language. No new application, certification, or build task today; Altmark/Yair input loop, Petri M2, and Marketsmith quote framing remain higher priority.
 
 Source brief: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`.
+
+## 2026-07-28 — Heartbeat Job Market Pulse
+
+Fresh Brave-direct searches for AI solutions architect / agentic implementation roles surfaced a useful role-language cluster, not a new application priority. Glean's Resident Solutions Architect posting is the cleanest signal: customer implementation work is being described around connectors, MCP, actions, APIs, SDKs, custom UI embeds, agent workflows, evals, governance, observability, and productionized customer workflows. Other hits skewed toward technical AI architecture, multi-agent systems, responsible AI frameworks, and enterprise implementation consulting.
+
+**Strongest signal:** employer language is converging with the consulting proof lane: agent workflows need connector/tool boundaries, evals, governance, observability, and implementation ownership. The public market still tends to package this as solutions architecture or specialist implementation, but the artifacts JT can show are business-side operating records and workflow productionization.
+
+**Positioning implication:** keep Run Control / AI Enablement OS proof framed as productionized customer workflows: connector/tool scope, MCP/action boundary, evaluation rule, governance decision, observability or audit path, and measurable operational result. Treat this as positioning intel only; no new application, certification, or build task outranks Altmark, Outbound v2, unemployment certification, or active Run Control sales proof.
+
+Source checks: Glean Resident Solutions Architect https://job-boards.greenhouse.io/gleanwork/jobs/4717716005; Jobgether AI Solutions Architect https://jobs.lever.co/jobgether/37f0f3a3-5fce-430d-9ac0-fe83e8455413; Avenga Principal AI Solution Architect https://career.avenga.com/jobs/8114419-principal-ai-solution-architect; Innocentive AI Agent Orchestration Specialists https://www.innocentive.com/challenges/seeking-experienced-ai-agent-orchestration-specialists-for-enterprise-ai-projects/.
