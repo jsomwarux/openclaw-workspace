@@ -44,13 +44,13 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Review drafts remain review-only; do not auto-post. AI Ops Teardowns name public signal + build angle; withhold prompts/schemas/node stack/thresholds/vendors/routing.
+- Review drafts remain review-only; do not auto-post. Jul 29 saved delinquency Run Control LinkedIn draft passed guard; AI Ops Teardowns name public signal + build angle.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 28 pulse found no immediate application; signal = connector/tool scope, MCP/action boundaries, evals, governance, observability, and productionized customer workflows.
+- Latest: Jul 29 pulse found no immediate application; signal = AI enablement as operating-model ownership: use-case backlog, governance forums, tool vetting, workflow redesign, adoption queue, and measurable results.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -60,13 +60,13 @@
 - Detail: `docs/memory/MEMORY-full.md#crypto--finance`.
 
 ## Infrastructure / OpenClaw State
-- Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. Jul 28 model-routing guard now falls back to live cron list when legacy `jobs.json` is absent; cost alerts clean.
+- Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. Jul 28 guard falls back to live cron list; Jul 29 heartbeat OpenClaw checks require Node 26 path; cost alerts clean.
 - Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
-- 7/28 crons: cost/model routing guard clean after live-cron fallback fix; WSR row still red from prior pseudo `run openclaw cron (agent)` failure with next natural run 2026-08-02 10:00; outreach pipeline ran 2026-07-28 03:00 ok with no external sends.
+- 7/29 crons: cost/model routing guard clean; WSR row still red from prior pseudo `run openclaw cron (agent)` failure with next natural run 2026-08-02 10:00; outreach pipeline ran 03:00 ok with no external sends.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

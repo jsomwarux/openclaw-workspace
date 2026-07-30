@@ -258,6 +258,12 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Fail condition:** A heartbeat reports an urgent cron failure, reruns a content/research/delivery job, or edits a prompt solely because cron-list status is `error` while run history and artifacts prove the current scheduled run passed.
 - **Owner surface:** HEARTBEAT cron health checks, `scripts/cron_volume_guard.py`, OpenClaw cron metadata parsing, and Weekly Systems Review cron cleanup.
 
+## Heartbeat OpenClaw Node path check
+- **Trigger:** Any heartbeat, cron health fix, or 10AM film review that calls `openclaw cron ...` or `scripts/cron_volume_guard.py`.
+- **Check:** Use the active OpenClaw-compatible Node prefix from `docs/agents/heartbeat-extended-rules.md`; currently `PATH="/opt/homebrew/Cellar/node/26.5.0_1/bin:$PATH"`. If a documented Node path fails the OpenClaw version gate, patch the heartbeat command-form owner surface before continuing to rely on fallback commands.
+- **Fail condition:** Heartbeat checks repeatedly call an OpenClaw-rejected Node binary, then silently recover with a different path without updating the rule that caused the failure.
+- **Owner surface:** `docs/agents/heartbeat-extended-rules.md`, HEARTBEAT cron health checks, `scripts/cron_volume_guard.py`.
+
 ## Morning Brief Nash gate non-abort check
 - **Trigger:** Morning Brief cron failure, especially after the Daily Nash Satoshi probe fails or returns unavailable/stale.
 - **Check:** The Morning Brief agent must execute the Nash probe with a real shell command from the workspace: `python3 scripts/nash_rankings_probe.py --json --limit 10`. If the probe fails, it must write a same-day skip reason to `memory/app-marketing/daily-nash/YYYY-MM-DD.md`, omit Nash from the brief, and still deliver the rest of the Morning Brief to Telegram. Verify `openclaw cron runs --id eve-morning-brief-001 --limit 1` delivery fields for user-facing recovery.
