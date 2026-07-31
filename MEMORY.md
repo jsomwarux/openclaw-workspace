@@ -50,7 +50,7 @@
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 29 pulse found no immediate application; signal = AI enablement as operating-model ownership: use-case backlog, governance forums, tool vetting, workflow redesign, adoption queue, and measurable results.
+- Latest: Jul 30 pulse: AI enablement roles now center use-case intake, governance review, backlog, workflow redesign, and value proof; reuse Run Control / AI Enablement OS evidence, not custom demos.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -66,7 +66,7 @@
 
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
-- 7/29 crons: cost/model routing guard clean; WSR row still red from prior pseudo `run openclaw cron (agent)` failure with next natural run 2026-08-02 10:00; outreach pipeline ran 03:00 ok with no external sends.
+- 7/30 crons: cost clean; Mission Control ok 250 active/12 high; WSR still red from prior pseudo `run openclaw cron (agent)` failure, next natural run 2026-08-02 10:00; outreach 03:00 ok/no sends; Daily Send Sheet delivered Altmark/DHCR sends + $600 cash gap.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
