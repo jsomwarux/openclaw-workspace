@@ -22,13 +22,13 @@
 ## Active Clients
 - Canonical July 16 state: `memory/canonical/jt-mission-control-state-2026-07-16.md`.
 - Altmark top paid/proof lane: send/confirm rent-delinquency source/export gate, reviewer/rules, and review-only path; $2,250 blocked; log-only fallback ~Jul 24 if still stalled. Public proof = controlled exception handling, not autonomous collections.
-- MSI signed active: $10,800 fixed-scope Nexus, 50% kickoff / 50% completion. Jul 17 action is kickoff invoice only: `memory/clients/marketsmith/kickoff-invoice-action-2026-07-17.md`; proposal packet obsolete. MSI displacement rule active.
+- MSI signed active: $10,800 fixed-scope Nexus. Kickoff 50% ($5,400) cleared/source-confirmed 2026-07-28; remove kickoff from sends-due. Invoice remaining $5,400 only after completion/acceptance.
 - Closed-won/paid: SoberLife-Coach/Karen and Aya dashboard; Karen and Gil referral asks are eligible.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Jul 17 send queue: Altmark delinquency escalation first; MSI kickoff invoice second. Petri/HPM/Superior benched until 2026-08-01; DHCR remains distinct Altmark deposit chase.
+- Jul 31 send queue: Altmark delinquency escalation first; DHCR deposit second. MSI kickoff is cleared and must not resurface. Petri/HPM/Superior benched until 2026-08-01.
 - Referral packet v1 plus Gil/Karen asks are warm paths; lower-tier acquisition cut for July.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
@@ -44,13 +44,13 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Review drafts remain review-only; do not auto-post. Jul 29 saved delinquency Run Control LinkedIn draft passed guard; AI Ops Teardowns name public signal + build angle.
+- Review drafts remain review-only; do not auto-post. Jul 31 Run Control action-record LinkedIn draft passed voice guard (100).
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 30 pulse: AI enablement roles now center use-case intake, governance review, backlog, workflow redesign, and value proof; reuse Run Control / AI Enablement OS evidence, not custom demos.
+- Latest: Jul 31 pulse: AI enablement roles center pilot-to-scale operating ownership: governance, intake, adoption, backlog, workflow redesign, and value proof.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -66,7 +66,7 @@
 
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
-- 7/30 crons: cost clean; Mission Control ok 250 active/12 high; WSR still red from prior pseudo `run openclaw cron (agent)` failure, next natural run 2026-08-02 10:00; outreach 03:00 ok/no sends; Daily Send Sheet delivered Altmark/DHCR sends + $600 cash gap.
+- 7/31 crons: cost clean; MC ok 250 active/12 high; 74 jobs/13 enabled; WSR only suspicious enabled row from prior pseudo `run openclaw cron (agent)`, next 2026-08-02 10:00; outreach 03:00 ok/no sends; PTP 10:30 ok; Daily Send Sheet delivered Altmark/DHCR + $600 cash gap.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
