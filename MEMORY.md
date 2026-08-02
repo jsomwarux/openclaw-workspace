@@ -44,13 +44,13 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Review drafts remain review-only; do not auto-post. Jul 31 Run Control action-record LinkedIn draft passed voice guard (100).
+- Review drafts remain review-only; do not auto-post. Jul 31 action-record and Aug 1 approval-boundary LinkedIn drafts passed guards; neither was posted/scheduled/sent/banked.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Jul 31 pulse: AI enablement roles center pilot-to-scale operating ownership: governance, intake, adoption, backlog, workflow redesign, and value proof.
+- Latest: Aug 1 pulse: AI implementation proof should show workflow adoption, connector/tool scope, action boundaries, eval rules, governance decisions, observability/audit paths, and measurable outcomes.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -66,7 +66,7 @@
 
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
-- 7/31 crons: cost clean; MC ok 250 active/12 high; 74 jobs/13 enabled; WSR only suspicious enabled row from prior pseudo `run openclaw cron (agent)`, next 2026-08-02 10:00; outreach 03:00 ok/no sends; PTP 10:30 ok; Daily Send Sheet delivered Altmark/DHCR + $600 cash gap.
+- Aug 1 baseline: cost clean; MC ok 250 active/12 high/0 overdue; 74 jobs/13 enabled; only WSR stale red from 2026-07-27 pseudo `run openclaw cron (agent)`, next 2026-08-02 10:00; no blind rerun. Daily Send Sheet delivered Altmark/DHCR only; Outreach 03:00 PASS/no sends; PTP 10:30 ok; cron volume green.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

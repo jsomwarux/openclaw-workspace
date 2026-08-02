@@ -1,15 +1,15 @@
-# API Intelligence Report — 2026-07-27
+# API Intelligence Report — 2026-08-01
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-07-27 12:51:49
+Generated: 2026-08-01 05:44:38
 
 **Totals:** 0 new APIs | 0 PH tools | 5 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **Show HN: Infrawrench – a tool to manage cloud and svcs with workflows and chat** (score: 3) | [link](https://infrawrench.com)
-- **Show HN: Directed Memory Bank – Tool-agnostic project context for AI agents** (score: 1) | [link](https://github.com/pmikutel/directed-memory-bank)
-- **The Library of Lives** (score: 1) | [link](https://foofaraw.press/the-library-of-lives/)
-- **I turned my email inbox into an invoicing tool** (score: 1) | [link](https://mailtoinvoice.com)
-- **Embedding OpenAI Codex: The App Server and SDKs** (score: 1) | [link](https://www.akashtandon.in/interactive-explainers/codex-embedding/)
+- **Google Just Ruined One of Its Most Important Tools** (score: 7) | [link](https://www.theatlantic.com/technology/2026/07/google-earth-ai-images/688145/)
+- **Google plans to exempt sanctioned nations from Android developer verification** (score: 3) | [link](https://arstechnica.com/gadgets/2026/07/google-plans-to-exempt-sanctioned-nations-from-android-developer-verification/)
+- **Free tools for Etsy sellers, podcasters, and indie devs** (score: 2) | [link](https://thesellermind.com/tools/fee-calculator)
+- **Perplexity AI loses bid to toss Reddit lawsuit over data scraping** (score: 2) | [link](https://www.reuters.com/legal/litigation/perplexity-ai-loses-bid-toss-reddit-lawsuit-over-data-scraping-2026-07-31/)
+- **Show HN: utils.foo > developer utilities that run client-side without ads** (score: 1) | [link](https://utils.foo/)
 
 
 ## Scout Guidance
