@@ -28,7 +28,7 @@
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Jul 31 send queue: Altmark delinquency escalation first; DHCR deposit second. MSI kickoff is cleared and must not resurface. Petri/HPM/Superior benched until 2026-08-01.
+- Aug 2 send queue: Altmark delinquency escalation first; DHCR deposit second. MSI kickoff is cleared and must not resurface; remaining MSI invoice only after completion/acceptance.
 - Referral packet v1 plus Gil/Karen asks are warm paths; lower-tier acquisition cut for July.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
@@ -44,13 +44,13 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Review drafts remain review-only; do not auto-post. Jul 31 action-record and Aug 1 approval-boundary LinkedIn drafts passed guards; neither was posted/scheduled/sent/banked.
+- Review drafts remain review-only; do not auto-post. Jul 31 action-record, Aug 1 approval-boundary, and Aug 2 source-to-decision-trail LinkedIn drafts passed guards; none posted/scheduled/sent/banked.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Aug 1 pulse: AI implementation proof should show workflow adoption, connector/tool scope, action boundaries, eval rules, governance decisions, observability/audit paths, and measurable outcomes.
+- Latest: Aug 2 pulse stays directive-limited: use stale local job-market brief only as positioning input around reusable implementation assets, governance, release/eval/rollback, enablement docs, and adoption leadership; no app/search/task.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -66,7 +66,7 @@
 
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
-- Aug 1 baseline: cost clean; MC ok 250 active/12 high/0 overdue; 74 jobs/13 enabled; only WSR stale red from 2026-07-27 pseudo `run openclaw cron (agent)`, next 2026-08-02 10:00; no blind rerun. Daily Send Sheet delivered Altmark/DHCR only; Outreach 03:00 PASS/no sends; PTP 10:30 ok; cron volume green.
+- Aug 2 baseline: cost clean; MC ok 250 active/12 high/0 overdue; 74 jobs/13 enabled/0 suspicious after WSR natural run ok at 10:06, Telegram msg 25376, next 2026-08-09. Daily Send Sheet delivered Altmark/DHCR only; Outreach 03:00 PASS/no sends; PTP 10:30 ok; cron volume green.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops

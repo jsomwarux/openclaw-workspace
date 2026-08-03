@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-08-02 - Directive-Limited Heartbeat Job Market Pulse
+
+Read the current local job-market artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` remains the 2026-07-08 brief. Live directive context still places Job Market Daily Research, Job Application Auto-Builder, and Job Application Tracker in refused/disabled scope, so no fresh crawl, external job search, application package, tracker update, certification/demo task, or Mission Control role task was created.
+
+**Strongest usable signal:** the retained brief still supports positioning JT around reusable AI implementation assets, release governance, eval/rollback thinking, enablement documentation, adoption leadership, and business judgment. This aligns with today's Weekly Intelligence and WSR evidence: production trust comes from governed operating records, not another demo.
+
+**Positioning implication:** keep job-market language as support for Run Control / AI Enablement OS only. For Altmark/DHCR/MSI proof, describe the work as converting sensitive workflows into governed operating assets with owner handoff, approval boundaries, audit path, failure/rollback path, and value reporting. No job-market pivot or application branch today.
+
+---
+
 ## 2026-07-23 - Directive-Limited Heartbeat Job Market Pulse
 
 Read the current local job-market artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` remains the 2026-07-08 brief, modified 2026-07-08 05:17 EDT. Live cron registry confirms `Job Market Daily Research`, `Job Application Auto-Builder`, and `Job Application Tracker` are disabled under the July directive pack, so no fresh crawl, external search, application package, tracker update, certification/demo task, or Mission Control role task was created.

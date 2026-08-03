@@ -1,76 +1,79 @@
 # Weekly Intel Brief
-> Written by Weekly Intelligence Synthesis. Review-only while July content automation remains disabled unless JT explicitly reactivates posting.
+> Written by Weekly Intelligence Synthesis. Review-only unless JT explicitly reactivates posting, scheduling, or outbound use.
 
-**Week of:** 2026-07-19
+**Week of:** 2026-08-02
 
 ## Top Niche Signals This Week
 
-Property/real-estate AI is still converging on workflow control, not generic chat. Fresh real-estate and automation coverage emphasizes standardized source data, data-lineage ownership, audit trails, approval evidence, and workflow records. This keeps the property-management offer anchored on a first workflow with one source export, one reviewer, one exception rule set, and one logged decision path. [property-management] [workflow-control]
+Property-ops automation is still selling the control record more than the model output. Fresh property-management and accounting searches point to lease, resident, financial, deadline, discrepancy, approval-chain, and audit-trail visibility as the buyer-readable value. The practical Run Control wedge is unchanged: automate routine intake, reminders, reconciliation, packet assembly, and status updates, but hold resident-, lease-, legal-, money-, or accounting-impacting actions behind a named approval record. [property-management] [approval-record]
 
-Agent governance became more concrete this week. Microsoft published a least-privilege agent pattern around identity, access, tool binding, controlled tool access, and end-to-end auditability. Current agent-governance/tool-access coverage is also using the same buyer language: MCP/tool policies, approval gates, zero-standing-privilege style access, and recorded allow/deny decisions. [AI-ops] [MCP-governance]
+Agent governance keeps moving toward runtime authorization and gateway evidence. Microsoft, Okta, Snowflake, and MCP/security coverage are all converging on identity-bound tool calls, credential brokering, policy checks, real-time action capture, and audit trails for which tool touched which system, in what order, and by whom. The market is making the enforcement point visible. [AI-ops] [agent-gateway]
 
-Enterprise agent adoption language is moving from "number of agents" to governed production workflow execution. Fresh results point to agent inventory, permissions, approvals, revocation records, connected tools, live controls, and reviewable ownership as the production test. The reusable asset is the operating record, not the demo. [enterprise-AI] [run-control]
+AI enablement role language is becoming operating-model ownership. Current role signals emphasize portfolio prioritization, decision rights, governance, adoption, performance tracking, value delivery, and continuous improvement across business functions. This continues to validate Run Control / AI Enablement OS as business-side productionization, not generic AI consulting or another demo. [job-market] [enablement-ops]
 
-The job-market signal remains positioning-only. The current local brief is still 2026-07-08 and the July directive keeps job-market research disabled. The useful pattern is unchanged: reusable AI implementation assets, release governance, enablement documentation, adoption leadership, rollback/eval thinking, and value reporting. Do not create a role branch or build task from this. [job-market]
+The Sunday send/cash context stays narrow. Daily Send Sheet surfaced only two active sends: Altmark rent delinquency remainder and DHCR Lease Renewal Phase 1 deposit. Both are 17 days stale, August cash is $0 MTD, and MSI remains signed/in delivery, excluded from kickoff sends. Content and market signals should support those proof gates, not distract from them. [cash-gate] [send-queue]
 
 ## Strategic Theme This Week
 
-The strongest buyer angle is least-privilege workflow execution with evidence.
+The strongest buyer angle is controlled adoption before scaled automation.
 
-For JT's consulting proof, the market is asking for a record that can answer:
+For JT's consulting proof, the reusable asset is an approval and authority row that can answer:
 
-- what source record started the workflow
-- what the agent or automation was allowed to touch
-- what action was requested
-- which rule allowed, held, or denied it
+- which source record started the workflow
+- which owner, manager, tenant, resident, or client context it represented
+- which agent, workflow, tool, or system boundary applied
+- which routine steps could move without review
+- which sensitive rows were held
 - who owned approval
-- where the audit/proof record lives
-- how retry or rollback works
+- why the action moved, stopped, or escalated
+- where the audit path and outcome record live
 
-This maps directly to Altmark delinquency, DHCR, and MSI/Nexus delivery. The cash action is still the send queue, but the proof narrative behind those sends should be "we make sensitive workflow execution inspectable before it becomes automated."
+This maps directly to Altmark delinquency, DHCR renewal/deposit, MSI delivery governance, and future AI enablement sales language.
 
 ## Content And Positioning Gaps
 
-Monday content, if JT reactivates content, should be a short POV on least-privilege agents for normal businesses. Keep it about allowed actions and proof records, not AI policy theory.
+Monday content, if JT chooses to use the review-only draft already created, should stay grounded in the property-manager scene: lease dates, deposit status, delinquency balances, tenant notices, and approval boundaries. Do not broaden it into abstract AI governance.
 
-Wednesday case-study routing should stay property-ops and anonymized: a rent-delinquency run is only useful when held rows, source export, reviewer, and decision state are visible before any tenant-facing action.
+Wednesday case-study routing should use the Altmark/DHCR proof surface only after the current send gates move. The useful case shape is "routine prep automated, sensitive action reviewed, outcome recorded."
 
-Friday tactical routing should explain the minimum "tool-call ledger" row: source system, requested action, permission boundary, policy decision, approval owner, evidence path, and recovery rule.
+Friday tactical routing should explain the minimum approval record: source report, represented owner, workflow identity, system touched, permission boundary, review rule, final decision, audit path, and next deadline.
 
-Do not draft or queue posts automatically under the July directive. Treat this as gap analysis and positioning input only.
+Do not post, schedule, send, bank, or upload content automatically. Treat this as gap analysis and positioning input only.
 
 ## Competitive Developments
 
-Real-estate AI vendors are normalizing orchestration and audit-trail language. The practical response is a narrow adoption layer for SMB operators: one workflow, one export, one reviewer, one exception queue, one proof log.
+Property-management software and accounting automation vendors are normalizing audit trails, approval workflows, discrepancy flags, lease/deadline tracking, and centralized record views. JT's differentiation is a lightweight operating record for the exact workflow already blocking cash or delivery, not a broader platform replacement.
 
-Governance vendors and platforms are turning agent identity and tool access into visible enterprise controls. JT's differentiation is translating that into buyer-readable operations artifacts: "this is what the workflow saw, this is what it was allowed to do, this is what it held, and this is who approved it."
+Agent governance vendors are turning gateways and runtime authorization into the visible control point. JT's differentiation is translating that enterprise control language into a buyer-safe SMB workflow: "this is what the workflow saw, this is what it could touch, this is what it held, and this is who approved it."
 
 ## Recommended Direction
 
-Use the phrase family "least-privilege workflow," "operating record," "tool-call ledger," "review-only run," and "approval evidence."
+Use the phrase family "approval boundary," "runtime gate," "authority record," "sensitive-row hold," "source-to-decision trail," and "operating record."
 
 Best next proof-safe line:
 
-> The useful AI workflow is not the one that acts fastest. It is the one that can prove what it saw, what it was allowed to do, who approved it, and where the decision landed.
+> A useful AI workflow does not just move the next step. It shows which step was safe to move, which step needed approval, and where the decision landed.
 
 ## Sources Checked
 
-- Local: `memory/niche-monitor-latest.md`
+- Local: `memory/2026-08-02.md`
+- Local: `memory/2026-08-01.md`
+- Local: `memory/research/property-ops-automation-approval-record-2026-08-01.md`
+- Local: `memory/research/property-ops-cash-gate-run-control-2026-07-31.md`
 - Local: `memory/ai-tools.md`
 - Local: `memory/job-market.md`
+- Local: `memory/niche-monitor-latest.md`
 - Local: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`
-- Local: `memory/north-star.md`
-- Fresh search via `scripts/web_search.py` on 2026-07-19:
-  - Microsoft Security Blog, "Least privilege for AI agents: Identity, access, and tool binding" - https://www.microsoft.com/en-us/security/blog/2026/07/16/least-privilege-for-ai-agents-identity-access-and-tool-binding/
+- Fresh search via `scripts/web_search.py` on 2026-08-02:
+  - Okta Agent Gateway: Secure Runtime AI Agent Governance - https://www.okta.com/blog/product-innovation/agent-gateway-runtime-governance/
   - Microsoft Agent Governance Toolkit - https://github.com/microsoft/agent-governance-toolkit
-  - PlainID / GlobeNewswire, "Enterprise Authorization Tools Govern Human and AI Agent Access" - https://www.globenewswire.com/news-release/2026/07/14/3327043/0/en/Enterprise-Authorization-Tools-Govern-Human-and-AI-Agent-Access.html
-  - Microsoft Copilot Blog, "What's new in Copilot Studio: April 2026 updates and features" - https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/new-and-improved-agent-governance-intelligent-workflows-and-connected-app-experiences/
-  - TrueFoundry, "AI Audit Checklist 2026: What to Review and When" - https://www.truefoundry.com/blog/ai-audit-checklist
-  - Tommaso Maria Ricci, "AI for Real Estate: Practical Guide 2026" - https://www.tommasomariaricci.com/blog/ai-for-real-estate-guide
-  - The Tool Jury, "Agentic AI In Real Estate: What It Is & How It Works (2026 Guide)" - https://thetooljury.com/agentic-ai-in-real-estate-2026/
-  - GS Consulting, "Building Audit Trails for Automated Workflows" - https://gsconsultingllc.com/insights/building-audit-trails-automated-workflows
-  - Retool, "The State of AI Governance in 2026" - https://retool.com/blog/ai-governance-report-2026
-  - Experis, "AI Enablement Lead" - https://www.experis.com/en/job/395311/ai-enablement-lead
+  - Snowflake Cortex AI Gateway and Advanced AI Security at Black Hat 2026 - https://www.snowflake.com/en/blog/enterprise-ai-security-agentic-mcp-governance/
+  - Renew, "The Best Lease Audit Software for Multifamily (2026)" - https://heyrenew.com/blog/lease-audit-software
+  - REA, "6 Real Estate Accounting Workflows to Automate in 2026" - https://rea.co/real-estate-accounting-workflows-automate-2026/
+  - MRI/RentPayment, "AI Property Management in 2026" - https://mrisoftware.rentpayment.com/blog/ai-property-management-use-cases-software-options/
+  - UnitedHealth Group, "Vice President - AI Operations Transformation" - https://careers.unitedhealthgroup.com/en/job/gurgaon/vice-president-ai-operations-transformation/34088/98426067504
+  - UnitedHealth Group, "Product & Enablement Leader, AI Productivity Tools" - https://careers.unitedhealthgroup.com/job/eden-prairie/product-and-enablement-leader-ai-productivity-tools-remote/34088/98068054224
+  - AstraZeneca, "Executive Director, Global Head of Medical AI/Digital Strategy & Enablement" - https://careers.astrazeneca.com/job/gaithersburg/executive-director-global-head-of-medical-ai-digital-strategy-and-enablement/7684/94883358480
 
 ---
-_Last updated: 2026-07-19 Sunday_
+_Last updated: 2026-08-02 Sunday_

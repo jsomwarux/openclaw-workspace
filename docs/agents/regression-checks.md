@@ -298,3 +298,10 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Fail condition:** A one-shot reminder remains with `deleteAfterRun:true`, or completion is reported before verifying the live cron record after creation.
 - **Recovery:** Patch the cron with `deleteAfterRun:false`, verify with `get`, and log the correction in the daily note/proof log if it happened during the same turn.
 - **Owner surface:** OpenClaw one-shot reminder workflow, cron setup closeout checks, `docs/agents/mistakes-log-recent.md`.
+
+## Weekly Systems Review OpenClaw path check
+- **Trigger:** Weekly Systems Review cron failures, prompt edits, or heartbeat film review after OpenClaw rejects a Node binary version.
+- **Check:** Inspect live cron `b2ca53ab-0c07-4a22-8424-9d39bf988405` with `openclaw cron get` under the currently supported heartbeat Node prefix and verify every OpenClaw CLI command example uses the same supported path as `docs/agents/heartbeat-extended-rules.md`.
+- **Fail condition:** The WSR payload contains a stale path such as `/opt/homebrew/Cellar/node@22/22.22.2_2/bin` after the documented heartbeat path has moved, or a future run depends on a rejected Node version gate workaround.
+- **Recovery:** Patch the live cron payload path only, rerun `openclaw cron get ... | rg 'node@22|22\\.22\\.2_2|26\\.5\\.0_1'`, and verify enabled cron health stays clean. Do not install broader first-Sunday prompt rewrites without JT approval.
+- **Owner surface:** Weekly Systems Review live cron payload, `docs/agents/heartbeat-extended-rules.md`, Node/OpenClaw CLI command-form maintenance.
