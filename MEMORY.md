@@ -44,13 +44,13 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Review drafts remain review-only; do not auto-post. Jul 31 action-record, Aug 1 approval-boundary, and Aug 2 source-to-decision-trail LinkedIn drafts passed guards; none posted/scheduled/sent/banked.
+- Review drafts remain review-only; do not auto-post. Latest guarded drafts: Jul 31 action-record, Aug 1 approval-boundary, Aug 2 source-to-decision trail, Aug 3 approval-record/run-control; none posted/scheduled/sent/banked.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Aug 2 pulse stays directive-limited: use stale local job-market brief only as positioning input around reusable implementation assets, governance, release/eval/rollback, enablement docs, and adoption leadership; no app/search/task.
+- Latest: Aug 3 pulse stays directive-limited: stale local 2026-07-08 brief only as positioning input around reusable implementation assets, governance, release/eval/rollback, enablement docs, and adoption leadership; no fresh search/app/task.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -66,7 +66,7 @@
 
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
-- Aug 2 baseline: cost clean; MC ok 250 active/12 high/0 overdue; 74 jobs/13 enabled/0 suspicious after WSR natural run ok at 10:06, Telegram msg 25376, next 2026-08-09. Daily Send Sheet delivered Altmark/DHCR only; Outreach 03:00 PASS/no sends; PTP 10:30 ok; cron volume green.
+- Aug 3 baseline: cost clean; MC ok 250 active/12 high/0 overdue; 74 jobs/13 enabled/0 suspicious; WSR ok, next 2026-08-09; Daily Send Sheet delivered Altmark/DHCR only; Outreach 03:00 PASS/no sends; cron volume green.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
