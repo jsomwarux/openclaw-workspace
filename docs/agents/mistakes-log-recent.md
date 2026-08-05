@@ -5,6 +5,14 @@
 ## Logging Rule
 Every entry MUST have six fields: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete guardrail/rule, (4) regression check that would catch recurrence, (5) owner surface updated, (6) verification/date. A mistake entry without a regression check + owner surface is incomplete — finish it before moving on. Reference: `docs/agents/regression-checks.md`.
 
+## 2026-08-04 — “X should be Y, not Z” contrast pattern escaped LinkedIn voice guard
+- **Failure:** Delivered a LinkedIn recommendation with “A missing source report should be a hold, not a draft,” despite JT already banning contrast/reveal AI-slop patterns.
+- **Root cause:** The content rule and executable guard covered “not X, Y,” “not X but Y,” and “X is not just Y. It is Z,” but did not explicitly catch the semantically identical “X should be Y, not Z” shape. I treated it as a concrete operational line instead of recognizing the reveal structure.
+- **Guardrail/rule:** “X should be Y, not Z,” “X needs Y, not Z,” “X is Y, not Z,” and “X should become Y instead of Z” are banned across JT content. Rewrite around the concrete operating state, action rule, owner, system, or consequence.
+- **Regression check:** `python3 scripts/jt_voice_guard.py /tmp/bad_should_be_not.md --platform linkedin` must fail on “A missing source report should be a hold, not a draft.” Corrected LinkedIn drafts must pass the same guard before delivery.
+- **Owner surface updated:** `memory/FEEDBACK-LOG.md`, `memory/content-voice.md`, `memory/content/jt-voice-profile.md`, `memory/content/jt-voice-evidence-corpus.md`, `scripts/jt_voice_guard.py`, and this Mistakes Log entry.
+- **Verification/date:** 2026-08-04 — `/tmp/bad_should_be_not.md` failed `python3 scripts/jt_voice_guard.py /tmp/bad_should_be_not.md --platform linkedin` with `JT-rejected contrast shape: X should be Y, not Z`; corrected `memory/drafts/linkedin-property-ops-no-action-hold-2026-08-04.md` passed with `JT_VOICE_GUARD_PASS score=100`.
+
 ## 2026-07-27 — Passive Income Strategist guard reported before the artifact existed
 - **Failure:** Passive Income Strategist sent a silent-failure alert for 2026-07-27 pointing at `memory/passive-income/2026-07-27-strategist.md` before a valid strategist report existed, then required a manual guard rerun to send the actual fallback digest.
 - **Root cause:** The scheduled cron payload had been reduced to deterministic fallback/delivery only, but the delivery guard's verification/send flow allowed an old marker to be evaluated before the fallback report and fresh marker were in place. Cron status could remain `ok` or `already-running` while the user-visible artifact contract was still false.

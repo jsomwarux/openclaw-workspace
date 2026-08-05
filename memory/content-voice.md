@@ -341,10 +341,10 @@ Strong shape:
 - **No too-casual LinkedIn:** do not post "quick update," "small win," "built this weekend," "been playing with," "not gonna lie," "nothing crazy," "pretty cool," "vibes," "ship it and see," or app/build diary updates unless they are converted into client/employer-facing proof. LinkedIn should still sound like JT, but the reader should leave with trust, not just awareness that JT was building.
 - **Avoid AI-generated thought-leadership smell:** no “AI chatbot” contrast hooks, no “exception layer” phrasing, no vague “messy work” language, no stacked rhetorical lists unless grounded in a concrete workflow.
 - **Originality over acceptable:** every weekly slot must clear a 45-day semantic repeat check. Rewording a familiar angle is still a failure. Current hard-block phrases/angles: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” content-system/process transparency, and public-proof/privacy cleanup as standalone content.
-- **Contrarian setup ban for all JT content:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” “not X, but Y,” the two-sentence “X is not just Y. It is Z.” variant, or repeated-noun reveals like “The risk is not X. The risk is Y.” This is banned across LinkedIn, X, reminders, client-proof posts, product-builder posts, and methodology/trust posts. Start with the positive claim, concrete scene, machine, workflow, owner, number, or business constraint.
+- **Contrarian setup ban for all JT content:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” “not X, but Y,” the two-sentence “X is not just Y. It is Z.” variant, “X should be Y, not Z,” “X needs Y, not Z,” “X is Y, not Z,” “X should become Y instead of Z,” or repeated-noun reveals like “The risk is not X. The risk is Y.” This is banned across LinkedIn, X, reminders, client-proof posts, product-builder posts, and methodology/trust posts. Start with the positive claim, concrete scene, machine, workflow, owner, number, or business constraint.
 - **Question 5 sentence-shape ban:** do not use "gets solved with a hire," "X don't Y, they Z," statement-colon hook lines, or "X happened/changed/worked when Y" as a closing pattern. These sound like generated reflection, not JT's natural voice.
 - **Generic importance phrase ban:** never write “matters more than people think,” “people underestimate,” or “that part matters” unless replaced with the specific business reason.
-- **No hashtags.** They suppress reach.
+- **Hashtags:** default to no hashtags. If JT explicitly asks for hashtags, use a tight set of 3 relevant LinkedIn hashtags at the end. Never use a long hashtag block.
 - **No emojis** unless they serve a specific purpose (rarely)
 - **End:** clean insight OR a direct question. Never "DM me" or "link in bio"
 - **Specificity rule:** Replace every vague claim with a number or proper noun. "Saved time" → "Replaced 18 hrs/week of manual StreetEasy searches."
@@ -398,7 +398,7 @@ Do not adopt the repo's blanket bans on all adverbs, all passive voice, two-item
 - Long explanations of things the reader can infer
 - "We" or "our team" — JT is a solo operator
 - Contrast pairs as standalone structural framing ("X isn't Y, they're Z") — banned across JT content unless JT explicitly asks for a contrarian take; the Two-Part Parallel is fine only when it states a functional distinction without reveal-language
-- “The blocker is not whether X, it is whether Y,” “Not ‘look what this tool can do,’ more like…,” “X is not just Y. It is Z.,” and “The risk is not X. The risk is Y.” patterns — stale AI-copy smell; replace with direct proof, operational architecture, or the concrete failure moment
+- “The blocker is not whether X, it is whether Y,” “Not ‘look what this tool can do,’ more like…,” “X is not just Y. It is Z.,” “X should be Y, not Z,” “X needs Y, not Z,” “X is Y, not Z,” “X should become Y instead of Z,” and “The risk is not X. The risk is Y.” patterns — stale AI-copy smell; replace with direct proof, operational architecture, or the concrete failure moment
 - Generic importance phrases like “matters more than people think,” “people underestimate,” and “that part matters”
 - @jts_14 or Twitter references in LinkedIn content
 
@@ -448,7 +448,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] LinkedIn consulting check: does the hook start with a concrete buyer pain a nontechnical SMB operator recognizes from their workday?
 - [ ] LinkedIn consulting check: is AI introduced only after the operational problem is clear?
 - [ ] LinkedIn consulting check: did you avoid outreach-meta and generic “AI chatbot” contrast framing?
-- [ ] Contrast/reveal ban: did you avoid “not X, it’s Y,” “not X but Y,” and “X is not just Y. It is Z.” framing across the entire draft?
+- [ ] Contrast/reveal ban: did you avoid “not X, it’s Y,” “not X but Y,” “X is not just Y. It is Z,” “X should be Y, not Z,” “X needs Y, not Z,” “X is Y, not Z,” and “X should become Y instead of Z” framing across the entire draft?
 
 ### X only (algorithm compliance):
 - [ ] First line invites a reply?

@@ -66,11 +66,12 @@
 
 ## Active Automation / Crons
 - Jul 16 canonical state loaded: Mission Control should prioritize Altmark, MSI delivery, Governed AI Ops methodology kit, warm referral engine, and referral packet v1; Eve expansion/toolkit/Mission Control build frozen except status logging.
-- Aug 3 baseline: cost clean; MC ok 250 active/12 high/0 overdue; 74 jobs/13 enabled/0 suspicious; WSR ok, next 2026-08-09; Daily Send Sheet delivered Altmark/DHCR only; Outreach 03:00 PASS/no sends; cron volume green.
+- Aug 4 midday baseline: cost clean; MC ok 251 active/13 high/0 overdue after health protocol task addition; 13 enabled cron jobs/0 suspicious; cron volume green; Spanish paused/ok.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
 - Health, cost tracker, proof guard, film review, and skills audit remain active. ClawHub skill audit clean after excluding vendored `node_modules`.
+- Aug 4 health flare: after a two-month stable stretch, symptoms flared badly. Current working action frame from Opus audit is prescriber this week for sertraline timing/bruxism/hopelessness, alcohol-zero experiment, restore exercise/social exposure, laryngologist/videostroboscopy + SLP for voice, CBT/ACT therapist, and men's pelvic floor PT if urinary retention/PE pattern persists. Opus 14-day protocol saved at `health/opus-14-day-protocol-2026-08-04.md`; Mission Control task `j576xpcx6jrtashfqms8weep8s8bvgbn` tracks starting it and booking prescriber. Open item: exact sertraline start/titration/100mg date relative to Jul 15.
 - Detail: `docs/memory/MEMORY-full.md#health--training--quality-loops`.
 
 ## Integrity / Fabrication Corrections

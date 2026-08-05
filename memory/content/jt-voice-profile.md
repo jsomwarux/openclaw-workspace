@@ -69,7 +69,7 @@ Bad:
 Good:
 > The workflow decides whether the tool survives week two.
 
-Why: JT has rejected the "not X, Y" pattern as stale AI-copy framing. State the positive claim directly.
+Why: JT has rejected the "not X, Y" pattern as stale AI-copy framing. That includes "X should be Y, not Z" variants. State the positive claim directly.
 
 ### 4. Generic Importance Phrase
 
@@ -329,7 +329,7 @@ Better:
 1. Start with the workday scene unless the post is a pure X observation.
 2. Use "I built" only when ownership is the proof. Otherwise, lead with the reader's operating problem.
 3. If the post could be written by any AI consultant, reject it.
-4. If the hook depends on "not X, Y," rewrite it as a direct claim.
+4. If the hook depends on "not X, Y" or "X should be Y, not Z," rewrite it as a direct claim.
 4a. If the hook uses "best first AI project," "[niche] AI gets useful at," "Most AI projects do not fail because...," or "Most SMBs do not need X. They need Y," rewrite it. JT explicitly rejected those as AI-slop intro patterns.
 5. If a phrase says something is important, replace it with the consequence.
 5a. If a sentence has a colon followed by a long comma-list of what/who/where instructions, rewrite it into natural judgment or a buyer scene.
@@ -339,7 +339,7 @@ Better:
 5e. Maintain the build-proof / consultant-POV balance. Every serious content batch should include both proof of what JT is building and niche-specific buyer-problem analysis. A single post can combine both if the build detail clearly supports a buyer-facing implementation lesson.
 5f. For X, reject staged guru compression: trust-question hooks, "I would trust it with..." reveals, one-word noun-stack line breaks, "useful question is uglier," "probably a margin leak," build-list flex CTAs, "difference between automation and chaos," and "that's not automation, that's leverage."
 5g. For LinkedIn, reject casual-builder updates unless they create buyer/employer trust: no "quick update," "small win," "built this weekend," "been playing with," "nothing crazy," "pretty cool," "vibes," tool fandom, app-growth notes, or internal build diary with no operational lesson.
-5h. Reject old compression-template drift: no slogan pairs like "The tools exist. The implementation doesn't," "Agents handle the work," "Build the process. Buy back the time," "Demo proves it's possible. Deploy proves it's real," or "Chatbots answer questions. Agents close tickets" unless rewritten around a concrete buyer scene or proof point.
+5h. Reject old compression-template drift: no slogan pairs like "The tools exist. The implementation doesn't," "Agents handle the work," "Build the process. Buy back the time," "Demo proves it's possible. Deploy proves it's real," "Chatbots answer questions. Agents close tickets," or "X should be Y, not Z" unless rewritten around a concrete buyer scene or proof point.
 5i. Apply the Stop Slop delta guard when it helps JT sound less generated: reject false agency, narrator-from-distance phrasing, vague declaratives, generic Wh-opener setups, pull-quote endings, and high-confidence passive voice. Do not import blanket anti-adverb or anti-passive rules because JT's natural voice uses practical qualifiers and occasional passive constructions when the actor is obvious.
 6. If proof is not accepted, paid, permissioned, or anonymized, keep it internal or abstract the client.
 7. If LinkedIn content explains JT's internal process or public-proof hygiene, ask whether a buyer would trust him more or see their own problem more clearly after reading it. Usually the answer is no.

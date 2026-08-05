@@ -60,6 +60,8 @@ BANNED_PATTERNS = [
     (re.compile(r"\b(the\s+)?blocker\s+is\s+not\b", re.I), "stale blocker reveal"),
     (re.compile(r"\bnot\s+[^.\n]{1,80},?\s+(?:but|it'?s|it is)\b", re.I), "not-X-but-Y reveal"),
     (re.compile(r"\bnot\s+just\s+[^.\n]{1,120}\.\s*(?:it|this|that)\s+is\b", re.I), "not-just-X reveal"),
+    (re.compile(r"\b[^.\n]{3,120}\s+(?:should\s+be|needs?\s+to\s+be|is|becomes?)\s+[^.\n]{1,80},\s+not\s+[^.\n]{1,80}", re.I), "JT-rejected contrast shape: X should be Y, not Z"),
+    (re.compile(r"\b[^.\n]{3,120}\s+should\s+become\s+[^.\n]{1,80}\s+instead\s+of\s+[^.\n]{1,80}", re.I), "JT-rejected contrast shape: X should become Y instead of Z"),
     (re.compile(r"\bNo\s+[^.\n]{1,80}\.\s*No\s+[^.\n]{1,80}\.\s*Just\s+", re.I), "tricolon negation"),
     (re.compile(r"\bmatters\s+more\s+than\s+people\s+(?:think|realize)\b", re.I), "generic importance phrase"),
     (re.compile(r"\bpeople\s+underestimate\b", re.I), "generic importance phrase"),

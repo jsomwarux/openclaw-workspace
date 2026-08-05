@@ -54,6 +54,8 @@
 
 > Format: `[DATE] | [What was wrong] | [What JT prefers instead]`
 
+**[2026-08-04] | Used “A missing source report should be a hold, not a draft,” which is the banned “X should be Y, not Z” contrast/reveal pattern. | Treat “X should be Y, not Z” and close variants (“X needs Y, not Z,” “X is Y, not Z,” “X should become Y instead of Z”) as AI-slop contrast framing. Lead with the concrete operating state, action rule, owner, system, or consequence directly. If JT explicitly asks for hashtags, use a tight set of 3 relevant LinkedIn hashtags at the end; otherwise default remains no hashtags.**
+
 **[2026-06-07] | Delivered a Sunday LinkedIn recommendation about removing client names / public proof privacy cleanup. JT rejected it as not post-worthy, not valuable to readers, and not useful for positioning. | Treat client-name removal, privacy cleanup, proof hygiene, attribution cleanup, and "public proof needs a privacy layer" as internal operating discipline, not standalone content. Only use those facts as support inside a real buyer problem, shipped client outcome, or permission-safe case study. Content delivered to JT must be optimally valuable/worthy of posting, not merely acceptable or true.**
 
 **[2026-05-27] | Repeated-noun contrarian reveal pattern slipped into LinkedIn scheduled content: “The risk is not X. The risk is Y.” | Treat this as the same banned “X is not / it’s Y” pattern. Do not use semantic variants even when the sentence avoids “it’s.” Lead with the concrete failure moment or operational architecture directly.**

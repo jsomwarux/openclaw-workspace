@@ -254,6 +254,7 @@ What this proves:
 - Operational nouns are not enough if the hook sounds generated.
 - JT dislikes packaged consultant cadence where the first line announces a framework.
 - The stale reveal pattern is broader than literal "not X, Y"; "do not fail because X / fail because Y" and "do not need X / need Y" are the same failure.
+- "X should be Y, not Z" is also the same failure family. It may look like a plain operational sentence, but it still uses the AI-slop contrast reveal JT dislikes.
 - Lists can sound robotic when they are compressed into a colon sentence instead of written like natural judgment.
 - "Gets useful at" feels like generic AI-thread language, even when the exception-layer idea is sound.
 
@@ -427,7 +428,7 @@ For X, avoid polished guru compression. Prefer direct operational statements:
    A direct operational claim with a consequence: "If your team still checks the same spreadsheet every morning, the system is not finished."
 
 7. **What is AI slop contrarian framing?**
-   Any reveal structure where the sentence depends on "not X, Y" instead of a concrete failure, number, system, owner, or workflow.
+   Any reveal structure where the sentence depends on "not X, Y" or "X should be Y, not Z" instead of a concrete failure, number, system, owner, or workflow.
 
 8. **What words feel like JT?**
    Workflow, handoff, owner, approval, source, queue, system, exception, intake, record, check, proof, deployment, local, messy, concrete, route, logs.
