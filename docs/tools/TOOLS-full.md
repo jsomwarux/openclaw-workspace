@@ -45,6 +45,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 **Location:** `~/.openclaw/workspace/health/`
 **Database:** `~/.openclaw/workspace/health/health.sqlite`
 **CLI:** `python3 health.py <flags>` (run from the health/ dir)
+**Active protocol ops helper:** `python3 ~/.openclaw/workspace/scripts/protocol_ops.py <command>`
 
 ### Schedule
 - **9:00 PM EST daily** — Eve sends check-in prompt to JT via Telegram (main session cron)
@@ -84,6 +85,18 @@ python3 health.py --show 2026-02-21
 
 # Print the check-in prompt
 python3 health.py --prompt
+```
+
+### 14-Day Protocol Ops Commands
+```bash
+# Fixed-message cron helpers
+python3 ~/.openclaw/workspace/scripts/protocol_ops.py --json morning
+python3 ~/.openclaw/workspace/scripts/protocol_ops.py --json tracker
+python3 ~/.openclaw/workspace/scripts/protocol_ops.py --json report
+
+# Reply logging during active protocol window
+python3 ~/.openclaw/workspace/scripts/protocol_ops.py log-morning-hr "72"
+python3 ~/.openclaw/workspace/scripts/protocol_ops.py log-tracker 72 7.5 N Y Y 2 4 "optional note"
 ```
 
 ### Database Schema
@@ -614,6 +627,7 @@ Add whatever helps you do your job. This is your cheat sheet.
 - DB: ~/.openclaw/workspace/health/health.sqlite
 - CLI (from health/ dir): `python3 health.py --log "reply" [--date YYYY-MM-DD] | --report | --history [n] | --show DATE`
 - Inbound reply handler: `python3 ~/.openclaw/workspace/health/inbound_handler.py --reply "<JT reply>"` — consumes `health/pending-checkin.json`, refuses duplicates, logs to DB, marks pending logged, and prints confirmation to send back. Docs: `health/INBOUND_REPLY_HANDLER.md`
+- Active 14-day protocol helper: `python3 ~/.openclaw/workspace/scripts/protocol_ops.py --json morning|tracker|report`; reply logging uses `log-morning-hr` and `log-tracker`. Log: `health/protocol-log.jsonl`; reference: `health/protocol-reference.md`; morning HR staging: `health/protocol-state.json`.
 - Schedule: 9PM daily check-in prompt | Sunday 9AM weekly report
 
 ## Spanish Learning

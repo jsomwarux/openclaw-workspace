@@ -53,8 +53,18 @@
       },
       {
         "id": "6be7f564-5cec-47e7-b67c-9b2fcc3ed8de",
-        "name": "Health Check-in",
-        "schedule": "9 PM daily"
+        "name": "Protocol Ops Tracker",
+        "schedule": "9 PM daily during active 14-day protocol"
+      },
+      {
+        "id": "985cd5ef-f9e7-4260-bdfd-475cac5744fc",
+        "name": "Protocol Ops Morning HR",
+        "schedule": "7:30 AM daily during active 14-day protocol"
+      },
+      {
+        "id": "7bbde57e-6fae-4dbd-aa56-8b7c2f54c7a3",
+        "name": "Protocol Ops Day 7/14 Table",
+        "schedule": "9 AM on Day 7 and Day 14"
       },
       {
         "id": "eve-crypto-evening-010",

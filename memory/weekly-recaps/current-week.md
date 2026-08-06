@@ -1,4 +1,4 @@
-# Week of 2026-07-27 - Work Log
+# Week of 2026-08-03 - Work Log
 
 - 2026-07-10: Ran first Friday Scoreboard, saved `memory/audits/friday-scoreboards/2026-07-10.md`, created repeat-offender digest `memory/audits/repeat-offenders/2026-07-10.md`, and logged same-day proof `8468cec8`.
 
@@ -23,3 +23,4 @@ Archive every Monday, start fresh.
 - 2026-07-28: Generated and Drive-uploaded tailored resume docs for January Strategy & Operations and Kingdom GTM Systems Lead; live Google Doc readback verified Spectrum/Independent Consulting positioning and no client-name or developer-role overclaims.
 - 2026-07-28: Created a single recruiter-ready combined resume for January + Kingdom, weighted toward January but with GTM systems keywords preserved for Kingdom; DOCX build, Drive upload, and live Google Doc readback passed.
 - 2026-08-04: Saved JT's Opus 14-day health protocol to `health/opus-14-day-protocol-2026-08-04.md`, updated durable health memory, and created high-priority Mission Control task `j576xpcx6jrtashfqms8weep8s8bvgbn` to start the protocol and book prescriber.
+- 2026-08-05: Registered logistics-only protocol ops for JT's 14-day health protocol, imported the operating reference into `health/protocol-reference.md`, and aligned the helper/crons to the exact morning prompt, tracker schema, Day 7/14 report, and Day 15 stand-down.

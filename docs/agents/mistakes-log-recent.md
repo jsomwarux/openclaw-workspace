@@ -755,3 +755,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** After any one-shot cron add, run `openclaw.cron get` or registry inspection and fail closeout unless `deleteAfterRun:false` is present; patch it before final response if needed.
 - **Owner surface updated:** `docs/agents/regression-checks.md`, `docs/agents/mistakes-log-recent.md`, and OpenClaw one-shot reminder closeout behavior.
 - **Verification/date:** 2026-07-23 — patched cron `74a5b557-084e-4632-b3de-4b8c9cb5ac62` to `deleteAfterRun:false`; `openclaw.cron get` confirmed enabled, 2026-07-24 1:00PM ET next run, Telegram announce delivery, and `deleteAfterRun:false`.
+## 2026-08-05 — Protocol Log Test Wrote Fake Tracker Row
+
+- **Failure:** While testing `scripts/protocol_ops.py`, the first unit test run wrote a fake tracker row (`hr_waking=72`, `symptom=4`, note `note`) to `health/protocol-log.jsonl`; a later test pass also wrote fake staged HR state to `health/protocol-state.json`.
+- **Root cause:** `_append()`, `_load_state()`, and `_write_state()` captured path constants as default arguments before the test monkey-patched module variables, so test isolation did not actually redirect writes to temp files.
+- **Guardrail/rule:** Helper functions that write durable logs must resolve mutable path defaults at call time (`path=None` then `path or LOG_PATH`) and tests must verify the real artifact path is absent/unchanged after smoke tests.
+- **Regression check:** `python3 -m unittest scripts/test_protocol_ops.py scripts/test_health_checkin_cron.py` now passes after changing durable-write helpers to resolve paths at call time; `health/protocol-log.jsonl` and `health/protocol-state.json` were removed before any real protocol reply was logged.
+- **Owner surface updated:** `scripts/protocol_ops.py`; `scripts/test_protocol_ops.py`; this mistakes log.
+- **Verification/date:** 2026-08-05, same run; fake log row removed with `apply_patch`, tests rerun cleanly before completion.
