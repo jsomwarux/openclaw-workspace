@@ -48,7 +48,7 @@
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Aug 5 pulse remains directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around reusable AI implementation assets, governance, release/eval/rollback, enablement docs, and adoption leadership.
+- Latest: Aug 6 pulse remains directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around reusable AI implementation assets, governance, release/eval/rollback, enablement docs, and adoption leadership.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -60,11 +60,11 @@
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. OpenClaw checks require Node 26 path; cost alerts clean.
 - Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`.
-- Backup regression: local backup succeeds but `n8n-agent` GitHub push failed on consecutive Aug 4/5 runs due remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; only document/route.
+- Backup regression: local backup succeeds but `n8n-agent` GitHub push failed again on Aug 6 due remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; issue is routed via Mission Control task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Aug 5 baseline before protocol ops: cost clean; MC ok 250 active/13 high/0 overdue; 13 enabled cron jobs/0 suspicious; cron volume green; Spanish paused/ok. Daily Delta delivery must use explicit numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
+- Aug 6 heartbeat baseline: cost clean; MC ok around 251 active/13 high/0 overdue after audit demotion; 15 enabled cron jobs/0 unhealthy; cron volume green; Spanish paused/ok. Daily Delta delivery must use explicit numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
 - Aug 5 protocol ops registered for the 14-day health protocol starting 2026-08-05 and ending 2026-08-18: 07:30 resting-HR prompt (`985cd5ef-f9e7-4260-bdfd-475cac5744fc`), 21:00 tracker prompt (`6be7f564-5cec-47e7-b67c-9b2fcc3ed8de`), and 09:00 Day 7/14 table (`7bbde57e-6fae-4dbd-aa56-8b7c2f54c7a3`). Protocol log path: `health/protocol-log.jsonl`; reference/bookings path: `health/protocol-reference.md`; morning HR staging path: `health/protocol-state.json`.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 

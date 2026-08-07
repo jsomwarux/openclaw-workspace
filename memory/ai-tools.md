@@ -2,6 +2,20 @@
 
 ---
 
+## Aug 6, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent tool calls are becoming lifecycle-managed work, not just synchronous API calls.** Fresh monitoring shows the useful shift is operational: MCP's 2026-07-28 spec moved toward a stateless HTTP-friendly core, cacheable list results, authorization hardening, and formal extensions for apps/tasks; Claude Code release notes now surface fixes around MCP connector auth noise and backgrounding long MCP tool calls; and enterprise agent gateways are positioning least-privilege runtime enforcement as the control layer across diverse agent runtimes.
+
+**JT relevance:** keep Run Control / AI Enablement OS focused on tool-call lifecycle evidence. The next proof packet should show not only whether an agent was allowed to call a tool, but what happened after the call started: queued/running/backgrounded/completed/failed, approval owner, retry rule, output path, and escalation state. This maps directly to OpenClaw/Eve reliability work and to client workflows where long-running exports, document checks, or lease/collections reviews must stay observable.
+
+**Actionable demo angle:** add a "tool-call lifecycle ledger" row to the next governed-workflow artifact:
+
+`requested_action | tool/server | auth scope | approval rule | lifecycle_state | output_path | retry_or_escalation | audit_record`
+
+Sources checked with local `scripts/web_search.py` on 2026-08-06: MCP 2026-07-28 spec blog https://blog.modelcontextprotocol.io/posts/2026-07-28/; MCP release candidate https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/; Claude MCP 2026-07-28 rollout https://claude.com/blog/bringing-mcp-2026-07-28-to-claude; Claude Code releases https://github.com/anthropics/claude-code/releases; Google Cloud Agent Gateway overview https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/agent-gateway-overview
+
+---
+
 ## Jul 13, 2026 - Heartbeat AI Tool Monitoring
 
 **Agent governance is becoming policy-decision evidence, not just an admin setting.** Fresh monitoring shows the strongest new signal in the same control-plane lane: enterprise agent tooling is now making the policy decision itself visible, including the requested action, rule applied, approval requirement, allow/deny result, and audit-log record. The useful buyer proof is not "we have governance"; it is a concrete decision record that shows why a tool call was allowed, held, denied, or escalated.
