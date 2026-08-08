@@ -45,11 +45,12 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 **Location:** `~/.openclaw/workspace/health/`
 **Database:** `~/.openclaw/workspace/health/health.sqlite`
 **CLI:** `python3 health.py <flags>` (run from the health/ dir)
-**Active protocol ops helper:** `python3 ~/.openclaw/workspace/scripts/protocol_ops.py <command>`
+**Manual protocol ops helper:** `python3 ~/.openclaw/workspace/scripts/protocol_ops.py <command>`
 
 ### Schedule
-- **9:00 PM EST daily** — Eve sends check-in prompt to JT via Telegram (main session cron)
-- **9:00 AM Sunday** — Eve generates and sends weekly report via Telegram (isolated cron)
+- Health crons canceled 2026-08-07 at JT request.
+- Removed cron IDs: `eve-health-checkin-003`, `eve-health-report-004`, `985cd5ef-f9e7-4260-bdfd-475cac5744fc`, `6be7f564-5cec-47e7-b67c-9b2fcc3ed8de`, `7bbde57e-6fae-4dbd-aa56-8b7c2f54c7a3`.
+- Use the CLI/helpers manually only when JT asks.
 
 ### Check-in Format
 JT replies naturally — parser handles comma-separated, labeled, or multi-line:
@@ -73,7 +74,7 @@ python3 health.py --log "7, neck, chicken + rice, 30min walk, 8"
 # Log for a specific date
 python3 health.py --log "6, lower back, pasta, none, 7" --date 2026-02-20
 
-# Generate weekly report (also runs on Sunday automatically)
+# Generate weekly report manually
 python3 health.py --report
 
 # View recent check-ins

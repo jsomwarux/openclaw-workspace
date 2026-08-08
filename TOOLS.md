@@ -2,9 +2,9 @@
 > Check this file before saying "I can't." Full command syntax lives in `docs/tools/TOOLS-full.md`.
 
 ## Health System
-- DB: `health/health.sqlite`; daily 9PM check-in, Sunday 9AM report.
+- DB: `health/health.sqlite`; health crons canceled 2026-08-07 at JT request (legacy daily check-in/report and 14-day protocol reminders removed).
 - Use `health/health.py` for log/report/history and `health/inbound_handler.py` for JT replies.
-- Active 14-day protocol ops helper: `scripts/protocol_ops.py`; log path `health/protocol-log.jsonl`; reference/bookings path `health/protocol-reference.md`; morning HR staging path `health/protocol-state.json`.
+- Manual 14-day protocol ops helper remains available: `scripts/protocol_ops.py`; log path `health/protocol-log.jsonl`; reference/bookings path `health/protocol-reference.md`; morning HR staging path `health/protocol-state.json`.
 - Full syntax: `docs/tools/TOOLS-full.md#health-system`.
 
 ## Spanish Learning

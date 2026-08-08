@@ -2,6 +2,20 @@
 
 ---
 
+## Aug 7, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent tooling is moving toward admin-configured runtimes plus explicit lifecycle limits.** Fresh monitoring shows the practical buyer signal is still control evidence, but the control surface is getting more concrete: OpenAI Business release notes now surface workspace app templates with provider setup details such as OAuth credentials, callback URLs, webhooks, managed MCP server URLs, and workspace access controls; Claude Code monitoring shows MCP/tool-call UX and background execution fixes, including long MCP calls moving out of the foreground so work can continue; and MCP 2026-07-28 implementation guidance keeps emphasizing a stateless core, production OAuth/OIDC alignment, and Apps/Tasks as formal lifecycle extensions.
+
+**JT relevance:** keep Run Control / EnablementOps packaged around "managed work surfaces," not generic agent demos. The proof buyers need is: who configured the app/tool, which workspace can access it, which credentials/scopes are in play, what happens when a tool call runs long, and where the task state/result/audit link lives.
+
+**Actionable demo angle:** extend the tool-call lifecycle ledger with setup/runtime fields:
+
+`workspace | app_or_tool | credential_owner | auth_scope | approval_rule | foreground_or_background | task_state | result_path | audit_link | next_owner`
+
+Sources checked with local `scripts/web_search.py` on 2026-08-07: OpenAI Help Center ChatGPT Business release notes https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes; Claude Code changelog https://code.claude.com/docs/en/changelog; WorkOS MCP AuthKit docs https://workos.com/docs/authkit/mcp; WorkOS MCP 2026-07-28 AuthKit guide https://workos.com/blog/how-to-build-an-mcp-app-on-the-2026-07-28-spec-with-workos-authkit
+
+---
+
 ## Aug 6, 2026 - Heartbeat AI Tool Monitoring
 
 **Agent tool calls are becoming lifecycle-managed work, not just synchronous API calls.** Fresh monitoring shows the useful shift is operational: MCP's 2026-07-28 spec moved toward a stateless HTTP-friendly core, cacheable list results, authorization hardening, and formal extensions for apps/tasks; Claude Code release notes now surface fixes around MCP connector auth noise and backgrounding long MCP tool calls; and enterprise agent gateways are positioning least-privilege runtime enforcement as the control layer across diverse agent runtimes.

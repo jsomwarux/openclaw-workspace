@@ -129,7 +129,7 @@
 
 ## Health Tracking System
 - SQLite at `~/.openclaw/workspace/health/health.sqlite` | CLI: `python3 health.py` from health/ dir
-- 9 PM daily: check-in prompt to JT via Telegram | Sunday 9 AM: weekly report via Telegram
+- Automated health crons canceled 2026-08-07 at JT request; use CLI/protocol helpers manually only when asked.
 - JT's focus areas: muscle tension (neck, traps, shoulders, lower back, hips) + diet optimization
 - Full schema + commands in TOOLS.md
 
@@ -137,11 +137,10 @@
 - Jobs written directly to `~/.openclaw/cron/jobs.json` (CLI can't pair with gateway)
 - **Isolated agentTurn sessions load ALL workspace files** — if MEMORY.md+AGENTS.md+TOOLS.md are large, context overflow occurs. Use main session systemEvent for jobs that don't need isolation.
 
-### Active Cron Jobs (11)
+### Active Cron Jobs (historical index; verify live registry)
+- Health crons canceled 2026-08-07: legacy `eve-health-checkin-003` / `eve-health-report-004` and protocol ops `985cd5ef-f9e7-4260-bdfd-475cac5744fc` / `6be7f564-5cec-47e7-b67c-9b2fcc3ed8de` / `7bbde57e-6fae-4dbd-aa56-8b7c2f54c7a3`
 1. `eve-morning-brief-001` — 7:30 AM daily | **main session** systemEvent | reads tasks.md + niche-monitor-latest.md + job brief
 2. `eve-heartbeat-2h-002` — 8,10,12,14,16,18,20,22 EST | **main session** systemEvent
-3. `eve-health-checkin-003` — 9 PM daily | main session | sends check-in prompt to JT
-4. `eve-health-report-004` — Sunday 9 AM | isolated | runs health.py --report → Telegram
 5. `eve-job-market-daily-005` — 6:30 AM daily | isolated | scans jobs → writes to `~/projects/job-market-agent/data/daily-brief.md`
 6. `eve-niche-monitor-006` — 9,11,13,15,17 EST Mon–Fri | isolated | Brave search, severity-filtered → `memory/niche-monitor-latest.md`
 7. `eve-weekly-synthesis-007` — Sunday 8 AM | isolated | synthesizes week's KB entries → Telegram report
