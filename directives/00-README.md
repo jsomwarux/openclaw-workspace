@@ -13,6 +13,8 @@ The pack:
 
 ## Approved registry, 12 recurring jobs (Engine B Stage 1 idea engine kept; marketing Stage 3 rebuild pending)
 
+Current live-registry override, 2026-08-08: JT canceled the Health Check-in / Protocol Ops crons on 2026-08-07. The active 12-job baseline now includes Nightly Claude Delta Packet Reminder and excludes Health Check-in. Do not re-enable health crons from this July registry without explicit JT instruction.
+
 | Job | Schedule | Class | Ping |
 |---|---|---|---|
 | Daily Send Sheet (rewritten Morning Brief) | 30 7 * * * | green | yes, 1/day |
@@ -22,7 +24,7 @@ The pack:
 | Friday Scoreboard (new, replaces 3 jobs) | 0 16 * * 5 | green | yes, 1/week |
 | Weekly Systems Review | 0 10 * * 0 | green, fixes yellow | only if red |
 | weekly-unemployment-cert | 0 7 * * 0 | green reminder | yes, 1/week |
-| Health Check-in (Pattern-Focused) | 0 21 * * * | green | yes, 1/day |
+| Nightly Claude Delta Packet Reminder | 0 22 * * * | green reminder | yes, 1/day when JT action is needed |
 | Passive Income idea engine: fetch-signals, scout, strategist, delivery-guard (Engine B Stage 1) | weekly now, monthly after Engine B rewrite | green run, yellow build-recs | no |
 
 One-shot reminders remain allowed. Everything else is disabled.

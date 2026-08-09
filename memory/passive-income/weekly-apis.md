@@ -1,15 +1,13 @@
-# API Intelligence Report — 2026-08-01
+# API Intelligence Report — 2026-08-08
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-08-01 05:44:38
+Generated: 2026-08-08 05:44:47
 
-**Totals:** 0 new APIs | 0 PH tools | 5 HN stories | 0 discoveries
+**Totals:** 0 new APIs | 0 PH tools | 3 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **Google Just Ruined One of Its Most Important Tools** (score: 7) | [link](https://www.theatlantic.com/technology/2026/07/google-earth-ai-images/688145/)
-- **Google plans to exempt sanctioned nations from Android developer verification** (score: 3) | [link](https://arstechnica.com/gadgets/2026/07/google-plans-to-exempt-sanctioned-nations-from-android-developer-verification/)
-- **Free tools for Etsy sellers, podcasters, and indie devs** (score: 2) | [link](https://thesellermind.com/tools/fee-calculator)
-- **Perplexity AI loses bid to toss Reddit lawsuit over data scraping** (score: 2) | [link](https://www.reuters.com/legal/litigation/perplexity-ai-loses-bid-toss-reddit-lawsuit-over-data-scraping-2026-07-31/)
-- **Show HN: utils.foo > developer utilities that run client-side without ads** (score: 1) | [link](https://utils.foo/)
+- **Show HN: I updated my unofficial Substack Posting API** (score: 2) | [link](https://apisubstack.com/)
+- **Show HN: Lensa – Open-source MCP connectors and skills for ChatGPT** (score: 1) | [link](https://github.com/mitrotasios/lensa-mcp)
+- **Building my own project management tool on Cloudflare** (score: 1) | [link](https://tom-dickson.com/blog/projektor-mcp-issue-tracker-cloudflare-workers/)
 
 
 ## Scout Guidance
