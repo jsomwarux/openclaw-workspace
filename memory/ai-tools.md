@@ -2,6 +2,20 @@
 
 ---
 
+## Aug 9, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent work is becoming budgeted, attributable, and auditable at runtime.** Fresh monitoring showed Claude Code ecosystem notes around per-session subagent caps, long MCP tool calls moving into background execution, and MCP usage attribution fixes; OpenAI-adjacent release monitoring surfaced MCP 2026-07-28 support themes like paginated discovery, multi-round requests, and non-blocking server startup; and MCP gateway/control-plane coverage keeps framing every tool call as something to see, control, approve/block, protect, and prove.
+
+**JT relevance:** keep Run Control / AI Enablement OS proof centered on runtime evidence, not only permission setup. Buyers need to know when a tool call started, whether it went foreground/background, which budget or subagent limit applied, how usage/cost was attributed, whether a policy allowed/held/denied it, and where the output/audit path landed.
+
+**Actionable demo angle:** extend the workflow ledger with runtime-control fields:
+
+`workflow | agent_or_subagent | tool_call | foreground_or_background | budget_or_cap | usage_attribution | policy_decision | approval_owner | output_path | audit_path | recovery_state`
+
+Sources checked with local `scripts/web_search.py` on 2026-08-09: Claude Code changelog https://code.claude.com/docs/en/changelog; Releasebot Claude Code updates https://releasebot.io/updates/anthropic/claude-code; Releasebot OpenAI updates https://releasebot.io/updates/openai; Microsoft Agent Governance Toolkit https://github.com/microsoft/agent-governance-toolkit; Strac Google Workspace MCP Server governance https://www.strac.io/blog/google-workspace-mcp-server; Strac Microsoft 365 MCP Server governance https://www.strac.io/blog/m365-mcp-server; Obot Enterprise AI Control Plane & MCP Gateway https://obot.ai/
+
+---
+
 ## Aug 7, 2026 - Heartbeat AI Tool Monitoring
 
 **Agent tooling is moving toward admin-configured runtimes plus explicit lifecycle limits.** Fresh monitoring shows the practical buyer signal is still control evidence, but the control surface is getting more concrete: OpenAI Business release notes now surface workspace app templates with provider setup details such as OAuth credentials, callback URLs, webhooks, managed MCP server URLs, and workspace access controls; Claude Code monitoring shows MCP/tool-call UX and background execution fixes, including long MCP calls moving out of the foreground so work can continue; and MCP 2026-07-28 implementation guidance keeps emphasizing a stateless core, production OAuth/OIDC alignment, and Apps/Tasks as formal lifecycle extensions.

@@ -93,6 +93,12 @@
 - Recurring failure patterns: cron volume still far above 20/day cap; gateway LaunchAgent ThrottleInterval still 1; bootstrap files near cap; duplicate lossless-claw plugin warning persists.
 - Blockers deferred: cron pruning/consolidation, gateway throttle hygiene, OpenClaw 2026.5.12 update decision, HEARTBEAT/MEMORY compaction.
 
+## Weekly Systems Review — 2026-08-09
+- Checks run: cron health, file budgets, process/gateway/watchdog health, LaunchAgent config, OpenClaw version, plugin/settings/extensions, critical file integrity, autoresearch enrollment, future signals, passive-income pruning, north-star KPIs, and weekly cost review.
+- Fixes applied: updated the existing Mission Control WSR follow-up task with MC recovery proof, AGENTS.md near-cap drift, stale pseudo-command diagnostics, and duplicate plugin metadata warning; validated `tasks/pending.jsonl` correctly as JSONL; post-delivery heartbeat amended today's WSR report with the cash source conflict required by the July 21 regression rule.
+- Recurring failure patterns: WSR again carried forward stale `$5,575` north-star collected cash even though live `/api/revenue` and the 2026-08-07 Friday Scoreboard report August collected cash as `$0`; stale pseudo-command diagnostics still appear in cron metadata even when latest statuses are ok; AGENTS.md remains too close to its bootstrap budget; duplicate lossless-claw/plugin install metadata warning persists.
+- Blockers deferred: `scripts/north_star_pipeline.py` or its source inputs need cash-source reconciliation; cron prompt cleanup requires approved prompt window; plugin metadata cleanup requires approved plugin/config path; gateway memory is above 500 MB but low CPU and stable.
+
 ## Autoresearch Sweep — 2026-05-18
 - Selected `opticfy-ops`; baseline 1.000 → final 1.000; changed file: agents/autoresearch/targets.md (checklist path hygiene + stable metadata); logs: agents/autoresearch/logs/2026-05-18-opticfy-ops-*.md.
 2026-05-20 — autoresearch x-research: baseline 0.833 → final 1.000; changed `skills/x-research/SKILL.md` to add a Search Budget First step with pulse/standard/deep caps and stop conditions for paid X API usage.

@@ -27,7 +27,7 @@
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Aug 8 send queue: Altmark rent delinquency remainder and DHCR Phase 1 deposit remain live cash gates. JT sends; Eve only stages/reviews. MSI kickoff is cleared and must not resurface.
+- Aug 9 send queue: Altmark rent delinquency remainder and DHCR Phase 1 deposit remain live cash gates. JT sends; Eve only stages/reviews. MSI kickoff is cleared and must not resurface.
 - Referral packet v1 plus Gil/Karen asks are warm paths; lower-tier acquisition cut for July.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
@@ -48,7 +48,7 @@
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
 - Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Aug 8 pulse remains directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around reusable AI implementation assets, governance, release/eval/rollback, docs, and adoption.
+- Latest: Aug 9 pulse remains directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around reusable governed implementation assets, release/eval/rollback, docs, and adoption.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -60,11 +60,11 @@
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. OpenClaw checks require Node 26 path; cost alerts clean.
 - Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`.
-- Backup regression: local backup succeeds but `n8n-agent` GitHub push failed again on Aug 8 due remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; issue is routed via Mission Control task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
+- Backup regression: local backup succeeds but `n8n-agent` GitHub push failed again on Aug 9 due remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; routed via MC task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Aug 8 heartbeat baseline: cost clean; MC 251 active/13 high/0 overdue; 12 enabled crons/0 unhealthy; refused-scope jobs absent; Spanish paused/ok. Daily Delta must use numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
+- Aug 9 heartbeat baseline: cost clean; MC 251 active/13 high/0 overdue; 12 enabled crons/0 unhealthy; refused-scope jobs absent; Spanish paused. Daily Delta must use numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
 - Aug 7 JT canceled all health crons. Removed active 14-day protocol jobs `985cd5ef-f9e7-4260-bdfd-475cac5744fc`, `6be7f564-5cec-47e7-b67c-9b2fcc3ed8de`, `7bbde57e-6fae-4dbd-aa56-8b7c2f54c7a3`, plus legacy disabled health jobs `eve-health-checkin-003` and `eve-health-report-004`. Manual health CLI/protocol helpers remain available only on request.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
