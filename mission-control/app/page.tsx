@@ -6,8 +6,9 @@ import { AlertTriangle, Bell, Bot, ChevronDown, ChevronRight, CircleDollarSign }
 import { InspectionDrawer } from "@/components/mission-control/InspectionDrawer";
 import { StateBlock } from "@/components/mission-control/StateBlock";
 import { useMissionControlData } from "@/lib/mission-control/hooks";
-import { primaryActionVerb, reasonChips, reasonToneClassName } from "@/lib/mission-control/reason-codes";
+import { primaryActionVerb, reasonChips, reasonToneClassName, shouldShowSecondaryInspect } from "@/lib/mission-control/reason-codes";
 import type { Signal, SignalPriority } from "@/lib/mission-control/types";
+import type { TaskStatus } from "@/lib/mission-control/work-status";
 import { cn, formatRelative } from "@/lib/utils";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -140,11 +141,34 @@ export default function CockpitPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: signal.id, ...patch }),
       });
+      setSelected((current) => {
+        if (!current || current.id !== signal.id) return current;
+        return {
+          ...current,
+          priority: patch.priority ?? current.priority,
+          owner: patch.assignee ?? current.owner,
+          status:
+            patch.status === "done" || patch.status === "archived"
+              ? patch.status
+              : patch.status === "in-progress"
+                ? "in-progress"
+                : current.status,
+          updatedAt: Date.now(),
+        };
+      });
       await refresh();
       if (options.closeDrawer) setSelected(null);
     } finally {
       setUpdatingId(null);
     }
+  }
+
+  function updateStatus(signal: Signal, status: TaskStatus) {
+    return patchTask(signal, { status });
+  }
+
+  function updatePriority(signal: Signal, priority: SignalPriority) {
+    return patchTask(signal, { priority });
   }
 
   function nudge(signal: Signal) {
@@ -233,13 +257,15 @@ export default function CockpitPage() {
               >
                 {updatingId === nowCard.id ? "Saving…" : primaryActionVerb(nowCard)}
               </button>
-              <button
-                type="button"
-                onClick={() => setSelected(nowCard)}
-                className="h-11 rounded-md border border-[#2b333c] px-4 text-sm text-zinc-400 transition-colors hover:border-[#38414a] hover:text-zinc-200"
-              >
-                Inspect
-              </button>
+              {shouldShowSecondaryInspect(nowCard) && (
+                <button
+                  type="button"
+                  onClick={() => setSelected(nowCard)}
+                  className="h-11 rounded-md border border-[#2b333c] px-4 text-sm text-zinc-400 transition-colors hover:border-[#38414a] hover:text-zinc-200"
+                >
+                  Inspect
+                </button>
+              )}
             </div>
           </article>
         )}
@@ -359,6 +385,8 @@ export default function CockpitPage() {
         signal={selected}
         onClose={() => setSelected(null)}
         updating={Boolean(selected && updatingId === selected.id)}
+        onStatusChange={updateStatus}
+        onPriorityChange={updatePriority}
         onSnooze={(signal) =>
           patchTask(signal, { snoozedUntil: Date.now() + SNOOZE_DAYS * DAY_MS }, { closeDrawer: true })
         }

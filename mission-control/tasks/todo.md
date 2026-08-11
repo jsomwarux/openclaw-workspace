@@ -1,3 +1,10 @@
+## Plan — Mission Control Functionality Review — 2026-08-10
+- [x] Reproduce screenshot-reported Today page issues and inspect task mutation/data flow.
+- [ ] Add regression coverage for primary action labels, self due-date labels, evidence-gap display, and audit value formatting.
+- [ ] Patch Today page and inspection drawer so task controls persist and internal/raw fields stop leaking into the UI.
+- [ ] Run unit tests, build verification, and focused browser/API checks.
+- [ ] Review broader Mission Control configuration against the Aug 10 priority stack and record remaining risks.
+
 ## Plan — Passive Income Ship Lane Fix — 2026-07-09
 - [x] Add regression coverage for Ship nav surfacing Passive Income and for enriched idea records.
 - [x] Restore Passive Income as a visible Ship cockpit entry point.

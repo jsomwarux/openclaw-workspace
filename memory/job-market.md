@@ -3,6 +3,16 @@
 
 ---
 
+## 2026-08-10 - Directive-Limited Heartbeat Job Market Pulse
+
+Read the current local job-market artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` remains the 2026-07-08 brief, last modified 2026-07-08 05:17 EDT. Live cron/directive checks keep Job Market Daily Research, Job Application Auto-Builder, and Job Application Tracker disabled/refused, so no fresh crawl, external job search, application package, tracker update, certification/demo task, Mission Control role task, outreach, send, post, schedule, upload, or cron enablement was created.
+
+**Strongest usable signal:** the retained Salesforce/enterprise-AI signal remains only positioning support: reusable implementation assets, release governance, enablement handoff, eval/rollback thinking, adoption leadership, and business judgment.
+
+**Positioning implication:** keep job-market language subordinate to Altmark/MSI/referral cash and proof. Use it only to frame Run Control / AI Enablement OS as governed implementation work with source records, owner approval, tool boundaries, audit path, failure/rollback handling, delivery proof, and value/cash movement. No job-market pivot today.
+
+---
+
 ## 2026-08-09 - Directive-Limited Heartbeat Job Market Pulse
 
 Read the current local job-market artifact: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` remains the 2026-07-08 brief, last modified 2026-07-08 05:17 EDT. Live cron registry returns no enabled `Job Market Daily Research`, `Job Application Auto-Builder`, `Job Application Tracker`, crypto, Nash, Health, or Protocol Ops jobs, and `directives/00-README.md` keeps job-market/application lanes disabled/refused. No fresh crawl, external job search, application package, tracker update, certification/demo task, Mission Control role task, outreach, send, post, schedule, upload, or cron enablement was created.

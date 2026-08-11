@@ -2,6 +2,20 @@
 
 ---
 
+## Aug 10, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent governance is consolidating around control-plane evidence for every tool call.** Fresh monitoring surfaced Microsoft Agent Governance Toolkit language around policy enforcement, zero-trust identity, execution sandboxing, audit, and MCP gateway controls; Google Agent Gateway positioning around centralized policies and OAuth handshakes between agents and tools; and MCP security coverage framing every Workspace/M365 tool call as allow/block/approve with redaction, masking, and vaulting for sensitive data.
+
+**JT relevance:** keep Run Control / AI Enablement OS proof anchored in the runtime ledger, not abstract governance. The buyer proof row should show which agent or workflow requested the tool call, which identity/credential was represented, whether a gateway allowed/blocked/held it, whether human approval was required, what budget/usage attribution applied, whether it foregrounded or backgrounded, and where the audit/output landed.
+
+**Actionable demo angle:** extend the governed workflow row to combine policy, budget, and runtime state:
+
+`workflow | requester_identity | tool_or_mcp_server | credential_scope | allow_block_approve | human_reviewer | budget_or_usage_owner | foreground_or_background | output_path | audit_path | recovery_action`
+
+Sources checked with local `scripts/web_search.py` on 2026-08-10: Microsoft Agent Governance Toolkit https://github.com/microsoft/agent-governance-toolkit; Google Agent Gateway overview https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/agent-gateway-overview; Strac Microsoft 365 MCP Server governance https://www.strac.io/blog/m365-mcp-server; Strac Google Workspace MCP Server governance https://www.strac.io/blog/google-workspace-mcp-server; Preloop AI Agent Control Plane https://preloop.ai/resources/ai-agent-control-plane-2026; MintMCP usage tracking https://www.mintmcp.com/blog/track-ai-agent-usage; Claude Code changelog https://code.claude.com/docs/en/changelog
+
+---
+
 ## Aug 9, 2026 - Heartbeat AI Tool Monitoring
 
 **Agent work is becoming budgeted, attributable, and auditable at runtime.** Fresh monitoring showed Claude Code ecosystem notes around per-session subagent caps, long MCP tool calls moving into background execution, and MCP usage attribution fixes; OpenAI-adjacent release monitoring surfaced MCP 2026-07-28 support themes like paginated discovery, multi-round requests, and non-blocking server startup; and MCP gateway/control-plane coverage keeps framing every tool call as something to see, control, approve/block, protect, and prove.

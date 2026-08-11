@@ -94,6 +94,7 @@ describe("scoreTask factors", () => {
 
     const self = scoreTask(signal({ dueDate: now, dueDateSource: "self" }), { now });
     expect(self.factors.deadlinePressure).toBe(8);
+    expect(self.reasonCodes).toContain("deadline:self:2026-07-11");
   });
 
   test("unblock value comes from the explicit blocks field, not the title text", () => {

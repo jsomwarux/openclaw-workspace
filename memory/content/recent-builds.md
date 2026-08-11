@@ -163,3 +163,11 @@
 - **Demonstrates:** product UX repair, local report parsing, decision-board design, and regression-tested route discoverability.
 - **Content angle:** If an idea board does not explain why each item scored where it did, it is an archive, not a decision system.
 - **Status:** complete.
+
+## Mission Control Today Drawer Trust Fix — 2026-08-10
+- **What:** Fixed the Today inspection drawer so status actions mutate tasks, duplicate Inspect/Open controls do not appear for plain inspection tasks, proof warnings only show when proof is actually required, and rank audit rows render human-readable values.
+- **For:** Internal operating system / JT + Eve task routing.
+- **Outcome:** `bun test lib/mission-control` passed 109 tests, `bunx tsc --noEmit` passed, `bun run build` passed, and a live Playwright smoke against `localhost:3000` verified no raw audit internals leaked and the Done button emitted `PATCH /api/tasks` with `status: "done"` while intercepted.
+- **Demonstrates:** regression-driven product repair, dashboard trust, task-action wiring, and proof-aware UI display.
+- **Content angle:** If an operating dashboard leaks internal scoring fields or dead action buttons, the ranking system loses trust even when the data is right.
+- **Status:** complete.

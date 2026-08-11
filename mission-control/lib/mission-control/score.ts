@@ -101,7 +101,10 @@ export function scoreTask(signal: Signal, ctx: ScoreContext = {}): ScoreResult {
   const reasonCodes: string[] = [];
 
   if (factors.cashImpact > 0) reasonCodes.push(`cash:${Math.round(expectedCash(signal))}`);
-  if (factors.deadlinePressure > 0 && signal.dueDate) reasonCodes.push(`deadline:${isoDate(signal.dueDate)}`);
+  if (factors.deadlinePressure > 0 && signal.dueDate) {
+    const date = isoDate(signal.dueDate);
+    reasonCodes.push(signal.dueDateSource === "self" ? `deadline:self:${date}` : `deadline:${date}`);
+  }
   if (factors.unblockValue > 0) {
     reasonCodes.push(signal.blocksAgent ? "unblocks:agent" : `unblocks:${signal.blocks ?? 0}`);
   }

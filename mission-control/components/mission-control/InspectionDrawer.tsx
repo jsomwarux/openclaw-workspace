@@ -2,6 +2,7 @@
 
 import { Archive, Clock3, UserPlus, X } from "lucide-react";
 import { useTaskAudit } from "@/lib/mission-control/hooks";
+import { formatAuditField, formatAuditValue, needsEvidenceAttention } from "@/lib/mission-control/inspection-display";
 import { reasonChips, reasonToneClassName } from "@/lib/mission-control/reason-codes";
 import type { Signal } from "@/lib/mission-control/types";
 import { priorityOptions, rankingExplanation } from "@/lib/mission-control/work-actions";
@@ -50,6 +51,7 @@ export function InspectionDrawer({
   const currentStatus = toTaskStatus(signal.status);
   const isTask = signal.source === "task";
   const chips = reasonChips(signal.reasonCodes);
+  const showEvidenceAttention = needsEvidenceAttention(signal);
   const hasSecondaryActions = Boolean(onSnooze || onNotNow || onHandToEve);
   const hasWorkActions = Boolean(onDefer || onArchive);
 
@@ -99,7 +101,16 @@ export function InspectionDrawer({
           <div className="mt-2 space-y-2">
             {signal.evidence.length > 0 ? (
               signal.evidence.map((ref, index) =>
-                ref.href ? (
+                ref.quality === "gap" ? (
+                  showEvidenceAttention ? (
+                    <StateBlock
+                      key={`${ref.label}-${index}`}
+                      kind="gap"
+                      title="Proof missing"
+                      detail="This item requires a proof reference before it can be treated as verified."
+                    />
+                  ) : null
+                ) : ref.href ? (
                   <a
                     key={`${ref.label}-${index}`}
                     href={ref.href.startsWith("http") ? ref.href : undefined}
@@ -111,11 +122,27 @@ export function InspectionDrawer({
                     <span className="ml-2 text-[10px] uppercase text-zinc-600">{ref.quality}</span>
                   </a>
                 ) : (
-                  <StateBlock key={`${ref.label}-${index}`} kind="gap" title={ref.label} detail="No clickable evidence link is available." />
+                  <StateBlock
+                    key={`${ref.label}-${index}`}
+                    kind="empty"
+                    title={ref.label}
+                    detail="Evidence is noted, but no clickable link is attached."
+                  />
                 ),
               )
+                .filter(Boolean)
             ) : (
-              <StateBlock kind="gap" title="Evidence gap" detail="This item has no proof reference yet." />
+              showEvidenceAttention ? (
+                <StateBlock
+                  kind="gap"
+                  title="Proof missing"
+                  detail="This item requires a proof reference before it can be treated as verified."
+                />
+              ) : (
+                <p className="rounded-lg border border-[#20262d] bg-[#0f1316] p-3 text-[11px] leading-relaxed text-zinc-500">
+                  No proof required for this task.
+                </p>
+              )
             )}
           </div>
         </section>
@@ -167,13 +194,13 @@ export function InspectionDrawer({
                 {audit.map((entry) => (
                   <li key={entry._id} className="rounded border border-[#20262d] bg-[#0f1316] p-2">
                     <div className="flex items-center justify-between gap-2 text-[10px] uppercase text-zinc-600">
-                      <span>{entry.field}</span>
+                      <span>{formatAuditField(entry.field)}</span>
                       <span>
                         {entry.source} · {formatRelative(entry.ts)}
                       </span>
                     </div>
                     <p className="mt-1 text-[11px] text-zinc-300">
-                      {entry.oldValue || "—"} → {entry.newValue || "—"}
+                      {formatAuditValue(entry.field, entry.oldValue)} → {formatAuditValue(entry.field, entry.newValue)}
                     </p>
                     {entry.evidence && <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">{entry.evidence}</p>}
                   </li>

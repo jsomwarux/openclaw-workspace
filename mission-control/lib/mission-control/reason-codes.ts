@@ -29,13 +29,15 @@ function money(raw: string): string {
  * number, so every code needs a label a human can act on without a legend.
  */
 export function reasonChip(code: string): ReasonChip {
-  const [key, value = ""] = code.split(":");
+  const [key, value = "", extra = ""] = code.split(":");
 
   switch (key) {
     case "cash":
       return { code, label: money(value), tone: "cash" };
     case "deadline":
-      return { code, label: `Due ${shortDate(value)}`, tone: "urgent" };
+      return value === "self"
+        ? { code, label: `Check ${shortDate(extra)}`, tone: "urgent" }
+        : { code, label: `Due ${shortDate(value)}`, tone: "urgent" };
     case "unblocks":
       return { code, label: value === "agent" ? "Unblocks agent" : `Unblocks ${value}`, tone: "neutral" };
     case "proof":
@@ -78,7 +80,7 @@ export const reasonToneClassName: Record<ReasonTone, string> = {
   danger: "border-red-800/60 bg-red-950/30 text-red-300",
 };
 
-export type PrimaryActionVerb = "Approve" | "Nudge" | "Mark sent" | "Open";
+export type PrimaryActionVerb = "Approve" | "Nudge" | "Mark sent" | "Inspect";
 
 /**
  * The button verb comes from the item's own state, so the cockpit never asks JT
@@ -88,5 +90,9 @@ export function primaryActionVerb(signal: Signal): PrimaryActionVerb {
   if (signal.status === "awaiting-approval") return "Approve";
   if ((signal.reasonCodes ?? []).includes("nudge-due")) return "Nudge";
   if ((signal.dollars ?? 0) > 0 && signal.pipelineStage === "pitched") return "Mark sent";
-  return "Open";
+  return "Inspect";
+}
+
+export function shouldShowSecondaryInspect(signal: Signal): boolean {
+  return primaryActionVerb(signal) !== "Inspect";
 }

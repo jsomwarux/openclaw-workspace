@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { primaryActionVerb, reasonChip, reasonChips } from "./reason-codes";
+import { primaryActionVerb, reasonChip, reasonChips, shouldShowSecondaryInspect } from "./reason-codes";
 import type { Signal } from "./types";
 
 function signal(overrides: Partial<Signal> = {}): Signal {
@@ -24,8 +24,12 @@ describe("reason chips", () => {
     expect(reasonChip("cash:3500").tone).toBe("cash");
   });
 
-  test("renders a deadline code as a short due date", () => {
+  test("renders an external deadline code as a short due date", () => {
     expect(reasonChip("deadline:2026-07-15").label).toBe("Due Jul 15");
+  });
+
+  test("renders a self-set deadline as a checkpoint, not a hard due date", () => {
+    expect(reasonChip("deadline:self:2026-07-15").label).toBe("Check Jul 15");
   });
 
   test("renders unblock, proof, risk, stability, and nudge codes", () => {
@@ -65,11 +69,16 @@ describe("primary action verb", () => {
     expect(primaryActionVerb(signal({ dollars: 2250, pipelineStage: "pitched" }))).toBe("Mark sent");
   });
 
-  test("dollars without a pitched stage stay a plain open", () => {
-    expect(primaryActionVerb(signal({ dollars: 2250, pipelineStage: "lead" }))).toBe("Open");
+  test("dollars without a pitched stage stay a plain inspection action", () => {
+    expect(primaryActionVerb(signal({ dollars: 2250, pipelineStage: "lead" }))).toBe("Inspect");
   });
 
-  test("anything else opens for inspection", () => {
-    expect(primaryActionVerb(signal())).toBe("Open");
+  test("anything else opens the inspection drawer", () => {
+    expect(primaryActionVerb(signal())).toBe("Inspect");
+  });
+
+  test("does not render a duplicate Inspect button when the primary action is already Inspect", () => {
+    expect(shouldShowSecondaryInspect(signal())).toBe(false);
+    expect(shouldShowSecondaryInspect(signal({ status: "awaiting-approval" }))).toBe(true);
   });
 });

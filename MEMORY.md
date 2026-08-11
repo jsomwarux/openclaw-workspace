@@ -9,26 +9,25 @@
 
 ## Hard Rules / Security Essentials
 - No auth/model/OpenClaw/sacred-file/credential changes without explicit approval; never expose keys outside approved auth/env homes.
-- Credential/cache artifacts stay outside workspace memory.
-- Never send third-party outreach for JT; draft/sync only.
+- Credential/cache artifacts stay outside workspace memory. Never send third-party outreach for JT; draft/sync only.
 - Detail: `docs/memory/MEMORY-full.md#hard-rules--security-essentials`.
 
 ## Consulting Positioning
-- Positioning: practical AI implementation for ops-heavy SMBs, with governed handoffs before automation.
-- Package: AI Enablement OS / Run Control: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric.
+- Practical AI implementation for ops-heavy SMBs: governed handoffs before automation.
+- AI Enablement OS / Run Control proof row: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
 ## Active Clients
 - Canonical July 16 state: `memory/canonical/jt-mission-control-state-2026-07-16.md`.
-- Altmark top paid/proof lane: rent-delinquency source/export gate plus DHCR Phase 1 deposit; NewCo/job terms email sent Aug 8 to Yair/Adai, waiting on answers; productized side should be judged against crowded PM software landscape.
+- Altmark top paid/proof lane: rent delinquency gate plus active Altmark FTE + NewCo negotiation with Yair and Adai. FTE and NewCo must be separate contracts; JT's existing systems/toolkit/playbook stay personal IP. DHCR is a delivery-track item sent to Matt, not a Yair comp-thread chase.
 - MSI signed active: $10,800 fixed-scope Nexus. Kickoff 50% ($5,400) cleared/source-confirmed 2026-07-28; remove kickoff from sends-due. Invoice remaining $5,400 only after completion/acceptance.
-- Closed-won/paid: SoberLife-Coach/Karen and Aya dashboard; Karen/Gil referral asks eligible.
+- Closed-won/paid: SoberLife-Coach/Karen is paid but not referral-eligible until SEO expectation reset and handoff items close; Gil/Aya construction dashboard is paid and referral-eligible. Maiky is separate live Aya-adjacent opportunity on hold after cost review.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Aug 9 send queue: Altmark rent delinquency remainder and DHCR Phase 1 deposit remain live cash gates. JT sends; Eve only stages/reviews. MSI kickoff is cleared and must not resurface.
-- Referral packet v1 plus Gil/Karen asks are warm paths; lower-tier acquisition cut for July.
+- Aug 10 send queue: Altmark delinquency remains top delivery/cash gate; blockers are Yair clears AppFolio ledgers, billing@ re-point, threshold/holiday/attorney/canary approvals, and JT-owned Outreach Log `outreach_id` header before next test. DHCR routes to Matt as delivery-track only.
+- Gil ask is warm; Karen ask waits on written SEO expectation reset; Guyana is capped exploration with one warm intro in flight; Ron/BDT is watch-only.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix
@@ -42,30 +41,29 @@
 
 ## Content System
 - Read JT voice/corpus before drafting; first-person proof beats generic advice.
-- Review drafts remain review-only; do not auto-post/schedule/send/upload. Latest guarded draft: Aug 5 credential-custody/run-control LinkedIn draft passed voice guard score=100; prior Aug 3/4 drafts remain review-only unless explicitly approved.
+- Review drafts remain review-only; do not auto-post/schedule/send/upload unless explicitly approved.
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
-- Reuse AI Enablement OS proof across property ops, OpenClaw/Mission Control, AgentGuard, DealDesk, ROIFlow; avoid custom demos per role.
-- Latest: Aug 9 pulse remains directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around reusable governed implementation assets, release/eval/rollback, docs, and adoption.
+- Latest Aug 10 pulse is directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around governed implementation assets, release/eval/rollback, docs, adoption, and AI Enablement OS proof.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
 ## Crypto / Finance
 - Crypto is research/ranking/threshold-awareness only. Never trade, transfer, swap, spend, or run payment-MCP/x402 experiments without JT approval.
-- Jul 17 crypto loop remains directive-disabled; full registry confirms three crypto jobs disabled/no next run. Latest retained snapshot Jul 7; avoid X pulls unless JT reactivates/asks.
+- Crypto loop remains directive-disabled; avoid X pulls unless JT reactivates/asks.
 - Detail: `docs/memory/MEMORY-full.md#crypto--finance`.
 
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. OpenClaw checks require Node 26 path; cost alerts clean.
-- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`.
-- Backup regression: local backup succeeds but `n8n-agent` GitHub push failed again on Aug 9 due remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; routed via MC task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
+- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`. Aug 10 corrected stack: 255 active, 10 high, 0 overdue, 189 idle >30d.
+- Backup regression: local backup succeeds but `n8n-agent` GitHub push remains remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; routed via MC task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Aug 9 heartbeat baseline: cost clean; MC 251 active/13 high/0 overdue; 12 enabled crons/0 unhealthy; refused-scope jobs absent; Spanish paused. Daily Delta must use numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
-- Aug 7 JT canceled all health crons. Removed active 14-day protocol jobs `985cd5ef-f9e7-4260-bdfd-475cac5744fc`, `6be7f564-5cec-47e7-b67c-9b2fcc3ed8de`, `7bbde57e-6fae-4dbd-aa56-8b7c2f54c7a3`, plus legacy disabled health jobs `eve-health-checkin-003` and `eve-health-report-004`. Manual health CLI/protocol helpers remain available only on request.
+- Aug 10 heartbeat baseline: cost clean; MC 255 active/10 high/0 overdue; 12 enabled crons/0 unhealthy; refused-scope jobs absent; Spanish paused. Daily Delta must use numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
+- Aug 7 JT canceled all health crons. Do not re-enable Health/Protocol Ops without explicit JT instruction; manual health helpers remain available only on request.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
@@ -74,7 +72,7 @@
 
 ## Integrity / Fabrication Corrections
 - Never fabricate; verify outreach, URLs, deployments, Drive links, task closure, and delivery with tool/script evidence.
-- JT corrections require Mistakes Log/rule updates with regression checks. Compacted history: use lossless-claw recall before exact claims: `lcm_grep`, `lcm_describe`, then `lcm_expand_query` when exact details matter.
+- JT corrections require Mistakes Log/rule updates with regression checks. Use lossless-claw recall before exact compacted-history claims.
 - External strategy prompts need no-prior-context primer.
 - Detail: `docs/memory/MEMORY-full.md#integrity--fabrication-corrections`.
 

@@ -1,4 +1,4 @@
-# Week of 2026-08-03 - Work Log
+# Week of 2026-08-10 - Work Log
 
 - 2026-07-10: Ran first Friday Scoreboard, saved `memory/audits/friday-scoreboards/2026-07-10.md`, created repeat-offender digest `memory/audits/repeat-offenders/2026-07-10.md`, and logged same-day proof `8468cec8`.
 
@@ -26,3 +26,6 @@ Archive every Monday, start fresh.
 - 2026-08-05: Registered logistics-only protocol ops for JT's 14-day health protocol, imported the operating reference into `health/protocol-reference.md`, and aligned the helper/crons to the exact morning prompt, tracker schema, Day 7/14 report, and Day 15 stand-down.
 - 2026-08-07: Canceled all health crons at JT's request, removed three active protocol jobs plus two legacy health jobs, verified no Health/Protocol Ops cron names remain, and updated memory/tool notes.
 - 2026-08-08: Logged Altmark/NewCo negotiation update: JT sent terms-discovery email to Yair/Adai; next read should weigh salary/IP/control above speculative product equity unless their buyer/channel answers are concrete.
+- 2026-08-10: Applied JT's Claude/Eve sync corrections across memory, pipeline/send queue, and the downloadable sync packet; payments ledger is now the collected-cash source and Mission Control task count is treated as stale backlog until triage.
+- 2026-08-10: Reprioritized Mission Control around the corrected stack, created missing MSI/Altmark FTE/Maiky/Guyana tasks, demoted stale high-priority noise, and added due-date checkpoints to the current top tasks.
+- 2026-08-10: Fixed Mission Control Today drawer action/display bugs: Done now PATCHes from the drawer, duplicate Inspect/Open behavior is removed for plain inspection tasks, evidence gaps are quiet unless proof is required, and rank audit values render as human labels/dates/money/probability.

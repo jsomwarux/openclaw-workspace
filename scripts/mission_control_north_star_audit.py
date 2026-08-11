@@ -32,10 +32,16 @@ DONE_MARKERS = ("Done state:", "Done looks like:")
 
 # Explicit top layer. These are title fragments, not IDs, so the rule survives task recreation.
 TOP_RULES: list[tuple[str, int, str]] = [
-    ("Altmark: test and deploy rent delinquency workflow", 1, "Active paid client delivery: initial 50% received; testing/deployment is this week's revenue/proof gate."),
-    ("Altmark: capture redacted proof screenshots", 2, "Insurance workflow is live and paid; capture proof-safe evidence while fresh."),
-    ("Altmark: provide new workflow proposal", 3, "Next paid Altmark workflow after rent delinquency; proposal review is required before delivery planning."),
-    ("Fix weekly systems review drift", 5, "Critical operating-layer blocker: cron cap, gateway load, bootstrap budgets."),
+    ("MSI: Montclair-first Nexus delivery mechanics", 1, "Signed MSI delivery is the highest current cash/proof lane; keep Montclair-first mechanics visible until acceptance/invoice readiness."),
+    ("Altmark FTE + NewCo: separate comp/IP negotiation lane", 2, "Active Yair/Adai negotiation with salary/equity/IP constraints; keep separate from delivery invoices, DHCR, and referral asks."),
+    ("Altmark: clear delinquency go-live gates + JT outreach_id blocker", 3, "Active Altmark delivery gate with client controls plus JT-owned Outreach Log header blocker before next test."),
+    ("Mission Control hygiene: retire stale backlog + fix task quality gates", 4, "Mission Control active count is a stale-backlog signal until idle/no-date/no-next-action tasks are triaged."),
+    ("Maiky: revive unbundled delinquency report entry point", 5, "Closest live revenue after MSI and Altmark; revive only through the unbundled delinquency-report entry point."),
+    ("Gil referral ask eligible after Aya dashboard closeout", 6, "Closed-won paid proof with referral eligibility; keep separate from Maiky."),
+    ("Strategy: Package Outcome-Based Run Control", 7, "Turn current proof into a generic-first Run Control / AI Enablement OS sales asset without leaking client-owned configs."),
+    ("Complete weekly unemployment certification", 20, "Protect cash stability while consulting revenue ramps."),
+    ("Start 14-day health protocol + book prescriber", 25, "Protect execution capacity for the current consulting stack."),
+    ("Weekly Systems Review 2026-07-27: verify MC recovery and pruning", 45, "Current systems-review owner for Mission Control recovery and pruning work."),
 ]
 
 # Weekly single-focus guard. The North Star active-week file is the owner of the
@@ -84,6 +90,10 @@ FABLE_DEFERRED_LANE_PATTERNS = [
     "Guyana summit",
     "Guyana growth resume",
     "Guyana:",
+]
+
+GUYANA_ACTIVE_EXPLORATION_PATTERNS = [
+    "Guyana: capped Paul James / SaPaJ warm intro",
 ]
 
 FABLE_APP_FREEZE_MONITORING_PATTERNS = [
@@ -242,6 +252,15 @@ def desired_for(task: dict[str, Any]) -> tuple[dict[str, Any] | None, str | None
             "sortOrder": 140,
             "description": add_task_contract(task, reason) if not has_structured_task_contract(desc) else append_note(desc, note),
         }, "demote skill/job-market noise"
+
+    if contains_any(title, GUYANA_ACTIVE_EXPLORATION_PATTERNS):
+        note = "North Star priority rule: Guyana is a capped named-prospect exploration, not killed or Fable-deferred; keep below the current top consulting lanes."
+        reason = "Paul James / SaPaJ is a capped warm-intro exploration with a named prospect and mutual connection, but no custom build/demo/deck before reply."
+        return {
+            "priority": "medium",
+            "sortOrder": 70,
+            "description": add_task_contract(task, reason) if not has_structured_task_contract(desc) else append_note(desc, note),
+        }, "keep capped Guyana exploration"
 
     if contains_any(title, FABLE_DEFERRED_LANE_PATTERNS):
         note = "Demoted by daily North Star audit: Fable audit classified Guyana as validation-only until a named buyer/problem/reply exists."
