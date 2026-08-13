@@ -26,7 +26,7 @@
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Aug 11 send queue: no sends due; live gates are Altmark delinquency go-live/JT `outreach_id` header by Aug 11 6PM ET and MSI Montclair-first Nexus delivery mechanics by Aug 12 6PM ET. DHCR routes to Matt as delivery-track only.
+- Aug 12 send queue: no sends due; live gates are MSI Montclair-first Nexus delivery mechanics due Aug 12 6PM ET and Altmark delinquency go-live/JT `outreach_id` header missed Aug 11 6PM ET. DHCR routes to Matt as delivery-track only.
 - Gil ask is warm; Karen ask waits on written SEO expectation reset; Guyana is capped exploration with one warm intro in flight; Ron/BDT is watch-only.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
@@ -46,7 +46,7 @@
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
-- Latest Aug 11 pulse is directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around governed implementation assets, release/eval/rollback, docs, adoption, and AI Enablement OS proof.
+- Latest Aug 12 pulse is directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around governed implementation assets, release/eval/rollback, docs, adoption, and AI Enablement OS proof.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -57,12 +57,12 @@
 
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. OpenClaw checks require Node 26 path; cost alerts clean.
-- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`. Aug 11 stack: 255 active, 10 high, 1 overdue (`Complete weekly unemployment certification`).
+- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`. Aug 12 stack after non-destructive idle archive: 66 active, 10 high, 4 overdue high-priority tasks.
 - Backup regression: local backup succeeds but `n8n-agent` GitHub push remains remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; routed via MC task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
-- Aug 11 heartbeat baseline: cost clean; MC 255 active/10 high/1 overdue; 12 enabled crons/0 unhealthy; refused-scope jobs absent; Spanish paused. Daily Delta must use numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
+- Aug 12 heartbeat baseline: cost clean; MC 66 active/10 high/4 overdue high; 12 enabled crons/0 unhealthy; refused-scope jobs absent; Spanish paused. Daily Delta must use numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
 - Aug 7 JT canceled all health crons. Do not re-enable Health/Protocol Ops without explicit JT instruction; manual health helpers remain available only on request.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 

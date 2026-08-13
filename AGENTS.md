@@ -18,15 +18,15 @@
 - Repeat offenders: Friday Scoreboard writes digest; repeat signatures get structural fixes staged; 3 consecutive strikes pause job with notice.
 
 ## Budget Rule
-`bootstrapMaxChars=32000` — HARD CAP. Never raise above 32,000 (40,000 caused 2h outage 2026-03-31).
-**Safe limits:** AGENTS.md <28k | MEMORY.md <20k | TOOLS.md <16k | HEARTBEAT.md <16k.
-**Enforcement (mandatory — session start + before any append):** At the start of every session, run `wc -c` on all bootstrap files. If any file is at or above its budget, trim it proactively before doing any other work. Before appending, always check `wc -c` first. If over limit, move the largest/oldest section to its subfile first. Never append without checking. Subfiles: `docs/agents/outreach-rules.md` | `docs/agents/resume-upload-rules.md` | `docs/agents/post-detection-rules.md` | `docs/agents/autoresearch-rules.md` | `docs/agents/mistakes-log.md` | `docs/agents/mistakes-log-recent.md` | `docs/agents/workflow-protocols.md` | `docs/agents/operational-rules.md` | `docs/agents/content-rules.md` | `docs/agents/task-board-rules.md` | `docs/tools/claude-personas.md` | `docs/tools/TOOLS-full.md` | `docs/memory/MEMORY-full.md`.
+`bootstrapMaxChars=32000` hard cap. Never raise above 32,000 (40,000 caused 2h outage 2026-03-31).
+Safe limits: AGENTS.md <28k | MEMORY.md <20k | TOOLS.md <16k | HEARTBEAT.md <16k.
+At session start and before any bootstrap append, run `wc -c`. If a file is at/over budget, trim first by moving large/old sections to existing subfiles such as `docs/agents/*-rules.md`, `docs/agents/mistakes-log*.md`, `docs/tools/TOOLS-full.md`, or `docs/memory/MEMORY-full.md`.
 
-## Hard Rules (permanent — never override without JT approval)
+## Hard Rules (permanent, JT approval required to override)
 1. **Auth/model config:** NEVER modify openclaw.json auth section, summaryModel, summaryProvider, or primary model without JT's explicit approval.
 2. **API keys:** NEVER embed API keys in code, project files, Drive uploads, or anywhere outside auth-profiles.json and models.json.
 3. **bootstrapMaxChars:** NEVER raise above 32,000.
-4. **Bootstrap file budgets:** Before appending to AGENTS.md (>28k), MEMORY.md (>20k), or TOOLS.md (>16k): check `wc -c` first. If over limit, move existing content to subfiles before adding.
+4. **Bootstrap file budgets:** follow Budget Rule before any append.
 5. **Session length:** If a session exceeds 200 messages, proactively suggest starting a fresh session.
 6. **Cron exec paths:** All cron exec commands must use `python3 /full/path/script.py` format. No `cd` chaining.
 7. **OpenClaw updates:** NEVER update OpenClaw without JT's explicit approval.
@@ -84,7 +84,7 @@ JT-approved exception to Plan Mode, within lane scope only: Eve has full complet
 - **Never send outreach on JT's behalf.** No LinkedIn DMs, emails, or any external communication to third parties — ever. Always save drafts to Drive and summarize for JT to review and send himself. JT always presses send.
 
 ## Resume & Cover Letter Drive Upload Rule
-Whenever resume or cover letter is generated: (1) write to `memory/drafts/[slug]-resume.md` and `memory/drafts/[slug]-cover-letter.md`, (2) generate .docx via `build_resume_docx.py --resume-md [path] --cover-letter-md [path]`, (3) upload to Drive with correct paths, (4) include Drive link in reply. Full procedure + verification steps: `docs/agents/resume-upload-rules.md`
+Generated resume/cover letter packages require local markdown, `.docx`, Drive upload, and returned Drive links. Full procedure: `docs/agents/resume-upload-rules.md`.
 
 **Model rule for job applications:** ALWAYS use `openrouter/anthropic/claude-sonnet-4-6` for job application packages (resume + cover letter). The markdown formatting requirements (bullet structure, paragraph parsing, ATS compliance) require Sonnet-level precision. MiniMax consistently makes formatting errors on these tasks. Sonnet only — not Opus, not MiniMax.
 ## Portfolio Auto-Update Rule
@@ -159,11 +159,6 @@ New tool/plugin surfaces: Eve evaluates it independently. NOT useful → skip si
 Every skill delivers final output directly. Before shipping: "Does this produce the final output, or something that enables it?" If the latter — cut the intermediate step.
 
 
-
-## Cross-File Consistency
-- Any fact that changes in one file must be updated in ALL files that reference it before the task is done.
-- Authoritative sources: TOOLS.md owns paths/commands. MEMORY.md owns context/decisions/status.
-- Conflict between files → TOOLS.md and MEMORY.md win. Update the stale file, note the correction.
 
 ## Context Management
 Main session near 100K tokens → suggest fresh session. Crons: always isolated. Runaway (>10 API calls in 5 min without input) → pause + alert JT. Compress docs to key facts before injecting — never dump raw multi-page content.
