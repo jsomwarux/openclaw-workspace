@@ -1,14 +1,15 @@
 # State: Daily Send Sheet
 
 ## Current
-1. Last completed run: 2026-08-08T11:31:29Z
-2. Cursor: send-queue 2026-08-08; MC `/api/tasks`, `/api/payments`, and `/api/revenue` reachable on localhost:3000 during morning checks; delivered Daily Send Sheet reported August MTD $0, $10,000 gap, 24 days left.
-3. Open items: Altmark delinquency escalation; DHCR decision chase; Gil/Karen referral asks eligible but still missing paste-ready draft artifact; MSI remaining delivery/completion invoice tracked in Mission Control, not a send due today.
+1. Last completed run: 2026-08-14T11:30:00Z
+2. Cursor: send-queue 2026-08-14; MC `/api/tasks`, `/api/payments`, and `/api/revenue` reachable on localhost:3000 during morning checks; delivered Daily Send Sheet reported August MTD $0, $10,000 gap, 18 days left.
+3. Open items: no aging pipeline send items; client/prospect gates are Maiky, Gil referral, DHCR Matt delivery-track follow-up, and overdue Altmark FTE/NewCo plus Altmark/MSI delivery gates.
 4. Last failure: none
-5. Started marker: 2026-08-08T11:31:29Z
+5. Started marker: 2026-08-14T11:30:00Z
 6. Routing note: generated `memory/send-queue.md` may contain fewer than three items; Daily Send Sheet can fill the cap from current Mission Control/client action artifacts. For 2026-07-18, keep DHCR decision chase as the third send from the active Altmark DHCR task and `memory/clients/altmark-group/proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, even though generated send queue lists only Altmark delinquency and MSI.
 
 ## Runs, last 5, newest first
+1. 2026-08-14T11:30:00Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/payments`, Mission Control `/api/revenue`, memory/2026-08-13.md, reports/outreach-pipeline/2026-08-14-script-first-preflight.md, reports/mission-control-priority/2026-08-13.md. Sends due: none with finished artifacts. No external send by Eve.
 1. 2026-08-08T11:31:29Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/payments`, Mission Control `/api/revenue`, memory/pipeline.jsonl, memory/2026-08-07.md, proofs/2026-08-07/actions.jsonl, reports/outreach-pipeline/2026-08-08-script-first-preflight.md, reports/mission-control-priority/2026-08-07.md, Friday Scoreboard 2026-08-07, Altmark redacted sample gate, Altmark DHCR kickoff command sheet. Sends due: Altmark rent delinquency remainder and DHCR Lease Renewal Phase 1 deposit. No external send by Eve.
 1. 2026-08-07T11:31:39Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/payments`, Mission Control `/api/revenue`, memory/pipeline.jsonl, memory/2026-08-06.md, reports/outreach-pipeline/2026-08-07-script-first-preflight.md, reports/mission-control-priority/2026-08-07.md, Altmark redacted sample gate, Altmark DHCR kickoff command sheet. Sends due: Altmark rent delinquency remainder and DHCR Lease Renewal Phase 1 deposit. No external send by Eve.
 1. 2026-08-05T11:30:00Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/payments`, Mission Control `/api/revenue`, memory/pipeline.jsonl, memory/2026-08-04.md, reports/outreach-pipeline/2026-08-05-script-first-preflight.json, reports/mission-control-priority/2026-08-04.md, Altmark Yair unblock packet, Altmark DHCR kickoff command sheet.

@@ -32,3 +32,4 @@ Archive every Monday, start fresh.
 - 2026-08-12: Created `memory/automation-inventory-2026-08-12.md`, a 60-workflow inventory of Eve/OpenClaw automations, intended mechanics, constraints, source paths, and optimization targets for external model review.
 - 2026-08-12: Trimmed `AGENTS.md` redundant bootstrap guidance from 27,806 to 26,573 bytes, clearing the Weekly Systems Review file-budget drift under the 27K target.
 - 2026-08-12: Non-destructively archived 189 Mission Control tasks idle 30+ days after load-bearing preflight found no active-client/open-dollar/current high-priority blockers; retained active list is now 66 tasks and archived tasks remain queryable.
+- 2026-08-14: Ran Friday Scoreboard from local evidence, saved `memory/audits/friday-scoreboards/2026-08-14.md` and `memory/audits/repeat-offenders/2026-08-14.md`, and surfaced repeat offenders: backup remote-ahead, Nightly Claude rate-limit retries, and unverified cash/client claims.
