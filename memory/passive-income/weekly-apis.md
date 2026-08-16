@@ -1,13 +1,15 @@
-# API Intelligence Report — 2026-08-08
+# API Intelligence Report — 2026-08-15
 _Newly discovered APIs and dev tools — 4 sources checked_
-Generated: 2026-08-08 05:44:47
+Generated: 2026-08-15 05:44:30
 
-**Totals:** 0 new APIs | 0 PH tools | 3 HN stories | 0 discoveries
+**Totals:** 0 new APIs | 0 PH tools | 5 HN stories | 0 discoveries
 
 ## Hacker News — Developer Tool Mentions
-- **Show HN: I updated my unofficial Substack Posting API** (score: 2) | [link](https://apisubstack.com/)
-- **Show HN: Lensa – Open-source MCP connectors and skills for ChatGPT** (score: 1) | [link](https://github.com/mitrotasios/lensa-mcp)
-- **Building my own project management tool on Cloudflare** (score: 1) | [link](https://tom-dickson.com/blog/projektor-mcp-issue-tracker-cloudflare-workers/)
+- **Free LLM API – every free model behind one key** (score: 3) | [link](https://freellmapi.co/)
+- **Show HN: UltimateXO – Open-Source Ultimate Tic-Tac-Toe Web Game** (score: 2) | [link](https://ultimatexo.com/)
+- **Show HN: Open-source, lightweight (300KB+) web and YouTube translator** (score: 1) | [link](https://chromewebstore.google.com/detail/mira-translator/hmmllfdmkbmmfffjekhmmbhhfhhnocmn)
+- **manim: Framework for Creating Mathematical Animations** (score: 1) | [link](https://github.com/manimCommunity/manim)
+- **Tell HN: My open-source form builder has reached ~7k registered users** (score: 1) | [link]()
 
 
 ## Scout Guidance

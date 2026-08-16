@@ -268,6 +268,12 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Fail condition:** Heartbeat checks repeatedly call an OpenClaw-rejected Node binary, then silently recover with a different path without updating the rule that caused the failure.
 - **Owner surface:** `docs/agents/heartbeat-extended-rules.md`, HEARTBEAT cron health checks, `scripts/cron_volume_guard.py`.
 
+## Mission Control dueDate millisecond check
+- **Trigger:** Any heartbeat, Morning Brief, Daily Send Sheet, Friday Scoreboard, Weekly Systems Review, or cron payload that summarizes Mission Control overdue/due-soon tasks from `/api/tasks`.
+- **Check:** Normalize `/api/tasks` with `(.tasks // .items // .)` and treat `dueDate` as a millisecond timestamp. Compare overdue with `.dueDate < (now*1000)` and due-soon with millisecond windows such as `.dueDate < ((now+172800)*1000)`. Do not compare numeric `dueDate` values to ISO strings or raw seconds.
+- **Fail condition:** A report overcounts or mislabels overdue/due-soon tasks because it treats Mission Control `dueDate` values as ISO strings or second-based timestamps.
+- **Owner surface:** `docs/agents/heartbeat-extended-rules.md`, HEARTBEAT Mission Control checks, Mission Control summary/reporting cron payloads.
+
 ## Morning Brief Nash gate non-abort check
 - **Trigger:** Morning Brief cron failure, especially after the Daily Nash Satoshi probe fails or returns unavailable/stale.
 - **Check:** The Morning Brief agent must execute the Nash probe with a real shell command from the workspace: `python3 scripts/nash_rankings_probe.py --json --limit 10`. If the probe fails, it must write a same-day skip reason to `memory/app-marketing/daily-nash/YYYY-MM-DD.md`, omit Nash from the brief, and still deliver the rest of the Morning Brief to Telegram. Verify `openclaw cron runs --id eve-morning-brief-001 --limit 1` delivery fields for user-facing recovery.

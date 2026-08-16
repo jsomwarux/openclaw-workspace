@@ -2,6 +2,20 @@
 
 ---
 
+## Aug 15, 2026 - Heartbeat AI Tool Monitoring
+
+**Governed agent work is moving toward action-time custody, not just static permissions.** Fresh monitoring surfaced OpenAI Agents SDK positioning where the application owner controls tools, MCP servers, runtime behavior, storage, and approval decisions; Microsoft Foundry MCP guidance around logging approvals and tool calls for audit/troubleshooting; Microsoft Agent Governance Toolkit language around policy, identity, trust, audit, and MCP gateway coverage; and Claude Code docs/changelog signals around per-tool approval prompts plus long MCP calls moving into background execution.
+
+**JT relevance:** keep Run Control / AI Enablement OS proof rows centered on the exact moment work is authorized and executed. The buyer evidence should show who owns the application/workflow, which represented user or business owner is acting, what tool/MCP endpoint is requested, which approval or policy decision applied, whether the call stayed foreground/background, and where the audit/result record landed.
+
+**Actionable demo angle:** make the governed-workflow ledger read like an execution custody record:
+
+`workflow | app_owner | represented_user | tool_or_mcp_endpoint | requested_action | approval_policy | decision | foreground_or_background | result_path | audit_path | exception_owner`
+
+Sources checked with local `scripts/web_search.py` on 2026-08-15: OpenAI Agents SDK https://developers.openai.com/api/docs/guides/agents; Microsoft Foundry MCP tools https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/model-context-protocol; Microsoft Agent Governance Toolkit https://github.com/microsoft/agent-governance-toolkit; Microsoft Work IQ MCP overview https://learn.microsoft.com/en-us/microsoft-agent-365/tooling-servers-overview; Claude Code MCP docs https://code.claude.com/docs/en/mcp; Tyk MCP Gateway architecture https://tyk.io/learning-center/mcp-gateway-architecture-technical-guide/
+
+---
+
 ## Aug 10, 2026 - Heartbeat AI Tool Monitoring
 
 **Agent governance is consolidating around control-plane evidence for every tool call.** Fresh monitoring surfaced Microsoft Agent Governance Toolkit language around policy enforcement, zero-trust identity, execution sandboxing, audit, and MCP gateway controls; Google Agent Gateway positioning around centralized policies and OAuth handshakes between agents and tools; and MCP security coverage framing every Workspace/M365 tool call as allow/block/approve with redaction, masking, and vaulting for sensitive data.
