@@ -1,6 +1,6 @@
 # Marketsmith — Opportunity Status
 
-Last updated: 2026-05-26
+Last updated: 2026-08-17
 
 ## Opportunity Type
 High-value AI/product consulting or freelance opportunity.
@@ -21,9 +21,9 @@ High-value AI/product consulting or freelance opportunity.
 - Framing: deliverables-focused rather than rigid set number of hours worked
 
 ## Current Status
-- Warm re-engaged. Sam Foy emailed JT on Friday before Memorial Day weekend apologizing for delay and said he needs to follow up with Karen, who was going to set JT up with conversations with folks on the team. Sam or Karen will get back to JT after the holiday.
-- JT is watching for a follow-up this week about product/team meetings.
-- Next action: do not chase immediately; if no reply by later this week or early next week, send a concise check-in anchored on scheduling those team conversations.
+- Superseded: Marketsmith moved from warm opportunity to signed active client in July 2026.
+- JT reports all Nexus SOW deliverables finished on 2026-08-17.
+- Next action: send an acceptance-only closeout note, clear the remaining completion invoice path, and keep expansion for a separate follow-up after acceptance.
 
 ## Strategic Fit
 Strong fit with North Star if it becomes consulting/freelance product work:
@@ -39,15 +39,9 @@ Strong fit with North Star if it becomes consulting/freelance product work:
 - Do not underprice if they want senior product/AI strategy and implementation.
 
 ## Recommended Follow-Up Timing
-Sam re-engaged before the holiday weekend. Do not chase immediately.
+Now. Send a closeout/acceptance note while the finished work is fresh. Do not bundle expansion into the acceptance request. After acceptance, send a separate expansion note using NJ Lottery vs Montclair build-time delta and MSI's documented follow-on items.
 
-If no response by later this week / early next week, send one concise follow-up that:
-1. Reiterates excitement about MSIGenerate/product initiatives
-2. Anchors around a concrete product-team discovery or 2-week diagnostic
-3. Keeps the $175/hr or $15k/mo deliverables-based framing
-4. Asks whether the product team had a chance to discuss fit
-
-## Reactivation Gate — 2026-05-13
-Use `memory/opportunities/marketsmith/reactivation-criteria.md` before drafting any new follow-up. Treat Marketsmith as a warm opportunity, not active proof/client work, until product-team re-engagement, a named initiative, and owner/authority are verified.
+## Completion / Expansion Gate — 2026-08-17
+Use `memory/clients/marketsmith/acceptance-checklist.md` before proof, referral, content, or invoice-completion claims. Treat future work as expansion from a signed client, not prospect reactivation.
 
 JT sends all outreach. Eve drafts only.

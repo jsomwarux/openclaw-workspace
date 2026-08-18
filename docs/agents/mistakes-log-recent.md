@@ -5,6 +5,14 @@
 ## Logging Rule
 Every entry MUST have six fields: (1) specific failure, (2) root cause one level deeper than "I forgot," (3) concrete guardrail/rule, (4) regression check that would catch recurrence, (5) owner surface updated, (6) verification/date. A mistake entry without a regression check + owner surface is incomplete — finish it before moving on. Reference: `docs/agents/regression-checks.md`.
 
+## 2026-08-17 — Marketsmith closeout draft bundled acceptance with stale expansion lanes
+- **Failure:** Recommended a Marketsmith closeout email that bundled acceptance with an expansion ask, and suggested future-work lanes that overlapped work already delivered in the SOW (repeatable dashboard Playbook agent and QA agent).
+- **Root cause:** I optimized for quick expansion positioning from high-level client memory instead of verifying the exact SOW deliverables and acceptance mechanics before drafting. That collapsed two different jobs: invoice-enabling acceptance and future-work selling.
+- **Guardrail/rule:** Fixed-fee client closeout emails must be acceptance-only unless JT explicitly asks to combine. Before proposing expansion lanes, compare each lane against the delivered SOW so already-shipped work is not repitched as future work. Expansion comes after written acceptance and should anchor to measured deltas or client-documented follow-ons.
+- **Regression check:** For future client closeout drafts, scan the relevant `memory/clients/[client]/sow-review*`, `acceptance-checklist.md`, and delivered-output notes before drafting; final draft must contain one closed acceptance question and no expansion bullets unless a separate expansion email is requested.
+- **Owner surface updated:** `memory/clients/marketsmith/dashboard.md`, `memory/clients/marketsmith/decision-log.md`, `memory/clients/marketsmith/acceptance-checklist.md`, `memory/pipeline.jsonl`, `MEMORY.md`, `docs/memory/MEMORY-full.md`, `memory/opportunities/marketsmith/status.md`, Mission Control task `j57d5k99a8cz4s06g99r7sm84h8cmwkp`, and this Mistakes Log entry.
+- **Verification/date:** 2026-08-17 — corrected the Marketsmith records to require acceptance-only closeout first and separate expansion later using NJ Lottery vs Montclair build-time delta plus MSI-documented follow-ons.
+
 ## 2026-08-04 — “X should be Y, not Z” contrast pattern escaped LinkedIn voice guard
 - **Failure:** Delivered a LinkedIn recommendation with “A missing source report should be a hold, not a draft,” despite JT already banning contrast/reveal AI-slop patterns.
 - **Root cause:** The content rule and executable guard covered “not X, Y,” “not X but Y,” and “X is not just Y. It is Z,” but did not explicitly catch the semantically identical “X should be Y, not Z” shape. I treated it as a concrete operational line instead of recognizing the reveal structure.

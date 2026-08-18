@@ -20,7 +20,7 @@
 ## Active Clients
 - Canonical July 16 state: `memory/canonical/jt-mission-control-state-2026-07-16.md`.
 - Altmark top paid/proof lane: rent delinquency gate plus active Altmark FTE + NewCo negotiation with Yair and Adai. FTE and NewCo must be separate contracts; JT's existing systems/toolkit/playbook stay personal IP. DHCR is a delivery-track item sent to Matt, not a Yair comp-thread chase.
-- MSI signed active: $10,800 fixed-scope Nexus. Kickoff 50% ($5,400) cleared/source-confirmed 2026-07-28; remove kickoff from sends-due. Invoice remaining $5,400 only after completion/acceptance.
+- MSI signed active: $10,800 fixed-scope Nexus. Kickoff 50% ($5,400) cleared/source-confirmed 2026-07-28. On 2026-08-17 JT reported all SOW deliverables finished; next gate is an acceptance-only closeout tied to SOW section 10 / internal dev-test criteria, then remaining $5,400 completion invoice. Expansion note comes separately after acceptance.
 - Closed-won/paid: SoberLife-Coach/Karen is paid but not referral-eligible until SEO expectation reset and handoff items close; Gil/Aya construction dashboard is paid and referral-eligible. Maiky is separate live Aya-adjacent opportunity on hold after cost review.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 

@@ -1,4 +1,4 @@
-# Week of 2026-08-10 - Work Log
+# Week of 2026-08-17 - Work Log
 
 - 2026-07-10: Ran first Friday Scoreboard, saved `memory/audits/friday-scoreboards/2026-07-10.md`, created repeat-offender digest `memory/audits/repeat-offenders/2026-07-10.md`, and logged same-day proof `8468cec8`.
 
@@ -33,3 +33,4 @@ Archive every Monday, start fresh.
 - 2026-08-12: Trimmed `AGENTS.md` redundant bootstrap guidance from 27,806 to 26,573 bytes, clearing the Weekly Systems Review file-budget drift under the 27K target.
 - 2026-08-12: Non-destructively archived 189 Mission Control tasks idle 30+ days after load-bearing preflight found no active-client/open-dollar/current high-priority blockers; retained active list is now 66 tasks and archived tasks remain queryable.
 - 2026-08-14: Ran Friday Scoreboard from local evidence, saved `memory/audits/friday-scoreboards/2026-08-14.md` and `memory/audits/repeat-offenders/2026-08-14.md`, and surfaced repeat offenders: backup remote-ahead, Nightly Claude rate-limit retries, and unverified cash/client claims.
+- 2026-08-17: Logged JT-reported Marketsmith Nexus SOW completion, then corrected the routing after Claude review: acceptance-only closeout first, completion invoice path second, separate expansion note after acceptance.

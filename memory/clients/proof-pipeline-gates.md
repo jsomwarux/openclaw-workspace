@@ -67,9 +67,9 @@ Current hard blockers as of 2026-05-13 hardening:
 - Use `memory/clients/aya/proof-evidence-checklist.md` before any referral/content/proof reuse.
 
 ### Marketsmith
-- Current blocker: product-team follow-up/re-engagement. No active proof claim exists.
-- Reactivation requires product/strategy owner involvement, one named initiative, and a diagnostic decision artifact path.
-- Use `memory/opportunities/marketsmith/reactivation-criteria.md` before drafting any new follow-up.
+- Current blocker: JT reports SOW deliverables finished on 2026-08-17, but client acceptance, handoff evidence, completion payment status, proof-safe screenshots/logs, and permission/anonymization are not yet captured.
+- Referral/proof/content reuse remains blocked until acceptance/payment/proof safety are clean.
+- Expansion conversation is allowed after closeout framing; do not make public proof claims or reuse MSI-specific configs/deliverables.
 
 ## Quick Stop Rule
 
