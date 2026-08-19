@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #EBE8E1; }
+  * { box-sizing: border-box; }
+  a { color: #3F5D75; text-decoration: none; }
+  a:hover { color: #2E4658; }
+</style>
+</helmet>
+<div style="display:flex; flex-direction:column; gap:80px; padding:80px; background:#EBE8E1; font-family:Inter, sans-serif; width:max-content;">
+
+  <div style="display:flex; flex-direction:column; gap:20px; max-width:1516px;">
+    <div style="font-family:Geist, sans-serif; font-weight:700; font-size:30px; color:#33322E;">Card system — FISP cycles and SWARMP repairs</div>
+    <div style="font-size:20px; font-weight:500; color:#5C5A54;">Five masters. 1080 × 1350, portrait. Static export, no motion.</div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:40px; border-top:1px solid #C9C2B4; padding-top:24px; margin-top:8px;">
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="font-size:15px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54;">Type</div>
+        <div style="font-size:17px; font-weight:500; color:#33322E; line-height:1.5;">Geist 700 display, Inter 500 body. Negative tracking above 48px only.</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="font-size:15px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54;">Accent</div>
+        <div style="font-size:17px; font-weight:500; color:#33322E; line-height:1.5;">Dusty blue #3F5D75. Two uses only: approval marker on B, call to action on E.</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="font-size:15px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54;">Contrast on paper</div>
+        <div style="font-size:17px; font-weight:500; color:#33322E; line-height:1.5;">Ink 16.1:1 · Muted 6.5:1 · Footer 5.0:1 · Accent 6.5:1. All pass AA.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; align-items:flex-start; gap:56px;">
+    <div data-screen-label="A" style="width:1080px; height:1350px; flex-shrink:0; background:var(--paper, #FAF8F4); padding:var(--pad, 96px); display:flex; flex-direction:column;">
+      <div style="flex:1; display:flex; align-items:flex-end; padding-bottom:112px;">
+        <div style="font-family:Geist, sans-serif; font-weight:var(--hw, 700); font-size:var(--title, 84px); line-height:1.1; letter-spacing:-0.022em; color:#1C1C1A; max-width:880px; text-wrap:pretty;">A longer FISP cycle moves the SWARMP repair deadline with it.</div>
+      </div>
+      <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:32px; border-top:var(--rule, 1px) solid #D6D0C4; padding-top:26px; font-size:22px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#6E6B63;">
+          <div>{{ footerText }}</div>
+          <sc-if value="{{ footerContact }}" hint-placeholder-val="{{ false }}"><div style="letter-spacing:0.06em; text-transform:none;">jtsomwaru.com</div></sc-if>
+          <sc-if value="{{ showSlideNumbers }}" hint-placeholder-val="{{ true }}"><div>1 / 5</div></sc-if>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showUsageNotes }}" hint-placeholder-val="{{ false }}">
+      <div style="width:380px; flex-shrink:0; display:flex; flex-direction:column; gap:26px; padding-top:6px;">
+        <div style="font-size:16px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54;">Master A</div>
+        <div style="font-family:Geist, sans-serif; font-weight:700; font-size:26px; color:#33322E; margin-top:-14px;">Title frame</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Varies</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">The bottleneck sentence, in plain operator language. Never a quote. Twelve words maximum.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Never</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">A second sentence, a subhead, a logo, or a promise. Footer only.</div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex; align-items:flex-start; gap:56px;">
+    <div data-screen-label="B" style="width:1080px; height:1350px; flex-shrink:0; background:var(--paper, #FAF8F4); padding:var(--pad, 96px); display:flex; flex-direction:column;">
+      <div style="font-family:Geist, sans-serif; font-weight:var(--hw, 700); font-size:calc(var(--title, 84px) * 0.52); line-height:1.15; color:#1C1C1A;">How FISP tracking runs</div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:var(--stepgap, 38px); padding-top:72px;">
+
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:24px; border-left:6px solid transparent; padding-left:28px;">
+          <div style="font-size:calc(var(--body, 34px) * 0.76); font-weight:500; line-height:1.75; color:#6E6B63; font-variant-numeric:tabular-nums;">1</div>
+          <div style="font-size:var(--body, 34px); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">Read the last FISP report and pull every SWARMP condition out of it as its own item.</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:24px; border-left:6px solid transparent; padding-left:28px;">
+          <div style="font-size:calc(var(--body, 34px) * 0.76); font-weight:500; line-height:1.75; color:#6E6B63; font-variant-numeric:tabular-nums;">2</div>
+          <div style="font-size:var(--body, 34px); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">Set each repair against the building&rsquo;s own cycle and sub-cycle, taken from the block number.</div>
+        </div>
+
+        <sc-if value="{{ showMatchStep }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid; grid-template-columns:56px 1fr; gap:24px; border-left:6px solid transparent; padding-left:28px;">
+            <div style="font-size:calc(var(--body, 34px) * 0.76); font-weight:500; line-height:1.75; color:#6E6B63; font-variant-numeric:tabular-nums;">3</div>
+            <div style="font-size:var(--body, 34px); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">Name the repair owner on every item, and chase the vendor on a schedule.</div>
+          </div>
+        </sc-if>
+
+        <div style="display:grid; grid-template-columns:56px 1fr; gap:24px; border-left:6px solid var(--accent, #3F5D75); padding-left:28px;">
+          <div style="font-size:calc(var(--body, 34px) * 0.76); font-weight:500; line-height:1.75; color:#6E6B63; font-variant-numeric:tabular-nums;">{{ approveNum }}</div>
+          <div>
+            <div style="font-size:22px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent, #3F5D75); margin-bottom:14px;">You approve</div>
+            <div style="font-size:var(--body, 34px); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">You confirm the cycle date against the filing history and release it. Nothing reschedules before you do.</div>
+          </div>
+        </div>
+
+      </div>
+      <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:32px; border-top:var(--rule, 1px) solid #D6D0C4; padding-top:26px; font-size:22px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#6E6B63;">
+          <div>{{ footerText }}</div>
+          <sc-if value="{{ footerContact }}" hint-placeholder-val="{{ false }}"><div style="letter-spacing:0.06em; text-transform:none;">jtsomwaru.com</div></sc-if>
+          <sc-if value="{{ showSlideNumbers }}" hint-placeholder-val="{{ true }}"><div>2 / 5</div></sc-if>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showUsageNotes }}" hint-placeholder-val="{{ false }}">
+      <div style="width:380px; flex-shrink:0; display:flex; flex-direction:column; gap:26px; padding-top:6px;">
+        <div style="font-size:16px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54;">Master B</div>
+        <div style="font-family:Geist, sans-serif; font-weight:700; font-size:26px; color:#33322E; margin-top:-14px;">Workflow frame</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Varies</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">Step count, three to five. Their wording. Which step carries the marker.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Never</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">More than one marked step, or none. Exactly one, always in the accent.</div>
+        </div>
+        <div style="border-top:1px solid #C9C2B4; padding-top:20px; font-size:18px; font-weight:500; color:#5C5A54; line-height:1.55;">This marker is the load-bearing element of the system. It is the reason the reader keeps reading.</div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex; align-items:flex-start; gap:56px;">
+    <div data-screen-label="C" style="width:1080px; height:1350px; flex-shrink:0; background:var(--paper, #FAF8F4); padding:var(--pad, 96px); display:flex; flex-direction:column;">
+      <div style="font-family:Geist, sans-serif; font-weight:var(--hw, 700); font-size:calc(var(--title, 84px) * 0.52); line-height:1.15; color:#1C1C1A;">What changes on the desk</div>
+      <div style="flex:1; display:grid; grid-template-columns:1fr var(--rule, 1px) 1fr; gap:var(--colgap, 56px); padding-top:80px;">
+        <div style="display:flex; flex-direction:column;">
+          <div style="font-size:24px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54; margin-bottom:44px;">Before</div>
+          <div style="display:flex; flex-direction:column; gap:var(--cgap, 36px);">
+            <div style="font-size:calc(var(--body, 34px) * 0.88); font-weight:500; line-height:var(--lh, 1.35); color:#5C5A54; text-wrap:pretty;">The next deadline is arithmetic done once in a spreadsheet.</div>
+            <div style="font-size:calc(var(--body, 34px) * 0.88); font-weight:500; line-height:var(--lh, 1.35); color:#5C5A54; text-wrap:pretty;">SWARMP conditions live inside a report nobody reopens.</div>
+            <div style="font-size:calc(var(--body, 34px) * 0.88); font-weight:500; line-height:var(--lh, 1.35); color:#5C5A54; text-wrap:pretty;">Nobody notices the schedule changed until a filing is late.</div>
+          </div>
+        </div>
+        <div style="background:#8F877B;"></div>
+        <div style="display:flex; flex-direction:column;">
+          <div style="font-size:24px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54; margin-bottom:44px;">Now</div>
+          <div style="display:flex; flex-direction:column; gap:var(--cgap, 36px);">
+            <div style="font-size:calc(var(--body, 34px) * 0.88); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">The next deadline comes from the building&rsquo;s own cycle.</div>
+            <div style="font-size:calc(var(--body, 34px) * 0.88); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">Each SWARMP condition is an item with an owner.</div>
+            <div style="font-size:calc(var(--body, 34px) * 0.88); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">A cycle change surfaces for review before anything reschedules.</div>
+          </div>
+        </div>
+      </div>
+      <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:32px; border-top:var(--rule, 1px) solid #D6D0C4; padding-top:26px; font-size:22px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#6E6B63;">
+          <div>{{ footerText }}</div>
+          <sc-if value="{{ footerContact }}" hint-placeholder-val="{{ false }}"><div style="letter-spacing:0.06em; text-transform:none;">jtsomwaru.com</div></sc-if>
+          <sc-if value="{{ showSlideNumbers }}" hint-placeholder-val="{{ true }}"><div>3 / 5</div></sc-if>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showUsageNotes }}" hint-placeholder-val="{{ false }}">
+      <div style="width:380px; flex-shrink:0; display:flex; flex-direction:column; gap:26px; padding-top:6px;">
+        <div style="font-size:16px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54;">Master C</div>
+        <div style="font-family:Geist, sans-serif; font-weight:700; font-size:26px; color:#33322E; margin-top:-14px;">States frame</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Varies</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">The three pairs. Keep them situational: where work lives, who remembers, what breaks.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Never</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">Numbers, percentages, charts, or a fourth pair. Before stays muted, Now stays black.</div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex; align-items:flex-start; gap:56px;">
+    <div data-screen-label="D" style="width:1080px; height:1350px; flex-shrink:0; background:var(--paper, #FAF8F4); padding:var(--pad, 96px); display:flex; flex-direction:column;">
+      <div style="font-family:Geist, sans-serif; font-weight:var(--hw, 700); font-size:calc(var(--title, 84px) * 0.62); line-height:1.15; letter-spacing:-0.015em; color:#1C1C1A;">What stays human</div>
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:var(--dgap, 46px); padding-bottom:80px;">
+        <div style="font-size:calc(var(--body, 34px) * 1.12); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">Anything that moves money.</div>
+        <div style="font-size:calc(var(--body, 34px) * 1.12); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">Anything with a legal deadline.</div>
+        <div style="font-size:calc(var(--body, 34px) * 1.12); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">Anything a lawyer would want a signature on.</div>
+        <div style="font-size:calc(var(--body, 34px) * 1.12); font-weight:500; line-height:var(--lh, 1.35); color:#1C1C1A; text-wrap:pretty;">Any UNSAFE classification, which goes to a named owner immediately.</div>
+      </div>
+      <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:32px; border-top:var(--rule, 1px) solid #D6D0C4; padding-top:26px; font-size:22px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#6E6B63;">
+          <div>{{ footerText }}</div>
+          <sc-if value="{{ footerContact }}" hint-placeholder-val="{{ false }}"><div style="letter-spacing:0.06em; text-transform:none;">jtsomwaru.com</div></sc-if>
+          <sc-if value="{{ showSlideNumbers }}" hint-placeholder-val="{{ true }}"><div>4 / 5</div></sc-if>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showUsageNotes }}" hint-placeholder-val="{{ false }}">
+      <div style="width:380px; flex-shrink:0; display:flex; flex-direction:column; gap:26px; padding-top:6px;">
+        <div style="font-size:16px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54;">Master D</div>
+        <div style="font-family:Geist, sans-serif; font-weight:700; font-size:26px; color:#33322E; margin-top:-14px;">What stays human</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Varies</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">Which lines apply to the account. Two to four, never five.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Never</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">Money, legal deadlines, and signatures come off the list. Those three are fixed.</div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="display:flex; align-items:flex-start; gap:56px;">
+    <div data-screen-label="E" style="width:1080px; height:1350px; flex-shrink:0; background:var(--paper, #FAF8F4); padding:var(--pad, 96px); display:flex; flex-direction:column;">
+      <div style="display:flex; flex-direction:column; gap:26px;">
+        <div style="font-family:Geist, sans-serif; font-weight:var(--hw, 700); font-size:calc(var(--title, 84px) * 0.55); line-height:1.2; color:#1C1C1A; max-width:860px; text-wrap:pretty;">I map one back-office process end to end,</div>
+        <div style="font-size:var(--body, 34px); font-weight:500; line-height:1.4; color:#5C5A54; max-width:830px; text-wrap:pretty;">then automate only the parts that do not touch money, legal notices, or tenant records.</div>
+        <div style="font-size:var(--body, 34px); font-weight:500; line-height:1.4; color:#1C1C1A; max-width:830px; margin-top:22px; text-wrap:pretty;">A person still approves anything that does.</div>
+      </div>
+      <div style="flex:1;"></div>
+      <div style="font-family:Geist, sans-serif; font-weight:var(--hw, 700); font-size:calc(var(--title, 84px) * 0.62); line-height:1.2; letter-spacing:-0.015em; color:var(--accent, #3F5D75); max-width:900px; text-wrap:pretty;">Book a 30-minute audit of one back-office process.</div>
+      <div style="font-size:calc(var(--body, 34px) * 0.88); font-weight:500; color:#33322E; margin-top:44px; margin-bottom:72px;">JT Somwaru &nbsp;·&nbsp; jtsomwaru.com &nbsp;·&nbsp; jt@jtsomwaru.com</div>
+      <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:32px; border-top:var(--rule, 1px) solid #D6D0C4; padding-top:26px; font-size:22px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#6E6B63;">
+          <div>{{ footerText }}</div>
+          <sc-if value="{{ footerContact }}" hint-placeholder-val="{{ false }}"><div style="letter-spacing:0.06em; text-transform:none;">jtsomwaru.com</div></sc-if>
+          <sc-if value="{{ showSlideNumbers }}" hint-placeholder-val="{{ true }}"><div>5 / 5</div></sc-if>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showUsageNotes }}" hint-placeholder-val="{{ false }}">
+      <div style="width:380px; flex-shrink:0; display:flex; flex-direction:column; gap:26px; padding-top:6px;">
+        <div style="font-size:16px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#5C5A54;">Master E</div>
+        <div style="font-family:Geist, sans-serif; font-weight:700; font-size:26px; color:#33322E; margin-top:-14px;">Closing frame</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Varies</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">The call to action wording. Which contact channels appear on the line.</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#5C5A54;">Never</div>
+          <div style="font-size:19px; font-weight:500; color:#33322E; line-height:1.55;">A second ask. The accent appears here and on Master B, nowhere else.</div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;accent&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#3F5D75&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3F5D75&quot;, &quot;#3E5A6B&quot;, &quot;#46587A&quot;, &quot;#4A5A6E&quot;], &quot;section&quot;: &quot;Color&quot; },
+  &quot;paper&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#FAF8F4&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#FAF8F4&quot;, &quot;#F6F1E6&quot;, &quot;#F8F8F7&quot;, &quot;#F4F1EA&quot;], &quot;section&quot;: &quot;Color&quot; },
+  &quot;titleSize&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 84, &quot;min&quot;: 56, &quot;max&quot;: 104, &quot;step&quot;: 2, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Typography&quot; },
+  &quot;bodySize&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 34, &quot;min&quot;: 26, &quot;max&quot;: 44, &quot;step&quot;: 1, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Typography&quot; },
+  &quot;headingWeight&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;700&quot;, &quot;options&quot;: [&quot;500&quot;, &quot;600&quot;, &quot;700&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Typography&quot; },
+  &quot;bodyLineHeight&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1.35, &quot;min&quot;: 1.15, &quot;max&quot;: 1.6, &quot;step&quot;: 0.05, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Typography&quot; },
+  &quot;density&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;sparse&quot;, &quot;options&quot;: [&quot;sparse&quot;, &quot;dense&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Layout&quot; },
+  &quot;framePad&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 96, &quot;min&quot;: 64, &quot;max&quot;: 140, &quot;step&quot;: 4, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Layout&quot; },
+  &quot;columnGap&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 56, &quot;min&quot;: 32, &quot;max&quot;: 96, &quot;step&quot;: 4, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Layout&quot; },
+  &quot;dividerWeight&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 1, &quot;max&quot;: 3, &quot;step&quot;: 1, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Layout&quot; },
+  &quot;stepCount&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;4&quot;, &quot;options&quot;: [&quot;3&quot;, &quot;4&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Master B&quot; },
+  &quot;showFooter&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Footer&quot; },
+  &quot;footerText&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;JT Somwaru&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Footer&quot; },
+  &quot;footerContact&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Footer&quot; },
+  &quot;showSlideNumbers&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Footer&quot; },
+  &quot;showUsageNotes&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Handoff&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount() { this.sync(); }
+  componentDidUpdate() { this.sync(); }
+
+  sync() {
+    const p = this.props;
+    const dense = (p.density || 'sparse') === 'dense';
+    const set = (k, v) => document.documentElement.style.setProperty(k, v);
+    set('--accent', p.accent || '#3F5D75');
+    set('--paper', p.paper || '#FAF8F4');
+    set('--title', (p.titleSize ?? 84) + 'px');
+    set('--body', (p.bodySize ?? 34) + 'px');
+    set('--pad', (p.framePad ?? 96) + 'px');
+    set('--lh', String(p.bodyLineHeight ?? 1.35));
+    set('--hw', String(p.headingWeight ?? 700));
+    set('--rule', (p.dividerWeight ?? 1) + 'px');
+    set('--colgap', (p.columnGap ?? 56) + 'px');
+    set('--stepgap', (dense ? 24 : 38) + 'px');
+    set('--dgap', (dense ? 30 : 46) + 'px');
+    set('--cgap', (dense ? 26 : 36) + 'px');
+  }
+
+  renderVals() {
+    const steps = Number(this.props.stepCount ?? 4);
+    return {
+      showMatchStep: steps >= 4,
+      approveNum: steps,
+      footerText: this.props.footerText ?? 'JT Somwaru',
+      footerContact: this.props.footerContact ?? false,
+      showFooter: this.props.showFooter ?? true,
+      showSlideNumbers: this.props.showSlideNumbers ?? true,
+      showUsageNotes: this.props.showUsageNotes ?? false
+    };
+  }
+}
+</script>
+</body>
+</html>

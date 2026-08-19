@@ -2,6 +2,20 @@
 
 ---
 
+## Aug 18, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent governance is tightening around represented identity, gateway enforcement, and pre-execution control.** Fresh monitoring surfaced Google Gemini Enterprise agent governance language around agent identity, agent gateways, policy-driven authentication, metadata, and audit trails; Automation Anywhere positioning around risk-tiered human approval for high-impact or irreversible steps; InfoQ / MCP security coverage around gateways that authenticate clients, authorize requests, keep request logs, enforce limits, and centralize audit trails; and AI-agent identity coverage around short-lived credentials, delegated human-agent context, credential brokering, and least-privilege enforcement.
+
+**JT relevance:** keep Run Control / AI Enablement OS proof rows explicit about who or what is acting, whose authority is represented, which gateway or tool boundary enforced the policy, and whether the credential was brokered or directly exposed. For Marketsmith, DHCR, Altmark, and MSI-style workflows, this supports acceptance/control language only: a workflow is not "done" because an agent produced an output; it is done when the authorized action, reviewer/owner, evidence path, and exception route are visible.
+
+**Actionable demo angle:** make the proof row read like a pre-execution authorization record:
+
+`workflow | represented_owner | agent_or_workflow_identity | gateway_or_tool_endpoint | credential_custody | requested_action | risk_tier | policy_decision | reviewer_if_required | result_path | audit_path | exception_or_rollback`
+
+Sources checked with local `scripts/web_search.py` on 2026-08-18: Google Gemini Enterprise Agent Platform governance https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern; Automation Anywhere agentic AI governance https://www.automationanywhere.com/company/blog/agentic-ai-governance; InfoQ MCP production gateway security https://www.infoq.com/articles/securing-mcp-production-gateway/; Microsoft Agent Governance Toolkit https://github.com/microsoft/agent-governance-toolkit; Iden AI agent identity management https://www.idenhq.com/en/blog/ai-agent-identity-management-2026; Aembit AI agent identity vendors https://aembit.io/blog/10-identity-security-vendors-for-ai-agents-strengths-tradeoffs-and-how-they-fit/; AI Governance Institute news https://aigovernance.com/news
+
+---
+
 ## Aug 15, 2026 - Heartbeat AI Tool Monitoring
 
 **Governed agent work is moving toward action-time custody, not just static permissions.** Fresh monitoring surfaced OpenAI Agents SDK positioning where the application owner controls tools, MCP servers, runtime behavior, storage, and approval decisions; Microsoft Foundry MCP guidance around logging approvals and tool calls for audit/troubleshooting; Microsoft Agent Governance Toolkit language around policy, identity, trust, audit, and MCP gateway coverage; and Claude Code docs/changelog signals around per-tool approval prompts plus long MCP calls moving into background execution.

@@ -21,10 +21,11 @@
 ## How JT Thinks / Works
 - Operator-builder mindset: wants working systems, proof, and leverage — not theoretical strategy.
 - North Star: buy back control of his time by turning practical AI implementation consulting into dependable cash first, then converting delivery proof into reusable IP, products, and AI-managed income streams.
+- Aug 18 strategy clarification: for the next 90 days, cash collected is the main outcome. JT is willing to be property-first publicly during that window while researching adjacent niches in parallel. Preferred end-state business is a managed AI operations service plus a studio that installs systems into partner businesses.
 - Ideal life: bills paid, no debt spiral, money for nice things for him and family, NYC/location stability, and freedom to choose client work, creative apps, crypto research, or rest without every decision being forced by cash pressure.
 - Current priority order: (1) collect consulting cash and proof through real client delivery, (2) use proof to build repeatable AI implementation offers and reusable IP, (3) build and market apps only when distribution/retention evidence exists, (4) monitor crypto as opportunity scan, (5) protect health daily as the base layer.
 - Income thresholds: safe ≈ $10K/month, free ≈ $30K/month, rich ≈ $100K/month.
-- Wants to be known primarily as an AI Implementation Specialist/Consultant and product builder.
+- Wants to be known primarily as an AI Implementation Specialist/Consultant who turns messy business workflows into controlled AI operating systems; product/studio upside comes after paid proof.
 - Non-negotiables: sleep, health, and staying in NYC/location stability. Do not recommend paths that require sacrificing these unless explicitly asked.
 - Values speed, but not sloppiness. A fast wrong answer is worse than a short pause to verify.
 - Responds best to concrete evidence: links, screenshots, logs, diffs, shipped artifacts, task closure.
@@ -37,6 +38,7 @@
 ## JT's Leverage Pattern
 - Best opportunities combine his business-ops credibility, AI implementation knowledge, and ability to speak to nontechnical SMB operators.
 - Strongest positioning: “I understand the messy handoffs and operational bottlenecks before I automate them.”
+- Current best-fit work: recurring, expensive workflows with messy inputs, multiple systems, unclear ownership, exception handling, approval risk, and proof requirements.
 - Weak positioning: generic AI consultant, generic automation agency, or developer-for-hire framing.
 - Content should make him look like a practical operator who has seen real workflow failure modes, not a hype account.
 
@@ -48,7 +50,7 @@
 
 ## Current Focus
 - **JT Somwaru Consulting**: primary cash lane — practical AI implementation, workflow automation, run-control/proof systems
-- **MSI / Marketsmith**: signed, active delivery — 80-hour fixed-scope Nexus engagement, $10,800 signed value, 50% kickoff / 50% completion; displacement rule in effect
+- **MSI / Marketsmith**: closed accepted — 80-hour fixed-scope Nexus engagement, $10,800 signed value; all four SOW deliverables delivered/accepted and independently re-verified by client technical lead on Aug 17, 2026; completion invoice MSI-002 for $5,400 sent Aug 18, Net 15, due Sept 2; follow-on lane open through technical lead first
 - **Altmark**: top paid/proof lane — insurance workflow paid; rent delinquency workflow initial 50% paid, remaining $2,250 blocked on source/export/reviewer/cadence/exception inputs
 - **SoberLife-Coach / Karen**: complete and paid; closed-won; Karen referral ask eligible
 - **Aya**: $1,500 dashboard complete and paid; closed-won; Gil referral ask eligible; StreetEasy cancelled, co-living dead, acquisitions stalled unless fresh trigger appears

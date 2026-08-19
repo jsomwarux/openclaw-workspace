@@ -1,7 +1,7 @@
 # MSI Kickoff Invoice Action - 2026-07-17
 
 ## Status
-- MSI / Marketsmith is signed active delivery.
+- Historical note: MSI / Marketsmith was signed active delivery on 2026-07-17; this was superseded by closed/accepted status on 2026-08-17.
 - Signed value: $10,800.
 - Terms set: 50% kickoff / 50% completion.
 - Kickoff invoice amount: $5,400.

@@ -24,10 +24,11 @@ Last updated: 2026-05-07
 - Content angle: stop selling AI tools first. Diagnose the workflow, exception, owner, data source, and handoff before choosing the automation.
 - Best framing: the diagnostic tells the buyer what to build first.
 
-### Marketsmith
-- Live warm opportunity. JT quoted $175/hr or $15k/month, deliverables-focused, 15 available hours/week.
-- Content angle: product/AI consulting should be outcome-scoped, not employment-shaped hours.
-- Avoid: naming Marketsmith.
+### Marketsmith / MSI
+- Closed accepted Nexus engagement. All four SOW deliverables were delivered and accepted; technical lead independently re-verified the work on MSI systems and confirmed acceptance to the exec team on 2026-08-17.
+- Content/proposal angle: proof should point to the anonymized analytics-platform case study and verification assets, not reconstruct from scratch.
+- Safe proof assets: 500+ test cases across six quality checks, 224 mutation-tested behaviours, four independent spend-total query grains agreeing to the cent, full fiscal-calendar source verification, 11 defects found/fixed only as "tool working" case-study proof, and fixed 80-hour delivery independently re-verified by the client.
+- Avoid: naming Marketsmith/MSI publicly or client-facing until approved; using client internal hours-saved estimates until permission is granted; framing the 11 defects as commentary on their engineering.
 
 ### Buyer-channel enrichment / outreach hygiene
 - Current bottleneck is not company discovery. It is verified buyer identity, reachable channel, and sequence hygiene.

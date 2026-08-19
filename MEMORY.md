@@ -4,6 +4,7 @@
 ## JT Snapshot
 - JT Somwaru, America/New_York; Telegram primary; ops-to-AI implementation.
 - North Star: consulting cash first; convert proof into reusable IP/products without sacrificing health/NYC stability.
+- Aug 18 focus: 90-day cash first; property-forward publicly while testing adjacent niches. End-state: managed AI ops service + partner-business studio.
 - Constraints: no relocation, protect sleep/health/NYC stability, avoid developer-only positioning.
 - Detail: `docs/memory/MEMORY-full.md#jt-snapshot`.
 
@@ -14,19 +15,20 @@
 
 ## Consulting Positioning
 - Practical AI implementation for ops-heavy SMBs: governed handoffs before automation.
+- Strongest positioning: controlled AI operating systems for messy workflows: source records, exception owners, approvals, proof logs, specialized agents/skills.
 - AI Enablement OS / Run Control proof row: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
 ## Active Clients
 - Canonical July 16 state: `memory/canonical/jt-mission-control-state-2026-07-16.md`.
-- Altmark top paid/proof lane: rent delinquency gate plus active Altmark FTE + NewCo negotiation with Yair and Adai. FTE and NewCo must be separate contracts; JT's existing systems/toolkit/playbook stay personal IP. DHCR is a delivery-track item sent to Matt, not a Yair comp-thread chase.
-- MSI signed active: $10,800 fixed-scope Nexus. Kickoff 50% ($5,400) cleared/source-confirmed 2026-07-28. On 2026-08-17 JT reported all SOW deliverables finished; next gate is an acceptance-only closeout tied to SOW section 10 / internal dev-test criteria, then remaining $5,400 completion invoice. Expansion note comes separately after acceptance.
+- Altmark top paid/proof lane: rent delinquency gate plus FTE + NewCo negotiation with Yair/Adai. FTE and NewCo separate; JT's existing systems/toolkit/playbook stay personal IP. DHCR routes to Matt.
+- MSI / Marketsmith closed accepted: $10,800 fixed-scope Nexus; kickoff $5,400 cleared; all four deliverables accepted after client technical re-verification 2026-08-17. MSI-002 ($5,400) sent 2026-08-18, due 2026-09-02; flag unpaid 2026-09-03. Follow-on through technical lead first; flag before quoting.
 - Closed-won/paid: SoberLife-Coach/Karen is paid but not referral-eligible until SEO expectation reset and handoff items close; Gil/Aya construction dashboard is paid and referral-eligible. Maiky is separate live Aya-adjacent opportunity on hold after cost review.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Aug 12 send queue: no sends due; live gates are MSI Montclair-first Nexus delivery mechanics due Aug 12 6PM ET and Altmark delinquency go-live/JT `outreach_id` header missed Aug 11 6PM ET. DHCR routes to Matt as delivery-track only.
+- Current send queue: no general sends due; DHCR routes to Matt as delivery-track only.
 - Gil ask is warm; Karen ask waits on written SEO expectation reset; Guyana is capped exploration with one warm intro in flight; Ron/BDT is watch-only.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
@@ -36,7 +38,7 @@
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com`: AI ops homepage; `/property` PM Workflow Audit path. App strategy: distribution + retention first; Apple/Fable/Yair gates before more build work.
+- `jtsomwaru.com`: AI ops homepage; `/property` PM Workflow Audit path. Apps need distribution/retention gates before more build work.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
@@ -46,7 +48,7 @@
 
 ## Job Market
 - Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
-- Latest Aug 12 pulse is directive-limited from stale local 2026-07-08 brief only; no fresh search/application/task. Position around governed implementation assets, release/eval/rollback, docs, adoption, and AI Enablement OS proof.
+- Latest pulse is directive-limited from stale 2026-07-08 brief only; no fresh search/application/task. Position around governed implementation assets and AI Enablement OS proof.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
@@ -72,7 +74,7 @@
 
 ## Integrity / Fabrication Corrections
 - Never fabricate; verify outreach, URLs, deployments, Drive links, task closure, and delivery with tool/script evidence.
-- JT corrections require Mistakes Log/rule updates with regression checks. Use lossless-claw recall before exact compacted-history claims.
+- JT corrections require Mistakes Log/rule updates with regression checks. Use lossless-claw recall before exact compacted-history claims: start with `lcm_grep`, inspect with `lcm_describe`, use `lcm_expand_query` when exact evidence is needed.
 - External strategy prompts need no-prior-context primer.
 - Detail: `docs/memory/MEMORY-full.md#integrity--fabrication-corrections`.
 

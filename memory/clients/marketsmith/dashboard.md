@@ -3,38 +3,55 @@
 ## Outcome We Are Paid To Improve
 - Primary outcome: help Sam/team accelerate Nexus dashboard onboarding and AI-assisted reporting without becoming generic Azure staff augmentation.
 - Baseline: 10-15 priority dashboards in 30 days discussed; 2026-07-02 meeting completed and felt more like an interview/discovery.
-- Target: confirm 4-week Nexus support scope after Amanda meeting, with rate/cost anchored to governed AI implementation capacity.
-- Current status: 2026-08-17 JT reports all SOW deliverables finished for the $10,800 fixed-scope Nexus engagement. Next gate is clean acceptance/handoff, remaining $5,400 completion invoice, and expansion conversation with Ed/Marketsmith.
+- Target: deliver the fixed 80-hour Nexus SOW scope, have the client independently re-verify it on their own systems, invoice the completion milestone, and preserve permission-safe proof for future proposals/content.
+- Current status: CLOSED / DELIVERED / ACCEPTED as of 2026-08-17. All four SOW deliverables were delivered and accepted. The client's technical lead confirmed acceptance in writing to the exec team on 2026-08-17 after independently re-verifying the work on MSI's own systems. Completion invoice MSI-002 for $5,400 was sent 2026-08-18, Net 15, due 2026-09-02; flag if unpaid on 2026-09-03. Remaining polish items sit with the client's technical lead, not JT.
 
 ## Live Status
 | Area | Status | Notes | Owner | Next Action | Due |
 |---|---|---|---|---|---|
-| Meeting/interview | Done | Sam/team spent time on JT background, OpenClaw, client work, and how JT would apply AI to their marketing business | JT | Capture notes and wait for leadership follow-up | 2026-07-02 |
-| Security | Hot signal | Client access protection and data leakage risk mattered | Eve/JT | Frame secure local/dedicated-PC LLM option carefully | 2026-07-07 |
-| Scalability | Hot signal | They care whether each build gets more efficient | Eve/JT | Turn lessons.md delivery memory into proposal asset | 2026-07-07 |
-| Data intake | Hot signal | Clean, accurate data is a major gate; all data lives in Snowflake | Eve/JT | Define data-readiness checklist checked after every refresh | 2026-07-07 |
-| Insight quality | Hot signal | Snowflake built-in AI is being used today and may be suboptimal | Eve/JT | Recommend client-specific prompt packs based on each client's priorities | 2026-07-07 |
-| SOW delivery | JT-reported complete | JT reports all SOW deliverables finished; client acceptance and completion payment still need confirmation | JT | Send acceptance-only closeout note tied to SOW section 10 / internal dev-test standard; invoice remaining $5,400 after acceptance/completion terms are satisfied | 2026-08-17 |
-| Expansion | Stage after acceptance | Future work should not be bundled into the acceptance email | JT | Send separate expansion note later, anchored to NJ Lottery vs Montclair build-time delta and MSI-documented follow-on items | After acceptance |
+| Meeting/interview | Done | Sam/team spent time on JT background, OpenClaw, client work, and how JT would apply AI to their marketing business | JT | Historical context only | 2026-07-02 |
+| SOW delivery | Accepted | All four SOW deliverables delivered and accepted; technical lead independently re-verified on MSI systems and confirmed to exec team in writing on 2026-08-17 | Client technical lead / JT | Keep acceptance proof private; do not reopen SOW unless client names a defect | Closed |
+| Completion invoice | Sent | MSI-002, $5,400, sent 2026-08-18, Net 15, due 2026-09-02 | JT / MSI | Flag if unpaid by 2026-09-03 | 2026-09-03 |
+| Polish items | Client-owned | Remaining polish items sit with the client's technical lead | Client technical lead | JT only responds if pulled in through technical lead | As needed |
+| Expansion | Open follow-on lane | Possible next steps: more clients through onboarding pipeline, context-updater agent, budget and flight-dates modal, QA coverage across production clients, ongoing maintenance | Technical lead first, then budget owner | Follow up on the team walkthrough in about a week; route scope conversation through technical lead before budget owner | ~2026-08-25 |
 
 ## Wins This Week
-- Client OS exists and discovery prep was created on 2026-07-01.
-- 2026-07-02 meeting/interview went well; strongest signals were security, scalability, data intake/accuracy, Snowflake, client-specific insight generation, competitor research, and always-on market learning agent.
+- All four Nexus SOW deliverables were delivered and accepted.
+- Client technical lead independently re-verified the work on MSI systems and confirmed acceptance to the exec team on 2026-08-17.
+- Completion invoice MSI-002 for $5,400 was sent 2026-08-18, Net 15.
 
 ## Misses / Risks This Week
-- Risk: being framed as raw Azure engineering staff augmentation instead of dashboard acceleration / AI insights operating sprint.
-- JT did not get to ask many questions because the meeting skewed toward interview/background assessment.
-- Marketsmith could not show dashboard examples due to client confidentiality.
+- Public/client-facing use of the client name is blocked until approved.
+- Client internal hours-saved estimates are blocked from proposals, posts, and pages until permission is granted.
+- The 11-defects fact is usable only in case-study framing where it reads as the tool working. Never use it as commentary on their engineering.
+- Current rate was explicitly the initial-project rate; expanded scope needs separate negotiation before quoting.
 
 ## Metrics
 | Metric | Baseline | Current | Target | Trend | Notes |
 |---|---:|---:|---:|---|---|
-| Follow-up status | Not set | Expected Jul 6-7 | Plan to move forward | New | Leadership will discuss internally |
-| Proposal signals captured | 0 | 6 | 6 | Up | Security, scalability, data intake, Snowflake prompts, competitor research, personal agent |
+| SOW deliverables accepted | 0 | 4 | 4 | Complete | Client technical lead confirmed acceptance after independent re-verification |
+| Engagement cap | 80 hrs | Delivered inside fixed 80 hrs | <=80 hrs | Complete | Fixed-scope discipline is a reusable proof point |
+| Quality checks | 0 | 6 | 6 | Complete | 500+ test cases across six checks |
+| Mutation-tested behaviours | 0 | 224 | 224 | Complete | Anonymized proof asset |
+| Spend-total agreement | 0 | 4 grains agree to the cent | 4 | Complete | Primary spend total computed by four independent queries at four grains |
+| Fiscal-calendar verification | 0 | Every day in coverage | Full coverage | Complete | Logic independent of module under test |
+| Defects found/fixed | 0 | 11 | N/A | Complete | Use only as "tool working" case-study proof |
+| Completion invoice | $5,400 remaining | MSI-002 sent | Paid by 2026-09-02 | Open | Flag if unpaid 2026-09-03 |
 
 ## Next 7 Days
-- Close the SOW with a closed acceptance question first. After Ed confirms or names open issues, send a separate expansion note anchored to measured build-time improvement and MSI-documented follow-ons: additional client onboarding, context-updater agent, budget/flight-dates modal, broader QA coverage across production clients, and ongoing maintenance.
+- Follow up on the team walkthrough around 2026-08-25.
+- Keep any scope conversation routed through the technical lead first, then the budget owner. Do not reverse the order.
+- Do not propose wiring QA into MSI's release flow; they have claimed that in-house.
+- Flag before quoting anything. The current rate was explicitly the initial-project rate, and expanded scope must be negotiated separately.
 
 ## Decision Needed From Client
-- Confirm the finished four deliverables meet acceptance criteria at internal dev-test and both agents are packaged/in use per SOW section 10.
-- Separately confirm which follow-on path Ed values most after acceptance: additional client onboarding, context-updater agent, budget/flight-dates modal, broader production-client QA coverage, ongoing maintenance, or another Ed-owned priority.
+- Payment of MSI-002 by 2026-09-02.
+- Walkthrough feedback and whether they want to open a separate follow-on scope conversation through the technical lead first.
+
+## Artifact / Proof Boundary
+- `ENGAGEMENT_BUILD_RECORD.md`: private factual record of what was built and how it was verified. Anonymized. Never leaves JT's devices.
+- `case-study-analytics-platform.md`: anonymized case study for proposals.
+- Reusable proof assets: 500+ test cases across six quality checks; 224 mutation-tested behaviours; primary spend total computed by four independent queries at four grains and agreeing to the cent; generated fiscal calendar verified against source on every day in coverage by independent logic; 11 real defects found in existing production code, confirmed and fixed; full scope delivered inside a fixed 80 hours and independently re-verified by client before acceptance.
+- Permission gate: no public or client-facing use of the client's name until they approve it.
+- Permission gate: client's internal hours-saved estimates are blocked from proposals, posts, and pages until permission is granted; if ever used, attribute them as client estimates.
+- Permission gate: the 11-defects fact is usable only in the case-study framing where it reads as the tool working. Never use it as commentary on their engineering.
