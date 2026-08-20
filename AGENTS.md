@@ -122,6 +122,16 @@ Every MC task must include: (1) specific first action (URL, command, file path),
 ## Material Delta Task Rule
 Material delta implemented (artifact, queue, research finding, proof pack, Drive bundle, automation, decision-ready output) → add/update the single optimal Mission Control next-use task. Cite the path/link, assign the real owner, set correct priority/order, and include first action + why + done state. If already consumed or not actionable, log why no MC task was needed.
 
+## 90 Day Playbook Mandate (2026-08-19 through 2026-11-17)
+Source: `memory/operating-mandates/90-day-playbook-2026-08-19.md`. This supersedes prior strategy/positioning guidance where it conflicts.
+- Scoreboard: cash collected. Nothing else counts as progress.
+- Input metric: 2 priced conversations per week. A priced conversation means JT told a real buyer a real number.
+- Positioning: "You take one messy business process, build a controlled AI system around it, and leave behind proof the business can trust." Say this exact thing; NYC/NJ property managers and building owners first.
+- Frozen: niche research system, self-improving cron/agent harness, knowledge ingestion/skill converter work, per-domain lexicons, Mission Control Phase 3, all four app lanes, Guyana, Bustem, the $500 website offer, and any new skill written outside paid delivery.
+- Write contract extension: do not create or queue Strategy/Positioning, research, market discovery, system design, or tooling tasks during this mandate.
+- Frozen override handler: when JT asks for something frozen, say it is on the freeze list and ask whether he is overriding it. Do not execute first and do not talk him out of it.
+- Re-entry test for frozen work: does it produce an invoice inside 90 days.
+
 ## Quality Rules
 - Non-trivial changes: ask "is there a more elegant way?" Fix hacky. Skip for obvious fixes.
 - Root causes only. No temp fixes. Touch only what's necessary. Bug = fix it from logs/errors/tests.

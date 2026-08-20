@@ -2,6 +2,20 @@
 
 ---
 
+## Aug 19, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent governance is converging on gateway-bound custody for every tool call.** Fresh monitoring surfaced AI agent authentication/control-plane language around per-call user, agent, tenant, resource, policy decision, approval state, and outcome; Microsoft Foundry MCP docs requiring project-connection auth plus MCP tool-call review/approval; Google Gemini Enterprise Agent Gateway controls around approved agent/gateway bindings and MCP-attribute authorization; Snowflake/Natoma positioning around identity, policy, and audit at the tool-call layer; and security/vendor guidance that irreversible, financially material, privileged, regulated, or sensitive-data actions need human approval or step-up validation.
+
+**JT relevance:** keep Run Control / AI Enablement OS proof centered on the custody row, not generic "AI governance." For DHCR, Marketsmith, MSI, and Altmark-style workflows, the buyer evidence should show which workflow/agent requested action, whose authority it represented, which gateway/tool endpoint was used, what credential scope was exposed or brokered, whether policy allowed/held/denied it, who approved high-risk steps, where the output landed, and where the audit trail lives.
+
+**Actionable demo angle:** make the next proof row read like a gateway custody record:
+
+`workflow | represented_owner | agent_or_workflow | gateway_or_mcp_endpoint | credential_scope | requested_action | risk_tier | policy_decision | approval_or_step_up | result_path | audit_path | exception_owner`
+
+Sources checked with local `scripts/web_search.py` on 2026-08-19: Arcade AI agent authentication platforms https://www.arcade.dev/blog/best-ai-agent-authentication-platforms/; Microsoft Foundry MCP tools https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/model-context-protocol; Google Gemini Enterprise Agent Gateway overview https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/gateways/agent-gateway-overview; Snowflake Cortex AI Gateway / Natoma MCP governance https://www.snowflake.com/en/blog/enterprise-ai-security-agentic-mcp-governance/; Cakewalk MCP accountability gap https://www.cakewalk.security/blog/mcp-spec-agent-access-control-accountability; Proofpoint agentic AI security https://www.proofpoint.com/us/blog/ai-security/how-secure-ai-agents-and-reduce-human-risk
+
+---
+
 ## Aug 18, 2026 - Heartbeat AI Tool Monitoring
 
 **Agent governance is tightening around represented identity, gateway enforcement, and pre-execution control.** Fresh monitoring surfaced Google Gemini Enterprise agent governance language around agent identity, agent gateways, policy-driven authentication, metadata, and audit trails; Automation Anywhere positioning around risk-tiered human approval for high-impact or irreversible steps; InfoQ / MCP security coverage around gateways that authenticate clients, authorize requests, keep request logs, enforce limits, and centralize audit trails; and AI-agent identity coverage around short-lived credentials, delegated human-agent context, credential brokering, and least-privilege enforcement.

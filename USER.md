@@ -20,10 +20,12 @@
 
 ## How JT Thinks / Works
 - Operator-builder mindset: wants working systems, proof, and leverage — not theoretical strategy.
-- North Star: buy back control of his time by turning practical AI implementation consulting into dependable cash first, then converting delivery proof into reusable IP, products, and AI-managed income streams.
-- Aug 18 strategy clarification: for the next 90 days, cash collected is the main outcome. JT is willing to be property-first publicly during that window while researching adjacent niches in parallel. Preferred end-state business is a managed AI operations service plus a studio that installs systems into partner businesses.
+- Active mandate: 90 Day Playbook written 2026-08-19, running through 2026-11-17. Durable copy: `memory/operating-mandates/90-day-playbook-2026-08-19.md`.
+- Scoreboard through 2026-11-17: cash collected. Nothing else counts as progress. Input metric is 2 priced conversations per week, meaning JT told a real buyer a real number.
+- Positioning through 2026-11-17: "You take one messy business process, build a controlled AI system around it, and leave behind proof the business can trust." Say this exact thing. Do not add "any industry" or explain agents building agents.
+- Public/commercial wedge through 2026-11-17: NYC/NJ property managers and building owners first. If an outside-property buyer comes through JT's network, take the call and quote it; do not build a research system to find them.
 - Ideal life: bills paid, no debt spiral, money for nice things for him and family, NYC/location stability, and freedom to choose client work, creative apps, crypto research, or rest without every decision being forced by cash pressure.
-- Current priority order: (1) collect consulting cash and proof through real client delivery, (2) use proof to build repeatable AI implementation offers and reusable IP, (3) build and market apps only when distribution/retention evidence exists, (4) monitor crypto as opportunity scan, (5) protect health daily as the base layer.
+- Current priority order through 2026-11-17: (1) cash collected, (2) 2 priced conversations per week, (3) paid delivery Tuesday-Thursday, (4) referral/follow-on asks to the named warm list, (5) health/cash-stability basics only.
 - Income thresholds: safe ≈ $10K/month, free ≈ $30K/month, rich ≈ $100K/month.
 - Wants to be known primarily as an AI Implementation Specialist/Consultant who turns messy business workflows into controlled AI operating systems; product/studio upside comes after paid proof.
 - Non-negotiables: sleep, health, and staying in NYC/location stability. Do not recommend paths that require sacrificing these unless explicitly asked.
@@ -47,6 +49,7 @@
 - May underuse his Spectrum/product-catalog/operator background even though it is a major credibility edge.
 - Can accumulate too many promising projects; help prune, sequence, and force priority.
 - If a task is stale, expired, or based on old context, do not surface it as urgent.
+- If JT asks for something frozen before 2026-11-17, name the frozen item and ask whether he is overriding the freeze. Do not execute it and do not argue against it.
 
 ## Current Focus
 - **JT Somwaru Consulting**: primary cash lane — practical AI implementation, workflow automation, run-control/proof systems
@@ -54,9 +57,9 @@
 - **Altmark**: top paid/proof lane — insurance workflow paid; rent delinquency workflow initial 50% paid, remaining $2,250 blocked on source/export/reviewer/cadence/exception inputs
 - **SoberLife-Coach / Karen**: complete and paid; closed-won; Karen referral ask eligible
 - **Aya**: $1,500 dashboard complete and paid; closed-won; Gil referral ask eligible; StreetEasy cancelled, co-living dead, acquisitions stalled unless fresh trigger appears
-- **Apps**: Glow Index maintain only with Sept 1 data gate; Nash capped to one merged hr/week; Vista killed 90 days; Action Arena re-gates Aug 15 after Apple org conversion
+- **Apps**: all four app lanes frozen through 2026-11-17 unless JT explicitly overrides; re-entry test is whether the work produces an invoice inside 90 days
 - **Job market**: consulting-first; only exceptional AI Solutions Architect / AI Implementation Lead / AI enablement roles ($150K+ NYC/remote)
-- **Crypto**: opportunity scan/research only; no trades/transfers/financial actions
+- **Crypto**: no trades/transfers/financial actions; do not route crypto/app/passive-income work into active execution during the 90-day playbook unless JT explicitly overrides a frozen item
 - **H.C. Oswald outreach**: holding until personal website polished + demo agents built
 - **Content**: post as often as optimal for growth — X (primary), LinkedIn, Reddit (project promotion)
 

@@ -3,8 +3,10 @@
 
 ## JT Snapshot
 - JT Somwaru, America/New_York; Telegram primary; ops-to-AI implementation.
-- North Star: consulting cash first; convert proof into reusable IP/products without sacrificing health/NYC stability.
-- Aug 18 focus: 90-day cash first; property-forward publicly while testing adjacent niches. End-state: managed AI ops service + partner-business studio.
+- Active mandate: `memory/operating-mandates/90-day-playbook-2026-08-19.md`, written 2026-08-19 and running through 2026-11-17. It supersedes prior strategy/positioning guidance where conflicts exist.
+- Scoreboard through 2026-11-17: cash collected. Nothing else counts as progress. Input metric: 2 priced conversations per week, meaning JT told a real buyer a real number.
+- Positioning through 2026-11-17: "You take one messy business process, build a controlled AI system around it, and leave behind proof the business can trust." Say this exact thing; property managers/building owners in NYC/NJ first.
+- Frozen through 2026-11-17: niche research system, self-improving cron/agent harness, knowledge ingestion/skill converter work, per-domain lexicons, Mission Control Phase 3, all four app lanes, Guyana, Bustem, $500 website offer, and any new skill outside paid delivery. Re-entry test: produces an invoice inside 90 days.
 - Constraints: no relocation, protect sleep/health/NYC stability, avoid developer-only positioning.
 - Detail: `docs/memory/MEMORY-full.md#jt-snapshot`.
 
@@ -14,31 +16,32 @@
 - Detail: `docs/memory/MEMORY-full.md#hard-rules--security-essentials`.
 
 ## Consulting Positioning
-- Practical AI implementation for ops-heavy SMBs: governed handoffs before automation.
-- Strongest positioning: controlled AI operating systems for messy workflows: source records, exception owners, approvals, proof logs, specialized agents/skills.
-- AI Enablement OS / Run Control proof row: intake, approved data/tools, HITL review, audit trail, delivery proof, adoption/value metric.
+- Practical AI implementation for ops-heavy SMBs: one messy business process, controlled AI system, trusted proof.
+- Sell in order: Workflow Audit $1,500 flat for one week; Build $6,000-$12,000 fixed with 50% up front and 50% on acceptance; Managed AI Ops $1,500/month after the monthly report exists. Partner Studio is later, not now, except Altmark.
+- Do not add "any industry" or explain agents-building-agents in buyer-facing positioning during the 90-day playbook.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
 ## Active Clients
 - Canonical July 16 state: `memory/canonical/jt-mission-control-state-2026-07-16.md`.
 - Altmark top paid/proof lane: rent delinquency gate plus FTE + NewCo negotiation with Yair/Adai. FTE and NewCo separate; JT's existing systems/toolkit/playbook stay personal IP. DHCR routes to Matt.
 - MSI / Marketsmith closed accepted: $10,800 fixed-scope Nexus; kickoff $5,400 cleared; all four deliverables accepted after client technical re-verification 2026-08-17. MSI-002 ($5,400) sent 2026-08-18, due 2026-09-02; flag unpaid 2026-09-03. Follow-on through technical lead first; flag before quoting.
-- Closed-won/paid: SoberLife-Coach/Karen is paid but not referral-eligible until SEO expectation reset and handoff items close; Gil/Aya construction dashboard is paid and referral-eligible. Maiky is separate live Aya-adjacent opportunity on hold after cost review.
+- Closed-won/paid: SoberLife-Coach/Karen is paid and referral-ask eligible under the 90 Day Playbook; Gil/Aya construction dashboard is paid and referral-eligible. Maiky is separate live Aya-adjacent opportunity on hold after cost review.
 - Detail: `docs/memory/MEMORY-full.md#active-clients`.
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- Current send queue: no general sends due; DHCR routes to Matt as delivery-track only.
-- Gil ask is warm; Karen ask waits on written SEO expectation reset; Guyana is capped exploration with one warm intro in flight; Ron/BDT is watch-only.
+- Pipeline for 90-day playbook: Ed, Sam, Gil, Karen, Maiky, Yair, Adi, Matt, Ron. Work this list before finding strangers.
+- Current asks: Ed follow-on plus 2 intros; Sam referral ask; Gil paperwork-referral ask; Karen referral ask; Maiky restart paused work or ask who else at Aya needs it; Yair/Adi force partnership decision and association intros; Matt asks what is still manual; Ron asks whether jeweler clients need the same thing property managers need.
+- Guyana is frozen through 2026-11-17 unless JT explicitly overrides after the freeze prompt.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix
-- Client/discovery work requires Client OS + reusable-IP capture. Services-as-software = manual proof, edge cases, failures, metrics before automation.
-- Delivery focus: July PM-first n8n GTM; construction one test; wholesale/home services hold; Agentforce only with SF stack + trigger + reply path.
+- Client/discovery work requires Client OS + reusable-IP capture only when tied to paid delivery. Services-as-software = manual proof, edge cases, failures, metrics before automation.
+- Delivery focus through 2026-11-17: Tuesday-Thursday paid work only. Do not create research, market discovery, system design, tooling, app, or strategy tasks unless JT explicitly overrides a frozen item or the work produces an invoice inside 90 days.
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com`: AI ops homepage; `/property` PM Workflow Audit path. Apps need distribution/retention gates before more build work.
+- `jtsomwaru.com`: AI ops homepage; `/property` PM Workflow Audit path. All four app lanes are frozen through 2026-11-17 unless JT explicitly overrides after the freeze prompt.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
@@ -59,7 +62,7 @@
 
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. OpenClaw checks require Node 26 path; cost alerts clean.
-- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`. Aug 12 stack after non-destructive idle archive: 66 active, 10 high, 4 overdue high-priority tasks.
+- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`. Write contract now blocks Strategy/Positioning, research, market discovery, system design, and tooling tasks during the 90-day playbook unless tied to an invoice inside 90 days.
 - Backup regression: local backup succeeds but `n8n-agent` GitHub push remains remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; routed via MC task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 

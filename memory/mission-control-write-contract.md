@@ -17,6 +17,9 @@
 
 ## What NOT to create
 - During the consulting-cash mandate, do not create "Build idea:", "Strategy:", or "Positioning:" tasks. Route those to the pideas table or a memory note. The open-task list is for work, not for ideas.
+- 2026-08-19 extension through 2026-11-17: this also covers research, market discovery, system design, and tooling tasks. Do not create them. Do not queue them.
+- Frozen/off-contract work must not be created or resurfaced as a task: niche research system, self-improving cron/agent harness, knowledge ingestion/skill converter work, per-domain lexicons, Mission Control Phase 3, all four app lanes, Guyana, Bustem, the $500 website offer, and any new skill written outside paid delivery.
+- Re-entry test for anything frozen: does it produce an invoice inside 90 days. If JT asks for a frozen item, name the freeze item and ask whether he is overriding it before acting.
 
 ## Facts, not rankings
 - You never set priority or score directly. You update facts (dollars, dueDate, stageProbability, waitingOn) and the deterministic scorer ranks.
