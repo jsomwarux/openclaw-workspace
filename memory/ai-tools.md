@@ -2,6 +2,20 @@
 
 ---
 
+## Aug 20, 2026 - Heartbeat AI Tool Monitoring
+
+**Agent governance is turning into a control-plane ledger, not a policy document.** Fresh monitoring surfaced agent-auth and control-plane language around every tool call carrying user, agent, tenant, task, resource, policy decision, approval state, and outcome; MCP gateways enforcing tool-level access and credential isolation; short-lived credentials so provider keys do not spread across runners and laptops; and audit trails that combine the input, policy check, tool invoked, human approval, spend/usage context, and result.
+
+**JT relevance:** keep the 90 Day Playbook proof anchored in buyer-visible custody. For property-manager and building-owner conversations, the strongest phrasing is not "we govern agents." It is "you can see which workflow acted, whose authority it used, whether a human checkpoint was required, what it cost or consumed, where the output landed, and where the audit record lives." This supports the $1,500 audit, build acceptance checklist, and Managed AI Ops monthly accuracy report.
+
+**Actionable demo angle:** make the priced-conversation proof row read like a control-plane record:
+
+`workflow | buyer_owner | represented_identity | tool_or_system | credential_custody | requested_action | policy_decision | human_checkpoint | usage_or_spend | result_path | audit_path | exception_owner`
+
+Sources checked with local `scripts/web_search.py` on 2026-08-20: Arcade AI agent authentication platforms https://www.arcade.dev/blog/best-ai-agent-authentication-platforms/; Obot AI Agent Control Plane https://obot.ai/blog/ai-agent-control-plane-governance-2026/; Preloop AI Agent Control Plane in 2026 https://preloop.ai/resources/ai-agent-control-plane-2026; Plain English AI Gateway Security buyer guide https://plainenglish.io/artificial-intelligence/ai-gateway-security-guardrails-and-governance-a-buyers-guide; MintMCP AI Agent Workforce Management https://www.mintmcp.com/blog/ai-agent-workforce-management
+
+---
+
 ## Aug 19, 2026 - Heartbeat AI Tool Monitoring
 
 **Agent governance is converging on gateway-bound custody for every tool call.** Fresh monitoring surfaced AI agent authentication/control-plane language around per-call user, agent, tenant, resource, policy decision, approval state, and outcome; Microsoft Foundry MCP docs requiring project-connection auth plus MCP tool-call review/approval; Google Gemini Enterprise Agent Gateway controls around approved agent/gateway bindings and MCP-attribute authorization; Snowflake/Natoma positioning around identity, policy, and audit at the tool-call layer; and security/vendor guidance that irreversible, financially material, privileged, regulated, or sensitive-data actions need human approval or step-up validation.
