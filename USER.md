@@ -58,7 +58,7 @@
 - **SoberLife-Coach / Karen**: complete and paid; closed-won; Karen referral ask eligible
 - **Aya**: $1,500 dashboard complete and paid; closed-won; Gil referral ask eligible; StreetEasy cancelled, co-living dead, acquisitions stalled unless fresh trigger appears
 - **Apps**: all four app lanes frozen through 2026-11-17 unless JT explicitly overrides; re-entry test is whether the work produces an invoice inside 90 days
-- **Job market**: consulting-first; only exceptional AI Solutions Architect / AI Implementation Lead / AI enablement roles ($150K+ NYC/remote)
+- **Job market**: consulting-first employment hedge. Search duties before titles; prioritize evidence-backed Senior/Lead AI/automation BSA, AI operations/program, intelligent automation/workflow transformation, adoption/enablement, governance/quality operations, and implementation program roles ($150K+ NYC/remote). Solutions Architect only when post-sale and non-coding.
 - **Crypto**: no trades/transfers/financial actions; do not route crypto/app/passive-income work into active execution during the 90-day playbook unless JT explicitly overrides a frozen item
 - **H.C. Oswald outreach**: holding until personal website polished + demo agents built
 - **Content**: post as often as optimal for growth — X (primary), LinkedIn, Reddit (project promotion)

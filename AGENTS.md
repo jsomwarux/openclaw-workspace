@@ -86,7 +86,7 @@ JT-approved exception to Plan Mode, within lane scope only: Eve has full complet
 ## Resume & Cover Letter Drive Upload Rule
 Generated resume/cover letter packages require local markdown, `.docx`, Drive upload, and returned Drive links. Full procedure: `docs/agents/resume-upload-rules.md`.
 
-**Model rule for job applications:** ALWAYS use `openrouter/anthropic/claude-sonnet-4-6` for job application packages (resume + cover letter). The markdown formatting requirements (bullet structure, paragraph parsing, ATS compliance) require Sonnet-level precision. MiniMax consistently makes formatting errors on these tasks. Sonnet only — not Opus, not MiniMax.
+**Model rule for job applications:** Use the primary OAuth model `openai/gpt-5.6-sol` for job application packages. Validate every package with the job-application skill's ATS, JD-mapping, parse, evidence, and anti-inflation checks. Sonnet is comparison/escalation-only when JT explicitly requests it or GPT repeatedly fails the rubric.
 ## Portfolio Auto-Update Rule
 Trigger: build completed, JT says done/shipped/live, MC task marked done, consulting project stage complete, new skill/capability added.
 Score against rubric in `agents/portfolio-updater/AGENT.md`. ≥7 → append to queue.jsonl (overnight processes). 4-6 → flag to JT: "🌐 Portfolio-worthy? [title] scored [X]/10". <4 → skip.

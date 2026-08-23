@@ -17,6 +17,17 @@ spec.loader.exec_module(model_routing_guard)
 
 
 class ModelRoutingGuardTests(unittest.TestCase):
+    def test_default_route_accepts_current_gpt_5_6_sol_primary(self):
+        config = {
+            "agents": {
+                "defaults": {
+                    "model": {"primary": "openai/gpt-5.6-sol", "fallbacks": []}
+                }
+            }
+        }
+
+        self.assertEqual(model_routing_guard.check_default_route(config), [])
+
     def test_main_uses_live_cron_list_when_legacy_jobs_json_is_missing(self):
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
@@ -27,8 +38,8 @@ class ModelRoutingGuardTests(unittest.TestCase):
                     {
                         "agents": {
                             "defaults": {
-                                "model": {"primary": "openai/gpt-5.5", "fallbacks": []},
-                                "models": {"openai/gpt-5.5": {}},
+                                "model": {"primary": "openai/gpt-5.6-sol", "fallbacks": []},
+                                "models": {"openai/gpt-5.6-sol": {}},
                             }
                         },
                         "models": {"providers": {}},
@@ -42,7 +53,7 @@ class ModelRoutingGuardTests(unittest.TestCase):
                         "id": "safe-job",
                         "name": "Safe Job",
                         "enabled": True,
-                        "payload": {"model": "openai/gpt-5.5"},
+                        "payload": {"model": "openai/gpt-5.6-sol"},
                     }
                 ]
             }

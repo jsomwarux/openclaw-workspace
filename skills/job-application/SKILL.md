@@ -6,6 +6,12 @@ description: Creates tailored job application packages for JT Somwaru — resume
 # SKILL: Job Application Package
 *Done 3+ times (Squarespace SA, Writer SA, Salesforce SE) — follow this exactly every time.*
 
+## Model routing
+
+- Default: `openai/gpt-5.6-sol` through JT's existing OAuth subscription.
+- Do not use paid Sonnet by default. Sonnet is reserved for an explicit JT-requested comparison or a documented GPT rubric failure.
+- Model quality never overrides the deterministic ATS, JD-mapping, parsing, evidence, privacy, and formatting checks below.
+
 ---
 
 ## Step 0: Load JT's profile
@@ -24,8 +30,16 @@ JT's non-negotiables (never compromise):
 ## Step 1: Analyze the role (score it first)
 Use the scoring rubric from `~/projects/job-market-agent/knowledge/scoring-criteria.md`.
 
-Score it before writing. If <15/25: flag to JT before proceeding — ask if he still wants docs.
-If 15+: note the specific match points to emphasize.
+Score it before writing. Do not build solely because a role looks attractive or theoretically bridgeable.
+
+The role must also pass the evidence-backed competitiveness gate:
+- JT has direct evidence for at least 80% of must-have requirements.
+- Each of the top three responsibilities maps to paid consulting work or Spectrum experience.
+- No critical credential, seniority, coding, quota, pre-sales, or architecture gap exists.
+- The Spectrum → independent consulting → target-role narrative is obvious without exaggeration.
+- If two core requirements depend on "JT could do this with AI agents" rather than demonstrated experience, skip.
+
+If the role fails this gate, recommend skipping before producing documents. If it passes, note the specific evidence to emphasize.
 
 Extract from the JD:
 - Required skills (must hit all of these in the resume)

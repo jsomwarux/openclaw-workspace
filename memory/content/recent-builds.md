@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Evidence-Backed Job Hedge Pipeline — 2026-08-22
+**What:** Rebuilt the dormant job-market automation around evidence-backed competitiveness, live-posting checks, weekday direct briefs, and on-demand application packages.
+**For:** internal.
+**Outcome:** Weekday research and Tue/Thu submitted-application tracking are active; the legacy auto-builder remains disabled; direct-fit gates require 80% must-have evidence and a $150K floor; GPT-5.6 Sol is the default package model; independent verification confirmed both cron routes, guards, and archived rollback artifacts.
+**Demonstrates:** agent workflow redesign, evidence-based candidate screening, cron governance, model-routing controls, and independent verification.
+**Content angle:** Internal operating-system work only; not a standalone public post unless tied to an actual interview-rate outcome.
+**Status:** complete.
+
 ## MSI / Marketsmith Nexus SOW — 2026-08-18
 **What:** Delivered and closed an 80-hour fixed-scope Nexus analytics/platform engagement with all four SOW deliverables accepted.
 **For:** client work, anonymized for public/proposal use until permission.

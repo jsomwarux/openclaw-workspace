@@ -13,7 +13,7 @@ HOME = Path.home()
 OPENCLAW_CONFIG = HOME / ".openclaw/openclaw.json"
 CRON_JOBS = HOME / ".openclaw/cron/jobs.json"
 
-ALLOWED_MAIN = {"openai/gpt-5.5"}
+ALLOWED_MAIN = {"openai/gpt-5.6-sol"}
 ALLOWED_CRON_PREFIXES = ("openai/",)
 PAID_PREFIXES = ("openrouter/", "moonshot/", "anthropic/")
 APPROVED_PAID_CRON_MODELS = {

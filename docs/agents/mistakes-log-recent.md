@@ -780,3 +780,19 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Before any future cross-agent sync packet, run exact checks for `Karen referral ask eligible`, `Ron/Yair`, `Guyana killed`, `Aya StreetEasy`, and task-count health language across the packet and compact memory; query `/api/payments` for collected-cash figures; query `/api/tasks` for idle >30 days before quoting task health.
 - **Owner surface updated:** `MEMORY.md`, `docs/memory/MEMORY-full.md`, `memory/drafts/claude-eve-sync-prompt-2026-08-10.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, Mission Control task `j576zn0e3pag6dpmxfx99t8k7986mp6x`, daily note, weekly recap, and this mistakes log.
 - **Verification/date:** 2026-08-10 — applied JT's sync corrections, verified payments through `/api/payments`, found 231 active tasks idle >30 days via `/api/tasks`, promoted the Mission Control hygiene task, and reran exact stale-phrase checks on the corrected packet/core memory.
+## 2026-08-22 — Treated stale cron quota errors as the current model constraint
+
+- **Failure:** Told JT the reactivated job pipeline should wait until August 27 because several existing cron records showed an OpenAI subscription limit, without checking the current session/model entitlement first.
+- **Root cause:** I treated historical per-job error metadata from the disabled/legacy route as authoritative for the active `openai/gpt-5.6-sol` OAuth route.
+- **Guardrail/rule:** Before making any current model availability, quota, or start-date claim, check `session_status` for the active route and distinguish it from historical cron-run metadata.
+- **Regression check:** A model-capacity recommendation must cite a same-run `session_status` result; if it conflicts with cron history, label the cron error stale or route-specific instead of generalizing it.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
+- **Verification/date:** 2026-08-22 — same-run session status showed `openai/gpt-5.6-sol` via OAuth with 99% weekly usage remaining.
+## 2026-08-22 — Model-routing guard lagged the live primary-model change
+
+- **Failure:** `scripts/model_routing_guard.py --include-disabled` failed because it still allowed only `openai/gpt-5.5` while the verified live primary was `openai/gpt-5.6-sol`.
+- **Root cause:** The primary-model rollout and the deterministic policy guard were maintained on separate surfaces without a regression test for the current approved primary.
+- **Guardrail/rule:** Any verified primary-model change must update the routing guard's allowed default and its fixture in the same change set; never edit auth/model configuration as part of the repair.
+- **Regression check:** `test_default_route_accepts_current_gpt_5_6_sol_primary` must fail on the stale guard and pass after the guard update; the live `--include-disabled` command must also return `ok:true`.
+- **Owner surface updated:** `scripts/model_routing_guard.py`, `scripts/test_model_routing_guard.py`.
+- **Verification/date:** 2026-08-22 — observed red test against GPT-5.5-only guard, then 2/2 unit tests and live routing guard passed after the one-line allowed-primary update.

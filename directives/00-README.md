@@ -11,9 +11,11 @@ The pack:
 4. 04-state-file-discipline.md
 5. 05-repeat-offender-digest.md
 
-## Approved registry, 12 recurring jobs (Engine B Stage 1 idea engine kept; marketing Stage 3 rebuild pending)
+## Approved registry, 14 recurring jobs (Engine B Stage 1 idea engine kept; marketing Stage 3 rebuild pending)
 
 Current live-registry override, 2026-08-08: JT canceled the Health Check-in / Protocol Ops crons on 2026-08-07. The active 12-job baseline now includes Nightly Claude Delta Packet Reminder and excludes Health Check-in. Do not re-enable health crons from this July registry without explicit JT instruction.
+
+Current live-registry override, 2026-08-22: JT approved the controlled employment hedge. `Job Market Daily Research` is active weekdays at 05:15 ET with direct Telegram delivery and evidence-backed competitiveness gates. `Job Application Tracker` is active Tue/Thu at 10:15 ET. `Job Application Auto-Builder` remains disabled; packages are on-demand after JT selects a role.
 
 | Job | Schedule | Class | Ping |
 |---|---|---|---|
@@ -25,6 +27,8 @@ Current live-registry override, 2026-08-08: JT canceled the Health Check-in / Pr
 | Weekly Systems Review | 0 10 * * 0 | green, fixes yellow | only if red |
 | weekly-unemployment-cert | 0 7 * * 0 | green reminder | yes, 1/week |
 | Nightly Claude Delta Packet Reminder | 0 22 * * * | green reminder | yes, 1/day when JT action is needed |
+| Job Market Daily Research | 15 5 * * 1-5 | green research | yes, 1/weekday |
+| Job Application Tracker | 15 10 * * 2,4 | green tracker | only when stale/urgent |
 | Passive Income idea engine: fetch-signals, scout, strategist, delivery-guard (Engine B Stage 1) | weekly now, monthly after Engine B rewrite | green run, yellow build-recs | no |
 
 One-shot reminders remain allowed. Everything else is disabled.
@@ -74,9 +78,9 @@ EVE SCOREBOARD - week ending <date>
 
 Vanity metrics to never report: LinkedIn impressions/reactions, follower counts, link views without a reply, app downloads, anything crypto, and count of assets/documents produced.
 
-## Disable list, 33 jobs
+## Disable list, 31 jobs
 
-Refused scope, 12: Crypto Full Analysis (6 AM), Crypto Midday Pulse (12 PM), Crypto Evening Pulse (9 PM), Job Market Daily Research, Job Application Auto-Builder, Job Application Tracker, ReelFarm Daily Strategy Intel, ReelFarm Weekly Strategy Synthesis, TikTok App Account Warm-up Reminder (2 PM), app-marketing-weekly-scoreboard, vibe-marketing-generate, guyana-economic-opportunity-monitor.
+Refused scope, 10: Crypto Full Analysis (6 AM), Crypto Midday Pulse (12 PM), Crypto Evening Pulse (9 PM), Job Application Auto-Builder, ReelFarm Daily Strategy Intel, ReelFarm Weekly Strategy Synthesis, TikTok App Account Warm-up Reminder (2 PM), app-marketing-weekly-scoreboard, vibe-marketing-generate, guyana-economic-opportunity-monitor.
 
 KEEP correction, not disable: passive-income-fetch-signals, passive-income-scout, passive-income-strategist, passive-income-strategist-delivery-guard are Engine B Stage 1, the idea engine JT values. Earlier drafts of this list wrongly filed them under refused scope. Corrected 2026-07-08.
 

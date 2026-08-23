@@ -50,8 +50,10 @@
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
-- Consulting-first; only exceptional AI implementation/solutions lead roles near $150K+ NYC/remote get packages.
-- Latest pulse is directive-limited from stale 2026-07-08 brief only; no fresh search/application/task. Position around governed implementation assets and AI Enablement OS proof.
+- 2026-08-22: JT approved reactivating the weekday job pipeline as a controlled income hedge while consulting remains primary and the 2-priced-conversations/week input metric stays intact.
+- Search responsibilities before titles. Primary targets: Senior/Lead BSA (AI/automation), AI Operations Program Manager, Intelligent Automation/Workflow Transformation Lead, AI Adoption & Enablement Manager, AI Governance/Quality Operations Manager, and AI Implementation Program Manager. Solutions Architect is selective only when post-sale/configuration/implementation-focused, never pre-sales/cloud/coding-heavy.
+- Application gate: direct evidence for at least 80% of must-haves; top 3 responsibilities map to paid work or Spectrum; no critical credential/seniority/coding/quota/architecture gap; $150K+ NYC/remote; live posting verified.
+- GPT-5.6 Sol via OAuth is the default application-package model. Sonnet is explicit comparison/escalation only. Legacy research/build-idea modules are preserved in `config/cron-snapshots/job-pipeline-legacy-before-reactivation-2026-08-22.json`.
 - Avoid Apex/SFDX-heavy dev, pure ML/research, relocation, low salary. Anonymize client proof unless JT approves.
 - Detail: `docs/memory/MEMORY-full.md#job-market`.
 
