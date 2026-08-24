@@ -1,77 +1,53 @@
 # Weekly Intel Brief
-> Written by Weekly Intelligence Synthesis. Review-only unless JT explicitly reactivates posting, scheduling, or outbound use.
+> Sunday intelligence synthesis. Review-only; no posting, scheduling, outbound send, or systems maintenance was performed.
 
-**Week of:** 2026-08-16
+**Week of:** 2026-08-23
 
-## Top Niche Signals This Week
+## Buyer Signal
 
-Property-ops AI is staying in the approval-and-audit lane, not the autonomous-action lane. Fresh search results surfaced Buildium HOA and residential software coverage around invoice approval routing, workflow approvals, and agentic AI for routine tenant communication and maintenance coordination. Sentus.ai positioning also explicitly bundles collections AI with compliance audit trails and priority routing. The useful buyer signal is still not "AI replaces the property manager." It is "routine prep moves faster, sensitive money/resident/lease actions stay reviewable." [property-management] [approval-record]
+Property-management AI is moving from isolated assistants into existing operating workflows, but trust still rides on the controls already surrounding the work. Fresh examples describe vendor-bill coding that remains inside normal permissions and audit trails, multi-step property workflows that raise accountability questions, and automation across collections, maintenance, renewals, reporting, and resident communication.
 
-Agent governance is becoming a per-call evidence record. Fresh results around Microsoft Agent Governance Toolkit, Tyk MCP Gateway, and Google Workspace MCP security all converged on the same control set: policy evaluation at tool-call time, allow/block/approval decisions, represented identity, centralized policy enforcement, DLP or masking where needed, and audit evidence for every call. This validates Run Control language around action-time custody, not generic oversight. [AI-ops] [agent-gateway]
+The useful sales implication is narrow: do not sell autonomy. Sell one controlled workflow where the owner can see the source, action, permission boundary, reviewer, exception, and business result.
 
-AI implementation positioning is moving toward operating models and measurable outcomes. Fresh 2026 strategy/governance results emphasized that value comes from foundations around data, governance, trust, repeatable business capability, and measured productivity or business outcomes. This supports JT's current strongest lane: governed workflow implementation with a proof row, not a broad "AI strategy" offer. [AI-enablement] [implementation-ops]
+## Governance Signal
 
-The current local send/cash context is unusually quiet. Today's Daily Send Sheet generated from pipeline state says "No aging pipeline send items" and the 7:30 delivery said "Nothing due today." That means this week's intelligence should not create new outbound pressure. It should tighten positioning for already-live proof lanes: Altmark delinquency, MSI delivery governance, weekly systems verification, and generic Run Control packaging.
+Agent-governance language is converging on the same runtime record: user or agent identity, credential scope, policy decision, approval for irreversible actions, tool arguments, outcome, escalation path, and audit log. This is the enterprise version of the same proof a property operator needs when money, housing, safety, or resident communication is involved.
 
-## Strategic Theme This Week
+## Strategic Recommendation
 
-The smallest sellable unit is the reviewed action record.
+Use the current DHCR/Matt gate as the commercial wedge, not as a broad research or platform story. The strongest $1,500 Workflow Audit framing is:
 
-The reusable asset should answer:
+> We map one process, show where money or time leaks, and leave you with the approval and exception record needed to decide whether it is safe to build.
 
-- source record or system touched
-- requested action
-- represented owner, client, or user
-- workflow or agent identity
-- credential/tool custody boundary
-- approval rule or policy decision
-- reviewer or escalation path when required
-- audit/proof path
-- final business outcome or next cash gate
+For a build, keep the acceptance row small:
 
-This maps cleanly to property operations, MSI delivery governance, AI enablement roles, and the generic Outcome-Based Run Control package.
+`source | requested action | permission boundary | reviewer | exception path | evidence | next cash event`
 
-## Content And Positioning Gaps
+This supports the active 90 Day Playbook: NYC/NJ property managers first, warm list before strangers, two priced conversations per week, and cash collected as the scoreboard.
 
-Monday content, if JT chooses to use review-only content, should stay concrete: delinquency rows, invoices, maintenance coordination, owner reports, resident communication, or lease/deposit steps that an AI can prepare but not release without a visible approval boundary.
+## Content Gap
 
-Wednesday case-study routing should wait for current proof movement. The best shape remains: routine prep automated, sensitive action held, reviewer decision recorded, outcome/cash step advanced.
+If JT chooses to publish later, the strongest proof-safe angle is a concrete before/after control record for a familiar property workflow: invoice coding, delinquency follow-up, lease renewal, maintenance routing, or owner reporting. The missing content is not another AI trend post; it is a one-screen example showing what the system prepared, what it could not release, who reviewed it, and what moved next.
 
-Friday tactical routing should keep the control row tiny enough for a buyer to understand in one screen: source, action, approval state, reviewer, audit link, and next business event.
+Do not create or publish that case study until current client proof and approval boundaries support it.
 
-Do not post, schedule, send, bank, upload, or create prospect-specific content automatically. Treat this as gap analysis and positioning input only.
+## Job Signal
 
-## Competitive Developments
-
-Property-management vendors are continuing to fold AI into workflow routing, approvals, maintenance coordination, communications, collections, and audit trail language. JT's differentiation is a lightweight source-to-decision record for one stalled workflow, not a platform replacement pitch.
-
-Agent-governance vendors are making MCP/tool gateways, policy enforcement, credential custody, approval workflows, DLP, and audit trails visible at runtime. JT's differentiation is translating that enterprise control surface into SMB proof: what the workflow saw, what it could touch, what it held, who approved it, and what result moved.
-
-## Recommended Direction
-
-Use the phrase family "reviewed action record," "approval boundary," "source-to-decision trail," "action-time custody," "tool-call ledger," and "outcome proof row."
-
-Best next proof-safe line:
-
-> The workflow is only useful if it knows what it can move, what it must hold, and where the decision is recorded.
+The local job brief is stale (2026-07-08), so it is not evidence for a current role recommendation. The approved weekday Job Market Daily Research schedule begins its selective live-posting checks Monday; do not infer openings from the stale brief. The transferable positioning signal remains implementation governance, adoption, reusable workflow assets, and measurable business outcomes rather than coding-heavy architecture.
 
 ## Sources Checked
 
-- Local: `memory/2026-08-16.md`
-- Local: `memory/send-queue.md`
-- Local: `memory/ai-tools.md`
+- Local: `memory/north-star.md`
 - Local: `memory/niche-monitor-latest.md`
-- Local: `~/projects/job-market-agent/data/daily-brief.md`
 - Local: `memory/content/current-niche-map.md`
-- Fresh search via `scripts/web_search.py` on 2026-08-16:
-  - Buildium, "Best HOA Management Software Review | 2026 Guide" - https://www.buildium.com/blog/best-hoa-management-software-platforms/
-  - Buildium, "7 Top Residential Property Management Software in 2026" - https://www.buildium.com/blog/best-residential-property-management-software/
-  - Sentus.ai, "AI Property Management Software" - https://sentus.ai/ai-property-management/
-  - Microsoft Agent Governance Toolkit - https://github.com/microsoft/agent-governance-toolkit
-  - Tyk, "MCP Gateway: The Control Plane for Enterprise AI Agents" - https://tyk.io/learning-center/mcp-gateway-architecture-technical-guide/
-  - Strac, "Google Workspace MCP Server: Setup for Claude + the Security Risks (2026)" - https://www.strac.io/blog/google-workspace-mcp-server
-  - Adaptive Security, "AI Governance Strategy" - https://www.adaptivesecurity.com/blog/ai-governance-strategy
-  - Wizr AI, "Enterprise AI Operating Model: How CIOs Scale AI Beyond Pilots" - https://wizr.ai/blogs/enterprise-ai-operating-model-guide/
+- Local: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`
+- Fresh search via `scripts/web_search.py` on 2026-08-23:
+  - Property Manager Websites, “AI features property managers should actually be using in 2026” — https://www.propertymanagerwebsites.com/blog/ai-features-property-managers-should-actually-use-in-2026
+  - ManageCasa, “AI Property Management Software: What It Does in 2026” — https://managecasa.com/articles/ai-property-management-software-what-it-does
+  - ManageCasa, “Property Management Automation Guide for 2026” — https://managecasa.com/articles/property-management-automation
+  - LeadSimple, “Property Management Workflow Automation” — https://www.leadsimple.com/property-management/workflow-automation/
+  - Arcade, “7 Best AI Agent Authentication Platforms (2026)” — https://www.arcade.dev/blog/best-ai-agent-authentication-platforms/
+  - AI Governance Institute, governance news and control guidance — https://aigovernance.com/news
 
 ---
-_Last updated: 2026-08-16 Sunday_
+_Last updated: 2026-08-23 Sunday_
