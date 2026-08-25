@@ -22,6 +22,38 @@ record_failure() {
   log "  ⚠ $*"
 }
 
+backup_git_repo() {
+  local repo="$1"
+  local branch="$2"
+  local label="$3"
+  local preflight
+
+  log "Pushing $label to GitHub..."
+  if ! preflight=$(python3 "$WORKSPACE/scripts/git_backup_preflight.py" \
+      --repo "$repo" --branch "$branch" --json 2>&1); then
+    record_failure "$label GitHub push skipped by preflight: $preflight"
+    return 0
+  fi
+
+  cd "$repo"
+  if git diff --quiet && git diff --cached --quiet; then
+    log "  ✓ No changes to commit"
+  else
+    git add -A
+    if git commit -m "Nightly backup — $(date +%Y-%m-%d)" >> "$LOG" 2>&1; then
+      log "  ✓ Committed $label changes"
+    else
+      record_failure "$label commit failed"
+      return 0
+    fi
+  fi
+  if git push origin "$branch" >> "$LOG" 2>&1; then
+    log "  ✓ Pushed $label"
+  else
+    record_failure "$label GitHub push failed"
+  fi
+}
+
 log "=== Backup started → $DEST ==="
 
 # Create destination
@@ -91,52 +123,12 @@ else
 fi
 
 # ── GitHub push ───────────────────────────────────────────────────────────────
-log "Pushing workspace to GitHub..."
-cd "$WORKSPACE"
-if git diff --quiet && git diff --cached --quiet; then
-  log "  ✓ No changes to commit"
-else
-  git add -A
-  git commit -m "Nightly backup — $(date +%Y-%m-%d)" >> "$LOG" 2>&1
-  log "  ✓ Committed workspace changes"
-fi
-if git push origin master >> "$LOG" 2>&1; then
-  log "  ✓ Pushed to jsomwarux/openclaw-workspace"
-else
-  record_failure "Workspace GitHub push failed (local backup still complete)"
-fi
-
-# ── GitHub push — jt-consulting-pipeline ─────────────────────────────────────
-log "Pushing jt-consulting-pipeline to GitHub..."
-cd "$HOME/projects/jt-consulting-pipeline"
-if git diff --quiet && git diff --cached --quiet; then
-  log "  ✓ No changes to commit"
-else
-  git add -A
-  git commit -m "Nightly backup — $(date +%Y-%m-%d)" >> "$LOG" 2>&1
-  log "  ✓ Committed pipeline changes"
-fi
-if git push origin master >> "$LOG" 2>&1; then
-  log "  ✓ Pushed to jsomwarux/jt-consulting-pipeline"
-else
-  record_failure "jt-consulting-pipeline GitHub push failed"
-fi
-
-# ── GitHub push — n8n-agent ───────────────────────────────────────────────────
-log "Pushing n8n-agent to GitHub..."
-cd "$HOME/projects/n8n-agent"
-if git diff --quiet && git diff --cached --quiet; then
-  log "  ✓ No changes to commit"
-else
-  git add -A
-  git commit -m "Nightly backup — $(date +%Y-%m-%d)" >> "$LOG" 2>&1
-  log "  ✓ Committed n8n-agent changes"
-fi
-if git push origin main >> "$LOG" 2>&1; then
-  log "  ✓ Pushed to jsomwarux/n8n-agent"
-else
-  record_failure "n8n-agent GitHub push failed"
-fi
+# Fetch and inspect each remote before staging or committing. Remote-ahead or
+# diverged repositories are preserved for deliberate reconciliation instead of
+# accumulating commits behind a push that cannot succeed.
+backup_git_repo "$WORKSPACE" master "jsomwarux/openclaw-workspace"
+backup_git_repo "$HOME/projects/jt-consulting-pipeline" master "jsomwarux/jt-consulting-pipeline"
+backup_git_repo "$HOME/projects/n8n-agent" main "jsomwarux/n8n-agent"
 
 # ── Google Drive OAuth token proactive refresh ────────────────────────────────
 # Runs on the 1st of each month. Refreshes the token before Google expires it.

@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Bounded Nightly Validation Operating System — 2026-08-24
+**What:** Replaced broad night-autonomy loops with a deterministic three-phase controller and strict Mission Control admission/view layer.
+**For:** internal.
+**Outcome:** Controller suite passed 20 tests; Mission Control passed 126 tests and a 38-page isolated build; 60 systems were classified with revival triggers; the 11:15 PM ET cron passed repeated silent empty-queue runs; cron volume stayed healthy at 11 enabled jobs and 59 weekly invocations.
+**Demonstrates:** bounded agent orchestration, independent-verifier gates, evidence privacy and integrity, idempotent task admission, Mission Control product integration, and regression-driven cron deployment.
+**Content angle:** Useful only when tied to the practical design lesson that autonomous agents should keep weak research out of the human task list and promote only verified action.
+**Status:** complete.
+
 ## Evidence-Backed Job Hedge Pipeline — 2026-08-22
 **What:** Rebuilt the dormant job-market automation around evidence-backed competitiveness, live-posting checks, weekday direct briefs, and on-demand application packages.
 **For:** internal.

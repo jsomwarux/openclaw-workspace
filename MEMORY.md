@@ -69,12 +69,15 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
+- 2026-08-24: JT overrode the freeze and approved the non-Grok agent-operating-system implementation. The independently confirmed Nightly Validation Controller is live at 11:15 PM ET as cron `e3156dad-ddc4-4b74-b019-727b23dc72e0`; 11 jobs are enabled, 59 estimated weekly invocations, and the empty-queue smoke run succeeded silently. It admits one lane and up to three read-only packets, requires fresh independent verification, and upserts at most one gated Mission Control task. JT will create the separate Grok Signal Lab. Source: `deliverables/agent-operating-system-redesign-2026-08-24.md`.
+- 2026-08-24: JT approved the non-Grok implementation. `Daily Workout Card` remains active as a one-way 05:00 ET training card outside the canceled health-automation lane. It reads JT's pointer, sends exact workout text silently, never asks for health/feeling/completion data, and never advances state.
 - Aug 12 heartbeat baseline: cost clean; MC 66 active/10 high/4 overdue high; 12 enabled crons/0 unhealthy; refused-scope jobs absent; Spanish paused. Daily Delta must use numeric Telegram destination `6608544825`; stale `@heartbeat` attempts are recurrence evidence.
 - Aug 7 JT canceled all health crons. Do not re-enable Health/Protocol Ops without explicit JT instruction; manual health helpers remain available only on request.
 - Detail: `docs/memory/MEMORY-full.md#active-automation--crons`.
 
 ## Health / Training / Quality Loops
 - Health files/tools remain available, but automated health prompts/reports are canceled as of Aug 7. Cost tracker, proof guard, film review, and skills audit remain active.
+- Daily Workout Card is training delivery only, not health tracking or a revival of canceled health check-ins.
 - Detail: `docs/memory/MEMORY-full.md#health--training--quality-loops`.
 
 ## Integrity / Fabrication Corrections

@@ -112,6 +112,13 @@ Primary nav is five lanes, in this order: **Today** (`/`), **Clients** (`/client
 - **Dark theme throughout** — emerald accent (#10b981), near-black background (#0a0a0a)
 - **No authentication** — localhost only, no auth needed
 
+## Nightly Validation contract
+
+- `/overnight` is read-only and file-backed. It reads the controller's timestamped run directory, canonical `admission.json`, and timestamped `promotions-*.json` envelope.
+- Nightly task admission requires complete camelCase verifier metadata, score at least 30 of 40, evidence score at least 4, distribution score at least 3, no fatal constraint, fresh confirmation, actionable fields, evidence links, and a stable dedupe key.
+- Snake-case or legacy aliases for the nightly controller must fail closed. Legacy non-nightly task callers remain backward-compatible.
+- Keep Now and Paid Delivery as Work projections. Do not alter Today ranking or the five-lane top navigation for portfolio views.
+
 ## Adding a New Agent
 
 1. Update `app/api/agents/route.ts` → add to AGENTS array

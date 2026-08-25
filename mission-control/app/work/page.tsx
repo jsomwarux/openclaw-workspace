@@ -15,11 +15,18 @@ import { statusOptions, toTaskStatus, type TaskStatus } from "@/lib/mission-cont
 import { cn, formatRelative } from "@/lib/utils";
 
 const filters: { id: WorkFilter; label: string }[] = [
+  { id: "now", label: "Now" },
+  { id: "paid-delivery", label: "Paid Delivery" },
   { id: "all", label: "All" },
   { id: "jt", label: "JT" },
   { id: "eve", label: "Eve" },
   { id: "high", label: "High" },
   { id: "blocked", label: "Blocked/Stale" },
+  { id: "career-hedge", label: "Career Hedge" },
+  { id: "waiting-jt", label: "Waiting JT" },
+  { id: "compounding-bets", label: "Compounding Bets" },
+  { id: "waiting-external", label: "Waiting External" },
+  { id: "archive-triggers", label: "Archive + Triggers" },
   { id: "done", label: "Done" },
 ];
 

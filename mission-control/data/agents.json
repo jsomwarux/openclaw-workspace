@@ -798,14 +798,29 @@
       "jt-consulting-pipeline",
       "verification-before-completion"
     ],
+    "crons": [],
+    "currentTask": "Retired. Replaced by the bounded Nightly Validation Controller; reusable instructions remain archived.",
+    "created": "2026-06-11"
+  },
+  {
+    "id": "nightly-validation-controller",
+    "name": "Nightly Validation Controller",
+    "emoji": "🔬",
+    "role": "Bounded Portfolio Validation",
+    "domain": "Admits one portfolio lane and at most three read-only validation packets, requires fresh independent verification, and promotes at most one deduplicated Mission Control action.",
+    "workspaceRel": "agents/nightly-validation",
+    "github": null,
+    "skills": [
+      "verification-before-completion"
+    ],
     "crons": [
       {
-        "id": "f146d8b8-94e0-49ff-8e4a-5050a284e894",
-        "name": "Night Autonomy Agent",
-        "schedule": "Daily 11:00 PM ET"
+        "id": "e3156dad-ddc4-4b74-b019-727b23dc72e0",
+        "name": "Nightly Validation Controller",
+        "schedule": "Daily 11:15 PM ET"
       }
     ],
-    "currentTask": "Active nightly merged strategic-worker plus verification/blocker-removal loop; old 9:45PM and 3:20AM night jobs are disabled, not deleted.",
-    "created": "2026-06-11"
+    "currentTask": "Active bounded 11:15 PM ET validation controller; Grok remains separate and JT-owned.",
+    "created": "2026-08-24"
   }
 ]

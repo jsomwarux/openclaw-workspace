@@ -11,6 +11,8 @@ import { NextResponse } from "next/server";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
+import type { FunctionArgs } from "convex/server";
+import { normalizeTaskInput, validateTaskAdmission } from "@/lib/mission-control/task-admission";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
@@ -28,20 +30,41 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { title, description, status = "todo", assignee = "eve", priority = "medium", project, slug, pipelineStage, sortOrder } = body;
+  const rawInput = { status: "todo", assignee: "eve", priority: "medium", ...body };
+  try {
+    validateTaskAdmission(rawInput);
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+  }
+  const input = normalizeTaskInput(rawInput);
+  const { title } = input;
   if (!title) return NextResponse.json({ error: "title required" }, { status: 400 });
 
-  const id = await convex.mutation(api.tasks.create, {
-    title, description, status, assignee, priority, project, slug, pipelineStage, sortOrder,
-  });
-  return NextResponse.json({ id, success: true });
+  if (input.dedupeKey) {
+    const result = await convex.mutation(
+      api.tasks.upsertByDedupeKey,
+      input as FunctionArgs<typeof api.tasks.upsertByDedupeKey>,
+    );
+    return NextResponse.json({ ...result, success: true });
+  }
+  const id = await convex.mutation(api.tasks.create, input as FunctionArgs<typeof api.tasks.create>);
+  return NextResponse.json({ id, created: true, success: true });
 }
 
 export async function PATCH(req: Request) {
   const body = await req.json();
-  const { id, ...fields } = body;
+  const { id, ...rawFields } = body;
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
-  await convex.mutation(api.tasks.update, { id: id as Id<"tasks">, ...fields });
+  try {
+    validateTaskAdmission(rawFields);
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+  }
+  const fields = normalizeTaskInput(rawFields, { includeAudit: true });
+  await convex.mutation(
+    api.tasks.update,
+    { id: id as Id<"tasks">, ...fields } as FunctionArgs<typeof api.tasks.update>,
+  );
   return NextResponse.json({ success: true });
 }
 

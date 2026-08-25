@@ -52,3 +52,23 @@
 - [x] Upload the latest bundle to organized Google Drive folders.
 - [x] Wire weekly agent/cron instructions to run Drive sync automatically.
 - [x] Verify tests, Drive upload output, prompt wiring, and bootstrap file sizes.
+
+## Plan — Agent Operating System Implementation — 2026-08-24
+
+- [x] Diagnose Friday Scoreboard and route the correct natural-run regression check after quota reset; no prompt repair was warranted.
+- [x] Verify Job Application Tracker schedule freshness; the first expected post-reactivation run is 2026-08-25 at 10:15 ET.
+- [x] Confirm and document Daily Workout Card routing outside canceled health check-ins.
+- [x] Diagnose and safely repair the n8n backup remote-ahead failure.
+- [x] Build, independently verify, install, and smoke-test Nightly Validation Controller and state contract using `tasks/nightly-validation-prd.md`.
+- [x] Build and independently verify Mission Control portfolio views and strict task admission fields.
+- [x] Consolidate completion-event routing at the existing same-turn proof/portfolio/content gates and retire redundant portfolio schedules without adding another cron.
+- [x] Verify the Morning Brief and Daily Send Sheet are already one live action surface named Daily Send Sheet.
+- [x] Run final proof logging, proof guard, memory checks, and Mission Control closure.
+
+### Nightly Validation Controller sub-plan
+
+- [x] Read the controller PRD, build protocol, and TDD instructions.
+- [x] Add focused failing tests for queue parsing, selection, dedupe, no-work, promotion gating, payload construction, and idempotent consumption.
+- [x] Implement the minimal deterministic local controller and fixture/state scaffolding.
+- [x] Verify focused tests, dry-run behavior, malformed input failure, and repeated consumption.
+- [x] Record exact evidence and implementation decisions, install the approved cron, and verify the empty-queue live smoke run.

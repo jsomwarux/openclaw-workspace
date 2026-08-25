@@ -89,6 +89,61 @@ describe("taskToSignal", () => {
     expect(signal.waitingOn?.who).toBe("Yair");
   });
 
+  test("carries agent operating-system metadata without changing the task lane", () => {
+    const signal = taskToSignal({
+      title: "Validate a career hedge",
+      status: "todo",
+      assignee: "jt",
+      priority: "medium",
+      lane: "work",
+      firstAction: "Open the verified posting",
+      whyItMatters: "Preserves the income hedge",
+      doneState: "Application decision recorded",
+      evidenceLinks: ["https://example.com/proof"],
+      sourceSystem: "nightly-validation-controller",
+      reviewAt: 1_800_000_000_000,
+      dedupeKey: "nightly-validation:candidate:hash",
+      workstream: "career-hedge",
+      hypothesis: "The role maps to direct evidence",
+      nextTest: "Verify the top three duties",
+      killDate: 1_810_000_000_000,
+      promotionScore: 32,
+      verdict: "promote",
+      verifierConfirmed: true,
+      verifiedAt: "2026-08-24T23:00:00Z",
+      candidateId: "candidate",
+      sourceHash: "sha256:hash",
+      evidenceScore: 4,
+      distributionScore: 3,
+      fatalConstraint: false,
+      revivalTrigger: "A matching role reopens",
+    });
+
+    expect(signal.lane).toBe("work");
+    expect(signal).toMatchObject({
+      firstAction: "Open the verified posting",
+      whyItMatters: "Preserves the income hedge",
+      doneState: "Application decision recorded",
+      sourceSystem: "nightly-validation-controller",
+      workstream: "career-hedge",
+      promotionScore: 32,
+      verdict: "promote",
+      verifierConfirmed: true,
+      candidateId: "candidate",
+      sourceHash: "sha256:hash",
+      evidenceScore: 4,
+      distributionScore: 3,
+      fatalConstraint: false,
+    });
+    expect(signal.evidenceLinks).toEqual(["https://example.com/proof"]);
+    expect(signal.evidence).toEqual([{
+      kind: "url",
+      label: "Evidence 1",
+      href: "https://example.com/proof",
+      quality: "verified",
+    }]);
+  });
+
   test("keeps Eve in-progress work out of the JT decision queue", () => {
     const signal = taskToSignal({
       _id: "task-2",

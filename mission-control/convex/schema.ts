@@ -17,6 +17,14 @@ export const waitingOn = v.object({
   nudgeAfterDays: v.number(),
 });
 
+export const workstream = v.union(
+  v.literal("paid-delivery"),
+  v.literal("career-hedge"),
+  v.literal("compounding-bet"),
+  v.literal("administrative"),
+  v.literal("other"),
+);
+
 // Collected cash is stored per-payment. pipeline.jsonl zeroes items once paid, so
 // it can never be the system of record for collected cash — this table is.
 export const paymentKind = v.union(
@@ -51,6 +59,27 @@ export default defineSchema({
     reasonCodes: v.optional(v.array(v.string())),
     rankScore: v.optional(v.number()),
     rankUpdatedAt: v.optional(v.number()),
+    firstAction: v.optional(v.string()),
+    whyItMatters: v.optional(v.string()),
+    doneState: v.optional(v.string()),
+    evidenceLinks: v.optional(v.array(v.string())),
+    sourceSystem: v.optional(v.string()),
+    reviewAt: v.optional(v.number()),
+    dedupeKey: v.optional(v.string()),
+    workstream: v.optional(workstream),
+    hypothesis: v.optional(v.string()),
+    nextTest: v.optional(v.string()),
+    killDate: v.optional(v.number()),
+    promotionScore: v.optional(v.number()),
+    revivalTrigger: v.optional(v.string()),
+    verdict: v.optional(v.string()),
+    verifierConfirmed: v.optional(v.boolean()),
+    verifiedAt: v.optional(v.string()),
+    candidateId: v.optional(v.string()),
+    sourceHash: v.optional(v.string()),
+    evidenceScore: v.optional(v.number()),
+    distributionScore: v.optional(v.number()),
+    fatalConstraint: v.optional(v.boolean()),
     clientId: v.optional(v.id("clients")),
     createdAt: v.number(),
     updatedAt: v.number(),
@@ -59,6 +88,7 @@ export default defineSchema({
     .index("by_assignee", ["assignee"])
     .index("by_project", ["project"])
     .index("by_slug", ["slug"])
+    .index("by_dedupeKey", ["dedupeKey"])
     .index("by_client", ["clientId"]),
 
   clients: defineTable({

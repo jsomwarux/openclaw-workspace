@@ -1,0 +1,487 @@
+{
+  "schema": "agent-portfolio-registry-v1",
+  "updatedAt": "2026-08-24T21:00:00-04:00",
+  "systems": [
+    {
+      "number": 1,
+      "name": "Passive Income Signal Fetch",
+      "decision": "Replace with Signal Lab evidence scan and archive old schedule",
+      "status": "replaced",
+      "revivalTrigger": "Use Signal Lab or the Nightly Validation Controller; revive only after that replacement fails a measured need.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 2,
+      "name": "Passive Income Scout",
+      "decision": "Retire recurring run and preserve prompts as reference",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 3,
+      "name": "Passive Income Strategist",
+      "decision": "Merge decision logic into Eve promotion gate",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 4,
+      "name": "Passive Income Decision Board",
+      "decision": "Merge into Compounding Bets and Archive views",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 5,
+      "name": "Job Market Daily Research",
+      "decision": "Keep",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 6,
+      "name": "Job-Derived Skills and Demo Generator",
+      "decision": "Merge into monthly proof-gap synthesis",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 7,
+      "name": "Job Application Auto-Builder",
+      "decision": "Keep disabled and use on demand",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 8,
+      "name": "Job Application Tracker",
+      "decision": "Repair freshness and observability",
+      "status": "repaired",
+      "revivalTrigger": "Reopen only if the verified regression check fails again.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 9,
+      "name": "Prospect Discovery",
+      "decision": "Repair and narrow to qualified changes only",
+      "status": "repaired",
+      "revivalTrigger": "Reopen only if the verified regression check fails again.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 10,
+      "name": "Script-First Outreach Preflight",
+      "decision": "Keep",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 11,
+      "name": "Full Consulting Acquisition Pipeline",
+      "decision": "Keep and merge state with acquisition OS",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 12,
+      "name": "Outreach Email Pivot",
+      "decision": "Merge as a branch of outreach preflight",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 13,
+      "name": "T3 Cold Hook and Batch Outreach",
+      "decision": "Retire until an explicit campaign is approved",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 14,
+      "name": "North Star Pipeline and Send Queue",
+      "decision": "Keep as revenue truth",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 15,
+      "name": "Daily Send Sheet",
+      "decision": "Keep and merge with Morning Brief",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 16,
+      "name": "Morning Brief",
+      "decision": "Merge into Daily Send Sheet",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 17,
+      "name": "Heartbeat Operations Loop",
+      "decision": "Keep health checks and retire proactive-work selection",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 18,
+      "name": "Weekly Systems Review",
+      "decision": "Keep and narrow",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 19,
+      "name": "Friday Scoreboard",
+      "decision": "Repair first",
+      "status": "repaired",
+      "revivalTrigger": "Reopen only if the verified regression check fails again.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 20,
+      "name": "Pending Task Processor and MC Audit",
+      "decision": "Keep with deduplication",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 21,
+      "name": "Cost Tracker and Runaway Guard",
+      "decision": "Keep deterministic",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 22,
+      "name": "Integrity and Bootstrap Guard",
+      "decision": "Keep deterministic",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 23,
+      "name": "Backup and Session Cleanup",
+      "decision": "Keep and repair remote push failure",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 24,
+      "name": "Content Swipe and X Research",
+      "decision": "Merge into proof-led content pipeline",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 25,
+      "name": "Content Generation",
+      "decision": "Merge and trigger only from proof or buyer evidence",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 26,
+      "name": "Content Distribution and Reply Handler",
+      "decision": "Merge into one content ledger",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 27,
+      "name": "AI Ops Teardown",
+      "decision": "Keep as an on-demand content format",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 28,
+      "name": "Niche Intelligence and News Hooks",
+      "decision": "Replace broad monitoring with Signal Lab",
+      "status": "replaced",
+      "revivalTrigger": "Use Signal Lab or the Nightly Validation Controller; revive only after that replacement fails a measured need.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 29,
+      "name": "App Marketing OS",
+      "decision": "Retire recurring schedule",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 30,
+      "name": "ReelFarm Intel OS",
+      "decision": "Retire",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 31,
+      "name": "Vibe Marketing",
+      "decision": "Retire",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 32,
+      "name": "Sports GM and DynastyJig",
+      "decision": "Keep dormant until a launch trigger",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 33,
+      "name": "Crypto Research and Nash Support",
+      "decision": "Retire recurring and keep on demand",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 34,
+      "name": "Health Check-In and Weekly Report",
+      "decision": "Keep canceled",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 35,
+      "name": "Spanish Learning",
+      "decision": "Keep dormant",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 36,
+      "name": "Portfolio and Proof Auto-Update",
+      "decision": "Merge into completion-event fan-out",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 37,
+      "name": "Autonomous Post Detection",
+      "decision": "Merge into completion-event fan-out",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 38,
+      "name": "Client Proof Capture and Client OS",
+      "decision": "Keep and make mandatory for paid delivery",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 39,
+      "name": "Altmark Insurance Workflow",
+      "decision": "Keep as proven template",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 40,
+      "name": "Altmark Rent Delinquency Workflow",
+      "decision": "Keep as paid client lane when inputs arrive",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 41,
+      "name": "Altmark DHCR Lease Renewal",
+      "decision": "Keep dormant pending paid trigger",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 42,
+      "name": "Family Office Cash Timing Queue",
+      "decision": "Keep as a pattern, no recurring work",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 43,
+      "name": "Aya Dashboards and Scrapers",
+      "decision": "Keep as proof, no autonomous expansion",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 44,
+      "name": "Property Maintenance Triage",
+      "decision": "Keep as a template, build only after buyer evidence",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 45,
+      "name": "Construction Workflow Templates",
+      "decision": "Consolidate to one best template",
+      "status": "merged",
+      "revivalTrigger": "Use the single retained template; reopen only for paid scope.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 46,
+      "name": "Agentforce Activation Pipeline",
+      "decision": "Keep reactive only",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 47,
+      "name": "AgentGuard",
+      "decision": "Retire from public proof and resumes",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 48,
+      "name": "Multi-LLM Ranking Engines",
+      "decision": "Archive reusable method, retire portfolio schedules",
+      "status": "archived",
+      "revivalTrigger": "A named downstream use that can produce revenue, distribution, or required proof.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 49,
+      "name": "Skills and API Researcher",
+      "decision": "Retire recurring and use only for a named gap",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 50,
+      "name": "Autoresearch and Future Signals",
+      "decision": "Keep lightweight future-signals registry and retire broad research",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 51,
+      "name": "Guyana Monitor",
+      "decision": "Retire",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 52,
+      "name": "Strategy and Training Loops",
+      "decision": "Merge into one weekly operator review",
+      "status": "merged",
+      "revivalTrigger": "Use the named canonical operating system; do not revive a separate loop.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 53,
+      "name": "Local Archive Utilities",
+      "decision": "Keep on demand",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 54,
+      "name": "Drive Drafts",
+      "decision": "Keep",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 55,
+      "name": "Notion Content Sync",
+      "decision": "Keep as a content-pipeline endpoint, not an independent strategy loop",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 56,
+      "name": "Unemployment Reminder",
+      "decision": "Keep",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 57,
+      "name": "TikTok Warm-Up Reminders",
+      "decision": "Retire until a named live launch",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 58,
+      "name": "Reddit and Karma Workflows",
+      "decision": "Retire until a named live distribution test",
+      "status": "retired",
+      "revivalTrigger": "A named buyer, live launch, priced opportunity, or explicit JT restart.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 59,
+      "name": "Night Autonomy Agent",
+      "decision": "Replace with bounded Nightly Validation Controller",
+      "status": "replaced",
+      "revivalTrigger": "Use Signal Lab or the Nightly Validation Controller; revive only after that replacement fails a measured need.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    },
+    {
+      "number": 60,
+      "name": "Gateway Recovery",
+      "decision": "Keep manual and approval-gated",
+      "status": "kept",
+      "revivalTrigger": "Owner demand, paid scope, or the existing schedule and state contract.",
+      "source": "deliverables/agent-operating-system-redesign-2026-08-24.md"
+    }
+  ]
+}
+

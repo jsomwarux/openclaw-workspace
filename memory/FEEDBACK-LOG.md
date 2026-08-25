@@ -54,6 +54,8 @@
 
 > Format: `[DATE] | [What was wrong] | [What JT prefers instead]`
 
+**[2026-08-24] | Used colons to introduce clauses or list-like sequences in a cover letter, creating a recognizable AI-generated writing pattern. | Do not use the “label or setup: list” construction in any content generated for JT. Rewrite as a complete sentence, split the thought into separate sentences, or integrate the items naturally into prose. For cover letters, use zero colons in the applicant-visible document unless JT explicitly requests otherwise.**
+
 **[2026-08-04] | Used “A missing source report should be a hold, not a draft,” which is the banned “X should be Y, not Z” contrast/reveal pattern. | Treat “X should be Y, not Z” and close variants (“X needs Y, not Z,” “X is Y, not Z,” “X should become Y instead of Z”) as AI-slop contrast framing. Lead with the concrete operating state, action rule, owner, system, or consequence directly. If JT explicitly asks for hashtags, use a tight set of 3 relevant LinkedIn hashtags at the end; otherwise default remains no hashtags.**
 
 **[2026-06-07] | Delivered a Sunday LinkedIn recommendation about removing client names / public proof privacy cleanup. JT rejected it as not post-worthy, not valuable to readers, and not useful for positioning. | Treat client-name removal, privacy cleanup, proof hygiene, attribution cleanup, and "public proof needs a privacy layer" as internal operating discipline, not standalone content. Only use those facts as support inside a real buyer problem, shipped client outcome, or permission-safe case study. Content delivered to JT must be optimally valuable/worthy of posting, not merely acceptable or true.**

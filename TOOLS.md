@@ -3,6 +3,7 @@
 
 ## Health System
 - DB: `health/health.sqlite`; health crons canceled 2026-08-07 at JT request (legacy daily check-in/report and 14-day protocol reminders removed).
+- `Daily Workout Card` is a separate one-way training card, not a health check-in. It reads the JT-owned workout pointer and sends the exact 05:00 ET card silently; it never collects health data, asks for feedback, or advances state.
 - Use `health/health.py` for log/report/history and `health/inbound_handler.py` for JT replies.
 - Manual 14-day protocol ops helper remains available: `scripts/protocol_ops.py`; log path `health/protocol-log.jsonl`; reference/bookings path `health/protocol-reference.md`; morning HR staging path `health/protocol-state.json`.
 - Full syntax: `docs/tools/TOOLS-full.md#health-system`.

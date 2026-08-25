@@ -2,9 +2,63 @@ import { v } from "convex/values";
 import { mutation, query, internalMutation } from "./_generated/server";
 import type { Doc } from "./_generated/dataModel";
 import type { MutationCtx } from "./_generated/server";
-import { taskStatus, waitingOn } from "./schema";
+import { taskStatus, waitingOn, workstream } from "./schema";
+import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
+const NIGHTLY_SOURCE = "nightly-validation-controller";
+const NIGHTLY_PROMOTION_THRESHOLD = 30;
+const NIGHTLY_FRESHNESS_MS = 24 * 60 * 60 * 1000;
+
+const operatingSystemArgs = {
+  firstAction: v.optional(v.string()),
+  whyItMatters: v.optional(v.string()),
+  doneState: v.optional(v.string()),
+  evidenceLinks: v.optional(v.array(v.string())),
+  sourceSystem: v.optional(v.string()),
+  reviewAt: v.optional(v.number()),
+  dedupeKey: v.optional(v.string()),
+  workstream: v.optional(workstream),
+  hypothesis: v.optional(v.string()),
+  nextTest: v.optional(v.string()),
+  killDate: v.optional(v.number()),
+  promotionScore: v.optional(v.number()),
+  revivalTrigger: v.optional(v.string()),
+  verdict: v.optional(v.string()),
+  verifierConfirmed: v.optional(v.boolean()),
+  verifiedAt: v.optional(v.string()),
+  candidateId: v.optional(v.string()),
+  sourceHash: v.optional(v.string()),
+  evidenceScore: v.optional(v.number()),
+  distributionScore: v.optional(v.number()),
+  fatalConstraint: v.optional(v.boolean()),
+};
+
+function assertNightlyAdmission(args: Record<string, unknown>) {
+  if (args.sourceSystem !== NIGHTLY_SOURCE) return;
+  for (const field of ["dedupeKey", "firstAction", "whyItMatters", "doneState", "workstream"] as const) {
+    if (typeof args[field] !== "string" || !args[field]) throw new Error(`${field} required for nightly admission`);
+  }
+  if (!Array.isArray(args.evidenceLinks) || args.evidenceLinks.length === 0) {
+    throw new Error("evidenceLinks required for nightly admission");
+  }
+  if (typeof args.promotionScore !== "number" || args.promotionScore < NIGHTLY_PROMOTION_THRESHOLD) {
+    throw new Error(`promotionScore must be at least ${NIGHTLY_PROMOTION_THRESHOLD}`);
+  }
+  if (args.verdict !== "promote") throw new Error("verdict must be promote");
+  if (args.verifierConfirmed !== true) throw new Error("verifierConfirmed must be true");
+  const verifiedAt = typeof args.verifiedAt === "string" ? Date.parse(args.verifiedAt) : Number.NaN;
+  const age = Date.now() - verifiedAt;
+  if (!Number.isFinite(verifiedAt) || age < 0 || age > NIGHTLY_FRESHNESS_MS) {
+    throw new Error("verifiedAt must be a fresh timestamp within 24 hours");
+  }
+  for (const field of ["candidateId", "sourceHash"] as const) {
+    if (typeof args[field] !== "string" || !args[field]) throw new Error(`${field} required for nightly admission`);
+  }
+  if (typeof args.evidenceScore !== "number" || args.evidenceScore < 4) throw new Error("evidenceScore must be at least 4");
+  if (typeof args.distributionScore !== "number" || args.distributionScore < 3) throw new Error("distributionScore must be at least 3");
+  if (args.fatalConstraint !== false) throw new Error("fatalConstraint must be false");
+}
 
 // Fields whose changes must leave an audit trail.
 const AUDITED_FIELDS = ["dollars", "dueDate", "waitingOn", "stageProbability", "priority"] as const;
@@ -78,10 +132,55 @@ export const create = mutation({
     reasonCodes: v.optional(v.array(v.string())),
     rankScore: v.optional(v.number()),
     rankUpdatedAt: v.optional(v.number()),
+    ...operatingSystemArgs,
   },
   handler: async (ctx, args) => {
+    assertNightlyAdmission(args);
     const now = Date.now();
     return await ctx.db.insert("tasks", { ...args, createdAt: now, updatedAt: now });
+  },
+});
+
+export const upsertByDedupeKey = mutation({
+  args: {
+    title: v.string(),
+    description: v.optional(v.string()),
+    status: taskStatus,
+    assignee: v.union(v.literal("jt"), v.literal("eve"), v.literal("both")),
+    priority: v.union(v.literal("high"), v.literal("medium"), v.literal("low")),
+    project: v.optional(v.string()),
+    sortOrder: v.optional(v.number()),
+    slug: v.optional(v.string()),
+    pipelineStage: v.optional(v.string()),
+    dueDate: v.optional(v.number()),
+    dueDateSource: v.optional(v.union(v.literal("external"), v.literal("self"))),
+    dollars: v.optional(v.number()),
+    stageProbability: v.optional(v.number()),
+    effortMinutes: v.optional(v.number()),
+    lane: v.optional(v.string()),
+    waitingOn: v.optional(waitingOn),
+    snoozedUntil: v.optional(v.number()),
+    proofRequired: v.optional(v.boolean()),
+    reasonCodes: v.optional(v.array(v.string())),
+    rankScore: v.optional(v.number()),
+    rankUpdatedAt: v.optional(v.number()),
+    ...operatingSystemArgs,
+    dedupeKey: v.string(),
+  },
+  handler: async (ctx, args) => {
+    assertNightlyAdmission(args);
+    const now = Date.now();
+    const existing = await ctx.db
+      .query("tasks")
+      .withIndex("by_dedupeKey", (q) => q.eq("dedupeKey", args.dedupeKey))
+      .first();
+    const resolved = resolveTaskUpsert(existing, args, now);
+    if (resolved.operation === "update") {
+      await ctx.db.patch(resolved.id, resolved.fields);
+      return { id: resolved.id, created: false };
+    }
+    const id = await ctx.db.insert("tasks", resolved.fields);
+    return { id, created: true };
   },
 });
 
@@ -119,6 +218,7 @@ export const update = mutation({
     reasonCodes: v.optional(v.array(v.string())),
     rankScore: v.optional(v.number()),
     rankUpdatedAt: v.optional(v.number()),
+    ...operatingSystemArgs,
     auditSource: v.optional(auditSource),
     auditEvidence: v.optional(v.string()),
   },
@@ -126,6 +226,7 @@ export const update = mutation({
     const { id, auditSource: source, auditEvidence, ...fields } = args;
     const task = await ctx.db.get(id);
     if (!task) throw new Error(`Task not found: ${id}`);
+    assertNightlyAdmission({ ...task, ...fields });
     await auditChanges(ctx, task, fields, source ?? "jt", auditEvidence ?? "manual edit");
     await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
   },

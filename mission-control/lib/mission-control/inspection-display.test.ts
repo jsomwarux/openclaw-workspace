@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { formatAuditField, formatAuditValue, needsEvidenceAttention } from "./inspection-display";
+import { formatAuditField, formatAuditValue, needsEvidenceAttention, operatingSystemDetails } from "./inspection-display";
 import type { Signal } from "./types";
 
 function signal(overrides: Partial<Signal> = {}): Signal {
@@ -39,5 +39,28 @@ describe("inspection display helpers", () => {
     expect(needsEvidenceAttention(signal())).toBe(false);
     expect(needsEvidenceAttention(signal({ proofRequired: true }))).toBe(true);
     expect(needsEvidenceAttention(signal({ evidence: [{ kind: "unknown", label: "No proof ref", quality: "gap" }] }))).toBe(true);
+  });
+
+  test("returns only populated admission, bet, and trigger details", () => {
+    expect(operatingSystemDetails(signal({
+      firstAction: "Open the proof",
+      workstream: "compounding-bet",
+      hypothesis: "Demand exists",
+      promotionScore: 34,
+      verdict: "promote",
+      verifierConfirmed: true,
+      evidenceScore: 4,
+      distributionScore: 3,
+      revivalTrigger: "A buyer asks",
+    }))).toEqual([
+      ["Workstream", "Compounding bet"],
+      ["First action", "Open the proof"],
+      ["Hypothesis", "Demand exists"],
+      ["Promotion score", "34 / 40"],
+      ["Verifier", "Confirmed promote"],
+      ["Evidence score", "4"],
+      ["Distribution score", "3"],
+      ["Revival trigger", "A buyer asks"],
+    ]);
   });
 });

@@ -7,6 +7,7 @@ import type {
   SignalPriority,
   SignalStatus,
   WaitingOn,
+  Workstream,
 } from "./types";
 
 type RawTask = {
@@ -35,6 +36,27 @@ type RawTask = {
   waitingOn?: WaitingOn;
   snoozedUntil?: number;
   reasonCodes?: string[];
+  firstAction?: string;
+  whyItMatters?: string;
+  doneState?: string;
+  evidenceLinks?: string[];
+  sourceSystem?: string;
+  reviewAt?: number;
+  dedupeKey?: string;
+  workstream?: Workstream;
+  hypothesis?: string;
+  nextTest?: string;
+  killDate?: number;
+  promotionScore?: number;
+  revivalTrigger?: string;
+  verdict?: string;
+  verifierConfirmed?: boolean;
+  verifiedAt?: string;
+  candidateId?: string;
+  sourceHash?: string;
+  evidenceScore?: number;
+  distributionScore?: number;
+  fatalConstraint?: boolean;
 };
 
 type RawCron = {
@@ -120,6 +142,17 @@ export function extractEvidence(text = ""): ProofRef[] {
   }));
 }
 
+function storedEvidence(links: string[] = []): ProofRef[] {
+  return links.map((href, index) => ({
+    kind: href.startsWith("http")
+      ? (href.includes("docs.google.com") || href.includes("drive.google.com") ? "drive" : "url")
+      : "file",
+    label: `Evidence ${index + 1}`,
+    href,
+    quality: "verified",
+  }));
+}
+
 export function taskToSignal(task: RawTask): Signal {
   const updatedAt = task.updatedAt ?? task.createdAt ?? Date.now();
   return {
@@ -134,7 +167,7 @@ export function taskToSignal(task: RawTask): Signal {
     pipelineStage: task.pipelineStage,
     ageDays: ageDays(updatedAt),
     context: task.description,
-    evidence: extractEvidence(task.description),
+    evidence: [...extractEvidence(task.description), ...storedEvidence(task.evidenceLinks)],
     updatedAt,
     dollars: task.dollars,
     dueDate: task.dueDate,
@@ -149,6 +182,27 @@ export function taskToSignal(task: RawTask): Signal {
     waitingOn: task.waitingOn,
     snoozedUntil: task.snoozedUntil,
     reasonCodes: task.reasonCodes,
+    firstAction: task.firstAction,
+    whyItMatters: task.whyItMatters,
+    doneState: task.doneState,
+    evidenceLinks: task.evidenceLinks,
+    sourceSystem: task.sourceSystem,
+    reviewAt: task.reviewAt,
+    dedupeKey: task.dedupeKey,
+    workstream: task.workstream,
+    hypothesis: task.hypothesis,
+    nextTest: task.nextTest,
+    killDate: task.killDate,
+    promotionScore: task.promotionScore,
+    revivalTrigger: task.revivalTrigger,
+    verdict: task.verdict,
+    verifierConfirmed: task.verifierConfirmed,
+    verifiedAt: task.verifiedAt,
+    candidateId: task.candidateId,
+    sourceHash: task.sourceHash,
+    evidenceScore: task.evidenceScore,
+    distributionScore: task.distributionScore,
+    fatalConstraint: task.fatalConstraint,
     raw: task,
   };
 }

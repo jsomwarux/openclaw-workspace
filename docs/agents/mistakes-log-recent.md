@@ -796,3 +796,50 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** `test_default_route_accepts_current_gpt_5_6_sol_primary` must fail on the stale guard and pass after the guard update; the live `--include-disabled` command must also return `ok:true`.
 - **Owner surface updated:** `scripts/model_routing_guard.py`, `scripts/test_model_routing_guard.py`.
 - **Verification/date:** 2026-08-22 — observed red test against GPT-5.5-only guard, then 2/2 unit tests and live routing guard passed after the one-line allowed-primary update.
+# 2026-08-24 — Approved deliverable was never executed or delivered
+
+- **Failure:** After JT approved the Grok Bot evidence-pack plan on 2026-08-23, Eve produced neither the Markdown artifact nor a blocker notice. JT had to chase it on 2026-08-24.
+- **Root cause:** The prior turn treated plan approval as a conversational endpoint instead of creating durable execution state and a delivery obligation. No claim file or pending-task record existed, so scheduled messages displaced the approved work with no recovery signal.
+- **Guardrail/rule:** Every approved multi-step deliverable must create a started state or claim file in the same turn as approval, and the turn must continue until verified delivery or a named blocker. A plan approval may never be the last durable state.
+- **Regression check:** Search the approving session and workspace for a same-day artifact/started marker; fail if approval exists without either. For this incident, verify the final brief file, claim file, verifier verdict, and Telegram document delivery.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; claim workflow in `memory/job-state/claims/grok-bot-operator-brief-2026-08-24.md`.
+- **Verification/date:** Fresh verifier returned CONFIRMED after the deterministic brief validator passed all 14 sections and strict secret checks; Telegram delivery recorded separately, 2026-08-24.
+
+## 2026-08-24 — Job hedge rerun surfaced a role without proof for all top-three responsibilities
+- **Failure:** The corrected job-market rerun delivered Anthropic Business Systems Analyst as a 23/25 APPLY even though JT had no named evidence for vendor contract negotiation, SLA ownership, or vendor-performance management, one of the posting's top three responsibilities.
+- **Root cause:** The prompt stated that every top-three responsibility must map to direct experience, but it did not require the agent to write the three mappings before scoring. The agent treated a disclosed gap as minor instead of recognizing it as a mandatory gate failure.
+- **Guardrail/rule:** Before scoring any role, the research audit must name one Spectrum or paid-consulting proof point for each of the top three responsibilities. Generic transferability, adjacent work, and hypothetical agent-assisted ability do not count; one missing proof point rejects the role.
+- **Regression check:** `scripts/verify_job_market_cron_prompt.py` fails unless the live prompt contains the named top-three proof requirement. Every surfaced role's research audit must contain three named mappings before a score or APPLY recommendation is allowed.
+- **Owner surface updated:** live `Job Market Daily Research` cron prompt, `scripts/verify_job_market_cron_prompt.py`, `data/daily-brief.md`, `data/job-opportunities.md`, `memory/job-state/job-market-daily-research.md`, `memory/2026-08-24.md`, and this Mistakes Log entry.
+- **Verification/date:** 2026-08-24 — fresh verifier rejected the Anthropic recommendation; corrected artifacts now record zero qualifiers and Anthropic as rejected/unscored; live prompt verifier passes 9 controls.
+
+## 2026-08-24 — Inferred `SLA ownership` from a posting that only mentioned service level agreements
+- **Failure:** I told JT the Anthropic BSA role required proof of `SLA ownership`, then used that invented ownership standard to reject the role.
+- **Root cause:** I compressed a responsibility that lists vendor evaluation, contract negotiations, service level agreements, and vendor-performance assessment into a stronger ownership claim that the source never made.
+- **Guardrail/rule:** Job-fit analysis must preserve the posting's exact responsibility level. Terms such as `support`, `manage`, `participate`, `evaluate`, and `own` are not interchangeable; never upgrade involvement into ownership.
+- **Regression check:** Before rejecting a role for an alleged ownership gap, search the canonical posting for the exact word `own` or equivalent explicit accountability language tied to that requirement. If absent, describe the gap using the posting's actual verb and evaluate centrality rather than inventing a hard gate.
+- **Owner surface updated:** `data/daily-brief.md`, `data/job-opportunities.md`, `memory/job-state/job-market-daily-research.md`, `memory/2026-08-24.md`, and this Mistakes Log entry.
+- **Verification/date:** 2026-08-24 — official US/NYC posting ID `5394958008` says `service level agreements` within vendor evaluation but does not say `SLA ownership`; Anthropic was restored as a 20/25 stretch application.
+## 2026-08-24 — Anthropic resume prioritized template projects over accepted enterprise proof
+- **Failure:** The Anthropic Business Systems Analyst resume included AgentGuard and Nash Satoshi in Key Projects while omitting JT's accepted Marketsmith/MSI enterprise analytics and QA engagement.
+- **Root cause:** The job-application skill contained unconditional project-selection rules that forced AgentGuard to lead and elevated Nash Satoshi for enterprise roles, so template defaults overrode role-specific evidence ranking.
+- **Guardrail/rule:** Resume proof must be ranked by direct JD relevance and evidence strength: accepted paid delivery first, Spectrum implementation evidence second, other paid outcomes third, and shipped products only when they directly prove a named requirement. AgentGuard is excluded unless JT explicitly requests it; consumer apps are opt-in only when directly relevant.
+- **Regression check:** For every generated resume, inspect Key Projects before upload and fail if AgentGuard appears without JT's explicit request, if a consumer app appears without a mapped JD requirement, or if stronger relevant paid delivery proof was available but omitted.
+- **Owner surface updated:** Anthropic resume and cover letter source files; live Google Docs; pending Skill Workshop proposal `job-application-20260824-2f0ee55158` for the `job-application` skill.
+- **Verification/date:** 2026-08-24 live Drive export confirmed AgentGuard and Nash Satoshi absent, Marketsmith-derived permission-safe proof present, Spectrum present, and no em dashes. Skill proposal apply remains pending because Telegram has no configured Skill Workshop approval route.
+## 2026-08-24 — Used colon-led list syntax in Anthropic cover letter
+- **Failure:** The Anthropic cover letter used colons to introduce clauses and sequences, producing a writing pattern JT recognizes as AI-generated.
+- **Root cause:** Existing writing guidance banned em dashes and several contrast patterns but still recommended colons as a default substitute, so punctuation cleanup preserved another synthetic-looking structure.
+- **Guardrail/rule:** Do not use `setup: list` or `label: explanation` constructions in any JT content. Applicant-visible cover letters must contain zero colons unless JT explicitly requests otherwise.
+- **Regression check:** Export the final cover letter from the live Google Doc and assert the visible text contains zero `:` characters before delivery.
+- **Owner surface updated:** Anthropic cover-letter source, `memory/FEEDBACK-LOG.md`, `memory/content-voice.md`, and pending job-application Skill Workshop proposal.
+- **Verification/date:** 2026-08-24 live Google Doc export passed with zero colon characters, zero em dashes, and the Anthropic, Spectrum, and enterprise analytics QA evidence intact.
+
+## 2026-08-24 — Backup pushed without checking remote divergence
+
+- **Failure:** The nightly backup repeatedly committed locally and attempted to push n8n-agent even when the remote branch was ahead, producing recurring `fetch first` failures and accumulating local divergence.
+- **Root cause:** `scripts/backup.sh` treated commit and push as the first Git operations. It never fetched or compared `HEAD` with `origin/<branch>` before staging new backup commits.
+- **Guardrail/rule:** Every backup repository must fetch and calculate ahead/behind counts before staging, committing, or pushing. Remote-ahead or diverged repositories fail closed with a precise alert and require deliberate reconciliation.
+- **Regression check:** `scripts/tests/test_git_backup_preflight.py` creates real temporary remotes and verifies synced, remote-ahead, and diverged outcomes; it also asserts all three backup repositories route through the preflight helper.
+- **Owner surface updated:** `scripts/git_backup_preflight.py`, `scripts/backup.sh`, `scripts/tests/test_git_backup_preflight.py`, and this Mistakes Log entry.
+- **Verification/date:** 2026-08-24 — four focused tests passed, `bash -n scripts/backup.sh` passed, and the reconciled n8n repository reported `SYNCED`, ahead 0, behind 0.

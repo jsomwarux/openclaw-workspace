@@ -1,410 +1,172 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
-import { ChevronDown, ChevronUp, X } from "lucide-react";
-import { cn } from "@/lib/utils";
 
-type CompletedTask = {
-  name: string;
-  output?: string;
-  whatWasDone?: string;
-  reviewNeeded?: string;
-  cost?: string;
-};
+import { useCallback, useEffect, useState } from "react";
+import { RefreshCw } from "lucide-react";
+import { StateBlock } from "@/components/mission-control/StateBlock";
 
-type SkippedTask = {
-  name: string;
-  reason: string;
-};
-
-type Run = {
-  date: string;
-  model: string;
-  subagents: string;
-  totalCost: string;
-  completedTasks: CompletedTask[];
-  skippedTasks: SkippedTask[];
-  feedbackItems: string[];
-  portfolioLines: string[];
-};
-
-type QueueItem = {
-  id?: string;
-  slug?: string;
-  title?: string;
-  name?: string;
-  description?: string;
-  notes?: string;
+type Candidate = {
+  candidate_id?: string;
+  lane?: string;
   score?: number;
-  tags?: string[];
-  file?: string;
   status?: string;
 };
 
-export default function OvernightPage() {
-  const [runs, setRuns] = useState<Run[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [completedOpen, setCompletedOpen] = useState(true);
-  const [skippedOpen, setSkippedOpen] = useState(false);
-  const [queue, setQueue] = useState<QueueItem[]>([]);
-  const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
-  const [fileViewer, setFileViewer] = useState<{ path: string; content: string | null } | null>(null);
+type Promotion = {
+  candidateId?: string;
+  title?: string;
+  firstAction?: string;
+  whyItMatters?: string;
+  doneState?: string;
+  verdict?: string;
+  verifierConfirmed?: boolean;
+  verifiedAt?: string;
+  score?: number;
+  evidenceScore?: number;
+  distributionScore?: number;
+  fatalConstraint?: boolean;
+  workstream?: string;
+};
 
-  const fetchRuns = useCallback(async () => {
+type Run = {
+  runId: string;
+  runAt: string;
+  status: "admitted" | "reconciled" | "blocked";
+  lane: string | null;
+  selected: Candidate[];
+  promotions: Promotion[];
+  promotionArtifact?: string;
+  issue?: string;
+};
+
+type Snapshot = {
+  status: "no-work" | "admitted" | "reconciled" | "blocked";
+  queue: Candidate[];
+  state: { lastCompletedRun?: string; nextRun?: string; failures: Array<Record<string, unknown>> };
+  runs: Run[];
+};
+
+export default function OvernightPage() {
+  const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const refresh = useCallback(async () => {
+    setLoading(true);
+    setError(null);
     try {
-      const r = await fetch("/api/overnight");
-      const d = await r.json();
-      setRuns(d.runs ?? []);
-      if (d.runs?.length && !selectedDate) {
-        setSelectedDate(d.runs[0].date);
-      }
+      const response = await fetch("/api/overnight", { cache: "no-store" });
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.error ?? "Nightly Validation API failed");
+      setSnapshot(body);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : String(caught));
     } finally {
       setLoading(false);
     }
-  }, [selectedDate]);
-
-  const fetchQueue = useCallback(async () => {
-    const r = await fetch("/api/overnight?action=queue");
-    const d = await r.json();
-    const pending = (d.items ?? []).filter((i: QueueItem) => i.status === "queued");
-    setQueue(pending);
   }, []);
 
-  useEffect(() => {
-    fetchRuns();
-    fetchQueue();
-  }, [fetchRuns, fetchQueue]);
-
-  useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setFileViewer(null);
-    }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
-
-  async function openFile(filePath: string) {
-    setFileViewer({ path: filePath, content: null });
-    const r = await fetch(`/api/overnight?action=file&path=${encodeURIComponent(filePath)}`);
-    const d = await r.json();
-    setFileViewer({ path: filePath, content: d.content ?? d.error ?? "Could not load file" });
-  }
-
-  async function handleDecision(item: QueueItem, status: "approved" | "rejected") {
-    const itemId = item.id || item.slug;
-    if (!itemId) return;
-    await fetch("/api/overnight", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: itemId, status }),
-    });
-    setQueue(prev => prev.filter(q => (q.id || q.slug) !== itemId));
-    setSavedIds(prev => new Set(prev).add(itemId));
-    setTimeout(() => {
-      setSavedIds(prev => {
-        const next = new Set(prev);
-        next.delete(itemId);
-        return next;
-      });
-    }, 2000);
-  }
-
-  const selected = runs.find(r => r.date === selectedDate);
-
-  function costColor(cost: string) {
-    const num = parseFloat(cost.replace("$", ""));
-    if (isNaN(num)) return "text-zinc-400";
-    if (num < 0.5) return "text-emerald-400";
-    if (num <= 1.0) return "text-yellow-400";
-    return "text-red-400";
-  }
-
-  function costBgColor(cost: string) {
-    const num = parseFloat(cost.replace("$", ""));
-    if (isNaN(num)) return "bg-zinc-500/20 border-zinc-500/30";
-    if (num < 0.5) return "bg-emerald-500/20 border-emerald-500/30";
-    if (num <= 1.0) return "bg-yellow-500/20 border-yellow-500/30";
-    return "bg-red-500/20 border-red-500/30";
-  }
-
-  function scoreColor(score: number) {
-    if (score >= 8) return "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
-    if (score >= 6) return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
-    return "bg-zinc-700/40 text-zinc-400 border-zinc-600/30";
-  }
-
-  function truncateModel(model: string) {
-    const slash = model.indexOf("/");
-    return slash >= 0 ? model.slice(slash + 1) : model;
-  }
-
-  if (loading) {
-    return (
-      <div className="p-6 flex items-center justify-center min-h-[60vh]">
-        <p className="text-sm text-zinc-500">Loading overnight runs...</p>
-      </div>
-    );
-  }
-
-  if (runs.length === 0 && queue.length === 0) {
-    return (
-      <div className="p-6 flex items-center justify-center min-h-[60vh]">
-        <p className="text-sm text-zinc-500">No overnight runs yet. First run at 3 AM.</p>
-      </div>
-    );
-  }
+  useEffect(() => { void refresh(); }, [refresh]);
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-lg font-semibold text-zinc-100">Overnight Work</h1>
-        <p className="text-xs text-zinc-500 mt-0.5">
-          {runs.length} run{runs.length !== 1 ? "s" : ""} logged
-          {queue.length > 0 && ` · ${queue.length} pending review`}
-        </p>
+    <div className="min-h-screen bg-[#0a0b0d] p-4 sm:p-6">
+      <div className="mb-6 flex items-start justify-between gap-4">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-purple-300">Systems</p>
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-zinc-100">Nightly Validation</h1>
+          <p className="mt-1 max-w-2xl text-xs leading-relaxed text-zinc-500">
+            Read-only admission evidence. Only verifier-confirmed promotions can become Mission Control tasks.
+          </p>
+        </div>
+        <button onClick={refresh} className="flex items-center gap-2 rounded-md border border-[#20262d] bg-[#0f1316] px-3 py-2 text-xs text-zinc-300">
+          <RefreshCw size={13} className={loading ? "animate-spin" : ""} /> Refresh
+        </button>
       </div>
 
-      {/* Date tabs */}
-      {runs.length > 1 && (
-        <div className="flex gap-1 flex-wrap">
-          {runs.map(run => (
-            <button
-              key={run.date}
-              onClick={() => setSelectedDate(run.date)}
-              className={cn(
-                "text-xs px-3 py-1.5 rounded border transition-colors",
-                selectedDate === run.date
-                  ? "border-emerald-500/50 text-emerald-400 bg-emerald-950/30"
-                  : "border-[#2a2a2a] text-zinc-400 hover:text-zinc-200 hover:border-[#3a3a3a]"
-              )}
-            >
-              {run.date}
-            </button>
-          ))}
-        </div>
-      )}
+      {error && <StateBlock kind="error" title="Nightly validation unavailable" detail={error} />}
+      {loading && !snapshot && <StateBlock kind="loading" title="Loading validation state" detail="Reading local queue and run artifacts." />}
 
-      {/* Selected run details */}
-      {selected && (
-        <>
-          {/* Overview card */}
-          <div className="bg-[#111] border border-[#2a2a2a] rounded-lg p-4">
-            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-3">Run Overview</p>
-            <div className="flex items-center gap-4 flex-wrap">
-              <div>
-                <p className="text-[10px] text-zinc-500">Date</p>
-                <p className="text-sm text-zinc-100">{selected.date}</p>
-              </div>
-              <div>
-                <p className="text-[10px] text-zinc-500">Model</p>
-                <p className="text-sm text-zinc-100">{truncateModel(selected.model)}</p>
-              </div>
-              <div>
-                <p className="text-[10px] text-zinc-500">Sub-agents</p>
-                <p className="text-sm text-zinc-100">{selected.subagents}</p>
-              </div>
-              <div>
-                <p className="text-[10px] text-zinc-500">Cost</p>
-                <span className={cn(
-                  "text-xs px-2 py-0.5 rounded border font-medium inline-block",
-                  costBgColor(selected.totalCost), costColor(selected.totalCost)
-                )}>
-                  {selected.totalCost}
-                </span>
-              </div>
-            </div>
-          </div>
+      {snapshot && (
+        <div className="space-y-5">
+          <StateBlock
+            kind={snapshot.status === "blocked" ? "error" : "empty"}
+            title={
+              snapshot.status === "no-work" ? "No qualified validation"
+                : snapshot.status === "admitted" ? "Validation admitted"
+                  : snapshot.status === "reconciled" ? "Validation reconciled"
+                    : "Validation blocked"
+            }
+            detail={
+              snapshot.status === "no-work" ? "No admission artifact exists. The controller did not invent work."
+                : snapshot.status === "admitted" ? "The latest admission is waiting for verifier reconciliation."
+                  : snapshot.status === "reconciled" ? "The latest admission has a complete timestamped promotion envelope."
+                    : snapshot.runs[0]?.issue ?? "The controller state contains a blocking failure."
+            }
+          />
+          <section className="grid gap-3 sm:grid-cols-3">
+            <Metric label="Pending candidates" value={String(snapshot.queue.filter((item) => item.status === "pending").length)} />
+            <Metric label="Last completed" value={snapshot.state.lastCompletedRun ?? "No completed run"} />
+            <Metric label="Next run" value={snapshot.state.nextRun ?? "Not scheduled in state"} />
+          </section>
 
-          {/* Feedback Needed */}
-          {selected.feedbackItems.length > 0 && (
-            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
-              <p className="text-xs font-semibold uppercase tracking-widest text-yellow-400 mb-3">Feedback Needed</p>
-              <ol className="list-decimal list-inside space-y-1.5">
-                {selected.feedbackItems.map((item, i) => (
-                  <li key={i} className="text-sm text-zinc-200">{item}</li>
-                ))}
-              </ol>
-            </div>
-          )}
-
-          {/* Completed Tasks */}
-          <div className="bg-[#111] border border-[#2a2a2a] rounded-lg">
-            <button
-              onClick={() => setCompletedOpen(!completedOpen)}
-              className="w-full flex items-center justify-between p-4"
-            >
-              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                Completed Tasks ({selected.completedTasks.length})
-              </p>
-              {completedOpen ? <ChevronUp size={14} className="text-zinc-500" /> : <ChevronDown size={14} className="text-zinc-500" />}
-            </button>
-            {completedOpen && (
-              <div className="px-4 pb-4 space-y-3">
-                {selected.completedTasks.map((task, i) => (
-                  <div key={i} className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-md p-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm text-zinc-100 font-medium">{task.name}</p>
-                      {task.cost && (
-                        <span className="text-[10px] text-zinc-500 flex-shrink-0">{task.cost}</span>
-                      )}
-                    </div>
-                    {task.whatWasDone && (
-                      <p className="text-xs text-zinc-400 mt-1.5">{task.whatWasDone}</p>
-                    )}
-                    {task.reviewNeeded && (
-                      <div className="mt-2 bg-yellow-500/10 border border-yellow-500/30 rounded px-2.5 py-1.5">
-                        <p className="text-xs text-yellow-400">Review needed: {task.reviewNeeded}</p>
-                      </div>
-                    )}
-                    {task.output && (
-                      <button
-                        onClick={() => openFile(task.output!)}
-                        className="mt-2 text-xs px-3 py-1.5 rounded border border-[#2a2a2a] hover:border-emerald-500/50 text-zinc-300 hover:text-emerald-400 transition-colors"
-                      >
-                        📄 View Output
-                      </button>
-                    )}
+          <section className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Validation queue</p>
+            <div className="mt-3 space-y-2">
+              {snapshot.queue.length === 0 ? (
+                <StateBlock kind="empty" title="No queued validations" detail="The controller will return NO_QUALIFIED_VALIDATION without inventing work." />
+              ) : snapshot.queue.map((candidate) => (
+                <div key={candidate.candidate_id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[#20262d] bg-[#0f1316] p-3">
+                  <div>
+                    <p className="text-sm text-zinc-200">{candidate.candidate_id ?? "Unnamed candidate"}</p>
+                    <p className="mt-1 text-[11px] text-zinc-600">{candidate.lane ?? "No lane"} · {candidate.status ?? "unknown"}</p>
                   </div>
-                ))}
-                {selected.completedTasks.length === 0 && (
-                  <p className="text-xs text-zinc-600 text-center py-4">No completed tasks</p>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* Skipped Tasks */}
-          {selected.skippedTasks.length > 0 && (
-            <div className="bg-[#111] border border-[#2a2a2a] rounded-lg">
-              <button
-                onClick={() => setSkippedOpen(!skippedOpen)}
-                className="w-full flex items-center justify-between p-4"
-              >
-                <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                  Skipped Tasks ({selected.skippedTasks.length})
-                </p>
-                {skippedOpen ? <ChevronUp size={14} className="text-zinc-500" /> : <ChevronDown size={14} className="text-zinc-500" />}
-              </button>
-              {skippedOpen && (
-                <div className="px-4 pb-4 space-y-2">
-                  {selected.skippedTasks.map((task, i) => (
-                    <div key={i} className="flex items-start gap-2 py-1.5">
-                      <span className="text-sm text-zinc-300">{task.name}</span>
-                      <span className="text-xs text-zinc-500">— {task.reason}</span>
-                    </div>
-                  ))}
+                  <span className="rounded border border-[#2b333c] px-2 py-1 font-mono text-xs text-zinc-300">{candidate.score ?? 0} / 40</span>
                 </div>
-              )}
+              ))}
             </div>
-          )}
+          </section>
 
-          {/* Portfolio Lines */}
-          {selected.portfolioLines.length > 0 && (
-            <div className="bg-[#111] border border-[#2a2a2a] rounded-lg p-4">
-              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-3">Portfolio Updates</p>
-              <div className="space-y-1.5">
-                {selected.portfolioLines.map((line, i) => (
-                  <p key={i} className="text-xs text-zinc-300">{line}</p>
-                ))}
-              </div>
-            </div>
-          )}
-        </>
-      )}
-
-      {/* Portfolio Queue */}
-      {queue.length > 0 && (
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-3">
-            🌐 Portfolio Queue — Pending Review
-          </p>
-          <div className="space-y-3">
-            {queue.map(item => {
-              const itemId = item.id || item.slug || "";
-              return (
-                <div key={itemId} className="bg-[#111] border border-[#2a2a2a] rounded-lg p-4">
-                  <div className="flex items-start gap-3">
-                    {item.score !== undefined && (
-                      <span className={cn(
-                        "text-xs px-2 py-0.5 rounded border font-medium flex-shrink-0",
-                        scoreColor(item.score)
-                      )}>
-                        {item.score}
-                      </span>
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm text-zinc-100 font-medium">{item.title || item.name || itemId}</p>
-                      {item.description && (
-                        <p className="text-xs text-zinc-400 mt-1">{item.description}</p>
-                      )}
-                      {item.notes && (
-                        <p className="text-xs text-zinc-400 mt-1 italic">{item.notes}</p>
-                      )}
-                      {item.tags && item.tags.length > 0 && (
-                        <div className="flex gap-1 mt-2 flex-wrap">
-                          {item.tags.map(tag => (
-                            <span key={tag} className="text-[9px] px-1.5 py-0.5 bg-[#1a1a1a] border border-[#2a2a2a] rounded text-zinc-500">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+          <section className="space-y-3">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Run history</p>
+            {snapshot.runs.length === 0 ? (
+              <StateBlock kind="empty" title="No validation runs yet" detail="Runs will appear after the controller writes a complete decision and promotion pair." />
+            ) : snapshot.runs.map((run) => (
+              <article key={run.runId} className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-medium text-zinc-100">{run.runId}</p>
+                    <p className="mt-1 text-[11px] text-zinc-600">{run.status} · {run.lane ?? "no lane selected"}</p>
+                    <p className="mt-1 text-[10px] text-zinc-700">{run.runAt}</p>
                   </div>
-                  <div className="flex items-center gap-2 mt-3">
-                    <button
-                      onClick={() => handleDecision(item, "approved")}
-                      className="text-xs px-3 py-1.5 rounded border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-colors"
-                    >
-                      Approve
-                    </button>
-                    <button
-                      onClick={() => handleDecision(item, "rejected")}
-                      className="text-xs px-3 py-1.5 rounded border border-rose-500/30 bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-colors"
-                    >
-                      Reject
-                    </button>
-                    {item.file && (
-                      <button
-                        onClick={() => openFile(item.file!)}
-                        className="text-xs px-3 py-1.5 rounded border border-[#2a2a2a] hover:border-emerald-500/50 text-zinc-300 hover:text-emerald-400 transition-colors"
-                      >
-                        📄 View
-                      </button>
-                    )}
-                    {savedIds.has(itemId) && (
-                      <span className="text-xs text-emerald-400 ml-1">✓ Saved</span>
-                    )}
-                  </div>
+                  <div className="text-right text-[11px] text-zinc-500">{run.selected.length} selected · {run.promotions.length} promoted</div>
                 </div>
-              );
-            })}
-          </div>
+                {run.issue && <p className="mt-3 rounded border border-red-900/50 bg-red-950/20 p-2 text-xs text-red-300">{run.issue}</p>}
+                {run.promotions.map((promotion) => (
+                  <div key={promotion.candidateId} className="mt-3 rounded-lg border border-emerald-900/40 bg-emerald-950/10 p-3">
+                    <div className="flex flex-wrap items-start justify-between gap-2">
+                      <p className="text-sm font-medium text-emerald-300">{promotion.title ?? promotion.candidateId}</p>
+                      <span className="font-mono text-[10px] text-zinc-500">{promotion.score ?? 0} / 40</span>
+                    </div>
+                    {promotion.firstAction && <p className="mt-2 text-xs text-zinc-300">{promotion.firstAction}</p>}
+                    {promotion.whyItMatters && <p className="mt-1 text-xs text-zinc-500">{promotion.whyItMatters}</p>}
+                    <p className="mt-2 text-[10px] text-zinc-600">
+                      {promotion.verifierConfirmed ? "Verifier confirmed" : "Verifier unconfirmed"} · evidence {promotion.evidenceScore ?? 0} · distribution {promotion.distributionScore ?? 0}
+                    </p>
+                  </div>
+                ))}
+              </article>
+            ))}
+          </section>
         </div>
       )}
+    </div>
+  );
+}
 
-      {/* File Viewer Slide-out */}
-      {fileViewer && (
-        <div className="fixed right-0 top-0 h-screen w-2/5 min-w-[20rem] bg-[#0d0d0d] border-l border-[#2a2a2a] z-50 flex flex-col">
-          <div className="flex items-center justify-between px-4 py-3 border-b border-[#2a2a2a]">
-            <p className="text-xs text-zinc-500 truncate">{fileViewer.path}</p>
-            <button
-              onClick={() => setFileViewer(null)}
-              className="text-zinc-500 hover:text-zinc-300 transition-colors p-1"
-            >
-              <X size={14} />
-            </button>
-          </div>
-          <div className="flex-1 overflow-auto p-4">
-            {fileViewer.content === null ? (
-              <p className="text-xs text-zinc-500">Loading...</p>
-            ) : (
-              <pre className="font-mono text-xs text-zinc-300 whitespace-pre-wrap">{fileViewer.content}</pre>
-            )}
-          </div>
-        </div>
-      )}
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-[#20262d] bg-[#0d1014] p-4">
+      <p className="text-[10px] uppercase tracking-wider text-zinc-600">{label}</p>
+      <p className="mt-2 break-words text-sm text-zinc-200">{value}</p>
     </div>
   );
 }

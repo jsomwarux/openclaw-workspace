@@ -14,6 +14,7 @@ export type SignalStatus =
 export type SignalLane = "work" | "revenue" | "ship" | "machine" | "evidence" | "health";
 export type SignalPriority = "high" | "medium" | "low";
 export type ScoreBand = "high" | "medium" | "low";
+export type Workstream = "paid-delivery" | "career-hedge" | "compounding-bet" | "administrative" | "other";
 
 export type ProofRef = {
   kind: "file" | "drive" | "url" | "jsonl" | "unknown";
@@ -65,6 +66,27 @@ export type Signal = {
   waitingOn?: WaitingOn;
   snoozedUntil?: number;
   reasonCodes?: string[];
+  firstAction?: string;
+  whyItMatters?: string;
+  doneState?: string;
+  evidenceLinks?: string[];
+  sourceSystem?: string;
+  reviewAt?: number;
+  dedupeKey?: string;
+  workstream?: Workstream;
+  hypothesis?: string;
+  nextTest?: string;
+  killDate?: number;
+  promotionScore?: number;
+  revivalTrigger?: string;
+  verdict?: string;
+  verifierConfirmed?: boolean;
+  verifiedAt?: string;
+  candidateId?: string;
+  sourceHash?: string;
+  evidenceScore?: number;
+  distributionScore?: number;
+  fatalConstraint?: boolean;
 };
 
 // One additive contribution per factor, before modifiers.

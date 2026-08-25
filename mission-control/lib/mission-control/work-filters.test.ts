@@ -55,4 +55,24 @@ describe("work lane filters", () => {
       ["eve-blocked"],
     ]);
   });
+
+  test("projects tasks into the approved operating-system workstreams", () => {
+    const signals = [
+      signal({ id: "now", priority: "high", status: "in-progress" }),
+      signal({ id: "paid", workstream: "paid-delivery", priority: "medium", status: "in-progress" }),
+      signal({ id: "career", workstream: "career-hedge" }),
+      signal({ id: "waiting-jt", owner: "jt", status: "awaiting-approval", waitingOn: { who: "JT", what: "decision", since: 1, nudgeAfterDays: 1 } }),
+      signal({ id: "bet", workstream: "compounding-bet" }),
+      signal({ id: "external", status: "waiting-external" }),
+      signal({ id: "archive", status: "archived", revivalTrigger: "Buyer requests it" }),
+    ];
+
+    expect(filterWorkSignals(signals, "now").map((item) => item.id)).toEqual(["now"]);
+    expect(filterWorkSignals(signals, "paid-delivery").map((item) => item.id)).toEqual(["paid"]);
+    expect(filterWorkSignals(signals, "career-hedge").map((item) => item.id)).toEqual(["career"]);
+    expect(filterWorkSignals(signals, "waiting-jt").map((item) => item.id)).toEqual(["waiting-jt"]);
+    expect(filterWorkSignals(signals, "compounding-bets").map((item) => item.id)).toEqual(["bet"]);
+    expect(filterWorkSignals(signals, "waiting-external").map((item) => item.id)).toEqual(["external"]);
+    expect(filterWorkSignals(signals, "archive-triggers").map((item) => item.id)).toEqual(["archive"]);
+  });
 });

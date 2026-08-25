@@ -1,0 +1,10 @@
+[
+  {
+    "candidate_id": "workflow-high",
+    "source_hash": "sha256:workflow-high",
+    "title": "Review validated workflow signal",
+    "first_action": "Open the nightly validation artifact for workflow-high.",
+    "why": "Fresh evidence passed deterministic admission and verifier confirmation.",
+    "done_state": "JT records a go or no-go decision."
+  }
+]

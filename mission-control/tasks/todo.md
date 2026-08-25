@@ -1,3 +1,11 @@
+## Plan — Agent Operating System Integration — 2026-08-24
+- [x] Add failing tests for task admission metadata, deduplicated upsert, work projections, and nightly validation parsing.
+- [x] Extend Convex task schema/mutations, API preservation, adapters, and shared types with optional operating-system metadata.
+- [x] Add Work projection filters and inspection detail without changing Today ranking or top-level navigation.
+- [x] Repurpose the existing Overnight page and API as a read-only Nightly Validation view.
+- [x] Run focused tests, TypeScript checking, and the isolated Mission Control build.
+- [x] Update implementation notes with decisions, files, verification, and remaining blockers.
+
 ## Plan — Mission Control Functionality Review — 2026-08-10
 - [x] Reproduce screenshot-reported Today page issues and inspect task mutation/data flow.
 - [ ] Add regression coverage for primary action labels, self due-date labels, evidence-gap display, and audit value formatting.

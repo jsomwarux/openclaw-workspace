@@ -43,3 +43,24 @@ export function formatAuditValue(field: string, value: string): string {
 export function needsEvidenceAttention(signal: Signal): boolean {
   return Boolean(signal.proofRequired || signal.evidence.some((ref) => ref.quality === "gap"));
 }
+
+function titleCase(value: string): string {
+  return value.replace(/-/g, " ").replace(/^./, (character) => character.toUpperCase());
+}
+
+export function operatingSystemDetails(signal: Signal): Array<[string, string]> {
+  const values: Array<[string, string | number | undefined]> = [
+    ["Workstream", signal.workstream ? titleCase(signal.workstream) : undefined],
+    ["First action", signal.firstAction],
+    ["Why it matters", signal.whyItMatters],
+    ["Done state", signal.doneState],
+    ["Hypothesis", signal.hypothesis],
+    ["Next test", signal.nextTest],
+    ["Promotion score", signal.promotionScore === undefined ? undefined : `${signal.promotionScore} / 40`],
+    ["Verifier", signal.verifierConfirmed === true && signal.verdict === "promote" ? "Confirmed promote" : undefined],
+    ["Evidence score", signal.evidenceScore === undefined ? undefined : String(signal.evidenceScore)],
+    ["Distribution score", signal.distributionScore === undefined ? undefined : String(signal.distributionScore)],
+    ["Revival trigger", signal.revivalTrigger],
+  ];
+  return values.filter((item): item is [string, string] => typeof item[1] === "string" && item[1].length > 0);
+}

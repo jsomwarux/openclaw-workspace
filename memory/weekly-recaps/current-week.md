@@ -1,4 +1,4 @@
-# Week of 2026-08-17 - Work Log
+# Week of 2026-08-24 - Work Log
 
 - 2026-07-10: Ran first Friday Scoreboard, saved `memory/audits/friday-scoreboards/2026-07-10.md`, created repeat-offender digest `memory/audits/repeat-offenders/2026-07-10.md`, and logged same-day proof `8468cec8`.
 
@@ -38,3 +38,11 @@ Archive every Monday, start fresh.
 - 2026-08-18: Logged JT's 90-day strategy clarification: cash collected is the main outcome, property-first public positioning is approved while adjacent niches are researched in parallel, and the preferred end-state is a managed AI operations service plus partner-business studio.
 - 2026-08-19: Wrote JT's final 90 Day Playbook mandate through 2026-11-17 to durable memory. It supersedes the Aug 18 parallel-research guidance where conflicting: scoreboard is cash collected, input metric is 2 priced conversations/week, frozen list is enforced, and Mission Control write contract now blocks research/market-discovery/system-design/tooling tasks.
 - 2026-08-22: JT approved a controlled reactivation of the job-market hedge: weekday evidence-backed role research, Tue/Thu submitted-application tracking, on-demand GPT-5.6 Sol packages, and no auto-builder.
+- 2026-08-24: Recovered the approved but undelivered Grok Bot operator evidence-pack request, rebuilt the 14-section Markdown brief from current mandate/client/live-cron evidence, and routed it through fresh verification before Telegram delivery.
+- 2026-08-24: Repaired the job-hedge discovery layer after a false zero-role run; the rerun checked 127 unique postings and retained Anthropic Business Systems Analyst as a 20/25 stretch after correcting an unsupported `SLA ownership` inference.
+- 2026-08-24: Generated and Drive-uploaded the Anthropic Business Systems Analyst resume and cover letter, verified the live Google Docs text and application-field mapping, and created JT's application task without claiming submission.
+- 2026-08-24: Corrected the Anthropic BSA package by removing AgentGuard and Nash Satoshi, replacing them with permission-safe accepted enterprise analytics/QA proof and paid operational outcomes, updating the same Drive documents in place, and staging a durable job-application skill correction for approval.
+- 2026-08-24: Removed colon-led AI-writing patterns from the Anthropic cover letter, updated the same Drive document, verified the live export contains zero colons, and added the global preference to JT's voice rules plus the pending job-application skill update.
+- 2026-08-24: Completed and fresh-verified the 60-system agent operating-system redesign, recommended one Signal Lab Grok Bot with two routines and a four-week manual Eve handoff, and staged the six-system portfolio plus bounded nightly validation architecture without changing live systems.
+- 2026-08-24: JT approved non-Grok implementation; retained Daily Workout Card as one-way training delivery outside canceled health automation, diagnosed Friday Scoreboard as quota-blocked, confirmed the tracker schedule, and reconciled/pushed the n8n backup repository.
+- 2026-08-24: Shipped and independently verified the bounded Nightly Validation Controller plus strict Mission Control portfolio/admission views, installed the 11:15 PM ET schedule, and passed the silent empty-queue live smoke run with healthy cron volume.

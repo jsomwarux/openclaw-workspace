@@ -2,7 +2,7 @@
 
 import { Archive, Clock3, UserPlus, X } from "lucide-react";
 import { useTaskAudit } from "@/lib/mission-control/hooks";
-import { formatAuditField, formatAuditValue, needsEvidenceAttention } from "@/lib/mission-control/inspection-display";
+import { formatAuditField, formatAuditValue, needsEvidenceAttention, operatingSystemDetails } from "@/lib/mission-control/inspection-display";
 import { reasonChips, reasonToneClassName } from "@/lib/mission-control/reason-codes";
 import type { Signal } from "@/lib/mission-control/types";
 import { priorityOptions, rankingExplanation } from "@/lib/mission-control/work-actions";
@@ -54,6 +54,7 @@ export function InspectionDrawer({
   const showEvidenceAttention = needsEvidenceAttention(signal);
   const hasSecondaryActions = Boolean(onSnooze || onNotNow || onHandToEve);
   const hasWorkActions = Boolean(onDefer || onArchive);
+  const operatingDetails = operatingSystemDetails(signal);
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/70" onClick={onClose}>
@@ -88,6 +89,20 @@ export function InspectionDrawer({
             {signal.context || "No extra context attached yet."}
           </p>
         </section>
+
+        {operatingDetails.length > 0 && (
+          <section className="mt-6 rounded-lg border border-[#20262d] bg-[#0b0d0f] p-3">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Admission and bet detail</p>
+            <dl className="mt-3 space-y-3">
+              {operatingDetails.map(([label, value]) => (
+                <div key={label}>
+                  <dt className="text-[10px] uppercase tracking-wider text-zinc-600">{label}</dt>
+                  <dd className="mt-1 whitespace-pre-wrap text-xs leading-relaxed text-zinc-300">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
 
         {signal.eveRead && (
           <section className="mt-6 rounded-lg border border-purple-900/40 bg-purple-950/10 p-3">
