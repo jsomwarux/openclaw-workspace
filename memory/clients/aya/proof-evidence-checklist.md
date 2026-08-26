@@ -51,6 +51,10 @@ Do not ask Aya/Gil for referrals until at least one deliverable has:
 3. One clear value sentence.
 4. Permission/anonymization boundary.
 
+### Narrow exception recorded 2026-08-25
+
+Gil previously offered to connect JT with the hospitality team around Lady D and/or Little Charlie, and the construction dashboard is complete and paid. JT may resume that specific offered expansion path without using Aya as public proof, naming private project details, or claiming unverified outcomes. The general Aya-network referral gate above remains blocked until its evidence requirements are complete.
+
 When ready, ask for 2–3 NYC construction or real-estate operators with similar reporting/coordination pain. Do not imply private details from Aya work.
 
 ## Anonymized Proof Frame Once Evidence Exists

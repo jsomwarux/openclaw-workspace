@@ -23,3 +23,11 @@ The verifier confirmed the documented Project, Automation, and Bot comparison wi
 ## Boundary
 
 Design and audit only. JT approval is still required before creating the Grok Bot, routines, cron changes, Mission Control schema changes, or other live implementation.
+
+## Superseded Grok setup — 2026-08-25
+
+JT approved a lower-cost and tighter configuration: one Revenue Signal Lab Grok Project plus one weekday Revenue Signal Scan Automation. The canonical instructions are `deliverables/revenue-signal-lab-setup-2026-08-25.md`; the prior Bot and two-routine setup is historical only.
+
+## Grok-native optimization — 2026-08-25
+
+Grok 4.6's instruction-engineering improvements were reconciled into the canonical setup: fresh-run memory warning, front-loaded action boundaries, current-motion qualification, Latest/date-bound X search, opened-source rules, event clustering, strict unknown-vs-failed VALIDATE logic, and labeled $50K assumptions. The original four-week governance remains authoritative with the stricter 20% noise/repeat ceiling. Fresh verifier: CONFIRMED. Live Google Doc readback: CONFIRMED.

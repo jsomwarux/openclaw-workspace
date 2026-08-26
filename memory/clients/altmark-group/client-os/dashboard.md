@@ -4,15 +4,16 @@
 - Primary outcome: local-first automation for sensitive back-office/property/family-office workflows with audit trail, human approval, and clear exception handling.
 - Baseline: manual/local back-office processes before JT installed local workflow infrastructure.
 - Target: insurance workflow stable in production, rent delinquency workflow tested/deployed cleanly, and DHCR Lease Renewal Phase 1 ready to kick off after rent delinquency acceptance.
-- Current status: active — dedicated PC installed at Altmark office; insurance expiration workflow live in production and final 50% paid; rent delinquency initial 50% paid and in active build/testing; DHCR Lease Renewal proposal reviewed and delivery assets prepared.
+- Current status: active. On 2026-08-24 Yair said Matt returns 2026-08-25 to clear rent delinquency outstanding items and Adi returns 2026-08-27, after which Yair will discuss JT's 2026-08-12 employment/NewCo proposal. Existing signed project terms remain the governing baseline unless replaced in writing. DHCR is on hold.
 
 ## Live Status
 | Area | Status | Notes | Owner | Next Action | Due |
 |---|---|---|---|---|---|
 | Insurance expiration workflow | Live in production / paid | Working as expected after a few minor updates; final 50% received | JT / Yair / Navid | Capture proof-safe screenshots/run logs/acceptance wording for referral/case-study use | This week |
 | Dedicated PC handoff | Installed in office | Local workflow environment running production workflow | JT / Navid | Confirm support/admin path and backup visibility, but do not block revenue proof on old install uncertainty | This week |
-| Rent delinquency workflow | Synthetic gate passed / client sample needed | Initial 50% received; 2026-05-29 dry run processed 8 synthetic rows into 1 included, 4 manual review, 1 excluded, 2 cleanup, with 0 tenant-facing drafts | JT / Yair / Matt/Karen | Use `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md` to request redacted Altmark sample export, source report path, refresh cadence, named output reviewer, and exception rules | Immediate |
-| DHCR Lease Renewal Phase 1 | Proposal reviewed / delivery assets ready | Legal-rent renewals only; $3,500 proposal; preferential-rent renewals parked as Phase 2 | JT / Eve / Yair / Matt | After rent delinquency deployment/testing, confirm kickoff payment, populated command center spreadsheet, RGB rates, included units/properties, approved email recipients, and rent rolls | After rent delinquency gate |
+| Rent delinquency workflow | Client outstanding-item review acknowledged | Initial 50% received; synthetic gate passed; JT forwarded Matt the outstanding-item emails and messaged Yair/Matt on 2026-08-25; Matt replied “sounds good” | Yair / Matt / JT | Await substantive questions or deployment action; provide only genuinely missing inputs | Await client update |
+| DHCR Lease Renewal Phase 1 | On hold | Do not chase as a standalone deposit/delivery item while Yair and Adi have not answered JT's 2026-08-12 employment/NewCo proposal | JT / Yair / Adi | Revisit only after response or explicit Altmark reprioritization | No due date |
+| Altmark employment + NewCo | Waiting on scheduled discussion | Written proposal sent 2026-08-12; on 2026-08-24 Yair said he will discuss it with Adi after Adi returns 2026-08-27 | Yair / Adi / JT | Wait through stated checkpoint; revisit if no update | 2026-08-31 |
 | n8n HTTPS + Google OAuth | Reliability improvement / not commercial gate | Migration runbook exists; now lower priority than rent testing and proof capture unless current production workflow needs it | Eve / JT | Only migrate after backup/admin path is clear and non-sensitive smoke test is ready | After testing/proof |
 | Reusable IP capture | Active | Insurance workflow is now proof-eligible subject to privacy/anonymization boundary | Eve / JT | Build anonymized workflow case file from verified facts only | This week |
 
@@ -34,7 +35,9 @@
 | Proof-safe reusable patterns | 0 | 2 logged | 1+ productized template | Up | Use synthetic/anonymized sample data. |
 
 ## Next 7 Days
-- Use `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md` as the next rent delinquency action: the synthetic dry run passed, so the next gate is client sample/export shape, source report path, refresh cadence, named output reviewer, and confirmed exception rules.
+- Do not follow up before Adi returns 2026-08-27. If there is no update, revisit the employment/NewCo discussion 2026-08-31 without bundling DHCR, referrals, or favors.
+- Keep DHCR on hold until Yair/Adi respond or explicitly pull it forward.
+- After Yair/Matt substantively report back, use `proof-assets/redacted-sample-request-and-cutover-gate-2026-05-30.md` only for inputs that remain unresolved; Matt's acknowledgment alone does not clear deployment gates.
 - Keep `proof-assets/tuesday-closeout-branch-sheet-2026-05-26.md` available for any unresolved insurance/access/payment facts, but do not let old closeout wording obscure the current rent delinquency sample-export gate.
 - DHCR Lease Renewal Phase 1 is now ready for kickoff sequencing after rent delinquency: use `proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, `client-os/acceptance-checklist-dhcr-lease-renewal.md`, and `runbooks/dhcr-lease-renewal-workflow.md`.
 - For infrastructure reliability, use `runbooks/n8n-https-google-oauth-migration-plan-2026-05-21.md` only after PC/admin access and backup path are confirmed: back up n8n, choose stable HTTPS pattern, configure Google OAuth redirect, reconnect credentials, and run a non-sensitive smoke test.
@@ -42,10 +45,11 @@
 
 
 ## Decision Needed From Client
+- Confirm whether Yair and Adi want to proceed with the Altmark employment package and separate NewCo discussion.
 - Confirm support/admin owner for the installed PC and production workflow environment.
 - Confirm any remaining insurance workflow open issues, if any.
 - Confirm rent delinquency testing inputs, owner/date for acceptance, and production cutover expectations.
-- Confirm DHCR Lease Renewal kickoff timing after rent delinquency deployment/testing, including $1,750 start payment, populated spreadsheet owner/date, RGB rates, included legal-rent units/properties, and approved recipients.
+- DHCR kickoff inputs are deferred until the employment/NewCo decision is answered or Altmark explicitly reprioritizes DHCR.
 
 ## Internal Control Added — 2026-05-13
 - Weekly update must explicitly say whether the Altmark MC blocker was updated.
@@ -53,7 +57,7 @@
 
 ## Current Delivery Focus — 2026-05-26
 - Insurance expiration workflow: live in production, stable after minor updates, final payment received. Capture proof-safe evidence and support/runbook details.
-- Rent delinquency workflow: paid kickoff complete; active build/testing is now the main delivery priority. Testing pack prepared at `acceptance-checklist-rent-delinquency.md` and `runbooks/rent-delinquency-workflow.md`.
+- Rent delinquency workflow: paid kickoff complete; awaiting Yair/Matt's outstanding-item review before further testing. Testing pack remains at `acceptance-checklist-rent-delinquency.md` and `runbooks/rent-delinquency-workflow.md`.
 - DHCR Lease Renewal Phase 1: proposal reviewed; kickoff/acceptance/runbook assets created. Next delivery after rent delinquency deploys unless Altmark explicitly reprioritizes.
 - Referral path: stronger now because one workflow is live and paid, but still keep naming/permission boundaries clean before using Altmark publicly or asking Yair for intros.
 

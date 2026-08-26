@@ -21,7 +21,19 @@ The optimization target is not constant agent activity. It is useful validated o
 
 ## Grok decision
 
-Create one dedicated Grok Bot named Signal Lab.
+### 2026-08-25 implementation update
+
+JT chose not to upgrade solely for Grok Bot. The governing setup is now:
+
+`deliverables/revenue-signal-lab-setup-2026-08-25.md`
+
+Drive: https://docs.google.com/document/d/1nTsP5GL5RHMVYcYu8raxtLPdyyHXwGVewWjRecwPcN0/edit
+
+It defines one dedicated Grok Project plus one weekday Revenue Signal Scan Automation, weighted toward higher-value demand, buyer/distribution intelligence, and delivery leverage. It supersedes every Bot profile, broad Daily Signal Scan, and Weekly Portfolio Challenge instruction below. The historical material remains only as design rationale.
+
+## Historical Grok design — do not use for setup
+
+Original recommendation, now superseded: create one dedicated Grok Bot named Signal Lab. The Bot profile and routines below are retained only to preserve the decision history. Do not paste or configure them. Use `deliverables/revenue-signal-lab-setup-2026-08-25.md` for every setup step and instruction.
 
 A Grok Project with scheduled automations would suffice for a basic research feed. Signal Lab is a better Bot use case because it has a distinct durable job, a recurring schedule, specialized sources, stable approval boundaries, and context that should improve over time. Those are the conditions xAI itself gives for creating a dedicated Bot.
 
@@ -390,7 +402,7 @@ The 60 inventoried systems should be governed as six operating systems.
 
 ### Phase one
 
-Create Signal Lab in Grok with the durable profile and two routines. Test both routines manually. JT forwards outputs to Eve for four weeks.
+Create the Revenue Signal Lab Project and one weekday Revenue Signal Scan Automation from `deliverables/revenue-signal-lab-setup-2026-08-25.md`. Test the one Automation manually and verify it inherited the Project positioning, offer ladder, and output schema. JT forwards qualifying outputs to Eve for four weeks.
 
 Repair the Friday Scoreboard before expanding the portfolio. Verify the Job Application Tracker is actually firing on schedule. Resolve whether Daily Workout Card is intentionally separate from the canceled health crons. Diagnose the recurring n8n backup push failure.
 
@@ -404,7 +416,7 @@ Consolidate the content and completion-event pipelines. Replace the passive-inco
 
 ### Phase four
 
-After four weeks, review Signal Lab's yield. Build an automated Grok-to-Eve handoff only if the Bot produced at least eight useful forwarded findings and manual transfer or deduplication became a real bottleneck.
+After four weeks, apply the canonical PASS / REPAIR / STOP thresholds in `deliverables/revenue-signal-lab-setup-2026-08-25.md`. Consider a weekly synthesis Automation or automated Grok-to-Eve handoff only after PASS and only if manual transfer or deduplication became a measured bottleneck.
 
 ## Success measures
 

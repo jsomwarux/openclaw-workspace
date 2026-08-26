@@ -843,3 +843,17 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** `scripts/tests/test_git_backup_preflight.py` creates real temporary remotes and verifies synced, remote-ahead, and diverged outcomes; it also asserts all three backup repositories route through the preflight helper.
 - **Owner surface updated:** `scripts/git_backup_preflight.py`, `scripts/backup.sh`, `scripts/tests/test_git_backup_preflight.py`, and this Mistakes Log entry.
 - **Verification/date:** 2026-08-24 — four focused tests passed, `bash -n scripts/backup.sh` passed, and the reconciled n8n repository reported `SYNCED`, ahead 0, behind 0.
+## 2026-08-25 — Used unsupported numeric freshness in canonical web search
+- **Failure:** Called `scripts/web_search.py` with unsupported `--freshness 3650`, then reran without sourcing the approved global environment required for `BRAVE_API_KEY`.
+- **Root cause:** Assumed the local wrapper mirrored a day-count freshness interface and overlooked its documented environment precondition instead of checking syntax and runtime setup together.
+- **Guardrail/rule:** Before first use of a local CLI in a turn, run `--help` and check its TOOLS.md/runtime prerequisites; invoke web search through a shell that sources `~/.config/env/global.env` without printing secrets.
+- **Regression check:** `python3 scripts/web_search.py --help` shows named freshness choices; successful rerun uses `--freshness year` after sourcing the approved environment.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
+- **Verification/date:** Logged and corrected 2026-08-25; successful rerun used `set -a`, sourced the approved global environment, and returned Brave results without printing secrets.
+## 2026-08-25 — Verification correction patch used stale exact row text
+- **Failure:** A multi-file `apply_patch` failed because the expected Altmark dashboard row omitted the word `synthetic` from the current file.
+- **Root cause:** Constructed an exact-context patch from remembered output instead of re-reading the target lines after the verifier returned corrections.
+- **Guardrail/rule:** Before a verifier-driven multi-file patch, `rg -n` every exact anchor and build the patch from current text.
+- **Regression check:** All target anchors were re-read with `rg -n`; the replacement patch uses the exact current row and completes successfully.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
+- **Verification/date:** Logged 2026-08-25 before retry.

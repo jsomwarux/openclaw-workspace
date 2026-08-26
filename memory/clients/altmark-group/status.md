@@ -1,6 +1,6 @@
 # Altmark Group — Client Status
 
-Last updated: 2026-07-02
+Last updated: 2026-08-25
 
 ## Client
 - Company: Altmark Group
@@ -49,6 +49,11 @@ Known active/current workflows from JT update:
 
 ## Current Status
 - Active client engagement.
+- 2026-08-12: JT sent Yair and Adi a written proposal separating (1) a full-time Altmark W2 role and (2) a separately formed NewCo. Starting employment terms are $185,000 base, three days in office/two remote, health benefits, existing-client carveouts, narrow competitor restriction, and explicit protection/licensing of JT's pre-existing IP. Starting NewCo terms require formation before product work, personal ownership by the three founders, four-year vesting, documented startup funding, JT majority ownership as the opening position, protected approval rights, and a 12-month contribution review.
+- 2026-08-20: JT followed up with Yair by WhatsApp about the employment/NewCo email and the rent delinquency bot questions.
+- 2026-08-24: Yair replied after being out sick. He said Matt returns 2026-08-25 and they intend to review and clear the outstanding rent delinquency items immediately; Adi returns 2026-08-27, after which Yair will discuss JT's employment/NewCo reply with him. JT acknowledged and asked Yair to keep him posted.
+- 2026-08-25: JT forwarded Matt the existing emails listing outstanding rent-delinquency items, then messaged Yair and Matt asking for questions or anything else needed to deploy. Matt replied “sounds good,” confirming receipt but not yet clearing the deployment gates.
+- Current routing: await Yair/Matt's substantive review, questions, or deployment action; do not send another rent-delinquency chase today. Employment/NewCo waits on Yair/Adi after Adi's 2026-08-27 return; DHCR remains on hold behind both and must not be chased separately.
 - Insurance expiration workflow is live in production and working as expected after a few minor updates.
 - Altmark paid the final 50% for the insurance expiration workflow.
 - Dedicated PC for workflows was installed in Altmark's office last week.
@@ -75,6 +80,9 @@ Known active/current workflows from JT update:
 - Full audit trail for workflow actions.
 
 ## Immediate Next Actions
+- Wait for Yair/Matt's substantive response to the 2026-08-25 forwarded emails/message; answer questions or provide only genuinely missing deployment inputs.
+- Wait for Yair to discuss JT's employment/NewCo response with Adi after Adi's 2026-08-27 return; if no update, revisit 2026-08-31.
+- Hold DHCR. Do not use the kickoff command sheet, chase Matt, or request its deposit unless Yair/Adi respond or Altmark explicitly reprioritizes it.
 - 2026-07-02: finish setting up Conductor on Beelink.
 - 2026-07-02: follow Danny's guide and configure everything needed for the rent delinquency bot.
 - 2026-07-02: run Fable final playbook review before deploy/payment closeout.

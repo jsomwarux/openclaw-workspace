@@ -13,7 +13,7 @@
 | SOW delivery | Accepted | All four SOW deliverables delivered and accepted; technical lead independently re-verified on MSI systems and confirmed to exec team in writing on 2026-08-17 | Client technical lead / JT | Keep acceptance proof private; do not reopen SOW unless client names a defect | Closed |
 | Completion invoice | Sent | MSI-002, $5,400, sent 2026-08-18, Net 15, due 2026-09-02 | JT / MSI | Flag if unpaid by 2026-09-03 | 2026-09-03 |
 | Polish items | Client-owned | Remaining polish items sit with the client's technical lead | Client technical lead | JT only responds if pulled in through technical lead | As needed |
-| Expansion | Open follow-on lane | Possible next steps: more clients through onboarding pipeline, context-updater agent, budget and flight-dates modal, QA coverage across production clients, ongoing maintenance | Technical lead first, then budget owner | Follow up on the team walkthrough in about a week; route scope conversation through technical lead before budget owner | ~2026-08-25 |
+| Expansion | Teams follow-up sent | JT emailed Ed on 2026-08-19 with three lanes, then sent a Teams bump on 2026-08-25 asking which ideas are technically worth pursuing and offering concrete scopes for Sam/Karen budget approval. | Ed / JT | Await Ed's technical signal and routing; quote only after a lane is selected and a budget owner is involved | Await reply |
 
 ## Wins This Week
 - All four Nexus SOW deliverables were delivered and accepted.
@@ -39,7 +39,7 @@
 | Completion invoice | $5,400 remaining | MSI-002 sent | Paid by 2026-09-02 | Open | Flag if unpaid 2026-09-03 |
 
 ## Next 7 Days
-- Follow up on the team walkthrough around 2026-08-25.
+- Await Ed's response to the 2026-08-25 Teams follow-up; do not send another bump immediately.
 - Keep any scope conversation routed through the technical lead first, then the budget owner. Do not reverse the order.
 - Do not propose wiring QA into MSI's release flow; they have claimed that in-house.
 - Flag before quoting anything. The current rate was explicitly the initial-project rate, and expanded scope must be negotiated separately.

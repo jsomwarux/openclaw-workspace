@@ -16,7 +16,7 @@ Redesign JT's agent portfolio so immediate cash and career stability retain prio
 
 ## Approved Design
 
-Use one dedicated Signal Lab Grok Bot with one weekday signal routine and one weekly portfolio routine. JT will create the Grok Bot separately. Eve owns every approved implementation item outside Grok.
+Superseded 2026-08-25: use the canonical `deliverables/revenue-signal-lab-setup-2026-08-25.md`. It defines one dedicated Revenue Signal Lab Grok Project and one weekday Revenue Signal Scan Automation. Do not upgrade solely for Grok Bot. Start with the daily scan and manual forwarding to Eve for four weeks; add weekly synthesis only after the daily output passes its evidence and buyer-action gate. JT owns the Grok setup. Eve owns every approved implementation item outside Grok.
 
 ## Implementation Authorization
 

@@ -1,8 +1,7 @@
-# Send Queue - Generated 2026-08-24
+# Send Queue - Generated 2026-08-25
 
 Generated from `memory/pipeline.jsonl`. JT sends; Eve never sends outreach.
 
-1. send - DHCR Lease Renewal Phase 1 deposit
-   Source: `JT sync correction 2026-08-10; value is forecast-only, not payments ledger`
-   Next action: Route DHCR to Matt as a delivery-track item. Do not chase the deposit inside the Altmark FTE/NewCo compensation negotiation thread; money and favor do not share a message.
-   Waiting on: client | age: 14 days
+No pipeline sends are currently due from the generated queue.
+
+Altmark correction (JT, 2026-08-25): DHCR is on hold. Do not send the kickoff request or staged Matt chase while Yair and Adi have not answered JT's 2026-08-12 employment/NewCo proposal. The separate decision follow-up is tracked in Mission Control, not as a DHCR deposit chase.
