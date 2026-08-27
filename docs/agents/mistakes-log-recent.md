@@ -857,3 +857,10 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** All target anchors were re-read with `rg -n`; the replacement patch uses the exact current row and completes successfully.
 - **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
 - **Verification/date:** Logged 2026-08-25 before retry.
+# 2026-08-26 — Mission Control task query assumed the wrong API response shape
+- **Failure:** Two read-only Mission Control duplicate-check commands failed: one used an escaped f-string expression, and the next treated the `/api/tasks` response as a top-level array instead of `{ "tasks": [...] }`.
+- **Root cause:** I copied the stale TOOLS.md example without first inspecting the live endpoint schema, then compounded it with unnecessary inline formatting logic.
+- **Guardrail/rule:** Inspect the live JSON type/keys first and use `jq '.tasks[]'` for this endpoint; avoid inline Python for simple task filtering.
+- **Regression check:** `curl -s http://localhost:3000/api/tasks | jq -e '.tasks | type == "array"'` must pass before filtering tasks.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md` (this operational guardrail); no production code changed.
+- **Verification/date:** Live endpoint returned object key `tasks` on 2026-08-26; corrected schema check passed before task mutation.

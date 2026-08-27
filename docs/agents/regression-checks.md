@@ -270,8 +270,8 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 
 ## Mission Control dueDate millisecond check
 - **Trigger:** Any heartbeat, Morning Brief, Daily Send Sheet, Friday Scoreboard, Weekly Systems Review, or cron payload that summarizes Mission Control overdue/due-soon tasks from `/api/tasks`.
-- **Check:** Normalize `/api/tasks` with `(.tasks // .items // .)` and treat `dueDate` as a millisecond timestamp. Compare overdue with `.dueDate < (now*1000)` and due-soon with millisecond windows such as `.dueDate < ((now+172800)*1000)`. Do not compare numeric `dueDate` values to ISO strings or raw seconds.
-- **Fail condition:** A report overcounts or mislabels overdue/due-soon tasks because it treats Mission Control `dueDate` values as ISO strings or second-based timestamps.
+- **Check:** Normalize `/api/tasks` with `(.tasks // .items // .)` and treat `dueDate` as a millisecond timestamp. Require `.dueDate != null` before every overdue or due-soon comparison, then compare overdue with `.dueDate < (now*1000)` and due-soon with millisecond windows such as `.dueDate < ((now+172800)*1000)`. Do not compare numeric `dueDate` values to ISO strings or raw seconds; jq coerces `null` in numeric comparisons and can silently count undated tasks as overdue.
+- **Fail condition:** A report overcounts or mislabels overdue/due-soon tasks because it includes null due dates or treats Mission Control `dueDate` values as ISO strings or second-based timestamps.
 - **Owner surface:** `docs/agents/heartbeat-extended-rules.md`, HEARTBEAT Mission Control checks, Mission Control summary/reporting cron payloads.
 
 ## Morning Brief Nash gate non-abort check
