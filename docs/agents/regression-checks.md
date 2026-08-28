@@ -268,6 +268,12 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Fail condition:** Heartbeat checks repeatedly call an OpenClaw-rejected Node binary, then silently recover with a different path without updating the rule that caused the failure.
 - **Owner surface:** `docs/agents/heartbeat-extended-rules.md`, HEARTBEAT cron health checks, `scripts/cron_volume_guard.py`.
 
+## Revenue Signal Lab output-format recurrence check
+- **Trigger:** Every Revenue Signal Lab weekday run during its four-week validation window.
+- **Check:** User-visible output must begin with the required date header and contain no search/process narration before it. Record each run as succeeded Y/N in `memory/revenue-signal-lab-tracker.md`; count any pre-header narration as a run failure even when the candidate itself is useful. Do not redesign after one isolated miss, but escalate for prompt correction if the same format miss recurs.
+- **Fail condition:** A run exposes search narration before the date header, the miss is omitted from the tracker, or repeated misses are treated as successful because the underlying research was useful.
+- **Owner surface:** Revenue Signal Lab Automation prompt and `memory/revenue-signal-lab-tracker.md`.
+
 ## Mission Control dueDate millisecond check
 - **Trigger:** Any heartbeat, Morning Brief, Daily Send Sheet, Friday Scoreboard, Weekly Systems Review, or cron payload that summarizes Mission Control overdue/due-soon tasks from `/api/tasks`.
 - **Check:** Normalize `/api/tasks` with `(.tasks // .items // .)` and treat `dueDate` as a millisecond timestamp. Require `.dueDate != null` before every overdue or due-soon comparison, then compare overdue with `.dueDate < (now*1000)` and due-soon with millisecond windows such as `.dueDate < ((now+172800)*1000)`. Do not compare numeric `dueDate` values to ISO strings or raw seconds; jq coerces `null` in numeric comparisons and can silently count undated tasks as overdue.
