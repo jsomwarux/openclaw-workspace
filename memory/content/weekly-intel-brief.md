@@ -1,53 +1,59 @@
 # Weekly Intel Brief
-> Sunday intelligence synthesis. Review-only; no posting, scheduling, outbound send, or systems maintenance was performed.
+> Sunday intelligence synthesis. Review-only; no posting, scheduling, outbound send, task mutation, or systems maintenance was performed.
 
-**Week of:** 2026-08-23
+**Week of:** 2026-08-30
 
 ## Buyer Signal
 
-Property-management AI is moving from isolated assistants into existing operating workflows, but trust still rides on the controls already surrounding the work. Fresh examples describe vendor-bill coding that remains inside normal permissions and audit trails, multi-step property workflows that raise accountability questions, and automation across collections, maintenance, renewals, reporting, and resident communication.
+Property-management AI is clustering around a practical control pattern: perform work inside the existing operating workflow, preserve the normal permission and accounting structure, require human approval for consequential steps, and keep an audit trail. Current examples span vendor-bill coding, invoice approval, resident and vendor communication, and multi-step workflow preparation.
 
-The useful sales implication is narrow: do not sell autonomy. Sell one controlled workflow where the owner can see the source, action, permission boundary, reviewer, exception, and business result.
+The buyer implication is sharper than “automation”: a useful implementation should show what the system prepared, which existing control still governs release, who owns the exception, and where the result is recorded. Housing, payment, safety, and resident-facing steps remain the strongest cases for visible review boundaries.
 
 ## Governance Signal
 
-Agent-governance language is converging on the same runtime record: user or agent identity, credential scope, policy decision, approval for irreversible actions, tool arguments, outcome, escalation path, and audit log. This is the enterprise version of the same proof a property operator needs when money, housing, safety, or resident communication is involved.
+Agent governance is converging on tool-call-level enforcement. Fresh sources emphasize per-agent identity, scoped MCP permissions, OAuth/OIDC-aligned authorization, policy decisions at the gateway, and audit records that connect the represented user, permission change, tool invocation, and result. Authentication alone is not the control; the differentiator is task-scoped authority plus evidence of the decision.
+
+For buyer-facing proof, the smallest credible record is:
+
+`requester | workflow/agent | source system | allowed action | credential scope | policy/approval decision | reviewer | exception | evidence/result`
 
 ## Strategic Recommendation
 
-Use the current DHCR/Matt gate as the commercial wedge, not as a broad research or platform story. The strongest $1,500 Workflow Audit framing is:
+Do not open a new research, content, or product lane this week. Convert the existing warm-list work into priced conversations and use the control record as the explanation layer only when needed.
 
-> We map one process, show where money or time leaks, and leave you with the approval and exception record needed to decide whether it is safe to build.
+The current offer language remains strong:
 
-For a build, keep the acceptance row small:
+> We take one messy workflow, map the approval and exception points, and leave a working control record the business can trust.
 
-`source | requested action | permission boundary | reviewer | exception path | evidence | next cash event`
-
-This supports the active 90 Day Playbook: NYC/NJ property managers first, warm list before strangers, two priced conversations per week, and cash collected as the scoreboard.
+The immediate commercial sequence is already staged in the delivered Send Sheet: Ed/MSI follow-on first, then Gil and Karen referral asks, with the Altmark follow-up opening August 31 at 9:00 AM ET if no update arrives. This synthesis does not repeat those notifications or send anything.
 
 ## Content Gap
 
-If JT chooses to publish later, the strongest proof-safe angle is a concrete before/after control record for a familiar property workflow: invoice coding, delinquency follow-up, lease renewal, maintenance routing, or owner reporting. The missing content is not another AI trend post; it is a one-screen example showing what the system prepared, what it could not release, who reviewed it, and what moved next.
+The strongest future proof-safe asset is a one-screen “before release” record for a property workflow: vendor invoice, delinquency follow-up, lease renewal, maintenance exception, or owner report. It should show the source, prepared action, approval boundary, exception owner, and final evidence path.
 
-Do not create or publish that case study until current client proof and approval boundaries support it.
+This is a gap, not a publishing instruction. Do not draft or publish it until a real client artifact can support the claims and approval boundaries.
 
 ## Job Signal
 
-The local job brief is stale (2026-07-08), so it is not evidence for a current role recommendation. The approved weekday Job Market Daily Research schedule begins its selective live-posting checks Monday; do not infer openings from the stale brief. The transferable positioning signal remains implementation governance, adoption, reusable workflow assets, and measurable business outcomes rather than coding-heavy architecture.
+The local job-market brief is current through 2026-08-28 and reports healthy discovery but no evidence-backed role clearing every gate. Fresh search results continue to use “AI enablement,” “adoption,” “implementation readiness,” “governance,” and “measurable value” language, but the visible roles frequently drift into engineering enablement, pre-sales, below-floor compensation, or unsupported architecture ownership.
+
+The positioning signal is therefore stable: post-sale workflow implementation, adoption, governance, and measurable operating outcomes fit better than platform engineering or quota-bearing solution architecture. No role recommendation is warranted from this synthesis.
 
 ## Sources Checked
 
-- Local: `memory/north-star.md`
-- Local: `memory/niche-monitor-latest.md`
+- Local: `memory/niche-monitor-latest.md` (stale, last updated 2026-07-07; used only as background)
 - Local: `memory/content/current-niche-map.md`
-- Local: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`
-- Fresh search via `scripts/web_search.py` on 2026-08-23:
+- Local: `memory/ai-tools.md`
+- Local: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` (2026-08-28)
+- Fresh search via `scripts/web_search.py` on 2026-08-30:
   - Property Manager Websites, “AI features property managers should actually be using in 2026” — https://www.propertymanagerwebsites.com/blog/ai-features-property-managers-should-actually-use-in-2026
   - ManageCasa, “AI Property Management Software: What It Does in 2026” — https://managecasa.com/articles/ai-property-management-software-what-it-does
-  - ManageCasa, “Property Management Automation Guide for 2026” — https://managecasa.com/articles/property-management-automation
-  - LeadSimple, “Property Management Workflow Automation” — https://www.leadsimple.com/property-management/workflow-automation/
-  - Arcade, “7 Best AI Agent Authentication Platforms (2026)” — https://www.arcade.dev/blog/best-ai-agent-authentication-platforms/
-  - AI Governance Institute, governance news and control guidance — https://aigovernance.com/news
+  - Buildium, “The Property Manager's Guide to AI and Automation” — https://www.buildium.com/resource/the-property-managers-guide-to-ai-and-automation/
+  - Yorlet, “AI Property Management Automation” — https://www.yorlet.com/use-cases/ai-property-management
+  - Snowflake, “Enterprise AI Security: Agentic Controls and MCP Governance” — https://www.snowflake.com/en/blog/enterprise-ai-security-agentic-mcp-governance/
+  - Aembit, “MCP, OAuth 2.1, PKCE, and the Future of AI Authorization” — https://aembit.io/blog/mcp-oauth-2-1-pkce-and-the-future-of-ai-authorization/
+  - Built In NYC, “AI Enablement Lead” — https://www.builtinnyc.com/job/ai-enablement-lead/8919109
+  - Experis, “AI Enablement Lead” — https://www.experis.com/en/job/395311/ai-enablement-lead
 
 ---
-_Last updated: 2026-08-23 Sunday_
+_Last updated: 2026-08-30 Sunday_

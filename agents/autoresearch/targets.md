@@ -69,6 +69,7 @@
 | workflow-strategist | agents/workflow-strategist/AGENT.md | agents/autoresearch/checklists/workflow-strategist.md | stable | 1.000 | 2026-06-24 | 2026-06-07 |
 | product-quality-pass | agents/product-quality-pass/AGENT.md | agents/autoresearch/checklists/product-quality-pass.md | stable | 1.000 | 2026-06-08 | 2026-06-07 |
 | ai-seo | skills/ai-seo/SKILL.md | agents/autoresearch/checklists/ai-seo.md | stable | 1.000 | 2026-06-15 | 2026-06-14 |
+| nightly-validation | agents/nightly-validation/AGENT.md | agents/autoresearch/checklists/nightly-validation.md | pending | — | — | 2026-08-30 |
 
 ## Status values
 - `pending` — checklist written, not yet run
