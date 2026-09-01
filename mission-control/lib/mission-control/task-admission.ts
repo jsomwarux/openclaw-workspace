@@ -8,7 +8,8 @@ const VERIFICATION_FRESHNESS_MS = 24 * 60 * 60 * 1000;
 const TASK_FIELDS = [
   "title", "description", "status", "assignee", "priority", "project", "sortOrder", "slug",
   "pipelineStage", "dueDate", "dueDateSource", "dollars", "stageProbability", "effortMinutes",
-  "lane", "waitingOn", "snoozedUntil", "proofRequired", "reasonCodes", "rankScore", "rankUpdatedAt",
+  "lane", "waitingOn", "snoozedUntil", "proofRequired", "riskContainment", "cashDirect", "blocks",
+  "blocksAgent", "reasonCodes", "rankScore", "rankUpdatedAt",
   "firstAction", "whyItMatters", "doneState", "evidenceLinks", "sourceSystem", "reviewAt", "dedupeKey",
   "workstream", "hypothesis", "nextTest", "killDate", "promotionScore", "revivalTrigger",
   "verdict", "verifierConfirmed", "verifiedAt", "candidateId", "sourceHash", "evidenceScore",

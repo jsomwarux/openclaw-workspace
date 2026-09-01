@@ -864,3 +864,35 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** `curl -s http://localhost:3000/api/tasks | jq -e '.tasks | type == "array"'` must pass before filtering tasks.
 - **Owner surface updated:** `docs/agents/mistakes-log-recent.md` (this operational guardrail); no production code changed.
 - **Verification/date:** Live endpoint returned object key `tasks` on 2026-08-26; corrected schema check passed before task mutation.
+
+## 2026-08-31 — Telegram analysis exceeded the message-length guard
+- **Failure:** Sent a 4,628-character Telegram analysis before checking it against the 3,500-character limit, then needed multiple edits to reduce it.
+- **Root cause:** Measured the draft only inside the send call and treated the resulting length as diagnostic output instead of a pre-send gate.
+- **Guardrail/rule:** Construct Telegram text first, calculate its character count, and do not call `message(action=send)` unless the count is at most 3,500.
+- **Regression check:** The final edited Telegram message reports 3,499 characters before delivery confirmation.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; the existing Telegram Message Length Rule remains the controlling instruction.
+- **Verification/date:** 2026-08-31 — final message ID `26252` was edited successfully at 3,499 characters.
+
+## 2026-08-31 — Verified stored task order instead of the rendered Today queue
+- **Failure:** Reported Mission Control ordering as verified after checking task `sortOrder`, but Today uses computed scoring and rendered a different sequence; the later correction also exposed scorer fields silently dropped by the task API.
+- **Root cause:** Verification stopped at the persistence layer and did not trace the full data path through API normalization, Convex validators/schema, task adapters, score context, and `commandQueue`.
+- **Guardrail/rule:** Any Today-ranking change must be verified with the live computed `commandQueue`; scorer fields must exist in task admission, Convex mutation validators, and the table schema before task metadata is mutated.
+- **Regression check:** `bun test lib/mission-control/task-admission.test.ts lib/mission-control/adapters.test.ts lib/mission-control/score.test.ts` must pass, and the live queue probe must return Altmark delivery → Altmark decision → five asks → Maiky → Gil → Matt → Karen.
+- **Owner surface updated:** `mission-control/lib/mission-control/task-admission.ts`, `mission-control/convex/tasks.ts`, `mission-control/convex/schema.ts`, regression tests, and this Mistakes Log entry.
+- **Verification/date:** 2026-08-31 — 38 focused tests passed, isolated Next.js build exited 0, and the live seven-card queue matched the target order.
+
+## 2026-08-31 — Repeated Telegram length violation after measuring the draft
+- **Failure:** Sent Mission Control audit message `26276` at 3,539 characters despite calculating its length before the send, repeating the same-day Telegram-limit failure.
+- **Root cause:** The pre-send check reported the length but was informational rather than an enforced branch; the script sent unconditionally after printing the over-limit result.
+- **Guardrail/rule:** Telegram send scripts must construct the message, abort when `message.length > 3500`, and call `message(action=send)` only inside the passing branch. Never combine length reporting and an unconditional send.
+- **Regression check:** Message `26276` was edited to 3,312 characters and the edit returned `ok: true`; future send scripts must use an explicit conditional gate.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; existing Telegram Message Length Rule remains controlling.
+- **Verification/date:** 2026-08-31 — corrected message `26276` delivered at 3,312 characters.
+
+## 2026-08-31 — Mission Control mutation script broke on embedded backticks
+- **Failure:** The first approved Mission Control batch mutation did not start because JavaScript template-literal parsing treated backticks inside Python task descriptions as delimiters.
+- **Root cause:** I embedded user-facing Markdown punctuation inside a nested JavaScript template literal without removing or encoding shell-sensitive delimiters.
+- **Guardrail/rule:** For multiline scripts passed through JavaScript template literals, task descriptions must avoid backticks or be encoded as data before interpolation; confirm the composed command parses before any mutation attempt.
+- **Regression check:** The corrected batch removed embedded backticks, updated all 14 intended task records successfully, and a fresh `/api/tasks` read verified the final states and order.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
+- **Verification/date:** 2026-08-31 — corrected batch returned 14 `updated` rows; post-mutation board audit passed.

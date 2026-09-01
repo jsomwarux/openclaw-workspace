@@ -18,7 +18,7 @@ const admitted = {
   promotionScore: 32,
   verdict: "promote",
   verifierConfirmed: true,
-  verifiedAt: new Date().toISOString(),
+  verifiedAt: "2026-08-24T23:00:00.000Z",
   candidateId: "candidate",
   sourceHash: "sha256:hash",
   evidenceScore: 4,
@@ -42,6 +42,22 @@ describe("task admission contract", () => {
       nextTest: "Run three interviews",
       killDate: 1_810_000_000_000,
       revivalTrigger: "A buyer requests it",
+    });
+  });
+
+  test("preserves Today scoring metadata through API normalization", () => {
+    expect(normalizeTaskInput({
+      title: "Commercial unblocker",
+      blocks: 2,
+      blocksAgent: true,
+      riskContainment: true,
+      cashDirect: true,
+    })).toEqual({
+      title: "Commercial unblocker",
+      blocks: 2,
+      blocksAgent: true,
+      riskContainment: true,
+      cashDirect: true,
     });
   });
 

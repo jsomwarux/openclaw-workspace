@@ -11,6 +11,10 @@ const NIGHTLY_PROMOTION_THRESHOLD = 30;
 const NIGHTLY_FRESHNESS_MS = 24 * 60 * 60 * 1000;
 
 const operatingSystemArgs = {
+  blocks: v.optional(v.number()),
+  blocksAgent: v.optional(v.boolean()),
+  riskContainment: v.optional(v.boolean()),
+  cashDirect: v.optional(v.boolean()),
   firstAction: v.optional(v.string()),
   whyItMatters: v.optional(v.string()),
   doneState: v.optional(v.string()),

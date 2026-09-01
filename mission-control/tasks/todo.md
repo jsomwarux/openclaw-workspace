@@ -1,3 +1,9 @@
+## Plan — Today Task Metadata Correction — 2026-08-31
+- [x] Reproduce the rendered-order mismatch and trace it from Today through task normalization.
+- [x] Add a failing regression test for scorer metadata dropped by the task API.
+- [x] Preserve supported scorer metadata in task admission and reapply the approved task updates.
+- [x] Verify the live computed Today queue, focused tests, and isolated build.
+
 ## Plan — Agent Operating System Integration — 2026-08-24
 - [x] Add failing tests for task admission metadata, deduplicated upsert, work projections, and nightly validation parsing.
 - [x] Extend Convex task schema/mutations, API preservation, adapters, and shared types with optional operating-system metadata.
