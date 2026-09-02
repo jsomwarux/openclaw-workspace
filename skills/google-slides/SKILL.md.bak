@@ -1,8 +1,3 @@
----
-name: google-slides
-description: "Programmatically generates Google Slides decks via OpenClaw's slides_framework.py engine — creating presentations, injecting dynamic text, building narrative arcs, and returning shareable Drive URLs; use for client proposals, case studies, or structured decks."
----
-
 # Google Slides Generation Skill
 > Unified capability for generating dynamic Google Slides presentations via the OpenClaw script framework.
 

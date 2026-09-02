@@ -1,8 +1,3 @@
----
-name: ui-clone
-description: "Recreates a UI design from a screenshot into pixel-accurate code (Next.js + Tailwind for web, SwiftUI for iOS); use when JT sends a screenshot and asks to clone, match, or build something like a design."
----
-
 # UI Clone Skill
 
 Use when: replicating a UI design from a screenshot into code (web or mobile).

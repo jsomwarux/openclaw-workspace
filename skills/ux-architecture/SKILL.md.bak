@@ -1,8 +1,3 @@
----
-name: ux-architecture
-description: "UX/UI design guidelines for JT's 'Systems Architect' aesthetic — cold, dense, dark-mode data interfaces with defined typography, color, spacing, and interaction rules; use when originating a new web, iOS, or dashboard interface."
----
-
 # UX / UI Architecture Guidelines
 
 Use this skill when JT says "design this," "build a new dashboard," "what is our UI aesthetic," or when a sub-agent is tasked with originating a new interface (web app, iOS, or dashboard).

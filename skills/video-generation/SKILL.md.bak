@@ -1,8 +1,3 @@
----
-name: video-generation
-description: "Generates short demo, proof, and marketing videos (MP4/GIF) for shipped features and client work via OpenClaw scripts (photo-selector.py, reelfarm-create-slideshow.py, vibe-post.py); use to produce a 20-45s demo when work can be shown safely."
----
-
 # Video Generation / Demo Proof Skill
 > Unified capability for generating short product videos, launch reels, and proof/demo clips.
 

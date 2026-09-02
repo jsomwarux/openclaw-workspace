@@ -1,8 +1,3 @@
----
-name: runbook
-description: "Converts a symptom or error into a structured operational diagnosis (symptom, ranked causes, one-variable-at-a-time verification, minimal fix) for JT's stack; use when something is broken and the root cause isn't obvious."
----
-
 # Runbook Skill — Operational Diagnosis
 
 ## Overview

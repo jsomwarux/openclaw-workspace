@@ -1,4 +1,4 @@
-# Send Queue - Generated 2026-08-31
+# Send Queue - Generated 2026-09-01
 
 Generated from `memory/pipeline.jsonl`. JT sends; Eve never sends outreach.
 

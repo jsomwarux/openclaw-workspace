@@ -1,8 +1,3 @@
----
-name: google-drive
-description: "Uploads generated drafts, resumes, presentations, and client folders to Google Drive using OpenClaw's existing Python scripts (drive_drafts.py and pipeline_drive_sync.py); use when pushing files or client documents to specific Drive paths."
----
-
 # Google Drive Automation Skill
 > Unified capability for pushing drafts, resumes, presentations, and client documents to Google Drive.
 

@@ -1,8 +1,3 @@
----
-name: system-auditor
-description: "Logs action proofs, tracks cross-project API costs, and verifies critical-file integrity via OpenClaw scripts (log-proof.py, cost-tracker.py, critical-files-integrity.py); use to keep autonomous edits, refactors, and cron loops logged and within budget."
----
-
 # System Auditor Skill
 > Unified capability for logging proofs, tracking cross-project costs, and verifying system file integrity.
 

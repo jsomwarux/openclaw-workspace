@@ -858,3 +858,13 @@ Read only the local job-market brief because Job Market Daily Research, Job Appl
 **Positioning implication:** keep Run Control / AI Enablement OS proof framed as governed operating assets: source workflow, owner handoff, approval boundary, tool/agent access, release/eval/rollback discipline, audit path, and value report. This supports consulting proof and interview language only. No fresh crawl, external job search, application package, tracker update, certification/demo task, Mission Control role task, outreach, crypto, send, post, schedule, or upload was created.
 
 Source: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` dated 2026-07-08; live cron registry shows `eve-job-market-daily-005` disabled.
+
+## 2026-09-01 - Heartbeat Job Market Pulse
+
+Today's live job-market brief passed search health: 20 successful searches, 187 unique URLs checked, and no evidence-backed role cleared every gate. The closest candidates were correctly rejected rather than padded into an application queue: Toast lacked direct proof for customer-care UAT plus enterprise integration architecture/SQL; Litmos lacked AI portfolio and enterprise upskilling ownership and offered no compensation headroom; Posh AI lacked large financial-institution implementation/compliance proof and capped at `$150K`; Babylist was stale.
+
+**Strongest signal:** the controlled employment hedge is behaving correctly. Broad workflow/AI-program titles still hide hard requirements in SQL, integration architecture, large-client implementation, formal program ownership, or compensation. JT's strongest evidence remains business-to-technical translation, workflow discovery, controlled delivery, stakeholder coordination, and paid-client acceptance—not technical-architecture or enterprise-training claims that are not directly proven.
+
+**Positioning implication:** keep applications selective and use the current proof exactly: one messy process, controlled AI system, acceptance evidence, and measurable operational result. Do not create an application, certification, SQL-learning, or demo task from today's misses. The 90 Day Playbook's warm-list priced conversations and current cash gates remain above job-market exploration.
+
+Source: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` generated 2026-09-01.

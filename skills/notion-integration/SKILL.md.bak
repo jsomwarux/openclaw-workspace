@@ -1,8 +1,3 @@
----
-name: notion-integration
-description: "Programmatically pushes content to JT's Notion Content Calendar and Swipe File databases via OpenClaw Python scripts (notion-calendar-push.py and notion-swipe-push.py); use for scheduling social posts or logging viral hooks and competitive research."
----
-
 # Notion Database Automation Skill
 > Unified capability for programmatically interacting with JT's Notion Content Calendar and Swipe Databases.
 

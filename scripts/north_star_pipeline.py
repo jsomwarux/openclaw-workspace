@@ -11,6 +11,7 @@ import argparse
 import json
 import re
 import sys
+import urllib.request
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
@@ -22,7 +23,7 @@ SCOREBOARD_PATH = WORKSPACE / "memory" / "north-star.md"
 SEND_QUEUE_PATH = WORKSPACE / "memory" / "send-queue.md"
 
 TARGETS = (10000, 30000, 100000)
-CURRENT_COLLECTED = 5575
+REVENUE_API_URL = "http://localhost:3000/api/revenue"
 
 
 def load_records(path: Path = PIPELINE_PATH) -> list[dict[str, Any]]:
@@ -90,14 +91,34 @@ def aging_items(records: list[dict[str, Any]], today: date) -> list[dict[str, An
     )
 
 
-def summary(records: list[dict[str, Any]]) -> dict[str, Any]:
-    forecast = weighted_forecast(records)
+def extract_revenue_metrics(payload: dict[str, Any]) -> dict[str, float]:
+    metrics = payload["metrics"]
+    return {
+        "consultingCollected": float(metrics["consultingCollected"]),
+        "weightedForecast": float(metrics["weightedForecast"]),
+    }
+
+
+def load_revenue_metrics(url: str = REVENUE_API_URL) -> dict[str, float]:
+    with urllib.request.urlopen(url, timeout=3) as response:
+        payload = json.load(response)
+    return extract_revenue_metrics(payload)
+
+
+def summary(
+    records: list[dict[str, Any]],
+    revenue_metrics: dict[str, float] | None = None,
+) -> dict[str, Any]:
+    metrics = revenue_metrics if revenue_metrics is not None else load_revenue_metrics()
+    current_collected = float(metrics["consultingCollected"])
+    forecast = float(metrics["weightedForecast"])
     return {
         "targets": TARGETS,
-        "current_collected": CURRENT_COLLECTED,
+        "current_collected": round(current_collected, 2),
         "weighted_forecast": round(forecast, 2),
-        "gap_to_10k_collected": max(0, TARGETS[0] - CURRENT_COLLECTED),
-        "gap_to_10k_with_forecast": max(0, round(TARGETS[0] - CURRENT_COLLECTED - forecast, 2)),
+        "gap_to_10k_collected": max(0, round(TARGETS[0] - current_collected, 2)),
+        "gap_to_10k_with_forecast": max(0, round(TARGETS[0] - current_collected - forecast, 2)),
+        "revenue_source": "mission_control_api",
         "records": len(records),
         "aging_items": len(aging_items(records, date.today())),
     }
