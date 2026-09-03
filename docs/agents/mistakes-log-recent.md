@@ -896,3 +896,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** The corrected batch removed embedded backticks, updated all 14 intended task records successfully, and a fresh `/api/tasks` read verified the final states and order.
 - **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
 - **Verification/date:** 2026-08-31 — corrected batch returned 14 `updated` rows; post-mutation board audit passed.
+
+## 2026-09-02 — GitHub API path was not quoted in zsh
+- **Failure:** A read-only `gh api` command failed before execution because zsh expanded the `?ref=main` query string as a filename glob.
+- **Root cause:** The GitHub API endpoint was passed as an unquoted shell token even though zsh treats `?` as a glob metacharacter.
+- **Guardrail/rule:** Quote every `gh api` endpoint containing `?`, `&`, `*`, brackets, or other shell metacharacters; keep decoding and filtering outside the quoted endpoint.
+- **Regression check:** Re-run both content reads with single-quoted API endpoints and confirm each returns decoded repository content.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
+- **Verification/date:** 2026-09-02 — entry logged before retry; corrected read is the next operation.

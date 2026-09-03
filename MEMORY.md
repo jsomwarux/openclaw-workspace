@@ -51,6 +51,7 @@
 
 ## Job Market
 - 2026-08-22: JT approved reactivating the weekday job pipeline as a controlled income hedge while consulting remains primary and the 2-priced-conversations/week input metric stays intact.
+- 2026-09-02: JT replied by email to two inbound recruiter leads: Jessica Viola/Mondo for an AI Agent Platform Lead contract-to-hire role ($85-$95/hr W-2) and Scott Taylor-McCormick/Talent International for an AI Consultant, Agentic AI/Automation contract-to-hire role. Await client name, full JD, location/hybrid terms, rate/benefits, and requisition ID before tailoring a resume or authorizing either recruiter to submit; guard against duplicate submission if both represent the same opening.
 - Search responsibilities before titles. Primary targets: Senior/Lead BSA (AI/automation), AI Operations Program Manager, Intelligent Automation/Workflow Transformation Lead, AI Adoption & Enablement Manager, AI Governance/Quality Operations Manager, and AI Implementation Program Manager. Solutions Architect is selective only when post-sale/configuration/implementation-focused, never pre-sales/cloud/coding-heavy.
 - Application gate: direct evidence for at least 80% of must-haves; top 3 responsibilities map to paid work or Spectrum; no critical credential/seniority/coding/quota/architecture gap; $150K+ NYC/remote; live posting verified.
 - GPT-5.6 Sol via OAuth is the default application-package model. Sonnet is explicit comparison/escalation only. Legacy research/build-idea modules are preserved in `config/cron-snapshots/job-pipeline-legacy-before-reactivation-2026-08-22.json`.
@@ -89,4 +90,5 @@
 
 ## Setup State / Live Opportunities
 - JT OS plugin/skills live in TOOLS. Altmark is top proof/revenue lane; PM proof review and Run Control sales asset are next.
+- 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.

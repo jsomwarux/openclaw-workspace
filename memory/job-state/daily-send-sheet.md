@@ -1,14 +1,15 @@
 # State: Daily Send Sheet
 
 ## Current
-1. Last completed run: 2026-08-21T13:14:00Z
-2. Cursor: send-queue 2026-08-21; MC `/api/tasks` and `/api/payments` reachable on localhost:3000. Yesterday's note and proofs contain no send-confirmation artifact for the DHCR/Matt item, so it remains NOT SENT.
-3. Open items: DHCR Matt delivery-track follow-up age 11 remains the only finished send-queue item and stale staged chase; MSI-002 payment check is due 2026-09-03; payments API reported August MTD $0 and $10,000 gap.
+1. Last completed run: 2026-09-02T11:30:00Z
+2. Cursor: send-queue 2026-09-02; Mission Control `/api/tasks`, `/api/payments`, and `/api/revenue` reachable on localhost:3000. The 2026-09-01 daily note, proof log, and outreach report contain no send-confirmation artifact; Gil and Karen remain NOT SENT.
+3. Open items: the five-warm-asks task is overdue; finished Ed, Gil, and Karen messages are in `memory/drafts/warm-client-followups-2026-08-25.md`; MSI-002 for $5,400 is due 2026-09-02 with the payment check on 2026-09-03; payments API reported September MTD $0 and $10,000 gap.
 4. Last failure: none
-5. Started marker: 2026-08-21T13:14:00Z
+5. Started marker: 2026-09-02T11:30:00Z
 6. Routing note: generated `memory/send-queue.md` may contain fewer than three items; Daily Send Sheet can fill the cap from current Mission Control/client action artifacts. For 2026-07-18, keep DHCR decision chase as the third send from the active Altmark DHCR task and `memory/clients/altmark-group/proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md`, even though generated send queue lists only Altmark delinquency and MSI.
 
 ## Runs, last 5, newest first
+1. 2026-09-02T11:30:00Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, `/api/payments`, and `/api/revenue`, memory/2026-09-01.md, proofs/2026-09-01/actions.jsonl, reports/outreach-pipeline/2026-09-01-script-first-preflight.md, and memory/drafts/warm-client-followups-2026-08-25.md. Sends due: Ed, Gil, Karen. Yesterday: 0 confirmed; Gil and Karen NOT SENT. No external send by Eve.
 1. 2026-08-21T13:14:00Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/payments`, memory/pipeline.jsonl, memory/2026-08-20.md, proofs/2026-08-20, and memory/research/dhcr-renewal-deadline-control-record-2026-08-19.md. Sends due: DHCR Matt delivery-track follow-up. Yesterday: 0 confirmed, DHCR NOT SENT. No external send by Eve.
 1. 2026-08-18T11:30:00Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/payments`, Mission Control `/api/revenue`, memory/pipeline.jsonl, memory/2026-08-17.md, proofs/2026-08-17/actions.jsonl, reports/outreach-pipeline/2026-08-18-script-first-preflight.md, reports/mission-control-priority/2026-08-17.md, memory/clients/marketsmith/acceptance-checklist.md, memory/clients/altmark-group/proof-assets/dhcr-kickoff-command-sheet-2026-05-27.md, memory/research/property-ops-send-gate-control-record-2026-08-10.md. Sends due: Marketsmith acceptance closeout and DHCR Matt delivery-track follow-up. No external send by Eve.
 1. 2026-08-17T11:31:40Z - Daily Send Sheet sent; artifacts checked: directives/00-README.md, eve_mandate_jul2026.md, memory/send-queue.md, Mission Control `/api/tasks`, Mission Control `/api/payments`, Mission Control `/api/revenue`, memory/pipeline.jsonl, memory/2026-08-16.md, reports/outreach-pipeline/2026-08-17-script-first-preflight.md, reports/outreach-pipeline/2026-08-16-script-first-preflight.md, reports/mission-control-priority/2026-08-16.md, memory/audits/friday-scoreboards/2026-08-14.md, memory/audits/weekly-systems/2026-08-16-weekly-systems-review.md. Sends due: none with finished artifacts. No external send by Eve.

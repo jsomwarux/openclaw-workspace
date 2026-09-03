@@ -868,3 +868,13 @@ Today's live job-market brief passed search health: 20 successful searches, 187 
 **Positioning implication:** keep applications selective and use the current proof exactly: one messy process, controlled AI system, acceptance evidence, and measurable operational result. Do not create an application, certification, SQL-learning, or demo task from today's misses. The 90 Day Playbook's warm-list priced conversations and current cash gates remain above job-market exploration.
 
 Source: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md` generated 2026-09-01.
+
+## 2026-09-02 - Heartbeat Job Market Pulse
+
+Fresh week-filtered search produced market intel, not a new application priority. The September HN hiring index is weighted toward engineering, security, agent engineering, and product roles. The clearest NYC deployment-strategy result was an associate-level Pallet posting at `$100K-$150K`, five days onsite, and roughly 25-30% travel, so it misses the compensation and work-format gates. Other results were auto-apply products or hands-on AI/data-platform engineering roles.
+
+**Strongest signal:** current public listings still bifurcate between hands-on agent/platform engineering and lower-paid customer deployment work. That makes the two recruiter-sourced AI Agent Platform Lead / Agentic AI consulting conversations already recorded today more promising than broad-board discovery, but neither should advance until the client, full JD, compensation, location, and duplicate-submission risk are confirmed.
+
+**Positioning implication:** keep the employment hedge selective and lead with business-to-technical translation, governed workflow deployment, stakeholder coordination, evaluation/review controls, and accepted operating results. Do not create a new application, demo, certification, or Mission Control task from this search.
+
+Source checks: HN September 2026 hiring index https://hnhiring.com/september-2026; Pallet Associate Deployment Strategist mirror https://lensa.com/job-v1/pallet-service-corporation/new-york-ny/associate-solution-strategist/145ee0ed1d21e0f38dfa69dee2d18e34.

@@ -1,26 +1,27 @@
 # Job State: Job Market Daily Research
 
-- Last completed run: 2026-09-01T05:20:19-04:00
-- Cursor: rolling 30-day window 2026-08-03 through 2026-09-01; next run retains a rolling 30-day window and does not exclude still-live roles by cursor
+- Last completed run: 2026-09-02T05:26:10-04:00
+- Cursor: rolling 30-day window 2026-08-04 through 2026-09-02; next run retains a rolling 30-day window and does not exclude still-live roles by cursor
 - Open items: none
-- Last failure: none; search health passed with 166 unique broad-discovery URLs and 187 unique total URLs checked. Eight initial targeted-validation invocations failed from shell quoting and were rerun successfully with no coverage impact.
+- Last failure: none; search health passed with 266 unique raw URLs and 139 unique candidate URLs checked.
 - Started marker: clear
-- Next expected run: 2026-09-02T05:15:00-04:00
+- Next expected run: 2026-09-03T05:15:00-04:00
 - Legacy definition: `config/cron-snapshots/job-pipeline-legacy-before-reactivation-2026-08-22.json`
 
 ## Latest Run
 
-- Run timestamp: 2026-09-01T05:20:19-04:00
-- Searches executed: 20 successful searches — 12 rolling-month broad searches and 8 corrected targeted validations covering Toast, Babylist, Litmos, Posh AI, Blackbaud, Airshare, DoubleVerify, and PNC. Eight initial validation invocations failed from shell quoting and were immediately rerun successfully.
-- URLs checked: 187 unique total — 166 unique broad-discovery URLs plus 21 additional validation/mirror URLs; every URL and outcome is logged in `daily-brief.md`.
-- Surfaced roles: 0. Search health passed, but no role passed the direct named-proof, active-path, location, compensation, seniority, coding, credential, SQL/integration-architecture, and company-quality gates.
+- Run timestamp: 2026-09-02T05:26:10-04:00
+- Searches executed: 20 successful searches — 12 rolling-month broad searches across the seven priority families and five single-domain ATS queries, plus 8 targeted validations covering Pearl, Posh AI, Dodge & Cox, iHeartMedia, RSM, Crowe, HERE Technologies, and Sony Music.
+- URLs checked: 139 unique candidate URLs from 266 unique raw search-result URLs; every candidate URL and outcome is logged in `daily-brief.md`.
+- Surfaced roles: 0. Search health passed, but no role passed every direct named-proof, 80% must-have, active-path, location, compensation, seniority, coding, credential, and architecture gate.
 - Artifacts: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; `/Users/jtsomwaru/projects/job-market-agent/data/job-opportunities.md` (unchanged); `/Users/jtsomwaru/.openclaw/workspace/memory/job-state/job-market-daily-research.md`
-- Failures: no unresolved failures. Eight initial targeted-validation commands failed from shell quoting and were corrected immediately; all eight queries then succeeded. No role reached the surfacing gate, so no `verify-live-posting.py` surfaced-role check was required.
-- Cursor/date: rolling 30-day window 2026-08-03 through 2026-09-01
-- Next run: 2026-09-02T05:15:00-04:00
+- Failures: none. All search commands succeeded. No role reached the surfacing gate, so no `verify-live-posting.py` surfaced-role check was required.
+- Cursor/date: rolling 30-day window 2026-08-04 through 2026-09-02
+- Next run: 2026-09-03T05:15:00-04:00
 
 ## Recent Runs
 
+- 2026-09-02 05:26 ET: twelve broad rolling-month searches plus eight targeted validations produced 266 unique raw URLs and 139 unique candidate URLs checked; no evidence-backed role cleared every gate, and `job-opportunities.md` remained unchanged.
 - 2026-09-01 05:20 ET: twelve broad rolling-month searches plus eight targeted validations produced 166 unique discovery URLs and 187 unique total URLs checked; no evidence-backed role cleared every gate, and `job-opportunities.md` remained unchanged.
 - 2026-08-31 05:28 ET: twelve broad rolling-month searches plus eight targeted validations produced 165 unique discovery URLs and 171 unique total URLs checked; no evidence-backed role cleared every gate, and `job-opportunities.md` remained unchanged.
 - 2026-08-28 05:23 ET: twelve broad rolling-month searches plus four targeted validations produced 177 unique discovery URLs and 189 unique total URLs checked; no evidence-backed role cleared every gate, and `job-opportunities.md` remained unchanged.

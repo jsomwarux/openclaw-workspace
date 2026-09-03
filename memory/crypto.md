@@ -716,3 +716,10 @@ Attempted live crypto web checks for BTC/ETF flows and x402/agentic-payments upd
 - **Directive state:** `directives/00-README.md` still places Crypto Full Analysis, Crypto Midday Pulse, and Crypto Evening Pulse in refused scope.
 - **Heartbeat handling:** crypto monitoring was limited to live registry/directive verification. No rerun, enablement, market/X/API pull, recommendation artifact, trade, wallet action, transfer, payment-MCP, x402 experiment, or personalized financial advice was created.
 - **Current retained snapshot:** Jul 7 remains the latest research/ranking snapshot unless JT explicitly re-enables the crypto loop or asks for fresh crypto research.
+
+## Sep 2, 2026 - 10:23 Directive-Disabled Crypto Check
+
+- **Live registry:** `openclaw cron list --all --json` confirmed all three recurring crypto jobs remain disabled with no next run: `eve-crypto-morning-008`, `eve-crypto-midday-009`, and `eve-crypto-evening-010`.
+- **Directive state:** `directives/00-README.md` still places Crypto Full Analysis, Crypto Midday Pulse, and Crypto Evening Pulse in refused scope.
+- **10AM missed-cron handling:** crypto morning is intentionally disabled, not missed. No rerun, enablement, alert, market/X/API pull, recommendation artifact, trade, wallet action, transfer, payment-MCP, x402 experiment, or personalized financial advice was created.
+- **Current retained snapshot:** Jul 7 remains the latest research/ranking snapshot unless JT explicitly re-enables the crypto loop or requests fresh crypto research.
