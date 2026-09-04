@@ -92,3 +92,12 @@
 - JT OS plugin/skills live in TOOLS. Altmark is top proof/revenue lane; PM proof review and Run Control sales asset are next.
 - 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
+
+## Promoted From Short-Term Memory (2026-09-03)
+
+<!-- openclaw-memory-promotion:memory:claim:352140414962 -->
+- Heartbeat 09:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.796 signals=6 recalls=0 avg=0.620 source=memory/2026-08-28.md:14-14] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:9dc80572492e -->
+- Heartbeat 08:12: Cost alerts were `[]`; Spanish remained paused. Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.796 signals=6 recalls=0 avg=0.620 source=memory/2026-08-28.md:9-9] <!-- trigger: heartbeat, cost, alerts --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:2c900a22272b -->
+- Heartbeat 08:12: Active-hours checks completed after reading exact `HEARTBEAT.md`, extended rules, and today's deduplication log. Mission Control audit remained healthy: 21 active, 7 high, 5 overdue high tasks with actual due dates, 0 high due within 48 hours, 4 uncontrolled high, and no changes/errors. [score=0.789 signals=6 recalls=0 avg=0.620 source=memory/2026-08-29.md:9-9] <!-- trigger: active-hours, heartbeat.md, heartbeat --> <!-- importance: 8 -->
