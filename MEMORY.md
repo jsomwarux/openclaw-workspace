@@ -93,11 +93,11 @@
 - 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
 
-## Promoted From Short-Term Memory (2026-09-03)
+## Promoted From Short-Term Memory (2026-09-04)
 
-<!-- openclaw-memory-promotion:memory:claim:352140414962 -->
-- Heartbeat 09:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.796 signals=6 recalls=0 avg=0.620 source=memory/2026-08-28.md:14-14] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:9dc80572492e -->
-- Heartbeat 08:12: Cost alerts were `[]`; Spanish remained paused. Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.796 signals=6 recalls=0 avg=0.620 source=memory/2026-08-28.md:9-9] <!-- trigger: heartbeat, cost, alerts --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:2c900a22272b -->
-- Heartbeat 08:12: Active-hours checks completed after reading exact `HEARTBEAT.md`, extended rules, and today's deduplication log. Mission Control audit remained healthy: 21 active, 7 high, 5 overdue high tasks with actual due dates, 0 high due within 48 hours, 4 uncontrolled high, and no changes/errors. [score=0.789 signals=6 recalls=0 avg=0.620 source=memory/2026-08-29.md:9-9] <!-- trigger: active-hours, heartbeat.md, heartbeat --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:40a432228cfb -->
+- Heartbeat 15:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.823 signals=4 recalls=0 avg=0.620 source=memory/2026-08-26.md:45-45] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:ea378a5c27f5 -->
+- Session Cleanup 03:00: agent:main:cron:b2ca53ab-0c07-4a22-8424-9d39bf988405 (last active: 1.7d ago) [score=0.769 signals=6 recalls=0 avg=0.620 source=memory/2026-09-01.md:7-7] <!-- trigger: 1.7d, cleanup, agent:main:cron:b2ca53ab --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:ebf4f73ef179 -->
+- Session Cleanup 03:00: agent:main:cron:ac53b979-44c6-481b-b2aa-7cb9203e6476 (last active: 1.8d ago) [score=0.769 signals=6 recalls=0 avg=0.620 source=memory/2026-09-01.md:6-6] <!-- trigger: 1.8d, cleanup, agent:main:cron:ac53b979 --> <!-- importance: 8 -->
