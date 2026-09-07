@@ -93,25 +93,9 @@
 - 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
 
-## Promoted From Short-Term Memory (2026-09-05)
+## Promoted From Short-Term Memory (2026-09-06)
 
-<!-- openclaw-memory-promotion:memory:claim:3442d104f417 -->
-- Heartbeat 15:12: Delivered gates and completed proactive work were not repeated. No external action or user notification occurred. Notification: false. [score=0.776 signals=4 recalls=0 avg=0.620 source=memory/2026-08-28.md:46-46] <!-- trigger: heartbeat, delivered, gates --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:0f3401821f70 -->
-- Heartbeat 13:12: Active-hours heartbeat completed after reading exact `HEARTBEAT.md` and extended rules; no prior `## Heartbeat 13:12` existed. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-24.md:40-40] <!-- trigger: active-hours, heartbeat.md, heartbeat --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:206e5ef9029b -->
-- Heartbeat 12:12: Active-hours heartbeat completed after reading exact `HEARTBEAT.md` and extended rules; no prior `## Heartbeat 12:12` existed. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-24.md:34-34] <!-- trigger: active-hours, heartbeat.md, heartbeat --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:3760e9057316 -->
-- Heartbeat 11:30: Active-hours heartbeat completed after reading exact `HEARTBEAT.md` and extended rules; no prior `## Heartbeat 11:30` existed. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-24.md:28-28] <!-- trigger: active-hours, heartbeat.md, heartbeat --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:f4818f918e59 -->
-- Heartbeat 09:12: Active-hours heartbeat completed after reading exact `HEARTBEAT.md` and extended rules; no prior `## Heartbeat 09:12` existed. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-24.md:15-15] <!-- trigger: active-hours, heartbeat.md, heartbeat --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:158ce15f8cdb -->
-- Heartbeat 08:12: Active-hours morning heartbeat completed after reading exact `HEARTBEAT.md` and extended rules; no prior `## Heartbeat 08:12` existed. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-25.md:10-10] <!-- trigger: active-hours, heartbeat.md, heartbeat --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:52be5d7be330 -->
-- Heartbeat 10:12: Outreach pipeline ran at 03:00 and passed: 0 eligible copy-review items, 1 warm-up hold, 57 skipped, no tasks/docs created, no external outreach sent, and delivery not requested. Cron volume remained green at 11 enabled jobs and 59 estimated weekly invocations. Friday Scoreboard remained the sole unhealthy cron with 4 consecutive errors; no cron mutation occurred. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-27.md:20-20] <!-- trigger: copy-review, warm-up, tasks/docs --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:890e53354c03 -->
-- Heartbeat 13:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-27.md:36-36] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:c0d4cd7f8086 -->
-- Heartbeat 14:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-27.md:41-41] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:c3d79a5cf83c -->
-- Heartbeat 11:30: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-27.md:26-26] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:66919b70abf0 -->
+- Heartbeat 17:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.776 signals=4 recalls=0 avg=0.620 source=memory/2026-08-27.md:56-56] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:c67ec6ff12af -->
+- Heartbeat 17:12: Cron remained at 11 enabled jobs with no unhealthy jobs. No cron mutation occurred. [score=0.776 signals=4 recalls=0 avg=0.620 source=memory/2026-08-29.md:55-55] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
