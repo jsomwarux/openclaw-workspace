@@ -904,3 +904,18 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Re-run both content reads with single-quoted API endpoints and confirm each returns decoded repository content.
 - **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
 - **Verification/date:** 2026-09-02 — entry logged before retry; corrected read is the next operation.
+## 2026-09-07 — Same-basename archive collision during skill audit
+- **Failure:** A maintenance move flattened 11 `skills/*/SKILL.md.bak` files into one destination name, overwriting intermediate archive copies.
+- **Root cause:** The archive destination used only `basename`, discarding each source parent directory; no destination-uniqueness preflight ran before mutation.
+- **Guardrail/rule:** Multi-file archive/move operations must preserve relative paths or prove destination names are unique before the first move. Never flatten repeated basenames.
+- **Regression check:** Before moving multiple files, generate every resolved destination and fail on duplicates; after moving, compare source count, destination count, byte totals, and hashes. On mismatch, stop and restore exact tracked sources before continuing.
+- **Owner surface updated:** `docs/agents/regression-checks.md` and this Mistakes Log entry.
+- **Verification/date:** 2026-09-07 — all 11 tracked backups restored from repository HEAD, temporary archive sent to Trash, `wc` returned the original 48,089 bytes, and `git status --short -- skills archives/skill-backups/2026-09-07` was clean.
+
+## 2026-09-07 — Job-application task mutation used stale enum and unsafe shell JSON
+- **Failure:** The first Mission Control application-task request returned HTTP 500 because the job-application skill used uppercase `JT`; a retry then failed locally because an apostrophe broke shell-embedded JSON. A separate GET verifier also truncated the response before parsing it.
+- **Root cause:** The reusable example had drifted from the live lowercase Convex enum, and the mutation/verification path relied on fragile shell quoting and pre-parse truncation instead of structured JSON and a complete response body.
+- **Guardrail/rule:** Mission Control mutations must use structured JSON through a language client, preserve the complete API response for parsing, and validate enum values against the live contract before the first write.
+- **Regression check:** POST with `assignee: "jt"` and dedupe key `job-application:janus-henderson:ai-enablement-partner`, then GET the full `/api/tasks` response and require exactly one matching task with the expected owner, status, and first action.
+- **Owner surface updated:** This Mistakes Log entry; Skill Workshop repair was attempted against `job-application` but the runtime declined autonomous repair because it did not register the skill as used.
+- **Verification/date:** 2026-09-07 — structured POST returned HTTP 200 with task id `j574vfbert0tz832gjfm4qk4yh8dz6ay`; fresh GET returned exactly one matching `todo` task assigned to `jt`.

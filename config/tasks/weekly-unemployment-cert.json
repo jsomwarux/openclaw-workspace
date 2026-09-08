@@ -1,0 +1,9 @@
+{
+  "title": "Complete weekly unemployment certification",
+  "description": "Complete this week's unemployment certification at labor.ny.gov to keep the claim active and receive payment.\n\nFirst action: Go to labor.ny.gov and select Certify for Benefits.\nWhy it matters: Missing the weekly certification can delay or forfeit the payment.\nDone when: This week's certification is submitted.",
+  "status": "todo",
+  "priority": "high",
+  "sortOrder": 3,
+  "assignee": "jt",
+  "project": "personal"
+}

@@ -66,6 +66,7 @@
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. OpenClaw checks require Node 26 path; cost alerts clean.
 - Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`. Write contract now blocks Strategy/Positioning, research, market discovery, system design, and tooling tasks during the 90-day playbook unless tied to an invoice inside 90 days.
+- Mission Control task objects may expose `_id` rather than `id`; recurring dedupe/create checks should use `scripts/mission_control_task_gate.py` instead of inline field parsing.
 - Backup regression: local backup succeeds but `n8n-agent` GitHub push remains remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; routed via MC task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
@@ -92,10 +93,3 @@
 - JT OS plugin/skills live in TOOLS. Altmark is top proof/revenue lane; PM proof review and Run Control sales asset are next.
 - 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
-
-## Promoted From Short-Term Memory (2026-09-06)
-
-<!-- openclaw-memory-promotion:memory:claim:66919b70abf0 -->
-- Heartbeat 17:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.776 signals=4 recalls=0 avg=0.620 source=memory/2026-08-27.md:56-56] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:c67ec6ff12af -->
-- Heartbeat 17:12: Cron remained at 11 enabled jobs with no unhealthy jobs. No cron mutation occurred. [score=0.776 signals=4 recalls=0 avg=0.620 source=memory/2026-08-29.md:55-55] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->

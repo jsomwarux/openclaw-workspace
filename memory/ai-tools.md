@@ -1199,3 +1199,11 @@ Source checks: Microsoft Agent Hooks announcement https://commandline.microsoft.
 **JT relevance:** strengthen Run Control / AI Enablement OS proof from a single approval record into two linked records: (1) the discovery boundary showing which tools the represented caller was permitted to see, and (2) the execution row showing identity, requested action, policy verdict, cost attribution, audit path, and outcome. For an SMB implementation, the practical wedge is one bundled tool surface and one exception queue, not an enterprise platform replacement. This is implementation/proof language only; no content, outreach, crypto, job, Mission Control, or cron action.
 
 Source checks: Kong AI Gateway 2.0 GA https://konghq.com/blog/product-releases/kong-ai-gateway-2-0-ga; Google Gemini Enterprise Agent Platform overview https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview.
+
+## Sep 7, 2026 - Heartbeat AI Tool Monitoring
+
+**n8n Cloud now offers a credential-free, prepaid gateway path with workflow-level spend visibility, but it is not a self-hosted deployment option.** Current n8n documentation says Gateway credits are available from n8n 2.36.0 on Starter and Pro Cloud plans, route supported model/tool requests through n8n's gateway, deduct from one prepaid balance, expose spend by model and workflow, and can be selected per node alongside owner-managed credentials. Instance owners can disable the feature globally. It is explicitly unavailable on n8n Cloud Enterprise and self-hosted n8n.
+
+**JT relevance:** this is a useful commercial comparison point, not a migration trigger. The simplified credential path could reduce setup friction for small cloud prototypes, while the prepaid balance and workflow-level cost view improve attribution. It does not replace the current self-hosted control model and should not be introduced into client workflows without validating supported operations, data-routing terms, exhaustion behavior, and exportable audit/cost evidence. No configuration, credential, provider, workflow, or cron change was made.
+
+Primary source: n8n, Use Gateway credits https://docs.n8n.io/build/understand-workflows/use-gateway-credits

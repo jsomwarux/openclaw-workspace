@@ -60,3 +60,5 @@ Archive every Monday, start fresh.
 - 2026-09-02: JT replied to two inbound AI contract-to-hire recruiter leads; resume tailoring and submission stay gated on client/JD/requisition details and duplicate-opening confirmation.
 - 2026-09-02: Reviewed Claude Opus's JT Ops Playbook; recommended a six-week demand-to-proof pilot while cutting the full OS migration, duplicate owner surfaces, auto-prompt merge, and Eve-retirement plan.
 - 2026-09-02: Reviewed Claude Opus's 855-line JT Ops v4 against the live private repo and current official platform docs; verdict REVISE, with 16 implementation blockers and an exact v4.1 repair brief saved at `deliverables/jt-ops-playbook-v4-review-2026-09-02.md`.
+- 2026-09-07: Weekly Systems Review completed with C+ grade; report and five staged prompt rewrites saved, Convex argv-secret exposure documented with redaction, and a high-priority JT remediation card updated.
+- 2026-09-07: Built and live-verified the Janus Henderson AI Enablement Partner resume and cover letter, uploaded both to Drive, and created the single JT-owned application task without claiming submission.

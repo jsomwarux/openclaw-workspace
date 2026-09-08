@@ -878,3 +878,13 @@ Fresh week-filtered search produced market intel, not a new application priority
 **Positioning implication:** keep the employment hedge selective and lead with business-to-technical translation, governed workflow deployment, stakeholder coordination, evaluation/review controls, and accepted operating results. Do not create a new application, demo, certification, or Mission Control task from this search.
 
 Source checks: HN September 2026 hiring index https://hnhiring.com/september-2026; Pallet Associate Deployment Strategist mirror https://lensa.com/job-v1/pallet-service-corporation/new-york-ny/associate-solution-strategist/145ee0ed1d21e0f38dfa69dee2d18e34.
+
+## 2026-09-07 - Heartbeat Job Market Pulse
+
+Today's controlled job-market run passed search health after 12 broad query families, 28 targeted validation formulations, 169 unique raw URLs, and 134 candidate checks. One role cleared the selective gate: Janus Henderson Investors, AI Enablement Partner, scored 21/25 with a New York hybrid format and a stated `$110K–$200K` range. The strongest direct fit is use-case discovery, workflow analysis, measurable outcomes, stakeholder translation, and controlled low-code AI implementation. The honest gaps remain asset-management context and formal enterprise-scale coaching/change-adoption proof.
+
+**Strongest signal:** non-coding AI implementation roles continue to reward the same evidence JT can substantiate: discover a messy process, prioritize the use case, build a controlled workflow, define success measures, and make outcomes transparent. The nearest rejected roles correctly exposed the boundary: large distributed-program ownership, finance-system transformation, product-roadmap ownership, enterprise integration architecture, or SQL should not be claimed without direct proof.
+
+**Handling:** the Janus Henderson resume and cover letter were already built and logged today, and Mission Control already contains the deduplicated application task. Do not run another search, create another task/package, or submit the application from this pulse. Consulting cash and warm-list priced conversations remain the higher North Star layer.
+
+Source: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`, generated 2026-09-07.
