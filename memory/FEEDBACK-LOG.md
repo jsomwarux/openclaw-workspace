@@ -229,3 +229,18 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - Rule: For X replies, prioritize normal human reply cadence over proving every credential. Lead with `ai`, one grounded build detail if useful, and a plain reason the group would benefit. Avoid polished positioning phrases, "demo vs real world" abstractions, and stacked proof lists.
 - Guardrail: Before sending a reply draft, ask: "Would JT actually type this under someone's tweet, or does it sound like a mini LinkedIn pitch?" If it sounds packaged, cut it by 40% and make the language more direct.
 - Better direction: "ai — I’ve been building practical AI workflows for property/real estate ops: dashboards, n8n workflows, RAG, approval gates. I’d be useful on the parts people usually skip over: messy source data, owners in the loop, and making sure the system fails visibly when it should."
+
+## 2026-09-08 — Never feature AgentGuard in resume Key Projects
+- Trigger: JT rejected AgentGuard as a featured Key Project in the Janus Henderson resume.
+- Rule: Never include AgentGuard in the Key Projects section of any resume. It is a one-time demo, not a major project, and it understates JT's demonstrated abilities.
+- Selection standard: Choose projects by role relevance and strength of verified evidence. Prioritize paid client implementations, accepted enterprise delivery, measurable operational outcomes, shipped products, and production multi-model systems.
+- Janus replacement: Enterprise Analytics Implementation and QA, Property Operations Decision Dashboard, and Nash Satoshi.
+- Verification: Final resume and cover letter must contain zero occurrences of `AgentGuard` before upload.
+
+## 2026-09-08 — Cover letters should read as formal, confident correspondence
+- Trigger: JT rewrote the Janus Henderson letter after rejecting the canned contrast `The hard part is not producing isolated prototypes. It is...` and the clipped close `I can walk through...`.
+- Opening rule: Name the employer's specific need, then move directly into a first-person confidence statement about what JT will help the organization accomplish. Do not manufacture tension with `not X, but Y` or `The hard part is not X. It is Y.`
+- Closing rule: Use warm, formal, role-specific intent. Prefer `I would relish the opportunity to walk through how I would...` over `Happy to walk through...` or `I can walk through...`.
+- Format rule: Preserve a traditional cover-letter presentation with JT's full contact header, month and year, `Hiring Team` when there is no named recipient, `Sincerely,` and a complete signature. The DOCX builder already renders these elements, so source markdown must not duplicate them.
+- Voice target: Confident and personally invested without generic enthusiasm, canned contrast language, or a consulting-style call to action.
+- Verification: Compare the final rendered letter against the local source and require the opening, close, header, recipient line, and sign-off to match these rules.

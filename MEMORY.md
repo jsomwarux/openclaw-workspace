@@ -3,10 +3,9 @@
 
 ## JT Snapshot
 - JT Somwaru, America/New_York; Telegram primary; ops-to-AI implementation.
-- Active mandate: `memory/operating-mandates/90-day-playbook-2026-08-19.md`, written 2026-08-19 and running through 2026-11-17. It supersedes prior strategy/positioning guidance where conflicts exist.
-- Scoreboard through 2026-11-17: cash collected. Nothing else counts as progress. Input metric: 2 priced conversations per week, meaning JT told a real buyer a real number.
-- Positioning through 2026-11-17: "You take one messy business process, build a controlled AI system around it, and leave behind proof the business can trust." Say this exact thing; property managers/building owners in NYC/NJ first.
-- Frozen through 2026-11-17: niche research system, self-improving cron/agent harness, knowledge ingestion/skill converter work, per-domain lexicons, Mission Control Phase 3, all four app lanes, Guyana, Bustem, $500 website offer, and any new skill outside paid delivery. Re-entry test: produces an invoice inside 90 days.
+- Strategic reset, 2026-09-08: JT explicitly retired the 90 Day Playbook and its commercial freeze. The archived mandate remains historical evidence only and no longer controls priorities.
+- New core thesis, pending JT's full plan: JT's strongest skill and primary strategic asset is automated workflow building: combining actions into useful systems, using the n8n agent and its `lessons.md` as a compounding build advantage, and adding LLM reasoning nodes to turn deterministic workflows into agents. JT describes these as "AI recipes."
+- Safety, privacy, authorization, evidence, and no-third-party-send controls remain active; the strategic reset does not waive them.
 - Constraints: no relocation, protect sleep/health/NYC stability, avoid developer-only positioning.
 - Detail: `docs/memory/MEMORY-full.md#jt-snapshot`.
 
@@ -51,6 +50,8 @@
 
 ## Job Market
 - 2026-08-22: JT approved reactivating the weekday job pipeline as a controlled income hedge while consulting remains primary and the 2-priced-conversations/week input metric stays intact.
+- 2026-09-08: JT applied to Bloomberg's AI Enablement Lead, External Relations role and Janus Henderson Investors' AI Enablement Partner role. Both application tasks are complete; track only recruiter/interview/status changes from here.
+- 2026-09-08: Babylist Senior Business Analyst, AI & Automation is expired. Built In says it was removed June 23, 2026 and Babylist's official Greenhouse board does not list it; do not create an application package or resurface it. The false-positive live verifier was corrected with a regression test.
 - 2026-09-02: JT replied by email to two inbound recruiter leads: Jessica Viola/Mondo for an AI Agent Platform Lead contract-to-hire role ($85-$95/hr W-2) and Scott Taylor-McCormick/Talent International for an AI Consultant, Agentic AI/Automation contract-to-hire role. Await client name, full JD, location/hybrid terms, rate/benefits, and requisition ID before tailoring a resume or authorizing either recruiter to submit; guard against duplicate submission if both represent the same opening.
 - Search responsibilities before titles. Primary targets: Senior/Lead BSA (AI/automation), AI Operations Program Manager, Intelligent Automation/Workflow Transformation Lead, AI Adoption & Enablement Manager, AI Governance/Quality Operations Manager, and AI Implementation Program Manager. Solutions Architect is selective only when post-sale/configuration/implementation-focused, never pre-sales/cloud/coding-heavy.
 - Application gate: direct evidence for at least 80% of must-haves; top 3 responsibilities map to paid work or Spectrum; no critical credential/seniority/coding/quota/architecture gap; $150K+ NYC/remote; live posting verified.
@@ -93,3 +94,22 @@
 - JT OS plugin/skills live in TOOLS. Altmark is top proof/revenue lane; PM proof review and Run Control sales asset are next.
 - 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
+
+## Promoted From Short-Term Memory (2026-09-08)
+
+<!-- openclaw-memory-promotion:memory:claim:352140414962 -->
+- Heartbeat 09:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.849 signals=6 recalls=0 avg=0.620 source=memory/2026-08-28.md:14-14] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:9dc80572492e -->
+- Heartbeat 08:12: Cost alerts were `[]`; Spanish remained paused. Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.849 signals=6 recalls=0 avg=0.620 source=memory/2026-08-28.md:9-9] <!-- trigger: heartbeat, cost, alerts --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:b933980fe2ec -->
+- Session Cleanup 03:00: Sessions before: 11, after: 11, removed: 0 [score=0.777 signals=6 recalls=0 avg=0.620 source=memory/2026-08-31.md:3-3] <!-- trigger: cleanup, removed --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:cd12628fafd2 -->
+- Heartbeat 09:12: The delivered Send Sheet gates were not repeated. No duplicate proactive work, external action, or user notification occurred. Notification: false. [score=0.776 signals=4 recalls=0 avg=0.620 source=memory/2026-08-28.md:15-15] <!-- trigger: heartbeat, delivered, send --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:bcf7b101beab -->
+- Heartbeat 18:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.770 signals=6 recalls=0 avg=0.620 source=memory/2026-08-27.md:61-61] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:89684ef1cebb -->
+- Heartbeat 18:12: Cron remained at 11 enabled jobs with no unhealthy jobs. No cron mutation occurred. [score=0.770 signals=6 recalls=0 avg=0.620 source=memory/2026-08-29.md:60-60] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:939bf4c5a9d5 -->
+- Heartbeat 16:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-27.md:51-51] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:f856ee7d3c7c -->
+- Session Cleanup 03:00: agent:main:cron:18169759-7450-4e06-8db0-e0d14fbc25fd (last active: 1.5d ago) [score=0.760 signals=3 recalls=0 avg=0.620 source=memory/2026-08-23.md:6-6] <!-- trigger: 1.5d, cleanup, agent:main:cron --> <!-- importance: 8 -->

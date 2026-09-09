@@ -30,7 +30,7 @@
 - Four workstreams delivered within 80 hours and independently accepted: memory/clients/marketsmith/acceptance-checklist.md and memory/clients/marketsmith/metrics.md.
 - 500+ tests, six quality checks, and 224 mutation-tested behaviors: memory/clients/marketsmith/metrics.md.
 - Dashboard covering 32 buildings and 313 rooms: prior verified resume corpus and private client records; kept anonymized.
-- AgentGuard controls: existing AgentGuard project and prior verified resume corpus.
+- Property-operations dashboard covering 32 buildings and 313 rooms: prior verified resume corpus and private client records; kept anonymized.
 - Four-model ensemble: existing Nash Satoshi project and prior verified resume corpus.
 
 ## Honest gap

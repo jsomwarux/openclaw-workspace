@@ -1207,3 +1207,11 @@ Source checks: Kong AI Gateway 2.0 GA https://konghq.com/blog/product-releases/k
 **JT relevance:** this is a useful commercial comparison point, not a migration trigger. The simplified credential path could reduce setup friction for small cloud prototypes, while the prepaid balance and workflow-level cost view improve attribution. It does not replace the current self-hosted control model and should not be introduced into client workflows without validating supported operations, data-routing terms, exhaustion behavior, and exportable audit/cost evidence. No configuration, credential, provider, workflow, or cron change was made.
 
 Primary source: n8n, Use Gateway credits https://docs.n8n.io/build/understand-workflows/use-gateway-credits
+
+## Sep 8, 2026 - Heartbeat AI Tool Monitoring
+
+**n8n's current release reinforces that production workflow design must declare identity mode, node version, and partial-failure semantics—not just the happy-path integration.** n8n 2.38.1 adds a user-delegated Databricks OAuth2 flow with authorization code + PKCE, customizable scopes, token refresh, and per-user permissions/audit trails alongside the existing service-principal flow. The same release moves MongoDB update operations to batched `bulkWrite` on node version 1.5: throughput improves, existing workflows stay pinned to their saved node version, but connection or multi-collection failures can leave different write states than the earlier per-item behavior.
+
+**JT relevance:** make three fields mandatory in the n8n workflow/agent blueprint before build: `identity_mode` (delegated user, service principal, or owner credential), `node_version` (explicitly pinned and upgrade-reviewed), and `partial_failure_policy` (idempotency key, checkpoint, retry boundary, reconciliation query, and human escalation). For client-facing workflow proofs, show who the workflow acts as, which permissions/scopes apply, what version was tested, and how a mid-batch failure is detected and recovered. This is a design/proof rule only; no n8n upgrade, credential, provider, workflow, outreach, Mission Control, or cron change was made.
+
+Primary source: n8n 2.38.1 release notes https://docs.n8n.io/changelog/release-notes#n8n2381

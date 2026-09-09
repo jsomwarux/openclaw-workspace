@@ -34,10 +34,8 @@ AI Implementation Specialist with 6+ years of enterprise systems implementation,
 **Microsoft Ecosystem:** Microsoft 365, Teams, Excel, PowerPoint; transferable low-code implementation experience for Copilot Studio, Power Automate, Power Apps, and Power Platform
 
 ## KEY PROJECTS
-**AgentGuard, Decision Routing:** Designed a confidence-gated AI governance system that routes higher-confidence outputs forward and sends lower-confidence cases to human review at a defined threshold.
-**AgentGuard, Human Oversight:** Implemented reviewer queues, override controls, and clear action boundaries so accountable people retain authority over sensitive AI-assisted decisions.
-**AgentGuard, Auditability:** Built audit trails and explainability output that preserve the source, model result, confidence, reviewer decision, and final disposition for responsible delivery.
 **Enterprise Analytics Implementation and QA:** Delivered four accepted workstreams inside a fixed 80-hour scope, supported by 500+ tests, six quality checks, and 224 mutation-tested behaviors.
+**Property Operations Decision Dashboard:** Built a structured operating view across 32 buildings and 313 rooms, replacing fragmented daily tracking and leading to follow-on implementation work and a client referral.
 **Nash Satoshi:** Built a production 4-LLM ensemble using Claude, GPT-4, Gemini, and Grok for cross-model validation and consensus ranking, demonstrating agent orchestration and model-bias mitigation.
 
 ## EDUCATION

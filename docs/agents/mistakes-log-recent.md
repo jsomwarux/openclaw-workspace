@@ -919,3 +919,43 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** POST with `assignee: "jt"` and dedupe key `job-application:janus-henderson:ai-enablement-partner`, then GET the full `/api/tasks` response and require exactly one matching task with the expected owner, status, and first action.
 - **Owner surface updated:** This Mistakes Log entry; Skill Workshop repair was attempted against `job-application` but the runtime declined autonomous repair because it did not register the skill as used.
 - **Verification/date:** 2026-09-07 — structured POST returned HTTP 200 with task id `j574vfbert0tz832gjfm4qk4yh8dz6ay`; fresh GET returned exactly one matching `todo` task assigned to `jt`.
+
+## 2026-09-08 — Daily Send Sheet wrote its started marker late
+- **Failure:** The Daily Send Sheet performed initial read-only evidence collection before writing the required started marker.
+- **Root cause:** The cron payload's ordered reads were followed before reconciling the standing state-file directive, so run-state initialization was omitted from the first write position.
+- **Guardrail/rule:** After the mandated first source read, every recurring job must immediately read its job-state file and write the started marker before any additional evidence collection.
+- **Regression check:** On the next Daily Send Sheet run, the state history must show a started marker timestamp preceding the first evidence-command timestamp; any missing or later marker records `state-skip` and blocks an unqualified clean run.
+- **Owner surface updated:** `memory/job-state/daily-send-sheet.md` and this Mistakes Log entry.
+- **Verification/date:** 2026-09-08 — the late marker was recorded explicitly, the completed state retains `state-skip`, and no clean-state claim was made.
+
+## 2026-09-08 — Resume workflow over-promoted AgentGuard
+- **Failure:** The Janus Henderson resume featured AgentGuard as three Key Project entries, and the cover letter used it as a central proof point even though JT considers it a simple one-time demo.
+- **Root cause:** The job-application skill hard-coded AgentGuard as the first enterprise project instead of ranking projects by completed scope, paid-client evidence, measurable outcomes, and role relevance.
+- **Guardrail/rule:** Never feature AgentGuard in resume Key Projects. Select from stronger verified work, prioritizing paid implementations, accepted enterprise delivery, measurable operational outcomes, shipped products, and production multi-model systems.
+- **Regression check:** Before generating any resume or cover letter, require zero `AgentGuard` occurrences and verify every selected project has stronger role-relevant evidence than an available alternative.
+- **Owner surface updated:** `memory/FEEDBACK-LOG.md`, the Janus resume/cover-letter sources, and a same-run Skill Workshop repair attempt for `job-application`.
+- **Verification/date:** 2026-09-08 — original Drive resume and cover-letter IDs were updated in place; live text export returned zero `AgentGuard` occurrences, zero em dashes, and the resume contained Enterprise Analytics Implementation and QA, Property Operations Decision Dashboard, and Nash Satoshi.
+
+## 2026-09-08 — Cover-letter defaults used canned contrast and clipped closing language
+- **Failure:** The Janus Henderson cover letter used `The hard part is not X. It is Y.` and ended with `I can walk through...`, both of which JT rewrote because they sounded templated and insufficiently personal.
+- **Root cause:** The job-application guidance optimized for compressed problem-solution copy and a short CTA, but did not distinguish formal applicant correspondence from consulting or marketing copy.
+- **Guardrail/rule:** Cover letters open with the employer's need followed by direct first-person confidence, retain a traditional header and sign-off, and close with warm, role-specific intent. Ban canned negative-to-positive contrasts and clipped service-pitch closes.
+- **Regression check:** Parse and render the letter, then assert the body excludes `The hard part is not`, `Happy to walk through`, and a paragraph beginning `I can walk through`; verify the rendered document contains the formal header, `Hiring Team`, `Sincerely,` and complete signature.
+- **Owner surface updated:** `USER.md`, `memory/FEEDBACK-LOG.md`, the Janus cover-letter source, and same-run Skill Workshop patch attempts for `job-application`.
+- **Verification/date:** 2026-09-08 — three focused voice-guard tests passed; corrected Janus source rendered successfully with the confidence opening, warm close, formal header, `Hiring Team`, `Sincerely,` and complete signature, while all three rejected phrases were absent.
+
+## 2026-09-08 — Cover-letter render used the wrong CLI enum
+- **Failure:** The first Janus voice-regression render stopped because it passed `--type cover-letter`, while the builder accepts `cover_letter`.
+- **Root cause:** The invocation used natural-language hyphenation instead of reading the exact argparse choices emitted by the script.
+- **Guardrail/rule:** Before invoking a local CLI variant for the first time in a turn, read `--help` or reuse the exact documented enum; do not translate underscores into hyphens.
+- **Regression check:** `python3 scripts/build_resume_docx.py --help` must list `cover_letter`, and the corrected command must produce a readable DOCX whose content passes the voice checks.
+- **Owner surface updated:** This Mistakes Log entry; the existing builder remains unchanged because its CLI contract is correct.
+- **Verification/date:** 2026-09-08 — `--help` confirmed `cover_letter`; the corrected render completed and all seven rendered-content checks passed.
+
+## 2026-09-08 — Job hedge resurfaced an expired Babylist role
+- **Failure:** The September 8 job hedge told JT to build a Babylist application package even though Built In says the role was removed June 23, 2026 and Babylist's official Greenhouse board no longer lists it.
+- **Root cause:** `verify-live-posting.py` treated generic `apply`, `application`, and `career` strings on an archived HTTP 200 page as live evidence because its negative-marker set did not include Built In's exact `job was removed` banner.
+- **Guardrail/rule:** Aggregator removed-state language is a hard negative that overrides all positive markers. Before any package build, require the local verifier to pass and cross-check the employer's official ATS/careers board when an aggregator is the source.
+- **Regression check:** `scripts/tests/test_verify_live_posting.py` injects a Built In page containing both `Sorry, this job was removed` and `Easy Apply`; the test must classify it `closed_or_expired_marker`, and a live check of job 9259520 must return `ok: false`.
+- **Owner surface updated:** `scripts/verify-live-posting.py`, `scripts/tests/test_verify_live_posting.py`, `data/daily-brief.md`, `data/job-opportunities.md`, `tasks/lessons.md`, `memory/job-state/job-market-daily-research.md`, `MEMORY.md`, today's daily note, and this Mistakes Log entry.
+- **Verification/date:** 2026-09-08 — the new test failed before the fix, passed afterward, and the live Babylist URL returned HTTP 200 with `reason: closed_or_expired_marker` and negative marker `job was removed`.

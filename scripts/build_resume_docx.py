@@ -404,6 +404,19 @@ def validate_applicant_material_content(md_path, material_type):
         raw = f.read()
 
     lowered = raw.lower()
+    if material_type.lower().startswith('cover'):
+        banned_cover_letter_phrases = [
+            'the hard part is not',
+            'happy to walk through',
+            'i can walk through',
+        ]
+        voice_hits = [phrase for phrase in banned_cover_letter_phrases if phrase in lowered]
+        if voice_hits:
+            raise ValueError(
+                'Cover letter contains canned or clipped language JT has rejected: '
+                + ', '.join(voice_hits)
+            )
+
     fit_hits = [phrase for phrase in FIT_VERDICT_PHRASES if phrase in lowered]
     if fit_hits:
         raise ValueError(
