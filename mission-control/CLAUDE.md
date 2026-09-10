@@ -108,6 +108,7 @@ Primary nav is five lanes, in this order: **Today** (`/`), **Clients** (`/client
 ## Architecture Decisions
 
 - **Convex for tasks only** — real-time sync, both JT and Eve can write, persists across sessions
+- **Client/payment reconciliation (2026-09-09):** MSI is fully paid and closed with laptop returned and no active follow-on; Karen is not property-operator-referral eligible. Do not re-seed either stale state.
 - **File system API routes** — memory, cron, proofs are read-only from local files; no sync needed
 - **Dark theme throughout** — emerald accent (#10b981), near-black background (#0a0a0a)
 - **No authentication** — localhost only, no auth needed

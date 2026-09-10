@@ -54,7 +54,7 @@ Canonical source: `memory/canonical/jt-mission-control-state-2026-07-16.md`.
 |---|---|---|---|
 | Altmark rent delinquency remainder | $2,250 | BLOCKED | Client inputs from Yair; escalate now, log-only fallback by ~Jul 24 |
 | DHCR Lease Renewal Phase 1 deposit | ~$1,750 (of $3,500) | PENDING | Matt approval + deposit |
-| MSI engagement | $10,800 (50% kickoff / 50% completion) | ACCEPTED / COMPLETION INVOICE SENT | $5,400 kickoff cleared; MSI-002 $5,400 sent 2026-08-18, due 2026-09-02; flag unpaid 2026-09-03 |
+| MSI engagement | $10,800 (50% kickoff / 50% completion) | FULLY PAID / CLOSED | Both $5,400 installments cleared; laptop returned; no further engagement active as of 2026-09-09 |
 | SoberLife balance | - | COLLECTED | Closed-won, removed |
 | Aya dashboard | - | COLLECTED | Closed-won, removed |
 
@@ -70,7 +70,7 @@ Every number in the Friday report must come from a logged entry. Where no logged
 2. MSI delivery
    - Verdict: CLOSED / ACCEPTED; follow-on lane open.
    - Status: all four SOW deliverables accepted after client technical re-verification on 2026-08-17.
-   - Cash: $10,800 signed value; kickoff $5,400 cleared; MSI-002 completion invoice $5,400 sent 2026-08-18, due 2026-09-02.
+   - Cash: $10,800 signed and collected; both $5,400 installments cleared. JT confirmed MSI-002 paid on 2026-09-09; exact payment date not logged.
    - Follow-on rule: route through technical lead first, then budget owner; do not propose QA release-flow wiring; flag before quoting expanded scope.
 
 3. Priced-conversation/referral engine
@@ -80,7 +80,7 @@ Every number in the Friday report must come from a logged entry. Where no logged
 
 4. Warm referral engine
    - Verdict: DOUBLE DOWN.
-   - Current gate: Gil referral ask and Karen referral ask are now eligible; Yair referral ask fires within 5 business days after delinquency accepted in writing and anonymized summary shown.
+   - Current gate: Gil hospitality-team introduction remains eligible. Karen is not a property-operator referral source; do not surface that ask.
 
 5. Altmark FTE + NewCo
    - Verdict: DECISION CALENDAR.

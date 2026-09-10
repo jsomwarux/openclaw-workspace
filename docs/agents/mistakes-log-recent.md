@@ -959,3 +959,26 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** `scripts/tests/test_verify_live_posting.py` injects a Built In page containing both `Sorry, this job was removed` and `Easy Apply`; the test must classify it `closed_or_expired_marker`, and a live check of job 9259520 must return `ok: false`.
 - **Owner surface updated:** `scripts/verify-live-posting.py`, `scripts/tests/test_verify_live_posting.py`, `data/daily-brief.md`, `data/job-opportunities.md`, `tasks/lessons.md`, `memory/job-state/job-market-daily-research.md`, `MEMORY.md`, today's daily note, and this Mistakes Log entry.
 - **Verification/date:** 2026-09-08 — the new test failed before the fix, passed afterward, and the live Babylist URL returned HTTP 200 with `reason: closed_or_expired_marker` and negative marker `job was removed`.
+## 2026-09-09 — Daily Send Sheet resurfaced invalid Karen and MSI actions
+- **Failure:** The 2026-09-09 Daily Send Sheet told JT to ask Karen for a property-operator introduction and flagged MSI-002 as overdue, but Karen knows no relevant operators and MSI was already fully paid with the laptop returned.
+- **Root cause:** Referral eligibility and invoice state were copied forward from stale warm-list and client files without a current relationship-fit confirmation or a payment-confirmation reconciliation path.
+- **Guardrail/rule:** A referral ask requires an explicitly confirmed relationship path. Client payment/follow-on reminders must stop immediately when JT confirms full payment/closeout, and all current routing surfaces must be reconciled in the same turn.
+- **Regression check:** Before each Daily Send Sheet, reject referral tasks whose named relationship path is unconfirmed and cross-check every overdue invoice against the latest JT confirmation plus the payments ledger; closed clients with no active engagement cannot enter sends or stale lists.
+- **Owner surface updated:** `MEMORY.md`, `docs/memory/MEMORY-full.md`, `memory/pipeline.jsonl`, warm-client draft, Marketsmith Client OS files, Daily Send Sheet state, Mission Control tasks/payments, and global `CLAUDE.md`.
+- **Verification/date:** 2026-09-09; exact Gil draft recovered, Karen/MSI routes removed from current state, and live Mission Control reconciliation verified after mutation.
+
+## 2026-09-09 — Redundant Convex deploy attempt and malformed mutation one-liner
+- **Failure:** While reconciling the live client rows, Eve attempted to start a second local Convex backend and then sent a Bun one-liner with an extra closing brace; neither attempt changed client state.
+- **Root cause:** The live watcher state was not checked before invoking `convex dev --once`, and the shell-embedded JavaScript was not syntax-checked before execution.
+- **Guardrail/rule:** When the local Convex backend is already running, rely on its watcher and call the mutation directly. Keep inline mutation scripts minimal and validate delimiter balance before execution.
+- **Regression check:** Confirm port 3210 ownership before any Convex deploy command; after a new mutation is saved, call it through the existing watcher and verify the returned record plus `/api/clients` state.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; live reconciliation procedure.
+- **Verification/date:** 2026-09-09; corrected mutation returned the MSI and Karen client IDs, and fresh `/api/clients` verification is required before completion.
+
+## 2026-09-09 — Shell metacharacters in a review search were left unquoted
+- **Failure:** A read-only `rg` command emitted zsh glob and command-substitution errors because backticks and `?` appeared inside a double-quoted shell command.
+- **Root cause:** The search expression was embedded in a shell string instead of being passed as a single-quoted literal, repeating the known shell-metacharacter class of failure.
+- **Guardrail/rule:** Search expressions containing backticks, question marks, dollar signs, or shell punctuation must be single-quoted as complete shell arguments; never place Markdown backticks inside a double-quoted command string.
+- **Regression check:** Re-run the search with one single-quoted regex argument and require exit code 0 with the expected v3.1 matches and no zsh diagnostics.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
+- **Verification/date:** 2026-09-09 — corrected `rg` completed with exit code 0 and returned the expected runbook, campaign, Notion, Drive, and PR references without shell errors.

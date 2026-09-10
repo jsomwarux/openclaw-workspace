@@ -17,7 +17,7 @@
 | Independent spend-total agreement | Shows financial/analytics correctness control | 0 | 4 query grains agree to the cent | 4 | Anonymized proof assets |
 | Fiscal-calendar source verification | Shows logic independent of module under test | 0 | Every day in coverage verified | Full coverage | Anonymized proof assets |
 | Production defects found and fixed | Shows the tool working; must not criticize client engineering | 0 | 11 | N/A | Case-study framing only |
-| Completion invoice | Final cash collection gate | $5,400 remaining | MSI-002 sent 2026-08-18; due 2026-09-02 | Paid | JT update 2026-08-18 |
+| Completion invoice | Final cash collection gate | $5,400 remaining | MSI-002 paid | Complete | JT confirmed 2026-09-09; exact payment date not logged |
 
 ## Retention Signals
 - Time saved: client's internal hours-saved estimates exist but are blocked from proposals, posts, and pages until permission is granted; if ever used, attribute as client estimates.

@@ -1215,3 +1215,11 @@ Primary source: n8n, Use Gateway credits https://docs.n8n.io/build/understand-wo
 **JT relevance:** make three fields mandatory in the n8n workflow/agent blueprint before build: `identity_mode` (delegated user, service principal, or owner credential), `node_version` (explicitly pinned and upgrade-reviewed), and `partial_failure_policy` (idempotency key, checkpoint, retry boundary, reconciliation query, and human escalation). For client-facing workflow proofs, show who the workflow acts as, which permissions/scopes apply, what version was tested, and how a mid-batch failure is detected and recovered. This is a design/proof rule only; no n8n upgrade, credential, provider, workflow, outreach, Mission Control, or cron change was made.
 
 Primary source: n8n 2.38.1 release notes https://docs.n8n.io/changelog/release-notes#n8n2381
+
+## Sep 9, 2026 - Heartbeat AI Tool Monitoring
+
+**OpenAI's current agent runtime makes pending work and live steering first-class workflow states.** Official GPT-6 Astra guidance documents asynchronous function/custom-tool calls keyed by the original `call_id`, mid-turn user steering over WebSockets, reasoning-effort changes through `configuration_update`, and asynchronous misalignment monitoring that can alert or stop a run for review. The application still owns tool execution and pending-work management, so a successful model turn is not sufficient evidence that an external action completed.
+
+**JT relevance:** add an explicit tool-lifecycle record to the shared workflow contracts: `call_id`, requested action/arguments, represented owner, issued timestamp, pending/running/completed/cancelled/expired state, steering revision, tool result receipt, timeout/late-result policy, safety-stop reason, reviewer decision, and final business outcome. Mid-turn corrections must supersede or cancel unsafe pending work rather than coexist with stale instructions; stopped or expired calls must fail closed and remain visible for reconciliation. This is a design/proof rule only. No model migration, API call, credential, workflow, Mission Control task, or recurring schedule was changed.
+
+Primary source: OpenAI model guidance for GPT-6 Astra https://developers.openai.com/api/docs/guides/latest-model

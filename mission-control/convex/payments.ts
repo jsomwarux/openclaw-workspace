@@ -50,7 +50,7 @@ export const create = mutation({
   },
 });
 
-// The known consulting ledger as reconciled with JT on 2026-07-28. Idempotent:
+// The known consulting ledger as reconciled with JT through 2026-09-09. Idempotent:
 // wipes the table first so re-running never double-counts. Dates for the four
 // pre-July payments are month-inferred (no exact day is logged); the three July
 // payments use the confirmation date, so no invented day is presented as known.
@@ -68,6 +68,7 @@ const SEED: Array<{
   { clientName: "Aya", amount: 1000, paidOn: "2026-07-28", milestone: "Dashboard updates", source: "confirmed by JT 2026-07-28" },
   { clientName: "SoberLife", amount: 3000, paidOn: "2026-07-28", milestone: "Phase 1", source: "confirmed by JT 2026-07-28" },
   { clientName: "MSI", amount: 5400, paidOn: "2026-07-28", milestone: "Kickoff 50%", source: "confirmed by JT 2026-07-28" },
+  { clientName: "MSI", amount: 5400, paidOn: "2026-09-09", milestone: "Completion 50%", source: "confirmed by JT 2026-09-09; exact payment date not logged, confirmation date used" },
 ];
 
 export const seedInitial = mutation({

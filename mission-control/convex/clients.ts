@@ -18,6 +18,39 @@ export const getBySlug = query({
   },
 });
 
+// Reconcile a client row after JT confirms a real-world status change. This is
+// deliberately keyed by stable slug so callers never depend on a stale Convex id.
+export const updateBySlug = mutation({
+  args: {
+    slug: v.string(),
+    stage: v.union(
+      v.literal("active-delivery"),
+      v.literal("blocked"),
+      v.literal("pending"),
+      v.literal("closed-won"),
+      v.literal("archived"),
+    ),
+    status: v.string(),
+    lastTouch: v.number(),
+    referralEligible: v.boolean(),
+  },
+  handler: async (ctx, args) => {
+    const client = await ctx.db
+      .query("clients")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .first();
+    if (!client) throw new Error(`client not found: ${args.slug}`);
+    await ctx.db.patch(client._id, {
+      stage: args.stage,
+      status: args.status,
+      lastTouch: args.lastTouch,
+      referralEligible: args.referralEligible,
+      updatedAt: Date.now(),
+    });
+    return { id: client._id, slug: args.slug };
+  },
+});
+
 /**
  * Seeded from memory/clients/* (status.md / README.md / metrics.md) reconciled
  * with pipeline.jsonl and the canonical state file, 2026-07-28. `name` is the
@@ -58,16 +91,16 @@ const SEED: Array<{
     stage: "closed-won",
     status: "SoberLife-Coach Phase 1 delivered + paid; closeout tail (domain, Psychology Today/LinkedIn, content schedule).",
     lastTouch: "2026-07-02",
-    referralEligible: true, // Karen referral ask now eligible
+    referralEligible: false, // JT confirmed 2026-09-09 that Karen is not a property-operator referral source
   },
   {
     slug: "marketsmith",
     name: "MSI",
     emoji: "📊",
-    stage: "active-delivery",
-    status: "Signed 80-hr Nexus engagement $10,800; kickoff 50% collected, remaining 50% in delivery.",
-    lastTouch: "2026-07-17",
-    referralEligible: false, // mid-delivery, no referral gate cleared
+    stage: "closed-won",
+    status: "Fully paid and closed; MSI-002 cleared, laptop returned, no further engagement active.",
+    lastTouch: "2026-09-09",
+    referralEligible: false,
   },
 ];
 

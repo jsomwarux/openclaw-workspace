@@ -48,13 +48,11 @@ Sources:
 
 ### Recommended message
 
-> Hey Gil — quick follow-up on something you mentioned before. You had said there might be an opportunity to connect me with the hospitality team around Lady D or Little Charlie.
+> Hey Gil, quick follow-up on something you mentioned before. You said there might be an opportunity to connect me with the hospitality team around Lady D or Little Charlie.
 >
-> Now that we’ve wrapped the dashboard work, I’d like to explore that properly. Would you be comfortable introducing me to whoever owns hotel operations or internal systems for those properties?
+> Now that we’ve wrapped the dashboard work, would you be comfortable introducing me to whoever owns hotel operations or internal systems for those properties?
 >
-> I’d use the first conversation to understand the operation and see whether there’s a fit for what I do: take one messy business process, build a controlled AI system around it, and leave behind proof the business can trust.
->
-> If one person is the right starting point, a simple group text or email intro would be perfect.
+> I’d like to learn which recurring workflows still take the most manual coordination, then see whether one could be automated cleanly. A simple group text or email intro would be perfect.
 
 ### Forwardable blurb for Gil
 
@@ -66,6 +64,8 @@ Sources:
 - If Gil asks what workflows: lead with daily operating reports, maintenance/guest issue routing, vendor coordination, invoice/reconciliation exceptions, and management reporting. Ask which one is currently most manual.
 
 ## 4. Karen — Property-Operator Introduction
+
+> **RETIRED 2026-09-09:** JT confirmed Karen does not know property operators. Do not send or resurface this ask. The text below is retained only as historical drafting context.
 
 ### Research conclusion
 - Karen's public positioning is confidential one-to-one recovery support for executives, professionals, public figures, athletes, and families.
@@ -90,7 +90,6 @@ Sources:
 > JT works with property managers and building owners. He takes one messy business process, builds a controlled AI system around it, and leaves behind proof the business can trust. He starts with the process, not the technology, and can usually tell quickly whether there is a useful project there.
 
 ## Send Order
-1. Ed on Teams today.
-2. Gil today.
-3. Karen today or tomorrow morning.
-4. No Altmark send today; honor Yair's stated Tuesday/Thursday timeline.
+1. Gil hospitality introduction only.
+2. Ed/MSI follow-up is closed unless MSI initiates a new conversation.
+3. Karen property-operator ask is retired and must not be sent.

@@ -1,27 +1,28 @@
 # Job State: Job Market Daily Research
 
-- Last completed run: 2026-09-08T12:42:35-04:00
-- Cursor: rolling 30-day window 2026-08-10 through 2026-09-08; next run retains a rolling 30-day window and does not exclude still-live roles by cursor
+- Last completed run: 2026-09-09T05:24:13-04:00
+- Cursor: rolling 30-day window 2026-08-11 through 2026-09-09; next run retains a rolling 30-day window and does not exclude still-live roles by cursor
 - Open items: none; Bloomberg and Janus Henderson applications were submitted by JT on 2026-09-08.
-- Last failure: none in the latest run
+- Last failure: no run-level failure; HubSpot's third-party verifier hit a TLS error and some Workday pages were unreadable, so those roles were rejected unless all gates could be established independently
 - Started marker: clear
-- Next expected run: 2026-09-09T05:15:00-04:00
+- Next expected run: 2026-09-10T05:15:00-04:00
 - Legacy definition: `config/cron-snapshots/job-pipeline-legacy-before-reactivation-2026-08-22.json`
 
 ## Latest Run
 
-- Run timestamp: 2026-09-08T12:32:27-04:00 through 2026-09-08T12:42:35-04:00
-- Searches executed: 12 successful rolling-month broad query families with 15 results requested per query, plus 10 targeted validation searches.
-- URLs checked: 178 unique candidate or validation URLs from 173 unique broad raw search-result URLs.
-- Surfaced roles: 1 — Bloomberg, AI Enablement Lead, External Relations, 22/25.
-- Artifacts: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; `/Users/jtsomwaru/projects/job-market-agent/data/job-opportunities.md`; `/Users/jtsomwaru/.openclaw/workspace/memory/job-state/job-market-daily-research.md`
-- Failures: none. Some ATS pages did not yield readable text; they were rejected unless location, pay, and direct-proof gates were independently established.
-- Cursor/date: rolling 30-day window 2026-08-10 through 2026-09-08
-- Proof log: `0c698d1c`
-- Next run: 2026-09-09T05:15:00-04:00
+- Run timestamp: 2026-09-09T05:15:31-04:00 through 2026-09-09T05:24:13-04:00
+- Searches executed: 12 successful rolling-month broad query families with 15 results requested per query, plus 7 targeted validation searches and live-posting/API checks.
+- URLs checked: 175 unique discovery URLs from 180 raw search results; every URL and outcome is recorded in the run audit.
+- Surfaced roles: 0. Chime Senior Program Manager, AI Enablement was the closest at 19/25 and did not clear the 20/25 threshold.
+- Artifacts: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; `/Users/jtsomwaru/projects/job-market-agent/data/search-results/2026-09-09-job-market-audit.md`; `/Users/jtsomwaru/.openclaw/workspace/memory/job-state/job-market-daily-research.md`. `job-opportunities.md` was intentionally unchanged because no new role qualified.
+- Failures: no run-level failure. HubSpot's third-party verifier hit a TLS error; its readable posting independently failed the Finance/SOX proof gate. Some Workday pages were unreadable and were rejected because location, pay, and direct-evidence gates could not all be established.
+- Cursor/date: rolling 30-day window 2026-08-11 through 2026-09-09
+- Proof log: `ec7a1900`
+- Next run: 2026-09-10T05:15:00-04:00
 
 ## Recent Runs
 
+- 2026-09-09 05:24 ET: twelve broad rolling-month searches produced 180 raw results and 175 unique URLs; no evidence-backed role cleared 20/25, with Chime closest at 19/25.
 - 2026-09-08 12:42 ET: twelve broad rolling-month searches produced 173 unique raw URLs; 178 candidate or validation URLs were audited and Bloomberg AI Enablement Lead, External Relations surfaced at 22/25.
 - 2026-09-08 05:32 ET: twelve broad rolling-month searches produced 177 unique raw URLs and 180 candidate or validation URLs were audited; same-day correction marked Babylist expired, so no role cleared every gate.
 - 2026-09-07 05:27 ET: twelve broad rolling-month searches produced 169 unique raw URLs; 134 candidate URLs were audited and Janus Henderson Investors AI Enablement Partner surfaced at 21/25.

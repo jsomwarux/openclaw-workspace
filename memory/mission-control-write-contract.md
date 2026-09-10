@@ -4,7 +4,7 @@
 - Collected cash is recorded ONLY in the Convex payments table via the API. Never record a payment as prose in north-star.md and expect it to count.
 - Every payment needs: clientName, amount, paidOn (real date), milestone, kind, cleared, source (evidence ref).
 - pipeline.jsonl is FORECAST ONLY. Never zero out a client's value when they pay — change the stage instead. Zeroing is what made collected cash structurally invisible.
-- MSI remaining value is $5,400 ($10,800 signed, $5,400 collected at kickoff). Do not revert this.
+- MSI remaining value is $0. The full $10,800 is collected; JT confirmed MSI-002 paid on 2026-09-09. Exact payment date is not logged, so the ledger uses the confirmation date and labels it accordingly. Do not revert this.
 - Never restructure north-star.md headings or labels.
 
 ## Tasks you create

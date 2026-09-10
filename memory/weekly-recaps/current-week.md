@@ -65,3 +65,4 @@ Archive every Monday, start fresh.
 - 2026-09-08: Stopped the Babylist application build after verifying the role was removed; corrected the Built In live-posting guard and marked the job expired across job-market state.
 - 2026-09-08: Built and live-verified the Bloomberg AI Enablement Lead, External Relations application package, uploaded both documents to Drive, excluded AgentGuard, and created the JT-owned application task without claiming submission.
 - 2026-09-08: JT submitted the Bloomberg AI Enablement Lead, External Relations and Janus Henderson Investors AI Enablement Partner applications; both tracker entries moved to `jt-applied` and both Mission Control application tasks were closed.
+- 2026-09-09: JT retired Karen's property-operator referral ask and confirmed MSI fully paid/closed with laptop returned and no active follow-on; Gil hospitality introduction remains active.

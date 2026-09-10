@@ -11,11 +11,11 @@
 |---|---:|---:|---:|---|
 | Fixed-scope deliverables accepted | 0 | 4 | 4 | Complete |
 | Engagement hours | 80 cap | Delivered inside fixed 80 hours | <=80 | Complete |
-| Completion invoice | $5,400 remaining | MSI-002 sent 2026-08-18 | Paid by 2026-09-02 | Open |
+| Completion invoice | $5,400 remaining | MSI-002 paid; confirmed by JT 2026-09-09 | Complete | Closed |
 
 ## Workflow Learnings
 - Accepted delivery proof should point to existing artifacts, not be reconstructed: `ENGAGEMENT_BUILD_RECORD.md` for private factual verification, `case-study-analytics-platform.md` for anonymized proposal proof.
-- The follow-on lane is open, but QA release-flow wiring is off-limits because MSI has claimed it in-house.
+- No follow-on engagement is active as of 2026-09-09. Reopen only if MSI initiates a new scope conversation.
 
 ## Expansion Opportunities
 | Opportunity | Business Impact | Effort | Proposed Scope | Price Anchor |

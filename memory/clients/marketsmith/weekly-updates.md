@@ -42,6 +42,7 @@
 - All four Nexus SOW deliverables were delivered and accepted.
 - The client's technical lead confirmed acceptance in writing to the exec team on 2026-08-17 after independently re-verifying the work on MSI's own systems.
 - Completion invoice MSI-002 for $5,400 was sent 2026-08-18, Net 15, due 2026-09-02.
+- 2026-09-09 correction: JT confirmed MSI-002 is paid, the MSI laptop was returned, and no further engagement is active. This supersedes all open-payment and follow-on reminders below.
 
 ### Misses / Blockers
 - No delivery blocker remains with JT. Remaining polish items sit with the client's technical lead.
@@ -63,11 +64,11 @@
 
 ### Next Week's Plan
 - Follow up on the team walkthrough around 2026-08-25.
-- Flag if MSI-002 remains unpaid on 2026-09-03.
+- No payment follow-up remains; MSI-002 is paid.
 - Before any quote, confirm expanded scope and pricing separately because the current rate was explicitly the initial-project rate.
 
 ### Client Decision / Input Needed
-- MSI-002 payment by 2026-09-02.
+- None; engagement is fully paid and closed.
 - Team walkthrough feedback.
 - Explicit permission before naming MSI publicly/client-facing or using internal hours-saved estimates.
 

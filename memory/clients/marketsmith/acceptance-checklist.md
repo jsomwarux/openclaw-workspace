@@ -21,7 +21,7 @@ Use this before calling any client deliverable "done." Acceptance must be proof-
 | Open issues have owner/date | Client OS dashboard or issue list | Client technical lead | Accepted / client-owned | JT should not treat polish as open SOW work unless technical lead reopens it |
 | Human-readable plan/review pack exists when acceptance requires judgment | Acceptance confirmation and case study | JT / Eve | Accepted | Proposal/content should point to anonymized case study instead of reconstructing |
 | Demo/proof asset exists when the workflow can be shown | Private build record + anonymized case study | JT / Eve | Accepted | `ENGAGEMENT_BUILD_RECORD.md` never leaves JT's devices; `case-study-analytics-platform.md` is reusable in proposals |
-| Payment/deposit status is clear | Invoice note | JT | Completion invoice sent | MSI-002 for $5,400 sent 2026-08-18, Net 15, due 2026-09-02; flag if unpaid 2026-09-03 |
+| Payment/deposit status is clear | JT confirmation | JT | Complete | MSI-002 for $5,400 is paid; confirmed 2026-09-09; exact payment date not logged |
 | Privacy/redaction review completed | Permission gates recorded | JT / Eve | Complete | No client name publicly/client-facing until approved; internal hours-saved estimates blocked; 11-defects fact constrained to case-study framing |
 | Handoff reviewed with client or internal owner | Client confirmation / walkthrough | JT / Client | Accepted; walkthrough follow-up open | Follow up on team walkthrough around 2026-08-25 |
 
@@ -42,5 +42,5 @@ Use this before calling any client deliverable "done." Acceptance must be proof-
 - Next review date: team walkthrough follow-up around 2026-08-25; scope conversation routes through technical lead first, then budget owner.
 
 ## Weekly Escalation Rule
-- If MSI-002 is unpaid on 2026-09-03, flag it as a cash follow-up.
+- No payment follow-up remains. JT confirmed MSI-002 paid on 2026-09-09.
 - If the walkthrough produces a follow-on scope request, update this Client OS before any quote.

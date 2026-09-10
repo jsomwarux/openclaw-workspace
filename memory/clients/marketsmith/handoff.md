@@ -25,7 +25,7 @@
 | Issue | Owner | Due/Review Date | Status |
 |---|---|---|---|
 | Team walkthrough follow-up | JT / client technical lead | ~2026-08-25 | Open |
-| Completion invoice MSI-002, $5,400, Net 15 | MSI / JT | Due 2026-09-02; flag 2026-09-03 if unpaid | Sent |
+| Completion invoice MSI-002, $5,400, Net 15 | MSI / JT | Paid; confirmed by JT 2026-09-09 | Complete |
 | Remaining polish | Client technical lead | Client-owned | Not JT-owned |
 
 ## Proof / Privacy Boundary
