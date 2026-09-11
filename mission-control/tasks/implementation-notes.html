@@ -17,6 +17,60 @@
   </head>
   <body>
     <main>
+      <h1>Mission Control Today Queue Truth Reconciliation</h1>
+      <section class="summary">
+        <h2>Summary</h2>
+        <p><strong>Status:</strong> complete · <strong>Date:</strong> 2026-09-10 · <strong>Task:</strong> make the verified cohort action lead Today without changing the fixed scorer.</p>
+        <ul>
+          <li>Preserve the existing scorer and rank from truthful task metadata.</li>
+          <li>Map stored <code>todo</code> tasks to a truthful <code>todo</code> signal instead of displaying them as in progress.</li>
+          <li>Reconcile resolved or externally blocked Altmark cards from current evidence before asserting the live queue is correct.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Design Decisions</h2>
+        <ul>
+          <li>No current-decision override: <code>CLAUDE.md</code> fixes Today ranking behavior and forbids changing <code>score.ts</code> or <code>commandQueue</code> to alter ranking.</li>
+          <li>The cohort task receives only evidenced fields: verified proof packet, short effort, self-selected send date, and its role unblocking the prospect lane.</li>
+          <li>Externally blocked Altmark delivery remains preserved as waiting work rather than being falsely completed.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Open Questions</h2>
+        <p class="muted">None blocking. Live task mutations remain recoverable status/metadata updates and will carry audit evidence where supported.</p>
+      </section>
+      <section>
+        <h2>Deviations</h2>
+        <p class="muted">Rejected the earlier current-decision override. The project contract fixes Today scoring; truthful task metadata and stale-state reconciliation produced the desired queue without altering <code>score.ts</code> or <code>commandQueue</code>.</p>
+      </section>
+      <section>
+        <h2>Tradeoffs</h2>
+        <p class="muted">The blocked Altmark delivery card remains preserved as <code>waiting-external</code> with a 14-day nudge window. This keeps real future value without letting an unavailable action occupy NOW.</p>
+      </section>
+      <section>
+        <h2>Files Changed</h2>
+        <ul>
+          <li><code>lib/mission-control/types.ts</code></li>
+          <li><code>lib/mission-control/adapters.ts</code></li>
+          <li><code>lib/mission-control/adapters.test.ts</code></li>
+          <li><code>lib/mission-control/work-priority.ts</code></li>
+          <li><code>lib/mission-control/work-priority.test.ts</code></li>
+          <li><code>tasks/todo.md</code></li>
+          <li><code>tasks/implementation-notes.html</code></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Verification</h2>
+        <ul>
+          <li>TDD red: the adapter regression expected <code>todo</code> and received <code>in-progress</code>.</li>
+          <li><code>bun test lib/mission-control/*.test.ts</code>: 128 passed, 0 failed.</li>
+          <li><code>bunx tsc --noEmit</code>: exit 0.</li>
+          <li><code>bun run build</code>: isolated Next.js build completed successfully.</li>
+          <li>Live scorer projection: cohort #1 at score 31; blocked Altmark delivery excluded.</li>
+          <li>Headless rendered DOM: NOW title is the cohort task and its status badge is <code>todo</code>.</li>
+          <li>Fresh-context verifier: <strong>CONFIRM</strong>, no failures. Verbatim receipt: <code>reports/mission-control-priority/2026-09-10-verification.md</code>.</li>
+        </ul>
+      </section>
       <h1>Mission Control Slice 1.1 Notes</h1>
       <section class="summary">
         <h2>Summary</h2>

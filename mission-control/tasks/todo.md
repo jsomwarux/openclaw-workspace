@@ -1,3 +1,11 @@
+## Plan — Today Queue Truth Reconciliation — 2026-09-10
+- [x] Reproduce the cohort/Altmark rendered-order mismatch and trace task-to-signal status mapping.
+- [x] Add failing regression coverage proving stored `todo` stays `todo` in Today.
+- [x] Implement truthful status mapping without changing the fixed Today scorer.
+- [x] Reconcile the cohort and stale Altmark task metadata from current evidence.
+- [x] Verify focused tests, full Mission Control tests, TypeScript, isolated build, live API state, and rendered queue.
+- [x] Run a fresh-context verifier and record its verdict verbatim.
+
 ## Plan — Today Task Metadata Correction — 2026-08-31
 - [x] Reproduce the rendered-order mismatch and trace it from Today through task normalization.
 - [x] Add a failing regression test for scorer metadata dropped by the task API.

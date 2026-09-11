@@ -4,7 +4,7 @@ import { agentToSignal, cronToSignal, extractEvidence, proofToSignal, taskToSign
 const now = Date.now();
 
 describe("taskToSignal", () => {
-  test("treats a JT-owned todo as work in flight, not a decision", () => {
+  test("preserves a JT-owned todo as todo instead of claiming work has started", () => {
     const signal = taskToSignal({
       _id: "task-1",
       title: "Apply: Decagon Agent Development Team",
@@ -18,7 +18,7 @@ describe("taskToSignal", () => {
 
     expect(signal.id).toBe("task-1");
     expect(signal.owner).toBe("jt");
-    expect(signal.status).toBe("in-progress");
+    expect(signal.status).toBe("todo");
     expect(signal.lane).toBe("revenue");
     expect(signal.evidence[0]).toMatchObject({ kind: "drive", quality: "verified" });
   });

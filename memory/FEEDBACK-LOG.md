@@ -244,3 +244,9 @@ The contrarian flip on Sunday X ("wasn't X, it was Y") is the same root cause: t
 - Format rule: Preserve a traditional cover-letter presentation with JT's full contact header, month and year, `Hiring Team` when there is no named recipient, `Sincerely,` and a complete signature. The DOCX builder already renders these elements, so source markdown must not duplicate them.
 - Voice target: Confident and personally invested without generic enthusiasm, canned contrast language, or a consulting-style call to action.
 - Verification: Compare the final rendered letter against the local source and require the opening, close, header, recipient line, and sign-off to match these rules.
+
+## 2026-09-10 — Cold outreach must preserve JT's natural explanatory cadence
+- Trigger: JT rejected the verifier-optimized cohort-one emails as mechanically correct but unlike his voice. His preferred drafts used longer natural sentences, plain qualifiers such as “I know that was a little while ago,” condition-first reasoning, and respectful curiosity.
+- Rule: Mechanical gates do not define the voice. Draft each buyer message from its own source brief, explain why the signal raised the operational question, use proof as a short credibility bridge, and keep the useful roughness in JT's phrasing.
+- Guardrail: Read every batch side by side. Shared voice and one shared proof asset are honest; repeated proof sentences, fixed positional slots, forced micro-questions, exact day-age narration, and manufactured structural variation are template tells. Accuracy language must still match the verified workflow.
+- Verification: The revised five-message cohort passed a separate-context `SHIP` check after earlier verifier failures exposed unsupported COI nouns and repeated scaffolds. Final bodies are 94/89/85/101/91 words with one question each and distinct proof treatments.

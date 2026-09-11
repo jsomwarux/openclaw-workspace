@@ -1223,3 +1223,11 @@ Primary source: n8n 2.38.1 release notes https://docs.n8n.io/changelog/release-n
 **JT relevance:** add an explicit tool-lifecycle record to the shared workflow contracts: `call_id`, requested action/arguments, represented owner, issued timestamp, pending/running/completed/cancelled/expired state, steering revision, tool result receipt, timeout/late-result policy, safety-stop reason, reviewer decision, and final business outcome. Mid-turn corrections must supersede or cancel unsafe pending work rather than coexist with stale instructions; stopped or expired calls must fail closed and remain visible for reconciliation. This is a design/proof rule only. No model migration, API call, credential, workflow, Mission Control task, or recurring schedule was changed.
 
 Primary source: OpenAI model guidance for GPT-6 Astra https://developers.openai.com/api/docs/guides/latest-model
+
+## Sep 10, 2026 - Heartbeat AI Tool Monitoring
+
+**n8n 2.38 removes the execution-quota penalty for production error handling.** n8n's current changelog says runs of configured error workflows no longer count toward execution quotas on any plan. One error workflow can serve multiple production workflows and receive the failed workflow, node, and error details for alerting, ticket creation, or controlled retry.
+
+**JT relevance:** make an attached error workflow a deployment requirement for every production n8n workflow. The minimum recovery record should include the failed workflow and node, error class, execution ID, retry/idempotency decision, escalation owner, and final reconciliation state. A shared error workflow reduces operational overhead, but each originating workflow still needs an explicit recovery policy. This is a design/proof rule only; no n8n runtime, workflow, credential, provider, Mission Control task, or recurring schedule was changed.
+
+Primary source: n8n changelog, “Error workflow executions no longer count towards your quota” https://docs.n8n.io/changelog

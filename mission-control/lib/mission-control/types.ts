@@ -1,6 +1,7 @@
 export type SignalSource = "task" | "cron" | "agent" | "proof";
 export type SignalOwner = "jt" | "eve" | "both";
 export type SignalStatus =
+  | "todo"
   | "awaiting-decision"
   | "awaiting-approval"
   | "blocked"

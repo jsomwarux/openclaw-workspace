@@ -982,3 +982,11 @@ Every entry MUST have six fields: (1) specific failure, (2) root cause one level
 - **Regression check:** Re-run the search with one single-quoted regex argument and require exit code 0 with the expected v3.1 matches and no zsh diagnostics.
 - **Owner surface updated:** `docs/agents/mistakes-log-recent.md`.
 - **Verification/date:** 2026-09-09 — corrected `rg` completed with exit code 0 and returned the expected runbook, campaign, Notion, Drive, and PR references without shell errors.
+
+## 2026-09-10 — Claimed Mission Control priority from stored sort order instead of the rendered queue
+- **Failure:** Told JT the cohort-one send action had been made the #1 Mission Control decision, but the Today page still ranked the stale Altmark delivery task first and excluded the cohort task from the seven visible decisions.
+- **Root cause:** The task mutation set `sortOrder: 1` and verified the stored API record, but Today ignores `sortOrder`; it computes `commandQueue` from cash, deadline, unblock, proof, risk, and stability factors. The cohort task had none of those scoring fields, while Altmark retained a score of 63. The adapter also maps JT-owned `todo` tasks to the displayed `in-progress` status.
+- **Guardrail/rule:** Never claim a Mission Control Today position from task persistence or `sortOrder`. After any priority mutation, run the live task-to-signal-to-`commandQueue` computation and report the rendered title, score, reason codes, and visible position. If the intended task is absent, the mutation is incomplete.
+- **Regression check:** A live queue probe must show the intended title at `queue[0]` before saying it is the top decision; for this incident the probe must first reproduce Altmark at score 63 and the cohort task outside the seven-item queue.
+- **Owner surface updated:** `docs/agents/mistakes-log-recent.md`; no Mission Control code or task state changed because the user asked for diagnosis only.
+- **Verification/date:** 2026-09-10 — `/api/tasks` confirmed the cohort task exists with `sortOrder: 1`; the live `taskToSignal` + `commandQueue` probe reproduced Altmark first at score 63 and showed the cohort task outside the visible seven.

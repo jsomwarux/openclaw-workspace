@@ -87,3 +87,4 @@
 [main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L1065] Assistant: Yes. It is the **entire implementation plan**, not just Phase 1. It covers: - **Release 0:** shared architecture, data contracts, approvals, provenance, and run health - **Release 1:** consulting prospect research, workflow blueprints, and outreach packets - **Release 
 [main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L1065] Assistant: Release 1 manual pilot first, verify that foundation, then continue through Releases 2–4.
 [main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L1067] Assistant: Nightly Claude delta reminder — run the Daily Delta Packet prompt in Claude for 2026-09-08, then paste Claude's output back here so I can update memory, client files, tasks, proof/content notes, and future signals in the right places.
+[main/sessions/main/b91a9970-8757-4430-8fac-a59af1c58892#L7] Assistant: Job Application Tracker: 1 flagged application.

@@ -72,6 +72,7 @@
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 
 ## Active Automation / Crons
+- 2026-09-10: JT canceled and removed `Nightly Claude Delta Packet Reminder` (`fbae700d-4e23-414a-8a4e-dc563176d4b3`). Do not recreate it; the Claude copy-paste delta workflow is no longer needed.
 - 2026-08-24: JT overrode the freeze and approved the non-Grok agent-operating-system implementation. The independently confirmed Nightly Validation Controller is live at 11:15 PM ET as cron `e3156dad-ddc4-4b74-b019-727b23dc72e0`; 11 jobs are enabled, 59 estimated weekly invocations, and the empty-queue smoke run succeeded silently. It admits one lane and up to three read-only packets, requires fresh independent verification, and upserts at most one gated Mission Control task. JT will create the separate Grok Signal Lab. Source: `deliverables/agent-operating-system-redesign-2026-08-24.md`.
 - 2026-08-25: JT approved the canonical Revenue Signal Lab configuration at `deliverables/revenue-signal-lab-setup-2026-08-25.md`: one dedicated Grok Project plus one weekday Automation, weighted 60% higher-value demand, 25% buyer/distribution intelligence, and 15% delivery leverage. Grok 4.6 then optimized execution for fresh-run amnesia, Latest/date-bound X research, opened sources, event clustering, current-motion signals, unknown-vs-failed gates, and labeled $50K assumptions. The stricter canonical four-week gate remains authoritative, including the 20% noise/repeat ceiling. Do not upgrade solely for Grok Bot. Start without private attachments; manual forwarding to Eve remains the four-week validation path, and no weekly routine/API bridge is added until the evidence and buyer-action gate passes.
 - 2026-08-24: JT approved the non-Grok implementation. `Daily Workout Card` remains active as a one-way 05:00 ET training card outside the canceled health-automation lane. It reads JT's pointer, sends exact workout text silently, never asks for health/feeling/completion data, and never advances state.
@@ -95,25 +96,9 @@
 - 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
 
-## Promoted From Short-Term Memory (2026-09-09)
+## Promoted From Short-Term Memory (2026-09-10)
 
-<!-- openclaw-memory-promotion:memory:claim:c0d4cd7f8086 -->
-- Heartbeat 14:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.803 signals=6 recalls=0 avg=0.620 source=memory/2026-08-27.md:41-41] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:c3d79a5cf83c -->
-- Heartbeat 11:30: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.803 signals=6 recalls=0 avg=0.620 source=memory/2026-08-27.md:26-26] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:dbe0dc3e6e5d -->
-- Heartbeat 13:12: Delivered gates and completed proactive work were not repeated. No external action or user notification occurred. Notification: false. [score=0.803 signals=6 recalls=0 avg=0.620 source=memory/2026-08-28.md:36-36] <!-- trigger: heartbeat, delivered, gates --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:890e53354c03 -->
-- Heartbeat 13:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.770 signals=6 recalls=0 avg=0.620 source=memory/2026-08-27.md:36-36] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:02f143fd7b72 -->
-- Heartbeat 12:12: Delivered gates and completed proactive work were not repeated. No external action or user notification occurred. Notification: false. [score=0.770 signals=6 recalls=0 avg=0.620 source=memory/2026-08-28.md:31-31] <!-- trigger: heartbeat, delivered, gates --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:a3b060d2e71b -->
-- Heartbeat 19:30: Cron remained at 11 enabled jobs with no unhealthy jobs. No cron mutation occurred. [score=0.770 signals=6 recalls=0 avg=0.620 source=memory/2026-08-29.md:65-65] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:a3b1e1c60024 -->
-- Session Cleanup 03:00: agent:main:cron:b0b04601-7518-4681-9761-4bbe5054ce9b (last active: 1.7d ago) [score=0.770 signals=6 recalls=0 avg=0.620 source=memory/2026-08-29.md:6-6] <!-- trigger: 1.7d, cleanup, agent:main:cron:b0b04601 --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:eccd20f3e81d -->
-- Heartbeat 10:12: Outreach pipeline ran at 03:00 and passed with no external outreach; crypto morning was absent. The 02:00 backup completed successfully at 81 MB with 7 backups retained and `n8n-agent` up to date. [score=0.770 signals=6 recalls=0 avg=0.620 source=memory/2026-08-31.md:17-17] <!-- trigger: backup, backups, n8n-agent --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:ea378a5c27f5 -->
-- Session Cleanup 03:00: agent:main:cron:b2ca53ab-0c07-4a22-8424-9d39bf988405 (last active: 1.7d ago) [score=0.754 signals=5 recalls=0 avg=0.620 source=memory/2026-09-01.md:7-7] <!-- trigger: 1.7d, cleanup, agent:main:cron:b2ca53ab --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:ebf4f73ef179 -->
-- Session Cleanup 03:00: agent:main:cron:ac53b979-44c6-481b-b2aa-7cb9203e6476 (last active: 1.8d ago) [score=0.754 signals=5 recalls=0 avg=0.620 source=memory/2026-09-01.md:6-6] <!-- trigger: 1.8d, cleanup, agent:main:cron:ac53b979 --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:ed54d6ef2754 -->
+- Heartbeat 14:12: Delivered gates and completed proactive work were not repeated. No external action or user notification occurred. Notification: false. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-28.md:41-41] <!-- trigger: heartbeat, delivered, gates --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:da776be4662b -->
+- Heartbeat 12:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.756 signals=7 recalls=0 avg=0.620 source=memory/2026-08-27.md:31-31] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->

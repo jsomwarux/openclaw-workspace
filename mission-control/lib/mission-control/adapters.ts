@@ -120,8 +120,8 @@ function laneForProject(project?: string, title = "", stored?: string): SignalLa
   return "work";
 }
 
-// A todo owned by JT is just work in flight. Only a shared high-priority task is
-// a real approval gate; ownership alone is not a decision.
+// Preserve stored task truth. A todo has not started, so presenting it as
+// in-progress is misleading. Shared high-priority work remains an approval gate.
 function taskStatusToSignal(task: RawTask): SignalStatus {
   if (task.status === "done") return "done";
   if (task.status === "archived") return "archived";
@@ -129,7 +129,7 @@ function taskStatusToSignal(task: RawTask): SignalStatus {
   if (task.status === "snoozed") return "snoozed";
   if (task.status === "in-progress") return "in-progress";
   if (task.assignee === "both" && task.priority === "high") return "awaiting-approval";
-  return "in-progress";
+  return "todo";
 }
 
 export function extractEvidence(text = ""): ProofRef[] {

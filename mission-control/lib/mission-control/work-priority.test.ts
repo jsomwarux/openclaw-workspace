@@ -39,6 +39,15 @@ describe("work priority ordering", () => {
     expect(sorted.map((item) => item.id).join(",")).toBe("active,done");
   });
 
+  test("keeps todo work in the active tier without claiming it is doing", () => {
+    const sorted = sortWorkSignals([
+      signal({ id: "done", status: "done", priority: "high", updatedAt: 500 }),
+      signal({ id: "todo", status: "todo", priority: "high", updatedAt: 100 }),
+    ]);
+
+    expect(sorted.map((item) => item.id).join(",")).toBe("todo,done");
+  });
+
   test("assigns distinct visual classes per priority", () => {
     expect(priorityRank("high")).toBe(3);
     expect(priorityBadgeClassName("high")).toContain("rose");
