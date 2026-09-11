@@ -13,6 +13,7 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import type { FunctionArgs } from "convex/server";
 import { normalizeTaskInput, validateTaskAdmission } from "@/lib/mission-control/task-admission";
+import { resolveTaskWriteMode } from "@/lib/mission-control/task-write-mode";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
@@ -40,7 +41,21 @@ export async function POST(req: Request) {
   const { title } = input;
   if (!title) return NextResponse.json({ error: "title required" }, { status: 400 });
 
-  if (input.dedupeKey) {
+  let mode;
+  try {
+    mode = resolveTaskWriteMode(new URL(req.url).searchParams.get("mode"), Boolean(input.dedupeKey));
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+  }
+
+  if (mode === "create-only") {
+    const result = await convex.mutation(
+      api.tasks.createOnlyByDedupeKey,
+      input as FunctionArgs<typeof api.tasks.createOnlyByDedupeKey>,
+    );
+    return NextResponse.json({ ...result, success: true });
+  }
+  if (mode === "upsert") {
     const result = await convex.mutation(
       api.tasks.upsertByDedupeKey,
       input as FunctionArgs<typeof api.tasks.upsertByDedupeKey>,

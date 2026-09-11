@@ -1,3 +1,10 @@
+## Plan — Atomic Create-Only Task Admission — 2026-09-11
+- [x] Add a failing pure-helper test proving an existing dedupe key returns its ID without patching fields.
+- [x] Add a failing route-selection test proving `POST /api/tasks?mode=create-only` uses the create-only mutation while normal POST remains upsert.
+- [x] Implement the minimum atomic create-only Convex mutation and explicit route mode.
+- [x] Run focused tests, full `bun test`, TypeScript, and isolated `.next-build` production build.
+- [ ] Record exact verification evidence, commit explicit paths, push, and open a PR without merging.
+
 ## Plan — Today Queue Truth Reconciliation — 2026-09-10
 - [x] Reproduce the cohort/Altmark rendered-order mismatch and trace task-to-signal status mapping.
 - [x] Add failing regression coverage proving stored `todo` stays `todo` in Today.

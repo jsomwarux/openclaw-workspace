@@ -17,6 +17,21 @@
   </head>
   <body>
     <main>
+      <h1>Atomic Create-Only Task Admission</h1>
+      <section class="summary">
+        <h2>Summary</h2>
+        <p><strong>Status:</strong> in progress · <strong>Date:</strong> 2026-09-11 · <strong>Task:</strong> preserve immutable human task state under concurrent version-card writes.</p>
+      </section>
+      <section>
+        <h2>Design Decisions</h2>
+        <ul>
+          <li>Add an explicit <code>POST /api/tasks?mode=create-only</code> path; normal POST remains the current keyed upsert.</li>
+          <li>The Convex mutation performs lookup and insert atomically. Existing dedupe keys return their ID and <code>created: false</code> without a patch.</li>
+          <li>No schema migration, production deployment, or data write is part of this branch.</li>
+        </ul>
+      </section>
+      <section><h2>Open Questions</h2><p class="muted">None blocking. Root <code>CLAUDE.md</code> and a Mission Control lessons file are absent on current <code>origin/master</code>; <code>mission-control/CLAUDE.md</code> is the available project contract.</p></section>
+      <section><h2>Verification</h2><p class="muted">Pending TDD red/green and full package gates.</p></section>
       <h1>Mission Control Today Queue Truth Reconciliation</h1>
       <section class="summary">
         <h2>Summary</h2>
@@ -195,6 +210,23 @@
           <li>Health cockpit screenshot captured at <code>/tmp/mission-control-screens/health-mobile-cockpit.png</code>.</li>
           <li>Revenue screenshots captured at <code>/tmp/mission-control-screens/revenue-mobile-final.png</code> and <code>/tmp/mission-control-screens/revenue-desktop-final.png</code>.</li>
         </ul>
+      </section>
+      <section>
+        <h2>Atomic Create-Only Task Admission — 2026-09-11</h2>
+        <p><strong>Decision:</strong> Preserve normal keyed POST upsert behavior. Add an explicit <code>mode=create-only</code> path for immutable payload-version cards.</p>
+        <h3>Design</h3>
+        <ul>
+          <li>The Convex mutation queries the indexed <code>dedupeKey</code> and, inside one mutation, either returns the existing ID untouched or inserts the new task once.</li>
+          <li>An existing task is never patched in create-only mode, so completed, in-progress, or archived human state cannot be reopened by an adapter race.</li>
+          <li>Missing dedupe keys and unknown modes fail with HTTP 400. Normal POST behavior is unchanged.</li>
+          <li>No schema migration, deployment, production data write, or schedule change is part of this branch.</li>
+        </ul>
+        <h3>Tradeoff</h3>
+        <p>A separate explicit mode keeps backward compatibility for existing callers while providing the stronger write contract required by the jt-ops adapter.</p>
+        <h3>Files</h3>
+        <p><code>convex/tasks.ts</code>, <code>app/api/tasks/route.ts</code>, two pure helpers and their tests, plus task and implementation records.</p>
+        <h3>Verification</h3>
+        <p>RED: both new test modules failed to import before implementation. GREEN: seven focused assertions passed. Full mirror verification: 135 tests passed across 27 files; TypeScript passed; the isolated <code>.next-build</code> production build generated all 38 static pages. Exact output is in <code>reports/create-only-review.md</code>.</p>
       </section>
     </main>
   </body>
