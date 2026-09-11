@@ -3,7 +3,7 @@
 - [x] Add a failing route-selection test proving `POST /api/tasks?mode=create-only` uses the create-only mutation while normal POST remains upsert.
 - [x] Implement the minimum atomic create-only Convex mutation and explicit route mode.
 - [x] Run focused tests, full `bun test`, TypeScript, and isolated `.next-build` production build.
-- [ ] Record exact verification evidence, commit explicit paths, push, and open a PR without merging.
+- [x] Record exact verification evidence, commit explicit paths, push, and open PR #1 without merging.
 
 ## Plan — Today Queue Truth Reconciliation — 2026-09-10
 - [x] Reproduce the cohort/Altmark rendered-order mismatch and trace task-to-signal status mapping.
