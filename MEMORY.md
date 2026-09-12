@@ -29,6 +29,7 @@
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
+- 2026-09-11: JT moved the five-message supportive-housing buyer cohort from Friday to Tuesday, 2026-09-15. Send the full cohort manually from the established Gmail between 9:15 and 10:30 AM ET, staggered a few minutes apart; record outcomes and stop any prospect's sequence on reply. Mission Control is the action owner.
 - The retired 90 Day Playbook warm-list order is historical only. Do not revive Ed/MSI or Karen referral actions from it.
 - Current warm ask: Gil hospitality-team introduction. Other relationship actions require current evidence before resurfacing.
 - Guyana is frozen through 2026-11-17 unless JT explicitly overrides after the freeze prompt.
@@ -96,9 +97,9 @@
 - 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
 
-## Promoted From Short-Term Memory (2026-09-10)
+## Promoted From Short-Term Memory (2026-09-11)
 
-<!-- openclaw-memory-promotion:memory:claim:ed54d6ef2754 -->
-- Heartbeat 14:12: Delivered gates and completed proactive work were not repeated. No external action or user notification occurred. Notification: false. [score=0.768 signals=8 recalls=0 avg=0.620 source=memory/2026-08-28.md:41-41] <!-- trigger: heartbeat, delivered, gates --> <!-- importance: 8 -->
-<!-- openclaw-memory-promotion:memory:claim:da776be4662b -->
-- Heartbeat 12:12: Cron remained at 11 enabled jobs, with Friday Scoreboard still the sole unhealthy job at 4 consecutive errors. No cron mutation occurred. [score=0.756 signals=7 recalls=0 avg=0.620 source=memory/2026-08-27.md:31-31] <!-- trigger: heartbeat, cron, remained --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:2c900a22272b -->
+- Heartbeat 08:12: Active-hours checks completed after reading exact `HEARTBEAT.md`, extended rules, and today's deduplication log. Mission Control audit remained healthy: 21 active, 7 high, 5 overdue high tasks with actual due dates, 0 high due within 48 hours, 4 uncontrolled high, and no changes/errors. [score=0.834 signals=5 recalls=0 avg=0.620 source=memory/2026-08-29.md:9-9] <!-- trigger: active-hours, heartbeat.md, heartbeat --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:3442d104f417 -->
+- Heartbeat 15:12: Delivered gates and completed proactive work were not repeated. No external action or user notification occurred. Notification: false. [score=0.753 signals=3 recalls=0 avg=0.620 source=memory/2026-08-28.md:46-46] <!-- trigger: heartbeat, delivered, gates --> <!-- importance: 8 -->
