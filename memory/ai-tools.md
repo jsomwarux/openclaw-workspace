@@ -1231,3 +1231,11 @@ Primary source: OpenAI model guidance for GPT-6 Astra https://developers.openai.
 **JT relevance:** make an attached error workflow a deployment requirement for every production n8n workflow. The minimum recovery record should include the failed workflow and node, error class, execution ID, retry/idempotency decision, escalation owner, and final reconciliation state. A shared error workflow reduces operational overhead, but each originating workflow still needs an explicit recovery policy. This is a design/proof rule only; no n8n runtime, workflow, credential, provider, Mission Control task, or recurring schedule was changed.
 
 Primary source: n8n changelog, “Error workflow executions no longer count towards your quota” https://docs.n8n.io/changelog
+
+## Sep 12, 2026 - Heartbeat AI Tool Monitoring
+
+**OpenAI's Responses WebSocket steering protocol separates acceptance from commitment and makes continuation idempotency an application responsibility.** The official beta reference says `response.steer.accepted` means the server owns queued input, while the successor `response.created` event is the commit point. If a response stops for client-owned tool output or approval, `response.steer.pending` identifies the required inputs; the application must use saved results, submit one matching continuation per parent, and must not rerun tools or resend accepted steering input.
+
+**JT relevance:** extend the existing tool-lifecycle record with `steer_id`, `accepted_at`, `committed_response_id`, `pending_required_input`, and `continuation_submitted_at`. Treat a lost acknowledgement as unknown—not rejected—and reconcile before retry. A continuation handler should enforce one continuation per parent, reuse saved tool/approval results, and expose unresolved accepted-but-uncommitted input as an exception. This is a design/proof rule only; no model, API call, credential, provider, workflow, Mission Control task, or recurring schedule was changed.
+
+Primary source: OpenAI Responses API beta reference https://developers.openai.com/api/reference/cli/resources/beta/subresources/responses
