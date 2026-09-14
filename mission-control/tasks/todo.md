@@ -95,3 +95,9 @@
 - [x] Upload the latest bundle to organized Google Drive folders.
 - [x] Wire weekly agent/cron instructions to run Drive sync automatically.
 - [x] Verify tests, Drive upload output, prompt wiring, and bootstrap file sizes.
+## Plan — Create-Only Capability Handshake — 2026-09-14
+- [x] Add failing response-contract tests for created/existing create-only results and normal upsert.
+- [x] Implement the smallest route response helper and wire it into POST `/api/tasks`.
+- [x] Reuse the local Mission Control dependency tree via an ignored clone-local symlink; both checked-in lockfiles are stale and clean installs would create unrelated churn.
+- [x] Rerun focused tests, the full Mission Control test suite, TypeScript, and the isolated build with the standard local Convex address required for page-data collection; review the final diff.
+- [x] Record verifier-ready evidence and commit the bounded patch locally.
