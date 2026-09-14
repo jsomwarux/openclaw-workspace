@@ -1,3 +1,10 @@
+## Plan — Dedicated Create-Only Endpoint — 2026-09-14
+- [x] Add failing route tests for new/existing create-only outcomes and the legacy no-POST boundary.
+- [x] Implement `POST /api/tasks/create-only` with the existing atomic mutation and explicit marker.
+- [x] Preserve and regression-test ordinary `/api/tasks` behavior.
+- [x] Move the injected handler factory out of the App Router module after Next rejected the non-route export, then rerun focused/full tests, TypeScript, isolated build, and final diff review.
+- [x] Update verifier evidence and commit locally without external actions.
+
 ## Plan — Atomic Create-Only Task Admission — 2026-09-11
 - [x] Add a failing pure-helper test proving an existing dedupe key returns its ID without patching fields.
 - [x] Add a failing route-selection test proving `POST /api/tasks?mode=create-only` uses the create-only mutation while normal POST remains upsert.

@@ -17,6 +17,32 @@
   </head>
   <body>
     <main>
+      <h1>Dedicated Create-Only Endpoint</h1>
+      <section class="summary">
+        <h2>Summary</h2>
+        <p><strong>Status:</strong> ready for fresh verification · <strong>Date:</strong> 2026-09-14 · <strong>Task:</strong> move the safe capability handshake onto a dedicated route that older deployments cannot mistake for ordinary mutable POST.</p>
+        <ul>
+          <li>Add <code>POST /api/tasks/create-only</code>.</li>
+          <li>Keep the query-mode route for compatibility, but dependent clients will use only the dedicated path.</li>
+          <li>Prove the legacy dynamic route exposes no POST mutation fallback.</li>
+        </ul>
+      </section>
+      <section><h2>Design Decisions</h2><p>The App Router module exports only <code>POST</code>. A small injected handler in <code>lib/mission-control/task-create-only-post.ts</code> owns admission, normalization, fail-closed dedupe validation, and the explicit response contract; the route injects only the atomic Convex mutation.</p></section>
+      <section><h2>Deviations</h2><p class="muted">None.</p></section>
+      <section><h2>Tradeoffs</h2><p>The original query-mode endpoint remains for compatibility, but it is not a safe capability probe and dependent clients must not use it. The dedicated path turns unsupported older servers into a 405/404 boundary before any task mutation.</p></section>
+      <section><h2>Open Questions</h2><p class="muted">None blocking.</p></section>
+      <section><h2>Files Changed</h2><p><code>app/api/tasks/create-only/route.ts</code>, <code>lib/mission-control/task-create-only-post.ts</code>, <code>lib/mission-control/task-create-only-route.test.ts</code>, and implementation/evidence records.</p></section>
+      <section>
+        <h2>Verification</h2>
+        <ul>
+          <li>RED: three dedicated-route assertions failed because <code>app/api/tasks/create-only/route.ts</code> did not exist; the legacy no-POST boundary and eight ordinary write-mode/response tests passed.</li>
+          <li>GREEN: 14 focused tests passed with 0 failures.</li>
+          <li>Full suite: 142 tests passed across 28 files with 0 failures and 342 assertions.</li>
+          <li><code>bunx tsc --noEmit</code>: exit 0.</li>
+          <li>Initial build exposed an invalid extra App Router export; moving the test factory to <code>lib</code> fixed the root cause.</li>
+          <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 39/39 pages generated and <code>/api/tasks/create-only</code> listed as a distinct dynamic route.</li>
+        </ul>
+      </section>
       <h1>Create-Only Capability Handshake</h1>
       <section class="summary">
         <h2>Summary</h2>
@@ -29,7 +55,7 @@
       </section>
       <section><h2>Design Decisions</h2><p>A pure response builder adds <code>writeMode: "create-only"</code> only for the explicit create-only path. All successful POST branches use the builder, keeping the route and tested contract coupled.</p></section>
       <section><h2>Deviations</h2><p class="muted">None.</p></section>
-      <section><h2>Tradeoffs</h2><p>The normal create and upsert response shapes remain marker-free for backward compatibility. Clients that require overwrite protection must require the exact marker.</p></section>
+      <section><h2>Tradeoffs</h2><p>The normal create and upsert response shapes remain marker-free for backward compatibility. Clients that require overwrite protection must use the dedicated create-only path and require the exact marker.</p></section>
       <section><h2>Open Questions</h2><p class="muted">None blocking.</p></section>
       <section><h2>Files Changed</h2><p><code>app/api/tasks/route.ts</code>, <code>lib/mission-control/task-write-mode.ts</code>, <code>lib/mission-control/task-write-mode.test.ts</code>, and implementation records.</p></section>
       <section>
