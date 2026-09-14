@@ -4,6 +4,14 @@ Date: 2026-09-14
 Branch: `eve/mc-create-only-capability`
 Base: `origin/eve/mc-create-only`
 
+## Release order
+
+Review, merge, and deploy this Mission Control capability before activating the
+dependent jt-ops adapter/heartbeat write path at commit
+`af60141200d2b7d8802b5c8f05e675be1e04889b` or any descendant. The client must
+remain dry-run until this endpoint returns `writeMode: "create-only"`. Merge,
+deployment, and schedule activation remain separate JT approvals.
+
 ## Claim
 
 Successful `POST /api/tasks?mode=create-only` responses expose the stable capability marker `writeMode: "create-only"` for both newly created and already-existing outcomes, while normal upsert/create response shapes remain unchanged.
