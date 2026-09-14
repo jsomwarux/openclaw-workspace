@@ -1239,3 +1239,11 @@ Primary source: n8n changelog, “Error workflow executions no longer count towa
 **JT relevance:** extend the existing tool-lifecycle record with `steer_id`, `accepted_at`, `committed_response_id`, `pending_required_input`, and `continuation_submitted_at`. Treat a lost acknowledgement as unknown—not rejected—and reconcile before retry. A continuation handler should enforce one continuation per parent, reuse saved tool/approval results, and expose unresolved accepted-but-uncommitted input as an exception. This is a design/proof rule only; no model, API call, credential, provider, workflow, Mission Control task, or recurring schedule was changed.
 
 Primary source: OpenAI Responses API beta reference https://developers.openai.com/api/reference/cli/resources/beta/subresources/responses
+
+## Sep 13, 2026 - Heartbeat AI Tool Monitoring
+
+**OpenAI's managed Agents API makes session reconciliation a first-class production requirement.** The official session-create reference exposes a managed session with `status` (`idle`, `in_progress`, `requires_action`, or `failed`), `required_actions`, `error`, `last_active_at`, best-effort `usage`, and an explicit execution environment. A request returning successfully therefore does not prove that the business workflow finished; the session may still require client-owned action or later reconciliation.
+
+**JT relevance:** add a managed-session control row to any future Agents API blueprint: session ID, agent/config version, execution environment, represented owner, current status, last-active timestamp, required-action owner/deadline, error, usage snapshot, final artifact/outcome, and reconciliation timestamp. Resume only from the recorded required action, and close the business workflow only after the session reaches an accepted terminal outcome and its artifact/evidence is verified. This is a design/proof rule only; no model, API call, credential, provider, workflow, Mission Control task, or recurring schedule was changed.
+
+Primary source: OpenAI API Reference, Create an agent session https://developers.openai.com/api/reference/python/resources/beta/subresources/agents/subresources/sessions/methods/create

@@ -1,0 +1,4 @@
+[main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L2570] Assistant: EVE DAILY - Saturday September 12, 2026 SENDS DUE (max 3) 1. Gil - ask for the Lady D / Little Charlie ops intro - draft: /Users/jtsomwaru/.openclaw/workspace/memory/drafts/warm-client-followups-2026-08-25.md - reply: send GATES <=48H None. STALE >=7 DAYS 1. Gil hospit
+[main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L2572] Assistant: I’m appending only durable state to `memory/2026-09-12.md`; bootstrap and reference files remain untouched.
+[main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L2581] User: Are you there?
+[main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L2583] Assistant: I’m here. The AI Workflow Growth OS build is still active; cohort-two remains paused at the authority-design issue, and Tuesday’s five buyer emails remain unchanged and ready to send.

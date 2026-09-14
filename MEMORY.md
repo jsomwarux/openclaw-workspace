@@ -97,7 +97,9 @@
 - 2026-09-02 JT Ops Playbook review: preserve evidence receipts and consumer contracts, but do not adopt the proposed full OS migration, automatic prompt merging, duplicate owner surfaces, or Eve-retirement model. If JT later overrides the 90-day freeze, scope the idea as a six-week demand-to-proof pilot. Review: `deliverables/jt-ops-playbook-review-2026-09-02.md`.
 - Detail: `docs/memory/MEMORY-full.md#setup-state`.
 
-## Promoted From Short-Term Memory (2026-09-12)
+## Promoted From Short-Term Memory (2026-09-13)
 
-<!-- openclaw-memory-promotion:memory:claim:68460e828412 -->
-- Session Cleanup 03:00: Removed sessions: [score=0.861 signals=4 recalls=0 avg=0.620 source=memory/2026-08-29.md:5-5] <!-- trigger: cleanup, removed --> <!-- importance: 9 -->
+<!-- openclaw-memory-promotion:memory:claim:2497ad7c50b0 -->
+- Session Cleanup 03:00: Nothing to clean up — all sessions recent or protected. [score=0.803 signals=3 recalls=0 avg=0.620 source=memory/2026-08-28.md:5-5] <!-- trigger: cleanup, nothing, clean --> <!-- importance: 8 -->
+<!-- openclaw-memory-promotion:memory:claim:b933980fe2ec -->
+- Session Cleanup 03:00: Sessions before: 11, after: 11, removed: 0 [score=0.763 signals=3 recalls=0 avg=0.620 source=memory/2026-08-28.md:3-3] <!-- trigger: cleanup, removed --> <!-- importance: 8 -->
