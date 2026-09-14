@@ -44,6 +44,14 @@ def render(data, phase_number, week_number, day_name, preview=False):
     stage_contains_phase3_aerobic = day.get("stage_schedule") == "phase3"
     if day.get("aerobic") and not stage_contains_phase3_aerobic:
         lines.append(f"CARDIO: {day['aerobic']} — {day['aerobic_minutes']} min")
+    if phase_number == 2 and day_name == "Tue":
+        stairmaster = data["progressions"]["stairmaster"]
+        lines.extend([
+            f"STAIRMASTER GATE: {stairmaster['gate']}",
+            f"IF NOT PASSED: {stairmaster['if_not_passed']}",
+            f"IF PASSED: {stairmaster['if_passed']}",
+            f"PROGRESSION: {stairmaster['advance']}",
+        ])
     if day.get("low_impact_fallback"):
         lines.append(f"FALLBACK: {day['low_impact_fallback']}")
     if day.get("aerobic_minutes") or day.get("low_impact_fallback"):

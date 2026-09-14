@@ -42,8 +42,9 @@ REQUIRED_RUN = {
 }
 REQUIRED_STAIRMASTER = {
     "gate": "7 stable days + pain-free normal stairs + 3x8 controlled 6-inch step-downs",
-    "start": "10 minutes replacing Zone 2",
-    "advance": "add 5 minutes after each stable week",
+    "if_not_passed": "45 min swim or easy bike",
+    "if_passed": "10 min StairMaster + 35 min swim or easy bike; total 45 min",
+    "advance": "add 5 min StairMaster per stable week while reducing swim or easy bike by 5 min; total always 45 min",
 }
 REQUIRED_IMPACT_SPACING = "Wednesday and Saturday impact sessions require at least 72 elapsed hours; weekday labels alone do not prove spacing"
 REQUIRED_JUMP = {
@@ -157,7 +158,7 @@ REQUIRED_AEROBIC = {
         "Fri": (0, None), "Sat": (60, "freestyle/backstroke swim, easy bike, or brisk flat walk"), "Sun": (0, None),
     },
     "2": {
-        "Mon": (0, None), "Tue": (45, "swim or easy bike; eligible StairMaster progression begins with 10 min replacing Zone 2"),
+        "Mon": (0, None), "Tue": (45, "swim or easy bike, with the gated StairMaster substitution below"),
         "Wed": (0, None), "Thu": (45, "swim or easy bike"), "Fri": (0, None),
         "Sat": (60, "swim, easy bike, or brisk walk"), "Sun": (0, None),
     },
@@ -185,7 +186,7 @@ REQUIRED_CLINICAL = "sports PT or sports-medicine assessment is recommended and 
 # Updated only when the approved lift matrix changes. This binds every exercise name, dose, and tempo.
 APPROVED_LIFTS_SHA256 = "88ea0cebe2f7074ba6601540a667d0e2b2cb066784f225247274efbd2b3777fb"
 # Binds the approved high-low day structure while allowing the JT-owned pointer to advance independently.
-APPROVED_PHASES_SHA256 = "c195ad438b9cff39eddc6acead7aa72533a6a2c4556c631add441dee37915576"
+APPROVED_PHASES_SHA256 = "28683255a8d7e8e67daf4e5af071017749a752b9c1ffc65e157fb9df134f9dd5"
 
 
 def load_program(path: Path):
@@ -203,16 +204,15 @@ def validate(data):
     max_weeks = {1: 4, 2: 4, 3: 6, 4: 7}
     max_week = max_weeks.get(phase_value, 0)
     valid_pointer = (
-        set(pointer) == {"phase", "week_in_phase", "lift_rotation", "advanced_by"}
+        set(pointer) == {"phase", "week_in_phase", "advanced_by"}
         and type(phase_value) is int
         and phase_value in (1, 2, 3, 4)
         and type(week_value) is int
         and 1 <= week_value <= max_week
-        and pointer.get("lift_rotation") in ("A", "B")
         and pointer.get("advanced_by") == "JT_ONLY"
     )
     if not valid_pointer:
-        errors.append("pointer must be a valid JT_ONLY phase/week state with lift rotation A or B")
+        errors.append("pointer must be a valid JT_ONLY phase/week state")
 
     phases = data.get("phases", {})
     if set(phases) != {"1", "2", "3", "4"}:

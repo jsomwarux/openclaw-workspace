@@ -4,7 +4,7 @@ This is the canonical source for the daily workout card. The knee plan treats le
 
 ```json program
 {
-  "pointer": {"phase": 1, "week_in_phase": 1, "lift_rotation": "A", "advanced_by": "JT_ONLY"},
+  "pointer": {"phase": 1, "week_in_phase": 1, "advanced_by": "JT_ONLY"},
   "zone2_definition": "Zone 2 = RPE 3-4/10 and the full-sentence talk test (able to speak in full sentences); brisk walks count only when they meet both",
   "impact_spacing_rule": "Wednesday and Saturday impact sessions require at least 72 elapsed hours; weekday labels alone do not prove spacing. If fewer than 72 elapsed hours, skip impact and do the prescribed low-impact Zone 2 fallback.",
   "phase3_week1_rule": "No jumps until two stable 30-minute run exposures. If Wednesday was not stable, Saturday does not count as the second stable exposure; do not advance the pointer.",
@@ -25,7 +25,7 @@ This is the canonical source for the daily workout card. The knee plan treats le
       "name": "Heavy slow resistance and single-leg control",
       "days": {
         "Mon": {"session": "Full-body A2 + tendon resistance", "duration": "65 min", "lift": "A2", "aerobic_minutes": 0, "tendon_resistance": true, "knee_work": "before training only if it reduces pain: choose one, Spanish squat OR leg-extension isometric, 4x30-45 sec with 2 min rest; then scheduled tendon resistance; no between-session tendon loading"},
-        "Tue": {"session": "Low-impact Zone 2", "duration": "45 min", "aerobic": "swim or easy bike; eligible StairMaster progression begins with 10 min replacing Zone 2", "aerobic_minutes": 45, "tendon_resistance": false, "knee_work": "none; no between-session tendon loading"},
+        "Tue": {"session": "Low-impact Zone 2 or gated StairMaster substitution", "duration": "45 min", "aerobic": "swim or easy bike, with the gated StairMaster substitution below", "aerobic_minutes": 45, "tendon_resistance": false, "knee_work": "none; no between-session tendon loading"},
         "Wed": {"session": "Full-body B2 + tendon resistance", "duration": "65 min", "lift": "B2", "aerobic_minutes": 0, "tendon_resistance": true, "knee_work": "before training only if it reduces pain: choose one, Spanish squat OR leg-extension isometric, 4x30-45 sec with 2 min rest; then scheduled tendon resistance; no between-session tendon loading"},
         "Thu": {"session": "Low-impact Zone 2", "duration": "45 min", "aerobic": "swim or easy bike", "aerobic_minutes": 45, "tendon_resistance": false, "knee_work": "none; no between-session tendon loading"},
         "Fri": {"session": "Full-body C2 + tendon resistance", "duration": "65 min", "lift": "C2", "aerobic_minutes": 0, "tendon_resistance": true, "knee_work": "before training only if it reduces pain: choose one, Spanish squat OR leg-extension isometric, 4x30-45 sec with 2 min rest; then scheduled tendon resistance; no between-session tendon loading", "substitution": {"option": "Heel-Elevated Supported Front-Knee Bend", "dose": "2x6/side controlled", "tempo": "3-0-2", "rule": "after main work; replace Single-Leg Box Squat, never add"}},
@@ -133,7 +133,7 @@ This is the canonical source for the daily workout card. The knee plan treats le
     "phase_4_to_games": ["two stable exposures at each stage", "baseline the following morning", "stable reactive cuts", "stable non-contact practice", "stable controlled contact practice", "clinician clearance"]
   },
   "progressions": {
-    "stairmaster": {"gate": "7 stable days + pain-free normal stairs + 3x8 controlled 6-inch step-downs", "start": "10 minutes replacing Zone 2", "advance": "add 5 minutes after each stable week"},
+    "stairmaster": {"gate": "7 stable days + pain-free normal stairs + 3x8 controlled 6-inch step-downs", "if_not_passed": "45 min swim or easy bike", "if_passed": "10 min StairMaster + 35 min swim or easy bike; total 45 min", "advance": "add 5 min StairMaster per stable week while reducing swim or easy bike by 5 min; total always 45 min"},
     "run": {"gate": "7 stable days + 60-minute brisk walk + 3x10 controlled step-downs + 10 single-leg box squats per side, with no next-day increase", "start": "1 minute run : 2 minutes walk for 30 minutes", "stages": ["run-walk 1:2", "run-walk 2:1", "run-walk 3:1", "run-walk 5:1", "run-walk 10:1", "30 min easy continuous run"], "advance": ["2:1", "3:1", "5:1", "10:1", "30 minutes easy continuous"], "frequency": "Wednesday primary run; Week 1 Saturday is the second exposure only if Wednesday was stable and at least 72 elapsed hours earlier"},
     "jump": {"gate": "run-walk and strength gates stable", "stages": ["bilateral landing", "low pogo hops", "jump rope", "low countermovement jump and stick", "repeated submaximal jumps", "sport-specific jumps"], "spacing": "Wednesday and Saturday impact sessions require at least 72 elapsed hours; weekday labels alone do not prove spacing"},
     "basketball": {"stages": ["shooting with no jumping", "planned acceleration and deceleration", "planned 45-degree cuts", "planned 90-degree cuts", "reactive cuts", "non-contact practice", "controlled contact practice", "games"], "rule": "advance one stage only after two stable exposures and baseline the next morning"}
@@ -166,7 +166,7 @@ This is the canonical source for the daily workout card. The knee plan treats le
 ## Operator rules
 
 - The card renderer reads this source; it never edits it.
-- Only JT advances `PHASE`, `WEEK_IN_PHASE`, or `LIFT_ROTATION` after passing the written gate.
+- Only JT advances `PHASE` or `WEEK_IN_PHASE` after passing the written gate. Lifts are fixed by weekday.
 - Phase 1 contains no running, jumping, cutting, basketball, or StairMaster.
 - Formal aerobic work is at least 150 minutes in every phase. Daily walking is useful background activity, not counted toward that minimum.
 - Isometrics are optional symptom tools only when they reduce pain. They are not mandatory evening work and never stack as hard knee work on a resistance day.

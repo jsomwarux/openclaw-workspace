@@ -31,22 +31,21 @@ class WorkoutSourceTests(unittest.TestCase):
     assert data["pointer"] == {
         "phase": 1,
         "week_in_phase": 1,
-        "lift_rotation": "A",
         "advanced_by": "JT_ONLY",
     }
     assert "automatic" not in json.dumps(data["pointer"]).lower()
 
  def test_validator_allows_valid_jt_pointer_states_and_rejects_invalid_ones(self):
     validator = load_module(VALIDATOR, "workout_validator_pointer_states")
-    for phase, week, rotation in ((1, 4, "B"), (2, 3, "A"), (3, 6, "B"), (4, 7, "A")):
-        with self.subTest(phase=phase, week=week, rotation=rotation):
+    for phase, week in ((1, 4), (2, 3), (3, 6), (4, 7)):
+        with self.subTest(phase=phase, week=week):
             candidate = copy.deepcopy(program())
-            candidate["pointer"] = {"phase": phase, "week_in_phase": week, "lift_rotation": rotation, "advanced_by": "JT_ONLY"}
+            candidate["pointer"] = {"phase": phase, "week_in_phase": week, "advanced_by": "JT_ONLY"}
             self.assertEqual(validator.validate(candidate), [])
-    for phase, week, rotation in ((0, 1, "A"), (True, 1, "A"), (2, 5, "A"), (3, 7, "A"), (4, 8, "A"), (1, 1, "C")):
-        with self.subTest(phase=phase, week=week, rotation=rotation):
+    for phase, week in ((0, 1), (True, 1), (2, 5), (3, 7), (4, 8)):
+        with self.subTest(phase=phase, week=week):
             candidate = copy.deepcopy(program())
-            candidate["pointer"] = {"phase": phase, "week_in_phase": week, "lift_rotation": rotation, "advanced_by": "JT_ONLY"}
+            candidate["pointer"] = {"phase": phase, "week_in_phase": week, "advanced_by": "JT_ONLY"}
             self.assertTrue(validator.validate(candidate))
 
  def test_renderer_defaults_to_pointer_and_requires_preview_for_other_phase_or_week(self):
@@ -233,9 +232,12 @@ class WorkoutSourceTests(unittest.TestCase):
     assert data["progressions"]["run"]["gate"] == "7 stable days + 60-minute brisk walk + 3x10 controlled step-downs + 10 single-leg box squats per side, with no next-day increase"
     assert data["progressions"]["run"]["start"] == "1 minute run : 2 minutes walk for 30 minutes"
     assert data["progressions"]["jump"]["spacing"] == "Wednesday and Saturday impact sessions require at least 72 elapsed hours; weekday labels alone do not prove spacing"
-    assert data["progressions"]["stairmaster"]["gate"] == "7 stable days + pain-free normal stairs + 3x8 controlled 6-inch step-downs"
-    assert data["progressions"]["stairmaster"]["start"] == "10 minutes replacing Zone 2"
-    assert data["progressions"]["stairmaster"]["advance"] == "add 5 minutes after each stable week"
+    assert data["progressions"]["stairmaster"] == {
+        "gate": "7 stable days + pain-free normal stairs + 3x8 controlled 6-inch step-downs",
+        "if_not_passed": "45 min swim or easy bike",
+        "if_passed": "10 min StairMaster + 35 min swim or easy bike; total 45 min",
+        "advance": "add 5 min StairMaster per stable week while reducing swim or easy bike by 5 min; total always 45 min",
+    }
     assert "two stable exposures at each stage" in data["phase_gates"]["phase_4_to_games"]
     assert "baseline the following morning" in data["phase_gates"]["phase_4_to_games"]
     assert data["progressions"]["basketball"]["stages"] == [
@@ -395,6 +397,39 @@ class WorkoutSourceTests(unittest.TestCase):
     self.assertEqual(days["Tue"]["aerobic"], "freestyle/backstroke swim or easy bike")
     self.assertEqual(days["Thu"]["aerobic"], "freestyle/backstroke swim or easy bike; row only if tolerated")
     self.assertNotIn("row", days["Tue"]["aerobic"].lower())
+
+ def test_phase_two_tuesday_renders_exact_gated_stairmaster_substitution(self):
+    expected = {
+        "gate": "7 stable days + pain-free normal stairs + 3x8 controlled 6-inch step-downs",
+        "if_not_passed": "45 min swim or easy bike",
+        "if_passed": "10 min StairMaster + 35 min swim or easy bike; total 45 min",
+        "advance": "add 5 min StairMaster per stable week while reducing swim or easy bike by 5 min; total always 45 min",
+    }
+    self.assertEqual(program()["progressions"]["stairmaster"], expected)
+    output = subprocess.run(
+        [sys.executable, str(RENDERER), "--source", str(SOURCE), "--preview", "--phase", "2", "--week", "1", "--day", "Tue"],
+        text=True, capture_output=True, check=True,
+    ).stdout
+    self.assertIn(f"STAIRMASTER GATE: {expected['gate']}", output)
+    self.assertIn(f"IF NOT PASSED: {expected['if_not_passed']}", output)
+    self.assertIn(f"IF PASSED: {expected['if_passed']}", output)
+    self.assertIn(f"PROGRESSION: {expected['advance']}", output)
+    self.assertEqual(output.count("total 45 min"), 1)
+    self.assertEqual(output.count("total always 45 min"), 1)
+
+ def test_validator_rejects_any_stairmaster_contract_mutation(self):
+    validator = load_module(VALIDATOR, "workout_validator_stairmaster_exact")
+    mutations = {
+        "gate": "stairs feel okay",
+        "if_not_passed": "20 min StairMaster",
+        "if_passed": "45 min StairMaster",
+        "advance": "add 5 min without reducing low impact",
+    }
+    for field, value in mutations.items():
+        with self.subTest(field=field):
+            bad = copy.deepcopy(program())
+            bad["progressions"]["stairmaster"][field] = value
+            self.assertTrue(any("stairmaster" in error.lower() for error in validator.validate(bad)))
 
  def test_later_options_are_explicit_session_substitutions_not_added_volume(self):
     data = program()
