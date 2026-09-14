@@ -1,3 +1,17 @@
+## Plan — Dedicated Create-Only Endpoint — 2026-09-14
+- [x] Add failing route tests for new/existing create-only outcomes and the legacy no-POST boundary.
+- [x] Implement `POST /api/tasks/create-only` with the existing atomic mutation and explicit marker.
+- [x] Preserve and regression-test ordinary `/api/tasks` behavior.
+- [x] Move the injected handler factory out of the App Router module after Next rejected the non-route export, then rerun focused/full tests, TypeScript, isolated build, and final diff review.
+- [x] Update verifier evidence and commit locally without external actions.
+
+## Plan — Atomic Create-Only Task Admission — 2026-09-11
+- [x] Add a failing pure-helper test proving an existing dedupe key returns its ID without patching fields.
+- [x] Add a failing route-selection test proving `POST /api/tasks?mode=create-only` uses the create-only mutation while normal POST remains upsert.
+- [x] Implement the minimum atomic create-only Convex mutation and explicit route mode.
+- [x] Run focused tests, full `bun test`, TypeScript, and isolated `.next-build` production build.
+- [x] Record exact verification evidence, commit explicit paths, push, and open PR #1 without merging.
+
 ## Plan — Today Queue Truth Reconciliation — 2026-09-10
 - [x] Reproduce the cohort/Altmark rendered-order mismatch and trace task-to-signal status mapping.
 - [x] Add failing regression coverage proving stored `todo` stays `todo` in Today.
@@ -88,3 +102,9 @@
 - [x] Upload the latest bundle to organized Google Drive folders.
 - [x] Wire weekly agent/cron instructions to run Drive sync automatically.
 - [x] Verify tests, Drive upload output, prompt wiring, and bootstrap file sizes.
+## Plan — Create-Only Capability Handshake — 2026-09-14
+- [x] Add failing response-contract tests for created/existing create-only results and normal upsert.
+- [x] Implement the smallest route response helper and wire it into POST `/api/tasks`.
+- [x] Reuse the local Mission Control dependency tree via an ignored clone-local symlink; both checked-in lockfiles are stale and clean installs would create unrelated churn.
+- [x] Rerun focused tests, the full Mission Control test suite, TypeScript, and the isolated build with the standard local Convex address required for page-data collection; review the final diff.
+- [x] Record verifier-ready evidence and commit the bounded patch locally.
