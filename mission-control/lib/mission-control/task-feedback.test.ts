@@ -27,5 +27,7 @@ describe("append-only task feedback", () => {
     });
     expect(errorMessage(() => parseTaskFeedbackAppend({ action: "replace-feedback", id: "task-1", body: "Note", author: "jt" }))).toBe("append-feedback action required");
     expect(errorMessage(() => parseTaskFeedbackAppend({ action: "append-feedback", id: "", body: "Note", author: "jt" }))).toBe("id required");
+    expect(errorMessage(() => parseTaskFeedbackAppend({ action: "append-feedback", id: "task-1", body: "   ", author: "jt" }))).toBe("feedback body required");
+    expect(errorMessage(() => parseTaskFeedbackAppend({ action: "append-feedback", id: "task-1", body: "x".repeat(4001), author: "jt" }))).toBe("feedback body too long");
   });
 });

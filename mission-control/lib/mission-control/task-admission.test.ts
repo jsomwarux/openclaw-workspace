@@ -55,6 +55,18 @@ describe("task admission contract", () => {
     expect(errorMessage(() => validateTaskAdmission({ title: "Bypass", feedback: [] }))).toContain("append-feedback");
   });
 
+  test("rejects malformed universal card fields before normalization", () => {
+    const cases: Array<[string, Record<string, unknown>]> = [
+      ["exactSteps", { exactSteps: "Open the profile" }],
+      ["exactSteps", { exactSteps: ["Open the profile", 2] }],
+      ["pasteReadyPrompt", { pasteReadyPrompt: ["Rewrite this"] }],
+      ["pasteDestination", { pasteDestination: { surface: "LinkedIn" } }],
+    ];
+    for (const [field, input] of cases) {
+      expect(errorMessage(() => validateTaskAdmission(input)) ?? "").toContain(field);
+    }
+  });
+
   test("preserves Today scoring metadata through API normalization", () => {
     expect(normalizeTaskInput({
       title: "Commercial unblocker",

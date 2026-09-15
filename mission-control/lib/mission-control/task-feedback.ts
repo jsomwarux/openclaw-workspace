@@ -10,8 +10,11 @@ export function parseTaskFeedbackAppend(input: Record<string, unknown>): {
   if (input.action !== "append-feedback") throw new Error("append-feedback action required");
   if (typeof input.id !== "string" || !input.id) throw new Error("id required");
   if (typeof input.body !== "string") throw new Error("feedback body required");
+  const body = input.body.trim();
+  if (!body) throw new Error("feedback body required");
+  if (body.length > MAX_FEEDBACK_LENGTH) throw new Error("feedback body too long");
   if (input.author !== "jt" && input.author !== "eve") throw new Error("feedback author invalid");
-  return { id: input.id, body: input.body, author: input.author };
+  return { id: input.id, body, author: input.author };
 }
 
 export function appendTaskFeedback(

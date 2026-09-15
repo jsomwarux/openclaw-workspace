@@ -18,6 +18,21 @@ import { parseTaskFeedbackAppend } from "@/lib/mission-control/task-feedback";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
+async function readJsonObject(req: Request): Promise<
+  | { ok: true; body: Record<string, unknown> }
+  | { ok: false; response: Response }
+> {
+  try {
+    const body: unknown = await req.json();
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return { ok: false, response: NextResponse.json({ error: "JSON object required" }, { status: 400 }) };
+    }
+    return { ok: true, body: body as Record<string, unknown> };
+  } catch {
+    return { ok: false, response: NextResponse.json({ error: "invalid JSON body" }, { status: 400 }) };
+  }
+}
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const include = searchParams.get("include");
@@ -31,7 +46,9 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  const parsed = await readJsonObject(req);
+  if (!parsed.ok) return parsed.response;
+  const body = parsed.body;
   const rawInput = { status: "todo", assignee: "eve", priority: "medium", ...body };
   try {
     validateTaskAdmission(rawInput);
@@ -68,7 +85,9 @@ export async function POST(req: Request) {
 }
 
 export async function PATCH(req: Request) {
-  const body = await req.json();
+  const parsed = await readJsonObject(req);
+  if (!parsed.ok) return parsed.response;
+  const body = parsed.body;
   if (body.action === "append-feedback") {
     let input;
     try {

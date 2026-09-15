@@ -36,6 +36,17 @@ export function normalizeTaskInput(
 }
 
 export function validateTaskAdmission(input: Record<string, unknown>, now = new Date()): void {
+  if (
+    input.exactSteps !== undefined
+    && (!Array.isArray(input.exactSteps) || !input.exactSteps.every((step) => typeof step === "string"))
+  ) {
+    throw new Error("exactSteps must be an array of strings");
+  }
+  for (const field of ["pasteReadyPrompt", "pasteDestination"] as const) {
+    if (input[field] !== undefined && typeof input[field] !== "string") {
+      throw new Error(`${field} must be a string`);
+    }
+  }
   if (input.feedback !== undefined) {
     throw new Error("feedback history can only change through append-feedback");
   }
