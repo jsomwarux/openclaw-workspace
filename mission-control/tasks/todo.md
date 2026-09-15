@@ -131,3 +131,11 @@
 - [x] Require a non-archived exact task for outreach authorization.
 - [x] Run focused/full tests, TypeScript, build, and security/diff checks.
 - [x] Commit explicit paths only; do not push or deploy.
+
+## Plan — split outreach capabilities and clean ancestry — 2026-09-15
+- [x] Reproduce shared-capability privilege escalation and legacy-decision bulk mutation.
+- [x] Split review-admission and JT-decision capabilities through Next and Convex.
+- [x] Exclude both review markers and legacy decisions from auto-archive/backfill.
+- [ ] Rebuild the outreach work from current `origin/master` without unrelated ancestry.
+- [ ] Run clean-branch tests, TypeScript, build, security scan, and diff audit.
+- [ ] Commit locally without push, deployment, or environment changes.

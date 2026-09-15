@@ -12,3 +12,10 @@
 - [x] Verify focused GREEN.
 - [x] Run the full suite, TypeScript, production build, and secret/diff scan.
 - [x] Update project notes and commit explicit paths without push/deploy.
+
+## Fresh-verifier repair
+
+- [x] Prove review admission and JT decision use distinct least-privilege capabilities.
+- [x] Prove scheduled/bulk mutations skip both server review markers and legacy decisions.
+- [ ] Rebuild from current `origin/master` by cherry-picking only scoped outreach commits.
+- [ ] Re-run the complete verification matrix and audit the clean diff for unrelated ancestry.

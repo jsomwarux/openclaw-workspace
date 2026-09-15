@@ -334,7 +334,7 @@
     <section>
       <h2>Immutable outreach review snapshot — 2026-09-15</h2>
       <div class="summary">
-        <p><strong>Status:</strong> builder verification complete; fresh non-builder review required</p>
+        <p><strong>Status:</strong> superseded by capability split and clean-ancestry repair below</p>
         <p><strong>Task:</strong> freeze the complete review context JT saw, not only its candidate/draft identity.</p>
         <ol>
           <li>One shared guard rejects every generic single-task mutation of a server-admitted review.</li>
@@ -355,6 +355,24 @@
         <li><code>bunx tsc --noEmit --incremental false</code>: exit 0 after the build-generated type tree stabilized.</li>
         <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated.</li>
       </ul>
+    </section>
+    <section>
+      <h2>Split outreach capabilities and clean ancestry — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> focused implementation green; clean-branch replay and full verification pending</p>
+        <p><strong>Task:</strong> prevent automated admission authority from authorizing a JT decision and remove unrelated branch ancestry.</p>
+        <ol>
+          <li>Review admission and JT decisions use distinct environment-backed capabilities.</li>
+          <li>Auto-archive and backfill skip both current review markers and legacy decision records.</li>
+          <li>The final branch is rebuilt from current <code>origin/master</code> using only scoped outreach commits.</li>
+        </ol>
+      </div>
+      <h3>Design Decisions</h3><p><code>OUTREACH_REVIEW_CAPABILITY</code> is accepted only by the dedicated admission path. <code>OUTREACH_DECISION_CAPABILITY</code> remains exclusive to the Tailscale-authenticated JT decision route. The two Convex mutations compare against distinct protected environment values.</p>
+      <h3>Deviations</h3><p>None.</p>
+      <h3>Tradeoffs</h3><p>Activation requires two independently provisioned secrets rather than one. This is intentional least privilege: an automated packet assembler can create a review card but can never approve it.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Environment configuration and deployment remain out of scope.</p>
+      <h3>Files Changed</h3><p>Dedicated review route environment binding, Convex capability and bulk-mutation guards, hostile contract tests, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3><ul><li>RED: focused contract suite produced three failures for shared capability use and legacy-decision auto-archive/backfill.</li><li>GREEN focused authority suite: 20 tests passed with 0 failures and 62 assertions.</li><li>Clean-branch full verification is pending.</li></ul>
     </section>
     </main>
   </body>

@@ -265,7 +265,7 @@ export const createOutreachReview = mutation({
   },
   handler: async (ctx, args) => {
     const { capability, ...taskInput } = args;
-    assertServerCapability(capability, process.env.OUTREACH_DECISION_CAPABILITY);
+    assertServerCapability(capability, process.env.OUTREACH_REVIEW_CAPABILITY);
     assertNightlyAdmission(taskInput);
     const existing = await ctx.db
       .query("tasks")
@@ -413,7 +413,7 @@ export const autoArchive = internalMutation({
       .collect();
     let archived = 0;
     for (const task of doneTasks) {
-      if (task.outreachReview) continue;
+      if (task.outreachReview || task.outreachDecision) continue;
       if (task.updatedAt < sevenDaysAgo) {
         await ctx.db.patch(task._id, { status: "archived", updatedAt: Date.now() });
         archived++;
@@ -537,7 +537,7 @@ export const backfillClientIds = mutation({
     for (const rule of CLIENT_BACKFILL) {
       const clientId = byName.get(rule.client);
       const task = tasks.find(
-        (t) => !t.outreachReview && t.title.includes(rule.match) && t.status !== "done" && t.status !== "archived",
+        (t) => !t.outreachReview && !t.outreachDecision && t.title.includes(rule.match) && t.status !== "done" && t.status !== "archived",
       );
       if (!clientId || !task) {
         applied.push({ match: rule.match, client: rule.client, taskId: null });

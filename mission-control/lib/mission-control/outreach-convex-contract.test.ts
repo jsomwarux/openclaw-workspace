@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 
 const tasksSource = readFileSync(fileURLToPath(new URL("../../convex/tasks.ts", import.meta.url)), "utf8");
 const schemaSource = readFileSync(fileURLToPath(new URL("../../convex/schema.ts", import.meta.url)), "utf8");
+const reviewRouteSource = readFileSync(fileURLToPath(new URL("../../app/api/tasks/outreach-review/route.ts", import.meta.url)), "utf8");
+const decisionRouteSource = readFileSync(fileURLToPath(new URL("../../app/api/tasks/outreach-decision/route.ts", import.meta.url)), "utf8");
 
 function mutationSource(name: string, nextName: string): string {
   return tasksSource.slice(
@@ -13,11 +15,20 @@ function mutationSource(name: string, nextName: string): string {
 }
 
 describe("Convex outreach authority boundary", () => {
-  test("both public outreach mutations require and validate a server capability", () => {
+  test("review admission and JT decision validate distinct least-privilege capabilities", () => {
     expect(tasksSource).toContain("export const createOutreachReview = mutation");
     expect(tasksSource).toContain("export const decideOutreach = mutation");
     expect(tasksSource.match(/capability: v\.string\(\)/g)?.length).toBe(2);
-    expect(tasksSource.match(/assertServerCapability\(capability, process\.env\.OUTREACH_DECISION_CAPABILITY\)/g)?.length).toBe(2);
+    const reviewMutation = mutationSource("createOutreachReview", "updateStatus");
+    const decisionMutation = mutationSource("decideOutreach", "findOutreachDecision");
+    expect(reviewMutation).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
+    expect(reviewMutation).not.toContain("process.env.OUTREACH_DECISION_CAPABILITY");
+    expect(decisionMutation).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
+    expect(decisionMutation).not.toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
+    expect(reviewRouteSource).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
+    expect(reviewRouteSource).not.toContain("process.env.OUTREACH_DECISION_CAPABILITY");
+    expect(decisionRouteSource).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
+    expect(decisionRouteSource).not.toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
   });
 
   test("stores the server review marker but never stores the capability", () => {
@@ -39,10 +50,12 @@ describe("Convex outreach authority boundary", () => {
   }
 
   test("autoArchive skips outreach review snapshots", () => {
-    expect(mutationSource("autoArchive", "updatePipelineStage")).toContain("if (task.outreachReview) continue;");
+    expect(mutationSource("autoArchive", "updatePipelineStage")).toContain("if (task.outreachReview || task.outreachDecision) continue;");
   });
 
   test("backfillClientIds skips outreach review snapshots", () => {
-    expect(tasksSource.slice(tasksSource.indexOf("export const backfillClientIds ="))).toContain("!t.outreachReview");
+    const source = tasksSource.slice(tasksSource.indexOf("export const backfillClientIds ="));
+    expect(source).toContain("!t.outreachReview");
+    expect(source).toContain("!t.outreachDecision");
   });
 });
