@@ -72,3 +72,12 @@
 - [x] Implement the minimal deterministic local controller and fixture/state scaffolding.
 - [x] Verify focused tests, dry-run behavior, malformed input failure, and repeated consumption.
 - [x] Record exact evidence and implementation decisions, install the approved cron, and verify the empty-queue live smoke run.
+
+## Plan — Universal Mission Control Card Contract — 2026-09-15
+
+- [x] Preserve the canonical title, why, and done-condition task fields.
+- [x] Add typed exact steps, paste-ready prompt, and paste destination fields across admission, storage, adapters, and display.
+- [x] Add append-only JT/Eve feedback records through a dedicated mutation and API action.
+- [x] Render the complete card contract and a real feedback input in the inspection drawer.
+- [x] Run focused tests, the full Mission Control suite, TypeScript, and the production build.
+- [ ] Obtain fresh non-builder verification before push.

@@ -12,6 +12,7 @@ import {
   resolveOutreachReviewAdmission,
   summarizeOutreachReviews,
 } from "../lib/mission-control/outreach-review";
+import { appendTaskFeedback } from "../lib/mission-control/task-feedback";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
 const NIGHTLY_SOURCE = "nightly-validation-controller";
@@ -26,6 +27,9 @@ const operatingSystemArgs = {
   firstAction: v.optional(v.string()),
   whyItMatters: v.optional(v.string()),
   doneState: v.optional(v.string()),
+  exactSteps: v.optional(v.array(v.string())),
+  pasteReadyPrompt: v.optional(v.string()),
+  pasteDestination: v.optional(v.string()),
   evidenceLinks: v.optional(v.array(v.string())),
   sourceSystem: v.optional(v.string()),
   reviewAt: v.optional(v.number()),
@@ -373,6 +377,22 @@ export const update = mutation({
     assertNightlyAdmission({ ...task, ...fields });
     await auditChanges(ctx, task, fields, source ?? "jt", auditEvidence ?? "manual edit");
     await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
+  },
+});
+
+export const appendFeedback = mutation({
+  args: {
+    id: v.id("tasks"),
+    body: v.string(),
+    author: v.union(v.literal("jt"), v.literal("eve")),
+  },
+  handler: async (ctx, args) => {
+    const task = await ctx.db.get(args.id);
+    if (!task) throw new Error("task not found");
+    const now = Date.now();
+    const feedback = appendTaskFeedback(task.feedback, { body: args.body, author: args.author }, now);
+    await ctx.db.patch(args.id, { feedback, updatedAt: now });
+    return feedback;
   },
 });
 

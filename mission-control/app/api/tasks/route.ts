@@ -14,6 +14,7 @@ import { Id } from "@/convex/_generated/dataModel";
 import type { FunctionArgs } from "convex/server";
 import { normalizeTaskInput, validateTaskAdmission } from "@/lib/mission-control/task-admission";
 import { buildTaskWriteResponse, resolveTaskWriteMode } from "@/lib/mission-control/task-write-mode";
+import { parseTaskFeedbackAppend } from "@/lib/mission-control/task-feedback";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
@@ -68,6 +69,27 @@ export async function POST(req: Request) {
 
 export async function PATCH(req: Request) {
   const body = await req.json();
+  if (body.action === "append-feedback") {
+    let input;
+    try {
+      input = parseTaskFeedbackAppend(body);
+    } catch (error) {
+      return NextResponse.json(
+        { error: error instanceof Error ? error.message : "invalid feedback" },
+        { status: 400 },
+      );
+    }
+    try {
+      const feedback = await convex.mutation(api.tasks.appendFeedback, {
+        id: input.id as Id<"tasks">,
+        body: input.body,
+        author: input.author,
+      });
+      return NextResponse.json({ success: true, feedback });
+    } catch {
+      return NextResponse.json({ error: "feedback append failed" }, { status: 500 });
+    }
+  }
   const { id, ...rawFields } = body;
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
   try {
