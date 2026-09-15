@@ -5,6 +5,7 @@ import { createOutreachReviewPostHandler } from "@/lib/mission-control/outreach-
 
 export const POST = createOutreachReviewPostHandler({
   serverCapability: process.env.OUTREACH_REVIEW_CAPABILITY,
+  peerCapability: process.env.OUTREACH_DECISION_CAPABILITY,
   admit: async (input) => {
     const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
     return await convex.mutation(

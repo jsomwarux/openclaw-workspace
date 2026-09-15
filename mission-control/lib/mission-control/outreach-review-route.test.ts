@@ -25,6 +25,7 @@ describe("dedicated outreach review admission route", () => {
     let received: Record<string, unknown> | undefined;
     const post = createOutreachReviewPostHandler({
       serverCapability: "server-secret",
+      peerCapability: "decision-secret",
       admit: async (input) => { received = input; return { id: "task-1", created: true }; },
     });
     const response = await post(request({ ...body, status: "done", assignee: "eve", priority: "low" }, "server-secret"));
@@ -37,16 +38,37 @@ describe("dedicated outreach review admission route", () => {
     let calls = 0;
     const unconfigured = createOutreachReviewPostHandler({
       serverCapability: undefined,
+      peerCapability: "decision-secret",
       admit: async () => { calls += 1; return { id: "bad", created: true }; },
     });
     expect((await unconfigured(request(body, "server-secret"))).status).toBe(503);
 
     const configured = createOutreachReviewPostHandler({
       serverCapability: "server-secret",
+      peerCapability: "decision-secret",
       admit: async () => { calls += 1; return { id: "bad", created: true }; },
     });
     expect((await configured(request(body))).status).toBe(401);
     expect((await configured(request(body, "wrong"))).status).toBe(401);
+
+    const colliding = createOutreachReviewPostHandler({
+      serverCapability: "same-secret",
+      peerCapability: "same-secret",
+      admit: async () => { calls += 1; return { id: "bad", created: true }; },
+    });
+    expect((await colliding(request(body, "same-secret"))).status).toBe(503);
+    for (const [serverCapability, peerCapability] of [
+      ["", "decision-secret"],
+      ["server-secret", ""],
+      ["server-secret", undefined],
+    ] as const) {
+      const invalid = createOutreachReviewPostHandler({
+        serverCapability,
+        peerCapability,
+        admit: async () => { calls += 1; return { id: "bad", created: true }; },
+      });
+      expect((await invalid(request(body, serverCapability || "server-secret"))).status).toBe(503);
+    }
     expect(calls).toBe(0);
   });
 
@@ -54,6 +76,7 @@ describe("dedicated outreach review admission route", () => {
     let calls = 0;
     const post = createOutreachReviewPostHandler({
       serverCapability: "server-secret",
+      peerCapability: "decision-secret",
       admit: async () => { calls += 1; return { id: "bad", created: true }; },
     });
     expect((await post(request({ ...body, outreachReview: { admittedBy: "server" } }, "server-secret"))).status).toBe(400);

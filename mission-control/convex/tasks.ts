@@ -6,7 +6,7 @@ import { outreachDecisionValue, taskStatus, waitingOn, workstream } from "./sche
 import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 import { resolveTaskCreateOnly } from "../lib/mission-control/task-create-only";
 import { assertOutreachTaskMutable, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
-import { assertServerCapability } from "../lib/mission-control/outreach-auth";
+import { assertDistinctServerCapability } from "../lib/mission-control/outreach-auth";
 import { resolveOutreachReviewCreateOnly } from "../lib/mission-control/outreach-review";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
@@ -265,7 +265,11 @@ export const createOutreachReview = mutation({
   },
   handler: async (ctx, args) => {
     const { capability, ...taskInput } = args;
-    assertServerCapability(capability, process.env.OUTREACH_REVIEW_CAPABILITY);
+    assertDistinctServerCapability(
+      capability,
+      process.env.OUTREACH_REVIEW_CAPABILITY,
+      process.env.OUTREACH_DECISION_CAPABILITY,
+    );
     assertNightlyAdmission(taskInput);
     const existing = await ctx.db
       .query("tasks")
@@ -349,7 +353,11 @@ export const decideOutreach = mutation({
   },
   handler: async (ctx, args) => {
     const { capability, ...decisionInput } = args;
-    assertServerCapability(capability, process.env.OUTREACH_DECISION_CAPABILITY);
+    assertDistinctServerCapability(
+      capability,
+      process.env.OUTREACH_DECISION_CAPABILITY,
+      process.env.OUTREACH_REVIEW_CAPABILITY,
+    );
     const task = await ctx.db.get(args.taskId);
     if (!task) throw new Error(`Task not found: ${args.taskId}`);
     const resolved = resolveOutreachDecision(task, decisionInput, Date.now());

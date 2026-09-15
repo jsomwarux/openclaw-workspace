@@ -139,3 +139,9 @@
 - [x] Rebuild the outreach work from current `origin/master` without unrelated ancestry.
 - [x] Run clean-branch tests, TypeScript, build, security scan, and diff audit.
 - [x] Commit locally without push, deployment, or environment changes.
+
+## Plan — reject capability collisions — 2026-09-15
+- [x] Reproduce equal capability authorization at review, decision, and direct mutation boundaries.
+- [x] Centralize nonblank, distinct, constant-time capability validation without logging values.
+- [x] Run focused/full tests, TypeScript, build, diff, ancestry, and security scans.
+- [x] Commit locally without push, deployment, or environment changes.

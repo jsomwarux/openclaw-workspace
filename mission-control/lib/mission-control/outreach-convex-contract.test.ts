@@ -22,13 +22,14 @@ describe("Convex outreach authority boundary", () => {
     const reviewMutation = mutationSource("createOutreachReview", "updateStatus");
     const decisionMutation = mutationSource("decideOutreach", "findOutreachDecision");
     expect(reviewMutation).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
-    expect(reviewMutation).not.toContain("process.env.OUTREACH_DECISION_CAPABILITY");
+    expect(reviewMutation).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
     expect(decisionMutation).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
-    expect(decisionMutation).not.toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
+    expect(decisionMutation).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
     expect(reviewRouteSource).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
-    expect(reviewRouteSource).not.toContain("process.env.OUTREACH_DECISION_CAPABILITY");
+    expect(reviewRouteSource).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
     expect(decisionRouteSource).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
-    expect(decisionRouteSource).not.toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
+    expect(decisionRouteSource).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
+    expect(tasksSource.match(/assertDistinctServerCapability\(/g)?.length).toBe(2);
   });
 
   test("stores the server review marker but never stores the capability", () => {

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { parseOutreachIdentity, type OutreachDecisionValue } from "./outreach-decision";
-import { authorizeJtIdentity, OutreachAuthError } from "./outreach-auth";
+import { assertDistinctServerCapability, authorizeJtIdentity, OutreachAuthError } from "./outreach-auth";
 
 type DecideInput = {
   taskId: string;
@@ -15,6 +15,7 @@ type IdentityInput = Pick<DecideInput, "candidateId" | "draftSha256">;
 type Dependencies = {
   trustedJtLogin: string | undefined;
   serverCapability: string | undefined;
+  peerCapability: string | undefined;
   decide: (input: DecideInput) => Promise<unknown>;
   lookup: (input: IdentityInput) => Promise<unknown>;
 };
@@ -38,7 +39,11 @@ export function createOutreachDecisionHandlers(dependencies: Dependencies) {
     POST: async (req: Request) => {
       try {
         authorizeJtIdentity(req.headers, dependencies.trustedJtLogin);
-        if (!dependencies.serverCapability) throw new OutreachAuthError("server capability is not configured", 503);
+        const serverCapability = assertDistinctServerCapability(
+          dependencies.serverCapability,
+          dependencies.serverCapability,
+          dependencies.peerCapability,
+        );
         const body = await req.json() as Record<string, unknown>;
         if ("decidedBy" in body || "decidedAt" in body || "outreachDecision" in body || "capability" in body) {
           throw new Error("decision authority fields are server-owned");
@@ -54,7 +59,7 @@ export function createOutreachDecisionHandlers(dependencies: Dependencies) {
           taskId,
           ...identity,
           decision,
-          capability: dependencies.serverCapability,
+          capability: serverCapability,
         }));
       } catch (error) {
         if (error instanceof OutreachAuthError) return errorResponse(error, error.status);

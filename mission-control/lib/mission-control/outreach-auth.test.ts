@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { authorizeJtIdentity, assertServerCapability } from "./outreach-auth";
+import { authorizeJtIdentity, assertDistinctServerCapability } from "./outreach-auth";
 
 function message(run: () => unknown) {
   try { run(); } catch (error) { return error instanceof Error ? error.message : String(error); }
@@ -20,9 +20,24 @@ describe("outreach authority", () => {
   });
 
   test("rejects direct mutation access without the protected server capability", () => {
-    expect(message(() => assertServerCapability(undefined, "configured-secret"))).toContain("server capability required");
-    expect(message(() => assertServerCapability("wrong", "configured-secret"))).toContain("server capability required");
-    expect(message(() => assertServerCapability("configured-secret", undefined))).toContain("server capability is not configured");
-    expect(assertServerCapability("configured-secret", "configured-secret")).toBe(undefined);
+    expect(message(() => assertDistinctServerCapability(undefined, "configured-secret", "peer-secret"))).toContain("server capability required");
+    expect(message(() => assertDistinctServerCapability("wrong", "configured-secret", "peer-secret"))).toContain("server capability required");
+    expect(message(() => assertDistinctServerCapability("configured-secret", undefined, "peer-secret"))).toContain("capability configuration is invalid");
+    expect(assertDistinctServerCapability("configured-secret", "configured-secret", "peer-secret")).toBe("configured-secret");
+  });
+
+  test("rejects equal, missing, or blank capability configuration before direct mutation access", () => {
+    for (const [configured, peer] of [
+      ["same-secret", "same-secret"],
+      ["", "peer-secret"],
+      ["   ", "peer-secret"],
+      ["configured-secret", ""],
+      ["configured-secret", "   "],
+      [undefined, "peer-secret"],
+      ["configured-secret", undefined],
+    ] as const) {
+      expect(message(() => assertDistinctServerCapability("same-secret", configured, peer)))
+        .toContain("capability configuration is invalid");
+    }
   });
 });

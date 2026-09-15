@@ -19,3 +19,9 @@
 - [x] Prove scheduled/bulk mutations skip both server review markers and legacy decisions.
 - [x] Rebuild from current `origin/master` by cherry-picking only scoped outreach commits.
 - [x] Re-run the complete verification matrix and audit the clean diff for unrelated ancestry.
+
+## Capability-collision repair
+
+- [x] Add hostile coverage for equal, missing, and blank capability pairs at both HTTP and direct mutation boundaries.
+- [x] Use one fail-closed, constant-time capability-pair validator at all four protected boundaries.
+- [x] Run the full verification and security matrix on the clean branch.

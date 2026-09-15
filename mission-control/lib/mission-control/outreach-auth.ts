@@ -11,7 +11,29 @@ export function authorizeJtIdentity(headers: Headers, configuredLogin: string | 
   return { login };
 }
 
-export function assertServerCapability(provided: string | undefined, configured: string | undefined): void {
-  if (!configured) throw new OutreachAuthError("server capability is not configured", 503);
-  if (!provided || provided !== configured) throw new OutreachAuthError("server capability required", 401);
+function constantTimeEqual(left: string, right: string): boolean {
+  const length = Math.max(left.length, right.length);
+  let mismatch = left.length ^ right.length;
+  for (let index = 0; index < length; index += 1) {
+    mismatch |= (left.charCodeAt(index) || 0) ^ (right.charCodeAt(index) || 0);
+  }
+  return mismatch === 0;
+}
+
+export function assertDistinctServerCapability(
+  provided: string | undefined,
+  configured: string | undefined,
+  peerConfigured: string | undefined,
+): string {
+  if (
+    !configured?.trim()
+    || !peerConfigured?.trim()
+    || constantTimeEqual(configured, peerConfigured)
+  ) {
+    throw new OutreachAuthError("capability configuration is invalid", 503);
+  }
+  if (!provided?.trim() || !constantTimeEqual(provided, configured)) {
+    throw new OutreachAuthError("server capability required", 401);
+  }
+  return configured;
 }

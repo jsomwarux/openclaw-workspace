@@ -9,6 +9,7 @@ describe("outreach decision API contract", () => {
     const handlers = createOutreachDecisionHandlers({
       trustedJtLogin: "jt@example.com",
       serverCapability: "server-secret",
+      peerCapability: "review-secret",
       decide: async (input) => {
         received = input;
         const { capability: _capability, ...decisionInput } = input;
@@ -42,6 +43,7 @@ describe("outreach decision API contract", () => {
     const handlers = createOutreachDecisionHandlers({
       trustedJtLogin: "jt@example.com",
       serverCapability: "server-secret",
+      peerCapability: "review-secret",
       decide: async () => { calls += 1; throw new Error("not reached"); },
       lookup: async () => ({ authorized: false, state: "absent" }),
     });
@@ -65,6 +67,7 @@ describe("outreach decision API contract", () => {
     const handlers = createOutreachDecisionHandlers({
       trustedJtLogin: "jt@example.com",
       serverCapability: "server-secret",
+      peerCapability: "review-secret",
       decide: async () => { throw new Error("outreach decision is immutable; create a new versioned task"); },
       lookup: async () => ({ authorized: false, state: "absent" }),
     });
@@ -88,6 +91,7 @@ describe("outreach decision API contract", () => {
     const handlers = createOutreachDecisionHandlers({
       trustedJtLogin: "jt@example.com",
       serverCapability: "server-secret",
+      peerCapability: "review-secret",
       decide: async () => { throw new Error("not reached"); },
       lookup: async (input) => {
         calls.push(input);
@@ -105,6 +109,7 @@ describe("outreach decision API contract", () => {
     const handlers = createOutreachDecisionHandlers({
       trustedJtLogin: "jt@example.com",
       serverCapability: "server-secret",
+      peerCapability: "review-secret",
       decide: async () => { throw new Error("not reached"); },
       lookup: async () => { calls += 1; return { authorized: false, state: "absent" }; },
     });
@@ -123,6 +128,7 @@ describe("outreach decision API contract", () => {
     const missingConfig = createOutreachDecisionHandlers({
       trustedJtLogin: undefined,
       serverCapability: "server-secret",
+      peerCapability: "review-secret",
       decide: async () => { calls += 1; return {}; },
       lookup: async () => ({}),
     });
@@ -131,11 +137,35 @@ describe("outreach decision API contract", () => {
     const configured = createOutreachDecisionHandlers({
       trustedJtLogin: "jt@example.com",
       serverCapability: "server-secret",
+      peerCapability: "review-secret",
       decide: async () => { calls += 1; return {}; },
       lookup: async () => ({}),
     });
     expect((await configured.POST(request())).status).toBe(401);
     expect((await configured.POST(request("attacker@example.com"))).status).toBe(401);
+
+    const colliding = createOutreachDecisionHandlers({
+      trustedJtLogin: "jt@example.com",
+      serverCapability: "same-secret",
+      peerCapability: "same-secret",
+      decide: async () => { calls += 1; return {}; },
+      lookup: async () => ({}),
+    });
+    expect((await colliding.POST(request("jt@example.com"))).status).toBe(503);
+    for (const [serverCapability, peerCapability] of [
+      ["", "review-secret"],
+      ["server-secret", ""],
+      ["server-secret", undefined],
+    ] as const) {
+      const invalid = createOutreachDecisionHandlers({
+        trustedJtLogin: "jt@example.com",
+        serverCapability,
+        peerCapability,
+        decide: async () => { calls += 1; return {}; },
+        lookup: async () => ({}),
+      });
+      expect((await invalid.POST(request("jt@example.com"))).status).toBe(503);
+    }
     expect(calls).toBe(0);
   });
 });

@@ -359,7 +359,7 @@
     <section>
       <h2>Split outreach capabilities and clean ancestry — 2026-09-15</h2>
       <div class="summary">
-        <p><strong>Status:</strong> builder verification complete on clean ancestry; fresh non-builder review required</p>
+        <p><strong>Status:</strong> superseded by capability-collision hardening below</p>
         <p><strong>Task:</strong> prevent automated admission authority from authorizing a JT decision and remove unrelated branch ancestry.</p>
         <ol>
           <li>Review admission and JT decisions use distinct environment-backed capabilities.</li>
@@ -373,6 +373,20 @@
       <h3>Open Questions</h3><p>None blocking implementation. Environment configuration and deployment remain out of scope.</p>
       <h3>Files Changed</h3><p>Dedicated review route environment binding, Convex capability and bulk-mutation guards, hostile contract tests, project contract, plan, and implementation records.</p>
       <h3>Verification</h3><ul><li>RED: focused contract suite produced three failures for shared capability use and legacy-decision auto-archive/backfill.</li><li>GREEN focused authority suite: 20 tests passed with 0 failures and 62 assertions.</li><li>Clean branch from <code>origin/master@f28738e</code>: 183 tests passed with 0 failures and 440 assertions; TypeScript passed; the production build generated 41/41 pages.</li><li>The branch contains four scoped outreach commits plus this audit-record commit. <code>git diff --name-only origin/master...HEAD</code> contains only <code>mission-control/**</code>; no health or workout paths are present.</li></ul>
+    </section>
+    <section>
+      <h2>Capability-collision hardening — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> builder verification complete; fresh non-builder review required</p>
+        <p><strong>Task:</strong> ensure equal configured review and decision capabilities authorize neither privilege.</p>
+        <ol><li>All four protected HTTP/Convex boundaries validate the complete capability pair.</li><li>Missing, blank, or equal configured values fail with a generic 503 before caller authorization.</li><li>Secret comparisons are constant-time and values are never stored, returned, or logged.</li></ol>
+      </div>
+      <h3>Design Decisions</h3><p>One platform-neutral validator checks both configured values, rejects invalid pairs, and then compares the caller capability. It returns the already-validated configured value for server-to-Convex forwarding, avoiding duplicate checks and unsafe TypeScript assertions.</p>
+      <h3>Deviations</h3><p>None.</p>
+      <h3>Tradeoffs</h3><p>Both capability values must be configured in both Next and Convex even though each boundary uses only one privilege. This is required to prove the privileges remain distinct at each enforcement point.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Provisioning values and deployment remain separate approval boundaries.</p>
+      <h3>Files Changed</h3><p>Outreach auth helper/tests, both HTTP route helpers/tests, both route environment bindings, Convex mutation bindings/contract tests, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3><ul><li>RED: focused suite produced four failures plus one missing-export error: both HTTP routes accepted equal values, the direct capability validator did not exist, and Convex mutations did not validate peer configuration.</li><li>GREEN focused suite: 21 tests passed with 0 failures and 78 assertions.</li><li>Full clean-branch suite: 184 tests passed with 0 failures and 456 assertions; TypeScript passed; production build generated 41/41 pages.</li></ul>
     </section>
     </main>
   </body>
