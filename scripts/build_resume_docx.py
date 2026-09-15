@@ -545,14 +545,15 @@ def build_resume(output_path, resume_md=None):
     name_run.font.bold = True
     name_run.font.color.rgb = NAVY
 
-    # Contact line — standardized regardless of md (always includes jtsomwaru.com)
+    # Preserve the role-adaptive title and contact line from the markdown source.
     contact_para = doc.add_paragraph()
     contact_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
     set_para_spacing(contact_para, before_pt=0, after_pt=6)
-    contact_run = contact_para.add_run(
+    contact_text = md['contact'] if md and md.get('contact') else (
         'New York City · jtsomwaru@gmail.com · '
         'linkedin.com/in/jon-trevor-somwaru · jtsomwaru.com'
     )
+    contact_run = contact_para.add_run(contact_text)
     contact_run.font.name = 'Calibri'
     contact_run.font.size = Pt(10)
     contact_run.font.color.rgb = GRAY

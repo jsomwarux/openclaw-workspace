@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## AI Workflow Growth OS Checkpoint 1B — 2026-09-14
+**What:** Merged the stateless `jt-ops` to Mission Control bridge, shared evidence validator, and inactive weekly-heartbeat renderer after deploying Mission Control's atomic create-only endpoint.
+**For:** internal.
+**Outcome:** Mission Control live no-overwrite behavior was verified; `jt-ops` PR #36 merged as `a9f3a690`; the exact post-merge `main` run passed all nine CI jobs; production writes and heartbeat scheduling remain deliberately inactive pending separate approval.
+**Demonstrates:** cross-repository contract design, atomic task admission, fail-closed evidence validation, independent verification, and approval-gated deployment.
+**Content angle:** The useful systems lesson is that an agent bridge should create a new decision packet or do nothing; it should never silently mutate a human-owned task.
+**Status:** complete.
+
 ## Bounded Nightly Validation Operating System — 2026-08-24
 **What:** Replaced broad night-autonomy loops with a deterministic three-phase controller and strict Mission Control admission/view layer.
 **For:** internal.

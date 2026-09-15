@@ -340,3 +340,11 @@ If any element is missing, do not send the review; update `agents/niche-fitness/
 - **Recovery:** Record `state-skip`, continue conservatively without claiming a clean run, clear the marker only after final state/proof writes, and enforce the ordering on the next run.
 - **Owner surface:** `memory/job-state/daily-send-sheet.md` and the Daily Send Sheet cron workflow.
 - **Added/verified:** 2026-09-08 after the run's marker was written late and preserved as `state-skip`.
+
+## Credential-bearing process argv diagnostic guard
+- **Trigger:** Any process, performance, gateway, Mission Control, Convex, or LaunchAgent diagnostic.
+- **Check:** Never emit full process command arguments when a child process may carry credentials. Prefer PID/name/CPU/RSS-only inspection or a collector that redacts credential flags before output. For Convex local deployments, do not inspect or reproduce the generated instance-secret argument.
+- **Fail condition:** A diagnostic command or artifact exposes a credential-bearing argv value, or a remediation deletes/replaces `.convex` before a verified export and recoverable rollback copy exist.
+- **Recovery:** Treat the value as compromised, stop further disclosure, document the supported rotation boundary, and require JT approval before service restart, local-deployment recreation, import, or configuration change.
+- **Owner surface:** `scripts/eve_audit_collect.py`, process-health diagnostics, Weekly Systems Review, and `docs/runbooks/convex-local-secret-rotation-2026-09-14.md`.
+- **Added/verified:** 2026-09-14 after a local Convex development instance secret appeared in diagnostic process output.

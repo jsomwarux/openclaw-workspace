@@ -1,27 +1,28 @@
 # Job State: Job Market Daily Research
 
-- Last completed run: 2026-09-11T05:20:27-04:00
-- Cursor: rolling 30-day window 2026-08-13 through 2026-09-11; next run retains a rolling 30-day window and does not exclude still-live roles by cursor
-- Open items: none; Bloomberg and Janus Henderson applications were submitted by JT on 2026-09-08.
-- Last failure: no run-level failure; Toast and Crowe postings were stale/unverifiable, and several otherwise relevant roles failed location or direct-evidence gates
+- Last completed run: 2026-09-14T05:22:00-04:00
+- Cursor: rolling 30-day window 2026-08-16 through 2026-09-14; next run retains a rolling 30-day window and does not exclude still-live roles by cursor
+- Open items: Litmos AI Program Manager surfaced at 22/25 for JT review; Bloomberg and Janus Henderson applications were submitted by JT on 2026-09-08.
+- Last failure: no run-level failure; one ATS-domain query returned zero results, while aggregate search health passed
 - Started marker: clear
-- Next expected run: 2026-09-14T05:15:00-04:00
+- Next expected run: 2026-09-15T05:15:00-04:00
 - Legacy definition: `config/cron-snapshots/job-pipeline-legacy-before-reactivation-2026-08-22.json`
 
 ## Latest Run
 
-- Run timestamp: 2026-09-11T05:15:00-04:00 through 2026-09-11T05:20:27-04:00
-- Searches executed: 12 successful rolling-month broad query families with 15 results requested per query, plus 10 targeted validation searches and direct live-posting/API checks.
-- URLs checked: 163 unique discovery URLs from 171 raw search results; every URL and outcome is recorded in the run audit, with additional targeted validation and live ATS/API checks.
-- Surfaced roles: 0. Chime Senior Program Manager, AI Enablement remained 19/25; ServiceNow/Moveworks Implementation Manager and ClearView AI Enablement Manager failed direct-evidence gates.
-- Artifacts: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; `/Users/jtsomwaru/projects/job-market-agent/data/search-results/2026-09-11-job-market-audit.md`; `/Users/jtsomwaru/.openclaw/workspace/memory/job-state/job-market-daily-research.md`. `job-opportunities.md` was intentionally unchanged because no new role qualified.
-- Failures: no run-level failure. Toast and Crowe postings were stale/unverifiable; several otherwise relevant roles failed location or direct-evidence gates.
-- Cursor/date: rolling 30-day window 2026-08-13 through 2026-09-11
-- Proof log: `c8dcbb22`
-- Next run: 2026-09-14T05:15:00-04:00
+- Run timestamp: 2026-09-14T05:15:00-04:00 through 2026-09-14T05:22:00-04:00
+- Searches executed: 12 rolling-month broad query families with 15 results requested per query; 11 returned 15 results and one ATS-domain query returned zero. Six targeted validation searches and direct live-posting/API checks followed.
+- URLs checked: 163 unique discovery URLs from 165 raw search results; every URL and outcome is recorded in the run audit.
+- Surfaced roles: 1. Litmos AI Program Manager passed the evidence gate and scored 22/25.
+- Artifacts: `/Users/jtsomwaru/projects/job-market-agent/data/daily-brief.md`; `/Users/jtsomwaru/projects/job-market-agent/data/job-opportunities.md`; `/Users/jtsomwaru/projects/job-market-agent/data/search-results/2026-09-14-job-market-audit.md`; `/Users/jtsomwaru/.openclaw/workspace/memory/job-state/job-market-daily-research.md`.
+- Failures: no run-level failure. One Greenhouse-domain discovery query returned zero results; several non-qualifying pages were stale, blocked, or inaccessible and are recorded individually.
+- Cursor/date: rolling 30-day window 2026-08-16 through 2026-09-14
+- Proof log: `d3bf0fd0`
+- Next run: 2026-09-15T05:15:00-04:00
 
 ## Recent Runs
 
+- 2026-09-14 05:22 ET: twelve broad rolling-month searches produced 165 raw results and 163 unique URLs; Litmos AI Program Manager surfaced at 22/25.
 - 2026-09-11 05:20 ET: twelve broad rolling-month searches produced 171 raw results and 163 unique URLs; no evidence-backed role cleared every gate.
 - 2026-09-10 05:27 ET: twelve broad rolling-month searches produced 180 raw results and 175 unique URLs; no evidence-backed role cleared every gate.
 - 2026-09-09 05:24 ET: twelve broad rolling-month searches produced 180 raw results and 175 unique URLs; no evidence-backed role cleared 20/25, with Chime closest at 19/25.
