@@ -265,7 +265,7 @@ export const createOutreachReview = mutation({
   },
   handler: async (ctx, args) => {
     const { capability, ...taskInput } = args;
-    assertDistinctServerCapability(
+    await assertDistinctServerCapability(
       capability,
       process.env.OUTREACH_REVIEW_CAPABILITY,
       process.env.OUTREACH_DECISION_CAPABILITY,
@@ -353,7 +353,7 @@ export const decideOutreach = mutation({
   },
   handler: async (ctx, args) => {
     const { capability, ...decisionInput } = args;
-    assertDistinctServerCapability(
+    await assertDistinctServerCapability(
       capability,
       process.env.OUTREACH_DECISION_CAPABILITY,
       process.env.OUTREACH_REVIEW_CAPABILITY,

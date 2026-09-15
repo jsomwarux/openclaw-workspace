@@ -9,15 +9,41 @@ type Dependencies = {
   admit: (input: Record<string, unknown>) => Promise<{ id: string; created: boolean }>;
 };
 
-function errorResponse(error: unknown, status = 400) {
-  return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status });
+const SAFE_REVIEW_ERRORS = new Map<string, number>([
+  ["server capability is not a request-body field", 400],
+  ["outreach review eligibility requires the specialized endpoint", 400],
+  ["outreach decisions require the specialized endpoint", 400],
+  ["candidateId required", 400],
+  ["draftSha256 must be 64 lowercase hex characters", 400],
+  ["title required", 400],
+  ["dedupeKey required", 400],
+]);
+
+function reviewErrorResponse(error: unknown) {
+  if (error instanceof OutreachAuthError) {
+    return NextResponse.json({ error: error.message }, { status: error.status });
+  }
+  const message = error instanceof Error ? error.message : "";
+  const safeStatus = SAFE_REVIEW_ERRORS.get(message);
+  if (safeStatus) return NextResponse.json({ error: message }, { status: safeStatus });
+  return NextResponse.json({ error: "outreach review request failed" }, { status: 500 });
+}
+
+function reviewDependencyErrorResponse(error: unknown) {
+  if (
+    error instanceof Error
+    && error.message === "existing task is not the same server-admitted outreach review; create a new versioned task"
+  ) {
+    return NextResponse.json({ error: "outreach review conflict" }, { status: 409 });
+  }
+  return NextResponse.json({ error: "outreach review request failed" }, { status: 500 });
 }
 
 export function createOutreachReviewPostHandler(dependencies: Dependencies) {
   return async function POST(req: Request) {
     try {
       const callerCapability = req.headers.get("X-Outreach-Review-Capability") ?? undefined;
-      const serverCapability = assertDistinctServerCapability(
+      const serverCapability = await assertDistinctServerCapability(
         callerCapability,
         dependencies.serverCapability,
         dependencies.peerCapability,
@@ -32,12 +58,15 @@ export function createOutreachReviewPostHandler(dependencies: Dependencies) {
       if (!input.title) throw new Error("title required");
       if (!input.dedupeKey) throw new Error("dedupeKey required");
 
-      const result = await dependencies.admit({ ...input, capability: serverCapability });
+      let result: { id: string; created: boolean };
+      try {
+        result = await dependencies.admit({ ...input, capability: serverCapability });
+      } catch (error) {
+        return reviewDependencyErrorResponse(error);
+      }
       return NextResponse.json({ ...result, success: true, writeMode: "create-only", reviewMode: "outreach-review" });
     } catch (error) {
-      if (error instanceof OutreachAuthError) return errorResponse(error, error.status);
-      const message = error instanceof Error ? error.message : String(error);
-      return errorResponse(error, message.includes("existing task") ? 409 : 400);
+      return reviewErrorResponse(error);
     }
   };
 }

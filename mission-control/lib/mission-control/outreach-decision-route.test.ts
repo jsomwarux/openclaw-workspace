@@ -168,4 +168,52 @@ describe("outreach decision API contract", () => {
     }
     expect(calls).toBe(0);
   });
+
+  test("never leaks arbitrary decision or lookup dependency errors", async () => {
+    const leakedCapability = "decision-secret-do-not-return";
+    const handlers = createOutreachDecisionHandlers({
+      trustedJtLogin: "jt@example.com",
+      serverCapability: leakedCapability,
+      peerCapability: "review-secret",
+      decide: async () => { throw new Error(`Convex decision failed capability=${leakedCapability}`); },
+      lookup: async () => { throw new Error(`Convex lookup failed capability=${leakedCapability}`); },
+    });
+    const postResponse = await handlers.POST(new Request("http://localhost/api/tasks/outreach-decision", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Tailscale-User-Login": "jt@example.com" },
+      body: JSON.stringify({ taskId: "task-1", candidateId: "candidate-1", draftSha256: SHA, decision: "approve" }),
+    }));
+    const postText = await postResponse.text();
+    expect(postResponse.status).toBe(500);
+    expect(JSON.parse(postText)).toEqual({ error: "outreach decision request failed" });
+    expect(postText).not.toContain(leakedCapability);
+    expect(postText).not.toContain("Convex");
+
+    const getResponse = await handlers.GET(new Request(`http://localhost/api/tasks/outreach-decision?candidateId=candidate-1&draftSha256=${SHA}`));
+    const getText = await getResponse.text();
+    expect(getResponse.status).toBe(500);
+    expect(JSON.parse(getText)).toEqual({ error: "outreach decision request failed" });
+    expect(getText).not.toContain(leakedCapability);
+    expect(getText).not.toContain("Convex");
+  });
+
+  test("does not echo an allowlisted conflict even when it equals the capability", async () => {
+    const capability = "outreach decision is immutable; create a new versioned task";
+    const handlers = createOutreachDecisionHandlers({
+      trustedJtLogin: "jt@example.com",
+      serverCapability: capability,
+      peerCapability: "review-secret",
+      decide: async () => { throw new Error(capability); },
+      lookup: async () => ({ authorized: false, state: "absent" }),
+    });
+    const response = await handlers.POST(new Request("http://localhost/api/tasks/outreach-decision", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Tailscale-User-Login": "jt@example.com" },
+      body: JSON.stringify({ taskId: "task-1", candidateId: "candidate-1", draftSha256: SHA, decision: "approve" }),
+    }));
+    const text = await response.text();
+    expect(response.status).toBe(409);
+    expect(JSON.parse(text)).toEqual({ error: "outreach decision conflict" });
+    expect(text).not.toContain(capability);
+  });
 });

@@ -388,6 +388,20 @@
       <h3>Files Changed</h3><p>Outreach auth helper/tests, both HTTP route helpers/tests, both route environment bindings, Convex mutation bindings/contract tests, project contract, plan, and implementation records.</p>
       <h3>Verification</h3><ul><li>RED: focused suite produced four failures plus one missing-export error: both HTTP routes accepted equal values, the direct capability validator did not exist, and Convex mutations did not validate peer configuration.</li><li>GREEN focused suite: 21 tests passed with 0 failures and 78 assertions.</li><li>Full clean-branch suite: 184 tests passed with 0 failures and 456 assertions; TypeScript passed; production build generated 41/41 pages.</li></ul>
     </section>
+    <section>
+      <h2>Outreach error and capability hardening — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> builder verification complete; fresh non-builder review required</p>
+        <p><strong>Task:</strong> prevent dependency failures from disclosing protected values and replace the handwritten JavaScript secret comparator.</p>
+        <ol><li>Unknown Convex/dependency failures return a generic 500 with no downstream message.</li><li>Known conflicts return fixed public text rather than echoing the dependency exception.</li><li>Capability equality uses Web Crypto HMAC-SHA-256 verification at Next and Convex boundaries.</li></ol>
+      </div>
+      <h3>Design Decisions</h3><p>Local validation and authentication errors are drawn from explicit safe-message maps. Dependency calls have their own catch boundary: only exact known conflict types affect the status, and even those return fixed public wording. HMAC verification performs the sensitive fixed-length comparison inside the platform cryptographic primitive.</p>
+      <h3>Deviations</h3><p>Used platform-neutral Web Crypto HMAC verification instead of Node-only <code>timingSafeEqual</code> because the same helper runs inside Convex mutations.</p>
+      <h3>Tradeoffs</h3><p>The capability validator is asynchronous. All four enforcement points await it before database access. Unknown client syntax errors also fail generically rather than exposing parser details.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Provisioning values and deployment remain separate approval boundaries.</p>
+      <h3>Files Changed</h3><p>Outreach auth and route helpers/tests, Convex awaits, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3><ul><li>RED: focused suite produced three failures plus one missing-export error: both routes echoed capability-bearing dependency messages and no cryptographic comparator existed.</li><li>GREEN focused suite: 26 tests passed with 0 failures and 99 assertions.</li><li>Full suite: 189 tests passed with 0 failures and 477 assertions.</li><li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li><li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated.</li></ul>
+    </section>
     </main>
   </body>
 </html>

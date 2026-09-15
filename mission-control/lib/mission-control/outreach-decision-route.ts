@@ -20,8 +20,32 @@ type Dependencies = {
   lookup: (input: IdentityInput) => Promise<unknown>;
 };
 
-function errorResponse(error: unknown, status = 400) {
-  return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status });
+const SAFE_DECISION_ERRORS = new Map<string, number>([
+  ["decision authority fields are server-owned", 400],
+  ["taskId required", 400],
+  ["candidateId required", 400],
+  ["draftSha256 must be 64 lowercase hex characters", 400],
+  ["decision must be approve or reject", 400],
+]);
+
+function decisionErrorResponse(error: unknown) {
+  if (error instanceof OutreachAuthError) {
+    return NextResponse.json({ error: error.message }, { status: error.status });
+  }
+  const message = error instanceof Error ? error.message : "";
+  const safeStatus = SAFE_DECISION_ERRORS.get(message);
+  if (safeStatus) return NextResponse.json({ error: message }, { status: safeStatus });
+  return NextResponse.json({ error: "outreach decision request failed" }, { status: 500 });
+}
+
+function decisionDependencyErrorResponse(error: unknown) {
+  if (
+    error instanceof Error
+    && error.message === "outreach decision is immutable; create a new versioned task"
+  ) {
+    return NextResponse.json({ error: "outreach decision conflict" }, { status: 409 });
+  }
+  return NextResponse.json({ error: "outreach decision request failed" }, { status: 500 });
 }
 
 export function createOutreachDecisionHandlers(dependencies: Dependencies) {
@@ -31,15 +55,20 @@ export function createOutreachDecisionHandlers(dependencies: Dependencies) {
       const candidateId = searchParams.get("candidateId");
       const draftSha256 = searchParams.get("draftSha256");
       try {
-        return NextResponse.json(await dependencies.lookup(parseOutreachIdentity(candidateId, draftSha256)));
+        const identity = parseOutreachIdentity(candidateId, draftSha256);
+        try {
+          return NextResponse.json(await dependencies.lookup(identity));
+        } catch (error) {
+          return decisionDependencyErrorResponse(error);
+        }
       } catch (error) {
-        return errorResponse(error);
+        return decisionErrorResponse(error);
       }
     },
     POST: async (req: Request) => {
       try {
         authorizeJtIdentity(req.headers, dependencies.trustedJtLogin);
-        const serverCapability = assertDistinctServerCapability(
+        const serverCapability = await assertDistinctServerCapability(
           dependencies.serverCapability,
           dependencies.serverCapability,
           dependencies.peerCapability,
@@ -55,16 +84,18 @@ export function createOutreachDecisionHandlers(dependencies: Dependencies) {
         if (!taskId) throw new Error("taskId required");
         const identity = parseOutreachIdentity(candidateId, draftSha256);
         if (decision !== "approve" && decision !== "reject") throw new Error("decision must be approve or reject");
-        return NextResponse.json(await dependencies.decide({
-          taskId,
-          ...identity,
-          decision,
-          capability: serverCapability,
-        }));
+        try {
+          return NextResponse.json(await dependencies.decide({
+            taskId,
+            ...identity,
+            decision,
+            capability: serverCapability,
+          }));
+        } catch (error) {
+          return decisionDependencyErrorResponse(error);
+        }
       } catch (error) {
-        if (error instanceof OutreachAuthError) return errorResponse(error, error.status);
-        const message = error instanceof Error ? error.message : String(error);
-        return errorResponse(error, message.includes("immutable") ? 409 : 400);
+        return decisionErrorResponse(error);
       }
     },
   };

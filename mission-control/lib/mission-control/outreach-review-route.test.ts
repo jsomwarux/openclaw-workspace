@@ -84,4 +84,33 @@ describe("dedicated outreach review admission route", () => {
     expect((await post(request({ ...body, draftSha256: "bad" }, "server-secret"))).status).toBe(400);
     expect(calls).toBe(0);
   });
+
+  test("never leaks arbitrary dependency errors", async () => {
+    const leakedCapability = "server-secret-do-not-return";
+    const post = createOutreachReviewPostHandler({
+      serverCapability: leakedCapability,
+      peerCapability: "decision-secret",
+      admit: async () => { throw new Error(`Convex internal failure capability=${leakedCapability}`); },
+    });
+    const response = await post(request(body, leakedCapability));
+    const text = await response.text();
+    expect(response.status).toBe(500);
+    expect(JSON.parse(text)).toEqual({ error: "outreach review request failed" });
+    expect(text).not.toContain(leakedCapability);
+    expect(text).not.toContain("Convex");
+  });
+
+  test("does not echo an allowlisted conflict even when it equals the capability", async () => {
+    const capability = "existing task is not the same server-admitted outreach review; create a new versioned task";
+    const post = createOutreachReviewPostHandler({
+      serverCapability: capability,
+      peerCapability: "decision-secret",
+      admit: async () => { throw new Error(capability); },
+    });
+    const response = await post(request(body, capability));
+    const text = await response.text();
+    expect(response.status).toBe(409);
+    expect(JSON.parse(text)).toEqual({ error: "outreach review conflict" });
+    expect(text).not.toContain(capability);
+  });
 });

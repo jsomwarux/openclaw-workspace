@@ -145,3 +145,11 @@
 - [x] Centralize nonblank, distinct, constant-time capability validation without logging values.
 - [x] Run focused/full tests, TypeScript, build, diff, ancestry, and security scans.
 - [x] Commit locally without push, deployment, or environment changes.
+
+## Plan — sanitize outreach errors and use a proven secret comparison — 2026-09-15
+- [x] RED: prove admission/decision dependency errors cannot leak capability or internal details.
+- [x] RED: cover equal, unequal, and different-length capability comparison with a platform cryptographic primitive.
+- [x] Map only enumerated safe route errors; return a generic 500 for every unknown dependency failure.
+- [x] Replace the handwritten JavaScript comparator with Web Crypto HMAC-SHA-256 verification and await it at HTTP/Convex boundaries.
+- [x] Run focused/full tests, TypeScript, build, diff, ancestry, and secret-leak scans.
+- [x] Commit explicit paths locally without push, deployment, or environment changes.

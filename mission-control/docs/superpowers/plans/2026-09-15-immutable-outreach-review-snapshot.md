@@ -23,5 +23,6 @@
 ## Capability-collision repair
 
 - [x] Add hostile coverage for equal, missing, and blank capability pairs at both HTTP and direct mutation boundaries.
-- [x] Use one fail-closed, constant-time capability-pair validator at all four protected boundaries.
+- [x] Use one fail-closed capability-pair validator at all four protected boundaries, with Web Crypto HMAC-SHA-256 verification rather than a JavaScript comparison loop.
+- [x] Sanitize protected route failures so unknown Convex/dependency errors cannot expose capabilities or internal details.
 - [x] Run the full verification and security matrix on the clean branch.

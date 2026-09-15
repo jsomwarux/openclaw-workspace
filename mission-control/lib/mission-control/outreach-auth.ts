@@ -11,28 +11,40 @@ export function authorizeJtIdentity(headers: Headers, configuredLogin: string | 
   return { login };
 }
 
-function constantTimeEqual(left: string, right: string): boolean {
-  const length = Math.max(left.length, right.length);
-  let mismatch = left.length ^ right.length;
-  for (let index = 0; index < length; index += 1) {
-    mismatch |= (left.charCodeAt(index) || 0) ^ (right.charCodeAt(index) || 0);
-  }
-  return mismatch === 0;
+const CAPABILITY_COMPARISON_CONTEXT = new TextEncoder().encode("mission-control/outreach-capability/v1");
+
+/**
+ * Compare secrets through the platform Web Crypto implementation. HMAC-SHA-256
+ * produces a fixed-length authenticator and `verify` performs the sensitive
+ * comparison inside the cryptographic primitive rather than in JavaScript.
+ * This works in both the Next.js and Convex runtimes.
+ */
+export async function secureCapabilityEqual(left: string, right: string): Promise<boolean> {
+  const algorithm = { name: "HMAC", hash: "SHA-256" } as const;
+  const encoder = new TextEncoder();
+  const [leftKey, rightKey] = await Promise.all([
+    crypto.subtle.importKey("raw", encoder.encode(left), algorithm, false, ["sign"]),
+    crypto.subtle.importKey("raw", encoder.encode(right), algorithm, false, ["verify"]),
+  ]);
+  const authenticator = await crypto.subtle.sign("HMAC", leftKey, CAPABILITY_COMPARISON_CONTEXT);
+  return crypto.subtle.verify("HMAC", rightKey, authenticator, CAPABILITY_COMPARISON_CONTEXT);
 }
 
-export function assertDistinctServerCapability(
+export async function assertDistinctServerCapability(
   provided: string | undefined,
   configured: string | undefined,
   peerConfigured: string | undefined,
-): string {
+): Promise<string> {
   if (
     !configured?.trim()
     || !peerConfigured?.trim()
-    || constantTimeEqual(configured, peerConfigured)
   ) {
     throw new OutreachAuthError("capability configuration is invalid", 503);
   }
-  if (!provided?.trim() || !constantTimeEqual(provided, configured)) {
+  if (await secureCapabilityEqual(configured, peerConfigured)) {
+    throw new OutreachAuthError("capability configuration is invalid", 503);
+  }
+  if (!provided?.trim() || !(await secureCapabilityEqual(provided, configured))) {
     throw new OutreachAuthError("server capability required", 401);
   }
   return configured;
