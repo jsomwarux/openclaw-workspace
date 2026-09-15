@@ -12,7 +12,7 @@ const TASK_FIELDS = [
   "blocksAgent", "reasonCodes", "rankScore", "rankUpdatedAt",
   "firstAction", "whyItMatters", "doneState", "evidenceLinks", "sourceSystem", "reviewAt", "dedupeKey",
   "workstream", "hypothesis", "nextTest", "killDate", "promotionScore", "revivalTrigger",
-  "verdict", "verifierConfirmed", "verifiedAt", "candidateId", "sourceHash", "evidenceScore",
+  "verdict", "verifierConfirmed", "verifiedAt", "candidateId", "draftSha256", "sourceHash", "evidenceScore",
   "distributionScore", "fatalConstraint",
 ] as const;
 
@@ -35,6 +35,15 @@ export function normalizeTaskInput(
 }
 
 export function validateTaskAdmission(input: Record<string, unknown>, now = new Date()): void {
+  if (input.outreachReview !== undefined) {
+    throw new Error("outreach review eligibility requires the specialized endpoint");
+  }
+  if (input.outreachDecision !== undefined || input.decidedBy !== undefined || input.decidedAt !== undefined) {
+    throw new Error("outreach decisions require the specialized endpoint");
+  }
+  if (input.reviewCycle !== undefined || input.snapshotSha256 !== undefined || input.cohortId !== undefined) {
+    throw new Error("outreach review authority requires the specialized endpoint");
+  }
   if (input.source === "nightly-validation-controller") {
     throw new Error("sourceSystem is required; source cannot identify nightly admission");
   }

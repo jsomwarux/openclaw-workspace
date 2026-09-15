@@ -1,10 +1,17 @@
 import { v } from "convex/values";
 import { mutation, query, internalMutation } from "./_generated/server";
 import type { Doc } from "./_generated/dataModel";
-import type { MutationCtx } from "./_generated/server";
-import { taskStatus, waitingOn, workstream } from "./schema";
+import type { MutationCtx, QueryCtx } from "./_generated/server";
+import { gitBinding, outreachDecisionValue, taskStatus, waitingOn, workstream } from "./schema";
 import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 import { resolveTaskCreateOnly } from "../lib/mission-control/task-create-only";
+import { assertOutreachTaskMutable, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
+import { assertDistinctServerCapability } from "../lib/mission-control/outreach-auth";
+import {
+  OutreachReviewContractError,
+  resolveOutreachReviewAdmission,
+  summarizeOutreachReviews,
+} from "../lib/mission-control/outreach-review";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
 const NIGHTLY_SOURCE = "nightly-validation-controller";
@@ -33,6 +40,7 @@ const operatingSystemArgs = {
   verifierConfirmed: v.optional(v.boolean()),
   verifiedAt: v.optional(v.string()),
   candidateId: v.optional(v.string()),
+  draftSha256: v.optional(v.string()),
   sourceHash: v.optional(v.string()),
   evidenceScore: v.optional(v.number()),
   distributionScore: v.optional(v.number()),
@@ -97,6 +105,19 @@ async function auditChanges(
       source,
       ts,
     });
+  }
+}
+
+async function assertAuthoritativeOutreachSnapshot(ctx: { db: MutationCtx["db"] | QueryCtx["db"] }, task: Doc<"tasks">) {
+  const snapshot = task.outreachReview;
+  if (!snapshot || !task.candidateId || !task.cohortId) throw new Error("invalid outreach snapshot");
+  const cohortTasks = await ctx.db
+    .query("tasks")
+    .withIndex("by_outreach_candidate_cohort", (q) => q.eq("candidateId", task.candidateId).eq("cohortId", task.cohortId))
+    .collect();
+  const summary = await summarizeOutreachReviews(cohortTasks, task.candidateId, task.cohortId);
+  if (!summary.tasks.some((candidate) => candidate._id === task._id && candidate.outreachReview?.snapshotSha256 === snapshot.snapshotSha256)) {
+    throw new Error("invalid outreach snapshot");
   }
 }
 
@@ -230,12 +251,88 @@ export const createOnlyByDedupeKey = mutation({
   },
 });
 
+export const createOutreachReview = mutation({
+  args: {
+    candidateId: v.string(),
+    cohortId: v.string(),
+    draftSha256: v.string(),
+    subject: v.string(),
+    body: v.string(),
+    verifierReport: v.string(),
+    reviewAuthorityId: v.string(),
+    verifierActorId: v.string(),
+    gitBindings: v.object({
+      evidence: gitBinding,
+      policy: gitBinding,
+      gate: gitBinding,
+      draft: gitBinding,
+      verifier: gitBinding,
+    }),
+    capability: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const { capability, ...submission } = args;
+    await assertDistinctServerCapability(
+      capability,
+      process.env.OUTREACH_REVIEW_CAPABILITY,
+      process.env.OUTREACH_DECISION_CAPABILITY,
+    );
+    const existing = await ctx.db
+      .query("tasks")
+      .withIndex("by_outreach_candidate_cohort", (q) => q.eq("candidateId", submission.candidateId).eq("cohortId", submission.cohortId))
+      .collect();
+    let resolved;
+    try {
+      resolved = await resolveOutreachReviewAdmission(existing, submission, Date.now());
+    } catch (error) {
+      if (error instanceof OutreachReviewContractError && error.code === "cycle_limit") throw new Error("OUTREACH_REVIEW_CYCLE_LIMIT");
+      if (error instanceof OutreachReviewContractError && error.code === "corrupt_authority") throw new Error("OUTREACH_REVIEW_AUTHORITY_CORRUPT");
+      throw new Error("OUTREACH_REVIEW_INVALID");
+    }
+    if (resolved.operation === "existing") {
+      return { taskId: resolved.taskId, created: false, reviewCycle: resolved.reviewCycle, snapshotSha256: resolved.snapshotSha256 };
+    }
+    const id = await ctx.db.insert("tasks", resolved.fields);
+    return {
+      taskId: id,
+      created: true,
+      reviewCycle: resolved.fields.outreachReview.reviewCycle,
+      snapshotSha256: resolved.fields.outreachReview.snapshotSha256,
+    };
+  },
+});
+
+export const getOutreachReviewState = query({
+  args: { candidateId: v.string(), cohortId: v.string(), capability: v.string() },
+  handler: async (ctx, args) => {
+    await assertDistinctServerCapability(
+      args.capability,
+      process.env.OUTREACH_REVIEW_CAPABILITY,
+      process.env.OUTREACH_DECISION_CAPABILITY,
+    );
+    const tasks = await ctx.db
+      .query("tasks")
+      .withIndex("by_outreach_candidate_cohort", (q) => q.eq("candidateId", args.candidateId).eq("cohortId", args.cohortId))
+      .collect();
+    try {
+      const { tasks: _tasks, ...state } = await summarizeOutreachReviews(tasks, args.candidateId, args.cohortId);
+      return state;
+    } catch (error) {
+      if (error instanceof OutreachReviewContractError && error.code === "corrupt_authority") throw new Error("OUTREACH_REVIEW_AUTHORITY_CORRUPT");
+      throw new Error("OUTREACH_REVIEW_INVALID");
+    }
+  },
+});
+
 export const updateStatus = mutation({
   args: {
     id: v.id("tasks"),
     status: taskStatus,
   },
   handler: async (ctx, args) => {
+    const task = await ctx.db.get(args.id);
+    if (!task) throw new Error(`Task not found: ${args.id}`);
+    assertOutreachTaskMutable(task);
     await ctx.db.patch(args.id, { status: args.status, updatedAt: Date.now() });
   },
 });
@@ -272,6 +369,7 @@ export const update = mutation({
     const { id, auditSource: source, auditEvidence, ...fields } = args;
     const task = await ctx.db.get(id);
     if (!task) throw new Error(`Task not found: ${id}`);
+    assertOutreachTaskMutable(task);
     assertNightlyAdmission({ ...task, ...fields });
     await auditChanges(ctx, task, fields, source ?? "jt", auditEvidence ?? "manual edit");
     await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
@@ -281,7 +379,63 @@ export const update = mutation({
 export const remove = mutation({
   args: { id: v.id("tasks") },
   handler: async (ctx, args) => {
+    const task = await ctx.db.get(args.id);
+    assertOutreachTaskMutable(task);
     await ctx.db.delete(args.id);
+  },
+});
+
+export const decideOutreach = mutation({
+  args: {
+    taskId: v.id("tasks"),
+    candidateId: v.string(),
+    draftSha256: v.string(),
+    snapshotSha256: v.string(),
+    decision: outreachDecisionValue,
+    capability: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const { capability, ...decisionInput } = args;
+    await assertDistinctServerCapability(
+      capability,
+      process.env.OUTREACH_DECISION_CAPABILITY,
+      process.env.OUTREACH_REVIEW_CAPABILITY,
+    );
+    const task = await ctx.db.get(args.taskId);
+    if (!task) throw new Error("OUTREACH_REVIEW_NOT_FOUND");
+    let resolved;
+    try {
+      await assertAuthoritativeOutreachSnapshot(ctx, task);
+      resolved = resolveOutreachDecision(task, decisionInput, Date.now());
+    } catch {
+      throw new Error("OUTREACH_DECISION_CONFLICT");
+    }
+    if (resolved.operation === "existing") return { decision: resolved.decision, created: false };
+    await ctx.db.patch(args.taskId, { outreachDecision: resolved.decision, status: resolved.status, updatedAt: Date.now() });
+    return { decision: resolved.decision, created: true };
+  },
+});
+
+export const findOutreachDecision = query({
+  args: { candidateId: v.string(), draftSha256: v.string(), snapshotSha256: v.string(), capability: v.string() },
+  handler: async (ctx, args) => {
+    await assertDistinctServerCapability(
+      args.capability,
+      process.env.OUTREACH_DECISION_CAPABILITY,
+      process.env.OUTREACH_REVIEW_CAPABILITY,
+    );
+    const matches = await ctx.db
+      .query("tasks")
+      .withIndex("by_outreach_identity", (q) => q.eq("candidateId", args.candidateId).eq("draftSha256", args.draftSha256))
+      .collect();
+    const exact = matches.filter((task) => task.outreachReview?.snapshotSha256 === args.snapshotSha256);
+    if (exact.length !== 1) return { authorized: false, state: "absent" as const };
+    try {
+      await assertAuthoritativeOutreachSnapshot(ctx, exact[0]);
+      return resolveOutreachLookup(exact[0], args.candidateId, args.draftSha256, args.snapshotSha256);
+    } catch {
+      throw new Error("OUTREACH_DECISION_CONFLICT");
+    }
   },
 });
 
@@ -327,6 +481,7 @@ export const autoArchive = internalMutation({
       .collect();
     let archived = 0;
     for (const task of doneTasks) {
+      if (task.outreachReview || task.outreachDecision) continue;
       if (task.updatedAt < sevenDaysAgo) {
         await ctx.db.patch(task._id, { status: "archived", updatedAt: Date.now() });
         archived++;
@@ -345,6 +500,9 @@ export const updatePipelineStage = mutation({
   },
   handler: async (ctx, args) => {
     const { id, ...fields } = args;
+    const task = await ctx.db.get(id);
+    if (!task) throw new Error(`Task not found: ${id}`);
+    assertOutreachTaskMutable(task);
     await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
   },
 });
@@ -447,7 +605,7 @@ export const backfillClientIds = mutation({
     for (const rule of CLIENT_BACKFILL) {
       const clientId = byName.get(rule.client);
       const task = tasks.find(
-        (t) => t.title.includes(rule.match) && t.status !== "done" && t.status !== "archived",
+        (t) => !t.outreachReview && !t.outreachDecision && t.title.includes(rule.match) && t.status !== "done" && t.status !== "archived",
       );
       if (!clientId || !task) {
         applied.push({ match: rule.match, client: rule.client, taskId: null });

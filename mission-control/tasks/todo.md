@@ -108,3 +108,56 @@
 - [x] Reuse the local Mission Control dependency tree via an ignored clone-local symlink; both checked-in lockfiles are stale and clean installs would create unrelated churn.
 - [x] Rerun focused tests, the full Mission Control test suite, TypeScript, and the isolated build with the standard local Convex address required for page-data collection; review the final diff.
 - [x] Record verifier-ready evidence and commit the bounded patch locally.
+## Plan — immutable outreach decision contract — 2026-09-14
+- [x] Add failing domain tests for exact candidate/draft binding and immutable JT decision.
+- [x] Add the specialized Convex mutation/query without exposing decision fields to generic writes.
+- [x] Add failing API contract tests and a dedicated read/write endpoint.
+- [x] Add minimal approve/reject controls to eligible review cards.
+- [x] Run full tests, TypeScript, production build, and diff checks.
+- [x] Commit explicit paths only; do not push or deploy.
+
+## Plan — outreach decision authority hardening — 2026-09-15
+- [x] Reproduce unauthenticated JT stamping, direct mutation access, and generic review-marker forgery with hostile tests.
+- [x] Require configured Tailscale JT identity for decision writes and fail closed when identity/config is absent.
+- [x] Require a server capability at every Convex outreach admission/decision mutation without logging or returning it.
+- [x] Add an atomic specialized outreach-review admission path and make generic task writes reject its server-owned marker.
+- [x] Run focused/full tests, TypeScript, production build, and diff/security checks.
+- [x] Commit explicit paths only; do not push or deploy.
+
+## Plan — immutable outreach review snapshot — 2026-09-15
+- [x] Reproduce generic updateStatus/update/upsert/delete/autoArchive mutations and archived-decision authorization.
+- [x] Replace field-specific protection with a single guard that blocks every generic mutation of a server-admitted review task.
+- [x] Apply the guard to every task mutation path and keep auto-archive/backfill from mutating review snapshots.
+- [x] Require a non-archived exact task for outreach authorization.
+- [x] Run focused/full tests, TypeScript, build, and security/diff checks.
+- [x] Commit explicit paths only; do not push or deploy.
+
+## Plan — split outreach capabilities and clean ancestry — 2026-09-15
+- [x] Reproduce shared-capability privilege escalation and legacy-decision bulk mutation.
+- [x] Split review-admission and JT-decision capabilities through Next and Convex.
+- [x] Exclude both review markers and legacy decisions from auto-archive/backfill.
+- [x] Rebuild the outreach work from current `origin/master` without unrelated ancestry.
+- [x] Run clean-branch tests, TypeScript, build, security scan, and diff audit.
+- [x] Commit locally without push, deployment, or environment changes.
+
+## Plan — reject capability collisions — 2026-09-15
+- [x] Reproduce equal capability authorization at review, decision, and direct mutation boundaries.
+- [x] Centralize nonblank, distinct, constant-time capability validation without logging values.
+- [x] Run focused/full tests, TypeScript, build, diff, ancestry, and security scans.
+- [x] Commit locally without push, deployment, or environment changes.
+
+## Plan — sanitize outreach errors and use a proven secret comparison — 2026-09-15
+- [x] RED: prove admission/decision dependency errors cannot leak capability or internal details.
+- [x] RED: cover equal, unequal, and different-length capability comparison with a platform cryptographic primitive.
+- [x] Map only enumerated safe route errors; return a generic 500 for every unknown dependency failure.
+- [x] Replace the handwritten JavaScript comparator with Web Crypto HMAC-SHA-256 verification and await it at HTTP/Convex boundaries.
+- [x] Run focused/full tests, TypeScript, build, diff, ancestry, and secret-leak scans.
+- [x] Commit explicit paths locally without push, deployment, or environment changes.
+
+## Plan — immutable outreach review owner snapshot and cycle contract — 2026-09-15
+- [x] Approve the embedded-task architecture, canonical request, hash domain/version, and two-cycle owner semantics before implementation.
+- [x] Establish RED tests for complete persisted context, canonical hashing, field/size rejection, generic forgery, exact decision binding, and UI provenance.
+- [x] Implement atomic review admission/count, persisted snapshot display, exact decision lookup, and generic lifecycle immutability.
+- [x] Prove optimistic retry behavior for concurrent duplicate, distinct, and third-attempt admissions through registered handlers.
+- [x] Document the exact cross-repo API contract for `jt-ops`.
+- [x] Run final full tests, TypeScript, isolated production build, diff/security scans, and local commit for fresh non-builder verification.

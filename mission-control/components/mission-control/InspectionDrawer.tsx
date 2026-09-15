@@ -10,6 +10,7 @@ import { priorityBadgeClassName } from "@/lib/mission-control/work-priority";
 import { statusOptions, toTaskStatus, type TaskStatus } from "@/lib/mission-control/work-status";
 import { cn, formatRelative } from "@/lib/utils";
 import { StateBlock } from "./StateBlock";
+import { OutreachDecisionControls } from "./OutreachDecisionControls";
 
 type InspectionDrawerProps = {
   signal: Signal | null;
@@ -161,6 +162,8 @@ export function InspectionDrawer({
             )}
           </div>
         </section>
+
+        <OutreachDecisionControls signal={signal} />
 
         <section className="mt-6 rounded-lg border border-[#20262d] bg-[#0b0d0f] p-3">
           <div className="flex items-start justify-between gap-3">

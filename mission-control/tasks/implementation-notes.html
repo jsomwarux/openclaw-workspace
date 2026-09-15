@@ -280,6 +280,142 @@
         <h3>Verification</h3>
         <p>RED: both new test modules failed to import before implementation. GREEN: seven focused assertions passed. Full mirror verification: 135 tests passed across 27 files; TypeScript passed; the isolated <code>.next-build</code> production build generated all 38 static pages. Exact output is in <code>reports/create-only-review.md</code>.</p>
       </section>
+    <section>
+      <h2>Outreach decision contract — 2026-09-14</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> superseded by the authority hardening below</p>
+        <p><strong>Task:</strong> add one immutable JT approve/reject decision to an existing outreach review task.</p>
+        <ol>
+          <li>The existing task is the only approval record; no new table or ledger.</li>
+          <li>The decision binds candidate ID and exact draft SHA-256.</li>
+          <li>Only a specialized server path may write or read the decision.</li>
+        </ol>
+      </div>
+      <h3>Design Decisions</h3>
+      <p>The decision is an optional nested field on the existing task. The specialized mutation supplies <code>decidedBy=jt</code> and server time. Generic create/update normalization does not accept decision authority fields, and generic upsert/update/delete paths cannot change or remove a decided task's candidate/draft binding.</p>
+      <h3>Deviations</h3><p>None.</p>
+      <h3>Tradeoffs</h3><p>A composite task index supports exact candidate/draft lookup without adding a second store.</p>
+      <h3>Open Questions</h3><p>The first verifier rejected implicit localhost trust and generic candidate/draft eligibility. The authority-hardening section below records the authenticated replacement. Production activation remains out of scope.</p>
+      <h3>Files Changed</h3><p><code>convex/schema.ts</code>, <code>convex/tasks.ts</code>, <code>app/api/tasks/outreach-decision/route.ts</code>, outreach decision domain/route/display helpers and tests, task admission/upsert/adapters/types, <code>InspectionDrawer.tsx</code>, <code>OutreachDecisionControls.tsx</code>, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3>
+      <ul>
+        <li>RED: missing domain and route modules, archived-card eligibility, generic decision-field forgery, decided-task deletion, keyed-upsert identity mutation, and adapter field-loss tests each failed before its implementation.</li>
+        <li>GREEN: <code>bun test</code> passed 162 tests across 31 files with 0 failures and 382 assertions.</li>
+        <li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li>
+        <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 40/40 pages generated and <code>/api/tasks/outreach-decision</code> listed as a dynamic route.</li>
+        <li>The clean worktree reused the existing local dependency tree through a temporary symlink because frozen install would change the stale lockfile; the symlink was removed after verification.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Outreach decision authority hardening — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> superseded by immutable snapshot hardening below</p>
+        <p><strong>Task:</strong> prevent unauthenticated callers and generic tasks from impersonating JT outreach authority.</p>
+      </div>
+      <h3>Design Decisions</h3>
+      <ul>
+        <li>Decision POST trusts only Tailscale Serve's <code>Tailscale-User-Login</code> header matching configured JT login; absent config returns 503 and absent/mismatched identity returns 401.</li>
+        <li>Both public Convex outreach mutations require the protected server capability and validate it against Convex environment state before any database access.</li>
+        <li>A dedicated atomic outreach-review route stamps an eligibility marker. Candidate/draft fields alone never render controls or authorize a decision.</li>
+        <li>Capabilities are accepted only from server configuration or the dedicated admission header; request-body capability fields are rejected, and no capability is stored, returned, or logged.</li>
+      </ul>
+      <h3>Tradeoffs</h3><p>The human decision POST works only through the configured Tailscale Serve URL, not direct localhost browser access. Automated review admission requires a protected capability configured in jt-ops, Next, and Convex at activation.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Environment configuration and deployment remain separate approval boundaries.</p>
+      <h3>Files Changed</h3><p>Outreach auth/review domain and route helpers with hostile tests, dedicated outreach-review API route, Convex schema/mutations, decision route and display controls, adapters/types/admission guards, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3>
+      <ul>
+        <li>RED: 7 failures plus one missing-module error reproduced unauthenticated decision stamping and generic marker eligibility. Dedicated admission tests then failed because its domain and route modules did not exist. Convex contract tests failed because mutations lacked capability validation and the schema lacked the server marker. Adapter integration failed while the marker was deliberately absent.</li>
+        <li>GREEN focused authority suite: 45 tests passed with 0 failures and 115 assertions.</li>
+        <li>Full suite: 177 tests passed across 35 files with 0 failures and 424 assertions.</li>
+        <li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li>
+        <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated, including both outreach routes.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Immutable outreach review snapshot — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> superseded by capability split and clean-ancestry repair below</p>
+        <p><strong>Task:</strong> freeze the complete review context JT saw, not only its candidate/draft identity.</p>
+        <ol>
+          <li>One shared guard rejects every generic single-task mutation of a server-admitted review.</li>
+          <li>Auto-archive and client backfill skip review snapshots rather than aborting their whole batch.</li>
+          <li>An archived review can never authorize pre-send lookup.</li>
+        </ol>
+      </div>
+      <h3>Design Decisions</h3><p>The existing task remains the sole review and approval record. Adding a second immutable record would duplicate authority. The server-owned marker now freezes title, description/evidence, status, identity/hash, assignee, priority, and every other task field through a single all-or-nothing generic mutation guard. Only the capability-protected decision mutation may append the first immutable decision.</p>
+      <h3>Deviations</h3><p>None.</p>
+      <h3>Tradeoffs</h3><p>Review cards cannot use ordinary status, edit, delete, pipeline-stage, archive, or backfill controls. Any changed draft or decision context requires a new versioned review task, preserving exactly what JT saw.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Deployment and environment configuration remain out of scope.</p>
+      <h3>Files Changed</h3><p><code>convex/tasks.ts</code>, outreach decision/upsert helpers and hostile tests, Convex wiring contract tests, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3>
+      <ul>
+        <li>RED: focused suite produced five failures plus one missing-export error. Generic content upsert was allowed, mutation paths lacked the shared guard/skip behavior, and archived approved cards authorized.</li>
+        <li>GREEN focused suite: 24 tests passed with 0 failures and 40 assertions.</li>
+        <li>Full suite: 183 tests passed across 35 files with 0 failures and 432 assertions.</li>
+        <li><code>bunx tsc --noEmit --incremental false</code>: exit 0 after the build-generated type tree stabilized.</li>
+        <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Split outreach capabilities and clean ancestry — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> superseded by capability-collision hardening below</p>
+        <p><strong>Task:</strong> prevent automated admission authority from authorizing a JT decision and remove unrelated branch ancestry.</p>
+        <ol>
+          <li>Review admission and JT decisions use distinct environment-backed capabilities.</li>
+          <li>Auto-archive and backfill skip both current review markers and legacy decision records.</li>
+          <li>The final branch is rebuilt from current <code>origin/master</code> using only scoped outreach commits.</li>
+        </ol>
+      </div>
+      <h3>Design Decisions</h3><p><code>OUTREACH_REVIEW_CAPABILITY</code> is accepted only by the dedicated admission path. <code>OUTREACH_DECISION_CAPABILITY</code> remains exclusive to the Tailscale-authenticated JT decision route. The two Convex mutations compare against distinct protected environment values.</p>
+      <h3>Deviations</h3><p>None.</p>
+      <h3>Tradeoffs</h3><p>Activation requires two independently provisioned secrets rather than one. This is intentional least privilege: an automated packet assembler can create a review card but can never approve it.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Environment configuration and deployment remain out of scope.</p>
+      <h3>Files Changed</h3><p>Dedicated review route environment binding, Convex capability and bulk-mutation guards, hostile contract tests, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3><ul><li>RED: focused contract suite produced three failures for shared capability use and legacy-decision auto-archive/backfill.</li><li>GREEN focused authority suite: 20 tests passed with 0 failures and 62 assertions.</li><li>Clean branch from <code>origin/master@f28738e</code>: 183 tests passed with 0 failures and 440 assertions; TypeScript passed; the production build generated 41/41 pages.</li><li>The branch contains four scoped outreach commits plus this audit-record commit. <code>git diff --name-only origin/master...HEAD</code> contains only <code>mission-control/**</code>; no health or workout paths are present.</li></ul>
+    </section>
+    <section>
+      <h2>Capability-collision hardening — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> independently verified on refreshed branch head <code>1427ef5042e35b668c11293f23a3ede882172dbf</code></p>
+        <p><strong>Task:</strong> ensure equal configured review and decision capabilities authorize neither privilege.</p>
+        <ol><li>All four protected HTTP/Convex boundaries validate the complete capability pair.</li><li>Missing, blank, or equal configured values fail with a generic 503 before caller authorization.</li><li>Secret comparisons are constant-time and values are never stored, returned, or logged.</li></ol>
+      </div>
+      <h3>Design Decisions</h3><p>One platform-neutral validator checks both configured values, rejects invalid pairs, and then compares the caller capability. It returns the already-validated configured value for server-to-Convex forwarding, avoiding duplicate checks and unsafe TypeScript assertions.</p>
+      <h3>Deviations</h3><p>None.</p>
+      <h3>Tradeoffs</h3><p>Both capability values must be configured in both Next and Convex even though each boundary uses only one privilege. This is required to prove the privileges remain distinct at each enforcement point.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Provisioning values and deployment remain separate approval boundaries.</p>
+      <h3>Files Changed</h3><p>Outreach auth helper/tests, both HTTP route helpers/tests, both route environment bindings, Convex mutation bindings/contract tests, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3><ul><li>RED: focused suite produced four failures plus one missing-export error: both HTTP routes accepted equal values, the direct capability validator did not exist, and Convex mutations did not validate peer configuration.</li><li>GREEN focused suite: 21 tests passed with 0 failures and 78 assertions.</li><li>Full clean-branch suite: 184 tests passed with 0 failures and 456 assertions; TypeScript passed; production build generated 41/41 pages.</li></ul>
+    </section>
+    <section>
+      <h2>Outreach error and capability hardening — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> builder verification complete; fresh non-builder review required</p>
+        <p><strong>Task:</strong> prevent dependency failures from disclosing protected values and replace the handwritten JavaScript secret comparator.</p>
+        <ol><li>Unknown Convex/dependency failures return a generic 500 with no downstream message.</li><li>Known conflicts return fixed public text rather than echoing the dependency exception.</li><li>Capability equality uses Web Crypto HMAC-SHA-256 verification at Next and Convex boundaries.</li></ol>
+      </div>
+      <h3>Design Decisions</h3><p>Local validation and authentication errors are drawn from explicit safe-message maps. Dependency calls have their own catch boundary: only exact known conflict types affect the status, and even those return fixed public wording. HMAC verification performs the sensitive fixed-length comparison inside the platform cryptographic primitive.</p>
+      <h3>Deviations</h3><p>Used platform-neutral Web Crypto HMAC verification instead of Node-only <code>timingSafeEqual</code> because the same helper runs inside Convex mutations.</p>
+      <h3>Tradeoffs</h3><p>The capability validator is asynchronous. All four enforcement points await it before database access. Unknown client syntax errors also fail generically rather than exposing parser details.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Provisioning values and deployment remain separate approval boundaries.</p>
+      <h3>Files Changed</h3><p>Outreach auth and route helpers/tests, Convex awaits, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3><ul><li>RED: focused suite produced three failures plus one missing-export error: both routes echoed capability-bearing dependency messages and no cryptographic comparator existed.</li><li>GREEN focused suite: 26 tests passed with 0 failures and 99 assertions.</li><li>Full suite: 189 tests passed with 0 failures and 477 assertions.</li><li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li><li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated.</li></ul>
+    </section>
+    <section>
+      <h2>Immutable outreach review owner snapshot and cycle contract — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> independently verified on refreshed branch head <code>1427ef5042e35b668c11293f23a3ede882172dbf</code></p>
+        <p><strong>Task:</strong> make the existing Mission Control task the single immutable owner record for exactly what JT reviews and decides.</p>
+        <ol><li>Admission stores the complete typed review snapshot and derives its display and canonical versioned hash server-side.</li><li>Mission Control owns the atomic two-cycle budget per candidate/cohort; exact retries are idempotent.</li><li>The decision and prepare-send lookup bind candidate, draft, and snapshot hashes and revalidate the complete persisted authority set.</li></ol>
+      </div>
+      <h3>Design Decisions</h3><p>The task table remains the only store. The embedded snapshot includes subject, body, verbatim verifier report, actor IDs, and all five Git bindings. Generic lifecycle paths cannot create or mutate it. Review admission and decision remain separate least-privilege capabilities; only the trusted JT decision route can append the first immutable decision.</p>
+      <h3>Deviations</h3><p>None from the independently approved snapshot contract.</p>
+      <h3>Tradeoffs</h3><p>Any draft or decision-context edit consumes a new review cycle. This intentionally prevents mutable cards and limits automated review to two distinct snapshots before JT rules.</p>
+      <h3>Open Questions</h3><p>None blocking local verification. Deployment and environment configuration remain separate approval boundaries.</p>
+      <h3>Files Changed</h3><p>Outreach review/decision domain helpers, dedicated HTTP and Convex contracts, task schema and adapters, immutable review UI, hostile/unit/integration tests, project contract, cross-repo API documentation, plan, and implementation records.</p>
+      <h3>Verification</h3><ul><li>RED: missing typed snapshot APIs/display/cycle ownership produced missing-export errors and focused failures; the later corruption probe showed a rehashed persisted snapshot could still be decided until the handler revalidated canonical authority.</li><li>GREEN focused tests cover canonical hashing, size/path/identity rejection, exact retries, two-cycle limit, optimistic concurrent duplicate/distinct/third attempts, all four capability boundaries before database access, generic immutability, UI provenance, and corrupt-snapshot rejection.</li><li>Full suite after merging current <code>origin/master</code>: 196 tests passed with 0 failures and 592 assertions.</li><li><code>bunx tsc --noEmit</code>: exit 0.</li><li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated, including both outreach routes.</li><li>Fresh non-builder release review: <code>VERDICT: CONFIRM</code>; all ten snapshot, cycle, decision, capability, authentication, immutability, error, response-shape, cross-repo serialization, and no-deployment requirements confirmed.</li></ul>
+    </section>
     </main>
   </body>
 </html>
