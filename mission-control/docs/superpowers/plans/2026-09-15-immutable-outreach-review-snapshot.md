@@ -17,5 +17,5 @@
 
 - [x] Prove review admission and JT decision use distinct least-privilege capabilities.
 - [x] Prove scheduled/bulk mutations skip both server review markers and legacy decisions.
-- [ ] Rebuild from current `origin/master` by cherry-picking only scoped outreach commits.
-- [ ] Re-run the complete verification matrix and audit the clean diff for unrelated ancestry.
+- [x] Rebuild from current `origin/master` by cherry-picking only scoped outreach commits.
+- [x] Re-run the complete verification matrix and audit the clean diff for unrelated ancestry.

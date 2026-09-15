@@ -359,7 +359,7 @@
     <section>
       <h2>Split outreach capabilities and clean ancestry — 2026-09-15</h2>
       <div class="summary">
-        <p><strong>Status:</strong> focused implementation green; clean-branch replay and full verification pending</p>
+        <p><strong>Status:</strong> builder verification complete on clean ancestry; fresh non-builder review required</p>
         <p><strong>Task:</strong> prevent automated admission authority from authorizing a JT decision and remove unrelated branch ancestry.</p>
         <ol>
           <li>Review admission and JT decisions use distinct environment-backed capabilities.</li>
@@ -372,7 +372,7 @@
       <h3>Tradeoffs</h3><p>Activation requires two independently provisioned secrets rather than one. This is intentional least privilege: an automated packet assembler can create a review card but can never approve it.</p>
       <h3>Open Questions</h3><p>None blocking implementation. Environment configuration and deployment remain out of scope.</p>
       <h3>Files Changed</h3><p>Dedicated review route environment binding, Convex capability and bulk-mutation guards, hostile contract tests, project contract, plan, and implementation records.</p>
-      <h3>Verification</h3><ul><li>RED: focused contract suite produced three failures for shared capability use and legacy-decision auto-archive/backfill.</li><li>GREEN focused authority suite: 20 tests passed with 0 failures and 62 assertions.</li><li>Clean-branch full verification is pending.</li></ul>
+      <h3>Verification</h3><ul><li>RED: focused contract suite produced three failures for shared capability use and legacy-decision auto-archive/backfill.</li><li>GREEN focused authority suite: 20 tests passed with 0 failures and 62 assertions.</li><li>Clean branch from <code>origin/master@f28738e</code>: 183 tests passed with 0 failures and 440 assertions; TypeScript passed; the production build generated 41/41 pages.</li><li>The branch contains four scoped outreach commits plus this audit-record commit. <code>git diff --name-only origin/master...HEAD</code> contains only <code>mission-control/**</code>; no health or workout paths are present.</li></ul>
     </section>
     </main>
   </body>

@@ -136,6 +136,6 @@
 - [x] Reproduce shared-capability privilege escalation and legacy-decision bulk mutation.
 - [x] Split review-admission and JT-decision capabilities through Next and Convex.
 - [x] Exclude both review markers and legacy decisions from auto-archive/backfill.
-- [ ] Rebuild the outreach work from current `origin/master` without unrelated ancestry.
-- [ ] Run clean-branch tests, TypeScript, build, security scan, and diff audit.
-- [ ] Commit locally without push, deployment, or environment changes.
+- [x] Rebuild the outreach work from current `origin/master` without unrelated ancestry.
+- [x] Run clean-branch tests, TypeScript, build, security scan, and diff audit.
+- [x] Commit locally without push, deployment, or environment changes.
