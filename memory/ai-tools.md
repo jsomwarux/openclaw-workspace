@@ -1247,3 +1247,11 @@ Primary source: OpenAI Responses API beta reference https://developers.openai.co
 **JT relevance:** add a managed-session control row to any future Agents API blueprint: session ID, agent/config version, execution environment, represented owner, current status, last-active timestamp, required-action owner/deadline, error, usage snapshot, final artifact/outcome, and reconciliation timestamp. Resume only from the recorded required action, and close the business workflow only after the session reaches an accepted terminal outcome and its artifact/evidence is verified. This is a design/proof rule only; no model, API call, credential, provider, workflow, Mission Control task, or recurring schedule was changed.
 
 Primary source: OpenAI API Reference, Create an agent session https://developers.openai.com/api/reference/python/resources/beta/subresources/agents/subresources/sessions/methods/create
+
+## Sep 14, 2026 - Heartbeat AI Tool Monitoring
+
+**OpenAI model metadata now exposes lifecycle state that production workflows should treat as a deployment gate.** The official Retrieve Model reference includes an optional `shutdown_date`, defined as the date a model will shut down when one has been announced. Model availability therefore should not be inferred from a successful request alone.
+
+**JT relevance:** add a model-lifecycle row to API-backed workflow evidence: exact model ID, retrieval timestamp, owner, `shutdown_date`, replacement decision owner, migration deadline, representative eval status, and rollback target. Check the exact pinned model before deployment and on a recurring operational review; if a non-null shutdown date falls within the migration window, route an explicit decision instead of silently switching models. This is a design/proof rule only. No API request with credentials, model migration, provider change, workflow edit, Mission Control task, or recurring schedule change was made.
+
+Primary source: OpenAI API Reference, Retrieve model https://developers.openai.com/api/reference/cli/resources/models/methods/retrieve
