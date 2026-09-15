@@ -280,6 +280,32 @@
         <h3>Verification</h3>
         <p>RED: both new test modules failed to import before implementation. GREEN: seven focused assertions passed. Full mirror verification: 135 tests passed across 27 files; TypeScript passed; the isolated <code>.next-build</code> production build generated all 38 static pages. Exact output is in <code>reports/create-only-review.md</code>.</p>
       </section>
+    <section>
+      <h2>Outreach decision contract — 2026-09-14</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> ready for independent verification</p>
+        <p><strong>Task:</strong> add one immutable JT approve/reject decision to an existing outreach review task.</p>
+        <ol>
+          <li>The existing task is the only approval record; no new table or ledger.</li>
+          <li>The decision binds candidate ID and exact draft SHA-256.</li>
+          <li>Only a specialized server path may write or read the decision.</li>
+        </ol>
+      </div>
+      <h3>Design Decisions</h3>
+      <p>The decision is an optional nested field on the existing task. The specialized mutation supplies <code>decidedBy=jt</code> and server time. Generic create/update normalization does not accept decision authority fields, and generic upsert/update/delete paths cannot change or remove a decided task's candidate/draft binding.</p>
+      <h3>Deviations</h3><p>None.</p>
+      <h3>Tradeoffs</h3><p>A composite task index supports exact candidate/draft lookup without adding a second store.</p>
+      <h3>Open Questions</h3><p>None blocking. Mission Control retains its existing localhost-only security boundary; this branch adds no authentication or production activation.</p>
+      <h3>Files Changed</h3><p><code>convex/schema.ts</code>, <code>convex/tasks.ts</code>, <code>app/api/tasks/outreach-decision/route.ts</code>, outreach decision domain/route/display helpers and tests, task admission/upsert/adapters/types, <code>InspectionDrawer.tsx</code>, <code>OutreachDecisionControls.tsx</code>, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3>
+      <ul>
+        <li>RED: missing domain and route modules, archived-card eligibility, generic decision-field forgery, decided-task deletion, keyed-upsert identity mutation, and adapter field-loss tests each failed before its implementation.</li>
+        <li>GREEN: <code>bun test</code> passed 162 tests across 31 files with 0 failures and 382 assertions.</li>
+        <li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li>
+        <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 40/40 pages generated and <code>/api/tasks/outreach-decision</code> listed as a dynamic route.</li>
+        <li>The clean worktree reused the existing local dependency tree through a temporary symlink because frozen install would change the stale lockfile; the symlink was removed after verification.</li>
+      </ul>
+    </section>
     </main>
   </body>
 </html>

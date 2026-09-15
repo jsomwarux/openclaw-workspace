@@ -25,6 +25,16 @@ export const workstream = v.union(
   v.literal("other"),
 );
 
+export const outreachDecisionValue = v.union(v.literal("approve"), v.literal("reject"));
+
+export const outreachDecision = v.object({
+  candidateId: v.string(),
+  draftSha256: v.string(),
+  decision: outreachDecisionValue,
+  decidedBy: v.literal("jt"),
+  decidedAt: v.number(),
+});
+
 // Collected cash is stored per-payment. pipeline.jsonl zeroes items once paid, so
 // it can never be the system of record for collected cash — this table is.
 export const paymentKind = v.union(
@@ -80,6 +90,8 @@ export default defineSchema({
     verifierConfirmed: v.optional(v.boolean()),
     verifiedAt: v.optional(v.string()),
     candidateId: v.optional(v.string()),
+    draftSha256: v.optional(v.string()),
+    outreachDecision: v.optional(outreachDecision),
     sourceHash: v.optional(v.string()),
     evidenceScore: v.optional(v.number()),
     distributionScore: v.optional(v.number()),
@@ -93,6 +105,7 @@ export default defineSchema({
     .index("by_project", ["project"])
     .index("by_slug", ["slug"])
     .index("by_dedupeKey", ["dedupeKey"])
+    .index("by_outreach_identity", ["candidateId", "draftSha256"])
     .index("by_client", ["clientId"]),
 
   clients: defineTable({

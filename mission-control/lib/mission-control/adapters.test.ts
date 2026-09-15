@@ -4,6 +4,26 @@ import { agentToSignal, cronToSignal, extractEvidence, proofToSignal, taskToSign
 const now = Date.now();
 
 describe("taskToSignal", () => {
+  test("carries the exact outreach draft identity and immutable JT decision", () => {
+    const draftSha256 = "a".repeat(64);
+    const outreachDecision = {
+      candidateId: "candidate-1",
+      draftSha256,
+      decision: "approve" as const,
+      decidedBy: "jt" as const,
+      decidedAt: 123,
+    };
+    expect(taskToSignal({
+      _id: "task-1",
+      title: "Review outreach",
+      status: "todo",
+      assignee: "jt",
+      priority: "high",
+      candidateId: "candidate-1",
+      draftSha256,
+      outreachDecision,
+    })).toMatchObject({ candidateId: "candidate-1", draftSha256, outreachDecision });
+  });
   test("preserves a JT-owned todo as todo instead of claiming work has started", () => {
     const signal = taskToSignal({
       _id: "task-1",

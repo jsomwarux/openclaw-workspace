@@ -1,3 +1,5 @@
+import type { OutreachDecision } from "./outreach-decision";
+
 export type SignalSource = "task" | "cron" | "agent" | "proof";
 export type SignalOwner = "jt" | "eve" | "both";
 export type SignalStatus =
@@ -84,6 +86,8 @@ export type Signal = {
   verifierConfirmed?: boolean;
   verifiedAt?: string;
   candidateId?: string;
+  draftSha256?: string;
+  outreachDecision?: OutreachDecision;
   sourceHash?: string;
   evidenceScore?: number;
   distributionScore?: number;

@@ -108,3 +108,10 @@
 - [x] Reuse the local Mission Control dependency tree via an ignored clone-local symlink; both checked-in lockfiles are stale and clean installs would create unrelated churn.
 - [x] Rerun focused tests, the full Mission Control test suite, TypeScript, and the isolated build with the standard local Convex address required for page-data collection; review the final diff.
 - [x] Record verifier-ready evidence and commit the bounded patch locally.
+## Plan — immutable outreach decision contract — 2026-09-14
+- [x] Add failing domain tests for exact candidate/draft binding and immutable JT decision.
+- [x] Add the specialized Convex mutation/query without exposing decision fields to generic writes.
+- [x] Add failing API contract tests and a dedicated read/write endpoint.
+- [x] Add minimal approve/reject controls to eligible review cards.
+- [x] Run full tests, TypeScript, production build, and diff checks.
+- [x] Commit explicit paths only; do not push or deploy.

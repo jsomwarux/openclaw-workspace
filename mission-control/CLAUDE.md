@@ -65,6 +65,8 @@ curl http://localhost:3000/api/tasks
 
 Task descriptions with links should put each URL on its own line under a short label. The task board renders URLs as clickable links and uses `overflow-wrap: anywhere`; do not rely on one long sentence of inline Drive links.
 
+Outreach review decisions use the dedicated `/api/tasks/outreach-decision` contract, never generic task writes. `POST` binds the first immutable JT `approve`/`reject` decision to `taskId + candidateId + draftSha256`; a reversal or changed draft requires a new versioned task. `GET ?candidateId=<id>&draftSha256=<64-lowercase-hex>` is the read-only exact lookup for pre-send checks and fails closed as `absent` or `rejected`. Generic task POST/PATCH cannot write the decision authority field.
+
 `npm run build` must not write to the live `.next` directory while the LaunchAgent is running `next dev`; it uses `NEXT_DIST_DIR=.next-build` for isolated verification builds. If a manual build ever causes `Cannot find module './*.js'` from `.next/server/webpack-runtime.js`, recover with `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next`.
 
 After Slice 1, `/work` is the primary task lane. `/tasks` must redirect to `/work`; the old Kanban board lives at `/legacy/tasks`. Do not include legacy routes like `/tasks` as active aliases for primary lanes, or mobile will show legacy UI while highlighting the redesigned lane.

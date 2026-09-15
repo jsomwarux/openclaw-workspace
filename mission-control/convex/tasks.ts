@@ -2,9 +2,10 @@ import { v } from "convex/values";
 import { mutation, query, internalMutation } from "./_generated/server";
 import type { Doc } from "./_generated/dataModel";
 import type { MutationCtx } from "./_generated/server";
-import { taskStatus, waitingOn, workstream } from "./schema";
+import { outreachDecisionValue, taskStatus, waitingOn, workstream } from "./schema";
 import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 import { resolveTaskCreateOnly } from "../lib/mission-control/task-create-only";
+import { assertOutreachIdentityMutation, assertOutreachTaskRemoval, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
 const NIGHTLY_SOURCE = "nightly-validation-controller";
@@ -33,6 +34,7 @@ const operatingSystemArgs = {
   verifierConfirmed: v.optional(v.boolean()),
   verifiedAt: v.optional(v.string()),
   candidateId: v.optional(v.string()),
+  draftSha256: v.optional(v.string()),
   sourceHash: v.optional(v.string()),
   evidenceScore: v.optional(v.number()),
   distributionScore: v.optional(v.number()),
@@ -272,6 +274,7 @@ export const update = mutation({
     const { id, auditSource: source, auditEvidence, ...fields } = args;
     const task = await ctx.db.get(id);
     if (!task) throw new Error(`Task not found: ${id}`);
+    assertOutreachIdentityMutation(task, fields);
     assertNightlyAdmission({ ...task, ...fields });
     await auditChanges(ctx, task, fields, source ?? "jt", auditEvidence ?? "manual edit");
     await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
@@ -281,7 +284,38 @@ export const update = mutation({
 export const remove = mutation({
   args: { id: v.id("tasks") },
   handler: async (ctx, args) => {
+    const task = await ctx.db.get(args.id);
+    assertOutreachTaskRemoval(task);
     await ctx.db.delete(args.id);
+  },
+});
+
+export const decideOutreach = mutation({
+  args: {
+    taskId: v.id("tasks"),
+    candidateId: v.string(),
+    draftSha256: v.string(),
+    decision: outreachDecisionValue,
+  },
+  handler: async (ctx, args) => {
+    const task = await ctx.db.get(args.taskId);
+    if (!task) throw new Error(`Task not found: ${args.taskId}`);
+    const resolved = resolveOutreachDecision(task, args, Date.now());
+    if (resolved.operation === "existing") return { decision: resolved.decision, created: false };
+    await ctx.db.patch(args.taskId, { outreachDecision: resolved.decision, updatedAt: Date.now() });
+    return { decision: resolved.decision, created: true };
+  },
+});
+
+export const findOutreachDecision = query({
+  args: { candidateId: v.string(), draftSha256: v.string() },
+  handler: async (ctx, args) => {
+    const matches = await ctx.db
+      .query("tasks")
+      .withIndex("by_outreach_identity", (q) => q.eq("candidateId", args.candidateId).eq("draftSha256", args.draftSha256))
+      .collect();
+    if (matches.length !== 1) return { authorized: false, state: "absent" as const };
+    return resolveOutreachLookup(matches[0], args.candidateId, args.draftSha256);
   },
 });
 
