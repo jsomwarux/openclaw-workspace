@@ -10,7 +10,8 @@ const TASK_FIELDS = [
   "pipelineStage", "dueDate", "dueDateSource", "dollars", "stageProbability", "effortMinutes",
   "lane", "waitingOn", "snoozedUntil", "proofRequired", "riskContainment", "cashDirect", "blocks",
   "blocksAgent", "reasonCodes", "rankScore", "rankUpdatedAt",
-  "firstAction", "whyItMatters", "doneState", "evidenceLinks", "sourceSystem", "reviewAt", "dedupeKey",
+  "firstAction", "whyItMatters", "doneState", "exactSteps", "pasteReadyPrompt", "pasteDestination",
+  "evidenceLinks", "sourceSystem", "reviewAt", "dedupeKey",
   "workstream", "hypothesis", "nextTest", "killDate", "promotionScore", "revivalTrigger",
   "verdict", "verifierConfirmed", "verifiedAt", "candidateId", "draftSha256", "sourceHash", "evidenceScore",
   "distributionScore", "fatalConstraint",
@@ -35,6 +36,20 @@ export function normalizeTaskInput(
 }
 
 export function validateTaskAdmission(input: Record<string, unknown>, now = new Date()): void {
+  if (
+    input.exactSteps !== undefined
+    && (!Array.isArray(input.exactSteps) || !input.exactSteps.every((step) => typeof step === "string"))
+  ) {
+    throw new Error("exactSteps must be an array of strings");
+  }
+  for (const field of ["pasteReadyPrompt", "pasteDestination"] as const) {
+    if (input[field] !== undefined && typeof input[field] !== "string") {
+      throw new Error(`${field} must be a string`);
+    }
+  }
+  if (input.feedback !== undefined) {
+    throw new Error("feedback history can only change through append-feedback");
+  }
   if (input.outreachReview !== undefined) {
     throw new Error("outreach review eligibility requires the specialized endpoint");
   }

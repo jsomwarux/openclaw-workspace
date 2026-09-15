@@ -65,6 +65,13 @@ export const outreachDecision = v.object({
   decidedAt: v.number(),
 });
 
+export const taskFeedbackEntry = v.object({
+  id: v.string(),
+  body: v.string(),
+  author: v.union(v.literal("jt"), v.literal("eve")),
+  createdAt: v.number(),
+});
+
 // Collected cash is stored per-payment. pipeline.jsonl zeroes items once paid, so
 // it can never be the system of record for collected cash — this table is.
 export const paymentKind = v.union(
@@ -106,6 +113,10 @@ export default defineSchema({
     firstAction: v.optional(v.string()),
     whyItMatters: v.optional(v.string()),
     doneState: v.optional(v.string()),
+    exactSteps: v.optional(v.array(v.string())),
+    pasteReadyPrompt: v.optional(v.string()),
+    pasteDestination: v.optional(v.string()),
+    feedback: v.optional(v.array(taskFeedbackEntry)),
     evidenceLinks: v.optional(v.array(v.string())),
     sourceSystem: v.optional(v.string()),
     reviewAt: v.optional(v.number()),

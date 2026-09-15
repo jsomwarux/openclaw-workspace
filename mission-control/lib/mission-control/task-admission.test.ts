@@ -35,6 +35,9 @@ describe("task admission contract", () => {
       nextTest: "Run three interviews",
       killDate: 1_810_000_000_000,
       revivalTrigger: "A buyer requests it",
+      exactSteps: ["Open the profile", "Replace the headline"],
+      pasteReadyPrompt: "Rewrite this proof point.",
+      pasteDestination: "LinkedIn About editor",
     })).toMatchObject({
       ...admitted,
       reviewAt: 1_800_000_000_000,
@@ -42,7 +45,26 @@ describe("task admission contract", () => {
       nextTest: "Run three interviews",
       killDate: 1_810_000_000_000,
       revivalTrigger: "A buyer requests it",
+      exactSteps: ["Open the profile", "Replace the headline"],
+      pasteReadyPrompt: "Rewrite this proof point.",
+      pasteDestination: "LinkedIn About editor",
     });
+  });
+
+  test("rejects direct feedback replacement so history can only append", () => {
+    expect(errorMessage(() => validateTaskAdmission({ title: "Bypass", feedback: [] }))).toContain("append-feedback");
+  });
+
+  test("rejects malformed universal card fields before normalization", () => {
+    const cases: Array<[string, Record<string, unknown>]> = [
+      ["exactSteps", { exactSteps: "Open the profile" }],
+      ["exactSteps", { exactSteps: ["Open the profile", 2] }],
+      ["pasteReadyPrompt", { pasteReadyPrompt: ["Rewrite this"] }],
+      ["pasteDestination", { pasteDestination: { surface: "LinkedIn" } }],
+    ];
+    for (const [field, input] of cases) {
+      expect(errorMessage(() => validateTaskAdmission(input)) ?? "").toContain(field);
+    }
   });
 
   test("preserves Today scoring metadata through API normalization", () => {

@@ -36,6 +36,13 @@ export type WaitingOn = {
   nudgeAfterDays: number;
 };
 
+export type TaskFeedbackEntry = {
+  id: string;
+  body: string;
+  author: "jt" | "eve";
+  createdAt: number;
+};
+
 export type Signal = {
   id: string;
   source: SignalSource;
@@ -73,6 +80,10 @@ export type Signal = {
   firstAction?: string;
   whyItMatters?: string;
   doneState?: string;
+  exactSteps?: string[];
+  pasteReadyPrompt?: string;
+  pasteDestination?: string;
+  feedback?: TaskFeedbackEntry[];
   evidenceLinks?: string[];
   sourceSystem?: string;
   reviewAt?: number;

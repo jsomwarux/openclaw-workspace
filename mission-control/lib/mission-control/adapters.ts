@@ -41,6 +41,10 @@ type RawTask = {
   firstAction?: string;
   whyItMatters?: string;
   doneState?: string;
+  exactSteps?: string[];
+  pasteReadyPrompt?: string;
+  pasteDestination?: string;
+  feedback?: import("./types").TaskFeedbackEntry[];
   evidenceLinks?: string[];
   sourceSystem?: string;
   reviewAt?: number;
@@ -191,6 +195,10 @@ export function taskToSignal(task: RawTask): Signal {
     firstAction: task.firstAction,
     whyItMatters: task.whyItMatters,
     doneState: task.doneState,
+    exactSteps: task.exactSteps,
+    pasteReadyPrompt: task.pasteReadyPrompt,
+    pasteDestination: task.pasteDestination,
+    feedback: task.feedback,
     evidenceLinks: task.evidenceLinks,
     sourceSystem: task.sourceSystem,
     reviewAt: task.reviewAt,

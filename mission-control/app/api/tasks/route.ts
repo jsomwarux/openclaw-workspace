@@ -14,8 +14,24 @@ import { Id } from "@/convex/_generated/dataModel";
 import type { FunctionArgs } from "convex/server";
 import { normalizeTaskInput, validateTaskAdmission } from "@/lib/mission-control/task-admission";
 import { buildTaskWriteResponse, resolveTaskWriteMode } from "@/lib/mission-control/task-write-mode";
+import { parseTaskFeedbackAppend } from "@/lib/mission-control/task-feedback";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+
+async function readJsonObject(req: Request): Promise<
+  | { ok: true; body: Record<string, unknown> }
+  | { ok: false; response: Response }
+> {
+  try {
+    const body: unknown = await req.json();
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return { ok: false, response: NextResponse.json({ error: "JSON object required" }, { status: 400 }) };
+    }
+    return { ok: true, body: body as Record<string, unknown> };
+  } catch {
+    return { ok: false, response: NextResponse.json({ error: "invalid JSON body" }, { status: 400 }) };
+  }
+}
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -30,7 +46,9 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  const parsed = await readJsonObject(req);
+  if (!parsed.ok) return parsed.response;
+  const body = parsed.body;
   const rawInput = { status: "todo", assignee: "eve", priority: "medium", ...body };
   try {
     validateTaskAdmission(rawInput);
@@ -67,7 +85,30 @@ export async function POST(req: Request) {
 }
 
 export async function PATCH(req: Request) {
-  const body = await req.json();
+  const parsed = await readJsonObject(req);
+  if (!parsed.ok) return parsed.response;
+  const body = parsed.body;
+  if (body.action === "append-feedback") {
+    let input;
+    try {
+      input = parseTaskFeedbackAppend(body);
+    } catch (error) {
+      return NextResponse.json(
+        { error: error instanceof Error ? error.message : "invalid feedback" },
+        { status: 400 },
+      );
+    }
+    try {
+      const feedback = await convex.mutation(api.tasks.appendFeedback, {
+        id: input.id as Id<"tasks">,
+        body: input.body,
+        author: input.author,
+      });
+      return NextResponse.json({ success: true, feedback });
+    } catch {
+      return NextResponse.json({ error: "feedback append failed" }, { status: 500 });
+    }
+  }
   const { id, ...rawFields } = body;
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
   try {

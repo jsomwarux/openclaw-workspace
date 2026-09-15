@@ -44,6 +44,11 @@ describe("inspection display helpers", () => {
   test("returns only populated admission, bet, and trigger details", () => {
     expect(operatingSystemDetails(signal({
       firstAction: "Open the proof",
+      whyItMatters: "A buyer can inspect it now",
+      exactSteps: ["Open the profile", "Replace the headline"],
+      pasteReadyPrompt: "Rewrite this proof point.",
+      pasteDestination: "LinkedIn About editor",
+      doneState: "Logged-out profile matches the card",
       workstream: "compounding-bet",
       hypothesis: "Demand exists",
       promotionScore: 34,
@@ -55,6 +60,11 @@ describe("inspection display helpers", () => {
     }))).toEqual([
       ["Workstream", "Compounding bet"],
       ["First action", "Open the proof"],
+      ["Why it matters", "A buyer can inspect it now"],
+      ["Exact steps", "1. Open the profile\n2. Replace the headline"],
+      ["Paste-ready prompt", "Rewrite this proof point."],
+      ["Paste/use location", "LinkedIn About editor"],
+      ["Done condition", "Logged-out profile matches the card"],
       ["Hypothesis", "Demand exists"],
       ["Promotion score", "34 / 40"],
       ["Verifier", "Confirmed promote"],

@@ -1,6 +1,7 @@
 "use client";
 
-import { Archive, Clock3, UserPlus, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Archive, Check, Clock3, Copy, UserPlus, X } from "lucide-react";
 import { useTaskAudit } from "@/lib/mission-control/hooks";
 import { formatAuditField, formatAuditValue, needsEvidenceAttention, operatingSystemDetails } from "@/lib/mission-control/inspection-display";
 import { reasonChips, reasonToneClassName } from "@/lib/mission-control/reason-codes";
@@ -44,8 +45,19 @@ export function InspectionDrawer({
   onNotNow,
   onHandToEve,
 }: InspectionDrawerProps) {
+  const [feedbackDraft, setFeedbackDraft] = useState("");
+  const [feedbackEntries, setFeedbackEntries] = useState(signal?.feedback ?? []);
+  const [feedbackBusy, setFeedbackBusy] = useState(false);
+  const [feedbackError, setFeedbackError] = useState("");
+  const [promptCopied, setPromptCopied] = useState(false);
   const auditTaskId = signal?.source === "task" ? signal.id : null;
   const { entries: audit, loading: auditLoading } = useTaskAudit(auditTaskId);
+
+  useEffect(() => {
+    setFeedbackEntries(signal?.feedback ?? []);
+    setFeedbackDraft("");
+    setFeedbackError("");
+  }, [signal?.id, signal?.feedback]);
 
   if (!signal) return null;
 
@@ -56,6 +68,34 @@ export function InspectionDrawer({
   const hasSecondaryActions = Boolean(onSnooze || onNotNow || onHandToEve);
   const hasWorkActions = Boolean(onDefer || onArchive);
   const operatingDetails = operatingSystemDetails(signal);
+
+  async function appendFeedback() {
+    if (!signal || !feedbackDraft.trim() || !isTask) return;
+    setFeedbackBusy(true);
+    setFeedbackError("");
+    try {
+      const response = await fetch("/api/tasks", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "append-feedback", id: signal.id, body: feedbackDraft, author: "jt" }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Could not append feedback");
+      setFeedbackEntries(result.feedback ?? []);
+      setFeedbackDraft("");
+    } catch (error) {
+      setFeedbackError(error instanceof Error ? error.message : "Could not append feedback");
+    } finally {
+      setFeedbackBusy(false);
+    }
+  }
+
+  async function copyPrompt() {
+    if (!signal?.pasteReadyPrompt) return;
+    await navigator.clipboard.writeText(signal.pasteReadyPrompt);
+    setPromptCopied(true);
+    window.setTimeout(() => setPromptCopied(false), 1_500);
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/70" onClick={onClose}>
@@ -93,12 +133,26 @@ export function InspectionDrawer({
 
         {operatingDetails.length > 0 && (
           <section className="mt-6 rounded-lg border border-[#20262d] bg-[#0b0d0f] p-3">
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Admission and bet detail</p>
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Task card</p>
             <dl className="mt-3 space-y-3">
               {operatingDetails.map(([label, value]) => (
                 <div key={label}>
                   <dt className="text-[10px] uppercase tracking-wider text-zinc-600">{label}</dt>
-                  <dd className="mt-1 whitespace-pre-wrap text-xs leading-relaxed text-zinc-300">{value}</dd>
+                  <dd className="mt-1 whitespace-pre-wrap text-xs leading-relaxed text-zinc-300">
+                    {label === "Paste-ready prompt" ? (
+                      <div className="relative rounded border border-[#20262d] bg-[#080a0c] p-3 pr-10 font-mono text-[11px] text-zinc-200">
+                        <pre className="whitespace-pre-wrap font-inherit">{value}</pre>
+                        <button
+                          type="button"
+                          onClick={copyPrompt}
+                          className="absolute right-2 top-2 rounded p-1 text-zinc-500 hover:bg-white/5 hover:text-zinc-200"
+                          title="Copy prompt"
+                        >
+                          {promptCopied ? <Check size={13} /> : <Copy size={13} />}
+                        </button>
+                      </div>
+                    ) : value}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -164,6 +218,40 @@ export function InspectionDrawer({
         </section>
 
         <OutreachDecisionControls signal={signal} />
+
+        {isTask && (
+          <section className="mt-6 rounded-lg border border-[#20262d] bg-[#0b0d0f] p-3">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Feedback</p>
+            {feedbackEntries.length > 0 ? (
+              <ol className="mt-3 space-y-2">
+                {feedbackEntries.map((entry) => (
+                  <li key={entry.id} className="rounded border border-[#20262d] bg-[#0f1316] p-2">
+                    <p className="whitespace-pre-wrap text-xs leading-relaxed text-zinc-300">{entry.body}</p>
+                    <p className="mt-1 text-[10px] uppercase text-zinc-600">{entry.author} · {formatRelative(entry.createdAt)}</p>
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <p className="mt-2 text-[11px] text-zinc-600">No feedback recorded yet.</p>
+            )}
+            <textarea
+              value={feedbackDraft}
+              onChange={(event) => setFeedbackDraft(event.target.value)}
+              placeholder="Add feedback without replacing earlier notes"
+              maxLength={4000}
+              className="mt-3 min-h-24 w-full resize-y rounded border border-[#20262d] bg-[#080a0c] p-3 text-xs text-zinc-200 outline-none placeholder:text-zinc-700 focus:border-emerald-800"
+            />
+            {feedbackError && <p className="mt-2 text-[11px] text-red-300">{feedbackError}</p>}
+            <button
+              type="button"
+              disabled={feedbackBusy || !feedbackDraft.trim()}
+              onClick={appendFeedback}
+              className="mt-2 h-9 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-3 text-xs font-medium text-emerald-200 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {feedbackBusy ? "Saving…" : "Append feedback"}
+            </button>
+          </section>
+        )}
 
         <section className="mt-6 rounded-lg border border-[#20262d] bg-[#0b0d0f] p-3">
           <div className="flex items-start justify-between gap-3">
