@@ -37,11 +37,12 @@ function validationError(error: unknown) {
 }
 
 function dependencyError(error: unknown) {
-  const code = error instanceof Error ? error.message : "";
-  if (code === "OUTREACH_REVIEW_CYCLE_LIMIT") {
+  const message = error instanceof Error ? error.message : "";
+  const hasCode = (code: string) => new RegExp(`(?:^|[^A-Z0-9_])${code}(?:$|[^A-Z0-9_])`).test(message);
+  if (hasCode("OUTREACH_REVIEW_CYCLE_LIMIT")) {
     return NextResponse.json({ error: "outreach review cycle limit reached" }, { status: 409 });
   }
-  if (code === "OUTREACH_REVIEW_AUTHORITY_CORRUPT") {
+  if (hasCode("OUTREACH_REVIEW_AUTHORITY_CORRUPT")) {
     return NextResponse.json({ error: "outreach review authority state is corrupt" }, { status: 409 });
   }
   return NextResponse.json({ error: "outreach review request failed" }, { status: 500 });
