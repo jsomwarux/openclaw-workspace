@@ -15,4 +15,5 @@ if [ -z "$NPX_BIN" ]; then
   exit 127
 fi
 
-exec "$NPX_BIN" convex dev
+exec /opt/homebrew/opt/node@22/bin/node scripts/outreach-runtime-secrets.mjs run-convex -- \
+  "$NPX_BIN" convex dev

@@ -161,3 +161,10 @@
 - [x] Prove optimistic retry behavior for concurrent duplicate, distinct, and third-attempt admissions through registered handlers.
 - [x] Document the exact cross-repo API contract for `jt-ops`.
 - [x] Run final full tests, TypeScript, isolated production build, diff/security scans, and local commit for fresh non-builder verification.
+## Plan — Outreach runtime configuration packaging — 2026-09-15
+- [x] Isolate only the live Mission Control runtime/configuration delta from unrelated workspace changes.
+- [x] Add RED/GREEN coverage for rebuilding the ignored Keychain helper from checked-in Swift source.
+- [x] Package Keychain injection, local Convex synchronization, Tailscale identity resolution, launcher integration, and wrapped error-code handling.
+- [x] Document the explicit capability rotation, synchronization, restart, and no-send verification sequence.
+- [x] Run the full Bun suite, TypeScript, shell syntax, Swift compilation, production build, and diff checks.
+- [ ] Obtain a fresh non-builder CONFIRM before reporting complete or pushing.
