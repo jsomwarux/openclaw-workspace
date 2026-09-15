@@ -1,4 +1,4 @@
-import type { OutreachDecision } from "./outreach-decision";
+import type { OutreachDecision, OutreachReview } from "./outreach-decision";
 
 export type SignalSource = "task" | "cron" | "agent" | "proof";
 export type SignalOwner = "jt" | "eve" | "both";
@@ -87,6 +87,7 @@ export type Signal = {
   verifiedAt?: string;
   candidateId?: string;
   draftSha256?: string;
+  outreachReview?: OutreachReview;
   outreachDecision?: OutreachDecision;
   sourceHash?: string;
   evidenceScore?: number;

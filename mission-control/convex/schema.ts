@@ -27,6 +27,13 @@ export const workstream = v.union(
 
 export const outreachDecisionValue = v.union(v.literal("approve"), v.literal("reject"));
 
+export const outreachReview = v.object({
+  candidateId: v.string(),
+  draftSha256: v.string(),
+  admittedBy: v.literal("server"),
+  admittedAt: v.number(),
+});
+
 export const outreachDecision = v.object({
   candidateId: v.string(),
   draftSha256: v.string(),
@@ -91,6 +98,7 @@ export default defineSchema({
     verifiedAt: v.optional(v.string()),
     candidateId: v.optional(v.string()),
     draftSha256: v.optional(v.string()),
+    outreachReview: v.optional(outreachReview),
     outreachDecision: v.optional(outreachDecision),
     sourceHash: v.optional(v.string()),
     evidenceScore: v.optional(v.number()),

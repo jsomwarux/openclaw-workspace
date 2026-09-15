@@ -283,7 +283,7 @@
     <section>
       <h2>Outreach decision contract — 2026-09-14</h2>
       <div class="summary">
-        <p><strong>Status:</strong> ready for independent verification</p>
+        <p><strong>Status:</strong> superseded by the authority hardening below</p>
         <p><strong>Task:</strong> add one immutable JT approve/reject decision to an existing outreach review task.</p>
         <ol>
           <li>The existing task is the only approval record; no new table or ledger.</li>
@@ -295,7 +295,7 @@
       <p>The decision is an optional nested field on the existing task. The specialized mutation supplies <code>decidedBy=jt</code> and server time. Generic create/update normalization does not accept decision authority fields, and generic upsert/update/delete paths cannot change or remove a decided task's candidate/draft binding.</p>
       <h3>Deviations</h3><p>None.</p>
       <h3>Tradeoffs</h3><p>A composite task index supports exact candidate/draft lookup without adding a second store.</p>
-      <h3>Open Questions</h3><p>None blocking. Mission Control retains its existing localhost-only security boundary; this branch adds no authentication or production activation.</p>
+      <h3>Open Questions</h3><p>The first verifier rejected implicit localhost trust and generic candidate/draft eligibility. The authority-hardening section below records the authenticated replacement. Production activation remains out of scope.</p>
       <h3>Files Changed</h3><p><code>convex/schema.ts</code>, <code>convex/tasks.ts</code>, <code>app/api/tasks/outreach-decision/route.ts</code>, outreach decision domain/route/display helpers and tests, task admission/upsert/adapters/types, <code>InspectionDrawer.tsx</code>, <code>OutreachDecisionControls.tsx</code>, project contract, plan, and implementation records.</p>
       <h3>Verification</h3>
       <ul>
@@ -304,6 +304,31 @@
         <li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li>
         <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 40/40 pages generated and <code>/api/tasks/outreach-decision</code> listed as a dynamic route.</li>
         <li>The clean worktree reused the existing local dependency tree through a temporary symlink because frozen install would change the stale lockfile; the symlink was removed after verification.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Outreach decision authority hardening — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> ready for independent verification</p>
+        <p><strong>Task:</strong> prevent unauthenticated callers and generic tasks from impersonating JT outreach authority.</p>
+      </div>
+      <h3>Design Decisions</h3>
+      <ul>
+        <li>Decision POST trusts only Tailscale Serve's <code>Tailscale-User-Login</code> header matching configured JT login; absent config returns 503 and absent/mismatched identity returns 401.</li>
+        <li>Both public Convex outreach mutations require the protected server capability and validate it against Convex environment state before any database access.</li>
+        <li>A dedicated atomic outreach-review route stamps an eligibility marker. Candidate/draft fields alone never render controls or authorize a decision.</li>
+        <li>Capabilities are accepted only from server configuration or the dedicated admission header; request-body capability fields are rejected, and no capability is stored, returned, or logged.</li>
+      </ul>
+      <h3>Tradeoffs</h3><p>The human decision POST works only through the configured Tailscale Serve URL, not direct localhost browser access. Automated review admission requires a protected capability configured in jt-ops, Next, and Convex at activation.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Environment configuration and deployment remain separate approval boundaries.</p>
+      <h3>Files Changed</h3><p>Outreach auth/review domain and route helpers with hostile tests, dedicated outreach-review API route, Convex schema/mutations, decision route and display controls, adapters/types/admission guards, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3>
+      <ul>
+        <li>RED: 7 failures plus one missing-module error reproduced unauthenticated decision stamping and generic marker eligibility. Dedicated admission tests then failed because its domain and route modules did not exist. Convex contract tests failed because mutations lacked capability validation and the schema lacked the server marker. Adapter integration failed while the marker was deliberately absent.</li>
+        <li>GREEN focused authority suite: 45 tests passed with 0 failures and 115 assertions.</li>
+        <li>Full suite: 177 tests passed across 35 files with 0 failures and 424 assertions.</li>
+        <li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li>
+        <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated, including both outreach routes.</li>
       </ul>
     </section>
     </main>

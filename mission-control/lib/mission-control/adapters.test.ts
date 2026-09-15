@@ -6,6 +6,12 @@ const now = Date.now();
 describe("taskToSignal", () => {
   test("carries the exact outreach draft identity and immutable JT decision", () => {
     const draftSha256 = "a".repeat(64);
+    const outreachReview = {
+      candidateId: "candidate-1",
+      draftSha256,
+      admittedBy: "server" as const,
+      admittedAt: 100,
+    };
     const outreachDecision = {
       candidateId: "candidate-1",
       draftSha256,
@@ -21,8 +27,9 @@ describe("taskToSignal", () => {
       priority: "high",
       candidateId: "candidate-1",
       draftSha256,
+      outreachReview,
       outreachDecision,
-    })).toMatchObject({ candidateId: "candidate-1", draftSha256, outreachDecision });
+    })).toMatchObject({ candidateId: "candidate-1", draftSha256, outreachReview, outreachDecision });
   });
   test("preserves a JT-owned todo as todo instead of claiming work has started", () => {
     const signal = taskToSignal({

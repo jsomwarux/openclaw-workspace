@@ -35,6 +35,9 @@ export function normalizeTaskInput(
 }
 
 export function validateTaskAdmission(input: Record<string, unknown>, now = new Date()): void {
+  if (input.outreachReview !== undefined) {
+    throw new Error("outreach review eligibility requires the specialized endpoint");
+  }
   if (input.outreachDecision !== undefined || input.decidedBy !== undefined || input.decidedAt !== undefined) {
     throw new Error("outreach decisions require the specialized endpoint");
   }

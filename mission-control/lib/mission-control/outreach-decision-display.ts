@@ -1,10 +1,11 @@
-import type { OutreachDecision } from "./outreach-decision";
+import type { OutreachDecision, OutreachReview } from "./outreach-decision";
 
 type OutreachDecisionSignal = {
   source: string;
   status?: string;
   candidateId?: string;
   draftSha256?: string;
+  outreachReview?: OutreachReview;
   outreachDecision?: OutreachDecision;
 };
 
@@ -16,6 +17,9 @@ export function outreachDecisionView(signal: OutreachDecisionSignal) {
     || !signal.candidateId
     || !signal.draftSha256
     || !SHA256_PATTERN.test(signal.draftSha256)
+    || signal.outreachReview?.candidateId !== signal.candidateId
+    || signal.outreachReview?.draftSha256 !== signal.draftSha256
+    || signal.outreachReview?.admittedBy !== "server"
   ) return null;
 
   if (!signal.outreachDecision) {

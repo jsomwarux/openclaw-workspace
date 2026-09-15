@@ -6,6 +6,8 @@ import { createOutreachDecisionHandlers } from "@/lib/mission-control/outreach-d
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 const handlers = createOutreachDecisionHandlers({
+  trustedJtLogin: process.env.OUTREACH_DECISION_JT_LOGIN,
+  serverCapability: process.env.OUTREACH_DECISION_CAPABILITY,
   decide: async (input) => await convex.mutation(
     api.tasks.decideOutreach,
     input as FunctionArgs<typeof api.tasks.decideOutreach>,

@@ -6,6 +6,8 @@ import { outreachDecisionValue, taskStatus, waitingOn, workstream } from "./sche
 import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 import { resolveTaskCreateOnly } from "../lib/mission-control/task-create-only";
 import { assertOutreachIdentityMutation, assertOutreachTaskRemoval, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
+import { assertServerCapability } from "../lib/mission-control/outreach-auth";
+import { resolveOutreachReviewCreateOnly } from "../lib/mission-control/outreach-review";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
 const NIGHTLY_SOURCE = "nightly-validation-controller";
@@ -232,6 +234,50 @@ export const createOnlyByDedupeKey = mutation({
   },
 });
 
+export const createOutreachReview = mutation({
+  args: {
+    title: v.string(),
+    description: v.optional(v.string()),
+    status: taskStatus,
+    assignee: v.union(v.literal("jt"), v.literal("eve"), v.literal("both")),
+    priority: v.union(v.literal("high"), v.literal("medium"), v.literal("low")),
+    project: v.optional(v.string()),
+    sortOrder: v.optional(v.number()),
+    slug: v.optional(v.string()),
+    pipelineStage: v.optional(v.string()),
+    dueDate: v.optional(v.number()),
+    dueDateSource: v.optional(v.union(v.literal("external"), v.literal("self"))),
+    dollars: v.optional(v.number()),
+    stageProbability: v.optional(v.number()),
+    effortMinutes: v.optional(v.number()),
+    lane: v.optional(v.string()),
+    waitingOn: v.optional(waitingOn),
+    snoozedUntil: v.optional(v.number()),
+    proofRequired: v.optional(v.boolean()),
+    reasonCodes: v.optional(v.array(v.string())),
+    rankScore: v.optional(v.number()),
+    rankUpdatedAt: v.optional(v.number()),
+    ...operatingSystemArgs,
+    dedupeKey: v.string(),
+    candidateId: v.string(),
+    draftSha256: v.string(),
+    capability: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const { capability, ...taskInput } = args;
+    assertServerCapability(capability, process.env.OUTREACH_DECISION_CAPABILITY);
+    assertNightlyAdmission(taskInput);
+    const existing = await ctx.db
+      .query("tasks")
+      .withIndex("by_dedupeKey", (q) => q.eq("dedupeKey", taskInput.dedupeKey))
+      .first();
+    const resolved = resolveOutreachReviewCreateOnly(existing, taskInput, Date.now());
+    if (resolved.operation === "existing") return { id: resolved.id, created: false };
+    const id = await ctx.db.insert("tasks", resolved.fields);
+    return { id, created: true };
+  },
+});
+
 export const updateStatus = mutation({
   args: {
     id: v.id("tasks"),
@@ -296,11 +342,14 @@ export const decideOutreach = mutation({
     candidateId: v.string(),
     draftSha256: v.string(),
     decision: outreachDecisionValue,
+    capability: v.string(),
   },
   handler: async (ctx, args) => {
+    const { capability, ...decisionInput } = args;
+    assertServerCapability(capability, process.env.OUTREACH_DECISION_CAPABILITY);
     const task = await ctx.db.get(args.taskId);
     if (!task) throw new Error(`Task not found: ${args.taskId}`);
-    const resolved = resolveOutreachDecision(task, args, Date.now());
+    const resolved = resolveOutreachDecision(task, decisionInput, Date.now());
     if (resolved.operation === "existing") return { decision: resolved.decision, created: false };
     await ctx.db.patch(args.taskId, { outreachDecision: resolved.decision, updatedAt: Date.now() });
     return { decision: resolved.decision, created: true };

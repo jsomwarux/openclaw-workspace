@@ -115,3 +115,11 @@
 - [x] Add minimal approve/reject controls to eligible review cards.
 - [x] Run full tests, TypeScript, production build, and diff checks.
 - [x] Commit explicit paths only; do not push or deploy.
+
+## Plan — outreach decision authority hardening — 2026-09-15
+- [x] Reproduce unauthenticated JT stamping, direct mutation access, and generic review-marker forgery with hostile tests.
+- [x] Require configured Tailscale JT identity for decision writes and fail closed when identity/config is absent.
+- [x] Require a server capability at every Convex outreach admission/decision mutation without logging or returning it.
+- [x] Add an atomic specialized outreach-review admission path and make generic task writes reject its server-owned marker.
+- [x] Run focused/full tests, TypeScript, production build, and diff/security checks.
+- [x] Commit explicit paths only; do not push or deploy.

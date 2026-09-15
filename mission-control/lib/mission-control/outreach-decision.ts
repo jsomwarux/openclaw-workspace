@@ -8,11 +8,19 @@ export type OutreachDecision = {
   decidedAt: number;
 };
 
+export type OutreachReview = {
+  candidateId: string;
+  draftSha256: string;
+  admittedBy: "server";
+  admittedAt: number;
+};
+
 export type OutreachTask = {
   _id?: string;
   id?: string;
   candidateId?: string;
   draftSha256?: string;
+  outreachReview?: OutreachReview;
   outreachDecision?: OutreachDecision;
 };
 
@@ -44,6 +52,13 @@ export function resolveOutreachDecision(task: OutreachTask, input: DecisionInput
   if (task.candidateId !== input.candidateId || task.draftSha256 !== input.draftSha256) {
     throw new Error("outreach decision identity does not match task");
   }
+  if (
+    task.outreachReview?.candidateId !== input.candidateId
+    || task.outreachReview?.draftSha256 !== input.draftSha256
+    || task.outreachReview?.admittedBy !== "server"
+  ) {
+    throw new Error("server-admitted outreach review required");
+  }
 
   if (task.outreachDecision) {
     const existing = task.outreachDecision;
@@ -71,17 +86,29 @@ export function resolveOutreachDecision(task: OutreachTask, input: DecisionInput
 }
 
 export function assertOutreachIdentityMutation(task: OutreachTask, fields: Record<string, unknown>): void {
-  if (!task.outreachDecision) return;
   if (
-    ("candidateId" in fields && fields.candidateId !== task.candidateId)
-    || ("draftSha256" in fields && fields.draftSha256 !== task.draftSha256)
+    task.outreachDecision
+    && (
+      ("candidateId" in fields && fields.candidateId !== task.candidateId)
+      || ("draftSha256" in fields && fields.draftSha256 !== task.draftSha256)
+    )
   ) {
     throw new Error("outreach decision identity is immutable");
+  }
+  if (
+    task.outreachReview
+    && (
+      ("candidateId" in fields && fields.candidateId !== task.candidateId)
+      || ("draftSha256" in fields && fields.draftSha256 !== task.draftSha256)
+    )
+  ) {
+    throw new Error("outreach review identity is immutable");
   }
 }
 
 export function assertOutreachTaskRemoval(task: OutreachTask | null): void {
   if (task?.outreachDecision) throw new Error("outreach decision task is immutable");
+  if (task?.outreachReview) throw new Error("outreach review task is immutable");
 }
 
 export function resolveOutreachLookup(task: OutreachTask | null, candidateId: string, draftSha256: string) {
@@ -91,6 +118,9 @@ export function resolveOutreachLookup(task: OutreachTask | null, candidateId: st
     || task.candidateId !== candidateId
     || task.draftSha256 !== draftSha256
     || !task.outreachDecision
+    || task.outreachReview?.candidateId !== candidateId
+    || task.outreachReview?.draftSha256 !== draftSha256
+    || task.outreachReview?.admittedBy !== "server"
     || task.outreachDecision.candidateId !== candidateId
     || task.outreachDecision.draftSha256 !== draftSha256
   ) {

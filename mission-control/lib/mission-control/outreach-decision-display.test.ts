@@ -5,15 +5,23 @@ const SHA = "a".repeat(64);
 
 describe("outreach review decision display", () => {
   test("shows pending controls only for a task with an exact outreach draft identity", () => {
-    expect(outreachDecisionView({ source: "task", status: "todo", candidateId: "candidate-1", draftSha256: SHA })).toEqual({
+    expect(outreachDecisionView({
+      source: "task",
+      status: "todo",
+      candidateId: "candidate-1",
+      draftSha256: SHA,
+      outreachReview: { candidateId: "candidate-1", draftSha256: SHA, admittedBy: "server", admittedAt: 1 },
+    })).toEqual({
       candidateId: "candidate-1",
       draftSha256: SHA,
       state: "pending",
     });
     expect(outreachDecisionView({ source: "task", status: "todo", candidateId: "candidate-1" })).toBe(null);
+    expect(outreachDecisionView({ source: "task", status: "todo", candidateId: "candidate-1", draftSha256: SHA })).toBe(null);
     expect(outreachDecisionView({ source: "proof", status: "todo", candidateId: "candidate-1", draftSha256: SHA })).toBe(null);
-    expect(outreachDecisionView({ source: "task", status: "archived", candidateId: "candidate-1", draftSha256: SHA })).toBe(null);
-    expect(outreachDecisionView({ source: "task", status: "done", candidateId: "candidate-1", draftSha256: SHA })).toBe(null);
+    const marked = { outreachReview: { candidateId: "candidate-1", draftSha256: SHA, admittedBy: "server" as const, admittedAt: 1 } };
+    expect(outreachDecisionView({ source: "task", status: "archived", candidateId: "candidate-1", draftSha256: SHA, ...marked })).toBe(null);
+    expect(outreachDecisionView({ source: "task", status: "done", candidateId: "candidate-1", draftSha256: SHA, ...marked })).toBe(null);
   });
 
   test("renders an immutable approved or rejected decision instead of pending controls", () => {
@@ -24,7 +32,14 @@ describe("outreach review decision display", () => {
       decidedBy: "jt" as const,
       decidedAt: 123,
     };
-    expect(outreachDecisionView({ source: "task", status: "todo", candidateId: "candidate-1", draftSha256: SHA, outreachDecision: approved })).toEqual({
+    expect(outreachDecisionView({
+      source: "task",
+      status: "todo",
+      candidateId: "candidate-1",
+      draftSha256: SHA,
+      outreachReview: { candidateId: "candidate-1", draftSha256: SHA, admittedBy: "server", admittedAt: 1 },
+      outreachDecision: approved,
+    })).toEqual({
       candidateId: "candidate-1",
       draftSha256: SHA,
       state: "approved",
@@ -38,6 +53,7 @@ describe("outreach review decision display", () => {
       status: "todo",
       candidateId: "candidate-1",
       draftSha256: SHA,
+      outreachReview: { candidateId: "candidate-1", draftSha256: SHA, admittedBy: "server", admittedAt: 1 },
       outreachDecision: {
         candidateId: "other",
         draftSha256: SHA,

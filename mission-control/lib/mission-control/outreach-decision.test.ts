@@ -14,6 +14,12 @@ const task = {
   _id: "task-1",
   candidateId: "candidate-1",
   draftSha256: SHA_A,
+  outreachReview: {
+    candidateId: "candidate-1",
+    draftSha256: SHA_A,
+    admittedBy: "server" as const,
+    admittedAt: 50,
+  },
 };
 
 function expectError(fn: () => unknown, message: string) {
@@ -73,6 +79,17 @@ describe("immutable outreach decision", () => {
     expectError(() => resolveOutreachDecision(task, { candidateId: "candidate-1", draftSha256: SHA_B, decision: "approve" }, 123), "outreach decision identity does not match task");
   });
 
+  test("rejects a generic task that has no server-owned outreach review marker", () => {
+    expectError(
+      () => resolveOutreachDecision(
+        { _id: "generic", candidateId: "candidate-1", draftSha256: SHA_A },
+        { candidateId: "candidate-1", draftSha256: SHA_A, decision: "approve" },
+        123,
+      ),
+      "server-admitted outreach review required",
+    );
+  });
+
   test("rejects malformed identities and decisions", () => {
     expectError(() => resolveOutreachDecision(task, { candidateId: "", draftSha256: SHA_A, decision: "approve" }, 123), "candidateId required");
     expectError(() => resolveOutreachDecision(task, { candidateId: "candidate-1", draftSha256: "A".repeat(64), decision: "approve" }, 123), "draftSha256 must be 64 lowercase hex characters");
@@ -95,6 +112,12 @@ describe("immutable outreach decision", () => {
     assertOutreachIdentityMutation(decided, { title: "safe" });
   });
 
+  test("blocks generic identity mutation after server review admission and before JT decides", () => {
+    expectError(() => assertOutreachIdentityMutation(task, { draftSha256: SHA_B }), "outreach review identity is immutable");
+    expectError(() => assertOutreachIdentityMutation(task, { candidateId: "other" }), "outreach review identity is immutable");
+    assertOutreachIdentityMutation(task, { title: "safe" });
+  });
+
   test("blocks generic deletion after JT decides", () => {
     expectError(
       () => assertOutreachTaskRemoval({
@@ -109,7 +132,12 @@ describe("immutable outreach decision", () => {
       }),
       "outreach decision task is immutable",
     );
-    assertOutreachTaskRemoval(task);
+    assertOutreachTaskRemoval({ _id: "ordinary" });
+  });
+
+  test("blocks generic deletion after server review admission", () => {
+    expectError(() => assertOutreachTaskRemoval(task), "outreach review task is immutable");
+    assertOutreachTaskRemoval({ _id: "ordinary" });
   });
 
   test("generic task admission preserves draft identity but rejects decision authority", () => {
@@ -121,6 +149,10 @@ describe("immutable outreach decision", () => {
       candidateId: "candidate-1",
       draftSha256: SHA_A,
     });
+    expectError(
+      () => validateTaskAdmission({ outreachReview: { candidateId: "candidate-1", draftSha256: SHA_A } }),
+      "outreach review eligibility requires the specialized endpoint",
+    );
   });
 });
 
@@ -154,6 +186,8 @@ describe("outreach decision lookup", () => {
     };
     expect(resolveOutreachLookup(rejected, "candidate-1", SHA_A).state).toBe("rejected");
     expect(resolveOutreachLookup(task, "candidate-1", SHA_A)).toEqual({ authorized: false, state: "absent" });
+    expect(resolveOutreachLookup({ _id: "generic", candidateId: "candidate-1", draftSha256: SHA_A, outreachDecision: rejected.outreachDecision }, "candidate-1", SHA_A))
+      .toEqual({ authorized: false, state: "absent" });
     expect(resolveOutreachLookup(rejected, "candidate-1", SHA_B)).toEqual({ authorized: false, state: "absent" });
   });
 });
