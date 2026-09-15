@@ -19,7 +19,7 @@ describe("outreach authority", () => {
 
   test("rejects a mismatched Tailscale identity and accepts only the configured login", () => {
     expect(message(() => authorizeJtIdentity(new Headers({ "Tailscale-User-Login": "other@example.com" }), "jt@example.com")))
-      .toContain("JT identity required");
+      .toContain("JT identity forbidden");
     expect(authorizeJtIdentity(new Headers({ "Tailscale-User-Login": "jt@example.com" }), "jt@example.com"))
       .toEqual({ login: "jt@example.com" });
   });

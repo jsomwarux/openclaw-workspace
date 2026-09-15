@@ -153,3 +153,11 @@
 - [x] Replace the handwritten JavaScript comparator with Web Crypto HMAC-SHA-256 verification and await it at HTTP/Convex boundaries.
 - [x] Run focused/full tests, TypeScript, build, diff, ancestry, and secret-leak scans.
 - [x] Commit explicit paths locally without push, deployment, or environment changes.
+
+## Plan — immutable outreach review owner snapshot and cycle contract — 2026-09-15
+- [x] Approve the embedded-task architecture, canonical request, hash domain/version, and two-cycle owner semantics before implementation.
+- [x] Establish RED tests for complete persisted context, canonical hashing, field/size rejection, generic forgery, exact decision binding, and UI provenance.
+- [x] Implement atomic review admission/count, persisted snapshot display, exact decision lookup, and generic lifecycle immutability.
+- [x] Prove optimistic retry behavior for concurrent duplicate, distinct, and third-attempt admissions through registered handlers.
+- [x] Document the exact cross-repo API contract for `jt-ops`.
+- [x] Run final full tests, TypeScript, isolated production build, diff/security scans, and local commit for fresh non-builder verification.

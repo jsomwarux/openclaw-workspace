@@ -402,6 +402,20 @@
       <h3>Files Changed</h3><p>Outreach auth and route helpers/tests, Convex awaits, project contract, plan, and implementation records.</p>
       <h3>Verification</h3><ul><li>RED: focused suite produced three failures plus one missing-export error: both routes echoed capability-bearing dependency messages and no cryptographic comparator existed.</li><li>GREEN focused suite: 26 tests passed with 0 failures and 99 assertions.</li><li>Full suite: 189 tests passed with 0 failures and 477 assertions.</li><li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li><li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated.</li></ul>
     </section>
+    <section>
+      <h2>Immutable outreach review owner snapshot and cycle contract — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> builder verification complete; fresh non-builder review required</p>
+        <p><strong>Task:</strong> make the existing Mission Control task the single immutable owner record for exactly what JT reviews and decides.</p>
+        <ol><li>Admission stores the complete typed review snapshot and derives its display and canonical versioned hash server-side.</li><li>Mission Control owns the atomic two-cycle budget per candidate/cohort; exact retries are idempotent.</li><li>The decision and prepare-send lookup bind candidate, draft, and snapshot hashes and revalidate the complete persisted authority set.</li></ol>
+      </div>
+      <h3>Design Decisions</h3><p>The task table remains the only store. The embedded snapshot includes subject, body, verbatim verifier report, actor IDs, and all five Git bindings. Generic lifecycle paths cannot create or mutate it. Review admission and decision remain separate least-privilege capabilities; only the trusted JT decision route can append the first immutable decision.</p>
+      <h3>Deviations</h3><p>None from the independently approved snapshot contract.</p>
+      <h3>Tradeoffs</h3><p>Any draft or decision-context edit consumes a new review cycle. This intentionally prevents mutable cards and limits automated review to two distinct snapshots before JT rules.</p>
+      <h3>Open Questions</h3><p>None blocking local verification. Deployment and environment configuration remain separate approval boundaries.</p>
+      <h3>Files Changed</h3><p>Outreach review/decision domain helpers, dedicated HTTP and Convex contracts, task schema and adapters, immutable review UI, hostile/unit/integration tests, project contract, cross-repo API documentation, plan, and implementation records.</p>
+      <h3>Verification</h3><ul><li>RED: missing typed snapshot APIs/display/cycle ownership produced missing-export errors and focused failures; the later corruption probe showed a rehashed persisted snapshot could still be decided until the handler revalidated canonical authority.</li><li>GREEN focused tests cover canonical hashing, size/path/identity rejection, exact retries, two-cycle limit, optimistic concurrent duplicate/distinct/third attempts, all four capability boundaries before database access, generic immutability, UI provenance, and corrupt-snapshot rejection.</li><li>Full suite: 196 tests passed with 0 failures and 592 assertions.</li><li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li><li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated, including both outreach routes.</li></ul>
+    </section>
     </main>
   </body>
 </html>

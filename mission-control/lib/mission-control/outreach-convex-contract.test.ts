@@ -18,7 +18,7 @@ describe("Convex outreach authority boundary", () => {
   test("review admission and JT decision validate distinct least-privilege capabilities", () => {
     expect(tasksSource).toContain("export const createOutreachReview = mutation");
     expect(tasksSource).toContain("export const decideOutreach = mutation");
-    expect(tasksSource.match(/capability: v\.string\(\)/g)?.length).toBe(2);
+    expect(tasksSource.match(/capability: v\.string\(\)/g)?.length).toBe(4);
     const reviewMutation = mutationSource("createOutreachReview", "updateStatus");
     const decisionMutation = mutationSource("decideOutreach", "findOutreachDecision");
     expect(reviewMutation).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
@@ -29,7 +29,32 @@ describe("Convex outreach authority boundary", () => {
     expect(reviewRouteSource).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
     expect(decisionRouteSource).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
     expect(decisionRouteSource).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
-    expect(tasksSource.match(/assertDistinctServerCapability\(/g)?.length).toBe(2);
+    expect(tasksSource.match(/assertDistinctServerCapability\(/g)?.length).toBe(4);
+  });
+
+  test("persists the complete typed snapshot and indexes candidate plus cohort", () => {
+    for (const field of [
+      "cohortId", "subject", "body", "verifierReport", "reviewAuthorityId", "verifierActorId",
+      "gitBindings", "snapshotSha256", "reviewCycle",
+    ]) expect(schemaSource).toContain(`${field}:`);
+    expect(schemaSource).toContain('.index("by_outreach_candidate_cohort", ["candidateId", "cohortId"])');
+    const reviewMutation = mutationSource("createOutreachReview", "getOutreachReviewState");
+    expect(reviewMutation).toContain('withIndex("by_outreach_candidate_cohort"');
+    expect(reviewMutation).toContain("resolveOutreachReviewAdmission");
+    expect(reviewMutation).toContain("taskId:");
+    expect(reviewMutation).toContain("reviewCycle:");
+    expect(reviewMutation).toContain("snapshotSha256:");
+  });
+
+  test("review count and decision lookup authenticate before database access", () => {
+    for (const [name, next] of [
+      ["getOutreachReviewState", "updateStatus"],
+      ["findOutreachDecision", "findBySlug"],
+    ] as const) {
+      const source = mutationSource(name, next);
+      expect(source.indexOf("await assertDistinctServerCapability")).toBeGreaterThan(-1);
+      expect(source.indexOf("await assertDistinctServerCapability")).toBeLessThan(source.indexOf("ctx.db"));
+    }
   });
 
   test("stores the server review marker but never stores the capability", () => {

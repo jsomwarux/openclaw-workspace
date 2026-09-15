@@ -1,66 +1,43 @@
 import { describe, expect, test } from "bun:test";
 import { outreachDecisionView } from "./outreach-decision-display";
+import type { OutreachReviewSnapshot } from "./outreach-review";
 
-const SHA = "a".repeat(64);
+const DRAFT = "a".repeat(64);
+const SNAPSHOT = "b".repeat(64);
+const COMMIT = "c".repeat(40);
+const bind = (path: string) => ({ repository: "owner/repo", commitSha: COMMIT, path, blobSha256: DRAFT });
+const review: OutreachReviewSnapshot = {
+  candidateId: "candidate-1", cohortId: "cohort-2", draftSha256: DRAFT,
+  subject: "Persisted subject", body: "Persisted exact body", verifierReport: "VERDICT: CONFIRM",
+  reviewAuthorityId: "jt", verifierActorId: "verifier-1",
+  gitBindings: { evidence: bind("evidence"), policy: bind("policy"), gate: bind("gate"), draft: bind("draft"), verifier: bind("verifier") },
+  snapshotSha256: SNAPSHOT, reviewCycle: 1, admittedBy: "server", admittedAt: 1,
+};
+const base = { source: "task", status: "todo", candidateId: "candidate-1", draftSha256: DRAFT, outreachReview: review } as const;
 
 describe("outreach review decision display", () => {
-  test("shows pending controls only for a task with an exact outreach draft identity", () => {
-    expect(outreachDecisionView({
-      source: "task",
-      status: "todo",
-      candidateId: "candidate-1",
-      draftSha256: SHA,
-      outreachReview: { candidateId: "candidate-1", draftSha256: SHA, admittedBy: "server", admittedAt: 1 },
-    })).toEqual({
-      candidateId: "candidate-1",
-      draftSha256: SHA,
-      state: "pending",
-    });
-    expect(outreachDecisionView({ source: "task", status: "todo", candidateId: "candidate-1" })).toBe(null);
-    expect(outreachDecisionView({ source: "task", status: "todo", candidateId: "candidate-1", draftSha256: SHA })).toBe(null);
-    expect(outreachDecisionView({ source: "proof", status: "todo", candidateId: "candidate-1", draftSha256: SHA })).toBe(null);
-    const marked = { outreachReview: { candidateId: "candidate-1", draftSha256: SHA, admittedBy: "server" as const, admittedAt: 1 } };
-    expect(outreachDecisionView({ source: "task", status: "archived", candidateId: "candidate-1", draftSha256: SHA, ...marked })).toBe(null);
-    expect(outreachDecisionView({ source: "task", status: "done", candidateId: "candidate-1", draftSha256: SHA, ...marked })).toBe(null);
-  });
-
-  test("renders an immutable approved or rejected decision instead of pending controls", () => {
-    const approved = {
-      candidateId: "candidate-1",
-      draftSha256: SHA,
-      decision: "approve" as const,
-      decidedBy: "jt" as const,
-      decidedAt: 123,
-    };
-    expect(outreachDecisionView({
-      source: "task",
-      status: "todo",
-      candidateId: "candidate-1",
-      draftSha256: SHA,
-      outreachReview: { candidateId: "candidate-1", draftSha256: SHA, admittedBy: "server", admittedAt: 1 },
-      outreachDecision: approved,
-    })).toEqual({
-      candidateId: "candidate-1",
-      draftSha256: SHA,
-      state: "approved",
-      decision: approved,
+  test("shows pending controls and content only from the persisted immutable snapshot", () => {
+    expect(outreachDecisionView({ ...base, description: "forged subject and body" })).toEqual({
+      candidateId: "candidate-1", draftSha256: DRAFT, snapshotSha256: SNAPSHOT,
+      state: "pending", snapshot: review,
     });
   });
 
-  test("fails closed when the stored decision does not match the task identity", () => {
-    expect(outreachDecisionView({
-      source: "task",
-      status: "todo",
-      candidateId: "candidate-1",
-      draftSha256: SHA,
-      outreachReview: { candidateId: "candidate-1", draftSha256: SHA, admittedBy: "server", admittedAt: 1 },
-      outreachDecision: {
-        candidateId: "other",
-        draftSha256: SHA,
-        decision: "approve",
-        decidedBy: "jt",
-        decidedAt: 123,
-      },
-    })).toEqual({ candidateId: "candidate-1", draftSha256: SHA, state: "invalid" });
+  test("renders a closed exact decision and rejects a mismatched snapshot binding", () => {
+    const approved = { candidateId: "candidate-1", draftSha256: DRAFT, snapshotSha256: SNAPSHOT, decision: "approve" as const, decidedBy: "jt" as const, decidedAt: 123 };
+    expect(outreachDecisionView({ ...base, status: "done", outreachDecision: approved })).toEqual({
+      candidateId: "candidate-1", draftSha256: DRAFT, snapshotSha256: SNAPSHOT,
+      state: "approved", snapshot: review, decision: approved,
+    });
+    expect(outreachDecisionView({ ...base, outreachDecision: { ...approved, snapshotSha256: "d".repeat(64) } })).toEqual({
+      candidateId: "candidate-1", draftSha256: DRAFT, snapshotSha256: SNAPSHOT,
+      state: "invalid", snapshot: review,
+    });
+  });
+
+  test("hides generic, archived, and incomplete review tasks", () => {
+    expect(outreachDecisionView({ source: "task", status: "todo", candidateId: "candidate-1", draftSha256: DRAFT })).toBe(null);
+    expect(outreachDecisionView({ ...base, status: "archived" })).toBe(null);
+    expect(outreachDecisionView({ ...base, outreachReview: { ...review, snapshotSha256: "bad" } })).toBe(null);
   });
 });

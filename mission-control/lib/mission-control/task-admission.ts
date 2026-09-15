@@ -41,6 +41,9 @@ export function validateTaskAdmission(input: Record<string, unknown>, now = new 
   if (input.outreachDecision !== undefined || input.decidedBy !== undefined || input.decidedAt !== undefined) {
     throw new Error("outreach decisions require the specialized endpoint");
   }
+  if (input.reviewCycle !== undefined || input.snapshotSha256 !== undefined || input.cohortId !== undefined) {
+    throw new Error("outreach review authority requires the specialized endpoint");
+  }
   if (input.source === "nightly-validation-controller") {
     throw new Error("sourceSystem is required; source cannot identify nightly admission");
   }

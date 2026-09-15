@@ -6,15 +6,28 @@ const now = Date.now();
 describe("taskToSignal", () => {
   test("carries the exact outreach draft identity and immutable JT decision", () => {
     const draftSha256 = "a".repeat(64);
+    const snapshotSha256 = "b".repeat(64);
+    const commitSha = "c".repeat(40);
+    const bind = (path: string) => ({ repository: "owner/repo", commitSha, path, blobSha256: draftSha256 });
     const outreachReview = {
       candidateId: "candidate-1",
+      cohortId: "cohort-2",
       draftSha256,
+      subject: "Persisted subject",
+      body: "Persisted body",
+      verifierReport: "VERDICT: CONFIRM",
+      reviewAuthorityId: "jt",
+      verifierActorId: "verifier-1",
+      gitBindings: { evidence: bind("evidence"), policy: bind("policy"), gate: bind("gate"), draft: bind("draft"), verifier: bind("verifier") },
+      snapshotSha256,
+      reviewCycle: 1 as const,
       admittedBy: "server" as const,
       admittedAt: 100,
     };
     const outreachDecision = {
       candidateId: "candidate-1",
       draftSha256,
+      snapshotSha256,
       decision: "approve" as const,
       decidedBy: "jt" as const,
       decidedAt: 123,

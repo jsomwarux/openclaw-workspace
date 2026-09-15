@@ -1,116 +1,114 @@
 import { describe, expect, test } from "bun:test";
-import { createOutreachReviewPostHandler } from "./outreach-review-route";
+import { createOutreachReviewHandlers } from "./outreach-review-route";
 
 const SHA = "a".repeat(64);
+const COMMIT = "b".repeat(40);
+const capability = "review-secret";
+const bind = (path: string) => ({ repository: "owner/repo", commitSha: COMMIT, path, blobSha256: SHA });
 const body = {
-  title: "Review exact draft",
-  dedupeKey: `outreach:candidate-1:${SHA}`,
-  candidateId: "candidate-1",
-  draftSha256: SHA,
+  candidateId: "candidate-1", cohortId: "cohort-2", draftSha256: SHA,
+  subject: "Subject", body: "Exact draft", verifierReport: "VERDICT: CONFIRM",
+  reviewAuthorityId: "jt", verifierActorId: "verifier-1",
+  gitBindings: { evidence: bind("evidence.json"), policy: bind("policy.json"), gate: bind("gate.json"), draft: bind("draft.txt"), verifier: bind("verify.md") },
 };
 
-function request(payload: Record<string, unknown> = body, capability?: string) {
+function postRequest(payload: unknown = body, token?: string) {
   return new Request("http://localhost/api/tasks/outreach-review", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...(capability ? { "X-Outreach-Review-Capability": capability } : {}),
-    },
+    headers: { "Content-Type": "application/json", ...(token ? { "X-Outreach-Review-Capability": token } : {}) },
     body: JSON.stringify(payload),
   });
 }
 
-describe("dedicated outreach review admission route", () => {
-  test("passes the configured server capability to the atomic admission mutation", async () => {
-    let received: Record<string, unknown> | undefined;
-    const post = createOutreachReviewPostHandler({
-      serverCapability: "server-secret",
-      peerCapability: "decision-secret",
-      admit: async (input) => { received = input; return { id: "task-1", created: true }; },
-    });
-    const response = await post(request({ ...body, status: "done", assignee: "eve", priority: "low" }, "server-secret"));
+function dependencies(overrides: Record<string, unknown> = {}) {
+  return {
+    serverCapability: capability,
+    peerCapability: "decision-secret",
+    admit: async () => ({ taskId: "task-1", created: true, reviewCycle: 1 as const, snapshotSha256: "c".repeat(64) }),
+    lookup: async () => ({ candidateId: "candidate-1", cohortId: "cohort-2", reviewCount: 0, remainingCycles: 2, latest: null }),
+    ...overrides,
+  };
+}
+
+describe("outreach review owner API", () => {
+  test("POST accepts only the typed snapshot and returns the exact response", async () => {
+    let received: unknown;
+    const handlers = createOutreachReviewHandlers(dependencies({ admit: async (input: unknown) => {
+      received = input;
+      return { taskId: "task-1", created: true, reviewCycle: 1, snapshotSha256: "c".repeat(64) };
+    } }));
+    const response = await handlers.POST(postRequest(body, capability));
     expect(response.status).toBe(200);
-    expect(received).toMatchObject({ ...body, capability: "server-secret", status: "todo", assignee: "jt", priority: "high" });
-    expect(await response.json()).toEqual({ id: "task-1", created: true, success: true, writeMode: "create-only", reviewMode: "outreach-review" });
+    expect(received).toEqual({ ...body, capability });
+    expect(await response.json()).toEqual({ taskId: "task-1", created: true, reviewCycle: 1, snapshotSha256: "c".repeat(64) });
   });
 
-  test("fails closed for missing server configuration or caller capability", async () => {
+  test("POST rejects dropped, unknown, server-owned, and oversized fields before mutation", async () => {
     let calls = 0;
-    const unconfigured = createOutreachReviewPostHandler({
-      serverCapability: undefined,
-      peerCapability: "decision-secret",
-      admit: async () => { calls += 1; return { id: "bad", created: true }; },
-    });
-    expect((await unconfigured(request(body, "server-secret"))).status).toBe(503);
-
-    const configured = createOutreachReviewPostHandler({
-      serverCapability: "server-secret",
-      peerCapability: "decision-secret",
-      admit: async () => { calls += 1; return { id: "bad", created: true }; },
-    });
-    expect((await configured(request(body))).status).toBe(401);
-    expect((await configured(request(body, "wrong"))).status).toBe(401);
-
-    const colliding = createOutreachReviewPostHandler({
-      serverCapability: "same-secret",
-      peerCapability: "same-secret",
-      admit: async () => { calls += 1; return { id: "bad", created: true }; },
-    });
-    expect((await colliding(request(body, "same-secret"))).status).toBe(503);
-    for (const [serverCapability, peerCapability] of [
-      ["", "decision-secret"],
-      ["server-secret", ""],
-      ["server-secret", undefined],
-    ] as const) {
-      const invalid = createOutreachReviewPostHandler({
-        serverCapability,
-        peerCapability,
-        admit: async () => { calls += 1; return { id: "bad", created: true }; },
-      });
-      expect((await invalid(request(body, serverCapability || "server-secret"))).status).toBe(503);
+    const handlers = createOutreachReviewHandlers(dependencies({ admit: async () => { calls += 1; return {}; } }));
+    for (const payload of [
+      { ...body, subject: undefined },
+      { ...body, title: "forged display" },
+      { ...body, reviewCycle: 1 },
+      { ...body, snapshotSha256: SHA },
+    ]) {
+      const response = await handlers.POST(postRequest(payload, capability));
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "invalid outreach review request" });
     }
+    const oversized = await handlers.POST(postRequest({ ...body, body: "x".repeat(20_001) }, capability));
+    expect(oversized.status).toBe(413);
+    expect(await oversized.json()).toEqual({ error: "outreach review content too large" });
     expect(calls).toBe(0);
   });
 
-  test("rejects caller-authored eligibility and malformed identity before mutation", async () => {
+  test("POST and GET require the distinct review capability", async () => {
     let calls = 0;
-    const post = createOutreachReviewPostHandler({
-      serverCapability: "server-secret",
-      peerCapability: "decision-secret",
-      admit: async () => { calls += 1; return { id: "bad", created: true }; },
-    });
-    expect((await post(request({ ...body, outreachReview: { admittedBy: "server" } }, "server-secret"))).status).toBe(400);
-    expect((await post(request({ ...body, capability: "caller-authored" }, "server-secret"))).status).toBe(400);
-    expect((await post(request({ ...body, draftSha256: "bad" }, "server-secret"))).status).toBe(400);
+    const handlers = createOutreachReviewHandlers(dependencies({
+      admit: async () => { calls += 1; return {}; }, lookup: async () => { calls += 1; return {}; },
+    }));
+    expect((await handlers.POST(postRequest(body))).status).toBe(401);
+    expect((await handlers.GET(new Request("http://localhost/api/tasks/outreach-review?candidateId=candidate-1&cohortId=cohort-2"))).status).toBe(401);
+    const collision = createOutreachReviewHandlers(dependencies({ serverCapability: "same", peerCapability: "same" }));
+    expect((await collision.POST(postRequest(body, "same"))).status).toBe(503);
     expect(calls).toBe(0);
   });
 
-  test("never leaks arbitrary dependency errors", async () => {
-    const leakedCapability = "server-secret-do-not-return";
-    const post = createOutreachReviewPostHandler({
-      serverCapability: leakedCapability,
-      peerCapability: "decision-secret",
-      admit: async () => { throw new Error(`Convex internal failure capability=${leakedCapability}`); },
-    });
-    const response = await post(request(body, leakedCapability));
-    const text = await response.text();
-    expect(response.status).toBe(500);
-    expect(JSON.parse(text)).toEqual({ error: "outreach review request failed" });
-    expect(text).not.toContain(leakedCapability);
-    expect(text).not.toContain("Convex");
+  test("GET returns exact count state without review prose", async () => {
+    let received: unknown;
+    const state = { candidateId: "candidate-1", cohortId: "cohort-2", reviewCount: 1, remainingCycles: 1, latest: { taskId: "task-1", draftSha256: SHA, snapshotSha256: "c".repeat(64), reviewCycle: 1, decided: false } };
+    const handlers = createOutreachReviewHandlers(dependencies({ lookup: async (input: unknown) => { received = input; return state; } }));
+    const response = await handlers.GET(new Request("http://localhost/api/tasks/outreach-review?candidateId=candidate-1&cohortId=cohort-2", { headers: { "X-Outreach-Review-Capability": capability } }));
+    expect(response.status).toBe(200);
+    expect(received).toEqual({ candidateId: "candidate-1", cohortId: "cohort-2", capability });
+    expect(await response.json()).toEqual(state);
   });
 
-  test("does not echo an allowlisted conflict even when it equals the capability", async () => {
-    const capability = "existing task is not the same server-admitted outreach review; create a new versioned task";
-    const post = createOutreachReviewPostHandler({
-      serverCapability: capability,
-      peerCapability: "decision-secret",
-      admit: async () => { throw new Error(capability); },
-    });
-    const response = await post(request(body, capability));
-    const text = await response.text();
-    expect(response.status).toBe(409);
-    expect(JSON.parse(text)).toEqual({ error: "outreach review conflict" });
-    expect(text).not.toContain(capability);
+  test("maps stable conflicts and never leaks arbitrary POST or GET dependency errors", async () => {
+    const cycle = createOutreachReviewHandlers(dependencies({ admit: async () => { throw new Error("OUTREACH_REVIEW_CYCLE_LIMIT"); } }));
+    const cycleResponse = await cycle.POST(postRequest(body, capability));
+    expect(cycleResponse.status).toBe(409);
+    expect(await cycleResponse.json()).toEqual({ error: "outreach review cycle limit reached" });
+
+    const corrupt = createOutreachReviewHandlers(dependencies({ lookup: async () => { throw new Error("OUTREACH_REVIEW_AUTHORITY_CORRUPT"); } }));
+    const corruptResponse = await corrupt.GET(new Request("http://localhost/api/tasks/outreach-review?candidateId=candidate-1&cohortId=cohort-2", { headers: { "X-Outreach-Review-Capability": capability } }));
+    expect(corruptResponse.status).toBe(409);
+    expect(await corruptResponse.json()).toEqual({ error: "outreach review authority state is corrupt" });
+
+    const secret = "review-secret-do-not-leak";
+    const leaking = createOutreachReviewHandlers(dependencies({
+      serverCapability: secret,
+      admit: async () => { throw new Error(`Convex ${secret}`); },
+      lookup: async () => { throw new Error(`Convex ${secret}`); },
+    }));
+    for (const response of [
+      await leaking.POST(postRequest(body, secret)),
+      await leaking.GET(new Request("http://localhost/api/tasks/outreach-review?candidateId=candidate-1&cohortId=cohort-2", { headers: { "X-Outreach-Review-Capability": secret } })),
+    ]) {
+      const text = await response.text();
+      expect(response.status).toBe(500);
+      expect(JSON.parse(text)).toEqual({ error: "outreach review request failed" });
+      expect(text).not.toContain(secret);
+    }
   });
 });

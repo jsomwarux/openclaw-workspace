@@ -9,7 +9,8 @@ import type {
   WaitingOn,
   Workstream,
 } from "./types";
-import type { OutreachDecision, OutreachReview } from "./outreach-decision";
+import type { OutreachDecision } from "./outreach-decision";
+import type { OutreachReviewSnapshot } from "./outreach-review";
 
 type RawTask = {
   _id?: string;
@@ -54,8 +55,9 @@ type RawTask = {
   verifierConfirmed?: boolean;
   verifiedAt?: string;
   candidateId?: string;
+  cohortId?: string;
   draftSha256?: string;
-  outreachReview?: OutreachReview;
+  outreachReview?: OutreachReviewSnapshot;
   outreachDecision?: OutreachDecision;
   sourceHash?: string;
   evidenceScore?: number;
@@ -203,6 +205,7 @@ export function taskToSignal(task: RawTask): Signal {
     verifierConfirmed: task.verifierConfirmed,
     verifiedAt: task.verifiedAt,
     candidateId: task.candidateId,
+    cohortId: task.cohortId,
     draftSha256: task.draftSha256,
     outreachReview: task.outreachReview,
     outreachDecision: task.outreachDecision,

@@ -27,9 +27,31 @@ export const workstream = v.union(
 
 export const outreachDecisionValue = v.union(v.literal("approve"), v.literal("reject"));
 
+export const gitBinding = v.object({
+  repository: v.string(),
+  commitSha: v.string(),
+  path: v.string(),
+  blobSha256: v.string(),
+});
+
 export const outreachReview = v.object({
   candidateId: v.string(),
+  cohortId: v.string(),
   draftSha256: v.string(),
+  subject: v.string(),
+  body: v.string(),
+  verifierReport: v.string(),
+  reviewAuthorityId: v.string(),
+  verifierActorId: v.string(),
+  gitBindings: v.object({
+    evidence: gitBinding,
+    policy: gitBinding,
+    gate: gitBinding,
+    draft: gitBinding,
+    verifier: gitBinding,
+  }),
+  snapshotSha256: v.string(),
+  reviewCycle: v.union(v.literal(1), v.literal(2)),
   admittedBy: v.literal("server"),
   admittedAt: v.number(),
 });
@@ -37,6 +59,7 @@ export const outreachReview = v.object({
 export const outreachDecision = v.object({
   candidateId: v.string(),
   draftSha256: v.string(),
+  snapshotSha256: v.string(),
   decision: outreachDecisionValue,
   decidedBy: v.literal("jt"),
   decidedAt: v.number(),
@@ -97,6 +120,7 @@ export default defineSchema({
     verifierConfirmed: v.optional(v.boolean()),
     verifiedAt: v.optional(v.string()),
     candidateId: v.optional(v.string()),
+    cohortId: v.optional(v.string()),
     draftSha256: v.optional(v.string()),
     outreachReview: v.optional(outreachReview),
     outreachDecision: v.optional(outreachDecision),
@@ -114,6 +138,7 @@ export default defineSchema({
     .index("by_slug", ["slug"])
     .index("by_dedupeKey", ["dedupeKey"])
     .index("by_outreach_identity", ["candidateId", "draftSha256"])
+    .index("by_outreach_candidate_cohort", ["candidateId", "cohortId"])
     .index("by_client", ["clientId"]),
 
   clients: defineTable({

@@ -1,5 +1,5 @@
 export class OutreachAuthError extends Error {
-  constructor(message: string, readonly status: 401 | 503) {
+  constructor(message: string, readonly status: 401 | 403 | 503) {
     super(message);
   }
 }
@@ -7,7 +7,8 @@ export class OutreachAuthError extends Error {
 export function authorizeJtIdentity(headers: Headers, configuredLogin: string | undefined) {
   if (!configuredLogin) throw new OutreachAuthError("JT login is not configured", 503);
   const login = headers.get("Tailscale-User-Login");
-  if (!login || login !== configuredLogin) throw new OutreachAuthError("JT identity required", 401);
+  if (!login) throw new OutreachAuthError("JT identity required", 401);
+  if (login !== configuredLogin) throw new OutreachAuthError("JT identity forbidden", 403);
   return { login };
 }
 
