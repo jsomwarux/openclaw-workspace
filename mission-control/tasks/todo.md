@@ -123,3 +123,11 @@
 - [x] Add an atomic specialized outreach-review admission path and make generic task writes reject its server-owned marker.
 - [x] Run focused/full tests, TypeScript, production build, and diff/security checks.
 - [x] Commit explicit paths only; do not push or deploy.
+
+## Plan — immutable outreach review snapshot — 2026-09-15
+- [x] Reproduce generic updateStatus/update/upsert/delete/autoArchive mutations and archived-decision authorization.
+- [x] Replace field-specific protection with a single guard that blocks every generic mutation of a server-admitted review task.
+- [x] Apply the guard to every task mutation path and keep auto-archive/backfill from mutating review snapshots.
+- [x] Require a non-archived exact task for outreach authorization.
+- [x] Run focused/full tests, TypeScript, build, and security/diff checks.
+- [x] Commit explicit paths only; do not push or deploy.

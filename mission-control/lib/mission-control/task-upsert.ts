@@ -1,4 +1,4 @@
-import { assertOutreachIdentityMutation, type OutreachTask } from "./outreach-decision";
+import { assertOutreachTaskMutable, type OutreachTask } from "./outreach-decision";
 
 export function resolveTaskUpsert<TId, TFields extends Record<string, unknown>>(
   existing: { _id: TId; createdAt: number; updatedAt: number } | null,
@@ -8,6 +8,6 @@ export function resolveTaskUpsert<TId, TFields extends Record<string, unknown>>(
   if (!existing) {
     return { operation: "create" as const, fields: { ...input, createdAt: now, updatedAt: now } };
   }
-  assertOutreachIdentityMutation(existing as unknown as OutreachTask, input);
+  assertOutreachTaskMutable(existing as unknown as OutreachTask);
   return { operation: "update" as const, id: existing._id, fields: { ...input, updatedAt: now } };
 }

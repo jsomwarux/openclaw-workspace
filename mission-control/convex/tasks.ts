@@ -5,7 +5,7 @@ import type { MutationCtx } from "./_generated/server";
 import { outreachDecisionValue, taskStatus, waitingOn, workstream } from "./schema";
 import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 import { resolveTaskCreateOnly } from "../lib/mission-control/task-create-only";
-import { assertOutreachIdentityMutation, assertOutreachTaskRemoval, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
+import { assertOutreachTaskMutable, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
 import { assertServerCapability } from "../lib/mission-control/outreach-auth";
 import { resolveOutreachReviewCreateOnly } from "../lib/mission-control/outreach-review";
 
@@ -284,6 +284,9 @@ export const updateStatus = mutation({
     status: taskStatus,
   },
   handler: async (ctx, args) => {
+    const task = await ctx.db.get(args.id);
+    if (!task) throw new Error(`Task not found: ${args.id}`);
+    assertOutreachTaskMutable(task);
     await ctx.db.patch(args.id, { status: args.status, updatedAt: Date.now() });
   },
 });
@@ -320,7 +323,7 @@ export const update = mutation({
     const { id, auditSource: source, auditEvidence, ...fields } = args;
     const task = await ctx.db.get(id);
     if (!task) throw new Error(`Task not found: ${id}`);
-    assertOutreachIdentityMutation(task, fields);
+    assertOutreachTaskMutable(task);
     assertNightlyAdmission({ ...task, ...fields });
     await auditChanges(ctx, task, fields, source ?? "jt", auditEvidence ?? "manual edit");
     await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
@@ -331,7 +334,7 @@ export const remove = mutation({
   args: { id: v.id("tasks") },
   handler: async (ctx, args) => {
     const task = await ctx.db.get(args.id);
-    assertOutreachTaskRemoval(task);
+    assertOutreachTaskMutable(task);
     await ctx.db.delete(args.id);
   },
 });
@@ -410,6 +413,7 @@ export const autoArchive = internalMutation({
       .collect();
     let archived = 0;
     for (const task of doneTasks) {
+      if (task.outreachReview) continue;
       if (task.updatedAt < sevenDaysAgo) {
         await ctx.db.patch(task._id, { status: "archived", updatedAt: Date.now() });
         archived++;
@@ -428,6 +432,9 @@ export const updatePipelineStage = mutation({
   },
   handler: async (ctx, args) => {
     const { id, ...fields } = args;
+    const task = await ctx.db.get(id);
+    if (!task) throw new Error(`Task not found: ${id}`);
+    assertOutreachTaskMutable(task);
     await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
   },
 });
@@ -530,7 +537,7 @@ export const backfillClientIds = mutation({
     for (const rule of CLIENT_BACKFILL) {
       const clientId = byName.get(rule.client);
       const task = tasks.find(
-        (t) => t.title.includes(rule.match) && t.status !== "done" && t.status !== "archived",
+        (t) => !t.outreachReview && t.title.includes(rule.match) && t.status !== "done" && t.status !== "archived",
       );
       if (!clientId || !task) {
         applied.push({ match: rule.match, client: rule.client, taskId: null });

@@ -38,6 +38,25 @@ describe("deduplicated task upsert", () => {
       },
     };
     expect(errorMessage(() => resolveTaskUpsert(existing, { candidateId: "candidate-1", draftSha256: "b".repeat(64) }, 200)))
-      .toContain("outreach decision identity is immutable");
+      .toContain("outreach review task is immutable");
+  });
+
+  test("cannot mutate an undecided outreach review snapshot through generic keyed POST", () => {
+    const existing = {
+      _id: "task-1",
+      createdAt: 100,
+      updatedAt: 100,
+      title: "Exact review content",
+      candidateId: "candidate-1",
+      draftSha256: "a".repeat(64),
+      outreachReview: {
+        candidateId: "candidate-1",
+        draftSha256: "a".repeat(64),
+        admittedBy: "server" as const,
+        admittedAt: 100,
+      },
+    };
+    expect(errorMessage(() => resolveTaskUpsert(existing, { title: "Forged replacement", dedupeKey: "k" }, 200)))
+      .toContain("outreach review task is immutable");
   });
 });

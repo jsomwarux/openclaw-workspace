@@ -20,6 +20,7 @@ export type OutreachTask = {
   id?: string;
   candidateId?: string;
   draftSha256?: string;
+  status?: string;
   outreachReview?: OutreachReview;
   outreachDecision?: OutreachDecision;
 };
@@ -85,36 +86,17 @@ export function resolveOutreachDecision(task: OutreachTask, input: DecisionInput
   };
 }
 
-export function assertOutreachIdentityMutation(task: OutreachTask, fields: Record<string, unknown>): void {
-  if (
-    task.outreachDecision
-    && (
-      ("candidateId" in fields && fields.candidateId !== task.candidateId)
-      || ("draftSha256" in fields && fields.draftSha256 !== task.draftSha256)
-    )
-  ) {
-    throw new Error("outreach decision identity is immutable");
+export function assertOutreachTaskMutable(task: OutreachTask | null): void {
+  if (task?.outreachReview || task?.outreachDecision) {
+    throw new Error("outreach review task is immutable; only the specialized decision mutation may append");
   }
-  if (
-    task.outreachReview
-    && (
-      ("candidateId" in fields && fields.candidateId !== task.candidateId)
-      || ("draftSha256" in fields && fields.draftSha256 !== task.draftSha256)
-    )
-  ) {
-    throw new Error("outreach review identity is immutable");
-  }
-}
-
-export function assertOutreachTaskRemoval(task: OutreachTask | null): void {
-  if (task?.outreachDecision) throw new Error("outreach decision task is immutable");
-  if (task?.outreachReview) throw new Error("outreach review task is immutable");
 }
 
 export function resolveOutreachLookup(task: OutreachTask | null, candidateId: string, draftSha256: string) {
   validateOutreachIdentity(candidateId, draftSha256);
   if (
     !task
+    || task.status === "archived"
     || task.candidateId !== candidateId
     || task.draftSha256 !== draftSha256
     || !task.outreachDecision

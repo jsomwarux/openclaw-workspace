@@ -309,7 +309,7 @@
     <section>
       <h2>Outreach decision authority hardening — 2026-09-15</h2>
       <div class="summary">
-        <p><strong>Status:</strong> ready for independent verification</p>
+        <p><strong>Status:</strong> superseded by immutable snapshot hardening below</p>
         <p><strong>Task:</strong> prevent unauthenticated callers and generic tasks from impersonating JT outreach authority.</p>
       </div>
       <h3>Design Decisions</h3>
@@ -329,6 +329,31 @@
         <li>Full suite: 177 tests passed across 35 files with 0 failures and 424 assertions.</li>
         <li><code>bunx tsc --noEmit --incremental false</code>: exit 0.</li>
         <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated, including both outreach routes.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Immutable outreach review snapshot — 2026-09-15</h2>
+      <div class="summary">
+        <p><strong>Status:</strong> builder verification complete; fresh non-builder review required</p>
+        <p><strong>Task:</strong> freeze the complete review context JT saw, not only its candidate/draft identity.</p>
+        <ol>
+          <li>One shared guard rejects every generic single-task mutation of a server-admitted review.</li>
+          <li>Auto-archive and client backfill skip review snapshots rather than aborting their whole batch.</li>
+          <li>An archived review can never authorize pre-send lookup.</li>
+        </ol>
+      </div>
+      <h3>Design Decisions</h3><p>The existing task remains the sole review and approval record. Adding a second immutable record would duplicate authority. The server-owned marker now freezes title, description/evidence, status, identity/hash, assignee, priority, and every other task field through a single all-or-nothing generic mutation guard. Only the capability-protected decision mutation may append the first immutable decision.</p>
+      <h3>Deviations</h3><p>None.</p>
+      <h3>Tradeoffs</h3><p>Review cards cannot use ordinary status, edit, delete, pipeline-stage, archive, or backfill controls. Any changed draft or decision context requires a new versioned review task, preserving exactly what JT saw.</p>
+      <h3>Open Questions</h3><p>None blocking implementation. Deployment and environment configuration remain out of scope.</p>
+      <h3>Files Changed</h3><p><code>convex/tasks.ts</code>, outreach decision/upsert helpers and hostile tests, Convex wiring contract tests, project contract, plan, and implementation records.</p>
+      <h3>Verification</h3>
+      <ul>
+        <li>RED: focused suite produced five failures plus one missing-export error. Generic content upsert was allowed, mutation paths lacked the shared guard/skip behavior, and archived approved cards authorized.</li>
+        <li>GREEN focused suite: 24 tests passed with 0 failures and 40 assertions.</li>
+        <li>Full suite: 183 tests passed across 35 files with 0 failures and 432 assertions.</li>
+        <li><code>bunx tsc --noEmit --incremental false</code>: exit 0 after the build-generated type tree stabilized.</li>
+        <li><code>NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:3210 bun run build</code>: exit 0; 41/41 pages generated.</li>
       </ul>
     </section>
     </main>
