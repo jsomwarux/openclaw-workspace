@@ -20,4 +20,5 @@ if [ -z "$NODE_BIN" ]; then
   exit 127
 fi
 
-exec "$NODE_BIN" node_modules/.bin/next dev -H 127.0.0.1 -p 3000
+exec "$NODE_BIN" scripts/outreach-runtime-secrets.mjs run-next -- \
+  "$NODE_BIN" node_modules/.bin/next dev -H 127.0.0.1 -p 3000

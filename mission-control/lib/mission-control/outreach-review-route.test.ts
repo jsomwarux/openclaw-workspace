@@ -90,6 +90,13 @@ describe("outreach review owner API", () => {
     expect(cycleResponse.status).toBe(409);
     expect(await cycleResponse.json()).toEqual({ error: "outreach review cycle limit reached" });
 
+    const wrappedCycle = createOutreachReviewHandlers(dependencies({
+      admit: async () => { throw new Error("[CONVEX M(tasks:createOutreachReview)] Server Error\nUncaught Error: OUTREACH_REVIEW_CYCLE_LIMIT"); },
+    }));
+    const wrappedCycleResponse = await wrappedCycle.POST(postRequest(body, capability));
+    expect(wrappedCycleResponse.status).toBe(409);
+    expect(await wrappedCycleResponse.json()).toEqual({ error: "outreach review cycle limit reached" });
+
     const corrupt = createOutreachReviewHandlers(dependencies({ lookup: async () => { throw new Error("OUTREACH_REVIEW_AUTHORITY_CORRUPT"); } }));
     const corruptResponse = await corrupt.GET(new Request("http://localhost/api/tasks/outreach-review?candidateId=candidate-1&cohortId=cohort-2", { headers: { "X-Outreach-Review-Capability": capability } }));
     expect(corruptResponse.status).toBe(409);
