@@ -4,6 +4,7 @@ import {
   existsSync,
   mkdtempSync,
   readFileSync,
+  renameSync,
   rmSync,
   statSync,
   writeFileSync,
@@ -86,6 +87,45 @@ describe("outreach runtime secret handling", () => {
         .toBe("v3 capability helper mismatch; explicit versioned migration required");
 
       expect(readFileSync(v3Path)).toEqual(before);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("publishes the source stamp before the v3 helper path", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-publish-order-test-"));
+    const v3Path = join(directory, "outreach-keychain-helper-v3");
+    const targets: string[] = [];
+    try {
+      ensureV3KeychainHelper(v3Path, "/usr/bin/swiftc", {
+        rename: (source, target) => {
+          targets.push(String(target));
+          renameSync(source, target);
+        },
+      });
+      expect(targets).toEqual([`${v3Path}.sha256`, v3Path]);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("a crash after stamp publication leaves v3 absent and recompilable", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-publish-crash-test-"));
+    const v3Path = join(directory, "outreach-keychain-helper-v3");
+    let publishes = 0;
+    try {
+      expect(captureError(() => ensureV3KeychainHelper(v3Path, "/usr/bin/swiftc", {
+        rename: (source, target) => {
+          publishes += 1;
+          if (publishes === 2) throw new Error("simulated publish crash");
+          renameSync(source, target);
+        },
+      }))).toBe("simulated publish crash");
+      expect(existsSync(`${v3Path}.sha256`)).toBe(true);
+      expect(existsSync(v3Path)).toBe(false);
+
+      ensureV3KeychainHelper(v3Path);
+      expect(spawnSync(v3Path, ["probe", "outreach-capabilities-v3"]).status).toBe(0);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
@@ -238,6 +278,54 @@ describe("outreach runtime secret handling", () => {
     expect(request.file).toBe("/usr/bin/lockf");
     expect(request.args).toContain("--outreach-lock-held");
     expect(JSON.stringify(request)).not.toContain("authority-secret-must-not-leak");
+  });
+
+  test("runtime capability transport never serializes onto stdout", () => {
+    const runtime = readFileSync("scripts/outreach-runtime-secrets.mjs", "utf8");
+    expect(runtime).not.toContain("process.stdout.write(JSON.stringify(readRuntimeEnvironment()))");
+    expect(runtime).toContain("result.output[3]");
+  });
+
+  test("forged internal environment emission without private fd fails before stdout or Keychain access", () => {
+    const result = spawnSync(
+      "/opt/homebrew/opt/node@22/bin/node",
+      [
+        "scripts/outreach-runtime-secrets.mjs",
+        "--outreach-lock-held",
+        "emit-runtime-environment",
+      ],
+      {
+        encoding: "utf8",
+        env: { ...process.env, OUTREACH_LOCKF_INTERNAL: "1" },
+        stdio: ["ignore", "pipe", "pipe"],
+      },
+    );
+    expect(result.status).toBe(2);
+    expect(result.stdout).toBe("");
+    expect(result.stderr).toContain("private capability pipe required");
+    expect(result.stdout).not.toContain("OUTREACH_REVIEW_CAPABILITY");
+  });
+
+  test("lockf preserves a parent-created private fd 3 while stdout stays nonsecret", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-lockf-pipe-test-"));
+    try {
+      const result = spawnSync(
+        "/opt/homebrew/opt/node@22/bin/node",
+        [
+          "-e",
+          [
+            'const { spawnSync } = require("node:child_process");',
+            `const result = spawnSync("/usr/bin/lockf", [${JSON.stringify(join(directory, "lock"))}, "/bin/sh", "-c", "printf private-payload >&3"], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe", "pipe"] });`,
+            'if (result.status !== 0 || result.stdout !== "" || result.output[3] !== "private-payload") process.exit(1);',
+          ].join(" "),
+        ],
+        { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] },
+      );
+      expect(result.status).toBe(0);
+      expect(result.stdout).toBe("");
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
   });
 
   test("helper subprocesses fail closed on a bounded timeout", () => {

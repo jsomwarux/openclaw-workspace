@@ -11,7 +11,7 @@ The review and decision capabilities remain mandatory. The review-authority writ
 
 ## Runtime mapping
 
-The checked-in Swift source compiles only to the stable `.runtime/outreach-keychain-helper-v3` path. That v3 helper encodes all four values in one versioned JSON capability set and stores the set with one macOS Keychain item update/add. `read-set` returns the whole set in one captured pipe response; the Node wrapper validates the exact shape, nonblank values, and pairwise distinction without putting values in arguments or logs. The unchanged `.runtime/outreach-keychain-helper` remains the sole owner/reader of legacy review and decision items. A complete authority pair adds the same three variables to both the Next.js process and local Convex configuration:
+The checked-in Swift source compiles only to the stable `.runtime/outreach-keychain-helper-v3` path. That v3 helper encodes all four values in one versioned JSON capability set and stores the set with one macOS Keychain item update/add. `read-set` returns the whole set in one captured pipe response; the Node wrapper validates the exact shape, nonblank values, and pairwise distinction without putting values in arguments or logs. Service launch transfers the resulting environment from the locked child to its parent only over a parent-created file descriptor 3; stdout and stderr remain nonsecret, and missing private transport fails before Keychain access. The unchanged `.runtime/outreach-keychain-helper` remains the sole owner/reader of legacy review and decision items. A complete authority pair adds the same three variables to both the Next.js process and local Convex configuration:
 
 - `OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY`
 - `OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY`
@@ -35,7 +35,7 @@ The install command rotates all four capabilities as one requested operation and
 - Missing mandatory review or decision value: startup and sync fail closed.
 - Both authority values absent: existing services start; Next omits authority variables and Convex receives explicit deletions for all three authority variables.
 - Partial authority pair, present-but-blank value, or any collision: startup and sync fail closed.
-- Missing v3 helper: compile privately and atomically install stable v3 plus its owner-only source stamp; legacy bytes remain unchanged.
+- Missing v3 helper: compile and probe privately, atomically publish the owner-only source stamp first, then publish stable v3 last; legacy bytes remain unchanged. A crash after stamp publication leaves the helper absent and safely recompilable, so Keychain installation cannot begin from a partial publish.
 - Existing v3 probe/stamp mismatch: fail closed with versioned migration guidance. Never replace an existing Keychain-owning helper path.
 - Failed rotation: the prior versioned set remains authoritative; no individual capability item is partially changed.
 - Concurrent reads/rotation: `/usr/bin/lockf` serializes the complete short-lived operation on `.runtime/outreach-capability.lock`; the OS releases the advisory lock on process death.

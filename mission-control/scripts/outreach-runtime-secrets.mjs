@@ -6,6 +6,7 @@ import {
   chmodSync,
   closeSync,
   existsSync,
+  fstatSync,
   mkdirSync,
   mkdtempSync,
   openSync,
@@ -27,6 +28,7 @@ const LOCKED_OPERATION_TIMEOUT_MS = 30_000;
 const CONVEX_SYNC_TIMEOUT_MS = 10_000;
 const LOCKED_FLAG = "--outreach-lock-held";
 const LOCKED_ENV = "OUTREACH_LOCKF_INTERNAL";
+const PRIVATE_PIPE_PREAMBLE = "outreach-runtime-environment-v1\n";
 export const AUTHORITY_VERIFIER_ACTOR_ID = "openclaw:review-verifier-v1";
 
 export function buildKeychainHelperRequest(
@@ -67,6 +69,7 @@ function ensurePrivateDirectory(path) {
 export function ensureV3KeychainHelper(
   helperPath = V3_KEYCHAIN_HELPER,
   compilerPath = "/usr/bin/swiftc",
+  { rename = renameSync } = {},
 ) {
   const digest = sourceDigest();
   if (existsSync(helperPath)) {
@@ -93,8 +96,8 @@ export function ensureV3KeychainHelper(
     }
     writeFileSync(temporaryStamp, `${digest}\n`, { mode: 0o600 });
     chmodSync(temporaryStamp, 0o600);
-    renameSync(temporaryHelper, helperPath);
-    renameSync(temporaryStamp, `${helperPath}.sha256`);
+    rename(temporaryStamp, `${helperPath}.sha256`);
+    rename(temporaryHelper, helperPath);
   } finally {
     rmSync(temporaryDirectory, { recursive: true, force: true });
   }
@@ -389,13 +392,26 @@ function runLockedReexec(operationArgs, captureOutput = false) {
     encoding: "utf8",
     maxBuffer: 1024 * 1024,
     env: { ...process.env, [LOCKED_ENV]: "1" },
-    stdio: captureOutput ? ["ignore", "pipe", "pipe"] : "inherit",
+    stdio: captureOutput ? ["ignore", "pipe", "pipe", "pipe"] : "inherit",
     timeout: LOCKED_OPERATION_TIMEOUT_MS,
     killSignal: "SIGKILL",
   });
   if (result.error?.code === "ETIMEDOUT") throw new Error("capability lock operation timed out");
   if (result.status !== 0) throw new Error("secure capability operation failed");
-  return result.stdout;
+  return captureOutput ? result.output[3] : result.stdout;
+}
+
+function requirePrivateCapabilityPipe(descriptor = 3) {
+  try {
+    fstatSync(descriptor);
+    writeFileSync(descriptor, PRIVATE_PIPE_PREAMBLE);
+  } catch {
+    throw new Error("private capability pipe required");
+  }
+}
+
+function writeRuntimeEnvironmentToPrivatePipe(values, descriptor = 3) {
+  writeFileSync(descriptor, JSON.stringify(values));
 }
 
 const cliArgs = process.argv.slice(2);
@@ -407,14 +423,19 @@ if (import.meta.main) {
       if (mode === "install") install();
       else if (mode === "sync-convex") await syncConvex();
       else if (mode === "emit-runtime-environment") {
-        process.stdout.write(JSON.stringify(readRuntimeEnvironment()));
+        requirePrivateCapabilityPipe();
+        writeRuntimeEnvironmentToPrivatePipe(readRuntimeEnvironment());
       } else throw new Error("unsupported secure capability operation");
     } else {
       const [mode, separator, ...command] = cliArgs;
       if (["install", "sync-convex"].includes(mode)) {
         runLockedReexec([mode]);
       } else if (["run-next", "run-convex"].includes(mode) && separator === "--") {
-        const values = JSON.parse(runLockedReexec(["emit-runtime-environment"], true));
+        const payload = runLockedReexec(["emit-runtime-environment"], true);
+        if (!payload?.startsWith(PRIVATE_PIPE_PREAMBLE)) {
+          throw new Error("secure capability operation failed");
+        }
+        const values = JSON.parse(payload.slice(PRIVATE_PIPE_PREAMBLE.length));
         runService(command, values);
       } else throw new Error("unsupported secure capability operation");
     }
