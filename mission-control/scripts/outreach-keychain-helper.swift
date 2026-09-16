@@ -2,6 +2,7 @@ import Foundation
 import Security
 
 let account = "jtsomwaru"
+let protocolVersion = "outreach-capabilities-v2"
 let services = [
     "review": "com.openclaw.mission-control.outreach-review",
     "decision": "com.openclaw.mission-control.outreach-decision",
@@ -72,7 +73,9 @@ func read(_ service: String, allowMissing: Bool = false) -> Data? {
 }
 
 let args = Array(CommandLine.arguments.dropFirst())
-if args == ["install"] {
+if args == ["probe", protocolVersion] {
+    // A successful, silent probe lets the runtime reject stale helper binaries.
+} else if args == ["install"] {
     let review = randomCapability()
     let decision = randomCapability()
     let authorityWrite = randomCapability()
@@ -91,6 +94,8 @@ if args == ["install"] {
     if let value = read(service, allowMissing: true) {
         FileHandle.standardOutput.write(value)
         FileHandle.standardOutput.write(Data("\n".utf8))
+    } else {
+        exit(3)
     }
 } else {
     fail("unsupported keychain operation")

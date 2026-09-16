@@ -7,7 +7,7 @@ Mission Control uses four opaque, pairwise-distinct outreach capabilities:
 - `review-authority-write` protects server-authored review-authority admission.
 - `review-authority-read` protects exact review-authority lookup.
 
-The review and decision capabilities remain mandatory. The review-authority write/read pair is optional until an explicitly approved rotation activates it. When neither authority item exists, the existing review and decision services start normally and receive no review-authority environment variables; only `/api/tasks/outreach-review-authority` remains unavailable with `503`. If exactly one authority item exists, or any of the four values collide, service launch and Convex configuration sync fail closed.
+The review and decision capabilities remain mandatory. The review-authority write/read pair is optional until an explicitly approved rotation activates it. When neither authority item exists, the existing review and decision services start normally, Next receives no review-authority environment variables, and Convex sync explicitly deletes any stale authority variables; only `/api/tasks/outreach-review-authority` remains unavailable with `503`. If exactly one authority item exists, either stored item is blank, or any of the four values collide, service launch and Convex configuration sync fail closed.
 
 ## Runtime mapping
 
@@ -17,7 +17,7 @@ The checked-in Swift helper stores the four values under separate macOS Keychain
 - `OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY`
 - `OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID=openclaw:review-verifier-v1`
 
-The verifier actor ID is a fixed, bounded server role. It is not operator-configurable and is omitted with the authority variables when the optional pair is absent.
+The verifier actor ID is a fixed, bounded server role. It is not operator-configurable. When the optional pair is absent, it is omitted from Next and explicitly deleted from Convex together with both authority capabilities.
 
 ## Explicit rotation and activation
 
@@ -33,9 +33,9 @@ The install command rotates all four capabilities as one requested operation. Ne
 ## Failure and recovery
 
 - Missing mandatory review or decision value: startup and sync fail closed.
-- Both authority values absent: existing services start; authority variables are omitted.
-- Partial authority pair, blank value, or any collision: startup and sync fail closed.
-- Missing helper binary: the wrapper recompiles it from checked-in Swift source.
+- Both authority values absent: existing services start; Next omits authority variables and Convex receives explicit deletions for all three authority variables.
+- Partial authority pair, present-but-blank value, or any collision: startup and sync fail closed.
+- Missing or stale helper binary: the wrapper checks a silent versioned probe and recompiles from checked-in Swift source before any Keychain operation when the probe fails.
 - Missing local Convex admin configuration: sync fails without exposing credentials or capabilities.
 
 Do not create, rotate, inspect, restart, or deploy during code verification. Tests exercise pure configuration builders and compile the Swift source to a temporary output only.

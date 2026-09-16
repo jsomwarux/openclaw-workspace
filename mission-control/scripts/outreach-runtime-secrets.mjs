@@ -2,22 +2,35 @@
 
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
+import { dirname } from "node:path";
 
 const KEYCHAIN_HELPER = "./.runtime/outreach-keychain-helper";
+const KEYCHAIN_HELPER_PROTOCOL = "outreach-capabilities-v2";
 export const AUTHORITY_VERIFIER_ACTOR_ID = "openclaw:review-verifier-v1";
 
-export function buildKeychainHelperRequest() {
+export function buildKeychainHelperRequest(helperPath = KEYCHAIN_HELPER) {
   return {
     file: "/usr/bin/swiftc",
-    args: ["./scripts/outreach-keychain-helper.swift", "-o", KEYCHAIN_HELPER],
+    args: ["./scripts/outreach-keychain-helper.swift", "-o", helperPath],
   };
 }
 
-function ensureKeychainHelper() {
-  if (existsSync(KEYCHAIN_HELPER)) return;
-  mkdirSync("./.runtime", { recursive: true });
-  const request = buildKeychainHelperRequest();
+function supportsCurrentKeychainHelper(helperPath) {
+  if (!existsSync(helperPath)) return false;
+  const result = spawnSync(helperPath, ["probe", KEYCHAIN_HELPER_PROTOCOL], {
+    stdio: ["ignore", "ignore", "ignore"],
+  });
+  return result.status === 0;
+}
+
+export function ensureKeychainHelper(helperPath = KEYCHAIN_HELPER) {
+  if (supportsCurrentKeychainHelper(helperPath)) return;
+  mkdirSync(dirname(helperPath), { recursive: true });
+  const request = buildKeychainHelperRequest(helperPath);
   run(request.file, request.args, { stdio: ["ignore", "ignore", "pipe"] });
+  if (!supportsCurrentKeychainHelper(helperPath)) {
+    throw new Error("secure capability helper protocol is unavailable");
+  }
 }
 
 export function buildInstallerRequest() {
@@ -30,14 +43,15 @@ export function buildRuntimeEnvironment(review, decision, login, authorityWrite,
   );
   const baseValues = values.slice(0, 3);
   const authorityValues = values.slice(3);
-  const hasCompleteAuthorityPair = authorityValues.every(Boolean);
-  const hasPartialAuthorityPair = authorityValues.some(Boolean) && !hasCompleteAuthorityPair;
+  const authorityPresence = [authorityWrite, authorityRead].map((value) => value !== undefined);
+  const hasCompleteAuthorityPair = authorityPresence.every(Boolean) && authorityValues.every(Boolean);
+  const hasInvalidAuthorityPair = authorityPresence.some(Boolean) && !hasCompleteAuthorityPair;
   const capabilities = hasCompleteAuthorityPair
     ? [values[0], values[1], values[3], values[4]]
     : [values[0], values[1]];
   if (
     baseValues.some((value) => !value)
-    || hasPartialAuthorityPair
+    || hasInvalidAuthorityPair
     || new Set(capabilities).size !== capabilities.length
   ) {
     throw new Error("outreach capability configuration is invalid");
@@ -78,6 +92,12 @@ export function buildConvexEnvironmentChanges(review, decision, authorityWrite, 
         name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID",
         value: values.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID,
       },
+    );
+  } else {
+    changes.push(
+      { name: "OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY" },
+      { name: "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY" },
+      { name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID" },
     );
   }
   return changes;
@@ -128,10 +148,20 @@ function readOptional(kind) {
     throw new Error("unknown optional capability kind");
   }
   ensureKeychainHelper();
-  const result = run(KEYCHAIN_HELPER, ["read-optional", kind], {
+  const result = spawnSync(KEYCHAIN_HELPER, ["read-optional", kind], {
+    encoding: "utf8",
+    maxBuffer: 1024 * 1024,
     stdio: ["ignore", "pipe", "pipe"],
   });
-  return result.stdout.trim() || undefined;
+  return parseOptionalCapabilityRead(result);
+}
+
+export function parseOptionalCapabilityRead(result) {
+  if (result.status === 3) return undefined;
+  if (result.status !== 0) throw new Error("secure capability operation failed");
+  const value = result.stdout.trim();
+  if (!value) throw new Error("stored capability is empty");
+  return value;
 }
 
 function readCapabilitySet() {

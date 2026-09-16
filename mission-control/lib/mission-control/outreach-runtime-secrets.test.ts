@@ -1,6 +1,8 @@
 import { describe, expect, test } from "bun:test";
-import { readFileSync } from "node:fs";
+import { chmodSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   AUTHORITY_VERIFIER_ACTOR_ID,
   buildKeychainHelperRequest,
@@ -8,6 +10,8 @@ import {
   buildConvexEnvironmentChanges,
   buildRuntimeEnvironment,
   buildServiceProcessEnvironment,
+  ensureKeychainHelper,
+  parseOptionalCapabilityRead,
   resolveTailscaleLogin,
 } from "../../scripts/outreach-runtime-secrets.mjs";
 
@@ -28,6 +32,24 @@ describe("outreach runtime secret handling", () => {
     });
     const runtime = readFileSync("scripts/outreach-runtime-secrets.mjs", "utf8");
     expect(runtime).toContain("function install() {\n  ensureKeychainHelper();");
+  });
+
+  test("replaces an executable stale helper that lacks the required protocol", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-helper-test-"));
+    const helperPath = join(directory, "outreach-keychain-helper");
+    try {
+      writeFileSync(helperPath, "#!/bin/sh\nexit 2\n");
+      chmodSync(helperPath, 0o700);
+
+      ensureKeychainHelper(helperPath);
+
+      const probe = spawnSync(helperPath, ["probe", "outreach-capabilities-v2"], { encoding: "utf8" });
+      expect(probe.status).toBe(0);
+      expect(probe.stdout).toBe("");
+      expect(readFileSync(helperPath).subarray(0, 2).toString()).not.toBe("#!");
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
   });
 
   test("generates and stores capabilities inside the Keychain helper", () => {
@@ -82,6 +104,18 @@ describe("outreach runtime secret handling", () => {
     ))).toBe("outreach capability configuration is invalid");
   });
 
+  test("fails closed when both authority capabilities are present but blank", () => {
+    expect(captureError(() => buildRuntimeEnvironment(
+      "review-a", "decision-b", "jt@example.com", " ", "\t",
+    ))).toBe("outreach capability configuration is invalid");
+  });
+
+  test("distinguishes an absent optional Keychain item from a blank stored item", () => {
+    expect(parseOptionalCapabilityRead({ status: 3, stdout: "" })).toBe(undefined);
+    expect(captureError(() => parseOptionalCapabilityRead({ status: 0, stdout: " \n" })))
+      .toBe("stored capability is empty");
+  });
+
   test("rejects every collision among all four capability roles", () => {
     const baseline = ["review-a", "decision-b", "authority-write-c", "authority-read-d"];
     for (let left = 0; left < baseline.length; left += 1) {
@@ -121,6 +155,9 @@ describe("outreach runtime secret handling", () => {
     expect(buildConvexEnvironmentChanges("review-a", "decision-b")).toEqual([
       { name: "OUTREACH_REVIEW_CAPABILITY", value: "review-a" },
       { name: "OUTREACH_DECISION_CAPABILITY", value: "decision-b" },
+      { name: "OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY" },
+      { name: "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY" },
+      { name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID" },
     ]);
   });
 
