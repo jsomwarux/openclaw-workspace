@@ -6,18 +6,82 @@ import { gitBinding, outreachDecisionValue, taskStatus, waitingOn, workstream } 
 import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 import { resolveTaskCreateOnly } from "../lib/mission-control/task-create-only";
 import { assertOutreachTaskMutable, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
-import { assertDistinctServerCapability } from "../lib/mission-control/outreach-auth";
+import {
+  OutreachAuthError,
+  assertDistinctServerCapability,
+  secureCapabilityEqual,
+} from "../lib/mission-control/outreach-auth";
 import {
   OutreachReviewContractError,
   resolveOutreachReviewAdmission,
   summarizeOutreachReviews,
 } from "../lib/mission-control/outreach-review";
 import { appendTaskFeedback } from "../lib/mission-control/task-feedback";
+import {
+  OutreachReviewAuthorityError,
+  resolveOutreachReviewAuthorityAdmission,
+  resolveOutreachReviewAuthorityLookup,
+  type OutreachReviewAuthority,
+} from "../lib/mission-control/outreach-review-authority";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
 const NIGHTLY_SOURCE = "nightly-validation-controller";
 const NIGHTLY_PROMOTION_THRESHOLD = 30;
 const NIGHTLY_FRESHNESS_MS = 24 * 60 * 60 * 1000;
+
+type OutreachAuthorityCapabilityKind = "write" | "read";
+
+async function assertOutreachAuthorityCapability(
+  provided: string | undefined,
+  kind: OutreachAuthorityCapabilityKind,
+  configured: readonly [string | undefined, string | undefined, string | undefined, string | undefined],
+): Promise<void> {
+  if (configured.some((value) => !value?.trim())) {
+    throw new OutreachAuthError("capability configuration is invalid", 503);
+  }
+  const values = configured as readonly [string, string, string, string];
+  for (let left = 0; left < values.length; left += 1) {
+    for (let right = left + 1; right < values.length; right += 1) {
+      if (await secureCapabilityEqual(values[left], values[right])) {
+        throw new OutreachAuthError("capability configuration is invalid", 503);
+      }
+    }
+  }
+  const expected = kind === "write" ? values[0] : values[1];
+  if (!provided?.trim() || !(await secureCapabilityEqual(provided, expected))) {
+    throw new OutreachAuthError("server capability required", 401);
+  }
+}
+
+function authorityEntropy(): string {
+  const bytes = new Uint8Array(20);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (value) => value.toString(16).padStart(2, "0")).join("");
+}
+
+function storedAuthority(doc: Doc<"outreachReviewAuthorities">): OutreachReviewAuthority {
+  return {
+    candidateId: doc.candidateId,
+    draftSha256: doc.draftSha256,
+    authorityBundleHash: doc.authorityBundleHash,
+    verifierReportSha256: doc.verifierReportSha256,
+    verifierGitBinding: { ...doc.verifierGitBinding },
+    builderActorId: doc.builderActorId,
+    drafterActorId: doc.drafterActorId,
+    verifierActorId: doc.verifierActorId,
+    reviewId: doc.reviewId,
+    observedAt: doc.observedAt,
+    authorityRevision: doc.authorityRevision,
+  };
+}
+
+function throwAuthorityBoundaryError(error: unknown): never {
+  if (error instanceof OutreachReviewAuthorityError) {
+    if (error.code === "conflict") throw new Error("OUTREACH_REVIEW_AUTHORITY_CONFLICT");
+    if (error.code === "corrupt_authority") throw new Error("OUTREACH_REVIEW_AUTHORITY_CORRUPT");
+  }
+  throw new Error("OUTREACH_REVIEW_AUTHORITY_INVALID");
+}
 
 const operatingSystemArgs = {
   blocks: v.optional(v.number()),
@@ -252,6 +316,87 @@ export const createOnlyByDedupeKey = mutation({
     if (resolved.operation === "existing") return { id: resolved.id, created: false };
     const id = await ctx.db.insert("tasks", resolved.fields);
     return { id, created: true };
+  },
+});
+
+export const createOutreachReviewAuthority = mutation({
+  args: {
+    candidateId: v.string(),
+    draftSha256: v.string(),
+    authorityBundleHash: v.string(),
+    verifierReportSha256: v.string(),
+    verifierGitBinding: gitBinding,
+    builderActorId: v.string(),
+    drafterActorId: v.string(),
+    verifierActorId: v.string(),
+    capability: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await assertOutreachAuthorityCapability(args.capability, "write", [
+      process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY,
+      process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
+      process.env.OUTREACH_REVIEW_CAPABILITY,
+      process.env.OUTREACH_DECISION_CAPABILITY,
+    ]);
+    const { capability: _capability, verifierActorId, ...submission } = args;
+    const matches = await ctx.db
+      .query("outreachReviewAuthorities")
+      .withIndex("by_exact_authority", (q) => q
+        .eq("candidateId", submission.candidateId)
+        .eq("draftSha256", submission.draftSha256)
+        .eq("authorityBundleHash", submission.authorityBundleHash)
+        .eq("verifierReportSha256", submission.verifierReportSha256))
+      .collect();
+    let resolved;
+    try {
+      resolved = await resolveOutreachReviewAuthorityAdmission(
+        matches.map(storedAuthority),
+        submission,
+        verifierActorId,
+        Date.now(),
+        authorityEntropy(),
+      );
+    } catch (error) {
+      throwAuthorityBoundaryError(error);
+    }
+    if (resolved.operation === "existing") return { created: false, authority: resolved.authority };
+    await ctx.db.insert("outreachReviewAuthorities", resolved.authority);
+    return { created: true, authority: resolved.authority };
+  },
+});
+
+export const findOutreachReviewAuthority = query({
+  args: {
+    candidateId: v.string(),
+    draftSha256: v.string(),
+    authorityBundleHash: v.string(),
+    verifierReportSha256: v.string(),
+    verifierGitBinding: gitBinding,
+    capability: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await assertOutreachAuthorityCapability(args.capability, "read", [
+      process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY,
+      process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
+      process.env.OUTREACH_REVIEW_CAPABILITY,
+      process.env.OUTREACH_DECISION_CAPABILITY,
+    ]);
+    const { capability: _capability, ...lookup } = args;
+    const matches = await ctx.db
+      .query("outreachReviewAuthorities")
+      .withIndex("by_exact_authority", (q) => q
+        .eq("candidateId", lookup.candidateId)
+        .eq("draftSha256", lookup.draftSha256)
+        .eq("authorityBundleHash", lookup.authorityBundleHash)
+        .eq("verifierReportSha256", lookup.verifierReportSha256))
+      .collect();
+    try {
+      const authority = await resolveOutreachReviewAuthorityLookup(matches.map(storedAuthority), lookup);
+      if (!authority) return { authorized: false, state: "absent" as const };
+      return { authorized: true, authority };
+    } catch (error) {
+      throwAuthorityBoundaryError(error);
+    }
   },
 });
 

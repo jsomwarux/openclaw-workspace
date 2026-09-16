@@ -84,6 +84,20 @@ export const paymentKind = v.union(
 export const gateBasis = v.union(v.literal("monthly"), v.literal("all-time"));
 
 export default defineSchema({
+  outreachReviewAuthorities: defineTable({
+    candidateId: v.string(),
+    draftSha256: v.string(),
+    authorityBundleHash: v.string(),
+    verifierReportSha256: v.string(),
+    verifierGitBinding: gitBinding,
+    builderActorId: v.string(),
+    drafterActorId: v.string(),
+    verifierActorId: v.string(),
+    reviewId: v.string(),
+    observedAt: v.number(),
+    authorityRevision: v.string(),
+  }).index("by_exact_authority", ["candidateId", "draftSha256", "authorityBundleHash", "verifierReportSha256"]),
+
   tasks: defineTable({
     title: v.string(),
     description: v.optional(v.string()),
