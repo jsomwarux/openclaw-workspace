@@ -96,7 +96,16 @@ export default defineSchema({
     reviewId: v.string(),
     observedAt: v.number(),
     authorityRevision: v.string(),
-  }).index("by_exact_authority", ["candidateId", "draftSha256", "authorityBundleHash", "verifierReportSha256"]),
+  }).index("by_exact_authority", [
+    "candidateId",
+    "draftSha256",
+    "authorityBundleHash",
+    "verifierReportSha256",
+    "verifierGitBinding.repository",
+    "verifierGitBinding.commitSha",
+    "verifierGitBinding.path",
+    "verifierGitBinding.blobSha256",
+  ]),
 
   tasks: defineTable({
     title: v.string(),

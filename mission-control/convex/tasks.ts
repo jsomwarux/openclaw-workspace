@@ -345,7 +345,11 @@ export const createOutreachReviewAuthority = mutation({
         .eq("candidateId", submission.candidateId)
         .eq("draftSha256", submission.draftSha256)
         .eq("authorityBundleHash", submission.authorityBundleHash)
-        .eq("verifierReportSha256", submission.verifierReportSha256))
+        .eq("verifierReportSha256", submission.verifierReportSha256)
+        .eq("verifierGitBinding.repository", submission.verifierGitBinding.repository)
+        .eq("verifierGitBinding.commitSha", submission.verifierGitBinding.commitSha)
+        .eq("verifierGitBinding.path", submission.verifierGitBinding.path)
+        .eq("verifierGitBinding.blobSha256", submission.verifierGitBinding.blobSha256))
       .collect();
     let resolved;
     try {
@@ -388,11 +392,15 @@ export const findOutreachReviewAuthority = query({
         .eq("candidateId", lookup.candidateId)
         .eq("draftSha256", lookup.draftSha256)
         .eq("authorityBundleHash", lookup.authorityBundleHash)
-        .eq("verifierReportSha256", lookup.verifierReportSha256))
+        .eq("verifierReportSha256", lookup.verifierReportSha256)
+        .eq("verifierGitBinding.repository", lookup.verifierGitBinding.repository)
+        .eq("verifierGitBinding.commitSha", lookup.verifierGitBinding.commitSha)
+        .eq("verifierGitBinding.path", lookup.verifierGitBinding.path)
+        .eq("verifierGitBinding.blobSha256", lookup.verifierGitBinding.blobSha256))
       .collect();
     try {
       const authority = await resolveOutreachReviewAuthorityLookup(matches.map(storedAuthority), lookup);
-      if (!authority) return { authorized: false, state: "absent" as const };
+      if (!authority) return { authorized: false };
       return { authorized: true, authority };
     } catch (error) {
       throwAuthorityBoundaryError(error);

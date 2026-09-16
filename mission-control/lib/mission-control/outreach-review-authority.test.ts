@@ -217,10 +217,26 @@ describe("server-owned authority resolution", () => {
     expect(input.verifierGitBinding.path).toBe("reviews/retry-input-mutated.json");
   });
 
-  test("rejects conflicting same-key submissions and verifier mappings", async () => {
+  test("treats a distinct valid verifier Git binding as an independent key", async () => {
     const original = await authority();
-    const changedBinding = submission({ verifierGitBinding: { ...submission().verifierGitBinding, path: "reviews/changed.json" } });
-    for (const [input, verifier] of [[changedBinding, "verifier-1"], [submission(), "verifier-2"]] as const) {
+    const changedBinding = submission({
+      verifierGitBinding: { ...submission().verifierGitBinding, path: "reviews/changed.json" },
+    });
+    const result = await resolveOutreachReviewAuthorityAdmission(
+      [original], changedBinding, "verifier-1", 1_789_452_000_001, "3".repeat(40),
+    );
+    expect(result.operation).toBe("create");
+    if (result.operation !== "create") throw new Error("expected create");
+    expect(result.authority.verifierGitBinding.path).toBe("reviews/changed.json");
+  });
+
+  test("rejects actor changes under the same full key", async () => {
+    const original = await authority();
+    for (const [input, verifier] of [
+      [submission({ builderActorId: "builder-2" }), "verifier-1"],
+      [submission({ drafterActorId: "drafter-2" }), "verifier-1"],
+      [submission(), "verifier-2"],
+    ] as const) {
       try {
         await resolveOutreachReviewAuthorityAdmission([original], input, verifier, 1_789_452_000_001, "3".repeat(40));
         throw new Error("expected conflict");
@@ -270,6 +286,22 @@ describe("server-owned authority resolution", () => {
         expect((error as OutreachReviewAuthorityError).code).toBe("corrupt_authority");
       }
     }
+  });
+
+  test("selects one full binding key without treating a sibling binding as a duplicate", async () => {
+    const original = await authority();
+    const siblingInput = submission({
+      verifierGitBinding: { ...submission().verifierGitBinding, path: "reviews/sibling.json" },
+    });
+    const sibling = await authority(siblingInput);
+    const lookup = {
+      candidateId: original.candidateId,
+      draftSha256: original.draftSha256,
+      authorityBundleHash: original.authorityBundleHash,
+      verifierReportSha256: original.verifierReportSha256,
+      verifierGitBinding: original.verifierGitBinding,
+    };
+    expect(await resolveOutreachReviewAuthorityLookup([original, sibling], lookup)).toEqual(original);
   });
 
   test("detaches exact lookup output from stored and lookup Git bindings", async () => {

@@ -159,11 +159,16 @@ function detachedAuthority(authority: OutreachReviewAuthority): OutreachReviewAu
   };
 }
 
-function sameKey(left: OutreachReviewAuthorityLookup, right: OutreachReviewAuthorityLookup): boolean {
+function sameTuple(left: OutreachReviewAuthorityLookup, right: OutreachReviewAuthorityLookup): boolean {
   return left.candidateId === right.candidateId
     && left.draftSha256 === right.draftSha256
     && left.authorityBundleHash === right.authorityBundleHash
     && left.verifierReportSha256 === right.verifierReportSha256;
+}
+
+function sameKey(left: OutreachReviewAuthorityLookup, right: OutreachReviewAuthorityLookup): boolean {
+  return sameTuple(left, right)
+    && canonicalJson(left.verifierGitBinding) === canonicalJson(right.verifierGitBinding);
 }
 
 async function validateStoredAuthority(value: unknown): Promise<OutreachReviewAuthority> {
@@ -191,11 +196,13 @@ async function validateAuthorityRows(
   rows: readonly OutreachReviewAuthority[],
   expectedKey: OutreachReviewAuthorityLookup,
 ): Promise<OutreachReviewAuthority | null> {
-  if (rows.length > 1) throw new OutreachReviewAuthorityError("corrupt_authority");
-  if (rows.length === 0) return null;
-  const authority = await validateStoredAuthority(rows[0]);
-  if (!sameKey(authority, expectedKey)) throw new OutreachReviewAuthorityError("corrupt_authority");
-  return authority;
+  const authorities = await Promise.all(rows.map(validateStoredAuthority));
+  if (authorities.some((authority) => !sameTuple(authority, expectedKey))) {
+    throw new OutreachReviewAuthorityError("corrupt_authority");
+  }
+  const exact = authorities.filter((authority) => sameKey(authority, expectedKey));
+  if (exact.length > 1) throw new OutreachReviewAuthorityError("corrupt_authority");
+  return exact[0] ?? null;
 }
 
 export async function resolveOutreachReviewAuthorityAdmission(
@@ -243,6 +250,6 @@ export async function resolveOutreachReviewAuthorityLookup(
 ): Promise<OutreachReviewAuthority | null> {
   validateOutreachReviewAuthorityLookup(lookup);
   const authority = await validateAuthorityRows(rows, lookup);
-  if (!authority || canonicalJson(authority.verifierGitBinding) !== canonicalJson(lookup.verifierGitBinding)) return null;
+  if (!authority) return null;
   return detachedAuthority(authority);
 }

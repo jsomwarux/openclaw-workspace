@@ -22,7 +22,7 @@ describe("Convex outreach authority boundary", () => {
       "builderActorId", "drafterActorId", "verifierActorId", "reviewId", "observedAt", "authorityRevision",
     ]) expect(schemaSource).toContain(`${field}:`);
     expect(schemaSource).toContain(
-      '.index("by_exact_authority", ["candidateId", "draftSha256", "authorityBundleHash", "verifierReportSha256"])',
+      '.index("by_exact_authority", [\n    "candidateId",\n    "draftSha256",\n    "authorityBundleHash",\n    "verifierReportSha256",\n    "verifierGitBinding.repository",\n    "verifierGitBinding.commitSha",\n    "verifierGitBinding.path",\n    "verifierGitBinding.blobSha256",\n  ])',
     );
     expect(schemaSource).not.toContain("outreachReviewAuthorities: defineTable({\n    capability:");
   });
@@ -33,6 +33,10 @@ describe("Convex outreach authority boundary", () => {
     expect(write).toContain("export const createOutreachReviewAuthority = mutation");
     expect(lookup).toContain("export const findOutreachReviewAuthority = query");
     expect(write).toContain('ctx.db.insert("outreachReviewAuthorities"');
+    for (const field of ["repository", "commitSha", "path", "blobSha256"]) {
+      expect(write).toContain(`.eq("verifierGitBinding.${field}"`);
+      expect(lookup).toContain(`.eq("verifierGitBinding.${field}"`);
+    }
     expect(write).not.toContain("ctx.db.patch");
     expect(write).not.toContain("ctx.db.delete");
     expect(lookup).not.toContain("ctx.db.patch");

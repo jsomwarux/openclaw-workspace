@@ -79,6 +79,12 @@ function authorityLookup(
 
 type Row = Record<string, any> & { _id: string };
 
+function fieldValue(row: Row, field: string): unknown {
+  return field.split(".").reduce<unknown>((value, segment) => (
+    value && typeof value === "object" ? (value as Record<string, unknown>)[segment] : undefined
+  ), row);
+}
+
 class MemoryDb {
   rows: Row[] = [];
   reads = 0;
@@ -92,7 +98,7 @@ class MemoryDb {
         const filters: Array<[string, unknown]> = [];
         const q = { eq: (field: string, value: unknown) => { filters.push([field, value]); return q; } };
         apply(q);
-        return { collect: async () => this.rows.filter((row) => filters.every(([field, value]) => row[field] === value)) };
+        return { collect: async () => this.rows.filter((row) => filters.every(([field, value]) => fieldValue(row, field) === value)) };
       },
     };
   }
@@ -156,7 +162,7 @@ class OptimisticStore {
             return {
               collect: async () => {
                 await store.synchronizeFirstTwoReads();
-                return snapshot.filter((row) => filters.every(([field, value]) => row[field] === value));
+                return snapshot.filter((row) => filters.every(([field, value]) => fieldValue(row, field) === value));
               },
             };
           },
@@ -359,6 +365,23 @@ describe("registered Convex outreach review authority handlers", () => {
     expect(db.rows.map(authorityFields)).toEqual([original]);
   });
 
+  test("different valid verifier Git bindings are independent first writes", async () => {
+    const db = new MemoryDb();
+    const first = await createAuthorityHandler(ctx(db), authoritySubmission());
+    const siblingInput = authoritySubmission({
+      verifierGitBinding: {
+        ...authoritySubmission().verifierGitBinding,
+        path: "reviews/sibling.json",
+      },
+    });
+    const sibling = await createAuthorityHandler(ctx(db), siblingInput);
+    expect(first.created).toBe(true);
+    expect(sibling.created).toBe(true);
+    expect(db.rows).toHaveLength(2);
+    expect(await createAuthorityHandler(ctx(db), siblingInput)).toEqual({ created: false, authority: sibling.authority });
+    expect(await createAuthorityHandler(ctx(db), authoritySubmission())).toEqual({ created: false, authority: first.authority });
+  });
+
   test("optimistic concurrent identical writes converge and conflicting writes fail closed", async () => {
     const identicalStore = new OptimisticStore();
     const [left, right] = await Promise.all([
@@ -415,11 +438,10 @@ describe("registered Convex outreach review authority handlers", () => {
     });
     expect(await authorityLookupHandler(ctx(db), authorityLookup(authoritySubmission({ candidateId: "absent" })))).toEqual({
       authorized: false,
-      state: "absent",
     });
     const changedBinding = authorityLookup();
     changedBinding.verifierGitBinding.path = "reviews/other.json";
-    expect(await authorityLookupHandler(ctx(db), changedBinding)).toEqual({ authorized: false, state: "absent" });
+    expect(await authorityLookupHandler(ctx(db), changedBinding)).toEqual({ authorized: false });
   });
 
   test("write and read authenticate all four pairwise-distinct capabilities before database access", async () => {
