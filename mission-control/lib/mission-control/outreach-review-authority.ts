@@ -56,8 +56,25 @@ function hasExactKeys(value: Record<string, unknown>, expected: readonly string[
   return actual.length === wanted.length && actual.every((key, index) => key === wanted[index]);
 }
 
+function hasLoneSurrogate(value: string): boolean {
+  for (let index = 0; index < value.length; index += 1) {
+    const code = value.charCodeAt(index);
+    if (code >= 0xd800 && code <= 0xdbff) {
+      const next = value.charCodeAt(index + 1);
+      if (!(next >= 0xdc00 && next <= 0xdfff)) return true;
+      index += 1;
+    } else if (code >= 0xdc00 && code <= 0xdfff) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function requireId(value: unknown): asserts value is string {
-  if (typeof value !== "string" || value.trim() === "" || value.length > 128) {
+  if (
+    typeof value !== "string" || value.trim() === "" || value.length > 128
+    || hasLoneSurrogate(value) || /[\u0000-\u001f\u007f-\u009f]/.test(value)
+  ) {
     throw new OutreachReviewAuthorityError("invalid_request");
   }
 }
@@ -129,9 +146,16 @@ function submissionFromAuthority(authority: OutreachReviewAuthority): OutreachRe
     draftSha256: authority.draftSha256,
     authorityBundleHash: authority.authorityBundleHash,
     verifierReportSha256: authority.verifierReportSha256,
-    verifierGitBinding: authority.verifierGitBinding,
+    verifierGitBinding: { ...authority.verifierGitBinding },
     builderActorId: authority.builderActorId,
     drafterActorId: authority.drafterActorId,
+  };
+}
+
+function detachedAuthority(authority: OutreachReviewAuthority): OutreachReviewAuthority {
+  return {
+    ...authority,
+    verifierGitBinding: { ...authority.verifierGitBinding },
   };
 }
 
@@ -193,7 +217,7 @@ export async function resolveOutreachReviewAuthorityAdmission(
       hashOutreachReviewAuthoritySubmission(input),
     ]);
     if (existingSubmissionSha256 === incomingSubmissionSha256 && existing.verifierActorId === verifierActorId) {
-      return { operation: "existing" as const, authority: existing };
+      return { operation: "existing" as const, authority: detachedAuthority(existing) };
     }
     throw new OutreachReviewAuthorityError("conflict");
   }
@@ -204,6 +228,7 @@ export async function resolveOutreachReviewAuthorityAdmission(
     operation: "create" as const,
     authority: {
       ...input,
+      verifierGitBinding: { ...input.verifierGitBinding },
       verifierActorId,
       reviewId: `review_${serverEntropy.slice(0, 20)}`,
       observedAt,
@@ -219,5 +244,5 @@ export async function resolveOutreachReviewAuthorityLookup(
   validateOutreachReviewAuthorityLookup(lookup);
   const authority = await validateAuthorityRows(rows, lookup);
   if (!authority || canonicalJson(authority.verifierGitBinding) !== canonicalJson(lookup.verifierGitBinding)) return null;
-  return authority;
+  return detachedAuthority(authority);
 }

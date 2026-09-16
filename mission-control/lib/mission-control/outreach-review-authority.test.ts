@@ -42,6 +42,15 @@ function errorCode(run: () => unknown): string | undefined {
   return undefined;
 }
 
+async function asyncErrorCode(run: () => Promise<unknown>): Promise<string | undefined> {
+  try {
+    await run();
+  } catch (error) {
+    return error instanceof OutreachReviewAuthorityError ? error.code : undefined;
+  }
+  return undefined;
+}
+
 async function authority(
   input: OutreachReviewAuthoritySubmission = submission(),
   verifierActorId = "verifier-1",
@@ -112,6 +121,32 @@ describe("outreach review authority submission", () => {
     expect(result.operation).toBe("create");
   });
 
+  test("rejects control characters and lone surrogates in candidate and actor IDs before hashing", async () => {
+    const existing = await authority();
+    const hostileIds = ["bad\0id", "bad\nid", "bad\u009fid", "bad\ud800id"];
+    for (const field of ["candidateId", "builderActorId", "drafterActorId"] as const) {
+      for (const hostileId of hostileIds) {
+        const hostile = submission({ [field]: hostileId });
+        expect(errorCode(() => validateOutreachReviewAuthoritySubmission(hostile))).toBe("invalid_request");
+        expect(await asyncErrorCode(() => hashOutreachReviewAuthoritySubmission(hostile))).toBe("invalid_request");
+        expect(await asyncErrorCode(() => resolveOutreachReviewAuthorityAdmission(
+          [], hostile, "verifier-1", 1_789_452_000_000, ENTROPY,
+        ))).toBe("invalid_request");
+        expect(await asyncErrorCode(() => resolveOutreachReviewAuthorityAdmission(
+          [existing], hostile, "verifier-1", 1_789_452_000_000, ENTROPY,
+        ))).toBe("invalid_request");
+      }
+    }
+    for (const hostileId of hostileIds) {
+      expect(await asyncErrorCode(() => resolveOutreachReviewAuthorityAdmission(
+        [], submission(), hostileId, 1_789_452_000_000, ENTROPY,
+      ))).toBe("invalid_request");
+      expect(await asyncErrorCode(() => resolveOutreachReviewAuthorityAdmission(
+        [existing], submission(), hostileId, 1_789_452_000_000, ENTROPY,
+      ))).toBe("invalid_request");
+    }
+  });
+
   test("hashes only the canonical client submission and binds every submitted field", async () => {
     const original = submission();
     const baseline = await hashOutreachReviewAuthoritySubmission(original);
@@ -148,13 +183,38 @@ describe("server-owned authority resolution", () => {
     ].sort());
   });
 
+  test("detaches a created authority from the caller's nested Git binding", async () => {
+    const input = submission();
+    const result = await resolveOutreachReviewAuthorityAdmission([], input, "verifier-1", 1_789_452_000_000, ENTROPY);
+    if (result.operation !== "create") throw new Error("expected create");
+    expect(result.authority.verifierGitBinding).toEqual(input.verifierGitBinding);
+    input.verifierGitBinding.path = "reviews/caller-mutated.json";
+    expect(result.authority.verifierGitBinding.path).toBe("reviews/verifier-report.json");
+    result.authority.verifierGitBinding.path = "reviews/output-mutated.json";
+    expect(input.verifierGitBinding.path).toBe("reviews/caller-mutated.json");
+  });
+
   test("returns an exact retry byte-for-byte unchanged", async () => {
     const original = await authority();
     const result = await resolveOutreachReviewAuthorityAdmission(
       [original], submission(), "verifier-1", 1_999_999_999_999, "3".repeat(40),
     );
     expect(result).toEqual({ operation: "existing", authority: original });
-    expect(result.authority).toBe(original);
+    result.authority.verifierGitBinding.path = "reviews/retry-output-mutated.json";
+    expect(original.verifierGitBinding.path).toBe("reviews/verifier-report.json");
+  });
+
+  test("detaches an exact retry from both the submitted and stored nested Git bindings", async () => {
+    const original = await authority();
+    const input = submission();
+    const result = await resolveOutreachReviewAuthorityAdmission(
+      [original], input, "verifier-1", 1_999_999_999_999, "3".repeat(40),
+    );
+    input.verifierGitBinding.path = "reviews/retry-input-mutated.json";
+    expect(result.authority.verifierGitBinding.path).toBe("reviews/verifier-report.json");
+    result.authority.verifierGitBinding.path = "reviews/retry-result-mutated.json";
+    expect(original.verifierGitBinding.path).toBe("reviews/verifier-report.json");
+    expect(input.verifierGitBinding.path).toBe("reviews/retry-input-mutated.json");
   });
 
   test("rejects conflicting same-key submissions and verifier mappings", async () => {
@@ -195,7 +255,7 @@ describe("server-owned authority resolution", () => {
       verifierReportSha256: original.verifierReportSha256,
       verifierGitBinding: original.verifierGitBinding,
     };
-    expect(await resolveOutreachReviewAuthorityLookup([original], lookup)).toBe(original);
+    expect(await resolveOutreachReviewAuthorityLookup([original], lookup)).toEqual(original);
     expect(await resolveOutreachReviewAuthorityLookup([], lookup)).toBe(null);
     expect(await resolveOutreachReviewAuthorityLookup([original], {
       ...lookup,
@@ -210,5 +270,23 @@ describe("server-owned authority resolution", () => {
         expect((error as OutreachReviewAuthorityError).code).toBe("corrupt_authority");
       }
     }
+  });
+
+  test("detaches exact lookup output from stored and lookup Git bindings", async () => {
+    const original = await authority();
+    const lookup = {
+      candidateId: original.candidateId,
+      draftSha256: original.draftSha256,
+      authorityBundleHash: original.authorityBundleHash,
+      verifierReportSha256: original.verifierReportSha256,
+      verifierGitBinding: { ...original.verifierGitBinding },
+    };
+    const result = await resolveOutreachReviewAuthorityLookup([original], lookup);
+    if (!result) throw new Error("expected authority");
+    lookup.verifierGitBinding.path = "reviews/lookup-input-mutated.json";
+    expect(result.verifierGitBinding.path).toBe("reviews/verifier-report.json");
+    result.verifierGitBinding.path = "reviews/lookup-output-mutated.json";
+    expect(original.verifierGitBinding.path).toBe("reviews/verifier-report.json");
+    expect(lookup.verifierGitBinding.path).toBe("reviews/lookup-input-mutated.json");
   });
 });
