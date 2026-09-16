@@ -9,6 +9,7 @@ import {
   type OutreachReviewSubmission,
   type StoredOutreachReviewTask,
 } from "./outreach-review";
+import { hashSuppressionBinding } from "./outreach-suppression-binding";
 
 const SHA = "a".repeat(64);
 const COMMIT = "b".repeat(40);
@@ -65,6 +66,23 @@ async function errorCode(run: () => Promise<unknown>) {
 }
 
 describe("canonical outreach review snapshot", () => {
+  test("accepts an exact copy-free suppression binding only when it matches the protected gate binding", async () => {
+    const base = submission();
+    const withoutHash = {
+      schemaVersion: "outreach-suppression-binding-v1" as const,
+      repository: "owner/repo", commitSha: COMMIT, gatePath: "gate.json", gateBlobSha256: SHA,
+      gateArtifactHash: "c".repeat(64), admissionCommitSha: "d".repeat(40), admissionPath: "admission/candidate.json", admissionBlobSha256: "e".repeat(64),
+      channelAttestationId: `channel_${"f".repeat(20)}`, channelOwnerRevision: "1".repeat(64),
+      prospectId: "candidate-1", organizationFactId: "fact-org:alpha", channelFingerprint: "2".repeat(64),
+    };
+    const suppressionBinding = { ...withoutHash, bindingHash: await hashSuppressionBinding(withoutHash) };
+    const bound = { ...base, reviewAuthorityId: "review_" + "3".repeat(20), suppressionBinding };
+    validateOutreachReviewSubmission(bound);
+    expect(await hashOutreachReviewSubmission(bound)).not.toBe(await hashOutreachReviewSubmission(base));
+    expect(thrown(() => validateOutreachReviewSubmission({ ...bound, suppressionBinding: { ...suppressionBinding, gatePath: "other.json" } }))).toBe(true);
+    expect(thrown(() => validateOutreachReviewSubmission({ ...bound, suppressionBinding: { ...suppressionBinding, channel: "owner@example.org" } }))).toBe(true);
+  });
+
   test("uses deterministic canonical JSON and the versioned SHA-256 golden vector", async () => {
     const value = { version: 1, snapshot: { candidateId: "candidate-1" }, domain: "mission-control/outreach-review-snapshot" };
     expect(canonicalJson(value)).toBe('{"domain":"mission-control/outreach-review-snapshot","snapshot":{"candidateId":"candidate-1"},"version":1}');

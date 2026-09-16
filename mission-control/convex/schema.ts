@@ -34,6 +34,24 @@ export const gitBinding = v.object({
   blobSha256: v.string(),
 });
 
+export const suppressionBinding = v.object({
+  schemaVersion: v.literal("outreach-suppression-binding-v1"),
+  repository: v.string(),
+  commitSha: v.string(),
+  gatePath: v.string(),
+  gateBlobSha256: v.string(),
+  gateArtifactHash: v.string(),
+  admissionCommitSha: v.string(),
+  admissionPath: v.string(),
+  admissionBlobSha256: v.string(),
+  channelAttestationId: v.string(),
+  channelOwnerRevision: v.string(),
+  prospectId: v.string(),
+  organizationFactId: v.string(),
+  channelFingerprint: v.string(),
+  bindingHash: v.string(),
+});
+
 export const outreachReview = v.object({
   candidateId: v.string(),
   cohortId: v.string(),
@@ -50,6 +68,7 @@ export const outreachReview = v.object({
     draft: gitBinding,
     verifier: gitBinding,
   }),
+  suppressionBinding: v.optional(suppressionBinding),
   snapshotSha256: v.string(),
   reviewCycle: v.union(v.literal(1), v.literal(2)),
   admittedBy: v.literal("server"),
@@ -84,6 +103,43 @@ export const paymentKind = v.union(
 export const gateBasis = v.union(v.literal("monthly"), v.literal("all-time"));
 
 export default defineSchema({
+  outreachSuppressionEvents: defineTable({
+    schemaVersion: v.literal("outreach-suppression-event-v1"),
+    requestId: v.string(),
+    prospectId: v.string(),
+    organizationFactId: v.string(),
+    channelFingerprint: v.string(),
+    state: v.union(v.literal("sent"), v.literal("clear"), v.literal("manual_hold"), v.literal("replied"), v.literal("opted_out"), v.literal("hard_bounce")),
+    actorId: v.literal("jt"),
+    evidenceToken: v.string(),
+    eventId: v.string(),
+    sequence: v.number(),
+    observedAt: v.string(),
+    revision: v.string(),
+  }).index("by_request_id", ["requestId"]),
+
+  outreachPreSendReceipts: defineTable({
+    schemaVersion: v.literal("outreach-pre-send-receipt-v1"),
+    requestId: v.string(),
+    suppressionBinding,
+    missionControlEventId: v.string(),
+    missionControlOwnerRevision: v.string(),
+    missionControlObservedAt: v.string(),
+    consultingEventId: v.string(),
+    consultingOwnerRevision: v.string(),
+    consultingObservedAt: v.string(),
+    reviewId: v.string(),
+    snapshotSha256: v.string(),
+    draftSha256: v.string(),
+    decisionSha256: v.string(),
+    messageStage: v.union(v.literal("M1"), v.literal("M2"), v.literal("M3")),
+    preSendReceiptId: v.string(),
+    createdAt: v.number(),
+    receiptHash: v.string(),
+  })
+    .index("by_request_id", ["requestId"])
+    .index("by_receipt_id", ["preSendReceiptId"]),
+
   outreachReviewAuthorities: defineTable({
     candidateId: v.string(),
     draftSha256: v.string(),

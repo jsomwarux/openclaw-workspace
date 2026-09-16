@@ -1,0 +1,286 @@
+{
+  "schemaVersion": "outreach-suppression-contract-vectors-v1",
+  "portableIds": [
+    {"kind": "portable", "value": "prospect.alpha", "valid": true},
+    {"kind": "portable", "value": "fact-org:alpha", "valid": true},
+    {"kind": "portable", "value": "Prospect.Alpha", "valid": false},
+    {"kind": "portable", "value": "prospect/alpha", "valid": false},
+    {"kind": "request", "value": "suppression_request_0123456789abcdefabcd", "valid": true},
+    {"kind": "request", "value": "suppression_request_0123456789ABCDEFabcd", "valid": false},
+    {"kind": "event", "value": "suppression_event_0123456789abcdefabcd", "valid": true},
+    {"kind": "event", "value": "suppression_event_0123456789abcdefabc", "valid": false},
+    {"kind": "digest", "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "valid": true},
+    {"kind": "digest", "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "valid": false},
+    {"kind": "evidence", "value": "evidence_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "valid": true},
+    {"kind": "evidence", "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "valid": false}
+  ],
+  "fingerprints": [
+    {
+      "kind": "direct_email",
+      "value": "JT+Ops@XN--BCHER-KVA.example",
+      "normalizedValue": "JT+Ops@xn--bcher-kva.example",
+      "fingerprint": "54f913d37f0ee9452270655ae4bee6c35b02f7026e07fc8a7a79e7d9966d5696"
+    },
+    {
+      "kind": "direct_email",
+      "value": "owner@XN--FA-HIA.de",
+      "normalizedValue": "owner@xn--fa-hia.de",
+      "fingerprint": "f1a6a42be53884e918637508017773170643affeb74808e713459c82e36fa0d5"
+    },
+    {
+      "kind": "direct_email",
+      "value": "owner@fass.de",
+      "normalizedValue": "owner@fass.de",
+      "fingerprint": "fcfd7fb26821b8dea500459250363b181f058ac6b30a33ccdf71cedb5ba85d08"
+    },
+    {
+      "kind": "role_inbox",
+      "value": "operations@Example.ORG",
+      "normalizedValue": "operations@example.org",
+      "fingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b"
+    }
+  ],
+  "invalidFingerprints": [
+    {"kind": "direct_email", "value": "owner@faß.de"},
+    {"kind": "direct_email", "value": "owner@straße.de"},
+    {"kind": "direct_email", "value": "owner@ς.gr"},
+    {"kind": "direct_email", "value": "owner@σ.gr"},
+    {"kind": "direct_email", "value": "JT+Ops@BÜCHER.example"}
+  ],
+  "ownerLedgers": [
+    {
+      "owner": "mission-control",
+      "events": [
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000001",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:alpha",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "clear",
+          "actorId": "jt",
+          "evidenceToken": "evidence_1111111111111111111111111111111111111111111111111111111111111111",
+          "eventId": "suppression_event_00000000000000000001",
+          "sequence": 1,
+          "observedAt": "2026-09-16T14:00:00Z",
+          "revision": "cef216c43194e67874718f1b416f1fef243272055b4f554a5de442517469ab4e"
+        },
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000002",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:alpha",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "sent",
+          "actorId": "jt",
+          "evidenceToken": "evidence_2222222222222222222222222222222222222222222222222222222222222222",
+          "eventId": "suppression_event_00000000000000000002",
+          "sequence": 2,
+          "observedAt": "2026-09-16T14:02:00Z",
+          "revision": "ebe29f455e971900cc4d73b17c08f758685ff70f7a56bfea01252abfff4c98bf"
+        },
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000003",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:alpha",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "clear",
+          "actorId": "jt",
+          "evidenceToken": "evidence_3333333333333333333333333333333333333333333333333333333333333333",
+          "eventId": "suppression_event_00000000000000000003",
+          "sequence": 3,
+          "observedAt": "2026-09-16T14:10:00Z",
+          "revision": "aa620d0142f4501116c19112bca705a8c8bb0f8d183457e8d96dfefc35fce905"
+        },
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000004",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:other",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "hard_bounce",
+          "actorId": "jt",
+          "evidenceToken": "evidence_4444444444444444444444444444444444444444444444444444444444444444",
+          "eventId": "suppression_event_00000000000000000004",
+          "sequence": 4,
+          "observedAt": "2026-09-16T14:11:00Z",
+          "revision": "a633767af7bd87bc5120106b16f95803fd76a6d443d8bdb9df9086867bee0b23"
+        },
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000005",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:new",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "replied",
+          "actorId": "jt",
+          "evidenceToken": "evidence_5555555555555555555555555555555555555555555555555555555555555555",
+          "eventId": "suppression_event_00000000000000000005",
+          "sequence": 5,
+          "observedAt": "2026-09-16T14:12:00Z",
+          "revision": "78bbb6d482368294b0267c9048788c316462700daf1054e810f9c87bffb72669"
+        }
+      ],
+      "ownerRevisions": [
+        {"eventCount": 0, "revision": "eea916cacf3da626533d0d32b1e81ada39d621f764a0a3ad8a1632b721c23a6e"},
+        {"eventCount": 3, "revision": "5a2dbb22b8ac331b3a77de313cb825b7cb63b94f0f4fde991ce7e2de4ac171c3"},
+        {"eventCount": 5, "revision": "ee928640416b350abfbb952a8ac0c3c9f9eb23b44cbd6722edc150335bf80fc3"}
+      ],
+      "queryVectors": [
+        {"name": "fresh-later-clear", "eventCount": 3, "queriedAt": "2026-09-16T14:20:00Z", "expectedObserved": true, "expectedClear": true, "expectedOwnerRevision": "5a2dbb22b8ac331b3a77de313cb825b7cb63b94f0f4fde991ce7e2de4ac171c3", "expectedCurrentSequence": 3, "expectedProspectTerminalSequence": null, "expectedChannelTerminalSequence": null},
+        {"name": "stale-clear", "eventCount": 3, "queriedAt": "2026-09-16T14:25:01Z", "expectedObserved": true, "expectedClear": false, "expectedOwnerRevision": "5a2dbb22b8ac331b3a77de313cb825b7cb63b94f0f4fde991ce7e2de4ac171c3", "expectedCurrentSequence": 3, "expectedProspectTerminalSequence": null, "expectedChannelTerminalSequence": null},
+        {"name": "channel-terminal-wins", "eventCount": 4, "queriedAt": "2026-09-16T14:20:00Z", "expectedObserved": true, "expectedClear": false, "expectedOwnerRevision": "afe869de88e4ed03f0e10f26aa940eb2074a1f5c4e939bf479a2de273045c725", "expectedCurrentSequence": 3, "expectedProspectTerminalSequence": null, "expectedChannelTerminalSequence": 4},
+        {"name": "prospect-terminal-wins", "eventCount": 5, "queriedAt": "2026-09-16T14:20:00Z", "expectedObserved": true, "expectedClear": false, "expectedOwnerRevision": "ee928640416b350abfbb952a8ac0c3c9f9eb23b44cbd6722edc150335bf80fc3", "expectedCurrentSequence": 3, "expectedProspectTerminalSequence": 5, "expectedChannelTerminalSequence": 4}
+      ]
+    },
+    {
+      "owner": "consulting-pipeline",
+      "events": [
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000001",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:alpha",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "clear",
+          "actorId": "jt:mission-control-clear",
+          "evidenceToken": "evidence_1111111111111111111111111111111111111111111111111111111111111111",
+          "eventId": "suppression_event_00000000000000000001",
+          "sequence": 1,
+          "observedAt": "2026-09-16T14:00:00Z",
+          "revision": "a74594f62be380832f03d98fb78aa6374d6b85cc18105eab42ed3ad857cbadd7"
+        },
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000002",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:alpha",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "sent",
+          "actorId": "openclaw:send-confirmation",
+          "evidenceToken": "evidence_2222222222222222222222222222222222222222222222222222222222222222",
+          "eventId": "suppression_event_00000000000000000002",
+          "sequence": 2,
+          "observedAt": "2026-09-16T14:02:00Z",
+          "revision": "cd6a26baa793027a08f9bcf6242fe8b7891e85cf24ed1f9a17e3a4adf2cce64b"
+        },
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000003",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:alpha",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "clear",
+          "actorId": "jt:mission-control-clear",
+          "evidenceToken": "evidence_3333333333333333333333333333333333333333333333333333333333333333",
+          "eventId": "suppression_event_00000000000000000003",
+          "sequence": 3,
+          "observedAt": "2026-09-16T14:10:00Z",
+          "revision": "2c34c26a7d0804d5ef1537399614baec036498b78b6fe605844c94509e717822"
+        },
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000004",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:other",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "hard_bounce",
+          "actorId": "jt",
+          "evidenceToken": "evidence_4444444444444444444444444444444444444444444444444444444444444444",
+          "eventId": "suppression_event_00000000000000000004",
+          "sequence": 4,
+          "observedAt": "2026-09-16T14:11:00Z",
+          "revision": "a633767af7bd87bc5120106b16f95803fd76a6d443d8bdb9df9086867bee0b23"
+        },
+        {
+          "schemaVersion": "outreach-suppression-event-v1",
+          "requestId": "suppression_request_00000000000000000005",
+          "prospectId": "prospect.alpha",
+          "organizationFactId": "fact-org:new",
+          "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b",
+          "state": "opted_out",
+          "actorId": "jt",
+          "evidenceToken": "evidence_5555555555555555555555555555555555555555555555555555555555555555",
+          "eventId": "suppression_event_00000000000000000005",
+          "sequence": 5,
+          "observedAt": "2026-09-16T14:12:00Z",
+          "revision": "c32d89653da6f7e6512896bcd6c69dcf0860b16775098e62ccab3996430c03a4"
+        }
+      ],
+      "ownerRevisions": [
+        {"eventCount": 0, "revision": "dc7b7762f6a0e433e5faf00520f9c9708f0922d46e2895d1dbb4baf0af9ec55d"},
+        {"eventCount": 3, "revision": "05e2e3f30d674a77c113780919edddd57577fd8315c2a4415af3f0a10d62fb7b"},
+        {"eventCount": 5, "revision": "2e739773329d66f20d8966581e556d1b3f93aa48f269fd0b595e0b946e1c3184"}
+      ],
+      "queryVectors": [
+        {"name": "fresh-later-clear", "eventCount": 3, "queriedAt": "2026-09-16T14:20:00Z", "expectedObserved": true, "expectedClear": true, "expectedOwnerRevision": "05e2e3f30d674a77c113780919edddd57577fd8315c2a4415af3f0a10d62fb7b", "expectedCurrentSequence": 3, "expectedProspectTerminalSequence": null, "expectedChannelTerminalSequence": null},
+        {"name": "stale-clear", "eventCount": 3, "queriedAt": "2026-09-16T14:25:01Z", "expectedObserved": true, "expectedClear": false, "expectedOwnerRevision": "05e2e3f30d674a77c113780919edddd57577fd8315c2a4415af3f0a10d62fb7b", "expectedCurrentSequence": 3, "expectedProspectTerminalSequence": null, "expectedChannelTerminalSequence": null},
+        {"name": "channel-terminal-wins", "eventCount": 4, "queriedAt": "2026-09-16T14:20:00Z", "expectedObserved": true, "expectedClear": false, "expectedOwnerRevision": "ade883a9d847f800ceaa8e86ac72b87a50a3284e16f8f44500ff40ad6e11f3ed", "expectedCurrentSequence": 3, "expectedProspectTerminalSequence": null, "expectedChannelTerminalSequence": 4},
+        {"name": "prospect-terminal-wins", "eventCount": 5, "queriedAt": "2026-09-16T14:20:00Z", "expectedObserved": true, "expectedClear": false, "expectedOwnerRevision": "2e739773329d66f20d8966581e556d1b3f93aa48f269fd0b595e0b946e1c3184", "expectedCurrentSequence": 3, "expectedProspectTerminalSequence": 5, "expectedChannelTerminalSequence": 4}
+      ]
+    }
+  ],
+  "canonicalEventVectors": [
+    {
+      "owner": "mission-control",
+      "eventIndex": 0,
+      "canonicalWithoutRevision": "{\"actorId\":\"jt\",\"channelFingerprint\":\"8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b\",\"eventId\":\"suppression_event_00000000000000000001\",\"evidenceToken\":\"evidence_1111111111111111111111111111111111111111111111111111111111111111\",\"observedAt\":\"2026-09-16T14:00:00Z\",\"organizationFactId\":\"fact-org:alpha\",\"prospectId\":\"prospect.alpha\",\"requestId\":\"suppression_request_00000000000000000001\",\"schemaVersion\":\"outreach-suppression-event-v1\",\"sequence\":1,\"state\":\"clear\"}"
+    },
+    {
+      "owner": "consulting-pipeline",
+      "eventIndex": 0,
+      "canonicalWithoutRevision": "{\"actorId\":\"jt:mission-control-clear\",\"channelFingerprint\":\"8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b\",\"eventId\":\"suppression_event_00000000000000000001\",\"evidenceToken\":\"evidence_1111111111111111111111111111111111111111111111111111111111111111\",\"observedAt\":\"2026-09-16T14:00:00Z\",\"organizationFactId\":\"fact-org:alpha\",\"prospectId\":\"prospect.alpha\",\"requestId\":\"suppression_request_00000000000000000001\",\"schemaVersion\":\"outreach-suppression-event-v1\",\"sequence\":1,\"state\":\"clear\"}"
+    }
+  ],
+  "idempotencyVectors": [
+    {
+      "owner": "mission-control",
+      "name": "same-request-same-payload",
+      "eventCount": 1,
+      "submission": {"schemaVersion": "outreach-suppression-event-v1", "requestId": "suppression_request_00000000000000000001", "prospectId": "prospect.alpha", "organizationFactId": "fact-org:alpha", "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b", "state": "clear", "evidenceToken": "evidence_1111111111111111111111111111111111111111111111111111111111111111"},
+      "expectedDisposition": "original",
+      "expectedEventId": "suppression_event_00000000000000000001"
+    },
+    {
+      "owner": "mission-control",
+      "name": "same-request-different-payload",
+      "eventCount": 1,
+      "submission": {"schemaVersion": "outreach-suppression-event-v1", "requestId": "suppression_request_00000000000000000001", "prospectId": "prospect.alpha", "organizationFactId": "fact-org:alpha", "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b", "state": "manual_hold", "evidenceToken": "evidence_1111111111111111111111111111111111111111111111111111111111111111"},
+      "expectedDisposition": "conflict",
+      "expectedEventId": null
+    },
+    {
+      "owner": "mission-control",
+      "name": "new-request",
+      "eventCount": 1,
+      "submission": {"schemaVersion": "outreach-suppression-event-v1", "requestId": "suppression_request_00000000000000000099", "prospectId": "prospect.alpha", "organizationFactId": "fact-org:alpha", "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b", "state": "clear", "evidenceToken": "evidence_9999999999999999999999999999999999999999999999999999999999999999"},
+      "expectedDisposition": "append",
+      "expectedEventId": null
+    },
+    {
+      "owner": "consulting-pipeline",
+      "name": "same-request-same-payload",
+      "eventCount": 2,
+      "submission": {"schemaVersion": "outreach-suppression-event-v1", "requestId": "suppression_request_00000000000000000002", "prospectId": "prospect.alpha", "organizationFactId": "fact-org:alpha", "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b", "state": "sent", "evidenceToken": "evidence_2222222222222222222222222222222222222222222222222222222222222222", "actorId": "openclaw:send-confirmation"},
+      "expectedDisposition": "original",
+      "expectedEventId": "suppression_event_00000000000000000002"
+    },
+    {
+      "owner": "consulting-pipeline",
+      "name": "same-request-different-payload",
+      "eventCount": 2,
+      "submission": {"schemaVersion": "outreach-suppression-event-v1", "requestId": "suppression_request_00000000000000000002", "prospectId": "prospect.alpha", "organizationFactId": "fact-org:alpha", "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b", "state": "sent", "evidenceToken": "evidence_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "actorId": "openclaw:send-confirmation"},
+      "expectedDisposition": "conflict",
+      "expectedEventId": null
+    },
+    {
+      "owner": "consulting-pipeline",
+      "name": "new-request",
+      "eventCount": 2,
+      "submission": {"schemaVersion": "outreach-suppression-event-v1", "requestId": "suppression_request_00000000000000000099", "prospectId": "prospect.alpha", "organizationFactId": "fact-org:alpha", "channelFingerprint": "8e21b2956b726193d89d4b71b0973631c20d52b999225bcbbf6de9b547d08c5b", "state": "clear", "evidenceToken": "evidence_9999999999999999999999999999999999999999999999999999999999999999", "actorId": "jt:mission-control-clear"},
+      "expectedDisposition": "append",
+      "expectedEventId": null
+    }
+  ]
+}
