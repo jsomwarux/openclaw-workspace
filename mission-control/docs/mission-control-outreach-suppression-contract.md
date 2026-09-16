@@ -6,6 +6,8 @@ Every suppression HTTP route and every direct Convex suppression query/mutation
 checks `OUTREACH_SUPPRESSION_OWNER_ENABLED === "true"` before capability
 validation or database access. The flag is nonsecret and must remain absent until a
 separate activation approval. Disabled surfaces return only a sanitized 503.
+The packaged runtime launcher and Convex synchronization explicitly delete the
+flag, so an inherited or stale `true` value cannot activate the owner.
 
 ## Owner event API
 
@@ -23,10 +25,14 @@ same fixture used by `jt-ops`, for revision and state-machine parity.
 ## Immutable review binding and dual clear
 
 New review submissions may carry a copy-free `suppressionBinding` that must match
-the protected gate Git binding. Its canonical hash covers repository, commit, gate
-path/blob, admission bindings, gate artifact, channel attestation/revision,
-prospect, organization fact, and channel fingerprint. Bound reviews require an
-opaque `review_<20 lowercase hex>` authority ID.
+the protected gate Git binding. Before storage, Mission Control fetches the exact
+upstream-reachable gate and admission blobs from the canonical protected origin;
+it verifies both raw blob hashes, the canonical gate-artifact hash, the gate's
+admission references, and the admitted prospect/organization identities. Caller-
+supplied self-consistent hashes are not authority. Its canonical hash covers
+repository, commit, gate path/blob, admission bindings, gate artifact, channel
+attestation/revision, prospect, organization fact, and channel fingerprint. Bound
+reviews require an opaque `review_<20 lowercase hex>` authority ID.
 
 `POST /api/tasks/outreach-suppression/clear` accepts exactly that review ID.
 Behind the flag it requires JT identity and the decision capability, loads the

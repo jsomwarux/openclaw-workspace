@@ -26,11 +26,38 @@ function dependencies(overrides: Record<string, unknown> = {}) {
     peerCapability: "decision-secret",
     admit: async () => ({ taskId: "task-1", created: true, reviewCycle: 1 as const, snapshotSha256: "c".repeat(64) }),
     lookup: async () => ({ candidateId: "candidate-1", cohortId: "cohort-2", reviewCount: 0, remainingCycles: 2, latest: null }),
+    verifySuppressionBinding: async () => {},
     ...overrides,
   };
 }
 
 describe("outreach review owner API", () => {
+  test("POST reopens a suppression binding before storage and rejects forged origin bindings", async () => {
+    let verifies = 0;
+    let admits = 0;
+    const suppressionBinding = {
+      schemaVersion: "outreach-suppression-binding-v1",
+      repository: "owner/repo", commitSha: COMMIT, gatePath: "gate.json",
+      gateBlobSha256: SHA, gateArtifactHash: "c".repeat(64),
+      admissionCommitSha: "d".repeat(40), admissionPath: "admission.json",
+      admissionBlobSha256: "e".repeat(64), channelAttestationId: `channel_${"f".repeat(20)}`,
+      channelOwnerRevision: "1".repeat(64), prospectId: "candidate-1",
+      organizationFactId: "fact-org", channelFingerprint: "2".repeat(64), bindingHash: "3".repeat(64),
+    };
+    const handlers = createOutreachReviewHandlers(dependencies({
+      verifySuppressionBinding: async () => { verifies += 1; throw new Error("protected suppression binding mismatch"); },
+      admit: async () => { admits += 1; return { taskId: "task-1", created: true, reviewCycle: 1, snapshotSha256: SHA }; },
+    }));
+    const response = await handlers.POST(postRequest({
+      ...body,
+      reviewAuthorityId: `review_${"4".repeat(20)}`,
+      suppressionBinding,
+    }, capability));
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "invalid outreach review request" });
+    expect({ verifies, admits }).toEqual({ verifies: 1, admits: 0 });
+  });
+
   test("POST accepts only the typed snapshot and returns the exact response", async () => {
     let received: unknown;
     const handlers = createOutreachReviewHandlers(dependencies({ admit: async (input: unknown) => {

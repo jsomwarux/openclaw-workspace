@@ -1,6 +1,7 @@
 // @ts-expect-error Bun runtime hook exports are omitted from the ambient shim.
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
-import { appendOutreachSuppressionEvent, findOutreachSuppressionState, createOutreachPreSendReceipt, findOutreachPreSendReceipt } from "../../convex/tasks";
+import { readFileSync } from "node:fs";
+import { appendOutreachSuppressionEvent, findOutreachSuppressionState, createOutreachPreSendReceipt, findOutreachPreSendReceipt, findOutreachSuppressionReview } from "../../convex/tasks";
 import { resolveOutreachReviewAdmission } from "./outreach-review";
 import { resolveOutreachDecision } from "./outreach-decision";
 import { hashOutreachDecisionForPreSend } from "./outreach-pre-send-receipt";
@@ -11,6 +12,7 @@ const append = (appendOutreachSuppressionEvent as any)._handler as Handler;
 const lookup = (findOutreachSuppressionState as any)._handler as Handler;
 const createReceipt = (createOutreachPreSendReceipt as any)._handler as Handler;
 const getReceipt = (findOutreachPreSendReceipt as any)._handler as Handler;
+const findReview = (findOutreachSuppressionReview as any)._handler as Handler;
 
 class Db {
   rows: Record<string, any>[] = [];
@@ -37,7 +39,45 @@ describe("direct Convex suppression boundary", () => {
       (db: Db) => lookup(ctx(db), { prospectId: base.prospectId, organizationFactId: base.organizationFactId, channelFingerprint: base.channelFingerprint, capability: "read" }),
       (db: Db) => createReceipt(ctx(db), { capability: "review" }),
       (db: Db) => getReceipt(ctx(db), { preSendReceiptId: "pre_send_" + "1".repeat(20), capability: "read" }),
+      (db: Db) => findReview(ctx(db), { reviewId: "review_" + "1".repeat(20), capability: "decision" }),
     ]) { const db = new Db(); expect(await message(() => call(db))).toContain("OUTREACH_SUPPRESSION_OWNER_NOT_CONFIGURED"); expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 }); }
+  });
+
+  test("every pairwise-equal capability configuration fails before database access", async () => {
+    process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED = "true";
+    const names = [
+      "OUTREACH_DECISION_CAPABILITY",
+      "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY",
+      "OUTREACH_REVIEW_CAPABILITY",
+      "OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY",
+    ] as const;
+    for (let left = 0; left < names.length; left++) {
+      for (let right = left + 1; right < names.length; right++) {
+        process.env.OUTREACH_DECISION_CAPABILITY = "decision";
+        process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY = "read";
+        process.env.OUTREACH_REVIEW_CAPABILITY = "review";
+        process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY = "write";
+        process.env[names[right]] = process.env[names[left]];
+        const db = new Db();
+        expect(await message(() => findReview(ctx(db), {
+          reviewId: "review_" + "1".repeat(20), capability: process.env.OUTREACH_DECISION_CAPABILITY!,
+        }))).toContain("OUTREACH_SUPPRESSION_OWNER_NOT_CONFIGURED");
+        expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 });
+      }
+    }
+  });
+
+  test("generic task routes cannot access suppression owners or capability environment", () => {
+    for (const source of [
+      readFileSync("app/api/tasks/route.ts", "utf8"),
+      readFileSync("app/api/tasks/[id]/route.ts", "utf8"),
+    ]) {
+      for (const forbidden of [
+        "OUTREACH_SUPPRESSION_OWNER_ENABLED", "outreachSuppressionEvents", "outreachPreSendReceipts",
+        "appendOutreachSuppressionEvent", "findOutreachSuppressionState", "findOutreachSuppressionReview",
+        "createOutreachPreSendReceipt", "findOutreachPreSendReceipt",
+      ]) expect(source).not.toContain(forbidden);
+    }
   });
 
   test("write and read capabilities cannot cross and one append is immutable", async () => {

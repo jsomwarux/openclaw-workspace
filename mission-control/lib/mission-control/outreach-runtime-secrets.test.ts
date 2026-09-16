@@ -503,6 +503,7 @@ describe("outreach runtime secret handling", () => {
       OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY: "stale-write",
       OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY: "stale-read",
       OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID: "stale-actor",
+      OUTREACH_SUPPRESSION_OWNER_ENABLED: "true",
     }, runtime)).toEqual({
       PATH: "/bin",
       OUTREACH_REVIEW_CAPABILITY: "review-a",
@@ -568,6 +569,7 @@ describe("outreach runtime secret handling", () => {
       { name: "OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY" },
       { name: "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY" },
       { name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID" },
+      { name: "OUTREACH_SUPPRESSION_OWNER_ENABLED" },
     ]);
   });
 
@@ -583,6 +585,7 @@ describe("outreach runtime secret handling", () => {
         name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID",
         value: "openclaw:review-verifier-v1",
       },
+      { name: "OUTREACH_SUPPRESSION_OWNER_ENABLED" },
     ]);
   });
 

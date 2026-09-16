@@ -191,6 +191,7 @@ export function buildConvexEnvironmentChanges(review, decision, authorityWrite, 
       { name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID" },
     );
   }
+  changes.push({ name: "OUTREACH_SUPPRESSION_OWNER_ENABLED" });
   return changes;
 }
 
@@ -199,6 +200,7 @@ export function buildServiceProcessEnvironment(baseEnvironment, runtimeEnvironme
   delete environment.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY;
   delete environment.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY;
   delete environment.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID;
+  delete environment.OUTREACH_SUPPRESSION_OWNER_ENABLED;
   return { ...environment, ...runtimeEnvironment };
 }
 

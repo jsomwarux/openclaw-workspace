@@ -21,6 +21,7 @@ type Dependencies = {
   peerCapability: string | undefined;
   admit: (input: OutreachReviewSubmission & { capability: string }) => Promise<AdmissionResult>;
   lookup: (input: { candidateId: string; cohortId: string; capability: string }) => Promise<ReviewState>;
+  verifySuppressionBinding: (input: NonNullable<OutreachReviewSubmission["suppressionBinding"]>) => Promise<void>;
 };
 
 function authError(error: OutreachAuthError) {
@@ -63,6 +64,7 @@ export function createOutreachReviewHandlers(dependencies: Dependencies) {
         const serverCapability = await capability(req);
         const input = await req.json() as unknown;
         validateOutreachReviewSubmission(input);
+        if (input.suppressionBinding) await dependencies.verifySuppressionBinding(input.suppressionBinding);
         try {
           const result = await dependencies.admit({ ...input, capability: serverCapability });
           return NextResponse.json({
