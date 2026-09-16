@@ -5,6 +5,8 @@ let account = "jtsomwaru"
 let services = [
     "review": "com.openclaw.mission-control.outreach-review",
     "decision": "com.openclaw.mission-control.outreach-decision",
+    "review-authority-write": "com.openclaw.mission-control.outreach-review-authority-write",
+    "review-authority-read": "com.openclaw.mission-control.outreach-review-authority-read",
 ]
 
 func fail(_ message: String) -> Never {
@@ -56,12 +58,13 @@ func store(_ service: String, _ value: Data) {
     }
 }
 
-func read(_ service: String) -> Data {
+func read(_ service: String, allowMissing: Bool = false) -> Data? {
     var key = query(service)
     key[kSecReturnData as String] = true
     key[kSecMatchLimit as String] = kSecMatchLimitOne
     var item: CFTypeRef?
     let status = SecItemCopyMatching(key as CFDictionary, &item)
+    if allowMissing && status == errSecItemNotFound { return nil }
     guard status == errSecSuccess, let value = item as? Data, !value.isEmpty else {
         fail("stored capability is unavailable")
     }
@@ -72,12 +75,23 @@ let args = Array(CommandLine.arguments.dropFirst())
 if args == ["install"] {
     let review = randomCapability()
     let decision = randomCapability()
-    guard review != decision else { fail("capability generation collision") }
+    let authorityWrite = randomCapability()
+    let authorityRead = randomCapability()
+    let capabilities = [review, decision, authorityWrite, authorityRead]
+    guard Set(capabilities).count == capabilities.count else { fail("capability generation collision") }
     store(services["review"]!, review)
     store(services["decision"]!, decision)
+    store(services["review-authority-write"]!, authorityWrite)
+    store(services["review-authority-read"]!, authorityRead)
 } else if args.count == 2, args[0] == "read", let service = services[args[1]] {
-    FileHandle.standardOutput.write(read(service))
+    guard let value = read(service) else { fail("stored capability is unavailable") }
+    FileHandle.standardOutput.write(value)
     FileHandle.standardOutput.write(Data("\n".utf8))
+} else if args.count == 2, args[0] == "read-optional", let service = services[args[1]] {
+    if let value = read(service, allowMissing: true) {
+        FileHandle.standardOutput.write(value)
+        FileHandle.standardOutput.write(Data("\n".utf8))
+    }
 } else {
     fail("unsupported keychain operation")
 }
