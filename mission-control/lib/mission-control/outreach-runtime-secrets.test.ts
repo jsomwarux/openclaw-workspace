@@ -2,14 +2,17 @@ import { describe, expect, test } from "bun:test";
 import {
   chmodSync,
   existsSync,
+  mkdirSync,
   mkdtempSync,
   readFileSync,
   renameSync,
   rmSync,
   statSync,
+  symlinkSync,
   writeFileSync,
 } from "node:fs";
 import { spawn, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -25,6 +28,7 @@ import {
   ensureV3KeychainHelper,
   installCapabilitySet,
   installCapabilitySetFromHelper,
+  materializeReviewedConfirmedSendScript,
   parseCapabilitySetRead,
   parseConfirmedSendResult,
   readCapabilitySetFromHelpers,
@@ -40,6 +44,15 @@ function captureError(run: () => unknown): string | undefined {
 function executable(path: string, source: string) {
   writeFileSync(path, source, { mode: 0o700 });
   chmodSync(path, 0o700);
+}
+
+function git(path: string, args: string[]) {
+  const result = spawnSync("/usr/bin/git", ["-C", path, ...args], {
+    encoding: "utf8",
+    env: { LANG: "C.UTF-8", LC_ALL: "C.UTF-8", NODE_ENV: "test" },
+  });
+  if (result.status !== 0 || result.stderr) throw new Error("git fixture failed");
+  return result.stdout.trim();
 }
 
 describe("outreach runtime secret handling", () => {
@@ -645,16 +658,23 @@ describe("outreach runtime secret handling", () => {
       PYTHONHASHSEED: "0",
       OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY: "authority-read-only",
     });
-    const request = buildConfirmedSendRequest(receiptId, "authority-read-only");
+    const scriptPath = "/private/runtime/record_confirmed_send.py";
+    const request = buildConfirmedSendRequest(
+      receiptId,
+      "authority-read-only",
+      scriptPath,
+      "/private/runtime",
+    );
     expect(request).toEqual({
-      file: "/Users/jtsomwaru/Desktop/jt-ops/.venv/bin/python",
+      file: "/usr/bin/python3",
       args: [
-        "/Users/jtsomwaru/Desktop/jt-ops/scripts/cohort_two_authority.py",
-        "record-confirmed-send",
+        "-I",
+        "-S",
+        scriptPath,
         "--pre-send-receipt-id",
         receiptId,
       ],
-      cwd: "/Users/jtsomwaru/Desktop/jt-ops",
+      cwd: "/private/runtime",
       env: environment,
     });
     expect(JSON.stringify(request)).not.toContain("OUTREACH_REVIEW_CAPABILITY");
@@ -663,59 +683,122 @@ describe("outreach runtime secret handling", () => {
     expect(JSON.stringify(request)).not.toContain("HTTP_PROXY");
   });
 
-  test("confirmed-send preflight requires a readable script and executable venv Python", () => {
-    const directory = mkdtempSync(join(tmpdir(), "outreach-confirmed-send-preflight-"));
-    const python = join(directory, "python");
-    const script = join(directory, "cohort_two_authority.py");
+  test("confirmed-send materializes exact reviewed Git bytes, never mutable checkout bytes", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-reviewed-command-"));
+    const repo = join(directory, "repo");
+    const runtimeRoot = join(directory, "runtime");
     try {
-      executable(python, "#!/bin/sh\nexit 0\n");
-      writeFileSync(script, "print('fixture')\n", { mode: 0o600 });
-      expect(validateConfirmedSendPreflight({ pythonPath: python, scriptPath: script }))
-        .toBe(undefined);
-      expect(captureError(() => validateConfirmedSendPreflight({
-        pythonPath: join(directory, "missing-python"), scriptPath: script,
-      }))).toBe("fixed jt-ops command is unavailable");
-      expect(captureError(() => validateConfirmedSendPreflight({
-        pythonPath: python, scriptPath: join(directory, "missing-script"),
+      mkdirSync(repo, { mode: 0o700 });
+      git(repo, ["init", "-q"]);
+      git(repo, ["config", "user.name", "Test"]);
+      git(repo, ["config", "user.email", "test@example.invalid"]);
+      mkdirSync(join(repo, "scripts"), { mode: 0o700 });
+      const reviewed = "#!/usr/bin/env python3\nprint('reviewed')\n";
+      const workingPath = join(repo, "scripts", "record_confirmed_send.py");
+      writeFileSync(workingPath, reviewed, { mode: 0o600 });
+      git(repo, ["add", "scripts/record_confirmed_send.py"]);
+      git(repo, ["commit", "-q", "-m", "reviewed command"]);
+      const expectedCommit = git(repo, ["rev-parse", "HEAD"]);
+      const expectedBlob = git(repo, [
+        "rev-parse", `${expectedCommit}:scripts/record_confirmed_send.py`,
+      ]);
+      const expectedSha256 = createHash("sha256").update(reviewed).digest("hex");
+
+      rmSync(workingPath);
+      symlinkSync("/usr/bin/env", workingPath);
+      const materialized = materializeReviewedConfirmedSendScript({
+        repoPath: repo,
+        runtimeRoot,
+        expectedCommit,
+        expectedBlob,
+        expectedSha256,
+      });
+      try {
+        expect(readFileSync(materialized.scriptPath, "utf8")).toBe(reviewed);
+        expect(statSync(materialized.scriptPath).isFile()).toBe(true);
+        expect(statSync(materialized.scriptPath).mode & 0o777).toBe(0o600);
+        expect(statSync(materialized.runtimeDirectory).mode & 0o777).toBe(0o700);
+        expect(materialized.scriptPath).not.toBe(workingPath);
+      } finally {
+        materialized.cleanup();
+      }
+      expect(existsSync(runtimeRoot) ? statSync(runtimeRoot).isDirectory() : true).toBe(true);
+      expect(existsSync(materialized.runtimeDirectory)).toBe(false);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("confirmed-send rejects stale commit/blob pairs before capability access", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-reviewed-command-reject-"));
+    const repo = join(directory, "repo");
+    try {
+      mkdirSync(repo, { mode: 0o700 });
+      git(repo, ["init", "-q"]);
+      git(repo, ["config", "user.name", "Test"]);
+      git(repo, ["config", "user.email", "test@example.invalid"]);
+      mkdirSync(join(repo, "scripts"), { mode: 0o700 });
+      writeFileSync(
+        join(repo, "scripts", "record_confirmed_send.py"),
+        "#!/usr/bin/env python3\nprint('reviewed')\n",
+        { mode: 0o600 },
+      );
+      git(repo, ["add", "scripts/record_confirmed_send.py"]);
+      git(repo, ["commit", "-q", "-m", "reviewed command"]);
+      const expectedCommit = git(repo, ["rev-parse", "HEAD"]);
+      const expectedSha256 = createHash("sha256")
+        .update("#!/usr/bin/env python3\nprint('reviewed')\n")
+        .digest("hex");
+      expect(captureError(() => materializeReviewedConfirmedSendScript({
+        repoPath: repo,
+        runtimeRoot: join(directory, "runtime"),
+        expectedCommit,
+        expectedBlob: "0".repeat(40),
+        expectedSha256,
       }))).toBe("fixed jt-ops command is unavailable");
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
   });
 
-  test("confirmed-send preflight proves jsonschema in the fixed venv without ambient environment", () => {
-    const directory = mkdtempSync(join(tmpdir(), "outreach-confirmed-send-jsonschema-"));
+  test("confirmed-send preflight requires a root-owned isolated standard-library Python", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-confirmed-send-preflight-"));
     const python = join(directory, "python");
-    const script = join(directory, "cohort_two_authority.py");
-    let invocation: unknown;
     try {
       executable(python, "#!/bin/sh\nexit 0\n");
-      writeFileSync(script, "print('fixture')\n", { mode: 0o600 });
-      const fakeSpawn = ((file: string, args: string[], options: unknown) => {
-        invocation = { file, args, options };
-        return { status: 0, stdout: "", stderr: "" };
-      }) as unknown as typeof spawnSync;
-      validateConfirmedSendPreflight({
-        pythonPath: python,
-        scriptPath: script,
-        cwd: directory,
-        spawn: fakeSpawn,
-      });
-      expect(invocation).toEqual({
-        file: python,
-        args: ["-c", "import jsonschema"],
-        options: {
-          cwd: directory,
-          env: { LANG: "C.UTF-8", LC_ALL: "C.UTF-8", PYTHONHASHSEED: "0" },
-          encoding: "utf8",
-          stdio: ["ignore", "pipe", "pipe"],
-          timeout: 5_000,
-          killSignal: "SIGKILL",
-        },
-      });
+      expect(captureError(() => validateConfirmedSendPreflight({
+        pythonPath: join(directory, "missing-python"),
+      }))).toBe("fixed jt-ops command is unavailable");
+      expect(captureError(() => validateConfirmedSendPreflight({ pythonPath: python })))
+        .toBe("fixed jt-ops command is unavailable");
+      expect(validateConfirmedSendPreflight()).toBe(undefined);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
+  });
+
+  test("confirmed-send preflight proves isolated no-site stdlib without ambient environment", () => {
+    let invocation: unknown;
+    const fakeSpawn = ((file: string, args: string[], options: unknown) => {
+      invocation = { file, args, options };
+      return { status: 0, stdout: "", stderr: "" };
+    }) as unknown as typeof spawnSync;
+    validateConfirmedSendPreflight({ spawn: fakeSpawn });
+    expect(invocation).toEqual({
+      file: "/usr/bin/python3",
+      args: [
+        "-I", "-S", "-c",
+        "import sys; assert sys.flags.isolated == 1 and sys.flags.no_site == 1",
+      ],
+      options: {
+        cwd: "/private/var/empty",
+        env: { LANG: "C.UTF-8", LC_ALL: "C.UTF-8", PYTHONHASHSEED: "0" },
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "pipe"],
+        timeout: 5_000,
+        killSignal: "SIGKILL",
+      },
+    });
   });
 
   test("confirmed-send output is exact and malformed child data cannot leak", () => {

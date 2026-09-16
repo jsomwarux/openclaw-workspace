@@ -85,13 +85,15 @@ suppression bindings or receipts. Contract:
 
 Cohort-two confirmed-send logging uses the host-owned runtime helper's one exact
 `record-confirmed-send --pre-send-receipt-id <opaque ID>` mode. It is not a generic
-secret-bearing command runner. Under the existing lock/private-pipe boundary, the
-helper exposes only `OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY` to the fixed
-`/Users/jtsomwaru/Desktop/jt-ops/.venv/bin/python` command and strips every other
-capability, credential, and proxy variable. Preflight requires that interpreter to
-import `jsonschema` and the fixed jt-ops script to exist before Keychain access, so
-integration stays blocked until the Desktop checkout is fast-forwarded to the
-reviewed suppression command.
+secret-bearing command runner. Before Keychain access, it proves one reviewed
+jt-ops commit/path/blob pair, verifies both the Git object ID and SHA-256, and
+materializes those exact bytes into a new owner-only runtime directory. The mutable
+checkout path and its virtual environment are never executed. Only then does the
+helper expose `OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY` to root-owned
+`/usr/bin/python3 -I -S` running the standalone stdlib-only command; every other
+capability, credential, proxy variable, site package, and `PYTHONPATH` is absent.
+The private script is removed after every attempt. Integration stays blocked until
+the fixed Desktop repository contains the pinned reviewed commit and object.
 
 `npm run build` must not write to the live `.next` directory while the LaunchAgent is running `next dev`; it uses `NEXT_DIST_DIR=.next-build` for isolated verification builds. If a manual build ever causes `Cannot find module './*.js'` from `.next/server/webpack-runtime.js`, recover with `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next`.
 
