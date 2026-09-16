@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { OutreachAuthError, secureCapabilityEqual } from "./outreach-auth";
 import {
+  OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED,
   resolveOutreachReviewAuthorityLookup,
   validateOutreachReviewAuthorityLookup,
   validateOutreachReviewAuthoritySubmission,
@@ -90,6 +91,9 @@ function authError(error: OutreachAuthError) {
 function dependencyError(error: unknown) {
   const message = error instanceof Error ? error.message : "";
   const hasCode = (code: string) => new RegExp(`(?:^|[^A-Z0-9_])${code}(?:$|[^A-Z0-9_])`).test(message);
+  if (hasCode(OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED)) {
+    return NextResponse.json({ error: "outreach authority is not configured" }, { status: 503 });
+  }
   if (hasCode("OUTREACH_REVIEW_AUTHORITY_INVALID")) return invalidRequest();
   if (hasCode("OUTREACH_REVIEW_AUTHORITY_CONFLICT")) {
     return NextResponse.json({ error: "outreach review authority conflict" }, { status: 409 });

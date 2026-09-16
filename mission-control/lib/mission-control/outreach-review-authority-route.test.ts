@@ -284,4 +284,22 @@ describe("outreach review authority owner API", () => {
       expect(text).not.toContain(secret);
     }
   });
+
+  test("maps stable verifier configuration dependency failures to sanitized 503 responses", async () => {
+    const sentinel = "OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED";
+    const handlers = createOutreachReviewAuthorityHandlers(dependencies({
+      create: async () => { throw new Error(`[CONVEX] ${sentinel}: verifier actor invalid`); },
+      lookup: async () => { throw new Error(`[CONVEX] ${sentinel}: verifier actor invalid`); },
+    }));
+    for (const response of [
+      await handlers.POST(postRequest(submission, WRITE_CAPABILITY)),
+      await handlers.GET(getRequest(undefined, READ_CAPABILITY)),
+    ]) {
+      const text = await response.text();
+      expect(response.status).toBe(503);
+      expect(JSON.parse(text)).toEqual({ error: "outreach authority is not configured" });
+      expect(text).not.toContain("verifier actor invalid");
+      expect(text).not.toContain(sentinel);
+    }
+  });
 });

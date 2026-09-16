@@ -1,5 +1,8 @@
 import { canonicalJson, hashCanonicalJson, type GitBinding } from "./outreach-review";
 
+export const OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED =
+  "OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED";
+
 export type OutreachReviewAuthoritySubmission = {
   candidateId: string;
   draftSha256: string;

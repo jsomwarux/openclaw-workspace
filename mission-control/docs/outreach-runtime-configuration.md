@@ -17,7 +17,7 @@ Every helper validation, capability read, explicit install, and Convex sync is r
 
 This sequence rotates all four capabilities and therefore requires the explicit configuration approval boundary.
 
-1. From `mission-control/`, run `node scripts/outreach-runtime-secrets.mjs install`. This migrates any legacy installation by writing one new v1 capability-set item; it does not update four independent items.
+1. From `mission-control/`, run `node scripts/outreach-runtime-secrets.mjs install`. This validates the stable helper and current Tailscale identity before writing one new v1 capability-set item; it does not update four independent items. The atomic Keychain update/add is terminal: install performs no readback or other fallible work after a successful store.
 2. Start the approved local Convex service.
 3. Run `node scripts/outreach-runtime-secrets.mjs sync-convex`.
 4. Restart the approved Mission Control Convex and Next.js services.
@@ -34,7 +34,7 @@ The helper never prints capability values during install or service startup. Do 
 - Missing or blank mandatory value, a partial authority pair, a present-but-blank authority value, or any collision: refuse service launch and synchronization.
 - Both authority values absent: launch Next.js without authority variables and send explicit Convex deletion changes for both authority capabilities and the verifier actor ID, clearing stale direct-Convex authorization while preserving existing review/decision services.
 - Missing versioned set: v3 reports absence, then the unchanged legacy helper reads only its own review and decision items under the same advisory lock; authority remains absent. A later explicit install writes the set through stable v3.
-- Failed explicit rotation: preserve the prior set because rotation uses one Keychain item update/add; never fall back to partially updated individual items.
+- Failed preflight or Keychain update/add: preserve the prior set because rotation uses one Keychain item update/add; never fall back to partially updated individual items. A successful terminal store is the completed rotation and cannot be reclassified as failure by post-write readback.
 - Contended or timed-out advisory lock/helper/Convex operation: fail closed. Process death releases the kernel lock automatically; retry only after confirming the prior process ended.
 - Missing Tailscale identity: refuse Next.js launch for the decision surface.
 - Missing local Convex authority: refuse synchronization.

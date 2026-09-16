@@ -21,6 +21,7 @@ import {
   buildServiceProcessEnvironment,
   buildLockedReexecRequest,
   ensureV3KeychainHelper,
+  installCapabilitySet,
   installCapabilitySetFromHelper,
   parseCapabilitySetRead,
   readCapabilitySetFromHelpers,
@@ -244,6 +245,64 @@ describe("outreach runtime secret handling", () => {
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
+  });
+
+  test("successful rotation has no fallible post-write read step", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-terminal-rotation-test-"));
+    const helperPath = join(directory, "rotation-helper");
+    const statePath = join(directory, "set.json");
+    const callsPath = join(directory, "calls.log");
+    const prior = JSON.stringify({
+      version: 1,
+      review: "review-a",
+      decision: "decision-b",
+      reviewAuthorityWrite: "authority-write-c",
+      reviewAuthorityRead: "authority-read-d",
+    });
+    const replacement = JSON.stringify({
+      version: 1,
+      review: "review-new",
+      decision: "decision-new",
+      reviewAuthorityWrite: "authority-write-new",
+      reviewAuthorityRead: "authority-read-new",
+    });
+    try {
+      writeFileSync(statePath, prior);
+      executable(helperPath, [
+        "#!/bin/sh",
+        `printf '%s\\n' "$1" >> '${callsPath}'`,
+        'case "$1" in',
+        `  install-set) printf '%s' '${replacement}' > '${statePath}' ;;`,
+        "  read-set) exit 2 ;;",
+        "  *) exit 2 ;;",
+        "esac",
+        "",
+      ].join("\n"));
+
+      expect(captureError(() => installCapabilitySetFromHelper(helperPath))).toBe(undefined);
+      expect(readFileSync(statePath, "utf8")).toBe(replacement);
+      expect(readFileSync(callsPath, "utf8").trim().split("\n")).toEqual(["install-set"]);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("rotation completes every external preflight before the terminal store", () => {
+    const events: string[] = [];
+    installCapabilitySet({
+      ensureHelper: () => { events.push("helper"); },
+      resolveLogin: () => { events.push("tailscale"); return "jt@example.com"; },
+      storeSet: () => { events.push("store"); },
+    });
+    expect(events).toEqual(["helper", "tailscale", "store"]);
+
+    events.length = 0;
+    expect(captureError(() => installCapabilitySet({
+      ensureHelper: () => { events.push("helper"); },
+      resolveLogin: () => { events.push("tailscale"); throw new Error("tailscale failed"); },
+      storeSet: () => { events.push("store"); },
+    }))).toBe("tailscale failed");
+    expect(events).toEqual(["helper", "tailscale"]);
   });
 
   test("macOS advisory lock blocks contention and releases when holder dies", async () => {

@@ -18,6 +18,7 @@ import {
 } from "../lib/mission-control/outreach-review";
 import { appendTaskFeedback } from "../lib/mission-control/task-feedback";
 import {
+  OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED,
   OutreachReviewAuthorityError,
   resolveOutreachReviewAuthorityAdmission,
   resolveOutreachReviewAuthorityLookup,
@@ -342,7 +343,7 @@ export const createOutreachReviewAuthority = mutation({
     try {
       validateOutreachReviewAuthorityActorId(verifierActorId);
     } catch {
-      throw new OutreachAuthError("capability configuration is invalid", 503);
+      throw new Error(OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED);
     }
     const { capability: _capability, ...submission } = args;
     const matches = await ctx.db

@@ -361,7 +361,7 @@ describe("registered Convex outreach review authority handlers", () => {
       else process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID = configured;
       const db = new MemoryDb();
       expect(await rejectedMessage(() => createAuthorityHandler(ctx(db), authoritySubmission())))
-        .toContain("capability configuration is invalid");
+        .toContain("OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED");
       expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 });
     }
     process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID = "verifier-1";

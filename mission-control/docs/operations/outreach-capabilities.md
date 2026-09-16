@@ -28,7 +28,7 @@ Rotation is a configuration change and requires explicit approval. From `mission
 3. Restart the approved Mission Control Convex and Next services.
 4. Verify existing review and decision routes, then verify the authority write/read route with a synthetic no-send proof.
 
-The install command rotates all four capabilities as one requested operation and migrates legacy installations by creating the single set through v3. If the set is absent, v3 reports absence and the legacy helper may read only its own review and decision items under one `lockf` operation; authority stays absent. Never run install merely to inspect state. Never copy capability values into source, shell arguments, documentation, or logs.
+The install command rotates all four capabilities as one requested operation and migrates legacy installations by creating the single set through v3. Before the Keychain write, it completes every fallible external preflight: stable-helper validation and current Tailscale identity resolution. The helper's single-item Keychain update/add is the terminal operation. A successful store is not followed by readback, synchronization, or any other step that could mutate the set and then report the rotation as failed. If the set is absent, v3 reports absence and the legacy helper may read only its own review and decision items under one `lockf` operation; authority stays absent. Never run install merely to inspect state. Never copy capability values into source, shell arguments, documentation, or logs.
 
 ## Failure and recovery
 
@@ -37,7 +37,7 @@ The install command rotates all four capabilities as one requested operation and
 - Partial authority pair, present-but-blank value, or any collision: startup and sync fail closed.
 - Missing v3 helper: compile and probe privately, atomically publish the owner-only source stamp first, then publish stable v3 last; legacy bytes remain unchanged. A crash after stamp publication leaves the helper absent and safely recompilable, so Keychain installation cannot begin from a partial publish.
 - Existing v3 probe/stamp mismatch: fail closed with versioned migration guidance. Never replace an existing Keychain-owning helper path.
-- Failed rotation: the prior versioned set remains authoritative; no individual capability item is partially changed.
+- Preflight or failed Keychain update/add: the prior versioned set remains authoritative; no individual capability item is partially changed. A successful terminal store completes the rotation without a fallible post-write read.
 - Concurrent reads/rotation: `/usr/bin/lockf` serializes the complete short-lived operation on `.runtime/outreach-capability.lock`; the OS releases the advisory lock on process death.
 - Hung helper, compile, lock, or Convex sync: bounded timeout fails closed; capabilities never enter process arguments.
 - Missing local Convex admin configuration: sync fails without exposing credentials or capabilities.

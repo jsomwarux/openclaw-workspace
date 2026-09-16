@@ -312,11 +312,6 @@ export function readCapabilitySetFromHelpers(
 export function installCapabilitySetFromHelper(helperPath) {
   const request = buildInstallerRequest();
   run(helperPath, request.args, { stdio: ["ignore", "ignore", "pipe"] });
-  const capabilitySet = readV3CapabilitySet(helperPath);
-  if (!capabilitySet?.authorityWrite || !capabilitySet.authorityRead) {
-    throw new Error("outreach capability configuration is invalid");
-  }
-  return capabilitySet;
 }
 
 function currentTailscaleLogin() {
@@ -338,16 +333,24 @@ function readRuntimeEnvironment() {
   );
 }
 
+export function installCapabilitySet({
+  ensureHelper = ensureV3KeychainHelper,
+  resolveLogin = currentTailscaleLogin,
+  storeSet = () => installCapabilitySetFromHelper(V3_KEYCHAIN_HELPER),
+} = {}) {
+  ensureHelper();
+  const login = resolveLogin();
+  if (typeof login !== "string" || !login.trim()) {
+    throw new Error("trusted Tailscale login could not be resolved");
+  }
+  // This must be the terminal operation. Once the atomic Keychain item update
+  // succeeds there is no readback, sync, or other fallible work that can turn
+  // a completed rotation into a reported failure.
+  storeSet();
+}
+
 function install() {
-  ensureV3KeychainHelper();
-  const values = installCapabilitySetFromHelper(V3_KEYCHAIN_HELPER);
-  buildRuntimeEnvironment(
-    values.review,
-    values.decision,
-    currentTailscaleLogin(),
-    values.authorityWrite,
-    values.authorityRead,
-  );
+  installCapabilitySet();
 }
 
 async function syncConvex() {
