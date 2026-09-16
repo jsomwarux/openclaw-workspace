@@ -20,6 +20,30 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Cohort-Two Verified-Channel Owner Adapter — 2026-09-15
+**What:** Added a read-only, fail-closed adapter that proves exactly one currently published organization email from a Git-bound contact surface without storing channel state as durable authority.
+**For:** internal.
+**Outcome:** PR #40 merged as `d015aa43`; 685 builder tests and hostile parser/network review passed before merge, and exact post-merge GitHub validation passed all ten jobs. The adapter remains inactive and cannot send.
+**Demonstrates:** SSRF-resistant owner adapters, DNS/IP pinning with TLS hostname verification, hostile URI/email parsing, immutable evidence binding, and approval-gated delivery architecture.
+**Content angle:** Internal control work only unless tied to a real cohort-two result; the practical lesson is that a reachable channel must be re-observed from its owner, not copied into a prospect record and trusted later.
+**Status:** complete.
+
+## Mission Control Universal Action Cards — 2026-09-15
+**What:** Added typed exact steps, paste-ready prompt, paste/use destination, observable done state, and append-only feedback to Mission Control task cards.
+**For:** internal.
+**Outcome:** PR #4 merged as `68757613`; 204 tests, TypeScript, and the 41-route build passed; live verification round-tripped every field, preserved two feedback entries, rejected malformed/replacement writes with HTTP 400, and removed the synthetic test task with the active-task count restored to 47.
+**Demonstrates:** backward-compatible schema evolution, action-card UX, append-only human feedback, hostile-request validation, and live deployment verification.
+**Content angle:** Internal control work only unless paired with a real cohort-two decision where exact steps and preserved feedback changed the outcome.
+**Status:** complete.
+
+## Mission Control Immutable Outreach Review Contract — 2026-09-15
+**What:** Deployed immutable outreach review snapshots, server-owned two-cycle allocation, and JT draft/snapshot-bound approve-or-reject decisions behind separate fail-closed capabilities.
+**For:** internal.
+**Outcome:** PR #2 merged as `10ba8982`; protected runtime capabilities were stored in Keychain and live-proved with two admitted review cycles, a blocked third cycle, immutable JT rejection, and wrong-capability denial; 202 full tests, 22 fresh focused tests, TypeScript, and the 41-route build passed.
+**Demonstrates:** immutable human-decision surfaces, least-privilege capability separation, authenticated approval boundaries, and deployment verification.
+**Content angle:** Internal control work only unless paired with buyer-facing evidence that immutable human review prevented a real workflow error.
+**Status:** complete.
+
 ## AI Workflow Growth OS Checkpoint 1B — 2026-09-14
 **What:** Merged the stateless `jt-ops` to Mission Control bridge, shared evidence validator, and inactive weekly-heartbeat renderer after deploying Mission Control's atomic create-only endpoint.
 **For:** internal.
