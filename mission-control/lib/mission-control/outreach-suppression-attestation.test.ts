@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "node:fs";
 import type { OutreachReviewSubmission } from "./outreach-review";
 import {
   createSuppressionAdmissionAttestation,
@@ -25,6 +26,13 @@ const submission: OutreachReviewSubmission = {
 };
 
 describe("server-only suppression admission attestation", () => {
+  test("uses runtime-portable Web Crypto because Convex imports this module", () => {
+    const source = readFileSync("lib/mission-control/outreach-suppression-attestation.ts", "utf8");
+    expect(source).not.toContain("node:crypto");
+    expect(source).not.toContain("Buffer.from");
+    expect(source).toContain("crypto.subtle.sign");
+    expect(source).toContain("crypto.subtle.verify");
+  });
   test("binds the entire immutable review request under a domain-separated HMAC", async () => {
     const attestation = await createSuppressionAdmissionAttestation(submission, "decision-secret");
     expect(/^[a-f0-9]{64}$/.test(attestation)).toBe(true);

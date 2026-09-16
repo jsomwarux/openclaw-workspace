@@ -1,4 +1,3 @@
-import { createHmac, timingSafeEqual } from "node:crypto";
 import { canonicalJson } from "./canonical-json";
 import type { OutreachReviewSubmission } from "./outreach-review";
 
@@ -8,6 +7,25 @@ const DIGEST = /^[a-f0-9]{64}$/;
 function key(secret: string | undefined): string {
   if (!secret?.trim()) throw new Error("suppression admission attestation unavailable");
   return secret;
+}
+
+const algorithm = { name: "HMAC", hash: "SHA-256" } as const;
+const encoder = new TextEncoder();
+
+function hex(bytes: ArrayBuffer): string {
+  return Array.from(new Uint8Array(bytes), (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function bytes(value: string): ArrayBuffer {
+  const decoded = new Uint8Array(value.length / 2);
+  for (let index = 0; index < decoded.length; index++) {
+    decoded[index] = Number.parseInt(value.slice(index * 2, index * 2 + 2), 16);
+  }
+  return decoded.buffer;
+}
+
+async function hmacKey(secret: string, usage: "sign" | "verify") {
+  return crypto.subtle.importKey("raw", encoder.encode(secret), algorithm, false, [usage]);
 }
 
 function immutableRequest(submission: OutreachReviewSubmission): OutreachReviewSubmission {
@@ -29,10 +47,9 @@ export async function createSuppressionAdmissionAttestation(
   submission: OutreachReviewSubmission,
   decisionCapability: string | undefined,
 ): Promise<string> {
-  return createHmac("sha256", key(decisionCapability))
-    .update(DOMAIN)
-    .update(canonicalJson(immutableRequest(submission)))
-    .digest("hex");
+  const secret = key(decisionCapability);
+  const material = encoder.encode(`${DOMAIN}${canonicalJson(immutableRequest(submission))}`);
+  return hex(await crypto.subtle.sign("HMAC", await hmacKey(secret, "sign"), material));
 }
 
 export async function verifySuppressionAdmissionAttestation(
@@ -41,6 +58,11 @@ export async function verifySuppressionAdmissionAttestation(
   decisionCapability: string | undefined,
 ): Promise<boolean> {
   if (typeof attestation !== "string" || !DIGEST.test(attestation) || !decisionCapability?.trim()) return false;
-  const expected = await createSuppressionAdmissionAttestation(submission, decisionCapability);
-  return timingSafeEqual(Buffer.from(attestation, "hex"), Buffer.from(expected, "hex"));
+  const material = encoder.encode(`${DOMAIN}${canonicalJson(immutableRequest(submission))}`);
+  return crypto.subtle.verify(
+    "HMAC",
+    await hmacKey(decisionCapability, "verify"),
+    bytes(attestation),
+    material,
+  );
 }

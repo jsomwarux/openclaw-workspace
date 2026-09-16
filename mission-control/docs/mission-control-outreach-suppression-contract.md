@@ -36,7 +36,7 @@ attestation/revision, prospect, organization fact, and channel fingerprint. Boun
 reviews require an opaque `review_<20 lowercase hex>` authority ID.
 
 After protected-origin verification, the Next.js owner creates a domain-separated
-HMAC over the exact immutable review submission using the decision capability.
+Web Crypto HMAC over the exact immutable review submission using the decision capability.
 Convex verifies that server-only attestation before any database access and never
 stores it. Possession of the review-card write capability alone cannot admit a
 suppression binding. Legacy review submissions without a suppression binding remain
@@ -44,7 +44,9 @@ compatible and do not require an attestation. Protected-binding mismatches retur
 sanitized 400; protected-origin, SSH, and timeout failures return a sanitized 500.
 
 `POST /api/tasks/outreach-suppression/clear` accepts exactly that review ID.
-Behind the flag it requires JT identity and the decision capability, loads the
+The browser sends only that JSON body; it never receives or submits a capability.
+Behind the flag the route requires JT's trusted Tailscale identity, validates the
+pairwise-distinct server capability configuration, injects the decision capability, loads the
 binding server-side, derives retry-stable owner request/evidence IDs, records the
 consulting owner first through the fixed CLI, then records Mission Control.
 Its success response validates and projects only each owner's event ID, owner

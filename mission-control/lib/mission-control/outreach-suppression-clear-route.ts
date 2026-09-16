@@ -5,7 +5,7 @@ import { deriveSuppressionClearInputs, type SuppressionBinding } from "./outreac
 type Dependencies = {
   enabled: string | undefined;
   trustedJtLogin: string | undefined;
-  decisionCapability: string | undefined;
+  serverCapability: string | undefined;
   reviewCapability: string | undefined;
   readCapability: string | undefined;
   authorityWriteCapability: string | undefined;
@@ -33,13 +33,11 @@ export function createOutreachSuppressionClearHandler(dependencies: Dependencies
     if (dependencies.enabled !== "true") return disabled();
     try {
       authorizeJtIdentity(req.headers, dependencies.trustedJtLogin);
-      const provided = req.headers.get("X-Outreach-Decision-Capability") ?? undefined;
-      const configured = [dependencies.decisionCapability, dependencies.reviewCapability, dependencies.readCapability, dependencies.authorityWriteCapability];
-      if (!provided?.trim() || configured.some((value) => !value?.trim())) return disabled();
+      const configured = [dependencies.serverCapability, dependencies.reviewCapability, dependencies.readCapability, dependencies.authorityWriteCapability];
+      if (configured.some((value) => !value?.trim())) return disabled();
       const values = configured as string[];
       const decisionCapability = values[0];
       for (let left = 0; left < values.length; left++) for (let right = left + 1; right < values.length; right++) if (await secureCapabilityEqual(values[left], values[right])) return disabled();
-      if (!(await secureCapabilityEqual(provided, decisionCapability))) throw new Error("unauthorized");
       let body: unknown;
       try { body = await req.json(); } catch { return NextResponse.json({ error: "invalid outreach suppression clear request" }, { status: 400 }); }
       if (!body || typeof body !== "object" || Array.isArray(body) || Object.keys(body).length !== 1 || !REVIEW.test(String((body as Record<string, unknown>).reviewId ?? ""))) throw new Error("invalid");
@@ -52,7 +50,7 @@ export function createOutreachSuppressionClearHandler(dependencies: Dependencies
     } catch (error) {
       const message = error instanceof Error ? error.message : "";
       if (message.includes("forbidden")) return NextResponse.json({ error: "JT identity forbidden" }, { status: 403 });
-      if (message.includes("identity") || message === "unauthorized") return NextResponse.json({ error: "server capability required" }, { status: 401 });
+      if (message.includes("identity")) return NextResponse.json({ error: "JT identity required" }, { status: 401 });
       if (message === "invalid") return NextResponse.json({ error: "invalid outreach suppression clear request" }, { status: 400 });
       return NextResponse.json({ error: "outreach suppression clear failed" }, { status: 500 });
     }

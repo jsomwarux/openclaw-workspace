@@ -6,7 +6,7 @@ import { recordConsultingSuppressionClear } from "@/lib/mission-control/consulti
 const handler = createOutreachSuppressionClearHandler({
   enabled: process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED,
   trustedJtLogin: process.env.OUTREACH_DECISION_JT_LOGIN,
-  decisionCapability: process.env.OUTREACH_DECISION_CAPABILITY,
+  serverCapability: process.env.OUTREACH_DECISION_CAPABILITY,
   reviewCapability: process.env.OUTREACH_REVIEW_CAPABILITY,
   readCapability: process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
   authorityWriteCapability: process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY,
