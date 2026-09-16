@@ -4,6 +4,7 @@ import {
   existsSync,
   mkdirSync,
   mkdtempSync,
+  readdirSync,
   readFileSync,
   renameSync,
   rmSync,
@@ -17,6 +18,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   AUTHORITY_VERIFIER_ACTOR_ID,
+  CONFIRMED_SEND_REVIEWED_SOURCE,
   buildKeychainHelperRequest,
   buildInstallerRequest,
   buildConfirmedSendRequest,
@@ -729,6 +731,32 @@ describe("outreach runtime secret handling", () => {
     }
   });
 
+  test("pins the reviewed confirmed-send source that merged into jt-ops main", () => {
+    // Derived from the merged jt-ops main tree, never pasted: the reviewed
+    // suppression branch landed as 471e0d8 and `scripts/record_confirmed_send.py`
+    // resolves there to blob d5d12ceb. A stale pin is the failure this catches --
+    // the wrapper would otherwise materialize a superseded reviewed blob forever.
+    expect(CONFIRMED_SEND_REVIEWED_SOURCE).toEqual({
+      commit: "471e0d8cb0dbf7db8b01a235c8d26d7340328ce1",
+      blobOid: "d5d12ceb0e95462c41ce7e528aa60e8bdadff8b2",
+      blobSha256:
+        "72c4a96b4fc0f8c86dba6357f79ac5b4d40fae236cb8b968e8719784479d0b3e",
+      scriptPath: "scripts/record_confirmed_send.py",
+    });
+  });
+
+  test("the reviewed confirmed-send pin is well formed and immutable", () => {
+    expect(/^[0-9a-f]{40}$/.test(CONFIRMED_SEND_REVIEWED_SOURCE.commit)).toBe(true);
+    expect(/^[0-9a-f]{40}$/.test(CONFIRMED_SEND_REVIEWED_SOURCE.blobOid)).toBe(true);
+    expect(/^[0-9a-f]{64}$/.test(CONFIRMED_SEND_REVIEWED_SOURCE.blobSha256)).toBe(true);
+    expect(Object.isFrozen(CONFIRMED_SEND_REVIEWED_SOURCE)).toBe(true);
+    // The superseded pin must never come back.
+    expect(CONFIRMED_SEND_REVIEWED_SOURCE.commit)
+      .not.toBe("87c103d31614d9ec3d3585237a8a5721afbf9d56");
+    expect(CONFIRMED_SEND_REVIEWED_SOURCE.blobOid)
+      .not.toBe("46ba1cff18a8c721f96bf89e5a521980533aa062");
+  });
+
   test("confirmed-send rejects stale commit/blob pairs before capability access", () => {
     const directory = mkdtempSync(join(tmpdir(), "outreach-reviewed-command-reject-"));
     const repo = join(directory, "repo");
@@ -756,6 +784,92 @@ describe("outreach runtime secret handling", () => {
         expectedBlob: "0".repeat(40),
         expectedSha256,
       }))).toBe("fixed jt-ops command is unavailable");
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("confirmed-send rejects a correct blob whose SHA-256 disagrees", () => {
+    // The Git object ID and the SHA-256 are two independent checks over the same
+    // bytes. A pin that drifted on only one of them must still fail closed, and
+    // it must fail before the runtime directory or any capability is touched.
+    const directory = mkdtempSync(join(tmpdir(), "outreach-reviewed-sha-mismatch-"));
+    const repo = join(directory, "repo");
+    const runtimeRoot = join(directory, "runtime");
+    try {
+      mkdirSync(repo, { mode: 0o700 });
+      git(repo, ["init", "-q"]);
+      git(repo, ["config", "user.name", "Test"]);
+      git(repo, ["config", "user.email", "test@example.invalid"]);
+      mkdirSync(join(repo, "scripts"), { mode: 0o700 });
+      const reviewed = "#!/usr/bin/env python3\nprint('reviewed')\n";
+      writeFileSync(join(repo, "scripts", "record_confirmed_send.py"), reviewed, { mode: 0o600 });
+      git(repo, ["add", "scripts/record_confirmed_send.py"]);
+      git(repo, ["commit", "-q", "-m", "reviewed command"]);
+      const expectedCommit = git(repo, ["rev-parse", "HEAD"]);
+      const expectedBlob = git(repo, [
+        "rev-parse", `${expectedCommit}:scripts/record_confirmed_send.py`,
+      ]);
+
+      expect(captureError(() => materializeReviewedConfirmedSendScript({
+        repoPath: repo,
+        runtimeRoot,
+        expectedCommit,
+        expectedBlob,
+        expectedSha256: "0".repeat(64),
+      }))).toBe("fixed jt-ops command is unavailable");
+      // Nothing was materialized on the rejected path.
+      expect(existsSync(runtimeRoot) ? readdirSync(runtimeRoot).length : 0).toBe(0);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("confirmed-send refuses a symlinked or group-readable private runtime root", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-reviewed-runtime-root-"));
+    const repo = join(directory, "repo");
+    try {
+      mkdirSync(repo, { mode: 0o700 });
+      git(repo, ["init", "-q"]);
+      git(repo, ["config", "user.name", "Test"]);
+      git(repo, ["config", "user.email", "test@example.invalid"]);
+      mkdirSync(join(repo, "scripts"), { mode: 0o700 });
+      const reviewed = "#!/usr/bin/env python3\nprint('reviewed')\n";
+      writeFileSync(join(repo, "scripts", "record_confirmed_send.py"), reviewed, { mode: 0o600 });
+      git(repo, ["add", "scripts/record_confirmed_send.py"]);
+      git(repo, ["commit", "-q", "-m", "reviewed command"]);
+      const expectedCommit = git(repo, ["rev-parse", "HEAD"]);
+      const expectedBlob = git(repo, [
+        "rev-parse", `${expectedCommit}:scripts/record_confirmed_send.py`,
+      ]);
+      const expectedSha256 = createHash("sha256").update(reviewed).digest("hex");
+
+      // A runtime root that is a symlink is never trusted, however it resolves.
+      const realRoot = join(directory, "real-root");
+      mkdirSync(realRoot, { mode: 0o700 });
+      const symlinkedRoot = join(directory, "symlinked-root");
+      symlinkSync(realRoot, symlinkedRoot);
+      expect(captureError(() => materializeReviewedConfirmedSendScript({
+        repoPath: repo,
+        runtimeRoot: symlinkedRoot,
+        expectedCommit,
+        expectedBlob,
+        expectedSha256,
+      }))).toBe("fixed jt-ops command is unavailable");
+      expect(readdirSync(realRoot).length).toBe(0);
+
+      // Nor is one any other account can read into.
+      const openRoot = join(directory, "open-root");
+      mkdirSync(openRoot, { mode: 0o700 });
+      chmodSync(openRoot, 0o755);
+      expect(captureError(() => materializeReviewedConfirmedSendScript({
+        repoPath: repo,
+        runtimeRoot: openRoot,
+        expectedCommit,
+        expectedBlob,
+        expectedSha256,
+      }))).toBe("fixed jt-ops command is unavailable");
+      expect(readdirSync(openRoot).length).toBe(0);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }

@@ -35,10 +35,22 @@ const LOCKED_ENV = "OUTREACH_LOCKF_INTERNAL";
 const PRIVATE_PIPE_PREAMBLE = "outreach-runtime-environment-v1\n";
 const AUTHORITY_READER_PIPE_PREAMBLE = "outreach-review-authority-reader-v1\n";
 const JT_OPS_ROOT = "/Users/jtsomwaru/Desktop/jt-ops";
-const JT_OPS_REVIEWED_COMMIT = "87c103d31614d9ec3d3585237a8a5721afbf9d56";
-const JT_OPS_CONFIRMED_SEND_BLOB = "46ba1cff18a8c721f96bf89e5a521980533aa062";
-const JT_OPS_CONFIRMED_SEND_SHA256 =
-  "f682e61ea53afa69ae7fece865c849a8b75b002348c43776cd91d3a170ad30f3";
+// The one reviewed confirmed-send source, derived from the merged jt-ops main
+// tree rather than transcribed: the suppression owner branch landed as 471e0d8
+// and `scripts/record_confirmed_send.py` resolves there to blob d5d12ceb. Both
+// the Git object ID and the SHA-256 are re-derived from the bytes before
+// anything is materialized, so a drifted, stale, or swapped pin fails closed
+// ahead of any Keychain access.
+export const CONFIRMED_SEND_REVIEWED_SOURCE = Object.freeze({
+  commit: "471e0d8cb0dbf7db8b01a235c8d26d7340328ce1",
+  blobOid: "d5d12ceb0e95462c41ce7e528aa60e8bdadff8b2",
+  blobSha256:
+    "72c4a96b4fc0f8c86dba6357f79ac5b4d40fae236cb8b968e8719784479d0b3e",
+  scriptPath: "scripts/record_confirmed_send.py",
+});
+const JT_OPS_REVIEWED_COMMIT = CONFIRMED_SEND_REVIEWED_SOURCE.commit;
+const JT_OPS_CONFIRMED_SEND_BLOB = CONFIRMED_SEND_REVIEWED_SOURCE.blobOid;
+const JT_OPS_CONFIRMED_SEND_SHA256 = CONFIRMED_SEND_REVIEWED_SOURCE.blobSha256;
 const CONFIRMED_SEND_RUNTIME_ROOT =
   "/Users/jtsomwaru/.openclaw/workspace/mission-control/.runtime/confirmed-send-owner";
 const CONFIRMED_SEND_PYTHON = "/usr/bin/python3";
@@ -50,7 +62,7 @@ const SENT_EVENT_ID = /^suppression_event_[0-9a-f]{20}$/;
 const HEX_64 = /^[0-9a-f]{64}$/;
 const UTC_SECONDS = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
 const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
-const CONFIRMED_SEND_SCRIPT_PATH = "scripts/record_confirmed_send.py";
+const CONFIRMED_SEND_SCRIPT_PATH = CONFIRMED_SEND_REVIEWED_SOURCE.scriptPath;
 const CONFIRMED_SEND_SCRIPT_MAX_BYTES = 128 * 1024;
 export const AUTHORITY_VERIFIER_ACTOR_ID = "openclaw:review-verifier-v1";
 
