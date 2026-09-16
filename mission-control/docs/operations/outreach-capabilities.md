@@ -11,7 +11,7 @@ The review and decision capabilities remain mandatory. The review-authority writ
 
 ## Runtime mapping
 
-The checked-in Swift helper encodes all four values in one versioned JSON capability set and stores that set with one macOS Keychain item update/add. `read-set` returns the whole set in one captured pipe response; the Node wrapper validates the exact versioned shape, all nonblank values, and pairwise distinction without putting values in arguments or logs. A complete authority pair adds the same three variables to both the Next.js process and local Convex configuration:
+The checked-in Swift source compiles only to the stable `.runtime/outreach-keychain-helper-v3` path. That v3 helper encodes all four values in one versioned JSON capability set and stores the set with one macOS Keychain item update/add. `read-set` returns the whole set in one captured pipe response; the Node wrapper validates the exact shape, nonblank values, and pairwise distinction without putting values in arguments or logs. The unchanged `.runtime/outreach-keychain-helper` remains the sole owner/reader of legacy review and decision items. A complete authority pair adds the same three variables to both the Next.js process and local Convex configuration:
 
 - `OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY`
 - `OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY`
@@ -28,16 +28,18 @@ Rotation is a configuration change and requires explicit approval. From `mission
 3. Restart the approved Mission Control Convex and Next services.
 4. Verify existing review and decision routes, then verify the authority write/read route with a synthetic no-send proof.
 
-The install command rotates all four capabilities as one requested operation and migrates legacy installations to the single set item. If the set item is absent before migration, the runtime may read only the existing review and decision items under one owner-only lock and must treat authority as absent. Never run install merely to inspect state. Never copy capability values into source, shell arguments, documentation, or logs.
+The install command rotates all four capabilities as one requested operation and migrates legacy installations by creating the single set through v3. If the set is absent, v3 reports absence and the legacy helper may read only its own review and decision items under one `lockf` operation; authority stays absent. Never run install merely to inspect state. Never copy capability values into source, shell arguments, documentation, or logs.
 
 ## Failure and recovery
 
 - Missing mandatory review or decision value: startup and sync fail closed.
 - Both authority values absent: existing services start; Next omits authority variables and Convex receives explicit deletions for all three authority variables.
 - Partial authority pair, present-but-blank value, or any collision: startup and sync fail closed.
-- Missing or stale helper binary: the wrapper checks both a silent v3 probe and a source-derived SHA-256 stamp, compiles to a private temporary executable, validates it, and atomically replaces helper plus stamp under the owner-only runtime lock.
+- Missing v3 helper: compile privately and atomically install stable v3 plus its owner-only source stamp; legacy bytes remain unchanged.
+- Existing v3 probe/stamp mismatch: fail closed with versioned migration guidance. Never replace an existing Keychain-owning helper path.
 - Failed rotation: the prior versioned set remains authoritative; no individual capability item is partially changed.
-- Concurrent reads/rotation/helper replacement: `.runtime/outreach-capability.lock` serializes validation and use, preventing mixed generations and probe/use swaps.
+- Concurrent reads/rotation: `/usr/bin/lockf` serializes the complete short-lived operation on `.runtime/outreach-capability.lock`; the OS releases the advisory lock on process death.
+- Hung helper, compile, lock, or Convex sync: bounded timeout fails closed; capabilities never enter process arguments.
 - Missing local Convex admin configuration: sync fails without exposing credentials or capabilities.
 
 Do not create, rotate, inspect, restart, or deploy during code verification. Tests use temporary executable fakes, lock contention, and fresh Swift compilation without invoking a real Keychain operation.

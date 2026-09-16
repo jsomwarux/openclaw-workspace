@@ -8,7 +8,7 @@ import {
   statSync,
   writeFileSync,
 } from "node:fs";
-import { spawn, spawnSync, type ChildProcess } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -18,12 +18,12 @@ import {
   buildConvexEnvironmentChanges,
   buildRuntimeEnvironment,
   buildServiceProcessEnvironment,
-  ensureKeychainHelper,
+  buildLockedReexecRequest,
+  ensureV3KeychainHelper,
   installCapabilitySetFromHelper,
   parseCapabilitySetRead,
-  readCapabilitySetFromHelper,
+  readCapabilitySetFromHelpers,
   resolveTailscaleLogin,
-  withOwnerOnlyLock,
 } from "../../scripts/outreach-runtime-secrets.mjs";
 
 function captureError(run: () => unknown): string | undefined {
@@ -37,65 +37,55 @@ function executable(path: string, source: string) {
 }
 
 describe("outreach runtime secret handling", () => {
-  test("can compile the ignored Keychain helper from checked-in source", () => {
+  test("targets a separate stable v3 helper path", () => {
     expect(buildKeychainHelperRequest()).toEqual({
       file: "/usr/bin/swiftc",
       args: [
         "./scripts/outreach-keychain-helper.swift",
         "-o",
-        "./.runtime/outreach-keychain-helper",
+        "./.runtime/outreach-keychain-helper-v3",
       ],
     });
-    const runtime = readFileSync("scripts/outreach-runtime-secrets.mjs", "utf8");
-    expect(runtime).toContain("function install() {\n  return withOwnerOnlyLock(CAPABILITY_LOCK");
   });
 
-  test("replaces a same-protocol helper when its source stamp is stale", () => {
+  test("compiles v3 only when absent and leaves legacy helper bytes unchanged", () => {
     const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-helper-test-"));
-    const helperPath = join(directory, "outreach-keychain-helper");
+    const legacyPath = join(directory, "outreach-keychain-helper");
+    const v3Path = join(directory, "outreach-keychain-helper-v3");
     try {
-      executable(helperPath, [
-        "#!/bin/sh",
-        '[ "$1" = "probe" ] && [ "$2" = "outreach-capabilities-v3" ] && exit 0',
-        "exit 2",
-        "",
-      ].join("\n"));
-      writeFileSync(`${helperPath}.sha256`, "stale-source-digest\n", { mode: 0o600 });
+      executable(legacyPath, "#!/bin/sh\nexit 2\n");
+      const legacyBefore = readFileSync(legacyPath);
 
-      ensureKeychainHelper(helperPath);
+      ensureV3KeychainHelper(v3Path);
 
-      const probe = spawnSync(helperPath, ["probe", "outreach-capabilities-v3"], { encoding: "utf8" });
+      const probe = spawnSync(v3Path, ["probe", "outreach-capabilities-v3"], { encoding: "utf8" });
       expect(probe.status).toBe(0);
       expect(probe.stdout).toBe("");
-      expect(readFileSync(helperPath).subarray(0, 2).toString()).not.toBe("#!");
-      expect(statSync(helperPath).mode & 0o777).toBe(0o700);
-      expect(statSync(`${helperPath}.sha256`).mode & 0o777).toBe(0o600);
+      expect(readFileSync(legacyPath)).toEqual(legacyBefore);
+      expect(statSync(v3Path).mode & 0o777).toBe(0o700);
+      expect(statSync(`${v3Path}.sha256`).mode & 0o777).toBe(0o600);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
   });
 
-  test("keeps the prior helper when a private replacement fails validation", () => {
-    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-swap-test-"));
-    const helperPath = join(directory, "outreach-keychain-helper");
-    const compilerPath = join(directory, "failing-compiler");
+  test("v3 protocol or source mismatch fails closed without replacing bytes", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-mismatch-test-"));
+    const v3Path = join(directory, "outreach-keychain-helper-v3");
     try {
-      executable(helperPath, "#!/bin/sh\nexit 2\n");
-      executable(compilerPath, [
+      executable(v3Path, [
         "#!/bin/sh",
-        'output="${3}"',
-        'printf \'#!/bin/sh\\nexit 2\\n\' > "$output"',
-        'chmod 700 "$output"',
-        "exit 0",
+        '[ "$1" = "probe" ] && [ "$2" = "outreach-capabilities-v3" ] && exit 0',
+        "exit 2",
         "",
       ].join("\n"));
-      const before = readFileSync(helperPath);
+      writeFileSync(`${v3Path}.sha256`, "stale-source-digest\n", { mode: 0o600 });
+      const before = readFileSync(v3Path);
 
-      expect(captureError(() => ensureKeychainHelper(helperPath, compilerPath)))
-        .toBe("secure capability helper protocol is unavailable");
+      expect(captureError(() => ensureV3KeychainHelper(v3Path)))
+        .toBe("v3 capability helper mismatch; explicit versioned migration required");
 
-      expect(readFileSync(helperPath)).toEqual(before);
-      expect(existsSync(`${helperPath}.sha256`)).toBe(false);
+      expect(readFileSync(v3Path)).toEqual(before);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
@@ -146,26 +136,38 @@ describe("outreach runtime secret handling", () => {
     }))).toBe("outreach capability configuration is invalid");
   });
 
-  test("reads the legacy fallback only for review and decision", () => {
+  test("each Keychain item is read only by its owning helper", () => {
     const directory = mkdtempSync(join(tmpdir(), "outreach-legacy-helper-test-"));
-    const helperPath = join(directory, "legacy-helper");
+    const legacyPath = join(directory, "legacy-helper");
+    const v3Path = join(directory, "v3-helper");
+    const logPath = join(directory, "calls.log");
     try {
-      executable(helperPath, [
+      executable(v3Path, [
         "#!/bin/sh",
-        'case "$1:$2" in',
-        "  read-set:) exit 3 ;;",
-        "  read:review) printf 'legacy-review\\n' ;;",
-        "  read:decision) printf 'legacy-decision\\n' ;;",
-        "  *) exit 2 ;;",
-        "esac",
+        `printf 'v3:%s\\n' "$1" >> '${logPath}'`,
+        '[ "$1" = "read-set" ] && exit 3',
+        "exit 2",
         "",
       ].join("\n"));
-      expect(readCapabilitySetFromHelper(helperPath)).toEqual({
+      executable(legacyPath, [
+        "#!/bin/sh",
+        `printf 'legacy:%s:%s\\n' "$1" "$2" >> '${logPath}'`,
+        '[ "$1:$2" = "read:review" ] && printf \'legacy-review\\n\' && exit 0',
+        '[ "$1:$2" = "read:decision" ] && printf \'legacy-decision\\n\' && exit 0',
+        "exit 2",
+        "",
+      ].join("\n"));
+      expect(readCapabilitySetFromHelpers(v3Path, legacyPath)).toEqual({
         review: "legacy-review",
         decision: "legacy-decision",
         authorityWrite: undefined,
         authorityRead: undefined,
       });
+      expect(readFileSync(logPath, "utf8").trim().split("\n")).toEqual([
+        "v3:read-set",
+        "legacy:read:review",
+        "legacy:read:decision",
+      ]);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
@@ -197,67 +199,59 @@ describe("outreach runtime secret handling", () => {
       expect(captureError(() => installCapabilitySetFromHelper(helperPath)))
         .toBe("secure capability operation failed");
       expect(readFileSync(statePath, "utf8")).toBe(prior);
-      expect(readCapabilitySetFromHelper(helperPath).review).toBe("review-a");
+      expect(readCapabilitySetFromHelpers(helperPath, join(directory, "unused-legacy")).review)
+        .toBe("review-a");
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
   });
 
-  test("owner-only lock prevents concurrent legacy reads from mixing generations", async () => {
-    const directory = mkdtempSync(join(tmpdir(), "outreach-lock-test-"));
+  test("macOS advisory lock blocks contention and releases when holder dies", async () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-lockf-test-"));
     const lockPath = join(directory, "capability.lock");
-    const reviewPath = join(directory, "review");
-    const decisionPath = join(directory, "decision");
-    const helperPath = join(directory, "legacy-helper");
-    const childScript = join(directory, "writer.mjs");
-    const attemptPath = join(directory, "attempted");
+    const readyPath = join(directory, "ready");
     try {
-      writeFileSync(reviewPath, "old-review");
-      writeFileSync(decisionPath, "old-decision");
-      executable(helperPath, [
-        "#!/bin/sh",
-        'case "$1:$2" in',
-        "  read-set:) exit 3 ;;",
-        `  read:review) cat '${reviewPath}' ;;`,
-        `  read:decision) cat '${decisionPath}' ;;`,
-        "  *) exit 2 ;;",
-        "esac",
-        "",
-      ].join("\n"));
-      writeFileSync(childScript, [
-        `import { withOwnerOnlyLock } from ${JSON.stringify(new URL("../../scripts/outreach-runtime-secrets.mjs", import.meta.url).href)};`,
-        'import { writeFileSync } from "node:fs";',
-        `writeFileSync(${JSON.stringify(attemptPath)}, "ready");`,
-        `withOwnerOnlyLock(${JSON.stringify(lockPath)}, () => {`,
-        `  writeFileSync(${JSON.stringify(reviewPath)}, "new-review");`,
-        `  writeFileSync(${JSON.stringify(decisionPath)}, "new-decision");`,
-        "});",
-        "",
-      ].join("\n"));
+      const holder = spawn("/usr/bin/lockf", [
+        lockPath,
+        "/bin/sh",
+        "-c",
+        `touch '${readyPath}'; sleep 10`,
+      ]);
+      const deadline = Date.now() + 2_000;
+      while (!existsSync(readyPath) && Date.now() < deadline) {
+        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 10);
+      }
+      expect(existsSync(readyPath)).toBe(true);
+      expect(spawnSync("/usr/bin/lockf", ["-t", "0", lockPath, "/usr/bin/true"]).status)
+        .not.toBe(0);
+      holder.kill("SIGKILL");
+      await new Promise<void>((resolve) => holder.once("exit", () => resolve()));
+      expect(spawnSync("/usr/bin/lockf", ["-t", "1", lockPath, "/usr/bin/true"]).status)
+        .toBe(0);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
 
-      let observed;
-      let child: ChildProcess | undefined;
-      withOwnerOnlyLock(lockPath, () => {
-        child = spawn(process.execPath, [childScript], { stdio: "pipe" });
-        const deadline = Date.now() + 2_000;
-        while (!existsSync(attemptPath) && Date.now() < deadline) {
-          Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 10);
-        }
-        expect(existsSync(attemptPath)).toBe(true);
-        observed = readCapabilitySetFromHelper(helperPath);
-        expect(statSync(lockPath).mode & 0o777).toBe(0o700);
-      });
-      expect(observed).toEqual({
-        review: "old-review",
-        decision: "old-decision",
-        authorityWrite: undefined,
-        authorityRead: undefined,
-      });
-      expect(Boolean(child)).toBe(true);
-      const exitCode = await new Promise<number | null>((resolve) => child!.once("exit", resolve));
-      expect(exitCode).toBe(0);
-      expect([readFileSync(reviewPath, "utf8"), readFileSync(decisionPath, "utf8")])
-        .toEqual(["new-review", "new-decision"]);
+  test("lockf re-exec uses only nonsecret arguments and an internal guard", () => {
+    const request = buildLockedReexecRequest(["sync-convex"]);
+    expect(request.file).toBe("/usr/bin/lockf");
+    expect(request.args).toContain("--outreach-lock-held");
+    expect(JSON.stringify(request)).not.toContain("authority-secret-must-not-leak");
+  });
+
+  test("helper subprocesses fail closed on a bounded timeout", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-helper-timeout-test-"));
+    const v3Path = join(directory, "v3-helper");
+    try {
+      executable(v3Path, "#!/bin/sh\nsleep 1\n");
+      const startedAt = Date.now();
+      expect(captureError(() => readCapabilitySetFromHelpers(
+        v3Path,
+        join(directory, "legacy-helper"),
+        25,
+      ))).toBe("secure capability operation timed out");
+      expect(Date.now() - startedAt < 500).toBe(true);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }

@@ -5,13 +5,13 @@ Mission Control keeps four outreach capabilities outside source control: mandato
 ## Owned files
 
 - `scripts/outreach-keychain-helper.swift`: source for the narrow versioned-set Keychain helper.
-- `scripts/outreach-runtime-secrets.mjs`: owns the filesystem lock, source-stamped helper replacement, set/legacy reads, rotation validation, Tailscale login resolution, Next.js injection, and Convex synchronization.
+- `scripts/outreach-runtime-secrets.mjs`: owns advisory-lock re-execution, stable-helper validation, owner-routed set/legacy reads, rotation validation, Tailscale login resolution, Next.js injection, and bounded Convex synchronization.
 - `../scripts/mission-control-start.sh`: launches Next.js through the runtime wrapper.
 - `../scripts/mission-control-convex-sync.sh`: launches Convex through the runtime wrapper.
 
-The compiled helper lives at `.runtime/outreach-keychain-helper` and is intentionally ignored. Before use, the wrapper checks both its silent v3 protocol probe and `.runtime/outreach-keychain-helper.sha256`, which must match the checked-in Swift source. A missing helper, a protocol mismatch, or a source-stamp mismatch triggers a rebuild to a private temporary executable. The wrapper validates that executable, sets owner-only permissions, and atomically renames the helper and its owner-only source stamp into place while holding the capability lock.
+The legacy compiled helper remains at `.runtime/outreach-keychain-helper`. It owns the existing review and decision Keychain items and must never be replaced, recompiled, or used for v3 set access. The v3 helper has a separate stable path, `.runtime/outreach-keychain-helper-v3`, and exclusively owns the versioned capability-set item. When v3 is absent, the wrapper privately compiles it, validates its silent v3 probe, writes `.runtime/outreach-keychain-helper-v3.sha256`, and atomically installs both with owner-only permissions. Once v3 exists, a protocol or source-stamp mismatch fails closed with explicit version-bump/migration guidance; it is never replaced in place because doing so could invalidate Keychain ACL ownership.
 
-Every helper validation, capability read, explicit install, and Convex sync runs under the owner-only `.runtime/outreach-capability.lock`. The lock remains held from probe through use, so another cooperating runtime cannot swap the helper or rotate between related reads. Capability output is captured through private pipes only; it is never inherited by a terminal or logged.
+Every helper validation, capability read, explicit install, and Convex sync is re-executed under macOS `/usr/bin/lockf` using the owner-only regular file `.runtime/outreach-capability.lock`. The internal mode requires a guarded flag and environment marker. The advisory lock is kernel-released when the process exits or dies, avoiding stale directory locks. Capability output is captured through private pipes only; values never appear in arguments, inherited terminal output, or logs. Helper commands, compilation, lock acquisition, and Convex fetches all have bounded timeouts.
 
 ## Configuration sequence
 
@@ -29,12 +29,13 @@ The helper never prints capability values during install or service startup. Do 
 
 ## Failure behavior
 
-- Missing or stale helper/source stamp: privately compile from checked-in Swift source, require the current silent protocol probe, and atomically replace it under the lock.
+- Missing v3 helper: privately compile, validate, and atomically install the stable v3 path without touching legacy bytes.
+- Existing v3 protocol/source-stamp mismatch: fail closed. Do not overwrite it; ship a new versioned helper path and explicit migration instead.
 - Missing or blank mandatory value, a partial authority pair, a present-but-blank authority value, or any collision: refuse service launch and synchronization.
 - Both authority values absent: launch Next.js without authority variables and send explicit Convex deletion changes for both authority capabilities and the verifier actor ID, clearing stale direct-Convex authorization while preserving existing review/decision services.
-- Missing versioned set: under the same owner-only lock, read only the legacy review and decision items and treat authority as absent. A later explicit install must migrate to the single set item.
+- Missing versioned set: v3 reports absence, then the unchanged legacy helper reads only its own review and decision items under the same advisory lock; authority remains absent. A later explicit install writes the set through stable v3.
 - Failed explicit rotation: preserve the prior set because rotation uses one Keychain item update/add; never fall back to partially updated individual items.
-- Insecure or contended runtime lock: fail closed rather than read across generations.
+- Contended or timed-out advisory lock/helper/Convex operation: fail closed. Process death releases the kernel lock automatically; retry only after confirming the prior process ended.
 - Missing Tailscale identity: refuse Next.js launch for the decision surface.
 - Missing local Convex authority: refuse synchronization.
 - Unknown downstream errors: return sanitized failures; never echo capability-bearing context.

@@ -4,26 +4,33 @@ import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
   chmodSync,
+  closeSync,
   existsSync,
   mkdirSync,
   mkdtempSync,
+  openSync,
   readFileSync,
   renameSync,
-  rmdirSync,
   rmSync,
-  statSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
 
-const KEYCHAIN_HELPER = "./.runtime/outreach-keychain-helper";
+const LEGACY_KEYCHAIN_HELPER = "./.runtime/outreach-keychain-helper";
+const V3_KEYCHAIN_HELPER = "./.runtime/outreach-keychain-helper-v3";
 const KEYCHAIN_HELPER_SOURCE = "./scripts/outreach-keychain-helper.swift";
 const KEYCHAIN_HELPER_PROTOCOL = "outreach-capabilities-v3";
 const CAPABILITY_LOCK = "./.runtime/outreach-capability.lock";
+const HELPER_TIMEOUT_MS = 5_000;
+const COMPILE_TIMEOUT_MS = 30_000;
+const LOCKED_OPERATION_TIMEOUT_MS = 30_000;
+const CONVEX_SYNC_TIMEOUT_MS = 10_000;
+const LOCKED_FLAG = "--outreach-lock-held";
+const LOCKED_ENV = "OUTREACH_LOCKF_INTERNAL";
 export const AUTHORITY_VERIFIER_ACTOR_ID = "openclaw:review-verifier-v1";
 
 export function buildKeychainHelperRequest(
-  helperPath = KEYCHAIN_HELPER,
+  helperPath = V3_KEYCHAIN_HELPER,
   compilerPath = "/usr/bin/swiftc",
 ) {
   return {
@@ -36,6 +43,8 @@ function supportsCurrentKeychainHelper(helperPath) {
   if (!existsSync(helperPath)) return false;
   const result = spawnSync(helperPath, ["probe", KEYCHAIN_HELPER_PROTOCOL], {
     stdio: ["ignore", "ignore", "ignore"],
+    timeout: HELPER_TIMEOUT_MS,
+    killSignal: "SIGKILL",
   });
   return result.status === 0;
 }
@@ -55,12 +64,17 @@ function ensurePrivateDirectory(path) {
   chmodSync(path, 0o700);
 }
 
-function ensureKeychainHelperUnlocked(
-  helperPath = KEYCHAIN_HELPER,
+export function ensureV3KeychainHelper(
+  helperPath = V3_KEYCHAIN_HELPER,
   compilerPath = "/usr/bin/swiftc",
 ) {
   const digest = sourceDigest();
-  if (hasCurrentHelperSource(helperPath, digest)) return;
+  if (existsSync(helperPath)) {
+    if (!hasCurrentHelperSource(helperPath, digest)) {
+      throw new Error("v3 capability helper mismatch; explicit versioned migration required");
+    }
+    return;
+  }
   const helperDirectory = dirname(helperPath);
   ensurePrivateDirectory(helperDirectory);
   const temporaryDirectory = mkdtempSync(join(helperDirectory, ".outreach-helper-"));
@@ -69,7 +83,10 @@ function ensureKeychainHelperUnlocked(
   const temporaryStamp = join(temporaryDirectory, "outreach-keychain-helper.sha256");
   try {
     const request = buildKeychainHelperRequest(temporaryHelper, compilerPath);
-    run(request.file, request.args, { stdio: ["ignore", "ignore", "pipe"] });
+    run(request.file, request.args, {
+      stdio: ["ignore", "ignore", "pipe"],
+      timeout: COMPILE_TIMEOUT_MS,
+    });
     chmodSync(temporaryHelper, 0o700);
     if (!supportsCurrentKeychainHelper(temporaryHelper)) {
       throw new Error("secure capability helper protocol is unavailable");
@@ -83,62 +100,25 @@ function ensureKeychainHelperUnlocked(
   }
 }
 
-function assertOwnerOnlyLock(lockPath) {
-  const status = statSync(lockPath);
-  const currentUid = typeof process.getuid === "function" ? process.getuid() : status.uid;
-  if (!status.isDirectory() || status.uid !== currentUid || (status.mode & 0o777) !== 0o700) {
-    throw new Error("capability runtime lock is insecure");
-  }
-}
-
-function acquireOwnerOnlyLock(lockPath, timeoutMs = 10_000) {
+function ensureAdvisoryLockFile(lockPath = CAPABILITY_LOCK) {
   ensurePrivateDirectory(dirname(lockPath));
-  const deadline = Date.now() + timeoutMs;
-  while (true) {
-    try {
-      mkdirSync(lockPath, { mode: 0o700 });
-      chmodSync(lockPath, 0o700);
-      assertOwnerOnlyLock(lockPath);
-      return;
-    } catch (error) {
-      if (error?.code !== "EEXIST") throw error;
-      try {
-        assertOwnerOnlyLock(lockPath);
-      } catch (lockError) {
-        if (lockError?.code === "ENOENT") continue;
-        throw lockError;
-      }
-      if (Date.now() >= deadline) throw new Error("capability runtime lock timed out");
-      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 20);
-    }
-  }
+  const descriptor = openSync(lockPath, "a", 0o600);
+  closeSync(descriptor);
+  chmodSync(lockPath, 0o600);
 }
 
-export function withOwnerOnlyLock(lockPath, operation) {
-  acquireOwnerOnlyLock(lockPath);
-  try {
-    return operation();
-  } finally {
-    rmdirSync(lockPath);
-  }
-}
-
-async function withOwnerOnlyLockAsync(lockPath, operation) {
-  acquireOwnerOnlyLock(lockPath);
-  try {
-    return await operation();
-  } finally {
-    rmdirSync(lockPath);
-  }
-}
-
-export function ensureKeychainHelper(
-  helperPath = KEYCHAIN_HELPER,
-  compilerPath = "/usr/bin/swiftc",
+export function buildLockedReexecRequest(
+  operationArgs,
+  {
+    lockPath = CAPABILITY_LOCK,
+    nodePath = process.execPath,
+    scriptPath = process.argv[1] ?? "scripts/outreach-runtime-secrets.mjs",
+  } = {},
 ) {
-  return withOwnerOnlyLock(`${helperPath}.lock`, () => {
-    ensureKeychainHelperUnlocked(helperPath, compilerPath);
-  });
+  return {
+    file: "/usr/bin/lockf",
+    args: ["-t", "10", lockPath, nodePath, scriptPath, LOCKED_FLAG, ...operationArgs],
+  };
 }
 
 export function buildInstallerRequest() {
@@ -232,8 +212,13 @@ function run(file, args, options = {}) {
   const result = spawnSync(file, args, {
     encoding: "utf8",
     maxBuffer: 1024 * 1024,
+    timeout: HELPER_TIMEOUT_MS,
+    killSignal: "SIGKILL",
     ...options,
   });
+  if (result.error?.code === "ETIMEDOUT") {
+    throw new Error("secure capability operation timed out");
+  }
   if (result.status !== 0) {
     throw new Error("secure capability operation failed");
   }
@@ -292,17 +277,30 @@ export function parseCapabilitySetRead(result) {
   }
 }
 
-export function readCapabilitySetFromHelper(helperPath) {
+function readV3CapabilitySet(helperPath, timeout = HELPER_TIMEOUT_MS) {
   const result = spawnSync(helperPath, ["read-set"], {
     encoding: "utf8",
     maxBuffer: 1024 * 1024,
     stdio: ["ignore", "pipe", "pipe"],
+    timeout,
+    killSignal: "SIGKILL",
   });
-  const capabilitySet = parseCapabilitySetRead(result);
+  if (result.error?.code === "ETIMEDOUT") {
+    throw new Error("secure capability operation timed out");
+  }
+  return parseCapabilitySetRead(result);
+}
+
+export function readCapabilitySetFromHelpers(
+  v3HelperPath,
+  legacyHelperPath,
+  timeout = HELPER_TIMEOUT_MS,
+) {
+  const capabilitySet = readV3CapabilitySet(v3HelperPath, timeout);
   if (capabilitySet) return capabilitySet;
   return {
-    review: readLegacyCapability(helperPath, "review"),
-    decision: readLegacyCapability(helperPath, "decision"),
+    review: readLegacyCapability(legacyHelperPath, "review"),
+    decision: readLegacyCapability(legacyHelperPath, "decision"),
     authorityWrite: undefined,
     authorityRead: undefined,
   };
@@ -311,18 +309,11 @@ export function readCapabilitySetFromHelper(helperPath) {
 export function installCapabilitySetFromHelper(helperPath) {
   const request = buildInstallerRequest();
   run(helperPath, request.args, { stdio: ["ignore", "ignore", "pipe"] });
-  const capabilitySet = readCapabilitySetFromHelper(helperPath);
-  if (!capabilitySet.authorityWrite || !capabilitySet.authorityRead) {
+  const capabilitySet = readV3CapabilitySet(helperPath);
+  if (!capabilitySet?.authorityWrite || !capabilitySet.authorityRead) {
     throw new Error("outreach capability configuration is invalid");
   }
   return capabilitySet;
-}
-
-function lockedCapabilitySet() {
-  return withOwnerOnlyLock(CAPABILITY_LOCK, () => {
-    ensureKeychainHelperUnlocked();
-    return readCapabilitySetFromHelper(KEYCHAIN_HELPER);
-  });
 }
 
 function currentTailscaleLogin() {
@@ -332,57 +323,58 @@ function currentTailscaleLogin() {
   return resolveTailscaleLogin(JSON.parse(result.stdout));
 }
 
+function readRuntimeEnvironment() {
+  ensureV3KeychainHelper();
+  const values = readCapabilitySetFromHelpers(V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER);
+  return buildRuntimeEnvironment(
+    values.review,
+    values.decision,
+    currentTailscaleLogin(),
+    values.authorityWrite,
+    values.authorityRead,
+  );
+}
+
 function install() {
-  return withOwnerOnlyLock(CAPABILITY_LOCK, () => {
-    ensureKeychainHelperUnlocked();
-    const values = installCapabilitySetFromHelper(KEYCHAIN_HELPER);
-    buildRuntimeEnvironment(
-      values.review,
-      values.decision,
-      currentTailscaleLogin(),
-      values.authorityWrite,
-      values.authorityRead,
-    );
-  });
+  ensureV3KeychainHelper();
+  const values = installCapabilitySetFromHelper(V3_KEYCHAIN_HELPER);
+  buildRuntimeEnvironment(
+    values.review,
+    values.decision,
+    currentTailscaleLogin(),
+    values.authorityWrite,
+    values.authorityRead,
+  );
 }
 
 async function syncConvex() {
-  return withOwnerOnlyLockAsync(CAPABILITY_LOCK, async () => {
-    ensureKeychainHelperUnlocked();
-    const config = JSON.parse(readFileSync(new URL("../.convex/local/default/config.json", import.meta.url), "utf8"));
-    if (typeof config.adminKey !== "string" || !config.adminKey || typeof config.ports?.cloud !== "number") {
-      throw new Error("local Convex authority is unavailable");
-    }
-    const values = readCapabilitySetFromHelper(KEYCHAIN_HELPER);
-    const changes = buildConvexEnvironmentChanges(
-      values.review,
-      values.decision,
-      values.authorityWrite,
-      values.authorityRead,
-    );
-    const response = await fetch(`http://127.0.0.1:${config.ports.cloud}/api/update_environment_variables`, {
-      method: "POST",
-      headers: {
-        authorization: `Convex ${config.adminKey}`,
-        "content-type": "application/json",
-        "convex-client": "mission-control-secure-config-v1",
-      },
-      body: JSON.stringify({ changes }),
-    });
-    if (!response.ok) throw new Error("local Convex capability sync failed");
+  ensureV3KeychainHelper();
+  const config = JSON.parse(readFileSync(new URL("../.convex/local/default/config.json", import.meta.url), "utf8"));
+  if (typeof config.adminKey !== "string" || !config.adminKey || typeof config.ports?.cloud !== "number") {
+    throw new Error("local Convex authority is unavailable");
+  }
+  const values = readCapabilitySetFromHelpers(V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER);
+  const changes = buildConvexEnvironmentChanges(
+    values.review,
+    values.decision,
+    values.authorityWrite,
+    values.authorityRead,
+  );
+  const response = await fetch(`http://127.0.0.1:${config.ports.cloud}/api/update_environment_variables`, {
+    method: "POST",
+    headers: {
+      authorization: `Convex ${config.adminKey}`,
+      "content-type": "application/json",
+      "convex-client": "mission-control-secure-config-v1",
+    },
+    body: JSON.stringify({ changes }),
+    signal: AbortSignal.timeout(CONVEX_SYNC_TIMEOUT_MS),
   });
+  if (!response.ok) throw new Error("local Convex capability sync failed");
 }
 
-function runWithSecrets(command) {
+function runService(command, values) {
   if (!command.length) throw new Error("missing service command");
-  const capabilities = lockedCapabilitySet();
-  const values = buildRuntimeEnvironment(
-    capabilities.review,
-    capabilities.decision,
-    currentTailscaleLogin(),
-    capabilities.authorityWrite,
-    capabilities.authorityRead,
-  );
   const result = spawnSync(command[0], command.slice(1), {
     env: buildServiceProcessEnvironment(process.env, values),
     stdio: "inherit",
@@ -390,13 +382,42 @@ function runWithSecrets(command) {
   process.exit(result.status ?? 1);
 }
 
-const [mode, separator, ...command] = process.argv.slice(2);
+function runLockedReexec(operationArgs, captureOutput = false) {
+  ensureAdvisoryLockFile();
+  const request = buildLockedReexecRequest(operationArgs);
+  const result = spawnSync(request.file, request.args, {
+    encoding: "utf8",
+    maxBuffer: 1024 * 1024,
+    env: { ...process.env, [LOCKED_ENV]: "1" },
+    stdio: captureOutput ? ["ignore", "pipe", "pipe"] : "inherit",
+    timeout: LOCKED_OPERATION_TIMEOUT_MS,
+    killSignal: "SIGKILL",
+  });
+  if (result.error?.code === "ETIMEDOUT") throw new Error("capability lock operation timed out");
+  if (result.status !== 0) throw new Error("secure capability operation failed");
+  return result.stdout;
+}
+
+const cliArgs = process.argv.slice(2);
 if (import.meta.main) {
   try {
-    if (mode === "install") install();
-    else if (mode === "sync-convex") await syncConvex();
-    else if (["run-next", "run-convex"].includes(mode) && separator === "--") runWithSecrets(command);
-    else throw new Error("unsupported secure capability operation");
+    if (cliArgs[0] === LOCKED_FLAG) {
+      if (process.env[LOCKED_ENV] !== "1") throw new Error("locked capability operation required");
+      const [mode] = cliArgs.slice(1);
+      if (mode === "install") install();
+      else if (mode === "sync-convex") await syncConvex();
+      else if (mode === "emit-runtime-environment") {
+        process.stdout.write(JSON.stringify(readRuntimeEnvironment()));
+      } else throw new Error("unsupported secure capability operation");
+    } else {
+      const [mode, separator, ...command] = cliArgs;
+      if (["install", "sync-convex"].includes(mode)) {
+        runLockedReexec([mode]);
+      } else if (["run-next", "run-convex"].includes(mode) && separator === "--") {
+        const values = JSON.parse(runLockedReexec(["emit-runtime-environment"], true));
+        runService(command, values);
+      } else throw new Error("unsupported secure capability operation");
+    }
   } catch (error) {
     console.error(error instanceof Error ? error.message : "secure capability operation failed");
     process.exit(2);
