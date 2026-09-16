@@ -88,7 +88,7 @@ describe("outreach review authority submission", () => {
   test("requires distinct bounded builder, drafter, and server-mapped verifier actors", async () => {
     expect(errorCode(() => validateOutreachReviewAuthoritySubmission(submission({ drafterActorId: "builder-1" })))).toBe("invalid_request");
     expect(errorCode(() => validateOutreachReviewAuthoritySubmission(submission({ builderActorId: "x".repeat(129) })))).toBe("invalid_request");
-    for (const verifierActorId of ["builder-1", "drafter-1", "", "Verifier-1"]) {
+    for (const verifierActorId of ["builder-1", "drafter-1", "", "   "]) {
       expect(await (async () => {
         try {
           await resolveOutreachReviewAuthorityAdmission([], submission(), verifierActorId, 1_789_452_000_000, ENTROPY);
@@ -97,6 +97,19 @@ describe("outreach review authority submission", () => {
         }
       })()).toBe("invalid_request");
     }
+  });
+
+  test("accepts bounded nonblank candidate and actor IDs without imposing slug syntax", async () => {
+    const mixedIds = submission({
+      candidateId: "Candidate/NYC #1",
+      builderActorId: "Builder Role A",
+      drafterActorId: "Drafter@Ops",
+    });
+    expect(validateOutreachReviewAuthoritySubmission(mixedIds)).toBe(undefined);
+    const result = await resolveOutreachReviewAuthorityAdmission(
+      [], mixedIds, "Verifier Role 1", 1_789_452_000_000, ENTROPY,
+    );
+    expect(result.operation).toBe("create");
   });
 
   test("hashes only the canonical client submission and binds every submitted field", async () => {
@@ -123,7 +136,6 @@ describe("server-owned authority resolution", () => {
     if (result.operation !== "create") throw new Error("expected create");
     expect(result.authority).toEqual({
       ...submission(),
-      submissionSha256: await hashOutreachReviewAuthoritySubmission(submission()),
       verifierActorId: "verifier-1",
       reviewId: "review_" + "1".repeat(20),
       observedAt: 1_789_452_000_000,
@@ -131,7 +143,7 @@ describe("server-owned authority resolution", () => {
     });
     expect(Object.keys(result.authority).sort()).toEqual([
       "authorityBundleHash", "authorityRevision", "builderActorId", "candidateId", "draftSha256",
-      "drafterActorId", "observedAt", "reviewId", "submissionSha256", "verifierActorId",
+      "drafterActorId", "observedAt", "reviewId", "verifierActorId",
       "verifierGitBinding", "verifierReportSha256",
     ].sort());
   });

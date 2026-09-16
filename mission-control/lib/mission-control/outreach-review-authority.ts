@@ -11,7 +11,6 @@ export type OutreachReviewAuthoritySubmission = {
 };
 
 export type OutreachReviewAuthority = OutreachReviewAuthoritySubmission & {
-  submissionSha256: string;
   verifierActorId: string;
   reviewId: string;
   observedAt: number;
@@ -31,7 +30,6 @@ export class OutreachReviewAuthorityError extends Error {
   }
 }
 
-const ID_PATTERN = /^[a-z0-9][a-z0-9._:-]{0,127}$/;
 const REPOSITORY_PATTERN = /^[a-z0-9][a-z0-9._-]{0,63}\/[a-z0-9][a-z0-9._-]{0,99}$/;
 const COMMIT_PATTERN = /^[a-f0-9]{40}$/;
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
@@ -46,7 +44,7 @@ const SUBMISSION_FIELDS = [
 const LOOKUP_FIELDS = [
   "candidateId", "draftSha256", "authorityBundleHash", "verifierReportSha256", "verifierGitBinding",
 ] as const;
-const AUTHORITY_FIELDS = [...SUBMISSION_FIELDS, "submissionSha256", "verifierActorId", "reviewId", "observedAt", "authorityRevision"] as const;
+const AUTHORITY_FIELDS = [...SUBMISSION_FIELDS, "verifierActorId", "reviewId", "observedAt", "authorityRevision"] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -59,7 +57,9 @@ function hasExactKeys(value: Record<string, unknown>, expected: readonly string[
 }
 
 function requireId(value: unknown): asserts value is string {
-  if (typeof value !== "string" || !ID_PATTERN.test(value)) throw new OutreachReviewAuthorityError("invalid_request");
+  if (typeof value !== "string" || value.trim() === "" || value.length > 128) {
+    throw new OutreachReviewAuthorityError("invalid_request");
+  }
 }
 
 function requireDigest(value: unknown): asserts value is string {
@@ -148,7 +148,6 @@ async function validateStoredAuthority(value: unknown): Promise<OutreachReviewAu
     const authority = value as OutreachReviewAuthority;
     const submission = submissionFromAuthority(authority);
     validateOutreachReviewAuthoritySubmission(submission);
-    requireDigest(authority.submissionSha256);
     requireId(authority.verifierActorId);
     if (
       authority.verifierActorId === authority.builderActorId
@@ -157,7 +156,6 @@ async function validateStoredAuthority(value: unknown): Promise<OutreachReviewAu
       || !Number.isSafeInteger(authority.observedAt)
       || authority.observedAt < 0
       || !REVISION_PATTERN.test(authority.authorityRevision)
-      || await hashOutreachReviewAuthoritySubmission(submission) !== authority.submissionSha256
     ) throw new Error("invalid authority");
     return authority;
   } catch {
@@ -189,9 +187,12 @@ export async function resolveOutreachReviewAuthorityAdmission(
     throw new OutreachReviewAuthorityError("invalid_request");
   }
   const existing = await validateAuthorityRows(rows, input);
-  const submissionSha256 = await hashOutreachReviewAuthoritySubmission(input);
   if (existing) {
-    if (existing.submissionSha256 === submissionSha256 && existing.verifierActorId === verifierActorId) {
+    const [existingSubmissionSha256, incomingSubmissionSha256] = await Promise.all([
+      hashOutreachReviewAuthoritySubmission(submissionFromAuthority(existing)),
+      hashOutreachReviewAuthoritySubmission(input),
+    ]);
+    if (existingSubmissionSha256 === incomingSubmissionSha256 && existing.verifierActorId === verifierActorId) {
       return { operation: "existing" as const, authority: existing };
     }
     throw new OutreachReviewAuthorityError("conflict");
@@ -203,7 +204,6 @@ export async function resolveOutreachReviewAuthorityAdmission(
     operation: "create" as const,
     authority: {
       ...input,
-      submissionSha256,
       verifierActorId,
       reviewId: `review_${serverEntropy.slice(0, 20)}`,
       observedAt,
