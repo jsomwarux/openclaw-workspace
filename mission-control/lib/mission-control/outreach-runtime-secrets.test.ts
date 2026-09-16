@@ -1,6 +1,14 @@
 import { describe, expect, test } from "bun:test";
-import { chmodSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { spawnSync } from "node:child_process";
+import {
+  chmodSync,
+  existsSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
+import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -11,13 +19,21 @@ import {
   buildRuntimeEnvironment,
   buildServiceProcessEnvironment,
   ensureKeychainHelper,
-  parseOptionalCapabilityRead,
+  installCapabilitySetFromHelper,
+  parseCapabilitySetRead,
+  readCapabilitySetFromHelper,
   resolveTailscaleLogin,
+  withOwnerOnlyLock,
 } from "../../scripts/outreach-runtime-secrets.mjs";
 
 function captureError(run: () => unknown): string | undefined {
   try { run(); } catch (error) { return error instanceof Error ? error.message : String(error); }
   return undefined;
+}
+
+function executable(path: string, source: string) {
+  writeFileSync(path, source, { mode: 0o700 });
+  chmodSync(path, 0o700);
 }
 
 describe("outreach runtime secret handling", () => {
@@ -31,22 +47,55 @@ describe("outreach runtime secret handling", () => {
       ],
     });
     const runtime = readFileSync("scripts/outreach-runtime-secrets.mjs", "utf8");
-    expect(runtime).toContain("function install() {\n  ensureKeychainHelper();");
+    expect(runtime).toContain("function install() {\n  return withOwnerOnlyLock(CAPABILITY_LOCK");
   });
 
-  test("replaces an executable stale helper that lacks the required protocol", () => {
+  test("replaces a same-protocol helper when its source stamp is stale", () => {
     const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-helper-test-"));
     const helperPath = join(directory, "outreach-keychain-helper");
     try {
-      writeFileSync(helperPath, "#!/bin/sh\nexit 2\n");
-      chmodSync(helperPath, 0o700);
+      executable(helperPath, [
+        "#!/bin/sh",
+        '[ "$1" = "probe" ] && [ "$2" = "outreach-capabilities-v3" ] && exit 0',
+        "exit 2",
+        "",
+      ].join("\n"));
+      writeFileSync(`${helperPath}.sha256`, "stale-source-digest\n", { mode: 0o600 });
 
       ensureKeychainHelper(helperPath);
 
-      const probe = spawnSync(helperPath, ["probe", "outreach-capabilities-v2"], { encoding: "utf8" });
+      const probe = spawnSync(helperPath, ["probe", "outreach-capabilities-v3"], { encoding: "utf8" });
       expect(probe.status).toBe(0);
       expect(probe.stdout).toBe("");
       expect(readFileSync(helperPath).subarray(0, 2).toString()).not.toBe("#!");
+      expect(statSync(helperPath).mode & 0o777).toBe(0o700);
+      expect(statSync(`${helperPath}.sha256`).mode & 0o777).toBe(0o600);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("keeps the prior helper when a private replacement fails validation", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-swap-test-"));
+    const helperPath = join(directory, "outreach-keychain-helper");
+    const compilerPath = join(directory, "failing-compiler");
+    try {
+      executable(helperPath, "#!/bin/sh\nexit 2\n");
+      executable(compilerPath, [
+        "#!/bin/sh",
+        'output="${3}"',
+        'printf \'#!/bin/sh\\nexit 2\\n\' > "$output"',
+        'chmod 700 "$output"',
+        "exit 0",
+        "",
+      ].join("\n"));
+      const before = readFileSync(helperPath);
+
+      expect(captureError(() => ensureKeychainHelper(helperPath, compilerPath)))
+        .toBe("secure capability helper protocol is unavailable");
+
+      expect(readFileSync(helperPath)).toEqual(before);
+      expect(existsSync(`${helperPath}.sha256`)).toBe(false);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
@@ -54,8 +103,164 @@ describe("outreach runtime secret handling", () => {
 
   test("generates and stores capabilities inside the Keychain helper", () => {
     const request = buildInstallerRequest();
-    expect(request.args).toEqual(["install"]);
+    expect(request.args).toEqual(["install-set"]);
     expect(request.input).toBe(undefined);
+    const helper = readFileSync("scripts/outreach-keychain-helper.swift", "utf8");
+    expect(helper.match(/store\(capabilitySetService/g)?.length).toBe(1);
+    expect(helper).toContain('args == ["read-set"]');
+  });
+
+  test("parses one captured versioned four-capability set and rejects collisions", () => {
+    const encoded = JSON.stringify({
+      version: 1,
+      review: "review-a",
+      decision: "decision-b",
+      reviewAuthorityWrite: "authority-write-c",
+      reviewAuthorityRead: "authority-read-d",
+    });
+    expect(parseCapabilitySetRead({ status: 0, stdout: `${encoded}\n` })).toEqual({
+      review: "review-a",
+      decision: "decision-b",
+      authorityWrite: "authority-write-c",
+      authorityRead: "authority-read-d",
+    });
+    expect(captureError(() => parseCapabilitySetRead({
+      status: 0,
+      stdout: JSON.stringify({
+        version: 1,
+        review: "same",
+        decision: "decision-b",
+        reviewAuthorityWrite: "same",
+        reviewAuthorityRead: "authority-read-d",
+      }),
+    }))).toBe("outreach capability configuration is invalid");
+    expect(captureError(() => parseCapabilitySetRead({
+      status: 0,
+      stdout: JSON.stringify({
+        version: 1,
+        review: "review-a",
+        decision: "decision-b",
+        reviewAuthorityWrite: " ",
+        reviewAuthorityRead: "\t",
+      }),
+    }))).toBe("outreach capability configuration is invalid");
+  });
+
+  test("reads the legacy fallback only for review and decision", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-legacy-helper-test-"));
+    const helperPath = join(directory, "legacy-helper");
+    try {
+      executable(helperPath, [
+        "#!/bin/sh",
+        'case "$1:$2" in',
+        "  read-set:) exit 3 ;;",
+        "  read:review) printf 'legacy-review\\n' ;;",
+        "  read:decision) printf 'legacy-decision\\n' ;;",
+        "  *) exit 2 ;;",
+        "esac",
+        "",
+      ].join("\n"));
+      expect(readCapabilitySetFromHelper(helperPath)).toEqual({
+        review: "legacy-review",
+        decision: "legacy-decision",
+        authorityWrite: undefined,
+        authorityRead: undefined,
+      });
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("a failed explicit rotation preserves the prior readable set", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-failed-rotation-test-"));
+    const helperPath = join(directory, "rotation-helper");
+    const statePath = join(directory, "set.json");
+    const prior = JSON.stringify({
+      version: 1,
+      review: "review-a",
+      decision: "decision-b",
+      reviewAuthorityWrite: "authority-write-c",
+      reviewAuthorityRead: "authority-read-d",
+    });
+    try {
+      writeFileSync(statePath, prior);
+      executable(helperPath, [
+        "#!/bin/sh",
+        'case "$1" in',
+        `  read-set) cat '${statePath}' ;;`,
+        "  install-set) exit 2 ;;",
+        "  *) exit 2 ;;",
+        "esac",
+        "",
+      ].join("\n"));
+
+      expect(captureError(() => installCapabilitySetFromHelper(helperPath)))
+        .toBe("secure capability operation failed");
+      expect(readFileSync(statePath, "utf8")).toBe(prior);
+      expect(readCapabilitySetFromHelper(helperPath).review).toBe("review-a");
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("owner-only lock prevents concurrent legacy reads from mixing generations", async () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-lock-test-"));
+    const lockPath = join(directory, "capability.lock");
+    const reviewPath = join(directory, "review");
+    const decisionPath = join(directory, "decision");
+    const helperPath = join(directory, "legacy-helper");
+    const childScript = join(directory, "writer.mjs");
+    const attemptPath = join(directory, "attempted");
+    try {
+      writeFileSync(reviewPath, "old-review");
+      writeFileSync(decisionPath, "old-decision");
+      executable(helperPath, [
+        "#!/bin/sh",
+        'case "$1:$2" in',
+        "  read-set:) exit 3 ;;",
+        `  read:review) cat '${reviewPath}' ;;`,
+        `  read:decision) cat '${decisionPath}' ;;`,
+        "  *) exit 2 ;;",
+        "esac",
+        "",
+      ].join("\n"));
+      writeFileSync(childScript, [
+        `import { withOwnerOnlyLock } from ${JSON.stringify(new URL("../../scripts/outreach-runtime-secrets.mjs", import.meta.url).href)};`,
+        'import { writeFileSync } from "node:fs";',
+        `writeFileSync(${JSON.stringify(attemptPath)}, "ready");`,
+        `withOwnerOnlyLock(${JSON.stringify(lockPath)}, () => {`,
+        `  writeFileSync(${JSON.stringify(reviewPath)}, "new-review");`,
+        `  writeFileSync(${JSON.stringify(decisionPath)}, "new-decision");`,
+        "});",
+        "",
+      ].join("\n"));
+
+      let observed;
+      let child: ChildProcess | undefined;
+      withOwnerOnlyLock(lockPath, () => {
+        child = spawn(process.execPath, [childScript], { stdio: "pipe" });
+        const deadline = Date.now() + 2_000;
+        while (!existsSync(attemptPath) && Date.now() < deadline) {
+          Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 10);
+        }
+        expect(existsSync(attemptPath)).toBe(true);
+        observed = readCapabilitySetFromHelper(helperPath);
+        expect(statSync(lockPath).mode & 0o777).toBe(0o700);
+      });
+      expect(observed).toEqual({
+        review: "old-review",
+        decision: "old-decision",
+        authorityWrite: undefined,
+        authorityRead: undefined,
+      });
+      expect(Boolean(child)).toBe(true);
+      const exitCode = await new Promise<number | null>((resolve) => child!.once("exit", resolve));
+      expect(exitCode).toBe(0);
+      expect([readFileSync(reviewPath, "utf8"), readFileSync(decisionPath, "utf8")])
+        .toEqual(["new-review", "new-decision"]);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
   });
 
   test("requires distinct nonblank capabilities and a resolved JT login", () => {
@@ -108,12 +313,6 @@ describe("outreach runtime secret handling", () => {
     expect(captureError(() => buildRuntimeEnvironment(
       "review-a", "decision-b", "jt@example.com", " ", "\t",
     ))).toBe("outreach capability configuration is invalid");
-  });
-
-  test("distinguishes an absent optional Keychain item from a blank stored item", () => {
-    expect(parseOptionalCapabilityRead({ status: 3, stdout: "" })).toBe(undefined);
-    expect(captureError(() => parseOptionalCapabilityRead({ status: 0, stdout: " \n" })))
-      .toBe("stored capability is empty");
   });
 
   test("rejects every collision among all four capability roles", () => {
@@ -189,8 +388,8 @@ describe("outreach runtime secret handling", () => {
     expect(JSON.stringify(buildInstallerRequest())).not.toContain(secret);
 
     const helper = readFileSync("scripts/outreach-keychain-helper.swift", "utf8");
-    expect(helper).toContain('"review-authority-write"');
-    expect(helper).toContain('"review-authority-read"');
+    expect(helper).toContain('"reviewAuthorityWrite"');
+    expect(helper).toContain('"reviewAuthorityRead"');
     expect(helper).not.toContain("standardOutput.write(review");
     expect(helper).not.toContain("standardOutput.write(decision");
   });
