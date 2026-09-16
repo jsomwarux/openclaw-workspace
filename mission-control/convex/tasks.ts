@@ -561,8 +561,12 @@ export const findOutreachSuppressionReview = query({
     const tasks = await ctx.db.query("tasks").collect();
     const matches = tasks.filter((task) => task.outreachReview?.reviewAuthorityId === args.reviewId);
     if (matches.length !== 1 || !matches[0].outreachReview?.suppressionBinding) throw new Error("OUTREACH_SUPPRESSION_REVIEW_NOT_FOUND");
-    await assertAuthoritativeOutreachSnapshot(ctx, matches[0]);
-    return { suppressionBinding: matches[0].outreachReview.suppressionBinding };
+    const task = matches[0];
+    await assertAuthoritativeOutreachSnapshot(ctx, task);
+    const snapshot = task.outreachReview!;
+    const decision = resolveOutreachLookup(task, task.candidateId!, task.draftSha256!, snapshot.snapshotSha256);
+    if (!decision.authorized || decision.state !== "approved") throw new Error("OUTREACH_SUPPRESSION_REVIEW_NOT_FOUND");
+    return { suppressionBinding: snapshot.suppressionBinding };
   },
 });
 
@@ -589,18 +593,19 @@ export const createOutreachReview = mutation({
   },
   handler: async (ctx, args) => {
     const { capability, suppressionAttestation, ...submission } = args;
-    await assertDistinctServerCapability(
-      capability,
-      process.env.OUTREACH_REVIEW_CAPABILITY,
-      process.env.OUTREACH_DECISION_CAPABILITY,
-    );
-    if (
-      submission.suppressionBinding
-        ? !(await verifySuppressionAdmissionAttestation(
-          submission, suppressionAttestation, process.env.OUTREACH_DECISION_CAPABILITY,
-        ))
-        : suppressionAttestation !== undefined
-    ) throw new Error("OUTREACH_REVIEW_INVALID");
+    if (submission.suppressionBinding) {
+      await assertSuppressionCapability(capability, "receipt-write");
+      if (!(await verifySuppressionAdmissionAttestation(
+        submission, suppressionAttestation, process.env.OUTREACH_DECISION_CAPABILITY,
+      ))) throw new Error("OUTREACH_REVIEW_INVALID");
+    } else {
+      await assertDistinctServerCapability(
+        capability,
+        process.env.OUTREACH_REVIEW_CAPABILITY,
+        process.env.OUTREACH_DECISION_CAPABILITY,
+      );
+      if (suppressionAttestation !== undefined) throw new Error("OUTREACH_REVIEW_INVALID");
+    }
     const existing = await ctx.db
       .query("tasks")
       .withIndex("by_outreach_candidate_cohort", (q) => q.eq("candidateId", submission.candidateId).eq("cohortId", submission.cohortId))

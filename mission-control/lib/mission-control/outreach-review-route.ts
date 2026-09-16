@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { assertDistinctServerCapability, OutreachAuthError } from "./outreach-auth";
+import { assertDistinctServerCapability, OutreachAuthError, secureCapabilityEqual } from "./outreach-auth";
 import {
   OutreachReviewContractError,
   validateOutreachReviewKey,
@@ -19,8 +19,11 @@ type ReviewState = {
 };
 
 type Dependencies = {
+  enabled: string | undefined;
   serverCapability: string | undefined;
   peerCapability: string | undefined;
+  readCapability: string | undefined;
+  authorityWriteCapability: string | undefined;
   admit: (input: OutreachReviewSubmission & { capability: string; suppressionAttestation?: string }) => Promise<AdmissionResult>;
   lookup: (input: { candidateId: string; cohortId: string; capability: string }) => Promise<ReviewState>;
   verifySuppressionBinding: (input: NonNullable<OutreachReviewSubmission["suppressionBinding"]>) => Promise<void>;
@@ -60,12 +63,32 @@ export function createOutreachReviewHandlers(dependencies: Dependencies) {
     );
   }
 
+  async function suppressionCapability(provided: string | undefined) {
+    if (dependencies.enabled !== "true") throw new OutreachAuthError("outreach suppression owner is not configured", 503);
+    const configured = [
+      dependencies.peerCapability,
+      dependencies.readCapability,
+      dependencies.serverCapability,
+      dependencies.authorityWriteCapability,
+    ];
+    if (configured.some((value) => !value?.trim())) throw new OutreachAuthError("outreach suppression owner is not configured", 503);
+    const values = configured as string[];
+    for (let left = 0; left < values.length; left++) for (let right = left + 1; right < values.length; right++) {
+      if (await secureCapabilityEqual(values[left], values[right])) throw new OutreachAuthError("outreach suppression owner is not configured", 503);
+    }
+    if (!provided?.trim() || !(await secureCapabilityEqual(provided, values[2]))) throw new OutreachAuthError("server capability required", 401);
+    return values[2];
+  }
+
   return {
     POST: async (req: Request) => {
       try {
-        const serverCapability = await capability(req);
         const input = await req.json() as unknown;
         validateOutreachReviewSubmission(input);
+        const provided = req.headers.get("X-Outreach-Review-Capability") ?? undefined;
+        const serverCapability = input.suppressionBinding
+          ? await suppressionCapability(provided)
+          : await capability(req);
         let suppressionAttestation: string | undefined;
         if (input.suppressionBinding) {
           try {

@@ -214,13 +214,22 @@ class OptimisticStore {
 describe("registered Convex outreach handlers", () => {
   const previousReview = process.env.OUTREACH_REVIEW_CAPABILITY;
   const previousDecision = process.env.OUTREACH_DECISION_CAPABILITY;
+  const previousFlag = process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED;
+  const previousRead = process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY;
+  const previousWrite = process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY;
   beforeEach(() => {
     process.env.OUTREACH_REVIEW_CAPABILITY = "review-secret";
     process.env.OUTREACH_DECISION_CAPABILITY = "decision-secret";
+    process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY = "read-secret";
+    process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY = "write-secret";
+    delete process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED;
   });
   afterEach(() => {
     if (previousReview === undefined) delete process.env.OUTREACH_REVIEW_CAPABILITY; else process.env.OUTREACH_REVIEW_CAPABILITY = previousReview;
     if (previousDecision === undefined) delete process.env.OUTREACH_DECISION_CAPABILITY; else process.env.OUTREACH_DECISION_CAPABILITY = previousDecision;
+    if (previousFlag === undefined) delete process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED; else process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED = previousFlag;
+    if (previousRead === undefined) delete process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY; else process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY = previousRead;
+    if (previousWrite === undefined) delete process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY; else process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY = previousWrite;
   });
 
   test("stores the complete snapshot and returns the exact admission response", async () => {
@@ -234,16 +243,44 @@ describe("registered Convex outreach handlers", () => {
 
   test("suppression-bound review requires the server HMAC before any database access", async () => {
     const review = await boundSuppressionSubmission();
+    const suppressionAttestation = await createSuppressionAdmissionAttestation(review, "decision-secret");
+    const disabled = new MemoryDb();
+    expect(await rejectedMessage(() => createReviewHandler(ctx(disabled), { ...review, suppressionAttestation })))
+      .toContain("OUTREACH_SUPPRESSION_OWNER_NOT_CONFIGURED");
+    expect({ reads: disabled.reads, writes: disabled.writes }).toEqual({ reads: 0, writes: 0 });
+
+    process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED = "true";
     const direct = new MemoryDb();
     expect(await rejectedMessage(() => createReviewHandler(ctx(direct), review))).toContain("OUTREACH_REVIEW_INVALID");
     expect({ reads: direct.reads, writes: direct.writes }).toEqual({ reads: 0, writes: 0 });
 
-    const suppressionAttestation = await createSuppressionAdmissionAttestation(review, "decision-secret");
     const admitted = new MemoryDb();
     const result = await createReviewHandler(ctx(admitted), { ...review, suppressionAttestation });
     expect(result.created).toBe(true);
     expect(admitted.rows[0].outreachReview.suppressionBinding).toEqual(review.suppressionBinding);
     expect(JSON.stringify(admitted.rows[0])).not.toContain(suppressionAttestation);
+
+    const names = [
+      "OUTREACH_DECISION_CAPABILITY",
+      "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY",
+      "OUTREACH_REVIEW_CAPABILITY",
+      "OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY",
+    ] as const;
+    for (let left = 0; left < names.length; left++) for (let right = left + 1; right < names.length; right++) {
+      process.env.OUTREACH_DECISION_CAPABILITY = "decision-secret";
+      process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY = "read-secret";
+      process.env.OUTREACH_REVIEW_CAPABILITY = "review-secret";
+      process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY = "write-secret";
+      process.env[names[right]] = process.env[names[left]];
+      const invalid = new MemoryDb();
+      expect(await rejectedMessage(() => createReviewHandler(ctx(invalid), { ...review, suppressionAttestation })))
+        .toContain("OUTREACH_SUPPRESSION_OWNER_NOT_CONFIGURED");
+      expect({ reads: invalid.reads, writes: invalid.writes }).toEqual({ reads: 0, writes: 0 });
+    }
+    process.env.OUTREACH_DECISION_CAPABILITY = "decision-secret";
+    process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY = "read-secret";
+    process.env.OUTREACH_REVIEW_CAPABILITY = "review-secret";
+    process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY = "write-secret";
   });
 
   test("exact retry is idempotent and two distinct snapshots consume the budget", async () => {

@@ -70,4 +70,19 @@ describe("JT-bound dual-clear action", () => {
     expect(response.status).toBe(500);
     expect(await response.json()).toEqual({ error: "outreach suppression clear failed" });
   });
+
+  test("undecided, rejected, and archived reviews never reach either suppression owner", async () => {
+    for (const state of ["undecided", "rejected", "archived"]) {
+      let ownerCalls = 0;
+      const handler = createOutreachSuppressionClearHandler({
+        enabled: "true", trustedJtLogin: "jt@example.com", serverCapability: "decision",
+        reviewCapability: "review", readCapability: "read", authorityWriteCapability: "write",
+        loadReview: async () => { throw new Error(`OUTREACH_SUPPRESSION_REVIEW_NOT_FOUND:${state}`); },
+        recordConsulting: async () => { ownerCalls += 1; },
+        recordMissionControl: async () => { ownerCalls += 1; },
+      } as any);
+      expect((await handler(browserRequest({ reviewId: "review_" + "1".repeat(20) }))).status).toBe(500);
+      expect(ownerCalls).toBe(0);
+    }
+  });
 });

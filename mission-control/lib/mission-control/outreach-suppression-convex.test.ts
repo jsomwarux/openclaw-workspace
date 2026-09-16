@@ -92,6 +92,56 @@ describe("direct Convex suppression boundary", () => {
     expect(state.clear).toBe(true);
   });
 
+  test("review lookup returns a binding only for one exact approved active immutable snapshot", async () => {
+    process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED = "true";
+    const rawBinding = {
+      schemaVersion: "outreach-suppression-binding-v1" as const,
+      repository: "owner/repo", commitSha: "a".repeat(40), gatePath: "gate.json",
+      gateBlobOid: "1".repeat(40), gateBlobSha256: "b".repeat(64), gateArtifactHash: "c".repeat(64),
+      admissionCommitSha: "d".repeat(40), admissionPath: "admission/candidate.json",
+      admissionBlobOid: "2".repeat(40), admissionBlobSha256: "e".repeat(64), channelAttestationId: `channel_${"f".repeat(20)}`,
+      channelOwnerRevision: "1".repeat(64), prospectId: "prospect.alpha",
+      organizationFactId: "fact-org:alpha", channelFingerprint: "2".repeat(64),
+    };
+    const suppressionBinding = { ...rawBinding, bindingHash: await hashSuppressionBinding(rawBinding) };
+    const bind = (path: string) => ({ repository: "owner/repo", commitSha: "a".repeat(40), path, blobSha256: path === "gate.json" ? "b".repeat(64) : "3".repeat(64) });
+    const admitted = await resolveOutreachReviewAdmission([], {
+      candidateId: "prospect.alpha", cohortId: "cohort-2", draftSha256: "4".repeat(64),
+      subject: "Subject", body: "Exact approved draft", verifierReport: "VERDICT: CONFIRM",
+      reviewAuthorityId: `review_${"5".repeat(20)}`, verifierActorId: "verifier-1",
+      gitBindings: { evidence: bind("evidence.json"), policy: bind("policy.json"), gate: bind("gate.json"), draft: bind("draft.txt"), verifier: bind("verify.md") },
+      suppressionBinding,
+    }, 100);
+    if (admitted.operation !== "create") throw new Error("expected review creation");
+    const approve = resolveOutreachDecision(admitted.fields, {
+      candidateId: admitted.fields.candidateId, draftSha256: admitted.fields.draftSha256,
+      snapshotSha256: admitted.fields.outreachReview.snapshotSha256, decision: "approve",
+    }, 101);
+    const reject = resolveOutreachDecision(admitted.fields, {
+      candidateId: admitted.fields.candidateId, draftSha256: admitted.fields.draftSha256,
+      snapshotSha256: admitted.fields.outreachReview.snapshotSha256, decision: "reject",
+    }, 101);
+    if (approve.operation !== "create" || reject.operation !== "create") throw new Error("expected decisions");
+    const rows = [
+      { ...admitted.fields, status: "todo", outreachDecision: undefined },
+      { ...admitted.fields, status: "done", outreachDecision: reject.decision },
+      { ...admitted.fields, status: "archived", outreachDecision: approve.decision },
+      { ...admitted.fields, status: "done", outreachDecision: { ...approve.decision, snapshotSha256: "9".repeat(64) } },
+    ];
+    for (const row of rows) {
+      const db = new Db();
+      db.rows.push({ __table: "tasks", _id: "task-1", ...structuredClone(row) });
+      expect(await message(() => findReview(ctx(db), {
+        reviewId: admitted.fields.outreachReview.reviewAuthorityId, capability: "decision",
+      }))).toContain("OUTREACH_SUPPRESSION_REVIEW_NOT_FOUND");
+    }
+    const approved = new Db();
+    approved.rows.push({ __table: "tasks", _id: "task-1", ...structuredClone(admitted.fields), status: "done", outreachDecision: approve.decision });
+    expect(await findReview(ctx(approved), {
+      reviewId: admitted.fields.outreachReview.reviewAuthorityId, capability: "decision",
+    })).toEqual({ suppressionBinding });
+  });
+
   test("creates and reads one immutable receipt only for the exact approved bound review", async () => {
     process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED = "true";
     const db = new Db();
