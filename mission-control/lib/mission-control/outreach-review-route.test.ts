@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { createOutreachReviewHandlers } from "./outreach-review-route";
+import { ProtectedGitBindingMismatchError, ProtectedGitDependencyError } from "./outreach-protected-git";
 
 const SHA = "a".repeat(64);
 const COMMIT = "b".repeat(40);
@@ -38,14 +39,14 @@ describe("outreach review owner API", () => {
     const suppressionBinding = {
       schemaVersion: "outreach-suppression-binding-v1",
       repository: "owner/repo", commitSha: COMMIT, gatePath: "gate.json",
-      gateBlobSha256: SHA, gateArtifactHash: "c".repeat(64),
+      gateBlobOid: "9".repeat(40), gateBlobSha256: SHA, gateArtifactHash: "c".repeat(64),
       admissionCommitSha: "d".repeat(40), admissionPath: "admission.json",
-      admissionBlobSha256: "e".repeat(64), channelAttestationId: `channel_${"f".repeat(20)}`,
+      admissionBlobOid: "8".repeat(40), admissionBlobSha256: "e".repeat(64), channelAttestationId: `channel_${"f".repeat(20)}`,
       channelOwnerRevision: "1".repeat(64), prospectId: "candidate-1",
       organizationFactId: "fact-org", channelFingerprint: "2".repeat(64), bindingHash: "3".repeat(64),
     };
     const handlers = createOutreachReviewHandlers(dependencies({
-      verifySuppressionBinding: async () => { verifies += 1; throw new Error("protected suppression binding mismatch"); },
+      verifySuppressionBinding: async () => { verifies += 1; throw new ProtectedGitBindingMismatchError(); },
       admit: async () => { admits += 1; return { taskId: "task-1", created: true, reviewCycle: 1, snapshotSha256: SHA }; },
     }));
     const response = await handlers.POST(postRequest({
@@ -56,6 +57,55 @@ describe("outreach review owner API", () => {
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error: "invalid outreach review request" });
     expect({ verifies, admits }).toEqual({ verifies: 1, admits: 0 });
+  });
+
+  test("POST maps protected-origin outage to sanitized 500 before storage", async () => {
+    let admits = 0;
+    const suppressionBinding = {
+      schemaVersion: "outreach-suppression-binding-v1", repository: "owner/repo",
+      commitSha: COMMIT, gatePath: "gate.json", gateBlobOid: "9".repeat(40),
+      gateBlobSha256: SHA, gateArtifactHash: "c".repeat(64), admissionCommitSha: "d".repeat(40),
+      admissionPath: "admission.json", admissionBlobOid: "8".repeat(40), admissionBlobSha256: "e".repeat(64),
+      channelAttestationId: `channel_${"f".repeat(20)}`, channelOwnerRevision: "1".repeat(64),
+      prospectId: "candidate-1", organizationFactId: "fact-org", channelFingerprint: "2".repeat(64), bindingHash: "3".repeat(64),
+    };
+    const handlers = createOutreachReviewHandlers(dependencies({
+      verifySuppressionBinding: async () => { throw new ProtectedGitDependencyError(); },
+      admit: async () => { admits += 1; return { taskId: "task-1", created: true, reviewCycle: 1, snapshotSha256: SHA }; },
+    }));
+    const response = await handlers.POST(postRequest({ ...body, reviewAuthorityId: `review_${"4".repeat(20)}`, suppressionBinding }, capability));
+    expect(response.status).toBe(500);
+    expect(await response.json()).toEqual({ error: "outreach review request failed" });
+    expect(admits).toBe(0);
+  });
+
+  test("POST sends a server-only admission attestation after protected Git verification", async () => {
+    const suppressionBinding = {
+      schemaVersion: "outreach-suppression-binding-v1", repository: "owner/repo",
+      commitSha: COMMIT, gatePath: "gate.json", gateBlobOid: "9".repeat(40),
+      gateBlobSha256: SHA, gateArtifactHash: "c".repeat(64), admissionCommitSha: "d".repeat(40),
+      admissionPath: "admission.json", admissionBlobOid: "8".repeat(40), admissionBlobSha256: "e".repeat(64),
+      channelAttestationId: `channel_${"f".repeat(20)}`, channelOwnerRevision: "1".repeat(64),
+      prospectId: "candidate-1", organizationFactId: "fact-org", channelFingerprint: "2".repeat(64), bindingHash: "3".repeat(64),
+    };
+    let verified = false;
+    let received: Record<string, unknown> | undefined;
+    const handlers = createOutreachReviewHandlers(dependencies({
+      verifySuppressionBinding: async () => { verified = true; },
+      admit: async (input: Record<string, unknown>) => {
+        expect(verified).toBe(true);
+        received = input;
+        return { taskId: "task-1", created: true, reviewCycle: 1, snapshotSha256: SHA };
+      },
+    }));
+    const response = await handlers.POST(postRequest({
+      ...body,
+      reviewAuthorityId: `review_${"4".repeat(20)}`,
+      suppressionBinding,
+    }, capability));
+    expect(response.status).toBe(200);
+    expect(/^[a-f0-9]{64}$/.test(String(received?.suppressionAttestation))).toBe(true);
+    expect(await response.json()).toEqual({ taskId: "task-1", created: true, reviewCycle: 1, snapshotSha256: SHA });
   });
 
   test("POST accepts only the typed snapshot and returns the exact response", async () => {

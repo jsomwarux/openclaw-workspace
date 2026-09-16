@@ -35,10 +35,12 @@ async function authority() {
     repository: "jsomwarux/jt-ops",
     commitSha: "a".repeat(40),
     gatePath: "gates/gate.json",
+    gateBlobOid: "b".repeat(40),
     gateBlobSha256: await sha(gateBytes),
     gateArtifactHash: await sha(canonicalJson(gate)),
     admissionCommitSha: "d".repeat(40),
     admissionPath: "admission/candidate.json",
+    admissionBlobOid: "c".repeat(40),
     admissionBlobSha256,
     channelAttestationId: `channel_${"f".repeat(20)}`,
     channelOwnerRevision: "1".repeat(64),
@@ -56,7 +58,9 @@ describe("protected suppression binding admission", () => {
     const reads: unknown[] = [];
     await verifyProtectedSuppressionBinding(binding, async (request) => {
       reads.push(request);
-      return request.path === binding.gatePath ? gateBytes : admissionBytes;
+      return request.path === binding.gatePath
+        ? { bytes: gateBytes, blobOid: binding.gateBlobOid }
+        : { bytes: admissionBytes, blobOid: binding.admissionBlobOid };
     });
     expect(reads).toEqual([
       { repository: "jsomwarux/jt-ops", commitSha: binding.commitSha, path: binding.gatePath },
@@ -83,7 +87,9 @@ describe("protected suppression binding admission", () => {
     let error = "";
     try {
       await verifyProtectedSuppressionBinding(forged, async (request) => (
-        request.path === binding.gatePath ? gateBytes : admissionBytes
+        request.path === binding.gatePath
+          ? { bytes: gateBytes, blobOid: binding.gateBlobOid }
+          : { bytes: admissionBytes, blobOid: binding.admissionBlobOid }
       ));
     } catch (caught) { error = String(caught); }
     expect(error).toContain("protected suppression binding mismatch");
@@ -97,7 +103,25 @@ describe("protected suppression binding admission", () => {
     let error = "";
     try {
       await verifyProtectedSuppressionBinding(forged, async (request) => (
-        request.path === binding.gatePath ? gateBytes : admissionBytes
+        request.path === binding.gatePath
+          ? { bytes: gateBytes, blobOid: binding.gateBlobOid }
+          : { bytes: admissionBytes, blobOid: binding.admissionBlobOid }
+      ));
+    } catch (caught) { error = String(caught); }
+    expect(error).toContain("protected suppression binding mismatch");
+  });
+
+  test("rejects a caller blob OID that differs from git rev-parse", async () => {
+    const { binding, gateBytes, admissionBytes } = await authority();
+    const forgedRaw = { ...binding, gateBlobOid: "9".repeat(40) };
+    delete (forgedRaw as Partial<SuppressionBinding>).bindingHash;
+    const forged = { ...forgedRaw, bindingHash: await hashSuppressionBinding(forgedRaw) } as SuppressionBinding;
+    let error = "";
+    try {
+      await verifyProtectedSuppressionBinding(forged, async (request) => (
+        request.path === binding.gatePath
+          ? { bytes: gateBytes, blobOid: binding.gateBlobOid }
+          : { bytes: admissionBytes, blobOid: binding.admissionBlobOid }
       ));
     } catch (caught) { error = String(caught); }
     expect(error).toContain("protected suppression binding mismatch");

@@ -38,6 +38,7 @@ import {
   hashOutreachDecisionForPreSend,
   type PreSendReceipt,
 } from "../lib/mission-control/outreach-pre-send-receipt";
+import { verifySuppressionAdmissionAttestation } from "../lib/mission-control/outreach-suppression-attestation";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
 const NIGHTLY_SOURCE = "nightly-validation-controller";
@@ -583,15 +584,23 @@ export const createOutreachReview = mutation({
       verifier: gitBinding,
     }),
     suppressionBinding: v.optional(suppressionBinding),
+    suppressionAttestation: v.optional(v.string()),
     capability: v.string(),
   },
   handler: async (ctx, args) => {
-    const { capability, ...submission } = args;
+    const { capability, suppressionAttestation, ...submission } = args;
     await assertDistinctServerCapability(
       capability,
       process.env.OUTREACH_REVIEW_CAPABILITY,
       process.env.OUTREACH_DECISION_CAPABILITY,
     );
+    if (
+      submission.suppressionBinding
+        ? !(await verifySuppressionAdmissionAttestation(
+          submission, suppressionAttestation, process.env.OUTREACH_DECISION_CAPABILITY,
+        ))
+        : suppressionAttestation !== undefined
+    ) throw new Error("OUTREACH_REVIEW_INVALID");
     const existing = await ctx.db
       .query("tasks")
       .withIndex("by_outreach_candidate_cohort", (q) => q.eq("candidateId", submission.candidateId).eq("cohortId", submission.cohortId))

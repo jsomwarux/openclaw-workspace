@@ -6,6 +6,8 @@ import {
   validateOutreachReviewSubmission,
   type OutreachReviewSubmission,
 } from "./outreach-review";
+import { createSuppressionAdmissionAttestation } from "./outreach-suppression-attestation";
+import { ProtectedGitBindingMismatchError, ProtectedGitDependencyError } from "./outreach-protected-git";
 
 type AdmissionResult = { taskId: string; created: boolean; reviewCycle: 1 | 2; snapshotSha256: string };
 type ReviewState = {
@@ -19,7 +21,7 @@ type ReviewState = {
 type Dependencies = {
   serverCapability: string | undefined;
   peerCapability: string | undefined;
-  admit: (input: OutreachReviewSubmission & { capability: string }) => Promise<AdmissionResult>;
+  admit: (input: OutreachReviewSubmission & { capability: string; suppressionAttestation?: string }) => Promise<AdmissionResult>;
   lookup: (input: { candidateId: string; cohortId: string; capability: string }) => Promise<ReviewState>;
   verifySuppressionBinding: (input: NonNullable<OutreachReviewSubmission["suppressionBinding"]>) => Promise<void>;
 };
@@ -64,9 +66,23 @@ export function createOutreachReviewHandlers(dependencies: Dependencies) {
         const serverCapability = await capability(req);
         const input = await req.json() as unknown;
         validateOutreachReviewSubmission(input);
-        if (input.suppressionBinding) await dependencies.verifySuppressionBinding(input.suppressionBinding);
+        let suppressionAttestation: string | undefined;
+        if (input.suppressionBinding) {
+          try {
+            await dependencies.verifySuppressionBinding(input.suppressionBinding);
+            suppressionAttestation = await createSuppressionAdmissionAttestation(input, dependencies.peerCapability);
+          } catch (error) {
+            if (error instanceof ProtectedGitBindingMismatchError) return validationError(error);
+            if (error instanceof ProtectedGitDependencyError) return dependencyError(error);
+            return dependencyError(error);
+          }
+        }
         try {
-          const result = await dependencies.admit({ ...input, capability: serverCapability });
+          const result = await dependencies.admit({
+            ...input,
+            ...(suppressionAttestation ? { suppressionAttestation } : {}),
+            capability: serverCapability,
+          });
           return NextResponse.json({
             taskId: result.taskId,
             created: result.created,

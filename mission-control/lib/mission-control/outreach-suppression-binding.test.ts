@@ -12,10 +12,12 @@ const binding: Omit<SuppressionBinding, "bindingHash"> = {
   repository: "owner/repo",
   commitSha: "a".repeat(40),
   gatePath: "gates/candidate.json",
+  gateBlobOid: "1".repeat(40),
   gateBlobSha256: "b".repeat(64),
   gateArtifactHash: "c".repeat(64),
   admissionCommitSha: "d".repeat(40),
   admissionPath: "admission/candidate.json",
+  admissionBlobOid: "2".repeat(40),
   admissionBlobSha256: "e".repeat(64),
   channelAttestationId: `channel_${"f".repeat(20)}`,
   channelOwnerRevision: "1".repeat(64),
@@ -35,6 +37,11 @@ describe("immutable suppression binding and pre-send receipt", () => {
     });
     let invalidPath = false; try { await hashSuppressionBinding({ ...binding, gatePath: "/tmp/gate.json" }); } catch { invalidPath = true; }
     expect(invalidPath).toBe(true);
+    for (const gateBlobOid of ["a".repeat(39), "A".repeat(40), "a".repeat(65)]) {
+      let invalidOid = false;
+      try { await hashSuppressionBinding({ ...binding, gateBlobOid }); } catch { invalidOid = true; }
+      expect(invalidOid).toBe(true);
+    }
     expect(thrown(() => validateSuppressionBinding(complete, {
       repository: binding.repository,
       commitSha: binding.commitSha,

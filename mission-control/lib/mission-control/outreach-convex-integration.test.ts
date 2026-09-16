@@ -10,6 +10,8 @@ import {
 } from "../../convex/tasks";
 import type { OutreachReviewSubmission } from "./outreach-review";
 import type { OutreachReviewAuthoritySubmission } from "./outreach-review-authority";
+import { hashSuppressionBinding } from "./outreach-suppression-binding";
+import { createSuppressionAdmissionAttestation } from "./outreach-suppression-attestation";
 
 const SHA = "a".repeat(64);
 const COMMIT = "b".repeat(40);
@@ -39,6 +41,27 @@ function submission(body = "Exact draft"): OutreachReviewSubmission & { capabili
     gitBindings: { evidence: bind("evidence.json"), policy: bind("policy.json"), gate: bind("gate.json"), draft: bind("draft.txt"), verifier: bind("verify.md") },
     capability: "review-secret",
   };
+}
+
+async function boundSuppressionSubmission() {
+  const base = submission();
+  const raw = {
+    schemaVersion: "outreach-suppression-binding-v1" as const,
+    repository: "jsomwarux/jt-ops", commitSha: COMMIT, gatePath: "gate.json",
+    gateBlobOid: "1".repeat(40), gateBlobSha256: SHA, gateArtifactHash: "c".repeat(64),
+    admissionCommitSha: "d".repeat(40), admissionPath: "admission.json",
+    admissionBlobOid: "2".repeat(40), admissionBlobSha256: "e".repeat(64),
+    channelAttestationId: `channel_${"f".repeat(20)}`, channelOwnerRevision: "1".repeat(64),
+    prospectId: base.candidateId, organizationFactId: "fact-org", channelFingerprint: "2".repeat(64),
+  };
+  const suppressionBinding = { ...raw, bindingHash: await hashSuppressionBinding(raw) };
+  const review = {
+    ...base,
+    reviewAuthorityId: `review_${"3".repeat(20)}`,
+    gitBindings: { ...base.gitBindings, gate: { repository: raw.repository, commitSha: raw.commitSha, path: raw.gatePath, blobSha256: raw.gateBlobSha256 } },
+    suppressionBinding,
+  };
+  return review;
 }
 
 function authoritySubmission(
@@ -207,6 +230,20 @@ describe("registered Convex outreach handlers", () => {
     expect(result).toMatchObject({ taskId: "task-1", created: true, reviewCycle: 1 });
     expect(db.rows[0].outreachReview.body).toBe("Exact draft");
     expect(db.rows[0].description).not.toContain("Exact draft");
+  });
+
+  test("suppression-bound review requires the server HMAC before any database access", async () => {
+    const review = await boundSuppressionSubmission();
+    const direct = new MemoryDb();
+    expect(await rejectedMessage(() => createReviewHandler(ctx(direct), review))).toContain("OUTREACH_REVIEW_INVALID");
+    expect({ reads: direct.reads, writes: direct.writes }).toEqual({ reads: 0, writes: 0 });
+
+    const suppressionAttestation = await createSuppressionAdmissionAttestation(review, "decision-secret");
+    const admitted = new MemoryDb();
+    const result = await createReviewHandler(ctx(admitted), { ...review, suppressionAttestation });
+    expect(result.created).toBe(true);
+    expect(admitted.rows[0].outreachReview.suppressionBinding).toEqual(review.suppressionBinding);
+    expect(JSON.stringify(admitted.rows[0])).not.toContain(suppressionAttestation);
   });
 
   test("exact retry is idempotent and two distinct snapshots consume the budget", async () => {

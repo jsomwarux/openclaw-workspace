@@ -98,9 +98,9 @@ describe("direct Convex suppression boundary", () => {
     const rawBinding = {
       schemaVersion: "outreach-suppression-binding-v1" as const,
       repository: "owner/repo", commitSha: "a".repeat(40), gatePath: "gate.json",
-      gateBlobSha256: "b".repeat(64), gateArtifactHash: "c".repeat(64),
+      gateBlobOid: "1".repeat(40), gateBlobSha256: "b".repeat(64), gateArtifactHash: "c".repeat(64),
       admissionCommitSha: "d".repeat(40), admissionPath: "admission/candidate.json",
-      admissionBlobSha256: "e".repeat(64), channelAttestationId: `channel_${"f".repeat(20)}`,
+      admissionBlobOid: "2".repeat(40), admissionBlobSha256: "e".repeat(64), channelAttestationId: `channel_${"f".repeat(20)}`,
       channelOwnerRevision: "1".repeat(64), prospectId: "prospect.alpha",
       organizationFactId: "fact-org:alpha", channelFingerprint: "2".repeat(64),
     };

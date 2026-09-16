@@ -70,8 +70,8 @@ describe("canonical outreach review snapshot", () => {
     const base = submission();
     const withoutHash = {
       schemaVersion: "outreach-suppression-binding-v1" as const,
-      repository: "owner/repo", commitSha: COMMIT, gatePath: "gate.json", gateBlobSha256: SHA,
-      gateArtifactHash: "c".repeat(64), admissionCommitSha: "d".repeat(40), admissionPath: "admission/candidate.json", admissionBlobSha256: "e".repeat(64),
+      repository: "owner/repo", commitSha: COMMIT, gatePath: "gate.json", gateBlobOid: "1".repeat(40), gateBlobSha256: SHA,
+      gateArtifactHash: "c".repeat(64), admissionCommitSha: "d".repeat(40), admissionPath: "admission/candidate.json", admissionBlobOid: "2".repeat(40), admissionBlobSha256: "e".repeat(64),
       channelAttestationId: `channel_${"f".repeat(20)}`, channelOwnerRevision: "1".repeat(64),
       prospectId: "candidate-1", organizationFactId: "fact-org:alpha", channelFingerprint: "2".repeat(64),
     };

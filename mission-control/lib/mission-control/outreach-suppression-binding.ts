@@ -6,10 +6,12 @@ export type SuppressionBinding = {
   repository: string;
   commitSha: string;
   gatePath: string;
+  gateBlobOid: string;
   gateBlobSha256: string;
   gateArtifactHash: string;
   admissionCommitSha: string;
   admissionPath: string;
+  admissionBlobOid: string;
   admissionBlobSha256: string;
   channelAttestationId: string;
   channelOwnerRevision: string;
@@ -19,9 +21,10 @@ export type SuppressionBinding = {
   bindingHash: string;
 };
 
-const FIELDS = ["schemaVersion", "repository", "commitSha", "gatePath", "gateBlobSha256", "gateArtifactHash", "admissionCommitSha", "admissionPath", "admissionBlobSha256", "channelAttestationId", "channelOwnerRevision", "prospectId", "organizationFactId", "channelFingerprint"] as const;
+const FIELDS = ["schemaVersion", "repository", "commitSha", "gatePath", "gateBlobOid", "gateBlobSha256", "gateArtifactHash", "admissionCommitSha", "admissionPath", "admissionBlobOid", "admissionBlobSha256", "channelAttestationId", "channelOwnerRevision", "prospectId", "organizationFactId", "channelFingerprint"] as const;
 const DIGEST = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
+const BLOB_OID = /^[a-f0-9]{40,64}$/;
 const PORTABLE = /^[a-z0-9][a-z0-9._:-]{0,127}$/;
 const REPOSITORY = /^[a-z0-9][a-z0-9._-]{0,63}\/[a-z0-9][a-z0-9._-]{0,99}$/;
 const PATH = /^[A-Za-z0-9._/-]+$/;
@@ -39,6 +42,7 @@ async function sha(parts: string[]): Promise<string> { const digest = await cryp
 function validateBindingFields(value: Record<string, unknown>) {
   if (value.schemaVersion !== "outreach-suppression-binding-v1" || !REPOSITORY.test(String(value.repository ?? "")) || !COMMIT.test(String(value.commitSha ?? "")) || !safePath(value.gatePath)) throw new Error("invalid suppression binding");
   for (const key of ["gateBlobSha256", "gateArtifactHash", "admissionBlobSha256", "channelOwnerRevision", "channelFingerprint"] as const) if (!DIGEST.test(String(value[key] ?? ""))) throw new Error("invalid suppression binding");
+  for (const key of ["gateBlobOid", "admissionBlobOid"] as const) if (!BLOB_OID.test(String(value[key] ?? ""))) throw new Error("invalid suppression binding");
   if (!COMMIT.test(String(value.admissionCommitSha ?? "")) || !safePath(value.admissionPath) || !ATTESTATION.test(String(value.channelAttestationId ?? "")) || !PORTABLE.test(String(value.prospectId ?? "")) || !PORTABLE.test(String(value.organizationFactId ?? ""))) throw new Error("invalid suppression binding");
 }
 

@@ -30,9 +30,18 @@ upstream-reachable gate and admission blobs from the canonical protected origin;
 it verifies both raw blob hashes, the canonical gate-artifact hash, the gate's
 admission references, and the admitted prospect/organization identities. Caller-
 supplied self-consistent hashes are not authority. Its canonical hash covers
-repository, commit, gate path/blob, admission bindings, gate artifact, channel
+repository, commit, gate path/blob SHA-256 and Git blob OID, admission path/blob
+SHA-256 and Git blob OID, gate artifact, channel
 attestation/revision, prospect, organization fact, and channel fingerprint. Bound
 reviews require an opaque `review_<20 lowercase hex>` authority ID.
+
+After protected-origin verification, the Next.js owner creates a domain-separated
+HMAC over the exact immutable review submission using the decision capability.
+Convex verifies that server-only attestation before any database access and never
+stores it. Possession of the review-card write capability alone cannot admit a
+suppression binding. Legacy review submissions without a suppression binding remain
+compatible and do not require an attestation. Protected-binding mismatches return a
+sanitized 400; protected-origin, SSH, and timeout failures return a sanitized 500.
 
 `POST /api/tasks/outreach-suppression/clear` accepts exactly that review ID.
 Behind the flag it requires JT identity and the decision capability, loads the
