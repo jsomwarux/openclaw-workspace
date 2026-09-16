@@ -1,7 +1,15 @@
 // @ts-expect-error The local Bun ambient shim omits runtime hook exports.
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
-import { createOutreachReview, decideOutreach, findOutreachDecision, getOutreachReviewState } from "../../convex/tasks";
+import {
+  createOutreachReview,
+  createOutreachReviewAuthority,
+  decideOutreach,
+  findOutreachDecision,
+  findOutreachReviewAuthority,
+  getOutreachReviewState,
+} from "../../convex/tasks";
 import type { OutreachReviewSubmission } from "./outreach-review";
+import type { OutreachReviewAuthoritySubmission } from "./outreach-review-authority";
 
 const SHA = "a".repeat(64);
 const COMMIT = "b".repeat(40);
@@ -10,6 +18,8 @@ const createReviewHandler = (createOutreachReview as unknown as { _handler: Hand
 const reviewStateHandler = (getOutreachReviewState as unknown as { _handler: Handler })._handler;
 const decideHandler = (decideOutreach as unknown as { _handler: Handler })._handler;
 const decisionLookupHandler = (findOutreachDecision as unknown as { _handler: Handler })._handler;
+const createAuthorityHandler = (createOutreachReviewAuthority as unknown as { _handler: Handler })._handler;
+const authorityLookupHandler = (findOutreachReviewAuthority as unknown as { _handler: Handler })._handler;
 
 async function rejectedMessage(run: () => Promise<unknown>): Promise<string> {
   try {
@@ -31,7 +41,48 @@ function submission(body = "Exact draft"): OutreachReviewSubmission & { capabili
   };
 }
 
+function authoritySubmission(
+  overrides: Partial<OutreachReviewAuthoritySubmission & { capability: string }> = {},
+) {
+  return {
+    candidateId: "candidate-1",
+    draftSha256: SHA,
+    authorityBundleHash: "c".repeat(64),
+    verifierReportSha256: "d".repeat(64),
+    verifierGitBinding: {
+      repository: "owner/repo",
+      commitSha: COMMIT,
+      path: "reviews/verifier-report.json",
+      blobSha256: "d".repeat(64),
+    },
+    builderActorId: "builder-1",
+    drafterActorId: "drafter-1",
+    capability: "authority-write-secret",
+    ...overrides,
+  };
+}
+
+function authorityLookup(
+  input = authoritySubmission(),
+  capability = "authority-read-secret",
+) {
+  return {
+    candidateId: input.candidateId,
+    draftSha256: input.draftSha256,
+    authorityBundleHash: input.authorityBundleHash,
+    verifierReportSha256: input.verifierReportSha256,
+    verifierGitBinding: structuredClone(input.verifierGitBinding),
+    capability,
+  };
+}
+
 type Row = Record<string, any> & { _id: string };
+
+function fieldValue(row: Row, field: string): unknown {
+  return field.split(".").reduce<unknown>((value, segment) => (
+    value && typeof value === "object" ? (value as Record<string, unknown>)[segment] : undefined
+  ), row);
+}
 
 class MemoryDb {
   rows: Row[] = [];
@@ -46,7 +97,7 @@ class MemoryDb {
         const filters: Array<[string, unknown]> = [];
         const q = { eq: (field: string, value: unknown) => { filters.push([field, value]); return q; } };
         apply(q);
-        return { collect: async () => this.rows.filter((row) => filters.every(([field, value]) => row[field] === value)) };
+        return { collect: async () => this.rows.filter((row) => filters.every(([field, value]) => fieldValue(row, field) === value)) };
       },
     };
   }
@@ -74,6 +125,11 @@ class MemoryDb {
 }
 
 function ctx(db: MemoryDb) { return { db } as any; }
+
+function authorityFields(row: Row) {
+  const { _id: _id, ...fields } = row;
+  return fields;
+}
 
 class OptimisticConflict extends Error {}
 
@@ -105,7 +161,7 @@ class OptimisticStore {
             return {
               collect: async () => {
                 await store.synchronizeFirstTwoReads();
-                return snapshot.filter((row) => filters.every(([field, value]) => row[field] === value));
+                return snapshot.filter((row) => filters.every(([field, value]) => fieldValue(row, field) === value));
               },
             };
           },
@@ -250,5 +306,202 @@ describe("registered Convex outreach handlers", () => {
     expect(await rejectedMessage(() => decideHandler(ctx(db), decisionArgs))).toContain("OUTREACH_DECISION_CONFLICT");
     expect(await rejectedMessage(() => decisionLookupHandler(ctx(db), { candidateId: "candidate-1", draftSha256: SHA, snapshotSha256: admitted.snapshotSha256, capability: "decision-secret" }))).toContain("OUTREACH_DECISION_CONFLICT");
     expect(db.writes).toBe(writesBefore);
+  });
+});
+
+describe("registered Convex outreach review authority handlers", () => {
+  const previous = {
+    write: process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY,
+    read: process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
+    review: process.env.OUTREACH_REVIEW_CAPABILITY,
+    decision: process.env.OUTREACH_DECISION_CAPABILITY,
+    verifierActor: process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID,
+  };
+
+  beforeEach(() => {
+    process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY = "authority-write-secret";
+    process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY = "authority-read-secret";
+    process.env.OUTREACH_REVIEW_CAPABILITY = "review-secret";
+    process.env.OUTREACH_DECISION_CAPABILITY = "decision-secret";
+    process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID = "verifier-1";
+  });
+
+  afterEach(() => {
+    for (const [name, value] of [
+      ["OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY", previous.write],
+      ["OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY", previous.read],
+      ["OUTREACH_REVIEW_CAPABILITY", previous.review],
+      ["OUTREACH_DECISION_CAPABILITY", previous.decision],
+      ["OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID", previous.verifierActor],
+    ] as const) {
+      if (value === undefined) delete process.env[name]; else process.env[name] = value;
+    }
+  });
+
+  test("first insert stores and returns the exact domain authority without a capability", async () => {
+    const db = new MemoryDb();
+    const result = await createAuthorityHandler(ctx(db), authoritySubmission());
+    expect(result.created).toBe(true);
+    expect(Object.keys(result.authority).sort()).toEqual([
+      "authorityBundleHash", "authorityRevision", "builderActorId", "candidateId", "draftSha256",
+      "drafterActorId", "observedAt", "reviewId", "verifierActorId", "verifierGitBinding",
+      "verifierReportSha256",
+    ].sort());
+    expect(result.authority).toEqual(authorityFields(db.rows[0]));
+    expect(/^review_[a-f0-9]{20}$/.test(result.authority.reviewId)).toBe(true);
+    expect(/^review_authority_[a-f0-9]{20}$/.test(result.authority.authorityRevision)).toBe(true);
+    expect(Number.isSafeInteger(result.authority.observedAt)).toBe(true);
+    expect(result.authority.verifierActorId).toBe("verifier-1");
+    expect(Object.keys(db.rows[0]).includes("capability")).toBe(false);
+  });
+
+  test("maps verifier identity only from mandatory server config before database access", async () => {
+    for (const configured of [undefined, "", "   ", "x".repeat(129), "bad\nactor"]) {
+      if (configured === undefined) delete process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID;
+      else process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID = configured;
+      const db = new MemoryDb();
+      expect(await rejectedMessage(() => createAuthorityHandler(ctx(db), authoritySubmission())))
+        .toContain("OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED");
+      expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 });
+    }
+    process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID = "verifier-1";
+
+    const registeredArgs = JSON.parse((createOutreachReviewAuthority as unknown as {
+      exportArgs: () => string;
+    }).exportArgs());
+    expect(Object.keys(registeredArgs.value)).not.toContain("verifierActorId");
+  });
+
+  test("exact retry returns the original authority unchanged and conflicting retry is rejected", async () => {
+    const db = new MemoryDb();
+    const first = await createAuthorityHandler(ctx(db), authoritySubmission());
+    const original = structuredClone(first.authority);
+    const retry = await createAuthorityHandler(ctx(db), authoritySubmission());
+    expect(retry).toEqual({ created: false, authority: original });
+    expect(db.rows.map(authorityFields)).toEqual([original]);
+    expect(await rejectedMessage(() => createAuthorityHandler(ctx(db), authoritySubmission({ drafterActorId: "drafter-2" }))))
+      .toContain("OUTREACH_REVIEW_AUTHORITY_CONFLICT");
+    expect(db.rows.map(authorityFields)).toEqual([original]);
+  });
+
+  test("different valid verifier Git bindings are independent first writes", async () => {
+    const db = new MemoryDb();
+    const first = await createAuthorityHandler(ctx(db), authoritySubmission());
+    const siblingInput = authoritySubmission({
+      verifierGitBinding: {
+        ...authoritySubmission().verifierGitBinding,
+        path: "reviews/sibling.json",
+      },
+    });
+    const sibling = await createAuthorityHandler(ctx(db), siblingInput);
+    expect(first.created).toBe(true);
+    expect(sibling.created).toBe(true);
+    expect(db.rows).toHaveLength(2);
+    expect(await createAuthorityHandler(ctx(db), siblingInput)).toEqual({ created: false, authority: sibling.authority });
+    expect(await createAuthorityHandler(ctx(db), authoritySubmission())).toEqual({ created: false, authority: first.authority });
+  });
+
+  test("optimistic concurrent identical writes converge and conflicting writes fail closed", async () => {
+    const identicalStore = new OptimisticStore();
+    const [left, right] = await Promise.all([
+      identicalStore.run(createAuthorityHandler, authoritySubmission()),
+      identicalStore.run(createAuthorityHandler, authoritySubmission()),
+    ]);
+    expect(identicalStore.rows).toHaveLength(1);
+    expect([left.created, right.created].sort()).toEqual([false, true]);
+    expect(left.authority).toEqual(right.authority);
+
+    const conflictingStore = new OptimisticStore();
+    const attempts = await Promise.allSettled([
+      conflictingStore.run(createAuthorityHandler, authoritySubmission()),
+      conflictingStore.run(createAuthorityHandler, authoritySubmission({ builderActorId: "builder-2" })),
+    ]);
+    expect(conflictingStore.rows).toHaveLength(1);
+    expect(attempts.filter((result) => result.status === "fulfilled")).toHaveLength(1);
+    const rejected = attempts.find((result) => result.status === "rejected");
+    expect(rejected?.status === "rejected" ? String(rejected.reason) : "")
+      .toContain("OUTREACH_REVIEW_AUTHORITY_CONFLICT");
+  });
+
+  test("duplicate and corrupt stored authorities fail closed", async () => {
+    for (const corruptRows of [
+      async () => {
+        const db = new MemoryDb();
+        const created = await createAuthorityHandler(ctx(db), authoritySubmission());
+        db.rows.push(structuredClone(created.authority));
+        return db;
+      },
+      async () => {
+        const db = new MemoryDb();
+        await createAuthorityHandler(ctx(db), authoritySubmission());
+        db.rows[0].authorityRevision = "caller-controlled";
+        return db;
+      },
+    ]) {
+      const db = await corruptRows();
+      const writesBefore = db.writes;
+      expect(await rejectedMessage(() => createAuthorityHandler(ctx(db), authoritySubmission())))
+        .toContain("OUTREACH_REVIEW_AUTHORITY_CORRUPT");
+      expect(await rejectedMessage(() => authorityLookupHandler(ctx(db), authorityLookup())))
+        .toContain("OUTREACH_REVIEW_AUTHORITY_CORRUPT");
+      expect(db.writes).toBe(writesBefore);
+    }
+  });
+
+  test("exact lookup returns the authority and absent lookup returns closed route data", async () => {
+    const db = new MemoryDb();
+    const created = await createAuthorityHandler(ctx(db), authoritySubmission());
+    expect(await authorityLookupHandler(ctx(db), authorityLookup())).toEqual({
+      authorized: true,
+      authority: created.authority,
+    });
+    expect(await authorityLookupHandler(ctx(db), authorityLookup(authoritySubmission({ candidateId: "absent" })))).toEqual({
+      authorized: false,
+    });
+    const changedBinding = authorityLookup();
+    changedBinding.verifierGitBinding.path = "reviews/other.json";
+    expect(await authorityLookupHandler(ctx(db), changedBinding)).toEqual({ authorized: false });
+  });
+
+  test("write and read authenticate all four pairwise-distinct capabilities before database access", async () => {
+    const calls = [
+      (db: MemoryDb, capability: any) => createAuthorityHandler(ctx(db), authoritySubmission({ capability })),
+      (db: MemoryDb, capability: any) => authorityLookupHandler(ctx(db), { ...authorityLookup(), capability }),
+    ];
+    for (const [index, call] of calls.entries()) {
+      const expected = index === 0 ? "authority-write-secret" : "authority-read-secret";
+      for (const candidate of [undefined, "wrong", "authority-write-secret", "authority-read-secret", "review-secret", "decision-secret"]
+        .filter((value) => value !== expected)) {
+        const db = new MemoryDb();
+        expect(await rejectedMessage(() => call(db, candidate))).toContain("server capability required");
+        expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 });
+      }
+    }
+
+    for (const [name, invalid] of [
+      ["OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY", undefined],
+      ["OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY", "   "],
+      ["OUTREACH_REVIEW_CAPABILITY", ""],
+      ["OUTREACH_DECISION_CAPABILITY", undefined],
+      ["OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY", "authority-write-secret"],
+      ["OUTREACH_REVIEW_CAPABILITY", "authority-write-secret"],
+      ["OUTREACH_DECISION_CAPABILITY", "authority-read-secret"],
+    ] as const) {
+      const original = process.env[name];
+      if (invalid === undefined) delete process.env[name]; else process.env[name] = invalid;
+      try {
+        for (const [call, capability] of [
+          [calls[0], "authority-write-secret"],
+          [calls[1], "authority-read-secret"],
+        ] as const) {
+          const db = new MemoryDb();
+          expect(await rejectedMessage(() => call(db, capability)))
+            .toContain("OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED");
+          expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 });
+        }
+      } finally {
+        if (original === undefined) delete process.env[name]; else process.env[name] = original;
+      }
+    }
   });
 });

@@ -2,6 +2,8 @@ import Foundation
 import Security
 
 let account = "jtsomwaru"
+let protocolVersion = "outreach-capabilities-v3"
+let capabilitySetService = "com.openclaw.mission-control.outreach-capability-set-v1"
 let services = [
     "review": "com.openclaw.mission-control.outreach-review",
     "decision": "com.openclaw.mission-control.outreach-decision",
@@ -12,12 +14,12 @@ func fail(_ message: String) -> Never {
     exit(2)
 }
 
-func randomCapability() -> Data {
+func randomCapability() -> String {
     var bytes = [UInt8](repeating: 0, count: 48)
     guard SecRandomCopyBytes(kSecRandomDefault, bytes.count, &bytes) == errSecSuccess else {
         fail("capability generation failed")
     }
-    return Data(bytes).base64EncodedData()
+    return Data(bytes).base64EncodedString()
 }
 
 func query(_ service: String) -> [String: Any] {
@@ -56,12 +58,13 @@ func store(_ service: String, _ value: Data) {
     }
 }
 
-func read(_ service: String) -> Data {
+func read(_ service: String, allowMissing: Bool = false) -> Data? {
     var key = query(service)
     key[kSecReturnData as String] = true
     key[kSecMatchLimit as String] = kSecMatchLimitOne
     var item: CFTypeRef?
     let status = SecItemCopyMatching(key as CFDictionary, &item)
+    if allowMissing && status == errSecItemNotFound { return nil }
     guard status == errSecSuccess, let value = item as? Data, !value.isEmpty else {
         fail("stored capability is unavailable")
     }
@@ -69,14 +72,37 @@ func read(_ service: String) -> Data {
 }
 
 let args = Array(CommandLine.arguments.dropFirst())
-if args == ["install"] {
+if args == ["probe", protocolVersion] {
+    // A successful, silent probe lets the runtime reject stale helper binaries.
+} else if args == ["install-set"] {
     let review = randomCapability()
     let decision = randomCapability()
-    guard review != decision else { fail("capability generation collision") }
-    store(services["review"]!, review)
-    store(services["decision"]!, decision)
+    let authorityWrite = randomCapability()
+    let authorityRead = randomCapability()
+    let capabilities = [review, decision, authorityWrite, authorityRead]
+    guard Set(capabilities).count == capabilities.count else { fail("capability generation collision") }
+    let capabilitySet: [String: Any] = [
+        "version": 1,
+        "review": review,
+        "decision": decision,
+        "reviewAuthorityWrite": authorityWrite,
+        "reviewAuthorityRead": authorityRead,
+    ]
+    guard JSONSerialization.isValidJSONObject(capabilitySet),
+          let encoded = try? JSONSerialization.data(withJSONObject: capabilitySet, options: [.sortedKeys]) else {
+        fail("capability set encoding failed")
+    }
+    store(capabilitySetService, encoded)
+} else if args == ["read-set"] {
+    if let value = read(capabilitySetService, allowMissing: true) {
+        FileHandle.standardOutput.write(value)
+        FileHandle.standardOutput.write(Data("\n".utf8))
+    } else {
+        exit(3)
+    }
 } else if args.count == 2, args[0] == "read", let service = services[args[1]] {
-    FileHandle.standardOutput.write(read(service))
+    guard let value = read(service) else { fail("stored capability is unavailable") }
+    FileHandle.standardOutput.write(value)
     FileHandle.standardOutput.write(Data("\n".utf8))
 } else {
     fail("unsupported keychain operation")

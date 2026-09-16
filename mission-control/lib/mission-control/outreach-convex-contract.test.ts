@@ -15,10 +15,63 @@ function mutationSource(name: string, nextName: string): string {
 }
 
 describe("Convex outreach authority boundary", () => {
+  test("defines an append-only exact-key authority table with the domain record and no capability", () => {
+    expect(schemaSource).toContain("outreachReviewAuthorities: defineTable({");
+    for (const field of [
+      "candidateId", "draftSha256", "authorityBundleHash", "verifierReportSha256", "verifierGitBinding",
+      "builderActorId", "drafterActorId", "verifierActorId", "reviewId", "observedAt", "authorityRevision",
+    ]) expect(schemaSource).toContain(`${field}:`);
+    expect(schemaSource).toContain(
+      '.index("by_exact_authority", [\n    "candidateId",\n    "draftSha256",\n    "authorityBundleHash",\n    "verifierReportSha256",\n    "verifierGitBinding.repository",\n    "verifierGitBinding.commitSha",\n    "verifierGitBinding.path",\n    "verifierGitBinding.blobSha256",\n  ])',
+    );
+    expect(schemaSource).not.toContain("outreachReviewAuthorities: defineTable({\n    capability:");
+  });
+
+  test("exports specialized append-only authority write and exact lookup handlers", () => {
+    const write = mutationSource("createOutreachReviewAuthority", "findOutreachReviewAuthority");
+    const lookup = mutationSource("findOutreachReviewAuthority", "createOutreachReview");
+    expect(write).toContain("export const createOutreachReviewAuthority = mutation");
+    expect(lookup).toContain("export const findOutreachReviewAuthority = query");
+    expect(write).toContain('ctx.db.insert("outreachReviewAuthorities"');
+    for (const field of ["repository", "commitSha", "path", "blobSha256"]) {
+      expect(write).toContain(`.eq("verifierGitBinding.${field}"`);
+      expect(lookup).toContain(`.eq("verifierGitBinding.${field}"`);
+    }
+    expect(write).not.toContain("ctx.db.patch");
+    expect(write).not.toContain("ctx.db.delete");
+    expect(lookup).not.toContain("ctx.db.patch");
+    expect(lookup).not.toContain("ctx.db.delete");
+  });
+
+  test("authority write caller cannot provide the server-owned verifier actor", () => {
+    const write = mutationSource("createOutreachReviewAuthority", "findOutreachReviewAuthority");
+    const args = write.slice(write.indexOf("args:"), write.indexOf("handler:"));
+    expect(args).not.toContain("verifierActorId");
+    expect(write).toContain("process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID");
+    expect(write.indexOf("OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID")).toBeLessThan(write.indexOf("ctx.db"));
+  });
+
+  test("authority handlers authenticate four distinct capabilities before database access", () => {
+    for (const [name, next] of [
+      ["createOutreachReviewAuthority", "findOutreachReviewAuthority"],
+      ["findOutreachReviewAuthority", "createOutreachReview"],
+    ] as const) {
+      const source = mutationSource(name, next);
+      for (const capability of [
+        "OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY",
+        "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY",
+        "OUTREACH_REVIEW_CAPABILITY",
+        "OUTREACH_DECISION_CAPABILITY",
+      ]) expect(source).toContain(`process.env.${capability}`);
+      expect(source.indexOf("await assertOutreachAuthorityCapability")).toBeGreaterThan(-1);
+      expect(source.indexOf("await assertOutreachAuthorityCapability")).toBeLessThan(source.indexOf("ctx.db"));
+    }
+  });
+
   test("review admission and JT decision validate distinct least-privilege capabilities", () => {
     expect(tasksSource).toContain("export const createOutreachReview = mutation");
     expect(tasksSource).toContain("export const decideOutreach = mutation");
-    expect(tasksSource.match(/capability: v\.string\(\)/g)?.length).toBe(4);
+    expect(tasksSource.match(/capability: v\.string\(\)/g)?.length).toBe(6);
     const reviewMutation = mutationSource("createOutreachReview", "updateStatus");
     const decisionMutation = mutationSource("decideOutreach", "findOutreachDecision");
     expect(reviewMutation).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
