@@ -286,6 +286,13 @@ describe("outreach runtime secret handling", () => {
     expect(runtime).toContain("result.output[3]");
   });
 
+  test("private capability transport requires a distinct FIFO or socket", () => {
+    const runtime = readFileSync("scripts/outreach-runtime-secrets.mjs", "utf8");
+    expect(runtime).toContain("channel.isFIFO() || channel.isSocket()");
+    expect(runtime).toContain("sameFileIdentity(channel, stdout)");
+    expect(runtime).toContain("sameFileIdentity(channel, stderr)");
+  });
+
   test("forged internal environment emission without private fd fails before stdout or Keychain access", () => {
     const result = spawnSync(
       "/opt/homebrew/opt/node@22/bin/node",
@@ -304,6 +311,69 @@ describe("outreach runtime secret handling", () => {
     expect(result.stdout).toBe("");
     expect(result.stderr).toContain("private capability pipe required");
     expect(result.stdout).not.toContain("OUTREACH_REVIEW_CAPABILITY");
+  });
+
+  for (const [name, redirection] of [
+    ["stdout", "3>&1"],
+    ["stderr", "3>&2"],
+  ] as const) {
+    test(`forged internal fd3 alias to ${name} fails before stdout or Keychain access`, () => {
+      const result = spawnSync(
+        "/bin/sh",
+        [
+          "-c",
+          `exec /opt/homebrew/opt/node@22/bin/node scripts/outreach-runtime-secrets.mjs --outreach-lock-held emit-runtime-environment ${redirection}`,
+        ],
+        {
+          encoding: "utf8",
+          env: { ...process.env, OUTREACH_LOCKF_INTERNAL: "1" },
+          stdio: ["ignore", "pipe", "pipe"],
+        },
+      );
+      expect(result.status).toBe(2);
+      expect(result.stdout).toBe("");
+      expect(result.stderr).toBe("private capability pipe required\n");
+      expect(`${result.stdout}${result.stderr}`).not.toContain("OUTREACH_REVIEW_CAPABILITY");
+    });
+  }
+
+  test("forged internal regular-file fd3 fails without writing or accessing Keychain", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-forged-fd-file-test-"));
+    const outputPath = join(directory, "forged-output");
+    try {
+      const result = spawnSync(
+        "/bin/sh",
+        [
+          "-c",
+          'exec /opt/homebrew/opt/node@22/bin/node scripts/outreach-runtime-secrets.mjs --outreach-lock-held emit-runtime-environment 3>"$FD_TARGET"',
+        ],
+        {
+          encoding: "utf8",
+          env: { ...process.env, OUTREACH_LOCKF_INTERNAL: "1", FD_TARGET: outputPath },
+          stdio: ["ignore", "pipe", "pipe"],
+        },
+      );
+      expect(result.status).toBe(2);
+      expect(result.stdout).toBe("");
+      expect(result.stderr).toBe("private capability pipe required\n");
+      expect(readFileSync(outputPath, "utf8")).toBe("");
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("accepts a distinct parent-created fd3 pipe", () => {
+    const result = spawnSync(
+      "/opt/homebrew/opt/node@22/bin/node",
+      [
+        "-e",
+        'import("./scripts/outreach-runtime-secrets.mjs").then(({ validatePrivateCapabilityPipe }) => validatePrivateCapabilityPipe(3))',
+      ],
+      { encoding: "utf8", stdio: ["ignore", "pipe", "pipe", "pipe"] },
+    );
+    expect(result.status).toBe(0);
+    expect(result.stdout).toBe("");
+    expect(result.stderr).toBe("");
   });
 
   test("lockf preserves a parent-created private fd 3 while stdout stays nonsecret", () => {

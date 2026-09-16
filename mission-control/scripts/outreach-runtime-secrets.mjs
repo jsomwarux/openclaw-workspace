@@ -401,9 +401,30 @@ function runLockedReexec(operationArgs, captureOutput = false) {
   return captureOutput ? result.output[3] : result.stdout;
 }
 
-function requirePrivateCapabilityPipe(descriptor = 3) {
+function sameFileIdentity(left, right) {
+  return left.dev === right.dev && left.ino === right.ino;
+}
+
+export function validatePrivateCapabilityPipe(descriptor = 3) {
   try {
-    fstatSync(descriptor);
+    const channel = fstatSync(descriptor);
+    const stdout = fstatSync(1);
+    const stderr = fstatSync(2);
+    if (
+      !(channel.isFIFO() || channel.isSocket())
+      || sameFileIdentity(channel, stdout)
+      || sameFileIdentity(channel, stderr)
+    ) {
+      throw new Error("invalid private capability pipe");
+    }
+  } catch {
+    throw new Error("private capability pipe required");
+  }
+}
+
+function requirePrivateCapabilityPipe(descriptor = 3) {
+  validatePrivateCapabilityPipe(descriptor);
+  try {
     writeFileSync(descriptor, PRIVATE_PIPE_PREAMBLE);
   } catch {
     throw new Error("private capability pipe required");
