@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
-import { assertDistinctServerCapability, OutreachAuthError } from "./outreach-auth";
+import { assertDistinctServerCapability, OutreachAuthError, secureCapabilityEqual } from "./outreach-auth";
 import {
   OutreachReviewContractError,
   validateOutreachReviewKey,
   validateOutreachReviewSubmission,
   type OutreachReviewSubmission,
 } from "./outreach-review";
+import { createSuppressionAdmissionAttestation } from "./outreach-suppression-attestation";
+import { ProtectedGitBindingMismatchError, ProtectedGitDependencyError } from "./outreach-protected-git";
 
 type AdmissionResult = { taskId: string; created: boolean; reviewCycle: 1 | 2; snapshotSha256: string };
 type ReviewState = {
@@ -17,10 +19,14 @@ type ReviewState = {
 };
 
 type Dependencies = {
+  enabled: string | undefined;
   serverCapability: string | undefined;
   peerCapability: string | undefined;
-  admit: (input: OutreachReviewSubmission & { capability: string }) => Promise<AdmissionResult>;
+  readCapability: string | undefined;
+  authorityWriteCapability: string | undefined;
+  admit: (input: OutreachReviewSubmission & { capability: string; suppressionAttestation?: string }) => Promise<AdmissionResult>;
   lookup: (input: { candidateId: string; cohortId: string; capability: string }) => Promise<ReviewState>;
+  verifySuppressionBinding: (input: NonNullable<OutreachReviewSubmission["suppressionBinding"]>) => Promise<void>;
 };
 
 function authError(error: OutreachAuthError) {
@@ -57,14 +63,49 @@ export function createOutreachReviewHandlers(dependencies: Dependencies) {
     );
   }
 
+  async function suppressionCapability(provided: string | undefined) {
+    if (dependencies.enabled !== "true") throw new OutreachAuthError("outreach suppression owner is not configured", 503);
+    const configured = [
+      dependencies.peerCapability,
+      dependencies.readCapability,
+      dependencies.serverCapability,
+      dependencies.authorityWriteCapability,
+    ];
+    if (configured.some((value) => !value?.trim())) throw new OutreachAuthError("outreach suppression owner is not configured", 503);
+    const values = configured as string[];
+    for (let left = 0; left < values.length; left++) for (let right = left + 1; right < values.length; right++) {
+      if (await secureCapabilityEqual(values[left], values[right])) throw new OutreachAuthError("outreach suppression owner is not configured", 503);
+    }
+    if (!provided?.trim() || !(await secureCapabilityEqual(provided, values[2]))) throw new OutreachAuthError("server capability required", 401);
+    return values[2];
+  }
+
   return {
     POST: async (req: Request) => {
       try {
-        const serverCapability = await capability(req);
         const input = await req.json() as unknown;
         validateOutreachReviewSubmission(input);
+        const provided = req.headers.get("X-Outreach-Review-Capability") ?? undefined;
+        const serverCapability = input.suppressionBinding
+          ? await suppressionCapability(provided)
+          : await capability(req);
+        let suppressionAttestation: string | undefined;
+        if (input.suppressionBinding) {
+          try {
+            await dependencies.verifySuppressionBinding(input.suppressionBinding);
+            suppressionAttestation = await createSuppressionAdmissionAttestation(input, dependencies.peerCapability);
+          } catch (error) {
+            if (error instanceof ProtectedGitBindingMismatchError) return validationError(error);
+            if (error instanceof ProtectedGitDependencyError) return dependencyError(error);
+            return dependencyError(error);
+          }
+        }
         try {
-          const result = await dependencies.admit({ ...input, capability: serverCapability });
+          const result = await dependencies.admit({
+            ...input,
+            ...(suppressionAttestation ? { suppressionAttestation } : {}),
+            capability: serverCapability,
+          });
           return NextResponse.json({
             taskId: result.taskId,
             created: result.created,

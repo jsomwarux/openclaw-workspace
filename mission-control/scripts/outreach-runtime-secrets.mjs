@@ -3,16 +3,20 @@
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
+  accessSync,
   chmodSync,
   closeSync,
+  constants as fsConstants,
   existsSync,
   fstatSync,
+  lstatSync,
   mkdirSync,
   mkdtempSync,
   openSync,
   readFileSync,
   renameSync,
   rmSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
@@ -29,7 +33,262 @@ const CONVEX_SYNC_TIMEOUT_MS = 10_000;
 const LOCKED_FLAG = "--outreach-lock-held";
 const LOCKED_ENV = "OUTREACH_LOCKF_INTERNAL";
 const PRIVATE_PIPE_PREAMBLE = "outreach-runtime-environment-v1\n";
+const AUTHORITY_READER_PIPE_PREAMBLE = "outreach-review-authority-reader-v1\n";
+const JT_OPS_ROOT = "/Users/jtsomwaru/Desktop/jt-ops";
+// The one reviewed confirmed-send source, derived from the merged jt-ops main
+// tree rather than transcribed: the suppression owner branch landed as 471e0d8
+// and `scripts/record_confirmed_send.py` resolves there to blob d5d12ceb. Both
+// the Git object ID and the SHA-256 are re-derived from the bytes before
+// anything is materialized, so a drifted, stale, or swapped pin fails closed
+// ahead of any Keychain access.
+export const CONFIRMED_SEND_REVIEWED_SOURCE = Object.freeze({
+  commit: "471e0d8cb0dbf7db8b01a235c8d26d7340328ce1",
+  blobOid: "d5d12ceb0e95462c41ce7e528aa60e8bdadff8b2",
+  blobSha256:
+    "72c4a96b4fc0f8c86dba6357f79ac5b4d40fae236cb8b968e8719784479d0b3e",
+  scriptPath: "scripts/record_confirmed_send.py",
+});
+const JT_OPS_REVIEWED_COMMIT = CONFIRMED_SEND_REVIEWED_SOURCE.commit;
+const JT_OPS_CONFIRMED_SEND_BLOB = CONFIRMED_SEND_REVIEWED_SOURCE.blobOid;
+const JT_OPS_CONFIRMED_SEND_SHA256 = CONFIRMED_SEND_REVIEWED_SOURCE.blobSha256;
+const CONFIRMED_SEND_RUNTIME_ROOT =
+  "/Users/jtsomwaru/.openclaw/workspace/mission-control/.runtime/confirmed-send-owner";
+const CONFIRMED_SEND_PYTHON = "/usr/bin/python3";
+const CONFIRMED_SEND_PREFLIGHT_CWD = "/private/var/empty";
+const CONFIRMED_SEND_TIMEOUT_MS = 20_000;
+const PREFLIGHT_TIMEOUT_MS = 5_000;
+const PRE_SEND_RECEIPT_ID = /^pre_send_[0-9a-f]{20}$/;
+const SENT_EVENT_ID = /^suppression_event_[0-9a-f]{20}$/;
+const HEX_64 = /^[0-9a-f]{64}$/;
+const UTC_SECONDS = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+const GIT_OBJECT_ID = /^[0-9a-f]{40}$/;
+const CONFIRMED_SEND_SCRIPT_PATH = CONFIRMED_SEND_REVIEWED_SOURCE.scriptPath;
+const CONFIRMED_SEND_SCRIPT_MAX_BYTES = 128 * 1024;
 export const AUTHORITY_VERIFIER_ACTOR_ID = "openclaw:review-verifier-v1";
+
+export function buildReviewAuthorityReaderEnvironment(authorityRead) {
+  const value = typeof authorityRead === "string" ? authorityRead.trim() : "";
+  if (!value) throw new Error("review-authority reader is unavailable");
+  return {
+    LANG: "C.UTF-8",
+    LC_ALL: "C.UTF-8",
+    PYTHONHASHSEED: "0",
+    OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY: value,
+  };
+}
+
+function validatePreSendReceiptId(value) {
+  if (typeof value !== "string" || !PRE_SEND_RECEIPT_ID.test(value)) {
+    throw new Error("invalid confirmed-send request");
+  }
+  return value;
+}
+
+function reviewedGitEnvironment() {
+  return {
+    GIT_CONFIG_GLOBAL: "/dev/null",
+    GIT_CONFIG_NOSYSTEM: "1",
+    GIT_NO_REPLACE_OBJECTS: "1",
+    LANG: "C.UTF-8",
+    LC_ALL: "C.UTF-8",
+  };
+}
+
+function validatePrivateRuntimeRoot(runtimeRoot) {
+  if (existsSync(runtimeRoot)) {
+    const existing = lstatSync(runtimeRoot);
+    if (!existing.isDirectory() || existing.isSymbolicLink()) {
+      throw new Error("invalid private runtime root");
+    }
+  } else {
+    mkdirSync(runtimeRoot, { recursive: true, mode: 0o700 });
+  }
+  const metadata = lstatSync(runtimeRoot);
+  if (
+    !metadata.isDirectory()
+    || metadata.isSymbolicLink()
+    || metadata.uid !== process.getuid()
+    || (metadata.mode & 0o077) !== 0
+  ) {
+    throw new Error("invalid private runtime root");
+  }
+  chmodSync(runtimeRoot, 0o700);
+}
+
+/**
+ * @param {{
+ *   repoPath: string,
+ *   runtimeRoot: string,
+ *   expectedCommit: string,
+ *   expectedBlob: string,
+ *   expectedSha256: string,
+ *   gitPath?: string,
+ *   spawn?: typeof spawnSync,
+ * }} options
+ */
+export function materializeReviewedConfirmedSendScript({
+  repoPath,
+  runtimeRoot,
+  expectedCommit,
+  expectedBlob,
+  expectedSha256,
+  gitPath = "/usr/bin/git",
+  spawn = spawnSync,
+}) {
+  let runtimeDirectory;
+  try {
+    if (
+      typeof repoPath !== "string" || !repoPath
+      || typeof runtimeRoot !== "string" || !runtimeRoot
+      || typeof expectedCommit !== "string" || !GIT_OBJECT_ID.test(expectedCommit)
+      || typeof expectedBlob !== "string" || !GIT_OBJECT_ID.test(expectedBlob)
+      || typeof expectedSha256 !== "string" || !HEX_64.test(expectedSha256)
+      || !lstatSync(repoPath).isDirectory()
+    ) {
+      throw new Error("invalid reviewed source");
+    }
+    const gitOptions = {
+      cwd: repoPath,
+      env: reviewedGitEnvironment(),
+      maxBuffer: CONFIRMED_SEND_SCRIPT_MAX_BYTES,
+      timeout: PREFLIGHT_TIMEOUT_MS,
+      killSignal: "SIGKILL",
+    };
+    const resolved = spawn(
+      gitPath,
+      ["-C", repoPath, "rev-parse", `${expectedCommit}:${CONFIRMED_SEND_SCRIPT_PATH}`],
+      { ...gitOptions, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] },
+    );
+    if (
+      resolved.error || resolved.status !== 0 || resolved.stderr
+      || resolved.stdout !== `${expectedBlob}\n`
+    ) {
+      throw new Error("reviewed source mismatch");
+    }
+    const object = spawn(
+      gitPath,
+      ["-C", repoPath, "cat-file", "blob", expectedBlob],
+      { ...gitOptions, encoding: null, stdio: ["ignore", "pipe", "pipe"] },
+    );
+    if (
+      object.error || object.status !== 0
+      || !Buffer.isBuffer(object.stdout) || object.stdout.length === 0
+      || object.stdout.length > CONFIRMED_SEND_SCRIPT_MAX_BYTES
+      || !Buffer.isBuffer(object.stderr) || object.stderr.length !== 0
+    ) {
+      throw new Error("reviewed source unavailable");
+    }
+    const actualBlob = createHash("sha1")
+      .update(`blob ${object.stdout.length}\0`)
+      .update(object.stdout)
+      .digest("hex");
+    if (actualBlob !== expectedBlob) throw new Error("reviewed source digest mismatch");
+    const actualSha256 = createHash("sha256").update(object.stdout).digest("hex");
+    if (actualSha256 !== expectedSha256) {
+      throw new Error("reviewed source digest mismatch");
+    }
+
+    validatePrivateRuntimeRoot(runtimeRoot);
+    runtimeDirectory = mkdtempSync(join(runtimeRoot, "confirmed-send-"));
+    chmodSync(runtimeDirectory, 0o700);
+    const scriptPath = join(runtimeDirectory, "record_confirmed_send.py");
+    writeFileSync(scriptPath, object.stdout, { flag: "wx", mode: 0o600 });
+    chmodSync(scriptPath, 0o600);
+    return {
+      runtimeDirectory,
+      scriptPath,
+      cleanup: () => rmSync(runtimeDirectory, { recursive: true, force: true }),
+    };
+  } catch {
+    if (runtimeDirectory) rmSync(runtimeDirectory, { recursive: true, force: true });
+    throw new Error("fixed jt-ops command is unavailable");
+  }
+}
+
+export function buildConfirmedSendRequest(
+  preSendReceiptId,
+  authorityRead,
+  scriptPath,
+  runtimeDirectory,
+) {
+  const receiptId = validatePreSendReceiptId(preSendReceiptId);
+  if (
+    typeof scriptPath !== "string" || !scriptPath
+    || typeof runtimeDirectory !== "string" || !runtimeDirectory
+    || dirname(scriptPath) !== runtimeDirectory
+  ) {
+    throw new Error("invalid confirmed-send request");
+  }
+  return {
+    file: CONFIRMED_SEND_PYTHON,
+    args: [
+      "-I",
+      "-S",
+      scriptPath,
+      "--pre-send-receipt-id",
+      receiptId,
+    ],
+    cwd: runtimeDirectory,
+    env: buildReviewAuthorityReaderEnvironment(authorityRead),
+  };
+}
+
+export function validateConfirmedSendPreflight({
+  pythonPath = CONFIRMED_SEND_PYTHON,
+  cwd = CONFIRMED_SEND_PREFLIGHT_CWD,
+  spawn = spawnSync,
+} = {}) {
+  try {
+    const pythonMetadata = statSync(pythonPath);
+    if (
+      !pythonMetadata.isFile()
+      || pythonMetadata.uid !== 0
+      || (pythonMetadata.mode & 0o022) !== 0
+    ) throw new Error("invalid fixed runtime");
+    accessSync(pythonPath, fsConstants.X_OK);
+    const result = spawn(pythonPath, [
+      "-I", "-S", "-c",
+      "import sys; assert sys.flags.isolated == 1 and sys.flags.no_site == 1",
+    ], {
+      cwd,
+      env: { LANG: "C.UTF-8", LC_ALL: "C.UTF-8", PYTHONHASHSEED: "0" },
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+      timeout: PREFLIGHT_TIMEOUT_MS,
+      killSignal: "SIGKILL",
+    });
+    if (result.error || result.status !== 0 || result.stdout || result.stderr) {
+      throw new Error("invalid fixed runtime");
+    }
+  } catch {
+    throw new Error("fixed jt-ops command is unavailable");
+  }
+}
+
+export function parseConfirmedSendResult(stdout, stderr, status, preSendReceiptId) {
+  try {
+    if (status !== 0 || stderr || typeof stdout !== "string" || stdout.split("\n").length !== 2 || !stdout.endsWith("\n")) {
+      throw new Error("invalid child result");
+    }
+    const value = JSON.parse(stdout);
+    const keys = ["observedAt", "ownerRevision", "preSendReceiptId", "sentEventId", "status"];
+    if (
+      !value || typeof value !== "object" || Array.isArray(value)
+      || Object.keys(value).sort().some((key, index) => key !== keys[index])
+      || Object.keys(value).length !== keys.length
+      || value.status !== "RECORDED"
+      || value.preSendReceiptId !== preSendReceiptId
+      || typeof value.sentEventId !== "string" || !SENT_EVENT_ID.test(value.sentEventId)
+      || typeof value.ownerRevision !== "string" || !HEX_64.test(value.ownerRevision)
+      || typeof value.observedAt !== "string" || !UTC_SECONDS.test(value.observedAt)
+    ) {
+      throw new Error("invalid child result");
+    }
+    return value;
+  } catch {
+    throw new Error("confirmed-send owner failed");
+  }
+}
 
 export function buildKeychainHelperRequest(
   helperPath = V3_KEYCHAIN_HELPER,
@@ -191,6 +450,7 @@ export function buildConvexEnvironmentChanges(review, decision, authorityWrite, 
       { name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID" },
     );
   }
+  changes.push({ name: "OUTREACH_SUPPRESSION_OWNER_ENABLED" });
   return changes;
 }
 
@@ -199,6 +459,7 @@ export function buildServiceProcessEnvironment(baseEnvironment, runtimeEnvironme
   delete environment.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY;
   delete environment.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY;
   delete environment.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID;
+  delete environment.OUTREACH_SUPPRESSION_OWNER_ENABLED;
   return { ...environment, ...runtimeEnvironment };
 }
 
@@ -333,6 +594,12 @@ function readRuntimeEnvironment() {
   );
 }
 
+function readReviewAuthorityReaderEnvironment() {
+  ensureV3KeychainHelper();
+  const values = readCapabilitySetFromHelpers(V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER);
+  return buildReviewAuthorityReaderEnvironment(values.authorityRead);
+}
+
 export function installCapabilitySet({
   ensureHelper = ensureV3KeychainHelper,
   resolveLogin = currentTailscaleLogin,
@@ -425,10 +692,10 @@ export function validatePrivateCapabilityPipe(descriptor = 3) {
   }
 }
 
-function requirePrivateCapabilityPipe(descriptor = 3) {
+function requirePrivateCapabilityPipe(descriptor = 3, preamble = PRIVATE_PIPE_PREAMBLE) {
   validatePrivateCapabilityPipe(descriptor);
   try {
-    writeFileSync(descriptor, PRIVATE_PIPE_PREAMBLE);
+    writeFileSync(descriptor, preamble);
   } catch {
     throw new Error("private capability pipe required");
   }
@@ -436,6 +703,77 @@ function requirePrivateCapabilityPipe(descriptor = 3) {
 
 function writeRuntimeEnvironmentToPrivatePipe(values, descriptor = 3) {
   writeFileSync(descriptor, JSON.stringify(values));
+}
+
+function writeReviewAuthorityReaderEnvironmentToPrivatePipe(descriptor = 3) {
+  requirePrivateCapabilityPipe(descriptor, AUTHORITY_READER_PIPE_PREAMBLE);
+  writeFileSync(descriptor, JSON.stringify(readReviewAuthorityReaderEnvironment()));
+}
+
+function parseReviewAuthorityReaderPayload(payload) {
+  try {
+    if (!payload?.startsWith(AUTHORITY_READER_PIPE_PREAMBLE)) {
+      throw new Error("invalid private payload");
+    }
+    const value = JSON.parse(payload.slice(AUTHORITY_READER_PIPE_PREAMBLE.length));
+    const expected = [
+      "LANG", "LC_ALL", "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY", "PYTHONHASHSEED",
+    ];
+    if (
+      !value || typeof value !== "object" || Array.isArray(value)
+      || Object.keys(value).sort().some((key, index) => key !== expected[index])
+      || Object.keys(value).length !== expected.length
+      || typeof value.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY !== "string"
+    ) {
+      throw new Error("invalid private payload");
+    }
+    return buildReviewAuthorityReaderEnvironment(
+      value.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
+    );
+  } catch {
+    throw new Error("secure capability operation failed");
+  }
+}
+
+function runConfirmedSend(preSendReceiptId) {
+  const receiptId = validatePreSendReceiptId(preSendReceiptId);
+  const materialized = materializeReviewedConfirmedSendScript({
+    repoPath: JT_OPS_ROOT,
+    runtimeRoot: CONFIRMED_SEND_RUNTIME_ROOT,
+    expectedCommit: JT_OPS_REVIEWED_COMMIT,
+    expectedBlob: JT_OPS_CONFIRMED_SEND_BLOB,
+    expectedSha256: JT_OPS_CONFIRMED_SEND_SHA256,
+  });
+  try {
+    validateConfirmedSendPreflight();
+    const payload = runLockedReexec(["emit-review-authority-reader-environment"], true);
+    const environment = parseReviewAuthorityReaderPayload(payload);
+    const request = buildConfirmedSendRequest(
+      receiptId,
+      environment.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
+      materialized.scriptPath,
+      materialized.runtimeDirectory,
+    );
+    const result = spawnSync(request.file, request.args, {
+      cwd: request.cwd,
+      env: request.env,
+      encoding: "utf8",
+      maxBuffer: 1024 * 1024,
+      stdio: ["ignore", "pipe", "pipe"],
+      timeout: CONFIRMED_SEND_TIMEOUT_MS,
+      killSignal: "SIGKILL",
+    });
+    if (result.error) throw new Error("confirmed-send owner failed");
+    const value = parseConfirmedSendResult(
+      result.stdout,
+      result.stderr,
+      result.status,
+      receiptId,
+    );
+    process.stdout.write(`${JSON.stringify(value)}\n`);
+  } finally {
+    materialized.cleanup();
+  }
 }
 
 const cliArgs = process.argv.slice(2);
@@ -449,6 +787,8 @@ if (import.meta.main) {
       else if (mode === "emit-runtime-environment") {
         requirePrivateCapabilityPipe();
         writeRuntimeEnvironmentToPrivatePipe(readRuntimeEnvironment());
+      } else if (mode === "emit-review-authority-reader-environment") {
+        writeReviewAuthorityReaderEnvironmentToPrivatePipe();
       } else throw new Error("unsupported secure capability operation");
     } else {
       const [mode, separator, ...command] = cliArgs;
@@ -461,6 +801,11 @@ if (import.meta.main) {
         }
         const values = JSON.parse(payload.slice(PRIVATE_PIPE_PREAMBLE.length));
         runService(command, values);
+      } else if (mode === "record-confirmed-send") {
+        if (separator !== "--pre-send-receipt-id" || command.length !== 1) {
+          throw new Error("invalid confirmed-send request");
+        }
+        runConfirmedSend(command[0]);
       } else throw new Error("unsupported secure capability operation");
     }
   } catch (error) {

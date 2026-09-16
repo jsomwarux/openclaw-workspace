@@ -73,6 +73,28 @@ Deployment status (2026-09-15): PR #2 merged as `10ba8982`, PR #3 merged as `bf0
 
 Review-authority runtime configuration adds distinct write/read capabilities without weakening mandatory review/decision. Explicit `install` rotation generates four pairwise-distinct values and atomically stores one versioned set through stable `.runtime/outreach-keychain-helper-v3`; `read-set` returns one captured response for exact JS validation. Never replace a helper path that may own Keychain ACLs: unchanged `.runtime/outreach-keychain-helper` reads only legacy review/decision items, while v3 exclusively owns the set. Compile v3 only when absent; after private validation, atomically publish its source stamp first and helper last so an interrupted first publish remains safely recompilable and cannot reach Keychain installation. An existing v3 probe/source-stamp mismatch fails closed and requires a bumped helper path plus explicit migration. When the set is absent, locked legacy fallback treats authority as absent, Next omits authority variables, Convex deletes all three, and the authority route alone returns 503. `/usr/bin/lockf` re-executes each short-lived validation/read/install/sync operation using an owner-only nonsecret lock file and guarded internal mode; process death releases the lock. Runtime environment JSON travels only over parent-created private file descriptor 3 validated as a FIFO/socket with a different device/inode identity from stdout and stderr. Missing descriptors, regular files, terminals, and stdout/stderr aliases fail before Keychain access. Helper, compile, lock, and Convex operations have bounded timeouts. Never log or pass capability values in arguments. Operational contract: `docs/operations/outreach-capabilities.md`.
 
+The suppression owner remains inactive unless `OUTREACH_SUPPRESSION_OWNER_ENABLED`
+is exactly `true` in Next and Convex. Every HTTP and direct Convex boundary checks
+the flag before capability or database access. Its append-only owner, Git-bound
+review binding, JT-only dual-clear action, and immutable pre-send receipt reuse
+existing least-privilege capabilities; this project creates or rotates no secret.
+The fixed consulting clear call uses only the canonical Python/script/cwd and a
+credential-free environment. Raw channel values and message copy never enter
+suppression bindings or receipts. Contract:
+`docs/mission-control-outreach-suppression-contract.md`.
+
+Cohort-two confirmed-send logging uses the host-owned runtime helper's one exact
+`record-confirmed-send --pre-send-receipt-id <opaque ID>` mode. It is not a generic
+secret-bearing command runner. Before Keychain access, it proves one reviewed
+jt-ops commit/path/blob pair, verifies both the Git object ID and SHA-256, and
+materializes those exact bytes into a new owner-only runtime directory. The mutable
+checkout path and its virtual environment are never executed. Only then does the
+helper expose `OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY` to root-owned
+`/usr/bin/python3 -I -S` running the standalone stdlib-only command; every other
+capability, credential, proxy variable, site package, and `PYTHONPATH` is absent.
+The private script is removed after every attempt. Integration stays blocked until
+the fixed Desktop repository contains the pinned reviewed commit and object.
+
 `npm run build` must not write to the live `.next` directory while the LaunchAgent is running `next dev`; it uses `NEXT_DIST_DIR=.next-build` for isolated verification builds. If a manual build ever causes `Cannot find module './*.js'` from `.next/server/webpack-runtime.js`, recover with `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next`.
 
 After Slice 1, `/work` is the primary task lane. `/tasks` must redirect to `/work`; the old Kanban board lives at `/legacy/tasks`. Do not include legacy routes like `/tasks` as active aliases for primary lanes, or mobile will show legacy UI while highlighting the redesigned lane.

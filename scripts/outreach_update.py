@@ -1,10 +1,96 @@
 #!/usr/bin/env python3
 """outreach_update.py — Update prospect outreach status after JT confirms a send."""
-import argparse, json, re, sys, urllib.request
+import argparse, json, re, subprocess, sys, urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 PIPELINE_PATH = Path.home() / "projects/jt-consulting-pipeline" / "pipeline.md"
 MC_API = "http://localhost:3000/api/tasks"
+RUNTIME_OWNER_ROOT = "/Users/jtsomwaru/.openclaw/workspace/mission-control"
+RUNTIME_OWNER_NODE = "/opt/homebrew/opt/node@22/bin/node"
+RUNTIME_OWNER_SCRIPT = "/Users/jtsomwaru/.openclaw/workspace/mission-control/scripts/outreach-runtime-secrets.mjs"
+RUNTIME_OWNER_TIMEOUT_SECONDS = 60
+CONFIRMED_SEND_MAX_SKEW_SECONDS = 60
+PRE_SEND_RECEIPT_ID = re.compile(r"pre_send_[0-9a-f]{20}")
+SENT_EVENT_ID = re.compile(r"suppression_event_[0-9a-f]{20}")
+HEX_64 = re.compile(r"[0-9a-f]{64}")
+UTC_SECONDS = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z")
+
+
+class ConfirmedSendError(RuntimeError):
+    """A safe, operator-facing cohort-two confirmation failure."""
+
+
+def record_cohort_two_confirmed_send(pre_send_receipt_id, *, now=None):
+    """Record cohort-two send state using only one opaque immutable receipt ID."""
+    if not isinstance(pre_send_receipt_id, str) or not PRE_SEND_RECEIPT_ID.fullmatch(
+        pre_send_receipt_id
+    ):
+        raise ConfirmedSendError("cohort-two pre-send receipt ID is invalid")
+    command = [
+        RUNTIME_OWNER_NODE,
+        RUNTIME_OWNER_SCRIPT,
+        "record-confirmed-send",
+        "--pre-send-receipt-id",
+        pre_send_receipt_id,
+    ]
+    try:
+        completed = subprocess.run(
+            command,
+            cwd=RUNTIME_OWNER_ROOT,
+            env={"LANG": "C.UTF-8", "LC_ALL": "C.UTF-8", "PYTHONHASHSEED": "0"},
+            text=True,
+            capture_output=True,
+            timeout=RUNTIME_OWNER_TIMEOUT_SECONDS,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise ConfirmedSendError(
+            "cohort-two confirmed-send owner is unavailable"
+        ) from exc
+
+    if completed.returncode != 0 or completed.stderr or completed.stdout.count("\n") != 1:
+        raise ConfirmedSendError(
+            "cohort-two confirmed-send owner rejected the receipt"
+        )
+    try:
+        result = json.loads(completed.stdout)
+    except (json.JSONDecodeError, TypeError) as exc:
+        raise ConfirmedSendError(
+            "cohort-two confirmed-send owner rejected the receipt"
+        ) from exc
+    expected = {
+        "status", "preSendReceiptId", "sentEventId", "ownerRevision", "observedAt"
+    }
+    observed_at = result.get("observedAt") if isinstance(result, dict) else None
+    if (
+        not isinstance(result, dict)
+        or set(result) != expected
+        or result.get("status") != "RECORDED"
+        or result.get("preSendReceiptId") != pre_send_receipt_id
+        or not isinstance(result.get("sentEventId"), str)
+        or not SENT_EVENT_ID.fullmatch(result["sentEventId"])
+        or not isinstance(result.get("ownerRevision"), str)
+        or not HEX_64.fullmatch(result["ownerRevision"])
+        or not isinstance(observed_at, str)
+        or not UTC_SECONDS.fullmatch(observed_at)
+    ):
+        raise ConfirmedSendError(
+            "cohort-two confirmed-send owner rejected the receipt"
+        )
+    try:
+        observed = datetime.strptime(observed_at, "%Y-%m-%dT%H:%M:%SZ").replace(
+            tzinfo=timezone.utc
+        )
+    except ValueError as exc:
+        raise ConfirmedSendError(
+            "cohort-two confirmed-send owner rejected the receipt"
+        ) from exc
+    current = now if now is not None else datetime.now(timezone.utc)
+    if current.tzinfo is None or abs((current - observed).total_seconds()) > CONFIRMED_SEND_MAX_SKEW_SECONDS:
+        raise ConfirmedSendError(
+            "cohort-two confirmed-send owner rejected the receipt"
+        )
+    return result
 
 def load_outreach_draft(slug):
     p = Path.home() / f"projects/jt-consulting-pipeline/clients/{slug}/outreach-draft.md"
@@ -130,11 +216,29 @@ def create_followup_task(slug, company, message):
     except Exception as e:
         print(f"WARNING: follow-up task failed: {e}")
 
-if __name__ == "__main__":
-    p = argparse.ArgumentParser()
+class StoreReceiptOnce(argparse.Action):
+    def __call__(self, parser, namespace, values, option_string=None):
+        if getattr(namespace, self.dest, None) is not None:
+            raise argparse.ArgumentError(self, "may only be provided once")
+        setattr(namespace, self.dest, values)
+
+
+def build_parser():
+    p = argparse.ArgumentParser(allow_abbrev=False)
     p.add_argument("--slug", required=True); p.add_argument("--company", required=True)
     p.add_argument("--message", required=True); p.add_argument("--channel", required=True); p.add_argument("--date", required=True)
-    a = p.parse_args()
+    p.add_argument("--cohort-two-pre-send-receipt-id", action=StoreReceiptOnce)
+    return p
+
+
+def main(argv=None):
+    a = build_parser().parse_args(argv)
+    if a.cohort_two_pre_send_receipt_id is not None:
+        try:
+            record_cohort_two_confirmed_send(a.cohort_two_pre_send_receipt_id)
+        except ConfirmedSendError:
+            print("ERROR: cohort-two confirmed-send failed", file=sys.stderr)
+            return 1
     print(f"\n📤 Update: {a.company} — {a.message} via {a.channel} on {a.date}")
     print("="*60)
     try:
@@ -142,8 +246,14 @@ if __name__ == "__main__":
         update_outreach_draft(pp, c, a.message, a.channel, a.date)
         print(f"✅ outreach-draft.md updated")
     except FileNotFoundError as e:
-        print(f"❌ {e}"); sys.exit(1)
+        print(f"❌ {e}")
+        return 1
     update_pipeline_md(a.slug, a.message, a.channel)
     close_mc_task(a.slug, a.company)
     create_followup_task(a.slug, a.company, a.message)
     print("\n✅ Done.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

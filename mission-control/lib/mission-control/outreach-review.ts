@@ -1,4 +1,7 @@
 import type { OutreachDecision } from "./outreach-decision";
+import { validateSuppressionBinding, validateSuppressionBindingHash, type SuppressionBinding } from "./outreach-suppression-binding";
+import { canonicalJson, hashCanonicalJson } from "./canonical-json";
+export { canonicalJson, hashCanonicalJson } from "./canonical-json";
 
 export type GitBinding = {
   repository: string;
@@ -25,6 +28,7 @@ export type OutreachReviewSubmission = {
   reviewAuthorityId: string;
   verifierActorId: string;
   gitBindings: OutreachGitBindings;
+  suppressionBinding?: SuppressionBinding;
 };
 
 export type OutreachReviewSnapshot = OutreachReviewSubmission & {
@@ -62,6 +66,7 @@ const SUBMISSION_FIELDS = [
   "candidateId", "cohortId", "draftSha256", "subject", "body", "verifierReport",
   "reviewAuthorityId", "verifierActorId", "gitBindings",
 ] as const;
+const SUBMISSION_FIELDS_WITH_SUPPRESSION = [...SUBMISSION_FIELDS, "suppressionBinding"] as const;
 
 export function validateOutreachReviewKey(candidateId: unknown, cohortId: unknown): asserts candidateId is string {
   if (typeof candidateId !== "string" || !ID_PATTERN.test(candidateId) || typeof cohortId !== "string" || !ID_PATTERN.test(cohortId)) {
@@ -111,7 +116,7 @@ function exactKeys(value: Record<string, unknown>, expected: readonly string[]):
 export function validateOutreachReviewSubmission(value: unknown): asserts value is OutreachReviewSubmission {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new OutreachReviewContractError("invalid_request");
   const input = value as Record<string, unknown>;
-  if (!exactKeys(input, SUBMISSION_FIELDS)) throw new OutreachReviewContractError("invalid_request");
+  if (!exactKeys(input, SUBMISSION_FIELDS) && !exactKeys(input, SUBMISSION_FIELDS_WITH_SUPPRESSION)) throw new OutreachReviewContractError("invalid_request");
   validateOutreachReviewKey(input.candidateId, input.cohortId);
   for (const field of ["reviewAuthorityId", "verifierActorId"] as const) {
     if (typeof input[field] !== "string" || !ID_PATTERN.test(input[field])) throw new OutreachReviewContractError("invalid_request");
@@ -137,46 +142,23 @@ export function validateOutreachReviewSubmission(value: unknown): asserts value 
     if (typeof record.blobSha256 !== "string" || !SHA256_PATTERN.test(record.blobSha256)) throw new OutreachReviewContractError("invalid_request");
     validateGitPath(record.path);
   }
-}
-
-type JsonValue = null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue };
-
-function normalizeCanonical(value: unknown, seen: Set<object>): JsonValue {
-  if (value === null || typeof value === "boolean") return value;
-  if (typeof value === "string") {
-    if (hasLoneSurrogate(value)) throw new OutreachReviewContractError("invalid_request");
-    return value;
+  if (input.suppressionBinding !== undefined) {
+    try {
+      validateSuppressionBinding(input.suppressionBinding, bindings.gate as GitBinding);
+      if (input.suppressionBinding.prospectId !== input.candidateId || !/^review_[a-f0-9]{20}$/.test(String(input.reviewAuthorityId))) throw new Error("binding identity mismatch");
+    }
+    catch { throw new OutreachReviewContractError("invalid_request"); }
   }
-  if (typeof value === "number") {
-    if (!Number.isFinite(value)) throw new OutreachReviewContractError("invalid_request");
-    return value;
-  }
-  if (typeof value !== "object") throw new OutreachReviewContractError("invalid_request");
-  if (seen.has(value)) throw new OutreachReviewContractError("invalid_request");
-  seen.add(value);
-  let normalized: JsonValue;
-  if (Array.isArray(value)) {
-    normalized = value.map((item) => normalizeCanonical(item, seen));
-  } else {
-    const record = value as Record<string, unknown>;
-    normalized = Object.fromEntries(Object.keys(record).sort().map((key) => [key, normalizeCanonical(record[key], seen)]));
-  }
-  seen.delete(value);
-  return normalized;
-}
-
-export function canonicalJson(value: unknown): string {
-  return JSON.stringify(normalizeCanonical(value, new Set()));
-}
-
-export async function hashCanonicalJson(value: unknown): Promise<string> {
-  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(canonicalJson(value)));
-  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
 export async function hashOutreachReviewSubmission(input: OutreachReviewSubmission): Promise<string> {
   validateOutreachReviewSubmission(input);
-  return hashCanonicalJson({ domain: "mission-control/outreach-review-snapshot", version: 1, snapshot: input });
+  if (input.suppressionBinding) {
+    try { await validateSuppressionBindingHash(input.suppressionBinding, input.gitBindings.gate); }
+    catch { throw new OutreachReviewContractError("invalid_request"); }
+  }
+  try { return await hashCanonicalJson({ domain: "mission-control/outreach-review-snapshot", version: 1, snapshot: input }); }
+  catch { throw new OutreachReviewContractError("invalid_request"); }
 }
 
 function snapshotSubmission(snapshot: OutreachReviewSnapshot): OutreachReviewSubmission {
@@ -190,6 +172,7 @@ function snapshotSubmission(snapshot: OutreachReviewSnapshot): OutreachReviewSub
     reviewAuthorityId: snapshot.reviewAuthorityId,
     verifierActorId: snapshot.verifierActorId,
     gitBindings: snapshot.gitBindings,
+    ...(snapshot.suppressionBinding ? { suppressionBinding: snapshot.suppressionBinding } : {}),
   };
 }
 

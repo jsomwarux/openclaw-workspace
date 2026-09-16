@@ -2,7 +2,7 @@ import { v } from "convex/values";
 import { mutation, query, internalMutation } from "./_generated/server";
 import type { Doc } from "./_generated/dataModel";
 import type { MutationCtx, QueryCtx } from "./_generated/server";
-import { gitBinding, outreachDecisionValue, taskStatus, waitingOn, workstream } from "./schema";
+import { gitBinding, outreachDecisionValue, suppressionBinding, taskStatus, waitingOn, workstream } from "./schema";
 import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 import { resolveTaskCreateOnly } from "../lib/mission-control/task-create-only";
 import { assertOutreachTaskMutable, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
@@ -25,6 +25,20 @@ import {
   validateOutreachReviewAuthorityActorId,
   type OutreachReviewAuthority,
 } from "../lib/mission-control/outreach-review-authority";
+import {
+  SUPPRESSION_NOT_CONFIGURED,
+  hashSuppressionOwnerRevision,
+  resolveMissionControlSuppressionAdmission,
+  resolveSuppressionQuery,
+  type SuppressionEvent,
+} from "../lib/mission-control/outreach-suppression";
+import {
+  resolvePreSendReceiptAdmission,
+  resolvePreSendReceiptLookup,
+  hashOutreachDecisionForPreSend,
+  type PreSendReceipt,
+} from "../lib/mission-control/outreach-pre-send-receipt";
+import { verifySuppressionAdmissionAttestation } from "../lib/mission-control/outreach-suppression-attestation";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
 const NIGHTLY_SOURCE = "nightly-validation-controller";
@@ -32,6 +46,24 @@ const NIGHTLY_PROMOTION_THRESHOLD = 30;
 const NIGHTLY_FRESHNESS_MS = 24 * 60 * 60 * 1000;
 
 type OutreachAuthorityCapabilityKind = "write" | "read";
+type SuppressionCapabilityKind = "write" | "read" | "receipt-write";
+
+async function assertSuppressionCapability(provided: string | undefined, kind: SuppressionCapabilityKind): Promise<void> {
+  if (process.env.OUTREACH_SUPPRESSION_OWNER_ENABLED !== "true") throw new Error(SUPPRESSION_NOT_CONFIGURED);
+  const configured = [
+    process.env.OUTREACH_DECISION_CAPABILITY,
+    process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
+    process.env.OUTREACH_REVIEW_CAPABILITY,
+    process.env.OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY,
+  ];
+  if (configured.some((value) => !value?.trim())) throw new Error(SUPPRESSION_NOT_CONFIGURED);
+  const values = configured as string[];
+  for (let left = 0; left < values.length; left++) for (let right = left + 1; right < values.length; right++) {
+    if (await secureCapabilityEqual(values[left], values[right])) throw new Error(SUPPRESSION_NOT_CONFIGURED);
+  }
+  const expected = kind === "write" ? values[0] : kind === "read" ? values[1] : values[2];
+  if (!provided?.trim() || !(await secureCapabilityEqual(provided, expected))) throw new OutreachAuthError("server capability required", 401);
+}
 
 async function assertOutreachAuthorityCapability(
   provided: string | undefined,
@@ -59,6 +91,22 @@ function authorityEntropy(): string {
   const bytes = new Uint8Array(20);
   crypto.getRandomValues(bytes);
   return Array.from(bytes, (value) => value.toString(16).padStart(2, "0")).join("");
+}
+
+function suppressionEntropy(): string {
+  const bytes = new Uint8Array(10);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (value) => value.toString(16).padStart(2, "0")).join("");
+}
+
+function suppressionEventFromRow(row: Record<string, unknown>): SuppressionEvent {
+  const { _id: _id, _creationTime: _creationTime, __table: _table, ...event } = row;
+  return event as SuppressionEvent;
+}
+
+function receiptFromRow(row: Record<string, unknown>): PreSendReceipt {
+  const { _id: _id, _creationTime: _creationTime, __table: _table, ...receipt } = row;
+  return receipt as PreSendReceipt;
 }
 
 function storedAuthority(doc: Doc<"outreachReviewAuthorities">): OutreachReviewAuthority {
@@ -415,6 +463,113 @@ export const findOutreachReviewAuthority = query({
   },
 });
 
+export const appendOutreachSuppressionEvent = mutation({
+  args: {
+    schemaVersion: v.literal("outreach-suppression-event-v1"),
+    requestId: v.string(),
+    prospectId: v.string(),
+    organizationFactId: v.string(),
+    channelFingerprint: v.string(),
+    state: v.union(v.literal("sent"), v.literal("clear"), v.literal("manual_hold"), v.literal("replied"), v.literal("opted_out"), v.literal("hard_bounce")),
+    evidenceToken: v.string(),
+    capability: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await assertSuppressionCapability(args.capability, "write");
+    const { capability: _capability, ...submission } = args;
+    const db = ctx.db as any;
+    const rows = (await db.query("outreachSuppressionEvents").collect()).map(suppressionEventFromRow);
+    let resolved;
+    try {
+      resolved = await resolveMissionControlSuppressionAdmission(rows, submission, new Date(Date.now()).toISOString().replace(".000Z", "Z"), suppressionEntropy());
+    } catch (error) {
+      if (error instanceof Error && error.message === "conflict") throw new Error("OUTREACH_SUPPRESSION_CONFLICT");
+      throw new Error("OUTREACH_SUPPRESSION_INVALID");
+    }
+    if (resolved.operation === "existing") return { created: false, event: resolved.event, ownerRevision: await hashSuppressionOwnerRevision("mission-control", rows) };
+    await db.insert("outreachSuppressionEvents", resolved.event);
+    return { created: true, event: resolved.event, ownerRevision: await hashSuppressionOwnerRevision("mission-control", [...rows, resolved.event]) };
+  },
+});
+
+export const findOutreachSuppressionState = query({
+  args: { prospectId: v.string(), organizationFactId: v.string(), channelFingerprint: v.string(), capability: v.string() },
+  handler: async (ctx, args) => {
+    await assertSuppressionCapability(args.capability, "read");
+    const { capability: _capability, ...tuple } = args;
+    const db = ctx.db as any;
+    const rows = (await db.query("outreachSuppressionEvents").collect()).map(suppressionEventFromRow);
+    try { return await resolveSuppressionQuery("mission-control", rows, tuple, new Date(Date.now()).toISOString().replace(".000Z", "Z")); }
+    catch { throw new Error("OUTREACH_SUPPRESSION_CORRUPT"); }
+  },
+});
+
+export const createOutreachPreSendReceipt = mutation({
+  args: {
+    schemaVersion: v.literal("outreach-pre-send-receipt-v1"), requestId: v.string(), suppressionBinding,
+    missionControlEventId: v.string(), missionControlOwnerRevision: v.string(), missionControlObservedAt: v.string(),
+    consultingEventId: v.string(), consultingOwnerRevision: v.string(), consultingObservedAt: v.string(),
+    reviewId: v.string(), snapshotSha256: v.string(), draftSha256: v.string(), decisionSha256: v.string(),
+    messageStage: v.union(v.literal("M1"), v.literal("M2"), v.literal("M3")), capability: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await assertSuppressionCapability(args.capability, "receipt-write");
+    const { capability: _capability, ...submission } = args;
+    const db = ctx.db as any;
+    const reviewTasks = (await ctx.db.query("tasks").collect()).filter((task) => task.outreachReview?.reviewAuthorityId === submission.reviewId);
+    if (reviewTasks.length !== 1) throw new Error("OUTREACH_PRE_SEND_RECEIPT_INVALID");
+    const reviewTask = reviewTasks[0];
+    try { await assertAuthoritativeOutreachSnapshot(ctx, reviewTask); } catch { throw new Error("OUTREACH_PRE_SEND_RECEIPT_INVALID"); }
+    if (
+      reviewTask.status !== "done"
+      || reviewTask.outreachDecision?.decision !== "approve"
+      || reviewTask.outreachReview?.snapshotSha256 !== submission.snapshotSha256
+      || reviewTask.outreachReview?.draftSha256 !== submission.draftSha256
+      || reviewTask.outreachReview?.suppressionBinding?.bindingHash !== submission.suppressionBinding.bindingHash
+      || await hashOutreachDecisionForPreSend(reviewTask.outreachDecision) !== submission.decisionSha256
+    ) throw new Error("OUTREACH_PRE_SEND_RECEIPT_INVALID");
+    const rows = (await db.query("outreachPreSendReceipts").collect()).map(receiptFromRow);
+    let resolved;
+    try { resolved = await resolvePreSendReceiptAdmission(rows, submission, Date.now(), suppressionEntropy()); }
+    catch (error) {
+      if (error instanceof Error && error.message === "conflict") throw new Error("OUTREACH_PRE_SEND_RECEIPT_CONFLICT");
+      throw new Error("OUTREACH_PRE_SEND_RECEIPT_INVALID");
+    }
+    if (resolved.operation === "existing") return { created: false, receipt: resolved.receipt };
+    await db.insert("outreachPreSendReceipts", resolved.receipt);
+    return { created: true, receipt: resolved.receipt };
+  },
+});
+
+export const findOutreachPreSendReceipt = query({
+  args: { preSendReceiptId: v.string(), capability: v.string() },
+  handler: async (ctx, args) => {
+    await assertSuppressionCapability(args.capability, "read");
+    const db = ctx.db as any;
+    const rows = (await db.query("outreachPreSendReceipts").withIndex("by_receipt_id", (q: any) => q.eq("preSendReceiptId", args.preSendReceiptId)).collect()).map(receiptFromRow);
+    try {
+      const receipt = await resolvePreSendReceiptLookup(rows, args.preSendReceiptId);
+      return receipt ? { found: true as const, receipt } : { found: false as const };
+    } catch { throw new Error("OUTREACH_PRE_SEND_RECEIPT_CORRUPT"); }
+  },
+});
+
+export const findOutreachSuppressionReview = query({
+  args: { reviewId: v.string(), capability: v.string() },
+  handler: async (ctx, args) => {
+    await assertSuppressionCapability(args.capability, "write");
+    const tasks = await ctx.db.query("tasks").collect();
+    const matches = tasks.filter((task) => task.outreachReview?.reviewAuthorityId === args.reviewId);
+    if (matches.length !== 1 || !matches[0].outreachReview?.suppressionBinding) throw new Error("OUTREACH_SUPPRESSION_REVIEW_NOT_FOUND");
+    const task = matches[0];
+    await assertAuthoritativeOutreachSnapshot(ctx, task);
+    const snapshot = task.outreachReview!;
+    const decision = resolveOutreachLookup(task, task.candidateId!, task.draftSha256!, snapshot.snapshotSha256);
+    if (!decision.authorized || decision.state !== "approved") throw new Error("OUTREACH_SUPPRESSION_REVIEW_NOT_FOUND");
+    return { suppressionBinding: snapshot.suppressionBinding };
+  },
+});
+
 export const createOutreachReview = mutation({
   args: {
     candidateId: v.string(),
@@ -432,15 +587,25 @@ export const createOutreachReview = mutation({
       draft: gitBinding,
       verifier: gitBinding,
     }),
+    suppressionBinding: v.optional(suppressionBinding),
+    suppressionAttestation: v.optional(v.string()),
     capability: v.string(),
   },
   handler: async (ctx, args) => {
-    const { capability, ...submission } = args;
-    await assertDistinctServerCapability(
-      capability,
-      process.env.OUTREACH_REVIEW_CAPABILITY,
-      process.env.OUTREACH_DECISION_CAPABILITY,
-    );
+    const { capability, suppressionAttestation, ...submission } = args;
+    if (submission.suppressionBinding) {
+      await assertSuppressionCapability(capability, "receipt-write");
+      if (!(await verifySuppressionAdmissionAttestation(
+        submission, suppressionAttestation, process.env.OUTREACH_DECISION_CAPABILITY,
+      ))) throw new Error("OUTREACH_REVIEW_INVALID");
+    } else {
+      await assertDistinctServerCapability(
+        capability,
+        process.env.OUTREACH_REVIEW_CAPABILITY,
+        process.env.OUTREACH_DECISION_CAPABILITY,
+      );
+      if (suppressionAttestation !== undefined) throw new Error("OUTREACH_REVIEW_INVALID");
+    }
     const existing = await ctx.db
       .query("tasks")
       .withIndex("by_outreach_candidate_cohort", (q) => q.eq("candidateId", submission.candidateId).eq("cohortId", submission.cohortId))
