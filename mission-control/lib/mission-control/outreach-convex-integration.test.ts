@@ -478,18 +478,30 @@ describe("registered Convex outreach review authority handlers", () => {
       }
     }
 
-    for (const [name, collision] of [
+    for (const [name, invalid] of [
+      ["OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY", undefined],
+      ["OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY", "   "],
+      ["OUTREACH_REVIEW_CAPABILITY", ""],
+      ["OUTREACH_DECISION_CAPABILITY", undefined],
       ["OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY", "authority-write-secret"],
       ["OUTREACH_REVIEW_CAPABILITY", "authority-write-secret"],
       ["OUTREACH_DECISION_CAPABILITY", "authority-read-secret"],
     ] as const) {
       const original = process.env[name];
-      process.env[name] = collision;
-      const db = new MemoryDb();
-      expect(await rejectedMessage(() => createAuthorityHandler(ctx(db), authoritySubmission())))
-        .toContain("capability configuration is invalid");
-      expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 });
-      process.env[name] = original;
+      if (invalid === undefined) delete process.env[name]; else process.env[name] = invalid;
+      try {
+        for (const [call, capability] of [
+          [calls[0], "authority-write-secret"],
+          [calls[1], "authority-read-secret"],
+        ] as const) {
+          const db = new MemoryDb();
+          expect(await rejectedMessage(() => call(db, capability)))
+            .toContain("OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED");
+          expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 });
+        }
+      } finally {
+        if (original === undefined) delete process.env[name]; else process.env[name] = original;
+      }
     }
   });
 });

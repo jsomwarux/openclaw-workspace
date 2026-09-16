@@ -39,13 +39,13 @@ async function assertOutreachAuthorityCapability(
   configured: readonly [string | undefined, string | undefined, string | undefined, string | undefined],
 ): Promise<void> {
   if (configured.some((value) => !value?.trim())) {
-    throw new OutreachAuthError("capability configuration is invalid", 503);
+    throw new Error(OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED);
   }
   const values = configured as readonly [string, string, string, string];
   for (let left = 0; left < values.length; left += 1) {
     for (let right = left + 1; right < values.length; right += 1) {
       if (await secureCapabilityEqual(values[left], values[right])) {
-        throw new OutreachAuthError("capability configuration is invalid", 503);
+        throw new Error(OUTREACH_REVIEW_AUTHORITY_NOT_CONFIGURED);
       }
     }
   }
