@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """outreach_update.py — Update prospect outreach status after JT confirms a send."""
 import argparse, json, re, subprocess, sys, urllib.request
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 PIPELINE_PATH = Path.home() / "projects/jt-consulting-pipeline" / "pipeline.md"
 MC_API = "http://localhost:3000/api/tasks"
-JT_OPS_ROOT = "/Users/jtsomwaru/Desktop/jt-ops"
-JT_OPS_PYTHON = "/opt/homebrew/bin/python3.12"
-JT_OPS_SCRIPT = "/Users/jtsomwaru/Desktop/jt-ops/scripts/cohort_two_authority.py"
-JT_OPS_TIMEOUT_SECONDS = 15
+RUNTIME_OWNER_ROOT = "/Users/jtsomwaru/.openclaw/workspace/mission-control"
+RUNTIME_OWNER_NODE = "/opt/homebrew/opt/node@22/bin/node"
+RUNTIME_OWNER_SCRIPT = "/Users/jtsomwaru/.openclaw/workspace/mission-control/scripts/outreach-runtime-secrets.mjs"
+RUNTIME_OWNER_TIMEOUT_SECONDS = 60
+CONFIRMED_SEND_MAX_SKEW_SECONDS = 60
 PRE_SEND_RECEIPT_ID = re.compile(r"pre_send_[0-9a-f]{20}")
 SENT_EVENT_ID = re.compile(r"suppression_event_[0-9a-f]{20}")
 HEX_64 = re.compile(r"[0-9a-f]{64}")
@@ -20,15 +21,15 @@ class ConfirmedSendError(RuntimeError):
     """A safe, operator-facing cohort-two confirmation failure."""
 
 
-def record_cohort_two_confirmed_send(pre_send_receipt_id):
+def record_cohort_two_confirmed_send(pre_send_receipt_id, *, now=None):
     """Record cohort-two send state using only one opaque immutable receipt ID."""
     if not isinstance(pre_send_receipt_id, str) or not PRE_SEND_RECEIPT_ID.fullmatch(
         pre_send_receipt_id
     ):
         raise ConfirmedSendError("cohort-two pre-send receipt ID is invalid")
     command = [
-        JT_OPS_PYTHON,
-        JT_OPS_SCRIPT,
+        RUNTIME_OWNER_NODE,
+        RUNTIME_OWNER_SCRIPT,
         "record-confirmed-send",
         "--pre-send-receipt-id",
         pre_send_receipt_id,
@@ -36,11 +37,11 @@ def record_cohort_two_confirmed_send(pre_send_receipt_id):
     try:
         completed = subprocess.run(
             command,
-            cwd=JT_OPS_ROOT,
+            cwd=RUNTIME_OWNER_ROOT,
             env={"LANG": "C.UTF-8", "LC_ALL": "C.UTF-8", "PYTHONHASHSEED": "0"},
             text=True,
             capture_output=True,
-            timeout=JT_OPS_TIMEOUT_SECONDS,
+            timeout=RUNTIME_OWNER_TIMEOUT_SECONDS,
         )
     except (OSError, subprocess.TimeoutExpired) as exc:
         raise ConfirmedSendError(
@@ -77,11 +78,18 @@ def record_cohort_two_confirmed_send(pre_send_receipt_id):
             "cohort-two confirmed-send owner rejected the receipt"
         )
     try:
-        datetime.strptime(observed_at, "%Y-%m-%dT%H:%M:%SZ")
+        observed = datetime.strptime(observed_at, "%Y-%m-%dT%H:%M:%SZ").replace(
+            tzinfo=timezone.utc
+        )
     except ValueError as exc:
         raise ConfirmedSendError(
             "cohort-two confirmed-send owner rejected the receipt"
         ) from exc
+    current = now if now is not None else datetime.now(timezone.utc)
+    if current.tzinfo is None or abs((current - observed).total_seconds()) > CONFIRMED_SEND_MAX_SKEW_SECONDS:
+        raise ConfirmedSendError(
+            "cohort-two confirmed-send owner rejected the receipt"
+        )
     return result
 
 def load_outreach_draft(slug):
@@ -208,11 +216,18 @@ def create_followup_task(slug, company, message):
     except Exception as e:
         print(f"WARNING: follow-up task failed: {e}")
 
+class StoreReceiptOnce(argparse.Action):
+    def __call__(self, parser, namespace, values, option_string=None):
+        if getattr(namespace, self.dest, None) is not None:
+            raise argparse.ArgumentError(self, "may only be provided once")
+        setattr(namespace, self.dest, values)
+
+
 def build_parser():
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(allow_abbrev=False)
     p.add_argument("--slug", required=True); p.add_argument("--company", required=True)
     p.add_argument("--message", required=True); p.add_argument("--channel", required=True); p.add_argument("--date", required=True)
-    p.add_argument("--cohort-two-pre-send-receipt-id")
+    p.add_argument("--cohort-two-pre-send-receipt-id", action=StoreReceiptOnce)
     return p
 
 

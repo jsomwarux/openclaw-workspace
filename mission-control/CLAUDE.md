@@ -83,6 +83,16 @@ credential-free environment. Raw channel values and message copy never enter
 suppression bindings or receipts. Contract:
 `docs/mission-control-outreach-suppression-contract.md`.
 
+Cohort-two confirmed-send logging uses the host-owned runtime helper's one exact
+`record-confirmed-send --pre-send-receipt-id <opaque ID>` mode. It is not a generic
+secret-bearing command runner. Under the existing lock/private-pipe boundary, the
+helper exposes only `OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY` to the fixed
+`/Users/jtsomwaru/Desktop/jt-ops/.venv/bin/python` command and strips every other
+capability, credential, and proxy variable. Preflight requires that interpreter to
+import `jsonschema` and the fixed jt-ops script to exist before Keychain access, so
+integration stays blocked until the Desktop checkout is fast-forwarded to the
+reviewed suppression command.
+
 `npm run build` must not write to the live `.next` directory while the LaunchAgent is running `next dev`; it uses `NEXT_DIST_DIR=.next-build` for isolated verification builds. If a manual build ever causes `Cannot find module './*.js'` from `.next/server/webpack-runtime.js`, recover with `launchctl kickstart -k gui/$(id -u)/com.openclaw.mission-control-next`.
 
 After Slice 1, `/work` is the primary task lane. `/tasks` must redirect to `/work`; the old Kanban board lives at `/legacy/tasks`. Do not include legacy routes like `/tasks` as active aliases for primary lanes, or mobile will show legacy UI while highlighting the redesigned lane.

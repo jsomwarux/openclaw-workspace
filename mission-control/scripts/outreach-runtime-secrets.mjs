@@ -3,8 +3,10 @@
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
+  accessSync,
   chmodSync,
   closeSync,
+  constants as fsConstants,
   existsSync,
   fstatSync,
   mkdirSync,
@@ -13,6 +15,7 @@ import {
   readFileSync,
   renameSync,
   rmSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
@@ -29,7 +32,103 @@ const CONVEX_SYNC_TIMEOUT_MS = 10_000;
 const LOCKED_FLAG = "--outreach-lock-held";
 const LOCKED_ENV = "OUTREACH_LOCKF_INTERNAL";
 const PRIVATE_PIPE_PREAMBLE = "outreach-runtime-environment-v1\n";
+const AUTHORITY_READER_PIPE_PREAMBLE = "outreach-review-authority-reader-v1\n";
+const JT_OPS_ROOT = "/Users/jtsomwaru/Desktop/jt-ops";
+const JT_OPS_PYTHON = "/Users/jtsomwaru/Desktop/jt-ops/.venv/bin/python";
+const JT_OPS_SCRIPT = "/Users/jtsomwaru/Desktop/jt-ops/scripts/cohort_two_authority.py";
+const CONFIRMED_SEND_TIMEOUT_MS = 20_000;
+const PREFLIGHT_TIMEOUT_MS = 5_000;
+const PRE_SEND_RECEIPT_ID = /^pre_send_[0-9a-f]{20}$/;
+const SENT_EVENT_ID = /^suppression_event_[0-9a-f]{20}$/;
+const HEX_64 = /^[0-9a-f]{64}$/;
+const UTC_SECONDS = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
 export const AUTHORITY_VERIFIER_ACTOR_ID = "openclaw:review-verifier-v1";
+
+export function buildReviewAuthorityReaderEnvironment(authorityRead) {
+  const value = typeof authorityRead === "string" ? authorityRead.trim() : "";
+  if (!value) throw new Error("review-authority reader is unavailable");
+  return {
+    LANG: "C.UTF-8",
+    LC_ALL: "C.UTF-8",
+    PYTHONHASHSEED: "0",
+    OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY: value,
+  };
+}
+
+function validatePreSendReceiptId(value) {
+  if (typeof value !== "string" || !PRE_SEND_RECEIPT_ID.test(value)) {
+    throw new Error("invalid confirmed-send request");
+  }
+  return value;
+}
+
+export function buildConfirmedSendRequest(preSendReceiptId, authorityRead) {
+  const receiptId = validatePreSendReceiptId(preSendReceiptId);
+  return {
+    file: JT_OPS_PYTHON,
+    args: [
+      JT_OPS_SCRIPT,
+      "record-confirmed-send",
+      "--pre-send-receipt-id",
+      receiptId,
+    ],
+    cwd: JT_OPS_ROOT,
+    env: buildReviewAuthorityReaderEnvironment(authorityRead),
+  };
+}
+
+export function validateConfirmedSendPreflight({
+  pythonPath = JT_OPS_PYTHON,
+  scriptPath = JT_OPS_SCRIPT,
+  cwd = JT_OPS_ROOT,
+  spawn = spawnSync,
+} = {}) {
+  try {
+    if (!statSync(cwd).isDirectory() || !statSync(scriptPath).isFile()) {
+      throw new Error("invalid fixed path");
+    }
+    accessSync(pythonPath, fsConstants.X_OK);
+    accessSync(scriptPath, fsConstants.R_OK);
+    const result = spawn(pythonPath, ["-c", "import jsonschema"], {
+      cwd,
+      env: { LANG: "C.UTF-8", LC_ALL: "C.UTF-8", PYTHONHASHSEED: "0" },
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+      timeout: PREFLIGHT_TIMEOUT_MS,
+      killSignal: "SIGKILL",
+    });
+    if (result.error || result.status !== 0 || result.stdout || result.stderr) {
+      throw new Error("invalid fixed runtime");
+    }
+  } catch {
+    throw new Error("fixed jt-ops command is unavailable");
+  }
+}
+
+export function parseConfirmedSendResult(stdout, stderr, status, preSendReceiptId) {
+  try {
+    if (status !== 0 || stderr || typeof stdout !== "string" || stdout.split("\n").length !== 2 || !stdout.endsWith("\n")) {
+      throw new Error("invalid child result");
+    }
+    const value = JSON.parse(stdout);
+    const keys = ["observedAt", "ownerRevision", "preSendReceiptId", "sentEventId", "status"];
+    if (
+      !value || typeof value !== "object" || Array.isArray(value)
+      || Object.keys(value).sort().some((key, index) => key !== keys[index])
+      || Object.keys(value).length !== keys.length
+      || value.status !== "RECORDED"
+      || value.preSendReceiptId !== preSendReceiptId
+      || typeof value.sentEventId !== "string" || !SENT_EVENT_ID.test(value.sentEventId)
+      || typeof value.ownerRevision !== "string" || !HEX_64.test(value.ownerRevision)
+      || typeof value.observedAt !== "string" || !UTC_SECONDS.test(value.observedAt)
+    ) {
+      throw new Error("invalid child result");
+    }
+    return value;
+  } catch {
+    throw new Error("confirmed-send owner failed");
+  }
+}
 
 export function buildKeychainHelperRequest(
   helperPath = V3_KEYCHAIN_HELPER,
@@ -335,6 +434,12 @@ function readRuntimeEnvironment() {
   );
 }
 
+function readReviewAuthorityReaderEnvironment() {
+  ensureV3KeychainHelper();
+  const values = readCapabilitySetFromHelpers(V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER);
+  return buildReviewAuthorityReaderEnvironment(values.authorityRead);
+}
+
 export function installCapabilitySet({
   ensureHelper = ensureV3KeychainHelper,
   resolveLogin = currentTailscaleLogin,
@@ -427,10 +532,10 @@ export function validatePrivateCapabilityPipe(descriptor = 3) {
   }
 }
 
-function requirePrivateCapabilityPipe(descriptor = 3) {
+function requirePrivateCapabilityPipe(descriptor = 3, preamble = PRIVATE_PIPE_PREAMBLE) {
   validatePrivateCapabilityPipe(descriptor);
   try {
-    writeFileSync(descriptor, PRIVATE_PIPE_PREAMBLE);
+    writeFileSync(descriptor, preamble);
   } catch {
     throw new Error("private capability pipe required");
   }
@@ -438,6 +543,64 @@ function requirePrivateCapabilityPipe(descriptor = 3) {
 
 function writeRuntimeEnvironmentToPrivatePipe(values, descriptor = 3) {
   writeFileSync(descriptor, JSON.stringify(values));
+}
+
+function writeReviewAuthorityReaderEnvironmentToPrivatePipe(descriptor = 3) {
+  requirePrivateCapabilityPipe(descriptor, AUTHORITY_READER_PIPE_PREAMBLE);
+  writeFileSync(descriptor, JSON.stringify(readReviewAuthorityReaderEnvironment()));
+}
+
+function parseReviewAuthorityReaderPayload(payload) {
+  try {
+    if (!payload?.startsWith(AUTHORITY_READER_PIPE_PREAMBLE)) {
+      throw new Error("invalid private payload");
+    }
+    const value = JSON.parse(payload.slice(AUTHORITY_READER_PIPE_PREAMBLE.length));
+    const expected = [
+      "LANG", "LC_ALL", "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY", "PYTHONHASHSEED",
+    ];
+    if (
+      !value || typeof value !== "object" || Array.isArray(value)
+      || Object.keys(value).sort().some((key, index) => key !== expected[index])
+      || Object.keys(value).length !== expected.length
+      || typeof value.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY !== "string"
+    ) {
+      throw new Error("invalid private payload");
+    }
+    return buildReviewAuthorityReaderEnvironment(
+      value.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
+    );
+  } catch {
+    throw new Error("secure capability operation failed");
+  }
+}
+
+function runConfirmedSend(preSendReceiptId) {
+  const receiptId = validatePreSendReceiptId(preSendReceiptId);
+  validateConfirmedSendPreflight();
+  const payload = runLockedReexec(["emit-review-authority-reader-environment"], true);
+  const environment = parseReviewAuthorityReaderPayload(payload);
+  const request = buildConfirmedSendRequest(
+    receiptId,
+    environment.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
+  );
+  const result = spawnSync(request.file, request.args, {
+    cwd: request.cwd,
+    env: request.env,
+    encoding: "utf8",
+    maxBuffer: 1024 * 1024,
+    stdio: ["ignore", "pipe", "pipe"],
+    timeout: CONFIRMED_SEND_TIMEOUT_MS,
+    killSignal: "SIGKILL",
+  });
+  if (result.error) throw new Error("confirmed-send owner failed");
+  const value = parseConfirmedSendResult(
+    result.stdout,
+    result.stderr,
+    result.status,
+    receiptId,
+  );
+  process.stdout.write(`${JSON.stringify(value)}\n`);
 }
 
 const cliArgs = process.argv.slice(2);
@@ -451,6 +614,8 @@ if (import.meta.main) {
       else if (mode === "emit-runtime-environment") {
         requirePrivateCapabilityPipe();
         writeRuntimeEnvironmentToPrivatePipe(readRuntimeEnvironment());
+      } else if (mode === "emit-review-authority-reader-environment") {
+        writeReviewAuthorityReaderEnvironmentToPrivatePipe();
       } else throw new Error("unsupported secure capability operation");
     } else {
       const [mode, separator, ...command] = cliArgs;
@@ -463,6 +628,11 @@ if (import.meta.main) {
         }
         const values = JSON.parse(payload.slice(PRIVATE_PIPE_PREAMBLE.length));
         runService(command, values);
+      } else if (mode === "record-confirmed-send") {
+        if (separator !== "--pre-send-receipt-id" || command.length !== 1) {
+          throw new Error("invalid confirmed-send request");
+        }
+        runConfirmedSend(command[0]);
       } else throw new Error("unsupported secure capability operation");
     }
   } catch (error) {

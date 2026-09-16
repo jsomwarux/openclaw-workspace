@@ -4,6 +4,7 @@ import io
 import json
 import subprocess
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest import mock
 
@@ -16,6 +17,7 @@ SPEC.loader.exec_module(outreach)
 
 
 RECEIPT_ID = "pre_send_" + "a" * 20
+NOW = datetime(2026, 9, 16, 12, 35, 30, tzinfo=timezone.utc)
 OWNER_RESULT = {
     "status": "RECORDED",
     "preSendReceiptId": RECEIPT_ID,
@@ -35,22 +37,22 @@ class ConfirmedSendBoundaryTests(unittest.TestCase):
 
     def test_invokes_only_fixed_jt_ops_command_with_opaque_receipt_id(self):
         with mock.patch.object(outreach.subprocess, "run", return_value=self.completed()) as run:
-            result = outreach.record_cohort_two_confirmed_send(RECEIPT_ID)
+            result = outreach.record_cohort_two_confirmed_send(RECEIPT_ID, now=NOW)
 
         self.assertEqual(result, OWNER_RESULT)
         run.assert_called_once_with(
             [
-                outreach.JT_OPS_PYTHON,
-                outreach.JT_OPS_SCRIPT,
+                outreach.RUNTIME_OWNER_NODE,
+                outreach.RUNTIME_OWNER_SCRIPT,
                 "record-confirmed-send",
                 "--pre-send-receipt-id",
                 RECEIPT_ID,
             ],
-            cwd=outreach.JT_OPS_ROOT,
+            cwd=outreach.RUNTIME_OWNER_ROOT,
             env={"LANG": "C.UTF-8", "LC_ALL": "C.UTF-8", "PYTHONHASHSEED": "0"},
             text=True,
             capture_output=True,
-            timeout=outreach.JT_OPS_TIMEOUT_SECONDS,
+            timeout=outreach.RUNTIME_OWNER_TIMEOUT_SECONDS,
         )
 
     def test_rejects_paths_tuples_fingerprints_and_noncanonical_ids_before_spawn(self):
@@ -67,7 +69,7 @@ class ConfirmedSendBoundaryTests(unittest.TestCase):
                 with self.subTest(value=value), self.assertRaisesRegex(
                     outreach.ConfirmedSendError, "invalid"
                 ):
-                    outreach.record_cohort_two_confirmed_send(value)
+                    outreach.record_cohort_two_confirmed_send(value, now=NOW)
         run.assert_not_called()
 
     def test_owner_failure_modes_are_generic_and_never_claim_success(self):
@@ -83,12 +85,15 @@ class ConfirmedSendBoundaryTests(unittest.TestCase):
             self.completed(stdout=json.dumps({**OWNER_RESULT, "preSendReceiptId": "pre_send_" + "d" * 20}) + "\n"),
             self.completed(stdout=json.dumps({**OWNER_RESULT, "ownerRevision": "bad"}) + "\n"),
             self.completed(stdout=json.dumps({**OWNER_RESULT, "observedAt": "2026-99-99T99:99:99Z"}) + "\n"),
+            self.completed(stdout=json.dumps({**OWNER_RESULT, "observedAt": "2026-09-16T12:34:29Z"}) + "\n"),
+            self.completed(stdout=json.dumps({**OWNER_RESULT, "observedAt": "2026-09-16T12:36:31Z"}) + "\n"),
+            self.completed(stdout=json.dumps({**OWNER_RESULT, "observedAt": "9999-12-31T23:59:59Z"}) + "\n"),
         )
         for completed in failures:
             with self.subTest(completed=completed), mock.patch.object(
                 outreach.subprocess, "run", return_value=completed
             ), self.assertRaises(outreach.ConfirmedSendError) as raised:
-                outreach.record_cohort_two_confirmed_send(RECEIPT_ID)
+                outreach.record_cohort_two_confirmed_send(RECEIPT_ID, now=NOW)
             self.assertEqual(str(raised.exception), "cohort-two confirmed-send owner rejected the receipt")
             self.assertNotIn(secret, str(raised.exception))
 
@@ -99,7 +104,7 @@ class ConfirmedSendBoundaryTests(unittest.TestCase):
             with self.subTest(failure=type(failure).__name__), mock.patch.object(
                 outreach.subprocess, "run", side_effect=failure
             ), self.assertRaises(outreach.ConfirmedSendError) as raised:
-                outreach.record_cohort_two_confirmed_send(RECEIPT_ID)
+                outreach.record_cohort_two_confirmed_send(RECEIPT_ID, now=NOW)
             self.assertEqual(str(raised.exception), "cohort-two confirmed-send owner is unavailable")
             self.assertNotIn(secret, str(raised.exception))
 
@@ -175,6 +180,22 @@ class ConfirmedSendBoundaryTests(unittest.TestCase):
             "--receipt-path", "--pre-send-receipt-path", "--prospect-id",
             "--organization-fact-id", "--channel-fingerprint",
         })
+
+    def test_parser_disables_abbreviations_and_rejects_duplicate_receipt_option(self):
+        common = [
+            "--slug", "example", "--company", "Example", "--message", "M1",
+            "--channel", "Email", "--date", "2026-09-16",
+        ]
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            outreach.build_parser().parse_args([
+                *common, "--cohort-two-pre-send-receipt", RECEIPT_ID,
+            ])
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            outreach.build_parser().parse_args([
+                *common,
+                "--cohort-two-pre-send-receipt-id", RECEIPT_ID,
+                "--cohort-two-pre-send-receipt-id", RECEIPT_ID,
+            ])
 
 
 if __name__ == "__main__":

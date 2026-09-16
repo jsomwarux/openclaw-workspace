@@ -16,7 +16,9 @@ import {
   AUTHORITY_VERIFIER_ACTOR_ID,
   buildKeychainHelperRequest,
   buildInstallerRequest,
+  buildConfirmedSendRequest,
   buildConvexEnvironmentChanges,
+  buildReviewAuthorityReaderEnvironment,
   buildRuntimeEnvironment,
   buildServiceProcessEnvironment,
   buildLockedReexecRequest,
@@ -24,8 +26,10 @@ import {
   installCapabilitySet,
   installCapabilitySetFromHelper,
   parseCapabilitySetRead,
+  parseConfirmedSendResult,
   readCapabilitySetFromHelpers,
   resolveTailscaleLogin,
+  validateConfirmedSendPreflight,
 } from "../../scripts/outreach-runtime-secrets.mjs";
 
 function captureError(run: () => unknown): string | undefined {
@@ -630,5 +634,139 @@ describe("outreach runtime secret handling", () => {
     );
     expect(result.status).toBe(2);
     expect(result.stderr).toContain("unsupported secure capability operation");
+  });
+
+  test("confirmed-send child receives only the authority-read capability and fixed command", () => {
+    const receiptId = `pre_send_${"a".repeat(20)}`;
+    const environment = buildReviewAuthorityReaderEnvironment("authority-read-only");
+    expect(environment).toEqual({
+      LANG: "C.UTF-8",
+      LC_ALL: "C.UTF-8",
+      PYTHONHASHSEED: "0",
+      OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY: "authority-read-only",
+    });
+    const request = buildConfirmedSendRequest(receiptId, "authority-read-only");
+    expect(request).toEqual({
+      file: "/Users/jtsomwaru/Desktop/jt-ops/.venv/bin/python",
+      args: [
+        "/Users/jtsomwaru/Desktop/jt-ops/scripts/cohort_two_authority.py",
+        "record-confirmed-send",
+        "--pre-send-receipt-id",
+        receiptId,
+      ],
+      cwd: "/Users/jtsomwaru/Desktop/jt-ops",
+      env: environment,
+    });
+    expect(JSON.stringify(request)).not.toContain("OUTREACH_REVIEW_CAPABILITY");
+    expect(JSON.stringify(request)).not.toContain("OUTREACH_DECISION_CAPABILITY");
+    expect(JSON.stringify(request)).not.toContain("OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY");
+    expect(JSON.stringify(request)).not.toContain("HTTP_PROXY");
+  });
+
+  test("confirmed-send preflight requires a readable script and executable venv Python", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-confirmed-send-preflight-"));
+    const python = join(directory, "python");
+    const script = join(directory, "cohort_two_authority.py");
+    try {
+      executable(python, "#!/bin/sh\nexit 0\n");
+      writeFileSync(script, "print('fixture')\n", { mode: 0o600 });
+      expect(validateConfirmedSendPreflight({ pythonPath: python, scriptPath: script }))
+        .toBe(undefined);
+      expect(captureError(() => validateConfirmedSendPreflight({
+        pythonPath: join(directory, "missing-python"), scriptPath: script,
+      }))).toBe("fixed jt-ops command is unavailable");
+      expect(captureError(() => validateConfirmedSendPreflight({
+        pythonPath: python, scriptPath: join(directory, "missing-script"),
+      }))).toBe("fixed jt-ops command is unavailable");
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("confirmed-send preflight proves jsonschema in the fixed venv without ambient environment", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-confirmed-send-jsonschema-"));
+    const python = join(directory, "python");
+    const script = join(directory, "cohort_two_authority.py");
+    let invocation: unknown;
+    try {
+      executable(python, "#!/bin/sh\nexit 0\n");
+      writeFileSync(script, "print('fixture')\n", { mode: 0o600 });
+      const fakeSpawn = ((file: string, args: string[], options: unknown) => {
+        invocation = { file, args, options };
+        return { status: 0, stdout: "", stderr: "" };
+      }) as unknown as typeof spawnSync;
+      validateConfirmedSendPreflight({
+        pythonPath: python,
+        scriptPath: script,
+        cwd: directory,
+        spawn: fakeSpawn,
+      });
+      expect(invocation).toEqual({
+        file: python,
+        args: ["-c", "import jsonschema"],
+        options: {
+          cwd: directory,
+          env: { LANG: "C.UTF-8", LC_ALL: "C.UTF-8", PYTHONHASHSEED: "0" },
+          encoding: "utf8",
+          stdio: ["ignore", "pipe", "pipe"],
+          timeout: 5_000,
+          killSignal: "SIGKILL",
+        },
+      });
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("confirmed-send output is exact and malformed child data cannot leak", () => {
+    const receiptId = `pre_send_${"a".repeat(20)}`;
+    const valid = {
+      status: "RECORDED",
+      preSendReceiptId: receiptId,
+      sentEventId: `suppression_event_${"b".repeat(20)}`,
+      ownerRevision: "c".repeat(64),
+      observedAt: "2026-09-16T12:34:56Z",
+    };
+    expect(parseConfirmedSendResult(`${JSON.stringify(valid)}\n`, "", 0, receiptId))
+      .toEqual(valid);
+    const secret = "authority-read-secret-must-not-leak";
+    for (const [stdout, stderr, status] of [
+      [secret, "", 2],
+      [`${JSON.stringify({ ...valid, extra: secret })}\n`, "", 0],
+      [`${JSON.stringify(valid)}\n`, secret, 0],
+    ] as const) {
+      const message = captureError(() => parseConfirmedSendResult(stdout, stderr, status, receiptId));
+      expect(message).toBe("confirmed-send owner failed");
+      expect(message).not.toContain(secret);
+    }
+  });
+
+  test("runtime CLI exposes one exact confirmed-send mode, never a generic secret runner", () => {
+    const secret = "inherited-secret-must-not-leak";
+    const result = spawnSync(
+      "/opt/homebrew/opt/node@22/bin/node",
+      [
+        "scripts/outreach-runtime-secrets.mjs",
+        "record-confirmed-send",
+        "--pre-send-receipt-id",
+        `pre_send_${"a".repeat(20)}`,
+        "--",
+        "/usr/bin/env",
+      ],
+      {
+        encoding: "utf8",
+        env: {
+          ...process.env,
+          OUTREACH_REVIEW_CAPABILITY: secret,
+          OUTREACH_DECISION_CAPABILITY: secret,
+          OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY: secret,
+          HTTP_PROXY: `http://${secret}`,
+        },
+      },
+    );
+    expect(result.status).toBe(2);
+    expect(result.stdout).toBe("");
+    expect(`${result.stdout}${result.stderr}`).not.toContain(secret);
+    expect(result.stderr).toBe("invalid confirmed-send request\n");
   });
 });
