@@ -42,7 +42,7 @@ function submission(body = "Exact draft"): OutreachReviewSubmission & { capabili
 }
 
 function authoritySubmission(
-  overrides: Partial<OutreachReviewAuthoritySubmission & { verifierActorId: string; capability: string }> = {},
+  overrides: Partial<OutreachReviewAuthoritySubmission & { capability: string }> = {},
 ) {
   return {
     candidateId: "candidate-1",
@@ -57,7 +57,6 @@ function authoritySubmission(
     },
     builderActorId: "builder-1",
     drafterActorId: "drafter-1",
-    verifierActorId: "verifier-1",
     capability: "authority-write-secret",
     ...overrides,
   };
@@ -316,6 +315,7 @@ describe("registered Convex outreach review authority handlers", () => {
     read: process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY,
     review: process.env.OUTREACH_REVIEW_CAPABILITY,
     decision: process.env.OUTREACH_DECISION_CAPABILITY,
+    verifierActor: process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID,
   };
 
   beforeEach(() => {
@@ -323,6 +323,7 @@ describe("registered Convex outreach review authority handlers", () => {
     process.env.OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY = "authority-read-secret";
     process.env.OUTREACH_REVIEW_CAPABILITY = "review-secret";
     process.env.OUTREACH_DECISION_CAPABILITY = "decision-secret";
+    process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID = "verifier-1";
   });
 
   afterEach(() => {
@@ -331,6 +332,7 @@ describe("registered Convex outreach review authority handlers", () => {
       ["OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY", previous.read],
       ["OUTREACH_REVIEW_CAPABILITY", previous.review],
       ["OUTREACH_DECISION_CAPABILITY", previous.decision],
+      ["OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID", previous.verifierActor],
     ] as const) {
       if (value === undefined) delete process.env[name]; else process.env[name] = value;
     }
@@ -351,6 +353,23 @@ describe("registered Convex outreach review authority handlers", () => {
     expect(Number.isSafeInteger(result.authority.observedAt)).toBe(true);
     expect(result.authority.verifierActorId).toBe("verifier-1");
     expect(Object.keys(db.rows[0]).includes("capability")).toBe(false);
+  });
+
+  test("maps verifier identity only from mandatory server config before database access", async () => {
+    for (const configured of [undefined, "", "   ", "x".repeat(129), "bad\nactor"]) {
+      if (configured === undefined) delete process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID;
+      else process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID = configured;
+      const db = new MemoryDb();
+      expect(await rejectedMessage(() => createAuthorityHandler(ctx(db), authoritySubmission())))
+        .toContain("capability configuration is invalid");
+      expect({ reads: db.reads, writes: db.writes }).toEqual({ reads: 0, writes: 0 });
+    }
+    process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID = "verifier-1";
+
+    const registeredArgs = JSON.parse((createOutreachReviewAuthority as unknown as {
+      exportArgs: () => string;
+    }).exportArgs());
+    expect(Object.keys(registeredArgs.value)).not.toContain("verifierActorId");
   });
 
   test("exact retry returns the original authority unchanged and conflicting retry is rejected", async () => {

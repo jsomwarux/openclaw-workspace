@@ -43,6 +43,14 @@ describe("Convex outreach authority boundary", () => {
     expect(lookup).not.toContain("ctx.db.delete");
   });
 
+  test("authority write caller cannot provide the server-owned verifier actor", () => {
+    const write = mutationSource("createOutreachReviewAuthority", "findOutreachReviewAuthority");
+    const args = write.slice(write.indexOf("args:"), write.indexOf("handler:"));
+    expect(args).not.toContain("verifierActorId");
+    expect(write).toContain("process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID");
+    expect(write.indexOf("OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID")).toBeLessThan(write.indexOf("ctx.db"));
+  });
+
   test("authority handlers authenticate four distinct capabilities before database access", () => {
     for (const [name, next] of [
       ["createOutreachReviewAuthority", "findOutreachReviewAuthority"],

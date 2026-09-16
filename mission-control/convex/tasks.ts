@@ -21,6 +21,7 @@ import {
   OutreachReviewAuthorityError,
   resolveOutreachReviewAuthorityAdmission,
   resolveOutreachReviewAuthorityLookup,
+  validateOutreachReviewAuthorityActorId,
   type OutreachReviewAuthority,
 } from "../lib/mission-control/outreach-review-authority";
 
@@ -328,7 +329,6 @@ export const createOutreachReviewAuthority = mutation({
     verifierGitBinding: gitBinding,
     builderActorId: v.string(),
     drafterActorId: v.string(),
-    verifierActorId: v.string(),
     capability: v.string(),
   },
   handler: async (ctx, args) => {
@@ -338,7 +338,13 @@ export const createOutreachReviewAuthority = mutation({
       process.env.OUTREACH_REVIEW_CAPABILITY,
       process.env.OUTREACH_DECISION_CAPABILITY,
     ]);
-    const { capability: _capability, verifierActorId, ...submission } = args;
+    const verifierActorId = process.env.OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID;
+    try {
+      validateOutreachReviewAuthorityActorId(verifierActorId);
+    } catch {
+      throw new OutreachAuthError("capability configuration is invalid", 503);
+    }
+    const { capability: _capability, ...submission } = args;
     const matches = await ctx.db
       .query("outreachReviewAuthorities")
       .withIndex("by_exact_authority", (q) => q

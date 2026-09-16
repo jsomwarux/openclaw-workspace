@@ -79,6 +79,10 @@ function requireId(value: unknown): asserts value is string {
   }
 }
 
+export function validateOutreachReviewAuthorityActorId(value: unknown): asserts value is string {
+  requireId(value);
+}
+
 function requireDigest(value: unknown): asserts value is string {
   if (typeof value !== "string" || !SHA256_PATTERN.test(value)) throw new OutreachReviewAuthorityError("invalid_request");
 }
