@@ -17,7 +17,7 @@
 ## Consulting Positioning
 - Practical AI implementation for ops-heavy SMBs: one messy business process, controlled AI system, trusted proof.
 - Sell in order: Workflow Audit $1,500 flat for one week; Build $6,000-$12,000 fixed with 50% up front and 50% on acceptance; Managed AI Ops $1,500/month after the monthly report exists. Partner Studio is later, not now, except Altmark.
-- Do not add "any industry" or explain agents-building-agents in buyer-facing positioning during the 90-day playbook.
+- Do not add "any industry" or explain agents-building-agents in buyer-facing positioning; this remains a positioning-quality rule, not authority from the retired playbook.
 - Detail: `docs/memory/MEMORY-full.md#consulting-positioning`.
 
 ## Active Clients
@@ -29,19 +29,19 @@
 
 ## Pipeline / Business Development
 - North Star system: `memory/north-star.md`, `memory/pipeline.jsonl`, `memory/send-queue.md`, `scripts/north_star_pipeline.py`.
-- 2026-09-11: JT moved the five-message supportive-housing buyer cohort from Friday to Tuesday, 2026-09-15. Send the full cohort manually from the established Gmail between 9:15 and 10:30 AM ET, staggered a few minutes apart; record outcomes and stop any prospect's sequence on reply. Mission Control is the action owner.
+- 2026-09-15: JT confirmed all five supportive-housing cohort-one M1 emails sent from the established Gmail: Community Access, Goddard Riverside, VOA-GNY, Westhab, and Comunilife. The cohort send task is done. Five prospect-specific M2 tasks are due 2026-09-22; skip/close immediately on any reply.
 - The retired 90 Day Playbook warm-list order is historical only. Do not revive Ed/MSI or Karen referral actions from it.
 - Current warm ask: Gil hospitality-team introduction. Other relationship actions require current evidence before resurfacing.
-- Guyana is frozen through 2026-11-17 unless JT explicitly overrides after the freeze prompt.
+- Guyana is deferred because it lacks a current bounded buyer/conversion test; revive when a qualified Guyana opportunity, credible distribution path, or explicit JT priority creates one.
 - Detail: `docs/memory/MEMORY-full.md#pipeline--business-development`.
 
 ## Consulting Delivery / Niche Matrix
 - Client/discovery work requires Client OS + reusable-IP capture only when tied to paid delivery. Services-as-software = manual proof, edge cases, failures, metrics before automation.
-- Delivery focus through 2026-11-17: Tuesday-Thursday paid work only. Do not create research, market discovery, system design, tooling, app, or strategy tasks unless JT explicitly overrides a frozen item or the work produces an invoice inside 90 days.
+- Live capacity rule: in a week where zero qualified messages reach a buyer, no new infrastructure track starts. Five qualified cohort-one messages reached buyers on 2026-09-15, so this week's gate is satisfied. Prioritize buyer contact and paid delivery, but do not use the retired playbook or invoice-within-90-days test as current authority.
 - Detail: `docs/memory/MEMORY-full.md#consulting-delivery--niche-matrix`.
 
 ## Current Apps / Products
-- `jtsomwaru.com`: AI ops homepage; `/property` PM Workflow Audit path. All four app lanes are frozen through 2026-11-17 unless JT explicitly overrides after the freeze prompt.
+- `jtsomwaru.com`: live conversion surface; homepage/profile optimization is active after five cohort-one sends. App-content lanes remain deferred until each app has verified product truth, a live conversion destination, and a bounded distribution test; no retired freeze applies.
 - Detail: `docs/memory/MEMORY-full.md#current-apps--products`.
 
 ## Content System
@@ -50,6 +50,7 @@
 - Detail: `docs/memory/MEMORY-full.md#content-system`.
 
 ## Job Market
+- 2026-09-15: Job Market Daily Research has **not recovered** from the Codex allowance failure. The last successful run was 2026-09-14 at 05:15 ET and delivered Litmos; all four 2026-09-15 attempts failed before research/delivery with the subscription usage-limit error. Mission Control task `Restore Job Market Daily Research after Codex allowance failure` owns the silent-death recovery proof.
 - 2026-09-14: Litmos AI Program Manager is live and the tailored GPT-5.6 Sol package is ready but not submitted. Fresh verifier score is 20/25 (not the initial automated 22/25): direct implementation/program fit is strong, but formal enterprise AI-upskilling ownership is limited and the $120K-$150K base reaches JT's floor only at the top. Resume: https://docs.google.com/document/d/1lSIcfLYV7u-VL_LNlWmVXFOAW8c-UijxzRbPbPnLD8w/edit?usp=drivesdk ; cover letter: https://docs.google.com/document/d/1srti5ty1iKCLuucHAWm-CMkJGAm4vlE3BToeGA1paLM/edit?usp=drivesdk . Mission Control owns the open application action; do not claim submission until JT confirms it.
 - 2026-08-22: JT approved reactivating the weekday job pipeline as a controlled income hedge while consulting remains primary and the 2-priced-conversations/week input metric stays intact.
 - 2026-09-08: JT applied to Bloomberg's AI Enablement Lead, External Relations role and Janus Henderson Investors' AI Enablement Partner role. Both application tasks are complete; track only recruiter/interview/status changes from here.
@@ -68,9 +69,11 @@
 
 ## Infrastructure / OpenClaw State
 - Default route is OpenAI OAuth; non-default/premium model use needs named approval except approved content jobs. OpenClaw checks require Node 26 path; cost alerts clean.
-- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`. Write contract now blocks Strategy/Positioning, research, market discovery, system design, and tooling tasks during the 90-day playbook unless tied to an invoice inside 90 days.
+- Mission Control: `http://localhost:3000`; tailnet `https://jts-mac-mini.tailaf2fd2.ts.net`; n8n `/n8n`. Normalize MC API with `(.tasks // .items // .)`. The retired playbook write block is no longer current; operating rule 13 is the live infrastructure-capacity gate.
 - Mission Control task objects may expose `_id` rather than `id`; recurring dedupe/create checks should use `scripts/mission_control_task_gate.py` instead of inline field parsing.
-- AI Workflow Growth OS: Mission Control PR #1 (`c4fed633`) was explicitly approved, merged as `f28738e`, and deployed locally on 2026-09-14. The live dedicated `POST /api/tasks/create-only` endpoint returned `writeMode: "create-only"`; a no-overwrite probe against an existing dedupe key returned `created: false`, preserved the exact task hash, and kept the task count unchanged. Fresh verifier: `CONFIRM` with 142 tests, TypeScript, and the 39-route production build green. JT then explicitly approved `jt-ops` PR #36; GitHub merged reviewed head `13af74c3` as `a9f3a690` on 2026-09-14, and the exact `main` push run passed all nine validation jobs. Cohort-two PR #39 remains open/clean at `85bbb16`. Production adapter writes and weekly-heartbeat scheduling remain inactive and require separate approval.
+- AI Workflow Growth OS: Mission Control PR #1 (`c4fed633`) and `jt-ops` PR #36 are merged; Mission Control PRs #2-#4 are merged/deployed, providing protected review/decision ownership, reproducible Keychain-backed runtime configuration, and the universal seven-field task contract. Cohort-two PR #39 merged to `jt-ops/main` as `bb31ad99168155d6eb91120297b3877211f042ad`; the first production owner adapter, verified-channel PR #40, merged as `d015aa43fa470a6e50eb19759477fda37364baab`, with exact post-merge workflow `35041738234` passing all ten jobs. The lane remains inactive: gate-attestation, review-authority, and suppression adapters plus production write capability and weekly-heartbeat scheduling require separate implementation/approval.
+- 2026-09-15: Mission Control PR #4 universal card contract merged as `68757613` and is live locally/tailnet. Generic cards now store and render exact steps, paste-ready prompt, paste/use destination, and append-only feedback alongside title, why, and done state. Exact merge verification passed 204 tests, TypeScript, and a 41-route build; live proof round-tripped every field, preserved two feedback entries, blocked replacement/malformed writes with HTTP 400, removed the synthetic card, and restored the active-task count to 47.
+- 2026-09-15: Mission Control PR #3 runtime package merged as `bf02b25f` and is live locally/tailnet. The deployed launcher now rebuilds the ignored Keychain helper from checked-in Swift source, injects distinct capabilities at runtime, and syncs only those values to local Convex. Exact combined-tree verification passed 212 tests, TypeScript, and the 41-route build; live restart proof returned local/tailnet 200, unauthenticated outreach 401, preserved the seven-field card contract, blocked three hostile requests with 400, and restored the active-task count to 48.
 - Backup regression: local backup succeeds but `n8n-agent` GitHub push remains remote-ahead `main -> main (fetch first)`. Heartbeats must not run git pull/merge/force-push; routed via MC task `j57cc0zrdhrxkkazwkd2hpmqn58bz4ff`.
 - Detail: `docs/memory/MEMORY-full.md#infrastructure--openclaw-state`.
 

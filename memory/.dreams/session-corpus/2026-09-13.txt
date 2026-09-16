@@ -1,2 +1,4 @@
 [main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L2585] Assistant: Weekly unemployment certification is still open in Mission Control.
 [main/sessions/main/f9156540-fb68-4a04-88e5-470d7ac259a4#L2586] Assistant: EVE DAILY - Sunday September 13, 2026 SENDS DUE (max 3) 1. Gil - ask for the Lady D / Little Charlie ops intro - draft: /Users/jtsomwaru/.openclaw/workspace/memory/drafts/warm-client-followups-2026-08-25.md - reply: send GATES <=48H None. STALE >=7 DAYS 1. Gil hospital
+[main/sessions/main/515a5a2b-9f88-485b-b5f0-d0236580be44#L5] Assistant: Weekly unemployment certification is still open in Mission Control.
+[main/sessions/main/81c8f4d8-b413-4c5c-9ca1-447925259160#L101] Assistant: WEEKLY_SYSTEMS_REVIEW_DONE_WITH_BLOCKERS - Report: `memory/audits/weekly-systems/2026-09-13-weekly-systems-review.md` - Telegram delivered: message `26740` - Grade: **C+** - High-priority Mission Control remediation task updated. - Main blockers: oversized AGENTS/skill
