@@ -1,0 +1,24 @@
+{
+  "lane": "n8n-preflight",
+  "status": "COMPLETE",
+  "repo": "jsomwarux/n8n-agent",
+  "branch": "eve/cohort-two-prospect-blueprint",
+  "sha": "6ec382ce7206d56bc5eda35572ec8b3a94972c77",
+  "pr_url": "https://github.com/jsomwarux/n8n-agent/pull/6",
+  "review_verdict": "CONFIRM",
+  "n8n_version": "2.14.1",
+  "type_version_result": "13/13 node types at or under installed ceiling, zero over. Measured from n8n-nodes-base 2.14.1 dist/types/nodes.json (485 descriptions) against the running instance (listening 127.0.0.1:5678, process /opt/homebrew/bin/n8n start, healthz ok). At ceiling: scheduleTrigger 1.3, manualTrigger 1, readWriteFile 1.1, extractFromFile 1.1, convertToFile 1.1, code 2, crypto 2, noOp 1, errorTrigger 1. Deliberately below: httpRequest 4.2 (ceil 4.4), if 2.2 (ceil 2.3), filter 2.2 (ceil 2.3). stopAndError unused, removed from spec in r3. Evidence in blueprint 16.6a. Beelink 2.18.4 table in CLAUDE.md explicitly not applicable.",
+  "remaining_blockers": [
+    "BLOCKING: jt-ops proof-asset card evidence/cohort-two.proof-asset.json does not exist on origin/main (zero paths under evidence/). Gate G4 is run-level, so every run aborts at N03 with zero fetches and zero tokens. JT-owned, not a build task.",
+    "BLOCKING BEFORE DEPLOY: topology gate and standing-boundary assertions are cleared only at the document level; both must be re-asserted against the exported workflow JSON, where a builder transcription error would appear.",
+    "GATES TEST SUITE: runtime item-shape capture (blueprint 16.8 / TP-10) not started - it requires building and running nodes, which this lane was not authorized to do. Until captured, no TP-1..TP-11 assertion is evidence (lessons 141/142).",
+    "PROVISIONAL: jt-ops origin/main re-resolved to c0ef4fe134d1ac04794aea6446dee23389d59ea3, unchanged - a remote SHA can move, so re-resolve at implementation.",
+    "PROVISIONAL: suppression owners remain unconfigured on jt-ops origin/main; the implementing branch tip is NOT an ancestor of origin/main and was deliberately not pinned in the blueprint because an unmerged tip is rewritable. Resolve fresh at implementation.",
+    "PROVISIONAL: Mission Control deployed commit not verified - mission-control is a directory inside the openclaw workspace repo and has no repository SHA of its own. Contract files were git-clean and every admission clause re-confirmed by source read; a process listens on 127.0.0.1:3000 but no request was made (writes not authorized).",
+    "PROVISIONAL: jt-ops pipelines.json carries only cohort-two-authority (status paused); no cohort-two-prospect-discovery entry. Separate jt-ops PR, must land with routines/cohort-two-prospect-discovery.md in the same commit.",
+    "PROVISIONAL: NYC SODA field sets not re-probed this pass; N09 content-signature assertion is the runtime guard (lesson 136).",
+    "NOT A BLOCKER, FOR AWARENESS: repository has no GitHub Actions workflows (actions/workflows total_count 0), so PR 6 has zero check-runs and zero commit statuses. There were no remote checks available to wait for."
+  ],
+  "next_owner": "Eve",
+  "next_action": "Do not merge PR 6 without JT review. Route the one JT-owned blocker first: JT writes evidence/cohort-two.proof-asset.json in jt-ops from his 2026-09-09 ruling (descriptive COI reminder routing, client unnamed, claim_values empty), commits it to jt-ops/main, and confirms it validates against schemas/proof_asset_card.schema.json. A Mission Control card for exactly this already exists as a hand-created material-delta task in blueprint section 14. Everything else is implementation-ready: the next build lane starts at build-order step 1 (re-run the gh repo view visibility gate), then step 2 (re-run n8n --version and compare against 2.14.1 before trusting the 16.6a ceiling table), then the offline topology test before any deploy, then runtime-shape capture before writing any test assertion."
+}

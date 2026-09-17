@@ -1,0 +1,208 @@
+{
+  "status": "APPROVED_SENTENCE_B",
+  "prior_status": "HUMAN_DECISION",
+  "lane": "claude-evidence-controller",
+  "generated_at": "2026-09-16T17:23:28Z",
+  "repository": "jsomwarux/jt-ops",
+  "question": "Approve this exact proof sentence?",
+  "review_pack": "/Users/jtsomwaru/.openclaw/workspace/memory/job-state/cohort-two-proof-asset-review.md",
+
+  "human_decision": {
+    "decided_at": "2026-09-16T17:43:29Z",
+    "decided_by": "jt",
+    "verbatim": "APPROVE B",
+    "scope": "Approves the exact wording of option B as the canonical proof sentence. This is a wording approval recorded in job state. It is NOT the card's verified_by/verified_at attestation, which asserts JT verified the card against the live system, and it is NOT authorization to write evidence/cohort-two.proof-asset.json, open a PR, merge, activate, schedule or send.",
+    "approved_exact_sentence": "I built a workflow that runs on a daily schedule, sends staged certificate-of-insurance reminders automatically, and afterwards sends staff a digest of overdue follow-up, upcoming expirations, data issues, and recorded certificate status.",
+    "approved_exact_sentence_sha256": "d94efb4eaa09380a0ded63846c57228648ae9591bd9f1dcb698becb8db2455d8",
+    "still_blocking_before_any_canonical_write": [
+      "PR #33 is OPEN. A card citing 514fbac fails closed at cohort_two_authority.py:2313 ('authority commit is not reachable from origin/main') until it merges.",
+      "PR #43 is OPEN and commits the byte-identical SUPERSEDED sentence with verified_by:jt already set, against an 11-node backup that does not match PR #33's 12-node live read. Its fate must be decided before a second card exists.",
+      "verified_by/verified_at remain unset and can only be supplied by JT against the live system."
+    ]
+  },
+
+  "proposed_exact_sentence": "I built a workflow that runs on a daily schedule, sends staged certificate-of-insurance reminders automatically, and afterwards sends staff a digest of overdue follow-up, upcoming expirations, data issues, and recorded certificate status.",
+  "proposed_exact_sentence_sha256": "d94efb4eaa09380a0ded63846c57228648ae9591bd9f1dcb698becb8db2455d8",
+  "sentence_as_submitted_for_test": "I built a workflow that sends certificate reminders on a daily schedule and gives staff a daily digest of overdue follow-up, upcoming expirations, data issues, and certificate status.",
+  "tightened": true,
+  "tightening_rationale": "Evidence does not support the submitted sentence exactly. 'on a daily schedule' adjacent to 'sends reminders' supports a per-tenant-daily reading the escalation gates disprove (>=14 and >=7 day spacing, at most one stage per run, hard stop after the third message). 'gives' asserts receipt, but delivery verification is an explicit non-capability. Bare 'certificate status' implies verified compliance, but every value is human-typed spreadsheet content. 'automatically' is explicitly licensed by the copy standard and its absence reopens the cohort-one 'approval on a person' misread. No metric or claim was added; every substituted word maps to committed evidence.",
+
+  "alternatives": {
+    "A_as_proposed_unchanged": {
+      "sentence": "I built a workflow that sends certificate reminders on a daily schedule and gives staff a daily digest of overdue follow-up, upcoming expirations, data issues, and certificate status.",
+      "guards": "clean",
+      "note": "Accepts the per-tenant-daily, receipt, compliance-implication and lost-'automatically' risks."
+    },
+    "B_tightened_single_recommended": {
+      "sentence": "I built a workflow that runs on a daily schedule, sends staged certificate-of-insurance reminders automatically, and afterwards sends staff a digest of overdue follow-up, upcoming expirations, data issues, and recorded certificate status.",
+      "guards": "clean",
+      "chars": 238,
+      "words": 32
+    },
+    "C_split_two_facts": {
+      "fact_a": "I built a workflow that runs on a daily schedule and sends staged certificate-of-insurance reminders automatically.",
+      "fact_b": "The same workflow afterwards sends staff a digest of overdue follow-up, upcoming expirations, data issues, and recorded certificate status.",
+      "guards": "clean",
+      "note": "Same concept_id/sentence_id, distinct fact_ids. Lets the weaker digest claim stand or fall separately."
+    }
+  },
+
+  "proposed_card_payload": {
+    "$comment": "DELIBERATELY INCOMPLETE. verified_by and verified_at are omitted because only JT may supply them. This payload therefore fails proof_asset_card.schema.json on exactly those two required properties, by design. Not written to the repository; no PR opened.",
+    "schema_version": "proof-asset-card-v1",
+    "card_id": "cohort-two-coi-proof-v1",
+    "status": "verified",
+    "system_revision": "042759ce-d4f4-4ee9-906e-cb34d9de28b7",
+    "facts": [
+      {
+        "fact_id": "proof-coi-reminder-routing",
+        "concept_id": "coi-reminder-routing",
+        "sentence_id": "coi-reminder-routing-v1",
+        "outbound_text": "I built a workflow that runs on a daily schedule, sends staged certificate-of-insurance reminders automatically, and afterwards sends staff a digest of overdue follow-up, upcoming expirations, data issues, and recorded certificate status.",
+        "claim_values": []
+      }
+    ]
+  },
+  "withheld_fields": {
+    "verified_by": "NOT SET — const 'jt' in schema; only JT may assert it",
+    "verified_at": "NOT SET — only JT may assert it"
+  },
+  "schema_validation": {
+    "schema": "schemas/proof_asset_card.schema.json",
+    "payload_as_delivered": ["'verified_by' is a required property", "'verified_at' is a required property"],
+    "shape_check_with_jt_fields_added_locally": "PASS"
+  },
+
+  "evidence": {
+    "pr_33": {
+      "number": 33,
+      "branch": "verify/coi-live-runtime",
+      "head_sha": "514fbacbfc289434bf8fdbba31df19e1a997741e",
+      "state": "OPEN",
+      "merged_into_main": false,
+      "files": [
+        {
+          "path": "reports/coi-live-runtime-verification.md",
+          "blob_oid": "e67abf4fe043dfd8c01e2dce3e018aad4838127b",
+          "sha256": "55ea5f21277312819dc4ca819e23a4b2eb662b7556b1936681b448c2b0862949",
+          "self_declared_hash_reproduces": true,
+          "report_self_sha256": "09675a38702d829be0a0d932cd6ddbd5acee38a8514fe55d3a572792bba99ee3"
+        },
+        {
+          "path": "reports/evidence/coi-live-topology-redacted.json",
+          "blob_oid": "a3024d57dfd3cdd78344cc044dd344f476cfb97b",
+          "sha256": "bb0c5b0f0baf89ccadd90e4636a33337c1bb6d65e7dc40d2f11f505c521281ee",
+          "self_declared_hash_reproduces": true
+        }
+      ]
+    },
+    "origin_main": {
+      "head_sha": "471e0d8cb0dbf7db8b01a235c8d26d7340328ce1",
+      "files": [
+        {"path": "schemas/proof_asset_card.schema.json", "blob_oid": "2835b9f64f4d3f2e3542ca689daff5caa3b0f948", "sha256": "bc8f9cd0999cf9ec5abc4bd0904e66ab902615acafbe38a0e9022560246bb177"},
+        {"path": "schemas/registry.json", "blob_oid": "fec7872fc3893d6b62961fed8410c981ad2d6884", "sha256": "654e5af40515ddfe300cd10eff0195a8026db3a4ca0cbaaf50a214baede1c70a"},
+        {"path": "docs/standards/outreach-copy-standard.md", "blob_oid": "b41d7716f6873b705714ba384db527daef29c6fb", "sha256": "7c04464214092d734bce9626c63bec4e8fde6daf6fe110af3fd91d03f97d851f"},
+        {"path": "docs/cohort-two-contract-diff.md", "blob_oid": "c5ef854f07bf90f086d534276e106cc752b9f385", "sha256": "e7da88563492983a756182916227aee6875418c7ec51f351271eced722bd1fde"},
+        {"path": "scripts/cohort_two_authority.py", "blob_oid": "0657852a7d8ac300b7fef8580396f98ccffc1ff3", "sha256": "e50753cfd152b3853d9657424eaf35a2efefc71180ad476336d5b87ec4dbdd0f"}
+      ]
+    },
+    "live_system": {
+      "workflow_id": "AOQgsFtNHaNeaHPy",
+      "active": true,
+      "node_count": 12,
+      "directed_edge_count": 11,
+      "active_version_id": "042759ce-d4f4-4ee9-906e-cb34d9de28b7",
+      "captured_at_utc": "2026-09-10",
+      "capture_method": "read-only n8n public API"
+    }
+  },
+
+  "clause_map": [
+    {"clause": "I built", "support": "SELF_ASSERTION", "evidence": "Not established in PR #33 (read-only inspection, names no builder). Repo-internal only: reports/cohort-1-briefs/*.md:57 on main, 'built for a NYC property-operations client'."},
+    {"clause": "a workflow", "support": "EXACT", "evidence": "PR #33 Workflow identity table: AOQgsFtNHaNeaHPy, active:true, 12 nodes, draft == published version 042759ce-d4f4-4ee9-906e-cb34d9de28b7."},
+    {"clause": "runs on a daily schedule", "support": "EXACT", "evidence": "Daily 7AM ET scheduleTrigger v1.3, triggerAtHour:7; 14 retained executions every day 2026-08-28 to 2026-09-10, all mode:trigger, all success. Cadence attached to the run, not the recipient."},
+    {"clause": "sends staged certificate-of-insurance reminders automatically", "support": "EXACT", "evidence": "Send Tenant Email (gmail v2.2), no resource/operation override -> message:send; DRY_RUN=false and ALLOW_PRODUCTION_CC=true hardcoded in live code. Four-stage cascade, at most one stage advances per run. No approval primitive anywhere in the 12-node graph: wait_nodes 0, approval_or_form_nodes 0, gmail_sendAndWait_operation_used false, if_false_output_connected false."},
+    {"clause": "afterwards", "support": "EXACT", "evidence": "Digest is a sibling off Classify Tenants output 0 position 1; no edge from Build/Send Daily Summary into IF send_email or Send Tenant Email. Under executionOrder v1 the send branch runs first, so 'the digest describes sends already made'. Copy standard licenses 'a later digest'."},
+    {"clause": "sends staff a digest", "support": "EXACT", "evidence": "Send Daily Summary resolves to four internal staff addresses; 'internal staff only. No external recipient.' 'sends' not 'gives' because delivery verification is an explicit non-capability."},
+    {"clause": "overdue follow-up", "support": "PARAPHRASE", "evidence": "Digest contents: 'overdue tenants needing personal outreach'."},
+    {"clause": "upcoming expirations", "support": "EXACT_AND_DELIBERATELY_VAGUER", "evidence": "Digest contents: 'certificates expiring within 30 days'. '30' withheld as an unlicensed number."},
+    {"clause": "data issues", "support": "EXACT", "evidence": "Digest contents: 'data issues (missing address, invalid date, per-row processing errors)'; classifier outcomes skip_no_email, skip_bad_date, workflow_error."},
+    {"clause": "recorded certificate status", "support": "EXACT", "evidence": "Digest contents: 'a certificate status breakdown table with percentages'. 'recorded' bounds it to human-typed spreadsheet values; the workflow never receives, opens, OCRs, parses or validates a certificate and never detects replies."}
+  ],
+
+  "guard_results": {
+    "source": "scripts/cohort_two_authority.py at origin/main",
+    "prohibited_human_control_claims": "no hit",
+    "number_tokens": [],
+    "claim_values_required": [],
+    "url_or_attachment": "no hit",
+    "at_sign_or_mail_obfuscation": "no hit",
+    "client_word": "no hit",
+    "protected_client_names": "no hit",
+    "caveat": "None of these guards runs on outbound_text. cohort_two_authority.py:474 checks only that approved proof text is a non-empty string; guard_draft operates on the drafted subject+body. Passing the guards says nothing about this sentence's truth."
+  },
+
+  "reviewer_verdict": {
+    "type": "fresh independent adversarial evidence review, separate context",
+    "verdict": "TIGHTEN_REQUIRED",
+    "summary": "No prohibited claim, no leak, no unlicensed number, no mechanical guard trip. Three wordings are substantive rather than stylistic: 'I built' is unevidenced in committed runtime evidence; 'on a daily schedule' supports a reader inference the escalation gates affirmatively disprove; dropping 'automatically' reopens the exact oversight misread that burned cohort one.",
+    "documented_accuracy_caveat": "Correctly avoided. The report warns the digest's 'Emails Sent Today' list is classifier intent, not Gmail responses, so a failed send still shows as sent - 'Do not describe the digest as a record of confirmed sends.' Neither the submitted nor the proposed sentence enumerates sends, counts or delivery.",
+    "independently_reverified": [
+      "cohort_two_authority.py:2313 raises LaneFinding('authority commit is not reachable from origin/main') - confirmed",
+      "data/proof/ on origin/main contains only .gitkeep; no canonical card exists on main - confirmed",
+      "cohort-1 briefs line 57 claim 'keeps the approval on a person rather than the system', which PR #33 rules VERIFIED NO - confirmed"
+    ],
+    "controller_correction": "The reviewer treated 'I built' as having no committed basis at all. Five cohort-1 briefs on main do assert the build as JT's proof point. That is repo-internal self-assertion, not independent corroboration - it lowers the novelty of the claim without closing the evidence gap."
+  },
+
+  "risks_for_human": [
+    "Authorship rests on JT's word; verified_by:jt verifies, it does not attest authorship.",
+    "'on a daily schedule' next to 'sends reminders' reads as daily nagging; gates prove >=14/>=7 day spacing and a three-message cap.",
+    "'automatically' is licensed by the copy standard and is the cheapest guard against repeating the cohort-one 'approval on a person' error.",
+    "'gives' claims receipt; delivery verification is an explicit non-capability.",
+    "bare 'certificate status' implies verified compliance; every value is human-typed.",
+    "'daily' digest is inferred from the daily trigger plus 14/14 successful runs, not directly measured - execution payloads were deliberately not fetched.",
+    "PR #33 is OPEN, so a card citing 514fbac fails closed at cohort_two_authority.py:2313 until it merges.",
+    "system_revision should be the live n8n change token 042759ce-d4f4-4ee9-906e-cb34d9de28b7, not an export label or backup path.",
+    "sentence_id is pinned to the single enum value coi-reminder-routing-v1; materially rewriting the sentence under that ID silently redefines v1 with no version bump.",
+    "No machine check guards the card sentence itself; truth is human-owned.",
+    "PR #43 already asserts verified_by:jt for the byte-identical submitted sentence - see blocking_conflict."
+  ],
+
+  "blocking_conflict": {
+    "pr": 43,
+    "branch": "eve/cohort-two-proof-asset",
+    "head_sha": "cd3e17f5287a64dbfedc27e1d2153d89250ba02c",
+    "state": "OPEN",
+    "created_at": "2026-09-16T15:13:43Z",
+    "path": "evidence/cohort-two.proof-asset.json",
+    "blob_oid": "02c53107260317f6eb31b2d8cc742b9b357ccadf",
+    "sha256": "4cca9c69d5430e0d08a16ff9d5ae7141fa2f277ce85196ed4aeb502658c99961",
+    "outbound_text_identical_to_submitted_sentence": true,
+    "already_sets_verified_by_jt": true,
+    "already_sets_verified_at": "2026-09-16T00:00:00Z",
+    "discrepancies": [
+      "PR #43 says it verified an 11-node workflow; PR #33's live read shows 12 nodes (11 directed edges).",
+      "PR #43 verified against a local backup; the replan contract requires the card be JT-verified against the live system.",
+      "PR #43 system_revision 'altmark-coi-expiration-tracking-final-2@AOQgsFtNHaNeaHPy/20260609T180228Z' is not the live change token 042759ce-d4f4-4ee9-906e-cb34d9de28b7, and its timestamp (18:02:28Z) differs from the published version creation time (18:03:18.056Z).",
+      "PR #43 system_revision embeds the protected client name 'Altmark'. It never reaches buyer-facing copy (system_revision is absent from _draft_request) and the name already appears in internal repo docs, so this is a consistency note against PR #33's redaction discipline, not a mechanical violation.",
+      "PR #43's body cites a 90-day freshness window; the lane enforces MAX_SOURCE_AGE = 30 days on proof.verified_at at cohort_two_authority.py:388.",
+      "Git author is 'JT Somwaru <jsomwarux@yahoo.com>', the standard local identity agents also use - not proof of personal attestation."
+    ]
+  },
+
+  "actions_taken": [
+    "Fresh clone at /Users/jtsomwaru/.cache/claude-evidence-20260916/jt-ops; no existing worktree modified; clone left clean.",
+    "Read-only inspection of PR #33, PR #43, origin/main contracts, schemas, standards and drafter prompt.",
+    "Both PR #33 self-declared artifact hashes independently reproduced.",
+    "Repo's own mechanical guards run against all candidate sentences.",
+    "One fresh independent adversarial evidence review completed."
+  ],
+  "actions_not_taken": [
+    "verified_by:jt not set",
+    "canonical evidence file not written",
+    "no PR opened",
+    "no push, merge, deploy, activation, scheduling or send",
+    "cohort-two-authority pipeline remains paused"
+  ]
+}

@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## Growth OS Canonical Proof + n8n Build Blueprint — 2026-09-16
+**What:** Bound the approved COI claim to merged live-system evidence, created the canonical JT-verified proof card, and reconciled the full cohort-two n8n discovery blueprint against current owner/runtime contracts.
+**For:** internal.
+**Outcome:** `jt-ops` PR #45 merged as `727213ba` with 10/10 post-merge checks; the final r4 blueprint received fresh `CONFIRM` and merged through `n8n-agent` PR #6 as `fab6c62c`; suppression, schedule, Mission Control writes, heartbeat, workflow activation, and sends remain inactive.
+**Demonstrates:** evidence-bound public claims, human attestation controls, cross-repository contract reconciliation, fail-closed n8n architecture, and independent verification.
+**Content angle:** The useful lesson is that a proof claim should be a versioned system artifact bound to live evidence, not copy a model can quietly rewrite.
+**Status:** complete.
+
 ## Cohort-Two Verified-Channel Owner Adapter — 2026-09-15
 **What:** Added a read-only, fail-closed adapter that proves exactly one currently published organization email from a Git-bound contact surface without storing channel state as durable authority.
 **For:** internal.
@@ -83,6 +91,14 @@
 - **Demonstrates:** regression-driven product repair, dashboard trust, task-action wiring, and proof-aware UI display.
 - **Content angle:** If an operating dashboard leaks internal scoring fields or dead action buttons, the ranking system loses trust even when the data is right.
 - **Status:** complete.
+
+## Mission Control Suppression Owner — 2026-09-16
+**What:** Merged and deployed the reviewed Mission Control suppression-owner contract with append-only ownership, immutable pre-send receipts, JT-only dual-clear controls, and exact reviewed-code bindings.
+**For:** internal controlled-outreach infrastructure.
+**Outcome:** PR #6 merged at authorized head `d9beca4`; 33 focused TypeScript tests, 8 Python tests, and the isolated production build passed; live HTTP behavior is fail-closed with the activation flag unset.
+**Demonstrates:** fail-closed feature deployment, immutable workflow evidence, least-privilege boundaries, and release verification.
+**Content angle:** A controlled AI workflow can be fully deployed while remaining incapable of acting until an explicit activation boundary is satisfied.
+**Status:** complete and inactive.
 
 ## Passive Income Strategist Recovery + Mission Control Startup Repair — 2026-07-27
 **What:** Recovered the Passive Income Strategist fallback report/delivery path and repaired Mission Control startup scripts for the installed Homebrew `node@22` path.

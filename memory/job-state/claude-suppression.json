@@ -1,0 +1,61 @@
+{
+  "lane": "suppression",
+  "cycle": "final-suppression-review + JT-approved merge",
+  "status": "COMPLETE",
+  "repo": "jsomwarux/jt-ops",
+  "branch": "eve/suppression-owner-adapters",
+  "sha": "40efed343692d4bd03978d69c9341dbb35da6675",
+  "parent_sha": "44ba69f4bf890e776588ecf3fc81ff6669fe5e6f",
+  "pr_url": "https://github.com/jsomwarux/jt-ops/pull/44",
+  "review_verdict": "CONFIRM",
+  "reviewer_role": "fresh non-builder reviewer; wrote no repository code and made no commit",
+  "starting_state_verified": "branch eve/suppression-owner-adapters, head 40efed343692d4bd03978d69c9341dbb35da6675, clean worktree, prior handoff JSON present - all four confirmed before any command that could mutate state",
+  "what_changed_since_the_prior_review": "Exactly one commit, 40efed3 'test: narrow standalone import guard contract'. Three files: scripts/tests/test_record_confirmed_send_standalone.py (module_imports docstring narrowed; one test renamed test_the_import_check_catches_every_dynamic_spelling -> test_the_import_check_catches_the_modelled_dynamic_spellings with its comment adjusted), tasks/lessons.md (+1 rule), tasks/todo.md (+1 checked item). 13 insertions, 5 deletions.",
+  "review_findings": {
+    "1_prior_reset_requirements_intact": "CONFIRMED. No production file differs between 44ba69f and 40efed3, so requirements 1, 2, 4 and 5 are byte-identical to the previously reviewed source; each was independently spot-checked at HEAD anyway. (1) MAIL_ADDRESS_RE and its component patterns are absent from scripts/ and contracts/; NoChannelCopyTests survives at test_cohort_two_suppression_commands.py:1136. (2) fresh-clear-for-another-fingerprint-is-not-current and clear-age-zero-is-fresh each appear twice in contracts/outreach-suppression-v1-vectors.json (both owners); current-ignores-fingerprint and clear-age-must-be-positive are registered in SIBLING_DEVIATIONS at test_suppression_contract.py:660-673 and modelled at :567 and :637. (4) cohort_two_authority.py:2441-2466 _record_confirmed_send_command sits outside main's try, appends via record_confirmed_send then calls _emit, and catches LaneFinding / (LaneCannotRun, OSError) / BaseException; main dispatches record-confirmed-send before entering its own try, so argparse SystemExit still precedes the delegate. (5) both raise sites in _validate_suppression_owner_query are LaneCannotRun, the contract error suppressed with 'from None'.",
+    "2_narrowed_description_matches_what_the_tests_prove": "CONFIRMED. The docstring now says the helper finds declared imports plus the explicitly modelled dynamic spellings, states it is deliberately not a Python sandbox or a complete detector for every reflective import path, and names the reviewed Git-bound entrypoint under isolated Python as the production boundary. The tests prove exactly that scope and no more: test_the_import_check_catches_the_modelled_dynamic_spellings covers the six modelled spellings, test_the_import_check_catches_a_builtin_bound_to_another_name covers the eight alias spellings, test_the_import_check_accepts_the_real_entrypoint pins zero findings on the real source. Reviewer mutation-probed the helper directly against the real entrypoint source: baseline dynamic=[]; bare __import__ call, 'smuggle = __import__' alias binding, importlib.import_module attribute alias, and a plain 'import suppression_contract' all flag; the '_B = json.__builtins__' reach-through does not flag - which is now exactly what the docstring says rather than what it denies.",
+    "3_no_production_behavior_changed": "CONFIRMED. git diff --stat 44ba69f..40efed3 touches only one test module and two task-notes files. No script under scripts/, no contract, no schema, no routine, no pipelines.json entry, no data record. The body of module_imports() is unchanged; only its docstring and one test method name moved.",
+    "4_focused_tests": "PASS under Python 3.12.13. test_record_confirmed_send_standalone: 34 tests OK (verbose run). Five-suite suppression sweep (test_cohort_two_suppression_commands, test_record_confirmed_send_standalone, test_suppression_contract, test_cohort_two_authority, test_cohort_two_simplified): 175 tests OK.",
+    "5_clean_clone_gate": "PASS. Fresh --no-local clone checked out at 40efed343692d4bd03978d69c9341dbb35da6675, clean, Python 3.12.13, bootstrap.sh exit 0 ('nothing to install'). Full suite: Ran 840 tests, OK (skipped=1). scripts/validate.py: 90 files / 1092 records / 0 errors, exit 0. Guards, each exit 0: credential_scan (241 files clean), atom_phrasing, check_test_count (840 collected, matches the committed ratchet), check_staging_size (461 bodies, 2.77 MB), check_routine_registry (5 routines, all registered), check_receipt_names (11 names, 8 pipelines, 9 dirs all claimed), check_routine_visibility (2 data-producing routines), path_guard (clean at HEAD, and exit 0 across the full 20-commit main..HEAD range), check_unmerged_records (exit 0; the prior cycle's stale origin/pr-33-readonly ref is a worktree-only artifact and does not affect a clean clone or remote CI).",
+    "6_worktree_state": "CONFIRMED clean at 40efed343692d4bd03978d69c9341dbb35da6675 before the review, after the review, and after the push. The reviewer created no commit and modified no tracked file; the clean clone was built outside the worktree at /Users/jtsomwaru/.cache/jt-ops-suppression/final-review/clone."
+  },
+  "production_boundary_assessment": "The AST denylist is NOT treated as the production sandbox anywhere in the branch. grep across all scripts/*.py found zero calls to eval, exec, __import__, importlib or compile outside re.compile in production code - the only occurrences are in the test guard itself. The executable path is fixed, not caller-supplied: record_confirmed_send.py invokes CONSULTING_OWNER_PYTHON='/usr/bin/python3' against the hard-coded CONSULTING_OWNER_SCRIPT with a scrubbed env and a 5-second timeout, and accepts only an opaque pre-send receipt ID. No arbitrary or caller-materialized source is ever executed, so the real executable boundary does not trust arbitrary source. Searched docs/, routines/, tasks/, scripts/ and contracts/ for any residual completeness or sandbox claim about the AST check: none remains (the other 'sandbox' hits are the unrelated cloud-runner routines). routines/cohort-two-authority.md:34-42 and docs/superpowers/specs/2026-09-16-suppression-owner-adapters-design.md:232-244 describe the same fixed, isolated, Git-bound entrypoint that the narrowed docstring names.",
+  "minor_observations_not_defects": [
+    "The narrowed docstring names 'the reviewed, Git-bound entrypoint executed with isolated Python' as the production boundary. That is exact for the standalone entrypoint; the cohort CLI delegate at cohort_two_authority.py:34 reaches the same boundary by ordinary in-process import rather than a -I -S subprocess. Both execute only reviewed repository source, and the sentence makes no sandbox claim, so this is a wording imprecision rather than a defect. Not a reason to fail.",
+    "The prior cycle's three open SUSPICION items (dead defensive LaneFinding at cohort_two_authority.py:2029-2030, the by-construction partial MAIL_OBFUSCATION_RE bracket set, and the unreachable TypeError path in _emit) are unchanged by this commit and remain unreachable in production. The COSMETIC separators mismatch between the two _emit implementations also remains.",
+    "scripts/check_pipelines.py still reports spine-heartbeat STALE (last receipt 2026-09-12). Pre-existing and unrelated: no commit on this branch touches runs/ or pipelines.json receipts."
+  ],
+  "focused_tests": "PASS (Python 3.12.13) - 34 standalone; 175 across the five-suite suppression sweep.",
+  "full_tests": "PASS - 840 tests, OK (skipped=1), Python 3.12.13, in a clean clone of 40efed3.",
+  "validation": "PASS - scripts/validate.py: 90 files / 1092 records / 0 errors.",
+  "ci_guards": "PASS in the clean clone at 40efed3 - credential_scan 0, atom_phrasing 0, check_test_count 0, check_staging_size 0, check_routine_registry 0, check_receipt_names 0, check_routine_visibility 0, path_guard 0 (HEAD and full range), check_unmerged_records 0.",
+  "remote_ci": "PASS - 20/20 checks green on PR #44 at 40efed3. Two 'validate' workflow runs, both conclusion success with all ten jobs success: push run 35125583381 and pull_request run 35125609556. Jobs: 1 schemas & tests, 2 secret scan, 3 path guard, 4 atom phrasing, 5 test-count ratchet, 6 staging buffer, 7 routine registry, 8 receipt names, 9 routine visibility, 10 unmerged records.",
+  "push": "origin/eve/suppression-owner-adapters = 40efed343692d4bd03978d69c9341dbb35da6675, verified by git ls-remote. No force push.",
+  "pr": "https://github.com/jsomwarux/jt-ops/pull/44 - MERGED as 471e0d8cb0dbf7db8b01a235c8d26d7340328ce1",
+  "worktree": "clean at 40efed343692d4bd03978d69c9341dbb35da6675, 20 commits ahead of origin/main (c0ef4fe)",
+  "files_changed_this_cycle": [
+    "scripts/tests/test_record_confirmed_send_standalone.py",
+    "tasks/lessons.md",
+    "tasks/todo.md"
+  ],
+  "blockers": [],
+  "actions_not_taken": "Not deployed, not activated, not scheduled. No secret accessed or rotated. No outreach sent. No repository file edited by the reviewer and no commit authored on the branch under review. The merge was performed only after JT's explicit in-session approval, which lifted the job spec's no-merge constraint; every other constraint in that spec still holds.",
+  "next_owner": "Eve",
+  "next_action": "PR #44 is merged to main as 471e0d8 with post-merge CI green; the reviewed SHA 40efed3 is on main. Do NOT deploy, activate, schedule, access or rotate secrets, or send - those remain separate JT approval boundaries. Eve's next step is to confirm with JT whether the suppression owner adapters should be activated, and to carry the two open follow-ups above. Review evidence: clean clone at /Users/jtsomwaru/.cache/jt-ops-suppression/final-review/clone, full-suite log at /Users/jtsomwaru/.cache/jt-ops-suppression/final-review/suite.out, PR body at /Users/jtsomwaru/.cache/jt-ops-suppression/final-review/pr-body.md; Python 3.12 venv used for every gate is /Users/jtsomwaru/.cache/jt-ops-suppression/arch-reset/venv312.",
+  "merged": {
+    "approved_by": "JT, explicit in-session instruction 'Merge' after the CONFIRM verdict was reported",
+    "merge_commit": "471e0d8cb0dbf7db8b01a235c8d26d7340328ce1",
+    "method": "merge commit, matching the convention of PRs #39-#42 on this repo",
+    "main_before": "c0ef4fe134d1ac04794aea6446dee23389d59ea3",
+    "main_after": "471e0d8cb0dbf7db8b01a235c8d26d7340328ce1",
+    "reviewed_sha_on_main": "40efed343692d4bd03978d69c9341dbb35da6675 confirmed an ancestor of origin/main",
+    "order_rule_satisfied": "Mission Control first, then jt-ops: Mission Control PR #2 (10ba8982) merged and deployed 2026-09-15 before this jt-ops merge",
+    "post_merge_ci": "PASS - validate workflow on main, conclusion success, all ten jobs success (schemas & tests, secret scan, path guard, atom phrasing, test-count ratchet, staging buffer, routine registry, receipt names, routine visibility, unmerged records)",
+    "branch_retained": "refs/heads/eve/suppression-owner-adapters still on origin at 40efed3; not deleted"
+  },
+  "open_followups": [
+    "tasks/todo.md:228 - the final 'Fresh non-builder hostile review ... do not merge' item is still unchecked on main. It was deliberately not ticked: a reviewer does not commit to the branch under review, and ticking it after the fact would mean a direct push to main, which was not authorized. Tick it in the next ordinary PR that touches tasks/.",
+    "Adapter activation and heartbeat/routine scheduling remain separate JT approval boundaries and were NOT performed by this merge. The cohort-two lane stays inactive until owner adapters are activated under their own approval.",
+    "Pre-existing and unrelated: scripts/check_pipelines.py reports spine-heartbeat STALE (last receipt 2026-09-12)."
+  ]
+}

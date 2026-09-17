@@ -1255,3 +1255,11 @@ Primary source: OpenAI API Reference, Create an agent session https://developers
 **JT relevance:** add a model-lifecycle row to API-backed workflow evidence: exact model ID, retrieval timestamp, owner, `shutdown_date`, replacement decision owner, migration deadline, representative eval status, and rollback target. Check the exact pinned model before deployment and on a recurring operational review; if a non-null shutdown date falls within the migration window, route an explicit decision instead of silently switching models. This is a design/proof rule only. No API request with credentials, model migration, provider change, workflow edit, Mission Control task, or recurring schedule change was made.
 
 Primary source: OpenAI API Reference, Retrieve model https://developers.openai.com/api/reference/cli/resources/models/methods/retrieve
+
+## Sep 16, 2026 - Heartbeat AI Tool Monitoring
+
+**No material dated product delta found.** Official OpenAI API/changelog and n8n release-note searches did not surface a newer operational change beyond the September 8-14 controls already recorded above. The existing deployment rules remain current: pin and review node/model versions, attach explicit error handling, persist asynchronous session/tool state, make continuation idempotent, and gate model shutdown dates.
+
+**JT relevance:** no configuration, model, provider, credential, workflow, Mission Control, or recurring-schedule change is justified from this check. Recording the no-delta result prevents duplicate monitoring later today.
+
+Official sources checked: OpenAI API documentation https://platform.openai.com/docs/api-reference/introduction; OpenAI models reference https://platform.openai.com/docs/api-reference/models; n8n release notes https://docs.n8n.io/release-notes/

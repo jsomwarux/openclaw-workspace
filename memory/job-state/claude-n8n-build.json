@@ -1,0 +1,74 @@
+{
+  "job": "claude-n8n-build",
+  "lane": "cohort-two-prospect-discovery",
+  "status": "COMPLETE_AWAITING_JT_REVIEW",
+  "updated_at": "2026-09-17T00:20:00Z",
+  "repo": "jsomwarux/n8n-agent",
+  "visibility_verified": "PRIVATE",
+  "branch": "eve/cohort-two-discovery-impl",
+  "head": "061d9e9abf254e98a3fa0fe54082632836a8e136",
+  "pull_request": "https://github.com/jsomwarux/n8n-agent/pull/7",
+  "ci": "none configured on this repository; no checks to wait for",
+  "worktree": "/Users/jtsomwaru/.cache/c2-impl-wt",
+  "user_checkout_untouched": "/Users/jtsomwaru/projects/n8n-agent on eve/cohort-two-prospect-blueprint @ 1dda2e5",
+
+  "deliverable": {
+    "main_workflow": "workflows/cohort-two-prospect-discovery.json",
+    "main_nodes": 57,
+    "companion_workflow": "workflows/cohort-two-discovery-error-handler.json",
+    "companion_nodes": 4,
+    "active": false,
+    "disabled_nodes": ["T1 Weekly Schedule", "N39 POST Mission Control Card", "N43H Heartbeat Ping"],
+    "send_capable_nodes": 0,
+    "credentials": "one, pre-existing anthropicApi on N22, referenced by name",
+    "multi_incoming_nodes": ["N01 Read Config + State Files"],
+    "offline_tests": 261,
+    "jscode_matches_rendered_src": "19/19 byte for byte"
+  },
+
+  "decisions_implemented": {
+    "A": "presence-only clamp plus per-prospect human confirmation; attribution-confirmation.json with four claims, each with quoted span, cited URL, snapshot path, what was and was NOT proven, confirmed: null",
+    "CONTRACT": "scripts/cohort_two_authority.py is an authoritative source; rules re-derived, precedence in blueprint 0.0, fail closed; CPython differential test runs the authority's own regexes against this lane's helpers",
+    "D1": "hash-last",
+    "D8": "no content-length truncation check",
+    "D11": "N09D Prepare Output Directories",
+    "D12": "canvas-position sibling ordering"
+  },
+
+  "review": {
+    "rounds": 15,
+    "method": "independent non-builder review in a clean clone per round",
+    "final_verdict": "CONFIRM",
+    "final_reviewed_sha": "ac23d047d79220162cd45cabfc05a62fec2fd60d",
+    "post_confirm_commits": [
+      "b3a132cb harness clock pinned to the corpus anchor; segment-gate and N07B negative tests; interval floor to equality; NUL test made to assert",
+      "061d9e9a lessons 159-161"
+    ],
+    "record": "clients/cohort-two-discovery/FINDINGS.md, pass by pass"
+  },
+
+  "jt_actions_required": [
+    "Review and merge PR #7. Nothing in it activates, schedules or sends.",
+    "Before any first run on the deploy instance: set N8N_RESTRICT_FILE_ACCESS_TO to include the cohort-two root (decision D3, blueprint 12.11), and set NODES_EXCLUDE so it does not exclude executeCommand. Both need an n8n restart and are Eve's step, not this lane's.",
+    "Run tools/bootstrap.js in the deploy checkout: it creates out/errors/ and the gitignored state/ and config/proof-card.json.",
+    "Six probe workflows remain imported on the local n8n and are yours to delete; n8n 2.14.1 has no delete:workflow CLI command and the alternatives were out of scope. Ids are listed in clients/cohort-two-discovery/README.md.",
+    "The proof card expires 2026-10-16. From 2026-10-17 every run aborts at N03 before its first fetch. Re-verification is yours: a fresh card merged in jt-ops, copied byte for byte, blueprint 16.3 re-run. Do not raise proof_card_max_age_days -- N03 throws above 30 regardless."
+  ],
+
+  "still_open": [
+    "held-property-management-<org_key>.json has no end-to-end test: it is emitted only inside the complete-cohort arm, and holding one of five resolvable fixtures leaves four. Needs a sixth resolvable fixture organization.",
+    "The carryover contract loop does not execute for the same reason; the emptiness is now asserted so it starts biting the moment a surplus fixture exists.",
+    "Out-of-scope-geography and the G1 burned arm at N26 have no behavioural test; both are fail-closed and N09 already skips burned organizations earlier.",
+    "Further gaps are listed in clients/cohort-two-discovery/FINDINGS.md under 'Still open, and deliberately not fixed here'."
+  ],
+
+  "boundaries_held": [
+    "No deployment, activation, schedule, Mission Control write, heartbeat, suppression capability, real-prospect call, credential change, or send.",
+    "gh repo view reported PRIVATE immediately before every push.",
+    "No live public-web or model call: all validation was against local synthetic fixtures and a loopback fixture server.",
+    "The exposed OpenRouter credential was not inspected, printed, rotated or edited; that remains JT/Eve's separate lane.",
+    "The long-running local n8n was never stopped, restarted or reconfigured; the file-access allowlist was set on a short-lived CLI process only."
+  ],
+
+  "lessons_added": ["157", "158", "159", "160", "161"]
+}
