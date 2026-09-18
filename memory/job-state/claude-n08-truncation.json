@@ -1,0 +1,211 @@
+{
+  "status": "COMPLETE",
+  "written_at": "2026-09-17",
+  "lane": "n08-truncation",
+  "repo": "jsomwarux/n8n-agent (PRIVATE, verified via `gh repo view --json visibility` before push)",
+  "branch": "eve/n08-truncation-guard",
+  "base_sha": "76f998bc15bca3b615e869b14b6b978a5dfbbbaa",
+  "base_verified": "origin fetched; origin/main confirmed to be exactly 76f998b before any edit. Not assumed.",
+  "final_sha": "dc47297c8d99dfa11dfcd75810c5cdca2c191747 (branch head, reviewed and merged); main is now 153ef6860e0a1984c78cbeed53f0a335de4f5871",
+  "pr_url": "https://github.com/jsomwarux/n8n-agent/pull/9",
+  "pr_state": "MERGED as 153ef6860e0a1984c78cbeed53f0a335de4f5871 on 2026-09-17T21:12:46Z, base main, head dc47297 (verified unchanged at merge time). NOT deployed, NOT activated.",
+  "defect": {
+    "id": "D13",
+    "introduced_by": "PR #7 (not by this lane, and not by the D4 repair in PR #8)",
+    "recorded_as": "the open item NIT-1 in the previous lane's handoff, claude-c2-empty-contact-repair.json",
+    "summary": "N07B chunks the frame into pages of 200 registration ids and N08 asks the HPD contacts dataset feu5-w2e2 for the contacts of all 200 in ONE request, with $limit=2000. Socrata's $limit is one PAGE, not a result-set ceiling: the server returns at most that many rows, says nothing about what it left behind, and the remainder is reachable only through $offset. Live HPD holds single registrations whose contact-row count exceeds that page on its own (8,688 rows for registration 911741, 2,325 for 911715), so one such registration exhausts the page and the other 199 registrations in that chunk come back with no contacts at all, behind a valid 2xx. Nothing errors.",
+    "blast_radius": "Strictly the DISCOVERY direction. A dropped organization produces no candidate, no ledger row and no burn; a partially framed one keeps portfolio_units >= 3 and non-empty operating_boros so it cannot reach the 3650-day cell. It is not the D4 class: N08 still emits one envelope per request and the run still reaches its terminal artifact. What it destroyed was the MEANING of the result -- an under-five cohort produced this way is indistinguishable from an honest one."
+  },
+  "repair": {
+    "part_1": "$limit 2000 -> 50000, SODA v2's documented per-request maximum, from ONE named constant CONTACT_PAGE_CAP in clients/cohort-two-discovery/src/lib/shared.js. tools/build-workflow.js requires that module and builds the query parameter from it, and the N09 guard is rendered from the same block, so the number the query sends and the number the guard judges answers against are one definition rather than two literals that agree today.",
+    "part_2": "sodaRows gained a PER-ENVELOPE truncation sentry. After the json, array-body and 2xx-status checks -- in that order, so a full body behind a 503 is still contacts-response-status and is not renamed as a source problem -- a body that came back FULL throws `frame-source-truncated: <label> item <i> returned <n> rows against the <cap>-row page cap`.",
+    "cap_argument": "REQUIRED and un-defaultable (lesson #172). Exactly two accepted answers: a positive integer for a read that asked for one page, or an EXPLICIT null for a read the caller pages itself. N07 walks the frame by $offset from the cursor, so a full registrations page is the ordinary case and N07B passes null OUT LOUD rather than omitting the argument. Omitted, string, 0, negative, float, NaN, Infinity, boolean, object, array -> throws `<label>-page-cap-not-supplied`. The message uses typeof, never String(cap), so a Symbol cannot crash it.",
+    "comparison": ">= rather than ===. SODA cannot answer with more rows than the limit, so equality is the case that occurs, which is exactly why an equality test would never be observed failing if it were wrong. A body BELOW the cap, zero included, is a complete answer, so the D4 empty-page contract is untouched.",
+    "pagination": "NOT implemented, deliberately. If the sentry fires on a real run, that is the explicit trigger for a separately designed pagination change."
+  },
+  "files_changed": [
+    "clients/cohort-two-discovery/FINDINGS.md",
+    "clients/cohort-two-discovery/README.md",
+    "clients/cohort-two-discovery/src/N07B.js",
+    "clients/cohort-two-discovery/src/N09.js",
+    "clients/cohort-two-discovery/src/lib/shared.js",
+    "clients/cohort-two-discovery/src/nodes/N07B.js",
+    "clients/cohort-two-discovery/src/nodes/N09.js",
+    "clients/cohort-two-discovery/test/contact-page-cap.test.js",
+    "clients/cohort-two-discovery/tools/build-empty-contact-probe.js",
+    "clients/cohort-two-discovery/tools/build-workflow.js",
+    "tasks/cohort-two-prospect-discovery-blueprint.md",
+    "tasks/lessons.md",
+    "workflows/cohort-two-prospect-discovery.json"
+  ],
+  "files_changed_count": 13,
+  "commits": [
+    "5fb9470 fix: a full HPD contacts page was read as the whole answer (D13)",
+    "8df7015 docs: pin the D4 probe's superseded page limit as deliberate evidence",
+    "4103c1d docs: record what the truncation sentry cannot see",
+    "dc47297 docs: correct a stale assertion count, and surface the sentry's premise in the README"
+  ],
+  "tdd": {
+    "red_first": "YES. All six required boundary cases were written and run BEFORE any implementation: 13 passed / 16 FAILED. The 16 failures were precisely the new contract (the sentry, the cap argument, the constant, the built $limit); the 13 that already passed were the preservation cases, which the boundary already satisfied.",
+    "boundary": "Every case drives the REAL N08 -> N09 boundary: envelopes are produced by test/harness.js:httpJsonItems from N08's OWN exported parameters, exactly as the node produces them, and consumed by the DEPLOYED N09 body loaded from src/N09.js. Rows are never handed to N09 directly -- that is the mistake lesson #163 records and it is what let the D4 defect ship green.",
+    "cases": {
+      "a_over_2000_under_cap_preserved": "2,500-row page whose tail organization exists ONLY past index 2,000 (so any prefix read makes it vanish) is framed in full; 49,999 rows likewise.",
+      "b_49999_passes": "PASS, at the boundary and in the decoder directly.",
+      "c_exactly_50000_fails": "throws frame-source-truncated naming the envelope index and the cap; 50,001 also throws (>= not ===).",
+      "d_empty_2xx_propagates": "a valid empty body still arrives as exactly one envelope per request and N09 still emits the spine; zero rows is explicitly NOT truncation.",
+      "e_malformed_and_non_2xx_unchanged": "non-array body, missing body, json:null, non-object row and non-2xx all keep their pre-existing reason codes, and status is judged BEFORE the row count so a full body behind a 503 is still contacts-response-status.",
+      "f_two_envelopes_independent": "short-then-full and full-then-short both fire on the correct index; two envelopes each under the cap pass even though their SUM exceeds it."
+    },
+    "static_render_guard": "Asserts the BUILT workflow's N08 $limit is exactly String(CONTACT_PAGE_CAP) == '50000', that the built N09 body carries the sentry and the cap, that the builder names the constant rather than repeating the number, and that no node still asks for the superseded 2,000-row page (with a non-vacuous floor proving both SODA reads were actually inspected)."
+  },
+  "focused_tests": "29 -> 30 assertions in clients/cohort-two-discovery/test/contact-page-cap.test.js, all green.",
+  "full_suite": "421 passed, 0 failed, 0 skipped (was 391 at base 76f998b; +30 from this lane).",
+  "clean_clone_gate": "PASS at dc47297 in a fresh clone at /Users/jtsomwaru/.cache/c2-d13-final: 421 passed, 0 failed, 0 skipped; re-running tools/render-src.js + tools/build-workflow.js leaves the tree byte-identical (git status --porcelain = 0 lines).",
+  "byte_identity": "PASS. render + build are deterministic; the generated src/<ID>.js bodies and both workflow JSONs reproduce exactly.",
+  "mutation_testing": {
+    "author": "10 applied, 10 caught, 0 survivors -- sentry removed, >= weakened to >, cap classification defaulted instead of throwing, sentry hoisted above the status check, sentry made per-run instead of per-envelope, cap constant reverted to 2000, N09 un-guarded with null, decoder silently truncating at 2000, builder pinned to a literal, N07B given a cap it must not have. Each applied to a restored-pristine tree, re-rendered, rebuilt, full suite run.",
+    "reviewer_pass_1": "24 applied, 0 survivors.",
+    "reviewer_pass_2": "23 re-applied at the final code state, 0 survivors, every pass/fail count bit-for-bit identical to pass 1.",
+    "note": "The reviewer ran its own battery in its own clean clone rather than reusing the author's."
+  },
+  "review": {
+    "model": "fresh non-builder reviewer, its own clean clone, pinned SHA each time, fully offline",
+    "pass_1": "CONFIRM at 5fb9470. No reproduced defect. Findings F1-F6, none blocking.",
+    "pass_2": "CONFIRM at 4103c1d. No reproduced defect. One new finding F7 (stale assertion count), cosmetic.",
+    "pass_3": "CONFIRM at dc47297. Delta verified by comparing all 377 tracked blob OIDs at both SHAs: exactly two differ, both markdown. Stronger than a diff -- proves no file was added, removed or altered anywhere else.",
+    "findings_disposition": {
+      "F1_sentry_premise_unpinned": "LANDED as an OPEN, named limitation in four places (FINDINGS section heading, blueprint r18, beside the guard in shared.js, README). NOT closed -- see open_items.",
+      "F2_row_count_provenance": "LANDED. The 8,688 / 2,325 figures are attributed to the read-only public sampling of 2026-09-17 and explicitly marked as NOT pinned by a committed fixture.",
+      "F3_lesson_out_of_order": "FIXED. #176 moved after #175; reviewer verified one copy of each, pure append to #176, everything else in the 172 KB file byte-identical.",
+      "F4_probe_limit_2000": "LANDED as a PIN, not a sync. The probe and its committed execution dump are a matched pair, so syncing the probe to the new cap without re-running the capture would make committed evidence describe a workflow that was never executed. The divergence is now explicit in the builder header, commented at the parameter site, and asserted by a test (value on all three arms + a non-vacuous arm-count guard), on top of the pre-existing generator byte-check.",
+      "F5_dead_constant_in_N07B": "LEFT AS-IS by decision, with reasoning recorded: CONTACT_PAGE_CAP lives inside the sodaRows block so it accompanies every use of the helper; splitting it would break single-sourcing. Reviewer agreed.",
+      "F6_exactly_cap_complete_page_fails_closed": "LANDED in FINDINGS, shared.js and blueprint r18. Fail-closed direction, intended, written down because the sentry is described elsewhere only as detecting truncation.",
+      "F7_stale_assertion_count": "FIXED in dc47297 (29 -> 30). Reviewer then swept every other count claim on the branch against measurement: no stale number remains."
+    },
+    "repair_cycles_used": "Zero repair cycles for reproduced defects -- no reviewer reproduced one. The brief's cap was not reached."
+  },
+  "workflow_validation": {
+    "n08_node": "validate_node on N08 with its real config: valid, 0 errors, 0 warnings.",
+    "structural": "validate_workflow: 57 nodes, 54 valid connections, 0 invalid, 34 expressions validated, 2 trigger nodes.",
+    "false_positives_investigated_not_accepted": [
+      "18 x 'Code must return data for the next node' -- artifacts of eliding jsCode for request size; the real bodies all end in `return`. Verified against the built JSON.",
+      "N09D 'executeOnce is in the wrong location' -- MCP's bundled node database is newer than the installed n8n. The INSTALLED executeCommand v1 declares executeOnce as a PARAMETER property (read from n8n-nodes-base/dist/types/nodes.json), so the current placement is correct for this instance. Lesson #64/#99 class.",
+      "'Consider enabling alwaysOutputData' on every fetch node -- DECLINED by design. That flag plus onError:continueRegularOutput is exactly what masked the D4 zero-item defect (lessons #162, #163). Enabling it would re-open the defect PR #8 repaired."
+    ],
+    "repo_native": "clients/cohort-two-discovery/test/node-params.test.js validates every node against the INSTALLED n8n rather than the MCP database, and passes as part of the 421."
+  },
+  "credential_pii_scan": "PASS, 0 findings. Scanned every ADDED line across 76f998b..HEAD (825 added lines, split into 1,712 units so a jsCode blob could not hide a match) for api-key/secret/token/password assignments, bearer literals, sk-/ghp_/AKIA keys, private-key blocks, X-N8N-API-KEY headers, email addresses, Tailscale 100.x addresses, and non-loopback http(s) hosts outside the approved set. Separately confirmed the nine invented organization names in the new test collide with nothing in config/.",
+  "visibility_gate": "PASS. jsomwarux/n8n-agent is PRIVATE (isPrivate true), checked BEFORE the push, per lesson #144.",
+  "clean_worktree": "PASS. git status --porcelain = 0 lines at dc47297 after the final render + build.",
+  "ci_result": "No CI is configured in this repository -- .github/workflows does not exist and `gh pr checks 9` reports 'no checks reported'. The clean-clone gate IS the verification; there is no pipeline and none was expected.",
+  "inactive_no_send_proof": {
+    "built_json": "cohort-two-prospect-discovery.json: active=false, 57 nodes, disabled=[T1, N39, N43H], zero send-capable nodes, exactly one credential reference (pre-existing anthropicApi on N22). cohort-two-discovery-error-handler.json: active=false, 4 nodes, zero credentials, byte-identical to 76f998b.",
+    "structural_diff_vs_base": "Only N07B, N08 and N09 differ from 76f998b. Top-level keys, connections, settings, id, name and active are all unchanged. No new node, no new external host.",
+    "deployed": "Read READ-ONLY from the local n8n sqlite: c2discoveryMAIN1 and c2discoveryERRH1 both active=0, isArchived=0. This branch did not touch them.",
+    "external_hosts": "data.cityofnewyork.us, api.anthropic.com, per-candidate prospect hosts, plus the Mission Control and heartbeat URLs on the two DISABLED nodes. Unchanged from base."
+  },
+  "no_side_effects": "No workflow activated or deactivated, no schedule, no deploy, no Mission Control write, no heartbeat, no suppression call, no credential read/created/modified/rotated/requested, no model or API call, no real-prospect execution, no send, no real-data pilot, and no network request to HPD or any live host. The test suite is fully offline with a clock pinned to the fixture anchor. The local n8n database was read read-only and its LaunchAgent was not touched. The main checkout's unrelated dirty files (CLAUDE.md, tasks/lessons.md) were never opened for writing -- verified unchanged by mtime and md5 at the end of the lane.",
+  "deviations_from_brief": [
+    "WORKTREE PATH CHANGED, with JT's explicit approval mid-run. The brief specified /Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-n08-truncation-guard. The repo-local claude-warden governance hook blocks all writes outside /Users/jtsomwaru/projects/n8n-agent, and CLAUDE_PROJECT_DIR is fixed at session launch so entering the worktree does not move that boundary. JT was asked and chose to relocate the worktree inside the project root: /Users/jtsomwaru/projects/n8n-agent/.claude/worktrees/n8n-n08-truncation-guard (already gitignored). The original out-of-root worktree and its branch were removed cleanly; same branch name, same base SHA, same isolation. The governance hook was NOT disabled or bypassed.",
+    "WARDEN CONFIG CREATED BY JT, not by me. Warden's default MAX_DIRECTORY_DEPTH=5 then blocked writes inside any worktree -- and already blocked this repo's deepest tracked files (tracked paths reach 7 segments) even in the main checkout. That setting lives in .claude/warden.config.sh, which Warden deliberately makes human-edit-only. JT created it with MAX_DIRECTORY_DEPTH=9. Every other Warden rule remains at its default and enforced."
+  ],
+  "open_items": [
+    {
+      "id": "F1",
+      "severity": "medium",
+      "status": "CLOSED 2026-09-17 by measurement",
+      "closure": "The server returned exactly 50,000 rows of an 810,494-row result set for $limit=50000 on the N08 endpoint with N08's $select. It honours the cap and does not clamp, so the sentry can fire.",
+      "residual": "The measurement is not yet committed as a repository fixture, and FINDINGS, the blueprint, shared.js and the README still describe the premise as unpinned. Correcting them is a separate, currently unauthorized change."
+    },
+    {
+      "id": "F6-note",
+      "severity": "low",
+      "status": "recorded, intended behaviour",
+      "claim": "A genuinely complete page of exactly 50,000 rows also fails the run closed; the sentry cannot distinguish it from a truncated one."
+    },
+    {
+      "id": "D13-doc-refresh",
+      "severity": "low",
+      "status": "OPEN, needs JT authorization",
+      "claim": "Four documents still say the sentry premise is unverified. It is now verified. They should be updated and the probe output committed as a fixture, which is the closing action FINDINGS itself names."
+    }
+  ],
+  "blockers": [],
+  "next_owner": "JT Somwaru",
+  "exact_next_action": "PR #9 is merged as 153ef686 and post-merge main is green. The cap probe closed F1 by measurement: the server honours $limit=50000 exactly. Per the authorized gate the single manual real-data pilot MAY RESUME, with both workflows still inactive and activation, schedule, Mission Control write, heartbeat, suppression capability and any send each still a separate authorization. Two follow-ups, neither blocking and neither authorized yet: (1) commit the probe output as a fixture and update the four documents that still describe the premise as unpinned; (2) record that the theoretical worst case for a 200-id chunk is 51,589, 3% above the cap.",
+  "authorization_reminder": "This lane was authorized to repair, test, review, push, open a PR, merge PR #9 at exact head dc47297, and run one bounded read-only cap probe. It did exactly those. No credentials, no writes to any system, no model calls, no workflow activation, no schedule, no Mission Control/heartbeat/suppression change, no send, and no real-data pilot were performed.",
+  "merged": {
+    "authorized_by": "JT, 2026-09-17: approve PR #9 merge at exact head dc47297; stop if the head changed or post-merge checks fail.",
+    "head_verified_before_merge": "dc47297c8d99dfa11dfcd75810c5cdca2c191747 (matched; mergeStateStatus CLEAN)",
+    "merge_method": "merge commit, pinned with --match-head-commit dc47297",
+    "merge_commit": "153ef6860e0a1984c78cbeed53f0a335de4f5871",
+    "merged_at": "2026-09-17T21:12:46Z",
+    "merged_by": "jsomwarux",
+    "origin_main_after": "153ef6860e0a1984c78cbeed53f0a335de4f5871"
+  },
+  "post_merge_verification": {
+    "result": "PASS",
+    "clean_clone": "/Users/jtsomwaru/.cache/c2-postmerge at 153ef686",
+    "suite": "421 passed, 0 failed, 0 skipped",
+    "byte_identity": "render-src + build-workflow leave the tree byte-identical (0 drift lines)",
+    "built_json": "cohort-two-prospect-discovery active=false, 57 nodes, disabled=[T1,N39,N43H], one credential (N22 anthropicApi); error-handler active=false, 4 nodes, 0 credentials; N08 $limit=50000",
+    "ci": "no CI configured in this repository; no checks to wait on"
+  },
+  "cap_probe": {
+    "authorized_by": "JT, 2026-09-17: one bounded read-only probe against the same N08 endpoint/filter to confirm the server honours $limit=50000.",
+    "method": "read-only HTTPS GETs to https://data.cityofnewyork.us/resource/feu5-w2e2.json (plus one to tesw-yqqr.json to build a genuine chunk the way N07/N07B do). Same $select and User-Agent as N08. No credentials, no app token, no auth header, no writes, no model call.",
+    "probed_at_utc": "2026-09-17T21:13-21:14Z",
+    "A_premise_does_the_server_honour_the_cap": {
+      "question": "F1 -- the sentry infers truncation from \"the server returned as many rows as we asked for\", which holds only if the server honours $limit exactly.",
+      "dataset_total_rows": 810494,
+      "request": "$select=<N08 select>&$limit=50000, unfiltered so the true result set far exceeds the cap",
+      "http_status": 200,
+      "rows_returned": 50000,
+      "verdict": "HONOURED. The server returned EXACTLY 50,000 of 810,494. It does not clamp below the asked-for page, so a full page is a real signal and the sentry CAN fire.",
+      "f1_status": "CLOSED by measurement"
+    },
+    "B_realistic_chunk": {
+      "request": "N08 shape over the newest 200 registrations (N07 ordering, offset 0)",
+      "http_status": 200,
+      "rows_returned": 0,
+      "true_count": 0,
+      "completeness": "PASS but VACUOUS (0 == 0) -- flagged, not relied on",
+      "note": "also re-confirms the D4 condition is still live against HPD today: the newest 200 registrations carry zero contact rows, HTTP 200."
+    },
+    "C_non_vacuous_completeness": {
+      "request": "N08 shape over the 10 registrations carrying the most contact rows in the dataset",
+      "http_status": 200,
+      "true_count": 30985,
+      "rows_returned": 30985,
+      "completeness": "PASS, NON-VACUOUS",
+      "sentry_triggered": false
+    },
+    "D_worst_case_bound": {
+      "largest_single_registration": {
+        "registrationid": "911741",
+        "contact_rows": 8688
+      },
+      "second_largest": {
+        "registrationid": "911715",
+        "contact_rows": 2325
+      },
+      "top10_sum": 30985,
+      "sum_of_200_largest_per_registration_counts": 51589,
+      "reading": "51,589 is the absolute ceiling for ANY 200-id chunk, i.e. 3% ABOVE the 50,000 cap. A deliberately constructed chunk of the 200 heaviest registrations WOULD hit the cap and trip the sentry. N07 selects by lastregistrationdate DESC, not by contact count, so that chunk is not naturally reachable -- but the margin at the extreme tail is thin, not comfortable.",
+      "distinct_registrations": 189762,
+      "mean_rows_per_registration": 4.27,
+      "typical_200_id_chunk": "~854 rows, about 1.7% of the cap"
+    },
+    "pinned_figures": "8,688 for 911741 and 2,325 for 911715 are now measured rather than quoted, closing the F2 provenance gap by value.",
+    "evidence_files": [
+      "/Users/jtsomwaru/.cache/c2-d13-cap-probe.json",
+      "/Users/jtsomwaru/.cache/c2-d13-cap-probe-2.json"
+    ]
+  },
+  "gate_decision": {
+    "rule_as_given": "exactly 50,000 returned -> sentry triggered, block the pilot, require a separate pagination design. Fewer than 50,000 AND the completeness check passes -> the single manual real-data pilot may resume, both workflows inactive.",
+    "observed": "No N08-shaped response returned 50,000. The realistic chunk returned 0; the adversarial heaviest-10 chunk returned 30,985 with a non-vacuous completeness PASS.",
+    "verdict": "PILOT MAY RESUME. Sentry not triggered; completeness passes non-vacuously; both workflows remain inactive.",
+    "caveat_for_jt": "The theoretical ceiling for a 200-id chunk is 51,589, 3% above the cap. Not reachable by N07 ordering, and the sentry fails closed if it ever happens -- but the cap is not comfortably above the worst case. If a future change makes chunk membership correlate with contact volume, revisit before relying on it."
+  }
+}

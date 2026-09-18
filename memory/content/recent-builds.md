@@ -20,6 +20,14 @@
 
 <!-- Entries appended below — most recent first -->
 
+## AI Workflow Growth OS Cohort-Two Inactive n8n Deployment — 2026-09-17
+**What:** Deployed the reviewed 57-node discovery workflow and 4-node error workflow to local n8n with filesystem/node restrictions, while keeping every production boundary inactive.
+**For:** internal consulting growth system.
+**Outcome:** 261 tests passed; one isolated 35-node loopback-only n8n execution succeeded; zero send-capable nodes or external calls; six inactive probes removed; 11 existing active workflows preserved.
+**Demonstrates:** n8n architecture, fail-closed deployment, fixture-backed runtime validation, and least-privilege release controls.
+**Content angle:** Offline tests are not deployment proof. A controlled loopback execution caught the runtime boundary without touching a real prospect or send path.
+**Status:** complete.
+
 ## Growth OS Canonical Proof + n8n Build Blueprint — 2026-09-16
 **What:** Bound the approved COI claim to merged live-system evidence, created the canonical JT-verified proof card, and reconciled the full cohort-two n8n discovery blueprint against current owner/runtime contracts.
 **For:** internal.

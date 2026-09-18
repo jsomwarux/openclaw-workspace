@@ -1263,3 +1263,10 @@ Primary source: OpenAI API Reference, Retrieve model https://developers.openai.c
 **JT relevance:** no configuration, model, provider, credential, workflow, Mission Control, or recurring-schedule change is justified from this check. Recording the no-delta result prevents duplicate monitoring later today.
 
 Official sources checked: OpenAI API documentation https://platform.openai.com/docs/api-reference/introduction; OpenAI models reference https://platform.openai.com/docs/api-reference/models; n8n release notes https://docs.n8n.io/release-notes/
+## Sep 17, 2026 - Heartbeat AI Tool Monitoring
+
+**OpenAI's Sora video API is deprecated and scheduled to shut down on September 24, 2026.** The official video API reference marks the create/retrieve surface deprecated and gives September 24 as the permanent shutdown date. A workspace scan found no live Sora API integration or direct `/videos` dependency requiring migration.
+
+**JT relevance:** treat API deprecation dates as a fail-closed deployment gate. Before a dated shutdown, inventory callers, export any assets that must be retained, select and validate a replacement path, and remove or disable the old endpoint before the deadline. No model, credential, provider, workflow, Mission Control task, or recurring schedule was changed.
+
+Primary source: OpenAI API Reference, Create a video https://developers.openai.com/api/reference/typescript/resources/videos/methods/create
