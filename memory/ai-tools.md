@@ -1270,3 +1270,11 @@ Official sources checked: OpenAI API documentation https://platform.openai.com/d
 **JT relevance:** treat API deprecation dates as a fail-closed deployment gate. Before a dated shutdown, inventory callers, export any assets that must be retained, select and validate a replacement path, and remove or disable the old endpoint before the deadline. No model, credential, provider, workflow, Mission Control task, or recurring schedule was changed.
 
 Primary source: OpenAI API Reference, Create a video https://developers.openai.com/api/reference/typescript/resources/videos/methods/create
+
+## Sep 18, 2026 - Heartbeat AI Tool Monitoring
+
+**OpenAI now supports organization- and project-level governance over who may create new API keys.** The official September 15 changelog says administrators can allow only service-account keys, allow only user-owned project keys, or disable all new API-key creation. Organization restrictions take precedence over project settings, and existing keys are unaffected. This complements the September 10 controls for project-key expiration and maximum key lifetime.
+
+**JT relevance:** for future production workflow deployments, make credential issuance a policy-controlled step: prefer service-account ownership for unattended automation, set an expiration/maximum lifetime, record the owner and rotation deadline, and verify that organization policy matches the intended runtime identity. Because existing keys are unaffected, enabling creation restrictions is not a substitute for rotating a credential already exposed or over-scoped. This is a governance/design rule only; no key, credential, provider, workflow, Mission Control task, or recurring schedule was changed.
+
+Primary source: OpenAI API Changelog, September 15, 2026 https://developers.openai.com/api/docs/changelog

@@ -29,6 +29,7 @@ REPORT_DIR = ROOT / "reports" / "mission-control-priority"
 PRIORITY_RANK = {"high": 0, "medium": 1, "low": 2}
 REQUIRED_DESCRIPTION_MARKERS = ("First action:", "Why it matters:")
 DONE_MARKERS = ("Done state:", "Done looks like:")
+IMMUTABLE_TASK_TITLE_PREFIXES = ("review outreach draft:",)
 
 # Explicit top layer. These are title fragments, not IDs, so the rule survives task recreation.
 TOP_RULES: list[tuple[str, int, str]] = [
@@ -220,6 +221,12 @@ def desired_for(task: dict[str, Any]) -> tuple[dict[str, Any] | None, str | None
     title = str(task.get("title") or "")
     project = str(task.get("project") or "")
     desc = str(task.get("description") or "")
+
+    # Outreach-review cards are owned by the review workflow and reject generic
+    # task PATCH mutations. Report them as quality/uncontrolled-high signals,
+    # but do not attempt to normalize them through this generic auditor.
+    if title.lower().startswith(IMMUTABLE_TASK_TITLE_PREFIXES):
+        return None, None
 
     top = matched_top_rule(title)
     if top:

@@ -1,13 +1,14 @@
 # State: Friday Scoreboard
 
 ## Current
-1. Last completed run: 2026-08-14T20:00:00Z
-2. Cursor: week ending 2026-08-14
-3. Open items: August cash is $0 collected / $10,000 gap to $10K; Altmark $2,250 remains blocked on client/JT go-live gates; DHCR is delivery-track pending; MSI remaining $5,400 is delivery/completion-invoice context; backup alerts repeat `n8n-agent` remote-ahead failure and need JT-approved supervised repo divergence handling.
-4. Last failure: none
+1. Last completed run: 2026-09-18T20:00:00Z
+2. Cursor: week ending 2026-09-18
+3. Open items: September consulting cash is $5,400 / $4,600 gap; Altmark rent delinquency remains blocked; five cohort-one M2 checks are due 2026-09-22 only for nonresponders and their files contain M1 only; Aya/Andrew acquisition sourcing has no paid pilot/spec/economics; four repeat-offender structural fixes remain staged yellow.
+4. Last failure: `state-skip` — this run wrote its started marker after initial evidence reads. Same-run artifact and fresh verifier verdict remain valid; the failure is not hidden.
 5. Started marker:
 
 ## Runs, last 5, newest first
+1. 2026-09-18T20:00:00Z - Friday Scoreboard completed with fresh verifier `CONFIRMED`. Artifacts: `memory/audits/friday-scoreboards/2026-09-18.md`, `memory/audits/repeat-offenders/2026-09-18.md`, `memory/job-state/claims/friday-scoreboard-2026-09-18.md`, proof `59766ac3`. Cursor: 2026-09-12 through 2026-09-18 16:00 ET. Failures: `state-skip`; 31 cron errors; repeat offenders `auth-failure`, `builder-verifier-conflict`, `state-skip`, `other-skill-size-limit`; unverified claim files 1. Registry 13 versus prior comparison 14. Next expected: 2026-09-25T20:00:00Z.
 1. 2026-08-14T20:00:00Z - Friday Scoreboard completed. Artifacts: `memory/audits/friday-scoreboards/2026-08-14.md`, `memory/audits/repeat-offenders/2026-08-14.md`. Cursor: 2026-08-08 to 2026-08-14. Failures: repeat offenders `other-backup-remote-ahead`, `other-rate-limit`, `unverified-claim`; cron run failures 4 from Nightly Claude Delta rate-limit retries; registry stayed 12. Claim file: none. Next expected: 2026-08-21.
 1. 2026-08-07T20:00:00Z - Friday Scoreboard completed. Artifacts: `memory/audits/friday-scoreboards/2026-08-07.md`, `memory/audits/repeat-offenders/2026-08-07.md`. Cursor: 2026-08-01 to 2026-08-07. Failures: repeat offender `other-backup-remote-ahead`; unverified claim `Weekly Systems Review cash source`; registry reduced 13 to 12 after JT-requested health/protocol cron cancellation. Claim file: none. Next expected: 2026-08-14.
 1. 2026-07-31T20:00:00Z - Friday Scoreboard completed. Artifacts: `memory/audits/friday-scoreboards/2026-07-31.md`, `memory/audits/repeat-offenders/2026-07-31.md`. Cursor: 2026-07-25 to 2026-07-31. Failures: repeat offender `other-command-form`; unverified claim `Weekly Systems Review cash source`; registry reduced 14 to 13. Claim file: none. Next expected: 2026-08-07.
