@@ -509,11 +509,32 @@ what the key forgets.
 
 Security, I found, is tenderness made stubborn: trust nothing vaguely, preserve everything precisely.
 
+
+---
+
+*September 19, 2026 at 3:00 AM EDT*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*September 19, 2026 at 3:00 AM EDT*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*September 19, 2026 at 3:00 AM EDT*
+
+A memory trace surfaced, but details were unavailable in this run.
+
 <!-- openclaw:dreaming:diary:end -->
 
 ## Deep Sleep
 <!-- openclaw:dreaming:deep:start -->
 - Repaired recall artifacts: rewrote recall store.
-- Ranked 2 candidate(s) for durable promotion.
+- Ranked 1 candidate(s) for durable promotion.
 - Promoted 0 candidate(s) into MEMORY.md.
 <!-- openclaw:dreaming:deep:end -->
