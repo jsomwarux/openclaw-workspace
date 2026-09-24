@@ -115,3 +115,19 @@
 **Demonstrates:** cron/artifact recovery, delivery-marker verification, internal ops self-healing, and local service repair.
 **Content angle:** A cron saying OK is not proof. The artifact, fresh delivery marker, and downstream task API need to agree.
 **Status:** complete.
+
+## Cohort-Two Bounded Two-Page Inactive Deployment — 2026-09-23
+**What:** Deployed the reviewed two-page source-continuation workflow into live n8n while preserving every activation and send boundary.
+**For:** internal AI Workflow Growth OS.
+**Outcome:** Live n8n now contains the exact 58-node main and 4-node error workflow from `41ef3bfb`; both are inactive, three external-action nodes are disabled, send-capable nodes are absent, 11 unrelated active workflows are unchanged, health is 200, and no new cohort execution occurred.
+**Demonstrates:** recoverable n8n deployment, source-to-runtime identity verification, bounded data-source continuation, and least-privilege release control.
+**Content angle:** A workflow can be fully deployed and still be structurally incapable of scheduling, posting, or sending until a separate pilot proves the data path.
+**Status:** complete and inactive.
+
+## Cohort-Two Verified Seed Roster v2 — 2026-09-23
+**What:** Expanded cohort-two discovery from an exhausted nine-organization universe to a fail-closed, evidence-bearing roster with verified hosts, geography provenance, and truthful short-run review copy.
+**For:** internal AI Workflow Growth OS.
+**Outcome:** PR #16 merged as `7863deee`; 20 organizations are retained in roster v2, including 13 new verified providers, and independent pre/post-merge clean-clone gates each passed 623 tests with zero failures/skips. The exact 58/4-node definitions and byte-identical roster v2 are now deployed inactive; all send/write/schedule boundaries remain disabled and no pilot ran.
+**Demonstrates:** evidence-backed prospect-universe expansion, generated n8n source discipline, adversarial hostname validation, and autonomous Claude-to-Eve reviewed PR integration.
+**Content angle:** More outreach volume is useless when the source universe is exhausted; the fix is evidence-bearing expansion with host, geography, and freshness contracts—not looser qualification.
+**Status:** complete and deployed inactive.

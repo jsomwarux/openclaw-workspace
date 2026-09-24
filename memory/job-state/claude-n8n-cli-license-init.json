@@ -1,0 +1,62 @@
+{
+ "status": "COMPLETE",
+ "lane": "n8n-cli-license-init",
+ "date": "2026-09-23",
+ "repo": "/Users/jtsomwaru/projects/n8n-agent (jsomwarux/n8n-agent, PRIVATE)",
+ "worktree": "/Users/jtsomwaru/projects/n8n-agent/.worktrees/n8n-cli-license-init",
+ "branch": "eve/n8n-cli-license-init",
+ "base_sha": "16c832caa1029fc5ca7ea9a81e8fd00a62414ffb",
+ "sha": "f3ca2d40679e472d5823f2072aaf37b41c5ba550",
+ "commits": {
+  "9150c77": "test (RED)",
+  "f4aec38": "launcher",
+  "f3ca2d4": "review-cycle-1 repair"
+ },
+ "pr_url": "https://github.com/jsomwarux/n8n-agent/pull/13",
+ "pr_state": "OPEN, MERGEABLE, not merged",
+ "remote_checks": "none configured on the repository (gh pr checks: no checks reported)",
+ "reviewer_verdict": "Cycle 1 (f4aec38): REJECT. D1 (a trailing -v/-V/--version ran the workflow; stock bin/n8n prints the version and runs nothing) was reproduced. D2 (9 guards untested) and D3 (a misleading construction-order comment) were also found. All fixed in f3ca2d4. Cycle 2 (f3ca2d4, fresh reviewer, clean clone): CONFIRM, no reproduced defects, 43/44 mutants killed.",
+ "red_evidence": "At test commit 9150c77 with no launcher: 34 tests, 2 pass, 32 fail",
+ "focused_results": "node --test scripts/test/: 45 passed, 0 failed, 0 skipped",
+ "full_results": "cohort-two C2_JT_OPS=<jt-ops 727213ba> node test/run-tests.js: 526 passed, 0 failed, 0 skipped, exit 0; plus launcher suite 45/0/0",
+ "clean_clone_results": "Fresh clone at f3ca2d4: launcher 45/0/0; cohort-two 526/0/0 exit 0; git status clean; credential scan of 16c832c..f3ca2d4 clean; repo visibility PRIVATE",
+ "skip_count": 0,
+ "mutation": "Author: 26 + 10 mutants, all killed after repair. Reviewer 1: 40 mutants, 9 survived, all since covered. Reviewer 2: 44 mutants, 43 killed. The survivor moves bootstrap() after loadSurface(); no test pins that order (residual).",
+ "files_changed": [
+  "scripts/n8n-licensed-execute.cjs (new)",
+  "scripts/lib/n8n-licensed-execute-core.cjs (new)",
+  "scripts/test/n8n-licensed-execute.test.cjs (new, 45 tests)",
+  "tasks/lessons.md (#179)",
+  "tasks/todo.md"
+ ],
+ "compatibility_contract": {
+  "n8n_root": "/opt/homebrew/lib/node_modules/n8n",
+  "n8n_version": "2.14.1 exact",
+  "sha256_pins": {
+   "bin/n8n": "26d8cc11e206ce8f94fee4bced4b3669a3c9bbdb2c135a8097dead429a70acf4",
+   "dist/command-registry.js": "86274f1631cb59a8175955ebb031c72c8ffb4d336f41fd287c4a03414bdd5cad",
+   "dist/commands/base-command.js": "bea7d85c573f8ffd92ee169c6241e75e6c7c3e0ed9066f06e314c32bd846841e",
+   "dist/commands/execute.js": "b8d09264adca7c2d404b95c17045a56d7e50684126610a48945e5504007628de",
+   "dist/license.js": "0b12e7abc541e094a6f2217db1161ada0d9b6909a135f421230eae0c4593eaca",
+   "node_modules/@n8n/backend-common/dist/license-state.js": "315e177184f916d4a7e291bc0ca7129f95d1de5de442f7006931e1cde9b2eab5",
+   "node_modules/@n8n/decorators/dist/command/command-metadata.js": "3cd3db4d63829ee943784909dae60d8f5d5d5b14cd2308130bb93b5cd460ba61",
+   "node_modules/@n8n/di/dist/di.js": "b1e221de2952b5fc706255954eca3819a9ec4b376f27ae0d894a8afde46ad46c"
+  },
+  "runtime_checks": "Container/LicenseState/CommandMetadata identity against the pinned files; Container.get/set; LicenseState.prototype.setLicenseProvider; licenseProvider own field === null; BaseCommand.prototype.initLicense; Execute own init, run, directly extends BaseCommand; CommandRegistry.prototype.execute; 'execute' registered to Execute",
+  "mechanism": "Mirror bin/n8n bootstrap -> Container.set(Execute, new LicensedExecute()) -> CommandRegistry.execute(). LicensedExecute.init = super.init(); refuse if a provider is preset or activationKey !== ''; initLicense() once; assert provider === this.license. run() refuses unless licensed init completed.",
+  "exit_codes": "n8n's own 0/1; 3 = launcher refusal, nothing ran",
+  "usage": "node scripts/n8n-licensed-execute.cjs execute --id=<workflowId> [--rawOutput]  (same env as n8n execute)",
+  "verified_against_install": "Version and all 8 hashes matched the installed package on 2026-09-23 (read-only hashing; no n8n module loaded)"
+ },
+ "residuals": [
+  "No test pins bootstrap() running before loadSurface(). The shipped order is correct.",
+  "Under the launcher, License's @OnShutdown hook is live. SIGINT/SIGTERM mid-run could detach floating entitlements (network call plus DB write) if the DB holds such a cert. Unverified; the DB was not read.",
+  "execute --help or invalid flags construct InstanceSettings before registry parsing, unlike stock. No effect on a real --id run.",
+  "If License SDK init fails, n8n logs 'Could not initialize license manager sdk' at error level. Whether that reaches stdout and breaks --rawOutput is unverified.",
+  "The launcher has never run against the live install (not authorized)."
+ ],
+ "blockers": [],
+ "not_done_by_design": "No live execution, pilot resumption, model/web call, credential access, installed-n8n edit, deploy, activate, schedule, send or merge.",
+ "next_owner": "Eve",
+ "exact_next_action": "Review and merge PR #13 (https://github.com/jsomwarux/n8n-agent/pull/13) with JT authorization. Then, under a separate JT authorization for the pilot resumption, invoke the controlled run as `node scripts/n8n-licensed-execute.cjs execute --id=<cohort workflow id> --rawOutput` with the existing pilot environment (file allowlist, NODES_EXCLUDE, alternate port/task-broker). Confirm stderr shows '[n8n-licensed-execute] license provider initialized (n8n 2.14.1)' and that N22 no longer fails with the provider error."
+}

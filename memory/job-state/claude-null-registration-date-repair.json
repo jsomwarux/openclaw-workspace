@@ -1,0 +1,64 @@
+{
+  "status": "COMPLETE",
+  "lane": "null-registration-date-repair",
+  "date": "2026-09-23",
+  "base_sha": "ef641355f014d79096c5c0cac6591224d934b23b",
+  "branch": "eve/c2-null-registration-date-repair",
+  "final_sha": "3ff246b0484f957dcb493c19b1e4160e5b5106fe",
+  "commits": {
+    "25577ce": "test (RED)",
+    "5689bc6": "fix",
+    "3ff246b": "docs"
+  },
+  "pr_url": "https://github.com/jsomwarux/n8n-agent/pull/12",
+  "pr_state": "OPEN, MERGEABLE, not merged",
+  "checks": "none configured on the repository (gh pr checks: no checks reported)",
+  "root_cause": "Socrata omits null-valued keys. N07 ordered lastregistrationdate DESC, which SODA sorts NULL FIRST, and 3,342/203,887 registrations have a null date, so the 400-row first page carried the key on no row. N09's assertFields took 'no row has the key' to mean the column had been removed. The same misclassification applied to 8 nullable contacts columns and to zip. Separately, $order had no tie-breaker, so paging was nondeterministic across the null and equal-date runs, and last_registration_date_seen was never derived: N30 carried the bootstrap null forward.",
+  "chosen_policy": {
+    "schema": "Presence-check only the never-null columns (live count(col)==count(*)). The existence of nullable columns is proven by $select/$order, since SODA answers an unknown column with HTTP 400 query.soql.no-such-column and N07/N08 have no neverError. The field lists and nullable subsets are one shared definition (sodaFields) that builds both $select values and is pinned to test/fixtures/soda/nullability.json.",
+    "order": "lastregistrationdate DESC NULL FIRST,registrationid ASC,buildingid ASC,:id ASC. The null placement is unchanged, so rows are not reordered and the live cursor at offset 0 needs no recovery.",
+    "coverage": "No rows are excluded. All 3,342 null-dated registrations are framed.",
+    "cursor": "last_registration_date_seen is the lastregistrationdate of the page's last row in server order, as YYYY-MM-DD, or null. It is audit-only with no fallback, and N30 refuses a missing or malformed value. offset remains the sole paging input and advances as before."
+  },
+  "files_changed": [
+    "clients/cohort-two-discovery/src/lib/shared.js",
+    "clients/cohort-two-discovery/src/nodes/N09.js",
+    "clients/cohort-two-discovery/src/nodes/N30.js",
+    "clients/cohort-two-discovery/src/N09.js",
+    "clients/cohort-two-discovery/src/N30.js",
+    "clients/cohort-two-discovery/tools/build-workflow.js",
+    "clients/cohort-two-discovery/tools/capture-soda-nullability.js (new)",
+    "clients/cohort-two-discovery/test/null-registration-date.test.js (new, 22 tests)",
+    "clients/cohort-two-discovery/test/fixtures/soda/nullability.json (new, counts only)",
+    "clients/cohort-two-discovery/test/empty-contact-transport.test.js (D4 drift test retargeted from nullable businessstate to never-null type)",
+    "workflows/cohort-two-prospect-discovery.json ($order + N09/N30 jsCode)",
+    "clients/cohort-two-discovery/FINDINGS.md",
+    "clients/cohort-two-discovery/README.md",
+    "tasks/cohort-two-prospect-discovery-blueprint.md (r21)",
+    "tasks/lessons.md (#178)"
+  ],
+  "red_evidence": "The test commit 25577ce against the base code gave 15/22 new tests failing (full suite 510 passed, 16 failed). The headline failures reproduce the production error verbatim: 'N09: frame-schema-drift: tesw-yqqr.lastregistrationdate' (x3), 'feu5-w2e2.contactdescription' (x2), the undefined last date, and the inherited cursor date '2011-01-04'.",
+  "focused_results": "test/null-registration-date.test.js: 22 passed, 0 failed",
+  "full_results": "526 passed, 0 failed, 0 skipped, exit 0, with C2_JT_OPS set to a jt-ops checkout containing 727213ba and the proof card bootstrapped and verified",
+  "mutation_results": "The author ran 10 mutants (nullable skip removed, required check no-op, N30 fallback restored, first row instead of last, :id dropped, buildingid classified nullable, N09 derives null, malformed date accepted, each N30 guard removed) and all were killed; restoring gave green. The reviewer ran 20 mutants and killed 19. The survivor was equivalent (String(v).slice vs m[1] behind the same regex).",
+  "reviewer": "A fresh non-builder hostile reviewer checked 3ff246b0 in a clean clone and returned VERDICT: CONFIRM with no reproduced defects. The reviewer independently verified the live 400 no-such-column response, the :id ordering, and the null-to-dated page boundary with no overlap or gap.",
+  "clean_clone_gate": "A clone at 3ff246b0 gave 526/0/0, exit 0. Re-render and rebuild left git status empty (source/render/export parity). The credential/PII scan was clean. Visibility was PRIVATE immediately before the push.",
+  "live_public_evidence": [
+    "GET tesw-yqqr count(col) per selected field: total 203887, lastregistrationdate 200545, zip 203880, others equal to total; registrationid distinct 194218; (registrationid,buildingid) pairs not unique",
+    "GET feu5-w2e2 count(col): total 810494; registrationid and type non-null; 8 nullable",
+    "/api/views metadata: lastregistrationdate is calendar_date",
+    "The N07 query at offset 0 (old order) returned 400 rows, 0 of them carrying lastregistrationdate",
+    "An unknown column in $select or $order returns HTTP 400 query.soql.no-such-column; the server echoes DESC NULL FIRST",
+    "Under FRAME_ORDER, 10x400 pages returned 4000 distinct :id values, 3342 nulls first, the first dated row at index 3342, and offset 0 was identical on repeat",
+    "Local n8n execution 1719 (read-only sqlite): status error, runData N01..N09 only, lastNode N09"
+  ],
+  "boundaries": "Both exports are active:false; T1, N39 and N43H are disabled; there are zero send-capable nodes. There were no model calls, no credential access, no live n8n edits, no import or deploy, no pilot run, and no schedule, activation, write or send. The live state/frame-cursor.json was read only (offset 0).",
+  "residuals": [
+    "Offset paging over a mutable sort key can re-read or skip rows at the seam between weekly runs. This predates the change, loses discovery only, and would need a keyset pagination redesign.",
+    "The never-null classification is a snapshot from 2026-09-23. If a never-null column later becomes null across a whole page, the run fails closed; refresh with tools/capture-soda-nullability.js.",
+    "Reviewer note: no test asserts that N07/N08 never gain onError:continue (neverError is asserted)."
+  ],
+  "blockers": [],
+  "next_owner": "JT",
+  "next_action": "Review and merge PR #12 (https://github.com/jsomwarux/n8n-agent/pull/12) at 3ff246b0. After merging, re-import the inactive workflow definition into the local n8n (manual/authorized step), then re-run the already-authorized pilot. The cursor stays at offset 0, and the first 8 pages are null-dated registrations by design."
+}

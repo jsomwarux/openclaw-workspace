@@ -38,6 +38,12 @@ Things like:
 
 Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
 
+### Mac Mini Remote SSH
+
+- Tailnet host: `jts-mac-mini.tailaf2fd2.ts.net`; Tailscale IPv4: `100.118.74.7`; macOS user: `jtsomwaru`.
+- Before telling JT remote SSH is ready, prove the full data path, not only the SSH listener: `tailscale status` must have no MagicSock receive warning, `tailscale ping <laptop-peer>` must succeed, and a peer must complete TCP port 22. A node can appear online while its Tailscale receive loop is dead.
+- If `tailscale status` reports `MagicSock function ReceiveIPv4 is not running`, SSH timeouts are expected even when port 22 listens locally and the firewall allows SSH. First recovery: quit and relaunch the Tailscale macOS app, then re-run the peer and TCP tests. Do not change SSH or firewall settings before the Tailscale data plane is healthy.
+
 ---
 
 ## Health Tracking System

@@ -1,6 +1,6 @@
 ---
 name: "claude-lane-controller"
-description: "Delegate bounded Claude Code lanes; produces reviewed PRs and durable Eve handoffs without JT relaying outputs."
+description: "Delegate bounded Claude Code lanes with reviewed PRs and verified direct Eve handoffs."
 ---
 
 # Claude Lane Controller
@@ -9,7 +9,7 @@ Use this procedure when Claude Code should implement a bounded coding or workflo
 
 ## Procedure
 
-1. **Define one bounded lane.** Name one repository/worktree, branch, exact starting SHA, upstream base, governing plan/spec, allowed files, prohibited actions, and absolute JSON handoff path. Finish when every precondition is explicit and independently checkable.
+1. **Define one bounded lane.** Name one repository/worktree, branch, exact starting SHA, upstream base, governing plan/spec, allowed files, prohibited actions, absolute JSON handoff path, and Eve's exact OpenClaw session key. Finish when every precondition is explicit and independently checkable.
 
 2. **Launch one controller session in the owning repository.** Tell Claude to verify the exact branch, SHA, and clean worktree before editing; read `CLAUDE.md`, `AGENTS.md` when present, lessons files, the governing spec, and the complete base-to-head diff. Require a `BLOCKED` handoff and stop if any precondition differs.
 
@@ -35,11 +35,11 @@ Use this procedure when Claude Code should implement a bounded coding or workflo
 
    For `HUMAN_DECISION`, `next_action` must contain one exact canonical proposal, its evidence source, and the literal approval/revision response expected from JT. Do not offer alternate model-written wording or interpret an approval phrase inside Claude. Stop the lane; Eve records JT's decision against the exact proposed bytes, updates the authoritative artifact, and then resumes or relaunches the controller.
 
-9. **Notify Eve directly.** Run:
+9. **Notify Eve directly and verify delivery.** Run:
 
-   `openclaw system event --text "Claude lane <lane>: <status>; handoff at <absolute-path>" --mode now`
+   `openclaw system event --session-key "<exact-eve-session-key>" --text "Claude lane <lane>: <status>; handoff at <absolute-path>" --mode now --expect-final --json`
 
-   Return only one terminal line: status plus handoff path. Do not narrate progress to JT or require JT to paste Claude output into Eve.
+   Require exit 0 and a successful JSON response. If delivery fails, retry the same command once. If it still fails, preserve the completed handoff and return `BLOCKED_NOTIFICATION`; do not claim Eve was notified. Return only one terminal line: status plus handoff path and notification result. Do not narrate progress to JT or require JT to paste Claude output into Eve.
 
 ## Concurrency and dependency rules
 
@@ -55,7 +55,7 @@ Eve reads the JSON handoff and compact diff, verifies the claimed SHA/PR/CI, and
 
 ## Failure controls
 
-- Missing repository, branch, SHA, authority, credential, or governing artifact produces `BLOCKED`, not reconstruction or guessing.
+- Missing repository, branch, SHA, authority, credential, governing artifact, or exact Eve session key produces `BLOCKED`, not reconstruction or guessing.
 - Tool/model policy failure is reported as infrastructure failure, not an implementation verdict.
 - Never treat green builder tests as release acceptance without fresh review.
 - Never let a handoff claim merge, deploy, activation, schedule, purchase, or send unless JT separately authorized and the owning controller actually verified it.

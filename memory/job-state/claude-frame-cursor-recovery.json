@@ -1,0 +1,55 @@
+{
+  "lane": "frame-cursor-recovery",
+  "status": "CONFIRMED_PR_OPEN",
+  "updated_at": "2026-09-23",
+  "repository": "jsomwarux/n8n-agent",
+  "visibility": "PRIVATE",
+  "branch": "eve/c2-frame-cursor-explicit-recovery",
+  "worktree": "/Users/jtsomwaru/projects/n8n-agent/.claude/worktrees/c2-frame-cursor-explicit-recovery",
+  "base_sha": "0ff01144f2acff5eb808bd6420190705c6a7080f",
+  "final_sha": "3f3683db27eda9476ddfb9a522e8143abc363175",
+  "pr_url": "https://github.com/jsomwarux/n8n-agent/pull/11",
+  "files_changed": [
+    "clients/cohort-two-discovery/tools/recover-pristine-frame-cursor.js (new)",
+    "clients/cohort-two-discovery/test/recover-frame-cursor.test.js (new, 55 tests)",
+    "clients/cohort-two-discovery/FINDINGS.md (operating note with exact command + pinned hashes; count 504)",
+    "clients/cohort-two-discovery/README.md (bootstrap section pointer; count 504)",
+    "tasks/cohort-two-prospect-discovery-blueprint.md (r20 row; section 12 step 2 no longer spells out legacy shapes for hand-writing; cursor semantics include schema_version)"
+  ],
+  "unchanged_verified": [
+    "clients/cohort-two-discovery/tools/bootstrap.js",
+    "clients/cohort-two-discovery/tools/recover-pristine-ledger-watermark.js",
+    "clients/cohort-two-discovery/src/",
+    "workflows/",
+    "tasks/lessons.md"
+  ],
+  "pinned_contract": {
+    "file_name": "frame-cursor.json",
+    "legacy": { "bytes": 105, "sha256": "df4e499feaac1162845a6b19c270e1ffa0842860063fd40b8ea66aa0ad4b145c" },
+    "recovered": { "bytes": 147, "sha256": "88bbaec379d22d82a7f553cc12998d677e261b86757dad109695004c0fc05cf5" }
+  },
+  "baseline": "449 passed, 0 failed, 0 skipped at base in the bootstrapped worktree",
+  "red_evidence": {
+    "before_tool_existed": "test/recover-frame-cursor.test.js: 6 passed, 48 failed, 0 skipped; every failure 'Cannot find module tools/recover-pristine-frame-cursor.js'; the 6 passes characterize existing N03/bootstrap behavior (N03 rejects legacy with cursor-schema-version-unexpected and accepts recovered; bootstrap keeps legacy byte-for-byte/same inode/mtime; bootstrap fresh cursor == recovered bytes)",
+    "per_guard": "every guard proven red by mutation (see mutation_results); a test for post-rename scratch-path ownership was added after mutant M72 survived and is red against it"
+  },
+  "focused_results": "55 passed, 0 failed, 0 skipped",
+  "full_results": "504 passed, 0 failed, 0 skipped (worktree, bootstrapped with jt-ops 727213ba proof card)",
+  "clean_clone_no_skips_gate": "504 passed, 0 failed, 0 skipped, exit 0, clean clone at 3f3683db",
+  "mutation_results": {
+    "author": "53 mutants: 52 killed, 1 equivalent (M25 pre-rename lstat re-check, fully repeated by the second O_NOFOLLOW readTarget). M72 (cleanup ignoring rename state) initially survived because the prior test hooked io.unlinkSync while cleanup uses fs.unlinkSync (vacuous); replaced with a filesystem-observed test, now killed. M41 (no-progress write) killed by timeout.",
+    "reviewer": "97 mutants; survivors classified: equivalent (redundant length/compare/sha terms, empty-string check, pid in scratch name, lstat re-check terms, first-lstat nlink, final isFile, fd close via io, dev check) and non-blocking test gaps (no race injected between re-check lstat and re-check open, so readTarget ino/nlink/O_NOFOLLOW/O_NONBLOCK removals survive; tool itself refuses all 10 such swaps; 0o7777 mask; ENOTSUP/EPERM/EACCES/EBADF allowlist entries untested; scratch read-back legacy/O_NOFOLLOW)"
+  },
+  "reviewer_verdict": "CONFIRM (fresh non-builder, clean clone at exact SHA 3f3683db; 83 extra byte variants all refused untouched; systematic race sweep 9 swap types x 22 pre-rename io calls, all swaps through the re-check open refused; no reproduced defects)",
+  "reviewer_low_findings": [
+    "setuid/setgid/sticky bits dropped by & 0o777 (same as reviewed ledger tool; narrows access only)",
+    "modes 000/200 give exit 4 io-error:EACCES with target untouched and target_replaced false"
+  ],
+  "lesson": "none added; covered by lesson #177 (explicit byte-bound recovery) and #136 (stale doc reintroducing a defect); FINDINGS references #177",
+  "credential_scan": "no hits in the base..final diff",
+  "clean_worktree": true,
+  "live_state_touched": false,
+  "not_done_by_design": ["merge", "deploy", "activate", "schedule", "run n8n", "run the recovery on live state", "resume pilot", "send"],
+  "blockers": [],
+  "next_action": "JT/Eve review and merge PR #11. After merge, in the deploy checkout, a person runs exactly: node clients/cohort-two-discovery/tools/recover-pristine-frame-cursor.js --cursor /Users/jtsomwaru/projects/n8n-agent/clients/cohort-two-discovery/state/frame-cursor.json and expects 'recovered ... 105 bytes sha256 df4e499f... -> 147 bytes sha256 88bbaec3...' or 'already-recovered'; exit 3 means the live cursor is not the pristine legacy payload and needs a human decision. Optional follow-up: add a race test between the re-check lstat and open to pin the readTarget guards."
+}

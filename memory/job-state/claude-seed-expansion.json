@@ -1,0 +1,235 @@
+{
+  "lane": "cohort-two-seed-expansion",
+  "status": "COMPLETE",
+  "status_reason": "Authorized repair cycle 3 done; fresh reviewer CONFIRMED the exact SHA; pushed; PR #16 opened against main at the confirmed SHA and not merged. The earlier BLOCKED state (invalid gh token) was cleared when JT ran gh auth login -h github.com in-session.",
+  "written_at": "2026-09-24",
+  "repo": "/Users/jtsomwaru/projects/n8n-agent (remote https://github.com/jsomwarux/n8n-agent.git, PRIVATE)",
+  "base_sha": "41ef3bfb49dd6a0579377355cc5d0af7ce442093",
+  "branch": "eve/cohort-two-seed-expansion",
+  "branch_location": "/Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-cohort-two-seed-expansion (pushed to origin/eve/cohort-two-seed-expansion)",
+  "final_sha": "4e86de7904829fa96b6e46301f9df57750d7fb91",
+  "final_sha_pushed": true,
+  "pr_url": "https://github.com/jsomwarux/n8n-agent/pull/16",
+  "commits": [
+    "57ab952 test: pin the seed roster v2, verified-host and truthful-card contracts (red)",
+    "e04b2b5 feat: validate seed roster v2 in N03, verified hosts in N09, truthful short-run card in N33",
+    "3e366eb feat: derive roster v2 from authored sources, adding 13 verified providers",
+    "98a05f1 test: move every roster scenario to v2 and re-state the rules v2 reverses",
+    "4f17257 docs: D16 seed roster v2 in README, FINDINGS and blueprint r23; lessons #181-182",
+    "0cb0ce7 fix: check every live HPD row of a roster organization for a state conflict (repair cycle 1)",
+    "5fa4a9b docs: D16 review repair, exact roster expiry, and residuals stated",
+    "7cf9e1d fix: refuse a blank borough, and exclude roster entries whose own HPD rows disagree (repair cycle 2)",
+    "cd96e8b docs: D16 second review repair, roster at 20, lesson #183",
+    "7f5eb19 test: special-use and private host suffixes must be refused as roster hosts (red)",
+    "d794397 fix: refuse special-use and private TLDs as registrable roster hosts (repair cycle 3)",
+    "4e86de7 docs: D16 third review repair, special-use host boundary, lesson #184"
+  ],
+  "defects_reproduced_before_implementation": [
+    "N03 accepted a roster entry with no verified hosts, no segment evidence and geography_verified_at 2020-01-01",
+    "N09 built roster-only candidate hosts as name-derived guesses (quarryhillsupportive.org/.com/quarry-hill-supportive.org)",
+    "N03 did not age roster evidence",
+    "N33 card at records_written 0: 'Cohort two: 0 prospects ready to commit', 'confirm the five buyers', 'Approve or reject the cohort as a whole'"
+  ],
+  "roster": {
+    "schema_version": "c2-seed-roster-v2",
+    "organizations": 20,
+    "from_cohort_one_kept": 7,
+    "new_surviving_count": 13,
+    "new_surviving_names": [
+      "Center for Urban Community Services",
+      "FACES NY",
+      "Odyssey House",
+      "Unique People Services",
+      "HELP USA",
+      "Housing Plus Solutions",
+      "Housing Works",
+      "LESC (Lower Eastside Service Center)",
+      "Praxis Housing Initiatives",
+      "The Fortune Society",
+      "Women In Need",
+      "Samaritan Daytop Village",
+      "Transitional Services for New York"
+    ],
+    "evidence_expires_at": "2026-10-23T22:32:59Z (30-day window; N03 refuses the roster after that until tools/derive-roster-geography.js is re-run)",
+    "omitted": [
+      {
+        "name": "West Side Federation for Senior and Supportive Housing",
+        "group": "new candidate",
+        "reason": "HPD records it only under abbreviated or 50-character-truncated corporation names, so the lane's exact normalized-name rule matches no row. The rule was not loosened."
+      },
+      {
+        "name": "Housing and Services, Inc.",
+        "group": "cohort one",
+        "reason": "No verifiable official host. housingandservices.org does not resolve; hasinc.org is an unrelated HVAC company. Not guessed."
+      },
+      {
+        "name": "Urban Pathways",
+        "group": "cohort one",
+        "reason": "Its own HPD rows disagree on businessstate (NY x7, NJ x1 Agent row). The design excludes conflicting candidates; kept, it would stop N09 every run that reached the NJ row."
+      }
+    ],
+    "notes": [
+      "LESC is named exactly as HPD registers it, because the site's own name does not match HPD's normalized key.",
+      "TSINY's segment evidence is the HPD qualified-developer list; its about page verifies the host only."
+    ],
+    "verified_under_fixed_helper": "All 20 verified hosts pass the fixed isRegistrableHost; validateSeedRoster(committed roster) is true at the real clock (2026-09-24T01:28:50Z, maxAgeDays 30, config denied_hosts); config/ unchanged in cycle 3"
+  },
+  "verification_at_final_sha": {
+    "sha": "4e86de7904829fa96b6e46301f9df57750d7fb91",
+    "focused": "test/seed-roster-v2.test.js 47 passed, 0 failed, 0 skipped",
+    "full_suite": "623 passed, 0 failed, 0 skipped, exit 0 (bootstrapped worktree at 4e86de7); reviewer got the same in a clean bootstrapped clone",
+    "zero_skip": true,
+    "generation_equality": "render-src.js (20 bodies from 25 blocks) + build-workflow.js (58 + 4 nodes) leave git status empty",
+    "topology": "main 58 nodes, error handler 4 nodes. vs cd96e8b: connections, settings and node names/order equal; no non-jsCode changes; only N03 jsCode changed; error workflow identical. vs base 41ef3bf: only N03, N09 and N33 jsCode changed. topology/src-render/node-params/boundaries/uncovered-bodies/documented-counts: 78 passed.",
+    "inactive_send_free": "both workflows active:false; T1 Weekly Schedule, N39 POST Mission Control Card and N43H Heartbeat Ping disabled:true; 0 send-capable nodes in either workflow",
+    "security_scan": "cd96e8b..HEAD (82 added lines) and base..HEAD (4450): no credential patterns; emails only synthetic (a@x.org, a@nyc.gov, user@somewhere.org); IPs only 10.0.0.1 (test input) and the pre-existing 127.0.0.1 loopback guard re-emitted inside N03 jsCode; no phone numbers",
+    "visibility": "PRIVATE: gh repo view jsomwarux/n8n-agent returned visibility PRIVATE, isPrivate true (after re-authentication). Before that, an unauthenticated API GET returned 404.",
+    "clean_worktree": true,
+    "provider_survival": "13 new providers survive (floor 10): see roster.new_surviving_names"
+  },
+  "reviews": [
+    {
+      "reviewed_sha": "4f172574a879c1d32f750cca2062760d3f03177e",
+      "verdict": "FAIL",
+      "defect": "N09 roster-conflict check ran only on a framed candidate's first-registration state; below-min_buildings, later-row and non-winning Agent contradictions slipped through",
+      "repair": "0cb0ce7"
+    },
+    {
+      "reviewed_sha": "5fa4a9b27812bbe33e9749d4b079b207d69bb73c",
+      "verdict": "FAIL",
+      "defect": "validator admitted boros [''] (boroOf('') === ''); shipped roster carried Urban Pathways with observed NJ/NY, a known run-stopping conflict",
+      "repair": "7cf9e1d"
+    },
+    {
+      "reviewed_sha": "cd96e8b81328f4d59c1d29122ee96e6cb69cb652",
+      "verdict": "FAIL",
+      "defect": "isRegistrableHost (src/lib/shared.js:684-687) is a shape regex, so it accepts loopback and special-use names (admin.localhost, localhost.localdomain, printer.local, vault.internal, x.lan, x.home, x.corp, x.test, x.invalid, x.example, x.onion, x.arpa). They pass N03 and reach the N09 fetch plan. The test covers only the literal 'localhost'. No shipped entry uses such a host; the path is GET-only with no send.",
+      "repair": "d794397 (+ red 7f5eb19, docs 4e86de7), authorized as a final cycle"
+    },
+    {
+      "reviewed_sha": "4e86de7904829fa96b6e46301f9df57750d7fb91",
+      "verdict": "CONFIRM",
+      "clone": "/Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-seed-expansion-review-4e86de79 (clean, bootstrapped against jt-ops 727213ba)",
+      "blocking_defects": [],
+      "summary": "All 11 checks PASS. The special-use class was attacked across 12 TLDs x 6 labels x 4 host positions plus odd and coerced inputs, with zero admissions. Valid-host controls and every pre-existing rejection hold. No generated-source drift. Evidence boundary is exact (accepted at 2026-10-23T22:32:58Z, refused at 22:32:59Z). Geography conflicts stop N09. Exact-five card is byte-identical to base, and the short card is truthful. Workflows are inactive with no send path. Roster unchanged in cycle 3. 623/0/0. 12 mutants killed. Clone left clean.",
+      "non_blocking_notes": [
+        "FINDINGS says the short card \"says nothing about review\"; the card does contain negations (\"Nothing from this run is reviewable or sendable\", \"there is nothing to review\").",
+        "Lesson #184 does not restate the fixed-list residual (.alt, .intranet, .private, .mail, .docker, .localnet, .nip still pass); FINDINGS states it.",
+        "tools/derive-roster-geography.js has no --help handling: --help runs main(), which does live GETs and rewrites config/seed-roster.json (only --dry-run suppresses the write).",
+        "README D16 says \"ANY live HPD row\" stops the run; code and FINDINGS check only CorporateOwner/Agent rows.",
+        "README D16 has a stray duplicated \"FINDINGS, D16.\" line after the N13 sentence.",
+        "Blueprint r23 count updated to 623 but does not mention the third repair.",
+        "FINDINGS calls run-receipt.json and short-cohort-report.md \"the only artifacts a short run writes\"; a short run also writes mc-card-payload.json, COMPLETE.json and page snapshots.",
+        "Design goal was at least 14 new providers; 13 delivered (brief floor 10 met).",
+        "The suite validates the committed roster at evidence_derived_at, not the pinned clock; the reviewer separately validated it at the real clock."
+      ]
+    }
+  ],
+  "residuals_documented_in_findings_d16": [
+    "The N13 homepage-name gate is unchanged. Housing Plus Solutions is not on its homepage; LESC and Women In Need are likely misses. A miss is held domain-unresolved for 90 days (not burned), which shrinks the usable universe below 20.",
+    "Host 'identifies' is a case-insensitive substring. WIN's 'Win' cannot fail; WIN, LESC and FACES are independently backed by a verbatim quote on the same host.",
+    "Any NEW live HPD state disagreement with a roster entry stops the whole run at N09 (fail-closed by design); the cursor does not advance until a person re-derives.",
+    "The 3650-day out-of-scope-geography REJECT is no longer reachable by any production path (the non-punitive direction).",
+    "The design plan's verification line says 'at least 14 new'; 13 survived, which meets the brief's floor of 10.",
+    "The special-use host rule is a fixed 12-suffix list, not a public-suffix list; other special-use/private TLDs (e.g. .alt, .intranet, .private, .mail) still pass the shape rule."
+  ],
+  "boundaries_held": [
+    "no live n8n, live cohort state, credentials, secrets, OpenClaw config or Mission Control touched",
+    "no model calls, third-party search or enrichment APIs, outreach, drafting, sends, activation, schedule, heartbeat, suppression capability or pilot run",
+    "cycle 3 network: SSH git ls-remote and push to github.com/jsomwarux/n8n-agent, and one unauthenticated read-only GET to api.github.com/repos/jsomwarux/n8n-agent (visibility check); no other network",
+    "provider scope, roster contents, pagination, gates, ranking, prompts, output schemas, recheck semantics and downstream authority unchanged (config/ diff cd96e8b..HEAD empty; workflow change limited to N03 jsCode)",
+    "installed n8n package not modified; PR #16 opened and NOT merged; original nine commits not reset, squashed or discarded",
+    "after re-auth: gh read calls (auth status, repo view, pr list/view/checks, commit check-runs/status) and one gh pr create; no merge, no other GitHub write"
+  ],
+  "cleanup_pending": [
+    "review clones safe to delete: /Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-seed-expansion-review-4f172574, -5fa4a9b2, -cd96e8b8, -4e86de79",
+    "worktree kept for the PR: /Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-cohort-two-seed-expansion (clean at 4e86de7)"
+  ],
+  "blockers": [],
+  "next_owner": "JT (via Eve)",
+  "exact_next_action": "JT reviews PR #16 (https://github.com/jsomwarux/n8n-agent/pull/16, head 4e86de7904829fa96b6e46301f9df57750d7fb91) and decides whether to merge. Merge, deployment of the inactive workflows, and any activation, schedule, heartbeat, Mission Control write, suppression capability or pilot each remain separate JT authorizations. Before the next real run, note that roster evidence expires 2026-10-23T22:32:59Z (the proof card expires first, on 2026-10-17). The reviewer non-blocking notes are optional follow-ups for a separately authorized docs pass. The most practical is guarding tools/derive-roster-geography.js --help, which currently runs live GETs and rewrites the roster. Review clones listed in cleanup_pending can be deleted.",
+  "previous_sha": "cd96e8b81328f4d59c1d29122ee96e6cb69cb652",
+  "push": {
+    "command": "git push origin 4e86de7904829fa96b6e46301f9df57750d7fb91:refs/heads/eve/cohort-two-seed-expansion",
+    "exit": 0,
+    "remote_verified": "git ls-remote: refs/heads/eve/cohort-two-seed-expansion = 4e86de79...; refs/heads/main = 41ef3bfb... (unchanged)"
+  },
+  "pr_body_file": "/Users/jtsomwaru/.openclaw/workspace/memory/job-state/claude-seed-expansion.pr-body.md",
+  "checks": "No checks available: gh pr checks 16 reports \"no checks reported\"; the head commit has 0 check runs and 0 commit statuses (combined state \"pending\" with total_count 0 is GitHub's empty default); the repo has no .github/workflows at the final SHA.",
+  "repair_cycle_3": {
+    "authorization": "JT/Eve: one final bounded repair cycle, limited to the special-use/private hostname validation defect",
+    "reproduced_before_edit": "At cd96e8b all 12 suffixes (somewhere.<tld>) returned isRegistrableHost true, passed N03 and appeared in N09 candidate_host; so did admin.localhost, localhost.localdomain, printer.local and vault.internal",
+    "red": "Table-driven test \"refuses every special-use and private suffix, in the helper and at N03\" failed on vulnerable code: 72 admissions (24 hosts x helper, N03 first position, N03 behind a valid host). The control test passed.",
+    "fix": "src/lib/shared.js isRegistrableHost: unchanged shape regex && SPECIAL_USE_TLDS.indexOf(whole TLD) === -1, where SPECIAL_USE_TLDS = localhost, localdomain, local, internal, lan, home, corp, test, invalid, example, onion, arpa. Exact whole-TLD match, no substring or prefix match, no public-suffix dependency, grammar not broadened.",
+    "regenerated": "src/N03.js via tools/render-src.js; workflows/cohort-two-prospect-discovery.json via tools/build-workflow.js. Only the N03 node body changed; nothing hand-edited.",
+    "controls_accepted": [
+      "internal.org",
+      "home.org",
+      "example.org",
+      "cucs.org",
+      "housingplusnyc.org",
+      "somewhere.homes",
+      "somewhere.land"
+    ],
+    "docs": "FINDINGS D16 bullet states the refused suffix class, the exact whole-TLD match and the fixed-list residual. Lesson #184 added. Derived test count 621 -> 623 in README (x2), FINDINGS and blueprint r23, as documented-counts.test.js requires.",
+    "mutants_killed_by_builder": [
+      "substring match",
+      "TLD-prefix match",
+      "label instead of TLD",
+      "drop arpa",
+      "no-op",
+      "shared.js fixed but N03 not re-rendered"
+    ],
+    "process_note": "The first RED draft declared per-suffix it() calls at 4-space indentation, which documented-counts.test.js forbids. Before the fix was committed, the test was rewritten as one top-level table-driven it(). RED was re-recorded against the vulnerable code, and the unpushed RED commit (builder-authored, not one of the original nine) was amended. The original nine commits are untouched."
+  },
+  "notification": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "command": "openclaw system event --session-key agent:main:telegram:direct:6608544825 --text \"Claude lane cohort-two-seed-expansion: BLOCKED; handoff at /Users/jtsomwaru/.openclaw/workspace/memory/job-state/claude-seed-expansion.json\" --mode now --expect-final --json --timeout 120000",
+        "exit_status": 0,
+        "returned_json": {
+          "ok": true
+        },
+        "interpretation": "Acknowledged: the gateway accepted the event for the Eve session with ok:true (the CLI documents system event as an enqueue plus wake). The response had no agent reply payload.",
+        "for_status": "BLOCKED"
+      },
+      {
+        "attempt": 2,
+        "for_status": "COMPLETE",
+        "command": "openclaw system event --session-key agent:main:telegram:direct:6608544825 --text \"Claude lane cohort-two-seed-expansion: COMPLETE; handoff at /Users/jtsomwaru/.openclaw/workspace/memory/job-state/claude-seed-expansion.json\" --mode now --expect-final --json --timeout 120000",
+        "exit_status": 0,
+        "returned_json": {
+          "ok": true
+        },
+        "interpretation": "Acknowledged: the gateway accepted the event for the Eve session with ok:true. The response had no agent reply payload."
+      }
+    ],
+    "retry_used": false,
+    "fallback_used": false,
+    "delivered": "both events (BLOCKED, then COMPLETE) acknowledged by the gateway (ok:true); no retry or fallback needed",
+    "status_after_notification": "COMPLETE"
+  },
+  "blocked_history": [
+    {
+      "status": "BLOCKED",
+      "reason": "gh token invalid (HTTP 401); PR could not be opened",
+      "notified": "openclaw system event, ok:true",
+      "cleared_by": "JT gh auth login -h github.com (logged in as jsomwarux)"
+    }
+  ],
+  "pr": {
+    "number": 16,
+    "state": "OPEN",
+    "isDraft": false,
+    "merged": false,
+    "headRefName": "eve/cohort-two-seed-expansion",
+    "headRefOid": "4e86de7904829fa96b6e46301f9df57750d7fb91",
+    "baseRefName": "main",
+    "baseRefOid": "41ef3bfb49dd6a0579377355cc5d0af7ce442093",
+    "commit_count": 12,
+    "mergeable": "MERGEABLE",
+    "title": "D16: verified seed roster v2, verified hosts in N09, truthful short-run card",
+    "body_file": "/Users/jtsomwaru/.openclaw/workspace/memory/job-state/claude-seed-expansion.pr-body.md"
+  }
+}

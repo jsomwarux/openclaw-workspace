@@ -1,0 +1,152 @@
+{
+  "lane": "cohort-two-business-date",
+  "status": "COMPLETE",
+  "status_reason": "Defect reproduced test-first, repaired, verified at the final SHA in a clean clone, confirmed by one fresh non-builder reviewer, pushed, and PR opened. Not merged, not deployed.",
+  "written_at": "2026-09-24T03:15:26Z",
+  "repo": "/Users/jtsomwaru/projects/n8n-agent",
+  "remote": "https://github.com/jsomwarux/n8n-agent.git",
+  "repository_visibility": "PRIVATE (gh repo view: isPrivate=true), checked before work and again before push",
+  "base_sha": "7863deee563406d96b6c508ad17777655d4bab57",
+  "base_verified": "origin/main == 7863deee563406d96b6c508ad17777655d4bab57 after git fetch",
+  "branch": "eve/cohort-two-business-date",
+  "branch_location": "/Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-cohort-two-business-date",
+  "final_sha": "5331fb5a8df1e03c8a3e8bc0c7e8c256aecda802",
+  "final_sha_pushed": true,
+  "remote_ref": "refs/heads/eve/cohort-two-business-date -> 5331fb5a8df1e03c8a3e8bc0c7e8c256aecda802 (git ls-remote)",
+  "pr_url": "https://github.com/jsomwarux/n8n-agent/pull/17",
+  "pr": {
+    "number": 17,
+    "state": "OPEN",
+    "base": "main",
+    "head_sha": "5331fb5a8df1e03c8a3e8bc0c7e8c256aecda802",
+    "mergeable": "MERGEABLE",
+    "draft": false,
+    "merged": false
+  },
+  "commits": [
+    {
+      "sha": "5884e89",
+      "subject": "fix: run.as_of is the New York business date for cohort two"
+    },
+    {
+      "sha": "5331fb5",
+      "subject": "docs: D17 business-date contract, mutation record, lesson #185"
+    }
+  ],
+  "files_changed": [
+    "clients/cohort-two-discovery/FINDINGS.md",
+    "clients/cohort-two-discovery/README.md",
+    "clients/cohort-two-discovery/config/discovery-config.json",
+    "clients/cohort-two-discovery/src/N03.js",
+    "clients/cohort-two-discovery/src/N06.js",
+    "clients/cohort-two-discovery/src/lib/shared.js",
+    "clients/cohort-two-discovery/src/nodes/N03.js",
+    "clients/cohort-two-discovery/src/nodes/N06.js",
+    "clients/cohort-two-discovery/test/business-date.test.js (new)",
+    "clients/cohort-two-discovery/test/contact-universe-shape.test.js",
+    "clients/cohort-two-discovery/test/roster-fixture.js",
+    "clients/cohort-two-discovery/test/run-tests.js",
+    "clients/cohort-two-discovery/tools/build-workflow.js",
+    "tasks/cohort-two-prospect-discovery-blueprint.md",
+    "tasks/lessons.md",
+    "workflows/cohort-two-prospect-discovery.json (generated; only the N03 and N06 jsCode lines changed)"
+  ],
+  "diff_stat": "16 files, +867 / -51",
+  "defect_reproduced_before_implementation": {
+    "test": "test/business-date.test.js at the unmodified base",
+    "result": "18 of 19 new tests failed; the one passing test is the daytime-behaviour test, which must pass on both sides",
+    "incident_reproduction": "at 2026-09-24T02:11:12Z N03 produced as_of \"2026-09-24\" (expected \"2026-09-23\")"
+  },
+  "repair": {
+    "config": "config/discovery-config.json business_timezone = \"America/New_York\" is the one authoritative value",
+    "N03": "requires business_timezone (config-key-missing / config-key-not-a-string), refuses anything but the producer's zone (business-timezone-unsupported) before any file read; started_at stays exact UTC ISO; as_of = businessDate(Date.parse(started_at), business_timezone); contact_universe_path interpolates that as_of; proof-card age measured in the same business calendar",
+    "shared_block": "businessDate(ms, timeZone): Intl.DateTimeFormat + IANA rules, gregory/latn, exact resolved-zone check, throws on non-finite instant, unknown/substituted zone or non-ASCII parts; no fixed offset, no hour subtraction",
+    "N06": "same-day gate unchanged in substance (generated_at date must equal as_of); now also refuses a generated_at carrying a zone designator (contact-universe-generated-at-not-naive), closing the prefix trap 2026-09-23T02:10:15Z (NY 2026-09-22) that NY as_of would otherwise accept",
+    "builder": "tools/build-workflow.js sets settings.timezone for both workflows from config.business_timezone; a config without it fails the build",
+    "docs": "run-tests.js harness comment, contact-universe-shape test, README D17, FINDINGS D17, blueprint r24 + N03/N06 spec + error table + 16.7, lessons #185 and a correction on #161"
+  },
+  "verification_at_final_sha": {
+    "focused": "node test/run-tests.js test/business-date.test.js -> 19 passed, 0 failed, 0 skipped",
+    "full_worktree": "node test/run-tests.js -> 642 passed, 0 failed, 0 skipped",
+    "full_clean_clone": "fresh clone at 5331fb5 (/Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-business-date-verify-5331fb5), tools/bootstrap.js --jt-ops <cache checkout> (proof card verified against jt-ops 727213ba), node test/run-tests.js -> 642 passed, 0 failed, 0 skipped, exit 0, SKIPPED lines 0",
+    "zero_skip": true,
+    "generation": "render-src (20 bodies from 26 blocks) + build-workflow (58 + 4 nodes) in the clean clone leave 0 tracked diffs; N03/N06 jsCode byte-equal to src/N03.js and src/N06.js",
+    "topology": "topology/boundaries/node-params/src-render tests 52/0/0; main workflow 58 nodes, companion 4 nodes",
+    "mutation": "16/16 mutations regenerated through the generators turned the full suite red (UTC slice 12 failed, fixed UTC-4 4, fixed UTC-5 5, each guard removed 1-2, builder/config drift 1-2 or runner exit 1); tree restored to 642/0/0 after",
+    "security": "secret regex over added lines: only the pre-existing synthetic example a@x.org (re-embedded N03 comment); 0 of 126 real contact-universe company/slug values appear in the diff; no state/, out/ or proof-card.json tracked",
+    "visibility": "PRIVATE",
+    "clean_worktree": true,
+    "remote_checks": "none configured: 0 check runs and 0 commit statuses on 5331fb5 (repo has no .github/workflows)",
+    "n8n_mcp_validation": "not run: workflow change is confined to two jsCode strings; installed-n8n node-params validation in the suite passes; no external service contacted"
+  },
+  "review": {
+    "reviewer": "fresh non-builder general-purpose subagent, own clean clone /Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-business-date-review-5331fb5",
+    "verdict": "CONFIRM",
+    "reviewed_sha": "5331fb5a8df1e03c8a3e8bc0c7e8c256aecda802",
+    "evidence_summary": [
+      "642/0/0 exit 0 at the unmodified SHA; also 642/0/0 under TZ=UTC, Asia/Tokyo, Pacific/Kiritimati, America/Los_Angeles, Pacific/Pago_Pago",
+      "businessDate vs Python zoneinfo oracle: 607,744 instants 2005-2030 incl. +/-1s around 04:00-07:00Z daily, 0 mismatches",
+      "36 instants through the real rendered N03 (evening window, 04:00Z/05:00Z both seasons, DST 2026/2027/2030, year boundaries, leap day): all correct, started_at exact UTC, path uses as_of",
+      "48 invalid timezone values plus missing key plus 6 degraded runtimes: all refused in N03, N05/N06 never ran",
+      "224 generated_at x instant pairs: 0 wrong-day accepts; nothing loosened vs base; all 106 real preflight reports carry the naive shape",
+      "all 16 documented mutations reproduced with identical counts; drift mutants and hand-edited settings.timezone caught",
+      "full rendered N03 run under the task runner flags/wrapper at a real 23:03 EDT clock -> as_of 2026-09-23",
+      "workflows inactive, T1/N39/N43H disabled, no send node types, heartbeat and Mission Control write off; scope limited to the contract"
+    ],
+    "non_blocking_observations": [
+      "(a) test gap: an N03 using host-local getFullYear/getMonth/getDate passes the suite on this NY-zoned host (killed under TZ=UTC and Asia/Tokyo); shipped code uses an explicit IANA zone",
+      "(b) doc nit: FINDINGS D17 N23 residual says 20:00-midnight; in winter the window starts 19:00 EST",
+      "(c) doc nits: lesson #185 says 'green for weeks' (clock pin dates from 2026-09-16); N33 dueDate for evening runs shifts one day earlier and is not listed among D17 residuals (harmless while Mission Control write and N39 are disabled)",
+      "(d) accepted as-is: N06 checks the time part by digit shape only (T25:61:61 passes when the date matches), same as base; a deliberately lying Intl.resolvedOptions cannot be detected"
+    ],
+    "repair_cycles_used": 0
+  },
+  "proof_workflows_inactive_send_free": {
+    "value": true,
+    "detail": "both workflow JSONs active:false; T1 Weekly Schedule, N39 Mission Control POST and N43H heartbeat disabled; zero send-capable node types; config mode dry-run, heartbeat.enabled false, mission_control.write false; nothing deployed or imported by this lane"
+  },
+  "boundaries_held": [
+    "no live n8n, n8n-mcp/n8n-beelink, or installed-n8n modification; the installed task runner was only read/required offline in a child process",
+    "no live cohort state, credentials, secrets, OpenClaw config or Mission Control touched",
+    "no public prospect, website or model call; no pilot run, outreach, drafting, send, activation, schedule, heartbeat or suppression capability",
+    "same-day exclusion gate not weakened (stricter only)",
+    "user's main checkout not modified; PR not merged"
+  ],
+  "residuals_documented_in_findings_d17": [
+    "the producer's zone is implicit host time (outreach_pipeline_runner.py datetime.now()); making it explicit (ZoneInfo('America/New_York')) is the producer-side follow-up, and N06 would then need to read an offset stamp",
+    "deploy ordering: N01 reads config/*.json from the main checkout, so the config and the re-imported workflow must land together or N03 stops with config-key-missing: business_timezone",
+    "pre-change ledger recheck_after dates can hold at most one day longer",
+    "N23 signal-age edges shift by one evening window; nothing admitted that the authority's 365-day rule rejects",
+    "naive proof-card verified_at would parse in process zone (pre-existing; jt-ops card carries Z)"
+  ],
+  "cleanup_pending": [
+    "verification clone /Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-business-date-verify-5331fb5 (contains a bootstrapped gitignored proof-card copy and state)",
+    "reviewer clone /Users/jtsomwaru/.openclaw/workspace/.worktrees/n8n-business-date-review-5331fb5 (same, plus .review/)"
+  ],
+  "blockers": [],
+  "next_owner": "JT",
+  "exact_next_action": "JT reviews and merges PR #17 (https://github.com/jsomwarux/n8n-agent/pull/17) at 5331fb5; Claude did not merge. Deployment is a separate authorization: before the next pilot, bring /Users/jtsomwaru/projects/n8n-agent main up to the merge so config/discovery-config.json carries business_timezone (that checkout has local uncommitted edits to CLAUDE.md, config/seed-roster.json and tasks/lessons.md; tasks/lessons.md also changes in this PR), then re-import both workflows inactive together with that config.",
+  "follow_ups_non_blocking": [
+    "run the cohort-two suite under TZ=UTC as well as host time (reviewer observation a)",
+    "doc nits (b) and (c) in FINDINGS D17 / lesson #185",
+    "producer-side explicit IANA zone in outreach_pipeline_runner.py (outside this repo)"
+  ],
+  "pr_body_file": "/private/tmp/claude-501/-Users-jtsomwaru-projects-n8n-agent/30a745fb-0c5c-405b-98c4-93efe3f7f047/scratchpad/pr-body.md",
+  "notification_attempts": [
+    {
+      "attempt": 1,
+      "route": "openclaw system event (Eve session)",
+      "for_status": "COMPLETE",
+      "sent_at": "2026-09-24T03:15:32Z",
+      "command": "openclaw system event --session-key agent:main:telegram:direct:6608544825 --text \"Claude lane cohort-two-business-date: COMPLETE; handoff at /Users/jtsomwaru/.openclaw/workspace/memory/job-state/claude-business-date-repair.json\" --mode now --expect-final --json",
+      "exit_status": 0,
+      "returned_json": {
+        "ok": true
+      },
+      "stderr": "",
+      "acknowledged": true,
+      "interpretation": "Acknowledged: exit 0 and ok:true from the gateway under --expect-final for the Eve session; same acknowledgment shape recorded by prior lanes (claude-seed-expansion.json). No agent reply payload was returned. No retry or Telegram fallback was needed."
+    }
+  ],
+  "notification_status": "acknowledged on attempt 1"
+}

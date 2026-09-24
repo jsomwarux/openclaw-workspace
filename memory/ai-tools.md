@@ -1278,3 +1278,11 @@ Primary source: OpenAI API Reference, Create a video https://developers.openai.c
 **JT relevance:** for future production workflow deployments, make credential issuance a policy-controlled step: prefer service-account ownership for unattended automation, set an expiration/maximum lifetime, record the owner and rotation deadline, and verify that organization policy matches the intended runtime identity. Because existing keys are unaffected, enabling creation restrictions is not a substitute for rotating a credential already exposed or over-scoped. This is a governance/design rule only; no key, credential, provider, workflow, Mission Control task, or recurring schedule was changed.
 
 Primary source: OpenAI API Changelog, September 15, 2026 https://developers.openai.com/api/docs/changelog
+
+## Sep 23, 2026 - Heartbeat AI Tool Monitoring
+
+**n8n Assistant has a deployment-model boundary that excludes the current local runtime.** n8n's September 9 launch says Assistant is available by default on eligible n8n Cloud instances and for self-hosted Docker deployments running n8n 2.36 or later with owner-supplied keys and additional environment variables. Self-hosted npm installations are explicitly unsupported, and the feature remains behind a preview flag.
+
+**JT relevance:** do not attempt to enable or validate n8n Assistant on the current npm-based n8n 2.14.1 production lane. Treat adoption as an explicit deployment migration requiring version compatibility, credential/data-routing review, preview-risk acceptance, workflow export/rollback proof, and isolated evaluation before any client use. This is a design/compatibility rule only; no n8n upgrade, container migration, preview flag, credential, workflow, Mission Control task, or recurring schedule was changed.
+
+Primary source: n8n, Introducing n8n Assistant https://blog.n8n.io/introducing-n8n-assistant/

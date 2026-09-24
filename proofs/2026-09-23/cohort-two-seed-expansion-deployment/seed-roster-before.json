@@ -1,0 +1,476 @@
+{
+  "schema_version": "c2-seed-roster-v1",
+  "curated_at": "2026-09-16",
+  "curated_by": "jt",
+  "organizations": [
+    {
+      "name": "Breaking Ground",
+      "note": "cohort-1 alternate; all gates passed, deselected on recruitingmanagers@ routing",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "BROOKLYN"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27BREAKING+GROUND%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27307792%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "Agent",
+          "registrationid": "307792",
+          "corporationname": "BREAKING GROUND"
+        },
+        "observed_business_states": [
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "BREAKING GROUND"
+        ],
+        "matched_registration_ids": [
+          "307792"
+        ],
+        "contact_rows": 1,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    },
+    {
+      "name": "The Bridge",
+      "note": "cohort-1 alternate; signal 2024-07-29, oldest in set",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "BRONX",
+          "BROOKLYN",
+          "MANHATTAN"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27THE+BRIDGE%27%2C%27THE+BRIDGE+INC.%27%2C%27THE+BRIDGE%2C+INC%27%2C%27THE+BRIDGE%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27100828%27%2C%27102822%27%2C%27102823%27%2C%27103425%27%2C%27104101%27%2C%27104704%27%2C%27112725%27%2C%27117052%27%2C%27118955%27%2C%27122494%27%2C%27125315%27%2C%27140336%27%2C%27142030%27%2C%27142261%27%2C%27143602%27%2C%27211795%27%2C%27224839%27%2C%27226541%27%2C%27227162%27%2C%27227546%27%2C%27227843%27%2C%27228172%27%2C%27228274%27%2C%27228357%27%2C%27229420%27%2C%27386057%27%2C%27386264%27%2C%27388173%27%2C%27391204%27%2C%27610929%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "Agent",
+          "registrationid": "100828",
+          "corporationname": "The Bridge"
+        },
+        "observed_business_states": [
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "THE BRIDGE",
+          "THE BRIDGE INC.",
+          "THE BRIDGE, INC",
+          "The Bridge"
+        ],
+        "matched_registration_ids": [
+          "100828",
+          "102822",
+          "102823",
+          "103425",
+          "104101",
+          "104704",
+          "112725",
+          "117052",
+          "118955",
+          "122494",
+          "125315",
+          "140336",
+          "142030",
+          "142261",
+          "143602",
+          "211795",
+          "224839",
+          "226541",
+          "227162",
+          "227546",
+          "227843",
+          "228172",
+          "228274",
+          "228357",
+          "229420",
+          "386057",
+          "386264",
+          "388173",
+          "391204",
+          "610929"
+        ],
+        "contact_rows": 30,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    },
+    {
+      "name": "Urban Pathways",
+      "note": "cohort-1 alternate; communications@/development@ routing mismatch",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "BRONX",
+          "BROOKLYN",
+          "MANHATTAN"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27URBAN+PATHWAYS%27%2C%27URBAN+PATHWAYS%2C+INC%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27105545%27%2C%27119488%27%2C%27119494%27%2C%27141652%27%2C%27210442%27%2C%27386658%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "CorporateOwner",
+          "registrationid": "141652",
+          "corporationname": "URBAN PATHWAYS"
+        },
+        "observed_business_states": [
+          "NJ",
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "URBAN PATHWAYS",
+          "URBAN PATHWAYS, INC"
+        ],
+        "matched_registration_ids": [
+          "105545",
+          "119488",
+          "119494",
+          "141652",
+          "210442",
+          "386658"
+        ],
+        "contact_rows": 8,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    },
+    {
+      "name": "Institute for Community Living",
+      "note": "near-match CLEARED by JT 2026-09-09; Compliance@ routes to the right function",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "BRONX",
+          "BROOKLYN"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27INSTITUTE+FOR+COMMUNITY+LIVING%27%2C%27INSTITUTE+FOR+COMMUNITY+LIVING+INC%27%2C%27INSTITUTE+FOR+COMMUNITY+LIVING%2C+INC%27%2C%27INSTITUTE+FOR+COMMUNITY+LIVING%2CINC%27%2C%27INSTITUTE+FOR+COMMUNITY+LIVING+INC.%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27300094%27%2C%27301575%27%2C%27321678%27%2C%27330057%27%2C%27337141%27%2C%27345275%27%2C%27346295%27%2C%27346525%27%2C%27346526%27%2C%27360075%27%2C%27377071%27%2C%27377627%27%2C%27379549%27%2C%27386048%27%2C%27390542%27%2C%27713496%27%2C%27713497%27%2C%27713498%27%2C%27819737%27%2C%27819742%27%2C%27819743%27%2C%27819744%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "CorporateOwner",
+          "registrationid": "300094",
+          "corporationname": "INSTITUTE FOR COMMUNITY LIVING,INC"
+        },
+        "observed_business_states": [
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "INSTITUTE FOR COMMUNITY LIVING",
+          "INSTITUTE FOR COMMUNITY LIVING INC",
+          "INSTITUTE FOR COMMUNITY LIVING, INC",
+          "INSTITUTE FOR COMMUNITY LIVING,INC",
+          "Institute for Community Living Inc."
+        ],
+        "matched_registration_ids": [
+          "300094",
+          "301575",
+          "321678",
+          "330057",
+          "337141",
+          "345275",
+          "346295",
+          "346525",
+          "346526",
+          "360075",
+          "377071",
+          "377627",
+          "379549",
+          "386048",
+          "390542",
+          "713496",
+          "713497",
+          "713498",
+          "819737",
+          "819742",
+          "819743",
+          "819744"
+        ],
+        "contact_rows": 41,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    },
+    {
+      "name": "Services for the UnderServed",
+      "note": "heaviest verified workload evidence; VP Property Management seat was open 2026-09-01",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "BRONX",
+          "BROOKLYN",
+          "MANHATTAN",
+          "QUEENS"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27SERVICES+FOR+THE+UNDERSERVED%27%2C%27SERVICES+FOR+THE+UNDERSERVED+INC%27%2C%27SERVICES+FOR+THE+UNDERSERVED%27%2C%27SERVICES+FOR+THE+UNDERSERVED%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27108589%27%2C%27222367%27%2C%27227435%27%2C%27227941%27%2C%27228479%27%2C%27228700%27%2C%27229339%27%2C%27302421%27%2C%27309632%27%2C%27380380%27%2C%27383951%27%2C%27383952%27%2C%27384535%27%2C%27384537%27%2C%27385548%27%2C%27385750%27%2C%27714853%27%2C%27714854%27%2C%27811901%27%2C%27811902%27%2C%27823220%27%2C%27823222%27%2C%27912597%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "CorporateOwner",
+          "registrationid": "228700",
+          "corporationname": "SERVICES FOR THE UNDERSERVED"
+        },
+        "observed_business_states": [
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "SERVICES FOR THE UNDERSERVED",
+          "SERVICES FOR THE UNDERSERVED INC",
+          "Services For the Underserved",
+          "Services for the UnderServed"
+        ],
+        "matched_registration_ids": [
+          "108589",
+          "222367",
+          "227435",
+          "227941",
+          "228479",
+          "228700",
+          "229339",
+          "302421",
+          "309632",
+          "380380",
+          "383951",
+          "383952",
+          "384535",
+          "384537",
+          "385548",
+          "385750",
+          "714853",
+          "714854",
+          "811901",
+          "811902",
+          "823220",
+          "823222",
+          "912597"
+        ],
+        "contact_rows": 25,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    },
+    {
+      "name": "Jericho Project",
+      "note": "strongest workflow signal in cohort 1; failed named_buyer",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "BRONX",
+          "MANHATTAN"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27JERICHO+PROJECT%27%2C%27THE+JERICHO+PROJECT%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27111721%27%2C%27200483%27%2C%27206220%27%2C%27211991%27%2C%27215947%27%2C%27224317%27%2C%27226534%27%2C%27226690%27%2C%27227920%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "Agent",
+          "registrationid": "111721",
+          "corporationname": "THE JERICHO PROJECT"
+        },
+        "observed_business_states": [
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "JERICHO PROJECT",
+          "THE JERICHO PROJECT"
+        ],
+        "matched_registration_ids": [
+          "111721",
+          "200483",
+          "206220",
+          "211991",
+          "215947",
+          "224317",
+          "226534",
+          "226690",
+          "227920"
+        ],
+        "contact_rows": 9,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    },
+    {
+      "name": "Housing and Services, Inc.",
+      "note": "best title match; failed dated_signal",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "MANHATTAN"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27HOUSING+%26+SERVICES+INC%27%2C%27HOUSING+%26+SERVICES%2C+INC%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27108915%27%2C%27118420%27%2C%27128082%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "Agent",
+          "registrationid": "108915",
+          "corporationname": "HOUSING & SERVICES INC"
+        },
+        "observed_business_states": [
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "HOUSING & SERVICES INC",
+          "HOUSING & SERVICES, INC"
+        ],
+        "matched_registration_ids": [
+          "108915",
+          "118420",
+          "128082"
+        ],
+        "contact_rows": 3,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    },
+    {
+      "name": "Bowery Residents' Committee",
+      "note": "failed named_buyer",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "BROOKLYN",
+          "MANHATTAN",
+          "QUEENS"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27BOWERY+RESIDENTS+COMMITTEE%27%2C%27BOWERY+RESIDENTS%27%27+COMMITTEE%27%2C%27BOWERY+RESIDENTS%27%27+COMMITTEE%2C+INC.%27%2C%27BOWERY+RESIDENTS+COMMITTEE+INC%27%2C%27BOWERY+RESIDENTS%27%27+COMMITTEE%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27100616%27%2C%27103153%27%2C%27107691%27%2C%27110125%27%2C%27114493%27%2C%27122128%27%2C%27133026%27%2C%27141374%27%2C%27143588%27%2C%27359578%27%2C%27383507%27%2C%27385630%27%2C%27434393%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "Agent",
+          "registrationid": "100616",
+          "corporationname": "BOWERY RESIDENTS COMMITTEE"
+        },
+        "observed_business_states": [
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "BOWERY RESIDENTS COMMITTEE",
+          "BOWERY RESIDENTS' COMMITTEE",
+          "BOWERY RESIDENTS' COMMITTEE, INC.",
+          "Bowery Residents Committee Inc",
+          "Bowery Residents' Committee"
+        ],
+        "matched_registration_ids": [
+          "100616",
+          "103153",
+          "107691",
+          "110125",
+          "114493",
+          "122128",
+          "133026",
+          "141374",
+          "143588",
+          "359578",
+          "383507",
+          "385630",
+          "434393"
+        ],
+        "contact_rows": 13,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    },
+    {
+      "name": "Project Renewal",
+      "note": "failed reachable_channel (form + phone only)",
+      "geography": {
+        "business_state": "NY",
+        "boros": [
+          "BRONX",
+          "MANHATTAN"
+        ],
+        "geography_source_url": "https://data.cityofnewyork.us/resource/feu5-w2e2.json?%24select=registrationid%2Ctype%2Ccorporationname%2Cbusinessstate%2Cbusinesscity&%24where=upper%28corporationname%29+in+%28%27PROJECT+RENEWAL%2C+INC%27%2C%27PROJECT+RENEWAL+INC%27%2C%27PROJECT+RENEWAL%2C+INC%27%29&%24order=registrationid%2C+type%2C+corporationname&%24limit=5000",
+        "selection_rule": "CorporateOwner over Agent; ties on the lowest registrationid. Other contact roles never speak for the organization.",
+        "boros_source_url": "https://data.cityofnewyork.us/resource/tesw-yqqr.json?%24select=registrationid%2Cboro&%24where=registrationid+in+%28%27100890%27%2C%27103399%27%2C%27142320%27%2C%27224357%27%2C%27227329%27%2C%27227385%27%2C%27227547%27%2C%27228389%27%2C%27229264%27%29&%24order=registrationid&%24limit=5000",
+        "geography_verified_at": "2026-09-17T18:37:13Z",
+        "source": "hpd:feu5-w2e2 businessstate; hpd:tesw-yqqr boro",
+        "selected_from": {
+          "type": "Agent",
+          "registrationid": "100890",
+          "corporationname": "PROJECT RENEWAL, INC"
+        },
+        "observed_business_states": [
+          "NY"
+        ],
+        "matched_corporation_names": [
+          "PROJECT RENEWAL, INC",
+          "Project Renewal INC",
+          "Project Renewal, Inc"
+        ],
+        "matched_registration_ids": [
+          "100890",
+          "103399",
+          "142320",
+          "224357",
+          "227329",
+          "227385",
+          "227547",
+          "228389",
+          "229264"
+        ],
+        "contact_rows": 9,
+        "retrieved_at": "2026-09-17T18:37:13Z"
+      }
+    }
+  ],
+  "geography_derived_at": "2026-09-17T18:37:13Z",
+  "geography_source": "NYC Open Data, read-only: feu5-w2e2 (contacts) and tesw-yqqr (registrations)",
+  "removed": [
+    {
+      "name": "CAMBA Housing Ventures",
+      "removed_at": "2026-09-17T16:49:53Z",
+      "removed_by": "derive-roster-geography + HPD search, under JT policy 2026-09-17 clause 1",
+      "reason": "entity-identity-unverifiable",
+      "identity_verified": false,
+      "why": "HPD holds no corporation named CAMBA Housing Ventures. The only CAMBA rows are `CAMBA`, `Camba Inc` and `CAMBA Inc` -- seven Agent rows, all Brooklyn -- and a search for `HOUSING VENTURES` across the whole contacts feed returns zero rows on the organization-speaking roles. CAMBA Housing Ventures, Inc. is a legally distinct entity from CAMBA, Inc., which is the open question the roster note already recorded. Treating the CAMBA rows as this organization's would be inferring identity from a shared name, which the policy forbids.",
+      "hpd_rows_seen": [
+        "CAMBA (Agent, NY, Brooklyn) x3",
+        "Camba Inc (Agent, NY, Brooklyn) x3",
+        "CAMBA Inc (Agent, NY, Brooklyn) x1"
+      ],
+      "original_note": "deselected on signal age only; two-entity question open",
+      "searched": "https://data.cityofnewyork.us/resource/feu5-w2e2.json (CorporateOwner and Agent rows)",
+      "to_restore": "Confirm the exact legal or operating entity from a named source, then re-add with business_state, geography_source_url and geography_verified_at citing it. Do not re-add on a name match alone."
+    },
+    {
+      "name": "Concern Housing",
+      "removed_at": "2026-09-17T16:49:53Z",
+      "removed_by": "derive-roster-geography + HPD search, under JT policy 2026-09-17 clause 1",
+      "reason": "entity-identity-unverifiable",
+      "identity_verified": false,
+      "why": "HPD holds no corporation named Concern Housing. The nearest rows are `CONCERN FOR INDEPENDENT LIVING` (eight Agent rows, Brooklyn) and six `CONCERN * HOUSING DEVELOPMENT` / `CONCERN * LLC` CorporateOwner entities in Medford, which is Suffolk County. Whether Concern Housing IS Concern for Independent Living, Inc. is an entity-identity question that cannot be settled from this dataset, and the roster note already flags the Suffolk-HQ scope question alongside it.",
+      "hpd_rows_seen": [
+        "CONCERN FOR INDEPENDENT LIVING (Agent, NY, Brooklyn) x8",
+        "CONCERN NORWOOD / ROCHESTER / MACDOUGAL / HEIGHTS HOUSING DEVELOPMENT, CONCERN BERGEN LLC, CONCERN PITKIN LLC (CorporateOwner, NY, Medford) x6"
+      ],
+      "original_note": "failed dated_signal; Suffolk-HQ, check NYC scope",
+      "searched": "https://data.cityofnewyork.us/resource/feu5-w2e2.json (CorporateOwner and Agent rows)",
+      "to_restore": "Confirm the exact legal or operating entity from a named source, then re-add with business_state, geography_source_url and geography_verified_at citing it. Do not re-add on a name match alone."
+    },
+    {
+      "name": "Lantern Community Services",
+      "removed_at": "2026-09-17T16:49:53Z",
+      "removed_by": "derive-roster-geography + HPD search, under JT policy 2026-09-17 clause 1",
+      "reason": "entity-identity-unverifiable",
+      "identity_verified": false,
+      "why": "HPD holds no corporation named Lantern Community Services, and nothing resembling it: the only LANTERN rows are `THE LANTERN CONDOMINIUM` and `Red Lantern Realty LLC`, neither of which is this organization. The roster note already records that property ownership sits with an affiliate, which is consistent with the organization itself never appearing as a registered owner or agent.",
+      "hpd_rows_seen": [
+        "THE LANTERN CONDOMINIUM (CorporateOwner, NY, New York) x1",
+        "Red Lantern Realty LLC (CorporateOwner, NY, Brooklyn) x1"
+      ],
+      "original_note": "failed dated_signal; property ownership sits with an affiliate",
+      "searched": "https://data.cityofnewyork.us/resource/feu5-w2e2.json (CorporateOwner and Agent rows)",
+      "to_restore": "Confirm the exact legal or operating entity from a named source, then re-add with business_state, geography_source_url and geography_verified_at citing it. Do not re-add on a name match alone."
+    }
+  ],
+  "removed_note": "Entries removed under JT's policy of 2026-09-17 clause 1: identity could not be confirmed, so geography could not be sourced, and inferring it from the organization name is forbidden. Kept here as an audit record ONLY -- nothing reads this array, and a test asserts no removed name can become a candidate."
+}
