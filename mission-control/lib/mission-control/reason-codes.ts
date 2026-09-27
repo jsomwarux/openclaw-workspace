@@ -1,4 +1,5 @@
 import type { Signal } from "./types";
+import { isLanePacketSignal } from "./lane-packet-display";
 
 export type ReasonTone = "cash" | "urgent" | "neutral" | "muted" | "danger";
 
@@ -72,6 +73,19 @@ export function reasonChips(codes: string[] = []): ReasonChip[] {
   return chips;
 }
 
+/**
+ * Why a Today item sits where it does, in the Today scorer's own words. Today
+ * order comes only from allocateToday; the Priority Audit's priority and sort
+ * order are Work-lane fields and must not be offered as the explanation here.
+ */
+export function todayRankingExplanation(signal: Signal): string {
+  const labels = reasonChips(signal.reasonCodes).map((chip) => chip.label);
+  const factors = labels.length > 0
+    ? `Ranked by the Today scorer: ${labels.join(" · ")}.`
+    : "The Today scorer found no ranking factors, so this sits by its most recent update.";
+  return `${factors} Priority does not change Today order.`;
+}
+
 export const reasonToneClassName: Record<ReasonTone, string> = {
   cash: "border-emerald-800/60 bg-emerald-950/30 text-emerald-300",
   urgent: "border-[#f0883e]/40 bg-[#f0883e]/10 text-[#f0883e]",
@@ -87,6 +101,8 @@ export type PrimaryActionVerb = "Approve" | "Nudge" | "Mark sent" | "Inspect";
  * to translate a status into a next move.
  */
 export function primaryActionVerb(signal: Signal): PrimaryActionVerb {
+  // Lane packets approve and complete only through their typed drawer controls.
+  if (isLanePacketSignal(signal)) return "Inspect";
   if (signal.status === "awaiting-approval") return "Approve";
   if ((signal.reasonCodes ?? []).includes("nudge-due")) return "Nudge";
   if ((signal.dollars ?? 0) > 0 && signal.pipelineStage === "pitched") return "Mark sent";

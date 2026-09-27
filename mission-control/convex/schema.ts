@@ -93,6 +93,66 @@ export const taskFeedbackEntry = v.object({
   createdAt: v.number(),
 });
 
+// Growth OS card envelope v1 (lane packets). Every field is optional on the
+// tasks table so legacy generic tasks and outreach review cards stay valid.
+// Only `tasks.admitLanePacket` and `tasks.transitionLanePacket` write these.
+export const growthLane = v.union(
+  v.literal("linkedin"),
+  v.literal("x"),
+  v.literal("outreach"),
+  v.literal("jobs"),
+  v.literal("apps"),
+  v.literal("passive-income"),
+  v.literal("networking"),
+  v.literal("profile-site"),
+);
+
+export const externalEvidenceType = v.union(
+  v.literal("post-url"),
+  v.literal("message-ref"),
+  v.literal("application-ref"),
+  v.literal("rsvp-ref"),
+  v.literal("profile-edit-ref"),
+  v.literal("deploy-ref"),
+);
+
+export const doneEvidenceType = v.union(externalEvidenceType, v.literal("none"));
+
+export const approvalState = v.union(v.literal("pending"), v.literal("approved"), v.literal("rejected"));
+
+export const artifactRef = v.object({
+  system: v.string(),
+  id: v.string(),
+  url: v.optional(v.string()),
+  sha256: v.string(),
+});
+
+export const outcomeRef = v.object({
+  system: v.string(),
+  id: v.string(),
+  url: v.optional(v.string()),
+  recordedAt: v.number(),
+});
+
+export const doneEvidence = v.object({
+  type: externalEvidenceType,
+  ref: v.string(),
+  recordedAt: v.number(),
+  recordedBy: v.literal("jt"),
+});
+
+export const closureReason = v.object({
+  kind: v.union(v.literal("rejected"), v.literal("skipped"), v.literal("expired"), v.literal("no-action")),
+  note: v.optional(v.string()),
+  closedAt: v.number(),
+  closedBy: v.union(v.literal("jt"), v.literal("eve"), v.literal("server")),
+});
+
+// Focus-row scoring context: which mandate arms the ship cap, and how many
+// minutes of each lane Today may present at once.
+export const focusMandate = v.union(v.literal("consulting-cash"), v.literal("none"));
+export const laneCapacityEntry = v.object({ lane: growthLane, minutes: v.number() });
+
 // Collected cash is stored per-payment. pipeline.jsonl zeroes items once paid, so
 // it can never be the system of record for collected cash — this table is.
 export const paymentKind = v.union(
@@ -221,6 +281,20 @@ export default defineSchema({
     distributionScore: v.optional(v.number()),
     fatalConstraint: v.optional(v.boolean()),
     clientId: v.optional(v.id("clients")),
+    packetSchema: v.optional(v.literal("lane-packet-v1")),
+    growthLane: v.optional(growthLane),
+    artifactRef: v.optional(artifactRef),
+    payloadHash: v.optional(v.string()),
+    admittedPayloadHash: v.optional(v.string()),
+    approvalState: v.optional(approvalState),
+    approvedPayloadHash: v.optional(v.string()),
+    approvedAt: v.optional(v.number()),
+    expiresAt: v.optional(v.number()),
+    estMinutes: v.optional(v.number()),
+    doneEvidenceType: v.optional(doneEvidenceType),
+    doneEvidence: v.optional(doneEvidence),
+    outcomeRef: v.optional(outcomeRef),
+    closureReason: v.optional(closureReason),
     createdAt: v.number(),
     updatedAt: v.number(),
   })
@@ -277,6 +351,9 @@ export default defineSchema({
     gate: v.number(),
     // Which window the gate runs on. Defaults to "monthly" in code when absent.
     gateBasis: v.optional(gateBasis),
+    // Absent on rows written before the Growth OS machine contract; see score-context.ts.
+    mandate: v.optional(focusMandate),
+    laneCapacity: v.optional(v.array(laneCapacityEntry)),
     createdAt: v.number(),
   }).index("by_weekOf", ["weekOf"]),
 

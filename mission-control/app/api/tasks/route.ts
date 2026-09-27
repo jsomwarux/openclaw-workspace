@@ -15,6 +15,7 @@ import type { FunctionArgs } from "convex/server";
 import { normalizeTaskInput, validateTaskAdmission } from "@/lib/mission-control/task-admission";
 import { buildTaskWriteResponse, resolveTaskWriteMode } from "@/lib/mission-control/task-write-mode";
 import { parseTaskFeedbackAppend } from "@/lib/mission-control/task-feedback";
+import { lanePacketDependencyErrorResponse } from "@/lib/mission-control/lane-packet-route";
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
@@ -117,10 +118,17 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
   }
   const fields = normalizeTaskInput(rawFields, { includeAudit: true });
-  await convex.mutation(
-    api.tasks.update,
-    { id: id as Id<"tasks">, ...fields } as FunctionArgs<typeof api.tasks.update>,
-  );
+  try {
+    await convex.mutation(
+      api.tasks.update,
+      { id: id as Id<"tasks">, ...fields } as FunctionArgs<typeof api.tasks.update>,
+    );
+  } catch (error) {
+    // Lane packets refuse generic Done/archive/reopen; surface that as 409/400, not a bare 500.
+    const lanePacketResponse = lanePacketDependencyErrorResponse(error);
+    if (lanePacketResponse) return lanePacketResponse;
+    throw error;
+  }
   return NextResponse.json({ success: true });
 }
 
@@ -128,6 +136,12 @@ export async function DELETE(req: Request) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
-  await convex.mutation(api.tasks.remove, { id: id as Id<"tasks"> });
+  try {
+    await convex.mutation(api.tasks.remove, { id: id as Id<"tasks"> });
+  } catch (error) {
+    const lanePacketResponse = lanePacketDependencyErrorResponse(error);
+    if (lanePacketResponse) return lanePacketResponse;
+    throw error;
+  }
   return NextResponse.json({ success: true });
 }

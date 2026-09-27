@@ -1,3 +1,17 @@
+## Plan — Growth OS Machine Contract v1 (lane packets) — 2026-09-27
+Run: growth-os-mc-machine-contract-v1 · Branch: eve/growth-os-machine-contract-v1 · Base: b301a84 · Writer: claude-code
+- [x] Baseline before any change: full suite 329 pass / 0 fail across 51 files; `tsc --noEmit` exit 0.
+- [x] RED/GREEN 1 — contract `lib/mission-control/lane-packet.ts`: typed eight-lane enum, envelope types, strict submission allowlist, forged-field and outreach-field rejection, server-derived fields, canonical payload hash, idempotent admission keyed by namespaced dedupeKey + admitted payload hash, conflict on open-different-payload or non-packet key collision.
+- [x] RED/GREEN 2 — transitions `lib/mission-control/lane-packet-transitions.ts`: approval binds to current payloadHash; payload edit re-hashes and invalidates approval; external-action Done requires matching typed evidence (+ optional outcomeRef, never fabricated); reject/skip/no-action/expired closure requires a typed reason and writes no outcome; generic writes cannot done/archive/delete/reopen packets or snooze past expiry.
+- [x] RED/GREEN 3 — Convex wiring: additive optional schema fields (tasks + focus); `admitLanePacket`, `transitionLanePacket`, internal `expireDueLanePackets`; guards on generic create/update/updateStatus/updatePipelineStage/upsert/remove; Convex-side capability checks. Outreach mutations untouched. (Deviation: two pinned inventory counts in `outreach-convex-contract.test.ts` updated 11→13 / 4→5; see notes.)
+- [x] RED/GREEN 4 — `app/api/tasks/lane-packet/route.ts` via injected factory `lane-packet-route.ts`: POST create-only admission (`X-Lane-Packet-Capability`, 503 fail-closed, enumerated safe errors); PATCH transitions (JT identity + server-held decision capability for approve/reject/complete; producer capability or JT for skip/no-action). Generic `/api/tasks` rejects envelope fields.
+- [x] RED/GREEN 5 — focus-driven scoring: focus row `mandate` + `laneCapacity`; `buildScoreContext` derives the mandate from the focus row (legacy rows keep consulting-cash, no row = none); cash/deadline/unblock/proof/risk/effort/freshness controls unchanged.
+- [x] RED/GREEN 6 — single Today owner: `allocateToday` owns eligibility + sort + capacity + limit; `commandQueue` delegates; lane capacity, overflow, expiry, snooze; `commandBrief` consumes queue[0]; drawer explains Today rank from the scorer, not Priority Audit priority.
+- [x] RED/GREEN 7 — fixtures: one Jobs + one LinkedIn packet admitted idempotently through the real Convex handler and rendered by the existing InspectionDrawer seven-field card (SSR render); drawer controls for approve / evidence-backed done / typed closure.
+- [x] Docs: `docs/mission-control-lane-packet-contract.md`.
+- [x] Verify: 448 pass / 0 fail (57 files); tsc exit 0; isolated `.next-build` build exit 0 (placeholder `NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:9`); `git diff --check` exit 0; credential scan clean; new tests clock-independent (131/131 at a shifted 2027 clock).
+- [ ] Remove temporary node_modules symlink; commit explicit paths with Growth-OS-Run/Agent trailers; write handoff; stop (no push/merge/deploy).
+
 ## Plan — Dedicated Create-Only Endpoint — 2026-09-14
 - [x] Add failing route tests for new/existing create-only outcomes and the legacy no-POST boundary.
 - [x] Implement `POST /api/tasks/create-only` with the existing atomic mutation and explicit marker.

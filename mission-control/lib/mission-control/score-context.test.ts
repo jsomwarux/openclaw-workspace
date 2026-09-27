@@ -38,8 +38,25 @@ describe("mondayOf", () => {
 });
 
 describe("buildScoreContext", () => {
-  test("always arms the consulting-cash mandate", () => {
-    expect(buildScoreContext({}).mandate).toBe("consulting-cash");
+  const legacyFocus = { weekOf: "2026-07-06", projects: ["Consulting"], gate: 10000 };
+
+  test("takes the mandate from the focus row, not a hardcoded constant", () => {
+    expect(buildScoreContext({ focus: { ...legacyFocus, mandate: "none" } }).mandate).toBe("none");
+    expect(buildScoreContext({ focus: { ...legacyFocus, mandate: "consulting-cash" } }).mandate).toBe("consulting-cash");
+  });
+
+  test("a legacy focus row written before the field existed keeps its consulting-cash mandate", () => {
+    expect(buildScoreContext({ focus: legacyFocus }).mandate).toBe("consulting-cash");
+  });
+
+  test("no focus row means no mandate (the old hardcoded mandate had a 0 gate here and never fired)", () => {
+    expect(buildScoreContext({}).mandate).toBe("none");
+    expect(buildScoreContext({ focus: null }).mandate).toBe("none");
+  });
+
+  test("passes the focus row's lane capacity through to the allocator", () => {
+    const laneCapacity = [{ lane: "linkedin" as const, minutes: 30 }];
+    expect(buildScoreContext({ focus: { ...legacyFocus, laneCapacity } }).focus?.laneCapacity).toEqual(laneCapacity);
   });
 
   test("floors collected to 0 when the north-star read is unavailable", () => {
@@ -138,5 +155,18 @@ describe("the wired context arms the ship cap", () => {
   test("disarms the cap once the gate is met", () => {
     const ctx = buildScoreContext({ focus, collected: 10000, now: SATURDAY });
     expect(scoreTask(loadedShip, ctx).reasonCodes).not.toContain("ship-capped");
+  });
+
+  test("a focus row that sets mandate none disarms the cap below the gate", () => {
+    const ctx = buildScoreContext({ focus: { ...focus, mandate: "none" }, collected: 0, now: SATURDAY });
+    expect(scoreTask(loadedShip, ctx).reasonCodes).not.toContain("ship-capped");
+    expect(scoreTask(loadedShip, ctx).score).toBe(26);
+  });
+
+  test("cash stays strongly weighted without the mandate: an $8.4K expected-cash task still outranks loaded ship work", () => {
+    const ctx = buildScoreContext({ focus: { ...focus, mandate: "none" }, collected: 0, now: SATURDAY });
+    const msi = signal({ lane: "revenue", title: "MSI", project: "Consulting", dollars: 12000, stageProbability: 0.7 });
+    expect(scoreTask(msi, ctx).score).toBe(40);
+    expect(scoreTask(msi, ctx).score).toBeGreaterThan(scoreTask(loadedShip, ctx).score);
   });
 });

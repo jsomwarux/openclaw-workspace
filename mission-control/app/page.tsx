@@ -6,6 +6,8 @@ import { AlertTriangle, Bell, Bot, ChevronDown, ChevronRight, CircleDollarSign }
 import { InspectionDrawer } from "@/components/mission-control/InspectionDrawer";
 import { StateBlock } from "@/components/mission-control/StateBlock";
 import { useMissionControlData } from "@/lib/mission-control/hooks";
+import { formatLaneOverflow } from "@/lib/mission-control/lane-capacity";
+import { lanePacketSnoozeUntil } from "@/lib/mission-control/lane-packet-transitions";
 import { primaryActionVerb, reasonChips, reasonToneClassName, shouldShowSecondaryInspect } from "@/lib/mission-control/reason-codes";
 import type { Signal, SignalPriority } from "@/lib/mission-control/types";
 import type { TaskStatus } from "@/lib/mission-control/work-status";
@@ -106,8 +108,9 @@ function CollapsedStrip({
 }
 
 export default function CockpitPage() {
-  const { queue, eveHandling, waitingOn, risk, cash, cashPending, loading, degraded, lastUpdated, refresh } =
+  const { queue, overflow, eveHandling, waitingOn, risk, cash, cashPending, loading, degraded, lastUpdated, refresh } =
     useMissionControlData();
+  const overflowText = formatLaneOverflow(overflow);
   const [selected, setSelected] = useState<Signal | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [clientsById, setClientsById] = useState<Record<string, ClientRef>>({});
@@ -273,7 +276,12 @@ export default function CockpitPage() {
 
       {/* Band 3 — UP NEXT */}
       <section className="mb-5">
-        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-600">Up next</p>
+        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-600">
+          Up next
+          {overflowText && (
+            <span className="ml-2 font-sans normal-case tracking-normal text-zinc-500">· {overflowText}</span>
+          )}
+        </p>
         {upNext.length === 0 ? (
           <StateBlock kind="empty" title="Nothing else is queued behind this." />
         ) : (
@@ -384,11 +392,17 @@ export default function CockpitPage() {
       <InspectionDrawer
         signal={selected}
         onClose={() => setSelected(null)}
+        ranking="today"
+        onLanePacketChange={() => {
+          setSelected(null);
+          void refresh();
+        }}
         updating={Boolean(selected && updatingId === selected.id)}
         onStatusChange={updateStatus}
         onPriorityChange={updatePriority}
         onSnooze={(signal) =>
-          patchTask(signal, { snoozedUntil: Date.now() + SNOOZE_DAYS * DAY_MS }, { closeDrawer: true })
+          // A lane packet's snooze stops at its expiry; other tasks snooze the full seven days.
+          patchTask(signal, { snoozedUntil: lanePacketSnoozeUntil(signal.expiresAt, Date.now(), SNOOZE_DAYS) }, { closeDrawer: true })
         }
         onNotNow={(signal) => patchTask(signal, { status: "archived" }, { closeDrawer: true })}
         onHandToEve={(signal) => patchTask(signal, { assignee: "eve" }, { closeDrawer: true })}

@@ -5,7 +5,7 @@ import { agentToSignal, cronToSignal, proofToSignal, taskToSignal } from "./adap
 import { cashStrip, type CashStrip } from "./cash-strip";
 import type { CollectedMetrics } from "./collected";
 import { commandBrief } from "./command-brief";
-import { commandQueue } from "./score";
+import { allocateToday } from "./score";
 import { buildScoreContext, mondayOf } from "./score-context";
 import type { FocusRow, Signal } from "./types";
 
@@ -137,17 +137,19 @@ export function useMissionControlData() {
     ];
   }, [data.agents, data.crons, data.proofs, data.tasks]);
 
-  // The consulting-cash mandate must reach the scorer, or the ship cap and the
-  // focus penalty in score.ts evaluate against an empty context and never fire.
-  // Collected cash now comes from the stored payments ledger (gate-basis
-  // consulting), not the fragile north-star regex. A failed read falls back to
-  // undefined → 0, which leaves the ship cap armed.
-  const queue = useMemo(() => {
+  // The focus row's mandate, projects, and lane capacity must reach the scorer,
+  // or the ship cap, the focus penalty, and lane budgeting evaluate against an
+  // empty context and never fire. Collected cash comes from the stored payments
+  // ledger (gate-basis consulting), not the fragile north-star regex. A failed
+  // read falls back to undefined → 0, which leaves the ship cap armed.
+  // allocateToday is the single owner of Today ordering.
+  const today = useMemo(() => {
     const paymentsRead = Boolean(data.payments?.metrics) && !errors.payments;
     const collected = paymentsRead ? data.payments?.metrics?.gateCollected : undefined;
     const ctx = buildScoreContext({ focus: data.focus, collected, now: Date.now() });
-    return commandQueue(signals, ctx);
+    return allocateToday(signals, ctx);
   }, [signals, data.focus, data.payments, errors.payments]);
+  const queue = today.queue;
 
   const eveHandling = useMemo(
     () => signals.filter((signal) => signal.owner === "eve" && EVE_IN_FLIGHT.includes(signal.status)).slice(0, 8),
@@ -209,6 +211,8 @@ export function useMissionControlData() {
     ...data,
     signals,
     queue,
+    overflow: today.overflow,
+    expiredPackets: today.expired,
     eveHandling,
     waitingOn,
     risk,

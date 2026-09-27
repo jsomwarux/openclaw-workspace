@@ -37,16 +37,6 @@ function latestProofSignal(signals: Signal[]) {
   );
 }
 
-function topQueuedAction(queue: Signal[]) {
-  return (
-    [...queue].sort((a, b) => {
-      const scoreDelta = (b.score ?? 0) - (a.score ?? 0);
-      if (scoreDelta !== 0) return scoreDelta;
-      return b.updatedAt - a.updatedAt;
-    })[0] ?? null
-  );
-}
-
 export function commandBrief({
   queue,
   signals,
@@ -56,7 +46,8 @@ export function commandBrief({
   signals: Signal[];
   revenue: RevenueSnapshot;
 }): CommandBrief {
-  const topAction = topQueuedAction(queue);
+  // The queue arrives already ordered by allocateToday, the single Today owner.
+  const topAction = queue[0] ?? null;
   const latestProof = latestProofSignal(signals);
   const urgentJtCount = signals.filter(isJtPressure).length;
   const riskCount = signals.filter(isRisk).length;
