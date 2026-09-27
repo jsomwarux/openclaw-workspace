@@ -1,3 +1,11 @@
+## Plan — Growth OS Machine Contract v1 repair 1 (`/api/tasks/[id]` guard mapping) — 2026-09-27
+Run: growth-os-mc-machine-contract-v1-repair1 · Branch: eve/growth-os-machine-contract-v1 · Start: b8903ed · Writer: claude-code
+- [x] Verify clean worktree at b8903ed; baseline `bun test` 448 pass / 0 fail across 57 files.
+- [x] RED — `lib/mission-control/task-id-route.test.ts` drives the real `app/api/tasks/[id]/route.ts` PATCH/DELETE with a stubbed Convex mutation: TRANSITION_REQUIRED and CLOSED → 409 on PATCH, TRANSITION_REQUIRED → 409 on DELETE, INVALID → 400, unrelated dependency error rethrown unchanged, legacy success calls and bodies unchanged. At the b8903ed route: 6 pass / 4 fail.
+- [x] GREEN — wrap only the two `convex.mutation` calls with the existing `lanePacketDependencyErrorResponse`, mirroring `app/api/tasks/route.ts`. Focused: 10 pass / 0 fail; two mutation checks turn it red.
+- [x] Verify: full `bun test` 458 pass / 0 fail (58 files); `tsc --noEmit --incremental false` exit 0; isolated `.next-build` build exit 0; loopback probe with Convex unreachable returns 500 with an empty body.
+- [ ] Remove temporary node_modules symlink; commit explicit paths with trailers; write repair handoff; stop.
+
 ## Plan — Growth OS Machine Contract v1 (lane packets) — 2026-09-27
 Run: growth-os-mc-machine-contract-v1 · Branch: eve/growth-os-machine-contract-v1 · Base: b301a84 · Writer: claude-code
 - [x] Baseline before any change: full suite 329 pass / 0 fail across 51 files; `tsc --noEmit` exit 0.
