@@ -1,6 +1,8 @@
 import hashlib
+import multiprocessing
 import os
 import tempfile
+import threading
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -12,6 +14,15 @@ from scripts.linkedin_content_os.canonical import (
     sha256_hex,
     write_json_atomic,
 )
+
+
+def _append_in_child(path_text: str, event: str, result_queue: object) -> None:
+    try:
+        append_jsonl_exact_prefix(Path(path_text), {"event": event})
+    except Exception as error:
+        result_queue.put(("error", type(error).__name__))
+    else:
+        result_queue.put(("ok", event))
 
 
 class CanonicalBytesTests(unittest.TestCase):
@@ -67,6 +78,22 @@ class ReadJsonlTests(unittest.TestCase):
             path.write_bytes(b'{"first":1}\n[1,2]\n')
 
             with self.assertRaisesRegex(ValueError, "non-object row 2"):
+                read_jsonl(path)
+
+    def test_refuses_duplicate_keys_in_top_level_object(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "rows.jsonl"
+            path.write_bytes(b'{"event":"first","event":"second"}\n')
+
+            with self.assertRaisesRegex(ValueError, "duplicate JSON key 'event'"):
+                read_jsonl(path)
+
+    def test_refuses_duplicate_keys_in_nested_object(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "rows.jsonl"
+            path.write_bytes(b'{"outer":{"id":1,"id":2}}\n')
+
+            with self.assertRaisesRegex(ValueError, "duplicate JSON key 'id'"):
                 read_jsonl(path)
 
 
@@ -138,6 +165,67 @@ class ExactPrefixAppendTests(unittest.TestCase):
 
             with path.open("rb") as handle:
                 self.assertEqual(handle.read(), original)
+
+    def test_concurrent_writers_serialize_read_append_and_verify(self) -> None:
+        context = multiprocessing.get_context("fork")
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "events.jsonl"
+            path.write_bytes(b'{"event":"original"}\n')
+            initial_read_barrier = context.Barrier(2)
+            verification_read_barrier = context.Barrier(2)
+            result_queue = context.Queue()
+            real_read_bytes = Path.read_bytes
+            read_count = [0]
+
+            def coordinated_read_bytes(candidate: Path) -> bytes:
+                if candidate == path:
+                    read_count[0] += 1
+                    barrier = (
+                        initial_read_barrier
+                        if read_count[0] == 1
+                        else verification_read_barrier
+                    )
+                    try:
+                        barrier.wait(timeout=0.5)
+                    except threading.BrokenBarrierError:
+                        pass
+                return real_read_bytes(candidate)
+
+            processes = [
+                context.Process(
+                    target=_append_in_child,
+                    args=(str(path), event, result_queue),
+                )
+                for event in ("first", "second")
+            ]
+            with mock.patch.object(Path, "read_bytes", coordinated_read_bytes):
+                for process in processes:
+                    process.start()
+                for process in processes:
+                    process.join(timeout=5)
+
+            for process in processes:
+                if process.is_alive():
+                    process.terminate()
+                    process.join(timeout=1)
+                self.assertEqual(process.exitcode, 0)
+
+            results = [result_queue.get(timeout=1) for _ in processes]
+            self.assertEqual(sorted(results), [("ok", "first"), ("ok", "second")])
+            self.assertEqual(
+                {row["event"] for row in read_jsonl(path)},
+                {"original", "first", "second"},
+            )
+
+    def test_absent_file_is_restored_to_absence_after_verification_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "events.jsonl"
+
+            with mock.patch.object(Path, "read_bytes", return_value=b"corrupted"):
+                with self.assertRaisesRegex(RuntimeError, "exact prefix"):
+                    append_jsonl_exact_prefix(path, {"event": "first"})
+
+            self.assertFalse(path.exists())
 
 
 if __name__ == "__main__":
