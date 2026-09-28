@@ -1178,12 +1178,15 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     events = validate_events(snapshots.jsonl(artifact_root / "outcomes.v1.jsonl"))
     from scripts.linkedin_content_os.recovery import (
         derive_authorized_fixture_rows,
+        validate_human_gate_history_authority,
         validate_permission_fixture_authority,
     )
     response_path = artifact_root / "human-gate-response.v1.json"
+    response_value = snapshots.json(response_path)
+    response_bytes = snapshots.bytes(response_path)
     permission_authority = validate_permission_fixture_authority(
-        snapshots.json(response_path),
-        snapshots.bytes(response_path),
+        response_value,
+        response_bytes,
         snapshots.json(artifact_root / "focus-authority-receipt.v1.json"),
         snapshots.json(artifact_root / "focus-authority-anchor.v1.json"),
         events,
@@ -1201,6 +1204,17 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         raise ValueError("authority manifest does not bind the accepted permission response")
     permission_response = permission_authority["response"]
     assert isinstance(permission_response, dict)
+    phase1_recovery_request = phase1_audit.get("recoveryRequest")
+    if not isinstance(phase1_recovery_request, dict):
+        raise ValueError("phase-1 audit lacks the original bounded recovery request")
+    history_authority = validate_human_gate_history_authority(
+        response_value,
+        response_bytes,
+        phase1_recovery_request,
+        events,
+        permission_receipt,
+        run_id=str(canonical_manifest_value["runId"]),
+    )
     expected_fixture_rows = derive_authorized_fixture_rows(
         permission_response, root
     )
@@ -1291,6 +1305,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         "contrastivePairCount": pair_count,
         "fixtureClassifications": classifications,
         "checkinPreviewCount": 0 if task_value is None else 1,
+        "humanGateAnswerCount": history_authority["answerCount"],
         "humanGateResolved": human_gate_resolved,
         "liveOrExternalActionOccurred": not governed_boundaries_equal,
         "verdict": "program-0-local-proof-ready-for-independent-verification",

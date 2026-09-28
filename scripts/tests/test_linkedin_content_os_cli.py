@@ -781,7 +781,13 @@ class VerificationIntegrationTests(unittest.TestCase):
         phase1_context = init_run(t1, phase1_outcomes, phase1_context_path)
         posted = self.root / "memory/content/posted-log.jsonl"
         posted.parent.mkdir(parents=True, exist_ok=True)
-        posted.write_bytes(b"")
+        posted.write_bytes(canonical_bytes({
+            "date": "2026-03-10",
+            "day": "Monday",
+            "platform": "linkedin",
+            "text": "One bounded legacy row.",
+            "posted": False,
+        }) + b"\n")
         phase1_audit_value = audit_legacy_rows(posted, phase1_outcomes, t1)
         phase1_audit = self.artifacts / "historical-audit.phase-1.v1.json"
         phase1_audit.write_bytes(canonical_bytes(phase1_audit_value))
@@ -857,11 +863,16 @@ class VerificationIntegrationTests(unittest.TestCase):
         }
         response = {
             "schemaVersion": "linkedin-human-gate-response.v1",
-            "recoveryRequestSha256": "7" * 64,
+            "recoveryRequestSha256": sha256_hex(canonical_bytes(
+                phase1_audit_value["recoveryRequest"]
+            )),
             "focusSnapshotSha256": "8" * 64,
             "fixtureGapSha256": "9" * 64,
             "focusDecision": {"decision": "confirmed"},
-            "historyAnswers": [],
+            "historyAnswers": [{
+                "legacyRowSha256": phase1_audit_value["recoveryRequest"]["items"][0]["legacyRowSha256"],
+                "answer": "still_unknown",
+            }],
             "permissionedFixture": accepted_fixture,
             "confirmedAt": t2,
         }
@@ -886,6 +897,13 @@ class VerificationIntegrationTests(unittest.TestCase):
             event["eventSha256"] = sha256_hex(canonical_bytes(event))
             return event
 
+        row_hash = str(response["historyAnswers"][0]["legacyRowSha256"])
+        history_event = accepted_event(
+            "history:" + row_hash,
+            "legacy:" + row_hash,
+            "historical_status",
+            {"legacyRowSha256": row_hash, "status": "status_unknown"},
+        )
         focus_event = accepted_event(
             "focus:linkedin-program-0",
             "linkedin-program-0-human-gate",
@@ -908,7 +926,7 @@ class VerificationIntegrationTests(unittest.TestCase):
         )
         accepted_ledger = b"".join(
             canonical_bytes(event) + b"\n"
-            for event in (focus_event, permission_event)
+            for event in (history_event, focus_event, permission_event)
         )
         focus_receipt = {
             "schemaVersion": "linkedin-human-gate-authority-receipt.v1",
@@ -917,7 +935,7 @@ class VerificationIntegrationTests(unittest.TestCase):
             "fixtureGapSha256": response["fixtureGapSha256"],
             "focusDecisionEventSha256": focus_event["eventSha256"],
             "ledgerPrefixSha256": sha256_hex(accepted_ledger),
-            "ledgerPosition": 2,
+            "ledgerPosition": 3,
             "validatedAt": t2,
             "originalProposalSha256": "8" * 64,
             "focusDecision": response["focusDecision"],
@@ -938,10 +956,10 @@ class VerificationIntegrationTests(unittest.TestCase):
             "schemaVersion": "linkedin-corpus-authority-manifest.v1",
             "runId": corpus_run_id(source_sha, t2),
             "validatedAt": t2,
-            "receiptSha256Allowlist": ["1" * 64],
+            "receiptSha256Allowlist": [],
             "humanGateAuthorityReceiptSha256": response_sha,
             "ledgerPrefixSha256": sha256_hex(accepted_ledger),
-            "ledgerPosition": 2,
+            "ledgerPosition": 3,
         }
         manifest["manifestSha256"] = sha256_hex(canonical_bytes(manifest))
         manifest_path = self.artifacts / "corpus-authority-manifest.v1.json"
@@ -963,15 +981,15 @@ class VerificationIntegrationTests(unittest.TestCase):
         outcomes = self.artifacts / "outcomes.v1.jsonl"
         outcomes.write_bytes(accepted_ledger)
         recovery = self.artifacts / "historical-recovery-request.v1.json"
-        recovery_value = {"schemaVersion": "linkedin-historical-recovery-request.v1", "generatedAt": t2, "sourceSha256": source_sha, "items": []}
+        audit_value = audit_legacy_rows(
+            posted,
+            outcomes,
+            t2,
+            corpus_authority_manifest=manifest,
+            expected_manifest_sha256=str(manifest["manifestSha256"]),
+        )
+        recovery_value = audit_value["recoveryRequest"]
         recovery.write_bytes(canonical_bytes(recovery_value))
-        audit_value = {
-            "schemaVersion": "linkedin-historical-audit.v1", "generatedAt": t2,
-            "sourceSha256": source_sha,
-            "statusCounts": {"posted_confirmed": 0, "not_posted_confirmed": 0, "status_unknown": 0},
-            "missingFieldCounts": {}, "duplicateGroups": [], "records": [],
-            "corpusAuthorityManifest": manifest, "recoveryRequest": recovery_value,
-        }
         audit = self.artifacts / "historical-audit.v1.json"
         audit.write_bytes(canonical_bytes(audit_value))
         gold = self.artifacts / "voice-gold.v0.jsonl"
@@ -1042,7 +1060,8 @@ class VerificationIntegrationTests(unittest.TestCase):
             boundaries.append(path)
         return {
             "authority": authority_path, "manifest": manifest_path,
-            "phase1_receipt": phase1_receipt, "audit_receipt": audit_receipt,
+            "phase1_receipt": phase1_receipt, "phase1_audit": phase1_audit,
+            "audit_receipt": audit_receipt,
             "corpus_receipt": corpus_receipt, "b1": boundaries[0], "a1": boundaries[1],
             "b2": boundaries[2], "a2": boundaries[3], "report": self.root / "report.md",
             "response": response_path,
@@ -1114,6 +1133,31 @@ class VerificationIntegrationTests(unittest.TestCase):
 
         self.assertTrue(report["boundaryPairsEqual"])
 
+    def test_verify_rejects_human_gate_not_bound_to_phase1_recovery_request(self) -> None:
+        paths = self._proof_tree()
+        phase1_audit = _read_json(paths["phase1_audit"])
+        phase1_audit["recoveryRequest"]["items"][0]["legacyRowSha256"] = "f" * 64
+        paths["phase1_audit"].write_bytes(canonical_bytes(phase1_audit))
+        phase1_receipt = _read_json(paths["phase1_receipt"])
+        for binding in phase1_receipt["inputs"]:
+            if binding["role"] == "audit":
+                binding["sha256"] = sha256_hex(paths["phase1_audit"].read_bytes())
+        phase1_receipt["receiptSha256"] = sha256_hex(canonical_bytes({
+            key: value
+            for key, value in phase1_receipt.items()
+            if key != "receiptSha256"
+        }))
+        paths["phase1_receipt"].write_bytes(canonical_bytes(phase1_receipt))
+        with mock.patch(
+            "scripts.linkedin_content_os.cli.build_voice_gold", return_value=[]
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+        ):
+            with self.assertRaisesRegex(
+                ValueError, "original bounded recovery request|recovery request SHA-256"
+            ):
+                main(self._verify_argv(paths))
+
     def test_verify_rejects_boundary_from_wrong_phase_context(self) -> None:
         paths = self._proof_tree()
         boundary = _read_json(paths["a2"])
@@ -1132,7 +1176,7 @@ class VerificationIntegrationTests(unittest.TestCase):
         manifest = _read_json(paths["manifest"])
         manifest["ledgerPosition"] = 3
         paths["manifest"].write_bytes(canonical_bytes(manifest))
-        with self.assertRaisesRegex(ValueError, "manifest|hash"):
+        with self.assertRaisesRegex(ValueError, "manifest|hash|canonical derivation"):
             main(self._verify_argv(paths))
 
         paths = self._proof_tree()

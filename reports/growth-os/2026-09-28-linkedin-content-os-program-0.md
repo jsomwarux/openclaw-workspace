@@ -209,6 +209,7 @@
       "targetId": "product-distribution"
     }
   ],
+  "humanGateAnswerCount": 23,
   "humanGateResolved": true,
   "liveOrExternalActionOccurred": false,
   "missingFinalTextCount": 0,

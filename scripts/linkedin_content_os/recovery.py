@@ -383,6 +383,89 @@ def _canonical_ledger_rows(path: Path) -> tuple[list[dict[str, object]], bytes]:
     return rows, exact
 
 
+def _derive_history_authority_events(
+    answers: list[dict[str, object]],
+    *,
+    confirmed_at: str,
+    response_hash: str,
+    run_id: str,
+    prefix_events: list[dict[str, object]],
+) -> tuple[list[dict[str, object]], list[dict[str, object]], bytes]:
+    """Derive the exact response-owned history block from an existing prefix."""
+
+    derived: list[dict[str, object]] = []
+    combined = list(prefix_events)
+    prefix_bytes = b"".join(canonical_bytes(event) + b"\n" for event in combined)
+    for answer in answers:
+        row_hash = str(answer["legacyRowSha256"])
+        packet_id = "legacy:" + row_hash
+        status = {
+            "posted": "posted_confirmed",
+            "not_posted": "not_posted_confirmed",
+            "still_unknown": "status_unknown",
+        }[str(answer["answer"])]
+        history = _event(
+            "history:" + row_hash,
+            packet_id,
+            "historical_status",
+            confirmed_at,
+            response_hash,
+            {"legacyRowSha256": row_hash, "status": status},
+        )
+        derived.append(history)
+        combined.append(history)
+        prefix_bytes += canonical_bytes(history) + b"\n"
+        if answer["answer"] != "posted":
+            continue
+        publication_payload: dict[str, object] = {
+            "publicationUrl": answer["publicUrl"]
+        }
+        if "finalText" in answer:
+            final_text = str(answer["finalText"])
+            publication_payload.update({
+                "finalText": final_text,
+                "finalTextSha256": sha256_hex(final_text.encode("utf-8")),
+            })
+        publication = _event(
+            "publication:" + row_hash,
+            packet_id,
+            "publication_acknowledged",
+            confirmed_at,
+            response_hash,
+            publication_payload,
+        )
+        derived.append(publication)
+        combined.append(publication)
+        prefix_bytes += canonical_bytes(publication) + b"\n"
+        if "finalText" not in answer:
+            continue
+        receipt_payload = {
+            "authoritySourceType": "jt_human_gate_response",
+            "authoritySourceId": "sha256:" + response_hash,
+            "authoritySourceSha256": response_hash,
+            "rawAuthoritySha256": response_hash,
+            "runId": run_id,
+            "textOutcomeEventId": publication["outcomeEventId"],
+            "textOutcomeEventSha256": publication["eventSha256"],
+            "ledgerPrefixSha256": sha256_hex(prefix_bytes),
+            "ledgerPosition": len(combined),
+            "validatedAt": confirmed_at,
+            "clientSensitiveMarkers": [],
+        }
+        authority = _event(
+            "authority:" + row_hash,
+            packet_id,
+            "corpus_authority_receipt",
+            confirmed_at,
+            response_hash,
+            receipt_payload,
+        )
+        derived.append(authority)
+        combined.append(authority)
+        prefix_bytes += canonical_bytes(authority) + b"\n"
+    return derived, combined, prefix_bytes
+
+
 def _plan_batch(
     existing: Sequence[dict[str, object]],
     original: bytes,
@@ -652,64 +735,16 @@ def _ingest_human_gate(
     else:
         prefix_events = list(existing)
         prefix_bytes = existing_bytes
-    events: list[dict[str, object]] = []
     run_id = corpus_run_id(
         str(request_value["sourceSha256"]), str(context["generatedAt"])
     )
-
-    for answer in answers:
-        row_hash = str(answer["legacyRowSha256"])
-        packet_id = "legacy:" + row_hash
-        status = {
-            "posted": "posted_confirmed",
-            "not_posted": "not_posted_confirmed",
-            "still_unknown": "status_unknown",
-        }[str(answer["answer"])]
-        history = _event(
-            "history:" + row_hash, packet_id, "historical_status", confirmed_at,
-            response_hash, {"legacyRowSha256": row_hash, "status": status},
-        )
-        events.append(history)
-        prefix_events.append(history)
-        prefix_bytes += canonical_bytes(history) + b"\n"
-        if answer["answer"] != "posted":
-            continue
-        publication_payload: dict[str, object] = {"publicationUrl": answer["publicUrl"]}
-        if "finalText" in answer:
-            final_text = str(answer["finalText"])
-            publication_payload.update({
-                "finalText": final_text,
-                "finalTextSha256": sha256_hex(final_text.encode("utf-8")),
-            })
-        publication = _event(
-            "publication:" + row_hash, packet_id, "publication_acknowledged",
-            confirmed_at, response_hash, publication_payload,
-        )
-        events.append(publication)
-        prefix_events.append(publication)
-        prefix_bytes += canonical_bytes(publication) + b"\n"
-        if "finalText" not in answer:
-            continue
-        receipt_payload = {
-            "authoritySourceType": "jt_human_gate_response",
-            "authoritySourceId": "sha256:" + response_hash,
-            "authoritySourceSha256": response_hash,
-            "rawAuthoritySha256": response_hash,
-            "runId": run_id,
-            "textOutcomeEventId": publication["outcomeEventId"],
-            "textOutcomeEventSha256": publication["eventSha256"],
-            "ledgerPrefixSha256": sha256_hex(prefix_bytes),
-            "ledgerPosition": len(prefix_events),
-            "validatedAt": confirmed_at,
-            "clientSensitiveMarkers": [],
-        }
-        authority = _event(
-            "authority:" + row_hash, packet_id, "corpus_authority_receipt",
-            confirmed_at, response_hash, receipt_payload,
-        )
-        events.append(authority)
-        prefix_events.append(authority)
-        prefix_bytes += canonical_bytes(authority) + b"\n"
+    events, prefix_events, prefix_bytes = _derive_history_authority_events(
+        answers,
+        confirmed_at=confirmed_at,
+        response_hash=response_hash,
+        run_id=run_id,
+        prefix_events=prefix_events,
+    )
 
     focus_event = _event(
         "focus:linkedin-program-0", HUMAN_GATE_PACKET_ID, "focus_decision",
@@ -1154,6 +1189,74 @@ def validate_permission_fixture_authority(
         "responseSha256": response_hash,
         "authorityReceipt": receipt,
         "permissionEvent": permission_event,
+    }
+
+
+def validate_human_gate_history_authority(
+    response_value: object,
+    response_bytes: bytes,
+    request_value: object,
+    events: list[dict[str, object]],
+    authority_receipt_value: object,
+    *,
+    run_id: str,
+) -> dict[str, object]:
+    """Prove the accepted response covered the original bounded request exactly."""
+
+    response = _exact_fields(response_value, _RESPONSE_FIELDS, "human-gate response")
+    _reject_nulls(response, "human-gate response")
+    if response["schemaVersion"] != "linkedin-human-gate-response.v1":
+        raise ValueError("unsupported human-gate response schemaVersion")
+    request = _validate_request(request_value)
+    if response["recoveryRequestSha256"] != _hash_object(request):
+        raise ValueError(
+            "accepted response does not bind the original bounded recovery request"
+        )
+    answers = _validate_answers(response, request)
+    response_hash = sha256_hex(response_bytes)
+    receipt = _require_object(authority_receipt_value, "focus authority receipt")
+    position = receipt.get("ledgerPosition")
+    if (
+        not isinstance(position, int)
+        or isinstance(position, bool)
+        or position < 1
+        or position > len(events)
+    ):
+        raise ValueError("focus authority receipt ledger position is invalid")
+    prefix = events[:position]
+    planned_ids: list[str] = []
+    for answer in answers:
+        row_hash = str(answer["legacyRowSha256"])
+        planned_ids.append("history:" + row_hash)
+        if answer["answer"] == "posted":
+            planned_ids.append("publication:" + row_hash)
+            if "finalText" in answer:
+                planned_ids.append("authority:" + row_hash)
+    planned_set = set(planned_ids)
+    positions = [
+        index
+        for index, event in enumerate(prefix)
+        if str(event["outcomeEventId"]) in planned_set
+    ]
+    if len(positions) != len(planned_ids):
+        raise ValueError("accepted response history event coverage is incomplete")
+    start = min(positions)
+    if positions != list(range(start, start + len(planned_ids))):
+        raise ValueError("accepted response history events are not one exact block")
+    expected, _, _ = _derive_history_authority_events(
+        answers,
+        confirmed_at=_require_text(response["confirmedAt"], "confirmedAt"),
+        response_hash=response_hash,
+        run_id=run_id,
+        prefix_events=list(prefix[:start]),
+    )
+    actual = prefix[start:start + len(expected)]
+    if canonical_bytes(actual) != canonical_bytes(expected):
+        raise ValueError("accepted response history event block does not match authority")
+    return {
+        "recoveryRequestSha256": response["recoveryRequestSha256"],
+        "answerCount": len(answers),
+        "historyEventCount": len(expected),
     }
 
 
