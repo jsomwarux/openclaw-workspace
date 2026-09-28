@@ -65,6 +65,30 @@ def _write_outcomes(path: Path) -> None:
     path.write_bytes(b"".join(canonical_bytes(event) + b"\n" for event in events))
 
 
+def _publication_event(
+    row_hash: str, public_url: str, final_text: str
+) -> dict[str, object]:
+    event: dict[str, object] = {
+        "schemaVersion": "linkedin-content-outcome.v1",
+        "outcomeEventId": "publication-001",
+        "packetId": "legacy:{}".format(row_hash),
+        "eventType": "publication_acknowledged",
+        "recordedAt": "2026-09-28T12:00:00-04:00",
+        "sourcePointer": {
+            "sourceType": "jt_human_gate_response",
+            "sourceId": "sha256:" + "3" * 64,
+            "sourceSha256": "3" * 64,
+        },
+        "payload": {
+            "publicationUrl": public_url,
+            "finalText": final_text,
+            "finalTextSha256": sha256_hex(final_text.encode("utf-8")),
+        },
+    }
+    event["eventSha256"] = sha256_hex(canonical_bytes(event))
+    return event
+
+
 def _manifest(source_sha256: str) -> dict[str, object]:
     value: dict[str, object] = {
         "schemaVersion": "linkedin-corpus-authority-manifest.v1",
@@ -121,13 +145,43 @@ class HistoricalAuditTests(unittest.TestCase):
         self.assertEqual(
             by_topic["governed-decline"]["status"], "not_posted_confirmed"
         )
-
         self.assertEqual(
             audit["statusCounts"],
             {
                 "not_posted_confirmed": 1,
                 "posted_confirmed": 2,
                 "status_unknown": 3,
+            },
+        )
+
+    def test_governed_publication_fields_close_a_posted_recovery_row(self) -> None:
+        row_hash = _row_hash("raw-false-remains-unknown")
+        final_text = "Exact JT-final text from the governed response."
+        events = [
+            _event(row_hash, "posted_confirmed", event_id="history-posted-001"),
+            _publication_event(
+                row_hash,
+                "https://www.linkedin.com/posts/jt-real-activity-123",
+                final_text,
+            ),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            outcomes = Path(directory) / "outcomes.jsonl"
+            outcomes.write_bytes(b"".join(
+                canonical_bytes(event) + b"\n" for event in events
+            ))
+            audit = audit_legacy_rows(FIXTURE, outcomes, GENERATED_AT)
+        record = next(
+            item for item in audit["records"]
+            if item["legacyRowSha256"] == row_hash
+        )
+        self.assertEqual(record["status"], "posted_confirmed")
+        self.assertEqual(record["missing"], [])
+        self.assertNotIn(
+            row_hash,
+            {
+                item["legacyRowSha256"]
+                for item in audit["recoveryRequest"]["items"]
             },
         )
 

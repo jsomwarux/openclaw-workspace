@@ -197,12 +197,14 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         }
 
     def ingest(self, response=None):
+        value = self.response() if response is None else response
         return ingest_human_gate(
-            self.response() if response is None else response,
+            value,
             self.request,
             self.focus,
             self.fixture_gap,
             self.ledger,
+            raw_response_sha256=sha256_hex(canonical_bytes(value)),
             run_context=self.run_context,
             workspace_root=self.root,
         )
@@ -234,10 +236,12 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         authority = result["authorityRunContext"]
         self.assertEqual(authority["corpusAuthorityManifestSha256"], manifest["manifestSha256"])
 
-    def test_required_five_argument_api_derives_a_closed_authority_context(self) -> None:
+    def test_api_requires_an_explicit_raw_response_byte_hash(self) -> None:
+        response = self.response()
         with _working_directory(self.root):
             result = ingest_human_gate(
-                self.response(), self.request, self.focus, self.fixture_gap, self.ledger
+                response, self.request, self.focus, self.fixture_gap, self.ledger,
+                raw_response_sha256=sha256_hex(canonical_bytes(response)),
             )
         self.assertEqual(
             result["corpusAuthorityManifest"]["validatedAt"], CONFIRMED_AT
@@ -245,6 +249,11 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         self.assertEqual(
             result["authorityRunContext"]["generatedAt"], CONFIRMED_AT
         )
+        with self.assertRaisesRegex(ValueError, "raw response"):
+            ingest_human_gate(
+                response, self.request, self.focus, self.fixture_gap, self.ledger,
+                raw_response_sha256="0",
+            )
 
     def test_requires_exact_complete_history_coverage(self) -> None:
         for mutate, pattern in (
@@ -366,6 +375,58 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
             self.ingest(conflict)
         self.assertEqual(self.ledger.read_bytes(), prefix)
 
+    def test_exact_replay_remains_idempotent_after_later_unrelated_events(self) -> None:
+        first = self.ingest()
+        later = {
+            "schemaVersion": "linkedin-content-outcome.v1",
+            "outcomeEventId": "later-unrelated",
+            "packetId": "unrelated",
+            "eventType": "historical_status",
+            "recordedAt": "2026-09-28T19:00:00-04:00",
+            "sourcePointer": {
+                "sourceType": "jt_confirmation",
+                "sourceId": "later-unrelated",
+                "sourceSha256": "7" * 64,
+            },
+            "payload": {"legacyRowSha256": "7" * 64, "status": "status_unknown"},
+        }
+        later["eventSha256"] = _event_hash(later)
+        with self.ledger.open("ab") as handle:
+            handle.write(canonical_bytes(later) + b"\n")
+        exact = self.ledger.read_bytes()
+        replay = self.ingest()
+        self.assertEqual(self.ledger.read_bytes(), exact)
+        self.assertEqual(replay["appendedEventCount"], 0)
+        self.assertEqual(replay["replayedEventCount"], len(first["events"]))
+        self.assertEqual(
+            replay["corpusAuthorityManifest"], first["corpusAuthorityManifest"]
+        )
+
+    def test_manifest_authority_hashes_come_from_validated_boundary_objects(self) -> None:
+        from scripts.linkedin_content_os import recovery
+
+        real_append = recovery._append_batch
+
+        def projected_tamper(path, events):
+            appended, replayed, payload, combined = real_append(path, events)
+            projected = copy.deepcopy(combined)
+            for event in projected:
+                if event["eventType"] == "corpus_authority_receipt":
+                    event["eventSha256"] = "f" * 64
+            return appended, replayed, payload, projected
+
+        with mock.patch.object(recovery, "_append_batch", side_effect=projected_tamper):
+            result = self.ingest()
+        boundary_hash = next(
+            event["eventSha256"] for event in result["events"]
+            if event["eventType"] == "corpus_authority_receipt"
+        )
+        self.assertEqual(
+            result["corpusAuthorityManifest"]["receiptSha256Allowlist"],
+            [boundary_hash],
+        )
+        self.assertNotEqual(boundary_hash, "f" * 64)
+
     def test_append_failure_restores_the_exact_original_prefix(self) -> None:
         sentinel = {
             "schemaVersion": "linkedin-content-outcome.v1",
@@ -407,7 +468,8 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         focus_path = artifacts / "focus-snapshot.phase-1.v1.json"
         fixtures_path = artifacts / "evaluation-fixtures.phase-1.v0.jsonl"
         context_path = artifacts / "run-context.v1.json"
-        response_path.write_bytes(canonical_bytes(self.response()))
+        response_bytes = canonical_bytes(self.response()) + b"\n"
+        response_path.write_bytes(response_bytes)
         request_path.write_bytes(canonical_bytes(self.request))
         focus_path.write_bytes(canonical_bytes(self.focus))
         negative = {"schemaVersion": "linkedin-evaluation-fixture.v1", "fixtureId": "negative", "mode": "internal_machinery", "classification": "negative"}
@@ -416,28 +478,61 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         context_path.write_bytes(canonical_bytes(self.run_context))
         manifest_path = artifacts / "corpus-authority-manifest.v1.json"
         authority_path = artifacts / "run-context.phase-2-authority.v1.json"
+        focus_receipt_path = artifacts / "focus-authority-receipt.v1.json"
+        focus_anchor_path = artifacts / "focus-authority-anchor.v1.json"
 
         import argparse
         ingest_args = argparse.Namespace(
             response=str(response_path), recovery_request=str(request_path),
             focus=str(focus_path), fixtures=str(fixtures_path), outcomes=str(self.ledger),
             corpus_authority_manifest_output=str(manifest_path),
-            authority_run_context_output=str(authority_path), run_context=str(context_path),
+            authority_run_context_output=str(authority_path),
+            focus_authority_receipt_output=str(focus_receipt_path),
+            focus_authority_anchor_output=str(focus_anchor_path),
+            run_context=str(context_path),
             workspace_root=str(self.root),
         )
         result = ingest_human_gate_files(ingest_args)
         self.assertEqual(manifest_path.read_bytes(), canonical_bytes(result["corpusAuthorityManifest"]))
         self.assertEqual(authority_path.read_bytes(), canonical_bytes(result["authorityRunContext"]))
+        self.assertEqual(
+            result["focusAuthorityReceipt"]["rawResponseSha256"],
+            sha256_hex(response_bytes),
+        )
+        self.assertEqual(
+            result["corpusAuthorityManifest"]["humanGateAuthorityReceiptSha256"],
+            sha256_hex(response_bytes),
+        )
 
         focus_output = artifacts / "focus-snapshot.v1.json"
         focus_args = argparse.Namespace(
             workspace_root=str(self.root), outcomes=str(self.ledger),
             run_context=str(context_path), output=str(focus_output),
+            focus_authority_receipt=str(focus_receipt_path),
+            focus_authority_anchor=str(focus_anchor_path),
         )
         first_focus = rebuild_focus_files(focus_args)
         second_focus = rebuild_focus_files(focus_args)
         self.assertEqual(first_focus, second_focus)
         self.assertEqual(first_focus["status"], "confirmed")
+        ledger_before = self.ledger.read_bytes()
+        ledger_rows = load_events(self.ledger)
+        self.ledger.write_bytes(b"".join(
+            canonical_bytes(event) + b"\n" for event in ledger_rows[:-1]
+        ))
+        with self.assertRaisesRegex(ValueError, "ledger prefix|ledger position"):
+            rebuild_focus_files(focus_args)
+        self.ledger.write_bytes(ledger_before)
+        forged_anchor = json.loads(focus_anchor_path.read_text(encoding="utf-8"))
+        forged_anchor["authorityReceiptSha256"] = "0" * 64
+        forged_anchor["anchorSha256"] = sha256_hex(canonical_bytes({
+            key: value for key, value in forged_anchor.items()
+            if key != "anchorSha256"
+        }))
+        focus_anchor_path.write_bytes(canonical_bytes(forged_anchor))
+        with self.assertRaisesRegex(ValueError, "authority receipt digest"):
+            rebuild_focus_files(focus_args)
+        focus_anchor_path.write_bytes(canonical_bytes(result["focusAuthorityAnchor"]))
 
         fixture_output = artifacts / "evaluation-fixtures.v0.jsonl"
         fixture_args = argparse.Namespace(
@@ -453,6 +548,29 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         self.assertEqual(positive["classification"], "positive")
         self.assertEqual(first_fixtures["fixtures"][0], negative)
         self.assertEqual(first_fixtures["fixtures"][-1], teardown)
+
+        focus_before = focus_path.read_bytes()
+        alias_focus_args = argparse.Namespace(**vars(focus_args))
+        alias_focus_args.output = str(focus_path)
+        with self.assertRaisesRegex(ValueError, "phase-1|alias"):
+            rebuild_focus_files(alias_focus_args)
+        self.assertEqual(focus_path.read_bytes(), focus_before)
+
+        symlink_output = artifacts / "fixtures-symlink.jsonl"
+        fixtures_before = fixtures_path.read_bytes()
+        symlink_output.symlink_to(fixtures_path.name)
+        alias_fixture_args = argparse.Namespace(**vars(fixture_args))
+        alias_fixture_args.output = str(symlink_output)
+        with self.assertRaisesRegex(ValueError, "phase-1|alias"):
+            rebuild_fixtures_files(alias_fixture_args)
+        self.assertEqual(fixtures_path.read_bytes(), fixtures_before)
+
+        hardlink_output = artifacts / "fixtures-hardlink.jsonl"
+        os.link(fixtures_path, hardlink_output)
+        alias_fixture_args.output = str(hardlink_output)
+        with self.assertRaisesRegex(ValueError, "phase-1|alias"):
+            rebuild_fixtures_files(alias_fixture_args)
+        self.assertEqual(fixtures_path.read_bytes(), fixtures_before)
 
 
 if __name__ == "__main__":

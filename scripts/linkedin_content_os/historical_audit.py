@@ -74,12 +74,35 @@ def _canonical_date(value: object) -> str:
     return value
 
 
-def _governed_statuses(outcomes: Optional[Path]) -> dict[str, str]:
+def _governed_evidence(outcomes: Optional[Path]) -> dict[str, dict[str, object]]:
     if outcomes is None:
         return {}
     selected: dict[str, tuple[object, str, str]] = {}
+    publications: dict[str, tuple[object, dict[str, object], str]] = {}
     for event in load_events(outcomes):
-        if event["eventType"] != "historical_status":
+        event_type = event["eventType"]
+        if event_type == "publication_acknowledged":
+            packet_id = str(event["packetId"])
+            if not packet_id.startswith("legacy:"):
+                continue
+            row_hash = packet_id[len("legacy:"):]
+            payload = event["payload"]
+            assert isinstance(payload, dict)
+            timestamp = parse_timestamp(event["recordedAt"], "recordedAt")
+            event_hash = str(event["eventSha256"])
+            prior_publication = publications.get(row_hash)
+            if (
+                prior_publication is not None
+                and timestamp == prior_publication[0]
+                and payload != prior_publication[1]
+            ):
+                raise ValueError("conflicting publication fields at the same timestamp")
+            if prior_publication is None or (timestamp, event_hash) > (
+                prior_publication[0], prior_publication[2]
+            ):
+                publications[row_hash] = (timestamp, payload, event_hash)
+            continue
+        if event_type != "historical_status":
             continue
         payload = event["payload"]
         assert isinstance(payload, dict)
@@ -92,7 +115,15 @@ def _governed_statuses(outcomes: Optional[Path]) -> dict[str, str]:
             raise ValueError("conflicting historical statuses at the same timestamp")
         if prior is None or (timestamp, event_hash) > (prior[0], prior[2]):
             selected[row_hash] = (timestamp, status, event_hash)
-    return {row_hash: value[1] for row_hash, value in selected.items()}
+    evidence: dict[str, dict[str, object]] = {
+        row_hash: {"status": value[1]} for row_hash, value in selected.items()
+    }
+    for row_hash, (_, payload, _) in publications.items():
+        governed = evidence.setdefault(row_hash, {})
+        governed["publicUrl"] = payload["publicationUrl"]
+        if "finalText" in payload:
+            governed["finalText"] = payload["finalText"]
+    return evidence
 
 
 def _allowed_answers() -> list[dict[str, object]]:
@@ -307,7 +338,7 @@ def audit_legacy_rows(
     parse_timestamp(generated_at, "generated_at")
     source_before = posted_log.read_bytes()
     rows = read_jsonl_bytes(source_before, str(posted_log))
-    governed = _governed_statuses(outcomes)
+    governed = _governed_evidence(outcomes)
 
     records: list[dict[str, object]] = []
     row_hashes: list[str] = []
@@ -321,11 +352,12 @@ def audit_legacy_rows(
         row_hashes.append(row_hash)
         date = _canonical_date(row.get("date"))
         topic = _topic(row, row_hash)
-        public_url = _public_url(row)
-        final_text = _final_text(row)
+        governed_row = governed.get(row_hash, {})
+        public_url = governed_row.get("publicUrl") or _public_url(row)
+        final_text = governed_row.get("finalText") or _final_text(row)
         raw_posted = row.get("posted") is True
 
-        status = governed.get(row_hash)
+        status = governed_row.get("status")
         if status is None:
             if raw_posted and (
                 public_url is not None or _has_exact_jt_posted_confirmation(row)
@@ -383,8 +415,11 @@ def audit_legacy_rows(
         manifest["receiptSha256Allowlist"] == []
         and manifest["humanGateAuthorityReceiptSha256"] != zero
     ):
-        if not governed or any(
-            status != "status_unknown" for status in governed.values()
+        governed_statuses = [
+            value.get("status") for value in governed.values() if "status" in value
+        ]
+        if not governed_statuses or any(
+            status != "status_unknown" for status in governed_statuses
         ):
             raise ValueError(
                 "empty authority allowlist requires all status_unknown "

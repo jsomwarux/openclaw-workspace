@@ -187,7 +187,10 @@ class LinkedInContentOSCliTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "required artifact"):
             main([
                 "build-focus", "--workspace-root", str(self.root), "--outcomes", str(ledger),
-                "--run-context", str(context), "--output", str(self.root / "focus.json"),
+                "--run-context", str(context),
+                "--focus-authority-receipt", str(self.root / "receipt.json"),
+                "--focus-authority-anchor", str(self.root / "anchor.json"),
+                "--output", str(self.root / "focus.json"),
             ])
         with self.assertRaisesRegex(ValueError, "required artifact"):
             main([
@@ -220,7 +223,10 @@ class LinkedInContentOSCliTests(unittest.TestCase):
         ), mock.patch("sys.stdout.write"):
             main([
                 "build-focus", "--workspace-root", str(self.root), "--outcomes", str(ledger),
-                "--run-context", str(context), "--output", str(self.root / "focus.json"),
+                "--run-context", str(context),
+                "--focus-authority-receipt", str(self.root / "receipt.json"),
+                "--focus-authority-anchor", str(self.root / "anchor.json"),
+                "--output", str(self.root / "focus.json"),
             ])
             main([
                 "build-fixtures", "--decagon-packet", "mission-control/lib/mission-control/fixtures/jobs/decagon-agent-development-manager.packet.json",
@@ -233,6 +239,8 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 "--fixtures", str(self.root / "fixture-input.jsonl"), "--outcomes", str(ledger),
                 "--corpus-authority-manifest-output", str(self.root / "manifest.json"),
                 "--authority-run-context-output", str(self.root / "authority.json"),
+                "--focus-authority-receipt-output", str(self.root / "focus-receipt.json"),
+                "--focus-authority-anchor-output", str(self.root / "focus-anchor.json"),
                 "--run-context", str(context),
             ])
         self.assertEqual([name for name, _ in observed], ["focus", "fixtures", "ingest"])

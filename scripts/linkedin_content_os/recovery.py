@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import stat
 import subprocess
@@ -411,10 +412,11 @@ def _append_batch(
 def _focus_receipt(
     response: dict[str, object], focus: dict[str, object], focus_event: dict[str, object],
     ledger_bytes: bytes, ledger_position: int, replacement_hash: Optional[str],
+    raw_response_sha256: str,
 ) -> dict[str, object]:
     receipt: dict[str, object] = {
         "schemaVersion": AUTHORITY_RECEIPT_SCHEMA_VERSION,
-        "rawResponseSha256": _hash_object(response),
+        "rawResponseSha256": raw_response_sha256,
         "recoveryRequestSha256": response["recoveryRequestSha256"],
         "fixtureGapSha256": response["fixtureGapSha256"],
         "focusDecisionEventSha256": focus_event["eventSha256"],
@@ -437,6 +439,7 @@ def ingest_human_gate(
     fixture_gap: object,
     ledger: Path,
     *,
+    raw_response_sha256: object,
     run_context: Optional[object] = None,
     workspace_root: Path = Path("."),
 ) -> dict[str, object]:
@@ -446,6 +449,7 @@ def ingest_human_gate(
     _reject_nulls(response_value, "human-gate response")
     if response_value["schemaVersion"] != "linkedin-human-gate-response.v1":
         raise ValueError("unsupported human-gate response schemaVersion")
+    response_hash = _require_hash(raw_response_sha256, "raw response SHA-256")
     confirmed_at = _require_text(response_value["confirmedAt"], "confirmedAt")
     parse_timestamp(confirmed_at, "confirmedAt")
     request_value = _validate_request(request)
@@ -492,7 +496,6 @@ def ingest_human_gate(
         response_value["permissionedFixture"], confirmed_at
     )
     del document, proof_bytes
-    response_hash = _hash_object(response_value)
     existing, existing_bytes = _canonical_ledger_rows(Path(ledger))
     planned_ids = {
         "history:" + str(answer["legacyRowSha256"])
@@ -517,8 +520,10 @@ def ingest_human_gate(
     ]
     if owned_positions:
         first_owned = owned_positions[0]
-        if owned_positions != list(range(first_owned, len(existing))):
-            raise ValueError("human-gate replay events must be one exact ledger suffix")
+        if owned_positions != list(
+            range(first_owned, first_owned + len(owned_positions))
+        ):
+            raise ValueError("human-gate replay events must be one exact ledger block")
         prefix_events = list(existing[:first_owned])
         prefix_bytes = b"".join(
             canonical_bytes(event) + b"\n" for event in prefix_events
@@ -607,15 +612,29 @@ def ingest_human_gate(
         },
     )
     events.append(permission_event)
+    if owned_positions:
+        boundary_position = first_owned + len(events)
+        existing_block = existing[first_owned:boundary_position]
+        if [event["outcomeEventId"] for event in existing_block] != [
+            event["outcomeEventId"] for event in events
+        ]:
+            raise ValueError("human-gate replay conflicts with the existing event block")
     appended, replayed, ledger_bytes, all_events = _append_batch(Path(ledger), events)
-    by_id = {str(item["outcomeEventId"]): item for item in all_events}
-    focus_event = by_id[str(focus_event["outcomeEventId"])]
+    if owned_positions:
+        boundary_position = first_owned + len(events)
+        boundary_bytes = b"".join(
+            canonical_bytes(event) + b"\n"
+            for event in all_events[:boundary_position]
+        )
+    else:
+        boundary_position = len(all_events)
+        boundary_bytes = ledger_bytes
     focus_receipt = _focus_receipt(
-        response_value, focus_value, focus_event, ledger_bytes, len(all_events),
-        replacement_hash,
+        response_value, focus_value, focus_event, boundary_bytes, boundary_position,
+        replacement_hash, response_hash,
     )
     authority_hashes = sorted(
-        str(by_id[str(event["outcomeEventId"])]["eventSha256"])
+        str(event["eventSha256"])
         for event in events if event["eventType"] == "corpus_authority_receipt"
     )
     manifest: dict[str, object] = {
@@ -624,8 +643,8 @@ def ingest_human_gate(
         "validatedAt": context["generatedAt"],
         "receiptSha256Allowlist": authority_hashes,
         "humanGateAuthorityReceiptSha256": response_hash,
-        "ledgerPrefixSha256": sha256_hex(ledger_bytes),
-        "ledgerPosition": len(all_events),
+        "ledgerPrefixSha256": sha256_hex(boundary_bytes),
+        "ledgerPosition": boundary_position,
     }
     manifest["manifestSha256"] = _hash_object(manifest)
     authority_unsigned: dict[str, object] = {
@@ -642,7 +661,7 @@ def ingest_human_gate(
         "responseSha256": response_hash,
         "appendedEventCount": appended,
         "replayedEventCount": replayed,
-        "events": [by_id[str(event["outcomeEventId"])] for event in events],
+        "events": events,
         "focusAuthorityReceipt": focus_receipt,
         "corpusAuthorityManifest": manifest,
         "authorityRunContext": authority_context,
@@ -655,6 +674,33 @@ def _strict_json_file(path: Path) -> dict[str, object]:
     except OSError as error:
         raise ValueError("required artifact is unavailable: {}".format(path)) from error
     return _strict_json(payload, str(path))
+
+
+def _strict_json_file_with_bytes(path: Path) -> tuple[dict[str, object], bytes]:
+    try:
+        payload = path.read_bytes()
+    except OSError as error:
+        raise ValueError("required artifact is unavailable: {}".format(path)) from error
+    return _strict_json(payload, str(path)), payload
+
+
+def _reject_phase1_output_aliases(
+    phase1_inputs: Sequence[Path], outputs: Sequence[Path]
+) -> None:
+    resolved_inputs = [path.resolve(strict=False) for path in phase1_inputs]
+    for output in outputs:
+        resolved_output = output.resolve(strict=False)
+        for source, resolved_source in zip(phase1_inputs, resolved_inputs):
+            aliased = resolved_output == resolved_source
+            if not aliased and source.exists() and output.exists():
+                try:
+                    aliased = os.path.samefile(source, output)
+                except OSError:
+                    aliased = False
+            if aliased:
+                raise ValueError(
+                    "output aliases immutable phase-1 input: {}".format(source)
+                )
 
 
 def _phase1_fixture_rows(path: Path) -> list[dict[str, object]]:
@@ -671,7 +717,7 @@ def _phase1_fixture_rows(path: Path) -> list[dict[str, object]]:
 
 
 def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
-    response = _strict_json_file(Path(args.response))
+    response, response_bytes = _strict_json_file_with_bytes(Path(args.response))
     request = _strict_json_file(Path(args.recovery_request))
     focus = _strict_json_file(Path(args.focus))
     fixtures = _phase1_fixture_rows(Path(args.fixtures))
@@ -679,6 +725,7 @@ def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
     context = _strict_json_file(Path(args.run_context))
     result = ingest_human_gate(
         response, request, focus, fixture_gap, Path(args.outcomes),
+        raw_response_sha256=sha256_hex(response_bytes),
         run_context=context,
         workspace_root=Path(getattr(args, "workspace_root", ".")),
     )
@@ -689,6 +736,17 @@ def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
     write_json_atomic(
         Path(args.authority_run_context_output), result["authorityRunContext"]
     )
+    write_json_atomic(
+        Path(args.focus_authority_receipt_output), result["focusAuthorityReceipt"]
+    )
+    anchor: dict[str, object] = {
+        "schemaVersion": "linkedin-focus-authority-anchor.v1",
+        "rawResponseSha256": sha256_hex(response_bytes),
+        "authorityReceiptSha256": result["focusAuthorityReceipt"]["receiptSha256"],
+    }
+    anchor["anchorSha256"] = _hash_object(anchor)
+    write_json_atomic(Path(args.focus_authority_anchor_output), anchor)
+    result["focusAuthorityAnchor"] = anchor
     return result
 
 
@@ -704,7 +762,13 @@ def _phase1_paths(directory: Path) -> tuple[Path, Path, Path, Path]:
 def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
     output = Path(args.output)
     response_path, request_path, proposed_path, fixtures_path = _phase1_paths(output.parent)
-    response = _strict_json_file(response_path)
+    receipt_path = Path(args.focus_authority_receipt)
+    anchor_path = Path(args.focus_authority_anchor)
+    _reject_phase1_output_aliases(
+        (response_path, request_path, proposed_path, fixtures_path, receipt_path, anchor_path),
+        (output,),
+    )
+    response, response_bytes = _strict_json_file_with_bytes(response_path)
     request = _strict_json_file(request_path)
     proposed = _strict_json_file(proposed_path)
     fixtures = _phase1_fixture_rows(fixtures_path)
@@ -715,8 +779,29 @@ def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
         raise ValueError("focus snapshot SHA-256 mismatch")
     if response["fixtureGapSha256"] != _hash_object(gap):
         raise ValueError("fixture gap SHA-256 mismatch")
+    receipt = _strict_json_file(receipt_path)
+    anchor = _exact_fields(
+        _strict_json_file(anchor_path),
+        {
+            "schemaVersion", "rawResponseSha256", "authorityReceiptSha256",
+            "anchorSha256",
+        },
+        "focus authority anchor",
+    )
+    if anchor["schemaVersion"] != "linkedin-focus-authority-anchor.v1":
+        raise ValueError("unsupported focus authority anchor schemaVersion")
+    anchor_hash = _require_hash(anchor["anchorSha256"], "anchorSha256")
+    if anchor_hash != _hash_object({
+        key: value for key, value in anchor.items() if key != "anchorSha256"
+    }):
+        raise ValueError("focus authority anchor SHA-256 mismatch")
+    if anchor["rawResponseSha256"] != sha256_hex(response_bytes):
+        raise ValueError("focus authority anchor raw response SHA-256 mismatch")
+    expected_receipt_hash = _require_hash(
+        anchor["authorityReceiptSha256"], "authority receipt digest"
+    )
     events = load_events(Path(args.outcomes))
-    response_hash = _hash_object(response)
+    response_hash = sha256_hex(response_bytes)
     focus_events = [
         event for event in events
         if event["eventType"] == "focus_decision"
@@ -726,30 +811,27 @@ def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
     if len(focus_events) != 1:
         raise ValueError("ledger requires exactly one matching focus decision")
     focus_event = focus_events[0]
-    response_positions = [
-        index
-        for index, event in enumerate(events)
-        if event["sourcePointer"]["sourceSha256"] == response_hash
-    ]
-    if not response_positions:
-        raise ValueError("ledger lacks the human-gate response event batch")
-    ledger_position = max(response_positions) + 1
-    ledger_prefix = b"".join(
-        canonical_bytes(event) + b"\n" for event in events[:ledger_position]
+    receipt_position = receipt.get("ledgerPosition")
+    if (
+        not isinstance(receipt_position, int)
+        or isinstance(receipt_position, bool)
+        or receipt_position < 1
+        or receipt_position > len(events)
+    ):
+        raise ValueError("focus authority receipt ledger position is invalid")
+    receipt_prefix = b"".join(
+        canonical_bytes(event) + b"\n" for event in events[:receipt_position]
     )
-    replacement_hash = _require_object(focus_event["payload"], "focus payload").get(
-        "replacementFocusSnapshotSha256"
-    )
-    receipt = _focus_receipt(
-        response, proposed, focus_event, ledger_prefix, ledger_position,
-        str(replacement_hash) if replacement_hash is not None else None,
-    )
+    if receipt.get("ledgerPrefixSha256") != sha256_hex(receipt_prefix):
+        raise ValueError("focus authority receipt ledger prefix mismatch")
+    if events.index(focus_event) >= receipt_position:
+        raise ValueError("focus decision falls outside authority ledger prefix")
     confirmed = apply_focus_decision(
         proposed,
         focus_event,
         Path(args.workspace_root),
         authority_receipt=receipt,
-        expected_authority_receipt_sha256=receipt["receiptSha256"],
+        expected_authority_receipt_sha256=expected_receipt_hash,
     )
     write_json_atomic(output, confirmed)
     return confirmed
@@ -758,6 +840,8 @@ def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
 def rebuild_fixtures_files(args: argparse.Namespace) -> dict[str, object]:
     output = Path(args.output)
     response_path = Path(args.human_gate_response)
+    phase1_paths = _phase1_paths(response_path.parent)
+    _reject_phase1_output_aliases(phase1_paths, (output,))
     response = _strict_json_file(response_path)
     phase1_path = response_path.parent / "evaluation-fixtures.phase-1.v0.jsonl"
     rows = _phase1_fixture_rows(phase1_path)

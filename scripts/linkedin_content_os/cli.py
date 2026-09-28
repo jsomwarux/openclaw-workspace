@@ -1175,7 +1175,9 @@ def _parser() -> argparse.ArgumentParser:
     ingest = subparsers.add_parser("ingest-human-gate")
     for name in (
         "response", "recovery-request", "focus", "fixtures", "outcomes",
-        "corpus-authority-manifest-output", "authority-run-context-output", "run-context",
+        "corpus-authority-manifest-output", "authority-run-context-output",
+        "focus-authority-receipt-output", "focus-authority-anchor-output",
+        "run-context",
     ):
         ingest.add_argument("--" + name, required=True)
 
@@ -1183,6 +1185,8 @@ def _parser() -> argparse.ArgumentParser:
     focus.add_argument("--workspace-root", required=True)
     focus.add_argument("--outcomes")
     focus.add_argument("--run-context", required=True)
+    focus.add_argument("--focus-authority-receipt")
+    focus.add_argument("--focus-authority-anchor")
     focus.add_argument("--output", required=True)
 
     corpus = subparsers.add_parser("build-corpus")
@@ -1274,9 +1278,17 @@ def _validate_command_paths(args: argparse.Namespace) -> None:
         ),
         "ingest-human-gate": (
             ("response", "recovery_request", "focus", "fixtures", "outcomes", "run_context"),
-            ("corpus_authority_manifest_output", "authority_run_context_output"), (),
+            (
+                "corpus_authority_manifest_output", "authority_run_context_output",
+                "focus_authority_receipt_output", "focus_authority_anchor_output",
+            ), (),
         ),
-        "build-focus": (("run_context", "outcomes"), ("output",), ()),
+        "build-focus": (
+            (
+                "run_context", "outcomes", "focus_authority_receipt",
+                "focus_authority_anchor",
+            ), ("output",), (),
+        ),
         "build-corpus": (
             ("audit", "outcomes", "run_context"),
             ("gold_output", "pairs_output"), ("receipt_output",),
