@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "linkedin-focus-sources.v1",
+  "targets": [
+    {
+      "targetId": "consulting-proof-revenue",
+      "kind": "consulting",
+      "label": "Permissioned consulting proof and revenue",
+      "desiredOutcome": "Publish proof-led work that supports one qualified consulting conversation",
+      "sourceRefs": [
+        {
+          "path": "memory/content/current-efforts.md",
+          "sha256": "99b419e7a2a66e792e759d011e3a32ec0a1e3947549d8ecbd216ee2980421628"
+        },
+        {
+          "path": "memory/pipeline.jsonl",
+          "sha256": "2ca77a25d0fcfe8c3d81d0e654681653e17419506cc67b17b5b14a42276018b6"
+        }
+      ]
+    },
+    {
+      "targetId": "selective-career-opportunity",
+      "kind": "career",
+      "label": "Selective evidence-backed career opportunities",
+      "desiredOutcome": "Support one exact-fit career opportunity without displacing consulting priorities",
+      "sourceRefs": [
+        {
+          "path": "memory/job-state/job-market-daily-research.md",
+          "sha256": "c2efdc048cc4c448b5b503f3ad156b33d39418c69135f5ba5efb30eca451a4b2"
+        }
+      ]
+    }
+  ]
+}
