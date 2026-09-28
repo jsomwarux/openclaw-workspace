@@ -113,6 +113,37 @@ class HistoricalAuditTests(unittest.TestCase):
         self.assertTrue(false_records)
         self.assertEqual({record["status"] for record in false_records}, {"status_unknown"})
 
+    def test_raw_false_stays_unknown_even_with_a_valid_linkedin_url(self) -> None:
+        audit = audit_legacy_rows(FIXTURE, None, GENERATED_AT)
+        record = next(
+            item
+            for item in audit["records"]
+            if item["topic"] == "raw-false-remains-unknown"
+        )
+        self.assertEqual(record["status"], "status_unknown")
+
+    def test_exact_legacy_jt_confirmation_marker_confirms_post_without_url(self) -> None:
+        audit = audit_legacy_rows(FIXTURE, None, GENERATED_AT)
+        record = next(
+            item
+            for item in audit["records"]
+            if item["topic"] == "jt-confirmed-no-url"
+        )
+        self.assertEqual(record["status"], "posted_confirmed")
+        self.assertEqual(record["missing"], ["public_url", "final_text"])
+
+    def test_free_form_confirmation_and_workflow_metadata_do_not_confirm(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "legacy.jsonl"
+            path.write_text(
+                '{"date":"2026-09-07","platform":"linkedin","topic":"free-form",'
+                '"posted":true,"posted_confirmation":"JT probably posted this",'
+                '"scheduled_in_notion":true,"drive_link":"https://example.com"}\n',
+                encoding="utf-8",
+            )
+            audit = audit_legacy_rows(path, None, GENERATED_AT)
+        self.assertEqual(audit["records"][0]["status"], "status_unknown")
+
     def test_reports_duplicates_without_line_number_identity_or_merging(self) -> None:
         audit = self._audit()
         duplicate_hash = _row_hash("duplicate-row")

@@ -1,6 +1,6 @@
 {"date":"2026-09-01","platform":"linkedin","topic":"public-url-proof","posted":true,"public_url":"https://www.linkedin.com/posts/jt_public-url-proof-1","final_text":"Exact published text"}
-{"date":"2026-09-02","platform":"linkedin","topic":"jt-confirmed-no-url","posted":true}
-{"date":"2026-09-03","platform":"linkedin","topic":"raw-false-remains-unknown","posted":false,"scheduled_in_notion":true,"drive_link":"https://docs.google.com/document/d/example/edit"}
+{"date":"2026-09-02","platform":"linkedin","topic":"jt-confirmed-no-url","posted":true,"posted_confirmation":"JT_CONFIRMED_POSTED"}
+{"date":"2026-09-03","platform":"linkedin","topic":"raw-false-remains-unknown","posted":false,"public_url":"https://www.linkedin.com/posts/jt_stale-url-evidence-1","scheduled_in_notion":true,"drive_link":"https://docs.google.com/document/d/example/edit"}
 {"date":"2026-09-04","platform":"linkedin","topic":"governed-decline","posted":false}
 {"date":"2026-09-05","platform":"x","topic":"exclude-x","posted":true,"public_url":"https://x.com/jts_14/status/1"}
 {"date":"2026-09-06","platform":"linkedin","topic":"duplicate-row","posted":false}

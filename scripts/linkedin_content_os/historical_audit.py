@@ -13,6 +13,7 @@ from scripts.linkedin_content_os.outcomes import load_events
 
 
 _STATUSES = ("not_posted_confirmed", "posted_confirmed", "status_unknown")
+_JT_POSTED_CONFIRMATION = "JT_CONFIRMED_POSTED"
 
 
 def _legacy_row_hash(row: dict[str, object]) -> str:
@@ -47,6 +48,10 @@ def _final_text(row: dict[str, object]) -> Optional[str]:
     if not isinstance(value, str) or not value.strip():
         return None
     return value
+
+
+def _has_exact_jt_posted_confirmation(row: dict[str, object]) -> bool:
+    return row.get("posted_confirmation") == _JT_POSTED_CONFIRMATION
 
 
 def _topic(row: dict[str, object], row_hash: str) -> str:
@@ -120,7 +125,12 @@ def audit_legacy_rows(
 
         status = governed.get(row_hash)
         if status is None:
-            status = "posted_confirmed" if public_url is not None else "status_unknown"
+            if raw_posted and (
+                public_url is not None or _has_exact_jt_posted_confirmation(row)
+            ):
+                status = "posted_confirmed"
+            else:
+                status = "status_unknown"
 
         missing: list[str] = []
         if status == "posted_confirmed" or raw_posted:
