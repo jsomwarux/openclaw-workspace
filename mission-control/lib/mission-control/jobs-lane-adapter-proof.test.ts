@@ -80,9 +80,11 @@ describe("Decagon Jobs packet → Mission Control governed lifecycle", () => {
     expect(first).toMatchObject({ created: true, payloadHash: EXPECTED_PAYLOAD_HASH, approvalState: "pending" });
     expect(db.rows).toHaveLength(1);
 
+    const writesBeforeReplay = db.writes;
     const replay = await admit(db);
     expect(replay).toEqual({ ...first, created: false });
     expect(db.rows).toHaveLength(1);
+    expect(db.writes).toBe(writesBeforeReplay);
 
     await transition(db, first.taskId, { action: "approve", payloadHash: EXPECTED_PAYLOAD_HASH }, "jt", DECISION, NOW + 60_000);
     await transition(db, first.taskId, {
@@ -105,9 +107,11 @@ describe("Decagon Jobs packet → Mission Control governed lifecycle", () => {
       },
     });
 
+    const writesBeforeClosedReplay = db.writes;
     const replayAfterClosure = await admit(db);
     expect(replayAfterClosure).toEqual({ ...first, created: false, approvalState: "approved" });
     expect(db.rows).toHaveLength(1);
+    expect(db.writes).toBe(writesBeforeClosedReplay);
   });
 
   test("the same exact packet can close as typed no-action without fabricated evidence or outcome", async () => {
