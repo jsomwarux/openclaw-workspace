@@ -18,6 +18,9 @@ RECONCILED_AUTHORITY = (
     "Exact JT-final LinkedIn text, evidence safety, and reconciled gates outrank "
     "fixed-day, fixed-format, and quota mechanics."
 )
+ABSOLUTE_INTERNAL_MACHINERY_RULE = (
+    "V1 prohibits posts about JT's internal content machinery without exception."
+)
 
 
 class VoiceRuleRetirementTests(unittest.TestCase):
@@ -63,6 +66,17 @@ class VoiceRuleRetirementTests(unittest.TestCase):
         voice = documents["memory/content-voice.md"].decode("utf-8")
         self.assertNotIn("## Content Calendar — Format by Day", voice)
         self.assertNotIn("For a normal weekly queue:", voice)
+
+    def test_public_owner_docs_make_internal_machinery_prohibition_absolute(self) -> None:
+        documents = self._owner_documents()
+        for path in (
+            "docs/agents/content-rules.md",
+            "memory/content-voice.md",
+        ):
+            text = documents[path].decode("utf-8")
+            with self.subTest(path=path):
+                self.assertIn(ABSOLUTE_INTERNAL_MACHINERY_RULE, text)
+                self.assertNotIn("No content-ops reveal by default", text)
 
     def test_retirement_artifact_is_source_bound_and_complete(self) -> None:
         documents = self._reconciled_documents()
