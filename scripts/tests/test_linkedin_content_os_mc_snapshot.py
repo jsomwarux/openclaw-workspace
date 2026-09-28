@@ -231,7 +231,7 @@ class MissionControlSnapshotTests(unittest.TestCase):
         snapshot = validate_snapshot(_raw(*candidates), RUN_CONTEXT)
 
         self.assertEqual(
-            [packet["taskId"] for packet in approved_linkedin_packets(snapshot)],
+            [packet["taskId"] for packet in approved_linkedin_packets(snapshot, RUN_CONTEXT)],
             ["valid"],
         )
         self.assertEqual(snapshot["linkedinLanePacketCount"], 1)
@@ -254,7 +254,7 @@ class MissionControlSnapshotTests(unittest.TestCase):
         )
 
         snapshot = validate_snapshot(_raw(*tasks), RUN_CONTEXT)
-        projected = approved_linkedin_packets(snapshot)
+        projected = approved_linkedin_packets(snapshot, RUN_CONTEXT)
 
         self.assertEqual([item["taskId"] for item in projected], ["open", "published"])
         self.assertEqual(projected[0]["projectionType"], "publication_acknowledgment")
@@ -276,14 +276,14 @@ class MissionControlSnapshotTests(unittest.TestCase):
         snapshot = validate_snapshot(_raw(_task("valid")), RUN_CONTEXT)
         snapshot.pop("rawSha256")
         with self.assertRaisesRegex(ValueError, "rawSha256"):
-            approved_linkedin_packets(snapshot)
+            approved_linkedin_packets(snapshot, RUN_CONTEXT)
 
         snapshot = validate_snapshot(_raw(_task("valid")), RUN_CONTEXT)
         packet = dict(snapshot["packets"][0])
         packet["description"] = "must not survive"
         snapshot["packets"] = [packet]
         with self.assertRaisesRegex(ValueError, "canonical fields"):
-            approved_linkedin_packets(snapshot)
+            approved_linkedin_packets(snapshot, RUN_CONTEXT)
 
     def test_fails_closed_on_run_context_mismatch_or_staleness(self) -> None:
         raw = _raw(_task("valid"))
@@ -297,16 +297,34 @@ class MissionControlSnapshotTests(unittest.TestCase):
                 validate_snapshot(raw, context)
 
         snapshot = validate_snapshot(raw, RUN_CONTEXT)
-        mutated = dict(snapshot)
-        mutated["runId"] = "wrong"
-        with self.assertRaisesRegex(ValueError, "runId"):
-            approved_linkedin_packets(mutated)
+        valid_other_context = {
+            **RUN_CONTEXT,
+            "runId": "sha256:" + "d" * 64,
+        }
+        with self.assertRaisesRegex(ValueError, "current run context"):
+            approved_linkedin_packets(snapshot, valid_other_context)
+
+        later_run_context = {
+            "runId": RUN_CONTEXT["runId"],
+            "generatedAt": "2099-09-28T13:00:00+00:00",
+            "consumerNow": "2099-09-28T13:00:00+00:00",
+        }
+        with self.assertRaisesRegex(ValueError, "current run context"):
+            approved_linkedin_packets(snapshot, later_run_context)
+
+        stale_context = {
+            **RUN_CONTEXT,
+            "consumerNow": "2099-09-28T14:00:00.000001+00:00",
+        }
+        with self.assertRaisesRegex(ValueError, "stale"):
+            approved_linkedin_packets(snapshot, stale_context)
+
         mutated = dict(snapshot)
         mutated["validUntil"] = (
             datetime.fromisoformat(GENERATED_AT) + timedelta(hours=3)
         ).isoformat()
         with self.assertRaisesRegex(ValueError, "validUntil"):
-            approved_linkedin_packets(mutated)
+            approved_linkedin_packets(mutated, RUN_CONTEXT)
 
 
 if __name__ == "__main__":

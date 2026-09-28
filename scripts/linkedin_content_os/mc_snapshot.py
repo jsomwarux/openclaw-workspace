@@ -262,9 +262,9 @@ def validate_snapshot(
 
 
 def approved_linkedin_packets(
-    snapshot: dict[str, object]
+    snapshot: dict[str, object], run_context: dict[str, object]
 ) -> list[dict[str, object]]:
-    """Validate a wrapper before returning its approved LinkedIn projections."""
+    """Validate a wrapper against the current run before returning projections."""
 
     if not isinstance(snapshot, dict):
         raise ValueError("snapshot must be an object")
@@ -289,14 +289,24 @@ def approved_linkedin_packets(
     run_id = snapshot["runId"]
     if not isinstance(run_id, str) or _RUN_ID.fullmatch(run_id) is None:
         raise ValueError("invalid snapshot runId")
+    (
+        current_run_id,
+        generated_at_text,
+        generated_at,
+        consumer_now,
+    ) = _require_run_context(run_context)
+    if run_id != current_run_id or snapshot["capturedAt"] != generated_at_text:
+        raise ValueError("snapshot does not belong to the current run context")
     if snapshot["sourceUrl"] != SOURCE_URL:
         raise ValueError("invalid snapshot sourceUrl")
     _require_hash(snapshot["rawSha256"], "rawSha256")
     captured_at = parse_timestamp(snapshot["capturedAt"], "capturedAt")
     valid_until = parse_timestamp(snapshot["validUntil"], "validUntil")
+    if captured_at != generated_at:
+        raise ValueError("snapshot does not belong to the current run context")
     if valid_until != captured_at + SNAPSHOT_TTL:
         raise ValueError("validUntil must be exactly two hours after capturedAt")
-    if datetime.now(timezone.utc) > valid_until:
+    if consumer_now > valid_until:
         raise ValueError("Mission Control snapshot is stale")
     packets = snapshot["packets"]
     if not isinstance(packets, list):
