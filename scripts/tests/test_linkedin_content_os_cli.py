@@ -742,14 +742,103 @@ class VerificationIntegrationTests(unittest.TestCase):
         )
 
         source_sha = sha256_hex(posted.read_bytes())
+        accepted_fixture = {
+            "proofId": "cohort-two-coi-proof-v1",
+            "gitDir": "/tmp/jt-ops/.git",
+            "commit": "4" * 40,
+            "path": "evidence/cohort-two.permissioned-proof.json",
+            "contentSha256": "5" * 64,
+            "permissionEvidenceRef": "/permission",
+            "permissionEvidenceSha256": "6" * 64,
+            "permissionStatus": "approved-anonymized",
+        }
+        response = {
+            "schemaVersion": "linkedin-human-gate-response.v1",
+            "recoveryRequestSha256": "7" * 64,
+            "focusSnapshotSha256": "8" * 64,
+            "fixtureGapSha256": "9" * 64,
+            "focusDecision": {"decision": "confirmed"},
+            "historyAnswers": [],
+            "permissionedFixture": accepted_fixture,
+            "confirmedAt": t2,
+        }
+        response_path = self.artifacts / "human-gate-response.v1.json"
+        response_path.write_bytes(canonical_bytes(response))
+        response_sha = sha256_hex(response_path.read_bytes())
+
+        def accepted_event(event_id, packet_id, event_type, payload):
+            event = {
+                "schemaVersion": "linkedin-content-outcome.v1",
+                "outcomeEventId": event_id,
+                "packetId": packet_id,
+                "eventType": event_type,
+                "recordedAt": t2,
+                "sourcePointer": {
+                    "sourceType": "jt_human_gate_response",
+                    "sourceId": "sha256:" + response_sha,
+                    "sourceSha256": response_sha,
+                },
+                "payload": payload,
+            }
+            event["eventSha256"] = sha256_hex(canonical_bytes(event))
+            return event
+
+        focus_event = accepted_event(
+            "focus:linkedin-program-0",
+            "linkedin-program-0-human-gate",
+            "focus_decision",
+            {"decision": "confirmed", "focusSnapshotSha256": "8" * 64},
+        )
+        permission_event = accepted_event(
+            "permission:cohort-two-coi-proof-v1",
+            "proof:cohort-two-coi-proof-v1",
+            "permission_fixture_accepted",
+            {
+                "fixtureId": "cohort-two-coi-proof-v1",
+                "repository": accepted_fixture["gitDir"],
+                "commitSha": accepted_fixture["commit"],
+                "path": accepted_fixture["path"],
+                "extractedSha256": accepted_fixture["contentSha256"],
+                "permissionEvidenceSha256": accepted_fixture["permissionEvidenceSha256"],
+                "permissionExpiresAt": "2027-09-28T21:29:32Z",
+            },
+        )
+        accepted_ledger = b"".join(
+            canonical_bytes(event) + b"\n"
+            for event in (focus_event, permission_event)
+        )
+        focus_receipt = {
+            "schemaVersion": "linkedin-human-gate-authority-receipt.v1",
+            "rawResponseSha256": response_sha,
+            "recoveryRequestSha256": response["recoveryRequestSha256"],
+            "fixtureGapSha256": response["fixtureGapSha256"],
+            "focusDecisionEventSha256": focus_event["eventSha256"],
+            "ledgerPrefixSha256": sha256_hex(accepted_ledger),
+            "ledgerPosition": 2,
+            "validatedAt": t2,
+            "originalProposalSha256": "8" * 64,
+            "focusDecision": response["focusDecision"],
+        }
+        focus_receipt["receiptSha256"] = sha256_hex(canonical_bytes(focus_receipt))
+        focus_receipt_path = self.artifacts / "focus-authority-receipt.v1.json"
+        focus_receipt_path.write_bytes(canonical_bytes(focus_receipt))
+        focus_anchor = {
+            "schemaVersion": "linkedin-focus-authority-anchor.v1",
+            "rawResponseSha256": response_sha,
+            "authorityReceiptSha256": focus_receipt["receiptSha256"],
+        }
+        focus_anchor["anchorSha256"] = sha256_hex(canonical_bytes(focus_anchor))
+        (self.artifacts / "focus-authority-anchor.v1.json").write_bytes(
+            canonical_bytes(focus_anchor)
+        )
         manifest: dict[str, object] = {
             "schemaVersion": "linkedin-corpus-authority-manifest.v1",
             "runId": corpus_run_id(source_sha, t2),
             "validatedAt": t2,
             "receiptSha256Allowlist": ["1" * 64],
-            "humanGateAuthorityReceiptSha256": "2" * 64,
-            "ledgerPrefixSha256": "3" * 64,
-            "ledgerPosition": 1,
+            "humanGateAuthorityReceiptSha256": response_sha,
+            "ledgerPrefixSha256": sha256_hex(accepted_ledger),
+            "ledgerPosition": 2,
         }
         manifest["manifestSha256"] = sha256_hex(canonical_bytes(manifest))
         manifest_path = self.artifacts / "corpus-authority-manifest.v1.json"
@@ -769,7 +858,7 @@ class VerificationIntegrationTests(unittest.TestCase):
         phase2_context = {**phase2_base_unsigned, "runId": "sha256:" + sha256_hex(canonical_bytes(phase2_base_unsigned))}
 
         outcomes = self.artifacts / "outcomes.v1.jsonl"
-        outcomes.write_bytes(b"")
+        outcomes.write_bytes(accepted_ledger)
         recovery = self.artifacts / "historical-recovery-request.v1.json"
         recovery_value = {"schemaVersion": "linkedin-historical-recovery-request.v1", "generatedAt": t2, "sourceSha256": source_sha, "items": []}
         recovery.write_bytes(canonical_bytes(recovery_value))
@@ -792,7 +881,25 @@ class VerificationIntegrationTests(unittest.TestCase):
             "targets": [{"targetId": "consulting-proof"}],
         }))
         fixtures = self.artifacts / "evaluation-fixtures.v0.jsonl"
-        fixtures.write_bytes(canonical_bytes({"classification": "negative"}) + b"\n" + canonical_bytes({"classification": "positive"}) + b"\n")
+        positive_fixture = {
+            "fixtureId": accepted_fixture["proofId"],
+            "mode": "build_proof",
+            "classification": "positive",
+            "contentSha256": accepted_fixture["contentSha256"],
+            "permissionState": accepted_fixture["permissionStatus"],
+            "permissionEvidenceSha256": accepted_fixture["permissionEvidenceSha256"],
+            "sourceRefs": [{
+                "proofId": accepted_fixture["proofId"],
+                "repository": accepted_fixture["gitDir"],
+                "commit": accepted_fixture["commit"],
+                "path": accepted_fixture["path"],
+                "contentSha256": accepted_fixture["contentSha256"],
+            }],
+        }
+        fixtures.write_bytes(
+            canonical_bytes({"classification": "negative"}) + b"\n"
+            + canonical_bytes(positive_fixture) + b"\n"
+        )
         snapshot_unsigned: dict[str, object] = {
             "schemaVersion": "linkedin-mc-snapshot.v1",
             "runId": phase2_context["runId"],
@@ -849,6 +956,7 @@ class VerificationIntegrationTests(unittest.TestCase):
             "phase1_receipt": phase1_receipt, "audit_receipt": audit_receipt,
             "corpus_receipt": corpus_receipt, "b1": boundaries[0], "a1": boundaries[1],
             "b2": boundaries[2], "a2": boundaries[3], "report": self.root / "report.md",
+            "response": response_path,
         }
 
     def _verify_argv(self, paths: dict[str, Path]) -> list[str]:
@@ -879,6 +987,14 @@ class VerificationIntegrationTests(unittest.TestCase):
         self.assertEqual(len(observed), 4)
         self.assertFalse(report["liveOrExternalActionOccurred"])
 
+        accepted_response_bytes = paths["response"].read_bytes()
+        swapped_response = _read_json(paths["response"])
+        swapped_response["permissionedFixture"]["commit"] = "a" * 40
+        paths["response"].write_bytes(canonical_bytes(swapped_response))
+        with self.assertRaisesRegex(ValueError, "accepted response|authority binding"):
+            main(self._verify_argv(paths))
+        paths["response"].write_bytes(accepted_response_bytes)
+
         swapped = self._verify_argv(paths)
         audit_index = swapped.index("--phase-2-audit-receipt") + 1
         corpus_index = swapped.index("--phase-2-corpus-receipt") + 1
@@ -902,7 +1018,7 @@ class VerificationIntegrationTests(unittest.TestCase):
     def test_verify_rejects_manifest_and_checkin_tampering(self) -> None:
         paths = self._proof_tree()
         manifest = _read_json(paths["manifest"])
-        manifest["ledgerPosition"] = 2
+        manifest["ledgerPosition"] = 3
         paths["manifest"].write_bytes(canonical_bytes(manifest))
         with self.assertRaisesRegex(ValueError, "manifest|hash"):
             main(self._verify_argv(paths))

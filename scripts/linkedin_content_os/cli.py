@@ -1051,6 +1051,26 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     pairs = _read_jsonl_optional(artifact_root / "contrastive-pairs.v0.jsonl")
     checkin = _read_json(artifact_root / "checkin.preview.v1.json")
     events = load_events(artifact_root / "outcomes.v1.jsonl")
+    from scripts.linkedin_content_os.recovery import (
+        validate_permission_fixture_authority_files,
+    )
+    permission_authority = validate_permission_fixture_authority_files(
+        artifact_root / "human-gate-response.v1.json",
+        artifact_root / "focus-authority-receipt.v1.json",
+        artifact_root / "focus-authority-anchor.v1.json",
+        artifact_root / "outcomes.v1.jsonl",
+    )
+    permission_receipt = permission_authority["authorityReceipt"]
+    assert isinstance(permission_receipt, dict)
+    if (
+        canonical_manifest_value["humanGateAuthorityReceiptSha256"]
+            != permission_authority["responseSha256"]
+        or canonical_manifest_value["ledgerPrefixSha256"]
+            != permission_receipt["ledgerPrefixSha256"]
+        or canonical_manifest_value["ledgerPosition"]
+            != permission_receipt["ledgerPosition"]
+    ):
+        raise ValueError("authority manifest does not bind the accepted permission response")
     derived_gold = build_voice_gold(events, audit, expected_manifest_sha256=expected)
     derived_pairs = build_contrastive_pairs(events, audit, expected_manifest_sha256=expected)
     if canonical_bytes(gold) != canonical_bytes(derived_gold):
@@ -1099,6 +1119,39 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         classifications[str(classification)] += 1
     if classifications["positive"] < 1 or classifications["negative"] < 1:
         raise ValueError("fixture set lacks the required positive and negative evidence")
+    permission_event = permission_authority["permissionEvent"]
+    permission_response = permission_authority["response"]
+    assert isinstance(permission_event, dict)
+    assert isinstance(permission_response, dict)
+    permission_payload = permission_event["payload"]
+    accepted_fixture = permission_response["permissionedFixture"]
+    assert isinstance(permission_payload, dict)
+    assert isinstance(accepted_fixture, dict)
+    bound_positive = []
+    for fixture in fixtures:
+        if (
+            fixture.get("mode") != "build_proof"
+            or fixture.get("classification") != "positive"
+        ):
+            continue
+        refs = fixture.get("sourceRefs")
+        if not isinstance(refs, list) or len(refs) != 1 or not isinstance(refs[0], dict):
+            continue
+        source = refs[0]
+        if (
+            fixture.get("fixtureId") == permission_payload.get("fixtureId")
+            and fixture.get("contentSha256") == permission_payload.get("extractedSha256")
+            and fixture.get("permissionEvidenceSha256")
+                == permission_payload.get("permissionEvidenceSha256")
+            and fixture.get("permissionState") == accepted_fixture.get("permissionStatus")
+            and source.get("repository") == permission_payload.get("repository")
+            and source.get("commit") == permission_payload.get("commitSha")
+            and source.get("path") == permission_payload.get("path")
+            and source.get("contentSha256") == permission_payload.get("extractedSha256")
+        ):
+            bound_positive.append(fixture)
+    if len(bound_positive) != 1:
+        raise ValueError("positive fixture does not match accepted permission authority")
     voice_gold_count = sum(row.get("recordType") == "voice_gold" for row in gold)
     pair_count = sum(row.get("recordType") == "contrastive_pair" for row in pairs)
     task_value = checkin.get("task")
@@ -1207,6 +1260,9 @@ def _parser() -> argparse.ArgumentParser:
     fixtures.add_argument("--run-context")
     fixtures.add_argument("--workspace-root", default=".")
     fixtures.add_argument("--human-gate-response")
+    fixtures.add_argument("--outcomes")
+    fixtures.add_argument("--focus-authority-receipt")
+    fixtures.add_argument("--focus-authority-anchor")
 
     policy = subparsers.add_parser("build-source-policy")
     policy.add_argument("--run-context", required=True)
@@ -1290,6 +1346,18 @@ def _validate_command_paths(args: argparse.Namespace) -> None:
             args.focus_authority_anchor = str(
                 directory / "focus-authority-anchor.v1.json"
             )
+    elif args.command == "build-fixtures" and args.human_gate_response is not None:
+        directory = Path(args.human_gate_response).parent
+        if args.outcomes is None:
+            args.outcomes = str(directory / "outcomes.v1.jsonl")
+        if args.focus_authority_receipt is None:
+            args.focus_authority_receipt = str(
+                directory / "focus-authority-receipt.v1.json"
+            )
+        if args.focus_authority_anchor is None:
+            args.focus_authority_anchor = str(
+                directory / "focus-authority-anchor.v1.json"
+            )
 
     contracts: Dict[str, Tuple[Sequence[str], Sequence[str], Sequence[str]]] = {
         "capture-boundaries": (("run_context",), ("mc_output", "output"), ()),
@@ -1315,7 +1383,10 @@ def _validate_command_paths(args: argparse.Namespace) -> None:
             ("gold_output", "pairs_output"), ("receipt_output",),
         ),
         "build-fixtures": (
-            ("decagon_packet", "human_gate_response", "run_context"), ("output",), (),
+            (
+                "decagon_packet", "human_gate_response", "run_context", "outcomes",
+                "focus_authority_receipt", "focus_authority_anchor",
+            ), ("output",), (),
         ),
         "build-source-policy": (("run_context",), ("output",), ()),
         "audit-voice-rules": (("run_context",), ("output",), ()),

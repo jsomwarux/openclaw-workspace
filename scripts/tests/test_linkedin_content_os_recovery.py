@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import argparse
 import inspect
 import json
 import os
@@ -205,6 +206,46 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
                 value, self.request, self.focus, self.fixture_gap, self.ledger
             )
 
+    def file_ingest_args(self):
+        artifacts = self.root / "memory/content/linkedin-content-os"
+        artifacts.mkdir(parents=True, exist_ok=True)
+        response_path = artifacts / "human-gate-response.v1.json"
+        request_path = artifacts / "historical-recovery-request.phase-1.v1.json"
+        focus_path = artifacts / "focus-snapshot.phase-1.v1.json"
+        fixtures_path = artifacts / "evaluation-fixtures.phase-1.v0.jsonl"
+        context_path = artifacts / "run-context.v1.json"
+        response_path.write_bytes(canonical_bytes(self.response()) + b"\n")
+        request_path.write_bytes(canonical_bytes(self.request))
+        focus_path.write_bytes(canonical_bytes(self.focus))
+        negative = {
+            "schemaVersion": "linkedin-evaluation-fixture.v1",
+            "fixtureId": "negative",
+            "mode": "internal_machinery",
+            "classification": "negative",
+        }
+        fixtures_path.write_bytes(b"".join(
+            canonical_bytes(row) + b"\n"
+            for row in (negative, self.fixture_gap)
+        ))
+        context_path.write_bytes(canonical_bytes(self.run_context))
+        outputs = {
+            "manifest": artifacts / "corpus-authority-manifest.v1.json",
+            "context": artifacts / "run-context.phase-2-authority.v1.json",
+            "receipt": artifacts / "focus-authority-receipt.v1.json",
+            "anchor": artifacts / "focus-authority-anchor.v1.json",
+        }
+        args = argparse.Namespace(
+            response=str(response_path), recovery_request=str(request_path),
+            focus=str(focus_path), fixtures=str(fixtures_path),
+            outcomes=str(self.ledger),
+            corpus_authority_manifest_output=str(outputs["manifest"]),
+            authority_run_context_output=str(outputs["context"]),
+            focus_authority_receipt_output=str(outputs["receipt"]),
+            focus_authority_anchor_output=str(outputs["anchor"]),
+            run_context=str(context_path), workspace_root=str(self.root),
+        )
+        return args, artifacts, response_path, outputs
+
     def test_ingests_complete_boundary_and_emits_valid_typed_events(self) -> None:
         result = self.ingest()
         events = load_events(self.ledger)
@@ -403,20 +444,7 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         )
 
     def test_manifest_authority_hashes_come_from_validated_boundary_objects(self) -> None:
-        from scripts.linkedin_content_os import recovery
-
-        real_append = recovery._append_batch
-
-        def projected_tamper(path, events):
-            appended, replayed, payload, combined = real_append(path, events)
-            projected = copy.deepcopy(combined)
-            for event in projected:
-                if event["eventType"] == "corpus_authority_receipt":
-                    event["eventSha256"] = "f" * 64
-            return appended, replayed, payload, projected
-
-        with mock.patch.object(recovery, "_append_batch", side_effect=projected_tamper):
-            result = self.ingest()
+        result = self.ingest()
         boundary_hash = next(
             event["eventSha256"] for event in result["events"]
             if event["eventType"] == "corpus_authority_receipt"
@@ -459,6 +487,92 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "injected"):
                 self.ingest()
         self.assertEqual(self.ledger.read_bytes(), original)
+
+    def test_concurrent_ledger_drift_fails_without_events_or_authority_artifacts(self) -> None:
+        from scripts.linkedin_content_os import recovery
+
+        args, _, _, outputs = self.file_ingest_args()
+        competitor = {
+            "schemaVersion": "linkedin-content-outcome.v1",
+            "outcomeEventId": "competitor",
+            "packetId": "competitor",
+            "eventType": "historical_status",
+            "recordedAt": "2026-09-28T16:00:00-04:00",
+            "sourcePointer": {
+                "sourceType": "jt_confirmation",
+                "sourceId": "competitor",
+                "sourceSha256": "7" * 64,
+            },
+            "payload": {"legacyRowSha256": "7" * 64, "status": "status_unknown"},
+        }
+        competitor["eventSha256"] = _event_hash(competitor)
+        injected = canonical_bytes(competitor) + b"\n"
+        original_reader = recovery._canonical_ledger_rows
+        call_count = 0
+
+        def inject_drift(path):
+            nonlocal call_count
+            call_count += 1
+            rows, exact = original_reader(path)
+            if call_count == 1:
+                path.write_bytes(exact + injected)
+            return rows, exact
+
+        with mock.patch.object(
+            recovery, "_canonical_ledger_rows", side_effect=inject_drift
+        ):
+            with self.assertRaisesRegex(RuntimeError, "prefix|changed"):
+                ingest_human_gate_files(args)
+        self.assertEqual(self.ledger.read_bytes(), injected)
+        self.assertTrue(all(not path.exists() for path in outputs.values()))
+
+    def test_authority_artifact_publish_failures_rollback_every_byte(self) -> None:
+        from scripts.linkedin_content_os import recovery
+
+        args, _, _, outputs = self.file_ingest_args()
+        original_outputs = {
+            path: ("old-" + label).encode("utf-8")
+            for label, path in outputs.items()
+        }
+        real_replace = recovery.os.replace
+        destinations = set(outputs.values())
+        for fail_at in range(1, 5):
+            self.ledger.write_bytes(b"")
+            for path, payload in original_outputs.items():
+                path.write_bytes(payload)
+            publish_count = 0
+            failed = False
+
+            def fail_one_publish(source, destination):
+                nonlocal publish_count, failed
+                target = Path(destination)
+                if target in destinations and not failed:
+                    publish_count += 1
+                    if publish_count == fail_at:
+                        failed = True
+                        raise OSError("injected authority publish failure")
+                return real_replace(source, destination)
+
+            with self.subTest(fail_at=fail_at), mock.patch.object(
+                recovery.os, "replace", side_effect=fail_one_publish
+            ):
+                with self.assertRaisesRegex(OSError, "injected authority publish"):
+                    ingest_human_gate_files(args)
+            self.assertEqual(self.ledger.read_bytes(), b"")
+            self.assertEqual(
+                {path: path.read_bytes() for path in outputs.values()},
+                original_outputs,
+            )
+
+    def test_duplicate_ledger_ids_fail_closed_without_mutation(self) -> None:
+        first = self.ingest()
+        duplicate = first["events"][0]
+        payload = canonical_bytes(duplicate) + b"\n"
+        self.ledger.write_bytes(payload + payload)
+        before = self.ledger.read_bytes()
+        with self.assertRaisesRegex(ValueError, "duplicate outcomeEventId"):
+            self.ingest()
+        self.assertEqual(self.ledger.read_bytes(), before)
 
     def test_file_handlers_emit_authority_outputs_and_rebuild_deterministically(self) -> None:
         artifacts = self.root / "memory/content/linkedin-content-os"
@@ -576,6 +690,9 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         fixture_args = argparse.Namespace(
             human_gate_response=str(response_path), output=str(fixture_output),
             workspace_root=str(self.root),
+            outcomes=str(self.ledger),
+            focus_authority_receipt=str(focus_receipt_path),
+            focus_authority_anchor=str(focus_anchor_path),
         )
         first_fixtures = rebuild_fixtures_files(fixture_args)
         first_bytes = fixture_output.read_bytes()
@@ -586,6 +703,42 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         self.assertEqual(positive["classification"], "positive")
         self.assertEqual(first_fixtures["fixtures"][0], negative)
         self.assertEqual(first_fixtures["fixtures"][-1], teardown)
+
+        accepted_response_bytes = response_path.read_bytes()
+        accepted_fixture_bytes = fixture_output.read_bytes()
+        swapped_proof = copy.deepcopy(self.proof)
+        swapped_proof["permission"]["evidenceRef"] = "jt:telegram:swapped"
+        swapped_proof_bytes = canonical_bytes(swapped_proof)
+        proof_file = self.git_dir.parent / self.proof_path
+        proof_file.write_bytes(swapped_proof_bytes)
+        subprocess.run(
+            ["git", "-C", str(self.git_dir.parent), "add", self.proof_path],
+            check=True,
+        )
+        subprocess.run(
+            ["git", "-C", str(self.git_dir.parent), "commit", "-q", "-m", "swap proof"],
+            check=True,
+        )
+        swapped_commit = subprocess.check_output(
+            ["git", "-C", str(self.git_dir.parent), "rev-parse", "HEAD"],
+            text=True,
+        ).strip()
+        swapped_response = json.loads(accepted_response_bytes)
+        swapped_response["permissionedFixture"].update({
+            "commit": swapped_commit,
+            "contentSha256": sha256_hex(swapped_proof_bytes),
+            "permissionEvidenceSha256": sha256_hex(
+                canonical_bytes(swapped_proof["permission"])
+            ),
+        })
+        response_path.write_bytes(canonical_bytes(swapped_response))
+        from scripts.linkedin_content_os import recovery
+        with mock.patch.object(recovery.subprocess, "run") as proof_reader:
+            with self.assertRaisesRegex(ValueError, "accepted response|authority binding"):
+                rebuild_fixtures_files(fixture_args)
+        proof_reader.assert_not_called()
+        self.assertEqual(fixture_output.read_bytes(), accepted_fixture_bytes)
+        response_path.write_bytes(accepted_response_bytes)
 
         phase1_outcomes_before = phase1_outcomes.read_bytes()
         phase1_outcome_aliases = (

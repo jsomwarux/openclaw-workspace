@@ -8,6 +8,7 @@ import os
 import re
 import stat
 import subprocess
+import tempfile
 from pathlib import Path, PurePosixPath
 from typing import Optional, Sequence
 
@@ -361,52 +362,129 @@ def _canonical_ledger_rows(path: Path) -> tuple[list[dict[str, object]], bytes]:
     exact = path.read_bytes()
     if exact != canonical:
         raise ValueError("outcome ledger must be strict canonical JSONL")
+    seen_ids: set[str] = set()
+    latest_by_packet: dict[str, object] = {}
     for row in rows:
         validate_event(row)
+        event_id = str(row["outcomeEventId"])
+        if event_id in seen_ids:
+            raise ValueError("duplicate outcomeEventId in ledger")
+        seen_ids.add(event_id)
+        packet = str(row["packetId"])
+        timestamp = parse_timestamp(row["recordedAt"], "recordedAt")
+        prior = latest_by_packet.get(packet)
+        if prior is not None and timestamp < prior:
+            raise ValueError("per-packet timestamp regression in ledger")
+        latest_by_packet[packet] = timestamp
     validate_event_sequence(rows)
     return rows, exact
 
 
-def _append_batch(
-    path: Path, new_events: Sequence[dict[str, object]]
-) -> tuple[int, int, bytes, list[dict[str, object]]]:
+def _plan_batch(
+    existing: Sequence[dict[str, object]],
+    original: bytes,
+    new_events: Sequence[dict[str, object]],
+) -> tuple[list[dict[str, object]], int, bytes, list[dict[str, object]]]:
+    by_id = {str(event["outcomeEventId"]): event for event in existing}
+    appended: list[dict[str, object]] = []
+    replayed = 0
+    for event in new_events:
+        prior = by_id.get(str(event["outcomeEventId"]))
+        if prior is not None:
+            if prior != event or prior["eventSha256"] != event["eventSha256"]:
+                raise ValueError("outcome event conflict: ID reused with different bytes")
+            replayed += 1
+            continue
+        by_id[str(event["outcomeEventId"])] = event
+        appended.append(event)
+    combined = list(existing) + appended
+    validate_event_sequence(combined)
+    latest_by_packet: dict[str, object] = {}
+    for event in combined:
+        timestamp = parse_timestamp(event["recordedAt"], "recordedAt")
+        packet = str(event["packetId"])
+        prior = latest_by_packet.get(packet)
+        if prior is not None and timestamp < prior:
+            raise ValueError("per-packet timestamp regression")
+        latest_by_packet[packet] = timestamp
+    expected = original + b"".join(
+        canonical_bytes(event) + b"\n" for event in appended
+    )
+    return appended, replayed, expected, combined
+
+
+def _stage_bytes(path: Path, payload: bytes) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with _exclusive_path_lock(path):
-        existing, original = _canonical_ledger_rows(path)
-        by_id = {str(event["outcomeEventId"]): event for event in existing}
-        appended: list[dict[str, object]] = []
-        replayed = 0
-        for event in new_events:
-            prior = by_id.get(str(event["outcomeEventId"]))
-            if prior is not None:
-                if prior != event or prior["eventSha256"] != event["eventSha256"]:
-                    raise ValueError("outcome event conflict: ID reused with different bytes")
-                replayed += 1
-                continue
-            by_id[str(event["outcomeEventId"])] = event
-            appended.append(event)
-        combined = existing + appended
-        validate_event_sequence(combined)
-        latest_by_packet: dict[str, object] = {}
-        for event in combined:
-            timestamp = parse_timestamp(event["recordedAt"], "recordedAt")
-            packet = str(event["packetId"])
-            prior = latest_by_packet.get(packet)
-            if prior is not None and timestamp < prior:
-                raise ValueError("per-packet timestamp regression")
-            latest_by_packet[packet] = timestamp
-        expected = original
-        try:
-            for event in appended:
-                _append_jsonl_exact_prefix_locked(path, event, expected_prefix=expected)
-                expected += canonical_bytes(event) + b"\n"
-        except Exception:
-            if original:
-                _write_bytes_atomic(path, original)
-            else:
-                path.unlink(missing_ok=True)
-            raise
-        return len(appended), replayed, expected, combined
+    descriptor, temporary_name = tempfile.mkstemp(
+        dir=str(path.parent), prefix=".{}.".format(path.name), suffix=".txn"
+    )
+    temporary_path = Path(temporary_name)
+    try:
+        with os.fdopen(descriptor, "wb") as handle:
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        return temporary_path
+    except Exception:
+        temporary_path.unlink(missing_ok=True)
+        raise
+
+
+def _append_batch(
+    path: Path,
+    new_events: Sequence[dict[str, object]],
+    *,
+    expected_prefix: Optional[bytes] = None,
+    output_payloads: Sequence[tuple[Path, bytes]] = (),
+) -> tuple[int, int, bytes, list[dict[str, object]]]:
+    """Commit one ledger batch and its derived authority artifacts atomically."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    outputs = list(output_payloads)
+    if len({output for output, _ in outputs}) != len(outputs):
+        raise ValueError("authority transaction outputs must be distinct")
+    output_states = {
+        output: (output.exists(), output.read_bytes() if output.exists() else b"")
+        for output, _ in outputs
+    }
+    staged: list[tuple[Path, Path]] = []
+    try:
+        for output, payload in outputs:
+            staged.append((_stage_bytes(output, payload), output))
+        with _exclusive_path_lock(path):
+            ledger_existed = path.exists()
+            existing, original = _canonical_ledger_rows(path)
+            if expected_prefix is not None and original != expected_prefix:
+                raise RuntimeError(
+                    "ledger changed after validation; validated prefix mismatch"
+                )
+            appended, replayed, expected, combined = _plan_batch(
+                existing, original, new_events
+            )
+            try:
+                prefix = original
+                for event in appended:
+                    _append_jsonl_exact_prefix_locked(
+                        path, event, expected_prefix=prefix
+                    )
+                    prefix += canonical_bytes(event) + b"\n"
+                for temporary, output in staged:
+                    os.replace(str(temporary), str(output))
+            except Exception:
+                if ledger_existed:
+                    _write_bytes_atomic(path, original)
+                else:
+                    path.unlink(missing_ok=True)
+                for output, (existed, payload) in output_states.items():
+                    if existed:
+                        _write_bytes_atomic(output, payload)
+                    else:
+                        output.unlink(missing_ok=True)
+                raise
+            return len(appended), replayed, expected, combined
+    finally:
+        for temporary, _ in staged:
+            temporary.unlink(missing_ok=True)
 
 
 def _focus_receipt(
@@ -442,6 +520,7 @@ def _ingest_human_gate(
     raw_response_sha256: object,
     run_context: Optional[object] = None,
     workspace_root: Path = Path("."),
+    authority_output_paths: Optional[dict[str, Path]] = None,
 ) -> dict[str, object]:
     """Validate and append one complete human-gate boundary deterministically."""
 
@@ -619,7 +698,9 @@ def _ingest_human_gate(
             event["outcomeEventId"] for event in events
         ]:
             raise ValueError("human-gate replay conflicts with the existing event block")
-    appended, replayed, ledger_bytes, all_events = _append_batch(Path(ledger), events)
+    planned_appended, planned_replayed, ledger_bytes, all_events = _plan_batch(
+        existing, existing_bytes, events
+    )
     if owned_positions:
         boundary_position = first_owned + len(events)
         boundary_bytes = b"".join(
@@ -656,16 +737,56 @@ def _ingest_human_gate(
         **authority_unsigned,
         "runId": "sha256:" + _hash_object(authority_unsigned),
     }
-    return {
+    anchor: dict[str, object] = {
+        "schemaVersion": "linkedin-focus-authority-anchor.v1",
+        "rawResponseSha256": response_hash,
+        "authorityReceiptSha256": focus_receipt["receiptSha256"],
+    }
+    anchor["anchorSha256"] = _hash_object(anchor)
+    result = {
         "schemaVersion": "linkedin-human-gate-ingestion.v1",
         "responseSha256": response_hash,
-        "appendedEventCount": appended,
-        "replayedEventCount": replayed,
+        "appendedEventCount": len(planned_appended),
+        "replayedEventCount": planned_replayed,
         "events": events,
         "focusAuthorityReceipt": focus_receipt,
+        "focusAuthorityAnchor": anchor,
         "corpusAuthorityManifest": manifest,
         "authorityRunContext": authority_context,
     }
+    output_payloads: list[tuple[Path, bytes]] = []
+    if authority_output_paths is not None:
+        required_outputs = {
+            "corpusAuthorityManifest",
+            "authorityRunContext",
+            "focusAuthorityReceipt",
+            "focusAuthorityAnchor",
+        }
+        if set(authority_output_paths) != required_outputs:
+            raise ValueError("authority transaction output set is not closed")
+        output_payloads = [
+            (authority_output_paths[key], canonical_bytes(result[key]))
+            for key in (
+                "corpusAuthorityManifest",
+                "authorityRunContext",
+                "focusAuthorityReceipt",
+                "focusAuthorityAnchor",
+            )
+        ]
+    appended, replayed, committed_bytes, committed_events = _append_batch(
+        Path(ledger),
+        events,
+        expected_prefix=existing_bytes,
+        output_payloads=output_payloads,
+    )
+    if (
+        appended != len(planned_appended)
+        or replayed != planned_replayed
+        or committed_bytes != ledger_bytes
+        or committed_events != all_events
+    ):
+        raise RuntimeError("ledger transaction result diverged from validated plan")
+    return result
 
 
 def ingest_human_gate(
@@ -770,23 +891,13 @@ def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
         raw_response_sha256=sha256_hex(response_bytes),
         run_context=context,
         workspace_root=Path(getattr(args, "workspace_root", ".")),
+        authority_output_paths={
+            "corpusAuthorityManifest": manifest_output,
+            "authorityRunContext": authority_context_output,
+            "focusAuthorityReceipt": receipt_output,
+            "focusAuthorityAnchor": anchor_output,
+        },
     )
-    write_json_atomic(
-        manifest_output,
-        result["corpusAuthorityManifest"],
-    )
-    write_json_atomic(
-        authority_context_output, result["authorityRunContext"]
-    )
-    write_json_atomic(receipt_output, result["focusAuthorityReceipt"])
-    anchor: dict[str, object] = {
-        "schemaVersion": "linkedin-focus-authority-anchor.v1",
-        "rawResponseSha256": sha256_hex(response_bytes),
-        "authorityReceiptSha256": result["focusAuthorityReceipt"]["receiptSha256"],
-    }
-    anchor["anchorSha256"] = _hash_object(anchor)
-    write_json_atomic(anchor_output, anchor)
-    result["focusAuthorityAnchor"] = anchor
     return result
 
 
@@ -885,12 +996,146 @@ def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
     return confirmed
 
 
+def validate_permission_fixture_authority_files(
+    response_path: Path,
+    receipt_path: Path,
+    anchor_path: Path,
+    ledger_path: Path,
+) -> dict[str, object]:
+    """Validate one accepted response and its permission event without Git I/O."""
+
+    response, response_bytes = _strict_json_file_with_bytes(response_path)
+    response = _exact_fields(response, _RESPONSE_FIELDS, "human-gate response")
+    _reject_nulls(response, "human-gate response")
+    if response["schemaVersion"] != "linkedin-human-gate-response.v1":
+        raise ValueError("unsupported human-gate response schemaVersion")
+    focus_decision = _require_object(response["focusDecision"], "focusDecision")
+    response_hash = sha256_hex(response_bytes)
+    anchor = _exact_fields(
+        _strict_json_file(anchor_path),
+        {
+            "schemaVersion", "rawResponseSha256", "authorityReceiptSha256",
+            "anchorSha256",
+        },
+        "focus authority anchor",
+    )
+    if anchor["schemaVersion"] != "linkedin-focus-authority-anchor.v1":
+        raise ValueError("unsupported focus authority anchor schemaVersion")
+    anchor_hash = _require_hash(anchor["anchorSha256"], "anchorSha256")
+    if anchor_hash != _hash_object({
+        key: value for key, value in anchor.items() if key != "anchorSha256"
+    }):
+        raise ValueError("focus authority anchor SHA-256 mismatch")
+    if anchor["rawResponseSha256"] != response_hash:
+        raise ValueError("current response does not match accepted response authority binding")
+    receipt = _require_object(_strict_json_file(receipt_path), "focus authority receipt")
+    receipt_fields = {
+        "schemaVersion", "rawResponseSha256", "recoveryRequestSha256",
+        "fixtureGapSha256", "focusDecisionEventSha256", "ledgerPrefixSha256",
+        "ledgerPosition", "validatedAt", "originalProposalSha256",
+        "focusDecision", "receiptSha256",
+    }
+    if focus_decision.get("decision") == "corrected":
+        receipt_fields.add("replacementProposalSha256")
+    receipt = _exact_fields(receipt, receipt_fields, "focus authority receipt")
+    if receipt["schemaVersion"] != AUTHORITY_RECEIPT_SCHEMA_VERSION:
+        raise ValueError("unsupported focus authority receipt schemaVersion")
+    receipt_hash = _require_hash(receipt["receiptSha256"], "receiptSha256")
+    if receipt_hash != _hash_object({
+        key: value for key, value in receipt.items() if key != "receiptSha256"
+    }):
+        raise ValueError("focus authority receipt SHA-256 mismatch")
+    if anchor["authorityReceiptSha256"] != receipt_hash:
+        raise ValueError("focus authority receipt does not match accepted anchor")
+    if (
+        receipt["rawResponseSha256"] != response_hash
+        or receipt["fixtureGapSha256"] != response["fixtureGapSha256"]
+        or receipt["recoveryRequestSha256"] != response["recoveryRequestSha256"]
+        or receipt["validatedAt"] != response["confirmedAt"]
+        or receipt["focusDecision"] != response["focusDecision"]
+    ):
+        raise ValueError("focus authority receipt does not bind the current response")
+    events = load_events(ledger_path)
+    position = receipt["ledgerPosition"]
+    if (
+        not isinstance(position, int)
+        or isinstance(position, bool)
+        or position < 1
+        or position > len(events)
+    ):
+        raise ValueError("focus authority receipt ledger position is invalid")
+    prefix = events[:position]
+    prefix_bytes = b"".join(canonical_bytes(event) + b"\n" for event in prefix)
+    if receipt["ledgerPrefixSha256"] != sha256_hex(prefix_bytes):
+        raise ValueError("focus authority receipt ledger prefix mismatch")
+    focus_events = [
+        event for event in prefix
+        if event["eventType"] == "focus_decision"
+        and event["eventSha256"] == receipt["focusDecisionEventSha256"]
+        and event["sourcePointer"]["sourceSha256"] == response_hash  # type: ignore[index]
+    ]
+    if len(focus_events) != 1:
+        raise ValueError("accepted response focus event authority binding is invalid")
+    fixture = _require_object(
+        response.get("permissionedFixture"), "permissionedFixture"
+    )
+    proof_id = _require_text(fixture.get("proofId"), "permissionedFixture.proofId")
+    permission_events = [
+        event for event in prefix
+        if event["eventType"] == "permission_fixture_accepted"
+        and event["outcomeEventId"] == "permission:" + proof_id
+        and event["sourcePointer"]["sourceSha256"] == response_hash  # type: ignore[index]
+    ]
+    if len(permission_events) != 1:
+        raise ValueError("accepted response permission event authority binding is invalid")
+    permission_event = permission_events[0]
+    payload = _require_object(permission_event["payload"], "permission event payload")
+    expected_payload = {
+        "fixtureId": proof_id,
+        "repository": fixture.get("gitDir"),
+        "commitSha": fixture.get("commit"),
+        "path": fixture.get("path"),
+        "extractedSha256": fixture.get("contentSha256"),
+        "permissionEvidenceSha256": fixture.get("permissionEvidenceSha256"),
+    }
+    if any(payload.get(key) != value for key, value in expected_payload.items()):
+        raise ValueError("permission event does not bind the accepted fixture source")
+    if parse_timestamp(
+        payload.get("permissionExpiresAt"), "permissionExpiresAt"
+    ) <= parse_timestamp(response.get("confirmedAt"), "confirmedAt"):
+        raise ValueError("accepted permission event is expired")
+    return {
+        "response": response,
+        "responseSha256": response_hash,
+        "authorityReceipt": receipt,
+        "permissionEvent": permission_event,
+    }
+
+
 def rebuild_fixtures_files(args: argparse.Namespace) -> dict[str, object]:
     output = Path(args.output)
     response_path = Path(args.human_gate_response)
     phase1_paths = _phase1_paths(response_path.parent)
-    _reject_phase1_output_aliases(phase1_paths, (output,))
-    response = _strict_json_file(response_path)
+    receipt_path = Path(
+        getattr(args, "focus_authority_receipt", None)
+        or response_path.parent / "focus-authority-receipt.v1.json"
+    )
+    anchor_path = Path(
+        getattr(args, "focus_authority_anchor", None)
+        or response_path.parent / "focus-authority-anchor.v1.json"
+    )
+    outcomes_path = Path(
+        getattr(args, "outcomes", None)
+        or response_path.parent / "outcomes.v1.jsonl"
+    )
+    _reject_phase1_output_aliases(
+        phase1_paths + (receipt_path, anchor_path, outcomes_path), (output,)
+    )
+    authority = validate_permission_fixture_authority_files(
+        response_path, receipt_path, anchor_path, outcomes_path
+    )
+    response = authority["response"]
+    assert isinstance(response, dict)
     phase1_path = response_path.parent / "evaluation-fixtures.phase-1.v0.jsonl"
     rows = _phase1_fixture_rows(phase1_path)
     confirmed_at = _require_text(response.get("confirmedAt"), "confirmedAt")
