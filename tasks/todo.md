@@ -1,3 +1,18 @@
+## Plan — LinkedIn Content OS Program 0 — 2026-09-28
+
+- [x] Task 1: Create the Program 0 package and canonical file primitives.
+- [ ] Task 2: Define closed Program 0 contracts.
+- [ ] Task 3: Audit legacy LinkedIn history without rewriting it.
+- [ ] Task 4: Capture and validate the read-only Mission Control packet snapshot.
+- [ ] Task 5: Build a hash-bound current-focus snapshot.
+- [ ] Task 6: Build voice gold only from exact final LinkedIn text.
+- [ ] Task 7: Select Program 0 evaluation fixtures without generating posts.
+- [ ] Task 8: Encode source-family policy and retire conflicting legacy voice rules.
+- [ ] Task 9: Locally prove the single deduplicated check-in contract.
+- [ ] Task 10: Add one local CLI and generate Program 0 artifacts.
+
+Hard stop: No external network, Mission Control write, deployment, cron, provider call, asset generation, or publication. Exactly four read-only loopback task snapshots are allowed: one before/after pair around each side of the human gate.
+
 ## Plan — Growth OS Jobs → Mission Control Adapter Proof — 2026-09-27
 - [x] Reconcile accepted adapter commit `492bccb…` against current local Mission Control `master` `b301a84…` and confirm ancestry.
 - [x] Add byte-bound fixtures for the accepted Decagon Jobs packet and `posted:false` receipt with failing end-to-end proof tests.
