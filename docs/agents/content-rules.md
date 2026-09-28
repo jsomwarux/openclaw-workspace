@@ -2,6 +2,12 @@
 > Source: AGENTS.md §Content Generation Rule
 > Governs all X posts, threads, and LinkedIn content for JT.
 
+## LinkedIn Content OS Authority
+
+Exact JT-final LinkedIn text, evidence safety, and reconciled gates outrank fixed-day, fixed-format, and quota mechanics.
+
+The allowed LinkedIn source families are permissioned client delivery, JT-confirmed field lessons, verified engineering recipes, primary-source teardown triggers, and verified AI events. Internal content, job-search, outreach, Mission Control, and Eve machinery are not public proof. A fixed calendar may organize a manually approved queue, but it cannot require a post, select the evidence mode, or override `SKIP`.
+
 ## Pre-Draft Checklist (mandatory)
 Before drafting ANY post or content for JT:
 1. Read `memory/content-voice.md` in full.
@@ -113,8 +119,8 @@ Viral Swipe must search live X with explicit recency and performance filters: `-
 - LinkedIn strategic-fit gate: posts must make JT look like the operator a buyer or hiring manager would trust with implementation. Default to buyer-recognizable workflows, real proof, service-delivery judgment, and business constraints. Do not publish posts about how JT generates, schedules, guards, or automates his own content unless JT explicitly asks for that topic.
 - Threads: max 5 tweets; most should be 3
 
-## Wednesday LinkedIn
-Most important post of the week. Wednesday LinkedIn is a case study post — real build, honest framing, specific outcome. Always load `skills/wednesday-linkedin/SKILL.md` before drafting.
+## LinkedIn Proof-Post Review
+When an approved packet uses the build-proof or case-study mode, load `skills/wednesday-linkedin/SKILL.md` for its useful buyer-confidence, factuality, proof-specificity, and advisory-review checks. The day label is organizational metadata, not generation authority; the evidence and selected mode determine the final shape.
 
 ## Platform Calibration
 - **X**: compression + hot takes, standalone 6–15 words

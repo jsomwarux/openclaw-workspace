@@ -12,6 +12,10 @@ Compression is confidence — but compression is a **language tool**, not a leng
 A 300-word LinkedIn case study written tight is better than a 12-word aphorism that proves nothing.
 Use compression to cut waste. Use depth when the goal is credibility, not virality.
 
+Exact JT-final LinkedIn text, evidence safety, and reconciled gates outrank fixed-day, fixed-format, and quota mechanics.
+
+LinkedIn publication is evidence- and mode-led. A calendar label may organize work, but it cannot require a post, prescribe one universal shape, or override `SKIP`. Exact published text and typed outcomes become the calibration authority when captured.
+
 ## Actual Voice Evidence Layer
 
 Generated posts should now be judged against `memory/content/jt-voice-evidence-corpus.md`, not just generic style rules.
@@ -113,7 +117,7 @@ Generated content should balance two credibility modes:
 
 Use JT's expertise to choose the right mix. Do not ask JT to pick the lane unless the request is genuinely ambiguous.
 
-For a normal weekly queue:
+When preparing a multi-post queue from independently qualified packets:
 
 - Include at least one build/proof post when a real build or verified implementation detail exists.
 - Include at least one consultant POV post about a focused niche buyer problem.
@@ -155,23 +159,11 @@ If a batch does not create at least one of those impressions, it is not balanced
 
 ---
 
-## Content Calendar — Format by Day
+## Content Modes — Evidence Determines Shape
 
-### LinkedIn Schedule
+LinkedIn packets may use build proof, company/niche teardown, AI event, field lesson, or engineering recipe when their source-family gate passes. Day-of-week templates and weekly volume targets are retired as generation authority. Use the strongest qualified evidence, preserve buyer confidence, and return `SKIP` when no candidate warrants publication.
 
-| Day | Format | Depth | Goal |
-|-----|--------|-------|------|
-| **Monday** | Short punchy take or compressed truth | 1–3 sentences | Reach, establish voice |
-| **Wednesday** | Case study or proof of work | 3–5 paragraphs | Consulting credibility, prospect attention |
-| **Friday** | Tactical insight or "how I approach X" | 2–4 paragraphs | Expertise signal for recruiter/prospect |
-| **Sunday** | Behind the build | 2–4 paragraphs | Trust-building, process transparency |
-
-**Wednesday is the most important post of the week.** This is the post that makes a property manager or wholesale distributor DM you. It must have:
-- A specific client, problem, and outcome (Aya preferred, or a real build)
-- A concrete number ("replaced 18 hrs/week", "pulls every 14 days", "$1,000 project")
-- A lesson that generalizes to the reader's situation
-
-**Friday must have an actual opinion.** Not a hot take for its own sake — a real perspective on implementation, AI in unglamorous verticals, or consulting reality. 3+ sentences of reasoning minimum.
+Build-proof packets need a real implementation, honest framing, specific outcome, and permission-safe evidence. Teardown and AI-event packets need current primary sources, conflict checks, and a bound JT artifact or earned angle. No mode may publish internal machinery.
 
 ### X Schedule
 
