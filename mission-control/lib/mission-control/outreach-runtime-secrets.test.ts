@@ -27,13 +27,16 @@ import {
   buildRuntimeEnvironment,
   buildServiceProcessEnvironment,
   buildLockedReexecRequest,
+  ensureV4KeychainHelper,
   ensureV3KeychainHelper,
   installCapabilitySet,
   installCapabilitySetFromHelper,
   materializeReviewedConfirmedSendScript,
   parseCapabilitySetRead,
+  parseV4CapabilitySetRead,
   parseConfirmedSendResult,
   readCapabilitySetFromHelpers,
+  readRuntimeCapabilitySetFromHelpers,
   resolveTailscaleLogin,
   validateConfirmedSendPreflight,
 } from "../../scripts/outreach-runtime-secrets.mjs";
@@ -58,6 +61,225 @@ function git(path: string, args: string[]) {
 }
 
 describe("outreach runtime secret handling", () => {
+  test("targets a separate stable v4 helper path without replacing v3", () => {
+    expect(buildKeychainHelperRequest(
+      "./.runtime/outreach-keychain-helper-v4",
+      "/usr/bin/swiftc",
+      "./scripts/outreach-keychain-helper-v4.swift",
+    )).toEqual({
+      file: "/usr/bin/swiftc",
+      args: [
+        "./scripts/outreach-keychain-helper-v4.swift",
+        "-o",
+        "./.runtime/outreach-keychain-helper-v4",
+      ],
+    });
+  });
+
+  test("compiles v4 independently and preserves published v3 bytes", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-helper-v4-test-"));
+    const v3Path = join(directory, "outreach-keychain-helper-v3");
+    const v4Path = join(directory, "outreach-keychain-helper-v4");
+    try {
+      executable(v3Path, "#!/bin/sh\nexit 2\n");
+      const v3Before = readFileSync(v3Path);
+      ensureV4KeychainHelper(v4Path);
+      const probe = spawnSync(v4Path, ["probe", "outreach-capabilities-v4"], { encoding: "utf8" });
+      expect(probe.status).toBe(0);
+      expect(probe.stdout).toBe("");
+      expect(readFileSync(v3Path)).toEqual(v3Before);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("v4 protocol or source mismatch fails closed without replacing bytes", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-v4-mismatch-test-"));
+    const v4Path = join(directory, "outreach-keychain-helper-v4");
+    try {
+      executable(v4Path, [
+        "#!/bin/sh",
+        '[ "$1" = "probe" ] && [ "$2" = "outreach-capabilities-v4" ] && exit 0',
+        "exit 2",
+        "",
+      ].join("\n"));
+      writeFileSync(`${v4Path}.sha256`, "stale-source-digest\n", { mode: 0o600 });
+      const before = readFileSync(v4Path);
+      expect(captureError(() => ensureV4KeychainHelper(v4Path)))
+        .toBe("v4 capability helper mismatch; explicit versioned migration required");
+      expect(readFileSync(v4Path)).toEqual(before);
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("migrates existing outreach values through stdin and never argv or stdout", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-v4-input-test-"));
+    const helperPath = join(directory, "helper");
+    const inputPath = join(directory, "input.json");
+    const argsPath = join(directory, "args.txt");
+    try {
+      executable(helperPath, [
+        "#!/bin/sh",
+        `printf '%s' "$*" > '${argsPath}'`,
+        `cat > '${inputPath}'`,
+        "",
+      ].join("\n"));
+      const existing = {
+        review: "synthetic-review-a",
+        decision: "synthetic-decision-b",
+        authorityWrite: "synthetic-authority-write-c",
+        authorityRead: "synthetic-authority-read-d",
+      };
+      installCapabilitySetFromHelper(helperPath, existing);
+      expect(readFileSync(argsPath, "utf8")).toBe("install-set");
+      expect(readFileSync(argsPath, "utf8")).not.toContain("synthetic-");
+      expect(JSON.parse(readFileSync(inputPath, "utf8"))).toEqual({
+        version: 1,
+        review: existing.review,
+        decision: existing.decision,
+        reviewAuthorityWrite: existing.authorityWrite,
+        reviewAuthorityRead: existing.authorityRead,
+      });
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  test("parses a six-capability v4 set and rejects lane collisions", () => {
+    const encoded = JSON.stringify({
+      version: 2,
+      review: "review-a",
+      decision: "decision-b",
+      reviewAuthorityWrite: "authority-write-c",
+      reviewAuthorityRead: "authority-read-d",
+      laneProducer: "lane-producer-e",
+      laneDecision: "lane-decision-f",
+    });
+    expect(parseV4CapabilitySetRead({ status: 0, stdout: `${encoded}\n` })).toEqual({
+      review: "review-a",
+      decision: "decision-b",
+      authorityWrite: "authority-write-c",
+      authorityRead: "authority-read-d",
+      laneProducer: "lane-producer-e",
+      laneDecision: "lane-decision-f",
+    });
+    expect(captureError(() => parseV4CapabilitySetRead({
+      status: 0,
+      stdout: JSON.stringify({
+        version: 2,
+        review: "review-a",
+        decision: "decision-b",
+        reviewAuthorityWrite: "authority-write-c",
+        reviewAuthorityRead: "authority-read-d",
+        laneProducer: "review-a",
+        laneDecision: "lane-decision-f",
+      }),
+    }))).toBe("outreach capability configuration is invalid");
+  });
+
+  test("injects lane authority into Next and synchronizes only capabilities to Convex", () => {
+    expect(buildRuntimeEnvironment(
+      "review-a", "decision-b", "jt@example.com", "authority-write-c", "authority-read-d",
+      "lane-producer-e", "lane-decision-f",
+    )).toMatchObject({
+      LANE_PACKET_CAPABILITY: "lane-producer-e",
+      LANE_PACKET_DECISION_CAPABILITY: "lane-decision-f",
+      LANE_PACKET_JT_LOGIN: "jt@example.com",
+    });
+    const convexChanges = buildConvexEnvironmentChanges(
+      "review-a", "decision-b", "authority-write-c", "authority-read-d",
+      "lane-producer-e", "lane-decision-f",
+    );
+    expect(convexChanges.some(({ name, value }) =>
+      name === "LANE_PACKET_CAPABILITY" && value === "lane-producer-e"
+    )).toBe(true);
+    expect(convexChanges.some(({ name, value }) =>
+      name === "LANE_PACKET_DECISION_CAPABILITY" && value === "lane-decision-f"
+    )).toBe(true);
+    expect(convexChanges.some(({ name }) => name === "LANE_PACKET_JT_LOGIN")).toBe(false);
+  });
+
+  test("fallback removes stale lane authority from child and Convex environments", () => {
+    const runtime = buildRuntimeEnvironment(
+      "review-a", "decision-b", "jt@example.com", "authority-write-c", "authority-read-d",
+    );
+    expect(buildServiceProcessEnvironment({
+      PATH: "/bin",
+      LANE_PACKET_CAPABILITY: "stale-producer",
+      LANE_PACKET_DECISION_CAPABILITY: "stale-decision",
+      LANE_PACKET_JT_LOGIN: "stale-login",
+    }, runtime)).toEqual({
+      PATH: "/bin",
+      OUTREACH_REVIEW_CAPABILITY: "review-a",
+      OUTREACH_DECISION_CAPABILITY: "decision-b",
+      OUTREACH_DECISION_JT_LOGIN: "jt@example.com",
+      OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY: "authority-write-c",
+      OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY: "authority-read-d",
+      OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID: "openclaw:review-verifier-v1",
+    });
+    const fallbackChanges = buildConvexEnvironmentChanges(
+      "review-a", "decision-b", "authority-write-c", "authority-read-d",
+    );
+    expect(fallbackChanges.some(({ name, value }) =>
+      name === "LANE_PACKET_CAPABILITY" && value === undefined
+    )).toBe(true);
+    expect(fallbackChanges.some(({ name, value }) =>
+      name === "LANE_PACKET_DECISION_CAPABILITY" && value === undefined
+    )).toBe(true);
+  });
+
+  test("rejects a lane capability collision even when outreach authority is absent", () => {
+    expect(captureError(() => buildRuntimeEnvironment(
+      "review-a", "decision-b", "jt@example.com", undefined, undefined,
+      "review-a", "lane-decision-f",
+    ))).toBe("outreach capability configuration is invalid");
+  });
+
+  test("prefers v4 and falls back to v3 without lane authority", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-versioned-set-read-test-"));
+    const v4Path = join(directory, "v4-helper");
+    const v3Path = join(directory, "v3-helper");
+    const legacyPath = join(directory, "legacy-helper");
+    try {
+      const v4Set = JSON.stringify({
+        version: 2,
+        review: "review-a",
+        decision: "decision-b",
+        reviewAuthorityWrite: "authority-write-c",
+        reviewAuthorityRead: "authority-read-d",
+        laneProducer: "lane-producer-e",
+        laneDecision: "lane-decision-f",
+      });
+      executable(v4Path, `#!/bin/sh\n[ "$1" = "read-set" ] && printf '%s\\n' '${v4Set}' && exit 0\nexit 2\n`);
+      executable(v3Path, "#!/bin/sh\nexit 2\n");
+      expect(readRuntimeCapabilitySetFromHelpers(v4Path, v3Path, legacyPath)).toMatchObject({
+        laneProducer: "lane-producer-e",
+        laneDecision: "lane-decision-f",
+      });
+
+      executable(v4Path, "#!/bin/sh\n[ \"$1\" = \"read-set\" ] && exit 3\nexit 2\n");
+      const v3Set = JSON.stringify({
+        version: 1,
+        review: "review-a",
+        decision: "decision-b",
+        reviewAuthorityWrite: "authority-write-c",
+        reviewAuthorityRead: "authority-read-d",
+      });
+      executable(v3Path, `#!/bin/sh\n[ "$1" = "read-set" ] && printf '%s\\n' '${v3Set}' && exit 0\nexit 2\n`);
+      expect(readRuntimeCapabilitySetFromHelpers(v4Path, v3Path, legacyPath)).toEqual({
+        review: "review-a",
+        decision: "decision-b",
+        authorityWrite: "authority-write-c",
+        authorityRead: "authority-read-d",
+        laneProducer: undefined,
+        laneDecision: undefined,
+      });
+    } finally {
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
   test("targets a separate stable v3 helper path", () => {
     expect(buildKeychainHelperRequest()).toEqual({
       file: "/usr/bin/swiftc",
@@ -311,14 +533,24 @@ describe("outreach runtime secret handling", () => {
     installCapabilitySet({
       ensureHelper: () => { events.push("helper"); },
       resolveLogin: () => { events.push("tailscale"); return "jt@example.com"; },
+      readExisting: () => {
+        events.push("read-existing");
+        return {
+          review: "review-a",
+          decision: "decision-b",
+          authorityWrite: "authority-write-c",
+          authorityRead: "authority-read-d",
+        };
+      },
       storeSet: () => { events.push("store"); },
     });
-    expect(events).toEqual(["helper", "tailscale", "store"]);
+    expect(events).toEqual(["helper", "tailscale", "read-existing", "store"]);
 
     events.length = 0;
     expect(captureError(() => installCapabilitySet({
       ensureHelper: () => { events.push("helper"); },
       resolveLogin: () => { events.push("tailscale"); throw new Error("tailscale failed"); },
+      readExisting: () => { events.push("read-existing"); throw new Error("unexpected read"); },
       storeSet: () => { events.push("store"); },
     }))).toBe("tailscale failed");
     expect(events).toEqual(["helper", "tailscale"]);
@@ -588,6 +820,8 @@ describe("outreach runtime secret handling", () => {
       { name: "OUTREACH_REVIEW_AUTHORITY_WRITE_CAPABILITY" },
       { name: "OUTREACH_REVIEW_AUTHORITY_READ_CAPABILITY" },
       { name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID" },
+      { name: "LANE_PACKET_CAPABILITY" },
+      { name: "LANE_PACKET_DECISION_CAPABILITY" },
       { name: "OUTREACH_SUPPRESSION_OWNER_ENABLED" },
     ]);
   });
@@ -604,6 +838,8 @@ describe("outreach runtime secret handling", () => {
         name: "OUTREACH_REVIEW_AUTHORITY_VERIFIER_ACTOR_ID",
         value: "openclaw:review-verifier-v1",
       },
+      { name: "LANE_PACKET_CAPABILITY" },
+      { name: "LANE_PACKET_DECISION_CAPABILITY" },
       { name: "OUTREACH_SUPPRESSION_OWNER_ENABLED" },
     ]);
   });
