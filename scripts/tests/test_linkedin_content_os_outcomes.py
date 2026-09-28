@@ -213,6 +213,13 @@ class ClosedContractTests(unittest.TestCase):
             "https://www.linkedin.com:99999/posts/jt_post-1",
             "https://www.linkedin.com:notaport/posts/jt_post-1",
             "https://www.linkedin.com/posts/jt_post-1\x00",
+            "https://www.linkedin.com/posts/jt post-1",
+            "https://www.linkedin.com/posts\\jt_post-1",
+            "https://www.linkedin.com/posts/jt\u00a0post-1",
+            "https://www.linkedin.com/posts/jt|post-1",
+            "https://www.linkedin.com/posts/jt%post-1",
+            "https://www.linkedin.com/posts/jt%2post-1",
+            "https://www.linkedin.com/posts/jt%GGpost-1",
         ):
             event = _event(
                 event_type="publication_acknowledged",
@@ -224,7 +231,9 @@ class ClosedContractTests(unittest.TestCase):
 
         valid = _event(
             event_type="publication_acknowledged",
-            payload={"publicationUrl": "https://www.linkedin.com/posts/jt_post-1"},
+            payload={
+                "publicationUrl": "https://www.linkedin.com:443/posts/jt_post-1%20proof?trk=public_post"
+            },
         )
         self.assertEqual(validate_event(valid), valid)
 

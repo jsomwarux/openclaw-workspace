@@ -36,6 +36,8 @@ SCHEMA_VERSION = "linkedin-content-outcome.v1"
 _HASH = re.compile(r"^[0-9a-f]{64}$")
 _STABLE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _GIT_COMMIT = re.compile(r"^[0-9a-f]{40}$")
+_URI = re.compile(r"^[A-Za-z0-9._~:/?#\[\]@!$&'()*+,;=%-]+$")
+_MALFORMED_PERCENT_ESCAPE = re.compile(r"%(?![0-9A-Fa-f]{2})")
 
 
 class SourcePointer(TypedDict):
@@ -185,6 +187,10 @@ def _validate_linkedin_url(value: object) -> str:
         ord(character) < 32 or ord(character) == 127 for character in text
     ):
         raise ValueError("publicationUrl contains whitespace or control characters")
+    if _URI.fullmatch(text) is None:
+        raise ValueError("publicationUrl contains a character outside the URI character set")
+    if _MALFORMED_PERCENT_ESCAPE.search(text) is not None:
+        raise ValueError("publicationUrl contains a malformed percent escape")
     try:
         parsed = urlsplit(text)
         port = parsed.port
