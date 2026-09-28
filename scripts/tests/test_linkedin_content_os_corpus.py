@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.corpus import (
@@ -38,7 +39,33 @@ def _audit(*records: dict[str, object]) -> dict[str, object]:
             "schemaVersion": "linkedin-historical-recovery-request.v1",
             "generatedAt": "2026-09-28T12:00:00-04:00",
             "sourceSha256": "a" * 64,
-            "items": [],
+            "items": [
+                {
+                    "allowedAnswers": [
+                        {
+                            "answer": "posted",
+                            "required": ["publicUrl"],
+                            "optional": ["finalText"],
+                        },
+                        {
+                            "answer": "not_posted",
+                            "required": ["declineReason"],
+                            "allowedDeclineReasons": [
+                                "quality_fit",
+                                "stale",
+                                "timing",
+                                "other",
+                            ],
+                        },
+                        {"answer": "still_unknown", "required": []},
+                    ],
+                    "date": record["date"],
+                    "legacyRowSha256": record["legacyRowSha256"],
+                    "topic": record["topic"],
+                }
+                for record in records
+                if record["status"] == "posted_confirmed" and record["missing"]
+            ],
         },
     }
 
@@ -60,8 +87,9 @@ def _event(
     payload: dict[str, object],
     *,
     recorded_at: str = "2026-09-28T12:00:00-04:00",
-    source_type: str = "jt_confirmation",
+    source_type: str = "jt_human_gate_response",
     source_id: str = "telegram:27993",
+    source_sha256: str = "b" * 64,
 ) -> dict[str, object]:
     event: dict[str, object] = {
         "schemaVersion": "linkedin-content-outcome.v1",
@@ -72,7 +100,7 @@ def _event(
         "sourcePointer": {
             "sourceType": source_type,
             "sourceId": source_id,
-            "sourceSha256": "b" * 64,
+            "sourceSha256": source_sha256,
         },
         "payload": payload,
     }
@@ -86,7 +114,7 @@ def _publication(
     *,
     event_id: str = "published-001",
     url: str = "https://www.linkedin.com/posts/jt_exact-1",
-    source_type: str = "jt_confirmation",
+    source_type: str = "jt_human_gate_response",
     recorded_at: str = "2026-09-28T12:00:00-04:00",
 ) -> dict[str, object]:
     return _event(
@@ -103,8 +131,87 @@ def _publication(
     )
 
 
-def _edit_pair_event(
+def _publication_without_text(
     row_hash: str,
+    *,
+    event_id: str = "published-binding",
+    recorded_at: str = "2026-09-28T12:00:00-04:00",
+    url: str = "https://www.linkedin.com/posts/jt_bound-1",
+) -> dict[str, object]:
+    return _event(
+        event_id,
+        "legacy:{}".format(row_hash),
+        "publication_acknowledged",
+        {"publicationUrl": url},
+        recorded_at=recorded_at,
+    )
+
+
+def _capture_payload(
+    publication: dict[str, object],
+    final: str,
+    *,
+    draft: Optional[str] = None,
+    reason: str = "specificity",
+) -> dict[str, object]:
+    publication_payload = publication["payload"]
+    assert isinstance(publication_payload, dict)
+    url = str(publication_payload["publicationUrl"])
+    payload: dict[str, object] = {
+        "finalText": final,
+        "finalTextSha256": sha256_hex(final.encode("utf-8")),
+        "publicationOutcomeEventId": publication["outcomeEventId"],
+        "publicationOutcomeEventSha256": publication["eventSha256"],
+        "publicationUrlSha256": sha256_hex(url.encode("utf-8")),
+    }
+    if draft is not None:
+        payload.update(
+            {
+                "draftText": draft,
+                "draftTextSha256": sha256_hex(draft.encode("utf-8")),
+                "editReason": reason,
+            }
+        )
+    return payload
+
+
+def _authority_receipt(
+    ledger_prefix: list[dict[str, object]],
+    target: dict[str, object],
+    *,
+    event_id: str = "authority-receipt-001",
+    recorded_at: str = "2026-09-28T12:02:00-04:00",
+    markers: Optional[list[str]] = None,
+) -> dict[str, object]:
+    position = ledger_prefix.index(target) + 1
+    prefix = b"".join(canonical_bytes(event) + b"\n" for event in ledger_prefix[:position])
+    source = target["sourcePointer"]
+    assert isinstance(source, dict)
+    return _event(
+        event_id,
+        str(target["packetId"]),
+        "corpus_authority_receipt",
+        {
+            "authoritySourceType": source["sourceType"],
+            "authoritySourceId": source["sourceId"],
+            "authoritySourceSha256": source["sourceSha256"],
+            "rawAuthoritySha256": "c" * 64,
+            "textOutcomeEventId": target["outcomeEventId"],
+            "textOutcomeEventSha256": target["eventSha256"],
+            "ledgerPrefixSha256": sha256_hex(prefix),
+            "ledgerPosition": position,
+            "validatedAt": recorded_at,
+            "clientSensitiveMarkers": list(markers or []),
+        },
+        recorded_at=recorded_at,
+        source_type="corpus_authority_verifier",
+        source_id="authority:program-0",
+        source_sha256="c" * 64,
+    )
+
+
+def _edit_pair_event(
+    publication: dict[str, object],
     draft: str,
     final: str,
     *,
@@ -115,15 +222,9 @@ def _edit_pair_event(
 ) -> dict[str, object]:
     return _event(
         event_id,
-        "legacy:{}".format(row_hash),
+        str(publication["packetId"]),
         "final_text_captured",
-        {
-            "draftText": draft,
-            "draftTextSha256": sha256_hex(draft.encode("utf-8")),
-            "editReason": reason,
-            "finalText": final,
-            "finalTextSha256": sha256_hex(final.encode("utf-8")),
-        },
+        _capture_payload(publication, final, draft=draft, reason=reason),
         recorded_at=recorded_at,
         source_type=source_type,
     )
@@ -134,8 +235,9 @@ class VoiceGoldTests(unittest.TestCase):
         row_hash = "1" * 64
         text = "The exact final LinkedIn post, including punctuation."
         event = _publication(row_hash, text)
+        receipt = _authority_receipt([event], event)
 
-        rows = build_voice_gold(_audit(_record(row_hash)), [event])
+        rows = build_voice_gold(_audit(_record(row_hash)), [event, receipt])
 
         self.assertEqual(rows[0], {
             "schemaVersion": "linkedin-voice-gold.v0",
@@ -158,28 +260,94 @@ class VoiceGoldTests(unittest.TestCase):
             "blockingGapPacketIds": [],
         })
 
+    def test_self_asserted_text_event_without_independent_receipt_is_a_gap(self) -> None:
+        row_hash = "1" * 64
+        event = _publication(row_hash, "Self-asserted exact text.")
+
+        self.assertEqual(build_voice_gold(_audit(_record(row_hash)), [event]), [{
+            "schemaVersion": "linkedin-corpus-gap-summary.v0",
+            "recordType": "gap_summary",
+            "blockingGapCount": 1,
+            "blockingGapPacketIds": ["legacy:{}".format(row_hash)],
+        }])
+
+    def test_authority_receipt_must_match_event_and_ledger_prefix(self) -> None:
+        row_hash = "1" * 64
+        event = _publication(row_hash, "Anchored exact text.")
+        receipt = _authority_receipt([event], event)
+        payload = dict(receipt["payload"])
+        payload["ledgerPrefixSha256"] = "0" * 64
+        forged_receipt = _event(
+            "authority-forged",
+            str(receipt["packetId"]),
+            "corpus_authority_receipt",
+            payload,
+            recorded_at="2026-09-28T12:03:00-04:00",
+            source_type="corpus_authority_verifier",
+            source_id="authority:program-0",
+            source_sha256="c" * 64,
+        )
+
+        with self.assertRaisesRegex(ValueError, "ledger prefix"):
+            build_voice_gold(
+                _audit(_record(row_hash)), [event, forged_receipt]
+            )
+
+    def test_private_or_secret_exact_text_is_quarantined_without_redaction(self) -> None:
+        row_hash = "1" * 64
+        text = (
+            "[PRIVATE] Client Alpha can reach me at jt@example.com or 212-555-0199. "
+            "Bearer sk-secretvalue1234567890"
+        )
+        event = _publication(row_hash, text)
+        receipt = _authority_receipt(
+            [event], event, markers=["Client Alpha"]
+        )
+
+        rows = build_voice_gold(_audit(_record(row_hash)), [event, receipt])
+
+        self.assertEqual(rows[0], {
+            "schemaVersion": "linkedin-corpus-quarantine.v0",
+            "recordType": "quarantine",
+            "packetId": "legacy:{}".format(row_hash),
+            "textOutcomeEventId": event["outcomeEventId"],
+            "textOutcomeEventSha256": event["eventSha256"],
+            "reasons": [
+                "client_sensitive_marker",
+                "credential",
+                "email",
+                "phone",
+                "private_marker",
+            ],
+        })
+        self.assertNotIn("text", rows[0])
+        self.assertEqual(rows[-1]["blockingGapCount"], 1)
+
     def test_resolves_separate_exact_final_text_capture_to_publication(self) -> None:
         row_hash = "2" * 64
         text = "JT supplied the exact final text later."
-        acknowledged = _event(
-            "published-002",
-            "legacy:{}".format(row_hash),
-            "publication_acknowledged",
-            {"publicationUrl": "https://linkedin.com/posts/jt_exact-2"},
+        acknowledged = _publication_without_text(
+            row_hash,
+            event_id="published-002",
+            url="https://linkedin.com/posts/jt_exact-2",
         )
         captured = _event(
             "text-002",
             "legacy:{}".format(row_hash),
             "final_text_captured",
-            {
-                "finalText": text,
-                "finalTextSha256": sha256_hex(text.encode("utf-8")),
-            },
+            _capture_payload(acknowledged, text),
             recorded_at="2026-09-28T12:01:00-04:00",
             source_type="jt_authored_text",
         )
+        receipt = _authority_receipt(
+            [acknowledged, captured],
+            captured,
+            event_id="authority-receipt-002",
+        )
 
-        rows = build_voice_gold(_audit(_record(row_hash)), [captured, acknowledged])
+        rows = build_voice_gold(
+            _audit(_record(row_hash)), [acknowledged, captured, receipt]
+        )
 
         self.assertEqual(rows[0]["origin"], "jt_authored")
         self.assertEqual(rows[0]["publicationOutcomeEventId"], "published-002")
@@ -187,44 +355,82 @@ class VoiceGoldTests(unittest.TestCase):
         self.assertEqual(rows[0]["text"], text)
         self.assertEqual(rows[-1]["blockingGapCount"], 0)
 
+    def test_final_capture_binding_and_chronology_fail_closed(self) -> None:
+        row_hash = "2" * 64
+        publication = _publication_without_text(row_hash)
+        wrong_packet_publication = _publication_without_text(
+            "3" * 64, event_id="wrong-packet-publication"
+        )
+        bad_binding = _event(
+            "capture-bad-binding",
+            "legacy:{}".format(row_hash),
+            "final_text_captured",
+            _capture_payload(wrong_packet_publication, "Exact final text."),
+            recorded_at="2026-09-28T12:01:00-04:00",
+        )
+        bad_time = _event(
+            "capture-bad-time",
+            "legacy:{}".format(row_hash),
+            "final_text_captured",
+            _capture_payload(publication, "Exact final text."),
+            recorded_at="2026-09-28T11:59:00-04:00",
+        )
+        for capture, ledger, message in (
+            (
+                bad_binding,
+                [publication, wrong_packet_publication, bad_binding],
+                "same packet",
+            ),
+            (bad_time, [bad_time, publication], "recordedAt"),
+        ):
+            receipt = _authority_receipt(
+                ledger,
+                capture,
+                event_id="authority-{}".format(capture["outcomeEventId"]),
+                recorded_at="2026-09-28T12:03:00-04:00",
+            )
+            with self.subTest(capture=capture["outcomeEventId"]):
+                with self.assertRaisesRegex(ValueError, message):
+                    build_voice_gold(
+                        _audit(_record(row_hash)), ledger + [receipt]
+                    )
+
     def test_rejects_summary_draft_placeholder_untrusted_and_hashless_sources(self) -> None:
         hashes = ["3" * 64, "4" * 64, "5" * 64, "6" * 64]
         audit = _audit(*[_record(row_hash) for row_hash in hashes])
-        events = [
-            _event(
+        summary = _event(
                 "summary-only",
                 "legacy:{}".format(hashes[0]),
                 "publication_acknowledged",
                 {"publicationUrl": "https://linkedin.com/posts/jt_summary-only"},
-            ),
-            _publication(
+            )
+        placeholder = _publication(
                 hashes[1],
                 "Draft text is not publishable evidence.",
                 event_id="placeholder-url",
                 url="https://linkedin.com/posts/placeholder",
-            ),
-            _publication(
+            )
+        model = _publication(
                 hashes[2],
                 "Model-written mechanics example.",
                 event_id="model-example",
                 source_type="model_generated",
-            ),
-            _event(
+            )
+        declined = _event(
                 "declined-draft",
                 "legacy:{}".format(hashes[3]),
                 "publication_declined",
                 {"declineReason": "quality_fit", "note": "Old draft summary"},
-            ),
-        ]
+            )
+        placeholder_receipt = _authority_receipt(
+            [summary, placeholder, model, declined],
+            placeholder,
+            event_id="authority-placeholder",
+        )
+        events = [summary, placeholder, model, declined, placeholder_receipt]
 
-        rows = build_voice_gold(audit, events)
-
-        self.assertEqual(rows, [{
-            "schemaVersion": "linkedin-corpus-gap-summary.v0",
-            "recordType": "gap_summary",
-            "blockingGapCount": 4,
-            "blockingGapPacketIds": ["legacy:{}".format(value) for value in sorted(hashes)],
-        }])
+        with self.assertRaisesRegex(ValueError, "placeholder marker"):
+            build_voice_gold(audit, events)
 
     def test_deduplicates_text_hash_deterministically(self) -> None:
         first_hash = "7" * 64
@@ -243,9 +449,21 @@ class VoiceGoldTests(unittest.TestCase):
             recorded_at="2026-09-28T12:00:00-04:00",
         )
 
+        earlier_receipt = _authority_receipt(
+            [earlier, later],
+            earlier,
+            event_id="authority-earlier",
+            recorded_at="2026-09-28T14:00:00-04:00",
+        )
+        later_receipt = _authority_receipt(
+            [earlier, later],
+            later,
+            event_id="authority-later",
+            recorded_at="2026-09-28T14:01:00-04:00",
+        )
         rows = build_voice_gold(
             _audit(_record(second_hash), _record(first_hash)),
-            [later, earlier],
+            [earlier, later, earlier_receipt, later_receipt],
         )
 
         gold = [row for row in rows if row["recordType"] == "voice_gold"]
@@ -257,16 +475,38 @@ class VoiceGoldTests(unittest.TestCase):
         row_hash = "9" * 64
         text = "One exact text."
         acknowledged = _publication(row_hash, text)
+        publication_binding = _publication_without_text(
+            row_hash,
+            event_id="published-binding-009",
+            recorded_at="2026-09-28T12:00:30-04:00",
+        )
         captured = _event(
             "captured-009",
             "legacy:{}".format(row_hash),
             "final_text_captured",
-            {"finalText": text, "finalTextSha256": sha256_hex(text.encode("utf-8"))},
+            _capture_payload(publication_binding, text),
             recorded_at="2026-09-28T12:01:00-04:00",
             source_type="jt_authored_text",
         )
+        acknowledged_receipt = _authority_receipt(
+            [acknowledged, publication_binding, captured],
+            acknowledged,
+            event_id="authority-ack-009",
+        )
+        captured_receipt = _authority_receipt(
+            [acknowledged, publication_binding, captured],
+            captured,
+            event_id="authority-capture-009",
+            recorded_at="2026-09-28T12:03:00-04:00",
+        )
 
-        self.assertEqual(build_contrastive_pairs([acknowledged, captured]), [{
+        self.assertEqual(build_contrastive_pairs([
+            acknowledged,
+            publication_binding,
+            captured,
+            acknowledged_receipt,
+            captured_receipt,
+        ]), [{
             "schemaVersion": "linkedin-corpus-gap-summary.v0",
             "recordType": "gap_summary",
             "blockingGapCount": 1,
@@ -277,9 +517,11 @@ class VoiceGoldTests(unittest.TestCase):
         row_hash = "d" * 64
         draft = "AI can help operations teams."
         final = "The useful AI workflow is the one an operator can audit before lunch."
-        event = _edit_pair_event(row_hash, draft, final)
+        publication = _publication_without_text(row_hash)
+        event = _edit_pair_event(publication, draft, final)
+        receipt = _authority_receipt([publication, event], event)
 
-        rows = build_contrastive_pairs([event])
+        rows = build_contrastive_pairs([publication, event, receipt])
 
         self.assertEqual(rows[0], {
             "schemaVersion": "linkedin-contrastive-pair.v0",
@@ -304,20 +546,19 @@ class VoiceGoldTests(unittest.TestCase):
 
     def test_single_exact_final_without_pair_is_a_blocking_gap(self) -> None:
         row_hash = "e" * 64
+        publication = _publication_without_text(row_hash)
         event = _event(
             "captured-only",
             "legacy:{}".format(row_hash),
             "final_text_captured",
-            {
-                "finalText": "Exact final text without the exact draft.",
-                "finalTextSha256": sha256_hex(
-                    "Exact final text without the exact draft.".encode("utf-8")
-                ),
-            },
+            _capture_payload(
+                publication, "Exact final text without the exact draft."
+            ),
             source_type="jt_authored_text",
         )
+        receipt = _authority_receipt([publication, event], event)
 
-        self.assertEqual(build_contrastive_pairs([event]), [{
+        self.assertEqual(build_contrastive_pairs([publication, event, receipt]), [{
             "schemaVersion": "linkedin-corpus-gap-summary.v0",
             "recordType": "gap_summary",
             "blockingGapCount": 1,
@@ -327,22 +568,45 @@ class VoiceGoldTests(unittest.TestCase):
     def test_deduplicates_contrastive_pairs_by_exact_hash_pair(self) -> None:
         draft = "Same draft."
         final = "Same final."
-        later = _edit_pair_event(
+        later_publication = _publication_without_text(
             "f" * 64,
+            event_id="published-later-binding",
+            recorded_at="2026-09-28T12:30:00-04:00",
+        )
+        later = _edit_pair_event(
+            later_publication,
             draft,
             final,
             event_id="pair-later",
             recorded_at="2026-09-28T13:00:00-04:00",
         )
-        earlier = _edit_pair_event(
+        earlier_publication = _publication_without_text(
             "0" * 64,
+            event_id="published-earlier-binding",
+            recorded_at="2026-09-28T11:30:00-04:00",
+        )
+        earlier = _edit_pair_event(
+            earlier_publication,
             draft,
             final,
             event_id="pair-earlier",
             recorded_at="2026-09-28T12:00:00-04:00",
         )
 
-        rows = build_contrastive_pairs([later, earlier])
+        ledger = [earlier_publication, earlier, later_publication, later]
+        earlier_receipt = _authority_receipt(
+            ledger,
+            earlier,
+            event_id="authority-pair-earlier",
+            recorded_at="2026-09-28T14:00:00-04:00",
+        )
+        later_receipt = _authority_receipt(
+            ledger,
+            later,
+            event_id="authority-pair-later",
+            recorded_at="2026-09-28T14:01:00-04:00",
+        )
+        rows = build_contrastive_pairs(ledger + [earlier_receipt, later_receipt])
         pairs = [row for row in rows if row["recordType"] == "contrastive_pair"]
 
         self.assertEqual(len(pairs), 1)
@@ -351,14 +615,15 @@ class VoiceGoldTests(unittest.TestCase):
 
     def test_untrusted_complete_pair_is_excluded_and_reported_as_gap(self) -> None:
         row_hash = "b" * 64
+        publication = _publication_without_text(row_hash)
         event = _edit_pair_event(
-            row_hash,
+            publication,
             "Model draft.",
             "Model final.",
             source_type="model_generated",
         )
 
-        self.assertEqual(build_contrastive_pairs([event]), [{
+        self.assertEqual(build_contrastive_pairs([publication, event]), [{
             "schemaVersion": "linkedin-corpus-gap-summary.v0",
             "recordType": "gap_summary",
             "blockingGapCount": 1,
@@ -397,6 +662,24 @@ class VoiceGoldTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "recoveryRequest"):
             build_voice_gold(malformed_recovery_audit, [event])
 
+        incomplete_recovery = _audit(_record(row_hash))
+        recovery = dict(incomplete_recovery["recoveryRequest"])
+        recovery["items"] = []
+        incomplete_recovery["recoveryRequest"] = recovery
+        with self.assertRaisesRegex(ValueError, "recoveryRequest.*complete"):
+            build_voice_gold(incomplete_recovery, [event])
+
+        bad_answers = _audit(_record(row_hash))
+        recovery = dict(bad_answers["recoveryRequest"])
+        item = dict(recovery["items"][0])
+        answers = [dict(answer) for answer in item["allowedAnswers"]]
+        answers[0]["optional"] = ["summary"]
+        item["allowedAnswers"] = answers
+        recovery["items"] = [item]
+        bad_answers["recoveryRequest"] = recovery
+        with self.assertRaisesRegex(ValueError, "allowedAnswers"):
+            build_voice_gold(bad_answers, [event])
+
         with self.assertRaisesRegex(ValueError, "eventSha256"):
             build_contrastive_pairs([malformed_event])
 
@@ -426,10 +709,14 @@ class VoiceGoldTests(unittest.TestCase):
             recorded_at="2026-09-28T12:02:00-04:00",
         )
 
-        rows = build_voice_gold(
-            _audit(_record(row_hash)),
-            [correction, old, replacement],
+        ledger = [replacement, old, correction]
+        receipt = _authority_receipt(
+            ledger,
+            replacement,
+            event_id="authority-corrected",
+            recorded_at="2026-09-28T12:03:00-04:00",
         )
+        rows = build_voice_gold(_audit(_record(row_hash)), ledger + [receipt])
 
         self.assertEqual(rows[0]["text"], "Corrected exact text")
         self.assertEqual(rows[0]["publicationOutcomeEventId"], "published-replacement")

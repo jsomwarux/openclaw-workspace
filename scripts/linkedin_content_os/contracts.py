@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from datetime import datetime
 from typing import Dict, List, Set, TypedDict
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 
@@ -22,6 +22,7 @@ OUTCOME_EVENT = {
     "commercial_outcome",
     "focus_decision",
     "permission_fixture_accepted",
+    "corpus_authority_receipt",
     "correction",
 }
 DECLINE_REASON = {"quality_fit", "stale", "timing", "other"}
@@ -39,6 +40,11 @@ CLAIM_ATTRIBUTION = {
     "vendor_assertion",
     "jt_verified_fact",
     "hypothesis",
+}
+CORPUS_AUTHORITY_SOURCE_TYPE = {
+    "jt_authored_text",
+    "jt_human_gate_response",
+    "linkedin_publication_capture",
 }
 
 SCHEMA_VERSION = "linkedin-content-outcome.v1"
@@ -97,7 +103,13 @@ _PAYLOAD_FIELDS = {
         {"note"},
     ),
     "final_text_captured": (
-        {"finalText", "finalTextSha256"},
+        {
+            "finalText",
+            "finalTextSha256",
+            "publicationOutcomeEventId",
+            "publicationOutcomeEventSha256",
+            "publicationUrlSha256",
+        },
         {"draftText", "draftTextSha256", "editReason"},
     ),
     "metric_snapshot": (
@@ -125,6 +137,21 @@ _PAYLOAD_FIELDS = {
             "extractedSha256",
             "permissionEvidenceSha256",
             "permissionExpiresAt",
+        },
+        set(),
+    ),
+    "corpus_authority_receipt": (
+        {
+            "authoritySourceType",
+            "authoritySourceId",
+            "authoritySourceSha256",
+            "rawAuthoritySha256",
+            "textOutcomeEventId",
+            "textOutcomeEventSha256",
+            "ledgerPrefixSha256",
+            "ledgerPosition",
+            "validatedAt",
+            "clientSensitiveMarkers",
         },
         set(),
     ),
@@ -213,9 +240,30 @@ def validate_linkedin_url(value: object) -> str:
         or parsed.password is not None
         or not (host == "linkedin.com" or host.endswith(".linkedin.com"))
         or not parsed.path.startswith("/")
-        or parsed.path == "/"
     ):
         raise ValueError("publicationUrl must be an HTTPS LinkedIn URL")
+    path = unquote(parsed.path)
+    if not (
+        re.fullmatch(r"/posts/[^/?#]+/?", path)
+        or re.fullmatch(r"/feed/update/urn:li:activity:\d+/?", path)
+    ):
+        raise ValueError("publicationUrl must identify a canonical LinkedIn post")
+    decoded_url = unquote(text).lower()
+    placeholder_tokens = {
+        token for token in re.split(r"[^a-z0-9]+", decoded_url) if token
+    }
+    if placeholder_tokens & {
+        "draft",
+        "example",
+        "fake",
+        "placeholder",
+        "sample",
+        "temp",
+        "test",
+        "todo",
+        "unknown",
+    }:
+        raise ValueError("publicationUrl contains a placeholder marker")
     return text
 
 
@@ -253,6 +301,14 @@ def _validate_payload(event_type: str, payload_value: object) -> None:
         expected = sha256_hex(final_text.encode("utf-8"))
         if _require_hash(payload["finalTextSha256"], "finalTextSha256") != expected:
             raise ValueError("finalTextSha256 does not match finalText")
+        _require_stable_id(
+            payload["publicationOutcomeEventId"], "publicationOutcomeEventId"
+        )
+        _require_hash(
+            payload["publicationOutcomeEventSha256"],
+            "publicationOutcomeEventSha256",
+        )
+        _require_hash(payload["publicationUrlSha256"], "publicationUrlSha256")
         edit_pair_fields = {"draftText", "draftTextSha256", "editReason"}
         present_edit_pair_fields = edit_pair_fields & set(payload)
         if present_edit_pair_fields and present_edit_pair_fields != edit_pair_fields:
@@ -313,6 +369,35 @@ def _validate_payload(event_type: str, payload_value: object) -> None:
         _require_hash(payload["extractedSha256"], "extractedSha256")
         _require_hash(payload["permissionEvidenceSha256"], "permissionEvidenceSha256")
         parse_timestamp(payload["permissionExpiresAt"], "permissionExpiresAt")
+    elif event_type == "corpus_authority_receipt":
+        authority_type = _require_string(
+            payload["authoritySourceType"], "authoritySourceType"
+        )
+        if authority_type not in CORPUS_AUTHORITY_SOURCE_TYPE:
+            raise ValueError(
+                "unsupported authoritySourceType {!r}".format(authority_type)
+            )
+        _require_string(payload["authoritySourceId"], "authoritySourceId")
+        _require_hash(payload["authoritySourceSha256"], "authoritySourceSha256")
+        _require_hash(payload["rawAuthoritySha256"], "rawAuthoritySha256")
+        _require_stable_id(payload["textOutcomeEventId"], "textOutcomeEventId")
+        _require_hash(payload["textOutcomeEventSha256"], "textOutcomeEventSha256")
+        _require_hash(payload["ledgerPrefixSha256"], "ledgerPrefixSha256")
+        position = payload["ledgerPosition"]
+        if not isinstance(position, int) or isinstance(position, bool) or position <= 0:
+            raise ValueError("ledgerPosition must be a positive integer")
+        parse_timestamp(payload["validatedAt"], "validatedAt")
+        markers = payload["clientSensitiveMarkers"]
+        if not isinstance(markers, list):
+            raise ValueError("clientSensitiveMarkers must be a list")
+        normalized: list[str] = []
+        for marker in markers:
+            text = _require_string(marker, "clientSensitiveMarker")
+            if text != text.strip():
+                raise ValueError("clientSensitiveMarker must be trimmed")
+            normalized.append(text)
+        if normalized != sorted(set(normalized)):
+            raise ValueError("clientSensitiveMarkers must be unique and sorted")
     elif event_type == "correction":
         _require_stable_id(payload["targetOutcomeEventId"], "targetOutcomeEventId")
         _require_hash(payload["replacementEventSha256"], "replacementEventSha256")
@@ -352,11 +437,25 @@ def validate_event(event_value: object) -> dict[str, object]:
         raise ValueError("sourcePointer must be an object")
     source: dict[str, object] = source_value
     _require_exact_fields(source, _SOURCE_FIELDS, set(), "sourcePointer")
-    _require_stable_id(source["sourceType"], "sourceType")
+    source_type = _require_stable_id(source["sourceType"], "sourceType")
     _require_string(source["sourceId"], "sourceId")
     _require_hash(source["sourceSha256"], "sourceSha256")
+    if (
+        event_type == "corpus_authority_receipt"
+        and source_type != "corpus_authority_verifier"
+    ):
+        raise ValueError(
+            "corpus_authority_receipt sourceType must be corpus_authority_verifier"
+        )
 
     _validate_payload(event_type, event["payload"])
+    if event_type == "corpus_authority_receipt":
+        payload = event["payload"]
+        assert isinstance(payload, dict)
+        if source["sourceSha256"] != payload["rawAuthoritySha256"]:
+            raise ValueError(
+                "corpus authority verifier source hash must match raw authority bytes"
+            )
     provided_hash = _require_hash(event["eventSha256"], "eventSha256")
     unhashed = {key: value for key, value in event.items() if key != "eventSha256"}
     expected_hash = sha256_hex(canonical_bytes(unhashed))
@@ -367,6 +466,7 @@ def validate_event(event_value: object) -> dict[str, object]:
 
 __all__: List[str] = [
     "CLAIM_ATTRIBUTION",
+    "CORPUS_AUTHORITY_SOURCE_TYPE",
     "DECLINE_REASON",
     "EDIT_REASON",
     "HISTORICAL_STATUS",

@@ -34,6 +34,8 @@ def _event(
     event_type: str = "historical_status",
     recorded_at: str = "2026-09-28T12:00:00-04:00",
     payload: object = None,
+    source_type: str = "fixture",
+    source_sha256: str = "2" * 64,
 ) -> dict[str, object]:
     if payload is None:
         payload = {
@@ -47,9 +49,9 @@ def _event(
         "eventType": event_type,
         "recordedAt": recorded_at,
         "sourcePointer": {
-            "sourceType": "fixture",
+            "sourceType": source_type,
             "sourceId": "fixture:outcomes",
-            "sourceSha256": "2" * 64,
+            "sourceSha256": source_sha256,
         },
         "payload": payload,
     }
@@ -66,6 +68,7 @@ class ClosedContractTests(unittest.TestCase):
         self.assertEqual(
             OUTCOME_EVENT,
             {
+                "corpus_authority_receipt",
                 "historical_status",
                 "publication_acknowledged",
                 "publication_deferred",
@@ -158,19 +161,35 @@ class ClosedContractTests(unittest.TestCase):
 
     def test_each_closed_event_type_has_a_strict_valid_payload(self) -> None:
         final_text = "Exact final text"
+        publication_url = "https://linkedin.com/posts/jt_valid-1"
         payloads = {
             "historical_status": {
                 "legacyRowSha256": "1" * 64,
                 "status": "posted_confirmed",
             },
             "publication_acknowledged": {
-                "publicationUrl": "https://linkedin.com/posts/jt_valid-1"
+                "publicationUrl": publication_url
             },
             "publication_deferred": {"nextCheckAt": "2026-09-29T12:00:00Z"},
             "publication_declined": {"declineReason": "quality_fit"},
             "final_text_captured": {
                 "finalText": final_text,
                 "finalTextSha256": sha256_hex(final_text.encode("utf-8")),
+                "publicationOutcomeEventId": "publication-001",
+                "publicationOutcomeEventSha256": "8" * 64,
+                "publicationUrlSha256": sha256_hex(publication_url.encode("utf-8")),
+            },
+            "corpus_authority_receipt": {
+                "authoritySourceType": "jt_human_gate_response",
+                "authoritySourceId": "telegram:27993",
+                "authoritySourceSha256": "2" * 64,
+                "rawAuthoritySha256": "3" * 64,
+                "textOutcomeEventId": "text-001",
+                "textOutcomeEventSha256": "4" * 64,
+                "ledgerPrefixSha256": "5" * 64,
+                "ledgerPosition": 2,
+                "validatedAt": "2026-09-28T12:01:00-04:00",
+                "clientSensitiveMarkers": [],
             },
             "metric_snapshot": {
                 "windowDays": 7,
@@ -211,6 +230,14 @@ class ClosedContractTests(unittest.TestCase):
                 event_id="outcome-{:03d}".format(index + 10),
                 event_type=event_type,
                 payload=payload,
+                source_type=(
+                    "corpus_authority_verifier"
+                    if event_type == "corpus_authority_receipt"
+                    else "fixture"
+                ),
+                source_sha256=(
+                    "3" * 64 if event_type == "corpus_authority_receipt" else "2" * 64
+                ),
             )
             with self.subTest(event_type=event_type):
                 self.assertEqual(validate_event(event), event)
@@ -281,6 +308,9 @@ class ClosedContractTests(unittest.TestCase):
             "editReason": "specificity",
             "finalText": final,
             "finalTextSha256": sha256_hex(final.encode("utf-8")),
+            "publicationOutcomeEventId": "publication-001",
+            "publicationOutcomeEventSha256": "8" * 64,
+            "publicationUrlSha256": "9" * 64,
         }
         event = _event(event_type="final_text_captured", payload=payload)
         self.assertEqual(validate_event(event), event)
@@ -314,6 +344,87 @@ class ClosedContractTests(unittest.TestCase):
                 _event(event_type="final_text_captured", payload=arbitrary_reason)
             )
 
+    def test_final_text_capture_requires_publication_binding_fields(self) -> None:
+        final = "Exact final text."
+        payload = {
+            "finalText": final,
+            "finalTextSha256": sha256_hex(final.encode("utf-8")),
+            "publicationOutcomeEventId": "publication-001",
+            "publicationOutcomeEventSha256": "8" * 64,
+            "publicationUrlSha256": "9" * 64,
+        }
+        for missing in (
+            "publicationOutcomeEventId",
+            "publicationOutcomeEventSha256",
+            "publicationUrlSha256",
+        ):
+            partial = dict(payload)
+            partial.pop(missing)
+            with self.subTest(missing=missing):
+                with self.assertRaises(ValueError):
+                    validate_event(
+                        _event(event_type="final_text_captured", payload=partial)
+                    )
+
+    def test_authority_receipt_requires_the_closed_independent_verifier_source(self) -> None:
+        payload = {
+            "authoritySourceType": "jt_human_gate_response",
+            "authoritySourceId": "telegram:27993",
+            "authoritySourceSha256": "2" * 64,
+            "rawAuthoritySha256": "3" * 64,
+            "textOutcomeEventId": "text-001",
+            "textOutcomeEventSha256": "4" * 64,
+            "ledgerPrefixSha256": "5" * 64,
+            "ledgerPosition": 1,
+            "validatedAt": "2026-09-28T12:02:00-04:00",
+            "clientSensitiveMarkers": [],
+        }
+        receipt = _event(
+                event_id="receipt-self-asserted",
+                event_type="corpus_authority_receipt",
+                payload=payload,
+            )
+        receipt["sourcePointer"] = {
+            "sourceType": "jt_confirmation",
+            "sourceId": "telegram:27993",
+            "sourceSha256": "6" * 64,
+        }
+        receipt["eventSha256"] = sha256_hex(canonical_bytes({
+            key: value for key, value in receipt.items() if key != "eventSha256"
+        }))
+        with self.assertRaisesRegex(ValueError, "corpus_authority_verifier"):
+            validate_event(receipt)
+
+    def test_publication_url_is_only_a_canonical_linkedin_post_family(self) -> None:
+        invalid = (
+            "https://www.linkedin.com/in/jt",
+            "https://www.linkedin.com/company/example",
+            "https://www.linkedin.com/feed/",
+            "https://www.linkedin.com/feed/update/urn:li:share:123",
+            "https://www.linkedin.com/feed/update/urn:li:activity:not-digits",
+            "https://www.linkedin.com/posts/jt_real?trk=placeholder",
+            "https://www.linkedin.com/posts/jt_real#draft",
+        )
+        for url in invalid:
+            with self.subTest(url=url):
+                with self.assertRaises(ValueError):
+                    validate_event(
+                        _event(
+                            event_type="publication_acknowledged",
+                            payload={"publicationUrl": url},
+                        )
+                    )
+
+        for url in (
+            "https://www.linkedin.com/posts/jt_real-123",
+            "https://linkedin.com/feed/update/urn:li:activity:123456789",
+        ):
+            event = _event(
+                event_type="publication_acknowledged",
+                payload={"publicationUrl": url},
+            )
+            self.assertEqual(validate_event(event), event)
+
 
 class OutcomeLedgerTests(unittest.TestCase):
     def test_appends_and_exact_replay_is_idempotent(self) -> None:
@@ -339,6 +450,121 @@ class OutcomeLedgerTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "outcomeEventId"):
                 append_event(path, conflict)
             self.assertEqual(path.read_bytes(), original)
+
+    def test_corrections_require_distinct_same_type_strictly_earlier_events(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "outcomes.jsonl"
+            target = _event(
+                event_id="target-001",
+                event_type="publication_deferred",
+                recorded_at="2026-09-28T12:00:00-04:00",
+                payload={"nextCheckAt": "2026-09-29T12:00:00-04:00"},
+            )
+            replacement = _event(
+                event_id="replacement-001",
+                event_type="publication_deferred",
+                recorded_at="2026-09-28T12:01:00-04:00",
+                payload={"nextCheckAt": "2026-09-30T12:00:00-04:00"},
+            )
+            correction = _event(
+                event_id="correction-001",
+                event_type="correction",
+                recorded_at="2026-09-28T12:02:00-04:00",
+                payload={
+                    "targetOutcomeEventId": "target-001",
+                    "replacementEventSha256": replacement["eventSha256"],
+                    "reason": "JT corrected the deferral date",
+                },
+            )
+            for event in (target, replacement, correction):
+                append_event(path, event)
+            self.assertEqual(load_events(path), [target, replacement, correction])
+
+            bad_path = Path(directory) / "bad.jsonl"
+            wrong_type = _event(
+                event_id="replacement-wrong-type",
+                event_type="publication_declined",
+                recorded_at="2026-09-28T12:01:00-04:00",
+                payload={"declineReason": "quality_fit"},
+            )
+            bad_correction = _event(
+                event_id="correction-bad",
+                event_type="correction",
+                recorded_at="2026-09-28T12:02:00-04:00",
+                payload={
+                    "targetOutcomeEventId": "target-001",
+                    "replacementEventSha256": wrong_type["eventSha256"],
+                    "reason": "Invalid transition",
+                },
+            )
+            bad_path.write_bytes(
+                b"".join(
+                    canonical_bytes(event) + b"\n"
+                    for event in (target, wrong_type, bad_correction)
+                )
+            )
+            with self.assertRaisesRegex(ValueError, "event types"):
+                load_events(bad_path)
+
+    def test_correction_chains_cycles_and_non_later_timestamps_fail_closed(self) -> None:
+        first = _event(
+            event_id="first",
+            event_type="publication_deferred",
+            recorded_at="2026-09-28T12:00:00-04:00",
+            payload={"nextCheckAt": "2026-09-29T12:00:00-04:00"},
+        )
+        second = _event(
+            event_id="second",
+            event_type="publication_deferred",
+            recorded_at="2026-09-28T12:01:00-04:00",
+            payload={"nextCheckAt": "2026-09-30T12:00:00-04:00"},
+        )
+        correction_one = _event(
+            event_id="correction-one",
+            event_type="correction",
+            recorded_at="2026-09-28T12:02:00-04:00",
+            payload={
+                "targetOutcomeEventId": "first",
+                "replacementEventSha256": second["eventSha256"],
+                "reason": "First correction",
+            },
+        )
+        correction_two = _event(
+            event_id="correction-two",
+            event_type="correction",
+            recorded_at="2026-09-28T12:03:00-04:00",
+            payload={
+                "targetOutcomeEventId": "second",
+                "replacementEventSha256": first["eventSha256"],
+                "reason": "Creates a cycle",
+            },
+        )
+        same_time = _event(
+            event_id="correction-same-time",
+            event_type="correction",
+            recorded_at="2026-09-28T12:01:00-04:00",
+            payload={
+                "targetOutcomeEventId": "first",
+                "replacementEventSha256": second["eventSha256"],
+                "reason": "Not strictly later",
+            },
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            for name, events, message in (
+                (
+                    "cycle.jsonl",
+                    (first, second, correction_one, correction_two),
+                    "chain or cycle",
+                ),
+                ("time.jsonl", (first, second, same_time), "strictly later"),
+            ):
+                path = Path(directory) / name
+                path.write_bytes(
+                    b"".join(canonical_bytes(event) + b"\n" for event in events)
+                )
+                with self.subTest(name=name):
+                    with self.assertRaisesRegex(ValueError, message):
+                        load_events(path)
 
     def test_rejects_per_packet_timestamp_regression_but_allows_other_packet(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

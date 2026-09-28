@@ -7,13 +7,15 @@ from collections import Counter
 from typing import Optional
 from urllib.parse import unquote, urlsplit
 
-from scripts.linkedin_content_os.canonical import sha256_hex
+from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.contracts import (
+    CORPUS_AUTHORITY_SOURCE_TYPE,
     HISTORICAL_STATUS,
     parse_timestamp,
     validate_event,
     validate_linkedin_url,
 )
+from scripts.linkedin_content_os.outcomes import validate_event_sequence
 
 
 _AUDIT_FIELDS = {
@@ -40,13 +42,6 @@ _RECOVERY_ITEM_FIELDS = {
     "legacyRowSha256",
     "topic",
 }
-_TRUSTED_TEXT_SOURCES = {
-    "jt_confirmation",
-    "jt_human_gate_response",
-    "jt_published_text",
-    "jt_authored_text",
-    "linkedin_publication_capture",
-}
 _PLACEHOLDER_MARKERS = {
     "draft",
     "example",
@@ -59,6 +54,26 @@ _PLACEHOLDER_MARKERS = {
     "unknown",
 }
 _HASH_LENGTH = 64
+_ALLOWED_RECOVERY_ANSWERS = [
+    {"answer": "posted", "required": ["publicUrl"], "optional": ["finalText"]},
+    {
+        "answer": "not_posted",
+        "required": ["declineReason"],
+        "allowedDeclineReasons": ["quality_fit", "stale", "timing", "other"],
+    },
+    {"answer": "still_unknown", "required": []},
+]
+_EMAIL = re.compile(r"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b")
+_PHONE = re.compile(
+    r"(?<!\d)(?:\+?1[-.\s]?)?(?:\(?\d{3}\)?[-.\s])\d{3}[-.\s]\d{4}(?!\d)"
+)
+_CREDENTIAL = re.compile(
+    r"(?i)(?:\bBearer\s+[A-Za-z0-9._~+/-]{12,}|\bsk-[A-Za-z0-9_-]{12,}|"
+    r"(?:api[_ -]?key|access[_ -]?token|private[_ -]?key)\s*[:=]\s*\S{8,})"
+)
+_PRIVATE_MARKER = re.compile(
+    r"(?i)(?:\[PRIVATE\]|\bCONFIDENTIAL\b|\bINTERNAL ONLY\b)"
+)
 
 
 def _require_object(value: object, label: str) -> dict[str, object]:
@@ -184,15 +199,21 @@ def _validate_audit(audit_value: object) -> tuple[dict[str, object], dict[str, s
         if identity_by_hash.get(row_hash) != (item["date"], item["topic"]):
             raise ValueError("audit.recoveryRequest item is not bound to an audit row")
         answers = item["allowedAnswers"]
-        if not isinstance(answers, list) or [
-            answer.get("answer") if isinstance(answer, dict) else None
-            for answer in answers
-        ] != ["posted", "not_posted", "still_unknown"]:
+        if answers != _ALLOWED_RECOVERY_ANSWERS:
             raise ValueError("audit.recoveryRequest allowedAnswers are not closed")
+    required_recovery = {
+        str(record["legacyRowSha256"])
+        for record in records_value
+        if record["status"] == "posted_confirmed" and record["missing"]
+    }
+    if seen_recovery != required_recovery:
+        raise ValueError("audit.recoveryRequest is not complete for corpus consumption")
     return audit, statuses_by_hash
 
 
-def _validated_events(events_value: object) -> list[dict[str, object]]:
+def _validated_events(
+    events_value: object,
+) -> tuple[list[dict[str, object]], dict[str, dict[str, object]]]:
     if not isinstance(events_value, list):
         raise ValueError("events must be a list")
     events: list[dict[str, object]] = []
@@ -206,6 +227,44 @@ def _validated_events(events_value: object) -> list[dict[str, object]]:
             raise ValueError("duplicate outcomeEventId in corpus input")
         seen_ids[event_id] = event_hash
         events.append(event)
+    validate_event_sequence(events)
+    by_id_in_ledger = {str(event["outcomeEventId"]): event for event in events}
+    receipts: dict[str, dict[str, object]] = {}
+    for index, receipt in enumerate(events):
+        if receipt["eventType"] != "corpus_authority_receipt":
+            continue
+        payload = _require_object(receipt["payload"], "authority receipt payload")
+        position = int(payload["ledgerPosition"])
+        if position > index or position > len(events):
+            raise ValueError("authority receipt ledger position is invalid")
+        target = events[position - 1]
+        target_id = str(payload["textOutcomeEventId"])
+        if by_id_in_ledger.get(target_id) is not target:
+            raise ValueError("authority receipt text event position does not match")
+        prefix = b"".join(canonical_bytes(event) + b"\n" for event in events[:position])
+        if payload["ledgerPrefixSha256"] != sha256_hex(prefix):
+            raise ValueError("authority receipt ledger prefix does not match")
+        source = _require_object(target["sourcePointer"], "text sourcePointer")
+        if (
+            payload["textOutcomeEventSha256"] != target["eventSha256"]
+            or payload["authoritySourceType"] != source["sourceType"]
+            or payload["authoritySourceId"] != source["sourceId"]
+            or payload["authoritySourceSha256"] != source["sourceSha256"]
+            or receipt["packetId"] != target["packetId"]
+        ):
+            raise ValueError("authority receipt is not bound to exact text provenance")
+        if source["sourceType"] not in CORPUS_AUTHORITY_SOURCE_TYPE:
+            raise ValueError("authority receipt source type is not trusted")
+        if parse_timestamp(receipt["recordedAt"], "recordedAt") < parse_timestamp(
+            target["recordedAt"], "recordedAt"
+        ) or parse_timestamp(payload["validatedAt"], "validatedAt") < parse_timestamp(
+            target["recordedAt"], "recordedAt"
+        ):
+            raise ValueError("authority receipt validation predates text event")
+        if target_id in receipts:
+            raise ValueError("duplicate authority receipt for text event")
+        receipts[target_id] = receipt
+
     ordered = sorted(
         events,
         key=lambda event: (
@@ -231,18 +290,19 @@ def _validated_events(events_value: object) -> list[dict[str, object]]:
             or replacement["packetId"] != correction["packetId"]
         ):
             raise ValueError("correction target and replacement must share packetId")
-        if replacement["eventType"] == "correction":
-            raise ValueError("correction replacement cannot be another correction")
-        prior = superseded.get(target_id)
-        if prior is not None and prior != replacement_hash:
-            raise ValueError("conflicting corrections for one outcome event")
         superseded[target_id] = replacement_hash
-    return [
+    active = [
         event
         for event in ordered
         if str(event["outcomeEventId"]) not in superseded
-        and event["eventType"] != "correction"
+        and event["eventType"] not in {"correction", "corpus_authority_receipt"}
     ]
+    active_ids = {str(event["outcomeEventId"]) for event in active}
+    return active, {
+        event_id: receipt
+        for event_id, receipt in receipts.items()
+        if event_id in active_ids
+    }
 
 
 def _is_placeholder_url(value: object) -> bool:
@@ -255,13 +315,10 @@ def _is_placeholder_url(value: object) -> bool:
     return bool(tokens & _PLACEHOLDER_MARKERS)
 
 
-def _trusted_source(event: dict[str, object]) -> bool:
-    source = _require_object(event["sourcePointer"], "sourcePointer")
-    return source["sourceType"] in _TRUSTED_TEXT_SOURCES
-
-
-def _exact_text(event: dict[str, object]) -> Optional[tuple[str, str]]:
-    if not _trusted_source(event):
+def _exact_text(
+    event: dict[str, object], receipts: dict[str, dict[str, object]]
+) -> Optional[tuple[str, str]]:
+    if str(event["outcomeEventId"]) not in receipts:
         return None
     payload = _require_object(event["payload"], "payload")
     text = payload.get("finalText")
@@ -272,6 +329,62 @@ def _exact_text(event: dict[str, object]) -> Optional[tuple[str, str]]:
         # validate_event normally catches this. Keep the local invariant explicit.
         raise ValueError("finalTextSha256 does not match exact final text")
     return text, digest
+
+
+def _privacy_reasons(texts: list[str], receipt: dict[str, object]) -> list[str]:
+    payload = _require_object(receipt["payload"], "authority receipt payload")
+    markers = payload["clientSensitiveMarkers"]
+    assert isinstance(markers, list)
+    reasons: set[str] = set()
+    combined = "\n".join(texts)
+    if _CREDENTIAL.search(combined):
+        reasons.add("credential")
+    if _EMAIL.search(combined):
+        reasons.add("email")
+    if _PHONE.search(combined):
+        reasons.add("phone")
+    if _PRIVATE_MARKER.search(combined):
+        reasons.add("private_marker")
+    lowered = combined.casefold()
+    if any(str(marker).casefold() in lowered for marker in markers):
+        reasons.add("client_sensitive_marker")
+    return sorted(reasons)
+
+
+def _quarantine(event: dict[str, object], reasons: list[str]) -> dict[str, object]:
+    return {
+        "schemaVersion": "linkedin-corpus-quarantine.v0",
+        "recordType": "quarantine",
+        "packetId": event["packetId"],
+        "textOutcomeEventId": event["outcomeEventId"],
+        "textOutcomeEventSha256": event["eventSha256"],
+        "reasons": reasons,
+    }
+
+
+def _validate_capture_bindings(events: list[dict[str, object]]) -> None:
+    by_id = {str(event["outcomeEventId"]): event for event in events}
+    for capture in events:
+        if capture["eventType"] != "final_text_captured":
+            continue
+        payload = _require_object(capture["payload"], "final text payload")
+        publication = by_id.get(str(payload["publicationOutcomeEventId"]))
+        if publication is None or publication["eventType"] != "publication_acknowledged":
+            raise ValueError("final text capture publication outcome does not exist")
+        if publication["eventSha256"] != payload["publicationOutcomeEventSha256"]:
+            raise ValueError("final text capture publication outcome hash does not match")
+        if publication["packetId"] != capture["packetId"]:
+            raise ValueError("final text capture and publication must share same packet")
+        if parse_timestamp(capture["recordedAt"], "recordedAt") < parse_timestamp(
+            publication["recordedAt"], "recordedAt"
+        ):
+            raise ValueError("final text capture recordedAt predates publication")
+        publication_payload = _require_object(
+            publication["payload"], "publication payload"
+        )
+        url = str(publication_payload["publicationUrl"])
+        if sha256_hex(url.encode("utf-8")) != payload["publicationUrlSha256"]:
+            raise ValueError("final text capture publication URL does not match")
 
 
 def _gap_summary(packet_ids: set[str]) -> dict[str, object]:
@@ -293,7 +406,8 @@ def build_voice_gold(
     """
 
     _, statuses_by_hash = _validate_audit(audit)
-    ordered_events = _validated_events(events)
+    ordered_events, receipts = _validated_events(events)
+    _validate_capture_bindings(ordered_events)
     publications: dict[str, list[dict[str, object]]] = {}
     captures: dict[str, list[dict[str, object]]] = {}
     for event in ordered_events:
@@ -312,29 +426,39 @@ def build_voice_gold(
         valid_publications = [
             event
             for event in publications.get(packet_id, [])
-            if _trusted_source(event)
-            and not _is_placeholder_url(
+            if not _is_placeholder_url(
                 _require_object(event["payload"], "payload").get("publicationUrl")
             )
         ]
         if not valid_publications:
             gaps.add(packet_id)
             continue
-        publication = valid_publications[-1]
-        exact = _exact_text(publication)
-        text_event = publication
-        origin = "jt_published"
-        if exact is None:
+        inline_publications = [
+            event
+            for event in valid_publications
+            if _exact_text(event, receipts) is not None
+        ]
+        if inline_publications:
+            publication = inline_publications[-1]
+            text_event = publication
+            exact = _exact_text(publication, receipts)
+            origin = "jt_published"
+        else:
             valid_captures = [
-                event
-                for event in captures.get(packet_id, [])
-                if _exact_text(event) is not None
+                event for event in captures.get(packet_id, [])
+                if _exact_text(event, receipts) is not None
             ]
             if not valid_captures:
                 gaps.add(packet_id)
                 continue
             text_event = valid_captures[-1]
-            exact = _exact_text(text_event)
+            capture_payload = _require_object(text_event["payload"], "capture payload")
+            publication_id = str(capture_payload["publicationOutcomeEventId"])
+            publication = next(
+                event for event in valid_publications
+                if event["outcomeEventId"] == publication_id
+            )
+            exact = _exact_text(text_event, receipts)
             assert exact is not None
             source = _require_object(text_event["sourcePointer"], "sourcePointer")
             origin = (
@@ -343,6 +467,18 @@ def build_voice_gold(
                 else "jt_published"
             )
         text, text_hash = exact
+        receipt = receipts[str(text_event["outcomeEventId"])]
+        privacy = _privacy_reasons([text], receipt)
+        if privacy:
+            candidates.append(
+                (
+                    parse_timestamp(text_event["recordedAt"], "recordedAt"),
+                    str(text_event["eventSha256"]),
+                    _quarantine(text_event, privacy),
+                )
+            )
+            gaps.add(packet_id)
+            continue
         source_pointer = _require_object(text_event["sourcePointer"], "sourcePointer")
         record = {
             "schemaVersion": "linkedin-voice-gold.v0",
@@ -369,13 +505,20 @@ def build_voice_gold(
     selected: list[dict[str, object]] = []
     seen_text_hashes: set[str] = set()
     for _, _, record in sorted(candidates, key=lambda item: (item[0], item[1])):
+        if record["recordType"] == "quarantine":
+            selected.append(record)
+            continue
         text_hash = str(record["textSha256"])
         if text_hash in seen_text_hashes:
             continue
         seen_text_hashes.add(text_hash)
         selected.append(record)
     selected.sort(
-        key=lambda record: (str(record["textSha256"]), str(record["packetId"]))
+        key=lambda record: (
+            0 if record["recordType"] == "quarantine" else 1,
+            str(record.get("textSha256", record.get("textOutcomeEventSha256", ""))),
+            str(record["packetId"]),
+        )
     )
     selected.append(_gap_summary(gaps))
     return selected
@@ -386,7 +529,8 @@ def build_contrastive_pairs(
 ) -> list[dict[str, object]]:
     """Return exact governed JT edit pairs plus deterministic blocking gaps."""
 
-    ordered_events = _validated_events(events)
+    ordered_events, receipts = _validated_events(events)
+    _validate_capture_bindings(ordered_events)
     packets_with_final_text: set[str] = set()
     packets_with_pair: set[str] = set()
     candidates: list[tuple[object, str, dict[str, object]]] = []
@@ -399,13 +543,26 @@ def build_contrastive_pairs(
         payload = _require_object(event["payload"], "payload")
         if "finalText" in payload:
             packets_with_final_text.add(str(event["packetId"]))
-        exact = _exact_text(event)
+        exact = _exact_text(event, receipts)
         if exact is None:
             continue
         packet_id = str(event["packetId"])
         if event["eventType"] != "final_text_captured":
             continue
         if not {"draftText", "draftTextSha256", "editReason"} <= set(payload):
+            continue
+        receipt = receipts[str(event["outcomeEventId"])]
+        privacy = _privacy_reasons(
+            [str(payload["draftText"]), str(payload["finalText"])], receipt
+        )
+        if privacy:
+            candidates.append(
+                (
+                    parse_timestamp(event["recordedAt"], "recordedAt"),
+                    str(event["eventSha256"]),
+                    _quarantine(event, privacy),
+                )
+            )
             continue
         packets_with_pair.add(packet_id)
         source_pointer = _require_object(event["sourcePointer"], "sourcePointer")
@@ -434,6 +591,9 @@ def build_contrastive_pairs(
     selected: list[dict[str, object]] = []
     seen_pairs: set[tuple[str, str]] = set()
     for _, _, record in sorted(candidates, key=lambda item: (item[0], item[1])):
+        if record["recordType"] == "quarantine":
+            selected.append(record)
+            continue
         pair_key = (
             str(record["draftTextSha256"]),
             str(record["finalTextSha256"]),
@@ -444,8 +604,13 @@ def build_contrastive_pairs(
         selected.append(record)
     selected.sort(
         key=lambda record: (
-            str(record["draftTextSha256"]),
-            str(record["finalTextSha256"]),
+            0 if record["recordType"] == "quarantine" else 1,
+            str(
+                record.get(
+                    "draftTextSha256", record.get("textOutcomeEventSha256", "")
+                )
+            ),
+            str(record.get("finalTextSha256", "")),
             str(record["packetId"]),
         )
     )

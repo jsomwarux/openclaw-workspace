@@ -13,6 +13,51 @@ from scripts.linkedin_content_os.canonical import (
 from scripts.linkedin_content_os.contracts import parse_timestamp, validate_event
 
 
+def validate_event_sequence(rows: list[dict[str, object]]) -> None:
+    """Validate cross-event invariants that one event cannot prove alone."""
+
+    by_id = {str(row["outcomeEventId"]): row for row in rows}
+    by_hash = {str(row["eventSha256"]): row for row in rows}
+    correction_edges: dict[str, str] = {}
+    replacement_ids: set[str] = set()
+    for correction in rows:
+        if correction["eventType"] != "correction":
+            continue
+        payload = correction["payload"]
+        assert isinstance(payload, dict)
+        target_id = str(payload["targetOutcomeEventId"])
+        replacement = by_hash.get(str(payload["replacementEventSha256"]))
+        target = by_id.get(target_id)
+        if target is None or replacement is None:
+            raise ValueError("correction target and replacement must both be present")
+        replacement_id = str(replacement["outcomeEventId"])
+        if target_id == replacement_id:
+            raise ValueError("correction target and replacement must be distinct")
+        if target["eventType"] != replacement["eventType"]:
+            raise ValueError("correction target and replacement event types must match")
+        if target["eventType"] == "correction":
+            raise ValueError("correction chain or cycle is not allowed")
+        if (
+            target["packetId"] != correction["packetId"]
+            or replacement["packetId"] != correction["packetId"]
+        ):
+            raise ValueError("correction target and replacement must share packetId")
+        correction_at = parse_timestamp(correction["recordedAt"], "recordedAt")
+        if correction_at <= parse_timestamp(
+            target["recordedAt"], "recordedAt"
+        ) or correction_at <= parse_timestamp(
+            replacement["recordedAt"], "recordedAt"
+        ):
+            raise ValueError("correction recordedAt must be strictly later")
+        prior = correction_edges.get(target_id)
+        if prior is not None and prior != replacement_id:
+            raise ValueError("conflicting corrections for one outcome event")
+        correction_edges[target_id] = replacement_id
+        replacement_ids.add(replacement_id)
+    if set(correction_edges) & replacement_ids:
+        raise ValueError("correction chain or cycle is not allowed")
+
+
 def _validated_rows(path: Path) -> list[dict[str, object]]:
     if not path.exists():
         return []
@@ -32,6 +77,7 @@ def _validated_rows(path: Path) -> list[dict[str, object]]:
         if prior is not None and recorded_at < prior:
             raise ValueError("per-packet timestamp regression in ledger")
         latest_by_packet[packet_id] = recorded_at
+    validate_event_sequence(rows)
     return rows
 
 
@@ -69,6 +115,8 @@ def append_event(
                     raise ValueError("per-packet timestamp regression")
                 break
 
+        validate_event_sequence(existing + [event])
+
         append_jsonl_exact_prefix(
             path,
             event,
@@ -77,4 +125,4 @@ def append_event(
         return "appended"
 
 
-__all__ = ["append_event", "load_events"]
+__all__ = ["append_event", "load_events", "validate_event_sequence"]
