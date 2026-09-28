@@ -14,6 +14,7 @@ from unittest import mock
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.historical_audit import audit_legacy_rows, corpus_run_id
+from scripts.linkedin_content_os.fixtures import DECAGON_PACKET_PATH
 from scripts.linkedin_content_os.boundaries import (
     build_authority_consumption_receipt,
     build_boundary_artifact,
@@ -288,6 +289,30 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 inputs=[source], outputs=[alias], receipts=[], workspace_root=self.root
             )
         self.assertEqual(source.read_text(encoding="utf-8"), "source")
+
+    def test_rejects_simulated_case_insensitive_destination_collision(self) -> None:
+        upper = self.root / "Authority.json"
+        lower = self.root / "authority.json"
+        with mock.patch(
+            "scripts.linkedin_content_os.cli.os.path.normcase",
+            side_effect=lambda value: value.casefold(),
+        ):
+            with self.assertRaisesRegex(ValueError, "alias"):
+                _validate_distinct_paths(
+                    inputs=[], outputs=[upper, lower], receipts=[],
+                    workspace_root=self.root,
+                )
+
+    def test_rejects_case_collision_on_case_insensitive_volume(self) -> None:
+        upper = self.root / "CaseProbe"
+        upper.write_bytes(b"probe")
+        if not (self.root / "caseprobe").exists():
+            self.skipTest("test volume is case-sensitive")
+        with self.assertRaisesRegex(ValueError, "alias"):
+            _validate_distinct_paths(
+                inputs=[], outputs=[upper, self.root / "caseprobe"], receipts=[],
+                workspace_root=self.root,
+            )
 
     def test_build_corpus_rejects_receipt_output_alias_before_any_write(self) -> None:
         context = self.root / "run-context.json"
@@ -665,6 +690,10 @@ class VerificationIntegrationTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.artifacts = self.root / "memory/content/linkedin-content-os"
         self.artifacts.mkdir(parents=True)
+        reviewed_packet = Path(__file__).resolve().parents[2] / DECAGON_PACKET_PATH
+        local_packet = self.root / DECAGON_PACKET_PATH
+        local_packet.parent.mkdir(parents=True)
+        local_packet.write_bytes(reviewed_packet.read_bytes())
 
     def _binding(self, role: str, path: Path) -> dict[str, object]:
         return {
@@ -742,14 +771,59 @@ class VerificationIntegrationTests(unittest.TestCase):
         )
 
         source_sha = sha256_hex(posted.read_bytes())
+        permission = {
+            "status": "approved-anonymized",
+            "evidenceRef": "jt:telegram:test",
+            "expiresAt": "2027-09-28T21:29:32Z",
+        }
+        proof = {
+            "schemaVersion": "permissioned-proof.v1",
+            "proofId": "cohort-two-coi-proof-v1",
+            "status": "verified",
+            "verifiedAt": "2026-09-28T15:30:00+00:00",
+            "facts": [{
+                "factId": "proof-coi-reminder-routing",
+                "conceptId": "coi-reminder-routing",
+                "outboundText": "Certificate reminders and a staff-status digest.",
+            }],
+            "permission": permission,
+            "activeProspectConflict": False,
+            "activeEmployerConflict": False,
+            "protectedInternalPremise": False,
+        }
+        proof_repository = Path(tempfile.mkdtemp(prefix="jt-ops-", dir=self.root))
+        subprocess.run(["git", "init", "-q", str(proof_repository)], check=True)
+        subprocess.run(
+            ["git", "-C", str(proof_repository), "config", "user.name", "Test"],
+            check=True,
+        )
+        subprocess.run(
+            ["git", "-C", str(proof_repository), "config", "user.email", "test@example.com"],
+            check=True,
+        )
+        proof_path = "evidence/cohort-two.permissioned-proof.json"
+        proof_file = proof_repository / proof_path
+        proof_file.parent.mkdir(parents=True, exist_ok=True)
+        proof_bytes = canonical_bytes(proof)
+        proof_file.write_bytes(proof_bytes)
+        subprocess.run(
+            ["git", "-C", str(proof_repository), "add", proof_path], check=True
+        )
+        subprocess.run(
+            ["git", "-C", str(proof_repository), "commit", "-q", "-m", "proof"],
+            check=True,
+        )
+        proof_commit = subprocess.check_output(
+            ["git", "-C", str(proof_repository), "rev-parse", "HEAD"], text=True
+        ).strip()
         accepted_fixture = {
             "proofId": "cohort-two-coi-proof-v1",
-            "gitDir": "/tmp/jt-ops/.git",
-            "commit": "4" * 40,
-            "path": "evidence/cohort-two.permissioned-proof.json",
-            "contentSha256": "5" * 64,
+            "gitDir": str(proof_repository / ".git"),
+            "commit": proof_commit,
+            "path": proof_path,
+            "contentSha256": sha256_hex(proof_bytes),
             "permissionEvidenceRef": "/permission",
-            "permissionEvidenceSha256": "6" * 64,
+            "permissionEvidenceSha256": sha256_hex(canonical_bytes(permission)),
             "permissionStatus": "approved-anonymized",
         }
         response = {
@@ -881,25 +955,11 @@ class VerificationIntegrationTests(unittest.TestCase):
             "targets": [{"targetId": "consulting-proof"}],
         }))
         fixtures = self.artifacts / "evaluation-fixtures.v0.jsonl"
-        positive_fixture = {
-            "fixtureId": accepted_fixture["proofId"],
-            "mode": "build_proof",
-            "classification": "positive",
-            "contentSha256": accepted_fixture["contentSha256"],
-            "permissionState": accepted_fixture["permissionStatus"],
-            "permissionEvidenceSha256": accepted_fixture["permissionEvidenceSha256"],
-            "sourceRefs": [{
-                "proofId": accepted_fixture["proofId"],
-                "repository": accepted_fixture["gitDir"],
-                "commit": accepted_fixture["commit"],
-                "path": accepted_fixture["path"],
-                "contentSha256": accepted_fixture["contentSha256"],
-            }],
-        }
-        fixtures.write_bytes(
-            canonical_bytes({"classification": "negative"}) + b"\n"
-            + canonical_bytes(positive_fixture) + b"\n"
-        )
+        from scripts.linkedin_content_os.recovery import derive_authorized_fixture_rows
+        expected_fixtures = derive_authorized_fixture_rows(response, self.root)
+        fixtures.write_bytes(b"".join(
+            canonical_bytes(row) + b"\n" for row in expected_fixtures
+        ))
         snapshot_unsigned: dict[str, object] = {
             "schemaVersion": "linkedin-mc-snapshot.v1",
             "runId": phase2_context["runId"],
@@ -1032,6 +1092,28 @@ class VerificationIntegrationTests(unittest.TestCase):
             "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
         ):
             with self.assertRaisesRegex(ValueError, "check-in preview"):
+                main(self._verify_argv(paths))
+
+    def test_verify_rejects_every_fixture_field_tampering(self) -> None:
+        mutations = (
+            ("outboundText", lambda rows: rows[1]["claimBindings"][0].__setitem__("outboundText", "tampered")),
+            ("gitObjectId", lambda rows: rows[1].__setitem__("gitObjectId", "a" * 40)),
+            ("permissionEvidenceRef", lambda rows: rows[1].__setitem__("permissionEvidenceRef", "/tampered")),
+            ("expectedGateResult", lambda rows: rows[1].__setitem__("expectedGateResult", "block")),
+            ("schemaVersion", lambda rows: rows[1].__setitem__("schemaVersion", "linkedin-evaluation-fixture.v999")),
+            ("negative-shape", lambda rows: rows.__setitem__(0, {"classification": "negative"})),
+        )
+        for field, mutate in mutations:
+            paths = self._proof_tree()
+            fixture_path = self.artifacts / "evaluation-fixtures.v0.jsonl"
+            rows = [json.loads(line) for line in fixture_path.read_text().splitlines()]
+            mutate(rows)
+            fixture_path.write_bytes(b"".join(canonical_bytes(row) + b"\n" for row in rows))
+            with self.subTest(field=field), mock.patch(
+                "scripts.linkedin_content_os.cli.build_voice_gold", return_value=[]
+            ), mock.patch(
+                "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+            ), self.assertRaisesRegex(ValueError, "fixture|canonical"):
                 main(self._verify_argv(paths))
 
 

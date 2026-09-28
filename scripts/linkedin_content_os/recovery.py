@@ -29,8 +29,10 @@ from scripts.linkedin_content_os.contracts import (
 )
 from scripts.linkedin_content_os.fixtures import (
     _git_blob_id,
+    _missing_mode,
     _strict_json,
     _validate_document_schema,
+    build_decagon_negative_fixture,
     select_build_proof,
 )
 from scripts.linkedin_content_os.focus import (
@@ -496,13 +498,21 @@ def _reject_transaction_path_aliases(
     labeled = [("ledger", ledger)] + [
         ("authority output", output) for output in authority_outputs
     ]
-    resolved: list[tuple[str, Path, Path]] = [
-        (label, candidate, candidate.resolve(strict=False))
-        for label, candidate in labeled
-    ]
-    for index, (left_label, left, left_resolved) in enumerate(resolved):
-        for right_label, right, right_resolved in resolved[index + 1:]:
-            aliased = left_resolved == right_resolved
+    resolved: list[tuple[str, Path, Path, str]] = []
+    for label, candidate in labeled:
+        resolved_path = candidate.resolve(strict=False)
+        resolved.append((
+            label,
+            candidate,
+            resolved_path,
+            os.path.normcase(str(resolved_path)).casefold(),
+        ))
+    for index, (left_label, left, left_resolved, left_case_key) in enumerate(resolved):
+        for right_label, right, right_resolved, right_case_key in resolved[index + 1:]:
+            aliased = (
+                left_resolved == right_resolved
+                or left_case_key == right_case_key
+            )
             if not aliased and left.exists() and right.exists():
                 try:
                     aliased = os.path.samefile(left, right)
@@ -1169,8 +1179,20 @@ def rebuild_fixtures_files(args: argparse.Namespace) -> dict[str, object]:
     )
     response = authority["response"]
     assert isinstance(response, dict)
-    phase1_path = response_path.parent / "evaluation-fixtures.phase-1.v0.jsonl"
-    rows = _phase1_fixture_rows(phase1_path)
+    rebuilt = derive_authorized_fixture_rows(
+        response, Path(getattr(args, "workspace_root", "."))
+    )
+    payload_bytes = b"".join(canonical_bytes(row) + b"\n" for row in rebuilt)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    _write_bytes_atomic(output, payload_bytes)
+    return {"schemaVersion": "linkedin-evaluation-fixture-set.v1", "fixtures": rebuilt}
+
+
+def derive_authorized_fixture_rows(
+    response: dict[str, object], workspace_root: Path
+) -> list[dict[str, object]]:
+    """Derive the complete post-gate fixture set from immutable authorities."""
+
     confirmed_at = _require_text(response.get("confirmedAt"), "confirmedAt")
     document, payload, provenance, _ = _extract_permission_fixture(
         response.get("permissionedFixture"), confirmed_at
@@ -1180,14 +1202,15 @@ def rebuild_fixtures_files(args: argparse.Namespace) -> dict[str, object]:
     )
     if positive.get("classification") != "positive":
         raise ValueError("permissioned fixture did not produce a positive fixture")
-    rebuilt = [positive if row.get("mode") == "build_proof" else row for row in rows]
-    payload_bytes = b"".join(canonical_bytes(row) + b"\n" for row in rebuilt)
-    output.parent.mkdir(parents=True, exist_ok=True)
-    _write_bytes_atomic(output, payload_bytes)
-    return {"schemaVersion": "linkedin-evaluation-fixture-set.v1", "fixtures": rebuilt}
+    return [
+        build_decagon_negative_fixture(Path(workspace_root).resolve()),
+        positive,
+        _missing_mode("company_teardown"),
+        _missing_mode("ai_news"),
+    ]
 
 
 __all__ = [
-    "ingest_human_gate", "ingest_human_gate_files", "rebuild_fixtures_files",
-    "rebuild_focus_files",
+    "derive_authorized_fixture_rows", "ingest_human_gate",
+    "ingest_human_gate_files", "rebuild_fixtures_files", "rebuild_focus_files",
 ]

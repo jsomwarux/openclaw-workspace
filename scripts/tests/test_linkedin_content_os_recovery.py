@@ -14,6 +14,10 @@ from unittest import mock
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.cli import main
+from scripts.linkedin_content_os.fixtures import (
+    DECAGON_PACKET_PATH,
+    build_decagon_negative_fixture,
+)
 from scripts.linkedin_content_os.outcomes import load_events
 from scripts.linkedin_content_os.recovery import (
     ingest_human_gate,
@@ -46,6 +50,10 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.root = Path(self.temporary.name)
+        reviewed_packet = Path(__file__).resolve().parents[2] / DECAGON_PACKET_PATH
+        local_packet = self.root / DECAGON_PACKET_PATH
+        local_packet.parent.mkdir(parents=True)
+        local_packet.write_bytes(reviewed_packet.read_bytes())
         owner = self.root / "memory/content/current-efforts.md"
         owner.parent.mkdir(parents=True)
         owner.write_text("# Current efforts\n\nPermissioned consulting proof.\n", encoding="utf-8")
@@ -609,6 +617,22 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
                             "{} authority output was written".format(name),
                         )
 
+    def test_file_ingest_rejects_simulated_casefolded_output_collision(self) -> None:
+        args, artifacts, _, _ = self.file_ingest_args()
+        upper = artifacts / "Authority.json"
+        lower = artifacts / "authority.json"
+        args.corpus_authority_manifest_output = str(upper)
+        args.authority_run_context_output = str(lower)
+        with mock.patch(
+            "scripts.linkedin_content_os.recovery.os.path.normcase",
+            side_effect=lambda value: value.casefold(),
+        ):
+            with self.assertRaisesRegex(ValueError, "alias"):
+                ingest_human_gate_files(args)
+        self.assertEqual(self.ledger.read_bytes(), b"")
+        self.assertFalse(upper.exists())
+        self.assertFalse(lower.exists())
+
     def test_file_handlers_emit_authority_outputs_and_rebuild_deterministically(self) -> None:
         artifacts = self.root / "memory/content/linkedin-content-os"
         artifacts.mkdir(parents=True, exist_ok=True)
@@ -621,7 +645,7 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         response_path.write_bytes(response_bytes)
         request_path.write_bytes(canonical_bytes(self.request))
         focus_path.write_bytes(canonical_bytes(self.focus))
-        negative = {"schemaVersion": "linkedin-evaluation-fixture.v1", "fixtureId": "negative", "mode": "internal_machinery", "classification": "negative"}
+        negative = build_decagon_negative_fixture(self.root)
         teardown = {"schemaVersion": "linkedin-evaluation-fixture.v1", "fixtureId": "teardown-gap", "mode": "company_teardown", "classification": "gap"}
         fixtures_path.write_bytes(b"".join(canonical_bytes(row) + b"\n" for row in (negative, self.fixture_gap, teardown)))
         context_path.write_bytes(canonical_bytes(self.run_context))
@@ -737,7 +761,8 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         positive = next(row for row in first_fixtures["fixtures"] if row.get("mode") == "build_proof")
         self.assertEqual(positive["classification"], "positive")
         self.assertEqual(first_fixtures["fixtures"][0], negative)
-        self.assertEqual(first_fixtures["fixtures"][-1], teardown)
+        self.assertEqual(first_fixtures["fixtures"][2]["mode"], "company_teardown")
+        self.assertEqual(first_fixtures["fixtures"][-1]["mode"], "ai_news")
 
         accepted_response_bytes = response_path.read_bytes()
         accepted_fixture_bytes = fixture_output.read_bytes()

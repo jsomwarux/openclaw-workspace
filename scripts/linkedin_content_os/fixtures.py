@@ -447,20 +447,11 @@ def _missing_mode(mode: str) -> dict[str, object]:
     }
 
 
-def _negative_fixture(
-    workspace_root: Path, *, runner: _Runner = subprocess.run
-) -> dict[str, object]:
+def build_decagon_negative_fixture(workspace_root: Path) -> dict[str, object]:
+    """Rebuild the canonical negative fixture from the exact reviewed packet."""
+
     path = Path(workspace_root) / DECAGON_PACKET_PATH
     payload = path.read_bytes()
-    committed_payload = extract_git_object(
-        Path(workspace_root) / ".git",
-        DECAGON_SOURCE_COMMIT,
-        DECAGON_PACKET_PATH,
-        DECAGON_BLOB_ID,
-        runner=runner,
-    )
-    if committed_payload != payload:
-        raise ValueError("Decagon working-tree bytes differ from declared Git object")
     if sha256_hex(payload) != DECAGON_CONTENT_SHA256:
         raise ValueError("Decagon packet exact byte SHA-256 mismatch")
     if _git_blob_id(payload) != DECAGON_BLOB_ID:
@@ -490,6 +481,22 @@ def _negative_fixture(
         "failureReason": "protected_internal_premise",
         "claimBindings": [],
     }
+
+
+def _negative_fixture(
+    workspace_root: Path, *, runner: _Runner = subprocess.run
+) -> dict[str, object]:
+    payload = (Path(workspace_root) / DECAGON_PACKET_PATH).read_bytes()
+    committed_payload = extract_git_object(
+        Path(workspace_root) / ".git",
+        DECAGON_SOURCE_COMMIT,
+        DECAGON_PACKET_PATH,
+        DECAGON_BLOB_ID,
+        runner=runner,
+    )
+    if committed_payload != payload:
+        raise ValueError("Decagon working-tree bytes differ from declared Git object")
+    return build_decagon_negative_fixture(workspace_root)
 
 
 def build_evaluation_fixtures(

@@ -162,16 +162,26 @@ def _validate_distinct_paths(
     """Reject every input/output/receipt alias before a command can write."""
 
     del workspace_root  # Paths may intentionally include an external read-only Git dir.
-    labeled: List[Tuple[str, Path]] = []
+    labeled: List[Tuple[str, Path, str]] = []
     for label, paths in (("input", inputs), ("output", outputs), ("receipt", receipts)):
         for path in paths:
-            labeled.append((label, Path(path).resolve(strict=False)))
-    seen: Dict[Path, str] = {}
-    for label, path in labeled:
-        prior = seen.get(path)
-        if prior is not None:
-            raise ValueError("path alias between {} and {}: {}".format(prior, label, path))
-        seen[path] = label
+            resolved = Path(path).resolve(strict=False)
+            case_key = os.path.normcase(str(resolved)).casefold()
+            labeled.append((label, resolved, case_key))
+    for index, (left_label, left, left_case_key) in enumerate(labeled):
+        for right_label, right, right_case_key in labeled[index + 1:]:
+            aliased = left == right or left_case_key == right_case_key
+            if not aliased and left.exists() and right.exists():
+                try:
+                    aliased = os.path.samefile(left, right)
+                except OSError:
+                    aliased = False
+            if aliased:
+                raise ValueError(
+                    "path alias between {} and {}: {}".format(
+                        left_label, right_label, right
+                    )
+                )
 
 
 def _require_hash(value: object, label: str) -> str:
@@ -321,7 +331,7 @@ def _allowed_process_argv(command: str, argv: object) -> bool:
                 "status", "--porcelain=v1", "-z", "--untracked-files=all"
             ]
         )
-    if command in {"build-fixtures", "ingest-human-gate"}:
+    if command in {"build-fixtures", "ingest-human-gate", "verify"}:
         return (
             len(values) == 5
             and values[0] == "git"
@@ -1052,6 +1062,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     checkin = _read_json(artifact_root / "checkin.preview.v1.json")
     events = load_events(artifact_root / "outcomes.v1.jsonl")
     from scripts.linkedin_content_os.recovery import (
+        derive_authorized_fixture_rows,
         validate_permission_fixture_authority_files,
     )
     permission_authority = validate_permission_fixture_authority_files(
@@ -1071,6 +1082,18 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             != permission_receipt["ledgerPosition"]
     ):
         raise ValueError("authority manifest does not bind the accepted permission response")
+    permission_response = permission_authority["response"]
+    assert isinstance(permission_response, dict)
+    expected_fixture_rows = derive_authorized_fixture_rows(
+        permission_response, root
+    )
+    expected_fixture_bytes = b"".join(
+        canonical_bytes(row) + b"\n" for row in expected_fixture_rows
+    )
+    if (artifact_root / "evaluation-fixtures.v0.jsonl").read_bytes() != expected_fixture_bytes:
+        raise ValueError(
+            "evaluation fixture artifact does not match canonical authority derivation"
+        )
     derived_gold = build_voice_gold(events, audit, expected_manifest_sha256=expected)
     derived_pairs = build_contrastive_pairs(events, audit, expected_manifest_sha256=expected)
     if canonical_bytes(gold) != canonical_bytes(derived_gold):
@@ -1119,39 +1142,6 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         classifications[str(classification)] += 1
     if classifications["positive"] < 1 or classifications["negative"] < 1:
         raise ValueError("fixture set lacks the required positive and negative evidence")
-    permission_event = permission_authority["permissionEvent"]
-    permission_response = permission_authority["response"]
-    assert isinstance(permission_event, dict)
-    assert isinstance(permission_response, dict)
-    permission_payload = permission_event["payload"]
-    accepted_fixture = permission_response["permissionedFixture"]
-    assert isinstance(permission_payload, dict)
-    assert isinstance(accepted_fixture, dict)
-    bound_positive = []
-    for fixture in fixtures:
-        if (
-            fixture.get("mode") != "build_proof"
-            or fixture.get("classification") != "positive"
-        ):
-            continue
-        refs = fixture.get("sourceRefs")
-        if not isinstance(refs, list) or len(refs) != 1 or not isinstance(refs[0], dict):
-            continue
-        source = refs[0]
-        if (
-            fixture.get("fixtureId") == permission_payload.get("fixtureId")
-            and fixture.get("contentSha256") == permission_payload.get("extractedSha256")
-            and fixture.get("permissionEvidenceSha256")
-                == permission_payload.get("permissionEvidenceSha256")
-            and fixture.get("permissionState") == accepted_fixture.get("permissionStatus")
-            and source.get("repository") == permission_payload.get("repository")
-            and source.get("commit") == permission_payload.get("commitSha")
-            and source.get("path") == permission_payload.get("path")
-            and source.get("contentSha256") == permission_payload.get("extractedSha256")
-        ):
-            bound_positive.append(fixture)
-    if len(bound_positive) != 1:
-        raise ValueError("positive fixture does not match accepted permission authority")
     voice_gold_count = sum(row.get("recordType") == "voice_gold" for row in gold)
     pair_count = sum(row.get("recordType") == "contrastive_pair" for row in pairs)
     task_value = checkin.get("task")
