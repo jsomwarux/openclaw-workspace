@@ -26,6 +26,24 @@ _RETIRED_PHRASES = (
     "wednesday is the highest-stakes post of the week",
     "use this skill whenever drafting or reviewing a wednesday linkedin case study post.",
     "four moves, in order:",
+    "monday: can be 1–3 sentences",
+    "friday buyer-facing rule",
+    "for linkedin wed/fri",
+    "use on mondays (linkedin)",
+    "right format for this day/platform",
+    "every weekly slot",
+)
+_PUBLIC_OWNER_SURFACES = (
+    "docs/agents/content-rules.md",
+    "memory/content-voice.md",
+)
+_PROHIBITED_INTERNAL_MACHINERY_CLASSES = (
+    "outreach and prospecting operations",
+    "job-search automation",
+    "content-system internals",
+    "Mission Control internals",
+    "proof hygiene",
+    "Eve and OpenClaw internals",
 )
 
 
@@ -58,6 +76,15 @@ def _validate_owners(owner_documents: Dict[str, bytes]) -> Dict[str, bytes]:
         lowered = text.lower()
         if any(phrase in lowered for phrase in _RETIRED_PHRASES):
             raise ValueError("owner surface {} still contains a retired voice rule".format(path))
+        if path in _PUBLIC_OWNER_SURFACES and any(
+            prohibited_class not in text
+            for prohibited_class in _PROHIBITED_INTERNAL_MACHINERY_CLASSES
+        ):
+            raise ValueError(
+                "owner surface {} lacks the complete internal-machinery prohibition".format(
+                    path
+                )
+            )
         validated[path] = payload
     return validated
 

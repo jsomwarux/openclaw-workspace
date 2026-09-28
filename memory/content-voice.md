@@ -163,7 +163,7 @@ If a batch does not create at least one of those impressions, it is not balanced
 
 LinkedIn packets may use build proof, company/niche teardown, AI event, field lesson, or engineering recipe when their source-family gate passes. Day-of-week templates and weekly volume targets are retired as generation authority. Use the strongest qualified evidence, preserve buyer confidence, and return `SKIP` when no candidate warrants publication.
 
-Build-proof packets need a real implementation, honest framing, specific outcome, and permission-safe evidence. Teardown and AI-event packets need current primary sources, conflict checks, and a bound JT artifact or earned angle. No mode may publish internal machinery.
+Evidence and mode fit select the LinkedIn shape. Build-proof packets need a real implementation, honest framing, specific outcome, and permission-safe evidence. Teardown and AI-event packets need current primary sources, conflict checks, and a bound JT artifact or earned angle. V1 prohibits posts about JT's internal content machinery without exception. The prohibition covers outreach and prospecting operations, job-search automation, content-system internals, Mission Control internals, proof hygiene, and Eve and OpenClaw internals. There are no audience or format exceptions.
 
 ### X Schedule
 
@@ -250,7 +250,7 @@ Say the thing people avoid saying. No softening. No hedge.
 - "If the approval rule lives in someone's head, the automation is not ready."
 
 **Rule:** One sentence. No follow-up explanation needed. Trust the reader.
-*Use on Mondays (LinkedIn) and Thursdays (X). Not every post.*
+*Use when the evidence and selected mode support a flat, compressed claim. Not every post.*
 
 ---
 
@@ -322,17 +322,15 @@ Strong shape:
 
 ## LinkedIn Post Format Rules
 
-- **Length:** 3–6 short paragraphs (Monday: can be 1–3 sentences). Each paragraph = 1–2 lines max.
+- **Length:** Let the evidence and selected mode determine the shortest complete shape. For a developed post, 3–6 short paragraphs is a useful default, not a gate. Each paragraph = 1–2 lines max.
 - **Line breaks:** blank line between every paragraph
 - **Hook line:** first line must grab attention by naming a buyer-recognizable workday pain, not a generic AI category debate.
 - **Default consulting structure:** concrete operational scene → specific examples → plain diagnosis → where AI fits → clean outcome. Buyer pain first, AI second, JT POV last.
-- **Friday buyer-facing rule:** Prefer hooks like “Weekly status meetings might be the most expensive meeting on your calendar” over abstract hooks like “Most businesses do not need an AI chatbot.” Start with meetings, handoffs, approvals, stale reports, duplicate entry, ownerless requests, inbox/spreadsheet/portal sprawl.
-- **No outreach-meta by default:** Do not discuss JT's prospect research, lead enrichment, buyer-channel validation, or outreach strategy on LinkedIn unless writing explicitly for a sales-ops audience.
-- **No content-ops reveal:** V1 prohibits posts about JT's internal content machinery without exception. Do not discuss JT's internal content generation, publishing system, swipe mechanics, posted logs, state files, or content automation on LinkedIn. That material is for internal build discipline only and is never an eligible public premise in v1.
-- **No proof-hygiene standalone posts:** Removing client names, cleaning public proof, hiding private details, or fixing attribution is internal trust discipline, not a post-worthy idea by itself. Use it only as a support line inside a real buyer problem, shipped client outcome, or permission-safe case study. Never deliver "public proof/privacy cleanup" as the main LinkedIn/X recommendation.
+- **Buyer-facing hook rule:** Prefer hooks like “Weekly status meetings might be the most expensive meeting on your calendar” over abstract hooks like “Most businesses do not need an AI chatbot.” Start with meetings, handoffs, approvals, stale reports, duplicate entry, ownerless requests, inbox/spreadsheet/portal sprawl.
+- **Internal-machinery prohibition:** V1 prohibits posts about JT's internal content machinery without exception. The prohibition covers outreach and prospecting operations, job-search automation, content-system internals, Mission Control internals, proof hygiene, and Eve and OpenClaw internals. There are no audience or format exceptions. Do not turn prospect research, lead enrichment, buyer-channel validation, application machinery, content generation, publishing systems, swipe mechanics, posted logs, state files, proof cleanup, attribution repair, or operator-agent internals into a public premise. Permission-safe evidence may support a real buyer problem or shipped outcome, but the internal process itself is never the story.
 - **No too-casual LinkedIn:** do not post "quick update," "small win," "built this weekend," "been playing with," "not gonna lie," "nothing crazy," "pretty cool," "vibes," "ship it and see," or app/build diary updates unless they are converted into client/employer-facing proof. LinkedIn should still sound like JT, but the reader should leave with trust, not just awareness that JT was building.
 - **Avoid AI-generated thought-leadership smell:** no “AI chatbot” contrast hooks, no “exception layer” phrasing, no vague “messy work” language, no stacked rhetorical lists unless grounded in a concrete workflow.
-- **Originality over acceptable:** every weekly slot must clear a 45-day semantic repeat check. Rewording a familiar angle is still a failure. Current hard-block phrases/angles: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” content-system/process transparency, and public-proof/privacy cleanup as standalone content.
+- **Originality over acceptable:** every LinkedIn candidate must clear a 45-day semantic repeat check. Rewording a familiar angle is still a failure. Current hard-block phrases/angles: “best first AI project / least glamorous,” “handoff everyone checks manually,” “gets risky when...live in different places,” “exception layer,” “autonomous content system,” “state file,” “stop condition,” content-system/process transparency, and public-proof/privacy cleanup as standalone content.
 - **Contrarian setup ban for all JT content:** do not use “the blocker is not X, it is Y,” “not look what this tool can do, more like…,” “not X, but Y,” the two-sentence “X is not just Y. It is Z.” variant, “X should be Y, not Z,” “X needs Y, not Z,” “X is Y, not Z,” “X should become Y instead of Z,” or repeated-noun reveals like “The risk is not X. The risk is Y.” This is banned across LinkedIn, X, reminders, client-proof posts, product-builder posts, and methodology/trust posts. Start with the positive claim, concrete scene, machine, workflow, owner, number, or business constraint.
 - **Question 5 sentence-shape ban:** do not use "gets solved with a hire," "X don't Y, they Z," statement-colon hook lines, or "X happened/changed/worked when Y" as a closing pattern. These sound like generated reflection, not JT's natural voice.
 - **Generic importance phrase ban:** never write “matters more than people think,” “people underestimate,” or “that part matters” unless replaced with the specific business reason.
@@ -421,7 +419,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 ## Audit Checklist (run on every draft)
 
 ### All content:
-- [ ] Is this the right format for this day/platform?
+- [ ] Is this the right format for this platform, evidence, and selected mode?
 - [ ] Strategic-fit gate: does this make JT look more credible to buyers/hiring managers? Block drafts that foreground a mistake, inflated claim, correction, apology, weak metric, or credibility repair unless JT explicitly asks for that postmortem angle.
 - [ ] Did you check recent/proven references for this exact platform + niche + format before drafting?
 - [ ] Did you avoid cross-platform/niche leakage unless explicitly labeled as adjacent inspiration?
@@ -435,7 +433,7 @@ The Phoenix algorithm ranks posts by weighted action probabilities. Replies > Re
 - [ ] Does it use any forbidden words?
 - [ ] Is there any preamble that can be cut?
 - [ ] Does it make a claim the reader has to think about?
-- [ ] For LinkedIn Wed/Fri: is there a specific number or proper noun?
+- [ ] For every LinkedIn proof claim: is there a specific number, proper noun, or source-bound artifact?
 - [ ] Platform check: does the content belong on THIS platform?
 - [ ] LinkedIn consulting check: does the hook start with a concrete buyer pain a nontechnical SMB operator recognizes from their workday?
 - [ ] LinkedIn consulting check: is AI introduced only after the operational problem is clear?

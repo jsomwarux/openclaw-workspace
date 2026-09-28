@@ -6,7 +6,7 @@
 
 Exact JT-final LinkedIn text, evidence safety, and reconciled gates outrank fixed-day, fixed-format, and quota mechanics.
 
-The allowed LinkedIn source families are permissioned client delivery, JT-confirmed field lessons, verified engineering recipes, primary-source teardown triggers, and verified AI events. Internal content, job-search, outreach, Mission Control, and Eve machinery are not public proof. A fixed calendar may organize a manually approved queue, but it cannot require a post, select the evidence mode, or override `SKIP`.
+The allowed LinkedIn source families are permissioned client delivery, JT-confirmed field lessons, verified engineering recipes, primary-source teardown triggers, and verified AI events. V1 prohibits posts about JT's internal content machinery without exception. The prohibition covers outreach and prospecting operations, job-search automation, content-system internals, Mission Control internals, proof hygiene, and Eve and OpenClaw internals. There are no audience or format exceptions. Evidence and mode fit select the LinkedIn shape; a fixed calendar may organize a manually approved queue, but it cannot require a post, select the evidence mode, or override `SKIP`.
 
 ## Pre-Draft Checklist (mandatory)
 Before drafting ANY post or content for JT:

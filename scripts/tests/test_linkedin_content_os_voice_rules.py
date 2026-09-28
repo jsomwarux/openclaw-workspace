@@ -21,6 +21,22 @@ RECONCILED_AUTHORITY = (
 ABSOLUTE_INTERNAL_MACHINERY_RULE = (
     "V1 prohibits posts about JT's internal content machinery without exception."
 )
+PROHIBITED_INTERNAL_MACHINERY_CLASSES = (
+    "outreach and prospecting operations",
+    "job-search automation",
+    "content-system internals",
+    "Mission Control internals",
+    "proof hygiene",
+    "Eve and OpenClaw internals",
+)
+RETIRED_LINKEDIN_DAY_RULES = (
+    "Monday: can be 1–3 sentences",
+    "Friday buyer-facing rule",
+    "For LinkedIn Wed/Fri",
+    "Use on Mondays (LinkedIn)",
+    "right format for this day/platform",
+    "every weekly slot",
+)
 
 
 class VoiceRuleRetirementTests(unittest.TestCase):
@@ -77,6 +93,33 @@ class VoiceRuleRetirementTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertIn(ABSOLUTE_INTERNAL_MACHINERY_RULE, text)
                 self.assertNotIn("No content-ops reveal by default", text)
+
+    def test_public_owner_docs_prohibit_every_internal_machinery_class(self) -> None:
+        documents = self._owner_documents()
+        for path in (
+            "docs/agents/content-rules.md",
+            "memory/content-voice.md",
+        ):
+            text = documents[path].decode("utf-8")
+            with self.subTest(path=path):
+                for prohibited_class in PROHIBITED_INTERNAL_MACHINERY_CLASSES:
+                    self.assertIn(prohibited_class, text)
+
+        voice = documents["memory/content-voice.md"].decode("utf-8")
+        self.assertNotIn("unless writing explicitly for a sales-ops audience", voice)
+
+    def test_linkedin_owner_docs_have_no_weekday_generation_authority(self) -> None:
+        documents = self._owner_documents()
+        for path in (
+            "docs/agents/content-rules.md",
+            "memory/content-voice.md",
+        ):
+            text = documents[path].decode("utf-8")
+            with self.subTest(path=path):
+                for retired_rule in RETIRED_LINKEDIN_DAY_RULES:
+                    self.assertNotIn(retired_rule, text)
+                self.assertIn("Evidence and mode fit select the LinkedIn shape", text)
+                self.assertIn("SKIP", text)
 
     def test_retirement_artifact_is_source_bound_and_complete(self) -> None:
         documents = self._reconciled_documents()
@@ -142,6 +185,37 @@ class VoiceRuleRetirementTests(unittest.TestCase):
         documents[str(OWNER_PATHS[0])] += b"\nTarget 5:1 ratio.\n"
         with self.assertRaisesRegex(ValueError, "retired voice rule"):
             build_voice_rule_retirements(documents, effective_date=EFFECTIVE_DATE)
+
+    def test_retirement_builder_rejects_linkedin_weekday_authority(self) -> None:
+        for retired_rule in RETIRED_LINKEDIN_DAY_RULES:
+            documents = self._reconciled_documents()
+            owner_path = "memory/content-voice.md"
+            documents[owner_path] += ("\n" + retired_rule + "\n").encode("utf-8")
+            with self.subTest(retired_rule=retired_rule):
+                with self.assertRaisesRegex(ValueError, "retired voice rule"):
+                    build_voice_rule_retirements(
+                        documents, effective_date=EFFECTIVE_DATE
+                    )
+
+    def test_retirement_builder_requires_every_internal_machinery_class(self) -> None:
+        for owner_path in (
+            "docs/agents/content-rules.md",
+            "memory/content-voice.md",
+        ):
+            for prohibited_class in PROHIBITED_INTERNAL_MACHINERY_CLASSES:
+                documents = self._reconciled_documents()
+                documents[owner_path] = documents[owner_path].replace(
+                    prohibited_class.encode("utf-8"), b"removed-class"
+                )
+                with self.subTest(
+                    owner_path=owner_path, prohibited_class=prohibited_class
+                ):
+                    with self.assertRaisesRegex(
+                        ValueError, "internal-machinery prohibition"
+                    ):
+                        build_voice_rule_retirements(
+                            documents, effective_date=EFFECTIVE_DATE
+                        )
 
     def test_retirement_builder_refuses_missing_or_extra_owner_surfaces(self) -> None:
         documents = self._owner_documents()
