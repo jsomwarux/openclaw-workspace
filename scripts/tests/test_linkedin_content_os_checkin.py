@@ -282,6 +282,46 @@ class LinkedInCheckinProjectionTests(unittest.TestCase):
         assert preview is not None
         self.assertIn("seven-day", preview["task"]["exactSteps"][0])
 
+    def test_future_publication_and_metric_events_fail_authoritative_clock(self) -> None:
+        packet = _packet()
+        future_publication = _published(
+            packet, recorded_at="2026-09-28T16:00:00.000001+00:00"
+        )
+        with self.assertRaisesRegex(ValueError, "future"):
+            project_checkin(_snapshot(packet), [future_publication], NOW)
+
+        published = _published(packet, recorded_at="2026-09-20T16:00:00+00:00")
+        terminal = _completed_packet(published)
+        future_metric = _event(
+            "metrics-future",
+            "metric_snapshot",
+            {
+                "windowDays": 7,
+                "metrics": {"impressions": 123},
+                "collectionMethod": "jt_manual",
+            },
+            packet=packet,
+            recorded_at="2026-09-28T16:00:00.000001+00:00",
+        )
+        with self.assertRaisesRegex(ValueError, "future"):
+            project_checkin(_snapshot(terminal), [published, future_metric], NOW)
+
+    def test_published_at_cannot_be_after_publication_recorded_at(self) -> None:
+        packet = _packet()
+        publication = _event(
+            "published-future-published-at",
+            "publication_acknowledged",
+            {
+                "publicationUrl": PUBLICATION_URL,
+                "publishedAt": "2026-09-28T15:00:00.000001+00:00",
+            },
+            packet=packet,
+            recorded_at="2026-09-28T15:00:00+00:00",
+        )
+
+        with self.assertRaisesRegex(ValueError, "publishedAt"):
+            project_checkin(_snapshot(packet), [publication], NOW)
+
     def test_unknown_only_day_seven_snapshot_closes_without_fake_zero(self) -> None:
         packet = _packet()
         published = _published(packet, recorded_at="2026-09-20T16:00:00+00:00")
@@ -415,6 +455,19 @@ class LinkedInCheckinProjectionTests(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "predates publication"):
             project_checkin(_snapshot(terminal), [publication], NOW)
+
+    def test_terminal_closure_timestamps_cannot_exceed_authoritative_now(self) -> None:
+        publication = _published(recorded_at="2026-09-20T16:00:00+00:00")
+        future_millis = int((NOW + timedelta(microseconds=1)).timestamp() * 1000) + 1
+        for field in ("doneEvidence", "closureOutcomePointer"):
+            with self.subTest(field=field):
+                terminal = _completed_packet(publication)
+                terminal[field] = {
+                    **terminal[field],
+                    "recordedAt": future_millis,
+                }
+                with self.assertRaisesRegex(ValueError, "authoritative now"):
+                    project_checkin(_snapshot(terminal), [publication], NOW)
 
     def test_day_seven_boundary_uses_absolute_time_across_offsets(self) -> None:
         packet = _packet()

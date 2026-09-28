@@ -219,7 +219,11 @@ def _validate_terminal_projection(packet: dict[str, object]) -> None:
             raise ValueError("{} must be a non-negative integer".format(label))
 
 
-def _effective_events(events: list[dict[str, object]]) -> list[dict[str, object]]:
+def _effective_events(
+    events: list[dict[str, object]],
+    relevant_packet_ids: set[str],
+    now: datetime,
+) -> list[dict[str, object]]:
     if not isinstance(events, list):
         raise ValueError("events must be a list")
     copied: list[dict[str, object]] = []
@@ -227,6 +231,11 @@ def _effective_events(events: list[dict[str, object]]) -> list[dict[str, object]
     seen_hashes: set[str] = set()
     for event in events:
         validated = validate_event(event)
+        if (
+            validated["packetId"] in relevant_packet_ids
+            and parse_timestamp(validated["recordedAt"], "recordedAt") > now
+        ):
+            raise ValueError("relevant outcome event is future-dated")
         event_id = str(validated["outcomeEventId"])
         event_hash = str(validated["eventSha256"])
         if event_id in seen_ids:
@@ -324,6 +333,9 @@ def _publication_state(
     published_at = parse_timestamp(
         payload.get("publishedAt", terminal["recordedAt"]), "publishedAt"
     )
+    recorded_at = parse_timestamp(terminal["recordedAt"], "recordedAt")
+    if published_at > recorded_at:
+        raise ValueError("publishedAt cannot be after publication recordedAt")
     metrics_due = published_at + METRICS_WINDOW
     eligible_metrics = [
         event
@@ -336,7 +348,9 @@ def _publication_state(
 
 
 def _validate_terminal_binding(
-    packet: dict[str, object], publication: dict[str, object] | None
+    packet: dict[str, object],
+    publication: dict[str, object] | None,
+    now: datetime,
 ) -> None:
     if packet["projectionType"] != "metrics_followup":
         return
@@ -362,6 +376,9 @@ def _validate_terminal_binding(
         or pointer["recordedAt"] < published_millis
     ):
         raise ValueError("terminal publication closure predates publication")
+    now_millis = _milliseconds(now)
+    if evidence["recordedAt"] > now_millis or pointer["recordedAt"] > now_millis:
+        raise ValueError("terminal publication closure exceeds authoritative now")
 
 
 def _milliseconds(value: datetime) -> int:
@@ -373,18 +390,24 @@ def project_checkin(
     events: list[dict[str, object]],
     now: datetime,
 ) -> dict[str, object] | None:
-    """Return zero or one deterministic, non-writable universal-task preview."""
+    """Return zero or one deterministic, non-writable universal-task preview.
+
+    ``now`` is the authoritative projection clock. Relevant outcome events and
+    terminal closure timestamps later than that clock fail closed rather than
+    suppressing a currently due prompt.
+    """
 
     _require_aware(now)
     packets = _validate_snapshot(mc_snapshot, now)
-    effective_events = _effective_events(events)
+    relevant_packet_ids = {str(packet["contentId"]) for packet in packets}
+    effective_events = _effective_events(events, relevant_packet_ids, now)
     publication_steps: list[tuple[datetime, str]] = []
     metrics_steps: list[tuple[datetime, str]] = []
 
     for packet in packets:
         packet_events = _events_for_packet(packet, effective_events)
         publication, metrics, next_due = _publication_state(packet, packet_events)
-        _validate_terminal_binding(packet, publication)
+        _validate_terminal_binding(packet, publication, now)
         task_id = str(packet["taskId"])
         content_id = str(packet["contentId"])
 
