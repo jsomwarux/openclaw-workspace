@@ -1,27 +1,27 @@
 ## Plan — LinkedIn Content OS Program 0 — 2026-09-28
 
 - [x] Task 1: Create the Program 0 package and canonical file primitives.
-- [ ] Task 2: Define closed Program 0 contracts.
-- [ ] Task 3: Audit legacy LinkedIn history without rewriting it.
-- [ ] Task 4: Capture and validate the read-only Mission Control packet snapshot.
-- [ ] Task 5: Build a hash-bound current-focus snapshot.
-- [ ] Task 6: Build voice gold only from exact final LinkedIn text.
-- [ ] Task 7: Select Program 0 evaluation fixtures without generating posts.
-- [ ] Task 8: Encode source-family policy and retire conflicting legacy voice rules.
+- [x] Task 2: Define closed Program 0 contracts.
+- [x] Task 3: Audit legacy LinkedIn history without rewriting it.
+- [x] Task 4: Capture and validate the read-only Mission Control packet snapshot.
+- [x] Task 5: Build a hash-bound current-focus snapshot.
+- [x] Task 6: Build voice gold only from exact final LinkedIn text.
+- [x] Task 7: Select Program 0 evaluation fixtures without generating posts.
+- [x] Task 8: Encode source-family policy and retire conflicting legacy voice rules.
   - [x] Add the closed, hash-bound source-family policy and retirement inventory builders with TDD coverage.
   - [x] Model AI-event evidence as one proven router, JT-supplied, or approved-primary source branch plus a bound JT artifact; bind each retirement to its actual historical owner surfaces.
   - [x] Fail closed on noncanonical, forged, unknown, empty, extra-field, or prohibited source-family evidence records; make the v1 internal-machinery prohibition absolute in content rules.
   - [x] Retire fixed-day, fixed-format, and quota authority in `docs/agents/content-rules.md` and `memory/content-voice.md`.
   - [x] Apply governed Wednesday-skill repair through owner-authorized Skill Workshop proposal `wednesday-linkedin-20260928-029c4a76c9`; commit `857d06d` carries the reconciled skill in this worktree.
 - [x] Task 9: Locally prove the single deduplicated check-in contract.
-- [ ] Task 10: Add one local CLI and generate Program 0 artifacts.
+- [x] Task 10: Add one local CLI and generate Program 0 artifacts.
   - [x] Add the closed local CLI, authority-consumption receipts, process/network guards, and boundary proof primitives with TDD coverage.
   - [x] Harden phase-separated immutable evidence paths, lazy Task 7B dispatch, canonical manifest/receipt/order validation, exact boundary-context pairing, alias/symlink refusal, status-aware checkout fingerprinting, and evidence-derived reporting.
-  - [ ] Run the final phase-2 integration matrix against the real recovery module after Task 7B receives JT's governed response; pre-gate dispatch intentionally fails closed while that module is absent.
+  - [x] Run the final phase-2 integration matrix against the real recovery module after Task 7B receives JT's governed response; 232/232 tests, compilation, diff hygiene, and the real verifier passed.
   - [x] Generate phase-1 audit, focus, corpus, receipt, and four-fixture artifacts after repairing three real CLI integration seams under RED/GREEN.
   - [x] Capture one fresh phase-1 before/after boundary pair after authorization; all governed fields, including the primary-checkout fingerprint, matched exactly.
   - [x] Run the pre-human-gate 199-test matrix without the intentionally absent Task 7B recovery module; compilation and diff checks must pass.
-  - [ ] Stop at Task 7A and wait for JT's complete bound human-gate response before phase 2.
+  - [x] Stop at Task 7A, ingest JT's complete bound human-gate response, and close Task 7B with a clean authorized replacement phase-2 boundary pair.
 
 Hard stop: No external network, Mission Control write, deployment, cron, provider call, asset generation, or publication. Exactly four read-only loopback task snapshots are allowed: one before/after pair around each side of the human gate.
 

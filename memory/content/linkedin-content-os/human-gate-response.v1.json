@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "linkedin-human-gate-response.v1",
+  "recoveryRequestSha256": "ba958e65da109263980b23e5c3002e6b1c4fedd1a5530a9c7f3b3de541b75022",
+  "focusSnapshotSha256": "ff590861e1d0acaa93712e766dcb138515e869fa44dbd10bf86a92781a4b1831",
+  "fixtureGapSha256": "056475ee5cc279115dc51d2dbc2766abe6e1d8d25f453cacb19b0a03ed108d44",
+  "focusDecision": {
+    "decision": "confirmed"
+  },
+  "historyAnswers": [
+    {"legacyRowSha256": "fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf", "answer": "still_unknown"},
+    {"legacyRowSha256": "21362148f7376f4a8ec56e927a901944805a1cea9edee5b0a9180573de7a3e01", "answer": "still_unknown"},
+    {"legacyRowSha256": "cad64611fbca9e999703d4893893d37ef73b1fddf6a8495a6f4ee8ccfbf91965", "answer": "still_unknown"},
+    {"legacyRowSha256": "58339c0a54aa97d8ca16ea03cfb5e52e65a778f0058baab7e61d5e1faa32bd3c", "answer": "still_unknown"},
+    {"legacyRowSha256": "10d4e1dfc9711843d5c180a3ea7f057211a84092a1d280596905a6b918f358af", "answer": "still_unknown"},
+    {"legacyRowSha256": "a382e97cc7d5a41da3a35ea3408818bb40f65234d0d2c9f44460cdfa073701c5", "answer": "still_unknown"},
+    {"legacyRowSha256": "27e030660c8476a71084208109dd92369c98a5d56eedaf00a3e6c158ded5190c", "answer": "still_unknown"},
+    {"legacyRowSha256": "2003b001e991194986a4243869cb565a478bdff633be695ac09836ca741b1807", "answer": "still_unknown"},
+    {"legacyRowSha256": "6b417053d38c6c17b8072227a7d6fe8aaccf9cb4d20d090516a599b53bef9ef8", "answer": "still_unknown"},
+    {"legacyRowSha256": "3201e0152fefef440cd134ef168aaf18fee0b5e0c2d97f938baa341663848da6", "answer": "still_unknown"},
+    {"legacyRowSha256": "7da82a74826baacddf07bf1632e7bddce346f96ec0248069414b6f24427d3a2c", "answer": "still_unknown"},
+    {"legacyRowSha256": "ea557c794c3f4bc9ae5de8bd6a2a21f539b47d97f23272ee5d739594925b11f6", "answer": "still_unknown"},
+    {"legacyRowSha256": "02e88618bf50a34c847aef2b02b0213c66c2cfda11eed94f479c7bc02a87ee2b", "answer": "still_unknown"},
+    {"legacyRowSha256": "f5a95e0134793f0ec6ff592502e861724202bd00a332314de44b21aaa56ed793", "answer": "still_unknown"},
+    {"legacyRowSha256": "287218e8e5c3ac0c3210a086f5fe8e807e3dc71b348f69afaa8b56150ed03a0d", "answer": "still_unknown"},
+    {"legacyRowSha256": "33f3ae9cb3a3a63c4e79bd5a8b960782e9a4d95b73fa8ff5bed4a591644595ce", "answer": "still_unknown"},
+    {"legacyRowSha256": "65c3439c1917c2a07d0b361c32bee4f9901111d395cc1b66d3aa28e97883a06c", "answer": "still_unknown"},
+    {"legacyRowSha256": "6c49228af02383216586ecad81a17c189e670ca81775d011a6541030b6263044", "answer": "still_unknown"},
+    {"legacyRowSha256": "cb8a025b411d15efdbe0bdcd00b7d92c19ff37c50ff2efdd79cdcad13abab29a", "answer": "still_unknown"},
+    {"legacyRowSha256": "45724801dc3856d01419703b06d9bd11210eabff98a777a8171191900180354e", "answer": "still_unknown"},
+    {"legacyRowSha256": "e4be2094c57e8dfb14179b123aa4522c6bf4827fc34732bf3007aa3bd1ee2c7a", "answer": "still_unknown"},
+    {"legacyRowSha256": "a3bb4020e7a11c3990c8a1e7b3da5dd8a189af0889790ceb6f76494ba703ad81", "answer": "still_unknown"},
+    {"legacyRowSha256": "5152862c1f1dffdf9e97de5ba2a65511b7a0edc0f6d2bb4dd60e4f3969afa95b", "answer": "still_unknown"}
+  ],
+  "permissionedFixture": {
+    "proofId": "cohort-two-coi-proof-v1",
+    "gitDir": "/Users/jtsomwaru/.openclaw/workspace/.worktrees/jt-ops-gate-attestation/.git/worktrees/jt-ops-proof-asset",
+    "commit": "33de8d1949c80a499bb3053b7a8aa9dbaf6a9b4b",
+    "path": "evidence/cohort-two.permissioned-proof.json",
+    "contentSha256": "937329a609d57692aa85961666e7d4827e7eeabeb41102f187682ae48452823c",
+    "permissionEvidenceRef": "/permission",
+    "permissionEvidenceSha256": "52e69a315fc02e59597632b8af509eedad2579d76d24505c1ec88d3c304cfe1f",
+    "permissionStatus": "approved-anonymized"
+  },
+  "confirmedAt": "2026-09-28T17:29:32-04:00"
+}
