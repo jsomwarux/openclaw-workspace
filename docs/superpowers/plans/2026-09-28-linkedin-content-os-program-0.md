@@ -64,6 +64,9 @@
 - `memory/content/linkedin-content-os/human-gate-response.v1.json`
 - `memory/content/linkedin-content-os/outcomes.v1.jsonl`
 - `memory/content/linkedin-content-os/corpus-authority-manifest.v1.json`
+- `memory/content/linkedin-content-os/authority-consumption.phase-1-corpus.v1.json`
+- `memory/content/linkedin-content-os/authority-consumption.phase-2-audit.v1.json`
+- `memory/content/linkedin-content-os/authority-consumption.phase-2-corpus.v1.json`
 - `memory/content/linkedin-content-os/source-policy.v1.json`
 - `memory/content/linkedin-content-os/voice-rule-retirements.v1.json`
 - `memory/content/linkedin-content-os/voice-gold.v0.jsonl`
@@ -103,7 +106,7 @@
 | Treat legacy `posted:false` as unknown | Tasks 2–3 | Contract + audit tests and status counts |
 | Recover possible posts, URLs, and final text | Tasks 3, 7A, 7B, 10 | Bounded recovery request; typed answer ingestion; rebuilt audit/corpus |
 | Build exact voice gold and contrastive pairs | Task 6 | Exact-text/hash-only corpus tests and counts |
-| Keep corpus authority independently anchored | Tasks 3, 6, 7B, 10 + verifier | Phase-2 authority context digest equals canonical manifest hash and the exact digest consumed by audit and both corpus builders |
+| Keep corpus authority independently anchored | Tasks 3, 6, 7B, 10 + verifier | Three closed authority-consumption receipts prove the phase-2 context digest equals the canonical manifest hash and exact digest consumed by audit and both corpus builders; phase 1 proves fixed-empty authority |
 | Classify allowed/prohibited source families | Task 8 | Versioned source policy and owner bindings |
 | Encode quality/fit diagnosis | Tasks 2, 8, 10 | Closed decline reason, retirement artifact, final report |
 | Build positive/negative evaluation evidence | Tasks 7, 7A, 7B | Exact Git/path/SHA-256-bound candidates; permission gap blocks closure |
@@ -658,6 +661,8 @@ verify
 
 `init-run --generated-at now` captures one timestamp into `run-context.v1.json` and atomically creates an empty `outcomes.v1.jsonl` when absent; an existing ledger is preserved byte-for-byte. Every other artifact command requires that context and never calls the clock. All commands emit JSON to stdout. Each `capture-boundaries` invocation permits one exact read-only loopback GET. All other subcommands run under a socket deny guard and refuse external network or write-capable Mission Control URLs.
 
+The CLI tests require each authority-consuming command to atomically emit one closed `linkedin-authority-consumption-receipt.v1` object with exactly: `schemaVersion`, closed `command`, `runContextSha256`, `expectedManifestSha256`, `canonicalManifestSha256`, `inputs`, `outputs`, `generatedAt`, and `receiptSha256`. `command` is exactly `audit-history` or `build-corpus`. `inputs` and `outputs` are sorted, duplicate-free lists of closed `{role,path,sha256}` objects; paths are normalized workspace-relative paths and hashes bind the exact bytes consumed or emitted. Closed binding sets are phase-1 corpus inputs `audit,outcomes,run_context` and outputs `voice_gold,contrastive_pairs`; phase-2 audit inputs `posted_log,outcomes,authority_manifest,run_context` and outputs `historical_audit,recovery_request`; phase-2 corpus inputs `audit,outcomes,run_context` and outputs `voice_gold,contrastive_pairs`. The receipt file itself is excluded from `outputs` to avoid a circular hash. `expectedManifestSha256` is JSON `null` only for phase-1 `build-corpus` with the fixed-empty manifest and otherwise is a 64-character lowercase SHA-256. `generatedAt` must equal the supplied run context. `receiptSha256` is SHA-256 over canonical receipt bytes with only `receiptSha256` omitted. The phase-2 corpus receipt therefore separately identifies the gold and pairs outputs. Tests prove deterministic creation and reject unknown fields, reordered/duplicate bindings, wrong commands or binding roles, noncanonical paths, null phase-2 authority, receipt-hash tampering, and any bound input/output byte change.
+
 - [ ] **Step 2: Verify RED**
 
 Run: `python3 -m unittest scripts.tests.test_linkedin_content_os_cli -v`
@@ -692,7 +697,8 @@ python3 -m scripts.linkedin_content_os.cli build-corpus \
   --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
   --run-context memory/content/linkedin-content-os/run-context.v1.json \
   --gold-output memory/content/linkedin-content-os/voice-gold.v0.jsonl \
-  --pairs-output memory/content/linkedin-content-os/contrastive-pairs.v0.jsonl
+  --pairs-output memory/content/linkedin-content-os/contrastive-pairs.v0.jsonl \
+  --receipt-output memory/content/linkedin-content-os/authority-consumption.phase-1-corpus.v1.json
 python3 -m scripts.linkedin_content_os.cli build-fixtures \
   --decagon-packet mission-control/lib/mission-control/fixtures/jobs/decagon-agent-development-manager.packet.json \
   --jt-ops-git-dir /Users/jtsomwaru/.openclaw/workspace/.worktrees/jt-ops-proof-asset/.git \
@@ -734,7 +740,8 @@ python3 -m scripts.linkedin_content_os.cli audit-history \
   --corpus-authority-manifest memory/content/linkedin-content-os/corpus-authority-manifest.v1.json \
   --run-context memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json \
   --output memory/content/linkedin-content-os/historical-audit.v1.json \
-  --recovery-output memory/content/linkedin-content-os/historical-recovery-request.v1.json
+  --recovery-output memory/content/linkedin-content-os/historical-recovery-request.v1.json \
+  --receipt-output memory/content/linkedin-content-os/authority-consumption.phase-2-audit.v1.json
 python3 -m scripts.linkedin_content_os.cli build-focus \
   --workspace-root . \
   --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
@@ -745,7 +752,8 @@ python3 -m scripts.linkedin_content_os.cli build-corpus \
   --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
   --run-context memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json \
   --gold-output memory/content/linkedin-content-os/voice-gold.v0.jsonl \
-  --pairs-output memory/content/linkedin-content-os/contrastive-pairs.v0.jsonl
+  --pairs-output memory/content/linkedin-content-os/contrastive-pairs.v0.jsonl \
+  --receipt-output memory/content/linkedin-content-os/authority-consumption.phase-2-corpus.v1.json
 python3 -m scripts.linkedin_content_os.cli build-fixtures \
   --decagon-packet mission-control/lib/mission-control/fixtures/jobs/decagon-agent-development-manager.packet.json \
   --human-gate-response memory/content/linkedin-content-os/human-gate-response.v1.json \
@@ -769,6 +777,9 @@ python3 -m scripts.linkedin_content_os.cli verify \
   --workspace-root . \
   --run-context memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json \
   --corpus-authority-manifest memory/content/linkedin-content-os/corpus-authority-manifest.v1.json \
+  --phase-1-corpus-receipt memory/content/linkedin-content-os/authority-consumption.phase-1-corpus.v1.json \
+  --phase-2-audit-receipt memory/content/linkedin-content-os/authority-consumption.phase-2-audit.v1.json \
+  --phase-2-corpus-receipt memory/content/linkedin-content-os/authority-consumption.phase-2-corpus.v1.json \
   --phase-1-before memory/content/linkedin-content-os/boundaries.phase-1.before.v1.json \
   --phase-1-after memory/content/linkedin-content-os/boundaries.phase-1.after.v1.json \
   --phase-2-before memory/content/linkedin-content-os/boundaries.phase-2.before.v1.json \
@@ -789,7 +800,7 @@ Preserve before/after SHA-256 values for every legacy input. Generate the report
 - human-gate resolution status; the final report must show zero unanswered bounded recovery rows, confirmed focus, and one permissioned positive fixture or refuse completion;
 - explicit statement that no live or external action occurred.
 
-The phase-2 CLI and final verifier must fail closed unless `run-context.phase-2-authority.v1.json.corpusAuthorityManifestSha256` equals the canonical `manifestSha256` recomputed from `corpus-authority-manifest.v1.json` and equals the exact `expected_manifest_sha256` supplied to the phase-2 audit, `build_voice_gold`, and `build_contrastive_pairs` calls. No command may derive that expected digest from the audit, manifest, receipts, or outcome ledger during corpus construction. The final report records the authority-context digest and recomputed canonical manifest hash as separate named fields plus the audit/gold/pairs consumption receipts that prove all four values are identical.
+The phase-2 CLI and final verifier must fail closed unless `run-context.phase-2-authority.v1.json.corpusAuthorityManifestSha256` equals the canonical `manifestSha256` recomputed from `corpus-authority-manifest.v1.json` and equals the exact `expected_manifest_sha256` recorded by the phase-2 audit and corpus authority-consumption receipts. The verifier recomputes every receipt hash plus every bound input/output hash; the phase-2 corpus receipt's one expected digest covers the exact value passed independently to both `build_voice_gold` and `build_contrastive_pairs`. No command may derive that expected digest from the audit, manifest, receipts, or outcome ledger during corpus construction. The final report names all three receipt paths and file hashes, records the authority-context digest and recomputed canonical manifest hash as separate fields, and reports the audit/gold/pairs consumption bindings that prove all values are identical.
 
 - [ ] **Step 4: Run the complete Program 0 verification matrix**
 
@@ -845,5 +856,6 @@ After Task 10, a fresh verifier must inspect the exact implementation commit and
 7. no live Mission Control task, deployment, schedule, provider call, asset, or publication occurred;
 8. all tests and diff checks pass from a clean checkout.
 9. the phase-2 authority-context digest, recomputed canonical corpus-manifest hash, and exact expected digest consumed by the audit and both corpus builders are identical and independently traceable.
+10. all three authority-consumption receipts are closed, canonically hashed, and byte-bind every declared input/output; the phase-1 receipt proves fixed-empty authority and the phase-2 receipts reject any tamper or digest drift.
 
-The verifier writes `memory/job-state/claims/linkedin-content-os-program-0-<implementation-commit>.md` with: implementation commit, inspected artifact hashes, every verification command and exit code, all four phase-boundary hashes, the separately named authority-context manifest digest and recomputed canonical manifest hash, the phase-2 audit/gold/pairs consumption-receipt hashes, findings, and an exact final verdict line `VERDICT: CONFIRM` or `VERDICT: REJECT`. Only `CONFIRM` closes Program 0. Program 1 planning then remains a separate gate for templates and the governed Mission Control delivery/check-in rail.
+The verifier writes `memory/job-state/claims/linkedin-content-os-program-0-<implementation-commit>.md` with: implementation commit, inspected artifact hashes, every verification command and exit code, all four phase-boundary hashes, the separately named authority-context manifest digest and recomputed canonical manifest hash, and a claim hash list containing each authority-consumption receipt path, exact file SHA-256, recomputed `receiptSha256`, and verified input/output binding hashes. Findings end with an exact final verdict line `VERDICT: CONFIRM` or `VERDICT: REJECT`. Only `CONFIRM` closes Program 0. Program 1 planning then remains a separate gate for templates and the governed Mission Control delivery/check-in rail.
