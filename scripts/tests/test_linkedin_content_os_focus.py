@@ -544,6 +544,60 @@ class FocusSnapshotTests(unittest.TestCase):
                 original_proposed_snapshot=other,
             )
 
+    def test_confirmed_and_corrected_snapshots_cannot_shift_original_window(self) -> None:
+        proposed = self.build()
+        cases = []
+
+        confirmed_event = _event(proposed)
+        confirmed_receipt = _receipt(proposed, confirmed_event)
+        confirmed = apply_focus_decision(
+            proposed, confirmed_event, self.root,
+            authority_receipt=confirmed_receipt,
+            expected_authority_receipt_sha256=confirmed_receipt["receiptSha256"],
+        )
+        cases.append((confirmed, confirmed_event, confirmed_receipt))
+
+        product_path = "memory/pipeline.jsonl"
+        product_file = self.root / product_path
+        product_file.parent.mkdir(parents=True, exist_ok=True)
+        product_file.write_text('{"lane":"product"}\n', encoding="utf-8")
+        replacement = [_target(
+            product_path, sha256_hex(product_file.read_bytes()),
+            target_id="product-distribution",
+        )]
+        replacement[0]["kind"] = "product"
+        replacement_proposed = self.build(targets=replacement)
+        replacement_hash = replacement_proposed["snapshotId"].removeprefix("sha256:")
+        corrected_event = _event(
+            proposed, decision="corrected", replacement_hash=replacement_hash
+        )
+        corrected_receipt = _receipt(
+            proposed, corrected_event, decision="corrected",
+            corrected_targets=replacement, replacement_hash=replacement_hash,
+        )
+        corrected = apply_focus_decision(
+            proposed, corrected_event, self.root,
+            authority_receipt=corrected_receipt,
+            expected_authority_receipt_sha256=corrected_receipt["receiptSha256"],
+        )
+        cases.append((corrected, corrected_event, corrected_receipt))
+
+        for snapshot, event, receipt in cases:
+            shifted = copy.deepcopy(snapshot)
+            shifted["generatedAt"] = "2026-09-28T12:01:00-04:00"
+            shifted["validUntil"] = "2026-10-28T12:01:00-04:00"
+            shifted["snapshotId"] = "sha256:" + sha256_hex(canonical_bytes(
+                {key: value for key, value in shifted.items() if key != "snapshotId"}
+            ))
+            with self.subTest(decision=receipt["focusDecision"]["decision"]):
+                with self.assertRaisesRegex(ValueError, "window.*original proposed"):
+                    validate_focus_snapshot(
+                        shifted, self.root, focus_decision=event,
+                        authority_receipt=receipt,
+                        expected_authority_receipt_sha256=receipt["receiptSha256"],
+                        original_proposed_snapshot=proposed,
+                    )
+
     def test_renewal_need_fully_validates_snapshot(self) -> None:
         forged = self.build()
         forged["targets"][0]["label"] = "tampered"

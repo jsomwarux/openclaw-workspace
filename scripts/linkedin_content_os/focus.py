@@ -455,6 +455,11 @@ def _validate_focus_snapshot(
         original_hash = str(original["snapshotId"])[len("sha256:"):]
         if binding["originalProposalSha256"] != original_hash:
             raise ValueError("decisionBinding does not match original proposed snapshot")
+        if (snapshot["generatedAt"] != original["generatedAt"]
+                or snapshot["validUntil"] != original["validUntil"]):
+            raise ValueError(
+                "confirmed snapshot window does not match original proposed snapshot"
+            )
         event, receipt_hash, corrected_targets, replacement_hash = _validate_authority(
             focus_decision, authority_receipt, expected_authority_receipt_sha256,
             original_hash, Path(workspace_root),
