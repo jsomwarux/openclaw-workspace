@@ -1223,6 +1223,48 @@ class VerificationIntegrationTests(unittest.TestCase):
             sha256_hex(first_snapshot),
         )
 
+    def test_verify_does_not_reresolve_retargeted_boundary_symlink(self) -> None:
+        paths = self._proof_tree()
+        original_path = paths["b1"]
+        original_bytes = original_path.read_bytes()
+        alternate_path = self.artifacts / "boundary-alternate.json"
+        alternate_path.write_text(
+            json.dumps(json.loads(original_bytes), indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        link_path = self.artifacts / "boundary-logical-input.json"
+        link_path.symlink_to(original_path)
+        paths["b1"] = link_path
+        validation_calls = 0
+
+        def validate_and_retarget(value: object) -> dict[str, object]:
+            nonlocal validation_calls
+            validated = validate_boundary_artifact(value)
+            validation_calls += 1
+            if validation_calls == 1:
+                link_path.unlink()
+                link_path.symlink_to(alternate_path)
+            return validated
+
+        with mock.patch(
+            "scripts.linkedin_content_os.cli.validate_boundary_artifact",
+            side_effect=validate_and_retarget,
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_voice_gold", return_value=[]
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+        ):
+            report = main(self._verify_argv(paths))
+        self.assertEqual(
+            report["boundaryProof"][0]["beforeFileSha256"],
+            sha256_hex(original_bytes),
+        )
+        self.assertEqual(
+            report["boundaryProof"][0]["beforePath"],
+            "memory/content/linkedin-content-os/boundaries.phase-1-before.json",
+        )
+        self.assertNotEqual(original_bytes, alternate_path.read_bytes())
+
     def test_verify_reads_authority_context_as_one_exact_byte_snapshot(self) -> None:
         paths = self._proof_tree()
         context_path = paths["authority"]

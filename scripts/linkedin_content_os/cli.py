@@ -128,12 +128,23 @@ class _VerifierSnapshots:
 
     def __init__(self) -> None:
         self._payloads: Dict[Path, bytes] = {}
+        self._targets: Dict[Path, Path] = {}
 
     def _path(self, path: Path) -> Path:
+        logical = Path(os.path.abspath(os.fspath(Path(path))))
+        if logical in self._targets:
+            return self._targets[logical]
         try:
-            return Path(path).resolve(strict=True)
-        except OSError as error:
+            target = logical.resolve(strict=True)
+        except (OSError, RuntimeError) as error:
             raise ValueError("verifier input is unavailable: {}".format(path)) from error
+        self._targets[logical] = target
+        return target
+
+    def resolved(self, path: Path) -> Path:
+        """Return the immutable first resolution for one logical verifier input."""
+
+        return self._path(path)
 
     def bytes(self, path: Path) -> bytes:
         canonical = self._path(path)
@@ -950,7 +961,7 @@ def _validate_receipt_snapshot_bindings(
         assert isinstance(binding, dict)
         unresolved = root / str(binding["path"])
         try:
-            path = unresolved.resolve(strict=True)
+            path = snapshots.resolved(unresolved)
             path.relative_to(root)
         except (OSError, ValueError) as error:
             raise ValueError(
@@ -961,10 +972,19 @@ def _validate_receipt_snapshot_bindings(
     run_binding = next(
         item for item in receipt["inputs"] if item["role"] == "run_context"
     )
-    run_path = (root / str(run_binding["path"])).resolve(strict=True)
+    run_path = snapshots.resolved(root / str(run_binding["path"]))
     run_context = snapshots.json(run_path)
     if run_context.get("generatedAt") != receipt["generatedAt"]:
         raise ValueError("receipt generatedAt differs from bound run context")
+
+
+def _verifier_relative(target: Path, root: Path) -> str:
+    """Render an already-bound target without consulting the filesystem again."""
+
+    try:
+        return target.relative_to(root).as_posix()
+    except ValueError as error:
+        raise ValueError("artifact path must stay under workspace root") from error
 
 
 def _verify(args: argparse.Namespace) -> Dict[str, object]:
@@ -999,7 +1019,11 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         _validate_receipt_snapshot_bindings(
             receipt, root=root, snapshots=snapshots
         )
-        receipts.append({"path": _relative(path, root), "sha256": snapshots.sha256(path), "receipt": receipt})
+        receipts.append({
+            "path": _verifier_relative(snapshots.resolved(path), root),
+            "sha256": snapshots.sha256(path),
+            "receipt": receipt,
+        })
     receipt_commands = [item["receipt"]["command"] for item in receipts]
     if receipt_commands != ["build-corpus", "audit-history", "build-corpus"]:
         raise ValueError("authority consumption receipts are not in the required phase order")
@@ -1016,9 +1040,9 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         item["role"]: item for item in receipts[1]["receipt"]["inputs"]
     }
     manifest_binding = phase2_audit_inputs["authority_manifest"]
-    manifest_path = Path(args.corpus_authority_manifest).resolve(strict=True)
+    manifest_path = snapshots.resolved(Path(args.corpus_authority_manifest))
     if (
-        (root / str(manifest_binding["path"])).resolve(strict=True) != manifest_path
+        snapshots.resolved(root / str(manifest_binding["path"])) != manifest_path
         or manifest_binding["sha256"] != snapshots.sha256(manifest_path)
     ):
         raise ValueError("phase-2 audit receipt is not bound to the supplied authority manifest")
@@ -1052,11 +1076,11 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             (receipts[receipt_index]["receipt"]["outputs"], expected_outputs),
         ):
             observed = {
-                item["role"]: (root / str(item["path"])).resolve(strict=True)
+                item["role"]: snapshots.resolved(root / str(item["path"]))
                 for item in collection
             }
             canonical_expected = {
-                role: path.resolve(strict=True) for role, path in expected_paths.items()
+                role: snapshots.resolved(path) for role, path in expected_paths.items()
             }
             if observed != canonical_expected:
                 raise ValueError("phase-2 receipt paths do not match canonical artifacts")
@@ -1065,13 +1089,13 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     phase1_run_binding = next(
         item for item in phase1_receipt["inputs"] if item["role"] == "run_context"
     )
-    phase1_context_path = (root / str(phase1_run_binding["path"])).resolve(strict=True)
+    phase1_context_path = snapshots.resolved(root / str(phase1_run_binding["path"]))
     phase1_context = _validate_run_context(snapshots.json(phase1_context_path))
     phase1_audit_binding = next(
         item for item in phase1_receipt["inputs"] if item["role"] == "audit"
     )
     phase1_audit = snapshots.json(
-        (root / str(phase1_audit_binding["path"])).resolve(strict=True)
+        snapshots.resolved(root / str(phase1_audit_binding["path"]))
     )
     phase1_manifest = phase1_audit.get("corpusAuthorityManifest")
     if not isinstance(phase1_manifest, dict):
@@ -1125,8 +1149,12 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             if before.get(key) != after.get(key):
                 raise ValueError("boundary changed for {}".format(key))
         equality_rows.append({
-            "beforePath": _relative(boundary_paths[pair_index * 2], root),
-            "afterPath": _relative(boundary_paths[pair_index * 2 + 1], root),
+            "beforePath": _verifier_relative(
+                snapshots.resolved(boundary_paths[pair_index * 2]), root
+            ),
+            "afterPath": _verifier_relative(
+                snapshots.resolved(boundary_paths[pair_index * 2 + 1]), root
+            ),
             "beforeFileSha256": snapshots.sha256(
                 boundary_paths[pair_index * 2]
             ),
