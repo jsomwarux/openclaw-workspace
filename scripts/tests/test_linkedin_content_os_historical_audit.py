@@ -493,6 +493,7 @@ class HistoricalAuditTests(unittest.TestCase):
                 expected_manifest_sha256=manifest["manifestSha256"],
             )
             self.assertEqual(audit["corpusAuthorityManifest"], manifest)
+            self.assertEqual(audit["recoveryRequest"]["items"], [])
 
             with self.assertRaisesRegex(ValueError, "expected_manifest_sha256"):
                 audit_legacy_rows(

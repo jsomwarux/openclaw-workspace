@@ -1091,6 +1091,29 @@ class VerificationIntegrationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "phase order"):
             main(swapped)
 
+    def test_verify_rebuilds_corpus_with_correct_builder_argument_order(self) -> None:
+        paths = self._proof_tree()
+        def rebuild_gold(
+            audit: object,
+            events: object,
+            *,
+            expected_manifest_sha256: object,
+        ) -> list[dict[str, object]]:
+            self.assertIsInstance(audit, dict)
+            self.assertIsInstance(events, list)
+            self.assertIsNotNone(expected_manifest_sha256)
+            return []
+
+        with mock.patch(
+            "scripts.linkedin_content_os.cli.build_voice_gold",
+            side_effect=rebuild_gold,
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+        ):
+            report = main(self._verify_argv(paths))
+
+        self.assertTrue(report["boundaryPairsEqual"])
+
     def test_verify_rejects_boundary_from_wrong_phase_context(self) -> None:
         paths = self._proof_tree()
         boundary = _read_json(paths["a2"])

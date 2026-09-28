@@ -273,6 +273,7 @@ def expected_recovery_items(
 
     candidates: list[tuple[bool, str, str, dict[str, object]]] = []
     for record in records:
+        row_hash = str(record["legacyRowSha256"])
         raw_posted = record.get("rawPosted")
         if not isinstance(raw_posted, bool):
             raise ValueError("audit record rawPosted must be boolean")
@@ -286,7 +287,7 @@ def expected_recovery_items(
                 (
                     required,
                     str(record["date"]),
-                    str(record["legacyRowSha256"]),
+                    row_hash,
                     record,
                 )
             )
@@ -396,7 +397,6 @@ def audit_legacy_rows(
     ]
     status_counts = Counter(str(record["status"]) for record in records)
 
-    recovery_items = expected_recovery_items(records)
     source_sha256 = sha256_hex(source_before)
     run_id = corpus_run_id(source_sha256, generated_at)
     manifest = (
@@ -411,6 +411,8 @@ def audit_legacy_rows(
         expected_manifest_sha256=expected_manifest_sha256,
     )
     zero = "0" * 64
+    human_gate_bounded = manifest["humanGateAuthorityReceiptSha256"] != zero
+    recovery_items = [] if human_gate_bounded else expected_recovery_items(records)
     if (
         manifest["receiptSha256Allowlist"] == []
         and manifest["humanGateAuthorityReceiptSha256"] != zero

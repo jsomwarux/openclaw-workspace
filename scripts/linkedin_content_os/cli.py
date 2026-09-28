@@ -1211,7 +1211,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         raise ValueError(
             "evaluation fixture artifact does not match canonical authority derivation"
         )
-    derived_gold = build_voice_gold(events, audit, expected_manifest_sha256=expected)
+    derived_gold = build_voice_gold(audit, events, expected_manifest_sha256=expected)
     derived_pairs = build_contrastive_pairs(events, audit, expected_manifest_sha256=expected)
     if canonical_bytes(gold) != canonical_bytes(derived_gold):
         raise ValueError("voice-gold artifact does not match canonical derivation")

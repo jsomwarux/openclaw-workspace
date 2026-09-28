@@ -69,6 +69,7 @@ def _audit(
             missing_counts[str(field)] = missing_counts.get(str(field), 0) + 1
         row_hash = str(record["legacyRowSha256"])
         row_counts[row_hash] = row_counts.get(row_hash, 0) + 1
+    manifest = _manifest(events)
     return {
         "schemaVersion": "linkedin-historical-audit.v1",
         "generatedAt": _GENERATED_AT,
@@ -81,12 +82,16 @@ def _audit(
             if count > 1
         ],
         "records": list(records),
-        "corpusAuthorityManifest": _manifest(events),
+        "corpusAuthorityManifest": manifest,
         "recoveryRequest": {
             "schemaVersion": "linkedin-historical-recovery-request.v1",
             "generatedAt": "2026-09-28T12:00:00-04:00",
             "sourceSha256": "a" * 64,
-            "items": expected_recovery_items(list(records)),
+            "items": (
+                []
+                if manifest["humanGateAuthorityReceiptSha256"] != "0" * 64
+                else expected_recovery_items(list(records))
+            ),
         },
     }
 
@@ -792,6 +797,36 @@ class VoiceGoldTests(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "eventSha256"):
             _build_pairs([malformed_event])
+
+    def test_human_gate_manifest_closes_the_original_bounded_recovery_queue(self) -> None:
+        row_hash = "a" * 64
+        event = _event(
+            "history-unknown-001",
+            "legacy:{}".format(row_hash),
+            "historical_status",
+            {"legacyRowSha256": row_hash, "status": "status_unknown"},
+        )
+        audit = _audit(_record(row_hash, "status_unknown"))
+        manifest = {
+            "schemaVersion": "linkedin-corpus-authority-manifest.v1",
+            "runId": _RUN_ID,
+            "validatedAt": _GENERATED_AT,
+            "receiptSha256Allowlist": [],
+            "humanGateAuthorityReceiptSha256": "c" * 64,
+            "ledgerPrefixSha256": sha256_hex(canonical_bytes(event) + b"\n"),
+            "ledgerPosition": 1,
+        }
+        manifest["manifestSha256"] = sha256_hex(canonical_bytes(manifest))
+        audit["corpusAuthorityManifest"] = manifest
+        audit["recoveryRequest"]["items"] = []
+
+        rows = build_voice_gold(
+            audit,
+            [event],
+            expected_manifest_sha256=str(manifest["manifestSha256"]),
+        )
+
+        self.assertEqual(rows[-1]["blockingGapCount"], 0)
 
     def test_correction_excludes_superseded_publication_evidence(self) -> None:
         row_hash = "c" * 64

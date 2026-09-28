@@ -213,9 +213,6 @@ def _validate_audit(
         answers = item["allowedAnswers"]
         if answers != _ALLOWED_RECOVERY_ANSWERS:
             raise ValueError("audit.recoveryRequest allowedAnswers are not closed")
-    expected_items = expected_recovery_items(records_value)
-    if recovery_items != expected_items:
-        raise ValueError("audit.recoveryRequest is not complete for corpus consumption")
     expected_run_id = corpus_run_id(
         str(audit["sourceSha256"]), str(audit["generatedAt"])
     )
@@ -225,6 +222,10 @@ def _validate_audit(
         generated_at=str(audit["generatedAt"]),
         expected_manifest_sha256=expected_manifest_sha256,
     )
+    human_gate_bounded = manifest["humanGateAuthorityReceiptSha256"] != "0" * 64
+    expected_items = [] if human_gate_bounded else expected_recovery_items(records_value)
+    if recovery_items != expected_items:
+        raise ValueError("audit.recoveryRequest is not complete for corpus consumption")
     return audit, statuses_by_hash, manifest
 
 
