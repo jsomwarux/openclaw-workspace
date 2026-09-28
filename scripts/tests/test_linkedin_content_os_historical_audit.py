@@ -377,6 +377,91 @@ class HistoricalAuditTests(unittest.TestCase):
                 expected_manifest_sha256=wrong_run["manifestSha256"],
             )
 
+    def test_empty_authority_allowlist_supports_closed_human_gate_provenance(self) -> None:
+        source_sha256 = sha256_hex(FIXTURE.read_bytes())
+        manifest = {
+            "schemaVersion": "linkedin-corpus-authority-manifest.v1",
+            "runId": corpus_run_id(source_sha256, GENERATED_AT),
+            "validatedAt": "2026-09-28T12:05:00-04:00",
+            "receiptSha256Allowlist": [],
+            "humanGateAuthorityReceiptSha256": "a" * 64,
+            "ledgerPrefixSha256": "b" * 64,
+            "ledgerPosition": 25,
+        }
+        manifest["manifestSha256"] = sha256_hex(canonical_bytes(manifest))
+        with tempfile.TemporaryDirectory() as directory:
+            outcomes = Path(directory) / "outcomes.jsonl"
+            unknown_events = [
+                _event(
+                    sha256_hex(canonical_bytes(row)),
+                    "status_unknown",
+                    event_id="history-unknown-{:03d}".format(index),
+                )
+                for index, row in enumerate(
+                    row for row in _fixture_rows()
+                    if str(row.get("platform", "")).lower() == "linkedin"
+                )
+            ]
+            outcomes.write_bytes(b"".join(
+                canonical_bytes(event) + b"\n" for event in unknown_events
+            ))
+            audit = audit_legacy_rows(
+                FIXTURE,
+                outcomes,
+                GENERATED_AT,
+                corpus_authority_manifest=manifest,
+                expected_manifest_sha256=manifest["manifestSha256"],
+            )
+            self.assertEqual(audit["corpusAuthorityManifest"], manifest)
+
+            with self.assertRaisesRegex(ValueError, "expected_manifest_sha256"):
+                audit_legacy_rows(
+                    FIXTURE,
+                    outcomes,
+                    GENERATED_AT,
+                    corpus_authority_manifest=manifest,
+                )
+
+            mixed_outcomes = Path(directory) / "mixed.jsonl"
+            mixed_events = list(unknown_events)
+            mixed_events[0] = _event(
+                str(mixed_events[0]["payload"]["legacyRowSha256"]),
+                "posted_confirmed",
+                event_id="history-posted-001",
+            )
+            mixed_outcomes.write_bytes(b"".join(
+                canonical_bytes(event) + b"\n" for event in mixed_events
+            ))
+            with self.assertRaisesRegex(ValueError, "all status_unknown"):
+                audit_legacy_rows(
+                    FIXTURE,
+                    mixed_outcomes,
+                    GENERATED_AT,
+                    corpus_authority_manifest=manifest,
+                    expected_manifest_sha256=manifest["manifestSha256"],
+                )
+
+        for field, value in (
+            ("humanGateAuthorityReceiptSha256", "0" * 64),
+            ("ledgerPrefixSha256", "0" * 64),
+            ("ledgerPosition", 0),
+        ):
+            mixed = dict(manifest)
+            mixed[field] = value
+            mixed["manifestSha256"] = sha256_hex(canonical_bytes({
+                key: item for key, item in mixed.items() if key != "manifestSha256"
+            }))
+            with self.subTest(field=field), self.assertRaisesRegex(
+                ValueError, "mixed|provenance"
+            ):
+                audit_legacy_rows(
+                    FIXTURE,
+                    None,
+                    GENERATED_AT,
+                    corpus_authority_manifest=mixed,
+                    expected_manifest_sha256=mixed["manifestSha256"],
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

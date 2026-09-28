@@ -179,13 +179,19 @@ def validate_corpus_authority_manifest(
     if not isinstance(position, int) or isinstance(position, bool) or position < 0:
         raise ValueError("corpusAuthorityManifest ledgerPosition must be non-negative")
     zero = "0" * 64
+    provenance_present = (
+        authority_hash != zero,
+        prefix_hash != zero,
+        position != 0,
+    )
     if checked_allowlist:
-        if authority_hash == zero or prefix_hash == zero or position == 0:
+        if not all(provenance_present):
             raise ValueError("populated corpusAuthorityManifest has empty provenance")
         if position < len(checked_allowlist):
             raise ValueError("corpusAuthorityManifest ledgerPosition is incomplete")
-    elif authority_hash != zero or prefix_hash != zero or position != 0:
-        raise ValueError("empty corpusAuthorityManifest has non-empty provenance")
+    elif any(provenance_present) and not all(provenance_present):
+        raise ValueError("empty authority allowlist has mixed human-gate provenance")
+    has_human_gate_provenance = all(provenance_present)
     provided_hash = _require_hash(
         manifest["manifestSha256"], "corpusAuthorityManifest.manifestSha256"
     )
@@ -194,7 +200,7 @@ def validate_corpus_authority_manifest(
     }
     if provided_hash != sha256_hex(canonical_bytes(unhashed)):
         raise ValueError("corpusAuthorityManifest manifestSha256 mismatch")
-    if checked_allowlist:
+    if checked_allowlist or has_human_gate_provenance:
         if expected_manifest_sha256 is None:
             raise ValueError(
                 "populated corpusAuthorityManifest requires expected_manifest_sha256"
@@ -372,6 +378,18 @@ def audit_legacy_rows(
         generated_at=generated_at,
         expected_manifest_sha256=expected_manifest_sha256,
     )
+    zero = "0" * 64
+    if (
+        manifest["receiptSha256Allowlist"] == []
+        and manifest["humanGateAuthorityReceiptSha256"] != zero
+    ):
+        if not governed or any(
+            status != "status_unknown" for status in governed.values()
+        ):
+            raise ValueError(
+                "empty authority allowlist requires all status_unknown "
+                "human-gate answers"
+            )
 
     return {
         "schemaVersion": "linkedin-historical-audit.v1",

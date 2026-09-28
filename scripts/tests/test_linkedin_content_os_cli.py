@@ -7,7 +7,6 @@ import socket
 import subprocess
 import sys
 import tempfile
-import types
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
@@ -181,16 +180,16 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 "--generated-at", GENERATED_AT, "--output", "fixtures.jsonl",
             ])
 
-    def test_phase_two_handlers_are_lazy_and_fail_closed_before_task_7b(self) -> None:
+    def test_phase_two_handlers_are_real_and_fail_closed_without_gate_artifacts(self) -> None:
         context = self.root / "run-context.json"
         ledger = self.root / "outcomes.jsonl"
         init_run(GENERATED_AT, ledger, context)
-        with self.assertRaisesRegex(RuntimeError, "Task 7B recovery module unavailable"):
+        with self.assertRaisesRegex(ValueError, "required artifact"):
             main([
                 "build-focus", "--workspace-root", str(self.root), "--outcomes", str(ledger),
                 "--run-context", str(context), "--output", str(self.root / "focus.json"),
             ])
-        with self.assertRaisesRegex(RuntimeError, "Task 7B recovery module unavailable"):
+        with self.assertRaisesRegex(ValueError, "required artifact"):
             main([
                 "build-fixtures", "--decagon-packet", "mission-control/lib/mission-control/fixtures/jobs/decagon-agent-development-manager.packet.json",
                 "--human-gate-response", str(self.root / "response.json"),
@@ -209,14 +208,16 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 return {"handler": name}
             return invoke
 
-        module = types.SimpleNamespace(
-            rebuild_focus_files=handler("focus"),
-            rebuild_fixtures_files=handler("fixtures"),
-            ingest_human_gate_files=handler("ingest"),
-        )
-        with mock.patch.dict(sys.modules, {"scripts.linkedin_content_os.recovery": module}), mock.patch(
-            "sys.stdout.write"
-        ):
+        with mock.patch(
+            "scripts.linkedin_content_os.recovery.rebuild_focus_files",
+            side_effect=handler("focus"),
+        ), mock.patch(
+            "scripts.linkedin_content_os.recovery.rebuild_fixtures_files",
+            side_effect=handler("fixtures"),
+        ), mock.patch(
+            "scripts.linkedin_content_os.recovery.ingest_human_gate_files",
+            side_effect=handler("ingest"),
+        ), mock.patch("sys.stdout.write"):
             main([
                 "build-focus", "--workspace-root", str(self.root), "--outcomes", str(ledger),
                 "--run-context", str(context), "--output", str(self.root / "focus.json"),
