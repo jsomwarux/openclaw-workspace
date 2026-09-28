@@ -21,6 +21,7 @@ MAX_RESPONSE_BYTES = 8 * 1024 * 1024
 _HASH = re.compile(r"^[0-9a-f]{64}$")
 _RUN_ID = re.compile(r"^sha256:[0-9a-f]{64}$")
 _STABLE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$")
+_OUTCOME_EVENT_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _TERMINAL_STATUSES = {"done", "archived"}
 _TASK_STATUSES = {
     "todo",
@@ -168,9 +169,7 @@ def _task_id(task: dict[str, object]) -> str:
     return value
 
 
-def _governed_outcome_pointer(
-    value: object, task_id: str, content_id: str
-) -> dict[str, object] | None:
+def _governed_outcome_pointer(value: object) -> dict[str, object] | None:
     if not isinstance(value, dict):
         return None
     required = {"system", "id", "recordedAt"}
@@ -182,8 +181,7 @@ def _governed_outcome_pointer(
     if (
         system != "linkedin-content-os"
         or not isinstance(outcome_id, str)
-        or outcome_id
-        != "publication_acknowledged:{}:{}".format(task_id, content_id)
+        or _OUTCOME_EVENT_ID.fullmatch(outcome_id) is None
         or not isinstance(recorded_at, int)
         or isinstance(recorded_at, bool)
         or recorded_at < 0
@@ -250,13 +248,13 @@ def _project_task(task: dict[str, object]) -> dict[str, object] | None:
         return projection
     if status != "done":
         return None
-    pointer = _governed_outcome_pointer(
-        task.get("outcomeRef"), task_id, content_id
-    )
+    if task.get("closureType") != "publication_acknowledged":
+        return None
+    pointer = _governed_outcome_pointer(task.get("outcomeRef"))
     if pointer is None:
         return None
     projection["projectionType"] = "metrics_followup"
-    projection["closureType"] = "completed"
+    projection["closureType"] = "publication_acknowledged"
     projection["closureOutcomePointer"] = pointer
     return projection
 
@@ -436,14 +434,12 @@ def approved_linkedin_packets(
                 raise ValueError("projected packet expiresAt is invalid")
         projection_type = packet.get("projectionType")
         if projection_type == "metrics_followup":
-            if status != "done" or packet.get("closureType") != "completed":
-                raise ValueError("metrics projection is not a completed packet")
             if (
-                _governed_outcome_pointer(
-                    packet.get("closureOutcomePointer"), task_id, content_id
-                )
-                is None
+                status != "done"
+                or packet.get("closureType") != "publication_acknowledged"
             ):
+                raise ValueError("metrics projection is not a governed publication closure")
+            if _governed_outcome_pointer(packet.get("closureOutcomePointer")) is None:
                 raise ValueError("metrics projection lacks a governed publication outcome")
         elif projection_type == "publication_acknowledgment":
             if status in _TERMINAL_STATUSES:

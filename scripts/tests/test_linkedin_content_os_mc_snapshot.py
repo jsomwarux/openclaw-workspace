@@ -285,30 +285,48 @@ class MissionControlSnapshotTests(unittest.TestCase):
     def test_preserves_nonterminal_and_governed_completed_projections_only(self) -> None:
         outcome = {
             "system": "linkedin-content-os",
-            "id": "publication_acknowledged:published:content-002",
+            "id": "fixture-outcome-002",
             "recordedAt": 4_095_237_600_000,
             "url": "https://www.linkedin.com/posts/jt_content-002",
         }
         tasks = (
             _task("open"),
-            _task("published", status="done", contentId="content-002", outcomeRef=outcome),
             _task(
-                "wrong-content",
+                "published",
+                status="done",
+                closureType="publication_acknowledged",
+                contentId="content-002",
+                outcomeRef=outcome,
+            ),
+            _task(
+                "missing-closure",
                 status="done",
                 contentId="content-004",
                 outcomeRef={
                     "system": "linkedin-content-os",
-                    "id": "publication_acknowledged:wrong-content:content-999",
+                    "id": "fixture-outcome-004",
                     "recordedAt": 4_095_237_600_000,
                 },
             ),
             _task(
-                "wrong-task",
+                "malformed-pointer",
                 status="done",
+                closureType="publication_acknowledged",
                 contentId="content-005",
                 outcomeRef={
                     "system": "linkedin-content-os",
-                    "id": "publication_acknowledged:someone-else:content-005",
+                    "id": "contains spaces",
+                    "recordedAt": 4_095_237_600_000,
+                },
+            ),
+            _task(
+                "overlong-pointer",
+                status="done",
+                closureType="publication_acknowledged",
+                contentId="content-007",
+                outcomeRef={
+                    "system": "linkedin-content-os",
+                    "id": "x" * 129,
                     "recordedAt": 4_095_237_600_000,
                 },
             ),
@@ -327,8 +345,10 @@ class MissionControlSnapshotTests(unittest.TestCase):
         self.assertEqual([item["taskId"] for item in projected], ["open", "published"])
         self.assertEqual(projected[0]["projectionType"], "publication_acknowledgment")
         self.assertEqual(projected[1]["projectionType"], "metrics_followup")
-        self.assertEqual(projected[1]["closureType"], "completed")
+        self.assertEqual(projected[1]["closureType"], "publication_acknowledged")
         self.assertEqual(projected[1]["closureOutcomePointer"], outcome)
+        self.assertEqual(projected[1]["contentId"], "content-002")
+        self.assertEqual(projected[1]["closureOutcomePointer"]["id"], "fixture-outcome-002")
 
     def test_rejects_invalid_json_duplicates_task_ids_and_missing_source_hash(self) -> None:
         invalid_raw = (
@@ -377,14 +397,15 @@ class MissionControlSnapshotTests(unittest.TestCase):
                 {**RUN_CONTEXT, "consumerNow": "2099-09-28T13:00:00Z"},
             )
 
-    def test_resigned_metrics_pointer_still_must_bind_task_and_content(self) -> None:
+    def test_resigned_metrics_pointer_must_remain_well_formed(self) -> None:
         task = _task(
             "published",
             status="done",
+            closureType="publication_acknowledged",
             contentId="content-002",
             outcomeRef={
                 "system": "linkedin-content-os",
-                "id": "publication_acknowledged:published:content-002",
+                "id": "fixture-outcome-002",
                 "recordedAt": 4_095_237_600_000,
             },
         )
@@ -392,7 +413,7 @@ class MissionControlSnapshotTests(unittest.TestCase):
         packet = dict(snapshot["packets"][0])
         packet["closureOutcomePointer"] = {
             "system": "linkedin-content-os",
-            "id": "publication_acknowledged:other-task:content-002",
+            "id": "contains spaces",
             "recordedAt": 4_095_237_600_000,
         }
         snapshot["packets"] = [packet]
@@ -412,10 +433,11 @@ class MissionControlSnapshotTests(unittest.TestCase):
         bad_url_task = _task(
             "bad-url",
             status="done",
+            closureType="publication_acknowledged",
             contentId="content-006",
             outcomeRef={
                 "system": "linkedin-content-os",
-                "id": "publication_acknowledged:bad-url:content-006",
+                "id": "fixture-outcome-006",
                 "recordedAt": 4_095_237_600_000,
                 "url": "https://example.com/not-linkedin",
             },
