@@ -1,3 +1,12 @@
+## Plan — Growth OS Jobs → Mission Control Adapter Proof — 2026-09-27
+- [x] Reconcile accepted adapter commit `492bccb…` against current local Mission Control `master` `b301a84…` and confirm ancestry.
+- [x] Add byte-bound fixtures for the accepted Decagon Jobs packet and `posted:false` receipt with failing end-to-end proof tests.
+- [x] Prove exact admission, replay dedupe before and after closure, evidence-backed completion with an outcome pointer, and typed no-action closure through the real in-memory Convex handlers.
+- [x] Preserve specialized outreach isolation and keep live writes, push, merge, deploy, application submission, and scheduling closed.
+- [x] Run focused/full tests, TypeScript, isolated production build, diff, scope, and secret checks.
+- [ ] Obtain a fresh read-only verifier verdict on the exact committed tree.
+- [ ] Write an immutable handoff and reconcile canonical Growth OS state only after verifier confirmation.
+
 ## Plan — Passive Income Scout Handoff Hardening — 2026-06-21
 - [x] Add failing regression coverage for deterministic same-day Scout handoff creation.
 - [x] Implement a script-first Scout handoff generator using fresh local signal files.
