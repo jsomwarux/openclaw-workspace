@@ -19,7 +19,8 @@
   - [x] Harden phase-separated immutable evidence paths, lazy Task 7B dispatch, canonical manifest/receipt/order validation, exact boundary-context pairing, alias/symlink refusal, status-aware checkout fingerprinting, and evidence-derived reporting.
   - [ ] Run the final phase-2 integration matrix against the real recovery module after Task 7B receives JT's governed response; pre-gate dispatch intentionally fails closed while that module is absent.
   - [x] Generate phase-1 audit, focus, corpus, receipt, and four-fixture artifacts after repairing three real CLI integration seams under RED/GREEN.
-  - [ ] Capture one fresh phase-1 before/after boundary pair after authorization; the first complete pair detected primary-checkout drift and cannot prove equality.
+  - [x] Capture one fresh phase-1 before/after boundary pair after authorization; all governed fields, including the primary-checkout fingerprint, matched exactly.
+  - [x] Run the pre-human-gate 199-test matrix without the intentionally absent Task 7B recovery module; compilation and diff checks must pass.
   - [ ] Stop at Task 7A and wait for JT's complete bound human-gate response before phase 2.
 
 Hard stop: No external network, Mission Control write, deployment, cron, provider call, asset generation, or publication. Exactly four read-only loopback task snapshots are allowed: one before/after pair around each side of the human gate.
