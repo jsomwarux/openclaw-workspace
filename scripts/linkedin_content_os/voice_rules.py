@@ -73,7 +73,7 @@ def _retirements(effective_date: str) -> List[Dict[str, object]]:
         {
             **common,
             "oldRule": "pronoun_ratio_5_to_1",
-            "ownerSurfaces": list(OWNER_SURFACES),
+            "ownerSurfaces": ["skills/wednesday-linkedin/SKILL.md"],
         },
         {
             **common,
@@ -83,12 +83,12 @@ def _retirements(effective_date: str) -> List[Dict[str, object]]:
         {
             **common,
             "oldRule": "universal_150_to_250_prose_only",
-            "ownerSurfaces": list(OWNER_SURFACES),
+            "ownerSurfaces": ["skills/wednesday-linkedin/SKILL.md"],
         },
         {
             **common,
             "oldRule": "fixed_weekly_linkedin_quota",
-            "ownerSurfaces": list(OWNER_SURFACES),
+            "ownerSurfaces": ["memory/content-voice.md"],
         },
     ]
     return sorted(records, key=lambda record: str(record["oldRule"]))

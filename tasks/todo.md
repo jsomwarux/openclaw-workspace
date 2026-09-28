@@ -9,6 +9,7 @@
 - [ ] Task 7: Select Program 0 evaluation fixtures without generating posts.
 - [ ] Task 8: Encode source-family policy and retire conflicting legacy voice rules.
   - [x] Add the closed, hash-bound source-family policy and retirement inventory builders with TDD coverage.
+  - [x] Model AI-event evidence as one proven router, JT-supplied, or approved-primary source branch plus a bound JT artifact; bind each retirement to its actual historical owner surfaces.
   - [x] Retire fixed-day, fixed-format, and quota authority in `docs/agents/content-rules.md` and `memory/content-voice.md`.
   - [ ] Apply governed Wednesday-skill repair. Skill Workshop proposal `wednesday-linkedin-20260928-029c4a76c9` is pending because Workshop does not own the existing skill path; direct editing is prohibited.
 - [x] Task 9: Locally prove the single deduplicated check-in contract.

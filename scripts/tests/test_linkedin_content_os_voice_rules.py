@@ -24,6 +24,23 @@ class VoiceRuleRetirementTests(unittest.TestCase):
     def _owner_documents(self) -> dict[str, bytes]:
         return {str(path): (ROOT / path).read_bytes() for path in OWNER_PATHS}
 
+    def _reconciled_documents(self) -> dict[str, bytes]:
+        documents = self._owner_documents()
+        skill_path = "skills/wednesday-linkedin/SKILL.md"
+        text = documents[skill_path].decode("utf-8")
+        for retired in (
+            "Wednesday is the highest-stakes post of the week",
+            "Use this skill whenever drafting or reviewing a Wednesday LinkedIn case study post.",
+            "Wednesday is JT's most important LinkedIn post",
+            '"you/your" must outnumber "I/my" — target 5:1 ratio.',
+            "Four moves, in order:",
+            "150-250 words. Prose only. No headers, no bullet lists.",
+        ):
+            text = text.replace(retired, "")
+        text += "\n" + RECONCILED_AUTHORITY + "\n"
+        documents[skill_path] = text.encode("utf-8")
+        return documents
+
     def test_all_owner_surfaces_retire_conflicting_generation_authority(self) -> None:
         documents = self._owner_documents()
         for path, payload in documents.items():
@@ -48,7 +65,7 @@ class VoiceRuleRetirementTests(unittest.TestCase):
         self.assertNotIn("For a normal weekly queue:", voice)
 
     def test_retirement_artifact_is_source_bound_and_complete(self) -> None:
-        documents = self._owner_documents()
+        documents = self._reconciled_documents()
         artifact = build_voice_rule_retirements(documents, effective_date=EFFECTIVE_DATE)
         self.assertEqual(artifact["schemaVersion"], "linkedin-voice-rule-retirements.v1")
         self.assertEqual(artifact["effectiveDate"], EFFECTIVE_DATE)
@@ -66,6 +83,21 @@ class VoiceRuleRetirementTests(unittest.TestCase):
                 "mandatory_wednesday_case_study",
                 "universal_150_to_250_prose_only",
                 "fixed_weekly_linkedin_quota",
+            },
+        )
+        self.assertEqual(
+            {record["oldRule"]: record["ownerSurfaces"] for record in retirements},
+            {
+                "pronoun_ratio_5_to_1": ["skills/wednesday-linkedin/SKILL.md"],
+                "mandatory_wednesday_case_study": [
+                    "docs/agents/content-rules.md",
+                    "memory/content-voice.md",
+                    "skills/wednesday-linkedin/SKILL.md",
+                ],
+                "universal_150_to_250_prose_only": [
+                    "skills/wednesday-linkedin/SKILL.md"
+                ],
+                "fixed_weekly_linkedin_quota": ["memory/content-voice.md"],
             },
         )
         for record in retirements:

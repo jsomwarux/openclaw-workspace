@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Set
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.contracts import parse_timestamp
@@ -89,8 +89,18 @@ def _records() -> List[Dict[str, object]]:
         {
             "family": "ai_event",
             "status": "allowed",
-            "owner": "proven X Intelligence Router or approved primary public source",
-            "requiredEvidence": ["approved_primary_source", "bound_jt_artifact"],
+            "owner": (
+                "proven X Intelligence Router, JT-supplied source, or approved primary "
+                "public source"
+            ),
+            "requiredEvidence": {
+                "allOf": ["bound_jt_artifact"],
+                "oneOf": [
+                    ["proven_x_intelligence_router"],
+                    ["jt_supplied_source"],
+                    ["approved_primary_public_source"],
+                ],
+            },
             "conflictChecks": ["source_identity", "claim_attribution", "protected_purpose_removed"],
             "permissionRule": "public_or_jt_supplied_source_only",
             "freshnessRule": "primary_event_date_controls_freshness",
@@ -106,6 +116,44 @@ def _records() -> List[Dict[str, object]]:
         },
     ]
     return sorted(records, key=lambda record: str(record["family"]))
+
+
+def evidence_satisfies(record: Dict[str, object], observed: Set[str]) -> bool:
+    """Evaluate the closed all-of/one-of evidence contract for one family."""
+
+    if not isinstance(observed, set) or any(
+        not isinstance(item, str) or not item for item in observed
+    ):
+        raise ValueError("observed evidence must be a set of non-empty strings")
+    required = record.get("requiredEvidence")
+    if isinstance(required, list):
+        if any(not isinstance(item, str) or not item for item in required):
+            raise ValueError("requiredEvidence list is invalid")
+        return set(required).issubset(observed)
+    if not isinstance(required, dict) or set(required) != {"allOf", "oneOf"}:
+        raise ValueError("requiredEvidence must be a closed list or branch contract")
+    all_of = required.get("allOf")
+    one_of = required.get("oneOf")
+    if (
+        not isinstance(all_of, list)
+        or not all_of
+        or any(not isinstance(item, str) or not item for item in all_of)
+        or not isinstance(one_of, list)
+        or not one_of
+    ):
+        raise ValueError("requiredEvidence branch contract is invalid")
+    branches = []
+    for branch in one_of:
+        if (
+            not isinstance(branch, list)
+            or not branch
+            or any(not isinstance(item, str) or not item for item in branch)
+        ):
+            raise ValueError("requiredEvidence oneOf branch is invalid")
+        branches.append(set(branch))
+    return set(all_of).issubset(observed) and any(
+        branch.issubset(observed) for branch in branches
+    )
 
 
 def build_source_policy(generated_at: str) -> Dict[str, object]:

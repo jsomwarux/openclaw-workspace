@@ -5,6 +5,7 @@ import unittest
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.source_policy import (
     build_source_policy,
+    evidence_satisfies,
     validate_source_policy,
 )
 
@@ -90,9 +91,42 @@ class SourcePolicyTests(unittest.TestCase):
         ai_event = by_family["ai_event"]
         self.assertEqual(
             ai_event["owner"],
-            "proven X Intelligence Router or approved primary public source",
+            "proven X Intelligence Router, JT-supplied source, or approved primary public source",
         )
-        self.assertIn("bound_jt_artifact", ai_event["requiredEvidence"])
+        self.assertEqual(
+            ai_event["requiredEvidence"],
+            {
+                "allOf": ["bound_jt_artifact"],
+                "oneOf": [
+                    ["proven_x_intelligence_router"],
+                    ["jt_supplied_source"],
+                    ["approved_primary_public_source"],
+                ],
+            },
+        )
+        self.assertNotIn("approved_primary_source", canonical_bytes(ai_event).decode("utf-8"))
+
+    def test_ai_event_evidence_accepts_each_source_branch_with_bound_jt_artifact(self) -> None:
+        ai_event = next(
+            record for record in self.policy["families"] if record["family"] == "ai_event"
+        )
+        for source in (
+            "proven_x_intelligence_router",
+            "jt_supplied_source",
+            "approved_primary_public_source",
+        ):
+            with self.subTest(source=source):
+                self.assertTrue(
+                    evidence_satisfies(ai_event, {source, "bound_jt_artifact"})
+                )
+
+        self.assertFalse(evidence_satisfies(ai_event, {"bound_jt_artifact"}))
+        self.assertFalse(evidence_satisfies(ai_event, {"jt_supplied_source"}))
+        self.assertFalse(
+            evidence_satisfies(
+                ai_event, {"approved_primary_source", "bound_jt_artifact"}
+            )
+        )
 
     def test_internal_machinery_is_absolute_prohibition(self) -> None:
         by_family = {record["family"]: record for record in self.policy["families"]}
