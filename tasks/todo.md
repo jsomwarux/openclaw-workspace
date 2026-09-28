@@ -11,7 +11,7 @@
   - [x] Add the closed, hash-bound source-family policy and retirement inventory builders with TDD coverage.
   - [x] Retire fixed-day, fixed-format, and quota authority in `docs/agents/content-rules.md` and `memory/content-voice.md`.
   - [ ] Apply governed Wednesday-skill repair. Skill Workshop proposal `wednesday-linkedin-20260928-029c4a76c9` is pending because Workshop does not own the existing skill path; direct editing is prohibited.
-- [ ] Task 9: Locally prove the single deduplicated check-in contract.
+- [x] Task 9: Locally prove the single deduplicated check-in contract.
 - [ ] Task 10: Add one local CLI and generate Program 0 artifacts.
 
 Hard stop: No external network, Mission Control write, deployment, cron, provider call, asset generation, or publication. Exactly four read-only loopback task snapshots are allowed: one before/after pair around each side of the human gate.
