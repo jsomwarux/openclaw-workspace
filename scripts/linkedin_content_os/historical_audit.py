@@ -134,7 +134,11 @@ def corpus_run_id(source_sha256: str, generated_at: str) -> str:
 
 
 def validate_corpus_authority_manifest(
-    value: object, *, expected_run_id: str, generated_at: str
+    value: object,
+    *,
+    expected_run_id: str,
+    generated_at: str,
+    expected_manifest_sha256: Optional[str] = None,
 ) -> dict[str, object]:
     """Validate one independently supplied, canonical corpus authority manifest."""
 
@@ -190,6 +194,22 @@ def validate_corpus_authority_manifest(
     }
     if provided_hash != sha256_hex(canonical_bytes(unhashed)):
         raise ValueError("corpusAuthorityManifest manifestSha256 mismatch")
+    if checked_allowlist:
+        if expected_manifest_sha256 is None:
+            raise ValueError(
+                "populated corpusAuthorityManifest requires expected_manifest_sha256"
+            )
+        expected_hash = _require_hash(
+            expected_manifest_sha256, "expected_manifest_sha256"
+        )
+        if expected_hash != provided_hash:
+            raise ValueError("expected manifest digest mismatch")
+    elif expected_manifest_sha256 is not None:
+        expected_hash = _require_hash(
+            expected_manifest_sha256, "expected_manifest_sha256"
+        )
+        if expected_hash != provided_hash:
+            raise ValueError("expected manifest digest mismatch")
     return manifest
 
 
@@ -274,6 +294,7 @@ def audit_legacy_rows(
     outcomes: Optional[Path],
     generated_at: str,
     corpus_authority_manifest: Optional[dict[str, object]] = None,
+    expected_manifest_sha256: Optional[str] = None,
 ) -> dict[str, object]:
     """Classify LinkedIn rows without mutating or over-interpreting legacy data."""
 
@@ -346,7 +367,10 @@ def audit_legacy_rows(
         else corpus_authority_manifest
     )
     validate_corpus_authority_manifest(
-        manifest, expected_run_id=run_id, generated_at=generated_at
+        manifest,
+        expected_run_id=run_id,
+        generated_at=generated_at,
+        expected_manifest_sha256=expected_manifest_sha256,
     )
 
     return {

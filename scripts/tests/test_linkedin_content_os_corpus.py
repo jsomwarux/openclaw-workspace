@@ -234,7 +234,32 @@ def _authority_receipt(
 
 
 def _build_pairs(events: list[dict[str, object]]) -> list[dict[str, object]]:
-    return build_contrastive_pairs(events, _audit(events=events))
+    audit = _audit(events=events)
+    manifest = audit["corpusAuthorityManifest"]
+    assert isinstance(manifest, dict)
+    expected = (
+        str(manifest["manifestSha256"])
+        if manifest["receiptSha256Allowlist"]
+        else None
+    )
+    return build_contrastive_pairs(
+        events, audit, expected_manifest_sha256=expected
+    )
+
+
+def _build_gold(
+    audit: dict[str, object], events: list[dict[str, object]]
+) -> list[dict[str, object]]:
+    manifest = audit["corpusAuthorityManifest"]
+    assert isinstance(manifest, dict)
+    expected = (
+        str(manifest["manifestSha256"])
+        if manifest["receiptSha256Allowlist"]
+        else None
+    )
+    return build_voice_gold(
+        audit, events, expected_manifest_sha256=expected
+    )
 
 
 def _edit_pair_event(
@@ -265,7 +290,7 @@ class VoiceGoldTests(unittest.TestCase):
         receipt = _authority_receipt([event], event)
 
         ledger = [event, receipt]
-        rows = build_voice_gold(_audit(_record(row_hash), events=ledger), ledger)
+        rows = _build_gold(_audit(_record(row_hash), events=ledger), ledger)
 
         self.assertEqual(rows[0], {
             "schemaVersion": "linkedin-voice-gold.v0",
@@ -292,7 +317,7 @@ class VoiceGoldTests(unittest.TestCase):
         row_hash = "1" * 64
         event = _publication(row_hash, "Self-asserted exact text.")
 
-        self.assertEqual(build_voice_gold(_audit(_record(row_hash)), [event]), [{
+        self.assertEqual(_build_gold(_audit(_record(row_hash)), [event]), [{
             "schemaVersion": "linkedin-corpus-gap-summary.v0",
             "recordType": "gap_summary",
             "blockingGapCount": 1,
@@ -317,7 +342,7 @@ class VoiceGoldTests(unittest.TestCase):
         )
 
         with self.assertRaisesRegex(ValueError, "ledger prefix"):
-            build_voice_gold(
+            _build_gold(
                 _audit(_record(row_hash), events=[event, forged_receipt]),
                 [event, forged_receipt],
             )
@@ -329,14 +354,48 @@ class VoiceGoldTests(unittest.TestCase):
         ledger = [event, receipt]
 
         with self.assertRaisesRegex(ValueError, "allowlist"):
-            build_voice_gold(_audit(_record(row_hash)), ledger)
+            _build_gold(_audit(_record(row_hash)), ledger)
 
         audit = _audit(_record(row_hash), events=ledger)
         tampered = dict(audit["corpusAuthorityManifest"])
         tampered["ledgerPosition"] = 1
         audit["corpusAuthorityManifest"] = tampered
         with self.assertRaisesRegex(ValueError, "manifestSha256"):
-            build_voice_gold(audit, ledger)
+            _build_gold(audit, ledger)
+
+    def test_manifest_requires_a_separately_supplied_expected_digest(self) -> None:
+        row_hash = "1" * 64
+        event = _publication(row_hash, "Separately anchored exact text.")
+        receipt = _authority_receipt([event], event)
+        ledger = [event, receipt]
+        audit = _audit(_record(row_hash), events=ledger)
+        manifest = audit["corpusAuthorityManifest"]
+        assert isinstance(manifest, dict)
+        expected = str(manifest["manifestSha256"])
+
+        rows = build_voice_gold(
+            audit, ledger, expected_manifest_sha256=expected
+        )
+        self.assertEqual(rows[0]["text"], "Separately anchored exact text.")
+
+        with self.assertRaisesRegex(ValueError, "expected_manifest_sha256"):
+            build_voice_gold(audit, ledger, expected_manifest_sha256=None)
+        with self.assertRaisesRegex(ValueError, "expected manifest digest"):
+            build_voice_gold(
+                audit, ledger, expected_manifest_sha256="f" * 64
+            )
+        with self.assertRaisesRegex(ValueError, "expected manifest digest"):
+            build_contrastive_pairs(
+                ledger,
+                audit,
+                expected_manifest_sha256="f" * 64,
+            )
+        with self.assertRaisesRegex(ValueError, "expected_manifest_sha256"):
+            build_contrastive_pairs(
+                ledger,
+                audit,
+                expected_manifest_sha256=None,
+            )
 
     def test_private_or_secret_exact_text_is_quarantined_without_redaction(self) -> None:
         row_hash = "1" * 64
@@ -350,7 +409,7 @@ class VoiceGoldTests(unittest.TestCase):
         )
 
         ledger = [event, receipt]
-        rows = build_voice_gold(_audit(_record(row_hash), events=ledger), ledger)
+        rows = _build_gold(_audit(_record(row_hash), events=ledger), ledger)
 
         self.assertEqual(rows[0], {
             "schemaVersion": "linkedin-corpus-quarantine.v0",
@@ -392,7 +451,7 @@ class VoiceGoldTests(unittest.TestCase):
         )
 
         ledger = [acknowledged, captured, receipt]
-        rows = build_voice_gold(_audit(_record(row_hash), events=ledger), ledger)
+        rows = _build_gold(_audit(_record(row_hash), events=ledger), ledger)
 
         self.assertEqual(rows[0]["origin"], "jt_authored")
         self.assertEqual(rows[0]["publicationOutcomeEventId"], "published-002")
@@ -436,7 +495,7 @@ class VoiceGoldTests(unittest.TestCase):
             )
             with self.subTest(capture=capture["outcomeEventId"]):
                 with self.assertRaisesRegex(ValueError, message):
-                    build_voice_gold(
+                    _build_gold(
                         _audit(_record(row_hash), events=ledger + [receipt]),
                         ledger + [receipt],
                     )
@@ -476,7 +535,7 @@ class VoiceGoldTests(unittest.TestCase):
         events = [summary, placeholder, model, declined, placeholder_receipt]
 
         with self.assertRaisesRegex(ValueError, "placeholder marker"):
-            build_voice_gold(audit, events)
+            _build_gold(audit, events)
 
     def test_deduplicates_text_hash_deterministically(self) -> None:
         first_hash = "7" * 64
@@ -507,7 +566,7 @@ class VoiceGoldTests(unittest.TestCase):
             event_id="authority-later",
             recorded_at="2026-09-28T14:01:00-04:00",
         )
-        rows = build_voice_gold(
+        rows = _build_gold(
             _audit(
                 _record(second_hash),
                 _record(first_hash),
@@ -687,7 +746,7 @@ class VoiceGoldTests(unittest.TestCase):
         malformed_event = dict(event)
         malformed_event["eventSha256"] = "0" * 64
         with self.assertRaisesRegex(ValueError, "eventSha256"):
-            build_voice_gold(_audit(_record(row_hash)), [malformed_event])
+            _build_gold(_audit(_record(row_hash)), [malformed_event])
 
         malformed_audit = _audit(_record(row_hash))
         malformed_audit["statusCounts"] = {
@@ -696,12 +755,12 @@ class VoiceGoldTests(unittest.TestCase):
             "status_unknown": 1,
         }
         with self.assertRaisesRegex(ValueError, "statusCounts"):
-            build_voice_gold(malformed_audit, [event])
+            _build_gold(malformed_audit, [event])
 
         malformed_nested_audit = _audit(_record(row_hash))
         malformed_nested_audit["missingFieldCounts"] = {"final_text": 99}
         with self.assertRaisesRegex(ValueError, "missingFieldCounts"):
-            build_voice_gold(malformed_nested_audit, [event])
+            _build_gold(malformed_nested_audit, [event])
 
         malformed_recovery_audit = _audit(_record(row_hash))
         malformed_recovery_audit["recoveryRequest"] = {
@@ -711,14 +770,14 @@ class VoiceGoldTests(unittest.TestCase):
             "items": [],
         }
         with self.assertRaisesRegex(ValueError, "recoveryRequest"):
-            build_voice_gold(malformed_recovery_audit, [event])
+            _build_gold(malformed_recovery_audit, [event])
 
         incomplete_recovery = _audit(_record(row_hash))
         recovery = dict(incomplete_recovery["recoveryRequest"])
         recovery["items"] = []
         incomplete_recovery["recoveryRequest"] = recovery
         with self.assertRaisesRegex(ValueError, "recoveryRequest.*complete"):
-            build_voice_gold(incomplete_recovery, [event])
+            _build_gold(incomplete_recovery, [event])
 
         bad_answers = _audit(_record(row_hash))
         recovery = dict(bad_answers["recoveryRequest"])
@@ -729,7 +788,7 @@ class VoiceGoldTests(unittest.TestCase):
         recovery["items"] = [item]
         bad_answers["recoveryRequest"] = recovery
         with self.assertRaisesRegex(ValueError, "allowedAnswers"):
-            build_voice_gold(bad_answers, [event])
+            _build_gold(bad_answers, [event])
 
         with self.assertRaisesRegex(ValueError, "eventSha256"):
             _build_pairs([malformed_event])
@@ -767,7 +826,7 @@ class VoiceGoldTests(unittest.TestCase):
             event_id="authority-corrected",
             recorded_at="2026-09-28T12:03:00-04:00",
         )
-        rows = build_voice_gold(
+        rows = _build_gold(
             _audit(_record(row_hash), events=ledger + [receipt]),
             ledger + [receipt],
         )
@@ -781,7 +840,7 @@ class VoiceGoldTests(unittest.TestCase):
         )
         audit = audit_legacy_rows(fixture, None, _GENERATED_AT)
 
-        rows = build_voice_gold(audit, [])
+        rows = _build_gold(audit, [])
 
         self.assertEqual(rows[-1]["recordType"], "gap_summary")
         self.assertGreater(rows[-1]["blockingGapCount"], 0)

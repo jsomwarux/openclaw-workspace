@@ -101,6 +101,7 @@ def _require_hash(value: object, label: str) -> str:
 
 def _validate_audit(
     audit_value: object,
+    expected_manifest_sha256: Optional[str],
 ) -> tuple[dict[str, object], dict[str, str], dict[str, object]]:
     audit = _require_object(audit_value, "audit")
     if set(audit) != _AUDIT_FIELDS:
@@ -222,6 +223,7 @@ def _validate_audit(
         audit["corpusAuthorityManifest"],
         expected_run_id=expected_run_id,
         generated_at=str(audit["generatedAt"]),
+        expected_manifest_sha256=expected_manifest_sha256,
     )
     return audit, statuses_by_hash, manifest
 
@@ -446,7 +448,10 @@ def _gap_summary(packet_ids: set[str]) -> dict[str, object]:
 
 
 def build_voice_gold(
-    audit: dict[str, object], events: list[dict[str, object]]
+    audit: dict[str, object],
+    events: list[dict[str, object]],
+    *,
+    expected_manifest_sha256: Optional[str],
 ) -> list[dict[str, object]]:
     """Return exact JT-final text records plus one deterministic gap summary.
 
@@ -454,7 +459,9 @@ def build_voice_gold(
     through a validated governed event tied to a confirmed published row.
     """
 
-    _, statuses_by_hash, manifest = _validate_audit(audit)
+    _, statuses_by_hash, manifest = _validate_audit(
+        audit, expected_manifest_sha256
+    )
     ordered_events, receipts = _validated_events(events, manifest)
     _validate_capture_bindings(ordered_events)
     publications: dict[str, list[dict[str, object]]] = {}
@@ -576,10 +583,16 @@ def build_voice_gold(
 def build_contrastive_pairs(
     events: list[dict[str, object]],
     audit: Optional[dict[str, object]] = None,
+    *,
+    expected_manifest_sha256: Optional[str],
 ) -> list[dict[str, object]]:
     """Return exact governed JT edit pairs plus deterministic blocking gaps."""
 
-    manifest = _validate_audit(audit)[2] if audit is not None else None
+    manifest = (
+        _validate_audit(audit, expected_manifest_sha256)[2]
+        if audit is not None
+        else None
+    )
     ordered_events, receipts = _validated_events(events, manifest)
     _validate_capture_bindings(ordered_events)
     packets_with_final_text: set[str] = set()

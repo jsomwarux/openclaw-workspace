@@ -242,10 +242,10 @@ Expected: FAIL because the audit module does not exist.
 Expose:
 
 ```python
-audit_legacy_rows(posted_log: Path, outcomes: Optional[Path], generated_at: str, corpus_authority_manifest: Optional[dict[str, object]] = None) -> dict[str, object]
+audit_legacy_rows(posted_log: Path, outcomes: Optional[Path], generated_at: str, corpus_authority_manifest: Optional[dict[str, object]] = None, expected_manifest_sha256: Optional[str] = None) -> dict[str, object]
 ```
 
-The output includes source file hash, counts by status, missing-field counts, duplicate groups, raw-posted provenance, and one canonical audit record per LinkedIn row. One shared `expected_recovery_items(records)` algorithm emits `historical-recovery-request.v1.json`, capped to all `posted:true` rows missing URL/final text plus the 20 most recent unique `status_unknown` LinkedIn rows, with exact topic/date/legacy-row-hash and the three allowed answers: `posted` with required URL and optional exact final text, `not_posted`, or `still_unknown`. Pre-gate output includes an explicit empty, run-bound `corpusAuthorityManifest`; after Task 7B the audit accepts only a canonical independently supplied manifest. It must not write to `posted-log.jsonl` or infer public status from scheduling, Drive, or Notion fields.
+The output includes source file hash, counts by status, missing-field counts, duplicate groups, raw-posted provenance, and one canonical audit record per LinkedIn row. One shared `expected_recovery_items(records)` algorithm emits `historical-recovery-request.v1.json`, capped to all `posted:true` rows missing URL/final text plus the 20 most recent unique `status_unknown` LinkedIn rows, with exact topic/date/legacy-row-hash and the three allowed answers: `posted` with required URL and optional exact final text, `not_posted`, or `still_unknown`. Pre-gate output includes the fixed explicit empty, run-bound `corpusAuthorityManifest` and permits a missing expected digest only for that empty anchor. After Task 7B, a populated manifest is accepted only when its canonical hash exactly matches the separately supplied `expected_manifest_sha256`; the expected digest may not be derived from the manifest, audit, or outcome ledger. It must not write to `posted-log.jsonl` or infer public status from scheduling, Drive, or Notion fields.
 
 - [ ] **Step 4: Add mutation and reproducibility guards**
 
@@ -381,13 +381,13 @@ Expected: FAIL because the corpus builder does not exist.
 Expose:
 
 ```python
-build_voice_gold(audit: dict[str, object], events: list[dict[str, object]]) -> list[dict[str, object]]
-build_contrastive_pairs(events: list[dict[str, object]], audit: Optional[dict[str, object]] = None) -> list[dict[str, object]]
+build_voice_gold(audit: dict[str, object], events: list[dict[str, object]], *, expected_manifest_sha256: Optional[str]) -> list[dict[str, object]]
+build_contrastive_pairs(events: list[dict[str, object]], audit: Optional[dict[str, object]] = None, *, expected_manifest_sha256: Optional[str]) -> list[dict[str, object]]
 ```
 
 Empty output is valid and must surface a blocking gap count. Never fall back to `summary`, `memory/content-voice.md`, or an old draft as though it were published text.
 
-Exact text is eligible only through a `corpus_authority_receipt` whose event SHA-256 is listed in the audit's independently supplied, run-bound `corpusAuthorityManifest`. The manifest binds the human-gate authority bytes, exact outcome-ledger prefix and position, sorted receipt allowlist, validation time, and canonical manifest hash. The pre-gate audit contains the explicit empty manifest. A text event and matching receipt cannot self-authorize by mutually agreeing inside the outcome ledger.
+Exact text is eligible only through a `corpus_authority_receipt` whose event SHA-256 is listed in the audit's independently supplied, run-bound `corpusAuthorityManifest`. The manifest binds the human-gate authority bytes, exact outcome-ledger prefix and position, sorted receipt allowlist, validation time, and canonical manifest hash. Both corpus builders require a separately supplied expected manifest digest and compare it before trusting the audit manifest. The pre-gate audit contains the fixed explicit empty manifest and uses `None` only for that empty anchor. A text event, matching receipt, and self-hashed manifest cannot self-authorize by mutually agreeing when the external expected digest differs or is missing.
 
 - [ ] **Step 4: Add deterministic origin caps**
 
@@ -489,6 +489,7 @@ Update `tasks/todo.md` with the exact response path and blocked conditions. No M
 - Create: `scripts/tests/test_linkedin_content_os_recovery.py`
 - Append: `memory/content/linkedin-content-os/outcomes.v1.jsonl`
 - Generate: `memory/content/linkedin-content-os/corpus-authority-manifest.v1.json`
+- Generate: `memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json`
 - Regenerate: focus, audit, corpus, and fixture artifacts
 
 - [ ] **Step 1: Write failing response-ingestion tests**
@@ -497,11 +498,11 @@ Prove complete coverage, exact request/focus/fixture-gap hash matching, focus co
 
 - [ ] **Step 2: Implement and run ingestion**
 
-Expose `ingest_human_gate(response, request, focus, fixture_gap, ledger)`. Append `historical_status` events carrying `posted_confirmed`, `not_posted_confirmed`, or `status_unknown`; one `focus_decision` event carrying `confirmed` or `corrected`; one `permission_fixture_accepted` event; and exact-text authority receipts where complete publication text is supplied. Independently emit `corpus-authority-manifest.v1.json` from the validated human-gate boundary, never by projecting the outcome ledger. It must bind the run ID, human-gate response receipt SHA-256, exact appended-ledger prefix SHA-256/position, sorted authority-receipt event hashes, validation timestamp, and canonical manifest SHA-256. Bind the accepted proof fixture to exact repository/commit/path, extracted-byte SHA-256, immutable permission evidence hash, and permission expiry. Never mutate the legacy posted log.
+Expose `ingest_human_gate(response, request, focus, fixture_gap, ledger)`. Append `historical_status` events carrying `posted_confirmed`, `not_posted_confirmed`, or `status_unknown`; one `focus_decision` event carrying `confirmed` or `corrected`; one `permission_fixture_accepted` event; and exact-text authority receipts where complete publication text is supplied. Independently emit `corpus-authority-manifest.v1.json` from the validated human-gate boundary, never by projecting the outcome ledger. It must bind the run ID, human-gate response receipt SHA-256, exact appended-ledger prefix SHA-256/position, sorted authority-receipt event hashes, validation timestamp, and canonical manifest SHA-256. At that same authority boundary, emit an immutable phase-2 authority run context derived from the input run context and carrying `corpusAuthorityManifestSha256`; later audit/corpus commands read the expected digest only from this context and never derive it from the audit, manifest, receipts, or events. Bind the accepted proof fixture to exact repository/commit/path, extracted-byte SHA-256, immutable permission evidence hash, and permission expiry. Never mutate the legacy posted log.
 
 - [ ] **Step 3: Rebuild and assert closure prerequisites**
 
-Re-run audit with the independently emitted manifest, then pass that same audit to both voice-gold and contrastive-pair builders. Rebuild focus, corpus, and fixtures from the updated ledger. Program 0 closure prerequisites at this point are: no unanswered bounded recovery rows; a JT-confirmed focus snapshot; one `positive` permissioned fixture and one `negative` fixture; and all remaining unknowns explicitly labeled, never coerced to zero or false. Task 10 builds and verifies the check-in preview after Task 9 creates the projector.
+Re-run audit with the independently emitted manifest and the expected digest from `run-context.phase-2-authority.v1.json`, then pass that same independently supplied expected digest to both voice-gold and contrastive-pair builders. Rebuild focus, corpus, and fixtures from the updated ledger. Program 0 closure prerequisites at this point are: no unanswered bounded recovery rows; a JT-confirmed focus snapshot; one `positive` permissioned fixture and one `negative` fixture; and all remaining unknowns explicitly labeled, never coerced to zero or false. Task 10 builds and verifies the check-in preview after Task 9 creates the projector.
 
 - [ ] **Step 4: Verify and commit**
 
@@ -719,12 +720,13 @@ python3 -m scripts.linkedin_content_os.cli ingest-human-gate \
   --fixtures memory/content/linkedin-content-os/evaluation-fixtures.v0.jsonl \
   --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
   --corpus-authority-manifest-output memory/content/linkedin-content-os/corpus-authority-manifest.v1.json \
+  --authority-run-context-output memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json \
   --run-context memory/content/linkedin-content-os/run-context.v1.json
 python3 -m scripts.linkedin_content_os.cli audit-history \
   --posted-log memory/content/posted-log.jsonl \
   --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
   --corpus-authority-manifest memory/content/linkedin-content-os/corpus-authority-manifest.v1.json \
-  --run-context memory/content/linkedin-content-os/run-context.v1.json \
+  --run-context memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json \
   --output memory/content/linkedin-content-os/historical-audit.v1.json \
   --recovery-output memory/content/linkedin-content-os/historical-recovery-request.v1.json
 python3 -m scripts.linkedin_content_os.cli build-focus \
@@ -735,6 +737,7 @@ python3 -m scripts.linkedin_content_os.cli build-focus \
 python3 -m scripts.linkedin_content_os.cli build-corpus \
   --audit memory/content/linkedin-content-os/historical-audit.v1.json \
   --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
+  --run-context memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json \
   --gold-output memory/content/linkedin-content-os/voice-gold.v0.jsonl \
   --pairs-output memory/content/linkedin-content-os/contrastive-pairs.v0.jsonl
 python3 -m scripts.linkedin_content_os.cli build-fixtures \

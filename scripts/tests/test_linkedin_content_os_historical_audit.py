@@ -329,15 +329,37 @@ class HistoricalAuditTests(unittest.TestCase):
         source_sha256 = sha256_hex(FIXTURE.read_bytes())
         manifest = _manifest(source_sha256)
         audit = audit_legacy_rows(
-            FIXTURE, None, GENERATED_AT, corpus_authority_manifest=manifest
+            FIXTURE,
+            None,
+            GENERATED_AT,
+            corpus_authority_manifest=manifest,
+            expected_manifest_sha256=manifest["manifestSha256"],
         )
         self.assertEqual(audit["corpusAuthorityManifest"], manifest)
+
+        with self.assertRaisesRegex(ValueError, "expected_manifest_sha256"):
+            audit_legacy_rows(
+                FIXTURE, None, GENERATED_AT, corpus_authority_manifest=manifest
+            )
+
+        with self.assertRaisesRegex(ValueError, "expected manifest digest"):
+            audit_legacy_rows(
+                FIXTURE,
+                None,
+                GENERATED_AT,
+                corpus_authority_manifest=manifest,
+                expected_manifest_sha256="f" * 64,
+            )
 
         tampered = dict(manifest)
         tampered["ledgerPosition"] = 3
         with self.assertRaisesRegex(ValueError, "manifestSha256"):
             audit_legacy_rows(
-                FIXTURE, None, GENERATED_AT, corpus_authority_manifest=tampered
+                FIXTURE,
+                None,
+                GENERATED_AT,
+                corpus_authority_manifest=tampered,
+                expected_manifest_sha256=manifest["manifestSha256"],
             )
 
         wrong_run = dict(manifest)
@@ -348,7 +370,11 @@ class HistoricalAuditTests(unittest.TestCase):
         wrong_run["manifestSha256"] = sha256_hex(canonical_bytes(without_hash))
         with self.assertRaisesRegex(ValueError, "runId"):
             audit_legacy_rows(
-                FIXTURE, None, GENERATED_AT, corpus_authority_manifest=wrong_run
+                FIXTURE,
+                None,
+                GENERATED_AT,
+                corpus_authority_manifest=wrong_run,
+                expected_manifest_sha256=wrong_run["manifestSha256"],
             )
 
 
