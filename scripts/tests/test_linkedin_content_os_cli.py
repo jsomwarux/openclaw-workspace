@@ -302,7 +302,7 @@ class LinkedInContentOSCliTests(unittest.TestCase):
         }
         with mock.patch("scripts.linkedin_content_os.cli.capture_tasks", return_value=b"raw") as capture, mock.patch(
             "scripts.linkedin_content_os.cli.validate_snapshot", return_value=snapshot
-        ), mock.patch("scripts.linkedin_content_os.cli._cron_list", return_value={"jobs": []}), mock.patch(
+        ) as validate, mock.patch("scripts.linkedin_content_os.cli._cron_list", return_value={"jobs": []}), mock.patch(
             "scripts.linkedin_content_os.cli._launchagent_inventory", return_value=[]
         ), mock.patch(
             "scripts.linkedin_content_os.cli._primary_checkout_fingerprint", return_value="8" * 64
@@ -313,6 +313,10 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 "--output", str(output),
             ])
         capture.assert_called_once_with("http://127.0.0.1:3000/api/tasks")
+        validate.assert_called_once_with(
+            b"raw",
+            {"runId": _read_json(context_path)["runId"], "generatedAt": GENERATED_AT},
+        )
         self.assertEqual(_read_json(output), result)
 
     def test_primary_checkout_fingerprint_covers_status_without_exposing_paths(self) -> None:

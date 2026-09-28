@@ -662,7 +662,13 @@ def _capture_boundaries(args: argparse.Namespace) -> Dict[str, object]:
     run_context = _run_context(Path(args.run_context))
     with _capture_network_guard() as exact_get:
         raw = exact_get(lambda: capture_tasks(SOURCE_URL))
-    snapshot = validate_snapshot(raw, run_context)
+    snapshot = validate_snapshot(
+        raw,
+        {
+            "runId": run_context["runId"],
+            "generatedAt": run_context["generatedAt"],
+        },
+    )
     cron = normalize_cron_definitions(_cron_list())
     protected: Dict[str, str] = {}
     root = Path(args.workspace_root).resolve()

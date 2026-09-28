@@ -12,13 +12,13 @@
   - [x] Model AI-event evidence as one proven router, JT-supplied, or approved-primary source branch plus a bound JT artifact; bind each retirement to its actual historical owner surfaces.
   - [x] Fail closed on noncanonical, forged, unknown, empty, extra-field, or prohibited source-family evidence records; make the v1 internal-machinery prohibition absolute in content rules.
   - [x] Retire fixed-day, fixed-format, and quota authority in `docs/agents/content-rules.md` and `memory/content-voice.md`.
-  - [ ] Apply governed Wednesday-skill repair. Skill Workshop proposal `wednesday-linkedin-20260928-029c4a76c9` is pending because Workshop does not own the existing skill path; direct editing is prohibited.
+  - [x] Apply governed Wednesday-skill repair through owner-authorized Skill Workshop proposal `wednesday-linkedin-20260928-029c4a76c9`; commit `857d06d` carries the reconciled skill in this worktree.
 - [x] Task 9: Locally prove the single deduplicated check-in contract.
 - [ ] Task 10: Add one local CLI and generate Program 0 artifacts.
   - [x] Add the closed local CLI, authority-consumption receipts, process/network guards, and boundary proof primitives with TDD coverage.
   - [x] Harden phase-separated immutable evidence paths, lazy Task 7B dispatch, canonical manifest/receipt/order validation, exact boundary-context pairing, alias/symlink refusal, status-aware checkout fingerprinting, and evidence-derived reporting.
   - [ ] Run the final phase-2 integration matrix against the real recovery module after Task 7B receives JT's governed response; pre-gate dispatch intentionally fails closed while that module is absent.
-  - [ ] Generate phase-1 artifacts only after the governed Wednesday skill owner is repaired; no real loopback request has run.
+  - [ ] Generate phase-1 artifacts. The first authorized boundary capture made one read-only loopback GET and failed closed before artifact write because the CLI passed the three-field run wrapper into a two-field snapshot validator. The integration boundary is repaired under RED/GREEN; one replacement GET requires explicit authorization before retry.
   - [ ] Stop at Task 7A and wait for JT's complete bound human-gate response before phase 2.
 
 Hard stop: No external network, Mission Control write, deployment, cron, provider call, asset generation, or publication. Exactly four read-only loopback task snapshots are allowed: one before/after pair around each side of the human gate.
