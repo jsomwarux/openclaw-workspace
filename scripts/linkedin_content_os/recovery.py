@@ -739,9 +739,25 @@ def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
     response_path = Path(args.response)
     artifact_directory = response_path.parent
     outcomes_path = Path(args.outcomes)
+    manifest_output = Path(args.corpus_authority_manifest_output)
+    authority_context_output = Path(args.authority_run_context_output)
+    receipt_output = Path(
+        getattr(args, "focus_authority_receipt_output", None)
+        or artifact_directory / "focus-authority-receipt.v1.json"
+    )
+    anchor_output = Path(
+        getattr(args, "focus_authority_anchor_output", None)
+        or artifact_directory / "focus-authority-anchor.v1.json"
+    )
     _reject_phase1_output_aliases(
-        (artifact_directory / "outcomes.phase-1.v1.jsonl",),
-        (outcomes_path,),
+        _phase1_paths(artifact_directory),
+        (
+            outcomes_path,
+            manifest_output,
+            authority_context_output,
+            receipt_output,
+            anchor_output,
+        ),
     )
     response, response_bytes = _strict_json_file_with_bytes(response_path)
     request = _strict_json_file(Path(args.recovery_request))
@@ -756,19 +772,11 @@ def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
         workspace_root=Path(getattr(args, "workspace_root", ".")),
     )
     write_json_atomic(
-        Path(args.corpus_authority_manifest_output),
+        manifest_output,
         result["corpusAuthorityManifest"],
     )
     write_json_atomic(
-        Path(args.authority_run_context_output), result["authorityRunContext"]
-    )
-    receipt_output = Path(
-        getattr(args, "focus_authority_receipt_output", None)
-        or artifact_directory / "focus-authority-receipt.v1.json"
-    )
-    anchor_output = Path(
-        getattr(args, "focus_authority_anchor_output", None)
-        or artifact_directory / "focus-authority-anchor.v1.json"
+        authority_context_output, result["authorityRunContext"]
     )
     write_json_atomic(receipt_output, result["focusAuthorityReceipt"])
     anchor: dict[str, object] = {
@@ -782,18 +790,20 @@ def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
     return result
 
 
-def _phase1_paths(directory: Path) -> tuple[Path, Path, Path, Path]:
+def _phase1_paths(directory: Path) -> tuple[Path, Path, Path, Path, Path]:
     return (
         directory / "human-gate-response.v1.json",
         directory / "historical-recovery-request.phase-1.v1.json",
         directory / "focus-snapshot.phase-1.v1.json",
         directory / "evaluation-fixtures.phase-1.v0.jsonl",
+        directory / "outcomes.phase-1.v1.jsonl",
     )
 
 
 def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
     output = Path(args.output)
-    response_path, request_path, proposed_path, fixtures_path = _phase1_paths(output.parent)
+    phase1_paths = _phase1_paths(output.parent)
+    response_path, request_path, proposed_path, fixtures_path, _ = phase1_paths
     receipt_path = Path(
         getattr(args, "focus_authority_receipt", None)
         or output.parent / "focus-authority-receipt.v1.json"
@@ -803,7 +813,7 @@ def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
         or output.parent / "focus-authority-anchor.v1.json"
     )
     _reject_phase1_output_aliases(
-        (response_path, request_path, proposed_path, fixtures_path, receipt_path, anchor_path),
+        phase1_paths + (receipt_path, anchor_path),
         (output,),
     )
     response, response_bytes = _strict_json_file_with_bytes(response_path)

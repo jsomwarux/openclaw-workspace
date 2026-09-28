@@ -510,6 +510,26 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
             ):
                 ingest_human_gate_files(alias_args)
             self.assertEqual(phase1_outcomes.read_bytes(), b"")
+        for output_field in (
+            "corpus_authority_manifest_output",
+            "authority_run_context_output",
+            "focus_authority_receipt_output",
+            "focus_authority_anchor_output",
+        ):
+            for label, alias in (
+                ("exact", phase1_outcomes),
+                ("symlink", artifacts / "outcomes-phase1-symlink.jsonl"),
+                ("hardlink", artifacts / "outcomes-phase1-hardlink.jsonl"),
+            ):
+                alias_args = argparse.Namespace(**vars(ingest_args))
+                setattr(alias_args, output_field, str(alias))
+                ledger_before = self.ledger.read_bytes()
+                with self.subTest(
+                    handler="ingest", output=output_field, alias=label
+                ), self.assertRaisesRegex(ValueError, "phase-1|alias"):
+                    ingest_human_gate_files(alias_args)
+                self.assertEqual(phase1_outcomes.read_bytes(), b"")
+                self.assertEqual(self.ledger.read_bytes(), ledger_before)
         result = ingest_human_gate_files(ingest_args)
         self.assertEqual(manifest_path.read_bytes(), canonical_bytes(result["corpusAuthorityManifest"]))
         self.assertEqual(authority_path.read_bytes(), canonical_bytes(result["authorityRunContext"]))
@@ -566,6 +586,27 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         self.assertEqual(positive["classification"], "positive")
         self.assertEqual(first_fixtures["fixtures"][0], negative)
         self.assertEqual(first_fixtures["fixtures"][-1], teardown)
+
+        phase1_outcomes_before = phase1_outcomes.read_bytes()
+        phase1_outcome_aliases = (
+            ("exact", phase1_outcomes),
+            ("symlink", artifacts / "outcomes-phase1-symlink.jsonl"),
+            ("hardlink", artifacts / "outcomes-phase1-hardlink.jsonl"),
+        )
+        for handler_name, handler, base_args in (
+            ("focus", rebuild_focus_files, focus_args),
+            ("fixtures", rebuild_fixtures_files, fixture_args),
+        ):
+            for alias_name, alias in phase1_outcome_aliases:
+                alias_args = argparse.Namespace(**vars(base_args))
+                alias_args.output = str(alias)
+                with self.subTest(
+                    handler=handler_name, alias=alias_name
+                ), self.assertRaisesRegex(ValueError, "phase-1|alias"):
+                    handler(alias_args)
+                self.assertEqual(
+                    phase1_outcomes.read_bytes(), phase1_outcomes_before
+                )
 
         documented_ledger = artifacts / "outcomes.v1.jsonl"
         documented_ledger.write_bytes(b"")
