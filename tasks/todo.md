@@ -15,6 +15,9 @@
   - [ ] Apply governed Wednesday-skill repair. Skill Workshop proposal `wednesday-linkedin-20260928-029c4a76c9` is pending because Workshop does not own the existing skill path; direct editing is prohibited.
 - [x] Task 9: Locally prove the single deduplicated check-in contract.
 - [ ] Task 10: Add one local CLI and generate Program 0 artifacts.
+  - [x] Add the closed local CLI, authority-consumption receipts, process/network guards, and boundary proof primitives with TDD coverage.
+  - [ ] Generate phase-1 artifacts only after the governed Wednesday skill owner is repaired; no real loopback request has run.
+  - [ ] Stop at Task 7A and wait for JT's complete bound human-gate response before phase 2.
 
 Hard stop: No external network, Mission Control write, deployment, cron, provider call, asset generation, or publication. Exactly four read-only loopback task snapshots are allowed: one before/after pair around each side of the human gate.
 
