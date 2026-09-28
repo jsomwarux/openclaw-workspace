@@ -45,6 +45,35 @@ def _task(task_id: str, **overrides: object) -> dict[str, object]:
     return task
 
 
+def _completed_task(task_id: str, **overrides: object) -> dict[str, object]:
+    content_id = overrides.pop("contentId", "content-001")
+    task = _task(
+        task_id,
+        status="done",
+        artifactRef={
+            "system": "linkedin-content-os",
+            "id": content_id,
+            "sha256": PACKET_HASH,
+        },
+        doneEvidenceType="post-url",
+        doneEvidence={
+            "type": "post-url",
+            "ref": "https://www.linkedin.com/posts/jt_{}".format(task_id),
+            "recordedAt": 4_095_237_600_000,
+            "recordedBy": "jt",
+        },
+        outcomeRef={
+            "system": "linkedin-content-os",
+            "id": "fixture-outcome-{}".format(task_id),
+            "recordedAt": 4_095_237_600_000,
+        },
+    )
+    task.pop("packetHash")
+    task.pop("contentId")
+    task.update(overrides)
+    return task
+
+
 def _raw(*tasks: dict[str, object]) -> bytes:
     return json.dumps({"tasks": list(tasks)}, separators=(",", ":")).encode("utf-8")
 
@@ -291,27 +320,18 @@ class MissionControlSnapshotTests(unittest.TestCase):
         }
         tasks = (
             _task("open"),
-            _task(
+            _completed_task(
                 "published",
-                status="done",
-                closureType="publication_acknowledged",
                 contentId="content-002",
                 outcomeRef=outcome,
             ),
-            _task(
+            _completed_task(
                 "missing-closure",
-                status="done",
                 contentId="content-004",
-                outcomeRef={
-                    "system": "linkedin-content-os",
-                    "id": "fixture-outcome-004",
-                    "recordedAt": 4_095_237_600_000,
-                },
+                doneEvidence=None,
             ),
-            _task(
+            _completed_task(
                 "malformed-pointer",
-                status="done",
-                closureType="publication_acknowledged",
                 contentId="content-005",
                 outcomeRef={
                     "system": "linkedin-content-os",
@@ -319,15 +339,32 @@ class MissionControlSnapshotTests(unittest.TestCase):
                     "recordedAt": 4_095_237_600_000,
                 },
             ),
-            _task(
+            _completed_task(
                 "overlong-pointer",
-                status="done",
-                closureType="publication_acknowledged",
                 contentId="content-007",
                 outcomeRef={
                     "system": "linkedin-content-os",
                     "id": "x" * 129,
                     "recordedAt": 4_095_237_600_000,
+                },
+            ),
+            _completed_task(
+                "wrong-system",
+                contentId="content-008",
+                outcomeRef={
+                    "system": "other-system",
+                    "id": "fixture-outcome-008",
+                    "recordedAt": 4_095_237_600_000,
+                },
+            ),
+            _completed_task(
+                "malformed-evidence",
+                contentId="content-009",
+                doneEvidence={
+                    "type": "post-url",
+                    "ref": "not-a-url",
+                    "recordedAt": 4_095_237_600_000,
+                    "recordedBy": "jt",
                 },
             ),
             _task(
@@ -339,14 +376,20 @@ class MissionControlSnapshotTests(unittest.TestCase):
             _task("archived", status="archived", closureReason={"kind": "no-action"}),
         )
 
+        self.assertNotIn("closureType", tasks[1])
+        self.assertNotIn("packetHash", tasks[1])
+        self.assertNotIn("contentId", tasks[1])
+
         snapshot = validate_snapshot(_raw(*tasks), RUN_CONTEXT)
         projected = approved_linkedin_packets(snapshot, RUN_CONTEXT)
 
         self.assertEqual([item["taskId"] for item in projected], ["open", "published"])
         self.assertEqual(projected[0]["projectionType"], "publication_acknowledgment")
         self.assertEqual(projected[1]["projectionType"], "metrics_followup")
-        self.assertEqual(projected[1]["closureType"], "publication_acknowledged")
+        self.assertEqual(projected[1]["closureType"], "completed")
         self.assertEqual(projected[1]["closureOutcomePointer"], outcome)
+        self.assertEqual(projected[1]["doneEvidenceType"], "post-url")
+        self.assertEqual(projected[1]["doneEvidence"]["recordedBy"], "jt")
         self.assertEqual(projected[1]["contentId"], "content-002")
         self.assertEqual(projected[1]["closureOutcomePointer"]["id"], "fixture-outcome-002")
 
@@ -397,11 +440,9 @@ class MissionControlSnapshotTests(unittest.TestCase):
                 {**RUN_CONTEXT, "consumerNow": "2099-09-28T13:00:00Z"},
             )
 
-    def test_resigned_metrics_pointer_must_remain_well_formed(self) -> None:
-        task = _task(
+    def test_resigned_metrics_metadata_must_remain_well_formed(self) -> None:
+        task = _completed_task(
             "published",
-            status="done",
-            closureType="publication_acknowledged",
             contentId="content-002",
             outcomeRef={
                 "system": "linkedin-content-os",
@@ -430,10 +471,17 @@ class MissionControlSnapshotTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "governed publication outcome"):
             approved_linkedin_packets(_resign(snapshot), RUN_CONTEXT)
 
-        bad_url_task = _task(
+        snapshot = validate_snapshot(_raw(task), RUN_CONTEXT)
+        packet = dict(snapshot["packets"][0])
+        evidence = dict(packet["doneEvidence"])
+        evidence["ref"] = "not-a-url"
+        packet["doneEvidence"] = evidence
+        snapshot["packets"] = [packet]
+        with self.assertRaisesRegex(ValueError, "completion evidence"):
+            approved_linkedin_packets(_resign(snapshot), RUN_CONTEXT)
+
+        bad_url_task = _completed_task(
             "bad-url",
-            status="done",
-            closureType="publication_acknowledged",
             contentId="content-006",
             outcomeRef={
                 "system": "linkedin-content-os",

@@ -200,6 +200,35 @@ def _governed_outcome_pointer(value: object) -> dict[str, object] | None:
     return pointer
 
 
+def _governed_done_evidence(value: object) -> dict[str, object] | None:
+    if not isinstance(value, dict) or set(value) != {
+        "type",
+        "ref",
+        "recordedAt",
+        "recordedBy",
+    }:
+        return None
+    recorded_at = value.get("recordedAt")
+    if (
+        value.get("type") != "post-url"
+        or value.get("recordedBy") != "jt"
+        or not isinstance(recorded_at, int)
+        or isinstance(recorded_at, bool)
+        or recorded_at < 0
+    ):
+        return None
+    try:
+        evidence_ref = validate_linkedin_url(value.get("ref"))
+    except ValueError:
+        return None
+    return {
+        "type": "post-url",
+        "ref": evidence_ref,
+        "recordedAt": recorded_at,
+        "recordedBy": "jt",
+    }
+
+
 def _project_task(task: dict[str, object]) -> dict[str, object] | None:
     if not (
         task.get("packetSchema") == "lane-packet-v1"
@@ -248,13 +277,16 @@ def _project_task(task: dict[str, object]) -> dict[str, object] | None:
         return projection
     if status != "done":
         return None
-    if task.get("closureType") != "publication_acknowledged":
+    if task.get("doneEvidenceType") != "post-url":
         return None
+    evidence = _governed_done_evidence(task.get("doneEvidence"))
     pointer = _governed_outcome_pointer(task.get("outcomeRef"))
-    if pointer is None:
+    if evidence is None or pointer is None:
         return None
     projection["projectionType"] = "metrics_followup"
-    projection["closureType"] = "publication_acknowledged"
+    projection["closureType"] = "completed"
+    projection["doneEvidenceType"] = "post-url"
+    projection["doneEvidence"] = evidence
     projection["closureOutcomePointer"] = pointer
     return projection
 
@@ -395,7 +427,12 @@ def approved_linkedin_packets(
         }
         allowed_fields = common_fields | ({"expiresAt"} if "expiresAt" in packet else set())
         if packet.get("projectionType") == "metrics_followup":
-            allowed_fields |= {"closureType", "closureOutcomePointer"}
+            allowed_fields |= {
+                "closureType",
+                "doneEvidenceType",
+                "doneEvidence",
+                "closureOutcomePointer",
+            }
         if set(packet) != allowed_fields:
             raise ValueError("projected packet does not have canonical fields")
         task_id = packet.get("taskId")
@@ -436,9 +473,12 @@ def approved_linkedin_packets(
         if projection_type == "metrics_followup":
             if (
                 status != "done"
-                or packet.get("closureType") != "publication_acknowledged"
+                or packet.get("closureType") != "completed"
+                or packet.get("doneEvidenceType") != "post-url"
             ):
-                raise ValueError("metrics projection is not a governed publication closure")
+                raise ValueError("metrics projection is not a completed publication packet")
+            if _governed_done_evidence(packet.get("doneEvidence")) is None:
+                raise ValueError("metrics projection lacks governed completion evidence")
             if _governed_outcome_pointer(packet.get("closureOutcomePointer")) is None:
                 raise ValueError("metrics projection lacks a governed publication outcome")
         elif projection_type == "publication_acknowledgment":
