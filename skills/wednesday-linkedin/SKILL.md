@@ -1,78 +1,84 @@
 ---
-name: wednesday-linkedin
-description: "Write and evaluate Wednesday LinkedIn case study posts for JT Somwaru. Wednesday is the highest-stakes post of the week — a real build or pattern, honest framing, specific outcome. Use this skill whenever drafting or reviewing a Wednesday LinkedIn case study post."
+name: "wednesday-linkedin"
+description: "Use when drafting or reviewing evidence-bound LinkedIn posts for JT."
 ---
 
-# Wednesday LinkedIn Case Study
+# Wednesday LinkedIn
 
-Wednesday is JT's most important LinkedIn post. It should make a practitioner nod and a prospect stop scrolling. The output is a post ready to publish — not a framework to fill in.
+## Authority
 
----
+Exact JT-final LinkedIn text, evidence safety, and reconciled gates outrank fixed-day, fixed-format, and quota mechanics.
+
+Wednesday is an opportunity for a strong LinkedIn post, not a publication requirement. Use the strongest eligible evidence. If nothing clears the gates, return `SKIP`.
 
 ## Before Drafting
 
-1. Read `memory/content-voice.md` — mandatory, every time. Pay specific attention to the **Emotional Architecture** section.
-2. Read `skills/wednesday-linkedin/examples/good/contractor-job-status.md` — match this structure and specificity level.
-3. **Select emotional triggers before writing word 1:**
-   - Primary: **Aspiration+Believability** — the outcome must feel achievable (impressive but not impossible). Aya $1,500 / $1,000 scale is the right ceiling. A $40M result triggers skepticism; a $1,000 project that eliminated 4 hrs/week triggers aspiration.
-   - Secondary: **Identity Validation** — the problem in paragraph 1 should make the reader think "that's exactly what happens at my company." Name the specific psychological reality, not just the surface symptom.
+1. Read `memory/content-voice.md`, `memory/content/jt-voice-profile.md`, `memory/content/jt-voice-evidence-corpus.md`, and `memory/content/current-niche-map.md`.
+2. Classify the source as `client_delivery`, `field_lesson`, `engineering_recipe`, `teardown_trigger`, or `ai_event`. Reject `internal_machinery`.
+3. Verify the governing evidence, permission, conflict, privacy, originality, and freshness requirements.
+4. Prefer exact JT-final text when it exists. Never rewrite it to satisfy a mechanical ratio, day label, word count, or prose-only convention.
+5. If the source is weak, stale, repetitive, unpermissioned, or strategically off-fit, return `SKIP`.
 
-**Critical rules:**
-- Open with the reader's problem, not JT's solution or product name
-- No em dashes
-- Contrarian flip ("X isn't Y") max once per post, never in the first two paragraphs
-- Demo builds: say "while building the [demo name]" — never imply a client engagement that didn't happen
-- Every number or outcome must be real or clearly estimated — banned vague outcomes: "saved time," "more efficient," "fraction of the time," "almost nothing," "improved significantly"
-- No self-promotional closing line
-- "you/your" must outnumber "I/my" — target 5:1 ratio. Reframe from reader's perspective wherever possible.
-- **Strategic-fit gate:** Wednesday LinkedIn must increase buyer confidence in JT as an implementation operator. Block drafts that foreground a mistake, inflated claim, correction, apology, weak metric, or credibility repair unless JT explicitly asks for a postmortem. Honesty belongs in accurate numbers; it should not make the story self-undermining.
+## Draft Rules
 
----
+- Make a buyer, recruiter, or practitioner trust JT's implementation judgment.
+- Use first person when it carries verifiable ownership, a deployment detail, a decision, a failure, an artifact, or a measured result.
+- Open with the concrete operating scene or proof, not a generic AI category claim.
+- Preserve factuality. Clearly label estimates and demos. Never imply a client engagement that did not happen.
+- Include enough workflow detail to prove the work while withholding protected prompts, schemas, thresholds, credentials, and private client information.
+- Use the length and structure the evidence needs. Bullets are allowed when they make inputs, decisions, owners, constraints, or outcomes easier to verify.
+- Cut filler, generic creator patterns, self-promotional closings, engagement bait, em dashes, and unsupported metrics.
+- A case study is optional. Field lessons, engineering recipes, permission-safe teardowns, and evidence-bound AI-event posts may be stronger.
+- Internal content systems, posting machinery, state files, approval rails, and proof-hygiene work are not public proof.
 
-## Draft Format
+## Review Gates
 
-Four moves, in order:
-1. **Problem** — specific enough that the reader recognizes it from their own work
-2. **Build** — concrete tools, trigger, and flow (not "I automated it")
-3. **Outcome** — behavior change or number (not "saved time" — say how much or what changed)
-4. **Generalization** — why this pattern matters beyond this one build
+**Evidence**
+- Every material claim resolves to an allowed source and exact evidence.
+- Client proof has current permission.
+- Current-event framing uses a current primary source.
+- Protected or internal machinery stays private.
 
-150-250 words. Prose only. No headers, no bullet lists.
+**Strategic fit**
+- The post improves JT's position with a buyer, recruiter, or practitioner.
+- The operating problem, decision, or result is specific.
+- The angle is not a semantic repeat from the prior 45 days.
 
----
+**Voice**
+- The post sounds like JT rather than a generic creator.
+- First-person ownership is preserved when it proves execution.
+- No mechanical pronoun target is applied.
+- Exact JT-final text is changed only to correct a factual, evidence, permission, privacy, or hard-safety problem.
 
-## Advisory Board (run after draft — all 3 in parallel)
+**Format**
+- Structure follows the evidence.
+- Paragraphs, bullets, and length are chosen for clarity.
+- No calendar slot or format requirement can lower the quality bar.
 
-**The Exec** *(hiring manager or potential client evaluating JT)*
-- Does this make JT look like a credible operator, or someone selling something?
-- Is the outcome concrete enough to describe to a colleague in one sentence?
+## Advisory Review
 
-**The Practitioner** *(builder who works with AI workflows — skeptical of vague claims)*
-- Is anything technically hand-wavy? Does "Claude reads it" mean something specific here?
-- Would a real builder believe this was actually built and tested?
+Run three perspectives after drafting:
 
-**The Lurker** *(passive LinkedIn scroller, Wednesday morning)*
-- Does the opening line stop a scroll?
-- Is there a moment where the reader thinks "I've felt that"? (Identity Validation check — if no, the opener needs to go one level deeper into the psychological reality)
-- Does the outcome make the reader think "I could do that" — not "that's impressive but not me"? (Aspiration+Believability check)
-- Is this post for them, or about JT?
+- **Buyer:** Does this create confidence in JT's implementation judgment?
+- **Practitioner:** Are the workflow and evidence specific enough to believe?
+- **Reader:** Does the opening earn attention without creator-template theatrics?
 
-Each reviewer: **PASS / REVISE** + one specific note if REVISE. Address any REVISE before publishing.
-
-Before marking the draft approved, run one mechanical pronoun pass: count `you/your` against `I/my` and revise from the reader's operating reality until `you/your` is at least equal. Do not solve this by adding filler questions or a generic CTA.
-
----
+Each returns `PASS` or `REVISE` with one concrete reason. Any evidence, permission, privacy, or strategic-fit failure blocks the draft. A formatting preference alone does not override verified JT-final text.
 
 ## Output
 
-```
+```markdown
 ## Draft
-[post text]
+[post text or SKIP]
 
-## Advisory Board
-The Exec: [PASS/REVISE] — [note]
-The Practitioner: [PASS/REVISE] — [note]
-The Lurker: [PASS/REVISE] — [note]
+## Evidence
+[family, source, permission, freshness, conflicts, claim bindings]
 
-## Status: [APPROVED / NEEDS REVISION]
+## Review
+Buyer: [PASS/REVISE] — [reason]
+Practitioner: [PASS/REVISE] — [reason]
+Reader: [PASS/REVISE] — [reason]
+
+## Status
+[APPROVED / NEEDS REVISION / SKIP]
 ```
