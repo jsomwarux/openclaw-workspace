@@ -15,6 +15,11 @@ from scripts.linkedin_content_os.contracts import (
     validate_event,
     validate_linkedin_url,
 )
+from scripts.linkedin_content_os.historical_audit import (
+    corpus_run_id,
+    expected_recovery_items,
+    validate_corpus_authority_manifest,
+)
 from scripts.linkedin_content_os.outcomes import validate_event_sequence
 
 
@@ -26,12 +31,14 @@ _AUDIT_FIELDS = {
     "missingFieldCounts",
     "duplicateGroups",
     "records",
+    "corpusAuthorityManifest",
     "recoveryRequest",
 }
 _AUDIT_RECORD_FIELDS = {
     "date",
     "legacyRowSha256",
     "missing",
+    "rawPosted",
     "status",
     "topic",
 }
@@ -92,7 +99,9 @@ def _require_hash(value: object, label: str) -> str:
     return value
 
 
-def _validate_audit(audit_value: object) -> tuple[dict[str, object], dict[str, str]]:
+def _validate_audit(
+    audit_value: object,
+) -> tuple[dict[str, object], dict[str, str], dict[str, object]]:
     audit = _require_object(audit_value, "audit")
     if set(audit) != _AUDIT_FIELDS:
         raise ValueError("audit fields do not match linkedin-historical-audit.v1")
@@ -123,6 +132,8 @@ def _validate_audit(audit_value: object) -> tuple[dict[str, object], dict[str, s
             not isinstance(item, str) for item in record["missing"]
         ):
             raise ValueError("audit record missing must be a string list")
+        if not isinstance(record["rawPosted"], bool):
+            raise ValueError("audit record rawPosted must be boolean")
         for field in ("date", "topic"):
             if not isinstance(record[field], str) or not record[field].strip():
                 raise ValueError("audit record {} must be non-empty text".format(field))
@@ -201,18 +212,23 @@ def _validate_audit(audit_value: object) -> tuple[dict[str, object], dict[str, s
         answers = item["allowedAnswers"]
         if answers != _ALLOWED_RECOVERY_ANSWERS:
             raise ValueError("audit.recoveryRequest allowedAnswers are not closed")
-    required_recovery = {
-        str(record["legacyRowSha256"])
-        for record in records_value
-        if record["status"] == "posted_confirmed" and record["missing"]
-    }
-    if seen_recovery != required_recovery:
+    expected_items = expected_recovery_items(records_value)
+    if recovery_items != expected_items:
         raise ValueError("audit.recoveryRequest is not complete for corpus consumption")
-    return audit, statuses_by_hash
+    expected_run_id = corpus_run_id(
+        str(audit["sourceSha256"]), str(audit["generatedAt"])
+    )
+    manifest = validate_corpus_authority_manifest(
+        audit["corpusAuthorityManifest"],
+        expected_run_id=expected_run_id,
+        generated_at=str(audit["generatedAt"]),
+    )
+    return audit, statuses_by_hash, manifest
 
 
 def _validated_events(
     events_value: object,
+    manifest: Optional[dict[str, object]] = None,
 ) -> tuple[list[dict[str, object]], dict[str, dict[str, object]]]:
     if not isinstance(events_value, list):
         raise ValueError("events must be a list")
@@ -228,12 +244,45 @@ def _validated_events(
         seen_ids[event_id] = event_hash
         events.append(event)
     validate_event_sequence(events)
+    receipt_events = [
+        event for event in events if event["eventType"] == "corpus_authority_receipt"
+    ]
+    if receipt_events and manifest is None:
+        raise ValueError("corpus authority receipt requires an independent manifest")
+    if manifest is not None:
+        allowlist = manifest["receiptSha256Allowlist"]
+        assert isinstance(allowlist, list)
+        observed_receipts = sorted(str(event["eventSha256"]) for event in receipt_events)
+        if observed_receipts != allowlist:
+            raise ValueError("corpus authority receipt allowlist mismatch")
+        position = int(manifest["ledgerPosition"])
+        if position > len(events):
+            raise ValueError("corpus authority manifest ledger position is invalid")
+        if position:
+            prefix = b"".join(
+                canonical_bytes(event) + b"\n" for event in events[:position]
+            )
+            if manifest["ledgerPrefixSha256"] != sha256_hex(prefix):
+                raise ValueError("corpus authority manifest ledger prefix mismatch")
+            if any(events.index(receipt) + 1 > position for receipt in receipt_events):
+                raise ValueError("corpus authority receipt falls outside manifest prefix")
     by_id_in_ledger = {str(event["outcomeEventId"]): event for event in events}
     receipts: dict[str, dict[str, object]] = {}
     for index, receipt in enumerate(events):
         if receipt["eventType"] != "corpus_authority_receipt":
             continue
         payload = _require_object(receipt["payload"], "authority receipt payload")
+        assert manifest is not None
+        if (
+            payload["runId"] != manifest["runId"]
+            or payload["rawAuthoritySha256"]
+            != manifest["humanGateAuthorityReceiptSha256"]
+        ):
+            raise ValueError("authority receipt run or human-gate provenance mismatch")
+        if parse_timestamp(
+            manifest["validatedAt"], "corpusAuthorityManifest.validatedAt"
+        ) < parse_timestamp(payload["validatedAt"], "validatedAt"):
+            raise ValueError("corpus authority manifest predates receipt validation")
         position = int(payload["ledgerPosition"])
         if position > index or position > len(events):
             raise ValueError("authority receipt ledger position is invalid")
@@ -405,8 +454,8 @@ def build_voice_gold(
     through a validated governed event tied to a confirmed published row.
     """
 
-    _, statuses_by_hash = _validate_audit(audit)
-    ordered_events, receipts = _validated_events(events)
+    _, statuses_by_hash, manifest = _validate_audit(audit)
+    ordered_events, receipts = _validated_events(events, manifest)
     _validate_capture_bindings(ordered_events)
     publications: dict[str, list[dict[str, object]]] = {}
     captures: dict[str, list[dict[str, object]]] = {}
@@ -526,10 +575,12 @@ def build_voice_gold(
 
 def build_contrastive_pairs(
     events: list[dict[str, object]],
+    audit: Optional[dict[str, object]] = None,
 ) -> list[dict[str, object]]:
     """Return exact governed JT edit pairs plus deterministic blocking gaps."""
 
-    ordered_events, receipts = _validated_events(events)
+    manifest = _validate_audit(audit)[2] if audit is not None else None
+    ordered_events, receipts = _validated_events(events, manifest)
     _validate_capture_bindings(ordered_events)
     packets_with_final_text: set[str] = set()
     packets_with_pair: set[str] = set()

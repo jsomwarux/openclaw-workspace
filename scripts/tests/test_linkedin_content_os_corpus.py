@@ -1,4 +1,5 @@
 import unittest
+from pathlib import Path
 from typing import Optional
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
@@ -6,9 +7,54 @@ from scripts.linkedin_content_os.corpus import (
     build_contrastive_pairs,
     build_voice_gold,
 )
+from scripts.linkedin_content_os.historical_audit import (
+    audit_legacy_rows,
+    corpus_run_id,
+    expected_recovery_items,
+)
 
 
-def _audit(*records: dict[str, object]) -> dict[str, object]:
+_GENERATED_AT = "2026-09-28T12:00:00-04:00"
+_SOURCE_SHA256 = "a" * 64
+_RUN_ID = corpus_run_id(_SOURCE_SHA256, _GENERATED_AT)
+
+
+def _manifest(events: Optional[list[dict[str, object]]] = None) -> dict[str, object]:
+    ledger = list(events or [])
+    receipts = [
+        event for event in ledger if event["eventType"] == "corpus_authority_receipt"
+    ]
+    if not receipts:
+        value: dict[str, object] = {
+            "schemaVersion": "linkedin-corpus-authority-manifest.v1",
+            "runId": _RUN_ID,
+            "validatedAt": _GENERATED_AT,
+            "receiptSha256Allowlist": [],
+            "humanGateAuthorityReceiptSha256": "0" * 64,
+            "ledgerPrefixSha256": "0" * 64,
+            "ledgerPosition": 0,
+        }
+    else:
+        value = {
+            "schemaVersion": "linkedin-corpus-authority-manifest.v1",
+            "runId": _RUN_ID,
+            "validatedAt": "2026-09-28T15:00:00-04:00",
+            "receiptSha256Allowlist": sorted(
+                str(event["eventSha256"]) for event in receipts
+            ),
+            "humanGateAuthorityReceiptSha256": "c" * 64,
+            "ledgerPrefixSha256": sha256_hex(
+                b"".join(canonical_bytes(event) + b"\n" for event in ledger)
+            ),
+            "ledgerPosition": len(ledger),
+        }
+    value["manifestSha256"] = sha256_hex(canonical_bytes(value))
+    return value
+
+
+def _audit(
+    *records: dict[str, object], events: Optional[list[dict[str, object]]] = None
+) -> dict[str, object]:
     statuses = {
         "not_posted_confirmed": 0,
         "posted_confirmed": 0,
@@ -25,8 +71,8 @@ def _audit(*records: dict[str, object]) -> dict[str, object]:
         row_counts[row_hash] = row_counts.get(row_hash, 0) + 1
     return {
         "schemaVersion": "linkedin-historical-audit.v1",
-        "generatedAt": "2026-09-28T12:00:00-04:00",
-        "sourceSha256": "a" * 64,
+        "generatedAt": _GENERATED_AT,
+        "sourceSha256": _SOURCE_SHA256,
         "statusCounts": statuses,
         "missingFieldCounts": dict(sorted(missing_counts.items())),
         "duplicateGroups": [
@@ -35,37 +81,12 @@ def _audit(*records: dict[str, object]) -> dict[str, object]:
             if count > 1
         ],
         "records": list(records),
+        "corpusAuthorityManifest": _manifest(events),
         "recoveryRequest": {
             "schemaVersion": "linkedin-historical-recovery-request.v1",
             "generatedAt": "2026-09-28T12:00:00-04:00",
             "sourceSha256": "a" * 64,
-            "items": [
-                {
-                    "allowedAnswers": [
-                        {
-                            "answer": "posted",
-                            "required": ["publicUrl"],
-                            "optional": ["finalText"],
-                        },
-                        {
-                            "answer": "not_posted",
-                            "required": ["declineReason"],
-                            "allowedDeclineReasons": [
-                                "quality_fit",
-                                "stale",
-                                "timing",
-                                "other",
-                            ],
-                        },
-                        {"answer": "still_unknown", "required": []},
-                    ],
-                    "date": record["date"],
-                    "legacyRowSha256": record["legacyRowSha256"],
-                    "topic": record["topic"],
-                }
-                for record in records
-                if record["status"] == "posted_confirmed" and record["missing"]
-            ],
+            "items": expected_recovery_items(list(records)),
         },
     }
 
@@ -75,6 +96,7 @@ def _record(row_hash: str, status: str = "posted_confirmed") -> dict[str, object
         "date": "2026-09-01",
         "legacyRowSha256": row_hash,
         "missing": ["final_text"],
+        "rawPosted": status == "posted_confirmed",
         "status": status,
         "topic": "Bound topic",
     }
@@ -196,6 +218,7 @@ def _authority_receipt(
             "authoritySourceId": source["sourceId"],
             "authoritySourceSha256": source["sourceSha256"],
             "rawAuthoritySha256": "c" * 64,
+            "runId": _RUN_ID,
             "textOutcomeEventId": target["outcomeEventId"],
             "textOutcomeEventSha256": target["eventSha256"],
             "ledgerPrefixSha256": sha256_hex(prefix),
@@ -208,6 +231,10 @@ def _authority_receipt(
         source_id="authority:program-0",
         source_sha256="c" * 64,
     )
+
+
+def _build_pairs(events: list[dict[str, object]]) -> list[dict[str, object]]:
+    return build_contrastive_pairs(events, _audit(events=events))
 
 
 def _edit_pair_event(
@@ -237,7 +264,8 @@ class VoiceGoldTests(unittest.TestCase):
         event = _publication(row_hash, text)
         receipt = _authority_receipt([event], event)
 
-        rows = build_voice_gold(_audit(_record(row_hash)), [event, receipt])
+        ledger = [event, receipt]
+        rows = build_voice_gold(_audit(_record(row_hash), events=ledger), ledger)
 
         self.assertEqual(rows[0], {
             "schemaVersion": "linkedin-voice-gold.v0",
@@ -290,8 +318,25 @@ class VoiceGoldTests(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "ledger prefix"):
             build_voice_gold(
-                _audit(_record(row_hash)), [event, forged_receipt]
+                _audit(_record(row_hash), events=[event, forged_receipt]),
+                [event, forged_receipt],
             )
+
+    def test_receipt_must_be_independently_allowlisted_by_untampered_manifest(self) -> None:
+        row_hash = "1" * 64
+        event = _publication(row_hash, "Mutually forged event and receipt.")
+        receipt = _authority_receipt([event], event)
+        ledger = [event, receipt]
+
+        with self.assertRaisesRegex(ValueError, "allowlist"):
+            build_voice_gold(_audit(_record(row_hash)), ledger)
+
+        audit = _audit(_record(row_hash), events=ledger)
+        tampered = dict(audit["corpusAuthorityManifest"])
+        tampered["ledgerPosition"] = 1
+        audit["corpusAuthorityManifest"] = tampered
+        with self.assertRaisesRegex(ValueError, "manifestSha256"):
+            build_voice_gold(audit, ledger)
 
     def test_private_or_secret_exact_text_is_quarantined_without_redaction(self) -> None:
         row_hash = "1" * 64
@@ -304,7 +349,8 @@ class VoiceGoldTests(unittest.TestCase):
             [event], event, markers=["Client Alpha"]
         )
 
-        rows = build_voice_gold(_audit(_record(row_hash)), [event, receipt])
+        ledger = [event, receipt]
+        rows = build_voice_gold(_audit(_record(row_hash), events=ledger), ledger)
 
         self.assertEqual(rows[0], {
             "schemaVersion": "linkedin-corpus-quarantine.v0",
@@ -345,9 +391,8 @@ class VoiceGoldTests(unittest.TestCase):
             event_id="authority-receipt-002",
         )
 
-        rows = build_voice_gold(
-            _audit(_record(row_hash)), [acknowledged, captured, receipt]
-        )
+        ledger = [acknowledged, captured, receipt]
+        rows = build_voice_gold(_audit(_record(row_hash), events=ledger), ledger)
 
         self.assertEqual(rows[0]["origin"], "jt_authored")
         self.assertEqual(rows[0]["publicationOutcomeEventId"], "published-002")
@@ -392,7 +437,8 @@ class VoiceGoldTests(unittest.TestCase):
             with self.subTest(capture=capture["outcomeEventId"]):
                 with self.assertRaisesRegex(ValueError, message):
                     build_voice_gold(
-                        _audit(_record(row_hash)), ledger + [receipt]
+                        _audit(_record(row_hash), events=ledger + [receipt]),
+                        ledger + [receipt],
                     )
 
     def test_rejects_summary_draft_placeholder_untrusted_and_hashless_sources(self) -> None:
@@ -462,7 +508,11 @@ class VoiceGoldTests(unittest.TestCase):
             recorded_at="2026-09-28T14:01:00-04:00",
         )
         rows = build_voice_gold(
-            _audit(_record(second_hash), _record(first_hash)),
+            _audit(
+                _record(second_hash),
+                _record(first_hash),
+                events=[earlier, later, earlier_receipt, later_receipt],
+            ),
             [earlier, later, earlier_receipt, later_receipt],
         )
 
@@ -500,13 +550,14 @@ class VoiceGoldTests(unittest.TestCase):
             recorded_at="2026-09-28T12:03:00-04:00",
         )
 
-        self.assertEqual(build_contrastive_pairs([
+        ledger = [
             acknowledged,
             publication_binding,
             captured,
             acknowledged_receipt,
             captured_receipt,
-        ]), [{
+        ]
+        self.assertEqual(_build_pairs(ledger), [{
             "schemaVersion": "linkedin-corpus-gap-summary.v0",
             "recordType": "gap_summary",
             "blockingGapCount": 1,
@@ -521,7 +572,7 @@ class VoiceGoldTests(unittest.TestCase):
         event = _edit_pair_event(publication, draft, final)
         receipt = _authority_receipt([publication, event], event)
 
-        rows = build_contrastive_pairs([publication, event, receipt])
+        rows = _build_pairs([publication, event, receipt])
 
         self.assertEqual(rows[0], {
             "schemaVersion": "linkedin-contrastive-pair.v0",
@@ -558,7 +609,7 @@ class VoiceGoldTests(unittest.TestCase):
         )
         receipt = _authority_receipt([publication, event], event)
 
-        self.assertEqual(build_contrastive_pairs([publication, event, receipt]), [{
+        self.assertEqual(_build_pairs([publication, event, receipt]), [{
             "schemaVersion": "linkedin-corpus-gap-summary.v0",
             "recordType": "gap_summary",
             "blockingGapCount": 1,
@@ -606,7 +657,7 @@ class VoiceGoldTests(unittest.TestCase):
             event_id="authority-pair-later",
             recorded_at="2026-09-28T14:01:00-04:00",
         )
-        rows = build_contrastive_pairs(ledger + [earlier_receipt, later_receipt])
+        rows = _build_pairs(ledger + [earlier_receipt, later_receipt])
         pairs = [row for row in rows if row["recordType"] == "contrastive_pair"]
 
         self.assertEqual(len(pairs), 1)
@@ -623,7 +674,7 @@ class VoiceGoldTests(unittest.TestCase):
             source_type="model_generated",
         )
 
-        self.assertEqual(build_contrastive_pairs([publication, event]), [{
+        self.assertEqual(_build_pairs([publication, event]), [{
             "schemaVersion": "linkedin-corpus-gap-summary.v0",
             "recordType": "gap_summary",
             "blockingGapCount": 1,
@@ -681,7 +732,7 @@ class VoiceGoldTests(unittest.TestCase):
             build_voice_gold(bad_answers, [event])
 
         with self.assertRaisesRegex(ValueError, "eventSha256"):
-            build_contrastive_pairs([malformed_event])
+            _build_pairs([malformed_event])
 
     def test_correction_excludes_superseded_publication_evidence(self) -> None:
         row_hash = "c" * 64
@@ -716,10 +767,24 @@ class VoiceGoldTests(unittest.TestCase):
             event_id="authority-corrected",
             recorded_at="2026-09-28T12:03:00-04:00",
         )
-        rows = build_voice_gold(_audit(_record(row_hash)), ledger + [receipt])
+        rows = build_voice_gold(
+            _audit(_record(row_hash), events=ledger + [receipt]),
+            ledger + [receipt],
+        )
 
         self.assertEqual(rows[0]["text"], "Corrected exact text")
         self.assertEqual(rows[0]["publicationOutcomeEventId"], "published-replacement")
+
+    def test_accepts_the_real_task3_audit_recovery_contract(self) -> None:
+        fixture = Path(
+            "scripts/tests/fixtures/linkedin_content_os/legacy-posted-log.jsonl"
+        )
+        audit = audit_legacy_rows(fixture, None, _GENERATED_AT)
+
+        rows = build_voice_gold(audit, [])
+
+        self.assertEqual(rows[-1]["recordType"], "gap_summary")
+        self.assertGreater(rows[-1]["blockingGapCount"], 0)
 
 
 if __name__ == "__main__":

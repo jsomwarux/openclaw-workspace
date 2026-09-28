@@ -146,6 +146,7 @@ _PAYLOAD_FIELDS = {
             "authoritySourceId",
             "authoritySourceSha256",
             "rawAuthoritySha256",
+            "runId",
             "textOutcomeEventId",
             "textOutcomeEventSha256",
             "ledgerPrefixSha256",
@@ -380,6 +381,7 @@ def _validate_payload(event_type: str, payload_value: object) -> None:
         _require_string(payload["authoritySourceId"], "authoritySourceId")
         _require_hash(payload["authoritySourceSha256"], "authoritySourceSha256")
         _require_hash(payload["rawAuthoritySha256"], "rawAuthoritySha256")
+        _require_hash(payload["runId"], "runId")
         _require_stable_id(payload["textOutcomeEventId"], "textOutcomeEventId")
         _require_hash(payload["textOutcomeEventSha256"], "textOutcomeEventSha256")
         _require_hash(payload["ledgerPrefixSha256"], "ledgerPrefixSha256")

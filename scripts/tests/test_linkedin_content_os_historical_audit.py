@@ -4,7 +4,10 @@ from pathlib import Path
 from unittest import mock
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
-from scripts.linkedin_content_os.historical_audit import audit_legacy_rows
+from scripts.linkedin_content_os.historical_audit import (
+    audit_legacy_rows,
+    corpus_run_id,
+)
 
 
 FIXTURE = Path("scripts/tests/fixtures/linkedin_content_os/legacy-posted-log.jsonl")
@@ -62,6 +65,20 @@ def _write_outcomes(path: Path) -> None:
     path.write_bytes(b"".join(canonical_bytes(event) + b"\n" for event in events))
 
 
+def _manifest(source_sha256: str) -> dict[str, object]:
+    value: dict[str, object] = {
+        "schemaVersion": "linkedin-corpus-authority-manifest.v1",
+        "runId": corpus_run_id(source_sha256, GENERATED_AT),
+        "validatedAt": "2026-09-28T12:05:00-04:00",
+        "receiptSha256Allowlist": ["8" * 64],
+        "humanGateAuthorityReceiptSha256": "c" * 64,
+        "ledgerPrefixSha256": "9" * 64,
+        "ledgerPosition": 2,
+    }
+    value["manifestSha256"] = sha256_hex(canonical_bytes(value))
+    return value
+
+
 class HistoricalAuditTests(unittest.TestCase):
     def _audit(self) -> dict[str, object]:
         with tempfile.TemporaryDirectory() as directory:
@@ -82,6 +99,21 @@ class HistoricalAuditTests(unittest.TestCase):
         self.assertEqual(
             by_topic["jt-confirmed-no-url"]["missing"],
             ["public_url", "final_text"],
+        )
+
+        manifest = audit["corpusAuthorityManifest"]
+        self.assertEqual(
+            manifest,
+            {
+                "schemaVersion": "linkedin-corpus-authority-manifest.v1",
+                "runId": corpus_run_id(audit["sourceSha256"], GENERATED_AT),
+                "validatedAt": GENERATED_AT,
+                "receiptSha256Allowlist": [],
+                "humanGateAuthorityReceiptSha256": "0" * 64,
+                "ledgerPrefixSha256": "0" * 64,
+                "ledgerPosition": 0,
+                "manifestSha256": manifest["manifestSha256"],
+            },
         )
         self.assertEqual(
             by_topic["raw-false-remains-unknown"]["status"], "status_unknown"
@@ -156,7 +188,10 @@ class HistoricalAuditTests(unittest.TestCase):
             [{"legacyRowSha256": duplicate_hash, "count": 2}],
         )
         for record in audit["records"]:
-            self.assertEqual(set(record), {"date", "legacyRowSha256", "missing", "status", "topic"})
+            self.assertEqual(
+                set(record),
+                {"date", "legacyRowSha256", "missing", "rawPosted", "status", "topic"},
+            )
             self.assertNotIn("line", record)
 
     def test_builds_bounded_hash_bound_recovery_request(self) -> None:
@@ -289,6 +324,32 @@ class HistoricalAuditTests(unittest.TestCase):
         self.assertEqual(len({item["legacyRowSha256"] for item in items}), 20)
         self.assertNotIn("unknown-01", {item["topic"] for item in items})
         self.assertEqual(audit["duplicateGroups"][0]["count"], 2)
+
+    def test_accepts_only_a_hash_valid_run_bound_authority_manifest(self) -> None:
+        source_sha256 = sha256_hex(FIXTURE.read_bytes())
+        manifest = _manifest(source_sha256)
+        audit = audit_legacy_rows(
+            FIXTURE, None, GENERATED_AT, corpus_authority_manifest=manifest
+        )
+        self.assertEqual(audit["corpusAuthorityManifest"], manifest)
+
+        tampered = dict(manifest)
+        tampered["ledgerPosition"] = 3
+        with self.assertRaisesRegex(ValueError, "manifestSha256"):
+            audit_legacy_rows(
+                FIXTURE, None, GENERATED_AT, corpus_authority_manifest=tampered
+            )
+
+        wrong_run = dict(manifest)
+        wrong_run["runId"] = "f" * 64
+        without_hash = {
+            key: value for key, value in wrong_run.items() if key != "manifestSha256"
+        }
+        wrong_run["manifestSha256"] = sha256_hex(canonical_bytes(without_hash))
+        with self.assertRaisesRegex(ValueError, "runId"):
+            audit_legacy_rows(
+                FIXTURE, None, GENERATED_AT, corpus_authority_manifest=wrong_run
+            )
 
 
 if __name__ == "__main__":

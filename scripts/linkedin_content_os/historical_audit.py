@@ -7,13 +7,28 @@ from datetime import date as calendar_date
 from pathlib import Path
 from typing import Optional
 
-from scripts.linkedin_content_os.canonical import canonical_bytes, read_jsonl_bytes, sha256_hex
+from scripts.linkedin_content_os.canonical import (
+    canonical_bytes,
+    read_jsonl_bytes,
+    sha256_hex,
+)
 from scripts.linkedin_content_os.contracts import parse_timestamp, validate_linkedin_url
 from scripts.linkedin_content_os.outcomes import load_events
 
 
 _STATUSES = ("not_posted_confirmed", "posted_confirmed", "status_unknown")
 _JT_POSTED_CONFIRMATION = "JT_CONFIRMED_POSTED"
+_HASH_CHARS = set("0123456789abcdef")
+_MANIFEST_FIELDS = {
+    "schemaVersion",
+    "runId",
+    "validatedAt",
+    "receiptSha256Allowlist",
+    "humanGateAuthorityReceiptSha256",
+    "ledgerPrefixSha256",
+    "ledgerPosition",
+    "manifestSha256",
+}
 
 
 def _legacy_row_hash(row: dict[str, object]) -> str:
@@ -92,8 +107,173 @@ def _allowed_answers() -> list[dict[str, object]]:
     ]
 
 
+def _require_hash(value: object, label: str) -> str:
+    if (
+        not isinstance(value, str)
+        or len(value) != 64
+        or any(character not in _HASH_CHARS for character in value)
+    ):
+        raise ValueError("{} must be 64 lowercase hexadecimal characters".format(label))
+    return value
+
+
+def corpus_run_id(source_sha256: str, generated_at: str) -> str:
+    """Derive the immutable audit-run identity shared across the human gate."""
+
+    _require_hash(source_sha256, "sourceSha256")
+    parse_timestamp(generated_at, "generatedAt")
+    return sha256_hex(
+        canonical_bytes(
+            {
+                "schemaVersion": "linkedin-corpus-run.v1",
+                "generatedAt": generated_at,
+                "sourceSha256": source_sha256,
+            }
+        )
+    )
+
+
+def validate_corpus_authority_manifest(
+    value: object, *, expected_run_id: str, generated_at: str
+) -> dict[str, object]:
+    """Validate one independently supplied, canonical corpus authority manifest."""
+
+    if not isinstance(value, dict) or set(value) != _MANIFEST_FIELDS:
+        raise ValueError("corpusAuthorityManifest fields are not closed")
+    manifest: dict[str, object] = value
+    if manifest["schemaVersion"] != "linkedin-corpus-authority-manifest.v1":
+        raise ValueError("unsupported corpusAuthorityManifest schemaVersion")
+    if (
+        _require_hash(manifest["runId"], "corpusAuthorityManifest.runId")
+        != expected_run_id
+    ):
+        raise ValueError("corpusAuthorityManifest runId mismatch")
+    validated_at = parse_timestamp(
+        manifest["validatedAt"], "corpusAuthorityManifest.validatedAt"
+    )
+    if validated_at < parse_timestamp(generated_at, "generatedAt"):
+        raise ValueError("corpusAuthorityManifest validatedAt predates audit")
+    allowlist = manifest["receiptSha256Allowlist"]
+    if not isinstance(allowlist, list):
+        raise ValueError("corpusAuthorityManifest receipt allowlist must be a list")
+    checked_allowlist = [
+        _require_hash(item, "corpusAuthorityManifest receipt SHA-256")
+        for item in allowlist
+    ]
+    if checked_allowlist != sorted(set(checked_allowlist)):
+        raise ValueError(
+            "corpusAuthorityManifest receipt allowlist must be sorted and unique"
+        )
+    authority_hash = _require_hash(
+        manifest["humanGateAuthorityReceiptSha256"],
+        "humanGateAuthorityReceiptSha256",
+    )
+    prefix_hash = _require_hash(
+        manifest["ledgerPrefixSha256"], "corpusAuthorityManifest.ledgerPrefixSha256"
+    )
+    position = manifest["ledgerPosition"]
+    if not isinstance(position, int) or isinstance(position, bool) or position < 0:
+        raise ValueError("corpusAuthorityManifest ledgerPosition must be non-negative")
+    zero = "0" * 64
+    if checked_allowlist:
+        if authority_hash == zero or prefix_hash == zero or position == 0:
+            raise ValueError("populated corpusAuthorityManifest has empty provenance")
+        if position < len(checked_allowlist):
+            raise ValueError("corpusAuthorityManifest ledgerPosition is incomplete")
+    elif authority_hash != zero or prefix_hash != zero or position != 0:
+        raise ValueError("empty corpusAuthorityManifest has non-empty provenance")
+    provided_hash = _require_hash(
+        manifest["manifestSha256"], "corpusAuthorityManifest.manifestSha256"
+    )
+    unhashed = {
+        key: item for key, item in manifest.items() if key != "manifestSha256"
+    }
+    if provided_hash != sha256_hex(canonical_bytes(unhashed)):
+        raise ValueError("corpusAuthorityManifest manifestSha256 mismatch")
+    return manifest
+
+
+def _empty_corpus_authority_manifest(
+    *, run_id: str, generated_at: str
+) -> dict[str, object]:
+    manifest: dict[str, object] = {
+        "schemaVersion": "linkedin-corpus-authority-manifest.v1",
+        "runId": run_id,
+        "validatedAt": generated_at,
+        "receiptSha256Allowlist": [],
+        "humanGateAuthorityReceiptSha256": "0" * 64,
+        "ledgerPrefixSha256": "0" * 64,
+        "ledgerPosition": 0,
+    }
+    manifest["manifestSha256"] = sha256_hex(canonical_bytes(manifest))
+    return manifest
+
+
+def expected_recovery_items(
+    records: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    """Return the one canonical bounded recovery queue for Task 3 and consumers."""
+
+    candidates: list[tuple[bool, str, str, dict[str, object]]] = []
+    for record in records:
+        raw_posted = record.get("rawPosted")
+        if not isinstance(raw_posted, bool):
+            raise ValueError("audit record rawPosted must be boolean")
+        missing = record.get("missing")
+        if not isinstance(missing, list):
+            raise ValueError("audit record missing must be a list")
+        status = record.get("status")
+        required = raw_posted and bool(missing)
+        if required or status == "status_unknown":
+            candidates.append(
+                (
+                    required,
+                    str(record["date"]),
+                    str(record["legacyRowSha256"]),
+                    record,
+                )
+            )
+    required_rows = sorted(
+        (candidate for candidate in candidates if candidate[0]),
+        key=lambda item: (item[1], item[2]),
+        reverse=True,
+    )
+    unknown_rows = sorted(
+        (candidate for candidate in candidates if not candidate[0]),
+        key=lambda item: (item[1], item[2]),
+        reverse=True,
+    )
+    recent_unknown: list[tuple[bool, str, str, dict[str, object]]] = []
+    recent_unknown_hashes: set[str] = set()
+    for candidate in unknown_rows:
+        if candidate[2] in recent_unknown_hashes:
+            continue
+        recent_unknown_hashes.add(candidate[2])
+        recent_unknown.append(candidate)
+        if len(recent_unknown) == 20:
+            break
+    items: list[dict[str, object]] = []
+    seen: set[str] = set()
+    for _, _, row_hash, record in required_rows + recent_unknown:
+        if row_hash in seen:
+            continue
+        seen.add(row_hash)
+        items.append(
+            {
+                "allowedAnswers": _allowed_answers(),
+                "date": record["date"],
+                "legacyRowSha256": row_hash,
+                "topic": record["topic"],
+            }
+        )
+    return items
+
+
 def audit_legacy_rows(
-    posted_log: Path, outcomes: Optional[Path], generated_at: str
+    posted_log: Path,
+    outcomes: Optional[Path],
+    generated_at: str,
+    corpus_authority_manifest: Optional[dict[str, object]] = None,
 ) -> dict[str, object]:
     """Classify LinkedIn rows without mutating or over-interpreting legacy data."""
 
@@ -103,7 +283,6 @@ def audit_legacy_rows(
     governed = _governed_statuses(outcomes)
 
     records: list[dict[str, object]] = []
-    recovery_candidates: list[tuple[bool, str, str, dict[str, object]]] = []
     row_hashes: list[str] = []
     missing_counts: Counter[str] = Counter()
 
@@ -141,12 +320,11 @@ def audit_legacy_rows(
             "date": date,
             "legacyRowSha256": row_hash,
             "missing": missing,
+            "rawPosted": raw_posted,
             "status": status,
             "topic": topic,
         }
         records.append(record)
-        if (raw_posted and bool(missing)) or status == "status_unknown":
-            recovery_candidates.append((raw_posted and bool(missing), date, row_hash, record))
 
     source_after = posted_log.read_bytes()
     if source_after != source_before:
@@ -159,56 +337,39 @@ def audit_legacy_rows(
     ]
     status_counts = Counter(str(record["status"]) for record in records)
 
-    required = sorted(
-        (candidate for candidate in recovery_candidates if candidate[0]),
-        key=lambda item: (item[1], item[2]),
-        reverse=True,
+    recovery_items = expected_recovery_items(records)
+    source_sha256 = sha256_hex(source_before)
+    run_id = corpus_run_id(source_sha256, generated_at)
+    manifest = (
+        _empty_corpus_authority_manifest(run_id=run_id, generated_at=generated_at)
+        if corpus_authority_manifest is None
+        else corpus_authority_manifest
     )
-    recent_unknown_candidates = sorted(
-        (candidate for candidate in recovery_candidates if not candidate[0]),
-        key=lambda item: (item[1], item[2]),
-        reverse=True,
+    validate_corpus_authority_manifest(
+        manifest, expected_run_id=run_id, generated_at=generated_at
     )
-    recent_unknown: list[tuple[bool, str, str, dict[str, object]]] = []
-    recent_unknown_hashes: set[str] = set()
-    for candidate in recent_unknown_candidates:
-        row_hash = candidate[2]
-        if row_hash in recent_unknown_hashes:
-            continue
-        recent_unknown_hashes.add(row_hash)
-        recent_unknown.append(candidate)
-        if len(recent_unknown) == 20:
-            break
-    recovery_items: list[dict[str, object]] = []
-    seen_recovery_hashes: set[str] = set()
-    for _, _, row_hash, record in required + recent_unknown:
-        if row_hash in seen_recovery_hashes:
-            continue
-        seen_recovery_hashes.add(row_hash)
-        recovery_items.append(
-            {
-                "allowedAnswers": _allowed_answers(),
-                "date": record["date"],
-                "legacyRowSha256": row_hash,
-                "topic": record["topic"],
-            }
-        )
 
     return {
         "schemaVersion": "linkedin-historical-audit.v1",
         "generatedAt": generated_at,
-        "sourceSha256": sha256_hex(source_before),
+        "sourceSha256": source_sha256,
         "statusCounts": {status: status_counts.get(status, 0) for status in _STATUSES},
         "missingFieldCounts": dict(sorted(missing_counts.items())),
         "duplicateGroups": duplicate_groups,
         "records": records,
+        "corpusAuthorityManifest": manifest,
         "recoveryRequest": {
             "schemaVersion": "linkedin-historical-recovery-request.v1",
             "generatedAt": generated_at,
-            "sourceSha256": sha256_hex(source_before),
+            "sourceSha256": source_sha256,
             "items": recovery_items,
         },
     }
 
 
-__all__ = ["audit_legacy_rows"]
+__all__ = [
+    "audit_legacy_rows",
+    "corpus_run_id",
+    "expected_recovery_items",
+    "validate_corpus_authority_manifest",
+]
