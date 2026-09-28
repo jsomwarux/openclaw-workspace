@@ -320,6 +320,8 @@ class LinkedInContentOSCliTests(unittest.TestCase):
         git_dir.mkdir()
         (git_dir / "HEAD").write_text("ref: refs/heads/main\n", encoding="utf-8")
         (git_dir / "index").write_bytes(b"index")
+        (self.root / "secret-file").write_bytes(b"tracked-content")
+        (self.root / "untracked-secret").write_bytes(b"untracked-content")
         completed = subprocess.CompletedProcess(
             ["git"], 0, stdout=b" M secret-file\x00?? untracked-secret\x00", stderr=b""
         )
@@ -328,6 +330,25 @@ class LinkedInContentOSCliTests(unittest.TestCase):
         )
         self.assertRegex(fingerprint, r"^[0-9a-f]{64}$")
         self.assertNotIn("secret", fingerprint)
+
+    def test_primary_checkout_fingerprint_changes_when_dirty_bytes_change_under_same_status(self) -> None:
+        git_dir = self.root / ".git"
+        git_dir.mkdir()
+        (git_dir / "HEAD").write_text("ref: refs/heads/main\n", encoding="utf-8")
+        (git_dir / "index").write_bytes(b"index")
+        dirty = self.root / "tracked.txt"
+        dirty.write_bytes(b"version-one")
+        completed = subprocess.CompletedProcess(
+            ["git"], 0, stdout=b" M tracked.txt\x00", stderr=b""
+        )
+        runner = mock.Mock(return_value=completed)
+
+        first = _primary_checkout_fingerprint(self.root, runner=runner)
+        dirty.write_bytes(b"version-two")
+        second = _primary_checkout_fingerprint(self.root, runner=runner)
+
+        self.assertNotEqual(first, second)
+        self.assertEqual(runner.call_count, 2)
 
     def test_capture_guard_allows_one_exact_capture_and_denies_other_network(self) -> None:
         from scripts.linkedin_content_os.cli import _capture_network_guard

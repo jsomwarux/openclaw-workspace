@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
 import socket
+import stat
 import subprocess
 import sys
 import urllib.request
@@ -506,6 +508,122 @@ def _launchagent_inventory() -> List[Dict[str, object]]:
     return result
 
 
+def _stable_stat_identity(value: os.stat_result) -> Tuple[int, int, int, int, int]:
+    return (
+        value.st_dev,
+        value.st_ino,
+        value.st_mode,
+        value.st_size,
+        value.st_mtime_ns,
+    )
+
+
+def _hash_worktree_node(path: Path) -> Tuple[str, str]:
+    """Hash one working-tree node without following symlinks or exposing bytes."""
+
+    before = os.lstat(str(path))
+    if stat.S_ISREG(before.st_mode):
+        flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
+        descriptor = os.open(str(path), flags)
+        digest = hashlib.sha256()
+        try:
+            opened = os.fstat(descriptor)
+            if _stable_stat_identity(opened) != _stable_stat_identity(before):
+                raise RuntimeError("working-tree file changed before fingerprinting")
+            while True:
+                chunk = os.read(descriptor, 1024 * 1024)
+                if not chunk:
+                    break
+                digest.update(chunk)
+            after = os.fstat(descriptor)
+        finally:
+            os.close(descriptor)
+        if _stable_stat_identity(after) != _stable_stat_identity(before):
+            raise RuntimeError("working-tree file changed while fingerprinting")
+        return "file", digest.hexdigest()
+    if stat.S_ISLNK(before.st_mode):
+        target = os.readlink(os.fsencode(str(path)))
+        after = os.lstat(str(path))
+        if _stable_stat_identity(after) != _stable_stat_identity(before):
+            raise RuntimeError("working-tree symlink changed while fingerprinting")
+        if isinstance(target, str):
+            target_bytes = os.fsencode(target)
+        else:
+            target_bytes = target
+        return "symlink", sha256_hex(target_bytes)
+    if stat.S_ISDIR(before.st_mode):
+        children: List[Dict[str, object]] = []
+        with os.scandir(str(path)) as iterator:
+            names = sorted((entry.name for entry in iterator), key=os.fsencode)
+        for name in names:
+            kind, digest = _hash_worktree_node(path / name)
+            children.append(
+                {
+                    "nameSha256": sha256_hex(os.fsencode(name)),
+                    "kind": kind,
+                    "contentSha256": digest,
+                }
+            )
+        after = os.lstat(str(path))
+        if _stable_stat_identity(after) != _stable_stat_identity(before):
+            raise RuntimeError("working-tree directory changed while fingerprinting")
+        return "directory", sha256_hex(canonical_bytes(children))
+    raise ValueError("working-tree fingerprint refuses special filesystem nodes")
+
+
+def _status_content_entries(root: Path, status: bytes) -> List[Dict[str, object]]:
+    """Parse porcelain-v1-z and bind every dirty path to exact current content."""
+
+    tokens = status.split(b"\0")
+    entries: List[Dict[str, object]] = []
+    index = 0
+    while index < len(tokens):
+        token = tokens[index]
+        index += 1
+        if not token:
+            continue
+        if len(token) < 4 or token[2:3] != b" ":
+            raise ValueError("git status porcelain record is malformed")
+        try:
+            code = token[:2].decode("ascii")
+        except UnicodeDecodeError as error:
+            raise ValueError("git status code must be ASCII") from error
+        raw_path = token[3:]
+        relative = Path(os.fsdecode(raw_path))
+        if (
+            not raw_path
+            or relative.is_absolute()
+            or any(part in {"", ".", ".."} for part in relative.parts)
+        ):
+            raise ValueError("git status path is not canonical workspace-relative")
+        cursor = root
+        for part in relative.parts[:-1]:
+            cursor = cursor / part
+            parent = os.lstat(str(cursor))
+            if stat.S_ISLNK(parent.st_mode) or not stat.S_ISDIR(parent.st_mode):
+                raise ValueError("git status path traverses a non-directory or symlink")
+        path = root / relative
+        try:
+            kind, content_digest = _hash_worktree_node(path)
+        except FileNotFoundError:
+            if "D" not in code:
+                raise RuntimeError("working-tree path disappeared while fingerprinting")
+            kind, content_digest = "missing", sha256_hex(b"")
+        entry: Dict[str, object] = {
+            "status": code,
+            "pathSha256": sha256_hex(raw_path),
+            "kind": kind,
+            "contentSha256": content_digest,
+        }
+        if "R" in code or "C" in code:
+            if index >= len(tokens) or not tokens[index]:
+                raise ValueError("git rename/copy status lacks its source path")
+            entry["sourcePathSha256"] = sha256_hex(tokens[index])
+            index += 1
+        entries.append(entry)
+    return entries
+
+
 def _primary_checkout_fingerprint(
     root: Path = Path("/Users/jtsomwaru/.openclaw/workspace"),
     *,
@@ -531,6 +649,12 @@ def _primary_checkout_fingerprint(
     if not isinstance(status, bytes):
         raise ValueError("git status fingerprint requires byte output")
     entries.append({"path": ".git/status-porcelain-v1-z", "sha256": sha256_hex(status)})
+    entries.append(
+        {
+            "path": ".git/dirty-content",
+            "sha256": sha256_hex(canonical_bytes(_status_content_entries(root, status))),
+        }
+    )
     return sha256_hex(canonical_bytes(entries))
 
 
