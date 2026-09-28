@@ -243,6 +243,54 @@ class ClosedContractTests(unittest.TestCase):
             with self.subTest(event_type=event_type):
                 self.assertEqual(validate_event(event), event)
 
+    def test_metric_snapshot_accepts_exact_unknown_completion_without_fake_zeros(self) -> None:
+        unknown = _event(
+            event_type="metric_snapshot",
+            payload={
+                "windowDays": 7,
+                "metricsUnknown": True,
+                "collectionMethod": "jt_manual",
+            },
+        )
+
+        self.assertEqual(validate_event(unknown), unknown)
+
+        invalid_payloads = (
+            {"windowDays": 7, "collectionMethod": "jt_manual"},
+            {
+                "windowDays": 7,
+                "metrics": {"impressions": 0},
+                "metricsUnknown": True,
+                "collectionMethod": "jt_manual",
+            },
+            {
+                "windowDays": 7,
+                "metricsUnknown": False,
+                "collectionMethod": "jt_manual",
+            },
+        )
+        for payload in invalid_payloads:
+            with self.subTest(payload=payload), self.assertRaisesRegex(
+                ValueError, "metrics"
+            ):
+                validate_event(_event(event_type="metric_snapshot", payload=payload))
+
+    def test_publication_deferral_must_move_forward_from_recorded_at(self) -> None:
+        for next_check in (
+            "2026-09-28T12:00:00-04:00",
+            "2026-09-28T11:59:59-04:00",
+        ):
+            with self.subTest(next_check=next_check), self.assertRaisesRegex(
+                ValueError, "strictly after"
+            ):
+                validate_event(
+                    _event(
+                        event_type="publication_deferred",
+                        recorded_at="2026-09-28T12:00:00-04:00",
+                        payload={"nextCheckAt": next_check},
+                    )
+                )
+
     def test_publication_acknowledgment_requires_https_linkedin_url(self) -> None:
         for url in (
             "http://www.linkedin.com/posts/jt_post-1",

@@ -31,6 +31,7 @@ _PUBLICATION_EVENTS = {
     "publication_declined",
     "metric_snapshot",
 }
+_NONTERMINAL_STATUSES = {"todo", "in-progress", "waiting-external", "snoozed"}
 
 
 def _require_hash(value: object, label: str) -> str:
@@ -116,6 +117,7 @@ def _validate_snapshot(
 
     packets: list[dict[str, object]] = []
     seen: set[str] = set()
+    seen_content_ids: set[str] = set()
     prior_task_id: str | None = None
     for value in packets_value:
         if not isinstance(value, dict):
@@ -156,7 +158,10 @@ def _validate_snapshot(
             raise ValueError("approved payload hash mismatch")
         if packet.get("approvalState") != "approved":
             raise ValueError("projected packet is not approved")
-        _require_stable_id(packet.get("contentId"), "contentId")
+        content_id = _require_stable_id(packet.get("contentId"), "contentId")
+        if content_id in seen_content_ids:
+            raise ValueError("projected packet contentId values must be unique")
+        seen_content_ids.add(content_id)
         expires_at = packet.get("expiresAt")
         if expires_at is not None and (
             not isinstance(expires_at, int)
@@ -165,8 +170,8 @@ def _validate_snapshot(
         ):
             raise ValueError("expiresAt must be a non-negative integer")
         if projection_type == "publication_acknowledgment":
-            if packet.get("status") in {"done", "archived"}:
-                raise ValueError("terminal packet cannot request publication acknowledgment")
+            if packet.get("status") not in _NONTERMINAL_STATUSES:
+                raise ValueError("publication packet status is unsupported")
         elif projection_type == "metrics_followup":
             _validate_terminal_projection(packet)
         else:
@@ -283,7 +288,7 @@ def _publication_state(
 ) -> tuple[dict[str, object] | None, dict[str, object] | None, datetime | None]:
     terminal: dict[str, object] | None = None
     deferred: dict[str, object] | None = None
-    metrics: dict[str, object] | None = None
+    metric_events: list[dict[str, object]] = []
     for event in events:
         event_type = event["eventType"]
         if event_type == "publication_deferred":
@@ -298,16 +303,14 @@ def _publication_state(
             payload = event["payload"]
             assert isinstance(payload, dict)
             if payload["windowDays"] == 7:
-                if metrics is not None:
-                    raise ValueError("packet has duplicate seven-day metric snapshots")
-                metrics = event
+                metric_events.append(event)
 
     if terminal is not None and terminal["eventType"] == "publication_declined":
-        if metrics is not None:
+        if metric_events:
             raise ValueError("declined publication cannot have metrics")
-        return terminal, metrics, None
+        return terminal, None, None
     if terminal is None:
-        if metrics is not None:
+        if metric_events:
             raise ValueError("metrics require a publication acknowledgment")
         next_check = None
         if deferred is not None:
@@ -321,11 +324,15 @@ def _publication_state(
     published_at = parse_timestamp(
         payload.get("publishedAt", terminal["recordedAt"]), "publishedAt"
     )
-    if metrics is not None and parse_timestamp(
-        metrics["recordedAt"], "recordedAt"
-    ) < published_at:
-        raise ValueError("metric snapshot predates publication")
-    return terminal, metrics, published_at + METRICS_WINDOW
+    metrics_due = published_at + METRICS_WINDOW
+    eligible_metrics = [
+        event
+        for event in metric_events
+        if parse_timestamp(event["recordedAt"], "recordedAt") >= metrics_due
+    ]
+    if len(eligible_metrics) > 1:
+        raise ValueError("packet has duplicate seven-day metric snapshots")
+    return terminal, eligible_metrics[0] if eligible_metrics else None, metrics_due
 
 
 def _validate_terminal_binding(
@@ -346,6 +353,15 @@ def _validate_terminal_binding(
         or ("url" in pointer and pointer["url"] != payload["publicationUrl"])
     ):
         raise ValueError("terminal packet is missing its matching publication closure")
+    published_at = parse_timestamp(
+        payload.get("publishedAt", publication["recordedAt"]), "publishedAt"
+    )
+    published_millis = _milliseconds(published_at)
+    if (
+        evidence["recordedAt"] < published_millis
+        or pointer["recordedAt"] < published_millis
+    ):
+        raise ValueError("terminal publication closure predates publication")
 
 
 def _milliseconds(value: datetime) -> int:
@@ -376,6 +392,13 @@ def project_checkin(
             expires_at = packet.get("expiresAt")
             if isinstance(expires_at, int) and _milliseconds(now) > expires_at:
                 raise ValueError("approved packet expired before acknowledgment")
+            if (
+                isinstance(expires_at, int)
+                and publication is None
+                and next_due is not None
+                and _milliseconds(next_due) > expires_at
+            ):
+                raise ValueError("publication deferral exceeds packet expiry")
             if publication is None and (next_due is None or now >= next_due):
                 publication_steps.append(
                     (

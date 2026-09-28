@@ -256,6 +256,57 @@ class LinkedInCheckinProjectionTests(unittest.TestCase):
 
         self.assertIsNone(project_checkin(_snapshot(terminal), [published, metrics], NOW))
 
+    def test_early_metric_snapshot_cannot_suppress_the_full_day_seven_prompt(self) -> None:
+        packet = _packet()
+        published = _published(packet, recorded_at="2026-09-20T16:00:00+00:00")
+        terminal = _completed_packet(published)
+        early = _event(
+            "metrics-early",
+            "metric_snapshot",
+            {
+                "windowDays": 7,
+                "metrics": {"impressions": 123},
+                "collectionMethod": "jt_manual",
+            },
+            packet=packet,
+            recorded_at="2026-09-26T16:00:00+00:00",
+        )
+        day_seven = datetime(2026, 9, 27, 16, 0, tzinfo=timezone.utc)
+
+        preview = project_checkin(
+            _snapshot(terminal, captured_at=day_seven - timedelta(minutes=30)),
+            [published, early],
+            day_seven,
+        )
+
+        assert preview is not None
+        self.assertIn("seven-day", preview["task"]["exactSteps"][0])
+
+    def test_unknown_only_day_seven_snapshot_closes_without_fake_zero(self) -> None:
+        packet = _packet()
+        published = _published(packet, recorded_at="2026-09-20T16:00:00+00:00")
+        terminal = _completed_packet(published)
+        unknown = _event(
+            "metrics-unknown",
+            "metric_snapshot",
+            {
+                "windowDays": 7,
+                "metricsUnknown": True,
+                "collectionMethod": "jt_manual",
+            },
+            packet=packet,
+            recorded_at="2026-09-27T16:00:00+00:00",
+        )
+        day_seven = datetime(2026, 9, 27, 16, 0, tzinfo=timezone.utc)
+
+        self.assertIsNone(
+            project_checkin(
+                _snapshot(terminal, captured_at=day_seven - timedelta(minutes=30)),
+                [published, unknown],
+                day_seven,
+            )
+        )
+
     def test_mixed_gaps_emit_one_task_with_publication_steps_before_metrics(self) -> None:
         open_packet = _packet("task-001", "content-001")
         published = _published(
@@ -309,6 +360,36 @@ class LinkedInCheckinProjectionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "stale"):
             project_checkin(_snapshot(packet), [], NOW + timedelta(hours=2))
 
+    def test_snapshot_status_content_identity_and_ttl_are_closed(self) -> None:
+        with self.assertRaisesRegex(ValueError, "status"):
+            project_checkin(_snapshot(_packet(status="unknown")), [], NOW)
+
+        with self.assertRaisesRegex(ValueError, "contentId"):
+            project_checkin(
+                _snapshot(_packet("task-001"), _packet("task-002")), [], NOW
+            )
+
+        packet = _packet()
+        boundary = datetime(2026, 9, 28, 17, 30, tzinfo=timezone.utc)
+        self.assertIsNotNone(project_checkin(_snapshot(packet), [], boundary))
+        with self.assertRaisesRegex(ValueError, "stale"):
+            project_checkin(
+                _snapshot(packet), [], boundary + timedelta(microseconds=1)
+            )
+
+    def test_deferral_cannot_outlive_packet_expiry(self) -> None:
+        expiry = datetime(2026, 9, 29, 0, 0, tzinfo=timezone.utc)
+        packet = _packet(expiresAt=int(expiry.timestamp() * 1000))
+        deferred = _event(
+            "deferred-after-expiry",
+            "publication_deferred",
+            {"nextCheckAt": "2026-09-29T01:00:00+00:00"},
+            packet=packet,
+        )
+
+        with self.assertRaisesRegex(ValueError, "expiry"):
+            project_checkin(_snapshot(packet), [deferred], NOW)
+
     def test_terminal_packet_requires_matching_hash_bound_publication_closure(self) -> None:
         publication = _published()
         terminal = _completed_packet(publication)
@@ -319,6 +400,43 @@ class LinkedInCheckinProjectionTests(unittest.TestCase):
         wrong_event = _published(event_id="different-publication")
         with self.assertRaisesRegex(ValueError, "publication closure"):
             project_checkin(_snapshot(terminal), [wrong_event], NOW)
+
+    def test_terminal_closure_timestamps_cannot_predate_publication(self) -> None:
+        publication = _published(recorded_at="2026-09-20T16:00:00+00:00")
+        terminal = _completed_packet(publication)
+        terminal["doneEvidence"] = {
+            **terminal["doneEvidence"],
+            "recordedAt": 1,
+        }
+        terminal["closureOutcomePointer"] = {
+            **terminal["closureOutcomePointer"],
+            "recordedAt": 1,
+        }
+
+        with self.assertRaisesRegex(ValueError, "predates publication"):
+            project_checkin(_snapshot(terminal), [publication], NOW)
+
+    def test_day_seven_boundary_uses_absolute_time_across_offsets(self) -> None:
+        packet = _packet()
+        published = _published(packet, recorded_at="2026-09-20T12:00:00-04:00")
+        terminal = _completed_packet(published)
+        epsilon_before = datetime(2026, 9, 27, 15, 59, 59, 999999, tzinfo=timezone.utc)
+        boundary = datetime(2026, 9, 27, 16, 0, tzinfo=timezone.utc)
+
+        self.assertIsNone(
+            project_checkin(
+                _snapshot(terminal, captured_at=epsilon_before - timedelta(minutes=30)),
+                [published],
+                epsilon_before,
+            )
+        )
+        self.assertIsNotNone(
+            project_checkin(
+                _snapshot(terminal, captured_at=boundary - timedelta(minutes=30)),
+                [published],
+                boundary,
+            )
+        )
 
     def test_resigned_terminal_projection_cannot_smuggle_a_non_linkedin_url(self) -> None:
         publication = _published()

@@ -113,8 +113,8 @@ _PAYLOAD_FIELDS = {
         {"draftText", "draftTextSha256", "editReason"},
     ),
     "metric_snapshot": (
-        {"windowDays", "metrics", "collectionMethod"},
-        set(),
+        {"windowDays", "collectionMethod"},
+        {"metrics", "metricsUnknown"},
     ),
     "qualified_reply": (
         {"evidenceRef", "qualificationReason"},
@@ -331,13 +331,22 @@ def _validate_payload(event_type: str, payload_value: object) -> None:
         window = payload["windowDays"]
         if not isinstance(window, int) or isinstance(window, bool) or window <= 0:
             raise ValueError("windowDays must be a positive integer")
-        metrics = payload["metrics"]
-        if not isinstance(metrics, dict) or not metrics:
-            raise ValueError("metrics must be a non-empty object")
-        for key, metric in metrics.items():
-            _require_stable_id(key, "metric name")
-            if not isinstance(metric, int) or isinstance(metric, bool) or metric < 0:
-                raise ValueError("metric values must be non-negative integers")
+        has_metrics = "metrics" in payload
+        has_unknown = "metricsUnknown" in payload
+        if has_metrics == has_unknown:
+            raise ValueError(
+                "metric snapshot requires exactly one of metrics or metricsUnknown"
+            )
+        if has_metrics:
+            metrics = payload["metrics"]
+            if not isinstance(metrics, dict) or not metrics:
+                raise ValueError("metrics must be a non-empty object")
+            for key, metric in metrics.items():
+                _require_stable_id(key, "metric name")
+                if not isinstance(metric, int) or isinstance(metric, bool) or metric < 0:
+                    raise ValueError("metric values must be non-negative integers")
+        elif payload["metricsUnknown"] is not True:
+            raise ValueError("metricsUnknown must be true")
         _require_stable_id(payload["collectionMethod"], "collectionMethod")
     elif event_type == "qualified_reply":
         _require_string(payload["evidenceRef"], "evidenceRef")
@@ -451,6 +460,13 @@ def validate_event(event_value: object) -> dict[str, object]:
         )
 
     _validate_payload(event_type, event["payload"])
+    if event_type == "publication_deferred":
+        payload = event["payload"]
+        assert isinstance(payload, dict)
+        if parse_timestamp(payload["nextCheckAt"], "nextCheckAt") <= parse_timestamp(
+            event["recordedAt"], "recordedAt"
+        ):
+            raise ValueError("nextCheckAt must be strictly after recordedAt")
     if event_type == "corpus_authority_receipt":
         payload = event["payload"]
         assert isinstance(payload, dict)
