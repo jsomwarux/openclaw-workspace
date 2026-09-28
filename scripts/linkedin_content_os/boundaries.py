@@ -135,14 +135,19 @@ def validate_authority_consumption_receipt(
     if workspace_root is not None:
         root = Path(workspace_root).resolve()
         for binding in inputs + outputs:
-            path = root / str(binding["path"])
+            unresolved = root / str(binding["path"])
+            try:
+                path = unresolved.resolve(strict=True)
+                path.relative_to(root)
+            except (OSError, ValueError) as error:
+                raise ValueError("bound receipt path escapes workspace or is unavailable") from error
             try:
                 payload = path.read_bytes()
             except OSError as error:
                 raise ValueError("bound receipt path is unavailable") from error
             if sha256_hex(payload) != binding["sha256"]:
                 raise ValueError("bound receipt byte hash mismatch")
-        run_path = root / str(run_binding["path"])
+        run_path = (root / str(run_binding["path"])).resolve(strict=True)
         try:
             run_value = __import__("json").loads(run_path.read_text(encoding="utf-8"))
         except (OSError, UnicodeDecodeError, ValueError) as error:
@@ -224,6 +229,9 @@ def normalize_cron_definitions(value: object) -> Dict[str, object]:
         target = delivery.get("to", delivery.get("target"))
         if target is not None and not isinstance(target, str):
             raise ValueError("cron delivery target must be text")
+        target_digest = (
+            sha256_hex(target.encode("utf-8")) if isinstance(target, str) else None
+        )
         jobs.append(
             {
                 "id": job_id,
@@ -234,7 +242,7 @@ def normalize_cron_definitions(value: object) -> Dict[str, object]:
                 "wakeMode": raw.get("wakeMode"),
                 "payloadSha256": sha256_hex(canonical_bytes(payload)),
                 "deliveryMode": delivery.get("mode"),
-                "deliveryTarget": target,
+                "deliveryTargetSha256": target_digest,
             }
         )
     jobs.sort(key=lambda item: str(item["id"]))

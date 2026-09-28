@@ -16,6 +16,8 @@
 - [x] Task 9: Locally prove the single deduplicated check-in contract.
 - [ ] Task 10: Add one local CLI and generate Program 0 artifacts.
   - [x] Add the closed local CLI, authority-consumption receipts, process/network guards, and boundary proof primitives with TDD coverage.
+  - [x] Harden phase-separated immutable evidence paths, lazy Task 7B dispatch, canonical manifest/receipt/order validation, exact boundary-context pairing, alias/symlink refusal, status-aware checkout fingerprinting, and evidence-derived reporting.
+  - [ ] Run the final phase-2 integration matrix against the real recovery module after Task 7B receives JT's governed response; pre-gate dispatch intentionally fails closed while that module is absent.
   - [ ] Generate phase-1 artifacts only after the governed Wednesday skill owner is repaired; no real loopback request has run.
   - [ ] Stop at Task 7A and wait for JT's complete bound human-gate response before phase 2.
 

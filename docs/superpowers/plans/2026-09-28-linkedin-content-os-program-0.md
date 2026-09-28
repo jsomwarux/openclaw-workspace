@@ -676,40 +676,43 @@ From the worktree root, run these exact commands in order:
 ```bash
 python3 -m scripts.linkedin_content_os.cli init-run \
   --generated-at now \
-  --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
-  --output memory/content/linkedin-content-os/run-context.v1.json
+  --outcomes memory/content/linkedin-content-os/outcomes.phase-1.v1.jsonl \
+  --output memory/content/linkedin-content-os/run-context.phase-1.v1.json
 python3 -m scripts.linkedin_content_os.cli capture-boundaries \
   --phase phase-1-before \
-  --run-context memory/content/linkedin-content-os/run-context.v1.json \
+  --run-context memory/content/linkedin-content-os/run-context.phase-1.v1.json \
   --output memory/content/linkedin-content-os/boundaries.phase-1.before.v1.json
 python3 -m scripts.linkedin_content_os.cli audit-history \
   --posted-log memory/content/posted-log.jsonl \
-  --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
-  --run-context memory/content/linkedin-content-os/run-context.v1.json \
-  --output memory/content/linkedin-content-os/historical-audit.v1.json \
-  --recovery-output memory/content/linkedin-content-os/historical-recovery-request.v1.json
+  --outcomes memory/content/linkedin-content-os/outcomes.phase-1.v1.jsonl \
+  --run-context memory/content/linkedin-content-os/run-context.phase-1.v1.json \
+  --output memory/content/linkedin-content-os/historical-audit.phase-1.v1.json \
+  --recovery-output memory/content/linkedin-content-os/historical-recovery-request.phase-1.v1.json
 python3 -m scripts.linkedin_content_os.cli build-focus \
   --workspace-root . \
-  --run-context memory/content/linkedin-content-os/run-context.v1.json \
-  --output memory/content/linkedin-content-os/focus-snapshot.v1.json
+  --run-context memory/content/linkedin-content-os/run-context.phase-1.v1.json \
+  --output memory/content/linkedin-content-os/focus-snapshot.phase-1.v1.json
 python3 -m scripts.linkedin_content_os.cli build-corpus \
-  --audit memory/content/linkedin-content-os/historical-audit.v1.json \
-  --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
-  --run-context memory/content/linkedin-content-os/run-context.v1.json \
-  --gold-output memory/content/linkedin-content-os/voice-gold.v0.jsonl \
-  --pairs-output memory/content/linkedin-content-os/contrastive-pairs.v0.jsonl \
+  --audit memory/content/linkedin-content-os/historical-audit.phase-1.v1.json \
+  --outcomes memory/content/linkedin-content-os/outcomes.phase-1.v1.jsonl \
+  --run-context memory/content/linkedin-content-os/run-context.phase-1.v1.json \
+  --gold-output memory/content/linkedin-content-os/voice-gold.phase-1.v0.jsonl \
+  --pairs-output memory/content/linkedin-content-os/contrastive-pairs.phase-1.v0.jsonl \
   --receipt-output memory/content/linkedin-content-os/authority-consumption.phase-1-corpus.v1.json
 python3 -m scripts.linkedin_content_os.cli build-fixtures \
   --decagon-packet mission-control/lib/mission-control/fixtures/jobs/decagon-agent-development-manager.packet.json \
   --jt-ops-git-dir /Users/jtsomwaru/.openclaw/workspace/.worktrees/jt-ops-proof-asset/.git \
   --jt-ops-commit cd3e17f5287a64dbfedc27e1d2153d89250ba02c \
   --jt-ops-path evidence/cohort-two.proof-asset.json \
-  --output memory/content/linkedin-content-os/evaluation-fixtures.v0.jsonl
+  --run-context memory/content/linkedin-content-os/run-context.phase-1.v1.json \
+  --output memory/content/linkedin-content-os/evaluation-fixtures.phase-1.v0.jsonl
 python3 -m scripts.linkedin_content_os.cli capture-boundaries \
   --phase phase-1-after \
-  --run-context memory/content/linkedin-content-os/run-context.v1.json \
+  --run-context memory/content/linkedin-content-os/run-context.phase-1.v1.json \
   --output memory/content/linkedin-content-os/boundaries.phase-1.after.v1.json
 ```
+
+The phase-1 run context, outcome ledger, audit, corpus, fixture, and focus paths above are immutable evidence after the human-gate packet is emitted. Phase 2 intentionally creates separate base run/outcome files and may never overwrite those phase-1 paths. This path split is required so the final verifier can rehash every phase-1 receipt binding after legitimate phase-2 appends and rebuilds.
 
 The phase-1 `build-corpus` command must validate the base run context and the audit's fixed empty pre-gate authority manifest. Its tests and receipt must prove that the empty allowlist, zero authority/prefix hashes, zero ledger position, and canonical empty-manifest hash match the run ID; any populated manifest or non-empty authority field fails without a separately anchored expected digest.
 
@@ -727,9 +730,9 @@ python3 -m scripts.linkedin_content_os.cli capture-boundaries \
   --output memory/content/linkedin-content-os/boundaries.phase-2.before.v1.json
 python3 -m scripts.linkedin_content_os.cli ingest-human-gate \
   --response memory/content/linkedin-content-os/human-gate-response.v1.json \
-  --recovery-request memory/content/linkedin-content-os/historical-recovery-request.v1.json \
-  --focus memory/content/linkedin-content-os/focus-snapshot.v1.json \
-  --fixtures memory/content/linkedin-content-os/evaluation-fixtures.v0.jsonl \
+  --recovery-request memory/content/linkedin-content-os/historical-recovery-request.phase-1.v1.json \
+  --focus memory/content/linkedin-content-os/focus-snapshot.phase-1.v1.json \
+  --fixtures memory/content/linkedin-content-os/evaluation-fixtures.phase-1.v0.jsonl \
   --outcomes memory/content/linkedin-content-os/outcomes.v1.jsonl \
   --corpus-authority-manifest-output memory/content/linkedin-content-os/corpus-authority-manifest.v1.json \
   --authority-run-context-output memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json \

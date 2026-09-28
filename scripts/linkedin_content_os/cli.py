@@ -35,19 +35,24 @@ from scripts.linkedin_content_os.corpus import (
     build_voice_gold,
 )
 from scripts.linkedin_content_os.fixtures import (
+    DECAGON_PACKET_PATH,
     PRE_GATE_COMMIT,
     PRE_GATE_PATH,
     build_evaluation_fixtures,
 )
 from scripts.linkedin_content_os.focus import build_focus_snapshot
-from scripts.linkedin_content_os.historical_audit import audit_legacy_rows
+from scripts.linkedin_content_os.historical_audit import (
+    audit_legacy_rows,
+    corpus_run_id,
+    validate_corpus_authority_manifest,
+)
 from scripts.linkedin_content_os.mc_snapshot import (
     SOURCE_URL,
     capture_tasks,
     validate_snapshot,
 )
 from scripts.linkedin_content_os.outcomes import load_events
-from scripts.linkedin_content_os.source_policy import build_source_policy
+from scripts.linkedin_content_os.source_policy import build_source_policy, validate_source_policy
 from scripts.linkedin_content_os.voice_rules import (
     OWNER_SURFACES,
     build_voice_rule_retirements,
@@ -107,7 +112,25 @@ def _read_json(path: Path) -> Dict[str, object]:
 
 
 def _write_jsonl(path: Path, rows: Sequence[Dict[str, object]]) -> None:
-    payload = b"".join(canonical_bytes(row) + b"\n" for row in rows)
+    payload = _jsonl_bytes(rows)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(".{}.{}.tmp".format(path.name, os.getpid()))
+    try:
+        with temporary.open("xb") as handle:
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(str(temporary), str(path))
+    except Exception:
+        temporary.unlink(missing_ok=True)
+        raise
+
+
+def _jsonl_bytes(rows: Sequence[Dict[str, object]]) -> bytes:
+    return b"".join(canonical_bytes(row) + b"\n" for row in rows)
+
+
+def _write_bytes_atomic(path: Path, payload: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(".{}.{}.tmp".format(path.name, os.getpid()))
     try:
@@ -125,6 +148,28 @@ def _read_jsonl_optional(path: Path) -> List[Dict[str, object]]:
     if not path.exists():
         raise ValueError("required Program 0 artifact is missing: {}".format(path))
     return read_jsonl(path)
+
+
+def _validate_distinct_paths(
+    *,
+    inputs: Sequence[Path],
+    outputs: Sequence[Path],
+    receipts: Sequence[Path],
+    workspace_root: Path,
+) -> None:
+    """Reject every input/output/receipt alias before a command can write."""
+
+    del workspace_root  # Paths may intentionally include an external read-only Git dir.
+    labeled: List[Tuple[str, Path]] = []
+    for label, paths in (("input", inputs), ("output", outputs), ("receipt", receipts)):
+        for path in paths:
+            labeled.append((label, Path(path).resolve(strict=False)))
+    seen: Dict[Path, str] = {}
+    for label, path in labeled:
+        prior = seen.get(path)
+        if prior is not None:
+            raise ValueError("path alias between {} and {}: {}".format(prior, label, path))
+        seen[path] = label
 
 
 def _require_hash(value: object, label: str) -> str:
@@ -169,6 +214,9 @@ def init_run(
 ) -> Dict[str, object]:
     """Create one run context while preserving any existing outcome ledger."""
 
+    _validate_distinct_paths(
+        inputs=[], outputs=[Path(outcomes), Path(output)], receipts=[], workspace_root=Path(".")
+    )
     instant = _utc_now().isoformat() if generated_at == "now" else generated_at
     parse_timestamp(instant, "generatedAt")
     unsigned: Dict[str, object] = {
@@ -213,6 +261,46 @@ def _network_denied() -> Iterator[None]:
         urllib.request.urlopen = original_urlopen  # type: ignore[assignment]
 
 
+@contextmanager
+def _capture_network_guard() -> Iterator[Callable[[Callable[[], bytes]], bytes]]:
+    """Deny all network except one explicitly scoped capture_tasks invocation."""
+
+    original_connect = socket.socket.connect
+    original_create = socket.create_connection
+    original_urlopen = urllib.request.urlopen
+    calls = 0
+
+    def blocked(*args: object, **kwargs: object) -> object:
+        raise RuntimeError("network access is prohibited outside the exact loopback GET")
+
+    def exact_get(operation: Callable[[], bytes]) -> bytes:
+        nonlocal calls
+        if calls != 0:
+            raise RuntimeError("capture-boundaries permits exactly one loopback GET")
+        calls += 1
+        socket.socket.connect = original_connect  # type: ignore[assignment]
+        socket.create_connection = original_create  # type: ignore[assignment]
+        urllib.request.urlopen = original_urlopen  # type: ignore[assignment]
+        try:
+            return operation()
+        finally:
+            socket.socket.connect = blocked  # type: ignore[assignment]
+            socket.create_connection = blocked  # type: ignore[assignment]
+            urllib.request.urlopen = blocked  # type: ignore[assignment]
+
+    socket.socket.connect = blocked  # type: ignore[assignment]
+    socket.create_connection = blocked  # type: ignore[assignment]
+    urllib.request.urlopen = blocked  # type: ignore[assignment]
+    try:
+        yield exact_get
+        if calls != 1:
+            raise RuntimeError("capture-boundaries requires exactly one loopback GET")
+    finally:
+        socket.socket.connect = original_connect  # type: ignore[assignment]
+        socket.create_connection = original_create  # type: ignore[assignment]
+        urllib.request.urlopen = original_urlopen  # type: ignore[assignment]
+
+
 def _allowed_process_argv(command: str, argv: object) -> bool:
     if not isinstance(argv, (list, tuple)) or any(
         not isinstance(item, str) for item in argv
@@ -220,7 +308,17 @@ def _allowed_process_argv(command: str, argv: object) -> bool:
         return False
     values = list(argv)
     if command == "capture-boundaries":
-        return values == ["openclaw", "cron", "list", "--json"]
+        if values == ["openclaw", "cron", "list", "--json"]:
+            return True
+        return (
+            len(values) == 7
+            and values[0] == "git"
+            and values[1] == "-C"
+            and Path(values[2]).is_absolute()
+            and values[3:] == [
+                "status", "--porcelain=v1", "-z", "--untracked-files=all"
+            ]
+        )
     if command in {"build-fixtures", "ingest-human-gate"}:
         return (
             len(values) == 5
@@ -290,7 +388,17 @@ def _binding(role: str, path: Path, root: Path) -> Dict[str, object]:
     }
 
 
-def _write_receipt(
+def _payload_binding(
+    role: str, path: Path, payload: bytes, root: Path
+) -> Dict[str, object]:
+    return {
+        "role": role,
+        "path": _relative(path, root),
+        "sha256": sha256_hex(payload),
+    }
+
+
+def _build_receipt(
     *,
     command: str,
     run_context_path: Path,
@@ -298,8 +406,7 @@ def _write_receipt(
     manifest: Dict[str, object],
     expected_manifest_sha256: Optional[str],
     inputs: Sequence[Tuple[str, Path]],
-    outputs: Sequence[Tuple[str, Path]],
-    receipt_output: Path,
+    outputs: Sequence[Tuple[str, Path, bytes]],
     workspace_root: Path,
 ) -> Dict[str, object]:
     canonical_manifest_sha256 = _require_hash(
@@ -315,13 +422,14 @@ def _write_receipt(
             key=lambda item: (str(item["role"]), str(item["path"])),
         ),
         outputs=sorted(
-            [_binding(role, path, workspace_root) for role, path in outputs],
+            [
+                _payload_binding(role, path, payload, workspace_root)
+                for role, path, payload in outputs
+            ],
             key=lambda item: (str(item["role"]), str(item["path"])),
         ),
         generated_at=str(run_context["generatedAt"]),
     )
-    receipt_output.parent.mkdir(parents=True, exist_ok=True)
-    write_json_atomic(receipt_output, receipt)
     return receipt
 
 
@@ -398,22 +506,39 @@ def _launchagent_inventory() -> List[Dict[str, object]]:
     return result
 
 
-def _primary_checkout_fingerprint() -> str:
-    root = Path("/Users/jtsomwaru/.openclaw/workspace")
+def _primary_checkout_fingerprint(
+    root: Path = Path("/Users/jtsomwaru/.openclaw/workspace"),
+    *,
+    runner: Optional[Callable[..., subprocess.CompletedProcess]] = None,
+) -> str:
+    root = Path(root).resolve()
     entries: List[Dict[str, object]] = []
     for relative in (".git/HEAD", ".git/index"):
         path = root / relative
         if path.is_file():
             entries.append({"path": relative, "sha256": sha256_hex(path.read_bytes())})
+    active_runner = subprocess.run if runner is None else runner
+    completed = active_runner(
+        [
+            "git", "-C", str(root), "status", "--porcelain=v1", "-z",
+            "--untracked-files=all",
+        ],
+        check=True,
+        capture_output=True,
+        text=False,
+    )
+    status = completed.stdout
+    if not isinstance(status, bytes):
+        raise ValueError("git status fingerprint requires byte output")
+    entries.append({"path": ".git/status-porcelain-v1-z", "sha256": sha256_hex(status)})
     return sha256_hex(canonical_bytes(entries))
 
 
 def _capture_boundaries(args: argparse.Namespace) -> Dict[str, object]:
     run_context = _run_context(Path(args.run_context))
-    raw = capture_tasks(SOURCE_URL)
+    with _capture_network_guard() as exact_get:
+        raw = exact_get(lambda: capture_tasks(SOURCE_URL))
     snapshot = validate_snapshot(raw, run_context)
-    if args.mc_output:
-        write_json_atomic(Path(args.mc_output), snapshot)
     cron = normalize_cron_definitions(_cron_list())
     protected: Dict[str, str] = {}
     root = Path(args.workspace_root).resolve()
@@ -430,6 +555,8 @@ def _capture_boundaries(args: argparse.Namespace) -> Dict[str, object]:
         protected_inputs=protected,
         primary_checkout_fingerprint=_primary_checkout_fingerprint(),
     )
+    if args.mc_output:
+        write_json_atomic(Path(args.mc_output), snapshot)
     write_json_atomic(Path(args.output), artifact)
     return artifact
 
@@ -451,16 +578,17 @@ def _audit_history(args: argparse.Namespace) -> Dict[str, object]:
         corpus_authority_manifest=manifest,
         expected_manifest_sha256=expected,
     )
-    write_json_atomic(Path(args.output), audit)
     recovery = audit["recoveryRequest"]
     assert isinstance(recovery, dict)
-    write_json_atomic(Path(args.recovery_output), recovery)
+    audit_payload = canonical_bytes(audit)
+    recovery_payload = canonical_bytes(recovery)
     result: Dict[str, object] = {"audit": audit, "recoveryRequest": recovery}
+    receipt: Optional[Dict[str, object]] = None
     if authority:
         if args.receipt_output is None:
             raise ValueError("phase-2 audit requires --receipt-output")
         assert manifest is not None
-        receipt = _write_receipt(
+        receipt = _build_receipt(
             command="audit-history",
             run_context_path=context_path,
             run_context=context,
@@ -473,13 +601,16 @@ def _audit_history(args: argparse.Namespace) -> Dict[str, object]:
                 ("run_context", context_path),
             ),
             outputs=(
-                ("historical_audit", Path(args.output)),
-                ("recovery_request", Path(args.recovery_output)),
+                ("historical_audit", Path(args.output), audit_payload),
+                ("recovery_request", Path(args.recovery_output), recovery_payload),
             ),
-            receipt_output=Path(args.receipt_output),
             workspace_root=Path(args.workspace_root),
         )
         result["authorityConsumptionReceipt"] = receipt
+    _write_bytes_atomic(Path(args.output), audit_payload)
+    _write_bytes_atomic(Path(args.recovery_output), recovery_payload)
+    if receipt is not None:
+        _write_bytes_atomic(Path(args.receipt_output), canonical_bytes(receipt))
     return result
 
 
@@ -487,9 +618,7 @@ def _build_focus(args: argparse.Namespace) -> Dict[str, object]:
     context = _run_context(Path(args.run_context))
     root = Path(args.workspace_root)
     if args.outcomes is not None:
-        raise ValueError(
-            "phase-2 focus rebuild requires Task 7B recovery authority and is unavailable before the human gate"
-        )
+        return _task7b_handler("rebuild_focus_files", args)
     snapshot = build_focus_snapshot(
         root,
         _default_focus_targets(root),
@@ -511,12 +640,12 @@ def _build_corpus(args: argparse.Namespace) -> Dict[str, object]:
     )
     gold = build_voice_gold(events, audit, expected_manifest_sha256=expected)
     pairs = build_contrastive_pairs(events, audit, expected_manifest_sha256=expected)
-    _write_jsonl(Path(args.gold_output), gold)
-    _write_jsonl(Path(args.pairs_output), pairs)
+    gold_payload = _jsonl_bytes(gold)
+    pairs_payload = _jsonl_bytes(pairs)
     manifest = audit.get("corpusAuthorityManifest")
     if not isinstance(manifest, dict):
         raise ValueError("audit lacks corpus authority manifest")
-    receipt = _write_receipt(
+    receipt = _build_receipt(
         command="build-corpus",
         run_context_path=context_path,
         run_context=context,
@@ -528,16 +657,32 @@ def _build_corpus(args: argparse.Namespace) -> Dict[str, object]:
             ("run_context", context_path),
         ),
         outputs=(
-            ("voice_gold", Path(args.gold_output)),
-            ("contrastive_pairs", Path(args.pairs_output)),
+            ("voice_gold", Path(args.gold_output), gold_payload),
+            ("contrastive_pairs", Path(args.pairs_output), pairs_payload),
         ),
-        receipt_output=Path(args.receipt_output),
         workspace_root=Path(args.workspace_root),
     )
+    _write_bytes_atomic(Path(args.gold_output), gold_payload)
+    _write_bytes_atomic(Path(args.pairs_output), pairs_payload)
+    _write_bytes_atomic(Path(args.receipt_output), canonical_bytes(receipt))
     return {"voiceGoldCount": len(gold), "contrastivePairCount": len(pairs), "receipt": receipt}
 
 
 def _build_fixtures(args: argparse.Namespace) -> Dict[str, object]:
+    if args.decagon_packet != DECAGON_PACKET_PATH:
+        raise ValueError("--decagon-packet must be the reviewed Decagon packet path")
+    if args.human_gate_response is not None:
+        if any(
+            value is not None
+            for value in (args.jt_ops_git_dir, args.jt_ops_commit, args.jt_ops_path)
+        ):
+            raise ValueError("phase-2 build-fixtures rejects pre-gate Git arguments")
+        return _task7b_handler("rebuild_fixtures_files", args)
+    if any(
+        value is None
+        for value in (args.jt_ops_git_dir, args.jt_ops_commit, args.jt_ops_path)
+    ):
+        raise ValueError("pre-gate build-fixtures requires the reviewed Git object")
     context_path = Path(args.run_context) if args.run_context else Path(
         args.workspace_root
     ) / "memory/content/linkedin-content-os/run-context.v1.json"
@@ -598,11 +743,21 @@ def _preview_checkin(args: argparse.Namespace) -> Dict[str, object]:
 
 def _verify(args: argparse.Namespace) -> Dict[str, object]:
     context = _run_context(Path(args.run_context), authority=True)
+    root = Path(args.workspace_root).resolve()
+    artifact_root = root / "memory/content/linkedin-content-os"
+    audit = _read_json(artifact_root / "historical-audit.v1.json")
     manifest = _read_json(Path(args.corpus_authority_manifest))
-    canonical_manifest = _require_hash(manifest.get("manifestSha256"), "manifestSha256")
     expected = str(context["corpusAuthorityManifestSha256"])
-    if canonical_manifest != expected:
-        raise ValueError("authority context and canonical manifest hashes differ")
+    source_sha = _require_hash(audit.get("sourceSha256"), "audit.sourceSha256")
+    audit_generated_at = str(audit.get("generatedAt"))
+    canonical_manifest_value = validate_corpus_authority_manifest(
+        manifest,
+        expected_run_id=corpus_run_id(source_sha, audit_generated_at),
+        generated_at=audit_generated_at,
+        expected_manifest_sha256=expected,
+    )
+    canonical_manifest = str(canonical_manifest_value["manifestSha256"])
+    authority_context_sha256 = sha256_hex(Path(args.run_context).read_bytes())
     receipts = []
     for path_value in (
         args.phase_1_corpus_receipt,
@@ -614,34 +769,175 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             _read_json(path), workspace_root=Path(args.workspace_root)
         )
         receipts.append({"path": _relative(path, Path(args.workspace_root)), "sha256": sha256_hex(path.read_bytes()), "receipt": receipt})
+    receipt_commands = [item["receipt"]["command"] for item in receipts]
+    if receipt_commands != ["build-corpus", "audit-history", "build-corpus"]:
+        raise ValueError("authority consumption receipts are not in the required phase order")
     if receipts[0]["receipt"]["expectedManifestSha256"] is not None:
         raise ValueError("phase-1 corpus receipt must use the fixed-empty authority")
     for item in receipts[1:]:
         if item["receipt"]["expectedManifestSha256"] != expected:
             raise ValueError("phase-2 receipt authority digest mismatch")
-    boundaries = [validate_boundary_artifact(_read_json(Path(value))) for value in (
+        if item["receipt"]["runContextSha256"] != authority_context_sha256:
+            raise ValueError("phase-2 receipt is not bound to the authority context")
+        if item["receipt"]["canonicalManifestSha256"] != canonical_manifest:
+            raise ValueError("phase-2 receipt canonical manifest digest mismatch")
+    phase2_audit_inputs = {
+        item["role"]: item for item in receipts[1]["receipt"]["inputs"]
+    }
+    manifest_binding = phase2_audit_inputs["authority_manifest"]
+    manifest_path = Path(args.corpus_authority_manifest).resolve(strict=True)
+    if (
+        (root / str(manifest_binding["path"])).resolve(strict=True) != manifest_path
+        or manifest_binding["sha256"] != sha256_hex(manifest_path.read_bytes())
+    ):
+        raise ValueError("phase-2 audit receipt is not bound to the supplied authority manifest")
+    expected_phase2_paths = (
+        {
+            "authority_manifest": Path(args.corpus_authority_manifest),
+            "outcomes": artifact_root / "outcomes.v1.jsonl",
+            "posted_log": root / "memory/content/posted-log.jsonl",
+            "run_context": Path(args.run_context),
+        },
+        {
+            "historical_audit": artifact_root / "historical-audit.v1.json",
+            "recovery_request": artifact_root / "historical-recovery-request.v1.json",
+        },
+        {
+            "audit": artifact_root / "historical-audit.v1.json",
+            "outcomes": artifact_root / "outcomes.v1.jsonl",
+            "run_context": Path(args.run_context),
+        },
+        {
+            "contrastive_pairs": artifact_root / "contrastive-pairs.v0.jsonl",
+            "voice_gold": artifact_root / "voice-gold.v0.jsonl",
+        },
+    )
+    for receipt_index, expected_inputs, expected_outputs in (
+        (1, expected_phase2_paths[0], expected_phase2_paths[1]),
+        (2, expected_phase2_paths[2], expected_phase2_paths[3]),
+    ):
+        for collection, expected_paths in (
+            (receipts[receipt_index]["receipt"]["inputs"], expected_inputs),
+            (receipts[receipt_index]["receipt"]["outputs"], expected_outputs),
+        ):
+            observed = {
+                item["role"]: (root / str(item["path"])).resolve(strict=True)
+                for item in collection
+            }
+            canonical_expected = {
+                role: path.resolve(strict=True) for role, path in expected_paths.items()
+            }
+            if observed != canonical_expected:
+                raise ValueError("phase-2 receipt paths do not match canonical artifacts")
+
+    phase1_receipt = receipts[0]["receipt"]
+    phase1_run_binding = next(
+        item for item in phase1_receipt["inputs"] if item["role"] == "run_context"
+    )
+    phase1_context_path = (root / str(phase1_run_binding["path"])).resolve(strict=True)
+    phase1_context = _run_context(phase1_context_path)
+    phase1_audit_binding = next(
+        item for item in phase1_receipt["inputs"] if item["role"] == "audit"
+    )
+    phase1_audit = _read_json((root / str(phase1_audit_binding["path"])).resolve(strict=True))
+    phase1_manifest = phase1_audit.get("corpusAuthorityManifest")
+    if not isinstance(phase1_manifest, dict):
+        raise ValueError("phase-1 audit lacks its fixed-empty authority manifest")
+    validated_phase1_manifest = validate_corpus_authority_manifest(
+        phase1_manifest,
+        expected_run_id=corpus_run_id(
+            _require_hash(phase1_audit.get("sourceSha256"), "phase1Audit.sourceSha256"),
+            str(phase1_audit.get("generatedAt")),
+        ),
+        generated_at=str(phase1_audit.get("generatedAt")),
+        expected_manifest_sha256=None,
+    )
+    if phase1_receipt["canonicalManifestSha256"] != validated_phase1_manifest["manifestSha256"]:
+        raise ValueError("phase-1 receipt fixed-empty manifest digest mismatch")
+    boundary_paths = [Path(value) for value in (
         args.phase_1_before, args.phase_1_after, args.phase_2_before, args.phase_2_after
     )]
+    boundaries = [
+        validate_boundary_artifact(_read_json(path)) for path in boundary_paths
+    ]
     expected_phases = [
         "phase-1-before", "phase-1-after", "phase-2-before", "phase-2-after"
     ]
     if [item["phase"] for item in boundaries] != expected_phases:
         raise ValueError("boundary artifacts are not in the required phase order")
-    for before, after in ((boundaries[0], boundaries[1]), (boundaries[2], boundaries[3])):
-        for key in (
-            "missionControl", "cronDefinitionSha256", "launchAgents",
-            "protectedInputs", "primaryCheckoutFingerprint",
-        ):
+    phase2_base_unsigned = {
+        "schemaVersion": RUN_CONTEXT_SCHEMA,
+        "generatedAt": context["generatedAt"],
+    }
+    phase2_base_run_id = "sha256:" + sha256_hex(canonical_bytes(phase2_base_unsigned))
+    expected_boundary_contexts = (
+        (str(phase1_context["runId"]), str(phase1_context["generatedAt"])),
+        (phase2_base_run_id, str(context["generatedAt"])),
+    )
+    equality_rows: List[Dict[str, object]] = []
+    governed_keys = (
+        "missionControl", "cronDefinitionSha256", "launchAgents",
+        "protectedInputs", "primaryCheckoutFingerprint",
+    )
+    for pair_index, (before, after) in enumerate(
+        ((boundaries[0], boundaries[1]), (boundaries[2], boundaries[3]))
+    ):
+        expected_run_id, expected_generated_at = expected_boundary_contexts[pair_index]
+        if before["runId"] != after["runId"] or before["generatedAt"] != after["generatedAt"]:
+            raise ValueError("boundary pair run context mismatch")
+        if before["runId"] != expected_run_id or before["generatedAt"] != expected_generated_at:
+            raise ValueError("boundary pair is bound to the wrong phase context")
+        equal = True
+        for key in governed_keys:
             if before.get(key) != after.get(key):
                 raise ValueError("boundary changed for {}".format(key))
-    root = Path(args.workspace_root)
-    artifact_root = root / "memory/content/linkedin-content-os"
-    audit = _read_json(artifact_root / "historical-audit.v1.json")
+        equality_rows.append({
+            "beforePath": _relative(boundary_paths[pair_index * 2], root),
+            "afterPath": _relative(boundary_paths[pair_index * 2 + 1], root),
+            "beforeFileSha256": sha256_hex(
+                boundary_paths[pair_index * 2].read_bytes()
+            ),
+            "afterFileSha256": sha256_hex(
+                boundary_paths[pair_index * 2 + 1].read_bytes()
+            ),
+            "beforeSha256": before["boundarySha256"],
+            "afterSha256": after["boundarySha256"],
+            "governedKeys": list(governed_keys),
+            "governedValuesEqual": equal,
+            "runId": expected_run_id,
+            "generatedAt": expected_generated_at,
+        })
     focus = _read_json(artifact_root / "focus-snapshot.v1.json")
     fixtures = _read_jsonl_optional(artifact_root / "evaluation-fixtures.v0.jsonl")
     gold = _read_jsonl_optional(artifact_root / "voice-gold.v0.jsonl")
     pairs = _read_jsonl_optional(artifact_root / "contrastive-pairs.v0.jsonl")
     checkin = _read_json(artifact_root / "checkin.preview.v1.json")
+    events = load_events(artifact_root / "outcomes.v1.jsonl")
+    derived_gold = build_voice_gold(events, audit, expected_manifest_sha256=expected)
+    derived_pairs = build_contrastive_pairs(events, audit, expected_manifest_sha256=expected)
+    if canonical_bytes(gold) != canonical_bytes(derived_gold):
+        raise ValueError("voice-gold artifact does not match canonical derivation")
+    if canonical_bytes(pairs) != canonical_bytes(derived_pairs):
+        raise ValueError("contrastive-pair artifact does not match canonical derivation")
+    snapshot = _read_json(artifact_root / "mission-control.snapshot.v1.json")
+    derived_checkin = project_checkin(
+        snapshot, events, parse_timestamp(context["generatedAt"], "generatedAt")
+    )
+    expected_checkin: Dict[str, object] = (
+        derived_checkin
+        if derived_checkin is not None
+        else {
+            "schemaVersion": "linkedin-checkin-preview.v1",
+            "sourceSnapshotSha256": snapshot.get("projectionSha256"),
+            "liveWriteAuthorized": False,
+            "task": None,
+        }
+    )
+    if canonical_bytes(checkin) != canonical_bytes(expected_checkin):
+        raise ValueError("check-in preview does not match canonical derivation")
+    policy_path = artifact_root / "source-policy.v1.json"
+    if policy_path.exists():
+        validate_source_policy(_read_json(policy_path))
     status_counts = audit.get("statusCounts")
     missing_counts = audit.get("missingFieldCounts")
     recovery = audit.get("recoveryRequest")
@@ -671,11 +967,15 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     if task_value is not None and not isinstance(task_value, dict):
         raise ValueError("check-in preview task must be null or an object")
     targets = focus.get("targets")
-    if not isinstance(targets, list):
-        raise ValueError("focus targets must be a list")
+    if not isinstance(targets, list) or not targets:
+        raise ValueError("focus targets must be a non-empty list")
+    human_gate_resolved = not recovery["items"] and focus.get("status") == "confirmed" and classifications["positive"] >= 1
+    governed_boundaries_equal = all(
+        bool(item["governedValuesEqual"]) for item in equality_rows
+    )
     report = {
         "schemaVersion": "linkedin-program-0-verification.v1",
-        "authorityContextDigest": sha256_hex(Path(args.run_context).read_bytes()),
+        "authorityContextDigest": authority_context_sha256,
         "canonicalManifestSha256": canonical_manifest,
         "receipts": [{"path": item["path"], "sha256": item["sha256"]} for item in receipts],
         "authorityConsumptionBindings": {
@@ -683,7 +983,8 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             "phase2Audit": receipts[1]["receipt"],
             "phase2Corpus": receipts[2]["receipt"],
         },
-        "boundaryPairsEqual": True,
+        "boundaryProof": equality_rows,
+        "boundaryPairsEqual": governed_boundaries_equal,
         "statusCounts": status_counts,
         "missingUrlCount": int(missing_counts.get("public_url", 0)),
         "missingFinalTextCount": int(missing_counts.get("final_text", 0)),
@@ -692,8 +993,8 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         "contrastivePairCount": pair_count,
         "fixtureClassifications": classifications,
         "checkinPreviewCount": 0 if task_value is None else 1,
-        "humanGateResolved": True,
-        "liveOrExternalActionOccurred": False,
+        "humanGateResolved": human_gate_resolved,
+        "liveOrExternalActionOccurred": not governed_boundaries_equal,
         "verdict": "program-0-local-proof-ready-for-independent-verification",
     }
     report_path = Path(args.report)
@@ -757,12 +1058,11 @@ def _parser() -> argparse.ArgumentParser:
 
     fixtures = subparsers.add_parser("build-fixtures")
     fixtures.add_argument("--decagon-packet", required=True)
-    fixtures.add_argument("--jt-ops-git-dir", required=True)
-    fixtures.add_argument("--jt-ops-commit", required=True)
-    fixtures.add_argument("--jt-ops-path", required=True)
+    fixtures.add_argument("--jt-ops-git-dir")
+    fixtures.add_argument("--jt-ops-commit")
+    fixtures.add_argument("--jt-ops-path")
     fixtures.add_argument("--output", required=True)
     fixtures.add_argument("--run-context")
-    fixtures.add_argument("--generated-at")
     fixtures.add_argument("--workspace-root", default=".")
     fixtures.add_argument("--human-gate-response")
 
@@ -796,18 +1096,82 @@ def _parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _ingest_human_gate(args: argparse.Namespace) -> Dict[str, object]:
+def _task7b_handler(name: str, args: argparse.Namespace) -> Dict[str, object]:
     try:
-        from scripts.linkedin_content_os.recovery import ingest_human_gate_files
+        from scripts.linkedin_content_os import recovery
     except ImportError as error:
         raise RuntimeError(
-            "Task 7B recovery implementation is required before ingest-human-gate"
+            "Task 7B recovery module unavailable until the governed human response"
         ) from error
-    return ingest_human_gate_files(args)
+    handler = getattr(recovery, name, None)
+    if not callable(handler):
+        raise RuntimeError("Task 7B recovery module lacks {}".format(name))
+    result = handler(args)
+    if not isinstance(result, dict):
+        raise ValueError("Task 7B handler must return an object")
+    return result
+
+
+def _ingest_human_gate(args: argparse.Namespace) -> Dict[str, object]:
+    return _task7b_handler("ingest_human_gate_files", args)
+
+
+def _present_paths(args: argparse.Namespace, names: Sequence[str]) -> List[Path]:
+    result: List[Path] = []
+    for name in names:
+        value = getattr(args, name, None)
+        if value is not None:
+            result.append(Path(value))
+    return result
+
+
+def _validate_command_paths(args: argparse.Namespace) -> None:
+    """Apply each command's closed read/write path partition before dispatch."""
+
+    contracts: Dict[str, Tuple[Sequence[str], Sequence[str], Sequence[str]]] = {
+        "capture-boundaries": (("run_context",), ("mc_output", "output"), ()),
+        "audit-history": (
+            ("posted_log", "outcomes", "corpus_authority_manifest", "run_context"),
+            ("output", "recovery_output"), ("receipt_output",),
+        ),
+        "ingest-human-gate": (
+            ("response", "recovery_request", "focus", "fixtures", "outcomes", "run_context"),
+            ("corpus_authority_manifest_output", "authority_run_context_output"), (),
+        ),
+        "build-focus": (("run_context", "outcomes"), ("output",), ()),
+        "build-corpus": (
+            ("audit", "outcomes", "run_context"),
+            ("gold_output", "pairs_output"), ("receipt_output",),
+        ),
+        "build-fixtures": (
+            ("decagon_packet", "human_gate_response", "run_context"), ("output",), (),
+        ),
+        "build-source-policy": (("run_context",), ("output",), ()),
+        "audit-voice-rules": (("run_context",), ("output",), ()),
+        "preview-checkin": (("mc_snapshot", "outcomes", "run_context"), ("output",), ()),
+        "verify": (
+            (
+                "run_context", "corpus_authority_manifest", "phase_1_corpus_receipt",
+                "phase_2_audit_receipt", "phase_2_corpus_receipt", "phase_1_before",
+                "phase_1_after", "phase_2_before", "phase_2_after",
+            ),
+            ("report",), (),
+        ),
+    }
+    if args.command == "init-run":
+        return
+    inputs, outputs, receipts = contracts[args.command]
+    _validate_distinct_paths(
+        inputs=_present_paths(args, inputs),
+        outputs=_present_paths(args, outputs),
+        receipts=_present_paths(args, receipts),
+        workspace_root=Path(getattr(args, "workspace_root", ".")),
+    )
 
 
 def main(argv: Optional[Sequence[str]] = None) -> Dict[str, object]:
     args = _parser().parse_args(argv)
+    _validate_command_paths(args)
     dispatch: Dict[str, Callable[[argparse.Namespace], Dict[str, object]]] = {
         "init-run": lambda value: init_run(
             value.generated_at, Path(value.outcomes), Path(value.output)
