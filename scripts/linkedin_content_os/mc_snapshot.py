@@ -9,8 +9,8 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, List, Tuple
 from urllib.parse import urlsplit
 
-from scripts.linkedin_content_os.canonical import sha256_hex
-from scripts.linkedin_content_os.contracts import parse_timestamp
+from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
+from scripts.linkedin_content_os.contracts import parse_timestamp, validate_linkedin_url
 
 
 SOURCE_URL = "http://127.0.0.1:3000/api/tasks"
@@ -20,7 +20,22 @@ MAX_RESPONSE_BYTES = 8 * 1024 * 1024
 
 _HASH = re.compile(r"^[0-9a-f]{64}$")
 _RUN_ID = re.compile(r"^sha256:[0-9a-f]{64}$")
+_STABLE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$")
 _TERMINAL_STATUSES = {"done", "archived"}
+_TASK_STATUSES = {
+    "todo",
+    "in-progress",
+    "done",
+    "archived",
+    "waiting-external",
+    "snoozed",
+}
+
+
+def _utc_now() -> datetime:
+    """Clock seam: production always uses actual UTC; tests may patch this helper."""
+
+    return datetime.now(timezone.utc)
 
 
 class _NoRedirectHandler(urllib.request.HTTPRedirectHandler):
@@ -68,7 +83,10 @@ def capture_tasks(url: str = SOURCE_URL) -> bytes:
     ):
         raise ValueError("capture request must be an unauthenticated GET")
 
-    opener = urllib.request.build_opener(_NoRedirectHandler())
+    opener = urllib.request.build_opener(
+        urllib.request.ProxyHandler({}),
+        _NoRedirectHandler(),
+    )
     with opener.open(request, timeout=5.0) as response:
         if getattr(response, "status", None) != 200:
             raise ValueError("Mission Control task capture returned a non-200 response")
@@ -124,18 +142,18 @@ def _require_run_context(
 ) -> tuple[str, str, datetime, datetime]:
     if not isinstance(run_context, dict):
         raise ValueError("run context must be an object")
+    if set(run_context) != {"runId", "generatedAt"}:
+        raise ValueError("run context fields are not canonical")
     run_id = run_context.get("runId")
     if not isinstance(run_id, str) or _RUN_ID.fullmatch(run_id) is None:
         raise ValueError("runId must be sha256:<64 lowercase hex>")
     generated_at_value = run_context.get("generatedAt")
+    if not isinstance(generated_at_value, str):
+        raise ValueError("generatedAt must be a string")
     generated_at = parse_timestamp(generated_at_value, "generatedAt")
-    assert isinstance(generated_at_value, str)
-    consumer_value = run_context.get("consumerNow")
-    consumer_now = (
-        parse_timestamp(consumer_value, "consumerNow")
-        if consumer_value is not None
-        else datetime.now(timezone.utc)
-    )
+    consumer_now = _utc_now()
+    if consumer_now < generated_at:
+        raise ValueError("current time is before capturedAt")
     return run_id, generated_at_value, generated_at, consumer_now
 
 
@@ -145,24 +163,43 @@ def _iso(value: datetime) -> str:
 
 def _task_id(task: dict[str, object]) -> str:
     value = task.get("_id", task.get("id"))
-    if not isinstance(value, str) or not value:
-        raise ValueError("every Mission Control task requires a non-empty task ID")
+    if not isinstance(value, str) or _STABLE_ID.fullmatch(value) is None:
+        raise ValueError("every Mission Control task requires a stable task ID")
     return value
 
 
-def _governed_outcome_pointer(value: object) -> dict[str, str] | None:
+def _governed_outcome_pointer(
+    value: object, task_id: str, content_id: str
+) -> dict[str, object] | None:
     if not isinstance(value, dict):
+        return None
+    required = {"system", "id", "recordedAt"}
+    if set(value) not in (required, required | {"url"}):
         return None
     system = value.get("system")
     outcome_id = value.get("id")
+    recorded_at = value.get("recordedAt")
     if (
         system != "linkedin-content-os"
         or not isinstance(outcome_id, str)
-        or not outcome_id.startswith("publication_acknowledged:")
-        or len(outcome_id) == len("publication_acknowledged:")
+        or outcome_id
+        != "publication_acknowledged:{}:{}".format(task_id, content_id)
+        or not isinstance(recorded_at, int)
+        or isinstance(recorded_at, bool)
+        or recorded_at < 0
     ):
         return None
-    return {"system": system, "id": outcome_id}
+    pointer: dict[str, object] = {
+        "system": system,
+        "id": outcome_id,
+        "recordedAt": recorded_at,
+    }
+    if "url" in value:
+        try:
+            pointer["url"] = validate_linkedin_url(value["url"])
+        except ValueError:
+            return None
+    return pointer
 
 
 def _project_task(task: dict[str, object]) -> dict[str, object] | None:
@@ -185,13 +222,13 @@ def _project_task(task: dict[str, object]) -> dict[str, object] | None:
     packet_hash = _require_hash(packet_hash_value, "packetHash")
     task_id = _task_id(task)
     status = task.get("status")
-    if not isinstance(status, str) or not status:
-        raise ValueError("lane packet status must be a non-empty string")
+    if not isinstance(status, str) or status not in _TASK_STATUSES:
+        raise ValueError("lane packet status is unsupported")
     content_id = task.get("contentId")
     if content_id is None and isinstance(task.get("artifactRef"), dict):
         content_id = task["artifactRef"].get("id")  # type: ignore[index]
-    if not isinstance(content_id, str) or not content_id:
-        raise ValueError("LinkedIn lane packet requires contentId")
+    if not isinstance(content_id, str) or _STABLE_ID.fullmatch(content_id) is None:
+        raise ValueError("LinkedIn lane packet requires a stable contentId")
 
     projection: dict[str, object] = {
         "taskId": task_id,
@@ -213,7 +250,9 @@ def _project_task(task: dict[str, object]) -> dict[str, object] | None:
         return projection
     if status != "done":
         return None
-    pointer = _governed_outcome_pointer(task.get("outcomeRef"))
+    pointer = _governed_outcome_pointer(
+        task.get("outcomeRef"), task_id, content_id
+    )
     if pointer is None:
         return None
     projection["projectionType"] = "metrics_followup"
@@ -248,7 +287,7 @@ def validate_snapshot(
         if projected is not None:
             packets.append(projected)
     packets.sort(key=lambda packet: str(packet["taskId"]))
-    return {
+    snapshot: dict[str, object] = {
         "schemaVersion": SCHEMA_VERSION,
         "runId": run_id,
         "capturedAt": captured_at_text,
@@ -259,6 +298,8 @@ def validate_snapshot(
         "linkedinLanePacketCount": len(packets),
         "packets": packets,
     }
+    snapshot["projectionSha256"] = sha256_hex(canonical_bytes(snapshot))
+    return snapshot
 
 
 def approved_linkedin_packets(
@@ -278,6 +319,7 @@ def approved_linkedin_packets(
         "totalTaskCount",
         "linkedinLanePacketCount",
         "packets",
+        "projectionSha256",
     }
     if set(snapshot) != expected_fields:
         missing = expected_fields - set(snapshot)
@@ -286,6 +328,18 @@ def approved_linkedin_packets(
         raise ValueError("snapshot wrapper fields are not canonical")
     if snapshot["schemaVersion"] != SCHEMA_VERSION:
         raise ValueError("unsupported snapshot schemaVersion")
+    projection_sha256 = _require_hash(
+        snapshot["projectionSha256"], "projectionSha256"
+    )
+    digest_source = {
+        key: value for key, value in snapshot.items() if key != "projectionSha256"
+    }
+    try:
+        expected_projection_sha256 = sha256_hex(canonical_bytes(digest_source))
+    except (TypeError, ValueError) as error:
+        raise ValueError("snapshot cannot be canonically hashed") from error
+    if projection_sha256 != expected_projection_sha256:
+        raise ValueError("projectionSha256 does not match the persisted projection")
     run_id = snapshot["runId"]
     if not isinstance(run_id, str) or _RUN_ID.fullmatch(run_id) is None:
         raise ValueError("invalid snapshot runId")
@@ -311,7 +365,12 @@ def approved_linkedin_packets(
     packets = snapshot["packets"]
     if not isinstance(packets, list):
         raise ValueError("snapshot packets must be an array")
-    if snapshot["linkedinLanePacketCount"] != len(packets):
+    linkedin_count = snapshot["linkedinLanePacketCount"]
+    if (
+        not isinstance(linkedin_count, int)
+        or isinstance(linkedin_count, bool)
+        or linkedin_count != len(packets)
+    ):
         raise ValueError("LinkedIn packet count mismatch")
     if (
         not isinstance(snapshot["totalTaskCount"], int)
@@ -321,6 +380,7 @@ def approved_linkedin_packets(
         raise ValueError("invalid total task count")
     result: list[dict[str, object]] = []
     seen: set[str] = set()
+    prior_task_id: str | None = None
     for packet_value in packets:
         if not isinstance(packet_value, dict):
             raise ValueError("projected packet must be an object")
@@ -341,8 +401,15 @@ def approved_linkedin_packets(
         if set(packet) != allowed_fields:
             raise ValueError("projected packet does not have canonical fields")
         task_id = packet.get("taskId")
-        if not isinstance(task_id, str) or not task_id or task_id in seen:
+        if (
+            not isinstance(task_id, str)
+            or _STABLE_ID.fullmatch(task_id) is None
+            or task_id in seen
+        ):
             raise ValueError("projected packet task IDs must be unique")
+        if prior_task_id is not None and task_id <= prior_task_id:
+            raise ValueError("projected packets are not in canonical task ID order")
+        prior_task_id = task_id
         seen.add(task_id)
         _require_hash(packet.get("packetHash"), "packetHash")
         payload_hash = _require_hash(packet.get("payloadHash"), "payloadHash")
@@ -350,14 +417,36 @@ def approved_linkedin_packets(
             raise ValueError("approved payload hash mismatch")
         if packet.get("approvalState") != "approved":
             raise ValueError("projected packet is not approved")
+        content_id = packet.get("contentId")
+        if (
+            not isinstance(content_id, str)
+            or _STABLE_ID.fullmatch(content_id) is None
+        ):
+            raise ValueError("projected packet contentId must be a stable identifier")
+        status = packet.get("status")
+        if not isinstance(status, str) or status not in _TASK_STATUSES:
+            raise ValueError("projected packet status is unsupported")
+        if "expiresAt" in packet:
+            expires_at = packet["expiresAt"]
+            if (
+                not isinstance(expires_at, int)
+                or isinstance(expires_at, bool)
+                or expires_at < 0
+            ):
+                raise ValueError("projected packet expiresAt is invalid")
         projection_type = packet.get("projectionType")
         if projection_type == "metrics_followup":
-            if packet.get("status") != "done" or packet.get("closureType") != "completed":
+            if status != "done" or packet.get("closureType") != "completed":
                 raise ValueError("metrics projection is not a completed packet")
-            if _governed_outcome_pointer(packet.get("closureOutcomePointer")) is None:
+            if (
+                _governed_outcome_pointer(
+                    packet.get("closureOutcomePointer"), task_id, content_id
+                )
+                is None
+            ):
                 raise ValueError("metrics projection lacks a governed publication outcome")
         elif projection_type == "publication_acknowledgment":
-            if packet.get("status") in _TERMINAL_STATUSES:
+            if status in _TERMINAL_STATUSES:
                 raise ValueError("terminal packet cannot request publication acknowledgment")
         else:
             raise ValueError("unsupported projectionType")

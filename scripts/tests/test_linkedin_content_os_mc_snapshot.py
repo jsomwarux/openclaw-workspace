@@ -6,8 +6,9 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from unittest import mock
 
-from scripts.linkedin_content_os.canonical import sha256_hex
+from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.mc_snapshot import (
+    MAX_RESPONSE_BYTES,
     approved_linkedin_packets,
     capture_tasks,
     validate_snapshot,
@@ -21,8 +22,8 @@ GENERATED_AT = "2099-09-28T12:00:00+00:00"
 RUN_CONTEXT = {
     "runId": "sha256:" + "c" * 64,
     "generatedAt": GENERATED_AT,
-    "consumerNow": "2099-09-28T13:00:00+00:00",
 }
+NOW = datetime(2099, 9, 28, 13, 0, tzinfo=timezone.utc)
 
 
 def _task(task_id: str, **overrides: object) -> dict[str, object]:
@@ -46,6 +47,13 @@ def _task(task_id: str, **overrides: object) -> dict[str, object]:
 
 def _raw(*tasks: dict[str, object]) -> bytes:
     return json.dumps({"tasks": list(tasks)}, separators=(",", ":")).encode("utf-8")
+
+
+def _resign(snapshot: dict[str, object]) -> dict[str, object]:
+    resigned = dict(snapshot)
+    resigned.pop("projectionSha256", None)
+    resigned["projectionSha256"] = sha256_hex(canonical_bytes(resigned))
+    return resigned
 
 
 class _Headers:
@@ -95,6 +103,12 @@ class _Opener:
 
 class MissionControlSnapshotTests(unittest.TestCase):
     def setUp(self) -> None:
+        clock = mock.patch(
+            "scripts.linkedin_content_os.mc_snapshot._utc_now",
+            return_value=NOW,
+        )
+        clock.start()
+        self.addCleanup(clock.stop)
         self.process_patches = [
             mock.patch.object(subprocess, name, side_effect=AssertionError("process denied"))
             for name in ("Popen", "run", "call", "check_call", "check_output")
@@ -135,6 +149,11 @@ class MissionControlSnapshotTests(unittest.TestCase):
 
         self.assertEqual(captured, body)
         build_opener.assert_called_once()
+        handlers = build_opener.call_args.args
+        self.assertEqual(len(handlers), 2)
+        self.assertIsInstance(handlers[0], urllib.request.ProxyHandler)
+        self.assertEqual(handlers[0].proxies, {})
+        self.assertEqual(type(handlers[1]).__name__, "_NoRedirectHandler")
         self.assertEqual(len(opener.requests), 1)
         request, timeout = opener.requests[0]
         self.assertEqual(request.full_url, SOURCE_URL)
@@ -175,6 +194,26 @@ class MissionControlSnapshotTests(unittest.TestCase):
                 capture_tasks()
             self.assertEqual(len(opener.requests), 1)
 
+    def test_capture_accepts_exactly_8_mib_and_rejects_one_byte_more(self) -> None:
+        exact = b"x" * MAX_RESPONSE_BYTES
+        overflow = exact + b"x"
+        for body, accepted in ((exact, True), (overflow, False)):
+            opener = _Opener(_Response(body))
+            context = (
+                self.subTest(size=len(body)),
+                mock.patch(
+                    "scripts.linkedin_content_os.mc_snapshot.urllib.request.build_opener",
+                    return_value=opener,
+                ),
+            )
+            with context[0], context[1]:
+                if accepted:
+                    self.assertEqual(capture_tasks(), body)
+                else:
+                    with self.assertRaisesRegex(ValueError, "size limit"):
+                        capture_tasks()
+            self.assertEqual(len(opener.requests), 1)
+
     def test_validates_minimal_hash_bound_wrapper_without_task_bodies(self) -> None:
         raw = _raw(_task("task-1"), {"_id": "legacy-1", "title": "legacy"})
 
@@ -186,6 +225,14 @@ class MissionControlSnapshotTests(unittest.TestCase):
         self.assertEqual(snapshot["validUntil"], "2099-09-28T14:00:00+00:00")
         self.assertEqual(snapshot["sourceUrl"], SOURCE_URL)
         self.assertEqual(snapshot["rawSha256"], sha256_hex(raw))
+        self.assertEqual(
+            snapshot["projectionSha256"],
+            sha256_hex(
+                canonical_bytes(
+                    {key: value for key, value in snapshot.items() if key != "projectionSha256"}
+                )
+            ),
+        )
         self.assertEqual(snapshot["totalTaskCount"], 2)
         self.assertEqual(snapshot["linkedinLanePacketCount"], 1)
         self.assertEqual(len(snapshot["packets"]), 1)
@@ -211,7 +258,6 @@ class MissionControlSnapshotTests(unittest.TestCase):
         context = {
             **RUN_CONTEXT,
             "generatedAt": "2099-09-28T12:00:00Z",
-            "consumerNow": "2099-09-28T13:00:00Z",
         }
 
         snapshot = validate_snapshot(_raw(_task("task-1")), context)
@@ -239,11 +285,33 @@ class MissionControlSnapshotTests(unittest.TestCase):
     def test_preserves_nonterminal_and_governed_completed_projections_only(self) -> None:
         outcome = {
             "system": "linkedin-content-os",
-            "id": "publication_acknowledged:content-002",
+            "id": "publication_acknowledged:published:content-002",
+            "recordedAt": 4_095_237_600_000,
+            "url": "https://www.linkedin.com/posts/jt_content-002",
         }
         tasks = (
             _task("open"),
             _task("published", status="done", contentId="content-002", outcomeRef=outcome),
+            _task(
+                "wrong-content",
+                status="done",
+                contentId="content-004",
+                outcomeRef={
+                    "system": "linkedin-content-os",
+                    "id": "publication_acknowledged:wrong-content:content-999",
+                    "recordedAt": 4_095_237_600_000,
+                },
+            ),
+            _task(
+                "wrong-task",
+                status="done",
+                contentId="content-005",
+                outcomeRef={
+                    "system": "linkedin-content-os",
+                    "id": "publication_acknowledged:someone-else:content-005",
+                    "recordedAt": 4_095_237_600_000,
+                },
+            ),
             _task(
                 "wrong-outcome",
                 status="done",
@@ -282,15 +350,130 @@ class MissionControlSnapshotTests(unittest.TestCase):
         packet = dict(snapshot["packets"][0])
         packet["description"] = "must not survive"
         snapshot["packets"] = [packet]
+        snapshot = _resign(snapshot)
         with self.assertRaisesRegex(ValueError, "canonical fields"):
             approved_linkedin_packets(snapshot, RUN_CONTEXT)
+
+    def test_persisted_projection_digest_detects_unresigned_tampering(self) -> None:
+        snapshot = validate_snapshot(_raw(_task("valid")), RUN_CONTEXT)
+        packet = dict(snapshot["packets"][0])
+        packet["contentId"] = "tampered"
+        snapshot["packets"] = [packet]
+
+        with self.assertRaisesRegex(ValueError, "projectionSha256"):
+            approved_linkedin_packets(snapshot, RUN_CONTEXT)
+
+    def test_run_context_is_immutable_and_unknown_fields_fail_closed(self) -> None:
+        context = dict(RUN_CONTEXT)
+        before = canonical_bytes(context)
+
+        snapshot = validate_snapshot(_raw(_task("valid")), context)
+        approved_linkedin_packets(snapshot, context)
+
+        self.assertEqual(canonical_bytes(context), before)
+        with self.assertRaisesRegex(ValueError, "fields are not canonical"):
+            validate_snapshot(
+                _raw(_task("valid")),
+                {**RUN_CONTEXT, "consumerNow": "2099-09-28T13:00:00Z"},
+            )
+
+    def test_resigned_metrics_pointer_still_must_bind_task_and_content(self) -> None:
+        task = _task(
+            "published",
+            status="done",
+            contentId="content-002",
+            outcomeRef={
+                "system": "linkedin-content-os",
+                "id": "publication_acknowledged:published:content-002",
+                "recordedAt": 4_095_237_600_000,
+            },
+        )
+        snapshot = validate_snapshot(_raw(task), RUN_CONTEXT)
+        packet = dict(snapshot["packets"][0])
+        packet["closureOutcomePointer"] = {
+            "system": "linkedin-content-os",
+            "id": "publication_acknowledged:other-task:content-002",
+            "recordedAt": 4_095_237_600_000,
+        }
+        snapshot["packets"] = [packet]
+
+        with self.assertRaisesRegex(ValueError, "governed publication outcome"):
+            approved_linkedin_packets(_resign(snapshot), RUN_CONTEXT)
+
+        snapshot = validate_snapshot(_raw(task), RUN_CONTEXT)
+        packet = dict(snapshot["packets"][0])
+        pointer = dict(packet["closureOutcomePointer"])
+        pointer["recordedAt"] = True
+        packet["closureOutcomePointer"] = pointer
+        snapshot["packets"] = [packet]
+        with self.assertRaisesRegex(ValueError, "governed publication outcome"):
+            approved_linkedin_packets(_resign(snapshot), RUN_CONTEXT)
+
+        bad_url_task = _task(
+            "bad-url",
+            status="done",
+            contentId="content-006",
+            outcomeRef={
+                "system": "linkedin-content-os",
+                "id": "publication_acknowledged:bad-url:content-006",
+                "recordedAt": 4_095_237_600_000,
+                "url": "https://example.com/not-linkedin",
+            },
+        )
+        self.assertEqual(
+            validate_snapshot(_raw(bad_url_task), RUN_CONTEXT)["packets"],
+            [],
+        )
+
+    def test_rejects_resigned_type_value_count_and_order_tampering_as_value_error(self) -> None:
+        base = validate_snapshot(_raw(_task("b"), _task("a", contentId="content-002")), RUN_CONTEXT)
+        cases: list[dict[str, object]] = []
+
+        for field, value in (
+            ("taskId", 7),
+            ("taskId", "contains spaces"),
+            ("status", "invented"),
+            ("approvalState", "pending"),
+            ("packetHash", "bad"),
+            ("payloadHash", False),
+            ("approvedPayloadHash", 3),
+            ("contentId", ""),
+            ("contentId", "contains spaces"),
+            ("expiresAt", True),
+            ("projectionType", "other"),
+        ):
+            changed = dict(base)
+            packet = dict(changed["packets"][0])
+            packet[field] = value
+            changed["packets"] = [packet, changed["packets"][1]]
+            cases.append(_resign(changed))
+
+        for field, value in (
+            ("rawSha256", False),
+            ("totalTaskCount", True),
+            ("linkedinLanePacketCount", True),
+            ("capturedAt", 7),
+            ("validUntil", []),
+            ("sourceUrl", "http://localhost:3000/api/tasks"),
+        ):
+            changed = dict(base)
+            changed[field] = value
+            cases.append(_resign(changed))
+
+        reordered = dict(base)
+        reordered["packets"] = list(reversed(base["packets"]))
+        cases.append(_resign(reordered))
+
+        for changed in cases:
+            with self.subTest(changed=changed), self.assertRaises(ValueError):
+                approved_linkedin_packets(changed, RUN_CONTEXT)
 
     def test_fails_closed_on_run_context_mismatch_or_staleness(self) -> None:
         raw = _raw(_task("valid"))
         invalid_contexts = (
             {**RUN_CONTEXT, "runId": "wrong"},
             {**RUN_CONTEXT, "generatedAt": "2099-09-28T12:00:00"},
-            {**RUN_CONTEXT, "consumerNow": "2099-09-28T14:00:00.000001+00:00"},
+            {**RUN_CONTEXT, "consumerNow": "2099-09-28T13:00:00+00:00"},
         )
         for context in invalid_contexts:
             with self.subTest(context=context), self.assertRaises(ValueError):
@@ -307,22 +490,30 @@ class MissionControlSnapshotTests(unittest.TestCase):
         later_run_context = {
             "runId": RUN_CONTEXT["runId"],
             "generatedAt": "2099-09-28T13:00:00+00:00",
-            "consumerNow": "2099-09-28T13:00:00+00:00",
         }
         with self.assertRaisesRegex(ValueError, "current run context"):
             approved_linkedin_packets(snapshot, later_run_context)
 
-        stale_context = {
-            **RUN_CONTEXT,
-            "consumerNow": "2099-09-28T14:00:00.000001+00:00",
-        }
-        with self.assertRaisesRegex(ValueError, "stale"):
-            approved_linkedin_packets(snapshot, stale_context)
+        with mock.patch(
+            "scripts.linkedin_content_os.mc_snapshot._utc_now",
+            return_value=datetime(2099, 9, 28, 14, 0, 0, 1, tzinfo=timezone.utc),
+        ), self.assertRaisesRegex(ValueError, "stale"):
+            approved_linkedin_packets(snapshot, RUN_CONTEXT)
+
+        with mock.patch(
+            "scripts.linkedin_content_os.mc_snapshot._utc_now",
+            return_value=datetime(2099, 9, 28, 11, 59, 59, tzinfo=timezone.utc),
+        ):
+            with self.assertRaisesRegex(ValueError, "before capturedAt"):
+                approved_linkedin_packets(snapshot, RUN_CONTEXT)
+            with self.assertRaisesRegex(ValueError, "before capturedAt"):
+                validate_snapshot(raw, RUN_CONTEXT)
 
         mutated = dict(snapshot)
         mutated["validUntil"] = (
             datetime.fromisoformat(GENERATED_AT) + timedelta(hours=3)
         ).isoformat()
+        mutated = _resign(mutated)
         with self.assertRaisesRegex(ValueError, "validUntil"):
             approved_linkedin_packets(mutated, RUN_CONTEXT)
 
