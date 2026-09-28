@@ -27,13 +27,13 @@ import {
   buildRuntimeEnvironment,
   buildServiceProcessEnvironment,
   buildLockedReexecRequest,
-  ensureV4KeychainHelper,
+  ensureV5KeychainHelper,
   ensureV3KeychainHelper,
   installCapabilitySet,
   installCapabilitySetFromHelper,
   materializeReviewedConfirmedSendScript,
   parseCapabilitySetRead,
-  parseV4CapabilitySetRead,
+  parseV5CapabilitySetRead,
   parseConfirmedSendResult,
   readCapabilitySetFromHelpers,
   readRuntimeCapabilitySetFromHelpers,
@@ -61,30 +61,30 @@ function git(path: string, args: string[]) {
 }
 
 describe("outreach runtime secret handling", () => {
-  test("targets a separate stable v4 helper path without replacing v3", () => {
+  test("targets a separate stable v5 helper path without replacing v3", () => {
     expect(buildKeychainHelperRequest(
-      "./.runtime/outreach-keychain-helper-v4",
+      "./.runtime/outreach-keychain-helper-v5",
       "/usr/bin/swiftc",
-      "./scripts/outreach-keychain-helper-v4.swift",
+      "./scripts/outreach-keychain-helper-v5.swift",
     )).toEqual({
       file: "/usr/bin/swiftc",
       args: [
-        "./scripts/outreach-keychain-helper-v4.swift",
+        "./scripts/outreach-keychain-helper-v5.swift",
         "-o",
-        "./.runtime/outreach-keychain-helper-v4",
+        "./.runtime/outreach-keychain-helper-v5",
       ],
     });
   });
 
-  test("compiles v4 independently and preserves published v3 bytes", () => {
-    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-helper-v4-test-"));
+  test("compiles v5 independently and preserves published v3 bytes", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-helper-v5-test-"));
     const v3Path = join(directory, "outreach-keychain-helper-v3");
-    const v4Path = join(directory, "outreach-keychain-helper-v4");
+    const v5Path = join(directory, "outreach-keychain-helper-v5");
     try {
       executable(v3Path, "#!/bin/sh\nexit 2\n");
       const v3Before = readFileSync(v3Path);
-      ensureV4KeychainHelper(v4Path);
-      const probe = spawnSync(v4Path, ["probe", "outreach-capabilities-v4"], { encoding: "utf8" });
+      ensureV5KeychainHelper(v5Path);
+      const probe = spawnSync(v5Path, ["probe", "outreach-capabilities-v5"], { encoding: "utf8" });
       expect(probe.status).toBe(0);
       expect(probe.stdout).toBe("");
       expect(readFileSync(v3Path)).toEqual(v3Before);
@@ -93,28 +93,28 @@ describe("outreach runtime secret handling", () => {
     }
   });
 
-  test("v4 protocol or source mismatch fails closed without replacing bytes", () => {
-    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-v4-mismatch-test-"));
-    const v4Path = join(directory, "outreach-keychain-helper-v4");
+  test("v5 protocol or source mismatch fails closed without replacing bytes", () => {
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-v5-mismatch-test-"));
+    const v5Path = join(directory, "outreach-keychain-helper-v5");
     try {
-      executable(v4Path, [
+      executable(v5Path, [
         "#!/bin/sh",
-        '[ "$1" = "probe" ] && [ "$2" = "outreach-capabilities-v4" ] && exit 0',
+        '[ "$1" = "probe" ] && [ "$2" = "outreach-capabilities-v5" ] && exit 0',
         "exit 2",
         "",
       ].join("\n"));
-      writeFileSync(`${v4Path}.sha256`, "stale-source-digest\n", { mode: 0o600 });
-      const before = readFileSync(v4Path);
-      expect(captureError(() => ensureV4KeychainHelper(v4Path)))
-        .toBe("v4 capability helper mismatch; explicit versioned migration required");
-      expect(readFileSync(v4Path)).toEqual(before);
+      writeFileSync(`${v5Path}.sha256`, "stale-source-digest\n", { mode: 0o600 });
+      const before = readFileSync(v5Path);
+      expect(captureError(() => ensureV5KeychainHelper(v5Path)))
+        .toBe("v5 capability helper mismatch; explicit versioned migration required");
+      expect(readFileSync(v5Path)).toEqual(before);
     } finally {
       rmSync(directory, { recursive: true, force: true });
     }
   });
 
   test("migrates existing outreach values through stdin and never argv or stdout", () => {
-    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-v4-input-test-"));
+    const directory = mkdtempSync(join(tmpdir(), "outreach-keychain-v5-input-test-"));
     const helperPath = join(directory, "helper");
     const inputPath = join(directory, "input.json");
     const argsPath = join(directory, "args.txt");
@@ -146,9 +146,9 @@ describe("outreach runtime secret handling", () => {
     }
   });
 
-  test("parses a six-capability v4 set and rejects lane collisions", () => {
+  test("parses a six-capability v5 set and rejects lane collisions", () => {
     const encoded = JSON.stringify({
-      version: 2,
+      version: 3,
       review: "review-a",
       decision: "decision-b",
       reviewAuthorityWrite: "authority-write-c",
@@ -156,7 +156,7 @@ describe("outreach runtime secret handling", () => {
       laneProducer: "lane-producer-e",
       laneDecision: "lane-decision-f",
     });
-    expect(parseV4CapabilitySetRead({ status: 0, stdout: `${encoded}\n` })).toEqual({
+    expect(parseV5CapabilitySetRead({ status: 0, stdout: `${encoded}\n` })).toEqual({
       review: "review-a",
       decision: "decision-b",
       authorityWrite: "authority-write-c",
@@ -164,10 +164,10 @@ describe("outreach runtime secret handling", () => {
       laneProducer: "lane-producer-e",
       laneDecision: "lane-decision-f",
     });
-    expect(captureError(() => parseV4CapabilitySetRead({
+    expect(captureError(() => parseV5CapabilitySetRead({
       status: 0,
       stdout: JSON.stringify({
-        version: 2,
+        version: 3,
         review: "review-a",
         decision: "decision-b",
         reviewAuthorityWrite: "authority-write-c",
@@ -176,6 +176,26 @@ describe("outreach runtime secret handling", () => {
         laneDecision: "lane-decision-f",
       }),
     }))).toBe("outreach capability configuration is invalid");
+  });
+
+  test("v5 preserves a valid legacy two-capability outreach state", () => {
+    const encoded = JSON.stringify({
+      version: 3,
+      review: "review-a",
+      decision: "decision-b",
+      reviewAuthorityWrite: null,
+      reviewAuthorityRead: null,
+      laneProducer: "lane-producer-e",
+      laneDecision: "lane-decision-f",
+    });
+    expect(parseV5CapabilitySetRead({ status: 0, stdout: `${encoded}\n` })).toEqual({
+      review: "review-a",
+      decision: "decision-b",
+      authorityWrite: undefined,
+      authorityRead: undefined,
+      laneProducer: "lane-producer-e",
+      laneDecision: "lane-decision-f",
+    });
   });
 
   test("injects lane authority into Next and synchronizes only capabilities to Convex", () => {
@@ -236,14 +256,14 @@ describe("outreach runtime secret handling", () => {
     ))).toBe("outreach capability configuration is invalid");
   });
 
-  test("prefers v4 and falls back to v3 without lane authority", () => {
+  test("prefers v5 and falls back to v3 without lane authority", () => {
     const directory = mkdtempSync(join(tmpdir(), "outreach-versioned-set-read-test-"));
-    const v4Path = join(directory, "v4-helper");
+    const v5Path = join(directory, "v5-helper");
     const v3Path = join(directory, "v3-helper");
     const legacyPath = join(directory, "legacy-helper");
     try {
-      const v4Set = JSON.stringify({
-        version: 2,
+      const v5Set = JSON.stringify({
+        version: 3,
         review: "review-a",
         decision: "decision-b",
         reviewAuthorityWrite: "authority-write-c",
@@ -251,14 +271,14 @@ describe("outreach runtime secret handling", () => {
         laneProducer: "lane-producer-e",
         laneDecision: "lane-decision-f",
       });
-      executable(v4Path, `#!/bin/sh\n[ "$1" = "read-set" ] && printf '%s\\n' '${v4Set}' && exit 0\nexit 2\n`);
+      executable(v5Path, `#!/bin/sh\n[ "$1" = "read-set" ] && printf '%s\\n' '${v5Set}' && exit 0\nexit 2\n`);
       executable(v3Path, "#!/bin/sh\nexit 2\n");
-      expect(readRuntimeCapabilitySetFromHelpers(v4Path, v3Path, legacyPath)).toMatchObject({
+      expect(readRuntimeCapabilitySetFromHelpers(v5Path, v3Path, legacyPath)).toMatchObject({
         laneProducer: "lane-producer-e",
         laneDecision: "lane-decision-f",
       });
 
-      executable(v4Path, "#!/bin/sh\n[ \"$1\" = \"read-set\" ] && exit 3\nexit 2\n");
+      executable(v5Path, "#!/bin/sh\n[ \"$1\" = \"read-set\" ] && exit 3\nexit 2\n");
       const v3Set = JSON.stringify({
         version: 1,
         review: "review-a",
@@ -267,7 +287,7 @@ describe("outreach runtime secret handling", () => {
         reviewAuthorityRead: "authority-read-d",
       });
       executable(v3Path, `#!/bin/sh\n[ "$1" = "read-set" ] && printf '%s\\n' '${v3Set}' && exit 0\nexit 2\n`);
-      expect(readRuntimeCapabilitySetFromHelpers(v4Path, v3Path, legacyPath)).toEqual({
+      expect(readRuntimeCapabilitySetFromHelpers(v5Path, v3Path, legacyPath)).toEqual({
         review: "review-a",
         decision: "decision-b",
         authorityWrite: "authority-write-c",
@@ -554,6 +574,25 @@ describe("outreach runtime secret handling", () => {
       storeSet: () => { events.push("store"); },
     }))).toBe("tailscale failed");
     expect(events).toEqual(["helper", "tailscale"]);
+  });
+
+  test("install accepts the valid legacy state where optional outreach authority is absent", () => {
+    const events: string[] = [];
+    installCapabilitySet({
+      ensureHelper: () => { events.push("helper"); },
+      resolveLogin: () => { events.push("tailscale"); return "jt@example.com"; },
+      readExisting: () => {
+        events.push("read-existing");
+        return {
+          review: "review-a",
+          decision: "decision-b",
+          authorityWrite: undefined,
+          authorityRead: undefined,
+        };
+      },
+      storeSet: () => { events.push("store"); },
+    });
+    expect(events).toEqual(["helper", "tailscale", "read-existing", "store"]);
   });
 
   test("macOS advisory lock blocks contention and releases when holder dies", async () => {

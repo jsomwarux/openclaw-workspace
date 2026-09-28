@@ -2,23 +2,23 @@ import Foundation
 import Security
 
 let account = "jtsomwaru"
-let protocolVersion = "outreach-capabilities-v4"
-let capabilitySetService = "com.openclaw.mission-control.outreach-capability-set-v2"
+let protocolVersion = "outreach-capabilities-v5"
+let capabilitySetService = "com.openclaw.mission-control.outreach-capability-set-v3"
 
 struct ExistingSet: Codable {
     let version: Int
     let review: String
     let decision: String
-    let reviewAuthorityWrite: String
-    let reviewAuthorityRead: String
+    let reviewAuthorityWrite: String?
+    let reviewAuthorityRead: String?
 }
 
 struct CapabilitySet: Codable {
     let version: Int
     let review: String
     let decision: String
-    let reviewAuthorityWrite: String
-    let reviewAuthorityRead: String
+    let reviewAuthorityWrite: String?
+    let reviewAuthorityRead: String?
     let laneProducer: String
     let laneDecision: String
 }
@@ -91,9 +91,13 @@ func validatedExistingSet() -> ExistingSet {
     guard !input.isEmpty,
           let value = try? JSONDecoder().decode(ExistingSet.self, from: input),
           value.version == 1 else { fail("capability migration failed") }
-    let values = [value.review, value.decision, value.reviewAuthorityWrite, value.reviewAuthorityRead]
-        .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-    guard values.allSatisfy({ !$0.isEmpty }), Set(values).count == values.count else {
+    let authorityValues = [value.reviewAuthorityWrite, value.reviewAuthorityRead]
+    guard authorityValues.allSatisfy({ $0 == nil }) || authorityValues.allSatisfy({ $0 != nil }) else {
+        fail("capability migration failed")
+    }
+    let values = [value.review, value.decision] + authorityValues.compactMap { $0 }
+    let normalized = values.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+    guard normalized.allSatisfy({ !$0.isEmpty }), Set(normalized).count == normalized.count else {
         fail("capability migration failed")
     }
     return value
@@ -114,14 +118,12 @@ if args == ["probe", protocolVersion] {
     exit(0)
 } else if args == ["install-set"] {
     let existing = validatedExistingSet()
-    var used = Set([
-        existing.review,
-        existing.decision,
+    var used = Set([existing.review, existing.decision] + [
         existing.reviewAuthorityWrite,
         existing.reviewAuthorityRead,
-    ])
+    ].compactMap { $0 })
     let value = CapabilitySet(
-        version: 2,
+        version: 3,
         review: existing.review,
         decision: existing.decision,
         reviewAuthorityWrite: existing.reviewAuthorityWrite,

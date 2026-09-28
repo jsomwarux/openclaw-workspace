@@ -4,7 +4,7 @@
 
 **Goal:** Provision bounded local lane-packet authority without admitting a live packet or weakening existing outreach secret handling.
 
-**Architecture:** Add a v4 Keychain helper/set containing the existing outreach capabilities plus two new distinct lane-packet capabilities. Preserve v3 fallback, transport runtime values only over the private FD3 channel, inject the login only into Next, and synchronize only capabilities to Convex.
+**Architecture:** Add a v5 Keychain helper/set containing either valid legacy outreach state plus two new distinct lane-packet capabilities. Preserve v3 fallback, transport runtime values only over the private FD3 channel, inject the login only into Next, and synchronize only capabilities to Convex. Leave the published-but-unused v4 helper immutable.
 
 **Tech Stack:** Swift Security framework, Node.js 22 ESM, Bun tests, Next.js 15, local Convex, macOS Keychain and LaunchAgents.
 
@@ -12,18 +12,18 @@
 
 ## Chunk 1: Versioned capability contract
 
-### Task 1: Specify v4 set and runtime mappings
+### Task 1: Specify v5 set and runtime mappings
 
 **Files:**
 - Modify: `mission-control/lib/mission-control/outreach-runtime-secrets.test.ts`
 - Modify: `mission-control/scripts/outreach-keychain-helper.swift`
 - Modify: `mission-control/scripts/outreach-runtime-secrets.mjs`
 
-- [x] Add failing tests for the v4 helper path/protocol, six-field set schema, distinctness across all six capabilities, Next mapping, Convex mapping, and v3 fallback with lane variables absent.
-- [x] Run the focused suite and confirm failures are caused by missing v4 behavior.
-- [x] Implement the minimal v4 helper/set reader, validator, runtime mapping, and Convex changes.
+- [x] Add failing tests for the v5 helper path/protocol, six-field set schema, distinctness across all six capabilities, Next mapping, Convex mapping, and v3 fallback with lane variables absent.
+- [x] Run the focused suite and confirm failures are caused by missing v5 behavior.
+- [x] Implement the minimal v5 helper/set reader, validator, runtime mapping, and Convex changes.
 - [x] Re-run the focused suite and confirm it passes.
-- [ ] Commit the versioned contract.
+- [x] Commit the initial versioned contract, then preserve its published helper and supersede it with the repaired v5 migration.
 
 ### Task 2: Prove protected transport and failure behavior
 
@@ -31,11 +31,11 @@
 - Modify: `mission-control/lib/mission-control/outreach-runtime-secrets.test.ts`
 - Modify: `mission-control/scripts/outreach-runtime-secrets.mjs`
 
-- [x] Add failing tests for inherited lane-variable removal, v4 mismatch refusal, partial/colliding set refusal, nonsecret installer arguments, and zero capability serialization to stdout/stderr.
+- [x] Add failing tests for inherited lane-variable removal, v5 mismatch refusal, partial/colliding set refusal, nonsecret installer arguments, and zero capability serialization to stdout/stderr.
 - [x] Run the focused suite and confirm the expected failures.
 - [x] Implement minimal cleanup and fail-closed behavior.
-- [ ] Run focused and full Mission Control suites, TypeScript, build, and `git diff --check`.
-- [ ] Commit the protected transport implementation.
+- [x] Run focused and full Mission Control suites, TypeScript, build, and `git diff --check`.
+- [ ] Commit the repaired protected transport implementation.
 
 ## Chunk 2: Local install and runtime proof
 
@@ -45,8 +45,8 @@
 - Modify: `mission-control/docs/outreach-runtime-configuration.md`
 - Create: `memory/job-state/handoffs/growth-os-mc-runtime-authority-v1.md`
 
-- [ ] Record pre-change service, helper-hash, task-ID, and database rollback evidence without reading secret values.
-- [ ] Run the approved `install` path so the helper generates/stores the v4 set internally.
+- [x] Record pre-change service, helper-hash, task-ID, and database rollback evidence without reading secret values.
+- [ ] Run the approved `install` path so the helper generates/stores the v5 set internally.
 - [ ] Run protected Convex synchronization.
 - [ ] Restart only the two approved Mission Control LaunchAgents.
 - [ ] Verify health, 401 for missing/wrong producer authority, 404 for a nonexistent JT transition, exact task-ID equality, and no live lane-packet rows.

@@ -23,11 +23,11 @@ import { dirname, join } from "node:path";
 
 const LEGACY_KEYCHAIN_HELPER = "./.runtime/outreach-keychain-helper";
 const V3_KEYCHAIN_HELPER = "./.runtime/outreach-keychain-helper-v3";
-const V4_KEYCHAIN_HELPER = "./.runtime/outreach-keychain-helper-v4";
+const V5_KEYCHAIN_HELPER = "./.runtime/outreach-keychain-helper-v5";
 const KEYCHAIN_HELPER_SOURCE = "./scripts/outreach-keychain-helper.swift";
-const V4_KEYCHAIN_HELPER_SOURCE = "./scripts/outreach-keychain-helper-v4.swift";
+const V5_KEYCHAIN_HELPER_SOURCE = "./scripts/outreach-keychain-helper-v5.swift";
 const KEYCHAIN_HELPER_PROTOCOL = "outreach-capabilities-v3";
-const V4_KEYCHAIN_HELPER_PROTOCOL = "outreach-capabilities-v4";
+const V5_KEYCHAIN_HELPER_PROTOCOL = "outreach-capabilities-v5";
 const CAPABILITY_LOCK = "./.runtime/outreach-capability.lock";
 const HELPER_TIMEOUT_MS = 5_000;
 const COMPILE_TIMEOUT_MS = 30_000;
@@ -384,17 +384,17 @@ export function ensureV3KeychainHelper(
   });
 }
 
-export function ensureV4KeychainHelper(
-  helperPath = V4_KEYCHAIN_HELPER,
+export function ensureV5KeychainHelper(
+  helperPath = V5_KEYCHAIN_HELPER,
   compilerPath = "/usr/bin/swiftc",
   { rename = renameSync } = {},
 ) {
   ensureVersionedKeychainHelper({
     helperPath,
     compilerPath,
-    sourcePath: V4_KEYCHAIN_HELPER_SOURCE,
-    protocol: V4_KEYCHAIN_HELPER_PROTOCOL,
-    versionLabel: "v4",
+    sourcePath: V5_KEYCHAIN_HELPER_SOURCE,
+    protocol: V5_KEYCHAIN_HELPER_PROTOCOL,
+    versionLabel: "v5",
     rename,
   });
 }
@@ -587,8 +587,8 @@ function validateCapabilitySet(value) {
     value.review,
     value.decision,
     "local-runtime",
-    value.reviewAuthorityWrite,
-    value.reviewAuthorityRead,
+    value.reviewAuthorityWrite ?? undefined,
+    value.reviewAuthorityRead ?? undefined,
   );
   return {
     review: environment.OUTREACH_REVIEW_CAPABILITY,
@@ -611,25 +611,27 @@ export function parseCapabilitySetRead(result) {
   }
 }
 
-function validateV4CapabilitySet(value) {
+function validateV5CapabilitySet(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     throw new Error("outreach capability configuration is invalid");
   }
-  const expected = [
-    "decision", "laneDecision", "laneProducer", "review", "reviewAuthorityRead",
-    "reviewAuthorityWrite", "version",
-  ];
+  const required = ["decision", "laneDecision", "laneProducer", "review", "version"];
+  const authorityKeys = ["reviewAuthorityRead", "reviewAuthorityWrite"];
   const actual = Object.keys(value).sort();
-  if (actual.length !== expected.length || actual.some((key, index) => key !== expected[index])) {
+  const allowed = [...required, ...authorityKeys].sort();
+  const hasWrite = actual.includes("reviewAuthorityWrite");
+  const hasRead = actual.includes("reviewAuthorityRead");
+  if (hasWrite !== hasRead || actual.some((key) => !allowed.includes(key)) ||
+      required.some((key) => !actual.includes(key))) {
     throw new Error("outreach capability configuration is invalid");
   }
-  if (value.version !== 2) throw new Error("outreach capability configuration is invalid");
+  if (value.version !== 3) throw new Error("outreach capability configuration is invalid");
   const environment = buildRuntimeEnvironment(
     value.review,
     value.decision,
     "local-runtime",
-    value.reviewAuthorityWrite,
-    value.reviewAuthorityRead,
+    value.reviewAuthorityWrite ?? undefined,
+    value.reviewAuthorityRead ?? undefined,
     value.laneProducer,
     value.laneDecision,
   );
@@ -643,11 +645,11 @@ function validateV4CapabilitySet(value) {
   };
 }
 
-export function parseV4CapabilitySetRead(result) {
+export function parseV5CapabilitySetRead(result) {
   if (result.status === 3) return undefined;
   if (result.status !== 0) throw new Error("secure capability operation failed");
   try {
-    return validateV4CapabilitySet(JSON.parse(result.stdout));
+    return validateV5CapabilitySet(JSON.parse(result.stdout));
   } catch (error) {
     if (error instanceof Error && error.message === "outreach capability configuration is invalid") {
       throw error;
@@ -656,7 +658,7 @@ export function parseV4CapabilitySetRead(result) {
   }
 }
 
-function readV4CapabilitySet(helperPath, timeout = HELPER_TIMEOUT_MS) {
+function readV5CapabilitySet(helperPath, timeout = HELPER_TIMEOUT_MS) {
   const result = spawnSync(helperPath, ["read-set"], {
     encoding: "utf8",
     maxBuffer: 1024 * 1024,
@@ -667,7 +669,7 @@ function readV4CapabilitySet(helperPath, timeout = HELPER_TIMEOUT_MS) {
   if (result.error?.code === "ETIMEDOUT") {
     throw new Error("secure capability operation timed out");
   }
-  return parseV4CapabilitySetRead(result);
+  return parseV5CapabilitySetRead(result);
 }
 
 function readV3CapabilitySet(helperPath, timeout = HELPER_TIMEOUT_MS) {
@@ -700,12 +702,12 @@ export function readCapabilitySetFromHelpers(
 }
 
 export function readRuntimeCapabilitySetFromHelpers(
-  v4HelperPath,
+  v5HelperPath,
   v3HelperPath,
   legacyHelperPath,
   timeout = HELPER_TIMEOUT_MS,
 ) {
-  const capabilitySet = readV4CapabilitySet(v4HelperPath, timeout);
+  const capabilitySet = readV5CapabilitySet(v5HelperPath, timeout);
   if (capabilitySet) return capabilitySet;
   return {
     ...readCapabilitySetFromHelpers(v3HelperPath, legacyHelperPath, timeout),
@@ -734,10 +736,10 @@ function currentTailscaleLogin() {
 }
 
 function readRuntimeEnvironment() {
-  ensureV4KeychainHelper();
+  ensureV5KeychainHelper();
   ensureV3KeychainHelper();
   const values = readRuntimeCapabilitySetFromHelpers(
-    V4_KEYCHAIN_HELPER, V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER,
+    V5_KEYCHAIN_HELPER, V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER,
   );
   return buildRuntimeEnvironment(
     values.review,
@@ -757,13 +759,13 @@ function readReviewAuthorityReaderEnvironment() {
 }
 
 export function installCapabilitySet({
-  ensureHelper = ensureV4KeychainHelper,
+  ensureHelper = ensureV5KeychainHelper,
   resolveLogin = currentTailscaleLogin,
   readExisting = () => {
     ensureV3KeychainHelper();
     return readCapabilitySetFromHelpers(V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER);
   },
-  storeSet = (values) => installCapabilitySetFromHelper(V4_KEYCHAIN_HELPER, values),
+  storeSet = (values) => installCapabilitySetFromHelper(V5_KEYCHAIN_HELPER, values),
 } = {}) {
   ensureHelper();
   const login = resolveLogin();
@@ -774,9 +776,6 @@ export function installCapabilitySet({
   // succeeds there is no readback, sync, or other fallible work that can turn
   // a completed rotation into a reported failure.
   const existing = readExisting();
-  if (!existing.authorityWrite || !existing.authorityRead) {
-    throw new Error("outreach capability configuration is invalid");
-  }
   storeSet(existing);
 }
 
@@ -785,14 +784,14 @@ function install() {
 }
 
 async function syncConvex() {
-  ensureV4KeychainHelper();
+  ensureV5KeychainHelper();
   ensureV3KeychainHelper();
   const config = JSON.parse(readFileSync(new URL("../.convex/local/default/config.json", import.meta.url), "utf8"));
   if (typeof config.adminKey !== "string" || !config.adminKey || typeof config.ports?.cloud !== "number") {
     throw new Error("local Convex authority is unavailable");
   }
   const values = readRuntimeCapabilitySetFromHelpers(
-    V4_KEYCHAIN_HELPER, V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER,
+    V5_KEYCHAIN_HELPER, V3_KEYCHAIN_HELPER, LEGACY_KEYCHAIN_HELPER,
   );
   const changes = buildConvexEnvironmentChanges(
     values.review,
