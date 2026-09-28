@@ -67,6 +67,7 @@ node_modules/
 Thumbs.db
 *.tmp
 *.swp
+*.jsonl.lock
 
 # ── Backups (stored separately via backup.sh) ─────────────
 backups/
