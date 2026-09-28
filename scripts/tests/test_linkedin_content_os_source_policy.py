@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from pathlib import Path
 import unittest
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
@@ -11,6 +12,7 @@ from scripts.linkedin_content_os.source_policy import (
 
 
 GENERATED_AT = "2026-09-28T16:30:00Z"
+ROOT = Path(__file__).resolve().parents[2]
 
 
 class SourcePolicyTests(unittest.TestCase):
@@ -140,6 +142,39 @@ class SourcePolicyTests(unittest.TestCase):
         recipe = by_family["engineering_recipe"]
         self.assertNotEqual(recipe["status"], "override")
         self.assertNotIn("implicit_override", canonical_bytes(recipe).decode("utf-8"))
+        self.assertFalse(evidence_satisfies(internal, {"none"}))
+
+    def test_evidence_evaluation_accepts_only_closed_canonical_allowed_family(self) -> None:
+        client = next(
+            record for record in self.policy["families"] if record["family"] == "client_delivery"
+        )
+        self.assertTrue(
+            evidence_satisfies(
+                client,
+                {"immutable_git_object", "claim_level_facts", "permission_evidence"},
+            )
+        )
+
+        for mutation in (
+            {**client, "status": "prohibited"},
+            {**client, "requiredEvidence": []},
+            {**client, "family": "unknown_family"},
+            {**client, "extra": True},
+        ):
+            with self.subTest(mutation=mutation):
+                with self.assertRaises(ValueError):
+                    evidence_satisfies(mutation, set())
+
+    def test_content_rules_make_internal_machinery_prohibition_absolute(self) -> None:
+        content_rules = (ROOT / "docs/agents/content-rules.md").read_text(encoding="utf-8")
+        self.assertIn(
+            "V1 prohibits posts about JT's internal content machinery without exception.",
+            content_rules,
+        )
+        self.assertNotIn(
+            "unless JT explicitly asks for that topic",
+            content_rules,
+        )
 
     def test_policy_refuses_unknown_fields_and_test_fixture_authority(self) -> None:
         mutated = dict(self.policy)

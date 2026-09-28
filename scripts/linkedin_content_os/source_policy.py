@@ -121,13 +121,25 @@ def _records() -> List[Dict[str, object]]:
 def evidence_satisfies(record: Dict[str, object], observed: Set[str]) -> bool:
     """Evaluate the closed all-of/one-of evidence contract for one family."""
 
+    if not isinstance(record, dict) or set(record) != _FAMILY_FIELDS:
+        raise ValueError("source-family record has invalid fields")
+    family = record.get("family")
+    canonical_record = next(
+        (candidate for candidate in _records() if candidate["family"] == family), None
+    )
+    if canonical_record is None:
+        raise ValueError("source-family record has an unknown family")
+    if canonical_bytes(record) != canonical_bytes(canonical_record):
+        raise ValueError("source-family record does not match the closed policy contract")
     if not isinstance(observed, set) or any(
         not isinstance(item, str) or not item for item in observed
     ):
         raise ValueError("observed evidence must be a set of non-empty strings")
+    if record["status"] != "allowed":
+        return False
     required = record.get("requiredEvidence")
     if isinstance(required, list):
-        if any(not isinstance(item, str) or not item for item in required):
+        if not required or any(not isinstance(item, str) or not item for item in required):
             raise ValueError("requiredEvidence list is invalid")
         return set(required).issubset(observed)
     if not isinstance(required, dict) or set(required) != {"allOf", "oneOf"}:
