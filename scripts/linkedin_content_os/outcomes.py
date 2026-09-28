@@ -6,8 +6,8 @@ from pathlib import Path
 from typing import Literal
 
 from scripts.linkedin_content_os.canonical import (
+    _append_jsonl_exact_prefix_locked as append_jsonl_exact_prefix,
     _exclusive_path_lock,
-    append_jsonl_exact_prefix,
     read_jsonl,
 )
 from scripts.linkedin_content_os.contracts import parse_timestamp, validate_event
@@ -38,7 +38,8 @@ def _validated_rows(path: Path) -> list[dict[str, object]]:
 def load_events(path: Path) -> list[dict[str, object]]:
     """Load and validate a complete strict outcome ledger."""
 
-    return _validated_rows(path)
+    with _exclusive_path_lock(path):
+        return _validated_rows(path)
 
 
 def append_event(
@@ -48,8 +49,8 @@ def append_event(
 
     validate_event(event)
     path.parent.mkdir(parents=True, exist_ok=True)
-    transaction_path = path.with_name("{}.transaction".format(path.name))
-    with _exclusive_path_lock(transaction_path):
+    with _exclusive_path_lock(path):
+        validated_prefix = path.read_bytes() if path.exists() else b""
         existing = _validated_rows(path)
         event_id = str(event["outcomeEventId"])
         event_hash = str(event["eventSha256"])
@@ -68,7 +69,11 @@ def append_event(
                     raise ValueError("per-packet timestamp regression")
                 break
 
-        append_jsonl_exact_prefix(path, event)
+        append_jsonl_exact_prefix(
+            path,
+            event,
+            expected_prefix=validated_prefix,
+        )
         return "appended"
 
 

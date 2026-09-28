@@ -181,10 +181,19 @@ def validate_claim_attribution(value: object) -> str:
 
 def _validate_linkedin_url(value: object) -> str:
     text = _require_string(value, "publicationUrl")
-    parsed = urlsplit(text)
+    if text != text.strip() or any(
+        ord(character) < 32 or ord(character) == 127 for character in text
+    ):
+        raise ValueError("publicationUrl contains whitespace or control characters")
+    try:
+        parsed = urlsplit(text)
+        port = parsed.port
+    except ValueError as error:
+        raise ValueError("publicationUrl is malformed") from error
     host = (parsed.hostname or "").lower()
     if (
         parsed.scheme != "https"
+        or port not in (None, 443)
         or parsed.username is not None
         or parsed.password is not None
         or not (host == "linkedin.com" or host.endswith(".linkedin.com"))

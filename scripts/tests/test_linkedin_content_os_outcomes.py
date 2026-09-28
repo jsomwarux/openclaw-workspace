@@ -1,7 +1,10 @@
 import json
+import multiprocessing
 import tempfile
+import threading
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.contracts import (
@@ -13,6 +16,14 @@ from scripts.linkedin_content_os.contracts import (
     validate_event,
 )
 from scripts.linkedin_content_os.outcomes import append_event, load_events
+
+
+def _hold_ledger_lock(path_text: str, acquired: object, release: object) -> None:
+    from scripts.linkedin_content_os.canonical import _exclusive_path_lock
+
+    with _exclusive_path_lock(Path(path_text)):
+        acquired.set()
+        release.wait(timeout=5)
 
 
 def _event(
@@ -196,6 +207,12 @@ class ClosedContractTests(unittest.TestCase):
             "http://www.linkedin.com/posts/jt_post-1",
             "https://example.com/posts/1",
             "https://linkedin.evil.example/posts/1",
+            " https://www.linkedin.com/posts/jt_post-1",
+            "https://www.linkedin.com/posts/jt_post-1\n",
+            "https://www.linkedin.com:444/posts/jt_post-1",
+            "https://www.linkedin.com:99999/posts/jt_post-1",
+            "https://www.linkedin.com:notaport/posts/jt_post-1",
+            "https://www.linkedin.com/posts/jt_post-1\x00",
         ):
             event = _event(
                 event_type="publication_acknowledged",
@@ -226,9 +243,12 @@ class ClosedContractTests(unittest.TestCase):
 
     def test_fixture_contains_strict_valid_rows(self) -> None:
         fixture = Path("scripts/tests/fixtures/linkedin_content_os/outcomes.jsonl")
-        events = load_events(fixture)
-        self.assertGreaterEqual(len(events), 2)
-        self.assertEqual([validate_event(event) for event in events], events)
+        with tempfile.TemporaryDirectory() as directory:
+            copy = Path(directory) / "outcomes.jsonl"
+            copy.write_bytes(fixture.read_bytes())
+            events = load_events(copy)
+            self.assertGreaterEqual(len(events), 2)
+            self.assertEqual([validate_event(event) for event in events], events)
 
 
 class OutcomeLedgerTests(unittest.TestCase):
@@ -291,12 +311,75 @@ class OutcomeLedgerTests(unittest.TestCase):
             self.assertEqual(append_event(path, second), "appended")
             self.assertTrue(path.read_bytes().startswith(prefix))
 
+    def test_fails_closed_if_ledger_mutates_between_validation_and_append(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "outcomes.jsonl"
+            append_event(path, _event())
+            corrupt = b'{"corrupt":true}\n'
+            second = _event(
+                event_id="outcome-002",
+                recorded_at="2026-09-28T12:01:00-04:00",
+            )
+
+            from scripts.linkedin_content_os import outcomes
+
+            real_append = outcomes.append_jsonl_exact_prefix
+
+            def mutate_then_append(*args: object, **kwargs: object) -> None:
+                path.write_bytes(corrupt)
+                real_append(*args, **kwargs)
+
+            with mock.patch.object(
+                outcomes,
+                "append_jsonl_exact_prefix",
+                side_effect=mutate_then_append,
+            ):
+                with self.assertRaisesRegex(RuntimeError, "validated prefix"):
+                    append_event(path, second)
+
+            self.assertEqual(path.read_bytes(), corrupt)
+
     def test_load_fails_closed_on_invalid_prior_row(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "outcomes.jsonl"
             path.write_text('{"not":"an outcome"}\n', encoding="utf-8")
             with self.assertRaises(ValueError):
                 load_events(path)
+
+    def test_reader_waits_for_writer_ledger_lock(self) -> None:
+        context = multiprocessing.get_context("fork")
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "outcomes.jsonl"
+            append_event(path, _event())
+            acquired = context.Event()
+            release = context.Event()
+            holder = context.Process(
+                target=_hold_ledger_lock,
+                args=(str(path), acquired, release),
+            )
+            holder.start()
+            self.assertTrue(acquired.wait(timeout=2))
+
+            completed = threading.Event()
+            errors = []
+
+            def read_ledger() -> None:
+                try:
+                    load_events(path)
+                except Exception as error:
+                    errors.append(error)
+                finally:
+                    completed.set()
+
+            reader = threading.Thread(target=read_ledger)
+            reader.start()
+            self.assertFalse(completed.wait(timeout=0.1))
+            release.set()
+            self.assertTrue(completed.wait(timeout=2))
+            reader.join(timeout=1)
+            holder.join(timeout=2)
+            self.assertEqual(holder.exitcode, 0)
+            self.assertEqual(errors, [])
 
 
 if __name__ == "__main__":

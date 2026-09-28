@@ -9,7 +9,7 @@ import os
 import tempfile
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Iterator, List, Tuple
+from typing import Any, Iterator, List, Optional, Tuple
 
 
 def canonical_bytes(value: object) -> bytes:
@@ -101,30 +101,42 @@ def _exclusive_path_lock(path: Path) -> Iterator[None]:
             fcntl.flock(lock_handle.fileno(), fcntl.LOCK_UN)
 
 
-def append_jsonl_exact_prefix(path: Path, row: dict[str, object]) -> None:
+def _append_jsonl_exact_prefix_locked(
+    path: Path,
+    row: dict[str, object],
+    expected_prefix: Optional[bytes] = None,
+) -> None:
+    row_bytes = canonical_bytes(row)
+    existed = path.exists()
+    original = path.read_bytes() if existed else b""
+    if expected_prefix is not None and original != expected_prefix:
+        raise RuntimeError("ledger changed after validation; validated prefix mismatch")
+    separator = b"\n" if original and not original.endswith(b"\n") else b""
+    appended = separator + row_bytes + b"\n"
+
+    try:
+        with path.open("ab") as handle:
+            handle.write(appended)
+            handle.flush()
+            os.fsync(handle.fileno())
+        after = path.read_bytes()
+        expected = original + appended
+        if not after.startswith(original) or after != expected:
+            raise RuntimeError(
+                "append did not preserve the prior bytes as an exact prefix"
+            )
+    except Exception:
+        if existed:
+            _write_bytes_atomic(path, original)
+        else:
+            path.unlink(missing_ok=True)
+        raise
+
+
+def append_jsonl_exact_prefix(
+    path: Path, row: dict[str, object]
+) -> None:
     """Append one canonical row and prove all prior bytes remain unchanged."""
 
-    row_bytes = canonical_bytes(row)
     with _exclusive_path_lock(path):
-        existed = path.exists()
-        original = path.read_bytes() if existed else b""
-        separator = b"\n" if original and not original.endswith(b"\n") else b""
-        appended = separator + row_bytes + b"\n"
-
-        try:
-            with path.open("ab") as handle:
-                handle.write(appended)
-                handle.flush()
-                os.fsync(handle.fileno())
-            after = path.read_bytes()
-            expected = original + appended
-            if not after.startswith(original) or after != expected:
-                raise RuntimeError(
-                    "append did not preserve the prior bytes as an exact prefix"
-                )
-        except Exception:
-            if existed:
-                _write_bytes_atomic(path, original)
-            else:
-                path.unlink(missing_ok=True)
-            raise
+        _append_jsonl_exact_prefix_locked(path, row)
