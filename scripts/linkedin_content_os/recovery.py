@@ -1042,23 +1042,23 @@ def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
     return confirmed
 
 
-def validate_permission_fixture_authority_files(
-    response_path: Path,
-    receipt_path: Path,
-    anchor_path: Path,
-    ledger_path: Path,
+def validate_permission_fixture_authority(
+    response_value: object,
+    response_bytes: bytes,
+    receipt_value: object,
+    anchor_value: object,
+    events: list[dict[str, object]],
 ) -> dict[str, object]:
-    """Validate one accepted response and its permission event without Git I/O."""
+    """Validate one accepted response from exact already-captured snapshots."""
 
-    response, response_bytes = _strict_json_file_with_bytes(response_path)
-    response = _exact_fields(response, _RESPONSE_FIELDS, "human-gate response")
+    response = _exact_fields(response_value, _RESPONSE_FIELDS, "human-gate response")
     _reject_nulls(response, "human-gate response")
     if response["schemaVersion"] != "linkedin-human-gate-response.v1":
         raise ValueError("unsupported human-gate response schemaVersion")
     focus_decision = _require_object(response["focusDecision"], "focusDecision")
     response_hash = sha256_hex(response_bytes)
     anchor = _exact_fields(
-        _strict_json_file(anchor_path),
+        anchor_value,
         {
             "schemaVersion", "rawResponseSha256", "authorityReceiptSha256",
             "anchorSha256",
@@ -1074,7 +1074,7 @@ def validate_permission_fixture_authority_files(
         raise ValueError("focus authority anchor SHA-256 mismatch")
     if anchor["rawResponseSha256"] != response_hash:
         raise ValueError("current response does not match accepted response authority binding")
-    receipt = _require_object(_strict_json_file(receipt_path), "focus authority receipt")
+    receipt = _require_object(receipt_value, "focus authority receipt")
     receipt_fields = {
         "schemaVersion", "rawResponseSha256", "recoveryRequestSha256",
         "fixtureGapSha256", "focusDecisionEventSha256", "ledgerPrefixSha256",
@@ -1101,7 +1101,6 @@ def validate_permission_fixture_authority_files(
         or receipt["focusDecision"] != response["focusDecision"]
     ):
         raise ValueError("focus authority receipt does not bind the current response")
-    events = load_events(ledger_path)
     position = receipt["ledgerPosition"]
     if (
         not isinstance(position, int)
@@ -1156,6 +1155,24 @@ def validate_permission_fixture_authority_files(
         "authorityReceipt": receipt,
         "permissionEvent": permission_event,
     }
+
+
+def validate_permission_fixture_authority_files(
+    response_path: Path,
+    receipt_path: Path,
+    anchor_path: Path,
+    ledger_path: Path,
+) -> dict[str, object]:
+    """Validate one accepted response and its permission event without Git I/O."""
+
+    response, response_bytes = _strict_json_file_with_bytes(response_path)
+    return validate_permission_fixture_authority(
+        response,
+        response_bytes,
+        _strict_json_file(receipt_path),
+        _strict_json_file(anchor_path),
+        load_events(ledger_path),
+    )
 
 
 def rebuild_fixtures_files(args: argparse.Namespace) -> dict[str, object]:

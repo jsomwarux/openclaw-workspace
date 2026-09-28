@@ -55,7 +55,7 @@ from scripts.linkedin_content_os.mc_snapshot import (
     capture_tasks,
     validate_snapshot,
 )
-from scripts.linkedin_content_os.outcomes import load_events
+from scripts.linkedin_content_os.outcomes import load_events, validate_events
 from scripts.linkedin_content_os.source_policy import build_source_policy, validate_source_policy
 from scripts.linkedin_content_os.voice_rules import (
     OWNER_SURFACES,
@@ -99,20 +99,61 @@ def _strict_object(pairs: List[Tuple[str, object]]) -> Dict[str, object]:
     return result
 
 
-def _read_json(path: Path) -> Dict[str, object]:
+def _read_json_bytes(payload: bytes, source: object) -> Dict[str, object]:
     try:
         value = json.loads(
-            path.read_text(encoding="utf-8"),
+            payload.decode("utf-8"),
             object_pairs_hook=_strict_object,
             parse_constant=lambda value: (_ for _ in ()).throw(
                 ValueError("non-standard JSON constant {}".format(value))
             ),
         )
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
-        raise ValueError("invalid JSON file {}".format(path)) from error
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise ValueError("invalid JSON file {}".format(source)) from error
     if not isinstance(value, dict):
-        raise ValueError("{} must contain a JSON object".format(path))
+        raise ValueError("{} must contain a JSON object".format(source))
     return value
+
+
+def _read_json(path: Path) -> Dict[str, object]:
+    try:
+        payload = path.read_bytes()
+    except OSError as error:
+        raise ValueError("invalid JSON file {}".format(path)) from error
+    return _read_json_bytes(payload, path)
+
+
+class _VerifierSnapshots:
+    """Read every verifier input once and reuse that exact immutable snapshot."""
+
+    def __init__(self) -> None:
+        self._payloads: Dict[Path, bytes] = {}
+
+    def _path(self, path: Path) -> Path:
+        try:
+            return Path(path).resolve(strict=True)
+        except OSError as error:
+            raise ValueError("verifier input is unavailable: {}".format(path)) from error
+
+    def bytes(self, path: Path) -> bytes:
+        canonical = self._path(path)
+        if canonical not in self._payloads:
+            try:
+                self._payloads[canonical] = canonical.read_bytes()
+            except OSError as error:
+                raise ValueError(
+                    "verifier input is unavailable: {}".format(path)
+                ) from error
+        return self._payloads[canonical]
+
+    def sha256(self, path: Path) -> str:
+        return sha256_hex(self.bytes(path))
+
+    def json(self, path: Path) -> Dict[str, object]:
+        return _read_json_bytes(self.bytes(path), path)
+
+    def jsonl(self, path: Path) -> List[Dict[str, object]]:
+        return read_jsonl_bytes(self.bytes(path), str(path))
 
 
 def _write_jsonl(path: Path, rows: Sequence[Dict[str, object]]) -> None:
@@ -198,8 +239,9 @@ def _require_hash(value: object, label: str) -> str:
     return value
 
 
-def _run_context(path: Path, *, authority: bool = False) -> Dict[str, object]:
-    value = _read_json(path)
+def _validate_run_context(
+    value: Dict[str, object], *, authority: bool = False
+) -> Dict[str, object]:
     base = {"schemaVersion", "runId", "generatedAt"}
     expected = base | ({"corpusAuthorityManifestSha256"} if authority else set())
     if set(value) != expected:
@@ -223,6 +265,10 @@ def _run_context(path: Path, *, authority: bool = False) -> Dict[str, object]:
     if value["runId"] != expected_run_id:
         raise ValueError("runId does not match canonical run context")
     return value
+
+
+def _run_context(path: Path, *, authority: bool = False) -> Dict[str, object]:
+    return _validate_run_context(_read_json(path), authority=authority)
 
 
 def init_run(
@@ -893,12 +939,44 @@ def _preview_checkin(args: argparse.Namespace) -> Dict[str, object]:
     return result
 
 
+def _validate_receipt_snapshot_bindings(
+    receipt: Dict[str, object],
+    *,
+    root: Path,
+    snapshots: _VerifierSnapshots,
+) -> None:
+    bindings = list(receipt["inputs"]) + list(receipt["outputs"])
+    for binding in bindings:
+        assert isinstance(binding, dict)
+        unresolved = root / str(binding["path"])
+        try:
+            path = unresolved.resolve(strict=True)
+            path.relative_to(root)
+        except (OSError, ValueError) as error:
+            raise ValueError(
+                "bound receipt path escapes workspace or is unavailable"
+            ) from error
+        if snapshots.sha256(path) != binding["sha256"]:
+            raise ValueError("bound receipt byte hash mismatch")
+    run_binding = next(
+        item for item in receipt["inputs"] if item["role"] == "run_context"
+    )
+    run_path = (root / str(run_binding["path"])).resolve(strict=True)
+    run_context = snapshots.json(run_path)
+    if run_context.get("generatedAt") != receipt["generatedAt"]:
+        raise ValueError("receipt generatedAt differs from bound run context")
+
+
 def _verify(args: argparse.Namespace) -> Dict[str, object]:
-    context = _run_context(Path(args.run_context), authority=True)
+    snapshots = _VerifierSnapshots()
+    context_path = Path(args.run_context)
+    context = _validate_run_context(
+        snapshots.json(context_path), authority=True
+    )
     root = Path(args.workspace_root).resolve()
     artifact_root = root / "memory/content/linkedin-content-os"
-    audit = _read_json(artifact_root / "historical-audit.v1.json")
-    manifest = _read_json(Path(args.corpus_authority_manifest))
+    audit = snapshots.json(artifact_root / "historical-audit.v1.json")
+    manifest = snapshots.json(Path(args.corpus_authority_manifest))
     expected = str(context["corpusAuthorityManifestSha256"])
     source_sha = _require_hash(audit.get("sourceSha256"), "audit.sourceSha256")
     audit_generated_at = str(audit.get("generatedAt"))
@@ -909,7 +987,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         expected_manifest_sha256=expected,
     )
     canonical_manifest = str(canonical_manifest_value["manifestSha256"])
-    authority_context_sha256 = sha256_hex(Path(args.run_context).read_bytes())
+    authority_context_sha256 = snapshots.sha256(context_path)
     receipts = []
     for path_value in (
         args.phase_1_corpus_receipt,
@@ -917,10 +995,11 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         args.phase_2_corpus_receipt,
     ):
         path = Path(path_value)
-        receipt = validate_authority_consumption_receipt(
-            _read_json(path), workspace_root=Path(args.workspace_root)
+        receipt = validate_authority_consumption_receipt(snapshots.json(path))
+        _validate_receipt_snapshot_bindings(
+            receipt, root=root, snapshots=snapshots
         )
-        receipts.append({"path": _relative(path, Path(args.workspace_root)), "sha256": sha256_hex(path.read_bytes()), "receipt": receipt})
+        receipts.append({"path": _relative(path, root), "sha256": snapshots.sha256(path), "receipt": receipt})
     receipt_commands = [item["receipt"]["command"] for item in receipts]
     if receipt_commands != ["build-corpus", "audit-history", "build-corpus"]:
         raise ValueError("authority consumption receipts are not in the required phase order")
@@ -940,7 +1019,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     manifest_path = Path(args.corpus_authority_manifest).resolve(strict=True)
     if (
         (root / str(manifest_binding["path"])).resolve(strict=True) != manifest_path
-        or manifest_binding["sha256"] != sha256_hex(manifest_path.read_bytes())
+        or manifest_binding["sha256"] != snapshots.sha256(manifest_path)
     ):
         raise ValueError("phase-2 audit receipt is not bound to the supplied authority manifest")
     expected_phase2_paths = (
@@ -987,11 +1066,13 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         item for item in phase1_receipt["inputs"] if item["role"] == "run_context"
     )
     phase1_context_path = (root / str(phase1_run_binding["path"])).resolve(strict=True)
-    phase1_context = _run_context(phase1_context_path)
+    phase1_context = _validate_run_context(snapshots.json(phase1_context_path))
     phase1_audit_binding = next(
         item for item in phase1_receipt["inputs"] if item["role"] == "audit"
     )
-    phase1_audit = _read_json((root / str(phase1_audit_binding["path"])).resolve(strict=True))
+    phase1_audit = snapshots.json(
+        (root / str(phase1_audit_binding["path"])).resolve(strict=True)
+    )
     phase1_manifest = phase1_audit.get("corpusAuthorityManifest")
     if not isinstance(phase1_manifest, dict):
         raise ValueError("phase-1 audit lacks its fixed-empty authority manifest")
@@ -1010,7 +1091,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         args.phase_1_before, args.phase_1_after, args.phase_2_before, args.phase_2_after
     )]
     boundaries = [
-        validate_boundary_artifact(_read_json(path)) for path in boundary_paths
+        validate_boundary_artifact(snapshots.json(path)) for path in boundary_paths
     ]
     expected_phases = [
         "phase-1-before", "phase-1-after", "phase-2-before", "phase-2-after"
@@ -1046,11 +1127,11 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         equality_rows.append({
             "beforePath": _relative(boundary_paths[pair_index * 2], root),
             "afterPath": _relative(boundary_paths[pair_index * 2 + 1], root),
-            "beforeFileSha256": sha256_hex(
-                boundary_paths[pair_index * 2].read_bytes()
+            "beforeFileSha256": snapshots.sha256(
+                boundary_paths[pair_index * 2]
             ),
-            "afterFileSha256": sha256_hex(
-                boundary_paths[pair_index * 2 + 1].read_bytes()
+            "afterFileSha256": snapshots.sha256(
+                boundary_paths[pair_index * 2 + 1]
             ),
             "beforeSha256": before["boundarySha256"],
             "afterSha256": after["boundarySha256"],
@@ -1059,23 +1140,25 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             "runId": expected_run_id,
             "generatedAt": expected_generated_at,
         })
-    focus = _read_json(artifact_root / "focus-snapshot.v1.json")
+    focus = snapshots.json(artifact_root / "focus-snapshot.v1.json")
     fixture_path = artifact_root / "evaluation-fixtures.v0.jsonl"
-    fixture_bytes = fixture_path.read_bytes()
+    fixture_bytes = snapshots.bytes(fixture_path)
     fixtures = read_jsonl_bytes(fixture_bytes, str(fixture_path))
-    gold = _read_jsonl_optional(artifact_root / "voice-gold.v0.jsonl")
-    pairs = _read_jsonl_optional(artifact_root / "contrastive-pairs.v0.jsonl")
-    checkin = _read_json(artifact_root / "checkin.preview.v1.json")
-    events = load_events(artifact_root / "outcomes.v1.jsonl")
+    gold = snapshots.jsonl(artifact_root / "voice-gold.v0.jsonl")
+    pairs = snapshots.jsonl(artifact_root / "contrastive-pairs.v0.jsonl")
+    checkin = snapshots.json(artifact_root / "checkin.preview.v1.json")
+    events = validate_events(snapshots.jsonl(artifact_root / "outcomes.v1.jsonl"))
     from scripts.linkedin_content_os.recovery import (
         derive_authorized_fixture_rows,
-        validate_permission_fixture_authority_files,
+        validate_permission_fixture_authority,
     )
-    permission_authority = validate_permission_fixture_authority_files(
-        artifact_root / "human-gate-response.v1.json",
-        artifact_root / "focus-authority-receipt.v1.json",
-        artifact_root / "focus-authority-anchor.v1.json",
-        artifact_root / "outcomes.v1.jsonl",
+    response_path = artifact_root / "human-gate-response.v1.json"
+    permission_authority = validate_permission_fixture_authority(
+        snapshots.json(response_path),
+        snapshots.bytes(response_path),
+        snapshots.json(artifact_root / "focus-authority-receipt.v1.json"),
+        snapshots.json(artifact_root / "focus-authority-anchor.v1.json"),
+        events,
     )
     permission_receipt = permission_authority["authorityReceipt"]
     assert isinstance(permission_receipt, dict)
@@ -1106,7 +1189,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         raise ValueError("voice-gold artifact does not match canonical derivation")
     if canonical_bytes(pairs) != canonical_bytes(derived_pairs):
         raise ValueError("contrastive-pair artifact does not match canonical derivation")
-    snapshot = _read_json(artifact_root / "mission-control.snapshot.v1.json")
+    snapshot = snapshots.json(artifact_root / "mission-control.snapshot.v1.json")
     derived_checkin = project_checkin(
         snapshot, events, parse_timestamp(context["generatedAt"], "generatedAt")
     )
@@ -1124,7 +1207,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         raise ValueError("check-in preview does not match canonical derivation")
     policy_path = artifact_root / "source-policy.v1.json"
     if policy_path.exists():
-        validate_source_policy(_read_json(policy_path))
+        validate_source_policy(snapshots.json(policy_path))
     status_counts = audit.get("statusCounts")
     missing_counts = audit.get("missingFieldCounts")
     recovery = audit.get("recoveryRequest")

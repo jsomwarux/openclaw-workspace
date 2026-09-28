@@ -1180,6 +1180,130 @@ class VerificationIntegrationTests(unittest.TestCase):
             main(self._verify_argv(paths))
         self.assertEqual(fixture_reads, 1)
 
+    def test_verify_hashes_boundary_from_the_single_parsed_snapshot(self) -> None:
+        paths = self._proof_tree()
+        boundary_path = paths["b1"]
+        canonical_boundary_bytes = boundary_path.read_bytes()
+        boundary_value = json.loads(canonical_boundary_bytes)
+        first_snapshot = json.dumps(
+            boundary_value, ensure_ascii=False, indent=2, sort_keys=True
+        ).encode("utf-8") + b"\n"
+        real_read_bytes = Path.read_bytes
+        real_read_text = Path.read_text
+        boundary_reads = 0
+        boundary_text_reads = 0
+
+        def alternating_read(path: Path) -> bytes:
+            nonlocal boundary_reads
+            if path == boundary_path:
+                boundary_reads += 1
+                return first_snapshot if boundary_reads == 1 else canonical_boundary_bytes
+            return real_read_bytes(path)
+
+        def counted_text(path: Path, *args: object, **kwargs: object) -> str:
+            nonlocal boundary_text_reads
+            if path == boundary_path:
+                boundary_text_reads += 1
+            return real_read_text(path, *args, **kwargs)
+
+        with mock.patch.object(
+            Path, "read_bytes", autospec=True, side_effect=alternating_read
+        ), mock.patch.object(
+            Path, "read_text", autospec=True, side_effect=counted_text
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_voice_gold", return_value=[]
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+        ):
+            report = main(self._verify_argv(paths))
+        self.assertEqual(boundary_reads, 1)
+        self.assertEqual(boundary_text_reads, 0)
+        self.assertEqual(
+            report["boundaryProof"][0]["beforeFileSha256"],
+            sha256_hex(first_snapshot),
+        )
+
+    def test_verify_reads_authority_context_as_one_exact_byte_snapshot(self) -> None:
+        paths = self._proof_tree()
+        context_path = paths["authority"]
+        canonical_context_bytes = context_path.read_bytes()
+        forged_text_snapshot = json.dumps(
+            json.loads(canonical_context_bytes), indent=2, sort_keys=True
+        ) + "\n"
+        real_read_bytes = Path.read_bytes
+        real_read_text = Path.read_text
+        byte_reads = 0
+        text_reads = 0
+
+        def counted_bytes(path: Path) -> bytes:
+            nonlocal byte_reads
+            if path == context_path:
+                byte_reads += 1
+            return real_read_bytes(path)
+
+        def counted_text(path: Path, *args: object, **kwargs: object) -> str:
+            nonlocal text_reads
+            if path == context_path:
+                text_reads += 1
+                return forged_text_snapshot
+            return real_read_text(path, *args, **kwargs)
+
+        with mock.patch.object(
+            Path, "read_bytes", autospec=True, side_effect=counted_bytes
+        ), mock.patch.object(
+            Path, "read_text", autospec=True, side_effect=counted_text
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_voice_gold", return_value=[]
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+        ):
+            report = main(self._verify_argv(paths))
+        self.assertEqual(text_reads, 0)
+        self.assertEqual(byte_reads, 1)
+        self.assertEqual(
+            report["authorityContextDigest"], sha256_hex(canonical_context_bytes)
+        )
+
+    def test_verify_reads_receipt_as_one_exact_byte_snapshot(self) -> None:
+        paths = self._proof_tree()
+        receipt_path = paths["audit_receipt"]
+        canonical_receipt_bytes = receipt_path.read_bytes()
+        forged_text_snapshot = json.dumps(
+            json.loads(canonical_receipt_bytes), indent=2, sort_keys=True
+        ) + "\n"
+        real_read_bytes = Path.read_bytes
+        real_read_text = Path.read_text
+        byte_reads = 0
+        text_reads = 0
+
+        def counted_bytes(path: Path) -> bytes:
+            nonlocal byte_reads
+            if path == receipt_path:
+                byte_reads += 1
+            return real_read_bytes(path)
+
+        def counted_text(path: Path, *args: object, **kwargs: object) -> str:
+            nonlocal text_reads
+            if path == receipt_path:
+                text_reads += 1
+                return forged_text_snapshot
+            return real_read_text(path, *args, **kwargs)
+
+        with mock.patch.object(
+            Path, "read_bytes", autospec=True, side_effect=counted_bytes
+        ), mock.patch.object(
+            Path, "read_text", autospec=True, side_effect=counted_text
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_voice_gold", return_value=[]
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+        ):
+            report = main(self._verify_argv(paths))
+        self.assertEqual(text_reads, 0)
+        self.assertEqual(byte_reads, 1)
+        audit_receipt = report["receipts"][1]
+        self.assertEqual(audit_receipt["sha256"], sha256_hex(canonical_receipt_bytes))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -58,10 +58,11 @@ def validate_event_sequence(rows: list[dict[str, object]]) -> None:
         raise ValueError("correction chain or cycle is not allowed")
 
 
-def _validated_rows(path: Path) -> list[dict[str, object]]:
-    if not path.exists():
-        return []
-    rows = read_jsonl(path)
+def validate_events(
+    rows: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    """Validate a complete outcome ledger already captured as one snapshot."""
+
     seen_ids: dict[str, str] = {}
     latest_by_packet: dict[str, object] = {}
     for row in rows:
@@ -79,6 +80,12 @@ def _validated_rows(path: Path) -> list[dict[str, object]]:
         latest_by_packet[packet_id] = recorded_at
     validate_event_sequence(rows)
     return rows
+
+
+def _validated_rows(path: Path) -> list[dict[str, object]]:
+    if not path.exists():
+        return []
+    return validate_events(read_jsonl(path))
 
 
 def load_events(path: Path) -> list[dict[str, object]]:
