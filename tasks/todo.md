@@ -4,8 +4,8 @@
 - [x] Prove exact admission, replay dedupe before and after closure, evidence-backed completion with an outcome pointer, and typed no-action closure through the real in-memory Convex handlers.
 - [x] Preserve specialized outreach isolation and keep live writes, push, merge, deploy, application submission, and scheduling closed.
 - [x] Run focused/full tests, TypeScript, isolated production build, diff, scope, and secret checks.
-- [ ] Obtain a fresh read-only verifier verdict on the exact committed tree.
-- [ ] Write an immutable handoff and reconcile canonical Growth OS state only after verifier confirmation.
+- [x] Obtain a fresh read-only verifier verdict on the exact committed tree.
+- [x] Write an immutable handoff and reconcile canonical Growth OS state only after verifier confirmation.
 
 ## Plan — Passive Income Scout Handoff Hardening — 2026-06-21
 - [x] Add failing regression coverage for deterministic same-day Scout handoff creation.
