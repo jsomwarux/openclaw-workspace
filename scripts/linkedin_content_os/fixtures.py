@@ -37,6 +37,35 @@ SCHEMA_VERSION = "linkedin-evaluation-fixture.v1"
 _HASH40 = re.compile(r"^[0-9a-f]{40}$")
 _HASH64 = re.compile(r"^[0-9a-f]{64}$")
 _ALLOWED_PERMISSION = {"approved-anonymized", "approved-named"}
+_PERMISSIONED_FIELDS = {
+    "schemaVersion",
+    "proofId",
+    "status",
+    "verifiedAt",
+    "facts",
+    "permission",
+    "activeProspectConflict",
+    "activeEmployerConflict",
+    "protectedInternalPremise",
+}
+_PERMISSIONED_FACT_FIELDS = {"factId", "conceptId", "outboundText"}
+_PERMISSION_FIELDS = {"status", "evidenceRef", "expiresAt"}
+_LEGACY_FIELDS = {
+    "schema_version",
+    "card_id",
+    "status",
+    "verified_by",
+    "verified_at",
+    "system_revision",
+    "facts",
+}
+_LEGACY_FACT_FIELDS = {
+    "fact_id",
+    "concept_id",
+    "sentence_id",
+    "outbound_text",
+    "claim_values",
+}
 _Runner = Callable[..., subprocess.CompletedProcess]
 
 
@@ -121,13 +150,78 @@ def _strict_json(payload: bytes, label: str) -> dict[str, object]:
             value[key] = item
         return value
 
+    def reject_non_standard_constant(constant: str) -> None:
+        raise ValueError("non-standard JSON constant {}".format(constant))
+
     try:
-        value = json.loads(text, object_pairs_hook=pairs_hook)
+        value = json.loads(
+            text,
+            object_pairs_hook=pairs_hook,
+            parse_constant=reject_non_standard_constant,
+        )
     except (json.JSONDecodeError, ValueError) as error:
-        raise ValueError("{} is not strict JSON".format(label)) from error
+        raise ValueError("{} is not strict JSON: {}".format(label, error)) from error
     if not isinstance(value, dict):
         raise ValueError("{} must be a JSON object".format(label))
     return value
+
+
+def _require_exact_fields(
+    value: dict[str, object], expected: set[str], label: str
+) -> None:
+    if set(value) != expected:
+        raise ValueError("{} schema fields are not closed".format(label))
+
+
+def _validate_document_schema(document: dict[str, object]) -> str:
+    """Return immutable proof identity after closed schema validation."""
+
+    if document.get("schemaVersion") == "permissioned-proof.v1":
+        conflict_fields = {
+            "activeProspectConflict",
+            "activeEmployerConflict",
+            "protectedInternalPremise",
+        }
+        if not conflict_fields.issubset(document):
+            raise ValueError("conflict fields must all exist")
+        _require_exact_fields(document, _PERMISSIONED_FIELDS, "permissioned proof")
+        identity = _require_text(document["proofId"], "proofId")
+        if document["status"] != "verified":
+            raise ValueError("permissioned proof status must be verified")
+        for field in sorted(conflict_fields):
+            if type(document[field]) is not bool:
+                raise ValueError("conflict fields must all be exact booleans")
+        facts = document["facts"]
+        if not isinstance(facts, list):
+            raise ValueError("permissioned proof facts must be a list")
+        for fact in facts:
+            if not isinstance(fact, dict):
+                raise ValueError("permissioned proof fact must be an object")
+            _require_exact_fields(fact, _PERMISSIONED_FACT_FIELDS, "permissioned fact")
+        permission = document["permission"]
+        if permission is not None:
+            if not isinstance(permission, dict):
+                raise ValueError("permission must be an object or null")
+            _require_exact_fields(permission, _PERMISSION_FIELDS, "permission")
+        return identity
+
+    if document.get("schema_version") == "proof-asset-card-v1":
+        _require_exact_fields(document, _LEGACY_FIELDS, "legacy proof")
+        identity = _require_text(document["card_id"], "card_id")
+        if document["status"] != "verified":
+            raise ValueError("legacy proof status must be verified")
+        facts = document["facts"]
+        if not isinstance(facts, list):
+            raise ValueError("legacy proof facts must be a list")
+        for fact in facts:
+            if not isinstance(fact, dict):
+                raise ValueError("legacy proof fact must be an object")
+            _require_exact_fields(fact, _LEGACY_FACT_FIELDS, "legacy fact")
+            if not isinstance(fact["claim_values"], list):
+                raise ValueError("legacy claim_values must be a list")
+        return identity
+
+    raise ValueError("unsupported proof schema")
 
 
 def _source_ref(provenance: dict[str, object], payload: bytes) -> dict[str, object]:
@@ -191,6 +285,9 @@ def _candidate(
             "caller document does not match the verified exact extracted bytes"
         )
     document = extracted_document
+    document_identity = _validate_document_schema(document)
+    if source["proofId"] != document_identity:
+        raise ValueError("provenance proofId does not match document identity")
     generated = parse_timestamp(generated_at, "generated_at")
     verified_value = document.get("verifiedAt", document.get("verified_at"))
     verified = parse_timestamp(verified_value, "verifiedAt")
@@ -278,10 +375,24 @@ def select_build_proof(
     parse_timestamp(generated_at, "generated_at")
     if not candidates:
         return _missing_mode("build_proof")
-    evaluated = [
+    evaluated_raw = [
         _candidate(document, payload, provenance, generated_at)
         for document, payload, provenance in candidates
     ]
+    evaluated: list[dict[str, object]] = []
+    seen_proof_ids: dict[str, bytes] = {}
+    for item in evaluated_raw:
+        source = item["source"]
+        assert isinstance(source, dict)
+        proof_id = str(source["proofId"])
+        source_bytes = canonical_bytes(source)
+        prior = seen_proof_ids.get(proof_id)
+        if prior is not None:
+            if prior != source_bytes:
+                raise ValueError("duplicate proofId has different immutable source")
+            continue
+        seen_proof_ids[proof_id] = source_bytes
+        evaluated.append(item)
     admissible_or_permission_gap = [
         item
         for item in evaluated
@@ -336,9 +447,20 @@ def _missing_mode(mode: str) -> dict[str, object]:
     }
 
 
-def _negative_fixture(workspace_root: Path) -> dict[str, object]:
+def _negative_fixture(
+    workspace_root: Path, *, runner: _Runner = subprocess.run
+) -> dict[str, object]:
     path = Path(workspace_root) / DECAGON_PACKET_PATH
     payload = path.read_bytes()
+    committed_payload = extract_git_object(
+        Path(workspace_root) / ".git",
+        DECAGON_SOURCE_COMMIT,
+        DECAGON_PACKET_PATH,
+        DECAGON_BLOB_ID,
+        runner=runner,
+    )
+    if committed_payload != payload:
+        raise ValueError("Decagon working-tree bytes differ from declared Git object")
     if sha256_hex(payload) != DECAGON_CONTENT_SHA256:
         raise ValueError("Decagon packet exact byte SHA-256 mismatch")
     if _git_blob_id(payload) != DECAGON_BLOB_ID:
@@ -400,7 +522,7 @@ def build_evaluation_fixtures(
         "contentSha256": PRE_GATE_CONTENT_SHA256,
     }
     return [
-        _negative_fixture(Path(workspace_root)),
+        _negative_fixture(Path(workspace_root), runner=runner),
         select_build_proof(
             [(document, payload, provenance)], generated_at=generated_at
         ),

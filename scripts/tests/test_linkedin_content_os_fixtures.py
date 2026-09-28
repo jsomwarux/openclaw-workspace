@@ -65,6 +65,7 @@ def _proof(
     document: dict[str, object] = {
         "schemaVersion": "permissioned-proof.v1",
         "proofId": proof_id,
+        "status": "verified",
         "verifiedAt": verified_at,
         "facts": facts
         if facts is not None
@@ -194,6 +195,41 @@ class SelectionTests(unittest.TestCase):
                 self.assertEqual(result["failureReason"], reason)
                 self.assertNotEqual(result["expectedGateResult"], "accept")
 
+    def test_conflict_fields_must_exist_and_be_exact_booleans(self) -> None:
+        fields = [
+            "activeProspectConflict",
+            "activeEmployerConflict",
+            "protectedInternalPremise",
+        ]
+        for field in fields:
+            document, _, _ = _proof("missing-{}".format(field))
+            document.pop(field)
+            payload = canonical_bytes(document)
+            provenance = _provenance(
+                str(document["proofId"]),
+                payload,
+                permission=document["permission"],
+            )
+            with self.subTest(field=field, case="missing"):
+                with self.assertRaisesRegex(ValueError, "conflict fields"):
+                    select_build_proof(
+                        [(document, payload, provenance)], generated_at=GENERATED_AT
+                    )
+        for invalid in (0, 1, "false", None):
+            document, _, _ = _proof("invalid-conflict-{}".format(str(invalid)))
+            document["activeProspectConflict"] = invalid
+            payload = canonical_bytes(document)
+            provenance = _provenance(
+                str(document["proofId"]),
+                payload,
+                permission=document["permission"],
+            )
+            with self.subTest(value=invalid):
+                with self.assertRaisesRegex(ValueError, "conflict fields"):
+                    select_build_proof(
+                        [(document, payload, provenance)], generated_at=GENERATED_AT
+                    )
+
     def test_rejected_candidate_cannot_eclipse_valid_candidate(self) -> None:
         rejected = _proof(
             "a-rejected",
@@ -245,6 +281,58 @@ class SelectionTests(unittest.TestCase):
                 [(permissioned_document, unrelated_payload, provenance)],
                 generated_at=GENERATED_AT,
             )
+
+    def test_binds_provenance_proof_id_to_closed_document_identity(self) -> None:
+        document, payload, provenance = _proof("document-id")
+        provenance["proofId"] = "spoofed-id"
+        with self.assertRaisesRegex(ValueError, "proofId.*identity"):
+            select_build_proof(
+                [(document, payload, provenance)], generated_at=GENERATED_AT
+            )
+
+        for mutation, message in (
+            (("status", "draft"), "status"),
+            (("schemaVersion", "permissioned-proof.v2"), "schema"),
+            (("unexpected", "field"), "schema"),
+        ):
+            candidate, _, _ = _proof("closed-schema")
+            candidate[mutation[0]] = mutation[1]
+            candidate_payload = canonical_bytes(candidate)
+            candidate_provenance = _provenance(
+                "closed-schema",
+                candidate_payload,
+                permission=candidate.get("permission"),
+            )
+            with self.subTest(mutation=mutation):
+                with self.assertRaisesRegex(ValueError, message):
+                    select_build_proof(
+                        [(candidate, candidate_payload, candidate_provenance)],
+                        generated_at=GENERATED_AT,
+                    )
+
+    def test_duplicate_proof_id_with_different_source_fails_closed(self) -> None:
+        first = _proof("duplicate", verified_at="2026-09-20T12:00:00Z")
+        second = _proof("duplicate", verified_at="2026-09-21T12:00:00Z")
+        with self.assertRaisesRegex(ValueError, "duplicate proofId"):
+            select_build_proof([first, second], generated_at=GENERATED_AT)
+
+    def test_strict_proof_json_rejects_nan_and_infinity(self) -> None:
+        for constant in ("NaN", "Infinity", "-Infinity"):
+            payload = (
+                '{"schemaVersion":"permissioned-proof.v1","proofId":"bad",'
+                '"status":"verified","verifiedAt":"2026-09-20T12:00:00Z",'
+                '"facts":[],"permission":null,"activeProspectConflict":false,'
+                '"activeEmployerConflict":false,"protectedInternalPremise":false,'
+                '"bad":' + constant + "}"
+            ).encode("utf-8")
+            document = json.loads(payload.decode("utf-8"))
+            provenance = _provenance("bad", payload)
+            with self.subTest(constant=constant):
+                with self.assertRaisesRegex(ValueError, "non-standard JSON"):
+                    select_build_proof(
+                        [(document, payload, provenance)],
+                        generated_at=GENERATED_AT,
+                    )
 
     def test_rejects_mismatched_permission_evidence_digest(self) -> None:
         document, _, _ = _proof()
@@ -298,9 +386,14 @@ class FixtureBuildTests(unittest.TestCase):
 
     def test_builds_exact_negative_current_gap_and_missing_mode_gaps(self) -> None:
         pre_gate = b'{"schema_version":"proof-asset-card-v1","card_id":"cohort-two-coi-proof-v1","status":"verified","verified_by":"jt","verified_at":"2026-09-16T00:00:00Z","system_revision":"revision","facts":[{"fact_id":"proof-coi-reminder-routing","concept_id":"coi-reminder-routing","sentence_id":"coi-reminder-routing-v1","outbound_text":"A workflow routes reminders.","claim_values":[]}]}\n'
-        runner = Mock(
-            return_value=subprocess.CompletedProcess([], 0, stdout=pre_gate, stderr=b"")
-        )
+        decagon = (ROOT / DECAGON_PACKET_PATH).read_bytes()
+
+        def run_git(argv: list[str], **_: object) -> subprocess.CompletedProcess:
+            ref = argv[-1]
+            payload = decagon if ref.endswith(":" + DECAGON_PACKET_PATH) else pre_gate
+            return subprocess.CompletedProcess(argv, 0, stdout=payload, stderr=b"")
+
+        runner = Mock(side_effect=run_git)
         with tempfile.TemporaryDirectory() as directory:
             git_dir = Path(directory) / "jt-ops.git"
             git_dir.mkdir()
@@ -336,6 +429,16 @@ class FixtureBuildTests(unittest.TestCase):
         self.assertEqual(records[3]["failureReason"], "evidence_missing")
         self.assertTrue(all("postCopy" not in record for record in records))
         self.assertTrue(all("image" not in record for record in records))
+        self.assertEqual(runner.call_count, 2)
+        decagon_call = runner.call_args_list[1]
+        self.assertEqual(
+            decagon_call.args[0][-1],
+            "{}:{}".format(
+                "2aae65c4f12ed05831b3c3f577d9fb7d4f16acfd", DECAGON_PACKET_PATH
+            ),
+        )
+        self.assertNotIn("shell", decagon_call.kwargs)
+        self.assertNotIn("env", decagon_call.kwargs)
 
     def test_real_decagon_packet_matches_bound_payload_and_bytes(self) -> None:
         packet = json.loads((ROOT / DECAGON_PACKET_PATH).read_text())
