@@ -181,7 +181,7 @@ def validate_claim_attribution(value: object) -> str:
     return text
 
 
-def _validate_linkedin_url(value: object) -> str:
+def validate_linkedin_url(value: object) -> str:
     text = _require_string(value, "publicationUrl")
     if text != text.strip() or any(
         ord(character) < 32 or ord(character) == 127 for character in text
@@ -222,7 +222,7 @@ def _validate_payload(event_type: str, payload_value: object) -> None:
         if payload["status"] not in HISTORICAL_STATUS:
             raise ValueError("unsupported historical status")
     elif event_type == "publication_acknowledged":
-        _validate_linkedin_url(payload["publicationUrl"])
+        validate_linkedin_url(payload["publicationUrl"])
         if "publishedAt" in payload:
             parse_timestamp(payload["publishedAt"], "publishedAt")
         if ("finalText" in payload) != ("finalTextSha256" in payload):
@@ -349,4 +349,5 @@ __all__: List[str] = [
     "parse_timestamp",
     "validate_claim_attribution",
     "validate_event",
+    "validate_linkedin_url",
 ]

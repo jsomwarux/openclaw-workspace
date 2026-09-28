@@ -39,18 +39,21 @@ def _strict_object(pairs: List[Tuple[str, Any]]) -> dict[str, object]:
     return value
 
 
-def read_jsonl(path: Path) -> list[dict[str, object]]:
-    """Read strict JSONL containing one JSON object per non-blank row."""
+def read_jsonl_bytes(payload: bytes, source: str = "<bytes>") -> list[dict[str, object]]:
+    """Read strict UTF-8 JSONL from exact bytes."""
 
     rows: list[dict[str, object]] = []
-    text = path.read_text(encoding="utf-8")
+    try:
+        text = payload.decode("utf-8")
+    except UnicodeDecodeError as error:
+        raise ValueError("invalid UTF-8 in {}: {}".format(source, error)) from error
 
     def reject_non_standard_constant(constant: str) -> None:
         raise ValueError("non-standard JSON constant {}".format(constant))
 
     for row_number, line in enumerate(text.splitlines(), start=1):
         if not line.strip():
-            raise ValueError("blank row {} in {}".format(row_number, path))
+            raise ValueError("blank row {} in {}".format(row_number, source))
         try:
             value: Any = json.loads(
                 line,
@@ -59,12 +62,18 @@ def read_jsonl(path: Path) -> list[dict[str, object]]:
             )
         except (json.JSONDecodeError, ValueError) as error:
             raise ValueError(
-                "invalid JSON row {} in {}: {}".format(row_number, path, error)
+                "invalid JSON row {} in {}: {}".format(row_number, source, error)
             ) from error
         if not isinstance(value, dict):
-            raise ValueError("non-object row {} in {}".format(row_number, path))
+            raise ValueError("non-object row {} in {}".format(row_number, source))
         rows.append(value)
     return rows
+
+
+def read_jsonl(path: Path) -> list[dict[str, object]]:
+    """Read strict JSONL containing one JSON object per non-blank row."""
+
+    return read_jsonl_bytes(path.read_bytes(), str(path))
 
 
 def _write_bytes_atomic(path: Path, payload: bytes) -> None:

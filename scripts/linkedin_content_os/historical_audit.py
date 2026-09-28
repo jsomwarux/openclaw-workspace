@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 from collections import Counter
+from datetime import date as calendar_date
 from pathlib import Path
 from typing import Optional
-from urllib.parse import urlsplit
 
-from scripts.linkedin_content_os.canonical import canonical_bytes, read_jsonl, sha256_hex
-from scripts.linkedin_content_os.contracts import parse_timestamp
+from scripts.linkedin_content_os.canonical import canonical_bytes, read_jsonl_bytes, sha256_hex
+from scripts.linkedin_content_os.contracts import parse_timestamp, validate_linkedin_url
 from scripts.linkedin_content_os.outcomes import load_events
 
 
@@ -22,25 +22,10 @@ def _legacy_row_hash(row: dict[str, object]) -> str:
 
 def _public_url(row: dict[str, object]) -> Optional[str]:
     value = row.get("public_url", row.get("publicUrl"))
-    if not isinstance(value, str) or value != value.strip():
-        return None
     try:
-        parsed = urlsplit(value)
-        port = parsed.port
+        return validate_linkedin_url(value)
     except ValueError:
         return None
-    host = (parsed.hostname or "").lower()
-    if (
-        parsed.scheme != "https"
-        or port not in (None, 443)
-        or parsed.username is not None
-        or parsed.password is not None
-        or not (host == "linkedin.com" or host.endswith(".linkedin.com"))
-        or not parsed.path.startswith("/")
-        or parsed.path == "/"
-    ):
-        return None
-    return value
 
 
 def _final_text(row: dict[str, object]) -> Optional[str]:
@@ -60,6 +45,18 @@ def _topic(row: dict[str, object], row_hash: str) -> str:
         if isinstance(value, str) and value.strip():
             return value.strip()
     return "untitled:{}".format(row_hash[:12])
+
+
+def _canonical_date(value: object) -> str:
+    if not isinstance(value, str):
+        raise ValueError("legacy LinkedIn date must be canonical YYYY-MM-DD")
+    try:
+        parsed = calendar_date.fromisoformat(value)
+    except ValueError as error:
+        raise ValueError("legacy LinkedIn date must be canonical YYYY-MM-DD") from error
+    if parsed.isoformat() != value:
+        raise ValueError("legacy LinkedIn date must be canonical YYYY-MM-DD")
+    return value
 
 
 def _governed_statuses(outcomes: Optional[Path]) -> dict[str, str]:
@@ -102,7 +99,7 @@ def audit_legacy_rows(
 
     parse_timestamp(generated_at, "generated_at")
     source_before = posted_log.read_bytes()
-    rows = read_jsonl(posted_log)
+    rows = read_jsonl_bytes(source_before, str(posted_log))
     governed = _governed_statuses(outcomes)
 
     records: list[dict[str, object]] = []
@@ -116,8 +113,7 @@ def audit_legacy_rows(
             continue
         row_hash = _legacy_row_hash(row)
         row_hashes.append(row_hash)
-        date_value = row.get("date")
-        date = date_value if isinstance(date_value, str) else ""
+        date = _canonical_date(row.get("date"))
         topic = _topic(row, row_hash)
         public_url = _public_url(row)
         final_text = _final_text(row)
@@ -168,11 +164,21 @@ def audit_legacy_rows(
         key=lambda item: (item[1], item[2]),
         reverse=True,
     )
-    recent_unknown = sorted(
+    recent_unknown_candidates = sorted(
         (candidate for candidate in recovery_candidates if not candidate[0]),
         key=lambda item: (item[1], item[2]),
         reverse=True,
-    )[:20]
+    )
+    recent_unknown: list[tuple[bool, str, str, dict[str, object]]] = []
+    recent_unknown_hashes: set[str] = set()
+    for candidate in recent_unknown_candidates:
+        row_hash = candidate[2]
+        if row_hash in recent_unknown_hashes:
+            continue
+        recent_unknown_hashes.add(row_hash)
+        recent_unknown.append(candidate)
+        if len(recent_unknown) == 20:
+            break
     recovery_items: list[dict[str, object]] = []
     seen_recovery_hashes: set[str] = set()
     for _, _, row_hash, record in required + recent_unknown:

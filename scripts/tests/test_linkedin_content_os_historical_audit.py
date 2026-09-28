@@ -200,6 +200,96 @@ class HistoricalAuditTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "changed during audit"):
                 audit_legacy_rows(FIXTURE, None, GENERATED_AT)
 
+    def test_parses_the_exact_bytes_bound_to_source_hash(self) -> None:
+        injected = (
+            FIXTURE.read_text(encoding="utf-8")
+            + '{"date":"2026-09-30","platform":"linkedin","topic":"injected",'
+            '"posted":true,"posted_confirmation":"JT_CONFIRMED_POSTED"}\n'
+        )
+        with mock.patch.object(Path, "read_text", return_value=injected):
+            audit = audit_legacy_rows(FIXTURE, None, GENERATED_AT)
+        self.assertNotIn("injected", {record["topic"] for record in audit["records"]})
+        self.assertEqual(audit["sourceSha256"], sha256_hex(FIXTURE.read_bytes()))
+
+    def test_legacy_urls_use_the_governed_strict_validator(self) -> None:
+        invalid_urls = (
+            "https://www.linkedin.com/posts/jt_bad\x00url",
+            "https://www.linkedin.com/posts/jt bad",
+            "https://www.linkedin.com/posts/jt\u00a0bad",
+            "https://www.linkedin.com/posts/jt%post",
+            "https://www.linkedin.com/posts/jt%2post",
+            "https://www.linkedin.com/posts/jt%GGbad",
+            "https://user@www.linkedin.com/posts/jt_bad",
+            "https://www.linkedin.com:444/posts/jt_bad",
+            "https://www.linkedin.com:99999/posts/jt_bad",
+            "https://www.linkedin.com:notaport/posts/jt_bad",
+            "https://linkedin.com.evil.example/posts/jt_bad",
+            "https://evil-linkedin.com/posts/jt_bad",
+            "https://www.linkedin.com/posts/jt_bad\n",
+        )
+        import json
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "legacy.jsonl"
+            for index, url in enumerate(invalid_urls):
+                row = {
+                    "date": "2026-09-{:02d}".format(index + 1),
+                    "platform": "linkedin",
+                    "topic": "bad-url-{}".format(index),
+                    "posted": True,
+                    "public_url": url,
+                }
+                path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+                with self.subTest(url=repr(url)):
+                    audit = audit_legacy_rows(path, None, GENERATED_AT)
+                    self.assertEqual(audit["records"][0]["status"], "status_unknown")
+
+    def test_invalid_or_noncanonical_dates_fail_closed(self) -> None:
+        invalid_dates = ("2026-02-30", "2026-9-01", "09/01/2026", "")
+        import json
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "legacy.jsonl"
+            for date in invalid_dates:
+                row = {
+                    "date": date,
+                    "platform": "linkedin",
+                    "topic": "invalid-date",
+                    "posted": False,
+                }
+                path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+                with self.subTest(date=date):
+                    with self.assertRaisesRegex(ValueError, "YYYY-MM-DD"):
+                        audit_legacy_rows(path, None, GENERATED_AT)
+
+    def test_unknown_cap_counts_unique_hashes_before_slicing(self) -> None:
+        import json
+
+        rows = []
+        for day in range(1, 22):
+            rows.append(
+                {
+                    "date": "2026-09-{:02d}".format(day),
+                    "platform": "linkedin",
+                    "topic": "unknown-{:02d}".format(day),
+                    "posted": False,
+                }
+            )
+        rows.append(dict(rows[-1]))
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "legacy.jsonl"
+            path.write_text(
+                "".join(json.dumps(row, sort_keys=True) + "\n" for row in rows),
+                encoding="utf-8",
+            )
+            audit = audit_legacy_rows(path, None, GENERATED_AT)
+
+        items = audit["recoveryRequest"]["items"]
+        self.assertEqual(len(items), 20)
+        self.assertEqual(len({item["legacyRowSha256"] for item in items}), 20)
+        self.assertNotIn("unknown-01", {item["topic"] for item in items})
+        self.assertEqual(audit["duplicateGroups"][0]["count"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()
