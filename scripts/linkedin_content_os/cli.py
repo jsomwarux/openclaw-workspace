@@ -354,8 +354,16 @@ def _process_guard(command: str) -> Iterator[None]:
             raise RuntimeError("child process argv is not allowlisted")
         if args or kwargs.get("shell") or kwargs.get("env") is not None or kwargs.get("cwd") is not None:
             raise RuntimeError("child process options are not allowlisted")
-        unknown = set(kwargs) - {"check", "capture_output", "text"}
+        unknown = set(kwargs) - {"check", "capture_output", "text", "stdout", "stderr"}
         if unknown:
+            raise RuntimeError("child process options are not allowlisted")
+        if kwargs.get("stdout") not in {None, subprocess.PIPE} or kwargs.get(
+            "stderr"
+        ) not in {None, subprocess.PIPE}:
+            raise RuntimeError("child process options are not allowlisted")
+        if kwargs.get("capture_output") and (
+            "stdout" in kwargs or "stderr" in kwargs
+        ):
             raise RuntimeError("child process options are not allowlisted")
         subprocess.Popen = originals["Popen"]  # type: ignore[assignment]
         try:
@@ -768,7 +776,7 @@ def _build_corpus(args: argparse.Namespace) -> Dict[str, object]:
     expected = (
         str(context["corpusAuthorityManifestSha256"]) if authority else None
     )
-    gold = build_voice_gold(events, audit, expected_manifest_sha256=expected)
+    gold = build_voice_gold(audit, events, expected_manifest_sha256=expected)
     pairs = build_contrastive_pairs(events, audit, expected_manifest_sha256=expected)
     gold_payload = _jsonl_bytes(gold)
     pairs_payload = _jsonl_bytes(pairs)
@@ -822,7 +830,7 @@ def _build_fixtures(args: argparse.Namespace) -> Dict[str, object]:
     if args.jt_ops_commit != PRE_GATE_COMMIT or args.jt_ops_path != PRE_GATE_PATH:
         raise ValueError("build-fixtures source does not match the reviewed Git object")
     rows = build_evaluation_fixtures(
-        Path(args.workspace_root),
+        Path(args.workspace_root).resolve(),
         Path(args.jt_ops_git_dir),
         generated_at=generated_at,
         runner=subprocess.run,

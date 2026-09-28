@@ -146,6 +146,27 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError, "prohibited|allowlisted"):
                     call()
 
+    def test_build_fixture_guard_allows_only_pipe_captured_read_only_git_show(self) -> None:
+        argv = [
+            "git", "--git-dir", str(self.root / "missing.git"), "show",
+            "1" * 40 + ":evidence/proof.json",
+        ]
+        with _process_guard("build-fixtures"):
+            result = subprocess.run(
+                argv,
+                check=False,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            )
+            self.assertNotEqual(result.returncode, 0)
+            with self.assertRaisesRegex(RuntimeError, "options are not allowlisted"):
+                subprocess.run(
+                    argv,
+                    check=False,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.PIPE,
+                )
+
     def test_phase_two_exact_argv_parses_without_pre_gate_git_arguments(self) -> None:
         parser = _parser()
         fixtures = parser.parse_args([
@@ -225,6 +246,29 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 "--output", str(self.root / "fixtures.jsonl"),
             ])
 
+    def test_build_fixtures_resolves_workspace_root_before_git_extraction(self) -> None:
+        context = self.root / "run-context.json"
+        outcomes = self.root / "outcomes.jsonl"
+        output = self.root / "fixtures.jsonl"
+        init_run(GENERATED_AT, outcomes, context)
+        relative_root = Path("relative-workspace")
+        with mock.patch(
+            "scripts.linkedin_content_os.cli.build_evaluation_fixtures",
+            return_value=[],
+        ) as build, mock.patch("sys.stdout.write"):
+            main([
+                "build-fixtures",
+                "--decagon-packet",
+                "mission-control/lib/mission-control/fixtures/jobs/decagon-agent-development-manager.packet.json",
+                "--jt-ops-git-dir", str(self.root / "jt-ops.git"),
+                "--jt-ops-commit", "cd3e17f5287a64dbfedc27e1d2153d89250ba02c",
+                "--jt-ops-path", "evidence/cohort-two.proof-asset.json",
+                "--run-context", str(context),
+                "--workspace-root", str(relative_root),
+                "--output", str(output),
+            ])
+        self.assertEqual(build.call_args.args[0], relative_root.resolve())
+
     def test_rejects_input_output_and_receipt_aliases_before_write(self) -> None:
         source = self.root / "source.json"
         alias = self.root / "alias.json"
@@ -286,6 +330,41 @@ class LinkedInContentOSCliTests(unittest.TestCase):
         self.assertEqual(gold.read_bytes(), b"gold-sentinel\n")
         self.assertEqual(pairs.read_bytes(), b"pair-sentinel\n")
         self.assertFalse(receipt.exists())
+
+    def test_build_corpus_passes_audit_and_events_in_each_builder_contract_order(self) -> None:
+        context = self.root / "run-context.json"
+        outcomes = self.root / "outcomes.jsonl"
+        audit = self.root / "audit.json"
+        gold = self.root / "gold.jsonl"
+        pairs = self.root / "pairs.jsonl"
+        receipt = self.root / "receipt.json"
+        init_run(GENERATED_AT, outcomes, context)
+        audit_value = {
+            "corpusAuthorityManifest": {"manifestSha256": "a" * 64},
+        }
+        audit.write_bytes(canonical_bytes(audit_value))
+        events = [{"eventType": "sentinel"}]
+        with mock.patch(
+            "scripts.linkedin_content_os.cli.load_events", return_value=events
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_voice_gold", return_value=[]
+        ) as build_gold, mock.patch(
+            "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+        ) as build_pairs, mock.patch(
+            "scripts.linkedin_content_os.cli._build_receipt", return_value={"receipt": "ok"}
+        ), mock.patch("sys.stdout.write"):
+            main([
+                "build-corpus", "--audit", str(audit), "--outcomes", str(outcomes),
+                "--run-context", str(context), "--gold-output", str(gold),
+                "--pairs-output", str(pairs), "--receipt-output", str(receipt),
+                "--workspace-root", str(self.root),
+            ])
+        build_gold.assert_called_once_with(
+            audit_value, events, expected_manifest_sha256=None
+        )
+        build_pairs.assert_called_once_with(
+            events, audit_value, expected_manifest_sha256=None
+        )
 
     def test_capture_boundaries_performs_one_scoped_capture_and_writes_artifact(self) -> None:
         context_path = self.root / "run-context.json"
