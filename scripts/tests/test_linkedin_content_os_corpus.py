@@ -103,6 +103,32 @@ def _publication(
     )
 
 
+def _edit_pair_event(
+    row_hash: str,
+    draft: str,
+    final: str,
+    *,
+    event_id: str = "edit-pair-001",
+    recorded_at: str = "2026-09-28T12:01:00-04:00",
+    reason: str = "specificity",
+    source_type: str = "jt_authored_text",
+) -> dict[str, object]:
+    return _event(
+        event_id,
+        "legacy:{}".format(row_hash),
+        "final_text_captured",
+        {
+            "draftText": draft,
+            "draftTextSha256": sha256_hex(draft.encode("utf-8")),
+            "editReason": reason,
+            "finalText": final,
+            "finalTextSha256": sha256_hex(final.encode("utf-8")),
+        },
+        recorded_at=recorded_at,
+        source_type=source_type,
+    )
+
+
 class VoiceGoldTests(unittest.TestCase):
     def test_accepts_only_exact_hash_bound_final_published_text(self) -> None:
         row_hash = "1" * 64
@@ -241,6 +267,98 @@ class VoiceGoldTests(unittest.TestCase):
         )
 
         self.assertEqual(build_contrastive_pairs([acknowledged, captured]), [{
+            "schemaVersion": "linkedin-corpus-gap-summary.v0",
+            "recordType": "gap_summary",
+            "blockingGapCount": 1,
+            "blockingGapPacketIds": ["legacy:{}".format(row_hash)],
+        }])
+
+    def test_builds_exact_typed_contrastive_pair(self) -> None:
+        row_hash = "d" * 64
+        draft = "AI can help operations teams."
+        final = "The useful AI workflow is the one an operator can audit before lunch."
+        event = _edit_pair_event(row_hash, draft, final)
+
+        rows = build_contrastive_pairs([event])
+
+        self.assertEqual(rows[0], {
+            "schemaVersion": "linkedin-contrastive-pair.v0",
+            "recordType": "contrastive_pair",
+            "origin": "jt_edit_pair",
+            "packetId": "legacy:{}".format(row_hash),
+            "outcomeEventId": "edit-pair-001",
+            "outcomeEventSha256": event["eventSha256"],
+            "draftText": draft,
+            "draftTextSha256": sha256_hex(draft.encode("utf-8")),
+            "finalText": final,
+            "finalTextSha256": sha256_hex(final.encode("utf-8")),
+            "editReason": "specificity",
+            "sourcePointer": event["sourcePointer"],
+        })
+        self.assertEqual(rows[-1], {
+            "schemaVersion": "linkedin-corpus-gap-summary.v0",
+            "recordType": "gap_summary",
+            "blockingGapCount": 0,
+            "blockingGapPacketIds": [],
+        })
+
+    def test_single_exact_final_without_pair_is_a_blocking_gap(self) -> None:
+        row_hash = "e" * 64
+        event = _event(
+            "captured-only",
+            "legacy:{}".format(row_hash),
+            "final_text_captured",
+            {
+                "finalText": "Exact final text without the exact draft.",
+                "finalTextSha256": sha256_hex(
+                    "Exact final text without the exact draft.".encode("utf-8")
+                ),
+            },
+            source_type="jt_authored_text",
+        )
+
+        self.assertEqual(build_contrastive_pairs([event]), [{
+            "schemaVersion": "linkedin-corpus-gap-summary.v0",
+            "recordType": "gap_summary",
+            "blockingGapCount": 1,
+            "blockingGapPacketIds": ["legacy:{}".format(row_hash)],
+        }])
+
+    def test_deduplicates_contrastive_pairs_by_exact_hash_pair(self) -> None:
+        draft = "Same draft."
+        final = "Same final."
+        later = _edit_pair_event(
+            "f" * 64,
+            draft,
+            final,
+            event_id="pair-later",
+            recorded_at="2026-09-28T13:00:00-04:00",
+        )
+        earlier = _edit_pair_event(
+            "0" * 64,
+            draft,
+            final,
+            event_id="pair-earlier",
+            recorded_at="2026-09-28T12:00:00-04:00",
+        )
+
+        rows = build_contrastive_pairs([later, earlier])
+        pairs = [row for row in rows if row["recordType"] == "contrastive_pair"]
+
+        self.assertEqual(len(pairs), 1)
+        self.assertEqual(pairs[0]["outcomeEventId"], "pair-earlier")
+        self.assertEqual(rows[-1]["blockingGapCount"], 0)
+
+    def test_untrusted_complete_pair_is_excluded_and_reported_as_gap(self) -> None:
+        row_hash = "b" * 64
+        event = _edit_pair_event(
+            row_hash,
+            "Model draft.",
+            "Model final.",
+            source_type="model_generated",
+        )
+
+        self.assertEqual(build_contrastive_pairs([event]), [{
             "schemaVersion": "linkedin-corpus-gap-summary.v0",
             "recordType": "gap_summary",
             "blockingGapCount": 1,

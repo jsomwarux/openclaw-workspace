@@ -25,6 +25,15 @@ OUTCOME_EVENT = {
     "correction",
 }
 DECLINE_REASON = {"quality_fit", "stale", "timing", "other"}
+EDIT_REASON = {
+    "compression",
+    "evidence",
+    "hook",
+    "positioning",
+    "specificity",
+    "structure",
+    "voice",
+}
 CLAIM_ATTRIBUTION = {
     "public_fact",
     "vendor_assertion",
@@ -89,7 +98,7 @@ _PAYLOAD_FIELDS = {
     ),
     "final_text_captured": (
         {"finalText", "finalTextSha256"},
-        set(),
+        {"draftText", "draftTextSha256", "editReason"},
     ),
     "metric_snapshot": (
         {"windowDays", "metrics", "collectionMethod"},
@@ -244,6 +253,23 @@ def _validate_payload(event_type: str, payload_value: object) -> None:
         expected = sha256_hex(final_text.encode("utf-8"))
         if _require_hash(payload["finalTextSha256"], "finalTextSha256") != expected:
             raise ValueError("finalTextSha256 does not match finalText")
+        edit_pair_fields = {"draftText", "draftTextSha256", "editReason"}
+        present_edit_pair_fields = edit_pair_fields & set(payload)
+        if present_edit_pair_fields and present_edit_pair_fields != edit_pair_fields:
+            raise ValueError("edit-pair bundle must be complete")
+        if present_edit_pair_fields:
+            draft_text = _require_string(payload["draftText"], "draftText")
+            draft_expected = sha256_hex(draft_text.encode("utf-8"))
+            if (
+                _require_hash(payload["draftTextSha256"], "draftTextSha256")
+                != draft_expected
+            ):
+                raise ValueError("draftTextSha256 does not match draftText")
+            if draft_text == final_text:
+                raise ValueError("draftText and finalText must differ for an edit pair")
+            edit_reason = _require_string(payload["editReason"], "editReason")
+            if edit_reason not in EDIT_REASON:
+                raise ValueError("unsupported editReason {!r}".format(edit_reason))
     elif event_type == "metric_snapshot":
         window = payload["windowDays"]
         if not isinstance(window, int) or isinstance(window, bool) or window <= 0:
@@ -342,6 +368,7 @@ def validate_event(event_value: object) -> dict[str, object]:
 __all__: List[str] = [
     "CLAIM_ATTRIBUTION",
     "DECLINE_REASON",
+    "EDIT_REASON",
     "HISTORICAL_STATUS",
     "OUTCOME_EVENT",
     "OutcomeEvent",

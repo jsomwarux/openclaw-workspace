@@ -384,22 +384,73 @@ def build_voice_gold(
 def build_contrastive_pairs(
     events: list[dict[str, object]],
 ) -> list[dict[str, object]]:
-    """Return governed edit pairs; current v1 events deliberately yield gaps.
-
-    The closed Task 2 event taxonomy has no payload containing exact draft text,
-    its hash, exact JT-final text, its hash, and a typed edit reason. Inferring a
-    pair from two final-text events would invent both draft identity and reason,
-    so Program 0 reports those packets as blocking gaps instead.
-    """
+    """Return exact governed JT edit pairs plus deterministic blocking gaps."""
 
     ordered_events = _validated_events(events)
-    exact_by_packet: dict[str, int] = Counter()
+    packets_with_final_text: set[str] = set()
+    packets_with_pair: set[str] = set()
+    candidates: list[tuple[object, str, dict[str, object]]] = []
     for event in ordered_events:
-        if event["eventType"] in {"publication_acknowledged", "final_text_captured"}:
-            if _exact_text(event) is not None:
-                exact_by_packet[str(event["packetId"])] += 1
-    unresolved = {packet_id for packet_id, count in exact_by_packet.items() if count >= 2}
-    return [_gap_summary(unresolved)]
+        if event["eventType"] not in {
+            "publication_acknowledged",
+            "final_text_captured",
+        }:
+            continue
+        payload = _require_object(event["payload"], "payload")
+        if "finalText" in payload:
+            packets_with_final_text.add(str(event["packetId"]))
+        exact = _exact_text(event)
+        if exact is None:
+            continue
+        packet_id = str(event["packetId"])
+        if event["eventType"] != "final_text_captured":
+            continue
+        if not {"draftText", "draftTextSha256", "editReason"} <= set(payload):
+            continue
+        packets_with_pair.add(packet_id)
+        source_pointer = _require_object(event["sourcePointer"], "sourcePointer")
+        record = {
+            "schemaVersion": "linkedin-contrastive-pair.v0",
+            "recordType": "contrastive_pair",
+            "origin": "jt_edit_pair",
+            "packetId": packet_id,
+            "outcomeEventId": event["outcomeEventId"],
+            "outcomeEventSha256": event["eventSha256"],
+            "draftText": payload["draftText"],
+            "draftTextSha256": payload["draftTextSha256"],
+            "finalText": payload["finalText"],
+            "finalTextSha256": payload["finalTextSha256"],
+            "editReason": payload["editReason"],
+            "sourcePointer": dict(source_pointer),
+        }
+        candidates.append(
+            (
+                parse_timestamp(event["recordedAt"], "recordedAt"),
+                str(event["eventSha256"]),
+                record,
+            )
+        )
+
+    selected: list[dict[str, object]] = []
+    seen_pairs: set[tuple[str, str]] = set()
+    for _, _, record in sorted(candidates, key=lambda item: (item[0], item[1])):
+        pair_key = (
+            str(record["draftTextSha256"]),
+            str(record["finalTextSha256"]),
+        )
+        if pair_key in seen_pairs:
+            continue
+        seen_pairs.add(pair_key)
+        selected.append(record)
+    selected.sort(
+        key=lambda record: (
+            str(record["draftTextSha256"]),
+            str(record["finalTextSha256"]),
+            str(record["packetId"]),
+        )
+    )
+    selected.append(_gap_summary(packets_with_final_text - packets_with_pair))
+    return selected
 
 
 __all__ = ["build_contrastive_pairs", "build_voice_gold"]

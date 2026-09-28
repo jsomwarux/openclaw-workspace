@@ -10,6 +10,7 @@ from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.contracts import (
     CLAIM_ATTRIBUTION,
     DECLINE_REASON,
+    EDIT_REASON,
     HISTORICAL_STATUS,
     OUTCOME_EVENT,
     validate_claim_attribution,
@@ -79,6 +80,18 @@ class ClosedContractTests(unittest.TestCase):
             },
         )
         self.assertEqual(DECLINE_REASON, {"quality_fit", "stale", "timing", "other"})
+        self.assertEqual(
+            EDIT_REASON,
+            {
+                "compression",
+                "evidence",
+                "hook",
+                "positioning",
+                "specificity",
+                "structure",
+                "voice",
+            },
+        )
         self.assertEqual(
             CLAIM_ATTRIBUTION,
             {"public_fact", "vendor_assertion", "jt_verified_fact", "hypothesis"},
@@ -258,6 +271,48 @@ class ClosedContractTests(unittest.TestCase):
             events = load_events(copy)
             self.assertGreaterEqual(len(events), 2)
             self.assertEqual([validate_event(event) for event in events], events)
+
+    def test_final_text_capture_accepts_only_complete_exact_edit_pair_bundle(self) -> None:
+        draft = "Generic draft opening."
+        final = "Specific final opening with an earned point of view."
+        payload = {
+            "draftText": draft,
+            "draftTextSha256": sha256_hex(draft.encode("utf-8")),
+            "editReason": "specificity",
+            "finalText": final,
+            "finalTextSha256": sha256_hex(final.encode("utf-8")),
+        }
+        event = _event(event_type="final_text_captured", payload=payload)
+        self.assertEqual(validate_event(event), event)
+
+        for missing in ("draftText", "draftTextSha256", "editReason"):
+            partial = dict(payload)
+            partial.pop(missing)
+            with self.subTest(missing=missing):
+                with self.assertRaisesRegex(ValueError, "edit-pair bundle"):
+                    validate_event(
+                        _event(event_type="final_text_captured", payload=partial)
+                    )
+
+        bad_draft_hash = dict(payload)
+        bad_draft_hash["draftTextSha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "draftTextSha256"):
+            validate_event(
+                _event(event_type="final_text_captured", payload=bad_draft_hash)
+            )
+
+        identical = dict(payload)
+        identical["draftText"] = final
+        identical["draftTextSha256"] = payload["finalTextSha256"]
+        with self.assertRaisesRegex(ValueError, "must differ"):
+            validate_event(_event(event_type="final_text_captured", payload=identical))
+
+        arbitrary_reason = dict(payload)
+        arbitrary_reason["editReason"] = "make it pop"
+        with self.assertRaisesRegex(ValueError, "editReason"):
+            validate_event(
+                _event(event_type="final_text_captured", payload=arbitrary_reason)
+            )
 
 
 class OutcomeLedgerTests(unittest.TestCase):
