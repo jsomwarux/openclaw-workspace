@@ -185,6 +185,12 @@ def _candidate(
     document: dict[str, object], payload: bytes, provenance: dict[str, object], generated_at: str
 ) -> dict[str, object]:
     source = _source_ref(provenance, payload)
+    extracted_document = _strict_json(payload, "proof source")
+    if document != extracted_document:
+        raise ValueError(
+            "caller document does not match the verified exact extracted bytes"
+        )
+    document = extracted_document
     generated = parse_timestamp(generated_at, "generated_at")
     verified_value = document.get("verifiedAt", document.get("verified_at"))
     verified = parse_timestamp(verified_value, "verifiedAt")
@@ -243,6 +249,8 @@ def _candidate(
         reason = "active_employer_conflict"
     elif document.get("protectedInternalPremise") is True:
         reason = "protected_internal_premise"
+    if verified > generated:
+        reason = "verified_at_future"
 
     return {
         "document": document,

@@ -226,6 +226,26 @@ class SelectionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "content SHA-256"):
             select_build_proof([(document, payload, provenance)], generated_at=GENERATED_AT)
 
+    def test_rejects_caller_document_not_equal_to_verified_exact_bytes(self) -> None:
+        permissioned_document, _, _ = _proof("caller-controlled")
+        unrelated_payload = canonical_bytes(
+            {
+                "proofId": "unrelated-bytes",
+                "verifiedAt": "2026-09-20T12:00:00Z",
+                "facts": [],
+                "permission": None,
+                "activeProspectConflict": False,
+                "activeEmployerConflict": False,
+                "protectedInternalPremise": False,
+            }
+        )
+        provenance = _provenance("unrelated-bytes", unrelated_payload)
+        with self.assertRaisesRegex(ValueError, "exact extracted bytes"):
+            select_build_proof(
+                [(permissioned_document, unrelated_payload, provenance)],
+                generated_at=GENERATED_AT,
+            )
+
     def test_rejects_mismatched_permission_evidence_digest(self) -> None:
         document, _, _ = _proof()
         payload = canonical_bytes(document)
@@ -235,6 +255,31 @@ class SelectionTests(unittest.TestCase):
         provenance["permissionEvidenceSha256"] = "f" * 64
         with self.assertRaisesRegex(ValueError, "permission evidence SHA-256"):
             select_build_proof([(document, payload, provenance)], generated_at=GENERATED_AT)
+
+    def test_future_verified_at_fails_closed(self) -> None:
+        future = _proof(
+            "future-proof", verified_at="2026-09-29T00:00:00Z"
+        )
+        result = select_build_proof([future], generated_at=GENERATED_AT)
+        self.assertEqual(result["classification"], "gap")
+        self.assertEqual(result["failureReason"], "verified_at_future")
+
+    def test_future_proof_cannot_win_freshness_ranking(self) -> None:
+        future = _proof(
+            "a-future",
+            verified_at="2026-09-29T00:00:00Z",
+            facts=[
+                {
+                    "factId": "future-fact",
+                    "conceptId": "future-concept",
+                    "outboundText": "A very specific but impossible future fact must not win ranking.",
+                }
+            ],
+        )
+        valid = _proof("z-valid", verified_at="2026-09-20T12:00:00Z")
+        result = select_build_proof([future, valid], generated_at=GENERATED_AT)
+        self.assertEqual(result["classification"], "positive")
+        self.assertEqual(result["fixtureId"], "z-valid")
 
 
 class FixtureBuildTests(unittest.TestCase):
