@@ -439,10 +439,10 @@ def _append_batch(
 ) -> tuple[int, int, bytes, list[dict[str, object]]]:
     """Commit one ledger batch and its derived authority artifacts atomically."""
 
-    path.parent.mkdir(parents=True, exist_ok=True)
     outputs = list(output_payloads)
-    if len({output for output, _ in outputs}) != len(outputs):
-        raise ValueError("authority transaction outputs must be distinct")
+    output_paths = [output for output, _ in outputs]
+    _reject_transaction_path_aliases(path, output_paths)
+    path.parent.mkdir(parents=True, exist_ok=True)
     output_states = {
         output: (output.exists(), output.read_bytes() if output.exists() else b"")
         for output, _ in outputs
@@ -452,6 +452,7 @@ def _append_batch(
         for output, payload in outputs:
             staged.append((_stage_bytes(output, payload), output))
         with _exclusive_path_lock(path):
+            _reject_transaction_path_aliases(path, output_paths)
             ledger_existed = path.exists()
             existing, original = _canonical_ledger_rows(path)
             if expected_prefix is not None and original != expected_prefix:
@@ -485,6 +486,34 @@ def _append_batch(
     finally:
         for temporary, _ in staged:
             temporary.unlink(missing_ok=True)
+
+
+def _reject_transaction_path_aliases(
+    ledger: Path, authority_outputs: Sequence[Path]
+) -> None:
+    """Keep the ledger and every authority artifact in distinct files."""
+
+    labeled = [("ledger", ledger)] + [
+        ("authority output", output) for output in authority_outputs
+    ]
+    resolved: list[tuple[str, Path, Path]] = [
+        (label, candidate, candidate.resolve(strict=False))
+        for label, candidate in labeled
+    ]
+    for index, (left_label, left, left_resolved) in enumerate(resolved):
+        for right_label, right, right_resolved in resolved[index + 1:]:
+            aliased = left_resolved == right_resolved
+            if not aliased and left.exists() and right.exists():
+                try:
+                    aliased = os.path.samefile(left, right)
+                except OSError:
+                    aliased = False
+            if aliased:
+                raise ValueError(
+                    "authority transaction path alias between {} and {}: {}".format(
+                        left_label, right_label, right
+                    )
+                )
 
 
 def _focus_receipt(
@@ -870,14 +899,18 @@ def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
         getattr(args, "focus_authority_anchor_output", None)
         or artifact_directory / "focus-authority-anchor.v1.json"
     )
+    authority_outputs = (
+        manifest_output,
+        authority_context_output,
+        receipt_output,
+        anchor_output,
+    )
+    _reject_transaction_path_aliases(outcomes_path, authority_outputs)
     _reject_phase1_output_aliases(
         _phase1_paths(artifact_directory),
         (
             outcomes_path,
-            manifest_output,
-            authority_context_output,
-            receipt_output,
-            anchor_output,
+            *authority_outputs,
         ),
     )
     response, response_bytes = _strict_json_file_with_bytes(response_path)

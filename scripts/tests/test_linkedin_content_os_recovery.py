@@ -574,6 +574,41 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
             self.ingest()
         self.assertEqual(self.ledger.read_bytes(), before)
 
+    def test_file_ingest_rejects_every_authority_output_alias_of_ledger(self) -> None:
+        args, artifacts, _, outputs = self.file_ingest_args()
+        original_ledger = self.ledger.read_bytes()
+        output_fields = (
+            "corpus_authority_manifest_output",
+            "authority_run_context_output",
+            "focus_authority_receipt_output",
+            "focus_authority_anchor_output",
+        )
+        for output_field in output_fields:
+            for alias_kind in ("exact", "symlink", "hardlink"):
+                alias_args = argparse.Namespace(**vars(args))
+                if alias_kind == "exact":
+                    alias = self.ledger
+                else:
+                    alias = artifacts / "{}-{}.json".format(
+                        output_field, alias_kind
+                    )
+                    if alias_kind == "symlink":
+                        alias.symlink_to(self.ledger)
+                    else:
+                        os.link(self.ledger, alias)
+                setattr(alias_args, output_field, str(alias))
+                with self.subTest(
+                    output=output_field, alias=alias_kind
+                ), self.assertRaisesRegex(ValueError, "ledger|alias|distinct"):
+                    ingest_human_gate_files(alias_args)
+                self.assertEqual(self.ledger.read_bytes(), original_ledger)
+                for name, output in outputs.items():
+                    if output != alias:
+                        self.assertFalse(
+                            output.exists(),
+                            "{} authority output was written".format(name),
+                        )
+
     def test_file_handlers_emit_authority_outputs_and_rebuild_deterministically(self) -> None:
         artifacts = self.root / "memory/content/linkedin-content-os"
         artifacts.mkdir(parents=True, exist_ok=True)
