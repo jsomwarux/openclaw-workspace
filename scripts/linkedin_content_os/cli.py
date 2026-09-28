@@ -11,6 +11,7 @@ import socket
 import stat
 import subprocess
 import sys
+import unicodedata
 import urllib.request
 from contextlib import contextmanager
 from datetime import datetime, timezone
@@ -27,6 +28,7 @@ from scripts.linkedin_content_os.boundaries import (
 from scripts.linkedin_content_os.canonical import (
     canonical_bytes,
     read_jsonl,
+    read_jsonl_bytes,
     sha256_hex,
     write_json_atomic,
 )
@@ -166,7 +168,9 @@ def _validate_distinct_paths(
     for label, paths in (("input", inputs), ("output", outputs), ("receipt", receipts)):
         for path in paths:
             resolved = Path(path).resolve(strict=False)
-            case_key = os.path.normcase(str(resolved)).casefold()
+            case_key = os.path.normcase(
+                unicodedata.normalize("NFC", str(resolved))
+            ).casefold()
             labeled.append((label, resolved, case_key))
     for index, (left_label, left, left_case_key) in enumerate(labeled):
         for right_label, right, right_case_key in labeled[index + 1:]:
@@ -1056,7 +1060,9 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             "generatedAt": expected_generated_at,
         })
     focus = _read_json(artifact_root / "focus-snapshot.v1.json")
-    fixtures = _read_jsonl_optional(artifact_root / "evaluation-fixtures.v0.jsonl")
+    fixture_path = artifact_root / "evaluation-fixtures.v0.jsonl"
+    fixture_bytes = fixture_path.read_bytes()
+    fixtures = read_jsonl_bytes(fixture_bytes, str(fixture_path))
     gold = _read_jsonl_optional(artifact_root / "voice-gold.v0.jsonl")
     pairs = _read_jsonl_optional(artifact_root / "contrastive-pairs.v0.jsonl")
     checkin = _read_json(artifact_root / "checkin.preview.v1.json")
@@ -1090,7 +1096,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     expected_fixture_bytes = b"".join(
         canonical_bytes(row) + b"\n" for row in expected_fixture_rows
     )
-    if (artifact_root / "evaluation-fixtures.v0.jsonl").read_bytes() != expected_fixture_bytes:
+    if fixture_bytes != expected_fixture_bytes:
         raise ValueError(
             "evaluation fixture artifact does not match canonical authority derivation"
         )

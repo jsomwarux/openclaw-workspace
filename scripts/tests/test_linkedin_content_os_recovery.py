@@ -8,6 +8,7 @@ import os
 import subprocess
 import tempfile
 import unittest
+import unicodedata
 from contextlib import contextmanager
 from pathlib import Path
 from unittest import mock
@@ -632,6 +633,22 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         self.assertEqual(self.ledger.read_bytes(), b"")
         self.assertFalse(upper.exists())
         self.assertFalse(lower.exists())
+
+    def test_file_ingest_rejects_unicode_normalized_output_collision(self) -> None:
+        args, artifacts, _, _ = self.file_ingest_args()
+        composed = artifacts / "caf\u00e9.json"
+        decomposed = artifacts / "cafe\u0301.json"
+        self.assertEqual(
+            unicodedata.normalize("NFC", str(composed)),
+            unicodedata.normalize("NFC", str(decomposed)),
+        )
+        args.corpus_authority_manifest_output = str(composed)
+        args.authority_run_context_output = str(decomposed)
+        with self.assertRaisesRegex(ValueError, "alias"):
+            ingest_human_gate_files(args)
+        self.assertEqual(self.ledger.read_bytes(), b"")
+        self.assertFalse(composed.exists())
+        self.assertFalse(decomposed.exists())
 
     def test_file_handlers_emit_authority_outputs_and_rebuild_deterministically(self) -> None:
         artifacts = self.root / "memory/content/linkedin-content-os"

@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from unittest import mock
@@ -313,6 +314,34 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 inputs=[], outputs=[upper, self.root / "caseprobe"], receipts=[],
                 workspace_root=self.root,
             )
+
+    def test_rejects_unicode_normalization_destination_collision(self) -> None:
+        composed = self.root / "caf\u00e9.json"
+        decomposed = self.root / "cafe\u0301.json"
+        self.assertEqual(
+            unicodedata.normalize("NFC", str(composed)),
+            unicodedata.normalize("NFC", str(decomposed)),
+        )
+        with self.assertRaisesRegex(ValueError, "alias"):
+            _validate_distinct_paths(
+                inputs=[], outputs=[composed, decomposed], receipts=[],
+                workspace_root=self.root,
+            )
+
+    def test_rejects_real_macos_unicode_normalization_alias(self) -> None:
+        if sys.platform != "darwin":
+            self.skipTest("macOS filesystem regression")
+        composed = self.root / "r\u00e9sum\u00e9.json"
+        decomposed = self.root / "re\u0301sume\u0301.json"
+        composed.write_bytes(b"sentinel")
+        if not decomposed.exists():
+            self.skipTest("test volume does not normalize Unicode names")
+        with self.assertRaisesRegex(ValueError, "alias"):
+            _validate_distinct_paths(
+                inputs=[], outputs=[composed, decomposed], receipts=[],
+                workspace_root=self.root,
+            )
+        self.assertEqual(composed.read_bytes(), b"sentinel")
 
     def test_build_corpus_rejects_receipt_output_alias_before_any_write(self) -> None:
         context = self.root / "run-context.json"
@@ -1115,6 +1144,41 @@ class VerificationIntegrationTests(unittest.TestCase):
                 "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
             ), self.assertRaisesRegex(ValueError, "fixture|canonical"):
                 main(self._verify_argv(paths))
+
+    def test_verify_reads_fixture_bytes_once_and_cannot_mix_snapshots(self) -> None:
+        paths = self._proof_tree()
+        fixture_path = self.artifacts / "evaluation-fixtures.v0.jsonl"
+        canonical_fixture_bytes = fixture_path.read_bytes()
+        forged_rows = [
+            json.loads(line) for line in canonical_fixture_bytes.decode().splitlines()
+        ]
+        forged_rows[1]["claimBindings"][0]["outboundText"] = "forged first read"
+        forged_fixture_bytes = b"".join(
+            canonical_bytes(row) + b"\n" for row in forged_rows
+        )
+        real_read_bytes = Path.read_bytes
+        fixture_reads = 0
+
+        def alternating_read(path: Path) -> bytes:
+            nonlocal fixture_reads
+            if path == fixture_path:
+                fixture_reads += 1
+                return (
+                    forged_fixture_bytes
+                    if fixture_reads == 1
+                    else canonical_fixture_bytes
+                )
+            return real_read_bytes(path)
+
+        with mock.patch.object(
+            Path, "read_bytes", autospec=True, side_effect=alternating_read
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_voice_gold", return_value=[]
+        ), mock.patch(
+            "scripts.linkedin_content_os.cli.build_contrastive_pairs", return_value=[]
+        ), self.assertRaisesRegex(ValueError, "fixture|canonical"):
+            main(self._verify_argv(paths))
+        self.assertEqual(fixture_reads, 1)
 
 
 if __name__ == "__main__":

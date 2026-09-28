@@ -9,6 +9,7 @@ import re
 import stat
 import subprocess
 import tempfile
+import unicodedata
 from pathlib import Path, PurePosixPath
 from typing import Optional, Sequence
 
@@ -505,7 +506,9 @@ def _reject_transaction_path_aliases(
             label,
             candidate,
             resolved_path,
-            os.path.normcase(str(resolved_path)).casefold(),
+            os.path.normcase(
+                unicodedata.normalize("NFC", str(resolved_path))
+            ).casefold(),
         ))
     for index, (left_label, left, left_resolved, left_case_key) in enumerate(resolved):
         for right_label, right, right_resolved, right_case_key in resolved[index + 1:]:
