@@ -367,7 +367,7 @@ def audit_legacy_rows(
                 status = "status_unknown"
 
         missing: list[str] = []
-        if status == "posted_confirmed" or raw_posted:
+        if status == "posted_confirmed":
             if public_url is None:
                 missing.append("public_url")
             if final_text is None:

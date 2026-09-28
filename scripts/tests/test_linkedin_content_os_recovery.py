@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import inspect
 import json
 import os
 import subprocess
@@ -11,6 +12,7 @@ from pathlib import Path
 from unittest import mock
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
+from scripts.linkedin_content_os.cli import main
 from scripts.linkedin_content_os.outcomes import load_events
 from scripts.linkedin_content_os.recovery import (
     ingest_human_gate,
@@ -198,16 +200,10 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
 
     def ingest(self, response=None):
         value = self.response() if response is None else response
-        return ingest_human_gate(
-            value,
-            self.request,
-            self.focus,
-            self.fixture_gap,
-            self.ledger,
-            raw_response_sha256=sha256_hex(canonical_bytes(value)),
-            run_context=self.run_context,
-            workspace_root=self.root,
-        )
+        with _working_directory(self.root):
+            return ingest_human_gate(
+                value, self.request, self.focus, self.fixture_gap, self.ledger
+            )
 
     def test_ingests_complete_boundary_and_emits_valid_typed_events(self) -> None:
         result = self.ingest()
@@ -236,23 +232,27 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         authority = result["authorityRunContext"]
         self.assertEqual(authority["corpusAuthorityManifestSha256"], manifest["manifestSha256"])
 
-    def test_api_requires_an_explicit_raw_response_byte_hash(self) -> None:
+    def test_public_api_is_exactly_five_arguments_and_uses_canonical_hash(self) -> None:
         response = self.response()
+        self.assertEqual(
+            list(inspect.signature(ingest_human_gate).parameters),
+            ["response", "request", "focus", "fixture_gap", "ledger"],
+        )
         with _working_directory(self.root):
             result = ingest_human_gate(
-                response, self.request, self.focus, self.fixture_gap, self.ledger,
-                raw_response_sha256=sha256_hex(canonical_bytes(response)),
+                response, self.request, self.focus, self.fixture_gap, self.ledger
             )
+        self.assertEqual(result["responseSha256"], sha256_hex(canonical_bytes(response)))
         self.assertEqual(
             result["corpusAuthorityManifest"]["validatedAt"], CONFIRMED_AT
         )
         self.assertEqual(
             result["authorityRunContext"]["generatedAt"], CONFIRMED_AT
         )
-        with self.assertRaisesRegex(ValueError, "raw response"):
+        with self.assertRaisesRegex(TypeError, "raw_response_sha256"):
             ingest_human_gate(
                 response, self.request, self.focus, self.fixture_gap, self.ledger,
-                raw_response_sha256="0",
+                raw_response_sha256="0" * 64,
             )
 
     def test_requires_exact_complete_history_coverage(self) -> None:
@@ -492,6 +492,24 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
             run_context=str(context_path),
             workspace_root=str(self.root),
         )
+        phase1_outcomes = artifacts / "outcomes.phase-1.v1.jsonl"
+        phase1_outcomes.write_bytes(b"")
+        for label, alias in (
+            ("exact", phase1_outcomes),
+            ("symlink", artifacts / "outcomes-phase1-symlink.jsonl"),
+            ("hardlink", artifacts / "outcomes-phase1-hardlink.jsonl"),
+        ):
+            if label == "symlink":
+                alias.symlink_to(phase1_outcomes.name)
+            elif label == "hardlink":
+                os.link(phase1_outcomes, alias)
+            alias_args = argparse.Namespace(**vars(ingest_args))
+            alias_args.outcomes = str(alias)
+            with self.subTest(label=label), self.assertRaisesRegex(
+                ValueError, "phase-1|alias"
+            ):
+                ingest_human_gate_files(alias_args)
+            self.assertEqual(phase1_outcomes.read_bytes(), b"")
         result = ingest_human_gate_files(ingest_args)
         self.assertEqual(manifest_path.read_bytes(), canonical_bytes(result["corpusAuthorityManifest"]))
         self.assertEqual(authority_path.read_bytes(), canonical_bytes(result["authorityRunContext"]))
@@ -548,6 +566,29 @@ class LinkedInContentOSRecoveryTests(unittest.TestCase):
         self.assertEqual(positive["classification"], "positive")
         self.assertEqual(first_fixtures["fixtures"][0], negative)
         self.assertEqual(first_fixtures["fixtures"][-1], teardown)
+
+        documented_ledger = artifacts / "outcomes.v1.jsonl"
+        documented_ledger.write_bytes(b"")
+        with _working_directory(self.root), mock.patch("sys.stdout.write"):
+            cli_ingest = main([
+                "ingest-human-gate",
+                "--response", "memory/content/linkedin-content-os/human-gate-response.v1.json",
+                "--recovery-request", "memory/content/linkedin-content-os/historical-recovery-request.phase-1.v1.json",
+                "--focus", "memory/content/linkedin-content-os/focus-snapshot.phase-1.v1.json",
+                "--fixtures", "memory/content/linkedin-content-os/evaluation-fixtures.phase-1.v0.jsonl",
+                "--outcomes", "memory/content/linkedin-content-os/outcomes.v1.jsonl",
+                "--corpus-authority-manifest-output", "memory/content/linkedin-content-os/corpus-authority-manifest.v1.json",
+                "--authority-run-context-output", "memory/content/linkedin-content-os/run-context.phase-2-authority.v1.json",
+                "--run-context", "memory/content/linkedin-content-os/run-context.v1.json",
+            ])
+            cli_focus = main([
+                "build-focus", "--workspace-root", ".",
+                "--outcomes", "memory/content/linkedin-content-os/outcomes.v1.jsonl",
+                "--run-context", "memory/content/linkedin-content-os/run-context.v1.json",
+                "--output", "memory/content/linkedin-content-os/focus-snapshot.v1.json",
+            ])
+        self.assertEqual(cli_ingest["appendedEventCount"], len(result["events"]))
+        self.assertEqual(cli_focus["status"], "confirmed")
 
         focus_before = focus_path.read_bytes()
         alias_focus_args = argparse.Namespace(**vars(focus_args))

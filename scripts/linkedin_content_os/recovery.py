@@ -432,7 +432,7 @@ def _focus_receipt(
     return receipt
 
 
-def ingest_human_gate(
+def _ingest_human_gate(
     response: object,
     request: object,
     focus: object,
@@ -668,6 +668,25 @@ def ingest_human_gate(
     }
 
 
+def ingest_human_gate(
+    response: object,
+    request: object,
+    focus: object,
+    fixture_gap: object,
+    ledger: Path,
+) -> dict[str, object]:
+    """Ingest an in-memory response using its honest canonical object digest."""
+
+    return _ingest_human_gate(
+        response,
+        request,
+        focus,
+        fixture_gap,
+        ledger,
+        raw_response_sha256=_hash_object(response),
+    )
+
+
 def _strict_json_file(path: Path) -> dict[str, object]:
     try:
         payload = path.read_bytes()
@@ -717,14 +736,21 @@ def _phase1_fixture_rows(path: Path) -> list[dict[str, object]]:
 
 
 def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
-    response, response_bytes = _strict_json_file_with_bytes(Path(args.response))
+    response_path = Path(args.response)
+    artifact_directory = response_path.parent
+    outcomes_path = Path(args.outcomes)
+    _reject_phase1_output_aliases(
+        (artifact_directory / "outcomes.phase-1.v1.jsonl",),
+        (outcomes_path,),
+    )
+    response, response_bytes = _strict_json_file_with_bytes(response_path)
     request = _strict_json_file(Path(args.recovery_request))
     focus = _strict_json_file(Path(args.focus))
     fixtures = _phase1_fixture_rows(Path(args.fixtures))
     fixture_gap = next(row for row in fixtures if row.get("mode") == "build_proof")
     context = _strict_json_file(Path(args.run_context))
-    result = ingest_human_gate(
-        response, request, focus, fixture_gap, Path(args.outcomes),
+    result = _ingest_human_gate(
+        response, request, focus, fixture_gap, outcomes_path,
         raw_response_sha256=sha256_hex(response_bytes),
         run_context=context,
         workspace_root=Path(getattr(args, "workspace_root", ".")),
@@ -736,16 +762,22 @@ def ingest_human_gate_files(args: argparse.Namespace) -> dict[str, object]:
     write_json_atomic(
         Path(args.authority_run_context_output), result["authorityRunContext"]
     )
-    write_json_atomic(
-        Path(args.focus_authority_receipt_output), result["focusAuthorityReceipt"]
+    receipt_output = Path(
+        getattr(args, "focus_authority_receipt_output", None)
+        or artifact_directory / "focus-authority-receipt.v1.json"
     )
+    anchor_output = Path(
+        getattr(args, "focus_authority_anchor_output", None)
+        or artifact_directory / "focus-authority-anchor.v1.json"
+    )
+    write_json_atomic(receipt_output, result["focusAuthorityReceipt"])
     anchor: dict[str, object] = {
         "schemaVersion": "linkedin-focus-authority-anchor.v1",
         "rawResponseSha256": sha256_hex(response_bytes),
         "authorityReceiptSha256": result["focusAuthorityReceipt"]["receiptSha256"],
     }
     anchor["anchorSha256"] = _hash_object(anchor)
-    write_json_atomic(Path(args.focus_authority_anchor_output), anchor)
+    write_json_atomic(anchor_output, anchor)
     result["focusAuthorityAnchor"] = anchor
     return result
 
@@ -762,8 +794,14 @@ def _phase1_paths(directory: Path) -> tuple[Path, Path, Path, Path]:
 def rebuild_focus_files(args: argparse.Namespace) -> dict[str, object]:
     output = Path(args.output)
     response_path, request_path, proposed_path, fixtures_path = _phase1_paths(output.parent)
-    receipt_path = Path(args.focus_authority_receipt)
-    anchor_path = Path(args.focus_authority_anchor)
+    receipt_path = Path(
+        getattr(args, "focus_authority_receipt", None)
+        or output.parent / "focus-authority-receipt.v1.json"
+    )
+    anchor_path = Path(
+        getattr(args, "focus_authority_anchor", None)
+        or output.parent / "focus-authority-anchor.v1.json"
+    )
     _reject_phase1_output_aliases(
         (response_path, request_path, proposed_path, fixtures_path, receipt_path, anchor_path),
         (output,),

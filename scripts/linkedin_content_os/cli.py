@@ -1175,11 +1175,11 @@ def _parser() -> argparse.ArgumentParser:
     ingest = subparsers.add_parser("ingest-human-gate")
     for name in (
         "response", "recovery-request", "focus", "fixtures", "outcomes",
-        "corpus-authority-manifest-output", "authority-run-context-output",
-        "focus-authority-receipt-output", "focus-authority-anchor-output",
-        "run-context",
+        "corpus-authority-manifest-output", "authority-run-context-output", "run-context",
     ):
         ingest.add_argument("--" + name, required=True)
+    ingest.add_argument("--focus-authority-receipt-output")
+    ingest.add_argument("--focus-authority-anchor-output")
 
     focus = subparsers.add_parser("build-focus")
     focus.add_argument("--workspace-root", required=True)
@@ -1269,6 +1269,27 @@ def _present_paths(args: argparse.Namespace, names: Sequence[str]) -> List[Path]
 
 def _validate_command_paths(args: argparse.Namespace) -> None:
     """Apply each command's closed read/write path partition before dispatch."""
+
+    if args.command == "ingest-human-gate":
+        directory = Path(args.response).parent
+        if args.focus_authority_receipt_output is None:
+            args.focus_authority_receipt_output = str(
+                directory / "focus-authority-receipt.v1.json"
+            )
+        if args.focus_authority_anchor_output is None:
+            args.focus_authority_anchor_output = str(
+                directory / "focus-authority-anchor.v1.json"
+            )
+    elif args.command == "build-focus" and args.outcomes is not None:
+        directory = Path(args.output).parent
+        if args.focus_authority_receipt is None:
+            args.focus_authority_receipt = str(
+                directory / "focus-authority-receipt.v1.json"
+            )
+        if args.focus_authority_anchor is None:
+            args.focus_authority_anchor = str(
+                directory / "focus-authority-anchor.v1.json"
+            )
 
     contracts: Dict[str, Tuple[Sequence[str], Sequence[str], Sequence[str]]] = {
         "capture-boundaries": (("run_context",), ("mc_output", "output"), ()),

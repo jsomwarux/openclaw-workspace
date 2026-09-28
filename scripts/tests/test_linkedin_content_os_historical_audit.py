@@ -185,6 +185,32 @@ class HistoricalAuditTests(unittest.TestCase):
             },
         )
 
+    def test_governed_not_posted_closes_a_raw_posted_recovery_row(self) -> None:
+        row_hash = _row_hash("jt-confirmed-no-url")
+        declined = _event(
+            row_hash,
+            "not_posted_confirmed",
+            event_id="history-declined-raw-posted-001",
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            outcomes = Path(directory) / "outcomes.jsonl"
+            outcomes.write_bytes(canonical_bytes(declined) + b"\n")
+            audit = audit_legacy_rows(FIXTURE, outcomes, GENERATED_AT)
+        record = next(
+            item for item in audit["records"]
+            if item["legacyRowSha256"] == row_hash
+        )
+        self.assertTrue(record["rawPosted"])
+        self.assertEqual(record["status"], "not_posted_confirmed")
+        self.assertEqual(record["missing"], [])
+        self.assertNotIn(
+            row_hash,
+            {
+                item["legacyRowSha256"]
+                for item in audit["recoveryRequest"]["items"]
+            },
+        )
+
     def test_raw_false_cannot_become_not_posted_without_governed_event(self) -> None:
         audit = audit_legacy_rows(FIXTURE, None, GENERATED_AT)
         false_records = [
