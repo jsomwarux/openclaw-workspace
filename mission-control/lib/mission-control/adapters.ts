@@ -11,6 +11,15 @@ import type {
 } from "./types";
 import type { OutreachDecision } from "./outreach-decision";
 import type { OutreachReviewSnapshot } from "./outreach-review";
+import type {
+  ApprovalState,
+  ArtifactRef,
+  ClosureReason,
+  DoneEvidence,
+  DoneEvidenceType,
+  GrowthLane,
+  OutcomeRef,
+} from "./lane-packet";
 
 type RawTask = {
   _id?: string;
@@ -67,6 +76,18 @@ type RawTask = {
   evidenceScore?: number;
   distributionScore?: number;
   fatalConstraint?: boolean;
+  packetSchema?: "lane-packet-v1";
+  growthLane?: GrowthLane;
+  artifactRef?: ArtifactRef;
+  payloadHash?: string;
+  approvalState?: ApprovalState;
+  approvedPayloadHash?: string;
+  expiresAt?: number;
+  estMinutes?: number;
+  doneEvidenceType?: DoneEvidenceType;
+  doneEvidence?: DoneEvidence;
+  outcomeRef?: OutcomeRef;
+  closureReason?: ClosureReason;
 };
 
 type RawCron = {
@@ -183,7 +204,8 @@ export function taskToSignal(task: RawTask): Signal {
     dueDate: task.dueDate,
     dueDateSource: task.dueDateSource,
     stageProbability: task.stageProbability,
-    effortMinutes: task.effortMinutes,
+    // A lane packet's estimate feeds the existing effort control when no explicit effort is set.
+    effortMinutes: task.effortMinutes ?? task.estMinutes,
     proofRequired: task.proofRequired,
     riskContainment: task.riskContainment,
     cashDirect: task.cashDirect,
@@ -221,6 +243,18 @@ export function taskToSignal(task: RawTask): Signal {
     evidenceScore: task.evidenceScore,
     distributionScore: task.distributionScore,
     fatalConstraint: task.fatalConstraint,
+    packetSchema: task.packetSchema,
+    growthLane: task.growthLane,
+    artifactRef: task.artifactRef,
+    payloadHash: task.payloadHash,
+    approvalState: task.approvalState,
+    approvedPayloadHash: task.approvedPayloadHash,
+    expiresAt: task.expiresAt,
+    estMinutes: task.estMinutes,
+    doneEvidenceType: task.doneEvidenceType,
+    doneEvidence: task.doneEvidence,
+    outcomeRef: task.outcomeRef,
+    closureReason: task.closureReason,
     raw: task,
   };
 }

@@ -1,4 +1,5 @@
 import type { Workstream } from "./types";
+import { LANE_PACKET_GOVERNED_FIELDS, isReservedLanePacketDedupeKey } from "./lane-packet";
 
 export const NIGHTLY_PROMOTION_THRESHOLD = 30;
 export const NIGHTLY_EVIDENCE_THRESHOLD = 4;
@@ -58,6 +59,12 @@ export function validateTaskAdmission(input: Record<string, unknown>, now = new 
   }
   if (input.reviewCycle !== undefined || input.snapshotSha256 !== undefined || input.cohortId !== undefined) {
     throw new Error("outreach review authority requires the specialized endpoint");
+  }
+  if (LANE_PACKET_GOVERNED_FIELDS.some((field) => input[field] !== undefined)) {
+    throw new Error("lane packet envelope fields require /api/tasks/lane-packet");
+  }
+  if (isReservedLanePacketDedupeKey(input.dedupeKey)) {
+    throw new Error("dedupeKey must not use the reserved lane-packet prefix");
   }
   if (input.source === "nightly-validation-controller") {
     throw new Error("sourceSystem is required; source cannot identify nightly admission");

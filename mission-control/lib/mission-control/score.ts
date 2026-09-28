@@ -1,4 +1,5 @@
 import type { Factors, ScoreBand, ScoreContext, ScoreResult, Signal, SignalSource } from "./types";
+import { applyLaneCapacity, isExpiredLanePacket, type LaneOverflow } from "./lane-capacity";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -177,22 +178,44 @@ function nudgeDue(signal: Signal, now: number): boolean {
   return now - waiting.since > waiting.nudgeAfterDays * DAY_MS;
 }
 
+export type TodayAllocation = {
+  /** NOW is queue[0]; UP NEXT is the rest. */
+  queue: Signal[];
+  /** Lane packets held back by the focus row's per-lane minute capacity. */
+  overflow: LaneOverflow[];
+  /** Open lane packets past expiry, hidden until the typed expiry closure is written. */
+  expired: number;
+};
+
 /**
+ * The single owner of Today ordering. Nothing else sorts the Today queue:
+ * `commandQueue` and the command brief read this result, and Priority Audit
+ * fields (priority, sortOrder, rankScore) are never inputs.
+ *
  * Hard exclusions first, then score. Nothing that JT cannot act on right now
  * is allowed into the queue — externally blocked work only reappears when its
- * nudge comes due, and then as a nudge, not as the underlying task.
+ * nudge comes due, and then as a nudge, not as the underlying task. Expired
+ * lane packets drop out automatically.
  *
  * What survives: task-source signals owned by jt or both, plus cron-source
  * signals that actually failed. Eve's in-progress and stale work is shown by
  * the EVE HAS IT strip, and failures by RISK; neither goes through here.
+ *
+ * After ranking, the focus row's lane capacity filters lane packets in rank
+ * order (never reordering) and reports what did not fit as overflow.
  */
-export function commandQueue(signals: Signal[], ctx: ScoreContext = {}): Signal[] {
+export function allocateToday(signals: Signal[], ctx: ScoreContext = {}): TodayAllocation {
   const now = ctx.now ?? Date.now();
 
   const eligible: Signal[] = [];
+  let expired = 0;
   for (const signal of signals) {
     if (NON_DECISION_SOURCES.has(signal.source)) continue;
     if (EXCLUDED_STATUSES.has(signal.status)) continue;
+    if (isExpiredLanePacket(signal, now)) {
+      expired += 1;
+      continue;
+    }
     if (signal.snoozedUntil && signal.snoozedUntil > now) continue;
     if (signal.owner === "eve" && !eveEscalates(signal)) continue;
 
@@ -210,7 +233,7 @@ export function commandQueue(signals: Signal[], ctx: ScoreContext = {}): Signal[
     eligible.push(signal);
   }
 
-  return eligible
+  const ranked = eligible
     .map((signal) => scoreSignal(signal, { ...ctx, now }))
     .sort((a, b) => {
       const scoreDiff = (b.score ?? 0) - (a.score ?? 0);
@@ -218,6 +241,13 @@ export function commandQueue(signals: Signal[], ctx: ScoreContext = {}): Signal[
       const updatedDiff = b.updatedAt - a.updatedAt;
       if (updatedDiff !== 0) return updatedDiff;
       return a.title.localeCompare(b.title);
-    })
-    .slice(0, QUEUE_LIMIT);
+    });
+
+  const { kept, overflow } = applyLaneCapacity(ranked, ctx.focus?.laneCapacity, now);
+  return { queue: kept.slice(0, QUEUE_LIMIT), overflow, expired };
+}
+
+/** Today's queue. Delegates to `allocateToday`, which owns the ordering. */
+export function commandQueue(signals: Signal[], ctx: ScoreContext = {}): Signal[] {
+  return allocateToday(signals, ctx).queue;
 }

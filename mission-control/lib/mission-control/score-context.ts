@@ -1,4 +1,4 @@
-import type { FocusRow, ScoreContext } from "./types";
+import type { FocusRow, Mandate, ScoreContext } from "./types";
 
 /**
  * The focus row is keyed by the Monday of its week. Computed in local time so a
@@ -14,12 +14,27 @@ export function mondayOf(now: number): string {
 }
 
 /**
- * The cockpit's scoring context. The mandate is what arms the ship cap in
- * score.ts; without it the cap silently never fires.
+ * Focus rows written before the Growth OS machine contract have no `mandate`
+ * field. They were all created under the consulting-cash mandate, so they keep
+ * it until the row is updated. This is a migration default for old rows, not a
+ * mandate for new ones: a row that sets `mandate` always wins.
+ */
+const LEGACY_FOCUS_ROW_MANDATE: Mandate = "consulting-cash";
+
+/** The mandate comes from the current focus row. No focus row means no mandate. */
+export function focusMandate(focus: FocusRow | null | undefined): Mandate {
+  if (!focus) return "none";
+  return focus.mandate ?? LEGACY_FOCUS_ROW_MANDATE;
+}
+
+/**
+ * The cockpit's scoring context, driven by the current focus row: its mandate
+ * arms the ship cap in score.ts, its projects drive the focus penalty, and its
+ * lane capacity bounds Today's per-lane minutes.
  *
- * `collected` is deliberately floored to 0 when the north-star read is
+ * `collected` is deliberately floored to 0 when the payments read is
  * unavailable. A missing number must leave the cap ARMED — treating an
- * unreadable file as "gate already met" would disarm the one guard that keeps
+ * unreadable ledger as "gate already met" would disarm the one guard that keeps
  * ship work from outranking cash.
  */
 export function buildScoreContext(input: {
@@ -30,7 +45,7 @@ export function buildScoreContext(input: {
   const collected = typeof input.collected === "number" && Number.isFinite(input.collected) ? input.collected : 0;
   return {
     focus: input.focus ?? null,
-    mandate: "consulting-cash",
+    mandate: focusMandate(input.focus),
     collected,
     now: input.now ?? Date.now(),
   };

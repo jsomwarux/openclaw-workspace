@@ -71,7 +71,8 @@ describe("Convex outreach authority boundary", () => {
   test("review admission and JT decision validate distinct least-privilege capabilities", () => {
     expect(tasksSource).toContain("export const createOutreachReview = mutation");
     expect(tasksSource).toContain("export const decideOutreach = mutation");
-    expect(tasksSource.match(/capability: v\.string\(\)/g)?.length).toBe(11);
+    // 11 outreach capability arguments + 2 lane-packet ones (admitLanePacket, transitionLanePacket).
+    expect(tasksSource.match(/capability: v\.string\(\)/g)?.length).toBe(13);
     const reviewMutation = mutationSource("createOutreachReview", "updateStatus");
     const decisionMutation = mutationSource("decideOutreach", "findOutreachDecision");
     expect(reviewMutation).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
@@ -82,7 +83,8 @@ describe("Convex outreach authority boundary", () => {
     expect(reviewRouteSource).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
     expect(decisionRouteSource).toContain("process.env.OUTREACH_DECISION_CAPABILITY");
     expect(decisionRouteSource).toContain("process.env.OUTREACH_REVIEW_CAPABILITY");
-    expect(tasksSource.match(/assertDistinctServerCapability\(/g)?.length).toBe(4);
+    // 4 outreach boundaries + 1 shared lane-packet boundary (assertLanePacketCapability).
+    expect(tasksSource.match(/assertDistinctServerCapability\(/g)?.length).toBe(5);
   });
 
   test("persists the complete typed snapshot and indexes candidate plus cohort", () => {

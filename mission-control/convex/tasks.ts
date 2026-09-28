@@ -2,7 +2,16 @@ import { v } from "convex/values";
 import { mutation, query, internalMutation } from "./_generated/server";
 import type { Doc } from "./_generated/dataModel";
 import type { MutationCtx, QueryCtx } from "./_generated/server";
-import { gitBinding, outreachDecisionValue, suppressionBinding, taskStatus, waitingOn, workstream } from "./schema";
+import {
+  focusMandate,
+  gitBinding,
+  laneCapacityEntry,
+  outreachDecisionValue,
+  suppressionBinding,
+  taskStatus,
+  waitingOn,
+  workstream,
+} from "./schema";
 import { resolveTaskUpsert } from "../lib/mission-control/task-upsert";
 import { resolveTaskCreateOnly } from "../lib/mission-control/task-create-only";
 import { assertOutreachTaskMutable, resolveOutreachDecision, resolveOutreachLookup } from "../lib/mission-control/outreach-decision";
@@ -39,6 +48,22 @@ import {
   type PreSendReceipt,
 } from "../lib/mission-control/outreach-pre-send-receipt";
 import { verifySuppressionAdmissionAttestation } from "../lib/mission-control/outreach-suppression-attestation";
+import {
+  LanePacketError,
+  lanePacketDedupeKey,
+  resolveLanePacketAdmission,
+  validateLanePacketSubmission,
+  type StoredLanePacketTask,
+} from "../lib/mission-control/lane-packet";
+import {
+  assertGenericDedupeKey,
+  assertGenericLanePacketRemoval,
+  resolveGenericLanePacketWrite,
+  resolveLanePacketExpiry,
+  resolveLanePacketTransition,
+  validateLanePacketTransition,
+} from "../lib/mission-control/lane-packet-transitions";
+import { isValidLaneCapacity } from "../lib/mission-control/lane-capacity";
 
 const auditSource = v.union(v.literal("eve"), v.literal("jt"), v.literal("model"));
 const NIGHTLY_SOURCE = "nightly-validation-controller";
@@ -123,6 +148,61 @@ function storedAuthority(doc: Doc<"outreachReviewAuthorities">): OutreachReviewA
     observedAt: doc.observedAt,
     authorityRevision: doc.authorityRevision,
   };
+}
+
+type LanePacketCapabilityKind = "producer" | "decision";
+
+/**
+ * Lane-packet capabilities mirror outreach review/decision: producers hold
+ * LANE_PACKET_CAPABILITY; LANE_PACKET_DECISION_CAPABILITY stays server-held and
+ * is used only after the Next route verifies JT's Tailscale identity. Missing,
+ * blank, or equal values fail closed before any database access.
+ */
+async function assertLanePacketCapability(provided: string, kind: LanePacketCapabilityKind): Promise<void> {
+  const producer = process.env.LANE_PACKET_CAPABILITY;
+  const decision = process.env.LANE_PACKET_DECISION_CAPABILITY;
+  try {
+    await assertDistinctServerCapability(
+      provided,
+      kind === "producer" ? producer : decision,
+      kind === "producer" ? decision : producer,
+    );
+  } catch (error) {
+    if (error instanceof OutreachAuthError && error.status === 503) throw new Error("LANE_PACKET_NOT_CONFIGURED");
+    throw new Error("LANE_PACKET_UNAUTHORIZED");
+  }
+}
+
+function lanePacketErrorCode(error: LanePacketError): string {
+  return `LANE_PACKET_${error.code.toUpperCase()}`;
+}
+
+/** Admission and transition boundaries expose only enumerated codes. */
+function throwLanePacketBoundaryError(error: unknown): never {
+  if (error instanceof LanePacketError) throw new Error(lanePacketErrorCode(error));
+  throw new Error("LANE_PACKET_INVALID");
+}
+
+/** Generic paths keep their existing error behavior for everything except lane-packet guards. */
+function rethrowGenericLanePacketError(error: unknown): never {
+  if (error instanceof LanePacketError) throw new Error(lanePacketErrorCode(error));
+  throw error;
+}
+
+async function guardGenericLanePacketWrite(task: Doc<"tasks">, fields: Record<string, unknown>) {
+  try {
+    return await resolveGenericLanePacketWrite(task as unknown as StoredLanePacketTask, fields, Date.now());
+  } catch (error) {
+    rethrowGenericLanePacketError(error);
+  }
+}
+
+function guardGenericDedupeKey(value: unknown) {
+  try {
+    assertGenericDedupeKey(value);
+  } catch (error) {
+    rethrowGenericLanePacketError(error);
+  }
 }
 
 function throwAuthorityBoundaryError(error: unknown): never {
@@ -279,6 +359,7 @@ export const create = mutation({
     ...operatingSystemArgs,
   },
   handler: async (ctx, args) => {
+    guardGenericDedupeKey(args.dedupeKey);
     assertNightlyAdmission(args);
     const now = Date.now();
     return await ctx.db.insert("tasks", { ...args, createdAt: now, updatedAt: now });
@@ -312,13 +393,19 @@ export const upsertByDedupeKey = mutation({
     dedupeKey: v.string(),
   },
   handler: async (ctx, args) => {
+    guardGenericDedupeKey(args.dedupeKey);
     assertNightlyAdmission(args);
     const now = Date.now();
     const existing = await ctx.db
       .query("tasks")
       .withIndex("by_dedupeKey", (q) => q.eq("dedupeKey", args.dedupeKey))
       .first();
-    const resolved = resolveTaskUpsert(existing, args, now);
+    let resolved;
+    try {
+      resolved = resolveTaskUpsert(existing, args, now);
+    } catch (error) {
+      rethrowGenericLanePacketError(error);
+    }
     if (resolved.operation === "update") {
       await ctx.db.patch(resolved.id, resolved.fields);
       return { id: resolved.id, created: false };
@@ -357,6 +444,7 @@ export const createOnlyByDedupeKey = mutation({
     dedupeKey: v.string(),
   },
   handler: async (ctx, args) => {
+    guardGenericDedupeKey(args.dedupeKey);
     assertNightlyAdmission(args);
     const existing = await ctx.db
       .query("tasks")
@@ -366,6 +454,119 @@ export const createOnlyByDedupeKey = mutation({
     if (resolved.operation === "existing") return { id: resolved.id, created: false };
     const id = await ctx.db.insert("tasks", resolved.fields);
     return { id, created: true };
+  },
+});
+
+/**
+ * Growth OS generic lane-packet admission (card envelope v1). Create-only and
+ * idempotent on the namespaced dedupeKey plus the admitted payload hash. It
+ * validates again here because Convex mutations are reachable without the
+ * Next route, and it never reads or writes outreach review/decision state.
+ */
+export const admitLanePacket = mutation({
+  args: { packet: v.any(), capability: v.string() },
+  handler: async (ctx, args) => {
+    await assertLanePacketCapability(args.capability, "producer");
+    const now = Date.now();
+    let submission;
+    try {
+      submission = validateLanePacketSubmission(args.packet, now);
+    } catch (error) {
+      throwLanePacketBoundaryError(error);
+    }
+    const dedupeKey = lanePacketDedupeKey(submission.lane, submission.dedupeKey);
+    const existing = await ctx.db
+      .query("tasks")
+      .withIndex("by_dedupeKey", (q) => q.eq("dedupeKey", dedupeKey))
+      .collect();
+    let resolved;
+    try {
+      resolved = await resolveLanePacketAdmission(existing as unknown as StoredLanePacketTask[], submission, now);
+    } catch (error) {
+      throwLanePacketBoundaryError(error);
+    }
+    if (resolved.operation === "existing") {
+      return {
+        taskId: resolved.id,
+        created: false,
+        dedupeKey: resolved.dedupeKey,
+        payloadHash: resolved.payloadHash,
+        approvalState: resolved.approvalState,
+      };
+    }
+    const taskId = await ctx.db.insert("tasks", resolved.fields);
+    return {
+      taskId,
+      created: true,
+      dedupeKey: resolved.fields.dedupeKey,
+      payloadHash: resolved.fields.payloadHash,
+      approvalState: resolved.fields.approvalState,
+    };
+  },
+});
+
+/**
+ * The only writer of approval, completion evidence, outcome pointers, and
+ * closure reasons. `actor: "jt"` requires the server-held decision capability;
+ * `actor: "eve"` requires the producer capability and may only skip or close
+ * with no action.
+ */
+export const transitionLanePacket = mutation({
+  args: {
+    id: v.id("tasks"),
+    transition: v.any(),
+    actor: v.union(v.literal("jt"), v.literal("eve")),
+    capability: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await assertLanePacketCapability(args.capability, args.actor === "jt" ? "decision" : "producer");
+    let request;
+    try {
+      const body = args.transition && typeof args.transition === "object" && !Array.isArray(args.transition) ? args.transition : null;
+      request = validateLanePacketTransition(body ? { ...body, id: args.id } : body);
+    } catch (error) {
+      throwLanePacketBoundaryError(error);
+    }
+    const task = await ctx.db.get(args.id);
+    if (!task) throw new Error("LANE_PACKET_NOT_FOUND");
+    const { id: _id, ...transition } = request;
+    let resolved;
+    try {
+      resolved = resolveLanePacketTransition(task as unknown as StoredLanePacketTask, transition, args.actor, Date.now());
+    } catch (error) {
+      throwLanePacketBoundaryError(error);
+    }
+    const fields = resolved.operation === "patch" ? resolved.fields : {};
+    if (resolved.operation === "patch") await ctx.db.patch(args.id, fields);
+    const current = { ...task, ...fields } as Record<string, unknown>;
+    return {
+      taskId: args.id,
+      changed: resolved.operation === "patch",
+      status: current.status,
+      approvalState: current.approvalState,
+      payloadHash: current.payloadHash,
+    };
+  },
+});
+
+/**
+ * Server-owned expiry: closes every open lane packet past `expiresAt` with a
+ * typed `expired` reason. Today already hides expired packets at read time;
+ * this persists the closure. Scheduling it is a separately approved cron change.
+ */
+export const expireDueLanePackets = internalMutation({
+  args: {},
+  handler: async (ctx) => {
+    const now = Date.now();
+    let expired = 0;
+    const tasks = await ctx.db.query("tasks").collect();
+    for (const task of tasks) {
+      const fields = resolveLanePacketExpiry(task as unknown as StoredLanePacketTask, now);
+      if (!fields) continue;
+      await ctx.db.patch(task._id, fields);
+      expired += 1;
+    }
+    return { expired };
   },
 });
 
@@ -662,7 +863,8 @@ export const updateStatus = mutation({
     const task = await ctx.db.get(args.id);
     if (!task) throw new Error(`Task not found: ${args.id}`);
     assertOutreachTaskMutable(task);
-    await ctx.db.patch(args.id, { status: args.status, updatedAt: Date.now() });
+    const governed = await guardGenericLanePacketWrite(task, { status: args.status });
+    await ctx.db.patch(args.id, { status: args.status, ...governed, updatedAt: Date.now() });
   },
 });
 
@@ -700,8 +902,10 @@ export const update = mutation({
     if (!task) throw new Error(`Task not found: ${id}`);
     assertOutreachTaskMutable(task);
     assertNightlyAdmission({ ...task, ...fields });
+    // Lane packets: refuse governed transitions here and re-hash edited payloads.
+    const governed = await guardGenericLanePacketWrite(task, fields);
     await auditChanges(ctx, task, fields, source ?? "jt", auditEvidence ?? "manual edit");
-    await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
+    await ctx.db.patch(id, { ...fields, ...governed, updatedAt: Date.now() });
   },
 });
 
@@ -726,6 +930,11 @@ export const remove = mutation({
   handler: async (ctx, args) => {
     const task = await ctx.db.get(args.id);
     assertOutreachTaskMutable(task);
+    try {
+      assertGenericLanePacketRemoval(task);
+    } catch (error) {
+      rethrowGenericLanePacketError(error);
+    }
     await ctx.db.delete(args.id);
   },
 });
@@ -848,7 +1057,8 @@ export const updatePipelineStage = mutation({
     const task = await ctx.db.get(id);
     if (!task) throw new Error(`Task not found: ${id}`);
     assertOutreachTaskMutable(task);
-    await ctx.db.patch(id, { ...fields, updatedAt: Date.now() });
+    const governed = await guardGenericLanePacketWrite(task, fields);
+    await ctx.db.patch(id, { ...fields, ...governed, updatedAt: Date.now() });
   },
 });
 
@@ -857,14 +1067,22 @@ export const setFocus = mutation({
     weekOf: v.string(),
     projects: v.array(v.string()),
     gate: v.number(),
+    mandate: v.optional(focusMandate),
+    laneCapacity: v.optional(v.array(laneCapacityEntry)),
   },
   handler: async (ctx, args) => {
+    if (args.laneCapacity !== undefined && !isValidLaneCapacity(args.laneCapacity)) throw new Error("invalid laneCapacity");
     const existing = await ctx.db
       .query("focus")
       .withIndex("by_weekOf", (q) => q.eq("weekOf", args.weekOf))
       .first();
     if (existing) {
-      await ctx.db.patch(existing._id, { projects: args.projects, gate: args.gate });
+      await ctx.db.patch(existing._id, {
+        projects: args.projects,
+        gate: args.gate,
+        ...(args.mandate !== undefined ? { mandate: args.mandate } : {}),
+        ...(args.laneCapacity !== undefined ? { laneCapacity: args.laneCapacity } : {}),
+      });
       return existing._id;
     }
     return await ctx.db.insert("focus", { ...args, createdAt: Date.now() });

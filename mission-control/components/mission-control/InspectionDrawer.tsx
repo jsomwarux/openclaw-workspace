@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { Archive, Check, Clock3, Copy, UserPlus, X } from "lucide-react";
 import { useTaskAudit } from "@/lib/mission-control/hooks";
 import { formatAuditField, formatAuditValue, needsEvidenceAttention, operatingSystemDetails } from "@/lib/mission-control/inspection-display";
-import { reasonChips, reasonToneClassName } from "@/lib/mission-control/reason-codes";
+import { isLanePacketSignal } from "@/lib/mission-control/lane-packet-display";
+import { reasonChips, reasonToneClassName, todayRankingExplanation } from "@/lib/mission-control/reason-codes";
 import type { Signal } from "@/lib/mission-control/types";
 import { priorityOptions, rankingExplanation } from "@/lib/mission-control/work-actions";
 import { priorityBadgeClassName } from "@/lib/mission-control/work-priority";
@@ -12,10 +13,14 @@ import { statusOptions, toTaskStatus, type TaskStatus } from "@/lib/mission-cont
 import { cn, formatRelative } from "@/lib/utils";
 import { StateBlock } from "./StateBlock";
 import { OutreachDecisionControls } from "./OutreachDecisionControls";
+import { LanePacketControls } from "./LanePacketControls";
 
 type InspectionDrawerProps = {
   signal: Signal | null;
   onClose: () => void;
+  /** Today explains rank from the scorer; Work (default) explains its priority sort. */
+  ranking?: "today" | "work";
+  onLanePacketChange?: () => void;
   updating?: boolean;
   onStatusChange?: (signal: Signal, status: TaskStatus) => void;
   onPriorityChange?: (signal: Signal, priority: NonNullable<Signal["priority"]>) => void;
@@ -36,6 +41,8 @@ function statusClass(status: Signal["status"]) {
 export function InspectionDrawer({
   signal,
   onClose,
+  ranking = "work",
+  onLanePacketChange,
   updating = false,
   onStatusChange,
   onPriorityChange,
@@ -68,6 +75,9 @@ export function InspectionDrawer({
   const hasSecondaryActions = Boolean(onSnooze || onNotNow || onHandToEve);
   const hasWorkActions = Boolean(onDefer || onArchive);
   const operatingDetails = operatingSystemDetails(signal);
+  // Lane packets close and complete only through typed transitions, never generic status writes.
+  const lanePacket = isLanePacketSignal(signal);
+  const governedDone = lanePacket && signal.doneEvidenceType !== "none";
 
   async function appendFeedback() {
     if (!signal || !feedbackDraft.trim() || !isTask) return;
@@ -158,6 +168,8 @@ export function InspectionDrawer({
             </dl>
           </section>
         )}
+
+        <LanePacketControls signal={signal} onChanged={onLanePacketChange} />
 
         {signal.eveRead && (
           <section className="mt-6 rounded-lg border border-purple-900/40 bg-purple-950/10 p-3">
@@ -261,7 +273,9 @@ export function InspectionDrawer({
               <span className="ml-1 text-[9px] font-normal uppercase text-zinc-600">score</span>
             </span>
           </div>
-          <p className="mt-2 text-xs leading-relaxed text-zinc-300">{rankingExplanation(signal)}</p>
+          <p className="mt-2 text-xs leading-relaxed text-zinc-300">
+            {ranking === "today" ? todayRankingExplanation(signal) : rankingExplanation(signal)}
+          </p>
 
           <div className="mt-3">
             <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-600">Reason codes</p>
@@ -321,6 +335,11 @@ export function InspectionDrawer({
             <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">Actions</p>
             {updating && <span className="text-[10px] uppercase text-blue-300">Saving</span>}
           </div>
+          {lanePacket && (
+            <p className="mt-2 text-[11px] leading-relaxed text-zinc-500">
+              Complete or close this card with the lane packet controls.
+            </p>
+          )}
 
           <div className="mt-4 space-y-4">
             <div>
@@ -328,18 +347,19 @@ export function InspectionDrawer({
               <div className="mt-2 grid grid-cols-3 gap-2">
                 {statusOptions.map((option) => {
                   const active = option.value === currentStatus;
+                  const governed = governedDone && option.value === "done";
                   return (
                     <button
                       key={option.value}
                       type="button"
-                      disabled={!isTask || updating || active}
+                      disabled={!isTask || updating || active || governed}
                       onClick={() => onStatusChange?.(signal, option.value)}
                       className={cn(
                         "h-9 rounded-md border px-2 text-xs font-medium transition-colors",
                         active
                           ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-300"
                           : "border-[#20262d] bg-[#101318] text-zinc-400 hover:border-[#38414a] hover:text-zinc-100",
-                        (!isTask || updating) && "cursor-not-allowed opacity-60",
+                        (!isTask || updating || governed) && "cursor-not-allowed opacity-60",
                       )}
                     >
                       {option.label}
@@ -389,7 +409,7 @@ export function InspectionDrawer({
                 </button>
                 <button
                   type="button"
-                  disabled={!isTask || updating}
+                  disabled={!isTask || updating || lanePacket}
                   onClick={() => onNotNow?.(signal)}
                   className="flex h-10 items-center justify-center gap-1.5 rounded-md border border-zinc-700 bg-zinc-900/80 px-2 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
                   title="Archive this item out of the queue"
@@ -424,7 +444,7 @@ export function InspectionDrawer({
                 </button>
                 <button
                   type="button"
-                  disabled={!isTask || updating}
+                  disabled={!isTask || updating || lanePacket}
                   onClick={() => onArchive?.(signal)}
                   className="flex h-10 items-center justify-center gap-2 rounded-md border border-zinc-700 bg-zinc-900/80 px-3 text-xs font-medium text-zinc-300 transition-colors hover:border-zinc-500 disabled:cursor-not-allowed disabled:opacity-60"
                   title="Archive this task"

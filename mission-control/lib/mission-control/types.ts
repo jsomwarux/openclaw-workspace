@@ -1,5 +1,15 @@
 import type { OutreachDecision } from "./outreach-decision";
 import type { OutreachReviewSnapshot } from "./outreach-review";
+import type {
+  ApprovalState,
+  ArtifactRef,
+  ClosureReason,
+  DoneEvidence,
+  DoneEvidenceType,
+  GrowthLane,
+  OutcomeRef,
+} from "./lane-packet";
+import type { LaneCapacity } from "./lane-capacity";
 
 export type SignalSource = "task" | "cron" | "agent" | "proof";
 export type SignalOwner = "jt" | "eve" | "both";
@@ -106,6 +116,20 @@ export type Signal = {
   evidenceScore?: number;
   distributionScore?: number;
   fatalConstraint?: boolean;
+
+  // Growth OS card envelope v1 — present only on server-admitted lane packets.
+  packetSchema?: "lane-packet-v1";
+  growthLane?: GrowthLane;
+  artifactRef?: ArtifactRef;
+  payloadHash?: string;
+  approvalState?: ApprovalState;
+  approvedPayloadHash?: string;
+  expiresAt?: number;
+  estMinutes?: number;
+  doneEvidenceType?: DoneEvidenceType;
+  doneEvidence?: DoneEvidence;
+  outcomeRef?: OutcomeRef;
+  closureReason?: ClosureReason;
 };
 
 // One additive contribution per factor, before modifiers.
@@ -124,13 +148,18 @@ export type ScoreResult = {
   reasonCodes: string[];
 };
 
+export type Mandate = "consulting-cash" | "none";
+
 export type FocusRow = {
   weekOf: string;
   projects: string[];
   gate: number;
+  gateBasis?: "monthly" | "all-time";
+  /** Which mandate arms the ship cap. Absent on rows written before the field existed. */
+  mandate?: Mandate;
+  /** Minutes of each lane's packets Today may present at once. Absent = no lane caps. */
+  laneCapacity?: LaneCapacity[];
 };
-
-export type Mandate = "consulting-cash" | "none";
 
 export type ScoreContext = {
   focus?: FocusRow | null;

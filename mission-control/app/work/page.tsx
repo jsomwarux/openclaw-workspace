@@ -223,6 +223,10 @@ export default function WorkPage() {
       <InspectionDrawer
         signal={selected}
         onClose={() => setSelected(null)}
+        onLanePacketChange={() => {
+          setSelected(null);
+          void refresh();
+        }}
         updating={selected ? updatingId === selected.id : false}
         onStatusChange={updateStatus}
         onPriorityChange={updatePriority}

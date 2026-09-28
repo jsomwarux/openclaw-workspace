@@ -22,9 +22,10 @@ function signal(overrides: Partial<Signal>): Signal {
 describe("commandBrief", () => {
   test("selects the highest ranked action and counts urgent JT work", () => {
     const brief = commandBrief({
+      // The queue arrives in allocateToday order; the brief reads its head and never re-ranks.
       queue: [
-        signal({ id: "medium", title: "Medium task", priority: "medium", score: 50 }),
         signal({ id: "high", title: "High task", priority: "high", score: 80 }),
+        signal({ id: "medium", title: "Medium task", priority: "medium", score: 50 }),
       ],
       signals: [
         signal({ id: "high-1", priority: "high", owner: "jt", status: "awaiting-decision" }),
