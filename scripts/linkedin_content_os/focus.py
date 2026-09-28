@@ -5,7 +5,6 @@ from __future__ import annotations
 import os
 import re
 import stat
-import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
@@ -16,7 +15,7 @@ from scripts.linkedin_content_os.contracts import parse_timestamp, validate_even
 
 SCHEMA_VERSION = "linkedin-focus-snapshot.v1"
 SOURCE_SCHEMA_VERSION = "linkedin-focus-sources.v1"
-HUMAN_GATE_SCHEMA_VERSION = "linkedin-human-gate-response.v1"
+AUTHORITY_RECEIPT_SCHEMA_VERSION = "linkedin-human-gate-authority-receipt.v1"
 HUMAN_GATE_PACKET_ID = "linkedin-program-0-human-gate"
 HUMAN_GATE_SOURCE_TYPE = "jt_human_gate_response"
 ALLOWED_KINDS = {"consulting", "career", "product"}
@@ -39,26 +38,14 @@ _SNAPSHOT_BASE_FIELDS = {
 _TARGET_FIELDS = {"targetId", "kind", "label", "desiredOutcome", "sourceRefs"}
 _SOURCE_FIELDS = {"path", "sha256"}
 _BINDING_REQUIRED_FIELDS = {
-    "originalProposalSha256", "authorityResponseSha256", "focusDecisionEventSha256",
+    "originalProposalSha256", "authorityReceiptSha256", "focusDecisionEventSha256",
 }
-_HUMAN_GATE_FIELDS = {
-    "schemaVersion", "recoveryRequestSha256", "focusSnapshotSha256",
-    "fixtureGapSha256", "focusDecision", "historyAnswers",
-    "permissionedFixture", "confirmedAt",
+_RECEIPT_REQUIRED_FIELDS = {
+    "schemaVersion", "rawResponseSha256", "recoveryRequestSha256",
+    "fixtureGapSha256", "focusDecisionEventSha256", "ledgerPrefixSha256",
+    "ledgerPosition", "validatedAt", "originalProposalSha256",
+    "focusDecision", "receiptSha256",
 }
-
-
-def _strict_json_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
-    value: dict[str, object] = {}
-    for key, item in pairs:
-        if key in value:
-            raise ValueError("duplicate JSON key {!r}".format(key))
-        value[key] = item
-    return value
-
-
-def _reject_json_constant(value: str) -> None:
-    raise ValueError("non-standard JSON constant {}".format(value))
 
 
 def _utc_now() -> datetime:
@@ -281,59 +268,51 @@ def build_focus_snapshot(
     return snapshot
 
 
-def _validate_human_gate_response(
-    response_value: object, proposed_hash: str
-) -> tuple[dict[str, object], str]:
-    if isinstance(response_value, bytes):
-        try:
-            response_value = json.loads(
-                response_value.decode("utf-8"),
-                object_pairs_hook=_strict_json_object,
-                parse_constant=_reject_json_constant,
-            )
-        except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as error:
-            if isinstance(error, ValueError) and "duplicate JSON key" in str(error):
-                raise
-            raise ValueError("authority response bytes must contain valid UTF-8 JSON") from error
-    if not isinstance(response_value, dict):
-        raise ValueError("authority response must be an object or JSON bytes")
-    frozen_bytes = canonical_bytes(response_value)
-    response = _require_exact_fields(
-        json.loads(frozen_bytes.decode("utf-8")),
-        _HUMAN_GATE_FIELDS,
-        "authority response",
-    )
-    _reject_nulls(response, "authority response")
-    if response["schemaVersion"] != HUMAN_GATE_SCHEMA_VERSION:
-        raise ValueError("unsupported human-gate response schemaVersion")
-    _require_hash(response["recoveryRequestSha256"], "recoveryRequestSha256")
-    if _require_hash(response["focusSnapshotSha256"], "focusSnapshotSha256") != proposed_hash:
-        raise ValueError("human-gate response does not bind the proposed focus snapshot")
-    _require_hash(response["fixtureGapSha256"], "fixtureGapSha256")
-    if not isinstance(response["historyAnswers"], list):
-        raise ValueError("historyAnswers must be a list")
-    if not isinstance(response["permissionedFixture"], dict):
-        raise ValueError("permissionedFixture must be an object")
-    parse_timestamp(response["confirmedAt"], "confirmedAt")
-    decision = response["focusDecision"]
-    if not isinstance(decision, dict):
-        raise ValueError("focusDecision must be an object")
-    if decision.get("decision") == "confirmed":
-        _require_exact_fields(decision, {"decision"}, "focusDecision")
-    elif decision.get("decision") == "corrected":
-        if not isinstance(decision.get("correctedTargets"), list) or not decision.get("correctedTargets"):
-            raise ValueError("corrected decision requires a complete replacement target list")
-        _require_exact_fields(decision, {"decision", "correctedTargets"}, "focusDecision")
-    else:
-        raise ValueError("unsupported focusDecision")
-    return response, sha256_hex(frozen_bytes)
-
-
 def _validate_authority(
-    event_value: object, response_value: object, proposed_hash: str,
+    event_value: object, receipt_value: object, expected_receipt_sha256: object,
+    proposed_hash: str,
     workspace_root: Path, generated_at: str, valid_until: str,
 ) -> tuple[dict[str, object], str, object, Optional[str]]:
-    response, response_hash = _validate_human_gate_response(response_value, proposed_hash)
+    """Verify Task 7B's receipt against an independently supplied trust anchor.
+
+    The expected digest is established by recovery ingestion.  It must not be
+    computed from the event or receipt at this boundary.
+    """
+    if not isinstance(receipt_value, dict):
+        raise ValueError("authority receipt must be an object")
+    expected_anchor = _require_hash(
+        expected_receipt_sha256, "expected authority receipt digest"
+    )
+    expected_fields = set(_RECEIPT_REQUIRED_FIELDS)
+    if "replacementProposalSha256" in receipt_value:
+        expected_fields.add("replacementProposalSha256")
+    receipt = _require_exact_fields(receipt_value, expected_fields, "authority receipt")
+    _reject_nulls(receipt, "authority receipt")
+    if receipt["schemaVersion"] != AUTHORITY_RECEIPT_SCHEMA_VERSION:
+        raise ValueError("unsupported authority receipt schemaVersion")
+    for field in (
+        "rawResponseSha256", "recoveryRequestSha256", "fixtureGapSha256",
+        "focusDecisionEventSha256", "ledgerPrefixSha256",
+        "originalProposalSha256", "receiptSha256",
+    ):
+        _require_hash(receipt[field], field)
+    if "replacementProposalSha256" in receipt:
+        _require_hash(receipt["replacementProposalSha256"], "replacementProposalSha256")
+    position = receipt["ledgerPosition"]
+    if isinstance(position, bool) or not isinstance(position, int) or position < 1:
+        raise ValueError("ledgerPosition must be a positive integer")
+    validated_at = parse_timestamp(receipt["validatedAt"], "validatedAt")
+    receipt_without_hash = {
+        key: value for key, value in receipt.items() if key != "receiptSha256"
+    }
+    computed_receipt_hash = sha256_hex(canonical_bytes(receipt_without_hash))
+    if receipt["receiptSha256"] != computed_receipt_hash:
+        raise ValueError("authority receipt receiptSha256 mismatch")
+    if computed_receipt_hash != expected_anchor:
+        raise ValueError("expected authority receipt digest mismatch")
+    if receipt["originalProposalSha256"] != proposed_hash:
+        raise ValueError("authority receipt does not bind the original proposal")
+
     event = validate_event(event_value)
     if event["eventType"] != "focus_decision":
         raise ValueError("confirmed focus requires a focus_decision event")
@@ -342,8 +321,12 @@ def _validate_authority(
     source: dict[str, object] = event["sourcePointer"]  # type: ignore[assignment]
     if source["sourceType"] != HUMAN_GATE_SOURCE_TYPE:
         raise ValueError("focus decision sourceType is not JT human-gate authority")
-    if source["sourceSha256"] != response_hash or source["sourceId"] != "sha256:" + response_hash:
-        raise ValueError("focus decision source does not match canonical authority response")
+    raw_response_hash = receipt["rawResponseSha256"]
+    if (source["sourceSha256"] != raw_response_hash
+            or source["sourceId"] != "sha256:" + str(raw_response_hash)):
+        raise ValueError("focus decision source does not match authority receipt")
+    if event["eventSha256"] != receipt["focusDecisionEventSha256"]:
+        raise ValueError("focus decision event does not match authority receipt")
     recorded = parse_timestamp(event["recordedAt"], "recordedAt")
     generated = parse_timestamp(generated_at, "generatedAt")
     expires = parse_timestamp(valid_until, "validUntil")
@@ -352,43 +335,59 @@ def _validate_authority(
         raise ValueError("focus decision recordedAt is outside the proposal validity window")
     if recorded > current:
         raise ValueError("focus decision recordedAt is in the future")
-    if parse_timestamp(response["confirmedAt"], "confirmedAt") != recorded:
-        raise ValueError("focus decision recordedAt does not equal authority confirmedAt")
-    decision: dict[str, object] = response["focusDecision"]  # type: ignore[assignment]
+    if validated_at < recorded or validated_at > expires or validated_at > current:
+        raise ValueError("authority receipt validatedAt is outside the trusted time window")
+    decision_value = receipt["focusDecision"]
+    if not isinstance(decision_value, dict):
+        raise ValueError("focusDecision must be an object")
+    decision: dict[str, object] = decision_value
     targets: object = None
     replacement_hash: Optional[str] = None
     expected_payload: dict[str, object] = {
         "decision": decision["decision"], "focusSnapshotSha256": proposed_hash,
     }
-    if decision["decision"] == "corrected":
+    if decision.get("decision") == "confirmed":
+        _require_exact_fields(decision, {"decision"}, "focusDecision")
+        if "replacementProposalSha256" in receipt:
+            raise ValueError("confirmed authority receipt cannot include replacement hash")
+    elif decision.get("decision") == "corrected":
+        _require_exact_fields(decision, {"decision", "correctedTargets"}, "focusDecision")
+        if not isinstance(decision.get("correctedTargets"), list) or not decision["correctedTargets"]:
+            raise ValueError("corrected decision requires a complete replacement target list")
         targets = decision["correctedTargets"]
         replacement = _base_snapshot(
             workspace_root, targets, generated_at, status="proposed"
         )
         replacement_hash = str(replacement["snapshotId"])[len("sha256:"):]
+        if receipt.get("replacementProposalSha256") != replacement_hash:
+            raise ValueError("authority receipt replacement hash mismatch")
         expected_payload["replacementFocusSnapshotSha256"] = replacement_hash
+    else:
+        raise ValueError("unsupported focusDecision")
     if event["payload"] != expected_payload:
-        raise ValueError("focus decision payload does not equal authority response decision")
-    return event, response_hash, targets, replacement_hash
+        raise ValueError("focus decision payload does not equal authority receipt decision")
+    return event, computed_receipt_hash, targets, replacement_hash
 
 
 def apply_focus_decision(
     proposed_snapshot: dict[str, object], focus_decision: dict[str, object],
-    workspace_root: Path, *, authority_response: object,
+    workspace_root: Path, *, authority_receipt: object,
+    expected_authority_receipt_sha256: object,
 ) -> dict[str, object]:
-    """Derive confirmed focus only from an exact immutable JT human-gate response."""
+    """Derive confirmed focus only from Task 7B's independently anchored receipt."""
     proposed = _validate_focus_snapshot(proposed_snapshot, Path(workspace_root), allow_stale=False)
     if proposed["status"] != "proposed":
         raise ValueError("focus decision must bind a proposed snapshot")
     proposed_hash = str(proposed["snapshotId"])[len("sha256:"):]
-    event, response_hash, corrected_targets, replacement_hash = _validate_authority(
-        focus_decision, authority_response, proposed_hash, Path(workspace_root),
+    event, receipt_hash, corrected_targets, replacement_hash = _validate_authority(
+        focus_decision, authority_receipt, expected_authority_receipt_sha256,
+        proposed_hash, Path(workspace_root),
         str(proposed["generatedAt"]), str(proposed["validUntil"]),
     )
     targets = proposed["targets"] if corrected_targets is None else corrected_targets
     binding: dict[str, object] = {
         "originalProposalSha256": proposed_hash,
-        "authorityResponseSha256": response_hash,
+        "authorityReceiptSha256": receipt_hash,
         "focusDecisionEventSha256": event["eventSha256"],
     }
     if replacement_hash is not None:
@@ -414,7 +413,9 @@ def _validate_binding(binding_value: object) -> dict[str, object]:
 def _validate_focus_snapshot(
     snapshot_value: object, workspace_root: Path, *, allow_stale: bool,
     focus_decision: Optional[dict[str, object]] = None,
-    authority_response: object = None,
+    authority_receipt: object = None,
+    expected_authority_receipt_sha256: object = None,
+    original_proposed_snapshot: object = None,
 ) -> dict[str, object]:
     if not isinstance(snapshot_value, dict):
         raise ValueError("focus snapshot must be an object")
@@ -441,16 +442,26 @@ def _validate_focus_snapshot(
     if not allow_stale and current > valid_until:
         raise ValueError("focus snapshot is stale")
     if status == "confirmed":
-        if focus_decision is None or authority_response is None:
+        if (focus_decision is None or authority_receipt is None
+                or expected_authority_receipt_sha256 is None
+                or original_proposed_snapshot is None):
             raise ValueError("confirmed focus requires immutable decision authority")
         binding = _validate_binding(snapshot["decisionBinding"])
-        original_hash = str(binding["originalProposalSha256"])
-        event, response_hash, corrected_targets, replacement_hash = _validate_authority(
-            focus_decision, authority_response, original_hash, Path(workspace_root),
+        original = _validate_focus_snapshot(
+            original_proposed_snapshot, Path(workspace_root), allow_stale=allow_stale
+        )
+        if original["status"] != "proposed":
+            raise ValueError("original proposed snapshot artifact must be proposed")
+        original_hash = str(original["snapshotId"])[len("sha256:"):]
+        if binding["originalProposalSha256"] != original_hash:
+            raise ValueError("decisionBinding does not match original proposed snapshot")
+        event, receipt_hash, corrected_targets, replacement_hash = _validate_authority(
+            focus_decision, authority_receipt, expected_authority_receipt_sha256,
+            original_hash, Path(workspace_root),
             str(snapshot["generatedAt"]), str(snapshot["validUntil"]),
         )
-        if binding["authorityResponseSha256"] != response_hash:
-            raise ValueError("decisionBinding authority response hash mismatch")
+        if binding["authorityReceiptSha256"] != receipt_hash:
+            raise ValueError("decisionBinding authority receipt hash mismatch")
         if binding["focusDecisionEventSha256"] != event["eventSha256"]:
             raise ValueError("decisionBinding event hash mismatch")
         corrected = corrected_targets is not None
@@ -464,12 +475,8 @@ def _validate_focus_snapshot(
         else:
             if "replacementProposalSha256" in binding:
                 raise ValueError("confirmed decisionBinding cannot include replacement hash")
-            target_proposal = _base_snapshot(
-                Path(workspace_root), snapshot["targets"],
-                str(snapshot["generatedAt"]), status="proposed",
-            )
-            if original_hash != str(target_proposal["snapshotId"])[len("sha256:"):]:
-                raise ValueError("decisionBinding original proposal hash mismatch")
+            if canonical_bytes(snapshot["targets"]) != canonical_bytes(original["targets"]):
+                raise ValueError("confirmed snapshot does not equal original proposed targets")
     without_id = {key: value for key, value in snapshot.items() if key != "snapshotId"}
     expected_id = _snapshot_id(without_id)
     provided = snapshot["snapshotId"]
@@ -483,24 +490,32 @@ def _validate_focus_snapshot(
 def validate_focus_snapshot(
     snapshot_value: object, workspace_root: Path, *,
     focus_decision: Optional[dict[str, object]] = None,
-    authority_response: object = None,
+    authority_receipt: object = None,
+    expected_authority_receipt_sha256: object = None,
+    original_proposed_snapshot: object = None,
 ) -> dict[str, object]:
     """Validate owner hashes, current freshness, and immutable JT authority."""
     return _validate_focus_snapshot(
         snapshot_value, Path(workspace_root), allow_stale=False,
-        focus_decision=focus_decision, authority_response=authority_response,
+        focus_decision=focus_decision, authority_receipt=authority_receipt,
+        expected_authority_receipt_sha256=expected_authority_receipt_sha256,
+        original_proposed_snapshot=original_proposed_snapshot,
     )
 
 
 def renewal_need(
     snapshot: dict[str, object], workspace_root: Path, *,
     focus_decision: Optional[dict[str, object]] = None,
-    authority_response: object = None,
+    authority_receipt: object = None,
+    expected_authority_receipt_sha256: object = None,
+    original_proposed_snapshot: object = None,
 ) -> Optional[dict[str, object]]:
     """Validate fully, then return one stable renewal need for a stale snapshot."""
     validated = _validate_focus_snapshot(
         snapshot, Path(workspace_root), allow_stale=True,
-        focus_decision=focus_decision, authority_response=authority_response,
+        focus_decision=focus_decision, authority_receipt=authority_receipt,
+        expected_authority_receipt_sha256=expected_authority_receipt_sha256,
+        original_proposed_snapshot=original_proposed_snapshot,
     )
     current = _utc_now()
     valid_until = parse_timestamp(validated["validUntil"], "validUntil")
@@ -517,7 +532,7 @@ def renewal_need(
 
 __all__ = [
     "ALLOWED_KINDS", "ALLOWED_OWNER_PATHS", "ALLOWED_STATUSES",
-    "HUMAN_GATE_PACKET_ID", "HUMAN_GATE_SCHEMA_VERSION",
+    "AUTHORITY_RECEIPT_SCHEMA_VERSION", "HUMAN_GATE_PACKET_ID",
     "HUMAN_GATE_SOURCE_TYPE", "SCHEMA_VERSION", "apply_focus_decision",
     "build_focus_snapshot", "renewal_need", "validate_focus_snapshot",
 ]
