@@ -1,0 +1,96 @@
+{
+  "altText": "A four-stage AI access-control chain: identity, data access, action scope, and human approval.",
+  "claims": [
+    {
+      "attributionType": "public_fact",
+      "claimId": "openai-external-controls-date",
+      "excerptIndex": 0,
+      "sourceId": "openai-enterprise-release-notes",
+      "text": "OpenAI published the external-access controls update on September 24, 2026."
+    },
+    {
+      "attributionType": "public_fact",
+      "claimId": "openai-separate-controls",
+      "excerptIndex": 1,
+      "sourceId": "openai-enterprise-release-notes",
+      "text": "Global admins can separately manage whether ChatGPT Sites use members' connected apps and whether applications access ChatGPT Ads."
+    },
+    {
+      "attributionType": "public_fact",
+      "claimId": "openai-identity-separation",
+      "excerptIndex": 1,
+      "sourceId": "openai-enterprise-release-notes",
+      "text": "Identity-only sign-in remains separate from data access."
+    },
+    {
+      "attributionType": "public_fact",
+      "claimId": "openai-default-off",
+      "excerptIndex": 2,
+      "sourceId": "openai-enterprise-release-notes",
+      "text": "Both new permissions are off by default during the admin preview."
+    }
+  ],
+  "commercialObjective": "Show enterprise AI leaders a concrete deployment-control model rather than repeat product news.",
+  "createdAt": "2026-09-28T20:00:00-04:00",
+  "earnedAngle": {
+    "excerpt": "Immutable review snapshots separate evidence from authority: Store exactly what the human saw, bind the decision to the draft and snapshot hashes, cap review cycles server-side, and keep admission and decision capabilities separate. A verifier finding can inform the human, but it must never become send authorization.",
+    "fileSha256": "242c805080534fa005c325f395488e67d022a473d9ea37702e0c09df38bd5e63",
+    "kind": "jt_field_lesson",
+    "path": "memory/content/technical-angles.md"
+  },
+  "expiresAt": "2026-09-29T23:59:59-04:00",
+  "lane": "ai_news",
+  "packetId": "linkedin-ai-news-openai-external-access-2026-09-28-v1",
+  "packetVersion": 1,
+  "postText": "An enterprise buyer reviewing an AI workflow should see four separate controls before it touches company data.\n\nOpenAI's September 24 Enterprise release notes give a concrete example. Global admins can separately control whether ChatGPT Sites use connected apps and whether applications access ChatGPT Ads.\n\nOpenAI also separates identity-only sign-in from data access. Workspace and individual app settings remain in the authorization chain, and both new permissions start off by default during preview.\n\nThe operating model should make four decisions visible:\n\n• who can sign in\n• which source can be read\n• which action can run\n• when a human must approve it\n\nIf one person cannot point to the data source, action scope, and human approval step, the access model is not ready for production.",
+  "privacyResult": {
+    "details": "The packet uses official public release notes, one public-safe JT field lesson, and original text-only graphics. It contains no private workspace data.",
+    "status": "pass"
+  },
+  "qa": {
+    "evidence": "pass",
+    "originality": "pass",
+    "privacy": "pass",
+    "rights": "pass",
+    "strategicFit": "pass",
+    "voice": "pending_human_rating"
+  },
+  "revisionFamilyId": "linkedin-ai-news-openai-external-access-2026-09-28",
+  "rightsResult": {
+    "details": "The image is an original text-first source card with no logo, screenshot, source crop, or proprietary artwork. The official source is named and linked in packet metadata.",
+    "status": "pass"
+  },
+  "schemaVersion": "manual-linkedin-fixture-source.v1",
+  "sources": [
+    {
+      "excerpts": [
+        "September 24, 2026 — External access controls",
+        "Global admins in ChatGPT Enterprise organizations can now manage whether ChatGPT Sites can use members’ connected apps and whether applications can access ChatGPT Ads. These controls are on the redesigned External access page in the OpenAI Admin Console. Identity-only sign-in remains separate from data access.",
+        "Both new permissions are off by default during the admin preview. Members must still authorize access using their own permissions. Sites access also depends on workspace and individual app settings."
+      ],
+      "publishedAt": "2026-09-24T00:00:00-04:00",
+      "publisher": "OpenAI",
+      "retrievedAt": "2026-09-28T20:00:00-04:00",
+      "sourceId": "openai-enterprise-release-notes",
+      "sourceType": "official_release",
+      "title": "ChatGPT Enterprise and Edu release notes — External access controls",
+      "uri": "https://help.openai.com/en/articles/10128477-chatgpt-enterprise-and-edu-release-notes"
+    }
+  ],
+  "targetReader": "Enterprise AI operations and governance leaders",
+  "visual": {
+    "eyebrow": "AI OPERATING CONTROL",
+    "footer": "Source: OpenAI Enterprise release notes",
+    "stages": [
+      "Identity",
+      "Data access",
+      "Action scope",
+      "Human approval"
+    ],
+    "subtitle": "OpenAI Enterprise release notes · Sep 24, 2026",
+    "template": "ai-news-source-card.v1",
+    "title": "Access is a chain, not a switch"
+  },
+  "whyThisWon": "The fresh release maps directly to enterprise deployment controls and supports a differentiated operator lesson about separating identity, data, action, and approval.",
+  "cropGuidance": "Publish the full 4:5 image. Keep the complete frame; all informational text is inside the 72-pixel safe area."
+}

@@ -1,0 +1,99 @@
+{
+  "altText": "A five-stage proposed property-finance workflow: money moves, context is validated, a human approves exceptions, the ledger is updated, and every exception has an owner.",
+  "claims": [
+    {
+      "attributionType": "vendor_assertion",
+      "claimId": "appfolio-separate-bank-system",
+      "excerptIndex": 3,
+      "sourceId": "appfolio-column-release",
+      "text": "AppFolio says property managers run their business in one system while the money sits in another."
+    },
+    {
+      "attributionType": "public_fact",
+      "claimId": "appfolio-column-partnership-date",
+      "excerptIndex": 0,
+      "sourceId": "appfolio-column-release",
+      "text": "AppFolio announced the Column partnership on September 24, 2026."
+    },
+    {
+      "attributionType": "vendor_assertion",
+      "claimId": "appfolio-disconnected-systems",
+      "excerptIndex": 1,
+      "sourceId": "appfolio-column-release",
+      "text": "AppFolio says disconnected property-management and banking systems leave finance teams bridging the gap with manual reconciliation and fragmented payment workflows."
+    },
+    {
+      "attributionType": "vendor_assertion",
+      "claimId": "appfolio-column-operating-foundation",
+      "excerptIndex": 2,
+      "sourceId": "appfolio-column-release",
+      "text": "The companies say they are combining AppFolio real-estate data, accounting intelligence, and AI workflows with Column bank-core, ledger, and payments technology."
+    }
+  ],
+  "commercialObjective": "Demonstrate an exception-first property-operations workflow that a finance or operations leader can evaluate.",
+  "createdAt": "2026-09-28T20:00:00-04:00",
+  "earnedAngle": {
+    "excerpt": "Source-of-truth drift before automation: Local SEO citation drift and broken AI workflows have the same root failure: the business represents one fact five different ways. Before building an agent around rent delinquency, maintenance, or owner approvals, map the winning source of truth, the public/internal mismatch, the approval owner, and the exception path. Otherwise the model is not automating a process; it is choosing which inconsistent record to believe.",
+    "fileSha256": "242c805080534fa005c325f395488e67d022a473d9ea37702e0c09df38bd5e63",
+    "kind": "jt_field_lesson",
+    "path": "memory/content/technical-angles.md"
+  },
+  "expiresAt": "2026-10-08T00:00:00-04:00",
+  "lane": "teardown",
+  "packetId": "linkedin-teardown-appfolio-column-2026-09-28-v1",
+  "packetVersion": 1,
+  "postText": "A property manager can close the books in one system while the money still sits in another.\n\nAppFolio's September 24 announcement says disconnected property-management and banking systems leave finance teams with manual reconciliation and fragmented payments. Its new Column partnership brings property data and accounting workflows together with bank-core, ledger, and payments infrastructure.\n\nBased only on that public information, the operating layer I would build is exception-first:\n\n1. Bind each movement to a property, owner, and account.\n2. Check approval and ledger context before it posts.\n3. Route mismatches to a named human with the source attached.\n4. Write the approved result back to the property record.\n\nIf a mismatch has no owner before money moves, the systems are still disconnected where the risk lives.",
+  "privacyResult": {
+    "details": "The packet uses one public company announcement and an original schematic; it contains no private company, client, prospect, or employee data.",
+    "status": "pass"
+  },
+  "qa": {
+    "evidence": "pass",
+    "originality": "pass",
+    "privacy": "pass",
+    "rights": "pass",
+    "strategicFit": "pass",
+    "voice": "pending_human_rating"
+  },
+  "revisionFamilyId": "linkedin-teardown-appfolio-column-2026-09-28",
+  "rightsResult": {
+    "details": "The image is an original diagram with no logos, screenshots, source crops, or proprietary artwork. The packet links the official source in metadata.",
+    "status": "pass"
+  },
+  "schemaVersion": "manual-linkedin-fixture-source.v1",
+  "sources": [
+    {
+      "excerpts": [
+        "September 24, 2026 — AppFolio and Column Announce Strategic Partnership to Transform Financial Operations for Real Estate",
+        "Yet property management and banking systems have remained disconnected, leaving finance teams to bridge the gap through manual reconciliation and fragmented payment workflows.",
+        "By bringing AppFolio’s trusted real estate data, accounting intelligence, and AI-powered workflows together with Column’s advanced bank core, ledger, and payments technology, the companies are laying the foundation for intelligent financial operations."
+        ,
+        "Property managers run their business in one system while their money sits in another, and every gap between the two gets closed by someone on a finance team, by hand, after the fact."
+      ],
+      "publishedAt": "2026-09-24T00:00:00-04:00",
+      "publisher": "AppFolio",
+      "retrievedAt": "2026-09-28T20:00:00-04:00",
+      "sourceId": "appfolio-column-release",
+      "sourceType": "official_release",
+      "title": "AppFolio and Column Announce Strategic Partnership to Transform Financial Operations for Real Estate",
+      "uri": "https://www.appfolio.com/newsroom/appfolio-and-column-announce-strategic-partnership-to-transform-financial-operations-for-real-estate?_storyblok_published=223315323218534"
+    }
+  ],
+  "targetReader": "Property-management finance and operations leaders",
+  "visual": {
+    "eyebrow": "PUBLIC-EVIDENCE TEARDOWN",
+    "footer": "Proposed system based on public information",
+    "stages": [
+      "Money moves",
+      "Validate context",
+      "Human approval",
+      "Ledger record",
+      "Exception owned"
+    ],
+    "subtitle": "A proposed exception-first property-finance path",
+    "template": "teardown-schematic.v1",
+    "title": "Connect the bank event to the property record"
+  },
+  "whyThisWon": "The fresh AppFolio–Column announcement exposes a named property-finance bottleneck and supports a useful public-evidence workflow hypothesis.",
+  "cropGuidance": "Publish the full 4:5 image. Keep the complete frame; all informational text is inside the 72-pixel safe area."
+}
