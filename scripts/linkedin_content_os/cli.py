@@ -68,6 +68,7 @@ COMMANDS = (
     "capture-boundaries",
     "audit-history",
     "ingest-human-gate",
+    "ingest-history-correction",
     "build-focus",
     "build-corpus",
     "build-fixtures",
@@ -987,21 +988,180 @@ def _verifier_relative(target: Path, root: Path) -> str:
         raise ValueError("artifact path must stay under workspace root") from error
 
 
+_SUPPLEMENT_ARGUMENTS = (
+    "supplement",
+    "supplement_run_context",
+    "supplement_authority_run_context",
+    "supplement_manifest",
+    "supplement_before",
+    "supplement_after",
+)
+_AUTHORITY_EVENT_TYPES = {"historical_status", "correction", "corpus_authority_receipt"}
+_GOVERNED_BOUNDARY_KEYS = (
+    "missionControl", "cronDefinitionSha256", "launchAgents",
+    "protectedInputs", "primaryCheckoutFingerprint",
+)
+
+
+def _verify_supplement(
+    args: argparse.Namespace,
+    *,
+    snapshots: "_VerifierSnapshots",
+    root: Path,
+    artifact_root: Path,
+    base_context: Dict[str, object],
+    events: List[Dict[str, object]],
+) -> Dict[str, object]:
+    """Re-derive one supplemental human-gate authority and prove its equal boundary pair."""
+
+    from scripts.linkedin_content_os.recovery import (
+        _supplement_block_positions,
+        _validate_supplement_document,
+        derive_history_supplement,
+    )
+
+    supplement_path = Path(args.supplement)
+    supplement_value = snapshots.json(supplement_path)
+    document = _validate_supplement_document(supplement_value)
+    supplement_context = _validate_run_context(
+        snapshots.json(Path(args.supplement_run_context))
+    )
+    supplement_authority_path = Path(args.supplement_authority_run_context)
+    supplement_authority = _validate_run_context(
+        snapshots.json(supplement_authority_path), authority=True
+    )
+    if supplement_authority["generatedAt"] != supplement_context["generatedAt"]:
+        raise ValueError("supplement authority context is not bound to the supplement run context")
+    response_path = artifact_root / "human-gate-response.v1.json"
+    request_path = artifact_root / "historical-recovery-request.phase-1.v1.json"
+    owned = _supplement_block_positions(events, str(document["supplementId"]))
+    if not owned:
+        raise ValueError("supplement block is missing from the canonical ledger")
+    first = owned[0]
+    derived = derive_history_supplement(
+        supplement=supplement_value,
+        supplement_sha256=snapshots.sha256(supplement_path),
+        base_response=snapshots.json(response_path),
+        base_response_sha256=snapshots.sha256(response_path),
+        base_manifest=snapshots.json(Path(args.corpus_authority_manifest)),
+        base_authority_context=base_context,
+        request=snapshots.json(request_path),
+        prior_events=events[:first],
+        run_context=supplement_context,
+    )
+    block = list(derived["events"])  # type: ignore[arg-type]
+    if (
+        owned != list(range(first, first + len(block)))
+        or canonical_bytes(events[first:first + len(block)]) != canonical_bytes(block)
+    ):
+        raise ValueError("supplement ledger block does not match its governed derivation")
+    if any(
+        event["eventType"] in _AUTHORITY_EVENT_TYPES
+        for event in events[first + len(block):]
+    ):
+        raise ValueError("ledger carries authority beyond the verified supplement")
+    manifest_path = Path(args.supplement_manifest)
+    if snapshots.bytes(manifest_path) != canonical_bytes(derived["corpusAuthorityManifest"]):
+        raise ValueError("supplement manifest does not match its governed derivation")
+    if snapshots.bytes(supplement_authority_path) != canonical_bytes(derived["authorityRunContext"]):
+        raise ValueError("supplement authority context does not match its governed derivation")
+    boundary_paths = (Path(args.supplement_before), Path(args.supplement_after))
+    before, after = (validate_boundary_artifact(snapshots.json(path)) for path in boundary_paths)
+    if [before["phase"], after["phase"]] != ["supplement-before", "supplement-after"]:
+        raise ValueError("supplement boundary artifacts are not in the required phase order")
+    for artifact in (before, after):
+        if (
+            artifact["runId"] != supplement_context["runId"]
+            or artifact["generatedAt"] != supplement_context["generatedAt"]
+        ):
+            raise ValueError("boundary pair is bound to the wrong phase context")
+    for key in _GOVERNED_BOUNDARY_KEYS:
+        if before.get(key) != after.get(key):
+            raise ValueError("boundary changed for {}".format(key))
+    equality_row = {
+        "beforePath": _verifier_relative(snapshots.resolved(boundary_paths[0]), root),
+        "afterPath": _verifier_relative(snapshots.resolved(boundary_paths[1]), root),
+        "beforeFileSha256": snapshots.sha256(boundary_paths[0]),
+        "afterFileSha256": snapshots.sha256(boundary_paths[1]),
+        "beforeSha256": before["boundarySha256"],
+        "afterSha256": after["boundarySha256"],
+        "governedKeys": list(_GOVERNED_BOUNDARY_KEYS),
+        "governedValuesEqual": True,
+        "runId": supplement_context["runId"],
+        "generatedAt": supplement_context["generatedAt"],
+    }
+    return {
+        "context": supplement_authority,
+        "contextPath": supplement_authority_path,
+        "manifestPath": manifest_path,
+        "requestPath": request_path,
+        "equalityRow": equality_row,
+        "report": {
+            "supplementPath": _verifier_relative(snapshots.resolved(supplement_path), root),
+            "supplementId": derived["supplementId"],
+            "supplementSha256": derived["supplementSha256"],
+            "runContextSha256": snapshots.sha256(Path(args.supplement_run_context)),
+            "authorityContextDigest": snapshots.sha256(supplement_authority_path),
+            "manifestPath": _verifier_relative(snapshots.resolved(manifest_path), root),
+            "manifestSha256": derived["corpusAuthorityManifest"]["manifestSha256"],  # type: ignore[index]
+            "runId": derived["runId"],
+            "priorEventCount": derived["priorEventCount"],
+            "blockEventCount": len(block),
+            "corrections": derived["corrections"],
+        },
+    }
+
+
 def _verify(args: argparse.Namespace) -> Dict[str, object]:
     snapshots = _VerifierSnapshots()
-    context_path = Path(args.run_context)
-    context = _validate_run_context(
-        snapshots.json(context_path), authority=True
+    base_context_path = Path(args.run_context)
+    base_context = _validate_run_context(
+        snapshots.json(base_context_path), authority=True
     )
     root = Path(args.workspace_root).resolve()
     artifact_root = root / "memory/content/linkedin-content-os"
     audit = snapshots.json(artifact_root / "historical-audit.v1.json")
-    manifest = snapshots.json(Path(args.corpus_authority_manifest))
-    expected = str(context["corpusAuthorityManifestSha256"])
     source_sha = _require_hash(audit.get("sourceSha256"), "audit.sourceSha256")
     audit_generated_at = str(audit.get("generatedAt"))
+    base_manifest_value = validate_corpus_authority_manifest(
+        snapshots.json(Path(args.corpus_authority_manifest)),
+        expected_run_id=corpus_run_id(source_sha, str(base_context["generatedAt"])),
+        generated_at=str(base_context["generatedAt"]),
+        expected_manifest_sha256=str(base_context["corpusAuthorityManifestSha256"]),
+    )
+    events = validate_events(snapshots.jsonl(artifact_root / "outcomes.v1.jsonl"))
+    supplied = [getattr(args, name, None) is not None for name in _SUPPLEMENT_ARGUMENTS]
+    if any(supplied) and not all(supplied):
+        raise ValueError("supplement arguments must be supplied all together")
+    supplement: Optional[Dict[str, object]] = None
+    if all(supplied):
+        supplement = _verify_supplement(
+            args,
+            snapshots=snapshots,
+            root=root,
+            artifact_root=artifact_root,
+            base_context=base_context,
+            events=events,
+        )
+        context = supplement["context"]
+        assert isinstance(context, dict)
+        context_path = Path(str(supplement["contextPath"]))
+        effective_manifest_path = Path(str(supplement["manifestPath"]))
+    else:
+        base_position = int(base_manifest_value["ledgerPosition"])
+        if any(event["eventType"] in _AUTHORITY_EVENT_TYPES for event in events[base_position:]):
+            raise ValueError(
+                "ledger carries supplemental human-gate authority; "
+                "supplement verification arguments are required"
+            )
+        context = base_context
+        context_path = base_context_path
+        effective_manifest_path = Path(args.corpus_authority_manifest)
+    if audit_generated_at != context["generatedAt"]:
+        raise ValueError("historical audit is not bound to the effective authority context")
+    expected = str(context["corpusAuthorityManifestSha256"])
     canonical_manifest_value = validate_corpus_authority_manifest(
-        manifest,
+        snapshots.json(effective_manifest_path),
         expected_run_id=corpus_run_id(source_sha, audit_generated_at),
         generated_at=audit_generated_at,
         expected_manifest_sha256=expected,
@@ -1040,7 +1200,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         item["role"]: item for item in receipts[1]["receipt"]["inputs"]
     }
     manifest_binding = phase2_audit_inputs["authority_manifest"]
-    manifest_path = snapshots.resolved(Path(args.corpus_authority_manifest))
+    manifest_path = snapshots.resolved(effective_manifest_path)
     if (
         snapshots.resolved(root / str(manifest_binding["path"])) != manifest_path
         or manifest_binding["sha256"] != snapshots.sha256(manifest_path)
@@ -1048,10 +1208,10 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         raise ValueError("phase-2 audit receipt is not bound to the supplied authority manifest")
     expected_phase2_paths = (
         {
-            "authority_manifest": Path(args.corpus_authority_manifest),
+            "authority_manifest": effective_manifest_path,
             "outcomes": artifact_root / "outcomes.v1.jsonl",
             "posted_log": root / "memory/content/posted-log.jsonl",
-            "run_context": Path(args.run_context),
+            "run_context": context_path,
         },
         {
             "historical_audit": artifact_root / "historical-audit.v1.json",
@@ -1060,7 +1220,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         {
             "audit": artifact_root / "historical-audit.v1.json",
             "outcomes": artifact_root / "outcomes.v1.jsonl",
-            "run_context": Path(args.run_context),
+            "run_context": context_path,
         },
         {
             "contrastive_pairs": artifact_root / "contrastive-pairs.v0.jsonl",
@@ -1124,18 +1284,15 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         raise ValueError("boundary artifacts are not in the required phase order")
     phase2_base_unsigned = {
         "schemaVersion": RUN_CONTEXT_SCHEMA,
-        "generatedAt": context["generatedAt"],
+        "generatedAt": base_context["generatedAt"],
     }
     phase2_base_run_id = "sha256:" + sha256_hex(canonical_bytes(phase2_base_unsigned))
     expected_boundary_contexts = (
         (str(phase1_context["runId"]), str(phase1_context["generatedAt"])),
-        (phase2_base_run_id, str(context["generatedAt"])),
+        (phase2_base_run_id, str(base_context["generatedAt"])),
     )
     equality_rows: List[Dict[str, object]] = []
-    governed_keys = (
-        "missionControl", "cronDefinitionSha256", "launchAgents",
-        "protectedInputs", "primaryCheckoutFingerprint",
-    )
+    governed_keys = _GOVERNED_BOUNDARY_KEYS
     for pair_index, (before, after) in enumerate(
         ((boundaries[0], boundaries[1]), (boundaries[2], boundaries[3]))
     ):
@@ -1168,6 +1325,8 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             "runId": expected_run_id,
             "generatedAt": expected_generated_at,
         })
+    if supplement is not None:
+        equality_rows.append(dict(supplement["equalityRow"]))  # type: ignore[arg-type]
     focus = snapshots.json(artifact_root / "focus-snapshot.v1.json")
     fixture_path = artifact_root / "evaluation-fixtures.v0.jsonl"
     fixture_bytes = snapshots.bytes(fixture_path)
@@ -1175,7 +1334,6 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     gold = snapshots.jsonl(artifact_root / "voice-gold.v0.jsonl")
     pairs = snapshots.jsonl(artifact_root / "contrastive-pairs.v0.jsonl")
     checkin = snapshots.json(artifact_root / "checkin.preview.v1.json")
-    events = validate_events(snapshots.jsonl(artifact_root / "outcomes.v1.jsonl"))
     from scripts.linkedin_content_os.recovery import (
         derive_authorized_fixture_rows,
         validate_human_gate_history_authority,
@@ -1194,11 +1352,11 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     permission_receipt = permission_authority["authorityReceipt"]
     assert isinstance(permission_receipt, dict)
     if (
-        canonical_manifest_value["humanGateAuthorityReceiptSha256"]
+        base_manifest_value["humanGateAuthorityReceiptSha256"]
             != permission_authority["responseSha256"]
-        or canonical_manifest_value["ledgerPrefixSha256"]
+        or base_manifest_value["ledgerPrefixSha256"]
             != permission_receipt["ledgerPrefixSha256"]
-        or canonical_manifest_value["ledgerPosition"]
+        or base_manifest_value["ledgerPosition"]
             != permission_receipt["ledgerPosition"]
     ):
         raise ValueError("authority manifest does not bind the accepted permission response")
@@ -1207,13 +1365,17 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     phase1_recovery_request = phase1_audit.get("recoveryRequest")
     if not isinstance(phase1_recovery_request, dict):
         raise ValueError("phase-1 audit lacks the original bounded recovery request")
+    if supplement is not None and snapshots.bytes(
+        Path(str(supplement["requestPath"]))
+    ) != canonical_bytes(phase1_recovery_request):
+        raise ValueError("supplement recovery request is not the phase-1 bounded request")
     history_authority = validate_human_gate_history_authority(
         response_value,
         response_bytes,
         phase1_recovery_request,
         events,
         permission_receipt,
-        run_id=str(canonical_manifest_value["runId"]),
+        run_id=str(base_manifest_value["runId"]),
     )
     expected_fixture_rows = derive_authorized_fixture_rows(
         permission_response, root
@@ -1233,7 +1395,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         raise ValueError("contrastive-pair artifact does not match canonical derivation")
     snapshot = snapshots.json(artifact_root / "mission-control.snapshot.v1.json")
     derived_checkin = project_checkin(
-        snapshot, events, parse_timestamp(context["generatedAt"], "generatedAt")
+        snapshot, events, parse_timestamp(base_context["generatedAt"], "generatedAt")
     )
     expected_checkin: Dict[str, object] = (
         derived_checkin
@@ -1310,6 +1472,13 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         "liveOrExternalActionOccurred": not governed_boundaries_equal,
         "verdict": "program-0-local-proof-ready-for-independent-verification",
     }
+    if supplement is not None:
+        report["baseAuthority"] = {
+            "authorityContextDigest": snapshots.sha256(base_context_path),
+            "manifestSha256": base_manifest_value["manifestSha256"],
+            "ledgerPosition": base_manifest_value["ledgerPosition"],
+        }
+        report["supplementalAuthority"] = supplement["report"]
     report_path = Path(args.report)
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(
@@ -1355,6 +1524,15 @@ def _parser() -> argparse.ArgumentParser:
         ingest.add_argument("--" + name, required=True)
     ingest.add_argument("--focus-authority-receipt-output")
     ingest.add_argument("--focus-authority-anchor-output")
+
+    correction = subparsers.add_parser("ingest-history-correction")
+    for name in (
+        "supplement", "base-response", "base-manifest", "base-authority-run-context",
+        "recovery-request", "outcomes", "run-context",
+        "corpus-authority-manifest-output", "authority-run-context-output",
+    ):
+        correction.add_argument("--" + name, required=True)
+    correction.add_argument("--workspace-root", default=".")
 
     focus = subparsers.add_parser("build-focus")
     focus.add_argument("--workspace-root", required=True)
@@ -1413,6 +1591,8 @@ def _parser() -> argparse.ArgumentParser:
     verify.add_argument("--phase-2-before", required=True)
     verify.add_argument("--phase-2-after", required=True)
     verify.add_argument("--report", required=True)
+    for name in _SUPPLEMENT_ARGUMENTS:
+        verify.add_argument("--" + name.replace("_", "-"))
     return parser
 
 
@@ -1434,6 +1614,10 @@ def _task7b_handler(name: str, args: argparse.Namespace) -> Dict[str, object]:
 
 def _ingest_human_gate(args: argparse.Namespace) -> Dict[str, object]:
     return _task7b_handler("ingest_human_gate_files", args)
+
+
+def _ingest_history_correction(args: argparse.Namespace) -> Dict[str, object]:
+    return _task7b_handler("ingest_history_supplement_files", args)
 
 
 def _present_paths(args: argparse.Namespace, names: Sequence[str]) -> List[Path]:
@@ -1494,6 +1678,13 @@ def _validate_command_paths(args: argparse.Namespace) -> None:
                 "focus_authority_receipt_output", "focus_authority_anchor_output",
             ), (),
         ),
+        "ingest-history-correction": (
+            (
+                "supplement", "base_response", "base_manifest",
+                "base_authority_run_context", "recovery_request", "outcomes", "run_context",
+            ),
+            ("corpus_authority_manifest_output", "authority_run_context_output"), (),
+        ),
         "build-focus": (
             (
                 "run_context", "outcomes", "focus_authority_receipt",
@@ -1518,7 +1709,7 @@ def _validate_command_paths(args: argparse.Namespace) -> None:
                 "run_context", "corpus_authority_manifest", "phase_1_corpus_receipt",
                 "phase_2_audit_receipt", "phase_2_corpus_receipt", "phase_1_before",
                 "phase_1_after", "phase_2_before", "phase_2_after",
-            ),
+            ) + _SUPPLEMENT_ARGUMENTS,
             ("report",), (),
         ),
     }
@@ -1543,6 +1734,7 @@ def main(argv: Optional[Sequence[str]] = None) -> Dict[str, object]:
         "capture-boundaries": _capture_boundaries,
         "audit-history": _audit_history,
         "ingest-human-gate": _ingest_human_gate,
+        "ingest-history-correction": _ingest_history_correction,
         "build-focus": _build_focus,
         "build-corpus": _build_corpus,
         "build-fixtures": _build_fixtures,

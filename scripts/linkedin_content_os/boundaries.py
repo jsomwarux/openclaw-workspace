@@ -30,6 +30,14 @@ _RECEIPT_FIELDS = {
     "receiptSha256",
 }
 _BINDING_FIELDS = {"role", "path", "sha256"}
+BOUNDARY_PHASES = frozenset({
+    "phase-1-before",
+    "phase-1-after",
+    "phase-2-before",
+    "phase-2-after",
+    "supplement-before",
+    "supplement-after",
+})
 _ROLE_SETS = {
     "build-corpus": (
         {"audit", "outcomes", "run_context"},
@@ -262,12 +270,7 @@ def build_boundary_artifact(
 ) -> Dict[str, object]:
     """Build one deterministic boundary artifact from already captured inputs."""
 
-    if phase not in {
-        "phase-1-before",
-        "phase-1-after",
-        "phase-2-before",
-        "phase-2-after",
-    }:
+    if phase not in BOUNDARY_PHASES:
         raise ValueError("unsupported boundary phase")
     parse_timestamp(generated_at, "generatedAt")
     if not isinstance(run_id, str) or _RUN_ID.fullmatch(run_id) is None:
@@ -339,9 +342,7 @@ def validate_boundary_artifact(value: object) -> Dict[str, object]:
     artifact: Dict[str, object] = value
     if artifact["schemaVersion"] != BOUNDARY_SCHEMA_VERSION:
         raise ValueError("unsupported boundary artifact schema")
-    if artifact["phase"] not in {
-        "phase-1-before", "phase-1-after", "phase-2-before", "phase-2-after"
-    }:
+    if artifact["phase"] not in BOUNDARY_PHASES:
         raise ValueError("unsupported boundary phase")
     parse_timestamp(artifact["generatedAt"], "generatedAt")
     if not isinstance(artifact["runId"], str) or _RUN_ID.fullmatch(artifact["runId"]) is None:
@@ -393,6 +394,7 @@ def validate_boundary_artifact(value: object) -> Dict[str, object]:
 
 
 __all__ = [
+    "BOUNDARY_PHASES",
     "BOUNDARY_SCHEMA_VERSION",
     "RECEIPT_SCHEMA_VERSION",
     "build_authority_consumption_receipt",

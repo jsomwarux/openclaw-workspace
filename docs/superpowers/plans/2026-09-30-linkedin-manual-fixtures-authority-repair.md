@@ -137,3 +137,64 @@
 - [ ] Run one fresh read-only Claude Code review from JT's Anthropic-direct subscription session against the new exact SHA.
 - [ ] Accept only `VERDICT: APPROVED` with zero Critical and zero Important findings.
 - [ ] Keep publication, Mission Control writes, Drive uploads, deployment, scheduling, recurrence, applications, provider changes, and external sends closed.
+
+---
+
+## Addendum A — Program 0 supplemental human-gate correction (approved 2026-09-30)
+
+**Why:** JT answered legacy row `fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf` as posted on 2026-09-30 (`confirmedAt` 2026-09-30T09:01:38-04:00; URL `https://www.linkedin.com/feed/update/urn:li:activity:7490053069380964353/`; final text 1,083 bytes, SHA-256 `fb2d82be18e796fdf3eb32dbb4c109792460aa2e90d86ea2fdbfa6b806b4bdea`). `ingest-human-gate` is a one-shot boundary: it refuses the answer (`phase-two run context predates confirmedAt`; `human-gate replay conflicts with the existing event block`). It stays unchanged.
+
+**Design (smallest canonical path):**
+
+- New closed CLI command `ingest-history-correction`, backed by `derive_history_supplement` / `ingest_history_supplement_files` in `recovery.py`. It is separate from `ingest-human-gate`.
+- Input `human-gate-supplement-1.v1.json` (`linkedin-human-gate-supplement.v1`): `supplementId`, `baseResponseSha256`, `baseManifestSha256`, `corrections[]` (each `legacyRowSha256`, `targetOutcomeEventId`, `targetEventSha256`, plus the base answer shapes `posted`/`not_posted`/`still_unknown`), and `confirmedAt`. Closed, null-free, strict JSON.
+- Append-only events; prior bytes are never edited and the 2026-09-28 `history:<row>` event is preserved:
+  - `history-supplement-1:<row>` is the replacement `historical_status`.
+  - When the answer is posted, `publication-supplement-1:<row>` and, if final text is supplied, the exact-text receipt `authority-supplement-1:<row>` are added. Both use the existing receipt derivation (response hash, fresh run ID, ledger prefix/position, and validation time).
+  - `correction-supplement-1:<row>` targets `history:<row>` with the replacement hash. Its `recordedAt` is the fresh run context time, strictly later than both.
+- Transactional outputs:
+  - `corpus-authority-manifest.supplement-1.v1.json` uses the existing manifest v1 schema, bound to the supplement response hash, fresh run ID, receipt allowlist, and ledger prefix/position through the supplement block.
+  - `run-context.supplement-1-authority.v1.json`.
+  - The base manifest, base authority context, and focus receipt and anchor stay byte-identical.
+- Fails closed on:
+  - a run context that is not later than `confirmedAt`
+  - a `confirmedAt` not later than the base authority
+  - base response, base manifest, or target hash mismatch
+  - a wrong packet or event type
+  - a target that is no longer the row's latest status, or is already corrected (chains/cycles)
+  - a no-op correction
+  - unknown, null, or partial fields
+  - a base ledger that already carries corpus authority receipts (manifest v1 binds one authority)
+  - symlink, escape, or alias paths
+  - partial or conflicting outputs
+
+  Exact replay writes nothing.
+- Boundaries: a fresh `init-run` context `run-context.supplement-1.v1.json`, with new phases `supplement-before` and `supplement-after` captured by the existing read-only `capture-boundaries`.
+- `verify`:
+  - New all-or-none arguments: `--supplement`, `--supplement-run-context`, `--supplement-authority-run-context`, `--supplement-manifest`, `--supplement-before`, `--supplement-after`.
+  - Base checks keep the base manifest and context.
+  - With a supplement, verify re-derives the ledger block, manifest, and authority context byte-exactly, requires an equal `supplement-before/after` pair bound to the supplement run context, and requires phase-2 receipts to consume the supplement authority.
+  - Without supplement arguments, any `historical_status`, `correction`, or `corpus_authority_receipt` after the base ledger position fails closed.
+- Regeneration:
+  - `audit-history` and `build-corpus` run under the supplement authority at the canonical phase-2 paths; prior hashes are recorded in the reconciliation report.
+  - `build-focus`, phase-2 `build-fixtures`, and `preview-checkin` are rerun to prove they are byte-identical.
+  - The verification report, both fixture packet/image pairs, and the accepted set are regenerated.
+- The 2 likes / 2 comments snapshot is intentionally omitted: `metric_snapshot` requires an observed `windowDays`, which is unknown.
+
+### Task A1: RED regressions
+- [ ] Recovery: supplement derivation, ingestion, replay, and every fail-closed case above.
+- [ ] CLI: the command set includes `ingest-history-correction`; boundary phases accept `supplement-before/after`; verify passes only with the equal, run-bound supplement pair and rejects missing, partial, or tampered supplement proof.
+
+### Task A2: Implement minimally until GREEN
+
+### Task A3: Governed run
+- [ ] `init-run` for the supplement, then `supplement-before` capture.
+- [ ] `ingest-history-correction`, `audit-history`, and `build-corpus`.
+- [ ] Byte-identical focus, fixture, and check-in reruns.
+- [ ] `supplement-after` capture, then `verify`.
+
+### Task A4: Regenerate fixtures, packets, images, and the accepted set
+
+### Task A5: Full verification
+
+### Task A6: One immutable child commit of `d4c3bcd…`; no push, no independent review

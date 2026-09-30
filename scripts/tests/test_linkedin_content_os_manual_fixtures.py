@@ -371,33 +371,54 @@ class EarnedAngleAuthorityTests(unittest.TestCase):
 
 
 class TrackedFixtureStateTests(unittest.TestCase):
-    """The real repository's canonical ledger must not confirm either tracked fixture."""
+    """The real repository's canonical ledger governs both tracked fixtures."""
 
-    def test_accepted_set_blocks_both_candidates_until_governed_confirmation(self) -> None:
+    def test_accepted_candidates_validate_and_replay_against_canonical_authority(self) -> None:
         fixture_root = REPOSITORY / "memory/content/linkedin-content-os/manual-fixtures"
         accepted_set = json.loads((fixture_root / "accepted-set.v1.json").read_text(encoding="utf-8"))
-        self.assertEqual(accepted_set["state"], "blocked_pending_governed_publication_confirmation")
-        self.assertEqual(accepted_set["candidatePackets"], [])
+        self.assertEqual(accepted_set["state"], "pending_independent_review")
+        self.assertEqual(accepted_set["blockedCandidates"], [])
         self.assertIs(accepted_set["externalActionsAuthorized"], False)
-        blocked = accepted_set["blockedCandidates"]
+        authority = accepted_set["governedAuthority"]
+        supplement_path = REPOSITORY / authority["supplementPath"]
+        self.assertEqual(sha256_hex(supplement_path.read_bytes()), authority["supplementSha256"])
+        row_hash = _legacy_row_hash(REPOSITORY, ANGLE_PATH)
+        self.assertEqual(authority["legacyRowSha256"], row_hash)
+        supplement = json.loads(supplement_path.read_text(encoding="utf-8"))
+        correction = supplement["corrections"][0]
+        candidates = accepted_set["candidatePackets"]
         self.assertEqual(
-            sorted(candidate["packetId"] for candidate in blocked),
+            sorted(candidate["packetId"] for candidate in candidates),
             ["linkedin-ai-news-openai-health-2026-09-29-v1", "linkedin-teardown-servicenow-inry-2026-09-29-v1"],
         )
-        for candidate in blocked:
+        artifact_root = REPOSITORY / "memory/content/linkedin-content-os"
+        for candidate in candidates:
             with self.subTest(packetId=candidate["packetId"]):
                 spec_path = REPOSITORY / candidate["sourceSpec"]
                 self.assertEqual(sha256_hex(spec_path.read_bytes()), candidate["sourceSpecSha256"])
-                self.assertFalse((fixture_root / candidate["packetId"]).exists())
+                tracked = fixture_root / candidate["packetId"]
+                packet = json.loads((tracked / "packet.v1.json").read_text(encoding="utf-8"))
+                self.assertEqual(validate_manual_fixture(packet, artifact_root, now=TRACKED_NOW), packet)
+                self.assertEqual(packet["draftSha256"], candidate["draftSha256"])
+                self.assertEqual(packet["payloadSha256"], candidate["payloadSha256"])
+                self.assertEqual(packet["imageAsset"]["sha256"], candidate["imageSha256"])
+                angle = packet["earnedAngle"]
+                self.assertEqual(angle["legacyRowSha256"], row_hash)
+                self.assertEqual(angle["publicationEventId"], "publication-supplement-1:" + row_hash)
+                self.assertEqual(angle["publicationUrl"], correction["publicUrl"])
                 self.assertEqual(
-                    candidate["legacyRowSha256"], _legacy_row_hash(REPOSITORY, candidate["earnedAnglePath"])
+                    angle["finalTextSha256"], sha256_hex(correction["finalText"].encode("utf-8"))
                 )
                 with tempfile.TemporaryDirectory() as temporary:
-                    with self.assertRaises(ValueError) as raised:
-                        build_manual_fixture(
-                            json.loads(spec_path.read_text(encoding="utf-8")), Path(temporary), now=TRACKED_NOW
+                    rebuilt = build_manual_fixture(
+                        json.loads(spec_path.read_text(encoding="utf-8")), Path(temporary), now=TRACKED_NOW
+                    )
+                    self.assertEqual(rebuilt, packet)
+                    for name in ("packet.v1.json", "image.v1.png"):
+                        self.assertEqual(
+                            (Path(temporary) / "manual-fixtures" / candidate["packetId"] / name).read_bytes(),
+                            (tracked / name).read_bytes(),
                         )
-                self.assertEqual(str(raised.exception), candidate["blockReason"])
         self.assertEqual(
             sorted(artifact["packetId"] for artifact in accepted_set["rejectedArtifacts"]),
             ["linkedin-ai-news-openai-health-2026-09-29-v1", "linkedin-teardown-servicenow-inry-2026-09-29-v1"],
@@ -740,10 +761,10 @@ class ManualFixtureTests(_GovernedRepositoryCase):
     def test_tracked_sources_build_and_replay_once_governed_confirmation_exists(self) -> None:
         fixture_root = REPOSITORY / "memory/content/linkedin-content-os/manual-fixtures"
         accepted_set = json.loads((fixture_root / "accepted-set.v1.json").read_text(encoding="utf-8"))
-        blocked = accepted_set["blockedCandidates"]
-        self.assertEqual(len(blocked), 2)
+        candidates = accepted_set["candidatePackets"]
+        self.assertEqual(len(candidates), 2)
         with tempfile.TemporaryDirectory() as first_root, tempfile.TemporaryDirectory() as second_root:
-            for candidate in blocked:
+            for candidate in candidates:
                 source = json.loads((REPOSITORY / candidate["sourceSpec"]).read_text(encoding="utf-8"))
                 first = build_manual_fixture(source, Path(first_root), now=TRACKED_NOW)
                 second = build_manual_fixture(source, Path(second_root), now=TRACKED_NOW)
@@ -753,7 +774,7 @@ class ManualFixtureTests(_GovernedRepositoryCase):
                         (Path(first_root) / "manual-fixtures" / candidate["packetId"] / name).read_bytes(),
                         (Path(second_root) / "manual-fixtures" / candidate["packetId"] / name).read_bytes(),
                     )
-                self.assertEqual(first["earnedAngle"]["legacyRowSha256"], candidate["legacyRowSha256"])
+                self.assertEqual(first["earnedAngle"]["legacyRowSha256"], self.row_hash)
                 with Image.open(Path(first_root) / first["imageAsset"]["path"]) as image:
                     self.assertEqual(image.size, (1080, 1350))
 

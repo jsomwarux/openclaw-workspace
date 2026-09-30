@@ -1,3 +1,15 @@
+## Plan — Program 0 Supplemental Human-Gate Correction — 2026-09-30
+
+Addendum A in `docs/superpowers/plans/2026-09-30-linkedin-manual-fixtures-authority-repair.md`.
+
+- [x] Preflight: HEAD `d4c3bcd…`, parent `c4aefea…`, clean; JT final text 1,083 bytes / `fb2d82be…`.
+- [x] Task A1: RED regressions for the supplement derivation, ingestion, replay, fail-closed cases, CLI command set, boundary phases, and supplement-aware verify.
+- [x] Task A2: Implement `ingest-history-correction`, supplement boundary phases, and verify extension until GREEN.
+- [x] Task A3: Governed run (init-run, supplement-before, ingest-history-correction, audit-history, build-corpus, byte-identical reruns, supplement-after, verify).
+- [x] Task A4: Regenerate both fixture packet/image pairs and the accepted set against the refreshed canonical ledger.
+- [x] Task A5: Full verification gate.
+- [x] Task A6: One immutable child commit of `d4c3bcd…` (no push, no independent review).
+
 ## Plan — LinkedIn Manual Fixtures Authority Repair — 2026-09-30
 
 - [x] Reconcile Claude review of `c4aefea…` and confirm the three root causes.
@@ -9,7 +21,7 @@
 - [x] Restore `outcomes.v1.jsonl` to the approved `e27dc5bb…` bytes; regenerate Program 0 through the canonical CLI (byte-identical) and pass `verify`.
 - [x] Record both fixtures as blocked candidates with zero accepted packets; prove the tracked specs build and replay under a synthetic governed confirmation in isolation.
 - [x] Freeze a new local commit (builder verification only; independent acceptance is a separate step).
-- [ ] JT answers the governed human gate for legacy row `fabf927a…` and a separately approved run ingests it; then rebuild both fixtures and request fresh independent acceptance.
+- [x] JT answers the governed human gate for legacy row `fabf927a…` and a separately approved run ingests it (Addendum A, `supplement-1`); both fixtures rebuilt. Fresh independent acceptance remains a separate step.
 
 ## Plan — LinkedIn Manual Fixtures Final Acceptance Repair — 2026-09-29
 

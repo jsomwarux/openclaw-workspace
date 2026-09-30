@@ -56,6 +56,7 @@ class LinkedInContentOSCliTests(unittest.TestCase):
                 "capture-boundaries",
                 "audit-history",
                 "ingest-human-gate",
+                "ingest-history-correction",
                 "build-focus",
                 "build-corpus",
                 "build-fixtures",
@@ -710,6 +711,32 @@ class BoundaryArtifactTests(unittest.TestCase):
         tampered["missionControl"]["taskCount"] = 5
         with self.assertRaisesRegex(ValueError, "hash mismatch"):
             validate_boundary_artifact(tampered)
+
+    def test_supplement_boundary_phases_are_closed_and_run_bound(self) -> None:
+        snapshot = {"totalTaskCount": 0, "linkedinLanePacketCount": 0, "packets": [], "projectionSha256": "b" * 64}
+        for phase in ("supplement-before", "supplement-after"):
+            artifact = build_boundary_artifact(
+                phase=phase,
+                generated_at=GENERATED_AT,
+                run_id="sha256:" + "c" * 64,
+                snapshot=snapshot,
+                normalized_cron={"jobs": []},
+                launchagents=[],
+                protected_inputs={},
+                primary_checkout_fingerprint="f" * 64,
+            )
+            self.assertEqual(validate_boundary_artifact(artifact)["phase"], phase)
+        with self.assertRaisesRegex(ValueError, "unsupported boundary phase"):
+            build_boundary_artifact(
+                phase="supplement-during",
+                generated_at=GENERATED_AT,
+                run_id="sha256:" + "c" * 64,
+                snapshot=snapshot,
+                normalized_cron={"jobs": []},
+                launchagents=[],
+                protected_inputs={},
+                primary_checkout_fingerprint="f" * 64,
+            )
 
 
 class VerificationIntegrationTests(unittest.TestCase):
@@ -1412,6 +1439,199 @@ class VerificationIntegrationTests(unittest.TestCase):
         self.assertEqual(byte_reads, 1)
         audit_receipt = report["receipts"][1]
         self.assertEqual(audit_receipt["sha256"], sha256_hex(canonical_receipt_bytes))
+
+    # Supplemental human-gate authority (Addendum A).
+
+    _SUPPLEMENT_CONFIRMED_AT = "2026-09-30T13:01:38+00:00"
+    _SUPPLEMENT_GENERATED_AT = "2026-09-30T13:30:00+00:00"
+    _SUPPLEMENT_URL = "https://www.linkedin.com/feed/update/urn:li:activity:7490053069380964353/"
+    _SUPPLEMENT_TEXT = "One exact published line.\n\nhashtag#AIImplementation"
+
+    def _supplement_tree(self, *, fingerprint_after: str = "8" * 64) -> dict[str, Path]:
+        from scripts.linkedin_content_os.corpus import build_contrastive_pairs, build_voice_gold
+        from scripts.linkedin_content_os.outcomes import load_events
+        from scripts.linkedin_content_os.recovery import ingest_history_supplement_files
+
+        paths = self._proof_tree()
+        phase1_audit_value = _read_json(paths["phase1_audit"])
+        request_path = self.artifacts / "historical-recovery-request.phase-1.v1.json"
+        request_path.write_bytes(canonical_bytes(phase1_audit_value["recoveryRequest"]))
+        outcomes = self.artifacts / "outcomes.v1.jsonl"
+        row_hash = phase1_audit_value["recoveryRequest"]["items"][0]["legacyRowSha256"]
+        target = next(event for event in load_events(outcomes) if event["outcomeEventId"] == "history:" + row_hash)
+        supplement = {
+            "schemaVersion": "linkedin-human-gate-supplement.v1",
+            "supplementId": "supplement-1",
+            "baseResponseSha256": sha256_hex(paths["response"].read_bytes()),
+            "baseManifestSha256": _read_json(paths["manifest"])["manifestSha256"],
+            "corrections": [{
+                "legacyRowSha256": row_hash,
+                "targetOutcomeEventId": "history:" + row_hash,
+                "targetEventSha256": target["eventSha256"],
+                "answer": "posted",
+                "publicUrl": self._SUPPLEMENT_URL,
+                "finalText": self._SUPPLEMENT_TEXT,
+            }],
+            "confirmedAt": self._SUPPLEMENT_CONFIRMED_AT,
+        }
+        supplement_path = self.artifacts / "human-gate-supplement-1.v1.json"
+        supplement_path.write_bytes(canonical_bytes(supplement))
+        supplement_context_path = self.artifacts / "run-context.supplement-1.v1.json"
+        supplement_context = init_run(self._SUPPLEMENT_GENERATED_AT, outcomes, supplement_context_path)
+        manifest_path = self.artifacts / "corpus-authority-manifest.supplement-1.v1.json"
+        authority_path = self.artifacts / "run-context.supplement-1-authority.v1.json"
+        ingest_history_supplement_files(argparse.Namespace(
+            supplement=str(supplement_path),
+            base_response=str(paths["response"]),
+            base_manifest=str(paths["manifest"]),
+            base_authority_run_context=str(paths["authority"]),
+            recovery_request=str(request_path),
+            outcomes=str(outcomes),
+            run_context=str(supplement_context_path),
+            corpus_authority_manifest_output=str(manifest_path),
+            authority_run_context_output=str(authority_path),
+            workspace_root=str(self.root),
+        ))
+        manifest = _read_json(manifest_path)
+        posted = self.root / "memory/content/posted-log.jsonl"
+        audit_value = audit_legacy_rows(
+            posted, outcomes, self._SUPPLEMENT_GENERATED_AT,
+            corpus_authority_manifest=manifest,
+            expected_manifest_sha256=str(manifest["manifestSha256"]),
+        )
+        audit = self.artifacts / "historical-audit.v1.json"
+        recovery = self.artifacts / "historical-recovery-request.v1.json"
+        audit.write_bytes(canonical_bytes(audit_value))
+        recovery.write_bytes(canonical_bytes(audit_value["recoveryRequest"]))
+        events = load_events(outcomes)
+        gold = self.artifacts / "voice-gold.v0.jsonl"
+        pairs = self.artifacts / "contrastive-pairs.v0.jsonl"
+        gold.write_bytes(b"".join(canonical_bytes(row) + b"\n" for row in build_voice_gold(
+            audit_value, events, expected_manifest_sha256=str(manifest["manifestSha256"])
+        )))
+        pairs.write_bytes(b"".join(canonical_bytes(row) + b"\n" for row in build_contrastive_pairs(
+            events, audit_value, expected_manifest_sha256=str(manifest["manifestSha256"])
+        )))
+        self._receipt(
+            command="audit-history", context=authority_path, expected=str(manifest["manifestSha256"]),
+            canonical_manifest=str(manifest["manifestSha256"]),
+            inputs=[("posted_log", posted), ("outcomes", outcomes), ("authority_manifest", manifest_path), ("run_context", authority_path)],
+            outputs=[("historical_audit", audit), ("recovery_request", recovery)],
+            generated_at=self._SUPPLEMENT_GENERATED_AT, destination=paths["audit_receipt"],
+        )
+        self._receipt(
+            command="build-corpus", context=authority_path, expected=str(manifest["manifestSha256"]),
+            canonical_manifest=str(manifest["manifestSha256"]),
+            inputs=[("audit", audit), ("outcomes", outcomes), ("run_context", authority_path)],
+            outputs=[("voice_gold", gold), ("contrastive_pairs", pairs)],
+            generated_at=self._SUPPLEMENT_GENERATED_AT, destination=paths["corpus_receipt"],
+        )
+        before = self.artifacts / "boundaries.supplement-1.before.v1.json"
+        after = self.artifacts / "boundaries.supplement-1.after.v1.json"
+        self._boundary("supplement-before", supplement_context, before)
+        self._boundary_with_fingerprint("supplement-after", supplement_context, after, fingerprint_after)
+        return {
+            **paths,
+            "supplement": supplement_path,
+            "supplement_context": supplement_context_path,
+            "supplement_authority": authority_path,
+            "supplement_manifest": manifest_path,
+            "sb": before,
+            "sa": after,
+        }
+
+    def _boundary_with_fingerprint(
+        self, phase: str, context: dict[str, object], destination: Path, fingerprint: str
+    ) -> None:
+        artifact = build_boundary_artifact(
+            phase=phase,
+            generated_at=str(context["generatedAt"]),
+            run_id=str(context["runId"]),
+            snapshot={"totalTaskCount": 0, "linkedinLanePacketCount": 0, "packets": [], "projectionSha256": "9" * 64},
+            normalized_cron={"jobs": []},
+            launchagents=[],
+            protected_inputs={},
+            primary_checkout_fingerprint=fingerprint,
+        )
+        destination.write_bytes(canonical_bytes(artifact))
+
+    def _supplement_argv(self, paths: dict[str, Path]) -> list[str]:
+        return self._verify_argv(paths) + [
+            "--supplement", str(paths["supplement"]),
+            "--supplement-run-context", str(paths["supplement_context"]),
+            "--supplement-authority-run-context", str(paths["supplement_authority"]),
+            "--supplement-manifest", str(paths["supplement_manifest"]),
+            "--supplement-before", str(paths["sb"]),
+            "--supplement-after", str(paths["sa"]),
+        ]
+
+    def test_verify_accepts_supplement_only_with_its_equal_run_bound_pair(self) -> None:
+        paths = self._supplement_tree()
+        report = main(self._supplement_argv(paths))
+        self.assertTrue(report["boundaryPairsEqual"])
+        self.assertEqual(len(report["boundaryProof"]), 3)
+        self.assertEqual(report["boundaryProof"][2]["beforePath"], paths["sb"].relative_to(self.root).as_posix())
+        self.assertEqual(report["statusCounts"]["posted_confirmed"], 1)
+        self.assertEqual(report["voiceGoldCount"], 1)
+        supplement = report["supplementalAuthority"]
+        self.assertEqual(supplement["supplementSha256"], sha256_hex(paths["supplement"].read_bytes()))
+        self.assertEqual(supplement["manifestSha256"], _read_json(paths["supplement_manifest"])["manifestSha256"])
+        linkage = supplement["corrections"][0]
+        self.assertTrue(linkage["targetOutcomeEventId"].startswith("history:"))
+        self.assertTrue(linkage["replacementOutcomeEventId"].startswith("history-supplement-1:"))
+        self.assertTrue(linkage["correctionOutcomeEventId"].startswith("correction-supplement-1:"))
+        self.assertTrue(linkage["publicationOutcomeEventId"].startswith("publication-supplement-1:"))
+        self.assertTrue(linkage["authorityOutcomeEventId"].startswith("authority-supplement-1:"))
+        self.assertFalse(report["liveOrExternalActionOccurred"])
+
+    def test_verify_rejects_supplemental_authority_without_supplement_proof(self) -> None:
+        paths = self._supplement_tree()
+        with self.assertRaisesRegex(ValueError, "supplement"):
+            main(self._verify_argv(paths))
+
+    def test_verify_rejects_partial_supplement_arguments(self) -> None:
+        paths = self._supplement_tree()
+        argv = self._supplement_argv(paths)
+        index = argv.index("--supplement-after")
+        del argv[index:index + 2]
+        with self.assertRaisesRegex(ValueError, "supplement arguments"):
+            main(argv)
+
+    def test_verify_rejects_unequal_supplement_pair(self) -> None:
+        paths = self._supplement_tree(fingerprint_after="7" * 64)
+        with self.assertRaisesRegex(ValueError, "boundary changed for primaryCheckoutFingerprint"):
+            main(self._supplement_argv(paths))
+
+    def test_verify_rejects_supplement_pair_bound_to_another_context(self) -> None:
+        paths = self._supplement_tree()
+        phase2_context = _read_json(paths["supplement_context"])
+        wrong = {**phase2_context, "generatedAt": GENERATED_AT}
+        wrong["runId"] = "sha256:" + sha256_hex(canonical_bytes({
+            "schemaVersion": "linkedin-program-0-run-context.v1", "generatedAt": GENERATED_AT,
+        }))
+        self._boundary("supplement-before", wrong, paths["sb"])
+        self._boundary("supplement-after", wrong, paths["sa"])
+        with self.assertRaisesRegex(ValueError, "wrong phase context"):
+            main(self._supplement_argv(paths))
+
+    def test_verify_rejects_tampered_supplement_document_manifest_or_block(self) -> None:
+        paths = self._supplement_tree()
+        original = paths["supplement"].read_bytes()
+        tampered = json.loads(original)
+        tampered["corrections"][0]["finalText"] = "Different text."
+        paths["supplement"].write_bytes(canonical_bytes(tampered))
+        with self.assertRaisesRegex(ValueError, "supplement"):
+            main(self._supplement_argv(paths))
+        paths["supplement"].write_bytes(original)
+
+        manifest_bytes = paths["supplement_manifest"].read_bytes()
+        manifest = json.loads(manifest_bytes)
+        manifest["validatedAt"] = "2026-09-30T14:00:00+00:00"
+        unsigned = {key: value for key, value in manifest.items() if key != "manifestSha256"}
+        manifest["manifestSha256"] = sha256_hex(canonical_bytes(unsigned))
+        paths["supplement_manifest"].write_bytes(canonical_bytes(manifest))
+        with self.assertRaisesRegex(ValueError, "supplement|manifest"):
+            main(self._supplement_argv(paths))
 
 
 if __name__ == "__main__":

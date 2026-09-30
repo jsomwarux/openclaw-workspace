@@ -43,7 +43,10 @@ from scripts.linkedin_content_os.focus import (
     build_focus_snapshot,
     validate_focus_snapshot,
 )
-from scripts.linkedin_content_os.historical_audit import corpus_run_id
+from scripts.linkedin_content_os.historical_audit import (
+    corpus_run_id,
+    validate_corpus_authority_manifest,
+)
 from scripts.linkedin_content_os.outcomes import load_events, validate_event_sequence
 
 
@@ -72,6 +75,24 @@ _ALLOWED_ANSWERS = [
 ]
 _PERMISSION_STATUS = {"approved-anonymized", "approved-named"}
 _RUN_CONTEXT_FIELDS = {"schemaVersion", "runId", "generatedAt"}
+_ANSWER_STATUS = {
+    "posted": "posted_confirmed",
+    "not_posted": "not_posted_confirmed",
+    "still_unknown": "status_unknown",
+}
+SUPPLEMENT_SCHEMA_VERSION = "linkedin-human-gate-supplement.v1"
+AUTHORITY_CONTEXT_SCHEMA_VERSION = "linkedin-program-0-authority-run-context.v1"
+_SUPPLEMENT_FIELDS = {
+    "schemaVersion", "supplementId", "baseResponseSha256", "baseManifestSha256",
+    "corrections", "confirmedAt",
+}
+_SUPPLEMENT_ID = re.compile(r"^supplement-[1-9][0-9]{0,5}$")
+_CORRECTION_BASE_FIELDS = {
+    "legacyRowSha256", "targetOutcomeEventId", "targetEventSha256", "answer",
+}
+_AUTHORITY_CONTEXT_FIELDS = {
+    "schemaVersion", "runId", "generatedAt", "corpusAuthorityManifestSha256",
+}
 
 
 def _require_object(value: object, label: str) -> dict[str, object]:
@@ -390,8 +411,13 @@ def _derive_history_authority_events(
     response_hash: str,
     run_id: str,
     prefix_events: list[dict[str, object]],
+    id_namespace: str = "",
 ) -> tuple[list[dict[str, object]], list[dict[str, object]], bytes]:
-    """Derive the exact response-owned history block from an existing prefix."""
+    """Derive the exact response-owned history block from an existing prefix.
+
+    The base human gate owns `history:<row>`; a supplement passes its namespace
+    (for example `-supplement-1`) so its events can never reuse a base ID.
+    """
 
     derived: list[dict[str, object]] = []
     combined = list(prefix_events)
@@ -399,13 +425,9 @@ def _derive_history_authority_events(
     for answer in answers:
         row_hash = str(answer["legacyRowSha256"])
         packet_id = "legacy:" + row_hash
-        status = {
-            "posted": "posted_confirmed",
-            "not_posted": "not_posted_confirmed",
-            "still_unknown": "status_unknown",
-        }[str(answer["answer"])]
+        status = _ANSWER_STATUS[str(answer["answer"])]
         history = _event(
-            "history:" + row_hash,
+            "history" + id_namespace + ":" + row_hash,
             packet_id,
             "historical_status",
             confirmed_at,
@@ -427,7 +449,7 @@ def _derive_history_authority_events(
                 "finalTextSha256": sha256_hex(final_text.encode("utf-8")),
             })
         publication = _event(
-            "publication:" + row_hash,
+            "publication" + id_namespace + ":" + row_hash,
             packet_id,
             "publication_acknowledged",
             confirmed_at,
@@ -453,7 +475,7 @@ def _derive_history_authority_events(
             "clientSensitiveMarkers": [],
         }
         authority = _event(
-            "authority:" + row_hash,
+            "authority" + id_namespace + ":" + row_hash,
             packet_id,
             "corpus_authority_receipt",
             confirmed_at,
@@ -1333,7 +1355,434 @@ def derive_authorized_fixture_rows(
     ]
 
 
+def _validate_supplement_correction(raw: object) -> dict[str, object]:
+    correction = _require_object(raw, "supplement correction")
+    kind = correction.get("answer")
+    expected = set(_CORRECTION_BASE_FIELDS)
+    if kind == "posted":
+        expected.add("publicUrl")
+        if "finalText" in correction:
+            expected.add("finalText")
+    elif kind == "not_posted":
+        expected.add("declineReason")
+    elif kind != "still_unknown":
+        raise ValueError("unsupported supplement correction answer")
+    _exact_fields(correction, expected, "supplement correction")
+    answer: dict[str, object] = {
+        "legacyRowSha256": _require_hash(correction["legacyRowSha256"], "legacyRowSha256"),
+        "answer": kind,
+    }
+    _require_text(correction["targetOutcomeEventId"], "targetOutcomeEventId")
+    _require_hash(correction["targetEventSha256"], "targetEventSha256")
+    if kind == "posted":
+        answer["publicUrl"] = validate_linkedin_url(correction["publicUrl"])
+        if "finalText" in correction:
+            answer["finalText"] = _require_text(correction["finalText"], "finalText")
+    elif kind == "not_posted":
+        if correction["declineReason"] not in DECLINE_REASON:
+            raise ValueError("unsupported declineReason")
+        answer["declineReason"] = correction["declineReason"]
+    return answer
+
+
+def _validate_supplement_document(value: object) -> dict[str, object]:
+    document = _exact_fields(value, _SUPPLEMENT_FIELDS, "human-gate supplement")
+    _reject_nulls(document, "human-gate supplement")
+    if document["schemaVersion"] != SUPPLEMENT_SCHEMA_VERSION:
+        raise ValueError("unsupported supplement schemaVersion")
+    supplement_id = document["supplementId"]
+    if not isinstance(supplement_id, str) or _SUPPLEMENT_ID.fullmatch(supplement_id) is None:
+        raise ValueError("supplementId must match supplement-<n>")
+    _require_hash(document["baseResponseSha256"], "baseResponseSha256")
+    _require_hash(document["baseManifestSha256"], "baseManifestSha256")
+    parse_timestamp(_require_text(document["confirmedAt"], "confirmedAt"), "confirmedAt")
+    corrections = document["corrections"]
+    if not isinstance(corrections, list) or not corrections:
+        raise ValueError("supplement corrections must be a non-empty list")
+    seen: set[str] = set()
+    for raw in corrections:
+        row_hash = _validate_supplement_correction(raw)["legacyRowSha256"]
+        if row_hash in seen:
+            raise ValueError("duplicate supplement correction row")
+        seen.add(str(row_hash))
+    return document
+
+
+def _validate_authority_run_context(value: object) -> dict[str, object]:
+    context = _exact_fields(value, _AUTHORITY_CONTEXT_FIELDS, "authority run context")
+    if context["schemaVersion"] != AUTHORITY_CONTEXT_SCHEMA_VERSION:
+        raise ValueError("unsupported authority run context schemaVersion")
+    parse_timestamp(context["generatedAt"], "authorityRunContext.generatedAt")
+    unsigned = {
+        "schemaVersion": context["schemaVersion"],
+        "generatedAt": context["generatedAt"],
+        "corpusAuthorityManifestSha256": _require_hash(
+            context["corpusAuthorityManifestSha256"], "corpusAuthorityManifestSha256"
+        ),
+    }
+    if context["runId"] != "sha256:" + _hash_object(unsigned):
+        raise ValueError("authority run context runId mismatch")
+    return context
+
+
+def _latest_status_event(
+    events: Sequence[dict[str, object]], row_hash: str
+) -> Optional[dict[str, object]]:
+    statuses = [
+        event for event in events
+        if event["eventType"] == "historical_status"
+        and _require_object(event["payload"], "history payload").get("legacyRowSha256") == row_hash
+    ]
+    if not statuses:
+        return None
+    return max(
+        statuses,
+        key=lambda event: (
+            parse_timestamp(event["recordedAt"], "recordedAt"),
+            str(event["eventSha256"]),
+        ),
+    )
+
+
+def derive_history_supplement(
+    *,
+    supplement: object,
+    supplement_sha256: str,
+    base_response: object,
+    base_response_sha256: str,
+    base_manifest: object,
+    base_authority_context: object,
+    request: object,
+    prior_events: Sequence[dict[str, object]],
+    run_context: object,
+) -> dict[str, object]:
+    """Derive one supplemental human-gate correction block without touching any file.
+
+    The base human-gate block stays byte-identical. Each corrected row gains a
+    namespaced replacement status, optional publication and exact-text receipt,
+    and a typed correction that supersedes its base `history:<row>` event.
+    """
+
+    document = _validate_supplement_document(supplement)
+    supplement_hash = _require_hash(supplement_sha256, "supplement SHA-256")
+    response_hash = _require_hash(base_response_sha256, "base response SHA-256")
+    if document["baseResponseSha256"] != response_hash:
+        raise ValueError("supplement base response SHA-256 mismatch")
+    response = _exact_fields(base_response, _RESPONSE_FIELDS, "human-gate response")
+    _reject_nulls(response, "human-gate response")
+    if response["schemaVersion"] != "linkedin-human-gate-response.v1":
+        raise ValueError("unsupported human-gate response schemaVersion")
+    request_value = _validate_request(request)
+    if response["recoveryRequestSha256"] != _hash_object(request_value):
+        raise ValueError("base response does not bind the bounded recovery request")
+    base_answers = {
+        str(answer["legacyRowSha256"]): answer
+        for answer in _validate_answers(response, request_value)
+    }
+    authority_context = _validate_authority_run_context(base_authority_context)
+    manifest_value = _require_object(base_manifest, "base corpus authority manifest")
+    if authority_context["corpusAuthorityManifestSha256"] != manifest_value.get("manifestSha256"):
+        raise ValueError("base manifest does not match the base authority run context")
+    manifest = validate_corpus_authority_manifest(
+        manifest_value,
+        expected_run_id=corpus_run_id(
+            str(request_value["sourceSha256"]), str(authority_context["generatedAt"])
+        ),
+        generated_at=str(authority_context["generatedAt"]),
+        expected_manifest_sha256=str(authority_context["corpusAuthorityManifestSha256"]),
+    )
+    if document["baseManifestSha256"] != manifest["manifestSha256"]:
+        raise ValueError("supplement base manifest SHA-256 mismatch")
+    if manifest["humanGateAuthorityReceiptSha256"] != response_hash:
+        raise ValueError("base manifest does not bind the base human-gate response")
+    context = _validate_run_context(run_context)
+    confirmed_at = str(document["confirmedAt"])
+    confirmed = parse_timestamp(confirmed_at, "confirmedAt")
+    if parse_timestamp(context["generatedAt"], "runContext.generatedAt") <= confirmed:
+        raise ValueError("supplement run context must be generated after confirmedAt")
+    if confirmed <= parse_timestamp(manifest["validatedAt"], "manifest.validatedAt") or (
+        confirmed <= parse_timestamp(response["confirmedAt"], "base confirmedAt")
+    ):
+        raise ValueError("supplement confirmedAt predates the base human-gate authority (stale)")
+
+    events = list(prior_events)
+    base_position = int(manifest["ledgerPosition"])
+    base_prefix = b"".join(canonical_bytes(event) + b"\n" for event in events[:base_position])
+    if base_position > len(events) or sha256_hex(base_prefix) != manifest["ledgerPrefixSha256"]:
+        raise ValueError("ledger does not preserve the base human-gate prefix")
+    corrected_targets = {
+        str(_require_object(event["payload"], "correction payload")["targetOutcomeEventId"])
+        for event in events if event["eventType"] == "correction"
+    }
+    answers: list[dict[str, object]] = []
+    targets: dict[str, dict[str, object]] = {}
+    for raw in document["corrections"]:  # type: ignore[union-attr]
+        correction = _require_object(raw, "supplement correction")
+        answer = _validate_supplement_correction(correction)
+        row_hash = str(answer["legacyRowSha256"])
+        if row_hash not in base_answers:
+            raise ValueError("supplement row is not in the bounded recovery request")
+        target_id = "history:" + row_hash
+        if correction["targetOutcomeEventId"] != target_id:
+            raise ValueError(
+                "supplement target must be the base history event for its row (no correction chains)"
+            )
+        matches = [event for event in events if event["outcomeEventId"] == target_id]
+        if len(matches) != 1:
+            raise ValueError("supplement target event is missing")
+        target = matches[0]
+        if target["eventSha256"] != correction["targetEventSha256"]:
+            raise ValueError("supplement target event SHA-256 mismatch")
+        source = _require_object(target["sourcePointer"], "target sourcePointer")
+        if (
+            target["eventType"] != "historical_status"
+            or target["packetId"] != "legacy:" + row_hash
+            or source.get("sourceSha256") != response_hash
+        ):
+            raise ValueError("supplement target is not the base human-gate history event")
+        if target_id in corrected_targets:
+            raise ValueError("supplement target is already corrected")
+        if _latest_status_event(events, row_hash) is not target:
+            raise ValueError("supplement target is not the latest governed status for its row")
+        target_status = _require_object(target["payload"], "target payload").get("status")
+        if _ANSWER_STATUS[str(answer["answer"])] == target_status:
+            raise ValueError("supplement correction is a no-op (status unchanged)")
+        answers.append(answer)
+        targets[row_hash] = target
+    if any(event["eventType"] == "corpus_authority_receipt" for event in events):
+        raise ValueError(
+            "supplement cannot bind a ledger that already carries corpus authority receipts"
+        )
+
+    supplement_id = str(document["supplementId"])
+    namespace = "-" + supplement_id
+    run_id = corpus_run_id(str(request_value["sourceSha256"]), str(context["generatedAt"]))
+    derived, combined, prefix_bytes = _derive_history_authority_events(
+        answers,
+        confirmed_at=confirmed_at,
+        response_hash=supplement_hash,
+        run_id=run_id,
+        prefix_events=events,
+        id_namespace=namespace,
+    )
+    by_id = {str(event["outcomeEventId"]): event for event in derived}
+    corrections: list[dict[str, object]] = []
+    links: list[dict[str, object]] = []
+    for answer in answers:
+        row_hash = str(answer["legacyRowSha256"])
+        replacement = by_id["history" + namespace + ":" + row_hash]
+        correction_event = _event(
+            "correction" + namespace + ":" + row_hash,
+            "legacy:" + row_hash,
+            "correction",
+            str(context["generatedAt"]),
+            supplement_hash,
+            {
+                "targetOutcomeEventId": "history:" + row_hash,
+                "replacementEventSha256": replacement["eventSha256"],
+                "reason": "jt-human-gate-supplement:" + supplement_id,
+            },
+        )
+        corrections.append(correction_event)
+        combined.append(correction_event)
+        prefix_bytes += canonical_bytes(correction_event) + b"\n"
+        link: dict[str, object] = {
+            "legacyRowSha256": row_hash,
+            "targetOutcomeEventId": "history:" + row_hash,
+            "targetEventSha256": targets[row_hash]["eventSha256"],
+            "replacementOutcomeEventId": replacement["outcomeEventId"],
+            "replacementEventSha256": replacement["eventSha256"],
+            "correctionOutcomeEventId": correction_event["outcomeEventId"],
+            "correctionEventSha256": correction_event["eventSha256"],
+        }
+        for label, prefix in (("publication", "publication"), ("authority", "authority")):
+            event = by_id.get(prefix + namespace + ":" + row_hash)
+            if event is not None:
+                link[label + "OutcomeEventId"] = event["outcomeEventId"]
+                link[label + "EventSha256"] = event["eventSha256"]
+        links.append(link)
+    block = derived + corrections
+    validate_event_sequence(combined)
+    latest_by_packet: dict[str, object] = {}
+    for event in combined:
+        timestamp = parse_timestamp(event["recordedAt"], "recordedAt")
+        packet = str(event["packetId"])
+        prior = latest_by_packet.get(packet)
+        if prior is not None and timestamp < prior:
+            raise ValueError("per-packet timestamp regression in supplement block")
+        latest_by_packet[packet] = timestamp
+    supplement_manifest: dict[str, object] = {
+        "schemaVersion": "linkedin-corpus-authority-manifest.v1",
+        "runId": run_id,
+        "validatedAt": context["generatedAt"],
+        "receiptSha256Allowlist": sorted(
+            str(event["eventSha256"])
+            for event in block if event["eventType"] == "corpus_authority_receipt"
+        ),
+        "humanGateAuthorityReceiptSha256": supplement_hash,
+        "ledgerPrefixSha256": sha256_hex(prefix_bytes),
+        "ledgerPosition": len(combined),
+    }
+    supplement_manifest["manifestSha256"] = _hash_object(supplement_manifest)
+    authority_unsigned: dict[str, object] = {
+        "schemaVersion": AUTHORITY_CONTEXT_SCHEMA_VERSION,
+        "generatedAt": context["generatedAt"],
+        "corpusAuthorityManifestSha256": supplement_manifest["manifestSha256"],
+    }
+    supplement_context = {
+        **authority_unsigned,
+        "runId": "sha256:" + _hash_object(authority_unsigned),
+    }
+    return {
+        "schemaVersion": "linkedin-human-gate-supplement-derivation.v1",
+        "supplementId": supplement_id,
+        "supplementSha256": supplement_hash,
+        "runId": run_id,
+        "priorEventCount": len(events),
+        "events": block,
+        "corrections": links,
+        "corpusAuthorityManifest": supplement_manifest,
+        "authorityRunContext": supplement_context,
+    }
+
+
+def _contained_path(root: Path, value: object, label: str) -> Path:
+    """Resolve one argument beneath the real workspace root without following symlinks."""
+
+    if not isinstance(value, str) or not value:
+        raise ValueError("{} path is required".format(label))
+    candidate = Path(value)
+    absolute = Path(os.path.abspath(str(candidate if candidate.is_absolute() else root / candidate)))
+    try:
+        relative = absolute.relative_to(root)
+    except ValueError as error:
+        raise ValueError("{} escapes the workspace root".format(label)) from error
+    current = root
+    for part in relative.parts:
+        current = current / part
+        if current.is_symlink():
+            raise ValueError("{} traverses a symlink".format(label))
+    return absolute
+
+
+def _reject_supplement_aliases(paths: dict[str, Path]) -> None:
+    keyed = [
+        (
+            label,
+            path,
+            os.path.normcase(unicodedata.normalize("NFC", str(path))).casefold(),
+        )
+        for label, path in paths.items()
+    ]
+    for index, (left_label, left, left_key) in enumerate(keyed):
+        for right_label, right, right_key in keyed[index + 1:]:
+            aliased = left == right or left_key == right_key
+            if not aliased and left.exists() and right.exists():
+                try:
+                    aliased = os.path.samefile(left, right)
+                except OSError:
+                    aliased = False
+            if aliased:
+                raise ValueError(
+                    "supplement path alias between {} and {}".format(left_label, right_label)
+                )
+
+
+def _supplement_block_positions(
+    events: Sequence[dict[str, object]], supplement_id: str
+) -> list[int]:
+    pattern = re.compile(
+        r"^(?:history|publication|authority|correction)-{}:".format(re.escape(supplement_id))
+    )
+    return [
+        index for index, event in enumerate(events)
+        if pattern.match(str(event["outcomeEventId"]))
+    ]
+
+
+def ingest_history_supplement_files(args: argparse.Namespace) -> dict[str, object]:
+    """Append one supplemental human-gate correction and its authority outputs atomically."""
+
+    root = Path(getattr(args, "workspace_root", ".")).resolve(strict=True)
+    paths = {
+        "supplement": _contained_path(root, args.supplement, "supplement"),
+        "base response": _contained_path(root, args.base_response, "base response"),
+        "base manifest": _contained_path(root, args.base_manifest, "base manifest"),
+        "base authority run context": _contained_path(
+            root, args.base_authority_run_context, "base authority run context"
+        ),
+        "recovery request": _contained_path(root, args.recovery_request, "recovery request"),
+        "ledger": _contained_path(root, args.outcomes, "ledger"),
+        "run context": _contained_path(root, args.run_context, "run context"),
+        "manifest output": _contained_path(
+            root, args.corpus_authority_manifest_output, "manifest output"
+        ),
+        "authority context output": _contained_path(
+            root, args.authority_run_context_output, "authority context output"
+        ),
+    }
+    _reject_supplement_aliases(paths)
+    ledger = paths["ledger"]
+    outputs = [paths["manifest output"], paths["authority context output"]]
+    _reject_transaction_path_aliases(ledger, outputs)
+    supplement, supplement_bytes = _strict_json_file_with_bytes(paths["supplement"])
+    document = _validate_supplement_document(supplement)
+    base_response, base_response_bytes = _strict_json_file_with_bytes(paths["base response"])
+    derive_inputs = {
+        "supplement": supplement,
+        "supplement_sha256": sha256_hex(supplement_bytes),
+        "base_response": base_response,
+        "base_response_sha256": sha256_hex(base_response_bytes),
+        "base_manifest": _strict_json_file(paths["base manifest"]),
+        "base_authority_context": _strict_json_file(paths["base authority run context"]),
+        "request": _strict_json_file(paths["recovery request"]),
+        "run_context": _strict_json_file(paths["run context"]),
+    }
+    existing, existing_bytes = _canonical_ledger_rows(ledger)
+    owned = _supplement_block_positions(existing, str(document["supplementId"]))
+    if owned:
+        first = owned[0]
+        derived = derive_history_supplement(prior_events=existing[:first], **derive_inputs)
+        block = list(derived["events"])  # type: ignore[arg-type]
+        if (
+            owned != list(range(first, first + len(owned)))
+            or len(owned) != len(block)
+            or canonical_bytes(existing[first:first + len(block)]) != canonical_bytes(block)
+        ):
+            raise ValueError("supplement replay conflicts with the existing ledger block")
+        expected_outputs = {
+            paths["manifest output"]: canonical_bytes(derived["corpusAuthorityManifest"]),
+            paths["authority context output"]: canonical_bytes(derived["authorityRunContext"]),
+        }
+        if not all(path.exists() for path in expected_outputs):
+            raise ValueError(
+                "partial supplement state: ledger block exists without its authority outputs"
+            )
+        if any(path.read_bytes() != payload for path, payload in expected_outputs.items()):
+            raise ValueError("supplement replay conflicts with existing authority outputs")
+        return {**derived, "appendedEventCount": 0, "replayedEventCount": len(block)}
+    if any(path.exists() for path in outputs):
+        raise ValueError(
+            "partial supplement state: authority outputs exist without the ledger block"
+        )
+    derived = derive_history_supplement(prior_events=existing, **derive_inputs)
+    block = list(derived["events"])  # type: ignore[arg-type]
+    appended, replayed, _, _ = _append_batch(
+        ledger,
+        block,
+        expected_prefix=existing_bytes,
+        output_payloads=[
+            (paths["manifest output"], canonical_bytes(derived["corpusAuthorityManifest"])),
+            (paths["authority context output"], canonical_bytes(derived["authorityRunContext"])),
+        ],
+    )
+    if appended != len(block) or replayed != 0:
+        raise RuntimeError("supplement ledger transaction diverged from its derivation")
+    return {**derived, "appendedEventCount": appended, "replayedEventCount": replayed}
+
+
 __all__ = [
-    "derive_authorized_fixture_rows", "ingest_human_gate",
-    "ingest_human_gate_files", "rebuild_fixtures_files", "rebuild_focus_files",
+    "derive_authorized_fixture_rows", "derive_history_supplement", "ingest_human_gate",
+    "ingest_history_supplement_files", "ingest_human_gate_files",
+    "rebuild_fixtures_files", "rebuild_focus_files",
 ]
