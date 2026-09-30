@@ -1,3 +1,16 @@
+## Plan — LinkedIn Manual Fixtures Authority Repair — 2026-09-30
+
+- [x] Reconcile Claude review of `c4aefea…` and confirm the three root causes.
+- [x] Write the authority-first TDD implementation plan.
+- [x] Add and observe failing exploit/policy regressions (8/8 authority, filesystem, and lock tests RED; 129 policy examples, 1,032 surface cases, and 161 fixture-surface cases RED).
+- [x] Repair canonical ledger authority, latest-wins derivation, and filesystem handling.
+- [x] Centralize the complete governed public-copy policy (`scripts/linkedin_content_os/content_policy.py`).
+- [x] Program 0 blocker: `audit-history` refuses the `c4aefea` ledger events because JT's 2026-09-28 gate answer for row `fabf927a…` is `still_unknown`. JT chose to restore the approved ledger and hold both fixtures.
+- [x] Restore `outcomes.v1.jsonl` to the approved `e27dc5bb…` bytes; regenerate Program 0 through the canonical CLI (byte-identical) and pass `verify`.
+- [x] Record both fixtures as blocked candidates with zero accepted packets; prove the tracked specs build and replay under a synthetic governed confirmation in isolation.
+- [x] Freeze a new local commit (builder verification only; independent acceptance is a separate step).
+- [ ] JT answers the governed human gate for legacy row `fabf927a…` and a separately approved run ingests it; then rebuild both fixtures and request fresh independent acceptance.
+
 ## Plan — LinkedIn Manual Fixtures Final Acceptance Repair — 2026-09-29
 
 - [x] Reproduce and adjudicate Claude's five Important findings.
@@ -6,7 +19,7 @@
 - [x] Repair the shared deterministic validation boundary.
 - [x] Absorb adjacent Minor findings and regenerate the two immutable packets.
 - [x] Run the complete deterministic verification and visual inspection gate.
-- [ ] Freeze a new immutable commit and submit one fresh SHA-bound independent review.
+- [x] Freeze a new immutable commit and submit one fresh SHA-bound independent review (`c4aefea…` rejected with 0 Critical/3 Important/7 Minor).
 
 ## Plan — LinkedIn Content OS Program 0 — 2026-09-28
 

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import errno
 import fcntl
 import hashlib
 import json
@@ -101,7 +102,14 @@ def write_json_atomic(path: Path, value: object) -> None:
 @contextmanager
 def _exclusive_path_lock(path: Path) -> Iterator[None]:
     lock_path = path.with_name(".{}.lock".format(path.name))
-    descriptor = os.open(str(lock_path), os.O_RDWR | os.O_CREAT, 0o600)
+    try:
+        descriptor = os.open(
+            str(lock_path), os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600
+        )
+    except OSError as error:
+        if error.errno == errno.ELOOP:
+            raise ValueError("lock path must not be a symlink") from error
+        raise
     with os.fdopen(descriptor, "a+b") as lock_handle:
         fcntl.flock(lock_handle.fileno(), fcntl.LOCK_EX)
         try:

@@ -45,10 +45,7 @@
     "kind": "jt_field_lesson",
     "path": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
     "excerpt": "It proves what the workflow saw, what it was allowed to touch, what it held back, and where the decision landed.",
-    "fileSha256": "2ed35201c3f68caacdcfeb0f6fd4fe19df74f9beac49c26f9ffc987b25454480",
-    "confirmationPath": "memory/content/linkedin-content-os/outcomes.v1.jsonl",
-    "confirmationExcerpt": "publication:fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf",
-    "confirmationFileSha256": "321a570afe85c77dbb850b7cc2936e728dd9a10551bd9b028f36f4e8325c2dcc"
+    "fileSha256": "2ed35201c3f68caacdcfeb0f6fd4fe19df74f9beac49c26f9ffc987b25454480"
   },
   "conflictChecks": [
     {"check": "source_identity", "status": "pass", "evidence": "The cited URL is OpenAI's official ChatGPT release-notes page.", "evidenceRef": {"path": "memory/content/linkedin-content-os/manual-fixtures/evidence/manual-fixture-conflict-evidence.v1.json", "fileSha256": "89370a8f97b2b98430955f29b7c1e40de8ec9d834e99e3bfac438c12bd2166bc", "recordId": "openai-health-source-identity"}},

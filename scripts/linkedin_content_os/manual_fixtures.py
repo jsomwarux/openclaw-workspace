@@ -16,11 +16,20 @@ from PIL import Image, ImageDraw, ImageFont, __version__ as PILLOW_VERSION
 from scripts.linkedin_content_os.canonical import (
     _exclusive_path_lock,
     canonical_bytes,
+    read_jsonl,
     sha256_hex,
     write_json_atomic,
 )
+from scripts.linkedin_content_os.content_policy import require_public_copy
 from scripts.linkedin_content_os.contracts import parse_timestamp
+from scripts.linkedin_content_os.historical_audit import _governed_evidence, _legacy_row_hash
 from scripts.linkedin_content_os.outcomes import load_events
+
+
+# Every governed repository input resolves beneath this root; callers never choose it.
+_REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+_CANONICAL_LEDGER = "memory/content/linkedin-content-os/outcomes.v1.jsonl"
+_POSTED_LOG = "memory/content/posted-log.jsonl"
 
 
 _SPEC_FIELDS = {
@@ -63,14 +72,15 @@ _CLAIM_FIELDS = {
     "sourceId",
     "excerptIndex",
 }
-_ANGLE_FIELDS = {
-    "kind",
-    "path",
-    "excerpt",
-    "fileSha256",
-    "confirmationPath",
-    "confirmationExcerpt",
-    "confirmationFileSha256",
+_ANGLE_FIELDS = {"kind", "path", "excerpt", "fileSha256"}
+_ANGLE_BINDING_FIELDS = {
+    "legacyRowSha256",
+    "ledgerPosition",
+    "ledgerPrefixSha256",
+    "publicationEventId",
+    "publicationEventSha256",
+    "publicationUrl",
+    "finalTextSha256",
 }
 _CONFLICT_FIELDS = {"check", "status", "evidence", "evidenceRef"}
 _EVIDENCE_REF_FIELDS = {"path", "fileSha256", "recordId"}
@@ -124,23 +134,6 @@ _LANES = {"teardown", "ai_news"}
 _ATTRIBUTIONS = {"public_fact", "vendor_assertion", "jt_verified_fact", "hypothesis"}
 _HASH64 = re.compile(r"^[0-9a-f]{64}$")
 _SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-_INTERNAL_TERMS = (
-    "autonomous content system",
-    "content-generation machinery",
-    "mission control",
-    "openclaw",
-    "content os",
-    "growth os",
-    "decagon",
-    "job search",
-    "job-search automation",
-    "outreach automation",
-    "prospecting automation",
-    "publishing machinery",
-    "state file",
-    "stop condition",
-    "the handoff everyone checks manually",
-)
 _REQUIRED_CONFLICT_CHECKS = {
     "ai_news": {"source_identity", "claim_attribution", "protected_purpose_removed"},
     "teardown": {
@@ -210,33 +203,8 @@ def _slug(value: object, label: str) -> str:
     return text
 
 
-def _public_safe_text(value: object, label: str) -> str:
-    text = _text(value, label)
-    lowered = text.lower()
-    if any(term in lowered for term in _INTERNAL_TERMS) or re.search(r"\beve\b", lowered):
-        raise ValueError("{} exposes prohibited internal machinery".format(label))
-    if re.search(r"(?:sk-|bearer\s+|token[=:]|[0-9a-f]{40,})", text, re.IGNORECASE):
-        raise ValueError("{} contains a possible secret".format(label))
-    if re.search(r"\b\w+n['’]t\b|\b(?:is|are)\s+not\b|,\s*not\b", lowered):
-        raise ValueError("{} uses a prohibited contrast construction".format(label))
-    if re.search(r"\bnot\b[^.\n]{0,80}\bbut\b", lowered):
-        raise ValueError("{} uses a prohibited not-but construction".format(label))
-    if re.search(r":\s*\n\s*(?:[•*-]|\d+\.)", text):
-        raise ValueError("{} uses a prohibited colon-led list".format(label))
-    if re.search(r":\s+[^.\n,:]{1,40},\s+[^.\n,:]{1,40},\s+(?:and|or)\s+", text, re.IGNORECASE):
-        raise ValueError("{} uses a prohibited inline colon list".format(label))
-    if "—" in text:
-        raise ValueError("{} uses a prohibited em dash".format(label))
-    if any(
-        phrase in lowered
-        for phrase in (
-            "exception layer",
-            "where the risk lives",
-            "matters more than people think",
-        )
-    ):
-        raise ValueError("{} repeats a blocked content shape".format(label))
-    return text
+def _public_safe_text(value: object, surface: str) -> str:
+    return require_public_copy(_text(value, surface), surface)
 
 
 def _timestamp(value: object, label: str) -> datetime:
@@ -288,6 +256,81 @@ def _validate_source(source: object, lane: str, now: datetime) -> dict[str, obje
     return {**unsigned, "sourceSha256": sha256_hex(canonical_bytes(unsigned))}
 
 
+def _governed_publication_binding(path: str, excerpt: str) -> dict[str, object]:
+    """Derive earned-angle publication authority from the canonical ledger only.
+
+    The legacy row comes from the contained posted log, its status comes from
+    Program 0's latest-wins governed derivation, and the binding pins the ledger
+    prefix through the last event that concerns that row.
+    """
+
+    posted_log = _safe_descendant(_REPOSITORY_ROOT, _POSTED_LOG, "posted log")
+    if not posted_log.is_file():
+        raise ValueError("posted log is missing")
+    rows = [
+        row
+        for row in read_jsonl(posted_log)
+        if isinstance(row.get("platform"), str)
+        and str(row["platform"]).lower() == "linkedin"
+        and row.get("source_file") == path
+    ]
+    if len(rows) != 1:
+        raise ValueError("earned angle needs exactly one governed LinkedIn source row")
+    row_hash = _legacy_row_hash(rows[0])
+    packet_id = "legacy:{}".format(row_hash)
+
+    ledger = _safe_descendant(_REPOSITORY_ROOT, _CANONICAL_LEDGER, "canonical outcome ledger")
+    if not ledger.is_file():
+        raise ValueError("canonical outcome ledger is missing")
+    events = load_events(ledger)
+    governed = _governed_evidence(ledger).get(row_hash, {})
+    if load_events(ledger) != events:
+        raise ValueError("canonical outcome ledger changed during earned-angle derivation")
+    status = governed.get("status", "status_unknown")
+    if status != "posted_confirmed":
+        raise ValueError(
+            "earned angle source row is not governed posted_confirmed (latest status: {})".format(status)
+        )
+    public_url = governed.get("publicUrl")
+    final_text = governed.get("finalText")
+    if not isinstance(public_url, str) or not isinstance(final_text, str):
+        raise ValueError("earned angle governed publication lacks a public URL and final text")
+    if excerpt not in final_text:
+        raise ValueError("earned angle excerpt is not in the governed final published text")
+
+    publications = [
+        (index, event)
+        for index, event in enumerate(events)
+        if event["eventType"] == "publication_acknowledged"
+        and event["packetId"] == packet_id
+        and event["payload"].get("publicationUrl") == public_url
+        and event["payload"].get("finalText") == final_text
+    ]
+    if len(publications) != 1:
+        raise ValueError("earned angle governed publication event is missing or ambiguous")
+    _, publication = publications[0]
+    related = [
+        index
+        for index, event in enumerate(events)
+        if event["packetId"] == packet_id
+        or (
+            event["eventType"] == "historical_status"
+            and event["payload"].get("legacyRowSha256") == row_hash
+        )
+    ]
+    position = max(related) + 1
+    prefix = b"".join(canonical_bytes(event) + b"\n" for event in events[:position])
+    return {
+        "legacyRowSha256": row_hash,
+        "ledgerPosition": position,
+        "ledgerPrefixSha256": sha256_hex(prefix),
+        "publicationEventId": publication["outcomeEventId"],
+        "publicationEventSha256": publication["eventSha256"],
+        "publicationUrl": public_url,
+        "finalTextSha256": sha256_hex(final_text.encode("utf-8")),
+    }
+
+
 def _validate_angle(value: object) -> dict[str, object]:
     if not isinstance(value, dict):
         raise ValueError("earned angle must be an object")
@@ -297,8 +340,7 @@ def _validate_angle(value: object) -> dict[str, object]:
     path = _safe_path(value["path"], "earned angle path")
     excerpt = _text(value["excerpt"], "earned angle excerpt")
     expected_hash = _hash(value["fileSha256"], "earned angle fileSha256")
-    repository = Path(__file__).resolve().parents[2]
-    source_path = _safe_descendant(repository, path, "earned angle path")
+    source_path = _safe_descendant(_REPOSITORY_ROOT, path, "earned angle path")
     if not source_path.is_file():
         raise ValueError("earned angle path is missing or symlinked")
     source_bytes = source_path.read_bytes()
@@ -310,77 +352,12 @@ def _validate_angle(value: object) -> dict[str, object]:
         raise ValueError("earned angle source must be UTF-8") from error
     if excerpt not in source_text:
         raise ValueError("earned angle excerpt is not exact source text")
-    confirmation_path = _safe_path(value["confirmationPath"], "earned angle confirmation path")
-    confirmation_excerpt = _text(value["confirmationExcerpt"], "earned angle confirmation excerpt")
-    expected_confirmation_hash = _hash(
-        value["confirmationFileSha256"], "earned angle confirmation fileSha256"
-    )
-    confirmation_source = _safe_descendant(
-        repository, confirmation_path, "earned angle confirmation path"
-    )
-    if not confirmation_source.is_file():
-        raise ValueError("earned angle confirmation path is missing or symlinked")
-    confirmation_bytes = confirmation_source.read_bytes()
-    if sha256_hex(confirmation_bytes) != expected_confirmation_hash:
-        raise ValueError("earned angle confirmation file hash mismatch")
-    confirmation_text = confirmation_bytes.decode("utf-8")
-    if confirmation_excerpt not in confirmation_text:
-        raise ValueError("earned angle confirmation excerpt is not exact source text")
-    posted_log = repository / "memory/content/posted-log.jsonl"
-    matching_rows: list[dict[str, object]] = []
-    for raw_line in posted_log.read_text(encoding="utf-8").splitlines():
-        if not raw_line.strip():
-            continue
-        row = json.loads(raw_line)
-        if isinstance(row, dict) and row.get("source_file") == path:
-            matching_rows.append(row)
-    if len(matching_rows) != 1:
-        raise ValueError("earned angle needs one governed legacy source row")
-    legacy_hash = sha256_hex(canonical_bytes(matching_rows[0]))
-    legacy_packet_id = "legacy:{}".format(legacy_hash)
-    try:
-        events = load_events(confirmation_source)
-    except (OSError, ValueError) as error:
-        raise ValueError("earned angle confirmation must use the governed outcome ledger") from error
-    statuses = [
-        event
-        for event in events
-        if event["eventType"] == "historical_status"
-        and event["packetId"] == legacy_packet_id
-        and event["payload"].get("status") == "posted_confirmed"
-    ]
-    publications = [
-        event
-        for event in events
-        if event["eventType"] == "publication_acknowledged"
-        and event["packetId"] == legacy_packet_id
-        and event["outcomeEventId"] == confirmation_excerpt
-    ]
-    if len(statuses) != 1 or len(publications) != 1:
-        raise ValueError("earned angle lacks governed posted_confirmed publication evidence")
-    publication = publications[0]
-    payload = publication["payload"]
-    pointer = publication["sourcePointer"]
-    final_text = payload.get("finalText")
-    final_hash = payload.get("finalTextSha256")
-    public_url = payload.get("publicationUrl")
-    if (
-        not isinstance(final_text, str)
-        or excerpt not in final_text
-        or final_hash != sha256_hex(final_text.encode("utf-8"))
-        or pointer.get("sourceType") != "linkedin_publication_capture"
-        or pointer.get("sourceId") != public_url
-        or pointer.get("sourceSha256") != final_hash
-    ):
-        raise ValueError("earned angle governed publication does not bind exact final text")
     return {
         "kind": value["kind"],
         "path": path,
         "excerpt": excerpt,
         "fileSha256": expected_hash,
-        "confirmationPath": confirmation_path,
-        "confirmationExcerpt": confirmation_excerpt,
-        "confirmationFileSha256": expected_confirmation_hash,
+        **_governed_publication_binding(path, excerpt),
     }
 
 
@@ -406,8 +383,7 @@ def _validate_conflict_checks(value: object, lane: str) -> list[dict[str, object
         evidence_path = _safe_path(evidence_ref["path"], "conflict evidence path")
         evidence_hash = _hash(evidence_ref["fileSha256"], "conflict evidence fileSha256")
         record_id = _text(evidence_ref["recordId"], "conflict evidence recordId")
-        repository = Path(__file__).resolve().parents[2]
-        evidence_file = _safe_descendant(repository, evidence_path, "conflict evidence path")
+        evidence_file = _safe_descendant(_REPOSITORY_ROOT, evidence_path, "conflict evidence path")
         if not evidence_file.is_file() or sha256_hex(evidence_file.read_bytes()) != evidence_hash:
             raise ValueError("conflict evidence file is missing or hash-mismatched")
         try:
@@ -459,7 +435,7 @@ def _validate_visual(value: object, lane: str) -> dict[str, object]:
         if lane == "ai_news":
             raise ValueError("AI news must use the original text-first source-card route")
         raise ValueError("teardown must use the schematic route")
-    footer = _public_safe_text(value["footer"], "visual footer")
+    footer = _public_safe_text(value["footer"], "attribution" if lane == "ai_news" else "footer")
     if lane == "teardown" and footer != "Proposed system based on public information":
         raise ValueError("teardown must carry the public information label")
     stages = value["stages"]
@@ -467,10 +443,10 @@ def _validate_visual(value: object, lane: str) -> dict[str, object]:
         raise ValueError("visual stages must contain four or five items")
     return {
         "template": expected,
-        "eyebrow": _public_safe_text(value["eyebrow"], "visual eyebrow"),
-        "title": _public_safe_text(value["title"], "visual title"),
-        "subtitle": _public_safe_text(value["subtitle"], "visual subtitle"),
-        "stages": [_public_safe_text(item, "visual stage") for item in stages],
+        "eyebrow": _public_safe_text(value["eyebrow"], "eyebrow"),
+        "title": _public_safe_text(value["title"], "title"),
+        "subtitle": _public_safe_text(value["subtitle"], "subtitle"),
+        "stages": [_public_safe_text(item, "stage") for item in stages],
         "footer": footer,
     }
 
@@ -730,7 +706,7 @@ def _normalize_spec(spec: object, now: datetime) -> dict[str, object]:
         "earnedAngle": _validate_angle(spec["earnedAngle"]),
         "conflictChecks": _validate_conflict_checks(spec["conflictChecks"], lane),
         "visualRoute": _validate_visual(spec["visual"], lane),
-        "altText": _public_safe_text(spec["altText"], "altText"),
+        "altText": _public_safe_text(spec["altText"], "alt"),
         "cropGuidance": _text(spec["cropGuidance"], "cropGuidance"),
         "privacyResult": _result(spec["privacyResult"], "privacyResult"),
         "rightsResult": _result(spec["rightsResult"], "rightsResult"),
@@ -873,6 +849,11 @@ def validate_manual_fixture(packet: object, artifact_root: Path, *, now: datetim
         if recorded_excerpt_hash != sha256_hex(str(source["excerpts"][index]).encode("utf-8")):
             raise ValueError("claim excerpt hash mismatch")
         raw_claims.append(raw_claim)
+    packet_angle = packet["earnedAngle"]
+    if not isinstance(packet_angle, dict):
+        raise ValueError("earned angle must be an object")
+    _exact_fields(packet_angle, _ANGLE_FIELDS | _ANGLE_BINDING_FIELDS, "earned angle binding")
+    raw_angle = {key: packet_angle[key] for key in _ANGLE_FIELDS}
 
     normalized = _normalize_spec(
         {
@@ -889,7 +870,7 @@ def validate_manual_fixture(packet: object, artifact_root: Path, *, now: datetim
             "postText": packet["postText"],
             "sources": raw_sources,
             "claims": raw_claims,
-            "earnedAngle": packet["earnedAngle"],
+            "earnedAngle": raw_angle,
             "conflictChecks": packet["conflictChecks"],
             "visual": packet["visualRoute"],
             "altText": packet["altText"],

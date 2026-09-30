@@ -6,6 +6,25 @@
   <style>body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;line-height:1.5;color:#172033}h1,h2{color:#102a43}.box{background:#eef5ff;border:1px solid #b8d4ff;border-radius:10px;padding:16px}code{background:#f3f5f7;padding:2px 5px;border-radius:4px}</style>
 </head>
 <body>
+  <h1>LinkedIn Manual Fixtures Authority Repair — 2026-09-30</h1>
+  <div class="box"><strong>Status</strong> Builder-verified and committed locally; both fixtures blocked pending governed confirmation<br><strong>Task</strong> Close the three Important findings from the independent review of <code>c4aefea…</code><br><strong>Top notes</strong> Canonical-ledger latest-wins authority replaces caller-selected evidence. The approved ledger was restored because Program 0 rejects the ungoverned <code>posted_confirmed</code> append. One deterministic content-policy module governs every public surface.</div>
+  <h2>Design Decisions</h2>
+  <p>The governed outcome ledger at <code>memory/content/linkedin-content-os/outcomes.v1.jsonl</code> is the only publication authority, resolved beneath a fixed repository root. Specs carry only <code>kind</code>, <code>path</code>, <code>excerpt</code>, and <code>fileSha256</code>; the packet derives and binds the legacy row, publication event ID and hash, public URL, final-text hash, and ledger prefix hash and position.</p>
+  <p>Status reuses Program 0's latest-wins <code>_governed_evidence</code> and row hash <code>_legacy_row_hash</code> instead of duplicating event selection. A later event for the row revokes the angle; unrelated later events do not.</p>
+  <p>Public-copy enforcement is one module (<code>content_policy.py</code>) applied identically to post, eyebrow, title, subtitle, stages, footer, attribution, and alt text, with a table-driven example for every governed rule.</p>
+  <h2>Deviations</h2>
+  <p>Plan Task 6 could not extend Program 0 with the <code>c4aefea</code> events: <code>audit-history</code> raises <code>empty authority allowlist requires all status_unknown human-gate answers</code>, because JT's 2026-09-28 gate answer for legacy row <code>fabf927a…</code> is <code>still_unknown</code>. JT chose to restore the approved ledger (<code>e27dc5bb…</code>) and hold both fixtures. Program 0 was regenerated through the canonical CLI with byte-identical outputs and passes <code>verify</code>.</p>
+  <p>Plan Task 7 therefore produces no tracked packets. The rejected <code>c4aefea</code> packet/image pairs were removed from the tree and recorded by hash; both specs are recorded as blocked candidates and proven buildable only under governed confirmation in an isolated copy.</p>
+  <p>Plan Task 9 (independent review) was not run, per JT's instruction for this run.</p>
+  <h2>Tradeoffs</h2>
+  <p>Ledger prefix/position binding keeps accepted packets valid across unrelated future events while pinning the exact governing evidence. The policy bans every prose colon and every <code>n't</code> contraction, which fails closed on some harmless phrasing; it keeps clock times and URLs.</p>
+  <h2>Open Questions</h2>
+  <p>JT must answer the governed human gate for legacy row <code>fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf</code> (posted, public URL, final text) and approve a separate run for <code>ingest-human-gate</code> and its boundary capture. The AI-news evidence window closes <code>2026-10-02T23:59:59-04:00</code>; after that the event needs replacing.</p>
+  <h2>Files Changed</h2>
+  <p><code>scripts/linkedin_content_os/content_policy.py</code> (new), <code>manual_fixtures.py</code>, <code>canonical.py</code>, both test modules, both source specs, <code>accepted-set.v1.json</code>, <code>outcomes.v1.jsonl</code> (restored), the reconciliation report, this file, and <code>tasks/todo.md</code>. Removed: the two rejected <code>c4aefea</code> packet/image pairs.</p>
+  <h2>Verification</h2>
+  <p>RED: 8/8 authority, filesystem, and lock regressions; all policy matrices. GREEN: focused 39/39; full LinkedIn Content OS 272/272 with real-path <code>TMPDIR</code>; Program 0 <code>verify</code> PASS (101 <code>status_unknown</code>); voice guard 100/100 and distribution guard PASS on both posts; tamper probes rejected; original-resolution renders inspected; compile, <code>git diff --check</code>, and credential scan clean.</p>
+  <hr>
   <h1>LinkedIn Manual Fixtures Final Acceptance Repair — 2026-09-29</h1>
   <div class="box"><strong>Status</strong> In progress; authority-first repair approved<br><strong>Task</strong> Close five Important independent-review findings without expanding external authority<br><strong>Top notes</strong> Governed posted outcome replaces builder self-attestation. Validation will re-render pixels and require byte equality. All filesystem operations will share ancestor-symlink and resolved-root containment checks.</div>
   <h2>Design Decisions</h2>

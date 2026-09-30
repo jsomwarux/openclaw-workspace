@@ -3,16 +3,23 @@ from __future__ import annotations
 import copy
 import io
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest import mock
 
 from PIL import Image
 
-from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
+from scripts.linkedin_content_os.canonical import (
+    _exclusive_path_lock,
+    canonical_bytes,
+    sha256_hex,
+)
+from scripts.linkedin_content_os import manual_fixtures
 from scripts.linkedin_content_os.manual_fixtures import (
     _draft_binding,
     _payload_binding,
@@ -22,6 +29,393 @@ from scripts.linkedin_content_os.manual_fixtures import (
 
 
 NOW = datetime(2026, 9, 28, 20, 30, tzinfo=timezone.utc)
+REPOSITORY = Path(__file__).resolve().parents[2]
+ANGLE_PATH = "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md"
+ANGLE_EXCERPT = (
+    "It proves what the workflow saw, what it was allowed to touch, what it held back, "
+    "and where the decision landed."
+)
+NEVER_POSTED_PATH = "memory/drafts/linkedin-exception-control-plane-2026-06-14.md"
+CANONICAL_LEDGER = "memory/content/linkedin-content-os/outcomes.v1.jsonl"
+POSTED_LOG = "memory/content/posted-log.jsonl"
+SYNTHETIC_URL = "https://www.linkedin.com/feed/update/urn:li:activity:7490053069380964353/"
+TRACKED_NOW = datetime.fromisoformat("2026-09-30T12:00:00-04:00")
+_ISOLATED_FILES = (
+    "scripts/build_linkedin_manual_fixtures.py",
+    POSTED_LOG,
+    ANGLE_PATH,
+    NEVER_POSTED_PATH,
+    CANONICAL_LEDGER,
+    "memory/content/linkedin-content-os/corpus-authority-manifest.v1.json",
+    "memory/content/linkedin-content-os/manual-fixtures/evidence/manual-fixture-conflict-evidence.v1.json",
+)
+
+
+def _event(**fields: object) -> dict[str, object]:
+    event: dict[str, object] = {"schemaVersion": "linkedin-content-outcome.v1", **fields}
+    event["eventSha256"] = sha256_hex(canonical_bytes(event))
+    return event
+
+
+def _legacy_row_hash(repository: Path, source_file: str) -> str:
+    rows = [
+        json.loads(line)
+        for line in (repository / POSTED_LOG).read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    matches = [row for row in rows if row.get("source_file") == source_file]
+    assert len(matches) == 1, source_file
+    return sha256_hex(canonical_bytes(matches[0]))
+
+
+def _isolated_repository(destination: Path) -> Path:
+    """Copy the working-tree fixture code and governed inputs into one real-path repository.
+
+    The canonical ledger is truncated to the Program 0 approved prefix so every test
+    starts from governed state and appends only its own synthetic events.
+    """
+
+    shutil.copytree(
+        REPOSITORY / "scripts/linkedin_content_os",
+        destination / "scripts/linkedin_content_os",
+        ignore=shutil.ignore_patterns("__pycache__"),
+    )
+    for relative in _ISOLATED_FILES:
+        target = destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(REPOSITORY / relative, target)
+    manifest = json.loads(
+        (destination / "memory/content/linkedin-content-os/corpus-authority-manifest.v1.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    ledger = destination / CANONICAL_LEDGER
+    approved = ledger.read_bytes().splitlines(keepends=True)[: int(manifest["ledgerPosition"])]
+    ledger.write_bytes(b"".join(approved))
+    return destination
+
+
+def _append_events(ledger: Path, events: list[dict[str, object]]) -> None:
+    ledger.write_bytes(ledger.read_bytes() + b"".join(canonical_bytes(event) + b"\n" for event in events))
+
+
+def _governed_publication_events(
+    row_hash: str, excerpt: str, *, recorded_at: str = "2026-09-30T09:00:00-04:00"
+) -> list[dict[str, object]]:
+    final_text = "Synthetic governed capture for fixture tests.\n\n{}".format(excerpt)
+    final_hash = sha256_hex(final_text.encode("utf-8"))
+    pointer = {
+        "sourceType": "linkedin_publication_capture",
+        "sourceId": SYNTHETIC_URL,
+        "sourceSha256": final_hash,
+    }
+    return [
+        _event(
+            outcomeEventId="history-governed:{}".format(row_hash),
+            packetId="legacy:{}".format(row_hash),
+            eventType="historical_status",
+            recordedAt=recorded_at,
+            sourcePointer=pointer,
+            payload={"legacyRowSha256": row_hash, "status": "posted_confirmed"},
+        ),
+        _event(
+            outcomeEventId="publication:{}".format(row_hash),
+            packetId="legacy:{}".format(row_hash),
+            eventType="publication_acknowledged",
+            recordedAt=recorded_at,
+            sourcePointer=pointer,
+            payload={
+                "publicationUrl": SYNTHETIC_URL,
+                "publishedAt": "2026-08-03T10:36:50-04:00",
+                "finalText": final_text,
+                "finalTextSha256": final_hash,
+            },
+        ),
+    ]
+
+
+def _status_event(row_hash: str, status: str, recorded_at: str, event_id: str) -> dict[str, object]:
+    return _event(
+        outcomeEventId=event_id,
+        packetId="legacy:{}".format(row_hash),
+        eventType="historical_status",
+        recordedAt=recorded_at,
+        sourcePointer={
+            "sourceType": "jt_human_gate_response",
+            "sourceId": "sha256:{}".format("a" * 64),
+            "sourceSha256": "a" * 64,
+        },
+        payload={"legacyRowSha256": row_hash, "status": status},
+    )
+
+
+def _legacy_confirmation_angle(repository: Path, confirmation_path: str, event_id: str) -> dict[str, object]:
+    """The caller-selected confirmation shape accepted by the rejected c4aefea contract."""
+
+    return {
+        "kind": "jt_field_lesson",
+        "path": ANGLE_PATH,
+        "excerpt": ANGLE_EXCERPT,
+        "fileSha256": sha256_hex((repository / ANGLE_PATH).read_bytes()),
+        "confirmationPath": confirmation_path,
+        "confirmationExcerpt": event_id,
+        "confirmationFileSha256": sha256_hex((repository / confirmation_path).read_bytes()),
+    }
+
+
+def _governed_angle(repository: Path, path: str = ANGLE_PATH, excerpt: str = ANGLE_EXCERPT) -> dict[str, object]:
+    return {
+        "kind": "jt_field_lesson",
+        "path": path,
+        "excerpt": excerpt,
+        "fileSha256": sha256_hex((repository / path).read_bytes()),
+    }
+
+
+def _run_build(repository: Path, spec: dict[str, object], artifact_root: Path, now: datetime) -> subprocess.CompletedProcess:
+    spec_path = artifact_root.parent / "{}-spec.json".format(artifact_root.name)
+    spec_path.write_text(json.dumps(spec), encoding="utf-8")
+    return subprocess.run(
+        [
+            sys.executable,
+            "-B",
+            "scripts/build_linkedin_manual_fixtures.py",
+            "--source",
+            str(spec_path),
+            "--artifact-root",
+            str(artifact_root),
+            "--now",
+            now.isoformat(),
+        ],
+        cwd=repository,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        check=False,
+    )
+
+
+class EarnedAngleAuthorityTests(unittest.TestCase):
+    """Earned-angle authority comes only from the canonical ledger's governed derivation."""
+
+    def setUp(self) -> None:
+        self._temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self._temporary.cleanup)
+        self.work = Path(self._temporary.name).resolve()
+        self.repository = _isolated_repository(self.work / "repository")
+        self.ledger = self.repository / CANONICAL_LEDGER
+        self.row_hash = _legacy_row_hash(self.repository, ANGLE_PATH)
+
+    def _artifact_root(self, name: str) -> Path:
+        root = self.work / name
+        root.mkdir()
+        return root
+
+    def test_caller_selected_ledger_cannot_establish_earned_angle(self) -> None:
+        forged_row = _legacy_row_hash(self.repository, NEVER_POSTED_PATH)
+        forged_rows = [
+            json.loads(line)
+            for line in (self.repository / POSTED_LOG).read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+        self.assertTrue(
+            any(row.get("source_file") == NEVER_POSTED_PATH and row.get("posted") is not True for row in forged_rows)
+        )
+        excerpt = next(
+            line.strip()
+            for line in (self.repository / NEVER_POSTED_PATH).read_text(encoding="utf-8").splitlines()
+            if 60 < len(line.strip()) < 200
+        )
+        forged_ledger = self.repository / "memory/forged/outcomes.jsonl"
+        forged_ledger.parent.mkdir(parents=True)
+        forged_ledger.write_bytes(b"")
+        _append_events(forged_ledger, _governed_publication_events(forged_row, excerpt))
+        spec = _spec("ai_news")
+        spec["earnedAngle"] = {
+            **_legacy_confirmation_angle(
+                self.repository, "memory/forged/outcomes.jsonl", "publication:{}".format(forged_row)
+            ),
+            "path": NEVER_POSTED_PATH,
+            "excerpt": excerpt,
+            "fileSha256": sha256_hex((self.repository / NEVER_POSTED_PATH).read_bytes()),
+        }
+        result = _run_build(self.repository, spec, self._artifact_root("forged"), NOW)
+        self.assertNotEqual(result.returncode, 0, "a caller-selected ledger established authority")
+        self.assertIn("earned angle", result.stderr)
+
+    def test_later_retraction_in_selected_ledger_is_not_ignored(self) -> None:
+        _append_events(self.ledger, _governed_publication_events(self.row_hash, ANGLE_EXCERPT))
+        _append_events(
+            self.ledger,
+            [
+                _status_event(
+                    self.row_hash,
+                    "not_posted_confirmed",
+                    "2026-09-30T10:00:00-04:00",
+                    "history-retraction:{}".format(self.row_hash),
+                )
+            ],
+        )
+        spec = _spec("ai_news")
+        spec["earnedAngle"] = _legacy_confirmation_angle(
+            self.repository, CANONICAL_LEDGER, "publication:{}".format(self.row_hash)
+        )
+        result = _run_build(self.repository, spec, self._artifact_root("retracted-legacy"), NOW)
+        self.assertNotEqual(result.returncode, 0, "a later governed retraction was ignored")
+
+    def test_latest_governed_retraction_revokes_the_earned_angle(self) -> None:
+        _append_events(self.ledger, _governed_publication_events(self.row_hash, ANGLE_EXCERPT))
+        _append_events(
+            self.ledger,
+            [
+                _status_event(
+                    self.row_hash,
+                    "not_posted_confirmed",
+                    "2026-09-30T10:00:00-04:00",
+                    "history-retraction:{}".format(self.row_hash),
+                )
+            ],
+        )
+        spec = _spec("ai_news")
+        spec["earnedAngle"] = _governed_angle(self.repository)
+        result = _run_build(self.repository, spec, self._artifact_root("retracted"), NOW)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("not governed posted_confirmed", result.stderr)
+        self.assertIn("not_posted_confirmed", result.stderr)
+
+    def test_governed_confirmation_binds_the_exact_ledger_prefix_and_publication(self) -> None:
+        events = _governed_publication_events(self.row_hash, ANGLE_EXCERPT)
+        _append_events(self.ledger, events)
+        spec = _spec("ai_news")
+        spec["earnedAngle"] = _governed_angle(self.repository)
+        result = _run_build(self.repository, spec, self._artifact_root("governed"), NOW)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        angle = json.loads(result.stdout)["earnedAngle"]
+        ledger_lines = self.ledger.read_bytes().splitlines(keepends=True)
+        self.assertEqual(angle["legacyRowSha256"], self.row_hash)
+        self.assertEqual(angle["ledgerPosition"], len(ledger_lines))
+        self.assertEqual(angle["ledgerPrefixSha256"], sha256_hex(b"".join(ledger_lines)))
+        self.assertEqual(angle["publicationEventId"], events[1]["outcomeEventId"])
+        self.assertEqual(angle["publicationEventSha256"], events[1]["eventSha256"])
+        self.assertEqual(angle["publicationUrl"], SYNTHETIC_URL)
+        self.assertEqual(angle["finalTextSha256"], events[1]["payload"]["finalTextSha256"])
+
+    def test_unrelated_later_events_keep_the_bound_angle_valid_but_row_events_do_not(self) -> None:
+        _append_events(self.ledger, _governed_publication_events(self.row_hash, ANGLE_EXCERPT))
+        spec = _spec("ai_news")
+        spec["earnedAngle"] = _governed_angle(self.repository)
+        artifact_root = self._artifact_root("prefix")
+        first = _run_build(self.repository, spec, artifact_root, NOW)
+        self.assertEqual(first.returncode, 0, first.stderr)
+
+        unrelated_row = _legacy_row_hash(self.repository, NEVER_POSTED_PATH)
+        _append_events(
+            self.ledger,
+            [
+                _status_event(
+                    unrelated_row,
+                    "status_unknown",
+                    "2026-09-30T11:00:00-04:00",
+                    "history-unrelated:{}".format(unrelated_row),
+                )
+            ],
+        )
+        replay = _run_build(self.repository, spec, artifact_root, NOW)
+        self.assertEqual(replay.returncode, 0, replay.stderr)
+        self.assertEqual(replay.stdout, first.stdout)
+
+        _append_events(
+            self.ledger,
+            [
+                _status_event(
+                    self.row_hash,
+                    "status_unknown",
+                    "2026-09-30T12:00:00-04:00",
+                    "history-later:{}".format(self.row_hash),
+                )
+            ],
+        )
+        revoked = _run_build(self.repository, spec, artifact_root, NOW)
+        self.assertNotEqual(revoked.returncode, 0)
+        self.assertIn("not governed posted_confirmed", revoked.stderr)
+
+    def test_symlinked_posted_log_cannot_supply_the_source_row(self) -> None:
+        _append_events(self.ledger, _governed_publication_events(self.row_hash, ANGLE_EXCERPT))
+        outside = self.work / "outside-posted-log.jsonl"
+        posted_log = self.repository / POSTED_LOG
+        outside.write_bytes(posted_log.read_bytes())
+        posted_log.unlink()
+        posted_log.symlink_to(outside)
+        spec = _spec("ai_news")
+        spec["earnedAngle"] = _legacy_confirmation_angle(
+            self.repository, CANONICAL_LEDGER, "publication:{}".format(self.row_hash)
+        )
+        legacy = _run_build(self.repository, spec, self._artifact_root("posted-log-legacy"), NOW)
+        self.assertNotEqual(legacy.returncode, 0, "a symlinked posted log supplied the source row")
+        spec["earnedAngle"] = _governed_angle(self.repository)
+        governed = _run_build(self.repository, spec, self._artifact_root("posted-log"), NOW)
+        self.assertNotEqual(governed.returncode, 0)
+        self.assertIn("symlink", governed.stderr)
+
+    def test_symlinked_canonical_ledger_is_rejected(self) -> None:
+        _append_events(self.ledger, _governed_publication_events(self.row_hash, ANGLE_EXCERPT))
+        outside = self.work / "outside-ledger.jsonl"
+        outside.write_bytes(self.ledger.read_bytes())
+        self.ledger.unlink()
+        self.ledger.symlink_to(outside)
+        spec = _spec("ai_news")
+        spec["earnedAngle"] = _governed_angle(self.repository)
+        result = _run_build(self.repository, spec, self._artifact_root("ledger-link"), NOW)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("canonical outcome ledger contains a symlink component", result.stderr)
+
+
+class TrackedFixtureStateTests(unittest.TestCase):
+    """The real repository's canonical ledger must not confirm either tracked fixture."""
+
+    def test_accepted_set_blocks_both_candidates_until_governed_confirmation(self) -> None:
+        fixture_root = REPOSITORY / "memory/content/linkedin-content-os/manual-fixtures"
+        accepted_set = json.loads((fixture_root / "accepted-set.v1.json").read_text(encoding="utf-8"))
+        self.assertEqual(accepted_set["state"], "blocked_pending_governed_publication_confirmation")
+        self.assertEqual(accepted_set["candidatePackets"], [])
+        self.assertIs(accepted_set["externalActionsAuthorized"], False)
+        blocked = accepted_set["blockedCandidates"]
+        self.assertEqual(
+            sorted(candidate["packetId"] for candidate in blocked),
+            ["linkedin-ai-news-openai-health-2026-09-29-v1", "linkedin-teardown-servicenow-inry-2026-09-29-v1"],
+        )
+        for candidate in blocked:
+            with self.subTest(packetId=candidate["packetId"]):
+                spec_path = REPOSITORY / candidate["sourceSpec"]
+                self.assertEqual(sha256_hex(spec_path.read_bytes()), candidate["sourceSpecSha256"])
+                self.assertFalse((fixture_root / candidate["packetId"]).exists())
+                self.assertEqual(
+                    candidate["legacyRowSha256"], _legacy_row_hash(REPOSITORY, candidate["earnedAnglePath"])
+                )
+                with tempfile.TemporaryDirectory() as temporary:
+                    with self.assertRaises(ValueError) as raised:
+                        build_manual_fixture(
+                            json.loads(spec_path.read_text(encoding="utf-8")), Path(temporary), now=TRACKED_NOW
+                        )
+                self.assertEqual(str(raised.exception), candidate["blockReason"])
+        self.assertEqual(
+            sorted(artifact["packetId"] for artifact in accepted_set["rejectedArtifacts"]),
+            ["linkedin-ai-news-openai-health-2026-09-29-v1", "linkedin-teardown-servicenow-inry-2026-09-29-v1"],
+        )
+
+
+class LockPathTests(unittest.TestCase):
+    def test_existing_lock_symlink_cannot_create_an_external_target(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve()
+            guarded = root / "guarded"
+            guarded.mkdir()
+            outside = root / "outside-target"
+            (root / ".guarded.lock").symlink_to(outside)
+            with self.assertRaisesRegex(ValueError, "lock path must not be a symlink"):
+                with _exclusive_path_lock(guarded):
+                    pass
+            self.assertFalse(outside.exists())
 
 
 def _rehash(packet: dict[str, object]) -> dict[str, object]:
@@ -31,14 +425,6 @@ def _rehash(packet: dict[str, object]) -> dict[str, object]:
 
 
 def _spec(lane: str) -> dict[str, object]:
-    repository = Path(__file__).resolve().parents[2]
-    angle_path = repository / "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md"
-    confirmation_path = repository / "memory/content/linkedin-content-os/outcomes.v1.jsonl"
-    angle_excerpt = (
-        "It proves what the workflow saw, what it was allowed to touch, what it held back, "
-        "and where the decision landed."
-    )
-    confirmation_excerpt = "publication:fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf"
     slug_lane = lane.replace("_", "-")
     source = {
         "sourceId": "primary-1",
@@ -76,15 +462,7 @@ def _spec(lane: str) -> dict[str, object]:
         "postText": "Access has multiple controls.\n\nIdentity-only sign-in remains separate from data access.",
         "sources": [source],
         "claims": claims,
-        "earnedAngle": {
-            "kind": "jt_field_lesson",
-            "path": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
-            "excerpt": angle_excerpt,
-            "fileSha256": sha256_hex(angle_path.read_bytes()),
-            "confirmationPath": "memory/content/linkedin-content-os/outcomes.v1.jsonl",
-            "confirmationExcerpt": confirmation_excerpt,
-            "confirmationFileSha256": sha256_hex(confirmation_path.read_bytes()),
-        },
+        "earnedAngle": _governed_angle(REPOSITORY),
         "conflictChecks": [
             {
                 "check": name,
@@ -149,42 +527,89 @@ def _spec(lane: str) -> dict[str, object]:
             "title": "Separate each access control",
             "subtitle": "OpenAI Enterprise release notes · Sep 24, 2026",
             "stages": ["Identity", "Data access", "Action scope", "Human approval"],
-            "footer": "Source: OpenAI Enterprise release notes",
+            "footer": "Based on OpenAI Enterprise release notes",
         }
     return spec
 
 
-class ManualFixtureTests(unittest.TestCase):
+class _GovernedRepositoryCase(unittest.TestCase):
+    """Run in-process fixture tests against an isolated repository with synthetic governed authority.
+
+    The real repository's canonical ledger does not confirm any earned angle, so
+    positive-path tests use a copy whose ledger appends a synthetic governed
+    posted_confirmed status and publication for the angle's legacy row.
+    """
+
+    def setUp(self) -> None:
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.work = Path(temporary.name).resolve()
+        self.repository = _isolated_repository(self.work / "repository")
+        self.ledger = self.repository / CANONICAL_LEDGER
+        self.row_hash = _legacy_row_hash(self.repository, ANGLE_PATH)
+        _append_events(self.ledger, _governed_publication_events(self.row_hash, ANGLE_EXCERPT))
+        patcher = mock.patch.object(manual_fixtures, "_REPOSITORY_ROOT", self.repository)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+
+class ManualFixtureTests(_GovernedRepositoryCase):
     def test_rejects_builder_authored_posted_confirmation_without_governed_outcome(self) -> None:
-        repository = Path(__file__).resolve().parents[2]
-        evidence_root = repository / "memory/content/linkedin-content-os/manual-fixtures/evidence"
-        with tempfile.TemporaryDirectory(dir=evidence_root) as temporary:
-            fake_path = Path(temporary) / "forged-confirmation.json"
-            source_path = repository / "AGENTS.md"
-            source_text = source_path.read_text(encoding="utf-8")
-            excerpt = source_text.splitlines()[0]
-            fake_record = {
-                "schemaVersion": "linkedin-earned-angle-confirmation.v1",
-                "topic": "forged-builder-claim",
-                "posted": True,
-                "confirmationSource": "builder-authored",
-                "sourceFile": "AGENTS.md",
-                "sourceFileSha256": sha256_hex(source_path.read_bytes()),
-                "loggedDate": "2026-09-29",
-            }
-            fake_path.write_bytes(canonical_bytes(fake_record))
+        with tempfile.TemporaryDirectory() as temporary:
+            fake_path = self.repository / "memory/forged-confirmation.json"
+            fake_path.write_bytes(
+                canonical_bytes(
+                    {
+                        "schemaVersion": "linkedin-earned-angle-confirmation.v1",
+                        "posted": True,
+                        "sourceFile": ANGLE_PATH,
+                    }
+                )
+            )
             spec = _spec("ai_news")
-            spec["earnedAngle"] = {
-                "kind": "jt_field_lesson",
-                "path": "AGENTS.md",
-                "excerpt": excerpt,
-                "fileSha256": sha256_hex(source_path.read_bytes()),
-                "confirmationPath": fake_path.relative_to(repository).as_posix(),
-                "confirmationExcerpt": '"posted":true',
-                "confirmationFileSha256": sha256_hex(fake_path.read_bytes()),
-            }
-            with self.assertRaisesRegex(ValueError, "posted_confirmed|governed"):
-                build_manual_fixture(spec, Path(temporary) / "artifacts", now=NOW)
+            spec["earnedAngle"] = _legacy_confirmation_angle(
+                self.repository, "memory/forged-confirmation.json", '"posted":true'
+            )
+            with self.assertRaisesRegex(ValueError, "earned angle schema fields are not closed"):
+                build_manual_fixture(spec, Path(temporary), now=NOW)
+
+    def test_packet_angle_binding_is_rederived_from_the_canonical_ledger(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            packet = build_manual_fixture(_spec("ai_news"), root, now=NOW)
+            for field, value in (
+                ("ledgerPrefixSha256", "0" * 64),
+                ("ledgerPosition", 3),
+                ("publicationEventSha256", "f" * 64),
+                ("publicationUrl", "https://www.linkedin.com/feed/update/urn:li:activity:1/"),
+            ):
+                with self.subTest(field=field):
+                    tampered = copy.deepcopy(packet)
+                    tampered["earnedAngle"][field] = value
+                    with self.assertRaisesRegex(ValueError, "earnedAngle does not match"):
+                        validate_manual_fixture(_rehash(tampered), root, now=NOW)
+            smuggled = copy.deepcopy(packet)
+            smuggled["earnedAngle"]["confirmationPath"] = CANONICAL_LEDGER
+            with self.assertRaisesRegex(ValueError, "earned angle binding schema fields are not closed"):
+                validate_manual_fixture(_rehash(smuggled), root, now=NOW)
+
+    def test_validation_fails_closed_after_a_later_row_retraction(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            packet = build_manual_fixture(_spec("ai_news"), root, now=NOW)
+            _append_events(
+                self.ledger,
+                [
+                    _status_event(
+                        self.row_hash,
+                        "not_posted_confirmed",
+                        "2026-09-30T10:00:00-04:00",
+                        "history-retraction:{}".format(self.row_hash),
+                    )
+                ],
+            )
+            with self.assertRaisesRegex(ValueError, "not governed posted_confirmed"):
+                validate_manual_fixture(packet, root, now=NOW)
 
     def test_rejects_rehashed_png_that_does_not_match_visual_route(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -209,30 +634,36 @@ class ManualFixtureTests(unittest.TestCase):
                 build_manual_fixture(_spec("teardown"), root, now=NOW)
             self.assertEqual(list(Path(outside).iterdir()), [])
 
-    def test_canonical_public_text_blocks_apply_to_every_public_surface(self) -> None:
-        cases = (
-            ("postText", None, "Not speed but trust."),
-            ("visual", "eyebrow", "EVE REVIEW QUEUE"),
-            ("visual", "title", "The handoff everyone checks manually."),
-            ("visual", "subtitle", "Stop condition"),
-            ("visual", "stages", "state file"),
-            ("visual", "footer", "My outreach automation"),
-            ("altText", None, "Three checks: source, owner, and outcome."),
+    def test_every_governed_rule_is_enforced_on_every_fixture_surface(self) -> None:
+        from scripts.linkedin_content_os.manual_fixtures import _normalize_spec
+        from scripts.tests.test_linkedin_content_os_content_policy import BANNED_EXAMPLES
+
+        representatives: dict[str, str] = {}
+        for rule, text in BANNED_EXAMPLES:
+            representatives.setdefault(rule, text)
+        surfaces = (
+            ("post", ("postText", None)),
+            ("eyebrow", ("visual", "eyebrow")),
+            ("title", ("visual", "title")),
+            ("subtitle", ("visual", "subtitle")),
+            ("stage", ("visual", "stages")),
+            ("footer", ("visual", "footer")),
+            ("alt", ("altText", None)),
         )
-        for field, nested, blocked_text in cases:
-            with self.subTest(field=field, nested=nested):
-                spec = _spec("ai_news")
-                if field == "postText":
-                    spec[field] = "{}\n\n{}".format(spec[field], blocked_text)
-                elif field == "visual" and nested == "stages":
-                    spec[field][nested][0] = blocked_text
-                elif field == "visual":
-                    spec[field][nested] = blocked_text
-                else:
-                    spec[field] = blocked_text
-                with tempfile.TemporaryDirectory() as temporary:
-                    with self.assertRaisesRegex(ValueError, "prohibited|blocked|internal"):
-                        build_manual_fixture(spec, Path(temporary), now=NOW)
+        for rule, blocked_text in sorted(representatives.items()):
+            for surface, (field, nested) in surfaces:
+                with self.subTest(rule=rule, surface=surface):
+                    spec = _spec("ai_news")
+                    if field == "postText":
+                        spec[field] = "{}\n\n{}".format(spec[field], blocked_text)
+                    elif nested == "stages":
+                        spec[field][nested][0] = blocked_text
+                    elif field == "visual":
+                        spec[field][nested] = blocked_text
+                    else:
+                        spec[field] = blocked_text
+                    with self.assertRaisesRegex(ValueError, "prohibited public copy"):
+                        _normalize_spec(spec, NOW)
 
     def test_teardown_requires_exact_primary_story_permalink(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -306,62 +737,38 @@ class ManualFixtureTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "conflict evidence"):
                 build_manual_fixture(spec, Path(temporary), now=NOW)
 
-    def test_tracked_candidate_artifacts_replay_byte_identically(self) -> None:
-        repository = Path(__file__).resolve().parents[2]
-        fixture_root = repository / "memory/content/linkedin-content-os/manual-fixtures"
+    def test_tracked_sources_build_and_replay_once_governed_confirmation_exists(self) -> None:
+        fixture_root = REPOSITORY / "memory/content/linkedin-content-os/manual-fixtures"
         accepted_set = json.loads((fixture_root / "accepted-set.v1.json").read_text(encoding="utf-8"))
-        accepted_candidates = {
-            candidate["packetId"]: candidate for candidate in accepted_set["candidatePackets"]
-        }
-        replay_now = datetime.fromisoformat("2026-09-29T21:40:00-04:00")
-        source_names = (
-            "servicenow-inry-employee-front-door-teardown.v1.json",
-            "openai-health-summaries-ai-news.v1.json",
-        )
-        with tempfile.TemporaryDirectory() as temporary:
-            replay_root = Path(temporary)
-            for source_name in source_names:
-                source = json.loads((fixture_root / "sources" / source_name).read_text(encoding="utf-8"))
-                packet = build_manual_fixture(source, replay_root, now=replay_now)
-                packet_id = packet["packetId"]
-                tracked_directory = fixture_root / packet_id
-                replay_directory = replay_root / "manual-fixtures" / packet_id
-                self.assertEqual(
-                    replay_directory.joinpath("packet.v1.json").read_bytes(),
-                    tracked_directory.joinpath("packet.v1.json").read_bytes(),
-                )
-                self.assertEqual(
-                    replay_directory.joinpath("image.v1.png").read_bytes(),
-                    tracked_directory.joinpath("image.v1.png").read_bytes(),
-                )
-                candidate = accepted_candidates[packet_id]
-                self.assertEqual(candidate["draftSha256"], packet["draftSha256"])
-                self.assertEqual(candidate["payloadSha256"], packet["payloadSha256"])
-                self.assertEqual(candidate["imageSha256"], packet["imageAsset"]["sha256"])
+        blocked = accepted_set["blockedCandidates"]
+        self.assertEqual(len(blocked), 2)
+        with tempfile.TemporaryDirectory() as first_root, tempfile.TemporaryDirectory() as second_root:
+            for candidate in blocked:
+                source = json.loads((REPOSITORY / candidate["sourceSpec"]).read_text(encoding="utf-8"))
+                first = build_manual_fixture(source, Path(first_root), now=TRACKED_NOW)
+                second = build_manual_fixture(source, Path(second_root), now=TRACKED_NOW)
+                self.assertEqual(first, second)
+                for name in ("packet.v1.json", "image.v1.png"):
+                    self.assertEqual(
+                        (Path(first_root) / "manual-fixtures" / candidate["packetId"] / name).read_bytes(),
+                        (Path(second_root) / "manual-fixtures" / candidate["packetId"] / name).read_bytes(),
+                    )
+                self.assertEqual(first["earnedAngle"]["legacyRowSha256"], candidate["legacyRowSha256"])
+                with Image.open(Path(first_root) / first["imageAsset"]["path"]) as image:
+                    self.assertEqual(image.size, (1080, 1350))
 
-    def test_cli_runs_from_repository_root(self) -> None:
-        repository = Path(__file__).resolve().parents[2]
-        source = repository / "memory/content/linkedin-content-os/manual-fixtures/sources/servicenow-inry-employee-front-door-teardown.v1.json"
-        with tempfile.TemporaryDirectory() as temporary:
-            result = subprocess.run(
-                [
-                    sys.executable,
-                    "scripts/build_linkedin_manual_fixtures.py",
-                    "--source",
-                    str(source),
-                    "--artifact-root",
-                    temporary,
-                    "--now",
-                    "2026-09-29T20:30:00-04:00",
-                ],
-                cwd=repository,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True,
-                check=False,
-            )
-            self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertIn('"schemaVersion":"content-packet.v1"', result.stdout)
+    def test_cli_builds_in_a_governed_repository(self) -> None:
+        source = json.loads(
+            (
+                REPOSITORY
+                / "memory/content/linkedin-content-os/manual-fixtures/sources/servicenow-inry-employee-front-door-teardown.v1.json"
+            ).read_text(encoding="utf-8")
+        )
+        artifact_root = self.work / "cli-artifacts"
+        artifact_root.mkdir()
+        result = _run_build(self.repository, source, artifact_root, TRACKED_NOW)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('"schemaVersion":"content-packet.v1"', result.stdout)
 
     def test_builds_one_canonical_hashed_png_packet_per_lane(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -413,10 +820,18 @@ class ManualFixtureTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "conflict checks"):
                 build_manual_fixture(missing_check, Path(temporary), now=NOW)
 
-            forged_confirmation = _spec("ai_news")
-            forged_confirmation["earnedAngle"]["confirmationFileSha256"] = "0" * 64
-            with self.assertRaisesRegex(ValueError, "confirmation.*hash"):
-                build_manual_fixture(forged_confirmation, Path(temporary), now=NOW)
+            ungoverned_row = _spec("ai_news")
+            ungoverned_row["earnedAngle"] = _governed_angle(
+                self.repository,
+                NEVER_POSTED_PATH,
+                next(
+                    line.strip()
+                    for line in (self.repository / NEVER_POSTED_PATH).read_text(encoding="utf-8").splitlines()
+                    if 60 < len(line.strip()) < 200
+                ),
+            )
+            with self.assertRaisesRegex(ValueError, "not governed posted_confirmed"):
+                build_manual_fixture(ungoverned_row, Path(temporary), now=NOW)
 
     def test_rejects_unbound_claims_and_invalid_visual_routes(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

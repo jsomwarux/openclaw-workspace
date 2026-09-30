@@ -1,25 +1,52 @@
 {
   "schemaVersion": "linkedin-manual-fixture-review-set.v1",
-  "state": "pending_independent_review",
-  "supersedesCommit": "9b090fa27a551084eeee34c919a01e911a53c6bc",
+  "state": "blocked_pending_governed_publication_confirmation",
+  "supersedesCommit": "c4aefeaba5847d3c0ad703489f6aa2234b6c1365",
   "rejectedPacketIds": [
     "linkedin-teardown-appfolio-column-2026-09-28-v1",
     "linkedin-ai-news-openai-external-access-2026-09-28-v1",
     "linkedin-teardown-servicenow-inry-2026-09-29-v2",
     "linkedin-ai-news-openai-health-2026-09-29-v2"
   ],
-  "candidatePackets": [
+  "rejectedArtifacts": [
     {
       "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v1",
+      "commit": "c4aefeaba5847d3c0ad703489f6aa2234b6c1365",
       "draftSha256": "827ef257c9801ac2d59e6c7c43f58eb51c86d67a8810d8420618bff82481c17a",
       "payloadSha256": "0fd9b0d316e0cd2c656fe3dad3138dcfadbdf8b98c69dd905715dfeed587cdf7",
-      "imageSha256": "992f8e781fa4bed559a17923c1ae2596ba3162840c7bb40a685ac0abb3b742d8"
+      "imageSha256": "992f8e781fa4bed559a17923c1ae2596ba3162840c7bb40a685ac0abb3b742d8",
+      "reason": "independent review CHANGES REQUIRED; earned-angle authority came from builder-appended ledger events that contradicted JT's still_unknown human-gate answer"
     },
     {
       "packetId": "linkedin-ai-news-openai-health-2026-09-29-v1",
+      "commit": "c4aefeaba5847d3c0ad703489f6aa2234b6c1365",
       "draftSha256": "1462c8503619bd74dfc615f764d1e4aabd81af4a63d492f4191e92a71173a02e",
       "payloadSha256": "16620a18f4cb02bc2c3fef96014295d096e2469305e64b8074476ef92a89bfa2",
-      "imageSha256": "51f98d10833f690b278a404beffff07004586fb7cfada7a9ec7ae100544f2d86"
+      "imageSha256": "51f98d10833f690b278a404beffff07004586fb7cfada7a9ec7ae100544f2d86",
+      "reason": "independent review CHANGES REQUIRED; earned-angle authority came from builder-appended ledger events that contradicted JT's still_unknown human-gate answer"
+    }
+  ],
+  "candidatePackets": [],
+  "blockedCandidates": [
+    {
+      "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v1",
+      "sourceSpec": "memory/content/linkedin-content-os/manual-fixtures/sources/servicenow-inry-employee-front-door-teardown.v1.json",
+      "sourceSpecSha256": "fa046d43f54477103f031cbaafb624e0ec0245a3d8cadb5ca20a81df43181d13",
+      "earnedAnglePath": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
+      "legacyRowSha256": "fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf",
+      "blockReason": "earned angle source row is not governed posted_confirmed (latest status: status_unknown)",
+      "evidenceExpiresAt": "2026-10-06T23:59:59-04:00",
+      "unblockRequires": "JT answers the governed Program 0 human gate for legacy row fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf as posted with its public URL and final text, and that answer is ingested through ingest-human-gate with its boundary capture in a separately approved run."
+    },
+    {
+      "packetId": "linkedin-ai-news-openai-health-2026-09-29-v1",
+      "sourceSpec": "memory/content/linkedin-content-os/manual-fixtures/sources/openai-health-summaries-ai-news.v1.json",
+      "sourceSpecSha256": "862adc7da14e8059cb69c43a9e40b3d3f1063c5605d9b756aa5edafb84dcb6fd",
+      "earnedAnglePath": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
+      "legacyRowSha256": "fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf",
+      "blockReason": "earned angle source row is not governed posted_confirmed (latest status: status_unknown)",
+      "evidenceExpiresAt": "2026-10-02T23:59:59-04:00",
+      "unblockRequires": "JT answers the governed Program 0 human gate for legacy row fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf as posted with its public URL and final text, and that answer is ingested through ingest-human-gate with its boundary capture in a separately approved run."
     }
   ],
   "externalActionsAuthorized": false
