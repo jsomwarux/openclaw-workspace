@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "manual-linkedin-fixture-source.v1",
+  "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v2",
+  "revisionFamilyId": "linkedin-teardown-servicenow-inry-2026-09-29",
+  "packetVersion": 2,
+  "lane": "teardown",
+  "createdAt": "2026-09-29T20:10:00-04:00",
+  "expiresAt": "2026-10-06T23:59:59-04:00",
+  "targetReader": "Enterprise service and employee-operations leaders",
+  "commercialObjective": "Show how to evaluate the operating path behind a fast AI service launch.",
+  "whyThisWon": "The current ServiceNow customer story names a deployment window and a concrete portal-replacement event without overlapping an active client, prospect, employer, or application.",
+  "postText": "ServiceNow's September 23 customer story says INRY deploys ServiceNow EmployeeWorks in six weeks, replacing its legacy portal with an AI front door to work.\n\nThe public page leaves the underlying control path open. My teardown hypothesis would inspect one employee request from intake through outcome.\n\nI would trace the employee request and its source context, the system that owns the answer, the point where a human reviews consequential actions, and the final outcome recorded against the original request.\n\nA six-week launch earns attention. A visible request-to-outcome trail earns operational trust.",
+  "sources": [
+    {
+      "sourceId": "servicenow-inry-customer-story",
+      "sourceType": "official_release",
+      "uri": "https://newsroom.servicenow.com/overview/default.aspx",
+      "publishedAt": "2026-09-23T00:00:00-04:00",
+      "retrievedAt": "2026-09-29T20:05:00-04:00",
+      "publisher": "ServiceNow",
+      "title": "INRY deploys ServiceNow EmployeeWorks in six weeks, replacing its legacy portal with an AI front door to work",
+      "excerpts": [
+        "September 23, 2026",
+        "INRY deploys ServiceNow EmployeeWorks in six weeks, replacing its legacy portal with an AI front door to work"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "servicenow-story-date-and-window",
+      "text": "INRY deploys ServiceNow EmployeeWorks in six weeks",
+      "attributionType": "vendor_assertion",
+      "sourceId": "servicenow-inry-customer-story",
+      "excerptIndex": 1
+    },
+    {
+      "claimId": "servicenow-portal-replacement",
+      "text": "replacing its legacy portal with an AI front door to work",
+      "attributionType": "vendor_assertion",
+      "sourceId": "servicenow-inry-customer-story",
+      "excerptIndex": 1
+    }
+  ],
+  "earnedAngle": {
+    "kind": "jt_field_lesson",
+    "path": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
+    "excerpt": "It proves what the workflow saw, what it was allowed to touch, what it held back, and where the decision landed.",
+    "fileSha256": "2ed35201c3f68caacdcfeb0f6fd4fe19df74f9beac49c26f9ffc987b25454480",
+    "confirmationPath": "memory/content/linkedin-content-os/manual-fixtures/evidence/jt-source-to-decision-posted-confirmation.v1.json",
+    "confirmationExcerpt": "\"posted\": true",
+    "confirmationFileSha256": "a51f0dae27a3b84f9d57e734ea4900032377684a404efdddda01398fb27d8e1a"
+  },
+  "conflictChecks": [
+    {"check": "consulting_suppression", "status": "pass", "evidence": "No ServiceNow or INRY consulting suppression exists in the current governed source set."},
+    {"check": "client_conflict", "status": "pass", "evidence": "No current client record names ServiceNow or INRY."},
+    {"check": "prospect_conflict", "status": "pass", "evidence": "No active prospect record names ServiceNow or INRY."},
+    {"check": "job_conflict", "status": "pass", "evidence": "No active application record names ServiceNow or INRY."},
+    {"check": "employer_conflict", "status": "pass", "evidence": "No current employer conflict record names ServiceNow or INRY."}
+  ],
+  "visual": {
+    "template": "teardown-schematic.v1",
+    "eyebrow": "PUBLIC-EVIDENCE TEARDOWN",
+    "title": "Follow one request to its outcome",
+    "subtitle": "A proposed employee-service control path",
+    "stages": ["Request", "Source context", "Owner system", "Human review", "Outcome record"],
+    "footer": "Proposed system based on public information"
+  },
+  "altText": "A five-stage proposed employee-service path from request and source context through the owner system, human review, and a recorded outcome.",
+  "cropGuidance": "Publish the full 4:5 image. Keep the complete frame; all informational text is inside the 72-pixel safe area.",
+  "privacyResult": {"status": "pass", "details": "The packet uses one official public customer-story headline, a confirmed published JT lesson, and original graphics; it contains no private customer or employee data."},
+  "rightsResult": {"status": "pass", "details": "The image is an original schematic with no logos, screenshots, source crops, or proprietary artwork."},
+  "qa": {"evidence": "pass", "originality": "pass", "privacy": "pass", "rights": "pass", "strategicFit": "pass", "voice": "pending_human_rating"}
+}

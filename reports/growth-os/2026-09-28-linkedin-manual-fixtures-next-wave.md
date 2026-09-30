@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-28
 
-**State:** Local packets ready for independent review
+**State:** Superseded — Claude's 2026-09-29 adversarial review returned `CHANGES REQUIRED`. These packets are preserved as rejected review inputs and are not candidates for admission or publication. The replacement evidence is recorded in `reports/growth-os/2026-09-29-linkedin-manual-fixtures-review-reconciliation.md`.
 
 **Authority:** Local drafting, rendering, and verification only. JT remains the sole publisher.
 

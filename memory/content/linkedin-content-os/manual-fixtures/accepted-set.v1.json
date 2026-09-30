@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "linkedin-manual-fixture-review-set.v1",
+  "state": "pending_independent_review",
+  "supersedesCommit": "75d505896ee6ab86b00149507d75d6c578ebde3a",
+  "rejectedPacketIds": [
+    "linkedin-teardown-appfolio-column-2026-09-28-v1",
+    "linkedin-ai-news-openai-external-access-2026-09-28-v1"
+  ],
+  "candidatePackets": [
+    {
+      "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v2",
+      "draftSha256": "6d764b4245739c285e1a565f19b5b91df8bede1745aafcc6de44fe587aeebf7a",
+      "payloadSha256": "4f9cd79a807487e46ff5191dc23c9a473765609b8b35887281f1d122f64afcc7",
+      "imageSha256": "0f04e93e3420a6399f3a8b34f55e7489f065729f947fee41e0c1edff275b612b"
+    },
+    {
+      "packetId": "linkedin-ai-news-openai-health-2026-09-29-v2",
+      "draftSha256": "943dd02bf1cdeb232d8a4aabf45b5274c441bb1645c247516b802f519c49ce13",
+      "payloadSha256": "17778cf6b312f6420eca6ac350241328e6a84417464b70133a3cfc01ef5a034d",
+      "imageSha256": "7da35d1ff586034207c58d8c104b6848c38e04ad55a122010d43295fb1f397b6"
+    }
+  ],
+  "externalActionsAuthorized": false
+}

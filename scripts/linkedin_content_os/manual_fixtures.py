@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import io
+import json
 import re
 import tempfile
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -34,6 +35,7 @@ _SPEC_FIELDS = {
     "sources",
     "claims",
     "earnedAngle",
+    "conflictChecks",
     "visual",
     "altText",
     "cropGuidance",
@@ -58,7 +60,16 @@ _CLAIM_FIELDS = {
     "sourceId",
     "excerptIndex",
 }
-_ANGLE_FIELDS = {"kind", "path", "excerpt", "fileSha256"}
+_ANGLE_FIELDS = {
+    "kind",
+    "path",
+    "excerpt",
+    "fileSha256",
+    "confirmationPath",
+    "confirmationExcerpt",
+    "confirmationFileSha256",
+}
+_CONFLICT_FIELDS = {"check", "status", "evidence"}
 _VISUAL_FIELDS = {"template", "eyebrow", "title", "subtitle", "stages", "footer"}
 _RESULT_FIELDS = {"status", "details"}
 _QA_FIELDS = {"evidence", "originality", "privacy", "rights", "strategicFit", "voice"}
@@ -78,6 +89,7 @@ _PACKET_FIELDS = {
     "sourceBindings",
     "claimEvidence",
     "earnedAngle",
+    "conflictChecks",
     "visualRoute",
     "imageAsset",
     "altText",
@@ -93,6 +105,7 @@ _ASSET_FIELDS = {"path", "mimeType", "width", "height", "byteLength", "sha256"}
 _LANES = {"teardown", "ai_news"}
 _ATTRIBUTIONS = {"public_fact", "vendor_assertion", "jt_verified_fact", "hypothesis"}
 _HASH64 = re.compile(r"^[0-9a-f]{64}$")
+_SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 _INTERNAL_TERMS = (
     "mission control",
     "openclaw",
@@ -101,6 +114,16 @@ _INTERNAL_TERMS = (
     "decagon",
     "job search",
 )
+_REQUIRED_CONFLICT_CHECKS = {
+    "ai_news": {"source_identity", "claim_attribution", "protected_purpose_removed"},
+    "teardown": {
+        "consulting_suppression",
+        "client_conflict",
+        "prospect_conflict",
+        "job_conflict",
+        "employer_conflict",
+    },
+}
 
 
 def _exact_fields(value: dict[str, object], fields: set[str], label: str) -> None:
@@ -131,6 +154,29 @@ def _safe_path(value: object, label: str) -> str:
     return path
 
 
+def _slug(value: object, label: str) -> str:
+    text = _text(value, label)
+    if _SLUG.fullmatch(text) is None:
+        raise ValueError("{} must be a lowercase slug".format(label))
+    return text
+
+
+def _public_safe_text(value: object, label: str) -> str:
+    text = _text(value, label)
+    lowered = text.lower()
+    if any(term in lowered for term in _INTERNAL_TERMS):
+        raise ValueError("{} exposes prohibited internal machinery".format(label))
+    if re.search(r"(?:sk-|bearer\s+|token[=:]|[0-9a-f]{40,})", text, re.IGNORECASE):
+        raise ValueError("{} contains a possible secret".format(label))
+    if re.search(r"\b(?:is|are)\s+not\b|,\s*not\b", lowered):
+        raise ValueError("{} uses a prohibited contrast construction".format(label))
+    if re.search(r":\s*\n\s*(?:[•*-]|\d+\.)", text):
+        raise ValueError("{} uses a prohibited colon-led list".format(label))
+    if any(phrase in lowered for phrase in ("exception layer", "where the risk lives")):
+        raise ValueError("{} repeats a blocked content shape".format(label))
+    return text
+
+
 def _timestamp(value: object, label: str) -> datetime:
     parsed = parse_timestamp(_text(value, label), label)
     if parsed.tzinfo is None:
@@ -153,7 +199,8 @@ def _validate_source(source: object, lane: str, now: datetime) -> dict[str, obje
     if published > retrieved or retrieved > now:
         raise ValueError("source chronology is invalid")
     maximum_age_days = 5 if lane == "ai_news" else 14
-    if (now - published).total_seconds() > maximum_age_days * 86400:
+    fresh_until = published + timedelta(days=maximum_age_days)
+    if now >= fresh_until:
         raise ValueError("source freshness window has expired")
     excerpts = source["excerpts"]
     if not isinstance(excerpts, list) or not excerpts:
@@ -178,12 +225,80 @@ def _validate_angle(value: object) -> dict[str, object]:
     _exact_fields(value, _ANGLE_FIELDS, "earned angle")
     if value["kind"] != "jt_field_lesson":
         raise ValueError("earned angle must be a JT field lesson")
+    path = _safe_path(value["path"], "earned angle path")
+    excerpt = _text(value["excerpt"], "earned angle excerpt")
+    expected_hash = _hash(value["fileSha256"], "earned angle fileSha256")
+    repository = Path(__file__).resolve().parents[2]
+    source_path = repository / path
+    if source_path.is_symlink() or not source_path.is_file():
+        raise ValueError("earned angle path is missing or symlinked")
+    source_bytes = source_path.read_bytes()
+    if sha256_hex(source_bytes) != expected_hash:
+        raise ValueError("earned angle file hash mismatch")
+    try:
+        source_text = source_bytes.decode("utf-8")
+    except UnicodeDecodeError as error:
+        raise ValueError("earned angle source must be UTF-8") from error
+    if excerpt not in source_text:
+        raise ValueError("earned angle excerpt is not exact source text")
+    confirmation_path = _safe_path(value["confirmationPath"], "earned angle confirmation path")
+    confirmation_excerpt = _text(value["confirmationExcerpt"], "earned angle confirmation excerpt")
+    expected_confirmation_hash = _hash(
+        value["confirmationFileSha256"], "earned angle confirmation fileSha256"
+    )
+    confirmation_source = repository / confirmation_path
+    if confirmation_source.is_symlink() or not confirmation_source.is_file():
+        raise ValueError("earned angle confirmation path is missing or symlinked")
+    confirmation_bytes = confirmation_source.read_bytes()
+    if sha256_hex(confirmation_bytes) != expected_confirmation_hash:
+        raise ValueError("earned angle confirmation file hash mismatch")
+    confirmation_text = confirmation_bytes.decode("utf-8")
+    if confirmation_excerpt not in confirmation_text:
+        raise ValueError("earned angle confirmation excerpt is not exact source text")
+    try:
+        confirmation_record = json.loads(confirmation_text)
+    except json.JSONDecodeError as error:
+        raise ValueError("earned angle confirmation must be JSON") from error
+    if (
+        not isinstance(confirmation_record, dict)
+        or confirmation_record.get("schemaVersion") != "linkedin-earned-angle-confirmation.v1"
+        or confirmation_record.get("posted") is not True
+        or confirmation_record.get("sourceFile") != path
+        or confirmation_record.get("sourceFileSha256") != expected_hash
+    ):
+        raise ValueError("earned angle confirmation must prove the exact posted source")
     return {
         "kind": value["kind"],
-        "path": _safe_path(value["path"], "earned angle path"),
-        "excerpt": _text(value["excerpt"], "earned angle excerpt"),
-        "fileSha256": _hash(value["fileSha256"], "earned angle fileSha256"),
+        "path": path,
+        "excerpt": excerpt,
+        "fileSha256": expected_hash,
+        "confirmationPath": confirmation_path,
+        "confirmationExcerpt": confirmation_excerpt,
+        "confirmationFileSha256": expected_confirmation_hash,
     }
+
+
+def _validate_conflict_checks(value: object, lane: str) -> list[dict[str, str]]:
+    if not isinstance(value, list):
+        raise ValueError("conflict checks must be a list")
+    normalized: list[dict[str, str]] = []
+    names: set[str] = set()
+    for item in value:
+        if not isinstance(item, dict):
+            raise ValueError("conflict check must be an object")
+        _exact_fields(item, _CONFLICT_FIELDS, "conflict check")
+        name = _text(item["check"], "conflict check name")
+        if name in names:
+            raise ValueError("conflict checks must be unique")
+        names.add(name)
+        if item["status"] != "pass":
+            raise ValueError("conflict check {} did not pass".format(name))
+        normalized.append(
+            {"check": name, "status": "pass", "evidence": _text(item["evidence"], "conflict evidence")}
+        )
+    if names != _REQUIRED_CONFLICT_CHECKS[lane]:
+        raise ValueError("conflict checks are incomplete for {}".format(lane))
+    return sorted(normalized, key=lambda item: item["check"])
 
 
 def _validate_visual(value: object, lane: str) -> dict[str, object]:
@@ -195,7 +310,7 @@ def _validate_visual(value: object, lane: str) -> dict[str, object]:
         if lane == "ai_news":
             raise ValueError("AI news must use the original text-first source-card route")
         raise ValueError("teardown must use the schematic route")
-    footer = _text(value["footer"], "visual footer")
+    footer = _public_safe_text(value["footer"], "visual footer")
     if lane == "teardown" and footer != "Proposed system based on public information":
         raise ValueError("teardown must carry the public information label")
     stages = value["stages"]
@@ -203,10 +318,10 @@ def _validate_visual(value: object, lane: str) -> dict[str, object]:
         raise ValueError("visual stages must contain four or five items")
     return {
         "template": expected,
-        "eyebrow": _text(value["eyebrow"], "visual eyebrow"),
-        "title": _text(value["title"], "visual title"),
-        "subtitle": _text(value["subtitle"], "visual subtitle"),
-        "stages": [_text(item, "visual stage") for item in stages],
+        "eyebrow": _public_safe_text(value["eyebrow"], "visual eyebrow"),
+        "title": _public_safe_text(value["title"], "visual title"),
+        "subtitle": _public_safe_text(value["subtitle"], "visual subtitle"),
+        "stages": [_public_safe_text(item, "visual stage") for item in stages],
         "footer": footer,
     }
 
@@ -221,7 +336,7 @@ def _load_font(size: int, *, mono: bool = False) -> ImageFont.FreeTypeFont:
             return ImageFont.truetype(candidate, size=size)
         except OSError:
             continue
-    return ImageFont.load_default()
+    raise RuntimeError("deterministic system font is unavailable")
 
 
 def _fit_lines(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont, width: int) -> list[str]:
@@ -249,8 +364,9 @@ def _render_png(visual: dict[str, object], lane: str) -> bytes:
     eyebrow_font = _load_font(25, mono=True)
     title_font = _load_font(64)
     subtitle_font = _load_font(31)
-    stage_font = _load_font(26)
-    small_font = _load_font(21, mono=True)
+    stage_font = _load_font(28)
+    number_font = _load_font(24, mono=True)
+    small_font = _load_font(26, mono=True)
 
     draw.rounded_rectangle((58, 58, 1022, 1292), radius=28, fill="#111114", outline=border, width=2)
     eyebrow = str(visual["eyebrow"])
@@ -259,11 +375,17 @@ def _render_png(visual: dict[str, object], lane: str) -> bytes:
     draw.text((104, 96), eyebrow, font=eyebrow_font, fill="#ffffff")
 
     y = 190
-    for line in _fit_lines(draw, str(visual["title"]), title_font, 870):
+    title_lines = _fit_lines(draw, str(visual["title"]), title_font, 870)
+    if len(title_lines) > 3:
+        raise ValueError("visual title overflows its safe area")
+    for line in title_lines:
         draw.text((88, y), line, font=title_font, fill=white)
         y += 78
     y += 8
-    for line in _fit_lines(draw, str(visual["subtitle"]), subtitle_font, 870):
+    subtitle_lines = _fit_lines(draw, str(visual["subtitle"]), subtitle_font, 870)
+    if len(subtitle_lines) > 3:
+        raise ValueError("visual subtitle overflows its safe area")
+    for line in subtitle_lines:
         draw.text((88, y), line, font=subtitle_font, fill=muted)
         y += 43
 
@@ -280,11 +402,17 @@ def _render_png(visual: dict[str, object], lane: str) -> bytes:
             fill = "#28230f"
         draw.rounded_rectangle((left, stage_top, right, stage_bottom), radius=18, fill=fill, outline=accent, width=2)
         draw.ellipse((left + 18, stage_top + 20, left + 54, stage_top + 56), fill=accent)
-        draw.text((left + 29, stage_top + 27), str(index + 1), font=small_font, fill="#ffffff", anchor="mm")
-        line_y = center_y - 45
-        for line in _fit_lines(draw, str(stage), stage_font, box_width - 34):
+        draw.text((left + 36, stage_top + 38), str(index + 1), font=number_font, fill="#ffffff", anchor="mm")
+        stage_lines = _fit_lines(draw, str(stage), stage_font, box_width - 34)
+        if len(stage_lines) > 5:
+            raise ValueError("visual stage text overflows its safe area")
+        line_height = 38
+        line_y = center_y - int((len(stage_lines) * line_height) / 2)
+        if line_y < stage_top + 80 or line_y + len(stage_lines) * line_height > stage_bottom - 24:
+            raise ValueError("visual stage text overflows its safe area")
+        for line in stage_lines:
             draw.text((left + 17, line_y), line, font=stage_font, fill=white)
-            line_y += 35
+            line_y += line_height
         if index < len(stages) - 1:
             arrow_left = right + 3
             arrow_right = right + gap - 3
@@ -295,7 +423,10 @@ def _render_png(visual: dict[str, object], lane: str) -> bytes:
             )
 
     draw.line((88, 1138, 992, 1138), fill=border, width=2)
-    draw.text((88, 1184), str(visual["footer"]), font=small_font, fill=muted)
+    footer = str(visual["footer"])
+    if draw.textbbox((0, 0), footer, font=small_font)[2] > 904:
+        raise ValueError("visual footer overflows its safe area")
+    draw.text((88, 1184), footer, font=small_font, fill=muted)
     draw.text((992, 1234), "JT SOMWARU", font=small_font, fill=accent, anchor="ra")
     output = io.BytesIO()
     image.save(output, format="PNG", optimize=False, compress_level=9)
@@ -347,20 +478,15 @@ def _normalize_spec(spec: object, now: datetime) -> dict[str, object]:
     lane = spec["lane"]
     if lane not in _LANES:
         raise ValueError("unsupported fixture lane")
-    packet_id = _text(spec["packetId"], "packetId")
-    revision_family = _text(spec["revisionFamilyId"], "revisionFamilyId")
+    packet_id = _slug(spec["packetId"], "packetId")
+    revision_family = _slug(spec["revisionFamilyId"], "revisionFamilyId")
     if type(spec["packetVersion"]) is not int or spec["packetVersion"] < 1:
         raise ValueError("packetVersion must be a positive integer")
     created = _timestamp(spec["createdAt"], "createdAt")
     expires = _timestamp(spec["expiresAt"], "expiresAt")
     if created > now or expires <= now:
         raise ValueError("packet timing is invalid")
-    post_text = _text(spec["postText"], "postText")
-    lowered = post_text.lower()
-    if any(term in lowered for term in _INTERNAL_TERMS):
-        raise ValueError("post exposes prohibited internal machinery")
-    if re.search(r"(?:sk-|bearer\s+|token[=:]|[0-9a-f]{40,})", post_text, re.IGNORECASE):
-        raise ValueError("post contains a possible secret")
+    post_text = _public_safe_text(spec["postText"], "post")
 
     raw_sources = spec["sources"]
     if not isinstance(raw_sources, list) or not raw_sources:
@@ -369,6 +495,13 @@ def _normalize_spec(spec: object, now: datetime) -> dict[str, object]:
     by_id = {str(source["sourceId"]): source for source in sources}
     if len(by_id) != len(sources):
         raise ValueError("source IDs must be unique")
+    maximum_age_days = 5 if lane == "ai_news" else 14
+    earliest_fresh_until = min(
+        _timestamp(source["publishedAt"], "publishedAt") + timedelta(days=maximum_age_days)
+        for source in sources
+    )
+    if expires > earliest_fresh_until:
+        raise ValueError("packet expiry exceeds source freshness window")
 
     raw_claims = spec["claims"]
     if not isinstance(raw_claims, list) or not raw_claims:
@@ -391,14 +524,22 @@ def _normalize_spec(spec: object, now: datetime) -> dict[str, object]:
         if raw_claim["attributionType"] not in _ATTRIBUTIONS:
             raise ValueError("claim attribution is invalid")
         excerpt = source["excerpts"][index]
+        claim_text = _text(raw_claim["text"], "claim text")
+        if claim_text not in str(excerpt):
+            raise ValueError("claim text must be an exact span of its source excerpt")
+        if post_text.count(claim_text) != 1:
+            raise ValueError("claim text must be an exact span of postText")
+        post_start = post_text.index(claim_text)
         claims.append(
             {
                 "claimId": claim_id,
-                "text": _text(raw_claim["text"], "claim text"),
+                "text": claim_text,
                 "attributionType": raw_claim["attributionType"],
                 "sourceId": source_id,
                 "excerptIndex": index,
                 "excerptSha256": sha256_hex(str(excerpt).encode("utf-8")),
+                "postStart": post_start,
+                "postEnd": post_start + len(claim_text),
             }
         )
 
@@ -416,8 +557,9 @@ def _normalize_spec(spec: object, now: datetime) -> dict[str, object]:
         "sourceBindings": sources,
         "claimEvidence": claims,
         "earnedAngle": _validate_angle(spec["earnedAngle"]),
+        "conflictChecks": _validate_conflict_checks(spec["conflictChecks"], lane),
         "visualRoute": _validate_visual(spec["visual"], lane),
-        "altText": _text(spec["altText"], "altText"),
+        "altText": _public_safe_text(spec["altText"], "altText"),
         "cropGuidance": _text(spec["cropGuidance"], "cropGuidance"),
         "privacyResult": _result(spec["privacyResult"], "privacyResult"),
         "rightsResult": _result(spec["rightsResult"], "rightsResult"),
@@ -431,11 +573,24 @@ def _draft_binding(packet: dict[str, object]) -> dict[str, object]:
         "packetVersion": packet["packetVersion"],
         "revisionFamilyId": packet["revisionFamilyId"],
         "lane": packet["lane"],
+        "state": packet["state"],
+        "createdAt": packet["createdAt"],
+        "expiresAt": packet["expiresAt"],
+        "targetReader": packet["targetReader"],
+        "commercialObjective": packet["commercialObjective"],
+        "whyThisWon": packet["whyThisWon"],
         "postText": packet["postText"],
         "sourceBindings": packet["sourceBindings"],
         "claimEvidence": packet["claimEvidence"],
         "earnedAngle": packet["earnedAngle"],
+        "conflictChecks": packet["conflictChecks"],
         "visualRoute": packet["visualRoute"],
+        "altText": packet["altText"],
+        "cropGuidance": packet["cropGuidance"],
+        "privacyResult": packet["privacyResult"],
+        "rightsResult": packet["rightsResult"],
+        "qa": packet["qa"],
+        "decisionOptions": packet["decisionOptions"],
     }
 
 
@@ -443,11 +598,6 @@ def _payload_binding(packet: dict[str, object]) -> dict[str, object]:
     return {
         "draftSha256": packet["draftSha256"],
         "imageAsset": packet["imageAsset"],
-        "altText": packet["altText"],
-        "cropGuidance": packet["cropGuidance"],
-        "privacyResult": packet["privacyResult"],
-        "rightsResult": packet["rightsResult"],
-        "qa": packet["qa"],
     }
 
 
@@ -474,7 +624,7 @@ def build_manual_fixture(spec: object, artifact_root: Path, *, now: datetime) ->
             "byteLength": len(image_bytes),
             "sha256": sha256_hex(image_bytes),
         },
-        "decisionOptions": ["approve", "edit", "reject", "hold"],
+        "decisionOptions": ["approve", "reject", "skip"],
     }
     packet["draftSha256"] = sha256_hex(canonical_bytes(_draft_binding(packet)))
     packet["payloadSha256"] = sha256_hex(canonical_bytes(_payload_binding(packet)))
@@ -500,12 +650,67 @@ def validate_manual_fixture(packet: object, artifact_root: Path, *, now: datetim
     _exact_fields(packet, _PACKET_FIELDS, "packet")
     if packet["schemaVersion"] != "content-packet.v1" or packet["state"] != "qa_passed":
         raise ValueError("packet lifecycle state is invalid")
+    packet_id = _slug(packet["packetId"], "packetId")
     if packet["lane"] not in _LANES:
         raise ValueError("packet lane is invalid")
-    if packet["decisionOptions"] != ["approve", "edit", "reject", "hold"]:
+    if packet["decisionOptions"] != ["approve", "reject", "skip"]:
         raise ValueError("decision options are invalid")
-    if _timestamp(packet["expiresAt"], "expiresAt") <= now:
-        raise ValueError("packet has expired")
+
+    raw_sources = []
+    for source in packet["sourceBindings"]:
+        if not isinstance(source, dict):
+            raise ValueError("source binding must be an object")
+        raw_source = dict(source)
+        recorded_source_hash = raw_source.pop("sourceSha256", None)
+        normalized_source = _validate_source(raw_source, str(packet["lane"]), now)
+        if recorded_source_hash != normalized_source["sourceSha256"]:
+            raise ValueError("source binding hash mismatch")
+        raw_sources.append(raw_source)
+    raw_claims = []
+    for claim in packet["claimEvidence"]:
+        if not isinstance(claim, dict):
+            raise ValueError("claim evidence must be an object")
+        raw_claim = dict(claim)
+        recorded_excerpt_hash = raw_claim.pop("excerptSha256", None)
+        raw_claim.pop("postStart", None)
+        raw_claim.pop("postEnd", None)
+        source = next((item for item in raw_sources if item["sourceId"] == raw_claim.get("sourceId")), None)
+        index = raw_claim.get("excerptIndex")
+        if source is None or type(index) is not int or not 0 <= index < len(source["excerpts"]):
+            raise ValueError("claim evidence binding is invalid")
+        if recorded_excerpt_hash != sha256_hex(str(source["excerpts"][index]).encode("utf-8")):
+            raise ValueError("claim excerpt hash mismatch")
+        raw_claims.append(raw_claim)
+
+    normalized = _normalize_spec(
+        {
+            "schemaVersion": "manual-linkedin-fixture-source.v1",
+            "packetId": packet_id,
+            "revisionFamilyId": packet["revisionFamilyId"],
+            "packetVersion": packet["packetVersion"],
+            "lane": packet["lane"],
+            "createdAt": packet["createdAt"],
+            "expiresAt": packet["expiresAt"],
+            "targetReader": packet["targetReader"],
+            "commercialObjective": packet["commercialObjective"],
+            "whyThisWon": packet["whyThisWon"],
+            "postText": packet["postText"],
+            "sources": raw_sources,
+            "claims": raw_claims,
+            "earnedAngle": packet["earnedAngle"],
+            "conflictChecks": packet["conflictChecks"],
+            "visual": packet["visualRoute"],
+            "altText": packet["altText"],
+            "cropGuidance": packet["cropGuidance"],
+            "privacyResult": packet["privacyResult"],
+            "rightsResult": packet["rightsResult"],
+            "qa": packet["qa"],
+        },
+        now,
+    )
+    for key, value in normalized.items():
+        if packet.get(key) != value:
+            raise ValueError("packet {} does not match normalized contract".format(key))
     if packet["draftSha256"] != sha256_hex(canonical_bytes(_draft_binding(packet))):
         raise ValueError("draft hash mismatch")
     if packet["payloadSha256"] != sha256_hex(canonical_bytes(_payload_binding(packet))):
@@ -515,7 +720,12 @@ def validate_manual_fixture(packet: object, artifact_root: Path, *, now: datetim
     if not isinstance(asset, dict):
         raise ValueError("image asset must be an object")
     _exact_fields(asset, _ASSET_FIELDS, "image asset")
+    expected_asset_path = "manual-fixtures/{}/image.v1.png".format(packet_id)
+    if asset["path"] != expected_asset_path:
+        raise ValueError("image asset path is not packet-versioned")
     asset_path = Path(artifact_root) / _safe_path(asset["path"], "image asset path")
+    if asset_path.is_symlink():
+        raise ValueError("image asset must not be a symlink")
     if not asset_path.is_file():
         raise ValueError("image asset is missing")
     payload = asset_path.read_bytes()

@@ -10,8 +10,10 @@ from pathlib import Path
 
 from PIL import Image
 
-from scripts.linkedin_content_os.canonical import sha256_hex
+from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
 from scripts.linkedin_content_os.manual_fixtures import (
+    _draft_binding,
+    _payload_binding,
     build_manual_fixture,
     validate_manual_fixture,
 )
@@ -20,7 +22,22 @@ from scripts.linkedin_content_os.manual_fixtures import (
 NOW = datetime(2026, 9, 28, 20, 30, tzinfo=timezone.utc)
 
 
+def _rehash(packet: dict[str, object]) -> dict[str, object]:
+    packet["draftSha256"] = sha256_hex(canonical_bytes(_draft_binding(packet)))
+    packet["payloadSha256"] = sha256_hex(canonical_bytes(_payload_binding(packet)))
+    return packet
+
+
 def _spec(lane: str) -> dict[str, object]:
+    repository = Path(__file__).resolve().parents[2]
+    angle_path = repository / "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md"
+    confirmation_path = repository / "memory/content/linkedin-content-os/manual-fixtures/evidence/jt-source-to-decision-posted-confirmation.v1.json"
+    angle_excerpt = (
+        "It proves what the workflow saw, what it was allowed to touch, what it held back, "
+        "and where the decision landed."
+    )
+    confirmation_excerpt = '"posted": true'
+    slug_lane = lane.replace("_", "-")
     source = {
         "sourceId": "primary-1",
         "sourceType": "official_release",
@@ -45,24 +62,35 @@ def _spec(lane: str) -> dict[str, object]:
     ]
     spec: dict[str, object] = {
         "schemaVersion": "manual-linkedin-fixture-source.v1",
-        "packetId": "linkedin-{}-2026-09-28-v1".format(lane),
-        "revisionFamilyId": "linkedin-{}-2026-09-28".format(lane),
+        "packetId": "linkedin-{}-2026-09-28-v1".format(slug_lane),
+        "revisionFamilyId": "linkedin-{}-2026-09-28".format(slug_lane),
         "packetVersion": 1,
         "lane": lane,
         "createdAt": "2026-09-28T20:00:00+00:00",
-        "expiresAt": "2026-10-03T00:00:00+00:00",
+        "expiresAt": "2026-10-08T00:00:00+00:00" if lane == "teardown" else "2026-09-29T00:00:00+00:00",
         "targetReader": "Enterprise AI operations leaders",
         "commercialObjective": "Show governed AI workflow judgment.",
         "whyThisWon": "Fresh primary evidence supports a buyer-relevant operating lesson.",
-        "postText": "Access is not one switch.\n\nIdentity and data permissions must stay separate.",
+        "postText": "Access has multiple controls.\n\nIdentity-only sign-in remains separate from data access.",
         "sources": [source],
         "claims": claims,
         "earnedAngle": {
             "kind": "jt_field_lesson",
-            "path": "memory/content/technical-angles.md",
-            "excerpt": "Source-of-truth drift before automation",
-            "fileSha256": "1" * 64,
+            "path": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
+            "excerpt": angle_excerpt,
+            "fileSha256": sha256_hex(angle_path.read_bytes()),
+            "confirmationPath": "memory/content/linkedin-content-os/manual-fixtures/evidence/jt-source-to-decision-posted-confirmation.v1.json",
+            "confirmationExcerpt": confirmation_excerpt,
+            "confirmationFileSha256": sha256_hex(confirmation_path.read_bytes()),
         },
+        "conflictChecks": [
+            {"check": name, "status": "pass", "evidence": "Repository evidence scan returned no conflict."}
+            for name in (
+                ("consulting_suppression", "client_conflict", "prospect_conflict", "job_conflict", "employer_conflict")
+                if lane == "teardown"
+                else ("source_identity", "claim_attribution", "protected_purpose_removed")
+            )
+        ],
         "altText": "A five-stage control path from identity to human approval.",
         "cropGuidance": "Use the full 4:5 image; keep all text inside the 72-pixel safe area.",
         "privacyResult": {"status": "pass", "details": "Public sources and original graphics only."},
@@ -89,7 +117,7 @@ def _spec(lane: str) -> dict[str, object]:
         spec["visual"] = {
             "template": "ai-news-source-card.v1",
             "eyebrow": "AI OPERATING CONTROL",
-            "title": "Access is a chain, not a switch",
+            "title": "Separate each access control",
             "subtitle": "OpenAI Enterprise release notes · Sep 24, 2026",
             "stages": ["Identity", "Data access", "Action scope", "Human approval"],
             "footer": "Source: OpenAI Enterprise release notes",
@@ -100,7 +128,7 @@ def _spec(lane: str) -> dict[str, object]:
 class ManualFixtureTests(unittest.TestCase):
     def test_cli_runs_from_repository_root(self) -> None:
         repository = Path(__file__).resolve().parents[2]
-        source = repository / "memory/content/linkedin-content-os/manual-fixtures/sources/appfolio-column-teardown.v1.json"
+        source = repository / "memory/content/linkedin-content-os/manual-fixtures/sources/servicenow-inry-employee-front-door-teardown.v1.json"
         with tempfile.TemporaryDirectory() as temporary:
             result = subprocess.run(
                 [
@@ -111,7 +139,7 @@ class ManualFixtureTests(unittest.TestCase):
                     "--artifact-root",
                     temporary,
                     "--now",
-                    "2026-09-28T20:30:00-04:00",
+                    "2026-09-29T20:30:00-04:00",
                 ],
                 cwd=repository,
                 stdout=subprocess.PIPE,
@@ -130,6 +158,7 @@ class ManualFixtureTests(unittest.TestCase):
                 validated = validate_manual_fixture(packet, root, now=NOW)
                 self.assertEqual(validated, packet)
                 self.assertEqual(packet["state"], "qa_passed")
+                self.assertEqual(packet["decisionOptions"], ["approve", "reject", "skip"])
                 asset = packet["imageAsset"]
                 asset_path = root / asset["path"]
                 self.assertEqual(asset["mimeType"], "image/png")
@@ -151,6 +180,30 @@ class ManualFixtureTests(unittest.TestCase):
             no_angle["earnedAngle"] = {}
             with self.assertRaisesRegex(ValueError, "earned angle"):
                 build_manual_fixture(no_angle, Path(temporary), now=NOW)
+
+            forged_angle = _spec("ai_news")
+            forged_angle["earnedAngle"]["fileSha256"] = "0" * 64
+            with self.assertRaisesRegex(ValueError, "earned angle.*hash"):
+                build_manual_fixture(forged_angle, Path(temporary), now=NOW)
+
+    def test_expiry_is_bounded_by_the_source_freshness_window(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            spec = _spec("ai_news")
+            spec["expiresAt"] = "2026-10-03T00:00:00+00:00"
+            with self.assertRaisesRegex(ValueError, "freshness"):
+                build_manual_fixture(spec, Path(temporary), now=NOW)
+
+    def test_requires_closed_conflict_checks_and_posted_angle_confirmation(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            missing_check = _spec("teardown")
+            missing_check["conflictChecks"] = missing_check["conflictChecks"][:-1]
+            with self.assertRaisesRegex(ValueError, "conflict checks"):
+                build_manual_fixture(missing_check, Path(temporary), now=NOW)
+
+            forged_confirmation = _spec("ai_news")
+            forged_confirmation["earnedAngle"]["confirmationFileSha256"] = "0" * 64
+            with self.assertRaisesRegex(ValueError, "confirmation.*hash"):
+                build_manual_fixture(forged_confirmation, Path(temporary), now=NOW)
 
     def test_rejects_unbound_claims_and_invalid_visual_routes(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -182,8 +235,64 @@ class ManualFixtureTests(unittest.TestCase):
                 for key in path[:-1]:
                     target = target[key]
                 target[path[-1]] = value
-                with self.assertRaisesRegex(ValueError, "hash|asset"):
+                with self.assertRaisesRegex(ValueError, "hash|asset|claim"):
                     validate_manual_fixture(tampered, root, now=NOW)
+
+    def test_self_consistent_tampering_is_rederived_and_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            packet = build_manual_fixture(_spec("ai_news"), root, now=NOW)
+
+            cases = []
+            failed_privacy = copy.deepcopy(packet)
+            failed_privacy["privacyResult"]["status"] = "fail"
+            cases.append((failed_privacy, "privacyResult"))
+
+            internal_alt = copy.deepcopy(packet)
+            internal_alt["altText"] = "Mission Control access chain"
+            cases.append((internal_alt, "internal"))
+
+            wrong_lane = copy.deepcopy(packet)
+            wrong_lane["lane"] = "teardown"
+            cases.append((wrong_lane, "route|template|conflict"))
+
+            bogus_claim = copy.deepcopy(packet)
+            bogus_claim["claimEvidence"][0]["text"] = "A claim absent from the post."
+            cases.append((bogus_claim, "claim"))
+
+            for tampered, message in cases:
+                with self.subTest(message=message):
+                    with self.assertRaisesRegex(ValueError, message):
+                        validate_manual_fixture(_rehash(tampered), root, now=NOW)
+
+    def test_validation_rechecks_source_freshness(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            packet = build_manual_fixture(_spec("ai_news"), root, now=NOW)
+            later = datetime(2026, 9, 29, 1, 0, tzinfo=timezone.utc)
+            with self.assertRaisesRegex(ValueError, "freshness"):
+                validate_manual_fixture(packet, root, now=later)
+
+    def test_rejects_traversal_ids_before_creating_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            spec = _spec("teardown")
+            spec["packetId"] = "../escaped"
+            with self.assertRaisesRegex(ValueError, "packetId"):
+                build_manual_fixture(spec, root, now=NOW)
+            self.assertFalse((root / "escaped").exists())
+
+    def test_rejects_symlinked_image_assets(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            packet = build_manual_fixture(_spec("teardown"), root, now=NOW)
+            asset = root / packet["imageAsset"]["path"]
+            target = root / "copied.png"
+            target.write_bytes(asset.read_bytes())
+            asset.unlink()
+            asset.symlink_to(target)
+            with self.assertRaisesRegex(ValueError, "symlink"):
+                validate_manual_fixture(packet, root, now=NOW)
 
     def test_exact_replay_is_byte_identical_and_conflict_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -195,7 +304,7 @@ class ManualFixtureTests(unittest.TestCase):
             self.assertEqual(first, second)
             self.assertEqual(before, asset.read_bytes())
             conflict = _spec("teardown")
-            conflict["postText"] = "Conflicting replay"
+            conflict["postText"] = "Conflicting replay.\n\nIdentity-only sign-in remains separate from data access."
             with self.assertRaisesRegex(ValueError, "conflicting replay"):
                 build_manual_fixture(conflict, root, now=NOW)
 
