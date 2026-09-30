@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "manual-fixture-conflict-evidence.v1",
+  "generatedAt": "2026-09-29T21:34:00-04:00",
+  "records": [
+    {
+      "recordId": "servicenow-inry-consulting-suppression",
+      "check": "consulting_suppression",
+      "status": "pass",
+      "subjectEntities": ["ServiceNow", "INRY"],
+      "scannedPaths": ["memory/clients"],
+      "result": "No exact ServiceNow or INRY entity match exists in the governed client tree."
+    },
+    {
+      "recordId": "servicenow-inry-client-conflict",
+      "check": "client_conflict",
+      "status": "pass",
+      "subjectEntities": ["ServiceNow", "INRY"],
+      "scannedPaths": ["memory/clients"],
+      "result": "No current client record names ServiceNow or INRY."
+    },
+    {
+      "recordId": "servicenow-inry-prospect-conflict",
+      "check": "prospect_conflict",
+      "status": "pass",
+      "subjectEntities": ["ServiceNow", "INRY"],
+      "scannedPaths": ["memory/consulting/prospect-discovery-runs"],
+      "result": "No prospect-discovery record names ServiceNow or INRY."
+    },
+    {
+      "recordId": "servicenow-inry-job-conflict",
+      "check": "job_conflict",
+      "status": "pass",
+      "subjectEntities": ["ServiceNow", "INRY"],
+      "scannedPaths": ["memory/job-market.md"],
+      "result": "ServiceNow appears only in historical market commentary; no active application record names ServiceNow or INRY."
+    },
+    {
+      "recordId": "servicenow-inry-employer-conflict",
+      "check": "employer_conflict",
+      "status": "pass",
+      "subjectEntities": ["ServiceNow", "INRY"],
+      "scannedPaths": ["USER.md", "MEMORY.md"],
+      "result": "No current employer record names ServiceNow or INRY."
+    },
+    {
+      "recordId": "openai-health-source-identity",
+      "check": "source_identity",
+      "status": "pass",
+      "subjectEntities": ["OpenAI", "ChatGPT"],
+      "scannedPaths": ["https://help.openai.com/en/articles/6825453-chatgpt-release-notes"],
+      "result": "The cited URL is OpenAI's official ChatGPT release-notes page."
+    },
+    {
+      "recordId": "openai-health-claim-attribution",
+      "check": "claim_attribution",
+      "status": "pass",
+      "subjectEntities": ["OpenAI", "ChatGPT"],
+      "scannedPaths": ["https://help.openai.com/en/articles/6825453-chatgpt-release-notes"],
+      "result": "The release date and feature statement are attributed to the official release; operator recommendations remain separate."
+    },
+    {
+      "recordId": "openai-health-protected-purpose",
+      "check": "protected_purpose_removed",
+      "status": "pass",
+      "subjectEntities": ["OpenAI", "ChatGPT"],
+      "scannedPaths": ["memory/content/linkedin-content-os/manual-fixtures/sources/openai-health-summaries-ai-news.v1.json"],
+      "result": "The public surfaces contain no private client, queue, outreach, job-search, or internal workflow material."
+    }
+  ]
+}

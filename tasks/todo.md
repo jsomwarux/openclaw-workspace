@@ -1,3 +1,13 @@
+## Plan — LinkedIn Manual Fixtures Final Acceptance Repair — 2026-09-29
+
+- [x] Reproduce and adjudicate Claude's five Important findings.
+- [x] Freeze the authority-first repair design and receive JT approval.
+- [x] Add RED exploit regressions for governed angle authority, pixel binding, ancestor symlinks, canonical public-text policy, and primary-source truth.
+- [x] Repair the shared deterministic validation boundary.
+- [x] Absorb adjacent Minor findings and regenerate the two immutable packets.
+- [x] Run the complete deterministic verification and visual inspection gate.
+- [ ] Freeze a new immutable commit and submit one fresh SHA-bound independent review.
+
 ## Plan — LinkedIn Content OS Program 0 — 2026-09-28
 
 - [x] Task 1: Create the Program 0 package and canonical file primitives.

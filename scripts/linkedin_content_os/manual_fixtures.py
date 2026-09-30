@@ -9,15 +9,18 @@ import tempfile
 from datetime import datetime, timedelta
 from pathlib import Path, PurePosixPath
 from typing import Any
+from urllib.parse import urlsplit
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, __version__ as PILLOW_VERSION
 
 from scripts.linkedin_content_os.canonical import (
+    _exclusive_path_lock,
     canonical_bytes,
     sha256_hex,
     write_json_atomic,
 )
 from scripts.linkedin_content_os.contracts import parse_timestamp
+from scripts.linkedin_content_os.outcomes import load_events
 
 
 _SPEC_FIELDS = {
@@ -69,7 +72,8 @@ _ANGLE_FIELDS = {
     "confirmationExcerpt",
     "confirmationFileSha256",
 }
-_CONFLICT_FIELDS = {"check", "status", "evidence"}
+_CONFLICT_FIELDS = {"check", "status", "evidence", "evidenceRef"}
+_EVIDENCE_REF_FIELDS = {"path", "fileSha256", "recordId"}
 _VISUAL_FIELDS = {"template", "eyebrow", "title", "subtitle", "stages", "footer"}
 _RESULT_FIELDS = {"status", "details"}
 _QA_FIELDS = {"evidence", "originality", "privacy", "rights", "strategicFit", "voice"}
@@ -101,18 +105,41 @@ _PACKET_FIELDS = {
     "draftSha256",
     "payloadSha256",
 }
-_ASSET_FIELDS = {"path", "mimeType", "width", "height", "byteLength", "sha256"}
+_ASSET_FIELDS = {
+    "path",
+    "mimeType",
+    "width",
+    "height",
+    "byteLength",
+    "sha256",
+    "rendererIdentity",
+}
+_RENDERER_FIELDS = {
+    "schemaVersion",
+    "pillowVersion",
+    "regularFontSha256",
+    "monoFontSha256",
+}
 _LANES = {"teardown", "ai_news"}
 _ATTRIBUTIONS = {"public_fact", "vendor_assertion", "jt_verified_fact", "hypothesis"}
 _HASH64 = re.compile(r"^[0-9a-f]{64}$")
 _SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 _INTERNAL_TERMS = (
+    "autonomous content system",
+    "content-generation machinery",
     "mission control",
     "openclaw",
     "content os",
     "growth os",
     "decagon",
     "job search",
+    "job-search automation",
+    "outreach automation",
+    "prospecting automation",
+    "publishing machinery",
+    "state file",
+    "stop condition",
+    "the handoff everyone checks manually",
 )
 _REQUIRED_CONFLICT_CHECKS = {
     "ai_news": {"source_identity", "claim_attribution", "protected_purpose_removed"},
@@ -154,6 +181,28 @@ def _safe_path(value: object, label: str) -> str:
     return path
 
 
+def _safe_descendant(root: Path, relative: str, label: str) -> Path:
+    """Return one root-contained path after rejecting every existing symlink component."""
+
+    root = Path(root)
+    if not root.exists() or not root.is_dir() or root.is_symlink():
+        raise ValueError("{} artifact root must be a real directory".format(label))
+    resolved_root = root.resolve(strict=True)
+    candidate = root / relative
+    current = root
+    for part in Path(relative).parts:
+        current = current / part
+        if current.exists() or current.is_symlink():
+            if current.is_symlink():
+                raise ValueError("{} contains a symlink component".format(label))
+    resolved_candidate = candidate.resolve(strict=False)
+    try:
+        resolved_candidate.relative_to(resolved_root)
+    except ValueError as error:
+        raise ValueError("{} escapes the artifact root".format(label)) from error
+    return candidate
+
+
 def _slug(value: object, label: str) -> str:
     text = _text(value, label)
     if _SLUG.fullmatch(text) is None:
@@ -164,15 +213,28 @@ def _slug(value: object, label: str) -> str:
 def _public_safe_text(value: object, label: str) -> str:
     text = _text(value, label)
     lowered = text.lower()
-    if any(term in lowered for term in _INTERNAL_TERMS):
+    if any(term in lowered for term in _INTERNAL_TERMS) or re.search(r"\beve\b", lowered):
         raise ValueError("{} exposes prohibited internal machinery".format(label))
     if re.search(r"(?:sk-|bearer\s+|token[=:]|[0-9a-f]{40,})", text, re.IGNORECASE):
         raise ValueError("{} contains a possible secret".format(label))
-    if re.search(r"\b(?:is|are)\s+not\b|,\s*not\b", lowered):
+    if re.search(r"\b\w+n['’]t\b|\b(?:is|are)\s+not\b|,\s*not\b", lowered):
         raise ValueError("{} uses a prohibited contrast construction".format(label))
+    if re.search(r"\bnot\b[^.\n]{0,80}\bbut\b", lowered):
+        raise ValueError("{} uses a prohibited not-but construction".format(label))
     if re.search(r":\s*\n\s*(?:[•*-]|\d+\.)", text):
         raise ValueError("{} uses a prohibited colon-led list".format(label))
-    if any(phrase in lowered for phrase in ("exception layer", "where the risk lives")):
+    if re.search(r":\s+[^.\n,:]{1,40},\s+[^.\n,:]{1,40},\s+(?:and|or)\s+", text, re.IGNORECASE):
+        raise ValueError("{} uses a prohibited inline colon list".format(label))
+    if "—" in text:
+        raise ValueError("{} uses a prohibited em dash".format(label))
+    if any(
+        phrase in lowered
+        for phrase in (
+            "exception layer",
+            "where the risk lives",
+            "matters more than people think",
+        )
+    ):
         raise ValueError("{} repeats a blocked content shape".format(label))
     return text
 
@@ -194,6 +256,13 @@ def _validate_source(source: object, lane: str, now: datetime) -> dict[str, obje
     uri = _text(source["uri"], "source URI")
     if not uri.startswith("https://"):
         raise ValueError("source URI must use HTTPS")
+    parsed_uri = urlsplit(uri)
+    if (
+        str(source["publisher"]).casefold() == "servicenow"
+        and parsed_uri.hostname == "newsroom.servicenow.com"
+        and "/press-releases/details/" not in parsed_uri.path
+    ):
+        raise ValueError("ServiceNow teardown source must use the exact primary story permalink")
     published = _timestamp(source["publishedAt"], "publishedAt")
     retrieved = _timestamp(source["retrievedAt"], "retrievedAt")
     if published > retrieved or retrieved > now:
@@ -229,8 +298,8 @@ def _validate_angle(value: object) -> dict[str, object]:
     excerpt = _text(value["excerpt"], "earned angle excerpt")
     expected_hash = _hash(value["fileSha256"], "earned angle fileSha256")
     repository = Path(__file__).resolve().parents[2]
-    source_path = repository / path
-    if source_path.is_symlink() or not source_path.is_file():
+    source_path = _safe_descendant(repository, path, "earned angle path")
+    if not source_path.is_file():
         raise ValueError("earned angle path is missing or symlinked")
     source_bytes = source_path.read_bytes()
     if sha256_hex(source_bytes) != expected_hash:
@@ -246,8 +315,10 @@ def _validate_angle(value: object) -> dict[str, object]:
     expected_confirmation_hash = _hash(
         value["confirmationFileSha256"], "earned angle confirmation fileSha256"
     )
-    confirmation_source = repository / confirmation_path
-    if confirmation_source.is_symlink() or not confirmation_source.is_file():
+    confirmation_source = _safe_descendant(
+        repository, confirmation_path, "earned angle confirmation path"
+    )
+    if not confirmation_source.is_file():
         raise ValueError("earned angle confirmation path is missing or symlinked")
     confirmation_bytes = confirmation_source.read_bytes()
     if sha256_hex(confirmation_bytes) != expected_confirmation_hash:
@@ -255,18 +326,53 @@ def _validate_angle(value: object) -> dict[str, object]:
     confirmation_text = confirmation_bytes.decode("utf-8")
     if confirmation_excerpt not in confirmation_text:
         raise ValueError("earned angle confirmation excerpt is not exact source text")
+    posted_log = repository / "memory/content/posted-log.jsonl"
+    matching_rows: list[dict[str, object]] = []
+    for raw_line in posted_log.read_text(encoding="utf-8").splitlines():
+        if not raw_line.strip():
+            continue
+        row = json.loads(raw_line)
+        if isinstance(row, dict) and row.get("source_file") == path:
+            matching_rows.append(row)
+    if len(matching_rows) != 1:
+        raise ValueError("earned angle needs one governed legacy source row")
+    legacy_hash = sha256_hex(canonical_bytes(matching_rows[0]))
+    legacy_packet_id = "legacy:{}".format(legacy_hash)
     try:
-        confirmation_record = json.loads(confirmation_text)
-    except json.JSONDecodeError as error:
-        raise ValueError("earned angle confirmation must be JSON") from error
+        events = load_events(confirmation_source)
+    except (OSError, ValueError) as error:
+        raise ValueError("earned angle confirmation must use the governed outcome ledger") from error
+    statuses = [
+        event
+        for event in events
+        if event["eventType"] == "historical_status"
+        and event["packetId"] == legacy_packet_id
+        and event["payload"].get("status") == "posted_confirmed"
+    ]
+    publications = [
+        event
+        for event in events
+        if event["eventType"] == "publication_acknowledged"
+        and event["packetId"] == legacy_packet_id
+        and event["outcomeEventId"] == confirmation_excerpt
+    ]
+    if len(statuses) != 1 or len(publications) != 1:
+        raise ValueError("earned angle lacks governed posted_confirmed publication evidence")
+    publication = publications[0]
+    payload = publication["payload"]
+    pointer = publication["sourcePointer"]
+    final_text = payload.get("finalText")
+    final_hash = payload.get("finalTextSha256")
+    public_url = payload.get("publicationUrl")
     if (
-        not isinstance(confirmation_record, dict)
-        or confirmation_record.get("schemaVersion") != "linkedin-earned-angle-confirmation.v1"
-        or confirmation_record.get("posted") is not True
-        or confirmation_record.get("sourceFile") != path
-        or confirmation_record.get("sourceFileSha256") != expected_hash
+        not isinstance(final_text, str)
+        or excerpt not in final_text
+        or final_hash != sha256_hex(final_text.encode("utf-8"))
+        or pointer.get("sourceType") != "linkedin_publication_capture"
+        or pointer.get("sourceId") != public_url
+        or pointer.get("sourceSha256") != final_hash
     ):
-        raise ValueError("earned angle confirmation must prove the exact posted source")
+        raise ValueError("earned angle governed publication does not bind exact final text")
     return {
         "kind": value["kind"],
         "path": path,
@@ -278,10 +384,10 @@ def _validate_angle(value: object) -> dict[str, object]:
     }
 
 
-def _validate_conflict_checks(value: object, lane: str) -> list[dict[str, str]]:
+def _validate_conflict_checks(value: object, lane: str) -> list[dict[str, object]]:
     if not isinstance(value, list):
         raise ValueError("conflict checks must be a list")
-    normalized: list[dict[str, str]] = []
+    normalized: list[dict[str, object]] = []
     names: set[str] = set()
     for item in value:
         if not isinstance(item, dict):
@@ -293,8 +399,51 @@ def _validate_conflict_checks(value: object, lane: str) -> list[dict[str, str]]:
         names.add(name)
         if item["status"] != "pass":
             raise ValueError("conflict check {} did not pass".format(name))
+        evidence_ref = item["evidenceRef"]
+        if not isinstance(evidence_ref, dict):
+            raise ValueError("conflict evidence reference must be an object")
+        _exact_fields(evidence_ref, _EVIDENCE_REF_FIELDS, "conflict evidence reference")
+        evidence_path = _safe_path(evidence_ref["path"], "conflict evidence path")
+        evidence_hash = _hash(evidence_ref["fileSha256"], "conflict evidence fileSha256")
+        record_id = _text(evidence_ref["recordId"], "conflict evidence recordId")
+        repository = Path(__file__).resolve().parents[2]
+        evidence_file = _safe_descendant(repository, evidence_path, "conflict evidence path")
+        if not evidence_file.is_file() or sha256_hex(evidence_file.read_bytes()) != evidence_hash:
+            raise ValueError("conflict evidence file is missing or hash-mismatched")
+        try:
+            evidence_document = json.loads(evidence_file.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+            raise ValueError("conflict evidence file is invalid") from error
+        if (
+            not isinstance(evidence_document, dict)
+            or evidence_document.get("schemaVersion") != "manual-fixture-conflict-evidence.v1"
+            or not isinstance(evidence_document.get("records"), list)
+        ):
+            raise ValueError("conflict evidence document schema is invalid")
+        records = [
+            record
+            for record in evidence_document["records"]
+            if isinstance(record, dict) and record.get("recordId") == record_id
+        ]
+        evidence = _text(item["evidence"], "conflict evidence")
+        if (
+            len(records) != 1
+            or records[0].get("check") != name
+            or records[0].get("status") != "pass"
+            or records[0].get("result") != evidence
+        ):
+            raise ValueError("conflict evidence record does not bind the check result")
         normalized.append(
-            {"check": name, "status": "pass", "evidence": _text(item["evidence"], "conflict evidence")}
+            {
+                "check": name,
+                "status": "pass",
+                "evidence": evidence,
+                "evidenceRef": {
+                    "path": evidence_path,
+                    "fileSha256": evidence_hash,
+                    "recordId": record_id,
+                },
+            }
         )
     if names != _REQUIRED_CONFLICT_CHECKS[lane]:
         raise ValueError("conflict checks are incomplete for {}".format(lane))
@@ -326,21 +475,37 @@ def _validate_visual(value: object, lane: str) -> dict[str, object]:
     }
 
 
-def _load_font(size: int, *, mono: bool = False) -> ImageFont.FreeTypeFont:
+def _font_path(*, mono: bool = False) -> Path:
     candidates = (
         "/System/Library/Fonts/SFNSMono.ttf" if mono else "/System/Library/Fonts/SFNS.ttf",
         "/System/Library/Fonts/Supplemental/Arial.ttf",
     )
     for candidate in candidates:
-        try:
-            return ImageFont.truetype(candidate, size=size)
-        except OSError:
-            continue
+        path = Path(candidate)
+        if path.is_file() and not path.is_symlink():
+            return path
     raise RuntimeError("deterministic system font is unavailable")
+
+
+def _load_font(size: int, *, mono: bool = False) -> ImageFont.FreeTypeFont:
+    return ImageFont.truetype(str(_font_path(mono=mono)), size=size)
+
+
+def _renderer_identity() -> dict[str, str]:
+    regular = _font_path()
+    mono = _font_path(mono=True)
+    return {
+        "schemaVersion": "linkedin-png-renderer.v1",
+        "pillowVersion": PILLOW_VERSION,
+        "regularFontSha256": sha256_hex(regular.read_bytes()),
+        "monoFontSha256": sha256_hex(mono.read_bytes()),
+    }
 
 
 def _fit_lines(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont, width: int) -> list[str]:
     words = text.split()
+    if any(draw.textbbox((0, 0), word, font=font)[2] > width for word in words):
+        raise ValueError("visual text horizontally overflows its safe area")
     lines: list[str] = []
     current = ""
     for word in words:
@@ -364,13 +529,15 @@ def _render_png(visual: dict[str, object], lane: str) -> bytes:
     eyebrow_font = _load_font(25, mono=True)
     title_font = _load_font(64)
     subtitle_font = _load_font(31)
-    stage_font = _load_font(28)
+    stage_font = _load_font(30)
     number_font = _load_font(24, mono=True)
-    small_font = _load_font(26, mono=True)
+    small_font = _load_font(30, mono=True)
 
     draw.rounded_rectangle((58, 58, 1022, 1292), radius=28, fill="#111114", outline=border, width=2)
     eyebrow = str(visual["eyebrow"])
     eyebrow_width = draw.textbbox((0, 0), eyebrow, font=eyebrow_font)[2]
+    if 126 + eyebrow_width > 992:
+        raise ValueError("visual eyebrow overflows its safe area")
     draw.rounded_rectangle((82, 82, 126 + eyebrow_width, 130), radius=18, fill=accent)
     draw.text((104, 96), eyebrow, font=eyebrow_font, fill="#ffffff")
 
@@ -406,7 +573,7 @@ def _render_png(visual: dict[str, object], lane: str) -> bytes:
         stage_lines = _fit_lines(draw, str(stage), stage_font, box_width - 34)
         if len(stage_lines) > 5:
             raise ValueError("visual stage text overflows its safe area")
-        line_height = 38
+        line_height = 42
         line_y = center_y - int((len(stage_lines) * line_height) / 2)
         if line_y < stage_top + 80 or line_y + len(stage_lines) * line_height > stage_bottom - 24:
             raise ValueError("visual stage text overflows its safe area")
@@ -495,6 +662,8 @@ def _normalize_spec(spec: object, now: datetime) -> dict[str, object]:
     by_id = {str(source["sourceId"]): source for source in sources}
     if len(by_id) != len(sources):
         raise ValueError("source IDs must be unique")
+    if created < max(_timestamp(source["retrievedAt"], "retrievedAt") for source in sources):
+        raise ValueError("createdAt cannot precede source retrievedAt chronology")
     maximum_age_days = 5 if lane == "ai_news" else 14
     earliest_fresh_until = min(
         _timestamp(source["publishedAt"], "publishedAt") + timedelta(days=maximum_age_days)
@@ -523,6 +692,8 @@ def _normalize_spec(spec: object, now: datetime) -> dict[str, object]:
             raise ValueError("claim evidence binding is invalid")
         if raw_claim["attributionType"] not in _ATTRIBUTIONS:
             raise ValueError("claim attribution is invalid")
+        if source["sourceType"] == "official_release" and raw_claim["attributionType"] != "vendor_assertion":
+            raise ValueError("official release claims require vendor_assertion attribution")
         excerpt = source["excerpts"][index]
         claim_text = _text(raw_claim["text"], "claim text")
         if claim_text not in str(excerpt):
@@ -606,11 +777,16 @@ def build_manual_fixture(spec: object, artifact_root: Path, *, now: datetime) ->
 
     normalized = _normalize_spec(spec, now)
     packet_id = str(normalized["packetId"])
-    directory = Path(artifact_root) / "manual-fixtures" / packet_id
+    artifact_root = Path(artifact_root)
+    manual_root = _safe_descendant(artifact_root, "manual-fixtures", "manual fixture root")
+    manual_root.mkdir(exist_ok=True)
+    directory = _safe_descendant(
+        artifact_root, "manual-fixtures/{}".format(packet_id), "manual fixture packet path"
+    )
     asset_path = directory / "image.v1.png"
     packet_path = directory / "packet.v1.json"
     image_bytes = _render_png(dict(normalized["visualRoute"]), str(normalized["lane"]))
-    relative_asset = asset_path.relative_to(Path(artifact_root)).as_posix()
+    relative_asset = asset_path.relative_to(artifact_root).as_posix()
 
     packet: dict[str, object] = {
         "schemaVersion": "content-packet.v1",
@@ -623,23 +799,39 @@ def build_manual_fixture(spec: object, artifact_root: Path, *, now: datetime) ->
             "height": 1350,
             "byteLength": len(image_bytes),
             "sha256": sha256_hex(image_bytes),
+            "rendererIdentity": _renderer_identity(),
         },
         "decisionOptions": ["approve", "reject", "skip"],
     }
     packet["draftSha256"] = sha256_hex(canonical_bytes(_draft_binding(packet)))
     packet["payloadSha256"] = sha256_hex(canonical_bytes(_payload_binding(packet)))
 
-    if packet_path.exists():
-        if packet_path.read_bytes() != canonical_bytes(packet):
-            raise ValueError("conflicting replay for existing packet ID")
-        if not asset_path.exists() or asset_path.read_bytes() != image_bytes:
-            raise ValueError("existing replay asset does not match packet")
-        return validate_manual_fixture(packet, Path(artifact_root), now=now)
+    with _exclusive_path_lock(directory):
+        directory = _safe_descendant(
+            artifact_root,
+            "manual-fixtures/{}".format(packet_id),
+            "manual fixture packet path",
+        )
+        has_packet = packet_path.exists()
+        has_asset = asset_path.exists()
+        if has_packet != has_asset:
+            raise ValueError("orphan manual fixture artifact refuses overwrite")
+        if has_packet:
+            if packet_path.read_bytes() != canonical_bytes(packet):
+                raise ValueError("conflicting replay for existing packet ID")
+            if asset_path.read_bytes() != image_bytes:
+                raise ValueError("existing replay asset does not match packet")
+            return validate_manual_fixture(packet, artifact_root, now=now)
 
-    directory.mkdir(parents=True, exist_ok=True)
-    _atomic_bytes(asset_path, image_bytes)
-    write_json_atomic(packet_path, packet)
-    return validate_manual_fixture(packet, Path(artifact_root), now=now)
+        directory.mkdir(exist_ok=True)
+        try:
+            _atomic_bytes(asset_path, image_bytes)
+            write_json_atomic(packet_path, packet)
+        except Exception:
+            asset_path.unlink(missing_ok=True)
+            packet_path.unlink(missing_ok=True)
+            raise
+        return validate_manual_fixture(packet, artifact_root, now=now)
 
 
 def validate_manual_fixture(packet: object, artifact_root: Path, *, now: datetime) -> dict[str, object]:
@@ -720,12 +912,21 @@ def validate_manual_fixture(packet: object, artifact_root: Path, *, now: datetim
     if not isinstance(asset, dict):
         raise ValueError("image asset must be an object")
     _exact_fields(asset, _ASSET_FIELDS, "image asset")
+    renderer_identity = asset["rendererIdentity"]
+    if not isinstance(renderer_identity, dict):
+        raise ValueError("renderer identity must be an object")
+    _exact_fields(renderer_identity, _RENDERER_FIELDS, "renderer identity")
+    if renderer_identity != _renderer_identity():
+        raise ValueError("renderer identity does not match the deterministic renderer")
     expected_asset_path = "manual-fixtures/{}/image.v1.png".format(packet_id)
     if asset["path"] != expected_asset_path:
         raise ValueError("image asset path is not packet-versioned")
-    asset_path = Path(artifact_root) / _safe_path(asset["path"], "image asset path")
-    if asset_path.is_symlink():
-        raise ValueError("image asset must not be a symlink")
+    artifact_root = Path(artifact_root)
+    asset_path = _safe_descendant(
+        artifact_root,
+        _safe_path(asset["path"], "image asset path"),
+        "image asset path",
+    )
     if not asset_path.is_file():
         raise ValueError("image asset is missing")
     payload = asset_path.read_bytes()
@@ -733,6 +934,9 @@ def validate_manual_fixture(packet: object, artifact_root: Path, *, now: datetim
         raise ValueError("image asset metadata mismatch")
     if _hash(asset["sha256"], "image asset SHA-256") != sha256_hex(payload):
         raise ValueError("image asset hash mismatch")
+    expected_render = _render_png(dict(normalized["visualRoute"]), str(normalized["lane"]))
+    if payload != expected_render:
+        raise ValueError("image pixels do not match the normalized visual route render")
     with Image.open(io.BytesIO(payload)) as image:
         if image.format != "PNG" or image.size != (1080, 1350):
             raise ValueError("image asset dimensions or type are invalid")

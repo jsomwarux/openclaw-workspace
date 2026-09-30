@@ -1,9 +1,11 @@
 # LinkedIn Manual Fixtures — Claude Review Reconciliation
 
 **Date:** 2026-09-29
-**Base reviewed commit:** `75d505896ee6ab86b00149507d75d6c578ebde3a`
-**Claude verdict:** `CHANGES REQUIRED` — 0 Critical, 12 Important, 8 Minor
-**Current state:** Local repair verified; fresh independent acceptance still required.
+**First reviewed commit:** `75d505896ee6ab86b00149507d75d6c578ebde3a`
+**First Claude verdict:** `CHANGES REQUIRED` — 0 Critical, 12 Important, 8 Minor
+**Second reviewed commit:** `9b090fa27a551084eeee34c919a01e911a53c6bc`
+**Second Claude verdict:** `CHANGES REQUIRED` — 0 Critical, 5 Important, 10 Minor
+**Current state:** Second bounded repair is builder-verified; fresh independent acceptance still required.
 
 ## Replacement decision
 
@@ -11,16 +13,16 @@ The AppFolio teardown was retired because the active Altmark/property-operations
 
 Replacement packets:
 
-- `linkedin-teardown-servicenow-inry-2026-09-29-v2`
-  - Source: ServiceNow newsroom, September 23, 2026
-  - Draft: `6d764b4245739c285e1a565f19b5b91df8bede1745aafcc6de44fe587aeebf7a`
-  - Payload: `4f9cd79a807487e46ff5191dc23c9a473765609b8b35887281f1d122f64afcc7`
-  - Image: `0f04e93e3420a6399f3a8b34f55e7489f065729f947fee41e0c1edff275b612b`
-- `linkedin-ai-news-openai-health-2026-09-29-v2`
+- `linkedin-teardown-servicenow-inry-2026-09-29-v1`
+  - Source: exact ServiceNow/INRY primary-story permalink, September 23, 2026
+  - Draft: `827ef257c9801ac2d59e6c7c43f58eb51c86d67a8810d8420618bff82481c17a`
+  - Payload: `0fd9b0d316e0cd2c656fe3dad3138dcfadbdf8b98c69dd905715dfeed587cdf7`
+  - Image: `992f8e781fa4bed559a17923c1ae2596ba3162840c7bb40a685ac0abb3b742d8`
+- `linkedin-ai-news-openai-health-2026-09-29-v1`
   - Source: OpenAI ChatGPT release notes, September 28, 2026
-  - Draft: `943dd02bf1cdeb232d8a4aabf45b5274c441bb1645c247516b802f519c49ce13`
-  - Payload: `17778cf6b312f6420eca6ac350241328e6a84417464b70133a3cfc01ef5a034d`
-  - Image: `7da35d1ff586034207c58d8c104b6848c38e04ad55a122010d43295fb1f397b6`
+  - Draft: `1462c8503619bd74dfc615f764d1e4aabd81af4a63d492f4191e92a71173a02e`
+  - Payload: `16620a18f4cb02bc2c3fef96014295d096e2469305e64b8074476ef92a89bfa2`
+  - Image: `51f98d10833f690b278a404beffff07004586fb7cfada7a9ec7ae100544f2d86`
 
 ## Important findings closed locally
 
@@ -37,19 +39,26 @@ Replacement packets:
 11. Post, visual, and alt text use the same stage order.
 12. Renderer minimum sizes, overflow checks, safe areas, and numeral centering were hardened and visually inspected.
 
-Minor findings absorbed now: obsolete `edit`/`hold` decisions were replaced by `approve`/`reject`/`skip`; the full suite uses a resolved real-path `TMPDIR`; symlink assets and wrong packet asset paths fail closed; deterministic font absence fails closed.
+## Second-review findings closed locally
+
+1. Earned-angle authority now resolves through the append-only governed outcome ledger. It requires a `posted_confirmed` history event, one exact `publication_acknowledged` event, the real LinkedIn URL, exact final text, and matching source/final-text hashes. The retired builder-authored confirmation file is no longer authoritative.
+2. Validation deterministically re-renders `visualRoute` and requires byte equality with the tracked PNG. Renderer identity records Pillow plus regular/mono font hashes and is hash-bound into the packet.
+3. Every existing path component is checked for symlinks before build or validation; resolved-root containment is mandatory. Exclusive packet locks and orphan-asset refusal prevent unsafe overwrite races.
+4. One canonical public-text guard covers post, title, subtitle, stages, footer, alt text, and attribution surfaces with the full prohibited machinery and voice-shape block list.
+5. The ServiceNow teardown cites the exact primary-story permalink. Its date, deployment window, and portal-replacement claims are exact source/post spans; the unsupported statement about what the page omitted was removed.
+
+Adjacent findings absorbed: official-release claims require `vendor_assertion`; conflict checks bind hash-addressed evidence records; `createdAt` cannot predate retrieval; horizontal word and eyebrow overflow fail closed; stage/footer sizes increased for mobile legibility; the AI footer distinguishes JT's lens from the source; both packet families start honestly at v1; tracked candidate packets and PNGs replay byte-identically; dates are claim-bound; the teardown language gives JT the action; and both closing lines were revised.
 
 ## Verification
 
-- Focused manual-fixture suite: 12/12 passed.
-- Full LinkedIn Content OS suite: 245/245 passed with real-path `TMPDIR`.
-- Python compilation: passed.
-- `git diff --check`: passed.
-- JT voice guard: 100/100 for both posts.
-- Content distribution guard: passed for both posts.
-- Exact replay and conflicting-replay behavior: passed.
-- Hostile tamper classes: forged QA, internal text, lane relabel, bogus claim, stale source, traversal ID, symlink asset, forged angle, and overlong expiry all rejected.
-- Original-resolution visual inspection: passed for both 1080×1350 PNGs.
+- Focused manual-fixture suite: 24/24 passed.
+- Full LinkedIn Content OS suite: 257/257 passed with real-path `/private/tmp` `TMPDIR`.
+- Python compilation and `git diff --check`: passed.
+- JT voice guard: 100/100 for both posts; content distribution guard passed for both.
+- Exact replay, hostile tamper probes, and tracked-artifact equality: passed.
+- Governed outcome ledger validation: 27/27 events accepted.
+- Scoped credential-pattern scan: no matches.
+- Original-resolution visual inspection: completed for both 1080×1350 PNGs; hierarchy, stage order, alignment, and source/JT separation are readable without overlap.
 
 ## Closed gates
 

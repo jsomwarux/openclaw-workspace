@@ -1,9 +1,0 @@
-{
-  "schemaVersion": "linkedin-earned-angle-confirmation.v1",
-  "topic": "property-ops-source-to-decision-trail",
-  "posted": true,
-  "confirmationSource": "memory/content/posted-log.jsonl#topic=property-ops-source-to-decision-trail",
-  "sourceFile": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
-  "sourceFileSha256": "2ed35201c3f68caacdcfeb0f6fd4fe19df74f9beac49c26f9ffc987b25454480",
-  "loggedDate": "2026-08-04"
-}

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import copy
+import io
+import json
 import subprocess
 import sys
 import tempfile
@@ -31,12 +33,12 @@ def _rehash(packet: dict[str, object]) -> dict[str, object]:
 def _spec(lane: str) -> dict[str, object]:
     repository = Path(__file__).resolve().parents[2]
     angle_path = repository / "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md"
-    confirmation_path = repository / "memory/content/linkedin-content-os/manual-fixtures/evidence/jt-source-to-decision-posted-confirmation.v1.json"
+    confirmation_path = repository / "memory/content/linkedin-content-os/outcomes.v1.jsonl"
     angle_excerpt = (
         "It proves what the workflow saw, what it was allowed to touch, what it held back, "
         "and where the decision landed."
     )
-    confirmation_excerpt = '"posted": true'
+    confirmation_excerpt = "publication:fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf"
     slug_lane = lane.replace("_", "-")
     source = {
         "sourceId": "primary-1",
@@ -55,7 +57,7 @@ def _spec(lane: str) -> dict[str, object]:
         {
             "claimId": "claim-1",
             "text": "Identity-only sign-in remains separate from data access.",
-            "attributionType": "public_fact",
+            "attributionType": "vendor_assertion",
             "sourceId": "primary-1",
             "excerptIndex": 0,
         }
@@ -79,12 +81,39 @@ def _spec(lane: str) -> dict[str, object]:
             "path": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
             "excerpt": angle_excerpt,
             "fileSha256": sha256_hex(angle_path.read_bytes()),
-            "confirmationPath": "memory/content/linkedin-content-os/manual-fixtures/evidence/jt-source-to-decision-posted-confirmation.v1.json",
+            "confirmationPath": "memory/content/linkedin-content-os/outcomes.v1.jsonl",
             "confirmationExcerpt": confirmation_excerpt,
             "confirmationFileSha256": sha256_hex(confirmation_path.read_bytes()),
         },
         "conflictChecks": [
-            {"check": name, "status": "pass", "evidence": "Repository evidence scan returned no conflict."}
+            {
+                "check": name,
+                "status": "pass",
+                "evidence": {
+                    "consulting_suppression": "No exact ServiceNow or INRY entity match exists in the governed client tree.",
+                    "client_conflict": "No current client record names ServiceNow or INRY.",
+                    "prospect_conflict": "No prospect-discovery record names ServiceNow or INRY.",
+                    "job_conflict": "ServiceNow appears only in historical market commentary; no active application record names ServiceNow or INRY.",
+                    "employer_conflict": "No current employer record names ServiceNow or INRY.",
+                    "source_identity": "The cited URL is OpenAI's official ChatGPT release-notes page.",
+                    "claim_attribution": "The release date and feature statement are attributed to the official release; operator recommendations remain separate.",
+                    "protected_purpose_removed": "The public surfaces contain no private client, queue, outreach, job-search, or internal workflow material.",
+                }[name],
+                "evidenceRef": {
+                    "path": "memory/content/linkedin-content-os/manual-fixtures/evidence/manual-fixture-conflict-evidence.v1.json",
+                    "fileSha256": "89370a8f97b2b98430955f29b7c1e40de8ec9d834e99e3bfac438c12bd2166bc",
+                    "recordId": {
+                        "consulting_suppression": "servicenow-inry-consulting-suppression",
+                        "client_conflict": "servicenow-inry-client-conflict",
+                        "prospect_conflict": "servicenow-inry-prospect-conflict",
+                        "job_conflict": "servicenow-inry-job-conflict",
+                        "employer_conflict": "servicenow-inry-employer-conflict",
+                        "source_identity": "openai-health-source-identity",
+                        "claim_attribution": "openai-health-claim-attribution",
+                        "protected_purpose_removed": "openai-health-protected-purpose",
+                    }[name],
+                },
+            }
             for name in (
                 ("consulting_suppression", "client_conflict", "prospect_conflict", "job_conflict", "employer_conflict")
                 if lane == "teardown"
@@ -126,6 +155,190 @@ def _spec(lane: str) -> dict[str, object]:
 
 
 class ManualFixtureTests(unittest.TestCase):
+    def test_rejects_builder_authored_posted_confirmation_without_governed_outcome(self) -> None:
+        repository = Path(__file__).resolve().parents[2]
+        evidence_root = repository / "memory/content/linkedin-content-os/manual-fixtures/evidence"
+        with tempfile.TemporaryDirectory(dir=evidence_root) as temporary:
+            fake_path = Path(temporary) / "forged-confirmation.json"
+            source_path = repository / "AGENTS.md"
+            source_text = source_path.read_text(encoding="utf-8")
+            excerpt = source_text.splitlines()[0]
+            fake_record = {
+                "schemaVersion": "linkedin-earned-angle-confirmation.v1",
+                "topic": "forged-builder-claim",
+                "posted": True,
+                "confirmationSource": "builder-authored",
+                "sourceFile": "AGENTS.md",
+                "sourceFileSha256": sha256_hex(source_path.read_bytes()),
+                "loggedDate": "2026-09-29",
+            }
+            fake_path.write_bytes(canonical_bytes(fake_record))
+            spec = _spec("ai_news")
+            spec["earnedAngle"] = {
+                "kind": "jt_field_lesson",
+                "path": "AGENTS.md",
+                "excerpt": excerpt,
+                "fileSha256": sha256_hex(source_path.read_bytes()),
+                "confirmationPath": fake_path.relative_to(repository).as_posix(),
+                "confirmationExcerpt": '"posted":true',
+                "confirmationFileSha256": sha256_hex(fake_path.read_bytes()),
+            }
+            with self.assertRaisesRegex(ValueError, "posted_confirmed|governed"):
+                build_manual_fixture(spec, Path(temporary) / "artifacts", now=NOW)
+
+    def test_rejects_rehashed_png_that_does_not_match_visual_route(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            packet = build_manual_fixture(_spec("ai_news"), root, now=NOW)
+            asset_path = root / packet["imageAsset"]["path"]
+            output = io.BytesIO()
+            Image.new("RGB", (1080, 1350), "#000000").save(output, format="PNG")
+            swapped = output.getvalue()
+            asset_path.write_bytes(swapped)
+            packet["imageAsset"]["byteLength"] = len(swapped)
+            packet["imageAsset"]["sha256"] = sha256_hex(swapped)
+            packet["payloadSha256"] = sha256_hex(canonical_bytes(_payload_binding(packet)))
+            with self.assertRaisesRegex(ValueError, "render|visual|pixel"):
+                validate_manual_fixture(packet, root, now=NOW)
+
+    def test_rejects_ancestor_symlink_escape_before_build_or_validation(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary, tempfile.TemporaryDirectory() as outside:
+            root = Path(temporary)
+            (root / "manual-fixtures").symlink_to(Path(outside), target_is_directory=True)
+            with self.assertRaisesRegex(ValueError, "symlink|artifact root"):
+                build_manual_fixture(_spec("teardown"), root, now=NOW)
+            self.assertEqual(list(Path(outside).iterdir()), [])
+
+    def test_canonical_public_text_blocks_apply_to_every_public_surface(self) -> None:
+        cases = (
+            ("postText", None, "Not speed but trust."),
+            ("visual", "eyebrow", "EVE REVIEW QUEUE"),
+            ("visual", "title", "The handoff everyone checks manually."),
+            ("visual", "subtitle", "Stop condition"),
+            ("visual", "stages", "state file"),
+            ("visual", "footer", "My outreach automation"),
+            ("altText", None, "Three checks: source, owner, and outcome."),
+        )
+        for field, nested, blocked_text in cases:
+            with self.subTest(field=field, nested=nested):
+                spec = _spec("ai_news")
+                if field == "postText":
+                    spec[field] = "{}\n\n{}".format(spec[field], blocked_text)
+                elif field == "visual" and nested == "stages":
+                    spec[field][nested][0] = blocked_text
+                elif field == "visual":
+                    spec[field][nested] = blocked_text
+                else:
+                    spec[field] = blocked_text
+                with tempfile.TemporaryDirectory() as temporary:
+                    with self.assertRaisesRegex(ValueError, "prohibited|blocked|internal"):
+                        build_manual_fixture(spec, Path(temporary), now=NOW)
+
+    def test_teardown_requires_exact_primary_story_permalink(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            spec = _spec("teardown")
+            spec["sources"][0]["publisher"] = "ServiceNow"
+            spec["sources"][0]["uri"] = "https://newsroom.servicenow.com/overview/default.aspx"
+            with self.assertRaisesRegex(ValueError, "permalink|primary story"):
+                build_manual_fixture(spec, Path(temporary), now=NOW)
+
+    def test_official_release_claims_require_vendor_attribution(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            spec = _spec("ai_news")
+            spec["claims"][0]["attributionType"] = "public_fact"
+            with self.assertRaisesRegex(ValueError, "attribution"):
+                build_manual_fixture(spec, Path(temporary), now=NOW)
+
+    def test_created_at_cannot_precede_source_retrieval(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            spec = _spec("ai_news")
+            spec["createdAt"] = "2026-09-28T19:59:59+00:00"
+            with self.assertRaisesRegex(ValueError, "createdAt|retrievedAt|chronology"):
+                build_manual_fixture(spec, Path(temporary), now=NOW)
+
+    def test_orphan_asset_is_refused_instead_of_overwritten(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            spec = _spec("teardown")
+            directory = root / "manual-fixtures" / spec["packetId"]
+            directory.mkdir(parents=True)
+            orphan = directory / "image.v1.png"
+            orphan.write_bytes(b"orphan")
+            with self.assertRaisesRegex(ValueError, "orphan"):
+                build_manual_fixture(spec, root, now=NOW)
+            self.assertEqual(orphan.read_bytes(), b"orphan")
+
+    def test_renderer_rejects_horizontal_overflow(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            overwide_stage = _spec("teardown")
+            overwide_stage["visual"]["stages"][0] = "Reconciliation"
+            with self.assertRaisesRegex(ValueError, "overflow"):
+                build_manual_fixture(overwide_stage, Path(temporary), now=NOW)
+
+        with tempfile.TemporaryDirectory() as temporary:
+            overwide_eyebrow = _spec("ai_news")
+            overwide_eyebrow["visual"]["eyebrow"] = (
+                "THIS EYEBROW IS FAR TOO WIDE FOR THE SAFE CARD BOUNDARY AND MUST BE REJECTED"
+            )
+            with self.assertRaisesRegex(ValueError, "eyebrow.*overflow"):
+                build_manual_fixture(overwide_eyebrow, Path(temporary), now=NOW)
+
+    def test_packet_records_and_validates_renderer_identity(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            packet = build_manual_fixture(_spec("ai_news"), root, now=NOW)
+            identity = packet["imageAsset"]["rendererIdentity"]
+            self.assertEqual(identity["schemaVersion"], "linkedin-png-renderer.v1")
+            self.assertRegex(identity["pillowVersion"], r"^\d+\.\d+")
+            self.assertEqual(len(identity["regularFontSha256"]), 64)
+            self.assertEqual(len(identity["monoFontSha256"]), 64)
+
+            tampered = copy.deepcopy(packet)
+            tampered["imageAsset"]["rendererIdentity"]["pillowVersion"] = "0.0-forged"
+            _rehash(tampered)
+            with self.assertRaisesRegex(ValueError, "renderer"):
+                validate_manual_fixture(tampered, root, now=NOW)
+
+    def test_conflict_checks_require_hash_bound_evidence_records(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            spec = _spec("teardown")
+            spec["conflictChecks"][0]["evidenceRef"]["recordId"] = "missing-record"
+            with self.assertRaisesRegex(ValueError, "conflict evidence"):
+                build_manual_fixture(spec, Path(temporary), now=NOW)
+
+    def test_tracked_candidate_artifacts_replay_byte_identically(self) -> None:
+        repository = Path(__file__).resolve().parents[2]
+        fixture_root = repository / "memory/content/linkedin-content-os/manual-fixtures"
+        accepted_set = json.loads((fixture_root / "accepted-set.v1.json").read_text(encoding="utf-8"))
+        accepted_candidates = {
+            candidate["packetId"]: candidate for candidate in accepted_set["candidatePackets"]
+        }
+        replay_now = datetime.fromisoformat("2026-09-29T21:40:00-04:00")
+        source_names = (
+            "servicenow-inry-employee-front-door-teardown.v1.json",
+            "openai-health-summaries-ai-news.v1.json",
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            replay_root = Path(temporary)
+            for source_name in source_names:
+                source = json.loads((fixture_root / "sources" / source_name).read_text(encoding="utf-8"))
+                packet = build_manual_fixture(source, replay_root, now=replay_now)
+                packet_id = packet["packetId"]
+                tracked_directory = fixture_root / packet_id
+                replay_directory = replay_root / "manual-fixtures" / packet_id
+                self.assertEqual(
+                    replay_directory.joinpath("packet.v1.json").read_bytes(),
+                    tracked_directory.joinpath("packet.v1.json").read_bytes(),
+                )
+                self.assertEqual(
+                    replay_directory.joinpath("image.v1.png").read_bytes(),
+                    tracked_directory.joinpath("image.v1.png").read_bytes(),
+                )
+                candidate = accepted_candidates[packet_id]
+                self.assertEqual(candidate["draftSha256"], packet["draftSha256"])
+                self.assertEqual(candidate["payloadSha256"], packet["payloadSha256"])
+                self.assertEqual(candidate["imageSha256"], packet["imageAsset"]["sha256"])
+
     def test_cli_runs_from_repository_root(self) -> None:
         repository = Path(__file__).resolve().parents[2]
         source = repository / "memory/content/linkedin-content-os/manual-fixtures/sources/servicenow-inry-employee-front-door-teardown.v1.json"

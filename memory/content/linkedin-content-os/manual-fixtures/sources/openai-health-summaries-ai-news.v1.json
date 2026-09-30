@@ -1,15 +1,15 @@
 {
   "schemaVersion": "manual-linkedin-fixture-source.v1",
-  "packetId": "linkedin-ai-news-openai-health-2026-09-29-v2",
+  "packetId": "linkedin-ai-news-openai-health-2026-09-29-v1",
   "revisionFamilyId": "linkedin-ai-news-openai-health-2026-09-29",
-  "packetVersion": 2,
+  "packetVersion": 1,
   "lane": "ai_news",
   "createdAt": "2026-09-29T20:10:00-04:00",
   "expiresAt": "2026-10-02T23:59:59-04:00",
   "targetReader": "Enterprise AI product, operations, and governance leaders",
   "commercialObjective": "Translate a current personalized-AI release into a concrete traceability standard.",
   "whyThisWon": "The September 28 release is current, buyer-relevant, and supports a public-safe operator lesson already confirmed as published by JT.",
-  "postText": "OpenAI's September 28 ChatGPT release notes say, \"You can now select a chart, metric, or record in the Health tab to get personalized explanations and insights based on your connected health information.\"\n\nThat creates a precise operating question. Can the user trace an explanation to the record, date, and scope that produced it?\n\nI would keep four checkpoints visible. The source record. The selected metric and date. The generated explanation separated from source data. The user's review or correction.\n\nPersonalization becomes easier to trust when the path from source to explanation stays visible.",
+  "postText": "OpenAI's September 28 ChatGPT release notes say, \"You can now select a chart, metric, or record in the Health tab to get personalized explanations and insights based on your connected health information.\"\n\nThat creates a precise operating question. Can the user trace an explanation to the record, date, and scope that produced it?\n\nI would keep four checkpoints visible. The source record. The selected metric and date. The generated explanation separated from source data. The user's review or correction.\n\nThat is the trace I would ask a team to preserve before shipping personalized explanations.",
   "sources": [
     {
       "sourceId": "openai-chatgpt-release-notes-health-summary",
@@ -27,9 +27,16 @@
   ],
   "claims": [
     {
+      "claimId": "openai-health-summary-date",
+      "text": "September 28",
+      "attributionType": "vendor_assertion",
+      "sourceId": "openai-chatgpt-release-notes-health-summary",
+      "excerptIndex": 0
+    },
+    {
       "claimId": "openai-health-summary-inputs",
       "text": "You can now select a chart, metric, or record in the Health tab to get personalized explanations and insights based on your connected health information.",
-      "attributionType": "public_fact",
+      "attributionType": "vendor_assertion",
       "sourceId": "openai-chatgpt-release-notes-health-summary",
       "excerptIndex": 1
     }
@@ -39,14 +46,14 @@
     "path": "memory/drafts/linkedin-property-ops-source-to-decision-trail-2026-08-02.md",
     "excerpt": "It proves what the workflow saw, what it was allowed to touch, what it held back, and where the decision landed.",
     "fileSha256": "2ed35201c3f68caacdcfeb0f6fd4fe19df74f9beac49c26f9ffc987b25454480",
-    "confirmationPath": "memory/content/linkedin-content-os/manual-fixtures/evidence/jt-source-to-decision-posted-confirmation.v1.json",
-    "confirmationExcerpt": "\"posted\": true",
-    "confirmationFileSha256": "a51f0dae27a3b84f9d57e734ea4900032377684a404efdddda01398fb27d8e1a"
+    "confirmationPath": "memory/content/linkedin-content-os/outcomes.v1.jsonl",
+    "confirmationExcerpt": "publication:fabf927a2f54fa40a8d4cc48948f32393259c842d7ada3bbd5bfae84f2f69ccf",
+    "confirmationFileSha256": "321a570afe85c77dbb850b7cc2936e728dd9a10551bd9b028f36f4e8325c2dcc"
   },
   "conflictChecks": [
-    {"check": "source_identity", "status": "pass", "evidence": "The source is the official OpenAI ChatGPT release-notes page."},
-    {"check": "claim_attribution", "status": "pass", "evidence": "Both release claims are explicitly attributed to OpenAI release notes; JT recommendations are separate paragraphs."},
-    {"check": "protected_purpose_removed", "status": "pass", "evidence": "The packet contains no internal queue, outreach, job-search, client, or private workflow material."}
+    {"check": "source_identity", "status": "pass", "evidence": "The cited URL is OpenAI's official ChatGPT release-notes page.", "evidenceRef": {"path": "memory/content/linkedin-content-os/manual-fixtures/evidence/manual-fixture-conflict-evidence.v1.json", "fileSha256": "89370a8f97b2b98430955f29b7c1e40de8ec9d834e99e3bfac438c12bd2166bc", "recordId": "openai-health-source-identity"}},
+    {"check": "claim_attribution", "status": "pass", "evidence": "The release date and feature statement are attributed to the official release; operator recommendations remain separate.", "evidenceRef": {"path": "memory/content/linkedin-content-os/manual-fixtures/evidence/manual-fixture-conflict-evidence.v1.json", "fileSha256": "89370a8f97b2b98430955f29b7c1e40de8ec9d834e99e3bfac438c12bd2166bc", "recordId": "openai-health-claim-attribution"}},
+    {"check": "protected_purpose_removed", "status": "pass", "evidence": "The public surfaces contain no private client, queue, outreach, job-search, or internal workflow material.", "evidenceRef": {"path": "memory/content/linkedin-content-os/manual-fixtures/evidence/manual-fixture-conflict-evidence.v1.json", "fileSha256": "89370a8f97b2b98430955f29b7c1e40de8ec9d834e99e3bfac438c12bd2166bc", "recordId": "openai-health-protected-purpose"}}
   ],
   "visual": {
     "template": "ai-news-source-card.v1",
@@ -54,7 +61,7 @@
     "title": "Keep the source visible",
     "subtitle": "JT operator lens · Sep 29, 2026",
     "stages": ["Source record", "Selected metric", "AI explanation", "User review"],
-    "footer": "Source fact: OpenAI ChatGPT release notes"
+    "footer": "JT operator lens based on OpenAI release notes"
   },
   "altText": "A four-stage traceability path from a source health record to a selected metric, an AI explanation, and user review.",
   "cropGuidance": "Publish the full 4:5 image. Keep the complete frame; all informational text is inside the 72-pixel safe area.",
