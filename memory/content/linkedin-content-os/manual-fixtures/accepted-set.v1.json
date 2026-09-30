@@ -1,10 +1,12 @@
 {
   "schemaVersion": "linkedin-manual-fixture-review-set.v1",
   "state": "pending_independent_review",
-  "supersedesCommit": "d4c3bcd8906cc18648b7eecb935d5971a759073c",
+  "supersedesCommit": "71b0fc92dbd09a46e520fc48b7355882f47662cf",
   "rejectedPacketIds": [
     "linkedin-teardown-appfolio-column-2026-09-28-v1",
     "linkedin-ai-news-openai-external-access-2026-09-28-v1",
+    "linkedin-teardown-servicenow-inry-2026-09-29-v1",
+    "linkedin-ai-news-openai-health-2026-09-29-v1",
     "linkedin-teardown-servicenow-inry-2026-09-29-v2",
     "linkedin-ai-news-openai-health-2026-09-29-v2"
   ],
@@ -24,25 +26,41 @@
       "payloadSha256": "16620a18f4cb02bc2c3fef96014295d096e2469305e64b8074476ef92a89bfa2",
       "imageSha256": "51f98d10833f690b278a404beffff07004586fb7cfada7a9ec7ae100544f2d86",
       "reason": "independent review CHANGES REQUIRED; earned-angle authority came from builder-appended ledger events that contradicted JT's still_unknown human-gate answer"
+    },
+    {
+      "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v1",
+      "commit": "71b0fc92dbd09a46e520fc48b7355882f47662cf",
+      "draftSha256": "fc246d1270730c965a280da72227e6fde54b85a9e0c8aace7102066cb6c437f4",
+      "payloadSha256": "a694c694ebe2fb406e73fe47f30ae2cbe50d5861cd64bc67f6331cd9470f1102",
+      "imageSha256": "992f8e781fa4bed559a17923c1ae2596ba3162840c7bb40a685ac0abb3b742d8",
+      "reason": "independent review CHANGES REQUIRED; the earned angle bound the latest ledger publication instead of the allowlisted exact-text receipt, and the packet reused a rejected ID and version"
+    },
+    {
+      "packetId": "linkedin-ai-news-openai-health-2026-09-29-v1",
+      "commit": "71b0fc92dbd09a46e520fc48b7355882f47662cf",
+      "draftSha256": "5be5bbbc41ef47242f4e18319fabd550e09f136b9f5b6724771da99d8fd29d75",
+      "payloadSha256": "c8033d0335a057af00710585a4b0b86a38a9198863f64ef81e837838240543b9",
+      "imageSha256": "51f98d10833f690b278a404beffff07004586fb7cfada7a9ec7ae100544f2d86",
+      "reason": "independent review CHANGES REQUIRED; the earned angle bound the latest ledger publication instead of the allowlisted exact-text receipt, the packet reused a rejected ID and version, and the visible date did not match createdAt"
     }
   ],
   "candidatePackets": [
     {
-      "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v1",
+      "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v3",
       "sourceSpec": "memory/content/linkedin-content-os/manual-fixtures/sources/servicenow-inry-employee-front-door-teardown.v1.json",
-      "sourceSpecSha256": "6daa1f9cb8e607a6ee6edb0b9643126c8cfc7a373018c02d2a8a28af6a7ad7cf",
-      "draftSha256": "fc246d1270730c965a280da72227e6fde54b85a9e0c8aace7102066cb6c437f4",
-      "payloadSha256": "a694c694ebe2fb406e73fe47f30ae2cbe50d5861cd64bc67f6331cd9470f1102",
+      "sourceSpecSha256": "6e30e121e9a73e43ab3e13c2e516d040a10a35f535cec85c067c6a5d62e501f4",
+      "draftSha256": "dc1223d1dcbfb34c00de0cd15cecc15f97310da1f86fc08092518357a0552c5d",
+      "payloadSha256": "bc3a0ac464fed5c7cf18e83b1dd3c89c25c7e1c1c96f7a32e6670f6339e7ee0e",
       "imageSha256": "992f8e781fa4bed559a17923c1ae2596ba3162840c7bb40a685ac0abb3b742d8",
       "evidenceExpiresAt": "2026-10-06T23:59:59-04:00"
     },
     {
-      "packetId": "linkedin-ai-news-openai-health-2026-09-29-v1",
+      "packetId": "linkedin-ai-news-openai-health-2026-09-29-v3",
       "sourceSpec": "memory/content/linkedin-content-os/manual-fixtures/sources/openai-health-summaries-ai-news.v1.json",
-      "sourceSpecSha256": "d22416ba2cb8971b6670c623d0782e88a3cdfe3ea1ceb34995ac9fb591c4b75f",
-      "draftSha256": "5be5bbbc41ef47242f4e18319fabd550e09f136b9f5b6724771da99d8fd29d75",
-      "payloadSha256": "c8033d0335a057af00710585a4b0b86a38a9198863f64ef81e837838240543b9",
-      "imageSha256": "51f98d10833f690b278a404beffff07004586fb7cfada7a9ec7ae100544f2d86",
+      "sourceSpecSha256": "3d4ac15453895ceaa95c636ba27df6e282f374be10b1ad1639d14c0cd590e257",
+      "draftSha256": "87330e8286e745306df7b44cb66bbc71e8cbd566c5a10b08bd9775c945d87434",
+      "payloadSha256": "e22d3a880363608f22fa0af0867cbfb2f27e641459be8b6789f967d96986003a",
+      "imageSha256": "8e799a3c51cf38dc28efb881a19659573902a0ddd84cfb6771198c1d87ca908a",
       "evidenceExpiresAt": "2026-10-02T23:59:59-04:00"
     }
   ],
@@ -53,7 +71,8 @@
     "supplementSha256": "40a368e64b7675f37bbec3410fce8851a8d3562ebd33b006d01605108d007229",
     "canonicalLedgerSha256": "10a7b5bf4b45573b2df5ffcdef6c34df646c14ec752e6e79d0ef61ba787ca732",
     "canonicalLedgerEventCount": 29,
-    "supplementManifestSha256": "f0722d1b868c89bf497aa85bb9e21cef25ed8f2b2c8a018b55f84e6bd9ae1eaf"
+    "supplementManifestSha256": "f0722d1b868c89bf497aa85bb9e21cef25ed8f2b2c8a018b55f84e6bd9ae1eaf",
+    "authorityReceiptSha256": "0fddd8d77da1af2f938b941f70e8c0b4236a2e32ff26befe5fa70b155c041cc9"
   },
   "externalActionsAuthorized": false
 }

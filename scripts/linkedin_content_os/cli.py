@@ -33,7 +33,7 @@ from scripts.linkedin_content_os.canonical import (
     write_json_atomic,
 )
 from scripts.linkedin_content_os.checkin import project_checkin
-from scripts.linkedin_content_os.contracts import parse_timestamp
+from scripts.linkedin_content_os.contracts import AUTHORITY_BEARING_EVENT, parse_timestamp
 from scripts.linkedin_content_os.corpus import (
     build_contrastive_pairs,
     build_voice_gold,
@@ -996,7 +996,6 @@ _SUPPLEMENT_ARGUMENTS = (
     "supplement_before",
     "supplement_after",
 )
-_AUTHORITY_EVENT_TYPES = {"historical_status", "correction", "corpus_authority_receipt"}
 _GOVERNED_BOUNDARY_KEYS = (
     "missionControl", "cronDefinitionSha256", "launchAgents",
     "protectedInputs", "primaryCheckoutFingerprint",
@@ -1010,6 +1009,7 @@ def _verify_supplement(
     root: Path,
     artifact_root: Path,
     base_context: Dict[str, object],
+    base_position: int,
     events: List[Dict[str, object]],
 ) -> Dict[str, object]:
     """Re-derive one supplemental human-gate authority and prove its equal boundary pair."""
@@ -1038,6 +1038,10 @@ def _verify_supplement(
     if not owned:
         raise ValueError("supplement block is missing from the canonical ledger")
     first = owned[0]
+    # Nothing may sit between the approved base prefix and the supplement block,
+    # so no ungoverned event can ride inside the prefix the supplement binds.
+    if first != base_position:
+        raise ValueError("supplement block does not begin at the approved base ledger position")
     derived = derive_history_supplement(
         supplement=supplement_value,
         supplement_sha256=snapshots.sha256(supplement_path),
@@ -1056,7 +1060,7 @@ def _verify_supplement(
     ):
         raise ValueError("supplement ledger block does not match its governed derivation")
     if any(
-        event["eventType"] in _AUTHORITY_EVENT_TYPES
+        event["eventType"] in AUTHORITY_BEARING_EVENT
         for event in events[first + len(block):]
     ):
         raise ValueError("ledger carries authority beyond the verified supplement")
@@ -1134,6 +1138,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
     if any(supplied) and not all(supplied):
         raise ValueError("supplement arguments must be supplied all together")
     supplement: Optional[Dict[str, object]] = None
+    base_position = int(base_manifest_value["ledgerPosition"])
     if all(supplied):
         supplement = _verify_supplement(
             args,
@@ -1141,6 +1146,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
             root=root,
             artifact_root=artifact_root,
             base_context=base_context,
+            base_position=base_position,
             events=events,
         )
         context = supplement["context"]
@@ -1148,8 +1154,7 @@ def _verify(args: argparse.Namespace) -> Dict[str, object]:
         context_path = Path(str(supplement["contextPath"]))
         effective_manifest_path = Path(str(supplement["manifestPath"]))
     else:
-        base_position = int(base_manifest_value["ledgerPosition"])
-        if any(event["eventType"] in _AUTHORITY_EVENT_TYPES for event in events[base_position:]):
+        if any(event["eventType"] in AUTHORITY_BEARING_EVENT for event in events[base_position:]):
             raise ValueError(
                 "ledger carries supplemental human-gate authority; "
                 "supplement verification arguments are required"

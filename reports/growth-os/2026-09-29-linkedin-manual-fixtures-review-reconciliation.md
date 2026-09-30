@@ -7,7 +7,47 @@
 **Second Claude verdict:** `CHANGES REQUIRED` — 0 Critical, 5 Important, 10 Minor
 **Third reviewed commit:** `c4aefeaba5847d3c0ad703489f6aa2234b6c1365`
 **Third Claude verdict:** `CHANGES REQUIRED` — 0 Critical, 3 Important, 7 Minor
-**Current state:** JT's 2026-09-30 human-gate answer is governed through the new Program 0 supplemental correction path. Both fixtures are regenerated, bound to the canonical ledger authority, and listed as candidates pending independent review. This is builder evidence only; fresh independent acceptance is still required.
+**Fourth reviewed commit:** `71b0fc92dbd09a46e520fc48b7355882f47662cf`
+**Fourth Claude verdict:** `CHANGES REQUIRED` — 0 Critical, 2 Important, 9 Minor
+**Current state:** The fourth review's two Important findings are repaired (plan Addendum B). Both fixtures are regenerated as v3 packets bound to the receipt that Program 0's verified manifest allowlists. This is builder evidence only; fresh independent acceptance is still required.
+
+## Fourth-review repair (2026-09-30, Addendum B)
+
+### Findings repaired
+
+1. **I-1:** supplemental `verify` never checked the window between the approved base position and the supplement block. Forged `historical_status` and publication events there were bound into the supplement's own manifest and certified. The same was true for the `not_posted_confirmed` variant.
+   - **Repair:** the block must begin exactly at the base manifest `ledgerPosition`. Two independent gates enforce this:
+     - derivation and ingestion (`recovery._require_block_at_base_position`): "supplement block must begin at the approved base ledger position";
+     - an explicit `verify` check that runs before re-derivation: "supplement block does not begin at the approved base ledger position".
+2. **I-2:** `publication_acknowledged` was not authority for `verify`, and the fixture earned angle bound the latest matching publication. A later forged publication rebound JT's URL and text.
+   - **Repair:** `contracts.AUTHORITY_BEARING_EVENT` adds `publication_acknowledged` and `final_text_captured` to the post-base and post-block checks.
+   - The earned angle binds the publication named by the exact-text receipt that the verified manifest (embedded in `historical-audit.v1.json`) allowlists, reusing Program 0's `_validate_audit`/`_validated_events`.
+   - It records `authorityReceiptSha256` and `authorityManifestSha256`, and pins the manifest's position and prefix.
+   - Any authority-bearing event for the row after that position is refused.
+
+### RED evidence (observed before each production change)
+
+- **Verify, I-1:** both forged-prefix variants passed `verify` on the unmodified `71b0fc9` code (`ValueError not raised`; verdict `program-0-local-proof-ready-for-independent-verification`).
+- **Ingestion, I-1:** both variants were appended without refusal (`ValueError not raised`).
+- **Verify, I-2:** a forged publication after the block, and one after the base without a supplement, both passed (`ValueError not raised`).
+- **Fixture, I-2:**
+  - the build bound the forged late publication (`forged-publication-late:…`, URL `…7000000000000000009`);
+  - the build accepted receipt-less `posted_confirmed` for a never-posted row;
+  - the binding lacked receipt and manifest fields.
+- **Existing guards:** these were characterized with exact-message tests. Each was proven non-vacuous by neutralizing its guard (11/11 fail under mutation; `cli.py` restored byte-identical). The guards cover authority after the block, a missing block, an unbound or re-signed authority context, a request mismatch, a tampered block, a re-signed manifest, partial arguments, base-only authority, an unequal pair, and the wrong context.
+
+### Artifacts
+
+- **Program 0 is unchanged:**
+  - ledger `10a7b5bf…`, 29 events, 25-event prefix `e27dc5bb…`;
+  - supplement `40a368e6…`, manifest `f0722d1b…`, authority context `3b9fb55b…`;
+  - report `bdc1557e…`, byte-identical on two canonical reruns.
+  - Exact `ingest-history-correction` replay appended 0 and replayed 4, with bytes and mtimes unchanged.
+- **Fixtures:** both are v3 packets (`packetVersion` 3; v1 and v2 IDs are rejected), `createdAt` 2026-09-30T11:25:00-04:00. Each binds `publication-supplement-1:fabf927a…`, receipt `0fddd8d7…`, manifest `f0722d1b…`, and position 29 / prefix `10a7b5bf…`.
+  - Teardown: spec `6e30e121…`, draft `dc1223d1…`, payload `bc3a0ac4…`, packet file `170ae0d8…`. The image `992f8e78…` is unchanged.
+  - AI news: spec `3d4ac154…`, draft `87330e82…`, payload `e22d3a88…`, packet file `830af8be…`. The new image `8e799a3c…` shows "Sep 30, 2026".
+  - The `71b0fc9` v1 payloads are recorded in `rejectedArtifacts`.
+- **Unchanged nonblocking residuals:** conflict-evidence scan-path hashing, the ServiceNow permalink rule, the broad colon/`n't` copy bans, verify's symlink following for supplement inputs, and the ingest output-existence race window.
 
 ## Supplemental governed confirmation (2026-09-30, Addendum A)
 

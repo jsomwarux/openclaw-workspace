@@ -1,10 +1,10 @@
 {
   "schemaVersion": "manual-linkedin-fixture-source.v1",
-  "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v1",
+  "packetId": "linkedin-teardown-servicenow-inry-2026-09-29-v3",
   "revisionFamilyId": "linkedin-teardown-servicenow-inry-2026-09-29",
-  "packetVersion": 1,
+  "packetVersion": 3,
   "lane": "teardown",
-  "createdAt": "2026-09-30T09:48:00-04:00",
+  "createdAt": "2026-09-30T11:25:00-04:00",
   "expiresAt": "2026-10-06T23:59:59-04:00",
   "targetReader": "Enterprise service and employee-operations leaders",
   "commercialObjective": "Show how to evaluate the operating path behind a fast AI service launch.",

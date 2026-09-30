@@ -15,13 +15,15 @@ from PIL import Image, ImageDraw, ImageFont, __version__ as PILLOW_VERSION
 
 from scripts.linkedin_content_os.canonical import (
     _exclusive_path_lock,
+    _strict_object,
     canonical_bytes,
     read_jsonl,
     sha256_hex,
     write_json_atomic,
 )
 from scripts.linkedin_content_os.content_policy import require_public_copy
-from scripts.linkedin_content_os.contracts import parse_timestamp
+from scripts.linkedin_content_os.contracts import AUTHORITY_BEARING_EVENT, parse_timestamp
+from scripts.linkedin_content_os.corpus import _validate_audit, _validated_events
 from scripts.linkedin_content_os.historical_audit import _governed_evidence, _legacy_row_hash
 from scripts.linkedin_content_os.outcomes import load_events
 
@@ -29,6 +31,7 @@ from scripts.linkedin_content_os.outcomes import load_events
 # Every governed repository input resolves beneath this root; callers never choose it.
 _REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 _CANONICAL_LEDGER = "memory/content/linkedin-content-os/outcomes.v1.jsonl"
+_CANONICAL_AUDIT = "memory/content/linkedin-content-os/historical-audit.v1.json"
 _POSTED_LOG = "memory/content/posted-log.jsonl"
 
 
@@ -81,6 +84,8 @@ _ANGLE_BINDING_FIELDS = {
     "publicationEventSha256",
     "publicationUrl",
     "finalTextSha256",
+    "authorityReceiptSha256",
+    "authorityManifestSha256",
 }
 _CONFLICT_FIELDS = {"check", "status", "evidence", "evidenceRef"}
 _EVIDENCE_REF_FIELDS = {"path", "fileSha256", "recordId"}
@@ -256,12 +261,33 @@ def _validate_source(source: object, lane: str, now: datetime) -> dict[str, obje
     return {**unsigned, "sourceSha256": sha256_hex(canonical_bytes(unsigned))}
 
 
-def _governed_publication_binding(path: str, excerpt: str) -> dict[str, object]:
-    """Derive earned-angle publication authority from the canonical ledger only.
+def _verified_corpus_authority() -> dict[str, object]:
+    """Return the manifest the canonical phase-2 audit consumed, which Program 0 verify certifies."""
 
-    The legacy row comes from the contained posted log, its status comes from
-    Program 0's latest-wins governed derivation, and the binding pins the ledger
-    prefix through the last event that concerns that row.
+    audit_path = _safe_descendant(_REPOSITORY_ROOT, _CANONICAL_AUDIT, "canonical historical audit")
+    if not audit_path.is_file():
+        raise ValueError("canonical historical audit is missing")
+    payload = audit_path.read_bytes()
+    try:
+        audit = json.loads(payload.decode("utf-8"), object_pairs_hook=_strict_object)
+    except (UnicodeDecodeError, ValueError) as error:
+        raise ValueError("canonical historical audit is not strict JSON") from error
+    if canonical_bytes(audit) != payload:
+        raise ValueError("canonical historical audit is not canonical JSON")
+    manifest = audit.get("corpusAuthorityManifest") if isinstance(audit, dict) else None
+    if not isinstance(manifest, dict):
+        raise ValueError("canonical historical audit lacks its corpus authority manifest")
+    return _validate_audit(audit, str(manifest.get("manifestSha256")))[2]
+
+
+def _governed_publication_binding(path: str, excerpt: str) -> dict[str, object]:
+    """Derive earned-angle publication authority from Program 0's verified receipt only.
+
+    The legacy row comes from the contained posted log and its status from Program 0's
+    latest-wins governed derivation. The publication is the one named by the exact-text
+    receipt that the verified corpus authority manifest allowlists, never the latest
+    matching publication in the mutable ledger, and the binding pins that manifest's
+    ledger prefix. Any authority for the row after that prefix is unverified and refused.
     """
 
     posted_log = _safe_descendant(_REPOSITORY_ROOT, _POSTED_LOG, "posted log")
@@ -291,43 +317,50 @@ def _governed_publication_binding(path: str, excerpt: str) -> dict[str, object]:
         raise ValueError(
             "earned angle source row is not governed posted_confirmed (latest status: {})".format(status)
         )
-    public_url = governed.get("publicUrl")
-    final_text = governed.get("finalText")
+
+    manifest = _verified_corpus_authority()
+    _, receipts = _validated_events(events, manifest)
+    row_receipts = [receipt for receipt in receipts.values() if receipt["packetId"] == packet_id]
+    if len(row_receipts) != 1:
+        raise ValueError("earned angle has no allowlisted exact-text receipt in the verified manifest")
+    receipt = row_receipts[0]
+    receipt_payload = receipt["payload"]
+    publications = [
+        event for event in events if event["outcomeEventId"] == receipt_payload["textOutcomeEventId"]
+    ]
+    if (
+        len(publications) != 1
+        or publications[0]["eventType"] != "publication_acknowledged"
+        or publications[0]["eventSha256"] != receipt_payload["textOutcomeEventSha256"]
+    ):
+        raise ValueError("earned angle receipt does not name one governed publication")
+    publication = publications[0]
+    position = int(manifest["ledgerPosition"])
+    if any(
+        event["eventType"] in AUTHORITY_BEARING_EVENT
+        and (
+            event["packetId"] == packet_id
+            or event["payload"].get("legacyRowSha256") == row_hash
+        )
+        for event in events[position:]
+    ):
+        raise ValueError("earned angle row carries ungoverned authority after the verified manifest position")
+    public_url = publication["payload"].get("publicationUrl")
+    final_text = publication["payload"].get("finalText")
     if not isinstance(public_url, str) or not isinstance(final_text, str):
         raise ValueError("earned angle governed publication lacks a public URL and final text")
     if excerpt not in final_text:
         raise ValueError("earned angle excerpt is not in the governed final published text")
-
-    publications = [
-        (index, event)
-        for index, event in enumerate(events)
-        if event["eventType"] == "publication_acknowledged"
-        and event["packetId"] == packet_id
-        and event["payload"].get("publicationUrl") == public_url
-        and event["payload"].get("finalText") == final_text
-    ]
-    if len(publications) != 1:
-        raise ValueError("earned angle governed publication event is missing or ambiguous")
-    _, publication = publications[0]
-    related = [
-        index
-        for index, event in enumerate(events)
-        if event["packetId"] == packet_id
-        or (
-            event["eventType"] == "historical_status"
-            and event["payload"].get("legacyRowSha256") == row_hash
-        )
-    ]
-    position = max(related) + 1
-    prefix = b"".join(canonical_bytes(event) + b"\n" for event in events[:position])
     return {
         "legacyRowSha256": row_hash,
         "ledgerPosition": position,
-        "ledgerPrefixSha256": sha256_hex(prefix),
+        "ledgerPrefixSha256": manifest["ledgerPrefixSha256"],
         "publicationEventId": publication["outcomeEventId"],
         "publicationEventSha256": publication["eventSha256"],
         "publicationUrl": public_url,
         "finalTextSha256": sha256_hex(final_text.encode("utf-8")),
+        "authorityReceiptSha256": receipt["eventSha256"],
+        "authorityManifestSha256": manifest["manifestSha256"],
     }
 
 

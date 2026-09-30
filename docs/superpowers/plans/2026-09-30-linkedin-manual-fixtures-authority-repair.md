@@ -8,7 +8,11 @@
 
 **Tech Stack:** Python 3.9, `unittest`, canonical JSON/SHA-256, Program 0 CLI, Pillow, Git.
 
-**Execution status (2026-09-30):** Chunks 1-3 and Task 8 completed as written. Task 6 deviated: Program 0 `audit-history` rejects the `c4aefea` ledger events (`empty authority allowlist requires all status_unknown human-gate answers`) because JT's 2026-09-28 gate answer for legacy row `fabf927a…` is `still_unknown`; JT chose to restore the approved ledger (`e27dc5bb…`) and hold both fixtures, and Program 0 was regenerated through the canonical CLI with byte-identical outputs. Task 7 therefore records both fixtures as blocked candidates instead of regenerating tracked packets. Task 9's independent review was excluded from this run by JT.
+**Execution status (2026-09-30, after Addendum B):**
+- Chunks 1-3 and Task 8 completed as written (`d4c3bcd…`). Task 6 originally deviated: Program 0 refused the ungoverned `c4aefea` ledger events because JT's 2026-09-28 answer for legacy row `fabf927a…` was `still_unknown`, so the approved ledger (`e27dc5bb…`) was restored and both fixtures were held.
+- Addendum A (`71b0fc9…`) governed JT's 2026-09-30 answer through the supplemental correction path, which closed Tasks 6 and 7.
+- The independent review of `71b0fc9…` returned `CHANGES REQUIRED` (0 Critical, 2 Important, 9 Minor). Addendum B is the bounded repair of that verdict.
+- Independent acceptance of the Addendum B commit has not run.
 
 ---
 
@@ -96,7 +100,7 @@
 
 - [x] Run only the governed `audit-history` and `build-corpus` CLI commands from the canonical Program 0 plan. Deviation: run against the restored approved ledger, because the extended ledger violates the existing authority context; outputs are byte-identical to the approved artifacts.
 - [x] Run the canonical Program 0 `verify` command and require PASS with all receipt and byte hashes recomputed.
-- [ ] Confirm the formerly stale historical row now derives `posted_confirmed` and the audit/corpus counts reconcile. Not achievable without a governed human-gate answer; the row correctly derives `status_unknown` and counts reconcile at 101 `status_unknown`.
+- [x] Confirm the formerly stale historical row now derives `posted_confirmed` and the audit/corpus counts reconcile. Achieved through Addendum A's governed supplement: 1 `posted_confirmed`, 100 `status_unknown`.
 - [x] Do not perform network calls, new boundary captures, Mission Control writes, or human-gate re-ingestion.
 
 ### Task 7: Regenerate and inspect the two fixture packets
@@ -108,7 +112,7 @@
 - Regenerate: `memory/content/linkedin-content-os/manual-fixtures/linkedin-ai-news-openai-health-2026-09-29-v1/image.v1.png`
 - Modify: `memory/content/linkedin-content-os/manual-fixtures/accepted-set.v1.json`
 
-- [ ] Regenerate with a resolved real-path `TMPDIR` and a valid in-window timestamp; if the AI-news fixture has expired, replace it rather than extending stale evidence. Blocked: both specs fail the governed earned-angle gate; they build only under synthetic governed confirmation in isolation.
+- [x] Regenerate with a resolved real-path `TMPDIR` and a valid in-window timestamp; if the AI-news fixture has expired, replace it rather than extending stale evidence. Done in Addendum A (v1), then again in Addendum B (v3) against the receipt-bound authority.
 - [x] Confirm exact replay is byte-identical and conflicting replay is refused (isolated governed copy and regression tests).
 - [x] Inspect both 1080×1350 images at original resolution (isolated renders; byte-identical to the `c4aefea`-reviewed images).
 - [x] Re-run voice and distribution guards on both final posts.
@@ -132,11 +136,11 @@
 **Files:**
 - Create: `deliverables/claude-reviews/linkedin-manual-fixtures-<new-sha>-prompt.md`
 
-- [ ] Commit the complete repair locally without amending `c4aefea…`.
-- [ ] Verify the new HEAD and clean worktree.
-- [ ] Run one fresh read-only Claude Code review from JT's Anthropic-direct subscription session against the new exact SHA.
+- [x] Commit the complete repair locally without amending `c4aefea…` (`d4c3bcd…`, then `71b0fc9…`).
+- [x] Verify the new HEAD and clean worktree.
+- [x] Run one fresh read-only Claude Code review from JT's Anthropic-direct subscription session against the new exact SHA. `71b0fc9…` was reviewed: `CHANGES REQUIRED`, 0 Critical / 2 Important / 9 Minor. Addendum B repairs it.
 - [ ] Accept only `VERDICT: APPROVED` with zero Critical and zero Important findings.
-- [ ] Keep publication, Mission Control writes, Drive uploads, deployment, scheduling, recurrence, applications, provider changes, and external sends closed.
+- [x] Keep publication, Mission Control writes, Drive uploads, deployment, scheduling, recurrence, applications, provider changes, and external sends closed.
 
 ---
 
@@ -182,19 +186,71 @@
 - The 2 likes / 2 comments snapshot is intentionally omitted: `metric_snapshot` requires an observed `windowDays`, which is unknown.
 
 ### Task A1: RED regressions
-- [ ] Recovery: supplement derivation, ingestion, replay, and every fail-closed case above.
-- [ ] CLI: the command set includes `ingest-history-correction`; boundary phases accept `supplement-before/after`; verify passes only with the equal, run-bound supplement pair and rejects missing, partial, or tampered supplement proof.
+- [x] Recovery: supplement derivation, ingestion, replay, and every fail-closed case above.
+- [x] CLI: the command set includes `ingest-history-correction`; boundary phases accept `supplement-before/after`; verify passes only with the equal, run-bound supplement pair and rejects missing, partial, or tampered supplement proof.
 
 ### Task A2: Implement minimally until GREEN
+- [x] Done at `71b0fc9…`.
 
 ### Task A3: Governed run
-- [ ] `init-run` for the supplement, then `supplement-before` capture.
-- [ ] `ingest-history-correction`, `audit-history`, and `build-corpus`.
-- [ ] Byte-identical focus, fixture, and check-in reruns.
-- [ ] `supplement-after` capture, then `verify`.
+- [x] `init-run` for the supplement, then `supplement-before` capture.
+- [x] `ingest-history-correction`, `audit-history`, and `build-corpus`.
+- [x] Byte-identical focus, fixture, and check-in reruns.
+- [x] `supplement-after` capture, then `verify`.
 
 ### Task A4: Regenerate fixtures, packets, images, and the accepted set
+- [x] Done at `71b0fc9…`. The packets were superseded by Addendum B's v3 packets.
 
 ### Task A5: Full verification
+- [x] 292/292; the Program 0 report was byte-identical (`bdc1557e…`).
 
 ### Task A6: One immutable child commit of `d4c3bcd…`; no push, no independent review
+- [x] `71b0fc92dbd09a46e520fc48b7355882f47662cf`.
+
+---
+
+## Addendum B — Repair of the `71b0fc9…` independent review (2026-09-30)
+
+**Verdict repaired:** `CHANGES REQUIRED`, 0 Critical / 2 Important / 9 Minor.
+
+- **I-1:** supplemental `verify` skipped the window between the approved base position and the supplement block. Forged authority there was bound into the supplement's own manifest.
+- **I-2:** `publication_acknowledged` was not treated as authority. The fixture earned angle bound the latest matching publication, so a later forged publication could rebind JT's URL and text.
+
+**Design:**
+- **Exact block position:** the supplement block must begin exactly at the approved base manifest `ledgerPosition`. Two independent gates enforce this:
+  - derivation and ingestion, through `recovery._require_block_at_base_position`;
+  - an explicit `verify` check that runs before re-derivation.
+- **One authority set:** `contracts.AUTHORITY_BEARING_EVENT` is the single set of authority events: `historical_status`, `correction`, `corpus_authority_receipt`, `publication_acknowledged`, and `final_text_captured`. Both `verify` paths use it.
+- **Receipt-bound earned angle:** it binds the publication named by the exact-text receipt that the verified manifest allowlists. That manifest is the one embedded in the canonical `historical-audit.v1.json` and validated through Program 0's own `_validate_audit`/`_validated_events`.
+  - The binding adds `authorityReceiptSha256` and `authorityManifestSha256`.
+  - Position and prefix are the manifest's.
+  - Status stays latest-wins.
+  - Any authority-bearing event for the row after the manifest position is refused.
+
+**Same-boundary cleanup:**
+- Candidates move to the unused v3 IDs/versions. The `71b0fc9…` v1 payloads are recorded as rejected artifacts.
+- The AI-news visible date now matches `createdAt`.
+- The plan and `tasks/todo.md` checkboxes are reconciled.
+- The disclosed nonblocking residuals are unchanged: conflict-evidence path hashing, the ServiceNow permalink rule, the broad colon/`n't` bans, verify's symlink following, and the ingest race window.
+
+### Task B1: RED regressions, one behavior at a time
+- [x] Forged `posted_confirmed` + publication between the base and the block, refused at ingestion and at verify.
+- [x] The same attack deriving `not_posted_confirmed`.
+- [x] A later forged `publication_acknowledged`, refused by verify (base-only and supplement paths) and by fixture derivation.
+- [x] Receipt-less ungoverned confirmation, refused by fixture derivation.
+- [x] Exact-message tests replace broad regexes. They cover authority after the block, a missing block, an unbound or re-signed authority context, and a request mismatch; these existing guards were proven non-vacuous by mutation.
+
+### Task B2: Minimal GREEN
+- [x] Done.
+
+### Task B3: Regenerate fixtures and the accepted set through the canonical builder
+- [x] Done. Program 0 derivatives are unchanged because the ledger is unchanged.
+
+### Task B4: Full verification
+- [x] Done.
+
+### Task B5: One immutable child commit of `71b0fc9…`
+- [x] Done. No push and no independent review.
+
+### Task B6: Fresh independent acceptance
+- [ ] Pending.

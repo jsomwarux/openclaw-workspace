@@ -309,6 +309,58 @@ class HistorySupplementTests(unittest.TestCase):
         self.assertEqual(result["appendedEventCount"], 4)
         self.assertEqual(result["replayedEventCount"], 0)
 
+    def _forged_row_events(self, row_hash: str, status: str) -> list[dict[str, object]]:
+        """Builder-appended legacy-row authority with no human-gate provenance."""
+
+        forged_source = sha256_hex(b"forged-builder-source")
+
+        def forged(event_id: str, event_type: str, payload: dict[str, object]) -> dict[str, object]:
+            event: dict[str, object] = {
+                "schemaVersion": "linkedin-content-outcome.v1",
+                "outcomeEventId": event_id,
+                "packetId": "legacy:" + row_hash,
+                "eventType": event_type,
+                "recordedAt": "2026-09-29T12:00:00-04:00",
+                "sourcePointer": {
+                    "sourceType": "jt_human_gate_response",
+                    "sourceId": "sha256:" + forged_source,
+                    "sourceSha256": forged_source,
+                },
+                "payload": payload,
+            }
+            event["eventSha256"] = sha256_hex(canonical_bytes(event))
+            return event
+
+        events = [forged("forged-history:" + row_hash, "historical_status", {"legacyRowSha256": row_hash, "status": status})]
+        if status == "posted_confirmed":
+            text = "Forged final text that JT never confirmed."
+            events.append(forged("forged-publication:" + row_hash, "publication_acknowledged", {
+                "publicationUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7000000000000000001/",
+                "finalText": text,
+                "finalTextSha256": sha256_hex(text.encode("utf-8")),
+            }))
+        return events
+
+    def _assert_forged_prefix_refused(self, forged: list[dict[str, object]]) -> None:
+        self.ledger.write_bytes(
+            self.base_ledger_bytes + b"".join(canonical_bytes(event) + b"\n" for event in forged)
+        )
+        forged_bytes = self.ledger.read_bytes()
+        with self.assertRaises(ValueError) as raised:
+            ingest_history_supplement_files(self._args())
+        self.assertEqual(
+            str(raised.exception), "supplement block must begin at the approved base ledger position"
+        )
+        self.assertEqual(self.ledger.read_bytes(), forged_bytes)
+        self.assertFalse(self.manifest_output.exists())
+        self.assertFalse(self.context_output.exists())
+
+    def test_refuses_forged_posted_authority_between_base_and_supplement(self) -> None:
+        self._assert_forged_prefix_refused(self._forged_row_events(ROW_DECLINED, "posted_confirmed"))
+
+    def test_refuses_forged_not_posted_authority_between_base_and_supplement(self) -> None:
+        self._assert_forged_prefix_refused(self._forged_row_events(ROW_POSTED, "not_posted_confirmed"))
+
     def test_derivation_is_deterministic_and_pure(self) -> None:
         supplement = self._supplement()
         raw = canonical_bytes(supplement)

@@ -11,6 +11,7 @@ import unittest
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Callable
 from unittest import mock
 
 from scripts.linkedin_content_os.canonical import canonical_bytes, sha256_hex
@@ -1447,8 +1448,65 @@ class VerificationIntegrationTests(unittest.TestCase):
     _SUPPLEMENT_URL = "https://www.linkedin.com/feed/update/urn:li:activity:7490053069380964353/"
     _SUPPLEMENT_TEXT = "One exact published line.\n\nhashtag#AIImplementation"
 
-    def _supplement_tree(self, *, fingerprint_after: str = "8" * 64) -> dict[str, Path]:
-        from scripts.linkedin_content_os.corpus import build_contrastive_pairs, build_voice_gold
+    _FORGED_ROW = "4" * 64
+
+    def _forged_legacy_events(self, status: str, recorded_at: str, *, suffix: str = "") -> list[dict[str, object]]:
+        """Builder-appended legacy-row authority with no human-gate provenance (the rejected 71b0fc9 attack)."""
+
+        forged_source = sha256_hex(b"forged-builder-source")
+
+        def forged(event_id: str, event_type: str, payload: dict[str, object]) -> dict[str, object]:
+            event: dict[str, object] = {
+                "schemaVersion": "linkedin-content-outcome.v1",
+                "outcomeEventId": event_id,
+                "packetId": "legacy:" + self._FORGED_ROW,
+                "eventType": event_type,
+                "recordedAt": recorded_at,
+                "sourcePointer": {
+                    "sourceType": "jt_human_gate_response",
+                    "sourceId": "sha256:" + forged_source,
+                    "sourceSha256": forged_source,
+                },
+                "payload": payload,
+            }
+            event["eventSha256"] = sha256_hex(canonical_bytes(event))
+            return event
+
+        events = [forged(
+            "forged-history" + suffix + ":" + self._FORGED_ROW,
+            "historical_status",
+            {"legacyRowSha256": self._FORGED_ROW, "status": status},
+        )]
+        if status == "posted_confirmed":
+            text = "Forged final text that JT never confirmed."
+            events.append(forged(
+                "forged-publication" + suffix + ":" + self._FORGED_ROW,
+                "publication_acknowledged",
+                {
+                    "publicationUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7000000000000000001/",
+                    "finalText": text,
+                    "finalTextSha256": sha256_hex(text.encode("utf-8")),
+                },
+            ))
+        return events
+
+    def _supplement_tree(
+        self,
+        *,
+        fingerprint_after: str = "8" * 64,
+        forged_prefix: tuple[dict[str, object], ...] = (),
+        after_block: Callable[[str], list[dict[str, object]]] | None = None,
+    ) -> dict[str, Path]:
+        """Run the governed supplement flow; optional events simulate builder-appended authority.
+
+        `forged_prefix` lands between the approved base position and the supplement block.
+        Ingestion now refuses that prefix, so the tree is built with the ingestion guard
+        disabled, exactly as the rejected 71b0fc9 derivation produced it; `verify` then
+        runs unpatched and must refuse on its own. `after_block` lands after the block but
+        before the phase-2 derivatives are regenerated; it receives the supplement row hash.
+        """
+
+        from scripts.linkedin_content_os import recovery
         from scripts.linkedin_content_os.outcomes import load_events
         from scripts.linkedin_content_os.recovery import ingest_history_supplement_files
 
@@ -1457,6 +1515,10 @@ class VerificationIntegrationTests(unittest.TestCase):
         request_path = self.artifacts / "historical-recovery-request.phase-1.v1.json"
         request_path.write_bytes(canonical_bytes(phase1_audit_value["recoveryRequest"]))
         outcomes = self.artifacts / "outcomes.v1.jsonl"
+        if forged_prefix:
+            outcomes.write_bytes(
+                outcomes.read_bytes() + b"".join(canonical_bytes(event) + b"\n" for event in forged_prefix)
+            )
         row_hash = phase1_audit_value["recoveryRequest"]["items"][0]["legacyRowSha256"]
         target = next(event for event in load_events(outcomes) if event["outcomeEventId"] == "history:" + row_hash)
         supplement = {
@@ -1480,7 +1542,7 @@ class VerificationIntegrationTests(unittest.TestCase):
         supplement_context = init_run(self._SUPPLEMENT_GENERATED_AT, outcomes, supplement_context_path)
         manifest_path = self.artifacts / "corpus-authority-manifest.supplement-1.v1.json"
         authority_path = self.artifacts / "run-context.supplement-1-authority.v1.json"
-        ingest_history_supplement_files(argparse.Namespace(
+        ingest_arguments = argparse.Namespace(
             supplement=str(supplement_path),
             base_response=str(paths["response"]),
             base_manifest=str(paths["manifest"]),
@@ -1491,11 +1553,48 @@ class VerificationIntegrationTests(unittest.TestCase):
             corpus_authority_manifest_output=str(manifest_path),
             authority_run_context_output=str(authority_path),
             workspace_root=str(self.root),
-        ))
+        )
+        if forged_prefix:
+            with mock.patch.object(recovery, "_require_block_at_base_position"):
+                ingest_history_supplement_files(ingest_arguments)
+        else:
+            ingest_history_supplement_files(ingest_arguments)
+        if after_block is not None:
+            outcomes.write_bytes(
+                outcomes.read_bytes()
+                + b"".join(canonical_bytes(event) + b"\n" for event in after_block(row_hash))
+            )
+        self._regenerate_phase2(
+            paths, manifest_path=manifest_path, authority_path=authority_path,
+            generated_at=self._SUPPLEMENT_GENERATED_AT,
+        )
+        before = self.artifacts / "boundaries.supplement-1.before.v1.json"
+        after = self.artifacts / "boundaries.supplement-1.after.v1.json"
+        self._boundary("supplement-before", supplement_context, before)
+        self._boundary_with_fingerprint("supplement-after", supplement_context, after, fingerprint_after)
+        return {
+            **paths,
+            "supplement": supplement_path,
+            "supplement_context": supplement_context_path,
+            "supplement_authority": authority_path,
+            "supplement_manifest": manifest_path,
+            "sb": before,
+            "sa": after,
+        }
+
+    def _regenerate_phase2(
+        self, paths: dict[str, Path], *, manifest_path: Path, authority_path: Path, generated_at: str
+    ) -> None:
+        """Rebuild the phase-2 audit, corpus, and receipts exactly as the governed CLI does."""
+
+        from scripts.linkedin_content_os.corpus import build_contrastive_pairs, build_voice_gold
+        from scripts.linkedin_content_os.outcomes import load_events
+
+        outcomes = self.artifacts / "outcomes.v1.jsonl"
         manifest = _read_json(manifest_path)
         posted = self.root / "memory/content/posted-log.jsonl"
         audit_value = audit_legacy_rows(
-            posted, outcomes, self._SUPPLEMENT_GENERATED_AT,
+            posted, outcomes, generated_at,
             corpus_authority_manifest=manifest,
             expected_manifest_sha256=str(manifest["manifestSha256"]),
         )
@@ -1517,28 +1616,15 @@ class VerificationIntegrationTests(unittest.TestCase):
             canonical_manifest=str(manifest["manifestSha256"]),
             inputs=[("posted_log", posted), ("outcomes", outcomes), ("authority_manifest", manifest_path), ("run_context", authority_path)],
             outputs=[("historical_audit", audit), ("recovery_request", recovery)],
-            generated_at=self._SUPPLEMENT_GENERATED_AT, destination=paths["audit_receipt"],
+            generated_at=generated_at, destination=paths["audit_receipt"],
         )
         self._receipt(
             command="build-corpus", context=authority_path, expected=str(manifest["manifestSha256"]),
             canonical_manifest=str(manifest["manifestSha256"]),
             inputs=[("audit", audit), ("outcomes", outcomes), ("run_context", authority_path)],
             outputs=[("voice_gold", gold), ("contrastive_pairs", pairs)],
-            generated_at=self._SUPPLEMENT_GENERATED_AT, destination=paths["corpus_receipt"],
+            generated_at=generated_at, destination=paths["corpus_receipt"],
         )
-        before = self.artifacts / "boundaries.supplement-1.before.v1.json"
-        after = self.artifacts / "boundaries.supplement-1.after.v1.json"
-        self._boundary("supplement-before", supplement_context, before)
-        self._boundary_with_fingerprint("supplement-after", supplement_context, after, fingerprint_after)
-        return {
-            **paths,
-            "supplement": supplement_path,
-            "supplement_context": supplement_context_path,
-            "supplement_authority": authority_path,
-            "supplement_manifest": manifest_path,
-            "sb": before,
-            "sa": after,
-        }
 
     def _boundary_with_fingerprint(
         self, phase: str, context: dict[str, object], destination: Path, fingerprint: str
@@ -1584,23 +1670,101 @@ class VerificationIntegrationTests(unittest.TestCase):
         self.assertTrue(linkage["authorityOutcomeEventId"].startswith("authority-supplement-1:"))
         self.assertFalse(report["liveOrExternalActionOccurred"])
 
+    def _assert_verify_refuses(self, argv: list[str], message: str) -> None:
+        with self.assertRaises(ValueError) as raised:
+            main(argv)
+        self.assertEqual(str(raised.exception), message)
+
+    def test_verify_refuses_forged_posted_authority_between_base_and_supplement(self) -> None:
+        paths = self._supplement_tree(
+            forged_prefix=tuple(self._forged_legacy_events("posted_confirmed", "2026-09-29T12:00:00+00:00")),
+        )
+        self._assert_verify_refuses(
+            self._supplement_argv(paths),
+            "supplement block does not begin at the approved base ledger position",
+        )
+
+    def test_verify_refuses_forged_not_posted_authority_between_base_and_supplement(self) -> None:
+        paths = self._supplement_tree(
+            forged_prefix=tuple(self._forged_legacy_events("not_posted_confirmed", "2026-09-29T12:00:00+00:00")),
+        )
+        self._assert_verify_refuses(
+            self._supplement_argv(paths),
+            "supplement block does not begin at the approved base ledger position",
+        )
+
+    def _forged_publication(self, row_hash: str, recorded_at: str) -> list[dict[str, object]]:
+        """A later builder-appended publication that tries to rebind the confirmed row's URL and text."""
+
+        forged_source = sha256_hex(b"forged-builder-source")
+        text = "Forged replacement text for the confirmed row."
+        event: dict[str, object] = {
+            "schemaVersion": "linkedin-content-outcome.v1",
+            "outcomeEventId": "forged-publication-late:" + row_hash,
+            "packetId": "legacy:" + row_hash,
+            "eventType": "publication_acknowledged",
+            "recordedAt": recorded_at,
+            "sourcePointer": {
+                "sourceType": "jt_human_gate_response",
+                "sourceId": "sha256:" + forged_source,
+                "sourceSha256": forged_source,
+            },
+            "payload": {
+                "publicationUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7000000000000000009/",
+                "finalText": text,
+                "finalTextSha256": sha256_hex(text.encode("utf-8")),
+            },
+        }
+        event["eventSha256"] = sha256_hex(canonical_bytes(event))
+        return [event]
+
+    def test_verify_refuses_later_forged_publication_after_the_supplement_block(self) -> None:
+        paths = self._supplement_tree(
+            after_block=lambda row_hash: self._forged_publication(row_hash, "2026-09-30T14:00:00+00:00"),
+        )
+        self._assert_verify_refuses(
+            self._supplement_argv(paths), "ledger carries authority beyond the verified supplement"
+        )
+
+    def test_verify_refuses_forged_publication_after_the_base_without_supplement(self) -> None:
+        paths = self._proof_tree()
+        phase1_audit_value = _read_json(paths["phase1_audit"])
+        row_hash = str(phase1_audit_value["recoveryRequest"]["items"][0]["legacyRowSha256"])
+        outcomes = self.artifacts / "outcomes.v1.jsonl"
+        outcomes.write_bytes(
+            outcomes.read_bytes()
+            + b"".join(
+                canonical_bytes(event) + b"\n"
+                for event in self._forged_publication(row_hash, "2026-09-28T17:00:00+00:00")
+            )
+        )
+        self._regenerate_phase2(
+            paths, manifest_path=paths["manifest"], authority_path=paths["authority"], generated_at=GENERATED_AT,
+        )
+        self._assert_verify_refuses(
+            self._verify_argv(paths),
+            "ledger carries supplemental human-gate authority; supplement verification arguments are required",
+        )
+
     def test_verify_rejects_supplemental_authority_without_supplement_proof(self) -> None:
         paths = self._supplement_tree()
-        with self.assertRaisesRegex(ValueError, "supplement"):
-            main(self._verify_argv(paths))
+        self._assert_verify_refuses(
+            self._verify_argv(paths),
+            "ledger carries supplemental human-gate authority; supplement verification arguments are required",
+        )
 
     def test_verify_rejects_partial_supplement_arguments(self) -> None:
         paths = self._supplement_tree()
         argv = self._supplement_argv(paths)
         index = argv.index("--supplement-after")
         del argv[index:index + 2]
-        with self.assertRaisesRegex(ValueError, "supplement arguments"):
-            main(argv)
+        self._assert_verify_refuses(argv, "supplement arguments must be supplied all together")
 
     def test_verify_rejects_unequal_supplement_pair(self) -> None:
         paths = self._supplement_tree(fingerprint_after="7" * 64)
-        with self.assertRaisesRegex(ValueError, "boundary changed for primaryCheckoutFingerprint"):
-            main(self._supplement_argv(paths))
+        self._assert_verify_refuses(
+            self._supplement_argv(paths), "boundary changed for primaryCheckoutFingerprint"
+        )
 
     def test_verify_rejects_supplement_pair_bound_to_another_context(self) -> None:
         paths = self._supplement_tree()
@@ -1611,27 +1775,112 @@ class VerificationIntegrationTests(unittest.TestCase):
         }))
         self._boundary("supplement-before", wrong, paths["sb"])
         self._boundary("supplement-after", wrong, paths["sa"])
-        with self.assertRaisesRegex(ValueError, "wrong phase context"):
-            main(self._supplement_argv(paths))
+        self._assert_verify_refuses(
+            self._supplement_argv(paths), "boundary pair is bound to the wrong phase context"
+        )
 
-    def test_verify_rejects_tampered_supplement_document_manifest_or_block(self) -> None:
+    def test_verify_rejects_tampered_supplement_document(self) -> None:
         paths = self._supplement_tree()
-        original = paths["supplement"].read_bytes()
-        tampered = json.loads(original)
+        tampered = json.loads(paths["supplement"].read_bytes())
         tampered["corrections"][0]["finalText"] = "Different text."
         paths["supplement"].write_bytes(canonical_bytes(tampered))
-        with self.assertRaisesRegex(ValueError, "supplement"):
-            main(self._supplement_argv(paths))
-        paths["supplement"].write_bytes(original)
+        self._assert_verify_refuses(
+            self._supplement_argv(paths), "supplement ledger block does not match its governed derivation"
+        )
 
-        manifest_bytes = paths["supplement_manifest"].read_bytes()
-        manifest = json.loads(manifest_bytes)
+    def test_verify_rejects_resigned_supplement_manifest(self) -> None:
+        paths = self._supplement_tree()
+        manifest = json.loads(paths["supplement_manifest"].read_bytes())
         manifest["validatedAt"] = "2026-09-30T14:00:00+00:00"
         unsigned = {key: value for key, value in manifest.items() if key != "manifestSha256"}
         manifest["manifestSha256"] = sha256_hex(canonical_bytes(unsigned))
         paths["supplement_manifest"].write_bytes(canonical_bytes(manifest))
-        with self.assertRaisesRegex(ValueError, "supplement|manifest"):
-            main(self._supplement_argv(paths))
+        self._assert_verify_refuses(
+            self._supplement_argv(paths), "supplement manifest does not match its governed derivation"
+        )
+
+    def test_verify_rejects_tampered_supplement_block(self) -> None:
+        paths = self._supplement_tree()
+        outcomes = self.artifacts / "outcomes.v1.jsonl"
+        events = [json.loads(line) for line in outcomes.read_bytes().splitlines()]
+        publication = next(event for event in events if event["outcomeEventId"].startswith("publication-supplement-1:"))
+        publication["payload"]["publicationUrl"] = "https://www.linkedin.com/feed/update/urn:li:activity:7000000000000000002/"
+        unsigned = {key: value for key, value in publication.items() if key != "eventSha256"}
+        publication["eventSha256"] = sha256_hex(canonical_bytes(unsigned))
+        outcomes.write_bytes(b"".join(canonical_bytes(event) + b"\n" for event in events))
+        self._assert_verify_refuses(
+            self._supplement_argv(paths), "supplement ledger block does not match its governed derivation"
+        )
+
+    def test_verify_rejects_missing_supplement_block(self) -> None:
+        paths = self._supplement_tree()
+        outcomes = self.artifacts / "outcomes.v1.jsonl"
+        base_position = int(_read_json(paths["manifest"])["ledgerPosition"])
+        outcomes.write_bytes(b"".join(outcomes.read_bytes().splitlines(keepends=True)[:base_position]))
+        self._assert_verify_refuses(
+            self._supplement_argv(paths), "supplement block is missing from the canonical ledger"
+        )
+
+    def test_verify_rejects_status_authority_after_the_supplement_block(self) -> None:
+        paths = self._supplement_tree(after_block=self._retraction)
+        self._assert_verify_refuses(
+            self._supplement_argv(paths), "ledger carries authority beyond the verified supplement"
+        )
+
+    def _retraction(self, row_hash: str) -> list[dict[str, object]]:
+        event: dict[str, object] = {
+            "schemaVersion": "linkedin-content-outcome.v1",
+            "outcomeEventId": "history-retraction:" + row_hash,
+            "packetId": "legacy:" + row_hash,
+            "eventType": "historical_status",
+            "recordedAt": "2026-09-30T14:00:00+00:00",
+            "sourcePointer": {
+                "sourceType": "jt_human_gate_response",
+                "sourceId": "sha256:" + "c" * 64,
+                "sourceSha256": "c" * 64,
+            },
+            "payload": {"legacyRowSha256": row_hash, "status": "status_unknown"},
+        }
+        event["eventSha256"] = sha256_hex(canonical_bytes(event))
+        return [event]
+
+    def test_verify_rejects_supplement_authority_context_unbound_from_its_run_context(self) -> None:
+        paths = self._supplement_tree()
+        unsigned = {"schemaVersion": "linkedin-program-0-run-context.v1", "generatedAt": "2026-09-30T13:45:00+00:00"}
+        paths["supplement_context"].write_bytes(canonical_bytes({
+            **unsigned, "runId": "sha256:" + sha256_hex(canonical_bytes(unsigned)),
+        }))
+        self._assert_verify_refuses(
+            self._supplement_argv(paths),
+            "supplement authority context is not bound to the supplement run context",
+        )
+
+    def test_verify_rejects_resigned_supplement_authority_context(self) -> None:
+        paths = self._supplement_tree()
+        context = _read_json(paths["supplement_authority"])
+        unsigned = {
+            "schemaVersion": context["schemaVersion"],
+            "generatedAt": context["generatedAt"],
+            "corpusAuthorityManifestSha256": _read_json(paths["manifest"])["manifestSha256"],
+        }
+        paths["supplement_authority"].write_bytes(canonical_bytes({
+            **unsigned, "runId": "sha256:" + sha256_hex(canonical_bytes(unsigned)),
+        }))
+        self._assert_verify_refuses(
+            self._supplement_argv(paths),
+            "supplement authority context does not match its governed derivation",
+        )
+
+    def test_verify_rejects_supplement_recovery_request_that_is_not_the_phase1_bytes(self) -> None:
+        paths = self._supplement_tree()
+        request_path = self.artifacts / "historical-recovery-request.phase-1.v1.json"
+        request_path.write_bytes(
+            json.dumps(json.loads(request_path.read_bytes()), indent=2, sort_keys=True).encode("utf-8")
+        )
+        self._assert_verify_refuses(
+            self._supplement_argv(paths),
+            "supplement recovery request is not the phase-1 bounded request",
+        )
 
 
 if __name__ == "__main__":

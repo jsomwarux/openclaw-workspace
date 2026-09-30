@@ -1444,6 +1444,17 @@ def _latest_status_event(
     )
 
 
+def _require_block_at_base_position(prior_count: int, base_position: int) -> None:
+    """The block's prefix must be exactly the approved base.
+
+    Anything after the base position is unverified and would otherwise be bound
+    into the supplement's own manifest and receipts.
+    """
+
+    if prior_count != base_position:
+        raise ValueError("supplement block must begin at the approved base ledger position")
+
+
 def derive_history_supplement(
     *,
     supplement: object,
@@ -1553,6 +1564,7 @@ def derive_history_supplement(
         raise ValueError(
             "supplement cannot bind a ledger that already carries corpus authority receipts"
         )
+    _require_block_at_base_position(len(events), base_position)
 
     supplement_id = str(document["supplementId"])
     namespace = "-" + supplement_id

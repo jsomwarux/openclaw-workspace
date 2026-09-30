@@ -1,3 +1,15 @@
+## Plan — Repair of the `71b0fc9…` Independent Review — 2026-09-30
+
+Addendum B in `docs/superpowers/plans/2026-09-30-linkedin-manual-fixtures-authority-repair.md`. Verdict repaired: `CHANGES REQUIRED`, 0 Critical / 2 Important / 9 Minor.
+
+- [x] Preflight: HEAD `71b0fc9…`, parent `d4c3bcd…`, clean.
+- [x] I-1: the supplement block must begin exactly at the approved base ledger position (derivation/ingestion guard plus an independent verify check). RED observed on the unmodified code for both forged-status variants.
+- [x] I-2: `publication_acknowledged`/`final_text_captured` are authority in `verify`; the fixture earned angle binds the allowlisted receipt's publication from the verified manifest. RED observed for the later forged publication (verify and fixture) and for receipt-less confirmation.
+- [x] Exact-message tests replace broad regexes; the existing verify guards were proven non-vacuous by mutation (11/11).
+- [x] Cleanup: v3 packet identities, AI-news visible date = `createdAt`, rejected `71b0fc9…` v1 artifacts recorded, plan checkboxes reconciled.
+- [x] Full verification gate and one immutable child commit of `71b0fc9…` (no push).
+- [ ] Fresh independent acceptance of the new commit before the AI-news window closes (2026-10-02T23:59:59-04:00).
+
 ## Plan — Program 0 Supplemental Human-Gate Correction — 2026-09-30
 
 Addendum A in `docs/superpowers/plans/2026-09-30-linkedin-manual-fixtures-authority-repair.md`.
@@ -9,6 +21,7 @@ Addendum A in `docs/superpowers/plans/2026-09-30-linkedin-manual-fixtures-author
 - [x] Task A4: Regenerate both fixture packet/image pairs and the accepted set against the refreshed canonical ledger.
 - [x] Task A5: Full verification gate.
 - [x] Task A6: One immutable child commit of `d4c3bcd…` (no push, no independent review).
+- [x] Independent review of `71b0fc9…`: `CHANGES REQUIRED` (0 Critical / 2 Important / 9 Minor); repaired above.
 
 ## Plan — LinkedIn Manual Fixtures Authority Repair — 2026-09-30
 

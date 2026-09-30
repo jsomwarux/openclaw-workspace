@@ -1,10 +1,10 @@
 {
   "schemaVersion": "manual-linkedin-fixture-source.v1",
-  "packetId": "linkedin-ai-news-openai-health-2026-09-29-v1",
+  "packetId": "linkedin-ai-news-openai-health-2026-09-29-v3",
   "revisionFamilyId": "linkedin-ai-news-openai-health-2026-09-29",
-  "packetVersion": 1,
+  "packetVersion": 3,
   "lane": "ai_news",
-  "createdAt": "2026-09-30T09:48:00-04:00",
+  "createdAt": "2026-09-30T11:25:00-04:00",
   "expiresAt": "2026-10-02T23:59:59-04:00",
   "targetReader": "Enterprise AI product, operations, and governance leaders",
   "commercialObjective": "Translate a current personalized-AI release into a concrete traceability standard.",
@@ -56,7 +56,7 @@
     "template": "ai-news-source-card.v1",
     "eyebrow": "AI PRODUCT CONTROL",
     "title": "Keep the source visible",
-    "subtitle": "JT operator lens · Sep 29, 2026",
+    "subtitle": "JT operator lens · Sep 30, 2026",
     "stages": ["Source record", "Selected metric", "AI explanation", "User review"],
     "footer": "JT operator lens based on OpenAI release notes"
   },

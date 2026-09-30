@@ -25,6 +25,15 @@ OUTCOME_EVENT = {
     "corpus_authority_receipt",
     "correction",
 }
+# Events that set a governed status or bind publication/final-text authority.
+# Only a verified human-gate block may carry them past the approved base prefix.
+AUTHORITY_BEARING_EVENT = frozenset({
+    "historical_status",
+    "correction",
+    "corpus_authority_receipt",
+    "publication_acknowledged",
+    "final_text_captured",
+})
 DECLINE_REASON = {"quality_fit", "stale", "timing", "other"}
 EDIT_REASON = {
     "compression",
@@ -483,6 +492,7 @@ def validate_event(event_value: object) -> dict[str, object]:
 
 
 __all__: List[str] = [
+    "AUTHORITY_BEARING_EVENT",
     "CLAIM_ATTRIBUTION",
     "CORPUS_AUTHORITY_SOURCE_TYPE",
     "DECLINE_REASON",
