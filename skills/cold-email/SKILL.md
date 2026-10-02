@@ -329,32 +329,56 @@ Email and LinkedIn DMs are different channels with different reader expectations
 
 ### What's different in email
 
-**Signature block is required.** In email, omitting a signature looks suspicious, not authentic. Include name, title, website. Keep it to 3 lines max — no logo, no phone number, no social icons.
+**A plain signature is required.** In email, omitting a signature looks suspicious. Use name, city, and website. Keep it to 3 lines max. Avoid an abstract title in M1 when it makes the reader decode what JT sells. No logo, phone number, or social icons.
 
 **Subject lines can be slightly longer.** 3-6 words. Still lowercase, still specific, still internal-looking. But email subject lines can carry slightly more context than DM openers because they need to survive inbox triage. A government inbox needs enough to route it; a business inbox needs enough to distinguish it from noise.
 - Good: "city services automation, ministry intro" / "AI workflow demo, NYC contractor" / "automation question for [Company]"
 - Bad: "Quick question" / "Following up" / "AI-Powered Automation Solutions for Your Business"
 
-**Body length: 75-150 words.** Research confirms 50-125 words is the sweet spot for reply rates. Shorter than a DM is acceptable. Longer than 150 words loses them.
+**M1 body length: 50-85 words, excluding the signature.** This is the default for first-touch cold email. Follow-ups may be shorter. Grade 5-7 is the target and grade 8 is the warning ceiling. Average sentences should run 8-14 words, with no sentence over 20 words.
 
 **Structure (3 short paragraphs):**
 ```
-P1 (2-3 sentences): Who you are + why you're reaching out to them specifically.
-Lead with a specific observation or signal, not your credentials.
-One sentence of context on what you do — enough to be credible, not a pitch.
+P1 (1-2 sentences): One verified signal and one plain operational question.
+Lead with their work, not JT's credentials.
 
-P2 (2-3 sentences): The specific thing you built or did that's directly relevant.
-Concrete. Specific. Honest about its status (proof-of-concept vs. deployed).
-This is where proof points go — not in P1.
+P2 (1-2 sentences): One plain value sentence.
+Say what JT finds, fixes, or delivers in words the buyer uses. Do not stack process nouns.
 
-P3 (1-2 sentences): The ask.
-One question. Low friction. Not a meeting request — an invitation to continue the conversation.
+P3 (1 sentence): One concrete, reply-sized CTA.
+Do not ask for a meeting in M1.
 ```
+
+**Plain-English M1 contract:**
+- Keep `COI`; it is buyer language for this audience.
+- Prefer verbs and concrete nouns: `find missed renewals`, `pick who follows up`, `short fix list`.
+- Ban abstraction stacks such as `fixed-scope`, `map the workflow`, `handoffs`, `exception ownership`, `control plan`, `escalation rules`, and `tool/build decision`.
+- Put legal, insurance, and coverage caveats in the scope or later conversation, not M1, unless omitting one would make a claim misleading.
+- Use one operational question plus one CTA. The CTA should be answerable in five words or fewer.
+- Do not mention a checklist, guide, example, result, or proof asset unless it already exists and is approved for that prospect.
+
+**COI copy checklist (D1, five lines). Run it on every COI draft before JT reviews the batch:**
+1. *Advisory:* body of 75 words or fewer. The validator warns above 75; 50-85 stays the hard gate.
+2. *Advisory:* plain reading level. The validator's grade 5-7 target covers it.
+3. *Hard:* no AI vocabulary: AI, agent, automation, workflow, platform, LLM, pipeline, integration, orchestration, harness. The validator rejects them, plurals included.
+4. *Hard:* consequence first. The operational question names what goes wrong for the buyer (a lapsed COI on site, a claim, a blocked payment) before anything about JT.
+5. *Hard:* exactly one proof-safe claim. One sentence says what JT does or has done, in words JT approved. No second claim, no result figure, no client name.
+
+Do not A/B test these lines: 25 sends cannot power a comparison.
+
+**Batch delivery order (mandatory):**
+1. Run the deterministic validator against the draft packet and its approved baseline evidence (`--baseline` when revising an existing packet).
+2. Complete the high-stakes copy review and repair all failures.
+3. Deliver the usable review artifact to JT immediately.
+4. Record Routing V2 completion telemetry.
+5. Only after delivery, perform nonblocking proof logging, durable-state sync, Mission Control updates, or unrelated repairs.
+
+Do not defer evidence comparison until after drafting or place bookkeeping on the buyer-copy critical path.
 
 **Signature block format:**
 ```
 [First name] [Last name]
-[Title] | [City]
+[City]
 [website]
 ```
 
@@ -377,7 +401,10 @@ If no reply after 3 touches: mark cold, do not follow up again for 90 days.
 Add these to the standard checklist when writing email (not DM):
 - [ ] **Signature block present** — name, title, city, website. 3 lines max.
 - [ ] **Subject line 3-6 words** — lowercase, specific, internal-looking. Not a slide title.
-- [ ] **Body 75-150 words** — count before delivering. Under 75 may be too thin; over 150 loses them.
+- [ ] **M1 body 50-85 words excluding signature** — count before delivering.
+- [ ] **Plain-English gate** — estimated grade 5-7 target, grade 8 warning ceiling; average sentence 8-14 words; no sentence over 20 words.
+- [ ] **No abstraction stack** — remove `fixed-scope`, `workflow audit`, `handoffs`, `exception ownership`, `control plan`, `escalation rules`, and similar consultant language from M1.
+- [ ] **COI copy checklist (D1)** — no AI vocabulary, consequence first, exactly one proof-safe claim; 75 words or fewer is advisory.
 - [ ] **P1 leads with observation, not credentials** — "I'm an AI consultant" cannot be the first clause.
 - [ ] **P2 has the proof point, not P1** — if a specific build is mentioned in P1, move it to P2.
 
@@ -391,7 +418,7 @@ Add these to the standard checklist when writing email (not DM):
 - [ ] **Subject line present** — InMails require a subject. 2-4 words, lowercase, internal-looking. If missing, add before outputting.
 - [ ] **M1 proof rule honored** — default: M1 has no "I built X" and proof points belong in M2. PM artifact-led exception: M1 may include a reusable anonymized/synthetic proof artifact, but not named-client proof, private data, client screenshots, or a custom demo before reply.
 - [ ] **CTA is reply-sized** — M1 CTA must be answerable in 5 words or fewer. "Worth a 20-minute call" fails. "Curious if this is on your radar?" passes.
-- [ ] **No signature block in M1** — no "— JT Somwaru | jtsomwaru.com" or equivalent.
+- [ ] **Channel-correct signature** — LinkedIn M1 has no signature. Cold-email M1 uses the plain 3-line email signature defined above.
 - [ ] **Individual signal present** — message references something specific to the person (post, milestone, hire, tenure), not just the company or niche. If none found, note it explicitly.
 - [ ] **Opener format logged** — note which approved format was used (observation, recent signal, peer-level drop, milestone hook, contrarian). Not repeating the same format from prior drafts in the same batch.
 - [ ] **Anti-patterns check** — verify draft against `examples/bad/anti-patterns.md` patterns 1-9.
