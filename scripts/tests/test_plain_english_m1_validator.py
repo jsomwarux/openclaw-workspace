@@ -57,6 +57,43 @@ class AnalyzeMessageTests(unittest.TestCase):
         self.assertTrue(any("CTA" in error for error in result["errors"]))
 
 
+    def test_rejects_ai_vocabulary(self):
+        # D1 (batch-1 memo, EC-1): no AI vocabulary in COI outreach copy.
+        for term in ("AI", "agent", "automation", "workflow", "platform", "LLM",
+                     "pipeline", "integration", "orchestration", "harness"):
+            body = PLAIN_BODY.replace(
+                "You get a short fix list before spending money on new software.",
+                f"You get a short fix list before spending money on a new {term} tool.",
+            )
+            result = analyze_message("coi renewals", body)
+            self.assertTrue(
+                any(error == f"AI vocabulary: {term.lower()}" for error in result["errors"]),
+                f"{term!r} was not rejected: {result['errors']}",
+            )
+
+    def test_ai_vocabulary_matches_whole_words_only(self):
+        # "maintain" and "paint" contain "ai"; "agents" is the plural of a banned word.
+        body = PLAIN_BODY.replace(
+            "IEW runs bridge, utility, and transportation jobs.",
+            "IEW runs bridge, paint, and maintenance jobs.",
+        )
+        result = analyze_message("coi renewals", body)
+        self.assertFalse(any(error.startswith("AI vocabulary") for error in result["errors"]))
+        body = PLAIN_BODY.replace("new software", "new agents")
+        result = analyze_message("coi renewals", body)
+        self.assertIn("AI vocabulary: agent", result["errors"])
+
+    def test_warns_above_75_words(self):
+        # D1 advisory line: 75 words or fewer. Eve's 50-85 range stays the hard gate.
+        extra = " Most teams find the gap in the first week of looking."
+        body = PLAIN_BODY.replace("new software.", "new software." + extra * 2 + " Ask me how.")
+        result = analyze_message("coi renewals", body)
+        self.assertGreater(result["word_count"], 75)
+        self.assertLessEqual(result["word_count"], 85)
+        self.assertIn(f"body over 75 words (D1 advisory); found {result['word_count']}", result["warnings"])
+        self.assertEqual([], [e for e in result["errors"] if "word count" in e])
+
+
 class PacketTests(unittest.TestCase):
     def test_extracts_numbered_messages(self):
         packet = f"""# Packet

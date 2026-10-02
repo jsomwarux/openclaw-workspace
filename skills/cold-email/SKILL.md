@@ -357,6 +357,15 @@ Do not ask for a meeting in M1.
 - Use one operational question plus one CTA. The CTA should be answerable in five words or fewer.
 - Do not mention a checklist, guide, example, result, or proof asset unless it already exists and is approved for that prospect.
 
+**COI copy checklist (D1, five lines). Run it on every COI draft before JT reviews the batch:**
+1. *Advisory:* body of 75 words or fewer. The validator warns above 75; 50-85 stays the hard gate.
+2. *Advisory:* plain reading level. The validator's grade 5-7 target covers it.
+3. *Hard:* no AI vocabulary: AI, agent, automation, workflow, platform, LLM, pipeline, integration, orchestration, harness. The validator rejects them, plurals included.
+4. *Hard:* consequence first. The operational question names what goes wrong for the buyer (a lapsed COI on site, a claim, a blocked payment) before anything about JT.
+5. *Hard:* exactly one proof-safe claim. One sentence says what JT does or has done, in words JT approved. No second claim, no result figure, no client name.
+
+Do not A/B test these lines: 25 sends cannot power a comparison.
+
 **Batch delivery order (mandatory):**
 1. Run the deterministic validator against the draft packet and its approved baseline evidence (`--baseline` when revising an existing packet).
 2. Complete the high-stakes copy review and repair all failures.
@@ -395,6 +404,7 @@ Add these to the standard checklist when writing email (not DM):
 - [ ] **M1 body 50-85 words excluding signature** — count before delivering.
 - [ ] **Plain-English gate** — estimated grade 5-7 target, grade 8 warning ceiling; average sentence 8-14 words; no sentence over 20 words.
 - [ ] **No abstraction stack** — remove `fixed-scope`, `workflow audit`, `handoffs`, `exception ownership`, `control plan`, `escalation rules`, and similar consultant language from M1.
+- [ ] **COI copy checklist (D1)** — no AI vocabulary, consequence first, exactly one proof-safe claim; 75 words or fewer is advisory.
 - [ ] **P1 leads with observation, not credentials** — "I'm an AI consultant" cannot be the first clause.
 - [ ] **P2 has the proof point, not P1** — if a specific build is mentioned in P1, move it to P2.
 

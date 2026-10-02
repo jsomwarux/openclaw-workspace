@@ -31,3 +31,15 @@ Make contractor cold emails understandable in one skim without making them child
 
 Use one version for the first 30 delivered emails. Track delivered, positive reply, wrong-person routing, confusion, objection, and CTA response. Do not infer a winner from a 15/15 split.
 
+
+## Pre-registered fallback (D51)
+
+Recorded before the first send. Wording is exactly as in the batch-10 X-review memo (`jsomwarux/jt-ops:main:reports/growth-os/2026-10-02-x-posts-critical-review-batch-10.md`, section 8 of the cold email offer engine post). The measurement window above ("the first 30 delivered emails") and this rule's 25 sends must be reconciled by JT before the first send (decision card Q7).
+
+> **Conditions:** All 25 sends completed. The standard follow-up cadence is completed. The D22 reply-path test passed. Bounce rate is under the ceiling. Zero complaints.
+>
+> **If** there are zero positive replies, the next 25 sends change **only** the front end: a free "COI expiry snapshot." List, copy structure, and sender stay the same.
+>
+> **If** there is at least one positive reply, keep the $1,500 audit and continue the ramp.
+
+A positive reply is `reply_classification = positive` in the outcome spine's `current-outcomes.csv`. The snapshot spec is `jsomwarux/jt-ops:reports/growth-os/drafts/D51-coi-expiry-snapshot-spec.md`. The snapshot runs only if this rule triggers and JT approves it.

@@ -25,6 +25,23 @@ BANNED_PHRASES = (
     "before anyone buys or builds software",
 )
 
+# D1 (batch-1 X-review memo, EC-1): COI outreach copy carries no AI vocabulary.
+# Whole words only; a plural counts as the word ("agents" is "agent").
+AI_VOCABULARY = (
+    "ai",
+    "agent",
+    "automation",
+    "workflow",
+    "platform",
+    "llm",
+    "pipeline",
+    "integration",
+    "orchestration",
+    "harness",
+)
+AI_VOCABULARY_RE = re.compile(r"\b(" + "|".join(AI_VOCABULARY) + r")s?\b", re.IGNORECASE)
+D1_ADVISORY_MAX_WORDS = 75
+
 SIGNATURE_START = "JT Somwaru"
 WORD_RE = re.compile(r"[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)?")
 SENTENCE_RE = re.compile(r"[^.!?]+[.!?]")
@@ -75,6 +92,8 @@ def analyze_message(subject: str, body: str) -> Dict[str, Any]:
 
     if not 50 <= len(tokens) <= 85:
         errors.append(f"body word count must be 50-85; found {len(tokens)}")
+    elif len(tokens) > D1_ADVISORY_MAX_WORDS:
+        warnings.append(f"body over {D1_ADVISORY_MAX_WORDS} words (D1 advisory); found {len(tokens)}")
     if sentence_lengths and max(sentence_lengths) > 20:
         errors.append(f"sentence over 20 words; found {max(sentence_lengths)}")
     average_sentence = round(sum(sentence_lengths) / len(sentence_lengths), 1) if sentence_lengths else 0.0
@@ -91,6 +110,8 @@ def analyze_message(subject: str, body: str) -> Dict[str, Any]:
     for phrase in BANNED_PHRASES:
         if phrase in lowered:
             errors.append(f"banned phrase: {phrase}")
+    for term in sorted({match.group(1).lower() for match in AI_VOCABULARY_RE.finditer(content)}):
+        errors.append(f"AI vocabulary: {term}")
 
     if len(questions) != 2:
         errors.append(f"message must contain one operational question and one CTA; found {len(questions)} questions")
