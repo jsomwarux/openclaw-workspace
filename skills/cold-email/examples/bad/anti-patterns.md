@@ -88,3 +88,21 @@ Puts all the work on them. Passive. Use a specific, low-friction question that i
 
 **Why it fails:**
 This message works for every property manager on Earth. If removing the prospect's name doesn't break the message, the personalization isn't working. Every M1 must have at least one signal specific to the individual or company.
+
+---
+
+## 10. The Consultant Abstraction Stack
+**What it looks like:**
+"I run fixed-scope workflow audits that map current handoffs, exception ownership, and escalation rules before a tool decision."
+
+**Why it fails:**
+The buyer has to translate every noun before understanding the offer. Use the words they use at work: "I find where renewals get missed, who should follow up, and what to fix first."
+
+---
+
+## 11. The Legal Caveat Pile
+**What it looks like:**
+"Coverage decisions, certificate review, and insurance judgment remain with your team."
+
+**Why it fails:**
+It spends scarce M1 attention defending a claim the email did not need to make. Keep the copy accurate, then put scope and legal boundaries in the offer sheet or later conversation unless a caveat is essential to avoid misleading the reader.
