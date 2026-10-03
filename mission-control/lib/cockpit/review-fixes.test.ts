@@ -168,6 +168,16 @@ describe("finding 7: a poll during the operator's own write is ignored", () => {
     await controller.next();
     expect(controller.getState().screen).toBe("item");
   });
+
+  test("a poll during the operator's own write sends no read at all", async () => {
+    const { controller, api } = await at(5);
+    api.writeDelayMs = 30;
+    const write = controller.act({ action: "start" });
+    const before = api.reads;
+    await controller.refresh();
+    expect(api.reads).toBe(before);
+    await write;
+  });
 });
 
 describe("finding 8: with the queue open, only Q, ? and Esc act on every screen", () => {
@@ -244,5 +254,175 @@ describe("finding 20: the summary's Handled list holds only handled items", () =
     const summary = summaryView(run, allFixtureTasks(), NOW, UTC);
     expect(summary.handled.map((entry) => entry.position)).toEqual([1]);
     expect(summary.stillNeedsYou.map((entry) => entry.id)).toContain(ID.F05);
+  });
+});
+
+// ---- second fresh-context review (review-2.md), new findings ----------------------------------
+
+function reloadable() {
+  const storage = memoryStorage();
+  let now = NOW;
+  const clock = { now: () => now, advance: (ms: number) => { now += ms; } };
+  const api = new FixtureApi(allFixtureTasks(), clock.now);
+  const open = () => new CockpitController({ api, clock: clock.now, storage: runStorage(storage, "test"), timeZone: UTC });
+  return { api, clock, open };
+}
+
+describe("review 2, finding 1: Undo never comes back over another writer's change", () => {
+  test("after Pause and Acknowledge, Undo stays withdrawn and the other writer's status stands", async () => {
+    const { controller, api, clock } = await at(5);
+    await controller.act({ action: "complete" });
+    clock.advance(MINUTE);
+    api.edit(ID.F04, { status: "in-progress" });
+    await controller.refresh();
+    controller.pauseRun();
+    await controller.acknowledgeAndResume();
+    expect(controller.canUndo()).toBe(false);
+    await controller.undo();
+    expect(api.task(ID.F04).status).toBe("in-progress");
+  });
+
+  test("after acknowledging the Changed panel, Undo stays withdrawn", async () => {
+    const { controller, api, clock } = await at(5);
+    await controller.act({ action: "start" });
+    clock.advance(MINUTE);
+    api.edit(ID.F04, { status: "done" });
+    await controller.refresh();
+    controller.ackItemChange();
+    expect(controller.canUndo()).toBe(false);
+    await controller.undo();
+    expect(api.task(ID.F04).status).toBe("done");
+  });
+
+  test("Undo survives Pause, Acknowledge and a reload when nothing else changed", async () => {
+    const { api, open } = reloadable();
+    const first = open();
+    await first.load();
+    first.startRun();
+    for (let i = 0; i < 5; i += 1) await first.next();
+    await first.act({ action: "complete" });
+    first.pauseRun();
+    await first.acknowledgeAndResume();
+    expect(first.canUndo()).toBe(true);
+    const second = open();
+    await second.load();
+    await second.acknowledgeAndResume();
+    expect(second.canUndo()).toBe(true);
+    await second.undo();
+    expect(api.task(ID.F04).status).toBe("todo");
+  });
+});
+
+describe("review 2, finding 2: a packet decided in the Work list is recognized after a reload", () => {
+  test("the first read after a reload looks up archived rows for missing run items", async () => {
+    const { api, clock, open } = reloadable();
+    const first = open();
+    await first.load();
+    first.startRun();
+    clock.advance(MINUTE);
+    api.edit(ID.F05, { status: "archived", approvalState: "rejected", closureReason: { kind: "rejected", closedAt: NOW, closedBy: "jt" } });
+    const second = open();
+    await second.load();
+    expect(second.getState().screen).toBe("runResume");
+    expect(second.getState().changes.find((change) => change.itemId === ID.F05)?.detail).toBe("Rejected elsewhere.");
+    await second.acknowledgeAndResume();
+    expect(second.getState().run!.items[6]).toMatchObject({ outcome: "rejected", elsewhere: true });
+  });
+});
+
+describe("review 2, finding 3: no read that overlaps the operator's own write is applied", () => {
+  test("a read sent before the write and answered after the record changed", async () => {
+    const { controller, api } = await at(5);
+    api.readDelayMs = 20;
+    api.writeDelayMs = 60;
+    const poll = controller.refresh();
+    const write = controller.act({ action: "start" });
+    await Promise.all([poll, write]);
+    expect(controller.getState().run!.phase).toBe("inProgress");
+    await controller.next();
+    expect(controller.getState().screen).toBe("item");
+  });
+
+  test("a read that carries the record from before the write, answered after the write finished", async () => {
+    const { controller, api } = await at(5);
+    api.readDelayMs = 40;
+    api.readSnapshotFirst = true;
+    const poll = controller.refresh();
+    await controller.act({ action: "start" });
+    await poll;
+    expect(controller.openItemChange()).toBe(null);
+    expect(controller.currentTask()!.status).toBe("in-progress");
+  });
+
+  test("hiding and showing the page during a write does not report the write as a change", async () => {
+    const { controller, api } = await at(5);
+    api.writeDelayMs = 30;
+    const write = controller.act({ action: "start" });
+    controller.onHidden();
+    await controller.onVisible();
+    await write;
+    expect(controller.getState().screen).toBe("item");
+    expect(controller.getState().changes).toEqual([]);
+    expect(controller.getState().run!.phase).toBe("inProgress");
+  });
+});
+
+describe("review 2, finding 4: archived records are described as archived, the same way everywhere", () => {
+  test("a generic card archived elsewhere is not 'marked done'", () => {
+    const run = startRun(allFixtureTasks(), NOW, UTC);
+    const changes = detectChanges(run, tasksWith({ F04: { status: "archived" } }), NOW + MINUTE, UTC);
+    expect(changes.find((change) => change.itemId === ID.F04)?.detail).toBe("Archived elsewhere.");
+  });
+
+  test("a packet skipped elsewhere reads the same on the Resume screen and in the summary, under Handled", async () => {
+    const { controller, api, clock } = await at(5);
+    clock.advance(MINUTE);
+    api.edit(ID.F05, { status: "archived", closureReason: { kind: "skipped", closedAt: NOW, closedBy: "eve" } });
+    await controller.refresh();
+    expect(controller.getState().changes.find((change) => change.itemId === ID.F05)?.detail).toBe("Skipped elsewhere.");
+    await controller.next();
+    await controller.acknowledgeAndResume();
+    const { run, tasks } = controller.getState();
+    const summary = summaryView(run!, tasks, NOW + MINUTE, UTC);
+    expect(summary.handled.find((entry) => entry.position === 7)?.did).toBe("Skipped elsewhere.");
+    expect(summary.stillNeedsYou.map((entry) => entry.id)).not.toContain(ID.F05);
+  });
+});
+
+describe("review 2, finding 5: archived rows are looked up once per missing item", () => {
+  test("three polls with the same item missing make one archived read", async () => {
+    const { controller, api, clock } = await at(2);
+    api.remove(ID.F04);
+    for (let i = 0; i < 3; i += 1) {
+      clock.advance(MINUTE);
+      await controller.refresh();
+    }
+    expect(api.archivedReads).toBe(1);
+  });
+});
+
+describe("review 2, finding 6: acknowledging the open item's change does not leave a backlog-only interrupt", () => {
+  test("after the open item's change is read, a new backlog card does not stop J", async () => {
+    const { controller, api, clock } = await at(5);
+    clock.advance(MINUTE);
+    api.edit(ID.F04, { doneState: "Someone changed the done condition." });
+    api.add(newCard);
+    await controller.refresh();
+    controller.ackItemChange();
+    expect(controller.getState().run!.phase).toBe("inProgress");
+    await controller.next();
+    expect(controller.getState().screen).toBe("item");
+  });
+});
+
+describe("review 2, finding 7: the save warning shows once and does not replace other notices", () => {
+  test("the end-of-run notice survives when storage keeps failing", async () => {
+    const full: KeyValueStorage = { getItem: () => null, setItem: () => { throw new Error("quota"); }, key: () => null, length: 0 };
+    const { controller } = setup(full);
+    await controller.load();
+    controller.startRun();
+    expect(controller.getState().notice).toBe("Progress could not be saved in this browser. The run works until you close this page.");
+    for (let i = 0; i < 7; i += 1) await controller.next();
+    expect(controller.getState().notice).toBe("Item 1 of 7 still needs you.");
   });
 });

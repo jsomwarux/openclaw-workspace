@@ -83,6 +83,8 @@ export interface UndoRecord {
   kind: "start" | "complete" | "defer";
   /** Fields that restore the state before the write. */
   restore: Record<string, unknown>;
+  /** Fingerprint of the tracked fields right after the write. Undo is offered only while the record still matches. */
+  expect?: string;
 }
 
 export interface RunItem {

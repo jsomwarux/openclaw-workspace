@@ -1,19 +1,21 @@
 "use client";
 // Focus handling for modal surfaces (KEYBOARD.md, Accessibility): keep Tab inside while open and
 // give focus back to what had it before on close.
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { KeyboardEvent, RefObject } from "react";
 
 const FOCUSABLE = "button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled]), select, [tabindex]:not([tabindex='-1'])";
 
-/** Restores focus to the element that had it when the dialog opened. */
+/**
+ * Restores focus to the element that had it when the dialog opened. The opener is read during the
+ * first render: by the time an effect runs, autoFocus inside the dialog has already moved focus to
+ * the dialog's own button (review 2, finding 8).
+ */
 export function useRestoreFocus() {
-  useEffect(() => {
-    const previous = document.activeElement as HTMLElement | null;
-    return () => {
-      if (previous && document.contains(previous)) previous.focus();
-    };
-  }, []);
+  const [opener] = useState(() => (typeof document === "undefined" ? null : (document.activeElement as HTMLElement | null)));
+  useEffect(() => () => {
+    if (opener && document.contains(opener)) opener.focus();
+  }, [opener]);
 }
 
 /** onKeyDown handler that keeps Tab and Shift+Tab inside the given container. */

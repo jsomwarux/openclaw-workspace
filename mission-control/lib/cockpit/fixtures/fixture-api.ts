@@ -16,8 +16,11 @@ export class FixtureApi implements CockpitApi {
   readonly writes: { id: string; kind: "patch" | "feedback"; payload: unknown }[] = [];
   readonly audit: { taskId: string; field: string; evidence: unknown; source: unknown }[] = [];
   readDelayMs = 0;
+  /** True: a delayed read returns the records as they were when it was sent, not when it is answered. */
+  readSnapshotFirst = false;
   writeDelayMs = 0;
   reads = 0;
+  archivedReads = 0;
 
   constructor(tasks: RawTask[], private readonly clock: () => number) {
     this.tasks = structuredClone(tasks);
@@ -53,16 +56,18 @@ export class FixtureApi implements CockpitApi {
 
   async listTasks(): Promise<RawTask[]> {
     this.reads += 1;
+    const served = structuredClone(this.tasks.filter((task) => task.status !== "archived"));
     if (this.readDelayMs > 0) await new Promise((resolve) => setTimeout(resolve, this.readDelayMs));
     if (this.readFailures > 0) {
       this.readFailures -= 1;
       throw new ApiError("network");
     }
-    return structuredClone(this.tasks.filter((task) => task.status !== "archived"));
+    return this.readSnapshotFirst ? served : structuredClone(this.tasks.filter((task) => task.status !== "archived"));
   }
 
   /** Like GET /api/tasks?include=archived: archived rows only. */
   async listArchived(): Promise<RawTask[]> {
+    this.archivedReads += 1;
     if (this.readFailures > 0) {
       this.readFailures -= 1;
       throw new ApiError("network");

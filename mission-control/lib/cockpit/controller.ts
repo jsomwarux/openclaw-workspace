@@ -4,7 +4,7 @@ import { sliceOneActions, actionContext, isReadOnlyInSliceOne } from "./actions"
 import type { CockpitApi } from "./api";
 import { savedAnswer } from "./answer";
 import { familyOf, seriesOf } from "./classify";
-import { trackedFields } from "./changes";
+import { fingerprint, trackedFields } from "./changes";
 import { isExpired } from "./eligibility";
 import { planRun } from "./exceptions";
 import { connectionState, initialHealth, recordRead } from "./freshness";
@@ -63,9 +63,19 @@ export interface OpenItemChange {
   before: Record<string, unknown>;
 }
 
+type ReadResult = "ok" | "failed" | "superseded";
+
 export class CockpitController {
   private state: CockpitState;
   private listeners = new Set<() => void>();
+  /** Bumped when a write starts and when it settles, so a read can tell it overlapped one. */
+  private writeGen = 0;
+  /** Work deferred until the write in flight settles (a return to the page during a write). */
+  private afterWrite: (() => Promise<void>) | null = null;
+  /** Archived rows already looked up for missing run items; null when the row was not found. */
+  private archivedLookups = new Map<string, RawTask | null>();
+  /** True while saves are failing and the operator has been told once. */
+  private saveWarned = false;
 
   constructor(private readonly deps: ControllerDeps) {
     this.state = {
@@ -93,7 +103,10 @@ export class CockpitController {
 
   private setRun(run: StoredRun | null, patch: Partial<CockpitState> = {}) {
     const saved = this.persist(run);
-    this.set({ ...patch, run, ...(saved ? {} : { notice: SAVE_FAILED }) });
+    // Tell the operator once per failure streak, alongside any notice this update carries.
+    const warn = !saved && !this.saveWarned;
+    this.saveWarned = !saved;
+    this.set({ ...patch, run, ...(warn ? { notice: patch.notice ? `${patch.notice} ${SAVE_FAILED}` : SAVE_FAILED } : {}) });
   }
 
   private today() {
@@ -102,34 +115,49 @@ export class CockpitController {
 
   // ---- reads ----------------------------------------------------------------------------
 
-  private async read(): Promise<boolean> {
+  /**
+   * A read that overlaps the operator's own write can carry the record from before the write, or
+   * the write before it is folded into the snapshot. Either would show the operator's own write as
+   * someone else's change (review finding 7; review 2, finding 3), so such a read is dropped.
+   */
+  private async read(): Promise<ReadResult> {
+    if (this.state.busy) return "superseded";
+    const generation = this.writeGen;
     const startedAt = this.deps.clock();
     try {
       const tasks = await this.withDecidedElsewhere(await this.deps.api.listTasks());
+      if (this.state.busy || this.writeGen !== generation) return "superseded";
       this.set({ tasks, health: recordRead(this.state.health, { ok: true, startedAt, finishedAt: this.deps.clock() }) });
-      return true;
+      return "ok";
     } catch {
       this.set({ health: recordRead(this.state.health, { ok: false, startedAt, finishedAt: this.deps.clock() }) });
-      return false;
+      return "failed";
     }
   }
 
   /**
    * GET /api/tasks leaves archived rows out, and deciding a lane packet in the Work list archives
-   * it. When an unhandled run item is missing, read the archived rows once to learn what happened
-   * instead of reporting it as gone (review finding 4).
+   * it. When an unhandled run item is missing, read the archived rows to learn what happened
+   * instead of reporting it as gone (review finding 4). The stored run is used before the first
+   * read sets it, so a reload sees the same (review 2, finding 2). Each missing item is looked up
+   * once; a failed lookup is tried again on the next read (review 2, finding 5).
    */
   private async withDecidedElsewhere(tasks: RawTask[]): Promise<RawTask[]> {
-    const run = this.state.run;
+    const run = this.state.run ?? this.deps.storage.load(this.today());
     if (!run) return tasks;
     const present = new Set(tasks.map((task) => task._id));
-    const missing = new Set(run.items.filter((item) => !item.outcome && !item.left && !present.has(item.id)).map((item) => item.id));
-    if (missing.size === 0) return tasks;
-    try {
-      return [...tasks, ...(await this.deps.api.listArchived()).filter((task) => missing.has(task._id))];
-    } catch {
-      return tasks;
+    const missing = run.items.filter((item) => !item.outcome && !item.left && !present.has(item.id)).map((item) => item.id);
+    const unknown = missing.filter((id) => !this.archivedLookups.has(id));
+    if (unknown.length > 0) {
+      try {
+        const archived = new Map((await this.deps.api.listArchived()).map((task) => [task._id, task]));
+        for (const id of unknown) this.archivedLookups.set(id, archived.get(id) ?? null);
+      } catch {
+        // Not recorded, so the next read tries again; until then the item reads as missing.
+      }
     }
+    const found = missing.flatMap((id) => this.archivedLookups.get(id) ?? []);
+    return found.length > 0 ? [...tasks, ...found] : tasks;
   }
 
   connection(): ConnectionState {
@@ -162,11 +190,7 @@ export class CockpitController {
   }
 
   async refresh(): Promise<void> {
-    // A poll that lands during the operator's own write would see that write before it is folded
-    // into the snapshot and report it as someone else's change (review finding 7). Skip it.
-    if (this.state.busy) return;
-    const ok = await this.read();
-    if (!ok) return;
+    if ((await this.read()) !== "ok") return;
     const { screen, run } = this.state;
     if (screen === "loading") return this.load();
     if (run && run.localDate !== this.today() && run.closedAt === undefined) {
@@ -269,9 +293,17 @@ export class CockpitController {
   async onVisible(): Promise<void> {
     const run = this.state.run;
     if (!run || run.phase !== "paused" || this.state.screen !== "item") return this.refresh();
-    if (!(await this.read())) return;
+    const result = await this.read();
+    if (result === "superseded") return this.whenWriteSettles(() => this.onVisible());
+    if (result !== "ok") return;
     const back = resume(this.state.run!, this.state.tasks, this.deps.clock(), this.deps.timeZone);
     this.setRun(back.run, back.changes.length > 0 ? { screen: "runResume", changes: back.changes } : {});
+  }
+
+  /** Runs now, or once the write in flight has settled and been folded into the snapshot. */
+  private async whenWriteSettles(work: () => Promise<void>): Promise<void> {
+    if (!this.state.busy) return work();
+    this.afterWrite = work;
   }
 
   /** Why moving past the current item leaves it unhandled, or undefined when it is actionable. */
@@ -313,7 +345,7 @@ export class CockpitController {
     const task = this.currentTask();
     if (!run || !task) return;
     let next: StoredRun = { ...run, snapshot: run.snapshot.map((entry) => (entry.id === task._id ? snapshotEntry(task) : entry)) };
-    if (next.phase === "queueChanged" && detectChanges(next, this.state.tasks, this.deps.clock(), this.deps.timeZone).length === 0) {
+    if (next.phase === "queueChanged" && !detectChanges(next, this.state.tasks, this.deps.clock(), this.deps.timeZone).some((change) => change.inRun)) {
       next = { ...next, phase: "inProgress" };
     }
     this.setRun(next);
@@ -360,7 +392,9 @@ export class CockpitController {
   /**
    * Undo is a write: it pauses with every other write (stale, checking, failure, mid-write) and is
    * bound to the state the operator's own write left. Once another writer has changed the item,
-   * Undo is no longer offered, so it can never overwrite their change (review finding 2).
+   * Undo is no longer offered, so it can never overwrite their change (review finding 2). The
+   * binding is the fingerprint stored with the Undo record, not the snapshot, because acknowledging
+   * a change re-bases the snapshot (review 2, finding 1).
    */
   canUndo(): boolean {
     const item = this.currentItem();
@@ -369,7 +403,7 @@ export class CockpitController {
     if (!item?.undo || !task || !run || this.state.busy || this.state.failure) return false;
     const connection = this.connection();
     if (connection === "stale" || connection === "checking") return false;
-    return itemChangedKeys(run, task).length === 0;
+    return item.undo.expect !== undefined && fingerprint(trackedFields(task)) === item.undo.expect;
   }
 
   async undo(): Promise<void> {
@@ -380,8 +414,10 @@ export class CockpitController {
   }
 
   private async run(plan: WritePlan, request: ActRequest | null, fromStep: number, firstAttemptAt: number, retry: boolean) {
+    this.writeGen += 1;
     this.set({ busy: true, notice: null });
     const result = await executePlan(this.deps.api, plan, { fromStep, firstAttemptAt, retry });
+    this.writeGen += 1;
     if (!result.ok) {
       this.set({
         busy: false,
@@ -389,9 +425,12 @@ export class CockpitController {
       });
       // A refusal usually means the record moved on; read again now so Changed shows at once.
       if (result.error.kind === "refused") await this.refresh();
-      return;
+    } else {
+      this.applySuccess(plan, request);
     }
-    this.applySuccess(plan, request);
+    const deferred = this.afterWrite;
+    this.afterWrite = null;
+    if (deferred) await deferred();
   }
 
   /** Reflect a confirmed write locally, fold it into the snapshot, and record the outcome. */
@@ -411,7 +450,9 @@ export class CockpitController {
       }
     }
     const tasks = this.state.tasks.map((task) => (task._id === plan.itemId ? after : task));
-    run = request ? recordOutcome(run, plan.itemId, this.outcomeFor(request, before, plan), now) : clearOutcome(run, plan.itemId, this.undoLine(before, after));
+    const outcome = request ? this.outcomeFor(request, before, plan) : null;
+    if (outcome?.undo) outcome.undo = { ...outcome.undo, expect: fingerprint(trackedFields(after)) };
+    run = outcome ? recordOutcome(run, plan.itemId, outcome, now) : clearOutcome(run, plan.itemId, this.undoLine(before, after));
     this.setRun(run, { tasks, busy: false, failure: null });
   }
 

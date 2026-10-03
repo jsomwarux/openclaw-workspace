@@ -334,7 +334,9 @@ export function summaryView(run: StoredRun, tasks: RawTask[], now: number, timeZ
       return entry(task?.expiresAt ? `Expired ${formatShort(task.expiresAt, timeZone)}. You can still reject it in the current interface.` : "Expired.");
     }
     if (item.left === "readOnly") return entry(readOnlyNote(task ? familyOf(task) : "lanePacket"));
-    if (item.left === "removed") return entry("It is no longer in Mission Control.");
+    // Closed or deleted by someone else: it no longer needs the operator (DECISIONS 15, Summary
+    // outcomes), so it is listed under Handled with what happened (review 2, finding 4).
+    if (item.left === "removed") return [];
     return entry(run.unfinished ? "Not handled before the day ended." : "Not handled yet.");
   });
 
@@ -345,7 +347,7 @@ export function summaryView(run: StoredRun, tasks: RawTask[], now: number, timeZ
     meta: `${formatLongDay(run.startedAt, timeZone)} · Curated order · ${counts}`,
     counts,
     stillNeedsYou,
-    handled: run.items.flatMap((item, i) => (item.outcome ? [{ position: i + 1, title: titleOf(item.id), did: item.did ?? "Handled." }] : [])),
+    handled: run.items.flatMap((item, i) => (item.outcome || item.left === "removed" ? [{ position: i + 1, title: titleOf(item.id), did: item.did ?? "Handled." }] : [])),
     addedSinceStart: added === 0
       ? null
       : `Added to the backlog since the run started: ${added} ${added === 1 ? "item. It is" : "items. They are"} not part of today's run.`,

@@ -1,7 +1,7 @@
 // The daily-run state machine (state map Part B, transitions 1 to 11). Pure functions over
 // the stored run record; the controller persists the results. Order is committed at start.
 import { isLanePacket } from "./classify";
-import { changedKeys, describeChange, fingerprint, trackedFields } from "./changes";
+import { changedKeys, closedElsewhere, describeChange, fingerprint, trackedFields } from "./changes";
 import { isEligible, isExpired } from "./eligibility";
 import { exceptionTime, planRun, RUN_SIZE, urgentException } from "./exceptions";
 import { formatShort, localDateKey, relativeAgo } from "./format";
@@ -253,7 +253,7 @@ function outcomeElsewhere(task: RawTask): Partial<RunItem> | null {
     if (isLanePacket(task) && (task.closureReason as { kind?: string } | undefined)?.kind === "rejected") {
       return { outcome: "rejected", elsewhere: true, did: "Rejected elsewhere." };
     }
-    return { left: "removed", did: "Closed elsewhere." };
+    return { left: "removed", did: closedElsewhere(task) ?? "Closed elsewhere." };
   }
   return null;
 }

@@ -74,20 +74,26 @@ export function changedPhrase(keys: string[]): string {
 
 const isClosedStatus = (status: unknown) => status === "done" || status === "archived";
 
+/**
+ * How a record closed by someone else reads, on the Resume screen and in the summary alike, or
+ * null when it is not closed. A generic card can be archived without being done (review 2, finding 4).
+ */
+export function closedElsewhere(task: RawTask): string | null {
+  if (task.status === "done") return "Marked done elsewhere.";
+  if (task.status !== "archived") return null;
+  if (!isLanePacket(task)) return "Archived elsewhere.";
+  const kind = (task.closureReason as { kind?: string } | undefined)?.kind;
+  return kind === "rejected" ? "Rejected elsewhere."
+    : kind === "skipped" ? "Skipped elsewhere."
+      : kind === "no-action" ? "Closed elsewhere with no action."
+        : kind === "expired" ? "Expired and closed."
+          : "Closed elsewhere.";
+}
+
 /** One plain sentence for a run item that changed while the operator was away. */
 export function describeChange(before: TrackedFields, task: RawTask, now: number): string {
   const after = trackedFields(task);
-  if (!isClosedStatus(before.status) && isClosedStatus(after.status)) {
-    if (isLanePacket(task) && after.status === "archived") {
-      const kind = (task.closureReason as { kind?: string } | undefined)?.kind;
-      return kind === "rejected" ? "Rejected elsewhere."
-        : kind === "skipped" ? "Skipped elsewhere."
-          : kind === "no-action" ? "Closed elsewhere with no action."
-            : kind === "expired" ? "Expired and closed."
-              : "Closed elsewhere.";
-    }
-    return "Marked done elsewhere.";
-  }
+  if (!isClosedStatus(before.status) && isClosedStatus(after.status)) return closedElsewhere(task) ?? "Closed elsewhere.";
   if (!before.outreachDecision && after.outreachDecision) return "Decided elsewhere.";
   const keys = changedKeys(before, after);
   if (isLanePacket(task) && keys.includes("payloadHash")) {
