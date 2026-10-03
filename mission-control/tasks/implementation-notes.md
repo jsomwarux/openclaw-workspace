@@ -124,12 +124,27 @@ Every step below starts with a failing test, then the minimum code to pass it.
 - D40. Fixture mode needs all three: a non-production build, `NEXT_PUBLIC_COCKPIT_FIXTURES=1`, and `?fixture=<scenario>`. Production builds drop the branch and the chunk (verified: 0 files in `.next-build/static` contain fixture code).
 - D41. Tuning controls (README "Tweaks") ship as defaults through `tokens.css`; there is no settings screen.
 
+**Added after the fresh-context review (section 9)**
+- D42. The confirm buttons for Approve, Reject, Complete and Defer ignore auto-repeated Enter or Space keydowns, and ignore pointer clicks in the first 400 ms after their panel opens (`lib/cockpit/confirm-guard.ts`, `CONFIRM_ARM_MS`). A fresh Enter press still confirms at once, and so does a tap after 400 ms. This closes the held-Enter path (review 1) and the double tap on the mobile sheet, whose confirm button opens under the finger (review 3). The sheet layout itself is unchanged, as designed. Block's panel opens with focus in its empty "Who" field, so a held Enter only shows the required-field errors and cannot park the item.
+- D43. Undo is offered and allowed only while writes are: nothing in flight, no failure panel, the data is not stale or still checking, and the item's tracked fields still match the snapshot taken after the operator's own write. If another writer changed the item, the status line stays but Undo is gone (review 2).
+- D44. Deciding a lane packet in the Work list archives it, and `GET /api/tasks` leaves archived rows out. When an unhandled run item is missing from a read, the cockpit reads `GET /api/tasks?include=archived` once and uses the archived row to say what happened ("Rejected elsewhere.", "Closed elsewhere."). If that read fails, the item is reported as removed, as before (review 4).
+- D45. Whether a finished run can reopen (transition 9) is derived from the items (every item resolved, run not closed), not from the stored phase, so the change text is the same on every poll and after a reload (review 5).
+- D46. A background read interrupts the run only when something in the run changed: a run item, an exception joining, or an item displaced. Changes to backlog cards only (a new card that cannot join, a backlog packet expiring) do not stop the next J; they show on the next Resume screen and in the queue (review 6). A read is skipped while the operator's own write is in flight, so that write cannot show as a change (review 7).
+- D47. When a joining exception displaces an item, the change summary names it: "Leaves today's run" (change kind `displaced`, review 10).
+- D48. The Changed panel shows rows of plain words (`changeRows`): a content hash reads "The version you saw" / "A newer version", and approval, proof type and deadline source use the same words as the rest of the screen. No hash or stored enum name is shown (review 11).
+- D49. If the browser refuses to store run progress, the screen says "Progress could not be saved in this browser. The run works until you close this page." Nothing is pruned (review 13; retention is open question Q8).
+- D50. A refused write (4xx) re-reads at once, so Changed shows without waiting for the next poll (review 16). E with only file-path evidence says to use Copy path (review 17). "· Changed" also marks Title, Exact steps and the Prompt (review 18). Mobile sheets trap Tab and return focus to the opener (review 19). The summary's Handled list holds handled items only; items passed without handling sit under "Still needs you" (review 20).
+
 ## 3a. How the test-first rule was kept, and where it slipped
 
 - Every logic module had its test file written and run red before the module existed, except `run.ts` and `controller.ts`: for those two, the implementation was written before the new test file had been run. Red was then shown by moving the module aside (module not found), and the tests were run against it. Both modules were later checked with mutations (section 8).
 - The UI render tests (`components/cockpit/screens.test.tsx`) were written after the components. Mutation checks show they bite (making lane packets writable fails them).
 - One test setup was wrong and was corrected, not weakened: in `run.test.ts` the "return after another writer changed things" run first started 27 hours earlier, when F06 was within 24 hours of expiry and so (correctly) an urgent exception. It now starts 49 hours earlier. The assertions did not change.
 - The browser interaction script found a real bug: after Esc, focus went to the page body, because the button that opened the panel had been unmounted. It was fixed (D36), and the check now asserts focus. The same script's first version compared `innerText`, which is uppercased by CSS, so two "is absent" checks could never fail. They are case-insensitive now.
+- Review fixes (section 9) were test-first: each finding got a failing test in `lib/cockpit/review-fixes.test.ts` or `lib/cockpit/confirm-guard.test.ts`, run red before the fix, and a mutation in section 8. Three existing checks were changed, each because the check itself was wrong or the timing changed, not to make a failure pass:
+  - `lib/cockpit/view.test.ts`: the summary test asserted the old Handled list, which included items left unhandled. That was the bug in review 20. The assertion now expects handled items only, and a comment in the test says so.
+  - `scripts/cockpit-interactions.mjs`: the phone sheet flows now wait 450 ms before tapping a confirm button, because taps in the first 400 ms are ignored by design (D42). The Review 8 check moves focus off the Back button before pressing Enter, so it tests the key map rather than a native button press.
+  - `lib/cockpit/fixtures/fixture-api.ts`: the optional write delay (`writeDelayMs`, used only by the review-7 race test) applies after the write lands, so a poll in the gap sees the new value as a real backend would.
 
 ## 4. Deviations
 
@@ -159,11 +174,13 @@ Every step below starts with a failing test, then the minimum code to pass it.
 - Q5. `assignee: "both"` is eligible (D4). Confirm, or restrict runs to `jt`.
 - Q6. Lane packets in a run cannot be finished in slice one. Should slice one leave them out of the run, or keep them in (as built) so they stay visible?
 - Q7. Where `/cockpit` should eventually live (replace `/`, or be added to the nav) is not decided here; it is reachable only by URL.
+- Q8. Browser storage retention (review 13). DECISIONS 8 asks to keep the previous day and never clear other keys; it does not say when to prune. One run record is about 47 KB with fixture data, and up to about 220 KB on a heavy day, so years of daily runs would be needed to approach the browser's limit of about 5 MB per site, which the current interface shares. Slice one prunes nothing and reports a failed save (D49). Proposal for slice two: keep the last 14 days of `mission-control:cockpit-run:*` keys and delete older ones on load.
+- Q9. P-card Approve confirm copy (X4, review 12) needs JT's sign-off: keep "Approve this item?" with the generic-card body, or use DECISIONS 5.6's "Approve this version?" copy, which describes hash-bound approval that generic cards do not have.
 
 ## 7. Running log
 
 - 2026-10-03: baseline in the worktree before any change: `bun test` 461 pass, 0 fail, 59 files; `tsc --noEmit --incremental false` exit 0; `NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:9 npm run build` exit 0.
-- Commits: `a86d2b7` bundle (unchanged), `ea1e8e3` overrides, `b3e6105` logic, `2641530` route and UI, then docs, screenshots and this file.
+- Commits: `a86d2b7` bundle (unchanged), `ea1e8e3` overrides, `b3e6105` logic, `2641530` route and UI, `fbedcee` notes, screenshots and GAPS addendum, `27b3959` review fixes, then this file and the regenerated screenshots.
 
 ## 8. Verification (exact commands and results)
 
@@ -171,15 +188,15 @@ All commands ran in `mission-control/` of the worktree, with `node_modules` syml
 
 | Check | Command | Result |
 |---|---|---|
-| Full test suite | `bun test` | **627 pass, 0 fail**, 9,324 expect() calls, 73 files (baseline 461 / 59) |
+| Full test suite | `bun test` | **647 pass, 0 fail**, 9,376 expect() calls, 75 files (baseline 461 / 59; 627 / 73 before the review fixes) |
 | Type check | `npx tsc --noEmit --incremental false` | **exit 0** (includes the bundle's `.ts` files) |
 | Lint | `next lint` | **Not configured**: no ESLint config file exists, and `next lint` would start an interactive setup. Not run. |
-| Production build | `NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:9 npm run build` (writes `.next-build`) | **exit 0**; `/cockpit` 32.6 kB, first load 145 kB |
-| No fixture code shipped | `grep -rl -e cockpit-fixture-run -e fx-invalid-card -e 'Sample DC Q1' -e fixtureSession .next-build/static \| wc -l` | **0** |
+| Production build | `NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:9 npm run build` (writes `.next-build`) | **exit 0**; `/cockpit` 33.7 kB, first load 146 kB |
+| No fixture code shipped | `grep -rl -e cockpit-fixture-run -e fx-invalid-card -e 'Sample DC Q1' -e fixtureSession -e FixtureApi .next-build/static \| wc -l` | **0** |
 | Whitespace | `git diff --check e5b9943` (whole branch, working tree) | **clean** (exit 0). Commit `2641530` alone had one trailing blank line in `RunScreens.tsx`, fixed in the next commit. |
-| Browser interactions | `PLAYWRIGHT_MODULE=… node scripts/cockpit-interactions.mjs` against `NEXT_PUBLIC_COCKPIT_FIXTURES=1 next dev -p 3100` | **21 of 21 pass**: J/K, C+Enter+Undo, D with tomorrow pre-selected, Esc returns focus, Q/Esc/?, E with no evidence, letters and Enter never open Approve, Tab+Enter+Enter approves with no Undo, answer validation and save, Copy prompt copies all 10,533 characters, failure + Retry, changed-underneath pause and acknowledge, stale pause, Enter starts the run, resume, pause, close the run, zero `/api/` requests in fixture mode, three phone sheet flows |
+| Browser interactions | `PLAYWRIGHT_MODULE=… node scripts/cockpit-interactions.mjs` against `NEXT_PUBLIC_COCKPIT_FIXTURES=1 next dev -p 3100` | **25 of 25 pass**: J/K, C+Enter+Undo, D with tomorrow pre-selected, Esc returns focus, Q/Esc/?, E with no evidence, letters and Enter never open Approve, Tab+Enter+Enter approves with no Undo, answer validation and save, Copy prompt copies all 10,533 characters, failure + Retry, changed-underneath pause and acknowledge, stale pause, Enter starts the run, resume, pause, close the run, zero `/api/` requests in fixture mode, three phone sheet flows; added after the review: one held Enter opens Approve but never confirms it (review 1), queue keys on run start (review 8), a phone double tap opens Approve but does not confirm (review 3), 44 px phone targets (review 9) |
 | Screenshots | `PLAYWRIGHT_MODULE=… node scripts/cockpit-screenshots.mjs docs/design/mission-control-redesign-slice-1/screenshots` | **39 files**: 20 states desktop, 19 mobile. Compared with the prototype in `docs/design/mission-control-redesign-slice-1/README.md` |
-| Mutation checks | a script breaks one guard, runs the tests that should notice, restores the file | **22 of 22 caught**: nudge `>`→`>=`, no displacement, self-set deadline urgent, Complete before an answer, lane packets writable, Defer on outreach, snooze past expiry, a letter confirms Approve, Shift+Enter confirms, lifted slot trimmed, Guard lifted on Q, tie-break without createdAt, codes compared as strings, own writes not folded, updatedAt compared, new cards join a run, retry appends twice, stale not pausing, changed item not pausing, Sidebar guard removed, answer over the cap, Block offering Undo |
+| Mutation checks | a script breaks one guard, runs the tests that should notice, restores the file | **35 of 35 caught**: nudge `>`→`>=`, no displacement, self-set deadline urgent, Complete before an answer, lane packets writable, Defer on outreach, snooze past expiry, a letter confirms Approve, Shift+Enter confirms, lifted slot trimmed, Guard lifted on Q, tie-break without createdAt, codes compared as strings, own writes not folded, updatedAt compared, new cards join a run, retry appends twice, stale not pausing, changed item not pausing, Sidebar guard removed, answer over the cap, Block offering Undo; after the review: held-key repeat not ignored, pointer tap not armed, Undo ignoring another writer, Undo while stale, no archived lookup, reopen keyed on phase, backlog changes interrupting, poll during a write, queue keys after the screen check, displaced item not reported, hash in the Changed panel, silent save failure, no read after a refusal |
 
 The requested tests, by file:
 
@@ -197,7 +214,37 @@ The requested tests, by file:
 
 ## 9. Fresh-context review
 
-See the pull request description: the reviewer's findings are pasted there verbatim, and any follow-up is listed under them.
+A fresh agent with none of this build's context reviewed the branch against the bundle and the overrides. It was told not to write to the repository and not to contact any backend. It drove the real controller against the fixture backend and the fixture-mode page in Chrome, with every `/api/**` request blocked. Its report is committed unchanged at `docs/design/mission-control-redesign-slice-1/review-1.md` and pasted verbatim in the pull request description.
+
+Verdict: **PASS WITH FINDINGS**, with 2 major findings, 11 minor and 7 nits. All were checked against the code before fixing. Every fix has a test that was seen failing first (section 3a) and a mutation check (section 8). Fixed in `27b3959`:
+
+| # | Severity | Finding | What changed |
+|---|---|---|---|
+| 1 | Major | One held Enter opened and confirmed Approve or Reject | Confirm buttons ignore auto-repeat keydowns (D42). Browser check "Review 1" |
+| 2 | Major | Undo wrote while paused and could overwrite another writer | Undo gated on the same conditions as writes, plus "unchanged since my write" (D43) |
+| 3 | Minor | Phone confirm opens under the finger, so a double tap confirms | Taps in the first 400 ms are ignored (D42). Browser check "Review 3" |
+| 4 | Minor | A packet decided in the Work list read as "no longer in Mission Control" | Archived lookup for missing run items (D44) |
+| 5 | Minor | Same-day reopen text changed between polls | Reopen derived from the items (D45) |
+| 6 | Minor | Backlog-only changes interrupted the next J | Only run changes interrupt (D46) |
+| 7 | Minor | A poll during the operator's own write showed an empty change screen | Reads are skipped while a write is in flight (D46) |
+| 8 | Minor | Queue keys misbehaved on the run start screen | The queue-open rule is checked first on every screen. Browser check "Review 8" |
+| 9 | Minor | Phone targets under 44 px | Evidence links, Copy path and Open the Work list are 44 px. Browser check "Review 9" |
+| 10 | Minor | The displaced item was not named | `displaced` change kind (D47) |
+| 11 | Minor | The Changed panel could show a hash or stored enum names | `changeRows` in plain words (D48) |
+| 13 | Minor | Storage grows without limit; failed saves were silent | Failed saves are reported (D49). Retention is open question Q8 |
+| 14 | Nit | Hand-typed paddings | Density tokens (`px-d12`, `pt-d10`, …) |
+| 16 | Nit | A refused write did not re-read | Re-read at once (D50) |
+| 17 | Nit | E's message was misleading when only file paths are stored | File-path message (D50) |
+| 18 | Nit | "· Changed" was on only three labels | It also marks Title, Exact steps and Prompt (D50) |
+| 19 | Nit | Mobile sheets did not trap or restore focus | `components/cockpit/focus.ts` (D50) |
+| 20 | Nit | The Handled list included items left unhandled | Handled items only (D50); `view.test.ts` assertion corrected (section 3a) |
+
+Not changed:
+- 12 (Approve confirm copy): this deviation (X4) is deliberate, and the reviewer agrees the reasoning is sound. It needs JT's sign-off (Q9).
+- 15 (answer limit 3,992): the reviewer calls the build's limit "the correct resolution" (X1).
+- The spec ambiguities the reviewer listed were already recorded: `both` owner (D4, Q5), the Guard line on Q cards (D8), the title regex used verbatim (DECISIONS 1.4), and transition 9 growing the run (D21, Q2).
+
+What the reviewer could not verify, from its report: physical key repeat in Safari and Firefox, screen readers, a pixel comparison of all 39 screenshots, and real network timing for finding 7. None of these was run after the fixes either. The browser checks use Chrome and Playwright's synthetic key repeat.
 
 ## 10. Rollback
 
