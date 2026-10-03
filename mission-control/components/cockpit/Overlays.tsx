@@ -1,7 +1,7 @@
 "use client";
 // The shortcuts overlay (README 7) and the static loading skeletons (README 8).
 import { useEffect, useRef } from "react";
-import type { KeyboardEvent } from "react";
+import { trapTab, useRestoreFocus } from "./focus";
 import { button } from "./primitives";
 
 const GROUPS: { label: string; keys: [string, string][] }[] = [
@@ -14,26 +14,9 @@ const GROUPS: { label: string; keys: [string, string][] }[] = [
 export function ShortcutsOverlay({ onClose }: { onClose: () => void }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    const previous = document.activeElement as HTMLElement | null;
-    closeRef.current?.focus();
-    return () => previous?.focus?.();
-  }, []);
-  // Keep Tab inside the dialog while it is open.
-  const trap = (event: KeyboardEvent) => {
-    if (event.key !== "Tab") return;
-    const focusable = dialogRef.current?.querySelectorAll<HTMLElement>("button, [href], [tabindex]:not([tabindex='-1'])");
-    if (!focusable || focusable.length === 0) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  };
+  useRestoreFocus();
+  useEffect(() => closeRef.current?.focus(), []);
+  const trap = trapTab(dialogRef);
   return (
     <div onClick={onClose} className="fixed inset-0 z-[95] flex items-center justify-center bg-[var(--mc-scrim)] font-mc-sans text-mc-14 text-mc-ink">
       <div

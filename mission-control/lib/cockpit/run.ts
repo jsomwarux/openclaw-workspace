@@ -107,6 +107,7 @@ export function pause(run: StoredRun, now: number): StoredRun {
 function placeExceptions(run: StoredRun, tasks: RawTask[], now: number, timeZone: string): {
   items: RunItem[];
   joined: { id: string; label: ExceptionLabel; position: number }[];
+  displaced: string[];
 } {
   const index = byId(tasks);
   const head = run.items.slice(0, run.cursor + 1);
@@ -126,7 +127,7 @@ function placeExceptions(run: StoredRun, tasks: RawTask[], now: number, timeZone
   ]
     .map((entry) => ({ ...entry, label: labelOf(entry.task._id)! }))
     .sort((a, b) => exceptionTime(a.task, a.label) - exceptionTime(b.task, b.label));
-  if (urgent.length === 0) return { items: run.items, joined: [] };
+  if (urgent.length === 0) return { items: run.items, joined: [], displaced: [] };
 
   const urgentIds = new Set(urgent.map((entry) => entry.task._id));
   let rest = tail.filter((item) => !urgentIds.has(item.id));
@@ -143,10 +144,12 @@ function placeExceptions(run: StoredRun, tasks: RawTask[], now: number, timeZone
     }
   }
   const items = [...head, ...placed, ...rest];
+  const kept = new Set(items.map((item) => item.id));
+  const displaced = run.items.filter((item) => !kept.has(item.id)).map((item) => item.id);
   const joined = placed
     .map((item) => ({ id: item.id, label: item.exception!, position: items.indexOf(item) }))
     .filter((entry) => run.items.findIndex((item) => item.id === entry.id) !== entry.position);
-  return { items, joined };
+  return { items, joined, displaced };
 }
 
 const where = (run: StoredRun, index: number) => `Item ${index + 1} of ${run.size}`;
@@ -156,7 +159,9 @@ export function detectChanges(run: StoredRun, tasks: RawTask[], now: number, tim
   const index = byId(tasks);
   const known = new Set(run.knownIds);
   const inRun = new Set(run.items.map((item) => item.id));
-  const reopenable = run.phase === "complete" && run.closedAt === undefined;
+  // Every item resolved and not closed: new cards join (transition 9). Derived from the items, not
+  // the phase, so the text stays the same on every poll and after a reload (review finding 5).
+  const reopenable = allResolved(run) && run.closedAt === undefined;
 
   const added = tasks
     .filter((task) => !known.has(task._id) && !inRun.has(task._id) && isEligible(task, now))
@@ -186,12 +191,22 @@ export function detectChanges(run: StoredRun, tasks: RawTask[], now: number, tim
     }
   });
 
-  const moved = placeExceptions(run, tasks, now, timeZone).joined.map((entry): RunChange => ({
+  const placement = placeExceptions(run, tasks, now, timeZone);
+  const moved = placement.joined.map((entry): RunChange => ({
     kind: "movedUp",
     itemId: entry.id,
     title: index.get(entry.id)?.title ?? "",
     where: `Becomes item ${entry.position + 1} of ${run.size}`,
     detail: entry.label.text,
+    affectsOpenItem: false,
+    inRun: true,
+  }));
+  const displaced = placement.displaced.map((id): RunChange => ({
+    kind: "displaced",
+    itemId: id,
+    title: index.get(id)?.title ?? String(run.snapshot.find((entry) => entry.id === id)?.fields.title ?? ""),
+    where: where(run, run.items.findIndex((item) => item.id === id)),
+    detail: "An urgent item takes its place. It goes back to the backlog when you acknowledge.",
     affectsOpenItem: false,
     inRun: true,
   }));
@@ -208,7 +223,7 @@ export function detectChanges(run: StoredRun, tasks: RawTask[], now: number, tim
       inRun: false,
     }));
 
-  return [...runChanges, ...moved, ...added, ...expiredBacklog];
+  return [...runChanges, ...moved, ...displaced, ...added, ...expiredBacklog];
 }
 
 /** Transitions 4 and 5: return to the run and compare a fresh read with the snapshot. */
@@ -222,7 +237,9 @@ export function resume(run: StoredRun, tasks: RawTask[], now: number, timeZone: 
 export function backgroundCheck(run: StoredRun, tasks: RawTask[], now: number, timeZone: string): { run: StoredRun; changes: RunChange[] } {
   if (run.closedAt !== undefined) return { run, changes: [] };
   const changes = detectChanges(run, tasks, now, timeZone);
-  if (changes.length === 0) return { run, changes };
+  // Only changes to the run itself interrupt it (transition 6). Backlog additions and expiries
+  // wait for the next resume, where they are still reported (review finding 6).
+  if (!changes.some((change) => change.inRun)) return { run, changes };
   return { run: { ...run, phase: run.phase === "paused" ? "paused" : "queueChanged" }, changes };
 }
 
@@ -252,7 +269,7 @@ export function acknowledge(run: StoredRun, tasks: RawTask[], now: number, timeZ
   });
 
   let next: StoredRun = { ...run, items };
-  if (run.phase === "complete" || (run.phase === "queueChanged" && allResolved(run))) {
+  if (allResolved(run) && run.closedAt === undefined) {
     const known = new Set(run.knownIds);
     const fresh = curatedOrder(tasks.filter((task) => !known.has(task._id) && isEligible(task, now))).slice(0, RUN_SIZE);
     if (fresh.length > 0 && run.closedAt === undefined) {

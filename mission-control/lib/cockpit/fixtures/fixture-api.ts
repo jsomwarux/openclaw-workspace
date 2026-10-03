@@ -16,6 +16,8 @@ export class FixtureApi implements CockpitApi {
   readonly writes: { id: string; kind: "patch" | "feedback"; payload: unknown }[] = [];
   readonly audit: { taskId: string; field: string; evidence: unknown; source: unknown }[] = [];
   readDelayMs = 0;
+  writeDelayMs = 0;
+  reads = 0;
 
   constructor(tasks: RawTask[], private readonly clock: () => number) {
     this.tasks = structuredClone(tasks);
@@ -50,12 +52,27 @@ export class FixtureApi implements CockpitApi {
   }
 
   async listTasks(): Promise<RawTask[]> {
+    this.reads += 1;
     if (this.readDelayMs > 0) await new Promise((resolve) => setTimeout(resolve, this.readDelayMs));
     if (this.readFailures > 0) {
       this.readFailures -= 1;
       throw new ApiError("network");
     }
     return structuredClone(this.tasks.filter((task) => task.status !== "archived"));
+  }
+
+  /** Like GET /api/tasks?include=archived: archived rows only. */
+  async listArchived(): Promise<RawTask[]> {
+    if (this.readFailures > 0) {
+      this.readFailures -= 1;
+      throw new ApiError("network");
+    }
+    return structuredClone(this.tasks.filter((task) => task.status === "archived"));
+  }
+
+  /** A slow response: the write has landed, the reply has not arrived yet. */
+  private async delayWrite() {
+    if (this.writeDelayMs > 0) await new Promise((resolve) => setTimeout(resolve, this.writeDelayMs));
   }
 
   private takeFailure(): Failure | null {
@@ -94,6 +111,7 @@ export class FixtureApi implements CockpitApi {
     }
     this.writes.push({ id, kind: "patch", payload: fields });
     this.tasks = this.tasks.map((candidate) => (candidate._id === id ? { ...candidate, ...changes, updatedAt: this.clock() } : candidate));
+    await this.delayWrite();
     if (failure) throw new ApiError(failure.kind);
   }
 
@@ -109,6 +127,7 @@ export class FixtureApi implements CockpitApi {
     feedback.push({ id: `${now}-${feedback.length + 1}`, body: trimmed, author: "jt", createdAt: now });
     this.writes.push({ id, kind: "feedback", payload: trimmed });
     this.tasks = this.tasks.map((candidate) => (candidate._id === id ? { ...candidate, feedback, updatedAt: now } : candidate));
+    await this.delayWrite();
     if (failure) throw new ApiError(failure.kind);
   }
 }

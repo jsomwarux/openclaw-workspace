@@ -19,7 +19,7 @@ import { resolveKey } from "@/lib/cockpit/keyboard";
 import type { KeyCommand, KeyPanel } from "@/lib/cockpit/keyboard";
 import { groupOf } from "@/lib/cockpit/order";
 import { browserStorage, runStorage } from "@/lib/cockpit/storage";
-import { buildItemView, liveStatus, queueView, runStartView, summaryView } from "@/lib/cockpit/view";
+import { buildItemView, liveStatus, nothingToOpen, queueView, runStartView, summaryView } from "@/lib/cockpit/view";
 import type { QueueRowView } from "@/lib/cockpit/view";
 import type { RawTask } from "@/lib/cockpit/types";
 import { DesktopHeader, DesktopItem } from "./DesktopItem";
@@ -103,7 +103,7 @@ function Cockpit({ session, desktop }: { session: Session; desktop: boolean }) {
   const [queueOpen, setQueueOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
   const [queueNotice, setQueueNotice] = useState<string | null>(null);
-  const [evidenceMessage, setEvidenceMessage] = useState(false);
+  const [evidenceMessage, setEvidenceMessage] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [answerError, setAnswerError] = useState<string | null>(null);
   const [deferChoice, setDeferChoice] = useState<DeferOptionId>("tomorrow");
@@ -154,7 +154,7 @@ function Cockpit({ session, desktop }: { session: Session; desktop: boolean }) {
   useEffect(() => {
     setPanel(null);
     setAnswerError(null);
-    setEvidenceMessage(false);
+    setEvidenceMessage(null);
   }, [itemKey]);
 
   useEffect(() => {
@@ -256,13 +256,14 @@ function Cockpit({ session, desktop }: { session: Session; desktop: boolean }) {
   }, [closePanel, controller, deferChoice, deferDate, note, now, panel, park, task, timeZone]);
 
   const openEvidence = useCallback(() => {
-    const link = task ? buildItemView(task, item!, run!, now, timeZone).evidence.find((entry) => entry.kind === "web") : undefined;
+    const evidence = task ? buildItemView(task, item!, run!, now, timeZone).evidence : [];
+    const link = evidence.find((entry) => entry.kind === "web");
     if (link) {
       window.open(link.text, "_blank", "noopener,noreferrer");
       return;
     }
-    setEvidenceMessage(true);
-    setTimeout(() => setEvidenceMessage(false), 3500);
+    setEvidenceMessage(nothingToOpen(evidence));
+    setTimeout(() => setEvidenceMessage(null), 3500);
   }, [item, now, run, task, timeZone]);
 
   const reviewQueue = useCallback(async () => {
@@ -506,7 +507,7 @@ function Cockpit({ session, desktop }: { session: Session; desktop: boolean }) {
     readOnly: view.readOnly && !resolved && view.validity.ok ? { text: readOnlyText, title: view.titleText } : null,
     resolved,
     line: item.line ?? null,
-    canUndo: Boolean(item.undo) && !state.failure && !panel,
+    canUndo: controller.canUndo() && !panel,
     failure,
     busy: state.busy,
   };
@@ -571,7 +572,7 @@ function Cockpit({ session, desktop }: { session: Session; desktop: boolean }) {
     actions,
     panel: panelNode,
     answerBox,
-    evidenceEmphasis: evidenceMessage,
+    evidenceEmphasis: evidenceMessage !== null,
     evidenceMessage,
     notice: state.notice,
     onPause: () => { setPanel(null); controller.pauseRun(); },

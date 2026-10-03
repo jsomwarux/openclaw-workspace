@@ -152,9 +152,10 @@ describe("run start and summary", () => {
       "Deferred until Sun, Oct 4, 08:00 UTC.",
       "Not decided yet. Lane packets are decided in the current interface for now: open the Work list.",
     ]);
+    // Review finding 20: the Handled list holds handled items only; item 7 is under Still needs you.
     expect(s.handled.map((entry) => entry.did)).toEqual([
       "Answer recorded, then completed.", "Approved. Note recorded.", "Answer recorded, then completed.",
-      "Parked on neutral........ Nudge after 14 days.", "Completed.", "Deferred until Sun, Oct 4, 08:00 UTC.", "Left unhandled.",
+      "Parked on neutral........ Nudge after 14 days.", "Completed.", "Deferred until Sun, Oct 4, 08:00 UTC.",
     ]);
   });
 });

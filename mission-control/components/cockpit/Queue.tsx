@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { cx as cn } from "./cx";
 import type { QueueRowView, QueueViewModel } from "@/lib/cockpit/view";
+import { trapTab, useRestoreFocus } from "./focus";
 import { KeyChip, button, focusRing } from "./primitives";
 
 const ORDER_TEXT = "Q, P and AP follow their numbers, then other cards in their saved sequence. No other order is active.";
@@ -88,11 +89,13 @@ export function QueueView({ queue, backLabel, notice, onBack, onOpen }: { queue:
 
 export function QueueSheet({ queue, positionText, notice, onClose, onOpen }: { queue: QueueViewModel; positionText: string; notice: string | null; onClose: () => void; onOpen: (row: QueueRowView) => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const sheet = useRef<HTMLDivElement>(null);
+  useRestoreFocus();
   useEffect(() => closeRef.current?.focus(), []);
   return (
     <div className="fixed inset-0 z-[90]">
       <div aria-hidden="true" onClick={onClose} className="absolute inset-0 bg-[var(--mc-scrim)]" />
-      <div role="dialog" aria-modal="true" aria-label="Queue" className="absolute inset-x-0 bottom-0 flex h-[88%] flex-col overflow-hidden rounded-t-sheet border-t border-mc-line-strong bg-mc-surface">
+      <div ref={sheet} role="dialog" aria-modal="true" aria-label="Queue" onKeyDown={trapTab(sheet)} className="absolute inset-x-0 bottom-0 flex h-[88%] flex-col overflow-hidden rounded-t-sheet border-t border-mc-line-strong bg-mc-surface">
         <div className="flex flex-none items-center gap-d12 border-b border-mc-line py-d10 pl-d16 pr-d8">
           <div className="flex flex-1 flex-col">
             <span className="text-mc-18 font-bold">Queue</span>
@@ -102,7 +105,7 @@ export function QueueSheet({ queue, positionText, notice, onClose, onOpen }: { q
           <button ref={closeRef} type="button" onClick={onClose} className={`${button.secondary} min-h-[44px] min-w-[68px] rounded-card text-mc-15`}>Close</button>
         </div>
         {notice && <div role="status" aria-live="polite" className="border-b border-mc-line px-d16 py-d8 text-mc-13 font-medium">{notice}</div>}
-        <div className="min-h-0 flex-1 overflow-auto pb-[calc(12px+env(safe-area-inset-bottom))]">
+        <div className="min-h-0 flex-1 overflow-auto pb-[calc(12px*var(--mc-d,1)+env(safe-area-inset-bottom))]">
           {queue.groups.map((group) => (
             <div key={group.name} className="flex flex-col">
               <div className="px-d16 pb-d4 pt-d14 font-mc-mono text-mc-11 font-medium uppercase tracking-[.06em] text-mc-ink-muted">{groupTitle(group.name, group.rows.length)}</div>
@@ -121,7 +124,7 @@ export function QueueSheet({ queue, positionText, notice, onClose, onOpen }: { q
                       <span className="w-[18px] flex-none font-mc-mono text-mc-13 font-medium">{row.position ?? "—"}</span>
                       <span className="min-w-0 flex-1 truncate">{row.title}</span>
                     </span>
-                    <span className="truncate pl-[28px] text-mc-12 font-normal text-mc-ink-muted">
+                    <span className="truncate pl-d28 text-mc-12 font-normal text-mc-ink-muted">
                       {[row.exception?.text, row.status, `Owner: ${row.owner}`, `Age ${row.age}`, row.blocker ?? "No blocker recorded"].filter(Boolean).join(" · ")}
                     </span>
                   </button>

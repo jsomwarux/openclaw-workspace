@@ -12,6 +12,8 @@ export class ApiError extends Error {
 
 export interface CockpitApi {
   listTasks(): Promise<RawTask[]>;
+  /** Archived records, read only when a run item has left the active list (decided elsewhere). */
+  listArchived(): Promise<RawTask[]>;
   patchTask(id: string, fields: Record<string, unknown>): Promise<void>;
   appendFeedback(id: string, body: string): Promise<void>;
 }
@@ -34,14 +36,17 @@ async function send(fetchImpl: typeof fetch, url: string, init?: RequestInit): P
 
 const json = (body: unknown): RequestInit => ({ method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 
+async function readList(fetchImpl: typeof fetch, url: string): Promise<RawTask[]> {
+  const body = (await send(fetchImpl, url)) as { tasks?: RawTask[]; items?: RawTask[] } | RawTask[];
+  const tasks = Array.isArray(body) ? body : body.tasks ?? body.items;
+  if (!Array.isArray(tasks)) throw new ApiError("server");
+  return tasks;
+}
+
 export function httpApi(fetchImpl: typeof fetch = (...args) => fetch(...args)): CockpitApi {
   return {
-    async listTasks() {
-      const body = (await send(fetchImpl, "/api/tasks")) as { tasks?: RawTask[]; items?: RawTask[] } | RawTask[];
-      const tasks = Array.isArray(body) ? body : body.tasks ?? body.items;
-      if (!Array.isArray(tasks)) throw new ApiError("server");
-      return tasks;
-    },
+    listTasks: () => readList(fetchImpl, "/api/tasks"),
+    listArchived: () => readList(fetchImpl, "/api/tasks?include=archived"),
     async patchTask(id, fields) {
       await send(fetchImpl, "/api/tasks", json({ id, ...fields }));
     },

@@ -2,7 +2,8 @@
 // updatedAt and feedback are not compared: a saved answer bumps updatedAt and must never
 // flag itself (DECISIONS 11.7, GAPS 9). A fingerprint of the fields below is compared instead.
 import { isLanePacket } from "./classify";
-import { countWord, durationText } from "./format";
+import { countWord, durationText, formatShort } from "./format";
+import { approvalWord, proofWord, statusWord } from "./labels";
 import type { RawTask, RunChange, StoredRun, TrackedFields } from "./types";
 
 export const TRACKED_KEYS = [
@@ -77,7 +78,15 @@ const isClosedStatus = (status: unknown) => status === "done" || status === "arc
 export function describeChange(before: TrackedFields, task: RawTask, now: number): string {
   const after = trackedFields(task);
   if (!isClosedStatus(before.status) && isClosedStatus(after.status)) {
-    return isLanePacket(task) && after.status === "archived" ? "Closed elsewhere." : "Marked done elsewhere.";
+    if (isLanePacket(task) && after.status === "archived") {
+      const kind = (task.closureReason as { kind?: string } | undefined)?.kind;
+      return kind === "rejected" ? "Rejected elsewhere."
+        : kind === "skipped" ? "Skipped elsewhere."
+          : kind === "no-action" ? "Closed elsewhere with no action."
+            : kind === "expired" ? "Expired and closed."
+              : "Closed elsewhere.";
+    }
+    return "Marked done elsewhere.";
   }
   if (!before.outreachDecision && after.outreachDecision) return "Decided elsewhere.";
   const keys = changedKeys(before, after);
@@ -86,6 +95,58 @@ export function describeChange(before: TrackedFields, task: RawTask, now: number
     return `Edited since you left. Approval is pending for the new version.${expiry}`;
   }
   return `Edited since you left: ${changedPhrase(keys)} changed.`;
+}
+
+export interface ChangeRow { label: string; before: string; after: string; long?: boolean }
+
+const LONG_TEXT = new Set(["title", "description", "firstAction", "whyItMatters", "doneState", "pasteReadyPrompt", "pasteDestination", "exactSteps", "evidenceLinks"]);
+const ROW_LABELS: Record<string, string> = {
+  title: "Title", description: "Description", firstAction: "First action", whyItMatters: "Why it matters", doneState: "Done when",
+  exactSteps: "Exact steps", pasteReadyPrompt: "Paste-ready prompt", pasteDestination: "Where to paste", evidenceLinks: "Evidence links",
+  status: "Status", assignee: "Owner", priority: "Priority", sortOrder: "Place in the saved order", waitingOn: "Waiting on",
+  snoozedUntil: "Snoozed until", dueDate: "Deadline", dueDateSource: "Deadline type", approvalState: "Approval", expiresAt: "Expires",
+  doneEvidenceType: "Proof needed", outreachDecision: "Decision",
+};
+
+/** One field's value in plain words. Hashes and stored enum names never reach the screen. */
+function words(key: string, value: unknown, timeZone: string): string {
+  if (value === undefined || value === null || value === "") return "Missing";
+  switch (key) {
+    case "status": return statusWord(String(value));
+    case "approvalState": return approvalWord(String(value));
+    case "doneEvidenceType": return value === "none" ? "No proof needed" : proofWord(String(value)) ?? "Not recognized";
+    case "dueDateSource": return value === "external" ? "External deadline" : value === "self" ? "Self-set deadline" : "Not recognized";
+    case "snoozedUntil":
+    case "dueDate":
+    case "expiresAt": return typeof value === "number" ? formatShort(value, timeZone) : "Not recognized";
+    case "sortOrder": return `Position ${String(value)}`;
+    case "exactSteps": return Array.isArray(value) ? value.map((step, i) => `${i + 1}. ${String(step)}`).join("\n") : "Not recognized";
+    case "evidenceLinks": return Array.isArray(value) ? value.map(String).join("\n") : "Not recognized";
+    case "waitingOn": {
+      const waiting = value as { who?: string; what?: string };
+      return `Waiting on ${waiting.who ?? "Missing"}: ${waiting.what ?? "Missing"}`;
+    }
+    case "outreachDecision": {
+      const decision = (value as { decision?: string }).decision;
+      return decision === "approve" ? "Approved" : decision === "reject" ? "Rejected" : "Not recognized";
+    }
+    default: return typeof value === "string" ? value : String(value);
+  }
+}
+
+/** Previous and current values for the "Changed underneath me" panel, in plain words. */
+export function changeRows(keys: string[], before: TrackedFields, after: TrackedFields, timeZone: string): ChangeRow[] {
+  const rows: ChangeRow[] = [];
+  for (const key of keys) {
+    if (key === "payloadHash") {
+      rows.push({ label: "Content", before: "The version you saw", after: "A newer version" });
+    } else if (key === "approvedPayloadHash") {
+      continue;
+    } else if (!rows.some((row) => row.label === ROW_LABELS[key])) {
+      rows.push({ label: ROW_LABELS[key] ?? "Another field", before: words(key, before[key], timeZone), after: words(key, after[key], timeZone), ...(LONG_TEXT.has(key) ? { long: true } : {}) });
+    }
+  }
+  return rows;
 }
 
 const position = (run: StoredRun) => `${run.cursor + 1} of ${run.size}`;
@@ -102,7 +163,7 @@ export function changeHeadline(changes: RunChange[], run: StoredRun): string {
 
 /** "Order and run size are unchanged. Item 6 of 7 is unchanged since you left." */
 export function changeClosingLine(changes: RunChange[], run: StoredRun): string {
-  const reorders = changes.filter((change) => change.kind === "movedUp" || change.kind === "removedFromRun" || change.kind === "addedToRun");
+  const reorders = changes.filter((change) => ["movedUp", "displaced", "removedFromRun", "addedToRun"].includes(change.kind));
   const order = reorders.length === 0
     ? "Order and run size are unchanged."
     : "The order changes when you acknowledge: items that moved up come right after the item you are on.";

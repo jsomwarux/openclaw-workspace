@@ -24,7 +24,7 @@ function props(task: RawTask, over: Partial<ItemScreenProps> = {}): ItemScreenPr
     view, change: null, timeZone: "UTC", positionText: `${index + 1} of 7`, handledText: "0 handled",
     freshText: "Up to date · checked Oct 3, 00:00 UTC", freshShort: "Up to date", banner: null, rail: [],
     actions: { buttons, paused: null, readOnly: view.readOnly ? { text: "Read only for now.", title: view.titleText } : null, resolved: false, line: null, canUndo: false, failure: null, busy: false },
-    panel: null, answerBox: null, evidenceEmphasis: false, evidenceMessage: false, notice: null,
+    panel: null, answerBox: null, evidenceEmphasis: false, evidenceMessage: null, notice: null,
     onPause: noop, onQueue: noop, onHelp: noop, onPrevious: noop, onNext: noop, onAckChange: noop, onRecheck: noop,
     onAction: noop, onUndo: noop, onRetry: noop, onDismiss: noop, onGoTo: noop,
     ...over,

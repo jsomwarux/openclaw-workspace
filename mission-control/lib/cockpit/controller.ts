@@ -22,6 +22,8 @@ import type { ActRequest, WritePlan } from "./writes";
 import type { LeftReason, RawTask, RunChange, RunItem, StoredRun } from "./types";
 import { nudgeDueAt } from "./block";
 
+const SAVE_FAILED = "Progress could not be saved in this browser. The run works until you close this page.";
+
 export type Screen = "loading" | "runStart" | "emptyRun" | "runResume" | "item" | "runSummary" | "rolloverSummary";
 
 export interface Failure {
@@ -84,13 +86,14 @@ export class CockpitController {
     for (const listener of this.listeners) listener();
   }
 
-  private persist(run: StoredRun | null) {
-    if (run) this.deps.storage.save({ ...run, lastSeenAt: this.deps.clock() });
+  /** False when this browser refused to store the run (quota, blocked storage). */
+  private persist(run: StoredRun | null): boolean {
+    return run ? this.deps.storage.save({ ...run, lastSeenAt: this.deps.clock() }) : true;
   }
 
   private setRun(run: StoredRun | null, patch: Partial<CockpitState> = {}) {
-    this.persist(run);
-    this.set({ ...patch, run });
+    const saved = this.persist(run);
+    this.set({ ...patch, run, ...(saved ? {} : { notice: SAVE_FAILED }) });
   }
 
   private today() {
@@ -102,12 +105,30 @@ export class CockpitController {
   private async read(): Promise<boolean> {
     const startedAt = this.deps.clock();
     try {
-      const tasks = await this.deps.api.listTasks();
+      const tasks = await this.withDecidedElsewhere(await this.deps.api.listTasks());
       this.set({ tasks, health: recordRead(this.state.health, { ok: true, startedAt, finishedAt: this.deps.clock() }) });
       return true;
     } catch {
       this.set({ health: recordRead(this.state.health, { ok: false, startedAt, finishedAt: this.deps.clock() }) });
       return false;
+    }
+  }
+
+  /**
+   * GET /api/tasks leaves archived rows out, and deciding a lane packet in the Work list archives
+   * it. When an unhandled run item is missing, read the archived rows once to learn what happened
+   * instead of reporting it as gone (review finding 4).
+   */
+  private async withDecidedElsewhere(tasks: RawTask[]): Promise<RawTask[]> {
+    const run = this.state.run;
+    if (!run) return tasks;
+    const present = new Set(tasks.map((task) => task._id));
+    const missing = new Set(run.items.filter((item) => !item.outcome && !item.left && !present.has(item.id)).map((item) => item.id));
+    if (missing.size === 0) return tasks;
+    try {
+      return [...tasks, ...(await this.deps.api.listArchived()).filter((task) => missing.has(task._id))];
+    } catch {
+      return tasks;
     }
   }
 
@@ -141,6 +162,9 @@ export class CockpitController {
   }
 
   async refresh(): Promise<void> {
+    // A poll that lands during the operator's own write would see that write before it is folded
+    // into the snapshot and report it as someone else's change (review finding 7). Skip it.
+    if (this.state.busy) return;
     const ok = await this.read();
     if (!ok) return;
     const { screen, run } = this.state;
@@ -333,9 +357,24 @@ export class CockpitController {
     this.set({ failure: null });
   }
 
+  /**
+   * Undo is a write: it pauses with every other write (stale, checking, failure, mid-write) and is
+   * bound to the state the operator's own write left. Once another writer has changed the item,
+   * Undo is no longer offered, so it can never overwrite their change (review finding 2).
+   */
+  canUndo(): boolean {
+    const item = this.currentItem();
+    const task = this.currentTask();
+    const run = this.state.run;
+    if (!item?.undo || !task || !run || this.state.busy || this.state.failure) return false;
+    const connection = this.connection();
+    if (connection === "stale" || connection === "checking") return false;
+    return itemChangedKeys(run, task).length === 0;
+  }
+
   async undo(): Promise<void> {
     const item = this.currentItem();
-    if (!item?.undo || this.state.busy || this.state.failure) return;
+    if (!item?.undo || !this.canUndo()) return;
     const now = this.deps.clock();
     await this.run(undoPlan(item.id, item.undo, now), null, 0, now, false);
   }
@@ -348,6 +387,8 @@ export class CockpitController {
         busy: false,
         failure: { itemId: plan.itemId, plan, request, failedStep: result.failedStep, firstAttemptAt, phrase: failurePhrase(plan.action), kind: result.error.kind },
       });
+      // A refusal usually means the record moved on; read again now so Changed shows at once.
+      if (result.error.kind === "refused") await this.refresh();
       return;
     }
     this.applySuccess(plan, request);

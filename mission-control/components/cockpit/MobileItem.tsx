@@ -57,10 +57,10 @@ function ActionBar({ props }: { props: ItemScreenProps }) {
   }
 
   return (
-    <div className="flex flex-none flex-col gap-d8 border-t border-mc-line bg-mc-surface px-[12px] pb-[calc(10px+env(safe-area-inset-bottom))] pt-[10px]">
+    <div className="flex flex-none flex-col gap-d8 border-t border-mc-line bg-mc-surface px-d12 pb-[calc(10px*var(--mc-d,1)+env(safe-area-inset-bottom))] pt-d10">
       {props.notice && <div role="status" aria-live="polite" className="px-d4 text-mc-13 text-mc-ink-secondary">{props.notice}</div>}
       {!props.panel && <StatusLine actions={actions} onUndo={props.onUndo} mobile />}
-      {actions.readOnly && <ReadOnlyBox readOnly={actions.readOnly} />}
+      {actions.readOnly && <ReadOnlyBox readOnly={actions.readOnly} mobile />}
       {!actions.readOnly && actions.paused && <QuietBox>{actions.paused}</QuietBox>}
       {actions.failure && <FailurePanel failure={actions.failure} onRetry={props.onRetry} onDismiss={props.onDismiss} mobile />}
       {row1}
@@ -84,13 +84,13 @@ export function MobileItem(props: ItemScreenProps) {
       {props.banner && <StatusBanner banner={props.banner} mobile />}
       <div className="flex min-h-0 flex-1 flex-col gap-d16 overflow-auto px-d16 pb-d24 pt-d16">
         <StatePanels props={props} mobile />
-        <ItemHeading view={view} mobile />
+        <ItemHeading view={view} mobile changedKeys={changedKeys} />
         <SlotBlocks view={view} changedKeys={changedKeys} mobile />
         <DescriptionSection view={view} answerBox={props.answerBox} />
         <OutreachBlock view={view} />
-        <StepsSection view={view} mobile first={false} />
-        <PromptSection key={view.id} view={view} mobile />
-        <EvidenceSection view={view} emphasis={props.evidenceEmphasis} message={props.evidenceMessage} />
+        <StepsSection view={view} mobile first={false} changedKeys={changedKeys} />
+        <PromptSection key={view.id} view={view} mobile changedKeys={changedKeys} />
+        <EvidenceSection view={view} emphasis={props.evidenceEmphasis} message={props.evidenceMessage} mobile />
         <FreshnessSection view={view} mobile />
         <FeedbackSection view={view} />
       </div>

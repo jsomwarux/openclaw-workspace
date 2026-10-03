@@ -1,12 +1,60 @@
 "use client";
 // Confirm panels and the park form. Inline in the decision pane on desktop; bottom sheets on
 // mobile. The confirm button takes focus on open (KEYBOARD.md, Accessibility).
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import type { FormEvent, ReactNode } from "react";
 import { cx as cn } from "./cx";
+import { ignoreConfirmClick, ignoreConfirmKey } from "@/lib/cockpit/confirm-guard";
 import type { DeferOption, DeferOptionId } from "@/lib/cockpit/defer";
 import type { ParkErrors } from "@/lib/cockpit/block";
+import { trapTab, useRestoreFocus } from "./focus";
 import { desk, focusRing, mobile as mob } from "./primitives";
+
+/**
+ * The confirm button of every panel. It takes focus on open, so it ignores the auto-repeat of a
+ * held key and a pointer tap that lands within the arming window (review findings 1 and 3).
+ */
+function ConfirmButton({ className, onConfirm, busy, children }: { className: string; onConfirm: () => void; busy: boolean; children: ReactNode }) {
+  const openedAt = useRef<number | null>(null);
+  if (openedAt.current === null) openedAt.current = performance.now();
+  return (
+    <button
+      type="button"
+      autoFocus
+      disabled={busy}
+      onKeyDown={(event) => {
+        if (ignoreConfirmKey({ key: event.key, repeat: event.repeat })) event.preventDefault();
+      }}
+      onClick={(event) => {
+        if (ignoreConfirmClick({ detail: event.detail, openedAt: openedAt.current ?? 0, now: performance.now() })) return;
+        onConfirm();
+      }}
+      className={className}
+    >
+      {children}
+    </button>
+  );
+}
+
+function MobileSheet({ label, role, onCancel, children }: { label: string; role: "alertdialog" | "group"; onCancel: () => void; children: ReactNode }) {
+  const sheet = useRef<HTMLDivElement>(null);
+  useRestoreFocus();
+  return (
+    <div className="fixed inset-0 z-[80]">
+      <div aria-hidden="true" onClick={onCancel} className="absolute inset-0 bg-[var(--mc-scrim)]" />
+      <div
+        ref={sheet}
+        role={role}
+        aria-label={label}
+        aria-modal="true"
+        onKeyDown={trapTab(sheet)}
+        className="absolute inset-x-0 bottom-0 flex max-h-[92%] flex-col gap-d12 overflow-auto rounded-t-sheet border-t border-mc-line-strong bg-mc-surface px-d16 pb-[calc(16px*var(--mc-d,1)+env(safe-area-inset-bottom))] pt-d20"
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
 
 function Frame({ mobile, label, role = "alertdialog", onCancel, children }: { mobile: boolean; label: string; role?: "alertdialog" | "group"; onCancel: () => void; children: ReactNode }) {
   if (!mobile) {
@@ -16,19 +64,7 @@ function Frame({ mobile, label, role = "alertdialog", onCancel, children }: { mo
       </div>
     );
   }
-  return (
-    <div className="fixed inset-0 z-[80]">
-      <div aria-hidden="true" onClick={onCancel} className="absolute inset-0 bg-[var(--mc-scrim)]" />
-      <div
-        role={role}
-        aria-label={label}
-        aria-modal="true"
-        className="absolute inset-x-0 bottom-0 flex max-h-[92%] flex-col gap-d12 overflow-auto rounded-t-sheet border-t border-mc-line-strong bg-mc-surface px-d16 pb-[calc(16px+env(safe-area-inset-bottom))] pt-d20"
-      >
-        {children}
-      </div>
-    </div>
-  );
+  return <MobileSheet label={label} role={role} onCancel={onCancel}>{children}</MobileSheet>;
 }
 
 function Title({ mobile, children }: { mobile: boolean; children: ReactNode }) {
@@ -65,7 +101,7 @@ export function CompletePanel({ mobile, body, onConfirm, onCancel, busy }: { mob
       <Buttons
         mobile={mobile}
         onCancel={onCancel}
-        confirm={<button type="button" autoFocus disabled={busy} onClick={onConfirm} className={mobile ? mob.primary : desk.confirm}>Complete</button>}
+        confirm={<ConfirmButton busy={busy} onConfirm={onConfirm} className={mobile ? mob.primary : desk.confirm}>Complete</ConfirmButton>}
       />
     </Frame>
   );
@@ -101,7 +137,7 @@ export function DeferPanel({
               checked={choice === option.id}
               disabled={option.disabledReason !== null}
               onChange={() => onChoose(option.id)}
-              className={`${focusRing} mt-[3px] accent-[var(--mc-accent)]`}
+              className={`${focusRing} mt-d3 accent-[var(--mc-accent)]`}
             />
             <span className="flex flex-col">
               <span className="font-semibold">{option.label}</span>
@@ -127,7 +163,7 @@ export function DeferPanel({
       <Buttons
         mobile={mobile}
         onCancel={onCancel}
-        confirm={<button type="button" autoFocus disabled={busy} onClick={onConfirm} className={mobile ? mob.primary : desk.confirm}>Defer</button>}
+        confirm={<ConfirmButton busy={busy} onConfirm={onConfirm} className={mobile ? mob.primary : desk.confirm}>Defer</ConfirmButton>}
       />
     </Frame>
   );
@@ -145,8 +181,6 @@ export function DecisionPanel({
   onCancel: () => void;
   busy: boolean;
 }) {
-  const confirmRef = useRef<HTMLButtonElement>(null);
-  useEffect(() => confirmRef.current?.focus(), []);
   const approve = kind === "approve";
   return (
     <Frame mobile={mobile} label={approve ? "Confirm approve" : "Confirm reject"} onCancel={onCancel}>
@@ -171,9 +205,9 @@ export function DecisionPanel({
         mobile={mobile}
         onCancel={onCancel}
         confirm={
-          <button ref={confirmRef} type="button" disabled={busy} onClick={onConfirm} className={approve ? (mobile ? mob.primary : desk.confirm) : mobile ? mob.ink : desk.confirmInk}>
+          <ConfirmButton busy={busy} onConfirm={onConfirm} className={approve ? (mobile ? mob.primary : desk.confirm) : mobile ? mob.ink : desk.confirmInk}>
             {approve ? "Approve" : "Reject"}
-          </button>
+          </ConfirmButton>
         }
       />
     </Frame>

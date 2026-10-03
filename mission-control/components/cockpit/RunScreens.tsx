@@ -13,6 +13,7 @@ const KIND_WORDS: Record<RunChange["kind"], string> = {
   removedFromRun: "Removed",
   movedUp: "Moved up",
   addedToRun: "Added to today's run",
+  displaced: "Leaves today's run",
 };
 
 export function RunShell({ desktop, date, onHelp, bar, children }: { desktop: boolean; date: string; onHelp: () => void; bar: ReactNode; children: ReactNode }) {
@@ -31,7 +32,7 @@ export function RunShell({ desktop, date, onHelp, bar, children }: { desktop: bo
       <div className="min-h-0 flex-1 overflow-auto">
         <div className={cn("mx-auto flex max-w-run flex-col gap-d20", desktop ? "px-d32 pb-d56 pt-d40" : "px-d16 pb-d28 pt-d20")}>{children}</div>
       </div>
-      <div className="flex-none border-t border-mc-line bg-mc-surface px-[12px] pb-[calc(10px+env(safe-area-inset-bottom))] pt-[10px]">
+      <div className="flex-none border-t border-mc-line bg-mc-surface px-d12 pb-[calc(10px*var(--mc-d,1)+env(safe-area-inset-bottom))] pt-d10">
         <div className={cn("mx-auto flex max-w-run items-stretch gap-d8", desktop ? "flex-row-reverse" : "flex-col")}>{bar}</div>
       </div>
     </>

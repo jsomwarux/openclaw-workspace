@@ -54,7 +54,7 @@ export interface ItemScreenProps {
   panel: ReactNode;
   answerBox: ReactNode;
   evidenceEmphasis: boolean;
-  evidenceMessage: boolean;
+  evidenceMessage: string | null;
   notice: string | null;
   onPause: () => void;
   onQueue: () => void;

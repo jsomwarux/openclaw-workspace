@@ -109,7 +109,7 @@ export function DesktopItem(props: ItemScreenProps) {
           <section aria-label="Decision" className="flex w-[clamp(380px,34%,480px)] flex-none flex-col overflow-auto border-r border-mc-line bg-mc-surface">
             <div className="flex flex-1 flex-col gap-d16 px-d24 pb-d12 pt-d20">
               <StatePanels props={props} mobile={false} />
-              <ItemHeading view={view} mobile={false} />
+              <ItemHeading view={view} mobile={false} changedKeys={changedKeys} />
               <SlotBlocks view={view} changedKeys={changedKeys} mobile={false} />
               <DescriptionSection view={view} answerBox={props.answerBox} />
               <OutreachBlock view={view} />
@@ -130,8 +130,8 @@ export function DesktopItem(props: ItemScreenProps) {
             </div>
           </section>
           <section aria-label="Context" className="flex min-w-0 flex-1 flex-col gap-d24 overflow-auto px-d32 pb-d40 pt-d20">
-            <StepsSection view={view} mobile={false} first />
-            <PromptSection key={view.id} view={view} mobile={false} />
+            <StepsSection view={view} mobile={false} first changedKeys={changedKeys} />
+            <PromptSection key={view.id} view={view} mobile={false} changedKeys={changedKeys} />
             <EvidenceSection view={view} emphasis={props.evidenceEmphasis} message={props.evidenceMessage} />
             <FreshnessSection view={view} mobile={false} />
             <FeedbackSection view={view} />

@@ -132,7 +132,7 @@ export interface StoredRun {
   unfinished?: boolean;
 }
 
-export type ChangeKind = "changed" | "addedToBacklog" | "expired" | "removedFromRun" | "movedUp" | "addedToRun";
+export type ChangeKind = "changed" | "addedToBacklog" | "expired" | "removedFromRun" | "movedUp" | "addedToRun" | "displaced";
 
 export interface RunChange {
   kind: ChangeKind;

@@ -34,12 +34,12 @@ export function QuietBox({ children }: { children: React.ReactNode }) {
   return <div className="rounded-card border border-mc-line-strong bg-mc-page px-d12 py-d10 text-mc-13">{children}</div>;
 }
 
-export function ReadOnlyBox({ readOnly }: { readOnly: NonNullable<ActionModel["readOnly"]> }) {
+export function ReadOnlyBox({ readOnly, mobile = false }: { readOnly: NonNullable<ActionModel["readOnly"]>; mobile?: boolean }) {
   return (
     <QuietBox>
       <div>{readOnly.text}</div>
       <div className="mt-d6 flex flex-wrap items-baseline gap-x-d8 gap-y-d2">
-        <a href="/work" target="_blank" rel="noopener noreferrer" className={`${button.link} p-0`}>Open the Work list</a>
+        <a href="/work" target="_blank" rel="noopener noreferrer" className={cn(button.link, "p-0", mobile && "inline-flex min-h-[44px] items-center")}>Open the Work list</a>
         <span className="text-mc-ink-muted">and open this title there:</span>
       </div>
       <div className="mt-d2 font-semibold [overflow-wrap:anywhere]">{readOnly.title}</div>

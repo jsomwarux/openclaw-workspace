@@ -41,6 +41,12 @@ export function resolveKey(input: KeyInput, ctx: KeyContext): KeyCommand | null 
   const onButton = input.targetTag === "BUTTON" || input.targetTag === "A";
   const plainEnter = input.key === "Enter" && !input.shiftKey && !onButton;
 
+  // With the queue view open, only Q, ? and Esc act, on every screen (review finding 8).
+  if (ctx.queueOpen) {
+    if (input.key === "?") return "openHelp";
+    return input.key.length === 1 && input.key.toLowerCase() === "q" ? "toggleQueue" : null;
+  }
+
   if (ctx.screen !== "item") {
     if (input.key === "?") return "openHelp";
     if (plainEnter && ctx.screen === "runStart") return "startRun";
@@ -50,7 +56,6 @@ export function resolveKey(input: KeyInput, ctx: KeyContext): KeyCommand | null 
 
   if (input.key === "?") return "openHelp";
   const k = input.key.toLowerCase();
-  if (ctx.queueOpen) return k === "q" && input.key.length === 1 ? "toggleQueue" : null;
   if (input.key === "Enter") return plainEnter && CONFIRMABLE.has(ctx.panel) ? "confirmPanel" : null;
   if (input.key.length !== 1) return null;
   switch (k) {

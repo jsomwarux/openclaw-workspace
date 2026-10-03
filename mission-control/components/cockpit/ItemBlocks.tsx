@@ -3,11 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode, RefObject } from "react";
 import { cx as cn } from "./cx";
-import { changedPhrase } from "@/lib/cockpit/changes";
+import { changedPhrase, changeRows, trackedFields } from "@/lib/cockpit/changes";
 import { inlineSegments } from "@/lib/cockpit/description";
 import type { DescriptionBlock } from "@/lib/cockpit/description";
 import { formatShort } from "@/lib/cockpit/format";
-import { statusWord } from "@/lib/cockpit/labels";
 import type { OpenItemChange } from "@/lib/cockpit/controller";
 import type { ItemViewModel } from "@/lib/cockpit/view";
 import type { FeedbackEntry, Verbatim } from "@/lib/cockpit/types";
@@ -25,37 +24,22 @@ function Inline({ text }: { text: string }) {
 
 // ---- state panels -----------------------------------------------------------------------
 
-const TEXT_KEYS = new Set(["title", "description", "firstAction", "whyItMatters", "doneState", "pasteReadyPrompt", "pasteDestination"]);
-
-function valueWords(key: string, value: unknown, timeZone: string): string {
-  if (value === undefined || value === null || value === "") return "Missing";
-  if (key === "status") return statusWord(String(value));
-  if (typeof value === "string") return value;
-  if (typeof value === "number" && ["snoozedUntil", "dueDate", "expiresAt"].includes(key)) return formatShort(value, timeZone);
-  if (Array.isArray(value)) return value.map(String).join("\n");
-  if (key === "waitingOn" && typeof value === "object") {
-    const waiting = value as { who?: string; what?: string };
-    return `Waiting on ${waiting.who ?? "Missing"}: ${waiting.what ?? "Missing"}`;
-  }
-  return typeof value === "object" ? "Recorded" : String(value);
-}
-
 export function ChangedPanel({ change, timeZone, onAck, mobile }: { change: OpenItemChange; timeZone: string; onAck: () => void; mobile: boolean }) {
   const phrase = changedPhrase(change.keys);
   const when = typeof change.task.updatedAt === "number" ? ` at ${formatShort(change.task.updatedAt, timeZone)}` : "";
-  const shown = change.keys.filter((key, i, all) => all.indexOf(key) === i);
+  const rows = changeRows(change.keys, change.before, trackedFields(change.task), timeZone);
   return (
     <NoticePanel tag="Changed while you were looking">
       <div className="text-mc-16 font-semibold">{`Another writer edited this item${when}. ${phrase.charAt(0).toUpperCase()}${phrase.slice(1)} changed.`}</div>
-      {shown.map((key) => (
-        <div key={key} className="flex flex-col gap-d6">
+      {rows.map((row) => (
+        <div key={row.label} className="flex flex-col gap-d6">
           <div className="flex flex-col gap-d2">
-            <MonoLabel>{`Previous version${shown.length > 1 ? ` · ${changedPhrase([key])}` : ""}`}</MonoLabel>
-            <div className={cn("whitespace-pre-wrap text-mc-ink-muted [overflow-wrap:anywhere]", TEXT_KEYS.has(key) && "max-h-40 overflow-auto")}>{valueWords(key, change.before[key], timeZone)}</div>
+            <MonoLabel>{rows.length > 1 ? `Previous version · ${row.label}` : "Previous version"}</MonoLabel>
+            <div className={cn("whitespace-pre-wrap text-mc-ink-muted [overflow-wrap:anywhere]", row.long && "max-h-40 overflow-auto")}>{row.before}</div>
           </div>
           <div className="flex flex-col gap-d2">
             <MonoLabel>Now</MonoLabel>
-            <div className={cn("whitespace-pre-wrap [overflow-wrap:anywhere]", TEXT_KEYS.has(key) && "max-h-40 overflow-auto")}>{valueWords(key, (change.task as Record<string, unknown>)[key], timeZone)}</div>
+            <div className={cn("whitespace-pre-wrap [overflow-wrap:anywhere]", row.long && "max-h-40 overflow-auto")}>{row.after}</div>
           </div>
         </div>
       ))}
@@ -95,12 +79,13 @@ export function InvalidPanel({ reasons, source, onRecheck, mobile }: { reasons: 
 
 // ---- heading and slots ------------------------------------------------------------------
 
-export function ItemHeading({ view, mobile }: { view: ItemViewModel; mobile: boolean }) {
+export function ItemHeading({ view, mobile, changedKeys = [] }: { view: ItemViewModel; mobile: boolean; changedKeys?: string[] }) {
   return (
     <>
       <div className="flex flex-col gap-d2">
         <div className="font-mc-mono text-mc-12 font-medium text-mc-ink-muted">{mobile ? view.mobileEyebrow : view.eyebrow}</div>
         {view.exception && <div className="font-mc-mono text-mc-12 font-semibold text-mc-ink">{view.exception.text}</div>}
+        {changedKeys.includes("title") && <MonoLabel className="text-mc-ink">Title · Changed</MonoLabel>}
       </div>
       <h1 className={cn("m-0 font-bold tracking-[-.015em] [overflow-wrap:anywhere] [text-wrap:balance]", mobile ? "text-mc-22 leading-[1.22]" : "text-mc-24 leading-[1.2]")}>
         {view.titleText}
@@ -284,12 +269,13 @@ export function OutreachBlock({ view }: { view: ItemViewModel }) {
 
 const sectionRule = "flex flex-col border-t border-mc-line pt-d16";
 
-export function StepsSection({ view, mobile, first }: { view: ItemViewModel; mobile: boolean; first: boolean }) {
+export function StepsSection({ view, mobile, first, changedKeys = [] }: { view: ItemViewModel; mobile: boolean; first: boolean; changedKeys?: string[] }) {
   const steps = view.steps;
+  const changed = changedKeys.includes("exactSteps") ? " · Changed" : "";
   return (
     <div className={cn("flex flex-col gap-d8", !first && sectionRule)}>
       <div className="flex items-center gap-d8">
-        <MonoLabel>{steps.kind === "value" ? `Exact steps · ${steps.value.length}` : "Exact steps"}</MonoLabel>
+        <MonoLabel>{steps.kind === "value" ? `Exact steps · ${steps.value.length}${changed}` : `Exact steps${changed}`}</MonoLabel>
         {steps.kind === "missing" && <MissingChip />}
       </div>
       {steps.kind === "missing" ? (
@@ -332,7 +318,8 @@ async function copyText(text: string): Promise<boolean> {
   }
 }
 
-export function PromptSection({ view, mobile }: { view: ItemViewModel; mobile: boolean }) {
+export function PromptSection({ view, mobile, changedKeys = [] }: { view: ItemViewModel; mobile: boolean; changedKeys?: string[] }) {
+  const promptLabel = changedKeys.includes("pasteReadyPrompt") || changedKeys.includes("pasteDestination") ? "Paste-ready prompt · Changed" : "Paste-ready prompt";
   const [expanded, setExpanded] = useState(false);
   const [copy, setCopy] = useState<"idle" | "copied" | "failed">("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -377,7 +364,7 @@ export function PromptSection({ view, mobile }: { view: ItemViewModel; mobile: b
     return (
       <div className={cn("gap-d8", sectionRule)}>
         <div className="flex items-baseline gap-d8">
-          <MonoLabel>Paste-ready prompt</MonoLabel>
+          <MonoLabel>{promptLabel}</MonoLabel>
           <span className="flex-1 text-right font-mc-mono text-mc-11 text-mc-ink-muted">{view.promptMeta}</span>
         </div>
         {destination}
@@ -399,7 +386,7 @@ export function PromptSection({ view, mobile }: { view: ItemViewModel; mobile: b
   return (
     <div className={cn("gap-d8", sectionRule)}>
       <div className="flex items-center gap-d12">
-        <MonoLabel>Paste-ready prompt</MonoLabel>
+        <MonoLabel>{promptLabel}</MonoLabel>
         <span className="flex-1 font-mc-mono text-mc-12 text-mc-ink-muted">{view.promptMeta}</span>
         {usable && (
           <>
@@ -419,7 +406,7 @@ export function PromptSection({ view, mobile }: { view: ItemViewModel; mobile: b
   );
 }
 
-export function EvidenceSection({ view, emphasis, message }: { view: ItemViewModel; emphasis: boolean; message: boolean }) {
+export function EvidenceSection({ view, emphasis, message, mobile = false }: { view: ItemViewModel; emphasis: boolean; message: string | null; mobile?: boolean }) {
   const [copied, setCopied] = useState<string | null>(null);
   const count = view.evidence.length;
   return (
@@ -435,7 +422,7 @@ export function EvidenceSection({ view, emphasis, message }: { view: ItemViewMod
           {view.evidence.map((entry, i) => (
             <li key={`${entry.text}-${i}`} className="font-mc-mono text-mc-12">
               {entry.kind === "web" ? (
-                <a href={entry.text} target="_blank" rel="noopener noreferrer" className={`${focusRing} text-mc-accent-deep [overflow-wrap:anywhere] hover:text-mc-ink`}>
+                <a href={entry.text} target="_blank" rel="noopener noreferrer" className={cn(focusRing, "text-mc-accent-deep [overflow-wrap:anywhere] hover:text-mc-ink", mobile && "inline-flex min-h-[44px] items-center")}>
                   {entry.text}
                 </a>
               ) : (
@@ -444,7 +431,7 @@ export function EvidenceSection({ view, emphasis, message }: { view: ItemViewMod
                   <button
                     type="button"
                     onClick={async () => setCopied((await copyText(entry.text)) ? entry.text : null)}
-                    className={`${button.link} p-0 font-mc-sans text-mc-12`}
+                    className={cn(button.link, "p-0 font-mc-sans text-mc-12", mobile && "min-h-[44px] min-w-[44px] px-d8")}
                   >
                     {copied === entry.text ? "Path copied" : "Copy path"}
                   </button>
@@ -454,7 +441,7 @@ export function EvidenceSection({ view, emphasis, message }: { view: ItemViewMod
           ))}
         </ul>
       )}
-      {message && <div role="status" className="text-mc-13 font-medium">Nothing to open: this item has no evidence links.</div>}
+      {message && <div role="status" className="text-mc-13 font-medium">{message}</div>}
     </div>
   );
 }

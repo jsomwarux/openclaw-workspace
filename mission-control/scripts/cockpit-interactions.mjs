@@ -120,6 +120,32 @@ await check("Approve by Tab and Enter, then Enter confirms; no Undo afterwards",
   await page.close();
 });
 
+await check("Review 1: one held Enter opens Approve but never confirms it; a separate press does", async () => {
+  const page = await open("p-card");
+  await page.getByRole("button", { name: "Approve", exact: true }).focus();
+  for (let i = 0; i < 4; i += 1) await page.keyboard.down("Enter");
+  await page.keyboard.up("Enter");
+  await expectText(page, "Approve this item?");
+  await expectNoText(page, "Approved. Press J");
+  await page.keyboard.press("Enter");
+  await expectText(page, "Approved. Press J for the next item.");
+  await page.close();
+});
+
+await check("Review 8: on run start with the queue open, Q closes it and Enter does nothing", async () => {
+  const page = await open("first-load");
+  await page.getByRole("button", { name: "See the queue", exact: true }).click();
+  // Move focus off the queue's Back button so Enter reaches the global handler, not a button.
+  await page.locator("h1").click();
+  await page.keyboard.press("Enter");
+  await page.keyboard.press("j");
+  await expectText(page, "No other order is active.");
+  await page.keyboard.press("q");
+  await expectNoText(page, "No other order is active.");
+  await expectText(page, "7 items, ready to start");
+  await page.close();
+});
+
 await check("Q card: Save answer validates, saves, then Complete appears", async () => {
   const page = await open("q-card");
   await page.getByRole("button", { name: "Save answer", exact: true }).click();
@@ -230,6 +256,8 @@ await check("Phone: the queue opens as a bottom sheet and closes", async () => {
 await check("Phone: Complete confirms in a sheet; the bar then offers Next item", async () => {
   const page = await openPhone("active");
   await page.getByRole("button", { name: "Complete", exact: true }).tap();
+  // Confirm buttons ignore taps in the first 400 ms after a sheet opens (review finding 3).
+  await page.waitForTimeout(450);
   const sheet = page.getByRole("alertdialog", { name: "Confirm complete" });
   await sheet.getByRole("button", { name: "Complete", exact: true }).tap();
   await expectText(page, "Marked done. Press J for the next item.");
@@ -241,9 +269,38 @@ await check("Phone: Complete confirms in a sheet; the bar then offers Next item"
 await check("Phone: Defer in a sheet with tomorrow pre-selected", async () => {
   const page = await openPhone("active");
   await page.getByRole("button", { name: "Defer", exact: true }).tap();
+  await page.waitForTimeout(450);
   const sheet = page.getByRole("alertdialog", { name: "Confirm defer" });
   await sheet.getByRole("button", { name: "Defer", exact: true }).tap();
   await expectText(page, "Deferred until Sun, Oct 4, 08:00 UTC.");
+  await page.close();
+});
+
+await check("Review 3: Phone: a double tap on Approve opens the sheet but does not confirm", async () => {
+  const page = await openPhone("p-card");
+  const box = await page.getByRole("button", { name: "Approve", exact: true }).boundingBox();
+  const x = box.x + box.width / 2;
+  const y = box.y + box.height / 2;
+  await page.touchscreen.tap(x, y);
+  await page.waitForTimeout(80);
+  await page.touchscreen.tap(x, y);
+  await expectText(page, "Approve this item?");
+  await expectNoText(page, "Approved. Press J");
+  await page.waitForTimeout(450);
+  await page.getByRole("alertdialog", { name: "Confirm approve" }).getByRole("button", { name: "Approve", exact: true }).tap();
+  await expectText(page, "Approved.");
+  await page.close();
+});
+
+await check("Review 9: Phone: evidence links and the Work list link are at least 44 px tall", async () => {
+  const page = await openPhone("active");
+  await page.getByRole("button", { name: "Next →", exact: true }).tap();
+  await expectText(page, "7 of 7");
+  const heights = [];
+  for (const link of await page.locator('a[href^="https://example.com"]').all()) heights.push((await link.boundingBox()).height);
+  heights.push((await page.getByRole("link", { name: "Open the Work list" }).boundingBox()).height);
+  heights.push((await page.getByRole("button", { name: "Copy path" }).first().boundingBox()).height);
+  if (heights.length < 5 || heights.some((height) => height < 44)) throw new Error(`heights ${heights.join(", ")}`);
   await page.close();
 });
 

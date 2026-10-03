@@ -55,6 +55,13 @@ function text(value: unknown): Verbatim<string> {
   return typeof value === "string" && value.length > 0 ? { kind: "value", value, source: "field" } : MISSING;
 }
 
+/** What E says when there is no web link to open (KEYBOARD.md). */
+export function nothingToOpen(evidence: EvidenceEntry[]): string {
+  return evidence.some((entry) => entry.kind === "file")
+    ? "Nothing to open in the browser: this item's evidence is file paths. Use Copy path."
+    : "Nothing to open: this item has no evidence links.";
+}
+
 export function evidenceOf(task: RawTask): EvidenceEntry[] {
   const fromDescription = typeof task.description === "string" ? task.description.match(URL_PATTERN) ?? [] : [];
   const stored = Array.isArray(task.evidenceLinks) ? task.evidenceLinks.filter((entry) => typeof entry === "string") : [];
@@ -338,11 +345,7 @@ export function summaryView(run: StoredRun, tasks: RawTask[], now: number, timeZ
     meta: `${formatLongDay(run.startedAt, timeZone)} · Curated order · ${counts}`,
     counts,
     stillNeedsYou,
-    handled: run.items.map((item, i) => ({
-      position: i + 1,
-      title: titleOf(item.id),
-      did: item.did ?? (item.outcome ? "Handled." : item.left ? "Left unhandled." : "Not handled."),
-    })),
+    handled: run.items.flatMap((item, i) => (item.outcome ? [{ position: i + 1, title: titleOf(item.id), did: item.did ?? "Handled." }] : [])),
     addedSinceStart: added === 0
       ? null
       : `Added to the backlog since the run started: ${added} ${added === 1 ? "item. It is" : "items. They are"} not part of today's run.`,
