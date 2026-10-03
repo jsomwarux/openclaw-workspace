@@ -126,14 +126,28 @@ Every step below starts with a failing test, then the minimum code to pass it.
 
 **Added after the fresh-context review (section 9)**
 - D42. The confirm buttons for Approve, Reject, Complete and Defer ignore auto-repeated Enter or Space keydowns, and ignore pointer clicks in the first 400 ms after their panel opens (`lib/cockpit/confirm-guard.ts`, `CONFIRM_ARM_MS`). A fresh Enter press still confirms at once, and so does a tap after 400 ms. This closes the held-Enter path (review 1) and the double tap on the mobile sheet, whose confirm button opens under the finger (review 3). The sheet layout itself is unchanged, as designed. Block's panel opens with focus in its empty "Who" field, so a held Enter only shows the required-field errors and cannot park the item.
-- D43. Undo is offered and allowed only while writes are: nothing in flight, no failure panel, the data is not stale or still checking, and the item's tracked fields still match the snapshot taken after the operator's own write. If another writer changed the item, the status line stays but Undo is gone (review 2).
+- D43. Undo is offered and allowed only while writes are: nothing in flight, no failure panel, the data is not stale or still checking, and the item's tracked fields still match the snapshot taken after the operator's own write. If another writer changed the item, the status line stays but Undo is gone (review 2). The comparison with the snapshot was replaced by D51 after the second review.
 - D44. Deciding a lane packet in the Work list archives it, and `GET /api/tasks` leaves archived rows out. When an unhandled run item is missing from a read, the cockpit reads `GET /api/tasks?include=archived` once and uses the archived row to say what happened ("Rejected elsewhere.", "Closed elsewhere."). If that read fails, the item is reported as removed, as before (review 4).
 - D45. Whether a finished run can reopen (transition 9) is derived from the items (every item resolved, run not closed), not from the stored phase, so the change text is the same on every poll and after a reload (review 5).
 - D46. A background read interrupts the run only when something in the run changed: a run item, an exception joining, or an item displaced. Changes to backlog cards only (a new card that cannot join, a backlog packet expiring) do not stop the next J; they show on the next Resume screen and in the queue (review 6). A read is skipped while the operator's own write is in flight, so that write cannot show as a change (review 7).
 - D47. When a joining exception displaces an item, the change summary names it: "Leaves today's run" (change kind `displaced`, review 10).
 - D48. The Changed panel shows rows of plain words (`changeRows`): a content hash reads "The version you saw" / "A newer version", and approval, proof type and deadline source use the same words as the rest of the screen. No hash or stored enum name is shown (review 11).
 - D49. If the browser refuses to store run progress, the screen says "Progress could not be saved in this browser. The run works until you close this page." Nothing is pruned (review 13; retention is open question Q8).
-- D50. A refused write (4xx) re-reads at once, so Changed shows without waiting for the next poll (review 16). E with only file-path evidence says to use Copy path (review 17). "· Changed" also marks Title, Exact steps and the Prompt (review 18). Mobile sheets trap Tab and return focus to the opener (review 19). The summary's Handled list holds handled items only; items passed without handling sit under "Still needs you" (review 20).
+- D50. A refused write (4xx) re-reads at once, so Changed shows without waiting for the next poll (review 16). E with only file-path evidence says to use Copy path (review 17). "· Changed" also marks Title, Exact steps and the Prompt (review 18). Mobile sheets trap Tab and return focus to the opener (review 19). The summary's Handled list no longer includes items passed without handling; they sit under "Still needs you" (review 20). Items closed elsewhere are covered by D53.
+
+**Added after the second fresh-context review (section 9)**
+- D51. Undo binds to a fingerprint of the tracked fields taken right after the operator's write and stored with the Undo record (`UndoRecord.expect`). It does not bind to the snapshot, which any acknowledge re-bases. The fingerprint is kept in browser storage, so the binding survives a reload. A stored Undo record without one never offers Undo (review 2, finding 1).
+- D52. Reads and writes:
+  - A read that overlaps the operator's own write is dropped, whether it started during the write or was answered after the write began. The next poll reads again (review 2, finding 3).
+  - A read is not even sent while a write is in flight.
+  - Returning to the page during a write waits for the write to settle, then compares.
+  - The archived lookup uses the stored run before the first read sets it, so a reload sees decided packets too (review 2, finding 2).
+  - Each missing item is looked up once per page session; a failed lookup is retried on the next read (review 2, finding 5).
+- D53. A record closed by someone else gets one sentence, shared by the Resume screen and the summary: done reads "Marked done elsewhere.", an archived generic card "Archived elsewhere.", and a lane packet the sentence for its closure reason (review 2, finding 4). Such an item is listed under Handled with that sentence, not under "Still needs you", because DECISIONS 15 ("Summary outcomes") says what belongs there and a closed item no longer needs the operator. The headline ("N of 7 handled") still counts outcomes only, so the Handled list can be one row longer than the count (open question Q10).
+- D54. Smaller fixes:
+  - Acknowledging the open item's change returns the run to in progress unless a run change remains (review 2, finding 6).
+  - The save warning shows once per streak of failed saves and is added to any notice in the same update, never replacing it (review 2, finding 7).
+  - The focus helper records the opener during the first render, before `autoFocus` moves focus (review 2, finding 8).
 
 ## 3a. How the test-first rule was kept, and where it slipped
 
@@ -145,6 +159,12 @@ Every step below starts with a failing test, then the minimum code to pass it.
   - `lib/cockpit/view.test.ts`: the summary test asserted the old Handled list, which included items left unhandled. That was the bug in review 20. The assertion now expects handled items only, and a comment in the test says so.
   - `scripts/cockpit-interactions.mjs`: the phone sheet flows now wait 450 ms before tapping a confirm button, because taps in the first 400 ms are ignored by design (D42). The Review 8 check moves focus off the Back button before pressing Enter, so it tests the key map rather than a native button press.
   - `lib/cockpit/fixtures/fixture-api.ts`: the optional write delay (`writeDelayMs`, used only by the review-7 race test) applies after the write lands, so a poll in the gap sees the new value as a real backend would.
+- Second-review fixes were also test-first. Eleven new tests in `review-fixes.test.ts` (block "review 2") were run and all failed for the reason the reviewer gave before any fix. One control test, that Undo survives Pause, Acknowledge and a reload when nothing changed, passed both before and after.
+  - The fixture backend gained two test-only hooks: `readSnapshotFirst`, a delayed read that returns the records as they were when it was sent, and an `archivedReads` counter.
+  - The mutation run then found that the early "skip reads during a write" return no longer had a witness, because the new post-read check covers the same race. It still saves a request, so a test now pins that no read is sent during a write.
+  - Two mutation patterns pointed at code this round rewrote, and were repointed at the new lines.
+  - No existing test was changed in this round.
+- The focus fix (D54) has no automated test. The repository has no DOM test environment, and the browser check for focus return passes either way, because the older D36 restore path also returns focus. It was checked by reading.
 
 ## 4. Deviations
 
@@ -176,11 +196,13 @@ Every step below starts with a failing test, then the minimum code to pass it.
 - Q7. Where `/cockpit` should eventually live (replace `/`, or be added to the nav) is not decided here; it is reachable only by URL.
 - Q8. Browser storage retention (review 13). DECISIONS 8 asks to keep the previous day and never clear other keys; it does not say when to prune. One run record is about 47 KB with fixture data, and up to about 220 KB on a heavy day, so years of daily runs would be needed to approach the browser's limit of about 5 MB per site, which the current interface shares. Slice one prunes nothing and reports a failed save (D49). Proposal for slice two: keep the last 14 days of `mission-control:cockpit-run:*` keys and delete older ones on load.
 - Q9. P-card Approve confirm copy (X4, review 12) needs JT's sign-off: keep "Approve this item?" with the generic-card body, or use DECISIONS 5.6's "Approve this version?" copy, which describes hash-bound approval that generic cards do not have.
+- Q10. Items closed elsewhere are listed under Handled but not counted in "N of 7 handled" (D53). Count them, or keep the headline to outcomes only?
+- Q11. A write that never answers keeps the cockpit busy: reads are skipped and the data drifts to stale until a reload (review 2, finding 9). The HTTP client has no timeout, and that predates this branch. A timeout on writes is safe with the retry dedup in D24, but it changes failure behavior, so it is left for JT to decide rather than added late.
 
 ## 7. Running log
 
 - 2026-10-03: baseline in the worktree before any change: `bun test` 461 pass, 0 fail, 59 files; `tsc --noEmit --incremental false` exit 0; `NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:9 npm run build` exit 0.
-- Commits: `a86d2b7` bundle (unchanged), `ea1e8e3` overrides, `b3e6105` logic, `2641530` route and UI, `fbedcee` notes, screenshots and GAPS addendum, `27b3959` review fixes, then this file and the regenerated screenshots.
+- Commits: `a86d2b7` bundle (unchanged), `ea1e8e3` overrides, `b3e6105` logic, `2641530` route and UI, `fbedcee` notes, screenshots and GAPS addendum, `27b3959` first review's fixes, `22713c6` its record, then the second review's fixes and this file.
 
 ## 8. Verification (exact commands and results)
 
@@ -188,15 +210,15 @@ All commands ran in `mission-control/` of the worktree, with `node_modules` syml
 
 | Check | Command | Result |
 |---|---|---|
-| Full test suite | `bun test` | **647 pass, 0 fail**, 9,376 expect() calls, 75 files (baseline 461 / 59; 627 / 73 before the review fixes) |
+| Full test suite | `bun test` | **660 pass, 0 fail**, 9,403 expect() calls, 75 files (baseline 461 / 59; 627 / 73 before the first review's fixes, 647 before the second's) |
 | Type check | `npx tsc --noEmit --incremental false` | **exit 0** (includes the bundle's `.ts` files) |
 | Lint | `next lint` | **Not configured**: no ESLint config file exists, and `next lint` would start an interactive setup. Not run. |
-| Production build | `NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:9 npm run build` (writes `.next-build`) | **exit 0**; `/cockpit` 33.7 kB, first load 146 kB |
-| No fixture code shipped | `grep -rl -e cockpit-fixture-run -e fx-invalid-card -e 'Sample DC Q1' -e fixtureSession -e FixtureApi .next-build/static \| wc -l` | **0** |
+| Production build | `NEXT_PUBLIC_CONVEX_URL=http://127.0.0.1:9 npm run build` (writes `.next-build`) | **exit 0**; `/cockpit` 34.1 kB, first load 146 kB |
+| No fixture code shipped | `grep -rl -e cockpit-fixture-run -e fx-invalid-card -e 'Sample DC Q1' -e fixtureSession -e FixtureApi -e readSnapshotFirst .next-build/static \| wc -l` | **0** |
 | Whitespace | `git diff --check e5b9943` (whole branch, working tree) | **clean** (exit 0). Commit `2641530` alone had one trailing blank line in `RunScreens.tsx`, fixed in the next commit. |
 | Browser interactions | `PLAYWRIGHT_MODULE=… node scripts/cockpit-interactions.mjs` against `NEXT_PUBLIC_COCKPIT_FIXTURES=1 next dev -p 3100` | **25 of 25 pass**: J/K, C+Enter+Undo, D with tomorrow pre-selected, Esc returns focus, Q/Esc/?, E with no evidence, letters and Enter never open Approve, Tab+Enter+Enter approves with no Undo, answer validation and save, Copy prompt copies all 10,533 characters, failure + Retry, changed-underneath pause and acknowledge, stale pause, Enter starts the run, resume, pause, close the run, zero `/api/` requests in fixture mode, three phone sheet flows; added after the review: one held Enter opens Approve but never confirms it (review 1), queue keys on run start (review 8), a phone double tap opens Approve but does not confirm (review 3), 44 px phone targets (review 9) |
 | Screenshots | `PLAYWRIGHT_MODULE=… node scripts/cockpit-screenshots.mjs docs/design/mission-control-redesign-slice-1/screenshots` | **39 files**: 20 states desktop, 19 mobile. Compared with the prototype in `docs/design/mission-control-redesign-slice-1/README.md` |
-| Mutation checks | a script breaks one guard, runs the tests that should notice, restores the file | **35 of 35 caught**: nudge `>`→`>=`, no displacement, self-set deadline urgent, Complete before an answer, lane packets writable, Defer on outreach, snooze past expiry, a letter confirms Approve, Shift+Enter confirms, lifted slot trimmed, Guard lifted on Q, tie-break without createdAt, codes compared as strings, own writes not folded, updatedAt compared, new cards join a run, retry appends twice, stale not pausing, changed item not pausing, Sidebar guard removed, answer over the cap, Block offering Undo; after the review: held-key repeat not ignored, pointer tap not armed, Undo ignoring another writer, Undo while stale, no archived lookup, reopen keyed on phase, backlog changes interrupting, poll during a write, queue keys after the screen check, displaced item not reported, hash in the Changed panel, silent save failure, no read after a refusal |
+| Mutation checks | a script breaks one guard, runs the tests that should notice, restores the file | **46 of 46 caught**: nudge `>`→`>=`, no displacement, self-set deadline urgent, Complete before an answer, lane packets writable, Defer on outreach, snooze past expiry, a letter confirms Approve, Shift+Enter confirms, lifted slot trimmed, Guard lifted on Q, tie-break without createdAt, codes compared as strings, own writes not folded, updatedAt compared, new cards join a run, retry appends twice, stale not pausing, changed item not pausing, Sidebar guard removed, answer over the cap, Block offering Undo; after the review: held-key repeat not ignored, pointer tap not armed, Undo ignoring another writer, Undo while stale, no archived lookup, reopen keyed on phase, backlog changes interrupting, poll during a write, queue keys after the screen check, displaced item not reported, hash in the Changed panel, silent save failure, no read after a refusal; after the second review: Undo bound to the re-basable snapshot, Undo record not bound, no archived lookup on load, an overlapping read applied, overlap checked by busy only, a return to the page not deferred, an archived card read as done, closed-elsewhere items left out of Handled, an archived lookup on every poll, a backlog change blocking after acknowledge, the save warning on every update |
 
 The requested tests, by file:
 
@@ -245,6 +267,31 @@ Not changed:
 - The spec ambiguities the reviewer listed were already recorded: `both` owner (D4, Q5), the Guard line on Q cards (D8), the title regex used verbatim (DECISIONS 1.4), and transition 9 growing the run (D21, Q2).
 
 What the reviewer could not verify, from its report: physical key repeat in Safari and Firefox, screen readers, a pixel comparison of all 39 screenshots, and real network timing for finding 7. None of these was run after the fixes either. The browser checks use Chrome and Playwright's synthetic key repeat.
+
+### Second fresh-context review (of the fix commit `27b3959`)
+
+A second fresh agent, under the same rules, reviewed `27b3959` alone against review 1, the notes and the bundle. Its report is committed unchanged at `docs/design/mission-control-redesign-slice-1/review-2.md` and pasted verbatim in the pull request.
+
+Its verdict: **PASS WITH FINDINGS**.
+- Of review 1's findings: 13 fixed, 4 partly fixed (2, 4, 7, 13), 2 left as documented (12, 15), and 1 fixed with a leftover (6).
+- It raised 9 new findings: 1 major, 3 minor and 5 nits. The safety invariants hold.
+
+Fixed in the commit after `22713c6`, each with a test seen failing first (section 3a) and a mutation (section 8):
+
+| # | Severity | Finding | What changed |
+|---|---|---|---|
+| 1 | Major | Undo returned after any acknowledge re-based the snapshot, and could overwrite another writer | Undo bound to the post-write fingerprint (D51) |
+| 2 | Minor | The archived lookup skipped the first read after a reload | Stored run used before the first read (D52) |
+| 3 | Minor | A read already in flight, or a return to the page during a write, still reported the write as a change | Overlapping reads dropped; the return waits for the write (D52) |
+| 4 | Minor | An archived generic card read as "Marked done elsewhere."; Resume and summary disagreed | One shared sentence; such items listed under Handled (D53) |
+| 5 | Nit | Archived rows re-read on every poll | Each missing item looked up once (D52) |
+| 6 | Nit | After the open item's change was acknowledged, a backlog-only change still stopped J | Only run changes keep the run interrupted (D54) |
+| 7 | Nit | The save warning replaced navigation notices on every update | Shown once per failure streak, added to other notices (D54) |
+| 8 | Nit | The focus helper recorded the confirm button, not the opener | Opener recorded during the first render (D54; no automated test, section 3a) |
+
+Not changed:
+- **9** (a hung write blocks reads). This is open question Q11. The missing fetch timeout predates this branch.
+- The reviewer's caveat that the confirm-guard wiring in `Panels.tsx` is covered only by the browser checks ("Review 1" and "Review 3"), not by `bun test`, still stands. The repository has no DOM test environment.
 
 ## 10. Rollback
 
