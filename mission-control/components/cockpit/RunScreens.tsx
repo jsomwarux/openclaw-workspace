@@ -226,4 +226,3 @@ export function SummaryContent({ view, label, reopen }: { view: SummaryViewModel
     </>
   );
 }
-

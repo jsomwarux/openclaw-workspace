@@ -234,3 +234,17 @@ Summary
 ## 24. Deadline data quality
 
 **Required:** all 14 current `dueDate` values are past due and only 1 has `dueDateSource: "external"`. The overdue-deadline exception will fire for at most that card until the agent labels deadlines correctly (the writer policy in section 6.8 is documented but not enforced).
+
+---
+
+## Addendum (2026-10-03, found while building slice one)
+
+## 25. Removing an optional field
+
+**Design needs:** Undo after Block clears `waitingOn` (DECISIONS 6.7); Undo after Defer restores the previous `snoozedUntil`, which for most cards means no snooze at all (override 1).
+
+**Contract says:** nothing about removal. In practice `PATCH /api/tasks` and `PATCH /api/tasks/[id]` call `tasks.update`, which declares `waitingOn` and `snoozedUntil` as `v.optional(...)`: `null` is refused by the validator and JSON cannot carry `undefined`. No route or mutation removes either field.
+
+**Slice one (JT, 2026-10-03, no backend change):** Block offers no Undo. Defer Undo writes back the previous `snoozedUntil` when there was one; otherwise it writes the moment of Undo, which is already past, so eligibility is identical but the record keeps a past timestamp.
+
+**Required for exact Undo:** a narrow unset option on `tasks.update` (for example `unset: ["waitingOn", "snoozedUntil"]`) that passes through the same outreach and lane-packet guards and writes the `waitingOn` audit row. No schema change.

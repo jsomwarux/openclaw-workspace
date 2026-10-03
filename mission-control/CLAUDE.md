@@ -121,6 +121,8 @@ After Slice 1.6, `/evidence` is the primary Evidence lane. `/audit` redirects to
 
 After Slice 1.7, `/health` is the primary Health lane. `/monitor` and `/costs` redirect to `/health`, and the old Deployment Monitor and Cost Dashboard references live at `/legacy/monitor` and `/legacy/costs`. Do not restore `/monitor` or `/costs` as primary Health surfaces. The Health lane should stay focused on ops failures, cost pressure, stale risk, and recovery work from current signals and cost data.
 
+`/cockpit` is the redesigned daily cockpit (slice one, built alongside the current interface, not in the nav). Its spec is `docs/design/mission-control-redesign/` (DECISIONS section 0 holds the confirmed overrides); decisions and open questions are in `tasks/implementation-notes.md`. It reads and writes only through `/api/tasks`; lane packets and outreach reviews are read-only there until slice two. Run progress lives in browser storage keyed by local date. Logic is in `lib/cockpit/` (framework-free, tested against the bundle fixtures), UI in `components/cockpit/`, tokens come from the bundle by name. `components/Sidebar.tsx` renders nothing on `/cockpit` only. Fixture mode (`NEXT_PUBLIC_COCKPIT_FIXTURES=1` plus `?fixture=<scenario>`) runs only on a development server and never touches Convex; production builds carry no fixture code.
+
 ## Today (cockpit) contract
 
 The `/` lane is **Today** (eyebrow "Today"). It renders four bands, in this order:

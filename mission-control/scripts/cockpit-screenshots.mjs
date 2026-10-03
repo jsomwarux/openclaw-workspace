@@ -16,7 +16,7 @@ mkdirSync(outDir, { recursive: true });
 
 const LAYOUTS = {
   desktop: { viewport: { width: 1440, height: 900 } },
-  mobile: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 },
+  mobile: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 },
 };
 
 const click = (page, name) => page.getByRole("button", { name, exact: true }).first().click();
