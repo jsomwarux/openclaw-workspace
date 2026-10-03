@@ -4,3 +4,8 @@ export const mobileNavShellClassName =
 export const mobileNavInnerClassName = "mx-auto grid h-14 max-w-[430px] grid-cols-5 items-center justify-center gap-1 px-3";
 
 export const mobileMainClassName = "pt-12 pb-28 md:pt-0 md:pb-0 md:ml-52 min-h-screen";
+
+// The /cockpit route draws its own full-screen chrome, so the sidebar and mobile bars stay out.
+export function hidesLegacyChrome(path: string | null): boolean {
+  return path === "/cockpit" || Boolean(path?.startsWith("/cockpit/"));
+}

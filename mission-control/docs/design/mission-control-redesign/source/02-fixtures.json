@@ -1,0 +1,506 @@
+{
+  "_meta": {
+    "what": "Twelve synthetic Mission Control task records for interface design. Each 'task' object is shaped exactly like a row returned by GET /api/tasks (the Convex tasks table).",
+    "fixtureNow": 1790985600000,
+    "fixtureNowIso": "2026-10-03T00:00:00Z",
+    "rules": [
+      "Every name, client, company, person, email, URL, path, and prompt is neutral placeholder text with the same character length and line structure as the live record it mirrors.",
+      "Enum values (status, assignee, priority, growthLane, doneEvidenceType, approvalState, workstream, dueDateSource) are real schema literals. 'jt' is the operator and 'eve' is the operator's AI agent; both are schema values, not placeholders.",
+      "Timestamps are fixtureNow plus the live record's offset from capture time. Ids and hashes are synthetic.",
+      "A field is present only when the mirrored live record has it, so field presence per card is real. The set as a whole is weighted toward hard cases; the true population distribution is in 01-data-contract.md.",
+      "'observedLive': false marks a fixture built from backend rules because no live record exists (expired card, feedback history)."
+    ],
+    "liveDataCapturedAtIso": "2026-10-03T00:08:36.774000Z"
+  },
+  "fixtures": [
+    {
+      "fixtureId": "F01",
+      "hardCases": [
+        "no-evidence-links"
+      ],
+      "mirrors": "Q-family decision card (Q1 shape); same 9 fields every one of the 31 decision cards carries",
+      "observedLive": true,
+      "notes": "All 31 live decision cards have no evidenceLinks, whyItMatters, exactSteps, or pasteReadyPrompt field. Their structure lives in description prose: a First action line, 4-5 bold-label bullets, then identical Why it matters / Done / Guard lines on all 31. 19 of 31 (all Q and AP) end with an empty '- **Answer:**' bullet that JT is expected to fill; the backend has no typed answer field. Bold labels match the live structure labels (Why, Answer, Change, Evidence, Recommendation, Draft, Status, Choose, Built differently) except 'Question', 'Proposed answer', and 'Reviewer note', which stand in for labels that were not extracted.",
+      "task": {
+        "_id": "fx7d9f571216c0dbc114a83723cfbda5",
+        "_creationTime": 1790979669812.0,
+        "title": "Sample DC Q1: step check marker result placeholder neutral record field.",
+        "description": "First action: sample words value content context follow the step check....\n\n- **Question:** text only option example point....\n- **Why:** for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow...\n- **Proposed answer:** the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft...\n- **Answer:**\n\nWhy it matters: card note entry filler source sample words value content.....\nDone: with detail line draft target text only option example point plan card note entry.......\nGuard: neutral record field summary status for item review synthetic reason task with detail.....",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "high",
+        "project": "for item review......",
+        "sortOrder": 201,
+        "createdAt": 1790979669812,
+        "updatedAt": 1790980042417
+      }
+    },
+    {
+      "fixtureId": "F02",
+      "hardCases": [],
+      "mirrors": "P-family decision card (P12 shape, the longest P; only card with a heading and ordered sub-list)",
+      "observedLive": true,
+      "notes": "P cards (12) are medium priority and carry no Answer slot; the decision is approve/decline of a recommendation.",
+      "task": {
+        "_id": "fx37287c487de5ef4dbae601c2681a51",
+        "_creationTime": 1790979682159.0,
+        "title": "Sample DC P12: value content context follow the step check.......",
+        "description": "First action: words value content context follow the step check marker.....\n\n- **Change:** only option example point plan card note entry filler source sample words value content context follow the step....\n- **Evidence:** item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line.....\n- **Reviewer note:** step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only...\n- **Recommendation:** note entry filler source sample words value content context follow the step check marker result......\n\n## detail line draft target text..\n\nIn approval order: record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review.........\n\nWhy it matters: card note entry filler source sample words value content.....\nDone: with detail line draft target text only option example point plan card note entry.......\nGuard: neutral record field summary status for item review synthetic reason task with detail.....",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "medium",
+        "project": "for item review......",
+        "sortOrder": 222,
+        "createdAt": 1790979682159,
+        "updatedAt": 1790980054173
+      }
+    },
+    {
+      "fixtureId": "F03",
+      "hardCases": [
+        "approval-card-with-risk-boundary"
+      ],
+      "mirrors": "AP-family approval card (AP7 shape: longest decision description, 130-char title = longest current title)",
+      "observedLive": true,
+      "notes": "The risk boundary is the 'Guard:' line, which is prose and identical on all 31 cards; the backend does not enforce it. The only typed risk flag (riskContainment) is set on 1 current card, the lane packet mirrored by F05.",
+      "task": {
+        "_id": "fx773028f73b7b971aaae5432764cd44",
+        "_creationTime": 1790979685934.0,
+        "title": "Sample DC AP7: field summary status for item review synthetic reason task with detail line draft target text only option example..",
+        "description": "First action: option example point plan card note entry filler source......\n\n- **Draft:** review synthetic reason task with.......\n- **Status:** check marker result placeholder neutral record field summary status for item review synthetic reason task with......\n- **Choose:** entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft.....\n- **Built differently:** line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item.....\n- **Answer:**\n\nWhy it matters: card note entry filler source sample words value content.....\nDone: with detail line draft target text only option example point plan card note entry.......\nGuard: neutral record field summary status for item review synthetic reason task with detail.....",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "high",
+        "project": "for item review......",
+        "sortOrder": 229,
+        "createdAt": 1790979685934,
+        "updatedAt": 1790980058165
+      }
+    },
+    {
+      "fixtureId": "F04",
+      "hardCases": [
+        "longest-paste-ready-prompt"
+      ],
+      "mirrors": "the longest pasteReadyPrompt in all live data (an archived JT card); prompt length, all line lengths, and its heading/bullet/numbered/code-fence profile are reproduced exactly",
+      "observedLive": true,
+      "notes": "Real record is status=archived; set to todo here so it exercises an open card. Longest current (non-archived) prompt is only 161 chars; median all-time is ~108. Backend caps: 20,000 chars for lane packets; no cap on generic tasks. Has no description field.",
+      "task": {
+        "_id": "fx2edbd3778a27c76cbf2053a65d8656",
+        "_creationTime": 1790208000000.0,
+        "title": "sample words value content context follow the step check...",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "high",
+        "project": "text only option.....",
+        "sortOrder": 12,
+        "whyItMatters": "for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary...",
+        "exactSteps": [
+          "the step check marker result placeholder neutral record field summary status for item review synthetic reason task with.......",
+          "card note entry filler source sample words value content context follow the step check marker result..",
+          "with detail line draft target text only option example point plan card note entry filler source sample words....",
+          "neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card."
+        ],
+        "pasteReadyPrompt": "# reason task with detail line draft target text only option example point plan...\n\nsource sample words value content context follow the step check marker result placeholder neutral record field...\n\n```text\nfollow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target...\n\ntask with..\n- placeholder neutral record field summary.\n- sample words value content context follow the.....\n- /home/placeholder/project/file-10.md text only option example point...\n- for item review synthetic reason task with detail line draft target text only option example point plan...\n- the step check marker result placeholder neutral record field summary status for item review......\n\nwith detail line...\n- neutral record field summary status for item review synthetic reason task with...\n- words value content context follow the step check marker result placeholder neutral record field summary status for...\n- /home/placeholder/project/file-17.md only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line......\n- item review synthetic reason task with detail line draft target text only option example point plan.....\n\nnote entry.....\n1. detail line draft target text only option......\n2. record field summary status for item review synthetic reason task with detail line draft target text only option......\n3. value content context follow the step check marker result placeholder neutral record..\n4. option example point plan card....\n5. review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for.....\n6. check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step.....\n\nline draft target text only..\n\ncontent context follow the step check marker.....\n- example point plan card note entry filler source sample words value content context follow the.\n- synthetic reason task with detail line draft target text only option example point plan card note entry filler.....\n- /home/placeholder/project/file-33.md marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only..\n- filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail..\n- draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail...\n- summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow.\n- context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note.\n\nreason task with detail line draft target text only option...\n- /home/placeholder/project/file-40.md result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample......\n- source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft...\n- target text only option example point plan card note entry filler source sample words value content context follow the step..\n\nfollow the step check marker result.....\n- plan card note entry filler source sample words value content context follow the step check......\n- task with detail line draft target text only option example point plan card....\n- placeholder neutral record field summary status for item review synthetic reason task with detail line draft....\n- sample words value content context follow the step check marker result placeholder neutral record field........\n- text only option example point plan card note entry filler source sample words value content.......\n1. for item review synthetic reason task with detail.....\n2. the step check marker result placeholder neutral.....\n3. card note entry filler source sample words value content context follow...\n4. with detail line draft target text only option........\n5. neutral record field summary status for item review.\n6. words value content context follow the step check marker.......\n7. only option example point plan card note entry filler source sample......\n- /home/placeholder/project/file-57.md item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context.......\n- step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text..\n- note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry.\n- detail line draft target text only option example point plan card note entry filler source sample words...\n- record field summary status for item review synthetic reason task with detail line draft target text....\n- value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option....\n\nreview synthetic reason.\n1. check marker result placeholder neutral record field summary status for.....\n2. entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task.\n3. line draft target text only option example point plan card note entry filler source sample..\n4. field summary status for item review synthetic reason task with detail line draft target text only option example..\n5. content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft....\n6. example point plan card note entry filler source sample words....\n\nmarker result placeholder neutral.\n- filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review...\n- draft target text only option example point plan card note entry filler source sample words value content context follow the step...\n- summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder...\n- context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with......\n- point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review.\n\nresult placeholder.\n1. source sample words value content context follow the step check marker result...\n2. target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step..\n3. status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow....\n4. follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with.\n\ntask with detail line.....\n- placeholder neutral record field summary status for item review....\n- sample words value content context follow the...\n- text only option example point.....\n- for item review synthetic reason....\n- the step check marker result placeholder neutral record field..\n- card note entry filler source sample...\n- with detail line draft target text only option example.....\n- neutral record field summary status for.\n- words value content context follow the....\n- only option example point plan card.....\n- item review synthetic reason.....\n\nnote entry filler....\ndetail line draft target text only option example point plan card note entry filler......\n\nvalue content context follow the step check marker result placeholder neutral record..\noption example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option....\n\ncheck marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field..\n\nline draft target text only option example point plan....\n```\n",
+        "pasteDestination": "Paste into the agent session at only option example point plan..",
+        "doneState": "item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context.......",
+        "createdAt": 1790208000000,
+        "updatedAt": 1790208000000
+      }
+    },
+    {
+      "fixtureId": "F05",
+      "hardCases": [
+        "approval-card-with-risk-boundary"
+      ],
+      "mirrors": "the single live Growth OS lane packet (jobs lane): approval pending, external evidence required, payloadHash differs from admittedPayloadHash",
+      "observedLive": true,
+      "notes": "Has pasteDestination but no pasteReadyPrompt (allowed on generic edits; admission would require a prompt with a destination only in the other direction). sortOrder cannot be set at admission, so it was set by a later generic edit. Mission Control's CLAUDE.md describes this packet as exact-payload-approved; live data shows approvalState=pending and no approvedPayloadHash. A generic edit to card text re-hashes the payload and resets approval to pending.",
+      "task": {
+        "_id": "fx28c288be99624252f31bede3e64b13",
+        "_creationTime": 1790566914121.0,
+        "title": "note entry filler source sample words value content.",
+        "description": "detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source.......",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "medium",
+        "project": "record....",
+        "sortOrder": 140,
+        "lane": "revenue",
+        "firstAction": "value content context follow the step check marker result placeholder.....",
+        "whyItMatters": "option example point plan card note entry filler source sample words value content context...",
+        "doneState": "review synthetic reason task with detail line draft target text only option example point plan card.....",
+        "exactSteps": [
+          "check marker result placeholder neutral record field.......",
+          "entry filler source sample words value content context follow the..",
+          "line draft target text only option example point plan card note entry filler source sample words value content......"
+        ],
+        "pasteDestination": "field summary status for item review synthetic reason task with......",
+        "evidenceLinks": [
+          "https://example.com/content-context-follow-the-step-check-marker.....",
+          "https://example.com/example-point-plan-card-note-entry-filler-source-sample-words...",
+          "https://example.com/synthetic-reason-task-with-detail-line-draft-target-text-only...",
+          "~/placeholder/marker-result-placeholder-neutral.."
+        ],
+        "sourceSystem": "filler-sourcexxx",
+        "dedupeKey": "lane-packet:v1:jobs:step-check-marker-result-placeholder-neutral-record-field-summaryxxxxxxx",
+        "workstream": "career-hedge",
+        "proofRequired": true,
+        "riskContainment": true,
+        "packetSchema": "lane-packet-v1",
+        "growthLane": "jobs",
+        "artifactRef": {
+          "system": "draft-target....",
+          "id": "summary-status-for-item-review-synthetic-reason-task-with....",
+          "sha256": "7bee972d9705df9f9c984629942298d6cbb34e7b4efa720451ab92087bb579b7"
+        },
+        "payloadHash": "eb6a12dfd8d630210d5ee6674c1f25cc56bc49c2f478dc5839d3f81d1c79825a",
+        "admittedPayloadHash": "de12ac17c59941d8d5ae13288a71b537875bebe29cbe4153d0149112c3bc3280",
+        "approvalState": "pending",
+        "expiresAt": 1791162549269,
+        "estMinutes": 20,
+        "doneEvidenceType": "application-ref",
+        "createdAt": 1790566914121,
+        "updatedAt": 1790603740096
+      }
+    },
+    {
+      "fixtureId": "F06",
+      "hardCases": [
+        "expired-card"
+      ],
+      "mirrors": "synthetic open lane packet past its expiresAt; built from the lane-packet contract, not observed live",
+      "observedLive": false,
+      "notes": "No expired card exists live (0 open packets past expiry, 0 typed 'expired' closures). Backend behavior: Today hides it at read time; approve is refused (409 'lane packet expired'); reject, skip, no-action, and complete are NOT blocked by expiry. The persisted closure (status archived, closureReason {kind:'expired', closedBy:'server'}) is written only by an internal mutation that is not scheduled. Expiry is a separate concept from snoozedUntil.",
+      "task": {
+        "_id": "fxffb7fae969edc258ae8386066ba46a",
+        "_creationTime": 1790467200000.0,
+        "title": "reason task with detail line draft target text..",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "medium",
+        "lane": "work",
+        "whyItMatters": "result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option.",
+        "exactSteps": [
+          "source sample words value content context follow the step check.",
+          "target text only option example point plan card note entry filler source sample words..."
+        ],
+        "doneState": "status for item review synthetic reason task with detail line draft target text only option example point.....",
+        "dedupeKey": "lane-packet:v1:networking:follow-the-step-check-marker-resultxxxxx",
+        "sourceSystem": "placeholder-producer",
+        "packetSchema": "lane-packet-v1",
+        "growthLane": "networking",
+        "artifactRef": {
+          "system": "placeholder-store",
+          "id": "placeholder-artifact-0006",
+          "sha256": "bac462d6a05c7d26173583fd38af6eaa912eabb35b882af4ab55084b1fa81fa2"
+        },
+        "payloadHash": "c2f191bdc93520c5f04e4fc3f4ce3c4b013fbbc864573aa641ed4b44610ca4e9",
+        "admittedPayloadHash": "c2f191bdc93520c5f04e4fc3f4ce3c4b013fbbc864573aa641ed4b44610ca4e9",
+        "approvalState": "pending",
+        "expiresAt": 1790899200000,
+        "estMinutes": 15,
+        "doneEvidenceType": "rsvp-ref",
+        "createdAt": 1790467200000,
+        "updatedAt": 1790467200000
+      }
+    },
+    {
+      "fixtureId": "F07",
+      "hardCases": [
+        "waiting-card"
+      ],
+      "mirrors": "the live waiting-external card that carries a waitingOn record (JT-owned, high, cash-bearing, overdue self-set deadline, nudge overdue)",
+      "observedLive": true,
+      "notes": "dollars is a synthetic 4-digit value (live cash cards range 1,500-2,250). waitingOn.since is ~22 days back with nudgeAfterDays=14, so Today shows this card as 'Nudge <who>: <what>' and it ranks first. The other live waiting-external card is Eve-owned and has no waitingOn record.",
+      "task": {
+        "_id": "fx8f0d66b6796b6f9f84de87bea20fbb",
+        "_creationTime": 1779818561807.0,
+        "title": "text only option example point plan card note entry filler.......",
+        "description": "for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample......",
+        "status": "waiting-external",
+        "assignee": "jt",
+        "priority": "high",
+        "project": "the step..",
+        "sortOrder": 3,
+        "slug": "card-note-entry-filler-source-sample-words-value-contentx",
+        "pipelineStage": "with-detail-linexxxxxx",
+        "dueDate": 1788295883226,
+        "dueDateSource": "self",
+        "dollars": 2000,
+        "stageProbability": 0.55,
+        "lane": "revenue",
+        "waitingOn": {
+          "who": "neutral.......",
+          "what": "words value content context follow the step..",
+          "since": 1789078211472,
+          "nudgeAfterDays": 14
+        },
+        "proofRequired": true,
+        "blocks": 2,
+        "firstAction": "only option example point plan card note entry filler source sample words value content context follow the step check..",
+        "whyItMatters": "item review synthetic reason task with detail line draft target text only option example point plan card....",
+        "doneState": "step check marker result placeholder neutral record field summary status for item review synthetic..",
+        "clientId": "cl5704de18fc6045e4d08c3a26116279",
+        "createdAt": 1779818561807,
+        "updatedAt": 1789078211815
+      }
+    },
+    {
+      "fixtureId": "F08",
+      "hardCases": [
+        "blocked-card"
+      ],
+      "mirrors": "a live JT todo card whose title says it is blocked; field presence and lengths mirror it",
+      "observedLive": true,
+      "notes": "There is no 'blocked' status, flag, or blockedBy field in the schema. Live cards express blocked work in title/description prose (18 current cards mention block/blocked/blocker). The display adapter can derive a 'blocked' status type but never produces it for tasks. 'blocks' (number) means the opposite: how many other items THIS card blocks. A card waiting on a person should use waitingOn (see F07).",
+      "task": {
+        "_id": "fx87a928d1f93cccf3cc432760ad7036",
+        "_creationTime": 1790982621826.0,
+        "title": "Blocked: note entry filler source sample words.",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "high",
+        "createdAt": 1790982621826,
+        "updatedAt": 1790982621826,
+        "description": "Blocked on: detail line draft target text only option example point plan card note entry filler source sample words.....\nrecord field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review.......",
+        "project": ".......",
+        "firstAction": "filler source sample words value content context follow the step check marker result placeholder neutral record.",
+        "whyItMatters": "draft target text only option example point plan card note entry filler source sample words value.....",
+        "doneState": "synthetic reason task with detail line draft target text only option example point plan card note....",
+        "lane": "systems",
+        "proofRequired": true
+      }
+    },
+    {
+      "fixtureId": "F09",
+      "hardCases": [
+        "agent-owned-card"
+      ],
+      "mirrors": "the live Eve-owned high-priority todo card with a sourceSystem",
+      "observedLive": true,
+      "notes": "6 of 85 current cards are Eve-owned (3 done, 2 todo, 1 waiting-external). Today never shows Eve-owned tasks; only a failed Eve task or cron escalates.",
+      "task": {
+        "_id": "fxb40d32e4bb19de965ab4036741ab2d",
+        "_creationTime": 1789394351606.0,
+        "title": "for item review synthetic reason task with detail line draft..",
+        "description": "the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral..",
+        "status": "todo",
+        "assignee": "eve",
+        "priority": "high",
+        "project": "card note.",
+        "sortOrder": 30,
+        "sourceSystem": "with-detail-linex",
+        "workstream": "administrative",
+        "firstAction": "neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record.",
+        "whyItMatters": "words value content context follow the step check marker result placeholder neutral record field summary status for item review.....",
+        "doneState": "only option example point plan card note entry filler source sample words value content context follow the step check marker result....",
+        "createdAt": 1789394351606,
+        "updatedAt": 1789395562548
+      }
+    },
+    {
+      "fixtureId": "F10",
+      "hardCases": [
+        "long-feedback-history"
+      ],
+      "mirrors": "a live seven-field universal card (median current prompt) with a synthetic 12-entry feedback history; status done",
+      "observedLive": false,
+      "notes": "No live card has ever had a feedback entry (0 of 1,422). Lengths here exercise the rules: each body is trimmed, 1-4,000 chars (one entry sits at the 4,000 cap); author is 'jt' or 'eve' as declared by the caller (not authenticated); id and createdAt are server-assigned; entries can only be appended, never edited or removed; appending also bumps updatedAt.",
+      "task": {
+        "_id": "fxe64a13f8151ba06c3045b8fca297c2",
+        "_creationTime": 1790467200000.0,
+        "title": "detail line draft target text only.",
+        "description": "record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check...",
+        "status": "done",
+        "assignee": "jt",
+        "priority": "medium",
+        "project": "value content........",
+        "sortOrder": 140,
+        "whyItMatters": "option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field.......",
+        "exactSteps": [
+          "review synthetic reason task with.......",
+          "check marker result placeholder neutral record....",
+          "entry filler source sample words value content context follow the step check marker result....",
+          "line draft target text only option example point plan card note entry filler source sample words value.......",
+          "field summary status for item review synthetic reason task...."
+        ],
+        "pasteReadyPrompt": "example point plan card note entry filler source sample words value content context follow the...",
+        "pasteDestination": "synthetic reason task with detail line.",
+        "doneState": "marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source...",
+        "feedback": [
+          {
+            "id": "1790553600000-1",
+            "body": "card note entry filler source sample......",
+            "author": "jt",
+            "createdAt": 1790553600000
+          },
+          {
+            "id": "1790578800000-2",
+            "body": "with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder..",
+            "author": "eve",
+            "createdAt": 1790578800000
+          },
+          {
+            "id": "1790604000000-3",
+            "body": "neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target.",
+            "author": "jt",
+            "createdAt": 1790604000000
+          },
+          {
+            "id": "1790629200000-4",
+            "body": "words value content context follow the step check marker result placeholder neutral record.....",
+            "author": "jt",
+            "createdAt": 1790629200000
+          },
+          {
+            "id": "1790654400000-5",
+            "body": "only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for.....",
+            "author": "eve",
+            "createdAt": 1790654400000
+          },
+          {
+            "id": "1790679600000-6",
+            "body": "item review synthetic reason.....",
+            "author": "jt",
+            "createdAt": 1790679600000
+          },
+          {
+            "id": "1790704800000-7",
+            "body": "step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler......",
+            "author": "jt",
+            "createdAt": 1790704800000
+          },
+          {
+            "id": "1790730000000-8",
+            "body": "note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note...",
+            "author": "eve",
+            "createdAt": 1790730000000
+          },
+          {
+            "id": "1790755200000-9",
+            "body": "detail line draft target text only option example point plan card note.....",
+            "author": "jt",
+            "createdAt": 1790755200000
+          },
+          {
+            "id": "1790780400000-10",
+            "body": "record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status..",
+            "author": "jt",
+            "createdAt": 1790780400000
+          },
+          {
+            "id": "1790805600000-11",
+            "body": "value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason..",
+            "author": "eve",
+            "createdAt": 1790805600000
+          },
+          {
+            "id": "1790830800000-12",
+            "body": "option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option........",
+            "author": "jt",
+            "createdAt": 1790830800000
+          }
+        ],
+        "createdAt": 1790467200000,
+        "updatedAt": 1790830800000
+      }
+    },
+    {
+      "fixtureId": "F11",
+      "hardCases": [],
+      "mirrors": "a live outreach review card awaiting JT's approve/reject; subject/body/verifier-report lengths set to the longest observed across the 6 live outreach review cards",
+      "observedLive": true,
+      "notes": "Immutable: every generic edit, status change, upsert, delete, and auto-archive refuses or skips it; feedback can still be appended. The only change is JT's one-time decision (approve or reject) through the identity-checked decision route, which appends outreachDecision {decision, decidedBy:'jt', decidedAt} and sets status done. A reversal needs a new versioned card (max 2 review cycles per candidate+cohort). Live: 6 review cards, 4 decided (all reject), 2 pending.",
+      "task": {
+        "_id": "fxbce76a9a85913254690c7f181fc3c1",
+        "_creationTime": 1789493604190.0,
+        "title": "status for item review synthetic reason task with detail line draft target..",
+        "description": "follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft......",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "high",
+        "project": "card note entry......",
+        "sourceSystem": "item review synthetic.",
+        "candidateId": "source-sample-wordsxxx",
+        "cohortId": "target-text-onlyxx",
+        "draftSha256": "9ef51e7315a20f0d42a81d53cb1805cfe36a0e963ac5d62d09ad880031ff224b",
+        "outreachReview": {
+          "candidateId": "source-sample-wordsxxx",
+          "cohortId": "target-text-onlyxx",
+          "draftSha256": "9ef51e7315a20f0d42a81d53cb1805cfe36a0e963ac5d62d09ad880031ff224b",
+          "subject": "the step check marker.",
+          "body": "card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line...",
+          "verifierReport": "with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary status for item......",
+          "reviewAuthorityId": "placeholder-review-authority-0011",
+          "verifierActorId": "placeholder-verifier-actor",
+          "gitBindings": {
+            "evidence": {
+              "repository": "placeholder-owner/placeholder-repo",
+              "commitSha": "f9e85dd90f8977947d526c782c7ca1336c4eff08",
+              "path": "placeholder/evidence/record.json",
+              "blobSha256": "db5b5f7df2eed9c9e2391258d4039b4141a02ef197c7fbf14842b327ae7d23bf"
+            },
+            "policy": {
+              "repository": "placeholder-owner/placeholder-repo",
+              "commitSha": "19b077505949f0dc1897b5e1b31442998726f277",
+              "path": "placeholder/policy/record.json",
+              "blobSha256": "d24e7940617138603dc6b10c1b5eeb4018a16df902cf5203b5b39e8c0cdbe094"
+            },
+            "gate": {
+              "repository": "placeholder-owner/placeholder-repo",
+              "commitSha": "ceb98dd5c0daf2e738ba2fa9cbd36b8d794b1200",
+              "path": "placeholder/gate/record.json",
+              "blobSha256": "9d5e03bc7d151cf69c40fb46b184861bdbfc7414d3a7cbf2c1100dcec800e14d"
+            },
+            "draft": {
+              "repository": "placeholder-owner/placeholder-repo",
+              "commitSha": "9ef51e7315a20f0d42a81d53cb1805cfe36a0e96",
+              "path": "placeholder/draft/record.json",
+              "blobSha256": "e4cea5be415cf124cb6029152c4ee512e867e4e99fc19b02cbdb026e86f9068d"
+            },
+            "verifier": {
+              "repository": "placeholder-owner/placeholder-repo",
+              "commitSha": "c55d9dc4352b3dc945e8ade968b17122299e6604",
+              "path": "placeholder/verifier/record.json",
+              "blobSha256": "27e6f222c5c7b2fe4288a019812190265eba671c457446b132d19f5b945f1ebe"
+            }
+          },
+          "snapshotSha256": "9d8d4efeec6d09c2ebbdab1a85321452b823653f203ae0ccf15850c340564051",
+          "reviewCycle": 1,
+          "admittedBy": "server",
+          "admittedAt": 1789493604190
+        },
+        "createdAt": 1789493604190,
+        "updatedAt": 1789493604190
+      }
+    },
+    {
+      "fixtureId": "F12",
+      "hardCases": [],
+      "mirrors": "one of 3 live legacy pipeline cards: snoozedUntil already passed, self-set due date overdue, slug/pipelineStage/lane set, no seven-field content",
+      "observedLive": true,
+      "notes": "A passed snoozedUntil does not change status; the card is simply eligible for Today again. Snooze is a timestamp on a todo card, not the 'snoozed' status (0 live cards use status 'snoozed').",
+      "task": {
+        "_id": "fx3ef0d3414cabd284f1d27e8626317e",
+        "_creationTime": 1787150618140.0,
+        "title": "record field summary status...",
+        "description": "value content context follow the step check marker result placeholder neutral record field summary status for item review synthetic reason task with detail line draft target text only option example point plan card note entry filler source sample words value content context follow the step check marker result placeholder neutral record field summary......",
+        "status": "todo",
+        "assignee": "jt",
+        "priority": "medium",
+        "project": "option....",
+        "sortOrder": 8,
+        "slug": "review-synthetic-reasonxxxx",
+        "pipelineStage": "check-markerxxxxxxx",
+        "lane": "revenue",
+        "dueDate": 1787352683226,
+        "dueDateSource": "self",
+        "snoozedUntil": 1788871883226,
+        "proofRequired": false,
+        "createdAt": 1787150618140,
+        "updatedAt": 1788209666940
+      }
+    }
+  ]
+}

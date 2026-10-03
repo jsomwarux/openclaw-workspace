@@ -1,3 +1,12 @@
+## Plan — Mission Control redesign slice one (`/cockpit`) — 2026-10-03
+Branch: claude/mc-redesign-slice-1 · Base: e5b9943 · Writer: claude-code · Plan and decisions: `tasks/implementation-notes.md`
+- [x] Bundle committed unchanged; overrides recorded in DECISIONS section 0 (Confirmed 2026-10-03).
+- [x] Phase 0 read-only check of the bundle against the backend; three questions asked and answered.
+- [x] Test first: eligibility, order and tie-break, exceptions, slot lifting, action matrix, answer before Complete, Defer limits, run transitions 1 to 11, keyboard (no key for Approve/Reject), writes and retry, controller.
+- [x] UI at `/cockpit`, desktop and 390 px, every designed state; Sidebar hidden on `/cockpit` only.
+- [x] Verify: full suite, tsc, isolated build, diff check, browser interaction checks, mutation checks, screenshots against the prototype.
+- [ ] Fresh-context review; pull request (not merged, not deployed).
+
 ## Plan — Growth OS Machine Contract v1 repair 1 (`/api/tasks/[id]` guard mapping) — 2026-09-27
 Run: growth-os-mc-machine-contract-v1-repair1 · Branch: eve/growth-os-machine-contract-v1 · Start: b8903ed · Writer: claude-code
 - [x] Verify clean worktree at b8903ed; baseline `bun test` 448 pass / 0 fail across 57 files.

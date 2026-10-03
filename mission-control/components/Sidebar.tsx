@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { mobileNavInnerClassName, mobileNavShellClassName } from "@/lib/mission-control/nav-layout";
+import { hidesLegacyChrome, mobileNavInnerClassName, mobileNavShellClassName } from "@/lib/mission-control/nav-layout";
 import { missionControlNav, mobileNav } from "@/lib/mission-control/routes";
 import { cn } from "@/lib/utils";
 
 export default function Sidebar() {
   const path = usePathname();
+  if (hidesLegacyChrome(path)) return null;
 
   const isActive = (item: (typeof missionControlNav)[number]) =>
     item.aliases.some((href) => (href === "/" ? path === "/" : path.startsWith(href)));

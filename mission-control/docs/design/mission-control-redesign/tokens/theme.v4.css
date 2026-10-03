@@ -1,0 +1,44 @@
+/* Tailwind v4: import after tokens.css */
+@theme inline {
+  --color-mc-page: var(--mc-page);
+  --color-mc-surface: var(--mc-surface);
+  --color-mc-panel: var(--mc-panel);
+  --color-mc-panel-hover: var(--mc-panel-hover);
+  --color-mc-row-hover: var(--mc-row-hover);
+  --color-mc-control-hover: var(--mc-control-hover);
+  --color-mc-skeleton: var(--mc-skeleton);
+  --color-mc-line: var(--mc-line);
+  --color-mc-line-soft: var(--mc-line-soft);
+  --color-mc-line-table: var(--mc-line-table);
+  --color-mc-line-notice: var(--mc-line-notice);
+  --color-mc-line-strong: var(--mc-line-strong);
+  --color-mc-line-control: var(--mc-line-control);
+  --color-mc-line-missing: var(--mc-line-missing);
+  --color-mc-ink: var(--mc-ink);
+  --color-mc-ink-secondary: var(--mc-ink-secondary);
+  --color-mc-ink-muted: var(--mc-ink-muted);
+  --color-mc-accent: var(--mc-accent);
+  --color-mc-accent-hover: var(--mc-accent-hover);
+  --color-mc-accent-deep: var(--mc-accent-deep);
+  --color-mc-accent-ink: var(--mc-accent-ink);
+  --color-mc-accent-tint: var(--mc-accent-tint);
+  --color-mc-accent-on: var(--mc-accent-on);
+  --color-mc-notice: var(--mc-notice);
+  --color-mc-error: var(--mc-error);
+  --color-mc-error-bg: var(--mc-error-bg);
+  --font-sans: var(--mc-font-sans);
+  --font-mono: var(--mc-font-mono);
+  --text-mc-11: calc(var(--mc-fs, 14px) * 0.7857);
+  --text-mc-12: calc(var(--mc-fs, 14px) * 0.8571);
+  --text-mc-13: calc(var(--mc-fs, 14px) * 0.9286);
+  --text-mc-14: calc(var(--mc-fs, 14px) * 1.0000);
+  --text-mc-15: calc(var(--mc-fs, 14px) * 1.0714);
+  --text-mc-16: calc(var(--mc-fs, 14px) * 1.1429);
+  --text-mc-17: calc(var(--mc-fs, 14px) * 1.2143);
+  --text-mc-18: calc(var(--mc-fs, 14px) * 1.2857);
+  --text-mc-20: calc(var(--mc-fs, 14px) * 1.4286);
+  --text-mc-22: calc(var(--mc-fs, 14px) * 1.5714);
+  --text-mc-24: calc(var(--mc-fs, 14px) * 1.7143);
+  --text-mc-28: calc(var(--mc-fs, 14px) * 2.0000);
+  --radius-chip: 3px; --radius-btn: 4px; --radius-card: 6px; --radius-panel: 8px; --radius-sheet: 12px;
+}
