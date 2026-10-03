@@ -12,6 +12,16 @@ Terms: "item" is a task record. "Run" is today's committed list. `jt` is the ope
 
 ---
 
+## 0. Overrides (Confirmed 2026-10-03)
+
+These override the rules below wherever they conflict. **Confirmed 2026-10-03.**
+
+1. **Defer is a snooze, not a priority change.** Confirmed 2026-10-03. It asks each time: tomorrow at 8am local, pre-selected so Enter accepts it; next week; or a date. It writes `snoozedUntil`. On a lane packet it may not pass `expiresAt`. It is hidden on outreach reviews and closed packets. Undo restores the previous value. This replaces section 7 and the Defer confirm and status-line copy in the README that mention priority.
+2. **Run progress uses the interim browser-storage rule in section 8 for slice one.** Confirmed 2026-10-03. No database change.
+3. **Every other item marked Confirm is accepted as designed.** Confirmed 2026-10-03. That covers: section 1 rule 6 (Other cards tie-break), section 3 rule 5 (exception displacement), section 4 rule 7 (Guard fills Authority on P and AP; Q shows none), section 5 rule 2 (the P decision note is optional), section 6 rule 2 (Block also sets `status: "waiting-external"`), section 9 (invalid card rules), and section 15 (other designed rules).
+
+---
+
 ## 1. What fills the run, and in what order
 
 **Question:** What fills today's run? **Answered:** "Decision cards (Q, P, AP) in curated order, then operational cards."
@@ -144,6 +154,8 @@ Terms: "item" is a task record. "Run" is today's committed list. `jt` is the ope
 
 ## 7. What Defer writes
 
+**Superseded by section 0, override 1 (Confirmed 2026-10-03): Defer is a snooze that writes `snoozedUntil`, not a priority change. The rules below are kept for the record only.**
+
 **Not asked directly; follows the contract convention. Designed, Confirm.**
 
 **Rules**
@@ -155,6 +167,8 @@ Terms: "item" is a task record. "Run" is today's committed list. `jt` is the ope
 5. Undo restores the previous `priority` and `status`. Generic tasks and open lane packets only.
 
 ## 8. Where run progress is stored
+
+**Slice one: interim rule below, per section 0, override 2 (Confirmed 2026-10-03). No database change.**
 
 **Not decided.** No question was answered. `03-state-map.md` Part B open question 4 stays open: "client-only, or a new backend table".
 
